@@ -96,6 +96,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**Cruzamento Signature × Excelência de Copy**](../funil-organico/cruzamento-copy-excelencia.md) — o mapa: cada elemento do piso → nosso lever de copy superior → onde superamos
 - ✅ [**⚡ Doutrina Criativa Agressiva**](../funil-organico/doutrina-criativa-agressiva.md) — A LEI anti-copy-morna: Teste do Dedo, ataque reptiliano, FOMO, future projection (ler ANTES de gerar cena/copy)
 - ✅ [**Desejos Ocultos 50+**](../funil-organico/desejos-ocultos-50plus.md) — 15 desejos + 7 feridas do avatar, cada um com hook-cena candidato
+- ✅ [**⚡ Empilhamento Reptiliano**](../funil-organico/empilhamento-reptiliano.md) — a fórmula multiplicadora do hook (desejo × posse × testemunha × dominância) + banco de cenas-evento
 - ✅ [**Insights: Triangulação**](insights-empiricos.md) — signature × copy × oferta (empirismo acumulado)
 
 ## Swipes anotados

@@ -35,6 +35,7 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | **[cruzamento-copy-excelencia.md](cruzamento-copy-excelencia.md)** | O **mapa** signature → nosso lever de copy superior → onde superamos (a lente obrigatória) |
 | **[doutrina-criativa-agressiva.md](doutrina-criativa-agressiva.md)** | ⚡ **A LEI**: anti-copy-morna, Teste do Dedo, ataque reptiliano, FOMO, future projection — ler ANTES de gerar qualquer cena/copy |
 | **[desejos-ocultos-50plus.md](desejos-ocultos-50plus.md)** | O **mapa da mina**: 15 desejos ocultos + 7 feridas do homem US 50+, cada um com hook-cena candidato |
+| **[empilhamento-reptiliano.md](empilhamento-reptiliano.md)** | ⚡ A **fórmula multiplicadora** do hook: desejo × posse × testemunha sofrendo × dominância + banco de 10 cenas-evento |
 
 > Insight-mãe da operação: [../00-mapa/insights-empiricos.md](../00-mapa/insights-empiricos.md) (triangulação signature × copy × oferta).
 

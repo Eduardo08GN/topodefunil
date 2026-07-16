@@ -39,6 +39,8 @@ A [regra de ouro](../00-mapa/insights-empiricos.md) (compliance na linguagem, ex
 ### 2. Beleza feminina é recurso estratégico obrigatório
 O avatar/coadjuvante feminina não é decoração — é o **scroll-stop reptiliano nº 1** deste nicho e a **personificação do desejo** do avatar 50+. Explorar deliberadamente: silhueta, busto/decote, cintura fina, quadril largo, roupas que marcam (biquíni, vestido justo, robe de seda, legging), poses (yoga, alongamento, debruçada), ângulos de câmera que valorizam, cabelo, olhar seduzindo a lente, e o **elogio ao coroa** ("homens de verdade são feitos depois dos 50…"). Nível de referência: a mulher que faz o homem de 52 anos parar **com culpa**. Limite: sem nudez/ato explícito (bloqueio da Meta e do Veo) — sensualidade máxima DENTRO do vestível/mostrável.
 
+**⚡ 2b. Cena estática soma, EVENTO multiplica ([empilhamento reptiliano](empilhamento-reptiliano.md)):** a mulher-troféu sozinha é nível X. O hook profissional empilha **desejo × posse × testemunha sofrendo × dominância** — ex.: loira no braço do coroa + a **ex-mulher congelando na calçada, atônita de inveja** + ele **rindo** sem parar de andar. Todo hook mira **3+ camadas**; banco de cenas e estoque combinatório no doc dedicado.
+
 ### 3. A copy ataca vergonha, medo e desejo oculto — nunca "o problema"
 Copy que descreve problema = bula. Copy que encena a **ferida** = venda. Usar sempre o [mapa de desejos ocultos 50+](desejos-ocultos-50plus.md):
 - **Vergonha:** a noite que ela parou de procurar; o "tudo bem, amor" com voz de pena; apologizing in the dark.
