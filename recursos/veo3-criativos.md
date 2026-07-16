@@ -68,6 +68,14 @@ Para máximo realismo, **não use um tool só**:
 4. **Upscale do vídeo:** Topaz Video AI (modelo Proteus, 4K; `recover detail` em 0 pra não criar artefato).
 5. **Grão de filme** no editor (overlay ~30%) pra dar textura de câmera real.
 
+## Workflow cinematográfico em 4 passos (storyboard-first) — Higgsfield
+Alternativa **all-in-one** ao OpenArt: **Higgsfield.ai (Cinema Studio 2.5)** junta imagem + vídeo + **consistência** num lugar só (evita pular entre sites, já que os melhores modelos mudam todo mês). O processo:
+
+1. **Preparação + storyboard.** Antes de tocar em IA, tenha **visão**: monte um **mood board** (cenas de filmes favoritos, Pinterest, Instagram) e organize num **storyboard** (Miro/Canva/Mural), mapeando cada cena a criar. Entenda o motor: **primeiro a imagem cinematográfica perfeita → depois anima (image-to-video)**.
+2. **Imagem cinematográfica (os "ingredientes").** Resolva a **consistência** no Higgsfield: em *Character and locations*, **construa o personagem** (várias fotos de ângulos diferentes, boa luz) e a **localização** (mín. 2 fotos do mood). Depois prompte referenciando **@personagem** + **@localização** ("@char andando de moto, filmado de cima… @location") → gera 4 imagens realistas com o mesmo personagem/cenário. Repita por cena do storyboard.
+3. **Animação.** Suba a imagem da cena e prompte **movimento de câmera** ("câmera seguindo de cima, camiseta ao vento"). Duração ~5s (trima depois). Há *multi-shot* automático, mas gerar cena a cena dá **mais controle**. Dica do autor: **não existe uma "estrutura de prompt" mágica** — descreva a cena como você a imagina e itere; **boas imagens de referência** é que garantem o resultado.
+4. **Touch-up (os últimos 10%).** É o que tira o "cheiro de IA": no editor, **grão de filme + bloom/halation sutis** via plugin **Dehancer** (Premiere/DaVinci). Sutil — sem exagerar. Some som e cortes casados com o áudio, e exporte.
+
 ## Acesso, custo e armadilhas
 - **flow.google** dá acesso ao Veo. **Gemini AI Pro** costuma ter **1 mês grátis** + créditos. **OpenArt** = acesso rápido aos modelos novos, tudo num lugar (imagem+áudio+vídeo).
 - **V3 Fast** (~20 créditos, 720p): barato, mas movimentos piores **e o fast text-to-video NÃO gera diálogo**. **V3 Quality** ("beta audio") pros shots importantes.

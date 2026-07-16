@@ -52,5 +52,9 @@ Termos e jargão. Cresce conforme aparecem no material.
 | Key visual (Veo) | Visual-herói | A imagem-âncora dos primeiros segundos do criativo |
 | Start/end frame | Frame inicial/final | Definir 1º e último quadro; o Veo 3.1 preenche a transição |
 | Image-to-video | Imagem→vídeo | Gerar imagem consistente primeiro e animá-la (personagem/produto consistente) |
+| Higgsfield / OpenArt | — | Plataformas all-in-one de geração de imagem/vídeo IA (vários modelos num lugar) |
+| Mood board / storyboard | Painel de referência / roteiro visual | Referências de estética + mapa de cenas antes de gerar |
+| Dehancer | — | Plugin de grão de filme + bloom/halation (dá textura "de câmera real") |
+| Film grain | Grão de filme | Textura sobreposta que deixa o vídeo IA mais realista |
 
 *(adicionar conforme surgir)*
