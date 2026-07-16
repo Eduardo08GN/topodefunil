@@ -4,6 +4,7 @@ O **passo-a-passo operacional** que costura toda a base: dada uma oferta MaxWeb,
 
 - **Status:** ✅ consolidado (fecha o workflow de geração de prompt)
 - **Princípio-mãe:** [Triangulação](../00-mapa/insights-empiricos.md) — signature (piso/estilo) × nossa copy (superior) × oferta (âncora). A signature dá a **forma**; a copy e a oferta dão o **conteúdo**.
+- **Lente obrigatória:** [Cruzamento Signature × Excelência de Copy](cruzamento-copy-excelencia.md) — cada elemento do piso já mapeado ao nosso lever de copy superior. **Todo passo abaixo cruza com a base.**
 
 ## Pré-requisitos (decisões, não docs)
 - [ ] **Oferta MaxWeb escolhida** (qual VSL/produto — ver [dissecação](../swipes/vsl-suplemento-masculino.md)).

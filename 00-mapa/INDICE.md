@@ -93,6 +93,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**Prop-Metáforas**](../funil-organico/prop-metaforas.md) — catálogo dos props e funções
 - ✅ [**Template Criativo**](../funil-organico/template-criativo.md) — molde modelável + prompt-base Veo 3 + slots da triangulação
 - ✅ [**SOP — Produção do Criativo**](../funil-organico/producao-criativo-sop.md) — o passo-a-passo (oferta → prompt Veo 3 → publicar) que costura todo o workflow
+- ✅ [**Cruzamento Signature × Excelência de Copy**](../funil-organico/cruzamento-copy-excelencia.md) — o mapa: cada elemento do piso → nosso lever de copy superior → onde superamos
 - ✅ [**Insights: Triangulação**](insights-empiricos.md) — signature × copy × oferta (empirismo acumulado)
 
 ## Swipes anotados

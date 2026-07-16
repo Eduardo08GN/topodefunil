@@ -32,6 +32,7 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | **[prop-metaforas.md](prop-metaforas.md)** | Catálogo dos props (banana/pepino/modelo anatômico…) e suas funções |
 | **[template-criativo.md](template-criativo.md)** | O **template modelável** + prompt-base Veo 3 + os slots da triangulação (o output acionável) |
 | **[producao-criativo-sop.md](producao-criativo-sop.md)** | O **SOP em 12 passos** (oferta → prompt Veo 3 → publicar) — o fio que costura todo o workflow |
+| **[cruzamento-copy-excelencia.md](cruzamento-copy-excelencia.md)** | O **mapa** signature → nosso lever de copy superior → onde superamos (a lente obrigatória) |
 
 > Insight-mãe da operação: [../00-mapa/insights-empiricos.md](../00-mapa/insights-empiricos.md) (triangulação signature × copy × oferta).
 
