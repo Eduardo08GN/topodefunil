@@ -56,6 +56,18 @@ A [Doutrina](doutrina-criativa-agressiva.md) manda atacar fundo (vergonha, medo,
 
 **Resumo:** morno (sem tesão, sem soco) e bingo (técnica visível) são os dois inimigos JÁ conhecidos. Este é o terceiro, traiçoeiro porque nasce de acertar o segundo: **voz humana + cena sem apelo = história romântica que ninguém assiste.** Os TRÊS radares ficam desligados só quando **voz de gente** encontra **cena de fogo**.
 
+## ⚠️ RADAR 4 — "novela mexicana": FALA DIRETA > ficção narrada (a forma validada)
+
+**Quarto modo de falha (campo, 2026-07-16):** copy estruturada como **ficção narrada** — personagens, historinha com arco, mini-filme dramatizado ("ela na piscina fofocando do Steve") — soa NOVELA. O espectador não quer assistir a história dos outros num anúncio; a signature validada dos 42 reels **fala COM ELE sobre ELE**:
+
+- **A forma vencedora é DIRETA:** segunda pessoa, comando, receita, demo, diagnóstico. *"If yours doesn't stand up like it used to — pay attention."* · *"Stop buying blue pills. Do this instead."* · *"THIS is weak flow. This is weak flow. And THIS is what happens when you fix it."*
+- **Zero narrador-personagem como estrutura.** História entra só em **micro-dose** (1 linha de prova: *"my client Mike, 61, called me last week…"*), nunca como espinha do vídeo.
+- **A mulher gostosa é APRESENTADORA, não atriz de drama:** decote + corpo em quadro, falando pra câmera, manuseando o prop. O reptiliano visual dela + a fala direta nele.
+- **As [cenas-evento](empilhamento-reptiliano.md) (ex na calçada, gasp, casal) = hook visual de 2-3 SEGUNDOS** (cold-open mudo ou b-roll), nunca a estrutura dos 35s. Depois do choque visual, corta pra fala direta.
+- **Frases curtas. Comando. Corte.** O ritmo dos concorrentes é staccato — sem "and honestly?", sem reticências de novela, sem construção literária.
+
+**Hierarquia final das 4 leis de voz:** (1) fala DIRETA em 2ª pessoa [estrutura] → (2) agressiva no conteúdo [Doutrina] → (3) sem clichê de copy [anti-bingo] → (4) cena quente independente da voz [dois eixos]. Errar a #1 invalida as outras três.
+
 ## Conexões
 - [Doutrina Agressiva](doutrina-criativa-agressiva.md) (o quê) · [Roteiro-Máquina](ataque-4-roteiro-maquina.md) (o esqueleto — que esta pele cobre)
 - [Ataque 3: Research](ataque-3-georgi-research.md) — a voz real do avatar vem dos comentários/reviews, não da imaginação
