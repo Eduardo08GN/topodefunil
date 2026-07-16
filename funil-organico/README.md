@@ -38,6 +38,17 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | **[empilhamento-reptiliano.md](empilhamento-reptiliano.md)** | ⚡ A **fórmula multiplicadora** do hook (desejo × posse × testemunha × dominância) + banco de cenas-evento + hipérbole situacional + **leque de 30 ângulos situacionais em 6 famílias** (rotação anti-afunilamento) |
 | **[guerra-reptiliana-angulos.md](guerra-reptiliana-angulos.md)** | ⚔️ O **GERADOR de ângulos**: 9 botões reptilianos × 8 famílias de cena inexploradas (G–N: POV, flagrante, objeto-protagonista, confissão…) × matriz anti-vício de rota |
 
+### 🗡️ O Plano de Ataque (7 docs — a máquina de hooking)
+| Doc | O que cobre |
+|-----|-------------|
+| **[ataque-1-neuro-hooking.md](ataque-1-neuro-hooking.md)** | Neurocopy → vídeo: ordem de ataque aos 3 cérebros, neurônios-espelho, power words EN, Kenrick, dopamina/loops, Fitts/Hick |
+| **[ataque-2-benson-video.md](ataque-2-benson-video.md)** | Benson comprimido: regra dos 60%, neuro-opening, 3 loops encadeados, 1 ideia/1 CTA, objeções-relâmpago, oratória |
+| **[ataque-3-georgi-research.md](ataque-3-georgi-research.md)** | RMBC do criativo: research na voz do avatar (comentários/reviews/Reddit), MUP→MUS, brief de 10 linhas, ciclo vivo |
+| **[ataque-4-roteiro-maquina.md](ataque-4-roteiro-maquina.md)** | A régua dos 45s (segundo a segundo), 10 aberturas prontas, fórmulas de transição, CTA de guerra, QA |
+| **[ataque-5-casting-bibles.md](ataque-5-casting-bibles.md)** | Casting reptiliano: 7 Bibles prontas (Sky, Lauren, Maya, Frank, Denise, rival, Solomon) + Style Bibles + escalação |
+| **[ataque-6-fabrica-escala.md](ataque-6-fabrica-escala.md)** | A fábrica: 1 corpo × N hooks, cadência semanal, métricas (comment rate = north star), kill/iterate/scale, tracker |
+| **[ataque-7-entrevista-decisoes.md](ataque-7-entrevista-decisoes.md)** | 🎙️ A entrevista: as 10 decisões do operador que ligam a máquina (com recomendações) |
+
 > Insight-mãe da operação: [../00-mapa/insights-empiricos.md](../00-mapa/insights-empiricos.md) (triangulação signature × copy × oferta).
 
 ## Como o pilar se conecta com o resto da base

@@ -99,6 +99,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**⚡ Empilhamento Reptiliano**](../funil-organico/empilhamento-reptiliano.md) — a fórmula multiplicadora do hook (desejo × posse × testemunha × dominância) + banco de cenas-evento + leque de 30 ângulos minerados
 - ✅ [**⚔️ Guerra Reptiliana — Gerador de Ângulos**](../funil-organico/guerra-reptiliana-angulos.md) — 9 botões reptilianos × famílias G–N inexploradas × matriz anti-vício de rota
 - ✅ [**🎬 Direção de Cena Veo 3 (padrão de guerra)**](../recursos/veo3-direcao-de-cena.md) — engenharia do 1º frame, 6 arquétipos de shot 1, direção emocional, som-choque, templates JSON
+- ✅ **🗡️ Plano de Ataque (7 docs):** [1-Neuro-Hooking](../funil-organico/ataque-1-neuro-hooking.md) · [2-Benson→vídeo](../funil-organico/ataque-2-benson-video.md) · [3-Georgi/RMBC](../funil-organico/ataque-3-georgi-research.md) · [4-Roteiro-Máquina 45s](../funil-organico/ataque-4-roteiro-maquina.md) · [5-Casting/Bibles](../funil-organico/ataque-5-casting-bibles.md) · [6-Fábrica/Escala](../funil-organico/ataque-6-fabrica-escala.md) · [7-Entrevista/Decisões](../funil-organico/ataque-7-entrevista-decisoes.md)
 - ✅ [**Insights: Triangulação**](insights-empiricos.md) — signature × copy × oferta (empirismo acumulado)
 
 ## Swipes anotados
