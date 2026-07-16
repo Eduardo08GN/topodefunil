@@ -121,6 +121,7 @@ O troféu/testemunha é UMA família de ângulo. As transcrições dos concorren
 5. **Não repetir cena entre criativos da mesma página** — recombinar camadas (outra testemunha, outra prova de posse, outra reação) gera variação infinita sem perder a fórmula.
 
 ## Conexões
+- [⚔️ Guerra Reptiliana — matriz geradora](guerra-reptiliana-angulos.md) — os 9 botões + famílias G–N inexploradas + anti-vício de rota (este doc = o minerado; aquele = o gerador)
 - [⚡ Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md) — mandamento 2 expandido por este doc
 - [Desejos Ocultos 50+](desejos-ocultos-50plus.md) — a ferida/desejo que escolhe a cena
 - [Prop-Metáforas](prop-metaforas.md) · [Template Criativo](template-criativo.md) · [SOP](producao-criativo-sop.md)

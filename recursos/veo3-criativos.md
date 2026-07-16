@@ -6,6 +6,7 @@
 - **Nível avançado (hiperrealismo, consistência, face-swap, multi-câmera):** [Veo 3 — pipeline avançado](veo3-avancado.md)
 - **⚠️ Guardrail obrigatório ao gerar prompts:** [Checklist Anti-Irrealidade](generated-ai-video-anti-irrealidade-checklist.md) (evitar os 5 defeitos de IA — texto na cena, mãos, escala, líquido fino, fundo)
 - **⚡ LEI obrigatória ANTES do prompt (funil orgânico):** [Doutrina Criativa Agressiva](../funil-organico/doutrina-criativa-agressiva.md) — a cena descrita no prompt tem que passar no **Teste do Dedo** (choque/sexo/paradoxo visível no 1º frame). Prompt de talking-head com produto na mão = prompt reprovado antes de gastar crédito. O prop fálico exagerado (banana murcha/gigante) é **exceção intencional** ao anti-irrealidade.
+- **🎬 Padrão de execução do prompt de criativo:** [Direção de Cena — padrão de guerra](veo3-direcao-de-cena.md) — engenharia do 1º frame (in media res), 6 arquétipos de shot 1, direção emocional por micro-expressão, som-choque, templates JSON. **Este doc aqui é a base técnica da ferramenta; aquele é o padrão obrigatório do nosso criativo.**
 
 > **Onde isso se encaixa na base:** o Veo é a **ferramenta de produção**. A copy/estratégia (hook, mecanismo, oferta) vem da nossa base; o Veo entrega o **hook visual** ([key visual + scroll-stop](../hooks/anatomia-do-hook.md)) e as **cenas dramáticas de abertura** das VSLs ([anatomia da VSL](../swipes/vsl-suplemento-masculino.md)).
 

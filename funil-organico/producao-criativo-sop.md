@@ -19,16 +19,18 @@ O **passo-a-passo operacional** que costura toda a base: dada uma oferta MaxWeb,
 
 **2. Escolher o avatar-expert** congruente ([avatares-experts](avatares-experts.md) + [signature-por-arquétipo](signature-por-arquetipo.md)). Travar as Bibles.
 
-**3. Escolher a prop-metáfora** ([prop-metaforas](prop-metaforas.md)) que **demonstra o MECANISMO real** (não um innuendo aleatório). Definir função: innuendo / demonstração / antes-depois.
+**3. Escolher o ÂNGULO pela matriz geradora** ([⚔️ guerra reptiliana](guerra-reptiliana-angulos.md)): gerar **3 candidatos** ([botões] × [família A–N] × [narrador] × [desejo/ferida]) respeitando a **rotação dupla** (não repetir família nem botão do criativo anterior; a cada 5, um de família G–N). Escolher o mais brutal.
+
+**3b. Escolher a prop-metáfora** ([prop-metaforas](prop-metaforas.md)) que **demonstra o MECANISMO real** (não um innuendo aleatório). Definir função: innuendo / demonstração / antes-depois.
 
 **4. Escrever o roteiro em blocos** ([template-criativo](template-criativo.md)):
 hook → problema+vilão → mecanismo+demonstração → prova → CTA. Usar a [fórmula do hook](../hooks/como-escrever-o-hook.md) (context-lean→scroll-stop→snapback, 1 subject/1 question), [fear-sells](../principios/fear-sells.md), [mecanismo-único](../principios/mecanismo-unico.md), [prova Bencivenga](../mentores/gary-bencivenga/segredo-fechamento.md). **Obrigatório no roteiro:** encenar `[DESEJO]`+`[FERIDA]`, future projection no fechamento, FOMO em camadas, pergunta paradoxal quando couber ([Doutrina, mandamentos 3–6](doutrina-criativa-agressiva.md)).
 
 **4b. GATE — Teste do Dedo** ([Doutrina](doutrina-criativa-agressiva.md)): 1º frame sem som trava o dedo? Há sexo/choque/ameaça/paradoxo visível no 1º segundo? A copy cutuca ferida/desejo oculto? Gera FOMO? **Qualquer "não" → volta ao passo 3/4.** Nenhum prompt é escrito antes de passar aqui.
 
-**5. Quebrar em SHOTS de ≤8s** ([veo3-criativos](../recursos/veo3-criativos.md)) — um momento por prompt; continuidade via mesma Bible.
+**5. Quebrar em SHOTS de ≤8s** ([direção de cena](../recursos/veo3-direcao-de-cena.md)) — um momento por prompt; continuidade via mesma Bible. **Shot 1 = um dos 6 arquétipos de guerra** (reaction-shot / prop-choque macro / micro-drama / flagrante / POV / contraste split) — talking-head como shot 1 é proibido.
 
-**6. Montar cada prompt Veo 3** ([veo3-criativos](../recursos/veo3-criativos.md), anatomia: cena/sujeito/fundo/ação/estilo/câmera/luz/áudio/paleta/negativos; estilo no início; JSON). Diálogo atribuído por personagem. **Texto/legenda/rótulo: SEMPRE no editor, nunca no prompt.**
+**6. Montar cada prompt Veo 3 no padrão de guerra** ([🎬 direção de cena](../recursos/veo3-direcao-de-cena.md) — LEI; base técnica em [veo3-criativos](../recursos/veo3-criativos.md)): **frame 1 = outdoor** (in media res, `opens mid-action:`), micro-expressão nomeada + ação física (nunca emoção genérica), som-choque de abertura, 1 movimento de câmera com intenção, template JSON do arquétipo. Diálogo atribuído por personagem + entrega dirigida ("teasing whisper", "voice cracking"). **Texto/legenda/rótulo: SEMPRE no editor, nunca no prompt.**
 
 **7. Aplicar o guardrail anti-irrealidade** ([checklist](../recursos/generated-ai-video-anti-irrealidade-checklist.md)): colar o bloco de **negativos**; evitar close de mão+objeto pequeno; escala fixa; líquido em volume (não fio fino); nada de texto na cena. **Exceção intencional:** o **exagero do prop fálico** (banana gigante/murcha absurda) é permitido e desejado — é o hook ([Doutrina](doutrina-criativa-agressiva.md)).
 
