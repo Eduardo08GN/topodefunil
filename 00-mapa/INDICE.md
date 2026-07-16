@@ -74,6 +74,8 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 
 - ✅ [Baixar qualquer VSL ou anúncio](../recursos/baixar-qualquer-vsl.md) — minerar swipes de concorrentes (método de aula)
 - ✅ [Mineração & Extração (pipeline validado)](../recursos/mineracao-extracao.md) — PDF/YouTube/FB reels/áudio/frames, o método que funcionou
+- ✅ [Anti-Irrealidade em Vídeo de IA (auditoria)](../recursos/generated-ai-video-anti-irrealidade.md) — os 5 pontos fracos da IA (texto, mãos, escala, líquido, fundo) × exagero proposital
+- ✅ [Anti-Irrealidade — Checklist Veo 3](../recursos/generated-ai-video-anti-irrealidade-checklist.md) — guardrail de prompt + negativos + QA
 - ✅ [Veo 3 — produzir os vídeos-criativos](../recursos/veo3-criativos.md) — anatomia do prompt, meta-workflow, produção realista, Veo 3.1
 - ✅ [Veo 3 — pipeline avançado](../recursos/veo3-avancado.md) — hiperrealismo, personagem consistente, face-swap, multi-câmera, lip-sync
 
