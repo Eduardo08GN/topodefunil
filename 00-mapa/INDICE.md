@@ -37,6 +37,8 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [Duality Marketing](../principios/duality-marketing.md) — falar com a indecisão, prós e contras
 - ✅ [Mecanismo Único](../principios/mecanismo-unico.md) — a razão real do fracasso + da solução (paradigm shift)
 - ✅ [O Segredo Imoral dos Anúncios](../principios/segredo-imoral-anuncios.md) — disfarçar persuasão de conteúdo
+- ✅ [Fear Sells](../principios/fear-sells.md) — o medo é a emoção que dispara a compra (framework de 6 passos)
+- ✅ [Psicologia do Conteúdo](../principios/psicologia-do-conteudo.md) — 8 princípios de confiança (desire mapping, prova, one std deviation…)
 
 ## Aulas dos mestres (nos perfis)
 
@@ -49,7 +51,8 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 ## 🎬 Hooks / Short-form (pilar novo)
 
 - ✅ [Pilar Hooks (visão geral + regras testadas)](../hooks/README.md) — por que o hook é 80% do jogo
-- ✅ [Anatomia do Hook](../hooks/anatomia-do-hook.md) — 4 componentes + sanduíche visual→áudio→visual + key visual
+- ✅ [Como Escrever o Hook](../hooks/como-escrever-o-hook.md) — fórmula 3 passos (context lean → scroll stop → snapback) + 1 subject/1 question + checklist 7 passos
+- ✅ [Anatomia do Hook](../hooks/anatomia-do-hook.md) — 4 componentes + sanduíche visual→áudio→visual + key visual + visuais scroll-stop
 - ✅ [Biblioteca de Formatos](../hooks/biblioteca-de-formatos.md) — arquétipos com templates preenchíveis
 - ✅ [Curiosity Loops](../hooks/curiosity-loops.md) — juxtaposição, twist/gap/ladder, medo ético
 - ✅ [Hooks Viciosos](../hooks/hooks-viciosos.md) — 8 princípios + 3 tipos de relevância
@@ -73,7 +76,9 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - **MECANISMO ÚNICO** aparece com nomes diferentes: "grande mentira/verdade" (Jon Benson), "M" do [RMBC](../frameworks/rmbc-metodo.md), "tese de marketing" ([VSL 8 dígitos](../frameworks/vsl-8-digitos-estrutura.md)), DYNA/PSYC ([Karbo](../mentores/joe-karbo/caminho-preguicoso.md)).
 - **DISFARÇAR O ANÚNCIO** de conteúdo nativo: [Segredo Imoral](../principios/segredo-imoral-anuncios.md) ↔ [Análise de CSL](../frameworks/analise-csl.md) ↔ [Validar Anúncios](../frameworks/validar-anuncios.md).
 - **CONTRASTE / ABRIR LOOP** é o hook em qualquer mídia: [Curiosity Loops](../hooks/curiosity-loops.md) ↔ [loops do Jon Benson](../frameworks/jon-benson-vsl-estrutura.md) ↔ [Mecanismo Único](../principios/mecanismo-unico.md).
-- **OS OLHOS CERTOS** (não muitos olhos): [View × Buyer](../hooks/view-vs-buyer.md) ↔ [Kennedy](../mentores/dan-kennedy/aquisicao-clientes.md).
+- **OS OLHOS CERTOS** (não muitos olhos): [View × Buyer](../hooks/view-vs-buyer.md) ↔ [Kennedy](../mentores/dan-kennedy/aquisicao-clientes.md) ↔ [Psicologia do Conteúdo #personalização](../principios/psicologia-do-conteudo.md).
+- **MEDO + PROVA** = compra: [Fear Sells](../principios/fear-sells.md) ↔ [Bencivenga prova](../mentores/gary-bencivenga/segredo-fechamento.md) ↔ [Mecanismo Único](../principios/mecanismo-unico.md).
+- **CONTEXT LEAN → SCROLL STOP → SNAPBACK** = a duality em 3 segundos: [Como Escrever o Hook](../hooks/como-escrever-o-hook.md) ↔ [Duality](../principios/duality-marketing.md).
 
 ## Legenda de status
 🌱 stub · 🚧 em construção · ✅ consolidado

@@ -52,7 +52,20 @@ Fluxo de trabalho que vira o jogo (e quase ninguém ensina nesse nível):
 - Falado: *"modelo generativo de mundo… foto-realista cinematográfico"* — **termos que ninguém entende e sem visual que os mostre.**
 - Resultado: **compreensão perdida** → mesmo com visual bonito, ninguém "ouve" a mensagem. Lição: se o B-roll não deixa a ideia clara, **descarte o vídeo.**
 
+## Visuais que travam o scroll {#scroll-stop}
+Antes de **entender** seu vídeo, a pessoa precisa **levantar o polegar** e deixar rodar. Os 2 primeiros segundos de visual decidem isso. O mundo tem um **"requisito visual mínimo"** — abaixo dele, ninguém para. 4 jeitos de criar o efeito *scroll-stop*:
+
+1. **Pessoa atraente ou de aparência única.**
+2. **Pessoa/assunto reconhecível** — celebridade, logo de marca (relevância instantânea).
+3. **Visual atípico** que contrasta com o que se vê sempre naquela categoria.
+4. **Formato/layout atípico** — ex.: enquadrar-se na metade de baixo e usar a **parede/teto branco como tela** pra visuais (negative space); molduras pretas em cima/embaixo se fechando pra criar antecipação; contorno branco grosso no green screen.
+
+Como fabricar diferenciação visual (do mais fácil ao mais trabalhoso): ajustar o **set/A-roll** (estúdio, green screen, fotos estáticas) · trocar o **B-roll** (clipes de filme/série populares, footage de alta qualidade fora da categoria) · **gerar com IA** (Nano Banana Pro, Veo — já não "clocam" como IA pro espectador médio).
+
+> **Hábito prático:** ao rolar o feed, **salve** todo vídeo cujo visual te fez parar o polegar — mesmo fora do seu nicho. Monte uma pasta de referência e treine o olho a reconhecer os "baldes" visuais que funcionam.
+
 ## Conexões
+- [Como Escrever o Hook](como-escrever-o-hook.md) — o processo de 7 passos e a fórmula de 3 passos
 - [Biblioteca de Formatos](biblioteca-de-formatos.md) — o passo 2 (escolher o arquétipo)
 - [Curiosity Loops](curiosity-loops.md) — o contraste que o hook falado carrega
 - [Validar Anúncios](../frameworks/validar-anuncios.md) — o hook visual/verbal/texto no anúncio pago

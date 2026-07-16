@@ -15,11 +15,14 @@ Corolário: parar de culpar o que **não** é o hook — música, hashtags, hor�
 
 | Doc | O que cobre |
 |-----|-------------|
-| [Anatomia do Hook](anatomia-do-hook.md) | Os 4 componentes (falado/visual/texto/áudio), o **sanduíche visual→áudio→visual** e o **key visual** |
+| [**Como Escrever o Hook**](como-escrever-o-hook.md) | A **fórmula de 3 passos** (context lean → scroll stop → snapback), o *1 subject/1 question*, os 4 erros e o checklist de 7 passos |
+| [Anatomia do Hook](anatomia-do-hook.md) | Os 4 componentes (falado/visual/texto/áudio), o **sanduíche visual→áudio→visual**, o **key visual** e os visuais scroll-stop |
 | [Biblioteca de Formatos](biblioteca-de-formatos.md) | Os arquétipos de hook com templates preenchíveis (fortune teller, contrarian, outcome, etc.) |
 | [Curiosity Loops](curiosity-loops.md) | Abrir loops, juxtaposição, twist/gap/ladder, curiosidade via medo (ético) |
 | [Hooks Viciosos](hooks-viciosos.md) | Os 8 princípios do hook "vicioso" + os 3 tipos de relevância + palavras de carga |
 | [View × Buyer](view-vs-buyer.md) | Atrair o público **certo** (comprador), não só views |
+
+**Camada de psicologia (aplica a toda copy):** [Fear Sells](../principios/fear-sells.md) · [Psicologia do Conteúdo (8 princípios)](../principios/psicologia-do-conteudo.md)
 
 ## As regras testadas (do estudo de 1.300 reels virais)
 

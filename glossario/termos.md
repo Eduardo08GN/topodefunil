@@ -30,5 +30,12 @@ Termos e jargão. Cresce conforme aparecem no material.
 | Viral sense | Faro de viral | Intuição treinada (como um dataset) do que viraliza |
 | Drunk grandma | Vó de 90 anos | Regra: entendível em meio segundo, sem contexto extra |
 | Rubbernecking | "Pescoço de borracha" | Impulso de olhar pra tragédia/drama |
+| Context lean | Contexto + inclinar | 1º passo do hook: dar contexto e fazer o espectador "se inclinar" |
+| Contrarian snapback | Virada contrária | Frase que joga o espectador na direção oposta da expectativa |
+| FOMA | Medo de perder qualquer coisa | *Fear of missing anything* — o motor subconsciente da compra |
+| Cult hopping | Pegar carona cultural | Embrulhar a ideia numa referência conhecida (marca/celebridade) |
+| One standard deviation | Um desvio-padrão | Empacotar a mensagem um passo longe do desejo cru (evita o "detector de baboseira") |
+| Speed to value | Tempo até o valor | Front-load: entregar valor o quanto antes, antes da "explosão" |
+| Single subject / single question | 1 assunto / 1 pergunta | Regra do hook: focar 1 tema e plantar 1 mesma pergunta em todos |
 
 *(adicionar conforme surgir)*

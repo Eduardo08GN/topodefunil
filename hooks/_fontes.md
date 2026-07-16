@@ -14,13 +14,20 @@ Base: **10 aulas em vídeo** de criadores de short-form (transcrições fornecid
 | 8 | Open loops via juxtaposição + medo ético | Evolve | juxtaposição, curiosidade via medo |
 | 9 | Buyer × view, 5 frameworks | — (high-ticket) | celebridade, cenário, resultado, notícia, correção |
 | 10 | "Vicious hooks" — 8 princípios | Luke Eha (Genesis) | os 8 princípios, 3 tipos de relevância, palavras de carga germânicas |
+| 11 | 4 erros de hook + checklist de 7 passos | Callaway (Sandcastles) | 1 subject/1 question, desalinhamento dos 3 hooks, visuais scroll-stop, derriscar reps |
+| 12 | 6 formas de melhorar hooks (fórmula) | Callaway (Sandcastles) | **context lean → scroll stop → contrarian snapback**, cult hopping, speed to value, staccato |
+| 13 | "Fear sells" (emoção→ação) | Callaway (Wavy World) | medo como emoção de compra, framework de 6 passos (Brick, Light Phone) |
+| 14 | 8 princípios de psicologia do conteúdo | Callaway (Wavy World) | desire mapping, light bulb, emulação, personalização, prova, familiaridade, one std deviation |
 
 ## Onde cada ideia foi parar
-- [Anatomia do Hook](anatomia-do-hook.md) ← #5, #7
+- [Como Escrever o Hook](como-escrever-o-hook.md) ← #11, #12
+- [Anatomia do Hook](anatomia-do-hook.md) ← #5, #7, #11 (visuais scroll-stop)
 - [Biblioteca de Formatos](biblioteca-de-formatos.md) ← #2, #4, #7, #9
 - [Curiosity Loops](curiosity-loops.md) ← #3, #8, #6
 - [Hooks Viciosos](hooks-viciosos.md) ← #10
 - [View × Buyer](view-vs-buyer.md) ← #5, #9
 - [README (regras + por quê)](README.md) ← #1, #2, #6
+- [principios/fear-sells.md](../principios/fear-sells.md) ← #13
+- [principios/psicologia-do-conteudo.md](../principios/psicologia-do-conteudo.md) ← #14
 
 > Nomes de clássicos citados nas aulas e já presentes na base: **John Caples**, **Eugene Schwartz**, **John Carlton**, **Mr. Beast** (reels sem fala).
