@@ -8,8 +8,10 @@
 |---|---|---|---|
 | 0–2s | **Reptiliano** (sobrevivência/sexo/ameaça) | frame-outdoor + som-choque | [2+ botões](guerra-reptiliana-angulos.md) visíveis SEM áudio; nada de contexto |
 | 2–15s | **Límbico** (emoção/identificação) | ferida + história + rosto em emoção | ele se VÊ na cena ([desejos/feridas](desejos-ocultos-50plus.md)); neurônios-espelho fazem o resto |
-| 15–35s | **Córtex** (justificativa) | mecanismo real + prova | o córtex não decide — ele **racionaliza** o que o réptil já quis. Mecanismo = a desculpa lógica pra comprar |
-| 35–45s | **Reptiliano de novo** (ação) | FOMO + escassez + comando único | decisão é reptiliana: porta fechando + 1 comando ("comment TITAN") |
+
+> ⏱️ Régua completa segundo a segundo (teto **35s**, lei do operador): [Roteiro-Máquina](ataque-4-roteiro-maquina.md).
+| 15–28s | **Córtex** (justificativa) | mecanismo real + prova | o córtex não decide — ele **racionaliza** o que o réptil já quis. Mecanismo = a desculpa lógica pra comprar |
+| 28–35s | **Reptiliano de novo** (ação) | FOMO + escassez + comando único | decisão é reptiliana: porta fechando + 1 comando ("comment TITAN") |
 
 **Erro fatal (o padrão do criativo frio):** começar pelo córtex ("estudos mostram que óxido nítrico…"). O córtex NÃO para scroll. Réptil → límbico → córtex → réptil, sempre.
 
@@ -39,7 +41,7 @@ Na pirâmide renovada (Kenrick), **retenção de parceira + status** ficam ACIMA
 - **Hick (escolhas):** UM comando. Nunca "curte, comenta, compartilha e segue" — só "**comment TITAN**" (o follow entra como pré-condição técnica, não como segundo pedido).
 - **Fitts (esforço):** a palavra-gatilho é curta, memorável e **ecoa o vídeo** — ele digita o que acabou de ouvir 3×. Custo motor mínimo = conversão máxima.
 
-## 7. PAS + Freytag comprimidos em 45s
+## 7. PAS + Freytag comprimidos em 35s
 [Freytag](../frameworks/freytag-estrutura.md) inteiro cabe no reel: **clímax PRIMEIRO** (in media res — o gasp, a ex congelada), depois a exposição por flashback ("três semanas antes, eu era o cara que pedia desculpa no escuro"), nova subida e resolução no CTA. PAS: Problema (ferida encenada) → Agitação (a espiral: "e piora — porque ela já ESPERA que falhe") → Solução (mecanismo+produto). **Agitar antes de resolver — o criativo frio pula a agitação e por isso não vende.**
 
 ## Conexões

@@ -5,7 +5,7 @@ Síntese das 6 páginas / 42 reels ([matriz](signature-matriz.md)): o que **se r
 - **Status:** ✅ consolidado
 
 ## O esqueleto que TODAS repetem (independente do arquétipo)
-1. **Formato:** 9:16 vertical, barras pretas, ~30–90s.
+1. **Formato:** 9:16 vertical, barras pretas, ~30–90s. *(⏱️ NOSSA lei é mais dura: ≤35s — completion rate > tudo; [régua](ataque-4-roteiro-maquina.md).)*
 2. **Avatar atraente/marcante** como "expert" — apelo (decote/corpo hiper-fit) = scroll-stop; autoridade **emprestada** (figurino/cenário/props), **nunca credencial real**.
 3. **Cenário doméstico/autoridade + BANDEIRA DOS EUA** (selo de "americano confiável"). Poucos sets reaproveitados em muitos reels.
 4. **Prop-metáfora no 1º–2º segundo** (o motor): objeto caseiro/comida como **innuendo fálico** ou **demonstração de mecanismo** — comunica o tema (ED/tamanho/firmeza) **sem áudio**. Ver [catálogo](prop-metaforas.md).

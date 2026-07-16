@@ -29,20 +29,20 @@ Antes de produzir, defina — a partir da VSL MaxWeb ([dissecação](../swipes/v
 - **Gate:** 1º frame sem som trava o dedo, ou refaz ([Teste do Dedo](doutrina-criativa-agressiva.md)).
 - Cruza: [Anatomia do Hook](../hooks/anatomia-do-hook.md) (visual→áudio→visual), [Como Escrever o Hook](../hooks/como-escrever-o-hook.md) (1 subject/1 question), [fórmula context-lean→scroll-stop→snapback](../hooks/como-escrever-o-hook.md), [3 Cérebros](../principios/tres-cerebros.md).
 
-**Bloco 2 — PROBLEMA + "não é sua culpa" + VILÃO (2–10s)**
+**Bloco 2 — PROBLEMA + "não é sua culpa" + VILÃO (2–11s)**
 - **Encena a `[FERIDA]`** (a noite do "tudo bem, amor", o beijo na testa, o espelho evitado — cena, não descrição) e joga a culpa no **`[VILÃO]`**. Pergunta paradoxal aqui prende ("se é idade… por que X?").
 - Cruza: [Fear Sells](../principios/fear-sells.md), [Duality](../principios/duality-marketing.md), [Por que não compram](../principios/porque-nao-compram.md), [Desejos Ocultos](desejos-ocultos-50plus.md).
 
-**Bloco 3 — MECANISMO ÚNICO (10–25s)** · *o coração*
+**Bloco 3 — MECANISMO ÚNICO (11–21s)** · *o coração*
 - Revela o **`[MECANISMO]`** real ("o motivo real é X, e é por isso que nada funcionou").
 - **Demonstração ao vivo** com o `[PROP]` (estilo ASMR/receita) = prova visual.
 - Cruza: [Mecanismo Único](../principios/mecanismo-unico.md), [RMBC](../frameworks/rmbc-metodo.md).
 
-**Bloco 4 — PROVA (25–35s)** · *nosso diferencial legal*
+**Bloco 4 — PROVA (21–28s)** · *nosso diferencial legal*
 - Prova **REAL e compliant**: ingrediente com estudo citável, depoimento real, especificidade.
 - Cruza: [Elemento-prova Bencivenga](../mentores/gary-bencivenga/segredo-fechamento.md), [Cialdini](../principios/cialdini-kawasaki.md).
 
-**Bloco 5 — CTA comment-to-DM (35–45s)**
+**Bloco 5 — CTA comment-to-DM (28–35s)**
 - **Future projection primeiro** (colocá-lo NA cena do `[DESEJO]` realizado: "imagine sexta que vem…"), depois "Comente **`[PALAVRA-GATILHO]`** e siga pra eu te mandar [o protocolo/receita]" + **FOMO** (curiosity gap que só fecha na DM + porta fechando).
 - Cruza: [Arquitetura do Funil](arquitetura-do-funil.md), [Doutrina, mandamentos 4 e 6](doutrina-criativa-agressiva.md).
 

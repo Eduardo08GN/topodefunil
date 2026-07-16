@@ -1,22 +1,26 @@
-# ⚙️ Ataque 4/7 — O Roteiro-Máquina: 45 segundos engenheirados segundo a segundo
+# ⚙️ Ataque 4/7 — O Roteiro-Máquina: 35 segundos engenheirados segundo a segundo
 
 **Plano de ataque, doc 4 de 7.** A estrutura definitiva do roteiro — cada segundo com função, cada transição com fórmula. Junta [neuro](ataque-1-neuro-hooking.md) + [Benson](ataque-2-benson-video.md) + [Georgi](ataque-3-georgi-research.md) numa linha de montagem. Preenchido pelo [brief](ataque-3-georgi-research.md); executado pelos [prompts de guerra](../recursos/veo3-direcao-de-cena.md).
 
-## A régua dos 45 segundos
+> **⏱️ LEI DOS 35 SEGUNDOS (inegociável, definida pelo operador):** nenhum vídeo-criativo ultrapassa **35s**. Por quê: (a) completion rate é o sinal que o algoritmo mais recompensa — quanto mais curto, mais gente chega ao CTA; (b) 35s = 4-5 shots Veo (≤8s) = custo/criativo menor = mais volume na [fábrica](ataque-6-fabrica-escala.md); (c) reel que precisa de 45s pra vender tem gordura — corta. **Roteiro estourou 35s → cortar bloco (nunca a re-fisgada), jamais "deixar passar".**
+
+## A régua dos 35 segundos
 
 | Tempo | Bloco | Função neurológica | Dispositivo obrigatório |
 |---|---|---|---|
 | **0–1s** | FRAME-OUTDOOR | réptil: parar o dedo | `opens mid-action` + 2+ botões + som-choque |
-| **1–4s** | HOOK falado | abrir o loop-mãe | frase que pressupõe conversa ("that's the sound she made…") |
-| **4–8s** | SNAPBACK | prender quem parou | callout do avatar ("if you're over 50 and she's stopped reaching…") + 1ª re-fisgada |
-| **8–15s** | FERIDA encenada | límbico: ele se vê | cena/detalhe físico da ferida + "não é sua culpa" + vilão |
-| **15–20s** | MUP | novidade: "o motivo REAL" | negação em série ("não é idade, não é a pílula, não é você…") = loop 2 |
-| **20–28s** | MUS + DEMO | córtex: a justificativa | prop demonstra o mecanismo ([direção macro](../recursos/veo3-direcao-de-cena.md)) |
-| **28–34s** | PROVA | derrubar o cético | 1 prova granular ([Bencivenga](../mentores/gary-bencivenga/segredo-fechamento.md)): número, prazo, detalhe ("week three is when she made that sound") |
-| **34–39s** | FUTURE PROJECTION | viver o prêmio | ele DENTRO da cena do desejo realizado |
-| **39–45s** | CTA de guerra | réptil: agir agora | comando único + loop só fecha na DM + porta fechando |
+| **1–3s** | HOOK falado | abrir o loop-mãe | frase que pressupõe conversa ("that's the sound she made…") |
+| **3–6s** | SNAPBACK | prender quem parou | callout do avatar ("if you're over 50 and she's stopped reaching…") + 1ª re-fisgada |
+| **6–11s** | FERIDA encenada | límbico: ele se vê | cena/detalhe físico da ferida + "não é sua culpa" + vilão |
+| **11–15s** | MUP | novidade: "o motivo REAL" | negação em série ("não é idade, não é a pílula, não é você…") = loop 2 |
+| **15–21s** | MUS + DEMO | córtex: a justificativa | prop demonstra o mecanismo ([direção macro](../recursos/veo3-direcao-de-cena.md)) |
+| **21–25s** | PROVA | derrubar o cético | 1 prova granular ([Bencivenga](../mentores/gary-bencivenga/segredo-fechamento.md)): número, prazo, detalhe ("week three is when she made that sound") |
+| **25–28s** | FUTURE PROJECTION | viver o prêmio | 1 frase — ele DENTRO da cena do desejo realizado |
+| **28–35s** | CTA de guerra | réptil: agir agora | comando único + loop só fecha na DM + porta fechando |
 
-**Cadência de re-fisgada:** um micro-loop novo a cada ~8s (marcados acima). Se um bloco estourar o tempo, corta o bloco — nunca a re-fisgada.
+**Cadência de re-fisgada:** um micro-loop novo a cada ~6s. **Produção:** 35s = **4-5 shots** de ≤8s — o corpo (MUS+prova, ~10s) é o bloco reciclável do [1 corpo × N hooks](ataque-6-fabrica-escala.md).
+
+**Variante curta (a arma de completion):** hipérbole situacional / objeto-protagonista / reaction pura fecham em **15–22s** (hook→micro-história→CTA, sem bloco de mecanismo — o mecanismo vai pra DM). Completion altíssima; usar 1 a cada 3 criativos.
 
 ## 10 aberturas de 3 segundos (o estoque — variar sempre)
 1. **O som:** "That's the exact sound my wife made last Tuesday." *(gasp anterior)*

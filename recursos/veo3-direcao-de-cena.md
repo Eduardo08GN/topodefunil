@@ -3,7 +3,8 @@
 O [doc base](veo3-criativos.md) ensina a **operar** o Veo. Este ensina a **dirigir cena que converte** — a diferença entre prompt de turista ("mulher bonita segura produto e sorri") e prompt de diretor de guerra. **Todo prompt de criativo do funil passa por este padrão.** Prompt que descreve cena morna gera cena morna com qualidade de cinema — continua morno, só que caro.
 
 - **Status:** ✅ LEI de produção (executa o ângulo escolhido na [matriz geradora](../funil-organico/guerra-reptiliana-angulos.md) sob a [Doutrina](../funil-organico/doutrina-criativa-agressiva.md))
-- **Guardrails que continuam valendo:** [anti-irrealidade](generated-ai-video-anti-irrealidade-checklist.md) (com exceção fálica) · zero texto gerado · linguagem indireta no áudio.
+- **Guardrails que continuam valendo:** [anti-irrealidade](generated-ai-video-anti-irrealidade-checklist.md) (com exceção fálica) · [🩸 ultrarrealismo](veo3-ultrarealismo.md) (REALISM-SPEC em todo prompt — o drama daqui com a textura de lá) · zero texto gerado · linguagem indireta no áudio.
+- **⏱️ LEI de duração:** vídeo final ≤ **35s** = 4-5 shots ([régua](../funil-organico/ataque-4-roteiro-maquina.md)).
 
 ## 1. Engenharia do 1º FRAME (o frame é o outdoor)
 

@@ -44,7 +44,7 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | **[ataque-1-neuro-hooking.md](ataque-1-neuro-hooking.md)** | Neurocopy → vídeo: ordem de ataque aos 3 cérebros, neurônios-espelho, power words EN, Kenrick, dopamina/loops, Fitts/Hick |
 | **[ataque-2-benson-video.md](ataque-2-benson-video.md)** | Benson comprimido: regra dos 60%, neuro-opening, 3 loops encadeados, 1 ideia/1 CTA, objeções-relâmpago, oratória |
 | **[ataque-3-georgi-research.md](ataque-3-georgi-research.md)** | RMBC do criativo: research na voz do avatar (comentários/reviews/Reddit), MUP→MUS, brief de 10 linhas, ciclo vivo |
-| **[ataque-4-roteiro-maquina.md](ataque-4-roteiro-maquina.md)** | A régua dos 45s (segundo a segundo), 10 aberturas prontas, fórmulas de transição, CTA de guerra, QA |
+| **[ataque-4-roteiro-maquina.md](ataque-4-roteiro-maquina.md)** | ⏱️ **LEI dos 35s** + a régua segundo a segundo, 10 aberturas prontas, fórmulas de transição, CTA de guerra, variante curta 15-22s, QA |
 | **[ataque-5-casting-bibles.md](ataque-5-casting-bibles.md)** | Casting reptiliano: 7 Bibles prontas (Sky, Lauren, Maya, Frank, Denise, rival, Solomon) + Style Bibles + escalação |
 | **[ataque-6-fabrica-escala.md](ataque-6-fabrica-escala.md)** | A fábrica: 1 corpo × N hooks, cadência semanal, métricas (comment rate = north star), kill/iterate/scale, tracker |
 | **[ataque-7-entrevista-decisoes.md](ataque-7-entrevista-decisoes.md)** | 🎙️ A entrevista: as 10 decisões do operador que ligam a máquina (com recomendações) |

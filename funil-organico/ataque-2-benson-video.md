@@ -1,4 +1,4 @@
-# 🎤 Ataque 2/7 — Jon Benson comprimido: a VSL de 20 minutos num reel de 45s
+# 🎤 Ataque 2/7 — Jon Benson comprimido: a VSL de 20 minutos num reel de 35s
 
 **Plano de ataque, doc 2 de 7.** [Jon Benson](../mentores/jon-benson/README.md) inventou a VSL — e a estrutura dele ([VSL Estrutura](../frameworks/jon-benson-vsl-estrutura.md), [Checklist 7 Figuras](../mentores/jon-benson/checklist-7-figuras.md)) é um mapa de guerra de retenção. Aqui: cada princípio Benson **comprimido pro formato reel** do funil.
 
@@ -12,10 +12,10 @@ A VSL de Benson nunca abre com "olá, meu nome é": abre **no meio de um pensame
 - ❌ "Hoje eu vou te ensinar…" / "Você sabia que…" (aviso de aula = scroll)
 
 ## 3. Open loops encadeados (a arquitetura de retenção Benson)
-A VSL segura 20 min com promessas adiadas ("daqui a pouco eu revelo o erro nº1…"). No reel: **3 loops em 45s**:
+A VSL segura 20 min com promessas adiadas ("daqui a pouco eu revelo o erro nº1…"). No reel (teto **35s** — [lei](ataque-4-roteiro-maquina.md)): **3 loops**:
 1. **Loop-mãe** (hook): o que ela viu / o que mudou / o segredo — só fecha na DM.
 2. **Loop do mecanismo** (~10s): "e NÃO é o que você pensa — não é idade, não é a pílula…" (negação em série adia a resposta).
-3. **Loop do CTA** (~35s): "a parte que eu não posso mostrar aqui, te mando no privado."
+3. **Loop do CTA** (~28s): "a parte que eu não posso mostrar aqui, te mando no privado."
 
 ## 4. Um vídeo = UMA ideia = UM CTA
 Lei Benson inegociável: cada peça vende **uma única ideia** (um mecanismo, uma promessa) e pede **uma única ação**. Reel que explica 2 mecanismos ou pede 2 ações = retenção e conversão divididas por 4. A [matriz](guerra-reptiliana-angulos.md) escolhe UM botão primário; o roteiro nunca desvia dele.
