@@ -36,7 +36,9 @@ hook → problema+vilão → mecanismo+demonstração → prova → CTA. Usar a 
 
 **11. Publicar no funil** ([arquitetura-do-funil](arquitetura-do-funil.md)): CTA de comentário (`[PALAVRA-GATILHO]`) + seguir → comment-to-DM → link afiliado MaxWeb (bio + comentários + DM).
 
-**12. Compliance final** ([persuasão × manipulação](../principios/persuasao-vs-manipulacao.md) + [o-que-modelar×risco](signature-por-arquetipo.md)): sem persona médica fake, sem claim de cura/erétil direto, sem texto burlando filtro, **prova real**. Página banida mata o funil.
+**12. Compliance final** ([persuasão × manipulação](../principios/persuasao-vs-manipulacao.md) + [o-que-modelar×risco](signature-por-arquetipo.md)):
+- **Linguagem SEMPRE indireta** (regra de ouro, [signature-verbal](signature-verbal.md)): a copy **nunca** nomeia o proibido ("aumentar o pênis", "disfunção erétil", "melhore a ereção") — usa **eufemismo** ("ferramenta", "down there") + **reframe wellness** ("circulação", "vitalidade", "performance"). O **explícito fica no VISUAL** (prop), não no texto.
+- Sem persona médica fake, sem claim de cura, sem texto burlando filtro na cena, **prova real**. Página banida mata o funil.
 
 ## Fluxo em uma linha
 ```

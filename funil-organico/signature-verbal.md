@@ -5,6 +5,16 @@ Padrão de **estilo e estrutura** do áudio dos 42 reels (6 páginas), extraído
 - **Status:** ✅ consolidado (cruza com a [signature visual](signature-por-arquetipo.md))
 - ⚠️ Não reproduzir a copy deles; aqui só o **esqueleto** e fragmentos curtos como evidência.
 
+## ⭐ A regra de ouro — linguagem SEMPRE indireta (sobrevivência na Meta)
+> Eles **nunca** usam os termos diretos que a Meta bane ("aumentar o pênis", "disfunção erétil", "pare de broxar", "melhore sua ereção"). Tudo é dito de forma **indireta/eufemística** — e o **explícito fica por conta do VISUAL**, não das palavras.
+
+Três camadas:
+1. **Eufemismo da anatomia/ato:** o pênis vira *"ferramenta", "Johnson", "soldier/little soldier", "winner", "manhood", "down there", "below the belt", "where it matters most".*
+2. **Reframe do tema como WELLNESS/SAÚDE:** nunca "ED / penis enlargement / impotência"; sempre *"circulação saudável", "níveis saudáveis de testosterona", "performance", "vitalidade", "confiança", "energia", "male health protocol", "feel like your old self again".* O tema regulado é **embrulhado em wellness** (que passa na moderação).
+3. **Show, don't say:** o significado explícito é carregado pelo **prop visual** (banana / modelo anatômico / antes-depois) — a palavra fica "limpa", a imagem entrega.
+
+> **A divisão de trabalho:** a **IMAGEM diz o proibido**; o **TEXTO diz o permitido.** Pra NÓS: a copy nunca nomeia o proibido; a malícia mora no visual + eufemismo. É **compliance de sobrevivência** — sem isso, ban. Ver [SOP passo 12](producao-criativo-sop.md) e [insight #3](../00-mapa/insights-empiricos.md).
+
 ## O roteiro-padrão (5 blocos verbais)
 1. **Hook** (0–5s) — promessa/choque imediato (ver taxonomia abaixo).
 2. **Problema + causa oculta + vilão** — revela a "causa real" (quase sempre **cortisol** ou **fluxo sanguíneo/óxido nítrico**), culpa o **vilão** ("as farmácias não querem que você saiba", "nenhum médico te contou") e desarma: *"não é idade, não é você"*.

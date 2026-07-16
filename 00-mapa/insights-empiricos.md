@@ -35,4 +35,15 @@ Conexões: [Pilar Funil Orgânico](../funil-organico/README.md) · [Arquitetura 
 
 ---
 
+## 3. O compliance mora na LINGUAGEM; o explícito, no VISUAL
+
+> Regra de sobrevivência na Meta: **nunca dizer o termo banido** — dizer o eufemismo/wellness e deixar a **imagem** carregar o explícito.
+
+- ❌ Nunca (gatilho de ban): "aumentar o pênis", "disfunção erétil", "pare de broxar", "melhore sua ereção".
+- ✅ Sempre: **eufemismo** ("ferramenta", "down there", "your soldier") + **reframe wellness** ("circulação", "vitalidade", "performance", "feel like yourself again").
+- O **prop visual** (banana / modelo anatômico / antes-depois) entrega o explícito que as palavras evitam. **Divisão de trabalho: imagem = proibido; texto = permitido.**
+- É o par do guardrail visual [anti-irrealidade](../recursos/generated-ai-video-anti-irrealidade.md): um protege o *realismo*, este protege o *compliance*. Detalhe em [signature-verbal](../funil-organico/signature-verbal.md).
+
+---
+
 *(Próximas entradas entram aqui conforme a operação gerar aprendizado.)*

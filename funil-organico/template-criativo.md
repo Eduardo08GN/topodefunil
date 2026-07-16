@@ -60,6 +60,7 @@ Paleta: quente/neutra. Negativos: sem jaleco/credencial falsa, sem claim de cura
 > Regra de produção: **Character Bible + Style Bible** travadas (a "atriz"/guru recorrente) → série coerente de criativos. Legenda e grão no editor (CapCut).
 
 ## Checklist de compliance (subir além do piso)
+- [ ] **Linguagem sempre indireta** (regra de ouro, [signature-verbal](signature-verbal.md)): eufemismo + reframe wellness; o explícito fica no **visual**, nunca no texto ("aumentar o pênis"/"ereção" = ban).
 - [ ] Sem persona com credencial médica falsa (jaleco "genérico wellness" ok; "Dra." não).
 - [ ] Sem claim de cura/erétil direto nem promessa numérica.
 - [ ] Sem grafia censurada p/ burlar filtro, sem paródia de "BREAKING NEWS", sem antes/depois fabricado.
