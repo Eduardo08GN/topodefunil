@@ -76,6 +76,15 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [Veo 3 — produzir os vídeos-criativos](../recursos/veo3-criativos.md) — anatomia do prompt, meta-workflow, produção realista, Veo 3.1
 - ✅ [Veo 3 — pipeline avançado](../recursos/veo3-avancado.md) — hiperrealismo, personagem consistente, face-swap, multi-câmera, lip-sync
 
+## 📣 Operação — Funil Orgânico (Facebook + IA + MaxWeb)
+
+- ✅ [Pilar Funil Orgânico (visão geral)](../funil-organico/README.md) — modelo: páginas FB + persona-IA + criativos Veo 3 + comment-to-DM → afiliado MaxWeb
+- ✅ [Arquitetura do Funil](../funil-organico/arquitetura-do-funil.md) — página → criativo → CTA de comentário → comment-to-DM → link → VSL → venda
+- ✅ [Avatares-Expert](../funil-organico/avatares-experts.md) — taxonomia de arquétipos × congruência com a oferta
+- ✅ [Gramática Visual](../funil-organico/gramatica-visual.md) — o padrão visual que viraliza (9:16, avatar IA, bandeira US, prop-metáfora)
+- ✅ [Digestão Visual](../funil-organico/digestao-visual.md) — schema de signature + pipeline (ffmpeg → ler → matriz → template Veo 3)
+- ✅ [Páginas de Referência](../funil-organico/paginas-referencia.md) — swipe das páginas mineradas
+
 ## Swipes anotados
 - ✅ [Anatomia da VSL de Suplemento Masculino](../swipes/vsl-suplemento-masculino.md) — dissecação de 9 VSLs (ED/aumento) + 12 técnicas novas
 

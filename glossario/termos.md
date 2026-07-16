@@ -56,5 +56,12 @@ Termos e jargão. Cresce conforme aparecem no material.
 | Mood board / storyboard | Painel de referência / roteiro visual | Referências de estética + mapa de cenas antes de gerar |
 | Dehancer | — | Plugin de grão de filme + bloom/halation (dá textura "de câmera real") |
 | Film grain | Grão de filme | Textura sobreposta que deixa o vídeo IA mais realista |
+| Funil orgânico | — | Vender sem tráfego pago: páginas + conteúdo viral + automação |
+| Comment-to-DM | Comentário-para-DM | Automação: comentar palavra-gatilho dispara DM automática com o link |
+| Palavra-gatilho | — | Palavra que o user comenta pra receber o link (ex.: "Book", "YES") |
+| MaxWeb | — | Rede de afiliado (ofertas de saúde/ED) que monetiza o funil |
+| Avatar-expert | Persona-expert | O "rosto" (arquétipo) que carrega a copy numa página |
+| Signature visual | Assinatura visual | Conjunto de dimensões que definem o padrão de um criativo |
+| Prop-metáfora | — | Objeto caseiro usado como innuendo/demonstração no criativo |
 
 *(adicionar conforme surgir)*
