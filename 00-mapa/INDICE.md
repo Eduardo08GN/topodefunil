@@ -75,7 +75,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [Baixar qualquer VSL ou anúncio](../recursos/baixar-qualquer-vsl.md) — minerar swipes de concorrentes
 
 ## Swipes anotados
-*(nenhum ainda — próximo passo natural: usar o [recurso de baixar VSL](../recursos/baixar-qualquer-vsl.md) pra alimentar `swipes/`)*
+- ✅ [Anatomia da VSL de Suplemento Masculino](../swipes/vsl-suplemento-masculino.md) — dissecação de 9 VSLs (ED/aumento) + 12 técnicas novas
 
 ## Glossário
 - [Termos do Direct Response](../glossario/termos.md)
