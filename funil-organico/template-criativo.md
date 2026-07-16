@@ -5,6 +5,7 @@ O output acionável da digestão. Pega o **piso validado** ([signature](signatur
 > **Signature (continente/estilo) × nossa base de copy superior × a oferta VSL da MaxWeb (âncora).**
 
 - **Status:** ✅ consolidado (esqueleto) · **slots preenchem-se ao escolher a oferta**
+- **⚡ Pré-leitura obrigatória:** [Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md) + [Desejos Ocultos 50+](desejos-ocultos-50plus.md). Este template preenchido com copy morna/wellness-genérica é template DESPERDIÇADO — todo bloco abaixo exige o nível de agressividade emocional da doutrina e passa no **Teste do Dedo** antes de virar prompt.
 
 ## Os SLOTS (preenchidos a partir da OFERTA escolhida)
 Antes de produzir, defina — a partir da VSL MaxWeb ([dissecação](../swipes/vsl-suplemento-masculino.md)):
@@ -17,17 +18,20 @@ Antes de produzir, defina — a partir da VSL MaxWeb ([dissecação](../swipes/v
 | `[PROMESSA]` | a grande promessa (verdadeira, compliant) | ex.: "circulação melhor" |
 | `[PALAVRA-GATILHO]` | a isca do comment-to-DM | ex.: "FLOW", "SECRET" |
 | `[VILÃO]` | o inimigo do mecanismo (ético) | ex.: hábito X / ingrediente Y |
+| `[DESEJO]` | fantasia de identidade que o hook encena ([mapa 50+](desejos-ocultos-50plus.md)) | ex.: o gasp dela / tamanho / troféu |
+| `[FERIDA]` | a dor que a copy cutuca ([mapa 50+](desejos-ocultos-50plus.md)) | ex.: "ela parou de procurar" |
 
 ## O template (blocos × signature × nossa copy)
 
-**Bloco 1 — HOOK (0–2s)** · *o key visual + pattern interrupt*
-- Abre no **`[PROP]`** em ação (demonstração/antes-depois) OU numa afirmação-contraste.
+**Bloco 1 — HOOK (0–2s)** · *o key visual + pattern interrupt — ataque reptiliano*
+- Abre no **`[PROP]`** em estado de CHOQUE (fálico murcho/gigante, demonstração absurda, reação de espanto dela) OU numa cena que encena o `[DESEJO]`/`[FERIDA]` — **nunca** em talking-head com produto. Beleza feminina/sensualidade enquadrada é recurso prioritário ([Doutrina, mandamento 2](doutrina-criativa-agressiva.md)).
 - Legenda karaokê branca + keyword destacada.
-- Cruza: [Anatomia do Hook](../hooks/anatomia-do-hook.md) (visual→áudio→visual), [Como Escrever o Hook](../hooks/como-escrever-o-hook.md) (1 subject/1 question), [fórmula context-lean→scroll-stop→snapback](../hooks/como-escrever-o-hook.md).
+- **Gate:** 1º frame sem som trava o dedo, ou refaz ([Teste do Dedo](doutrina-criativa-agressiva.md)).
+- Cruza: [Anatomia do Hook](../hooks/anatomia-do-hook.md) (visual→áudio→visual), [Como Escrever o Hook](../hooks/como-escrever-o-hook.md) (1 subject/1 question), [fórmula context-lean→scroll-stop→snapback](../hooks/como-escrever-o-hook.md), [3 Cérebros](../principios/tres-cerebros.md).
 
 **Bloco 2 — PROBLEMA + "não é sua culpa" + VILÃO (2–10s)**
-- Nomeia a dor (status/relação, não a doença) e joga a culpa no **`[VILÃO]`**.
-- Cruza: [Fear Sells](../principios/fear-sells.md), [Duality](../principios/duality-marketing.md), [Por que não compram](../principios/porque-nao-compram.md).
+- **Encena a `[FERIDA]`** (a noite do "tudo bem, amor", o beijo na testa, o espelho evitado — cena, não descrição) e joga a culpa no **`[VILÃO]`**. Pergunta paradoxal aqui prende ("se é idade… por que X?").
+- Cruza: [Fear Sells](../principios/fear-sells.md), [Duality](../principios/duality-marketing.md), [Por que não compram](../principios/porque-nao-compram.md), [Desejos Ocultos](desejos-ocultos-50plus.md).
 
 **Bloco 3 — MECANISMO ÚNICO (10–25s)** · *o coração*
 - Revela o **`[MECANISMO]`** real ("o motivo real é X, e é por isso que nada funcionou").
@@ -39,8 +43,8 @@ Antes de produzir, defina — a partir da VSL MaxWeb ([dissecação](../swipes/v
 - Cruza: [Elemento-prova Bencivenga](../mentores/gary-bencivenga/segredo-fechamento.md), [Cialdini](../principios/cialdini-kawasaki.md).
 
 **Bloco 5 — CTA comment-to-DM (35–45s)**
-- "Comente **`[PALAVRA-GATILHO]`** e siga pra eu te mandar [o protocolo/receita]."
-- Cruza: [Arquitetura do Funil](arquitetura-do-funil.md).
+- **Future projection primeiro** (colocá-lo NA cena do `[DESEJO]` realizado: "imagine sexta que vem…"), depois "Comente **`[PALAVRA-GATILHO]`** e siga pra eu te mandar [o protocolo/receita]" + **FOMO** (curiosity gap que só fecha na DM + porta fechando).
+- Cruza: [Arquitetura do Funil](arquitetura-do-funil.md), [Doutrina, mandamentos 4 e 6](doutrina-criativa-agressiva.md).
 
 > **Onde superamos o piso:** os concorrentes travam no Bloco 4 (prova fabricada/claim ilegal). **Nós ganhamos ali** — mecanismo real + prova real + fear/desejo bem construídos = mesmo continente viral, conteúdo muito melhor e **sustentável** (não toma ban).
 
@@ -48,14 +52,17 @@ Antes de produzir, defina — a partir da VSL MaxWeb ([dissecação](../swipes/v
 Preencher os `[slots]` e passar pela anatomia de prompt ([recursos/veo3](../recursos/veo3-criativos.md)); consistência do `[AVATAR]` em série via [veo3 avançado](../recursos/veo3-avancado.md).
 
 ```
-[estilo: cinematic ugc, 9:16, natural kitchen light]
-Cena: [AVATAR] numa [cozinha/consultório] americana, bandeira dos EUA discreta ao fundo,
-segurando [PROP]; close, ela olha pra câmera.
-Ação (0-2s): [demonstração do PROP / gesto de choque] — hook visual.
-Câmera: talking-head, leve push-in; corta pra demonstração ao vivo do [PROP].
-Áudio: fala direta (linha de hook), som ambiente de cozinha.
-Texto na tela: legenda karaokê branca, keyword "[KEYWORD]" em amarelo.
-Paleta: quente/neutra. Negativos: sem jaleco/credencial falsa, sem claim de cura.
+[estilo: cinematic ugc, 9:16, luz que valoriza a cena — golden hour/quarto/piscina conforme o [DESEJO]]
+Shot 1 (HOOK, o frame que trava o dedo): [PROP] em estado de CHOQUE (murcho/gigante/reagindo)
+NA MÃO ou NA CENA de [AVATAR/coadjuvante feminina] — enquadramento que valoriza a beleza dela
+(pose, silhueta, decote/curvas dentro do vestível) OU reaction-shot dela (gasp/mordida de lábio/olhar).
+NUNCA abrir em talking-head com produto.
+Ação: a demonstração/reação JÁ acontecendo (o espectador chega "atrasado" = FOMO).
+Câmera: close/macro no [PROP] ou no rosto dela; push-in; depois corta pra demo do mecanismo.
+Áudio: linha de hook que cutuca [FERIDA] ou pergunta paradoxal (linguagem indireta SEMPRE).
+Texto na tela: NADA gerado (legenda karaokê no editor; keyword "[PALAVRA-GATILHO]" em amarelo).
+Paleta: conforme Style Bible. Negativos: sem texto/rótulo na cena, sem jaleco/credencial falsa,
+sem claim de cura; mãos normais — EXCETO o exagero intencional do prop fálico (permitido).
 ```
 > Regra de produção: **Character Bible + Style Bible** travadas (a "atriz"/guru recorrente) → série coerente de criativos. Legenda e grão no editor (CapCut).
 
@@ -69,5 +76,6 @@ Paleta: quente/neutra. Negativos: sem jaleco/credencial falsa, sem claim de cura
 - Ver [Persuasão × Manipulação](../principios/persuasao-vs-manipulacao.md).
 
 ## Conexões
+- [⚡ Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md) · [Desejos Ocultos 50+](desejos-ocultos-50plus.md)
 - [Insights: Triangulação](../00-mapa/insights-empiricos.md) · [Signature por Arquétipo](signature-por-arquetipo.md) · [Prop-Metáforas](prop-metaforas.md)
 - [Avatares-Expert](avatares-experts.md) · [Arquitetura do Funil](arquitetura-do-funil.md) · [Veo 3](../recursos/veo3-criativos.md)

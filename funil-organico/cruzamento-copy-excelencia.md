@@ -4,6 +4,7 @@ O **índice-mestre** do cruzamento: cada elemento da signature validada (o **pis
 
 - **Status:** ✅ consolidado (lente obrigatória do [SOP](producao-criativo-sop.md))
 - **Regra:** a signature diz *como parece*; a nossa base diz *o que dizer e por que converte*. Onde os concorrentes travam (prova fabricada, claim ilegal, mecanismo falso), **nós ganhamos**.
+- **⚡ Leitura correta da tabela:** "superamos o piso" = **mais agressivo e mais afiado**, nunca mais suave. Quem usar este mapa pra "polir" a copy até o morno leu errado — ver [Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md) e o [insight #4](../00-mapa/insights-empiricos.md).
 
 ## O mapa
 

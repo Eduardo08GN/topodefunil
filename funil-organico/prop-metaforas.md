@@ -40,11 +40,34 @@ O **prop** é o motor da signature: um objeto caseiro nos primeiros 1–2s que c
 - **Bandeira dos EUA** (selo de confiança patriótica — quase onipresente).
 - **Frasco do suplemento revelado no fim** (fechamento/CTA).
 
+## ⚡ Arsenal criativo expandido (NOSSO — além do minerado)
+
+O catálogo acima é o que os concorrentes JÁ usam (piso). A regra da [Doutrina Agressiva](doutrina-criativa-agressiva.md) é: **tudo que não pode ser verbalizado DEVE ser dito por analogia visual — explorado ao máximo, no hook e nos demais blocos**. O universo de objetos é infinito; categorias pra gerar variação sem repetir concorrente:
+
+**Fálicos por estado (ereção/flacidez/tamanho):**
+- Frutas/legumes: banana (murcha↔firme, pequena↔gigante), pepino, berinjela, abobrinha, cenoura, milho, aspargo, mandioca.
+- Objetos: mangueira de jardim (dobrada↔jorrando), torre inflável de posto (caindo↔subindo), bandeira a meio mastro↔topo, pneu vazio↔calibrado, vela derretida↔nova, torre de Pisa↔obelisco, foguete na plataforma, macarrão cozido↔cru, balão murcho↔cheio.
+- Medida/comparação: fita métrica, régua, sombra que cresce na parede, copo pequeno↔grande.
+
+**Mecanismo na cozinha (fluxo/ativação/pureza — ligar SEMPRE ao mecanismo real da oferta):**
+- Bicarbonato (vulcão/efervescência = "ativação"), beterraba (suco vermelho = fluxo/óxido nítrico), melancia (citrulina), romã, gengibre, canela, mel, ovo cru, espinafre, alho, pimenta caiena, café.
+- Demos: tubo entupido↔livre, cano desentupindo, esponja seca↔encharcada, gelo derretendo em água quente, interruptor ligando um painel de luzes, fusível queimado↔trocado, bateria em 5%↔100%.
+
+**Corpo feminino como recurso visual (o scroll-stop nº 1 — [Doutrina, mandamento 2](doutrina-criativa-agressiva.md)):**
+- Enquadramento: silhueta, busto/decote, cintura fina, quadril largo, pernas; roupas que marcam (biquíni, vestido justo, robe de seda entreaberto, legging); poses (yoga/alongamento, debruçada na bancada, saindo da piscina).
+- **Reações dela** (dizem o proibido sem UMA palavra): o *gasp* (mão na boca, olhos arregalados), mordida de lábio, olhar de fome pra lente, sobrancelha erguida "impressionada", agarrar o lençol, sussurro pra amiga.
+- Limite: sensualidade máxima dentro do vestível — sem nudez/ato (bloqueio Meta + Veo).
+
+**Cenas-símbolo (a ferida/desejo sem falar — ver [desejos ocultos](desejos-ocultos-50plus.md)):**
+- Pílula azul caindo no lixo/privada (slow motion) · beijo na testa + virar pro lado · ele no carro suando antes do 1º encontro · vestiário com risada dos mais novos · pool boy passando · foto antiga vs espelho.
+
 ## Como usar isto (modelagem)
 - O prop deve **encaixar no mecanismo REAL da nossa oferta** (a triangulação): se a oferta é sobre óxido nítrico/fluxo, o prop demonstra fluxo; se é sobre um ingrediente, o prop é o ingrediente. → [Template Criativo](template-criativo.md).
-- **Escolher innuendo × demonstração × antes-depois** conforme o hook.
+- **Escolher innuendo × demonstração × antes-depois** conforme o hook — e passar no [Teste do Dedo](doutrina-criativa-agressiva.md): prop tímido/genérico (ex.: pessoa segurando frasco) = REPROVADO como hook.
+- **O exagero do prop fálico é permitido e desejado** (exceção intencional ao [anti-irrealidade](../recursos/generated-ai-video-anti-irrealidade.md)): banana gigante/absurda É o hook.
 - ⛔ **Compliance:** demonstração de mecanismo e antes-depois **não podem fabricar resultado** nem simular prova clínica falsa. O prop chama atenção; a prova tem que ser **real**. Ver [Persuasão × Manipulação](../principios/persuasao-vs-manipulacao.md).
 
 ## Conexões
+- [Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md) · [Desejos Ocultos 50+](desejos-ocultos-50plus.md)
 - [Signature por Arquétipo](signature-por-arquetipo.md) · [Matriz por Página](signature-matriz.md)
 - [Anatomia do Hook (key visual)](../hooks/anatomia-do-hook.md) · [Mecanismo Único](../principios/mecanismo-unico.md)

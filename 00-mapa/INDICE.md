@@ -94,6 +94,8 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**Template Criativo**](../funil-organico/template-criativo.md) — molde modelável + prompt-base Veo 3 + slots da triangulação
 - ✅ [**SOP — Produção do Criativo**](../funil-organico/producao-criativo-sop.md) — o passo-a-passo (oferta → prompt Veo 3 → publicar) que costura todo o workflow
 - ✅ [**Cruzamento Signature × Excelência de Copy**](../funil-organico/cruzamento-copy-excelencia.md) — o mapa: cada elemento do piso → nosso lever de copy superior → onde superamos
+- ✅ [**⚡ Doutrina Criativa Agressiva**](../funil-organico/doutrina-criativa-agressiva.md) — A LEI anti-copy-morna: Teste do Dedo, ataque reptiliano, FOMO, future projection (ler ANTES de gerar cena/copy)
+- ✅ [**Desejos Ocultos 50+**](../funil-organico/desejos-ocultos-50plus.md) — 15 desejos + 7 feridas do avatar, cada um com hook-cena candidato
 - ✅ [**Insights: Triangulação**](insights-empiricos.md) — signature × copy × oferta (empirismo acumulado)
 
 ## Swipes anotados

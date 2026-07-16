@@ -22,6 +22,8 @@ Todo criativo que performa nas páginas com criativo minerado (Nitric Health, Ta
 | 10 | **Copy do post = gancho forte** | A legenda de texto do post (fora do vídeo) repete/reforça o hook, não descreve o vídeo | "100,000 men flushed blue pills after this simple trick" |
 | 11 | **CTA de comentário + follow** | Fechamento pede palavra-gatilho + "siga a página" — nunca pede clique direto em link | "Comment YES/Book/Gelatin... and follow [página] for more" |
 
+> ⚡ **Intensidade mínima:** os elementos #6 e #7 (hook + presenter scroll-stop) se medem pelo [Teste do Dedo da Doutrina Agressiva](doutrina-criativa-agressiva.md) — o 1º frame, sem som, tem que travar o polegar via cérebro reptiliano (sexo/choque/paradoxo). Cumprir os 11 elementos "de forma morna" (avatar comportado, prop tímido) é cumprir a gramática e perder o jogo.
+
 > Os 4 componentes de todo hook (falado, visual, texto, áudio) precisam estar **alinhados** — ver [Anatomia do Hook](../hooks/anatomia-do-hook.md). Nesta gramática, isso significa: o prop-metáfora (visual) tem que corresponder exatamente ao que a legenda karaoke (texto) e a fala do avatar (áudio) estão dizendo no mesmo segundo. Desalinhar prop com legenda quebra a compreensão e mata o hook antes do segundo 3.
 
 ## Tabela de prop-metáfora

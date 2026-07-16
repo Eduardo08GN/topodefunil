@@ -46,4 +46,15 @@ Conexões: [Pilar Funil Orgânico](../funil-organico/README.md) · [Arquitetura 
 
 ---
 
+## 4. Superior ≠ suave — copy morna é morte no feed
+
+> Aprendido na prática (1º criativo do Titan Transform, reprovado): a IA, deixada solta, **sanitiza** — pega a base inteira de copy e entrega cena de comercial de TV (mulher sorrindo com produto na mão, fala "wellness" educada). **Isso não compete** com os trilhões de vídeos do feed.
+
+- A decisão de parar o scroll é **reptiliana e acontece no 1º frame, sem áudio** — sexo, choque, ameaça, paradoxo ([3 cérebros](../principios/tres-cerebros.md)). Hook educado = invisível.
+- "Nossa copy é superior ao piso" significa **mais afiada** (mecanismo real + prova real + ferida mais funda), **nunca** mais comportada. Os concorrentes chocam com mentira; nós chocamos com **verdade mais agressiva**.
+- O que trava a agressividade é UMA cerca só: **palavra banida + claim falso** ([insight #3](#3-o-compliance-mora-na-linguagem-o-explícito-no-visual)). Emoção, visual fálico, sensualidade, FOMO, vergonha e medo são **obrigatórios**, não opcionais.
+- Institucionalizado em: [⚡ Doutrina Criativa Agressiva](../funil-organico/doutrina-criativa-agressiva.md) (com o **Teste do Dedo** como gate) + [Desejos Ocultos 50+](../funil-organico/desejos-ocultos-50plus.md).
+
+---
+
 *(Próximas entradas entram aqui conforme a operação gerar aprendizado.)*
