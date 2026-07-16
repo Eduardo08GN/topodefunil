@@ -90,15 +90,19 @@ Um vídeo com muitos likes/shares mas poucos comentários-com-palavra indica hoo
 
 ## Tabela — palavras-gatilho observadas
 
-| Palavra-gatilho | Status | Página/contexto |
-|---|---|---|
-| **Book** | ✅ confirmada (CTA explícito) | Tanisha Rivers — "Comment Book for the link to my complete male health protocol" |
-| **YES** | ✅ confirmada (CTA explícito) | Kofi&Simba — "Comment YES if you want more remedies" |
-| **Gelatin** | ✅ confirmada (CTA explícito) | Kofi&Simba — variação ligada ao prop "Horse Gelatin Trick" |
-| **Rhodiola** | 🔸 inferida | Tanisha Rivers — nome do ingrediente mencionado no vídeo (provável gatilho, não confirmado no CTA) |
-| **Wellness** | 🔸 inferida | ecossistema de páginas (não confirmada como CTA) |
+Todas **confirmadas nas transcrições** (ver [signature-verbal.md](signature-verbal.md)):
 
-Padrão: a palavra costuma **ecoar algo dito ou mostrado no próprio vídeo** (o ingrediente, o nome do protocolo, uma afirmação simples tipo "YES") — isso reduz fricção cognitiva (a pessoa não precisa decorar nada, só repetir o que acabou de ver/ouvir) e funciona como confirmação de que assistiu até o CTA.
+| Palavra-gatilho | Página(s) | Ecoa… |
+|---|---|---|
+| **book** | Tanisha, Men's | "complete male health protocol" |
+| **yes** | Kofi, Zuberi | afirmação simples ("more remedies") |
+| **gelatin** | Kofi | o ingrediente ("only gelatin I trust") |
+| **girth / would** | Nitric | o benefício ("male thickness protocol") |
+| **link / secret / cortisol / help** | Olivia | o produto/mecanismo |
+| **hard** | Zuberi | eufemismo/benefício |
+| **boost / drive / apex / rocket** | Men's | o produto ("Apex Drive Pro") |
+
+> **Padrão da palavra-gatilho:** ela **ecoa algo dito/mostrado no vídeo** (ingrediente, benefício, nome do produto) — reduz fricção cognitiva (a pessoa só repete o que acabou de ver) e confirma que assistiu até o CTA. Sempre acompanhada do **follow-gate reenquadrado** ("siga primeiro, senão o sistema não me deixa te enviar") — ver [signature-verbal.md](signature-verbal.md).
 
 ## Nota de compliance
 

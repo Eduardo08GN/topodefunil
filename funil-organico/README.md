@@ -28,6 +28,7 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | [paginas-referencia.md](paginas-referencia.md) | As páginas concorrentes mineradas com persona, props e CTA de cada uma |
 | **[signature-matriz.md](signature-matriz.md)** | A digestão visual de **42 reels (6 páginas)** — matriz de signature por página |
 | **[signature-por-arquetipo.md](signature-por-arquetipo.md)** | O **padrão universal** destilado (o esqueleto que todas repetem) + os 3 arquétipos |
+| **[signature-verbal.md](signature-verbal.md)** | O **roteiro-padrão** do áudio (5 blocos, hooks, dispositivos, mecânica de CTA) + mapa de ofertas |
 | **[prop-metaforas.md](prop-metaforas.md)** | Catálogo dos props (banana/pepino/modelo anatômico…) e suas funções |
 | **[template-criativo.md](template-criativo.md)** | O **template modelável** + prompt-base Veo 3 + os slots da triangulação (o output acionável) |
 | **[producao-criativo-sop.md](producao-criativo-sop.md)** | O **SOP em 12 passos** (oferta → prompt Veo 3 → publicar) — o fio que costura todo o workflow |

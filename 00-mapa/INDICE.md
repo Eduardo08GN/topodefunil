@@ -89,6 +89,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [Páginas de Referência](../funil-organico/paginas-referencia.md) — swipe das páginas mineradas
 - ✅ [**Signature — Matriz por Página**](../funil-organico/signature-matriz.md) — digestão de 42 reels (6 páginas)
 - ✅ [**Signature por Arquétipo**](../funil-organico/signature-por-arquetipo.md) — o padrão universal + os 3 arquétipos
+- ✅ [**Signature Verbal**](../funil-organico/signature-verbal.md) — o roteiro-padrão (5 blocos), hooks, dispositivos e mecânica de CTA
 - ✅ [**Prop-Metáforas**](../funil-organico/prop-metaforas.md) — catálogo dos props e funções
 - ✅ [**Template Criativo**](../funil-organico/template-criativo.md) — molde modelável + prompt-base Veo 3 + slots da triangulação
 - ✅ [**SOP — Produção do Criativo**](../funil-organico/producao-criativo-sop.md) — o passo-a-passo (oferta → prompt Veo 3 → publicar) que costura todo o workflow
