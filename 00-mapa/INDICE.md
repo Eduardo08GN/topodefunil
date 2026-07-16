@@ -2,20 +2,22 @@
 
 Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a cada novo material processado.
 
-## Status: 🌱 semeando (aguardando primeiras infos)
+## Status: 🚧 em construção — Jon Benson ✅ | 5M Formula ⏳ | RMBC ⏳
 
 ---
 
 ## Mentores
 
-- [ ] [Jon Benson](../mentores/jon-benson/README.md) — criador do VSL; método 3X VSL, Copy Pro / Daily Email
-- [ ] [Stefan Georgi](../mentores/stefan-georgi/README.md) — método **RMBC** (Research, Mechanism, Brief, Copy)
+- [x] [Jon Benson](../mentores/jon-benson/README.md) ✅ — criador do VSL (3 docs)
+- [ ] [Stefan Georgi](../mentores/stefan-georgi/README.md) 🌱 — método **RMBC** (Research, Mechanism, Brief, Copy)
 
 ## Frameworks
-*(nenhum documentado ainda)*
+
+- ✅ [Estrutura de VSL — Jon Benson](../frameworks/jon-benson-vsl-estrutura.md) — 5 blocos, do gancho ao fechamento
+- ✅ [Quebra de objeções em VSL — Jon Benson](../frameworks/jon-benson-quebra-objecoes.md) — as 12 objeções
 
 ## Princípios
-*(nenhum documentado ainda)*
+*(a extrair — candidatos: "compelir não coagir", "needs vs wants", "não existe copy longa")*
 
 ## Swipes anotados
 *(nenhum documentado ainda)*
