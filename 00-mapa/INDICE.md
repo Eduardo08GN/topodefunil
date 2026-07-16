@@ -72,7 +72,8 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 
 ## Recursos (ferramentas / processo)
 
-- ✅ [Baixar qualquer VSL ou anúncio](../recursos/baixar-qualquer-vsl.md) — minerar swipes de concorrentes
+- ✅ [Baixar qualquer VSL ou anúncio](../recursos/baixar-qualquer-vsl.md) — minerar swipes de concorrentes (método de aula)
+- ✅ [Mineração & Extração (pipeline validado)](../recursos/mineracao-extracao.md) — PDF/YouTube/FB reels/áudio/frames, o método que funcionou
 - ✅ [Veo 3 — produzir os vídeos-criativos](../recursos/veo3-criativos.md) — anatomia do prompt, meta-workflow, produção realista, Veo 3.1
 - ✅ [Veo 3 — pipeline avançado](../recursos/veo3-avancado.md) — hiperrealismo, personagem consistente, face-swap, multi-câmera, lip-sync
 

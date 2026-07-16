@@ -23,4 +23,16 @@ Conexões: [Pilar Funil Orgânico](../funil-organico/README.md) · [Arquitetura 
 
 ---
 
+## 2. Reels do Facebook são mineráveis sem login nem cookie
+
+> Descoberta operacional: dá pra baixar criativos de concorrentes **sem autenticação**.
+
+- As páginas de FB são **públicas no navegador deslogado** → o grid de Reels aparece.
+- Os **IDs dos reels saem do DOM** (JS pegando `a[href]` com `/reel/\d+`).
+- `yt-dlp` baixa o reel **por URL, sem cookie**.
+- **Beco sem saída a evitar:** `--cookies-from-browser` está morto (Chrome trava o DB + app-bound encryption). Não insista em cookies.
+- Pipeline completo (PDF/YouTube/FB/áudio/frames) em [Mineração & Extração](../recursos/mineracao-extracao.md). Corolário: montar swipe file de concorrentes é **barato e escalável** — o gargalo é a *análise*, não a *coleta*.
+
+---
+
 *(Próximas entradas entram aqui conforme a operação gerar aprendizado.)*

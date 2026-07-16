@@ -1,7 +1,21 @@
 # Páginas de Referência — Swipe File de Concorrentes (Facebook Orgânico)
 
-- **Status:** 🟡 em construção (levantamento inicial de 5 páginas mineradas + ecossistema sugerido pelo Facebook)
+- **Status:** ✅ 7 páginas mineradas + ecossistema sugerido; **42 reels dissecados** em [signature-matriz.md](signature-matriz.md)
 - **Contexto:** mineração de páginas de Facebook que já rodam o mesmo funil orgânico (persona-expert de IA → vídeo-criativo → CTA de comentário → DM com link de afiliado) no nicho de saúde sexual masculina/ED. Serve de **matéria-prima** para [avatares-experts.md](avatares-experts.md) (taxonomia de arquétipos) e [gramatica-visual.md](gramatica-visual.md) (o padrão estético que se repete).
+
+## Perfis (IDs para re-mineração)
+
+Páginas públicas — reels acessíveis deslogado e baixáveis sem cookie (ver [recursos/mineracao-extracao.md](../recursos/mineracao-extracao.md)).
+
+| Página | URL / ID de perfil |
+|--------|--------------------|
+| Nitric Health | `profile.php?id=61582613312457` |
+| Tanisha Rivers | `profile.php?id=61572362684301` |
+| Zuberi Kwame | `profile.php?id=61591242181699` |
+| Kofi&Simba | `profile.php?id=61590766871221` |
+| Men's Performance | `profile.php?id=100094738893487` |
+| Olivia Man's Health & Wellness | `profile.php?id=61590264133579` |
+| Alexis Burgundy | `/Alexisburgundywellness` (login-wall na URL de nome; não minerada no lote) |
 
 > **Nota de uso:** material de referência de **terceiros**, coletado para **estudo e modelagem de estrutura/estética** — não para cópia de claims, credenciais ou identidade. Não redistribuir; este repositório é destinado a ser **privado**. Ver nota de compliance no fim do documento.
 
@@ -36,6 +50,20 @@
 | Seguidores | Arquétipo | Nicho/Bio | Cenário/Props | CTA/Palavra-gatilho | Sinais (link bio, localização) | Observações |
 |---|---|---|---|---|---|---|
 | Não informado | Nicho-produto direto masculino | "Men's Health After 40, natural performance & circulation tips" | Não detalhado no levantamento | Não detalhado no levantamento | Não detalhado no levantamento | Posicionamento direto por idade (40+) e por benefício (performance/circulação), sem persona-avatar explícita no material coletado — possível página mais próxima do arquétipo 4 (marca/selo) do que de uma persona-expert individual |
+
+### 6. Zuberi Kwame
+
+| Seguidores | Arquétipo | Nicho/Bio | Cenário/Props | CTA/Palavra-gatilho | Sinais | Observações |
+|---|---|---|---|---|---|---|
+| Não informado | Guru ancestral/fitness | Saúde masculina, "ancient African trick" | Cozinha/varanda/campo "Route 66"/piscina, bandeira US; **props fálicos:** pepino, banana, berinjela regada, marisco/geoduck, conchas "Day 1/Day 7", cartão "MALE PENIS (SOFT)", panela fervendo (demo reaproveitada), post-it "NOT AVAILABLE" | "Comment **YES**" / "DM you" / "I'll find you" | `id=61591242181699` | **Ancião afro-americano hiper-musculoso** (não "tribal com leão", como a hipótese); autoridade pelo corpo + props pseudo-clínicos; forte **reaproveitamento de footage-base** (A/B) |
+
+### 7. Olivia Man's Health & Wellness
+
+| Seguidores | Arquétipo | Nicho/Bio | Cenário/Props | CTA/Palavra-gatilho | Sinais | Observações |
+|---|---|---|---|---|---|---|
+| Não informado | Wellness influencer "sexy-fit-mom" | Saúde/wellness masculina | Cozinha de luxo/varanda colonial/Costco-Walmart/quarto íntimo, bandeira US (4/7); **props:** Viagra derramando × frasco "Safranel", escultura fálica escorrendo azeite, torso "cortisol" raspado com moeda, diagrama de artéria, print de paper de açafrão, emoji 🍆; banner "#1 Vitamin/Food to Lower Cortisol" | "Comment **SECRET**... otherwise I won't" / follow | `id=61590264133579` | **Sem jaleco** — autoridade 100% emprestada de props; usa "iscas de alcance" (real×fake no mercado) como top-of-funnel fora do nicho sexual |
+
+> Detalhe reel-a-reel das 6 páginas (42 reels) em [signature-matriz.md](signature-matriz.md); o padrão universal destilado em [signature-por-arquetipo.md](signature-por-arquetipo.md).
 
 ## Ecossistema sugerido pelo Facebook (mesmo padrão)
 
