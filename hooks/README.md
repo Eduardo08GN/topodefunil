@@ -24,6 +24,8 @@ Corolário: parar de culpar o que **não** é o hook — música, hashtags, hor�
 
 **Camada de psicologia (aplica a toda copy):** [Fear Sells](../principios/fear-sells.md) · [Psicologia do Conteúdo (8 princípios)](../principios/psicologia-do-conteudo.md)
 
+> **⚡ Aplicação no funil orgânico (nicho male enhancement):** este pilar dá a TEORIA do hook; a **calibragem de intensidade** obrigatória está na [Doutrina Criativa Agressiva](../funil-organico/doutrina-criativa-agressiva.md) (Teste do Dedo, ataque reptiliano) + [Empilhamento Reptiliano](../funil-organico/empilhamento-reptiliano.md) (desejo × posse × testemunha × dominância) + [Desejos Ocultos 50+](../funil-organico/desejos-ocultos-50plus.md). Fórmula certa executada morna = hook reprovado do mesmo jeito.
+
 ## As regras testadas (do estudo de 1.300 reels virais)
 
 - **Tamanho:** hook de **5–8 palavras**. Retorno decrescente após 12; abaixo de 4 é raro (difícil formar sentido).

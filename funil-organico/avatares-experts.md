@@ -27,6 +27,19 @@ O padrão que emerge cruzando os arquétipos com os frameworks: **autoridade →
 
 Mas **todos os arquétipos, sem exceção, carregam [fear-sells](../principios/fear-sells.md) por baixo**: o medo dominante não é a disfunção em si, é o **medo de perder status ou a parceira** — o mesmo achado nº1 da [anatomia da VSL](../swipes/vsl-suplemento-masculino.md) (bloco "Onde são fortes", item 1). O arquétipo muda a *embalagem* da mensagem (quem fala, com que credibilidade), mas o motor emocional por trás — medo de ser trocado por "um homem de verdade" — é constante. Isso é o próprio [Segredo Imoral dos Anúncios](../principios/segredo-imoral-anuncios.md) aplicado à escolha de persona: o formato (autoridade médica, curandeiro, influencer) é o "envelope" que baixa a guarda; a psicologia de dentro (fear-sells + mecanismo único + prova) é a mesma independente de qual arquétipo você escolhe pra entregá-la.
 
+## ⚡ O elenco além do expert — coadjuvantes de cena (obrigatório considerar)
+
+A taxonomia acima cobre só o **expert** (quem explica o mecanismo e faz o CTA). Mas os criativos de maior nível de hook usam um **elenco** — personagens que não explicam nada e existem pra atacar o cérebro reptiliano ([Doutrina, mandamentos 2/2b/2c](doutrina-criativa-agressiva.md)):
+
+| Coadjuvante | Função reptiliana | Onde detalhado |
+|---|---|---|
+| **A mulher-troféu** (loira/morena bombshell, biquíni/vestido justo) | desejo + prova viva do resultado (posse: no braço/colo do coroa) | [empilhamento](empilhamento-reptiliano.md), [prop-metáforas](prop-metaforas.md) |
+| **A "vítima" da hipérbole situacional** (namorada novinha "reclamando") | testemunho invertido — o excesso narrado como problema dela | [empilhamento](empilhamento-reptiliano.md) (2c) |
+| **As testemunhas sofrendo** (ex-mulher atônita, rival jovem, amigos de garfo parado, camareiras) | inveja alheia = prova social de status; multiplicam o hook | [banco de cenas](empilhamento-reptiliano.md) |
+| **O coroa-herói** (o homem 50+ vivendo a fantasia: rindo, brindando, indiferente) | identificação + future projection — o espectador É ele | [desejos ocultos](desejos-ocultos-50plus.md) |
+
+**Formato resultante:** cold-open dramatizado com o elenco (o hook) → corte pro expert (mecanismo + CTA). O expert carrega a página; o elenco carrega o dedo. Página que só tem talking-head de expert tá jogando com metade do baralho — e a beleza do avatar feminino (expert incluída) se maximiza deliberadamente: enquadramento, figurino, poses ([mandamento 2](doutrina-criativa-agressiva.md)).
+
 ## Como escolher o avatar por página
 
 1. **Congruência com o mecanismo do produto final.** Se a VSL de destino vende "descoberta ancestral/natural" (ex.: mecanismos com nome exótico), o avatar tribal converte melhor porque a origem da história bate com a origem do produto. Se a VSL abre com "estudo clínico"/ingrediente nomeado cientificamente, autoridade médica bate melhor. Escolha o avatar **depois** de decidir qual VSL/produto a página vai promover — não antes.

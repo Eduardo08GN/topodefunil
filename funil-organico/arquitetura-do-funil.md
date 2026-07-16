@@ -44,6 +44,8 @@ O vídeo é produzido com Google Veo 3 seguindo a [gramática visual comum](gram
 
 Essa é a razão de a página priorizar, na produção, exatamente os elementos que a [gramática visual](gramatica-visual.md) documenta como recorrentes nos concorrentes que performam: hook de curiosidade no frame de abertura, prop-metáfora caseira, presenter que gera scroll-stop, legenda grande estilo karaoke.
 
+**⚡ Régua de intensidade do elo 3:** "hook forte" aqui não é figura de linguagem — é o padrão da [Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md): 1º frame ataca o cérebro reptiliano (sexo/choque/paradoxo, [Teste do Dedo](doutrina-criativa-agressiva.md)), cena-evento com camadas empilhadas ([empilhamento](empilhamento-reptiliano.md)), copy que cutuca [ferida/desejo oculto](desejos-ocultos-50plus.md). Como o algoritmo é o único distribuidor, **criativo morno não é "conservador" — é custo zero de retorno**: nem dado de teste ele gera.
+
 ## Elo 4 — CTA de comentário + follow
 
 No fim do vídeo, a persona pede uma ação de baixo atrito: **comentar uma palavra-gatilho específica** e **seguir a página**. Duas funções em paralelo:

@@ -49,7 +49,9 @@ Esta operação é a **ponte entre copy e produção**: a persuasão que sustent
 
 ## Nota de compliance
 
-Persona-expert **fabricada por IA** apresentada como especialista real + claims de "cura" de ED + testemunhos/credenciais falsos + innuendo sexual = risco **alto** de ban de página (Facebook) e exposição legal (FTC: testemunho falso, health claim não substanciado, ausência de disclosure de afiliado, automação de DM). **Regra da operação:** modelar apenas o que é modelável — estrutura, estética, formato, CTA — e **nunca** os claims médicos nem credenciais falsas. Página banida mata o funil inteiro. Ver [../principios/persuasao-vs-manipulacao.md](../principios/persuasao-vs-manipulacao.md).
+Persona-expert **fabricada por IA** apresentada como especialista real + claims de "cura" de ED + testemunhos/credenciais falsos = risco **alto** de ban de página (Facebook) e exposição legal (FTC: testemunho falso, health claim não substanciado, ausência de disclosure de afiliado, automação de DM). **Regra da operação:** modelar apenas o que é modelável — estrutura, estética, formato, CTA — e **nunca** os claims médicos nem credenciais falsas. Página banida mata o funil inteiro. Ver [../principios/persuasao-vs-manipulacao.md](../principios/persuasao-vs-manipulacao.md).
+
+**⚡ E a contraparte de mesmo peso:** compliance limita a PALAVRA e os CLAIMS — nunca a intensidade. Criativo morno "por segurança" é a outra forma de matar o funil (invisibilidade). A régua de agressividade obrigatória (Teste do Dedo, ataque reptiliano, desejos ocultos, cenas-evento empilhadas) está na [Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md) — os dois guardrails andam juntos: **palavra limpa, cena impiedosa.**
 
 ## Conexões
 - [../principios/segredo-imoral-anuncios.md](../principios/segredo-imoral-anuncios.md)

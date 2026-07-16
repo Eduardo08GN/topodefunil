@@ -44,6 +44,8 @@ Síntese das 6 páginas / 42 reels ([matriz](signature-matriz.md)): o que **se r
 | ângulo "natural vs sintético" (ético) | conspiração pesada + ataque a medicamento ("Bulsh* pills") |
 
 > Nossa vantagem: adotamos o **continente validado** e trocamos o **conteúdo** por copy verdadeira e superior (mecanismo real da oferta, prova real, sem claim ilegal). Ver [Template Criativo](template-criativo.md) e [Persuasão × Manipulação](../principios/persuasao-vs-manipulacao.md).
+>
+> **⚡ Atenção à leitura:** a coluna "⛔ NÃO copiar" lista **claims e credenciais** — não intensidade. O sex-appeal, o prop fálico exagerado, o choque visual e o medo/vergonha da coluna ✅ continuam **obrigatórios no nível máximo** ([Doutrina](doutrina-criativa-agressiva.md)). Remover o que dá ban ≠ remover o que para o dedo. Quem entrega o continente "comportado" jogou fora o motivo de ele existir.
 
 ## Conexões
 - [Matriz por Página](signature-matriz.md) · [Prop-Metáforas](prop-metaforas.md) · [Template Criativo](template-criativo.md)
