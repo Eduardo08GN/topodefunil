@@ -19,6 +19,7 @@ Preservar, organizar e conectar tudo que for aprendido — frameworks, princípi
 | [`swipes/`](swipes/) | Trechos de copy real anotados (o que funciona e por quê) |
 | [`templates/`](templates/) | Esqueletos prontos pra escrever |
 | [`glossario/`](glossario/) | Termos e jargão do direct response |
+| [`_fontes/`](_fontes/) | Originais extraídos dos PDFs (texto integral, fonte de verdade) |
 | [`_inbox/`](_inbox/) | Material bruto recém-chegado, a processar |
 
 ## Fluxo de trabalho
