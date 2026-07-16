@@ -74,6 +74,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 
 - ✅ [Baixar qualquer VSL ou anúncio](../recursos/baixar-qualquer-vsl.md) — minerar swipes de concorrentes
 - ✅ [Veo 3 — produzir os vídeos-criativos](../recursos/veo3-criativos.md) — anatomia do prompt, meta-workflow, produção realista, Veo 3.1
+- ✅ [Veo 3 — pipeline avançado](../recursos/veo3-avancado.md) — hiperrealismo, personagem consistente, face-swap, multi-câmera, lip-sync
 
 ## Swipes anotados
 - ✅ [Anatomia da VSL de Suplemento Masculino](../swipes/vsl-suplemento-masculino.md) — dissecação de 9 VSLs (ED/aumento) + 12 técnicas novas

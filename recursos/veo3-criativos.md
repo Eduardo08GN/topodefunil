@@ -3,6 +3,7 @@
 - **Fonte:** síntese de 8 tutoriais sobre Google Veo 3 / 3.1 (produção de anúncios em vídeo com IA)
 - **Serve para:** gerar os criativos (ads/aberturas de VSL) que carregam nossos [hooks](../hooks/README.md) — vídeos com cara de produção de $100k a partir de **um prompt**
 - **Status:** ✅ consolidado
+- **Nível avançado (hiperrealismo, consistência, face-swap, multi-câmera):** [Veo 3 — pipeline avançado](veo3-avancado.md)
 
 > **Onde isso se encaixa na base:** o Veo é a **ferramenta de produção**. A copy/estratégia (hook, mecanismo, oferta) vem da nossa base; o Veo entrega o **hook visual** ([key visual + scroll-stop](../hooks/anatomia-do-hook.md)) e as **cenas dramáticas de abertura** das VSLs ([anatomia da VSL](../swipes/vsl-suplemento-masculino.md)).
 
