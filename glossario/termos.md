@@ -37,5 +37,15 @@ Termos e jargão. Cresce conforme aparecem no material.
 | One standard deviation | Um desvio-padrão | Empacotar a mensagem um passo longe do desejo cru (evita o "detector de baboseira") |
 | Speed to value | Tempo até o valor | Front-load: entregar valor o quanto antes, antes da "explosão" |
 | Single subject / single question | 1 assunto / 1 pergunta | Regra do hook: focar 1 tema e plantar 1 mesma pergunta em todos |
+| Neurocopywriting | — | Redação persuasiva digital com técnicas de neuromarketing |
+| Neurônios-espelho | — | Disparam ao ver/imaginar uma ação — base do "faça o leitor se ver" |
+| Power words | Palavras potentes | Palavras que incitam/impactam (evocam imagem e emoção) |
+| ZMET | — | Método de Zaltman (imagens/metáforas) pra acessar a mente inconsciente |
+| PAS | Problema–Agitação–Solução | Fórmula de estrutura de copy (atribuída a Dan Kennedy) |
+| Pirâmide de Freytag | Estrutura dramática | Exposição→ação crescente→clímax→ação decrescente→desfecho |
+| Lei de Hick | — | Mais opções = decisão mais lenta |
+| Lei de Fitts | — | Alvo maior/mais perto = clique mais rápido |
+| Vítima identificável | — | Empatizamos com 1 pessoa concreta, não com estatística |
+| Reciprocidade | — | Princípio de Cialdini: receber gera obrigação de retribuir |
 
 *(adicionar conforme surgir)*

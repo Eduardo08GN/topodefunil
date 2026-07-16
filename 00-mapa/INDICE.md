@@ -13,7 +13,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - [x] [Gary Bencivenga](../mentores/gary-bencivenga/README.md) ✅ — o mestre da prova (2 docs)
 - [x] [Dan Kennedy](../mentores/dan-kennedy/README.md) ✅ — aquisição + psicologia (2 docs)
 - [x] [Joe Karbo](../mentores/joe-karbo/README.md) ✅ — "Lazy Man's Way to Riches" (1 doc)
-- [ ] [Rosa Morel](../mentores/rosa-morel/README.md) 🌱 — Neurocopywriting (índice mapeado, aguardando capítulos)
+- [x] [Rosa Morel](../mentores/rosa-morel/README.md) ✅ — Neurocopywriting (livro destilado, 8 docs)
 
 ## Frameworks (estruturas replicáveis)
 
@@ -30,8 +30,14 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 
 **Storytelling / escala**
 - ✅ [Storytelling de 8 Dígitos](../frameworks/storytelling-8-digitos.md) — história de abertura que vende
+- ✅ [Storytelling e Neurociência](../frameworks/storytelling-neurociencia.md) — oxitocina, vítima identificável (Rokia), 7 traços
 - ✅ [Quebra de objeções em VSL — Jon Benson](../frameworks/jon-benson-quebra-objecoes.md) — as 12 objeções
 - ✅ [A Maior Alavanca para Escalar (a Prova)](../frameworks/maior-alavanca-escalar.md) — 12 elementos de construção de crença
+
+**Estrutura / neurocopy (Rosa Morel)**
+- ✅ [Pirâmide de Freytag](../frameworks/freytag-estrutura.md) — estrutura argumental + PAS
+- ✅ [UX Writing Neuro](../frameworks/ux-writing-neuro.md) — Maslow, Kenrick, Fitts e Hick
+- ✅ [Recursos Argumentativos](../frameworks/recursos-argumentativos.md) — sintaxe persuasiva + estudo do "porque"
 
 ## Princípios
 
@@ -40,6 +46,11 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [O Segredo Imoral dos Anúncios](../principios/segredo-imoral-anuncios.md) — disfarçar persuasão de conteúdo
 - ✅ [Fear Sells](../principios/fear-sells.md) — o medo é a emoção que dispara a compra (framework de 6 passos)
 - ✅ [Psicologia do Conteúdo](../principios/psicologia-do-conteudo.md) — 8 princípios de confiança (desire mapping, prova, one std deviation…)
+- ✅ [Os 3 Cérebros do Consumidor](../principios/tres-cerebros.md) — 95% inconsciente, 6 estímulos de Renvoise
+- ✅ [Power Words e Neurônios-Espelho](../principios/power-words.md) — palavras que evocam a ação
+- ✅ [Cialdini e Kawasaki](../principios/cialdini-kawasaki.md) — 7 princípios de influência + 3 fases do "crente"
+- ✅ [Por que não compram (antídoto do medo)](../principios/porque-nao-compram.md) — medo→necessidade→desejo (Klaric)
+- ✅ [Persuasão × Manipulação](../principios/persuasao-vs-manipulacao.md) — a ética da copy
 
 ## Aulas dos mestres (nos perfis)
 
@@ -80,6 +91,9 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - **OS OLHOS CERTOS** (não muitos olhos): [View × Buyer](../hooks/view-vs-buyer.md) ↔ [Kennedy](../mentores/dan-kennedy/aquisicao-clientes.md) ↔ [Psicologia do Conteúdo #personalização](../principios/psicologia-do-conteudo.md).
 - **MEDO + PROVA** = compra: [Fear Sells](../principios/fear-sells.md) ↔ [Bencivenga prova](../mentores/gary-bencivenga/segredo-fechamento.md) ↔ [Mecanismo Único](../principios/mecanismo-unico.md).
 - **CONTEXT LEAN → SCROLL STOP → SNAPBACK** = a duality em 3 segundos: [Como Escrever o Hook](../hooks/como-escrever-o-hook.md) ↔ [Duality](../principios/duality-marketing.md).
+- **95% DA DECISÃO É INCONSCIENTE** (camada neuro): [3 Cérebros](../principios/tres-cerebros.md) ↔ [Power Words](../principios/power-words.md) ↔ [Cialdini](../principios/cialdini-kawasaki.md) ↔ [Storytelling neuro](../frameworks/storytelling-neurociencia.md) — a ciência por baixo de todo o resto.
+- **REDUZIR FRICÇÃO / UM CTA**: [Fitts e Hick](../frameworks/ux-writing-neuro.md) ↔ [Checklist Jon Benson](../mentores/jon-benson/checklist-7-figuras.md).
+- **ÉTICA** (a mesma faca): [Persuasão × Manipulação](../principios/persuasao-vs-manipulacao.md) ↔ [vender é ético (Jon Benson)](../mentores/jon-benson/checklist-7-figuras.md).
 
 ## Legenda de status
 🌱 stub · 🚧 em construção · ✅ consolidado

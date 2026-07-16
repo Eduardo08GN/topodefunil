@@ -1,30 +1,40 @@
 # Rosa Morel — Neurocopywriting
 
-- **Status:** 🌱 aguardando conteúdo (só o índice mapeado)
+- **Status:** ✅ livro destilado (8 docs)
 - **Obra:** *Neurocopywriting. La ciencia detrás de los textos persuasivos* (2018)
 - **Ângulo:** a **camada científica/neuro** por baixo da copy persuasiva — neuromarketing, neurolinguística e psicologia evolutiva aplicados à escrita que vende
-- **Escola:** bebe de Cialdini, Kawasaki, e do neuromarketing (Jürgen Klaric, Gerald Zaltman, Clotaire Rapaille, Patrick Renvoise, Néstor Braidot)
+- **Escola:** Cialdini, Kawasaki, e neuromarketing (Jürgen Klaric, Gerald Zaltman, Clotaire Rapaille, Patrick Renvoise, Néstor Braidot)
 
-> ⚠️ Livro com copyright. Aqui só entra **destilação transformada** (em PT), com atribuição — nunca texto verbatim.
+> ⚠️ Livro com copyright. Aqui só há **destilação transformada** (em PT), com atribuição — sem texto verbatim.
 
-## Mapa do índice → onde vai conectar na base
+## Documentos destilados
 
-| Capítulo | Status | Conexão na base |
-|----------|--------|-----------------|
-| Cómo funcionan **todos los cerebros** del cliente | 🌱 novo | modelo dos 3 cérebros → [Psicologia do Conteúdo](../../principios/psicologia-do-conteudo.md) |
-| **Power words** + **neuronas espejo** | 🌱 novo | [Hooks Viciosos (palavras de carga)](../../hooks/hooks-viciosos.md), [Biblioteca (relatável/espelho)](../../hooks/biblioteca-de-formatos.md) |
-| UX Writing: pirâmides de **Maslow y Kenrick** | 🌱 novo | necessidades/desejos → [Desire mapping](../../principios/psicologia-do-conteudo.md) |
-| Leis de **Fitts y Hick** | 🌱 novo | fricção/decisão → "um único CTA" ([Checklist Jon Benson](../jon-benson/checklist-7-figuras.md)) |
-| **Cialdini, Kawasaki** | 🌱 novo (prioridade) | princípios de influência — **doc próprio a criar** |
-| **Freytag** (estrutura argumental) | 🌱 novo | irmã da Jornada do Herói → [VSL Jon Benson](../../frameworks/jon-benson-vsl-estrutura.md) |
-| Storytelling + cérebro / caso **Rokia** | 🌱 novo | efeito vítima identificável → [Storytelling 8 dígitos](../../frameworks/storytelling-8-digitos.md) |
-| Por qué **no compran** | 🌱 novo | [Quebra de objeções](../../frameworks/jon-benson-quebra-objecoes.md), [Mecanismo Único](../../principios/mecanismo-unico.md) |
-| ¿Convences o **manipulas**? (ética) | 🌱 novo | "vender é ético" ([Checklist Jon Benson](../jon-benson/checklist-7-figuras.md)) |
+**Princípios**
+- [Os 3 Cérebros do Consumidor](../../principios/tres-cerebros.md) — 95% inconsciente, 6 estímulos de Renvoise, necessidades > benefícios (caso Fran)
+- [Power Words e Neurônios-Espelho](../../principios/power-words.md) — as palavras que fazem o leitor "se ver" (caso loteria)
+- [Cialdini e Kawasaki](../../principios/cialdini-kawasaki.md) — os 7 princípios de influência + as 3 fases até o "crente"
+- [Por que não compram (antídoto do medo)](../../principios/porque-nao-compram.md) — medo→necessidade→desejo + fórmula de Klaric (caso Elena)
+- [Persuasão × Manipulação](../../principios/persuasao-vs-manipulacao.md) — a ética da copy
 
-## O que preciso receber pra destilar
-Os capítulos em si (texto, print ou PDF). Prioridade sugerida pelo valor único:
-1. **Cialdini/Kawasaki** (princípios de influência — lacuna na base)
-2. **Os 3 cérebros** + **power words / neuronas espejo**
-3. **Freytag** + **Maslow/Kenrick** + **Fitts/Hick**
+**Frameworks**
+- [Pirâmide de Freytag](../../frameworks/freytag-estrutura.md) — a estrutura argumental + PAS
+- [UX Writing Neuro](../../frameworks/ux-writing-neuro.md) — Maslow, Kenrick, Fitts e Hick
+- [Storytelling e Neurociência](../../frameworks/storytelling-neurociencia.md) — oxitocina, caso Rokia, 7 traços da história
+- [Recursos Argumentativos](../../frameworks/recursos-argumentativos.md) — sintaxe persuasiva + o estudo do "porque"
 
-Pode mandar um capítulo por vez que eu destilo e crio o doc no lugar certo.
+## As grandes ideias da Rosa Morel
+
+1. **Escreva pro cérebro inconsciente** (95% da decisão) — necessidades e emoções antes da lógica.
+2. **Palavras evocam imagens; imagens ativam neurônios-espelho** → o leitor se vê agindo → deseja comprar.
+3. **A ordem importa** (Freytag/PAS): não há CTA antes de cruzar a porta certa.
+4. **O medo é o motor; seja o antídoto** (Klaric): eliminar medo + reduzir esforço + aumentar prazer.
+5. **Persuadir ≠ manipular** — a mesma faca; a diferença é a sinceridade.
+
+## Casos práticos do livro (referência)
+- **Fran** — ficha de produto reescrita vende em 20 min → [3 Cérebros](../../principios/tres-cerebros.md)
+- **Elena** — e-mail humano salva o emprego dela → [Power Words](../../principios/power-words.md) / [Por que não compram](../../principios/porque-nao-compram.md)
+- **Rokia** — vítima identificável × estatística → [Storytelling e Neurociência](../../frameworks/storytelling-neurociencia.md)
+- **Hucha de rana** — a 1ª venda dela: o 1º crente do negócio é você.
+
+## Fonte processada
+- *Neurocopywriting* (Rosa Morel, 2018) — livro completo destilado
