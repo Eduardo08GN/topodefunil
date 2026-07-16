@@ -39,6 +39,23 @@
 
 A [Doutrina](doutrina-criativa-agressiva.md) manda atacar fundo (vergonha, medo, desejo). Este doc define o **modo de entrega**: o soco emocional vem da **verdade crua confessada**, não da frase de efeito. "I was relieved she fell asleep first" dói MAIS que "you're apologizing in the dark" — porque o primeiro é confissão e o segundo é slogan. **Agressivo no conteúdo, humano na voz.** Os dois radares que não podem disparar: o de propaganda (bingo) e o de tédio (morno).
 
+## ⚠️⚠️ A ARMADILHA MORTAL: voz humana ≠ cena castrada (os DOIS eixos)
+
+**O erro que quase afundou tudo (campo, 2026-07-16):** ao consertar o bingo, a copy virou monólogo confessional SEM visual reptiliano — *"parecia história romântica"*, nas palavras do operador: *"cadê as mulheres excitantes? os peitos com decote à mostra? a novinha do lado do velho?"*. Verdade — a copy tinha voz humana e ZERO tesão de imagem. Virou audiobook.
+
+**São DOIS eixos independentes — os dois no máximo, sempre:**
+
+| Eixo | O que é | Régua | Erra quando… |
+|---|---|---|---|
+| **VOZ (áudio/copy)** | como o narrador FALA | [Copy Humana](copy-humana.md): imperfeita, confissão, hedge, sem clichê | vira bingo (frase de catálogo) |
+| **CENA (visual)** | o que a CÂMERA MOSTRA | [Doutrina m.2](doutrina-criativa-agressiva.md) + [Guerra](guerra-reptiliana-angulos.md): novinha, decote, corpo, velho+troféu, prop fálico, choque | vira história romântica (talking-head sem sexo/choque) |
+
+- **Humanizar a VOZ nunca significa esfriar a CENA.** O cara pode confessar, vulnerável e imperfeito, ENQUANTO a câmera mostra a novinha de biquíni no colo dele. Áudio de gente + imagem de pornô soft.
+- **Melhor ainda: a narradora humana É a mulher excitante.** A novinha de decote fofocando sobre o coroa (hipérbole situacional [detalhe](empilhamento-reptiliano.md)) resolve os dois eixos numa tacada — voz real + corpo na tela.
+- **Gate visual (somar ao gate de voz):** o frame 1 tem decote / corpo / novinha+velho / prop-choque? Se a cena é "pessoa falando num fundo neutro", REPROVADO por mais humana que seja a fala.
+
+**Resumo:** morno (sem tesão, sem soco) e bingo (técnica visível) são os dois inimigos JÁ conhecidos. Este é o terceiro, traiçoeiro porque nasce de acertar o segundo: **voz humana + cena sem apelo = história romântica que ninguém assiste.** Os TRÊS radares ficam desligados só quando **voz de gente** encontra **cena de fogo**.
+
 ## Conexões
 - [Doutrina Agressiva](doutrina-criativa-agressiva.md) (o quê) · [Roteiro-Máquina](ataque-4-roteiro-maquina.md) (o esqueleto — que esta pele cobre)
 - [Ataque 3: Research](ataque-3-georgi-research.md) — a voz real do avatar vem dos comentários/reviews, não da imaginação
