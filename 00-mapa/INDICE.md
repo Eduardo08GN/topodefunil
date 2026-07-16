@@ -84,6 +84,11 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [Gramática Visual](../funil-organico/gramatica-visual.md) — o padrão visual que viraliza (9:16, avatar IA, bandeira US, prop-metáfora)
 - ✅ [Digestão Visual](../funil-organico/digestao-visual.md) — schema de signature + pipeline (ffmpeg → ler → matriz → template Veo 3)
 - ✅ [Páginas de Referência](../funil-organico/paginas-referencia.md) — swipe das páginas mineradas
+- ✅ [**Signature — Matriz por Página**](../funil-organico/signature-matriz.md) — digestão de 42 reels (6 páginas)
+- ✅ [**Signature por Arquétipo**](../funil-organico/signature-por-arquetipo.md) — o padrão universal + os 3 arquétipos
+- ✅ [**Prop-Metáforas**](../funil-organico/prop-metaforas.md) — catálogo dos props e funções
+- ✅ [**Template Criativo**](../funil-organico/template-criativo.md) — molde modelável + prompt-base Veo 3 + slots da triangulação
+- ✅ [**Insights: Triangulação**](insights-empiricos.md) — signature × copy × oferta (empirismo acumulado)
 
 ## Swipes anotados
 - ✅ [Anatomia da VSL de Suplemento Masculino](../swipes/vsl-suplemento-masculino.md) — dissecação de 9 VSLs (ED/aumento) + 12 técnicas novas

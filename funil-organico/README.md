@@ -25,7 +25,13 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | [avatares-experts.md](avatares-experts.md) | Taxonomia dos arquétipos de persona-expert (autoridade médica, curandeiro ancestral, wellness influencer, marca institucional) e a alavanca de persuasão de cada um |
 | [gramatica-visual.md](gramatica-visual.md) | O padrão visual que se repete nos criativos que viralizam: formato, avatar, prop-metáfora, texto na tela, cenário, CTA |
 | [digestao-visual.md](digestao-visual.md) | O pipeline de 5 passos para minerar um criativo concorrente (baixar → keyframes → ler → agregar em matriz → destilar em template/prompt Veo 3) |
-| [paginas-referencia.md](paginas-referencia.md) | As páginas concorrentes mineradas (Nitric Health, Tanisha Rivers, Kofi&Simba, Alexis Burgundy, Men's Performance) com persona, props e CTA de cada uma |
+| [paginas-referencia.md](paginas-referencia.md) | As páginas concorrentes mineradas com persona, props e CTA de cada uma |
+| **[signature-matriz.md](signature-matriz.md)** | A digestão visual de **42 reels (6 páginas)** — matriz de signature por página |
+| **[signature-por-arquetipo.md](signature-por-arquetipo.md)** | O **padrão universal** destilado (o esqueleto que todas repetem) + os 3 arquétipos |
+| **[prop-metaforas.md](prop-metaforas.md)** | Catálogo dos props (banana/pepino/modelo anatômico…) e suas funções |
+| **[template-criativo.md](template-criativo.md)** | O **template modelável** + prompt-base Veo 3 + os slots da triangulação (o output acionável) |
+
+> Insight-mãe da operação: [../00-mapa/insights-empiricos.md](../00-mapa/insights-empiricos.md) (triangulação signature × copy × oferta).
 
 ## Como o pilar se conecta com o resto da base
 
