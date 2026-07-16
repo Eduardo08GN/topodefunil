@@ -47,6 +47,23 @@ Correção de calibragem vinda do operador: não basta o visual sexy/chocante �
 
 > O #10 é a **ponte perfeita**: o curiosity gap da cena ("qual o segredo?") desagua direto no bloco de mecanismo e no CTA ("comenta TITAN que eu te conto o que ele respondeu").
 
+## ⚡ Hipérbole situacional — a reclamação que é prova (testemunho invertido)
+
+Dispositivo do operador: o excesso de resultado narrado **como um "problema" da vida dela**. Exemplo-mãe: *"até fiquei prejudicada na faculdade — fui reprovada por PRESENÇA, porque ele queria 'aquilo' todo dia e toda hora e eu perdia o horário da facul."* O reptiliano lê stamina absurda + desejabilidade + prova social pela boca dela; a moderação lê uma moça reclamando da faculdade. **Compliance perfeito: o dano é banal, a causa é só "aquilo".**
+
+**Anatomia (motor, não lista):**
+1. **Narradora = a "vítima"** — namorada/esposa novinha reclamando de mentirinha (revira o olho sorrindo).
+2. **Dano trivial e cômico** (nunca dano real): reprovação por falta, yoga perdida, intervenção das amigas.
+3. **Causa nunca nomeada** — "aquilo", "o horário dele", "ocupada". A entrelinha carrega tudo.
+4. **Excesso quantificado** — número específico faz a hipérbole crível ("3 estrados em 4 meses", "6h E 7h").
+5. **CTA dupla** — fisga o homem (quero SER esse problema) e a mulher (marca/comenta pelo marido).
+
+**Banco de reclamações (recombinar):** reprovada por presença ("ele tem 57, façam as contas") · 3 estrados de cama em 4 meses ("o vendedor me atende pelo nome") · largou a yoga das 6h ("as 6h agora são o horário dele; as 7h também") · intervenção das amigas ("gente, eu tô ÓTIMA") · o cachorro se mudou pra sala (por vontade própria) · farmácia invertida ("perguntei se existe algo pra ele PARAR; a farmacêutica riu") · Uber rating 4,2 de cancelar corrida na porta · "a médica mandou EU descansar. Eu. Ele tem quase 60."
+
+**Formato-irmão — o AVISO FALSO (fruto proibido):** *"Mulheres, ESCONDAM esse vídeo dos maridos. Tô avisando."* — psicologia reversa + FOMO + recruta a mulher como distribuidora/comentarista. Variante de CTA: *"Só comenta TITAN se a sua rotina aguentar."* (desafio = compromisso público, [Cialdini](../principios/cialdini-kawasaki.md)).
+
+**Encaixe:** funciona como hook inteiro (ela falando pra câmera, estilo desabafo/story-time — barato de gerar: 1 personagem, 1 cenário) ou como bloco de prova depois de um hook visual (a "reclamação" É a prova Bencivenga em forma cômica). Combina com a camada **stamina implícita** acima (do-not-disturb, bocejo feliz).
+
 ## Regras de montagem
 1. **Escolher cena pelo `[DESEJO]`/`[FERIDA]`** do criativo ([mapa 50+](desejos-ocultos-50plus.md)): vingança/ex → #1, #7 · rivalidade jovem → #2, #3, #9 · status na tribo → #5, #7 · stamina → #8.
 2. **A cena É o hook** (shot 1) — o avatar-expert e o mecanismo entram DEPOIS que o dedo já travou. Formato: cold-open dramatizado → corte pro expert ("quer saber por que ela olha pra ele assim?").

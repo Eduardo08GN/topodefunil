@@ -41,6 +41,8 @@ O avatar/coadjuvante feminina não é decoração — é o **scroll-stop reptili
 
 **⚡ 2b. Cena estática soma, EVENTO multiplica ([empilhamento reptiliano](empilhamento-reptiliano.md)):** a mulher-troféu sozinha é nível X. O hook profissional empilha **desejo × posse × testemunha sofrendo × dominância** — ex.: loira no braço do coroa + a **ex-mulher congelando na calçada, atônita de inveja** + ele **rindo** sem parar de andar. Todo hook mira **3+ camadas**; banco de cenas e estoque combinatório no doc dedicado.
 
+**⚡ 2c. Hipérbole situacional — a reclamação que é prova ([detalhe](empilhamento-reptiliano.md)):** o excesso de resultado narrado por ELA como "problema" da vida dela — *"fui reprovada por PRESENÇA na facul porque ele queria 'aquilo' todo dia e toda hora."* Dano banal/cômico + causa nunca nomeada + excesso quantificado = stamina e desejabilidade gritando, com a palavra 100% limpa. Inclui o formato-irmão do **aviso falso** ("mulheres, escondam esse vídeo dos maridos").
+
 ### 3. A copy ataca vergonha, medo e desejo oculto — nunca "o problema"
 Copy que descreve problema = bula. Copy que encena a **ferida** = venda. Usar sempre o [mapa de desejos ocultos 50+](desejos-ocultos-50plus.md):
 - **Vergonha:** a noite que ela parou de procurar; o "tudo bem, amor" com voz de pena; apologizing in the dark.
