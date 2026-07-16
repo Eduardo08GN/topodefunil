@@ -7,7 +7,8 @@
 
 ## Documentos desta base
 
-- [**Estrutura de VSL (blueprint completo)**](../../frameworks/jon-benson-vsl-estrutura.md) — os 5 blocos com % de esforço, do gancho ao fechamento
+- [**Estrutura de VSL (blueprint completo)**](../../frameworks/jon-benson-vsl-estrutura.md) — os 5 blocos com % de esforço, do gancho ao fechamento (formato **vídeo**)
+- [**5M Sales Letter Formula**](../../frameworks/jon-benson-5m-sales-page.md) — os 18 subheadlines da sales page em **texto** + article page + estratégia de P.S.
 - [**Quebra de objeções em VSL**](../../frameworks/jon-benson-quebra-objecoes.md) — as 12 objeções e como derrubar cada uma
 - [**Checklist 7 Figuras**](checklist-7-figuras.md) — 8 travas de qualidade pra rodar antes de vender
 
