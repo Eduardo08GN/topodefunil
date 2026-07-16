@@ -15,6 +15,7 @@ Preservar, organizar e conectar tudo que for aprendido — frameworks, princípi
 | [`00-mapa/`](00-mapa/) | Índice-mestre e mapa de conexões entre tudo |
 | [`mentores/`](mentores/) | Perfil, métodos e princípios de cada copywriter |
 | [`frameworks/`](frameworks/) | Estruturas replicáveis (VSL, big idea, leads, etc.) |
+| [`hooks/`](hooks/) | Pilar de hooks para vídeo curto (reels/TikTok/anúncios) |
 | [`principios/`](principios/) | Regras e verdades atemporais de copy |
 | [`swipes/`](swipes/) | Trechos de copy real anotados (o que funciona e por quê) |
 | [`recursos/`](recursos/) | Ferramentas e processos práticos (ex.: minerar swipes) |

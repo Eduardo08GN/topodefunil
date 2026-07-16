@@ -21,5 +21,14 @@ Termos e jargão. Cresce conforme aparecem no material.
 | Future pacing | Projeção futura | Fazer o prospecto se imaginar já vivendo o resultado |
 | Swipe file | Biblioteca de referências | Coleção de copy real guardada pra estudar/reaplicar |
 | Solo offer | Oferta única | Uma só oferta focada (Kennedy) em vez de catálogo, pra aquisição |
+| Hook | Gancho (vídeo) | Os primeiros 3–5s do reel/vídeo que decidem tudo |
+| Open loop / Curiosity gap | Laço aberto / lacuna de curiosidade | Informação incompleta que a mente quer fechar |
+| Pattern interrupt | Interrupção de padrão | Quebra da expectativa que trava o scroll |
+| Key visual | Visual-herói | A imagem-âncora dos primeiros segundos (escolhida antes da fala) |
+| Retention graph | Curva de retenção | % de gente ainda assistindo a cada segundo — sinal-chave pro algoritmo |
+| Match cut | Corte casado | Emenda em que o fim de uma cena "casa" com o início da próxima |
+| Viral sense | Faro de viral | Intuição treinada (como um dataset) do que viraliza |
+| Drunk grandma | Vó de 90 anos | Regra: entendível em meio segundo, sem contexto extra |
+| Rubbernecking | "Pescoço de borracha" | Impulso de olhar pra tragédia/drama |
 
 *(adicionar conforme surgir)*

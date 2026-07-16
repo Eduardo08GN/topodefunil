@@ -2,7 +2,7 @@
 
 Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a cada novo material processado.
 
-## Status: 🚧 crescendo — 5 mentores · 4 fontes (PDFs) + 13 aulas (canal JL) processadas
+## Status: 🚧 crescendo — 5 mentores · PDFs + 13 aulas JL + pilar Hooks (10 aulas short-form)
 
 ---
 
@@ -46,6 +46,15 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [Kennedy — Psicologia do Consumidor](../mentores/dan-kennedy/psicologia-consumidor.md)
 - ✅ [Karbo — O Caminho do Preguiçoso](../mentores/joe-karbo/caminho-preguicoso.md)
 
+## 🎬 Hooks / Short-form (pilar novo)
+
+- ✅ [Pilar Hooks (visão geral + regras testadas)](../hooks/README.md) — por que o hook é 80% do jogo
+- ✅ [Anatomia do Hook](../hooks/anatomia-do-hook.md) — 4 componentes + sanduíche visual→áudio→visual + key visual
+- ✅ [Biblioteca de Formatos](../hooks/biblioteca-de-formatos.md) — arquétipos com templates preenchíveis
+- ✅ [Curiosity Loops](../hooks/curiosity-loops.md) — juxtaposição, twist/gap/ladder, medo ético
+- ✅ [Hooks Viciosos](../hooks/hooks-viciosos.md) — 8 princípios + 3 tipos de relevância
+- ✅ [View × Buyer](../hooks/view-vs-buyer.md) — atrair o público que compra (caso Neurogum)
+
 ## Recursos (ferramentas / processo)
 
 - ✅ [Baixar qualquer VSL ou anúncio](../recursos/baixar-qualquer-vsl.md) — minerar swipes de concorrentes
@@ -63,6 +72,8 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - **PROVA** é o fio de ouro: [Bencivenga fechamento](../mentores/gary-bencivenga/segredo-fechamento.md) ↔ [Maior Alavanca](../frameworks/maior-alavanca-escalar.md) ↔ [Equação de Persuasão](../mentores/gary-bencivenga/equacao-persuasao.md).
 - **MECANISMO ÚNICO** aparece com nomes diferentes: "grande mentira/verdade" (Jon Benson), "M" do [RMBC](../frameworks/rmbc-metodo.md), "tese de marketing" ([VSL 8 dígitos](../frameworks/vsl-8-digitos-estrutura.md)), DYNA/PSYC ([Karbo](../mentores/joe-karbo/caminho-preguicoso.md)).
 - **DISFARÇAR O ANÚNCIO** de conteúdo nativo: [Segredo Imoral](../principios/segredo-imoral-anuncios.md) ↔ [Análise de CSL](../frameworks/analise-csl.md) ↔ [Validar Anúncios](../frameworks/validar-anuncios.md).
+- **CONTRASTE / ABRIR LOOP** é o hook em qualquer mídia: [Curiosity Loops](../hooks/curiosity-loops.md) ↔ [loops do Jon Benson](../frameworks/jon-benson-vsl-estrutura.md) ↔ [Mecanismo Único](../principios/mecanismo-unico.md).
+- **OS OLHOS CERTOS** (não muitos olhos): [View × Buyer](../hooks/view-vs-buyer.md) ↔ [Kennedy](../mentores/dan-kennedy/aquisicao-clientes.md).
 
 ## Legenda de status
 🌱 stub · 🚧 em construção · ✅ consolidado
