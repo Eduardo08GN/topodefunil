@@ -17,6 +17,7 @@ Preservar, organizar e conectar tudo que for aprendido — frameworks, princípi
 | [`frameworks/`](frameworks/) | Estruturas replicáveis (VSL, big idea, leads, etc.) |
 | [`principios/`](principios/) | Regras e verdades atemporais de copy |
 | [`swipes/`](swipes/) | Trechos de copy real anotados (o que funciona e por quê) |
+| [`recursos/`](recursos/) | Ferramentas e processos práticos (ex.: minerar swipes) |
 | [`templates/`](templates/) | Esqueletos prontos pra escrever |
 | [`glossario/`](glossario/) | Termos e jargão do direct response |
 | [`_fontes/`](_fontes/) | Originais extraídos dos PDFs (texto integral, fonte de verdade) |

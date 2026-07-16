@@ -3,7 +3,8 @@
 - **Autor/Fonte:** Stefan Georgi — "The RMBC Method" (carta/treinamento, 128 pág)
 - **Serve para:** escrever uma carta de vendas (long-form) completa, rápido e com alta conversão, seguindo uma linha de montagem
 - **Quando usar:** em qualquer promoção de resposta direta — funciona "não importa o que você vende nem como vende"
-- **Status:** ✅ núcleo consolidado (aprofundamentos nos módulos pagos — ver "A documentar")
+- **Status:** ✅ núcleo consolidado
+- **Walkthrough prático (perguntas reais, exemplos, checklist):** [RMBC — Passo a Passo](rmbc-passo-a-passo.md)
 
 > **Origem:** em 2014, Stefan precisava escrever **12 cartas de vendas por mês** para um cliente (bônus escalonado: 12 cartas = US$48k/mês). Impossível na força bruta — então criou uma **linha de montagem** em 4 passos. Resultado: uma carta de 8.000 palavras em **~16 horas**. Desde então, +US$700MM em vendas.
 >
@@ -82,6 +83,7 @@ Curiosamente, **o passo mais fácil** — porque toda carta de vendas tem basica
 - [ ] **PAS** (framework citado como +200% de CTR) e os 4 arquétipos de advertorial (módulo do Heath Wilcock)
 
 ## Conexões
+- [RMBC — Passo a Passo (prático)](rmbc-passo-a-passo.md) — as ~13 perguntas de pesquisa, os 12 itens do Brief, exemplos reais e os bônus (AOV, Fascinations)
 - [Princípio: Mecanismo Único](../principios/mecanismo-unico.md)
 - [Perfil de Stefan Georgi](../mentores/stefan-georgi/README.md)
 - Comparar com [Estrutura de VSL — Jon Benson](jon-benson-vsl-estrutura.md): mesma espinha (história → problema → solução → oferta → fechamento), abordagens diferentes.
