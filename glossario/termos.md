@@ -47,5 +47,10 @@ Termos e jargão. Cresce conforme aparecem no material.
 | Lei de Fitts | — | Alvo maior/mais perto = clique mais rápido |
 | Vítima identificável | — | Empatizamos com 1 pessoa concreta, não com estatística |
 | Reciprocidade | — | Princípio de Cialdini: receber gera obrigação de retribuir |
+| Veo 3 / 3.1 | — | Modelo de vídeo IA do Google (áudio + fala com lip-sync + controle de câmera via prompt) |
+| JSON prompting | — | Estruturar o prompt em JSON pra resultado mais cinematográfico |
+| Key visual (Veo) | Visual-herói | A imagem-âncora dos primeiros segundos do criativo |
+| Start/end frame | Frame inicial/final | Definir 1º e último quadro; o Veo 3.1 preenche a transição |
+| Image-to-video | Imagem→vídeo | Gerar imagem consistente primeiro e animá-la (personagem/produto consistente) |
 
 *(adicionar conforme surgir)*
