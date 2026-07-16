@@ -64,6 +64,55 @@ Dispositivo do operador: o excesso de resultado narrado **como um "problema" da 
 
 **Encaixe:** funciona como hook inteiro (ela falando pra câmera, estilo desabafo/story-time — barato de gerar: 1 personagem, 1 cenário) ou como bloco de prova depois de um hook visual (a "reclamação" É a prova Bencivenga em forma cômica). Combina com a camada **stamina implícita** acima (do-not-disturb, bocejo feliz).
 
+## 🎯 Leque de ângulos situacionais minerados (42 reels, 6 páginas) — NÃO afunilar num ângulo só
+
+O troféu/testemunha é UMA família de ângulo. As transcrições dos concorrentes (`compilado_*.md`) revelam o leque inteiro que roda validado no nicho — **cada reel da página deve rodar um ângulo diferente** (é o A/B industrial da signature). O catálogo, em 6 famílias:
+
+**A. Demonstração/receita (o cavalo de troia do "conteúdo"):**
+- **Receita ASMR "nature's Viagra"** — ingredientes + preparo ao vivo, promessa embutida ("é isto que traz seu soldado de volta à vida").
+- **Antes→depois em uma noite** — "if you want your soldier to go from THIS to THIS in just one night" (prop murcho → firme) + receita. Esqueleto mais reciclado de todos (mesma abertura, receitas diferentes).
+- **Ingrediente-choque único** — "o que o BICARBONATO faz com o seu Johnson" / "põe bicarbonato na vaselina e olha o que acontece".
+- **Aplicação tópica bizarra** — ritual de aplicar a mistura "diretamente no seu pequeno soldado por 15 min" (choque + curiosidade mórbida).
+- **Limpeza interna** — "limpe seus [órgãos] POR DENTRO em uma noite/7 dias — e não, você não precisa de médico" (frame higiene/desintoxicação).
+
+**B. Contraste/diagnóstico (o espelho):**
+- **Saudável × desligando** — "isto é um homem saudável; isto é um homem cujo corpo está se desligando" (lado a lado).
+- **Gêmeos de idade** — "estes 2 senhores têm 53 anos. O da esquerda performa como aos 20; o outro amolece no meio. A diferença é UM detalhe no estilo de vida" (+ a facada: "ela percebeu também — parou de te procurar primeiro… ela só precisa de alguém que TERMINE o serviço").
+- **Trio 50/50/60** — "isto é um homem de 50. Isto TAMBÉM é um homem de 50… a diferença não é idade, bro, é o que fazem toda manhã."
+- **Diagnóstico rapid-fire por imagem** — "isto é cortisol alto. Isto é cortisol alto. Isto TAMBÉM é cortisol alto" (barriga/rosto inchado/prop murcho em sequência) — 3 batidas visuais, zero explicação.
+- **Transformação extrema de terceiro** — "ele saiu de um [mínimo] pra ISTO em um mês com este truque africano."
+
+**C. Contrarian/vilão (a raiva canalizada):**
+- **Anti-pílula azul** — "pare de COMPRAR pílula azul. Ela não conserta nada: você tá ALUGANDO um resultado" (aluguel × dono = frame brilhante).
+- **Conspiração "funciona bem demais"** — "a Big Pharma gastou bilhões pra você nunca descobrir — não porque não funciona, mas porque funciona DEMAIS: homem que conserta o cortisol para de comprar pílula pra sempre."
+- **Debunk do mito ridículo** — "pasta de dente no Johnson cresce 15cm em 2 semanas… *(pausa)* qual é, você acha MESMO que isso funciona? Deixa eu te mostrar o jeito real" (ganha credibilidade sendo cético antes de vender).
+- **Anti-ranking** — "o alimento nº1 do planeta pra cortisol NÃO é ashwagandha, NÃO é magnésio, NÃO é camomila…" (elimina os conhecidos, revela o exótico).
+- **Anti-superestimulação** — "todo dia homens superestimulam o cérebro com AQUELE tipo de conteúdo, vocês sabem do que eu tô falando" (hábito+hormônio; de quebra recruta "mães de filhos" a compartilhar).
+
+**D. Choque narrativo (a história que não dá pra scrollar):**
+- **Humilhação de terceiro** — "ele se mijou no meio do mercado porque não conseguiu segurar" (vergonha alheia = retenção).
+- **Lista negativa reversa** — "se você NÃO quer explodir nos primeiros 30 segundos, NÃO beba suco de beterraba. Se NÃO quer que ela lembre do seu gosto, NÃO beba abacaxi…" (cada proibição = benefício; empilha 4-5).
+- **Aviso falso condicional** — "se você NÃO tem parceira, melhor nem tomar. E se é casado, CUIDADO: ela não vai conseguir acompanhar" (a hipérbole situacional em versão dele).
+- **Negging/provocação** — "você não tem um Johnson grande assim — tem pequeno ASSIM, como um americano fraco, porque não bebe isto" (insulto que desafia; usar com cuidado, funciona no arquétipo tribal).
+- **Sussurro conspiratório** — "chega mais perto… muitos homens americanos não fazem ideia do que tá acontecendo dentro do corpo deles AGORA" (intimidade + segredo).
+
+**E. Autoridade/número/âncora (o verniz de prova):**
+- **Quiz de sintomas** — "me responde, irmão americano: acorda exausto? rosto mais inchado que há 5 anos? drive sumiu? Se disse SIM a alguns…" (auto-diagnóstico = envolvimento ativo).
+- **Número gigante** — "mais de 30 MILHÕES de homens americanos sofrem com isso — e nenhum médico conta a solução."
+- **Âncora de preço dupla** — "$3.000 por protocolo na clínica de urologia — fora o CONSTRANGIMENTO de um estranho te manuseando — ou isto, em casa, em total privacidade" / "custa $2 em qualquer Walmart da Flórida".
+- **Timeline de resultado** — "dia 3: a manhã volta. dia 7: é ELA quem nota" (progressão concreta; o dia 7 entrega o desejo #2).
+- **Reis e guerreiros** — "esta especiaria valia mais que OURO; reis e guerreiros usavam antes da batalha e antes do quarto" (status ancestral).
+- ⛔ **Fake news/paródia "BREAKING"** — eles usam ("breaking: coach viral explicando…"); nós NÃO (risco de ban documentado) — o ângulo equivalente nosso é o "especialista reagindo" sem moldura de jornal.
+
+**F. Utilidade pura (alimenta página e algoritmo):**
+- **Hack de mercado sem produto** — "jogue água fervente nos pepinos e veja a cera aparecer / vire a melancia e olhe a mancha" — zero venda, CTA só "comente YES + siga" (constrói follow, alcance e disfarce de página-de-dicas; 1 a cada N posts).
+
+**Regras do leque:**
+1. **Rotação obrigatória:** cada criativo novo da página puxa uma família diferente (A→B→C→D→E→F e recomeça) — não afunilar; o algoritmo e a audiência cansam de ângulo repetido.
+2. **Pareamento:** cada ângulo casa com um [desejo/ferida](desejos-ocultos-50plus.md) (gêmeos→ferida 6; timeline→desejo 2; negging→desejo 4; aviso falso→hipérbole).
+3. **⚠️ Upgrade de compliance:** os concorrentes FALAM palavra banida ("boner", "get hard", "micropenis", "ED") — é o elo fraco deles. Nós **mantemos o ângulo e trocamos a palavra** (eufemismo + visual): mesmo soco, zero exposição ([insight #3](../00-mapa/insights-empiricos.md)).
+4. **Empilhar por cima:** qualquer ângulo do leque aceita as camadas da fórmula (testemunha, posse, dominância) — ex.: "gêmeos de 53" + a esposa do fraco olhando pro forte = duas famílias no mesmo hook.
+
 ## Regras de montagem
 1. **Escolher cena pelo `[DESEJO]`/`[FERIDA]`** do criativo ([mapa 50+](desejos-ocultos-50plus.md)): vingança/ex → #1, #7 · rivalidade jovem → #2, #3, #9 · status na tribo → #5, #7 · stamina → #8.
 2. **A cena É o hook** (shot 1) — o avatar-expert e o mecanismo entram DEPOIS que o dedo já travou. Formato: cold-open dramatizado → corte pro expert ("quer saber por que ela olha pra ele assim?").

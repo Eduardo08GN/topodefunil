@@ -33,6 +33,8 @@ Três camadas:
 - **Exótico:** "ele foi de micropênis a isto com um truque africano."
 - **Fake news:** "urgente: um coach viralizou explicando como homens 40+…"
 
+> **O catálogo COMPLETO de ângulos situacionais** (30 ângulos em 6 famílias, extraídos das transcrições dos 42 reels, com regra de rotação anti-afunilamento) está em [Empilhamento Reptiliano → Leque de ângulos](empilhamento-reptiliano.md). Esta taxonomia é o resumo; aquele é o arsenal de produção.
+
 ## Dispositivos verbais recorrentes
 - **Eufemismos p/ burlar filtro** (equivalente verbal do "B0NER"): *Johnson, soldier/little soldier, winner, manhood, down there, below the belt.*
 - **Conspiração farmacêutica** (quase literal e repetida): *"as farmácias não querem — metade dos clientes sumiria."*
