@@ -13,6 +13,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - [x] [Gary Bencivenga](../mentores/gary-bencivenga/README.md) ✅ — o mestre da prova (2 docs)
 - [x] [Dan Kennedy](../mentores/dan-kennedy/README.md) ✅ — aquisição + psicologia (2 docs)
 - [x] [Joe Karbo](../mentores/joe-karbo/README.md) ✅ — "Lazy Man's Way to Riches" (1 doc)
+- [ ] [Rosa Morel](../mentores/rosa-morel/README.md) 🌱 — Neurocopywriting (índice mapeado, aguardando capítulos)
 
 ## Frameworks (estruturas replicáveis)
 
