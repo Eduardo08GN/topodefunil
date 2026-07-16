@@ -48,8 +48,11 @@
 4. **Eco do loop-mãe:** "…and I'll send you what she saw."
 5. **Provocação final opcional** (o Zeigarnik do orgulho): "Or keep scrolling. She'll understand. *(wink)*"
 
+## ⚠️ A régua é ESQUELETO, não voz (anti-bingo)
+A tabela acima diz O QUE cada segundo faz — **nunca COMO se fala**. Preencher a régua com frases de catálogo ("nobody had the guts…", "picture her face") = **bingo de copywriting** = radar anti-propaganda dispara = criativo morto com estrutura perfeita. A voz obedece à [🫀 Copy Humana](copy-humana.md): fala imperfeita, confissão, mecanismo com hedge, filme (não PowerPoint), CTA desarmado. **As "10 aberturas" e "fórmulas de transição" abaixo são POSIÇÕES na régua, não frases pra copiar literalmente — reescrever cada uma na voz humana do narrador da vez.**
+
 ## QA do roteiro (antes de virar prompt — 6 perguntas)
-[ ] Frame 1 é outdoor? · [ ] Loop-mãe aberto ≤4s e NUNCA fechado? · [ ] Ferida encenada (cena, não descrição)? · [ ] MUP alivia culpa + dá vilão? · [ ] Prova granular (número/prazo/detalhe)? · [ ] UM comando + FOMO no CTA? — **Qualquer não → volta pro bloco.**
+[ ] Frame 1 é outdoor? · [ ] Loop-mãe aberto ≤4s e NUNCA fechado? · [ ] Ferida encenada (cena, não descrição)? · [ ] MUP alivia culpa + dá vilão? · [ ] Prova granular (número/prazo/detalhe)? · [ ] UM comando + FOMO no CTA? · [ ] **Passou no gate da [Copy Humana](copy-humana.md)** (leitura em voz alta, zero frase de catálogo, confissão presente, "isso aconteceu de verdade"?) — **Qualquer não → volta pro bloco.**
 
 ## Conexões
 - [Ataque 1](ataque-1-neuro-hooking.md) · [Ataque 2](ataque-2-benson-video.md) · [Ataque 3](ataque-3-georgi-research.md) · [Ataque 5: Casting](ataque-5-casting-bibles.md)

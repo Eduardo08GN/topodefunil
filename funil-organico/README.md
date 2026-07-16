@@ -48,6 +48,7 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | **[ataque-5-casting-bibles.md](ataque-5-casting-bibles.md)** | Casting reptiliano: 7 Bibles prontas (Sky, Lauren, Maya, Frank, Denise, rival, Solomon) + Style Bibles + escalação |
 | **[ataque-6-fabrica-escala.md](ataque-6-fabrica-escala.md)** | A fábrica: 1 corpo × N hooks, cadência semanal, métricas (comment rate = north star), kill/iterate/scale, tracker |
 | **[ataque-7-entrevista-decisoes.md](ataque-7-entrevista-decisoes.md)** | 🎙️ A entrevista: as 10 decisões do operador que ligam a máquina (com recomendações) |
+| **[copy-humana.md](copy-humana.md)** | 🫀 **Verdade > Técnica**: o anti-bingo de copywriting — 8 leis + gate ("isso aconteceu" vs "que copy boa") — a pele humana sobre o esqueleto da régua |
 
 > Insight-mãe da operação: [../00-mapa/insights-empiricos.md](../00-mapa/insights-empiricos.md) (triangulação signature × copy × oferta).
 

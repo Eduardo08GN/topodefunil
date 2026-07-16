@@ -68,6 +68,9 @@ Pergunta que ele **não consegue não responder** mentalmente = retenção garan
 - **Meio:** curiosity gap aberto e NUNCA fechado no feed ("o que ela viu, eu só mostro na DM").
 - **CTA:** escassez legítima + porta fechando ("isso some do meu perfil em 48h" / "só respondo quem comentar hoje" / "ela vai querer saber o que mudou — comenta TITAN antes que eu tire do ar").
 
+### 6b. Agressivo no conteúdo, HUMANO na voz (o segundo radar)
+Existem DOIS modos de falha, não um: o **morno** (comercial de TV) e o **bingo de copywriting** (a copy que empilha "nobody had the guts…", "picture her face" — técnica visível = radar anti-propaganda). O soco vem da **verdade crua confessada** ("my first feeling wasn't pride — it was relief"), nunca da frase de efeito. Gate completo: [🫀 Copy Humana](copy-humana.md). Reação-alvo: *"isso aconteceu"* / *"esse cara sou eu"* — nunca *"que copy boa"*.
+
 ### 7. Superior ≠ suave (o erro fatal de leitura)
 "Nossa copy é superior ao piso" **NUNCA** significa "mais educada que o piso". Significa: **mesma agressividade emocional ou MAIOR**, com mecanismo real, prova real e palavra limpa. O concorrente choca com mentira; nós chocamos com verdade **mais afiada**. Quem leu a base inteira e entrega copy morna não entendeu NADA da base: Benson abre VSL com padrão interrompido, Georgi caça a dor crua na Research, Bencivenga diz que o público É cético e entediado, Halbert vendia com luxúria e inveja. **A tradição inteira do direct response é agressiva.** Morno é traição à base.
 
