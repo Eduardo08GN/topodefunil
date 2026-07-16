@@ -1,26 +1,30 @@
 # Stefan Georgi
 
-- **Status:** 🌱 aguardando material
-- **Especialidade:** copy de resposta direta em escala; múltiplos 9 dígitos em vendas atribuídas à copy
+- **Status:** ✅ base inicial documentada (método RMBC)
+- **Especialidade:** copy de resposta direta em escala e em alta velocidade
+- **Números:** +US$700MM em vendas para si e clientes; já escreveu **12 cartas de vendas/mês** para um único cliente (fez 9 dígitos pra ele em um ano)
 - **Método-assinatura:** **RMBC** — *Research → Mechanism → Brief → Copy*
+- **Ecossistema:** fundador do mastermind **Copy Accelerator** (US$30k/ano)
 
-## O que sabemos (a confirmar/expandir com o material)
+## Documentos desta base
 
-RMBC é o processo dele pra escrever copy rápido e com alta conversão:
+- [**Método RMBC (completo)**](../../frameworks/rmbc-metodo.md) — os 4 passos, com tempos e a estrutura de 7 seções da carta
+- [**Mecanismo Único**](../../principios/mecanismo-unico.md) — o coração do método (problema + solução)
 
-| Etapa | Foco |
-|-------|------|
-| **R** — Research | Entender avatar, dor, produto e provas antes de escrever uma linha |
-| **M** — Mechanism | O "mecanismo" único do problema *e* da solução (por que nada funcionou até agora / por que isto funciona) |
-| **B** — Brief | Destilar a pesquisa num briefing que guia toda a peça |
-| **C** — Copy | Escrever de fato, guiado pelo brief |
+## As grandes ideias do Stefan (resumo)
 
-## A documentar
-- [ ] Detalhamento de cada etapa do RMBC
-- [ ] Mecanismo do problema vs. mecanismo da solução (unique mechanism)
-- [ ] Estrutura de leads que ele usa
-- [ ] Princípios de escrita / edição dele
-- [ ] Swipes comentados
+1. **Copy é linha de montagem**, não inspiração. Sistema > talento — remove ansiedade e página em branco.
+2. **Pesquisa nas palavras do prospecto** (fóruns) + **diferenciação** (reviews 5★ e 1★ na Amazon).
+3. **Mecanismo Único** (do problema e da solução) cria o *paradigm shift* que converte o cético.
+4. **Brief antes de escrever** — 12 perguntas respondidas = metade da copy já pronta.
+5. **"Uso o método inteiro → converte. Não uso → não converte."**
 
-## Fontes
-*(registrar aqui o que você enviar: cursos, aulas, PDFs, entrevistas)*
+## Fontes processadas
+- `the-rmbc-method_compress` (128 pág) — na maior parte é a carta de vendas do método; núcleo do RMBC destilado
+
+## A documentar (futuro — módulos pagos)
+- [ ] As 22 perguntas de pesquisa completas
+- [ ] As 12 perguntas do Brief
+- [ ] Os 53 bullets do outline de Copy
+- [ ] Big Idea (definição + critério de 2 passos) e diferença para USP
+- [ ] Swipes de cartas reais dele, comentados
