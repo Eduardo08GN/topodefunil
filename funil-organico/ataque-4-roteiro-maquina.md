@@ -2,7 +2,9 @@
 
 **Plano de ataque, doc 4 de 7.** A estrutura definitiva do roteiro — cada segundo com função, cada transição com fórmula. Junta [neuro](ataque-1-neuro-hooking.md) + [Benson](ataque-2-benson-video.md) + [Georgi](ataque-3-georgi-research.md) numa linha de montagem. Preenchido pelo [brief](ataque-3-georgi-research.md); executado pelos [prompts de guerra](../recursos/veo3-direcao-de-cena.md).
 
-> **⏱️ LEI DOS 35 SEGUNDOS (inegociável, definida pelo operador):** nenhum vídeo-criativo ultrapassa **35s**. Por quê: (a) completion rate é o sinal que o algoritmo mais recompensa — quanto mais curto, mais gente chega ao CTA; (b) 35s = 4-5 shots Veo (≤8s) = custo/criativo menor = mais volume na [fábrica](ataque-6-fabrica-escala.md); (c) reel que precisa de 45s pra vender tem gordura — corta. **Roteiro estourou 35s → cortar bloco (nunca a re-fisgada), jamais "deixar passar".**
+> **⏱️ LEI DOS 32 SEGUNDOS (revisada 2026-07-17, limite técnico real do Veo 3.1):** o Veo 3.1 gera no máximo **8 segundos por clipe**. Nenhum vídeo criativo ultrapassa **32s totais**, o que significa exatamente **4 cortes de 8s**, nunca mais. Por quê: (a) é o teto físico da ferramenta, não escolha; (b) completion rate é o sinal que o algoritmo mais recompensa, quanto mais curto, mais gente chega ao CTA; (c) reel que precisa de mais que isso pra vender tem gordura, corta bloco inteiro. **Roteiro estourou 4 cortes → cortar um BLOCO inteiro da régua abaixo (o mecanismo vira gancho de DM), jamais espremer duas falas no mesmo clipe de 8s.**
+
+> **Orçamento de palavras por clipe:** em ritmo de fala natural e confiante (não apressado, com pausa), 8 segundos comportam **10 a 16 palavras faladas**, no máximo. Escrever mais que isso por clipe é o erro mais comum, a fala sai correndo feito locutor de rádio e quebra a voz humana da [copy-humana](copy-humana.md). Conte as palavras de cada linha antes de aprovar o roteiro.
 
 ## A régua dos 35 segundos
 
