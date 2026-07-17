@@ -66,7 +66,7 @@ A [Doutrina](doutrina-criativa-agressiva.md) manda atacar fundo (vergonha, medo,
 - **As [cenas-evento](empilhamento-reptiliano.md) (ex na calçada, gasp, casal) = hook visual de 2-3 SEGUNDOS** (cold-open mudo ou b-roll), nunca a estrutura dos 35s. Depois do choque visual, corta pra fala direta.
 - **Frases curtas. Comando. Corte.** O ritmo dos concorrentes é staccato — sem "and honestly?", sem reticências de novela, sem construção literária.
 
-**Hierarquia final das 4 leis de voz:** (1) fala DIRETA em 2ª pessoa [estrutura] → (2) agressiva no conteúdo [Doutrina] → (3) sem clichê de copy [anti-bingo] → (4) cena quente independente da voz [dois eixos]. Errar a #1 invalida as outras três.
+**Hierarquia final das 5 leis de voz:** (1) fala DIRETA em 2ª pessoa [estrutura] → (2) agressiva no conteúdo [Doutrina] → (3) sem clichê de copy [anti-bingo] → (4) cena quente independente da voz [dois eixos] → (5) **TOM cru sensorial + receita tangível** [[o que igualar dos exemplos](o-que-igualar-dos-exemplos.md)]. Errar a #1 invalida o resto; ignorar a #5 deixa a copy INFERIOR ao piso (educada demais no tom).
 
 ## Conexões
 - [Doutrina Agressiva](doutrina-criativa-agressiva.md) (o quê) · [Roteiro-Máquina](ataque-4-roteiro-maquina.md) (o esqueleto — que esta pele cobre)

@@ -102,6 +102,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**🩸 Ultrarrealismo Veo 3**](../recursos/veo3-ultrarealismo.md) — a perfeição denuncia IA: kill-list do plástico, 8 camadas de realismo, REALISM-SPEC, teste-mãe (⏱️ + LEI: criativo ≤ 35s)
 - ✅ **🗡️ Plano de Ataque (7 docs):** [1-Neuro-Hooking](../funil-organico/ataque-1-neuro-hooking.md) · [2-Benson→vídeo](../funil-organico/ataque-2-benson-video.md) · [3-Georgi/RMBC](../funil-organico/ataque-3-georgi-research.md) · [4-Roteiro-Máquina 35s](../funil-organico/ataque-4-roteiro-maquina.md) · [5-Casting/Bibles](../funil-organico/ataque-5-casting-bibles.md) · [6-Fábrica/Escala](../funil-organico/ataque-6-fabrica-escala.md) · [7-Entrevista/Decisões](../funil-organico/ataque-7-entrevista-decisoes.md)
 - ✅ [**🫀 Copy Humana — Verdade > Técnica**](../funil-organico/copy-humana.md) — o anti-bingo de copywriting: 8 leis + gate final ("isso aconteceu" vs "que copy boa")
+- ✅ [**🔥 O que Igualar dos Exemplos**](../funil-organico/o-que-igualar-dos-exemplos.md) — a crueza sanitizada: 5 elementos a igualar do piso (tom cru, receita tangível, reação dela) — sanitizar a palavra ≠ o tom
 - ✅ [**Insights: Triangulação**](insights-empiricos.md) — signature × copy × oferta (empirismo acumulado)
 
 ## Swipes anotados
