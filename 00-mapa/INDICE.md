@@ -97,6 +97,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**⚡ Doutrina Criativa Agressiva**](../funil-organico/doutrina-criativa-agressiva.md) — A LEI anti-copy-morna: Teste do Dedo, ataque reptiliano, FOMO, future projection (ler ANTES de gerar cena/copy)
 - ✅ [**Desejos Ocultos 50+**](../funil-organico/desejos-ocultos-50plus.md) — 15 desejos + 7 feridas do avatar, cada um com hook-cena candidato
 - ✅ [**🔥 Pecados Capitais 50+**](../funil-organico/pecados-capitais-50plus.md) — os 7 pecados mapeados no avatar (luxúria/soberba = motores do hook) + Gate do Arsenal: réptil + desejo + medo + FOMO + ≥2 pecados em TUDO
+- ✅ [**🗣️ Arsenal de Linguagem Indireta**](../funil-organico/arsenal-linguagem-indireta.md) — banco de eufemismo (órgão, firme/murcho, tamanho, reação dela) + linhas prontas por gatilho, a fonte fixa da copy
 - ✅ [**⚡ Empilhamento Reptiliano**](../funil-organico/empilhamento-reptiliano.md) — a fórmula multiplicadora do hook (desejo × posse × testemunha × dominância) + banco de cenas-evento + leque de 30 ângulos minerados
 - ✅ [**⚔️ Guerra Reptiliana — Gerador de Ângulos**](../funil-organico/guerra-reptiliana-angulos.md) — 9 botões reptilianos × famílias G–N inexploradas × matriz anti-vício de rota
 - ✅ [**🎬 Direção de Cena Veo 3 (padrão de guerra)**](../recursos/veo3-direcao-de-cena.md) — engenharia do 1º frame, 6 arquétipos de shot 1, direção emocional, som-choque, templates JSON

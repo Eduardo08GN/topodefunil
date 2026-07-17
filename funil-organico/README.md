@@ -36,6 +36,7 @@ Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook
 | **[doutrina-criativa-agressiva.md](doutrina-criativa-agressiva.md)** | ⚡ **A LEI**: anti-copy-morna, Teste do Dedo, ataque reptiliano, FOMO, future projection — ler ANTES de gerar qualquer cena/copy |
 | **[desejos-ocultos-50plus.md](desejos-ocultos-50plus.md)** | O **mapa da mina**: 15 desejos ocultos + 7 feridas do homem US 50+, cada um com hook-cena candidato |
 | **[pecados-capitais-50plus.md](pecados-capitais-50plus.md)** | 🔥 O **arsenal de instintos**: os 7 pecados capitais mapeados no avatar (luxúria/soberba abrem o hook, ≥2 empilhados por peça) + tabela pecado × desejo × ferida — par obrigatório do mapa de desejos |
+| **[arsenal-linguagem-indireta.md](arsenal-linguagem-indireta.md)** | 🗣️ O **banco de eufemismo**: como referenciar o órgão, firme/murcho, tamanho, fôlego e a reação dela sem a palavra banida + linhas prontas por gatilho — a fonte fixa de toda copy |
 | **[empilhamento-reptiliano.md](empilhamento-reptiliano.md)** | ⚡ A **fórmula multiplicadora** do hook (desejo × posse × testemunha × dominância) + banco de cenas-evento + hipérbole situacional + **leque de 30 ângulos situacionais em 6 famílias** (rotação anti-afunilamento) |
 | **[guerra-reptiliana-angulos.md](guerra-reptiliana-angulos.md)** | ⚔️ O **GERADOR de ângulos**: 9 botões reptilianos × 8 famílias de cena inexploradas (G–N: POV, flagrante, objeto-protagonista, confissão…) × matriz anti-vício de rota |
 
