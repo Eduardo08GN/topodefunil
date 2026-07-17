@@ -49,6 +49,9 @@
 3. **FOMO real:** porta fechando ("48h no ar" / "só respondo hoje") — nunca escassez fabricada de estoque.
 4. **Eco do loop-mãe:** "…and I'll send you what she saw."
 5. **Provocação final opcional** (o Zeigarnik do orgulho): "Or keep scrolling. She'll understand. *(wink)*"
+6. **Camada de link redundante** (documentado em signature-verbal, não cortar): "it's in my bio too" ou "also pinned in the comments" — multiplica caminho de clique, não é enfeite.
+
+**⚠️ ERRO REAL (2026-07-17): o CTA é o ÚNICO bloco onde curiosity gap ATRAPALHA.** No hook e no meio, mistério prende. No CTA, mistério confunde: "I'll send you what it is" não diz o que a pessoa ganha, e um comando ambíguo quebra Fitts/Hick. Regra: no CTA, sempre nomear a recompensa concreta ("the link", "what I take"), nunca deixar em aberto. Curiosity gap fecha ANTES do CTA, nunca dentro dele.
 
 ## ⚠️ A régua é ESQUELETO, não voz (anti-bingo)
 A tabela acima diz O QUE cada segundo faz — **nunca COMO se fala**. Preencher a régua com frases de catálogo ("nobody had the guts…", "picture her face") = **bingo de copywriting** = radar anti-propaganda dispara = criativo morto com estrutura perfeita. A voz obedece à [🫀 Copy Humana](copy-humana.md): fala imperfeita, confissão, mecanismo com hedge, filme (não PowerPoint), CTA desarmado. **As "10 aberturas" e "fórmulas de transição" abaixo são POSIÇÕES na régua, não frases pra copiar literalmente — reescrever cada uma na voz humana do narrador da vez.**
