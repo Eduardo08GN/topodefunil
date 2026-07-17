@@ -7,7 +7,8 @@
 > O espectador tem que pensar **"esse cara sou eu"** — não *"esse cara quer me vender algo"*.
 
 - **Status:** ✅ LEI (gate final de toda copy, DEPOIS da régua estrutural)
-- **Relação com o resto:** a [régua dos 35s](ataque-4-roteiro-maquina.md) é o **esqueleto** (invisível); este doc é a **pele** (o que se ouve). Esqueleto sem pele = robô. Cumprir os checkpoints da fórmula não é o objetivo — é o mínimo invisível.
+- **Relação com o resto:** a régua dos 35s (ver ataque 4) é o esqueleto, invisível. Este doc é a pele, o que se ouve. Esqueleto sem pele é robô. Cumprir os checkpoints da fórmula não é o objetivo, é o mínimo invisível.
+- **⛔ REGRA PERMANENTE DE ESCRITA (2026-07-17): hífen e travessão são PROIBIDOS em toda copy, bio, post e legenda.** É o marcador nº1 de texto gerado por IA. Ser humano escrevendo rápido não usa hífen nem travessão. Quebra a frase em duas, usa vírgula, usa ponto. Sem exceção.
 
 ## O caso-lição (v1 reprovada × v2 aprovada)
 
