@@ -28,6 +28,20 @@ Antes de aprovar qualquer cena/copy, responda como um homem de 52 anos, cansado,
 
 **Reprovou em qualquer item → refaz. Sem exceção. Sem "mas está compliant".** Compliant e invisível = zero vendas com selo de qualidade.
 
+## 🔥 GATE DO ARSENAL (obrigatório em TUDO — não só vídeo: copy, banner, bio, post, CTA, DM)
+
+Ordem do dono da operação (2026-07-17): **tudo que for produzido de conteúdo tem que bater nesses 5 disparos.** Peça que não marca as 5 caixas NÃO PUBLICA:
+
+| # | Disparo | Checagem | Fonte |
+|---|---|---|---|
+| 1 | **Cérebro reptiliano** | sexo, ameaça, status ou choque VISÍVEL no 1º segundo/1ª linha? | [3 Cérebros](../principios/tres-cerebros.md) |
+| 2 | **Desejo oculto** | ancora em ≥1 desejo do mapa (a fantasia que ele nunca diz em voz alta)? | [Desejos Ocultos](desejos-ocultos-50plus.md) |
+| 3 | **Medo/ferida** | cutuca ≥1 ferida (ser trocado, a pena dela, o silêncio, o espelho)? | [Fear Sells](../principios/fear-sells.md) + feridas do mapa |
+| 4 | **FOMO** | ele PERDE algo se scrollar/não agir (segredo, prazo, porta fechando)? | mandamento 6 |
+| 5 | **Pecados capitais** | dispara ≥2 dos 7 (hook SEMPRE abre em luxúria ou soberba)? | [🔥 Pecados Capitais 50+](pecados-capitais-50plus.md) |
+
+**E a régua transversal: copy SEMPRE muito agressiva.** Não existe "peça leve pra variar" — o feed já é a variação. A nossa assinatura é o soco. (Agressiva no conteúdo, humana na voz — mandamento 6b continua valendo: o soco vem da verdade crua, não da frase de efeito.)
+
 ## Os 7 mandamentos
 
 ### 1. O visual diz o que a boca não pode
@@ -46,7 +60,7 @@ O avatar/coadjuvante feminina não é decoração — é o **scroll-stop reptili
 **⚡ 2c. Hipérbole situacional — a reclamação que é prova ([detalhe](empilhamento-reptiliano.md)):** o excesso de resultado narrado por ELA como "problema" da vida dela — *"fui reprovada por PRESENÇA na facul porque ele queria 'aquilo' todo dia e toda hora."* Dano banal/cômico + causa nunca nomeada + excesso quantificado = stamina e desejabilidade gritando, com a palavra 100% limpa. Inclui o formato-irmão do **aviso falso** ("mulheres, escondam esse vídeo dos maridos").
 
 ### 3. A copy ataca vergonha, medo e desejo oculto — nunca "o problema"
-Copy que descreve problema = bula. Copy que encena a **ferida** = venda. Usar sempre o [mapa de desejos ocultos 50+](desejos-ocultos-50plus.md):
+Copy que descreve problema = bula. Copy que encena a **ferida** = venda. Usar sempre o [mapa de desejos ocultos 50+](desejos-ocultos-50plus.md) + o [arsenal dos 7 pecados capitais](pecados-capitais-50plus.md) (o desejo é o alvo; o pecado é o motor — empilhar ≥2 por peça, hook abre em luxúria/soberba):
 - **Vergonha:** a noite que ela parou de procurar; o "tudo bem, amor" com voz de pena; apologizing in the dark.
 - **Medo:** ser trocado; o personal trainer de 28 anos; ela contando pra amiga o que FALTA.
 - **Desejo:** o gasp dela; a novinha que olha; o vestiário; ser MAIS do que foi aos 25.

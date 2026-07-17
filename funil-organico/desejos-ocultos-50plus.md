@@ -44,6 +44,7 @@ O combustível da copy não é o produto — é **o que ele nunca diz em voz alt
 5. **A palavra fica limpa; a cena diz tudo** ([insight #3](../00-mapa/insights-empiricos.md)). Nenhuma dessas cenas precisa de UMA palavra banida.
 
 ## Conexões
+- [🔥 Pecados Capitais 50+](pecados-capitais-50plus.md) — o par obrigatório deste mapa: o desejo é O QUE ele quer; o pecado é O MOTOR que faz agir (gate: ≥1 desejo + ≥2 pecados por peça)
 - [Doutrina Criativa Agressiva](doutrina-criativa-agressiva.md) — os mandamentos que este mapa alimenta
 - [Fear Sells](../principios/fear-sells.md) · [3 Cérebros](../principios/tres-cerebros.md) · [Power Words](../principios/power-words.md)
 - [Prop-Metáforas](prop-metaforas.md) · [Template Criativo](template-criativo.md) · [Anatomia do Hook](../hooks/anatomia-do-hook.md)
