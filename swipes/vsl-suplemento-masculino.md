@@ -52,6 +52,12 @@ Padrões que ainda não tínhamos na base — expressos como **moldes**, não co
 11. **Objeção pré-respondida dentro da narrativa** — a dúvida do leitor é posta na boca do narrador antes de ele formulá-la (não só no FAQ).
 12. **Segmentação por idade dentro do hook** — "<40 sente X / >40 sente Y" numa frase, sem cortar o vídeo.
 
+## Mecanismo real extraído, Titan Transform (uso obrigatório nos criativos que apontam pra essa oferta)
+
+Vilão nomeado: inflamação, não idade, é ela que trava o crescimento e o fluxo. Chave da solução: Mumio, mineral adaptogênico do norte da Sibéria, usado há gerações por quem vive naquele frio extremo, reduz a inflamação e sustenta testosterona. Ingredientes de suporte citados na VSL: GABA (relaxamento, o corpo cresce em repouso) e L Tyrosine (purificação, reduz inflamação ligada a estresse). Entrega em fórmula líquida, absorção rápida sem passar pelo sistema digestivo.
+
+Por que usar isso no criativo em vez de mecanismo genérico: fecha a congruência total do funil, quem comenta TITAN e cai na VSL ouve a mesma história que o criativo teasou, não sente troca de assunto. Usar como MUP no roteiro (bloco de 8s do meio): nomear o vilão errado primeiro (idade, estresse), depois a pista real sem entregar o mecanismo inteiro, o resto fica pra VSL. Nunca reproduzir os claims numéricos de crescimento nem a cena da festa/clínica alemã da VSL, isso é claim implausível e cena fabricada, ver seção "onde são fracas" acima.
+
 ## Conexões
 - [Estrutura de VSL — Jon Benson](../frameworks/jon-benson-vsl-estrutura.md) · [VSL de 8 dígitos](../frameworks/vsl-8-digitos-estrutura.md) · [RMBC](../frameworks/rmbc-metodo.md)
 - [Elemento-prova Bencivenga](../mentores/gary-bencivenga/segredo-fechamento.md) · [Mecanismo Único](../principios/mecanismo-unico.md)
