@@ -37,6 +37,8 @@ LOOP ABERTO: [o que SÓ a DM fecha]
 ```
 **Brief incompleto = não roteiriza.** É o filtro que impede o criativo frio de nascer.
 
+**Caso real do pulo desta etapa (2026-07-17):** primeiro roteiro do Robert foi escrito direto, sem brief. Saiu genérico ("She's thirty two, I just turned sixty six") em vez de granular, com anáfora limpinha de manual ("Wasn't my age. Wasn't stress.") em vez de fala quebrada real, e uma linha de CTA que quebrou o personagem explicando regra de plataforma ("the system won't let me message you"). O sintoma bateu direto nas 3 falhas que este doc existe pra evitar: research pulado, MUP raso, brief ausente. Rodar o brief primeiro, sempre, mesmo sob pressa.
+
 ## C — COPY: velocidade com padrão (o sistema Georgi de produção)
 
 Georgi escreve rápido porque o research + brief já decidiram tudo — a escrita é montagem. Nosso equivalente: brief → [roteiro-máquina](ataque-4-roteiro-maquina.md) (blocos com timing) → [prompts de guerra](../recursos/veo3-direcao-de-cena.md). **Meta: brief à prompt final em 1 sessão.** Volume com padrão > perfeição sem volume (o algoritmo é um teste A/B grátis e infinito).
