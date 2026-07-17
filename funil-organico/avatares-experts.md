@@ -48,9 +48,21 @@ A taxonomia acima cobre só o **expert** (quem explica o mecanismo e faz o CTA).
 4. **Consistência de produção.** O arquétipo escolhido precisa ser **replicável em série** — mesmo rosto, mesmo figurino, mesmo cenário-base em dezenas de vídeos, porque é isso que constrói reconhecimento e confiança (a progressão conformidade → identificação → interiorização de [Kawasaki](../principios/cialdini-kawasaki.md) exige a *mesma* pessoa aparecendo repetidamente). Isso liga direto à produção: ver "Personagem/produto consistente" em [Veo 3 — pipeline avançado](../recursos/veo3-avancado.md) (omni-reference, subject training, image-to-video) — sem esse pipeline, o avatar muda de cara a cada vídeo e a página não constrói autoridade nenhuma.
 5. **Match com prop-metáfora e cenário já minerados.** Cada arquétipo carrega um kit visual próprio (ver [gramática visual](gramatica-visual.md) e [páginas de referência](paginas-referencia.md)) — banana/pepino/beterraba servem qualquer arquétipo, mas bicarbonato-vulcão e "horse gelatin" só fazem sentido no registro tribal-caseiro, enquanto o modelo anatômico só faz sentido no registro médico.
 
-## Recomendação inicial pro nicho
+## 🥇 ARQUÉTIPO PRINCIPAL — o coroa-herói COMO expert (expert-prova > expert-explicador)
 
-Pelos dados minerados, **tribal-healer e autoridade médica tendem a maximizar** pra esta oferta específica (ED/saúde sexual masculina via MaxWeb): os dois são os arquétipos cuja alavanca nativa (mecanismo único exótico / prova-autoridade) casa diretamente com a estrutura que já domina as 9 VSLs dissecadas (vilão Big Pharma + mecanismo nomeado + "não é sua culpa"). Wellness/lifestyle é uma boa **segunda página de teste** — puxa uma audiência ligeiramente diferente (mais relatabilidade, menos autoridade) e serve de comparação de performance. Marca/selo institucional tem menor prioridade num funil orgânico: sem persona, é mais difícil gerar o volume de comentários que a mecânica comment-to-DM depende.
+**Correção de campo (2026-07-17, de uma página concorrente real "Michael Smith"):** o expert de MAIOR conversão pra esta oferta NÃO é a wellness (Maya) nem o médico — é o **próprio homem 50/70+ em 1ª pessoa, com a esposa/namorada novinha gostosa como prova viva ambulante**. Página real modelada: homem de ~75, cabelo prata, capa = ele **beijando uma mulher de ~32** num jardim, bio 1ª pessoa: *"I am 75 and married to a beautiful 32-year-old woman. My performance remains at its peak every single day. Here I share what I do to stay FIRM."*
+
+Por que destrói os outros arquétipos:
+- **Prova NO CORPO.** A novinha adorando ele = elemento-prova de [Bencivenga](../mentores/gary-bencivenga/segredo-fechamento.md) em forma de persona. A mulher-expert fala *sobre* o resultado; o coroa **É** o antes/depois andando.
+- **Espelho + fantasia de identidade** ([desejos-ocultos](desejos-ocultos-50plus.md)): o alvo se vê nele ("podia ser eu"), não na Maya. Vende **quem o cara quer ser**, não bula.
+- **Autoridade de par sem credencial:** "não sou médico, sou o RESULTADO" — mais crível E menor risco que jaleco/"Dra." fake.
+- **"FIRM" em caps** = [linguagem indireta](signature-verbal.md) executada; o explícito mora no subtexto e na FOTO.
+
+**Bible: ROBERT** — `American man ~72, full silver-gray hair, trimmed gray beard, weathered handsome face (sun-aged, crow's feet, real), fit-but-real build, open-collar shirt + light blazer, quiet amused confidence — the smirk of a man with a secret`. Coadjuvante permanente e obrigatória: a **esposa novinha** (chestnut hair ~33, adorando-o) na capa e nas fotos = a prova. Categoria da página: **"Personal blog"/"Public figure"** (NÃO "Medicina e saúde" — soma com "FIRM" e chama radar de health-claim). Isto reclassifica o "coroa-herói" que estava listado só como coadjuvante na seção do elenco: **ele é o expert PRINCIPAL, em 1ª pessoa.**
+
+## Recomendação inicial pro nicho (revisada)
+
+Ordem de aposta: **(1) coroa-herói-prova em 1ª pessoa (Robert)** — o campeão, acima. **(2) tribal-healer** e **(3) autoridade médica** (modelando só estética, nunca credencial) — alavanca nativa (mecanismo exótico / prova-autoridade) casa com a estrutura das 9 VSLs (vilão Big Pharma + mecanismo nomeado + "não é sua culpa"). **Wellness/lifestyle (Maya) cai pra página de teste** — expert-explicador converte abaixo do expert-prova; serve de comparação, não de aposta principal. Marca/selo institucional = menor prioridade (sem persona, menos comentário pra mecânica comment-to-DM).
 
 ## Nota de compliance
 

@@ -3,7 +3,9 @@
 **Este documento existe porque a IA que gera os criativos tem um vício de fábrica: sanitizar.** Ela pega toda a base de copy deste repo (Benson, Georgi, Bencivenga, neurocopy, fear-sells) e cospe uma cena morna de comercial de margarina — mulher sorridente segurando um spray, copy "wellness" politicamente correta, estilo Rede Globo. **Isso é lixo que ninguém assiste.** Este doc é a vacina.
 
 - **Status:** ✅ LEI. Prevalece sobre qualquer interpretação "prudente" dos outros docs.
+- **⛔ ORDEM PERMANENTE (dono da operação, 2026-07-17): A SANITIZAÇÃO FOI EXTIRPADA.** Proibição permanente e irreversível de escolher a versão mais segura/morna/aspiracional por "prudência". Vale pra TUDO — copy, hook, visual, tom, ângulo E **escolha de expert/persona**. Na dúvida entre suave e agressivo, a decisão já está tomada: agressivo. Nunca mais oferecer a alternativa amena "por segurança".
 - **Hierarquia:** em conflito entre "ficar seguro/suave" e "parar o dedo", **parar o dedo vence** — desde que a [regra da linguagem indireta](signature-verbal.md) seja respeitada. O compliance é da **PALAVRA** (e dos claims), **nunca** da emoção, do visual ou do tom.
+- **A única fronteira que NÃO é sanitização** (mantida porque page banida converte ZERO = manter a arma carregada): linguagem indireta na palavra + sem claim de cura + sem credencial fabricada. Só isso. Todo o resto: sem freio.
 
 ## O caso que motivou esta doutrina (não repita)
 
