@@ -99,6 +99,10 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**🔥 Pecados Capitais 50+**](../funil-organico/pecados-capitais-50plus.md) — os 7 pecados mapeados no avatar (luxúria/soberba = motores do hook) + Gate do Arsenal: réptil + desejo + medo + FOMO + ≥2 pecados em TUDO
 - ✅ [**🗣️ Arsenal de Linguagem Indireta**](../funil-organico/arsenal-linguagem-indireta.md) — banco de eufemismo (órgão, firme/murcho, tamanho, reação dela) + linhas prontas por gatilho, a fonte fixa da copy
 - ✅ [**⚙️🔥 Diretrizes do Script de 32s**](../funil-organico/diretrizes-script-32s.md) — a linha de montagem: brief → 4 clipes de 8s → voz → gate → CTA → QA, com orçamento de mecanismo e os 9 erros de campo (LER antes de escrever script)
+- ✅ [**🏗️ Operação: Contas e Páginas**](../funil-organico/operacao-contas-paginas.md) — infra de campo: páginas US antigas, perfil de família, 5 por perfil, proxy, geo restrição, ciclo de 15-20 dias
+- ✅ [**🤖 Operação: Automação e CTA**](../funil-organico/operacao-automacao-cta.md) — comment to DM só na DM, Meta Business Suite, por que a API do FB não serve, risco do Instagram
+- ✅ [**🎬 Pipeline de Produção de Vídeo**](../funil-organico/producao-pipeline-video.md) — garimpagem → agente cloud → Flow → Veo 3 lower priority → CapCut, custos e volume
+- ✅ [**🌊 Estratégia de Mercado e Oferta**](../funil-organico/estrategia-mercado-oferta.md) — a onda do Veo 3, nichos, VSL black com alerta, Stories, divergências da nossa estratégia
 - ✅ [**⚡ Empilhamento Reptiliano**](../funil-organico/empilhamento-reptiliano.md) — a fórmula multiplicadora do hook (desejo × posse × testemunha × dominância) + banco de cenas-evento + leque de 30 ângulos minerados
 - ✅ [**⚔️ Guerra Reptiliana — Gerador de Ângulos**](../funil-organico/guerra-reptiliana-angulos.md) — 9 botões reptilianos × famílias G–N inexploradas × matriz anti-vício de rota
 - ✅ [**🎬 Direção de Cena Veo 3 (padrão de guerra)**](../recursos/veo3-direcao-de-cena.md) — engenharia do 1º frame, 6 arquétipos de shot 1, direção emocional, som-choque, templates JSON
