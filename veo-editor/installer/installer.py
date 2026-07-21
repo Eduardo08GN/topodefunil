@@ -217,7 +217,7 @@ class Instalador(tk.Tk):
     def _copiar(self, destino):
         os.makedirs(destino, exist_ok=True)
         for nome in ("app.py", "esteira.py", "pipeline.py", "captions.py",
-                     "requirements.txt", "README.md"):
+                     "trabalhando.gif", "requirements.txt", "README.md"):
             shutil.copy(recurso(os.path.join("payload", nome)), os.path.join(destino, nome))
         # v1.2: app desktop tkinter — nao ha mais templates web
         shutil.rmtree(os.path.join(destino, "templates"), ignore_errors=True)

@@ -17,6 +17,8 @@ import esteira
 from pipeline import processar_pasta
 
 VERSAO = "1.2"
+GIF_TRABALHANDO = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "trabalhando.gif")
 
 # design system (mesmo do painel antigo)
 BG = "#080b10"
@@ -37,6 +39,43 @@ FT = ("Segoe UI", 9)
 FH1 = ("Segoe UI", 16, "bold")
 FMONO = ("Consolas", 9)
 FNUM = ("Segoe UI", 18, "bold")
+
+
+class Gif(tk.Label):
+    """GIF animado via PhotoImage frame a frame (nativo do tk, sem Pillow).
+    Anima so quando ligado — o mascote trabalha quando a esteira trabalha."""
+
+    def __init__(self, master, caminho, **kw):
+        super().__init__(master, bg=SURFACE, bd=0, **kw)
+        self.frames = []
+        try:
+            i = 0
+            while True:
+                self.frames.append(tk.PhotoImage(file=caminho, format=f"gif -index {i}"))
+                i += 1
+        except tk.TclError:
+            pass  # acabaram os frames (ou arquivo ausente: fica sem mascote)
+        if self.frames and self.frames[0].width() > 200:
+            fator = max(1, round(self.frames[0].width() / 160))
+            self.frames = [f.subsample(fator, fator) for f in self.frames]
+        self._i = 0
+        self._rodando = False
+
+    def ligar(self):
+        if not self.frames or self._rodando:
+            return
+        self._rodando = True
+        self._anima()
+
+    def desligar(self):
+        self._rodando = False
+
+    def _anima(self):
+        if not self._rodando or not self.winfo_exists():
+            return
+        self.configure(image=self.frames[self._i])
+        self._i = (self._i + 1) % len(self.frames)
+        self.after(60, self._anima)
 
 
 class Secao(tk.Frame):
@@ -207,6 +246,8 @@ class App(tk.Tk):
                                  fg=GOLD, font=FB, anchor="w", wraplength=380,
                                  justify="left")
         self.lb_etapa.pack(fill="x", padx=12, pady=(0, 6))
+        self.gif = Gif(sec_atual, GIF_TRABALHANDO)
+        self._gif_visivel = False
         self.txt_log = tk.Text(sec_atual, bg=CONSOLE, fg=DIM, relief="flat",
                                font=FMONO, state="disabled", wrap="word",
                                padx=10, pady=8, highlightthickness=0)
@@ -343,9 +384,17 @@ class App(tk.Tk):
         if s["atual"]:
             self.lb_etapa.configure(text=f'{s["atual"]["zip"]}  —  {s["atual"]["etapa"]}')
             log = "\n".join(s["atual"]["log"])
+            if not self._gif_visivel:
+                self.gif.pack(before=self.txt_log, pady=(0, 6))
+                self.gif.ligar()
+                self._gif_visivel = True
         else:
             self.lb_etapa.configure(text="Esteira ociosa.")
             log = ""
+            if self._gif_visivel:
+                self.gif.desligar()
+                self.gif.pack_forget()
+                self._gif_visivel = False
         if self._cache.get("log") != log:
             self._cache["log"] = log
             self.txt_log.configure(state="normal")
