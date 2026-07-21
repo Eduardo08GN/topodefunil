@@ -155,7 +155,18 @@ def concat(takes, out, cortes=None):
 
 
 def desilenciar(inp, out, margem="0.2s"):
-    _run([AUTO_EDITOR, inp, "-o", out, "--no-open", "--margin", margem])
+    """Corta silencio com folga ASSIMETRICA: a margem informada vale para a
+    entrada da fala; na saida usamos margem + 0.35s. Fim de palavra (vogal
+    fraca, consoante final) cai abaixo do threshold e o corte simetrico come
+    a ultima silaba ("bio" vira "bi"). O threshold tambem desce de 4% para
+    2.5% para o rabo da fala contar como som, nao como silencio."""
+    try:
+        m = float(str(margem).rstrip("s"))
+    except ValueError:
+        m = 0.2
+    _run([AUTO_EDITOR, inp, "-o", out, "--no-open",
+          "--edit", "audio:threshold=0.025",
+          "--margin", f"{m}s,{m + 0.35:.2f}s"])
     return out
 
 
