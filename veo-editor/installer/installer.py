@@ -21,6 +21,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 
 APP_NOME = "Veo Editor By EDDIE"
+VERSAO = "1.1"  # esteira de producao: watcher + velocidade random + painel de fila
 PADRAO = os.path.join(os.path.expanduser("~"), "VeoEditor")
 
 # esconde a janela de console dos subprocessos
@@ -52,7 +53,7 @@ def achar(nome):
 class Instalador(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title(APP_NOME + " - Instalador")
+        self.title(f"{APP_NOME} - Instalador v{VERSAO}")
         self.configure(bg=BG)
         self.resizable(False, False)
         self.geometry("560x520")
@@ -70,7 +71,7 @@ class Instalador(tk.Tk):
                  font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=28, pady=(26, 0))
         tk.Label(self, text="By EDDIE", bg=BG, fg=AQUA,
                  font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=28)
-        tk.Label(self, text="Junta os takes do Veo, tira o silencio e queima a legenda.",
+        tk.Label(self, text="Esteira de producao: o zip baixado do Flow vira video editado sozinho.",
                  bg=BG, fg=DIM, font=("Segoe UI", 9)).pack(anchor="w", padx=28, pady=(4, 20))
 
         tk.Label(self, text="Instalar em:", bg=BG, fg=DIM,
@@ -215,7 +216,8 @@ class Instalador(tk.Tk):
 
     def _copiar(self, destino):
         os.makedirs(destino, exist_ok=True)
-        for nome in ("app.py", "pipeline.py", "captions.py", "requirements.txt", "README.md"):
+        for nome in ("app.py", "esteira.py", "pipeline.py", "captions.py",
+                     "requirements.txt", "README.md"):
             shutil.copy(recurso(os.path.join("payload", nome)), os.path.join(destino, nome))
         tpl_src = recurso(os.path.join("payload", "templates"))
         tpl_dst = os.path.join(destino, "templates")
