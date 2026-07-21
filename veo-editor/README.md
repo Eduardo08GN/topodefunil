@@ -1,18 +1,50 @@
 # Veo Editor By EDDIE
 
-Automatiza a **última etapa manual** do pipeline de produção: pega os takes que o
-Veo gerou, **junta na ordem, tira o silêncio e queima a legenda estilo CapCut
-(word-by-word)**. Roda 100% offline na sua máquina (FFmpeg + auto-editor +
-faster-whisper). Nenhuma ferramenta paga, nenhuma API.
+Esteira de produção offline para a **última etapa** do pipeline: pega o `.zip`
+que as ferramentas do Flow baixam, **junta os takes na ordem, tira o silêncio,
+varia a velocidade e queima a legenda estilo CapCut (word-by-word)** — tudo
+sozinho, organizado para dezenas de vídeos por dia. Roda 100% local
+(FFmpeg + auto-editor + faster-whisper). Nenhuma ferramenta paga, nenhuma API.
 
-## O que ele faz (por vídeo)
-1. Extrai o `.zip` baixado do Flow, se houver.
-2. Junta os takes (`take1..takeN`) na ordem.
-3. Corta o silêncio entre/dentro dos takes (auto-editor).
-4. Transcreve o áudio offline (Whisper) com timestamp por palavra.
-5. Queima a legenda karaoke: a palavra falada acende (amarelo), o resto fica branco.
+## A esteira (modo principal)
 
-Saída: um `.mp4` 9:16 pronto pra postar.
+Abra o app pelo atalho e pronto — o watcher liga junto. A partir daí:
+
+1. Você clica **Baixar Pacote ZIP** na ferramenta do Flow.
+2. O watcher detecta o `adbatch*.zip` na pasta **Downloads** (download concluído,
+   tamanho estável) e captura sozinho. Zips avulsos podem ser arrastados para
+   `01_entrada/` (qualquer nome).
+3. Edição automática: extrai → junta os takes em ordem natural (`video_01..NN`)
+   → corta silêncio → **varia a velocidade** → transcreve → queima legenda karaoke.
+4. O vídeo pronto cai em `03_prontos/AAAA-MM-DD/vNNN_final.mp4` (sequencial por
+   dia), o zip original é arquivado e o histórico registrado.
+
+### Organização de pastas (criadas ao lado do app)
+
+| Pasta | Papel |
+|---|---|
+| `01_entrada/` | zips arrastados manualmente |
+| `02_processando/` | o vídeo em edição no momento (fila de 1 por vez) |
+| `03_prontos/AAAA-MM-DD/` | finais do dia: `v001_final.mp4`, `v002_final.mp4`... |
+| `04_zips_arquivados/` | zip original preservado (p/ reeditar); limpeza automática > 14 dias |
+| `05_erros/` | zip que falhou + `.log` do erro, com botão de retry no painel |
+| `historico.csv` | data, arquivo, zip de origem, duração, fator de velocidade, status |
+
+### Variação de velocidade (anti-batch)
+
+Cada vídeo recebe um fator sorteado entre **0.95x (−5%) e 1.03x (+3%)** — assim
+um lote de 50 vídeos nunca sai com durações idênticas. Aplicada com
+`setpts`+`atempo` (pitch da voz preservado, inaudível) **antes da transcrição**,
+então a legenda karaoke nasce sincronizada com o ritmo final. O fator usado fica
+registrado no `historico.csv` e no painel.
+
+### Painel
+
+`http://127.0.0.1:7861` (abre sozinho): três colunas — **Fila** / **Editando
+agora** (log ao vivo) / **Prontos hoje** (contador + player 9:16 embutido) —,
+seção de erros com "Tentar de novo", ajustes de precisão/silêncio e botão para
+abrir a pasta de prontos. **Modo manual** (processar pasta avulsa) continua
+disponível no fim do painel.
 
 ## Instalação (Windows)
 
@@ -30,28 +62,10 @@ instalar.bat
 Ele cria o ambiente virtual, instala as dependências e põe o atalho
 **Veo Editor By EDDIE** na área de trabalho.
 
-**Abrir** — duplo clique no atalho da área de trabalho. O navegador abre
-sozinho em `http://127.0.0.1:7861`. Pra encerrar, feche a janela preta.
+**Abrir** — duplo clique no atalho. O navegador abre sozinho em
+`http://127.0.0.1:7861`. Pra encerrar, feche a janela preta (o watcher para junto).
 
-## Como usar
-
-Informe a **pasta de entrada** e a **pasta de saída**, escolha a precisão e
-clique **Processar**. Use **Inspecionar** antes pra conferir o que ele detectou.
-
-### O que pode ir na pasta de entrada
-
-| Conteúdo | Resultado |
-|---|---|
-| Um `.zip` baixado do Flow | Extraído automático = 1 vídeo |
-| Vários `.zip` | 1 vídeo por zip, em lote |
-| Arquivos de vídeo soltos | 1 vídeo (os takes, em ordem de nome) |
-| Subpastas com vídeos | 1 vídeo por subpasta, em lote |
-
-Os takes são ordenados por nome com ordenação natural, então `take2` vem antes
-de `take10`. O `.zip` original é preservado após a extração, e rodar de novo
-reaproveita o que já foi extraído em vez de refazer.
-
-## Uso por linha de comando (opcional)
+## Uso por linha de comando (opcional, modo manual)
 ```powershell
 .venv\Scripts\python.exe pipeline.py -i "C:\...\veo_takes" -o "C:\...\prontos" --model base.en --margin 0.2s
 ```
@@ -66,8 +80,9 @@ O modelo é baixado uma vez no primeiro uso e fica em cache (offline depois diss
 ## Arquivos
 - `instalar.bat` — instalação e atalho na área de trabalho.
 - `Veo Editor.bat` — abre o app.
-- `app.py` — interface local (Flask).
-- `pipeline.py` — motor (extrair zip → juntar → desilenciar → legendar) + CLI.
+- `app.py` — painel (Flask): esteira + player + modo manual.
+- `esteira.py` — orquestrador: watcher do Downloads, fila, pastas, histórico, retry.
+- `pipeline.py` — motor (extrair → juntar → desilenciar → velocidade → legendar) + CLI.
 - `captions.py` — transcrição + geração do ASS karaoke CapCut.
 
 ## Notas de dependência
@@ -75,3 +90,5 @@ O modelo é baixado uma vez no primeiro uso e fica em cache (offline depois diss
 - `requests` é declarado explicitamente porque o `faster-whisper` 1.1.0 o importa
   sem declarar — antes vinha via `huggingface-hub`, que na 1.x migrou pra httpx.
 - A fonte da legenda é **Arial Black** (nativa do Windows).
+- O watcher acha o Downloads verdadeiro pelo registro do Windows (funciona com
+  OneDrive redirecionando pastas).

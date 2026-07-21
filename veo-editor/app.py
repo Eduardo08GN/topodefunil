@@ -1,17 +1,71 @@
-"""Veo Editor By EDDIE — app offline (roda so na sua maquina): informa a pasta
-de ENTRADA (os takes do Veo ou o .zip baixado do Flow) e a pasta de SAIDA,
-clica Processar. Junta + tira silencio + legenda CapCut, tudo local.
-Abra http://127.0.0.1:7861 no navegador."""
+"""Veo Editor By EDDIE — esteira de producao offline.
+
+Abre o painel em http://127.0.0.1:7861. O watcher liga junto com o app: todo
+.zip adbatch*.zip que cair na pasta Downloads (ou qualquer .zip arrastado para
+01_entrada) e capturado, editado (juntar takes em ordem + tirar silencio +
+variar velocidade + legenda CapCut) e organizado em 03_prontos/<data>/.
+Modo manual (pasta avulsa) continua disponivel no fim do painel."""
 
 import os
 import threading
 import webbrowser
+import subprocess
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 
+import esteira
 from pipeline import processar_pasta, coletar_takes, contar_zips, VIDEO_EXT
 
 app = Flask(__name__)
+
+# ---------------- esteira (modo principal) ----------------
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/status")
+def status():
+    return jsonify(esteira.status())
+
+
+@app.route("/config", methods=["POST"])
+def config():
+    d = request.get_json(silent=True) or {}
+    if d.get("model") in ("base.en", "small.en", "medium.en"):
+        esteira.CFG["model"] = d["model"]
+    if d.get("margem") in ("0.15s", "0.2s", "0.35s"):
+        esteira.CFG["margem"] = d["margem"]
+    return jsonify(ok=True, cfg=dict(esteira.CFG))
+
+
+@app.route("/retry", methods=["POST"])
+def retry():
+    nome = (request.get_json(silent=True) or {}).get("zip", "")
+    return jsonify(ok=esteira.tentar_de_novo(nome))
+
+
+@app.route("/video/<data>/<arquivo>")
+def video(data, arquivo):
+    p = esteira.caminho_video(data, arquivo)
+    if not p:
+        return "nao encontrado", 404
+    return send_file(p, mimetype="video/mp4", conditional=True)
+
+
+@app.route("/abrir-pasta", methods=["POST"])
+def abrir_pasta():
+    # abre o Explorer na pasta de prontos (app e local, sem risco)
+    try:
+        subprocess.Popen(["explorer", esteira.D_PRONTOS])
+        return jsonify(ok=True)
+    except OSError as e:
+        return jsonify(ok=False, msg=str(e))
+
+
+# ---------------- modo manual (legado, pasta avulsa) ----------------
 
 JOB = {"running": False, "log": [], "gerados": [], "erro": None}
 
@@ -38,14 +92,8 @@ def _rodar(entrada, saida, model, margem):
         JOB["running"] = False
 
 
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-
 @app.route("/inspecionar", methods=["POST"])
 def inspecionar():
-    """Conta o que ha na pasta de entrada, pra dar feedback antes de rodar."""
     entrada = (request.get_json(silent=True) or {}).get("entrada", "").strip('"').strip()
     if not entrada or not os.path.isdir(entrada):
         return jsonify(ok=False, msg="Pasta de entrada nao encontrada.")
@@ -81,15 +129,18 @@ def processar():
     return jsonify(ok=True)
 
 
-@app.route("/status")
-def status():
+@app.route("/manual/status")
+def manual_status():
     return jsonify(running=JOB["running"], log=JOB["log"],
                    gerados=JOB["gerados"], erro=JOB["erro"])
 
 
 if __name__ == "__main__":
+    esteira.iniciar()
     url = "http://127.0.0.1:7861"
     print(f"\n  Veo Editor By EDDIE rodando em {url}")
+    print(f"  Esteira vigiando: {esteira.DOWNLOADS} (adbatch*.zip)")
+    print(f"                    {esteira.D_ENTRADA} (*.zip)")
     print("  Feche esta janela para encerrar o app.\n")
     try:
         threading.Timer(1.2, lambda: webbrowser.open(url)).start()

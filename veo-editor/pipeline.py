@@ -108,16 +108,46 @@ def extrair_zips(entrada, log=print):
     return criadas
 
 
-def concat(takes, out):
-    """Junta na ordem, re-encodando uniforme (aguenta params diferentes do Veo)."""
-    if len(takes) == 1:
+def duracao(path):
+    p = _run([FFPROBE, "-v", "error", "-show_entries", "format=duration",
+              "-of", "json", path])
+    try:
+        return float(json.loads(p.stdout)["format"]["duration"])
+    except (KeyError, ValueError, TypeError):
+        return 0.0
+
+
+def concat(takes, out, cortes=None):
+    """Junta na ordem, re-encodando uniforme (aguenta params diferentes do Veo).
+
+    cortes: {caminho_do_take: [inicio, fim]} em segundos. fim None ou 0 = ate o
+    final. O corte entra como filtro trim (preciso no frame) em vez de -ss, que
+    com seek rapido erraria o ponto."""
+    cortes = cortes or {}
+    if len(takes) == 1 and not cortes.get(takes[0]):
         shutil.copy(takes[0], out)
         return out
+
     inputs = []
     for t in takes:
         inputs += ["-i", t]
-    n = len(takes)
-    fc = "".join(f"[{i}:v:0][{i}:a:0]" for i in range(n)) + f"concat=n={n}:v=1:a=1[v][a]"
+
+    partes, rotulos = [], ""
+    for i, t in enumerate(takes):
+        corte = cortes.get(t)
+        if corte:
+            ini = max(0.0, float(corte[0] or 0))
+            fim = float(corte[1]) if len(corte) > 1 and corte[1] else None
+            tv = f"trim=start={ini:.3f}" + (f":end={fim:.3f}" if fim else "")
+            ta = f"atrim=start={ini:.3f}" + (f":end={fim:.3f}" if fim else "")
+            partes.append(f"[{i}:v:0]{tv},setpts=PTS-STARTPTS[v{i}]")
+            partes.append(f"[{i}:a:0]{ta},asetpts=PTS-STARTPTS[a{i}]")
+        else:
+            partes.append(f"[{i}:v:0]null[v{i}]")
+            partes.append(f"[{i}:a:0]anull[a{i}]")
+        rotulos += f"[v{i}][a{i}]"
+
+    fc = ";".join(partes) + f";{rotulos}concat=n={len(takes)}:v=1:a=1[v][a]"
     _run([FFMPEG, "-y", *inputs, "-filter_complex", fc, "-map", "[v]", "-map", "[a]",
           "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
           "-c:a", "aac", "-b:a", "192k", "-r", "30", out])
@@ -126,6 +156,23 @@ def concat(takes, out):
 
 def desilenciar(inp, out, margem="0.2s"):
     _run([AUTO_EDITOR, inp, "-o", out, "--no-open", "--margin", margem])
+    return out
+
+
+def aplicar_velocidade(inp, out, fator):
+    """Muda a velocidade do video inteiro (video+audio). fator 1.03 = 3% mais
+    rapido, 0.95 = 5% mais lento. atempo preserva o pitch da voz, entao a
+    variacao fica inaudivel. Roda ANTES da transcricao para a legenda karaoke
+    nascer ja sincronizada com o audio no ritmo final."""
+    if fator is None or abs(fator - 1.0) < 0.001:
+        shutil.copy(inp, out)
+        return out
+    _run([FFMPEG, "-y", "-i", inp,
+          "-filter_complex",
+          f"[0:v:0]setpts=PTS/{fator:.4f}[v];[0:a:0]atempo={fator:.4f}[a]",
+          "-map", "[v]", "-map", "[a]",
+          "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+          "-c:a", "aac", "-b:a", "192k", out])
     return out
 
 
@@ -142,27 +189,34 @@ def queimar_legenda(inp, ass_path, out):
 
 
 def processar_video(takes, out_final, model="base.en", lang="en",
-                    margem="0.2s", log=print):
+                    margem="0.2s", fator=None, log=print):
     if not takes:
         raise RuntimeError("nenhum take encontrado")
     work = tempfile.mkdtemp(prefix="owedit_")
     try:
         juntado = os.path.join(work, "01_juntado.mp4")
         cortado = os.path.join(work, "02_cortado.mp4")
-        assf = os.path.join(work, "03_legenda.ass")
+        ritmado = os.path.join(work, "03_ritmado.mp4")
+        assf = os.path.join(work, "04_legenda.ass")
 
         log(f"  juntando {len(takes)} take(s)...")
         concat(takes, juntado)
         log("  tirando silencio (auto-editor)...")
         desilenciar(juntado, cortado, margem)
-        w, h = dims(cortado)
+        if fator is not None and abs(fator - 1.0) >= 0.001:
+            log(f"  variando velocidade: {fator:.3f}x...")
+            aplicar_velocidade(cortado, ritmado, fator)
+            base = ritmado
+        else:
+            base = cortado
+        w, h = dims(base)
         log(f"  transcrevendo (whisper {model})... {w}x{h}")
-        palavras = transcrever(cortado, model, lang)
+        palavras = transcrever(base, model, lang)
         log(f"  {len(palavras)} palavras -> legenda")
         gerar_ass(palavras, w, h, assf)
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
-        queimar_legenda(cortado, assf, out_final)
+        queimar_legenda(base, assf, out_final)
         log(f"  OK -> {out_final}")
         return out_final
     finally:
