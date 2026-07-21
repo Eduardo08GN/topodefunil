@@ -15,6 +15,7 @@ Pastas (criadas ao lado do app):
 import os
 import re
 import csv
+import json
 import time
 import queue
 import random
@@ -33,14 +34,16 @@ D_PRONTOS = os.path.join(BASE, "03_prontos")
 D_ARQUIVO = os.path.join(BASE, "04_zips_arquivados")
 D_ERROS = os.path.join(BASE, "05_erros")
 HISTORICO = os.path.join(BASE, "historico.csv")
+CONFIG = os.path.join(BASE, "config.json")
 
-# so zips das nossas ferramentas sao capturados no Downloads; na 01_entrada
+# so zips das nossas ferramentas sao capturados na pasta vigiada; na 01_entrada
 # qualquer zip vale (caminho manual)
 PADRAO_DOWNLOADS = re.compile(r"^adbatch.*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
 
-CFG = {"model": "base.en", "margem": "0.2s"}
+# watch_dir vazio = usa o Downloads do Windows
+CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": ""}
 
 _lock = threading.RLock()
 _fila = queue.Queue()
@@ -73,7 +76,43 @@ def pasta_downloads():
     return os.path.join(os.path.expanduser("~"), "Downloads")
 
 
-DOWNLOADS = os.environ.get("VEO_EDITOR_DOWNLOADS") or pasta_downloads()
+def _carregar_cfg():
+    try:
+        with open(CONFIG, encoding="utf-8") as f:
+            dados = json.load(f)
+        for k in CFG:
+            if isinstance(dados.get(k), str):
+                CFG[k] = dados[k]
+    except (OSError, ValueError):
+        pass
+
+
+def salvar_cfg():
+    try:
+        with open(CONFIG, "w", encoding="utf-8") as f:
+            json.dump(CFG, f, ensure_ascii=False, indent=2)
+    except OSError:
+        pass
+
+
+def pasta_vigiada():
+    """Pasta onde os zips adbatch*.zip sao capturados. Prioridade:
+    env (testes) > escolhida pelo usuario (config.json) > Downloads real."""
+    env = os.environ.get("VEO_EDITOR_DOWNLOADS")
+    if env:
+        return env
+    if CFG["watch_dir"] and os.path.isdir(CFG["watch_dir"]):
+        return CFG["watch_dir"]
+    return pasta_downloads()
+
+
+def definir_pasta_vigiada(p):
+    """Troca a pasta vigiada em tempo real (o watcher le a cada ciclo)."""
+    if not p or not os.path.isdir(p):
+        return False
+    CFG["watch_dir"] = os.path.normpath(p)
+    salvar_cfg()
+    return True
 
 
 def _preparar_pastas():
@@ -182,9 +221,10 @@ def _watcher():
     while True:
         try:
             candidatos = []
-            for a in os.listdir(DOWNLOADS):
+            vigiada = pasta_vigiada()  # relido a cada ciclo: troca vale na hora
+            for a in os.listdir(vigiada):
                 if PADRAO_DOWNLOADS.match(a):
-                    candidatos.append(os.path.join(DOWNLOADS, a))
+                    candidatos.append(os.path.join(vigiada, a))
             for a in os.listdir(D_ENTRADA):
                 if a.lower().endswith(".zip"):
                     candidatos.append(os.path.join(D_ENTRADA, a))
@@ -301,9 +341,9 @@ def iniciar():
             return
         _iniciada = True
     _preparar_pastas()
+    _carregar_cfg()
     _carregar_prontos_de_hoje()
     _limpar_arquivo_antigo()
-    ESTADO["watch"] = [DOWNLOADS + r" (adbatch*.zip)", D_ENTRADA + r" (*.zip)"]
     threading.Thread(target=_watcher, daemon=True).start()
     threading.Thread(target=_worker, daemon=True).start()
 
@@ -317,7 +357,8 @@ def status():
                      "etapa": ESTADO["atual"]["etapa"],
                      "log": list(ESTADO["atual"]["log"])}
         return {
-            "watch": list(ESTADO["watch"]),
+            "watch": [pasta_vigiada() + r" (adbatch*.zip)",
+                      D_ENTRADA + r" (*.zip)"],
             "pendentes": list(ESTADO["pendentes"]),
             "atual": atual,
             "prontos": [p for p in ESTADO["prontos"] if p["data"] == hoje],

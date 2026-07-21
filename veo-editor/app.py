@@ -197,6 +197,7 @@ class App(tk.Tk):
         self._cache = {}
         self._montar()
         esteira.iniciar()
+        self._sync_cfg()
         self.after(300, self._refresh)
 
     # ---------------- layout ----------------
@@ -328,6 +329,7 @@ class App(tk.Tk):
         self.cb_margem.pack(side="left", padx=(8, 20))
         self.cb_margem.bind("<<ComboboxSelected>>", self._cfg)
         botao(rodape, "Pasta avulsa...", lambda: ManualDialog(self)).pack(side="right")
+        botao(rodape, "Pasta vigiada...", self._pasta_vigiada).pack(side="right", padx=(0, 8))
 
         self.opt = self.tk.call("tk", "windowingsystem")  # noqa: F841
 
@@ -336,6 +338,25 @@ class App(tk.Tk):
     def _cfg(self, _=None):
         esteira.CFG["model"] = self.cb_model.get().split(" ")[0]
         esteira.CFG["margem"] = self.cb_margem.get().split(" ")[0]
+        esteira.salvar_cfg()
+
+    def _sync_cfg(self):
+        """Reflete o config.json carregado pela esteira nos combos."""
+        for i, v in enumerate(self.cb_model["values"]):
+            if v.split(" ")[0] == esteira.CFG["model"]:
+                self.cb_model.current(i)
+        for i, v in enumerate(self.cb_margem["values"]):
+            if v.split(" ")[0] == esteira.CFG["margem"]:
+                self.cb_margem.current(i)
+
+    def _pasta_vigiada(self):
+        p = filedialog.askdirectory(
+            parent=self, initialdir=esteira.pasta_vigiada(),
+            title="Pasta vigiada — onde os zips adbatch*.zip sao capturados")
+        if not p:
+            return
+        if not esteira.definir_pasta_vigiada(os.path.normpath(p)):
+            messagebox.showerror("Veo Editor", "Pasta invalida.", parent=self)
 
     def _ver(self):
         sel = self.tree.selection()
