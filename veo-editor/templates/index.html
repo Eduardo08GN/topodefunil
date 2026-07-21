@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Veo Editor By EDDIE</title>
+<style>
+  :root{
+    --bg:#080b10; --surface:#101a22; --surface2:#16222c; --line:rgba(255,255,255,.09);
+    --aqua:#18cbb6; --gold:#ebc66a; --ink:#ecf3f1; --dim:#a6b8b6; --mut:#657b7d; --red:#e0524a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,Segoe UI,sans-serif;
+    display:flex;justify-content:center;padding:40px 16px}
+  .wrap{width:100%;max-width:720px}
+  h1{font-size:22px;margin:0 0 2px;font-weight:800}
+  h1 b{color:var(--aqua)}
+  .sub{color:var(--dim);font-size:14px;margin:0 0 26px}
+  label{display:block;font-size:13px;color:var(--dim);margin:16px 0 6px}
+  input[type=text],select{width:100%;background:var(--surface2);border:1px solid var(--line);
+    color:var(--ink);border-radius:10px;padding:12px 14px;font-size:14px;outline:none;font-family:inherit}
+  input::placeholder{color:var(--mut)}
+  .row{display:flex;gap:12px}
+  .row>div{flex:1}
+  .btns{display:flex;gap:12px;margin-top:22px}
+  button{border:none;border-radius:10px;padding:12px 20px;font-size:14px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:filter .15s}
+  button:hover{filter:brightness(1.08)}
+  button:disabled{opacity:.5;cursor:default;filter:none}
+  .b-main{background:linear-gradient(135deg,#18cbb6,#2e9ad6);color:#04231f;flex:1}
+  .b-ghost{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+  .hint{font-size:12px;color:var(--mut);margin-top:6px;min-height:16px}
+  .hint.ok{color:var(--aqua)} .hint.err{color:var(--red)}
+  .log{margin-top:24px;background:#05080c;border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;font:12.5px/1.55 ui-monospace,Consolas,monospace;color:var(--dim);
+    white-space:pre-wrap;max-height:340px;overflow:auto;display:none}
+  .done{margin-top:16px;display:none}
+  .done a{color:var(--aqua);text-decoration:none;font-size:13px;display:block;padding:3px 0;word-break:break-all}
+  .spin{display:inline-block;width:12px;height:12px;border:2px solid var(--mut);border-top-color:var(--aqua);
+    border-radius:50%;animation:s .7s linear infinite;vertical-align:-1px;margin-right:6px}
+  @keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Veo <b>Editor</b> By EDDIE</h1>
+  <p class="sub">Junta os takes do Veo, tira o silencio e queima a legenda CapCut. Tudo offline.</p>
+
+  <label>Pasta de ENTRADA (takes ou o .zip baixado do Flow)</label>
+  <input id="entrada" type="text" placeholder="C:\Users\voce\veo_takes" spellcheck="false" />
+  <div class="hint" id="hintIn"></div>
+
+  <label>Pasta de SAIDA (onde salva o video final)</label>
+  <input id="saida" type="text" placeholder="C:\Users\voce\videos_prontos" spellcheck="false" />
+
+  <div class="row">
+    <div>
+      <label>Precisao da transcricao</label>
+      <select id="model">
+        <option value="base.en">base.en (rapido)</option>
+        <option value="small.en">small.en (equilibrado)</option>
+        <option value="medium.en">medium.en (mais preciso, lento)</option>
+      </select>
+    </div>
+    <div>
+      <label>Silencio a manter entre falas</label>
+      <select id="margem">
+        <option value="0.15s">0.15s (corte seco)</option>
+        <option value="0.2s" selected>0.2s (padrao)</option>
+        <option value="0.35s">0.35s (respiro)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="btns">
+    <button class="b-ghost" id="btInsp" type="button">Inspecionar</button>
+    <button class="b-main" id="btProc" type="button">Processar</button>
+  </div>
+
+  <div class="log" id="log"></div>
+  <div class="done" id="done"><label>Videos gerados:</label><div id="links"></div></div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+async function post(url, body){
+  const r = await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  return r.json();
+}
+$('btInsp').onclick = async () => {
+  const h = $('hintIn'); h.className='hint'; h.textContent='verificando...';
+  const r = await post('/inspecionar',{entrada:$('entrada').value});
+  h.className = 'hint ' + (r.ok?'ok':'err');
+  h.textContent = r.ok ? `OK: ${r.modo}` + (r.takes?` — ${r.takes} takes`:'') : r.msg;
+};
+let timer=null;
+$('btProc').onclick = async () => {
+  const r = await post('/processar',{entrada:$('entrada').value,saida:$('saida').value,
+    model:$('model').value,margem:$('margem').value});
+  if(!r.ok){ const h=$('hintIn'); h.className='hint err'; h.textContent=r.msg; return; }
+  $('btProc').disabled=true; $('btInsp').disabled=true;
+  $('log').style.display='block'; $('done').style.display='none'; $('links').innerHTML='';
+  if(timer) clearInterval(timer);
+  timer = setInterval(poll, 900); poll();
+};
+async function poll(){
+  const s = await (await fetch('/status')).json();
+  const log=$('log');
+  log.textContent = (s.running?'processando...\n\n':'') + s.log.join('\n');
+  log.scrollTop = log.scrollHeight;
+  if(!s.running){
+    clearInterval(timer); timer=null;
+    $('btProc').disabled=false; $('btInsp').disabled=false;
+    if(s.gerados && s.gerados.length){
+      $('done').style.display='block';
+      $('links').innerHTML = s.gerados.map(f=>`<a>${f}</a>`).join('');
+    }
+  }
+}
+</script>
+</body>
+</html>

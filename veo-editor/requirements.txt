@@ -1,0 +1,6 @@
+flask==3.1.0
+faster-whisper==1.1.0
+auto-editor==29.3.1
+# faster-whisper 1.1.0 importa requests sem declarar; vinha via huggingface-hub,
+# que na 1.x migrou para httpx. Sem esta linha o import quebra.
+requests>=2.31
