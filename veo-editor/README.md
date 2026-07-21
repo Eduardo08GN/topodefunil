@@ -38,13 +38,13 @@ um lote de 50 vídeos nunca sai com durações idênticas. Aplicada com
 então a legenda karaoke nasce sincronizada com o ritmo final. O fator usado fica
 registrado no `historico.csv` e no painel.
 
-### Painel
+### Janela do app (desktop, sem navegador)
 
-`http://127.0.0.1:7861` (abre sozinho): três colunas — **Fila** / **Editando
-agora** (log ao vivo) / **Prontos hoje** (contador + player 9:16 embutido) —,
-seção de erros com "Tentar de novo", ajustes de precisão/silêncio e botão para
-abrir a pasta de prontos. **Modo manual** (processar pasta avulsa) continua
-disponível no fim do painel.
+App tkinter nativo com a identidade da casa (fundo escuro, aqua, dourado):
+três colunas — **Fila** / **Editando agora** (log ao vivo) / **Prontos hoje**
+(contador + duplo clique ou "Ver" abre o vídeo no player padrão) —, seção de
+erros com "Tentar de novo", ajustes de precisão/silêncio e **Pasta avulsa...**
+(modo manual em janela própria).
 
 ## Instalação (Windows)
 
@@ -62,8 +62,8 @@ instalar.bat
 Ele cria o ambiente virtual, instala as dependências e põe o atalho
 **Veo Editor By EDDIE** na área de trabalho.
 
-**Abrir** — duplo clique no atalho. O navegador abre sozinho em
-`http://127.0.0.1:7861`. Pra encerrar, feche a janela preta (o watcher para junto).
+**Abrir** — duplo clique no atalho. A janela do app abre direto (sem navegador,
+sem console). Pra encerrar, feche a janela — o watcher para junto.
 
 ## Uso por linha de comando (opcional, modo manual)
 ```powershell
@@ -80,7 +80,7 @@ O modelo é baixado uma vez no primeiro uso e fica em cache (offline depois diss
 ## Arquivos
 - `instalar.bat` — instalação e atalho na área de trabalho.
 - `Veo Editor.bat` — abre o app.
-- `app.py` — painel (Flask): esteira + player + modo manual.
+- `app.py` — app desktop (tkinter): esteira + prontos + modo manual.
 - `esteira.py` — orquestrador: watcher do Downloads, fila, pastas, histórico, retry.
 - `pipeline.py` — motor (extrair → juntar → desilenciar → velocidade → legendar) + CLI.
 - `captions.py` — transcrição + geração do ASS karaoke CapCut.

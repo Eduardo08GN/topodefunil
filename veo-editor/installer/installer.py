@@ -21,7 +21,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 
 APP_NOME = "Veo Editor By EDDIE"
-VERSAO = "1.1"  # esteira de producao: watcher + velocidade random + painel de fila
+VERSAO = "1.2"  # app desktop (tkinter): sem navegador, mesma identidade visual
 PADRAO = os.path.join(os.path.expanduser("~"), "VeoEditor")
 
 # esconde a janela de console dos subprocessos
@@ -219,11 +219,8 @@ class Instalador(tk.Tk):
         for nome in ("app.py", "esteira.py", "pipeline.py", "captions.py",
                      "requirements.txt", "README.md"):
             shutil.copy(recurso(os.path.join("payload", nome)), os.path.join(destino, nome))
-        tpl_src = recurso(os.path.join("payload", "templates"))
-        tpl_dst = os.path.join(destino, "templates")
-        os.makedirs(tpl_dst, exist_ok=True)
-        for nome in os.listdir(tpl_src):
-            shutil.copy(os.path.join(tpl_src, nome), os.path.join(tpl_dst, nome))
+        # v1.2: app desktop tkinter — nao ha mais templates web
+        shutil.rmtree(os.path.join(destino, "templates"), ignore_errors=True)
         self._diz("  [ok] arquivos copiados")
 
     def _criar_venv(self, python, destino):
