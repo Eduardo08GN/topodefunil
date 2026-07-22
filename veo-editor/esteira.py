@@ -96,7 +96,7 @@ def salvar_cfg():
 
 
 def pasta_vigiada():
-    """Pasta onde os zips adbatch*.zip sao capturados. Prioridade:
+    """Pasta onde os zips sao capturados. Prioridade:
     env (testes) > escolhida pelo usuario (config.json) > Downloads real."""
     env = os.environ.get("VEO_EDITOR_DOWNLOADS")
     if env:
@@ -104,6 +104,23 @@ def pasta_vigiada():
     if CFG["watch_dir"] and os.path.isdir(CFG["watch_dir"]):
         return CFG["watch_dir"]
     return pasta_downloads()
+
+
+def _modo_downloads(vigiada):
+    """True quando a pasta vigiada e o Downloads real: ai vale o filtro
+    adbatch*.zip (senao a esteira engoliria qualquer download). Numa pasta
+    dedicada escolhida pelo usuario, QUALQUER .zip e capturado."""
+    try:
+        return os.path.normcase(os.path.abspath(vigiada)) == \
+            os.path.normcase(os.path.abspath(pasta_downloads()))
+    except OSError:
+        return True
+
+
+def _captura(nome, modo_downloads):
+    if not nome.lower().endswith(".zip"):
+        return False
+    return PADRAO_DOWNLOADS.match(nome) is not None if modo_downloads else True
 
 
 def definir_pasta_vigiada(p):
@@ -222,8 +239,9 @@ def _watcher():
         try:
             candidatos = []
             vigiada = pasta_vigiada()  # relido a cada ciclo: troca vale na hora
+            modo_dl = _modo_downloads(vigiada)
             for a in os.listdir(vigiada):
-                if PADRAO_DOWNLOADS.match(a):
+                if _captura(a, modo_dl):
                     candidatos.append(os.path.join(vigiada, a))
             for a in os.listdir(D_ENTRADA):
                 if a.lower().endswith(".zip"):
@@ -356,9 +374,21 @@ def status():
             atual = {"zip": ESTADO["atual"]["zip"],
                      "etapa": ESTADO["atual"]["etapa"],
                      "log": list(ESTADO["atual"]["log"])}
+        vigiada = pasta_vigiada()
+        modo_dl = _modo_downloads(vigiada)
+        padrao = "adbatch*.zip" if modo_dl else "*.zip"
+        ignorados = 0
+        if modo_dl:
+            # zips no Downloads fora do padrao: avisa em vez de ignorar mudo
+            try:
+                ignorados = sum(1 for a in os.listdir(vigiada)
+                                if a.lower().endswith(".zip")
+                                and not PADRAO_DOWNLOADS.match(a))
+            except OSError:
+                pass
         return {
-            "watch": [pasta_vigiada() + r" (adbatch*.zip)",
-                      D_ENTRADA + r" (*.zip)"],
+            "watch": [f"{vigiada} ({padrao})", D_ENTRADA + r" (*.zip)"],
+            "ignorados": ignorados,
             "pendentes": list(ESTADO["pendentes"]),
             "atual": atual,
             "prontos": [p for p in ESTADO["prontos"] if p["data"] == hoje],

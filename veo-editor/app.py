@@ -383,7 +383,9 @@ class App(tk.Tk):
     # ---------------- refresh ----------------
 
     def _set_lista(self, chave, lst, itens, vazio):
-        mostra = itens if itens else [vazio]
+        if isinstance(vazio, str):
+            vazio = [vazio]
+        mostra = itens if itens else vazio
         if self._cache.get(chave) == mostra:
             return
         self._cache[chave] = mostra
@@ -391,7 +393,8 @@ class App(tk.Tk):
         for i in mostra:
             lst.insert("end", i)
         if not itens:
-            lst.itemconfig(0, fg=MUT)
+            for j in range(len(mostra)):
+                lst.itemconfig(j, fg=MUT)
 
     def _refresh(self):
         s = esteira.status()
@@ -399,8 +402,14 @@ class App(tk.Tk):
         self.lb_watch.configure(text="vigiando:  " + "\n           ".join(s["watch"]))
         self.lb_n.configure(text=str(len(s["prontos"])))
 
-        self._set_lista("fila", self.lst_fila, s["pendentes"],
-                        "Nenhum zip aguardando. Baixe um lote no Flow.")
+        vazio_fila = "Nenhum zip aguardando. Baixe um lote no Flow."
+        if s.get("ignorados"):
+            vazio_fila = [f'{s["ignorados"]} zip(s) no Downloads IGNORADO(s):',
+                          'nome nao comeca com "adbatch".',
+                          'Renomeie o arquivo, ou defina uma',
+                          'Pasta vigiada dedicada (la qualquer',
+                          '.zip e capturado).']
+        self._set_lista("fila", self.lst_fila, s["pendentes"], vazio_fila)
 
         if s["atual"]:
             self.lb_etapa.configure(text=f'{s["atual"]["zip"]}  —  {s["atual"]["etapa"]}')

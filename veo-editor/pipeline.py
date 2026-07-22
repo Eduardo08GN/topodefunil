@@ -40,9 +40,15 @@ def _auto_editor():
 AUTO_EDITOR = _auto_editor()
 
 
+# sem essa flag, cada ffmpeg/ffprobe/auto-editor abre um console preto quando o
+# app roda via pythonw (sem console proprio)
+SEM_JANELA = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+
+
 def _run(cmd, cwd=None):
     p = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd,
-                       encoding="utf-8", errors="replace")
+                       encoding="utf-8", errors="replace",
+                       creationflags=SEM_JANELA)
     if p.returncode != 0:
         raise RuntimeError(
             f"comando falhou ({cmd[0]}):\n{(p.stderr or p.stdout)[-1800:]}"
