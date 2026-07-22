@@ -44,18 +44,33 @@ nunca 5 variacoes do mesmo nome.
 - **Username** (`facebook.com/nome`) — minusculo, sem numero aleatorio.
 - **Eixo criativo** — a angulacao que separa esta pagina das outras 4 do lote.
 
-**Padroes de nome que funcionam** (tematico, nao pessoa):
+**Nome tem que ter IMAGEM, nao descricao.** `Men's Circulation Daily` descreve e
+esquece. `The Quiet Engine` cria imagem e gruda. O nome descritivo e o default
+preguicoso: usar so como alternativa, nunca como primario.
 
-| Nicho | Padroes |
-|---|---|
-| ED / vitalidade | `Natural Men's Vitality Tips` · `Men's Circulation Daily` · `After 40 Vitality Notes` · `Everyday Men's Wellness` · `The Vitality Kitchen` |
-| Weight loss | `Simple Metabolism Tips` · `Metabolism After 40` · `Everyday Fat Loss Habits` · `The Lean Kitchen Notes` · `Natural Weight Wellness` |
+Fontes de nome que geram imagem:
+- **Metafora do corpo/maquina:** The Quiet Engine · Full Circuit · The Furnace Room
+- **Americana / oficio:** The Root Cellar · The Morning Forge · Copper Kettle Notes
+- **Idiom coloquial:** Second Wind Society · The Long Way Back · Still Running
+- **Recorte de tempo:** The Slow Hour · First Light Habits · The 5AM Table
+- **Ingrediente como marca:** The Beet Report · Ginger & Iron
+
+| Nicho | Primarios com imagem | Descritivos (so alternativa) |
+|---|---|---|
+| ED / vitalidade | `The Quiet Engine` · `The Root Cellar` · `Second Wind Society` · `The Morning Forge` · `The Slow Hour` | `Men's Circulation Daily` · `After 40 Vitality Notes` |
+| Weight loss | `The Lean Hour` · `Slow Burn Kitchen` · `The Empty Plate` · `Back to Fighting Weight` | `Simple Metabolism Tips` · `Metabolism After 40` |
 
 Regras duras de nome:
 - Sem `Dr.` / `Dra.` / `MD` / `Clinic` / `Rx` — sinal medico que o Meta cata.
 - Sem nome proprio de pessoa (nao e persona-centered).
 - Sem promessa no nome (`CureED`, `FatBurn Fast`) — nome e tema, promessa e conteudo.
 - Ingles US natural, 2 a 4 palavras. Le em voz alta: se soa a traducao, refaz.
+- **Teste do bar:** se voce nao consegue dizer o nome pra um amigo e ele repetir de
+  memoria 10 minutos depois, o nome e fraco. Refaz.
+
+> **Tradeoff a declarar sempre:** nome com imagem gruda mas nao diz o tema. Quem
+> carrega o tema e a bio e a descricao. Entregar sempre 1 descritivo entre as
+> alternativas, pra o operador escolher se prefere memorabilidade ou clareza.
 
 ### 2. Bio / descricao
 
@@ -80,6 +95,39 @@ Regras de bio:
 - Sem `#erectiledysfunction` / `#cured` na bio — crava o nicho pro classificador.
   Hashtag de nicho, se usar, vai no post, nao na bio.
 - Link: encurtador proprio. Um por pagina, nunca o mesmo em 5 paginas.
+
+### 2b. Descricao (campo About) — NAO confundir com a bio
+
+Bio e a linha curta sob o nome. **Descricao e o campo About**, texto longo que
+aparece na aba Sobre. Toda pagina precisa dos DOIS. Entregar sempre os dois.
+
+Estrutura da descricao (4 blocos, 400 a 600 caracteres):
+
+```
+<1: o que a pagina e, em 1 frase>
+<2: pra quem e, com o recorte de idade/momento>
+<3: o que a pessoa encontra aqui, concreto (3 tipos de conteudo)>
+<4: disclaimer>
+```
+
+Exemplo (ED):
+```
+The Quiet Engine is a place for men who want to understand how their body
+actually works after 45.
+
+Everything here starts with circulation: what supports it, what gets in the way,
+and the small daily choices that add up over time.
+
+You will find short kitchen videos, simple movement you can do in two minutes,
+and plain explanations of the things most men were never told.
+
+Not medical advice. Talk to your doctor before changing anything.
+```
+
+Regras de descricao:
+- Escrita em 3a pessoa pro nome da marca, nunca "I" (nao ha pessoa por tras).
+- Zero credencial, zero anos de experiencia, zero "as seen on".
+- O disclaimer fecha SEMPRE. E o que muda o enquadramento da pagina inteira.
 
 ### 3. Categoria e setup
 
@@ -139,6 +187,49 @@ Cadencia (de [operacao-contas-paginas.md](../../../funil-organico/operacao-conta
 - Depois: ate 3/dia, **maximo 3**
 - Consistencia diaria pesa mais que volume
 
+### 5b. Prompts Veo 3 (o video de estreia de cada pagina)
+
+Estrutura vem de [diretrizes-script-32s.md](../../../funil-organico/diretrizes-script-32s.md)
+e vale aqui inteira: **4 clipes de 8s = 32s**, teto do Veo por clipe, e o mapa
+neurologico. O que muda nestas paginas e o CONTEUDO, nao a estrutura.
+
+| Clipe | Cerebro | Funcao |
+|---|---|---|
+| 1 (0–8s) | Reptiliano | cold open visual + hook que pressupoe conversa |
+| 2 (8–16s) | Limbico | ele se ve + negacao da causa falsa |
+| 3 (16–24s) | Cortex | UM tease de mecanismo + prova concreta |
+| 4 (24–32s) | Reptiliano | projecao curta + CTA de comentario |
+
+**Orcamento de fala: 10 a 16 palavras por clipe.** Contar antes de aprovar.
+**Orcamento de mecanismo: UM tease, ZERO explicacao.** Se entregar completo,
+o cara vai no Google e nao na DM.
+
+**Divergencia deliberada da doutrina de persona:** a doutrina agressiva (biquini
+em quadro, frame 1 com corpo/casal, tom de porno soft) foi escrita pra pagina de
+persona-expert. Estas paginas sao marca tematica de dicas. Bio dizendo "simple
+kitchen recipes" com video de pitch sexual e o descasamento que puxa revisao de
+conteudo. Aqui o scroll-stop vem de **prop e movimento** (corte, fervura, vapor,
+mao trabalhando), nao de corpo. Mantem a estrutura e o loop, troca a alavanca.
+
+**Template de prompt Veo 3 por clipe:**
+
+```
+[8s, vertical 9:16] <tipo de plano> of <sujeito/objeto> <acao concreta> in <cenario US>.
+<luz e atmosfera>. <movimento de camera>. Handheld realism, natural imperfection.
+Audio: ambient <som do ambiente>.
+Dialogue (male voice, <idade>, <sotaque US>, conversational, unpolished):
+"<fala de 10 a 16 palavras>"
+Style: photorealistic UGC, shot on phone, no captions, no text overlay.
+```
+
+Regras duras do prompt Veo (herdadas do repo):
+- **Sem hifen nem travessao** em nenhuma fala. Marcador nº1 de IA.
+- **UMA figura por linha.** Empilhar figura vira bingo de copy.
+- Fala imperfeita: contracao, recomeco, "honestly", frase que desaba no casual.
+- Cenario sempre casa americana real (cozinha, garagem, varanda), nunca estudio.
+- `no text overlay` no prompt: legenda entra na edicao, nao no Veo (o Veo erra texto).
+- Clipes 3 e 4 sao corpo reciclavel: 1 corpo × N hooks. So 1 e 2 mudam na leva.
+
 ### 6. Guardrails de claim (INVIOLAVEL)
 
 O que a skill **nunca** escreve em nome/bio/post — vale pros dois nichos:
@@ -183,16 +274,19 @@ Para cada pagina, entregar em bloco copiavel:
 
 ```
 ━━━ PAGINA <n> — <NOME> ━━━
-Nome:        <nome>
-Alternativas: <3 opcoes>
+Nome:        <nome com imagem>
+Alternativas: <2 com imagem + 1 descritivo>
 Username:    facebook.com/<username>
 Eixo:        <angulacao criativa desta pagina>
 Categoria:   <categoria>
 Mercado:     <cidade>, <estado>, United States · English (US)
 Botao CTA:   Learn more → <link>
 
-BIO
+BIO (linha curta sob o nome)
 <3 linhas>
+
+DESCRICAO (campo About)
+<4 blocos, 400 a 600 caracteres>
 
 PROMPT AVATAR (1:1)
 <prompt>
@@ -203,6 +297,12 @@ PROMPT BANNER (1640x624)
 PRIMEIROS 5 POSTS
 1. <gancho> | <ideia> | <CTA>
 ...
+
+VEO 3 — VIDEO DE ESTREIA (4 clipes de 8s)
+CLIPE 1 <prompt completo>
+CLIPE 2 <prompt completo>
+CLIPE 3 <prompt completo>
+CLIPE 4 <prompt completo>
 
 RODAPE PADRAO
 Not medical advice. Talk to your doctor.
