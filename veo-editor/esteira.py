@@ -42,8 +42,10 @@ PADRAO_DOWNLOADS = re.compile(r"^adbatch.*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
 
-# watch_dir vazio = usa o Downloads do Windows
-CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": ""}
+# watch_dir vazio = usa o Downloads do Windows; keywords = palavras-gatilho do
+# CTA destacadas na legenda (cor propria + fonte maior)
+CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": "",
+       "keywords": "HONEY,GELATIN,VICK,VICKS,RECIPE"}
 
 _lock = threading.RLock()
 _fila = queue.Queue()
@@ -305,8 +307,9 @@ def _processar_zip(nome):
         arquivo = _proximo_nome(pasta_dia)
         out = os.path.join(pasta_dia, arquivo)
 
+        kws = [k for k in CFG["keywords"].split(",") if k.strip()]
         processar_video(takes, out, model=CFG["model"], margem=CFG["margem"],
-                        fator=fator, log=_log_atual)
+                        fator=fator, keywords=kws, log=_log_atual)
 
         dur = duracao(out)
         shutil.move(zpath, _nome_unico(D_ARQUIVO, nome))

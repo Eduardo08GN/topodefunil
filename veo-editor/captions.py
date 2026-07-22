@@ -46,6 +46,11 @@ def _limpa(texto, maiuscula):
     return texto.upper() if maiuscula else texto
 
 
+# palavras-gatilho do CTA ("comment GELATIN"): ganham cor propria e fonte maior
+# para o espectador assimilar de cara o que digitar nos comentarios
+KEYWORDS_PADRAO = ("HONEY", "GELATIN", "VICK", "VICKS", "RECIPE")
+
+
 def gerar_ass(
     palavras,
     largura,
@@ -55,8 +60,11 @@ def gerar_ass(
     max_chars=15,
     gap_quebra=0.6,
     maiuscula=True,
-    cor_ativa="&H0000FFFF",   # amarelo (ABGR) — palavra ja falada/acesa
-    cor_espera="&H00FFFFFF",  # branco — palavra por vir
+    cor_ativa="&H0000FFFF",    # amarelo (ABGR) — palavra ja falada/acesa
+    cor_espera="&H00FFFFFF",   # branco — palavra por vir
+    keywords=None,             # None = KEYWORDS_PADRAO
+    cor_keyword="&H000049FF",  # vermelho-laranja vivo (ABGR de #FF4900)
+    escala_keyword=1.4,        # fonte da keyword vs fonte normal
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
     max_chars) e quebra tambem quando ha silencio > gap_quebra entre palavras.
@@ -102,6 +110,9 @@ Style: CC,Arial Black,{fonte_sz},{cor_ativa},{cor_espera},&H00000000,&H64000000,
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
 
+    kw = {k.strip().upper() for k in (keywords or KEYWORDS_PADRAO) if k.strip()}
+    fs_kw = int(fonte_sz * escala_keyword)
+
     eventos = []
     for grupo in linhas:
         ini = grupo[0]["start"]
@@ -115,7 +126,17 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 dur = _cs(grupo[j + 1]["start"] - w["start"])
             else:
                 dur = _cs(w["end"] - w["start"])
-            partes.append(f"{{\\kf{dur}}}{texto} ")
+            eh_keyword = texto.strip(".,!?;:").upper() in kw
+            if eh_keyword:
+                # keyword em cor propria (antes E depois do sweep) + fonte maior;
+                # na sequencia restaura fonte e as cores do karaoke normal
+                partes.append(
+                    f"{{\\kf{dur}\\fs{fs_kw}\\1c{cor_keyword}\\2c{cor_keyword}}}"
+                    f"{texto}"
+                    f"{{\\fs{fonte_sz}\\1c{cor_ativa}\\2c{cor_espera}}} "
+                )
+            else:
+                partes.append(f"{{\\kf{dur}}}{texto} ")
         txt = "".join(partes).strip()
         eventos.append(
             f"Dialogue: 0,{_ass_time(ini)},{_ass_time(fim)},CC,,0,0,0,,{txt}"

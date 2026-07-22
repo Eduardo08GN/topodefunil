@@ -206,7 +206,7 @@ def queimar_legenda(inp, ass_path, out):
 
 
 def processar_video(takes, out_final, model="base.en", lang="en",
-                    margem="0.2s", fator=None, log=print):
+                    margem="0.2s", fator=None, keywords=None, log=print):
     if not takes:
         raise RuntimeError("nenhum take encontrado")
     work = tempfile.mkdtemp(prefix="owedit_")
@@ -230,7 +230,7 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         log(f"  transcrevendo (whisper {model})... {w}x{h}")
         palavras = transcrever(base, model, lang)
         log(f"  {len(palavras)} palavras -> legenda")
-        gerar_ass(palavras, w, h, assf)
+        gerar_ass(palavras, w, h, assf, keywords=keywords)
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
         queimar_legenda(base, assf, out_final)
