@@ -50,6 +50,72 @@ scroll perdido).
 
 ---
 
+## PROTOCOLO DE RANDOMIZAÇÃO (PASSO 0 — OBRIGATÓRIO ANTES DE GERAR)
+
+Modelo de linguagem tem viés (mode-collapse): deixado por conta própria, ele
+gravita pro protótipo (mesma persona, mesmo mecanismo, mesmo ângulo). Para o
+funil, isso é morte por repetição. A variação NÃO pode depender do "gosto" do
+agente — ela é sorteada **externamente** e o agente apenas **executa**.
+
+### As duas regras inegociáveis
+
+1. **PERGUNTE PRIMEIRO quais variáveis são FIXAS.** Antes de gerar qualquer lote,
+   o agente pergunta ao operador: *"Quais variáveis você quer travar neste lote?
+   (mecanismo, persona, dispositivo, setting, staging, dor, hook, cta, prop — ou
+   nenhuma)"*. Nunca comece a gerar sem essa resposta.
+2. **NÃO ESCOLHA nenhum eixo não-fixado.** Tudo que não foi travado vem do
+   sorteador `funil-organico/randomizador-v5.py` (round-robin com jitter:
+   cobertura garantida, sem repetir ângulo em variações seguidas). O agente lê a
+   linha de spec e escreve o script naquela combinação — não inventa, não
+   "prefere", não repete o último.
+
+### Eixos randomizáveis
+
+| Eixo | Valores |
+|---|---|
+| mecanismo | honey, vick, gelatin, custom |
+| persona | homem_velho, mulher_jovem |
+| persona específica | 6 mulheres do pool / homem branco ou negro |
+| dispositivo (herói cena 1) | H1–H7 |
+| setting | kitchen, guerrilha, ranch |
+| staging | solo, casal |
+| dor | 10 dores do V4 |
+| hook_style | comando_choque, confissao, pergunta, ataque_industria |
+| cta | keyword_mecanismo, book, yes |
+| prop | geoduck, cucumber, carrot, banana, daikon, zucchini |
+
+### Como rodar o sorteio
+
+```
+python funil-organico/randomizador-v5.py --n 8                    # nada fixo
+python funil-organico/randomizador-v5.py --n 8 --fix mecanismo=vick
+python funil-organico/randomizador-v5.py --n 8 --fix mecanismo=honey --fix persona=mulher_jovem
+python funil-organico/randomizador-v5.py --listar                 # eixos e valores
+```
+
+Cada linha de saída é uma spec: `mecanismo | persona(detalhe) | dispositivo |
+setting | staging | prop | hook_style | dor | CTA`. O sorteador já **repara as
+restrições duras** (rancho só gelatin; persona negra nunca em rancho; H5 ⇒
+setting guerrilha; H6/H7 ⇒ geoduck/cucumber com o líquido do mecanismo; vick
+H1/H3 ⇒ cenoura). O `--seed` torna o lote reproduzível.
+
+### Fluxo completo
+
+```
+1. Operador pede um lote de N vídeos.
+2. AGENTE PERGUNTA quais variáveis travar (PASSO 0).
+3. Rodar o randomizador com os --fix informados.
+4. Para cada linha de spec, gerar REF + 5 IMAGE + 5 TAKE executando AQUELA
+   combinação (sem trocar nenhum eixo sorteado).
+5. Numeração de vídeo e separadores como no V4.
+```
+
+**Erro Fatal 26:** gerar sem perguntar as variáveis fixas, ou escolher por conta
+própria um eixo que deveria ter sido sorteado. Isso reintroduz o viés que a V5
+existe para matar.
+
+---
+
 ## BIBLIOTECA DE DISPOSITIVOS VISUAIS DE HOOK
 
 Onze dispositivos, destilados do corpus real (ver Apêndice A). Cada um traz:
@@ -321,6 +387,8 @@ a oferta for um protocolo/coleção.
 - [ ] Copy segue não-gráfica; malícia só no visual?
 - [ ] Nenhum dispositivo fura o anti-bloqueio (prop vertical, mão estática, "coating")?
 - [ ] Herda e cumpre TODO o checklist do V4 (REF, personas, iPhone, anti-glitch, fechamentos)?
+- [ ] **PASSO 0 cumprido: perguntei quais variáveis são fixas ANTES de gerar?**
+- [ ] Todos os eixos não-fixados vieram do randomizador (nenhum escolhido por mim)?
 
 ---
 
