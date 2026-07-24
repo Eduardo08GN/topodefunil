@@ -34,7 +34,7 @@ POOLS = {
     "mulher":     ["morena_tatuada", "loira_americana", "loira_russa",
                    "morena_cacheada", "ruiva", "morena_bronzeada"],
     "homem_etnia": ["branco", "negro"],
-    "dispositivo": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9"],
+    "dispositivo": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10"],
     "setting":    ["kitchen", "guerrilha", "ranch"],
     "staging":    ["solo", "casal"],
     "dor":        ["momento_constrangedor", "desculpas_toda_noite",
@@ -104,6 +104,10 @@ def reparar(row):
     # H2 (day0/day7) usa geoduck por padrao
     if row["dispositivo"] == "H2":
         row["prop"] = "geoduck"
+
+    # H9 (estado-problema ponta-pra-baixo) precisa de prop que "cai": banana/nabo
+    if row["dispositivo"] == "H9" and row["prop"] not in ("banana", "daikon"):
+        row["prop"] = "banana"; notas.append("H9=>banana")
 
     # H8 (rub-this-on) <-> hook_style rub_this_on andam juntos; usa prop revestivel
     if row["dispositivo"] == "H8" or row["hook_style"] == "rub_this_on":

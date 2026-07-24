@@ -8,8 +8,10 @@
 >
 > Novidade da V5: uma **Biblioteca de Dispositivos Visuais de Hook**, destilada da
 > engenharia reversa de 13 criativos reais do nicho (8 do nosso baseline + 5
-> concorrentes de alto nível). Cada vídeo passa a ter **1 dispositivo herói na
-> cena 1 + 1 micro-hook em cada uma das cenas 2 a 5.**
+> concorrentes de alto nível) **mais gems visuais minerados do hall da Tanisha**
+> (H9 droop-at-groin, H10 macro+PiP) — absorvidos pelo DISPOSITIVO mesmo com o
+> formato-fonte fora de escopo (ver Princípio de Absorção). Cada vídeo passa a ter
+> **1 dispositivo herói na cena 1 + 1 micro-hook em cada uma das cenas 2 a 5.**
 >
 > Mantém 100% do que o V4 já garante: 5 cenas fixas, REF 01, numeração x/05,
 > entrega agrupada (REF → 5 IMAGE → 5 TAKE), estética iPhone anti-IA, dual
@@ -76,7 +78,7 @@ agente — ela é sorteada **externamente** e o agente apenas **executa**.
 | mecanismo | honey, vick, gelatin, custom |
 | persona | homem_velho, mulher_jovem |
 | persona específica | 6 mulheres do pool / homem branco ou negro |
-| dispositivo (herói cena 1) | H1–H9 |
+| dispositivo (herói cena 1) | H1–H10 |
 | setting | kitchen, guerrilha, ranch |
 | staging | solo, casal |
 | dor | 10 dores do V4 |
@@ -118,7 +120,7 @@ existe para matar.
 
 ## BIBLIOTECA DE DISPOSITIVOS VISUAIS DE HOOK
 
-Dispositivos destilados do corpus real (ver Apêndice A): **9 heróis (H1–H9)** para
+Dispositivos destilados do corpus real (ver Apêndice A): **10 heróis (H1–H10)** para
 a cena 1 e **7 micro-hooks (M1–M7)** para as cenas 2–5. Cada um traz quando usar,
 como montar no IMAGE, e o gatilho psicológico. **A cena 1 SEMPRE usa um dispositivo
 "HERÓI". As cenas 2-5 usam "MICRO-HOOK".**
@@ -239,9 +241,22 @@ mecanismo vai resolver.
 - *Estático (só o problema):* a ponta caída segura à frente da virilha = "isto é você agora".
 - *Dinâmico (droop→rise):* começa apontando pra baixo e, na virada, **sobe/endireita** — a transformação por ÂNGULO (irmão do H6/H7, que faz por tamanho). Ótimo pra cena 1→2.
 - *Segunda pessoa como "exemplo":* a persona (mais vestida/autoridade leve) demonstra no sujeito — dá ar clínico sem virar VSL longo.
-- *IMAGE:* "a person holding a ripe banana in front of the groin at pubic height, the banana clearly drooping tip-down, limp; the presenter beside them gesturing toward it, plain kitchen".
+- *IMAGE (simples):* "a person holding a ripe banana in front of the groin at pubic height, the banana clearly drooping tip-down, limp; the presenter beside them gesturing toward it, plain kitchen".
+- *IMAGE (tableau de maca — versão rica da Tanisha):* "a shirtless self-conscious older man standing/lying on an exam table with a hand-drawn sad-face sticky note on his belly and a ripe banana taped drooping tip-down at his groin; a confident presenter beside him gesturing toward it; a fit attractive young partner nearby on the table (the 'desire is there')". O tableau encena literalmente "the desire is there but the body won't respond".
 - *Anti-bloqueio:* estático, mão parada segurando a base; ponta pra baixo = retrata o caído, NÃO ação. Nada de vai-e-vem. No droop→rise, o movimento é só o ângulo subindo, contínuo, um plano.
 - *hook_style / prop:* casa com qualquer mecanismo; prop = banana (padrão) ou nabo.
+
+**H10 — MACRO-CHOQUE + PRESENTER PiP (gem da Tanisha, reenquadrado)**
+Um **macro extremo** enche a tela (a Tanisha usa pele/gota de soro; nós usamos o
+INGREDIENTE do mecanismo — mel dourado escorrendo em close gigante, glob de Vicks
+azul-esverdeado, gelatina âmbar tremulando) enquanto a persona aparece **pequena,
+composta no canto inferior** (picture-in-picture, estilo green-screen). O macro é o
+scroll-stopper ("o que é isso?"); a persona narra por cima.
+- *Gatilho:* textura/escala inesperada em tela cheia = para o dedo; PiP deixa o
+  macro dominar sem perder o rosto que dá confiança.
+- *On-brand:* SEMPRE o macro do ingrediente do mecanismo único do vídeo (nunca pele/gore genérico) — mantém a promessa e a estética da casa.
+- *IMAGE:* "extreme macro close-up of thick golden honey slowly oozing, filling the whole vertical frame, glistening; the presenter composited small in the lower-left corner talking to camera".
+- *Formato:* funciona em curto; casa bem com a cena 1 (hook) ou 2 (bancada/mecanismo).
 
 > **PRINCÍPIO DE ABSORÇÃO (dinamismo — leia antes de excluir qualquer coisa):**
 > Dispositivos visuais de hook são extraídos **POR MÉRITO, independente do FORMATO do
@@ -255,6 +270,7 @@ mecanismo vai resolver.
 Um modelo anatômico da pelve/genitália masculina em cima da mesa, ao lado dos
 ingredientes. Autoridade médica implícita sem se declarar médico.
 - *IMAGE:* "an anatomical model of the male pelvis on the wooden table beside the ingredients".
+- *Variante (justaposição — Tanisha):* erguer o modelo anatômico em uma mão E o ingrediente/prop na outra, lado a lado, comparando ("clean your wiener" enquanto mostra o modelo + o limão/mel). *IMAGE:* "holding up a cross-section anatomical model of the male pelvis in one hand and a lemon half in the other, side by side to camera".
 
 **M2 — LÍQUIDO = SANGUE / FLUXO**
 A bebida vermelha/escura (beterraba, melancia) em copo transparente, erguida à
@@ -299,7 +315,7 @@ Mesma espinha do V4. A diferença é a coluna "DISPOSITIVO".
 
 | Cena | Beat (V4) | Dispositivo V5 obrigatório |
 |---|---|---|
-| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H9), casado ao mecanismo. **H6/H7 (pouring+crescimento) e H9 (droop→rise) são os de maior impacto; H8 (rub-this-on) é o padrão do baseline; H9 é o hook de PROBLEMA** |
+| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H10), casado ao mecanismo. **H6/H7 (pouring+crescimento) e H9 (droop→rise) são os de maior impacto; H8 (rub-this-on) é o padrão do baseline; H9 é o hook de PROBLEMA** |
 | **2/5 BANCADA** | Apresenta o mecanismo | **M1 ou M4** (modelo anatômico / escorrimento); **M7** se usar autoridade leve |
 | **3/5 PREPARO** | Manipula o ingrediente | **M3, H3 ou H8b** (encanamento / revestimento / blend demonstrado) |
 | **4/5 RESULTADO** | Confiança, "custa quase nada" | **M2 ou M5** (líquido=sangue / intimidade) |
@@ -383,7 +399,7 @@ faixa. Ver V4 para o gabarito completo de REF e o exemplo integral.
 
 Todos os 20 Erros Fatais do V4 continuam valendo. Novos na V5:
 
-21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H9. Hook sem
+21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H10. Hook sem
     dispositivo visual = scroll perdido.
 22. **Cena sem `DISPOSITIVO VISUAL:`** — as 5 cenas declaram o dispositivo.
 23. **Copy gráfica para compensar visual tímido** — NUNCA. Se o visual está
@@ -450,7 +466,7 @@ a oferta for um protocolo/coleção.
 
 ## APÊNDICE B — CHECKLIST V5 (além do checklist V4)
 
-- [ ] Cena 1 tem um dispositivo HERÓI (H1–H9) declarado?
+- [ ] Cena 1 tem um dispositivo HERÓI (H1–H10) declarado?
 - [ ] Se H8 (rub-this-on): a ISCA é diferente do mecanismo, e tem a virada isca→troca ("you don't believe it… but there IS something")?
 - [ ] Se H6/H7: líquido correto do mecanismo + duas fases (pouring → crescimento) num plano contínuo (Apêndice C)?
 - [ ] Cenas 2-5 têm um MICRO-HOOK (M1–M7) cada?
