@@ -30,9 +30,15 @@ import sys
 POOLS = {
     "mecanismo":  ["honey", "vick", "gelatin", "custom"],
     "persona":    ["homem_velho", "mulher_jovem"],
-    # personas especificas
+    # etnia = CASTING da pagina. Governa homem E mulher do video (congruencia com
+    # o avatar do perfil). Pagina de avatar negro fixa etnia=negro -> todo REF,
+    # homem e parceira, e afro-americano. Ver ARQUITETURA-OPERACAO.md.
+    "etnia":      ["branco", "negro"],
+    # personas especificas — pool geral de mulheres (uniao das etnias, p/ --listar
+    # e sorteio bruto). A congruencia por etnia e reparada depois (MULHER_POR_ETNIA).
     "mulher":     ["morena_tatuada", "loira_americana", "loira_russa",
-                   "morena_cacheada", "ruiva", "morena_bronzeada"],
+                   "morena_cacheada", "ruiva", "morena_bronzeada",
+                   "afro_americana", "negra_cacheada", "afro_atletica"],
     "homem_etnia": ["branco", "negro"],
     "dispositivo": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10"],
     "setting":    ["kitchen", "guerrilha", "ranch"],
@@ -48,8 +54,16 @@ POOLS = {
     "prop":       ["geoduck", "cucumber", "carrot", "banana", "daikon", "zucchini"],
 }
 
+# mulheres por etnia — a parceira do casal tem que casar com a etnia da pagina
+MULHER_POR_ETNIA = {
+    "branco": ["morena_tatuada", "loira_americana", "loira_russa",
+               "morena_cacheada", "ruiva", "morena_bronzeada"],
+    "negro":  ["afro_americana", "negra_cacheada", "afro_atletica"],
+}
+
 # eixos que o operador pode fixar (os demais sao derivados/reparados)
-FIXAVEIS = ["mecanismo", "persona", "mulher", "homem_etnia", "dispositivo",
+# etnia = knob de casting da pagina (governa homem_etnia + mulher).
+FIXAVEIS = ["mecanismo", "persona", "etnia", "mulher", "homem_etnia", "dispositivo",
             "setting", "staging", "dor", "hook_style", "cta", "prop", "isca"]
 
 # isca (H8) mapeada pro mecanismo que o "Trick" nomeia (a isca NUNCA e o mecanismo)
@@ -74,9 +88,19 @@ def draw_balanced(pool, n, rng):
     return out[:n]
 
 
-def reparar(row):
+def reparar(row, fixos, idx):
     """Aplica as restricoes duras do nicho, ajustando o minimo necessario."""
     notas = []
+
+    # CASTING: a etnia da pagina governa homem E mulher (congruencia com o avatar).
+    # Deriva homem_etnia e a parceira da etnia, salvo se o operador fixou cada um.
+    etnia = row.get("etnia", "branco")
+    if "homem_etnia" not in fixos:
+        row["homem_etnia"] = etnia
+    if "mulher" not in fixos and row["mulher"] not in MULHER_POR_ETNIA[etnia]:
+        pool = MULHER_POR_ETNIA[etnia]
+        row["mulher"] = pool[idx % len(pool)]  # rotaciona p/ variar dentro da etnia
+        notas.append(f"mulher!=etnia({etnia})=>{row['mulher']}")
 
     # H5 = dispositivo guerrilha -> setting guerrilha
     if row["dispositivo"] == "H5" and row["setting"] != "guerrilha":
@@ -86,10 +110,9 @@ def reparar(row):
     if row["setting"] == "ranch" and row["mecanismo"] != "gelatin":
         row["setting"] = "kitchen"; notas.append("ranch so gelatin=>kitchen")
 
-    # persona negra nunca em rancho
-    if row["setting"] == "ranch" and row["persona"] == "homem_velho" \
-            and row.get("homem_etnia") == "negro":
-        row["homem_etnia"] = "branco"; notas.append("negro nao em ranch=>branco")
+    # etnia negra nunca em rancho -> troca o SETTING (nao a etnia; casting manda)
+    if row["setting"] == "ranch" and etnia == "negro":
+        row["setting"] = "kitchen"; notas.append("negro nao em ranch=>kitchen")
 
     # H6/H7 = pouring+crescimento: prop tem que ser geoduck ou cucumber
     if row["dispositivo"] in ("H6", "H7"):
@@ -150,7 +173,7 @@ def montar(n, fixos, seed):
                 row[eixo] = fixos[eixo]
             else:
                 row[eixo] = sorteados[eixo][i]
-        rows.append(reparar(row))
+        rows.append(reparar(row, fixos, i))
     return rows
 
 
@@ -162,10 +185,13 @@ def imprimir(rows, fixos, seed):
             "prop", "hook_style", "dor", "cta_keyword"]
     for i, r in enumerate(rows, 1):
         pd = r["mulher"] if r["persona"] == "mulher_jovem" else f"homem_{r['homem_etnia']}"
+        # no casal aparecem os dois corpos -> mostra homem+mulher da etnia
+        if r["staging"] == "casal":
+            pd = f"homem_{r['homem_etnia']}+{r['mulher']}"
         disp = r["dispositivo"] + (f"(isca:{r['isca']})" if r["dispositivo"] == "H8" else "")
         linha = " | ".join([
             f"V{i:02d}",
-            r["mecanismo"], f"{r['persona']}({pd})", disp,
+            r["mecanismo"], f"[{r['etnia']}]", f"{r['persona']}({pd})", disp,
             r["setting"], r["staging"], r["prop"],
             r["hook_style"], r["dor"], f"CTA:{r['cta_keyword']}",
         ])

@@ -77,7 +77,8 @@ agente — ela é sorteada **externamente** e o agente apenas **executa**.
 |---|---|
 | mecanismo | honey, vick, gelatin, custom |
 | persona | homem_velho, mulher_jovem |
-| persona específica | 6 mulheres do pool / homem branco ou negro |
+| **etnia** (casting da página) | **branco, negro** — governa homem + parceira do casal |
+| persona específica | mulheres do pool (por etnia) / homem branco ou negro |
 | dispositivo (herói cena 1) | H1–H10 |
 | setting | kitchen, guerrilha, ranch |
 | staging | solo, casal |
@@ -95,11 +96,12 @@ python funil-organico/randomizador-v5.py --n 8 --fix mecanismo=honey --fix perso
 python funil-organico/randomizador-v5.py --listar                 # eixos e valores
 ```
 
-Cada linha de saída é uma spec: `mecanismo | persona(detalhe) | dispositivo |
-setting | staging | prop | hook_style | dor | CTA`. O sorteador já **repara as
-restrições duras** (rancho só gelatin; persona negra nunca em rancho; H5 ⇒
-setting guerrilha; H6/H7 ⇒ geoduck/cucumber com o líquido do mecanismo; vick
-H1/H3 ⇒ cenoura). O `--seed` torna o lote reproduzível.
+Cada linha de saída é uma spec: `mecanismo | [etnia] | persona(detalhe) |
+dispositivo | setting | staging | prop | hook_style | dor | CTA`. O sorteador já
+**repara as restrições duras** (casting: homem+parceira seguem a `etnia` da página;
+rancho só gelatin; etnia negra nunca em rancho ⇒ vira kitchen; H5 ⇒ setting
+guerrilha; H6/H7 ⇒ geoduck/cucumber com o líquido do mecanismo; vick H1/H3 ⇒
+cenoura). O `--seed` torna o lote reproduzível.
 
 ### Fluxo completo
 
@@ -115,16 +117,22 @@ H1/H3 ⇒ cenoura). O `--seed` torna o lote reproduzível.
 ### Congruência de casting por página (TRAVA OBRIGATÓRIA)
 
 O lote é gerado **para uma página específica**, e a página tem um avatar com etnia
-definida. **A etnia do REF tem que casar com a etnia do avatar da página:**
+definida. **A etnia do REF tem que casar com a etnia do avatar da página** — e
+quando o avatar é um casal (ex.: Marcus', Chuck's), **tanto o homem quanto a
+parceira** têm que bater:
 
-- **Página com avatar de pele ESCURA → travar `persona=homem_negro`** (REF
-  afro-americano US). Só criativos de pele escura vão pra essa página.
-- **Página com avatar de pele CLARA → travar `persona=homem_branco`.**
+- **Página com avatar de pele ESCURA → travar `etnia=negro`** (REF afro-americano
+  US, homem e mulher). Só criativos de pele escura vão pra essa página.
+- **Página com avatar de pele CLARA → travar `etnia=branco`.**
+
+O eixo `etnia` no randomizador governa o casting inteiro de uma vez: fixa
+`homem_etnia` e força a parceira do casal a vir do pool de mulheres daquela etnia
+(`MULHER_POR_ETNIA`). Não precisa fixar homem e mulher separado.
 
 Isso é uma restrição dura, no mesmo nível de `mecanismo=gelatin`. Um avatar negro
 postando REF branco (ou o inverso) quebra a verossimilhança e denuncia a conta
 como fabricada. Ao pedir o lote, o operador informa a página → o agente aplica o
-`--fix` de etnia correspondente **automaticamente**, sem perguntar. O mapeamento
+`--fix etnia=` correspondente **automaticamente**, sem perguntar. O mapeamento
 página → etnia do avatar está em `funil-organico/ARQUITETURA-OPERACAO.md`.
 
 **Erro Fatal 26:** gerar sem perguntar as variáveis fixas, ou escolher por conta

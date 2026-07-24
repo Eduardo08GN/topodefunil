@@ -38,10 +38,9 @@ mecanismo levando pra VSL de outro mata a conversão e a credibilidade.
 do criativo tem que casar com a etnia do AVATAR da página. **Página com avatar de
 pele escura recebe SÓ criativos com REF de pele escura (afro-americano US).** Nunca
 cruzar: avatar negro postando REF branco (ou vice-versa) quebra a verossimilhança
-e denuncia a operação como fabricada. Na prática: travar a etnia no randomizador
-(`--fix persona=homem_negro` / eixo de etnia) junto do `--fix mecanismo=gelatin`
-ao gerar o lote de uma página de avatar escuro. Ver coluna "Etnia do avatar" no
-mapeamento abaixo.
+e denuncia a operação como fabricada. Na prática: travar `--fix etnia=negro` (que
+governa homem E parceira) junto do `--fix mecanismo=gelatin` ao gerar o lote de uma
+página de avatar escuro. Ver coluna "Etnia do avatar" no mapeamento abaixo.
 
 ---
 
@@ -84,13 +83,19 @@ Split: **3 Horsewood / 2 Ragnaroak** (ambos gelatin trick). Domínios = os 5 já
 (ver [`bridge-pages-deploy.md`](bridge-pages-deploy.md)); `wholelifenutri.shop`
 fica de **reserva**. Mapeamento fechado e **consistente com o deploy atual**.
 
-| Página | Domínio (bridge) | VSL | Mecanismo dos criativos |
-|---|---|---|---|
-| Joe's Wellness hub | `manresethub.pro` | **Horsewood** | **gelatin trick** |
-| Marcus' Men Reset Hub | `vitalresetlab.site` | **Horsewood** | **gelatin trick** |
-| Ray's Natural Vitality Hub | `primalvitalityhub.site` | **Horsewood** | **gelatin trick** |
-| Chuck's Men Welness Hub | `allmensnatural.site` | **Ragnaroak** | **gelatin trick** |
-| Matt's Natural Reset Tips | `steadystrengthhub.site` | **Ragnaroak** | **gelatin trick** |
+| Página | Domínio (bridge) | VSL | Etnia do avatar | `--fix` do lote (V5) |
+|---|---|---|---|---|
+| Joe's Wellness hub | `manresethub.pro` | **Horsewood** | branco | `mecanismo=gelatin etnia=branco` |
+| Marcus' Men Reset Hub | `vitalresetlab.site` | **Horsewood** | **negro** | `mecanismo=gelatin etnia=negro` |
+| Ray's Natural Vitality Hub | `primalvitalityhub.site` | **Horsewood** | branco | `mecanismo=gelatin etnia=branco` |
+| Chuck's Men Welness Hub | `allmensnatural.site` | **Ragnaroak** | **negro** | `mecanismo=gelatin etnia=negro` |
+| Matt's Natural Reset Tips | `steadystrengthhub.site` | **Ragnaroak** | branco | `mecanismo=gelatin etnia=branco` |
+
+> **Casting travado por avatar:** Marcus' e Chuck's têm avatar de **casal negro** →
+> criativos SÓ com REF afro-americano US (homem **e** parceira). As outras três têm
+> avatar de homem branco → REF branco. O eixo `etnia` no randomizador governa o
+> casting inteiro (homem + mulher do casal) de uma vez — basta o `--fix etnia=` da
+> coluna acima. Ver [regra de congruência de casting](#) acima.
 
 > Para trocar uma página de VSL: mude a linha aqui + repointe a variante da bridge
 > no domínio (receita em [`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md)).
