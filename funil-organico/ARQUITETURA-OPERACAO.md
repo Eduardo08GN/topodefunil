@@ -149,4 +149,5 @@ o mesmo mecanismo.
 - **Domínios:** 5 no ar + `wholelifenutri.shop` reserva ([`bridge-pages-deploy.md`](bridge-pages-deploy.md)).
 - **Bridges:** 5 no ar, mínimas, copy própria por domínio ([`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md)).
 - **Notificação de venda:** sistema **próprio** BuyGoods → Telegram, sem terceiro ([`notificacao-vendas-telegram.md`](notificacao-vendas-telegram.md)).
+- **Automação Comentário → DM:** só DM, sem resposta pública; keywords + congruência da cadeia ([`automacao-comentario-dm.md`](automacao-comentario-dm.md)).
 - **Infra:** VPS `159.195.12.135`, Coolify, Traefik+SSL ([`RUNBOOK-deploy-coolify.md`](RUNBOOK-deploy-coolify.md)).
