@@ -66,13 +66,31 @@ também está em [`bridge-page/`](bridge-page/) no topodefunil.
 <script>(function(){
   var OFFER="<VSL_URL>", AFF="<AFF>";
   var q=new URLSearchParams(location.search);
-  var p=(q.get("p")||q.get("sub_id")||"direct").toLowerCase().replace(/[^a-z0-9_]/g,"")||"direct";
-  document.getElementById("offer").href=OFFER+"?aff_id="+encodeURIComponent(AFF)+"&sub_id="+encodeURIComponent(p);
+  var p=(q.get("p")||q.get("subid")||q.get("sub_id")||"direct").toLowerCase().replace(/[^a-z0-9_]/g,"")||"direct";
+  document.getElementById("offer").href=OFFER+"?aff_id="+encodeURIComponent(AFF)+"&subid="+encodeURIComponent(p);
 })();</script>
 ```
 - Horsewood: `OFFER="https://horsewood.us/vsl3/"`, `AFF="45158"`, hero `hero.png`.
 - Vigortrix: `OFFER="https://vigortrix.com/vesp-l2/"`, `AFF="75486"`, hero `hero.jpg`.
 - **Nunca cruzar** VSL/mecanismo entre páginas.
+
+---
+
+## Tracking (Utmify + BuyGoods)
+
+Ambas as ofertas (Horsewood, Vigortrix) fecham o checkout no **BuyGoods**.
+
+- **Param de sub-fonte = `subid`** (o BuyGoods documenta `&subid=SOMETHING`). A
+  bridge manda `&subid=<pagina>` na VSL → dá pra ver qual página converteu no
+  BuyGoods E no Utmify. (Era `sub_id` antes; não atribuía — corrigido.)
+- **Script de UTMs da Utmify** no `<head>` de todas: captura/repassa os parâmetros
+  ```html
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+  ```
+- ⚠️ **A notificação de venda NÃO vem só do script.** O script na bridge captura a
+  fonte; quem entrega a venda pro Utmify é o **postback do BuyGoods → Utmify**
+  (configurar no BuyGoods Settings/Postback + na aba Webhooks do Utmify). Sem esse
+  postback, o Utmify não recebe a venda.
 
 ---
 

@@ -22,7 +22,7 @@ DM automation entrega o link
 Bridge page (domínio próprio, /bp1/) — "Private video"
       │  clique no hero
       ▼
-VSL de afiliado (Horsewood OU Vigortrix) + aff_id + sub_id
+VSL de afiliado (Horsewood OU Vigortrix) + aff_id + subid
       ▼
 💰 comissão
 ```
@@ -39,10 +39,10 @@ levando pra VSL de gelatin mata a conversão e a credibilidade.
 
 | VSL | Link direto | aff_id | Mecanismo | Nº de páginas |
 |---|---|---|---|---|
-| **Horsewood** | `https://horsewood.us/vsl3/?aff_id=45158&sub_id=<pagina>` | 45158 | **Gelatin trick** (red bowl) | **3** |
-| **Vigortrix** | `https://vigortrix.com/vesp-l2/?aff_id=75486&sub_id=<pagina>` | 75486 | **Vick VapoRub trick** | **2** |
+| **Horsewood** | `https://horsewood.us/vsl3/?aff_id=45158&subid=<pagina>` | 45158 | **Gelatin trick** (red bowl) | **3** |
+| **Vigortrix** | `https://vigortrix.com/vesp-l2/?aff_id=75486&subid=<pagina>` | 75486 | **Vick VapoRub trick** | **2** |
 
-- `sub_id=<pagina>` → atribuição por página (lido do `?p=<slug>` na URL da bridge; default `direct`).
+- `subid=<pagina>` → atribuição por página (lido do `?p=<slug>` na URL da bridge; default `direct`).
 - **Horsewood = Gelatin trick** (confirmado). A bridge vende "the red bowl"
   (gelatina vermelha no hero); os criativos das 3 páginas Horsewood usam o
   mecanismo **gelatin** → fixar `mecanismo=gelatin` no randomizador (PASSO 0).
@@ -92,7 +92,7 @@ página futura).
 Regra de ouro: **bridge = no máx. 3 linhas de copy** (1 headline + 1 CTA + o hero
 clicável). Ela não converte a venda — quem converte é a VSL. Mesmo estilo/CSS em
 todas; o que **varia entre domínios é só a copy** (e o hero da oferta). Todas
-roteiam pro clique na VSL com atribuição `?p=<slug>` → `sub_id`.
+roteiam pro clique na VSL com atribuição `?p=<slug>` → `subid`.
 
 | Domínio | Headline (copy) | VSL |
 |---|---|---|
