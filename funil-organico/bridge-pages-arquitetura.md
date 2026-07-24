@@ -1,117 +1,121 @@
 # Arquitetura das Bridge Pages
 
-Como cada bridge page é feita, como o domínio decide qual VSL serve, e como
-adicionar/trocar. Complementa a visão macro em [`ARQUITETURA-OPERACAO.md`](ARQUITETURA-OPERACAO.md)
-e o inventário/status em [`bridge-pages-deploy.md`](bridge-pages-deploy.md).
+Como cada bridge é feita, por que **cada domínio tem um design próprio**
+(anti-fingerprint), e como editar/adicionar/trocar. Complementa a visão macro em
+[`ARQUITETURA-OPERACAO.md`](ARQUITETURA-OPERACAO.md) e o status em
+[`bridge-pages-deploy.md`](bridge-pages-deploy.md).
 
 ---
 
-## O que uma bridge page é
+## Princípio: 5 bridges DISTINTAS, não 1 template clonado
 
-Uma landing **estática** "Private video" (dark, headline em Oswald, hero clicável,
-disclaimer). Servida por `nginx:alpine` no caminho **`/bp1/`** de cada domínio.
-O clique no hero monta, via JS, o link da VSL com `aff_id` + `sub_id`:
+Cada domínio serve uma bridge com **design, layout, estrutura HTML e ângulo de copy
+próprios** — nenhuma igual à outra. Motivos:
 
-```js
-OFFER + "?aff_id=" + AFF + "&sub_id=" + p     // p = ?p=<slug> da URL (default "direct")
-```
+1. **Anti-fingerprint.** Rodar o mesmo template (mesmo CSS/estrutura) ou a mesma
+   imagem (mesmo hash) em vários domínios é uma pegada que Facebook/redes detectam
+   e derrubam em bloco. Bridges distintas = 5 pegadas diferentes.
+2. **Teste de ângulo.** Genres diferentes convertem diferente — dá pra ver qual
+   formato de bridge puxa mais clique pra VSL.
 
-- **Atribuição por página:** a URL da bridge recebe `?p=<slug-da-pagina>` (do link
-  que a página posta/manda no DM). Esse `p` vira `sub_id` na VSL → dá pra ver no
-  afiliado qual página converteu.
-- `noindex,nofollow` + `title "Private video"` = discrição.
-
-Código-fonte (referência) mora no `topodefunil`:
-- Horsewood: [`funil-organico/bridge-page/`](bridge-page/) (= `bp1`)
-- Vigortrix: [`funil-organico/bridge-page-vick/`](bridge-page-vick/) (= `bp-vick`)
-
-O que **deploya** de verdade é o repo `projetosweb` (o Coolify puxa do GitHub):
-`projetosweb/bridge-pages/bp1` e `projetosweb/bridge-pages/bp-vick`.
+O que TODAS compartilham (contrato funcional, não visual):
+- CTA principal com `id="offer"` e `href="#"`; um `<script>` monta o link da VSL
+  com `aff_id` + `sub_id` (atribuição por `?p=<slug>` → default `direct`).
+- `noindex,nofollow`, `<title>` discreto, disclaimer de wellness, HTML autocontido
+  (CSS inline), mobile-first.
+- **Hero com hash próprio:** a imagem-oferta é re-encodada por bridge (crop/brilho
+  levemente diferentes) → arquivos com MD5 distinto, mesmo sendo a "mesma" criativa.
 
 ---
 
-## As 2 variantes (uma por VSL)
+## As 5 bridges (uma por domínio)
 
-Regra de congruência: o domínio serve a variante da VSL que aquela página roda.
-
-| Variante | Pasta (projetosweb) | Hero | Headline | Clique → | aff_id |
+| Domínio | Pasta (projetosweb) | Genre / design | VSL | Mecanismo | App UUID |
 |---|---|---|---|---|---|
-| **Horsewood** | `bridge-pages/bp1` | `hero.png` (red bowl + banana) | "He's 67. She's 34. And she's the one chasing now." | `horsewood.us/vsl3/` | 45158 |
-| **Vigortrix** | `bridge-pages/bp-vick` | `hero.jpg` (jar Vicks + banana + CLICK HERE) | "He's 67. One jar from the pharmacy aisle. And now she's the one asking." | `vigortrix.com/vesp-l2/` | 75486 |
+| `manresethub.pro` | `bridge-pages/bp1` | **Private video** (dark cinematográfico) | Horsewood | gelatin | `v5t2rojizir3dc37al4zkb4p` |
+| `vitalresetlab.site` | `bridge-pages/bp-vitalresetlab` | **DM / thread de mensagem** ("here's the private video I promised you") | Horsewood | gelatin | `bv4uhh6hpq6tkotyn42nagg3` |
+| `primalvitalityhub.site` | `bridge-pages/bp-primalvitalityhub` | **Bilhete manuscrito / receita** (papel, handwritten, polaroid) | Horsewood | gelatin | `srd3jdzrvc0n7ri3yetjjmuq` |
+| `allmensnatural.site` | `bridge-pages/bp-allmensnatural` | **Aviso de remoção / sistema** (alert, contador) | Vigortrix | vick | `iuge7sircaf0myor1jdl77jv` |
+| `steadystrengthhub.site` | `bridge-pages/bp-steadystrengthhub` | **Card de depoimento / review** (5 estrelas, quote) | Vigortrix | vick | `xkma961zrq3jxraw5z4vpg47` |
+| `wholelifenutri.shop` | — (reserva, DNS parking) | — | — | — | `cwanszytythvm4myf8yye46k` |
 
-As duas servem no mesmo caminho `/bp1/` (o Dockerfile copia pra
-`/usr/share/nginx/html/bp1/`), então a URL pública é sempre `<domínio>/bp1/` —
-o que muda é o CONTEÚDO conforme o `base_directory` do app no Coolify.
+Todas servem no caminho `/bp1/` (o Dockerfile copia pra `/usr/share/nginx/html/bp1/`),
+então a URL pública é sempre `<domínio>/bp1/` — o que muda é o CONTEÚDO, definido
+pelo `base_directory` do app no Coolify.
 
-### Anatomia de uma pasta de variante
+> `bridge-pages/bp-vick` está **DEPRECADO/órfão** (era o clone do bp1; nenhum app
+> aponta mais pra ele). Foi substituído por bp-allmensnatural e bp-steadystrengthhub.
+
+### Anatomia de uma pasta de bridge
 ```
-bridge-pages/<variante>/
+bridge-pages/<bp-dominio>/
 ├── Dockerfile      # FROM nginx:alpine; COPY index.html + hero.* -> /html/bp1/
-├── index.html      # landing (headline, hero clicável, JS do link VSL)
-└── hero.png|.jpg   # imagem do hero
+├── index.html      # design próprio + CTA #offer + script do link VSL + disclaimer
+└── hero.png|.jpg   # criativa-oferta, re-encodada (hash único por bridge)
 ```
 
----
-
-## Mapa domínio → variante → página (fase inicial)
-
-| Domínio (bridge) | Variante | VSL | Página | App Coolify (UUID) |
-|---|---|---|---|---|
-| `manresethub.pro` | bp1 (Horsewood) | Horsewood | Joe's Wellness hub | `v5t2rojizir3dc37al4zkb4p` |
-| `vitalresetlab.site` | bp1 (Horsewood) | Horsewood | Marcus' Men Reset Hub | `bv4uhh6hpq6tkotyn42nagg3` |
-| `primalvitalityhub.site` | bp1 (Horsewood) | Horsewood | Ray's Natural Vitality Hub | `srd3jdzrvc0n7ri3yetjjmuq` |
-| `allmensnatural.site` | **bp-vick (Vigortrix)** | Vigortrix | Chuck's Men Welness Hub | `iuge7sircaf0myor1jdl77jv` |
-| `steadystrengthhub.site` | **bp-vick (Vigortrix)** | Vigortrix | Matt's Natural Reset Tips | `xkma961zrq3jxraw5z4vpg47` |
-| `wholelifenutri.shop` | — (reserva, DNS no parking) | — | — | `cwanszytythvm4myf8yye46k` |
-
-> A designação página↔domínio↔VSL está DEFINIDA no doc de operação (fácil de trocar).
-> O que está **cravado no deploy** é a variante por domínio (coluna "Variante").
+**Fonte da verdade = `projetosweb`** (o Coolify puxa do GitHub). O `topodefunil`
+guarda a doc e o bp1 de referência em [`bridge-page/`](bridge-page/).
 
 ---
 
-## Como o Coolify decide a variante
+## Contrato do link (o que não pode faltar em nenhuma)
 
-Cada app do Coolify tem um `base_directory` apontando pra pasta da variante:
-- 3 apps Horsewood → `base_directory = /bridge-pages/bp1`
-- 2 apps Vigortrix → `base_directory = /bridge-pages/bp-vick`
-
-Trocar a variante de um domínio = mudar o `base_directory` do app + redeployar.
+```html
+<a id="offer" href="#">…CTA clicável…</a>
+<script>(function(){
+  var OFFER="<VSL_URL>", AFF="<AFF>";
+  var q=new URLSearchParams(location.search);
+  var p=(q.get("p")||q.get("sub_id")||"direct").toLowerCase().replace(/[^a-z0-9_]/g,"")||"direct";
+  document.getElementById("offer").href=OFFER+"?aff_id="+encodeURIComponent(AFF)+"&sub_id="+encodeURIComponent(p);
+})();</script>
+```
+- Horsewood: `OFFER="https://horsewood.us/vsl3/"`, `AFF="45158"`.
+- Vigortrix: `OFFER="https://vigortrix.com/vesp-l2/"`, `AFF="75486"`.
+- **Nunca cruzar:** bridge de página Horsewood só aponta Horsewood; Vigortrix só Vigortrix.
 
 ---
+
+## Como o Coolify decide qual bridge
+
+Cada app tem `base_directory = /bridge-pages/<bp-dominio>`. Trocar/atualizar =
+mudar o conteúdo da pasta (ou o base_directory) + redeployar.
 
 ## Receitas
 
-### Trocar um domínio de Horsewood → Vigortrix (ou vice-versa)
+### Editar uma bridge (copy/design/hero)
+1. Edite `projetosweb/bridge-pages/<bp-dominio>/` → `git push`.
+2. Redeploy do app: `GET http://159.195.12.135:8000/api/v1/deploy?uuid=<UUID>` (Bearer token).
+3. Valide: `<domínio>/bp1/` (200) + `/bp1/hero.*` (200) + marcador do genre presente.
+
+### Adicionar uma bridge nova (novo domínio/página)
+1. `projetosweb/bridge-pages/bp-<dominio>/` com Dockerfile + index.html (design
+   NOVO, distinto dos existentes) + hero re-encodado (hash próprio).
+2. `git push` no projetosweb.
+3. Repontar o app pro novo `base_directory` (PATCH) + redeploy.
+4. Atualize a tabela acima.
+
+### Trocar a VSL de um domínio
+Edite o `OFFER`/`AFF` no `<script>` do index.html daquela bridge → push → redeploy.
+(Se a nova VSL for outro mecanismo, alinhe os criativos daquela página.)
+
+### Repontar base_directory (PATCH)
 ```bash
-TOKEN=<coolify_api_token>
-# 1. repontar o base_directory
 curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
-  "http://159.195.12.135:8000/api/v1/applications/<APP_UUID>" \
-  -d '{"base_directory":"/bridge-pages/bp-vick"}'
-# 2. redeployar
-curl -s -H "Authorization: Bearer $TOKEN" \
-  "http://159.195.12.135:8000/api/v1/deploy?uuid=<APP_UUID>"
-# 3. validar: <dominio>/bp1/ deve conter "vigortrix" e /bp1/hero.jpg = 200
+  "http://159.195.12.135:8000/api/v1/applications/<UUID>" \
+  -d '{"base_directory":"/bridge-pages/<bp-dominio>"}'
 ```
-
-### Criar uma variante nova (nova VSL)
-1. `projetosweb/bridge-pages/bp-<nome>/` com `Dockerfile` + `index.html` + `hero.*`
-   (copie de `bp1` ou `bp-vick`; troque headline, hero e o `OFFER`/`AFF` no script).
-2. `git push` no `projetosweb`.
-3. Repontar o app do domínio pro novo `base_directory` + redeploy (receita acima).
-4. Espelhe a fonte em `topodefunil/funil-organico/bridge-page-<nome>/` e atualize
-   esta tabela.
-
-### Editar uma bridge existente (copy/hero)
-1. Edite `projetosweb/bridge-pages/<variante>/` → `git push`.
-2. Redeploy dos apps que usam essa variante (`GET /api/v1/deploy?uuid=`).
-3. Espelhe a mudança em `topodefunil/funil-organico/bridge-page*/`.
 
 ---
 
+## Anti-fingerprint — checklist ao criar/editar
+- [ ] HTML/CSS/estrutura **diferente** das outras 4 (não reaproveitar o mesmo arquivo)?
+- [ ] Genre/ângulo de copy próprio?
+- [ ] Hero re-encodado (MD5 diferente das outras)?
+- [ ] Roteamento certo (VSL+aff do mecanismo da página, sem contaminação)?
+- [ ] `#offer` + script de atribuição + noindex + disclaimer presentes?
+
 ## Gotchas herdados
-- **Cert não emite sozinho** após apontar DNS: precisa redeploy do app (ver
-  [`bridge-pages-deploy.md`](bridge-pages-deploy.md)).
-- **Repo privado:** apps criados via `/applications/private-github-app` com o
-  GitHub App (ver [`RUNBOOK-deploy-coolify.md`](RUNBOOK-deploy-coolify.md)).
+- **Cert não emite sozinho** após apontar DNS: precisa redeploy (ver [`bridge-pages-deploy.md`](bridge-pages-deploy.md)).
+- **Repo privado:** apps via `/applications/private-github-app` + GitHub App ([`RUNBOOK-deploy-coolify.md`](RUNBOOK-deploy-coolify.md)).
 - **Token da API:** nunca commitar; se vazar em texto, rotacionar no Coolify.

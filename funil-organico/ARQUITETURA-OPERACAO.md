@@ -87,19 +87,23 @@ página futura).
 
 ---
 
-## Bridge pages: 2 variantes
+## Bridge pages: 5 designs DISTINTOS (anti-fingerprint)
 
-Cada domínio serve `/bp1/` — uma landing "Private video" (dark, headline, hero
-clicável → VSL com aff+sub). Há **2 variantes** conforme a VSL:
+Cada domínio serve `/bp1/` com uma bridge de **design próprio** — nenhuma igual à
+outra (evita pegada de template repetido entre domínios). Todas roteiam pro clique
+na VSL da sua página, com atribuição `?p=<slug>` → `sub_id`.
 
-| Variante | Hero | Link do clique | Domínios |
-|---|---|---|---|
-| **Horsewood** (atual) | `hero.png` (red bowl + banana) | `horsewood.us/vsl3/?aff_id=45158&sub_id=<p>` | manresethub, vitalresetlab, primalvitalityhub |
-| **Vigortrix** (a criar) | `vick.jpeg` (jar Vicks + banana + "CLICK HERE") | `vigortrix.com/vesp-l2/?aff_id=75486&sub_id=<p>` | allmensnatural, steadystrengthhub |
+| Domínio | Genre da bridge | VSL |
+|---|---|---|
+| `manresethub.pro` | Private video (dark) | Horsewood (gelatin) |
+| `vitalresetlab.site` | DM / thread de mensagem | Horsewood (gelatin) |
+| `primalvitalityhub.site` | Bilhete manuscrito / receita | Horsewood (gelatin) |
+| `allmensnatural.site` | Aviso de remoção / sistema | Vigortrix (vick) |
+| `steadystrengthhub.site` | Card de depoimento / review | Vigortrix (vick) |
 
-Detalhe técnico de deploy (Coolify/VPS, base_directory por variante, redeploy)
-fica no doc de arquitetura das bridges: [`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md)
-(criado na fase de build).
+Cada bridge também usa um hero com **hash próprio** (imagem re-encodada) pra não
+compartilhar fingerprint de arquivo. Detalhe técnico (pastas, deploy, receitas) em
+[`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md).
 
 ---
 
