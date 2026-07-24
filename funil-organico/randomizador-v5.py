@@ -34,7 +34,7 @@ POOLS = {
     "mulher":     ["morena_tatuada", "loira_americana", "loira_russa",
                    "morena_cacheada", "ruiva", "morena_bronzeada"],
     "homem_etnia": ["branco", "negro"],
-    "dispositivo": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8"],
+    "dispositivo": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9"],
     "setting":    ["kitchen", "guerrilha", "ranch"],
     "staging":    ["solo", "casal"],
     "dor":        ["momento_constrangedor", "desculpas_toda_noite",

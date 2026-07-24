@@ -76,7 +76,7 @@ agente — ela é sorteada **externamente** e o agente apenas **executa**.
 | mecanismo | honey, vick, gelatin, custom |
 | persona | homem_velho, mulher_jovem |
 | persona específica | 6 mulheres do pool / homem branco ou negro |
-| dispositivo (herói cena 1) | H1–H8 |
+| dispositivo (herói cena 1) | H1–H9 |
 | setting | kitchen, guerrilha, ranch |
 | staging | solo, casal |
 | dor | 10 dores do V4 |
@@ -118,7 +118,7 @@ existe para matar.
 
 ## BIBLIOTECA DE DISPOSITIVOS VISUAIS DE HOOK
 
-Dispositivos destilados do corpus real (ver Apêndice A): **8 heróis (H1–H8)** para
+Dispositivos destilados do corpus real (ver Apêndice A): **9 heróis (H1–H9)** para
 a cena 1 e **7 micro-hooks (M1–M7)** para as cenas 2–5. Cada um traz quando usar,
 como montar no IMAGE, e o gatilho psicológico. **A cena 1 SEMPRE usa um dispositivo
 "HERÓI". As cenas 2-5 usam "MICRO-HOOK".**
@@ -227,6 +227,30 @@ e replicável (aumenta credibilidade e salva/compartilha).
 - *IMAGE:* "pouring banana slices, a spoon of cinnamon and a squeeze of lime into a countertop blender jar, mid-recipe".
 - *Quando usar:* mecanismos de bebida/blend (honey blend, watermelon, beetroot). Casa com CTA "comment [keyword] for the full recipe".
 
+**H9 — ESTADO-PROBLEMA: PROXY NA VIRILHA, PONTA PRA BAIXO (gem da Tanisha)**
+Extraído do hall da Tanisha (formato longo excluído, mas o DISPOSITIVO é ouro e
+formato-agnóstico). A persona apresenta **outra pessoa** (um "exemplo"/sujeito) que
+segura um proxy fálico (banana, nabo) **na altura da região púbica, apontando pra
+BAIXO** — o caído/murcho que **visualiza a disfunção na hora, sem uma palavra**. É o
+"Day 0" tornado POSICIONAL: em vez de comparar dois props, mostra o **estado-problema**
+no próprio corpo. Choca, gera identificação imediata ("sou eu") e abre a tensão que o
+mecanismo vai resolver.
+- *Gatilho:* dor visualizada + identificação + tabu cômico. Hook de PROBLEMA (a maioria dos nossos hooks mostra solução; este mostra a dor primeiro).
+- *Estático (só o problema):* a ponta caída segura à frente da virilha = "isto é você agora".
+- *Dinâmico (droop→rise):* começa apontando pra baixo e, na virada, **sobe/endireita** — a transformação por ÂNGULO (irmão do H6/H7, que faz por tamanho). Ótimo pra cena 1→2.
+- *Segunda pessoa como "exemplo":* a persona (mais vestida/autoridade leve) demonstra no sujeito — dá ar clínico sem virar VSL longo.
+- *IMAGE:* "a person holding a ripe banana in front of the groin at pubic height, the banana clearly drooping tip-down, limp; the presenter beside them gesturing toward it, plain kitchen".
+- *Anti-bloqueio:* estático, mão parada segurando a base; ponta pra baixo = retrata o caído, NÃO ação. Nada de vai-e-vem. No droop→rise, o movimento é só o ângulo subindo, contínuo, um plano.
+- *hook_style / prop:* casa com qualquer mecanismo; prop = banana (padrão) ou nabo.
+
+> **PRINCÍPIO DE ABSORÇÃO (dinamismo — leia antes de excluir qualquer coisa):**
+> Dispositivos visuais de hook são extraídos **POR MÉRITO, independente do FORMATO do
+> vídeo-fonte**. Excluir um FORMATO (ex.: VSL longo-autoridade) **NUNCA** exclui minerar
+> os achados visuais dele. Ao ver um bom hook em QUALQUER criativo, catalogue o
+> DISPOSITIVO, não o formato. Foi assim que o H9 (gem da Tanisha) entrou mesmo com o
+> formato dela fora. Regra: separar sempre "formato" (fica/sai) de "dispositivo visual"
+> (sempre minerável).
+
 **M1 — MODELO ANATÔMICO NA BANCADA**
 Um modelo anatômico da pelve/genitália masculina em cima da mesa, ao lado dos
 ingredientes. Autoridade médica implícita sem se declarar médico.
@@ -275,7 +299,7 @@ Mesma espinha do V4. A diferença é a coluna "DISPOSITIVO".
 
 | Cena | Beat (V4) | Dispositivo V5 obrigatório |
 |---|---|---|
-| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H8), casado ao mecanismo. **H6/H7 (pouring + crescimento) são os de maior impacto; H8 (rub-this-on) é o padrão do baseline** |
+| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H9), casado ao mecanismo. **H6/H7 (pouring+crescimento) e H9 (droop→rise) são os de maior impacto; H8 (rub-this-on) é o padrão do baseline; H9 é o hook de PROBLEMA** |
 | **2/5 BANCADA** | Apresenta o mecanismo | **M1 ou M4** (modelo anatômico / escorrimento); **M7** se usar autoridade leve |
 | **3/5 PREPARO** | Manipula o ingrediente | **M3, H3 ou H8b** (encanamento / revestimento / blend demonstrado) |
 | **4/5 RESULTADO** | Confiança, "custa quase nada" | **M2 ou M5** (líquido=sangue / intimidade) |
@@ -359,7 +383,7 @@ faixa. Ver V4 para o gabarito completo de REF e o exemplo integral.
 
 Todos os 20 Erros Fatais do V4 continuam valendo. Novos na V5:
 
-21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H8. Hook sem
+21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H9. Hook sem
     dispositivo visual = scroll perdido.
 22. **Cena sem `DISPOSITIVO VISUAL:`** — as 5 cenas declaram o dispositivo.
 23. **Copy gráfica para compensar visual tímido** — NUNCA. Se o visual está
@@ -426,7 +450,7 @@ a oferta for um protocolo/coleção.
 
 ## APÊNDICE B — CHECKLIST V5 (além do checklist V4)
 
-- [ ] Cena 1 tem um dispositivo HERÓI (H1–H8) declarado?
+- [ ] Cena 1 tem um dispositivo HERÓI (H1–H9) declarado?
 - [ ] Se H8 (rub-this-on): a ISCA é diferente do mecanismo, e tem a virada isca→troca ("you don't believe it… but there IS something")?
 - [ ] Se H6/H7: líquido correto do mecanismo + duas fases (pouring → crescimento) num plano contínuo (Apêndice C)?
 - [ ] Cenas 2-5 têm um MICRO-HOOK (M1–M7) cada?
