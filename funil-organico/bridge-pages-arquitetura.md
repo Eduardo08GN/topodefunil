@@ -76,21 +76,19 @@ também está em [`bridge-page/`](bridge-page/) no topodefunil.
 
 ---
 
-## Tracking (Utmify + BuyGoods)
+## Tracking (BuyGoods)
 
 As duas ofertas (Horsewood [12662] e Ragnaroak [12911]) fecham o checkout no **BuyGoods**, na mesma conta de afiliado.
 
 - **Param de sub-fonte = `subid`** (o BuyGoods documenta `&subid=SOMETHING`). A
   bridge manda `&subid=<pagina>` na VSL → dá pra ver qual página converteu no
-  BuyGoods E no Utmify. (Era `sub_id` antes; não atribuía — corrigido.)
-- **Script de UTMs da Utmify** no `<head>` de todas: captura/repassa os parâmetros
-  ```html
-  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
-  ```
-- ⚠️ **A notificação de venda NÃO vem só do script.** O script na bridge captura a
-  fonte; quem entrega a venda é o **postback da plataforma de checkout**
-  (BuyGoods → Utmify e/ou → nosso [notificador Telegram](notificacao-vendas-telegram.md)).
-  Sem postback configurado, nenhuma venda é notificada.
+  BuyGoods. (Era `sub_id` antes; não atribuía — corrigido.)
+- **Sem script de terceiro na página.** A Utmify foi removida (script + postback)
+  em 2026-07-24 — não usamos mais. As bridges hoje carregam **zero JS externo**,
+  só o script inline de atribuição. Menos peso, menos dependência, menos footprint.
+- **Notificação de venda = postback do BuyGoods → nosso serviço.** Não depende de
+  nada na página: o BuyGoods dispara o postback quando a venda é registrada, e o
+  nosso [notificador Telegram](notificacao-vendas-telegram.md) manda a mensagem.
 - ✅ **Ragnaroak também é BuyGoods** (RAGNAROAK [12911], mesma conta de afiliado —
   confirmado em 2026-07-24). Como o postback é **global da conta** ("whenever a sale
   is recorded under your affiliate account"), ele cobre as duas VSLs de uma vez:

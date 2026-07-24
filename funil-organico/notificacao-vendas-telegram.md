@@ -12,14 +12,15 @@ BuyGoods (venda aprovada) ──postback GET──► nosso serviço (VPS/Coolif
 
 ## Por que próprio
 
-- **Sem mensalidade e sem terceiro** no meio do dado de faturamento.
+- **Sem mensalidade e sem terceiro** no meio do dado de faturamento. Substituiu a
+  Utmify por completo (removida em 2026-07-24) — script e postback.
 - **Traduz `subid` → nome da página** (você vê "Chuck's Men Welness Hub", não um slug).
 - **O histórico é nosso** (`vendas.jsonl`) — é a matéria-prima do dashboard de
   tracking (guia "Tracking Funnel" do tenant no automaweb).
-- Pega **os dois offers** (Horsewood e Vigortrix): o postback do BuyGoods é global
+- Pega **os dois offers** (Horsewood e Ragnaroak): o postback do BuyGoods é global
   da conta de afiliado, não por oferta.
 - **Convive com outros postbacks.** O BuyGoods aceita vários — dá pra rodar o
-  nosso junto da Utmify/Ratoeira e comparar.
+  nosso junto de qualquer outro sem conflito.
 
 ## Componentes
 
@@ -58,11 +59,11 @@ BuyGoods (venda aprovada) ──postback GET──► nosso serviço (VPS/Coolif
 ```
 💰 VENDA APROVADA
 
-💵 Comissao: US$ 27.40
-📄 Oferta: Vigortrix
+💵 Comissao: US$ 52.30
+📄 Oferta: Ragnaroak
 📱 Pagina: Chuck's Men Welness Hub
 🧾 Tipo: frontend
-🛍 Produto: vigortrix
+🛍 Produto: ragnaroak
 🆔 Order: BG-8842119
 ```
 
