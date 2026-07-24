@@ -39,7 +39,13 @@ Mesmo template minimal; muda só a copy + hero + VSL.
 | `wholelifenutri.shop` | — (reserva, DNS parking) | — | — | — | `cwanszytythvm4myf8yye46k` |
 
 Cada uma tem também 1 linha de CTA curta ("Tap play now", "Watch before it's taken
-down", etc.). Todas servem em `<domínio>/bp1/`. `bp-vick` está **deprecado/órfão**.
+down", etc.). `bp-vick` está **deprecado/órfão**.
+
+**A bridge serve na RAIZ do domínio E em `/bp1/`.** O Dockerfile copia o
+`index.html`+hero pra `/usr/share/nginx/html/` (raiz) e `/bp1/`. Isso evita o
+**nginx default page** no domínio puro (footprint óbvio de servidor não-configurado).
+**Link do funil = domínio puro:** `https://<domínio>/?p=<pagina>` (mais limpo;
+`/bp1/?p=` também funciona).
 
 ### Anatomia de uma pasta
 ```
