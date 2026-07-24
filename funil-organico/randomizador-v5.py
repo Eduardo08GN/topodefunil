@@ -34,21 +34,26 @@ POOLS = {
     "mulher":     ["morena_tatuada", "loira_americana", "loira_russa",
                    "morena_cacheada", "ruiva", "morena_bronzeada"],
     "homem_etnia": ["branco", "negro"],
-    "dispositivo": ["H1", "H2", "H3", "H4", "H5", "H6", "H7"],
+    "dispositivo": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8"],
     "setting":    ["kitchen", "guerrilha", "ranch"],
     "staging":    ["solo", "casal"],
     "dor":        ["momento_constrangedor", "desculpas_toda_noite",
                    "gastos_farmacia", "medo_do_quarto", "fogo_apagando",
                    "evitar_intimidade", "perda_confianca", "parceira_percebe",
                    "efeitos_colaterais", "vergonha_medico"],
-    "hook_style": ["comando_choque", "confissao", "pergunta", "ataque_industria"],
+    "hook_style": ["comando_choque", "confissao", "pergunta", "ataque_industria", "rub_this_on"],
+    # isca do H8 (rub-this-on): ingrediente banal esfregado, SEMPRE != mecanismo real
+    "isca": ["vicks", "cinnamon", "turmeric", "coconut_oil", "olive_oil", "aloe"],
     "cta":        ["keyword_mecanismo", "book", "yes"],
     "prop":       ["geoduck", "cucumber", "carrot", "banana", "daikon", "zucchini"],
 }
 
 # eixos que o operador pode fixar (os demais sao derivados/reparados)
 FIXAVEIS = ["mecanismo", "persona", "mulher", "homem_etnia", "dispositivo",
-            "setting", "staging", "dor", "hook_style", "cta", "prop"]
+            "setting", "staging", "dor", "hook_style", "cta", "prop", "isca"]
+
+# isca (H8) mapeada pro mecanismo que o "Trick" nomeia (a isca NUNCA e o mecanismo)
+ISCA_PROIBIDA_POR_MEC = {"vick": "vicks", "honey": None, "gelatin": None, "custom": None}
 
 LIQUIDO_POR_MEC = {
     "honey": "mel dourado espesso",
@@ -100,6 +105,18 @@ def reparar(row):
     if row["dispositivo"] == "H2":
         row["prop"] = "geoduck"
 
+    # H8 (rub-this-on) <-> hook_style rub_this_on andam juntos; usa prop revestivel
+    if row["dispositivo"] == "H8" or row["hook_style"] == "rub_this_on":
+        row["dispositivo"] = "H8"; row["hook_style"] = "rub_this_on"
+        if row["prop"] in ("geoduck", "cucumber"):
+            row["prop"] = "carrot"; notas.append("H8=>carrot")
+        # a isca NUNCA pode ser o proprio mecanismo (ex.: vicks num video de vick)
+        if row["isca"] == ISCA_PROIBIDA_POR_MEC.get(row["mecanismo"]):
+            row["isca"] = "cinnamon" if row["isca"] != "cinnamon" else "coconut_oil"
+            notas.append("isca==mecanismo=>troca")
+    else:
+        row["isca"] = "-"  # so relevante no H8
+
     # staging casal exige 2 corpos; ok em qualquer dispositivo
     # cta keyword casa com o mecanismo (book/yes = coleçao/oferta)
     if row["cta"] == "keyword_mecanismo":
@@ -141,9 +158,10 @@ def imprimir(rows, fixos, seed):
             "prop", "hook_style", "dor", "cta_keyword"]
     for i, r in enumerate(rows, 1):
         pd = r["mulher"] if r["persona"] == "mulher_jovem" else f"homem_{r['homem_etnia']}"
+        disp = r["dispositivo"] + (f"(isca:{r['isca']})" if r["dispositivo"] == "H8" else "")
         linha = " | ".join([
             f"V{i:02d}",
-            r["mecanismo"], f"{r['persona']}({pd})", r["dispositivo"],
+            r["mecanismo"], f"{r['persona']}({pd})", disp,
             r["setting"], r["staging"], r["prop"],
             r["hook_style"], r["dor"], f"CTA:{r['cta_keyword']}",
         ])

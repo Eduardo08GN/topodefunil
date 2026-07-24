@@ -76,11 +76,11 @@ agente — ela é sorteada **externamente** e o agente apenas **executa**.
 | mecanismo | honey, vick, gelatin, custom |
 | persona | homem_velho, mulher_jovem |
 | persona específica | 6 mulheres do pool / homem branco ou negro |
-| dispositivo (herói cena 1) | H1–H7 |
+| dispositivo (herói cena 1) | H1–H8 |
 | setting | kitchen, guerrilha, ranch |
 | staging | solo, casal |
 | dor | 10 dores do V4 |
-| hook_style | comando_choque, confissao, pergunta, ataque_industria |
+| hook_style | comando_choque, confissao, pergunta, ataque_industria, rub_this_on |
 | cta | keyword_mecanismo, book, yes |
 | prop | geoduck, cucumber, carrot, banana, daikon, zucchini |
 
@@ -118,9 +118,19 @@ existe para matar.
 
 ## BIBLIOTECA DE DISPOSITIVOS VISUAIS DE HOOK
 
-Onze dispositivos, destilados do corpus real (ver Apêndice A). Cada um traz:
-quando usar, como montar no IMAGE, e o gatilho psicológico. **A cena 1 SEMPRE usa
-um dos dispositivos "HERÓI". As cenas 2-5 usam "MICRO-HOOK".**
+Dispositivos destilados do corpus real (ver Apêndice A): **8 heróis (H1–H8)** para
+a cena 1 e **7 micro-hooks (M1–M7)** para as cenas 2–5. Cada um traz quando usar,
+como montar no IMAGE, e o gatilho psicológico. **A cena 1 SEMPRE usa um dispositivo
+"HERÓI". As cenas 2-5 usam "MICRO-HOOK".**
+
+> **ESCOPO — o que a V5 NÃO cobre (exclusão proposital):** o **formato longo de
+> autoridade** (VSL-reel educacional estilo "Tanisha/Rhodiola": persona médica com
+> jaleco/estetoscópio, quadro branco + mesa do caos, mecanismo cortisol→testosterona,
+> reframe "you're not broken, you're blocked", raiz ancestral, produto de marca com
+> escassez "sells out in hours", CTA link-na-bio/Amazon) fica **FORA do V5**. Motivo:
+> ele monetiza por link-bio/produto próprio, incompatível com o funil keyword→DM→bridge
+> que o V5 serve. Não reintroduza sem decisão explícita. A autoridade que a V5 usa é a
+> **leve** (M1 modelo anatômico, M7 backdrop de diplomas) — cabe no trick curto.
 
 ### DISPOSITIVOS HERÓI (cena 1 — pare o scroll)
 
@@ -193,6 +203,30 @@ mesma regra de duas fases pro Veo. Alterne H6 (geoduck, mais visceral) e H7
 - *Quando usar H7 vs H6:* pepino para contas novas / audiência fria (menos risco
   de flag); geoduck para escalar o choque quando a conta já está aquecida.
 
+**H8 — RUB-THIS-ON + ISCA-E-TROCA (ângulo de copy do baseline)**
+O hook mais recorrente do NOSSO baseline (VICK-3/4/6, horse030407) — e antes
+tratado só de forma implícita. É um ângulo de **primeira classe**: um comando
+imperativo curto mandando "esfregar" um item comum de cozinha no membro,
+prometendo aumento imediato, seguido de uma **virada de isca-e-troca**.
+- **Estrutura de copy (a assinatura):**
+  1. *Isca* — comando com ingrediente banal: "Rub [Vicks / cinnamon / turmeric / coconut oil] on your Johnson and it's gonna get 10 times bigger."
+  2. *Ceticismo verbalizado* — "You don't believe that works, right?" (espelha o pensamento do espectador, cria micro-tensão).
+  3. *Troca* — "But there IS something that actually works, and it's called the [Mechanism] Trick."
+  4. *CTA keyword* — "Comment [keyword] and I'll send you the full recipe."
+- **Sinal de teste industrial:** o ingrediente da isca é **intercambiável** (Vicks, canela, cúrcuma, óleo de coco) sobre a MESMA estrutura — é assim que se testa qual isca prende mais. O randomizador deve variar a isca.
+- **Regra dura:** o ingrediente da ISCA ≠ o mecanismo real do vídeo. A isca é o gancho; o "Trick" nomeado é o mecanismo único (honey/vick/gelatin) que casa com os ingredientes da bancada. Nunca deixe a isca virar o mecanismo.
+- *Visual:* usa **H1 + H3** — proxy fálico (cenoura/nabo) sendo revestido pelo gel/substância da isca (Vicks verde, óleo brilhando), close, cozinha ou rancho.
+- *Gatilho:* padrão-interrupt (comando absurdo) + resolução da tensão (isca→troca).
+- *hook_style no randomizador:* `rub_this_on`.
+
+**H8b — RECEITA/BLEND DEMONSTRADA (variante de preparo)**
+Sub-modo do preparo (cena 3) visto no seed_4613: em vez de só manipular o
+ingrediente, a persona **monta a receita na frente da câmera** — joga banana,
+canela, lime/mel, água num **liquidificador** e bate. Torna o mecanismo "real"
+e replicável (aumenta credibilidade e salva/compartilha).
+- *IMAGE:* "pouring banana slices, a spoon of cinnamon and a squeeze of lime into a countertop blender jar, mid-recipe".
+- *Quando usar:* mecanismos de bebida/blend (honey blend, watermelon, beetroot). Casa com CTA "comment [keyword] for the full recipe".
+
 **M1 — MODELO ANATÔMICO NA BANCADA**
 Um modelo anatômico da pelve/genitália masculina em cima da mesa, ao lado dos
 ingredientes. Autoridade médica implícita sem se declarar médico.
@@ -218,11 +252,20 @@ A persona feminina alimenta/serve o parceiro (colher na boca, mão no ombro).
 Prova social ("funciona pra casais reais") + sugestão.
 - *IMAGE:* "young woman feeding a spoonful to her seated partner, her hand on his shoulder, both smiling".
 
-**M6 — LOOP DE CURIOSIDADE ABERTO (visual)**
+**M6 — LOOP DE CURIOSIDADE ABERTO (visual + copy)**
 Ao dizer "there's an even more powerful source I use with clients", ela ergue a
 mão como quem segura um segredo, ou olha para um pote fora de quadro. O gesto
 sinaliza que há mais → dirige o comentário/DM.
 - *TAKE:* "on 'even more powerful source', she glances knowingly off-frame and lifts a finger, withholding".
+- **Copy do loop (a linha falada, não só o gesto):** rotacionar — "but there's an even more powerful source I've been using with my clients", "there is one ingredient that hits exactly that root and makes this ten times stronger", "watermelon starts the job, but there's something far more direct". Sempre uma promessa de MAIS que só se resolve no comentário/DM. Nunca entregue a fonte secreta no vídeo (Erro Fatal do V4: não revelar tudo).
+
+**M7 — BACKDROP DE AUTORIDADE (formato curto)**
+Fundo que empresta credibilidade sem a persona se declarar médica: **estante com
+diplomas/certificados emoldurados + bandeiras dos EUA** atrás da persona (visto no
+seed_1320, que é curto). É a versão "leve" da autoridade — cabe no trick de 5 cenas
+sem virar VSL-reel. Combina com CTA "book"/protocolo.
+- *IMAGE:* "a bookshelf with framed diplomas and small American flags on the wall behind her".
+- *Limite:* só o cenário sugere autoridade; a fala NUNCA afirma ser médico/PhD (claim proibido).
 
 ---
 
@@ -232,17 +275,21 @@ Mesma espinha do V4. A diferença é a coluna "DISPOSITIVO".
 
 | Cena | Beat (V4) | Dispositivo V5 obrigatório |
 |---|---|---|
-| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H7), casado ao mecanismo. **H6/H7 (pouring + crescimento) são os de maior impacto** |
-| **2/5 BANCADA** | Apresenta o mecanismo | **M1 ou M4** (modelo anatômico / escorrimento) |
-| **3/5 PREPARO** | Manipula o ingrediente | **M3 ou H3** (encanamento / revestimento literal) |
+| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H8), casado ao mecanismo. **H6/H7 (pouring + crescimento) são os de maior impacto; H8 (rub-this-on) é o padrão do baseline** |
+| **2/5 BANCADA** | Apresenta o mecanismo | **M1 ou M4** (modelo anatômico / escorrimento); **M7** se usar autoridade leve |
+| **3/5 PREPARO** | Manipula o ingrediente | **M3, H3 ou H8b** (encanamento / revestimento / blend demonstrado) |
 | **4/5 RESULTADO** | Confiança, "custa quase nada" | **M2 ou M5** (líquido=sangue / intimidade) |
-| **5/5 CTA+REFORÇO** | Comente a keyword + follow | **M6** (loop aberto) apontando pro comentário |
+| **5/5 CTA+REFORÇO** | Comente a keyword + follow | **M6** (loop aberto, com a copy) apontando pro comentário |
 
 **Casamento dispositivo ↔ mecanismo (guia rápido):**
-- **Honey Trick:** **H6/H7 (mel escorrendo + geoduck/pepino crescendo)** como hook herói, ou H2 (day0/day7) ou H3 (mel no nabo). M4 no preparo.
-- **Vick Trick:** **H6/H7 com Vicks derretido (gel azul-esverdeado) + crescimento**, ou H1 (cenoura revestida de Vicks verde) ou H2. M1 na bancada.
-- **Horse Gelatin:** **H6/H7 com gelatina líquida âmbar + crescimento**, ou H5 (rancho cowboy) ou H1 (nabo). M2 no resultado.
-- **Custom/blood-flow (beetroot, watermelon, baking soda):** H4 (escala absurda) + M2 (líquido vermelho) + M1 (modelo anatômico). H6/H7 se houver um líquido-herói despejável.
+- **Honey Trick:** **H6/H7 (mel escorrendo + geoduck/pepino crescendo)**, ou H2 (day0/day7), ou H3 (mel no nabo), ou **H8 (rub-this-on)**. M4/H8b no preparo.
+- **Vick Trick:** **H8 (rub Vicks on your Johnson… isca-e-troca)** é o hook nativo, ou H6/H7 com Vicks derretido, ou H1/H2. M1 na bancada.
+- **Horse Gelatin:** **H8 (rub coconut oil → horse gelatin trick)** ou H5 (rancho) ou H6/H7 com gelatina âmbar. M2 no resultado.
+- **Custom/blood-flow (beetroot, watermelon, baking soda):** H4 (escala absurda) + H8b (blend demonstrado) + M2 (líquido vermelho) + M1 (modelo anatômico). H6/H7 se houver líquido-herói despejável.
+
+**Sobre H8 (rub-this-on):** a ISCA (ingrediente esfregado) varia por vídeo e é
+DIFERENTE do mecanismo nomeado. A cena 1 abre com a isca+ceticismo, e o "Trick"
+real aparece já na virada. Ver a estrutura de copy completa no H8.
 
 **Sobre H6/H7:** o líquido do pouring é SEMPRE o do mecanismo único do vídeo —
 nunca misture (mel no vídeo de honey, Vicks no de vick, gelatina no de gelatin).
@@ -312,7 +359,7 @@ faixa. Ver V4 para o gabarito completo de REF e o exemplo integral.
 
 Todos os 20 Erros Fatais do V4 continuam valendo. Novos na V5:
 
-21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H7. Hook sem
+21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H8. Hook sem
     dispositivo visual = scroll perdido.
 22. **Cena sem `DISPOSITIVO VISUAL:`** — as 5 cenas declaram o dispositivo.
 23. **Copy gráfica para compensar visual tímido** — NUNCA. Se o visual está
@@ -379,9 +426,10 @@ a oferta for um protocolo/coleção.
 
 ## APÊNDICE B — CHECKLIST V5 (além do checklist V4)
 
-- [ ] Cena 1 tem um dispositivo HERÓI (H1–H7) declarado?
+- [ ] Cena 1 tem um dispositivo HERÓI (H1–H8) declarado?
+- [ ] Se H8 (rub-this-on): a ISCA é diferente do mecanismo, e tem a virada isca→troca ("you don't believe it… but there IS something")?
 - [ ] Se H6/H7: líquido correto do mecanismo + duas fases (pouring → crescimento) num plano contínuo (Apêndice C)?
-- [ ] Cenas 2-5 têm um MICRO-HOOK (M1–M6) cada?
+- [ ] Cenas 2-5 têm um MICRO-HOOK (M1–M7) cada?
 - [ ] Dispositivo casado ao mecanismo (tabela de casamento)?
 - [ ] Campo `DISPOSITIVO VISUAL:` em todas as 5 IMAGE e 5 TAKE?
 - [ ] Copy segue não-gráfica; malícia só no visual?
