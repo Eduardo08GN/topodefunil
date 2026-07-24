@@ -27,12 +27,21 @@ VSL de afiliado (Horsewood OU Ragnaroak) + aff_id + subid
 💰 comissão
 ```
 
-**Regra de congruência (inegociável):** o mecanismo do CRIATIVO tem que casar com
-o mecanismo que a VSL daquela página vende. Hoje as duas VSLs (Horsewood e
-Ragnaroak) vendem o **mesmo mecanismo — gelatin trick** — então todas as 5
-páginas postam criativo de gelatin. Se um dia entrar uma VSL de outro mecanismo,
-as páginas dela têm que trocar de criativo junto: criativo de um mecanismo
-levando pra VSL de outro mata a conversão e a credibilidade.
+**Regra de congruência de MECANISMO (inegociável):** o mecanismo do CRIATIVO tem
+que casar com o mecanismo que a VSL daquela página vende. Hoje as duas VSLs
+(Horsewood e Ragnaroak) vendem o **mesmo mecanismo — gelatin trick** — então todas
+as 5 páginas postam criativo de gelatin. Se um dia entrar uma VSL de outro
+mecanismo, as páginas dela têm que trocar de criativo junto: criativo de um
+mecanismo levando pra VSL de outro mata a conversão e a credibilidade.
+
+**Regra de congruência de CASTING/ETNIA (inegociável):** a etnia do personagem REF
+do criativo tem que casar com a etnia do AVATAR da página. **Página com avatar de
+pele escura recebe SÓ criativos com REF de pele escura (afro-americano US).** Nunca
+cruzar: avatar negro postando REF branco (ou vice-versa) quebra a verossimilhança
+e denuncia a operação como fabricada. Na prática: travar a etnia no randomizador
+(`--fix persona=homem_negro` / eixo de etnia) junto do `--fix mecanismo=gelatin`
+ao gerar o lote de uma página de avatar escuro. Ver coluna "Etnia do avatar" no
+mapeamento abaixo.
 
 ---
 

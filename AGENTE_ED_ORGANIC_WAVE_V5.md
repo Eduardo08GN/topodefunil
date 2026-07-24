@@ -112,6 +112,21 @@ H1/H3 ⇒ cenoura). O `--seed` torna o lote reproduzível.
 5. Numeração de vídeo e separadores como no V4.
 ```
 
+### Congruência de casting por página (TRAVA OBRIGATÓRIA)
+
+O lote é gerado **para uma página específica**, e a página tem um avatar com etnia
+definida. **A etnia do REF tem que casar com a etnia do avatar da página:**
+
+- **Página com avatar de pele ESCURA → travar `persona=homem_negro`** (REF
+  afro-americano US). Só criativos de pele escura vão pra essa página.
+- **Página com avatar de pele CLARA → travar `persona=homem_branco`.**
+
+Isso é uma restrição dura, no mesmo nível de `mecanismo=gelatin`. Um avatar negro
+postando REF branco (ou o inverso) quebra a verossimilhança e denuncia a conta
+como fabricada. Ao pedir o lote, o operador informa a página → o agente aplica o
+`--fix` de etnia correspondente **automaticamente**, sem perguntar. O mapeamento
+página → etnia do avatar está em `funil-organico/ARQUITETURA-OPERACAO.md`.
+
 **Erro Fatal 26:** gerar sem perguntar as variáveis fixas, ou escolher por conta
 própria um eixo que deveria ter sido sorteado. Isso reintroduz o viés que a V5
 existe para matar.
