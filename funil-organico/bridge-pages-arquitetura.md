@@ -64,7 +64,7 @@ bridge-pages/<variante>/
 | `steadystrengthhub.site` | **bp-vick (Vigortrix)** | Vigortrix | Matt's Natural Reset Tips | `xkma961zrq3jxraw5z4vpg47` |
 | `wholelifenutri.shop` | — (reserva, DNS no parking) | — | — | `cwanszytythvm4myf8yye46k` |
 
-> A designação página↔domínio é a proposta do doc de operação (fácil de trocar).
+> A designação página↔domínio↔VSL está DEFINIDA no doc de operação (fácil de trocar).
 > O que está **cravado no deploy** é a variante por domínio (coluna "Variante").
 
 ---

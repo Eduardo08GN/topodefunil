@@ -30,7 +30,7 @@ VSL de afiliado (Horsewood OU Vigortrix) + aff_id + sub_id
 **Regra de congruência (inegociável):** o mecanismo do CRIATIVO tem que casar com
 o mecanismo que a VSL daquela página vende. Página que roda **Vigortrix** só posta
 criativo de **Vick VapoRub trick**. Página que roda **Horsewood** posta o mecanismo
-do Horsewood (red bowl / gelatin-honey — ver nota). Nunca cruze: criativo de vick
+do Horsewood (**gelatin trick**). Nunca cruze: criativo de vick
 levando pra VSL de gelatin mata a conversão e a credibilidade.
 
 ---
@@ -39,13 +39,14 @@ levando pra VSL de gelatin mata a conversão e a credibilidade.
 
 | VSL | Link direto | aff_id | Mecanismo | Nº de páginas |
 |---|---|---|---|---|
-| **Horsewood** | `https://horsewood.us/vsl3/?aff_id=45158&sub_id=<pagina>` | 45158 | red bowl / gelatin-honey (ver nota) | **3** |
+| **Horsewood** | `https://horsewood.us/vsl3/?aff_id=45158&sub_id=<pagina>` | 45158 | **Gelatin trick** (red bowl) | **3** |
 | **Vigortrix** | `https://vigortrix.com/vesp-l2/?aff_id=75486&sub_id=<pagina>` | 75486 | **Vick VapoRub trick** | **2** |
 
 - `sub_id=<pagina>` → atribuição por página (lido do `?p=<slug>` na URL da bridge; default `direct`).
-- **Nota Horsewood:** a bridge atual do Horsewood vende "the red bowl" (gelatina
-  vermelha + banana no hero) → mecanismo dos criativos ≈ **horse gelatin / honey**.
-  Confirmar o mecanismo exato que a VSL do Horsewood empurra e alinhar os criativos.
+- **Horsewood = Gelatin trick** (confirmado). A bridge vende "the red bowl"
+  (gelatina vermelha no hero); os criativos das 3 páginas Horsewood usam o
+  mecanismo **gelatin** → fixar `mecanismo=gelatin` no randomizador (PASSO 0).
+- **Vigortrix = Vick trick** → fixar `mecanismo=vick`.
 
 ---
 
@@ -64,23 +65,22 @@ US, 0 seguidores (recém-criadas), foto de perfil = homem 45+ + estética natura
 
 ---
 
-## Mapeamento página → domínio → VSL (PROPOSTA — fácil de trocar)
+## Mapeamento página → domínio → VSL (DEFINIDO)
 
-Split pedido: **3 Horsewood / 2 Vigortrix**. Domínios em uso = os 5 já no ar
+Split: **3 Horsewood (gelatin) / 2 Vigortrix (vick)**. Domínios = os 5 já no ar
 (ver [`bridge-pages-deploy.md`](bridge-pages-deploy.md)); `wholelifenutri.shop`
-fica de **reserva**.
+fica de **reserva**. Mapeamento fechado e **consistente com o deploy atual**.
 
 | Página | Domínio (bridge) | VSL | Mecanismo dos criativos |
 |---|---|---|---|
-| Joe's Wellness hub | `manresethub.pro` | **Horsewood** | red bowl / gelatin-honey |
-| Marcus' Men Reset Hub | `vitalresetlab.site` | **Horsewood** | red bowl / gelatin-honey |
-| Ray's Natural Vitality Hub | `primalvitalityhub.site` | **Horsewood** | red bowl / gelatin-honey |
-| Chuck's Men Welness Hub | `allmensnatural.site` | **Vigortrix** | **Vick trick** |
-| Matt's Natural Reset Tips | `steadystrengthhub.site` | **Vigortrix** | **Vick trick** |
+| Joe's Wellness hub | `manresethub.pro` | **Horsewood** | **gelatin trick** |
+| Marcus' Men Reset Hub | `vitalresetlab.site` | **Horsewood** | **gelatin trick** |
+| Ray's Natural Vitality Hub | `primalvitalityhub.site` | **Horsewood** | **gelatin trick** |
+| Chuck's Men Welness Hub | `allmensnatural.site` | **Vigortrix** | **vick trick** |
+| Matt's Natural Reset Tips | `steadystrengthhub.site` | **Vigortrix** | **vick trick** |
 
-> ⚠️ **Proposta** — a designação página↔domínio↔VSL é arbitrária (as páginas são
-> genéricas). Trocar é 1 linha aqui + trocar a variante da bridge no domínio. O que
-> é fixo: **3 domínios servem a bridge Horsewood, 2 servem a bridge Vigortrix.**
+> Para trocar uma página de VSL: mude a linha aqui + repointe a variante da bridge
+> no domínio (receita em [`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md)).
 
 Reserva: `wholelifenutri.shop` (no ar como parking até apontar DNS; sobra pra 6ª
 página futura).
@@ -115,8 +115,8 @@ Os reels de cada página saem da esteira:
 4. Postagem orgânica na página → keyword no comentário → DM → bridge → VSL.
 
 **Congruência na prática:** ao gerar um lote para uma página Vigortrix, fixar
-`mecanismo=vick` no randomizador (PASSO 0). Para páginas Horsewood, fixar o
-mecanismo do Horsewood.
+`mecanismo=vick` no randomizador (PASSO 0). Para páginas Horsewood, fixar
+`mecanismo=gelatin`.
 
 ---
 
