@@ -93,7 +93,39 @@ cowboy, calçada. Homem sem camisa, tatuado, bancada dobrável improvisada.
 - *Gatilho:* contexto inesperado quebra o padrão do feed (tudo é cozinha).
 - *IMAGE:* "shirtless tattooed man in a Walmart parking lot at dusk, storefront and cars behind, holding [prop]".
 
-### DISPOSITIVOS MICRO-HOOK (cenas 2 a 5 — segure até o CTA)
+**H6 — POURING + CRESCIMENTO DO GEODUCK (transformação ao vivo)**
+O dispositivo mais agressivo da biblioteca: o líquido do mecanismo é despejado
+sobre um geoduck e, na sequência, o geoduck **cresce na tela** — o sifão (neck)
+alonga visivelmente para cima. É o Day 0 → Day 7 comprimido em 8 segundos, ao
+vivo, sem corte. O líquido é SEMPRE o do mecanismo:
+- **Honey Trick:** mel dourado espesso escorrendo do pote/dipper
+- **Vick Trick:** Vicks derretido, gel translúcido com tom azul-esverdeado, escorrido de uma colher a partir do pote azul clássico
+- **Horse Gelatin:** gelatina dissolvida, líquido morno translúcido âmbar-claro, vertido de um copo de vidro
+
+*Gatilho:* prova de transformação em tempo real + tabu + "como fizeram isso?".
+
+**Staging (variar entre vídeos):**
+- **SOLO:** uma mão segura o geoduck firme na base, a outra despeja. Uma ação de
+  despejar por vez, mão do prop completamente parada.
+- **CASAL:** um segura o geoduck com as duas mãos coladas na base ("both hands
+  cupped at the base, completely still"), o outro despeja com uma mão. Divide as
+  ações entre corpos = menos glitch e mais prova social.
+
+**Como escrever pro Veo 3 (regra de ouro deste dispositivo):** o Veo reproduz
+transformação quando ela é descrita como **uma ação contínua, em fases marcadas
+por conectores de tempo ("First… then… over the next few seconds… finally"),
+num único plano sem corte, com o crescimento como MOVIMENTO CONTÍNUO** (o sifão
+"slowly extends and elongates upward"), não como um salto. A câmera fica fixa e o
+prop permanece centralizado. Ver os templates prontos no **Apêndice C**.
+
+**H7 — POURING + CRESCIMENTO DO PEPINO (variante cucumber)**
+Idêntico ao H6 em dinâmica e escrita, trocando o geoduck por um **pepino** (mais
+limpo/"family-friendly" no thumbnail, passa mais fácil na moderação inicial e é
+instantaneamente legível). Mesmo líquido por mecanismo, mesmo staging solo/casal,
+mesma regra de duas fases pro Veo. Alterne H6 (geoduck, mais visceral) e H7
+(pepino, mais "safe") entre variações para testar qual converte melhor.
+- *Quando usar H7 vs H6:* pepino para contas novas / audiência fria (menos risco
+  de flag); geoduck para escalar o choque quando a conta já está aquecida.
 
 **M1 — MODELO ANATÔMICO NA BANCADA**
 Um modelo anatômico da pelve/genitália masculina em cima da mesa, ao lado dos
@@ -134,17 +166,21 @@ Mesma espinha do V4. A diferença é a coluna "DISPOSITIVO".
 
 | Cena | Beat (V4) | Dispositivo V5 obrigatório |
 |---|---|---|
-| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H5), casado ao mecanismo |
+| **1/5 HOOK** | Energia máxima, ancora a dor | **1 dispositivo HERÓI** (H1–H7), casado ao mecanismo. **H6/H7 (pouring + crescimento) são os de maior impacto** |
 | **2/5 BANCADA** | Apresenta o mecanismo | **M1 ou M4** (modelo anatômico / escorrimento) |
 | **3/5 PREPARO** | Manipula o ingrediente | **M3 ou H3** (encanamento / revestimento literal) |
 | **4/5 RESULTADO** | Confiança, "custa quase nada" | **M2 ou M5** (líquido=sangue / intimidade) |
 | **5/5 CTA+REFORÇO** | Comente a keyword + follow | **M6** (loop aberto) apontando pro comentário |
 
 **Casamento dispositivo ↔ mecanismo (guia rápido):**
-- **Honey Trick:** H2 (day0/day7 geoduck) ou H3 (mel escorrendo no nabo). M4 no preparo.
-- **Vick Trick:** H1 (cenoura) com Vicks verde revestido, ou H2. M1 na bancada.
-- **Horse Gelatin:** H5 (rancho cowboy) ou H1 (nabo). M2 no resultado.
-- **Custom/blood-flow (beetroot, watermelon, baking soda):** H4 (escala absurda) + M2 (líquido vermelho) + M1 (modelo anatômico).
+- **Honey Trick:** **H6/H7 (mel escorrendo + geoduck/pepino crescendo)** como hook herói, ou H2 (day0/day7) ou H3 (mel no nabo). M4 no preparo.
+- **Vick Trick:** **H6/H7 com Vicks derretido (gel azul-esverdeado) + crescimento**, ou H1 (cenoura revestida de Vicks verde) ou H2. M1 na bancada.
+- **Horse Gelatin:** **H6/H7 com gelatina líquida âmbar + crescimento**, ou H5 (rancho cowboy) ou H1 (nabo). M2 no resultado.
+- **Custom/blood-flow (beetroot, watermelon, baking soda):** H4 (escala absurda) + M2 (líquido vermelho) + M1 (modelo anatômico). H6/H7 se houver um líquido-herói despejável.
+
+**Sobre H6/H7:** o líquido do pouring é SEMPRE o do mecanismo único do vídeo —
+nunca misture (mel no vídeo de honey, Vicks no de vick, gelatina no de gelatin).
+Templates Veo prontos no Apêndice C.
 
 **REGRA:** o dispositivo NÃO substitui o hero prop nem os ingredientes
 obrigatórios do mecanismo (ver V4). Ele os **potencializa visualmente**. E nunca
@@ -210,7 +246,7 @@ faixa. Ver V4 para o gabarito completo de REF e o exemplo integral.
 
 Todos os 20 Erros Fatais do V4 continuam valendo. Novos na V5:
 
-21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H5. Hook sem
+21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H7. Hook sem
     dispositivo visual = scroll perdido.
 22. **Cena sem `DISPOSITIVO VISUAL:`** — as 5 cenas declaram o dispositivo.
 23. **Copy gráfica para compensar visual tímido** — NUNCA. Se o visual está
@@ -218,6 +254,10 @@ Todos os 20 Erros Fatais do V4 continuam valendo. Novos na V5:
 24. **Dispositivo que fura o anti-bloqueio** — proxy fálico + gel + movimento de
     vai-e-vem = bloqueio garantido. Prop na vertical, mão estática, "coating"
     nunca "rubbing/stroking". Vale integralmente a seção anti-bloqueio do V4.
+25. **H6/H7 mal escrito pro Veo** — crescimento descrito como salto/corte ("it
+    becomes bigger", "cut to") em vez de movimento contínuo ("slowly extends and
+    elongates upward over several seconds"), ou líquido de mecanismo errado
+    (Vicks no vídeo de honey). Use SEMPRE os templates do Apêndice C.
 
 ---
 
@@ -273,7 +313,8 @@ a oferta for um protocolo/coleção.
 
 ## APÊNDICE B — CHECKLIST V5 (além do checklist V4)
 
-- [ ] Cena 1 tem um dispositivo HERÓI (H1–H5) declarado?
+- [ ] Cena 1 tem um dispositivo HERÓI (H1–H7) declarado?
+- [ ] Se H6/H7: líquido correto do mecanismo + duas fases (pouring → crescimento) num plano contínuo (Apêndice C)?
 - [ ] Cenas 2-5 têm um MICRO-HOOK (M1–M6) cada?
 - [ ] Dispositivo casado ao mecanismo (tabela de casamento)?
 - [ ] Campo `DISPOSITIVO VISUAL:` em todas as 5 IMAGE e 5 TAKE?
@@ -283,7 +324,181 @@ a oferta for um protocolo/coleção.
 
 ---
 
+## APÊNDICE C — TEMPLATES VEO 3 PARA H6/H7 (POURING + CRESCIMENTO)
+
+Princípios que fazem o Veo 3 reproduzir a transformação (todos obrigatórios):
+
+1. **Um plano contínuo** — nunca "cut to", nunca "before/after". A transformação
+   é um movimento dentro do mesmo take.
+2. **Fases com conectores de tempo** — "First… as the liquid coats it… over the
+   next few seconds… by the end of the shot". O Veo segue a ordem temporal do
+   texto.
+3. **Crescimento como verbo de movimento contínuo** — "slowly extends and
+   elongates upward, growing visibly longer" (nunca "becomes bigger" seco, que o
+   modelo interpreta como corte).
+4. **Tudo o mais parado** — câmera fixa ("locked-off static phone camera, no
+   camera movement"), mão do prop imóvel ("completely still, never sliding"),
+   prop centralizado. O único movimento grande do quadro é o líquido e o
+   alongamento — isso concentra a atenção e reduz glitch.
+5. **Física do líquido descrita** — viscosidade e brilho ("thick, slow-flowing,
+   glistening") dão realismo e "explicam" o contato.
+6. **Anti-glitch e anti-bloqueio de sempre** — dez dedos, sem mãos extras; mão
+   estática segurando na base (nunca deslizando); o pouring vem de cima.
+7. **IMAGE = frame da fase 1** (líquido começando a tocar o topo do prop; nunca o
+   estado "crescido") — o crescimento acontece só no TAKE.
+
+Léxico do crescimento (rotacionar): "slowly extends upward", "elongates and
+rises", "stretches taller", "visibly lengthens", "keeps rising until it stands
+much taller than before".
+
+### C1 — HONEY TRICK / GEODUCK / SOLO (mulher jovem)
+
+```
+IMAGE (frame inicial):
+Vertical 9:16 medium close-up of [PERSONA DESCRIPTION COMPLETA]. She stands at a
+rustic wooden kitchen counter, holding a large pale geoduck clam upright on a
+small wooden cutting board, her left hand cupped firmly around its shell base,
+completely still, exactly ten fingers total visible, no extra hands, only two
+arms visible. With her right hand she tilts a glass jar of raw golden honey
+above it; a thick, slow ribbon of honey has just touched the tip and begins
+sliding down the side, glistening. Her eyes are wide with an excited open-mouth
+expression looking at the camera. Warm uneven window light, small American flag
+magnet on the fridge behind. Slight sensor grain, soft focus, minor 24mm barrel
+distortion, iOS oversharpening artifact, raw iPhone front camera aesthetic.
+Imperfect, authentic, ultra-realistic amateur phone snapshot.
+
+TAKE (animação, ~8s):
+Locked-off static phone camera, no camera movement. The woman keeps her left
+hand cupped around the base of the geoduck, completely still, never sliding,
+exactly ten fingers total visible, no extra hands, no extra limbs. First she
+pours a thick, slow stream of golden honey from the glass jar onto the top of
+the geoduck; the honey coats it and drips down the sides, glistening in the
+window light. As the honey spreads, the geoduck's long neck slowly extends and
+elongates upward in one continuous motion, growing visibly longer and rising
+several inches until it stands much taller than at the start of the shot. Her
+eyes go wide and her jaw drops as she watches it rise, then she looks at the
+camera in disbelief and says "[COPY DA CENA]", mouth moving clearly throughout.
+Natural ambient kitchen sounds, the soft drizzle of honey, no music, no SFX, no
+voiceover, ultra-realistic amateur video feel.
+```
+
+### C2 — VICK TRICK / GEODUCK / CASAL (esposa despeja, marido segura)
+
+```
+IMAGE (frame inicial):
+Vertical 9:16 medium shot of [PERSONA HOMEM DESCRIPTION] seated at the kitchen
+table, both hands cupped firmly around the shell base of a large pale geoduck
+clam standing upright on a wooden board in front of him, completely still,
+and [PERSONA MULHER DESCRIPTION] standing beside him. Exactly twenty fingers
+total visible between the two people, no extra hands, no extra limbs. She holds
+a spoon of melted Vicks VapoRub — a translucent blue-green gel — tilted above
+the geoduck, the first drops just reaching the tip; the classic blue Vicks jar
+with green lid sits open on the table beside a box of baking soda. Both look at
+the geoduck with wide anticipating eyes. Warm window light, American flag magnet
+on the fridge. Slight sensor grain, soft focus, minor 24mm barrel distortion,
+iOS oversharpening artifact, raw iPhone front camera aesthetic. Imperfect,
+authentic, ultra-realistic amateur phone snapshot.
+
+TAKE (animação, ~8s):
+Locked-off static phone camera, no camera movement. The man keeps both hands
+cupped around the base of the geoduck, completely still, never sliding, while
+the woman pours a slow stream of melted translucent blue-green Vicks gel from
+the spoon onto the top of the geoduck; the gel coats it and slides down,
+glistening. As the gel spreads, the geoduck's long neck slowly extends and
+elongates upward in one continuous motion, visibly lengthening and rising until
+it stands much taller than at the start of the shot. The man's eyes go wide and
+he leans back in disbelief; the woman gasps, looks at the camera and says
+"[COPY DA CENA]", mouth moving clearly throughout, exactly twenty fingers total
+visible between the two people, no extra hands, no extra limbs. Natural ambient
+kitchen sounds, no music, no SFX, no voiceover, ultra-realistic amateur video
+feel.
+```
+
+### C3 — HORSE GELATIN / GEODUCK / SOLO (homem mais velho, rancho permitido)
+
+```
+IMAGE (frame inicial):
+Vertical 9:16 medium close-up of [PERSONA DESCRIPTION COMPLETA]. He stands at a
+weathered wooden table, holding a large pale geoduck clam upright on a small
+board, left hand cupped firmly around the shell base, completely still, exactly
+ten fingers total visible, no extra hands, only two arms visible. With his right
+hand he tilts a clear glass of warm dissolved gelatin — a light amber
+translucent liquid — above it, the first thin stream just touching the tip. An
+unflavored gelatin packet with visible "gelatin" text lies on the table. His
+eyebrows are raised in an excited grin toward the camera. [Cozinha americana OU
+rancho: golden hour light, wooden fence and hay behind, small American flag on a
+post]. Slight sensor grain, soft focus, minor 24mm barrel distortion, iOS
+oversharpening artifact, raw iPhone front camera aesthetic. Imperfect,
+authentic, ultra-realistic amateur phone snapshot.
+
+TAKE (animação, ~8s):
+Locked-off static phone camera, no camera movement. The man keeps his left hand
+cupped around the base of the geoduck, completely still, never sliding, exactly
+ten fingers total visible, no extra hands, no extra limbs. First he pours a
+thin, steady stream of warm amber gelatin liquid from the glass over the top of
+the geoduck; the liquid sheets down its sides with a wet glossy shine. As the
+liquid coats it, the geoduck's neck slowly stretches taller in one continuous
+motion, elongating upward and visibly lengthening until it rises well above his
+hand, much taller than at the start of the shot. His jaw drops, he shakes his
+head slowly in disbelief, then points at it and says "[COPY DA CENA]", mouth
+moving clearly throughout. Natural outdoor ambient sounds [ou kitchen room
+tone], no music, no SFX, no voiceover, ultra-realistic amateur video feel.
+```
+
+### C4 — QUALQUER MECANISMO / PEPINO (H7) / SOLO
+
+Troque `[LÍQUIDO]` pelo líquido do mecanismo (honey / melted blue-green Vicks
+gel / warm amber gelatin liquid) e mantenha o resto:
+
+```
+IMAGE (frame inicial):
+Vertical 9:16 medium close-up of [PERSONA DESCRIPTION COMPLETA]. She holds a
+thick dark-green cucumber upright on a wooden cutting board, left hand cupped
+firmly around its base, completely still, exactly ten fingers total visible, no
+extra hands, only two arms visible. With her right hand she tilts [RECIPIENTE DO
+LÍQUIDO] above it; the first stream of [LÍQUIDO] has just touched the tip and
+begins sliding down the side, glistening. Wide-eyed open-mouth excited
+expression into the camera. American home kitchen, warm uneven window light,
+small American flag element in background. Slight sensor grain, soft focus,
+minor 24mm barrel distortion, iOS oversharpening artifact, raw iPhone front
+camera aesthetic. Imperfect, authentic, ultra-realistic amateur phone snapshot.
+
+TAKE (animação, ~8s):
+Locked-off static phone camera, no camera movement. She keeps her left hand
+cupped around the base of the cucumber, completely still, never sliding, exactly
+ten fingers total visible, no extra hands, no extra limbs. First she pours a
+slow, steady stream of [LÍQUIDO] over the top of the cucumber; it coats the
+surface and drips down, glossy and glistening. As the liquid spreads, the
+cucumber slowly elongates upward in one continuous motion, stretching visibly
+taller and rising several inches until it stands much taller than at the start
+of the shot, still held at the base. Her eyes widen, she covers her mouth with
+the pouring hand after setting the container down, then looks at the camera and
+says "[COPY DA CENA]", mouth moving clearly throughout. Natural ambient kitchen
+sounds, no music, no SFX, no voiceover, ultra-realistic amateur video feel.
+```
+
+### C5 — QUALQUER MECANISMO / PEPINO (H7) / CASAL
+
+Mesma estrutura do C2 trocando o geoduck por "a thick dark-green cucumber" e o
+líquido pelo do mecanismo. Um segura com as duas mãos na base ("both hands
+cupped, completely still"), o outro despeja; reação dividida (quem segura arqueia
+as sobrancelhas e recua a cabeça; quem despeja fala a copy pra câmera).
+
+**Notas de operação (todas as variantes):**
+- A copy falada entra DEPOIS do crescimento começar — a primeira metade do take
+  é visual puro (pouring + rise), a fala fecha o take. Em 8s: ~3s pouring, ~3s
+  crescimento, ~2s fala/reação.
+- No AdBatch: o IMAGE de C1-C5 é o frame inicial do I2V — por isso ele congela a
+  fase 1 (líquido tocando o topo). Se o IMAGE já mostrar o prop "crescido", o
+  Veo não tem transformação pra animar.
+- Variar entre vídeos: solo/casal, geoduck/pepino, cozinha/guerrilha (H5 combina
+  com H6/H7), persona homem/mulher. Nunca repetir a mesma combinação em
+  variações consecutivas.
+
+---
+
 Fim do agente V5. Mesmo motor do V4 (5 cenas, REF, dual persona, mecanismo único,
 anti-IA), com a camada de **Hook Visual**: 1 dispositivo herói + 4 micro-hooks,
-extraídos por engenharia reversa de 13 criativos reais. O V4 permanece intacto e
+extraídos por engenharia reversa de 13 criativos reais — incluindo os templates
+H6/H7 de pouring + crescimento prontos para o Veo 3. O V4 permanece intacto e
 disponível; a V5 é a opção quando o jogo é ganhar os 2 primeiros segundos.
