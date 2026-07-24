@@ -51,6 +51,13 @@ gelaton
 > A keyword tem que ser **idêntica** à que a legenda/CTA do reel manda comentar.
 > O randomizador V5 emite `CTA:GELATIN` quando `cta=keyword_mecanismo` — é essa.
 
+**Gotcha do input (Meta):** o campo **NÃO separa por espaço** — colar tudo com
+espaço vira **um único chip gigante** (uma keyword só, inútil). Separa por
+**Enter a cada palavra** OU por **vírgula**. Cole assim (uma linha):
+`gelatin, gelatine, jelatin, gelatn, gelati, gellatin, gelatim, gelantin, geltin, gelaton`.
+**Não** adicionar `GELATIN` maiúsculo à parte: o match é case-insensitive (gasta
+slot à toa; só há 10).
+
 ---
 
 ## DM (mensagem privada)
