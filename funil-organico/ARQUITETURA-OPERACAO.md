@@ -131,7 +131,7 @@ o mesmo mecanismo.
 ## Inventário rápido
 
 - **Perfil:** Eduardo Nogueira → 5 páginas (IDs acima).
-- **VSLs:** Horsewood (aff 45158) e Ragnaroak (aff 2470) — **ambas gelatin trick**. Horsewood fecha no BuyGoods; confirmar plataforma da Ragnaroak.
+- **VSLs:** Horsewood (aff 45158) e Ragnaroak (aff 2470) — **ambas gelatin trick**, ambas no **BuyGoods** (mesma conta: HorseWood [12662], RAGNAROAK [12911]).
 - **Domínios:** 5 no ar + `wholelifenutri.shop` reserva ([`bridge-pages-deploy.md`](bridge-pages-deploy.md)).
 - **Bridges:** 5 no ar, mínimas, copy própria por domínio ([`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md)).
 - **Notificação de venda:** sistema **próprio** BuyGoods → Telegram, sem terceiro ([`notificacao-vendas-telegram.md`](notificacao-vendas-telegram.md)).

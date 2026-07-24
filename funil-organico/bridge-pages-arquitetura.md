@@ -78,7 +78,7 @@ também está em [`bridge-page/`](bridge-page/) no topodefunil.
 
 ## Tracking (Utmify + BuyGoods)
 
-O Horsewood fecha o checkout no **BuyGoods**. A plataforma da **Ragnaroak** ainda precisa ser confirmada (ver pendência abaixo).
+As duas ofertas (Horsewood [12662] e Ragnaroak [12911]) fecham o checkout no **BuyGoods**, na mesma conta de afiliado.
 
 - **Param de sub-fonte = `subid`** (o BuyGoods documenta `&subid=SOMETHING`). A
   bridge manda `&subid=<pagina>` na VSL → dá pra ver qual página converteu no
@@ -91,14 +91,10 @@ O Horsewood fecha o checkout no **BuyGoods**. A plataforma da **Ragnaroak** aind
   fonte; quem entrega a venda é o **postback da plataforma de checkout**
   (BuyGoods → Utmify e/ou → nosso [notificador Telegram](notificacao-vendas-telegram.md)).
   Sem postback configurado, nenhuma venda é notificada.
-- ⚠️ **PENDÊNCIA — plataforma da Ragnaroak.** O postback que temos hoje é global da
-  conta **BuyGoods**, e a conta lá lista Balmorex, FemiPro, Vigortrix, Jellythin e
-  HorseWood — **Ragnaroak não aparece**. Duas hipóteses: (a) é uma conta BuyGoods
-  nova/separada, ou (b) roda em outra rede. Enquanto não confirmar:
-  **vendas do Ragnaroak (2 páginas) podem não gerar notificação nem atribuição.**
-  Confirmar a rede e, se for outra, registrar o postback equivalente lá — e checar
-  se o parâmetro de sub-fonte também é `subid` (se for outro nome, ajustar o
-  `<script>` das bridges `bp-allmensnatural` e `bp-steadystrengthhub`).
+- ✅ **Ragnaroak também é BuyGoods** (RAGNAROAK [12911], mesma conta de afiliado —
+  confirmado em 2026-07-24). Como o postback é **global da conta** ("whenever a sale
+  is recorded under your affiliate account"), ele cobre as duas VSLs de uma vez:
+  não precisa configurar nada por oferta, e o `subid` vale para ambas.
 
 ---
 
