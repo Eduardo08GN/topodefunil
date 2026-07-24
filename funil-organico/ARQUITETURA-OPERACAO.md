@@ -87,22 +87,22 @@ página futura).
 
 ---
 
-## Bridge pages: 5 designs DISTINTOS (anti-fingerprint)
+## Bridge pages: MÍNIMAS (a VSL vende, a bridge só entrega o clique)
 
-Cada domínio serve `/bp1/` com uma bridge de **design próprio** — nenhuma igual à
-outra (evita pegada de template repetido entre domínios). Todas roteiam pro clique
-na VSL da sua página, com atribuição `?p=<slug>` → `sub_id`.
+Regra de ouro: **bridge = no máx. 3 linhas de copy** (1 headline + 1 CTA + o hero
+clicável). Ela não converte a venda — quem converte é a VSL. Mesmo estilo/CSS em
+todas; o que **varia entre domínios é só a copy** (e o hero da oferta). Todas
+roteiam pro clique na VSL com atribuição `?p=<slug>` → `sub_id`.
 
-| Domínio | Genre da bridge | VSL |
+| Domínio | Headline (copy) | VSL |
 |---|---|---|
-| `manresethub.pro` | Private video (dark) | Horsewood (gelatin) |
-| `vitalresetlab.site` | DM / thread de mensagem | Horsewood (gelatin) |
-| `primalvitalityhub.site` | Bilhete manuscrito / receita | Horsewood (gelatin) |
-| `allmensnatural.site` | Aviso de remoção / sistema | Vigortrix (vick) |
-| `steadystrengthhub.site` | Card de depoimento / review | Vigortrix (vick) |
+| `manresethub.pro` | "He's 67. And she's the one chasing now." | Horsewood (gelatin) |
+| `vitalresetlab.site` | "One red bowl. Thirty seconds before bed." | Horsewood (gelatin) |
+| `primalvitalityhub.site` | "No pills. Just the red bowl." | Horsewood (gelatin) |
+| `allmensnatural.site` | "The pharmacy-aisle jar men use before bed." | Vigortrix (vick) |
+| `steadystrengthhub.site` | "He tried it before bed. She noticed by morning." | Vigortrix (vick) |
 
-Cada bridge também usa um hero com **hash próprio** (imagem re-encodada) pra não
-compartilhar fingerprint de arquivo. Detalhe técnico (pastas, deploy, receitas) em
+Detalhe técnico (pastas, deploy, receitas, contrato do link) em
 [`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md).
 
 ---
