@@ -22,16 +22,17 @@ DM automation entrega o link
 Bridge page (domínio próprio, /bp1/) — "Private video"
       │  clique no hero
       ▼
-VSL de afiliado (Horsewood OU Vigortrix) + aff_id + subid
+VSL de afiliado (Horsewood OU Ragnaroak) + aff_id + subid
       ▼
 💰 comissão
 ```
 
 **Regra de congruência (inegociável):** o mecanismo do CRIATIVO tem que casar com
-o mecanismo que a VSL daquela página vende. Página que roda **Vigortrix** só posta
-criativo de **Vick VapoRub trick**. Página que roda **Horsewood** posta o mecanismo
-do Horsewood (**gelatin trick**). Nunca cruze: criativo de vick
-levando pra VSL de gelatin mata a conversão e a credibilidade.
+o mecanismo que a VSL daquela página vende. Hoje as duas VSLs (Horsewood e
+Ragnaroak) vendem o **mesmo mecanismo — gelatin trick** — então todas as 5
+páginas postam criativo de gelatin. Se um dia entrar uma VSL de outro mecanismo,
+as páginas dela têm que trocar de criativo junto: criativo de um mecanismo
+levando pra VSL de outro mata a conversão e a credibilidade.
 
 ---
 
@@ -40,13 +41,16 @@ levando pra VSL de gelatin mata a conversão e a credibilidade.
 | VSL | Link direto | aff_id | Mecanismo | Nº de páginas |
 |---|---|---|---|---|
 | **Horsewood** | `https://horsewood.us/vsl3/?aff_id=45158&subid=<pagina>` | 45158 | **Gelatin trick** (red bowl) | **3** |
-| **Vigortrix** | `https://vigortrix.com/vesp-l2/?aff_id=75486&subid=<pagina>` | 75486 | **Vick VapoRub trick** | **2** |
+| **Ragnaroak** | `https://ragnaroak.us/VHGML5-3/?aff_id=2470&subid=<pagina>` | 2470 | **Gelatin trick** (mesmo do Horsewood) | **2** |
 
 - `subid=<pagina>` → atribuição por página (lido do `?p=<slug>` na URL da bridge; default `direct`).
-- **Horsewood = Gelatin trick** (confirmado). A bridge vende "the red bowl"
-  (gelatina vermelha no hero); os criativos das 3 páginas Horsewood usam o
-  mecanismo **gelatin** → fixar `mecanismo=gelatin` no randomizador (PASSO 0).
-- **Vigortrix = Vick trick** → fixar `mecanismo=vick`.
+- **As DUAS VSLs vendem o mesmo mecanismo: gelatin trick.** Vigortrix (vick) foi
+  desativado em 2026-07-24 e substituído pelo Ragnaroak.
+- **Consequência prática:** TODAS as 5 páginas usam criativos de **gelatin** →
+  fixar `mecanismo=gelatin` no randomizador (PASSO 0) para qualquer lote.
+- **Vira um A/B de VSL:** mesmo mecanismo e mesmo tipo de criativo em todas; 3
+  páginas mandam pro Horsewood e 2 pro Ragnaroak. Dá pra comparar qual VSL
+  converte melhor com o tráfego equivalente.
 
 ---
 
@@ -67,7 +71,7 @@ US, 0 seguidores (recém-criadas), foto de perfil = homem 45+ + estética natura
 
 ## Mapeamento página → domínio → VSL (DEFINIDO)
 
-Split: **3 Horsewood (gelatin) / 2 Vigortrix (vick)**. Domínios = os 5 já no ar
+Split: **3 Horsewood / 2 Ragnaroak** (ambos gelatin trick). Domínios = os 5 já no ar
 (ver [`bridge-pages-deploy.md`](bridge-pages-deploy.md)); `wholelifenutri.shop`
 fica de **reserva**. Mapeamento fechado e **consistente com o deploy atual**.
 
@@ -76,8 +80,8 @@ fica de **reserva**. Mapeamento fechado e **consistente com o deploy atual**.
 | Joe's Wellness hub | `manresethub.pro` | **Horsewood** | **gelatin trick** |
 | Marcus' Men Reset Hub | `vitalresetlab.site` | **Horsewood** | **gelatin trick** |
 | Ray's Natural Vitality Hub | `primalvitalityhub.site` | **Horsewood** | **gelatin trick** |
-| Chuck's Men Welness Hub | `allmensnatural.site` | **Vigortrix** | **vick trick** |
-| Matt's Natural Reset Tips | `steadystrengthhub.site` | **Vigortrix** | **vick trick** |
+| Chuck's Men Welness Hub | `allmensnatural.site` | **Ragnaroak** | **gelatin trick** |
+| Matt's Natural Reset Tips | `steadystrengthhub.site` | **Ragnaroak** | **gelatin trick** |
 
 > Para trocar uma página de VSL: mude a linha aqui + repointe a variante da bridge
 > no domínio (receita em [`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md)).
@@ -99,8 +103,8 @@ roteiam pro clique na VSL com atribuição `?p=<slug>` → `subid`.
 | `manresethub.pro` | "He's 67. And she's the one chasing now." | Horsewood (gelatin) |
 | `vitalresetlab.site` | "One red bowl. Thirty seconds before bed." | Horsewood (gelatin) |
 | `primalvitalityhub.site` | "No pills. Just the red bowl." | Horsewood (gelatin) |
-| `allmensnatural.site` | "The pharmacy-aisle jar men use before bed." | Vigortrix (vick) |
-| `steadystrengthhub.site` | "He tried it before bed. She noticed by morning." | Vigortrix (vick) |
+| `allmensnatural.site` | "The red bowl he keeps by the bed." | Ragnaroak (gelatin) |
+| `steadystrengthhub.site` | "He ate it before bed. She noticed by morning." | Ragnaroak (gelatin) |
 
 Detalhe técnico (pastas, deploy, receitas, contrato do link) em
 [`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md).
@@ -112,22 +116,22 @@ Detalhe técnico (pastas, deploy, receitas, contrato do link) em
 Os reels de cada página saem da esteira:
 1. **Agente Organic Wave V5** (`AGENTE_ED_ORGANIC_WAVE_V5.md`) + `randomizador-v5.py`
    → roteiros REF+5 IMAGE+5 TAKE, com o **mecanismo travado** conforme a VSL da
-   página (vick para páginas Vigortrix; gelatin/honey para páginas Horsewood).
+   página — hoje **gelatin em todas** (as duas VSLs vendem gelatin trick).
 2. **AdBatch Vertical 5** (Flow/Veo) → imagens + takes → `.zip`.
 3. **Veo Editor** (esteira) → junta, desilencia, varia velocidade, legenda karaoke
    com keyword destacada.
 4. Postagem orgânica na página → keyword no comentário → DM → bridge → VSL.
 
-**Congruência na prática:** ao gerar um lote para uma página Vigortrix, fixar
-`mecanismo=vick` no randomizador (PASSO 0). Para páginas Horsewood, fixar
-`mecanismo=gelatin`.
+**Congruência na prática:** hoje é simples — fixar `mecanismo=gelatin` no
+randomizador (PASSO 0) para QUALQUER página, porque Horsewood e Ragnaroak vendem
+o mesmo mecanismo.
 
 ---
 
 ## Inventário rápido
 
 - **Perfil:** Eduardo Nogueira → 5 páginas (IDs acima).
-- **VSLs:** Horsewood (aff 45158, gelatin), Vigortrix (aff 75486, vick) — checkout dos dois no **BuyGoods**.
+- **VSLs:** Horsewood (aff 45158) e Ragnaroak (aff 2470) — **ambas gelatin trick**. Horsewood fecha no BuyGoods; confirmar plataforma da Ragnaroak.
 - **Domínios:** 5 no ar + `wholelifenutri.shop` reserva ([`bridge-pages-deploy.md`](bridge-pages-deploy.md)).
 - **Bridges:** 5 no ar, mínimas, copy própria por domínio ([`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md)).
 - **Notificação de venda:** sistema **próprio** BuyGoods → Telegram, sem terceiro ([`notificacao-vendas-telegram.md`](notificacao-vendas-telegram.md)).

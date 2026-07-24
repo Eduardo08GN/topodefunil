@@ -34,8 +34,8 @@ Mesmo template minimal; muda só a copy + hero + VSL.
 | `manresethub.pro` | `bp1` | "He's 67. And she's the one chasing now." | Horsewood | gelatin | `v5t2rojizir3dc37al4zkb4p` |
 | `vitalresetlab.site` | `bp-vitalresetlab` | "One red bowl. Thirty seconds before bed." | Horsewood | gelatin | `bv4uhh6hpq6tkotyn42nagg3` |
 | `primalvitalityhub.site` | `bp-primalvitalityhub` | "No pills. Just the red bowl." | Horsewood | gelatin | `srd3jdzrvc0n7ri3yetjjmuq` |
-| `allmensnatural.site` | `bp-allmensnatural` | "The pharmacy-aisle jar men use before bed." | Vigortrix | vick | `iuge7sircaf0myor1jdl77jv` |
-| `steadystrengthhub.site` | `bp-steadystrengthhub` | "He tried it before bed. She noticed by morning." | Vigortrix | vick | `xkma961zrq3jxraw5z4vpg47` |
+| `allmensnatural.site` | `bp-allmensnatural` | "The red bowl he keeps by the bed." | Ragnaroak | gelatin | `iuge7sircaf0myor1jdl77jv` |
+| `steadystrengthhub.site` | `bp-steadystrengthhub` | "He ate it before bed. She noticed by morning." | Ragnaroak | gelatin | `xkma961zrq3jxraw5z4vpg47` |
 | `wholelifenutri.shop` | — (reserva, DNS parking) | — | — | — | `cwanszytythvm4myf8yye46k` |
 
 Cada uma tem também 1 linha de CTA curta ("Tap play now", "Watch before it's taken
@@ -71,14 +71,14 @@ também está em [`bridge-page/`](bridge-page/) no topodefunil.
 })();</script>
 ```
 - Horsewood: `OFFER="https://horsewood.us/vsl3/"`, `AFF="45158"`, hero `hero.png`.
-- Vigortrix: `OFFER="https://vigortrix.com/vesp-l2/"`, `AFF="75486"`, hero `hero.jpg`.
-- **Nunca cruzar** VSL/mecanismo entre páginas.
+- Ragnaroak: `OFFER="https://ragnaroak.us/VHGML5-3/"`, `AFF="2470"`, hero `hero.png`.
+- **Nunca cruzar** VSL/mecanismo entre páginas. Hoje as duas VSLs vendem **gelatin trick** (Vigortrix/vick foi desativado em 2026-07-24), então todas as bridges usam o hero do red bowl.
 
 ---
 
 ## Tracking (Utmify + BuyGoods)
 
-Ambas as ofertas (Horsewood, Vigortrix) fecham o checkout no **BuyGoods**.
+O Horsewood fecha o checkout no **BuyGoods**. A plataforma da **Ragnaroak** ainda precisa ser confirmada (ver pendência abaixo).
 
 - **Param de sub-fonte = `subid`** (o BuyGoods documenta `&subid=SOMETHING`). A
   bridge manda `&subid=<pagina>` na VSL → dá pra ver qual página converteu no
@@ -88,9 +88,17 @@ Ambas as ofertas (Horsewood, Vigortrix) fecham o checkout no **BuyGoods**.
   <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
   ```
 - ⚠️ **A notificação de venda NÃO vem só do script.** O script na bridge captura a
-  fonte; quem entrega a venda pro Utmify é o **postback do BuyGoods → Utmify**
-  (configurar no BuyGoods Settings/Postback + na aba Webhooks do Utmify). Sem esse
-  postback, o Utmify não recebe a venda.
+  fonte; quem entrega a venda é o **postback da plataforma de checkout**
+  (BuyGoods → Utmify e/ou → nosso [notificador Telegram](notificacao-vendas-telegram.md)).
+  Sem postback configurado, nenhuma venda é notificada.
+- ⚠️ **PENDÊNCIA — plataforma da Ragnaroak.** O postback que temos hoje é global da
+  conta **BuyGoods**, e a conta lá lista Balmorex, FemiPro, Vigortrix, Jellythin e
+  HorseWood — **Ragnaroak não aparece**. Duas hipóteses: (a) é uma conta BuyGoods
+  nova/separada, ou (b) roda em outra rede. Enquanto não confirmar:
+  **vendas do Ragnaroak (2 páginas) podem não gerar notificação nem atribuição.**
+  Confirmar a rede e, se for outra, registrar o postback equivalente lá — e checar
+  se o parâmetro de sub-fonte também é `subid` (se for outro nome, ajustar o
+  `<script>` das bridges `bp-allmensnatural` e `bp-steadystrengthhub`).
 
 ---
 
@@ -120,7 +128,7 @@ curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -H "Content-Type: application
 - [ ] **≤3 linhas de copy** (headline + 1 CTA)? Sem parede de texto?
 - [ ] VSL + aff certos do mecanismo da página (sem contaminação)?
 - [ ] `#offer` + script de atribuição + `noindex` + disclaimer?
-- [ ] Hero certo (gelatin=hero.png / vick=hero.jpg)?
+- [ ] Hero certo (`hero.png`, red bowl — todas gelatin hoje)?
 
 ## Gotchas
 - **Cert não emite sozinho** após apontar DNS: precisa redeploy ([`bridge-pages-deploy.md`](bridge-pages-deploy.md)).
