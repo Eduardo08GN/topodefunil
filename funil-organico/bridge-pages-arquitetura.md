@@ -70,7 +70,7 @@ também está em [`bridge-page/`](bridge-page/) no topodefunil.
   document.getElementById("offer").href=OFFER+"?aff_id="+encodeURIComponent(AFF)+"&subid="+encodeURIComponent(p);
 })();</script>
 ```
-- Horsewood: `OFFER="https://horsewood.us/vsl3/"`, `AFF="45158"`, hero `hero.png`.
+- Horsewood: `OFFER="https://horsewood.us/VHG2-L1ML3/"`, `AFF="45158"`, hero `hero.png`.
 - Ragnaroak: `OFFER="https://ragnaroak.us/VHGML5-3/"`, `AFF="2470"`, hero `hero.png`.
 - **Nunca cruzar** VSL/mecanismo entre páginas. Hoje as duas VSLs vendem **gelatin trick** (Vigortrix/vick foi desativado em 2026-07-24), então todas as bridges usam o hero do red bowl.
 

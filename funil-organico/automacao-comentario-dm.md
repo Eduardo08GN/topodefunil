@@ -138,6 +138,14 @@ Caixa de Entrada → Automações → "Comentar para enviar mensagem" → Editar
 
 ## Status
 
-- [x] Matt's Natural Reset Tips — copy/keywords/DM definidos (este doc).
-- [ ] Matt's — automação salva no Meta (DM only, comentário em branco).
-- [ ] Joe's, Marcus', Ray's, Chuck's — replicar com o link `?p=` de cada uma.
+Atualizado em **2026-07-27**.
+
+- [x] **Matt's Natural Reset Tips** — automação salva e **Ativado** no Meta (`steadystrengthhub`).
+- [x] **Joe's Wellness hub** — automação salva e **Ativado** no Meta (`manresethub`).
+- [ ] **Marcus' Men Reset Hub** — replicar (`vitalresetlab`).
+- [ ] **Ray's Natural Vitality Hub** — replicar (`primalvitalityhub`).
+- [ ] **Chuck's Men Welness Hub** — replicar (`allmensnatural`).
+
+> ⚠️ **Nota das 2 já feitas:** Joe e Matt entraram com o chip `GELATIN` maiúsculo,
+> que gasta 1 slot à toa (match é *contém* + case-insensitive). Cleanup opcional:
+> trocar `GELATIN` por `gelaton` nas duas. As 3 novas já entram sem esse chip.

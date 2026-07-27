@@ -48,7 +48,7 @@ página de avatar escuro. Ver coluna "Etnia do avatar" no mapeamento abaixo.
 
 | VSL | Link direto | aff_id | Mecanismo | Nº de páginas |
 |---|---|---|---|---|
-| **Horsewood** | `https://horsewood.us/vsl3/?aff_id=45158&subid=<pagina>` | 45158 | **Gelatin trick** (red bowl) | **3** |
+| **Horsewood** | `https://horsewood.us/VHG2-L1ML3/?aff_id=45158&subid=<pagina>` | 45158 | **Gelatin trick** (red bowl) | **3** |
 | **Ragnaroak** | `https://ragnaroak.us/VHGML5-3/?aff_id=2470&subid=<pagina>` | 2470 | **Gelatin trick** (mesmo do Horsewood) | **2** |
 
 - `subid=<pagina>` → atribuição por página (lido do `?p=<slug>` na URL da bridge; default `direct`).
@@ -119,6 +119,35 @@ roteiam pro clique na VSL com atribuição `?p=<slug>` → `subid`.
 | `primalvitalityhub.site` | "No pills. Just the red bowl." | Horsewood (gelatin) |
 | `allmensnatural.site` | "The red bowl he keeps by the bed." | Ragnaroak (gelatin) |
 | `steadystrengthhub.site` | "He ate it before bed. She noticed by morning." | Ragnaroak (gelatin) |
+
+### Como cada bridge aponta pra VSL — DIRETO, sem intermediário
+
+Cada bridge carrega **o link da sua VSL dentro do próprio `index.html`** (um
+`<script>` inline monta o href final com `aff_id` + `subid`). **Não existe
+redirecionador central, encurtador nem "porteiro" no meio** — a página já sabe
+pra onde manda:
+
+```
+Joe    · manresethub.pro         → horsewood.us/VHG2-L1ML3   (aff 45158)
+Marcus · vitalresetlab.site      → horsewood.us/VHG2-L1ML3   (aff 45158)
+Ray    · primalvitalityhub.site  → horsewood.us/VHG2-L1ML3   (aff 45158)
+Chuck  · allmensnatural.site     → ragnaroak.us/VHGML5-3     (aff 2470)
+Matt   · steadystrengthhub.site  → ragnaroak.us/VHGML5-3     (aff 2470)
+```
+
+**Por que NÃO um redirecionador central:** um único porteiro (ex.: Cloudflare
+Worker) teria UM destino pra todos e não modelaria o split 3 Horsewood / 2
+Ragnaroak — mandaria Chuck e Matt pro **aff errado** (comissão pro afiliado errado).
+Um protótipo desses (`redirector-worker.js`) chegou a existir e foi **deletado em
+2026-07-27** exatamente por isso. Cada bridge dona do seu próprio link é mais
+simples e imune a esse erro.
+
+**Trocar a VSL = editar o `OFFER` da(s) bridge(s) daquela oferta + redeploy** (não
+mexe nas outras). Em **2026-07-27** as 3 Horsewood migraram `vsl3 → VHG2-L1ML3`
+(VSL apontada pelo produtor como a que mais converte); validado no ar com `curl`
+nos 5 domínios. As 2 Ragnaroak seguem em `VHGML5-3`. Receita da troca em
+[`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md) (§ "Editar a copy" /
+"Repontar base_directory").
 
 Detalhe técnico (pastas, deploy, receitas, contrato do link) em
 [`bridge-pages-arquitetura.md`](bridge-pages-arquitetura.md).

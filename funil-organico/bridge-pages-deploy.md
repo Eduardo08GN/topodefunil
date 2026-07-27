@@ -16,7 +16,7 @@ Registro de todas as bridge pages do funil orgânico ED, hospedadas no VPS via C
 O clique na imagem da bridge leva para:
 
 ```
-https://horsewood.us/vsl3/?aff_id=45158&sub_id=<pagina>
+https://horsewood.us/VHG2-L1ML3/?aff_id=45158&sub_id=<pagina>
 ```
 
 - `aff_id=45158` → comissão
