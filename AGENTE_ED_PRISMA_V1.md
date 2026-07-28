@@ -69,7 +69,7 @@ troco eixo, não prefiro, não repito (Erro Fatal P1).
 | **dispositivo** | H1, H4_soft, H7, M1_modelo, M4_demo, **nenhum** | o objeto em cena — ou a ausência dele |
 | **dor** | as 10 do V4 | a ferida da confissão |
 | **registro** | raiva_contida, humor_seco, vergonha_crua, professor_calmo, conspiratorio, urgencia_alarme | o TOM da atuação |
-| **wardrobe** | flannel, henley, polo, plain_tee, jaqueta_leve, camisa_trabalho | a roupa (mesmo rosto, visual diferente) |
+| **wardrobe** | flannel, henley, polo, plain_tee, jaqueta_leve, camisa_trabalho, scrub_medico | a roupa (mesmo rosto, visual diferente) |
 
 \* `ranch` nunca para páginas de persona negra (congruência de casting — regra herdada).
 
@@ -105,6 +105,41 @@ Tradução de cada conceito para IMAGE/TAKE:
 | **day_labels** | etiqueta manuscrita "Day 0"/"Day 7" (máx 2 palavras — regra V4); a progressão é o show | 🟢 |
 | **flagrante_publico** | humilhação pública testemunhada — ver seção própria abaixo. Acoplado 1:1 ao molde M15 | 🟡 A/B |
 | **prop_ressurreicao** | prop GIGANTE murcho/dobrado que fica vertical após o despejo da substância (Tanisha, lab, 1.6K/673/211 — **vídeo IA que passou na moderação**). Narrador pequeno em frente ao prop monumental, bandeja inox, luva azul despejando. O antes/depois acontece NO prop, na tela. "comically large", nunca "absurdly oversized"; H7 pouring+crescimento já tem selo 🟢 | 🟡 |
+| **antes_depois_gemeo** ⭐ | **a maior tração medida do repertório — 345K views / 7.7K** (Zariah). Ver seção própria abaixo | 🟡 A/B |
+| **pip_broll** | narrador **pequeno recortado** num canto (~25% do quadro) + B-roll dominante ocupando o resto: render 3D de corrente sanguínea, animação anatômica. **O B-roll entra no editor, nunca no prompt do Veo** — o Veo só gera o take do narrador em plano fixo. Barato e parece mais produzido | 🟢 |
+
+### antes_depois_gemeo (M6) — a maior tração medida (345K views / 7.7K)
+
+Zariah, reel 1487684136039129. **O bit mais forte do repertório inteiro**, e é
+barato: dois IMAGEs quase idênticos com cut seco entre eles nos primeiros ~3s.
+
+O que muda entre os dois frames — **e o que NÃO muda**:
+
+| | MUDA | NÃO MUDA |
+|---|---|---|
+| Homem | barrigudo → rasgado | **o mesmo homem**: mesma sunga laranja, mesma corrente, mesmo rosto |
+| Prop na mão dela | pequeno e murcho → **~4x maior**, firme, ereto | é o mesmo tipo de prop |
+| Resto | — | enquadramento, cenário, pose dela, luz, roupa dela |
+
+A força vem da **imobilidade de tudo o mais**. Só duas coisas mudam, e mudam
+juntas: o corpo e o prop. A promessa numérica do hook (`3_to_8_inches`,
+`five_inches_a_week`) fica **literal na tela** sem ser dita como medida no corpo.
+
+Execução:
+
+1. **Dois IMAGEs para a cena 1** (numeração se adapta, como na regra deck/low-angle
+   do V4): `IMAGE 01A` = estado ANTES, `IMAGE 01B` = estado DEPOIS. Texto idêntico
+   palavra por palavra, exceto físico do homem e tamanho/firmeza do prop.
+2. **O prop tem que crescer em TAMANHO**, não só endireitar — é o que a audiência
+   lê como a promessa. `noticeably larger, firm and upright` no B contra
+   `small, soft, drooping` no A. Nunca "absurdly oversized" (selo 🔴 do banco).
+3. O cut é **seco** (sem transição, sem morph) — o TAKE de cada estado é curto,
+   o corte acontece na montagem.
+4. O narrador (REF da página) fica **agachado ao lado**, segurando o prop, com a
+   mesma pose nos dois frames. Ele é a constante que prova que só o homem mudou.
+5. O sujeito transformado (`segundo=sujeito_transformado`) **não fala** e não
+   reaparece nas cenas 2-5.
+6. Cenas 2-5 seguem os beats do esqueleto em set normal.
 
 ### flagrante_publico (M15) — a fórmula de viralização da Tanisha Rivers
 
@@ -150,7 +185,7 @@ Execução PRISMA:
 | Fixo | Motivo |
 |---|---|
 | **CTA = GELATIN + follow-gate** | automação Comentário→DM só dispara nas variantes de gelatin |
-| **Rosto = REF da página** | identidade do canal ≠ variação; rosto novo a cada reel denuncia fazenda de conteúdo. A roupa varia, o rosto não. (E3 usa a esposa — etnia da página.) |
+| **Rosto = REF da página** | identidade do canal ≠ variação; rosto novo a cada reel denuncia fazenda de conteúdo. A roupa varia, o rosto não. (E3 usa a esposa — etnia da página.) **O REF deve ter uma marca facial memorável** — a Zariah (345K) usa vitiligo extenso no rosto e nos braços; Tanisha e Angela usam tranças + terninho. Rosto bonito e genérico é esquecido; rosto com marca é reconhecido no feed. Ao travar o REF de cada página, escolher uma âncora visual (vitiligo, mecha branca, cicatriz, heterocromia, barba longa distinta) |
 | **Cadeia de congruência** | reel promete *recipe* → DM entrega *recipe* → bridge → VSL ([automacao-comentario-dm.md](funil-organico/automacao-comentario-dm.md)) |
 | **Loop de curiosidade na cena 4** | nunca entregar o ingrediente no vídeo |
 | **Mecânica Veo** | ver "Mecânica" abaixo — por ponteiro, nunca por cópia |

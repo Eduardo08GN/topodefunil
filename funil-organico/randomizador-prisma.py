@@ -67,6 +67,13 @@ CONCEITOS = [
     "prop_ressurreicao",# prop GIGANTE murcho -> vertical apos despejo da substancia
                         # (Tanisha reel 856954520543734, 1.6K/673/211, IA gerada e passou):
                         # lab branco, bandeja inox, narrador pequeno em frente do prop monumental
+    "antes_depois_gemeo",# ⭐ MAIOR TRACAO MEDIDA: 345K views / 7.7K (Zariah 1487684136039129)
+                        # MESMO homem, MESMA roupa, MESMO enquadramento, cut seco em ~2s:
+                        # corpo barrigudo -> rasgado E o prop na mao ~4x MAIOR (tamanho, nao
+                        # so firmeza). A promessa numerica do hook fica literal na tela.
+                        # Acoplado a M6.
+    "pip_broll",        # narrador pequeno recortado num canto + B-roll dominante (corrente
+                        # sanguinea 3D, anatomia). B-roll entra NO EDITOR, nao no Veo.
 ]
 SETTINGS = [
     "kitchen", "garage_bancada", "backyard_deck", "truck_cabine",
@@ -94,7 +101,10 @@ DISPOSITIVOS = [
     "H1_proxy_peito", "H4_soft", "H7_pouring",
     "M1_modelo_anatomico", "M4_demo_quimica", "nenhum",
 ]
-WARDROBES = ["flannel", "henley", "polo", "plain_tee", "jaqueta_leve", "camisa_trabalho"]
+WARDROBES = [
+    "flannel", "henley", "polo", "plain_tee", "jaqueta_leve", "camisa_trabalho",
+    "scrub_medico",  # uniforme clinico colorido — autoridade sem jaleco (Zariah, 345K)
+]
 DORES = [
     "momento_constrangedor", "desculpas_toda_noite", "gastos_farmacia",
     "medo_do_quarto", "fogo_apagando", "evitar_intimidade",
@@ -158,17 +168,18 @@ SETTINGS_POR_ESQ = {
 }
 # conceito por esqueleto: a historia dita quais bits visuais fazem sentido
 CONC_POR_ESQ = {
-    "E1_isca_e_troca": ["solo_classico", "demo_quimica", "duo_amigo", "pov_mercado", "prop_gigante", "prop_ressurreicao"],
-    "E2_direta":       ["solo_classico", "prop_gigante", "local_publico", "pov_mercado", "podcast", "duo_amigo", "prop_ressurreicao"],
-    "E3_esposa":       ["duo_esposa", "solo_classico", "local_publico"],
-    "E4_confissao":    ["solo_classico", "podcast"],
+    "E1_isca_e_troca": ["solo_classico", "demo_quimica", "duo_amigo", "pov_mercado", "prop_gigante", "prop_ressurreicao", "pip_broll"],
+    "E2_direta":       ["solo_classico", "prop_gigante", "local_publico", "pov_mercado", "podcast", "duo_amigo", "prop_ressurreicao", "pip_broll", "antes_depois_gemeo"],
+    "E3_esposa":       ["duo_esposa", "solo_classico", "local_publico", "antes_depois_gemeo"],
+    "E4_confissao":    ["solo_classico", "podcast", "pip_broll"],
     "E5_experimento":  ["demo_quimica", "prop_ressurreicao"],
-    "E6_expose":       ["fake_broadcast", "podcast", "solo_classico", "local_publico"],
-    "E7_diario":       ["day_labels", "solo_classico"],
-    "E8_mito_verdade": ["solo_classico", "podcast", "fake_broadcast", "prop_gigante"],
+    "E6_expose":       ["fake_broadcast", "podcast", "solo_classico", "local_publico", "pip_broll"],
+    "E7_diario":       ["day_labels", "solo_classico", "antes_depois_gemeo"],
+    "E8_mito_verdade": ["solo_classico", "podcast", "fake_broadcast", "prop_gigante", "pip_broll"],
 }
 # settings validos por conceito (None = usa SETTINGS_POR_ESQ / domesticos)
 SETTINGS_POR_CONC = {
+    "antes_depois_gemeo": ["penthouse_urbano", "escritorio_caseiro", "kitchen", "quintal_grill"],
     "prop_ressurreicao": ["laboratorio", "kitchen", "garage_bancada"],
     "flagrante_publico": ["loja_bigbox", "corredor_farmacia", "estacionamento_loja"],
     "local_publico":  ["loja_bigbox", "estacionamento_loja", "corredor_farmacia"],
@@ -205,9 +216,10 @@ LUZ_POR_SETTING = {
 }
 # segundo personagem por conceito (esposa herda etnia da pagina; amigo e livre)
 SEGUNDO_POR_CONC = {
-    "duo_esposa":        "esposa_etnia_da_pagina",
-    "duo_amigo":         "amigo_etnia_livre",
-    "flagrante_publico": "vitima_flagrante",  # + testemunhas desfocadas ao fundo (cena 1)
+    "duo_esposa":         "esposa_etnia_da_pagina",
+    "duo_amigo":          "amigo_etnia_livre",
+    "flagrante_publico":  "vitima_flagrante",   # + testemunhas desfocadas ao fundo (cena 1)
+    "antes_depois_gemeo": "sujeito_transformado",  # o MESMO homem em 2 estados, cut seco
 }
 REG_POR_ESQ = {
     "E1_isca_e_troca": ["conspiratorio", "humor_seco", "urgencia_alarme", "professor_calmo"],
@@ -244,7 +256,13 @@ def gerar_candidato(etnia, rng):
                 concs = [c for c in concs if c != "prop_ressurreicao"]
         if disp not in ("H1_proxy_peito", "H4_soft", "H7_pouring"):
             concs = [c for c in concs if c != "prop_gigante"]
-        conceito = rng.choice(concs)
+        # antes_depois_gemeo exige o molde M6 (o hook E o cut seco) e prop na mao
+        if molde != "M6_antes_depois":
+            concs = [c for c in concs if c != "antes_depois_gemeo"]
+        # pip_broll: narrador pequeno no canto — mao ociosa, sem prop
+        if disp != "nenhum":
+            concs = [c for c in concs if c != "pip_broll"]
+        conceito = rng.choice(concs) if concs else "solo_classico"
 
     settings = SETTINGS_POR_CONC.get(conceito) or SETTINGS_POR_ESQ.get(esq, SETTINGS_DOMESTICOS)
     if etnia == "negro":

@@ -135,10 +135,18 @@ Comando seco seguido de aviso jocoso. O humor abaixa a guarda e a promessa fica 
 6. Mix this tonight. Your neighbors are going to hate me.
 7. Drink this twice a week. Send your kids to grandma's first.
 
-### M6 — ANTES/DEPOIS POSICIONAL ⭐ 3.2K views
-> "You want your [proxy] to go from this to this in just one month."
+### M6 — ANTES/DEPOIS POSICIONAL ⭐⭐ 345K views (o recorde do repertório)
+> "He went from this to this in just a month."
 
 Dois estados do proxy no mesmo quadro. Ver [prop-metáforas](prop-metaforas.md), função 3.
+
+**Zariah, reel 1487684136039129 — 345K views / 7.7K reações.** O maior número que
+medimos. A execução que explica o resultado: **cut seco entre dois frames quase
+idênticos** — mesmo homem, mesma sunga laranja, mesma corrente, mesmo
+enquadramento, mesma pose da narradora. Só duas coisas mudam, e mudam juntas:
+**o corpo (barrigudo → rasgado) e o prop na mão dela (~4x maior, firme)**.
+A promessa numérica fica literal na tela sem ser dita como medida. Detalhe de
+produção completo no `AGENTE_ED_PRISMA_V1.md` (conceito `antes_depois_gemeo`).
 
 1. You want your soldier to go from this to this in just one month.
 2. If yours flops like this banana, stick around. Mine hung lower.
