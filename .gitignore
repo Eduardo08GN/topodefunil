@@ -1,3 +1,5 @@
 node_modules/
 .DS_Store
 .playwright-mcp/
+funil-organico/.ledger-v6.json
+funil-organico/__pycache__/
