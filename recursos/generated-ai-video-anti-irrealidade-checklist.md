@@ -10,6 +10,14 @@ Regras **obrigatórias** ao gerar os prompts Veo 3 dos nossos criativos, derivad
 - **Zero texto crítico na cena gerada:** rótulos de produto, pôsteres, placas, capas de livro, diplomas, telas → tudo entra **no editor (CapCut/Premiere)** como overlay, ou o produto é adicionado em pós.
 - No prompt: descrever embalagens como **lisas/genéricas** ("frasco sem rótulo", "pôster desfocado ao fundo") e listar em **negativo**: `no on-screen text, no product labels, no readable signage, no gibberish text, blank labels`.
 - Frascos/produtos com nosso rótulo real → **compositar em pós**, nunca pedir pro Veo desenhar.
+- **⚠️ LEGENDA AUTOMÁTICA (o caso mais comum e o mais caro):** quando o prompt tem
+  fala entre aspas, o Veo 3 **transcreve o que foi dito e queima a legenda no
+  quadro**, quase sempre embaralhada (visto em produção: `"day zevn on 7 ant sock
+  seffight"`). Além de denunciar a IA, colide com a legenda karaokê que a esteira
+  do Veo Editor aplica depois → **legenda dupla**. Negativo obrigatório no
+  fechamento de **todo TAKE e todo IMAGE**: `no subtitles, no captions, no
+  burned-in text, no on-screen text, no watermark`. O IMAGE também, porque é o
+  frame inicial do I2V — texto que nasce na imagem o vídeo herda e anima.
 
 ### 2. MÃOS + objeto pequeno — evitar o close arriscado
 - Evitar **close extremo de dedos segurando objeto pequeno** (onde a IA funde/alonga dedos).
@@ -33,11 +41,16 @@ Regras **obrigatórias** ao gerar os prompts Veo 3 dos nossos criativos, derivad
 ## Prompt-base: bloco de NEGATIVOS padrão
 Colar em todo prompt Veo 3 nosso:
 ```
-Negativos: on-screen text, product labels, readable signage, gibberish text,
+Negativos: subtitles, captions, burned-in text, on-screen text, watermark,
+product labels, readable signage, gibberish text,
 deformed/extra/fused fingers, elongated limbs, warped face, morphing between cuts,
 floating/beaded liquid, melting or amorphous objects, deformed background people,
 plastic/waxy skin, impossible shadows.
 ```
+
+Nos agentes Organic Wave esse bloco já vem embutido no **fechamento obrigatório**
+de cada IMAGE e de cada TAKE (V4 §"Fechamento obrigatório", V5 Apêndice C) — não
+precisa colar separado.
 
 ## As EXCEÇÕES propositais (manter — mas fazer parecer deliberado)
 O exagero fálico/choque é **feature**, não bug. Pra ler como intencional e não glitch:

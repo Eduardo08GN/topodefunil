@@ -418,9 +418,11 @@ faixa. Ver V4 para o gabarito completo de REF e o exemplo integral.
 
 ---
 
-## ERROS FATAIS (herda os 20 do V4 + 4 novos da V5)
+## ERROS FATAIS (herda os 22 do V4 + 5 novos da V5)
 
-Todos os 20 Erros Fatais do V4 continuam valendo. Novos na V5:
+Todos os 22 Erros Fatais do V4 continuam valendo — inclusive os **21 (fechamento
+sem os negativos de legenda)** e **22 (texto longo de prop)**, que existem porque
+o Veo 3 transcreve a fala e queima a legenda embaralhada no quadro. Novos na V5:
 
 21. **Cena 1 sem dispositivo herói** — a cena 1 SEMPRE tem H1–H10. Hook sem
     dispositivo visual = scroll perdido.
@@ -434,6 +436,17 @@ Todos os 20 Erros Fatais do V4 continuam valendo. Novos na V5:
     becomes bigger", "cut to") em vez de movimento contínuo ("slowly extends and
     elongates upward over several seconds"), ou líquido de mecanismo errado
     (Vicks no vídeo de honey). Use SEMPRE os templates do Apêndice C.
+27. **Dispositivo pedindo texto que o Veo não aguenta** — três dispositivos da
+    biblioteca exigem texto na cena e são os que mais dão gibberish:
+    - **H2** (etiquetas "Day 0" / "Day 7") — mantenha exatamente essas 2 palavras,
+      escritas à mão. Nunca frase na etiqueta.
+    - **H9** (sticky note de carinha triste) — desenho, **não** texto escrito.
+    - **M7** (backdrop de diplomas) — descreva os diplomas como **ilegíveis/
+      desfocados ao fundo** ("framed diplomas, text not legible, softly out of
+      focus"). Diploma legível = gibberish garantido.
+
+    O resto do texto (rótulo de marca, cartaz, placa) entra como **overlay no
+    editor**. Ver "Texto de prop" no V4.
 
 ---
 
@@ -496,6 +509,8 @@ a oferta for um protocolo/coleção.
 - [ ] Dispositivo casado ao mecanismo (tabela de casamento)?
 - [ ] Campo `DISPOSITIVO VISUAL:` em todas as 5 IMAGE e 5 TAKE?
 - [ ] Copy segue não-gráfica; malícia só no visual?
+- [ ] **Todo IMAGE e todo TAKE fecham com os negativos de legenda** (`no subtitles, no captions, no burned-in text, no on-screen text, no watermark`)?
+- [ ] Se H2/H9/M7: o texto da cena está no limite (2 palavras curtas / desenho / diploma ilegível)?
 - [ ] Nenhum dispositivo fura o anti-bloqueio (prop vertical, mão estática, "coating")?
 - [ ] Herda e cumpre TODO o checklist do V4 (REF, personas, iPhone, anti-glitch, fechamentos)?
 - [ ] **PASSO 0 cumprido: perguntei quais variáveis são fixas ANTES de gerar?**
@@ -525,6 +540,11 @@ Princípios que fazem o Veo 3 reproduzir a transformação (todos obrigatórios)
    estática segurando na base (nunca deslizando); o pouring vem de cima.
 7. **IMAGE = frame da fase 1** (líquido começando a tocar o topo do prop; nunca o
    estado "crescido") — o crescimento acontece só no TAKE.
+8. **Negativos de legenda nas duas pontas** — IMAGE e TAKE fecham com `no
+   subtitles, no captions, no burned-in text, no on-screen text, no watermark`.
+   O Veo transcreve a fala entre aspas e queima o texto embaralhado no quadro; o
+   IMAGE é o frame inicial do I2V, então se o texto nascer na imagem o vídeo herda
+   e ainda anima o erro.
 
 Léxico do crescimento (rotacionar): "slowly extends upward", "elongates and
 rises", "stretches taller", "visibly lengthens", "keeps rising until it stands
@@ -544,6 +564,7 @@ sliding down the side, glistening. Her eyes are wide with an excited open-mouth
 expression looking at the camera. Warm uneven window light, small American flag
 magnet on the fridge behind. Slight sensor grain, soft focus, minor 24mm barrel
 distortion, iOS oversharpening artifact, raw iPhone front camera aesthetic.
+No subtitles, no captions, no on-screen text, no watermark.
 Imperfect, authentic, ultra-realistic amateur phone snapshot.
 
 TAKE (animação, ~8s):
@@ -558,7 +579,8 @@ several inches until it stands much taller than at the start of the shot. Her
 eyes go wide and her jaw drops as she watches it rise, then she looks at the
 camera in disbelief and says "[COPY DA CENA]", mouth moving clearly throughout.
 Natural ambient kitchen sounds, the soft drizzle of honey, no music, no SFX, no
-voiceover, ultra-realistic amateur video feel.
+voiceover, no subtitles, no captions, no burned-in text, no on-screen text, no
+watermark, ultra-realistic amateur video feel.
 ```
 
 ### C2 — VICK TRICK / GEODUCK / CASAL (esposa despeja, marido segura)
@@ -575,8 +597,9 @@ the geoduck, the first drops just reaching the tip; the classic blue Vicks jar
 with green lid sits open on the table beside a box of baking soda. Both look at
 the geoduck with wide anticipating eyes. Warm window light, American flag magnet
 on the fridge. Slight sensor grain, soft focus, minor 24mm barrel distortion,
-iOS oversharpening artifact, raw iPhone front camera aesthetic. Imperfect,
-authentic, ultra-realistic amateur phone snapshot.
+iOS oversharpening artifact, raw iPhone front camera aesthetic. No subtitles, no
+captions, no on-screen text, no watermark. Imperfect, authentic,
+ultra-realistic amateur phone snapshot.
 
 TAKE (animação, ~8s):
 Locked-off static phone camera, no camera movement. The man keeps both hands
@@ -589,7 +612,8 @@ it stands much taller than at the start of the shot. The man's eyes go wide and
 he leans back in disbelief; the woman gasps, looks at the camera and says
 "[COPY DA CENA]", mouth moving clearly throughout, exactly twenty fingers total
 visible between the two people, no extra hands, no extra limbs. Natural ambient
-kitchen sounds, no music, no SFX, no voiceover, ultra-realistic amateur video
+kitchen sounds, no music, no SFX, no voiceover, no subtitles, no captions, no
+burned-in text, no on-screen text, no watermark, ultra-realistic amateur video
 feel.
 ```
 
@@ -607,8 +631,9 @@ unflavored gelatin packet with visible "gelatin" text lies on the table. His
 eyebrows are raised in an excited grin toward the camera. [Cozinha americana OU
 rancho: golden hour light, wooden fence and hay behind, small American flag on a
 post]. Slight sensor grain, soft focus, minor 24mm barrel distortion, iOS
-oversharpening artifact, raw iPhone front camera aesthetic. Imperfect,
-authentic, ultra-realistic amateur phone snapshot.
+oversharpening artifact, raw iPhone front camera aesthetic. No subtitles, no
+captions, no on-screen text, no watermark. Imperfect, authentic,
+ultra-realistic amateur phone snapshot.
 
 TAKE (animação, ~8s):
 Locked-off static phone camera, no camera movement. The man keeps his left hand
@@ -621,7 +646,8 @@ motion, elongating upward and visibly lengthening until it rises well above his
 hand, much taller than at the start of the shot. His jaw drops, he shakes his
 head slowly in disbelief, then points at it and says "[COPY DA CENA]", mouth
 moving clearly throughout. Natural outdoor ambient sounds [ou kitchen room
-tone], no music, no SFX, no voiceover, ultra-realistic amateur video feel.
+tone], no music, no SFX, no voiceover, no subtitles, no captions, no burned-in
+text, no on-screen text, no watermark, ultra-realistic amateur video feel.
 ```
 
 ### C4 — QUALQUER MECANISMO / PEPINO (H7) / SOLO
@@ -640,7 +666,8 @@ begins sliding down the side, glistening. Wide-eyed open-mouth excited
 expression into the camera. American home kitchen, warm uneven window light,
 small American flag element in background. Slight sensor grain, soft focus,
 minor 24mm barrel distortion, iOS oversharpening artifact, raw iPhone front
-camera aesthetic. Imperfect, authentic, ultra-realistic amateur phone snapshot.
+camera aesthetic. No subtitles, no captions, no on-screen text, no watermark.
+Imperfect, authentic, ultra-realistic amateur phone snapshot.
 
 TAKE (animação, ~8s):
 Locked-off static phone camera, no camera movement. She keeps her left hand
@@ -653,7 +680,8 @@ taller and rising several inches until it stands much taller than at the start
 of the shot, still held at the base. Her eyes widen, she covers her mouth with
 the pouring hand after setting the container down, then looks at the camera and
 says "[COPY DA CENA]", mouth moving clearly throughout. Natural ambient kitchen
-sounds, no music, no SFX, no voiceover, ultra-realistic amateur video feel.
+sounds, no music, no SFX, no voiceover, no subtitles, no captions, no burned-in
+text, no on-screen text, no watermark, ultra-realistic amateur video feel.
 ```
 
 ### C5 — QUALQUER MECANISMO / PEPINO (H7) / CASAL

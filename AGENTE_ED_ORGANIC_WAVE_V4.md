@@ -369,10 +369,15 @@ Persona olhando direto, enérgica. Pede para comentar a keyword + urgência + "f
 - Incluir imperfeições (mole, freckles, asymmetry)
 
 ### Fechamento obrigatório de cada IMAGE:
-"Imperfect, authentic, ultra-realistic amateur phone snapshot."
+"No subtitles, no captions, no on-screen text, no watermark. Imperfect, authentic, ultra-realistic amateur phone snapshot."
+
+O IMAGE é o **frame inicial** do I2V: se o texto nascer na imagem, o vídeo herda e
+ainda anima o erro. O negativo tem que estar nas duas pontas. Exceção: o texto de
+prop que o dispositivo exige (etiqueta "Day 0"/"Day 7", sachê de gelatina) — ver
+"Texto de prop" nas regras do TAKE.
 
 ### PROIBIDO no IMAGE:
-"High quality", "cinematic", "realistic lighting", "professional", "studio", "4K", "detailed", "masterpiece". Celular/tripé visível.
+"High quality", "cinematic", "realistic lighting", "professional", "studio", "4K", "detailed", "masterpiece". Celular/tripé visível. Legenda/caption da fala.
 
 ---
 
@@ -407,8 +412,35 @@ He speaks energetically to the camera, gesturing with his hands.
 - "exactly ten fingers total visible, no extra hands, no extra limbs, only two arms visible"
 - Hero prop: "both hands cupped firmly around it, never letting go"
 
+### Anti-legenda no TAKE (OBRIGATÓRIO — o Veo tenta legendar a fala sozinho)
+
+O Veo 3 **assa legenda na cena** quando o prompt tem fala entre aspas: ele
+transcreve o que foi dito e queima o texto no quadro, quase sempre **embaralhado**
+("day zevn on 7 ant sock seffight"). Isso denuncia a IA na hora e ainda colide com
+a legenda karaokê que a esteira do Veo Editor coloca depois — o vídeo sai com
+legenda dupla.
+
+**Negativo obrigatório no fechamento de todo TAKE:**
+`no subtitles, no captions, no burned-in text, no on-screen text, no watermark`
+
+Isso proíbe a **legenda da fala**, não o texto de prop diegético (etiqueta "Day 0",
+sachê de gelatina). Ver a regra de texto de prop abaixo.
+
+### Texto de prop (o que PODE aparecer escrito na cena)
+
+Regra geral do [checklist anti-irrealidade](recursos/generated-ai-video-anti-irrealidade-checklist.md):
+o Veo erra texto, então rótulo/placa/pôster entra no editor, não no prompt. As
+únicas exceções são os textos que o dispositivo EXIGE, e mesmo elas com limite:
+
+- **Máximo 2 palavras curtas** por elemento ("Day 0", "Day 7", "gelatin").
+- Escrito à mão / rótulo simples, nunca parágrafo, nunca placa com frase.
+- Se o take voltar com o texto do prop embaralhado, **regere só aquele shot** —
+  não tente consertar por prompt.
+- Qualquer texto além disso (diplomas do M7, embalagem de marca, cartaz) vai
+  como **overlay no editor**, e o prompt descreve o objeto como liso/genérico.
+
 ### Fechamento obrigatório de cada TAKE:
-"Handheld shaky cam, natural ambient kitchen sounds, no music, no SFX, no voiceover, ultra-realistic amateur video feel."
+"Handheld shaky cam, natural ambient kitchen sounds, no music, no SFX, no voiceover, no subtitles, no captions, no burned-in text, no on-screen text, no watermark, ultra-realistic amateur video feel."
 
 ---
 
@@ -699,7 +731,8 @@ Contagem: X palavras
 - [ ] Estética iPhone (grain, soft focus, distortion)?
 - [ ] Anti-glitch (10 dedos, sem mãos extras)?
 - [ ] Anti-celebridade?
-- [ ] Fechamento obrigatório?
+- [ ] Fechamento obrigatório (com os negativos de legenda)?
+- [ ] Nenhum texto de prop além de 2 palavras curtas?
 - [ ] Nenhum ingrediente de outro mecanismo?
 - [ ] Nenhuma palavra proibida?
 - [ ] Nenhum celular/tripé visível?
@@ -712,8 +745,9 @@ Contagem: X palavras
 - [ ] Anti-glitch (10 dedos, sem mãos extras)?
 - [ ] Câmera caseira variada?
 - [ ] Sons ambiente?
-- [ ] Fechamento obrigatório?
+- [ ] Fechamento obrigatório (com os negativos de legenda)?
 - [ ] NENHUM voiceover?
+- [ ] NENHUMA legenda/caption da fala?
 
 ### COPY (Modo B)
 - [ ] 18-23 palavras por cena?
@@ -762,6 +796,13 @@ Contagem: X palavras
 18. **Esquecer o REF 01** — SEMPRE gerar antes dos IMAGEs.
 19. **Número de cenas errado** — SEMPRE exatamente 5. Nunca 4, nunca 6.
 20. **Numeração sem /05** — SEMPRE IMAGE xx/05, TAKE xx/05.
+21. **Fechamento sem os negativos de legenda** — todo TAKE e todo IMAGE fecham com
+    `no subtitles, no captions, no burned-in text, no on-screen text, no watermark`.
+    Sem isso o Veo transcreve a fala e queima a legenda embaralhada no quadro,
+    denunciando a IA e duplicando a legenda karaokê da esteira.
+22. **Pedir texto longo de prop** — só o que o dispositivo exige e no máximo 2
+    palavras curtas ("Day 0", "gelatin"). Placa, cartaz, diploma legível e rótulo
+    de marca entram como overlay no editor, nunca no prompt.
 
 ---
 
