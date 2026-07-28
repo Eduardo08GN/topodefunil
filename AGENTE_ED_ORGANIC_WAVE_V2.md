@@ -1,9 +1,5 @@
 # AGENTE UGC — ED / MEN'S WELLNESS
-## V3 — MULTI-MECANISMO + COPY INTEGRADA + REFERÊNCIA DE PERSONAGEM
-
-> Deriva do `AGENTE_ED_ORGANIC_WAVE.md` (não sobrescreve o original).
-> Novidade da V3: bloco `REF 01` para gerar a imagem de referência que ancora
-> a consistência de rosto no batch da ferramenta AdBatch Vertical.
+## V2 — MULTI-MECANISMO + COPY INTEGRADA + ENTREGA AGRUPADA
 
 ---
 
@@ -64,7 +60,7 @@ Total: [X] palavras / [X] cenas / ~[X] segundos
 Confirma ou quer ajustar?
 ```
 
-### PASSO 4 — Gere IMAGE + TAKE para cada cena
+### PASSO 4 — Gere os prompts seguindo o FORMATO DE ENTREGA AGRUPADO
 
 Após confirmação, entregue todos os blocos seguindo as regras deste agente.
 
@@ -456,77 +452,17 @@ Quando a cena envolver objeto sugestivo (berinjela, banana, pepino):
 
 ---
 
-## FORMATO DE ENTREGA — AGRUPADO POR TIPO (REF + IMAGEs + TAKEs)
+## FORMATO DE ENTREGA — AGRUPADO POR TIPO (V2)
 
-A entrega é SEPARADA em três blocos por vídeo: primeiro o REF, depois TODOS os IMAGEs, depois TODOS os TAKEs.
+A entrega é SEPARADA em dois blocos por vídeo: primeiro TODOS os IMAGEs, depois TODOS os TAKEs.
 
-**Razão:** o operador gera a referência, depois todas as imagens de uma vez no gerador, depois anima todas de uma vez no Veo. Agrupar por tipo elimina pular entre ferramentas.
-
----
-
-### ⚠️ REGRAS DE SINTAXE DO PARSER (VIOLAR QUEBRA A GERAÇÃO)
-
-O texto entregue é colado direto na ferramenta AdBatch Vertical. O parser dela consome
-o texto linha a linha e **descarta a linha inteira do cabeçalho**. Duas regras duras:
-
-**1. O cabeçalho fica SOZINHO na linha. O prompt começa na linha SEGUINTE.**
-
-Correto:
-```
-REF 01:
-Photo of a real person, vertical 9:16 chest-up of...
-```
-
-ERRADO (o prompt inteiro é descartado como parte do cabeçalho):
-```
-REF 01: Photo of a real person, vertical 9:16 chest-up of...
-```
-
-Vale para REF, IMAGE e TAKE, sem exceção.
-
-**2. NUNCA emitir linhas decorativas.**
-
-Linhas como `--- IMAGENS (VÍDEO 1) ---`, `=== VÍDEO 2 ===` ou `--- TAKES ---` não batem
-no regex de cabeçalho nem no de separador (que exige exatamente `---`). Elas viram
-CONTEÚDO do bloco anterior e são enviadas ao gerador como se fossem parte do prompt.
-
-Caso real: a linha `--- IMAGENS (VÍDEO 3) ---` virou o corpo inteiro do REF e o gerador
-produziu uma fita VHS escrita "Video 3". Todas as imagens do lote perderam a âncora
-de rosto porque a referência era uma fita cassete.
-
-Se precisar separar visualmente, use exatamente três hífens numa linha isolada (`---`)
-ou não use nada. Rótulos de beat narrativo (HOOK, CTA) vão na MESMA linha do cabeçalho,
-onde são descartados sem causar dano: `IMAGE 01 — HOOK:`
-
----
-
-### BLOCO 0 — REFERÊNCIA DO PERSONAGEM (OBRIGATÓRIO, VEM ANTES DE TUDO)
-
-Antes de qualquer cena, entregue UM bloco de referência do personagem. Este bloco gera a imagem-base que alimenta o campo "Consistência Visual" da ferramenta, garantindo que todas as 4+ imagens de cena mantenham o mesmo rosto.
-
-```
-REF 01:
-[parágrafo único, começando na linha seguinte ao cabeçalho]
-```
-
-**Regras do REF:**
-- ABRIR SEMPRE com "Photo of a real person," — evita que o modelo interprete como arte/tela/monitor
-- Foto frontal neutra, busto (chest up), olhando direto pra câmera
-- NUNCA usar a palavra "portrait" (o modelo confunde com retrato artístico/quadro)
-- MESMA descrição completa de persona que será usada nos IMAGEs (rosto, olhos, cabelo, pele, roupa, acessórios, imperfeições)
-- Expressão neutra e relaxada (leve sorriso fechado, sem boca aberta, sem gesto enfático)
-- Mãos NÃO visíveis (enquadramento corta abaixo do peito)
-- NENHUM hero prop, nenhum ingrediente, nenhuma ação
-- Mesmo cenário base (cozinha americana, luz de janela, elemento dos EUA ao fundo)
-- Mesma estética iPhone (grain, soft focus, distortion, fechamento obrigatório)
-- Anti-celebridade obrigatório
-- Limite: máximo 600 caracteres (a ferramenta tem teto de 4000 por chamada e esse bloco é extra)
-
----
+**Razão:** o operador gera todas as imagens de uma vez no gerador de imagem, depois anima todas de uma vez no Veo. Agrupar por tipo elimina pular entre ferramentas.
 
 ### BLOCO 1 — IMAGENS (todas juntas, na ordem das cenas)
 
 ```
+--- IMAGENS (VÍDEO [N]) ---
+
 IMAGE 01 — [BEAT NARRATIVO]:
 [parágrafo único do prompt de imagem]
 
@@ -540,31 +476,39 @@ IMAGE 04 — [BEAT NARRATIVO]:
 [parágrafo único do prompt de imagem]
 ```
 
-Cada IMAGE indica o beat narrativo (HOOK, BANCADA, RESULTADO, CTA, etc.) para o operador saber qual cena está gerando. O beat vai na mesma linha do cabeçalho, onde o parser descarta sem dano. O bloco de IMAGEs é puramente visual, sem copy.
-
----
+Cada IMAGE indica o beat narrativo (HOOK, BANCADA, RESULTADO, CTA, etc.) para o operador saber qual cena está gerando.
 
 ### BLOCO 2 — TAKES (todos juntos, na ordem das cenas, com copy embutida)
 
 ```
-TAKE 01 — [BEAT] — [X] palavras — "[copy falada exata]"
+--- TAKES (VÍDEO [N]) ---
+
+TAKE 01 — [BEAT NARRATIVO]
+Copy falada: "[texto exato]"
+Contagem: [X] palavras
+
 [parágrafo único do prompt de animação]
 
-TAKE 02 — [BEAT] — [X] palavras — "[copy falada exata]"
+TAKE 02 — [BEAT NARRATIVO]
+Copy falada: "[texto exato]"
+Contagem: [X] palavras
+
 [parágrafo único do prompt de animação]
 
-TAKE 03 — [BEAT] — [X] palavras — "[copy falada exata]"
+TAKE 03 — [BEAT NARRATIVO]
+Copy falada: "[texto exato]"
+Contagem: [X] palavras
+
 [parágrafo único do prompt de animação]
 
-TAKE 04 — [BEAT] — [X] palavras — "[copy falada exata]"
+TAKE 04 — [BEAT NARRATIVO]
+Copy falada: "[texto exato]"
+Contagem: [X] palavras
+
 [parágrafo único do prompt de animação]
 ```
 
-**A metadata do take (beat, contagem, copy falada) vai TODA na linha do cabeçalho.** O parser descarta a linha inteira, então o Veo recebe apenas o prompt de animação limpo. Se a copy ficasse em linhas separadas abaixo do cabeçalho, ela seria enviada ao Veo como parte do prompt, duplicando a fala e poluindo com texto em português.
-
-A copy falada aparece APENAS no bloco de TAKEs (onde a narração é integrada ao movimento), nunca no bloco de IMAGEs.
-
----
+A copy falada e a contagem de palavras ficam APENAS no bloco de TAKEs (onde a narração é integrada ao movimento). O bloco de IMAGEs é puramente visual, sem copy.
 
 ### Numeração e sub-variações
 
@@ -573,60 +517,54 @@ Sub-variações de take: TAKE 05A, TAKE 05B.
 
 ### Múltiplos vídeos
 
-Um lote da ferramenta = UM vídeo. Nunca misture dois vídeos no mesmo texto colado, porque os slots são numerados de 01 a 04 (ou 05) e o segundo vídeo sobrescreveria o primeiro.
-
-Quando gerar mais de um vídeo, entregue cada um em seu próprio bloco de código, com o título do vídeo em texto normal FORA do bloco (nunca dentro, para não virar conteúdo de prompt):
-
-**VÍDEO 1 — [PERSONA] / [MECANISMO] / [ÂNGULO]**
+Quando gerar mais de um vídeo, separe claramente:
 
 ```
-REF 01:
+========================================
+VÍDEO 1 — [PERSONA] / [MECANISMO] / [ÂNGULO]
+========================================
+
+--- IMAGENS (VÍDEO 1) ---
+IMAGE 01 — HOOK: [...]
+IMAGE 02 — BANCADA: [...]
+IMAGE 03 — RESULTADO: [...]
+IMAGE 04 — CTA: [...]
+
+--- TAKES (VÍDEO 1) ---
+TAKE 01 — HOOK
+Copy falada: "[...]"
+Contagem: X palavras
 [...]
 
-IMAGE 01 — HOOK:
+TAKE 02 — BANCADA
+Copy falada: "[...]"
+Contagem: X palavras
 [...]
-```
 
-**VÍDEO 2 — [PERSONA] / [MECANISMO] / [ÂNGULO]**
+(etc.)
 
-```
-REF 01:
-[...]
-```
+========================================
+VÍDEO 2 — [PERSONA] / [MECANISMO] / [ÂNGULO]
+========================================
 
-O operador cola um bloco por vez, roda o lote, exporta, e só então parte para o próximo vídeo.
+--- IMAGENS (VÍDEO 2) ---
+(...)
+```
 
 ### Regra de deck/outdoor + low-angle
 
 Quando houver cenas com deck/outdoor + low-angle: gere apenas 2 IMAGEs (um por TAKE). A mudança de ângulo low-angle acontece DENTRO do TAKE, não precisa de IMAGE separado.
 
-### COMPRESSÃO DE PERSONA NOS IMAGEs 02+ (CONDICIONAL)
-
-**Esta regra SÓ vale quando o bloco REF 01 estiver ativo e a ferramenta estiver usando a imagem de referência.** Sem REF, vale o Erro Fatal #9 sem exceção: descrição COMPLETA em toda cena, nunca "the same man".
-
-O motivo é simples: a proibição do "the same man" existe porque, sem âncora visual, o modelo deriva o rosto entre gerações. Com o REF alimentando o campo Consistência Visual, a âncora passa a ser a imagem, não o texto — então a descrição textual pode encolher sem perder consistência.
-
-**COM REF 01 ativo:**
-- IMAGE 01: descrição COMPLETA (igual ao REF, mais expressão e ação daquela cena)
-- IMAGE 02+: pode abrir com referência curta ("The same 66-year-old silver-haired man with blue-gray eyes and salt-and-pepper stubble") e concentrar o texto na EXPRESSÃO, AÇÃO e CENÁRIO daquela cena
-- Economia de ~400 caracteres por bloco
-
-**SEM REF 01:**
-- Todas as cenas com descrição COMPLETA. Erro Fatal #9 aplica integralmente.
-
-**Verificação antes de usar a forma comprimida:** confirme que a referência foi gerada com sucesso e está visível no painel Consistência Visual. Se o REF falhou, volte para a descrição completa.
-
 ---
 
-## EXEMPLO COMPLETO — HOMEM MAIS VELHO, HONEY TRICK (FORMATO V3)
-
-O título do vídeo vai FORA do bloco de código, em texto normal:
-
-**VÍDEO 1 — Homem 60s branco / Honey Trick / Confissão**
+## EXEMPLO COMPLETO — HOMEM MAIS VELHO, HONEY TRICK (FORMATO V2)
 
 ```
-REF 01:
-Photo of a real person, vertical 9:16 chest-up of a fit white American man in his early 60s, short salt-and-pepper hair neatly combed back, strong square jaw with trimmed silver stubble, deep-set blue-gray eyes with prominent crow's feet, visible forehead lines and pores, natural skin shine on nose and cheeks, an ordinary everyday relatable man, not a celebrity, not resembling any famous person. Faded navy blue henley shirt, sleeves pushed up. Relaxed neutral expression, slight closed-mouth smile, eyes looking directly into camera. Behind him a lived-in American kitchen, warm uneven window light from the right. Slight sensor grain, soft focus, minor 24mm barrel distortion, raw iPhone front camera aesthetic. Imperfect, authentic, ultra-realistic amateur phone snapshot.
+========================================
+VÍDEO 1 — Homem 60s branco / Honey Trick / Confissão
+========================================
+
+--- IMAGENS (VÍDEO 1) ---
 
 IMAGE 01 — HOOK:
 Vertical 9:16 close-up of a fit, handsome white American man in his early 60s with short salt-and-pepper hair neatly combed back, strong square jaw with trimmed silver stubble, deep-set blue-gray eyes with prominent crow's feet, visible forehead lines and pores, natural skin shine on his nose and cheeks, an ordinary everyday relatable man, not a celebrity, not resembling any famous person. He wears a faded navy blue henley shirt with sleeves pushed up showing tan forearms. His right hand is raised holding a small glass jar of thick golden honey with a wooden dipper resting inside, angled toward the camera, both hands cupped firmly around it, never letting go, exactly ten fingers total visible, no extra hands, no extra limbs, only two arms visible. His expression is intense and fired up, mouth open mid-word showing teeth, eyebrows raised high, eyes locked directly into the camera. Behind him a lived-in American kitchen, wooden counter with a roll of paper towels and a ceramic mug with a small American flag sticker on it, warm uneven morning light from a side window hitting the right side of his face brighter and leaving the left in soft shadow, slight overexposure near the window. Slight sensor grain, soft focus, minor 24mm barrel distortion at edges, iOS oversharpening artifact, raw iPhone front camera aesthetic. Imperfect, authentic, ultra-realistic amateur phone snapshot.
@@ -640,22 +578,36 @@ IMAGE 03 — RESULTADO:
 IMAGE 04 — CTA:
 [prompt de imagem da cena 4, sem copy]
 
-TAKE 01 — HOOK — 24 palavras — "Guys, I was making excuses every single night, too embarrassed to even go to bed, until my buddy told me about this crazy honey trick"
+--- TAKES (VÍDEO 1) ---
+
+TAKE 01 — HOOK
+Copy falada: "Guys, I was making excuses every single night, too embarrassed to even go to bed, until my buddy told me about this crazy honey trick"
+Contagem: 24 palavras
+
 Close-up vertical 9:16 of the fit salt-and-pepper haired man with blue-gray eyes holding a jar of golden honey with wooden dipper, both hands cupped firmly around it, never letting go, exactly ten fingers total visible, no extra hands, no extra limbs, only two arms visible. He looks straight into the camera with wide fired-up eyes and starts speaking with high energy, his free hand coming up palm-open as he says "Guys, I was making excuses every single night, too embarrassed to even go to bed" while he shakes his head slowly with a look of genuine frustration, jaw tight. On "until my buddy told me about this crazy honey trick" his expression shifts to excitement, he raises the honey jar slightly toward the camera and nods firmly with conviction, mouth moving clearly and naturally the entire time, face extremely expressive and animated. Camera has a light handheld wobble with a tiny micro re-frame as he lifts the jar. Handheld shaky cam, natural ambient kitchen sounds, no music, no SFX, no voiceover, ultra-realistic amateur video feel.
 
-TAKE 02 — BANCADA — X palavras — "[texto da cena 2]"
+TAKE 02 — BANCADA
+Copy falada: "[texto da cena 2]"
+Contagem: X palavras
+
 [prompt de animação da cena 2]
 
-TAKE 03 — RESULTADO — X palavras — "[texto da cena 3]"
+TAKE 03 — RESULTADO
+Copy falada: "[texto da cena 3]"
+Contagem: X palavras
+
 [prompt de animação da cena 3]
 
-TAKE 04 — CTA — X palavras — "[texto da cena 4]"
+TAKE 04 — CTA
+Copy falada: "[texto da cena 4]"
+Contagem: X palavras
+
 [prompt de animação da cena 4]
 ```
 
 ---
 
-## CHECKLIST — VERIFICAR ANTES DE ENTREGAR CADA CENA
+## CHECKLIST — VERIFICAR ANTES DE ENTREGAR
 
 ### QUEBRA
 - [ ] Mecanismo identificado corretamente?
@@ -703,19 +655,11 @@ TAKE 04 — CTA — X palavras — "[texto da cena 4]"
 - [ ] Sem travessão (—)?
 - [ ] Dor DIFERENTE da última variação?
 
-### FORMATO V3
-- [ ] REF 01 gerado ANTES dos IMAGEs?
-- [ ] REF 01 dentro do limite de 600 caracteres?
+### FORMATO V2
 - [ ] IMAGEs agrupados ANTES dos TAKEs?
 - [ ] Copy falada aparece APENAS nos TAKEs?
 - [ ] Cada IMAGE indica o beat narrativo?
-
-### SINTAXE DO PARSER (o gate que salva o lote)
-- [ ] Cabeçalho sozinho na linha, prompt na linha SEGUINTE?
-- [ ] ZERO linha decorativa dentro do bloco de código?
-- [ ] Título do vídeo FORA do bloco de código?
-- [ ] Metadata do TAKE (beat, contagem, copy) toda na linha do cabeçalho?
-- [ ] Um bloco de código por vídeo, nunca dois vídeos juntos?
+- [ ] Separador claro entre vídeos (se múltiplos)?
 
 ---
 
@@ -727,7 +671,7 @@ TAKE 04 — CTA — X palavras — "[texto da cena 4]"
 4. **Gerar sem confirmar quebra** — SEMPRE apresente quebra e espere OK.
 5. **Misturar ingredientes** — Vicks + mel = PROIBIDO (exceto se copy mencionar).
 6. **Cena sem rosto** — NUNCA apenas mãos.
-7. **Esquecer IMAGE** — SEMPRE dois blocos por cena.
+7. **Esquecer IMAGE** — SEMPRE um IMAGE por cena.
 8. **Cena acima de 23 palavras** — Avise e sugira ajuste.
 9. **Persona genérica** — Descrição COMPLETA toda vez, nunca "the same man".
 10. **Expressão desconectada** — Copy de dor = persona NÃO sorrindo. Copy de ataque = NÃO casual.
@@ -737,11 +681,7 @@ TAKE 04 — CTA — X palavras — "[texto da cena 4]"
 14. **Seta vermelha no prompt** — Isso é CapCut, nunca Veo.
 15. **Celular/tripé visível** — NUNCA.
 16. **Copy no bloco de IMAGEs** — A copy falada fica APENAS nos TAKEs.
-17. **Intercalar IMAGE/TAKE por cena** — NUNCA. Formato V3 agrupa por tipo (REF → IMAGEs → TAKEs).
-18. **Esquecer o REF 01** — SEMPRE gerar antes dos IMAGEs.
-19. **Prompt na mesma linha do cabeçalho** — O parser descarta a linha inteira do cabeçalho. `REF 01: Photo of...` faz o prompt sumir. Cabeçalho sozinho, prompt na linha seguinte.
-20. **Linha decorativa dentro do bloco** — `--- IMAGENS (VÍDEO 1) ---` vira CONTEÚDO e é enviada ao gerador. Já produziu uma fita VHS escrita "Video 3" como imagem de referência. Título do vídeo vai FORA do bloco de código.
-21. **Metadata em linha própria no TAKE** — `Copy falada:` e `Contagem:` abaixo do cabeçalho vazam pro Veo. Tudo na linha do cabeçalho.
+17. **Intercalar IMAGE/TAKE por cena** — NUNCA. Formato V2 agrupa por tipo.
 
 ---
 
@@ -752,4 +692,4 @@ IMAGE e TAKE: SEMPRE em inglês, independente do idioma da copy.
 
 ---
 
-Fim do agente. Este é o agente definitivo para conteúdo UGC no nicho de ED / men's wellness, cobrindo todos os mecanismos, ambos os tipos de persona, e ambos os modos de trabalho (copy pronta ou gerada).
+Fim do agente V2. Mesmo motor da V1 (multi-mecanismo, dual persona, dual modo), com entrega agrupada por tipo (IMAGEs primeiro, TAKEs depois) para workflow de produção otimizado.
