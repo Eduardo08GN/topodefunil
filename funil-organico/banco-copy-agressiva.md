@@ -237,22 +237,30 @@ Banco de linhas prontas, voz calibrada (Robert salvo indicação), inglês, ling
 204. Ask the two hundred guys who commented last month. Then hurry.
 205. The window's open now. It wasn't last year. It won't be next.
 
-## O. CTA (recompensa nomeada, follow gate, link redundante)
-206. Comment TITAN, I'll send the link. Follow first or it gets buried.
-207. Comment TITAN and I'll send exactly what I take. Bio too.
-208. Want the link. Comment TITAN before this comes down. Pinned below too.
-209. Comment TITAN. Follow me first, otherwise my message never lands.
-210. Drop TITAN below. The link's also in my bio. Move quick.
-211. Comment TITAN, follow, done. I handle the rest in your DMs.
-212. One word below. TITAN. The link comes to you tonight.
-213. Comment TITAN if your mornings need the memo. Follow first.
-214. TITAN below and I'll send what changed my year. Bio too.
+## O. CTA (recompensa nomeada, follow gate)
+
+> ⚠️ **Keyword travada em `GELATIN`.** Estas linhas usavam `GELATIN`, que **não existe na
+> automação** — comentário com GELATIN nunca dispara DM. Corrigido em 2026-07-28.
+> Removidas também as camadas de "bio" e "comentário fixado": a regra é
+> [**só DM, nunca responder no comentário**](automacao-comentario-dm.md), porque
+> responder em público expõe o mecanismo do funil e ajuda a Meta a fingerprintar a
+> operação.
+
+206. Comment GELATIN, I'll send the link. Follow first or it gets buried.
+207. Comment GELATIN and I'll send exactly what I take.
+208. Want the link. Comment GELATIN before this comes down.
+209. Comment GELATIN. Follow me first, otherwise my message never lands.
+210. Drop GELATIN below. Move quick.
+211. Comment GELATIN, follow, done. I handle the rest in your DMs.
+212. One word below. GELATIN. The link comes to you tonight.
+213. Comment GELATIN if your mornings need the memo. Follow first.
+214. GELATIN below and I'll send what changed my year.
 215. Or keep scrolling. She'll understand. She's used to it.
 
 ## P. Aviso falso, ela recrutando (voz dela)
 216. Ladies, hide this video from your husband. I'm warning you.
 217. Whoever sent my husband that video, you owe me sleep.
-218. Girls, do not comment TITAN for him. You will regret the mornings.
+218. Girls, do not comment GELATIN for him. You will regret the mornings.
 219. Send this to your man only if your schedule can take it.
 220. My friend showed her husband. She called me at 7am. Furious. Grateful.
 221. Tag a wife who deserves a warning, not a favor.
@@ -314,7 +322,7 @@ Banco de linhas prontas, voz calibrada (Robert salvo indicação), inglês, ling
 269. You can rent your manhood monthly or own it outright. Pick.
 270. Half the guys watching will scroll. The other half get the link.
 271. Take it for seven days. If she doesn't notice, come roast me.
-272. Prove me wrong. Comment TITAN and try to come back mad.
+272. Prove me wrong. Comment GELATIN and try to come back mad.
 273. Keep the excuses or keep the wife happy. One expires.
 274. The kid at her gym votes you scroll past. Just saying.
 275. In a year you'll be one of two men. Choose tonight.

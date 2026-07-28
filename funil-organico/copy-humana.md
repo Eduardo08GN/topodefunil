@@ -14,7 +14,7 @@
 
 **v1 (bingo):** *"That's the sound my wife made last Tuesday. First time in eleven years. […] Here's what nobody had the guts to tell me […] flips the signal back on […] Not back to normal. Past it. […] Picture her face."* → cada linha um clichê de copy; drama sem contexto; narrador que claramente vende; zero vergonha real.
 
-**v2 (humana):** *"Last Tuesday… my wife looked at me like she hadn't looked at me in years. And honestly? My first feeling wasn't pride. It was relief. For a long time I'd stay up late on my phone… just waiting for her to fall asleep first. She never said a word about it. That was the worst part. A buddy of mine told me it comes down to blood flow […] I don't know. I felt stupid putting drops in my coffee. Three weeks later — she's the one going to bed early now. Look, I don't post stuff like this. It's embarrassing, honestly. But if you're the guy scrolling at 1am… comment TITAN. I'll send you what I take. That's it."*
+**v2 (humana):** *"Last Tuesday… my wife looked at me like she hadn't looked at me in years. And honestly? My first feeling wasn't pride. It was relief. For a long time I'd stay up late on my phone… just waiting for her to fall asleep first. She never said a word about it. That was the worst part. A buddy of mine told me it comes down to blood flow […] I don't know. I felt stupid putting drops in my coffee. Three weeks later — she's the one going to bed early now. Look, I don't post stuff like this. It's embarrassing, honestly. But if you're the guy scrolling at 1am… comment GELATIN. I'll send you what I take. That's it."*
 
 ## As 8 leis da copy humana
 
@@ -25,7 +25,7 @@
 5. **Vulnerabilidade real — expor o que ele preferia esconder.** Não "informar" a dor; confessá-la: *"my first feeling wasn't pride — it was relief"* · ficar no celular esperando ela dormir · fingir cansaço. O detalhe vergonhoso e específico é o que faz o espectador pensar "esse cara sou eu".
 6. **Mecanismo com hedge e fonte emprestada.** Nunca palestra científica na boca de quem viveu ("your body cuts off the signal…" = "chegou a parte inventada"). Sempre: *"a buddy told me it's blood flow… I don't know."* A dúvida dele vacina a descrença do espectador. (O expert-persona pode explicar mais — mas com linguagem de gente, não de bula.)
 7. **Filme, não PowerPoint.** Todo conceito vira cena concreta: ❌ "seu corpo produz menos" → ✅ "as gotas no café", "o celular à 1h", "ela indo dormir cedo". Se não dá pra FILMAR a frase, reescreve.
-8. **CTA desarmado.** Sem urgência fabricada, sem promessa empilhada: *"comment TITAN. I'll send you what I take. That's it."* O "That's it." final desarma tudo. (O FOMO real pode existir — mas na MECÂNICA do funil, não na voz do narrador.)
+8. **CTA desarmado.** Sem urgência fabricada, sem promessa empilhada: *"comment GELATIN. I'll send you what I take. That's it."* O "That's it." final desarma tudo. (O FOMO real pode existir — mas na MECÂNICA do funil, não na voz do narrador.)
 
 ## O gate (rodar em TODA copy antes de aprovar)
 

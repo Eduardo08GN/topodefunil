@@ -35,7 +35,7 @@ Benson é obcecado por **ritmo de fala**. Direção de áudio pro Veo/edição:
 
 ## 7. O fechamento Benson: future pacing + comando
 A VSL fecha fazendo o lead **viver o futuro** antes do botão. No reel: 1 frase de future projection ([Doutrina, mandamento 4](doutrina-criativa-agressiva.md)) + comando único + razão pra AGORA:
-> "Sexta que vem, quando ela precisar de um minuto pra recuperar o fôlego — você vai lembrar deste vídeo. Comment TITAN. Antes que eu tire do ar."
+> "Sexta que vem, quando ela precisar de um minuto pra recuperar o fôlego — você vai lembrar deste vídeo. Comment GELATIN. Antes que eu tire do ar."
 
 ## Conexões
 - [Ataque 1: Neuro-Hooking](ataque-1-neuro-hooking.md) · [Ataque 3: Georgi/RMBC](ataque-3-georgi-research.md) · [Ataque 4: Roteiro-Máquina](ataque-4-roteiro-maquina.md)

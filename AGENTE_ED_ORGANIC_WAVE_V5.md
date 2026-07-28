@@ -1,6 +1,22 @@
 # AGENTE UGC — ED / MEN'S WELLNESS
 ## V5 — HOOK VISUAL + BIBLIOTECA DE DISPOSITIVOS
 
+> 🚫 **NÃO É MAIS O AGENTE DE PRODUÇÃO.** O agente vivo é o
+> [`AGENTE_ED_ORGANIC_WAVE_V6.md`](AGENTE_ED_ORGANIC_WAVE_V6.md). Este arquivo
+> sobrevive **só** pela biblioteca de dispositivos (H1-H10 / M1-M7) e pelo Apêndice C.
+> Quatro coisas aqui dentro estão **ativamente erradas** — não as execute:
+>
+> | O que este arquivo diz | Por que não |
+> |---|---|
+> | **H9** (proxy na virilha) é "de maior impacto" | 🔴 **BANIDO** — bloqueia na política do Veo. IMG recusada, Ray, 2026-07-27 |
+> | **H4** com `absurdly oversized` | 🔴 **BLOQUEIA** — cena recusada, Joe, 2026-07-27. Use `large`, e fala sem "perform" |
+> | CTA pode ser `book` / `yes` | ⛔ **proibidos** — quebram a automação Comentário→DM. Travado em `GELATIN`. Já custou um lote |
+> | "PERGUNTE quais variáveis são fixas" + `randomizador-v5.py` | ⛔ obsoleto — o v6 sorteia por página com ledger e **não pergunta nada**. O v5 ainda emite `book`/`yes` |
+>
+> Os templates do Apêndice C também são do formato **antigo de TAKE** (sem
+> `Maintain the subject from the first frame`, sem rótulos `Dialogue:`/`Audio:`, sem
+> dois-pontos na fala). Corrija-os pelo [V4](AGENTE_ED_ORGANIC_WAVE_V4.md) ao usar.
+
 > Deriva do `AGENTE_ED_ORGANIC_WAVE_V4.md`. **NÃO substitui o V4** — é um agente
 > novo, que coexiste. Use o V4 quando quiser a saída padrão. Use o **V5** quando
 > o objetivo for **hook visual mais forte** (parar o scroll nos primeiros 2s) com
@@ -542,9 +558,9 @@ Princípios que fazem o Veo 3 reproduzir a transformação (todos obrigatórios)
    estado "crescido") — o crescimento acontece só no TAKE.
 8. **Negativos de legenda nas duas pontas** — IMAGE e TAKE fecham com `no
    subtitles, no captions, no burned-in text, no on-screen text, no watermark`.
-   O Veo transcreve a fala entre aspas e queima o texto embaralhado no quadro; o
-   IMAGE é o frame inicial do I2V, então se o texto nascer na imagem o vídeo herda
-   e ainda anima o erro.
+   O Veo transcreve a fala e queima o texto embaralhado no quadro; o IMAGE é o
+   frame inicial do I2V, então se o texto nascer na imagem o vídeo herda e ainda
+   anima o erro. (As aspas da fala **ficam** — elas alimentam o lip-sync. Ver V4.)
 
 Léxico do crescimento (rotacionar): "slowly extends upward", "elongates and
 rises", "stretches taller", "visibly lengthens", "keeps rising until it stands

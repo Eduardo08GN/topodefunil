@@ -18,7 +18,7 @@ A visão de mercado de quem já fatura no funil orgânico Nutra US: quais oferta
 
 ## A oferta e a VSL (com o alerta de compliance)
 
-- Produto de afiliado (MaxWeb, ClickBank). O keyword de comentário ecoa a oferta (ex: TITAN).
+- Produto de afiliado (MaxWeb, ClickBank). O keyword de comentário ecoa a oferta (ex: GELATIN).
 - **Prática de mercado deles: usar a VSL "black" ALTERADA, não a VSL do produtor.** Existem redes/afiliações que entregam VSLs black próprias na estrutura delas.
 - ⚠️ **Onde isso cruza a nossa linha vermelha:** VSL black alterada normalmente carrega claim fabricado e prova inventada. O nosso repo já define isso como o limite que não atravessamos (ver [persuasão x manipulação](../principios/persuasao-vs-manipulacao.md) e a seção "onde são fracas" da [dissecação de VSLs](../swipes/vsl-suplemento-masculino.md)): claim de cura, credencial falsa e testemunho fabricado matam a página (ban, FTC) e são fraude. Documentamos a prática do mercado, mas a nossa vantagem estrutural é justamente mecanismo real mais prova real. Modelar a estrutura e a agressividade da VSL black, nunca os claims inventados.
 

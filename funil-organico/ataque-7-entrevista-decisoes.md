@@ -36,7 +36,7 @@ A fábrica pede ~10-15h/semana no início (research, aprovação de briefs, gera
 
 ## 9. Nomes/branding das páginas + palavras-gatilho da casa
 Página precisa de nome que soe "canal de dicas", não marca ("Prime Male Secrets" > "TitanShop").
-**→ Recomendação:** 3 candidatos por página pra você escolher (gero na próxima sessão); trigger words da casa **ecoando o mecanismo/oferta** (ex.: TITAN, FLOW, SWITCH) — 1 por criativo, rastreável no tracker.
+**→ Recomendação:** 3 candidatos por página pra você escolher (gero na próxima sessão); trigger words da casa **ecoando o mecanismo/oferta** (ex.: GELATIN, FLOW, SWITCH) — 1 por criativo, rastreável no tracker.
 
 ## 10. Critério de validação (quando o funil "provou"?)
 Sem meta, a operação vira post infinito sem veredito.

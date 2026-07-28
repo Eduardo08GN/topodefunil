@@ -133,18 +133,36 @@ O REF trava **um** rosto. O segundo personagem renasce do texto a cada cena e mo
 
 ---
 
-## HERDADO DO V4 SEM ALTERAÇÃO
+## HERDADO DO V4 — ABRA O V4, NÃO CONFIE NESTA LISTA
 
-Tudo isto continua valendo integralmente — não repita aqui, consulte o V4:
+> ⛔ **Esta seção é um índice, não uma cópia.** Nenhuma regra mecânica é reproduzida
+> aqui de propósito: quando o V4 mudava, a cópia daqui ficava velha e o agente executava
+> a versão errada. **Aconteceu em 2026-07-28** — o V4 mudou o formato do TAKE e este
+> arquivo continuou mandando fazer o formato antigo. Toda regra abaixo vive **só** no
+> [`AGENTE_ED_ORGANIC_WAVE_V4.md`](AGENTE_ED_ORGANIC_WAVE_V4.md). Leia lá.
 
-- 5 cenas fixas, numeração x/05, entrega agrupada (REF → 5 IMAGE → 5 TAKE)
-- Estética iPhone front camera, luz de janela, elemento US no cenário
-- Descrição completa de persona em cada IMAGE, anti-celebridade
-- **Fechamento obrigatório do IMAGE:** `No subtitles, no captions, no on-screen text, no watermark. Imperfect, authentic, ultra-realistic amateur phone snapshot.`
-- **Fechamento obrigatório do TAKE:** `Handheld shaky cam, natural ambient [X] sounds, no music, no SFX, no voiceover, no subtitles, no captions, no burned-in text, no on-screen text, no watermark, ultra-realistic amateur video feel.`
-- Texto de prop: máximo 2 palavras curtas, escrito à mão
-- Anti-bloqueio: prop na vertical, mão estática, "coating" nunca "rubbing/stroking"
-- Regras de copy: 18-23 palavras/cena, vocativo por persona, mecanismo por extenso, nunca revelar a receita completa
+| Assunto | Onde no V4 |
+|---|---|
+| Formato de entrega (REF → 5 IMAGE → 5 TAKE, x/05) | *Formato de entrega* |
+| Estética iPhone, luz de janela, elemento US | *Regras do IMAGE* |
+| Descrição de persona, anti-celebridade | *Regras do IMAGE* |
+| **TAKE é I2V: não re-descreva a persona** ⭐ | *O TAKE é I2V* |
+| Sintaxe da fala (verbo + dois-pontos + aspas) | *Verbo + dois-pontos + aspas* |
+| Rótulos `Dialogue:` / `Audio:` | *Rótulos de áudio e fala* |
+| Anti-glitch, amarração do prop, mãos | *Anti-glitch* / *Amarração do prop* |
+| Fechamentos obrigatórios de IMAGE e TAKE | *Regras do IMAGE* / *Regras do TAKE* |
+| Texto de prop, anti-bloqueio, regras de copy | *Texto de prop* / *Anti-bloqueio* |
+
+### A mudança de 2026-07-28 que você precisa saber antes de escrever
+
+O TAKE virou **enxuto**. Ele é image-to-video — a persona já está no frame inicial.
+Re-descrever rosto, roupa, idade e cenário no TAKE estourava as 150 palavras, fazia o
+Veo descartar parte do prompt (inclusive o anti-glitch) e ainda convidava o modelo a
+re-gerar o rosto. Era causa do morphing, da terceira mão e do prop sumindo.
+
+TAKE agora abre com `Maintain the subject from the first frame.` e descreve **só**
+movimento, câmera, luz, fala e áudio. Alvo: **80-150 palavras**. A descrição completa
+de persona continua obrigatória **no IMAGE**, que é text-to-image.
 
 E a biblioteca de dispositivos H1-H10 / M1-M7 do **V5**, Apêndice B e C (templates de
 pouring + crescimento).
@@ -158,6 +176,8 @@ pouring + crescimento).
 30. **Gerar sem spec do randomizador**, ou trocar um eixo por conta própria.
 31. **CTA diferente de GELATIN.** A automação Comentário→DM só dispara nas variantes de gelatin. Já custou um lote inteiro.
 32. **Duas ações de mão na mesma cena.** Ver orçamento de mãos.
+33. **Re-descrever a persona no TAKE.** O TAKE é I2V — rosto, roupa, idade e cenário já estão no frame inicial. Repetir estoura o limite de palavras, faz o Veo descartar o anti-glitch e convida o modelo a re-gerar o rosto.
+34. **Copiar regra mecânica do V4 para dentro deste arquivo.** Aponte, nunca duplique. Cópia envelhece e passa a mentir.
 
 ---
 
@@ -168,6 +188,8 @@ pouring + crescimento).
 - [ ] O modificador de autoridade foi colado (se `mod != nenhum`)?
 - [ ] As cenas 2-5 vieram da espinha **copiadas**, não reescritas?
 - [ ] O REF é o da página, reaproveitado — não gerei persona nova?
+- [ ] Meus TAKEs abrem com `Maintain the subject from the first frame` e **não** re-descrevem persona/cenário, ficando em 80-150 palavras?
+- [ ] A fala está como `says: "..."` (verbo + dois-pontos + aspas) e o áudio em linha `Audio:`?
 - [ ] Toda cena tem no máximo uma ação de mão, com a mão ociosa declarada parada?
 - [ ] Objetos ausentes negados explicitamente no IMAGE e no TAKE?
 - [ ] Segunda pessoa ausente ou sem ação, com descrição repetida palavra por palavra?

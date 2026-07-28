@@ -11,16 +11,34 @@ Registro de todas as bridge pages do funil orgânico ED, hospedadas no VPS via C
 - **Build:** Dockerfile em `/bridge-pages/bp1` (nginx:alpine servindo `index.html` + `hero.png` em `/bp1/`)
 - **Página servida em:** `<dominio>/bp1/`
 
-## Link de destino (oferta)
+## Link de destino (oferta) — ⚠️ NÃO É ÚNICO, TEM SPLIT
 
-O clique na imagem da bridge leva para:
+⛔ **Não existe um destino global.** Cada bridge aponta para a VSL da **sua** página. Uma
+versão anterior deste documento declarava Horsewood para todas — isso manda a comissão
+do Chuck e do Matt para o afiliado errado. Foi esse erro que motivou deletar o
+redirector central (ver [ARQUITETURA-OPERACAO](ARQUITETURA-OPERACAO.md)).
+
+| Página | Domínio da bridge | VSL de destino | `aff_id` |
+|---|---|---|---|
+| Joe | `manresethub.pro` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Marcus | `vitalresetlab.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Ray | `primalvitalityhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Chuck | `allmensnatural.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
+| Matt | `steadystrengthhub.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
 
 ```
-https://horsewood.us/VHG2-L1ML3/?aff_id=45158&sub_id=<pagina>
+https://<vsl-da-pagina>/?aff_id=<aff-da-pagina>&subid=<pagina>
 ```
 
-- `aff_id=45158` → comissão
-- `sub_id` → atribuição por página (lido de `?p=<slug>` na URL da bridge; default `direct`)
+- `aff_id` → comissão. **45158 = Horsewood · 2470 = Ragnaroak.** Conferir na tabela.
+- `subid` → atribuição por página (lido de `?p=<slug>` na URL da bridge; default `direct`)
+
+> ⚠️ **Na saída é `subid`, nunca `sub_id`.** O BuyGoods documenta `&subid=`; com
+> `sub_id` a venda entra **sem atribuição** e o notificador não sabe qual página vendeu.
+> Na *entrada* a bridge aceita `?p=` (padrão) e tolera `subid`/`sub_id` como legado.
+>
+> ✅ **Verificado em produção em 2026-07-28** (`curl` nos 3 domínios): o split e o
+> `&subid=` estão corretos no ar. O erro era **deste documento**, não do deploy.
 
 ## Domínios & Apps
 

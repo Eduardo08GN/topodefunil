@@ -1,4 +1,17 @@
-# Arquitetura do Funil Orgânico (Facebook + IA + MaxWeb)
+# Arquitetura do Funil Orgânico (Facebook + IA)
+
+> ⚠️ **DOCUMENTO DE PLANEJAMENTO — os fatos operacionais aqui estão superados.**
+> A tese (algoritmo é o único distribuidor, hook/retenção no centro) segue válida e é
+> por isso que ele continua no repo. **A mecânica não:**
+>
+> | Aqui dizia | A realidade hoje |
+> |---|---|
+> | rede MaxWeb, produto TBD | **BuyGoods** — Horsewood (aff 45158) e Ragnaroak (aff 2470) |
+> | link em 3 camadas: bio + comentário + DM | **só DM.** Link público expõe o funil e ajuda a Meta a fingerprintar a operação |
+> | DM entrega link de afiliado | DM entrega a **bridge page**, nunca a VSL direta |
+>
+> **Fonte da verdade operacional:** [`ARQUITETURA-OPERACAO.md`](ARQUITETURA-OPERACAO.md)
+> · regra do canal: [`automacao-comentario-dm.md`](automacao-comentario-dm.md).
 
 - **Status:** 🟡 em construção
 - **Serve para:** mapear o funil ponta-a-ponta — da página-persona até a comissão de afiliado — pra qualquer criativo/produto novo encaixar sem reinventar a engenharia

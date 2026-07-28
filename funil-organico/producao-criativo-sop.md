@@ -1,6 +1,12 @@
 # SOP — Produção do Criativo (da oferta ao prompt Veo 3)
 
-O **passo-a-passo operacional** que costura toda a base: dada uma oferta MaxWeb, produzir o prompt Veo 3 e o criativo do funil. É o "manual de operação" — cada passo aponta pro doc que o embasa.
+> ⚠️ **SOP SUPERSEDIDO PARA PRODUÇÃO DE CRIATIVO.** O passo-a-passo vivo hoje é o
+> [`WORKFLOW.md`](../WORKFLOW.md) (randomizador v6 → Agente V6 → AdBatch → Veo Editor).
+> Este documento continua útil como raciocínio de pesquisa, mas **não o siga ao pé da
+> letra**: a oferta não é MaxWeb (é BuyGoods/Horsewood/Ragnaroak), a palavra-gatilho é
+> travada em `GELATIN`, e o link vai **só na DM** — nunca em bio ou comentário público.
+
+O **passo-a-passo operacional** que costura toda a base: dada uma oferta, produzir o prompt Veo e o criativo do funil. É o "manual de operação" — cada passo aponta pro doc que o embasa.
 
 - **Status:** ✅ consolidado (fecha o workflow de geração de prompt)
 - **Princípio-mãe:** [Triangulação](../00-mapa/insights-empiricos.md) — signature (piso/estilo) × nossa copy (superior) × oferta (âncora). A signature dá a **forma**; a copy e a oferta dão o **conteúdo**.

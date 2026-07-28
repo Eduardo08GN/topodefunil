@@ -79,7 +79,7 @@ Toda peça marca as 5 caixas ([doutrina](doutrina-criativa-agressiva.md), [pecad
 
 ## FASE 5 — O CTA DE GUERRA (anatomia completa, [ataque 4](ataque-4-roteiro-maquina.md))
 
-1. Comando único: "Comment TITAN." (Hick: uma escolha. Fitts: palavra curta que ecoa o vídeo.)
+1. Comando único: "Comment GELATIN." (Hick: uma escolha. Fitts: palavra curta que ecoa o vídeo.)
 2. **Recompensa NOMEADA:** "I'll send you the link" / "what I take". O CTA é o ÚNICO bloco onde curiosity gap atrapalha. Mistério fecha ANTES do CTA, nunca dentro dele.
 3. Follow gate técnico: "Follow first or it gets buried."
 4. FOMO real de porta fechando: "Gone by tonight."

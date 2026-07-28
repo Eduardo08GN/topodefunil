@@ -23,7 +23,7 @@
 2. **Empilhar no mínimo 2 pecados por peça** (hook + corpo). O nível profissional empilha 3-4: ex. banner do Robert = luxúria (ela com fome) + soberba (o smirk) + inveja (o espectador querendo SER ele) + avareza (a mão possessiva). Mesmo princípio do [empilhamento reptiliano](empilhamento-reptiliano.md): cena estática soma, pecado empilhado multiplica.
 3. **IRA entra no bloco do mecanismo/vilão** (nunca no hook — raiva sem alvo no frame 1 vira ruído). PREGUIÇA entra na promessa/CTA (esforço-zero). GULA é o tempero da prova (o excesso como "reclamação").
 4. **O pecado nunca é NOMEADO — é ENCENADO.** Escrever "desperte sua luxúria" = bula de padre. Mostrar a novinha mordendo o lábio em cima dele = luxúria funcionando. Mesma lógica do [insight #3](../00-mapa/insights-empiricos.md): a palavra fica limpa, a cena peca por ela.
-5. **Checagem cruzada:** todo pecado disparado deve casar com ≥1 desejo oculto do [mapa](desejos-ocultos-50plus.md) e/ou 1 ferida. Pecado sem desejo = choque vazio; desejo sem pecado = copy educada. Os dois juntos = dedo parado e comentário "TITAN".
+5. **Checagem cruzada:** todo pecado disparado deve casar com ≥1 desejo oculto do [mapa](desejos-ocultos-50plus.md) e/ou 1 ferida. Pecado sem desejo = choque vazio; desejo sem pecado = copy educada. Os dois juntos = dedo parado e comentário "GELATIN".
 
 ## Tabela de casamento pecado × desejo × ferida (atalho de produção)
 

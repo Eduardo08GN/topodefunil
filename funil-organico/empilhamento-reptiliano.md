@@ -45,7 +45,7 @@ Correção de calibragem vinda do operador: não basta o visual sexy/chocante �
 | 9 | **Cantada frustrada** — jovens abordam a loira; ela aponta o coroa no banco; eles saem corcundas | desejo+rejeição dos novos+curiosity gap |
 | 10 | **O médico jovem** — olha os exames, olha pra ele: "o que o senhor tá tomando?" | reversão de autoridade+gap+ponte pro mecanismo |
 
-> O #10 é a **ponte perfeita**: o curiosity gap da cena ("qual o segredo?") desagua direto no bloco de mecanismo e no CTA ("comenta TITAN que eu te conto o que ele respondeu").
+> O #10 é a **ponte perfeita**: o curiosity gap da cena ("qual o segredo?") desagua direto no bloco de mecanismo e no CTA ("comenta GELATIN que eu te conto o que ele respondeu").
 
 ## ⚡ Hipérbole situacional — a reclamação que é prova (testemunho invertido)
 
@@ -60,7 +60,7 @@ Dispositivo do operador: o excesso de resultado narrado **como um "problema" da 
 
 **Banco de reclamações (recombinar):** reprovada por presença ("ele tem 57, façam as contas") · 3 estrados de cama em 4 meses ("o vendedor me atende pelo nome") · largou a yoga das 6h ("as 6h agora são o horário dele; as 7h também") · intervenção das amigas ("gente, eu tô ÓTIMA") · o cachorro se mudou pra sala (por vontade própria) · farmácia invertida ("perguntei se existe algo pra ele PARAR; a farmacêutica riu") · Uber rating 4,2 de cancelar corrida na porta · "a médica mandou EU descansar. Eu. Ele tem quase 60."
 
-**Formato-irmão — o AVISO FALSO (fruto proibido):** *"Mulheres, ESCONDAM esse vídeo dos maridos. Tô avisando."* — psicologia reversa + FOMO + recruta a mulher como distribuidora/comentarista. Variante de CTA: *"Só comenta TITAN se a sua rotina aguentar."* (desafio = compromisso público, [Cialdini](../principios/cialdini-kawasaki.md)).
+**Formato-irmão — o AVISO FALSO (fruto proibido):** *"Mulheres, ESCONDAM esse vídeo dos maridos. Tô avisando."* — psicologia reversa + FOMO + recruta a mulher como distribuidora/comentarista. Variante de CTA: *"Só comenta GELATIN se a sua rotina aguentar."* (desafio = compromisso público, [Cialdini](../principios/cialdini-kawasaki.md)).
 
 **Encaixe:** funciona como hook inteiro (ela falando pra câmera, estilo desabafo/story-time — barato de gerar: 1 personagem, 1 cenário) ou como bloco de prova depois de um hook visual (a "reclamação" É a prova Bencivenga em forma cômica). Combina com a camada **stamina implícita** acima (do-not-disturb, bocejo feliz).
 

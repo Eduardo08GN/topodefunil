@@ -6,7 +6,15 @@ Como o comentário vira venda, e o erro que derruba página. Insights de campo d
 
 ## A mecânica em uma frase
 
-Vídeo com copy → a pessoa comenta a palavra chave pra receber o conteúdo → a automação dispara uma DM com o link da VSL no privado. O link também vai na descrição do post ("clique aqui" mais o link) e na bio.
+Vídeo com copy → a pessoa comenta a palavra chave (`GELATIN`) pra receber o conteúdo → a automação dispara uma DM com o link da **bridge page** no privado.
+
+> ⚠️ **Corrigido em 2026-07-28.** Esta linha dizia "link da VSL" e mandava repetir o link
+> "na descrição do post e na bio" — as duas coisas estão erradas e a segunda contradizia
+> a regra de "só DM" logo abaixo, no próprio documento.
+> - A DM entrega a **bridge**, nunca a VSL direta: sem a bridge o `?p=` se perde e a
+>   venda entra sem atribuição de página.
+> - **Nada de link público** (bio, descrição, comentário fixado): expõe o mecanismo do
+>   funil e ajuda a Meta a fingerprintar a operação.
 
 ## Só DM, NUNCA resposta de comentário (a regra que salva a página)
 
@@ -19,7 +27,12 @@ Vídeo com copy → a pessoa comenta a palavra chave pra receber o conteúdo →
 
 - Caminho: Meta Business Suite → Caixa de entrada → Automações → "Comente para enviar mensagem".
 - Colocar a palavra chave (maiúscula e minúscula), o link curto na DM (mensagem enxuta, sem encher linguiça), e um nome interno na automação (como nome de campanha, só pra você achar).
-- **Precisa do Instagram conectado pra automação funcionar.** Se o Instagram cair ou for desconectado do Meta Business Suite, a página para de mandar automação, mesmo que você nunca poste no Insta. Perder essa conexão mata a mecânica.
+- ⚠️ **"Precisa do Instagram conectado" — NÃO se confirmou na nossa operação.** Este era
+  um insight de campo de terceiros. As duas automações que já rodam aqui (Joe e Matt)
+  foram configuradas com **canal Messenger e Instagram desmarcado**, e funcionam.
+  Siga o passo a passo validado em
+  [`automacao-comentario-dm.md`](automacao-comentario-dm.md) — e veja abaixo por que
+  conectar o Instagram é risco alto pro nosso nicho.
 
 ## Por que NÃO automatizar via API (a armadilha do checkpoint)
 

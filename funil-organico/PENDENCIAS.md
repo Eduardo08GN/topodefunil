@@ -90,7 +90,16 @@ dashboard (padrão do `organicwaveHabilitado`). Código em `projetosweb/automawe
 
 ## ✅ Próximo passo operacional (não é pendência técnica)
 
-Gerar os criativos das 5 páginas. Agora é simples: **`--fix mecanismo=gelatin`**
-pra qualquer lote, porque Horsewood e Ragnaroak vendem o mesmo mecanismo.
-Fluxo: [`AGENTE_ED_ORGANIC_WAVE_V5.md`](../AGENTE_ED_ORGANIC_WAVE_V5.md) +
-[`randomizador-v5.py`](randomizador-v5.py) → AdBatch Vertical 5 → Veo Editor.
+Gerar os criativos das 5 páginas. O mecanismo é **gelatin em todas** — Horsewood e
+Ragnaroak vendem o mesmo — e o CTA já vem travado em `GELATIN` pelo randomizador.
+
+```bash
+python funil-organico/randomizador-v6.py --pagina <joe|marcus|ray|chuck|matt> --n 10
+```
+
+Fluxo: [`AGENTE_ED_ORGANIC_WAVE_V6.md`](../AGENTE_ED_ORGANIC_WAVE_V6.md) +
+[`randomizador-v6.py`](randomizador-v6.py) → AdBatch Vertical 5 → Veo Editor.
+
+⛔ **Não use o V5 nem o `randomizador-v5.py`** — o v5 sorteia `book`/`yes` no CTA e
+quebra a automação Comentário→DM. E **a flag `--fix` não existe no v6**: mecanismo e
+etnia são derivados da página, não passados na linha de comando.

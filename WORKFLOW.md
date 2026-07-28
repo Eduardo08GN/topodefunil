@@ -65,6 +65,11 @@ Espaço combinatório: **129.024 hooks** = 2.580 dias a 50 vídeos/dia.
 
 ### Passo 2 — Gerar o roteiro com o Agente V6
 
+> 🎬 **Nunca escreveu prompt de Veo antes? Leia primeiro a
+> [`DOUTRINA-VEO-3.1.md`](recursos/DOUTRINA-VEO-3.1.md)** — como o modelo se comporta,
+> por que ele alucina mão extra / prop flutuando / legenda embaralhada, e a tabela de
+> sintoma → causa → fix. É o documento mãe do Veo.
+
 [`AGENTE_ED_ORGANIC_WAVE_V6.md`](AGENTE_ED_ORGANIC_WAVE_V6.md) — o agente de produção atual.
 
 - **Cena 1 (hook):** monta do molde da spec + substância + prop + promessa, com o
@@ -115,28 +120,35 @@ gelatine, jelatin, gelatn, gelati, gellatin, gelatim, gelantin, geltin, gelaton`
 Um REF por página, reaproveitado em todos os lotes. Rosto novo a cada reel mata
 reconhecimento e denuncia fazenda de conteúdo.
 
-### 3.5 As três regras de endurecimento do Veo
+### 3.5 As regras mecânicas do Veo moram no V4 — e só lá
 
-Nasceram de falhas reais de produção em 2026-07-27:
+⛔ **Este documento não reproduz regra mecânica.** Elas viviam duplicadas aqui, no V6 e
+no V4; o V4 mudou em 2026-07-28 e as cópias passaram a mandar fazer o formato antigo.
+**Uma regra, um lugar:** [`AGENTE_ED_ORGANIC_WAVE_V4.md`](AGENTE_ED_ORGANIC_WAVE_V4.md).
 
-**Orçamento de mãos** — máximo **uma** ação de mão por cena. Hero prop consome as duas
-(`both hands cupped, never switching hands`), mão ociosa declarada parada, objetos fora
-de uso ficam na bancada, e o que não pode aparecer é negado explicitamente (`no glass,
-no cup, no spoon, no bowl in the shot`) no IMAGE **e** no TAKE. Onde não sobra mão
-livre, não nasce terceira mão.
+O que vive lá, em uma linha cada:
 
-**Selo de risco de bloqueio** — H9 (proxy na virilha) está **banido**: bloqueia na
-política do Veo. H4 só sem "absurdly oversized" e sem "perform" na fala. Tabela completa
-no [`banco-hooks.md`](funil-organico/banco-hooks.md). **Toda recusa nova se registra lá** —
-é dado de produção, não opinião.
+| Regra | Ataca |
+|---|---|
+| **TAKE é I2V — não re-descreva a persona**, 80-150 palavras | morphing, 3ª mão, prop sumindo |
+| Fala = `says: "..."` (verbo + dois-pontos + aspas) | lip-sync |
+| Rótulos `Dialogue:` / `Audio:` em linha própria | áudio ausente |
+| Orçamento de mãos — uma ação por cena, mão ociosa parada | 3ª mão |
+| Amarração do prop + `no floating objects` | prop flutuando/sumindo |
+| Câmera no início do prompt, luz travada verbatim | câmera ignorada, luz derivando |
+| Fechamentos anti-legenda no IMAGE **e** no TAKE | legenda queimada |
 
-**Segunda pessoa ausente ou sem ação** — o REF trava um rosto só; o segundo personagem
-renasce do texto a cada cena e morfa. Padrão é cena solo.
+**Exceção — o selo de risco de bloqueio** não é regra mecânica, é dado de produção, e
+vive no [`banco-hooks.md`](funil-organico/banco-hooks.md): H9 (proxy na virilha) está
+**banido**, H4 só sem "absurdly oversized" e sem "perform". **Toda recusa nova se
+registra lá.**
 
-### 3.6 Anti-legenda (as duas pontas)
-Todo IMAGE e todo TAKE fecham com `no subtitles, no captions, no burned-in text, no
-on-screen text, no watermark`. O Veo transcreve a fala entre aspas e queima a legenda
-embaralhada no quadro. O IMAGE também leva porque é o frame inicial do I2V.
+### 3.6 A correção das aspas (2026-07-28)
+
+Uma leva de doutrina mandou **tirar as aspas** da fala, culpando-as pela legenda
+embaralhada. **Estava errado e foi revertido.** A referência do Veo confirma que o verbo
+de fala + aspas é o que alimenta o lip-sync — tirar as aspas conserta a legenda e
+arrebenta a sincronia labial. A forma correta é `He says: "..."`. Detalhe no V4.
 
 ---
 
@@ -208,6 +220,7 @@ e vale para todos.
 ### Criativo
 | Arquivo | Papel |
 |---|---|
+| [`recursos/DOUTRINA-VEO-3.1.md`](recursos/DOUTRINA-VEO-3.1.md) | ⭐ **documento mãe do Veo** — comportamento do modelo, sintaxe, tabela de falhas |
 | [`funil-organico/banco-hooks.md`](funil-organico/banco-hooks.md) | o que varia — 14 moldes, ~100 hooks literais, selo de risco |
 | [`funil-organico/espinha-fixa.md`](funil-organico/espinha-fixa.md) | o que não varia — 3 espinhas validadas + CTA + persona por página |
 | [`funil-organico/randomizador-v6.py`](funil-organico/randomizador-v6.py) | sorteador hook-first com ledger |
@@ -219,6 +232,10 @@ e vale para todos.
 ### Infra
 | Arquivo | Papel |
 |---|---|
+| [`funil-organico/ARQUITETURA-OPERACAO.md`](funil-organico/ARQUITETURA-OPERACAO.md) | ⭐ **fonte da verdade operacional** — página → domínio → VSL → aff_id |
+| [`funil-organico/PENDENCIAS.md`](funil-organico/PENDENCIAS.md) | backlog técnico detalhado |
+| [`funil-organico/README.md`](funil-organico/README.md) | índice do pilar (⚠️ visão de negócio é de planejamento) |
+| [`veo-editor/README.md`](veo-editor/README.md) | manual da esteira do Passo 4 |
 | [`funil-organico/RUNBOOK-deploy-coolify.md`](funil-organico/RUNBOOK-deploy-coolify.md) | **ler antes de subir qualquer página** |
 | [`funil-organico/bridge-pages-deploy.md`](funil-organico/bridge-pages-deploy.md) | inventário de domínios e apps |
 | [`funil-organico/bridge-pages-arquitetura.md`](funil-organico/bridge-pages-arquitetura.md) | pastas, receitas, contrato do link |

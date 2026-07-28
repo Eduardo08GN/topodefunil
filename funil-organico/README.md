@@ -3,18 +3,30 @@
 - **Status:** em construção (pilar novo, arquitetura mapeada + páginas de referência mineradas)
 - **Contexto:** operação de afiliado 100% orgânica (sem tráfego pago) no nicho de saúde sexual masculina, rodando via páginas de Facebook com persona-expert gerada por IA.
 
+> ⚠️ **ESTE DOCUMENTO É DA FASE DE PLANEJAMENTO (rede e oferta mudaram).** A teoria de
+> viralização, hook e gramática visual continua válida. **Os fatos operacionais abaixo
+> não** — rede, oferta, keyword e camadas de link já foram decididos e são outros.
+> **Fonte da verdade operacional:** [`ARQUITETURA-OPERACAO.md`](ARQUITETURA-OPERACAO.md).
+>
+> | Aqui dizia | A realidade hoje |
+> |---|---|
+> | rede MaxWeb, produto TBD | **BuyGoods** — Horsewood (aff 45158) e Ragnaroak (aff 2470) |
+> | CTA "comente Book" | **`GELATIN`**, travado. `BOOK`/`YES` quebram a automação |
+> | link na bio + comentário + DM | **só DM.** Link público expõe o funil à Meta |
+> | DM entrega link de afiliado | DM entrega a **bridge page**, nunca a VSL direta |
+
 ## Visão geral do modelo de negócio
 
-A operação monetiza como **afiliado da rede MaxWeb** (ofertas de saúde/ED — disfunção erétil e performance masculina). Não há compra de tráfego: o crescimento vem de **páginas de Facebook** construídas em torno de uma **persona-expert** (ver [avatares-experts.md](avatares-experts.md)), que posta **vídeos-criativos gerados por IA** (Google Veo 3 — ver [../recursos/veo3-criativos.md](../recursos/veo3-criativos.md) e [../recursos/veo3-avancado.md](../recursos/veo3-avancado.md)).
+A operação monetiza como **afiliado no BuyGoods** (ofertas de saúde/ED — disfunção erétil e performance masculina). Não há compra de tráfego: o crescimento vem de **páginas de Facebook** construídas em torno de uma **persona-expert** (ver [avatares-experts.md](avatares-experts.md)), que posta **vídeos-criativos gerados por IA** (Google Veo 3.1 — ver [`DOUTRINA-VEO-3.1.md`](../recursos/DOUTRINA-VEO-3.1.md)).
 
-Cada vídeo termina com um **CTA de comentário** (ex.: "comente Book e siga a página"). O comentário dispara uma **automação comment-to-DM** que entrega o **link de afiliado da MaxWeb** direto na caixa de mensagem — com camadas redundantes de link também na bio (encurtador linktw.in) e nos comentários fixados. Quem clica cai numa **VSL** (o produto final da MaxWeb ainda será escolhido entre os já dissecados em [../swipes/vsl-suplemento-masculino.md](../swipes/vsl-suplemento-masculino.md)) e a venda gera comissão.
+Cada vídeo termina com um **CTA de comentário** (`comment GELATIN` + follow gate). O comentário dispara uma **automação comment-to-DM** que entrega o link da **bridge page** direto na caixa de mensagem — **só na DM**, nunca na bio nem em comentário público. Da bridge o clique vai para a **VSL** da página (Horsewood ou Ragnaroak) e a venda gera comissão.
 
 Como não há mídia paga, **viralização é o motor inteiro do negócio**: o jogo se resume a hook (retenção nos primeiros segundos) e formato replicável — ver [gramatica-visual.md](gramatica-visual.md). O proxy de conversão a acompanhar é **volume de comentários com a palavra-gatilho** (não likes/shares, que medem só alcance).
 
 ## O funil em uma linha
 
 ```
-Página-persona (avatar-expert IA) → criativo orgânico (Veo 3, 9:16) → hook (0-3s) → CTA de comentário (palavra-gatilho) → comment-to-DM (automação) → link afiliado MaxWeb (bio + comentários + DM) → VSL/oferta → venda (comissão)
+Página-persona (avatar-expert IA) → criativo orgânico (Veo 3.1, 9:16) → hook (0-3s) → CTA "comment GELATIN" → comment-to-DM (automação, só DM) → bridge page (domínio próprio) → VSL (Horsewood ou Ragnaroak) → venda (comissão BuyGoods)
 ```
 
 ## Índice dos docs do pilar

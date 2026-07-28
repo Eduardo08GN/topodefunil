@@ -43,7 +43,7 @@ she couldn't sit still the next day · she made a sound she hadn't in years · s
 | Paradoxo | "Why can your body do at 6am what it forgets at 11pm." |
 | Future | "Picture Friday night, when she needs a minute to catch her breath." |
 | Hook | "If yours hangs like this banana, don't blame your age." |
-| CTA | "Comment TITAN and I'll send you the link. Follow first or it gets buried. It's in my bio too." |
+| CTA | "Comment GELATIN and I'll send you the link. Follow first or it gets buried. It's in my bio too." |
 
 ## Conexões
 - [Prop-Metáforas (o objeto visual)](prop-metaforas.md) · [Signature Verbal (a regra de ouro)](signature-verbal.md)

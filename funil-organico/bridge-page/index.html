@@ -124,10 +124,19 @@
 
 <script>
   (function(){
+    // ⚠️ SPLIT POR PAGINA — ajuste OFFER/AFF conforme o destino DESTA bridge.
+    //   Joe (manresethub.pro) · Marcus (vitalresetlab.site) · Ray (primalvitalityhub.site)
+    //     -> OFFER="https://horsewood.us/VHG2-L1ML3/", AFF="45158"
+    //   Chuck (allmensnatural.site) · Matt (steadystrengthhub.site)
+    //     -> OFFER="https://ragnaroak.us/VHGML5-3/",   AFF="2470"
+    // Errar aqui paga comissao pro afiliado errado.
     var OFFER="https://horsewood.us/VHG2-L1ML3/", AFF="45158";
     var q=new URLSearchParams(location.search);
-    var p=(q.get("p")||q.get("sub_id")||"direct").toLowerCase().replace(/[^a-z0-9_]/g,"")||"direct";
-    document.getElementById("offer").href=OFFER+"?aff_id="+encodeURIComponent(AFF)+"&sub_id="+encodeURIComponent(p);
+    // Entrada: aceita "p" (padrao), e "subid"/"sub_id" como legado.
+    // Saida: SEMPRE "subid" — o BuyGoods documenta sem underscore; com "sub_id" a venda
+    // entra sem atribuicao e o notificador nao sabe qual pagina vendeu.
+    var p=(q.get("p")||q.get("subid")||q.get("sub_id")||"direct").toLowerCase().replace(/[^a-z0-9_]/g,"")||"direct";
+    document.getElementById("offer").href=OFFER+"?aff_id="+encodeURIComponent(AFF)+"&subid="+encodeURIComponent(p);
   })();
 </script>
 </body>

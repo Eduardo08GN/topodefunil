@@ -44,7 +44,7 @@
 - Future→CTA: *"You want the exact one? Comment [TRIGGER] — before I take this down."*
 
 ## CTA de guerra (a anatomia)
-1. **Comando único** (Fitts/Hick): "Comment TITAN."
+1. **Comando único** (Fitts/Hick): "Comment GELATIN."
 2. **Follow-gate técnico** (da signature): "Follow first — the system won't let me message you."
 3. **FOMO real:** porta fechando ("48h no ar" / "só respondo hoje") — nunca escassez fabricada de estoque.
 4. **Eco do loop-mãe:** "…and I'll send you what she saw."

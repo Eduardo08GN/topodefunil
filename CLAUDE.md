@@ -11,6 +11,8 @@ de arquivos e as pendências. **Nenhum trabalho começa antes de ler esse arquiv
 
 ## Produção de criativo — o essencial
 
+- **Doutrina do modelo:** [`recursos/DOUTRINA-VEO-3.1.md`](recursos/DOUTRINA-VEO-3.1.md) —
+  ler antes de escrever qualquer prompt de vídeo.
 - Agente de produção: `AGENTE_ED_ORGANIC_WAVE_V6.md` (motor no V4, dispositivos no V5).
 - **Sempre rodar o randomizador antes de escrever:**
   `python funil-organico/randomizador-v6.py --pagina <joe|marcus|ray|chuck|matt> --n 10`

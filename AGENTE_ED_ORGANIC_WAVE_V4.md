@@ -364,12 +364,70 @@ Persona olhando direto, enérgica. Pede para comentar a keyword + urgência + "f
 - Hero prop (pote/sachê/tigela): "both hands cupped firmly around it, never letting go"
 - NUNCA duas ações de mão simultâneas diferentes
 
+⚠️ **Suspeita aberta: o negativo de mão pode estar CAUSANDO a terceira mão.**
+O Veo não tem campo de negative prompt separado — o negativo vai no corpo do prompt, e
+a palavra "hands" repetida três vezes pesa o token. A doutrina externa
+([smixs/visual-skills](https://github.com/smixs/visual-skills)) separa por modelo:
+negativo só onde há campo dedicado (Kling), e **para Veo, frase positiva**:
+
+```
+anatomically correct hands, clean finger separation, realistic proportions
+```
+
+Nossos negativos estão no lugar desde sempre **e a terceira mão continua acontecendo** —
+o que é evidência contra eles. Trocar por positivo é o teste A/B nº 2. Não flipar em
+lote antes de comparar.
+
+### Amarração do prop na mão (prop flutuando / prop sumindo)
+
+Terceira mão, prop flutuando e prop que some da mão são **o mesmo bug**: o Veo desamarra
+o objeto quando a mão que segura recebe uma segunda tarefa, ou quando o prop existe só
+no texto e não está agarrado no frame inicial.
+
+O orçamento de mãos ataca metade. A outra metade é a **linha de amarração positiva**,
+obrigatória em toda cena com hero prop, no IMAGE **e** no TAKE:
+
+```
+[o prop] stays gripped in both hands for the entire shot, never leaving his hands,
+never set down, moving only as his hands move
+```
+
+E o negativo correspondente no fechamento: `no floating objects`.
+
+Como a esteira é I2V, **o IMAGE tem que mostrar a mão já agarrando o prop**. Prop que
+nasce só no vídeo flutua — o Veo não tem de onde herdar o contato.
+
+**Progressão de estado do prop (contra o prop que some).** O Veo perde o objeto quando
+o prompt não diz onde ele está em cada beat. Declare a trajetória numa frase, mesmo que
+o prop não se mova:
+
+```
+The cassava stays in both hands the whole shot. counter -> both hands -> still in both hands
+```
+
+Regra herdada: *"Track the object continuously. The same object remains visible or
+clearly implied in every beat."*
+
+### Câmera na frente, luz travada
+
+Dois ajustes de ordem que valem para todo TAKE:
+
+- **A instrução de câmera vai no INÍCIO do prompt, não no fim.** O Veo ignora
+  movimento de câmera declarado depois da ação. ⛔ `A man opens the fridge. The camera
+  is a slow push-in.` → ✅ `Slow 50mm push-in. A man opens the fridge.`
+- **A luz é nomeada por fonte + direção e repetida palavra por palavra em todas as 5
+  cenas.** É o que impede a luz de derivar entre os clipes: `Lighting constant. Warm
+  window light as key from frame-left.`
+
 ### Anti-celebridade — INCLUIR EM CADA IMAGE
 - "an ordinary everyday relatable woman/man, not a celebrity, not resembling any famous person"
 - Incluir imperfeições (mole, freckles, asymmetry)
 
 ### Fechamento obrigatório de cada IMAGE:
-"No subtitles, no captions, no on-screen text, no watermark. Imperfect, authentic, ultra-realistic amateur phone snapshot."
+"No subtitles, no captions, no burned-in text, no on-screen text, no watermark. Imperfect, authentic, ultra-realistic amateur phone snapshot."
+
+São **cinco** negativos, os mesmos do TAKE — `no burned-in text` faltava aqui e é
+justamente o que o Veo queima no frame.
 
 O IMAGE é o **frame inicial** do I2V: se o texto nascer na imagem, o vídeo herda e
 ainda anima o erro. O negativo tem que estar nas duas pontas. Exceção: o texto de
@@ -388,15 +446,85 @@ prop que o dispositivo exige (etiqueta "Day 0"/"Day 7", sachê de gelatina) — 
 O TAKE contém a copy falada COMPLETA integrada ao movimento com TIMING.
 
 **FORMATO CORRETO:**
-He looks at the camera and says "primeira parte da fala" while [gesto]. He continues "segunda parte" while [outro gesto]. On "palavra específica" he [ação].
+He looks at the camera and says: "primeira parte da fala" while [gesto]. He continues: "segunda parte" while [outro gesto].
 
 **FORMATO ERRADO (NUNCA):**
 He speaks energetically to the camera, gesturing with his hands.
 
+### VERBO + DOIS-PONTOS + ASPAS (a forma correta da fala)
+
+O Veo é o **único** modelo com lip-sync nativo, e a sintaxe da fala é o que o alimenta.
+A forma canônica tem três partes e **nenhuma é opcional**:
+
+```
+He says: "raw garlic on corn and your wife won't keep up"
+ └verbo┘ └─:─┘ └────────────── aspas ──────────────┘
+```
+
+- ✅ `He says: "..."` — verbo de fala + dois-pontos + aspas
+- 🟡 `He says, "..."` — funciona, dois-pontos é mais confiável que a vírgula
+- ⛔ `He says: ...` sem aspas — **quebra o lip-sync**
+- ⛔ `"..."` solto, sem verbo de fala — pior de todos
+
+> **Correção de rota (2026-07-28).** Uma leva anterior desta doutrina mandou tirar as
+> aspas, com base em blogs que culpam as aspas pela legenda queimada. **Estava errado.**
+> A referência de Veo confirma: *"Check the lead-in verb. 'She says, ...' outperforms
+> just quoted speech alone. Colon form often more reliable than comma."* Tirar as aspas
+> conserta uma legenda e arrebenta a sincronia labial — troca ruim.
+
+Modificadores de voz vão **antes** do verbo: `He says in a weary voice: "..."`.
+
+**Teto de fala: 8 segundos por clipe.** Acima disso o Veo acelera a locução de forma
+não-natural. Corte a linha até caber — leia em voz alta para testar.
+
+> A linha `Copy falada: "[texto]"` do bloco de entrega é metadado para o operador e não
+> vai para o Veo.
+
+### ⭐ O TAKE É I2V — NÃO RE-DESCREVA O QUE JÁ ESTÁ NA IMAGEM
+
+**A descoberta mais pesada da auditoria de 2026-07-28.** Nossa esteira é
+image-to-video: o IMAGE é o *first frame*. A doutrina do Veo 3.1 para I2V é explícita:
+
+> *"Do not re-describe static elements. Describe only motion, camera, light change,
+> and audio."* + *"Add 'maintain the subject from the first frame' to protect identity."*
+
+Nossos TAKEs re-descreviam a persona inteira (idade, rosto, sobrancelha, roupa,
+cenário) — coisa que **já está no frame inicial**. Isso não é redundância inofensiva:
+
+- **Faixa ótima do Veo: 100-150 palavras.** Nossos TAKEs passavam de 200.
+- Modo de falha documentado: *"Prompt too long, model cherry-picks."*
+- **É por isso que o anti-glitch é ignorado.** O `no extra hands` está lá — mas afogado
+  em 120 palavras de descrição inútil, e o modelo descarta parte do prompt.
+
+Re-descrever a persona no I2V ainda **convida o modelo a re-gerar** o rosto em vez de
+preservá-lo. Ou seja: era causa do morphing, não remédio.
+
+**Regra nova:** o TAKE abre com `Maintain the subject from the first frame.` e descreve
+**só** movimento, câmera, mudança de luz, fala e áudio. Nada de rosto, roupa, idade,
+cenário. Alvo: **80-150 palavras**.
+
+> ⚠️ A regra "descreva a persona por completo toda vez" continua valendo **no IMAGE**
+> (que é text-to-image e não tem frame de onde herdar). Vale só lá.
+
+### Rótulos de áudio e fala em linha própria
+
+O Veo precisa de sinal explícito para gerar áudio. Fala e som saem do corpo do prompt
+e viram linhas rotuladas:
+
+```
+Dialogue: He says: "raw garlic on corn and your wife won't keep up"
+Audio: quiet kitchen room tone, faint refrigerator hum
+```
+
+⚠️ O rótulo **não dispensa o verbo de fala.** `Dialogue: "..."` com aspa solta é a forma
+que a regra acima marca como pior de todas — o verbo é o que alimenta o lip-sync.
+
+Sem o rótulo, o modo de falha é *"Audio missing from output"*.
+
 ### O que descrever em cada TAKE:
 - Ações de corpo, rosto e mãos sincronizadas com cada trecho da fala
 - "Mouth moving clearly throughout"
-- Movimento de câmera caseiro (variar entre cenas)
+- Movimento de câmera caseiro (variar entre cenas) — **no início do prompt**
 - Sons ambiente (room tone, clink, eco) — NUNCA música
 - Movimento do ingrediente se houver
 
@@ -414,11 +542,15 @@ He speaks energetically to the camera, gesturing with his hands.
 
 ### Anti-legenda no TAKE (OBRIGATÓRIO — o Veo tenta legendar a fala sozinho)
 
-O Veo 3 **assa legenda na cena** quando o prompt tem fala entre aspas: ele
-transcreve o que foi dito e queima o texto no quadro, quase sempre **embaralhado**
-("day zevn on 7 ant sock seffight"). Isso denuncia a IA na hora e ainda colide com
-a legenda karaokê que a esteira do Veo Editor coloca depois — o vídeo sai com
-legenda dupla.
+O Veo 3 **assa legenda na cena** sempre que há fala no prompt: ele transcreve o que
+foi dito e queima o texto no quadro, quase sempre **embaralhado** ("day zevn on 7 ant
+sock seffight"). Isso denuncia a IA na hora e ainda colide com a legenda karaokê que a
+esteira do Veo Editor coloca depois — o vídeo sai com legenda dupla.
+
+> ⚠️ **Não é culpa das aspas.** Uma leva anterior desta doutrina culpou as aspas e
+> mandou tirá-las — errado, e revertido em 2026-07-28. As aspas são o que alimenta o
+> lip-sync (ver *Verbo + dois-pontos + aspas*). O que segura a legenda é o negativo
+> abaixo, nas duas pontas.
 
 **Negativo obrigatório no fechamento de todo TAKE:**
 `no subtitles, no captions, no burned-in text, no on-screen text, no watermark`
@@ -679,10 +811,17 @@ IMAGE 05/05 — CTA:
 --- TAKES (VÍDEO 1) ---
 
 TAKE 01/05 — HOOK
-Copy falada: "Guys, I was making excuses every single night, too embarrassed to even go to bed, until my buddy told me about this crazy honey trick"
-Contagem: 24 palavras
+Copy falada: "Guys, I was making excuses every night, too embarrassed to go to bed, until my buddy showed me this honey trick"
+Contagem: 21 palavras
 
-Close-up vertical 9:16 of the fit salt-and-pepper haired man with blue-gray eyes holding a jar of golden honey with wooden dipper, both hands cupped firmly around it, never letting go, exactly ten fingers total visible, no extra hands, no extra limbs, only two arms visible. He looks straight into the camera with wide fired-up eyes and starts speaking with high energy, his free hand coming up palm-open as he says "Guys, I was making excuses every single night, too embarrassed to even go to bed" while he shakes his head slowly with a look of genuine frustration, jaw tight. On "until my buddy told me about this crazy honey trick" his expression shifts to excitement, he raises the honey jar slightly toward the camera and nods firmly with conviction, mouth moving clearly and naturally the entire time, face extremely expressive and animated. Camera has a light handheld wobble with a tiny micro re-frame as he lifts the jar. Handheld shaky cam, natural ambient kitchen sounds, no music, no SFX, no voiceover, ultra-realistic amateur video feel.
+Maintain the subject from the first frame. Light handheld wobble, 50mm, with a tiny micro re-frame as he lifts the jar.
+
+He looks straight into the camera with wide fired-up eyes. Both hands stay cupped firmly around the honey jar the entire shot, never letting go, never switching hands. He shakes his head slowly, jaw tight. Then his expression shifts to excitement and he raises the jar slightly toward the camera with a firm nod. Mouth moving clearly throughout. Anatomically correct hands, clean finger separation, realistic proportions.
+
+Dialogue: He says: "Guys, I was making excuses every night, too embarrassed to go to bed" — then, brightening, he says: "until my buddy showed me this honey trick"
+Audio: quiet kitchen room tone, faint refrigerator hum.
+
+Handheld shaky cam, natural ambient kitchen sounds, no music, no SFX, no voiceover, no subtitles, no captions, no burned-in text, no on-screen text, no watermark, ultra-realistic amateur video feel.
 
 TAKE 02/05 — BANCADA
 Copy falada: "[texto da cena 2]"
@@ -738,14 +877,21 @@ Contagem: X palavras
 - [ ] Nenhum celular/tripé visível?
 
 ### TAKE
-- [ ] Copy COMPLETA integrada com timing?
+- [ ] Abre com `Maintain the subject from the first frame`?
+- [ ] **NÃO** re-descreve persona, roupa, idade nem cenário (isso já está no IMAGE)?
+- [ ] Está entre **80-150 palavras**?
+- [ ] A câmera está no **início** do prompt, com **um** movimento dominante?
+- [ ] A fala está como `verbo + dois-pontos + "aspas"` (`He says: "..."`)?
+- [ ] Rótulos `Dialogue:` e `Audio:` em linha própria?
+- [ ] A fala cabe em ~8 segundos lidos em voz alta?
+- [ ] Luz nomeada por fonte + direção, **idêntica** à das outras cenas do lote?
+- [ ] **Uma** ação de mão por cena, com a mão ociosa declarada parada?
+- [ ] Hero prop com linha de amarração + `no floating objects`?
+- [ ] Objetos ausentes negados explicitamente?
 - [ ] Copy NÃO alterada do original (Modo A)?
-- [ ] Cada frase sincronizada com gesto?
-- [ ] "Mouth moving clearly throughout"?
 - [ ] Anti-glitch (10 dedos, sem mãos extras)?
-- [ ] Câmera caseira variada?
-- [ ] Sons ambiente?
-- [ ] Fechamento obrigatório (com os negativos de legenda)?
+- [ ] Sons ambiente, nunca música?
+- [ ] Fechamento obrigatório (com os 5 negativos de legenda)?
 - [ ] NENHUM voiceover?
 - [ ] NENHUMA legenda/caption da fala?
 

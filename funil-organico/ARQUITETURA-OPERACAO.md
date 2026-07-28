@@ -157,9 +157,11 @@ Detalhe técnico (pastas, deploy, receitas, contrato do link) em
 ## Pipeline de criativos (referência)
 
 Os reels de cada página saem da esteira:
-1. **Agente Organic Wave V5** (`AGENTE_ED_ORGANIC_WAVE_V5.md`) + `randomizador-v5.py`
-   → roteiros REF+5 IMAGE+5 TAKE, com o **mecanismo travado** conforme a VSL da
-   página — hoje **gelatin em todas** (as duas VSLs vendem gelatin trick).
+1. **Agente Organic Wave V6** (`AGENTE_ED_ORGANIC_WAVE_V6.md`) + `randomizador-v6.py`
+   → roteiros REF+5 IMAGE+5 TAKE. Mecanismo é **gelatin em todas** as páginas (as duas
+   VSLs vendem gelatin trick), e o CTA vem **travado em GELATIN** pelo v6.
+   ⛔ Não use o V5 nem o `randomizador-v5.py`: o v5 sorteia `book`/`yes` no CTA, que
+   **quebram a automação Comentário→DM**. Ver [espinha-fixa.md](espinha-fixa.md).
 2. **AdBatch Vertical 5** (Flow/Veo) → imagens + takes → `.zip`.
 3. **Veo Editor** (esteira) → junta, desilencia, varia velocidade, legenda karaoke
    com keyword destacada.

@@ -11,7 +11,7 @@
 
 > ⏱️ Régua completa segundo a segundo (teto **35s**, lei do operador): [Roteiro-Máquina](ataque-4-roteiro-maquina.md).
 | 15–28s | **Córtex** (justificativa) | mecanismo real + prova | o córtex não decide — ele **racionaliza** o que o réptil já quis. Mecanismo = a desculpa lógica pra comprar |
-| 28–35s | **Reptiliano de novo** (ação) | FOMO + escassez + comando único | decisão é reptiliana: porta fechando + 1 comando ("comment TITAN") |
+| 28–35s | **Reptiliano de novo** (ação) | FOMO + escassez + comando único | decisão é reptiliana: porta fechando + 1 comando ("comment GELATIN") |
 
 **Erro fatal (o padrão do criativo frio):** começar pelo córtex ("estudos mostram que óxido nítrico…"). O córtex NÃO para scroll. Réptil → límbico → córtex → réptil, sempre.
 
@@ -35,10 +35,10 @@ Na pirâmide renovada (Kenrick), **retenção de parceira + status** ficam ACIMA
 ## 5. Dopamina e o loop aberto (a química da retenção)
 - Curiosity gap = **pico de dopamina na EXPECTATIVA**, não na resposta. Por isso: loop aberto no hook, **NUNCA fechado no feed** — só na DM ([arquitetura](arquitetura-do-funil.md)).
 - **Cadência de re-fisgada: um novo micro-loop a cada ~8 segundos** (uma pergunta, uma promessa "e daqui a pouco te mostro", um corte pra cena nova). Vídeo sem loop novo por 10s+ = sangria de retenção.
-- O CTA é a **venda do fechamento do loop**: "comenta TITAN que eu te mando o que ela viu" — ele não comenta pra "saber mais", comenta pra **aliviar a coceira dopaminérgica**.
+- O CTA é a **venda do fechamento do loop**: "comenta GELATIN que eu te mando o que ela viu" — ele não comenta pra "saber mais", comenta pra **aliviar a coceira dopaminérgica**.
 
 ## 6. Fitts/Hick no CTA (fricção zero)
-- **Hick (escolhas):** UM comando. Nunca "curte, comenta, compartilha e segue" — só "**comment TITAN**" (o follow entra como pré-condição técnica, não como segundo pedido).
+- **Hick (escolhas):** UM comando. Nunca "curte, comenta, compartilha e segue" — só "**comment GELATIN**" (o follow entra como pré-condição técnica, não como segundo pedido).
 - **Fitts (esforço):** a palavra-gatilho é curta, memorável e **ecoa o vídeo** — ele digita o que acabou de ouvir 3×. Custo motor mínimo = conversão máxima.
 
 ## 7. PAS + Freytag comprimidos em 35s

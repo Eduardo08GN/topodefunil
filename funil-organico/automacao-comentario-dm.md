@@ -49,7 +49,8 @@ gelaton
 ```
 
 > A keyword tem que ser **idêntica** à que a legenda/CTA do reel manda comentar.
-> O randomizador V5 emite `CTA:GELATIN` quando `cta=keyword_mecanismo` — é essa.
+> O randomizador **v6** emite `cta=GELATIN` sempre — a keyword é travada, não sorteada.
+> (⛔ O v5 sorteava `book`/`yes` e quebrava esta automação. Não use o v5.)
 
 **Gotcha do input (Meta):** o campo **NÃO separa por espaço** — colar tudo com
 espaço vira **um único chip gigante** (uma keyword só, inútil). Separa por

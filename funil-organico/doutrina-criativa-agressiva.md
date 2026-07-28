@@ -82,7 +82,7 @@ Pergunta que ele **não consegue não responder** mentalmente = retenção garan
 ### 6. FOMO em camadas — do frame 1 ao CTA
 - **Frame 1:** algo já está acontecendo e ele chegou "atrasado" (o gasp, a reação, o resultado — nunca o setup).
 - **Meio:** curiosity gap aberto e NUNCA fechado no feed ("o que ela viu, eu só mostro na DM").
-- **CTA:** escassez legítima + porta fechando ("isso some do meu perfil em 48h" / "só respondo quem comentar hoje" / "ela vai querer saber o que mudou — comenta TITAN antes que eu tire do ar").
+- **CTA:** escassez legítima + porta fechando ("isso some do meu perfil em 48h" / "só respondo quem comentar hoje" / "ela vai querer saber o que mudou — comenta GELATIN antes que eu tire do ar").
 
 ### 6b. Agressivo no conteúdo, HUMANO na voz (o segundo radar)
 Existem DOIS modos de falha, não um: o **morno** (comercial de TV) e o **bingo de copywriting** (a copy que empilha "nobody had the guts…", "picture her face" — técnica visível = radar anti-propaganda). O soco vem da **verdade crua confessada** ("my first feeling wasn't pride — it was relief"), nunca da frase de efeito. Gate completo: [🫀 Copy Humana](copy-humana.md). Reação-alvo: *"isso aconteceu"* / *"esse cara sou eu"* — nunca *"que copy boa"*.
@@ -98,7 +98,7 @@ Existem DOIS modos de falha, não um: o **morno** (comercial de TV) e o **bingo 
 | "If mornings don't feel the way they used to…" | "Be honest — when she reaches for you at night, does it show up… or play dead?" |
 | "This supports healthy circulation" | "Your engine isn't broken. Someone switched it OFF. Watch what happens when you flip it back—" *(demo)* |
 | "You'll feel more energy and vitality" | "Week three is when she made *that* sound. First time in eleven years." |
-| "Comment TITAN to learn more" | "Done playing dead in your own bed? Comment TITAN — before she finds someone who doesn't." |
+| "Comment GELATIN to learn more" | "Done playing dead in your own bed? Comment GELATIN — before she finds someone who doesn't." |
 | Talking-head explica o produto | Reaction shot: ela abre a porta do banheiro, congela, gasp — você nunca vê o que ela viu |
 
 ## O que continua proibido (a ÚNICA cerca)
