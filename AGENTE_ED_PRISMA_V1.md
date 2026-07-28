@@ -62,7 +62,7 @@ troco eixo, não prefiro, não repito (Erro Fatal P1).
 |---|---|---|
 | **conceito** ⭐ | solo_classico, demo_quimica, prop_gigante, duo_esposa, duo_amigo, local_publico, pov_mercado, fake_broadcast, podcast, day_labels | o BIT VISUAL — o que carrega o vídeo no mudo. O eixo mais pesado (ver seção abaixo) |
 | **esqueleto** | E1-E8 (abaixo) | a HISTÓRIA — 8 estruturas narrativas, não 1 |
-| **setting** | kitchen, garage_bancada, backyard_deck, truck_cabine, ranch*, varanda_manha, quintal_grill, escritorio_caseiro + loja_bigbox, estacionamento_loja, corredor_farmacia, estudio_news, estudio_podcast | o LUGAR |
+| **setting** | kitchen, garage_bancada, backyard_deck, truck_cabine, ranch*, varanda_manha, quintal_grill, escritorio_caseiro, penthouse_urbano + loja_bigbox, estacionamento_loja, corredor_farmacia, estudio_news, estudio_podcast, laboratorio | o LUGAR |
 | **gramatica** | talking_head_classico, sentado_mesa, demo_maos_e_rosto, close_confessional, sentado_carro, low_angle_deck | o ENQUADRAMENTO |
 | **luz** | morning_window, golden_hour, night_lamp, overcast_soft, noon_harsh + fluorescente_loja, luz_estudio | a HORA (travada verbatim DENTRO do vídeo, varia ENTRE vídeos) |
 | **molde** (hook) | os 14 do [`banco-hooks.md`](funil-organico/banco-hooks.md) | os primeiros 2 segundos |
@@ -104,6 +104,7 @@ Tradução de cada conceito para IMAGE/TAKE:
 | **podcast** | mesa com microfone de braço e fone, estética de clipe de podcast | 🟢 |
 | **day_labels** | etiqueta manuscrita "Day 0"/"Day 7" (máx 2 palavras — regra V4); a progressão é o show | 🟢 |
 | **flagrante_publico** | humilhação pública testemunhada — ver seção própria abaixo. Acoplado 1:1 ao molde M15 | 🟡 A/B |
+| **prop_ressurreicao** | prop GIGANTE murcho/dobrado que fica vertical após o despejo da substância (Tanisha, lab, 1.6K/673/211 — **vídeo IA que passou na moderação**). Narrador pequeno em frente ao prop monumental, bandeja inox, luva azul despejando. O antes/depois acontece NO prop, na tela. "comically large", nunca "absurdly oversized"; H7 pouring+crescimento já tem selo 🟢 | 🟡 |
 
 ### flagrante_publico (M15) — a fórmula de viralização da Tanisha Rivers
 
@@ -140,6 +141,9 @@ Execução PRISMA:
 3. Esposa = etnia da página (congruência herdada). Amigo = etnia livre.
 4. O rosto PRINCIPAL continua sendo o REF da página — o segundo personagem não
    substitui, acompanha.
+5. **Duo só no hook é válido** (padrão do reel da banana: casal na cena 1 com o
+   prop compartilhado, corpo do vídeo solo). Mais barato e menos risco de
+   morphing que duo nas 5 cenas. Declarar na quebra qual variante está em uso.
 
 ### O que continua FIXO (e por quê)
 
@@ -163,8 +167,8 @@ Cada esqueleto = 5 beats = 5 cenas de ~8s (formato V4 intacto).
 
 ### E1 — ISCA-E-TROCA
 1. HOOK (do molde da spec)
-2. RECEITA-ISCA tópica completa (rotacionar as 6 iscas; nunca a mesma em vídeos consecutivos)
-3. A VIRADA — "por fora é paliativo; o corpo avisa que a causa é por dentro"
+2. RECEITA-ISCA completa (rotacionar as 6 iscas; nunca a mesma em vídeos consecutivos; pode ser tópica OU ingerível — chá/bebida)
+3. A VIRADA — dois sabores, alternar: **(a) paliativo** "por fora ajuda um tempo; a causa é por dentro" · **(b) isca incompleta** "isso só faz parte do trabalho — falta UM ingrediente" (padrão do reel da banana: a isca não é negada, é incompletada; mais sutil e o loop fica mais forte)
 4. MECANISMO REAL — gelatin + loop de curiosidade
 5. CTA GELATIN + gate
 

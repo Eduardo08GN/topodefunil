@@ -321,6 +321,7 @@ Aprendido em geração real. **Consultar antes de montar a cena 1.**
 | **H1** — proxy vertical no peito, mãos paradas | 🟢 passa | Joe, Ray |
 | **H7** — pouring + crescimento (pepino) | 🟢 passa | template C4 |
 | **M1** — modelo anatômico na bancada | 🟢 passa | Joe IMG 02, Ray IMG 02 |
+| **Prop-ressurreição** — geoduck gigante murcho→vertical, lab, despejo | 🟢 passa no FB | Tanisha reel 856954520543734, vídeo IA, 1.6K/673/211 |
 
 **Regra:** substituir H9 por H1 (mesmo prop, altura do peito). O choque continua no
 proxy; a virilha é o que dispara a política.

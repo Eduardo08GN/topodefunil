@@ -64,16 +64,21 @@ CONCEITOS = [
     "flagrante_publico",# humilhacao publica testemunhada (Tanisha Rivers, 20-50x a media dela)
                         # acoplado ao molde M15 — cena 1 publica com vitima + testemunhas,
                         # cenas 2-5 em set interno (a troca de set faz parte do padrao)
+    "prop_ressurreicao",# prop GIGANTE murcho -> vertical apos despejo da substancia
+                        # (Tanisha reel 856954520543734, 1.6K/673/211, IA gerada e passou):
+                        # lab branco, bandeja inox, narrador pequeno em frente do prop monumental
 ]
 SETTINGS = [
     "kitchen", "garage_bancada", "backyard_deck", "truck_cabine",
     "ranch", "varanda_manha", "quintal_grill", "escritorio_caseiro",
+    "penthouse_urbano",
     "loja_bigbox", "estacionamento_loja", "corredor_farmacia",
-    "estudio_news", "estudio_podcast",
+    "estudio_news", "estudio_podcast", "laboratorio",
 ]
 SETTINGS_DOMESTICOS = [
     "kitchen", "garage_bancada", "backyard_deck", "truck_cabine",
     "ranch", "varanda_manha", "quintal_grill", "escritorio_caseiro",
+    "penthouse_urbano",
 ]
 GRAMATICAS = [
     "talking_head_classico", "sentado_mesa", "demo_maos_e_rosto",
@@ -153,17 +158,18 @@ SETTINGS_POR_ESQ = {
 }
 # conceito por esqueleto: a historia dita quais bits visuais fazem sentido
 CONC_POR_ESQ = {
-    "E1_isca_e_troca": ["solo_classico", "demo_quimica", "duo_amigo", "pov_mercado", "prop_gigante"],
-    "E2_direta":       ["solo_classico", "prop_gigante", "local_publico", "pov_mercado", "podcast", "duo_amigo"],
+    "E1_isca_e_troca": ["solo_classico", "demo_quimica", "duo_amigo", "pov_mercado", "prop_gigante", "prop_ressurreicao"],
+    "E2_direta":       ["solo_classico", "prop_gigante", "local_publico", "pov_mercado", "podcast", "duo_amigo", "prop_ressurreicao"],
     "E3_esposa":       ["duo_esposa", "solo_classico", "local_publico"],
     "E4_confissao":    ["solo_classico", "podcast"],
-    "E5_experimento":  ["demo_quimica"],
+    "E5_experimento":  ["demo_quimica", "prop_ressurreicao"],
     "E6_expose":       ["fake_broadcast", "podcast", "solo_classico", "local_publico"],
     "E7_diario":       ["day_labels", "solo_classico"],
     "E8_mito_verdade": ["solo_classico", "podcast", "fake_broadcast", "prop_gigante"],
 }
 # settings validos por conceito (None = usa SETTINGS_POR_ESQ / domesticos)
 SETTINGS_POR_CONC = {
+    "prop_ressurreicao": ["laboratorio", "kitchen", "garage_bancada"],
     "flagrante_publico": ["loja_bigbox", "corredor_farmacia", "estacionamento_loja"],
     "local_publico":  ["loja_bigbox", "estacionamento_loja", "corredor_farmacia"],
     "pov_mercado":    ["loja_bigbox", "corredor_farmacia"],
@@ -181,6 +187,8 @@ GRAM_POR_SETTING = {
     "varanda_manha":       ["talking_head_classico", "sentado_mesa", "low_angle_deck", "close_confessional"],
     "quintal_grill":       ["talking_head_classico", "close_confessional"],
     "escritorio_caseiro":  ["sentado_mesa", "close_confessional", "talking_head_classico"],
+    "penthouse_urbano":    ["talking_head_classico", "sentado_mesa", "close_confessional"],
+    "laboratorio":         ["talking_head_classico", "demo_maos_e_rosto"],
     "loja_bigbox":         ["talking_head_classico", "demo_maos_e_rosto"],
     "estacionamento_loja": ["talking_head_classico"],
     "corredor_farmacia":   ["talking_head_classico", "close_confessional"],
@@ -188,6 +196,7 @@ GRAM_POR_SETTING = {
     "estudio_podcast":     ["sentado_mesa", "close_confessional"],
 }
 LUZ_POR_SETTING = {
+    "laboratorio":         ["fluorescente_loja"],
     "loja_bigbox":         ["fluorescente_loja"],
     "corredor_farmacia":   ["fluorescente_loja"],
     "estacionamento_loja": ["noon_harsh", "overcast_soft", "golden_hour"],
@@ -228,9 +237,11 @@ def gerar_candidato(etnia, rng):
     else:
         concs = list(CONC_POR_ESQ[esq])
         if disp == "M4_demo_quimica":
-            concs = ["demo_quimica"]
+            concs = ["demo_quimica", "prop_ressurreicao"]
         else:
             concs = [c for c in concs if c != "demo_quimica"]
+            if disp != "H7_pouring":
+                concs = [c for c in concs if c != "prop_ressurreicao"]
         if disp not in ("H1_proxy_peito", "H4_soft", "H7_pouring"):
             concs = [c for c in concs if c != "prop_gigante"]
         conceito = rng.choice(concs)
