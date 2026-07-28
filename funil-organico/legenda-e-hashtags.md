@@ -74,25 +74,42 @@ real, não de copy publicitária).
 
 ### Pool de hashtags
 
+> **A hashtag é um rótulo de tópico que VOCÊ declara.** Você está dizendo ao
+> classificador em qual fila de moderação revisar o post. Hashtag de nicho de
+> saúde = fila de alegação de saúde, a mais dura que existe. **A hashtag certa
+> não é a mais relevante — é a mais vaga.**
+
 **Sempre incluir (compliance, 2 fixas):**
 ```
 #aigenerated #ad
 ```
 
-**Nicho — escolher 3 ou 4 (rotacionar):**
+**Tópico — escolher 2 ou 3, todas genéricas (rotacionar):**
 ```
-#MensHealth #wellness #healthylifestyle #menover50 #naturalremedies
-#mensWellness #healthtips #vitality #over50 #homeremedies #menshealthtips
+#wellness #healthylifestyle #healthy #selfcare #dailyhabits
+#morningroutine #naturalliving #feelbetter #lifestyle
 ```
 
-⛔ **Hashtag proibida:** qualquer uma que nomeie o problema —
-`#erectiledysfunction`, `#ED`, `#impotence`, `#viagra`, `#testosterone`. Isso
-entrega o post pra fila de revisão do nicho errado.
+⛔ **Hashtag que nomeia o problema — nunca:** `#erectiledysfunction`, `#ED`,
+`#impotence`, `#viagra`, `#testosterone`.
+
+⛔ **Hashtag que nomeia o NICHO — também não:** `#MensHealth`, `#mensWellness`,
+`#menshealthtips`, `#homeremedies`, `#naturalremedies`. Parecem inofensivas e
+**não são**: `#MensHealth` declara o post na categoria de alegação de saúde
+masculina, e `#homeremedies`/`#naturalremedies` na de remédio não comprovado.
+Juntas, triangulam exatamente o perfil que a Meta caça. A **Alisha (26K
+seguidores, reels de 16K-772K, sobrevivendo)** usa só `#Wellness` e
+`#healthylifestyle` — as duas mais vagas do catálogo. Não é descuido dela, é a
+estratégia. Ver "As 3 lições" acima.
+
+🟡 **Demografia é aceitável** (`#over50`, `#dadlife`) — descreve *quem assiste*,
+não *do que trata*. Usar no máximo uma, e nunca junto de outra temática.
 
 ⛔ **Não usar `#gelatin`** — é hashtag de culinária, traz audiência de sobremesa,
 não de homem 50+. A keyword vive no comentário, não na hashtag.
 
-**Teto: 6 hashtags.** Acima disso cheira a spam.
+**Teto: 5 hashtags.** Acima disso cheira a spam, e cada hashtag a mais é mais um
+rótulo que você entrega de graça.
 
 ---
 
@@ -105,11 +122,11 @@ em dois reels seguidos.
 
 | Página | Linha 1 default | Hashtags default |
 |---|---|---|
-| Joe's Wellness Hub | variação 1 | `#MensHealth #wellness #healthylifestyle #aigenerated #ad` |
-| Marcus' Men Reset Hub | variação 5 | `#menover50 #mensWellness #healthtips #aigenerated #ad` |
-| Ray's Natural Vitality Hub | variação 2 | `#naturalremedies #vitality #healthylifestyle #aigenerated #ad` |
-| Chuck's Men Welness Hub | variação 3 | `#MensHealth #over50 #homeremedies #aigenerated #ad` |
-| Matt's Natural Reset Tips | variação 4 | `#healthtips #menshealthtips #wellness #aigenerated #ad` |
+| Joe's Wellness Hub | variação 1 | `#wellness #healthylifestyle #aigenerated #ad` |
+| Marcus' Men Reset Hub | variação 5 | `#healthy #dailyhabits #aigenerated #ad` |
+| Ray's Natural Vitality Hub | variação 2 | `#naturalliving #wellness #aigenerated #ad` |
+| Chuck's Men Welness Hub | variação 3 | `#selfcare #healthylifestyle #aigenerated #ad` |
+| Matt's Natural Reset Tips | variação 4 | `#morningroutine #feelbetter #aigenerated #ad` |
 
 ---
 
@@ -120,7 +137,8 @@ em dois reels seguidos.
 - [ ] O follow-gate está na legenda, não só no vídeo?
 - [ ] `#aigenerated` e `#ad` presentes?
 - [ ] Zero medida, zero nome do problema, zero promessa no **texto**?
-- [ ] Máximo 6 hashtags, nenhuma nomeando o problema?
+- [ ] Máximo 5 hashtags, **nenhuma nomeando o problema NEM o nicho**?
+- [ ] Passou no teste da vagueza: um estranho lendo só as hashtags conseguiria dizer do que trata o vídeo? Se sim, estão específicas demais
 - [ ] A legenda é diferente da do último reel dessa página?
 
 ---
