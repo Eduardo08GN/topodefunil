@@ -514,6 +514,16 @@
    "M2_consequencia",
    "crushed_ice",
    "geoduck"
+  ],
+  [
+   "M14_ataque_industria",
+   "aloe",
+   "melon"
+  ],
+  [
+   "M6_antes_depois",
+   "lime",
+   "geoduck"
   ]
  ],
  "specs": [
@@ -619,6 +629,8 @@
   "cf8d088c3399",
   "52f6d239b912",
   "56ea64c218f3",
-  "9cd59e66055b"
+  "9cd59e66055b",
+  "6cfdd578a810",
+  "7ed5b3e84182"
  ]
 }

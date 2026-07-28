@@ -180,6 +180,45 @@ Execução PRISMA:
    prop compartilhado, corpo do vídeo solo). Mais barato e menos risco de
    morphing que duo nas 5 cenas. Declarar na quebra qual variante está em uso.
 
+### REGRA DE DINAMISMO VISUAL — dentro do vídeo (adicionada 2026-07-28)
+
+O eixo `conceito` resolveu "todos os **vídeos** iguais" e criou um problema novo:
+"todas as **cenas** iguais **dentro** do vídeo". Falha em produção — lote da
+geoduck: 5 IMAGEs da mesma mulher, mesma pose, mesmo prop na mão, mesmo
+enquadramento. Isso não é storyboard, é um retrato repetido 5 vezes. **O vídeo
+morre no segundo 9**, porque depois do hook não acontece mais nada na tela.
+
+O conceito da spec é o bit **do hook**. As outras 4 cenas têm que *avançar* a
+história visualmente, não ilustrá-la de novo.
+
+**1. Orçamento do hero prop — no máximo 2 das 5 cenas.**
+O prop do dispositivo pertence ao HOOK. Fora dele aparece **no máximo uma vez**
+(normalmente na cena do preparo, em cima da bancada — não na mão). Nas outras
+cenas ele **sai de quadro**. Prop na mão nas 5 cenas é o erro P14.
+
+**2. Cada cena tem um beat visual próprio.** Tabela mínima:
+
+| Cena | Beat | Ação visual obrigatória |
+|---|---|---|
+| 1 | HOOK | o **conceito** da spec — é a única cena que ele governa |
+| 2 | causa / contexto | **corpo e ambiente**: caminhando, sentando, abrindo armário, apontando pro cenário. Plano mais aberto que o hook |
+| 3 | preparo / mecanismo | **MÃOS EM AÇÃO** — sachê rasgando, colher mexendo, líquido despejando, tigela. É onde o "trick" acontece. Insert de mãos, rosto parcial |
+| 4 | resultado | **pessoa, sem prop na mão** — expressão, corpo, o olhar. Plano médio ou close |
+| 5 | CTA | direto na câmera, gesto de apontar. Close |
+
+**3. Escada de planos.** As 5 cenas não podem ter o mesmo tamanho de plano.
+Mínimo **3 tamanhos diferentes** entre wide / médio / close / insert-de-mãos.
+
+**4. A cena 3 é AÇÃO, nunca fala com prop parado.** Se o mecanismo é gelatina,
+é ali que o sachê é rasgado e mexido no copo. Continua valendo: **tease, nunca
+a receita completa**.
+
+**5. Teste do storyboard mudo.** Descreva cada IMAGE em UMA palavra
+(`flagrante · cozinha · mexendo · sorriso · apontando`). **Se duas palavras se
+repetirem, o vídeo falhou** — reescreva antes de entregar.
+
+---
+
 ### O que continua FIXO (e por quê)
 
 | Fixo | Motivo |
@@ -310,6 +349,10 @@ Tradução dos eixos novos para o IMAGE/TAKE:
 - [ ] A luz da spec está travada verbatim nas 5 cenas do vídeo?
 - [ ] O setting/gramática/wardrobe da spec estão em TODOS os IMAGEs do vídeo?
 - [ ] `dispositivo=nenhum` respeitado (sem prop inventado "pra enriquecer")?
+- [ ] **Hero prop em no máximo 2 das 5 cenas** (sai de quadro nas outras)?
+- [ ] **Teste do storyboard mudo**: as 5 IMAGEs em uma palavra cada — nenhuma se repete?
+- [ ] **Cena 3 tem mãos em ação** (preparo/mecanismo), não fala com prop parado?
+- [ ] Pelo menos **3 tamanhos de plano diferentes** entre as 5 cenas?
 - [ ] Rosto = REF da página (E3 = esposa na etnia da página)?
 - [ ] CTA GELATIN + follow-gate + loop de curiosidade na cena 4?
 - [ ] TAKEs no formato I2V do V4 (âncora, 80-150 palavras, Dialogue:/Audio:)?
@@ -331,6 +374,8 @@ Tradução dos eixos novos para o IMAGE/TAKE:
 - **P11** — Degradar o conceito da spec para talking head ("não coube", "ficou difícil"). O conceito É o vídeo.
 - **P12** — Marca real legível em cena de loja (Walmart/Target/Costco escrito), ou chyron/tarja de texto no prompt em vez do editor.
 - **P13** — Segundo personagem sem descrição completa em algum IMAGE, ou dois personagens falando na mesma cena.
+- **P14** — **Hero prop na mão nas 5 cenas**, ou duas cenas com o mesmo beat visual (falha no teste do storyboard mudo). O conceito é do hook; as cenas 2-5 avançam a história na tela.
+- **P15** — Dispositivo de demo clínica (`M1_modelo_anatomico`, `M4_demo_quimica`) em conceito ambulante (`local_publico`, `pov_mercado`, `flagrante_publico`). Modelo anatômico em pé numa loja vira **aula de anatomia**, não vídeo de ED — falha em produção 2026-07-28. Demo clínica só em set de bancada/lab.
 
 ---
 

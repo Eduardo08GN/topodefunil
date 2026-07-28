@@ -75,6 +75,9 @@ CONCEITOS = [
     "pip_broll",        # narrador pequeno recortado num canto + B-roll dominante (corrente
                         # sanguinea 3D, anatomia). B-roll entra NO EDITOR, nao no Veo.
 ]
+# conceitos "ambulantes": a pessoa esta de pe em espaco publico, sem bancada.
+# demo clinica (modelo anatomico / demo quimica) nao cabe neles.
+AMBULANTES = ["local_publico", "pov_mercado", "flagrante_publico"]
 SETTINGS = [
     "kitchen", "garage_bancada", "backyard_deck", "truck_cabine",
     "ranch", "varanda_manha", "quintal_grill", "escritorio_caseiro",
@@ -262,6 +265,10 @@ def gerar_candidato(etnia, rng):
         # pip_broll: narrador pequeno no canto — mao ociosa, sem prop
         if disp != "nenhum":
             concs = [c for c in concs if c != "pip_broll"]
+        # demo clinica NUNCA em conceito ambulante: modelo anatomico em pe numa loja
+        # vira aula de anatomia, nao video de ED (falha em producao 2026-07-28)
+        if disp in ("M1_modelo_anatomico", "M4_demo_quimica"):
+            concs = [c for c in concs if c not in AMBULANTES]
         conceito = rng.choice(concs) if concs else "solo_classico"
 
     settings = SETTINGS_POR_CONC.get(conceito) or SETTINGS_POR_ESQ.get(esq, SETTINGS_DOMESTICOS)
