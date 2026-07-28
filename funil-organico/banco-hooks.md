@@ -42,19 +42,19 @@ HOOK = [MOLDE] + [SUBSTÂNCIA] + [PROP] + [MODIFICADOR] + [PROMESSA]
 
 | Eixo | Valores | Nº |
 |---|---|---|
-| MOLDE | 14 | 14 |
+| MOLDE | 15 | 15 |
 | SUBSTÂNCIA (a isca absurda) | 16 | 16 |
 | PROP (o proxy fálico) | 12 | 12 |
 | MODIFICADOR (autoridade) | 6 | 6 |
 | PROMESSA | 8 | 8 |
 
-**14 × 16 × 12 × 6 = 16.128 hooks combinatórios.** A 50/dia, são **322 dias** antes de
+**15 × 16 × 12 × 6 = 17.280 hooks combinatórios.** A 50/dia, são **345 dias** antes de
 qualquer repetição de coordenada — e o ledger do randomizador impede repetição real
 mesmo dentro disso.
 
 ---
 
-## OS 14 MOLDES
+## OS 15 MOLDES
 
 Ordenados por performance medida onde há dado (views do Kofi&Simba em 2026-07-27).
 
@@ -237,6 +237,34 @@ Dois itens de cozinha que não combinam, resultado impossível.
 5. Somebody knew the fix in 1976. You suffered anyway. Sit with that.
 6. You weren't broken. You were managed. There's the receipt.
 7. The refill model is the business model. You're the subscription.
+
+### M15 — FLAGRANTE PÚBLICO ⭐ 1.5K likes / 580 comments / 310 shares (20-50x a média da página)
+> "[Falha masculina exposta em público, evidência visível, testemunhas reagindo]. Here's what could help."
+
+Engenharia reversa de **Tanisha Rivers** (2026-07-28, reel 1669109991889559): homem
+com mancha molhada na bermuda no corredor do Walmart, cabeça baixa, 5+ testemunhas
+com a mão na boca, a "médica" agachada apontando a mancha. A fórmula:
+**humilhação pública + dor masculina = viralização.** O M13 (medo do rival) é a
+versão privada desse medo; o M15 é a pública — "todo mundo vai ver que eu falhei".
+
+Os 4 componentes obrigatórios do flagrante (nenhum é opcional):
+1. **Evidência visível** da falha no quadro (mostrada, nunca só narrada)
+2. **Testemunhas reagindo** ao fundo (mão na boca, cochicho) — vergonha exige plateia
+3. **Vítima de cabeça baixa** — a vergonha em corpo, não em palavra
+4. **Pivô imediato** para a solução ("Here's what could help") em ≤4s
+
+1. He peed himself in the middle of the store because he couldn't hold it in. Here's what could help.
+2. She reached for his hand at the register and he flinched away. Everybody in line saw it. Here's what's really going on.
+3. His wife asked for one dance at their own anniversary. He sat back down. The whole room went quiet. This is why.
+4. The pharmacist called his name and the whole line heard what he was picking up. Every single month. There's a cheaper way.
+5. His buddies joked about separate bedrooms at the barbecue. His wife laughed the hardest. Watch his face. Here's what he did about it.
+6. Everyone at the pool saw him keep his shirt on again this year. It's not about the shirt. Let me show you.
+7. She ordered for him at the counter like he wasn't there. He said nothing. That silence has a cause.
+
+⚠️ **Regras de produção:** flagrante SÓ na cena 1 (cenas 2-5 em set interno — a
+troca de set faz parte do padrão da Tanisha). Evidência sugerida, nunca gráfica.
+Vítima e testemunhas = segundo plano desfocado sem descrição de identidade longa
+(risco de morphing). Selo 🟡 A/B até medir no Veo.
 
 ---
 

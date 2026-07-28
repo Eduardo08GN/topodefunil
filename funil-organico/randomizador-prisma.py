@@ -61,6 +61,9 @@ CONCEITOS = [
     "fake_broadcast",   # bancada de telejornal (chyron entra NO EDITOR, nunca no prompt)
     "podcast",          # mesa com microfone e fone, estetica de clipe de podcast
     "day_labels",       # progressao Day 0 -> Day 7 com etiqueta manuscrita (regra V4: max 2 palavras)
+    "flagrante_publico",# humilhacao publica testemunhada (Tanisha Rivers, 20-50x a media dela)
+                        # acoplado ao molde M15 — cena 1 publica com vitima + testemunhas,
+                        # cenas 2-5 em set interno (a troca de set faz parte do padrao)
 ]
 SETTINGS = [
     "kitchen", "garage_bancada", "backyard_deck", "truck_cabine",
@@ -98,7 +101,7 @@ MOLDES = [
     "M1_substancia_absurda", "M2_consequencia", "M3_triade", "M4_reacao",
     "M5_comando_social", "M6_antes_depois", "M7_isca_troca", "M8_combo_absurdo",
     "M9_confissao", "M10_pergunta", "M11_aviso_falso", "M12_prova_manha",
-    "M13_medo_rival", "M14_ataque_industria",
+    "M13_medo_rival", "M14_ataque_industria", "M15_flagrante_publico",
 ]
 SUBSTANCIAS = [
     "toothpaste", "coca_cola", "baking_soda", "lime", "lemon", "raw_garlic",
@@ -117,12 +120,12 @@ MODIFICADORES = ["pharma", "doctor", "ceticismo", "escassez", "insider", "nenhum
 
 # ---------------------------------------------------------------- compatibilidades
 ESQ_MOLDES = {
-    "E1_isca_e_troca": ["M1_substancia_absurda", "M7_isca_troca", "M8_combo_absurdo", "M5_comando_social"],
-    "E2_direta":       ["M1_substancia_absurda", "M2_consequencia", "M3_triade", "M5_comando_social", "M12_prova_manha", "M8_combo_absurdo"],
+    "E1_isca_e_troca": ["M1_substancia_absurda", "M7_isca_troca", "M8_combo_absurdo", "M5_comando_social", "M15_flagrante_publico"],
+    "E2_direta":       ["M1_substancia_absurda", "M2_consequencia", "M3_triade", "M5_comando_social", "M12_prova_manha", "M8_combo_absurdo", "M15_flagrante_publico"],
     "E3_esposa":       ["M11_aviso_falso", "M6_antes_depois"],
     "E4_confissao":    ["M9_confissao", "M13_medo_rival", "M12_prova_manha"],
     "E5_experimento":  ["M4_reacao"],
-    "E6_expose":       ["M14_ataque_industria", "M10_pergunta", "M2_consequencia"],
+    "E6_expose":       ["M14_ataque_industria", "M10_pergunta", "M2_consequencia", "M15_flagrante_publico"],
     "E7_diario":       ["M6_antes_depois", "M12_prova_manha"],
     "E8_mito_verdade": ["M10_pergunta", "M3_triade", "M7_isca_troca"],
 }
@@ -141,6 +144,7 @@ DISP_POR_MOLDE = {
     "M12_prova_manha":       ["nenhum", "H1_proxy_peito"],
     "M13_medo_rival":        ["nenhum"],
     "M14_ataque_industria":  ["nenhum", "M1_modelo_anatomico"],
+    "M15_flagrante_publico": ["nenhum"],  # a vitima E o visual — vegetal na mao dilui o flagrante
 }
 SETTINGS_POR_ESQ = {
     "E5_experimento": ["kitchen", "garage_bancada"],
@@ -160,6 +164,7 @@ CONC_POR_ESQ = {
 }
 # settings validos por conceito (None = usa SETTINGS_POR_ESQ / domesticos)
 SETTINGS_POR_CONC = {
+    "flagrante_publico": ["loja_bigbox", "corredor_farmacia", "estacionamento_loja"],
     "local_publico":  ["loja_bigbox", "estacionamento_loja", "corredor_farmacia"],
     "pov_mercado":    ["loja_bigbox", "corredor_farmacia"],
     "fake_broadcast": ["estudio_news"],
@@ -191,8 +196,9 @@ LUZ_POR_SETTING = {
 }
 # segundo personagem por conceito (esposa herda etnia da pagina; amigo e livre)
 SEGUNDO_POR_CONC = {
-    "duo_esposa": "esposa_etnia_da_pagina",
-    "duo_amigo":  "amigo_etnia_livre",
+    "duo_esposa":        "esposa_etnia_da_pagina",
+    "duo_amigo":         "amigo_etnia_livre",
+    "flagrante_publico": "vitima_flagrante",  # + testemunhas desfocadas ao fundo (cena 1)
 }
 REG_POR_ESQ = {
     "E1_isca_e_troca": ["conspiratorio", "humor_seco", "urgencia_alarme", "professor_calmo"],
@@ -216,15 +222,18 @@ def gerar_candidato(etnia, rng):
     molde = rng.choice(ESQ_MOLDES[esq])
     disp = rng.choice(DISP_POR_MOLDE[molde])
 
-    # conceito: filtrado pelo dispositivo sorteado
-    concs = list(CONC_POR_ESQ[esq])
-    if disp == "M4_demo_quimica":
-        concs = ["demo_quimica"]
+    # conceito: filtrado pelo dispositivo/molde sorteado
+    if molde == "M15_flagrante_publico":
+        conceito = "flagrante_publico"  # o flagrante E o hook — acoplamento 1:1
     else:
-        concs = [c for c in concs if c != "demo_quimica"]
-    if disp not in ("H1_proxy_peito", "H4_soft", "H7_pouring"):
-        concs = [c for c in concs if c != "prop_gigante"]
-    conceito = rng.choice(concs)
+        concs = list(CONC_POR_ESQ[esq])
+        if disp == "M4_demo_quimica":
+            concs = ["demo_quimica"]
+        else:
+            concs = [c for c in concs if c != "demo_quimica"]
+        if disp not in ("H1_proxy_peito", "H4_soft", "H7_pouring"):
+            concs = [c for c in concs if c != "prop_gigante"]
+        conceito = rng.choice(concs)
 
     settings = SETTINGS_POR_CONC.get(conceito) or SETTINGS_POR_ESQ.get(esq, SETTINGS_DOMESTICOS)
     if etnia == "negro":

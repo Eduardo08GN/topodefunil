@@ -103,6 +103,33 @@ Tradução de cada conceito para IMAGE/TAKE:
 | **fake_broadcast** | bancada de telejornal limpa, fundo azul de estúdio. O chyron/tarja "BREAKING" entra **no editor** (regra de texto de prop do V4), NUNCA no prompt | 🟢 |
 | **podcast** | mesa com microfone de braço e fone, estética de clipe de podcast | 🟢 |
 | **day_labels** | etiqueta manuscrita "Day 0"/"Day 7" (máx 2 palavras — regra V4); a progressão é o show | 🟢 |
+| **flagrante_publico** | humilhação pública testemunhada — ver seção própria abaixo. Acoplado 1:1 ao molde M15 | 🟡 A/B |
+
+### flagrante_publico (M15) — a fórmula de viralização da Tanisha Rivers
+
+**Humilhação pública + dor masculina = viralização** (reel 1669109991889559:
+1.5K/580/310, 20-50x a média da página; padrão repetido no reel da maca com 909).
+Os 4 componentes do M15 no [`banco-hooks.md`](funil-organico/banco-hooks.md) são
+obrigatórios: evidência visível, testemunhas reagindo, vítima de cabeça baixa,
+pivô pra solução em ≤4s.
+
+Execução PRISMA:
+
+1. **O flagrante é SÓ a cena 1** (setting público da spec). Cenas 2-5 cortam para
+   um set interno coerente com o esqueleto — a troca de set faz parte do padrão.
+   A luz da spec vale para a cena 1; cenas 2-5 travam uma luz interna única
+   (declarar verbatim nas 4).
+2. **Quem narra é o REF da página**, em pé/agachado AO LADO da vítima, apontando
+   a evidência com calma clínica — o contraste narrador-calmo × vítima-destruída
+   é o motor da cena.
+3. **A vítima** (`segundo=vitima_flagrante`): homem 50-70, cabeça baixa, ombros
+   caídos, mãos inquietas. Descrição curta — ele não reaparece nas cenas 2-5,
+   então o risco de morphing é menor que nos duos.
+4. **Testemunhas** = 3-5 pessoas desfocadas ao fundo, mãos na boca — sem
+   descrição de identidade individual (fundo, não personagem).
+5. **Evidência sempre sugerida, nunca gráfica** — mancha discreta, olhar
+   constrangido, distância entre o casal. Nada explícito (anti-bloqueio V4).
+6. A vítima **nunca fala**. Só o narrador tem `Dialogue:`.
 
 ### Regra do segundo personagem (duo_esposa / duo_amigo)
 
