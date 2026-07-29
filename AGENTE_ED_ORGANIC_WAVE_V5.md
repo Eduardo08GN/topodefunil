@@ -298,6 +298,10 @@ scroll-stopper ("o que é isso?"); a persona narra por cima.
 - *Formato:* funciona em curto; casa bem com a cena 1 (hook) ou 2 (bancada/mecanismo).
 
 > **PRINCÍPIO DE ABSORÇÃO (dinamismo — leia antes de excluir qualquer coisa):**
+> ⚠️ **RENOMEAÇÃO 2026-07-28:** os micro-hooks abaixo eram "M1-M7" e viraram **D1-D7**
+> (D de Dispositivo) para matar a colisão de namespace com os moldes M1-M15 do
+> banco-hooks. O randomizador PRISMA já usa D1_modelo_anatomico / D4_demo_quimica.
+>
 > Dispositivos visuais de hook são extraídos **POR MÉRITO, independente do FORMATO do
 > vídeo-fonte**. Excluir um FORMATO (ex.: VSL longo-autoridade) **NUNCA** exclui minerar
 > os achados visuais dele. Ao ver um bom hook em QUALQUER criativo, catalogue o
@@ -305,40 +309,40 @@ scroll-stopper ("o que é isso?"); a persona narra por cima.
 > formato dela fora. Regra: separar sempre "formato" (fica/sai) de "dispositivo visual"
 > (sempre minerável).
 
-**M1 — MODELO ANATÔMICO NA BANCADA**
+**D1 (ex-M1) — MODELO ANATÔMICO NA BANCADA**
 Um modelo anatômico da pelve/genitália masculina em cima da mesa, ao lado dos
 ingredientes. Autoridade médica implícita sem se declarar médico.
 - *IMAGE:* "an anatomical model of the male pelvis on the wooden table beside the ingredients".
 - *Variante (justaposição — Tanisha):* erguer o modelo anatômico em uma mão E o ingrediente/prop na outra, lado a lado, comparando ("clean your wiener" enquanto mostra o modelo + o limão/mel). *IMAGE:* "holding up a cross-section anatomical model of the male pelvis in one hand and a lemon half in the other, side by side to camera".
 
-**M2 — LÍQUIDO = SANGUE / FLUXO**
+**D2 (ex-M2) — LÍQUIDO = SANGUE / FLUXO**
 A bebida vermelha/escura (beterraba, melancia) em copo transparente, erguida à
 luz. Ancora a metáfora "blood flow / circulation" visualmente.
 - *IMAGE:* "holding up a glass of deep red beetroot juice to the window light, translucent".
 
-**M3 — METÁFORA DO ENCANAMENTO**
+**D3 (ex-M3) — METÁFORA DO ENCANAMENTO**
 Gesto de mão que ilustra "pipes tighten / flow drops": mão fechando como um cano,
 dedos apertando, depois abrindo. Sincronizado com a fala do mecanismo.
 - *TAKE:* "as he says 'the pipes tighten', he squeezes his fist slowly; on 'the flow opens' he spreads his fingers wide".
 
-**M4 — DERRAME/ESCORRIMENTO EM CLOSE**
+**D4 (ex-M4) — DERRAME/ESCORRIMENTO EM CLOSE**
 Close do ingrediente escorrendo (mel pingando do dipper, óleo brilhando, líquido
 sendo despejado). Textura + brilho = retenção sensorial.
 - *IMAGE:* "close-up of thick golden honey dripping slowly from a wooden dipper into the glass".
 
-**M5 — INTIMIDADE DOMÉSTICA (casal)**
+**D5 (ex-M5) — INTIMIDADE DOMÉSTICA (casal)**
 A persona feminina alimenta/serve o parceiro (colher na boca, mão no ombro).
 Prova social ("funciona pra casais reais") + sugestão.
 - *IMAGE:* "young woman feeding a spoonful to her seated partner, her hand on his shoulder, both smiling".
 
-**M6 — LOOP DE CURIOSIDADE ABERTO (visual + copy)**
+**D6 (ex-M6) — LOOP DE CURIOSIDADE ABERTO (visual + copy)**
 Ao dizer "there's an even more powerful source I use with clients", ela ergue a
 mão como quem segura um segredo, ou olha para um pote fora de quadro. O gesto
 sinaliza que há mais → dirige o comentário/DM.
 - *TAKE:* "on 'even more powerful source', she glances knowingly off-frame and lifts a finger, withholding".
 - **Copy do loop (a linha falada, não só o gesto):** rotacionar — "but there's an even more powerful source I've been using with my clients", "there is one ingredient that hits exactly that root and makes this ten times stronger", "watermelon starts the job, but there's something far more direct". Sempre uma promessa de MAIS que só se resolve no comentário/DM. Nunca entregue a fonte secreta no vídeo (Erro Fatal do V4: não revelar tudo).
 
-**M7 — BACKDROP DE AUTORIDADE (formato curto)**
+**D7 (ex-M7) — BACKDROP DE AUTORIDADE (formato curto)**
 Fundo que empresta credibilidade sem a persona se declarar médica: **estante com
 diplomas/certificados emoldurados + bandeiras dos EUA** atrás da persona (visto no
 seed_1320, que é curto). É a versão "leve" da autoridade — cabe no trick de 5 cenas
@@ -422,7 +426,7 @@ Mantém: 5 cenas × 18-23 palavras, vocativo por persona, mecanismo por extenso,
 não revelar todos os ingredientes, ancorar sintoma na causa (óxido nítrico /
 fluxo / "after 40"), sem ALL CAPS, sem travessão, sem "pounds/inches" na fala
 (exceto quando o próprio hook de choque usa "grows X inches" como promessa
-absurda — permitido SOMENTE no hook, nunca como medida técnica).
+absurda — o hook é o lugar do choque; desde 2026-07-28 o número pode ecoar no corpo também).
 
 ---
 

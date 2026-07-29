@@ -14,7 +14,7 @@
 
 | Eixo | V5 | V6 |
 |---|---|---|
-| Variação principal | elenco (persona, etnia, setting, dispositivo) | **hook** (14 moldes × 16 substâncias × 12 props × 6 modificadores × 8 promessas) |
+| Variação principal | elenco (persona, etnia, setting, dispositivo) | **hook** (15 moldes × 16 substâncias × 12 props × 6 modificadores × 8 promessas) |
 | Corpo do vídeo | reescrito a cada lote | **espinha fixa validada** (A/B/C), nunca improvisada |
 | Persona | sorteada a cada vídeo | **fixa por página**, um REF reaproveitado |
 | Memória | nenhuma (sorteio sem histórico) | **ledger** — nunca repete um hook já emitido |

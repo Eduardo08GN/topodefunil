@@ -76,7 +76,8 @@ Espaço combinatório: **129.024 hooks** = 2.580 dias a 50 vídeos/dia.
   modificador de autoridade colado. Vem do [`banco-hooks.md`](funil-organico/banco-hooks.md).
 - **Cenas 2-5 (corpo):** **copiadas** da [`espinha-fixa.md`](funil-organico/espinha-fixa.md),
   nunca reescritas.
-- **REF:** o da página, reaproveitado. Não gerar persona nova a cada vídeo.
+- **REF:** solto, sorteado por vídeo (`REF solto` na spec do randomizador) —
+  só a etnia é travada pela página (regra 3.4).
 
 Saída: `REF 01` + 5 blocos `IMAGE 01/05..05/05` + 5 blocos `TAKE 01/05..05/05`.
 
@@ -116,9 +117,11 @@ A automação Comentário→DM das 5 páginas só dispara nas variantes de gelat
 gelatine, jelatin, gelatn, gelati, gellatin, gelatim, gelantin, geltin, gelaton`).
 ⛔ **`BOOK` e `YES` são proibidos** — o randomizador v6 nem oferece. Já custou um lote.
 
-### 3.4 Persona fixa por página
-Um REF por página, reaproveitado em todos os lotes. Rosto novo a cada reel mata
-reconhecimento e denuncia fazenda de conteúdo.
+### 3.4 REF solto por vídeo (política revertida em 2026-07-28)
+**Cada vídeo sorteia um REF novo e aleatório** — o randomizador PRISMA emite
+`REF solto: idade/marca/físico` na spec. A regra anterior (um REF fixo por página)
+foi revogada por decisão do operador. O que fica inegociável é a **congruência de
+etnia** (regra 3.2): página de avatar negro → só REF afro-americano US.
 
 ### 3.5 As regras mecânicas do Veo moram no V4 — e só lá
 
@@ -210,6 +213,30 @@ de concorrente, ele invoca a skill e solta o link:
 | Arquivo | Papel |
 |---|---|
 | `AGENTE_ED_ORGANIC_WAVE_V6.md` | ⭐ **agente de produção atual** — hook-first |
+| `AGENTE_ED_PRISMA_V1.md` | lote heterogêneo por construção — 10 eixos + solver de distância |
+
+### Agentes especialistas por ângulo (desmembramento 2026-07-28)
+
+Um agente por ângulo, todos enxutos (regras próprias + mecânica por ponteiro).
+O PRISMA sorteia; o especialista do ângulo sorteado executa.
+
+| Agente | Ângulo | Evidência |
+|---|---|---|
+| `AGENTE_ED_FLAGRANTE_V1.md` | humilhação pública (M15) | 20-50x a média (Tanisha) |
+| `AGENTE_ED_GEMEO_V1.md` | antes/depois gêmeo (M6) | ⭐ **345K — o recorde** (Zariah) |
+| `AGENTE_ED_RESSURREICAO_V1.md` | despejo → prop ressuscita (H6/H7/P17) | Tanisha 1.6K, IA aprovada na moderação |
+| `AGENTE_ED_DEMO_QUIMICA_V1.md` | a reação química é a prova (M4/E5) | 7.1K/5K/4.3K |
+| `AGENTE_ED_SUBSTANCIA_ABSURDA_V1.md` | comando impossível (M1/M8) | 18K — top Kofi&Simba |
+| `AGENTE_ED_DIAGNOSTICO_V1.md` | "this is you" — tríade/contrastes (M3/E8) | 10K |
+| `AGENTE_ED_CONSEQUENCIA_V1.md` | ruína anunciada + exposé (M2/M14/E6) | 13K |
+| `AGENTE_ED_ELA_NARRADORA_V1.md` | voz feminina (M11/E3) | 🟡 piloto |
+| `AGENTE_ED_CONFISSAO_V1.md` | confissão crua 1ª pessoa (M9/M13/E4) | 🟡 piloto |
+| `AGENTE_ED_DIARIO_V1.md` | Day 0 → Day 7 (M12/E7/H2) | 🟡 piloto |
+| `AGENTE_ED_GUERRILHA_V1.md` | set público — loja/POV (H5) | 🟡 piloto |
+
+⛔ `fake_broadcast` foi **removido** do pool de conceitos (ordem do operador,
+2026-07-28 — risco de ban). Micro-hooks do V5 renomeados **M1-M7 → D1-D7**
+(colisão de namespace com os moldes). `dispositivo=nenhum` extinto (P18).
 | `AGENTE_ED_ORGANIC_WAVE_V5.md` | biblioteca de dispositivos H1-H10 / M1-M7 + templates Veo (Apêndice C) |
 | `AGENTE_ED_ORGANIC_WAVE_V4.md` | **o motor** — regras de IMAGE/TAKE, estética, anti-glitch, formato |
 | `AGENTE_ED_ORGANIC_WAVE_V3/V2.md` | histórico, não usar |
@@ -221,7 +248,7 @@ e vale para todos.
 | Arquivo | Papel |
 |---|---|
 | [`recursos/DOUTRINA-VEO-3.1.md`](recursos/DOUTRINA-VEO-3.1.md) | ⭐ **documento mãe do Veo** — comportamento do modelo, sintaxe, tabela de falhas |
-| [`funil-organico/banco-hooks.md`](funil-organico/banco-hooks.md) | o que varia — 14 moldes, ~100 hooks literais, selo de risco |
+| [`funil-organico/banco-hooks.md`](funil-organico/banco-hooks.md) | o que varia — 15 moldes, ~100 hooks literais, selo de risco |
 | [`funil-organico/espinha-fixa.md`](funil-organico/espinha-fixa.md) | o que não varia — 3 espinhas validadas + CTA + persona por página |
 | [`funil-organico/randomizador-v6.py`](funil-organico/randomizador-v6.py) | sorteador hook-first com ledger |
 | [`funil-organico/banco-copy-agressiva.md`](funil-organico/banco-copy-agressiva.md) | munição bruta, 325+ linhas (seções A-X) |
@@ -254,7 +281,7 @@ Ver também [`funil-organico/PENDENCIAS.md`](funil-organico/PENDENCIAS.md).
 | # | Item | Prioridade |
 |---|---|---|
 | 1 | **Rotacionar o token da API do Coolify** — foi exposto em chat | 🔴 alta |
-| 2 | **Travar os 5 REFs de persona** — tabela em `espinha-fixa.md` está "a definir" | 🔴 bloqueia o V6 em escala |
+| 2 | ~~Travar os 5 REFs de persona~~ — **obsoleto**: política mudou para REF solto por vídeo (2026-07-28) | ✅ resolvido por mudança de política |
 | 3 | Automação Comentário→DM em **Marcus, Ray e Chuck** (kit pronto) | 🟡 |
 | 4 | Subir o AdBatch atualizado pro Flow (código pronto em `projetosweb`, falta colar no builder) | 🟡 |
 | 5 | Persistência do `vendas.jsonl` (volume no Coolify) | 🟡 |
