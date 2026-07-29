@@ -107,20 +107,46 @@ Nunca entregue o ingrediente no vídeo. A promessa de MAIS é o que move o comen
 
 ---
 
-## PERSONA FIXA POR PÁGINA
+## PERSONA — REF SOLTO POR VÍDEO (política 2026-07-28)
 
-Um REF por página, reaproveitado em **todos** os lotes. Não rotacionar.
+> ⚠️ **Política revertida por decisão do operador (2026-07-28).** A regra
+> anterior ("um REF por página, reaproveitado em todos os lotes") está
+> **revogada**. Cada vídeo sorteia um REF novo e aleatório — o randomizador
+> PRISMA emite `REF solto: idade/marca/físico` em cada spec.
 
-| Página | Persona | Etnia | Espinha default |
-|---|---|---|---|
-| Joe's Wellness Hub | a definir | branco | A |
-| Marcus' Men Reset Hub | a definir | **negro** | A |
-| Ray's Natural Vitality Hub | a definir | branco | B |
-| Chuck's Men Welness Hub | a definir | **negro** | A |
-| Matt's Natural Reset Tips | a definir | branco | C |
+**A única trava que fica: congruência de etnia.** Página de avatar negro
+recebe **só** REF afro-americano US (homem e parceira). Inegociável — ver
+[ARQUITETURA-OPERACAO](ARQUITETURA-OPERACAO.md).
 
-> Congruência de casting é inegociável — ver [ARQUITETURA-OPERACAO](ARQUITETURA-OPERACAO.md).
-> Ao travar o REF de cada página, salvar o prompt do REF aqui para reuso literal.
+| Página | Etnia do REF | Espinha default |
+|---|---|---|
+| Joe's Wellness Hub | branco | A |
+| Marcus' Men Reset Hub | **negro** | A |
+| Ray's Natural Vitality Hub | branco | B |
+| Chuck's Men Welness Hub | **negro** | A |
+| Matt's Natural Reset Tips | branco | C |
+
+O REF do Ray abaixo deixa de ser trava e vira **exemplo de formato** — o
+molde de como escrever um bloco REF com marca facial.
+
+### Regra da marca facial
+
+Todo REF precisa de **uma âncora visual memorável** — vitiligo, mecha branca,
+cicatriz, heterocromia, entalhe na orelha, barba distinta. Rosto bonito e
+genérico não é reconhecido no feed; a Zariah (345K views) usa vitiligo extenso,
+Tanisha e Angela usam tranças + terninho. A marca é o que faz o espectador
+lembrar que já viu essa pessoa.
+
+### Exemplo de bloco REF (formato de referência — não é mais trava)
+
+**Ex-REF do Ray** — âncora: entalhe faltando no topo da orelha esquerda
+
+```
+Photo of a real person, a 58-year-old white American man, chest up, facing the camera directly, neutral relaxed expression. Broad jaw, deep-set hazel eyes with heavy crow's feet, thick gray-streaked auburn beard reaching mid-chest, short receding auburn hair. A small notch missing from the top of his left ear. Weathered tan skin, visible pores, faint sun spots across the forehead, fit build. Wearing a plain charcoal gray crew-neck tee shirt. Plain neutral gray background, soft even frontal light. Ordinary everyday relatable person, not a celebrity, not resembling any famous person. No subtitles, no captions, no burned-in text, no watermark.
+```
+
+> A **roupa do REF é neutra de propósito** — `wardrobe` é eixo sorteado pelo
+> PRISMA e troca a cada vídeo. O que o REF trava é o **rosto**, nunca a roupa.
 
 ---
 

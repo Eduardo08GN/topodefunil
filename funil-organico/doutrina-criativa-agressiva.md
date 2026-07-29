@@ -95,7 +95,7 @@ Existem DOIS modos de falha, não um: o **morno** (comercial de TV) e o **bingo 
 | ❌ Morno (Globo) | ✅ Agressivo (nosso padrão) |
 |---|---|
 | Mulher na cozinha segurando o produto e sorrindo | Loira de biquíni segura banana murcha, pinga 2 gotas, banana levanta, ela morde o lábio |
-| "If mornings don't feel the way they used to…" | "Be honest — when she reaches for you at night, does it show up… or play dead?" |
+| "If mornings don't feel the way they used to…" | "Be honest — when she reaches for you at night, does your Johnson show up… or play dead?" |
 | "This supports healthy circulation" | "Your engine isn't broken. Someone switched it OFF. Watch what happens when you flip it back—" *(demo)* |
 | "You'll feel more energy and vitality" | "Week three is when she made *that* sound. First time in eleven years." |
 | "Comment GELATIN to learn more" | "Done playing dead in your own bed? Comment GELATIN — before she finds someone who doesn't." |

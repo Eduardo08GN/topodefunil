@@ -65,16 +65,18 @@ troco eixo, não prefiro, não repito (Erro Fatal P1).
 | **setting** | kitchen, garage_bancada, backyard_deck, truck_cabine, ranch*, varanda_manha, quintal_grill, escritorio_caseiro, penthouse_urbano + loja_bigbox, estacionamento_loja, corredor_farmacia, estudio_news, estudio_podcast, laboratorio | o LUGAR |
 | **gramatica** | talking_head_classico, sentado_mesa, demo_maos_e_rosto, close_confessional, sentado_carro, low_angle_deck | o ENQUADRAMENTO |
 | **luz** | morning_window, golden_hour, night_lamp, overcast_soft, noon_harsh + fluorescente_loja, luz_estudio | a HORA (travada verbatim DENTRO do vídeo, varia ENTRE vídeos) |
-| **molde** (hook) | os 14 do [`banco-hooks.md`](funil-organico/banco-hooks.md) | os primeiros 2 segundos |
-| **dispositivo** | H1, H4_soft, H7, M1_modelo, M4_demo, **nenhum** | o objeto em cena — ou a ausência dele |
+| **molde** (hook) | os 15 do [`banco-hooks.md`](funil-organico/banco-hooks.md) | os primeiros 2 segundos |
+| **dispositivo** | H1, H4_soft, H7, D1_modelo, D4_demo | o objeto em cena (D1-D7 = ex-"M1-M7" do V5, renomeados 2026-07-28 para matar a colisão com os moldes M1-M15) |
 | **dor** | as 10 do V4 | a ferida da confissão |
 | **registro** | raiva_contida, humor_seco, vergonha_crua, professor_calmo, conspiratorio, urgencia_alarme | o TOM da atuação |
 | **wardrobe** | flannel, henley, polo, plain_tee, jaqueta_leve, camisa_trabalho, scrub_medico | a roupa (mesmo rosto, visual diferente) |
 
 \* `ranch` nunca para páginas de persona negra (congruência de casting — regra herdada).
 
-`dispositivo=nenhum` é valor legítimo: **nem todo vídeo tem um vegetal na mão.**
-Isso sozinho já quebra metade da cara-de-lote.
+> ⚠️ **`dispositivo=nenhum` foi EXTINTO (2026-07-28).** A regra do proxy no hook
+> (P18) diz "sem exceção" e venceu: todo molde emite um dispositivo com proxy.
+> O randomizador não oferece mais `nenhum`. (O texto antigo "nem todo vídeo tem
+> um vegetal na mão" valeu até o P18 provar o contrário em produção.)
 
 ---
 
@@ -100,7 +102,7 @@ Tradução de cada conceito para IMAGE/TAKE:
 | **duo_amigo** | segundo homem (etnia livre) como cético/prova ambulante; mesma regra de segundo personagem | 🟡 |
 | **local_publico** | frente/corredor/estacionamento de **loja big-box GENÉRICA** — nenhuma marca legível (Veo embaralha texto + marca registrada); letreiro fora de foco. O elemento US é a própria loja | 🟡 A/B |
 | **pov_mercado** | selfie andando no corredor, produto na mão, prateleiras desfocadas ao fundo | 🟡 A/B |
-| **fake_broadcast** | bancada de telejornal limpa, fundo azul de estúdio. O chyron/tarja "BREAKING" entra **no editor** (regra de texto de prop do V4), NUNCA no prompt | 🟢 |
+| ~~fake_broadcast~~ | ⛔ **REMOVIDO (2026-07-28, ordem do operador)** — risco de ban já documentado no empilhamento-reptiliano ("eles usam, nós NÃO") e rejeitado em produção. Fora do randomizador. Não usar. | ⛔ |
 | **podcast** | mesa com microfone de braço e fone, estética de clipe de podcast | 🟢 |
 | **day_labels** | etiqueta manuscrita "Day 0"/"Day 7" (máx 2 palavras — regra V4); a progressão é o show | 🟢 |
 | **flagrante_publico** | humilhação pública testemunhada — ver seção própria abaixo. Acoplado 1:1 ao molde M15 | 🟡 A/B |
@@ -159,11 +161,15 @@ Execução PRISMA:
    a evidência com calma clínica — o contraste narrador-calmo × vítima-destruída
    é o motor da cena.
 3. **A vítima** (`segundo=vitima_flagrante`): homem 50-70, cabeça baixa, ombros
-   caídos, mãos inquietas. Descrição curta — ele não reaparece nas cenas 2-5,
-   então o risco de morphing é menor que nos duos.
+   caídos, mãos inquietas. Não reaparece nas cenas 2, 3 e 5 — **exceção: a
+   cena 4**, onde ele PODE voltar transformado como parte do clímax da
+   redenção (F15 do FLAGRANTE: casal redimido, mulher no colo dele, prop
+   ereto na mão dela). Se voltar, descrição completa no IMAGE da cena 4 (P13)
+   e postura invertida da do hook — continua mudo.
 4. **Testemunhas** = 3-5 pessoas desfocadas ao fundo, mãos na boca — sem
    descrição de identidade individual (fundo, não personagem).
-5. **Evidência sempre sugerida, nunca gráfica** — mancha discreta, olhar
+5. **Evidência sempre sugerida, nunca gráfica** *(regra VISUAL — anti-recusa
+   do gerador; a FALA continua literal e direta, ver Porteiro)* — mancha discreta, olhar
    constrangido, distância entre o casal. Nada explícito (anti-bloqueio V4).
 6. A vítima **nunca fala**. Só o narrador tem `Dialogue:`.
 
@@ -201,9 +207,9 @@ cenas ele **sai de quadro**. Prop na mão nas 5 cenas é o erro P14.
 | Cena | Beat | Ação visual obrigatória |
 |---|---|---|
 | 1 | HOOK | o **conceito** da spec — é a única cena que ele governa |
-| 2 | causa / contexto | **corpo e ambiente**: caminhando, sentando, abrindo armário, apontando pro cenário. Plano mais aberto que o hook |
+| 2 | causa / contexto | **corpo e ambiente**: caminhando, sentando, abrindo armário, apontando pro cenário. Plano mais aberto que o hook. *(ou o **PICO 2**, se a spec mandar — ver regra abaixo)* |
 | 3 | preparo / mecanismo | **MÃOS EM AÇÃO** — sachê rasgando, colher mexendo, líquido despejando, tigela. É onde o "trick" acontece. Insert de mãos, rosto parcial |
-| 4 | resultado | **pessoa, sem prop na mão** — expressão, corpo, o olhar. Plano médio ou close |
+| 4 | resultado | **o PICO 2** (default da spec) — o segundo choque visual. Ver regra abaixo |
 | 5 | CTA | direto na câmera, gesto de apontar. Close |
 
 **3. Escada de planos.** As 5 cenas não podem ter o mesmo tamanho de plano.
@@ -219,12 +225,197 @@ repetirem, o vídeo falhou** — reescreva antes de entregar.
 
 ---
 
+### REGRA DO SEGUNDO PICO — o vídeo precisa de DOIS (adicionada 2026-07-28)
+
+A regra de dinamismo acima consertou "as 5 cenas são a mesma imagem" — e criou o
+problema seguinte: **cenas diferentes, mas mornas**. Falha em produção no lote do
+Joe (2026-07-28): hook com abóbora e modelo anatômico, depois um homem sentado
+numa mesa, mãos num copo, um sorriso, um dedo apontando. Está tudo dentro do P14
+— e mesmo assim são **quatro cenas de cobertura de documentário**.
+
+O diagnóstico é de retenção, não de estética: **o vídeo tem um pico só, e ele
+acaba no segundo 8.** Quem sobrevive ao hook não recebe mais nenhuma razão pra
+ficar. O bit do hook comprou 8 segundos; os outros 32 não foram comprados por
+ninguém.
+
+> **Regra: o hook é o pico 1. Uma das cenas 2 ou 4 carrega o PICO 2** — um
+> segundo bit visual, de natureza **diferente** do conceito do hook.
+
+O randomizador sorteia `PICO2=<bit> na cena <n>`. Como toda spec, eu executo —
+não escolho, não substituo, não "acho que não coube" (P1 continua valendo).
+
+**Os 8 picos:**
+
+| PICO2 | O que acontece na tela | Selo |
+|---|---|---|
+| **colo_crescimento** | mulher (etnia da página) sentada no colo dele segurando o prop, que **alonga** na mão dela durante o take; rosto dela abrindo em surpresa. Ele segue falando como se nada. | 🟡 A/B |
+| **reacao_testemunha** | segunda pessoa entra no quadro, vê o resultado, reage com choque (mão na boca, recuo) | 🟢 |
+| **demo_quimica_prop** | a substância é despejada no prop e a reação acontece **na tela** — espuma, cor mudando, o prop endireitando | 🟢 |
+| **antes_depois_prop** | cut seco entre dois estados do prop na bancada: murcho → **maior e firme** (a mecânica do 345K, em versão de bancada) | 🟡 |
+| **prop_gigante_revelacao** | ele puxa de fora do quadro um prop *comically large* e o apoia na mesa. ⛔ nunca "absurdly oversized" (selo 🔴) | 🟡 |
+| **esposa_reagindo** | ela surge atrás dele, olha direto pra câmera com boca aberta / revirando os olhos. Ele não percebe. | 🟢 |
+| **pilha_pilulas** | ele varre uma pilha de frascos de pílula pra dentro da lixeira num gesto só — prova visual do "haven't touched a pill" | 🟢 |
+| **fita_metrica** | dois props lado a lado, ou fita métrica esticada ao lado do prop — a promessa numérica do hook fica **literal na tela** sem ser dita | 🟡 |
+
+**Como executar (as 5 regras):**
+
+1. **A copy não muda.** O pico 2 é **visual e mudo** — a imagem escala, as
+   palavras da cena continuam sendo as do beat do esqueleto. É exatamente por
+   isso que ele é barato: não custa nem uma palavra do orçamento de fala.
+2. **Quem aparece no pico 2 não fala** (P13 — um só fala por cena). Ela reage; ele
+   narra. E o contraste narrador-impassível × reação-explosiva é o motor do bit.
+3. **Cena 4 é o lugar natural** — a copy do resultado já é o payoff, então a
+   imagem paga junto. Cena 2 quando o choque pertence à causa. **Nunca cena 3**
+   (mãos em ação é estrutural) e **nunca cena 5** (o CTA é limpo, direto na
+   câmera — bit ali rouba a keyword).
+4. **O pico 2 nunca repete o bit do hook.** O randomizador já bloqueia as colisões
+   (`demo_quimica` não recebe `demo_quimica_prop`, etc.), mas a regra vale também
+   pro julgamento: dois choques do mesmo tipo somam a um.
+5. **Segundo personagem = descrição completa em todo IMAGE onde aparece**, e
+   esposa/mulher na **etnia da página** (congruência de casting).
+
+**Anti-bloqueio do `colo_crescimento`** (o mais agressivo dos oito): ela sentada
+no colo **vestida**, enquadramento do peito pra cima nos dois, **prop na altura
+do peito dela — nunca perto da virilha de ninguém** (H9 tem selo 🔴 e derruba o
+IMAGE). O crescimento acontece **dentro do TAKE**, não em dois IMAGEs — H7
+(pouring + crescimento) já tem selo 🟢. Se o IMAGE for recusado, o fallback é ela
+sentada **no braço da poltrona** ao lado, mesma reação.
+
+**Teste do segundo pico:** cubra a cena 1 com a mão. O que sobra ainda pararia o
+scroll de alguém? Se as 4 cenas restantes são um homem falando em ângulos
+diferentes, **o pico 2 não existe** — e o vídeo morre no segundo 9.
+
+---
+
+### ⭐ REGRA DO PROXY NO HOOK — a cena 1 nunca fica sem ele (2026-07-28)
+
+> **A cena 1 SEMPRE tem o REF segurando o proxy fálico nas mãos.** Sem exceção,
+> em nenhum conceito — inclusive `flagrante_publico`.
+
+O proxy (banana, pepino, geoduck, daikon, abóbora — catálogo em
+[`prop-metaforas.md`](funil-organico/prop-metaforas.md)) é o **scroll-stopper**.
+É a única coisa do quadro que diz o assunto do vídeo em zero palavras, no mudo,
+em meio segundo. Hook sem proxy é um vídeo que precisa ser *ouvido* pra ser
+entendido — e ninguém ouve antes de decidir parar.
+
+⚠️ **Isto revoga a regra anterior de que `M15_flagrante_publico` roda com
+`disp=nenhum`.** Aquilo foi inferido de **um único reel** da Tanisha, com a
+justificativa de que "vegetal na mão dilui o flagrante". Conclusão tirada de
+amostra 1, e errada: o flagrante e o proxy **somam**, não competem. O
+randomizador agora emite `H4_soft` ou `H1_proxy_peito` para M15.
+
+**Onde o proxy fica (a distinção que decide se o IMAGE é aceito):**
+
+| Construção | Selo | Evidência |
+|---|---|---|
+| Proxy na **própria** virilha do sujeito, ponta pra baixo — lê como a anatomia dele (**H9**) | 🔴 **recusa** | IMG 01 do Ray, 2026-07-27 |
+| Proxy nas mãos de um **segundo personagem agachado ao lado**, pendendo na altura da virilha da vítima | 🟢 passa | lote da geoduck, 2026-07-28 |
+| Proxy nas mãos do próprio REF, na altura do **peito** (**H1**) | 🟢 passa | Joe, Ray |
+
+O que dispara o filtro não é a altura — é o proxy ser lido como **anatomia do
+sujeito**. Nas mãos de um terceiro ele lê como objeto, e passa na mesma altura.
+
+**Em `flagrante_publico` especificamente:** o REF fica **agachado ao lado** da
+vítima segurando o proxy **murcho** (`long soft drooping neck`, `limp`) — o proxy
+murcho **é** a evidência da falha, e substitui qualquer sugestão gráfica. A
+vítima continua sem falar e de cabeça baixa.
+
+---
+
+### ⭐ REGRA DA SUBSTÂNCIA EM AÇÃO — o hook MOSTRA a aplicação (2026-07-28)
+
+> **Se a spec tem `subst` + `prop`, o hook mostra a substância sendo APLICADA
+> no prop, na tela, dentro do TAKE da cena 1.** Segurar o prop parado enquanto
+> fala da substância é copy falada; a doutrina é **copy visual ao máximo**.
+
+Falha em produção (Joe, spec `a015b8787165`, 2026-07-28): o hook dizia *"rub
+lime on this sausage"* e o vídeo saiu com o homem **segurando a sausage parada**
+— o limão nem aparecia no quadro. O espectador no mudo via um homem olhando
+para um embutido. A promessa do hook tem que acontecer **na frente dele**.
+
+**Como executar:**
+
+1. **O IMAGE 01 mostra as duas coisas**: o prop (pequeno/murcho — corolário de
+   I2V, é o estado ANTES) numa mão, e a substância **em mid-aplicação** na
+   outra — limão em mid-squeeze com gotas caindo, colher despejando, dedos
+   esfregando. Uma ação por mão, orçamento de mãos do V4 intacto.
+2. **O TAKE completa a mecânica do despejo**: a substância atinge o prop →
+   o prop **alonga rápido** (regra do despejo abaixo: termina em ~3s, dobra
+   de comprimento) → **alguém reage** (olhos arregalados, recuo).
+3. A copy do hook pode encurtar — a imagem está dizendo o que a boca não
+   precisa mais dizer. *"Watch what lime does to this sausage"* + a demo na
+   tela > *"rub lime on this sausage and watch what happens"* + prop parado.
+4. Vale para **todo conceito** em que o hook carrega `subst` + `prop`. Se o
+   conceito não comporta a aplicação (ex.: flagrante com proxy murcho como
+   evidência), a substância **sai do hook falado também** — não se fala de
+   uma demo que a tela não paga.
+
+O randomizador imprime a linha `DEMO OBRIGATORIA (P20)` em cada spec — ela é
+parte da spec, executa-se como os eixos.
+
+---
+
+### ⭐ REGRA DO DESPEJO — todo pouring termina em CRESCIMENTO (2026-07-28)
+
+> **Todo objeto que recebe o despejo de um líquido tem que crescer de tamanho,
+> no sentido de se alongar, durante o take.** Sem exceção.
+
+Não é preferência estética, é a função retórica do plano. O despejo é a **prova
+visual da promessa**. Se o objeto só fica molhado, o hook queimou 8 segundos e
+não pagou nada — vira um legume oleoso. Quando ele **alonga**, a promessa
+numérica do hook (`five_inches_a_week`, `3_to_8_inches`) fica **literal na tela
+sem ser dita como medida** — que é exatamente o que a política de texto não
+deixa a gente falar.
+
+Isso unifica três coisas que o repertório vinha tratando como bits separados e
+são **uma mecânica só**: o **H7** (pouring + crescimento, selo 🟢), o
+`prop_ressurreicao` da Tanisha (IA, passou na moderação) e o `antes_depois_gemeo`
+da Zariah (**345K views, o recorde**). Nos três, o que converte é o mesmo: o
+objeto muda de tamanho na frente do espectador.
+
+Aplica-se a **todo** despejo, em qualquer cena e qualquer conceito:
+`H7_pouring`, `demo_quimica`, `demo_quimica_prop`, `prop_ressurreicao`,
+`colo_crescimento`, ou qualquer take em que alguém derrama algo sobre um prop.
+
+**Como executar:**
+
+1. **O IMAGE tem que mostrar o prop PEQUENO.** Corolário de I2V: o IMAGE é o
+   primeiro frame, então é o estado ANTES. Prop já grande na imagem não tem pra
+   onde crescer e o take não faz nada. Descrever explicitamente:
+   `a short, stubby peeled banana` / `a small soft zucchini`.
+2. **O crescimento acontece DENTRO do TAKE**, não em dois IMAGEs — o H7 já tem
+   selo 🟢 nessa forma, e é mais barato que o cut seco A/B.
+3. **O crescimento é RÁPIDO e PRONUNCIADO — nunca lento.** ⛔ **`slowly` e
+   `gradually` são palavras proibidas** aqui. Num clipe de 8s, crescimento lento
+   espalha a mudança pelo take inteiro, o delta por frame fica invisível e o Veo
+   ou não anima ou anima de menos. Pior: **o feed dá 2 segundos**. Se o
+   crescimento não terminou até lá, ele não aconteceu. Falha em produção,
+   2026-07-28.
+   **Alvo: começa e termina nos primeiros ~3 segundos**, dobrando de comprimento.
+   O resto do take é a reação e a fala.
+4. **Vocabulário travado:**
+   - ✅ `rapidly lengthens and straightens, visibly doubling in length within two
+     seconds, becoming noticeably longer and firm`
+   - ⛔ `slowly lengthens` / `gradually grows` — crescimento imperceptível, não paga
+   - ⛔ `absurdly oversized` — **selo 🔴, bloqueia** (cena do Joe, 2026-07-27)
+   - 🟡 `comically large` — só para prop que **já nasce** grande (`prop_gigante`),
+     nunca como resultado do crescimento
+5. **Alguém tem que REAGIR ao crescimento.** Prop crescendo sem reação lê como
+   glitch de IA; com reação lê como milagre. Quem despeja, ou quem assiste, arregala
+   os olhos / abre a boca **enquanto** o objeto alonga. A reação é o que assina
+   que aquilo foi de propósito.
+6. **A amarração do prop continua valendo** (regra do V4): ele fica agarrado nas
+   mãos o take inteiro, `never leaving his hands, never set down` — senão o Veo
+   desamarra o objeto justamente no frame em que ele está mudando de forma.
+
+---
+
 ### O que continua FIXO (e por quê)
 
 | Fixo | Motivo |
 |---|---|
 | **CTA = GELATIN + follow-gate** | automação Comentário→DM só dispara nas variantes de gelatin |
-| **Rosto = REF da página** | identidade do canal ≠ variação; rosto novo a cada reel denuncia fazenda de conteúdo. A roupa varia, o rosto não. (E3 usa a esposa — etnia da página.) **O REF deve ter uma marca facial memorável** — a Zariah (345K) usa vitiligo extenso no rosto e nos braços; Tanisha e Angela usam tranças + terninho. Rosto bonito e genérico é esquecido; rosto com marca é reconhecido no feed. Ao travar o REF de cada página, escolher uma âncora visual (vitiligo, mecha branca, cicatriz, heterocromia, barba longa distinta) |
+| **Rosto = REF SOLTO da spec** (política 2026-07-28) | cada vídeo sorteia um REF novo — o randomizador emite `REF solto: idade/marca/físico` e o agente escreve o bloco REF a partir dele. **A trava que fica é a etnia**: página de avatar negro → só REF afro-americano US (homem e parceira). Dentro de um mesmo vídeo o rosto é um só nas 5 cenas (consistência I2V), e **a marca facial sorteada é obrigatória no REF e em todos os IMAGEs** — rosto genérico não segura consistência nem atenção (Zariah 345K = vitiligo). (E3 usa a esposa — etnia da página.) |
 | **Cadeia de congruência** | reel promete *recipe* → DM entrega *recipe* → bridge → VSL ([automacao-comentario-dm.md](funil-organico/automacao-comentario-dm.md)) |
 | **Loop de curiosidade na cena 4** | nunca entregar o ingrediente no vídeo |
 | **Mecânica Veo** | ver "Mecânica" abaixo — por ponteiro, nunca por cópia |
@@ -280,6 +471,105 @@ palavras, regra de texto de prop do V4) · 3. DAY 3 — primeiro sinal ·
 
 ---
 
+## ⭐ REGRA DO FIO NARRATIVO — as 5 copys contam UMA história (2026-07-28)
+
+> **Lidas em sequência, sem as imagens, as 5 copys têm que formar uma história
+> contínua com começo, virada e desfecho.** Cena que funciona sozinha mas não
+> amarra na anterior é beat de catálogo — e beat de catálogo é o que faz o
+> vídeo parecer 5 anúncios de 8 segundos colados.
+
+Falha em produção (Joe, flagrante do casamento, 2026-07-28): o hook mostrava a
+humilhação mas **não dizia o que a sala tinha descoberto** — o espectador via
+riso e choro sem causa. E a cena 2 abria com fisiologia genérica ("after fifty
+the flow...") como se o casamento nunca tivesse existido. Cada cena estava
+correta; o vídeo não contava história nenhuma.
+
+**As 3 obrigações:**
+
+1. **O hook CONTEXTUALIZA o choque.** Não basta mostrar a cena — a copy nomeia
+   **o que aconteceu e por que dói** (o que a plateia descobriu, o que a
+   evidência significa). O espectador do mudo lê a imagem; o do áudio precisa
+   receber a mesma história pela boca.
+2. **A cena 2 abre com a VIRADA, não com a tese.** O conectivo é obrigatório:
+   *until… / that's when… / so he… / turns out…* — a primeira frase da cena 2
+   pega o personagem onde o hook o largou. Fisiologia/mecanismo entra **depois**
+   do conectivo, como explicação da virada, nunca como abertura fria.
+3. **Toda cena começa amarrando na anterior.** Conectivos de tempo e
+   consequência (*that night… / nineteen days later… / and now…*). Proibido
+   abrir cena com frase que funcionaria em qualquer outro vídeo.
+
+**Teste do fio:** cubra as imagens e leia só as 5 copys em voz alta. Se soar
+como uma história que um homem contaria num bar — passou. Se soar como 5
+blocos intercambiáveis de anúncio — reescreva antes de entregar.
+
+Quando o vídeo é sobre um TERCEIRO (flagrante, testemunho), o arco é dele:
+ruína → descoberta → ritual → redenção → CTA. Quando é confissão do próprio
+narrador (E4), o arco é o mesmo em primeira pessoa.
+
+---
+
+## ⭐ O PORTEIRO — a pergunta antes da primeira palavra (2026-07-28)
+
+> **Antes de escrever qualquer copy, pergunte:**
+> **"Estou referenciando e sendo claro o suficiente para que quem está
+> assistindo entenda do que se trata cada cena?"**
+
+Não é um checklist de fim de trabalho — é a condição de partida. O léxico
+indireto empurra toda copy na direção do vago, e o custo disso não aparece no
+texto: aparece no espectador que assiste 8 segundos, não entende, e rola.
+**Copy que não comunica não tem compliance nenhum — tem silêncio.** Vago não é
+seguro: é o mesmo custo de produção e o mesmo risco de alcance, com zero venda.
+
+> ⚠️ **A cerca não é um dial.** São 4 linhas específicas (claim de cura,
+> credencial médica falsa, depoimento fabricado, sexo gráfico) — e **todo o
+> resto é campo aberto**. Escreva a linha mais direta que a cena permite e
+> **depois** troque só as palavras clínicas por gíria. Nunca comece suave.
+> Detalhe em [`arsenal`](funil-organico/arsenal-linguagem-indireta.md) §A cerca
+> não é um dial.
+
+Quatro perguntas concretas, respondidas ANTES de escrever:
+
+1. **Estou referenciando?** O órgão aparece com **substantivo** do arsenal
+   (nunca pronome) e o **estado** (firme × murcho) está dito? Ver as quatro
+   obrigações do [`arsenal`](funil-organico/arsenal-linguagem-indireta.md).
+   ⚠️ **COTA DE 75% (ordem do operador, 2026-07-28): no mínimo 4 das 5 cenas
+   nomeiam o órgão com substantivo.** A pergunta se repete em CADA cena — o
+   espectador cai em qualquer ponto do vídeo, e cena sem o nome é cena onde
+   quem acabou de chegar não sabe do que se trata. Conte antes de entregar.
+   Rotacionar o termo entre as 4 menções (cota não autoriza bordão).
+2. **A CENA está explicada?** Cada uma das 5 cenas mostra alguma coisa — e a
+   fala daquela cena tem que dizer **o que é aquilo e por que importa**. Mãos
+   mexendo um copo sem a fala nomear o ritual é imagem órfã. O espectador não
+   lê a spec; ele só tem o que está na tela e o que entra pelo ouvido.
+3. **Eu chegando agora, sem contexto nenhum** — sem conhecer a página, sem ter
+   visto outro vídeo, entrando no segundo zero — **eu saberia do que se trata?**
+   Se a resposta depende de "ele vai entender pelo resto do vídeo", falhou: o
+   resto do vídeo só existe pra quem ficou. E **inferência conta como vago**:
+   linha que exige decodificar ironia, piada ou subtexto (*"toasted the most
+   patient wife… he knew what it meant"*) falha igual — em 40 segundos não há
+   orçamento pra setup literário. Diga o fato, com o órgão nomeado.
+4. **⭐ A dor está em IMAGEM ou em EMOÇÃO?** `her face still guts me` /
+   `it destroyed me` / `I felt like less of a man` são o narrador **contando
+   que sentiu** — tristeza genérica que serve pra briga, doença ou demissão.
+   Nomeie **o que a câmera veria**: quem olhou, pro quê, o que aconteceu
+   depois. `the face of my wife looking at my Johnson still guts me`. A emoção
+   é consequência da imagem, nunca substituta dela. Detalhe em
+   [`arsenal`](funil-organico/arsenal-linguagem-indireta.md) §Dor em imagem.
+
+Falhas em produção que este porteiro teria barrado: Ray 2026-07-28 (`cuts the
+budget`, `the leak` — metáfora inventada, vídeo sobre nada), farmácia Marcus
+2026-07-28 (`what he picks up every single month`, `does yours still show up`
+— eufemismo do eufemismo + pronome no lugar do nome) e Joe/geoduck 2026-07-28
+(`her face still guts me` + `not just any gelatin` — **corrigido pelo operador
+na mão**: dor em emoção e loop usado como desculpa pra não nomear o mecanismo).
+
+> ⚠️ **O padrão de recaída:** as três falhas acima têm hook impecável e
+> escorregam depois do segundo 8. O agente trata "hook nomeado" como
+> "vídeo resolvido" e afrouxa nas cenas 2-5 — que é exatamente onde a venda
+> acontece. O porteiro roda **por cena**.
+
+---
+
 ## REGRAS DE COPY FRESCA (o anti-maritaca)
 
 Matéria-prima bruta — **usar, não copiar em bloco**:
@@ -299,12 +589,16 @@ Dentro de um lote:
    e o pool de 4 follow-gates da [`espinha-fixa.md`](funil-organico/espinha-fixa.md)
    (rotacionar).
 3. A dor da spec entra com **imagem concreta nova** (hora, lugar, objeto), não
-   com a frase de catálogo do banco.
+   com a frase de catálogo do banco — e **nunca como verbo de emoção**
+   (`guts me`, `destroyed me`): quem olhou, pro quê, o que veio depois.
+   Ver a 4ª pergunta do Porteiro.
 4. Registro emocional da spec governa vocabulário e ritmo: `raiva_contida` =
    frases curtas e secas; `professor_calmo` = cadência explicativa;
    `vergonha_crua` = primeira pessoa, pausas; `humor_seco` = punchline no fim.
-5. Regras de copy do V4 valem (18-23 palavras/cena, vocativo, sem inches/pounds
-   no corpo, sem ALL CAPS, léxico indireto).
+5. Regras de copy do V4 valem (18-23 palavras/cena, vocativo, sem ALL CAPS,
+   gíria do arsenal no lugar de palavra clínica). ⚠️ A antiga proibição de
+   inches/pounds no corpo foi **revogada** (2026-07-28) — número permitido em
+   qualquer cena.
 
 ---
 
@@ -340,20 +634,33 @@ Tradução dos eixos novos para o IMAGE/TAKE:
 ## CHECKLIST PRISMA (além dos checklists do V4)
 
 - [ ] Rodei o randomizador-prisma e o relatório imprimiu **≥ 70% de pares distintos**?
+- [ ] **Emiti o bloco REF antes dos IMAGEs**, construído a partir do `REF solto` da spec (idade + marca facial + físico + etnia da página)? Formato de referência na [`espinha-fixa.md`](funil-organico/espinha-fixa.md). (entrega = REF → 5 IMAGEs → 5 TAKEs)
 - [ ] Estou executando as specs sem trocar nenhum eixo?
 - [ ] O **conceito** da spec está visível na tela (o vídeo funciona no mudo?) — não degradei um duo/demo/loja para talking head?
 - [ ] Se conceito público: loja GENÉRICA, nenhuma marca legível? Se broadcast: chyron deixado pro editor?
 - [ ] Se duo: segundo personagem descrito COMPLETO em todo IMAGE, um só falando por cena?
 - [ ] Cenas 2-5 seguem os **beats** do esqueleto da spec — com palavras escritas do zero?
+- [ ] **Teste do ouvinte cego**: ouvindo só o áudio, dá pra saber do que trata o vídeo? O **órgão é nomeado NO HOOK** (gíria do arsenal, rotacionada vs o vídeo anterior da página) e o **estado firme/murcho** aparece? Zero metáfora inventada fora do arsenal?
+- [ ] **Teste do fio narrativo**: lidas em sequência sem as imagens, as 5 copys contam UMA história? O hook nomeia o que aconteceu, a cena 2 abre com a virada (*until…*), cada cena amarra na anterior?
 - [ ] Nenhuma cena de dois vídeos do lote começa com as mesmas 5 palavras?
 - [ ] A luz da spec está travada verbatim nas 5 cenas do vídeo?
 - [ ] O setting/gramática/wardrobe da spec estão em TODOS os IMAGEs do vídeo?
 - [ ] `dispositivo=nenhum` respeitado (sem prop inventado "pra enriquecer")?
+- [ ] **A cena 1 tem o proxy fálico nas mãos do REF** (ou de um segundo personagem agachado), e **não** na própria virilha do sujeito?
 - [ ] **Hero prop em no máximo 2 das 5 cenas** (sai de quadro nas outras)?
 - [ ] **Teste do storyboard mudo**: as 5 IMAGEs em uma palavra cada — nenhuma se repete?
+- [ ] **O PICO 2 da spec está na cena que a spec mandou**, e é um bit diferente do conceito do hook?
+- [ ] **Teste do segundo pico**: cobrindo a cena 1, o que sobra ainda para o scroll?
+- [ ] No pico 2, quem aparece **não fala** e a copy da cena continua a do beat?
+- [ ] **Se a spec tem `subst`+`prop`: a substância está sendo APLICADA no prop dentro do TAKE do hook** (aplicar → alongar → reagir), não só segurada/falada?
+- [ ] **Todo despejo termina em crescimento?** O prop está descrito **pequeno** no IMAGE, **alonga** no TAKE, e alguém **reage** a isso?
+- [ ] O crescimento é **rápido** (termina nos primeiros ~3s) — sem `slowly`, sem `gradually`?
 - [ ] **Cena 3 tem mãos em ação** (preparo/mecanismo), não fala com prop parado?
 - [ ] Pelo menos **3 tamanhos de plano diferentes** entre as 5 cenas?
-- [ ] Rosto = REF da página (E3 = esposa na etnia da página)?
+- [ ] Rosto = REF solto da spec, o MESMO nas 5 cenas, marca facial presente em todos os IMAGEs (E3 = esposa na etnia da página)?
+- [ ] **COTA DE 75% CONTADA:** ≥ 4 das 5 cenas nomeiam o órgão com substantivo, e os termos rotacionam entre elas?
+- [ ] **Porteiro rodado CENA A CENA** (não só no hook): órgão nomeado por substantivo em toda cena que toca o problema ou o resultado?
+- [ ] **A dor está em IMAGEM, não em emoção?** (⛔ `guts me`, `destroyed me`, `felt like less of a man` sozinhos — quem olhou, pro quê, o que veio depois?)
 - [ ] CTA GELATIN + follow-gate + loop de curiosidade na cena 4?
 - [ ] TAKEs no formato I2V do V4 (âncora, 80-150 palavras, Dialogue:/Audio:)?
 
@@ -366,7 +673,7 @@ Tradução dos eixos novos para o IMAGE/TAKE:
 - **P3** — Copiar a espinha A/B/C palavra por palavra (isso é modo V6; aqui os beats são fixos, o texto não).
 - **P4** — Repetir as 5 primeiras palavras de qualquer cena entre dois vídeos do lote.
 - **P5** — Inventar prop quando a spec diz `dispositivo=nenhum`.
-- **P6** — Rosto novo fora do REF da página (exceto esposa em E3).
+- **P6** — Ignorar o `REF solto` da spec: reaproveitar o rosto do vídeo anterior, omitir a marca facial sorteada, ou trocar rosto ENTRE cenas do mesmo vídeo (o rosto varia entre vídeos, nunca dentro). Etnia incongruente com a página é P10 agravado.
 - **P7** — CTA diferente de GELATIN, ou cena 5 sem follow-gate.
 - **P8** — Luz diferente entre cenas do MESMO vídeo (varia entre vídeos, nunca dentro).
 - **P9** — Copiar regra mecânica do V4/DOUTRINA para dentro deste arquivo. Aponte.
@@ -375,6 +682,13 @@ Tradução dos eixos novos para o IMAGE/TAKE:
 - **P12** — Marca real legível em cena de loja (Walmart/Target/Costco escrito), ou chyron/tarja de texto no prompt em vez do editor.
 - **P13** — Segundo personagem sem descrição completa em algum IMAGE, ou dois personagens falando na mesma cena.
 - **P14** — **Hero prop na mão nas 5 cenas**, ou duas cenas com o mesmo beat visual (falha no teste do storyboard mudo). O conceito é do hook; as cenas 2-5 avançam a história na tela.
+- **P18** — **Hook sem proxy na mão do REF.** A cena 1 sem o proxy fálico perde o scroll-stopper e vira um vídeo que só se entende ouvindo. Vale para todo conceito, inclusive `flagrante_publico`. Também é P18 colocar o proxy na **própria virilha do sujeito** apontando pra baixo (H9, selo 🔴) em vez de nas mãos do REF ou de um segundo personagem agachado.
+- **P17** — **Despejo sem crescimento, ou crescimento lento**: líquido derramado sobre um prop que continua do mesmo tamanho — ou que cresce devagar demais pra ser visto. O objeto **alonga rápido** (termina nos primeiros ~3s, dobra de comprimento), o IMAGE mostra ele **pequeno** (senão não há pra onde crescer), e alguém **reage**. Palavras proibidas no crescimento: `slowly`, `gradually`, `absurdly oversized` (esta última com selo 🔴). Também é P17 **descrever o crescimento só pelo verbo** (`extends`, `grows`) sem coreografia — âncora fixa, analogia física, propagação e estado final travado, em batidas com segundos. Falha em produção Joe/geoduck 2026-07-28; receita literal em [`funil-organico/prop-metaforas.md`](funil-organico/prop-metaforas.md) §Coreografia de crescimento e no R2b do [`AGENTE_ED_RESSURREICAO_V1.md`](AGENTE_ED_RESSURREICAO_V1.md).
+- **P16** — **Vídeo com um pico só**: cenas 2-5 sem nenhum segundo bit visual, ou o `PICO2` da spec ignorado/degradado para talking head. Passar no P14 (cenas diferentes) **não basta** — diferente e morno continua morrendo no segundo 9. Falha em produção, lote Joe 2026-07-28. Também é P16 colocar o pico 2 na cena 3 (rouba as mãos em ação) ou na 5 (rouba o CTA).
+- **P19** — **Copy indireta a ponto de ficar incompreensível.** Vídeo em que o espectador ouve os 40 segundos e não sabe do que se trata. Sintomas: o órgão nunca é nomeado (nem por gíria), o estado firme/murcho nunca aparece, e o texto usa **metáfora inventada** (`cuts the budget`, `the leak`) em vez da gíria do [`arsenal-linguagem-indireta.md`](funil-organico/arsenal-linguagem-indireta.md). A troca autorizada é **palavra clínica → gíria conhecida**, nunca **sentido → charada**. Toda cena de fala puxa vocabulário do arsenal; linha que não está lá não entra. Falha em produção, Ray 2026-07-28.
+- **P22** — **Copy que NARRA em vez de ATACAR.** Vídeo inteiro em 3ª pessoa, com o espectador assistindo a história de um estranho e nunca sendo tocado. Sintomas: nenhum "you" em cena nenhuma; abstração no lugar da imagem crua (`it's the flow, not the years` em vez de `your soldier didn't get old — he got choked off`); eufemismo do eufemismo (`what he picks up every month`); e palavra gasta em mecânica de história (`here's the part nobody saw, the old man behind him in that same line leaned in and whispered that…`) em vez de soco. **Toda cena aterrissa numa linha de segunda pessoa** — a história é o setup, o espectador é o alvo. Falha em produção, farmácia Marcus 2026-07-28.
+- **P21** — **Copy modular sem fio narrativo.** Hook que mostra o choque sem nomear o que aconteceu, cena 2 que abre com tese/fisiologia em vez da virada (*until… / that's when…*), ou qualquer cena que abriria igual em outro vídeo. As 5 copys lidas em sequência têm que contar UMA história (ruína → descoberta → ritual → redenção → CTA). Falha em produção, Joe casamento 2026-07-28.
+- **P20** — **Hook com `subst`+`prop` sem a aplicação na tela.** A substância é falada mas não aparece, ou aparece parada ao lado — o prop fica na mão sem nada acontecendo com ele. A demo (aplicar → alongar → reagir) acontece no TAKE da cena 1, ou a substância sai do hook. Prop segurado parado enquanto a boca descreve a demo é copy falada vestida de bit visual. Falha em produção, Joe 2026-07-28.
 - **P15** — Dispositivo de demo clínica (`M1_modelo_anatomico`, `M4_demo_quimica`) em conceito ambulante (`local_publico`, `pov_mercado`, `flagrante_publico`). Modelo anatômico em pé numa loja vira **aula de anatomia**, não vídeo de ED — falha em produção 2026-07-28. Demo clínica só em set de bancada/lab.
 
 ---

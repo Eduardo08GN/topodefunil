@@ -267,7 +267,10 @@ Sempre amarre a dor à causa do nicho:
 - "ever since things stopped working right"
 - "because your body just doesn't respond the same after a certain age"
 
-REGRA: Sempre discreto, NUNCA gráfico ou explícito sobre sexo.
+REGRA (reescrita 2026-07-28, ordem do operador): DIRETO em gíria conhecida do arsenal
+— órgão nomeado por substantivo, estado firme/murcho dito. O único limite é pornografia
+gráfica (descrição de ato sexual explícito). "Discreto" foi extirpado: innuendo pesado,
+a reação dela, a noite inteira — tudo permitido e desejado.
 
 ### RESULTADOS — HOMEM
 
@@ -606,7 +609,10 @@ Adapte expressão e gestos ao TOM da copy em cada cena:
 
 **Pontuação:** Travessões (—) viram vírgulas. Reticências (...) viram vírgulas. Dois-pontos (:) viram ponto final. NUNCA ALL CAPS na copy (Veo soletra letra por letra).
 
-**PROIBIDO:** "pounds", "inches", linguagem explícita/gráfica sobre sexo.
+**PROIBIDO:** palavra clínica (trocar por gíria do arsenal — `penis`→`your Johnson`) e pornografia gráfica. Só.
+> ⚠️ REVOGADO (2026-07-28, ordem do operador): a proibição de "pounds"/"inches" na copy
+> foi removida — o hook já grita a promessa numérica, bani-la do corpo só deixava a
+> copy vaga e incoerente com a cena 1. Número é permitido em qualquer cena. Vago ≠ seguro.
 
 ---
 
@@ -902,7 +908,7 @@ Contagem: X palavras
 - [ ] Não avisa que esconde receita?
 - [ ] Sintoma ancorado na causa?
 - [ ] Mecanismo por extenso?
-- [ ] Sem "pounds", "inches"?
+- [ ] Sem palavra clínica (gíria do arsenal no lugar)?
 - [ ] Sem ALL CAPS?
 - [ ] Sem travessão (—)?
 - [ ] Dor DIFERENTE da última variação?

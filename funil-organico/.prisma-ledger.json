@@ -524,6 +524,76 @@
    "M6_antes_depois",
    "lime",
    "geoduck"
+  ],
+  [
+   "M2_consequencia",
+   "vaseline",
+   "zucchini"
+  ],
+  [
+   "M7_isca_troca",
+   "olive_oil",
+   "daikon"
+  ],
+  [
+   "M2_consequencia",
+   "apple_cider_vinegar",
+   "geoduck"
+  ],
+  [
+   "M4_reacao",
+   "cinnamon",
+   "cucumber"
+  ],
+  [
+   "M15_flagrante_publico",
+   "apple_cider_vinegar",
+   "geoduck"
+  ],
+  [
+   "M12_prova_manha",
+   "apple_cider_vinegar",
+   "geoduck"
+  ],
+  [
+   "M10_pergunta",
+   "lime",
+   "sausage"
+  ],
+  [
+   "M1_substancia_absurda",
+   "aloe",
+   "peach"
+  ],
+  [
+   "M4_reacao",
+   "turmeric",
+   "eggplant"
+  ],
+  [
+   "M10_pergunta",
+   "crushed_ice",
+   "daikon"
+  ],
+  [
+   "M4_reacao",
+   "vaseline",
+   "melon"
+  ],
+  [
+   "M12_prova_manha",
+   "olive_oil",
+   "carrot"
+  ],
+  [
+   "M15_flagrante_publico",
+   "toothpaste",
+   "zucchini"
+  ],
+  [
+   "M9_confissao",
+   "apple_cider_vinegar",
+   "banana"
   ]
  ],
  "specs": [
@@ -631,6 +701,37 @@
   "56ea64c218f3",
   "9cd59e66055b",
   "6cfdd578a810",
-  "7ed5b3e84182"
+  "7ed5b3e84182",
+  "f687244064b6",
+  "429ce63b11bf",
+  "fc01d0b24de9",
+  "7bc5bf2baf4d",
+  "a7a1fd6d2033",
+  "15616e5f5adc",
+  "a015b8787165",
+  "a27ee4aeb66b",
+  "36a69e06eaa0",
+  "a24654dfebab",
+  "b8632420b82b",
+  "c31893ad78fb",
+  "601f7c5add29",
+  "2e881e121e19"
+ ],
+ "conceitos": [
+  "local_publico",
+  "solo_classico",
+  "solo_classico",
+  "solo_classico",
+  "prop_ressurreicao",
+  "flagrante_publico",
+  "duo_amigo",
+  "fake_broadcast",
+  "prop_ressurreicao",
+  "demo_quimica",
+  "solo_classico",
+  "prop_ressurreicao",
+  "pov_mercado",
+  "flagrante_publico",
+  "podcast"
  ]
 }

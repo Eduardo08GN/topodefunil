@@ -58,7 +58,9 @@ CONCEITOS = [
     "duo_amigo",        # segundo personagem homem (o amigo cetico/barrigudo)
     "local_publico",    # loja big-box generica / estacionamento / corredor farmacia
     "pov_mercado",      # selfie andando no corredor, produto na mao
-    "fake_broadcast",   # bancada de telejornal (chyron entra NO EDITOR, nunca no prompt)
+    # "fake_broadcast" REMOVIDO (2026-07-28, ordem do operador): risco de ban ja
+    # documentado em empilhamento-reptiliano.md ("eles usam, nos NAO") e o Ed
+    # rejeitou o ancora de jornal em producao. Nao re-adicionar sem decisao dele.
     "podcast",          # mesa com microfone e fone, estetica de clipe de podcast
     "day_labels",       # progressao Day 0 -> Day 7 com etiqueta manuscrita (regra V4: max 2 palavras)
     "flagrante_publico",# humilhacao publica testemunhada (Tanisha Rivers, 20-50x a media dela)
@@ -78,6 +80,42 @@ CONCEITOS = [
 # conceitos "ambulantes": a pessoa esta de pe em espaco publico, sem bancada.
 # demo clinica (modelo anatomico / demo quimica) nao cabe neles.
 AMBULANTES = ["local_publico", "pov_mercado", "flagrante_publico"]
+
+# PICO 2 = o segundo bit visual, nas cenas 2 ou 4. O conceito carrega o HOOK e
+# so ele; sem um segundo pico o video vira 1 choque + 4 cenas de cobertura e
+# morre no segundo 9 (falha em producao, lote Joe 2026-07-28 — ver P16).
+PICOS2 = [
+    "colo_crescimento",       # mulher (etnia da pagina) sentada no colo dele, prop alongando na mao dela, rosto de surpresa
+    "reacao_testemunha",      # segunda pessoa entra no quadro, ve o resultado e reage com choque
+    "demo_quimica_prop",      # despeja a substancia no prop e a reacao acontece na tela
+    "antes_depois_prop",      # cut seco entre dois estados do prop na bancada (murcho -> maior e firme)
+    "prop_gigante_revelacao", # ele puxa de fora de quadro um prop comicamente grande
+    "esposa_reagindo",        # ela surge atras dele, olha pra camera, reacao muda (boca aberta / revira os olhos)
+    "pilha_pilulas",          # ele varre uma pilha de frascos de pilula pra lixeira num gesto so
+    "fita_metrica",           # dois props lado a lado, a promessa do hook fica literal na tela
+]
+# picos que exigem prop na mao — nao cabem com dispositivo=nenhum (senao viola P5)
+PICOS2_COM_PROP = [
+    "colo_crescimento", "demo_quimica_prop", "antes_depois_prop",
+    "prop_gigante_revelacao", "fita_metrica",
+]
+# o pico 2 nunca repete o bit do hook — se o conceito ja e aquilo, o pico e outro
+PICO2_COLIDE = {
+    "demo_quimica":       ["demo_quimica_prop"],
+    "antes_depois_gemeo": ["antes_depois_prop", "colo_crescimento", "fita_metrica"],
+    "prop_gigante":       ["prop_gigante_revelacao"],
+    "prop_ressurreicao":  ["antes_depois_prop", "prop_gigante_revelacao"],
+    "duo_esposa":         ["esposa_reagindo", "colo_crescimento"],
+    "duo_amigo":          ["reacao_testemunha"],
+    # esposa_reagindo fora do flagrante: ela ja esta no hook, e a reacao muda
+    # dela na cena 4 nao e bit — e figurante (falha Chuck/fila 2026-07-28, F15)
+    "flagrante_publico":  ["reacao_testemunha", "esposa_reagindo"],
+}
+# familia "crescimento": desde a regra do despejo (P17), TODO pouring termina em
+# prop alongando. Entao se o hook ja cresce, um pico2 que tambem cresce e o mesmo
+# truque duas vezes — e dois choques do mesmo tipo somam a um.
+PICOS2_CRESCIMENTO = ["colo_crescimento", "demo_quimica_prop", "antes_depois_prop"]
+CONCEITOS_QUE_CRESCEM = ["demo_quimica", "prop_ressurreicao"]
 SETTINGS = [
     "kitchen", "garage_bancada", "backyard_deck", "truck_cabine",
     "ranch", "varanda_manha", "quintal_grill", "escritorio_caseiro",
@@ -102,7 +140,7 @@ REGISTROS = [
 ]
 DISPOSITIVOS = [
     "H1_proxy_peito", "H4_soft", "H7_pouring",
-    "M1_modelo_anatomico", "M4_demo_quimica", "nenhum",
+    "D1_modelo_anatomico", "D4_demo_quimica",  # "nenhum" removido: P18 — todo hook tem proxy
 ]
 WARDROBES = [
     "flannel", "henley", "polo", "plain_tee", "jaqueta_leve", "camisa_trabalho",
@@ -136,6 +174,23 @@ PROMESSAS = [
 ]
 MODIFICADORES = ["pharma", "doctor", "ceticismo", "escassez", "insider", "nenhum"]
 
+# ---------------------------------------------------------------- REF solto (politica 2026-07-28)
+# REF NAO e mais travado por pagina: cada video sorteia um rosto novo.
+# Unica trava: etnia congruente com o avatar da pagina (negro -> so afro-americano US).
+# Fora do contrato de distancia (nao conta nos 10 eixos) — e identidade, nao bit visual.
+REF_IDADES = ["52", "55", "58", "61", "64", "67", "70", "73"]
+REF_MARCAS = [
+    "extensive vitiligo patches on face and neck", "a bold white streak in the hair",
+    "a thin scar through one eyebrow", "a small notch missing from the top of one ear",
+    "heterochromia, one blue eye one brown", "a large dark birthmark on one cheek",
+    "a long distinctive beard reaching mid-chest", "a shaved head with a gray goatee",
+    "deep smile lines and a gold front tooth glint", "thick black-rimmed glasses and heavy brows",
+]
+REF_FISICOS = [
+    "lean wiry build", "stocky barrel-chested build", "fit athletic build",
+    "heavyset soft build", "tall broad-shouldered build",
+]
+
 # ---------------------------------------------------------------- compatibilidades
 ESQ_MOLDES = {
     "E1_isca_e_troca": ["M1_substancia_absurda", "M7_isca_troca", "M8_combo_absurdo", "M5_comando_social", "M15_flagrante_publico"],
@@ -149,20 +204,27 @@ ESQ_MOLDES = {
 }
 DISP_POR_MOLDE = {
     "M1_substancia_absurda": ["H1_proxy_peito", "H7_pouring"],
-    "M2_consequencia":       ["nenhum", "M1_modelo_anatomico", "H1_proxy_peito"],
-    "M3_triade":             ["M1_modelo_anatomico", "nenhum", "H1_proxy_peito"],
-    "M4_reacao":             ["M4_demo_quimica"],
-    "M5_comando_social":     ["nenhum", "H1_proxy_peito", "H7_pouring"],
+    "M2_consequencia":       ["D1_modelo_anatomico", "H1_proxy_peito"],
+    "M3_triade":             ["D1_modelo_anatomico", "H1_proxy_peito"],
+    "M4_reacao":             ["D4_demo_quimica"],
+    "M5_comando_social":     ["H1_proxy_peito", "H7_pouring"],
     "M6_antes_depois":       ["H4_soft", "H1_proxy_peito"],
-    "M7_isca_troca":         ["H1_proxy_peito", "H7_pouring", "nenhum"],
+    "M7_isca_troca":         ["H1_proxy_peito", "H7_pouring"],
     "M8_combo_absurdo":      ["H1_proxy_peito", "H7_pouring"],
-    "M9_confissao":          ["nenhum"],
-    "M10_pergunta":          ["nenhum", "M1_modelo_anatomico"],
-    "M11_aviso_falso":       ["nenhum"],
-    "M12_prova_manha":       ["nenhum", "H1_proxy_peito"],
-    "M13_medo_rival":        ["nenhum"],
-    "M14_ataque_industria":  ["nenhum", "M1_modelo_anatomico"],
-    "M15_flagrante_publico": ["nenhum"],  # a vitima E o visual — vegetal na mao dilui o flagrante
+    # M9/M11/M13 emitiam "nenhum" e violavam o P18 ("todo hook tem proxy, sem
+    # excecao"). Resolvido 2026-07-28: proxy neles tambem — na confissao o proxy
+    # MURCHO na mao e a propria confissao visual; no aviso falso ela segura o
+    # proxy firme como "prova do perigo".
+    "M9_confissao":          ["H1_proxy_peito", "H4_soft"],
+    "M10_pergunta":          ["D1_modelo_anatomico"],
+    "M11_aviso_falso":       ["H1_proxy_peito"],
+    "M12_prova_manha":       ["H1_proxy_peito"],
+    "M13_medo_rival":        ["H4_soft", "H1_proxy_peito"],
+    "M14_ataque_industria":  ["D1_modelo_anatomico"],
+    # M15: o REF segura o proxy AO LADO da vitima (proxy murcho = a evidencia).
+    # ⚠️ ANTES daqui saia inferido de UM reel da Tanisha. Errado: o hook
+    # sem proxy perde o scroll-stopper (falha em producao, lote Matt 2026-07-28 — P18).
+    "M15_flagrante_publico": ["H4_soft", "H1_proxy_peito"],
 }
 SETTINGS_POR_ESQ = {
     "E5_experimento": ["kitchen", "garage_bancada"],
@@ -176,9 +238,9 @@ CONC_POR_ESQ = {
     "E3_esposa":       ["duo_esposa", "solo_classico", "local_publico", "antes_depois_gemeo"],
     "E4_confissao":    ["solo_classico", "podcast", "pip_broll"],
     "E5_experimento":  ["demo_quimica", "prop_ressurreicao"],
-    "E6_expose":       ["fake_broadcast", "podcast", "solo_classico", "local_publico", "pip_broll"],
+    "E6_expose":       ["podcast", "solo_classico", "local_publico", "pip_broll"],
     "E7_diario":       ["day_labels", "solo_classico", "antes_depois_gemeo"],
-    "E8_mito_verdade": ["solo_classico", "podcast", "fake_broadcast", "prop_gigante", "pip_broll"],
+    "E8_mito_verdade": ["solo_classico", "podcast", "prop_gigante", "pip_broll"],
 }
 # settings validos por conceito (None = usa SETTINGS_POR_ESQ / domesticos)
 SETTINGS_POR_CONC = {
@@ -187,7 +249,6 @@ SETTINGS_POR_CONC = {
     "flagrante_publico": ["loja_bigbox", "corredor_farmacia", "estacionamento_loja"],
     "local_publico":  ["loja_bigbox", "estacionamento_loja", "corredor_farmacia"],
     "pov_mercado":    ["loja_bigbox", "corredor_farmacia"],
-    "fake_broadcast": ["estudio_news"],
     "podcast":        ["estudio_podcast"],
     "demo_quimica":   ["kitchen", "garage_bancada", "quintal_grill"],
     "prop_gigante":   ["kitchen", "backyard_deck", "quintal_grill", "estacionamento_loja"],
@@ -236,12 +297,12 @@ REG_POR_ESQ = {
 }
 
 # eixos usados na metrica de distancia
-EIXOS_DIST = ["conceito", "esqueleto", "setting", "gramatica", "luz", "molde", "dispositivo", "dor", "registro", "wardrobe"]
-LIMIAR_DISTINTO = 6  # >= 6 eixos diferentes de 10 = par distinto
+EIXOS_DIST = ["conceito", "pico2", "esqueleto", "setting", "gramatica", "luz", "molde", "dispositivo", "dor", "registro", "wardrobe"]
+LIMIAR_DISTINTO = 7  # >= 7 eixos diferentes de 11 = par distinto (mesma proporcao do 6/10 anterior)
 
 
 # ---------------------------------------------------------------- geracao
-def gerar_candidato(etnia, rng):
+def gerar_candidato(etnia, rng, conceitos_recentes=()):
     esq = rng.choice(ESQUELETOS)
     molde = rng.choice(ESQ_MOLDES[esq])
     disp = rng.choice(DISP_POR_MOLDE[molde])
@@ -251,7 +312,7 @@ def gerar_candidato(etnia, rng):
         conceito = "flagrante_publico"  # o flagrante E o hook — acoplamento 1:1
     else:
         concs = list(CONC_POR_ESQ[esq])
-        if disp == "M4_demo_quimica":
+        if disp == "D4_demo_quimica":
             concs = ["demo_quimica", "prop_ressurreicao"]
         else:
             concs = [c for c in concs if c != "demo_quimica"]
@@ -267,8 +328,14 @@ def gerar_candidato(etnia, rng):
             concs = [c for c in concs if c != "pip_broll"]
         # demo clinica NUNCA em conceito ambulante: modelo anatomico em pe numa loja
         # vira aula de anatomia, nao video de ED (falha em producao 2026-07-28)
-        if disp in ("M1_modelo_anatomico", "M4_demo_quimica"):
+        if disp in ("D1_modelo_anatomico", "D4_demo_quimica"):
             concs = [c for c in concs if c not in AMBULANTES]
+        # memoria de conceito: em lote pequeno nao ha par pra o solver medir, entao
+        # o ledger e a unica protecao. Sem isso, gerando 1 video por vez, o eixo mais
+        # pesado do sistema repete (falha 2026-07-28: solo_classico duas vezes seguidas).
+        frescos = [c for c in concs if c not in conceitos_recentes]
+        if frescos:
+            concs = frescos
         conceito = rng.choice(concs) if concs else "solo_classico"
 
     settings = SETTINGS_POR_CONC.get(conceito) or SETTINGS_POR_ESQ.get(esq, SETTINGS_DOMESTICOS)
@@ -276,10 +343,38 @@ def gerar_candidato(etnia, rng):
         settings = [s for s in settings if s != "ranch"]
     setting = rng.choice(settings)
     grams = GRAM_POR_SETTING[setting]
-    if disp == "M4_demo_quimica":
+    if disp == "D4_demo_quimica":
         gram = "demo_maos_e_rosto" if "demo_maos_e_rosto" in grams else rng.choice(grams)
     else:
         gram = rng.choice(grams)
+
+    # pico 2: o segundo bit visual (cena 2 ou 4). Nunca repete o bit do hook.
+    picos = [p for p in PICOS2 if p not in PICO2_COLIDE.get(conceito, [])]
+    if disp == "nenhum":
+        picos = [p for p in picos if p not in PICOS2_COM_PROP]
+    # hook que ja cresce nao ganha pico2 que tambem cresce (P17 + regra do 2o pico)
+    if disp == "H7_pouring" or conceito in CONCEITOS_QUE_CRESCEM:
+        picos = [p for p in picos if p not in PICOS2_CRESCIMENTO]
+    if conceito in AMBULANTES or setting in ("estacionamento_loja", "corredor_farmacia", "loja_bigbox"):
+        # exige estar sentado — MAS no flagrante o pico2 mora nas cenas internas
+        # 2-5 (F6), onde sentar cabe. Excluir o flagrante deste filtro (bug
+        # corrigido 2026-07-28: o filtro bloqueava o climax do angulo inteiro).
+        if conceito != "flagrante_publico":
+            picos = [p for p in picos if p != "colo_crescimento"]
+    if conceito == "flagrante_publico":
+        # a REDENCAO pede CLIMAX visual (falha em producao Chuck/fila 2026-07-28:
+        # esposa_reagindo degradou em figurante muda atras do narrador — cara de
+        # reacao nao e bit). Default: colo_crescimento do CASAL REDIMIDO (a mulher
+        # no colo da vitima, o prop do hook agora ereto na mao dela) — 3x o peso.
+        pesos = [3 if p == "colo_crescimento" else 1 for p in picos]
+        pico2 = rng.choices(picos, weights=pesos)[0] if picos else "colo_crescimento"
+        pico2_cena = 4  # a redencao E a cena 4 — arco fixo do flagrante
+    else:
+        pico2 = rng.choice(picos) if picos else "reacao_testemunha"
+        # cena 4 (RESULTADO) e o lugar natural: a copy ja e o payoff, a imagem paga junto.
+        # cena 2 quando o choque pertence a causa. Nunca 3 (maos em acao) nem 5 (CTA limpo).
+        pico2_cena = rng.choices([4, 2], weights=[3, 1])[0] if picos else 4
+
     return {
         "conceito": conceito,
         "esqueleto": esq,
@@ -291,12 +386,18 @@ def gerar_candidato(etnia, rng):
         "dor": rng.choice(DORES),
         "registro": rng.choice(REG_POR_ESQ[esq]),
         "wardrobe": rng.choice(WARDROBES),
+        "pico2": pico2,
+        "pico2_cena": pico2_cena,
         "segundo": SEGUNDO_POR_CONC.get(conceito, "nenhum"),
         "substancia": rng.choice(SUBSTANCIAS),
         "prop": rng.choice(PROPS),
         "promessa": rng.choice(PROMESSAS),
         "modificador": rng.choice(MODIFICADORES),
         "cta": "GELATIN",
+        # REF solto por video (fora do contrato de distancia)
+        "ref_idade": rng.choice(REF_IDADES),
+        "ref_marca": rng.choice(REF_MARCAS),
+        "ref_fisico": rng.choice(REF_FISICOS),
     }
 
 
@@ -313,21 +414,30 @@ def hook_triplo(spec):
     return (spec["molde"], spec["substancia"], spec["prop"])
 
 
+JANELA_CONCEITO = 3  # quantos conceitos recentes ficam bloqueados
+
+
 def carregar_ledger():
     if LEDGER.exists():
-        return json.loads(LEDGER.read_text(encoding="utf-8"))
-    return {"hooks": [], "specs": []}
+        led = json.loads(LEDGER.read_text(encoding="utf-8"))
+        led.setdefault("conceitos", [])  # compat: ledgers antigos nao tinham o campo
+        return led
+    return {"hooks": [], "specs": [], "conceitos": []}
 
 
 def salvar_ledger(ledger):
     LEDGER.write_text(json.dumps(ledger, indent=1), encoding="utf-8")
 
 
-def selecionar_lote(n, etnia, rng, hooks_usados):
+def selecionar_lote(n, etnia, rng, hooks_usados, conceitos_recentes=()):
+    # em lote grande o solver max-min ja garante variedade de conceito; a memoria
+    # do ledger serve pro caso critico do lote pequeno (1-3 videos por vez)
+    if n > len(CONCEITOS) // 2:
+        conceitos_recentes = ()
     # pool grande de candidatos validos, sem hook repetido vs ledger
     pool, vistos = [], set()
     for _ in range(max(4000, n * 80)):
-        c = gerar_candidato(etnia, rng)
+        c = gerar_candidato(etnia, rng, conceitos_recentes)
         chave = tuple(c[e] for e in EIXOS_DIST) + hook_triplo(c)
         if chave in vistos or list(hook_triplo(c)) in hooks_usados:
             continue
@@ -395,7 +505,10 @@ def main():
     seed = args.seed if args.seed is not None else random.randrange(10**6)
     rng = random.Random(seed)
 
-    sel = selecionar_lote(args.n, pag["etnia"], rng, ledger["hooks"])
+    recentes = ledger["conceitos"][-JANELA_CONCEITO:]
+    sel = selecionar_lote(args.n, pag["etnia"], rng, ledger["hooks"], recentes)
+    if recentes:
+        print(f"# conceitos bloqueados (ultimos {JANELA_CONCEITO} do ledger): {', '.join(recentes)}")
 
     print(f"# Specs PRISMA - pagina={args.pagina} ({pag['dominio']}) - etnia={pag['etnia']} - seed={seed} - CTA travado=GELATIN")
     print(f"# {args.n} specs. 10 eixos sorteados (conceito = bit visual), solver max-min, hook inedito vs ledger.\n")
@@ -404,7 +517,10 @@ def main():
         seg = f" segundo={s['segundo']}" if s["segundo"] != "nenhum" else ""
         print(f"P{i:02d} [{sid}] CONCEITO={s['conceito']} | {s['esqueleto']} | setting={s['setting']} gram={s['gramatica']} luz={s['luz']} registro={s['registro']}{seg}")
         print(f"     hook: molde={s['molde']} subst={s['substancia']} prop={s['prop']} mod={s['modificador']} promessa={s['promessa']} disp={s['dispositivo']}")
+        print(f"     DEMO OBRIGATORIA (P20): {s['substancia']} APLICADA no {s['prop']} na tela, no TAKE do hook -> crescimento rapido + reacao. Prop so na mao = P20.")
+        print(f"     PICO2={s['pico2']} na cena {s['pico2_cena']}")
         print(f"     corpo: dor={s['dor']} wardrobe={s['wardrobe']} cta={s['cta']}")
+        print(f"     REF solto: idade={s['ref_idade']} etnia={pag['etnia']} marca=\"{s['ref_marca']}\" fisico=\"{s['ref_fisico']}\"")
 
     pct = relatorio(sel)
 
@@ -412,6 +528,7 @@ def main():
         for s in sel:
             ledger["hooks"].append(list(hook_triplo(s)))
             ledger["specs"].append(spec_id(s))
+            ledger["conceitos"].append(s["conceito"])
         salvar_ledger(ledger)
         print(f"\n# ledger atualizado: {len(ledger['specs'])} specs emitidas no total")
     elif args.dry_run:

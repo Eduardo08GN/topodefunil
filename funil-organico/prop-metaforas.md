@@ -61,6 +61,166 @@ O catálogo acima é o que os concorrentes JÁ usam (piso). A regra da [Doutrina
 **Cenas-símbolo (a ferida/desejo sem falar — ver [desejos ocultos](desejos-ocultos-50plus.md)):**
 - Pílula azul caindo no lixo/privada (slow motion) · beijo na testa + virar pro lado · ele no carro suando antes do 1º encontro · vestiário com risada dos mais novos · pool boy passando · foto antiga vs espelho.
 
+## ⚠️ Armadilhas de prompt por prop (dados de produção)
+
+O prop não é só uma escolha criativa — algumas palavras **arrastam o gerador
+para outra coisa**. Registrar aqui toda vez que acontecer.
+
+| Prop | Armadilha | Correção |
+|---|---|---|
+| **Geoduck** | vira **pato/ganso** no TAKE de crescimento. Três gatilhos empilhados: a palavra tem `duck` dentro, a parte que cresce é chamada de `neck`, e o crescimento sobe. O Veo lê pescoço de ave se levantando — plumagem, bico e olhos aparecem. Falha em produção, Ray 2026-07-28 | No **TAKE**, nunca escrever `geoduck` (só no IMAGE, onde funciona): usar `the pale tan shellfish` / `the pale tube`. Trocar `neck` por `siphon` ou `tube`. Negar explicitamente (lista ampliada abaixo). E **coreografar o movimento** — ver seção seguinte |
+
+**Regra geral:** negativo implícito não existe pro Veo. Se o prop tem um vizinho
+semântico forte (animal, marca, objeto de outra categoria), **negar por escrito**
+— ausência de menção não é ausência na tela.
+
+### ⭐ ESTADO DO PROP NO IMAGE — quem faz o trabalho, o still ou o take? (2026-07-28)
+
+Regra de decisão antes de escrever qualquer cena com prop fálico. Falha em
+produção (Chuck/colo): descrevi o prop **murcho no IMAGE** contando que o TAKE
+o crescesse, e o still saiu mole — porque o take de payoff não estava
+coreografado pra crescer.
+
+| A cena é… | Estado no IMAGE | O TAKE faz |
+|---|---|---|
+| **HOOK de crescimento** (ressurreição, demo, gêmeo-cut) | **murcho/pequeno** (é o estado ANTES — corolário I2V) | **cresce** com a coreografia (seção abaixo) |
+| **PAYOFF / prova** (redenção do flagrante, PICO2 antes/depois já resolvido) | **já ereto, firme, rígido + AVANTAJADO** (ver spec dimensional abaixo) | **segura a forma + veias pulsando** (imobilidade de tamanho + micro-animação segura) |
+| **RUÍNA / evidência** (flagrante hook, o murcho é a prova da falha) | **minúsculo e murcho, dimensionado por âncora de escala** | mantém murcho e minúsculo, sem crescer |
+
+> **A pergunta única:** nesta cena, o crescimento é o espetáculo, ou o prop é
+> só a prova de um estado? Se é espetáculo → IMAGE murcho + TAKE cresce. Se é
+> prova → IMAGE já no estado final + TAKE segura.
+> ⛔ **A combinação proibida:** IMAGE murcho + TAKE que não cresce = mole
+> entregue. Murcho no still SÓ se o take for crescer de verdade.
+
+#### ⭐ SPEC DIMENSIONAL DO PROP DE PROVA (ordem do operador, 2026-07-28)
+
+"Ereto" não basta — o Veo entrega ereto **tímido**, do tamanho natural do
+prop, e prop de tamanho natural não é promessa nenhuma. Falha em produção
+(Chuck/colo v3): o siphon subiu firme mas curto e fino, e a cena de prova
+ficou sem prova. **O prop do payoff é dimensionado por escrito, com números
+relativos:**
+
+"Ereto" sozinho sai tímido — o Veo entrega o tamanho natural do prop, e prop
+de tamanho natural não é promessa nenhuma. Mas **dimensionar por vocabulário
+anatômico faz o gerador recusar a imagem** (falha em produção, Chuck/colo v4:
+a versão com `engorged` + `prominent raised veins` + `a third thicker than
+usual` foi recusada; a mesma cena com vocabulário de molusco passou).
+
+> **O truque: dimensione com BIOLOGIA DO PROP e ESCALA CORPORAL, nunca com
+> anatomia nem com comparação ao "normal".** O geoduck de verdade tem sifão
+> longo, grosso e estriado — descrever o molusco real entrega a mesma imagem
+> que descrever o órgão, sem acionar o classificador.
+
+| Dimensão | ✅ Frase que passa | ⛔ Frase que reprova |
+|---|---|---|
+| **Comprimento** | `as long as her forearm` · `reaching well above the top of her head` | `twice the length of a normal siphon` |
+| **Espessura** | `as thick as her wrist` | `a third thicker than usual` · `heavy engorged tube` |
+| **Textura** | `its surface taut and glossy, streaked with darker mottled lines running along its length` | `prominent raised veins standing out under the skin` |
+| **Firmeza** | `held stiff and straight` | `rigid and upright, pointing at the ceiling` |
+
+**Por que a escala corporal funciona e o comparativo não:** `as long as her
+forearm` / `as thick as her wrist` dão ao gerador uma **régua visível no
+próprio quadro** — ele tem como obedecer. `twice the length of a normal X`
+exige que ele saiba o tamanho normal de X e o dobre no abstrato; ele
+normaliza e ainda por cima a frase soa como descrição de excitação. Adjetivo
+absoluto (`large`, `big`) o Veo normaliza pro tamanho natural do objeto e não
+faz nada. `comically large` só vale pro prop que **nasce** grande
+(ressurreição monumental); ⛔ `absurdly oversized` continua selo 🔴 sempre.
+
+#### A REGRA VALE NOS DOIS SENTIDOS — o prop da RUÍNA também
+
+Falha em produção (Chuck/churrasco, 2026-07-28): o prop-evidência foi escrito
+`small, soft and limp` e o Veo devolveu uma **banana de tamanho normal** só
+levemente curvada. Mesmo mecanismo do payoff tímido: **adjetivo não
+dimensiona, âncora de escala dimensiona.** O F12 do FLAGRANTE listava só
+adjetivos (`tiny, short, thin, shriveled`) — eles continuam valendo como
+**textura**, mas o **tamanho** precisa da régua no quadro:
+
+| | ✅ Âncora de escala (o tamanho) | ✅ Adjetivo (a textura) |
+|---|---|---|
+| **Ruína** | `no longer than his thumb` · `no bigger than his palm` · `barely longer than his fingers` | `shriveled and wrinkled, skin brown-spotted and dull, completely soft, folded over on itself, drooping straight down` |
+| **Payoff** | `as long as her forearm` · `as thick as her wrist` · `reaching well above the top of her head` | `taut and glossy, streaked with darker lines` |
+
+E no TAKE, travar o estado nos dois casos: ruína = `stays tiny, shriveled and
+completely limp — it never straightens, never firms, never grows`; payoff =
+`keeps its full length and thickness the whole time`.
+
+#### ⛔ NO TAKE DE PAYOFF, O PROP NÃO SE MEXE — NADA
+
+Correção de uma recomendação errada que eu mesmo gravei aqui (Chuck/churrasco,
+2026-07-28). A versão anterior desta seção sugeria "pulso nas estrias" como
+micro-animação segura (`a slow gentle pulse travels along its surface, the
+darker lines swelling and settling`). **Isso não é seguro** — o IMAGE passou e
+o **vídeo** foi recusado. Movimento de inchar-e-assentar num prop ereto é
+descrição de tumescência, e o moderador de vídeo lê isso mesmo com vocabulário
+de fruta.
+
+> **Regra:** no take de payoff, o prop é **objeto estático declarado**. Todo o
+> orçamento de movimento vai para as PESSOAS — o riso dela, o abraço dele, o
+> gesto do narrador. Gente rindo o gerador anima sem reclamar; prop pulsando,
+> não.
+
+| ⛔ Não escrever no TAKE | ✅ Escrever |
+|---|---|
+| `pulse` · `throb` · `swelling and settling` · `as if blood were pumping` | `stays exactly as it appears in the first frame — same position, same angle, same shape — completely motionless for the entire shot. It is a still object and nothing about it changes.` |
+| `stays straight and stiff` · `never sags` · `never softens` | (desnecessário — "completely motionless" já trava, e sem vocabulário de ereção) |
+
+O par `stiff`/`sags` é o mesmo problema por outra porta: nomear o eixo
+firme↔murcho no prompt de movimento é descrever a ereção em vez de descrever
+um objeto parado. **A firmeza já está no IMAGE** (que passou); o TAKE só
+precisa não estragá-la, e "imóvel" faz isso sem tocar no assunto.
+
+---
+
+### ⭐ COREOGRAFIA DE CRESCIMENTO — o verbo sozinho não basta (2026-07-28)
+
+> **Selo 🟢 VALIDADO EM PRODUÇÃO** (Joe/geoduck, 2026-07-28). Depois de duas
+> falhas seguidas, a versão coreografada saiu **de primeira**: siphon subindo
+> vertical, ereto, dobrando de comprimento, zero morphing de ave. Esta é a
+> receita padrão de todo take de crescimento — não é plano B.
+
+Falha em produção, Joe/ressurreição: mesmo com a blindagem de vocabulário
+(`siphon`, sem `geoduck`, com negação de ave), **o Veo continuou errando o
+movimento**. Diagnóstico: `unfolds and extends straight out` não é uma
+instrução — é um resultado. Não tem âncora, direção, duração nem estado final,
+e o Veo preenche o vazio com o movimento que ele conhece pra aquela forma:
+bicho se levantando.
+
+> **Verbo de crescimento (`extends`, `lengthens`, `grows`) descreve o QUE.
+> O Veo precisa do COMO.** Todo take de ressurreição leva um bloco de
+> coreografia por batida.
+
+Os quatro elementos obrigatórios do bloco:
+
+| Elemento | Por que | Exemplo literal |
+|---|---|---|
+| **1. Âncora fixa** | sem uma parte parada, o Veo move o objeto inteiro — e objeto inteiro se movendo é bicho andando | `the thick base where the tube meets the ridged shell stays pinned to the tray and never moves` |
+| **2. Analogia física** ⭐ | o Veo executa processo conhecido muito melhor que adjetivo. `fire hose` está **validada 🟢**; reservas testáveis: `an inflatable air dancer at a car lot` (traz a vertical embutida), `a rolled-up party blowout unrolling` | `the tube behaves exactly like a flat fire hose being filled with water pressure` |
+| **3. Propagação, não teleporte** | o inchaço viaja da âncora pra ponta e desfaz as curvas **uma de cada vez**; `extends` sozinho vira esticão genérico | `from that base a swelling travels outward toward the free tip; as it passes through each bend, that bend pulls straight, one bend after another` |
+| **4. Estado final travado** | o Veo cicla a animação e **desfaz** o efeito na segunda metade do plano se ninguém disser pra parar | `4 to 8 seconds: it does not move again. It stays straight, thick and rigid, held exactly in that position for the rest of the shot.` |
+
+Escrever em **batidas com segundos explícitos** (`0 to 1 second:` / `1 to 3
+seconds:` …) — o Veo respeita marcação temporal muito melhor que "rapidly".
+Isso também satisfaz o P17 (crescimento termina em ~3s) sem usar `slowly`.
+
+Fechar com o anti-reversão e a negação ampliada:
+
+```
+It never sags back down, never curls, never writhes, never crawls, never twitches.
+It is a smooth wet tube of pale shellfish flesh. No bird, no goose, no duck, no
+swan, no snake, no worm, no tentacle, no feathers, no beak, no eyes, no head,
+nothing alive, nothing with a face.
+```
+
+⚠️ A lista de negação **cresce por prop**: `swan`, `snake`, `worm`, `tentacle`,
+`head`, `nothing with a face` entraram depois que a lista curta não segurou.
+Cada vizinho semântico da FORMA (não só do nome) precisa estar escrito.
+
+Esse bloco estoura o orçamento de 80-150 palavras do TAKE (V4) — **é exceção
+autorizada**: prop de armadilha documentada paga essa conta. Props sem
+armadilha (pepino, banana, daikon) seguem no orçamento normal.
+
 ## Como usar isto (modelagem)
 - O prop deve **encaixar no mecanismo REAL da nossa oferta** (a triangulação): se a oferta é sobre óxido nítrico/fluxo, o prop demonstra fluxo; se é sobre um ingrediente, o prop é o ingrediente. → [Template Criativo](template-criativo.md).
 - **Escolher innuendo × demonstração × antes-depois** conforme o hook — e passar no [Teste do Dedo](doutrina-criativa-agressiva.md): prop tímido/genérico (ex.: pessoa segurando frasco) = REPROVADO como hook.

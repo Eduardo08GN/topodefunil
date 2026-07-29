@@ -270,9 +270,17 @@ Os 4 componentes obrigatórios do flagrante (nenhum é opcional):
 7. She ordered for him at the counter like he wasn't there. He said nothing. That silence has a cause.
 
 ⚠️ **Regras de produção:** flagrante SÓ na cena 1 (cenas 2-5 em set interno — a
-troca de set faz parte do padrão da Tanisha). Evidência sugerida, nunca gráfica.
+troca de set faz parte do padrão da Tanisha). Evidência sugerida, nunca gráfica —
+regra VISUAL (anti-recusa do gerador); a fala é literal e direta (F13/F14 do agente).
 Vítima e testemunhas = segundo plano desfocado sem descrição de identidade longa
 (risco de morphing). Selo 🟡 A/B até medir no Veo.
+
+⚠️ **Correção 2026-07-28 — o M15 LEVA proxy.** A leva anterior mandava rodar M15
+com `dispositivo=nenhum` ("a vítima é o visual, vegetal na mão dilui o
+flagrante"). Isso foi inferido de **um** reel e está **errado**: hook sem proxy
+perde o scroll-stopper. O REF fica **agachado ao lado da vítima segurando o proxy
+murcho** — o murcho *é* a evidência. Ver regra do proxy no hook (P18) no
+`AGENTE_ED_PRISMA_V1.md`.
 
 ---
 
@@ -312,8 +320,9 @@ Catálogo completo com função e origem em [prop-metáforas](prop-metaforas.md)
 `3_to_8_inches` · `six_inches_two_weeks` · `hidden_inches` · `this_to_this_one_month` ·
 `ten_times_bigger` · `different_man_by_morning` · `wife_wont_keep_up` · `five_inches_a_week`
 
-⚠️ Números absurdos são permitidos **só no hook** (é a promessa de choque). Nunca como
-medida técnica no corpo. Ver regra de "pounds/inches" no V4.
+Números absurdos são permitidos em **qualquer cena** (revogada em 2026-07-28 a restrição
+"só no hook" — o hook já grita a promessa; proibir o eco no corpo só deixava a copy vaga).
+O hook continua sendo o lugar do choque máximo; o corpo pode referenciar e ecoar o número.
 
 ---
 
@@ -323,16 +332,37 @@ Aprendido em geração real. **Consultar antes de montar a cena 1.**
 
 | Dispositivo / construção | Selo | Evidência |
 |---|---|---|
-| **H9** — proxy na virilha, ponta pra baixo | 🔴 **BLOQUEIA** | IMG 01 recusada, Ray, 2026-07-27 |
+| **H9** — proxy na **própria** virilha do sujeito, ponta pra baixo | 🔴 **BLOQUEIA** | IMG 01 recusada, Ray, 2026-07-27 |
+| **Proxy murcho nas mãos de 2º personagem agachado**, pendendo na altura da virilha da vítima | 🟢 passa | lote da geoduck, 2026-07-28 |
 | **H4** com "absurdly oversized" + fala com "perform" | 🔴 **BLOQUEIA** | Cena 01 recusada, Joe, 2026-07-27 |
 | **H4** com "large" + fala sem conotação | 🟡 passa | mesma cena, após suavizar |
 | **H1** — proxy vertical no peito, mãos paradas | 🟢 passa | Joe, Ray |
 | **H7** — pouring + crescimento (pepino) | 🟢 passa | template C4 |
 | **M1** — modelo anatômico na bancada | 🟢 passa | Joe IMG 02, Ray IMG 02 |
 | **Prop-ressurreição** — geoduck gigante murcho→vertical, lab, despejo | 🟢 passa no FB | Tanisha reel 856954520543734, vídeo IA, 1.6K/673/211 |
+| **Crescimento com bloco de coreografia** (âncora + analogia `fire hose` + propagação + estado final travado, em batidas com segundos) | 🟢 **gera certo no Veo** | Joe/geoduck 2026-07-28 — 2 falhas com verbo solto, acertou de primeira coreografado. Receita em [prop-metáforas](prop-metaforas.md) |
 
 **Regra:** substituir H9 por H1 (mesmo prop, altura do peito). O choque continua no
 proxy; a virilha é o que dispara a política.
+
+### ⚠️ Os selos medem o GERADOR, não o Facebook (correção 2026-07-28)
+
+Garimpo do reel 1685611826191216 (Angela-style, quintal, keyword `book`): a mulher
+despeja cerveja numa banana descascada que o homem segura **na virilha**, e o
+despejo encharca a braguilha dele. É a construção **H9 na íntegra** — e o reel
+está no ar, publicado.
+
+O rótulo "Miller Lite" aparece **nítido e legível** no frame: o Veo embaralha
+texto de marca, então **isso é filmagem real, não IA**. Daí a conclusão:
+
+> **São dois filtros distintos e a gente vinha tratando como um só.**
+> O selo 🔴 do H9 é do **gerador de imagem/vídeo**, que recusou o IMAGE do Ray.
+> O Facebook, esse, publica a mesma construção quando ela é filmada.
+
+Consequência prática: **o selo continua valendo para nós** (nossa esteira é IA e
+o gerador é quem barra), mas ele **não é evidência de política do Facebook** — e
+não deve ser usado pra descartar um bit garimpado de página real. Ao ler um selo,
+perguntar sempre: isso bloqueou *onde*?
 
 ---
 
