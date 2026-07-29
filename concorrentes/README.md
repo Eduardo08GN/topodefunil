@@ -7,7 +7,7 @@ Os números de "vídeos anotados" referem-se APENAS aos vídeos de melhor engaja
 
 | # | Página | Seguidores | Criação | Vídeos de hit | Top comentários | Papel |
 |---|---|---|---|---|---|---|
-| **1** | [Tanisha Rivers](tanisha-rivers.md) | 75k | 22/04/2026 | 52 | 2.3k | **Base a modelar** (consistência) |
+| **1** | [Tanisha Rivers](tanisha-rivers.md) · [🎬 mapa visual](tanisha-mapa-visual.md) | 75k | 22/04/2026 | 52 | 2.3k | **Base a modelar** (consistência) |
 | **2** | [Kofi & Simba](kofi-e-simba.md) | 20k | 18/06/2026 | 19 | 4.3k | **Referência de picos** (viralização) |
 | 3 | [Zuberi Kwame](zuberi-kwame.md) | 14k | 23/06/2026 | 13 | 1.6k | Competidor intermediário |
 | 4 | [Healthy Katie](healthy-katie.md) | 11k | 01/05/2026 | 5 | 1.2k | Baixa consistência |

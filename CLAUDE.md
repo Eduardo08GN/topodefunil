@@ -115,6 +115,8 @@ Inventário atual de domínios e apps:
 
 ## Onde as coisas ficam
 
+- **Lições de produção Veo (moderação + copy):** [`funil-organico/licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) — playbook das lições pagas em campo; ler antes de gerar lote.
+- **Mapa visual da Tanisha (base do CONSULTORIO):** [`concorrentes/tanisha-mapa-visual.md`](concorrentes/tanisha-mapa-visual.md).
 - `funil-organico/` — doutrina de copy, criativos, arquitetura do funil, runbooks.
 - Bridge pages (código): repo `Eduardo08GN/projetosweb`, pasta `/bridge-pages/bp1`.
 - Deploy: Coolify na VPS `159.195.12.135` via API (ver runbook).
