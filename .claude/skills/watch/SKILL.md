@@ -231,10 +231,14 @@ Both keys live in `~/.config/watch/.env`. The script prefers Groq when both are 
 
 ## Failure modes and handling
 
+- **Login-required / private video (PRIORITY RULE — act on first failure, zero retries):**
+  If `yt-dlp` fails because the URL requires authentication (Facebook, TikTok, Instagram, or any platform that gates the video behind a login), **stop immediately**. Do NOT retry with different flags, cookies, headers, or workarounds — every extra attempt wastes tokens and will fail the same way. Instead, tell the user plainly:
+  > Não consegui acessar esse vídeo porque a plataforma exige login. Anexa o arquivo de vídeo direto aqui na conversa que eu assisto.
+  Then wait for the user to attach the local file and re-run `/watch` on the local path.
 - **Setup preflight failed** → run `python3 "${SKILL_DIR}/scripts/setup.py"` (auto-installs ffmpeg/yt-dlp via brew on macOS, scaffolds the `.env`). For API key, ask the user via `AskUserQuestion` and write it to `~/.config/watch/.env`.
 - **No transcript available** → captions missing AND (no Whisper key OR Whisper API failed). Script prints a hint pointing to setup. Proceed frames-only and tell the user.
 - **Long video warning printed** → acknowledge it in your answer. Offer to re-run focused on a specific section via `--start`/`--end` rather than a sparse full-video scan.
-- **Download fails** → yt-dlp's error goes to stderr. If it's a login-required or region-locked video, tell the user plainly; do not keep retrying.
+- **Download fails (other reasons)** → yt-dlp's error goes to stderr. If region-locked, tell the user plainly; do not keep retrying.
 - **Whisper request fails** → the error is printed to stderr (likely: invalid key or rate limit). Audio over the API's 25 MB upload cap is split into chunks and transcribed automatically, so length alone won't fail it; if some chunks fail the transcript is partial and the dropped chunks are noted on stderr. The report will say "none available" only if every chunk fails. You can retry with `--whisper openai` if Groq failed (or vice versa).
 
 ## Token efficiency

@@ -8,12 +8,16 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 
 ## Mentores
 
-- [x] [Jon Benson](../mentores/jon-benson/README.md) ✅ — criador do VSL (4 docs)
-- [x] [Stefan Georgi](../mentores/stefan-georgi/README.md) ✅ — método RMBC (2 docs + walkthrough)
+> Contagem conferida contra o disco em 2026-07-23. O perfil (README) sempre existe; o número
+> entre parênteses são os docs próprios do mentor **dentro da pasta dele** — vários mentores
+> tiveram o material destilado direto em `frameworks/` e `principios/`, e o perfil ficou como índice.
+
+- [x] [Jon Benson](../mentores/jon-benson/README.md) ✅ — criador do VSL (1 doc próprio + 4 em `frameworks/`)
+- [x] [Stefan Georgi](../mentores/stefan-georgi/README.md) 🚧 — método RMBC (perfil só; conteúdo em [rmbc-metodo](../frameworks/rmbc-metodo.md) e [mecanismo-unico](../principios/mecanismo-unico.md))
 - [x] [Gary Bencivenga](../mentores/gary-bencivenga/README.md) ✅ — o mestre da prova (2 docs)
 - [x] [Dan Kennedy](../mentores/dan-kennedy/README.md) ✅ — aquisição + psicologia (2 docs)
 - [x] [Joe Karbo](../mentores/joe-karbo/README.md) ✅ — "Lazy Man's Way to Riches" (1 doc)
-- [x] [Rosa Morel](../mentores/rosa-morel/README.md) ✅ — Neurocopywriting (livro destilado, 8 docs)
+- [x] [Rosa Morel](../mentores/rosa-morel/README.md) ✅ — Neurocopywriting (perfil-índice; os 9 destilados vivem em `principios/` (5) e `frameworks/` (4) — lista completa no perfil)
 
 ## Frameworks (estruturas replicáveis)
 
@@ -112,8 +116,34 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 - ✅ [**🔥 O que Igualar dos Exemplos**](../funil-organico/o-que-igualar-dos-exemplos.md) — a crueza sanitizada: 5 elementos a igualar do piso (tom cru, receita tangível, reação dela) — sanitizar a palavra ≠ o tom
 - ✅ [**Insights: Triangulação**](insights-empiricos.md) — signature × copy × oferta (empirismo acumulado)
 
+## 🤖 Agentes UGC (raiz)
+
+- ✅ [**AGENTE V1 LUCAS**](../AGENTE_ED_ORGANIC_WAVE_V1_LUCAS.md) — **versão em uso.** V4 + fluxo recriação via `/watch`, persistência de personagem por página, adaptação de mecanismo
+- ✅ [AGENTE V4](../AGENTE_ED_ORGANIC_WAVE_V4.md) — base da V5: 5 cenas, REF 01, entrega agrupada, 3 mecanismos
+- ✅ [AGENTE V3](../AGENTE_ED_ORGANIC_WAVE_V3.md) — introduziu REF 01
+- ✅ [AGENTE V1](../AGENTE_ED_ORGANIC_WAVE.md) — original (4-6 cenas)
+
+## 🎯 Concorrentes — Análise Competitiva
+
+- ✅ [**Ranking e Estratégia**](../concorrentes/README.md) — 7 páginas analisadas, Tanisha (#1 consistência) + Kofi (#2 picos), workflow de garimpagem
+- ✅ [**Tanisha — Top 5 Vídeos (dissecagem)**](../concorrentes/tanisha-top5-analise.md) — 5 reels dissecados com frames, transcript, props, triggers, padrões
+- ✅ [**Kofi — Top 5 Vídeos (dissecagem)**](../concorrentes/kofi-top5-analise.md) — 5 reels dissecados + template híbrido de produção (Kofi hook + Tanisha receita + nossa doutrina)
+- ✅ [**Tanisha Rivers**](../concorrentes/tanisha-rivers.md) — 75k seg, 52 hits, #1 base a modelar (fórmula dominada)
+- ✅ [**Kofi & Simba**](../concorrentes/kofi-e-simba.md) — 20k seg, 4.3k top, #2 referência de picos (CTA diferente)
+- ✅ [Zuberi Kwame](../concorrentes/zuberi-kwame.md) — 14k seg, 13 hits
+- ✅ [Healthy Katie](../concorrentes/healthy-katie.md) — 11k seg, 5 hits (baixa consistência)
+- ✅ [Olivia Men Health](../concorrentes/olivia-men-health.md) — 10k seg, 11 hits
+- ✅ [Alexis Burgundy](../concorrentes/alexis-burgundy.md) — 6k seg, picos altos para a base
+- ✅ [Men's Performance](../concorrentes/mens-performance.md) — 6k seg, teto mais baixo
+
 ## Swipes anotados
 - ✅ [Anatomia da VSL de Suplemento Masculino](../swipes/vsl-suplemento-masculino.md) — dissecação de 9 VSLs (ED/aumento) + 12 técnicas novas
+- ✅ [**Horsewood VSL6 — Vick (1º link)**](../swipes/horsewood-vsl6-vick-1-link.md) — ficha + 14 blocos com timestamps + vilão (xenotoxinas) + 5 ingredientes + transcrição completa (54:53)
+- ✅ [**Horsewood VSL3 — Gelatin Trick (2º link)**](../swipes/horsewood-vsl3-gelatin-trick-2-link.md) — ficha + 13 blocos com timestamps + vilão (glyphosate/fibrose) + 9 ingredientes + transcrição completa (45:07)
+- ✅ [**Horsewood VBSOH — Baking Soda + Honey (3º link)**](../swipes/horsewood-vbsoh-L1ML4-baking-soda-honey-3-link.md) — ficha + 12 blocos com timestamps + vilão (chemical testosterone/pesticidas) + 5 ingredientes + transcrição completa (41:41)
+- ✅ [**Horsewood VHGTH — Gelatin Trick variante (4º link)**](../swipes/horsewood-vhgth-L2ML3-gelatin-trick-4-link.md) — VARIANTE da VSL3: mesmo mecanismo (colágeno Percheron), hook diferente (UGC compilation + ex-esposa de pornstar) + transcrição completa (46:58)
+- ✅ [**Horsewood VHG2 — Horse Gelatin v2 (5º link)**](../swipes/horsewood-vhg2-L1ML9-horse-gelatin-5-link.md) — VSL de geração diferente: Dr. Peter Attia + Stallone (79) + Arnold/Van Damme, vilão "toxic plaques" (Bayer/Pfizer/Gates nomeados), 4 ingredientes, melhor copy das 6 (1:03:13)
+- ✅ [**Horsewood VHG2 — Horse Gelatin v2 variante (6º link)**](../swipes/horsewood-vhg2-L1ML3-horse-gelatin-6-link.md) — VARIANTE da VHG2-L1ML9: mesmo corpo (Attia/Stallone/4 ingredientes), hook diferente (UGC compilation "sex toy") + mapa completo do split-test 3 hooks × 2 corpos (1:02:52)
 
 ## Glossário
 - [Termos do Direct Response](../glossario/termos.md)
