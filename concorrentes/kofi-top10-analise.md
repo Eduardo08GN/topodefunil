@@ -1,14 +1,24 @@
-# Kofi — Dissecagem dos Top 5 Reels (em andamento)
+# Kofi — Dissecagem dos Top 10 Reels
 
 Analise de concorrente do funil organico ED/male health no Facebook.
-**Status:** 5 de 5 videos analisados. Analise completa.
+**Status:** 10 de 10 videos analisados. Ranking por **comentarios** (metrica-norte),
+confirmado por varredura das 50 reels da pagina (contagem lida uma a uma, 2026-07-29).
 
-**Videos:**
-- V1: Reel 2045140726085072 (tamanho/transformacao, 29s)
-- V2: Reel 1347333297365013 (bait-and-switch + testosterona, 51s)
-- V3: Reel 2072800689936743 (tamanho + suplemento HORSEWOOD, 31s)
-- V4: Reel 916627408115934 (wellness/receita no feed, 37s)
-- V5: Reel 3243850782483414 (hook reciclado + receita cha, 42s)
+**Videos (ranking por comentarios):**
+- V1: Reel 2045140726085072 — 4,3k coment. (tamanho/transformacao, 29s)
+- V2: Reel 1347333297365013 — 1,8k coment. (bait-and-switch + testosterona, 51s)
+- V3: Reel 2072800689936743 — 1,6k coment. (tamanho + suplemento HORSEWOOD, 31s)
+- V4: Reel 916627408115934 — 1,5k coment. (wellness/receita no feed, 37s)
+- V5: Reel 3243850782483414 — 1,4k coment. (hook reciclado + receita cha, 42s)
+- V6: Reel 1014375111502679 — 1,2k coment. (**repost do V2** Coca-Cola, varanda, 56s)
+- V7: Reel 1306333455043151 — 1,0k coment. (receita pepino + shoutout nominal, 76s)
+- V8: Reel 1573157344592969 — 926 coment. (baking soda anti-pharma, corpo banana, 40s)
+- V9: Reel 1355815863155756 — 884 coment. (demo clinica low-T, **mesmo corpo do V8**, 40s)
+- V10: Reel 1626376791803255 — 849 coment. (little soldier + cayenne/melancia, 33s)
+
+> Nota de metrica: view NAO prevê comentario nesta pagina. O reel de maior view
+> (1555163349606149, 152 mil views) tem so 254 comentarios; o V9 tem 114 mil views
+> mas rankeia #9. Ranking sempre por comentario, nunca por view.
 
 ---
 
@@ -377,3 +387,139 @@ CLIPE 4 (CTA, 22-32s): cenario diferente + meta-compliance
 ```
 
 Esse template combina: hook do Kofi (bait/prop) + ferida da doutrina (confissao) + corpo da Tanisha (receita) + CTA do V4 da Tanisha (loop aberto por meta-compliance) + trigger word do Kofi (contextual).
+
+---
+
+# Vídeos 6-10 — garimpados 2026-07-29 (ranking por comentários)
+
+> Extraidos via `/watch` com cookies do Chrome (ver `RUNBOOK-watch-videos.md`) —
+> transcript Whisper real + frames. Ranking confirmado lendo a contagem de
+> comentarios das 50 reels da pagina, uma a uma. Os ranks 1-5 sao os V1-V5 acima.
+
+## Vídeo 6 — Reel 1014375111502679
+
+**Duracao:** 56s | **Comentarios:** 1,2k | **Views:** 92 mil | **Angulo:** testosterona (bait-and-switch) — **REPOST do V2**
+
+### Estrutura
+
+| Bloco | Tempo | Fala | Visual |
+|---|---|---|---|
+| **Bait** | 00:00-00:05 | "Pour Coca-Cola on your Johnson and it'll grow six inches in just two weeks. Watch this" | **Cenario NOVO: varanda de casa suburbana americana** (parede branca, sofa de vime). Pele oleada, colar de contas, sem camisa. Despeja Coca-Cola sobre uma banana descascada segura na mesa |
+| **Debunk** | 00:05-00:10 | "Come on now. You really think that's going to work? Let me show you the real way to get your manhood back to its full potential" | Mesma varanda. Descarta a isca |
+| **PAS (medo)** | 00:15-00:31 | "Thousands of American men are losing size because of low testosterone... blood flow slows down, firmness fades, performance takes a hit and confidence goes right out the window" | Talking-head na varanda. Cascata de perda identica ao V2 |
+| **Tease** | 00:31-00:47 | "The most powerful natural solution is an ancient African trick. It helps lower cortisol, supports healthy testosterone levels, boosts blood flow, restores firmness, improves performance..." | Mesma varanda. Lista 6 beneficios, nunca nomeia |
+| **CTA** | 00:47-00:56 | "Comment yes and I'll send you the secret ingredient. Just make sure you're following me first or I won't be able to DM you" | Mesma varanda. Trigger YES |
+
+### Analise
+- **É o V2 republicado com ID novo e cenario trocado** (varanda suburbana no lugar da cabana rustica). Copy praticamente palavra-por-palavra igual ao V2. Prova direta de que **Kofi reposta o criativo campeao** pra multiplicar alcance sem escrever copy nova — o V2 fez 1,8k, o repost fez 1,2k.
+- Cenario "varanda de casa americana" reforca o "vizinho comum dos EUA" (vs o curandeiro africano). Mesmo rosto, moldura mais domestica.
+- Legenda com keyword em caixa **VERMELHA** ("COCA COLA"). Trigger **YES**. 56s (longo, herdado do V2).
+
+## Vídeo 7 — Reel 1306333455043151
+
+**Duracao:** 76s | **Comentarios:** 1,0k | **Views:** 38 mil | **Angulo:** confianca/tamanho + receita pepino (prova social nominal)
+
+### Estrutura
+
+| Bloco | Tempo | Fala | Visual |
+|---|---|---|---|
+| **Hook** | 00:00-00:07 | "Do you want to make your pickle hard as steel? Don't scroll, because this natural recipe might just surprise you" | **Horta de pepino**, bandana com bandeira US, toga africana, **LEAO** ao lado, cesta + pilha de pepinos na mesa de madeira |
+| **Ferida (1a pessoa enfileirada)** | 00:07-00:27 | "I don't have the confidence I used to. I avoid getting intimate with my wife because I'm afraid I'll let her down. I'm always tired, my body just doesn't respond like it used to" | Mesma horta. Recita as confissoes do avatar em serie |
+| **Ponte** | 00:27-00:41 | "Sound familiar? Then this is for you. Your body needs the right nutrients to help support healthy circulation, steady energy, and overall male vitality" | Mesma horta |
+| **Receita** | 00:41-00:59 | "Grab one fresh cucumber. Slice it with the peel on. The peel is packed with antioxidants... Now squeeze in half a lemon. Pour in a glass of water. Blend it all until it's nice and smooth" | Preparo do drink de pepino |
+| **Loop meta-compliance** | 00:59-01:10 | "There's one powerful ingredient I can't show you in this video. Comment yes below and I'll send that powerful ingredient straight to you. Just make sure you're following me first" | Mesma cena |
+| **Prova social nominal** | 01:10-01:16 | "Shout out to Michael from New York, Robert from California, David from Texas and James from Florida. See you in the next recipe" | Fecho com nomes+estados |
+
+### Analise
+- **INOVACAO: shoutout nominal por estado no fim** ("Michael from New York, Robert from California..."). Prova social fabricada + senso de comunidade ("outros homens ja pediram e receberam"). Nenhum outro vídeo da amostra faz. Barato de gerar, poderoso pra confianca.
+- **Ferida em 1a pessoa enfileirada** — tres confissoes seguidas do avatar (confianca, evitar a esposa, cansaco). A dor masculina mais explicita e longa da amostra.
+- **"Pickle hard as steel"** — eufemismo falico novo (pepino/picles).
+- **Loop por meta-compliance** ("one powerful ingredient I can't show you in this video") = a mecanica do V4 da Tanisha, agora no Kofi.
+- Mais longo da amostra inteira (**76s**). Trigger **YES**.
+
+## Vídeo 8 — Reel 1573157344592969
+
+**Duracao:** 40s | **Comentarios:** 926 | **Views:** 90 mil | **Angulo:** anti-pharma (baking soda) — **CORPO reciclado (receita banana)**
+
+### Estrutura
+
+| Bloco | Tempo | Fala | Visual |
+|---|---|---|---|
+| **Hook (bait + anti-pharma)** | 00:00-00:08 | "Guys, put baking soda on a banana and watch what happens. Pharmacies don't want you to know this because half their customers would disappear overnight" | **Varanda de casa americana** (bandeira US). Banana descascada + caixa **Arm & Hammer Baking Soda**, colar de contas, sem camisa |
+| **Ameaca/inveja** | 00:08-00:16 | "If you don't have a partner, you'd better not take it. And if you're married, watch out because they won't be able to keep up with you" | Mesma varanda |
+| **Receita** | 00:16-00:26 | "Just slice up a banana, add a little cinnamon, some ground ginger, the juice of half a lemon, and honey to taste. Mix it all together and have it twice a week" | **Cozinha moderna.** Tigela de vidro, banana fatiada, canela, gengibre, limao, mel |
+| **CTA** | 00:26-00:40 | "Comment yes below and I'll send you a secret recipe I can't share in this video. But make sure you're following me first, brother, or I won't be able to find your comment" | Cozinha, tigela na frente |
+
+### Analise
+- Hook "baking soda on a banana" = **bait absurdo** (na linha do Coca-Cola do V2) mas **sem debunk** — emenda direto no angulo **anti-pharma** ("pharmacies don't want you to know").
+- **Corpo IDENTICO ao V9** (receita banana + canela + gengibre + limao + mel, mesma cozinha, mesma fala, mesmo CTA). Ver V9: par **1 corpo × 2 hooks** confirmado (mesma logica do V3/V5).
+- **Marca real: Arm & Hammer** ancora na realidade (como McCormick/Ghirardelli da Tanisha).
+- Legenda keyword em caixa **AZUL**. Trigger **YES**. "brother" = pertencimento tribal.
+
+## Vídeo 9 — Reel 1355815863155756
+
+**Duracao:** 40s | **Comentarios:** 884 | **Views:** 114 mil (2º maior da pagina) | **Angulo:** testosterona (demo clinica) — **mesmo CORPO do V8**
+
+### Estrutura
+
+| Bloco | Tempo | Fala | Visual |
+|---|---|---|---|
+| **Hook (demo clinica)** | 00:00-00:10 | "This is low testosterone. This is low testosterone. And this is low testosterone too" | **Sala de exame clinica** (poster anatomico, aparelho de ultrassom). Aponta para **homens brancos mais jovens e calvos** sentados com capa de barbeiro. Kofi musculoso atras |
+| **Ponte** | 00:10-00:16 | "No joke, ever since I tried it, my wife and I had to send the kids over to grandma and grandpa's" | Innuendo sexual (mandar as criancas pra vovó) |
+| **Receita (reciclada do V8)** | 00:16-00:26 | "Just slice up a banana, add a little cinnamon, some ground ginger, the juice of half a lemon, and honey to taste. Mix it all together and have it twice a week" | **Mesma cozinha do V8.** Corpo identico |
+| **CTA (reciclado do V8)** | 00:26-00:40 | "Comment yes below and I'll send you a secret recipe I can't share in this video. But make sure you're following me first, brother" | Cozinha, tigela na frente |
+
+### Analise
+- **Hook clinico com 2º personagem** (homem branco calvo com capa de barbeiro) = demo visual de "baixa testosterona" apontando pro corpo alheio. **Prova social invertida** — o viewer se ve no "paciente" que ele NAO quer ser. Cenario clinico (autoridade medica) inedito no Kofi, mais proximo da Tanisha.
+- **Corpo + CTA reciclados do V8** (mesma cozinha, mesma receita, mesma fala). O par **V8/V9 é a prova mais limpa do "1 corpo × 2 hooks"** na pagina: dois hooks distintos (baking soda anti-pharma vs demo clinica) plugados no mesmo corpo de receita.
+- **View alto, comment menor:** 114 mil views (2º maior da pagina) mas rankeia so **#9 em comentarios**. O hook clinico atrai muito view mas converte menos comentario que hook de prop falico/receita. Confirma view ≠ comment.
+- Legenda keyword **AZUL**. Trigger **YES**.
+
+## Vídeo 10 — Reel 1626376791803255
+
+**Duracao:** 33s | **Comentarios:** 849 | **Views:** 62 mil | **Angulo:** ED/performance (little soldier) — receita cayenne + melancia
+
+### Estrutura
+
+| Bloco | Tempo | Fala | Visual |
+|---|---|---|---|
+| **Hook (demo de choque)** | 00:00-00:07 | "If your little soldier let you down in bed once again, do this before it's too late" | **Cabana apotecaria** (mascaras africanas, potes de ervas nas prateleiras, bandeira US). Demo bizarra: massagem com um **TRONCO de madeira** sobre a virilha de um homem deitado sem camisa |
+| **Receita** | 00:07-00:19 | "Mix one teaspoon of cayenne pepper and one teaspoon of grated ginger into a glass of watermelon juice. Then add one teaspoon of honey and the juice of half a lemon" | Apotecario: colher despeja em copo de suco de melancia (vermelho); pote de mel, limao, cayenne, gengibre na mesa |
+| **Promessa** | 00:19-00:27 | "Drink this mixture. Many men say that when the moment comes, they feel stronger, more confident, and with way more energy" | Mesma cena |
+| **CTA** | 00:27-00:33 | "Comment yes and I'll send you this secret. But make sure you follow me so I can find your comment" | Apotecario. Trigger YES |
+
+### Analise
+- **"Little soldier"** — eufemismo falico novo (militar). Junto de "Johnson", "manhood", "pickle" (V7), forma o arsenal de eufemismos do Kofi.
+- **Demo do tronco na virilha** = imagem de choque/absurdo pura pra travar o scroll (prop de tamanho aplicado ao corpo de um 2º personagem). Cenario apotecario = autoridade de curandeiro.
+- **Receita unica: cayenne + gengibre + suco de melancia + mel + limao.** Melancia (citrulina) e cayenne (vasodilatador) sao os "folk vasodilators" — mecanismo diferente das outras receitas.
+- Legenda keyword em caixa **VERDE**. Trigger **YES**. Mais curto do grupo (**33s**).
+
+---
+
+## Padrões novos consolidados (V6-V10)
+
+1. **Repost do criativo campeao (V6 = V2).** Kofi republica o vencedor com ID novo e cenario trocado (cabana → varanda). Alcance extra a custo zero de copy. O top 10 por comentarios ja contem 1 repost declarado — provavelmente ha mais entre as 50.
+2. **"1 corpo × N hooks" confirmado no Kofi (V8/V9).** Mesma cozinha + receita banana + CTA, dois hooks diferentes (baking soda anti-pharma vs demo clinica low-T). Espelha o V3/V5 (hook do pepino reciclado). O modelo de producao dele é **reciclar o corpo/CTA e variar so o hook** — o inverso do nosso (1 corpo × N hooks tambem, mas nos reciclamos os clipes 3-4).
+3. **Meta-compliance loop virou padrao (V7, V8, V9).** "one ingredient/secret recipe I can't show/share in this video" aparece em 3 dos 5. O truque do V4 da Tanisha agora é regra fixa no Kofi. **Adotar em todo CTA nosso.**
+4. **Prova social nominal (V7).** Shoutout por nome + estado no fecho. Comunidade fabricada, inedita na amostra. Facil de gerar, forte pra confianca. **Testar.**
+5. **Cenario "varanda suburbana" (V6, V8).** Alem de cabana/savana/cozinha/apotecario/clinica, entra a varanda de casa americana — moldura do "vizinho comum dos EUA".
+6. **View NAO prevê comentario.** V9 = 114 mil views mas #9 em comentario; o maior view da pagina (152 mil) tem so 254 comentarios. Hook de **prop falico + receita** converte mais comentario que hook clinico, mesmo com menos view. Rankear sempre por comentario.
+7. **Eufemismos novos:** "pickle hard as steel" (V7), "little soldier" (V10) — somam a "Johnson"/"manhood".
+8. **Marcas reais como ancora:** Coca-Cola (V6), Arm & Hammer (V8).
+9. **Cor da legenda continua rotativa:** vermelho (V6), destaque (V7), azul (V8/V9), verde (V10).
+10. **Trigger YES nos 5** (6-10). Nos ranks 6-10 ele NAO usou HORSE/TEA — o YES (friccao minima) domina o topo por comentario. Sinaliza que trigger de friccao zero > trigger de marca pra volume de comentario.
+
+## Ranking final por comentários (top 10)
+
+| Rank | Reel | Coment. | Views | Angulo | Trigger |
+|---|---|---|---|---|---|
+| 1 | 2045140726085072 | 4,3k | 91 mil | Tamanho (pepinos + leao) | YES |
+| 2 | 1347333297365013 | 1,8k | 96 mil | Bait Coca-Cola + testosterona | YES |
+| 3 | 2072800689936743 | 1,6k | 35 mil | Tamanho + HORSEWOOD | HORSE |
+| 4 | 916627408115934 | 1,5k | 76 mil | Wellness (canela + abacaxi) | YES |
+| 5 | 3243850782483414 | 1,4k | 81 mil | Stamina (hook reciclado + cha) | TEA |
+| 6 | 1014375111502679 | 1,2k | 92 mil | **Repost do V2** (Coca-Cola, varanda) | YES |
+| 7 | 1306333455043151 | 1,0k | 38 mil | Receita pepino + shoutout nominal | YES |
+| 8 | 1573157344592969 | 926 | 90 mil | Baking soda anti-pharma (corpo banana) | YES |
+| 9 | 1355815863155756 | 884 | 114 mil | Demo clinica low-T (mesmo corpo V8) | YES |
+| 10 | 1626376791803255 | 849 | 62 mil | Little soldier + cayenne/melancia | YES |

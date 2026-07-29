@@ -127,7 +127,7 @@ Mapa central da base. Toda peça de conhecimento é linkada aqui. Atualizado a c
 
 - ✅ [**Ranking e Estratégia**](../concorrentes/README.md) — 7 páginas analisadas, Tanisha (#1 consistência) + Kofi (#2 picos), workflow de garimpagem
 - ✅ [**Tanisha — Top 5 Vídeos (dissecagem)**](../concorrentes/tanisha-top5-analise.md) — 5 reels dissecados com frames, transcript, props, triggers, padrões
-- ✅ [**Kofi — Top 5 Vídeos (dissecagem)**](../concorrentes/kofi-top5-analise.md) — 5 reels dissecados + template híbrido de produção (Kofi hook + Tanisha receita + nossa doutrina)
+- ✅ [**Kofi — Top 10 Vídeos (dissecagem)**](../concorrentes/kofi-top10-analise.md) — 10 reels dissecados por comentários + template híbrido + reposts e "1 corpo × N hooks"
 - ✅ [**Tanisha Rivers**](../concorrentes/tanisha-rivers.md) — 75k seg, 52 hits, #1 base a modelar (fórmula dominada)
 - ✅ [**Kofi & Simba**](../concorrentes/kofi-e-simba.md) — 20k seg, 4.3k top, #2 referência de picos (CTA diferente)
 - ✅ [Zuberi Kwame](../concorrentes/zuberi-kwame.md) — 14k seg, 13 hits
