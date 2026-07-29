@@ -93,6 +93,102 @@ Quatro obrigações em todo vídeo:
    mesmo termo (`your pecker` → `your Johnson` → `the old boy` → `your
    soldier`). Cota não é licença pra bordão.
 
+### ⛔ A FRASE CHÃ É O PADRÃO — construção retórica é rodeio (2026-07-28)
+
+Correção do operador: *"vc usou uma linguagem figurativa e foi super indireto,
+sendo que vc poderia simplesmente ter dito algo mais direto e impactante:
+Why his Johnson don't work well anymore?"*
+
+O que eu escrevi: *"Why does your Johnson stand up at 6am and quit by 11pm?"*
+O que bate mais forte, e é **mais curto**: *"Why doesn't his Johnson work
+anymore?"*
+
+O erro não é vocabulário — o órgão estava nomeado, o termo era do núcleo. O
+erro é **estrutura**: paradoxo, contraste, tríade e ritmo são craft de
+copywriting, e craft custa palavras e meio segundo de decodificação. Em 8
+segundos de hook não há orçamento para nenhum dos dois.
+
+> **Padrão: sujeito + verbo + fato.** Frase declarativa ou pergunta direta.
+> A construção retórica só entra se **não custar uma palavra de clareza** — e
+> quase sempre custa.
+
+| ⛔ Construção | ✅ Frase chã |
+|---|---|
+| Why does your Johnson stand up at 6am and quit by 11pm? | Why doesn't his Johnson work anymore? |
+| The flow stopped reaching his tool. | Blood doesn't reach his wiener anymore. |
+| His cannon doesn't quit. | His pecker works. |
+| He hasn't reached for her in two years. | He stopped touching her. |
+
+⚠️ **O MOLDE SORTEADO NÃO VENCE A CLAREZA.** Os moldes do
+[`banco-hooks`](banco-hooks.md) que são estruturas retóricas — **M3** (tríade
+"this is / this is / and this is"), **M10** (pergunta paradoxal), **M7**
+(isca-e-troca) — foram destilados de reels reais, mas quando o sorteio cair
+neles a execução é na **forma mais chã que o molde admite**. Se a frase chã
+não couber no molde, **a frase chã vence** e o molde vira só o beat. Falha em
+produção, Matt/consultório 2026-07-28: o M10 me empurrou para o paradoxo
+6am × 11pm e o vídeo inteiro ficou indireto.
+
+**Teste da frase chã:** dá para dizer isso numa frase simples? Então diz. Se
+a versão "bonita" tem mais palavras que a versão chã, ela já perdeu.
+
+#### ⏱️ O ORÇAMENTO DE FALA É TETO, NÃO COTA
+
+Correção do operador, 2026-07-28. Eu vinha escrevendo hooks de 25-30 palavras
+porque "cabem em 8 segundos" — e cabiam, encostadas umas nas outras. A versão
+dele do mesmo hook tem **15 palavras** e bate mais forte:
+
+> ❌ *"His Johnson measures three inches hard. That's it. His wife stopped
+> asking two years ago. Come on now — does your Johnson still measure what it
+> used to?"* (27)
+> ✅ *"His wife gave up waiting years ago. Poor woman... his Johnson just
+> doesn't work anymore."* (15)
+
+**Alvos por cena (não mínimos — tetos confortáveis):**
+`hook 14-18` · `causa 16-20` · `ritual 14-18` · `alta 18-24` · `CTA 16-20`.
+Vídeo inteiro em **~90-105 palavras**, não 120+. Silêncio entre frases é
+retenção; frase colada em frase é ruído.
+
+> **Se a cena está no teto, corte — não reescreva mais curto, CORTE uma
+> frase.** Quase sempre a que sobra é a que explica.
+
+#### 💬 O APARTE DO NARRADOR (dispositivo novo — do operador, 2026-07-28)
+
+`Poor woman...` — duas palavras, entre as duas frases de fato, e a dor da
+mulher inteira fica dita sem descrever emoção nenhuma. É o narrador saindo
+do relato por meio segundo para **julgar a cena junto com o espectador**.
+
+Funciona porque é curto e seco. Vira lixo quando vira frase:
+`Poor woman...` ✅ · `That poor woman has suffered so much` ⛔ (aí virou
+emoção reportada — ver §Dor em imagem).
+
+Pool: `Poor woman...` · `Poor guy.` · `Sixty-eight years old.` ·
+`Two years.` · `In front of everybody.` · `His own wife.`
+
+### ⛔ APONTAR NÃO É DIZER — a quarta forma de vago (2026-07-28)
+
+Depois do eufemismo-do-eufemismo, da abstração e da inferência, a quarta:
+**dêixis** — a frase que *aponta* para a imagem em vez de carregar sentido.
+
+Falha em produção, Matt/consultório: *"Look at him. Look at his wife."* Duas
+frases inteiras, zero informação. O que tem ele? Por que ela chora? A copy
+terceirizou o significado para o quadro — e o espectador que está com o som
+ligado e o olho no feed não recebe nada.
+
+| ⛔ Dêixis (aponta) | ✅ Carrega |
+|---|---|
+| Look at him. Look at his wife. | This man's wife is crying because he can't finish anymore. |
+| This is what it looks like now. | His wiener fills halfway and gives out. |
+| Watch what happens. | Watch this cucumber double in your hand. |
+| See the difference? | He went from three inches to eight in a month. |
+
+> **Teste do rádio:** ouça a copy sem ver a imagem. Se alguma frase deixar de
+> significar, ela era dêixis — reescreve. A imagem **reforça** o que a fala
+> diz; nunca a completa.
+
+⚠️ Imperativo de atenção (`look`, `watch`, `see`) **não é proibido** — ele só
+não pode vir sozinho. `Watch this` falha; `Watch his wiener double in her
+hand` passa, porque o objeto e o fato vêm junto.
+
 ### ⛔ DOR EM IMAGEM, NUNCA EM EMOÇÃO (a falha de 2026-07-28)
 
 Escrevi na cena 4: *"One night I couldn't. Her face still guts me."*
@@ -130,9 +226,44 @@ Pool grande de propósito: o termo **rotaciona entre vídeos** (obrigação 3), 
 banco curto vira bordão de página. Todos são gíria **conhecida** nos EUA —
 nada inventado (P19).
 
-**Familiar/apelido:** your buddy · your soldier · **your winner** · the little
-guy · your boy · your best friend · the old boy · your old friend · buddy down
-south · the little soldier
+## ⭐ O BANCO TEM DOIS ANDARES — E SÓ UM COMUNICA (2026-07-28)
+
+Correção do operador depois de eu escrever `your general`, `his cannon`,
+`your flagpole`, `his pipe` num vídeo inteiro: **são termos que estão no banco
+mas que americano nenhum associa ao órgão.** A obrigação 3 (rotacionar) me
+empurrou para o exótico — e rotação virou fonte de vagueza. Trocar clareza por
+variedade é o erro que este banco existe para impedir.
+
+### 🥇 NÚCLEO — os que o público 50+ US decodifica na hora
+```
+your Johnson · your soldier · your wiener · your pecker · your willy ·
+your tool · your manhood · your winner
+```
+**Estes carregam o hook e toda cena que decide o vídeo.** A cota de 75%
+(obrigação 4) se cumpre **com termos do núcleo**.
+
+### 🥈 TEMPERO — só como menção secundária, nunca sozinhos
+`the little guy` · `the old boy` · `your buddy` · `your boy` · `your best
+friend` · `buddy down south` · `your equipment` · `your hammer` · `your gear` ·
+`your rig` · `your tackle` · `your dipstick` · `your pipe` · `your general` ·
+`your sergeant` · `your cannon` · `your torpedo` · `your flagpole` ·
+`your pride` · `your nature` · `your junk` · `your package` · `your unit` ·
+`the third leg` · `the family jewels`
+
+> **Regra de rotação corrigida:** rotaciona-se **dentro do núcleo**. Repetir
+> `Johnson` de um vídeo para o outro é **melhor** que alcançar um termo do
+> tempero que ninguém decodifica. O tempero só entra numa cena que já tenha um
+> termo do núcleo, ou em página cuja persona o justifique (`your nature` em
+> página de persona negra, uso sulista/AAVE).
+>
+> Vídeo com 5 cenas em tempero = vídeo que ninguém entende. Falha em produção,
+> Matt/consultório 2026-07-28.
+
+---
+
+**Familiar/apelido:** your buddy · your soldier 🥇 · **your winner** 🥇 · the
+little guy · your boy · your best friend · the old boy · your old friend ·
+buddy down south · the little soldier
 
 > ⚠️ **`your winner` entrou tarde (2026-07-28, apontado pelo operador) — e o
 > atraso era um bug.** O termo já aparecia **4×** nas linhas M1/M7 do

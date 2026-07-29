@@ -594,6 +594,51 @@
    "M9_confissao",
    "apple_cider_vinegar",
    "banana"
+  ],
+  [
+   "M15_flagrante_publico",
+   "turmeric",
+   "eggplant"
+  ],
+  [
+   "M3_triade",
+   "aloe",
+   "corn"
+  ],
+  [
+   "M10_pergunta",
+   "turmeric",
+   "geoduck"
+  ],
+  [
+   "M6_antes_depois",
+   "aloe",
+   "zucchini"
+  ],
+  [
+   "M14_ataque_industria",
+   "baking_soda",
+   "carrot"
+  ],
+  [
+   "M12_prova_manha",
+   "aloe",
+   "geoduck"
+  ],
+  [
+   "M13_medo_rival",
+   "raw_honey",
+   "melon"
+  ],
+  [
+   "M14_ataque_industria",
+   "crushed_ice",
+   "cucumber"
+  ],
+  [
+   "M4_reacao",
+   "toothpaste",
+   "daikon"
   ]
  ],
  "specs": [
@@ -715,7 +760,16 @@
   "b8632420b82b",
   "c31893ad78fb",
   "601f7c5add29",
-  "2e881e121e19"
+  "2e881e121e19",
+  "c3cab81f1953",
+  "67091df14a6d",
+  "ce0e74f15b23",
+  "846e40399c43",
+  "9992197e4135",
+  "6786bb786c37",
+  "237c604d3bf0",
+  "d0bcbe8e950a",
+  "30a62dd0d67f"
  ],
  "conceitos": [
   "local_publico",
@@ -732,6 +786,15 @@
   "prop_ressurreicao",
   "pov_mercado",
   "flagrante_publico",
-  "podcast"
+  "podcast",
+  "flagrante_publico",
+  "duo_amigo",
+  "solo_classico",
+  "day_labels",
+  "podcast",
+  "podcast",
+  "solo_classico",
+  "podcast",
+  "prop_ressurreicao"
  ]
 }

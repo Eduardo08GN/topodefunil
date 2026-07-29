@@ -233,6 +233,7 @@ O PRISMA sorteia; o especialista do ângulo sorteado executa.
 | `AGENTE_ED_CONFISSAO_V1.md` | confissão crua 1ª pessoa (M9/M13/E4) | 🟡 piloto |
 | `AGENTE_ED_DIARIO_V1.md` | Day 0 → Day 7 (M12/E7/H2) | 🟡 piloto |
 | `AGENTE_ED_GUERRILHA_V1.md` | set público — loja/POV (H5) | 🟡 piloto |
+| `AGENTE_ED_CONSULTORIO_V1.md` | diagnóstico ao vivo — paciente-evidência + marcador de estado (Tanisha, mapeamento frame a frame 2026-07-28) | 🟡 piloto — top da fonte: 2.3K comments |
 
 ⛔ `fake_broadcast` foi **removido** do pool de conceitos (ordem do operador,
 2026-07-28 — risco de ban). Micro-hooks do V5 renomeados **M1-M7 → D1-D7**

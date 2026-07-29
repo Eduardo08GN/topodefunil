@@ -76,6 +76,35 @@ público masculino que se vê descrito.
 
 ---
 
+## ⭐ `GELATIN TRICK` — EXPRESSÃO OBRIGATÓRIA EM TODO VÍDEO (2026-07-28)
+
+> **Ordem do operador, vale para os 12 agentes especialistas e para as duas
+> engines.** Toda copy, de todo vídeo, contém a expressão literal
+> **`gelatin trick`** pelo menos uma vez.
+
+Não é sugestão de estilo — é **nomear o mecanismo**. É a mesma doutrina que
+matou o `not just any gelatin`: o loop de curiosidade segura o **ingrediente
+extra** ou a **fonte**, nunca o nome do mecanismo que o vídeo inteiro
+demonstrou. `gelatin trick` é o nome, e nome dito é o que faz o espectador
+saber o que está comentando.
+
+**Onde entra:** o lugar natural é a **cena da descoberta** (quem passou o
+truque) ou a **cena do resultado/alta** — é onde a expressão carrega
+significado em vez de virar enfeite. No CTA ela pode **ecoar** (`the same
+trick`, `the exact trick`), mas o eco não substitui a menção literal.
+
+**Formas 🟢 já validadas em produção:**
+- `...pulled him aside in that parking lot and gave him the gelatin trick`
+- `...whispered the gelatin trick for his soldier`
+- `That's the gelatin trick.`
+- `...with this gelatin trick` *(a correção do operador no vídeo 9)*
+
+⛔ Não conta: `not just any gelatin` · `one gelatin` · `this gelatin` sozinhos
+— são o mecanismo **sem nome**, e foi exatamente isso que o operador corrigiu
+na mão. A expressão é as duas palavras juntas.
+
+---
+
 ## O CTA — TRAVADO, NUNCA SORTEADO
 
 **Keyword obrigatória: `GELATIN`.** Todas as 5 páginas têm a automação Comentário→DM
@@ -99,6 +128,44 @@ converte comentário em seguidor. Variantes:
 ## LOOP DE CURIOSIDADE NA CENA 4 (obrigatório)
 
 Nunca entregue o ingrediente no vídeo. A promessa de MAIS é o que move o comentário.
+
+### ⭐ O LOOP DERRUBA UMA BARREIRA — não informa, não nega (2026-07-28)
+
+Duas correções do operador, na mesma linha, em sequência:
+
+1. `Stores don't carry that gelatin` → **negativa não segura ninguém**, porque
+   não entrega nada.
+2. `Only one kind works — the kind that gels in cold water` → **especificação
+   técnica também não**. Foi a minha tentativa de conserto e estava errada: é
+   informação de compra, não persuasão. O espectador não está decidindo qual
+   marca levar; está decidindo se **isso é pra ele**.
+
+A linha do operador: **`A trick you can do from the comfort of your own home.`**
+
+> **A última frase da cena 4 mata uma BARREIRA do avatar.** O homem 50+ US não
+> trava por falta de informação — trava por vergonha, custo, complicação e
+> por ter que explicar pra alguém. Cada linha de loop derruba um desses.
+
+| Barreira | ⛔ Fraco | ✅ Derruba |
+|---|---|---|
+| **Vergonha** | Stores don't carry it. | Nobody has to know. No doctor, no pharmacy counter. |
+| **Complicação** | The kind that gels in cold water. | A trick you can do from the comfort of your own home. |
+| **Custo** | It's hard to find. | Costs less than a cup of coffee. |
+| **Tempo** | There's one I can't show here. | Takes about a minute, once a night. |
+| **Exposição** | Only one kind works. | Nothing to fill, nothing to explain to anybody. |
+
+**Pool de fechos (rotacionar):**
+1. `A trick you can do from the comfort of your own home.`
+2. `No doctor, no pharmacy counter, nobody has to know.`
+3. `You do it in your own kitchen, in about a minute.`
+4. `Costs less than a cup of coffee and nobody sees you buy it.`
+5. `Nothing to fill, nothing to explain to anybody.`
+6. `You never have to say the words out loud to anyone.`
+
+⚠️ **A retenção continua sendo a FONTE**, e ela mora no CTA (`I'll send you
+that exact one tonight`), não no fecho da cena 4. E a regra da `gelatin trick`
+(acima) segue valendo: o mecanismo é **nomeado**; o que fica retido é onde
+conseguir a versão certa.
 
 1. "one thing kept showing up over and over again. Gelatin, but not just any gelatin."
 2. "there's one ingredient I can't show you in this video, and it's the one that'll have you feeling like an alpha lion"
@@ -128,6 +195,74 @@ recebe **só** REF afro-americano US (homem e parceira). Inegociável — ver
 
 O REF do Ray abaixo deixa de ser trava e vira **exemplo de formato** — o
 molde de como escrever um bloco REF com marca facial.
+
+### ⭐ CONSTRUIR O REF CONTRA A CELEBRIDADE (2026-07-28)
+
+Falha em produção (Matt/consultório, duas recusas seguidas): IMAGEs
+aprovados, **vídeo recusado por política de pessoa famosa** — mesmo com a
+cláusula `not a celebrity` presente. A cláusula sozinha não basta.
+
+**Diagnóstico:** o REF vinha sendo escrito como um **tipo** — idade + cabelo +
+porte + adjetivos de aprovação (`broad jaw`, `strong`, `weathered`,
+`fit`). Isso aterrissa no atrator "homem americano médio bonito", e esse
+atrator é **povoado de atores**. O modelo preenche o resto com a média do
+treino.
+
+> **A defesa não é negar celebridade; é descrever um rosto que nenhuma
+> celebridade tem.** Rosto interessante-mas-genérico deriva. Rosto
+> específico-e-imperfeito não tem para onde derivar.
+
+### ⛔ DISTINTIVO ≠ DETERIORADO (correção do operador, 2026-07-28)
+
+Eu levei a regra acima longe demais e produzi um REF com dente lascado,
+pálpebra caída, nariz quebrado, capilares rompidos e barba por fazer. O
+operador: *"tu cria um personagem banguelo parecendo mendigo? Como a gente
+passa credibilidade assim?"*
+
+> **A âncora é uma CARACTERÍSTICA memorável num rosto SAUDÁVEL e cuidado —
+> nunca uma avaria.** Credibilidade não é enfeite neste funil: o narrador é a
+> autoridade da cena, e rosto degradado mata a venda antes da primeira
+> palavra. A referência é a Zariah (345K): vitiligo extenso **e** rosto
+> bonito, cuidado, confiante.
+
+| ✅ Âncora (marca) | ⛔ Avaria (degradação) |
+|---|---|
+| coroa de ouro num sorriso saudável | dente lascado, falha, banguela |
+| cicatriz limpa e cicatrizada na sobrancelha | nariz quebrado e achatado |
+| heterocromia · vitiligo · mecha branca | pálpebra caída, ptose |
+| sinal/pinta marcante, sardas, covinha no queixo | capilares rompidos, pele castigada |
+| orelha entalhada, queixo com fenda | barba falhada, cabelo ralo em couro manchado |
+| cabelo prateado farto e penteado | calvície irregular, aspecto desleixado |
+
+**Base obrigatória antes da âncora:** limpo, bem barbeado (ou barba aparada),
+cabelo penteado, pele saudável, roupa limpa e que serve, expressão confiante.
+**Uma ou duas** âncoras bastam — empilhar cinco vira caricatura.
+
+**Receita — 1 ou 2 destas, sempre concretas, sobre a base saudável:**
+
+| Categoria | Exemplos literais |
+|---|---|
+| **Cor/pigmento** | `heterochromia — his left eye is pale blue, his right dark brown` · `extensive vitiligo patches` · `a bold white streak through his hair` |
+| **Cicatriz limpa** | `a clean pale scar runs vertically through his left eyebrow, splitting it into two neat segments` · `a small notch missing from the top of his left ear` |
+| **Dente** | `a single gold crown on his upper right front tooth; the rest of his teeth are straight and healthy` |
+| **Traço marcante** | `a deep vertical cleft in his chin` · `a prominent dark mole on his right cheekbone` · `unusually pale ice-blue eyes` |
+
+⛔ **Palavras que empurram para celebridade** — cortar do REF:
+`handsome` · `chiseled` · `piercing eyes` · `distinguished`.
+
+⛔ **Palavras que empurram para MENDIGO** — igualmente proibidas, e o erro
+mais caro dos dois porque mata a credibilidade: `weather-beaten` ·
+`leathery` · `gaunt` · `patchy stubble` · `chipped tooth` · `drooping eyelid` ·
+`broken capillaries` · `mottled balding scalp` · `frayed collar` · `faded`.
+
+**Cláusula ampliada** (nos IMAGEs **e** nos TAKEs — ver V4):
+`an ordinary everyday relatable person with a plain unremarkable face, not a
+celebrity, not a model, not an actor, not resembling any famous person`
+
+⚠️ E a marca facial vale para **todo personagem descrito**, não só o REF —
+paciente, esposa, vítima, amigo. Rosto secundário genérico foi a segunda
+causa da mesma recusa. Detalhe no `AGENTE_ED_ORGANIC_WAVE_V4.md`
+§Anti-celebridade.
 
 ### Regra da marca facial
 

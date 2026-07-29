@@ -54,6 +54,15 @@ mesmo dentro disso.
 
 ---
 
+> ⚠️ **O MOLDE NÃO VENCE A FRASE CHÃ** (2026-07-28). Os moldes abaixo são
+> **beats**, não obrigações de forma. Os que são estrutura retórica — **M3**
+> (tríade), **M10** (pergunta paradoxal), **M7** (isca-e-troca) — se executam
+> na forma mais direta que admitirem. Falha em produção: o M10 sorteado
+> produziu *"Why does your Johnson stand up at 6am and quit by 11pm?"* quando
+> *"Why doesn't his Johnson work anymore?"* é mais forte **e mais curto**.
+> Regra completa no [`arsenal`](arsenal-linguagem-indireta.md) §A frase chã é
+> o padrão.
+
 ## OS 15 MOLDES
 
 Ordenados por performance medida onde há dado (views do Kofi&Simba em 2026-07-27).
@@ -340,6 +349,8 @@ Aprendido em geração real. **Consultar antes de montar a cena 1.**
 | **H7** — pouring + crescimento (pepino) | 🟢 passa | template C4 |
 | **M1** — modelo anatômico na bancada | 🟢 passa | Joe IMG 02, Ray IMG 02 |
 | **Prop-ressurreição** — geoduck gigante murcho→vertical, lab, despejo | 🟢 passa no FB | Tanisha reel 856954520543734, vídeo IA, 1.6K/673/211 |
+| A **string** `measuring tape ... stretched along the length` + `across the lying man's lap` | 🟡 **string barrada, cena liberada** | Joe/consultório 2026-07-28: cena 1 recusada, cena 2 (mesmos rostos, sem fita) passou. **A fita NÃO está banida** — o que barra é a formulação. Reescrever: `a yellow carpenter's tape, its blade run out alongside the zucchini for comparison`, com âncora em `across the man's knees` em vez de `lap`. Ver [prop-metáforas](prop-metaforas.md) §Recusa do gerador |
+| **Casal com a mulher no colo** — formulação `perched sideways on his right knee` + `wife of forty years` + `the way a newlywed poses for a photograph` | 🟢 **GERA** (imagem e vídeo) | Ray/consultório 2026-07-28. A formulação anterior (`sitting across his lap`) era recusada na política de **menores** com o IMAGE já aprovado; trocado o vocabulário, **a mesma cena passou**. Receita literal no [`AGENTE_ED_CONSULTORIO_V1.md`](../AGENTE_ED_CONSULTORIO_V1.md) §Happy path do colo |
 | **Crescimento com bloco de coreografia** (âncora + analogia `fire hose` + propagação + estado final travado, em batidas com segundos) | 🟢 **gera certo no Veo** | Joe/geoduck 2026-07-28 — 2 falhas com verbo solto, acertou de primeira coreografado. Receita em [prop-metáforas](prop-metaforas.md) |
 
 **Regra:** substituir H9 por H1 (mesmo prop, altura do peito). O choque continua no

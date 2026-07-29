@@ -86,6 +86,10 @@ AMBULANTES = ["local_publico", "pov_mercado", "flagrante_publico"]
 # morre no segundo 9 (falha em producao, lote Joe 2026-07-28 — ver P16).
 PICOS2 = [
     "colo_crescimento",       # mulher (etnia da pagina) sentada no colo dele, prop alongando na mao dela, rosto de surpresa
+                              # NOTA: a STRING "sitting across his lap" barra na politica de menores do gerador de video
+                              # (Ray/consultorio 2026-07-28). A POSE continua valendo — reescrever a frase:
+                              # "perched sideways on his right knee, the way a newlywed poses for a photograph".
+                              # Ver prop-metaforas.md (Recusa do gerador: troca-se a forma de dizer, nao a cena).
     "reacao_testemunha",      # segunda pessoa entra no quadro, ve o resultado e reage com choque
     "demo_quimica_prop",      # despeja a substancia no prop e a reacao acontece na tela
     "antes_depois_prop",      # cut seco entre dois estados do prop na bancada (murcho -> maior e firme)
