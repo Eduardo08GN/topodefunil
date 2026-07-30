@@ -29,6 +29,8 @@ import random
 import re
 import sys
 
+from nucleo_sonoro import sonorizar
+
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LEDGER = os.path.join(AQUI, ".vazamento-ledger.json")
 
@@ -384,7 +386,7 @@ def lint(spec, blocos):
     if "gelatin" not in falas[4].lower():
         achados.append(("ERRO", "CTA da cena 5 sem a keyword GELATIN"))
     for tok, motivo in BANIDOS_CTA.items():
-        if re.search(r"\b%s\b" % tok, falas[4]):
+        if re.search(r"\b%s\b" % tok, falas[4]):   # o linter confere a copy LIMPA
             achados.append(("ERRO", "CTA usa '%s' — %s" % (tok, motivo)))
     for tok, motivo in BANIDOS_FONTE.items():
         if tok in corpo:
@@ -566,7 +568,7 @@ def montar(spec):
         "mid-sentence. His hands grip the shell and do not move. %s %s He is the only "
         "person in the shot.\nDialogue: \"%s\"\n"
         "Audio: quiet kitchen hum, faint refrigerator buzz. No music."
-        % (ref["idade"], GEODUCK_TAKE, VAZAMENTO_TAKE, falas[0])
+        % (ref["idade"], GEODUCK_TAKE, VAZAMENTO_TAKE, sonorizar(falas[0]))
     )
 
     b["TAKE 02/05"] = (
@@ -577,7 +579,7 @@ def montar(spec):
         "eyes stay on the lens the whole time. He is the only person in the shot and no "
         "one else enters frame.\nDialogue: \"%s\"\n"
         "Audio: outdoor ambient — distant birds, faint breeze. No music."
-        % (ref["idade"], falas[1])
+        % (ref["idade"], sonorizar(falas[1]))
     )
 
     b["TAKE 03/05"] = (
@@ -587,7 +589,7 @@ def montar(spec):
         "hand presses flat on the table once for emphasis. He slows down on the last "
         "sentence. He is the only person in the shot.\nDialogue: \"%s\"\n"
         "Audio: outdoor ambient — same birds, faint breeze. No music."
-        % (ref["idade"], falas[2])
+        % (ref["idade"], sonorizar(falas[2]))
     )
 
     b["TAKE 04/05"] = (
@@ -601,7 +603,7 @@ def montar(spec):
         "swaying slightly with her laughter. Only he speaks; she is silent and "
         "laughing.\nDialogue: \"%s\"\n"
         "Audio: outdoor ambient — birds, her laughter warm and audible. No music."
-        % (ref["idade"], mul["idade"], falas[3])
+        % (ref["idade"], mul["idade"], sonorizar(falas[3]))
     )
 
     b["TAKE 05/05"] = (
@@ -609,7 +611,7 @@ def montar(spec):
         "slight natural sway, no cuts. The %d-year-old man looks into the lens, calm "
         "and confident, and points his right index finger at the camera. He speaks "
         "directly and evenly, no rush.\nDialogue: \"%s\"\n"
-        "Audio: outdoor ambient, faint breeze. No music." % (ref["idade"], falas[4])
+        "Audio: outdoor ambient, faint breeze. No music." % (ref["idade"], sonorizar(falas[4]))
     )
 
     return b

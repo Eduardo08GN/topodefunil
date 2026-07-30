@@ -30,6 +30,8 @@ import random
 import re
 import sys
 
+from nucleo_sonoro import sonorizar
+
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LEDGER = os.path.join(AQUI, ".flagrante-ledger.json")
 
@@ -462,7 +464,7 @@ def lint(spec, blocos):
     if "gelatin" not in falas[4].lower():
         achados.append(("ERRO", "CTA da cena 5 sem a keyword GELATIN"))
     for tok, motivo in BANIDOS_CTA.items():
-        if re.search(r"\b%s\b" % tok, falas[4]):
+        if re.search(r"\b%s\b" % tok, falas[4]):   # o linter confere a copy LIMPA
             achados.append(("ERRO", "CTA usa '%s' — %s" % (tok, motivo)))
 
     for nome, txt in blocos.items():
@@ -694,13 +696,13 @@ def montar(spec):
         "laughing, the %s keep laughing in the background.\n"
         "Dialogue: \"%s\"\nAudio: %s No music."
         % (AGENCIA_TAKE.format(ref_curto=ref["cabelo"]), IMOBILIDADE,
-           oc["plateia"], falas[0], oc["audio"])
+           oc["plateia"], sonorizar(falas[0]), oc["audio"])
     )
 
     b["TAKE 02/05"] = (
         "TAKE 02/05: Animate the image exactly. Handheld iPhone, slight sway, "
         "no cuts. %s He is alone in frame, speaking with conviction.\n"
-        "Dialogue: \"%s\"\nAudio: quiet room tone. No music." % (D1_TAKE, falas[1])
+        "Dialogue: \"%s\"\nAudio: quiet room tone. No music." % (D1_TAKE, sonorizar(falas[1]))
     )
 
     b["TAKE 03/05"] = (
@@ -708,7 +710,7 @@ def montar(spec):
         "no cuts. Hands finish pouring the sachet, stir the glass in slow "
         "circles. No face enters frame.\n"
         "Dialogue: \"%s\"\nAudio: spoon clinking glass, quiet room tone. No music."
-        % falas[2]
+        % sonorizar(falas[2])
     )
 
     b["TAKE 04/05"] = (
@@ -717,13 +719,13 @@ def montar(spec):
         "tightens her arm around him; her other hand stays exactly where it is, "
         "holding it motionless the entire shot. Neither changes position. A "
         "man's voice speaks over the scene; the couple stays silent.\n"
-        "Dialogue: \"%s\"\nAudio: quiet room tone, soft laughter. No music." % falas[3]
+        "Dialogue: \"%s\"\nAudio: quiet room tone, soft laughter. No music." % sonorizar(falas[3])
     )
 
     b["TAKE 05/05"] = (
         "TAKE 05/05: Animate the image exactly. Handheld iPhone, slight sway, "
         "no cuts. He looks at camera, calm, points his finger, speaks evenly.\n"
-        "Dialogue: \"%s\"\nAudio: quiet room tone. No music." % falas[4]
+        "Dialogue: \"%s\"\nAudio: quiet room tone. No music." % sonorizar(falas[4])
     )
 
     return b

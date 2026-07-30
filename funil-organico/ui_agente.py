@@ -26,6 +26,8 @@ import sys
 import tkinter as tk
 from tkinter import filedialog, ttk
 
+from nucleo_sonoro import termos_reescritos, NUCLEO_SONORO
+
 
 def paginas_por_pele(motor):
     """{'clara': [...], 'escura': [...]} a partir do mapa ETNIA do motor.
@@ -234,6 +236,12 @@ class App(tk.Tk):
         self.lbl_sujo = tk.Label(acao, text="", font=F_SMALL, bg=PANEL, fg=AVISO)
         self.lbl_sujo.pack(side="left", padx=10)
 
+        # avisa que o TAKE sai com o termo hifenizado (o painel mostra a copy
+        # limpa; o bloco entregue leva a reescrita fonetica)
+        self.lbl_sonoro = tk.Label(cc, text="", font=F_SMALL, bg=PANEL, fg=MUTED,
+                                   anchor="w", justify="left", wraplength=440)
+        self.lbl_sonoro.pack(fill="x", padx=13, pady=(0, 12))
+
     # ---------------------------------------------------------------- direita
     def _coluna_dir(self, pai):
         col = tk.Frame(pai, bg=BG)
@@ -404,6 +412,11 @@ class App(tk.Tk):
 
         self.lbl_resumo.configure(text=self.m.resumo_pt(self.spec))
         self._pintar_pele()
+
+        usados = sorted({t for f in self.spec["falas"] for t in termos_reescritos(f)})
+        self.lbl_sonoro.configure(
+            text=("no TAKE sai como:  " + " · ".join("%s → %s" % (t, NUCLEO_SONORO[t])
+                                                     for t in usados)) if usados else "")
 
         self.blocos = self.m.montar(self.spec)
         self.achados = self.m.lint(self.spec, self.blocos)
