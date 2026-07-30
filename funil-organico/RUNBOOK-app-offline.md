@@ -30,13 +30,33 @@ foi estética — nasceu de três custos medidos em produção:
 ## AS 3 CAMADAS DA FERRAMENTA
 
 ```
-<agente>_lucas.py          ← MOTOR: pools + strings travadas + gerador + linter
-<agente>_lucas_app.py      ← INTERFACE: tkinter, importa o motor
-<AGENTE>-LUCAS.exe         ← DISTRIBUIÇÃO: PyInstaller --onefile --windowed
+ui_agente.py               <- INTERFACE COMPARTILHADA: uma so' para todos os agentes
+<agente>_lucas.py          <- MOTOR: pools + strings travadas + gerador + linter
+<agente>_lucas_app.py      <- ENTRADA: ~20 linhas, so' amarra motor + interface
+AGENTE-<NOME>.exe          <- DISTRIBUICAO: PyInstaller --onefile --windowed
 ```
 
-**Uma fonte de verdade.** O app **importa** o motor, nunca duplica. Regra nova
-entra no motor e aparece no app e no `.exe` sem tocar em interface.
+**Uma fonte de verdade, duas vezes.** O app **importa** o motor, nunca duplica —
+e a **interface e' uma so'** para todos os agentes. Duplicar as ~450 linhas de
+tkinter por agente seria o mesmo erro que a regra P9 proibe na doutrina: copia
+envelhece e mente.
+
+O contrato que cada motor cumpre para a interface generica:
+
+| Simbolo | O que e' |
+|---|---|
+| `TITULO`, `SUBTITULO`, `SLUG` | cabecalho e nome do arquivo salvo |
+| `EIXOS_UI` | `[(chave, rotulo, nome_do_pool, campo_exibido), ...]` — gera as linhas com botao `trocar` |
+| `CENAS_UI` | os 5 rotulos das falas |
+| `resumo_pt(spec)` | a frase em portugues que descreve o video sorteado |
+| `EIXOS_QUE_MEXEM_NA_COPY` | `{chave: funcao(spec, rng)}` — reescreve as falas dependentes quando aquele eixo e' re-sorteado |
+
+...mais a API do gerador: `ETNIA`, `sortear`, `montar`, `lint`, `_carregar_ledger`,
+`_gravar_ledger`, `NUCLEO`, `TETO_FALA`, `_palavras`, `LEDGER`.
+
+⚠️ **Nada de "Lucas" nos labels** (ordem do operador, 2026-07-30): a interface e o
+executavel se chamam **AGENTE &lt;NOME&gt;**. O sufixo `_lucas` sobrevive so' nos
+nomes de arquivo `.py`, que nao sao rotulo de nada.
 
 ### Anatomia do motor
 
@@ -116,6 +136,7 @@ Saída: **um arquivo de ~10 MB**, sem instalador, sem Python no destino.
 |---|---|---|
 | `Unable to find ... when adding binary and data files` | `--add-data` resolve o caminho **relativo ao `--specpath`**, não ao cwd | usar **`--paths` + `--hidden-import`** e deixar a análise de import fazer o trabalho — o motor é importado no topo do app |
 | ledger sumindo a cada execução | congelado, `__file__` aponta para a pasta temporária `_MEIPASS`, que é destruída ao fechar | detectar `sys.frozen` e ancorar o ledger em `os.path.dirname(sys.executable)` |
+| `.exe` travado ao recopiar (`file is being used by another process`) | uma instância do app ficou pendurada de um teste anterior | `Get-Process <NOME> \| Stop-Process -Force` antes de copiar |
 | lixo de build no repo | `dist/`, `build/`, `.spec` nascem no cwd | mandar os três para `%TEMP%` com `--distpath/--workpath/--specpath` |
 
 O trecho que resolve o segundo, no topo do app:
@@ -135,15 +156,26 @@ motor.LEDGER = os.path.join(BASE, ".flagrante-ledger.json")
 
 ## A ENTREGA NO PC
 
-Pasta de destino: **`C:\Users\edlut\Desktop\agentes_py`** — plural de propósito,
-é a casa de todos os agentes portados.
+Raiz: **`C:\Users\edlut\Desktop\agentes_py`** — plural de propósito. **Uma
+subpasta por agente**, cada uma com o próprio `.exe` e o próprio ledger:
+
+```
+agentes_py\
+  FLAGRANTE\  AGENTE-FLAGRANTE.exe  · flagrante_lucas.py  + app + ui_agente.py
+  PEE\        AGENTE-PEE.exe        · pee_lucas.py        + app + ui_agente.py
+  VAZAMENTO\  AGENTE-VAZAMENTO.exe  · vazamento_lucas.py  + app + ui_agente.py
+```
 
 | Arquivo | Papel |
 |---|---|
-| `<AGENTE>-LUCAS.exe` | o app. Duplo-clique |
-| `<agente>_lucas.py` · `<agente>_lucas_app.py` | fonte, para rodar via Python se preciso |
-| `ATUALIZAR.bat` | copia os `.py` novos do repo (⚠️ **não** atualiza o `.exe` — esse exige recompilar) |
+| `AGENTE-<NOME>.exe` | o app. Duplo-clique |
+| `<agente>_lucas*.py` · `ui_agente.py` | fonte, para rodar via Python se preciso |
+| `ATUALIZAR.bat` | copia os `.py` novos do repo — **inclusive a `ui_agente.py`** (⚠️ **não** atualiza o `.exe`, esse exige recompilar) |
 | `.<agente>-ledger.json` | histórico anti-repetição, nasce ao lado do `.exe` |
+
+⚠️ **Cada subpasta carrega a própria cópia da `ui_agente.py`.** É deliberado:
+mantém cada agente autônomo (copiar a pasta para outro PC continua funcionando)
+ao custo de rodar o `ATUALIZAR.bat` de cada um quando a interface mudar.
 
 ### Validação obrigatória antes de entregar
 
@@ -164,6 +196,21 @@ tela com `System.Drawing` e encerrar.
 
 ⚠️ **`--windowed` engole o traceback.** Se o `.exe` fechar sozinho, recompile
 **sem** `--windowed` e rode pelo terminal para ver o erro.
+
+---
+
+## AGENTES JÁ PORTADOS
+
+| Agente | Motor | Eixos sorteados | O que o linter cobra além do comum |
+|---|---|---|---|
+| **FLAGRANTE** | `flagrante_lucas.py` | ocasião (8) · prop (7) · ambiente (6) · REF (6) · vítima (5) · mulher (5) | agência do proxy (F12b), tokens banidos por bloco, D1 íntegro |
+| **PEE** | `pee_lucas.py` | local (6) · roupa clara (5) · ambiente (5) · prop cena 4 (4) · REF (5) · vítima (4) · mulher (4) | **PE6** — o hook precisa do mijo **+** do órgão **+** do vínculo, na mesma fala · **PE7** a cena 2 explica a próstata · **PE1** roupa escura reprova · strings de choro/narrador/plateia íntegras |
+| **VAZAMENTO** | `vazamento_lucas.py` | cozinha (3) · quintal (4) · prop cena 4 (4) · REF corpo-prova (5) · mulher 30-35 (4) | **V6** — `without the gelatin trick` + órgão + MUP na mesma cena · **V7** zero `horse gelatin` · **V2** vocabulário de peixaria, ⛔ `leaking`/`milky` · **V12** idade dos dois em toda menção + `two fully clothed adults` · **V10** bandeira nos dois settings |
+
+⚠️ **Cada linter herda a regra que fez o agente existir.** No PEE, hook que fala
+só do mijo é `ERRO`, não lembrete — o homem com ED não se reconhece e rola. No
+VAZAMENTO, a virada sem a negação `without the gelatin trick` é `ERRO`, porque a
+negação antes da solução é a razão do ângulo.
 
 ---
 

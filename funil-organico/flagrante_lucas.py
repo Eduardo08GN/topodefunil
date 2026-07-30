@@ -64,6 +64,10 @@ NEGACAO_AVE = (
     "eyes, no head, nothing alive."
 )
 
+TITULO = "AGENTE FLAGRANTE"
+SLUG = "flagrante"
+SUBTITULO = "humilhação pública · gerador offline de prompts Veo"
+
 ANTICELEB = "Ordinary relatable face, not a celebrity."
 CAUDA = "iPhone shot, natural grain, no text, no watermark."
 
@@ -444,6 +448,63 @@ def lint(spec, blocos):
         achados.append(("ERRO", "TAKE 02 sem a string travada do D1 (F16)"))
 
     return achados
+
+
+# ---------------------------------------------------------------------------
+# INTERFACE (consumido por ui_agente.py)
+# ---------------------------------------------------------------------------
+
+EIXOS_UI = [
+    ("ocasiao", "OCASIÃO", "OCASIOES", "id"),
+    ("prop", "PROP", "PROPS", "id"),
+    ("ambiente", "AMBIENTE", "AMBIENTES", "id"),
+    ("ref", "NARRADOR", "REFS", "marca"),
+    ("vitima", "VÍTIMA", "VITIMAS", "marca"),
+    ("mulher", "MULHER", "MULHERES", "hook"),
+]
+
+CENAS_UI = ["1 · RUÍNA", "2 · DESCOBERTA", "3 · RITUAL", "4 · REDENÇÃO", "5 · CTA"]
+
+# ja' com a preposicao contraida — abrem a frase do resumo
+PT_OCASIAO = {
+    "casamento": "Num casamento", "confraternizacao": "Na confraternização da firma",
+    "pescaria_firma": "Na pescaria da firma", "reuniao_firma": "Na reunião da firma",
+    "churrasco": "Num churrasco de família", "jantar_amigos": "Num jantar de amigos",
+    "aniversario": "Nas bodas de casamento", "clube_golfe": "No almoço do clube de golfe",
+}
+PT_PROP = {
+    "geoduck": "um geoduck", "banana": "uma banana", "okra": "um quiabo",
+    "pepino": "um pepino", "aspargo": "um aspargo", "daikon": "um nabo daikon",
+    "linguica": "uma linguiça",
+}
+PT_AMBIENTE = {
+    "cozinha": "na cozinha", "cozinha_aberta": "na cozinha com ilha",
+    "churrasqueira": "na área de churrasco", "varanda": "na varanda coberta",
+    "garagem": "na garagem oficina", "copa": "na copa",
+}
+
+
+def resumo_pt(spec):
+    et = "branca" if "white" in ETNIA[spec["pagina"]] else "negra"
+    return ("%s, o colega segura %s murcho no próprio colo enquanto o narrador "
+            "aponta e a mesa ri. As cenas 2 a 5 rodam %s. Elenco de pele %s."
+            % (PT_OCASIAO.get(spec["ocasiao"]["id"], "Num evento"),
+               PT_PROP.get(spec["prop"]["id"], "o prop"),
+               PT_AMBIENTE.get(spec["ambiente"]["id"], "no set interno"), et))
+
+
+def _recopiar_ocasiao(spec, rng):
+    """A ocasiao alimenta o hook e o eco da cena 4 — trocar exige reescrever."""
+    oc = spec["ocasiao"]
+    o0 = next((n for n in NUCLEO if n.lower() in spec["falas"][0].lower()), "Johnson")
+    o3 = next((n for n in NUCLEO if n.lower() in spec["falas"][3].lower()), "manhood")
+    spec["falas"][0] = rng.choice(HOOKS).format(evento=oc["plateia_evento"], o=o0)
+    spec["falas"][3] = rng.choice(REDENCOES).format(
+        eco=oc["eco"], brag=rng.choice(BRAGGING), o=o3,
+        barreira=rng.choice(BARREIRAS))
+
+
+EIXOS_QUE_MEXEM_NA_COPY = {"ocasiao": _recopiar_ocasiao}
 
 
 # ---------------------------------------------------------------------------
