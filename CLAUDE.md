@@ -31,10 +31,20 @@ PRISMA é a frente de desenvolvimento atual (todo commit recente é dela). O age
 PRISMA disser **REPROVADO (< 70% de pares distintos), o lote não é escrito** — rode de
 novo com outra seed.
 
-**Como nasce um agente novo** (garimpo → leitura ótica → mapa visual → destilação
-→ arquivo → registro → primeiro vídeo → loop de campo):
+**Como nasce um agente novo** (garimpo -> leitura ótica -> mapa visual -> destilação
+-> arquivo -> registro -> primeiro vídeo -> loop de campo -> **motor -> app -> .exe**):
 [`PIPELINE-NOVO-AGENTE.md`](PIPELINE-NOVO-AGENTE.md). Ler antes de construir
 qualquer agente novo.
+
+**Agente maduro vira ferramenta.** Quando as regras param de mudar, o agente é
+portado para código: motor (`<agente>_lucas.py` — pools sorteáveis, strings
+travadas como constantes, linter em regex), app tkinter offline e `.exe`
+entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
+[`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
+Primeiro caso: **FLAGRANTE LUCAS**.
+⚠️ **Vai pro código o mecânico e verificável; fica no Markdown o julgamento.**
+String validada é **constante**, nunca redigitada — comprimir o D1 na mão já
+entregou esqueleto 3D no lugar da placa em corte.
 
 **Agentes especialistas por ângulo** (desmembramento 2026-07-28): **16 agentes**
 `AGENTE_ED_<ANGULO>_V1.md` na raiz — FLAGRANTE (humilhação pública), GEMEO
@@ -127,6 +137,7 @@ Inventário atual de domínios e apps:
 
 ## Onde as coisas ficam
 
+- **App offline dos agentes (motor + tkinter + .exe):** [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
 - **Lições de produção Veo (moderação + copy):** [`funil-organico/licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) — playbook das lições pagas em campo; ler antes de gerar lote.
 - **Mapa visual da Tanisha (base do CONSULTORIO):** [`concorrentes/tanisha-mapa-visual.md`](concorrentes/tanisha-mapa-visual.md).
 - `funil-organico/` — doutrina de copy, criativos, arquitetura do funil, runbooks.

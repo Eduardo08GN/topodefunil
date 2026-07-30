@@ -1,0 +1,30 @@
+{
+  "chuck": {
+    "ocasiao": [
+      "clube_golfe"
+    ],
+    "prop": [
+      "linguica"
+    ],
+    "ambiente": [
+      "garagem"
+    ]
+  },
+  "ray": {
+    "ocasiao": [
+      "reuniao_firma",
+      "casamento",
+      "pescaria_firma"
+    ],
+    "prop": [
+      "okra",
+      "geoduck",
+      "geoduck"
+    ],
+    "ambiente": [
+      "cozinha_aberta",
+      "copa",
+      "varanda"
+    ]
+  }
+}

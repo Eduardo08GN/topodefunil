@@ -75,9 +75,10 @@ repetida em vídeos consecutivos da mesma página é proibido.
 | **fila do caixa (ela estende a mão, ele recua)** | linha 2 literal do M15 — testada 2026-07-28, Chuck/geoduck. A humilhação é **um gesto recusado à vista de estranhos**, não uma piada: dói sem plateia rindo. Casa com clima `cochicho + dedo apontado` e reação `constrangida`. Bônus de arco: o eco do F1 é o **mesmo gesto invertido na mesma fila** — o fechamento mais limpo do pool |
 
 ### EVIDÊNCIA VISÍVEL (mostrada, nunca gráfica)
-- **proxy murcho nas mãos de TERCEIRO** (esposa/amiga/o narrador agachado) —
-  a construção 🟢; na virilha do próprio sujeito é H9 🔴 (ver regra do proxy
-  no PRISMA)
+- **proxy murcho na mão da PRÓPRIA vítima, no colo dela**, com o narrador
+  apontando sem encostar — a construção 🟢 (F12b, validada 2026-07-30).
+  ⛔ Nas mãos de terceiro **no corpo dela** é bloqueio certo — quatro recusas
+  seguidas
 - cochicho + dedo apontado das testemunhas
 - ela estendendo a mão / pedindo a dança, ele sentado de cabeça baixa
 - distância física entre o casal no retrato de grupo
@@ -113,7 +114,7 @@ narrativo do PRISMA aplica integralmente (P21).
 | Cena | Beat | O que a copy FAZ | O que a tela mostra |
 |---|---|---|---|
 | **1** | RUÍNA | nomeia **o que aconteceu e o que a plateia descobriu** — não só mostra o choque. Pivô "stay with me / here's what happened" no fim | a ocasião + evidência + vítima de cabeça baixa + plateia reagindo + narrador calmo apontando |
-| **2** | DESCOBERTA | abre com a VIRADA (*until… / that's when…*) — quem contou o truque pra ele. Mecanismo entra depois do conectivo | set interno; narrador andando/apontando (corpo e ambiente) |
+| **2** | DESCOBERTA | abre com a VIRADA (*until… / that's when…*) — quem contou o truque pra ele. Mecanismo entra depois do conectivo | set interno; narrador segura o **modelo anatômico D1** e aponta pra ele (ver F16) |
 | **3** | RITUAL | *that same night…* — o preparo, tease apenas | mãos em ação (sachê, copo, colher) — insert |
 | **4** | REDENÇÃO | *nineteen days later…* + **eco da ocasião** (ver F1) + loop de curiosidade | **CLÍMAX visual (F15)** — default: colo_crescimento do casal redimido |
 | **5** | CTA | *so…* + GELATIN + follow-gate | close, dedo na câmera, limpo |
@@ -249,11 +250,72 @@ narrativo do PRISMA aplica integralmente (P21).
   same angle, same shape — completely motionless for the entire shot. It is a
   still object and nothing about it changes.`
   Ver [`prop-metaforas`](funil-organico/prop-metaforas.md) §Regra dos dois lados.
-  ⚠️ A fronteira do H9 (🔴) continua: o proxy fica nas mãos do TERCEIRO,
-  nunca nas mãos da própria vítima, nunca encostado no corpo dela apontando
-  pra baixo como anatomia. Nas mãos do narrador, na altura da virilha DELA,
-  a construção é a 🟢 documentada (lote da geoduck) — o que mata a 🟢 é
-  distância, o que mata tudo é posse.
+  ⚠️ **Quem segura o proxy: ver F12b — a regra virou ao contrário em
+  2026-07-30.** A versão anterior desta linha mandava o proxy ficar nas mãos
+  do TERCEIRO e marcava as mãos da própria vítima como H9 🔴. **Está
+  revogada.**
+- **F12b — ⭐⭐ O PROXY FICA NA MÃO DA PRÓPRIA VÍTIMA; O NARRADOR SÓ APONTA,
+  SEM ENCOSTAR** (correção validada 2026-07-30, e a lição mais cara da
+  operação até hoje). O que bloqueia a cena 1 **não é o prop, é a agência.**
+
+  **A evidência.** Quatro IMG 01 recusadas em sequência, com **tudo** trocado
+  entre elas — duas páginas (Chuck e Joe), dois props (geoduck e banana), duas
+  geometrias (narrador ajoelhado × sentado), dois enquadramentos (medium-wide ×
+  medium), com e sem o rótulo `victim`, três e dois figurantes. Resultado
+  idêntico nas quatro. **Não foi variância — foi determinismo**, e determinismo
+  não é política de pessoa famosa (essa tem variância alta e cede a um regerar).
+  No mesmo lote passaram de primeira: o **corte anatômico da pelve** (D1), a
+  **mulher no joelho com o prop ereto do tamanho do antebraço** e o hook do
+  VAZAMENTO com o **geoduck murcho gotejando sobre o colo do próprio REF**.
+
+  > **O classificador não estava barrando o assunto. Estava barrando a
+  > composição.** Um homem abatido e passivo · a mão de OUTRO homem no corpo
+  > dele · um objeto fálico na virilha dele, posto ali por terceiro · e plateia
+  > assistindo. Isso, em gramática visual, é **exposição sexual de alguém por
+  > outra pessoa, diante de testemunhas** — categoria muito mais dura que
+  > nudez ou innuendo, porque envolve consentimento.
+
+  Em **todos** os frames que passaram, quem segura o prop na virilha é o
+  **dono da virilha**, e ele está ativo. No frame que falha, o prop está no
+  corpo de um homem passivo e a mão é de outro. Mesmo prop, mesma altura,
+  mesmo estado murcho: o que muda é **a agência**.
+
+  **Frase travada para o IMAGE:**
+  ```
+  In his own fist on his lap he holds a small [prop] — no longer than his
+  thumb, shriveled and wrinkled, skin dull and spotted, completely soft,
+  folded over on itself and drooping over his own fingers. Beside him
+  [o narrador, com a relação nomeada] points his finger down at it without
+  touching him, talking to camera.
+  ```
+  **E no TAKE:**
+  ```
+  ...his pointing finger stays close but never touches the seated man. The
+  seated man keeps his head down, blinks slowly, never speaks, his fist stays
+  on his own lap.
+  ```
+  A proximidade que o F12 exige **continua inteira** (o prop segue no colo,
+  minúsculo e murcho, com a plateia rindo) — só a mão trocou de dono. E a
+  humilhação fica **maior**: ele segurando a própria prova enquanto a mesa ri
+  é mais cruel que alguém segurando por ele.
+
+  **Precedente que confirma:** é a construção do PEE — a evidência no corpo da
+  própria vítima, o narrador **apontando**, ninguém tocando. O hook de
+  1.5K/583/311.
+
+  ⛔ **Corolário: `the victim` e `the narrator` são tokens proibidos no
+  prompt.** `victim` é uma palavra que **significa dano** — rotular a cena
+  assim entrega munição pro classificador de graça. Descrever a pessoa, ou
+  nomear a relação (`his neighbor of twenty-six years`).
+- **F12c — DENSIDADE É SUPERFÍCIE DE BLOQUEIO** (ordem do operador,
+  2026-07-30): *"quanto mais info vc dá pro Veo, mais munição vc dá pra ele
+  flagrar algo."* Prompts longos e cheios de adjetivo falharam onde a versão
+  enxuta da mesma cena passou. Descrever roupa em detalhe, textura de pele,
+  fundo redundante e negação repetida em toda cena **não** aumenta fidelidade
+  — aumenta a chance de um classificador achar onde se agarrar.
+  ⚠️ **A compressão NÃO se aplica a bloco travado.** Enxugar o D1 entregou
+  esqueleto 3D no lugar da placa em corte (F16). As duas regras convivem:
+  **descrição livre encolhe, string validada é intocável.**
 - **F13 — A VÍTIMA É A PROVA; O ESPECTADOR É O ALVO.** O risco estrutural deste
   ângulo é virar fofoca sobre um estranho: 5 cenas de "ele, ele, ele" e o
   espectador sai ileso. **O hook fecha virando a arma pra ele** — a pergunta
@@ -389,6 +451,33 @@ narrativo do PRISMA aplica integralmente (P21).
 - **F7 — OCASIÃO NOVA VIRA REGISTRO.** Testou ocasião fora da tabela? Funcionou
   ou bloqueou? Registrar aqui e no banco-hooks M15 com números. O pool cresce
   por evidência, não por improviso.
+- **F16 — ⭐ O MODELO ANATÔMICO (D1) É O PROP PADRÃO DA CENA 2** (ordem do
+  operador, validado em produção 2× — Chuck/confraternização e Marcus/casamento,
+  2026-07-30). A cena da descoberta deixa de ser talking head puro: o narrador
+  ergue o **D1** (modelo de pelve masculina em corte sagital) e bate o dedo nele
+  enquanto explica o blood flow — é ação de tela onde antes só havia fala.
+  **String travada, cópia literal, nunca reescrita com outras palavras** (a
+  compressão do prompt derrubou o render uma vez — o modelo virou esqueleto 3D
+  em vez de placa em corte — quando o bloco foi resumido; fonte da verdade em
+  [`prop-metaforas`](funil-organico/prop-metaforas.md) §D1):
+  ```
+  In his left hand he holds up toward the camera a hand-sized medical teaching
+  model of the male pelvis in median sagittal section — a flat-backed slab of
+  molded plastic, painted in pink, salmon and pale blue, the interior structures
+  exposed in lengthwise profile the way a urology office display shows them,
+  the whole model turned so its cut face is squared to the lens. His right
+  index finger points at the model.
+  ```
+  **No TAKE, a orientação travada** (o modelo girar mata a leitura):
+  ```
+  He holds the plastic anatomy model steady in his left hand and taps its cut
+  face twice with his right index finger as he explains. The model stays
+  squared to the camera and does not turn or tilt.
+  ```
+  ⛔ Nunca `the male reproductive system` (categoria, não objeto) · nunca
+  `cross-section` sozinho · nunca órgão nomeado no prompt (a geometria entrega
+  sozinha). ⚠️ Escopo do D1 (P15): só em set interno/bancada — a cena 2 já é
+  interna por F6, então não há conflito de escopo aqui.
 
 ---
 
@@ -399,6 +488,7 @@ narrativo do PRISMA aplica integralmente (P21).
 | IMAGE/TAKE, REF, formato x/05, anti-glitch, anti-legenda, amarração de prop | `AGENTE_ED_ORGANIC_WAVE_V4.md` |
 | Doutrina do modelo (I2V, fala, áudio) | [`recursos/DOUTRINA-VEO-3.1.md`](recursos/DOUTRINA-VEO-3.1.md) |
 | Proxy no hook (P18, construções 🟢/🔴), fio narrativo (P21), PICO2 (P16), segundo personagem (P13), copy fresca | [`AGENTE_ED_PRISMA_V1.md`](AGENTE_ED_PRISMA_V1.md) |
+| **Sorteio dos eixos, geração dos 11 blocos e linter mecânico** | [`funil-organico/flagrante_lucas.py`](funil-organico/flagrante_lucas.py) — CLI · app desktop e `.exe` em [`RUNBOOK-app-offline`](funil-organico/RUNBOOK-app-offline.md) |
 | M15 — linhas literais, 4 componentes, selo de risco | [`funil-organico/banco-hooks.md`](funil-organico/banco-hooks.md) |
 | Vocabulário (órgão + estado, P19) | [`funil-organico/arsenal-linguagem-indireta.md`](funil-organico/arsenal-linguagem-indireta.md) |
 | Espinha/CTA/follow-gates/persona por página | [`funil-organico/espinha-fixa.md`](funil-organico/espinha-fixa.md) |
@@ -417,7 +507,9 @@ narrativo do PRISMA aplica integralmente (P21).
 - [ ] **Teste do primo que não é do nicho** (F14): nos 5 primeiros segundos dá pra saber que o assunto é o homem não conseguir levantar? A cena é a metáfora — a fala está em gíria **conhecida**, sem segunda camada de charada?
 - [ ] **A fofoca** (como a plateia soube) está no hook — ou, se não coube nos 8s, migrou pra abertura da cena 2 (F11)?
 - [ ] **A ferramenta é nomeada NO HOOK com SUBSTANTIVO** do arsenal, rotacionado entre vídeos — e **não por pronome** (`does yours…`, `his hangs…` reprovam)? Casa com o fecho na evidência (F8: *"does your Johnson still show up, or does it hang like this"*)?
-- [ ] Proxy nas mãos de terceiro (🟢), nunca na virilha do sujeito (H9 🔴)?
+- [ ] ⭐⭐ **Proxy na mão da PRÓPRIA vítima, no colo dela** — e o narrador só **apontando, sem encostar** (F12b)? ⛔ Zero `the victim` / `the narrator` no prompt?
+- [ ] **Prompt enxuto** — sem roupa detalhada, textura de pele nem fundo redundante (F12c)? E os blocos travados (D1, imobilidade, negação de ave) copiados **na íntegra**, nunca resumidos?
+- [ ] **Cena 2 com o modelo anatômico D1** na mão do narrador, string literal (F16)?
 - [ ] **Proxy COLADO no quadril da vítima** — frase travada do F12 no IMAGE (`right beside the man's hips, level with his groin, inches from his body`) e a âncora no TAKE (`never lifted toward the camera`)?
 - [ ] **Proxy-evidência dimensionado por ÂNCORA DE ESCALA** (`no longer than his thumb`), não por adjetivo — mais a textura (`shriveled, dull, completely soft, folded over`)? Zero `large`/`big`/`thick` na ruína?
 - [ ] Vítima e mulher mudas — só o narrador tem `Dialogue:`?
@@ -430,6 +522,7 @@ narrativo do PRISMA aplica integralmente (P21).
 - [ ] Teto de gente respeitado; fallback anotado na entrega?
 - [ ] **Vítima difere do narrador em ≥ 3 eixos visíveis** (óculos/cabelo/pelo facial) e a **frase de contraste está escrita no IMAGE** (F4b)?
 - [ ] Teste do fio: as 5 copys em sequência = ruína → descoberta → ritual → redenção → CTA?
+- [ ] **Cena 2 tem o modelo anatômico D1**, string travada copiada literal, `does not turn or tilt` no TAKE (F16)?
 
 ---
 

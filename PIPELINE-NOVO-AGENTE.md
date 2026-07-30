@@ -44,7 +44,15 @@ uma cena, uma vítima, uma evidência, um arco.
 [6] registro       → WORKFLOW.md + CLAUDE.md + (se preciso) randomizador
 [7] primeiro vídeo → produzir 1 vídeo pelo agente = o teste do agente
 [8] loop de campo  → cada recusa/falha de render volta como regra
+--- daqui pra baixo o agente vira FERRAMENTA (só quando maduro) ---
+[9]  motor        → <agente>_lucas.py: pools + strings travadas + linter
+[10] app          → <agente>_lucas_app.py: interface tkinter offline
+[11] executável   → .exe entregue em C:\Users\edlut\Desktop\agentes_py
 ```
+
+⚠️ **As etapas 9-11 são opcionais e só entram depois do [8].** Portar um agente
+que ainda está mudando de forma é congelar hipótese em código. O gatilho para
+portar é: **as regras pararam de mudar e o que sobrou é repetição mecânica.**
 
 ---
 
@@ -262,8 +270,41 @@ que fazia o vídeo converter, e a decisão não é do agente.
 
 ---
 
+## [9] [10] [11] O AGENTE VIRA FERRAMENTA — motor, app e `.exe`
+
+Receita completa, com os gotchas do PyInstaller e o checklist de porte:
+**[`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md)**.
+
+O primeiro caso completo foi o **FLAGRANTE LUCAS** (2026-07-30): agente Markdown
+-> `flagrante_lucas.py` -> `flagrante_lucas_app.py` -> `FLAGRANTE-LUCAS.exe` de
+~10 MB rodando offline na área de trabalho.
+
+**A regra de corte entre Markdown e código:**
+
+> Vai para o código o que é **mecânico e verificável** — strings travadas,
+> contagem de cota, teto de fala, token proibido, sorteio de eixo. Fica no
+> Markdown o que é **julgamento** — o porquê da regra, a evidência que a gerou,
+> o arco narrativo. **Código não substitui doutrina; impede que ela seja
+> violada por descuido.**
+
+Os três custos que justificaram a migração, todos medidos em produção:
+
+| Custo | O caso real | O que o código resolveu |
+|---|---|---|
+| String travada corrompida | ao enxugar um prompt, reescrevi o D1 "com minhas palavras" e o render virou esqueleto 3D | as strings viraram **constantes** — não passam mais pela digitação |
+| Auditoria por julgamento | contei a cota do órgão no olho e declarei 4/5 o que era 3/5 | **linter em regex** — conta, soma e varre token banido |
+| Mode-collapse | eu e o modelo gravitando pro mesmo protótipo | **sorteio de eixos** com ledger anti-repetição |
+
+⚠️ **Uma fonte de verdade.** O app **importa** o motor; o motor **cita** a
+doutrina. Regra nova entra no `.md`, desce para o motor, e aparece no app e no
+`.exe` sem tocar em interface. Duplicar string entre camadas é o mesmo erro que
+a regra P9 já proíbe entre arquivos de doutrina.
+
+---
+
 ## Conexões
 
+- [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md) — as etapas [9]-[11] em detalhe
 - [`WORKFLOW.md`](WORKFLOW.md) — a operação inteira · [`CLAUDE.md`](CLAUDE.md) — regras invioláveis e alçada
 - [`AGENTE_ED_PRISMA_V1.md`](AGENTE_ED_PRISMA_V1.md) — engine + regras transversais · [`AGENTE_ED_FLAGRANTE_V1.md`](AGENTE_ED_FLAGRANTE_V1.md) — **o esqueleto a copiar**
 - [`AGENTE_ED_ORGANIC_WAVE_V4.md`](AGENTE_ED_ORGANIC_WAVE_V4.md) — motor mecânico · [`recursos/DOUTRINA-VEO-3.1.md`](recursos/DOUTRINA-VEO-3.1.md) — doutrina do modelo

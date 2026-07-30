@@ -3,3 +3,9 @@ node_modules/
 .playwright-mcp/
 funil-organico/.ledger-v6.json
 funil-organico/__pycache__/
+
+# artefatos de build do PyInstaller
+build/
+dist/
+*.spec
+__pycache__/
