@@ -189,6 +189,11 @@ class App(tk.Tk):
                      fg=ACCENT, anchor="w").pack(side="left")
             cont = tk.Label(cab, text="", font=F_SMALL, bg=PANEL, fg=MUTED)
             cont.pack(side="right")
+            # troca so' a fala desta cena, mantendo o resto do video
+            tk.Button(cab, text="trocar", font=F_SMALL, bg=PANEL2, fg=ACCENT,
+                      activebackground=LINE, activeforeground=ACCENT,
+                      relief="flat", bd=0, cursor="hand2", padx=8, pady=0,
+                      command=lambda k=i: self.trocar_fala(k)).pack(side="right", padx=(0, 9))
             t = tk.Text(cc, height=3, font=F_SMALL, bg=PANEL2, fg=TXT, wrap="word",
                         relief="flat", bd=0, insertbackground=TXT, padx=10, pady=6,
                         highlightthickness=1, highlightbackground=LINE,
@@ -299,6 +304,24 @@ class App(tk.Tk):
             self._preencher_copy()
         self._render()
         self._toast("%s re-sorteado" % chave)
+
+    def trocar_fala(self, i):
+        """Re-sorteia a copy de UMA cena. O motor devolve a linha nova ja'
+        formatada com os slots daquele video (evento, eco, idade dela...)."""
+        nova = getattr(self.m, "nova_fala", None)
+        if not nova:
+            self._toast("este agente ainda nao tem banco de copy por cena")
+            return
+        for _ in range(8):                      # evita devolver a mesma linha
+            candidata = nova(self.spec, i, self.rng)
+            if candidata != self.spec["falas"][i]:
+                break
+        self.spec["falas"][i] = candidata
+        self.txt_fala[i].delete("1.0", "end")
+        self.txt_fala[i].insert("1.0", candidata)
+        self._marcar_limpo()
+        self._render()
+        self._toast("copy da cena %d re-sorteada" % (i + 1))
 
     def aplicar_copy(self):
         for i, t in enumerate(self.txt_fala):

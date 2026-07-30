@@ -260,6 +260,14 @@ HOOKS = [
     "He wet his pants in {evento} and everybody saw. Poor guy... same reason his {o} quit on him.",
     "He soaked right through in {evento}. Poor guy... same thing that made him leak is why his {o} doesn't work.",
     "He lost it right there in {evento}. Poor guy... and that's why his {o} hasn't worked in two years.",
+    "He wet his pants in {evento}. His wife wasn't even surprised. Same reason his {o} stopped working two years back.",
+    "He peed his pants in {evento}. His brother in law still tells that story. Same thing shut his {o} down.",
+    "He soaked his pants in {evento}. His wife stopped reaching for him two years ago. Same reason his {o} plays dead.",
+    "She said it was fine when he peed in {evento}. She says that in bed too. Same reason his {o} quit.",
+    "He leaked down his leg in {evento}. Hasn't asked a woman out since the divorce. Same reason his {o} stays down.",
+    "He started leaking in {evento}. His wife already told her friends about it. Same reason his {o} does nothing.",
+    "He peed right there in {evento}. That was me in 2019. Same reason my {o} went out that year.",
+    "He peed in {evento} today. I did the same in 2019. Every man I know has. Same thing took our {o}.",
 ]
 
 # PE7 — a cena 2 EXPLICA o vinculo que o hook afirmou. Uma causa, dois sintomas.
@@ -267,12 +275,28 @@ MECANISMOS = [
     "It's his prostate squeezing the pipe shut. Same pressure keeps the blood out of your {o}.",
     "His prostate is clamping down on the pipe. That same pressure is what starves your {o}.",
     "It's the prostate choking the line. The same squeeze is why your {o} can't fill anymore.",
+    "It's not his age. His prostate swelled up and pinched the pipe. Same pinch is why no blood gets to your {o}.",
+    "Pills don't touch this. It's his prostate pressing the line flat, and that same press is why your {o} can't fill.",
+    "They never told him why, because a fixed man buys nothing. His prostate is sitting on that pipe and shutting your {o} down.",
+    "Picture a boot standing on a garden hose. That's his prostate on the line, and it's why your {o} won't fill.",
+    "The dripping came first. That's his prostate closing the pipe, and it closes on your {o} a year or two later.",
+    "His doctor treated the bladder and never mentioned the rest. Same prostate pressing the same pipe is what took your {o} down.",
+    "Blood doesn't reach your {o} anymore. It's the same prostate pinching the same line that sends him to the bathroom all night.",
+    "They'll call it two different problems. It's one. His prostate is on the pipe, and that's why your {o} stays down.",
+    "I know this one. My prostate grew over the line and closed it. I leaked. Then my {o} went half. Then nothing.",
+    "Us guys all have the same prostate leaning on the same line. That's why we drip, and that's why our {o} sleeps through it.",
 ]
 
 RITUAIS = [
     "That's when his brother gave him the gelatin trick. He stirred it into a glass that same night. Give your {o} one week.",
     "That's when a buddy handed him the gelatin trick. He drank it that same night. Stir it, drink it, and watch your {o} wake up.",
     "That's when his son-in-law gave him the gelatin trick. He mixed it into a glass that night. Do it before your {o} quits for good.",
+    "A guy at the barbershop gave him the gelatin trick. He stirred a spoonful into cold water before bed. Do it tonight and your {o} answers by Friday.",
+    "An old army buddy called him that night with the gelatin trick. One spoon, warm water, stirred slow. Do the same tonight and give your {o} nine days.",
+    "His fishing partner gave him the gelatin trick. He mixed it in the kitchen that same night. Give your {o} two weeks and stop saying sorry in the dark.",
+    "His nephew texted him the gelatin trick. He mixed a spoonful into his morning drink. Do the same and your {o} wakes up before you do.",
+    "I found the gelatin trick in 2019, brother. I stirred one spoon into cold water that night. Nine days later my {o} answered.",
+    "The gelatin trick is what we do at home now. A spoonful in half a glass of cold water. Your {o} shows up before the weekend.",
 ]
 
 BARREIRAS = [
@@ -287,6 +311,10 @@ BARREIRAS = [
 REDENCOES = [
     "Nineteen days later he walked back into {eco} dry, head up. Now she's the one bragging about his {o}. {barreira}",
     "Nineteen days later he was back in {eco}, dry and standing tall. Now she won't stop talking about his {o}. {barreira}",
+    "Twenty six days later he was back in {eco} dry, head high. She says his {o} wakes up before the alarm. {barreira}",
+    "Sixteen days later he walked into {eco} dry, head up. His {o} left her needing a minute to catch her breath. {barreira}",
+    "Eighteen days later he was back in {eco} dry, chin up. She reaches for him first now. His {o} never quits. {barreira}",
+    "Twenty four days later he walked into {eco} dry, head up. Now she asks for a night off from his {o}. {barreira}",
 ]
 
 GATES = [
@@ -298,6 +326,14 @@ GATES = [
 CTAS = [
     "Comment GELATIN and I'll send you the only one I trust tonight. {gate}",
     "Comment GELATIN and I'll send you that exact one today. {gate}",
+    "Comment GELATIN and I'll send you where to get the right one. {gate}",
+    "Comment GELATIN now and thank me Friday night. I'll send it over today. {gate}",
+    "Comment GELATIN tonight. Somebody always reports this and the video goes down by morning. {gate}",
+    "One word. Comment GELATIN and it's in your inbox tonight. {gate}",
+    "Comment GELATIN and I'll send you the source. I can't name it here. {gate}",
+    "Comment GELATIN and I'll send the same one he used. {gate}",
+    "Comment GELATIN. The store stuff did nothing for you. I'll send the real one. {gate}",
+    "Comment GELATIN and I'll send you the one we use at home. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -314,11 +350,11 @@ BANIDOS_TAKE = {
     "neck": "no geoduck e' 'siphon', nunca 'neck'",
 }
 BANIDOS_IMAGE = {
-    "large wet": None,  # placeholder removido abaixo
-    "big": "adjetivo nao dimensiona — o Veo normaliza",
+    # 'big(?!-box)': o banimento e' de DIMENSAO de prop. Sem o lookahead, o
+    # cenario 'big-box supermarket' era acusado em todo sorteio do local mercado.
+    "big(?!-box)": "adjetivo nao dimensiona — o Veo normaliza",
     "huge": "idem", "engorged": "vocabulario anatomico — recusa", "veins": "idem",
 }
-del BANIDOS_IMAGE["large wet"]
 
 BANIDOS_GLOBAL = {
     "the victim": "rotulo que significa dano — municao pro classificador",
@@ -399,7 +435,13 @@ def lint(spec, blocos):
 
     # tokens banidos por bloco
     for nome, txt in blocos.items():
-        baixo = txt.lower()
+        # O banimento de vocabulario de estado (stiff/limp/sags...) vale para a
+        # DIRECAO DE CENA, nao para a fala: a falha documentada foi um prompt de
+        # movimento descrevendo o prop. Estado dito pelo narrador e' copy normal
+        # e validada ("can't get hard", "plays dead"). Entao so' varremos o que
+        # vem antes de "Dialogue:".
+        direcao = txt.split(chr(10) + "Dialogue:")[0]
+        baixo = direcao.lower()
         tabela = BANIDOS_TAKE if nome.startswith("TAKE") else BANIDOS_IMAGE
         for tok, motivo in tabela.items():
             if re.search(r"\b%s\b" % tok, baixo):
@@ -628,6 +670,21 @@ def _recopiar_local(spec, rng):
     spec["falas"][3] = rng.choice(REDENCOES).format(
         eco=loc["eco"], o=o3, barreira=rng.choice(BARREIRAS))
 
+
+def nova_fala(spec, i, rng):
+    """Re-sorteia a fala da cena i (0-4) mantendo o substantivo-nucleo daquela cena."""
+    o = next((n for n in NUCLEO if n.lower() in spec["falas"][i].lower()), "Johnson")
+    loc = spec["local"]
+    if i == 0:
+        return rng.choice(HOOKS).format(evento=loc["plateia_evento"], o=o)
+    if i == 1:
+        return rng.choice(MECANISMOS).format(o=o)
+    if i == 2:
+        return rng.choice(RITUAIS).format(o=o)
+    if i == 3:
+        return rng.choice(REDENCOES).format(eco=loc["eco"], o=o,
+                                            barreira=rng.choice(BARREIRAS))
+    return rng.choice(CTAS).format(gate=rng.choice(GATES))
 
 EIXOS_QUE_MEXEM_NA_COPY = {"local": _recopiar_local}
 

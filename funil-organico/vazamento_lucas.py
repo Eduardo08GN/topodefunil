@@ -196,6 +196,16 @@ HOOKS = [
     "Your {o} stopped showing up years ago. That's blood flow choked off. Do this before it's too late.",
     "This is what ignoring blood flow does to your {o}. Fix yours tonight, brother.",
     "American men let this happen to their {o} every day. Blood flow. Do this before it's too late.",
+    "Your wife stopped reaching for you. Nobody told you your {o} lost blood flow. Fix it tonight.",
+    "Doctors billed you for twenty years and never once checked the blood flow to your {o}. Do this tonight.",
+    "She already knows your {o} won't work tonight. That's blood flow choked off. Fix it before Friday.",
+    "You apologized in the dark again last night. Blood flow quit reaching your {o}. Do this tonight.",
+    "She said it's okay, honey, and rolled over. It's blood flow, not you. Fix your {o} tonight.",
+    "You plan your nights around a pill that never opened the blood flow to your {o}. Do this tonight instead.",
+    "Nobody in my house buys those pills anymore. Blood flow quit your {o}, brother. Stop paying them.",
+    "I went four years without finishing once, brother. Blood flow quit my {o}. Give me sixty seconds.",
+    "For four years I told my wife I was just tired. Blood flow quit my {o}. Don't lie to her.",
+    "I lost my confidence. I stopped touching my wife. Blood flow quit my {o}. Your turn's coming.",
 ]
 
 # V5 — a receita e' gelatin + baking soda, PREPARADA NA TELA pelas maos dele.
@@ -204,6 +214,16 @@ RECEITAS = [
     "Men, stir a spoonful of gelatin into baking soda for one minute. Do it before your {o} quits for good.",
     "Men, mix a spoonful of gelatin with baking soda in a jar. Stir it. Your {o} is about to wake back up.",
     "Men, stir gelatin into baking soda, one full minute. That's the first half of getting your {o} back.",
+    "Men, stir gelatin and baking soda in a coffee mug while she's asleep. She doesn't need to know why your {o} came back.",
+    "Men, pour the baking soda over the gelatin and stir it one full minute. She's still asking. Your {o} still isn't answering.",
+    "Men, mix gelatin into baking soda and stir until it's smooth. Do it tonight and check your {o} in the morning.",
+    "Men, one spoon of gelatin, one spoon of baking soda, stir. Takes a minute. Your {o} took twenty years to quit.",
+    "Men, mix gelatin with baking soda and stir. Costs a dollar. The pill people charged you thirty a month for your {o}.",
+    "Men, mix gelatin with baking soda in a glass and stir. Do it before Saturday, before she finds out your {o} doesn't work.",
+    "Men, stir gelatin into baking soda right on the counter. Your {o} worked fine at thirty. Get it back.",
+    "Every man in my family keeps gelatin and baking soda on the counter. Mix them, stir a minute. Your {o} needs both.",
+    "Us guys don't order anything. Gelatin, baking soda, a spoon. Stir one minute. Nobody has to know your {o} needs it.",
+    "We keep gelatin next to the coffee in this house. Stir a spoonful into baking soda. Your {o} gets one minute of your day.",
 ]
 
 # V6 ⭐⭐ — a regra central: a receita que ele acabou de dar e' INCOMPLETA.
@@ -212,6 +232,15 @@ RECEITAS = [
 VIRADAS = [
     "But here's what most guys never find out. Without the gelatin trick, baking soda alone does nothing for your {o}. It's not age, brother — your blood flow got choked off.",
     "But here's the thing most guys never realize. Without the gelatin trick, baking soda on its own does nothing for your {o}. It's not age. Your blood flow got choked off.",
+    "You didn't fail, brother. Nobody gave you the other half. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got choked off.",
+    "Stop right there. Without the gelatin trick, that baking soda is half a recipe and your {o} stays down. It's not age. Your blood flow got squeezed shut.",
+    "I gave you half on purpose. Without the gelatin trick, that recipe does nothing for your {o}. It's not age, brother — your blood flow got pinched off decades ago.",
+    "Now don't go telling the guys yet. Without the gelatin trick, baking soda by itself does nothing for your {o}. It's not age, brother. Your blood flow got shut down.",
+    "You're one ingredient short, brother. Without the gelatin trick, baking soda does nothing for your {o}. It's not age. Your blood flow got choked off while you waited.",
+    "She's waited two years already. Without the gelatin trick, baking soda does nothing for your {o}, and she waits two more. It's not age — your blood flow got choked off.",
+    "I mixed that same spoon for a year and nothing moved. Without the gelatin trick, baking soda does nothing for your {o}. It's not age, brother — your blood flow got clamped shut.",
+    "I did this wrong first. I quit for a month. I told my wife it was over. Without the gelatin trick, baking soda does nothing for your {o} — your blood flow stays shut.",
+    "Every man I gave this to called me back angry. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got sealed off years back.",
 ]
 
 # V12 — a copy da cena 4 e' DIRETA sobre ela, com o substantivo-nucleo.
@@ -219,6 +248,12 @@ VIRADAS = [
 PROVAS = [
     "She's half my age and she can't keep her hands off my {o}. Thirty-{n} years old and she calls me every night. {barreira}",
     "She's {n_ext} and she can't keep her hands off my {o}. Half my age, and she's the one who won't wait. {barreira}",
+    "Thirty-{n} years old and she told her girlfriends about my {o}. Half my age, and I'm what she brags about. {barreira}",
+    "She's {n_ext}. Half my age, and she asked me for a break. My {o} doesn't tap out first anymore. {barreira}",
+    "Thirty-{n} years old and she reaches for me first now. Half my age, and my {o} is why she stays. {barreira}",
+    "She's {n_ext} and she drives an hour over on a Tuesday night. Half my age, and my {o} is why. {barreira}",
+    "She's {n_ext}, half my age, and she needed a minute to catch her breath. My {o} did that. {barreira}",
+    "Us guys pass this around now. My {o} works and she's {n_ext}. She couldn't sit still the next day. Thirty-{n} years old. {barreira}",
 ]
 
 BARREIRAS = [
@@ -240,7 +275,18 @@ GATES = [
     "Hit follow right now, or my message never lands.",
 ]
 
-CTAS = ["{pacing} Comment GELATIN and I'll send you the only one I trust today. {gate}"]
+CTAS = ["{pacing} Comment GELATIN and I'll send you the only one I trust today. {gate}"    "{pacing} Comment GELATIN and I'll send you the exact one I use, tonight. {gate}",
+    "{pacing} Comment GELATIN and I'll send you where I get mine. {gate}",
+    "{pacing} Comment GELATIN and I'll send you the full video today. {gate}",
+    "{pacing} Comment GELATIN and I'll send you what to buy and where. {gate}",
+    "{pacing} Comment GELATIN and I'll send the whole thing over before this comes down. {gate}",
+    "{pacing} Comment GELATIN and I'll send you the gelatin trick tonight. {gate}",
+    "{pacing} Comment GELATIN and I'll send you the other half of that recipe. {gate}",
+    "{pacing} Comment GELATIN and I'll send you the same one I sent my brother. {gate}",
+    "{pacing} Comment GELATIN and I'll send you the one we use at my house. I can't name it here. {gate}",
+    "{pacing} I waited four years to find this, brother. Comment GELATIN and you won't wait four days. {gate}",
+    "{pacing} Comment GELATIN and I'll send you what my own wife went looking for. She found it before I did. {gate}",
+]
 
 # ---------------------------------------------------------------------------
 # LINTER
@@ -345,7 +391,13 @@ def lint(spec, blocos):
             achados.append(("ERRO", "copy usa '%s' — %s" % (tok, motivo)))
 
     for nome, txt in blocos.items():
-        baixo = txt.lower()
+        # O banimento de vocabulario de estado (stiff/limp/sags...) vale para a
+        # DIRECAO DE CENA, nao para a fala: a falha documentada foi um prompt de
+        # movimento descrevendo o prop. Estado dito pelo narrador e' copy normal
+        # e validada ("can't get hard", "plays dead"). Entao so' varremos o que
+        # vem antes de "Dialogue:".
+        direcao = txt.split(chr(10) + "Dialogue:")[0]
+        baixo = direcao.lower()
         tabela = BANIDOS_TAKE if nome.startswith("TAKE") else BANIDOS_IMAGE
         for tok, motivo in tabela.items():
             if re.search(r"\b%s\b" % tok, baixo):
@@ -608,6 +660,23 @@ def _recopiar_mulher(spec, rng):
     spec["falas"][3] = rng.choice(PROVAS).format(
         o=o3, n=mul["idade"] - 30, n_ext=n_ext, barreira=rng.choice(BARREIRAS))
 
+
+def nova_fala(spec, i, rng):
+    """Re-sorteia a fala da cena i (0-4) mantendo o substantivo-nucleo daquela cena."""
+    o = next((n for n in NUCLEO if n.lower() in spec["falas"][i].lower()), "Johnson")
+    mul = spec["mulher"]
+    if i == 0:
+        return rng.choice(HOOKS).format(o=o)
+    if i == 1:
+        return rng.choice(RECEITAS).format(o=o)
+    if i == 2:
+        return rng.choice(VIRADAS).format(o=o)
+    if i == 3:
+        n_ext = {30: "thirty", 31: "thirty-one", 32: "thirty-two", 33: "thirty-three",
+                 34: "thirty-four", 35: "thirty-five"}[mul["idade"]]
+        return rng.choice(PROVAS).format(o=o, n=mul["idade"] - 30, n_ext=n_ext,
+                                         barreira=rng.choice(BARREIRAS))
+    return rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES))
 
 EIXOS_QUE_MEXEM_NA_COPY = {"mulher": _recopiar_mulher}
 

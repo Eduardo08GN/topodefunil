@@ -304,6 +304,15 @@ HOOKS = [
     "The whole {evento} had heard the gossip that his {o} quit on him. His hangs just like this.",
     "Every man at {evento} had heard the gossip that his {o} can't stand up anymore. His hangs like this.",
     "Word got around {evento} that his {o} doesn't work anymore. His hangs just like this.",
+    "Every guy at {evento} had heard the gossip that his {o} can't finish anymore. She knows it. His hangs down like this.",
+    "Half the people at {evento} had heard the gossip that his {o} can't get hard anymore. His hangs over his own fingers.",
+    "The women at {evento} had already heard the gossip that his {o} stopped working. His wife told them. His droops like this.",
+    "Nobody at {evento} was surprised. They'd heard the gossip that his {o} hasn't worked in two years. His stays down like this.",
+    "Every husband at {evento} had heard the gossip that his {o} quit and his wife stopped asking. His stays folded like this.",
+    "Everybody at {evento} heard the gossip that his {o} went dead on him. I was that man. His curls over his thumb.",
+    "His crew at {evento} heard the gossip that his {o} gave out on him. Mine did too. His sinks into his lap.",
+    "Neighbors at {evento} heard the gossip that his {o} went soft. I stopped reaching for my wife. His sags off his fingers.",
+    "Cousins at {evento} heard the gossip that his {o} shut down. That was me at sixty. His hides in his own fist.",
 ]
 
 QUEM_CONTOU = [
@@ -316,12 +325,23 @@ DESCOBERTAS = [
     "That's when {quem} pulled him aside and gave him the gelatin trick. It's not age, brother, the blood flow to your {o} got choked off.",
     "That's when {quem} handed him the gelatin trick. It's not age, brother, your {o} got its blood flow choked off.",
     "That's when {quem} gave him the gelatin trick. It's not age. Right here, the blood flow to your {o} got choked off.",
+    "That's when {quem} leaned over and whispered the gelatin trick. It's not your age, brother, and it's not you. The blood stopped reaching your {o}.",
+    "That's when {quem} finally told him about the gelatin trick. Your wife isn't bored, brother, and you're not done. The blood stopped filling your {o}.",
+    "I laughed at the gelatin trick the first time. {quem} wouldn't let him laugh. Give it two days, brother, and the blood finds your {o} again.",
+    "{quem} passed him the gelatin trick in a parking lot. Every man I know over sixty is on it now. The blood has to reach your {o}.",
 ]
 
 RITUAIS = [
     "That same night he stirred it into a glass and drank it. Stir it, drink it, give your {o} one week.",
     "That same night he stirred it into a glass and drank it. Do it tonight, before your {o} quits for good.",
     "That same night he mixed it into a glass and drank it. Stir it, drink it, and watch your {o} wake up.",
+    "That same night he stirred it into a glass and drank it. Do it tonight and stop apologizing for your {o}.",
+    "That same night he stirred it into a glass and drank it. She never saw. Do it tonight for your {o}.",
+    "This is what we do at my house. One glass, one spoon, before bed. Stir it tonight and let your {o} answer.",
+    "I drank mine standing at the sink so nobody would ask. He did the same. Stir it tonight, your {o} is waiting.",
+    "He mixed his glass alone. Us guys do it after the house goes quiet. Stir yours tonight, before your {o} forgets how.",
+    "Nobody in my house buys those pills anymore. He stirred his that night. Stir yours tonight and stop guessing about your {o}.",
+    "First night I drank mine, I sat on the bed waiting. Stir yours tonight and give your {o} the same chance.",
 ]
 
 BRAGGING = ["telling that story", "bragging", "spreading the gossip herself"]
@@ -339,6 +359,13 @@ BARREIRAS = [
 REDENCOES = [
     "Nineteen days later, {eco}. She wouldn't get off his knee, and now she's the one {brag} about his {o}. {barreira}",
     "Nineteen days later, {eco}. She stayed on his knee all night, and now she's the one {brag} about his {o}. {barreira}",
+    "Nineteen days later, {eco}. The same men who laughed asked him what he was taking. She just kept {brag} about his {o}. {barreira}",
+    "Nineteen days later, {eco}. They showed up an hour late because she wouldn't let him out of the bedroom. Now she's the one {brag} about his {o}. {barreira}",
+    "Nineteen days later, {eco}. The same women who whispered about him now hear her {brag} about his {o} instead. {barreira}",
+    "Nineteen days later, {eco}. This time his {o} stood up before she was even ready, and she's still {brag} about it. {barreira}",
+    "Nineteen days later, {eco}. She's the one reaching for him at six in the morning now, and the one {brag} about his {o}. {barreira}",
+    "Nineteen days later, {eco}. Mine came back the same way at sixty-five. She hasn't stopped {brag} about his {o} since. {barreira}",
+    "Nineteen days later, {eco}. My wife locked our bedroom door at seven in the morning once. Now his wife is {brag} about his {o} to her sisters. {barreira}",
 ]
 
 GATES = [
@@ -350,6 +377,13 @@ GATES = [
 CTAS = [
     "Comment GELATIN and I'll send you the only one I trust tonight. {gate}",
     "Comment GELATIN and I'll send you that exact one today. {gate}",
+    "Comment GELATIN and I'll send you the real source. The stuff on store shelves is watered-down powder. {gate}",
+    "Comment GELATIN and I'll send it over tonight, so you never have to apologize in the dark again. {gate}",
+    "Comment GELATIN and I'll send you the exact one he used. It shows up in a plain box. {gate}",
+    "Comment GELATIN and I'll send you the one he got. Nineteen days from tonight, brother. {gate}",
+    "Comment GELATIN and I'll send you what we pass around here, brother. Nobody outside this comment section finds out. {gate}",
+    "Comment GELATIN and I'll send you the same one a man sent me at sixty-four. I didn't ask twice. {gate}",
+    "Comment GELATIN and I'll send you the exact one. I typed it myself once, brother, and nobody in my house ever knew. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -381,7 +415,10 @@ BANIDOS_GLOBAL = {
 
 BANIDOS_CTA = {"BOOK": "quebra a automacao DM", "YES": "quebra a automacao DM"}
 
-TETO_FALA = {1: 20, 2: 30, 3: 22, 4: 32, 5: 24}
+# cena 1 com teto 22 (nao 18 do arsenal): F11 (fofoca nomeada em oracao cha)
+# + F8 (fecho na evidencia) nao cabem em menos. Tetos confirmados na curadoria
+# do banco de copy pelo operador em 2026-07-30.
+TETO_FALA = {1: 22, 2: 30, 3: 22, 4: 32, 5: 24}
 
 
 def _palavras(txt):
@@ -429,7 +466,13 @@ def lint(spec, blocos):
             achados.append(("ERRO", "CTA usa '%s' — %s" % (tok, motivo)))
 
     for nome, txt in blocos.items():
-        baixo = txt.lower()
+        # O banimento de vocabulario de estado (stiff/limp/sags...) vale para a
+        # DIRECAO DE CENA, nao para a fala: a falha documentada foi um prompt de
+        # movimento descrevendo o prop. Estado dito pelo narrador e' copy normal
+        # e validada ("can't get hard", "plays dead"). Entao so' varremos o que
+        # vem antes de "Dialogue:".
+        direcao = txt.split(chr(10) + "Dialogue:")[0]
+        baixo = direcao.lower()
         tabela = BANIDOS_TAKE if nome.startswith("TAKE") else BANIDOS_IMAGE
         for tok, motivo in tabela.items():
             if re.search(r"\b%s\b" % tok, baixo):
@@ -503,6 +546,22 @@ def _recopiar_ocasiao(spec, rng):
         eco=oc["eco"], brag=rng.choice(BRAGGING), o=o3,
         barreira=rng.choice(BARREIRAS))
 
+
+def nova_fala(spec, i, rng):
+    """Re-sorteia a fala da cena i (0-4) mantendo o substantivo-nucleo daquela
+    cena — a rotacao do orgao e' do video inteiro, nao da linha."""
+    o = next((n for n in NUCLEO if n.lower() in spec["falas"][i].lower()), "Johnson")
+    oc = spec["ocasiao"]
+    if i == 0:
+        return rng.choice(HOOKS).format(evento=oc["plateia_evento"], o=o)
+    if i == 1:
+        return rng.choice(DESCOBERTAS).format(quem=rng.choice(QUEM_CONTOU), o=o)
+    if i == 2:
+        return rng.choice(RITUAIS).format(o=o)
+    if i == 3:
+        return rng.choice(REDENCOES).format(eco=oc["eco"], brag=rng.choice(BRAGGING),
+                                            o=o, barreira=rng.choice(BARREIRAS))
+    return rng.choice(CTAS).format(gate=rng.choice(GATES))
 
 EIXOS_QUE_MEXEM_NA_COPY = {"ocasiao": _recopiar_ocasiao}
 
