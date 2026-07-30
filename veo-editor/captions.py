@@ -65,6 +65,8 @@ def gerar_ass(
     keywords=None,             # None = KEYWORDS_PADRAO
     cor_keyword="&H000049FF",  # vermelho-laranja vivo (ABGR de #FF4900)
     escala_keyword=1.4,        # fonte da keyword vs fonte normal
+    pin_cta=True,              # fixa "COMMENT <KEYWORD>" no topo apos o CTA falado
+    duracao_video=None,        # fim do pin (segundos). None = fim da ultima palavra
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
     max_chars) e quebra tambem quando ha silencio > gap_quebra entre palavras.
@@ -74,6 +76,8 @@ def gerar_ass(
     sombra = max(1, int(round(altura * 0.002)))
     margin_v = int(altura * 0.20)  # sobe a legenda pro terco inferior/centro-baixo
     margin_lr = int(largura * 0.11)
+    fonte_pin = max(22, int(altura * 0.048))   # pin do topo: um pouco menor que o karaoke
+    margin_pin = int(altura * 0.10)            # distancia do topo (fora da zona de UI do FB)
 
     # tira tokens que sao SO pontuacao (o whisper emite "," sozinho as vezes) —
     # eram eles que apareciam como virgula solta no comeco da linha.
@@ -105,6 +109,7 @@ YCbCr Matrix: TV.709
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: CC,Arial Black,{fonte_sz},{cor_ativa},{cor_espera},&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{sombra},2,{margin_lr},{margin_lr},{margin_v},1
+Style: PIN,Arial Black,{fonte_pin},&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{sombra},8,{margin_lr},{margin_lr},{margin_pin},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -141,6 +146,31 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         eventos.append(
             f"Dialogue: 0,{_ass_time(ini)},{_ass_time(fim)},CC,,0,0,0,,{txt}"
         )
+
+    # --- pin do CTA: "COMMENT <KEYWORD>" fixo no topo ate o fim do video ---
+    # dispara na primeira vez que uma keyword e FALADA (timestamp do whisper);
+    # o texto fica queimado na porcao superior dali em diante, com a keyword
+    # na cor de destaque. Layer 1 = desenha por cima do karaoke sem colidir
+    # (alignments diferentes: karaoke embaixo, pin no topo).
+    if pin_cta and palavras:
+        kw_falada = None
+        t_pin = None
+        for w in palavras:
+            token = _limpa(w["text"], True).strip(".,!?;:").upper()
+            if token in kw:
+                kw_falada = token
+                t_pin = w["end"]
+                break
+        if kw_falada is not None:
+            fim_video = duracao_video if duracao_video else palavras[-1]["end"] + 0.5
+            if fim_video > t_pin:
+                txt_pin = (
+                    f"COMMENT {{\\1c{cor_keyword}}}{kw_falada}{{\\1c&H00FFFFFF&}}"
+                )
+                eventos.append(
+                    f"Dialogue: 1,{_ass_time(t_pin)},{_ass_time(fim_video)},"
+                    f"PIN,,0,0,0,,{txt_pin}"
+                )
 
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(header + "\n".join(eventos) + "\n")

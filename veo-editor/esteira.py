@@ -231,6 +231,27 @@ def _enfileirar(origem_path):
     return nome
 
 
+def _reenfileirar_orfaos():
+    """Zips parados em 02_processando de uma execucao que morreu no meio.
+
+    A fila e' em memoria: se o app fecha (ou e' morto) durante o processamento,
+    o zip ja' saiu do Downloads e ninguem mais olha para ele — some da esteira
+    sem virar video nem erro. Um ficou 5 horas estranhado assim em producao
+    (adbatch_vertical_5.zip, 2026-07-30).
+    """
+    try:
+        for a in sorted(os.listdir(D_PROC)):
+            if not a.lower().endswith(".zip"):
+                continue
+            with _lock:
+                if a in ESTADO["pendentes"]:
+                    continue
+                ESTADO["pendentes"].append(a)
+            _fila.put(a)
+    except OSError:
+        pass
+
+
 # ---------------- watcher ----------------
 
 def _watcher():
@@ -362,6 +383,7 @@ def iniciar():
             return
         _iniciada = True
     _preparar_pastas()
+    _reenfileirar_orfaos()
     _carregar_cfg()
     _carregar_prontos_de_hoje()
     _limpar_arquivo_antigo()

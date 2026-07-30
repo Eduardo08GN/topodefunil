@@ -7,6 +7,8 @@ da casa: fundo escuro, aqua, dourado, fill solido.
 
 import os
 import queue
+import socket
+import sys
 import threading
 import subprocess
 
@@ -450,5 +452,41 @@ class App(tk.Tk):
         self.after(1200, self._refresh)
 
 
+PORTA_TRAVA = 50573   # so' serve de mutex; nada trafega por ela
+
+
+def _instancia_unica():
+    """Impede duas esteiras rodando ao mesmo tempo.
+
+    Duas instancias sobem DOIS watchers e DOIS workers na mesma pasta: elas
+    disputam o zip no shutil.move, e a que perde a corrida nunca seta
+    ESTADO["atual"] — entao nunca mostra o mascote nem conta o video no painel,
+    parecendo travada. Aconteceu em producao 2026-07-30 (o app aberto pelo
+    pythonw do .venv e pelo do sistema ao mesmo tempo).
+
+    Devolve o socket quando conseguiu a trava (guardar a referencia viva
+    enquanto o app roda) ou None quando ja' existe outra instancia.
+    """
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.bind(("127.0.0.1", PORTA_TRAVA))
+        s.listen(1)
+    except OSError:
+        s.close()
+        return None
+    return s
+
+
 if __name__ == "__main__":
+    _trava = _instancia_unica()
+    if _trava is None:
+        _r = tk.Tk()
+        _r.withdraw()
+        messagebox.showwarning(
+            "Veo Editor",
+            "O Veo Editor ja' esta' aberto.\n\n"
+            "Duas janelas disputam o mesmo zip: a que perde a corrida fica sem "
+            "o mascote e sem contar o video. Use a janela que ja' esta' aberta.")
+        _r.destroy()
+        sys.exit(0)
     App().mainloop()
