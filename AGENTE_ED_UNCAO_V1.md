@@ -81,22 +81,22 @@ cúmplice, meio divertida — nunca clínica, nunca vendedora.
 lado. Não é sachê, não é pó, não é copo. O mecanismo aparece **em estado
 sólido, na mão dela** — é o que separa este agente de todos os outros.
 
-### 3️⃣ O MOLUSCO NA MÃO DELA, ABERTURA PRA CIMA, SIFÃO TOMBADO E MURCHO
-A concha **na palma dela na altura do peito, com a abertura virada para
-cima**; o sifão sai dali mas está mole, **tomba de lado e escorre pela borda
-da concha** — corolário de I2V: o IMAGE é o estado ANTES. ⛔ **Nunca deitado
-na tábua** (sem articulação, o gerador inventa anatomia) e ⛔ **nunca com a
-concha de lado** (a base apontando pro lado errado trunca a mecânica). Ver
-UN4.
+### 3️⃣ O PEPINO CURTO NO PUNHO DELA, NA VERTICAL
+Um **pepino curto e grosso**, segurado **de pé no punho esquerdo dela na
+altura do peito**, ponta virada para cima — corolário de I2V: o IMAGE é o
+estado ANTES, então ele nasce **curto** (`no longer than her hand`).
+⛔ **O prop é pepino, não geoduck** (decisão do operador 2026-07-30, depois
+de 5 tentativas — ver Selo de risco).
 
-### 4️⃣ A UNÇÃO — ela esfrega o cubo no sifão
-A mão dela **em contato**, esfregando o cubo ao longo do sifão, deixando
+### 4️⃣ A UNÇÃO — ela esfrega o cubo no pepino
+A mão dela **em contato**, esfregando o cubo ao longo do pepino, deixando
 brilho. É a assinatura da cena e o único momento do repertório em que o
 mecanismo toca o proxy.
 
 ### 5️⃣ O CRESCIMENTO DENTRO DO TAKE
-O sifão sobe, endireita e **dobra de comprimento nos primeiros ~3 segundos**,
-e **ela reage** enquanto continua falando.
+O pepino **cresce no eixo do comprimento** — a base travada no punho, a ponta
+subindo — **dobrando nos primeiros ~3 segundos**, e **ela reage** enquanto
+continua falando.
 
 ---
 
@@ -151,65 +151,44 @@ com conectivo de tempo ou consequência.
   `pumps` — todos descrevem a mesma geometria e nomeiam o ato errado.
   ⚠️ **Nomear o gênero da imagem** (`the way a cook…`) é a alavanca 3 do
   protocolo de recusa e é obrigatória aqui, não opcional.
-- **UN4 — ⭐ O MOLUSCO FICA NA MÃO DELA, COM O SIFÃO PENDURADO PARA BAIXO —
-  NUNCA DEITADO NUMA SUPERFÍCIE** (falha em produção, Chuck/unção
-  2026-07-30). A primeira versão pôs o geoduck deitado na tábua com a base
-  `pinned to the cutting board` e mandou o sifão levantar. **Isso não tem
-  solução física**: molusco deitado numa superfície não tem de onde erguer o
-  sifão. O Veo recebeu um comando impossível e fez o que sempre faz nesse
-  caso — **inventou uma anatomia** que resolvesse a ordem, entregando um tubo
-  gigante e aberrante.
-  > **A regra que generaliza: comando fisicamente impossível não é ignorado
-  > pelo gerador — é resolvido por invenção.** Toda brecha de física é uma
-  > licença de alucinação.
-  A geometria correta cria uma **articulação real**: a concha presa no punho
-  dela na altura do peito, o sifão pendurado abaixo do punho. Aí o movimento
-  é um **arco de ~180°** que existe no mundo, e o Veo sabe animar.
-  ⭐ **E a abertura da concha fica virada PARA CIMA** (segunda correção do
-  operador, mesmo dia, mesmo lote). Com a concha de lado, o sifão sai na
-  horizontal e o destino (vertical) fica **contra o eixo da base** — o Veo
-  teria que dobrar o sifão num ângulo que a base não permite, e a mecânica
-  sai truncada. Com a abertura para cima, o eixo da base **já aponta para o
-  destino final**, e o movimento vira só o pedaço mole se alinhando com um
-  eixo que já existe: o gesto mais suave que dá pra pedir.
-  > **A regra: a base do prop tem que apontar para onde ele vai terminar.**
-  > Crescimento é alinhamento, não dobra.
+- **UN4 — ⭐ O PROP É PEPINO, CURTO, SEGURADO DE PÉ NO PUNHO DELA** (decisão
+  do operador, 2026-07-30, depois de **5 tentativas fracassadas com
+  geoduck**). O pepino resolve três coisas de uma vez: não tem **prior de
+  comprimento** no treino do modelo (geoduck arrasta "pescoço longo"), tem
+  **eixo único e óbvio**, e não tem parte anatômica que o gerador possa
+  duplicar.
   **Frase travada para o IMAGE:** `her left hand is raised to chest height,
-  holding a geoduck clam horizontally in her palm, the ridged brown shell
-  cupped in her fingers with its opening turned to face straight up at the
-  ceiling. The base of the siphon rises out of that upward-facing opening, but
-  the siphon is limp and slack: it flops over sideways just above the shell
-  and droops down over the edge of it, folded back on itself, the tip hanging
-  loosely toward the counter, no longer than her hand`
+  her fist closed around the base of a short thick cucumber held upright, its
+  dark green skin glossy, no longer than her hand, its blunt tip pointing
+  straight up`
   ⚠️ Âncora de escala obrigatória no estado inicial (`no longer than her
-  hand`) — adjetivo não dimensiona (Chuck/churrasco 2026-07-28).
-- **UN5 — O CRESCIMENTO É COREOGRAFADO, PERCORRE UM ARCO E TEM TETO DE
-  COMPRIMENTO. TERMINA EM ~3 SEGUNDOS** (decisão do operador, 2026-07-30 —
-  P17 vence a intuição de "gradativo").
-  Copiar a receita de [`prop-metaforas`](funil-organico/prop-metaforas.md)
-  §Coreografia de crescimento — **âncora fixa · analogia física (`fire hose`,
-  🟢) · propagação curva a curva · estado final travado**, em batidas com
-  segundos — e somar os **dois elementos que este ângulo tornou
-  obrigatórios**:
-  - **5. A ARTICULAÇÃO E O ARCO.** Descrever o **caminho**, nunca só o
-    destino. `stands upright` é resultado; sem o caminho, o Veo escolhe o
-    caminho — e escolhe crescer em vez de levantar. Nomear o eixo, declarar
-    que **o movimento é alinhamento com a base**, e dizer por onde a ponta
-    passa: `the only movement is the limp siphon rising to line up with the
-    shell it grows out of` + `the tip swings up through an arc, past
-    horizontal, until the whole siphon is standing straight up above the
-    shell, in line with it`. E travar a mão **com a orientação da base
-    repetida**: `her left hand never moves: the shell stays cupped in her palm
-    at the same height and the same angle, its opening still facing straight
-    up at the ceiling, and the siphon stays attached to it at all times`.
-  - **6. O TETO DE COMPRIMENTO, DITO DUAS VEZES.** Negativo implícito não
-    existe pro Veo: o limite entra no estado final **e** na lista de negação.
-    `its full length now about as long as her forearm and no longer than
-    that` + `never detaches from the shell, and never grows past the length
-    of her forearm`.
+  hand`) — adjetivo não dimensiona (Chuck/churrasco 2026-07-28). O prop tem
+  que nascer **curto**, senão não há para onde crescer (P17).
+- **UN5 — O CRESCIMENTO É NO EIXO DO COMPRIMENTO, COREOGRAFADO, E TERMINA EM
+  ~3 SEGUNDOS.** A base **travada no punho dela**, a ponta subindo. Copiar a
+  receita de [`prop-metaforas`](funil-organico/prop-metaforas.md)
+  §Coreografia de crescimento — **âncora fixa · analogia física · propagação ·
+  estado final travado**, em batidas com segundos — com estas três
+  especializações:
+  - **Analogia:** `exactly like a telescoping radio antenna being drawn out`
+    — cresce **só no comprimento**, sem engrossar, sem entortar. ⛔ `fire
+    hose being filled` aqui: implica inchaço e o pepino sai deformado.
+  - **⭐ MARCO CORPORAL NO ESTADO FINAL, não medida abstrata.** O modelo não
+    mede em unidades, ele **compõe o quadro** — `as long as her forearm` não
+    segura nada. O que segura é onde a ponta para:
+    `its tip ends level with the base of her throat, just below her chin. The
+    tip never rises higher than her chin, never reaches the top of her head,
+    and never goes out of the top of the frame.`
+  - **⭐ TRAVA DE IDENTIDADE — o objeto que cresce é o que já está no quadro.**
+    Falha em produção (geoduck, 4 tentativas): o Veo **criava um segundo
+    pescoço** e deixava o original pendurado, então todo teto de comprimento
+    aplicava ao objeto errado. Declarar contagem, identidade e ausência de
+    novo objeto:
+    `There is only ONE cucumber in this shot, the same one already in her
+    fist in the first frame. That exact same cucumber is the one that grows.
+    No second cucumber appears at any point. Nothing new grows out of her
+    hand. She has exactly one cucumber from the first frame to the last.`
   ⛔ `slowly`, `gradually`, `absurdly oversized`.
-  ⚠️ Este bloco estoura o orçamento de 80-150 palavras do TAKE — **exceção
-  autorizada**: geoduck é prop de armadilha documentada.
 - **UN6 — ELA REAGE AO CRESCIMENTO.** Prop crescendo sem reação lê como
   glitch de IA; com reação lê como milagre. Ela **arregala os olhos / ergue
   as sobrancelhas / solta um meio-riso** enquanto o sifão sobe, **sem parar
@@ -220,11 +199,10 @@ com conectivo de tempo ou consequência.
   na boca, olhos arregalados, uma delas apontando. Ele: queixo erguido,
   peito aberto, sorriso largo, expressão de admiração recebida. **Ele não
   fala** (UN8).
-  - **O prop já vem ereto no IMAGE** (F15: na cena de prova o antes/depois
+  - **O prop já vem grande no IMAGE** (F15: na cena de prova o antes/depois
     do vídeo já aconteceu; a redenção é prova, não transformação) e
-    **dimensionado por biologia do prop + escala corporal**: `as long as his
-    forearm`, `as thick as his wrist`, `held stiff and straight`, `surface
-    taut and glossy, streaked with darker mottled lines`.
+    **dimensionado por escala corporal**: `a cucumber as long as his forearm
+    and as thick as his wrist, held upright, its dark green skin glossy`.
     ⛔ `engorged`, `raised veins`, `a third thicker than usual` — recusados
     em produção.
   - **No TAKE o prop NÃO SE MEXE:** `stays exactly as it appears in the first
@@ -250,9 +228,35 @@ com conectivo de tempo ou consequência.
   homem não consegue sem soar defensivo — *o que ela sentia falta, o que ela
   sente agora, o que as outras mulheres perceberam*. É o ativo de copy do
   agente; usar.
-- **UN11 — ORÇAMENTO DO HERO PROP: 2 DE 5 CENAS.** Geoduck na 1 e na 4. Nas
+- **UN11 — ORÇAMENTO DO HERO PROP: 2 DE 5 CENAS.** O prop na 1 e na 4. Nas
   cenas 2, 3 e 5 ele **sai de quadro** (P14). Na cena 3 quem aparece é a
   tigela/os cubos, não o molusco.
+
+---
+
+## ⛔ O GEODUCK ESTÁ BANIDO DESTE ÂNGULO (2026-07-30)
+
+**5 tentativas, 5 falhas, no mesmo lote (Chuck/unção).** A sequência inteira,
+porque cada correção resolveu um problema real e revelou o seguinte:
+
+| # | O que eu escrevi | O que veio | Diagnóstico |
+|---|---|---|---|
+| 1 | geoduck deitado na tábua, base `pinned to the board`, sifão levanta | aberração anatômica | **pose impossível**: molusco deitado não tem de onde erguer. Comando impossível vira licença de invenção |
+| 2 | molusco na mão, sifão pendurado | mecânica truncada | **base desalinhada**: concha de lado, o destino ficava contra o eixo |
+| 3 | abertura da concha pra cima | tubo de um metro | **duas transformações juntas** (erguer + crescer) + `fire hose` implicando expansão |
+| 4 | comprimento constante afirmado | tubo longo de novo | teto abstrato não segura: o modelo **compõe quadro**, não mede |
+| 5 | trava de identidade + marco corporal | **segundo pescoço** ao lado do murcho | o Veo **cria um objeto novo** em vez de transformar o existente |
+
+> **A causa raiz, e a lição que fica:** o geoduck tem um **prior de forma
+> dominante** no treino — sifão longuíssimo, e uma parte anatômica destacável
+> que o gerador trata como objeto próprio. Contra prior dominante, negação
+> verbal não vence. **Prop com prior forte serve para cena ESTÁTICA (murcho
+> parado, ou já ereto parado — as duas 🟢 em produção), nunca para take de
+> transformação.**
+
+O geoduck **continua válido** nos ângulos onde ele não se transforma:
+FLAGRANTE (evidência murcha e imóvel), VAZAMENTO (vaza, não cresce), cena 4
+de payoff (já ereto, `completely motionless`).
 
 ---
 
@@ -299,11 +303,11 @@ Esgotadas, **parar e reportar ao Ed com o diagnóstico e as opções**
 - [ ] **UN1**: traços concretos em vez de `beautiful` solto, corpo forte com grupos nomeados, roupa coberta — zero vocabulário de desejo?
 - [ ] **UN2**: gelatina **em cubos prontos** numa tigela, nunca sachê no hook?
 - [ ] **UN3**: o contato descrito em domínio de cozinha/peixaria, com o **gênero da imagem nomeado** (`the way a cook rubs marinade into seafood`)? Zero `strokes`/`caresses`/`grips`?
-- [ ] **UN4**: o molusco está **na mão dela**, com a **abertura da concha virada para cima** e o sifão tombado pela borda — nunca deitado numa superfície, nunca com a concha de lado? Sifão curto, dobrado, com **âncora de escala** (`no longer than her hand`) — não só `small`?
-- [ ] **UN4b — TESTE DA FÍSICA**: a transformação que eu pedi é **possível no mundo real** com essa geometria? Existe articulação, existe de onde levantar? (Comando impossível = licença de alucinação.)
-- [ ] **UN4c — TESTE DO EIXO**: a **base do prop já aponta para onde ele vai terminar**? (Crescimento é alinhamento, não dobra — base apontada pro lado errado trunca a mecânica.)
-- [ ] **UN5**: coreografia completa no TAKE (âncora · fire hose · propagação curva a curva · estado final travado · **arco articulado** · **teto de comprimento dito duas vezes**) em **batidas com segundos**, terminando em ~3s? Lista de negação de bicho presente? Zero `slowly`/`gradually`?
-- [ ] **UN5b**: o TAKE descreve o **caminho** do movimento (eixo + arco + por onde a ponta passa), não só o estado final?
+- [ ] **UN4**: o prop é **pepino curto, de pé no punho dela**, com **âncora de escala** (`no longer than her hand`) — não só `small`? ⛔ zero geoduck no hook.
+- [ ] **UN4b — TESTE DA FÍSICA**: a transformação que eu pedi é **possível no mundo real** com essa geometria? Existe de onde crescer? (Comando impossível = licença de alucinação.)
+- [ ] **UN5**: coreografia completa no TAKE (âncora no punho · **antena telescópica** · propagação · estado final travado) em **batidas com segundos**, terminando em ~3s? Zero `slowly`/`gradually`/`fire hose`?
+- [ ] **UN5b — MARCO CORPORAL**: o estado final diz **onde a ponta para** (`level with the base of her throat`, `never higher than her chin`), e não só uma medida abstrata?
+- [ ] **UN5c — TRAVA DE IDENTIDADE**: está escrito que existe **UM** prop, que é **o mesmo** do primeiro frame, e que **nenhum segundo prop aparece**? (O gerador cria um objeto novo e deixa o original parado — falha em produção, geoduck 2026-07-30.)
 - [ ] **UN6**: ela reage ao crescimento **sem parar de falar**?
 - [ ] **UN7**: cena 4 num **evento social com mulheres ao fundo boquiabertas**, ele de queixo erguido e mudo, prop **já ereto no IMAGE e dimensionado** por escala corporal, **imóvel no TAKE**?
 - [ ] **UN8**: só ela tem `Dialogue:` nas 5 cenas? O "oh my god" está no **Audio** como gasp, não como fala?

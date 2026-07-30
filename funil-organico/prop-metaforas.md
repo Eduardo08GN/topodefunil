@@ -371,6 +371,44 @@ Diagnóstico, e é a lição mais transferível do playbook:
 | **5b. Orientação da base** ⭐ | segunda falha do mesmo lote: a concha estava **de lado**, o sifão saía na horizontal e o destino (vertical) ficava **contra o eixo da base** — o Veo teria que dobrar o prop num ângulo que a base não permite, e a mecânica sai truncada. **Crescimento é ALINHAMENTO, não dobra:** a base tem que apontar para onde o prop vai terminar | `the ridged brown shell cupped in her fingers with its opening turned to face straight up at the ceiling. The base of the siphon rises out of that upward-facing opening, but the siphon is limp and slack: it flops over sideways just above the shell and droops down over the edge of it` |
 | **6. Teto de comprimento, dito duas vezes** | negativo implícito não existe pro Veo; o limite entra no **estado final** E na **lista de negação** | `about as long as her forearm and no longer than that` + `never detaches from the shell, and never grows past the length of her forearm` |
 
+#### ⭐ Elemento 7 — TRAVA DE IDENTIDADE: o objeto que muda é o que já está no quadro
+
+Falha em produção (Chuck/unção 2026-07-30, 5ª tentativa): o Veo **criou um
+segundo pescoço** de geoduck em pé e **deixou o murcho pendurado** ao lado.
+Todos os tetos de comprimento das tentativas anteriores aplicavam a um objeto
+que o modelo nem estava transformando. Já tinha acontecido antes, com outra
+cara: no vídeo 26 o braço livre do REF ficou sem instrução e o Veo preencheu
+com **um segundo geoduck**.
+
+> **O gerador ADICIONA quando você descreve um estado novo sem dizer que ele
+> pertence ao objeto que já existe.** Transformar é caro; instanciar é barato.
+
+Quatro frases, cada uma fechando uma brecha diferente:
+
+```
+There is only ONE <prop> in this shot, the same one already in her fist in the
+first frame. That exact same <prop> is the one that grows. No second <prop>
+appears at any point, and nothing new grows out of her hand. She has exactly
+one <prop> from the first frame to the last.
+```
+
+A quarta é a que costuma faltar quando o objeto muda de posição: **declarar o
+estado final do original** (`when it is up there is nothing left hanging over
+the edge`). Sem ela, a solução preguiçosa — deixar o velho parado e subir um
+novo — continua satisfazendo o prompt.
+
+#### ⛔ Prop com prior dominante não serve para take de transformação
+
+O geoduck queimou **5 tentativas seguidas** no mesmo lote. A causa não foi
+vocabulário: o prop tem um **prior de forma dominante** no treino (sifão
+longuíssimo) e uma parte destacável que o gerador trata como objeto próprio.
+Contra prior dominante, negação verbal não vence.
+
+> **Prop com prior forte serve para cena ESTÁTICA** — murcho parado (🟢
+> FLAGRANTE) ou já grande e `completely motionless` (🟢 payoff F15) — **nunca
+> para o take em que ele muda.** Para transformação, escolher prop de **eixo
+> único e sem prior**: pepino, daikon, linguiça, milho.
+
 ⚠️ **Antes de escrever qualquer take de crescimento, os dois testes:**
 1. **Física** — *a transformação que eu pedi é possível no mundo real com essa
    geometria? Existe articulação? Existe de onde levantar?*
