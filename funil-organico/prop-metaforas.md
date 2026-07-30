@@ -351,6 +351,31 @@ Escrever em **batidas com segundos explícitos** (`0 to 1 second:` / `1 to 3
 seconds:` …) — o Veo respeita marcação temporal muito melhor que "rapidly".
 Isso também satisfaz o P17 (crescimento termina em ~3s) sem usar `slowly`.
 
+#### ⭐ Os elementos 5 e 6 — a física e o teto (falha em produção, Chuck/unção 2026-07-30)
+
+Prompt: geoduck **deitado numa tábua**, base `pinned to the cutting board`, e a
+ordem de o sifão levantar. Entregue: **uma aberração anatômica** — um tubo
+gigante que não existe em molusco nenhum.
+
+Diagnóstico, e é a lição mais transferível do playbook:
+
+> **Comando fisicamente impossível não é ignorado pelo gerador — é resolvido
+> por invenção.** Molusco deitado numa superfície não tem de onde erguer o
+> sifão: não há articulação. O Veo não devolve erro, ele **inventa uma
+> anatomia** que torne a ordem executável. Toda brecha de física é uma licença
+> de alucinação.
+
+| # | Elemento | Por que | Exemplo literal |
+|---|---|---|---|
+| **5. Articulação e arco** ⭐ | `stands upright` é **destino**, não caminho. Sem o caminho o Veo escolhe o caminho — e escolhe crescer em vez de levantar. Precisa do **eixo** e de **por onde a ponta passa** | `hinged where it meets the shell inside her fist` + `the tip swings up through an arc, past horizontal, until the whole siphon is pointing straight up above her fist` — e a mão travada: `her left fist never moves: it stays at the same height and the same angle, and the shell stays gripped in it, attached to the siphon at all times` |
+| **6. Teto de comprimento, dito duas vezes** | negativo implícito não existe pro Veo; o limite entra no **estado final** E na **lista de negação** | `about as long as her forearm and no longer than that` + `never detaches from the shell, and never grows past the length of her forearm` |
+
+⚠️ **Antes de escrever qualquer take de crescimento, o teste da física:** *a
+transformação que eu pedi é possível no mundo real com essa geometria? Existe
+articulação? Existe de onde levantar?* Se a resposta for não, o problema é a
+**pose no IMAGE**, não o prompt do TAKE — e nenhuma reescrita de movimento
+conserta pose impossível.
+
 Fechar com o anti-reversão e a negação ampliada:
 
 ```

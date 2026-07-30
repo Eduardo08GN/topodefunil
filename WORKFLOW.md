@@ -237,6 +237,7 @@ O PRISMA sorteia; o especialista do ângulo sorteado executa.
 | `AGENTE_ED_PEE_V1.md` | **a mancha pública** — incontinência flagrada no corredor da loja; sub-ângulo do FLAGRANTE, cenas 2-5 herdadas dele | ⭐ **fonte: 1.5K/583/311, 20-50× a média** (reel fundador do M15) |
 | `AGENTE_ED_ELA_DIAGNOSTICA_V1.md` | **REF feminina** cravando o dedo no abdômen do paciente, com alarme no rosto — as 3 inversões do CONSULTORIO (mulher / barriga como evidência / alarme em vez de calma) | 🟡 piloto — reel 1022316587192809 |
 | `AGENTE_ED_VAZAMENTO_V1.md` | **o corpo-prova e a receita incompleta** — REF musculoso segurando o geoduck gigante e mole que **vaza**, receita de supermercado (`gelatin + baking soda`) que ele mesmo declara incompleta sem o `gelatin trick`. Solo, dois settings | 🟡 piloto — fonte Kofi&Simba reel 1555163349606149: **703/254/36** (254 comentários = KPI do funil) |
+| `AGENTE_ED_UNCAO_V1.md` | **a mão dela, o cubo e a ressurreição na tela** — REF feminina 30+ esfregando cubos de gelatina pronta no sifão do geoduck, que endireita dentro do take; payoff é o homem dela exibindo num evento social com mulheres boquiabertas. Único ângulo em que o mecanismo TOCA o proxy | 🟡 piloto — **comissão do operador 2026-07-30, sem leitura ótica**. Selo de risco mais alto do repertório (fila de reformulação no agente) |
 
 ⛔ `fake_broadcast` foi **removido** do pool de conceitos (ordem do operador,
 2026-07-28 — risco de ban). Micro-hooks do V5 renomeados **M1-M7 → D1-D7**
