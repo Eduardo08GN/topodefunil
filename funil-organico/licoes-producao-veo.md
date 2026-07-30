@@ -115,6 +115,11 @@ fabricado como real, sexo gráfico). Todo o resto é campo aberto — e vago nã
 5. **Construção retórica** — paradoxo/tríade/contraste que custa palavras. **O
    molde sorteado não vence a clareza.** `Why doesn't his Johnson work anymore?`
    bate mais que `Why does it salute at 6am and quit by 11?` **e é mais curto.**
+6. **Narrar o quadro / descrever comportamento** — `he keeps his shirt on at
+   the pool` exige o espectador deduzir a falha, **e** repete o que a imagem já
+   mostra. A fala diz a **falha** (`he can't please his wife anymore`); a
+   imagem mostra o comportamento. Teste da narração: se hook e imagem dizem a
+   mesma coisa, a fala está desperdiçada.
 
 **As regras que fecham essas portas:**
 - **Frase chã é o padrão:** sujeito + verbo + fato. Se a versão "bonita" tem

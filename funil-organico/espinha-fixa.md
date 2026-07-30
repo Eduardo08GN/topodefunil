@@ -264,6 +264,49 @@ paciente, esposa, vítima, amigo. Rosto secundário genérico foi a segunda
 causa da mesma recusa. Detalhe no `AGENTE_ED_ORGANIC_WAVE_V4.md`
 §Anti-celebridade.
 
+### ⭐ O CORPO TAMBÉM É AUTORIDADE — REF SEMPRE MUSCULOSO (2026-07-30)
+
+Ordem do operador, depois de uma leva inteira sair errada: *"esses refs seus
+estão muito raquíticos. Tem que ter muito músculo e aparentar ser saudável —
+tem de passar autoridade."*
+
+> **A regra do rosto saudável valia só do pescoço pra cima, e isso era metade
+> do problema.** Um homem de 70 magro e encurvado não vende vitalidade
+> masculina, por mais cuidado que seja o rosto. O corpo é a primeira prova da
+> promessa: se ele não parece ter o que está vendendo, a copy não recupera.
+
+**Vale para o REF de TODOS os agentes**, homem ou mulher. Duas travas:
+
+**1. O físico é sempre forte e saudável.** Os valores magros e moles foram
+**removidos do pool** do `randomizador-prisma.py` (`lean wiry build` e
+`heavyset soft build` entregavam velho raquítico ou barrigudo). O que sobrou
+já vem musculoso.
+
+| ✅ Físico | ⛔ Removido |
+|---|---|
+| `a powerfully built muscular frame with a broad chest and thick arms` | `lean wiry build` |
+| `a lean hard-muscled build with visible definition in the chest, shoulders and arms` | `heavyset soft build` |
+| `a heavy-set powerful build, barrel chest and thick muscular forearms` | `slim`, `frail`, `slight` |
+| `a tall broad-shouldered muscular build with a wide back and strong neck` | `stooped`, `bony`, `thin` |
+
+**2. Nomear o GRUPO muscular, nunca só `muscular`.** `muscular` sozinho não
+renderiza — o Veo normaliza para corpo médio, exatamente como `large` não
+dimensiona prop. O que rende é o grupo dito: **`broad chest`** · **`thick
+arms`** · **`heavy shoulders`** · **`thick forearms`** · **`wide back`**.
+Mesma lógica da âncora de escala em
+[`prop-metaforas`](prop-metaforas.md) §A regra vale nos dois sentidos.
+
+⚠️ **Isso entra no BLOCO 0 (REF) e em todo IMAGE em que o REF aparece** — o
+rosto-base sozinho não propaga o corpo para as cenas.
+
+⚠️ **Vale para o REF, não para a vítima.** No FLAGRANTE e no ELA_DIAGNOSTICA a
+vítima/paciente é o **antes** — barriga e postura caída são o argumento dela.
+O contraste narrador-forte × vítima-derrubada é motor, não erro.
+
+⛔ E a linha entre forte e inchado: `muscular`, `powerful`, `thick` sim;
+`bodybuilder`, `shredded`, `ripped`, `bulging veins` não — vira fisiculturista
+de palco e perde o "homem comum" que faz o espectador se ver.
+
 ### Regra da marca facial
 
 Todo REF precisa de **uma âncora visual memorável** — vitiligo, mecha branca,

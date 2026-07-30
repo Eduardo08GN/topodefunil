@@ -270,6 +270,24 @@ narrativo do PRISMA aplica integralmente (P21).
   Direto também é **econômico**: frase curta, substantivo cru do arsenal, zero
   conectivo de novela. Se a linha explica a história em vez de furar o peito,
   corta. Ver P22.
+- **F14b — ⭐ O HOOK NOMEIA A FALHA, NÃO O COMPORTAMENTO** (correção do
+  operador, 2026-07-28). Falha em produção (piscina Marcus): escrevi
+  *"Third summer he keeps his shirt on at the pool. His wife stopped asking him
+  to swim."* — dois comportamentos que exigem o espectador **deduzir** que ele
+  não consegue transar. O operador reescreveu: *"Third summer he can't please
+  his wife anymore."*
+  **Agravante específico deste ângulo:** a ocasião do flagrante já está toda no
+  IMAGE (a piscina, a camisa molhada, os braços cruzados, a plateia
+  cochichando). Se a fala **narra o quadro**, o vídeo tem uma informação só
+  dita duas vezes — e o assunto nunca chega.
+  > **A imagem mostra o comportamento; a fala diz a falha.**
+  > `he can't please his wife anymore` · `his Johnson quit on him` ·
+  > `he can't get hard for her` · `he can't finish and she knows it`
+  Comportamento continua valendo como **prova depois do fato** (`he stopped
+  touching his own wife so she wouldn't find out` funciona porque vem depois de
+  `his Johnson quit`), nunca como o hook. Regra completa em
+  [`arsenal`](funil-organico/arsenal-linguagem-indireta.md) §A fala não narra
+  o quadro.
 - **F14 — DUAS CAMADAS DE CÓDIGO = ZERO SINAL (o risco específico deste ângulo).**
   No flagrante a **cena já é metáfora**: um homem chorando ao lado de um legume
   murcho não diz literalmente nada — quem traduz é a fala. Nos outros ângulos o

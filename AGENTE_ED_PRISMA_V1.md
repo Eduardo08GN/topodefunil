@@ -646,6 +646,7 @@ Tradução dos eixos novos para o IMAGE/TAKE:
 - [ ] A luz da spec está travada verbatim nas 5 cenas do vídeo?
 - [ ] O setting/gramática/wardrobe da spec estão em TODOS os IMAGEs do vídeo?
 - [ ] `dispositivo=nenhum` respeitado (sem prop inventado "pra enriquecer")?
+- [ ] **Se a cena de explicação tem `disp=D1_modelo_anatomico` (ou o REF segurando o modelo): a frase travada foi COPIADA de [`prop-metaforas`](funil-organico/prop-metaforas.md) §D1** — plano de corte + pelve + placa de plástico + paleta + `cut face squared to the lens`, e `does not turn or tilt` no TAKE? ⛔ Zero `the male reproductive system` (categoria → o gerador entrega corte abdominal com rins e intestino).
 - [ ] **A cena 1 tem o proxy fálico nas mãos do REF** (ou de um segundo personagem agachado), e **não** na própria virilha do sujeito?
 - [ ] **Hero prop em no máximo 2 das 5 cenas** (sai de quadro nas outras)?
 - [ ] **Teste do storyboard mudo**: as 5 IMAGEs em uma palavra cada — nenhuma se repete?
@@ -664,6 +665,7 @@ Tradução dos eixos novos para o IMAGE/TAKE:
 - [ ] **Orçamento de fala respeitado como TETO:** hook 14-18 palavras, vídeo inteiro ~90-105 — não 120+? (Cena no teto: **corte uma frase**, não reescreva mais curto. Quase sempre a que sobra é a que explica.)
 - [ ] **A virada explícita pro espectador no hook é necessária?** Se a cena já implica ele sozinha (plateia, esposa chorando, proxy murcho), o hook fecha no fato — `does yours...?` vira palavra desperdiçada e soa como anúncio.
 - [ ] **Teste da frase chã:** cada linha é sujeito + verbo + fato? (⛔ paradoxo, tríade, contraste, ritmo — se a versão "bonita" tem mais palavras que a chã, ela já perdeu. **O molde sorteado não vence a clareza.**)
+- [ ] **Teste da narração:** o hook **nomeia a FALHA** (`he can't please his wife anymore`) em vez de descrever comportamento que exige dedução (`he keeps his shirt on`)? A fala diz o que a IMAGEM não consegue dizer, em vez de repetir o quadro?
 - [ ] **Teste do rádio:** ouvindo a copy sem ver a imagem, toda frase continua significando? (⛔ dêixis: `look at him`, `this is what it looks like`, `watch this` sozinhos)
 - [ ] **O fecho da cena 4 DERRUBA UMA BARREIRA** do avatar — vergonha, custo, complicação, exposição (✅ `a trick you can do from the comfort of your own home`)? ⛔ negativa (`stores don't carry it`) e ⛔ especificação técnica (`the kind that gels in cold water`) — nenhuma das duas persuade. Pool em [`espinha-fixa`](funil-organico/espinha-fixa.md) §O loop derruba uma barreira.
 - [ ] **Porteiro rodado CENA A CENA** (não só no hook): órgão nomeado por substantivo em toda cena que toca o problema ou o resultado?

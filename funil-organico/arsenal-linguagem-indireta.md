@@ -164,6 +164,42 @@ emoção reportada — ver §Dor em imagem).
 Pool: `Poor woman...` · `Poor guy.` · `Sixty-eight years old.` ·
 `Two years.` · `In front of everybody.` · `His own wife.`
 
+### ⛔ A FALA NÃO NARRA O QUADRO — a sexta forma de vago (2026-07-28)
+
+Correção do operador. O que eu escrevi no hook do flagrante da piscina:
+*"Third summer he keeps his shirt on at the pool. His wife stopped asking him
+to swim."* O que ele reescreveu: *"Third summer he can't please his wife
+anymore."*
+
+Duas falhas na minha versão, e a segunda é a pior:
+
+1. **Descrevi COMPORTAMENTO em vez de nomear a FALHA.** `keeps his shirt on` e
+   `stopped asking him to swim` exigem dois passos de dedução até o espectador
+   chegar em "ele não consegue transar". Comportamento é pista; falha é fato.
+2. **Gastei a fala narrando o que a IMAGEM já mostra.** A piscina, a camisa
+   molhada, os braços cruzados — está tudo no quadro. A fala repetiu o visual e
+   **não sobrou palavra pro sentido**.
+
+> **A imagem mostra o comportamento; a fala diz a falha.** Os dois canais
+> carregam coisas diferentes — se a fala descreve o que se vê, o vídeo tem uma
+> informação só, dita duas vezes, e o espectador nunca recebe o assunto.
+
+| ⛔ Comportamento (exige dedução) | ✅ A falha nomeada |
+|---|---|
+| Third summer he keeps his shirt on at the pool | Third summer in a row he can't please his wife |
+| His wife stopped asking him to swim | His Johnson quit on him at sixty-five |
+| He goes to bed after she's asleep | He can't get hard for her anymore |
+| She talks about her trainer at dinner now | He can't finish and she knows it |
+
+⚠️ **Comportamento não é proibido — é SUPORTE, nunca o hook.** Depois que a
+falha está dita, o detalhe de comportamento vira prova (`he stopped touching
+his own wife so she wouldn't find out` funciona **porque** vem depois de
+`his Johnson quit`). O que não pode é o comportamento **substituir** o fato.
+
+**Teste da narração:** cubra a imagem e leia o hook; depois cubra o hook e
+olhe a imagem. Se as duas dizem a mesma coisa, a fala está desperdiçada —
+reescreva a fala pro que a imagem **não consegue** dizer.
+
 ### ⛔ APONTAR NÃO É DIZER — a quarta forma de vago (2026-07-28)
 
 Depois do eufemismo-do-eufemismo, da abstração e da inferência, a quarta:

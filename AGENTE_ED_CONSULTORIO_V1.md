@@ -244,6 +244,33 @@ Sem o eco, a redenção é genérica.
   mancha na virilha, bulto: ⛔ (recusa do gerador documentada). A FALA
   continua literal e direta — F14 vale inteiro: a cena é a metáfora, a fala
   é a camada literal.
+- **CN11 — ⭐ CONTRASTE VISUAL ENTRE NARRADOR E PACIENTE** (2026-07-28).
+  Descrição completa (P13) **não impede morphing**: neste ângulo o narrador e o
+  paciente são quase sempre dois homens da mesma faixa etária e da mesma etnia
+  da página, e descrição *parecida* produz **rosto clonado** — o marido saiu
+  com a cara do REF em produção (Ray e Marcus, 2026-07-28). Descrição completa
+  garante que o modelo tem o que desenhar; **não** garante que ele desenhe dois
+  rostos.
+  **O paciente difere do narrador em ≥ 3 EIXOS VISÍVEIS À DISTÂNCIA.** Os três
+  mais fortes, porque sobrevivem ao plano médio:
+  | Eixo | Contraste |
+  |---|---|
+  | **Óculos** ⭐ | um usa armação metálica, o outro não usa nada |
+  | **Cabelo** ⭐ | careca com franja lateral × cabeleira farta penteada |
+  | **Pelo facial** ⭐ | bigode grosso × barbeado |
+  Formato de rosto (redondo com papada × anguloso), compleição e cor da roupa
+  ajudam. Traço fino de olho ou maxilar **não conta** — some no plano médio.
+  **E declarar por escrito no fim do bloco do IMAGE** — negativo implícito não
+  existe pro gerador:
+  ```
+  The two men look clearly different from each other: the seated man is bald
+  with a thick mustache and wire-rimmed glasses, the standing man has full
+  silver hair, is clean-shaven and wears no glasses.
+  ```
+  ⚠️ **A esposa também leva marca facial própria** (sardas, falha entre os
+  dentes, sinal, mandíbula quadrada) — rosto secundário genérico é a segunda
+  causa de recusa por pessoa famosa. Regra geral em
+  [`AGENTE_ED_PRISMA_V1.md`](AGENTE_ED_PRISMA_V1.md) §Regra do contraste.
 - **CN8 — LENÇOL AZUL = ASSINATURA DA MACA.** Quando a posição for deitado,
   o lençol azul-claro da cintura pra baixo entra no IMAGE verbatim
   (`a light blue clinical drape covering him from the waist down`). É o que
@@ -274,6 +301,7 @@ Sem o eco, a redenção é genérica.
 - [ ] **Cena 1: esposa ao fundo atrás da maca, chorando + joinha pra baixo** (CN9), muda, descrição completa, etnia da página?
 - [ ] **Cena 4: esposa no colo do paciente, sorrindo, com o prop grande** (CN10) — e a variante escolhida segue seu ramo (pepino=IMAGE pequeno+TAKE cresce coreografado / geoduck=IMAGE já ereto+TAKE imóvel)?
 - [ ] Teto de 3 pessoas; cenas 2, 3 e 5 sem esposa (CN5)?
+- [ ] ⭐ **CONTRASTE: paciente difere do narrador em ≥ 3 eixos visíveis** (óculos · cabelo · pelo facial) **e a frase `The two men look clearly different…` está escrita no IMAGE**? A esposa tem marca facial própria? (CN11 — descrição completa sozinha clona o rosto)
 - [ ] **A expressão `gelatin trick` está dita na copy** (obrigatória, todos os agentes)?
 - [ ] Proxy murcho no F12 completo — régua no quadro e textura **no IMAGE**; TAKE só com imobilidade declarada, **zero** `shriveled`/`limp`/`firms`/`grows` (CN6)?
 - [ ] Corpo do paciente sugerido, nunca gráfico; despejo na virilha BANIDO (CN7)?

@@ -143,10 +143,55 @@ para outra coisa**. Registrar aqui toda vez que acontecer.
 | Prop | Armadilha | Correção |
 |---|---|---|
 | **Geoduck** | vira **pato/ganso** no TAKE de crescimento. Três gatilhos empilhados: a palavra tem `duck` dentro, a parte que cresce é chamada de `neck`, e o crescimento sobe. O Veo lê pescoço de ave se levantando — plumagem, bico e olhos aparecem. Falha em produção, Ray 2026-07-28 | No **TAKE**, nunca escrever `geoduck` (só no IMAGE, onde funciona): usar `the pale tan shellfish` / `the pale tube`. Trocar `neck` por `siphon` ou `tube`. Negar explicitamente (lista ampliada abaixo). E **coreografar o movimento** — ver seção seguinte |
+| **Modelo anatômico (D1)** | sai **corte abdominal** — rins, intestino, fígado — em vez da pelve masculina. Gatilho: descrever o prop pelo **sistema** (`the male reproductive system`) em vez do **objeto**. Sistema é categoria: o gerador escolhe qual corte desenhar, e escolhe o mais comum no treino. Falha em produção, Ray/flagrante 2026-07-30 | Descrever **por objeto e geometria**, nunca por sistema — formulação travada abaixo |
 
 **Regra geral:** negativo implícito não existe pro Veo. Se o prop tem um vizinho
 semântico forte (animal, marca, objeto de outra categoria), **negar por escrito**
 — ausência de menção não é ausência na tela.
+
+### ⭐ D1 — O MODELO ANATÔMICO NA MÃO DO REF (2026-07-30)
+
+O dispositivo D1 é o **prop de autoridade** das cenas de explicação: o REF ergue
+um modelo de pelve masculina e aponta pra ele enquanto diz o mecanismo. É o que
+a Tanisha e o Kofi fazem — e é o que faz uma cena 2 de talking head virar aula.
+
+> **Descreve-se o OBJETO e a GEOMETRIA DO CORTE, nunca o sistema anatômico.**
+
+`the male reproductive system` é **categoria**, não objeto: o gerador escolhe o
+corte, e escolhe o mais frequente no treino — um torso abdominal com rins e
+intestino. Quem fixa o objeto certo são quatro peças:
+
+| Peça | O que trava | String |
+|---|---|---|
+| **Plano de corte** | qual fatia | `in median sagittal section` (ou o chão: `cut in half lengthwise from front to back`) |
+| **Região óssea** | qual parte do corpo | `of the male pelvis` — osso é âncora, sistema não é |
+| **Forma física** | é placa, não torso | `a hand-sized, flat-backed slab of molded plastic` |
+| **Paleta** | é modelo clínico | `painted in pink, salmon and pale blue` |
+| **Orientação** | a face cortada pra lente | `turned so its cut face is squared to the lens` |
+
+**Frase travada para o IMAGE:**
+```
+In his left hand he holds up toward the camera a hand-sized medical teaching
+model of the male pelvis in median sagittal section — a flat-backed slab of
+molded plastic, painted in pink, salmon and pale blue, the interior structures
+exposed in lengthwise profile the way a urology office display shows them, the
+whole model turned so its cut face is squared to the lens. His right index
+finger points at the model.
+```
+**E no TAKE, a orientação travada** (o modelo girar mata a leitura — vira placa
+de plástico abstrata):
+```
+He holds the plastic anatomy model steady in his left hand and taps its cut face
+twice with his right index finger as he explains. The model stays squared to the
+camera and does not turn or tilt.
+```
+
+⛔ **Proibido:** `the male reproductive system` (categoria — foi a falha) ·
+`cross-section` sozinho (não diz o plano) · nomear órgão explicitamente
+(`penis`, `testicles` — arrisca recusa sem necessidade: a geometria já entrega).
+⚠️ **Escopo (P15):** D1 é demo **clínica** — só em set de bancada/interno.
+Modelo anatômico em pé numa loja vira aula de anatomia, não vídeo de ED.
+Selo 🟡 — testado 2026-07-30, aguardando confirmação de render.
 
 ### ⭐ ESTADO DO PROP NO IMAGE — quem faz o trabalho, o still ou o take? (2026-07-28)
 

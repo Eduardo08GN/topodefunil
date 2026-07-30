@@ -422,6 +422,37 @@ Dois ajustes de ordem que valem para todo TAKE:
   cenas.** É o que impede a luz de derivar entre os clipes: `Lighting constant. Warm
   window light as key from frame-left.`
 
+### ⭐ IDADE EM TODA MENÇÃO DE PESSOA — não só na primeira descrição
+
+Falha em produção (ELA_DIAGNOSTICA, cena 4, 2026-07-29): o IMAGE trazia as
+idades de todo mundo, mas o TAKE se referia aos personagens como `the wife`,
+`her husband`, `the standing woman` — e o vídeo foi **recusado na política de
+menores**. **O classificador avalia cada menção isoladamente**; referência sem
+âncora de idade é referência sem idade.
+
+> **Regra: todo substantivo que aponta para uma pessoa carrega a idade
+> explícita, em TODAS as ocorrências do prompt** — IMAGE e TAKE, inclusive no
+> rótulo do `Dialogue:`.
+
+| ⛔ Menção sem âncora | ✅ Menção ancorada |
+|---|---|
+| `The wife laughs` | `The 58-year-old wife laughs` |
+| `her husband's shoulder` | `her 60-year-old husband's shoulder` |
+| `The standing woman looks into the camera` | `The 64-year-old woman standing on the right looks into the camera` |
+| `The man says:` | `The 64-year-old woman says:` |
+
+**E abrir o TAKE declarando as idades juntas** quando houver 2+ pessoas:
+```
+All three people in this shot are older adults: the seated man is 60 years old,
+his wife is 58 years old, and the woman standing on the right is 64 years old.
+```
+
+⚠️ **Complementar, não substituto, das marcas físicas de idade.** O rótulo
+(`58-year-old`) ancora o **classificador**; a marca física (`deeply lined skin`,
+`pronounced crow's feet`, `hair heavily streaked with gray`) ancora o **render**.
+Sem a marca física o gerador entrega um rosto de 40 e poucos mesmo com o número
+escrito — ver [`espinha-fixa`](funil-organico/espinha-fixa.md).
+
 ### Anti-celebridade — A DEFESA É O ROSTO, NÃO A DECLARAÇÃO
 
 - Curta no IMAGE: `an ordinary everyday relatable woman/man, not a celebrity,

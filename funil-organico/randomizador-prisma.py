@@ -190,9 +190,19 @@ REF_MARCAS = [
     "a long distinctive beard reaching mid-chest", "a shaved head with a gray goatee",
     "deep smile lines and a gold front tooth glint", "thick black-rimmed glasses and heavy brows",
 ]
+# O REF e a autoridade da cena: corpo forte e saudavel, sempre (ordem do
+# operador 2026-07-30 - "esses refs estao muito raquiticos, tem que ter muito
+# musculo e aparentar ser saudavel"). Fisicos magros/moles foram REMOVIDOS do
+# pool: "lean wiry" e "heavyset soft" entregavam velho raquitico ou barrigudo,
+# e rosto/corpo fraco mata a venda antes da primeira palavra.
+# Cada valor ja nomeia GRUPOS musculares - "muscular" sozinho nao renderiza
+# (mesma logica da ancora de escala do prop). Ver espinha-fixa §Construir o REF.
 REF_FISICOS = [
-    "lean wiry build", "stocky barrel-chested build", "fit athletic build",
-    "heavyset soft build", "tall broad-shouldered build",
+    "a powerfully built muscular frame with a broad chest and thick arms",
+    "a lean hard-muscled build with visible definition in the chest, shoulders and arms",
+    "a heavy-set powerful build, barrel chest and thick muscular forearms",
+    "a tall broad-shouldered muscular build with a wide back and strong neck",
+    "a compact stocky muscular build, dense chest and heavy shoulders",
 ]
 
 # ---------------------------------------------------------------- compatibilidades

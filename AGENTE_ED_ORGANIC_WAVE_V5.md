@@ -309,11 +309,26 @@ scroll-stopper ("o que é isso?"); a persona narra por cima.
 > formato dela fora. Regra: separar sempre "formato" (fica/sai) de "dispositivo visual"
 > (sempre minerável).
 
-**D1 (ex-M1) — MODELO ANATÔMICO NA BANCADA**
-Um modelo anatômico da pelve/genitália masculina em cima da mesa, ao lado dos
-ingredientes. Autoridade médica implícita sem se declarar médico.
-- *IMAGE:* "an anatomical model of the male pelvis on the wooden table beside the ingredients".
-- *Variante (justaposição — Tanisha):* erguer o modelo anatômico em uma mão E o ingrediente/prop na outra, lado a lado, comparando ("clean your wiener" enquanto mostra o modelo + o limão/mel). *IMAGE:* "holding up a cross-section anatomical model of the male pelvis in one hand and a lemon half in the other, side by side to camera".
+**D1 (ex-M1) — MODELO ANATÔMICO NA MÃO DO REF** ⭐
+O REF ergue um modelo de pelve masculina em corte e **aponta pra ele** enquanto
+diz o mecanismo. Autoridade médica implícita sem se declarar médico — é o que
+transforma cena de talking head em aula. Variante minerada (Tanisha/Kofi): o
+modelo numa mão **e** o ingrediente na outra, lado a lado, comparando.
+
+> ⚠️ **A formulação é TRAVADA e mora na fonte** — descrever pelo **sistema**
+> (`the male reproductive system`) faz o gerador entregar **corte abdominal com
+> rins e intestino** (falha em produção, Ray 2026-07-30). Travam o objeto certo:
+> plano de corte (`in median sagittal section`) + região óssea (`of the male
+> pelvis`) + forma física (`flat-backed slab of molded plastic`) + paleta
+> (`pink, salmon and pale blue`) + orientação (`cut face squared to the lens`),
+> mais a orientação repetida no TAKE (`does not turn or tilt`).
+>
+> **Copiar a frase travada de**
+> [`prop-metaforas`](funil-organico/prop-metaforas.md) §D1 — nunca reescrever
+> "com outras palavras": string validada é ativo.
+
+⚠️ **Escopo (P15):** demo clínica só em set de bancada/interno. Modelo anatômico
+em pé numa loja vira aula de anatomia, não vídeo de ED.
 
 **D2 (ex-M2) — LÍQUIDO = SANGUE / FLUXO**
 A bebida vermelha/escura (beterraba, melancia) em copo transparente, erguida à
