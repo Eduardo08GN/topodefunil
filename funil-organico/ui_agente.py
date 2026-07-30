@@ -27,6 +27,19 @@ import tkinter as tk
 from tkinter import filedialog, ttk
 
 
+def paginas_por_pele(motor):
+    """{'clara': [...], 'escura': [...]} a partir do mapa ETNIA do motor.
+
+    A pele NAO e' um eixo independente: a congruencia de etnia (REF = avatar da
+    pagina) e' inviolavel. Entao o seletor de pele escolhe uma PAGINA daquela
+    pele — nunca troca a etnia deixando a pagina para tras.
+    """
+    g = {"clara": [], "escura": []}
+    for pag, et in sorted(motor.ETNIA.items()):
+        g["clara" if "white" in et else "escura"].append(pag)
+    return g
+
+
 def base_dir():
     """Pasta ao lado do .exe (congelado) ou do .py (solto)."""
     if getattr(sys, "frozen", False):
@@ -137,10 +150,22 @@ class App(tk.Tk):
         self.var_pag = tk.StringVar(value=sorted(self.m.ETNIA)[0])
         cb = ttk.Combobox(cx, textvariable=self.var_pag, values=sorted(self.m.ETNIA),
                           state="readonly", width=9, font=F_UI)
-        cb.pack(side="right", padx=(0, 12), ipady=4)
+        cb.pack(side="right", padx=(0, 14), ipady=4)
         cb.bind("<<ComboboxSelected>>", lambda _e: self.sortear())
         tk.Label(cx, text="página", font=F_SMALL, bg=BG,
                  fg=MUTED).pack(side="right", padx=(0, 5))
+
+        # seletor de PELE — troca para uma pagina congruente com a pele escolhida
+        self.grupos = paginas_por_pele(self.m)
+        self.b_pele = {}
+        for pele in ("escura", "clara"):
+            b = tk.Button(cx, text=pele, font=F_SMALL, relief="flat", bd=0,
+                          cursor="hand2", padx=12, pady=5,
+                          command=lambda k=pele: self.trocar_pele(k))
+            b.pack(side="right", padx=(0, 2))
+            self.b_pele[pele] = b
+        tk.Label(cx, text="pele", font=F_SMALL, bg=BG,
+                 fg=MUTED).pack(side="right", padx=(0, 6))
 
         tk.Frame(self, bg=LINE, height=1).pack(fill="x", padx=16, pady=(10, 0))
 
@@ -305,6 +330,31 @@ class App(tk.Tk):
         self._render()
         self._toast("%s re-sorteado" % chave)
 
+    def pele_atual(self):
+        return "clara" if "white" in self.m.ETNIA[self.var_pag.get()] else "escura"
+
+    def trocar_pele(self, pele):
+        """Sorteia uma pagina daquela pele e refaz o video inteiro."""
+        if self.pele_atual() == pele:
+            atuais = [p for p in self.grupos[pele] if p != self.var_pag.get()]
+            if not atuais:            # so' existe uma pagina dessa pele
+                self._toast("já está em pele %s" % pele)
+                return
+            self.var_pag.set(self.rng.choice(atuais))
+        else:
+            self.var_pag.set(self.rng.choice(self.grupos[pele]))
+        self.sortear()
+        self._toast("pele %s — página %s" % (pele, self.var_pag.get()))
+
+    def _pintar_pele(self):
+        atual = self.pele_atual()
+        for pele, b in self.b_pele.items():
+            ativo = (pele == atual)
+            b.configure(bg=ACCENT if ativo else PANEL2,
+                        fg="#ffffff" if ativo else MUTED,
+                        activebackground=ACCENT_D if ativo else LINE,
+                        activeforeground="#ffffff")
+
     def trocar_fala(self, i):
         """Re-sorteia a copy de UMA cena. O motor devolve a linha nova ja'
         formatada com os slots daquele video (evento, eco, idade dela...)."""
@@ -353,6 +403,7 @@ class App(tk.Tk):
             self.lbl_eixo[chave].configure(text=txt)
 
         self.lbl_resumo.configure(text=self.m.resumo_pt(self.spec))
+        self._pintar_pele()
 
         self.blocos = self.m.montar(self.spec)
         self.achados = self.m.lint(self.spec, self.blocos)
