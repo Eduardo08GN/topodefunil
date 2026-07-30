@@ -81,11 +81,13 @@ cúmplice, meio divertida — nunca clínica, nunca vendedora.
 lado. Não é sachê, não é pó, não é copo. O mecanismo aparece **em estado
 sólido, na mão dela** — é o que separa este agente de todos os outros.
 
-### 3️⃣ O MOLUSCO NA MÃO DELA, SIFÃO PENDURADO E MURCHO
-A concha **presa no punho dela na altura do peito**, o sifão **pendurado para
-baixo**, dobrado sobre si mesmo e mole — corolário de I2V: o IMAGE é o estado
-ANTES. ⛔ **Nunca deitado na tábua** — sem articulação real o crescimento é
-fisicamente impossível e o gerador inventa anatomia (UN4).
+### 3️⃣ O MOLUSCO NA MÃO DELA, ABERTURA PRA CIMA, SIFÃO TOMBADO E MURCHO
+A concha **na palma dela na altura do peito, com a abertura virada para
+cima**; o sifão sai dali mas está mole, **tomba de lado e escorre pela borda
+da concha** — corolário de I2V: o IMAGE é o estado ANTES. ⛔ **Nunca deitado
+na tábua** (sem articulação, o gerador inventa anatomia) e ⛔ **nunca com a
+concha de lado** (a base apontando pro lado errado trunca a mecânica). Ver
+UN4.
 
 ### 4️⃣ A UNÇÃO — ela esfrega o cubo no sifão
 A mão dela **em contato**, esfregando o cubo ao longo do sifão, deixando
@@ -163,11 +165,22 @@ com conectivo de tempo ou consequência.
   A geometria correta cria uma **articulação real**: a concha presa no punho
   dela na altura do peito, o sifão pendurado abaixo do punho. Aí o movimento
   é um **arco de ~180°** que existe no mundo, e o Veo sabe animar.
-  **Frase travada para o IMAGE:** `her left hand is raised to chest height and
-  grips the ridged brown shell of a geoduck clam, holding the clam up clear of
-  the counter. Its siphon hangs straight down below her fist, limp and slack,
-  folded and curved back on itself halfway down, the tip pointing loosely at
-  the counter, no longer than her hand`
+  ⭐ **E a abertura da concha fica virada PARA CIMA** (segunda correção do
+  operador, mesmo dia, mesmo lote). Com a concha de lado, o sifão sai na
+  horizontal e o destino (vertical) fica **contra o eixo da base** — o Veo
+  teria que dobrar o sifão num ângulo que a base não permite, e a mecânica
+  sai truncada. Com a abertura para cima, o eixo da base **já aponta para o
+  destino final**, e o movimento vira só o pedaço mole se alinhando com um
+  eixo que já existe: o gesto mais suave que dá pra pedir.
+  > **A regra: a base do prop tem que apontar para onde ele vai terminar.**
+  > Crescimento é alinhamento, não dobra.
+  **Frase travada para o IMAGE:** `her left hand is raised to chest height,
+  holding a geoduck clam horizontally in her palm, the ridged brown shell
+  cupped in her fingers with its opening turned to face straight up at the
+  ceiling. The base of the siphon rises out of that upward-facing opening, but
+  the siphon is limp and slack: it flops over sideways just above the shell
+  and droops down over the edge of it, folded back on itself, the tip hanging
+  loosely toward the counter, no longer than her hand`
   ⚠️ Âncora de escala obrigatória no estado inicial (`no longer than her
   hand`) — adjetivo não dimensiona (Chuck/churrasco 2026-07-28).
 - **UN5 — O CRESCIMENTO É COREOGRAFADO, PERCORRE UM ARCO E TEM TETO DE
@@ -180,13 +193,15 @@ com conectivo de tempo ou consequência.
   obrigatórios**:
   - **5. A ARTICULAÇÃO E O ARCO.** Descrever o **caminho**, nunca só o
     destino. `stands upright` é resultado; sem o caminho, o Veo escolhe o
-    caminho — e escolhe crescer em vez de levantar. Nomear onde é o eixo e
-    por onde a ponta passa: `hinged where it meets the shell inside her fist`
-    + `the tip swings up through an arc, past horizontal, until the whole
-    siphon is pointing straight up above her fist`. E travar a mão:
-    `her left fist never moves: it stays at the same height and the same
-    angle, and the shell stays gripped in it, attached to the siphon at all
-    times`.
+    caminho — e escolhe crescer em vez de levantar. Nomear o eixo, declarar
+    que **o movimento é alinhamento com a base**, e dizer por onde a ponta
+    passa: `the only movement is the limp siphon rising to line up with the
+    shell it grows out of` + `the tip swings up through an arc, past
+    horizontal, until the whole siphon is standing straight up above the
+    shell, in line with it`. E travar a mão **com a orientação da base
+    repetida**: `her left hand never moves: the shell stays cupped in her palm
+    at the same height and the same angle, its opening still facing straight
+    up at the ceiling, and the siphon stays attached to it at all times`.
   - **6. O TETO DE COMPRIMENTO, DITO DUAS VEZES.** Negativo implícito não
     existe pro Veo: o limite entra no estado final **e** na lista de negação.
     `its full length now about as long as her forearm and no longer than
@@ -284,8 +299,9 @@ Esgotadas, **parar e reportar ao Ed com o diagnóstico e as opções**
 - [ ] **UN1**: traços concretos em vez de `beautiful` solto, corpo forte com grupos nomeados, roupa coberta — zero vocabulário de desejo?
 - [ ] **UN2**: gelatina **em cubos prontos** numa tigela, nunca sachê no hook?
 - [ ] **UN3**: o contato descrito em domínio de cozinha/peixaria, com o **gênero da imagem nomeado** (`the way a cook rubs marinade into seafood`)? Zero `strokes`/`caresses`/`grips`?
-- [ ] **UN4**: o molusco está **na mão dela com o sifão pendurado**, nunca deitado numa superfície? Sifão curto, dobrado, com **âncora de escala** (`no longer than her hand`) — não só `small`?
+- [ ] **UN4**: o molusco está **na mão dela**, com a **abertura da concha virada para cima** e o sifão tombado pela borda — nunca deitado numa superfície, nunca com a concha de lado? Sifão curto, dobrado, com **âncora de escala** (`no longer than her hand`) — não só `small`?
 - [ ] **UN4b — TESTE DA FÍSICA**: a transformação que eu pedi é **possível no mundo real** com essa geometria? Existe articulação, existe de onde levantar? (Comando impossível = licença de alucinação.)
+- [ ] **UN4c — TESTE DO EIXO**: a **base do prop já aponta para onde ele vai terminar**? (Crescimento é alinhamento, não dobra — base apontada pro lado errado trunca a mecânica.)
 - [ ] **UN5**: coreografia completa no TAKE (âncora · fire hose · propagação curva a curva · estado final travado · **arco articulado** · **teto de comprimento dito duas vezes**) em **batidas com segundos**, terminando em ~3s? Lista de negação de bicho presente? Zero `slowly`/`gradually`?
 - [ ] **UN5b**: o TAKE descreve o **caminho** do movimento (eixo + arco + por onde a ponta passa), não só o estado final?
 - [ ] **UN6**: ela reage ao crescimento **sem parar de falar**?

@@ -367,14 +367,19 @@ Diagnóstico, e é a lição mais transferível do playbook:
 
 | # | Elemento | Por que | Exemplo literal |
 |---|---|---|---|
-| **5. Articulação e arco** ⭐ | `stands upright` é **destino**, não caminho. Sem o caminho o Veo escolhe o caminho — e escolhe crescer em vez de levantar. Precisa do **eixo** e de **por onde a ponta passa** | `hinged where it meets the shell inside her fist` + `the tip swings up through an arc, past horizontal, until the whole siphon is pointing straight up above her fist` — e a mão travada: `her left fist never moves: it stays at the same height and the same angle, and the shell stays gripped in it, attached to the siphon at all times` |
+| **5. Articulação e arco** ⭐ | `stands upright` é **destino**, não caminho. Sem o caminho o Veo escolhe o caminho — e escolhe crescer em vez de levantar. Precisa do **eixo** e de **por onde a ponta passa** | `the only movement is the limp siphon rising to line up with the shell it grows out of` + `the tip swings up through an arc, past horizontal, until the whole siphon is standing straight up above the shell, in line with it` — e a mão travada: `her left hand never moves: the shell stays cupped in her palm at the same height and the same angle, its opening still facing straight up at the ceiling` |
+| **5b. Orientação da base** ⭐ | segunda falha do mesmo lote: a concha estava **de lado**, o sifão saía na horizontal e o destino (vertical) ficava **contra o eixo da base** — o Veo teria que dobrar o prop num ângulo que a base não permite, e a mecânica sai truncada. **Crescimento é ALINHAMENTO, não dobra:** a base tem que apontar para onde o prop vai terminar | `the ridged brown shell cupped in her fingers with its opening turned to face straight up at the ceiling. The base of the siphon rises out of that upward-facing opening, but the siphon is limp and slack: it flops over sideways just above the shell and droops down over the edge of it` |
 | **6. Teto de comprimento, dito duas vezes** | negativo implícito não existe pro Veo; o limite entra no **estado final** E na **lista de negação** | `about as long as her forearm and no longer than that` + `never detaches from the shell, and never grows past the length of her forearm` |
 
-⚠️ **Antes de escrever qualquer take de crescimento, o teste da física:** *a
-transformação que eu pedi é possível no mundo real com essa geometria? Existe
-articulação? Existe de onde levantar?* Se a resposta for não, o problema é a
-**pose no IMAGE**, não o prompt do TAKE — e nenhuma reescrita de movimento
-conserta pose impossível.
+⚠️ **Antes de escrever qualquer take de crescimento, os dois testes:**
+1. **Física** — *a transformação que eu pedi é possível no mundo real com essa
+   geometria? Existe articulação? Existe de onde levantar?*
+2. **Eixo** — *a base do prop já aponta para onde ele vai terminar?*
+
+Se a resposta de qualquer um for não, o problema está na **pose do IMAGE**, não
+no prompt do TAKE — e **nenhuma reescrita de movimento conserta pose errada**.
+Foi a lição dupla do lote Chuck/unção: primeiro a pose impossível (deitado),
+depois a pose possível mas desalinhada (concha de lado).
 
 Fechar com o anti-reversão e a negação ampliada:
 
