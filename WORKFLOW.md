@@ -90,6 +90,13 @@ Código: `projetosweb/ferramentas/adbatch-vertical-5/`. Prompt de cada cena é *
 direto no card** nas duas etapas — corrigir uma palavra numa cena e usar "Regerar" só
 naquele slot, sem re-colar o roteiro de 25k na sidebar.
 
+📖 **Arquitetura, contrato do parser e a família 5/4/3:**
+[`funil-organico/RUNBOOK-adbatch-vertical.md`](funil-organico/RUNBOOK-adbatch-vertical.md).
+A ferramenta se edita **por prompt** no Criador de Ferramentas do Flow, e o editor
+regride quando recebe dois assuntos de uma vez — a bateria pronta (atualizar a V4,
+criar a V3) está em
+[`funil-organico/adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md).
+
 ### Passo 4 — Veo Editor
 
 Junta, desilencia, varia velocidade, legenda karaokê com a keyword destacada.

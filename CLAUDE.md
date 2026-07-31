@@ -141,6 +141,7 @@ Inventário atual de domínios e apps:
 ## Onde as coisas ficam
 
 - **App offline dos agentes (motor + tkinter + .exe):** [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
+- **AdBatch Vertical (a ferramenta do Flow que vira o roteiro em vídeo):** [`funil-organico/RUNBOOK-adbatch-vertical.md`](funil-organico/RUNBOOK-adbatch-vertical.md) — arquitetura, contrato do parser e a família 5/4/3. Prompts prontos pro Criador de Ferramentas: [`funil-organico/adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md). ⚠️ **Um assunto por prompt** — o editor regride.
 - **Investigar uma recusa do Veo (método):** [`funil-organico/RUNBOOK-bisseccao-moderacao.md`](funil-organico/RUNBOOK-bisseccao-moderacao.md) — bissecção com variável única. ⚠️ **Regerar 2× antes de investigar**: a política de conteúdo nocivo tem variância.
 - **Lições de produção Veo (moderação + copy):** [`funil-organico/licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) — playbook das lições pagas em campo; ler antes de gerar lote.
 - **Mapa visual da Tanisha (base do CONSULTORIO):** [`concorrentes/tanisha-mapa-visual.md`](concorrentes/tanisha-mapa-visual.md).
