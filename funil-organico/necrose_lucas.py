@@ -463,6 +463,11 @@ GATES = [
 # duas; a cena 5 em caixa alta sem virgula errou.
 # Caixa alta fica SO' no CTA fixado do topo — e' imagem, nao passa pelo TTS.
 CTAS = [
+    # ⭐ Alternativa pedida pelo operador em 2026-07-31, vista em campo:
+    # a promessa e' A RECEITA, nao "o que eu uso" nem "onde eu compro".
+    # E' a mais direta do pool e a unica que casa com a keyword RECIPE
+    # que o Veo Editor ja' destaca na legenda.
+    "{pacing} Comment gelatin, and I'll send you the recipe. {gate}",
     "{pacing} Comment gelatin, and I'll send you the only one I trust. {gate}",
     "{pacing} Comment gelatin, and I'll send you the exact one I use. {gate}",
     "{pacing} Comment gelatin, and I'll send you where I get mine. {gate}",

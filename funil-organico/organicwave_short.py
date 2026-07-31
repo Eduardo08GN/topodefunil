@@ -245,6 +245,11 @@ FUNDIDAS = [
 ]
 
 CTAS = [
+    # ⭐ Alternativa pedida pelo operador em 2026-07-31, vista em campo:
+    # a promessa e' A RECEITA, nao "o que eu uso" nem "onde eu compro".
+    # E' a mais direta do pool e a unica que casa com a keyword RECIPE
+    # que o Veo Editor ja' destaca na legenda.
+    "Comment gelatin, and I'll send you the recipe tonight. {gate}",
     "Next Friday night she'll ask what changed. Comment gelatin, and I'll send you the exact one I use. {gate}",
     "A month from tonight you won't recognise yourself. Comment gelatin, and I'll send you where I get mine. {gate}",
     "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",
@@ -284,6 +289,11 @@ FUNDIDAS_F = [
 ]
 
 CTAS_F = [
+    # ⭐ Alternativa pedida pelo operador em 2026-07-31, vista em campo:
+    # a promessa e' A RECEITA, nao "o que eu uso" nem "onde eu compro".
+    # E' a mais direta do pool e a unica que casa com a keyword RECIPE
+    # que o Veo Editor ja' destaca na legenda.
+    "Comment gelatin, and I'll send you the recipe I use on him. {gate}",
     "Next Friday night he'll be the one reaching for you. Comment gelatin, and I'll send you the exact one I use. {gate}",
     "A month from now you won't recognise him. Comment gelatin, and I'll send you where I get mine. {gate}",
     "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",

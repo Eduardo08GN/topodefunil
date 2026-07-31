@@ -326,6 +326,11 @@ GATES = [
 ]
 
 CTAS = [
+    # ⭐ Alternativa pedida pelo operador em 2026-07-31, vista em campo:
+    # a promessa e' A RECEITA, nao "o que eu uso" nem "onde eu compro".
+    # E' a mais direta do pool e a unica que casa com a keyword RECIPE
+    # que o Veo Editor ja' destaca na legenda.
+    "Comment gelatin, and I'll send you the recipe tonight. {gate}",
     "Comment gelatin, and I'll send you the only one I trust tonight. {gate}",
     "Comment gelatin, and I'll send you that exact one today. {gate}",
     "Comment gelatin, and I'll send you where to get the right one. {gate}",
