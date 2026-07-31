@@ -40,10 +40,28 @@ Distinção que economiza refação — o comportamento observado de cada uma:
 |---|---|---|
 | **Pessoa famosa** | **variância alta** — o mesmo frame reprova e passa entre tentativas | **regerar 1-2×** antes de investigar |
 | **Menores** | consistente — só passa quando a **geometria/idade** muda | mudar token de pose; fazer a idade **renderizar** |
-| **Conteúdo nocivo** | consistente — só passa quando a **string** muda | reescrever a frase gatilho |
+| **Conteúdo nocivo** | ⚠️ **também tem variância** — ver correção abaixo | **regerar 2×**, depois bissectar |
 
 Erro que cometi: fui direto pra hipótese de rosto na recusa de "famosa" e
 propus refazer o lote inteiro — quando um **regerar** resolvia. Barato primeiro.
+
+### ⚠️ CORREÇÃO (2026-07-31) — "conteúdo nocivo" NÃO é determinística
+
+A linha de cima dizia que essa política era **consistente**. Está errada: no
+caso NECROSE o **mesmo prompt, na mesma imagem, caiu e depois passou** sem
+mudar um caractere. Quatro rodadas de reescrita foram gastas atrás de um
+gatilho que provavelmente não existia.
+
+> **Antes de investigar qualquer recusa, regere 2×.** Vale para as três
+> políticas. Investigar variância é a forma mais cara de não aprender nada.
+
+E quando a investigação for necessária, ela tem método próprio:
+**[`RUNBOOK-bisseccao-moderacao.md`](RUNBOOK-bisseccao-moderacao.md)** — teste
+empírico com variável única, o agente propõe a hipótese e o operador roda.
+Lá também moram as categorias públicas do classificador
+(`violence · sexual · derogatory · toxic` — **não existe categoria de gore**) e
+o fato de que o filtro de **vídeo é mais estrito que o de imagem**, por
+documentação oficial.
 
 ---
 

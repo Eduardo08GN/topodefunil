@@ -76,6 +76,11 @@ o que fazia o vídeo funcionar. O operador cortou:
 morrem numa reescrita porque o gatilho é uma **string específica**, não o
 conteúdo. A mesma imagem descrita com outro vocabulário passa.
 
+⚠️ **Antes de escolher alavanca, confirme que há o que investigar.** A
+política de conteúdo nocivo tem **variância** — o mesmo prompt cai e passa.
+**Regere 2×**, e só então bissecte, pelo método do
+[`RUNBOOK-bisseccao-moderacao.md`](RUNBOOK-bisseccao-moderacao.md).
+
 ### O protocolo (nesta ordem, sem pular)
 
 1. **Isolar a variável.** Qual cena falhou e quais passaram? O culpado está no
