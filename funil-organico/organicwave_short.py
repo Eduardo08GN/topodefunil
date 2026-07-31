@@ -54,7 +54,10 @@ SUBTITULO = "primeira pessoa, elenco de aspiração, em 3 cenas · prompts Veo"
 SLUG = "organicwave-short"
 
 CENAS_UI = ["1 · A DOR (1ª pessoa)", "2 · O GELATIN TRICK + A PROVA", "3 · CTA"]
-TETO_FALA = {1: 24, 2: 34, 3: 32}
+# Os tetos descrevem a copy APROVADA, nao o contrario: os 36 itens foram
+# curados pelo operador, entao o limite segue o p95 medido deles. Serve
+# para pegar a cauda longa, nao para reprovar o pool.
+TETO_FALA = {1: 24, 2: 36, 3: 34}
 
 # congruencia inviolavel: a etnia do REF e' a do avatar da pagina
 ETNIA = {"joe": "white American", "ray": "white American", "matt": "white American",
@@ -105,15 +108,38 @@ REFS_H = [
 ]
 
 # ⚠️ "mulheres lindas de TODAS as etnias" (loiras, ruivas, afro-descendentes):
-# a variedade mora aqui, mas a **etnia da mulher acompanha a da pagina**, igual
-# a do REF — a congruencia de casting e' regra inviolavel do funil.
-MULHERES = [
+# a variedade mora aqui, mas a **etnia acompanha a da pagina**, igual a do REF —
+# a congruencia de casting e' regra inviolavel do funil. Por isso sao DOIS
+# pools: um pool unico misturado entregaria loira mel numa pagina de avatar
+# negro, que e' exatamente o que a regra proibe.
+MULHERES_CLARA = [
     {"idade": 34, "desc": "long honey-blonde hair past her shoulders, a small beauty mark on her left jaw, a fitted coral summer dress"},
-    {"idade": 32, "desc": "long copper-red hair and light freckles across her nose, a fitted white sundress"},
-    {"idade": 35, "desc": "long braided hair gathered over one shoulder, a small beauty mark high on her right cheekbone, a fitted emerald dress"},
-    {"idade": 33, "desc": "a short natural afro and striking cheekbones, a fitted burgundy summer dress"},
+    {"idade": 31, "desc": "long copper-red hair and light freckles across her nose, a fitted white sundress"},
     {"idade": 36, "desc": "long dark wavy hair past her waist and a deep dimple in her right cheek, a fitted turquoise dress"},
+    {"idade": 29, "desc": "shoulder-length ash-blonde hair and pale green eyes, a fitted olive summer dress"},
+    {"idade": 33, "desc": "long auburn hair gathered over one shoulder and a small beauty mark beside her right eye, a fitted burgundy dress"},
 ]
+MULHERES_ESCURA = [
+    {"idade": 35, "desc": "long braided hair gathered over one shoulder, a small beauty mark high on her right cheekbone, a fitted emerald dress"},
+    {"idade": 32, "desc": "a short natural afro and striking cheekbones, a fitted burgundy summer dress"},
+    {"idade": 30, "desc": "long box braids past her shoulders and a deep dimple in her left cheek, a fitted coral dress"},
+    {"idade": 37, "desc": "shoulder-length natural curls and warm amber eyes, a fitted white sundress"},
+    {"idade": 28, "desc": "hair in a high bun with soft edges and a small beauty mark below her left eye, a fitted teal dress"},
+]
+
+# ⚠️ PISO DE IDADE 28. O agente original punha esta persona em 20-24 e isso NAO
+# foi portado. O VAZAMENTO carrega a regra V12 — declarar "two fully clothed
+# adults" com as duas idades em toda mencao — e ela existe por falha de
+# classificador documentada. Ja' pagamos para descobrir que idade em cena com
+# conteudo de ED e' zona sensivel. O contraste de "metade da idade dele", que
+# e' o que vende, sobrevive de sobra com o piso em 28.
+# ⛔ Nao baixar sem ordem do operador.
+IDADE_MINIMA_MULHER = 28
+
+
+def mulheres_de(pagina):
+    return MULHERES_CLARA if "white" in ETNIA[pagina] else MULHERES_ESCURA
+
 
 # ⛔ SEMPRE cozinha americana — regra do agente original, que proibia
 # rancho/curral fora do mecanismo de gelatina a cavalo.
@@ -226,6 +252,46 @@ CTAS = [
     "Comment gelatin, and I'll send it tonight. There's one more ingredient on that counter I can't name here. {gate}",
 ]
 
+# ---------------------------------------------------------------------------
+# COPY — PERSONA FEMININA (aprovada pelo operador em 2026-07-31)
+# ---------------------------------------------------------------------------
+# ⚠️ CURADORIA DO OPERADOR. Mesmo diagnostico da masculina: os hooks dela no
+# agente original abriam com pigarro ("Okay so I need to tell you what
+# happened", "I know it sounds insane", "honestly"), o choque chegava tarde e o
+# orgao nunca era nomeado.
+#
+# ⭐ O ANGULO QUE SO' ELA TEM: **ela faz escondido.** O original dizia "I
+# secretly made him this" — a mulher resolve sem ele saber. Isso muda o alvo do
+# anuncio (a esposa compra pro marido) e sobrevive no CTA 4.
+
+HOOKS_F = [
+    "My man is {n} and this is what his {o} looked like. He stopped coming to bed and I let him.",
+    "Look at this one. That was my husband's {o} for two years, and I started thinking it was me.",
+    "I was about to leave. The bedroom was dead, and his {o} looked exactly like this.",
+    "I stopped undressing in front of him. Not because of me — because of this. Because of his {o}.",
+    "He blamed his age. I blamed myself. It was neither of us — his {o} looked like this every night.",
+    "Four hundred a month on pills, and his {o} still looked like this. I stopped asking.",
+    "We hadn't touched in eight months. This was his {o}, and he wouldn't talk about it.",
+    "My man is {n}. This was his {o} in March. I'm the one who found what fixed it.",
+]
+
+FUNDIDAS_F = [
+    "It was never his age — it's blood flow, choked off. I stir {ing}. That's the gelatin trick, and nineteen days later his {o} came back.",
+    "I stir {ing} for him. They call it the gelatin trick, and it opens the blood flow his {o} lost. Look at us now.",
+    "My aunt gave me this. I stir {ing} — the gelatin trick. The blood flow came back, and so did his {o}.",
+    "Nobody told us it was blood flow. I stir {ing}, that's the whole gelatin trick, and his {o} hasn't quit since.",
+    "Two dollars, girls. I stir {ing} — the gelatin trick — and the blood flow that left his {o} came right back.",
+]
+
+CTAS_F = [
+    "Next Friday night he'll be the one reaching for you. Comment gelatin, and I'll send you the exact one I use. {gate}",
+    "A month from now you won't recognise him. Comment gelatin, and I'll send you where I get mine. {gate}",
+    "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",
+    "Comment gelatin, and I'll send you the one my aunt sent me. He never even knew I did it. {gate}",
+    "Comment gelatin, and I'll send it tonight. There's one more thing on that counter I can't name here. {gate}",
+]
+
+
 GATES = [
     "Follow me first, or my message never lands.",
     "Follow me first, or I won't have any way to find your comment, brother.",
@@ -292,109 +358,176 @@ def _evitando(rng, pool, recentes):
     return rng.choice(livres if livres else pool)
 
 
+# ⭐ O EIXO QUE O AGENTE ORIGINAL TINHA E OS ESPECIALISTAS NAO TEM: quem narra.
+# No masculino o dono do problema fala de si. No feminino e' a mulher que conta
+# — e no CTA 4 dela, que ela resolveu **escondido**. Sao dois anuncios
+# diferentes com o mesmo mecanismo, e o alvo muda: um vende para o homem, o
+# outro vende para a esposa que compra pro marido.
+PERSONAS = [{"id": "homem"}, {"id": "mulher"}]
+
+
 def sortear(pagina, rng, ledger):
     hist = ledger.get(pagina, {})
     amb = _evitando(rng, AMBIENTES, hist.get("ambiente", [])[-2:])
     prop = _evitando(rng, PROPS, hist.get("prop", [])[-2:])
     rec = _evitando(rng, RECEITAS, hist.get("receita", [])[-2:])
     isca = _evitando(rng, ISCA, hist.get("isca", [])[-3:])
+    persona = _evitando(rng, PERSONAS, hist.get("persona", [])[-1:])
     ref = rng.choice(REFS_H)
-    mul = rng.choice(MULHERES)
+    mul = rng.choice(mulheres_de(pagina))
 
     orgaos = rng.sample(NUCLEO, 3)
     n = IDADE_EXT[ref["idade"]]
-    falas = [
-        rng.choice(HOOKS).format(o=orgaos[0], n=n, N=n.capitalize()),
-        rng.choice(FUNDIDAS).format(o=orgaos[1], ing=rec["fala"]),
-        rng.choice(CTAS).format(gate=rng.choice(GATES)),
-    ]
+    if persona["id"] == "mulher":
+        falas = [
+            rng.choice(HOOKS_F).format(o=orgaos[0], n=n, N=n.capitalize()),
+            rng.choice(FUNDIDAS_F).format(o=orgaos[1], ing=rec["fala"]),
+            rng.choice(CTAS_F).format(gate=rng.choice(GATES)),
+        ]
+    else:
+        falas = [
+            rng.choice(HOOKS).format(o=orgaos[0], n=n, N=n.capitalize()),
+            rng.choice(FUNDIDAS).format(o=orgaos[1], ing=rec["fala"]),
+            rng.choice(CTAS).format(gate=rng.choice(GATES)),
+        ]
     return {"pagina": pagina, "ambiente": amb, "prop": prop, "receita": rec,
-            "isca": isca, "ref": ref, "mulher": mul, "falas": falas}
+            "isca": isca, "ref": ref, "mulher": mul, "persona": persona,
+            "falas": falas}
 
 
 # ---------------------------------------------------------------------------
 # GERADOR
 # ---------------------------------------------------------------------------
 
+def _quem_fala(spec, et):
+    """Quem narra as tres cenas, com beleza e marca facial declaradas."""
+    ref, mul = spec["ref"], spec["mulher"]
+    # ⚠️ O "mesmo" repete a descricao INTEIRA — marca facial e declaracao de
+    # beleza inclusas. Uma ancora curta ("same hair, same dress") carrega a
+    # continuidade mas perde o rosto: sem a marca repetida o Veo troca de
+    # pessoa entre as cenas, que e' a falha que derrubou a cena do casal do
+    # VAZAMENTO. Repetir sai mais barato que consertar.
+    if spec["persona"]["id"] == "mulher":
+        d = ("a %d-year-old %s woman, %s, %s"
+             % (mul["idade"], et, mul["desc"], BELEZA_M))
+        return d, "The same " + d[2:]
+    d = ("a %d-year-old %s man, %s, bare-chested with %s, %s"
+         % (ref["idade"], et, ref["marca"], ref["corpo"], BELEZA_H))
+    return d, "The same " + d[2:]
+
+
 def montar(spec):
     et = ETNIA[spec["pagina"]]
     ref, mul, amb = spec["ref"], spec["mulher"], spec["ambiente"]
     prop, rec, isca = spec["prop"], spec["receita"], spec["isca"]
     falas = spec["falas"]
+    fem = spec["persona"]["id"] == "mulher"
     neg = NEGACAO_AVE if prop["marisco"] else ""
-
-    quem = ("a %d-year-old %s man, %s, bare-chested with %s, %s"
-            % (ref["idade"], et, ref["marca"], ref["corpo"], BELEZA_H))
-    mesmo = ("The same %d-year-old %s man, same hair, same %s, same build"
-             % (ref["idade"], et, ref["marca"].split(" and ")[-1]))
+    quem, mesmo = _quem_fala(spec, et)
+    # o pronome do prop na mao muda com quem esta' segurando
+    dela = "her" if fem else "his"
+    idade_narra = mul["idade"] if fem else ref["idade"]
 
     b = {}
 
-    b["BLOCO 0 (REF)"] = (
-        "REF 01: Photo of a real person, a %d-year-old %s man, chest up, facing "
-        "the camera directly, calm steady expression. Bare-chested with %s. %s. "
-        "%s. Plain neutral gray background, soft even frontal light. No "
-        "subtitles, no captions, no burned-in text, no watermark."
-        % (ref["idade"], et, ref["corpo"],
-           ref["marca"][0].upper() + ref["marca"][1:],
-           BELEZA_H[0].upper() + BELEZA_H[1:])
-    )
+    # ⚠️ O REF do bloco 0 e' quem NARRA — e' o rosto que precisa se repetir nas
+    # tres cenas. Na persona feminina isso e' a mulher, nao o homem.
+    if fem:
+        b["BLOCO 0 (REF)"] = (
+            "REF 01: Photo of a real person, a %d-year-old %s woman, chest up, "
+            "facing the camera directly, calm steady expression. %s. %s. Plain "
+            "neutral gray background, soft even frontal light. No subtitles, no "
+            "captions, no burned-in text, no watermark."
+            % (mul["idade"], et, mul["desc"][0].upper() + mul["desc"][1:],
+               BELEZA_M[0].upper() + BELEZA_M[1:])
+        )
+    else:
+        b["BLOCO 0 (REF)"] = (
+            "REF 01: Photo of a real person, a %d-year-old %s man, chest up, "
+            "facing the camera directly, calm steady expression. Bare-chested "
+            "with %s. %s. %s. Plain neutral gray background, soft even frontal "
+            "light. No subtitles, no captions, no burned-in text, no watermark."
+            % (ref["idade"], et, ref["corpo"],
+               ref["marca"][0].upper() + ref["marca"][1:],
+               BELEZA_H[0].upper() + BELEZA_H[1:])
+        )
 
     b["IMAGE 01/03"] = (
+        "IMAGE 01/03: Medium shot in %s. Standing behind the %s is %s. She looks "
+        "straight into the lens, mouth open mid-word." % (amb["set"], amb["bancada"], quem)
+        if fem else
         "IMAGE 01/03: Medium shot in %s. Standing behind the %s is %s. He looks "
-        "straight into the lens, mouth open mid-word, jaw tight. In his right "
-        "hand, held out in front of his chest, he holds %s. He is the only "
-        "person in the frame. %s %s%s"
-        % (amb["set"], amb["bancada"], quem, prop["murcho"],
-           amb["luz"].capitalize(), CAUDA, neg)
+        "straight into the lens, mouth open mid-word, jaw tight."
+        % (amb["set"], amb["bancada"], quem)
+    ) + (
+        " In %s right hand, held out in front of %s chest, %s holds %s. %s is the "
+        "only person in the frame. %s %s%s"
+        % (dela, dela, "she" if fem else "he", prop["murcho"],
+           "She" if fem else "He", amb["luz"].capitalize(), CAUDA, neg)
     )
 
     b["IMAGE 02/03"] = (
         "IMAGE 02/03: Medium shot at the %s in the same %s, same light. %s, "
-        "bare-chested, stands behind it mid-action, speaking to the camera. On "
-        "it: %s, and off to the side %s. Both his hands are at the glass. He is "
-        "the only person in the frame. %s %s"
-        % (amb["bancada"], amb["curto"], mesmo, rec["mesa"], isca,
-           amb["luz"].capitalize(), CAUDA)
+        "stands behind it mid-action, speaking to the camera. On it: %s, and off "
+        "to the side %s. Both %s hands are at the glass. %s is the only person "
+        "in the frame. %s %s"
+        % (amb["bancada"], amb["curto"], mesmo, rec["mesa"], isca, dela,
+           "She" if fem else "He", amb["luz"].capitalize(), CAUDA)
     )
 
+    # a cena 3 e' a do casal: os DOIS em quadro, com as duas idades declaradas
+    # ⛔ V12 herdado do VAZAMENTO: idade dos dois em toda mencao — falha de
+    # classificador documentada.
     b["IMAGE 03/03"] = (
-        "IMAGE 03/03: Medium shot in the same %s, same light. %s, bare-chested, "
-        "stands at the %s looking straight into the lens, calm and confident, "
-        "one corner of his mouth raised. Beside him a %d-year-old %s woman, %s, "
-        "%s, leans in against his shoulder, laughing, one hand flat on his "
-        "chest. In her free hand she holds %s. %s %s%s"
-        % (amb["curto"], mesmo, amb["bancada"], mul["idade"], et, mul["desc"],
-           BELEZA_M, prop["ereto"], amb["luz"].capitalize(), CAUDA, neg)
+        "IMAGE 03/03: Medium shot in the same %s, same light. Two fully clothed "
+        "adults, a %d-year-old woman and a %d-year-old man. %s %d-year-old "
+        "%s woman, %s, %s, stands beside him, leaning in against his shoulder, "
+        "laughing, one hand flat on his chest. %s %d-year-old %s man, %s, "
+        "bare-chested with %s, %s, looks straight into the lens, calm and "
+        "confident, one corner of his mouth raised. In her free hand she holds "
+        "%s. %s %s%s"
+        % (amb["curto"], mul["idade"], ref["idade"],
+           # ⛔ A ancora "The same" cai sobre QUEM NARRA — e' o rosto que vem
+           # das cenas 1 e 2. O outro entra novo em quadro e nao leva "same",
+           # senao promete uma continuidade que nunca existiu.
+           ("The same" if fem else "A"),
+           mul["idade"], et, mul["desc"], BELEZA_M,
+           ("A" if fem else "The same"),
+           ref["idade"], et, ref["marca"], ref["corpo"], BELEZA_H,
+           prop["ereto"], amb["luz"].capitalize(), CAUDA, neg)
     )
 
     b["TAKE 01/03"] = (
         "TAKE 01/03: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. The %d-year-old man speaks straight "
-        "into the lens with force. On the word \"this\" he lifts the thing in "
-        "his right hand an inch toward the camera. %s He is the only person in "
+        "very slight natural sway, no cuts. The %d-year-old %s speaks straight "
+        "into the lens with force. On the word \"this\" %s lifts the thing in "
+        "%s right hand an inch toward the camera. %s %s is the only person in "
         "the shot.\nDialogue: \"%s\"\nAudio: quiet kitchen room tone. No music."
-        % (ref["idade"], IMOBILIDADE, sonorizar(falas[0]))
+        % (idade_narra, "woman" if fem else "man", "she" if fem else "he", dela,
+           IMOBILIDADE, "She" if fem else "He", sonorizar(falas[0]))
     )
 
     b["TAKE 02/03"] = (
         "TAKE 02/03: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. His hands work while he talks: %s. "
-        "His eyes stay on the lens the whole time. He is the only person in the "
+        "very slight natural sway, no cuts. %s hands work while %s talks: %s. "
+        "%s eyes stay on the lens the whole time. %s is the only person in the "
         "shot.\nDialogue: \"%s\"\nAudio: quiet kitchen room tone, a spoon "
         "against glass. No music."
-        % (rec["acao"], sonorizar(falas[1]))
+        % ("Her" if fem else "His", "she" if fem else "he", rec["acao"],
+           "Her" if fem else "His", "She" if fem else "He", sonorizar(falas[1]))
     )
 
     b["TAKE 03/03"] = (
         "TAKE 03/03: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. The %d-year-old man looks into the "
-        "lens and speaks directly and evenly, no rush. The %d-year-old woman "
-        "laughs once against his shoulder and keeps her hand where it is. Her "
-        "other hand does not move: %s Only he speaks; she is silent and "
-        "laughing.\nDialogue: \"%s\"\nAudio: quiet kitchen room tone, soft "
-        "laughter. No music."
-        % (ref["idade"], mul["idade"], IMOBILIDADE, sonorizar(falas[2]))
+        "very slight natural sway, no cuts. The %d-year-old %s looks into the "
+        "lens and speaks directly and evenly, no rush. The %d-year-old %s laughs "
+        "once and keeps still. Her hand holding it does not move: %s Only the "
+        "%d-year-old %s speaks; the other one is silent.\nDialogue: \"%s\"\n"
+        "Audio: quiet kitchen room tone, soft laughter. No music."
+        % (idade_narra, "woman" if fem else "man",
+           ref["idade"] if fem else mul["idade"], "man" if fem else "woman",
+           IMOBILIDADE, idade_narra, "woman" if fem else "man",
+           sonorizar(falas[2]))
     )
 
     return b
@@ -412,23 +545,32 @@ def _hook(spec, blocos, achados):
     if not re.search(r"\bthis\b|\bthis one\b", h, re.I):
         achados.append(("ERRO", "o hook nao aponta o prop — sem deitico o "
                                 "espectador nao sabe para onde olhar"))
-    if not re.search(r"\bmy\b|\bI\b", h):
+    # ⚠️ 1a pessoa do PLURAL tambem conta: "We hadn't touched in eight months"
+    # e' primeira pessoa e reprovava 15 de 300 sorteios com o regex antigo.
+    if not re.search(r"\bmy\b|\bI\b|\bwe\b|\bus\b|\bour\b", h, re.I):
         achados.append(("ERRO", "o hook nao esta' em 1a pessoa — e' o eixo "
                                 "inteiro deste agente"))
 
 
 def _elenco(spec, blocos, achados):
-    """Beleza declarada nas tres cenas, e a marca facial presente."""
-    for nome in sorted(k for k in blocos if k.startswith("IMAGE")):
-        if "IMAGE 01" in nome and BELEZA_H not in blocos[nome]:
-            achados.append(("ERRO", "%s sem a declaracao de beleza do REF" % nome))
-    if BELEZA_M not in blocos["IMAGE 03/03"]:
-        achados.append(("ERRO", "IMAGE 03 sem a declaracao de beleza da mulher"))
-    marca_curta = spec["ref"]["marca"].split(" and ")[-1]
-    for nome in ("IMAGE 02/03", "IMAGE 03/03"):
-        if marca_curta not in blocos[nome]:
-            achados.append(("ERRO", "%s sem a marca facial do REF — sem ela o "
-                                    "rosto troca entre as cenas" % nome))
+    """Beleza declarada e marca facial presente — de QUEM NARRA.
+
+    ⚠️ O REF deste agente e' quem fala, e isso muda com a persona: no masculino
+    e' o homem, no feminino e' a mulher. Checar sempre o homem reprovava metade
+    dos sorteios por um defeito que nao existia.
+    """
+    fem = spec["persona"]["id"] == "mulher"
+    beleza = BELEZA_M if fem else BELEZA_H
+    marca = (spec["mulher"]["desc"] if fem
+             else spec["ref"]["marca"]).split(" and ")[-1]
+
+    for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
+        if beleza not in blocos[nome]:
+            achados.append(("ERRO", "%s sem a declaracao de beleza de quem "
+                                    "narra" % nome))
+        if marca not in blocos[nome]:
+            achados.append(("ERRO", "%s sem a marca facial de quem narra — sem "
+                                    "ela o rosto troca entre as cenas" % nome))
 
 
 def _isca(spec, blocos, achados):
