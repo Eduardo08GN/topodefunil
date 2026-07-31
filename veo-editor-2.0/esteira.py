@@ -52,19 +52,20 @@ DIAS_ARQUIVO = 14
 # No v1.2 o fator gira em torno de 1.0: nao e' aceleracao, e' ruido
 # anti-duplicata (0.95 a 1.03, media ~0.99). Aqui o centro se desloca.
 #
-# A conta: a AdBatch Vertical 3 entrega 3 takes de 8s = 24s. Para sair com 2
-# segundos a menos, 24 / 22 = 1.0909x. Em cima disso, +-5% de variacao
-# randomica por video — o despiste de duplicata continua sendo o motivo dela
-# existir, so' mudou de centro.
+# ⚠️ A taxa e' FIXA e vem do operador — nao e' mais derivada de um alvo de
+# duracao. A primeira versao calculava 24/22 = 1.0909x para tirar 2 segundos de
+# um video de 24s; em campo isso ficou lento, e o operador subiu para 1.20x.
+# Em cima dela, +-5% de variacao randomica por video: o despiste de duplicata
+# continua sendo o motivo dela existir, so' mudou de centro.
 #
-#   1.0909 * 0.95 = 1.0364  ->  24s sai com 23.2s
-#   1.0909 * 1.05 = 1.1455  ->  24s sai com 21.0s
-#   media                       24s sai com 22.0s
+#   1.20 * 0.95 = 1.14  ->  24s sai com 21.1s
+#   1.20 * 1.05 = 1.26  ->  24s sai com 19.0s
+#   media                   24s sai com 20.0s
 #
-# ⚠️ A taxa e' FIXA, nao calculada da duracao. Um zip de 5 takes (40s) sairia
-# com 36.7s, nao 38s — esta esteira e' do pipeline SHORT. O aviso no log
-# avisa quando o numero de takes nao e' 3.
-CENTRO_VEL = 24.0 / 22.0          # 1.0909... — 24s vira 22s
+# Como a taxa e' proporcional e nao absoluta, um zip mais longo encolhe na
+# mesma razao: 30s viram 25s, 40s viram 33s. O aviso no log avisa quando o
+# numero de takes nao e' 3, que e' o formato para o qual esta esteira existe.
+CENTRO_VEL = 1.20                 # ordem do operador, 2026-07-31
 VARIACAO = 0.05                   # +-5%, sorteado por video
 VEL_MIN = round(CENTRO_VEL * (1 - VARIACAO), 4)
 VEL_MAX = round(CENTRO_VEL * (1 + VARIACAO), 4)

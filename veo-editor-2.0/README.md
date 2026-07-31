@@ -11,10 +11,18 @@ ela acelera o vídeo. Os dois rodam ao mesmo tempo, cada um com sua fila.
 ## A TAXA
 
 ```python
-CENTRO_VEL = 24.0 / 22.0     # 1.0909... — 24s vira 22s
+CENTRO_VEL = 1.20            # ordem do operador, 2026-07-31
 VARIACAO   = 0.05            # +-5%, sorteado por video
-VEL_MIN, VEL_MAX = 1.0364, 1.1455
+VEL_MIN, VEL_MAX = 1.14, 1.26
 ```
+
+⚠️ **A taxa não é mais derivada de um alvo de duração.** A primeira versão
+calculava `24/22 = 1.0909x` para tirar 2 segundos de um vídeo de 24s. Em campo
+ficou lento, e o operador subiu para **1.20x** — que é o número, não o
+resultado de uma conta.
+
+Como ela é **proporcional**, o corte acompanha a duração: 24s → 20,0s (faixa
+19,0–21,1s), 30s → 25,0s, 40s → 33,3s.
 
 ⚠️ **O v1.2 não acelera nada.** O fator dele (0.95 a 1.03, média ~0.99) é
 **ruído anti-duplicata**, não velocidade — é por isso que a coluna VEL do painel
@@ -22,12 +30,11 @@ sempre orbitou o 1.0. A v2.0 mantém o mesmo sorteio por vídeo, só desloca o
 centro. A variação continua existindo pelo motivo original: dois uploads com a
 duração idêntica ao milissegundo são fáceis de casar.
 
-Medido em 2000 sorteios: um vídeo de 24s sai entre **20,95s e 23,16s**, média
-**22,01s**.
+Medido em 3000 sorteios: um vídeo de 24s sai entre **19,0s e 21,1s**, média
+**20,0s**.
 
-⚠️ **A taxa é FIXA, não calculada da duração.** Um zip de 5 takes (40s) sairia
-com 36,7s, não 38s — a v2.0 é do pipeline SHORT. Quando o número de takes não é
-3, o log avisa (mas não recusa).
+Quando o número de takes não é 3, o log avisa (mas não recusa) — 3 takes de 8s
+é o formato para o qual esta esteira existe.
 
 ---
 
