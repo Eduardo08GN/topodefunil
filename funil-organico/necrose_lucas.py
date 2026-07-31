@@ -64,48 +64,55 @@ SUPORTE = ("mounted upright on a slim chrome stand with a square steel base, "
 # comprimento relativo ("twice as long as the bladder is wide"), direcao
 # ("forward and down") e as tres partes nomeadas.
 GEOMETRIA = (
-    "a rounded bladder at the top and, running forward and down from it, the "
-    "long thick organ below, roughly twice as long as the bladder is wide, "
-    "with a small oval gland hanging at its base"
+    "The model shows, from top to bottom: a rounded bladder at the top; then a "
+    "long thick cylindrical shaft running forward and downward from it, which "
+    "makes up more than half the total height of the whole model, with its "
+    "inner channel cut away along its entire length and a rounded cap at the "
+    "far end; and a single oval gland hanging in a loose sac at the base of "
+    "that shaft"
 )
 
 MODELO_PODRE = (
-    "On the left, a free-standing three-dimensional anatomy teaching model of "
-    "the male urinary tract, of the kind a urology office keeps on the "
-    "counter: %s. It is %s. This one is the old one: the bladder at the top is "
-    "dark walnut-brown, shrivelled and knotted, its surface dull, dry and "
+    "On the left, a free-standing three-dimensional male reproductive anatomy "
+    "teaching model, %s. %s. This one is the old one. The bladder at the top "
+    "is dark walnut-brown, shrivelled and knotted, its surface dull, dry and "
     "cracked, covered in irregular lumps and deep creases like a dried root. "
     "Two thin cords twist away from it, withered and darkened like dry twigs. "
-    "The long organ below it is shrunken and crooked, pinched in at several "
-    "points along its length, its surface grey-brown and wrinkled, ending in a "
-    "small shrunken darkened cap. The oval gland at its base is dark and "
-    "puckered. Nothing on it reflects light." % (GEOMETRIA, SUPORTE)
+    "The long shaft below is shrunken and crooked, pinched in at several "
+    "points along its length, its surface grey-brown and wrinkled, the cut-away "
+    "channel inside it narrowed to a thread, ending in a small shrunken "
+    "darkened cap. The oval gland at its base is dark and puckered and the sac "
+    "around it is shrivelled. Nothing on this model reflects light."
+    % (SUPORTE, GEOMETRIA)
 )
 
-# ⚠️ "identical" na abertura e' OBRIGATORIO: sem ele o Veo desenha dois objetos
-# de especies diferentes e a comparacao — que e' o video inteiro — some.
+# "identical" na abertura e OBRIGATORIO: sem ele o Veo desenha dois objetos de
+# especies diferentes e a comparacao — que e o video inteiro — some.
 MODELO_SAO = (
-    "On the right, an identical free-standing three-dimensional anatomy "
-    "teaching model of the male urinary tract: %s. It is %s. This one is the "
-    "new one: the bladder at the top is pale salmon pink, full and smooth, its "
-    "surface glossy and catching the light. Two clean straight cream-coloured "
-    "tubes run from it. The long organ below it is thick, straight and full "
-    "along its whole length, its inner channel shown in cutaway in darker "
-    "pink, ending in a full rounded pink cap. The oval gland at its base is "
-    "smooth and full." % (GEOMETRIA, SUPORTE)
+    "On the right, an identical free-standing three-dimensional male "
+    "reproductive anatomy teaching model, %s. %s. This one is the new one. The "
+    "bladder at the top is pale salmon pink, full and smooth, its surface "
+    "glossy and catching the light. Two clean straight cream-coloured tubes "
+    "run from it. The long shaft below is thick, straight and full along its "
+    "entire length, its surface smooth pale pink, the cut-away channel inside "
+    "it wide and open in darker pink, ending in a full rounded pink cap. The "
+    "oval gland at its base is smooth and full and the sac around it is plump."
+    % (SUPORTE, GEOMETRIA)
 )
 
 # versoes curtas, para as cenas em que ele ergue UM modelo so'
 PODRE_NA_MAO = (
     "the old model — the one whose bladder is dark walnut-brown, shrivelled and "
-    "knotted, dull and cracked, and whose long organ below hangs shrunken, "
-    "crooked and pinched, ending in a small darkened cap"
+    "knotted, and whose long thick shaft below, more than half the height of "
+    "the whole model, hangs shrunken, crooked and pinched, ending in a small "
+    "darkened cap, with a dark puckered gland at its base"
 )
 SAO_NA_MAO = (
     "the new model — the one whose bladder is pale salmon pink, full and "
-    "smooth, glossy and catching the light, and whose long organ below is "
-    "thick, straight and full along its whole length, its inner channel shown "
-    "in cutaway in darker pink, ending in a full rounded pink cap"
+    "smooth, and whose long thick shaft below, more than half the height of "
+    "the whole model, is straight and full along its entire length with the "
+    "cut-away channel wide and open inside it, ending in a full rounded pink "
+    "cap, with a smooth full gland at its base"
 )
 
 # NE8 — no TAKE nenhum dos dois muda de estado. A comparacao e' entre DOIS
