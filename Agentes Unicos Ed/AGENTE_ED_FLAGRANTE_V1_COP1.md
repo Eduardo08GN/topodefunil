@@ -169,12 +169,24 @@ narrativo do PRISMA aplica integralmente (P21).
 
 ---
 
-## REGRAS PRÓPRIAS (F1-F17)
+## REGRAS PRÓPRIAS (F1-F20)
 
 - **F1 — ECO DA REDENÇÃO.** A cena 4 referencia a ocasião do hook pelo avesso:
   quem riu não ri mais, a dança recusada é dançada, a camisa sai na piscina
   seguinte. Sem o eco, a redenção é genérica e o arco não fecha. (*"She's not
   laughing anymore"* foi o eco do casamento.)
+
+  ⚠️ **ENDURECIDO (falha em produção, 2026-07-30):** "referenciar pelo avesso"
+  era vago demais e o modelo mandou a redenção para outro lugar (*"in their
+  kitchen"*), matando o eco. A cena 4 volta **AO LUGAR DO HOOK** e refaz **O
+  MESMO GESTO** invertido — não basta "dar certo depois":
+  - ela pede uma dança, ele não levanta → `he pulled her onto that same dance
+    floor`
+  - ela estende a mão na fila, ele recua → `he reached for her hand in that
+    same checkout line`
+  - a plateia ri dele → `she's not laughing anymore`
+  ⛔ Mudar de lugar mata o eco. A cozinha pode ser o **set** da imagem (F6), mas
+  a **fala** tem que nomear o lugar do hook.
 - **F2 — A VÍTIMA É SEMPRE UM TERCEIRO e nunca fala.** O REF do vídeo (sorteado
   na spec — REF solto, etnia da página) é o narrador-testemunha, calmo e clínico
   ao lado da cena — nunca o humilhado.
@@ -229,6 +241,63 @@ narrativo do PRISMA aplica integralmente (P21).
   *"fui direto pra hipótese de rosto e propus refazer o lote inteiro — quando um
   regerar resolvia. Barato primeiro."*). ⛔ Não gastar rodada do operador em
   reestruturação de ferramenta antes de gastar um clique em REGERAR.
+- **F4c — ⭐ ROUPA É EIXO DE CONTRASTE, E ATRIBUTO FÍSICO É IGUAL EM TODA CENA**
+  (falha em produção, Lucas/Ray-farmácia, 2026-07-30). Duas falhas seguidas, a
+  mesma raiz: **declarei um atributo numa cena e não na outra**, e o gerador
+  preencheu o silêncio de um jeito diferente em cada uma.
+
+  **1. Nunca repetir tecido/padrão entre narrador e vítima.** O narrador vestia
+  `red flannel shirt` (wardrobe da spec) e eu descrevi a vítima como `clean
+  pressed flannel shirt` — o gerador entregou a MESMA camisa xadrez vermelha nos
+  dois e eles viraram gêmeos. Se o narrador é xadrez, a vítima é **lisa**
+  (`a plain white short-sleeved button-down shirt with no pattern`). Roupa lê à
+  distância melhor que óculos.
+
+  **2. Todo atributo físico de personagem recorrente vai escrito com as MESMAS
+  PALAVRAS em cada cena.** Não é só roupa: porte, altura, cabelo, pelo facial,
+  óculos. Corrigi a roupa mas escrevi `shorter and softly built with a rounded
+  middle` só na cena 4 — a cena 1, sem porte declarado, rendeu um homem comum e
+  a cena 4 rendeu um obeso. Copiar o bloco do personagem verbatim entre cenas;
+  só **roupa** e **pose/expressão** mudam, e mudam escritas.
+
+  **3. Contraste de porte usa ALTURA, não gordura.** `rounded middle`,
+  `soft-bodied`, `heavy-set`, `paunch` empurram o gerador para obeso e viram
+  descontinuidade visível. Contra um narrador `tall and heavily muscled`:
+  `of average build, a head shorter than the narrator`.
+
+  🟢 **Validado em produção** (terceira tentativa). Os quatro eixos que
+  funcionaram, sem tocar em peso: **altura + óculos + pelo facial + roupa**.
+  Fecho obrigatório do IMAGE com 2+ personagens, com a negação explícita —
+  o gerador não infere: `They are not wearing the same garment.`
+- **F4d — ⭐ A CENA 1 FALHA POR EXCESSO, NÃO POR FALTA — subtraia**
+  (três ciclos perdidos, Lucas/Ray-farmácia, 2026-07-31). O TAKE 01 do flagrante
+  é o plano mais difícil do lote: 4 pessoas, cada uma com estado de boca, um
+  prop com pegada e posição, um falante com olhar e boca declarados, contraste
+  de roupa entre dois homens e deriva de câmera. O V4 documenta o modo de falha
+  — *"prompt too long, model cherry-picks"*: o Veo **descarta** parte das
+  instruções, e descarta justamente as últimas acrescentadas.
+
+  **Diante de defeito recorrente na cena 1, o reflexo certo é TIRAR, não somar.**
+  Cada patch de redação vira mais uma restrição para ele derrubar.
+
+  **Resolver BOCA por POSE FÍSICA, não por instrução.** O Veo obedece geometria
+  e ignora ordem sobre lábios — `laughing with her lips closed` falhou três
+  vezes seguidas. Trocar por:
+  - mão cobrindo a boca: `one hand covering her mouth, her face half hidden
+    behind her hand`
+  - rosto virado: `his head turned down and away from the camera so his face is
+    mostly hidden in profile`
+
+  **Pegada visível vence pegada correta.** `fingers grip only the stem end` é
+  pinça pequena e ocluída — o Veo não rastreia e solta o prop. Usar punho:
+  `his left hand closed in a full fist completely around the middle of the
+  [prop], the whole hand visibly wrapped around it`, e posicionar o prop **sem
+  oclusão**: `held out clearly in front of the standing man's thigh against the
+  plain gray fabric, nothing overlapping or blocking it`.
+
+  **Teto prático da cena 1: TRÊS pessoas.** Figurante de fundo que não paga dor
+  sai — cada corpo a mais é animação que compete com o que importa.
+
 - **F5 — EVIDÊNCIA SUGERIDA, NUNCA GRÁFICA (regra VISUAL, não de copy).**
   Escopo travado em 2026-07-28: isto governa o que o **IMAGE descreve** —
   existe porque o gerador recusa imagem gráfica (recusa do H9 documentada),
@@ -352,6 +421,58 @@ narrativo do PRISMA aplica integralmente (P21).
   pra baixo como anatomia. Nas mãos do narrador, na altura da virilha DELA,
   a construção é a 🟢 documentada (lote da geoduck) — o que mata a 🟢 é
   distância, o que mata tudo é posse.
+- **F12b — ⛔ `COMPLETELY MOTIONLESS` É SÓ PARA PROP QUE NINGUÉM SEGURA**
+  (falha em produção, Lucas/Ray-farmácia, 2026-07-31, TAKE 01). O prop
+  **desamarrou da mão e ficou flutuando** no meio do plano.
+
+  A causa foi uma contradição no próprio TAKE: `the banana stays exactly as it
+  appears in the first frame [...] completely motionless for the entire shot`
+  — só que a banana estava na mão de alguém que se mexe (ele baixa os olhos, a
+  câmera deriva). Mandar o prop ficar imóvel enquanto o portador se move é
+  ordem impossível, e o Veo resolve **soltando o objeto da mão**.
+
+  | Situação do prop | O que escrever no TAKE |
+  |---|---|
+  | **Na mão de alguém** (ruína, cena 1) | `stays gripped between his thumb and forefinger for the entire shot, never leaving his hand, never set down, moving only as his hand moves. His grip never opens.` |
+  | **Apoiado em bancada/mesa** (payoff, demo) | `stays exactly as it appears in the first frame — same position, same angle, same shape — completely motionless for the entire shot.` |
+
+  ⚠️ Para dar firmeza a prop segurado, **estabilize o BRAÇO, não o objeto**:
+  `his right arm stays extended across to the victim's hip and does not rise or
+  lower`. Isso trava a posição sem desacoplar o prop da mão.
+
+  ⛔ Continua valendo o F12: nada de adjetivo de estado (`stiff`, `limp`,
+  `never firms`, `never grows`) em prompt de movimento.
+
+- **F13b — ⭐ NEM TODO PROP SERVE AO FLAGRANTE — a lição do melão** (falha em
+  produção, 2026-07-29). O prop do flagrante precisa fazer **duas** coisas:
+  **pender murcho** (a ruína) e **ficar ereto e grande** (o payoff). Prop que só
+  faz uma das duas quebra o ângulo no meio.
+
+  ✅ **Servem** (eixo único, base apontando pra onde termina): banana ·
+  pepino · berinjela · abobrinha · daikon · cenoura · mandioca · linguiça ·
+  milho · geoduck.
+  ⛔ **Não servem** — redondos e rígidos, não pendem nem crescem no eixo:
+  **melão · melancia · laranja · maçã · romã · concha fechada.**
+
+  ⚠️ **A lição real não é a lista, é o reflexo.** Eu *escrevi a ressalva* de que
+  melão não murcha nem endurece — e **executei o prompt assim mesmo**. Saiu um
+  melão em cena. **Ressalva escrita não conserta prompt.** Se o prop sorteado
+  não faz as duas coisas: **trocar e avisar o operador**, nunca entregar com
+  nota de rodapé.
+
+  Antes de escrever qualquer TAKE de crescimento, os dois testes de
+  [`prop-metaforas`](funil-organico/prop-metaforas.md) §Prop com prior forte:
+  **física** (a transformação é possível nessa geometria? existe de onde
+  levantar?) e **eixo** (a base já aponta pro fim?). Se qualquer um falhar, o
+  erro está na **pose do IMAGE** — nenhuma reescrita de movimento conserta pose
+  errada.
+
+  **Banana** é o mais legível e não tem armadilha semântica. **Geoduck** tem
+  (vira ave): `siphon` nunca `neck`, a palavra `geoduck` só no IMAGE e nunca no
+  TAKE, mais a negação ampliada — a lista completa está em prop-metaforas.
+  Prop de **duas partes** (geoduck = concha + sifão; banana = cacho + fruta)
+  exige a trava de pegada do F12; prop de uma peça só não precisa.
+
 - **F13 — A VÍTIMA É A PROVA; O ESPECTADOR É O ALVO.** O risco estrutural deste
   ângulo é virar fofoca sobre um estranho: 5 cenas de "ele, ele, ele" e o
   espectador sai ileso. **O hook fecha virando a arma pra ele** — a pergunta
@@ -362,6 +483,25 @@ narrativo do PRISMA aplica integralmente (P21).
   Direto também é **econômico**: frase curta, substantivo cru do arsenal, zero
   conectivo de novela. Se a linha explica a história em vez de furar o peito,
   corta. Ver P22.
+- **F14b — ⛔ A COPY NUNCA NARRA O PROP — o prop não existe na história**
+  (falha em produção, 2026-07-30). O prop é **metáfora visual**: existe na
+  IMAGEM, nunca no enredo. A copy conta o que aconteceu **de verdade** entre
+  duas pessoas; a imagem mostra a metáfora. São camadas paralelas, não a mesma
+  coisa dita duas vezes.
+
+  ⛔ Saiu assim: *"She held a wilted zucchini to his hip and told six strangers
+  it was his Johnson."* Ninguém faz isso na vida real — é o prop virando enredo.
+  Também ⛔ `she held his tool up`, `he showed everyone the banana`.
+
+  ✅ A copy conta o **fato humano**:
+  `She wanted one dance at their fortieth anniversary. He couldn't stand up.` ·
+  `She reached for his hand at the checkout. He pulled away.` ·
+  `The pharmacist called his name and the whole line heard what he picks up.`
+
+  **Teste:** a frase descreveria algo que uma câmera de segurança teria filmado
+  naquele lugar? Se envolve legume, marisco ou fita métrica, é o prop vazando
+  pra fala. Única exceção: o fecho na evidência do F8 pode **comparar**
+  (`does yours hang like this?`) — comparação não é narração de evento.
 - **F14 — DUAS CAMADAS DE CÓDIGO = ZERO SINAL (o risco específico deste ângulo).**
   No flagrante a **cena já é metáfora**: um homem chorando ao lado de um legume
   murcho não diz literalmente nada — quem traduz é a fala. Nos outros ângulos o
@@ -549,6 +689,33 @@ narrativo do PRISMA aplica integralmente (P21).
   `a short healed scar no longer than a fingertip crossing the outer half of
   his left eyebrow, flat against the skin, only slightly lighter than the skin
   around it, no shine, no raised edge`.
+- **F19b — ⭐ O FALANTE TEM QUE ESTAR COMPOSTO COMO FALANTE** (a outra metade
+  do F19; falha em produção, Lucas/Ray-farmácia, 2026-07-30, TAKE 01). O marido
+  narrou. O operador **regerou a imagem três vezes** sem resolver, porque o
+  defeito não estava na imagem que saía — estava no que o prompt **não pedia**.
+
+  Travar os mudos (F19) não basta: se o narrador não estiver visualmente
+  posicionado como orador, o Veo dá a fala a quem parecer mais com um. No frame
+  que falhou, o narrador estava agachado, de cabeça baixa, rosto virado para o
+  chão, nunca olhando a lente; a vítima estava no centro exato do quadro, de
+  frente. O Veo escolheu o único composto como falante.
+
+  **Três coisas, todas obrigatórias no IMAGE de cena com fala:**
+  1. `looking directly into the lens` — olhar de câmera explícito
+  2. `with his mouth open mid-word as he speaks` — boca aberta declarada
+  3. rosto visível e erguido: `his torso upright and his head raised, his face
+     fully visible and turned toward the camera`
+
+  ⚠️ **Cuidado com pose baixa.** O F12 pede o proxy colado ao quadril da vítima,
+  o que empurra o narrador para o chão — e agachado de cabeça baixa ele deixa de
+  ser o falante. A pose que atende os dois:
+  `kneels on one knee beside the victim with his torso upright and his head
+  raised, [...] his extended right arm reaches across to hold the [prop] at the
+  victim's hip`
+  ⛔ `crouches beside` sozinho: sai cabeça baixa e o falante vira outro.
+
+  **Corolário:** regerar não conserta prompt que não pede. Se o mesmo defeito
+  sobrevive a 3 gerações, o defeito é do **texto** — parar de gerar e reler.
 - **F19 — ⭐ PERSONAGEM MUDO TEM A BOCA FECHADA NO IMAGE (o lip-sync vazado).**
   Falha em produção **duas vezes** (Lucas/aniversário-geoduck, 2026-07-29): na
   cena 4 o **marido falou junto com o narrador**, mexendo a boca em sincronia
@@ -653,6 +820,7 @@ narrativo do PRISMA aplica integralmente (P21).
 | Doutrina do modelo (I2V, fala, áudio) | [`recursos/DOUTRINA-VEO-3.1.md`](recursos/DOUTRINA-VEO-3.1.md) |
 | Proxy no hook (P18, construções 🟢/🔴), fio narrativo (P21), PICO2 (P16), segundo personagem (P13), copy fresca | [`AGENTE_ED_PRISMA_V1.md`](AGENTE_ED_PRISMA_V1.md) |
 | M15 — linhas literais, 4 componentes, selo de risco | [`funil-organico/banco-hooks.md`](funil-organico/banco-hooks.md) |
+| Catálogo de props, testes física/eixo, negação por prop, recusa do gerador | [`funil-organico/prop-metaforas.md`](funil-organico/prop-metaforas.md) |
 | Vocabulário (órgão + estado, P19) | [`funil-organico/arsenal-linguagem-indireta.md`](funil-organico/arsenal-linguagem-indireta.md) |
 | Espinha/CTA/follow-gates/persona por página | [`funil-organico/espinha-fixa.md`](funil-organico/espinha-fixa.md) |
 
@@ -793,6 +961,12 @@ A **cota de 75%** (≥4 das 5 cenas com o órgão nomeado por substantivo) se
 cumpre **com termos do núcleo**. Rotaciona-se **dentro do núcleo** — repetir
 `Johnson` é melhor que alcançar um exótico que americano nenhum decodifica.
 Falha real: usei `the old boy` e `flagpole`, os dois tempero.
+
+⚠️ **ENDURECIDO (falha em produção, 2026-07-30):** a licença "repetir `Johnson`
+é melhor que alcançar um exótico" foi lida ao pé da letra e saiu `Johnson` três
+vezes no mesmo vídeo. **Dentro do MESMO vídeo, cada cena usa um termo DIFERENTE
+do núcleo** — `Johnson / soldier / wiener / pecker`. O núcleo tem 8 termos
+justamente pra isso. A licença de repetir vale **entre vídeos**, nunca dentro.
 
 ### C3 — `GELATIN TRICK` LITERAL, E O CTA PEDE O NOME COMPLETO
 
