@@ -444,6 +444,23 @@ def lint(spec, blocos):
 # SORTEIO
 # ---------------------------------------------------------------------------
 
+# A idade dela entra na fala de duas formas: {n_ext} e' o numero inteiro por
+# extenso ("thirty-four") e {n} e' so' a UNIDADE em palavra ("four"), para os
+# moldes que escrevem "Thirty-{n} years old".
+# ⚠️ Passar o digito cru (idade - 30) entregava "Thirty-4" na fala — bug visto
+# no painel em 2026-07-30. O REF fala o que esta' escrito.
+IDADE_EXT = {
+    30: ("thirty", "thirty"), 31: ("thirty-one", "one"),
+    32: ("thirty-two", "two"), 33: ("thirty-three", "three"),
+    34: ("thirty-four", "four"), 35: ("thirty-five", "five"),
+}
+
+
+def _idade_slots(idade):
+    ext, unidade = IDADE_EXT[idade]
+    return {"n_ext": ext, "n": unidade}
+
+
 def _carregar_ledger():
     if os.path.exists(LEDGER):
         with open(LEDGER, encoding="utf-8-sig") as f:
@@ -464,14 +481,12 @@ def sortear(pagina, rng, ledger):
     ref, mul = rng.choice(REFS), rng.choice(MULHERES)
 
     orgaos = rng.sample(NUCLEO, 4)
-    n_ext = {30: "thirty", 31: "thirty-one", 32: "thirty-two", 33: "thirty-three",
-             34: "thirty-four", 35: "thirty-five"}[mul["idade"]]
     falas = [
         rng.choice(HOOKS).format(o=orgaos[0]),
         rng.choice(RECEITAS).format(o=orgaos[1]),
         rng.choice(VIRADAS).format(o=orgaos[2]),
-        rng.choice(PROVAS).format(o=orgaos[3], n=mul["idade"] - 30, n_ext=n_ext,
-                                  barreira=rng.choice(BARREIRAS)),
+        rng.choice(PROVAS).format(o=orgaos[3], barreira=rng.choice(BARREIRAS),
+                                  **_idade_slots(mul["idade"])),
         rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES)),
     ]
     return {"pagina": pagina, "cozinha": coz, "quintal": qui, "prop": prop,
@@ -657,10 +672,8 @@ def _recopiar_mulher(spec, rng):
     """A idade dela entra na copy da cena 4 — trocar exige reescrever a fala."""
     mul = spec["mulher"]
     o3 = next((n for n in NUCLEO if n.lower() in spec["falas"][3].lower()), "manhood")
-    n_ext = {30: "thirty", 31: "thirty-one", 32: "thirty-two", 33: "thirty-three",
-             34: "thirty-four", 35: "thirty-five"}[mul["idade"]]
     spec["falas"][3] = rng.choice(PROVAS).format(
-        o=o3, n=mul["idade"] - 30, n_ext=n_ext, barreira=rng.choice(BARREIRAS))
+        o=o3, barreira=rng.choice(BARREIRAS), **_idade_slots(mul["idade"]))
 
 
 def nova_fala(spec, i, rng):
@@ -674,10 +687,8 @@ def nova_fala(spec, i, rng):
     if i == 2:
         return rng.choice(VIRADAS).format(o=o)
     if i == 3:
-        n_ext = {30: "thirty", 31: "thirty-one", 32: "thirty-two", 33: "thirty-three",
-                 34: "thirty-four", 35: "thirty-five"}[mul["idade"]]
-        return rng.choice(PROVAS).format(o=o, n=mul["idade"] - 30, n_ext=n_ext,
-                                         barreira=rng.choice(BARREIRAS))
+        return rng.choice(PROVAS).format(o=o, barreira=rng.choice(BARREIRAS),
+                                         **_idade_slots(mul["idade"]))
     return rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES))
 
 EIXOS_QUE_MEXEM_NA_COPY = {"mulher": _recopiar_mulher}
