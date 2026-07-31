@@ -56,38 +56,56 @@ SUPORTE = ("mounted upright on a slim chrome stand with a square steel base, "
 # NE2 — a deterioracao e' em CINCO EIXOS simultaneos: cor, superficie, volume,
 # contorno e eixo. NUNCA em tamanho. "damaged"/"unhealthy"/"small" nao
 # descrevem nada — o Veo normaliza para dois modelos parecidos e o angulo morre.
+# ⚠️ A PECA E' O ORGAO INTEIRO, NAO A BEXIGA (correcao do operador,
+# 2026-07-30). A primeira versao dizia "the bladder and the tube below it" e o
+# Veo entregou o minimo: uma bexiga com um toco. O print da fonte mostra a
+# massa arredondada no topo E um EIXO LONGO E GROSSO descendo, com o canal
+# interno em corte e o corpo oval na base. A geometria tem que estar escrita:
+# comprimento relativo ("twice as long as the bladder is wide"), direcao
+# ("forward and down") e as tres partes nomeadas.
+GEOMETRIA = (
+    "a rounded bladder at the top and, running forward and down from it, the "
+    "long thick organ below, roughly twice as long as the bladder is wide, "
+    "with a small oval gland hanging at its base"
+)
+
 MODELO_PODRE = (
     "On the left, a free-standing three-dimensional anatomy teaching model of "
-    "the male bladder and the tube below it, %s. This one is the old one: the "
-    "rounded mass at the top is dark walnut-brown, shrivelled and knotted, its "
-    "surface dull, dry and cracked, covered in irregular lumps and deep creases "
-    "like a dried root. Two thin cords twist away from it, withered and "
-    "darkened like dry twigs. The tube below hangs crooked and collapsed, "
-    "pinched in at several points, ending in a small shrunken darkened bulb. "
-    "Nothing on it reflects light." % SUPORTE
+    "the male urinary tract, of the kind a urology office keeps on the "
+    "counter: %s. It is %s. This one is the old one: the bladder at the top is "
+    "dark walnut-brown, shrivelled and knotted, its surface dull, dry and "
+    "cracked, covered in irregular lumps and deep creases like a dried root. "
+    "Two thin cords twist away from it, withered and darkened like dry twigs. "
+    "The long organ below it is shrunken and crooked, pinched in at several "
+    "points along its length, its surface grey-brown and wrinkled, ending in a "
+    "small shrunken darkened cap. The oval gland at its base is dark and "
+    "puckered. Nothing on it reflects light." % (GEOMETRIA, SUPORTE)
 )
 
 # ⚠️ "identical" na abertura e' OBRIGATORIO: sem ele o Veo desenha dois objetos
 # de especies diferentes e a comparacao — que e' o video inteiro — some.
 MODELO_SAO = (
     "On the right, an identical free-standing three-dimensional anatomy "
-    "teaching model of the male bladder and the tube below it, %s. This one is "
-    "the new one: the rounded mass at the top is pale salmon pink, full and "
-    "smooth, its surface glossy and catching the light. Two clean straight "
-    "cream-coloured tubes run from it. The tube below hangs thick, straight "
-    "and even, its inner channel shown in darker pink, ending in a full "
-    "rounded pink tip." % SUPORTE
+    "teaching model of the male urinary tract: %s. It is %s. This one is the "
+    "new one: the bladder at the top is pale salmon pink, full and smooth, its "
+    "surface glossy and catching the light. Two clean straight cream-coloured "
+    "tubes run from it. The long organ below it is thick, straight and full "
+    "along its whole length, its inner channel shown in cutaway in darker "
+    "pink, ending in a full rounded pink cap. The oval gland at its base is "
+    "smooth and full." % (GEOMETRIA, SUPORTE)
 )
 
 # versoes curtas, para as cenas em que ele ergue UM modelo so'
 PODRE_NA_MAO = (
-    "the old model — the one whose rounded top is dark walnut-brown, shrivelled "
-    "and knotted, dull and cracked, whose tube hangs crooked and pinched"
+    "the old model — the one whose bladder is dark walnut-brown, shrivelled and "
+    "knotted, dull and cracked, and whose long organ below hangs shrunken, "
+    "crooked and pinched, ending in a small darkened cap"
 )
 SAO_NA_MAO = (
-    "the new model — the one whose rounded top is pale salmon pink, full and "
-    "smooth, glossy and catching the light, whose tube hangs thick, straight "
-    "and even, ending in a full rounded pink tip"
+    "the new model — the one whose bladder is pale salmon pink, full and "
+    "smooth, glossy and catching the light, and whose long organ below is "
+    "thick, straight and full along its whole length, its inner channel shown "
+    "in cutaway in darker pink, ending in a full rounded pink cap"
 )
 
 # NE8 — no TAKE nenhum dos dois muda de estado. A comparacao e' entre DOIS
@@ -120,108 +138,197 @@ ETNIA = {
 # POOLS SORTEAVEIS
 # ---------------------------------------------------------------------------
 
-# NE5 — a alta montanha e' o segundo scroll-stop: o cenario sozinho ja' destoa
-# de tudo que o avatar ve no feed do nicho (cozinha, consultorio, quintal).
-MONTANHAS = [
-    {"id": "cabana_pedra", "selo": "V",
+# NE5 - O ARQUETIPO E UM EIXO SO: CENARIO + CHAPEU + ANIMAL.
+# Antes cenario e persona eram eixos separados, e o sorteio podia cruzar um
+# deserto do Texas com chapeu de montanhes alpino. O arquetipo carrega os tres
+# juntos porque eles nao sao independentes - chapeu errado no cenario certo
+# destroi a leitura em meio segundo.
+#
+# O ANIMAL saiu do NE4 como "lobo" e virou "animal selvagem de status,
+# congruente com o arquetipo" (extrapolacao pedida pelo operador 2026-07-30).
+# A regra que importa continua de pe: e prop de DOMINANCIA, nunca bicho de
+# estimacao. PROIBIDO cachorro, husky, gato, animal deitado ou de coleira.
+#
+# selo: V = arquetipo da fonte - N = extrapolacao nossa
+ARQUETIPOS = [
+    # ---- montanhes alpino (o arquetipo da fonte) ----
+    {"id": "montanhes_cabana", "selo": "V", "familia": "montanhes",
      "set": "a rocky alpine mountaintop, snow-capped peaks filling the "
             "background, a small stone cabin with a chimney at frame-left, "
             "lichen-covered rock in the foreground, clear blue sky",
      "curto": "the same mountaintop",
+     "chapeu": "a wide-brimmed brown leather hat with a braided cord band",
+     "animais": ["a full-grown grey wolf", "a full-grown white arctic wolf"],
      "luz": "Clear high-altitude daylight, cool and bright, soft shadows.",
      "audio": "high wind over rock, a distant bird"},
-    {"id": "lago_glacial", "selo": "N",
+    {"id": "montanhes_lago", "selo": "N", "familia": "montanhes",
      "set": "a rocky ledge above a glacier lake, snow-capped peaks across the "
             "water, scattered boulders, no buildings anywhere",
      "curto": "the same ledge above the lake",
+     "chapeu": "a battered wide-brimmed felt hat",
+     "animais": ["a full-grown grey wolf", "a full-grown black wolf"],
      "luz": "Clear high-altitude daylight, cool and bright, soft shadows.",
      "audio": "high wind, water lapping far below"},
-    {"id": "linha_das_arvores", "selo": "N",
+    {"id": "montanhes_pinheiros", "selo": "N", "familia": "montanhes",
      "set": "a high clearing at the treeline, dark pine forest behind him and "
             "bare snow peaks rising above it, moss and lichen on the rocks",
      "curto": "the same clearing",
+     "chapeu": "a wide-brimmed oiled canvas hat",
+     "animais": ["a full-grown grey wolf", "a full-grown black wolf"],
      "luz": "Cool overcast mountain daylight, flat and even.",
      "audio": "wind through pines, a distant bird"},
-    {"id": "campo_de_pedras", "selo": "N",
-     "set": "a windswept boulder field high on a mountain, a low stone shelter "
-            "behind him, grey sky over the peaks",
-     "curto": "the same boulder field",
-     "luz": "Flat grey mountain daylight, no hard shadows.",
-     "audio": "hard wind over stone"},
+
+    # ---- cowboy ----
+    {"id": "cowboy_curral", "selo": "N", "familia": "cowboy",
+     "set": "a ranch corral at golden hour, a weathered split-rail fence "
+            "behind him, dry pasture and low hills beyond it, dust in the air",
+     "curto": "the same corral",
+     "chapeu": "a sweat-stained tan cowboy hat",
+     "animais": ["a big chestnut quarter horse", "a heavy longhorn bull"],
+     "luz": "Low golden hour sunlight from frame-left, long shadows.",
+     "audio": "cattle lowing, wind over dry grass"},
+    {"id": "cowboy_mesa", "selo": "N", "familia": "cowboy",
+     "set": "a red rock desert mesa, layered canyon walls behind him, dry "
+            "brush and cracked ground, a wide empty sky",
+     "curto": "the same mesa",
+     "chapeu": "a black wide-brimmed cowboy hat",
+     "animais": ["a big black stallion", "a lone coyote"],
+     "luz": "Hard desert sunlight, warm and high-contrast.",
+     "audio": "dry wind, a distant hawk"},
+
+    # ---- nativo norte-americano ----
+    {"id": "nativo_planicie", "selo": "N", "familia": "nativo norte-americano",
+     "set": "high open plains under an enormous sky, tall dry grass moving in "
+            "the wind, a hide-covered lodge far behind him",
+     "curto": "the same plain",
+     "chapeu": "a beaded leather band across his forehead",
+     "animais": ["a full-grown grey wolf", "a spotted paint horse"],
+     "luz": "Wide prairie daylight, warm and even.",
+     "audio": "wind across open grass"},
+    {"id": "nativo_canyon", "selo": "N", "familia": "nativo norte-americano",
+     "set": "the mouth of a sandstone canyon, red rock walls rising on both "
+            "sides, a shallow river running over stones behind him",
+     "curto": "the same canyon mouth",
+     "chapeu": "a strip of woven cloth tied around his head",
+     "animais": ["a full-grown grey wolf", "a golden eagle on a rock"],
+     "luz": "Warm reflected canyon light, soft and glowing.",
+     "audio": "water over stones, wind in the canyon"},
+
+    # ---- redneck ----
+    {"id": "redneck_varanda", "selo": "N", "familia": "redneck",
+     "set": "the porch of a weathered wooden farmhouse in the rural South, an "
+            "old pickup truck out of focus in the yard, tall trees behind it",
+     "curto": "the same porch",
+     "chapeu": "a faded trucker cap pushed back on his head",
+     "animais": ["a heavy longhorn bull behind the fence",
+                 "a big wild boar at the treeline"],
+     "luz": "Warm late afternoon sunlight, soft shadows.",
+     "audio": "cicadas, a screen door creaking"},
+    {"id": "redneck_celeiro", "selo": "N", "familia": "redneck",
+     "set": "the open door of a weathered red barn, stacked hay bales behind "
+            "him, a dirt yard and tall grass beyond",
+     "curto": "the same barn door",
+     "chapeu": "a sweat-stained trucker cap",
+     "animais": ["a big chestnut quarter horse", "a heavy longhorn bull"],
+     "luz": "Warm afternoon sunlight raking in through the barn door.",
+     "audio": "wind in dry grass, a distant tractor"},
+
+    # ---- curandeiro / herbalista ----
+    {"id": "curandeiro_apalache", "selo": "N", "familia": "curandeiro",
+     "set": "the porch of a log cabin deep in the Appalachian woods, bunches "
+            "of dried herbs hanging from the beams and rows of glass jars on a "
+            "shelf behind him, dense green forest beyond",
+     "curto": "the same cabin porch",
+     "chapeu": "no hat, his long gray hair loose",
+     "animais": ["a full-grown black bear at the treeline",
+                 "a great horned owl on the porch rail"],
+     "luz": "Soft green forest daylight, low contrast.",
+     "audio": "insects, wind in the leaves"},
+    {"id": "curandeiro_pantano", "selo": "N", "familia": "curandeiro",
+     "set": "a wooden landing at the edge of a cypress swamp, moss hanging "
+            "from the branches, a flat-bottomed boat tied up behind him, still "
+            "dark water",
+     "curto": "the same landing",
+     "chapeu": "a frayed straw hat",
+     "animais": ["a big alligator on the bank", "a great blue heron"],
+     "luz": "Warm hazy swamp light, soft and diffused.",
+     "audio": "frogs, water moving under the boards"},
 ]
 
-# NE4 — a ESPECIE e' travada (lobo). So' a pelagem varia.
-LOBOS = [
-    {"id": "cinza", "desc": "a full-grown grey wolf"},
-    {"id": "preto", "desc": "a full-grown black wolf"},
-    {"id": "branco", "desc": "a full-grown white arctic wolf"},
-]
+# NE4 - o animal e prop de STATUS (a alavanca do leao do Kofi), nao de
+# credibilidade medica. A ESPECIE vem do arquetipo; aqui so se sorteia qual das
+# congruentes. PROIBIDO cachorro, husky, coleira, animal deitado.
 
-# NE3 — autoridade SELVAGEM, nao clinica. Musculatura por GRUPO NOMEADO
-# ("muscular" sozinho nao renderiza) + marca facial num rosto saudavel.
+# NE3 - autoridade SELVAGEM, nao clinica. Musculatura por GRUPO NOMEADO e
+# PESADA (ordem do operador 2026-07-30: "todo REF deve ser super musculoso" -
+# a primeira leva saiu magra). O CHAPEU NAO MORA AQUI: vem do arquetipo, senao
+# o sorteio cruza deserto do Texas com chapeu alpino.
 REFS = [
     {"idade": 62,
-     "corpo": "a lean hard-muscled build with a broad chest and thick arms",
-     "cabeca": "long gray hair under a wide-brimmed brown leather hat with a "
-               "braided cord band, a thick gray beard reaching mid-chest",
+     "corpo": "a heavily muscled build - a broad slab of chest, thick arms, "
+              "and clearly cut abdominal muscles",
+     "cabeca": "long gray hair and a thick gray beard reaching mid-chest",
      "marca": "unusually pale ice-blue eyes and a small notch missing from the "
               "top of his left ear"},
     {"idade": 65,
-     "corpo": "a powerfully built muscular frame with a barrel chest and thick "
-              "forearms",
-     "cabeca": "gray hair tied back under a battered wide-brimmed felt hat, a "
-               "full white beard reaching mid-chest",
+     "corpo": "a powerfully built heavily muscled frame - a barrel chest, "
+              "thick corded forearms and a hard flat stomach",
+     "cabeca": "gray hair tied back and a full white beard reaching mid-chest",
      "marca": "a clean pale scar running through his right eyebrow"},
     {"idade": 58,
-     "corpo": "a tall broad-shouldered muscular build with a wide back and "
-              "strong neck",
-     "cabeca": "shoulder-length salt-and-pepper hair under a dark brown leather "
-               "hat with a braided cord band, a thick salt-and-pepper beard",
-     "marca": "a deep vertical cleft in his chin and heavy weather lines around "
-              "the eyes"},
+     "corpo": "a tall heavily muscled build - wide shoulders, a thick neck, a "
+              "broad slab of chest and visible abdominal muscles",
+     "cabeca": "shoulder-length salt-and-pepper hair and a thick "
+               "salt-and-pepper beard",
+     "marca": "a deep vertical cleft in his chin and heavy weather lines "
+              "around the eyes"},
     {"idade": 68,
-     "corpo": "a lean hard-muscled build with visible definition in the chest, "
-              "shoulders and arms",
-     "cabeca": "long white hair under a wide-brimmed oiled canvas hat, a long "
-               "white beard reaching the middle of his chest",
+     "corpo": "a heavily muscled build - a broad chest, thick arms and "
+              "shoulders and clearly cut abdominal muscles",
+     "cabeca": "long white hair and a long white beard reaching the middle of "
+               "his chest",
      "marca": "a prominent dark mole high on his right cheekbone"},
 ]
 
-# NE6 — receita de COZINHA, preparada na tela. ⚠️ topica ou de preparo, nunca
-# dose medica: sem miligramas, sem "duas vezes ao dia", sem alegacao de cura.
+# NE6 - O RITUAL E O GELATIN TRICK (correcao do operador, 2026-07-30).
+# A primeira versao copiou a receita da FONTE (curcuma + pimenta + mel + limao)
+# e quebrou a congruencia inviolavel: o mecanismo do criativo tem que ser o que
+# a VSL vende, e a nossa vende GELATIN nas cinco paginas. Acafrao vira video
+# sobre acafrao. O que varia e COMO a gelatina e preparada, nunca o que e.
+# Topica ou de preparo, nunca dose medica.
 RECEITAS_PROP = [
-    {"id": "curcuma", "selo": "V",
-     "mesa": "a wooden spoon heaped with bright yellow turmeric powder, a "
-             "second wooden spoon of black peppercorns, a glass jar of honey, "
-             "a halved lemon, fresh ginger root and a wooden bowl of turmeric",
-     "acao": "he tips the turmeric off the wooden spoon into a glass of water, "
-             "sets that spoon down, tips in the peppercorns, then squeezes the "
-             "halved lemon over the glass",
-     "fala": "turmeric, a pinch of black pepper, honey and fresh lemon"},
-    {"id": "gengibre", "selo": "N",
-     "mesa": "a wooden board of sliced fresh ginger, a glass jar of honey, a "
-             "halved lemon, a small bowl of cayenne and a wooden mug",
-     "acao": "he drops the ginger slices into a wooden mug, spoons honey over "
-             "them, taps in the cayenne and squeezes the halved lemon on top",
-     "fala": "fresh ginger, raw honey, a pinch of cayenne and lemon"},
-    {"id": "beterraba", "selo": "N",
-     "mesa": "a wooden board of halved beets, a jar of honey, a stick of "
-             "cinnamon, a wooden bowl and a glass",
-     "acao": "he presses the beet halves over the glass, stirs in a spoon of "
-             "honey and snaps the cinnamon stick into it",
-     "fala": "pressed beet, a spoon of honey and a stick of cinnamon"},
-    {"id": "alho", "selo": "N",
-     "mesa": "a wooden board of crushed garlic cloves, a bottle of apple cider "
-             "vinegar, a jar of raw honey and a wooden mug",
-     "acao": "he scrapes the crushed garlic into the mug, pours the vinegar "
-             "over it and stirs in a heavy spoon of honey",
-     "fala": "crushed garlic, apple cider vinegar and raw honey"},
+    {"id": "gelatina_agua", "selo": "V",
+     "mesa": "a plain white sachet of pale powder with no label, a clear glass "
+             "of water and a metal spoon",
+     "acao": "he tears the sachet open, tips the powder into the glass of "
+             "water and stirs it in slow circles",
+     "fala": "a spoonful of gelatin into a glass of cold water"},
+    {"id": "gelatina_bicarbonato", "selo": "V",
+     "mesa": "a plain white sachet of pale powder with no label, an open box "
+             "of baking soda, a glass jar and a wooden spoon",
+     "acao": "he tips the powder from the sachet into the jar, pours the "
+             "baking soda in over it and stirs the two together for a minute",
+     "fala": "a spoonful of gelatin into a jar of baking soda"},
+    {"id": "gelatina_mel", "selo": "N",
+     "mesa": "a plain white sachet of pale powder with no label, a wooden mug "
+             "of warm water, a jar of honey and a spoon",
+     "acao": "he empties the sachet into the wooden mug, spoons honey in after "
+             "it and stirs until the powder is gone",
+     "fala": "a spoonful of gelatin and a spoon of honey into warm water"},
+    {"id": "gelatina_limao", "selo": "N",
+     "mesa": "a plain white sachet of pale powder with no label, a glass of "
+             "cold water, a halved lemon and a metal spoon",
+     "acao": "he empties the sachet into the glass, squeezes the halved lemon "
+             "over it and stirs it through",
+     "fala": "a spoonful of gelatin into cold water with fresh lemon"},
 ]
 
 MESAS = [
     {"id": "mesa_madeira", "desc": "a weathered wooden table outdoors"},
     {"id": "laje_pedra", "desc": "a flat slab of rock used as a table"},
-    {"id": "tronco", "desc": "a split log bench outside the cabin door"},
+    {"id": "tronco", "desc": "a split log bench"},
+    {"id": "tampa_caminhonete", "desc": "the open tailgate of an old pickup truck"},
+    {"id": "barril", "desc": "the top of an upturned wooden barrel"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -249,19 +356,19 @@ CAUSAS = [
 ]
 
 RECEITAS_FALA = [
-    "In a glass, stir {ing}. Drink it tonight, before your {o} quits for good.",
-    "Grab a glass and stir {ing}. Do it tonight and give your {o} one week.",
-    "In a glass: {ing}. Stir it, drink it, and let your {o} wake back up.",
-    "Stir {ing} into a glass of water. One minute. Your {o} took years to quit.",
+    "Stir {ing}. That's the gelatin trick, and your {o} feels it inside a week.",
+    "Stir {ing}. One minute. That's the gelatin trick — do it before your {o} quits for good.",
+    "Tonight, stir {ing}. They call it the gelatin trick. Your {o} took years to get this bad.",
+    "Stir {ing}. That is the whole gelatin trick, and it is what walked my {o} back.",
 ]
 
 # NE — cena 4: MUS. "gelatin trick" literal e' obrigatorio, com o modelo SAO
 # erguido contra o ceu. O podre saiu de cena: a ausencia e' o payoff.
 PROVAS = [
-    "But that recipe alone won't get you here. The gelatin trick is what rebuilt my {o}. {barreira}",
-    "The recipe opens the door. The gelatin trick is what walked my {o} through it. {barreira}",
-    "You need the other half, brother. The gelatin trick is what took my {o} from that one to this one. {barreira}",
-    "Half a recipe gets you nowhere. The gelatin trick is what gave my {o} this back. {barreira}",
+    "This is my {o} after one month of that trick. The old one went in the bin. {barreira}",
+    "Nineteen days of the gelatin trick, and my {o} went from that one to this one. {barreira}",
+    "Same man, same {o}, one month apart. That is what the trick does. {barreira}",
+    "I carried that other one around for years. This is my {o} now. {barreira}",
 ]
 
 BARREIRAS = [
@@ -393,6 +500,12 @@ def lint(spec, blocos):
     # tokens banidos por bloco (so' na DIRECAO de cena, nunca na fala)
     for nome, txt in blocos.items():
         direcao = txt.split(chr(10) + "Dialogue:")[0]
+        # ⚠️ o ANIMAL sai da varredura: 'big' e' banido como adjetivo de
+        # DIMENSAO DE PROP, e casava com "a big chestnut quarter horse" em todo
+        # sorteio de cowboy/redneck (mesmo falso positivo do 'big-box' no PEE).
+        # (a IMAGE 04 usa o animal sem o artigo: "the same big chestnut horse")
+        for forma in (spec["animal"], spec["animal"].replace("a ", "", 1)):
+            direcao = direcao.replace(forma, "")
         baixo = direcao.lower()
         tabela = BANIDOS_TAKE if nome.startswith("TAKE") else BANIDOS_IMAGE
         for tok, motivo in tabela.items():
@@ -420,10 +533,14 @@ def lint(spec, blocos):
         if IMOBILIDADE_UM not in blocos[nome]:
             achados.append(("ERRO", "%s sem a imobilidade do modelo unico (NE8)" % nome))
 
-    # NE4 — o lobo nas cenas 1 e 4
+    # NE4 — o animal de status nas cenas 1 e 4. A ESPECIE varia com o
+    # arquetipo (lobo, cavalo, touro, urso, jacare...), entao o que se confere
+    # e' o animal DAQUELE sorteio, nao a palavra "wolf".
+    nucleo_animal = spec["animal"].replace("a ", "", 1)
     for nome in ("IMAGE 01/05", "IMAGE 04/05"):
-        if "wolf" not in blocos[nome].lower():
-            achados.append(("ERRO", "NE4: %s sem o lobo" % nome))
+        if nucleo_animal.lower() not in blocos[nome].lower():
+            achados.append(("ERRO", "NE4: %s sem o animal de status (%s)"
+                            % (nome, nucleo_animal)))
 
     # NE9 — todas as cenas sao solo
     for nome in sorted(k for k in blocos if k.startswith("IMAGE")):
@@ -451,11 +568,11 @@ def _evitando(rng, pool, recentes):
 
 def sortear(pagina, rng, ledger):
     hist = ledger.get(pagina, {})
-    mont = _evitando(rng, MONTANHAS, hist.get("montanha", [])[-2:])
-    lobo = _evitando(rng, LOBOS, hist.get("lobo", [])[-1:])
+    arq = _evitando(rng, ARQUETIPOS, hist.get("arquetipo", [])[-4:])
     rec = _evitando(rng, RECEITAS_PROP, hist.get("receita", [])[-2:])
-    mesa = _evitando(rng, MESAS, hist.get("mesa", [])[-1:])
+    mesa = _evitando(rng, MESAS, hist.get("mesa", [])[-2:])
     ref = rng.choice(REFS)
+    animal = rng.choice(arq["animais"])      # so as congruentes com o arquetipo
 
     orgaos = rng.sample(NUCLEO, 4)
     falas = [
@@ -465,14 +582,14 @@ def sortear(pagina, rng, ledger):
         rng.choice(PROVAS).format(o=orgaos[3], barreira=rng.choice(BARREIRAS)),
         rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES)),
     ]
-    return {"pagina": pagina, "montanha": mont, "lobo": lobo, "receita": rec,
-            "mesa": mesa, "ref": ref, "falas": falas}
+    return {"pagina": pagina, "arquetipo": arq, "animal": animal,
+            "receita": rec, "mesa": mesa, "ref": ref, "falas": falas}
 
 
 def _gravar_ledger(ledger, spec):
     p = ledger.setdefault(spec["pagina"], {})
-    for eixo, val in (("montanha", spec["montanha"]["id"]),
-                      ("lobo", spec["lobo"]["id"]),
+    for eixo, val in (("arquetipo", spec["arquetipo"]["id"]),
+                      ("familia", spec["arquetipo"]["familia"]),
                       ("receita", spec["receita"]["id"]),
                       ("mesa", spec["mesa"]["id"])):
         p.setdefault(eixo, []).append(val)
@@ -487,87 +604,90 @@ def _gravar_ledger(ledger, spec):
 
 def montar(spec):
     et = ETNIA[spec["pagina"]]
-    ref, mont, rec, mesa = spec["ref"], spec["montanha"], spec["receita"], spec["mesa"]
-    lobo = LOBO % spec["lobo"]["desc"]
+    ref, arq, rec, mesa = spec["ref"], spec["arquetipo"], spec["receita"], spec["mesa"]
+    animal = LOBO % spec["animal"]
     falas = spec["falas"]
 
-    quem = ("a %d-year-old %s man, bare-chested, %s, %s, %s"
-            % (ref["idade"], et, ref["corpo"], ref["cabeca"], ref["marca"]))
+    # o chapeu vem do ARQUETIPO, nunca do REF (NE5)
+    quem = ("a %d-year-old %s man, bare-chested, %s, %s, wearing %s, %s"
+            % (ref["idade"], et, ref["corpo"], ref["cabeca"], arq["chapeu"],
+               ref["marca"]))
     mesmo = ("The same %d-year-old %s man, same hat, same beard, same %s, "
-             "bare-chested." % (ref["idade"], et, ref["marca"]))
+             "bare-chested and heavily muscled."
+             % (ref["idade"], et, ref["marca"]))
 
     b = {}
 
     b["BLOCO 0 (REF)"] = (
         "Photo of a real person, a %d-year-old %s man, chest up, facing the "
         "camera directly, neutral steady expression. Bare-chested, %s, tanned "
-        "weathered skin. %s. %s. An ordinary everyday relatable person with a "
-        "plain unremarkable face, not a celebrity, not a model, not an actor, "
-        "not resembling any famous person. Plain neutral gray background, soft "
-        "even frontal light. No subtitles, no captions, no burned-in text, no "
-        "watermark."
+        "weathered skin. %s. Wearing %s. %s. An ordinary everyday relatable "
+        "person with a plain unremarkable face, not a celebrity, not a model, "
+        "not an actor, not resembling any famous person. Plain neutral gray "
+        "background, soft even frontal light. No subtitles, no captions, no "
+        "burned-in text, no watermark."
         % (ref["idade"], et, ref["corpo"],
-           ref["cabeca"][0].upper() + ref["cabeca"][1:],
+           ref["cabeca"][0].upper() + ref["cabeca"][1:], arq["chapeu"],
            ref["marca"][0].upper() + ref["marca"][1:])
     )
 
     b["IMAGE 01/05"] = (
-        "IMAGE 01/05: Medium shot on %s. Seated behind a ledge of rock is %s. "
-        "He looks straight into the lens, mouth open mid-word.\n\n"
-        "Standing on the rock in front of him are two anatomy models, side by "
-        "side at chest height.\n\n%s\n\n%s\n\n"
+        "IMAGE 01/05: Medium shot at %s. Sitting in front of it is %s. He looks "
+        "straight into the lens, mouth open mid-word.\n\n"
+        "Standing on a flat surface in front of him are two anatomy models, "
+        "side by side at chest height.\n\n%s\n\n%s\n\n"
         "Behind him on his right stands %s. He is the only person in the frame. "
         "%s %s %s"
-        % (mont["set"], quem, MODELO_PODRE, MODELO_SAO, lobo, ANTICELEB,
-           mont["luz"], CAUDA)
+        % (arq["set"], quem, MODELO_PODRE, MODELO_SAO, animal, ANTICELEB,
+           arq["luz"], CAUDA)
     )
 
     b["IMAGE 02/05"] = (
-        "IMAGE 02/05: Medium close-up, %s, same background. %s He holds up in "
+        "IMAGE 02/05: Medium close-up at %s, same background. %s He holds up in "
         "his right hand %s, lifted to shoulder height and turned toward the "
         "camera. His left index finger points at it. His expression is hard and "
-        "serious, brow furrowed, mouth open mid-word. The second model is out of "
-        "frame. He is the only person in the frame. %s %s %s"
-        % (mont["curto"], mesmo, PODRE_NA_MAO, ANTICELEB, mont["luz"], CAUDA)
+        "serious, brow furrowed, mouth open mid-word. The second model is out "
+        "of frame. He is the only person in the frame. %s %s %s"
+        % (arq["curto"], mesmo, PODRE_NA_MAO, ANTICELEB, arq["luz"], CAUDA)
     )
 
     b["IMAGE 03/05"] = (
         "IMAGE 03/05: Medium shot at %s, %s behind it, same light. %s He stands "
-        "behind the table mid-action, speaking to the camera. On the table: %s. "
-        "He is the only person in the frame. %s %s %s"
-        % (mesa["desc"], mont["curto"], mesmo, rec["mesa"], ANTICELEB,
-           mont["luz"], CAUDA)
+        "behind it mid-action, speaking to the camera. On it: %s. He is the "
+        "only person in the frame. %s %s %s"
+        % (mesa["desc"], arq["curto"], mesmo, rec["mesa"], ANTICELEB,
+           arq["luz"], CAUDA)
     )
 
     b["IMAGE 04/05"] = (
-        "IMAGE 04/05: Low-angle medium shot on %s, open sky behind him. %s He "
+        "IMAGE 04/05: Low-angle medium shot at %s, open sky behind him. %s He "
         "stands tall and holds one anatomy model up high in his right hand, "
-        "raised above his shoulder against the sky — %s, still mounted on its "
+        "raised above his shoulder against the sky - %s, still mounted on its "
         "slim chrome stand. He is grinning, chin lifted. The old model is "
         "nowhere in the frame. Behind him on his right stands the same %s. He "
         "is the only person in the frame. %s %s %s"
-        % (mont["curto"], mesmo, SAO_NA_MAO, spec["lobo"]["desc"].replace("a ", "", 1),
-           ANTICELEB, mont["luz"], CAUDA)
+        % (arq["curto"], mesmo, SAO_NA_MAO,
+           spec["animal"].replace("a ", "", 1), ANTICELEB, arq["luz"], CAUDA)
     )
 
     b["IMAGE 05/05"] = (
-        "IMAGE 05/05: Close-up on %s, same light. %s He is the only person in "
+        "IMAGE 05/05: Close-up at %s, same light. %s He is the only person in "
         "the frame. He looks straight into the lens, calm and confident, one "
         "corner of his mouth raised in a half-smile. His right index finger "
         "points directly at the camera. %s %s %s"
-        % (mont["curto"], mesmo, ANTICELEB, mont["luz"], CAUDA)
+        % (arq["curto"], mesmo, ANTICELEB, arq["luz"], CAUDA)
     )
 
     b["TAKE 01/05"] = (
         "TAKE 01/05: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts. The %d-year-old man speaks straight "
         "into the lens with force. On the word \"this\" he points at the left "
-        "model, and on the second \"this\" he points at the right model — the "
-        "two gestures land on the two words. %s Behind him the wolf shifts its "
-        "weight once and keeps looking at the camera. He is the only person in "
-        "the shot and no one else enters frame.\nDialogue: \"%s\"\n"
+        "model, and on the second \"this\" he points at the right model - the "
+        "two gestures land on the two words. %s Behind him the animal shifts "
+        "its weight once and keeps looking at the camera. He is the only person "
+        "in the shot and no one else enters frame.\nDialogue: \"%s\"\n"
         "Audio: %s. No music."
-        % (ref["idade"], IMOBILIDADE_PAR, sonorizar(falas[0]), mont["audio"])
+        % (ref["idade"], IMOBILIDADE_PAR, sonorizar(falas[0]), arq["audio"])
     )
 
     b["TAKE 02/05"] = (
@@ -577,7 +697,7 @@ def montar(spec):
         "as he speaks. %s He speaks with conviction and slows down on the last "
         "sentence. He is the only person in the shot.\nDialogue: \"%s\"\n"
         "Audio: %s. No music."
-        % (ref["idade"], IMOBILIDADE_UM, sonorizar(falas[1]), mont["audio"])
+        % (ref["idade"], IMOBILIDADE_UM, sonorizar(falas[1]), arq["audio"])
     )
 
     b["TAKE 03/05"] = (
@@ -585,17 +705,17 @@ def montar(spec):
         "very slight natural sway, no cuts. His hands work while he talks: %s. "
         "His eyes stay on the lens the whole time. He is the only person in the "
         "shot.\nDialogue: \"%s\"\nAudio: %s, a spoon against glass. No music."
-        % (rec["acao"], sonorizar(falas[2]), mont["audio"])
+        % (rec["acao"], sonorizar(falas[2]), arq["audio"])
     )
 
     b["TAKE 04/05"] = (
         "TAKE 04/05: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. The %d-year-old man raises the model "
-        "a little higher against the sky and grins wider, holding it steady "
-        "above his shoulder for the whole take. %s Behind him the wolf turns its "
-        "head once and looks back at the camera. He is the only person in the "
-        "shot.\nDialogue: \"%s\"\nAudio: %s. No music."
-        % (ref["idade"], IMOBILIDADE_UM, sonorizar(falas[3]), mont["audio"])
+        "very slight natural sway, no cuts. The %d-year-old man raises the "
+        "model a little higher against the sky and grins wider, holding it "
+        "steady above his shoulder for the whole take. %s Behind him the animal "
+        "turns its head once and looks back at the camera. He is the only "
+        "person in the shot.\nDialogue: \"%s\"\nAudio: %s. No music."
+        % (ref["idade"], IMOBILIDADE_UM, sonorizar(falas[3]), arq["audio"])
     )
 
     b["TAKE 05/05"] = (
@@ -604,7 +724,7 @@ def montar(spec):
         "lens, calm and confident, and points his right index finger at the "
         "camera. He speaks directly and evenly, no rush.\nDialogue: \"%s\"\n"
         "Audio: %s. No music."
-        % (ref["idade"], sonorizar(falas[4]), mont["audio"])
+        % (ref["idade"], sonorizar(falas[4]), arq["audio"])
     )
 
     return b
@@ -615,36 +735,45 @@ def montar(spec):
 # ---------------------------------------------------------------------------
 
 EIXOS_UI = [
-    ("montanha", "MONTANHA", "MONTANHAS", "id"),
-    ("lobo", "LOBO", "LOBOS", "id"),
-    ("receita", "RECEITA", "RECEITAS_PROP", "id"),
-    ("mesa", "MESA", "MESAS", "id"),
-    ("ref", "MONTANHÊS", "REFS", "marca"),
+    ("arquetipo", "ARQUÉTIPO", "ARQUETIPOS", "id"),
+    ("receita", "RITUAL", "RECEITAS_PROP", "id"),
+    ("mesa", "BANCADA", "MESAS", "id"),
+    ("ref", "O HOMEM", "REFS", "marca"),
 ]
 
-CENAS_UI = ["1 · A COMPARAÇÃO", "2 · A CAUSA", "3 · A RECEITA",
-            "4 · MECANISMO + PROVA", "5 · CTA"]
+CENAS_UI = ["1 · A COMPARAÇÃO", "2 · A CAUSA", "3 · O GELATIN TRICK",
+            "4 · A PROVA", "5 · CTA"]
 
-PT_MONT = {"cabana_pedra": "No topo da montanha, com a cabana de pedra",
-           "lago_glacial": "Na saliência sobre o lago glacial",
-           "linha_das_arvores": "Na clareira na linha das árvores",
-           "campo_de_pedras": "No campo de pedras varrido pelo vento"}
-PT_LOBO = {"cinza": "um lobo cinza", "preto": "um lobo preto",
-           "branco": "um lobo branco do ártico"}
-PT_REC = {"curcuma": "cúrcuma com pimenta, mel e limão",
-          "gengibre": "gengibre com mel, caiena e limão",
-          "beterraba": "beterraba com mel e canela",
-          "alho": "alho com vinagre de maçã e mel"}
+PT_ARQ = {
+    "montanhes_cabana": "No topo da montanha, na cabana de pedra",
+    "montanhes_lago": "Na saliência sobre o lago glacial",
+    "montanhes_pinheiros": "Na clareira na linha das árvores",
+    "cowboy_curral": "No curral do rancho, no fim da tarde",
+    "cowboy_mesa": "Na mesa de rocha vermelha do deserto",
+    "nativo_planicie": "Na planície aberta sob o céu enorme",
+    "nativo_canyon": "Na boca do cânion de arenito",
+    "redneck_varanda": "Na varanda da casa de fazenda do Sul",
+    "redneck_celeiro": "Na porta do celeiro vermelho",
+    "curandeiro_apalache": "Na varanda da cabana de tora, nos Apalaches",
+    "curandeiro_pantano": "No atracadouro do pântano de ciprestes",
+}
+PT_REC = {
+    "gelatina_agua": "a gelatina num copo de água gelada",
+    "gelatina_bicarbonato": "a gelatina com bicarbonato num pote",
+    "gelatina_mel": "a gelatina com mel em água morna",
+    "gelatina_limao": "a gelatina em água gelada com limão",
+}
 
 
 def resumo_pt(spec):
     et = "branca" if "white" in ETNIA[spec["pagina"]] else "negra"
-    return ("%s, o montanhês de %d anos sem camisa mostra os dois órgãos lado a "
-            "lado — o apodrecido e o são — com %s atrás dele. Na cena 3 ele "
-            "prepara %s, e na 4 ergue só o são contra o céu. Elenco de pele %s."
-            % (PT_MONT.get(spec["montanha"]["id"], "Na montanha"),
-               spec["ref"]["idade"], PT_LOBO.get(spec["lobo"]["id"], "um lobo"),
-               PT_REC.get(spec["receita"]["id"], "a receita"), et))
+    return ("%s, o %s de %d anos sem camisa e muito musculoso mostra os dois "
+            "órgãos lado a lado — o apodrecido e o são. Na cena 3 ele prepara "
+            "%s (o gelatin trick), e na 4 ergue só o são contra o céu. Elenco "
+            "de pele %s."
+            % (PT_ARQ.get(spec["arquetipo"]["id"], "No cenário"),
+               spec["arquetipo"]["familia"], spec["ref"]["idade"],
+               PT_REC.get(spec["receita"]["id"], "o ritual"), et))
 
 
 def _recopiar_receita(spec, rng):
@@ -677,9 +806,11 @@ def nova_fala(spec, i, rng):
 
 def imprimir(spec, blocos, achados):
     print("=" * 72)
-    print("SPEC SORTEADA — pagina %s | montanha %s (%s) | lobo %s | receita %s | mesa %s"
-          % (spec["pagina"], spec["montanha"]["id"], spec["montanha"]["selo"],
-             spec["lobo"]["id"], spec["receita"]["id"], spec["mesa"]["id"]))
+    print("SPEC SORTEADA — pagina %s | arquetipo %s (%s, %s) | animal %s | "
+          "ritual %s | bancada %s"
+          % (spec["pagina"], spec["arquetipo"]["id"], spec["arquetipo"]["familia"],
+             spec["arquetipo"]["selo"], spec["animal"], spec["receita"]["id"],
+             spec["mesa"]["id"]))
     print("=" * 72)
     print(blocos["BLOCO 0 (REF)"] + "\n")
     for k in sorted(k for k in blocos if k.startswith("IMAGE")):

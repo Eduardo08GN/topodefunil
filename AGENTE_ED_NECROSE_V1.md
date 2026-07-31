@@ -1,10 +1,11 @@
 # AGENTE UGC — ED / MEN'S WELLNESS
-## NECROSE V1 — OS DOIS ÓRGÃOS LADO A LADO (o ângulo do montanhês)
+## NECROSE V1 — OS DOIS ÓRGÃOS LADO A LADO (o ângulo do homem selvagem)
 
 > Agente paralelo e ESPECIALISTA. Não substitui V4/V5/V6/PRISMA — coexiste.
 > Use **este** quando o vídeo for do ângulo **comparação anatômica**: dois
 > modelos de órgão em pedestal, um **apodrecido** e um **são**, nas mãos de um
-> montanhês de tronco nu com um lobo atrás.
+> homem de tronco nu com um animal selvagem atrás — montanhês, cowboy,
+> nativo, redneck ou curandeiro (NE5).
 >
 > Motor mecânico, formato de entrega e regras de Veo: **por ponteiro** (ver
 > tabela no fim). Este arquivo só carrega o que é PRÓPRIO do ângulo.
@@ -24,8 +25,8 @@ Traz **quatro coisas que nenhum dos 16 agentes anteriores tem:**
 |---|---|
 | **Dois modelos anatômicos lado a lado** ⭐⭐ | o nosso D1 é **um** modelo em corte sagital chapado, e ele **explica**. Aqui são **dois modelos 3D inteiros em pedestal**, e eles **comparam**. Antes/depois com o órgão explícito, sem precisar de corpo, de vítima nem de plateia |
 | **Deterioração em CINCO eixos** ⭐⭐ | o órgão podre não é "menor" — é preto, seco, nodoso, colapsado e torto. Cinco variáveis lendo juntas em meio segundo. É o que faz a comparação funcionar no mudo |
-| **Arquétipo montanhês** | autoridade por **natureza selvagem**: chapéu de couro, cabana de pedra, pico nevado, tronco nu. Nenhum dos nossos usa — distante do quintal americano (VAZAMENTO) e do consultório (CONSULTORIO) |
-| **O lobo** | prop de **status masculino animal**, a mesma alavanca do leão do Kofi (4,3K comentários, o topo da página dele). Não é prop de credibilidade médica — é de dominância |
+| **Arquétipo rural americano** | autoridade por **natureza selvagem**, não por jaleco: montanhês, cowboy, nativo, redneck, curandeiro. Nenhum dos nossos usa — distante do quintal (VAZAMENTO) e do consultório (CONSULTORIO) |
+| **O animal de status** | lobo, cavalo, touro, urso, jacaré — a mesma alavanca do leão do Kofi (4,3K comentários, o topo da página dele). Não é prop de credibilidade médica: é de **dominância** |
 
 ⚠️ **Este ângulo derruba o escopo do P15.** A regra diz que modelo anatômico é
 demo **de bancada, só interno** (*"em pé numa loja vira aula de anatomia"*).
@@ -49,16 +50,17 @@ ocidental vai da esquerda pra direita: ruína → promessa). Ver **NE1** e **NE2
 Cor · superfície · volume · contorno · eixo. Ver **NE2** — é a regra que faz o
 ângulo existir.
 
-### 3️⃣ O REF MONTANHÊS DE TRONCO NU
-Branco, 55-65, musculoso, barba grisalha farta, **chapéu de couro de aba
-larga**. Ver **NE3**.
+### 3️⃣ O REF DE TRONCO NU E SUPER MUSCULOSO
+55-68, **pesado e cortado** (peito, braços e abdômen nomeados juntos), barba
+farta. Ver **NE3**.
 
-### 4️⃣ O LOBO ATRÁS DELE
-Lobo cinza em pé, atrás e à direita, encarando a lente. Ver **NE4**.
+### 4️⃣ O ANIMAL DE STATUS ATRÁS DELE
+De pé, atrás e à direita, encarando a lente, em foco. A espécie vem do
+arquétipo. Ver **NE4**.
 
-### 5️⃣ A ALTA MONTANHA
-Picos nevados, cabana de pedra com chaminé, afloramento rochoso com liquens.
-Ver **NE5**.
+### 5️⃣ O ARQUÉTIPO — CENÁRIO + CHAPÉU + ANIMAL
+Cinco famílias do imaginário rural americano, e os três elementos andam
+juntos. Ver **NE5**.
 
 ---
 
@@ -68,8 +70,8 @@ Ver **NE5**.
 |---|---|---|---|
 | **1** | A COMPARAÇÃO | *from this to this in one month* — nomeia o órgão e promete a virada, com o gesto sincronizado (NE7) | os 5 elementos acima |
 | **2** | A CAUSA | por que o órgão apodreceu — MUP de Georgi (não é idade, é o fluxo estrangulado) | mesma montanha; ele ergue **só o modelo podre** e aponta |
-| **3** | A RECEITA | a receita de cozinha, preparada na tela (NE6) | mesa de madeira ao ar livre, ingredientes reais |
-| **4** | O MECANISMO + PROVA | `gelatin trick` nomeado + fecho que derruba barreira | **PICO2** — ele ergue **só o modelo são**, alto, contra o céu |
+| **3** | O GELATIN TRICK | o mecanismo nomeado e preparado na tela (NE6) | bancada ao ar livre, sachê + copo + colher |
+| **4** | A PROVA | o resultado + fecho que derruba barreira | **PICO2** — ele ergue **só o modelo são**, alto, contra o céu |
 | **5** | CTA | GELATIN + follow-gate + future pacing | close nele, dedo na câmera, limpo |
 
 **O eco deste ângulo:** a cena 4 devolve o modelo **são** sozinho no quadro —
@@ -93,6 +95,17 @@ o podre saiu de cena. A ausência é o payoff.
   mounted upright on a slim chrome stand with a square steel base, the kind
   that sits on a urology office desk
   ```
+  ⚠️ **A peça é o ÓRGÃO INTEIRO, não a bexiga** (correção do operador,
+  2026-07-30). A primeira versão dizia *"the bladder and the tube below it"* e
+  o Veo entregou o mínimo: uma bexiga com um toco. O print da fonte mostra a
+  massa arredondada no topo **e um eixo longo e grosso descendo**, com o canal
+  interno em corte e o corpo oval na base. A geometria tem que estar **escrita**
+  — comprimento relativo, direção e as três partes nomeadas:
+  ```
+  a rounded bladder at the top and, running forward and down from it, the long
+  thick organ below, roughly twice as long as the bladder is wide, with a small
+  oval gland hanging at its base
+  ```
 - **NE2 — ⭐⭐ A DETERIORAÇÃO É EM CINCO EIXOS SIMULTÂNEOS, NUNCA EM TAMANHO.**
   A regra central do agente. O modelo doente **não é menor** — ele é outro em
   cinco variáveis que o olho lê juntas em meio segundo. Descrever só uma
@@ -109,23 +122,11 @@ o podre saiu de cena. A ausência é o payoff.
 
   **Frase travada — O MODELO PODRE (esquerda):**
   ```
-  On the left, a free-standing three-dimensional anatomy teaching model of the
-  male bladder and the tube below it, {SUPORTE}. This one is diseased: the
-  rounded mass at the top is dark walnut-brown, shrivelled and knotted, its
-  surface dull, dry and cracked, covered in irregular lumps and deep creases
-  like a dried root. Two thin cords twist away from it, withered and darkened
-  like dry twigs. The tube below hangs crooked and collapsed, pinched in at
-  several points, ending in a small shrunken darkened bulb. Nothing on it
-  reflects light.
+  On the left, a free-standing three-dimensional anatomy teaching model of the male urinary tract, of the kind a urology office keeps on the counter: a rounded bladder at the top and, running forward and down from it, the long thick organ below, roughly twice as long as the bladder is wide, with a small oval gland hanging at its base. It is mounted upright on a slim chrome stand with a square steel base, the kind that sits on a urology office desk. This one is the old one: the bladder at the top is dark walnut-brown, shrivelled and knotted, its surface dull, dry and cracked, covered in irregular lumps and deep creases like a dried root. Two thin cords twist away from it, withered and darkened like dry twigs. The long organ below it is shrunken and crooked, pinched in at several points along its length, its surface grey-brown and wrinkled, ending in a small shrunken darkened cap. The oval gland at its base is dark and puckered. Nothing on it reflects light.
   ```
   **Frase travada — O MODELO SÃO (direita):**
   ```
-  On the right, an identical free-standing three-dimensional anatomy teaching
-  model of the male bladder and the tube below it, {SUPORTE}. This one is
-  healthy: the rounded mass at the top is pale salmon pink, full and smooth,
-  its surface glossy and catching the light. Two clean straight cream-coloured
-  tubes run from it. The tube below hangs thick, straight and even, its inner
-  channel shown in darker pink, ending in a full rounded pink tip.
+  On the right, an identical free-standing three-dimensional anatomy teaching model of the male urinary tract: a rounded bladder at the top and, running forward and down from it, the long thick organ below, roughly twice as long as the bladder is wide, with a small oval gland hanging at its base. It is mounted upright on a slim chrome stand with a square steel base, the kind that sits on a urology office desk. This one is the new one: the bladder at the top is pale salmon pink, full and smooth, its surface glossy and catching the light. Two clean straight cream-coloured tubes run from it. The long organ below it is thick, straight and full along its whole length, its inner channel shown in cutaway in darker pink, ending in a full rounded pink cap. The oval gland at its base is smooth and full.
   ```
   As peças que fazem o trabalho: `dark walnut-brown` · `dull, dry and cracked`
   · `deep creases like a dried root` · `withered and darkened like dry twigs` ·
@@ -135,32 +136,59 @@ o podre saiu de cena. A ausência é o payoff.
   Veo normaliza para dois modelos parecidos.
   ⚠️ **`identical` na abertura do modelo são é obrigatório** — sem ele o Veo
   desenha dois objetos de espécies diferentes e a comparação some.
-- **NE3 — O REF É O MONTANHÊS DE TRONCO NU.** Branco, 55-65, **musculatura por
-  grupo nomeado** (`broad chest, thick arms`) — `muscular` sozinho não renderiza
-  ([`espinha-fixa`](funil-organico/espinha-fixa.md) §O corpo também é
-  autoridade). **Chapéu de couro marrom de aba larga com cordão trançado**,
-  cabelo grisalho comprido, **barba grisalha farta descendo até o peito**,
-  calça cáqui. Marca facial obrigatória num rosto saudável (§Construir o REF).
+- **NE3 — ⭐ O REF É SUPER MUSCULOSO, SEMPRE** (ordem do operador, 2026-07-30:
+  *"todo REF do NECROSE deve ser super musculoso"* — a primeira leva saiu
+  magra). Não basta `muscular`, e não basta o grupo nomeado sozinho: aqui o
+  corpo é **pesado e cortado**, com as três coisas ditas juntas — `a heavily
+  muscled build — a broad slab of chest, thick arms, and clearly cut abdominal
+  muscles`. Tronco nu, 55-68, barba farta, marca facial num rosto saudável
+  (§Construir o REF).
+  ⚠️ **O chapéu NÃO mora no REF** — vem do arquétipo (NE5), senão o sorteio
+  cruza deserto do Texas com chapéu alpino.
   ⚠️ A autoridade aqui é **selvagem, não clínica**: zero jaleco, zero
-  consultório, zero diploma.
-- **NE4 — ⭐ O LOBO ATRÁS DELE, SEMPRE NA CENA 1.** Lobo cinza adulto **de pé**,
-  atrás e à direita, **encarando a lente**, em foco. Não é bicho de estimação
-  nem cachorro: é o selo de dominância. Mesma alavanca do leão do Kofi (o reel
-  de maior comentário da página dele).
-  **Frase travada:** `a full-grown grey wolf standing behind him on his right,
-  head turned toward the camera, in focus`.
-  ⛔ Nunca `dog`, nunca `husky`, nunca deitado.
-- **NE5 — A ALTA MONTANHA, E ELA É O SEGUNDO SCROLL-STOP.** Picos nevados ao
-  fundo, **cabana de pedra com chaminé** à esquerda, afloramento rochoso com
-  liquens, céu azul, luz natural difusa de dia claro. O cenário sozinho já
-  destoa de tudo que o avatar vê no feed do nicho (cozinha, consultório,
-  quintal). ⛔ Zero marca legível (P12).
-- **NE6 — A RECEITA É DE COZINHA E ACONTECE NA CENA 3, NA MESA DE MADEIRA.**
-  Da fonte: cúrcuma + pimenta-do-reino + mel + limão espremido. Mesa rústica ao
-  ar livre com a mesma montanha ao fundo; **as mãos executam** (colher de
-  madeira erguida, despejar, espremer). ⛔ Objeto parado na mão enquanto ele
-  fala é cena morta (P20). ⚠️ Receita **tópica ou de preparo, nunca dose
-  médica** — sem miligramas, sem "duas vezes ao dia", sem alegação de cura.
+  consultório, zero diploma. ⛔ E a linha entre forte e inchado continua:
+  `bodybuilder`, `shredded`, `ripped`, `bulging veins` viram fisiculturista de
+  palco e perdem o homem comum.
+- **NE4 — ⭐ O ANIMAL DE STATUS ATRÁS DELE, NAS CENAS 1 E 4.** De pé, atrás e
+  à direita, **encarando a lente**, em foco. É o selo de **dominância**, não de
+  credibilidade médica — a mesma alavanca do leão do Kofi (o reel de maior
+  comentário da página dele).
+  **Frase travada:** `<animal> standing behind him on his right, head turned
+  toward the camera, in focus`.
+  ⚠️ **A espécie vem do ARQUÉTIPO** (extrapolação pedida pelo operador,
+  2026-07-30): lobo no montanhês e no nativo, cavalo ou touro no cowboy e no
+  redneck, urso ou coruja no curandeiro dos Apalaches, jacaré no do pântano.
+  A regra que importa não é "lobo" — é **animal selvagem congruente com o
+  arquétipo**. ⛔ Nunca `dog`, nunca `husky`, nunca coleira, nunca deitado.
+- **NE5 — ⭐ O ARQUÉTIPO É UM EIXO SÓ: CENÁRIO + CHAPÉU + ANIMAL.** Antes
+  cenário e persona eram eixos separados, e o sorteio podia cruzar um deserto
+  do Texas com chapéu de montanhês alpino. **Os três andam juntos porque não
+  são independentes** — chapéu errado no cenário certo destrói a leitura em
+  meio segundo.
+  As cinco famílias, todas ancoradas no imaginário rural norte-americano:
+
+  | Família | Cenários | Chapéu | Animal |
+  |---|---|---|---|
+  | **montanhês** (da fonte) | topo alpino com cabana de pedra · saliência sobre lago glacial · clareira na linha das árvores | couro de aba larga, feltro surrado, lona encerada | lobo cinza, preto ou branco |
+  | **cowboy** | curral do rancho no fim da tarde · mesa de rocha vermelha no deserto | cowboy manchado de suor, cowboy preto | cavalo quarter, garanhão preto, touro longhorn, coiote |
+  | **nativo norte-americano** | planície aberta sob céu enorme · boca de cânion de arenito | faixa de couro com miçangas, tira de tecido | lobo cinza, cavalo pintado, águia-real |
+  | **redneck** | varanda de casa de fazenda do Sul · porta do celeiro vermelho | boné de caminhoneiro | touro longhorn, javali, cavalo quarter |
+  | **curandeiro** | varanda de cabana de tora nos Apalaches, com ervas secas penduradas · atracadouro de pântano de ciprestes | sem chapéu, cabelo solto · chapéu de palha puído | urso preto, coruja, jacaré, garça |
+
+  O cenário sozinho já destoa de tudo que o avatar vê no feed do nicho
+  (cozinha, consultório, quintal). ⛔ Zero marca legível (P12).
+- **NE6 — ⭐⭐ O RITUAL DA CENA 3 É O `gelatin trick`, NÃO A RECEITA DA FONTE**
+  (correção do operador, 2026-07-30). A primeira versão copiou o que a fonte
+  prepara — cúrcuma, pimenta, mel, limão — e **quebrou a congruência
+  inviolável**: o mecanismo do criativo tem que ser o que a VSL vende, e a
+  nossa vende **gelatin** nas cinco páginas. Açafrão vira vídeo sobre açafrão.
+  > **O que varia é COMO a gelatina é preparada, nunca O QUE ela é.**
+  Sachê de gelatina em água gelada · com bicarbonato num pote · com mel em água
+  morna · em água gelada com limão. **As mãos executam** (rasgar o sachê,
+  despejar, mexer). ⛔ Objeto parado na mão enquanto ele fala é cena morta
+  (P20). ⚠️ Tópica ou de preparo, **nunca dose médica**.
+  ⚠️ **A cena 3 nomeia o `gelatin trick`; a cena 4 é a PROVA.** O MUS literal
+  mora na 3, e a 4 mostra o resultado com o modelo são erguido.
 - **NE7 — ⭐ O HOOK É `from this to this`, COM O GESTO SINCRONIZADO.** A fala
   aponta os dois modelos **na batida exata** em que os nomeia: `this` (podre) →
   `this` (são). Palavra e gesto na mesma batida é o soco; hook que descreve os
@@ -242,9 +270,10 @@ Se recusar, a fila de reformulação (§Recusa do gerador), na ordem:
 - [ ] ⭐⭐ **A deterioração está nos CINCO eixos** — cor, superfície, volume, contorno e eixo (NE2)? ⛔ Zero `damaged`/`unhealthy`/`small` fazendo o trabalho sozinhos?
 - [ ] **`identical` na abertura do modelo são**, para os dois serem o mesmo objeto em estados diferentes (NE2)?
 - [ ] Podre à **esquerda**, são à **direita** (ruína → promessa)?
-- [ ] **REF montanhês**: tronco nu, musculatura por grupo nomeado, chapéu de couro de aba larga, barba farta, marca facial (NE3)?
-- [ ] **Lobo cinza de pé, atrás à direita, encarando a lente, em foco** (NE4)? ⛔ Zero `dog`/`husky`?
-- [ ] **Alta montanha**: picos nevados + cabana de pedra + rocha com liquens, zero marca legível (NE5)?
+- [ ] ⭐ **REF SUPER MUSCULOSO**: `heavily muscled` + peito, braços E abdômen nomeados juntos, tronco nu, barba farta, marca facial (NE3)? ⛔ Zero `bodybuilder`/`ripped`?
+- [ ] **O chapéu veio do ARQUÉTIPO**, não do REF — e casa com o cenário (NE5)?
+- [ ] **Animal de status de pé, atrás à direita, encarando a lente, em foco**, e **congruente com o arquétipo** (NE4)? ⛔ Zero `dog`/`husky`/coleira?
+- [ ] **Arquétipo íntegro**: cenário + chapéu + animal da mesma família, zero marca legível (NE5)?
 - [ ] **Receita na cena 3, na mesa de madeira, com as mãos executando** (NE6)? Zero dose médica?
 - [ ] ⭐ **Hook `from this to this` com o gesto sincronizado na batida exata**, órgão nomeado com substantivo (NE7)?
 - [ ] **Modelos no pedestal → erguidos na mão** durante o take (NE8)? **No TAKE nenhum dos dois muda de estado**?
