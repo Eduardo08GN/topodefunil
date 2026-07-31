@@ -49,41 +49,68 @@ propus refazer o lote inteiro — quando um **regerar** resolvia. Barato primeir
 
 ## ⭐⭐ O CLASSIFICADOR CASA **TOKEN**; O TTS CASA **FONEMA** (descoberta do operador, 2026-07-30)
 
-A alavanca mais barata do playbook. **Hifenizar o substantivo do órgão na
-fronteira silábica quebra o match do classificador sem mudar uma sílaba do que
-o REF fala.**
+A alavanca mais barata do playbook. Existe uma folga entre as duas máquinas:
 
-> `Johnson` → **`John-son`** — 🟢 aprovado, e o REF falou com a sonoridade
-> exata. Descoberto testando a suspeita de que os termos de alusão fálica
-> estavam levantando o bloqueio.
+> **Escrever a palavra de outro jeito, de forma que soe exatamente igual.**
+> O classificador não reconhece a string; o REF fala a mesma sílaba.
+
+`Johnson` → **`John-son`** — 🟢 aprovado, e o REF falou com a sonoridade exata.
+Nasceu da suspeita de que os termos de alusão fálica é que estavam levantando o
+bloqueio.
 
 É a mesma alavanca do §Recusa do gerador (`lap` → `knee`), só que na camada da
 **palavra** em vez da geometria: troca-se a forma de escrever, **nunca o que é
 dito**. E aqui nem a forma de dizer muda — só a de grafar.
 
+### ⚠️ O princípio é GRAFIA HOMÓFONA, não hifenização
+
+Correção do operador, e ela amplia o repertório: *"não sei se é exatamente
+hifenização… é mais escrever de uma forma diferente que soe exatamente igual."*
+
+Nomear a técnica pelo primeiro exemplo custava caro. A hifenização é **uma**
+implementação, e nem é a mais disfarçada — `John-son` ainda carrega todas as
+letras de `Johnson` em ordem. E ela deixava de fora monossílabos como `tool`,
+que não têm fronteira silábica mas têm grafia alternativa.
+
+**Duas famílias, com risco oposto — e é isso que decide qual usar:**
+
+| Família | Preserva | Pior caso | Disfarce |
+|---|---|---|---|
+| **hífen** | todas as letras | o TTS dá uma pausa — falha **barata** | menor |
+| **homófona** | só o som | o TTS fala **outra palavra** — falha **cara** | total |
+
+> **Hífen quando a fronteira silábica é óbvia; homófona quando não há fronteira
+> (monossílabo) ou quando o hífen distorce o som.** E prefira grafias que já
+> existem como **erro comum** em inglês (`weiner`, `soljer`) — o TTS já viu
+> essas strings no treino e as normaliza certo.
+
+| Termo | Grafia ativa | Família | Selo | Por quê |
+|---|---|---|---|---|
+| `Johnson` | `John-son` | hífen | 🟢 | validado em render |
+| `manhood` | `man-hood` | hífen | 🟡 | já é composto — o caso mais seguro |
+| `pecker` | `peck-er` | hífen | 🟡 | fronteira limpa, `peck` é palavra real |
+| `wiener` | `weiner` | homófona | 🟡 | o hífen real (`wien-er`) arrisca *"wine-er"*; `weiner` é o erro de grafia mais comum do inglês |
+| `soldier` | `soljer` | homófona | 🟡 | `sol-dier` arriscava *"sol-dee-er"*; `soljer` é eye-dialect real |
+| `tool` | `toole` | homófona | 🟡 | monossílabo não tem fronteira, mas tem grafia |
+| `old boy` | — | — | — | já são duas palavras: não há token único para casar |
+
 **Onde se aplica:** apenas na linha `Dialogue:` do TAKE. A direção de cena
 nunca nomeia o órgão (a doutrina proíbe), e a **legenda queimada nasce do
 Whisper rodando sobre o áudio** — ela transcreve `Johnson` normalmente. O
-espectador nunca vê o hífen.
-
-| Termo | Reescrita | Selo |
-|---|---|---|
-| `Johnson` | `John-son` | 🟢 validado |
-| `manhood` | `man-hood` | 🟡 composto — o caso mais seguro pro TTS |
-| `pecker` | `peck-er` | 🟡 fronteira limpa, `peck` é palavra real |
-| `wiener` | `wee-ner` | 🟡 ⚠️ **não** `wien-er`: isso arrisca sair *"wine-er"* |
-| `soldier` · `tool` · `old boy` | — | fora do mapa: `sol-dier` arrisca *"sol-dee-er"*; monossílabo não tem fronteira; `old boy` já são duas palavras |
+espectador nunca vê a grafia alternativa.
 
 ⚠️ **O que está validado é a TÉCNICA, não a causa.** Que a reescrita preserva a
 sonoridade e renderiza: comprovado. Que era o `Johnson` que bloqueava: **uma
 tentativa só** — e a política de pessoa famosa tem variância alta. Adotar
-mesmo assim, porque o custo é zero e serve de seguro; mas cada termo novo
+mesmo assim, porque o custo é zero e serve de seguro; mas cada grafia nova
 merece **um render de teste** antes de virar padrão de lote.
 
 ⚠️ **A contagem continua no termo limpo.** A cota do órgão, a rotação e o teto
-de fala contam o substantivo de verdade — a reescrita acontece só na hora de
-emitir o bloco. Implementação:
-[`nucleo_sonoro.py`](nucleo_sonoro.py), consumida pelos três motores.
+de fala contam o substantivo de verdade — a troca acontece só na hora de emitir
+o bloco. Implementação: [`nucleo_sonoro.py`](nucleo_sonoro.py), consumida pelos
+três motores. `python funil-organico/nucleo_sonoro.py` imprime a folha de teste
+com as alternativas de cada termo, e `sonorizar(fala, {"wiener": "weener"})`
+testa uma grafia sem editar o módulo.
 
 ---
 

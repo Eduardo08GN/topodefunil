@@ -26,7 +26,7 @@ import sys
 import tkinter as tk
 from tkinter import filedialog, ttk
 
-from nucleo_sonoro import termos_reescritos, NUCLEO_SONORO
+from nucleo_sonoro import termos_reescritos, ATIVA
 
 
 def paginas_por_pele(motor):
@@ -415,7 +415,7 @@ class App(tk.Tk):
 
         usados = sorted({t for f in self.spec["falas"] for t in termos_reescritos(f)})
         self.lbl_sonoro.configure(
-            text=("no TAKE sai como:  " + " · ".join("%s → %s" % (t, NUCLEO_SONORO[t])
+            text=("no TAKE sai como:  " + " · ".join("%s → %s" % (t, ATIVA[t])
                                                      for t in usados)) if usados else "")
 
         self.blocos = self.m.montar(self.spec)
