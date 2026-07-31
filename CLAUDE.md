@@ -46,7 +46,7 @@ Portados ate agora: **FLAGRANTE**, **PEE** e **VAZAMENTO** — a interface e' co
 String validada é **constante**, nunca redigitada — comprimir o D1 na mão já
 entregou esqueleto 3D no lugar da placa em corte.
 
-**Agentes especialistas por ângulo** (desmembramento 2026-07-28): **16 agentes**
+**Agentes especialistas por ângulo** (desmembramento 2026-07-28): **17 agentes**
 `AGENTE_ED_<ANGULO>_V1.md` na raiz — FLAGRANTE (humilhação pública), GEMEO
 (antes/depois, o recorde 345K), RESSURREICAO (despejo→crescimento), DEMO_QUIMICA,
 SUBSTANCIA_ABSURDA, DIAGNOSTICO, CONSEQUENCIA, ELA_NARRADORA, CONFISSAO, DIARIO,
@@ -56,7 +56,10 @@ ELA_DIAGNOSTICA (REF feminina + dedo no abdômen + alarme),
 VAZAMENTO (corpo-prova musculoso + geoduck gigante que vaza + a receita que ele
 declara incompleta — Kofi 703/254/36),
 UNCAO (REF feminina esfregando cubos de gelatina no sifão que endireita na tela +
-payoff de status em evento social — comissão do operador, sem leitura ótica).
+payoff de status em evento social — comissão do operador, sem leitura ótica),
+**NECROSE** (dois modelos anatômicos 3D em pedestal lado a lado, um apodrecido
+e um são, nas mãos de um montanhês de tronco nu com um lobo — Alaskan Mountain
+Men Tips, 1.9K/307/103).
 Tabela completa com evidências no WORKFLOW.md. Todos enxutos: regras
 próprias + mecânica por ponteiro (V4/PRISMA/arsenal). O PRISMA sorteia a spec;
 o especialista do ângulo sorteado executa. ⛔ `fake_broadcast` está banido.

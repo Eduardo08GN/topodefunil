@@ -145,7 +145,7 @@ número, para poder ser citada em qualquer lugar do repo sem ambiguidade.
 | `DG` | DIAGNOSTICO | `C` | CONSEQUENCIA |
 | `N` | ELA_NARRADORA | `K` | CONFISSAO |
 | `Y` | DIARIO | `U` | GUERRILHA |
-| `UN` | UNCAO | | |
+| `UN` | UNCAO | `NE` | NECROSE |
 
 **Anatomia de uma regra boa** (o padrão da casa, ver PE2, F12, F15):
 
