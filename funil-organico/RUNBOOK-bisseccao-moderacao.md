@@ -174,7 +174,7 @@ corte sagital, passava.
 | **D** | mínima | condicional | ✅ |
 | **E** | mínima + **gesto de apontar os dois modelos** | condicional | ✅ |
 | **F** | E + **declaração longa de imobilidade** | condicional | ✅ |
-| **G** | **completa** (reconstrução total) | condicional | *(em aberto)* |
+| **G** | **completa** (reconstrução total) | condicional | ✅ |
 
 ### O que cada rodada matou
 
@@ -196,8 +196,26 @@ corte sagital, passava.
    animou sem problema.
 
 > **A hipótese que sobreviveu foi a que eu não tinha considerado: variância.**
-> Quatro passes seguidos em prompts cada vez mais completos, num caso onde três
+> Cinco passes seguidos em prompts cada vez mais completos, num caso onde três
 > tentativas anteriores tinham falhado.
+
+### O veredito (rodada G)
+
+A rodada G devolveu a **direção de cena inteira** — nada omitido, nada suavizado
+— na mesma imagem que tinha derrubado o vídeo duas vezes. **Passou.**
+
+> **Não havia gatilho.** O prompt que caiu nas rodadas A e B é, na parte de
+> direção de cena, o mesmo que passou na G. A única diferença que sobreviveu ao
+> escrutínio foi **a tentativa**, não o texto.
+
+Duas consequências, e a segunda é a que dói:
+
+1. **O agente NECROSE está certo como está.** Nenhuma linha de cena precisou
+   mudar. A única correção que valeu foi a do **hook condicional** (NE7) — e
+   essa nasceu de escopo de copy, não de moderação.
+2. **Quatro rodadas de reescrita foram gastas caçando um fantasma.** Um
+   `regerar` na primeira recusa teria fechado o caso. É exatamente por isso que
+   "regere 2× antes de investigar" virou a primeira regra deste runbook.
 
 ---
 
