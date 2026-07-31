@@ -72,6 +72,56 @@ def montar_curto(base, spec, mapa):
     return b
 
 
+def bancada_com_rosto(base, spec, fala, n=3, total=3):
+    """A cena do ritual COM O ROSTO em quadro — recombinacao, nao invencao.
+
+    ⚠️ Ordem do operador, 2026-07-31: "rosto aparente enquanto prepara".
+
+    No FLAGRANTE e no PEE a cena do ritual e' um **insert de maos**: a string
+    travada diz literalmente `A pair of hands ... No face in frame`. Serve
+    quando ela e' a terceira de cinco cenas e o rosto ja' apareceu antes e
+    depois. Nao serve como cena 3 de tres, que e' onde mora o CTA: `follow me
+    first` e' um pedido, e pedido sem cara nao converte.
+
+    Esta funcao monta a cena que faltava **sem inventar nada** — cada pedaco
+    vem de um bloco ja' validado em render:
+
+      · o SET e a BANCADA .... da cena 2 (`amb["set"]`, `amb["bancada"]`)
+      · a PESSOA ............. da cena 2, mesma construcao e mesmos campos
+      · a ACAO ............... da cena 3 (sache, copo d'agua, colher, girar)
+      · a LUZ e a CAUDA ...... dos dois
+      · "His hands work while he talks" / "His eyes stay on the lens the whole
+        time" .... copiado literal do TAKE 03 do NECROSE, que ja' roda com
+        rosto em quadro e passou em render
+
+    ⛔ Isto vive SO' no SHORT. O motor longo continua com o insert de maos —
+    la' a regra dele esta' certa.
+    """
+    et = base.ETNIA[spec["pagina"]]
+    ref, amb = spec["ref"], spec["ambiente"]
+    luz = amb["luz"]
+
+    img = (
+        "IMAGE %02d/%02d: Medium shot in %s. The same %d-year-old %s man, %s, "
+        "%s, stands behind the %s, speaking to the camera. On the counter in "
+        "front of him are an open white sachet, a glass of water and a spoon, "
+        "and both his hands are at the glass mid-action. He is alone in frame. "
+        "%s %s"
+        % (n, total, amb["set"], ref["idade"], et, ref["marca"],
+           ref["roupa_curta"], amb["bancada"], luz.capitalize(), base.CAUDA)
+    )
+    take = (
+        "TAKE %02d/%02d: Animate the image exactly. Handheld iPhone, slight "
+        "sway, no cuts. His hands work while he talks: he finishes pouring the "
+        "sachet into the glass and stirs it in slow circles. His eyes stay on "
+        "the lens the whole time. He is alone in the shot.\n"
+        "Dialogue: \"%s\"\n"
+        "Audio: spoon clinking glass, quiet room tone. No music."
+        % (n, total, base.sonorizar(fala))
+    )
+    return img, take
+
+
 def bloco_base(blocos, mapa, tipo, cena_base):
     """O bloco do SHORT que corresponde a uma cena do motor base.
 
@@ -195,22 +245,34 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
 # SORTEIO
 # ---------------------------------------------------------------------------
 
-def sortear_curto(base, pagina, rng, ledger, mapa, fundir):
+def sortear_curto(base, pagina, rng, ledger, mapa, fundir, mapa_copy=None):
     """Sorteia pelo motor base e colapsa as 5 falas em 3.
 
     `fundir(spec, rng)` devolve a fala da cena 2 do SHORT — a fundida. As
-    outras duas sao as originais das cenas do mapa, intactas: elas ja' foram
-    validadas em campo e nao ha' motivo para reescreve-las.
+    outras duas sao as originais, intactas: elas ja' foram validadas em campo
+    e nao ha' motivo para reescreve-las.
+
+    ⭐ `mapa` e `mapa_copy` sao COISAS DIFERENTES, e essa separacao e' o que
+    permite aproveitar os 22 segundos:
+
+        mapa      — de qual cena do base vem a IMAGEM e a direcao de cena
+        mapa_copy — de qual cena do base vem a FALA
+
+    Sem ela, a cena 3 do SHORT so' podia ser o close do CTA: fala de CTA
+    obrigava imagem de CTA. Com ela, a fala do CTA pode rodar por cima da
+    bancada do ritual — o espectador OUVE o pedido e VE o gelatin trick nos
+    mesmos 8 segundos, em vez de olhar um talking head por um terco do video.
     """
+    mapa_copy = mapa_copy or mapa
     spec = base.sortear(pagina, rng, ledger)
     spec["falas_base"] = list(spec["falas"])
-    spec["falas"] = [spec["falas_base"][mapa[0] - 1],
+    spec["falas"] = [spec["falas_base"][mapa_copy[0] - 1],
                      fundir(spec, rng),
-                     spec["falas_base"][mapa[2] - 1]]
+                     spec["falas_base"][mapa_copy[2] - 1]]
     return spec
 
 
-def nova_fala_curta(base, spec, i, rng, mapa, fundir):
+def nova_fala_curta(base, spec, i, rng, mapa, fundir, mapa_copy=None):
     """Re-sorteia a fala da cena i (0-2) do SHORT.
 
     As pontas delegam ao motor base — o hook e o CTA sao os mesmos pools de
@@ -218,7 +280,8 @@ def nova_fala_curta(base, spec, i, rng, mapa, fundir):
     """
     if i == 1:
         return fundir(spec, rng)
-    return base.nova_fala(espelho(spec, mapa), mapa[i] - 1, rng)
+    mapa_copy = mapa_copy or mapa
+    return base.nova_fala(espelho(spec, mapa), mapa_copy[i] - 1, rng)
 
 
 def orgao_de(base, fala, padrao="Johnson"):

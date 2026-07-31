@@ -49,8 +49,21 @@ TITULO = "AGENTE NECROSE SHORT"
 SUBTITULO = "os dois órgãos lado a lado, em 3 cenas · gerador offline de prompts Veo"
 SLUG = "necrose-short"
 
-MAPA = (1, 4, 5)
-CENAS_UI = ["1 · O HOOK", "2 · RITUAL + PROVA", "3 · CTA"]
+# ⭐ MAPA e' de onde vem a IMAGEM; MAPA_COPY e' de onde vem a FALA. A cena 3
+# junta as duas coisas: a imagem da BANCADA (base 3, o gelatin trick sendo
+# preparado, com o rosto em quadro e a colher batendo no vidro) por baixo da
+# fala do CTA (base 5).
+#
+# ⚠️ Ordem do operador, 2026-07-31: "estamos deixando espaco valioso nesses 22
+# segundos apertados no lixo". A cena 3 era o close do CTA — um terco do video
+# num talking head contra fundo liso, zero informacao visual. Agora o
+# espectador OUVE o pedido e VE o gelatin trick nos mesmos 8 segundos.
+#
+# ⛔ Nao ha' cena nova aqui: a bancada e' o bloco 3 do motor base, ja' validado
+# em render. So' mudou qual fala roda por cima dele.
+MAPA = (1, 4, 3)
+MAPA_COPY = (1, None, 5)          # None = a fundida, que nao vem do base
+CENAS_UI = ["1 · O HOOK", "2 · RITUAL + PROVA", "3 · CTA SOBRE A BANCADA"]
 
 # As pontas herdam o teto do motor base: sao os MESMOS pools, entao inventar
 # outro numero aqui so' criaria duas verdades. So' a cena 2 tem teto proprio,
@@ -130,7 +143,7 @@ def _gravar_ledger(ledger, spec):
 
 
 def sortear(pagina, rng, ledger):
-    return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir)
+    return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir, MAPA_COPY)
 
 
 def montar(spec):
@@ -138,7 +151,7 @@ def montar(spec):
 
 
 def nova_fala(spec, i, rng):
-    return sc.nova_fala_curta(base, spec, i, rng, MAPA, _fundir)
+    return sc.nova_fala_curta(base, spec, i, rng, MAPA, _fundir, MAPA_COPY)
 
 
 def _recopiar_receita(spec, rng):
@@ -227,9 +240,9 @@ def lint(spec, blocos):
 def resumo_pt(spec):
     et = "branca" if "white" in ETNIA[spec["pagina"]] else "negra"
     return ("%s, o %s de %d anos sem camisa e muito musculoso mostra os dois "
-            "órgãos lado a lado. Na cena 2 ele ergue só o são contra o céu "
-            "enquanto conta %s (o gelatin trick), e na 3 vem o CTA. Três cenas, "
-            "elenco de pele %s."
+            "órgãos lado a lado. Na cena 2 ele ergue só o são contra o céu, e "
+            "na 3 faz o CTA enquanto prepara %s na bancada. Três cenas, elenco "
+            "de pele %s."
             % (PT_ARQ.get(spec["arquetipo"]["id"], "No cenário"),
                spec["arquetipo"]["familia"], spec["ref"]["idade"],
                PT_REC.get(spec["receita"]["id"], "o ritual"), et))

@@ -43,8 +43,23 @@ TITULO = "AGENTE VAZAMENTO SHORT"
 SUBTITULO = "o corpo-prova e a receita incompleta, em 3 cenas · prompts Veo"
 SLUG = "vazamento-short"
 
-MAPA = (1, 4, 5)
-CENAS_UI = ["1 · O VAZAMENTO", "2 · A RECEITA INCOMPLETA + A PROVA", "3 · CTA"]
+# ⭐ MAPA e' de onde vem a IMAGEM; MAPA_COPY e' de onde vem a FALA. A cena 3
+# junta as duas coisas: a fala do CTA (base 5) por cima da cena do ritual.
+#
+# ⚠️ Ordem do operador, 2026-07-31: "estamos deixando espaco valioso nesses 22
+# segundos apertados no lixo". A cena 3 era o close do CTA — um terco do video
+# num talking head, zero informacao visual. Agora o espectador OUVE o pedido e
+# VE o gelatin trick nos mesmos 8 segundos.
+#
+# No VAZAMENTO a cena que ja' tem rosto E maos trabalhando e' a 2 (a
+# receita-isca: ele despeja o bicarbonato e mexe, falando com a camera). Ela
+# fecha o arco em vez de brigar com ele — a fundida diz que bicarbonato sozinho
+# nao faz nada, e o CTA por cima da imagem dele mexendo o bicarbonato oferece
+# justamente a outra metade da receita.
+MAPA = (1, 4, 2)
+MAPA_COPY = (1, None, 5)          # None = a fundida
+CENAS_UI = ["1 · O VAZAMENTO", "2 · A RECEITA INCOMPLETA + A PROVA",
+            "3 · CTA PREPARANDO"]
 
 # As pontas herdam o teto do motor base — mesmos pools, mesma regua.
 TETO_FALA = {1: base.TETO_FALA[1], 2: 36, 3: base.TETO_FALA[5]}
@@ -115,7 +130,7 @@ def _gravar_ledger(ledger, spec):
 
 
 def sortear(pagina, rng, ledger):
-    return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir)
+    return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir, MAPA_COPY)
 
 
 def montar(spec):
@@ -123,7 +138,7 @@ def montar(spec):
 
 
 def nova_fala(spec, i, rng):
-    return sc.nova_fala_curta(base, spec, i, rng, MAPA, _fundir)
+    return sc.nova_fala_curta(base, spec, i, rng, MAPA, _fundir, MAPA_COPY)
 
 
 EIXOS_QUE_MEXEM_NA_COPY = {}
@@ -172,12 +187,14 @@ def _blocos_travados(spec, blocos, achados):
                                 "na cena do casal (falha de classificador "
                                 "documentada)"))
 
-    # V10 — a bandeira. So' o set interno sobrevive ao colapso.
+    # V10 — os DOIS sets sobrevivem agora que a cena 3 e' a bancada externa
     if "American flag" not in i1:
         achados.append(("AVISO", "V10: sem bandeira dos EUA no set interno"))
+    if "American flag" not in sc.bloco_base(blocos, MAPA, "IMAGE", 2):
+        achados.append(("AVISO", "V10: sem bandeira dos EUA no set externo"))
 
     # V8 — as cenas solo que sobraram
-    for cena in (1, 5):
+    for cena in (1, 2):
         nome = "IMAGE %02d/03" % (MAPA.index(cena) + 1)
         if "alone in the frame" not in blocos[nome]:
             achados.append(("AVISO", "V8: %s nao declara que ele esta sozinho" % nome))

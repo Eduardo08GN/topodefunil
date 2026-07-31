@@ -37,8 +37,21 @@ TITULO = "AGENTE PEE SHORT"
 SUBTITULO = "a mancha pública, em 3 cenas · gerador offline de prompts Veo"
 SLUG = "pee-short"
 
-MAPA = (1, 4, 5)
-CENAS_UI = ["1 · A MANCHA", "2 · O TRUQUE + A VIRADA", "3 · CTA"]
+# ⭐ MAPA e' de onde vem a IMAGEM; MAPA_COPY e' de onde vem a FALA. A cena 3
+# junta as duas coisas: a fala do CTA (base 5) por cima da cena do ritual.
+#
+# ⚠️ Ordem do operador, 2026-07-31: "estamos deixando espaco valioso nesses 22
+# segundos apertados no lixo". A cena 3 era o close do CTA — um terco do video
+# num talking head, zero informacao visual. Agora o espectador OUVE o pedido e
+# VE o gelatin trick nos mesmos 8 segundos.
+
+# ⚠️ E aqui a cena 3 nao vem pronta do base: a do ritual dele e' insert de
+# maos, e o operador pediu "rosto aparente enquanto prepara". A recombinacao
+# (set da cena 2 + acao da cena 3 + rosto) mora em short_comum.bancada_com_rosto
+# — nenhum fragmento novo, e o motor longo fica intacto.
+MAPA = (1, 4, 3)
+MAPA_COPY = (1, None, 5)          # None = a fundida
+CENAS_UI = ["1 · A MANCHA", "2 · O TRUQUE + A VIRADA", "3 · CTA PREPARANDO"]
 
 # As pontas herdam o teto do motor base — os pools sao os mesmos, e no PEE eles
 # estao bem calibrados (0% de estouro em 300 sorteios medidos). So' a cena 2
@@ -111,15 +124,20 @@ def _gravar_ledger(ledger, spec):
 
 
 def sortear(pagina, rng, ledger):
-    return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir)
+    return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir, MAPA_COPY)
 
 
 def montar(spec):
-    return sc.montar_curto(base, spec, MAPA)
+    b = sc.montar_curto(base, spec, MAPA)
+    # a cena 3 e' a unica que nao vem pronta do base — ver o comentario
+    # do MAPA e a docstring de short_comum.bancada_com_rosto
+    img, take = sc.bancada_com_rosto(base, spec, spec["falas"][2])
+    b["IMAGE 03/03"], b["TAKE 03/03"] = img, take
+    return b
 
 
 def nova_fala(spec, i, rng):
-    return sc.nova_fala_curta(base, spec, i, rng, MAPA, _fundir)
+    return sc.nova_fala_curta(base, spec, i, rng, MAPA, _fundir, MAPA_COPY)
 
 
 def _recopiar_local(spec, rng):
