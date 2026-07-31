@@ -172,7 +172,18 @@ agentes_py\
   FLAGRANTE\  AGENTE-FLAGRANTE.exe  · flagrante_lucas.py  + app + ui_agente.py
   PEE\        AGENTE-PEE.exe        · pee_lucas.py        + app + ui_agente.py
   VAZAMENTO\  AGENTE-VAZAMENTO.exe  · vazamento_lucas.py  + app + ui_agente.py
+  NECROSE\    AGENTE-NECROSE.exe    · necrose_lucas.py    + app + ui_agente.py
 ```
+
+⚠️ **A raiz é por máquina.** No PC do Ed é `C:\Users\edlut\Desktop\agentes_py`;
+no do Lucas, `C:\Users\lucas\Desktop\agentes_py`. O repo é a fonte comum; o
+`.exe` é local e **cada um recompila o seu**.
+
+⛔ **Correção de motor NÃO chega no `.exe` sozinha.** O commit atualiza o `.py`
+no repo e o `ATUALIZAR.bat` copia o `.py` para a pasta — mas **o `.exe`
+continua com o código velho até ser recompilado**. Quando a correção for de
+regra (e não de cosmética), avisar o outro operador para rodar o build, senão
+ele segue gerando com o bug enquanto o repo já está certo.
 
 | Arquivo | Papel |
 |---|---|

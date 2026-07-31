@@ -377,15 +377,15 @@ GATES = [
 ]
 
 CTAS = [
-    "Comment GELATIN and I'll send you the only one I trust tonight. {gate}",
-    "Comment GELATIN and I'll send you that exact one today. {gate}",
-    "Comment GELATIN and I'll send you the real source. The stuff on store shelves is watered-down powder. {gate}",
-    "Comment GELATIN and I'll send it over tonight, so you never have to apologize in the dark again. {gate}",
-    "Comment GELATIN and I'll send you the exact one he used. It shows up in a plain box. {gate}",
-    "Comment GELATIN and I'll send you the one he got. Nineteen days from tonight, brother. {gate}",
-    "Comment GELATIN and I'll send you what we pass around here, brother. Nobody outside this comment section finds out. {gate}",
-    "Comment GELATIN and I'll send you the same one a man sent me at sixty-four. I didn't ask twice. {gate}",
-    "Comment GELATIN and I'll send you the exact one. I typed it myself once, brother, and nobody in my house ever knew. {gate}",
+    "Comment gelatin, and I'll send you the only one I trust tonight. {gate}",
+    "Comment gelatin, and I'll send you that exact one today. {gate}",
+    "Comment gelatin, and I'll send you the real source. The stuff on store shelves is watered-down powder. {gate}",
+    "Comment gelatin, and I'll send it over tonight, so you never have to apologize in the dark again. {gate}",
+    "Comment gelatin, and I'll send you the exact one he used. It shows up in a plain box. {gate}",
+    "Comment gelatin, and I'll send you the one he got. Nineteen days from tonight, brother. {gate}",
+    "Comment gelatin, and I'll send you what we pass around here, brother. Nobody outside this comment section finds out. {gate}",
+    "Comment gelatin, and I'll send you the same one a man sent me at sixty-four. I didn't ask twice. {gate}",
+    "Comment gelatin, and I'll send you the exact one. I typed it myself once, brother, and nobody in my house ever knew. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -463,6 +463,21 @@ def lint(spec, blocos):
         achados.append(("ERRO", "expressao literal 'gelatin trick' ausente"))
     if "gelatin" not in falas[4].lower():
         achados.append(("ERRO", "CTA da cena 5 sem a keyword GELATIN"))
+    # NE12/C3a (falha em campo, Lucas/NECROSE 2026-07-31): a keyword em CAIXA
+    # ALTA e colada no `and` saiu narrada como "gelatine", e a legenda queimada
+    # repetiu o erro, brigando com o CTA fixado do topo que dizia GELATIN.
+    #   - a VIRGULA forca a micro-pausa que impede a liaison com a palavra seguinte
+    #   - a MINUSCULA evita o Erro Fatal 12 do V4 (em ALL CAPS o Veo soletra)
+    # Sao ERRO e nao AVISO: a keyword e' o gatilho da automacao Comentario->DM e
+    # o defeito nao aparece em metrica visual nenhuma — o video sobe bonito e a
+    # DM nunca dispara.
+    if "GELATIN" in falas[4]:
+        achados.append(("ERRO", "keyword em CAIXA ALTA no Dialogue: — em ALL "
+                                "CAPS o Veo soletra; usar 'gelatin' (C3a)"))
+    if "gelatin," not in falas[4] and "gelatin." not in falas[4]:
+        achados.append(("ERRO", "keyword sem pausa depois — sem a virgula o Veo "
+                                "emenda e narra 'gelatine'; usar "
+                                "'Comment gelatin, and ...' (C3a)"))
     for tok, motivo in BANIDOS_CTA.items():
         if re.search(r"\b%s\b" % tok, falas[4]):   # o linter confere a copy LIMPA
             achados.append(("ERRO", "CTA usa '%s' — %s" % (tok, motivo)))

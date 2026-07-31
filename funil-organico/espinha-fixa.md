@@ -115,6 +115,46 @@ gellatin, gelatim, gelantin, geltin, gelaton`). Ver
 ⛔ **`BOOK` e `YES` são proibidos** enquanto a automação estiver travada em gelatin. O
 randomizador v6 nem oferece a opção. Isso já custou um lote (Matt, 2026-07-27).
 
+### ⭐⭐ COMO A KEYWORD SE ESCREVE NO `Dialogue:` — minúscula e seguida de vírgula
+
+Falha paga em campo **duas vezes** (Lucas: FLAGRANTE 2026-07-29, NECROSE
+2026-07-31). **É o erro mais caro do vídeo inteiro** — mais que rosto duplicado,
+mais que prop murcho — porque não aparece em **métrica visual nenhuma**: o vídeo
+sobe bonito, o alcance é normal, e a DM simplesmente nunca dispara.
+
+> ✅ `Comment gelatin, and I'll send you the exact one I use.`
+> ⛔ `Comment GELATIN and I'll send you the exact one I use.`
+
+**Duas correções, e cada uma resolve uma máquina diferente:**
+
+| o que | por quê |
+|---|---|
+| **vírgula logo depois da keyword** | força a micro-pausa que impede a liaison com a palavra seguinte. Sem ela o Veo emenda `GELATIN`+`and` e narra **"gelatine"** |
+| **minúscula dentro do `Dialogue:`** | ALL CAPS é o **Erro Fatal 12 do V4** — *"o Veo soletra letra por letra"*. Já saiu narrado como **`GLATN`** |
+
+A **caixa alta fica só no CTA fixado do topo** (overlay do Veo Editor) e na
+linha `Copy falada:`, que é metadado pro operador — nenhum dos dois passa
+pelo TTS.
+
+**A prova, no mesmo render:** no vídeo do NECROSE a cena 3 tem `gelatin`
+minúsculo duas vezes e o TTS acertou as duas; a cena 5 tinha caixa alta sem
+vírgula e narrou "gelatine". A legenda automática — gerada do áudio — queimou
+`GELATINE` no rodapé enquanto o overlay do topo dizia `GELATIN`: **duas
+keywords conflitantes na mesma tela**, e o espectador digita a que ouve.
+
+⚠️ **A variância é real e não some com a correção.** Três renders do mesmo take
+já entregaram `gelatin` (limpo), `Gelatine` e `GLATN`. A vírgula + minúscula
+reduzem o fator; não o eliminam.
+
+⛔ **VERIFICAÇÃO OBRIGATÓRIA ANTES DE PUBLICAR:** transcrever (ou ouvir) o take
+do CTA e conferir a keyword **palavra por palavra** — e olhar o **frame da
+legenda queimada**, porque o erro pode estar em só uma das duas camadas.
+
+🟢 **Já travado em código** nos quatro motores portados (`flagrante_lucas.py`,
+`pee_lucas.py`, `vazamento_lucas.py`, `necrose_lucas.py`): as strings do CTA
+saem com vírgula, e o linter reprova como **ERRO** keyword em caixa alta ou sem
+pausa depois.
+
 **O follow-gate é obrigatório na cena 5.** Kofi&Simba usa em 11 de 11 reels — é o que
 converte comentário em seguidor. Variantes:
 

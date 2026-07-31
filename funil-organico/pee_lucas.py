@@ -326,16 +326,16 @@ GATES = [
 ]
 
 CTAS = [
-    "Comment GELATIN and I'll send you the only one I trust tonight. {gate}",
-    "Comment GELATIN and I'll send you that exact one today. {gate}",
-    "Comment GELATIN and I'll send you where to get the right one. {gate}",
-    "Comment GELATIN now and thank me Friday night. I'll send it over today. {gate}",
-    "Comment GELATIN tonight. Somebody always reports this and the video goes down by morning. {gate}",
-    "One word. Comment GELATIN and it's in your inbox tonight. {gate}",
-    "Comment GELATIN and I'll send you the source. I can't name it here. {gate}",
-    "Comment GELATIN and I'll send the same one he used. {gate}",
-    "Comment GELATIN. The store stuff did nothing for you. I'll send the real one. {gate}",
-    "Comment GELATIN and I'll send you the one we use at home. {gate}",
+    "Comment gelatin, and I'll send you the only one I trust tonight. {gate}",
+    "Comment gelatin, and I'll send you that exact one today. {gate}",
+    "Comment gelatin, and I'll send you where to get the right one. {gate}",
+    "Comment gelatin, and thank me Friday night. I'll send it over today. {gate}",
+    "Comment gelatin, tonight. Somebody always reports this and the video goes down by morning. {gate}",
+    "One word. Comment gelatin, and it's in your inbox tonight. {gate}",
+    "Comment gelatin, and I'll send you the source. I can't name it here. {gate}",
+    "Comment gelatin, and I'll send the same one he used. {gate}",
+    "Comment gelatin. The store stuff did nothing for you. I'll send the real one. {gate}",
+    "Comment gelatin, and I'll send you the one we use at home. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -431,6 +431,21 @@ def lint(spec, blocos):
         achados.append(("ERRO", "expressao literal 'gelatin trick' ausente"))
     if "gelatin" not in falas[4].lower():
         achados.append(("ERRO", "CTA da cena 5 sem a keyword GELATIN"))
+    # NE12/C3a (falha em campo, Lucas/NECROSE 2026-07-31): a keyword em CAIXA
+    # ALTA e colada no `and` saiu narrada como "gelatine", e a legenda queimada
+    # repetiu o erro, brigando com o CTA fixado do topo que dizia GELATIN.
+    #   - a VIRGULA forca a micro-pausa que impede a liaison com a palavra seguinte
+    #   - a MINUSCULA evita o Erro Fatal 12 do V4 (em ALL CAPS o Veo soletra)
+    # Sao ERRO e nao AVISO: a keyword e' o gatilho da automacao Comentario->DM e
+    # o defeito nao aparece em metrica visual nenhuma — o video sobe bonito e a
+    # DM nunca dispara.
+    if "GELATIN" in falas[4]:
+        achados.append(("ERRO", "keyword em CAIXA ALTA no Dialogue: — em ALL "
+                                "CAPS o Veo soletra; usar 'gelatin' (C3a)"))
+    if "gelatin," not in falas[4] and "gelatin." not in falas[4]:
+        achados.append(("ERRO", "keyword sem pausa depois — sem a virgula o Veo "
+                                "emenda e narra 'gelatine'; usar "
+                                "'Comment gelatin, and ...' (C3a)"))
     for tok, motivo in BANIDOS_CTA.items():
         if re.search(r"\b%s\b" % tok, falas[4]):   # o linter confere a copy LIMPA
             achados.append(("ERRO", "CTA usa '%s' — %s" % (tok, motivo)))

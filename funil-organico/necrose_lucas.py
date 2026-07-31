@@ -454,10 +454,18 @@ GATES = [
     "Hit follow right now, or Facebook can't deliver it.",
 ]
 
+# NE12 (falha em campo, Lucas/nativo-canyon 2026-07-31): a keyword saia em CAIXA
+# ALTA e colada no `and`. O Veo narrou "gelatine" e a legenda automatica queimou
+# GELATINE no rodape, brigando com o CTA fixado do topo que dizia GELATIN.
+#   - a VIRGULA forca a micro-pausa que impede a liaison com a palavra seguinte
+#   - a MINUSCULA evita o Erro Fatal 12 do V4 (em ALL CAPS o Veo soletra)
+# Prova no mesmo render: cena 3 tem 'gelatin' minusculo 2x e o TTS acertou as
+# duas; a cena 5 em caixa alta sem virgula errou.
+# Caixa alta fica SO' no CTA fixado do topo — e' imagem, nao passa pelo TTS.
 CTAS = [
-    "{pacing} Comment GELATIN and I'll send you the only one I trust. {gate}",
-    "{pacing} Comment GELATIN and I'll send you the exact one I use. {gate}",
-    "{pacing} Comment GELATIN and I'll send you where I get mine. {gate}",
+    "{pacing} Comment gelatin, and I'll send you the only one I trust. {gate}",
+    "{pacing} Comment gelatin, and I'll send you the exact one I use. {gate}",
+    "{pacing} Comment gelatin, and I'll send you where I get mine. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -570,6 +578,16 @@ def lint(spec, blocos):
         achados.append(("ERRO", "expressao literal 'gelatin trick' ausente"))
     if "gelatin" not in falas[4].lower():
         achados.append(("ERRO", "CTA da cena 5 sem a keyword GELATIN"))
+    # NE12 — a keyword e' o gatilho da automacao Comentario->DM e o defeito nao
+    # aparece em metrica visual nenhuma: o video sobe bonito e a DM nunca
+    # dispara. Por isso os dois checks sao ERRO, nao AVISO.
+    if "GELATIN" in falas[4]:
+        achados.append(("ERRO", "keyword em CAIXA ALTA no Dialogue: — em ALL "
+                                "CAPS o Veo soletra; usar 'gelatin' (NE12)"))
+    if "gelatin," not in falas[4] and "gelatin." not in falas[4]:
+        achados.append(("ERRO", "keyword sem virgula depois — sem a micro-pausa "
+                                "o Veo emenda e narra 'gelatine'; usar "
+                                "'Comment gelatin, and ...' (NE12)"))
     for tok, motivo in BANIDOS_CTA.items():
         if re.search(r"\b%s\b" % tok, falas[4]):
             achados.append(("ERRO", "CTA usa '%s' — %s" % (tok, motivo)))

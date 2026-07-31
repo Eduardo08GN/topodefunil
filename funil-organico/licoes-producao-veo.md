@@ -171,6 +171,37 @@ testa uma grafia sem editar o módulo.
 
 ---
 
+## ⭐⭐ A KEYWORD É O ÚNICO DEFEITO QUE NÃO APARECE EM MÉTRICA NENHUMA (2026-07-31)
+
+Todo outro defeito de produção grita: prompt recusado, rosto duplicado, prop
+flutuando, cena morta. **A keyword mal narrada não grita.** O vídeo sobe bonito,
+o alcance é normal, os comentários chegam — e a automação Comentário→DM não
+dispara, porque o espectador digitou a palavra **que ele ouviu**.
+
+**Duas falhas já pagas, a mesma raiz:** `Comment GELATIN and I'll…` em caixa
+alta e colado no `and`.
+
+| render | o que o Veo narrou |
+|---|---|
+| FLAGRANTE, 2026-07-29 | **`GLATN`** (a caixa alta: o Veo soletra) |
+| NECROSE, 2026-07-31 | **`gelatine`** (a liaison com o `and`) |
+| terceiro render do mesmo take | `gelatin`, limpo |
+
+O terceiro caso é o que importa: **é variância**, igual à da política de
+conteúdo nocivo. Não adianta regerar até sair certo uma vez — a correção é de
+escrita, e está em [`espinha-fixa`](espinha-fixa.md) §Como a keyword se escreve:
+**minúscula e seguida de vírgula** dentro do `Dialogue:`.
+
+No NECROSE a legenda automática ainda queimou `GELATINE` no rodapé enquanto o
+overlay do topo dizia `GELATIN` — **duas keywords conflitantes na mesma tela**.
+Por isso a verificação obrigatória é dupla: **áudio e legenda queimada**.
+
+📌 Isto é a mesma folga do §token/fonema, mas na direção contrária: lá se
+escreve diferente **para soar igual**; aqui se escreve igual **para não soar
+diferente**.
+
+---
+
 ## ⭐⭐ O CLASSIFICADOR JULGA A COMPOSIÇÃO, NÃO O ASSUNTO (2026-07-30)
 
 A lição mais cara da operação. **Quatro IMG 01 recusadas em sequência** com

@@ -1,0 +1,20 @@
+{
+  "ray": {
+    "arquetipo": [
+      "cowboy_mesa",
+      "nativo_canyon"
+    ],
+    "familia": [
+      "cowboy",
+      "nativo norte-americano"
+    ],
+    "receita": [
+      "gelatina_limao",
+      "gelatina_agua"
+    ],
+    "mesa": [
+      "tampa_caminhonete",
+      "barril"
+    ]
+  }
+}
