@@ -61,11 +61,30 @@ nada. Isso vale inclusive para "melhorias" que parecem óbvias no caminho.
 Z.* **Teste que só é informativo quando passa é teste ruim** — a falha também
 tem que apontar para o próximo passo.
 
-**3. Todo prompt-teste carrega uma linha `Dialogue:`.** Sem ela o Veo
-**improvisa a fala**, e o vídeo sai fora do escopo do agente. O teste continua
-diagnóstico, mas o output é inutilizável — e num teste de produção isso é
-desperdício de geração. *(Regra descoberta na rodada C do caso NECROSE, quando
-a copy driftou.)*
+**3. Todo prompt-teste carrega uma linha `Dialogue:` — e ela SAI DO AGENTE.**
+Sem a linha, o Veo **improvisa a fala** e o vídeo sai fora do escopo. Com uma
+linha inventada, sai igualmente fora do escopo — só que por culpa de quem
+escreveu o teste. *(Regra descoberta na rodada C do caso NECROSE, quando a copy
+driftou.)*
+
+> ⛔ **Ao formular hipótese, não se faz drift do alinhamento de propósito da
+> copy estrutural da operação.** Ordem do operador, 2026-07-31, depois de eu
+> propor uma "fala neutra" inventada (*"It has been a long week out here…"*)
+> para isolar variável. Foi a **segunda vez no mesmo dia**.
+
+Por que a fala neutra é uma armadilha seedutora e errada:
+
+| | |
+|---|---|
+| **Se o teste passa** | você tem um vídeo com copy que não vende nada — geração paga, output no lixo |
+| **Se o teste cai** | você aprendeu sobre uma frase que nunca vai ao ar |
+| **Nos dois casos** | mediu-se o classificador contra um texto que não existe na operação |
+
+**O que fazer no lugar:** para isolar a fala, troque por **outra fala do próprio
+agente** — de preferência uma que já passou em render. Ela é copy em escopo
+*e* é um controle melhor, porque o resultado dela já é conhecido. No caso
+NECROSE, a fala da cena 2 servia: estava aprovada minutos antes e ainda por
+cima falava do ingrediente que estava na mesa da cena testada.
 
 **4. Bissecção roda 1×. Produção roda 3×, com SORTEIOS DIFERENTES.**
 Repetir o mesmo prompt três vezes só mede variância. Rodar três sorteios

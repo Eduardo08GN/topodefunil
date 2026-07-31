@@ -142,8 +142,20 @@ def _gravar_ledger(ledger, spec):
         json.dump(ledger, f, indent=2, ensure_ascii=False)
 
 
+# ⚠️ No SHORT a receita e' TRAVADA em gelatina + agua (ordem do operador,
+# 2026-07-31). O eixo continua existindo no motor longo, com as quatro
+# variantes; aqui ele nao sorteia, porque a cena 3 nao pode mostrar embalagem
+# de bicarbonato e a fala fundida cita o ingrediente — se um mudasse sem o
+# outro, copy e cena sairiam incongruentes.
+RECEITA_FIXA = "gelatina_agua"
+
+
 def sortear(pagina, rng, ledger):
-    return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir, MAPA_COPY)
+    spec = sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir, MAPA_COPY)
+    spec["receita"] = next(r for r in base.RECEITAS_PROP
+                           if r["id"] == RECEITA_FIXA)
+    spec["falas"][1] = _fundir(spec, rng)      # a fala cita o ingrediente
+    return spec
 
 
 def montar(spec):

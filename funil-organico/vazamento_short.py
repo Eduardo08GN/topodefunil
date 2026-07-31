@@ -133,8 +133,43 @@ def sortear(pagina, rng, ledger):
     return sc.sortear_curto(base, pagina, rng, ledger, MAPA, _fundir, MAPA_COPY)
 
 
+def _cena3(spec):
+    """A bancada do VAZAMENTO sem o bicarbonato em quadro.
+
+    ⚠️ A cena 2 do motor longo — que o MAPA usaria — e' literalmente ele
+    despejando uma caixa de bicarbonato. Ordem do operador: no take 3 do SHORT
+    o preparo e' so' gelatina e agua. Set, pessoa, luz e cauda continuam vindo
+    do motor base; so' o que esta' em cima da mesa mudou, e mudou para a string
+    travada de short_comum.
+    """
+    et = ETNIA[spec["pagina"]]
+    ref, qui = spec["ref"], spec["quintal"]
+    img = (
+        "IMAGE 03/03: Medium shot in %s. Standing behind a weathered wooden "
+        "table is the same %d-year-old %s man, %s, now wearing %s, thick "
+        "forearms bare. On the table: %s. He is mid-action, both hands at the "
+        "glass, speaking and looking directly at the camera. He is alone in "
+        "the frame. %s The scene is lit by %s %s"
+        % (qui["set"], ref["idade"], et, ref["marca"], ref["roupa2"],
+           sc.MESA_GELATINA, base.ANTICELEB, qui["luz"], base.CAUDA)
+    )
+    take = (
+        "TAKE 03/03: Animate the provided image exactly. Handheld iPhone shot, "
+        "very slight natural sway, no cuts. The %d-year-old man speaks to the "
+        "camera while his hands work: %s. His eyes stay on the lens the whole "
+        "time. He is the only person in the shot.\n"
+        "Dialogue: \"%s\"\n"
+        "Audio: outdoor ambient — distant birds, faint breeze, a spoon against "
+        "glass. No music."
+        % (ref["idade"], sc.ACAO_GELATINA, base.sonorizar(spec["falas"][2]))
+    )
+    return img, take
+
+
 def montar(spec):
-    return sc.montar_curto(base, spec, MAPA)
+    b = sc.montar_curto(base, spec, MAPA)
+    b["IMAGE 03/03"], b["TAKE 03/03"] = _cena3(spec)
+    return b
 
 
 def nova_fala(spec, i, rng):
