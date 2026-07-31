@@ -582,8 +582,16 @@ def montar(spec):
 
     b["IMAGE 04/05"] = (
         "IMAGE 04/05: Medium shot, same backyard, same fence and flag. Two fully "
-        "clothed adults, a %d-year-old woman and a %d-year-old man. The %d-year-old "
-        "%s man, %s, wearing the same %s, stands tall, chin lifted, grinning broadly. In his right "
+        # ⛔ "The SAME %d-year-old man, SAME %s" — a ancora de continuidade tem
+        # de cair sobre o HOMEM, nao sobre a camisa. Enquanto dizia so' "The
+        # 69-year-old man ... wearing the same shirt", o Veo lia "a mesma
+        # camisa" e se sentia livre para desenhar outra pessoa dentro dela:
+        # saiu um senhor de oculos e bigode, sem musculatura, no lugar do
+        # corpo-prova. E como o TAKE diz "Only he speaks", quem falava a fala
+        # do REF era esse estranho. Falha relatada em producao, 2026-07-31.
+        "clothed adults, a %d-year-old woman and a %d-year-old man. The same "
+        "%d-year-old %s man, same %s, wearing the same %s, stands tall, chin "
+        "lifted, grinning broadly. In his right "
         "hand, held upright at shoulder height, he grips %s. A %d-year-old %s woman, "
         "strikingly beautiful, %s, visibly toned arms. She has both arms wrapped around "
         "his shoulders from the side, leaning her head against him, laughing openly. "

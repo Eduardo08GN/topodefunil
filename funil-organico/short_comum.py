@@ -235,6 +235,24 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
                 if tok in baixo:
                     achados.append(("ERRO", "%s contem '%s' — %s" % (nome, tok, motivo)))
 
+    # ⛔ ANCORA DE CONTINUIDADE. Toda cena depois da primeira que mostra o
+    # homem tem de dize-lo com "the same N-year-old ... man". Sem isso o Veo
+    # desenha OUTRA pessoa: no VAZAMENTO a ancora estava na camisa ("wearing
+    # the same shirt") e o render devolveu um senhor de oculos e bigode no
+    # lugar do corpo-prova — e como o TAKE diz "Only he speaks", o estranho
+    # falava a fala do REF. Relatado em producao, 2026-07-31.
+    # O insert de maos nao entra: ele nao mostra pessoa nenhuma.
+    for nome in sorted(k for k in blocos if k.startswith("IMAGE")):
+        if nome.endswith("01/03"):
+            continue
+        txt = blocos[nome]
+        if re.search(r"\d+-year-old[^.]{0,40}\bman\b", txt) and \
+                not re.search(r"the same \d+-year-old", txt, re.I):
+            achados.append(("ERRO", "%s mostra o homem sem a ancora 'the same "
+                                    "N-year-old ... man' — o Veo troca de "
+                                    "pessoa e o estranho fala a fala do REF"
+                            % nome))
+
     for f in extras:
         f(spec, blocos, achados)
 
