@@ -69,7 +69,7 @@ juntos. Ver **NE5**.
 | Cena | Beat | O que a copy FAZ | O que a tela mostra |
 |---|---|---|---|
 | **1** | A COMPARAÇÃO | *from this to this in one month* — nomeia o órgão e promete a virada, com o gesto sincronizado (NE7) | os 5 elementos acima |
-| **2** | A CAUSA | por que o órgão apodreceu — MUP de Georgi (não é idade, é o fluxo estrangulado) | mesma montanha; ele ergue **só o modelo podre** e aponta |
+| **2** | A CAUSA | por que o órgão apodreceu — MUP de Georgi (não é idade, é o fluxo estrangulado) | mesmo cenário; ele ergue **o D1** (placa em corte sagital) e bate o dedo nele — ver **NE10** |
 | **3** | O GELATIN TRICK | o mecanismo nomeado e preparado na tela (NE6) | bancada ao ar livre, sachê + copo + colher |
 | **4** | A PROVA | o resultado + fecho que derruba barreira | **PICO2** — ele ergue **só o modelo são**, alto, contra o céu |
 | **5** | CTA | GELATIN + follow-gate + future pacing | close nele, dedo na câmera, limpo |
@@ -230,6 +230,41 @@ causa**; a imagem mostra o estado.
 
 **Orçamento de fala é TETO:** hook 14-18, vídeo ~90-105 no total.
 
+- **NE10 — ⭐ A CENA 2 É O D1, ERGUIDO POR ELE** (ordem do operador,
+  2026-07-30, depois da recusa da IMG 02). O **D1** é a peça que **explica** —
+  e a cena 2 é a explicação. Antes ela erguia o **modelo podre em close**, e
+  esse foi o **único bloco recusado** do primeiro lote.
+
+  **Por que a troca não é uma reformulação com risco:** o D1 tem **dois renders
+  validados** atrás dele (FLAGRANTE/confraternização e Marcus/casamento). É
+  substituir um bloco de zero render por um bloco de dois.
+
+  ⚠️ **Consequência de arco:** o modelo podre passa a existir **só na cena 1**,
+  em cima do pedestal. Ele **nunca vai para a mão**. Quem vai para a mão é o
+  D1 (cena 2) e o modelo são (cena 4).
+
+  ⛔ **String travada, cópia literal de
+  [`prop-metaforas`](funil-organico/prop-metaforas.md) §D1 — nunca reescrever
+  nem comprimir.** Comprimir esta string já entregou **esqueleto 3D** no lugar
+  da placa em corte:
+  ```
+  In his left hand he holds up toward the camera a hand-sized medical teaching
+  model of the male pelvis in median sagittal section — a flat-backed slab of
+  molded plastic, painted in pink, salmon and pale blue, the interior
+  structures exposed in lengthwise profile the way a urology office display
+  shows them, the whole model turned so its cut face is squared to the lens.
+  His right index finger points at the model.
+  ```
+  **E no TAKE, a orientação travada** (o modelo girar mata a leitura):
+  ```
+  He holds the plastic anatomy model steady in his left hand and taps its cut
+  face twice with his right index finger as he explains. The model stays
+  squared to the camera and does not turn or tilt.
+  ```
+  ⚠️ **Isto reabre o escopo do P15 de novo**, e desta vez do outro lado: o D1
+  era "só bancada/interno", e aqui ele aparece no topo de uma montanha, num
+  curral, num pântano. Selo 🟡 até render.
+
 ---
 
 ## SELO DE RISCO
@@ -239,7 +274,14 @@ mais explícito que já mandamos — mais que o D1, porque são dois e porque um
 deles é descrito como tecido apodrecido. A favor: **é modelo de plástico
 declarado**, em pedestal de escritório, e a fonte roda isso com 307 comentários.
 
-Se recusar, a fila de reformulação (§Recusa do gerador), na ordem:
+📌 **Recusa já vivida (2026-07-30):** a IMG 02 foi o único bloco recusado do
+primeiro lote. Diagnóstico por comparação: **segurar não é o problema** (a
+IMG 04 segura o modelo são e passa) e **o modelo podre não é o problema** (a
+IMG 01 mostra e passa). O que só existia na 02 era a **soma** — anatomia
+genital descrita como necrosada, **na mão**, em **close**, apresentada à
+lente e com o dedo apontando. Resolvido pelo **NE10**: a cena 2 virou o D1.
+
+Se recusar de novo, a fila de reformulação (§Recusa do gerador), na ordem:
 1. Trocar `diseased` por `the old one` / `the new one` — rótulo de tempo em vez
    de rótulo de doença
 2. Nomear o gênero da imagem: `the way a urology office displays a before-and-

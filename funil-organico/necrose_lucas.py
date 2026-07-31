@@ -101,18 +101,39 @@ MODELO_SAO = (
 )
 
 # versoes curtas, para as cenas em que ele ergue UM modelo so'
-PODRE_NA_MAO = (
-    "the old model — the one whose bladder is dark walnut-brown, shrivelled and "
-    "knotted, and whose long thick shaft below, more than half the height of "
-    "the whole model, hangs shrunken, crooked and pinched, ending in a small "
-    "darkened cap, with a dark puckered gland at its base"
-)
+# (PODRE_NA_MAO removido: com a cena 2 virando D1, o modelo podre so
+#  existe na cena 1, em cima do pedestal — nunca na mao. NE10.)
 SAO_NA_MAO = (
     "the new model — the one whose bladder is pale salmon pink, full and "
     "smooth, and whose long thick shaft below, more than half the height of "
     "the whole model, is straight and full along its entire length with the "
     "cut-away channel wide and open inside it, ending in a full rounded pink "
     "cap, with a smooth full gland at its base"
+)
+
+# NE10 - A CENA 2 E O D1: A PLACA EM CORTE SAGITAL, ERGUIDA POR ELE
+# (ordem do operador, 2026-07-30, depois da recusa da IMG 02).
+# O D1 e a peca que EXPLICA — e a cena 2 e a explicacao. Antes ela erguia o
+# modelo podre em close, que foi o unico bloco recusado do lote. O D1 tem DOIS
+# renders validados atras dele, entao a troca nao e uma reformulacao com risco:
+# e a substituicao de um bloco 0-render por um bloco 2-renders.
+# Consequencia de arco: o modelo podre passa a existir SO na cena 1, no
+# pedestal. Ele nunca mais vai para a mao.
+# ⛔ Copia literal de prop-metaforas.md §D1. NAO REESCREVER, NAO COMPRIMIR:
+# comprimir esta string ja entregou esqueleto 3D no lugar da placa.
+D1_IMAGE = (
+    "In his left hand he holds up toward the camera a hand-sized medical "
+    "teaching model of the male pelvis in median sagittal section — a "
+    "flat-backed slab of molded plastic, painted in pink, salmon and pale "
+    "blue, the interior structures exposed in lengthwise profile the way a "
+    "urology office display shows them, the whole model turned so its cut "
+    "face is squared to the lens. His right index finger points at the model."
+)
+
+D1_TAKE = (
+    "He holds the plastic anatomy model steady in his left hand and taps its "
+    "cut face twice with his right index finger as he explains. The model "
+    "stays squared to the camera and does not turn or tilt."
 )
 
 # NE8 — no TAKE nenhum dos dois muda de estado. A comparacao e' entre DOIS
@@ -536,9 +557,14 @@ def lint(spec, blocos):
     # NE8 — no TAKE nada muda de estado
     if IMOBILIDADE_PAR not in blocos["TAKE 01/05"]:
         achados.append(("ERRO", "TAKE 01 sem a imobilidade do PAR (NE8)"))
-    for nome in ("TAKE 02/05", "TAKE 04/05"):
-        if IMOBILIDADE_UM not in blocos[nome]:
-            achados.append(("ERRO", "%s sem a imobilidade do modelo unico (NE8)" % nome))
+    if IMOBILIDADE_UM not in blocos["TAKE 04/05"]:
+        achados.append(("ERRO", "TAKE 04 sem a imobilidade do modelo unico (NE8)"))
+
+    # NE10 — a cena 2 e o D1, e a string travada dele nao se comprime
+    if D1_IMAGE not in blocos["IMAGE 02/05"]:
+        achados.append(("ERRO", "NE10: IMAGE 02 sem a string travada do D1"))
+    if D1_TAKE not in blocos["TAKE 02/05"]:
+        achados.append(("ERRO", "NE10: TAKE 02 sem a string travada do D1"))
 
     # NE4 — o animal de status nas cenas 1 e 4. A ESPECIE varia com o
     # arquetipo (lobo, cavalo, touro, urso, jacare...), entao o que se confere
@@ -652,24 +678,10 @@ def montar(spec):
     )
 
     b["IMAGE 02/05"] = (
-        # Reformulacao A apos recusa da IMG 02 (2026-07-30). Protocolo
-        # §Recusa do gerador, alavancas 1-3, cena intacta:
-        #  - a ACAO vem antes da descricao longa: o aposto pendurado prendia
-        #    "lifted" em "base" em vez de "he holds", e prompt mal parseado
-        #    piora qualquer julgamento
-        #  - sai "turned toward the camera" — apresentar o objeto a lente e' a
-        #    geometria que o IMG 04 (aprovado) nao tem
-        #  - entra o GENERO DA IMAGEM ("the way a doctor holds up a teaching
-        #    model to show a patient"): diz ao classificador que registro e'
-        #  - "Medium shot" no lugar de "Medium close-up": era o unico close do
-        #    lote, e close aumenta a proeminencia do objeto no quadro
-        "IMAGE 02/05: Medium shot at %s, same background. %s He holds one of "
-        "the two teaching models up in his right hand at chest height, the way "
-        "a doctor holds up a teaching model to show a patient, and points at it "
-        "with his left index finger. It is %s. His expression is hard and "
-        "serious, brow furrowed, mouth open mid-word. The second model is out "
-        "of frame. He is the only person in the frame. %s %s %s"
-        % (arq["curto"], mesmo, PODRE_NA_MAO, ANTICELEB, arq["luz"], CAUDA)
+        "IMAGE 02/05: Medium shot at %s, same background. %s %s His expression "
+        "is hard and serious, brow furrowed, mouth open mid-word. He is the "
+        "only person in the frame. %s %s %s"
+        % (arq["curto"], mesmo, D1_IMAGE, ANTICELEB, arq["luz"], CAUDA)
     )
 
     b["IMAGE 03/05"] = (
@@ -715,13 +727,10 @@ def montar(spec):
 
     b["TAKE 02/05"] = (
         "TAKE 02/05: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. The %d-year-old man holds the model "
-        "steady at shoulder height and taps it twice with his left index finger "
-        "as he speaks. %s He speaks with conviction and slows down on the last "
-        "sentence. He is the only person in the shot.\nDialogue: \"%s\"\n"
-        "Audio: %s. No music."
-        % (ref["idade"], IMOBILIDADE_UM, sonorizar(falas[1]), arq["audio"])
-    )
+        "very slight natural sway, no cuts. %s He speaks with conviction and "
+        "slows down on the last sentence. He is the only person in the shot."
+        + chr(10) + "Dialogue: \"%s\"" + chr(10) + "Audio: %s. No music."
+    ) % (D1_TAKE, sonorizar(falas[1]), arq["audio"])
 
     b["TAKE 03/05"] = (
         "TAKE 03/05: Animate the provided image exactly. Handheld iPhone shot, "
