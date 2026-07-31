@@ -1,4 +1,4 @@
-"""Esteira de producao do Veo Editor: vigia a pasta Downloads (e 01_entrada),
+"""Esteira de producao do Veo Editor 2.0 (pipeline SHORT): vigia a pasta Downloads (e 01_entrada),
 captura o .zip que as ferramentas do Flow baixam, edita sozinha e organiza o
 resultado em pastas de fila/prontos/arquivo/erros. Desenhada para dezenas de
 videos por dia sem intervencao manual.
@@ -27,7 +27,10 @@ from datetime import datetime, date, timedelta
 
 from pipeline import processar_video, coletar_takes, duracao, VIDEO_EXT, _natural
 
-BASE = os.environ.get("VEO_EDITOR_BASE") or os.path.dirname(os.path.abspath(__file__))
+# ⚠️ Variavel PROPRIA: se a v2.0 lesse VEO_EDITOR_BASE, as duas esteiras
+# dividiriam fila, historico e prontos — e a que chegasse primeiro levaria o
+# zip da outra, com a taxa errada e sem erro nenhum na tela.
+BASE = os.environ.get("VEO_EDITOR2_BASE") or os.path.dirname(os.path.abspath(__file__))
 D_ENTRADA = os.path.join(BASE, "01_entrada")
 D_PROC = os.path.join(BASE, "02_processando")
 D_PRONTOS = os.path.join(BASE, "03_prontos")
@@ -38,14 +41,34 @@ CONFIG = os.path.join(BASE, "config.json")
 
 # so zips das nossas ferramentas sao capturados na pasta vigiada; na 01_entrada
 # qualquer zip vale (caminho manual)
-# ⚠️ O "(?!...vertical.3)" e a fronteira com o Veo Editor 2.0: as duas
-# esteiras vigiam a MESMA pasta Downloads, e sem isso quem fizesse poll
-# primeiro levava o zip da outra — o de 24s sairia com a taxa de ruido
-# do v1.2 em vez da aceleracao da v2.0, sem erro nenhum na tela.
-PADRAO_DOWNLOADS = re.compile(
-    r"^adbatch(?![_ -]?vertical[_ -]?3).*\.zip$", re.I)
+# ⚠️ SO' os zips da AdBatch Vertical 3. O v1.2 vigia "^adbatch.*" e pegaria
+# estes tambem: as duas esteiras fazem poll na MESMA pasta Downloads, e quem
+# chegasse primeiro levava. O v1.2 recebeu a exclusao complementar.
+PADRAO_DOWNLOADS = re.compile(r"^adbatch[_ -]?vertical[_ -]?3.*\.zip$", re.I)
 DIAS_ARQUIVO = 14
-VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
+# ---------------------------------------------------------------------------
+# A DIFERENCA DA v2.0 — a taxa de aceleracao
+# ---------------------------------------------------------------------------
+# No v1.2 o fator gira em torno de 1.0: nao e' aceleracao, e' ruido
+# anti-duplicata (0.95 a 1.03, media ~0.99). Aqui o centro se desloca.
+#
+# A conta: a AdBatch Vertical 3 entrega 3 takes de 8s = 24s. Para sair com 2
+# segundos a menos, 24 / 22 = 1.0909x. Em cima disso, +-5% de variacao
+# randomica por video — o despiste de duplicata continua sendo o motivo dela
+# existir, so' mudou de centro.
+#
+#   1.0909 * 0.95 = 1.0364  ->  24s sai com 23.2s
+#   1.0909 * 1.05 = 1.1455  ->  24s sai com 21.0s
+#   media                       24s sai com 22.0s
+#
+# ⚠️ A taxa e' FIXA, nao calculada da duracao. Um zip de 5 takes (40s) sairia
+# com 36.7s, nao 38s — esta esteira e' do pipeline SHORT. O aviso no log
+# avisa quando o numero de takes nao e' 3.
+CENTRO_VEL = 24.0 / 22.0          # 1.0909... — 24s vira 22s
+VARIACAO = 0.05                   # +-5%, sorteado por video
+VEL_MIN = round(CENTRO_VEL * (1 - VARIACAO), 4)
+VEL_MAX = round(CENTRO_VEL * (1 + VARIACAO), 4)
+TAKES_ESPERADOS = 3
 
 # watch_dir vazio = usa o Downloads do Windows; keywords = palavras-gatilho do
 # CTA destacadas na legenda (cor propria + fonte maior)
@@ -326,6 +349,11 @@ def _processar_zip(nome):
             raise RuntimeError("o zip nao tinha nenhum video dentro")
         _log_atual(f"{len(takes)} take(s) em ordem: "
                    + ", ".join(os.path.basename(t) for t in takes))
+        if len(takes) != TAKES_ESPERADOS:
+            _log_atual(f"  AVISO: esta esteira e' do pipeline SHORT "
+                       f"({TAKES_ESPERADOS} takes de 8s = 24s). Vieram "
+                       f"{len(takes)}, e a taxa fixa de {CENTRO_VEL:.4f}x vai "
+                       f"cortar uma proporcao, nao 2 segundos.")
 
         fator = round(random.uniform(VEL_MIN, VEL_MAX), 4)
         data_str = date.today().isoformat()
