@@ -619,9 +619,11 @@ def montar(spec):
     quem = ("a %d-year-old %s man, bare-chested, %s, %s, wearing %s, %s"
             % (ref["idade"], et, ref["corpo"], ref["cabeca"], arq["chapeu"],
                ref["marca"]))
+    # marca sem o artigo: depois de "same" ele sobra ("same a deep cleft...")
+    marca_s = re.sub(r"^an? ", "", ref["marca"])
     mesmo = ("The same %d-year-old %s man, same hat, same beard, same %s, "
              "bare-chested and heavily muscled."
-             % (ref["idade"], et, ref["marca"]))
+             % (ref["idade"], et, marca_s))
 
     b = {}
 
@@ -650,9 +652,21 @@ def montar(spec):
     )
 
     b["IMAGE 02/05"] = (
-        "IMAGE 02/05: Medium close-up at %s, same background. %s He holds up in "
-        "his right hand %s, lifted to shoulder height and turned toward the "
-        "camera. His left index finger points at it. His expression is hard and "
+        # Reformulacao A apos recusa da IMG 02 (2026-07-30). Protocolo
+        # §Recusa do gerador, alavancas 1-3, cena intacta:
+        #  - a ACAO vem antes da descricao longa: o aposto pendurado prendia
+        #    "lifted" em "base" em vez de "he holds", e prompt mal parseado
+        #    piora qualquer julgamento
+        #  - sai "turned toward the camera" — apresentar o objeto a lente e' a
+        #    geometria que o IMG 04 (aprovado) nao tem
+        #  - entra o GENERO DA IMAGEM ("the way a doctor holds up a teaching
+        #    model to show a patient"): diz ao classificador que registro e'
+        #  - "Medium shot" no lugar de "Medium close-up": era o unico close do
+        #    lote, e close aumenta a proeminencia do objeto no quadro
+        "IMAGE 02/05: Medium shot at %s, same background. %s He holds one of "
+        "the two teaching models up in his right hand at chest height, the way "
+        "a doctor holds up a teaching model to show a patient, and points at it "
+        "with his left index finger. It is %s. His expression is hard and "
         "serious, brow furrowed, mouth open mid-word. The second model is out "
         "of frame. He is the only person in the frame. %s %s %s"
         % (arq["curto"], mesmo, PODRE_NA_MAO, ANTICELEB, arq["luz"], CAUDA)
@@ -668,9 +682,11 @@ def montar(spec):
 
     b["IMAGE 04/05"] = (
         "IMAGE 04/05: Low-angle medium shot at %s, open sky behind him. %s He "
-        "stands tall and holds one anatomy model up high in his right hand, "
-        "raised above his shoulder against the sky - %s, still mounted on its "
-        "slim chrome stand. He is grinning, chin lifted. The old model is "
+        # mesmo aposto pendurado da cena 2, arrumado antes de quebrar aqui
+        "stands tall and holds one of the two teaching models up high in his "
+        "right hand, raised above his shoulder against the sky, still mounted "
+        "on its slim chrome stand. It is %s. He is grinning, chin lifted. "
+        "The old model is "
         "nowhere in the frame. Behind him on his right stands the same %s. He "
         "is the only person in the frame. %s %s %s"
         % (arq["curto"], mesmo, SAO_NA_MAO,
