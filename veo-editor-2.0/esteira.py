@@ -52,23 +52,27 @@ DIAS_ARQUIVO = 14
 # No v1.2 o fator gira em torno de 1.0: nao e' aceleracao, e' ruido
 # anti-duplicata (0.95 a 1.03, media ~0.99). Aqui o centro se desloca.
 #
-# ⚠️ A taxa e' FIXA e vem do operador — nao e' mais derivada de um alvo de
-# duracao. A primeira versao calculava 24/22 = 1.0909x para tirar 2 segundos de
-# um video de 24s; em campo isso ficou lento, e o operador subiu para 1.20x.
-# Em cima dela, +-5% de variacao randomica por video: o despiste de duplicata
-# continua sendo o motivo dela existir, so' mudou de centro.
+# ⚠️ A regra e' um PISO, nao um centro — e' assim que o operador a enunciou:
+# "a velocidade nao pode ser menor que X". Por isso o jitter sobe a partir dele
+# em vez de oscilar em volta: com centro + variacao, metade dos sorteios cairia
+# abaixo do piso por construcao.
 #
-#   1.20 * 0.95 = 1.14  ->  24s sai com 21.1s
-#   1.20 * 1.05 = 1.26  ->  24s sai com 19.0s
-#   media                   24s sai com 20.0s
+# A historia do numero, para ninguem tentar reconstituir a conta: a primeira
+# versao derivava 24/22 = 1.0909x de um alvo de duracao. Ficou lento. Subiu
+# para 1.20x com +-5%, e o jitter largo produziu 1.149x — lento de novo. Virou
+# piso 1.240, e o operador subiu de novo para 1.350. O numero e' ordem, nao
+# resultado de conta.
 #
-# Como a taxa e' proporcional e nao absoluta, um zip mais longo encolhe na
-# mesma razao: 30s viram 25s, 40s viram 33s. O aviso no log avisa quando o
-# numero de takes nao e' 3, que e' o formato para o qual esta esteira existe.
-CENTRO_VEL = 1.20                 # ordem do operador, 2026-07-31
-VARIACAO = 0.05                   # +-5%, sorteado por video
-VEL_MIN = round(CENTRO_VEL * (1 - VARIACAO), 4)
-VEL_MAX = round(CENTRO_VEL * (1 + VARIACAO), 4)
+#   1.350  ->  30s sai com 22.2s
+#   1.390  ->  30s sai com 21.6s
+#
+# ⚠️ 30s, nao 24s: medido em dois videos reais (24s a 1.248x e 26s a 1.149x
+# devolvem ~30s de entrada nos dois). Os takes da AdBatch Vertical 3 nao estao
+# saindo com 8s. A taxa e' proporcional, entao o resultado acompanha a entrada.
+PISO_VEL = 1.350                  # ordem do operador, 2026-07-31
+BANDA = 0.040                     # jitter SO' para cima, sorteado por video
+VEL_MIN = PISO_VEL
+VEL_MAX = round(PISO_VEL + BANDA, 4)
 TAKES_ESPERADOS = 3
 
 # watch_dir vazio = usa o Downloads do Windows; keywords = palavras-gatilho do
@@ -353,7 +357,7 @@ def _processar_zip(nome):
         if len(takes) != TAKES_ESPERADOS:
             _log_atual(f"  AVISO: esta esteira e' do pipeline SHORT "
                        f"({TAKES_ESPERADOS} takes de 8s = 24s). Vieram "
-                       f"{len(takes)}, e a taxa fixa de {CENTRO_VEL:.4f}x vai "
+                       f"{len(takes)}, e a taxa (piso {PISO_VEL:.3f}x) vai "
                        f"cortar uma proporcao, nao 2 segundos.")
 
         fator = round(random.uniform(VEL_MIN, VEL_MAX), 4)
