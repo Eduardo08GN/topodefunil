@@ -341,13 +341,15 @@ class App(tk.Tk):
     def trocar_eixo(self, chave):
         if not self.spec:
             return
-        pool = getattr(self.m, dict((e[0], e[2]) for e in self.m.EIXOS_UI)[chave])
-        # ⚠️ O pool pode ser uma FUNCAO da pagina, nao uma lista fixa: quando a
-        # congruencia de etnia trava o elenco, o agente expoe `mulheres_de(pag)`
-        # em vez de um `MULHERES` unico. Sem isto o botao `trocar` estourava
-        # AttributeError — e estourou, no ORGANIC WAVE.
-        if callable(pool):
-            pool = pool(self.spec["pagina"])
+        try:
+            pool = self._pool(dict((e[0], e[2]) for e in self.m.EIXOS_UI)[chave])
+        except AttributeError as e:
+            # ⛔ Nunca falhar calado. Sob pythonw nao ha' stderr: a excecao
+            # morria no callback do tkinter e o botao simplesmente nao fazia
+            # nada. Foi assim que os seis eixos dos agentes SHORT ficaram
+            # quebrados sem ninguem perceber (2026-07-31).
+            self._toast("eixo %s: %s" % (chave, e))
+            return
         opcoes = [x for x in pool if x is not self.spec[chave]] or pool
         self.spec[chave] = self.rng.choice(opcoes)
         reescreve = getattr(self.m, "EIXOS_QUE_MEXEM_NA_COPY", {}).get(chave)
@@ -356,6 +358,26 @@ class App(tk.Tk):
             self._preencher_copy()
         self._render()
         self._toast("%s re-sorteado" % chave)
+
+    def _pool(self, nome):
+        """Resolve o pool de um eixo pelo nome, no motor OU no base dele.
+
+        ⚠️ Os agentes SHORT **derivam**: o EIXOS_UI deles vem do motor longo e
+        cita pools que vivem la' ("OCASIOES", "PROPS", "REFS"), nao no modulo
+        derivado. Sem este fallback TODO botao `trocar` de agente derivado
+        estourava AttributeError — os seis eixos dos quatro SHORT, quebrados de
+        uma vez. Relatado em producao, 2026-07-31.
+
+        ⚠️ E o pool pode ser uma FUNCAO da pagina em vez de lista: quando a
+        congruencia de etnia trava o elenco, o agente expoe `mulheres_de(pag)`.
+        """
+        pool = getattr(self.m, nome, None)
+        if pool is None:
+            pool = getattr(getattr(self.m, "base", None), nome, None)
+        if pool is None:
+            raise AttributeError("pool '%s' nao existe nem no motor nem no base"
+                                 % nome)
+        return pool(self.spec["pagina"]) if callable(pool) else pool
 
     def pele_atual(self):
         return "clara" if "white" in self.m.ETNIA[self.var_pag.get()] else "escura"
