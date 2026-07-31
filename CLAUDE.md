@@ -41,7 +41,7 @@ portado para código: motor (`<agente>_lucas.py` — pools sorteáveis, strings
 travadas como constantes, linter em regex), app tkinter offline e `.exe`
 entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
 [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
-Portados ate agora: **FLAGRANTE**, **PEE** e **VAZAMENTO** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
+Portados ate agora: **FLAGRANTE**, **PEE**, **VAZAMENTO** e **NECROSE** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
 ⚠️ **Vai pro código o mecânico e verificável; fica no Markdown o julgamento.**
 String validada é **constante**, nunca redigitada — comprimir o D1 na mão já
 entregou esqueleto 3D no lugar da placa em corte.

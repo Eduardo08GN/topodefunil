@@ -206,6 +206,14 @@ tela com `System.Drawing` e encerrar.
 | **FLAGRANTE** | `flagrante_lucas.py` | ocasião (8) · prop (7) · ambiente (6) · REF (6) · vítima (5) · mulher (5) | agência do proxy (F12b), tokens banidos por bloco, D1 íntegro |
 | **PEE** | `pee_lucas.py` | local (6) · roupa clara (5) · ambiente (5) · prop cena 4 (4) · REF (5) · vítima (4) · mulher (4) | **PE6** — o hook precisa do mijo **+** do órgão **+** do vínculo, na mesma fala · **PE7** a cena 2 explica a próstata · **PE1** roupa escura reprova · strings de choro/narrador/plateia íntegras |
 | **VAZAMENTO** | `vazamento_lucas.py` | cozinha (3) · quintal (4) · prop cena 4 (4) · REF corpo-prova (5) · mulher 30-35 (4) | **V6** — `without the gelatin trick` + órgão + MUP na mesma cena · **V7** zero `horse gelatin` · **V2** vocabulário de peixaria, ⛔ `leaking`/`milky` · **V12** idade dos dois em toda menção + `two fully clothed adults` · **V10** bandeira nos dois settings |
+| **NECROSE** | `necrose_lucas.py` | montanha (4) · lobo (3) · receita (4) · mesa (3) · montanhês (4) | **NE1** as duas strings dos modelos íntegras e ⛔ zero `the male reproductive system` (categoria entrega o corte errado) · **NE2** `identical` obrigatório no modelo são, e ⛔ `damaged`/`unhealthy` não descrevem nada · **NE4** lobo presente nas cenas 1 e 4, ⛔ zero `dog`/`husky` · **NE7** o hook precisa de **dois deíticos**, um por modelo · **NE8** ⛔ `rots`/`heals` no TAKE: é comparação, não transformação |
+
+⚠️ **O NECROSE foi portado ANTES do primeiro render** (decisão do operador,
+2026-07-30), contra a regra de só portar depois da etapa 8. O par de modelos
+nunca passou por moderação e o `SELO DE RISCO` do agente prevê três
+reformulações possíveis. A mitigação é a arquitetura: a string mora em **um
+lugar só** (`MODELO_PODRE` / `MODELO_SAO`), então uma reformulação é uma
+edição, não uma caçada.
 
 ⚠️ **Cada linter herda a regra que fez o agente existir.** No PEE, hook que fala
 só do mijo é `ERRO`, não lembrete — o homem com ED não se reconhece e rola. No
