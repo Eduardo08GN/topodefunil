@@ -40,25 +40,6 @@ import re
 
 
 # ---------------------------------------------------------------------------
-# O PREPARO DA CENA 3 — so' gelatina e agua
-# ---------------------------------------------------------------------------
-# ⚠️ Ordem do operador, 2026-07-31: "o preparo sera apenas com gelatin powder,
-# copo com agua, sem baking soda aparecendo nos takes 3".
-#
-# O que motivou: a cena com a caixa de bicarbonato renderizava a EMBALAGEM DE
-# MARCA legivel em quadro — logotipo e painel nutricional — e a cena 3 caiu
-# repetidas vezes no filtro de video. ⛔ Nao esta' provado que o rotulo era o
-# gatilho, e o operador viu outros videos com a marca aprovados. A decisao foi
-# dele, de escopo de cena, e nao uma conclusao de bissecao.
-#
-# Copia literal da receita `gelatina_agua` do NECROSE, que ja' e' pool validado.
-MESA_GELATINA = ("a plain white sachet of pale powder with no label, a clear "
-                 "glass of water and a metal spoon")
-ACAO_GELATINA = ("he tears the sachet open, tips the powder into the glass of "
-                 "water and stirs it in slow circles")
-
-
-# ---------------------------------------------------------------------------
 # GERADOR
 # ---------------------------------------------------------------------------
 
@@ -122,19 +103,21 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3):
 
     img = (
         "IMAGE %02d/%02d: Medium shot in %s. The same %d-year-old %s man, %s, "
-        "%s, stands behind the %s, speaking to the camera. On it: %s, and both "
-        "his hands are at the glass mid-action. He is alone in frame. %s %s"
+        "%s, stands behind the %s, speaking to the camera. On the counter in "
+        "front of him are an open white sachet, a glass of water and a spoon, "
+        "and both his hands are at the glass mid-action. He is alone in frame. "
+        "%s %s"
         % (n, total, amb["set"], ref["idade"], et, ref["marca"],
-           ref["roupa_curta"], amb["bancada"], MESA_GELATINA,
-           luz.capitalize(), base.CAUDA)
+           ref["roupa_curta"], amb["bancada"], luz.capitalize(), base.CAUDA)
     )
     take = (
         "TAKE %02d/%02d: Animate the image exactly. Handheld iPhone, slight "
-        "sway, no cuts. His hands work while he talks: %s. His eyes stay on "
+        "sway, no cuts. His hands work while he talks: he finishes pouring the "
+        "sachet into the glass and stirs it in slow circles. His eyes stay on "
         "the lens the whole time. He is alone in the shot.\n"
         "Dialogue: \"%s\"\n"
         "Audio: spoon clinking glass, quiet room tone. No music."
-        % (n, total, ACAO_GELATINA, base.sonorizar(fala))
+        % (n, total, base.sonorizar(fala))
     )
     return img, take
 
@@ -251,17 +234,6 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
             for tok, motivo in getattr(base, t).items():
                 if tok in baixo:
                     achados.append(("ERRO", "%s contem '%s' — %s" % (nome, tok, motivo)))
-
-    # ⛔ o preparo da cena 3 e' so' gelatina e agua (ordem do operador,
-    # 2026-07-31). Bicarbonato aparecendo ali arrasta a EMBALAGEM DE MARCA
-    # para o quadro, e foi o que o operador tirou de cena. Vira ERRO e nao
-    # comentario porque o caminho de volta e' facil: basta alguem re-sortear a
-    # receita ou remapear a cena 3 sem lembrar disto.
-    cena3 = blocos.get("IMAGE 03/03", "") + " " + blocos.get("TAKE 03/03", "")
-    for tok in ("baking soda", "bicarbonate"):
-        if tok in cena3.lower():
-            achados.append(("ERRO", "cena 3 mostra '%s' — o preparo do SHORT e' "
-                                    "so' gelatina em po e copo d'agua" % tok))
 
     for f in extras:
         f(spec, blocos, achados)

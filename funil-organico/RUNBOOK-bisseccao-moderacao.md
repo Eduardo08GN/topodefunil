@@ -256,7 +256,24 @@ parser leria.
 **4. Mire numa categoria que existe.** `violence · sexual · derogatory · toxic`.
 Se a sua hipótese não cai em nenhuma delas, provavelmente está errada.
 
-**5. Deriva de copy não se corrige com boa intenção.** No mesmo caso, três de
+**5. ⛔ Mudança de cena feita sob hipótese não provada volta atrás — e custa duas
+vezes.** Caso registrado em 2026-07-31: a cena 3 do SHORT caiu várias vezes, eu
+apontei a **embalagem de marca** (caixa de bicarbonato com logotipo e painel
+nutricional legíveis) como suspeita, e o prop saiu de cena nos quatro agentes —
+com string travada, receita fixada e regra de linter. O operador tinha dito na
+hora: *"não creio que seja o problema, pois já vi vários vídeos com a marca
+aprovados"*. Ele estava certo: o take **com** o bicarbonato passou, e tudo foi
+revertido.
+
+> **O prop não estava barrado; a rodada é que não tinha sido feita.** Antes de
+> tirar qualquer coisa da cena, a pergunta é: *isto foi testado ou é palpite?*
+> Se for palpite, não sai de cena — vira rodada.
+
+O custo real não é o retrabalho: é que a mudança **destrói o que faz o vídeo
+converter** enquanto persegue um fantasma. É a mesma armadilha do §Recusa do
+gerador, agora com o carimbo de um caso concreto.
+
+**6. Deriva de copy não se corrige com boa intenção.** No mesmo caso, três de
 quatro hooks tinham escorregado da forma condicional da fonte para a forma
 assertiva sem que ninguém notasse. A correção só é durável quando vira
 **regra de linter** no motor do agente.
