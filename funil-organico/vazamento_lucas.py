@@ -628,8 +628,9 @@ def montar(spec):
     b["TAKE 02/05"] = (
         "TAKE 02/05: Animate the provided image exactly. Handheld iPhone shot, very "
         "slight natural sway, no cuts. The %d-year-old man speaks to the camera while "
-        "his hands work: he finishes pouring the baking soda, sets the box down, picks "
-        "up the wooden stick, and stirs the mixture inside the jar in slow circles. His "
+        "his hands stir the jar: finishing the baking soda, setting the box down, "
+        "picking up the wooden stick and stirring the mixture inside the jar in "
+        "slow circles. His "
         "eyes stay on the lens the whole time. He is the only person in the shot and no "
         "one else enters frame.\nDialogue: \"%s\"\n"
         "Audio: outdoor ambient — distant birds, faint breeze. No music."

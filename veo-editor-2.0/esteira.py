@@ -64,13 +64,17 @@ DIAS_ARQUIVO = 14
 # resultado de conta.
 #
 #   1.350  ->  30s sai com 22.2s
-#   1.390  ->  30s sai com 21.6s
+#   1.377  ->  30s sai com 21.8s
 #
 # ⚠️ 30s, nao 24s: medido em dois videos reais (24s a 1.248x e 26s a 1.149x
 # devolvem ~30s de entrada nos dois). Os takes da AdBatch Vertical 3 nao estao
 # saindo com 8s. A taxa e' proporcional, entao o resultado acompanha a entrada.
+#
+# O jitter e' PERCENTUAL do piso, nao um numero solto: a intencao do operador
+# e' "2%", e escrever 0.027 esconderia isso na proxima vez que o piso mudar.
 PISO_VEL = 1.350                  # ordem do operador, 2026-07-31
-BANDA = 0.040                     # jitter SO' para cima, sorteado por video
+JITTER = 0.02                     # 2% do piso, SO' para cima
+BANDA = round(PISO_VEL * JITTER, 4)
 VEL_MIN = PISO_VEL
 VEL_MAX = round(PISO_VEL + BANDA, 4)
 TAKES_ESPERADOS = 3

@@ -566,7 +566,7 @@ def montar(spec):
 
     b["TAKE 02/03"] = (
         "TAKE 02/03: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. %s hands work while %s talks: %s. "
+        "very slight natural sway, no cuts. %s hands stir the spoon while %s talks, %s. "
         "%s eyes stay on the lens the whole time. %s is the only person in the "
         "shot.\nDialogue: \"%s\"\nAudio: quiet kitchen room tone, a spoon "
         "against glass. No music."

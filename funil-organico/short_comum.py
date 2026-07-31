@@ -90,7 +90,7 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3):
       · a PESSOA ............. da cena 2, mesma construcao e mesmos campos
       · a ACAO ............... da cena 3 (sache, copo d'agua, colher, girar)
       · a LUZ e a CAUDA ...... dos dois
-      · "His hands work while he talks" / "His eyes stay on the lens the whole
+      · "His hands stir the spoon while he talks" / "His eyes stay on the lens
         time" .... copiado literal do TAKE 03 do NECROSE, que ja' roda com
         rosto em quadro e passou em render
 
@@ -112,8 +112,8 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3):
     )
     take = (
         "TAKE %02d/%02d: Animate the image exactly. Handheld iPhone, slight "
-        "sway, no cuts. His hands work while he talks: he finishes pouring the "
-        "sachet into the glass and stirs it in slow circles. His eyes stay on "
+        "sway, no cuts. His hands stir the spoon while he talks, tipping the "
+        "sachet into the glass and stirring it in slow circles. His eyes stay on "
         "the lens the whole time. He is alone in the shot.\n"
         "Dialogue: \"%s\"\n"
         "Audio: spoon clinking glass, quiet room tone. No music."

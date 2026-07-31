@@ -348,26 +348,26 @@ RECEITAS_PROP = [
     {"id": "gelatina_agua", "selo": "V",
      "mesa": "a plain white sachet of pale powder with no label, a clear glass "
              "of water and a metal spoon",
-     "acao": "he tears the sachet open, tips the powder into the glass of "
-             "water and stirs it in slow circles",
+     "acao": "tearing the sachet open, tipping the powder into the glass "
+             "of water and stirring it in slow circles",
      "fala": "a spoonful of gelatin into a glass of cold water"},
     {"id": "gelatina_bicarbonato", "selo": "V",
      "mesa": "a plain white sachet of pale powder with no label, an open box "
              "of baking soda, a glass jar and a wooden spoon",
-     "acao": "he tips the powder from the sachet into the jar, pours the "
-             "baking soda in over it and stirs the two together for a minute",
+     "acao": "tipping the powder from the sachet into the jar, pouring "
+             "the baking soda in over it and stirring the two together for a minute",
      "fala": "a spoonful of gelatin into a jar of baking soda"},
     {"id": "gelatina_mel", "selo": "N",
      "mesa": "a plain white sachet of pale powder with no label, a wooden mug "
              "of warm water, a jar of honey and a spoon",
-     "acao": "he empties the sachet into the wooden mug, spoons honey in after "
-             "it and stirs until the powder is gone",
+     "acao": "emptying the sachet into the wooden mug, spooning honey in "
+             "after it and stirring until the powder is gone",
      "fala": "a spoonful of gelatin and a spoon of honey into warm water"},
     {"id": "gelatina_limao", "selo": "N",
      "mesa": "a plain white sachet of pale powder with no label, a glass of "
              "cold water, a halved lemon and a metal spoon",
-     "acao": "he empties the sachet into the glass, squeezes the halved lemon "
-             "over it and stirs it through",
+     "acao": "emptying the sachet into the glass, squeezing the halved "
+             "lemon over it and stirring it through",
      "fala": "a spoonful of gelatin into cold water with fresh lemon"},
 ]
 
@@ -816,7 +816,7 @@ def montar(spec):
 
     b["TAKE 03/05"] = (
         "TAKE 03/05: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. His hands work while he talks: %s. "
+        "very slight natural sway, no cuts. His hands stir the spoon while he talks, %s. "
         "His eyes stay on the lens the whole time. He is the only person in the "
         "shot.\nDialogue: \"%s\"\nAudio: %s, a spoon against glass. No music."
         % (rec["acao"], sonorizar(falas[2]), arq["audio"])
