@@ -387,11 +387,22 @@ NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"
 
 # NE7 — o hook e' "from this to this", com o gesto sincronizado na batida das
 # palavras. A fonte abre nomeando o orgao no primeiro segundo.
+# NE7 - o hook e a comparacao, com o gesto sincronizado na batida das palavras.
+# ⚠️ E ELE E CONDICIONAL OU PERGUNTA, NUNCA AFIRMACAO SOBRE O CORPO DELE.
+# "Your {o} looks like this right now. It can look like this by next month" foi
+# RECUSADO pela politica de CONTEUDO NOCIVO (2026-07-31), com o IMAGE ja
+# aprovado. Lido pelo classificador: diagnostico do corpo do espectador +
+# promessa de transformacao com prazo, ilustrados por tecido necrosado — isso e
+# desinformacao em saude, e claim de cura e a PRIMEIRA das quatro linhas da
+# cerca no arsenal.
+# A fonte nunca afirma, ela CONDICIONA: "If you want your soldier to go from
+# this to this in just one month". Tres dos quatro hooks tinham se afastado
+# dessa forma sem que eu percebesse.
 HOOKS = [
     "If you want your {o} to go from this to this in one month, watch close.",
-    "This is your {o} today. This is your {o} in one month. Watch close, brother.",
-    "Your {o} looks like this right now. It can look like this by next month.",
-    "One of these is your {o}. The other one is your {o} in thirty days.",
+    "If your {o} looks more like this one than that one, watch close, brother.",
+    "Nobody wants this one. If you want your {o} to look like that one, watch close.",
+    "If you had to pick tonight, is your {o} this one or that one?",
 ]
 
 # NE — cena 2: o MUP de Georgi (alivio de culpa + vilao), com o modelo PODRE
@@ -524,6 +535,16 @@ def lint(spec, blocos):
     if deiticos < 2:
         achados.append(("ERRO", "NE7: o hook nao aponta os DOIS modelos — "
                                 "precisa de dois deiticos (%d encontrado)" % deiticos))
+
+    # ⚠️ O hook e CONDICIONAL ou PERGUNTA, nunca afirmacao sobre o corpo dele.
+    # Afirmar o estado ("your {o} looks like this") junto com a promessa de
+    # virada ("it can look like this by next month") e diagnostico + claim de
+    # cura: foi o que derrubou o video da cena 1 na politica de conteudo nocivo
+    # (2026-07-31), com o IMAGE ja aprovado.
+    if not re.search(r"\bif\b", h) and not falas[0].rstrip().endswith("?"):
+        achados.append(("ERRO", "NE7: o hook AFIRMA o estado do corpo dele. Tem "
+                                "que ser condicional ('if...') ou pergunta — "
+                                "claim de cura e a primeira linha da cerca"))
     if not any(n.lower() in h for n in NUCLEO):
         achados.append(("ERRO", "NE7: o hook nao nomeia o orgao com substantivo"))
 

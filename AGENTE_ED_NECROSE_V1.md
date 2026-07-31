@@ -190,14 +190,34 @@ ereto. Os dois modelos somem do quadro, e o que sobra é o resultado.
   (P20). ⚠️ Tópica ou de preparo, **nunca dose médica**.
   ⚠️ **A cena 3 nomeia o `gelatin trick`; a cena 4 é a PROVA.** O MUS literal
   mora na 3, e a 4 mostra o resultado com o modelo são erguido.
-- **NE7 — ⭐ O HOOK É `from this to this`, COM O GESTO SINCRONIZADO.** A fala
-  aponta os dois modelos **na batida exata** em que os nomeia: `this` (podre) →
-  `this` (são). Palavra e gesto na mesma batida é o soco; hook que descreve os
-  modelos e deixa o gesto solto desperdiça o prop. Fórmula da fonte:
-  > `If you want your {órgão} to go from this to this in just one month, do
-  > exactly what I am about to show you.`
-  ⚠️ O órgão é **nomeado com substantivo do núcleo** no hook (a fonte usa
-  `soldier`), nunca pronome.
+- **NE7 — ⭐⭐ O HOOK É CONDICIONAL OU PERGUNTA, NUNCA AFIRMAÇÃO SOBRE O CORPO
+  DELE** (endurecido 2026-07-31, depois de `VIDEO GENERATION FAILED` na
+  política de **conteúdo nocivo** — com o IMAGE já aprovado).
+
+  A linha que caiu:
+  > ⛔ *"**Your {o} looks like this right now.** It can look like **this** by
+  > next month."*
+
+  Lida pelo classificador, ela empilha duas coisas: **diagnóstico do corpo do
+  espectador** (o seu está naquele estado) e **promessa de transformação com
+  prazo** (vira o outro em um mês) — ilustrados por **tecido necrosado** ao
+  lado. Isso é desinformação em saúde, e *claim de cura* é a **primeira das
+  quatro linhas da cerca** no
+  [`arsenal`](funil-organico/arsenal-linguagem-indireta.md).
+
+  **A fonte nunca afirma — ela condiciona:**
+  > ✅ `If you want your soldier to go from this to this in just one month...`
+
+  ⚠️ **Diagnóstico que generaliza:** o IMAGE passou e só o **vídeo** caiu,
+  porque o claim vive na linha `Dialogue:` — e ela só existe no prompt de
+  movimento. Quando a recusa é de **conteúdo nocivo** e só o vídeo cai, olhe a
+  **fala** antes de olhar a direção de cena.
+
+  **A forma obrigatória**, e o linter trava: o hook tem `if` **ou** termina em
+  `?`. Mais os dois deíticos (um por modelo) e o órgão nomeado com substantivo.
+  O gesto continua sincronizado: `this` (aponta o podre) → `this` (aponta o
+  são), na batida exata das palavras.
+
 - **NE8 — OS MODELOS COMEÇAM NO PEDESTAL E TERMINAM NA MÃO.** Na cena 1 estão
   **de pé nos suportes** sobre a rocha; ao longo do take ele **os ergue**, um em
   cada mão, na altura do peito. Isso dá movimento sem mexer no prop (a

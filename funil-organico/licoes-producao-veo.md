@@ -47,6 +47,45 @@ propus refazer o lote inteiro — quando um **regerar** resolvia. Barato primeir
 
 ---
 
+## ⭐⭐ QUANDO SÓ O VÍDEO CAI E A POLÍTICA É "CONTEÚDO NOCIVO", OLHE A **FALA** (2026-07-31)
+
+O IMAGE passou, o **vídeo** caiu, e a mensagem mudou de tom: em vez da genérica
+*"pode violar nossas políticas"*, veio **"políticas contra a geração de conteúdo
+nocivo"**. Isso é um ponteiro, não ruído.
+
+> **O claim vive na linha `Dialogue:` — e ela só existe no prompt de movimento.**
+> Por isso o IMAGE passa: não há afirmação nenhuma numa imagem.
+
+A linha que derrubou (NECROSE, cena 1):
+
+> ⛔ *"**Your manhood looks like this right now.** It can look like **this** by
+> next month."*
+
+Duas coisas empilhadas, ilustradas por **tecido necrosado** ao lado:
+**diagnóstico do corpo do espectador** + **promessa de transformação com
+prazo**. Isso é desinformação em saúde — e *claim de cura* é a **primeira das
+quatro linhas da cerca** no
+[`arsenal`](arsenal-linguagem-indireta.md).
+
+**A forma que passa é a da fonte: condicionar, não afirmar.**
+
+| ⛔ Afirma | ✅ Condiciona ou pergunta |
+|---|---|
+| `Your {o} looks like this right now.` | `If your {o} looks more like this one than that one…` |
+| `This is your {o} today. This is your {o} in one month.` | `If you want your {o} to go from this to this in one month…` |
+| `One of these is your {o}. The other one is your {o} in thirty days.` | `If you had to pick tonight, is your {o} this one or that one?` |
+
+A diferença não é de intensidade — **a condicional vende exatamente o mesmo
+desejo**. O que ela não faz é *atestar* o estado do corpo de quem assiste.
+
+⚠️ **Como isso escapou:** o hook nasceu da linha condicional da fonte e foi
+derivando para a forma assertiva ao longo do pool, sem que ninguém notasse.
+Três de quatro hooks tinham se afastado da única forma validada. **Por isso a
+regra virou linter** (`necrose_lucas.py`: o hook precisa de `if` ou terminar em
+`?`) — deriva de copy não se corrige com boa intenção.
+
+---
+
 ## ⭐⭐ O CLASSIFICADOR CASA **TOKEN**; O TTS CASA **FONEMA** (descoberta do operador, 2026-07-30)
 
 A alavanca mais barata do playbook. Existe uma folga entre as duas máquinas:
