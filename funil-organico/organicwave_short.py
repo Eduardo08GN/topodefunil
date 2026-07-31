@@ -536,14 +536,19 @@ def montar(spec):
     # ⛔ V12 herdado do VAZAMENTO: idade dos dois em toda mencao — falha de
     # classificador documentada.
     b["IMAGE 03/03"] = (
-        "IMAGE 03/03: Medium shot in the same %s, same light. Two fully clothed "
-        "adults, a %d-year-old woman and a %d-year-old man. %s %d-year-old "
+        # ⛔ NAO devolver aqui uma declaracao de conformidade ("two fully
+        # clothed adults", "they are adults"). Ordem do operador, 2026-07-31:
+        # ela nao desarma o classificador — so' troca de token ou geometria
+        # desarma — e ainda injeta os tokens no campo. As duas idades ja' vem
+        # nas descricoes abaixo; a linha era redundante, declaratoria, e
+        # contradizia o `bare-chested` duas frases depois.
+        "IMAGE 03/03: Medium shot in the same %s, same light. %s %d-year-old "
         "%s woman, %s, %s, stands beside him, leaning in against his shoulder, "
         "laughing, one hand flat on his chest. %s %d-year-old %s man, %s, "
         "bare-chested with %s, %s, looks straight into the lens, calm and "
         "confident, one corner of his mouth raised. In her free hand she holds "
         "%s. %s %s%s"
-        % (amb["curto"], mul["idade"], ref["idade"],
+        % (amb["curto"],
            # ⛔ A ancora "The same" cai sobre QUEM NARRA — e' o rosto que vem
            # das cenas 1 e 2. O outro entra novo em quadro e nao leva "same",
            # senao promete uma continuidade que nunca existiu.

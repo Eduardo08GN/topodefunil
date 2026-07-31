@@ -27,6 +27,40 @@ newlywed poses for a photograph` gerou **a mesma imagem** sem bloqueio.
 
 ⛔ Declarar conformidade (`not a celebrity`, `they are adults`) **não** desarma
 classificador — só troca de token/geometria desarma.
+
+### ⭐ E é pior que inútil: é munição (endurecido em 2026-07-31)
+
+Correção do operador, feita **duas vezes no mesmo dia** — primeiro sobre
+`not a celebrity`, depois sobre `two fully clothed adults`:
+
+> *"Você está sendo ingênuo e dando munição de graça pro classificador te
+> bloquear. Era completamente dispensável — era só não comentar isso."*
+
+A declaração não é neutra. Ela **coloca o token no campo**: escrever
+`fully clothed` injeta `clothed`, escrever `not a celebrity` injeta
+`celebrity`. O classificador casa token, não intenção — é a mesma mecânica que
+faz a grafia homófona funcionar, só que virada contra nós.
+
+| ⛔ Declarar | ✅ O que fazer |
+|---|---|
+| `two fully clothed adults` | **silêncio** — descreva a roupa de cada um, se importar |
+| `not a celebrity` | **silêncio** — ou troque a geometria do rosto |
+| `they are adults` | **silêncio** — a idade já está na descrição de cada pessoa |
+
+> **A regra: contra o classificador, o silêncio é mais forte que a negação.**
+> Se algo precisa ser verdade no frame, faça a descrição produzi-lo — não
+> anuncie que ele é verdade.
+
+⚠️ **Caso concreto:** no ORGANIC WAVE a linha `two fully clothed adults` era
+redundante (as duas idades já vinham nas descrições logo abaixo), declaratória,
+**e contradizia o próprio bloco**, que descrevia o homem `bare-chested` duas
+frases depois. Três defeitos numa linha que existia só para tranquilizar um
+classificador que não lê tranquilização.
+
+⛔ O **V12 do VAZAMENTO** exige essa mesma declaração e **não foi mexido**:
+outro agente, história própria, e trocar string travada por hipótese é o que a
+[Regra 5](RUNBOOK-bisseccao-moderacao.md) proíbe. Fica anotado como tensão a
+resolver com rodada, não com opinião.
 → Protocolo: [`prop-metaforas.md`](prop-metaforas.md) §Recusa do gerador · em
 todos os `AGENTE_ED_*.md` §Recusa do gerador.
 
