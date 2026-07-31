@@ -477,16 +477,42 @@ def _instancia_unica():
     return s
 
 
+def _focar_existente(titulo):
+    """Traz a janela ja' aberta para a frente. True se conseguiu.
+
+    ctypes puro, sem dependencia: FindWindowW acha pelo titulo exato, o mesmo
+    que a App() seta. SW_RESTORE (9) desminimiza antes de trazer para frente,
+    senao a janela minimizada volta ao foco mas continua na barra de tarefas.
+    """
+    try:
+        import ctypes
+        u = ctypes.windll.user32
+        h = u.FindWindowW(None, titulo)
+        if not h:
+            return False
+        u.ShowWindow(h, 9)
+        u.SetForegroundWindow(h)
+        return True
+    except Exception:                                        # noqa: BLE001
+        return False
+
+
 if __name__ == "__main__":
     _trava = _instancia_unica()
     if _trava is None:
-        _r = tk.Tk()
-        _r.withdraw()
-        messagebox.showwarning(
-            "Veo Editor",
-            "O Veo Editor ja' esta' aberto.\n\n"
-            "Duas janelas disputam o mesmo zip: a que perde a corrida fica sem "
-            "o mascote e sem contar o video. Use a janela que ja' esta' aberta.")
-        _r.destroy()
+        # ⭐ Foca a janela que ja' esta' aberta e sai calado. O aviso
+        # abaixo e' ULTIMO recurso: se a janela nao for achada, o
+        # operador precisa saber por que o clique nao fez nada —
+        # sumico silencioso e' pior que um alerta.
+        if not _focar_existente(f"Veo Editor By EDDIE  v{VERSAO}"):
+            _r = tk.Tk()
+            _r.withdraw()
+            _r.attributes("-topmost", True)
+            _r.lift()
+            messagebox.showwarning(
+                "Veo Editor",
+                "O Veo Editor ja' esta' aberto, mas nao consegui trazer a\n"
+                "janela para a frente. Procure na barra de tarefas.")
+            _r.destroy()
         sys.exit(0)
     App().mainloop()
