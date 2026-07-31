@@ -122,6 +122,62 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3):
     return img, take
 
 
+def redencao_com_ref(base, spec, fala, n=2, total=3):
+    """A redencao COM O NARRADOR em quadro — recombinacao, nao invencao.
+
+    ⚠️ Ordem do operador, 2026-07-31.
+
+    No FLAGRANTE e no PEE a cena da redencao mostra a VITIMA e a mulher; o
+    narrador nao entra, e a fala dele roda em voiceover (`A man's voice speaks
+    over the scene`). Isso funciona em 5 cenas, onde o REF aparece em 4 delas e
+    some numa. **Em 3 cenas ele sumiria no terco do meio** — justo na cena da
+    prova —, e o espectador perde a ancora de quem esta' falando com ele.
+
+    Aqui o narrador volta ao quadro, exatamente como aparece na cena 1: ao
+    fundo, atras do casal, falando para a camera. Cada pedaco vem de bloco
+    validado:
+
+      · o CASAL e o prop ereto ...... da cena 4 (`vit`, `mul`, `prop["ereto"]`)
+      · o NARRADOR .................. da cena 1 e da 5, mesma construcao
+      · a sala, a luz, a negacao de ave e a cauda ... da cena 4
+
+    ⚠️ E o TAKE deixa de ser voiceover: agora quem fala esta' em quadro, entao
+    diz `Only the man standing behind them speaks`. Sem isso a vitima dublaria
+    a fala do narrador — a mesma falha que derrubou a cena do casal do
+    VAZAMENTO.
+
+    ⛔ Vive SO' no SHORT. O motor longo mantem o voiceover, que la' esta' certo.
+    """
+    et = base.ETNIA[spec["pagina"]]
+    ref, vit, mul = spec["ref"], spec["vitima"], spec["mulher"]
+    prop, amb = spec["prop"], spec["ambiente"]
+    neg = base.NEGACAO_AVE if prop["marisco"] else ""
+
+    img = (
+        "IMAGE %02d/%02d: Medium shot in a plain living room, %s The same "
+        "%d-year-old %s %s, now in a clean white shirt, sits in an armchair "
+        "grinning, head up. A %d-year-old %s woman %s sits sideways on his "
+        "knee, arm around him, laughing. In her free hand she holds %s. "
+        "Standing behind the armchair, facing the camera and speaking, is the "
+        "same %d-year-old %s man, %s, the one from the first scene.%s %s"
+        % (n, total, amb["luz"], vit["idade"], et, vit["marca"],
+           mul["idade"], et, mul["payoff"], prop["ereto"],
+           ref["idade"], et, ref["marca"], neg, base.CAUDA)
+    )
+    take = (
+        "TAKE %02d/%02d: Animate the image exactly. Handheld iPhone, slight "
+        "sway, no cuts. The seated man laughs silently, head tipping back. The "
+        "woman laughs, tightens her arm around him; her other hand stays "
+        "exactly where it is, holding it motionless the entire shot. Neither "
+        "of them changes position. Only the %d-year-old man standing behind "
+        "them speaks, straight into the lens; the couple stays silent.\n"
+        "Dialogue: \"%s\"\n"
+        "Audio: quiet room tone, soft laughter. No music."
+        % (n, total, ref["idade"], base.sonorizar(fala))
+    )
+    return img, take
+
+
 def bloco_base(blocos, mapa, tipo, cena_base):
     """O bloco do SHORT que corresponde a uma cena do motor base.
 

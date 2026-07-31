@@ -131,8 +131,14 @@ def montar(spec):
     b = sc.montar_curto(base, spec, MAPA)
     # a cena 3 e' a unica que nao vem pronta do base — ver o comentario
     # do MAPA e a docstring de short_comum.bancada_com_rosto
-    img, take = sc.bancada_com_rosto(base, spec, spec["falas"][2])
-    b["IMAGE 03/03"], b["TAKE 03/03"] = img, take
+    # ⚠️ DUAS cenas nao vem prontas do base, e as duas por ordem do
+    # operador: a 2, para o narrador nao sumir no terco do meio; e a 3,
+    # para o rosto aparecer enquanto prepara. As duas recombinam blocos
+    # validados — ver as docstrings em short_comum.
+    i2, t2 = sc.redencao_com_ref(base, spec, spec["falas"][1])
+    b["IMAGE 02/03"], b["TAKE 02/03"] = i2, t2
+    i3, t3 = sc.bancada_com_rosto(base, spec, spec["falas"][2])
+    b["IMAGE 03/03"], b["TAKE 03/03"] = i3, t3
     return b
 
 
