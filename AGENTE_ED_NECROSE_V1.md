@@ -80,7 +80,7 @@ ereto. Os dois modelos somem do quadro, e o que sobra é o resultado.
 
 ---
 
-## REGRAS PRÓPRIAS (NE1-NE13)
+## REGRAS PRÓPRIAS (NE1-NE9)
 
 - **NE1 — ⭐⭐ OS DOIS MODELOS SÃO 3D INTEIROS EM PEDESTAL, NÃO O D1.**
   Diferença crítica: o **D1** (ver [`prop-metaforas`](funil-organico/prop-metaforas.md)
@@ -317,62 +317,6 @@ causa**; a imagem mostra o estado.
   `siphon`. ⛔ E zero vocabulário de firme↔murcho no prompt de movimento: isso
   derruba a geração de vídeo mesmo com o IMAGE aprovado.
 
-- **NE13 — ⭐⭐ A CENA 1 NÃO CARREGA JANELA DE TEMPO — e o hook interrogativo
-  está banido** (bissecção de campo, Lucas/montanhês-lago, 2026-07-31). Cinco
-  recusas pagas na política de **conteúdo nocivo** até isolar a variável, todas
-  com o IMAGE já aprovado.
-
-  **O log da bissecção — é o valor deste bloco, não a conclusão:**
-
-  | # | hook | órgão | prazo | resultado |
-  |---|---|---|---|---|
-  | 1 | interrogativo (`is your {o} this one or that one?`) | man-hood | não | ❌ 3× |
-  | 2 | `If you want… from this to this` | man-hood | **sim** | ❌ 2× |
-  | 3 | `If you want… from this to this` | soljer | **sim** | ❌ |
-  | 4 | `If you want… from this to this` | soljer | **não** | 🟢 |
-
-  De 2 para 3 mudou **só o substantivo** e as duas caíram: **o órgão não era a
-  causa** — era a hipótese principal, e o teste a derrubou. De 3 para 4 mudou
-  **só o prazo**. É o prazo.
-
-  ⛔ **String validada em campo:**
-  ```
-  If you want your soljer to go from this to this, watch close.
-  ```
-
-  ⚠️ **NÃO é bloqueio binário — é CUSTO DE DENSIDADE.** O vídeo do dia anterior
-  passou **com** `in one month` (`old boy`, cenário de cânion). A cena 1 já
-  gasta o orçamento inteiro com **tecido necrosado no quadro + promessa de
-  virada**; a janela de tempo é a gota que estoura. Ver
-  [`licoes-producao-veo`](funil-organico/licoes-producao-veo.md) §Densidade é
-  superfície de bloqueio.
-
-  **E não há motivo para pagar esse custo aqui:** o prazo faz trabalho na
-  **cena 4**, que é onde a prova mora — `Nineteen days of the gelatin trick and
-  my weiner came back like this` gerou 🟢 no mesmo lote.
-
-  ⛔ **O hook interrogativo saiu do pool.** `If you had to pick tonight, is your
-  {o} this one or that one?` foi recusado **3× sem prazo nenhum**. Ele pede que
-  o espectador **localize o próprio órgão** entre os dois modelos, um deles
-  descrito como tecido apodrecido — é **diagnóstico do corpo dele em forma de
-  pergunta**, exatamente o que o NE7 proíbe. A forma interrogativa não desarma
-  o diagnóstico; só o veste.
-
-  🟡 **Continua no pool, sob observação:** `If your {o} looks more like this one
-  than that one…` condiciona no **estado** dele, não no desejo — mesma família
-  do banido, só que sem render que o condene. Se cair, é o primeiro a sair.
-
-  ⚠️ **Por que o linter deixou os dois passarem:** o check do NE7 testava
-  **forma** (tem `if` **ou** termina em `?`) para uma regra de **substância**.
-  Regra de substância não vira regex — o que virou regex foi a **lista fechada
-  de janelas de tempo** (`JANELAS_TEMPO`, em `necrose_lucas.py`). O julgamento
-  continua sendo leitura.
-
-  📌 **Método, que generaliza para qualquer recusa:** só se aprende trocando
-  **uma** variável por rodada, e as hipóteses mais convincentes caem no teste.
-  Runbook:
-  [`RUNBOOK-bisseccao-moderacao`](funil-organico/RUNBOOK-bisseccao-moderacao.md).
-
 ---
 
 ## SELO DE RISCO
@@ -426,8 +370,6 @@ Se recusar de novo, a fila de reformulação (§Recusa do gerador), na ordem:
 - [ ] **Arquétipo íntegro**: cenário + chapéu + animal da mesma família, zero marca legível (NE5)?
 - [ ] **Receita na cena 3, na mesa de madeira, com as mãos executando** (NE6)? Zero dose médica?
 - [ ] ⭐ **Hook `from this to this` com o gesto sincronizado na batida exata**, órgão nomeado com substantivo (NE7)?
-- [ ] ⭐⭐ **Zero janela de tempo no hook** (`in one month`, `by next week`…) — o prazo mora na cena 4 (NE13)?
-- [ ] ⭐⭐ **O hook condiciona no DESEJO, nunca no estado do corpo dele** — e nunca em forma de pergunta "qual dos dois é o seu?" (NE13)?
 - [ ] **Modelos no pedestal → erguidos na mão** durante o take (NE8)? **No TAKE nenhum dos dois muda de estado**?
 - [ ] **Todas as cenas solo** — sem plateia, sem vítima, sem esposa (NE9)?
 - [ ] MUP na cena 2 · `gelatin trick` literal na cena 4 · fecho que derruba barreira?
