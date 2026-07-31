@@ -342,6 +342,12 @@ class App(tk.Tk):
         if not self.spec:
             return
         pool = getattr(self.m, dict((e[0], e[2]) for e in self.m.EIXOS_UI)[chave])
+        # ⚠️ O pool pode ser uma FUNCAO da pagina, nao uma lista fixa: quando a
+        # congruencia de etnia trava o elenco, o agente expoe `mulheres_de(pag)`
+        # em vez de um `MULHERES` unico. Sem isto o botao `trocar` estourava
+        # AttributeError — e estourou, no ORGANIC WAVE.
+        if callable(pool):
+            pool = pool(self.spec["pagina"])
         opcoes = [x for x in pool if x is not self.spec[chave]] or pool
         self.spec[chave] = self.rng.choice(opcoes)
         reescreve = getattr(self.m, "EIXOS_QUE_MEXEM_NA_COPY", {}).get(chave)

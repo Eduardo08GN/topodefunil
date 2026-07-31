@@ -94,7 +94,12 @@ IMOBILIDADE = ("It stays exactly as it appears in the first frame — same "
 # rosto entre as tres cenas. Mas aqui ela e' **compativel com beleza** — sinal,
 # sarda, covinha, olhos claros — e nunca cicatriz feia ou orelha entalhada,
 # que sao as marcas dos especialistas.
-REFS_H = [
+# ⚠️ Os DOIS sexos sao pools por ETNIA, pelo mesmo motivo: a congruencia de
+# casting e' travada pela pagina, e cabelo e' o descritor mais etnico que
+# existe. Um pool unico entregaria "loira mel" numa pagina de avatar negro e
+# "locs grisalhos" numa de avatar branco. A variedade que o operador pediu —
+# ruivas, loiras, morenas, afrodescendentes — vem das cinco paginas somadas.
+REFS_H_CLARA = [
     {"idade": 58, "marca": "thick silver hair swept back and a small dark beauty mark high on his left cheekbone",
      "corpo": "a broad muscular chest and defined arms"},
     {"idade": 61, "marca": "full salt-and-pepper hair, a close-cropped silver beard and pale grey eyes",
@@ -105,19 +110,47 @@ REFS_H = [
      "corpo": "a lean hard-muscled build with visible definition in the chest and arms"},
     {"idade": 59, "marca": "close-cropped silver hair and a small beauty mark beside his right eye",
      "corpo": "a broad chest, thick arms and clearly cut abdominal muscles"},
+    {"idade": 62, "marca": "sandy blond hair going grey at the sides and a strong cleft chin",
+     "corpo": "heavy shoulders and a thick muscular neck"},
+    {"idade": 57, "marca": "wavy steel-grey hair worn a little long and bright blue eyes",
+     "corpo": "a broad back and clearly defined arms"},
+    {"idade": 60, "marca": "short auburn hair fading to grey and light freckles across his nose",
+     "corpo": "a powerful chest and thick forearms"},
+    {"idade": 63, "marca": "silver hair combed straight back and a trimmed white beard along the jaw",
+     "corpo": "a lean athletic build with cut shoulders and a flat stomach"},
+]
+REFS_H_ESCURA = [
+    {"idade": 58, "marca": "close-cropped silver hair, a neat white beard and a small dark beauty mark on his left cheekbone",
+     "corpo": "a broad muscular chest and defined arms"},
+    {"idade": 61, "marca": "a full head of white hair worn short and warm amber eyes",
+     "corpo": "a powerfully built chest and thick corded forearms"},
+    {"idade": 56, "marca": "a close grey fade and a deep dimple in his left cheek",
+     "corpo": "broad shoulders and a hard flat stomach"},
+    {"idade": 64, "marca": "salt-and-pepper locs gathered back and a trimmed grey beard",
+     "corpo": "a lean hard-muscled build with visible definition in the chest and arms"},
+    {"idade": 59, "marca": "a smooth shaved head and a neat silver goatee",
+     "corpo": "a broad chest, thick arms and clearly cut abdominal muscles"},
+    {"idade": 62, "marca": "short grey twists and a small beauty mark beside his right eye",
+     "corpo": "heavy shoulders and a thick muscular neck"},
+    {"idade": 57, "marca": "a silver-flecked afro worn low and bright hazel eyes",
+     "corpo": "a broad back and clearly defined arms"},
+    {"idade": 60, "marca": "close-cropped white hair and a strong cleft chin",
+     "corpo": "a powerful chest and thick forearms"},
+    {"idade": 63, "marca": "a short grey afro and a trimmed white beard along the jaw",
+     "corpo": "a lean athletic build with cut shoulders and a flat stomach"},
 ]
 
-# ⚠️ "mulheres lindas de TODAS as etnias" (loiras, ruivas, afro-descendentes):
-# a variedade mora aqui, mas a **etnia acompanha a da pagina**, igual a do REF —
-# a congruencia de casting e' regra inviolavel do funil. Por isso sao DOIS
-# pools: um pool unico misturado entregaria loira mel numa pagina de avatar
-# negro, que e' exatamente o que a regra proibe.
 MULHERES_CLARA = [
     {"idade": 34, "desc": "long honey-blonde hair past her shoulders, a small beauty mark on her left jaw, a fitted coral summer dress"},
     {"idade": 31, "desc": "long copper-red hair and light freckles across her nose, a fitted white sundress"},
     {"idade": 36, "desc": "long dark wavy hair past her waist and a deep dimple in her right cheek, a fitted turquoise dress"},
     {"idade": 29, "desc": "shoulder-length ash-blonde hair and pale green eyes, a fitted olive summer dress"},
     {"idade": 33, "desc": "long auburn hair gathered over one shoulder and a small beauty mark beside her right eye, a fitted burgundy dress"},
+    {"idade": 30, "desc": "long strawberry-blonde waves and freckled shoulders, a fitted white linen dress"},
+    {"idade": 37, "desc": "glossy dark brown hair in a high ponytail and bright green eyes, a fitted navy summer dress"},
+    {"idade": 32, "desc": "deep red hair cut to the collarbone and a small beauty mark above her lip, a fitted cream dress"},
+    {"idade": 35, "desc": "long platinum-blonde hair and grey-blue eyes, a fitted emerald summer dress"},
+    {"idade": 28, "desc": "chestnut hair in loose beach waves and a dimple in her left cheek, a fitted blush sundress"},
 ]
 MULHERES_ESCURA = [
     {"idade": 35, "desc": "long braided hair gathered over one shoulder, a small beauty mark high on her right cheekbone, a fitted emerald dress"},
@@ -125,6 +158,11 @@ MULHERES_ESCURA = [
     {"idade": 30, "desc": "long box braids past her shoulders and a deep dimple in her left cheek, a fitted coral dress"},
     {"idade": 37, "desc": "shoulder-length natural curls and warm amber eyes, a fitted white sundress"},
     {"idade": 28, "desc": "hair in a high bun with soft edges and a small beauty mark below her left eye, a fitted teal dress"},
+    {"idade": 34, "desc": "long knotless braids down her back and a bright open smile, a fitted mustard summer dress"},
+    {"idade": 31, "desc": "a full voluminous afro and light hazel eyes, a fitted white linen dress"},
+    {"idade": 36, "desc": "sleek long hair parted in the middle and a small beauty mark on her right jaw, a fitted navy dress"},
+    {"idade": 29, "desc": "shoulder-length auburn-dyed curls and freckles across her cheeks, a fitted olive sundress"},
+    {"idade": 33, "desc": "long twists gathered high and a deep dimple in her right cheek, a fitted blush dress"},
 ]
 
 # ⚠️ PISO DE IDADE 28. O agente original punha esta persona em 20-24 e isso NAO
@@ -139,6 +177,10 @@ IDADE_MINIMA_MULHER = 28
 
 def mulheres_de(pagina):
     return MULHERES_CLARA if "white" in ETNIA[pagina] else MULHERES_ESCURA
+
+
+def homens_de(pagina):
+    return REFS_H_CLARA if "white" in ETNIA[pagina] else REFS_H_ESCURA
 
 
 # ⛔ SEMPRE cozinha americana — regra do agente original, que proibia
@@ -383,7 +425,7 @@ def sortear(pagina, rng, ledger):
     rec = _evitando(rng, RECEITAS, hist.get("receita", [])[-2:])
     isca = _evitando(rng, ISCA, hist.get("isca", [])[-3:])
     persona = _evitando(rng, PERSONAS, hist.get("persona", [])[-1:])
-    ref = rng.choice(REFS_H)
+    ref = rng.choice(homens_de(pagina))
     mul = rng.choice(mulheres_de(pagina))
 
     orgaos = rng.sample(NUCLEO, 3)
@@ -607,12 +649,18 @@ def lint(spec, blocos):
 # UI
 # ---------------------------------------------------------------------------
 
+# ⭐ PERSONA vem primeiro de proposito: e' o eixo que decide QUEM NARRA, e
+# portanto de qual pool a copy inteira sai. Sem ele no painel o operador via
+# dois elencos e nao sabia qual dos dois estava falando.
+# ⚠️ "REFS_H" e "MULHERES" sao FUNCOES da pagina, nao listas — a UI resolve
+# isso desde 2026-07-31 (ver ui_agente.trocar_eixo).
 EIXOS_UI = [
+    ("persona", "QUEM NARRA", "PERSONAS", "id"),
     ("ambiente", "COZINHA", "AMBIENTES", "id"),
     ("prop", "PROP DO HOOK", "PROPS", "id"),
     ("receita", "O RITUAL", "RECEITAS", "id"),
-    ("ref", "O HOMEM", "REFS_H", "marca"),
-    ("mulher", "A MULHER", "MULHERES", "desc"),
+    ("ref", "O HOMEM", "homens_de", "marca"),
+    ("mulher", "A MULHER", "mulheres_de", "desc"),
 ]
 
 PT_AMB = {"cozinha": "Na cozinha americana clara",
@@ -623,12 +671,19 @@ PT_AMB = {"cozinha": "Na cozinha americana clara",
 
 def resumo_pt(spec):
     et = "branca" if "white" in ETNIA[spec["pagina"]] else "negra"
-    return ("%s, o homem de %d anos sem camisa e muito bonito mostra o prop "
-            "murcho na mão e conta a própria dor. Na cena 2 ele prepara a "
-            "gelatina na bancada, e na 3 aparece com a mulher e o prop ereto. "
-            "Três cenas, elenco de pele %s."
+    if spec["persona"]["id"] == "mulher":
+        return ("%s, quem fala e a mulher de %d anos: ela mostra o prop murcho "
+                "na mão e conta a dor do marido de %d. Na cena 2 ela prepara a "
+                "gelatina na bancada, e na 3 aparece com ele e o prop ereto. "
+                "Três cenas, elenco de pele %s."
+                % (PT_AMB.get(spec["ambiente"]["id"], "Na cozinha"),
+                   spec["mulher"]["idade"], spec["ref"]["idade"], et))
+    return ("%s, quem fala e o homem de %d anos sem camisa e muito bonito: ele "
+            "mostra o prop murcho na mão e conta a própria dor. Na cena 2 ele "
+            "prepara a gelatina na bancada, e na 3 aparece com a mulher de %d "
+            "e o prop ereto. Três cenas, elenco de pele %s."
             % (PT_AMB.get(spec["ambiente"]["id"], "Na cozinha"),
-               spec["ref"]["idade"], et))
+               spec["ref"]["idade"], spec["mulher"]["idade"], et))
 
 
 def _recopiar_receita(spec, rng):
@@ -637,7 +692,27 @@ def _recopiar_receita(spec, rng):
     spec["falas"][1] = rng.choice(FUNDIDAS).format(o=o, ing=spec["receita"]["fala"])
 
 
-EIXOS_QUE_MEXEM_NA_COPY = {"receita": _recopiar_receita}
+def _recopiar_persona(spec, rng):
+    """Trocar quem narra troca a copy INTEIRA — sao pools diferentes.
+
+    ⚠️ Sem isto o painel mostraria "quem narra: mulher" com as tres falas na
+    voz do homem. O eixo nao e' de elenco, e' de roteiro.
+    """
+    n = IDADE_EXT[spec["ref"]["idade"]]
+    fem = spec["persona"]["id"] == "mulher"
+    hooks, fundidas, ctas = ((HOOKS_F, FUNDIDAS_F, CTAS_F) if fem
+                             else (HOOKS, FUNDIDAS, CTAS))
+    orgaos = rng.sample(NUCLEO, 2)
+    spec["falas"] = [
+        rng.choice(hooks).format(o=orgaos[0], n=n, N=n.capitalize()),
+        rng.choice(fundidas).format(o=orgaos[1], ing=spec["receita"]["fala"]),
+        rng.choice(ctas).format(gate=rng.choice(GATES)),
+    ]
+
+
+EIXOS_QUE_MEXEM_NA_COPY = {"receita": _recopiar_receita,
+                           "persona": _recopiar_persona,
+                           "ref": _recopiar_persona}
 
 
 def nova_fala(spec, i, rng):
