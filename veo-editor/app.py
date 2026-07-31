@@ -413,20 +413,34 @@ class App(tk.Tk):
                           '.zip e capturado).']
         self._set_lista("fila", self.lst_fila, s["pendentes"], vazio_fila)
 
+        # ⭐ O mascote acende em TRES estados, nao so' no processamento: o zip
+        # visto e estabilizando, o enfileirado e o em edicao. Sem os dois
+        # primeiros o painel fica dizendo "ociosa" por ate' 5 segundos depois
+        # do download terminar — a janela em que o operador olha e acha que
+        # quebrou. Ordem do operador, 2026-07-31.
+        chegando = s.get("chegando") or []
         if s["atual"]:
             self.lb_etapa.configure(text=f'{s["atual"]["zip"]}  —  {s["atual"]["etapa"]}')
             log = "\n".join(s["atual"]["log"])
-            if not self._gif_visivel:
-                self.gif.pack(before=self.txt_log, pady=(0, 6))
-                self.gif.ligar()
-                self._gif_visivel = True
+        elif chegando:
+            self.lb_etapa.configure(text=f"{chegando[0]}  —  chegando...")
+            log = ""
+        elif s["pendentes"]:
+            self.lb_etapa.configure(text=f"{s['pendentes'][0]}  —  na fila, comecando...")
+            log = ""
         else:
             self.lb_etapa.configure(text="Esteira ociosa.")
             log = ""
-            if self._gif_visivel:
-                self.gif.desligar()
-                self.gif.pack_forget()
-                self._gif_visivel = False
+
+        ocupada = bool(s["atual"] or chegando or s["pendentes"])
+        if ocupada and not self._gif_visivel:
+            self.gif.pack(before=self.txt_log, pady=(0, 6))
+            self.gif.ligar()
+            self._gif_visivel = True
+        elif not ocupada and self._gif_visivel:
+            self.gif.desligar()
+            self.gif.pack_forget()
+            self._gif_visivel = False
         if self._cache.get("log") != log:
             self._cache["log"] = log
             self.txt_log.configure(state="normal")

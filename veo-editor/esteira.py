@@ -57,6 +57,7 @@ _fila = queue.Queue()
 _iniciada = False
 
 ESTADO = {
+    "chegando": [],    # [nome do zip visto, esperando o tamanho estabilizar]
     "pendentes": [],   # [nome do zip aguardando]
     "atual": None,     # {"zip", "etapa", "log": [...]}
     "prontos": [],     # [{"arquivo","data","zip","duracao","fator","hora"}]
@@ -265,6 +266,7 @@ def _watcher():
     tamanhos = {}
     while True:
         try:
+            vendo = []          # o que ainda esta' estabilizando NESTE ciclo
             candidatos = []
             vigiada = pasta_vigiada()  # relido a cada ciclo: troca vale na hora
             modo_dl = _modo_downloads(vigiada)
@@ -292,6 +294,12 @@ def _watcher():
                         pass  # arquivo em uso; tenta no proximo ciclo
                 else:
                     tamanhos[p] = tam
+                    vendo.append(os.path.basename(p))
+
+            # ⭐ publica o que esta' sendo observado: e' o que acende o mascote
+            # antes mesmo do arquivo entrar na fila (ordem do operador).
+            with _lock:
+                ESTADO["chegando"] = vendo
             # esquece caminhos que sumiram
             for p in list(tamanhos):
                 if not os.path.exists(p):
@@ -419,6 +427,7 @@ def status():
         return {
             "watch": [f"{vigiada} ({padrao})", D_ENTRADA + r" (*.zip)"],
             "ignorados": ignorados,
+            "chegando": list(ESTADO["chegando"]),
             "pendentes": list(ESTADO["pendentes"]),
             "atual": atual,
             "prontos": [p for p in ESTADO["prontos"] if p["data"] == hoje],
