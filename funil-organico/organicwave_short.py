@@ -224,16 +224,21 @@ ISCA = [
     "a small tin of maca powder, lid beside it",
 ]
 
+# ⚠️ A acao e' frase de GERUNDIO, SEM SUJEITO — encaixa nas duas personas.
+# Enquanto trazia sujeito masculino proprio, a persona feminina rendia
+# "Her hands work while she talks: HE empties the sachet..." num take que
+# declara que so' ela esta' em quadro. Prompt que se contradiz e' prompt que
+# o modelo resolve como quiser.
 RECEITAS = [
     {"id": "gelatina_agua", "fala": "a spoonful of gelatin into a glass of cold water",
      "mesa": "a plain white sachet of pale powder with no label, a clear glass of water and a metal spoon",
-     "acao": "he tears the sachet open, tips the powder into the glass of water and stirs it in slow circles"},
+     "acao": "tearing the sachet open, tipping the powder into the glass of water and stirring it in slow circles"},
     {"id": "gelatina_limao", "fala": "a spoonful of gelatin into cold water with fresh lemon",
      "mesa": "a plain white sachet of pale powder with no label, a glass of cold water, a halved lemon and a metal spoon",
-     "acao": "he empties the sachet into the glass, squeezes the halved lemon over it and stirs it through"},
+     "acao": "emptying the sachet into the glass, squeezing the halved lemon over it and stirring it through"},
     {"id": "gelatina_morna", "fala": "a spoonful of gelatin into half a glass of warm water",
      "mesa": "a plain white sachet of pale powder with no label, a glass of warm water and a long metal spoon",
-     "acao": "he empties the sachet into the warm water and stirs until the powder is gone"},
+     "acao": "emptying the sachet into the warm water and stirring until the powder is gone"},
 ]
 
 
