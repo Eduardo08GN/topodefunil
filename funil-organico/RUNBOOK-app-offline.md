@@ -41,6 +41,14 @@ e a **interface e' uma so'** para todos os agentes. Duplicar as ~450 linhas de
 tkinter por agente seria o mesmo erro que a regra P9 proibe na doutrina: copia
 envelhece e mente.
 
+⚙️ **A assinatura `by Eddie` mora na UI, nunca no motor.** É a constante
+`ASSINATURA` em `ui_agente.py` — renderizada em `MUTED` depois do nome do
+agente, e concatenada no título da janela. Concatenar em `TITULO` seria errado
+por dois motivos: o cabeçalho quebra o título no **primeiro espaço** (`AGENTE`
+branco + resto em laranja), então o "by Eddie" sairia em destaque disputando com
+o nome; e a assinatura passaria a ser copiada em cada motor novo. Do jeito que
+está, agente portado daqui pra frente já nasce assinado.
+
 O contrato que cada motor cumpre para a interface generica:
 
 | Simbolo | O que e' |

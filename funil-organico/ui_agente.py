@@ -64,9 +64,14 @@ OK = "#35d07f"
 ERRO = "#ff5f56"
 AVISO = "#ffb02e"
 
+ASSINATURA = "by Eddie"
+
 F_UI = ("Segoe UI", 10)
 F_UI_B = ("Segoe UI Semibold", 10)
 F_TIT = ("Segoe UI Semibold", 17)
+# a assinatura da familia — mesma do Veo Editor. Mora AQUI e so' aqui: vale
+# para os quatro agentes portados e para os que vierem, sem tocar em motor.
+F_ASSIN = ("Segoe UI", 12)
 F_PASSO = ("Segoe UI Semibold", 9)
 F_MONO = ("Consolas", 10)
 F_SMALL = ("Segoe UI", 9)
@@ -76,7 +81,7 @@ class App(tk.Tk):
     def __init__(self, motor):
         super().__init__()
         self.m = motor
-        self.title("%s  v1.2" % motor.TITULO)
+        self.title("%s %s  v1.2" % (motor.TITULO, ASSINATURA))
         self.configure(bg=BG)
         self.geometry("1360x900")
         self.minsize(1180, 760)
@@ -136,6 +141,10 @@ class App(tk.Tk):
         tk.Label(t, text=a, font=F_TIT, bg=BG, fg=TXT).pack(side="left")
         if b:
             tk.Label(t, text=b, font=F_TIT, bg=BG, fg=ACCENT).pack(side="left", padx=(7, 0))
+        # a assinatura acompanha o nome, mas em peso menor: nao disputa com o
+        # agente, so' fecha a marca. Mesma logica do "Veo Editor by Eddie".
+        tk.Label(t, text=ASSINATURA, font=F_ASSIN, bg=BG,
+                 fg=MUTED).pack(side="left", padx=(8, 0), pady=(4, 0))
         tk.Label(t, text=self.m.SUBTITULO, font=F_SMALL, bg=BG,
                  fg=MUTED).pack(side="left", padx=(14, 0), pady=(7, 0))
 
