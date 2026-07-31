@@ -51,6 +51,36 @@ recusa  →  isolar a variável  →  hipótese  →  prompt-teste  →  operado
                                pedir permissão  →  gravar no agente
 ```
 
+### ⭐ A REGRA ZERO — recusa se resolve REGERANDO, não investigando
+
+Aprovada pelo operador em 2026-07-31, depois de um dia inteiro de evidência.
+
+> **Bloco recusado: regere o TAKE 2×, depois a IMAGEM 2×.**
+> Só vira investigação quando o mesmo bloco falha em **renders diferentes** —
+> porque aí a variável deixou de ser o sorteio do modelo.
+
+O placar que produziu a regra, todos no mesmo dia:
+
+| caso | política | desfecho |
+|---|---|---|
+| NECROSE cena 1 | conteúdo nocivo | 4 rodadas de reescrita → **era variância** |
+| NECROSE SHORT cena 1 | sexual | passou ao regerar |
+| SHORT cena 3 | reputação | passou com **imagem nova** |
+| bicarbonato em cena | — | prop tirado por palpite → revertido, **passou com a marca** |
+| VAZAMENTO cena 1 | sexual | cena já tinha **3 vídeos aprovados** no histórico |
+
+**Cinco recusas, zero gatilhos encontrados.** Toda investigação terminou em
+variância, e toda mudança de cena teve que ser desfeita.
+
+O que a regra economiza, medido nos próprios casos: o NECROSE teria custado
+**duas gerações em vez de sete**, e o bicarbonato nunca teria saído de cena.
+
+⚠️ **A ordem importa** — take antes de imagem. Regerar o take é mais barato e
+resolve a maioria; regerar a imagem só é necessário quando o mesmo texto cai em
+cima do mesmo frame duas vezes.
+
+---
+
 ### As regras duras
 
 **1. Uma variável por rodada.** Se duas mudam e passa, a rodada não ensinou
@@ -241,8 +271,9 @@ Duas consequências, e a segunda é a que dói:
 ## O QUE SOBROU DE APRENDIZADO PERMANENTE
 
 **1. Recusa não é veredito sobre o conteúdo.** Continua valendo — mas agora com
-um degrau antes: **recusa também não é necessariamente sinal.** Regere 2× antes
-de formular hipótese.
+um degrau antes: **recusa também não é necessariamente sinal.** Regere o take
+2× e a imagem 2× antes de formular hipótese (Regra Zero). Investigação só
+começa quando o bloco falha em **renders diferentes**.
 
 **2. Compare com o que passou, não com o que você imagina.** A tabela
 "o que este bloco tem que os outros não têm" é mais barata e mais informativa

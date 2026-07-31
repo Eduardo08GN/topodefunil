@@ -55,6 +55,12 @@ gatilho que provavelmente não existia.
 > **Antes de investigar qualquer recusa, regere 2×.** Vale para as três
 > políticas. Investigar variância é a forma mais cara de não aprender nada.
 
+⭐ **Endurecido em 2026-07-31 — a Regra Zero:** regere o **take 2×**, depois a
+**imagem 2×**. Só vira investigação quando o mesmo bloco falha em **renders
+diferentes**. No dia em que a regra nasceu, cinco recusas foram investigadas e
+**nenhuma tinha gatilho** — todas eram variância, e toda mudança de cena feita
+por palpite teve que ser desfeita.
+
 E quando a investigação for necessária, ela tem método próprio:
 **[`RUNBOOK-bisseccao-moderacao.md`](RUNBOOK-bisseccao-moderacao.md)** — teste
 empírico com variável única, o agente propõe a hipótese e o operador roda.
