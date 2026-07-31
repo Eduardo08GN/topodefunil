@@ -63,7 +63,15 @@ arquivo, e o resultado do teste de aceitação deste prompt.
 
 ---
 
-# BATERIA V4 — sete prompts, nesta ordem
+# BATERIA V4 — seis prompts, nesta ordem
+
+> **O escopo é o delta 5→4**: só o que a V5 tem e a V4 não. Ordenados do mais
+> barato e isolado ao mais estrutural, porque o editor regride.
+>
+> ⛔ **Nomes de arquivo NÃO entram nesta bateria.** Ali a V4 já está certa — o
+> `sanitizeFilename` dela padroniza com dois dígitos. Quem está torta é a V5,
+> que baixa individual sem zero à esquerda (`img_1.jpg`) e só pada dentro do
+> ZIP. O prompt está no fim do arquivo, marcado como **correção da V5**.
 
 ## PROMPT 1 — modelo de vídeo e duração
 
@@ -279,9 +287,14 @@ pausar o primeiro. Clicar num vídeo abre o modal e ele toca sozinho.
 
 ---
 
-## PROMPT 7 — nomes de arquivo padronizados
+## FORA DA BATERIA — nomes de arquivo, e é correção **da V5**
 
-*Menor de todos, mas evita bagunça na pasta de postagem.*
+⛔ **Não mande este na V4.** Ela já está certa: o `sanitizeFilename` padroniza
+com dois dígitos nos dois caminhos. É a **V5** que baixa individual sem zero à
+esquerda (`img_1.jpg`, `video_1.mp4`) e só pada dentro do ZIP.
+
+Guarde para quando for mexer na V5 — trocando o nome do ZIP para
+`adbatch_vertical_5.zip`:
 
 ```text
 [PREÂMBULO]
@@ -292,7 +305,7 @@ Padronize TODOS os downloads com dois dígitos, usando o índice do slot:
 - imagem individual: imagem_01.jpg, imagem_02.jpg, ...
 - vídeo individual:  video_01.mp4, video_02.mp4, ...
 - dentro do ZIP:     video_01.mp4, video_02.mp4, ...
-- nome do ZIP:       adbatch_vertical_4.zip
+- nome do ZIP:       adbatch_vertical_5.zip
 
 O número é sempre o do SLOT, nunca a ordem de conclusão. Se o slot 02
 falhou, o ZIP sai com video_01, video_03 e video_04 — com o buraco, sem
