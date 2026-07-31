@@ -91,26 +91,37 @@ bloco sem slot, a flag `ignored` acende e a barra lateral avisa.
 
 ---
 
-## ⚠️ DESCASAMENTO CONHECIDO — o REF sai dos motores sem cabeçalho
+## O CABEÇALHO `REF` FAZ PARTE DO BLOCO — corrigido em 2026-07-31
 
-Achado em 2026-07-31, ainda **não corrigido**.
+Descasamento achado ao conferir a integração motor → ferramenta, **já
+corrigido nos quatro motores**.
 
-Os motores Python (`necrose_lucas.py` e irmãos) emitem o bloco de referência com
-a chave de exibição `BLOCO 0 (REF)`, mas o **conteúdo começa direto** em
-`Photo of a real person, ...` — sem a palavra `REF` na frente. Os blocos
-`IMAGE`/`TAKE`, esses sim, carregam o cabeçalho inline (`IMAGE 01/05: ...`).
+Os motores emitiam o bloco de referência com a chave de exibição
+`BLOCO 0 (REF)`, mas o **conteúdo começava direto** em `Photo of a real
+person, ...` — sem a palavra `REF` na frente. Os blocos `IMAGE`/`TAKE`, esses
+sim, sempre carregaram o cabeçalho inline (`IMAGE 01/05: ...`).
 
-Consequência: se o REF for colado no mesmo textarea dos IMAGE, o parser o lê
-como **bloco anônimo**, tenta encaixar num slot livre, não acha (os cinco já
-estão numerados), e **descarta** acendendo `ignored`. O painel Consistência
-Visual continua em "Sem referência".
+Colado no mesmo textarea dos IMAGE, o parser lia a referência como **bloco
+anônimo**, tentava encaixar num slot livre, não achava (os cinco já numerados)
+e **descartava** acendendo `ignored`. O painel ficava em "Sem referência" — e o
+lote saía com cinco pessoas diferentes, que é exatamente a falha que o REF
+existe para impedir.
 
-**Os dois caminhos que funcionam hoje:**
-1. Colar o REF e **digitar `REF: ` na frente** antes de colar os IMAGE.
-2. Gerar a referência fora e **anexar por upload** (`Flow.media.select`).
+**A correção:** `montar()` agora emite `REF 01: Photo of a real person, ...`.
+Uma linha em cada motor, e uma regra de linter em cada um para que não se perca:
 
-**A correção de uma linha** seria o `montar()` prefixar `REF: ` no bloco 0 — mas
-isso muda o que o agente emite, então **não foi aplicada sem autorização**.
+```python
+if not blocos.get("BLOCO 0 (REF)", "").lstrip().upper().startswith("REF"):
+    achados.append(("ERRO", "BLOCO 0 sem o cabecalho REF: o AdBatch "
+                            "descarta a referencia em silencio"))
+```
+
+> ⚠️ **A falha era silenciosa dos dois lados** — o motor não sabia que o
+> cabeçalho fazia falta, e a ferramenta descartava sem erro. Por isso virou
+> `ERRO` de linter e não comentário: falha silenciosa só se paga com trava
+> mecânica.
+
+O upload manual (`Flow.media.select`) continua existindo como fallback.
 
 ---
 
@@ -259,7 +270,7 @@ Some-se a isso um detalhe de arquivo: o download individual da V5 sai
 | Sintoma | Causa provável | Saída |
 |---|---|---|
 | "1 bloco detectado" com texto cheio de cabeçalhos | caractere invisível colado no cabeçalho | é o que o `normalizeText` resolve — confira que ele existe no parser |
-| Painel "Sem referência" com REF colado | o bloco REF saiu do motor **sem o cabeçalho** | digitar `REF: ` na frente (ver descasamento acima) |
+| Painel "Sem referência" com REF colado | o bloco REF está sem o cabeçalho | os motores já emitem `REF 01:` desde 2026-07-31 — se sumiu, o linter acusa |
 | Cinco pessoas diferentes no mesmo lote | o `mediaId` do REF não entrou em `referenceImageMediaIds` | guardar o ID em estado **não basta** — ele tem que entrar na requisição de cada slot |
 | Botão "Gerar Vídeos" desabilitado com takes colados | nenhum slot correspondente tem imagem em `success` | a etapa 2 depende da 1: `TAKE 0N` anima a **imagem do slot N** |
 | Prompt some ao recolar o roteiro | falta o par `FromScript`/`Dirty` | é o item 1 do atraso da V4 |

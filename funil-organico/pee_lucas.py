@@ -379,6 +379,11 @@ def lint(spec, blocos):
     achados = []
     falas = spec["falas"]
 
+    # o bloco 0 tem de carregar o cabecalho REF (contrato do parser do AdBatch)
+    if not blocos.get("BLOCO 0 (REF)", "").lstrip().upper().startswith("REF"):
+        achados.append(("ERRO", "BLOCO 0 sem o cabecalho REF: o AdBatch "
+                                "descarta a referencia em silencio"))
+
     # cota do orgao (>= 4 das 5), rotacionada
     cenas, usados = [], []
     for i, fala in enumerate(falas, 1):
@@ -552,8 +557,12 @@ def montar(spec):
 
     b = {}
 
+    # O cabecalho REF faz parte do bloco, igual ao "IMAGE 01/05:" dos outros.
+    # E o que o parser do AdBatch usa para mandar este bloco para o painel
+    # Consistencia Visual em vez de tentar encaixa-lo num slot da grade.
+    # ⛔ Nao remover: sem ele a referencia e descartada em silencio.
     b["BLOCO 0 (REF)"] = (
-        "Photo of a real person, a %d-year-old %s man, chest up, facing camera, "
+        "REF 01: Photo of a real person, a %d-year-old %s man, chest up, facing camera, "
         "calm expression. Lean muscular build, chest and shoulders visible. %s. "
         "%s %s Plain gray background, soft light. No text, no watermark."
         % (ref["idade"], et, ref["marca"].capitalize(), ref["roupa"], ANTICELEB)
