@@ -383,6 +383,15 @@ MESAS = [
 # POOLS DE COPY
 # ---------------------------------------------------------------------------
 
+# NE13 — janelas de tempo proibidas no hook (cena 1). Lista fechada e literal:
+# regex aqui so' geraria falso positivo com "one" e "day" soltos.
+JANELAS_TEMPO = (
+    "in one month", "in a month", "in one week", "in a week", "in one night",
+    "by next month", "by next week", "within a month", "within a week",
+    "in thirty days", "in nineteen days", "in ten days", "in seven days",
+    "in a few days", "in days", "in weeks", "in months",
+)
+
 NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
 
 # NE7 — o hook e' "from this to this", com o gesto sincronizado na batida das
@@ -398,11 +407,33 @@ NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"
 # A fonte nunca afirma, ela CONDICIONA: "If you want your soldier to go from
 # this to this in just one month". Tres dos quatro hooks tinham se afastado
 # dessa forma sem que eu percebesse.
+# NE13 (bisseccao de campo, Lucas/montanhes-lago 2026-07-31): a cena 1 NAO
+# carrega janela de tempo. Log do isolamento, 4 rodadas:
+#   #4 + man-hood, sem prazo  -> RECUSADO 3x
+#   #1 + man-hood, COM prazo  -> RECUSADO 2x
+#   #1 + soljer,   COM prazo  -> RECUSADO
+#   #1 + soljer,   SEM prazo  -> 🟢 APROVADO
+# 2->3 mudou so o substantivo e os dois cairam: o orgao nao era a causa.
+# 3->4 mudou so o prazo: e o prazo.
+# ⚠️ NAO e' bloqueio binario. O video do dia anterior passou COM "in one month".
+# E' CUSTO DE DENSIDADE (licoes-producao-veo §densidade): a cena 1 ja gasta o
+# orcamento inteiro com tecido necrosado no quadro + promessa de virada; a
+# janela de tempo e' a gota. Nao ha motivo pra pagar esse custo aqui — o prazo
+# faz trabalho na CENA 4, que e' onde a prova mora ("Nineteen days...", 🟢).
+#
+# ⛔ O hook interrogativo saiu do pool: "If you had to pick tonight, is your {o}
+# this one or that one?" foi RECUSADO 3x SEM prazo nenhum. Ele pede que o
+# espectador localize o proprio orgao entre os dois modelos, um deles descrito
+# como tecido apodrecido — e' diagnostico do corpo dele em forma de pergunta,
+# que e' exatamente o que o NE7 proibe. Passava no linter porque o check de
+# NE7 testa FORMA (tem `if` ou termina em `?`) para uma regra de SUBSTANCIA.
 HOOKS = [
-    "If you want your {o} to go from this to this in one month, watch close.",
-    "If your {o} looks more like this one than that one, watch close, brother.",
+    "If you want your {o} to go from this to this, watch close.",
     "Nobody wants this one. If you want your {o} to look like that one, watch close.",
-    "If you had to pick tonight, is your {o} this one or that one?",
+    # 🟡 condiciona no ESTADO dele, nao no desejo — mesma familia do hook
+    # interrogativo banido, so' que sem render que condene. Se cair, e' o
+    # primeiro a sair.
+    "If your {o} looks more like this one than that one, watch close, brother.",
 ]
 
 # NE — cena 2: o MUP de Georgi (alivio de culpa + vilao), com o modelo PODRE
@@ -560,6 +591,16 @@ def lint(spec, blocos):
                                 "claim de cura e a primeira linha da cerca"))
     if not any(n.lower() in h for n in NUCLEO):
         achados.append(("ERRO", "NE7: o hook nao nomeia o orgao com substantivo"))
+
+    # NE13 — janela de tempo na cena 1. Ver o bloco do HOOKS para o log da
+    # bisseccao. O prazo pertence a cena 4, nunca ao hook.
+    for janela in JANELAS_TEMPO:
+        if janela in h:
+            achados.append(("ERRO", "NE13: o hook carrega janela de tempo "
+                                    "('%s') — o prazo e' o custo que estoura a "
+                                    "densidade da cena 1; ele mora na cena 4"
+                                    % janela))
+            break
 
     # MUP na cena 2
     if "blood flow" not in falas[1].lower():

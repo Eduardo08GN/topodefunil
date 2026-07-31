@@ -1,5 +1,10 @@
 # AGENTE UGC — ED / MEN'S WELLNESS
-## NECROSE V1 — OS DOIS ÓRGÃOS LADO A LADO (o ângulo do homem selvagem)
+## NECROSE Lucas V1 — OS DOIS ÓRGÃOS LADO A LADO (o ângulo do homem selvagem)
+
+> 📌 **Cópia de operação do Lucas.** Nasceu de `AGENTE_ED_NECROSE_V1.md`
+> (versão do Ed, na raiz) em 2026-07-31 e **não substitui o original** — o
+> original segue intocado. As regras que este arquivo tem a mais estão
+> marcadas com o selo **[Lucas]** e vieram de falha paga em campo por mim.
 
 > Agente paralelo e ESPECIALISTA. Não substitui V4/V5/V6/PRISMA — coexiste.
 > Use **este** quando o vídeo for do ângulo **comparação anatômica**: dois
@@ -242,7 +247,9 @@ ereto. Os dois modelos somem do quadro, e o que sobra é o resultado.
 `soldier`. **MUP na cena 2** (não é idade, é o fluxo estrangulado), **MUS na
 cena 4** (`gelatin trick` literal, obrigatório). **Fecho da cena 4 derruba uma
 barreira** ([`espinha-fixa`](funil-organico/espinha-fixa.md)). **CTA travado em
-GELATIN** + follow-gate; ⛔ `BOOK`/`YES` proibidos.
+GELATIN** + follow-gate; ⛔ `BOOK`/`YES` proibidos. ⭐ **[Lucas] No `Dialogue:` a
+keyword vai em MINÚSCULA e seguida de VÍRGULA** — `Comment gelatin, and I'll…`
+(NE12). Caixa alta só no CTA fixado do topo, que não passa pelo TTS.
 
 ⛔ **As 6 formas de vagueza estão banidas.** Neste ângulo a que mais tenta
 entrar é **narrar o quadro**: a imagem já mostra os dois modelos, então a fala
@@ -317,10 +324,61 @@ causa**; a imagem mostra o estado.
   `siphon`. ⛔ E zero vocabulário de firme↔murcho no prompt de movimento: isso
   derruba a geração de vídeo mesmo com o IMAGE aprovado.
 
-- **NE13 — ⭐⭐ A CENA 1 NÃO CARREGA JANELA DE TEMPO — e o hook interrogativo
-  está banido** (bissecção de campo, Lucas/montanhês-lago, 2026-07-31). Cinco
-  recusas pagas na política de **conteúdo nocivo** até isolar a variável, todas
-  com o IMAGE já aprovado.
+- **NE12 — ⭐⭐ [Lucas] A KEYWORD VEM COM VÍRGULA E EM MINÚSCULA DENTRO DO
+  `Dialogue:`** (falha em produção confirmada em campo, Lucas/nativo-canyon,
+  2026-07-31). **É o erro mais caro do vídeo inteiro** — mais que rosto
+  duplicado, mais que prop murcho — porque a keyword é o **gatilho da automação
+  Comentário→DM**, e o defeito **não aparece em nenhuma métrica visual**: o
+  vídeo sobe bonito e a DM nunca dispara.
+
+  **O que aconteceu.** O TAKE 05 saiu `Comment GELATIN and I'll send you the
+  exact one I use.` — caixa alta e sem vírgula. O Veo narrou **"gelatine"**. A
+  legenda automática, gerada do áudio, queimou `GELATINE, AND` no rodapé,
+  enquanto o CTA fixado no topo dizia `COMMENT GELATIN`. **Duas keywords
+  conflitantes na mesma tela.** O espectador digita o que ouve, e `GELATINE`
+  não é nenhuma das 10 variantes cadastradas no Meta.
+
+  **A evidência dos dois fatores, no mesmo vídeo e no mesmo render:** na cena 3
+  a palavra aparece **duas vezes em minúscula** (`a spoonful of gelatin`, `the
+  gelatin trick`) e o TTS **acertou as duas**. Na cena 5 ela vem em **caixa
+  alta e sem vírgula** — e errou. (Os dois fatores mudam juntos; não é
+  isolamento perfeito, mas é a primeira evidência de campo de ambos.)
+
+  **A vírgula** força a micro-pausa que impede a liaison com a palavra
+  seguinte — sem ela o Veo emenda `GELATIN`+`and`. **A minúscula** evita o
+  **Erro Fatal 12 do V4** (*"em ALL CAPS o Veo soletra letra por letra"*).
+  A caixa alta fica **só no CTA fixado do topo**, que é imagem e não passa
+  pelo TTS.
+
+  ⛔ **Strings travadas do CTA — as três, sempre assim:**
+  ```
+  Comment gelatin, and I'll send you the exact one I use.
+  Comment gelatin, and I'll send you the only one I trust.
+  Comment gelatin, and I'll send you where I get mine.
+  ```
+  ⛔ **Banido:** `Comment GELATIN and I'll…` (caixa alta **e** sem vírgula) ·
+  `Comment GELATIN, and…` (a vírgula sozinha não basta) · qualquer keyword
+  colada na palavra seguinte.
+
+  ⚠️ **A variância é real:** três renders do mesmo take já entregaram `gelatin`
+  (limpo), `Gelatine` e `GLATN`. A vírgula + minúscula reduzem o fator, não o
+  eliminam — por isso o item abaixo é **obrigatório**.
+
+  ⛔ **VERIFICAÇÃO OBRIGATÓRIA ANTES DE PUBLICAR:** transcrever (ou ouvir) o
+  take do CTA e conferir a keyword **palavra por palavra**, e olhar o **frame
+  da legenda queimada** — o erro pode estar só numa das duas camadas.
+
+  📌 Origem da regra: `C3a` do
+  [`AGENTE_ED_FLAGRANTE_V1_COP1.md`](AGENTE_ED_FLAGRANTE_V1_COP1.md), onde ela
+  foi diagnosticada primeiro (keyword narrada como `GLATN`, 2026-07-29).
+
+  ⚙️ **O motor ainda não tem esta regra.** `funil-organico/necrose_lucas.py`
+  linhas 458-460 continuam emitindo `Comment GELATIN and I'll send you...`.
+  Enquanto não for portada, **corrigir o TAKE 05 na mão depois de sortear**.
+
+- **NE13 — ⭐⭐ [Lucas] A CENA 1 NÃO CARREGA JANELA DE TEMPO — e o hook
+  interrogativo está banido** (bissecção de campo, Lucas/montanhês-lago,
+  2026-07-31). Cinco recusas pagas até isolar a variável.
 
   **O log da bissecção — é o valor deste bloco, não a conclusão:**
 
@@ -332,8 +390,8 @@ causa**; a imagem mostra o estado.
   | 4 | `If you want… from this to this` | soljer | **não** | 🟢 |
 
   De 2 para 3 mudou **só o substantivo** e as duas caíram: **o órgão não era a
-  causa** — era a hipótese principal, e o teste a derrubou. De 3 para 4 mudou
-  **só o prazo**. É o prazo.
+  causa** — hipótese minha, derrubada pelo teste. De 3 para 4 mudou **só o
+  prazo**. É o prazo.
 
   ⛔ **String validada em campo:**
   ```
@@ -341,22 +399,21 @@ causa**; a imagem mostra o estado.
   ```
 
   ⚠️ **NÃO é bloqueio binário — é CUSTO DE DENSIDADE.** O vídeo do dia anterior
-  passou **com** `in one month` (`old boy`, cenário de cânion). A cena 1 já
-  gasta o orçamento inteiro com **tecido necrosado no quadro + promessa de
-  virada**; a janela de tempo é a gota que estoura. Ver
+  passou **com** `in one month` (`old boy`, canyon). A cena 1 já gasta o
+  orçamento inteiro com **tecido necrosado no quadro + promessa de virada**; a
+  janela de tempo é a gota. Ver
   [`licoes-producao-veo`](funil-organico/licoes-producao-veo.md) §Densidade é
   superfície de bloqueio.
 
   **E não há motivo para pagar esse custo aqui:** o prazo faz trabalho na
   **cena 4**, que é onde a prova mora — `Nineteen days of the gelatin trick and
-  my weiner came back like this` gerou 🟢 no mesmo lote.
+  my weiner came back like this` gerou 🟢, com o mesmo lote.
 
   ⛔ **O hook interrogativo saiu do pool.** `If you had to pick tonight, is your
   {o} this one or that one?` foi recusado **3× sem prazo nenhum**. Ele pede que
   o espectador **localize o próprio órgão** entre os dois modelos, um deles
   descrito como tecido apodrecido — é **diagnóstico do corpo dele em forma de
-  pergunta**, exatamente o que o NE7 proíbe. A forma interrogativa não desarma
-  o diagnóstico; só o veste.
+  pergunta**, exatamente o que o NE7 proíbe.
 
   🟡 **Continua no pool, sob observação:** `If your {o} looks more like this one
   than that one…` condiciona no **estado** dele, não no desejo — mesma família
@@ -365,12 +422,12 @@ causa**; a imagem mostra o estado.
   ⚠️ **Por que o linter deixou os dois passarem:** o check do NE7 testava
   **forma** (tem `if` **ou** termina em `?`) para uma regra de **substância**.
   Regra de substância não vira regex — o que virou regex foi a **lista fechada
-  de janelas de tempo** (`JANELAS_TEMPO`, em `necrose_lucas.py`). O julgamento
-  continua sendo leitura.
+  de janelas de tempo** (`JANELAS_TEMPO` no motor). O julgamento continua sendo
+  leitura.
 
   📌 **Método, que generaliza para qualquer recusa:** só se aprende trocando
-  **uma** variável por rodada, e as hipóteses mais convincentes caem no teste.
-  Runbook:
+  **uma** variável por rodada. Duas das minhas três hipóteses estavam erradas —
+  e foram os testes que mostraram, não o raciocínio. Runbook:
   [`RUNBOOK-bisseccao-moderacao`](funil-organico/RUNBOOK-bisseccao-moderacao.md).
 
 ---
@@ -426,14 +483,16 @@ Se recusar de novo, a fila de reformulação (§Recusa do gerador), na ordem:
 - [ ] **Arquétipo íntegro**: cenário + chapéu + animal da mesma família, zero marca legível (NE5)?
 - [ ] **Receita na cena 3, na mesa de madeira, com as mãos executando** (NE6)? Zero dose médica?
 - [ ] ⭐ **Hook `from this to this` com o gesto sincronizado na batida exata**, órgão nomeado com substantivo (NE7)?
-- [ ] ⭐⭐ **Zero janela de tempo no hook** (`in one month`, `by next week`…) — o prazo mora na cena 4 (NE13)?
-- [ ] ⭐⭐ **O hook condiciona no DESEJO, nunca no estado do corpo dele** — e nunca em forma de pergunta "qual dos dois é o seu?" (NE13)?
+- [ ] ⭐⭐ **[Lucas] Zero janela de tempo no hook** (`in one month`, `by next week`…) — o prazo mora na cena 4 (NE13)?
+- [ ] ⭐⭐ **[Lucas] O hook condiciona no DESEJO, nunca no estado do corpo dele** — e nunca em forma de pergunta "qual dos dois é o seu?" (NE13)?
 - [ ] **Modelos no pedestal → erguidos na mão** durante o take (NE8)? **No TAKE nenhum dos dois muda de estado**?
 - [ ] **Todas as cenas solo** — sem plateia, sem vítima, sem esposa (NE9)?
 - [ ] MUP na cena 2 · `gelatin trick` literal na cena 4 · fecho que derruba barreira?
 - [ ] Cota do órgão ≥4/5, rotacionada, nunca pronome?
 - [ ] Cada cena com 2ª pessoa ou imperativo (P22)?
 - [ ] CTA GELATIN + follow-gate + future pacing?
+- [ ] ⭐⭐ **[Lucas] Keyword no `Dialogue:` em minúscula E seguida de vírgula** — `Comment gelatin, and I'll…` (NE12)? ⛔ Zero `Comment GELATIN and`?
+- [ ] ⭐⭐ **[Lucas] CTA transcrito e conferido palavra por palavra** depois de gerar, áudio E legenda queimada (NE12)?
 - [ ] Etnia do REF = etnia da página (congruência inviolável)?
 
 ---

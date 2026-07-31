@@ -2,19 +2,23 @@
   "ray": {
     "arquetipo": [
       "cowboy_mesa",
-      "nativo_canyon"
+      "nativo_canyon",
+      "montanhes_lago"
     ],
     "familia": [
       "cowboy",
-      "nativo norte-americano"
+      "nativo norte-americano",
+      "montanhes"
     ],
     "receita": [
       "gelatina_limao",
-      "gelatina_agua"
+      "gelatina_agua",
+      "gelatina_mel"
     ],
     "mesa": [
       "tampa_caminhonete",
-      "barril"
+      "barril",
+      "tronco"
     ]
   }
 }
