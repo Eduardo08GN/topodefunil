@@ -100,15 +100,35 @@ MODELO_SAO = (
     % (SUPORTE, GEOMETRIA)
 )
 
-# versoes curtas, para as cenas em que ele ergue UM modelo so'
-# (PODRE_NA_MAO removido: com a cena 2 virando D1, o modelo podre so
-#  existe na cena 1, em cima do pedestal — nunca na mao. NE10.)
-SAO_NA_MAO = (
-    "the new model — the one whose bladder is pale salmon pink, full and "
-    "smooth, and whose long thick shaft below, more than half the height of "
-    "the whole model, is straight and full along its entire length with the "
-    "cut-away channel wide and open inside it, ending in a full rounded pink "
-    "cap, with a smooth full gland at its base"
+# NE11 - A CENA 4 E O GEODUCK GIGANTE COM O SIFAO ERETO (ordem do operador,
+# 2026-07-30). O payoff deixa de ser o modelo sao e passa a ser o proxy falico
+# ereto — o padrao de climax do F15, e o geoduck ja tem lote validado atras
+# dele. Consequencia de arco: a COMPARACAO acontece toda na cena 1; a cena 4
+# nao repete o modelo, ela ENTREGA a promessa em outro objeto.
+#
+# ⚠️ SPEC DIMENSIONAL OBRIGATORIA: "ereto" sozinho sai timido — o Veo entrega o
+# tamanho natural do molusco, e prop de tamanho natural nao e promessa nenhuma
+# (falha em producao, Chuck/colo v3). Dimensiona-se por BIOLOGIA DO PROP e
+# ESCALA CORPORAL, nunca por anatomia nem por comparacao ao "normal": a versao
+# com engorged / raised veins / a third thicker foi RECUSADA (Chuck/colo v4).
+GEODUCK_PAYOFF = (
+    "a very large geoduck clam, gripping the pale ridged shell. Its siphon "
+    "rises straight up out of the shell, held stiff and straight, as long as "
+    "his forearm and as thick as his wrist, reaching well above the top of his "
+    "head, its surface taut and glossy, streaked with darker mottled lines "
+    "running along its length. No bird, no goose, no duck, no swan, no snake, "
+    "no feathers, no beak, no eyes, no head, nothing alive."
+)
+
+# ⛔ No TAKE nunca se escreve "geoduck" (so no IMAGE) nem "neck" (e "siphon").
+# E o estado vive no IMAGE: vocabulario de firme<->murcho em prompt de
+# movimento derruba a geracao de video mesmo com o IMAGE aprovado.
+GEODUCK_TAKE = (
+    "The clam stays exactly as it appears in the first frame — same position, "
+    "same angle, same shape — completely motionless for the entire shot. It is "
+    "a still object and nothing about it changes. No bird, no goose, no duck, "
+    "no swan, no snake, no worm, no tentacle, no feathers, no beak, no eyes, "
+    "no head, nothing alive, nothing with a face."
 )
 
 # NE10 - A CENA 2 E O D1: A PLACA EM CORTE SAGITAL, ERGUIDA POR ELE
@@ -392,11 +412,15 @@ RECEITAS_FALA = [
 
 # NE — cena 4: MUS. "gelatin trick" literal e' obrigatorio, com o modelo SAO
 # erguido contra o ceu. O podre saiu de cena: a ausencia e' o payoff.
+# ⚠️ Com o NE11 os dois modelos saem da cena 4 — quem esta no quadro e o
+# geoduck. Templates que diziam "went from that one to this one" viravam deixis
+# para objeto AUSENTE (4a forma de vagueza). A copy aqui aponta para o que esta
+# na mao, ou narra o modelo podre como MEMORIA da cena 1, nunca como gesto.
 PROVAS = [
-    "This is my {o} after one month of that trick. The old one went in the bin. {barreira}",
-    "Nineteen days of the gelatin trick, and my {o} went from that one to this one. {barreira}",
-    "Same man, same {o}, one month apart. That is what the trick does. {barreira}",
-    "I carried that other one around for years. This is my {o} now. {barreira}",
+    "This is my {o} after one month of that trick. {barreira}",
+    "One month of the gelatin trick, and this is what I carry now. My {o} has not quit since. {barreira}",
+    "That rotten one on the stand was me last year. This is my {o} today. {barreira}",
+    "Nineteen days of the gelatin trick and my {o} came back like this. {barreira}",
 ]
 
 BARREIRAS = [
@@ -436,6 +460,10 @@ BANIDOS_TAKE = {
     "throb": "idem", "swelling": "idem",
     "rots": "no TAKE nada apodrece nem sara: e' comparacao, nao transformacao (NE8)",
     "heals": "idem (NE8)",
+    # entraram com o NE11 (a cena 4 virou geoduck): quando o linter foi escrito
+    # o agente nao tinha molusco nenhum
+    "geoduck": "so' no IMAGE; no TAKE usar 'the clam' (NE11)",
+    "neck": "no geoduck e' 'siphon', nunca 'neck' (NE11)",
 }
 BANIDOS_IMAGE = {
     # NE2: adjetivo generico nao descreve — o Veo normaliza os dois modelos
@@ -557,8 +585,12 @@ def lint(spec, blocos):
     # NE8 — no TAKE nada muda de estado
     if IMOBILIDADE_PAR not in blocos["TAKE 01/05"]:
         achados.append(("ERRO", "TAKE 01 sem a imobilidade do PAR (NE8)"))
-    if IMOBILIDADE_UM not in blocos["TAKE 04/05"]:
-        achados.append(("ERRO", "TAKE 04 sem a imobilidade do modelo unico (NE8)"))
+    # NE11 — a cena 4 e o geoduck, com a spec dimensional e a negacao de ave
+    if GEODUCK_PAYOFF not in blocos["IMAGE 04/05"]:
+        achados.append(("ERRO", "NE11: IMAGE 04 sem a string travada do geoduck "
+                                "(a spec dimensional e o que impede o tamanho natural)"))
+    if GEODUCK_TAKE not in blocos["TAKE 04/05"]:
+        achados.append(("ERRO", "NE11: TAKE 04 sem a imobilidade + negacao de ave"))
 
     # NE10 — a cena 2 e o D1, e a string travada dele nao se comprime
     if D1_IMAGE not in blocos["IMAGE 02/05"]:
@@ -694,14 +726,11 @@ def montar(spec):
 
     b["IMAGE 04/05"] = (
         "IMAGE 04/05: Low-angle medium shot at %s, open sky behind him. %s He "
-        # mesmo aposto pendurado da cena 2, arrumado antes de quebrar aqui
-        "stands tall and holds one of the two teaching models up high in his "
-        "right hand, raised above his shoulder against the sky, still mounted "
-        "on its slim chrome stand. It is %s. He is grinning, chin lifted. "
-        "The old model is "
-        "nowhere in the frame. Behind him on his right stands the same %s. He "
-        "is the only person in the frame. %s %s %s"
-        % (arq["curto"], mesmo, SAO_NA_MAO,
+        "stands tall and holds up high in his right hand, raised above his "
+        "shoulder against the sky, %s He is grinning, chin lifted. Neither "
+        "anatomy model is anywhere in the frame. Behind him on his right stands "
+        "the same %s. He is the only person in the frame. %s %s %s"
+        % (arq["curto"], mesmo, GEODUCK_PAYOFF,
            spec["animal"].replace("a ", "", 1), ANTICELEB, arq["luz"], CAUDA)
     )
 
@@ -742,13 +771,13 @@ def montar(spec):
 
     b["TAKE 04/05"] = (
         "TAKE 04/05: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts. The %d-year-old man raises the "
-        "model a little higher against the sky and grins wider, holding it "
-        "steady above his shoulder for the whole take. %s Behind him the animal "
-        "turns its head once and looks back at the camera. He is the only "
-        "person in the shot.\nDialogue: \"%s\"\nAudio: %s. No music."
-        % (ref["idade"], IMOBILIDADE_UM, sonorizar(falas[3]), arq["audio"])
-    )
+        "very slight natural sway, no cuts. The %d-year-old man raises his arm "
+        "a little higher against the sky and grins wider, holding it steady "
+        "above his shoulder for the whole take. %s Behind him the animal turns "
+        "its head once and looks back at the camera. He is the only person in "
+        "the shot."
+        + chr(10) + "Dialogue: \"%s\"" + chr(10) + "Audio: %s. No music."
+    ) % (ref["idade"], GEODUCK_TAKE, sonorizar(falas[3]), arq["audio"])
 
     b["TAKE 05/05"] = (
         "TAKE 05/05: Animate the provided image exactly. Handheld iPhone shot, "

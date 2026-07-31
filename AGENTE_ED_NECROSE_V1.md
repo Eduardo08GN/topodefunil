@@ -71,11 +71,12 @@ juntos. Ver **NE5**.
 | **1** | A COMPARAÇÃO | *from this to this in one month* — nomeia o órgão e promete a virada, com o gesto sincronizado (NE7) | os 5 elementos acima |
 | **2** | A CAUSA | por que o órgão apodreceu — MUP de Georgi (não é idade, é o fluxo estrangulado) | mesmo cenário; ele ergue **o D1** (placa em corte sagital) e bate o dedo nele — ver **NE10** |
 | **3** | O GELATIN TRICK | o mecanismo nomeado e preparado na tela (NE6) | bancada ao ar livre, sachê + copo + colher |
-| **4** | A PROVA | o resultado + fecho que derruba barreira | **PICO2** — ele ergue **só o modelo são**, alto, contra o céu |
+| **4** | A PROVA | o resultado + fecho que derruba barreira | **PICO2** — ele ergue o **geoduck gigante com o sifão ereto**, alto contra o céu — ver **NE11** |
 | **5** | CTA | GELATIN + follow-gate + future pacing | close nele, dedo na câmera, limpo |
 
-**O eco deste ângulo:** a cena 4 devolve o modelo **são** sozinho no quadro —
-o podre saiu de cena. A ausência é o payoff.
+**O eco deste ângulo:** a **comparação acontece toda na cena 1**. A cena 4 não
+repete o modelo — ela **entrega a promessa em outro objeto**, o proxy fálico
+ereto. Os dois modelos somem do quadro, e o que sobra é o resultado.
 
 ---
 
@@ -264,6 +265,37 @@ causa**; a imagem mostra o estado.
   ⚠️ **Isto reabre o escopo do P15 de novo**, e desta vez do outro lado: o D1
   era "só bancada/interno", e aqui ele aparece no topo de uma montanha, num
   curral, num pântano. Selo 🟡 até render.
+
+- **NE11 — ⭐ A CENA 4 É O GEODUCK GIGANTE COM O SIFÃO ERETO** (ordem do
+  operador, 2026-07-30). O payoff deixa de ser o modelo são e passa a ser o
+  **proxy fálico ereto** — o padrão de clímax do **F15**, e o geoduck já tem
+  lote validado atrás dele.
+  ⚠️ **Consequência de arco:** os dois modelos saem do quadro na cena 4. A
+  comparação acontece toda na cena 1; a cena 4 **entrega**, não repete.
+  ⚠️ **A copy da cena 4 aponta para o que ESTÁ no quadro.** Templates que
+  diziam *"went from that one to this one"* viravam **dêixis para objeto
+  ausente** (4ª forma de vagueza) assim que os modelos saíram. O modelo podre
+  só pode ser citado como **memória** (*"that rotten one on the stand was me
+  last year"*), nunca como gesto.
+
+  ⛔ **Spec dimensional obrigatória.** `ereto` sozinho sai **tímido** — o Veo
+  entrega o tamanho natural do molusco, e prop de tamanho natural não é
+  promessa nenhuma (falha em produção, Chuck/colo v3). Dimensiona-se por
+  **biologia do prop + escala corporal**, nunca por anatomia nem por comparação
+  ao "normal": a versão com `engorged` / `raised veins` / `a third thicker` foi
+  **recusada pelo gerador** (Chuck/colo v4).
+  ```
+  a very large geoduck clam, gripping the pale ridged shell. Its siphon rises
+  straight up out of the shell, held stiff and straight, as long as his forearm
+  and as thick as his wrist, reaching well above the top of his head, its
+  surface taut and glossy, streaked with darker mottled lines running along its
+  length. No bird, no goose, no duck, no swan, no snake, no feathers, no beak,
+  no eyes, no head, nothing alive.
+  ```
+  **E no TAKE, imobilidade declarada + negação de ave ampliada.** ⛔ Nunca
+  `geoduck` no TAKE (só no IMAGE) — usar `the clam`. ⛔ Nunca `neck` — é
+  `siphon`. ⛔ E zero vocabulário de firme↔murcho no prompt de movimento: isso
+  derruba a geração de vídeo mesmo com o IMAGE aprovado.
 
 ---
 
