@@ -34,12 +34,93 @@ ui_agente.py               <- INTERFACE COMPARTILHADA: uma so' para todos os age
 <agente>_lucas.py          <- MOTOR: pools + strings travadas + gerador + linter
 <agente>_lucas_app.py      <- ENTRADA: ~20 linhas, so' amarra motor + interface
 AGENTE-<NOME>.exe          <- DISTRIBUICAO: PyInstaller --onefile --windowed
+
+short_comum.py             <- COLAPSO: a maquinaria dos SHORT, num lugar so'
+<agente>_short.py          <- DERIVACAO: importa o motor e so' declara o que muda
 ```
 
 **Uma fonte de verdade, duas vezes.** O app **importa** o motor, nunca duplica —
 e a **interface e' uma so'** para todos os agentes. Duplicar as ~450 linhas de
 tkinter por agente seria o mesmo erro que a regra P9 proibe na doutrina: copia
 envelhece e mente.
+
+---
+
+## OS AGENTES SHORT — 3 cenas de 8s (2026-07-31)
+
+Cada agente tem uma variante **SHORT** para os vídeos de 3 takes (o AdBatch
+Vertical 3). Ela **não é uma cópia** do motor longo: `<agente>_short.py`
+importa `<agente>_lucas.py` e declara só o que muda — quais cenas sobrevivem, a
+copy fundida, os tetos e os rótulos. Zero strings travadas duplicadas.
+
+> **Corrigiu o D1 no motor base? O SHORT já nasce corrigido.** Fosse cópia,
+> toda correção de doutrina precisaria ser aplicada duas vezes — e uma delas
+> seria esquecida.
+
+### O colapso, igual nos quatro
+
+```
+base 1  ->  SHORT 1     o hook (o bit visual que segura o scroll)
+base 4  ->  SHORT 2     o payoff. A copy funde ritual + prova
+base 5  ->  SHORT 3     o CTA (travado em GELATIN)
+```
+
+⚠️ **A imagem da cena 2 é a do PAYOFF, não a da bancada do ritual.** A copy
+fundida termina em dêitico (*"came back like this"*) e esse "this" precisa ter
+no que apontar. O ritual vive na fala; o resultado, no quadro. **Nenhuma cena
+nova é inventada** — só sobrevivem as já validadas em render.
+
+### ⛔ A armadilha: o literal `gelatin trick` mora em cenas que caem
+
+Levantamento que precedeu o port. O literal que garante a congruência com a VSL
+vive em **pools diferentes** em cada agente, e **todos** morrem no colapso:
+
+| agente | o literal mora em | cena | o que mais ia junto |
+|---|---|---|---|
+| NECROSE | `RECEITAS_FALA` | 3 | o MUP `blood flow` (cena 2) |
+| FLAGRANTE | `DESCOBERTAS` | **2** | o MUP, na mesma frase |
+| PEE | `RITUAIS` | 3 | o mecanismo da **próstata** (PE7, cena 2) |
+| VAZAMENTO | `VIRADAS` | 3 | a isca do bicarbonato (cena 2) |
+
+Por isso **a copy fundida carrega os obrigatórios do agente**, e o linter do
+SHORT trava em cada um pelo parâmetro `literais`. Sem isso o criativo sobe
+bonito e deixa de vender o que a VSL vende — falha que não aparece em métrica
+nenhuma.
+
+### O que cada SHORT perdeu, e é consciente
+
+| agente | perdeu |
+|---|---|
+| NECROSE | a placa **D1** em corte sagital (NE10) — a explicação virou uma oração |
+| FLAGRANTE | o **F16** (D1 na cena 2), pelo mesmo motivo |
+| PEE | o mecanismo em cena própria; a próstata agora é oração dentro da cena 2 |
+| VAZAMENTO | a **isca** — introduzir e revelar passaram a caber na mesma frase |
+
+Quem precisa desses beats usa a versão longa. As duas coexistem.
+
+### As travas próprias do SHORT
+
+- **Cota do órgão 2/3** (o proporcional do 4/5 da longa; 3/3 viraria bordão em
+  24 segundos).
+- **Teto da cena 2 = 34 palavras.** Medido: com `{ing}` + `{barreira}` a cena
+  batia em 45, que é 5,6 palavras/segundo, e o Veo atropela. A `{barreira}` foi
+  cortada da cena fundida — os três beats obrigatórios não são negociáveis, a
+  tranquilização é.
+- **As pontas herdam o teto do motor base**, porque são os mesmos pools.
+  ⚠️ Exceção medida: os tetos do **FLAGRANTE base estão defasados** (a cena 1
+  estoura em 69% dos sorteios, a 5 em 49%), então o SHORT dele usa o p90 medido.
+  Recalibrar o motor base é decisão do operador e **não foi feito**.
+- **Todo template da cena 2 precisa do slot `{o}`.** Um único item sem ele
+  derrubou 48 de 300 sorteios na cota do órgão — o CTA não nomeia o órgão, então
+  a cena 2 é a única companhia do hook.
+
+### O que o rótulo do botão ensinou
+
+`copiar os 5 IMAGE` estava escrito no texto. Num SHORT isso mandaria o operador
+colar 3 blocos achando que eram 5. Agora a contagem vem de `len(CENAS_UI)`:
+**número na interface se deriva do motor, nunca se digita.**
+
+---
 
 ⚙️ **A assinatura `by Eddie` mora na UI, nunca no motor.** É a constante
 `ASSINATURA` em `ui_agente.py` — renderizada em `MUTED` depois do nome do

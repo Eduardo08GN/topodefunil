@@ -503,7 +503,7 @@ colados, em inglês. A interface é em português; o conteúdo, nunca.
 Cole este input literal no campo de imagens e me diga o que o parser
 devolveu: quantos blocos, de que tipo, e quantos caracteres cada um.
 
-REF: Photo of a real person, test reference block.
+REF 01: Photo of a real person, test reference block.
 
 IMAGE 01/03 — HOOK: Vertical 9:16 test scene one.
 

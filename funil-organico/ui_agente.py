@@ -261,10 +261,14 @@ class App(tk.Tk):
 
         barra = tk.Frame(col, bg=BG)
         barra.pack(fill="x", pady=(0, 8))
-        self.b_img = self._btn(barra, "copiar os 5 IMAGE",
+        # a contagem vem do motor, nao do texto: os agentes SHORT entregam 3
+        # cenas e o rotulo fixo "os 5" mandaria o operador colar no AdBatch
+        # errado — o de 5 slots descartaria nada, mas o inverso silencia dois
+        n = len(self.m.CENAS_UI)
+        self.b_img = self._btn(barra, "copiar os %d IMAGE" % n,
                                lambda: self.copiar_grupo("IMAGE"))
         self.b_img.pack(side="left")
-        self.b_tak = self._btn(barra, "copiar os 5 TAKE",
+        self.b_tak = self._btn(barra, "copiar os %d TAKE" % n,
                                lambda: self.copiar_grupo("TAKE"))
         self.b_tak.pack(side="left", padx=8)
         self._btn(barra, "salvar .txt", self.salvar).pack(side="left")

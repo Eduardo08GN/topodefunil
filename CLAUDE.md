@@ -42,6 +42,11 @@ travadas como constantes, linter em regex), app tkinter offline e `.exe`
 entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
 [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
 Portados ate agora: **FLAGRANTE**, **PEE**, **VAZAMENTO** e **NECROSE** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
+Cada um tem tambem a variante **SHORT** (3 cenas de 8s, para o AdBatch Vertical 3):
+`<agente>_short.py` **deriva** do motor longo em vez de copia-lo — a maquinaria do
+colapso mora em `short_comum.py`. ⚠️ A copy fundida da cena 2 carrega
+obrigatoriamente o literal `gelatin trick` e o mecanismo do agente, porque as cenas
+que os traziam sao justamente as que caem.
 ⚠️ **Vai pro código o mecânico e verificável; fica no Markdown o julgamento.**
 String validada é **constante**, nunca redigitada — comprimir o D1 na mão já
 entregou esqueleto 3D no lugar da placa em corte.
