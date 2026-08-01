@@ -44,7 +44,19 @@ CONFIG = os.path.join(BASE, "config.json")
 # ⚠️ SO' os zips da AdBatch Vertical 3. O v1.2 vigia "^adbatch.*" e pegaria
 # estes tambem: as duas esteiras fazem poll na MESMA pasta Downloads, e quem
 # chegasse primeiro levava. O v1.2 recebeu a exclusao complementar.
-PADRAO_DOWNLOADS = re.compile(r"^adbatch[_ -]?vertical[_ -]?3.*\.zip$", re.I)
+#
+# ⚠️ FRAGMENTO ESPELHADO — a copia literal deste _VERTICAL_3 mora no v1.2
+# (VeoEditor/esteira.py), dentro de um "(?!...)". O que casa AQUI tem de estar
+# excluido LA'. Mexeu num, mexe no outro no mesmo commit.
+#
+# "output" entrou em 2026-08-01: a AdBatch Vertical 3 foi regerada (painel
+# v2.4) e o botao de download passou a nomear o pacote
+# "adbatch_vertical_output.zip" em vez de "adbatch_vertical_3.zip". Dois lotes
+# ficaram parados no Downloads sem erro nenhum na tela — so' o aviso de
+# ignorados. O nome do ZIP e' contrato com a ferramenta do Flow
+# (adbatch-prompts-editor.md), e o contrato mudou sem aviso.
+_VERTICAL_3 = r"[_ -]?vertical[_ -]?(?:3|output)"
+PADRAO_DOWNLOADS = re.compile(r"^adbatch" + _VERTICAL_3 + r".*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 # ---------------------------------------------------------------------------
 # A DIFERENCA DA v2.0 — a taxa de aceleracao

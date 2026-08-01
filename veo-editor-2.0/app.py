@@ -410,8 +410,14 @@ class App(tk.Tk):
 
         vazio_fila = "Nenhum zip aguardando. Baixe um lote no Flow."
         if s.get("ignorados"):
+            # ⚠️ O aviso enuncia o filtro REAL (esteira.PADRAO_DOWNLOADS), nao
+            # um resumo dele: dizer 'nao comeca com "adbatch"' custou dois
+            # lotes parados em 2026-08-01 — os arquivos comecavam com
+            # "adbatch", o que faltava era o "vertical_3/output".
             vazio_fila = [f'{s["ignorados"]} zip(s) no Downloads IGNORADO(s):',
-                          'nome nao comeca com "adbatch".',
+                          'esta esteira so pega a AdBatch Vertical 3',
+                          '(adbatch_vertical_3*.zip ou',
+                          'adbatch_vertical_output*.zip).',
                           'Renomeie o arquivo, ou defina uma',
                           'Pasta vigiada dedicada (la qualquer',
                           '.zip e capturado).']

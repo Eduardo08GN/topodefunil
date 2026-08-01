@@ -38,12 +38,21 @@ CONFIG = os.path.join(BASE, "config.json")
 
 # so zips das nossas ferramentas sao capturados na pasta vigiada; na 01_entrada
 # qualquer zip vale (caminho manual)
-# ⚠️ O "(?!...vertical.3)" e a fronteira com o Veo Editor 2.0: as duas
-# esteiras vigiam a MESMA pasta Downloads, e sem isso quem fizesse poll
-# primeiro levava o zip da outra — o de 24s sairia com a taxa de ruido
-# do v1.2 em vez da aceleracao da v2.0, sem erro nenhum na tela.
+# ⚠️ O "(?!...)" e a fronteira com o Veo Editor 2.0: as duas esteiras vigiam a
+# MESMA pasta Downloads, e sem isso quem fizesse poll primeiro levava o zip da
+# outra — o de 24s sairia com a taxa de ruido do v1.2 em vez da aceleracao da
+# v2.0, sem erro nenhum na tela.
+#
+# ⚠️ FRAGMENTO ESPELHADO — a copia literal deste _VERTICAL_3 mora no v2.0
+# (VEO-EDITOR-2.0/esteira.py), la' como padrao POSITIVO. O que ele captura tem
+# de estar excluido aqui. Mexeu num, mexe no outro no mesmo commit.
+#
+# "output" entrou em 2026-08-01 junto com o v2.0: a AdBatch Vertical 3 foi
+# regerada e passou a baixar "adbatch_vertical_output.zip". Sem o "output"
+# aqui, o v1.2 voltaria a roubar o lote da v2.0.
+_VERTICAL_3 = r"[_ -]?vertical[_ -]?(?:3|output)"
 PADRAO_DOWNLOADS = re.compile(
-    r"^adbatch(?![_ -]?vertical[_ -]?3).*\.zip$", re.I)
+    r"^adbatch(?!" + _VERTICAL_3 + r").*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
 
