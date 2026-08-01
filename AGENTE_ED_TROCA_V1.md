@@ -217,6 +217,17 @@ Destino da esteira: **AdBatch Vertical 3**
   2. **A mesma mão.** A mão que segurava o proxy é a que volta com o mecanismo.
      (Por UN4 o proxy nasce no punho **esquerdo**; então é o esquerdo que desce
      e sobe. A direita continua sendo a que trabalha a substância.)
+     ⚠️ **O motor inverteu isso por conta própria e foi corrigido** (2026-08-01):
+     as travadas diziam `right`, com o argumento de que "travada manda" e de que
+     as três eram coerentes entre si na direita. O argumento era falso — a
+     `TR_VAIVEM` não nomeava mão nenhuma — e a escolha é de **cena**, ou seja,
+     alçada do Ed. Hoje o motor segue esta regra. Se o Ed preferir a direita, é
+     esta linha e o UN4 que mudam, não o código sozinho.
+     ⭐ **E a MÃO LIVRE tem de estar declarada no IMAGE.** Ela é o **verbo**
+     (invariante 4/28: mão parada segurando = foto de produto), e nenhum IMAGE a
+     declarava — o TAKE mandava trabalhar `along the length of it` sobre uma
+     imagem com uma única mão, a que segura o prop de pé ao lado da bochecha.
+     **Prompt que se contradiz, o modelo resolve como quiser.**
   3. **Sem corte e sem mexer a câmera.** Take único. 6/8 dos reels não têm corte
      nenhum; o único que corta na troca (v04) é **o pior número do lote**.
 
@@ -236,7 +247,13 @@ Destino da esteira: **AdBatch Vertical 3**
   same height beside her face until the end of the shot.
   ```
   ⚠️ **Selo 🟡** — a geometria é 8/8 na fonte, mas esta redação é nossa e ainda
-  não passou por render.
+  não passou por render. ⛔ **E não se comprime antes do primeiro render**: uma
+  versão do motor tinha achatado as três batidas numa frase só e, de quebra,
+  descia o proxy `onto the workbench` enquanto a frase seguinte dizia que ele
+  ficava `on the wooden board` — **duas superfícies para a mesma ação**, no take
+  que é o agente inteiro. Comprimir o único método validado que temos antes de
+  testá-lo descarta a evidência sem gerar nenhuma. O linter cobra as três
+  batidas e a superfície única.
   ⛔ Nunca `swap`, `switch`, `replaces` (o Veo troca o objeto **cortando**) —
   descreve-se **descida, subida e ponto**, nunca o resultado.
   ⚠️ **A tigela é a string travada do UN2** — copiar de lá, não redigitar.
@@ -277,6 +294,14 @@ Destino da esteira: **AdBatch Vertical 3**
   [`licoes-producao-veo`](funil-organico/licoes-producao-veo.md) §Copy, e neste
   formato ela é pior ainda porque **a imagem não entrega os dois estados**
   (TR2). A fala fala do **corpo do espectador**, com substantivo do núcleo.
+  ⛔ **E dêixis a PESSOA nas cenas 1 e 2 é pior ainda** (correção 2026-08-01):
+  `He's standing right here.` · `Look at him.` · `That's him. Not a photo.` ·
+  `Ask him yourself.` · `Right there. That's the proof.` rodavam em **40% dos
+  lotes** — mandando olhar para um homem que o próprio IMAGE 02 declara ausente
+  (`She is the only person in the frame`, elenco 1/1/2 da TR13). Reprova o
+  **teste do rádio** do checklist. A prova da cena 2 é **não-dêitica**:
+  `Nineteen days on a man I know.`, `He'll tell you if you ask him.`, `No photo,
+  no filter, no story.`
 
 - **TR4 — A SUBSTÂNCIA JÁ ESTÁ NO PROP NO FRAME 1; A APLICAÇÃO NUNCA É
   MOSTRADA.** Elipse deliberada, 8/8. Ninguém enfia o dedo no pote em cena.
@@ -285,6 +310,12 @@ Destino da esteira: **AdBatch Vertical 3**
   mesma peça que sobe na TR1.
   ⚠️ Isto é o que separa a TROCA do P20 do SUBSTANCIA_ABSURDA ("a aplicação
   acontece na tela"): aqui ela **já aconteceu**, fora de cena.
+  ⚠️ **O detalhe forense é por objeto, não uma frase única.** A tampa deitada
+  veio do v01/v03, onde o mecanismo era **pote com tampa** — e o motor a estava
+  aplicando aos dez, mandando desenhar `its lid lying face-up` em tigela, pires,
+  sachê, copo e panela (7 dos 10; 48% dos IMAGE 02). Contradição dentro do mesmo
+  bloco, justamente na prova de que a peça estava plantada. Cada mecanismo
+  declara o seu: tampa deitada · foil rasgado · colher usada ao lado.
 
 - **TR5 — A SUBSTÂNCIA SÓ TOCA O VEGETAL E AS MÃOS.** 8/8, e é o que mantém o
   vídeo no ar: toda a carga é transferida ao proxy. **Nunca corpo humano** — nem
@@ -307,11 +338,23 @@ Destino da esteira: **AdBatch Vertical 3**
   ⚠️ **O fio pendurado é o ponto mais arriscado do quadro** (§6.2 do mapa).
   ⛔ Não amputar: **redirecionar o destino e nomear o gênero da imagem** —
   ```
-  a slow thread of it runs off the bottom end and down onto the wooden board,
-  the way honey runs off a dipper
+  a slow thread of the honey runs off the bottom end and down onto the wooden
+  board, the way honey runs off a dipper
   ```
   ⛔ **Nunca `onto her chest`** — é o destino-corpo que carrega a leitura, não o
   fio.
+  ⛔ **A SUBSTÂNCIA É NOMEADA DENTRO DA TEXTURA — nunca `it`.** Uma versão do
+  motor trocou `honey` por `it` em todas as dez texturas; como nenhuma nomeava a
+  substância, o referente mais próximo de `it` passava a ser **o proxy**. O
+  prompt descrevia então *um fio saindo da ponta de baixo de um objeto fálico*,
+  com substância anônima e a analogia do dipper pendurada sem antecedente — ou
+  seja, a leitura de ejaculação com a **única salvaguarda removida**. Nomear a
+  coisa e nomear o gênero da imagem é a alavanca 3 inteira.
+  ⚠️ **A textura acompanha o proxy nas três cenas.** Ela chegava só ao IMAGE 01;
+  do 02 em diante o proxy saía **limpo**, contra o invariante 26/28 e contra o
+  próprio checklist ("o proxy lambuzado FICA em quadro"). Nas cenas 2 e 3 entra
+  a forma curta (`still wet with honey`), não a descrição inteira — densidade é
+  superfície de bloqueio (F12c).
   ⚠️ Hipótese testável registrada pela fonte: os três piores números do lote são
   de **pasta seca**, os três melhores de gel/fio. Pode ser a **física** que
   separa o topo do fundo, e não a estrutura de copy. É hipótese, e é A/B nosso.
@@ -333,6 +376,24 @@ Destino da esteira: **AdBatch Vertical 3**
   | **bandeira dos EUA** | ✅ **copiar** — não é marca |
   ⚠️ **Teto:** 3-4 itens. Bancada lotada é densidade, e densidade é superfície de
   bloqueio (F12c).
+  ⚠️ **A ausência de rótulo se declara pela AFIRMATIVA.** `Nothing in the frame
+  carries a readable label, logo or brand` injeta `label`, `logo` e `brand` num
+  prompt cuja tese é que não há nenhum — mesma mecânica de `fully clothed`. O
+  que se escreve é `Every container in the frame is plain and unlabelled.`
+  ⚠️ **E o pote de pomada não é azul.** Pote azul baixo de pomada é a silhueta e
+  a cor da Vicks: trade dress reconhecível **sem rótulo**. P12 manda substituir
+  por forma, não reproduzir a forma da marca. Cerâmica branca.
+  ⛔ **O recibo NÃO entra no IMAGE 03.** Esse é o bloco de maior risco do lote —
+  a regra de que ele deriva custou 4 recusas determinísticas — e era também o
+  mais gordo do repo: **230 palavras, 2,3× o IMAGE 01 do próprio FLAGRANTE**, das
+  quais 42 eram um recibo que não serve a beat nenhum da cena 3. O lastro do
+  *full recipe* já foi provado nas cenas 1 e 2. No lugar entra o **mecanismo**,
+  em uma oração: a cena que diz `comment gelatin` passa a mostrar gelatina em
+  quadro (antes o IMAGE 03 não tinha nem gelatina, nem tábua, nem pote).
+  ⚠️ **A bancada-recibo também não repete o pote da substância.** 11 de 168
+  pares desenhavam o mesmo objeto duas vezes no mesmo quadro (`a plain glass jar
+  of fine white powder` no pote **e** na bancada; `a rustic ceramic bowl` nos
+  dois). Recibo que repete o pote mostra dois ingredientes, não três.
 
 - **TR8 — O DESMENTIDO É BEAT PRÓPRIO DA CENA 1.** A fonte tem duas variantes
   de credibilidade — CONFIRMA (*and trust me, it really works*) e DESMENTE
@@ -473,6 +534,16 @@ Destino da esteira: **AdBatch Vertical 3**
   aí troca-se o número ou a relação (`her neighbor of twenty-six years`, `the
   man she cooks for`), **nunca se omite**. Nomear a relação é a alavanca 2 do
   protocolo de recusa, e ela é obrigatória aqui.
+  ⛔ **`his daughter-in-law` está fora.** O motor tinha inventado esse vínculo
+  (12,5% dos lotes) e ele não está em lugar nenhum desta regra — e é o pior
+  possível para esta composição: injeta leitura sexual intrafamiliar exatamente
+  na geometria que já custou 4 recusas determinísticas. Se o Ed quiser a nora,
+  é ordem dele e volta como entrada de pool.
+  ⚠️ **A VOZ DA CENA 2 CASA COM A RELAÇÃO.** `my husband's {o}` / `stopped
+  quitting on us` só entram quando a relação nomeada é **esposa**. Sortear os
+  dois de forma independente punha 13% dos lotes dizendo `my husband` sobre um
+  IMAGE 03 que declarava a narradora como a vizinha — e **contradizer a relação
+  nomeada anula a alavanca 2**. A relação é sorteada **antes** das falas.
 
 - **TR11 — CASTING: O CORPO-PROVA É TRAVADO, A NARRADORA É SOLTA.**
   (decisão do operador [D2], 2026-08-01)
@@ -492,6 +563,20 @@ Destino da esteira: **AdBatch Vertical 3**
   [`ELA_DIAGNOSTICA`](AGENTE_ED_ELA_DIAGNOSTICA_V1.md); clonar o rosto da
   concorrente entrega a página.
   ⚠️ **Mesmo rosto nas 3 cenas do vídeo**, marca facial obrigatória (P6).
+  ⛔ **PISO DE IDADE DA NARRADORA: 28 ANOS.** Herdado do `organicwave_short.py`
+  (`IDADE_MINIMA_MULHER = 28`), que o carrega com o motivo escrito: *"já pagamos
+  para descobrir que idade em cena com conteúdo de ED é zona sensível"*, e com
+  `⛔ não baixar sem ordem do operador`. O motor da TROCA tinha baixado para 24
+  sem ordem registrada em lugar nenhum. Aqui pesa **mais** que lá: a cena 3
+  pareia a narradora com um corpo-prova de até 65 numa composição de proxy
+  fálico, e a política de **menores** é a determinística — não cede a regerar, e
+  é sensível a **geometria de intimidade + diferença de idade**, não à idade
+  real. ⛔ E zero `baby tee` no figurino: o token `baby` entra de graça, pela
+  mesma mecânica de `fully clothed`. `ringer tee` é a mesma peça.
+  ⚠️ A idade numérica no prompt (`A 61-year-old …`) é **exigência do linter de
+  continuidade** do SHORT (a âncora `the same N-year-old`), não contradição
+  desta regra: o rótulo ancora a continuidade, e é a **marca física** que faz a
+  idade renderizar. Os dois convivem — nunca só o rótulo.
 
 - **TR12 — FIGURINO: SEGUIR A FONTE.** 🟡 (decisão do operador [D3], 2026-08-01)
   Os 8 concorrentes usam **cropped, barriga à mostra, decote e joias de ouro**, e
@@ -529,6 +614,27 @@ Destino da esteira: **AdBatch Vertical 3**
   explica), nunca reescrever mais curto e mais vago. E o piso não se cumpre com
   enchimento: cumpre-se com **mais fato** — o mecanismo, o custo, a segunda
   pessoa.
+
+  ⭐ **O PISO É MECÂNICO, IGUAL AO TETO** (correção 2026-08-01). Tratá-lo como
+  "julgamento que mora na doutrina" foi o que deixou **48% das cenas 2 abaixo
+  dele**: piso não cobrado é piso que não existe. O motor agora carrega
+  `PISO_FALA = {1: 16, 2: 26, 3: 20}`, o linter avisa quando a cena fica abaixo,
+  e o `--stats` **enumera exaustivamente** o pior e o melhor caso de cada pool —
+  foi assim que se descobriu que o AVISO de teto era **código morto** (nenhuma
+  cena conseguia estourar).
+
+  🔴 **TENSÃO ARITMÉTICA ABERTA — decisão do Ed.**
+  A soma dos tetos por cena é **22 + 34 + 26 = 82**, que é exatamente o **piso**
+  do orçamento total (82-96). Ou seja: o vídeo só entraria na faixa com as três
+  cenas no teto exato, e **nunca passaria de 82**. Os dois números não podem
+  estar certos ao mesmo tempo.
+  Medido depois da expansão dos pools: total **66-78 palavras, média ~71** (era
+  58-72, média 64,6), com **0 de 400 sorteios abaixo do piso ou acima do teto em
+  qualquer cena**. Isso é **1,9× a fonte**, não 2,3×.
+  **As duas saídas, e a escolha é dele:** (a) subir os tetos por cena — o mais
+  fiel à ordem "expandir 2,3×"; (b) baixar a faixa total para ~66-82. ⛔ O motor
+  não escolhe: cobra piso e teto **por cena**, e o AVISO de total dispara acima
+  de **96** (a borda de cima), nunca acima de 82, que é a de baixo.
   **Cota do órgão no SHORT: 2 de 3 cenas** com substantivo do **núcleo**,
   rotacionado (é o proporcional dos 75%; o linter de
   [`short_comum.py`](funil-organico/short_comum.py) conta assim).

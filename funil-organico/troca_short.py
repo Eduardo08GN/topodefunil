@@ -358,7 +358,7 @@ NARRADORAS = [
     # `clothed`/`celebrity`. `ringer tee` e' a mesma peca.
     {"id": "morango_jovem", "idade": 28,
      "marca": "long wavy strawberry-blonde hair and a beauty mark just above her upper lip",
-     "roupa": "a cropped pale-blue ringer tee and a thin gold chain bracelet"},
+     "roupa": "a cropped pale-blue knit top and a thin gold chain bracelet"},
     {"id": "tapered_macas", "idade": 43,
      "marca": "a close tapered cut faded at the sides and high sharp cheekbones",
      "roupa": "a cropped charcoal turtleneck and heavy gold hoops"},
