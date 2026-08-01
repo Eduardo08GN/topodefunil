@@ -660,11 +660,40 @@ Destino da esteira: **AdBatch Vertical 3**
   takes de 8s**, e cada take precisa se sustentar sozinho — o orçamento é
   **82-96 palavras**. **Copiar os 4 beats deles deixa ar sobrando**, e ar num
   take de 8s vira pausa morta.
-  | Cena | Teto | Piso prático |
-  |---|---|---|
-  | 1 · A CRENDICE | 22 | 16 |
-  | 2 · A TROCA | 34 | 26 |
-  | 3 · CORPO-PROVA + CTA | 26 | 20 |
+  | Cena | Teto | Piso prático | Beats |
+  |---|---|---|---|
+  | 1 · A CRENDICE | 22 | 16 | crendice + desmentido |
+  | 2 · A TROCA | 34 | 26 | fundida + prova |
+  | 3 · CORPO-PROVA + CTA | 26 | 20 | **testemunho** + CTA + gate |
+
+  ⭐ **A CENA 3 ABRE COM PROVA, NÃO COM BARREIRA** (ordem do Ed, 2026-08-01,
+  lendo os takes renderizados: *"está muito fazendo rodeios… quem vê o vídeo
+  talvez nem saiba direito do que está querendo ser dito no take 3. Tá muito
+  drifting essa copy"*).
+  O slot de abertura era uma **barreira** — `Cheaper than a single refill.`,
+  `It's in the baking aisle.` — que é tratamento de objeção, não prova. O take
+  em que o homem finalmente aparece segurando a evidência gastava a primeira
+  frase falando de **preço e prateleira de supermercado**, e nenhuma das 12
+  barreiras nomeava o órgão.
+  ⚠️ **E o testemunho tem de trazer `{o}`** (segunda ordem, na mesma data:
+  *"faltou referenciar o fálico"*). Sem o núcleo a prova não tem referente — diz
+  que algo mudou e não diz **o quê**.
+  O registro é o das REDENÇÕES do PEE, já validadas em campo; a voz é **dela**,
+  em primeira pessoa, e o fato é carnal, concreto e datado quando cabe:
+  ```
+  His [núcleo] quit apologizing. So did he.
+  I stopped asking. His [núcleo] started answering.
+  Three weeks in, his [núcleo] still outlasts me.
+  ```
+  ⛔ **6-9 palavras.** O CTA come 9-11 e o gate 7-8; o gate é escolhido pelo
+  motor **checando o orçamento**, então testemunho longo demais estreita o pool
+  de gates até o fallback.
+  ⚠️ **Cota do órgão vira 3/3** (era 2/3): cena 1 nomeia na crendice, cena 2 na
+  fundida, cena 3 no testemunho — três substantivos **distintos**, sorteados de
+  uma vez com `rng.sample(NUCLEO, 3)`.
+  ⚠️ **As BARREIRAS não foram apagadas** — são copy validada e continuam no
+  motor, paradas. Trazê-las de volta é decisão do operador, e seria como beat de
+  **outra** cena: a 3 tem 26 palavras e já está cheia.
   ⚠️ **Teto continua sendo teto:** cena estourada → **cortar uma frase** (a que
   explica), nunca reescrever mais curto e mais vago. E o piso não se cumpre com
   enchimento: cumpre-se com **mais fato** — o mecanismo, o custo, a segunda

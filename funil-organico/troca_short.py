@@ -1016,10 +1016,54 @@ PROVAS = [
 ]
 
 # ---------------------------------------------------------------------------
-# COPY — cena 3: O CORPO-PROVA + CTA (barreira + cta + gate)
+# COPY — cena 3: O CORPO-PROVA + CTA (testemunho + cta + gate)
 # ---------------------------------------------------------------------------
-# ⚠️ Piso de 5 palavras: com barreiras de 4 a cena 3 caia abaixo do piso de 20
-# da TR14.
+# ⭐ ORDEM DO ED, 2026-08-01, lendo os takes 3 renderizados: "está muito fazendo
+# rodeios, beating about the bush... que vê o video talvez nem saiba direito do
+# que esta querendo ser dito no take 3. Tá muito drifting essa copy."
+#
+# O diagnostico dele estava certo e o culpado era o slot de abertura. A cena 3
+# abria com uma BARREIRA — `Cheaper than a single refill.`, `It's in the baking
+# aisle.` — que e' tratamento de objecao, nao prova. Resultado: o take onde o
+# homem finalmente aparece segurando a evidencia gastava a primeira frase
+# falando de preco e de prateleira de supermercado, e NENHUMA das 12 nomeava o
+# orgao. O espectador via o corpo-prova e ouvia sobre o corredor do mercado.
+#
+# ⚠️ E a segunda ordem, que e' o que fecha: "faltou referenciar o falico". O
+# testemunho TEM de trazer `{o}`. Sem ele a prova nao tem referente — ela diz
+# que algo mudou e nao diz o que.
+#
+# O registro nao e' invencao: e' o mesmo das REDENCOES do PEE, validadas em
+# campo (`Now she asks for a night off from his {o}`, `His {o} left her needing
+# a minute to catch her breath`). Aqui a voz e' dela, em primeira pessoa, e o
+# fato e' carnal, concreto e datado quando cabe.
+#
+# ⛔ 6-9 palavras. O teto da cena 3 e' 26 e o CTA come 9-11 e o gate 7-8 — a
+# selecao abaixo checa o orcamento, mas entrada longa demais estreita o pool de
+# gates ate' o fallback.
+# ⛔ Zero anatomia explicita: o orgao entra SO' pelo nucleo, via `{o}`.
+TESTEMUNHOS = [
+    "Now his {o} won't let me sleep.",
+    "Nineteen days later his {o} doesn't quit.",
+    "I'm the one asking his {o} for mercy now.",
+    "His {o} hasn't given me a quiet night since.",
+    "He was done by ten. Now his {o} isn't.",
+    "His {o} wakes up before he does.",
+    "I stopped asking. His {o} started answering.",
+    "Now I'm the one who needs a night off from his {o}.",
+    "His {o} doesn't take no for an answer anymore.",
+    "I hid the box. His {o} gave it away.",
+    "Three weeks in, his {o} still outlasts me.",
+    "My sister asked what changed. His {o} did.",
+    "He reaches first now, and his {o} doesn't wait.",
+    "His {o} quit apologizing. So did he.",
+]
+
+# ⚠️ PARADAS, NAO APAGADAS. As BARREIRAS sao copy validada e continuam aqui
+# porque a decisao de traze-las de volta e' do operador (alcada). Elas saíram do
+# slot de abertura da cena 3 pela ordem acima — tratam objecao, e o que faltava
+# ali era PROVA. Se voltarem, e' como quarto beat de outra cena, nunca
+# empurrando o testemunho: a cena 3 tem 26 palavras e ja' esta' cheia.
 BARREIRAS = [
     "Two dollars at any store.",
     "Nobody in your house knows.",
@@ -1417,10 +1461,22 @@ def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
     # fundida que diz "two dollars a box" e a barreira "Two dollars at any
     # store." estao em cenas diferentes e mesmo assim pagam o mesmo fato duas
     # vezes em 24 segundos.
-    barreira = _escolher(rng, BARREIRAS, lambda b: not _eco(c1, c2, b))
+    # ⭐ A cena 3 abre com PROVA, nao com barreira (ordem do Ed, 2026-08-01) — e
+    # a prova nomeia o orgao com `{o}`, senao ela nao tem referente.
+    # ⚠️ orgaos[2]: o terceiro substantivo distinto do sorteio. Com o testemunho
+    # nomeando o orgao, a cota da TR14 passa a ser 3/3 em vez de 2/3.
+    testemunho = _escolher(rng, TESTEMUNHOS,
+                           lambda t: not _eco(c1, c2, t.format(o=orgaos[2])))
+    testemunho = testemunho.format(o=orgaos[2])
     cta = rng.choice(CTAS)
-    gate = _escolher(rng, GATES, lambda g: not _eco(c1, c2, barreira, cta, g))
-    c3 = "%s %s %s" % (barreira, cta, gate)
+    # ⚠️ o gate fecha a cena E o orcamento: escolhe-se o que ainda cabe no teto
+    # da TR14 depois do testemunho e do CTA. Sem esta checagem o take 3 estoura
+    # em silencio — o linter acusaria depois, com o lote ja' escrito.
+    gate = _escolher(
+        rng, GATES,
+        lambda g: not _eco(c1, c2, testemunho, cta, g)
+        and _palavras("%s %s %s" % (testemunho, cta, g)) <= TETO_FALA[3])
+    c3 = "%s %s %s" % (testemunho, cta, gate)
     return [c1, c2, c3]
 
 
