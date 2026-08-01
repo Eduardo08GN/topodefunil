@@ -78,6 +78,7 @@ Casos que passaram no critério:
 | **VAZAMENTO** | Kofi, reel 1555163349606149 | 703 / 254 / 36 |
 | **GEMEO** | Zariah, reel 1487684136039129 | **345K views / 7.7K** — o recorde do repertório |
 | **CONSULTORIO** | Tanisha (maca) | 909 reactions, padrão repetido |
+| **TROCA** | Julie Evans, 7 reels + Sofia Maren | mediana **25,5K**, topo 29,7K — ⚠️ o mapa recomendou **não** criar o agente (2/4 no critério); o operador decidiu o contrário e a cena que ele acrescentou supriu a vítima que faltava |
 
 ---
 
@@ -86,6 +87,31 @@ Casos que passaram no critério:
 Receita completa: [`funil-organico/RUNBOOK-watch-videos.md`](funil-organico/RUNBOOK-watch-videos.md).
 Reels de Facebook são login-walled — o happy path 2b (captura pela aba logada
 do Chrome) é a rota validada.
+
+> ⭐ **Rota 2c — cookies + o MESMO proxy da sessão** (validada 2026-08-01, TROCA:
+> 8 reels baixados em minutos). Quando o Ed roda a conta de garimpagem no
+> **Dolphin Anty atrás de proxy**, ele pode passar o JSON de cookies e a linha do
+> proxy; aí o `yt-dlp` baixa direto, sem o relay HTTP da 2b.
+>
+> ⚠️ **O detalhe que custou meia hora: cookie de Facebook é atado ao IP.** Com os
+> cookies certos mas saindo por outro IP, o FB devolve uma página diferente e o
+> yt-dlp morre com `Cannot parse data` — que *parece* extractor defasado e não é.
+> **Os cookies e o `--proxy` andam juntos, sempre.** Sintomas e o que significam:
+>
+> | Sintoma | Causa real |
+> |---|---|
+> | `Cannot parse data` | cookies válidos, IP errado — falta o `--proxy` |
+> | `407` no proxy | credencial errada. ⛔ Se veio de print, **peça em texto** — `l`/`I` e `O`/`0` são indistinguíveis, e chutar senha queima o proxy |
+> | `502` no proxy, mas `200` no Facebook | proxy **IPv6-only**: o alvo de teste não tem AAAA. Testar contra o alvo real, não contra `ip-api.com` |
+> | Whisper devolvendo `403` | WAF barrando o `User-Agent` do `urllib`. Subir pelo `curl` resolve |
+>
+> ⛔ O arquivo de cookies vive **no scratchpad da sessão** — nunca no repo, nunca
+> em commit.
+
+**A densidade de frame que funcionou:** `fps=2` nos **primeiros 4 segundos** e
+`fps=1` no resto. O hook carrega o agente inteiro e é onde o olho precisa de
+resolução temporal; no corpo, 1 fps basta. Nos 8 reels do TROCA isso deu 142
+frames — 8 de hook e 8-26 de corpo por vídeo.
 
 ```bash
 python %USERPROFILE%\.claude\skills\watch\scripts\watch.py "<arquivo.mp4>" --resolution 640
@@ -126,6 +152,36 @@ Exemplo real (VAZAMENTO, Kofi) — as 4 novidades do ângulo: o REF **é** o
 corpo-prova · o prop **vaza** · a receita de mercado como isca · a virada
 *"sem X isso não basta"*.
 
+### ⚠️ O critério é um diagnóstico, não um veto — e o operador pode suprir
+
+Validado no TROCA (2026-08-01). A leitura ótica dos 8 reels concluiu, com
+argumento: **"não é ângulo novo o suficiente para agente próprio"** — marcava
+**2 de 4** (tinha cena e evidência; não tinha **vítima** nem **arco**). O hook
+inteiro já era nosso (M1 do SUBSTANCIA_ABSURDA) e o gesto já era do UNCAO.
+
+O que aconteceu em seguida é o breadcrumb: **o Ed propôs uma cena que supriu
+exatamente o elemento que faltava** — um corpo-prova masculino segurando o
+próprio prop no colo, na cena 3, com a narradora apontando sem encostar. Isso é
+a **vítima**, e com ela o arco fecha.
+
+Três consequências para quem rodar o pipeline:
+
+1. **Rodar o critério antes de construir, e dizer o número em voz alta.**
+   "2 de 4, faltam vítima e arco" é acionável; "acho que é parecido com o
+   SUBSTANCIA_ABSURDA" não é.
+2. **Um veredito negativo é uma lista de compras.** Nomear o que falta permite
+   ao operador decidir se quer supri-lo — e essa decisão é **alçada dele**,
+   nunca do agente.
+3. **Registrar a divergência dentro do arquivo do agente.** Quando o operador
+   decide contra a recomendação, isso vai na seção 1 do `AGENTE_ED_*.md`, com
+   data, para que ninguém "corrija" o agente depois lendo só o mapa visual.
+
+⚠️ **E os achados que não viram agente não se perdem:** o mapa do TROCA
+produziu 4 achados transversais (o prop que **não cresce** e converte, a troca
+na mesma geometria, a bancada-recibo, a física do fluido). Cada um tem um
+arquivo-dono — PRISMA, V5, `prop-metaforas` — e a tabela de destino fica escrita
+no próprio mapa visual.
+
 ---
 
 ## [4] DESTILAÇÃO — elemento vira REGRA numerada
@@ -146,6 +202,7 @@ número, para poder ser citada em qualquer lugar do repo sem ambiguidade.
 | `N` | ELA_NARRADORA | `K` | CONFISSAO |
 | `Y` | DIARIO | `U` | GUERRILHA |
 | `UN` | UNCAO | `NE` | NECROSE |
+| `TR` | TROCA | | |
 
 **Anatomia de uma regra boa** (o padrão da casa, ver PE2, F12, F15):
 
@@ -299,6 +356,56 @@ Os três custos que justificaram a migração, todos medidos em produção:
 doutrina. Regra nova entra no `.md`, desce para o motor, e aparece no app e no
 `.exe` sem tocar em interface. Duplicar string entre camadas é o mesmo erro que
 a regra P9 já proíbe entre arquivos de doutrina.
+
+### ⛔ ACEITE DO MOTOR É MEDIÇÃO, NUNCA RELATO (validado no TROCA, 2026-08-01)
+
+O motor do TROCA foi entregue **com relatório dizendo "0 ERRO, comandos
+passaram"** — e quebrava em **100% dos sorteios**. Quatro defeitos:
+
+| Defeito | Sintoma |
+|---|---|
+| `%` com argumento faltando | `TypeError: not enough arguments for format string` |
+| dois nomes indefinidos (`TR8_NUMERO`, `_bolso`) | `NameError` só na linha que executa |
+| dois linters comparando com o **template cru** | 400 de 400 reprovados, com mensagem plausível |
+
+**O checklist que fecha o portão** — nesta ordem, porque cada passo poupa o
+seguinte:
+
+1. **`python -m pyflakes <motor>.py`.** Acha **todos** os nomes indefinidos de
+   uma vez. Caçar de rodada em rodada custa uma execução por bug — o `pyflakes`
+   custa uma só. Ele também acusa `redefinition of unused`, que é o sinal de
+   duas versões da mesma função no arquivo.
+2. **400 sorteios pelas 5 páginas**, `sortear → montar → lint`, com o ledger em
+   memória. **0 ERRO medido.** O `--n 2 --dry-run` de smoke test não serve: os
+   defeitos deste motor só apareciam em parte dos sorteios.
+3. **Entropia medida, não estimada** (ver a barra abaixo).
+4. **⚠️ Quando o linter falha em 100%, a suspeita é do LINTER, não da cena.**
+   Regra que reprova tudo nunca foi testada.
+
+⛔ **Linter não compara com constante que tem slot.** `TR_X not in bloco` dá
+100% de falso positivo quando `TR_X` chega formatada. Compara-se com o **miolo
+invariante** — o trecho entre os `%s`, que sobrevive a qualquer preenchimento.
+
+⛔ **A numeração de regra é a mesma nos dois lados, caractere por caractere.**
+O motor do TROCA passou a citar `TR15`-`TR21` que **não existiam** na doutrina:
+toda mensagem de erro mandava o operador ler a regra errada, e não havia como
+auditar cobertura. Regra que o motor descobre ao virar código **volta para o
+`.md`** — é lá que ela existe (P9). Conferência barata:
+`for n in $(seq 1 N); do grep -c "TR$n\b" motor.py doutrina.md; done`.
+
+**A barra de entropia** (medida nos SHORT em 2026-08-01, com 400 sorteios cada):
+
+| O quê | Piso |
+|---|---|
+| opções por eixo visual | **≥ 9**, alvo 12-14 |
+| concentração no item mais sorteado | **≤ ~17%** |
+| `FUNDIDAS` (a copy fundida) | ≥ 13 |
+| `CTAS` | ≥ 14 |
+| `GATES` | ≥ 11, **no máximo 2 com `brother`**, maioria sem vocativo |
+| erros de linter em 400 sorteios | **0** |
+
+> Pool grande não basta: sem ledger anti-repetição o lote de 20 vídeos repete
+> rosto e cenário mesmo com 14 opções por eixo.
 
 ---
 

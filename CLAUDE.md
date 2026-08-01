@@ -42,6 +42,9 @@ travadas como constantes, linter em regex), app tkinter offline e `.exe`
 entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
 [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
 Portados ate agora: **FLAGRANTE**, **PEE**, **VAZAMENTO** e **NECROSE** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
+⭐ **SHORT NATIVO** e a terceira via, e nao tem motor longo nenhum: **ORGANICWAVE** e
+**TROCA** (2026-08-01) nascem em 3 cenas porque a fonte garimpada e' de 12-14s. Nao
+criar `<agente>_lucas.py` de 5 cenas para eles — o motor curto e' o motor.
 Cada um tem tambem a variante **SHORT** (3 cenas de 8s, para o AdBatch Vertical 3):
 `<agente>_short.py` **deriva** do motor longo em vez de copia-lo — a maquinaria do
 colapso mora em `short_comum.py`. ⚠️ A copy fundida da cena 2 carrega
@@ -51,7 +54,7 @@ que os traziam sao justamente as que caem.
 String validada é **constante**, nunca redigitada — comprimir o D1 na mão já
 entregou esqueleto 3D no lugar da placa em corte.
 
-**Agentes especialistas por ângulo** (desmembramento 2026-07-28): **17 agentes**
+**Agentes especialistas por ângulo** (desmembramento 2026-07-28): **18 agentes**
 `AGENTE_ED_<ANGULO>_V1.md` na raiz — FLAGRANTE (humilhação pública), GEMEO
 (antes/depois, o recorde 345K), RESSURREICAO (despejo→crescimento), DEMO_QUIMICA,
 SUBSTANCIA_ABSURDA, DIAGNOSTICO, CONSEQUENCIA, ELA_NARRADORA, CONFISSAO, DIARIO,
@@ -64,7 +67,10 @@ UNCAO (REF feminina esfregando cubos de gelatina no sifão que endireita na tela
 payoff de status em evento social — comissão do operador, sem leitura ótica),
 **NECROSE** (dois modelos anatômicos 3D em pedestal lado a lado, um apodrecido
 e um são, nas mãos de um montanhês de tronco nu com um lobo — Alaskan Mountain
-Men Tips, 1.9K/307/103).
+Men Tips, 1.9K/307/103),
+**TROCA** (a narradora manda esfregar a substância absurda, desmente a
+própria isca e troca o proxy pela gelatina no mesmo ponto do quadro; corpo-prova
+masculino na cena 3 — Julie Evans, mediana 25,5K em 7 reels).
 Tabela completa com evidências no WORKFLOW.md. Todos enxutos: regras
 próprias + mecânica por ponteiro (V4/PRISMA/arsenal). O PRISMA sorteia a spec;
 o especialista do ângulo sorteado executa. ⛔ `fake_broadcast` está banido.
