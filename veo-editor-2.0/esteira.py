@@ -41,22 +41,28 @@ CONFIG = os.path.join(BASE, "config.json")
 
 # so zips das nossas ferramentas sao capturados na pasta vigiada; na 01_entrada
 # qualquer zip vale (caminho manual)
-# ⚠️ SO' os zips da AdBatch Vertical 3. O v1.2 vigia "^adbatch.*" e pegaria
-# estes tambem: as duas esteiras fazem poll na MESMA pasta Downloads, e quem
-# chegasse primeiro levava. O v1.2 recebeu a exclusao complementar.
+# ⚠️ INVERTIDO EM 2026-08-01, ordem do operador: nesta maquina .zip so' existe
+# para isto, entao QUALQUER .zip que cair no Downloads e' lote de video e vai
+# direto para a edicao. Nao ha' mais lista de nomes aceitos.
 #
-# ⚠️ FRAGMENTO ESPELHADO — a copia literal deste _VERTICAL_3 mora no v1.2
-# (VeoEditor/esteira.py), dentro de um "(?!...)". O que casa AQUI tem de estar
-# excluido LA'. Mexeu num, mexe no outro no mesmo commit.
+# Por que a whitelist saiu: ela era "^adbatch...vertical...3" e custou dois
+# lotes parados. A ferramenta do Flow foi regerada (painel v2.4) e renomeou o
+# pacote sozinha, de "adbatch_vertical_3.zip" para
+# "adbatch_vertical_output.zip". A esteira ficou muda e o operador esperando.
+# O nome do ZIP e' contrato com uma ferramenta que muda sem avisar — casar com
+# ele ia quebrar de novo na proxima renomeacao. Um .zip estranho no Downloads
+# vira erro visivel em 05_erros; um lote nao-reconhecido virava silencio.
 #
-# "output" entrou em 2026-08-01: a AdBatch Vertical 3 foi regerada (painel
-# v2.4) e o botao de download passou a nomear o pacote
-# "adbatch_vertical_output.zip" em vez de "adbatch_vertical_3.zip". Dois lotes
-# ficaram parados no Downloads sem erro nenhum na tela — so' o aviso de
-# ignorados. O nome do ZIP e' contrato com a ferramenta do Flow
-# (adbatch-prompts-editor.md), e o contrato mudou sem aviso.
-_VERTICAL_3 = r"[_ -]?vertical[_ -]?(?:3|output)"
-PADRAO_DOWNLOADS = re.compile(r"^adbatch" + _VERTICAL_3 + r".*\.zip$", re.I)
+# Sobrou UMA excecao, e ela nao e' cosmetica: o v1.2 (C:\Users\edlut\VeoEditor)
+# vigia a MESMA pasta Downloads e cuida da AdBatch Vertical 5/4, que sai com
+# jitter ~0.99x em vez da aceleracao 1.35x daqui. Sem esta guarda o lote V5
+# sairia acelerado e errado, e — de novo — sem erro nenhum na tela.
+#
+# ⚠️ FRAGMENTO ESPELHADO — a copia literal de _V5_V4 mora no v1.2
+# (VeoEditor/esteira.py), la' como padrao POSITIVO: o que ele captura tem de
+# estar excluido aqui. Mexeu num, mexe no outro no mesmo commit.
+_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?5|lote)"
+PADRAO_DOWNLOADS = re.compile(r"(?!" + _V5_V4 + r").*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 # ---------------------------------------------------------------------------
 # A DIFERENCA DA v2.0 — a taxa de aceleracao
@@ -463,10 +469,11 @@ def status():
                      "log": list(ESTADO["atual"]["log"])}
         vigiada = pasta_vigiada()
         modo_dl = _modo_downloads(vigiada)
-        padrao = "adbatch*.zip" if modo_dl else "*.zip"
+        padrao = "*.zip (menos Vertical 5/4)" if modo_dl else "*.zip"
         ignorados = 0
         if modo_dl:
             # zips no Downloads fora do padrao: avisa em vez de ignorar mudo
+            # (hoje isso e' so' a Vertical 5/4, que e' do v1.2)
             try:
                 ignorados = sum(1 for a in os.listdir(vigiada)
                                 if a.lower().endswith(".zip")

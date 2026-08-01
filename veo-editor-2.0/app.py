@@ -413,14 +413,14 @@ class App(tk.Tk):
             # ⚠️ O aviso enuncia o filtro REAL (esteira.PADRAO_DOWNLOADS), nao
             # um resumo dele: dizer 'nao comeca com "adbatch"' custou dois
             # lotes parados em 2026-08-01 — os arquivos comecavam com
-            # "adbatch", o que faltava era o "vertical_3/output".
+            # "adbatch". Desde a inversao, o unico .zip que esta esteira
+            # recusa e' o da Vertical 5/4, e o aviso diz para onde ele vai.
             vazio_fila = [f'{s["ignorados"]} zip(s) no Downloads IGNORADO(s):',
-                          'esta esteira so pega a AdBatch Vertical 3',
-                          '(adbatch_vertical_3*.zip ou',
-                          'adbatch_vertical_output*.zip).',
-                          'Renomeie o arquivo, ou defina uma',
-                          'Pasta vigiada dedicada (la qualquer',
-                          '.zip e capturado).']
+                          'sao da AdBatch Vertical 5/4',
+                          '(adbatch_vertical_5*.zip, adbatch_lote*.zip).',
+                          'Quem edita esses e o Veo Editor v1.2 —',
+                          'abra ele. Qualquer OUTRO .zip que cair',
+                          'no Downloads esta esteira pega sozinha.']
         self._set_lista("fila", self.lst_fila, s["pendentes"], vazio_fila)
 
         # ⭐ O mascote acende em TRES estados, nao so' no processamento: o zip

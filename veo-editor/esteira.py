@@ -38,21 +38,24 @@ CONFIG = os.path.join(BASE, "config.json")
 
 # so zips das nossas ferramentas sao capturados na pasta vigiada; na 01_entrada
 # qualquer zip vale (caminho manual)
-# ⚠️ O "(?!...)" e a fronteira com o Veo Editor 2.0: as duas esteiras vigiam a
-# MESMA pasta Downloads, e sem isso quem fizesse poll primeiro levava o zip da
-# outra — o de 24s sairia com a taxa de ruido do v1.2 em vez da aceleracao da
-# v2.0, sem erro nenhum na tela.
+# ⚠️ INVERTIDO EM 2026-08-01: a v2.0 virou o destino padrao do Downloads
+# (qualquer .zip que cair la' vai pra ela), e este aqui ficou com um territorio
+# NOMEADO e pequeno — so' a AdBatch Vertical 5 e a Vertical 4. Antes era o
+# contrario: aqui era "^adbatch.*" com a v2.0 recortada por um "(?!...)".
 #
-# ⚠️ FRAGMENTO ESPELHADO — a copia literal deste _VERTICAL_3 mora no v2.0
-# (VEO-EDITOR-2.0/esteira.py), la' como padrao POSITIVO. O que ele captura tem
-# de estar excluido aqui. Mexeu num, mexe no outro no mesmo commit.
+# A fronteira segue sendo a mesma coisa e pela mesma razao: as duas esteiras
+# fazem poll na MESMA pasta Downloads, e o lote de 40s da V5 sai daqui com
+# jitter ~0.99x enquanto o de 24s sai da v2.0 acelerado 1.35x. Quem pegasse o
+# zip da outra entregaria o video com a velocidade errada, sem erro na tela.
 #
-# "output" entrou em 2026-08-01 junto com o v2.0: a AdBatch Vertical 3 foi
-# regerada e passou a baixar "adbatch_vertical_output.zip". Sem o "output"
-# aqui, o v1.2 voltaria a roubar o lote da v2.0.
-_VERTICAL_3 = r"[_ -]?vertical[_ -]?(?:3|output)"
-PADRAO_DOWNLOADS = re.compile(
-    r"^adbatch(?!" + _VERTICAL_3 + r").*\.zip$", re.I)
+# ⚠️ FRAGMENTO ESPELHADO — a copia literal deste _V5_V4 mora na v2.0
+# (VEO-EDITOR-2.0/esteira.py), la' dentro de um "(?!...)". O que casa AQUI tem
+# de estar excluido LA'. Mexeu num, mexe no outro no mesmo commit.
+#
+# Nomes vem da familia documentada em RUNBOOK-adbatch-vertical.md §A FAMILIA:
+# V5 -> adbatch_vertical_5.zip · V4 -> adbatch_lote.zip
+_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?5|lote)"
+PADRAO_DOWNLOADS = re.compile(_V5_V4 + r".*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
 
