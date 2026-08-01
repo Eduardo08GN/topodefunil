@@ -376,107 +376,109 @@ NARRADORAS = [
 # escrever dois pools independentes mantem a comparacao entre paginas honesta:
 # a unica variavel que muda entre joe e marcus e' a etnia, nunca o figurino.
 # ⚠️ 51-65 anos: e' o CORPO com que o espectador se identifica [D2].
-# ⚠️ A `calca` existe para a ancora de roupa da F12b (TR9) — cada uma declara
-# o bolso, porque `groin` e `pubic` sao recusa e bolso nao e'.
+# ⚠️ A `calca` existe para a ancora de roupa da F12b (TR10): `beside the lap of
+# his khaki shorts`. ⛔ Nada de oracao de bolso aqui — ela so' existia para a
+# ancora reescrita (`front pocket`), que era o desvio, e cada palavra a mais
+# no IMAGE 03 e' superficie de bloqueio no bloco mais arriscado do lote (F12c).
 CORPOS_PROVA_CLARA = [
     {"id": "prata_pintinha", "idade": 58,
      "marca": "thick silver hair swept back and a small dark beauty mark high on his left cheekbone",
      "roupa": "a plain navy short-sleeve work shirt",
-     "calca": "khaki work pants with a flat front pocket"},
+     "calca": "khaki work pants"},
     {"id": "barba_branca", "idade": 62,
      "marca": "a full white beard trimmed close and deep-set pale grey eyes",
      "roupa": "a heather-grey pocket tee",
-     "calca": "faded blue jeans with a worn front pocket"},
+     "calca": "faded blue jeans"},
     {"id": "covinha_tempora", "idade": 55,
      "marca": "dark hair greying at the temples and a deep vertical dimple in his left cheek",
      "roupa": "an olive canvas shirt with the sleeves rolled to the elbow",
-     "calca": "brown corduroy trousers with a deep front pocket"},
+     "calca": "brown corduroy trousers"},
     {"id": "palpebra_pesada", "idade": 64,
      "marca": "a bald crown with close-cropped white hair at the sides and heavy hooded eyelids",
      "roupa": "a light blue short-sleeve button-down",
-     "calca": "grey twill work pants with a flat front pocket"},
+     "calca": "grey twill work pants"},
     {"id": "queixo_fendido", "idade": 51,
      "marca": "sandy blond hair going grey at the sides and a strong cleft chin",
      "roupa": "a charcoal henley with the sleeves pushed up",
-     "calca": "dark denim jeans with a frayed front pocket"},
+     "calca": "dark denim jeans"},
     {"id": "aco_sardas", "idade": 60,
      "marca": "wavy steel-grey hair worn a little long and light freckles across his nose",
      "roupa": "a faded red flannel shirt",
-     "calca": "tan chinos with a flat front pocket"},
+     "calca": "tan chinos"},
     {"id": "bigode_guidao", "idade": 57,
      "marca": "a shaved head and a thick grey handlebar moustache",
      "roupa": "a mustard-yellow snap-button shirt",
-     "calca": "black work trousers with a wide front pocket"},
+     "calca": "black work trousers"},
     {"id": "dentes_falha", "idade": 65,
      "marca": "white hair combed straight back and a wide gap between his front teeth",
      "roupa": "a cream short-sleeve camp shirt",
-     "calca": "olive cargo pants with a buttoned front pocket"},
+     "calca": "olive cargo pants"},
     {"id": "sinal_olho", "idade": 53,
      "marca": "short auburn hair fading to grey and a small mole at the outer corner of his right eye",
      "roupa": "a slate-blue polo shirt",
-     "calca": "stone-coloured chinos with a flat front pocket"},
+     "calca": "stone-coloured chinos"},
     {"id": "flat_top", "idade": 61,
      "marca": "a flat-top cut gone completely white and thick greying eyebrows",
      "roupa": "a forest-green fishing shirt with two chest pockets",
-     "calca": "khaki shorts with a deep side pocket"},
+     "calca": "khaki shorts"},
     {"id": "mecha_branca", "idade": 56,
      "marca": "thick chestnut hair with a bright white streak at the left temple",
      "roupa": "a rust-red pocket tee",
-     "calca": "grey sweatpants with a flat front pocket"},
+     "calca": "grey sweatpants"},
     {"id": "corte_sobrancelha", "idade": 63,
      "marca": "a close silver crew cut and a long-healed nick through his right eyebrow",
      "roupa": "a blue-and-white plaid short-sleeve shirt",
-     "calca": "brown canvas work pants with a hammer loop and a front pocket"},
+     "calca": "brown canvas work pants"},
 ]
 CORPOS_PROVA_ESCURA = [
     {"id": "prata_barba", "idade": 58,
      "marca": "close-cropped silver hair and a neat white beard along the jaw",
      "roupa": "a plain navy short-sleeve work shirt",
-     "calca": "khaki work pants with a flat front pocket"},
+     "calca": "khaki work pants"},
     {"id": "locs_ambar", "idade": 62,
      "marca": "salt-and-pepper locs gathered back and warm amber eyes",
      "roupa": "a heather-grey pocket tee",
-     "calca": "faded blue jeans with a worn front pocket"},
+     "calca": "faded blue jeans"},
     {"id": "fade_covinha", "idade": 55,
      "marca": "a close grey fade and a deep vertical dimple in his left cheek",
      "roupa": "an olive canvas shirt with the sleeves rolled to the elbow",
-     "calca": "brown corduroy trousers with a deep front pocket"},
+     "calca": "brown corduroy trousers"},
     {"id": "cavanhaque", "idade": 64,
      "marca": "a smooth shaved head and a neat silver goatee",
      "roupa": "a light blue short-sleeve button-down",
-     "calca": "grey twill work pants with a flat front pocket"},
+     "calca": "grey twill work pants"},
     {"id": "twists_queixo", "idade": 51,
      "marca": "short black twists just starting to grey and a strong cleft chin",
      "roupa": "a charcoal henley with the sleeves pushed up",
-     "calca": "dark denim jeans with a frayed front pocket"},
+     "calca": "dark denim jeans"},
     {"id": "afro_sardas", "idade": 60,
      "marca": "a silver-flecked afro worn low and light freckles across his nose",
      "roupa": "a faded red flannel shirt",
-     "calca": "tan chinos with a flat front pocket"},
+     "calca": "tan chinos"},
     {"id": "careca_bigode", "idade": 57,
      "marca": "a bald head and a thick grey moustache",
      "roupa": "a mustard-yellow snap-button shirt",
-     "calca": "black work trousers with a wide front pocket"},
+     "calca": "black work trousers"},
     {"id": "branco_falha", "idade": 65,
      "marca": "short white hair and a wide gap between his front teeth",
      "roupa": "a cream short-sleeve camp shirt",
-     "calca": "olive cargo pants with a buttoned front pocket"},
+     "calca": "olive cargo pants"},
     {"id": "hightop_sinal", "idade": 53,
      "marca": "a grey high-top fade and a small mole at the outer corner of his right eye",
      "roupa": "a slate-blue polo shirt",
-     "calca": "stone-coloured chinos with a flat front pocket"},
+     "calca": "stone-coloured chinos"},
     {"id": "afro_curto_grisalho", "idade": 61,
      "marca": "a short grey afro and thick greying eyebrows",
      "roupa": "a forest-green fishing shirt with two chest pockets",
-     "calca": "khaki shorts with a deep side pocket"},
+     "calca": "khaki shorts"},
     {"id": "mecha_tempora", "idade": 56,
      "marca": "a close grey afro with a bright white streak above the left temple",
      "roupa": "a rust-red pocket tee",
-     "calca": "grey sweatpants with a flat front pocket"},
+     "calca": "grey sweatpants"},
     {"id": "barba_corte", "idade": 63,
      "marca": "a neat grey beard and a long-healed nick through his right eyebrow",
      "roupa": "a blue-and-white plaid short-sleeve shirt",
-     "calca": "brown canvas work pants with a hammer loop and a front pocket"},
+     "calca": "brown canvas work pants"},
 ]
 
 
@@ -797,7 +799,7 @@ MECANISMOS_PROP = [
     {"id": "copo_sache",
      "plantado": "a tall glass of cold water with a torn white sachet lying flat beside it",
      "curto": "the tall glass of cold water with the torn white sachet beside it",
-     "pousado": "already poured, the torn foil top lying flat on the board beside it"},
+     "pousado": "already poured, the wet spoon lying on the board beside it"},
 ]
 
 
@@ -1149,13 +1151,13 @@ def _sem_artigo(txt):
 
 
 def _peca(calca):
-    """A peca de roupa sem a oracao do bolso: 'khaki shorts with a deep side
-    pocket' -> 'khaki shorts'. Sem isso a ancora sairia 'beside the lap of his
-    khaki shorts with a deep side pocket'.
+    """A peca de roupa nua, sem oracao subordinada.
 
-    ⚠️ A oracao do bolso continua existindo na DESCRICAO da roupa dele (e' o
-    detalhe que faz a calca parecer roupa de verdade) — ela so' nao entra na
-    travada da F12b, onde o substantivo e' `lap` e nunca `pocket`.
+    Hoje as 24 calcas ja' nascem nuas (a oracao do bolso saiu junto com a
+    ancora reescrita), entao isto e' GUARDA, nao transformacao: se alguem
+    acrescentar 'khaki shorts with a deep side pocket' a um pool, a travada da
+    F12b nao sai como 'beside the lap of his khaki shorts with a deep side
+    pocket'. ⛔ O substantivo da ancora e' `lap`, nunca `pocket`.
     """
     return calca.split(" with ")[0]
 

@@ -711,6 +711,28 @@ Destino da esteira: **AdBatch Vertical 3**
   lote de 20 vídeos repete rosto e cenário mesmo com pool grande — foi a queixa
   medida do operador em 2026-08-01.
 
+
+### Densidade medida — o número que o F12c pede (2026-08-01)
+
+Palavras por bloco, pior caso em 400 sorteios, depois das correções:
+
+| bloco | antes | agora |
+|---|---|---|
+| IMAGE 01/03 | 271 | 275 (ganhou a mão livre e a substância nomeada) |
+| IMAGE 02/03 | ~200 | 216 (ganhou a re-âncora de cenário e a textura) |
+| **IMAGE 03/03** — a F12b | **230** | **219** (perdeu o recibo, ganhou o mecanismo) |
+
+⚠️ **O IMAGE 01 é o bloco mais gordo e continua assim de propósito:** ele
+carrega os 6 elementos obrigatórios do hook, o pote (TR4), o mecanismo plantado
+(TR1) e o recibo (TR7) — e é a composição de **menor** risco do lote (uma
+pessoa, sem virilha em quadro). ⛔ Cortar TR4 ou TR7 dali para "aliviar" é
+amputar regra, não densidade.
+⚠️ **O IMAGE 03 continua acima dos peers** (219 × ~101-191) porque descreve
+**duas pessoas inteiras** com marca facial obrigatória (TR11/TR18) mais o prop.
+Se o Ed quiser baixar mais, o que sobra para cortar é a **re-âncora de cenário**
+(~15 palavras) — e o preço é a entropia de cenário voltar a colapsar nas cenas 2
+e 3. É troca, não ganho: decisão dele.
+
 - **TR21 — SELF-TEST: O MOTOR SÓ ESTÁ PRONTO QUANDO ALGUÉM RODOU.**
   ⚠️ **Regra paga na própria construção deste agente.** O motor foi entregue com
   quatro defeitos que quebravam **100% dos sorteios** — dois nomes indefinidos,
