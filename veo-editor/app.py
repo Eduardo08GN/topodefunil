@@ -364,7 +364,7 @@ class App(tk.Tk):
         sel = self.tree.selection()
         if not sel:
             return
-        data, arquivo = sel[0].split("|", 1)
+        _, data, arquivo = sel[0].split("|", 2)
         p = os.path.join(esteira.D_PRONTOS, data, arquivo)
         if os.path.isfile(p):
             os.startfile(p)  # noqa: S606 — player padrao do Windows
@@ -454,8 +454,11 @@ class App(tk.Tk):
         if self._cache.get("prontos") != chave_pr:
             self._cache["prontos"] = chave_pr
             self.tree.delete(*self.tree.get_children())
-            for p in reversed(s["prontos"]):
-                iid = f'{p["data"]}|{p["arquivo"]}'
+            # ⛔ o indice na frente torna o iid unico por construcao: nome
+            # repetido no historico estourava "Item already exists" e a tabela
+            # parava ali, mostrando menos linhas que o contador.
+            for i, p in enumerate(reversed(s["prontos"])):
+                iid = f'{i}|{p["data"]}|{p["arquivo"]}'
                 self.tree.insert("", "end", iid=iid, text=p["arquivo"],
                                  values=(f'{p["duracao"]:.0f}s',
                                          f'{p["fator"]:.3f}x', p["hora"]))
