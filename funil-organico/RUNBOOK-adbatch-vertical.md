@@ -30,7 +30,7 @@ prompt, não traduz. Ela **executa o índice**. Toda a inteligência mora antes
 | | Etapa 1 — IMAGENS | Etapa 2 — VÍDEOS |
 |---|---|---|
 | Entrada | bloco `REF` + N blocos `IMAGE` | N blocos `TAKE` |
-| Modelo | `🍌 Nano Banana Pro` | `Veo 3.1 - Lite` |
+| Modelo | `🍌 Nano Banana 2` (prioridade baixa) | `Veo 3.1 - Lite [Lower Priority]` |
 | Formato | 9:16 | 9:16, **8 segundos** |
 | Referência | o media do `REF` entra em `referenceImageMediaIds` de **cada** slot | a imagem do slot entra em `firstFrameImageMediaId` |
 | Portão | a etapa 2 só abre com **≥1 imagem em success** | — |
@@ -255,8 +255,39 @@ Some-se a isso um detalhe de arquivo: o download individual da V5 sai
 
 1. **Não traduzir.** Prompt e roteiro vão pro modelo exatamente como colados.
    Eles nascem em inglês no motor do agente e é assim que o Veo os quer.
-2. **Modelo de vídeo é `Veo 3.1 - Lite`, fail-closed.** Se não estiver
-   disponível, **não gera** e avisa. Nunca cai num modelo pago em silêncio.
+2. ⭐ **Os dois modelos são de PRIORIDADE BAIXA, sempre** (ordem do operador,
+   2026-07-31):
+
+   | | modelo | por quê |
+   |---|---|---|
+   | imagem | **`🍌 Nano Banana 2`** | prioridade baixa, **0 créditos** |
+   | vídeo | **`Veo 3.1 - Lite [Lower Priority]`** | idem |
+
+   **Fail-closed:** se o modelo pedido não estiver na lista, **não gera** e
+   avisa em vermelho. Nunca cai em outro modelo, nunca num pago.
+
+   ⚠️ **O nome tem que bater CARACTERE POR CARACTERE com o seletor do Flow —
+   emoji e colchetes inclusos.** Nome inexistente faz o SDK cair no modelo
+   padrão, que é pago, e **falha em silêncio**.
+
+   > **O caso que produziu a regra.** A spec original da ferramenta já pedia
+   > prioridade baixa nos dois. O construtor implementou os nomes **sem o
+   > sufixo** — `"Veo 3.1 - Lite"` em vez de `"Veo 3.1 - Lite [Lower
+   > Priority]"`, e `"🍌 Nano Banana Pro"` no lugar de um gratuito. As três
+   > ferramentas queimaram cota paga por semanas sem ninguém ver, até o limite
+   > diário do Nano Banana Pro estourar em produção.
+   >
+   > **A regra existia e não foi verificada** — que é o mesmo defeito do
+   > `two fully clothed adults`: escrever a regra não a implementa.
+
+   ⚙️ **Por isso o painel mostra `IMG MODEL` e `VID MODEL` no rodapé.** Sem
+   isso não havia como saber qual modelo estava rodando sem abrir o `App.tsx`
+   — e foi o rodapé que diagnosticou o problema em dez segundos. **Não
+   remover.**
+
+   **Como conferir se um modelo é gratuito:** selecione-o no compositor
+   principal do Flow e leia a linha *"A geração vai usar X créditos"*. É a
+   fonte autoritativa; não deduza pelo nome.
 3. **Uma imagem = um enquadramento.** Jamais colagem, grade, mosaico ou
    storyboard dentro de um frame. Um bloco, uma chamada.
 4. **9:16 sempre.** Vídeo de 8 segundos.

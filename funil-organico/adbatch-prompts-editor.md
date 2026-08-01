@@ -1,7 +1,8 @@
 # 📋 Prompts para o Criador de Ferramentas — AdBatch V4 e V3
 
-> Bateria pronta pra colar no editor do Google Flow. Duas frentes:
-> **atualizar a V4** (7 prompts, na ordem) e **criar a V3** (1 prompt de spec).
+> Bateria pronta pra colar no editor do Google Flow. Três frentes: o
+> **PROMPT 0** (modelos em prioridade baixa, vale para as três ferramentas),
+> **atualizar a V4** (6 prompts, na ordem) e **criar a V3** (1 prompt de spec).
 >
 > A arquitetura, o contrato do parser e o levantamento do atraso estão no
 > [`RUNBOOK-adbatch-vertical.md`](RUNBOOK-adbatch-vertical.md). Este arquivo é
@@ -54,12 +55,19 @@ avise em vez de mexer:
    Nunca renumerar por ordem de conclusão. Slot que falhou deixa buraco.
 8. Nada de tradução. Prompt e roteiro vão para o modelo exatamente como
    colados, em inglês.
-9. Modelo de imagem continua "🍌 Nano Banana Pro", 9:16.
+9. Modelo de imagem continua "🍌 Nano Banana 2" em prioridade baixa, 9:16.
 10. Teto de 4000 caracteres por prompt, cortado antes da chamada.
 
 Ao terminar, NÃO responda "pronto". Responda o que você mudou, arquivo por
 arquivo, e o resultado do teste de aceitação deste prompt.
 ```
+
+---
+
+> ⭐ **Antes de tudo, o PROMPT 0** (logo abaixo): põe os dois modelos em
+> prioridade baixa. Ele vale para as **três** ferramentas e é o único que se
+> paga sozinho — enquanto não passar, cada geração de teste dos outros prompts
+> queima cota paga.
 
 ---
 
@@ -73,6 +81,49 @@ arquivo, e o resultado do teste de aceitação deste prompt.
 > que baixa individual sem zero à esquerda (`img_1.jpg`) e só pada dentro do
 > ZIP. O prompt está no fim do arquivo, marcado como **correção da V5**.
 
+## PROMPT 0 — os dois modelos em prioridade baixa ⭐
+
+*Vale para as TRÊS ferramentas — 3, 4 e 5 — porque as três herdaram o mesmo
+defeito. Rode este antes de qualquer outro: enquanto ele não passar, cada
+geração de teste dos outros prompts queima cota paga.*
+
+```text
+[PREÂMBULO]
+
+ESCOPO: apenas as constantes de modelo em App.tsx. Nada mais muda.
+
+A ferramenta nomeia os modelos SEM o sufixo de prioridade, entao consome cota
+paga em vez do tier gratuito. A regra ja existia na especificacao original e
+nunca foi implementada.
+
+IMAGE_MODEL passa a ser exatamente:   🍌 Nano Banana 2
+VIDEO_MODEL passa a ser exatamente:   Veo 3.1 - Lite [Lower Priority]
+
+Os nomes tem que bater CARACTERE POR CARACTERE com o que aparece no seletor de
+modelos do Flow, emoji e colchetes inclusos. Se o seletor mostrar qualquer um
+deles com sufixo de prioridade, use o nome COM o sufixo — e a variante que nao
+consome credito.
+
+⚠️ Se algum desses nomes nao existir na lista de modelos disponiveis, NAO
+invente um nome parecido e NAO caia no anterior: pare e me diga quais nomes
+existem. Nome inexistente faz o SDK cair no modelo padrao, que e pago, e falha
+em silencio — o pior caso possivel.
+
+ADICIONE, se ainda nao existir: um rodape no painel lateral mostrando
+IMG MODEL e VID MODEL em texto pequeno. Sem ele nao ha como saber qual modelo
+esta rodando sem abrir o codigo, e foi assim que este defeito passou semanas
+sem ser visto.
+
+MANTENHA a regra fail-closed: se o modelo pedido nao estiver disponivel, NAO
+gera e avisa em vermelho.
+
+TESTE DE ACEITACAO: me mostre as duas constantes e o que o rodape exibe.
+Depois gere UMA imagem e me confirme dois pontos — qual modelo foi
+efetivamente chamado, e se algum credito foi consumido.
+```
+
+---
+
 ## PROMPT 1 — modelo de vídeo e duração
 
 *Duas constantes. É o de maior impacto e menor risco — comece por ele.*
@@ -82,10 +133,11 @@ arquivo, e o resultado do teste de aceitação deste prompt.
 
 ESCOPO: apenas as constantes de geração de vídeo em App.tsx.
 
-1. VIDEO_MODEL passa de 'Omni Flash' para 'Veo 3.1 - Lite'.
+1. VIDEO_MODEL passa de 'Omni Flash' para 'Veo 3.1 - Lite [Lower Priority]'.
+   ⚠️ COM o sufixo: sem ele o SDK usa a variante paga.
 2. Em Flow.generate.video, durationSeconds passa de 4 para 8.
 
-REGRA FAIL-CLOSED: se 'Veo 3.1 - Lite' não estiver disponível na lista de
+REGRA FAIL-CLOSED: se 'Veo 3.1 - Lite [Lower Priority]' não estiver na lista de
 modelos, NÃO gere nada e mostre um aviso explícito na interface. Nunca caia
 em outro modelo silenciosamente, e nunca em modelo pago.
 
@@ -418,7 +470,9 @@ dígitos do id]" como prova visual de que a referência foi anexada. Se um
 slot for gerado sem referência enquanto existe bloco REF no texto, marque o
 card com alerta em vez de sucesso.
 
-Modelo de imagem: "🍌 Nano Banana Pro", 9:16.
+Modelo de imagem: "🍌 Nano Banana 2" (prioridade baixa, 0 creditos), 9:16.
+⚠️ O nome tem que bater caractere por caractere com o seletor do Flow. Se ele
+mostrar sufixo de prioridade, use o nome COM o sufixo.
 Uma imagem = um enquadramento único. Jamais colagem, grade, mosaico,
 múltiplos painéis ou storyboard dentro de uma mesma imagem.
 
@@ -433,9 +487,10 @@ N anima a imagem do slot N.
 
 Cada chamada de vídeo passa a imagem do slot correspondente como frame
 inicial (image-to-video). O texto do TAKE é a direção de movimento e fala.
-Modelo: "Veo 3.1 - Lite", 9:16, durationSeconds 8.
+Modelo: "Veo 3.1 - Lite [Lower Priority]", 9:16, durationSeconds 8.
+⚠️ COM o sufixo de prioridade: e a variante que nao consome credito.
 
-REGRA FAIL-CLOSED DE MODELO: se "Veo 3.1 - Lite" não estiver disponível, NÃO
+REGRA FAIL-CLOSED DE MODELO: se "Veo 3.1 - Lite [Lower Priority]" não estiver, NÃO
 gere e avise. Nunca caia em outro modelo, nunca em modelo pago.
 
 Se houver TAKE sem imagem correspondente, marque alerta naquele card em vez
