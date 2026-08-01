@@ -90,6 +90,40 @@ FUNDIDAS = [
     "Pills don't touch this — it's the prostate pressing the line flat. The "
     "gelatin trick opened it, and nineteen days later his {o} hasn't quit "
     "since.",
+
+    # + 2026-08-01: o operador mediu vicio — a mesma fundida em todo lote SHORT.
+    # Pool ampliado; cada item continua carregando o literal `gelatin trick`,
+    # a prostata no cano e o {o}, porque as cenas que os traziam sao as que caem.
+    "A man at the barbershop handed him the gelatin trick. It opens the "
+    "line the prostate was pinching shut, and it wakes your {o}. Nineteen days.",
+
+    "Nineteen days is all it took. The gelatin trick got the pipe open under "
+    "his prostate, and his {o} came back with it. She noticed first.",
+
+    "Same prostate, two failures — the wet pants and the dead {o}. One spoon "
+    "of the gelatin trick, and nineteen days later he was dry and she wasn't "
+    "sleeping.",
+
+    "If you get up twice a night, that's the prostate on the line, and your "
+    "{o} is next. The gelatin trick opened his in nineteen days.",
+
+    "A retired trucker told him about the gelatin trick. It gets under the "
+    "prostate that's squeezing the pipe, and nineteen days later his {o} "
+    "answered.",
+
+    "Doctors treat the bladder and leave the rest. It's one prostate on one "
+    "pipe. He stirred the gelatin trick into cold water and got his {o} back.",
+
+    "Think of a thumb over a hose end — that's his prostate, and your {o} "
+    "gets nothing. The gelatin trick moved the thumb. Nineteen days, dry and "
+    "grinning.",
+
+    "He laughed at the gelatin trick too. Then his prostate stopped sitting "
+    "on that pipe, and three weeks later she was the one bragging about his {o}.",
+
+    "The prostate closes the pipe first and your {o} second. Nobody tells you "
+    "that. The gelatin trick opened both for him, and she noticed inside three "
+    "weeks.",
 ]
 
 

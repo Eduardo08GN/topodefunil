@@ -106,6 +106,46 @@ COZINHAS = [
      "set": "a modest American kitchen, cream-painted cabinets, a bowl of lemons, "
             "a small American flag on a stand by the window",
      "luz": "Cool white overhead kitchen light, flat and even."},
+    # + 2026-08-01: o operador mediu vicio de cenario — a mesma cozinha voltando
+    # no lote. Pool de 3 para 12.
+    {"id": "cozinha_azulejo",
+     "set": "a modest American kitchen, pale blue tile backsplash, a wall clock "
+            "over the doorway, a small American flag on a stand next to the toaster",
+     "luz": "Cool white overhead kitchen light, flat and even."},
+    {"id": "cozinha_laminado",
+     "set": "a modest American kitchen, worn laminate countertops, a percolator "
+            "beside the stove, a small American flag on a stand beside the sink",
+     "luz": "Neutral daylight through the window over the sink, soft and even."},
+    {"id": "cozinha_fazenda",
+     "set": "a modest American farmhouse kitchen, a deep enamel sink, checkered "
+            "curtains over the window, a small American flag on a stand on the sill",
+     "luz": "Warm overhead kitchen light, slight shadow under the chin."},
+    {"id": "cozinha_corredor",
+     "set": "a narrow galley kitchen in a modest American home, cabinets on both "
+            "walls, a row of coffee mugs on hooks, a small American flag on a stand "
+            "by the range",
+     "luz": "Cool white overhead kitchen light, flat and even."},
+    {"id": "cozinha_nogueira",
+     "set": "a modest American kitchen, dark walnut cabinets, a cast-iron skillet "
+            "hanging on the wall, a small American flag on a stand above the stove",
+     "luz": "Warm light from a single fixture over the table, soft shadow under the chin."},
+    {"id": "cozinha_tijolo",
+     "set": "a modest American kitchen, exposed brick behind the stove, a wooden "
+            "knife block, a small American flag on a stand on the windowsill",
+     "luz": "Cool white overhead kitchen light, flat and even."},
+    {"id": "cozinha_despensa",
+     "set": "a modest American kitchen, open pantry shelves stacked with cans, a "
+            "bowl of apples on the counter, a small American flag on a stand by the door",
+     "luz": "Neutral overhead kitchen light, even and shadowless."},
+    {"id": "cozinha_reboque",
+     "set": "a compact kitchen in a modest American mobile home, wood-paneled "
+            "walls, a chest freezer in the corner, a small American flag on a stand "
+            "over the sink",
+     "luz": "Cool white overhead kitchen light, flat and even."},
+    {"id": "cozinha_verde",
+     "set": "a modest American kitchen, sage green cabinets, a hanging spider "
+            "plant, a small American flag on a stand next to the cookie jar",
+     "luz": "Warm overhead kitchen light, slight shadow under the chin."},
 ]
 
 QUINTAIS = [
@@ -125,6 +165,42 @@ QUINTAIS = [
      "set": "the backyard of a modest American home, a wicker sofa with cushions, "
             "dry golden grass, a small American flag mounted by the back door",
      "luz": "late afternoon golden sunlight from frame-right, warm and directional."},
+    # + 2026-08-01: mesmo vicio medido na cozinha — o lote inteiro caia no mesmo
+    # quintal. Pool de 4 para 12.
+    {"id": "horta",
+     "set": "the backyard of a modest American home, a wooden fence, tomato plants "
+            "staked in a small garden bed, a small American flag mounted by the back door",
+     "luz": "late afternoon golden sunlight from frame-left, long soft shadows."},
+    {"id": "varal",
+     "set": "the backyard of a modest American home, a clothesline strung between "
+            "two posts, a chain-link fence, a small American flag by the back door",
+     "luz": "late afternoon golden sunlight from frame-right, long soft shadows."},
+    {"id": "galpao",
+     "set": "the backyard of a modest American home, a small metal tool shed with "
+            "the door ajar, patchy grass, a small American flag by the back door",
+     "luz": "late afternoon golden sunlight from frame-left, warm and directional."},
+    {"id": "carvalho",
+     "set": "the backyard of a modest American home, a broad oak tree shading the "
+            "fence line, a low picket fence, a small American flag mounted by the back door",
+     "luz": "late afternoon golden sunlight from frame-right, warm and directional."},
+    {"id": "piscina",
+     "set": "the backyard of a modest American home, an above-ground pool with a "
+            "folded cover, a wooden fence, a small American flag by the back door",
+     "luz": "late afternoon golden sunlight from frame-left, long soft shadows."},
+    {"id": "caminhonete",
+     "set": "the backyard of a modest American home, an old pickup truck parked "
+            "beside the gravel drive, a wooden fence, a small American flag mounted "
+            "by the back door",
+     "luz": "late afternoon golden sunlight from frame-right, warm and directional."},
+    {"id": "ferradura",
+     "set": "the backyard of a modest American home, a horseshoe pit dug in the "
+            "dirt, a hedge along the property line, a small American flag by the back door",
+     "luz": "late afternoon golden sunlight from frame-left, warm and directional."},
+    {"id": "carrinho",
+     "set": "the backyard of a modest American home, a white picket fence, a "
+            "wheelbarrow and a stack of clay pots against the wall, a small American "
+            "flag mounted by the back door",
+     "luz": "late afternoon golden sunlight from frame-right, long soft shadows."},
 ]
 
 # V3 ⭐ — o REF e' o corpo-prova: tronco NU, musculatura por GRUPO NOMEADO
@@ -153,6 +229,27 @@ REFS = [
                              "the chest, shoulders and arms",
      "marca": "full silver hair and a small notch missing from the top of his left ear",
      "roupa2": "a faded denim shirt with the sleeves cut off"},
+    # + 2026-08-01: o operador viu o mesmo rosto voltando no lote. Pool de 5 para 9.
+    {"idade": 66, "musculo": "a wiry hard-muscled build with a deep chest and "
+                             "corded forearms",
+     "marca": "a shaved head with a close fringe of white hair above the ears and "
+              "a small crescent scar under his right eye",
+     "roupa2": "a charcoal-gray short-sleeve henley, sleeves pushed up"},
+    {"idade": 72, "musculo": "a thick-set powerful build with heavy shoulders and "
+                             "a broad chest",
+     "marca": "salt-and-pepper hair cut short and neat and a deep dimple in his "
+              "left cheek",
+     "roupa2": "an olive-drab short-sleeve fishing shirt with two chest pockets"},
+    {"idade": 64, "musculo": "a compact powerful build with dense shoulders and "
+                             "thick arms",
+     "marca": "wiry gray hair cut short at the temples and a dark birthmark the "
+              "size of a dime on his left jaw",
+     "roupa2": "a heather-gray short-sleeve pocket tee"},
+    {"idade": 74, "musculo": "a long-limbed muscular build with a flat stomach and "
+                             "strong shoulders",
+     "marca": "a bald crown with cropped gray hair at the sides and a thin pale "
+              "scar along his jawline",
+     "roupa2": "a navy blue short-sleeve camp shirt"},
 ]
 
 # V12 ⭐ — a mulher de 30-35 na cena 4, SEMPRE. Linda, abracada em pe, muda, rindo.
@@ -167,6 +264,18 @@ MULHERES = [
                           "mark high on her right cheekbone, a fitted emerald summer dress"},
     {"idade": 35, "desc": "long straight black hair past her waist, a small dark beauty "
                           "mark below her left eye, a fitted turquoise summer dress"},
+    # + 2026-08-01: a mesma moca aparecia em metade do lote. Pool de 4 para 8.
+    {"idade": 31, "desc": "long auburn hair pulled back in a high ponytail, a small "
+                          "beauty mark above her upper lip, a fitted navy blue summer dress"},
+    {"idade": 35, "desc": "dark curls gathered on top of her head in a loose bun, a "
+                          "small mole at the corner of her mouth, a fitted olive green "
+                          "sundress"},
+    {"idade": 32, "desc": "long dark hair worn loose and straight with a center part, "
+                          "a thin pale scar through her right eyebrow, a fitted burgundy "
+                          "wrap dress"},
+    {"idade": 33, "desc": "long dark hair with sun-lightened ends falling past her "
+                          "shoulders, a small crescent scar on her left temple, a fitted "
+                          "red sleeveless sundress"},
 ]
 
 # Prop do payoff (cena 4) — F15: JA' ereto no IMAGE, dimensionado por escala
@@ -184,6 +293,19 @@ PROPS_PAYOFF = [
     {"id": "mandioca", "desc": "a very large cassava root as long as his forearm and "
                                "as thick as his wrist, stiff and straight, its surface "
                                "taut and pale, reaching above his shoulder"},
+    # + 2026-08-01: o mesmo prop repetindo no lote. Pool de 4 para 8, mesma escala.
+    {"id": "abobrinha", "desc": "a very large zucchini as long as his forearm and "
+                                "as thick as his wrist, stiff and straight, its surface "
+                                "taut and dark green, reaching above his shoulder"},
+    {"id": "plantain", "desc": "a very large green plantain as long as his forearm "
+                               "and as thick as his wrist, stiff and straight, its "
+                               "surface taut and ridged, reaching above his shoulder"},
+    {"id": "cenoura", "desc": "a very large carrot as long as his forearm and as "
+                              "thick as his wrist, stiff and straight, its surface "
+                              "taut and bright, reaching above his shoulder"},
+    {"id": "paozao", "desc": "a crusty French bread loaf as long as his forearm and "
+                             "as thick as his wrist, stiff and straight, its crust firm "
+                             "and golden, reaching above his shoulder"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -226,6 +348,13 @@ RECEITAS = [
     "Every man in my family keeps gelatin and baking soda on the counter. Mix them, stir a minute. Your {o} needs both.",
     "Us guys don't order anything. Gelatin, baking soda, a spoon. Stir one minute. Nobody has to know your {o} needs it.",
     "We keep gelatin next to the coffee in this house. Stir a spoonful into baking soda. Your {o} gets one minute of your day.",
+    # + 2026-08-01: o operador mediu vicio de abertura — quase todo item comecava
+    # em "Men,". Cinco entradas novas sem esse vocativo.
+    "Grab the gelatin and the baking soda off your own shelf. Stir them one minute. Your {o} has waited long enough.",
+    "Before you go to bed tonight, stir a spoonful of gelatin into baking soda. That's step one for your {o}.",
+    "Nobody at the pharmacy sells this. Gelatin, baking soda, one minute of stirring. Your {o} starts there.",
+    "My father-in-law handed me this recipe. Gelatin, baking soda, stir a minute. Do it tonight for your {o}.",
+    "Two things off the shelf: gelatin and baking soda. Stir one minute. That's where your {o} comes back.",
 ]
 
 # V6 ⭐⭐ — a regra central: a receita que ele acabou de dar e' INCOMPLETA.
@@ -243,6 +372,13 @@ VIRADAS = [
     "I mixed that same spoon for a year and nothing moved. Without the gelatin trick, baking soda does nothing for your {o}. It's not age, brother — your blood flow got clamped shut.",
     "I did this wrong first. I quit for a month. I told my wife it was over. Without the gelatin trick, baking soda does nothing for your {o} — your blood flow stays shut.",
     "Every man I gave this to called me back angry. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got sealed off years back.",
+    # + 2026-08-01: o operador mediu vicio de vocativo — "brother" em quase toda
+    # virada. Cinco entradas novas, nenhuma com vocativo.
+    "Go ahead and try it without me. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got pinched shut years ago.",
+    "You've already lost ten years to this. Without the gelatin trick, baking soda does nothing for your {o}. It's not age. Your blood flow got clamped off.",
+    "Your doctor won't tell you this part. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got shut down.",
+    "My neighbor mixed it wrong all summer and gave up. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got sealed shut.",
+    "Now you know what the pill people never sold you. Without the gelatin trick, baking soda does nothing for your {o}. Your blood flow got choked off, not your age.",
 ]
 
 # V12 — a copy da cena 4 e' DIRETA sobre ela, com o substantivo-nucleo.
@@ -256,6 +392,13 @@ PROVAS = [
     "She's {n_ext} and she drives an hour over on a Tuesday night. Half my age, and my {o} is why. {barreira}",
     "She's {n_ext}, half my age, and she needed a minute to catch her breath. My {o} did that. {barreira}",
     "Us guys pass this around now. My {o} works and she's {n_ext}. She couldn't sit still the next day. Thirty-{n} years old. {barreira}",
+    # + 2026-08-01: o operador mediu vicio de abertura — a prova sempre comecava
+    # pela idade dela. Cinco entradas novas entrando por outro lugar.
+    "My {o} works, and she noticed before I said a word. She's {n_ext}, half my age. {barreira}",
+    "Her friends ask what she sees in me. She's {n_ext}, and my {o} is the answer. {barreira}",
+    "She was quiet the first night. Thirty-{n} years old, and now she won't let my {o} rest. {barreira}",
+    "Twenty years I couldn't. Now she's {n_ext}, half my age, and my {o} keeps up with her. {barreira}",
+    "I stopped apologizing in the dark. She's {n_ext}, half my age, and my {o} doesn't quit early. {barreira}",
 ]
 
 BARREIRAS = [
@@ -264,17 +407,39 @@ BARREIRAS = [
     "You do it in your own kitchen, in about a minute.",
     "Costs less than a cup of coffee and nobody sees you buy it.",
     "Nothing to fill, nothing to explain to anybody.",
+    # + 2026-08-01: pool curto demais, a mesma barreira caia no lote inteiro.
+    "Everything you need is already in your cupboard.",
+    "Any grocery store in town has both, for pocket change.",
+    "You do it once, alone, and it stays your business.",
 ]
 
 PACING = [
     "Next Friday night, when she asks what changed, you'll remember this video.",
     "Next Friday night she'll ask what changed. You'll remember this.",
+    # + 2026-08-01: so' havia duas entradas, ambas em "next Friday night" — todo
+    # CTA do lote marcava a mesma sexta. Quatro janelas novas.
+    "Saturday morning, when she's still smiling, you'll think back to this.",
+    "The next time she reaches over in bed, you'll remember tonight.",
+    "Two weeks from now you'll wonder why nobody told you sooner.",
+    "One month from tonight, she'll ask what got into you.",
 ]
 
 GATES = [
     "Make sure you're following me first, or I won't have any way to find your comment, brother.",
     "Follow me first, or Facebook can't deliver it, brother.",
     "Hit follow right now, or my message never lands.",
+    # + 2026-08-01: o operador mediu "brother" em praticamente todo CTA do lote.
+    # ⚠️ REGRA: no maximo 2 entradas deste pool com o vocativo "brother", e a
+    # maioria sem vocativo nenhum. As duas de cima ja' gastam a cota.
+    "Follow me first — Facebook won't let me message a stranger.",
+    "Tap follow before you comment, or your name gets buried.",
+    "Follow me first, man. I go through the followers first.",
+    "Hit follow, otherwise the algorithm never shows you my reply.",
+    "Follow me before you scroll on, or this never reaches you again.",
+    "Give me a follow first. My inbox is closed to strangers.",
+    "Follow first, fellas. Half the comments I get, I never find again.",
+    "Follow me first — I only get a day or two here.",
+    "You'll want to follow first — that's the only way it goes through.",
 ]
 
 CTAS = [
@@ -295,6 +460,12 @@ CTAS = [
     "{pacing} Comment gelatin, and I'll send you the one we use at my house. I can't name it here. {gate}",
     "{pacing} I waited four years to find this, brother. Comment gelatin, and you won't wait four days. {gate}",
     "{pacing} Comment gelatin, and I'll send you what my own wife went looking for. She found it before I did. {gate}",
+    # + 2026-08-01: o operador mediu vicio de promessa — quase todo item prometia
+    # "o que eu uso"/"onde eu compro". Quatro entradas novas, sem vocativo.
+    "{pacing} Comment gelatin, and the recipe is in your inbox tonight. {gate}",
+    "{pacing} Comment gelatin, and I'll walk you through the missing half. {gate}",
+    "{pacing} Comment gelatin, and I'll send the brand my wife buys. {gate}",
+    "{pacing} Comment the word gelatin, and I'll send the rest tonight. {gate}",
 ]
 
 # ---------------------------------------------------------------------------

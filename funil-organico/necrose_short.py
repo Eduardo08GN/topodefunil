@@ -109,6 +109,35 @@ FUNDIDAS = [
 
     "Stir {ing}. That's the gelatin trick, and the blood flow came back. So did "
     "my {o}.",
+
+    # + 2026-08-01: o operador mediu vicio no lote - as mesmas cinco fundidas
+    # voltando. Pool de 5 para 14; todo item novo carrega os tres beats.
+    "It was blood flow all along. Stir {ing}. That's the gelatin trick, "
+    "and my {o} came back like this.",
+
+    "Nobody told me it was blood flow. Stir {ing}. The gelatin trick. My "
+    "{o} looks like this now.",
+
+    "Stir {ing}. Gelatin trick. It opened the blood flow back up, and my "
+    "{o} ended up like this.",
+
+    "Doctors said age. It was blood flow. Stir {ing} — the gelatin trick — "
+    "and look what my {o} does now.",
+
+    "The blood flow gets choked off, that's all. Stir {ing}. That's the "
+    "gelatin trick. This is my {o} now.",
+
+    "Stir {ing} every night. Gelatin trick. It brings the blood flow back "
+    "— my {o} hasn't quit since.",
+
+    "Same blood flow that feeds your heart feeds your {o}. Stir {ing}. "
+    "Gelatin trick. Mine came back like this.",
+
+    "Thirty days. Stir {ing} — that's the gelatin trick — and the blood "
+    "flow came back to my {o}. Like this.",
+
+    "Age isn't it. The blood flow to your {o} got choked off. Stir {ing}. "
+    "Gelatin trick. Look at mine.",
 ]
 
 

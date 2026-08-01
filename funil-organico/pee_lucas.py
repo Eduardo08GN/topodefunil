@@ -150,6 +150,32 @@ LOCAIS = [
      "eco": "the same store counter",
      "luz": "Harsh white overhead light.",
      "audio": "store ambience, laughter, a door chime."},
+    # + 2026-08-01: o operador mediu vicio — os mesmos cenarios voltando no
+    # lote. Pool ampliado com tres lugares publicos fora do varejo de rua.
+    {"id": "feira", "selo": "N",
+     "cenario": "a crowded farmers market walkway",
+     "detalhe": "folding tables of produce under canvas canopies, a stack of "
+                "crates beside him, no readable signs",
+     "plateia": "shoppers", "plateia_evento": "that farmers market",
+     "eco": "the same market row",
+     "luz": "Open midday sunlight.",
+     "audio": "market chatter, laughter, a vendor calling out."},
+    {"id": "racao", "selo": "N",
+     "cenario": "a farm and feed store aisle",
+     "detalhe": "stacked sacks of feed on wooden pallets, a hand truck beside "
+                "him, no readable labels",
+     "plateia": "customers", "plateia_evento": "that feed store",
+     "eco": "the same feed aisle",
+     "luz": "Dusty daylight from high windows.",
+     "audio": "warehouse ambience, laughter, a pallet jack rattling."},
+    {"id": "pesca", "selo": "N",
+     "cenario": "a crowded bait and tackle shop",
+     "detalhe": "walls of fishing rods and bins of tackle, a live bait tank "
+                "bubbling beside them, no readable labels",
+     "plateia": "customers", "plateia_evento": "that tackle shop",
+     "eco": "the same tackle shop",
+     "luz": "Warm overhead shop light.",
+     "audio": "shop ambience, laughter, the bait tank bubbling."},
 ]
 
 # PE1 — a mancha vive do CONTRASTE. Roupa de baixo sempre CLARA.
@@ -160,6 +186,13 @@ ROUPAS = [
     {"id": "chino_bege", "peca": "beige chinos"},
     {"id": "linho_creme", "peca": "cream linen trousers"},
     {"id": "calca_areia", "peca": "pale tan work pants"},
+    # + 2026-08-01: o operador mediu vicio — a mesma calca clara voltando no
+    # lote. Pool dobrado, todas claras (a mancha continua vivendo do contraste).
+    {"id": "bermuda_golfe", "peca": "white golf shorts"},
+    {"id": "jeans_claro", "peca": "light stone-washed jeans"},
+    {"id": "pintor", "peca": "off-white painter's pants"},
+    {"id": "veludo_bege", "peca": "light tan corduroy trousers"},
+    {"id": "jogger_aveia", "peca": "oatmeal fleece joggers"},
 ]
 
 # Fila de reformulacao do selo 🟡 — se a formulacao 1 recusar, tentar a 2 etc.
@@ -188,6 +221,28 @@ AMBIENTES = [
      "set": "a clean home garage workshop, pegboard tools on the wall behind him",
      "bancada": "workbench", "curto": "garage workshop",
      "luz": "cool overhead shop light."},
+    # + 2026-08-01: o operador mediu vicio — o mesmo set interno voltando no
+    # lote. Pool dobrado.
+    {"id": "sala_jantar",
+     "set": "a small dining room, a hutch of dishes against the wall behind him",
+     "bancada": "dining table", "curto": "dining room",
+     "luz": "warm light from a hanging fixture overhead."},
+    {"id": "galpao",
+     "set": "a backyard tool shed with a rough plank wall behind him",
+     "bancada": "work table", "curto": "tool shed",
+     "luz": "daylight through an open shed door frame-right."},
+    {"id": "alpendre",
+     "set": "a screened front porch, a painted railing and a quiet street out of focus behind him",
+     "bancada": "side table", "curto": "front porch",
+     "luz": "low golden evening light."},
+    {"id": "trailer",
+     "set": "the kitchenette of a camper trailer, narrow cabinets and a small window behind him",
+     "bancada": "galley counter", "curto": "camper kitchenette",
+     "luz": "flat light from a small window frame-right."},
+    {"id": "porao_bar",
+     "set": "a finished basement with a home bar and shelves of glasses behind him",
+     "bancada": "bar top", "curto": "basement bar",
+     "luz": "warm light from two hanging bulbs."},
 ]
 
 # PE9 — contraste ≥3 eixos garantido por CONSTRUCAO: o narrador sempre tem
@@ -209,6 +264,20 @@ REFS = [
     {"idade": 67, "marca": "thick silver hair and a prominent dark mole on his left cheekbone",
      "cabelo": "silver", "roupa": "Plain black crew-neck tee shirt.",
      "roupa_curta": "black tee shirt"},
+    # + 2026-08-01: o operador mediu vicio — o mesmo rosto voltando no lote.
+    # Pool ampliado; o contraste de 3 eixos com a VITIMA continua por construcao.
+    {"idade": 63, "marca": "a full head of wavy iron-gray hair and a wide gap between his front teeth",
+     "cabelo": "iron-gray", "roupa": "Plain forest green crew-neck tee shirt.",
+     "roupa_curta": "forest green tee shirt"},
+    {"idade": 62, "marca": "thick gray hair swept straight back and a birthmark the size of a dime above his right eyebrow",
+     "cabelo": "gray", "roupa": "Plain rust orange crew-neck tee shirt.",
+     "roupa_curta": "rust orange tee shirt"},
+    {"idade": 66, "marca": "thick salt-and-pepper hair parted on the side and a thin pale scar along his jawline",
+     "cabelo": "salt-and-pepper", "roupa": "Plain brown crew-neck tee shirt.",
+     "roupa_curta": "brown tee shirt"},
+    {"idade": 64, "marca": "a full head of gray hair with a bright white streak at his left temple and a deep dimple in his chin",
+     "cabelo": "gray", "roupa": "Plain teal crew-neck tee shirt.",
+     "roupa_curta": "teal tee shirt"},
 ]
 
 VITIMAS = [
@@ -220,6 +289,18 @@ VITIMAS = [
      "camisa": "a light gray t-shirt"},
     {"idade": 61, "marca": "bald man with a short gray mustache and round wire glasses",
      "camisa": "a pale yellow polo shirt"},
+    # + 2026-08-01: o operador mediu vicio — a mesma vitima voltando no lote.
+    # Pool ampliado; careca + bigode + oculos continua travado.
+    {"idade": 64, "marca": "bald man with a bushy salt-and-pepper mustache and gold aviator glasses",
+     "camisa": "a faded sage green t-shirt"},
+    {"idade": 60, "marca": "bald man with a thin white mustache and rimless glasses",
+     "camisa": "a cream henley shirt"},
+    {"idade": 66, "marca": "bald man with a drooping gray mustache and heavy tortoiseshell glasses",
+     "camisa": "a pale pink polo shirt"},
+    {"idade": 63, "marca": "bald man with a gray horseshoe fringe, a wide silver mustache and half-rim reading glasses",
+     "camisa": "a light peach t-shirt"},
+    {"idade": 67, "marca": "bald man with a close-trimmed sandy mustache and oval brown-framed glasses",
+     "camisa": "a soft mint green polo shirt"},
 ]
 
 MULHERES = [
@@ -227,6 +308,14 @@ MULHERES = [
     {"idade": 59, "payoff": "with long straight hair, in a navy wrap dress"},
     {"idade": 57, "payoff": "with short curly hair, in an emerald dress"},
     {"idade": 60, "payoff": "with shoulder-length hair, in a burgundy dress"},
+    # + 2026-08-01: o operador mediu vicio — a mesma mulher no payoff, lote
+    # atras de lote. Pool ampliado.
+    {"idade": 61, "payoff": "with a short silver bob, in a teal blouse and skirt"},
+    {"idade": 56, "payoff": "with her hair pinned up in a bun, in a mustard yellow dress"},
+    {"idade": 62, "payoff": "with a long gray braid over one shoulder, in a plum dress"},
+    {"idade": 55, "payoff": "with cropped white hair, in a coral sundress"},
+    {"idade": 59, "payoff": "with loose gray waves, in a forest green dress"},
+    {"idade": 58, "payoff": "with a low ponytail, in a cream blouse and a charcoal skirt"},
 ]
 
 # prop do payoff (cena 4) — F15: ja' ereto no IMAGE, dimensionado por escala
@@ -243,6 +332,14 @@ PROPS = [
     {"id": "daikon", "marisco": False,
      "ereto": "a daikon radish upright at shoulder height, held stiff and straight, "
               "as long as her forearm and as thick as her wrist"},
+    # + 2026-08-01: o operador mediu vicio — o mesmo prop no payoff em todo
+    # lote. Mais dois, mesma escala.
+    {"id": "baguete", "marisco": False,
+     "ereto": "a French baguette upright at shoulder height, held stiff and "
+              "straight, as long as her forearm and as thick as her wrist"},
+    {"id": "salame", "marisco": False,
+     "ereto": "a whole dry-cured salami upright at shoulder height, held stiff "
+              "and straight, as long as her forearm and as thick as her wrist"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -270,6 +367,16 @@ HOOKS = [
     "He started leaking in {evento}. His wife already told her friends about it. Same reason his {o} does nothing.",
     "He peed right there in {evento}. That was me in 2019. Same reason my {o} went out that year.",
     "He peed in {evento} today. I did the same in 2019. Every man I know has. Same thing took our {o}.",
+    # + 2026-08-01: o operador mediu vicio — os mesmos hooks voltando no lote.
+    # Pool ampliado; todos mantem mijo + orgao + vinculo na mesma fala (PE6).
+    "Everybody laughed when he leaked through his pants in {evento}. Same reason his {o} quit.",
+    "A grown man peed himself in {evento} on a Tuesday. Same thing that took his {o}.",
+    "Know why a man peed himself in {evento}? Same reason his {o} hasn't worked since.",
+    "His wife walked him out of {evento} soaked. Same reason she stopped touching his {o}.",
+    "His doctor blamed the coffee when he peed in {evento}. Same thing had already taken his {o}.",
+    "They still talk about the man who soaked his pants in {evento}. Same reason his {o} stopped answering.",
+    "He lost it standing in {evento}, and that's why his {o} has been dead two years.",
+    "He won't be the last man to get soaked in {evento}. Same thing that shut his {o} down.",
 ]
 
 # PE7 — a cena 2 EXPLICA o vinculo que o hook afirmou. Uma causa, dois sintomas.
@@ -287,6 +394,12 @@ MECANISMOS = [
     "They'll call it two different problems. It's one. His prostate is on the pipe, and that's why your {o} stays down.",
     "I know this one. My prostate grew over the line and closed it. I leaked. Then my {o} went half. Then nothing.",
     "Us guys all have the same prostate leaning on the same line. That's why we drip, and that's why our {o} sleeps through it.",
+    # + 2026-08-01: o operador mediu vicio — a mesma explicacao da cena 2 em
+    # todo lote. Pool ampliado; uma causa, dois sintomas continua de pe (PE7).
+    "Every man's prostate grows after fifty. It closes the pipe first and your {o} second.",
+    "If you get up twice a night, your prostate is already on the line and your {o} knows it.",
+    "One gland, two failures. His prostate shut the pipe, and that left your {o} with nothing.",
+    "The night trips to the bathroom and the dead {o} are the same problem. His prostate on the pipe.",
 ]
 
 RITUAIS = [
@@ -299,6 +412,12 @@ RITUAIS = [
     "His nephew texted him the gelatin trick. He mixed a spoonful into his morning drink. Do the same and your {o} wakes up before you do.",
     "I found the gelatin trick in 2019, brother. I stirred one spoon into cold water that night. Nine days later my {o} answered.",
     "The gelatin trick is what we do at home now. A spoonful in half a glass of cold water. Your {o} shows up before the weekend.",
+    # + 2026-08-01: o operador mediu vicio — o mesmo ritual em todo lote. Pool
+    # ampliado; o literal `gelatin trick` continua obrigatorio em cada item.
+    "The pharmacist's husband told him about the gelatin trick. He stirred it into a mug before bed. Give your {o} ten days.",
+    "His neighbor slid him a note with the gelatin trick on it. One spoon in cold water, every night. Your {o} answers by the weekend.",
+    "Nobody at the clinic told him. A retired trucker did, with the gelatin trick, one spoon, cold water. Start tonight for your {o}.",
+    "He laughed at the gelatin trick when his cousin sent it. He stirred a spoonful in anyway. Nine days for your {o}.",
 ]
 
 BARREIRAS = [
@@ -307,6 +426,12 @@ BARREIRAS = [
     "You do it in your own kitchen, in about a minute.",
     "Costs less than a cup of coffee.",
     "You never say the words out loud to anybody.",
+    # + 2026-08-01: o operador mediu vicio — a mesma barreira fechando a cena 4.
+    # Pool ampliado.
+    "One spoon, one glass, one minute.",
+    "You can do it before she wakes up.",
+    "No appointment, no waiting room, no forms.",
+    "She finds out when it works, not before.",
 ]
 
 # F1 — o eco deste angulo: ele volta ao mesmo lugar SECO e de cabeca erguida
@@ -317,12 +442,30 @@ REDENCOES = [
     "Sixteen days later he walked into {eco} dry, head up. His {o} left her needing a minute to catch her breath. {barreira}",
     "Eighteen days later he was back in {eco} dry, chin up. She reaches for him first now. His {o} never quits. {barreira}",
     "Twenty four days later he walked into {eco} dry, head up. Now she asks for a night off from his {o}. {barreira}",
+    # + 2026-08-01: o operador mediu vicio — a mesma redencao em todo lote. Pool
+    # ampliado; o eco (ele de volta ao mesmo lugar, seco) continua travado (F1).
+    "He goes back to {eco} every week now, dry. She brags about his {o} to her sister. {barreira}",
+    "Three weeks. He stood in {eco} dry, and she couldn't keep her hands off his {o}. {barreira}",
+    "The same people who laughed at him in {eco} watched him walk out dry. His {o} is back. {barreira}",
+    "Now he walks into {eco} alone and dry. His wife says his {o} never quits. {barreira}",
 ]
 
 GATES = [
     "Follow me first, brother.",
     "Follow me first or I can't find your comment.",
     "Hit follow first, or Facebook won't deliver it.",
+    # + 2026-08-01: o operador mediu vicio — "brother" saia em todo CTA do lote.
+    # ⛔ REGRA NOVA: no maximo 2 entradas com o vocativo "brother" no pool
+    # inteiro, e a MAIORIA das entradas sem vocativo nenhum. Quando adicionar
+    # gate novo, conferir a contagem antes.
+    "Follow first. I can't message a stranger.",
+    "Hit follow, or this never reaches you again.",
+    "Follow first. Those comments get answered first.",
+    "Two hundred comments a day, man. Follow first.",
+    "Tap follow, then comment. Otherwise it gets buried.",
+    "Follow me before you comment, my friend.",
+    "Follow first, or my inbox stays shut.",
+    "Follow me first, buddy. Takes one second.",
 ]
 
 CTAS = [
@@ -341,6 +484,12 @@ CTAS = [
     "Comment gelatin, and I'll send the same one he used. {gate}",
     "Comment gelatin. The store stuff did nothing for you. I'll send the real one. {gate}",
     "Comment gelatin, and I'll send you the one we use at home. {gate}",
+    # + 2026-08-01: o operador mediu vicio — o mesmo CTA repetindo no lote.
+    # Pool ampliado; a keyword GELATIN continua travada em todas.
+    "Comment gelatin, and I'll send it before I turn in tonight. {gate}",
+    "Comment gelatin. Your wife never has to know you asked. {gate}",
+    "You already know. Comment gelatin, and check your messages tonight. {gate}",
+    "Don't overthink it. Comment gelatin, and I'll take it from there. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -676,10 +825,18 @@ PT_LOCAL = {
     "mercado": "No corredor do mercado", "farmacia": "No corredor da farmácia",
     "fila_caixa": "Na fila do caixa", "ferragens": "Na loja de ferragens",
     "hortifruti": "No hortifrúti", "conveniencia": "Na loja de conveniência",
+    # + 2026-08-01: rotulos dos locais novos do lote desta data.
+    "feira": "Na feira livre", "racao": "Na loja de ração",
+    "pesca": "Na loja de pesca",
 }
 PT_AMB = {"cozinha": "na cozinha", "cozinha_aberta": "na cozinha com ilha",
           "churrasqueira": "na área de churrasco", "varanda": "na varanda coberta",
-          "garagem": "na garagem oficina"}
+          "garagem": "na garagem oficina",
+          # + 2026-08-01: rotulos dos ambientes novos do lote desta data.
+          "sala_jantar": "na sala de jantar", "galpao": "no galpão de ferramentas",
+          "alpendre": "no alpendre da frente", "trailer": "na cozinha do trailer",
+          "porao_bar": "no bar do porão",
+          }
 
 
 def resumo_pt(spec):

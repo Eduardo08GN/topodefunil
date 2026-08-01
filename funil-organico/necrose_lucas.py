@@ -301,6 +301,54 @@ ARQUETIPOS = [
      "animais": ["a big alligator on the bank", "a great blue heron"],
      "luz": "Warm hazy swamp light, soft and diffused.",
      "audio": "frogs, water moving under the boards"},
+
+    # + 2026-08-01: o operador mediu vicio no lote - os mesmos cenarios
+    # voltando. Um set novo por familia, com chapeu e animais congruentes.
+    {"id": "montanhes_rio", "selo": "N", "familia": "montanhes",
+     "set": "a gravel bar on a wide mountain river, fast grey water running "
+            "past behind him, snow-dusted peaks upstream, bare cottonwoods "
+            "on the far bank",
+     "curto": "the same river bar",
+     "chapeu": "a fur trapper's hat with the ear flaps tied up",
+     "animais": ["a full-grown grey wolf", "a full-grown black bear"],
+     "luz": "Flat cold river-valley daylight, silver and even.",
+     "audio": "running water, wind over gravel"},
+    {"id": "cowboy_moinho", "selo": "N", "familia": "cowboy",
+     "set": "a windmill and stock tank alone in open grazing land, the "
+            "rusted steel vanes turning slowly behind him, a flat horizon in "
+            "every direction",
+     "curto": "the same windmill",
+     "chapeu": "a pale straw cowboy hat with a tightly curled brim",
+     "animais": ["a heavy longhorn bull", "a rangy buckskin horse"],
+     "luz": "High dry sunlight, hard and clean.",
+     "audio": "the windmill creaking, wind over open ground"},
+    {"id": "nativo_butte", "selo": "N", "familia": "nativo norte-americano",
+     "set": "the flat top of a butte at first light, the shadowed valley far "
+            "below, a line of dark hills on the horizon, loose stone "
+            "underfoot",
+     "curto": "the same butte top",
+     "chapeu": "a flat-brimmed black hat with a low crown",
+     "animais": ["a full-grown grey wolf", "a lone coyote"],
+     "luz": "Low first light from frame-right, long cold shadows.",
+     "audio": "thin wind, a distant coyote"},
+    {"id": "redneck_lago", "selo": "N", "familia": "redneck",
+     "set": "a gravel boat ramp at a farm pond, a flat aluminium boat pulled "
+            "half out of the water behind him, cattails and low woods around "
+            "the far bank",
+     "curto": "the same boat ramp",
+     "chapeu": "a camouflage cap with a frayed brim",
+     "animais": ["a full-grown wild boar", "a heavy longhorn bull"],
+     "luz": "Bright hazy midday light coming off the water.",
+     "audio": "water slapping the boat, bullfrogs"},
+    {"id": "curandeiro_clareira", "selo": "N", "familia": "curandeiro",
+     "set": "a mountain meadow of tall wildflowers, drying racks of cut "
+            "herbs on trestles behind him, wooded ridges rising on both "
+            "sides",
+     "curto": "the same meadow",
+     "chapeu": "a faded red bandana tied over his head",
+     "animais": ["a full-grown black bear", "a full-grown bull elk"],
+     "luz": "Warm open meadow daylight, soft and clear.",
+     "audio": "bees, wind through tall grass"},
 ]
 
 # NE4 - o animal e prop de STATUS (a alavanca do leao do Kofi), nao de
@@ -336,6 +384,52 @@ REFS = [
      "cabeca": "long white hair and a long white beard reaching the middle of "
                "his chest",
      "marca": "a prominent dark mole high on his right cheekbone"},
+    # + 2026-08-01: o operador mediu vicio no lote - o mesmo rosto voltando
+    # video apos video. Pool de 4 para 11.
+    {"idade": 55,
+     "corpo": "a heavily muscled slab-sided build - a deep chest, thick "
+              "shoulders and a hard ridged stomach",
+     "cabeca": "a thick dark brown mane pushed back off his forehead and a "
+               "short square-cut brown beard",
+     "marca": "a pale crescent scar along the left side of his jaw"},
+    {"idade": 57,
+     "corpo": "a heavily muscled weathered frame - a broad chest, thick "
+              "roped forearms and clearly cut abdominal muscles",
+     "cabeca": "a long rust-red mane going gray at the temples and a full "
+               "red beard split into two braids",
+     "marca": "a gold tooth that shows on the left side when he talks"},
+    {"idade": 60,
+     "corpo": "a heavily muscled compact frame - a thick barrel chest, "
+              "short powerful arms and clearly cut abdominal muscles",
+     "cabeca": "wiry black hair going gray at the sides and a dense black "
+               "beard streaked with white",
+     "marca": "a small raised scar splitting the middle of his lower lip"},
+    {"idade": 61,
+     "corpo": "a lean heavily muscled frame - a broad slab of chest, thick "
+              "arms and a hard ridged stomach",
+     "cabeca": "a long silver ponytail pulled back tight and a short "
+               "close-trimmed white beard",
+     "marca": "eyes of two different colours, one green and one brown, and "
+              "a shallow cleft high on his forehead"},
+    {"idade": 63,
+     "corpo": "a heavily muscled thickset build - a broad chest, heavy arms "
+              "and a hard stomach with clearly cut abdominal muscles",
+     "cabeca": "thick sandy hair sun-bleached at the ends and a full "
+               "copper-blond beard reaching his collarbone",
+     "marca": "a clean pale scar across the bridge of his nose"},
+    {"idade": 64,
+     "corpo": "a heavily muscled frame - a broad slab of chest, thick corded "
+              "arms and clearly cut abdominal muscles",
+     "cabeca": "a bald crown with long gray hair falling at the sides and a "
+               "wide gray beard reaching mid-chest",
+     "marca": "a dark birthmark the shape of a thumbprint below his right ear"},
+    {"idade": 67,
+     "corpo": "a powerfully built heavily muscled frame - a deep chest, "
+              "thick shoulders and a hard stomach with cut abdominal muscles",
+     "cabeca": "a white widow's peak swept straight back and a long forked "
+               "white beard tied with two leather cords",
+     "marca": "a pale scar through his upper lip and a heavy silver hoop in "
+              "his left earlobe"},
 ]
 
 # NE6 - O RITUAL E O GELATIN TRICK (correcao do operador, 2026-07-30).
@@ -369,6 +463,38 @@ RECEITAS_PROP = [
      "acao": "emptying the sachet into the glass, squeezing the halved "
              "lemon over it and stirring it through",
      "fala": "a spoonful of gelatin into cold water with fresh lemon"},
+    # + 2026-08-01: o operador mediu vicio no lote - o mesmo ritual voltando.
+    # O que varia continua sendo COMO a gelatina e preparada, nunca o que e.
+    {"id": "gelatina_cafe", "selo": "N",
+     "mesa": "a plain white sachet of pale powder with no label, an enamel "
+             "mug of black coffee and a metal spoon",
+     "acao": "tearing the sachet open, shaking the powder into the mug of "
+             "coffee and stirring it until the powder is gone",
+     "fala": "a spoonful of gelatin into black coffee"},
+    {"id": "gelatina_vinagre", "selo": "N",
+     "mesa": "a plain white sachet of pale powder with no label, a glass jar "
+             "of water, a dark bottle of cider vinegar and a wooden spoon",
+     "acao": "emptying the sachet into the jar, pouring a capful of the "
+             "vinegar in after it and stirring the two together",
+     "fala": "gelatin into water with a capful of cider vinegar"},
+    {"id": "gelatina_leite", "selo": "N",
+     "mesa": "a plain white sachet of pale powder with no label, a tin cup of "
+             "warm milk and a long-handled spoon",
+     "acao": "tipping the powder from the sachet into the tin cup and "
+             "whisking it into the warm milk until it thickens",
+     "fala": "a spoonful of gelatin into warm milk"},
+    {"id": "gelatina_sal", "selo": "N",
+     "mesa": "a plain white sachet of pale powder with no label, a small dish "
+             "of coarse sea salt, a glass of warm water and a metal spoon",
+     "acao": "tearing the sachet open into the glass, pinching the coarse "
+             "salt in over it and stirring it through the warm water",
+     "fala": "gelatin and a pinch of salt into warm water"},
+    {"id": "gelatina_canela", "selo": "N",
+     "mesa": "a plain white sachet of pale powder with no label, a heap of "
+             "ground cinnamon on a saucer, a mug of hot water and a spoon",
+     "acao": "emptying the sachet into the mug, tapping the ground cinnamon "
+             "in over it and stirring until nothing is left floating",
+     "fala": "gelatin and a spoon of cinnamon into hot water"},
 ]
 
 MESAS = [
@@ -377,6 +503,15 @@ MESAS = [
     {"id": "tronco", "desc": "a split log bench"},
     {"id": "tampa_caminhonete", "desc": "the open tailgate of an old pickup truck"},
     {"id": "barril", "desc": "the top of an upturned wooden barrel"},
+    # + 2026-08-01: o operador viu a mesma bancada voltando no lote.
+    # Pool de 5 para 12.
+    {"id": "toco_arvore", "desc": "a wide flat tree stump used as a table"},
+    {"id": "carretel", "desc": "an old wooden cable spool stood on its end"},
+    {"id": "bancada_cavalete", "desc": "a workbench of rough sawn planks on trestles"},
+    {"id": "caixa_ferramenta", "desc": "the flat lid of a battered steel toolbox on a crate"},
+    {"id": "mesa_campanha", "desc": "a folding camp table with a scuffed canvas top"},
+    {"id": "fogao_campo", "desc": "the cold iron top of an old camp stove"},
+    {"id": "tabua_lenha", "desc": "a board laid flat across a stack of split firewood"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -403,6 +538,13 @@ HOOKS = [
     "If your {o} looks more like this one than that one, watch close, brother.",
     "Nobody wants this one. If you want your {o} to look like that one, watch close.",
     "If you had to pick tonight, is your {o} this one or that one?",
+    # + 2026-08-01: o pool tinha 4 entradas e a cena 1 — a fala mais importante
+    # do video — repetia dentro do lote. Pool de 4 para 8, e no maximo 1 entrada
+    # usa o vocativo "brother".
+    "If your wife could see your {o} tonight, would she see this one or that one?",
+    "Your doctor calls it age. If your {o} is this one, not that one, he's wrong.",
+    "Waiting turns that one into this one. How close is your {o} tonight?",
+    "This one costs a man his marriage. That one keeps it. Which is your {o}?",
 ]
 
 # NE — cena 2: o MUP de Georgi (alivio de culpa + vilao), com o modelo PODRE
@@ -412,6 +554,13 @@ CAUSAS = [
     "Nobody is born with this. Your {o} got here because the blood flow to it got shut down, year after year.",
     "It's not age and it's not you. Something squeezed the blood flow to your {o} shut, and nobody told you.",
     "Doctors call this getting older. It isn't. The blood flow to your {o} got strangled, and that is fixable.",
+    # + 2026-08-01: o operador mediu vicio no lote - as mesmas quatro causas
+    # voltando, e "brother" em cima do hook. As novas entram sem vocativo.
+    "You did not eat your way into that. The blood flow to your {o} got choked off, quiet, year after year.",
+    "Your heart still pumps fine. It's the small blood flow down to your {o} that got choked off first.",
+    "That didn't happen overnight and it isn't your fault. Blood flow to your {o} gets choked off a little each year.",
+    "Ask any man out here past sixty. The blood flow to his {o} got choked off and nobody ever told him why.",
+    "Sitting still all day does it. The blood flow to your {o} gets choked off and stays choked.",
 ]
 
 RECEITAS_FALA = [
@@ -419,6 +568,14 @@ RECEITAS_FALA = [
     "Stir {ing}. One minute. That's the gelatin trick — do it before your {o} quits for good.",
     "Tonight, stir {ing}. They call it the gelatin trick. Your {o} took years to get this bad.",
     "Stir {ing}. That is the whole gelatin trick, and it is what walked my {o} back.",
+    # + 2026-08-01: o operador mediu vicio no lote - as mesmas quatro falas de
+    # ritual voltando. Pool de 4 para 10.
+    "Before bed, stir {ing}. That's the gelatin trick your {o} needs.",
+    "Want your {o} back? Stir {ing}. That is the gelatin trick.",
+    "My {o} runs on this now. Stir {ing}. That's the gelatin trick.",
+    "One minute, no more. Stir {ing}. Gelatin trick, and your {o} answers.",
+    "Don't wait on your {o}. Stir {ing}. That's the gelatin trick.",
+    "Out here we stir {ing}. Gelatin trick. Your {o} wakes up.",
 ]
 
 # NE — cena 4: MUS. "gelatin trick" literal e' obrigatorio, com o modelo SAO
@@ -432,6 +589,14 @@ PROVAS = [
     "One month of the gelatin trick, and this is what I carry now. My {o} has not quit since. {barreira}",
     "That rotten one on the stand was me last year. This is my {o} today. {barreira}",
     "Nineteen days of the gelatin trick and my {o} came back like this. {barreira}",
+    # + 2026-08-01: o operador mediu vicio no lote - as mesmas quatro provas
+    # voltando. Pool de 4 para 10.
+    "This is what a month of the gelatin trick did for my {o}. {barreira}",
+    "My wife noticed before I said a word. That's my {o} on that trick. {barreira}",
+    "Four weeks ago mine matched the old one. Now my {o} looks like this. {barreira}",
+    "Thirty days on the gelatin trick. My {o} has not let me down since. {barreira}",
+    "I carry this now instead of an excuse. That trick gave my {o} back. {barreira}",
+    "A spoonful of gelatin, every night. That is what my {o} runs on now. {barreira}",
 ]
 
 BARREIRAS = [
@@ -440,18 +605,39 @@ BARREIRAS = [
     "A trick you can do from the comfort of your own home.",
     "Costs less than a cup of coffee and nobody sees you buy it.",
     "Nothing to fill, nothing to explain to anybody.",
+    # + 2026-08-01: o operador mediu vicio no lote - as mesmas barreiras
+    # voltando. Pool de 5 para 8.
+    "Nobody has to see you do it.",
+    "No appointment, no waiting room, no questions.",
+    "Any grocery store in town has it on the shelf.",
 ]
 
 PACING = [
     "Next Friday night she'll ask what changed.",
     "Next Friday night, when she asks what changed, you'll remember this.",
     "A month from tonight you won't recognise yourself.",
+    # + 2026-08-01: o operador mediu vicio no lote - o mesmo future pacing em
+    # todo CTA. Pool de 3 para 6.
+    "Two weeks from now you'll thank me.",
+    "Do it tonight and see what Saturday feels like.",
+    "This time next month you'll be grinning.",
 ]
 
 GATES = [
     "Follow me first, or my message never lands.",
     "Follow me first, or I won't have any way to find your comment, brother.",
     "Hit follow right now, or Facebook can't deliver it.",
+    # + 2026-08-01: o operador mediu vicio no lote - "brother" saindo em todo
+    # CTA. REGRA NOVA DO POOL: no maximo 2 entradas com o vocativo "brother",
+    # e a maioria sem vocativo nenhum.
+    "Tap follow first. My inbox is shut to strangers.",
+    "Follow first. Facebook only lets me reply to followers.",
+    "Follow first. I get hundreds of these a day.",
+    "Follow me, fellas. The algorithm buries me otherwise.",
+    "Follow now. I only answer the ones that follow.",
+    "Give me a follow first, man. Takes one second.",
+    "Follow first, then comment. That's the whole thing.",
+    "Hit follow tonight. I clear the comments by morning.",
 ]
 
 # NE12 (falha em campo, Lucas/nativo-canyon 2026-07-31): a keyword saia em CAIXA
@@ -471,6 +657,16 @@ CTAS = [
     "{pacing} Comment gelatin, and I'll send you the only one I trust. {gate}",
     "{pacing} Comment gelatin, and I'll send you the exact one I use. {gate}",
     "{pacing} Comment gelatin, and I'll send you where I get mine. {gate}",
+    # + 2026-08-01: o operador mediu vicio no lote - os mesmos quatro CTAs
+    # voltando. Pool de 4 para 12, keyword sempre minuscula e com virgula.
+    "{pacing} Comment gelatin, and the recipe is yours. {gate}",
+    "{pacing} Just comment gelatin, and I'll write you back tonight. {gate}",
+    "{pacing} Comment the word gelatin, and I'll send it over. {gate}",
+    "{pacing} Comment gelatin, and it lands in your messages tonight. {gate}",
+    "{pacing} One word in the comments — gelatin, and it's yours. {gate}",
+    "{pacing} Comment gelatin. I'll send the whole thing over tonight. {gate}",
+    "{pacing} Comment gelatin, and watch your messages tonight. {gate}",
+    "{pacing} Comment gelatin, and I'll send the steps in order. {gate}",
 ]
 
 # ---------------------------------------------------------------------------

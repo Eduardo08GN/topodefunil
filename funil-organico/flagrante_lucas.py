@@ -183,6 +183,70 @@ OCASIOES = [
         "luz_hook": "Bright window daylight.",
         "audio": "clubhouse chatter, laughter, ice in a glass.",
     },
+    # + 2026-08-01: o operador mediu vicio no lote — o mesmo punhado de
+    # eventos voltando. Pool dobrado, todas selo N (ainda sem numero).
+    {
+        "id": "igreja_social", "selo": "N",
+        "cenario": "a church fellowship hall after service",
+        "detalhe": "folding tables with coffee urns and paper cups",
+        "assento": "on a folding chair", "posicao_mulher": "Across the table",
+        "plateia": "churchgoers", "plateia_evento": "that church hall",
+        "eco": "same fellowship hall",
+        "luz_hook": "Flat overhead hall light.",
+        "audio": "hall chatter, laughter, a coffee urn hissing.",
+    },
+    {
+        "id": "clube_veteranos", "selo": "N",
+        "cenario": "a veterans club hall on a Friday night",
+        "detalhe": "small round tables with beer glasses, a bar counter behind them",
+        "assento": "at a round table", "posicao_mulher": "Across the room",
+        "plateia": "old servicemen", "plateia_evento": "that veterans hall",
+        "eco": "same veterans hall, same table",
+        "luz_hook": "Dim amber bar light.",
+        "audio": "bar chatter, laughter, a glass set down on wood.",
+    },
+    {
+        "id": "boliche", "selo": "N",
+        "cenario": "a bowling alley on league night",
+        "detalhe": "a scoring table with rented shoes and a ball rack behind it",
+        "assento": "on the bench at the scoring table",
+        "posicao_mulher": "Standing by the ball rack",
+        "plateia": "league bowlers", "plateia_evento": "that bowling league",
+        "eco": "same lane, same league night",
+        "luz_hook": "Cool overhead alley light.",
+        "audio": "pins falling, laughter, a ball rolling on wood.",
+    },
+    {
+        "id": "lanchonete", "selo": "N",
+        "cenario": "a roadside diner at Sunday breakfast",
+        "detalhe": "a corner booth with coffee mugs and a napkin holder",
+        "assento": "in the booth", "posicao_mulher": "Across the booth",
+        "plateia": "diner regulars", "plateia_evento": "that diner booth",
+        "eco": "same booth, same waitress",
+        "luz_hook": "Hard morning light through the window blinds.",
+        "audio": "diner chatter, laughter, mugs set on a counter.",
+    },
+    {
+        "id": "reencontro", "selo": "N",
+        "cenario": "a forty-year class reunion in a rented gym",
+        "detalhe": "folding tables with punch bowls and paper streamers",
+        "assento": "at a folding table", "posicao_mulher": "Across the table",
+        "plateia": "old classmates", "plateia_evento": "that class reunion",
+        "eco": "same gym, same crowd",
+        "luz_hook": "Cool overhead gym light.",
+        "audio": "reunion chatter, laughter, a punch ladle clinking.",
+    },
+    {
+        "id": "feira_condado", "selo": "N",
+        "cenario": "a county fair food tent",
+        "detalhe": "long picnic tables under canvas, paper trays of food",
+        "assento": "at a picnic table",
+        "posicao_mulher": "Across the picnic table",
+        "plateia": "fairgoers", "plateia_evento": "that county fair",
+        "eco": "same fair, same tent",
+        "luz_hook": "Bright daylight under canvas shade.",
+        "audio": "fairground chatter, laughter, a distant loudspeaker.",
+    },
 ]
 
 # Ancora de escala obrigatoria nos dois estados (F12 / F15).
@@ -226,6 +290,18 @@ PROPS = [
                 "and completely soft, folded over on itself"),
      "ereto": ("a thick sausage upright at shoulder height, held stiff and "
                "straight, as long as her forearm")},
+    # + 2026-08-01: o operador mediu vicio — sempre o mesmo prop na mao do
+    # lote. Dois novos, com as duas ancoras de escala obrigatorias (F12/F15).
+    {"id": "cenoura", "marisco": False,
+     "murcho": ("a small limp carrot, no longer than his thumb, shriveled and "
+                "wrinkled, completely soft, drooping over his fingers"),
+     "ereto": ("a carrot upright at shoulder height, held stiff and straight, "
+               "as long as her forearm")},
+    {"id": "alho_poro", "marisco": False,
+     "murcho": ("a small wilted leek, no longer than his thumb, shriveled and "
+                "completely soft, folded over on itself"),
+     "ereto": ("a leek stalk upright at shoulder height, held stiff and "
+               "straight, as long as her forearm and as thick as her wrist")},
 ]
 
 # Set das cenas 2/3/5. Escopo do D1 (P15): bancada ou interno — todos servem.
@@ -247,6 +323,24 @@ AMBIENTES = [
     {"id": "copa",
      "set": "a small breakfast nook, a window with half-closed blinds behind him",
      "bancada": "table", "curto": "breakfast nook", "luz": "warm morning light from frame-right."},
+    # + 2026-08-01: o operador mediu vicio — o mesmo set de video em video.
+    # Seis ambientes novos, todos com bancada e internos (escopo do D1, P15).
+    {"id": "lavanderia", "set": "a home laundry room, a washer and dryer behind him",
+     "bancada": "folding counter", "curto": "laundry room", "luz": "cool even light from a small window."},
+    {"id": "porao_bar",
+     "set": "a finished basement with a small home bar, shelves behind him",
+     "bancada": "bar counter", "curto": "basement bar", "luz": "warm low light from a hanging lamp."},
+    {"id": "sala_jantar",
+     "set": "a dining room, a wooden sideboard and a plain wall behind him",
+     "bancada": "sideboard", "curto": "dining room", "luz": "warm ceiling light."},
+    {"id": "escritorio", "set": "a small home office, a bookshelf behind him",
+     "bancada": "desk", "curto": "home office", "luz": "soft warm light from frame-left."},
+    {"id": "galpao",
+     "set": "a backyard tool shed, hand tools hanging on the wall behind him",
+     "bancada": "shed bench", "curto": "tool shed", "luz": "hard daylight from frame-right."},
+    {"id": "estufa",
+     "set": "a backyard greenhouse, potted plants on shelves behind him",
+     "bancada": "potting bench", "curto": "greenhouse", "luz": "bright diffused daylight."},
 ]
 
 # F4b — contraste estrutural: o REF SEMPRE tem cabeleira farta, e' barbeado e
@@ -272,6 +366,17 @@ REFS = [
     {"idade": 67, "marca": "thick gray hair swept back and a small notch in his right ear",
      "cabelo": "gray", "roupa": "Plain burgundy crew-neck tee shirt.",
      "roupa_curta": "burgundy tee shirt"},
+    # + 2026-08-01: o operador viu o mesmo rosto de narrador voltando no lote.
+    # Tres REFs novos, mesmo contraste estrutural do F4b (cabeleira, sem oculos).
+    {"idade": 63, "marca": "a sharp widow's peak in thick white hair and a deep dimple in his left cheek",
+     "cabelo": "white", "roupa": "Plain forest green crew-neck tee shirt.",
+     "roupa_curta": "forest green tee shirt"},
+    {"idade": 71, "marca": "iron gray hair cut in a flat-top and a cluster of dark freckles across his nose",
+     "cabelo": "iron gray", "roupa": "Plain teal crew-neck tee shirt.",
+     "roupa_curta": "teal tee shirt"},
+    {"idade": 61, "marca": "full black hair streaked bright white at the front and a small gold hoop in his left ear",
+     "cabelo": "black", "roupa": "Plain cream crew-neck tee shirt.",
+     "roupa_curta": "cream tee shirt"},
 ]
 
 VITIMAS = [
@@ -280,6 +385,13 @@ VITIMAS = [
     {"idade": 65, "marca": "bald man with a white mustache and thick square glasses"},
     {"idade": 64, "marca": "bald man with a gray fringe above his ears, a bushy mustache and glasses"},
     {"idade": 61, "marca": "bald man with a short gray mustache and round wire glasses"},
+    # + 2026-08-01: o operador viu o mesmo rosto de vitima voltando no lote.
+    # Cinco novas, todas carecas de bigode e oculos (F4b).
+    {"idade": 66, "marca": "bald man with a horseshoe mustache and heavy tortoiseshell glasses"},
+    {"idade": 59, "marca": "bald man with a thin pencil mustache and gold aviator glasses"},
+    {"idade": 67, "marca": "bald man with a bushy salt-and-pepper mustache and half-rim glasses"},
+    {"idade": 68, "marca": "bald man with a drooping gray walrus mustache and rimless glasses"},
+    {"idade": 70, "marca": "bald man with a white handlebar mustache and small oval glasses"},
 ]
 
 MULHERES = [
@@ -293,6 +405,18 @@ MULHERES = [
      "payoff": "with shoulder-length hair, in a burgundy dress"},
     {"idade": 56, "hook": "woman with braided hair gathered over one shoulder",
      "payoff": "with braided hair over one shoulder, in a coral dress"},
+    # + 2026-08-01: o operador viu a mesma mulher voltando no lote. Cinco
+    # novas, dobrando o pool.
+    {"idade": 61, "hook": "woman with a silver bob and long dangling earrings",
+     "payoff": "with a silver bob, in a plum dress"},
+    {"idade": 62, "hook": "woman with cropped gray hair and thick hoop earrings",
+     "payoff": "with cropped gray hair, in a jade green dress"},
+    {"idade": 54, "hook": "woman with a thick low bun and a mole above her lip",
+     "payoff": "with a low bun, in a black dress"},
+    {"idade": 63, "hook": "woman with tight gray curls and reading glasses pushed up on her head",
+     "payoff": "with tight gray curls, in a lilac dress"},
+    {"idade": 64, "hook": "woman with a blunt shoulder-length cut and a white streak at her temple",
+     "payoff": "with a blunt shoulder-length cut, in a champagne gold dress"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -321,6 +445,9 @@ QUEM_CONTOU = [
     "his own brother", "his brother-in-law", "a guy from the shop",
     "his fishing buddy", "his business partner", "the neighbor",
     "an old army friend", "his own son-in-law",
+    # + 2026-08-01: o operador mediu vicio — sempre as mesmas bocas contando
+    # o segredo no lote. Quatro fontes novas.
+    "his barber", "a man from his church", "his old boss", "his cousin",
 ]
 
 DESCOBERTAS = [
@@ -331,6 +458,13 @@ DESCOBERTAS = [
     "That's when {quem} finally told him about the gelatin trick. Your wife isn't bored, brother, and you're not done. The blood stopped filling your {o}.",
     "I laughed at the gelatin trick the first time. {quem} wouldn't let him laugh. Give it two days, brother, and the blood finds your {o} again.",
     "{quem} passed him the gelatin trick in a parking lot. Every man I know over sixty is on it now. The blood has to reach your {o}.",
+    # + 2026-08-01: o operador mediu vicio — toda descoberta do lote abria em
+    # "That's when" e chamava o cara de "brother". As novas nao fazem nenhum dos dois.
+    "One night {quem} wrote the gelatin trick down for him on a napkin. The blood flow to your {o} got choked off.",
+    "No doctor told him about the gelatin trick. It came from {quem}. The blood flow to your {o} got choked off.",
+    "Two days later {quem} sent him the gelatin trick. The blood flow to your {o} got choked off, and it is fixable.",
+    "It was {quem} who handed him the gelatin trick. The blood stopped reaching your {o}, and nobody tells you that.",
+    "Same week, {quem} showed him the gelatin trick. It was never age. The blood flow to your {o} got choked off.",
 ]
 
 RITUAIS = [
@@ -344,9 +478,19 @@ RITUAIS = [
     "He mixed his glass alone. Us guys do it after the house goes quiet. Stir yours tonight, before your {o} forgets how.",
     "Nobody in my house buys those pills anymore. He stirred his that night. Stir yours tonight and stop guessing about your {o}.",
     "First night I drank mine, I sat on the bed waiting. Stir yours tonight and give your {o} the same chance.",
+    # + 2026-08-01: o operador mediu vicio — todo ritual do lote abria em
+    # "That same night". As cinco novas trocam a abertura.
+    "One glass of water, one spoon, one minute. He did it that night. Do it tonight for your {o}.",
+    "He didn't wait. He stirred his glass that night. Stir yours tonight and watch what your {o} does.",
+    "Warm water, one spoon, straight down. That's the whole thing. Give your {o} one week of it.",
+    "My wife thinks mine is for my knees. Stir it tonight and your {o} gets the message.",
+    "Takes about a minute. He's done it every night since. Start yours tonight, before your {o} quits.",
 ]
 
-BRAGGING = ["telling that story", "bragging", "spreading the gossip herself"]
+BRAGGING = ["telling that story", "bragging", "spreading the gossip herself",
+            # + 2026-08-01: o operador mediu vicio — tres verbos so' pro lote
+            # inteiro, o mesmo voltando toda hora. Cinco novos.
+            "talking", "boasting", "going on", "crowing", "carrying on"]
 
 # Cada fecho derruba UMA barreira do avatar (espinha-fixa §loop cena 4)
 BARREIRAS = [
@@ -368,12 +512,29 @@ REDENCOES = [
     "Nineteen days later, {eco}. She's the one reaching for him at six in the morning now, and the one {brag} about his {o}. {barreira}",
     "Nineteen days later, {eco}. Mine came back the same way at sixty-five. She hasn't stopped {brag} about his {o} since. {barreira}",
     "Nineteen days later, {eco}. My wife locked our bedroom door at seven in the morning once. Now his wife is {brag} about his {o} to her sisters. {barreira}",
+    # + 2026-08-01: o operador mediu vicio — a virada do lote sempre contada
+    # com as mesmas duas imagens. Tres fechos novos, mais curtos.
+    "Nineteen days later, {eco}. She never left his side, {brag} about his {o}. {barreira}",
+    "Nineteen days later, {eco}. Nobody laughed this time, and they heard her {brag} about his {o}. {barreira}",
+    "Nineteen days later, {eco}. She sat right down on him, {brag} about his {o}. {barreira}",
 ]
 
 GATES = [
     "Follow me first, brother.",
     "Follow me first or I can't find your comment.",
     "Hit follow first, or Facebook won't deliver it.",
+    # + 2026-08-01: o operador mediu vicio — "brother" caindo em todo CTA do
+    # lote, porque o pool tinha 3 gates e um deles era vocativo.
+    # ⛔ REGRA NOVA: no maximo 2 entradas deste pool com o vocativo "brother",
+    # e a MAIORIA sem vocativo nenhum. Vale para toda expansao futura.
+    "Follow me first.",
+    "Hit follow before you comment.",
+    "I only answer people who follow me.",
+    "Facebook won't let me message you unless you follow.",
+    "Follow first, I get too many comments to chase.",
+    "Give me a follow, or your comment gets buried.",
+    "Tap follow first, man, or I lose you.",
+    "Follow me first, my friend, or I never see it.",
 ]
 
 CTAS = [
@@ -391,6 +552,12 @@ CTAS = [
     "Comment gelatin, and I'll send you what we pass around here, brother. Nobody outside this comment section finds out. {gate}",
     "Comment gelatin, and I'll send you the same one a man sent me at sixty-four. I didn't ask twice. {gate}",
     "Comment gelatin, and I'll send you the exact one. I typed it myself once, brother, and nobody in my house ever knew. {gate}",
+    # + 2026-08-01: o operador mediu vicio — "brother" em quase todo CTA do
+    # lote e sempre a mesma promessa. Quatro novos, nenhum com vocativo.
+    "Comment gelatin, and the recipe goes out to you tonight. {gate}",
+    "Comment gelatin, and I'll send you where he got his. {gate}",
+    "Comment gelatin, and it's in your messages in ten minutes. {gate}",
+    "Comment gelatin, and nobody else sees what I send you. {gate}",
 ]
 
 # ---------------------------------------------------------------------------

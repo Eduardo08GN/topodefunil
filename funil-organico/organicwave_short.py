@@ -118,6 +118,14 @@ REFS_H_CLARA = [
      "corpo": "a powerful chest and thick forearms"},
     {"idade": 63, "marca": "silver hair combed straight back and a trimmed white beard along the jaw",
      "corpo": "a lean athletic build with cut shoulders and a flat stomach"},
+    # + 2026-08-01: o operador viu o mesmo rosto voltando no lote. Tres marcas
+    # faciais a mais, na mesma gramatica de marca + corpo.
+    {"idade": 65, "marca": "a shaved head, a thick grey handlebar moustache and a small mole at the outer corner of his right eye",
+     "corpo": "a deep barrel chest and heavy sloping shoulders"},
+    {"idade": 62, "marca": "a short flat-top cut gone completely white and a wide gap between his front teeth",
+     "corpo": "thick arms and a broad chest with clear muscle separation"},
+    {"idade": 57, "marca": "thick chestnut hair with a bright white streak at the left temple and green eyes",
+     "corpo": "a compact powerful build with square shoulders and a tight midsection"},
 ]
 REFS_H_ESCURA = [
     {"idade": 58, "marca": "close-cropped silver hair, a neat white beard and a small dark beauty mark on his left cheekbone",
@@ -138,6 +146,14 @@ REFS_H_ESCURA = [
      "corpo": "a powerful chest and thick forearms"},
     {"idade": 63, "marca": "a short grey afro and a trimmed white beard along the jaw",
      "corpo": "a lean athletic build with cut shoulders and a flat stomach"},
+    # + 2026-08-01: o operador viu o mesmo rosto voltando no lote. Tres marcas
+    # faciais a mais, na mesma gramatica de marca + corpo.
+    {"idade": 65, "marca": "a smooth shaved head, a thick grey handlebar moustache and a small mole at the outer corner of his right eye",
+     "corpo": "a deep barrel chest and heavy sloping shoulders"},
+    {"idade": 62, "marca": "a short white flat-top fade and a wide gap between his front teeth",
+     "corpo": "thick arms and a broad chest with clear muscle separation"},
+    {"idade": 57, "marca": "a close grey afro with a bright white streak above the left temple and light green eyes",
+     "corpo": "a compact powerful build with square shoulders and a tight midsection"},
 ]
 
 MULHERES_CLARA = [
@@ -151,6 +167,12 @@ MULHERES_CLARA = [
     {"idade": 32, "desc": "deep red hair cut to the collarbone and a small beauty mark above her lip, a fitted cream dress"},
     {"idade": 35, "desc": "long platinum-blonde hair and grey-blue eyes, a fitted emerald summer dress"},
     {"idade": 28, "desc": "chestnut hair in loose beach waves and a dimple in her left cheek, a fitted blush sundress"},
+    # + 2026-08-01: o operador viu o mesmo rosto voltando no lote. Quatro
+    # mulheres a mais, cada uma com marca facial propria.
+    {"idade": 33, "desc": "a sleek dark bob cut sharp at the jaw and a small beauty mark under her left eye, a fitted plum dress"},
+    {"idade": 29, "desc": "long jet-black hair in a single braid over one shoulder and a gap between her front teeth, a fitted rust-orange sundress"},
+    {"idade": 36, "desc": "caramel-highlighted hair twisted into a loose bun and a narrow widow's peak above dark arched brows, a fitted sage green dress"},
+    {"idade": 31, "desc": "shoulder-length golden-brown hair with a blunt fringe and a small crescent birthmark at her hairline, a fitted denim-blue summer dress"},
 ]
 MULHERES_ESCURA = [
     {"idade": 35, "desc": "long braided hair gathered over one shoulder, a small beauty mark high on her right cheekbone, a fitted emerald dress"},
@@ -163,6 +185,12 @@ MULHERES_ESCURA = [
     {"idade": 36, "desc": "sleek long hair parted in the middle and a small beauty mark on her right jaw, a fitted navy dress"},
     {"idade": 29, "desc": "shoulder-length auburn-dyed curls and freckles across her cheeks, a fitted olive sundress"},
     {"idade": 33, "desc": "long twists gathered high and a deep dimple in her right cheek, a fitted blush dress"},
+    # + 2026-08-01: o operador viu o mesmo rosto voltando no lote. Quatro
+    # mulheres a mais, cada uma com marca facial propria.
+    {"idade": 30, "desc": "a short tapered cut faded at the sides and a small beauty mark above her left brow, a fitted rust-orange dress"},
+    {"idade": 34, "desc": "waist-length micro braids pulled into a high ponytail and a gap between her front teeth, a fitted plum dress"},
+    {"idade": 28, "desc": "finger waves set close to the head and a narrow widow's peak, a fitted gold summer dress"},
+    {"idade": 36, "desc": "long faux locs gathered over one shoulder and deep dimples in both cheeks, a fitted sage green dress"},
 ]
 
 # ⚠️ PISO DE IDADE 28. O agente original punha esta persona em 20-24 e isso NAO
@@ -194,6 +222,22 @@ AMBIENTES = [
      "bancada": "counter", "curto": "kitchen", "luz": "warm lamp light."},
     {"id": "cozinha_moderna", "set": "a modern American kitchen with matte black cabinets and a subway-tile wall",
      "bancada": "island", "curto": "kitchen", "luz": "cool even daylight from frame-right."},
+    # + 2026-08-01: o operador mediu vicio de cenario — as mesmas quatro
+    # cozinhas voltavam no lote. Sete cozinhas americanas a mais.
+    {"id": "cozinha_galley", "set": "a narrow galley kitchen in an older American apartment, cabinets down both walls and a window at the far end",
+     "bancada": "counter", "curto": "kitchen", "luz": "flat daylight from the window at the end of the room."},
+    {"id": "cozinha_fazenda", "set": "an old American farmhouse kitchen with a deep porcelain sink and a window above it",
+     "bancada": "counter", "curto": "kitchen", "luz": "soft grey morning light through the window over the sink."},
+    {"id": "cozinha_cabana", "set": "a knotty pine cabin kitchen with a screen door and pine trees out the window",
+     "bancada": "counter", "curto": "kitchen", "luz": "green-tinged afternoon light coming through the screen door."},
+    {"id": "cozinha_retro", "set": "a nineteen-seventies American kitchen with laminate counters, wood-panelled walls and a round wall clock",
+     "bancada": "counter", "curto": "kitchen", "luz": "warm overhead bulb light with dim daylight from the side."},
+    {"id": "cozinha_bar", "set": "an American kitchen with a breakfast bar and two wooden stools, a hallway out of focus beyond",
+     "bancada": "breakfast bar", "curto": "kitchen", "luz": "even daylight from a sliding glass door frame-right."},
+    {"id": "cozinha_peninsula", "set": "a small American kitchen with a tiled peninsula dividing it from a dining table",
+     "bancada": "peninsula", "curto": "kitchen", "luz": "warm side light from a lamp over the dining table."},
+    {"id": "cozinha_porao", "set": "a finished basement kitchenette with a bar sink and a low ceiling",
+     "bancada": "bar counter", "curto": "kitchen", "luz": "warm recessed ceiling light and no daylight."},
 ]
 
 # o prop-metafora do hook: o murcho na mao, com o deitico da copy apontando
@@ -211,6 +255,23 @@ PROPS = [
     {"id": "okra", "marisco": False,
      "murcho": "a small wilted okra pod, no longer than his thumb, shriveled and completely soft, drooping over his fingers",
      "ereto": "an okra pod upright at shoulder height, held stiff and straight, as long as her forearm"},
+    # + 2026-08-01: o operador mediu vicio de prop — o lote voltava sempre com
+    # os mesmos quatro. Cinco a mais, na mesma gramatica de murcho/ereto.
+    {"id": "aspargo", "marisco": False,
+     "murcho": "a small wilted asparagus stalk, no longer than his thumb, limp and drooping over his fingers",
+     "ereto": "an asparagus stalk upright at shoulder height, held stiff and straight, as long as her forearm"},
+    {"id": "daikon", "marisco": False,
+     "murcho": "a small shrivelled daikon radish, no longer than his thumb, wrinkled and completely soft, drooping over his fingers",
+     "ereto": "a daikon radish upright at shoulder height, held stiff and straight, as long as her forearm and as thick as her wrist"},
+    {"id": "linguica", "marisco": False,
+     "murcho": "a small pale sausage, no longer than his thumb, shriveled and completely soft, folded over on itself",
+     "ereto": "a thick sausage upright at shoulder height, held stiff and straight, as long as her forearm"},
+    {"id": "abobrinha", "marisco": False,
+     "murcho": "a small shrivelled zucchini, no longer than his thumb, wrinkled and completely soft, folded over on itself",
+     "ereto": "a zucchini upright at shoulder height, held stiff and straight, as long as her forearm and as thick as her wrist"},
+    {"id": "berinjela", "marisco": False,
+     "murcho": "a small shrivelled eggplant, no longer than his thumb, wrinkled and completely soft, folded over on itself",
+     "ereto": "an eggplant upright at shoulder height, held stiff and straight, as long as her forearm and as thick as her wrist"},
 ]
 
 # ⭐ O CURIOSITY GAP do agente original: um item a mais na bancada que a copy
@@ -222,6 +283,13 @@ ISCA = [
     "a knob of fresh ginger root and a paring knife",
     "three cinnamon sticks tied with twine",
     "a small tin of maca powder, lid beside it",
+    # + 2026-08-01: a isca repetia dentro do mesmo lote e o curiosity gap
+    # perdia a graca. Cinco itens a mais na bancada, nenhum nomeado na copy.
+    "a small stoneware pot of bee pollen, lid tipped against it",
+    "a handful of shelled walnuts in a shallow white bowl",
+    "a squat jar of dark molasses with the lid resting beside it",
+    "a small dish of grated raw beet, deep red",
+    "three dried figs on a white saucer",
 ]
 
 # ⚠️ A acao e' frase de GERUNDIO, SEM SUJEITO — encaixa nas duas personas.
@@ -239,6 +307,23 @@ RECEITAS = [
     {"id": "gelatina_morna", "fala": "a spoonful of gelatin into half a glass of warm water",
      "mesa": "a plain white sachet of pale powder with no label, a glass of warm water and a long metal spoon",
      "acao": "emptying the sachet into the warm water and stirring until the powder is gone"},
+    # + 2026-08-01: tres rituais so' nao seguravam o lote — a cena 2 repetia.
+    # Cinco liquidos a mais, acao sempre em gerundio e sem sujeito.
+    {"id": "gelatina_gelo", "fala": "a spoonful of gelatin into ice water",
+     "mesa": "a plain white sachet of pale powder with no label, a tall glass of ice water and a long metal spoon",
+     "acao": "tipping the powder into the ice water and working the spoon around the rim until it clears"},
+    {"id": "gelatina_leite", "fala": "a spoonful of gelatin into cold milk",
+     "mesa": "a plain white sachet of pale powder with no label, a white mug of cold milk and a metal spoon",
+     "acao": "shaking the sachet out over the mug and turning the spoon slowly through the milk"},
+    {"id": "gelatina_suco", "fala": "a spoonful of gelatin into orange juice",
+     "mesa": "a plain white sachet of pale powder with no label, a glass of orange juice and a metal spoon",
+     "acao": "pouring the powder into the juice and stirring until nothing is left floating"},
+    {"id": "gelatina_cafe", "fala": "a spoonful of gelatin into black coffee",
+     "mesa": "a plain white sachet of pale powder with no label, a mug of black coffee and a metal spoon",
+     "acao": "emptying the sachet into the coffee and stirring it through in slow circles"},
+    {"id": "gelatina_sal", "fala": "a spoonful of gelatin into salted cold water",
+     "mesa": "a plain white sachet of pale powder with no label, a glass of cold water, a small dish of salt and a metal spoon",
+     "acao": "tipping the powder into the water, adding a pinch of salt from the dish and stirring it in"},
 ]
 
 
@@ -277,6 +362,14 @@ HOOKS = [
     "I couldn't look my wife in the eye at {n}. My {o} hung like this and I knew why she stopped.",
     "Too embarrassed to tell my own doctor. So I sat with this — my {o}, every night, for two years.",
     "We slept like roommates for eight months. This was my {o}, and I thought that was just {n}.",
+    # + 2026-08-01: o operador mediu vicio na copy — os mesmos oito hooks
+    # voltavam no lote. Seis dores a mais, nenhuma com vocativo.
+    "Thirty-one years married, and this is what my {o} had turned into. She never said a word.",
+    "The pills quit working before I did. My {o} still went down like this, every single night.",
+    "My {o} quit on me the year I turned {n}. This is what two years of that looks like.",
+    "She stopped touching me and I let her. This was my {o}, and I blamed the years.",
+    "The bedroom went quiet two years ago. Not her fault. This was my {o}, and I knew it.",
+    "My doctor gave me a pill and a shrug. Two years later this was still my {o}.",
 ]
 
 FUNDIDAS = [
@@ -289,6 +382,14 @@ FUNDIDAS = [
     "My neighbor gave me this. Stir {ing} — the gelatin trick. The blood flow came back, and so did my {o}.",
     "Nobody told me it was blood flow. Stir {ing}, that's the whole gelatin trick, and my {o} hasn't quit since.",
     "Two dollars, brother. Stir {ing} — the gelatin trick — and the blood flow that left my {o} came right back.",
+    # + 2026-08-01: cinco fundidas so' repetiam na cena 2. Seis a mais, todas
+    # carregando o literal "gelatin trick" e o blood flow, como manda a regra.
+    "Nineteen days. Stir {ing}, that's the gelatin trick, and the blood flow my {o} lost came back.",
+    "My doctor never once said blood flow. Stir {ing}. The gelatin trick gave me my {o} back.",
+    "It's blood flow, not the calendar. Stir {ing}. That's the gelatin trick, and my {o} works again.",
+    "Stir {ing} before bed. That's the gelatin trick. The blood flow came back and my {o} with it.",
+    "Three weeks on the gelatin trick. Stir {ing}. The blood flow my {o} was missing is running again.",
+    "My wife noticed before I did. Stir {ing}, the gelatin trick, and the blood flow found my {o} again.",
 ]
 
 CTAS = [
@@ -302,6 +403,14 @@ CTAS = [
     "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",
     "Comment gelatin, and I'll send you the one my neighbor sent me. Nobody in my house ever knew. {gate}",
     "Comment gelatin, and I'll send it tonight. There's one more ingredient on that counter I can't name here. {gate}",
+    # + 2026-08-01: o operador mediu vicio no fechamento — os mesmos seis CTAs
+    # no lote inteiro. Seis a mais, nenhum com vocativo.
+    "Comment gelatin, and it's in your inbox in ten minutes. {gate}",
+    "Two dollars at any grocery store. Comment gelatin, and I'll tell you exactly what to buy. {gate}",
+    "My wife doesn't know I post these. Comment gelatin, and I'll send you the recipe. {gate}",
+    "You've watched this far. Comment gelatin, and I'll send you what I stir every night. {gate}",
+    "Don't buy another pill this month. Comment gelatin, and I'll send you the recipe tonight. {gate}",
+    "Nineteen days from tonight you'll be telling somebody else. Comment gelatin, and I'll send it. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -325,6 +434,12 @@ HOOKS_F = [
     "Four hundred a month on pills, and his {o} still looked like this. I stopped asking.",
     "We hadn't touched in eight months. This was his {o}, and he wouldn't talk about it.",
     "My man is {n}. This was his {o} in March. I'm the one who found what fixed it.",
+    # + 2026-08-01: mesmo vicio da persona masculina — os oito hooks dela
+    # voltavam no lote. Quatro dores a mais, nenhuma com vocativo.
+    "Nine years together and I was sleeping alone in my own bed. This was his {o}.",
+    "He turned {n} and everything stopped. Not our marriage, just this. His {o}, every single night.",
+    "Two years I thought he was cheating. He wasn't. This was his {o}, and he was hiding it.",
+    "He said he was tired. For eight months I believed him. This is what his {o} looked like.",
 ]
 
 FUNDIDAS_F = [
@@ -333,6 +448,12 @@ FUNDIDAS_F = [
     "My aunt gave me this. I stir {ing} — the gelatin trick. The blood flow came back, and so did his {o}.",
     "Nobody told us it was blood flow. I stir {ing}, that's the whole gelatin trick, and his {o} hasn't quit since.",
     "Two dollars, girls. I stir {ing} — the gelatin trick — and the blood flow that left his {o} came right back.",
+    # + 2026-08-01: mesma expansao da masculina, a cena 2 dela repetia. Quatro
+    # a mais, todas com o literal "gelatin trick" e o blood flow no lugar.
+    "I stir {ing} every night before bed. That's the gelatin trick. The blood flow came back, and his {o} with it.",
+    "Three weeks on the gelatin trick. I stir {ing}. The blood flow his {o} was missing is running again.",
+    "He never asked what was in the glass. I stir {ing}. Gelatin trick, blood flow back, and his {o} with it.",
+    "I did it without telling him. I stir {ing}. The gelatin trick, the blood flow, and his {o} did the rest.",
 ]
 
 CTAS_F = [
@@ -346,6 +467,14 @@ CTAS_F = [
     "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",
     "Comment gelatin, and I'll send you the one my aunt sent me. He never even knew I did it. {gate}",
     "Comment gelatin, and I'll send it tonight. There's one more thing on that counter I can't name here. {gate}",
+    # + 2026-08-01: o operador mediu vicio no fechamento — os mesmos seis CTAs
+    # no lote inteiro. Seis a mais, nenhum com vocativo.
+    "Comment gelatin, and I'll send you what I put in his glass. {gate}",
+    "Two dollars at the grocery store. Comment gelatin, and I'll tell you exactly what to get. {gate}",
+    "Do it for him if he won't. Comment gelatin, and I'll send you the recipe tonight. {gate}",
+    "He still thinks it was his idea. Comment gelatin, and I'll send you mine. {gate}",
+    "Nineteen days from tonight you'll be the one telling your friends. Comment gelatin, and I'll send it. {gate}",
+    "Don't buy him another pill this month. Comment gelatin, and I'll send you the recipe. {gate}",
 ]
 
 
@@ -353,6 +482,19 @@ GATES = [
     "Follow me first, or my message never lands.",
     "Follow me first, or I won't have any way to find your comment, brother.",
     "Hit follow right now, or Facebook can't deliver it.",
+    # + 2026-08-01: o operador mediu vicio de vocativo — "brother" caia em
+    # praticamente todo CTA do lote, porque so' havia tres gates.
+    # ⛔ REGRA NOVA: no maximo 2 entradas deste pool com o vocativo "brother",
+    # e a MAIORIA sem vocativo nenhum. Nove gates a mais abaixo.
+    "Hit follow first. I can't message anyone who isn't following.",
+    "Follow first. Three hundred comments come in and I answer followers.",
+    "One tap on follow, or this never reaches you again.",
+    "The algorithm hides me from people who don't follow.",
+    "I answer followers first. Everybody else waits until the weekend.",
+    "Follow me tonight, my friend. Tomorrow this is off your feed.",
+    "Facebook blocks my message unless you follow me. So follow.",
+    "Two hundred people comment on these. Followers get answered first, guys.",
+    "Follow me and my inbox opens. That's how the page works.",
 ]
 
 
@@ -676,7 +818,17 @@ EIXOS_UI = [
 PT_AMB = {"cozinha": "Na cozinha americana clara",
           "cozinha_ilha": "Na cozinha de conceito aberto com ilha",
           "cozinha_madeira": "Na cozinha de carvalho",
-          "cozinha_moderna": "Na cozinha moderna preta"}
+          "cozinha_moderna": "Na cozinha moderna preta",
+          # + 2026-08-01: as sete cozinhas novas do pool AMBIENTES precisam do
+          # resumo em PT, senao o painel cai no fallback "Na cozinha".
+          "cozinha_galley": "Na cozinha corredor de apartamento",
+          "cozinha_fazenda": "Na cozinha de fazenda com pia de louça",
+          "cozinha_cabana": "Na cozinha de cabana de pinho",
+          "cozinha_retro": "Na cozinha anos setenta com parede de madeira",
+          "cozinha_bar": "Na cozinha com balcão de bar e banquetas",
+          "cozinha_peninsula": "Na cozinha pequena com península azulejada",
+          "cozinha_porao": "Na copa do porão acabado",
+          }
 
 
 def resumo_pt(spec):

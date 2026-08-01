@@ -96,6 +96,34 @@ FUNDIDAS = [
     "{quem} gave him the gelatin trick that night. The blood flow to your {o} "
     "got choked off, and it is fixable. Nineteen days later she reaches for "
     "him first.",
+
+    # + 2026-08-01: o operador mediu vicio no lote — a fundida saindo sempre
+    # com a mesma abertura e com "brother". As oito novas trocam as duas
+    # coisas, e cada uma continua carregando `gelatin trick`, `blood flow`
+    # e o `{o}` que o linter exige.
+    "A week later {quem} passed him the gelatin trick. Blood flow, not age. "
+    "Nineteen days after that she's {brag} about his {o}.",
+
+    "It was {quem} who handed him the gelatin trick. Blood flow to your {o} "
+    "got choked off. Nineteen days later she's {brag} about his.",
+
+    "The gelatin trick wasn't from a doctor. It came from {quem}. Blood flow "
+    "to your {o}, not age. Nineteen days later she won't let him sleep.",
+
+    "Same week, {quem} showed him the gelatin trick. Blood flow to your {o} "
+    "got choked off. Nineteen days later the men who laughed asked him why.",
+
+    "He drank it the night {quem} told him the gelatin trick. Blood flow to "
+    "your {o}, not age. Nineteen days later she wouldn't get off his knee.",
+
+    "Nobody knew {quem} had given him the gelatin trick. Blood flow to your "
+    "{o}, not age. Nineteen days later she's {brag} about his.",
+
+    "One glass a night, the gelatin trick from {quem}. The blood flow to your "
+    "{o} got choked off. Nineteen days later she reaches for him first.",
+
+    "It wasn't a pill, it was the gelatin trick from {quem}. Blood flow to "
+    "your {o} got choked off. Nineteen days later nobody was laughing.",
 ]
 
 

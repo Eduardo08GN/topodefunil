@@ -97,6 +97,40 @@ FUNDIDAS = [
     "Without the gelatin trick, baking soda is half a recipe and the blood flow "
     "never reaches your {o}. She's {n_ext}, half my age, and she calls me every "
     "night.",
+
+    # + 2026-08-01: o operador mediu vicio — cinco itens so', e "brother" voltando
+    # no lote. Pool de 5 para 13; as oito novas nao tem vocativo.
+    "Without the gelatin trick, that baking soda leaves your {o} right where "
+    "it is — the blood flow stays choked off. She's {n_ext}, half my age, and "
+    "she told her girlfriends about mine.",
+
+    "Your blood flow got choked off, not your years — and without the gelatin "
+    "trick, baking soda does nothing for your {o}. She's {n_ext} and she "
+    "couldn't sit still the next day.",
+
+    "You didn't fail. Without the gelatin trick, baking soda does nothing for "
+    "your {o} — the blood flow got pinched shut years ago. She's {n_ext} and "
+    "she noticed before I said anything.",
+
+    "I mixed that spoon for a year. Without the gelatin trick, baking soda "
+    "does nothing for your {o} — the blood flow stays clamped off. She's "
+    "{n_ext} and she asked for a break.",
+
+    "You're one ingredient short. Without the gelatin trick, baking soda does "
+    "nothing for your {o} and the blood flow stays shut. Thirty-{n} years old, "
+    "and she brags about mine.",
+
+    "Without the gelatin trick, baking soda does nothing for your {o}. That's "
+    "blood flow, choked off decades back. She's {n_ext}, half my age, and she "
+    "found out what mine does.",
+
+    "Stop before you tell the guys. Without the gelatin trick, that baking "
+    "soda does nothing for your {o} — your blood flow got squeezed shut. "
+    "She's {n_ext} and she won't leave me alone.",
+
+    "Without the gelatin trick, the baking soda is half the job and the blood "
+    "flow never opens for your {o}. She's {n_ext}, half my age, and she's the "
+    "one keeping me up.",
 ]
 
 
