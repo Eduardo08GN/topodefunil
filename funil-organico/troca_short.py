@@ -158,13 +158,41 @@ FRASE_SEM_MARCA = "Every container in the frame is plain and unlabelled."
 # sorteada": isso e' (a) reescrever string validada sem ordem do operador e
 # (b) mover o prop da virilha para o quadril, que e' AMPUTAR A CENA para
 # destravar — o reflexo que o CLAUDE.md §Alcada proibe. So' a PECA varia.
-# ⚠️ Tensao real, reportada e nao resolvida aqui: o homem esta' DE PE (TR10) e
-# homem de pe' nao tem colo. Ou a postura cede, ou a ancora, ou nasce uma
-# terceira formulacao — decisao do Ed.
+# ⭐ TERCEIRA FORMULACAO — ORDEM DO ED, 2026-08-01, olhando os renders.
+# A tensao acima ("homem de pe' nao tem colo") saiu do papel: `beside the lap`
+# e' coordenada de homem SENTADO, e num homem DE PE o Veo resolvia o `beside`
+# ao pe' da letra — o legume saia na altura do quadril, deslocado para o lado,
+# numa mao so'. Lido em oito renders: nao le' como prolongamento, le' como
+# sujeito segurando uma compra.
+#
+# O que o operador pediu, e por que cada pedaco esta' aqui:
+#   · DUAS MAOS, uma acima da outra — e' o que traz o objeto para o eixo do
+#     corpo e o mantem la'. Uma mao so' deixa o Veo escolher o lado.
+#   · `centred against the front of` no lugar de `beside` — `beside` empurra
+#     para fora, `centred against` e' coordenada, nao vizinhanca.
+#   · base encostada no tecido + ponta para cima — e' o que faz ler como
+#     PROLONGAMENTO em vez de objeto carregado.
+# ⛔ Continua sem `groin`/`pubic`/`crotch`: a coordenada e' dada pela PECA DE
+# ROUPA (`the front of his khaki work pants`), que e' a mesma alavanca que fez
+# `beside the lap of his khaki shorts` passar onde `level with his groin` foi
+# recusado. Trocou-se a geometria, nunca o termo.
+# ⚠️ A AGENCIA da F12b fica INTEIRA e ate' reforcada: duas maos dele, no corpo
+# dele, e ela segue apontando sem encostar. O que derrubou as 4 recusas de
+# 2026-07-30 foi mao de TERCEIRO em corpo passivo — nao e' o caso.
+# Slots: peca da calca, proxy (ancorado NELE), relacao.
 TR_MAO_PROPRIA_IMAGE = (
-    "In his own fist, held down beside the lap of his %s, he holds %s. Standing "
-    "beside him, %s points one finger down at it without touching him, talking "
-    "straight to camera."
+    # ⚠️ ORDEM DA FRASE: os punhos vem ANTES do proxy. A descricao do proxy e'
+    # longa (cor, escala, substancia) e, posta entre `he holds` e `in both his
+    # own fists`, saia "the mustard still on it in both his own fists" — a
+    # substancia lida como estando nas maos. Verbo, maos, objeto, geometria.
+    # ⚠️ E o `upright` saiu: `the tip pointing straight up` ja' o diz, e ele
+    # aterrissava colado no fim da descricao do proxy ("the mustard still on it
+    # upright"). Travessao separa a descricao longa da geometria (F12c: uma
+    # palavra a menos neste bloco e' superficie de bloqueio a menos).
+    "Centred against the front of his %s, in both his own fists one stacked "
+    "above the other, he holds %s — the base of it resting on the fabric, the "
+    "tip pointing straight up. Standing beside him, %s points one finger down "
+    "at it without touching him, talking straight to camera."
 )
 
 # a mesma regra no movimento. `never touches him` e' o que o TR10 cobra.
@@ -178,8 +206,8 @@ TR_MAO_PROPRIA_IMAGE = (
 # same length" era eufemismo somado a injecao de `length`.
 TR_MAO_PROPRIA_TAKE = (
     "Her pointing finger stays close but never touches him. He keeps his eyes "
-    "on the lens and never speaks; his own fist stays where it is. The %s in "
-    "his own fist stays exactly as it appears in the first frame — completely "
+    "on the lens and never speaks; both his own fists stay where they are. The "
+    "%s in his own fists stays exactly as it appears in the first frame — completely "
     "motionless for the entire shot."
 )
 
@@ -1886,11 +1914,19 @@ def _tr_agencia(spec, blocos, achados):
     if "his own fist" not in img:
         achados.append(("ERRO", "TR10: IMAGE 03/03 sem 'his own fist' — a "
                                 "agencia nao esta' declarada"))
-    if "beside the lap of his " not in img:
+    # ⭐ ancora nova (Ed, 2026-08-01): `centred against the front of his ...`
+    # substituiu `beside the lap of his ...` porque o homem esta' DE PE e o
+    # `beside` mandava o prop para o quadril. A alavanca e' a mesma — a peca
+    # de roupa dando a coordenada sem o termo anatomico.
+    # ⚠️ minusculas: a travada ABRE a frase, entao chega com "C" maiusculo.
+    if "centred against the front of his " not in img.lower():
         achados.append(("ERRO", "TR10: IMAGE 03/03 sem a ancora de roupa "
-                                "travada ('beside the lap of his ...') — e' a "
-                                "formulacao que substituiu 'level with his "
-                                "groin' depois de recusa paga"))
+                                "travada ('centred against the front of his "
+                                "...') — sem ela o prop volta para o quadril"))
+    if "both his own fists" not in img.lower():
+        achados.append(("ERRO", "TR10: IMAGE 03/03 sem as DUAS maos — uma mao "
+                                "so' deixa o Veo escolher o lado e o prop sai "
+                                "fora do eixo do corpo (ordem do Ed)"))
     if calca not in img:
         achados.append(("ERRO", "TR10: IMAGE 03/03 sem a peca de roupa sorteada "
                                 "— a ancora precisa existir na imagem"))

@@ -41,7 +41,7 @@ portado para código: motor (`<agente>_lucas.py` — pools sorteáveis, strings
 travadas como constantes, linter em regex), app tkinter offline e `.exe`
 entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
 [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
-Portados ate agora: **FLAGRANTE**, **PEE**, **VAZAMENTO** e **NECROSE** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
+Portados ate agora: **FLAGRANTE**, **PEE**, **VAZAMENTO**, **NECROSE** e **TROCA** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
 ⭐ **SHORT NATIVO** e a terceira via, e nao tem motor longo nenhum: **ORGANICWAVE** e
 **TROCA** (2026-08-01) nascem em 3 cenas porque a fonte garimpada e' de 12-14s. Nao
 criar `<agente>_lucas.py` de 5 cenas para eles — o motor curto e' o motor.

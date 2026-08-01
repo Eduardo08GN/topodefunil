@@ -505,14 +505,51 @@ Destino da esteira: **AdBatch Vertical 3**
   | Prop | **minúsculo e murcho** (`no longer than his thumb`) | **grande**, dimensionado por escala corporal |
   | Leitura | vergonha, com plateia rindo | **constatação**, sem plateia nenhuma |
 
-  **Formulação para o IMAGE 03** — 🟡 candidata, montada de fragmentos já
-  validados; cada pedaço com procedência:
+  **Formulação para o IMAGE 03** — ⭐ **terceira formulação, ordem do Ed
+  2026-08-01, olhando oito renders:**
+  ```
+  Centred against the front of his [peça], in both his own fists one stacked
+  above the other, he holds [proxy] — the base of it resting on the fabric,
+  the tip pointing straight up. Standing beside him, [relação] points one
+  finger down at it without touching him, talking straight to camera.
+  ```
+
+  **Por que a anterior caiu.** Ela dizia `In his own fist, held down beside the
+  lap of his khaki shorts`. Mas `lap` é coordenada de homem **sentado**, e aqui
+  ele está **de pé** — a própria regra já registrava a tensão sem resolvê-la.
+  Num homem de pé o Veo resolveu o `beside` ao pé da letra: o proxy saiu **na
+  altura do quadril, deslocado para o lado, numa mão só**. Não lê como
+  prolongamento; lê como sujeito segurando uma compra.
+
+  **O que cada pedaço novo faz:**
+  - **duas mãos, uma acima da outra** — trazem o objeto para o **eixo do corpo**
+    e o prendem ali. Uma mão só deixa o Veo escolher o lado.
+  - **`centred against`** no lugar de `beside` — coordenada, não vizinhança.
+  - **base no tecido + ponta para cima** — é o que faz ler como **prolongamento**
+    em vez de objeto carregado.
+
+  ⛔ **Continua sem `groin`/`pubic`/`crotch`.** A coordenada vem da **peça de
+  roupa** — a mesma alavanca que fez a formulação anterior passar onde `level
+  with his groin` foi recusado. **Trocou-se a geometria, nunca o termo.**
+  ⚠️ **A agência da F12b fica inteira, e reforçada:** duas mãos **dele**, no
+  corpo **dele**, ela apontando sem encostar. O que derrubou as 4 recusas
+  determinísticas de 2026-07-30 foi mão de **terceiro** em corpo **passivo** —
+  não é o caso aqui.
+  ⚠️ **Selo 🟡 até render.** A composição ficou mais assertiva, e mais assertivo
+  é mais perto da cerca. Se recusar: **Regra Zero primeiro** (regerar 2× o take
+  e 2× a imagem), depois reescrever a **forma de dizer**. ⛔ Nunca afastar o
+  prop de novo — foi exatamente isso que produziu o problema que esta ordem veio
+  corrigir.
+
+  <details><summary>A formulação anterior, revogada (para histórico)</summary>
+
   ```
   In his own fist, held down beside the lap of his khaki shorts, he holds a
   [proxy] as long as his forearm and as thick as his wrist, its skin glossy.
   Beside him, [ela, com a relação nomeada] points her finger at it without
   touching him, talking to camera.
   ```
+  </details>
   | Fragmento | Vem de |
   |---|---|
   | `In his own fist … he holds` + `points … without touching him` | F12b (🟢) |
@@ -850,9 +887,10 @@ não trocar o gesto, não cortar o homem da cena 3.
 - [ ] **O detalhe forense casa com o objeto** — tampa deitada só em pote com tampa; sachê tem foil, tigela tem colher (TR4)?
 - [ ] **O desmentido está na cena 1** como beat próprio, e a promessa numérica saiu da escada da §5c, com `ten` por extenso e `John-son` (TR8)?
 - [ ] **O literal `gelatin trick` está na cena 2**, minúsculo, e a keyword `gelatin,` está **minúscula e seguida de vírgula** na cena 3 (TR9)?
-- [ ] ⭐ **Cena 3 na geometria da F12b**: ele **de pé**, o proxy **na própria mão**, âncora de roupa (`beside the lap of his khaki shorts`), ela **apontando sem encostar**, prop **dimensionado por escala corporal** (TR10)?
+- [ ] ⭐ **Cena 3 na geometria da F12b**: ele **de pé**, o proxy **na própria mão**, âncora de roupa (`centred against the front of his …`), **as DUAS mãos dele**, ela **apontando sem encostar**, prop **dimensionado por escala corporal** (TR10)?
 - [ ] ⛔ **Zero `groin` / `pubic` / `the victim` / `the narrator`** em qualquer bloco (TR10)?
-- [ ] ⛔ **`beside the lap of his …` está literal** — só a peça varia, nunca o substantivo; ⛔ zero `pocket` na âncora (TR10)?
+- [ ] ⛔ **`centred against the front of his …` está literal** — só a peça varia, nunca a preposição; ⛔ zero `beside`, zero `pocket`, zero `groin` na âncora (TR10)?
+- [ ] ⭐ **Duas mãos, uma acima da outra, base no tecido e ponta para cima** — é o que faz ler como prolongamento em vez de compra na mão (TR10, ordem do Ed 2026-08-01)?
 - [ ] **Ele está ATIVO no IMAGE 03 e no TAKE 03** — `his eyes on the lens`, punho onde estava; ⛔ zero `stands still`, `steady at his side` (TR10)?
 - [ ] **A voz da cena 2 casa com a relação** — `my husband` só com esposa (TR10)?
 - [ ] **A relação está nomeada** — e é **possível** com as idades sorteadas (TR10)?
