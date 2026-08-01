@@ -584,7 +584,11 @@ SUBSTANCIAS = [
      "pote": "an open glass jar of peanut butter with a knife standing upright in it"},
     {"id": "clara_ovo", "fala": "egg white",
      "pote": "two cracked eggshells on a saucer beside a glass bowl of clear egg white"},
-    {"id": "bicarbonato", "fala": "baking soda",
+    # ⚠️ unica substancia em PO do pool: `fluida: False` impede que ela caia
+    # numa textura de escorrimento ("a slow thread of the baking soda") — a
+    # textura e' eixo independente (TR6), mas independente nao e' impossivel, e
+    # prompt fisicamente impossivel e' licenca de alucinacao.
+    {"id": "bicarbonato", "fala": "baking soda", "fluida": False,
      "pote": "a plain glass jar of fine white powder with a wooden spoon beside it"},
     {"id": "aloe", "fala": "aloe",
      "pote": "a cut aloe leaf on a wooden board, clear gel beading along the open edge"},
@@ -611,33 +615,33 @@ SUBSTANCIAS = [
 # proxy saia LIMPO nos IMAGE 02 e 03, o que contradiz o invariante 26/28 e o
 # proprio checklist da doutrina ("o proxy lambuzado FICA em quadro").
 TEXTURAS = [
-    {"id": "verniz",
+    {"id": "verniz", "fluida": True,
      "desc": "the whole surface of it is coated in a thin wet varnish of the %s, catching one hard specular highlight down its length, nothing running",
      "curta": "still wet with %s"},
-    {"id": "gel_placas",
+    {"id": "gel_placas", "fluida": True,
      "desc": "thick opaque plates of the %s sit on it with clean gaps between them, holding every ridge they were laid down in",
      "curta": "still plated with %s"},
-    {"id": "fio_tabua", "desc": TR_FIO,
+    {"id": "fio_tabua", "fluida": True, "desc": TR_FIO,
      "curta": "%s still running off its lower end onto the board"},
-    {"id": "pasta_seca",
+    {"id": "pasta_seca", "fluida": False,
      "desc": "a dull dry paste of the %s covers it in fingerprint smears and small dry lumps, none of it running",
      "curta": "still smeared with dry %s"},
-    {"id": "grumos",
+    {"id": "grumos", "fluida": True,
      "desc": "the %s is beaded over it in small round glossy drops that hold their shape and do not move",
      "curta": "still beaded with %s"},
-    {"id": "pelicula_fosca",
+    {"id": "pelicula_fosca", "fluida": False,
      "desc": "a matte film of the %s has dried unevenly over it, cracked into fine plates where it set",
      "curta": "still filmed over with dried %s"},
-    {"id": "camada_espessa",
+    {"id": "camada_espessa", "fluida": True,
      "desc": "a heavy even coat of the %s, thick enough to hold the ridge marks her fingers left behind",
      "curta": "still thick with %s"},
-    {"id": "pingo_tabua",
+    {"id": "pingo_tabua", "fluida": True,
      "desc": "a single slow drip of the %s has run down the length of it and gathered in a ring on the wooden board below, the way batter runs off a whisk",
      "curta": "still ringed where the %s ran down onto the board"},
-    {"id": "teias_dedos",
+    {"id": "teias_dedos", "fluida": True,
      "desc": "fine glossy strands of the %s stretch between her thumb and forefinger each time they lift away from it",
      "curta": "still stringy with %s"},
-    {"id": "brilho_seco",
+    {"id": "brilho_seco", "fluida": False,
      "desc": "only a faint dry sheen of the %s sits on it, no thickness at all, just a change in how the light comes back off it",
      "curta": "still faintly sheened with %s"},
 ]
@@ -980,7 +984,7 @@ PROVAS = [
     "No pills, nothing else, just that.",
     "Same man, nineteen days later.",
     "He didn't believe it either. You won't.",
-    "Not a story. It actually happened.",
+    "Not a story. You can check it.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -1410,7 +1414,8 @@ def sortear(pagina, rng, ledger, degrau=None):
     cen = _evitando(rng, CENARIOS, hist.get("cenario", [])[-2:])
     prox = _evitando(rng, PROXIES, hist.get("proxy", [])[-2:])
     sub = _evitando(rng, SUBSTANCIAS, hist.get("substancia", [])[-2:])
-    tex = _evitando(rng, TEXTURAS, hist.get("textura", [])[-2:])
+    texturas = TEXTURAS if sub.get("fluida", True) else         [x for x in TEXTURAS if not x.get("fluida", True)]
+    tex = _evitando(rng, texturas, hist.get("textura", [])[-2:])
     mec = _evitando(rng, MECANISMOS_PROP, hist.get("mecanismo", [])[-2:])
 
     relacao = _relacao(rng, nar["idade"], hom["idade"])
@@ -1547,8 +1552,8 @@ def montar(spec):
         % (cen["re_ancora"], mesma, spec["relacao"], hom["idade"], et,
            hom["marca"], hom["roupa"], hom["calca"],
            TR_MAO_PROPRIA_IMAGE % (_peca(hom["calca"]),
-                                   "%s, %s" % (prox["img_dele"],
-                                               tex["curta"] % sub["fala"]),
+                                   "%s, the %s still on it"
+                                   % (prox["img_dele"], sub["fala"]),
                                    spec["relacao"]),
            bnc, mec["curto"], FRASE_SEM_MARCA, luz, CAUDA)
     )

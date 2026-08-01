@@ -111,7 +111,7 @@ motor longo** — o molde
    Interface: `ui_agente.py` (compartilhada) → `troca_short_app.py` → `.exe`,
    pela receita do [`RUNBOOK-app-offline`](funil-organico/RUNBOOK-app-offline.md).
 
-`TETO_FALA = {1: 22, 2: 34, 3: 26}` — ver TR14, que é onde o orçamento vira regra.
+`TETO_FALA = {1: 22, 2: 34, 3: 26}` e `PISO_FALA = {1: 16, 2: 26, 3: 20}` — ver TR14, que é onde o orçamento vira regra. ⚠️ **O piso é cobrado pelo linter**, não é julgamento; e a soma dos tetos (82) colide com o piso do orçamento total (82-96) — tensão registrada na TR14, decisão do Ed.
 
 ### Os eixos próprios da TROCA
 
