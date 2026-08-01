@@ -278,6 +278,24 @@ Destino da esteira: **AdBatch Vertical 3**
   **No TAKE, o prop é objeto estático declarado** —
   [`prop-metaforas`](funil-organico/prop-metaforas.md) §Regra dos dois lados;
   ⛔ zero `stiff`/`limp`/`sags`/`grows`/`pulse`/`swelling`.
+  ⛔ **A travada de imobilidade é usada NUA, e o objeto é NOMEADO.** Uma versão
+  do motor a prefixava com `Nothing in her hand changes size, shape or state at
+  any point` e a infixava com `same position, same angle, same length` —
+  **negação que injeta `size`, `state` e `length`** num prompt cuja tese é
+  justamente que nada muda de tamanho. Munição de graça, pela mesma mecânica de
+  `fully clothed`, e ainda inchava a travada 3× (F12c: string validada é
+  intocável; o que encolhe é descrição livre). O que se escreve é:
+  ```
+  The [proxy] in her fist stays exactly as it appears in the first frame —
+  completely motionless for the entire shot.
+  ```
+  ✅ Nomear o legume aqui é permitido e desejável (a TR3 só o proíbe na
+  `Dialogue:`); `the thing in his fist` é eufemismo desnecessário.
+  ⚠️ **E o gatilho de sincronia segue a família da promessa sorteada.** `On the
+  number` numa crendice da família de **resistência** (`it never quits on you`,
+  `a different animal`, `beats every pill on the shelf` — 25% do pool) manda o
+  Veo sincronizar com um numeral que a fala não tem, e ele escolhe sozinho onde.
+  Nesses casos: `On the promise, her eyes go wide…`.
   ⚠️ **Isto diverge do P17 e do P20 do PRISMA de propósito** — ver SELO DE
   RISCO. Economia medida: nós queimamos **5 tentativas de geoduck**, uma
   coreografia de 7 elementos e o banimento de um prop inteiro para conseguir
@@ -793,24 +811,37 @@ não trocar o gesto, não cortar o homem da cena 3.
 - [ ] ⭐⭐ **A TROCA está coreografada no TAKE 02** — batidas com segundos, **mesma mão**, **mesmo ponto do quadro**, **mesma altura**, `no cut at any point`, câmera parada (TR1)?
 - [ ] **A tigela de gelatina já está na bancada no IMAGE 02** (e no 01), e o pote do hook está **aberto com a tampa deitada ao lado** desde o frame 1 (TR1/TR4)?
 - [ ] **O proxy lambuzado FICA em quadro** na tábua depois de largado (TR1)?
-- [ ] ⭐ **Nada cresce em lugar nenhum** — zero VFX, zero morph, zero antes/depois, e a **âncora de escala do proxy é a mesma na cena 1 e na 3** (TR2)?
+- [ ] ⭐ **Nada cresce em lugar nenhum** — zero VFX, zero morph, zero antes/depois, e a **âncora de escala do proxy é a mesma na cena 1 e na 3**, com a régua no corpo de **quem segura** (TR2/TR10)?
+- [ ] ⛔ **A travada de imobilidade está NUA** — sem `changes size, shape or state`, sem `same length` (negação injeta o token que a cena evita), e o objeto está **nomeado** na direção de cena (TR2)?
+- [ ] **A MÃO LIVRE está declarada no IMAGE** (é o verbo — mão parada segurando é foto de produto), e é a **direita** (o proxy nasce no punho esquerdo, UN4/TR1)?
 - [ ] **A reação facial está sincronizada no frame do número** (`eyebrows jump`, `eyes go wide`) — e ⛔ zero `mouth open`/`tongue`/`lips parted` (TR2)?
 - [ ] **No TAKE, o prop é objeto imóvel declarado** — ⛔ zero `stiff`/`limp`/`sags`/`grows`/`pulse`/`swelling` (TR2)?
 - [ ] ⛔ **O proxy não é nomeado em NENHUMA linha `Dialogue:`** — e não é apontado por dêixis (TR3)?
+- [ ] ⛔ **Zero dêixis a PESSOA nas cenas 1 e 2** (`look at him`, `right here`, `that's him`) — o quadro tem elenco 1 (TR3/TR13)?
 - [ ] **A aplicação da substância não aparece** em cena nenhuma (TR4)?
 - [ ] **A substância só toca o vegetal e as mãos** — e sobre a pele dela, **silêncio**, nem descrição nem negação (TR5)?
 - [ ] **A física da substância está escolhida e escrita** (verniz / gel em placas / fio pendurado / pasta seca)? Se for fio: **destino na tábua + gênero nomeado**, ⛔ nunca `onto her chest` (TR6)?
-- [ ] **Bancada-recibo com 3-4 itens, nenhum citado na fala** — e **zero marca legível**, forma no lugar de rótulo (TR7)? Bandeira dos EUA em quadro?
+- [ ] ⛔ **A substância está NOMEADA dentro da textura** (`a slow thread of the honey`), nunca `it` — com `it` o referente mais próximo vira o proxy (TR6)?
+- [ ] **O proxy volta lambuzado nas cenas 2 e 3**, na forma curta (TR6)?
+- [ ] **Bancada-recibo com 3-4 itens, nenhum citado na fala, nos IMAGE 01 e 02** (⛔ **não** no 03) — e **zero marca legível**, forma no lugar de rótulo (TR7)? Bandeira dos EUA em quadro em **todas** as cenas?
+- [ ] **A bancada não repete o pote da substância**, e a ausência de rótulo está na **afirmativa** (`plain and unlabelled`) (TR7/TR19)?
+- [ ] **O detalhe forense casa com o objeto** — tampa deitada só em pote com tampa; sachê tem foil, tigela tem colher (TR4)?
 - [ ] **O desmentido está na cena 1** como beat próprio, e a promessa numérica saiu da escada da §5c, com `ten` por extenso e `John-son` (TR8)?
 - [ ] **O literal `gelatin trick` está na cena 2**, minúsculo, e a keyword `gelatin,` está **minúscula e seguida de vírgula** na cena 3 (TR9)?
 - [ ] ⭐ **Cena 3 na geometria da F12b**: ele **de pé**, o proxy **na própria mão**, âncora de roupa (`beside the lap of his khaki shorts`), ela **apontando sem encostar**, prop **dimensionado por escala corporal** (TR10)?
 - [ ] ⛔ **Zero `groin` / `pubic` / `the victim` / `the narrator`** em qualquer bloco (TR10)?
+- [ ] ⛔ **`beside the lap of his …` está literal** — só a peça varia, nunca o substantivo; ⛔ zero `pocket` na âncora (TR10)?
+- [ ] **Ele está ATIVO no IMAGE 03 e no TAKE 03** — `his eyes on the lens`, punho onde estava; ⛔ zero `stands still`, `steady at his side` (TR10)?
+- [ ] **A voz da cena 2 casa com a relação** — `my husband` só com esposa (TR10)?
 - [ ] **A relação está nomeada** — e é **possível** com as idades sorteadas (TR10)?
 - [ ] **Etnia do corpo-prova = etnia do avatar da página**; narradora sorteada livre; **mesmo rosto nas 3 cenas**; marca facial em todo personagem descrito (TR11)?
 - [ ] ⛔ **O REF não parece a Julie Evans nem a Sofia Maren** — dispositivo sim, aparência não (TR11 / ED12)?
 - [ ] **Figurino da fonte aplicado, e zero vocabulário de desejo** no prompt (TR12)? A divergência 🟡 do UN1 está nomeada na entrega?
 - [ ] **Elenco 1 / 1 / 2**, ⛔ zero plateia, e **só ela tem `Dialogue:`** (TR13)?
-- [ ] **Orçamento somado**: cada cena entre piso e teto (16-22 / 26-34 / 20-26), total 82-96 palavras (TR14)?
+- [ ] **Orçamento por cena entre piso e teto** (16-22 / 26-34 / 20-26) — o piso é cobrado, não é julgamento (TR14)?
+- [ ] ⚠️ **O total 82-96 é inalcançável com os tetos atuais** (somam 82). A entrega sai 66-78. Isso está **nomeado na resposta** como decisão pendente do Ed (TR14)?
+- [ ] ⛔ **Nenhuma cena empilha `your <núcleo>` + prazo** (a linha que derrubou o NECROSE) (TR8)?
+- [ ] **A crendice fala do corpo do ESPECTADOR** (`your {o}`), não de terceiros (TR8)?
 - [ ] **Cota do órgão 2/3** com substantivo do **núcleo**, rotacionado (TR14)?
 - [ ] **Cada cena aterrissa em 2ª pessoa ou imperativo** (P22)? Zero cena em pura 3ª pessoa?
 - [ ] **Teste do primo que não é do nicho**: nos 5 primeiros segundos dá pra saber que o assunto é o homem não conseguir levantar (F14)?
@@ -818,6 +849,7 @@ não trocar o gesto, não cortar o homem da cena 3.
 - [ ] **Fio narrativo**: as 3 falas em sequência = crendice → troca → prova (P21)?
 - [ ] **Storyboard mudo**: 3 palavras, nenhuma repetida? **Planos**: ≥ 2 tamanhos diferentes?
 - [ ] **Formato de entrega**: `BLOCO 0 (REF)` → os **3 IMAGEs agrupados** → os **3 TAKEs agrupados**, numeração `x/03`, nunca intercalado?
+- [ ] **Narradora com 28 anos ou mais** (piso de idade), e ⛔ zero `baby tee` (TR11)?
 - [ ] **Os riscos 🟡 nomeados na resposta** (divergência P17/P20 e divergência UN1)?
 
 ---
