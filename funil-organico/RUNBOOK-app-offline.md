@@ -201,45 +201,6 @@ descartadas. Só grava quando o operador clica, quando o lote foi de fato usado.
 
 ---
 
-## A TRADUÇÃO DA COPY (`traducao_pt.py`)
-
-Consulta pura: recebe uma fala e devolve o português. **Nenhum motor importa
-este módulo, nenhum prompt muda, nada do operacional depende dele.** Existe para
-conferir a copy sem sair do app.
-
-Não é tradutor de máquina — seria impreciso e precisaria de rede. A copy nasce
-de **templates com slots**, então a tradução é uma tabela ligada a esses
-templates: casa a fala renderizada, captura o que o sorteio pôs em cada slot,
-traduz cada slot (recursivamente, porque `{gate}` e `{barreira}` são eles mesmos
-templates de outro pool) e monta o português. Fala **composta** — o TROCA
-concatena 2-3 pools por cena — é traduzida sentença a sentença.
-
-| Arquivo | O que é |
-|---|---|
-| `traducao_pt.py` | o motor de casamento + o verificador |
-| `traducao_dados.py` | a tabela: `TERMOS` (preenchedores de slot) e `PT` (templates) |
-
-### ⛔ COPY NOVA ENTRA COM O PT NO MESMO COMMIT
-
-É a única regra que importa aqui, e ela existe porque o contrário já aconteceu:
-a auditoria de drifting de 2026-08-01 reescreveu os pools de 6 agentes e
-derrubou a cobertura de **100% para 28%** num dia, sem nada acusar. Quem clicasse
-no botão veria `≈ aproximada` e não saberia por quê.
-
-```bash
-python funil-organico/traducao_pt.py                    # cobertura por agente
-python funil-organico/traducao_pt.py troca --listar     # o que falta, literal
-```
-
-Sai com código 1 quando há pool sem tradução — dá pra pendurar num hook.
-
-⚠️ **O botão é local do Lucas**, não vem no app do Ed: é um patch em
-`Agentes Unicos Ed/app-traducao/patch_ui.py`, aplicado na hora de compilar.
-Sem o patch, a `ui_agente.py` não muda em nada. O que é compartilhado é só a
-tabela — porque quem edita a copy é quem sabe o que ela quer dizer.
-
----
-
 ## O BUILD DO `.exe`
 
 **Pré-requisito:** `pip install pyinstaller` (única coisa que precisa de rede —
