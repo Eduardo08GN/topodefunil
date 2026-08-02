@@ -173,7 +173,9 @@ def montar(spec):
     b["IMAGE 02/03"], b["TAKE 02/03"] = i2, t2
     i3, t3 = sc.bancada_com_rosto(base, spec, spec["falas"][2])
     b["IMAGE 03/03"], b["TAKE 03/03"] = i3, t3
-    return b
+    # ⛔ trava de texto queimado em todo TAKE — o watermark que o
+    # operador viu vazando nos reels da concorrente (2026-08-01).
+    return sc.selar_takes(b)
 
 
 def nova_fala(spec, i, rng):

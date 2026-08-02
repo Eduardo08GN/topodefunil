@@ -168,7 +168,9 @@ def sortear(pagina, rng, ledger):
 
 
 def montar(spec):
-    return sc.montar_curto(base, spec, MAPA)
+    # ⛔ trava de texto queimado em todo TAKE — o watermark que o
+    # operador viu vazando nos reels da concorrente (2026-08-01).
+    return sc.selar_takes(sc.montar_curto(base, spec, MAPA))
 
 
 def nova_fala(spec, i, rng):

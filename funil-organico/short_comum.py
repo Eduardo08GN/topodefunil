@@ -309,6 +309,9 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
                                     "pessoa e o estranho fala a fala do REF"
                             % nome))
 
+    # ⛔ vale para TODO agente SHORT, sem excecao — ver SEM_TEXTO_TAKE
+    lint_sem_texto(blocos, achados)
+
     for f in extras:
         f(spec, blocos, achados)
 
@@ -362,3 +365,51 @@ def orgao_de(base, fala, padrao="Johnson"):
     """O substantivo-nucleo que ja' esta' naquela fala (a rotacao e' do video)."""
     baixo = fala.lower()
     return next((n for n in base.NUCLEO if n.lower() in baixo), padrao)
+
+
+# ---------------------------------------------------------------------------
+# ⛔ NADA DE TEXTO QUEIMADO NO VIDEO
+# ---------------------------------------------------------------------------
+# Achado em 2026-08-01, garimpando a Sofia Maren: os reels dela saem com o
+# watermark `genaicontent` queimado no canto, vazado da ferramenta que ela usa.
+# O operador viu e disse: "isso aqui nao e' pra aparecer nos nossos videos".
+#
+# Ao conferir, o buraco era nosso e era sistemico: o BLOCO 0 (REF) proibia
+# texto ("No subtitles, no captions, no burned-in text, no watermark") e os
+# IMAGE proibiam pela CAUDA — mas os TAKE, que sao os blocos que geram o
+# VIDEO, nao diziam nada. Zero de 18 TAKEs nos seis motores SHORT. Imagem
+# limpa nao impede o Veo de queimar legenda ou marca no movimento, e a legenda
+# do nosso video nasce depois, no Veo Editor, a partir do Whisper — texto vindo
+# do gerador entra por cima e nao ha como tirar.
+#
+# ⚠️ Entra ANTES do `Dialogue:`. Todas as diretivas de cena moram na prosa que
+# antecede os campos estruturados; instrucao depois do `Audio:` fica orfa.
+# ⚠️ Nao e' declaracao de conformidade (licoes-producao-veo §Declaracao e'
+# municao): `not a celebrity` e `fully clothed` nomeiam a CATEGORIA que o
+# classificador policia. Isto e' instrucao de RENDER, e e' a mesma string ja
+# validada no BLOCO 0.
+SEM_TEXTO_TAKE = "No on-screen text, no subtitles, no captions, no watermark."
+
+
+def selar_takes(blocos):
+    """Poe a trava de texto queimado em todo bloco TAKE. Idempotente."""
+    for chave, txt in list(blocos.items()):
+        if not chave.startswith("TAKE") or SEM_TEXTO_TAKE in txt:
+            continue
+        corte = txt.find("\nDialogue:")
+        if corte == -1:                       # sem campo estruturado: vai no fim
+            blocos[chave] = txt.rstrip() + " " + SEM_TEXTO_TAKE
+        else:
+            blocos[chave] = (txt[:corte].rstrip() + " " + SEM_TEXTO_TAKE
+                             + txt[corte:])
+    return blocos
+
+
+def lint_sem_texto(blocos, achados):
+    """Guarda da trava — sem isto ela sai de novo no proximo refactor."""
+    for chave in sorted(blocos):
+        if chave.startswith("TAKE") and SEM_TEXTO_TAKE not in blocos[chave]:
+            achados.append(("ERRO", "%s sem a trava de texto queimado — o Veo "
+                                    "pode gravar legenda ou marca no video, e "
+                                    "a nossa legenda nasce depois, no Editor"
+                            % chave))

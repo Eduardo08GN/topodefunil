@@ -1688,7 +1688,9 @@ def montar(spec):
            cen["curto"])
     )
 
-    return b
+    # ⛔ trava de texto queimado em todo TAKE — o watermark que o
+    # operador viu vazando nos reels da concorrente (2026-08-01).
+    return sc.selar_takes(b)
 
 
 # ---------------------------------------------------------------------------
