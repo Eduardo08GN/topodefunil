@@ -98,7 +98,7 @@ FUNDIDAS = [
     "Stir {ing}. That's the gelatin trick — it opens the blood flow your {o} "
     "lost. Mine came back like this.",
 
-    "That's blood flow, choked off. Stir {ing} — the whole gelatin trick, and "
+    "That rotten one on the stand was blood flow, choked off. Stir {ing} — the whole gelatin trick, and "
     "it walked my {o} back.",
 
     "The blood flow to your {o} got choked off. Stir {ing}. That's the gelatin "

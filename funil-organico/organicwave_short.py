@@ -405,7 +405,7 @@ CTAS = [
     "Comment gelatin, and I'll send it tonight. There's one more ingredient on that counter I can't name here. {gate}",
     # + 2026-08-01: o operador mediu vicio no fechamento — os mesmos seis CTAs
     # no lote inteiro. Seis a mais, nenhum com vocativo.
-    "Comment gelatin, and it's in your inbox in ten minutes. {gate}",
+    "Comment gelatin, and the recipe's in your inbox in ten minutes. {gate}",
     "Two dollars at any grocery store. Comment gelatin, and I'll tell you exactly what to buy. {gate}",
     "My wife doesn't know I post these. Comment gelatin, and I'll send you the recipe. {gate}",
     "You've watched this far. Comment gelatin, and I'll send you what I stir every night. {gate}",
@@ -444,7 +444,7 @@ HOOKS_F = [
 
 FUNDIDAS_F = [
     "It was never his age — it's blood flow, choked off. I stir {ing}. That's the gelatin trick, and nineteen days later his {o} came back.",
-    "I stir {ing} for him. They call it the gelatin trick, and it opens the blood flow his {o} lost. Look at us now.",
+    "I stir {ing} for him. They call it the gelatin trick, and it opens the blood flow his {o} lost. And he came back.",
     "My aunt gave me this. I stir {ing} — the gelatin trick. The blood flow came back, and so did his {o}.",
     "Nobody told us it was blood flow. I stir {ing}, that's the whole gelatin trick, and his {o} hasn't quit since.",
     "Two dollars, girls. I stir {ing} — the gelatin trick — and the blood flow that left his {o} came right back.",
@@ -466,7 +466,7 @@ CTAS_F = [
     "A month from now you won't recognise him. Comment gelatin, and I'll send you where I get mine. {gate}",
     "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",
     "Comment gelatin, and I'll send you the one my aunt sent me. He never even knew I did it. {gate}",
-    "Comment gelatin, and I'll send it tonight. There's one more thing on that counter I can't name here. {gate}",
+    "Comment gelatin, and I'll send it tonight. There's one more ingredient on that counter I can't name here. {gate}",
     # + 2026-08-01: o operador mediu vicio no fechamento — os mesmos seis CTAs
     # no lote inteiro. Seis a mais, nenhum com vocativo.
     "Comment gelatin, and I'll send you what I put in his glass. {gate}",

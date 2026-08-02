@@ -664,6 +664,38 @@ def _evitando(rng, pool, recentes):
     return rng.choice(livres if livres else pool)
 
 
+# 3 dos 20 hooks matam o orgao com verbo literal (`killed his {o}`, `has been
+# dead two years`, `plays dead`). Dois dos 7 substantivos do NUCLEO sao ANIMADOS
+# (`old boy`, `soldier`) — e o cruzamento dos dois nao produz um absurdo que o
+# ouvido descarta em 200ms, produz UMA SEGUNDA HISTORIA COMPLETA:
+#
+#   ouvido A (certo) : ele se mijou, e por isso o orgao esta' morto ha' 2 anos
+#   ouvido B (errado): ele desabou em prantos na loja porque o FILHO / o CACHORRO
+#                      morreu ha' dois anos
+#
+# E a leitura B e' a que a IMAGEM ratifica: a cena 1 OBRIGA o homem a estar
+# chorando muito, lagrimas nas duas bochechas, ombros tremendo (CHORO_IMAGE /
+# PE2). Nas outras entradas a imagem paga a conta; nestas ela paga a conta
+# errada. Achado na auditoria de drifting de 2026-08-01.
+#
+# ⛔ Corrigido no SORTEIO, nao no pool: os 3 hooks e os 7 substantivos sao copy
+# validada e nenhum foi redigitado. Resolve as tres entradas de uma vez.
+NUCLEO_ANIMADO = ("old boy", "soldier")
+_MORTE = ("killed", "dead", "plays dead")
+
+
+def _hook_sem_colisao(rng, orgaos, tentativas=12):
+    """Um hook que nao mate um substantivo animado do nucleo."""
+    for _ in range(tentativas):
+        h = rng.choice(HOOKS)
+        if not (orgaos[0] in NUCLEO_ANIMADO
+                and any(m in h for m in _MORTE)):
+            return h
+    # fallback: com o sorteio travado, prefere-se hook sem verbo de morte
+    livres = [h for h in HOOKS if not any(m in h for m in _MORTE)]
+    return rng.choice(livres or HOOKS)
+
+
 def sortear(pagina, rng, ledger):
     hist = ledger.get(pagina, {})
     local = _evitando(rng, LOCAIS, hist.get("local", [])[-3:])
@@ -673,8 +705,9 @@ def sortear(pagina, rng, ledger):
     ref, vit, mul = rng.choice(REFS), rng.choice(VITIMAS), rng.choice(MULHERES)
 
     orgaos = rng.sample(NUCLEO, 4)
+    hook = _hook_sem_colisao(rng, orgaos)
     falas = [
-        rng.choice(HOOKS).format(evento=local["plateia_evento"], o=orgaos[0]),
+        hook.format(evento=local["plateia_evento"], o=orgaos[0]),
         rng.choice(MECANISMOS).format(o=orgaos[1]),
         rng.choice(RITUAIS).format(o=orgaos[2]),
         rng.choice(REDENCOES).format(eco=local["eco"], o=orgaos[3],

@@ -555,7 +555,16 @@ CTAS = [
     # + 2026-08-01: o operador mediu vicio — "brother" em quase todo CTA do
     # lote e sempre a mesma promessa. Quatro novos, nenhum com vocativo.
     "Comment gelatin, and the recipe goes out to you tonight. {gate}",
-    "Comment gelatin, and I'll send you where he got his. {gate}",
+    # ⚠️ 2026-08-01 — auditoria de drifting. Era o UNICO CTA do pool cujo objeto
+    # era um possessivo nu, sem substantivo em lugar nenhum da frase. E pior que
+    # o buraco era a COLISAO DE ANTECEDENTE: 4 das 13 fundidas fecham a cena 2
+    # em `she's {brag} about his.`, onde `his` e' o ORGAO — em ~31% dos sorteios
+    # o espectador ouvia "about his [pecker]" e, 8 segundos depois, "where he
+    # got his". A ultima frase do video virava piada involuntaria.
+    # ⛔ E gastava 100% do folego em endereco de compra, contra a posicao do
+    # operador escrita no cabecalho deste pool: a promessa e' A RECEITA.
+    "Comment gelatin, and I'll send you the recipe and where he got the "
+    "powder. {gate}",
     "Comment gelatin, and it's in your messages in ten minutes. {gate}",
     "Comment gelatin, and nobody else sees what I send you. {gate}",
 ]

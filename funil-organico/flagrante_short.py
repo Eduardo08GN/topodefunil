@@ -84,14 +84,31 @@ FUNDIDAS = [
     "flow to your {o} got choked off. Nineteen days later she's {brag} about "
     "his.",
 
-    "{quem} handed him the gelatin trick. Blood flow, brother, not your age. "
-    "Nineteen days later she wouldn't get off his knee, and his {o} was ready.",
+    # ⚠️ 2026-08-01 — auditoria de drifting. `Blood flow, not age` e' mecanismo
+    # SEM DESTINO: homem de 50-65 que ouve "blood flow" solto compra circulacao
+    # ou coracao, que e' outra categoria de produto. O F14 ja registrou a irma
+    # `it's the flow, not the years` como falha de producao (farmacia Marcus,
+    # 2026-07-28), com o diagnostico literal "abstrato: flow de que, onde?".
+    # ⛔ Aqui a oracao e' o UNICO portador do mecanismo do video: a placa D1 em
+    # corte, que explicava isso na imagem, morreu no colapso 5->3 (ver docstring).
+    # O destino volta pelo fragmento verbatim das DESCOBERTAS do motor base, que
+    # anexam o orgao em 12 de 12.
+    "{quem} handed him the gelatin trick. It's not your age, brother — the "
+    "blood flow to your {o} got choked off. Nineteen days later she wouldn't "
+    "get off his knee.",
 
     "{quem} pulled him aside with the gelatin trick — the blood flow stopped "
     "reaching your {o}. Nineteen days later she's the one {brag} about his.",
 
-    "That's when {quem} told him about the gelatin trick. It's blood flow, not "
-    "you. Nineteen days later the same men who laughed asked about his {o}.",
+    # ⚠️ mesma correcao, e aqui era a mais grave das tres: a absolvicao `it's
+    # not you` e' copy validada (DESCOBERTAS idx 3), mas LA' ela vem com uma
+    # segunda oracao que ancora o mecanismo no orgao em 2a pessoa. A fusao
+    # colapsou as duas e perdeu a ancora — nesta linha o espectador NUNCA ouvia
+    # `your {orgao}`: a unica mencao ao orgao chegava no fim e em 3a pessoa,
+    # falando do outro cara.
+    "That's when {quem} told him the gelatin trick. It's the blood flow to "
+    "your {o}, not you. Nineteen days later the men who laughed asked what he "
+    "was taking.",
 
     "{quem} gave him the gelatin trick that night. The blood flow to your {o} "
     "got choked off, and it is fixable. Nineteen days later she reaches for "
@@ -101,8 +118,10 @@ FUNDIDAS = [
     # com a mesma abertura e com "brother". As oito novas trocam as duas
     # coisas, e cada uma continua carregando `gelatin trick`, `blood flow`
     # e o `{o}` que o linter exige.
-    "A week later {quem} passed him the gelatin trick. Blood flow, not age. "
-    "Nineteen days after that she's {brag} about his {o}.",
+    # ⚠️ a terceira da familia. Somadas, as tres saiam em 23,8% dos videos do
+    # FLAGRANTE — o maior peso isolado da auditoria de 2026-08-01.
+    "A week later {quem} passed him the gelatin trick. The blood flow to your "
+    "{o} got choked off. Nineteen days after that she's {brag} about his.",
 
     "It was {quem} who handed him the gelatin trick. Blood flow to your {o} "
     "got choked off. Nineteen days later she's {brag} about his.",

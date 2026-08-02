@@ -1093,13 +1093,13 @@ BARREIRAS = [
 # minusculo, seguido de virgula.
 CTAS = [
     "Comment gelatin, and I'll send you the whole recipe tonight.",
-    "Comment gelatin, and it's in your inbox in ten minutes.",
+    "Comment gelatin, and the recipe's in your inbox in ten minutes.",
     "Comment gelatin, and I'll send you exactly what to buy.",
     "The recipe's yours — comment gelatin, and it goes out tonight.",
     "Comment gelatin, and I'll tell you how much and when.",
     "Comment gelatin, and I'll send you the full recipe.",
     "One word in the comments: gelatin, and it's yours tonight.",
-    "Comment gelatin, and you'll have it before he gets home.",
+    "Comment gelatin, and the recipe's on your phone tonight.",
     "Type gelatin, in the comments and I'll send the measurements.",
     "Comment gelatin, and I'll send the whole thing, free.",
     "Say the word — gelatin, in the comments — and it's sent.",

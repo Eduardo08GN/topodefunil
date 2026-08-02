@@ -112,7 +112,7 @@ FUNDIDAS = [
     "your {o} — the blood flow got pinched shut years ago. She's {n_ext} and "
     "she noticed before I said anything.",
 
-    "I mixed that spoon for a year. Without the gelatin trick, baking soda "
+    "I stirred baking soda for a year and nothing moved. Without the gelatin trick, baking soda "
     "does nothing for your {o} — the blood flow stays clamped off. She's "
     "{n_ext} and she asked for a break.",
 
