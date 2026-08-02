@@ -660,11 +660,11 @@ CTAS = [
     # + 2026-08-01: o operador mediu vicio no lote - os mesmos quatro CTAs
     # voltando. Pool de 4 para 12, keyword sempre minuscula e com virgula.
     "{pacing} Comment gelatin, and the recipe is yours. {gate}",
-    "{pacing} Just comment gelatin, and I'll write you back tonight. {gate}",
-    "{pacing} Comment the word gelatin, and I'll send it over. {gate}",
+    "{pacing} Comment gelatin, and I'll write you back tonight. {gate}",
+    "{pacing} Comment gelatin, and I'll send you the recipe. {gate}",
     "{pacing} Comment gelatin, and it lands in your messages tonight. {gate}",
-    "{pacing} One word in the comments — gelatin, and the recipe is yours. {gate}",
-    "{pacing} Comment gelatin. I'll send the whole thing over tonight. {gate}",
+    "{pacing} Comment gelatin, one word, and the recipe is yours. {gate}",
+    "{pacing} Comment gelatin, and I'll send you the whole thing tonight. {gate}",
     "{pacing} Comment gelatin, and the recipe lands in your messages tonight. {gate}",
     "{pacing} Comment gelatin, and I'll send the steps in order. {gate}",
 ]

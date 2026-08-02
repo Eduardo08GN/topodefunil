@@ -314,6 +314,7 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
     lint_sem_texto(blocos, achados)
     if falas:
         lint_isca_cta(falas[-1], achados, "a cena 3 (CTA)")
+        lint_cta_literal(falas[-1], achados, "a cena 3 (CTA)")
 
     for f in extras:
         f(spec, blocos, achados)
@@ -442,6 +443,36 @@ def lint_isca_cta(fala_cta, achados, rotulo="a cena do CTA"):
         achados.append(("ERRO", "%s pede o comentario e nao diz o que chega — "
                                 "sem isca o espectador nao tem por que comentar "
                                 "(ordem do operador 2026-08-02)" % rotulo))
+
+
+# ---------------------------------------------------------------------------
+# ⛔⛔ O COMANDO DO CTA E' UM LITERAL: "Comment gelatin,"
+# ---------------------------------------------------------------------------
+# Ordem do operador, 2026-08-02, depois de ver videos renderizados com a
+# legenda "COMMENT HONEY" e "COMMENT RECIPE": "Todos os agentes sem excecao,
+# OBRIGATORIAMENTE devem ter a caption Comment Gelatin."
+#
+# ⚠️ POR QUE A LEGENDA DENUNCIA O AUDIO: a legenda do nosso video nasce no Veo
+# Editor, do Whisper, EM CIMA DO AUDIO GERADO. Ela nao e' escrita por nos — ela
+# e' a transcricao do que o modelo FALOU. Legenda errada significa fala errada,
+# e fala errada quebra a automacao de DM, que so' responde a palavra exata.
+#
+# ⚠️ E POR QUE ISTO E' LITERAL E NAO "so' precisa conter gelatin": 14 dos 117
+# CTAs pediam o comentario com outro verbo — "Type gelatin", "Say gelatin",
+# "One word: gelatin", "Just the word gelatin". Variacao no comando e' margem
+# para o modelo parafrasear, e parafrasear a keyword e' exatamente a falha que
+# apareceu em campo. Um comando so', repetido em todo video, e' um token fixo
+# que o modelo reproduz em vez de reinterpretar.
+CTA_LITERAL = "Comment gelatin,"
+
+
+def lint_cta_literal(fala_cta, achados, rotulo="a cena do CTA"):
+    """O comando tem de ser o literal, sem variacao de verbo."""
+    if CTA_LITERAL not in (fala_cta or ""):
+        achados.append(("ERRO", "%s sem o literal %r — a legenda do video sai "
+                                "do audio, e comando variavel faz o modelo "
+                                "parafrasear a keyword (ordem do operador "
+                                "2026-08-02)" % (rotulo, CTA_LITERAL)))
 
 
 def lint_sem_texto(blocos, achados):

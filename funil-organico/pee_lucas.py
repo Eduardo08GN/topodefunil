@@ -482,7 +482,7 @@ CTAS = [
     "One word. Comment gelatin, and it's in your inbox tonight. {gate}",
     "Comment gelatin, and I'll send you the source. I can't name it here. {gate}",
     "Comment gelatin, and I'll send the same one he used. {gate}",
-    "Comment gelatin. The store stuff did nothing for you. I'll send the real one. {gate}",
+    "Comment gelatin, and I'll send you the real one. The store stuff did nothing for you. {gate}",
     "Comment gelatin, and I'll send you the one we use at home. {gate}",
     # + 2026-08-01: o operador mediu vicio — o mesmo CTA repetindo no lote.
     # Pool ampliado; a keyword GELATIN continua travada em todas.
