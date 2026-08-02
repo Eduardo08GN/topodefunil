@@ -458,7 +458,7 @@ CTAS = [
     "{pacing} Comment gelatin, and I'll send you the other half of that recipe. {gate}",
     "{pacing} Comment gelatin, and I'll send you the same one I sent my brother. {gate}",
     "{pacing} Comment gelatin, and I'll send you the one we use at my house. I can't name it here. {gate}",
-    "{pacing} I waited four years to find this, brother. Comment gelatin, and you won't wait four days. {gate}",
+    "{pacing} I waited four years to find this. Comment gelatin, and I'll send you the missing half tonight. {gate}",
     "{pacing} Comment gelatin, and I'll send you what my own wife went looking for. She found it before I did. {gate}",
     # + 2026-08-01: o operador mediu vicio de promessa — quase todo item prometia
     # "o que eu uso"/"onde eu compro". Quatro entradas novas, sem vocativo.

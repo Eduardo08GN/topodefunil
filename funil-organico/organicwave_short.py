@@ -400,7 +400,7 @@ CTAS = [
     "Comment gelatin, and I'll send you the recipe tonight. {gate}",
     "Next Friday night she'll ask what changed. Comment gelatin, and I'll send you the exact one I use. {gate}",
     "A month from tonight you won't recognise yourself. Comment gelatin, and I'll send you where I get mine. {gate}",
-    "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",
+    "I waited two years to find this. Comment gelatin, and I'll send the recipe tonight. {gate}",
     "Comment gelatin, and I'll send you the one my neighbor sent me. Nobody in my house ever knew. {gate}",
     "Comment gelatin, and I'll send it tonight. There's one more ingredient on that counter I can't name here. {gate}",
     # + 2026-08-01: o operador mediu vicio no fechamento — os mesmos seis CTAs
@@ -464,7 +464,7 @@ CTAS_F = [
     "Comment gelatin, and I'll send you the recipe I use on him. {gate}",
     "Next Friday night he'll be the one reaching for you. Comment gelatin, and I'll send you the exact one I use. {gate}",
     "A month from now you won't recognise him. Comment gelatin, and I'll send you where I get mine. {gate}",
-    "I waited two years to find this. Comment gelatin, and you won't wait two days. {gate}",
+    "I waited two years to find this. Comment gelatin, and I'll send the recipe tonight. {gate}",
     "Comment gelatin, and I'll send you the one my aunt sent me. He never even knew I did it. {gate}",
     "Comment gelatin, and I'll send it tonight. There's one more ingredient on that counter I can't name here. {gate}",
     # + 2026-08-01: o operador mediu vicio no fechamento — os mesmos seis CTAs

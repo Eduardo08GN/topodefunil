@@ -1098,18 +1098,18 @@ CTAS = [
     "The recipe's yours — comment gelatin, and it goes out tonight.",
     "Comment gelatin, and I'll tell you how much and when.",
     "Comment gelatin, and I'll send you the full recipe.",
-    "One word in the comments: gelatin, and it's yours tonight.",
+    "One word in the comments: gelatin, and the recipe is yours tonight.",
     "Comment gelatin, and the recipe's on your phone tonight.",
     "Type gelatin, in the comments and I'll send the measurements.",
     "Comment gelatin, and I'll send the whole thing, free.",
-    "Say the word — gelatin, in the comments — and it's sent.",
+    "Say the word — gelatin, in the comments — and I'll send the recipe.",
     "Comment gelatin, and I'll send the recipe my aunt sent me.",
     "Comment gelatin, and I'll send you all four ingredients.",
-    "Want it? Comment gelatin, and I'll message you tonight.",
+    "Want it? Comment gelatin, and I'll send you the recipe tonight.",
     "Comment gelatin, and I'll send it before you scroll away.",
     "It's four lines long. Comment gelatin, and I'll send it.",
     "Comment gelatin, and I'll send you where to get it.",
-    "Just the word gelatin, in the comments. That's the whole ask.",
+    "Just the word gelatin, in the comments, and the recipe is yours.",
 ]
 
 # ⛔ TR5 — REGRA DE POOL, medida pelo operador: "brother" caia em 31-73% dos

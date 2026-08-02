@@ -1237,21 +1237,21 @@ PROVAS = [
 # percebida e' 3. (O comentario dizia 6; medido, sao 5 — 2026-08-02.)
 CTAS = [
     "Comment gelatin, and I'll send you the whole recipe.",
-    "Comment gelatin, and it's on your phone tonight.",
+    "Comment gelatin, and the recipe's on your phone tonight.",
     "Comment gelatin, and I'll send you both halves.",
     "Comment gelatin, and I'll tell you exactly what to buy.",
-    "One word: gelatin, in the comments. That's the whole ask.",
+    "One word: gelatin, in the comments, and the recipe is yours.",
     "Type gelatin, below and I'll send the other half.",
     "The recipe's yours — comment gelatin, and it goes out tonight.",
     "Comment gelatin, and I'll send the missing half.",
-    "Want it? Comment gelatin, and I'll message you tonight.",
-    "Say gelatin, in the comments and it's sent.",
+    "Want it? Comment gelatin, and I'll send the recipe tonight.",
+    "Say gelatin, in the comments and the recipe goes out.",
     "Comment gelatin, and I'll send it before you scroll.",
     "Comment gelatin, and I'll send all four ingredients.",
     "It's four lines. Comment gelatin, and I'll send it.",
     "Comment gelatin, and I'll send where to get it.",
-    "Just the word gelatin, in the comments. Nothing else.",
-    "Comment gelatin, and the whole thing comes to you.",
+    "Just the word gelatin, in the comments, and I'll send the recipe.",
+    "Comment gelatin, and the whole recipe comes to you.",
 ]
 
 # ⛔ ES19 — REGRA DE POOL, medida pelo operador no TROCA: "brother" caia em

@@ -478,7 +478,7 @@ CTAS = [
     "Comment gelatin, and I'll send you that exact one today. {gate}",
     "Comment gelatin, and I'll send you where to get the right one. {gate}",
     "Comment gelatin, and thank me Friday night. I'll send it over today. {gate}",
-    "Comment gelatin, tonight. Somebody always reports this and the video goes down by morning. {gate}",
+    "Comment gelatin, tonight — somebody always reports this. I'll send the recipe before it goes down. {gate}",
     "One word. Comment gelatin, and it's in your inbox tonight. {gate}",
     "Comment gelatin, and I'll send you the source. I can't name it here. {gate}",
     "Comment gelatin, and I'll send the same one he used. {gate}",
@@ -487,9 +487,9 @@ CTAS = [
     # + 2026-08-01: o operador mediu vicio — o mesmo CTA repetindo no lote.
     # Pool ampliado; a keyword GELATIN continua travada em todas.
     "Comment gelatin, and I'll send it before I turn in tonight. {gate}",
-    "Comment gelatin. Your wife never has to know you asked. {gate}",
-    "You already know. Comment gelatin, and check your messages tonight. {gate}",
-    "Don't overthink it. Comment gelatin, and I'll take it from there. {gate}",
+    "Comment gelatin, and I'll send the recipe. Your wife never has to know you asked. {gate}",
+    "You already know. Comment gelatin, and the recipe is in your messages tonight. {gate}",
+    "Don't overthink it. Comment gelatin, and I'll send you the recipe. {gate}",
 ]
 
 # ---------------------------------------------------------------------------

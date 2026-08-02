@@ -309,8 +309,11 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
                                     "pessoa e o estranho fala a fala do REF"
                             % nome))
 
-    # ⛔ vale para TODO agente SHORT, sem excecao — ver SEM_TEXTO_TAKE
+    # ⛔ valem para TODO agente SHORT, sem excecao — inclusive os que ainda
+    # vao nascer (ordem do operador, 2026-08-02)
     lint_sem_texto(blocos, achados)
+    if falas:
+        lint_isca_cta(falas[-1], achados, "a cena 3 (CTA)")
 
     for f in extras:
         f(spec, blocos, achados)
@@ -403,6 +406,42 @@ def selar_takes(blocos):
             blocos[chave] = (txt[:corte].rstrip() + " " + SEM_TEXTO_TAKE
                              + txt[corte:])
     return blocos
+
+
+# ---------------------------------------------------------------------------
+# ⭐ A ISCA DO CTA — pedir sem oferecer nao faz ninguem comentar
+# ---------------------------------------------------------------------------
+# Ordem do operador, 2026-08-02, lendo o take 3 renderizado do ESCANDALO:
+# "e' importante ter uma isca no mecanismo de copy falada na parte do cta, pois
+# instiga e induz mais o telespectador a comentar: algo do tipo comente para
+# receber {algo}". E, na mensagem seguinte: "isso tb vale pra qualquer outros
+# agentes shorts que vc ira criar no futuro".
+#
+# Medido no dia: 22 CTAs em 7 agentes pediam o comentario sem dizer O QUE chega
+# — "One word: gelatin, in the comments. That's the whole ask.", "Comment
+# gelatin, and I'll take it from there.". O espectador e' convidado a pagar sem
+# saber o que compra.
+#
+# ⚠️ POR QUE ISTO E' LINTER E NAO COMENTARIO: e' a terceira vez em dois dias que
+# um slot passa no linter e nao cumpre a funcao pela qual existe (antes foram a
+# prova que falava de preco e o mecanismo sem destino). O linter checava FORMA —
+# placeholder, token banido, teto de palavras — e nunca checava FUNCAO. Regra
+# verificavel por regex vira codigo; e' a doutrina do repo.
+ISCA_CTA = re.compile(
+    r"\b(recipe|measurements?|ingredients?|link|source|protocol)\b"
+    r"|\bsend(?:ing)?\s+(?:you|it|them|over|the|all|my|that|what|where|how)\b"
+    r"|\bi'?ll\s+(?:send|show|tell|write|give|walk|mail|text|dm)\b"
+    r"|\b(?:in|to)\s+your\s+(?:inbox|messages|dm)\b"
+    r"|\bwhere\s+to\s+(?:get|buy|find)\b|\bwhat\s+to\s+(?:buy|get|use)\b"
+    r"|\bhow\s+much\b|\bthe\s+(?:exact|same|real|right)\s+one\b", re.I)
+
+
+def lint_isca_cta(fala_cta, achados, rotulo="a cena do CTA"):
+    """A fala que pede o comentario tem de dizer O QUE a pessoa recebe."""
+    if not ISCA_CTA.search(fala_cta or ""):
+        achados.append(("ERRO", "%s pede o comentario e nao diz o que chega — "
+                                "sem isca o espectador nao tem por que comentar "
+                                "(ordem do operador 2026-08-02)" % rotulo))
 
 
 def lint_sem_texto(blocos, achados):
