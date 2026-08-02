@@ -574,6 +574,170 @@ conta própria.
 
 ---
 
+# BATERIA V3 v2.4 — colar tudo de uma vez (2 prompts, nesta ordem)
+
+> **O problema, medido em produção 2026-08-01.** Hoje o operador cola o REF e os
+> IMAGE na aba "1. Imagens", **espera o lote inteiro terminar**, troca para a aba
+> "2. Vídeos" e só ali cola os TAKE. São dois bloqueios somados no `App.tsx`:
+>
+> 1. **O textarea dos TAKE não existe enquanto se está na aba de imagens.** Não
+>    está desabilitado — não está no DOM. A sidebar renderiza
+>    `stage === 'images' ? (<textarea inputText/>) : (<textarea takeText/>)`.
+> 2. **A aba "2. Vídeos" está travada:**
+>    `disabled={!slots.some(s => s.imageStatus === 'success') || isBatchLoading}`
+>    — só destrava com pelo menos uma imagem pronta **e** o lote parado.
+>
+> **O que muda:** um campo único onde se cola REF + IMAGE + TAKE de uma vez. Os
+> takes ficam em estado desde a colagem, e o disparo dos vídeos fica **armado**
+> (um clique) assim que as imagens ficam prontas.
+>
+> ⭐ **Semiautomático por decisão do operador (2026-08-01), não automático.** O
+> encadeamento automático economizaria um clique e custaria a janela de revisar
+> as imagens — e essa janela é usada: o botão "Regerar Imagem" existe por card e
+> é acionado antes de animar. Auto-disparo em cima de imagem torta queima 4
+> variantes de vídeo.
+>
+> ⚠️ **O parser não é tocado.** O `parseBlocks()` já reconhece `REF`, `IMAGE` e
+> `TAKE` na mesma varredura, com o mesmo `headerRegex`, e cada `useEffect` já
+> filtra por `b.type`. Apontar os dois para o mesmo texto resolve sem uma linha
+> de `parser.ts`. É mudança de UI e de estado.
+
+## 🔒 PREÂMBULO V3 — cole no TOPO dos dois prompts desta bateria
+
+```text
+Antes de qualquer alteracao, leia esta lista. Nada dela pode mudar neste
+prompt. Se a sua alteracao exigir encostar em algum destes pontos, PARE e me
+avise em vez de mexer:
+
+1. utils/parser.ts fica VERBATIM: normalizeText, cleanContent, removeLabels,
+   parseBlocks e o headerRegex. Nao "melhore", nao simplifique, nao unifique.
+   Ele ja reconhece REF, IMAGE e TAKE na mesma varredura — e' de proposito.
+2. O bloco REF alimenta o painel Consistencia Visual e NUNCA vira slot da
+   grade nem desloca a numeracao. Continuam sendo 3 slots.
+3. O mediaId do REF entra em referenceImageMediaIds de CADA chamada de imagem
+   do lote (a variavel currentRefId em generateBatch).
+4. O indice manda: bloco N -> slot N -> variantes A/B/C/D ->
+   slot_0N_variant_X.mp4. Nunca renumerar por ordem de conclusao.
+5. Nada de traducao. Prompt e roteiro vao para o modelo exatamente como
+   colados, em ingles.
+6. Teto de 4000 caracteres por prompt, cortado antes da chamada (.slice(0,4000)).
+7. IMAGE_MODEL e VIDEO_MODEL nao mudam neste prompt, nem a regra fail-closed
+   do modelError.
+8. 4 variantes por slot. Os videos continuam saindo SLOT A SLOT (await
+   Promise.allSettled por slot antes do proximo) — e' anti rate-limit, nao e'
+   estilo.
+9. durationSeconds: 10 e aspectRatio '9:16' ficam como estao.
+10. promptDirty continua mandando: prompt editado a mao no card NAO e'
+    sobrescrito quando o texto colado muda.
+11. chosenIndex, o ZIP e o nome adbatch_vertical_output.zip ficam como estao.
+
+Ao terminar, NAO responda "pronto". Responda o que voce mudou, arquivo por
+arquivo, e o resultado do teste de aceitacao deste prompt.
+```
+
+## PROMPT V3-1 — campo único de roteiro ⭐
+
+*O prompt que resolve o problema. Um assunto: fundir os dois textareas em um.*
+
+```text
+[PREAMBULO V3]
+
+ESCOPO: apenas a sidebar e o estado de texto em App.tsx. parser.ts nao muda.
+
+HOJE existem dois estados de texto e dois textareas mutuamente exclusivos:
+inputText (renderizado so' quando stage === 'images') e takeText (renderizado
+so' quando stage === 'videos'). Por isso e' impossivel colar os TAKE antes das
+imagens terminarem: o campo nao existe na tela.
+
+MUDE PARA UM CAMPO SO:
+
+1. Substitua os dois estados por um unico: scriptText.
+2. A sidebar passa a ter UM textarea, SEMPRE VISIVEL, nas duas abas — nao mais
+   dentro do ternario de stage. Placeholder:
+   "Cole o roteiro inteiro: REF + IMAGE 01/02/03 + TAKE 01/02/03"
+   Altura maior que a atual (h-64 -> h-80), porque agora recebe o dobro.
+3. Os DOIS useEffect de sincronizacao passam a ler scriptText. Continuam
+   independentes e continuam filtrando por b.type: um pega os blocos IMAGE,
+   o outro pega os blocos TAKE. NAO unifique os dois useEffect.
+4. generateBatch() ja faz parseBlocks(inputText) para achar o REF — passa a
+   ler scriptText.
+5. O textarea NAO fica mais disabled durante isBatchLoading. O operador tem de
+   poder colar ou corrigir o roteiro enquanto as imagens geram. (Os botoes de
+   disparo continuam disabled — so' o textarea libera.)
+
+⛔ NAO mexa nos textareas dos CARDS. Cada card continua com o seu campo
+proprio, mostrando imagePrompt ou videoPrompt conforme a aba, com o selo
+"Editado" e o promptDirty. Isso e' o item 10 do preambulo.
+
+TESTE DE ACEITACAO — cole exatamente este texto no campo unico, com a
+ferramenta recem-carregada e ainda na aba "1. Imagens":
+
+REF 01: a 44-year-old woman, chest up, facing camera, plain gray background.
+IMAGE 01/03: she stands in a kitchen holding a carrot.
+IMAGE 02/03: she stands in the same kitchen holding a jar.
+IMAGE 03/03: she stands beside a man in the same kitchen.
+TAKE 01/03: she talks to the lens, no cuts.
+TAKE 02/03: she lowers the carrot onto the board.
+TAKE 03/03: she points at what he is holding.
+
+Me mostre, SEM gerar nada e SEM sair da aba de imagens:
+(a) o conteudo do campo de prompt de cada um dos 3 cards na aba "1. Imagens";
+(b) o conteudo do campo de prompt de cada um dos 3 cards depois de clicar na
+    aba "2. Videos".
+O esperado e' que os TAKE ja estejam nos 3 cards em (b), sem ter gerado
+imagem nenhuma. Se nao estiverem, a implementacao esta errada — me diga o que
+deu, nao conserte por conta propria.
+```
+
+## PROMPT V3-2 — o disparo fica armado, e o operador vê que está
+
+*Só depois do V3-1 passar. Um assunto: tornar visível que os takes já estão em
+memória e que basta um clique.*
+
+```text
+[PREAMBULO V3]
+
+ESCOPO: apenas indicadores de estado e o destravamento da aba 2 em App.tsx.
+Nenhuma logica de geracao muda.
+
+⛔ NAO implemente disparo automatico. O operador decidiu SEMIAUTOMATICO: as
+imagens terminam, o botao fica armado, e ELE clica. A janela entre imagem
+pronta e video disparado e' onde ele regera imagem torta — auto-disparo em
+cima de imagem ruim queima 4 variantes de video.
+
+1. CONTADOR DE ROTEIRO. Abaixo do textarea unico, uma linha pequena mostrando
+   o que o parser encontrou no texto colado, ao vivo:
+      "REF: sim/nao · IMAGE: N/3 · TAKE: N/3"
+   Verde quando 3/3, ambar quando parcial, cinza quando zero. E' a prova de
+   que os takes entraram — hoje nao ha como saber sem trocar de aba.
+
+2. A ABA "2. Videos" destrava assim que houver PELO MENOS UMA imagem com
+   sucesso, mesmo com isBatchLoading true. Hoje a condicao e'
+   `!slots.some(s => s.imageStatus === 'success') || isBatchLoading` e o
+   `|| isBatchLoading` tranca a aba durante o lote inteiro, sem motivo: olhar
+   nao dispara nada. Tire APENAS o `|| isBatchLoading` desta condicao.
+   ⛔ Os BOTOES de disparo continuam disabled durante isBatchLoading.
+
+3. BOTAO ARMADO. O "Redisparar Sequencia (1→2→3)" ganha tres estados visiveis:
+   · sem take em memoria  -> disabled, rotulo "Cole os TAKE no roteiro"
+   · take ok, imagem nao  -> disabled, rotulo "Aguardando imagens"
+   · take ok e >=1 imagem -> habilitado, rotulo "Disparar Videos (1→2→3)",
+                             com anel branco pulsando (ring-2 ring-white/40
+                             animate-pulse) para dizer que esta' armado.
+
+4. Nada de encadeamento, nada de timer, nada de useEffect que dispare geracao.
+
+TESTE DE ACEITACAO — com a ferramenta recem-carregada, cole o mesmo roteiro do
+teste anterior e me mostre, em ordem:
+(a) o que o contador exibe logo apos colar, ainda sem gerar nada;
+(b) o rotulo e o estado do botao de video nesse momento;
+(c) o rotulo e o estado do botao depois que as 3 imagens ficarem prontas;
+(d) confirme explicitamente que NENHUM video comecou a gerar sozinho em
+    momento nenhum.
+```
+
+---
+
 ## Conexões
 
 - [`RUNBOOK-adbatch-vertical.md`](RUNBOOK-adbatch-vertical.md) — a arquitetura, o contrato do parser e o levantamento do atraso da V4
