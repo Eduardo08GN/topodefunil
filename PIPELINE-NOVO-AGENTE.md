@@ -202,7 +202,7 @@ número, para poder ser citada em qualquer lugar do repo sem ambiguidade.
 | `N` | ELA_NARRADORA | `K` | CONFISSAO |
 | `Y` | DIARIO | `U` | GUERRILHA |
 | `UN` | UNCAO | `NE` | NECROSE |
-| `TR` | TROCA | | |
+| `TR` | TROCA | `ES` | ESCANDALO |
 
 **Anatomia de uma regra boa** (o padrão da casa, ver PE2, F12, F15):
 
