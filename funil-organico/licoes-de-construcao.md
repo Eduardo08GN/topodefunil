@@ -1,0 +1,259 @@
+# 🧱 LIÇÕES DE CONSTRUÇÃO — os erros do assistente, e o que os impede
+
+> Irmão do [`licoes-producao-veo.md`](licoes-producao-veo.md). Lá moram as
+> lições pagas **com render recusado**; aqui as pagas **com trabalho errado
+> entregue como certo**.
+>
+> ⚠️ **Este arquivo existe por ordem do operador (2026-08-02):** *"documente
+> todos os seus erros em um md pertinente… erros viciosos hão de ser
+> documentados a fim de evitá-los no futuro."*
+>
+> Ele é escrito na primeira pessoa de propósito. Não é lista de bugs do repo —
+> é a lista dos **modos de falha do assistente**, e ela deve ser lida antes de
+> construir ou alterar agente.
+
+---
+
+## A CAUSA RAIZ, e ela é uma só
+
+Quase tudo aqui é o mesmo erro em roupas diferentes:
+
+> **Eu verifico a FORMA e declaro pronto sem verificar a FUNÇÃO.**
+
+O linter conferia placeholder presente, token banido ausente, teto de palavras,
+cota do órgão — e passava. O que ele nunca conferia é se **o slot cumpre o
+trabalho pelo qual existe**. Copy que passa no linter e não faz o trabalho é
+**pior** que copy que quebra: quebra eu vejo; essa some no lote.
+
+O corolário operacional, e ele vale para tudo abaixo:
+
+> **Aceite é MEDIÇÃO, nunca RELATO.** Nem meu, nem de subagente.
+
+---
+
+## 1. ⛔ ENTREGAR COMO PRONTO O QUE NUNCA FOI EXECUTADO
+
+**O caso (TROCA, 2026-08-01).** O motor chegou com relatório dizendo *"0 ERRO,
+comandos passaram"* e **quebrava em 100% dos sorteios**. Quatro defeitos:
+
+| Defeito | Como aparecia |
+|---|---|
+| `%` com argumento faltando | `TypeError: not enough arguments for format string` |
+| dois nomes indefinidos (`TR8_NUMERO`, `_bolso`) | `NameError`, só na linha que executa |
+| dois linters comparando com o **template cru** | 400 de 400 reprovados, com mensagem plausível |
+
+**O que impede:**
+
+1. `python -m pyflakes <motor>.py` — acha **todos** os nomes indefinidos de uma
+   vez. Caçar de rodada em rodada custa uma execução por bug.
+2. **400 sorteios pelas 5 páginas**, `sortear → montar → lint`, ledger em
+   memória, **0 ERRO medido**. `--n 2 --dry-run` **não serve**: os defeitos
+   deste motor só apareciam em parte dos sorteios.
+3. Relatório de subagente é **hipótese**, não evidência. Reconferir sempre.
+
+---
+
+## 2. ⛔ LINTER QUE COMPARA COM CONSTANTE QUE TEM SLOT
+
+`TR_X not in bloco` dá **100% de falso positivo** quando `TR_X` chega
+formatada. Compara-se com o **miolo invariante** — o trecho entre os `%s`, que
+sobrevive a qualquer preenchimento.
+
+> ⚠️ **Se um linter reprova 100%, a suspeita é DELE, não da cena.** Regra que
+> reprova tudo nunca foi testada.
+
+**O caso irmão, e é pior:** o TR7 do TROCA exigia a bancada-recibo no
+`IMAGE 03/03` enquanto o comentário do `montar()`, **três funções acima**,
+dizia que ela é omitida ali de propósito por F12c. O código contradizia a si
+mesmo e ninguém tinha rodado.
+
+---
+
+## 3. ⛔ REGRA CITADA EM CÓDIGO QUE NÃO EXISTE NA DOUTRINA
+
+O motor do TROCA citava `TR15`-`TR21`. A doutrina ia até `TR14`. Toda mensagem
+de erro mandava o operador **ler a regra errada**, e não havia como auditar
+cobertura.
+
+**O que impede** — conferência barata, roda em um segundo:
+
+```bash
+for n in $(seq 1 30); do
+  m=$(grep -c "TR$n\b" motor.py); d=$(grep -c "TR$n\b" doutrina.md)
+  [ "$m" -gt 0 ] && [ "$d" -eq 0 ] && echo "TR$n ÓRFÃ"
+done
+```
+
+Regra que o motor descobre ao virar código **volta para o `.md`** (P9).
+
+---
+
+## 4. ⛔ O SLOT QUE NÃO CUMPRE A FUNÇÃO — o vício mais caro
+
+Quatro ocorrências em dois dias, todas passando no linter:
+
+| Slot | Existia para | Entregava | Peso medido |
+|---|---|---|---|
+| cena 3 do TROCA | dar **prova** | preço e prateleira de mercado | 100% dos vídeos |
+| fundidas do FLAGRANTE | dar o **mecanismo** | `blood flow` **sem destino** | 23,8% |
+| CTAs (7 motores) | fazer **comentar** | pedia sem dizer o que chega | **18%** |
+| TAKEs (6 motores) | gerar vídeo **limpo** | nada sobre texto queimado | 0 de 18 tinham |
+
+**O método que impede:** ao criar ou revisar pool, **escrever antes o que aquele
+slot tem de entregar** e checar entrada por entrada contra isso. *"É a prova"* →
+diz **o quê** mudou? *"É o CTA"* → diz **o que a pessoa recebe**? *"É o
+mecanismo"* → diz **para onde**?
+
+⭐ **Quando a função for verificável por regex, ela vira LINTER, não
+comentário.** Já viraram:
+
+| Guarda | Onde | Cobre |
+|---|---|---|
+| `lint_isca_cta` | `short_comum.py` | CTA que pede sem oferecer |
+| `lint_sem_texto` / `SEM_TEXTO_TAKE` | `short_comum.py` | texto queimado no TAKE |
+
+Ambos rodam dentro do `lint_curto`, então valem para **todo agente SHORT,
+inclusive os que ainda vão nascer** — que foi a ordem explícita do operador.
+
+---
+
+## 5. ⛔ TETO CONSERVADOR VIRA ESPAÇO MORTO, E ESPAÇO MORTO VIRA ENCHIMENTO
+
+**O caso (ESCANDALO, 2026-08-02).** Teto da cena 1 = 22 palavras. Capacidade
+real de 8 segundos na nossa taxa de fala (3,4-4,0 p/s) = **27-32**. As falas
+mediam **18,4**. O slot que sobrava virou enchimento — *"Give me eight
+seconds"*, *"Stay with me here"*, *"Eight seconds. That's all."*
+
+**O que impede:** medir `palavras_medidas / capacidade_real`, não só *"cabe no
+teto"*. Teto folgado não é segurança: é frase morta esperando para nascer.
+
+---
+
+## 6. ⛔ ANUNCIAR PROBLEMA QUE NÃO EXISTE — o erro que custa confiança
+
+**O caso.** Meu medidor de entropia chaveava os personagens por `idade` +
+`marca`. Os pools de mulheres do VAZAMENTO e do PEE descrevem a pessoa em
+`desc`/`payoff` — então **8 mulheres distintas colapsavam em 5 idades** e eu
+reportei ao operador um vício que não existia.
+
+**O que impede:** a chave de contagem tem de ser **o objeto inteiro**, nunca um
+subconjunto de campos escolhido a olho. E antes de reportar um problema,
+confirmar que o instrumento não é o problema.
+
+---
+
+## 7. ⛔ GREP INCOMPLETO E DECLARAÇÃO DE SUCESSO EM CIMA DELE
+
+Testei as 5 páginas filtrando `TypeError|AttributeError|KeyError|IndexError|
+ValueError` — e **esqueci `NameError`**. Declarei *"rodou"* para as cinco
+enquanto todas falhavam.
+
+**O que impede:** testar por **código de saída**, não por lista de exceções que
+eu me lembrei de escrever. Lista de padrões é sempre incompleta.
+
+---
+
+## 8. ⛔ CONCLUIR DA ASSINATURA EM VEZ DE MEDIR
+
+Li `sortear(pagina, rng, ledger, degrau=None, ...)` e anunciei ao operador que
+o default **não** respeitava a decisão dele. Respeitava — o `None` resolvia
+para `1` lá dentro, e **100% dos sorteios** caíam no degrau escolhido.
+
+**O que impede:** rodar antes de concluir. Uma linha de medição custa segundos e
+evita uma correção pública errada.
+
+---
+
+## 9. ⛔ CHUTAR CREDENCIAL LIDA DE PRINT
+
+Li `jm7UGric` de um screenshot. Era `jm7UGrlc` — `I` maiúsculo e `l` minúsculo
+são indistinguíveis na fonte do print, assim como `O` e `0`.
+
+**O que impede:** **pedir em texto**, sempre. E ⛔ **nunca** tentar variações:
+isso é chutar senha contra um serviço, e um bloqueio por tentativa queima o
+proxy do operador.
+
+---
+
+## 10. ⛔ DIAGNÓSTICO QUE PARECE OUTRA COISA — a tabela de sintomas do garimpo
+
+Três desvios que custaram tempo por parecerem o que não eram:
+
+| Sintoma | Parecia | Era |
+|---|---|---|
+| `Cannot parse data` no yt-dlp | extractor defasado | **cookie de FB é atado ao IP** — faltava o `--proxy` da sessão |
+| `502` no proxy, `200` no Facebook | proxy quebrado | proxy **IPv6-only**; o alvo de teste não tinha AAAA |
+| `403` do Whisper | chave inválida | WAF barrando o `User-Agent` do `urllib`; via `curl` passa |
+
+Detalhe completo em [`../PIPELINE-NOVO-AGENTE.md`](../PIPELINE-NOVO-AGENTE.md)
+§[2], rota 2c.
+
+---
+
+## 11. ⛔ QUEBRAR REGRA VALIDADA AO CONSERTAR OUTRA COISA
+
+Ao pôr a isca nos CTAs, escrevi `Comment gelatin and I'll send` — **sem a
+vírgula** depois da keyword. Existe regra validada de que, sem essa micro-pausa,
+o Veo narra *"gelatine"* e a automação de DM não casa.
+
+**O que impede:** rodar o linter **depois de cada correção**, não só no fim.
+Aqui ele pegou — e é exatamente para isso que ele existe.
+
+---
+
+## 12. ⛔ REPASSAR RELATÓRIO DE SUBAGENTE SEM CONFERIR O ESTADO ATUAL
+
+O relatório final do build do TROCA descrevia o motor com **1.086 linhas**;
+o arquivo em disco tinha **2.026**, porque agentes posteriores o reescreveram.
+Ele também afirmava decisões (mão direita, âncora de bolso, a nora no pool) que
+outros agentes **já haviam revertido**.
+
+**O que impede:** relatório de workflow é foto de um instante, não do estado
+final. **Conferir o disco** antes de repassar qualquer afirmação ao operador.
+
+---
+
+## 13. ⛔ NÃO VERIFICAR SE A ETAPA FINAL RODOU
+
+Dei o registro do TROCA como feito. `WORKFLOW.md`, `CLAUDE.md` e o
+`PIPELINE-NOVO-AGENTE.md` estavam **intocados** — a fase nunca completou.
+
+**O que impede:** `git status` e `git diff --stat` nos arquivos que a etapa
+deveria ter tocado. Mtime antigo = não rodou.
+
+---
+
+## 14. ⛔ SINTAXE DE SCRIPT DE WORKFLOW (duas vezes)
+
+Quebrei o script duas vezes por caractere dentro de string:
+
+- **apóstrofe** em `e' justamente` dentro de string de aspas simples;
+- **backtick** de `\`comment book\`` dentro de template literal.
+
+**O que impede:** em prompt de workflow, escrever sem apóstrofe e sem backtick —
+usar aspas duplas para citar termo técnico.
+
+---
+
+## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
+
+- [ ] `python -m pyflakes <motor>.py` — saída **vazia**
+- [ ] **400 sorteios** pelas 5 páginas, `sortear → montar → lint`, **0 ERRO medido**
+- [ ] Nenhum eixo acima de **~17%** de concentração; mínimo **9 opções** por eixo
+- [ ] Numeração de regra **bate caractere por caractere** entre motor e doutrina
+- [ ] Cada slot de copy **cumpre a função** pela qual existe (§4) — e se dá para
+      checar por regex, **virou linter**
+- [ ] Uso do orçamento medido contra a **capacidade real**, não contra o teto (§5)
+- [ ] **Li algumas falas inteiras renderizadas**, não só os pools
+- [ ] `git diff` conferido: nenhuma string validada redigitada sem ordem
+- [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
+- [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
+
+---
+
+## Conexões
+
+- [`licoes-producao-veo.md`](licoes-producao-veo.md) — as lições pagas com render recusado
+- [`../PIPELINE-NOVO-AGENTE.md`](../PIPELINE-NOVO-AGENTE.md) — o pipeline, com o §[9] "aceite é medição"
+- [`RUNBOOK-app-offline.md`](RUNBOOK-app-offline.md) — motor → app → `.exe`, e por que recompilar
+- [`../CLAUDE.md`](../CLAUDE.md) — a alçada: copy e cena são do operador
