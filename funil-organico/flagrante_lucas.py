@@ -730,12 +730,37 @@ def resumo_pt(spec):
                PT_AMBIENTE.get(spec["ambiente"]["id"], "no set interno"), et))
 
 
+def _hook_fmt(hook, oc, o):
+    """Formata o hook resolvendo a CONCORDANCIA do `{evento}`.
+
+    ⚠️ BUG DE PRODUCAO, achado na auditoria de drifting de 2026-08-01.
+    Os 14 `plateia_evento` comecam com "that" (`that wedding`, `that cookout`),
+    porque 12 dos 13 hooks poem o `{evento}` depois de preposicao — `at
+    {evento}`, `around {evento}` — e ali o demonstrativo e' o que faz a frase
+    soar de boca, nao de folheto.
+
+    O 13o hook poe o `{evento}` como NUCLEO DO SUJEITO ("The whole {evento}
+    had heard...") e a mesma string vira "The whole THAT wedding had heard" —
+    agramatical, e o Veo NARRA o erro em voz alta nos 2 segundos que decidem o
+    scroll. Saia assim em 100% das vezes que esse hook era sorteado (7,7% dos
+    videos).
+
+    ⛔ Corrigido AQUI, no codigo, e nao no pool: nem o hook nem os 14 eventos
+    sao redigitados. String validada e' constante (CLAUDE.md §Alcada) — o que
+    estava errado era a montagem, nao a copy.
+    """
+    ev = oc["plateia_evento"]
+    if "The whole {evento}" in hook or "the whole {evento}" in hook:
+        ev = re.sub(r"^(that|this|the)\s+", "", ev, flags=re.I)
+    return hook.format(evento=ev, o=o)
+
+
 def _recopiar_ocasiao(spec, rng):
     """A ocasiao alimenta o hook e o eco da cena 4 — trocar exige reescrever."""
     oc = spec["ocasiao"]
     o0 = next((n for n in NUCLEO if n.lower() in spec["falas"][0].lower()), "Johnson")
     o3 = next((n for n in NUCLEO if n.lower() in spec["falas"][3].lower()), "manhood")
-    spec["falas"][0] = rng.choice(HOOKS).format(evento=oc["plateia_evento"], o=o0)
+    spec["falas"][0] = _hook_fmt(rng.choice(HOOKS), oc, o0)
     spec["falas"][3] = rng.choice(REDENCOES).format(
         eco=oc["eco"], brag=rng.choice(BRAGGING), o=o3,
         barreira=rng.choice(BARREIRAS))
@@ -747,7 +772,7 @@ def nova_fala(spec, i, rng):
     o = next((n for n in NUCLEO if n.lower() in spec["falas"][i].lower()), "Johnson")
     oc = spec["ocasiao"]
     if i == 0:
-        return rng.choice(HOOKS).format(evento=oc["plateia_evento"], o=o)
+        return _hook_fmt(rng.choice(HOOKS), oc, o)
     if i == 1:
         return rng.choice(DESCOBERTAS).format(quem=rng.choice(QUEM_CONTOU), o=o)
     if i == 2:
@@ -793,7 +818,7 @@ def sortear(pagina, rng, ledger):
     orgaos = rng.sample(NUCLEO, 4)
 
     falas = [
-        rng.choice(HOOKS).format(evento=oc["plateia_evento"], o=orgaos[0]),
+        _hook_fmt(rng.choice(HOOKS), oc, orgaos[0]),
         rng.choice(DESCOBERTAS).format(quem=rng.choice(QUEM_CONTOU), o=orgaos[1]),
         rng.choice(RITUAIS).format(o=orgaos[2]),
         rng.choice(REDENCOES).format(eco=oc["eco"], brag=rng.choice(BRAGGING),
