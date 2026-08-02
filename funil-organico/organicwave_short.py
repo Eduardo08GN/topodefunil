@@ -126,6 +126,34 @@ REFS_H_CLARA = [
      "corpo": "thick arms and a broad chest with clear muscle separation"},
     {"idade": 57, "marca": "thick chestnut hair with a bright white streak at the left temple and green eyes",
      "corpo": "a compact powerful build with square shoulders and a tight midsection"},
+    # + 2026-08-02: o operador mediu os dois pools e viu SEMPRE O MESMO ROSTO.
+    # As doze acima descrevem a marca quase so' por CABELO mais cor de olho, e
+    # o `corpo` e' sempre a mesma familia de torso — doze homens descritos so'
+    # por cabelo sao o mesmo homem doze vezes. As quatro novas trazem os eixos
+    # que este pool nao acionava:
+    #   · 55 — OCULOS, o eixo ZERADO aqui (0/12): armacao fina de metal, mais
+    #     sinal de nascenca oval sob a mandibula.
+    #   · 68 — OCULOS de casco grosso mais CALVICIE frontal e PORTE pesado,
+    #     mais mecha branca na sobrancelha.
+    #   · 66 — PELE castigada de sol e sardenta mais PORTE seco de corda,
+    #     rabo de cavalo e cavanhaque quadrado.
+    #   · 70 — PELO FACIAL de costeleta larga mais topete alto e covinhas.
+    #   · a ancora continua COMPATIVEL COM BELEZA, como manda o cabecalho
+    #     deste elenco: sinal, sarda, mecha, covinha. ⛔ nenhuma cicatriz feia
+    #     e nenhuma orelha entalhada, que sao marcas dos especialistas.
+    #   · ⚠️ DESVIO DECLARADO: as doze acima espelham `idade` E `corpo` por
+    #     indice com o pool ESCURA. As quatro novas mantem a idade e mudam o
+    #     corpo (aqui torso peludo, la' torso liso) — foi eixo introduzido de
+    #     proposito. O codigo nao pareia por indice, entao nada quebra.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 55, "marca": "dark brown hair cut short and side-parted with only a little grey at the front, fine silver wire-rimmed glasses and a small oval birthmark below his right jaw",
+     "corpo": "a long-limbed swimmer's build with wide flat shoulders and a narrow waist"},
+    {"idade": 68, "marca": "a high balding forehead with thin white hair combed straight back, thick tortoiseshell glasses and a bright white streak through his left eyebrow",
+     "corpo": "a heavy thick-set frame, a deep chest and thick arms under a dense mat of grey hair"},
+    {"idade": 66, "marca": "long iron-grey hair tied back in a low ponytail, a short squared silver goatee and pale amber eyes set in sun-weathered freckled skin",
+     "corpo": "a lean whipcord frame with long ropey forearms and a hard narrow waist"},
+    {"idade": 70, "marca": "a high silver pompadour swept up off the forehead, heavy silver sideburns down to the jawline and deep dimples in both cheeks",
+     "corpo": "a tall upright frame with a broad V-shaped back tapering to a lean hard waist"},
 ]
 REFS_H_ESCURA = [
     {"idade": 58, "marca": "close-cropped silver hair, a neat white beard and a small dark beauty mark on his left cheekbone",
@@ -154,6 +182,29 @@ REFS_H_ESCURA = [
      "corpo": "thick arms and a broad chest with clear muscle separation"},
     {"idade": 57, "marca": "a close grey afro with a bright white streak above the left temple and light green eyes",
      "corpo": "a compact powerful build with square shoulders and a tight midsection"},
+    # + 2026-08-02: o espelho das quatro novas do pool CLARA — mesma medicao (o
+    # operador viu sempre o mesmo rosto, porque as doze acima descreviam a marca
+    # quase so' por cabelo e cor de olho), mesma idade por indice, mesmos eixos
+    # novos. So' o descritor de cabelo/barba muda, que e' onde a etnia se le'.
+    #   · 55 — OCULOS (eixo ZERADO aqui) mais sardas na ponte do nariz.
+    #   · 68 — CALVICIE em coroa mais PORTE pesado e olhos de tom desigual
+    #     (heterocromia, ancora ✅ da tabela de licoes-producao-veo).
+    #   · 66 — OCULOS de leitura mais entrada de cabelo bem recuada e PORTE
+    #     seco e fibroso, mais sinal de nascenca oval na tempora.
+    #   · 70 — PELO FACIAL de barba chin-strap mais coroa de ouro num dente.
+    #   · a ancora continua COMPATIVEL COM BELEZA (sinal, sarda, coroa de ouro,
+    #     heterocromia). ⛔ nenhuma cicatriz feia, nenhuma orelha entalhada.
+    #   · ⚠️ mesmo DESVIO DECLARADO do pool CLARA: as quatro novas mantem a
+    #     idade por indice mas nao o `corpo` (aqui torso liso, la' torso
+    #     peludo). O codigo nao pareia por indice, entao nada quebra.
+    {"idade": 55, "marca": "greying cornrows braided straight back, heavy horn-rimmed glasses, a cleanly shaven jaw and dark freckles scattered across the bridge of his nose",
+     "corpo": "a tall rangy build with long flat muscle across the shoulders and a very narrow waist"},
+    {"idade": 68, "marca": "a bald crown ringed with close-cropped white hair, a full thick white beard and one eye noticeably paler than the other",
+     "corpo": "a heavy thick-set frame, a deep smooth hairless chest and thick solid arms"},
+    {"idade": 66, "marca": "a deeply receding hairline clipped to a fine grey shadow, wire-rimmed reading glasses low on the nose and a small oval birthmark high on his right temple",
+     "corpo": "a wiry sinewy build with stringy forearms and sharply drawn lines across the stomach"},
+    {"idade": 70, "marca": "a low tapered cut lined up sharp at the temples and gone completely white, a thin white chin-strap beard along the jaw and a gold crown on one front tooth",
+     "corpo": "a big-framed torso with heavy shoulders and a deep chest under a mat of white hair"},
 ]
 
 MULHERES_CLARA = [
@@ -173,6 +224,26 @@ MULHERES_CLARA = [
     {"idade": 29, "desc": "long jet-black hair in a single braid over one shoulder and a gap between her front teeth, a fitted rust-orange sundress"},
     {"idade": 36, "desc": "caramel-highlighted hair twisted into a loose bun and a narrow widow's peak above dark arched brows, a fitted sage green dress"},
     {"idade": 31, "desc": "shoulder-length golden-brown hair with a blunt fringe and a small crescent birthmark at her hairline, a fitted denim-blue summer dress"},
+    # + 2026-08-02: mesma medicao que gerou os blocos dos REFS_H logo acima,
+    # so' que do lado da mulher — o operador viu SEMPRE O MESMO ROSTO. As
+    # catorze acima descrevem a pessoa por CABELO mais cor de olho: catorze
+    # mulheres descritas so' por cabelo sao a mesma mulher catorze vezes. As
+    # tres novas trazem os eixos que este pool nao acionava:
+    #   · OCULOS — era 0/14 aqui, e 0/28 somando os dois pools de mulher.
+    #     Leitura tortoiseshell na cabeca e armacao de acetato grossa.
+    #   · PORTE — petite, ombros largos com braco definido, quadril largo e
+    #     cintura fina. Nenhuma das catorze menciona compleicao.
+    #   · PELE — sardas densas, pele bronzeada de sol.
+    #   · a ancora facial (P6) continua obrigatoria e NO ROSTO: sarda, fenda
+    #     no queixo, pinta sob a narina. ⛔ marca no pescoco ou atras da
+    #     orelha nao ancora — e o motor concatena `BELEZA_M` logo depois.
+    #   · a ancora tambem continua COMPATIVEL COM BELEZA: nada de cicatriz
+    #     feia, que e' marca dos especialistas, nao deste elenco.
+    #   · as tres fecham em "a fitted <cor> <peca>", como as catorze acima.
+    #   · zero mencao a etnia: a etnia deste pool ja' e' a do proprio pool.
+    {"idade": 28, "desc": "a cropped light-brown pixie cut with a deep side part, wide-set grey eyes above a small upturned nose, a dense spray of dark freckles across her nose and both cheekbones, petite and small-framed, a fitted apricot sundress"},
+    {"idade": 38, "desc": "prematurely silver hair in a blunt bob level with her chin, tortoiseshell reading glasses pushed up on top of her head, heavy dark brows over a wide full mouth and a deep cleft in her chin, broad shoulders and clear definition in her arms, a fitted forest-green wrap dress"},
+    {"idade": 33, "desc": "tight sandy-brown curls pinned loosely on top of her head, thick dark acetate frames, square and heavy, skin tanned and freckled from the sun, a small brown mole under her right nostril, wide hips and a narrow waist, a fitted ivory eyelet sundress"},
 ]
 MULHERES_ESCURA = [
     {"idade": 35, "desc": "long braided hair gathered over one shoulder, a small beauty mark high on her right cheekbone, a fitted emerald dress"},
@@ -191,6 +262,17 @@ MULHERES_ESCURA = [
     {"idade": 34, "desc": "waist-length micro braids pulled into a high ponytail and a gap between her front teeth, a fitted plum dress"},
     {"idade": 28, "desc": "finger waves set close to the head and a narrow widow's peak, a fitted gold summer dress"},
     {"idade": 36, "desc": "long faux locs gathered over one shoulder and deep dimples in both cheeks, a fitted sage green dress"},
+    # + 2026-08-02: o espelho das tres novas do pool CLARA — mesma medicao (o
+    # operador viu sempre o mesmo rosto, porque as catorze acima descreviam a
+    # pessoa por cabelo mais cor de olho), mesmos eixos novos. So' o descritor
+    # de cabelo muda, que e' onde a etnia se le'.
+    #   · OCULOS — o eixo ZERADO nos dois pools de mulher (0/28).
+    #   · PORTE — ombros largos com braco forte, magra e de membros longos.
+    #   · a ancora facial (P6) e' NO ROSTO: pinta sob o labio, duas pintas
+    #     juntas na mandibula. ⛔ marca abaixo da orelha nao ancora.
+    #   · as duas fecham em "a fitted <cor> <peca>", como as catorze acima.
+    {"idade": 35, "desc": "cornrows braided straight back into a low bun, heavy tortoiseshell glasses, high sharp cheekbones and a small dark beauty mark centred just below her lower lip, broad-shouldered with strong arms, a fitted cobalt-blue wrap dress"},
+    {"idade": 39, "desc": "close-cropped natural hair gone mostly silver, a broad forehead above deep-set eyes and two small dark moles set close together on her left jaw, lean and long-limbed, a heavy silver cuff on one wrist, a fitted ink-blue linen dress"},
 ]
 
 # ⚠️ PISO DE IDADE 28. O agente original punha esta persona em 20-24 e isso NAO

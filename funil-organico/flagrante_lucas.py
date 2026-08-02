@@ -377,6 +377,31 @@ REFS = [
     {"idade": 61, "marca": "full black hair streaked bright white at the front and a small gold hoop in his left ear",
      "cabelo": "black", "roupa": "Plain cream crew-neck tee shirt.",
      "roupa_curta": "cream tee shirt"},
+    # + 2026-08-02: mesma medicao que gerou o bloco das VITIMAS logo abaixo, so'
+    # que do lado do narrador — o operador viu SEMPRE O MESMO ROSTO. As nove
+    # acima dizem cabelo + ancora e mais nada, entao o gerador recebia quase a
+    # mesma frase e devolvia quase a mesma cara. As tres novas abrem o eixo
+    # ZERADO deste pool: PORTE (compleicao), que nenhuma das nove menciona.
+    #   · 74 — ombros largos e quadrados, cabelo aco repartido baixo.
+    #   · 58 — armacao baixa e compacta, cabelo em cachos fechados.
+    #   · 62 — armacao quadrada e possante, topete alto.
+    #   · cabeleira farta, barbeado e sem oculos continua TRAVADO nas tres
+    #     (F4b: sao os 3 eixos que separam o narrador da vitima a' distancia).
+    #   · a ancora e' sempre do lado ✅ da tabela de licoes-producao-veo §REF —
+    #     DISTINTIVO, NUNCA DETERIORADO (cicatriz limpa, mecha branca).
+    #   · nenhuma repete ancora das VITIMAS deste arquivo, pelo mesmo motivo
+    #     escrito la' embaixo: ancora repetida remenda o morphing que o F4b
+    #     evita, e os dois aparecem lado a lado no mesmo IMAGE.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 74, "marca": "unusually broad square shoulders, thick steel gray hair parted low on one side and a raised white scar across the bridge of his nose",
+     "cabelo": "steel gray", "roupa": "Plain mustard yellow crew-neck tee shirt.",
+     "roupa_curta": "mustard yellow tee shirt"},
+    {"idade": 58, "marca": "a short compact frame, a full head of tight coppery-brown curls and a small silver scar splitting his upper lip",
+     "cabelo": "curly", "roupa": "Plain sky blue crew-neck tee shirt.",
+     "roupa_curta": "sky blue tee shirt"},
+    {"idade": 62, "marca": "a square powerfully built frame, thick dark hair combed up into a high pompadour and one eyebrow gone completely white",
+     "cabelo": "dark", "roupa": "Plain stone gray crew-neck tee shirt.",
+     "roupa_curta": "stone gray tee shirt"},
 ]
 
 VITIMAS = [
@@ -392,6 +417,29 @@ VITIMAS = [
     {"idade": 67, "marca": "bald man with a bushy salt-and-pepper mustache and half-rim glasses"},
     {"idade": 68, "marca": "bald man with a drooping gray walrus mustache and rimless glasses"},
     {"idade": 70, "marca": "bald man with a white handlebar mustache and small oval glasses"},
+    # + 2026-08-02: o operador mediu o pool inteiro e viu a MESMA vitima
+    # voltando — as 10 acima variam bigode e oculos e mais nada, entao o
+    # gerador recebia quase a mesma frase e devolvia quase o mesmo rosto.
+    # As seis novas trazem os dois eixos zerados aqui: PORTE (compleicao) e
+    # PELE (textura de idade), mais uma ANCORA FACIAL permanente (P6) que faz
+    # o rosto voltar igual nas cenas 1 e 4.
+    #   · careca + bigode + oculos continua TRAVADO nas seis (F4b: sao os 3
+    #     eixos que sobrevivem ao plano medio e separam a vitima do narrador).
+    #   · a ancora e' sempre do lado ✅ da tabela de licoes-producao-veo
+    #     §REF — DISTINTIVO, NUNCA DETERIORADO (mecha branca, cicatriz limpa,
+    #     sinal de nascenca, pinta). ⛔ dente lascado, palpebra caida e nariz
+    #     quebrado ficaram de fora: viram mendigo e matam a credibilidade.
+    #   · nenhuma repete ancora dos REFS deste arquivo — orelha entalhada,
+    #     covinha/fenda no queixo, cicatriz na sobrancelha, pinta na maca do
+    #     rosto, coroa de ouro, sardas no nariz, argola na orelha. Ancora
+    #     repetida entre narrador e vitima remenda o morphing que o F4b evita.
+    #   · zero mencao a etnia/cor: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 58, "marca": "bald man, heavy-set and round-faced, with a chevron mustache streaked white on the left side and thick-lensed glasses"},
+    {"idade": 72, "marca": "bald man, thin and deeply lined, with a dark mole beside his mouth, a sparse white mustache and half-moon glasses"},
+    {"idade": 60, "marca": "bald man, short and barrel-chested, with a coin-sized dark birthmark on his crown, a bristly steel-gray mustache and boxy clear-framed glasses"},
+    {"idade": 69, "marca": "bald man, tall and bony, with a clean scar across his scalp, a close-cropped charcoal mustache and narrow rectangular glasses on a beaded cord"},
+    {"idade": 57, "marca": "bald man, stocky and sun-weathered, with a clean scar along his right jawline, a wide brush mustache and heavy black-framed bifocal glasses"},
+    {"idade": 71, "marca": "bald man, broad-shouldered and heavy through the middle, with a dark birthmark at his left temple, a full silver mustache and clip-on shades over his glasses"},
 ]
 
 MULHERES = [
@@ -417,6 +465,59 @@ MULHERES = [
      "payoff": "with tight gray curls, in a lilac dress"},
     {"idade": 64, "hook": "woman with a blunt shoulder-length cut and a white streak at her temple",
      "payoff": "with a blunt shoulder-length cut, in a champagne gold dress"},
+    # + 2026-08-02: mesma medicao que gerou os blocos dos REFS e das VITIMAS
+    # acima, so' que do lado da mulher — o operador viu SEMPRE O MESMO ROSTO.
+    # As dez acima descrevem a pessoa por CABELO mais um brinco: dez mulheres
+    # descritas so' por cabelo sao a mesma mulher dez vezes, e o gerador
+    # devolvia quase a mesma cara. As sete novas trazem os eixos rasos daqui:
+    #   · PORTE — tall straight-backed, broad shoulders, thin wiry.
+    #   · OCULOS — thick round, narrow reading, gold-rimmed em correntinha.
+    #   · PELE — sardas de sol.
+    #   · ANCORA FACIAL permanente (P6) em todas, e a MESMA nos dois campos:
+    #     o `hook` e o `payoff` sao a cena 1 e a cena 4 da mesma mulher, e a
+    #     ancora repetida e' o que faz o rosto voltar igual la' na frente.
+    #   · a ancora e' sempre do lado ✅ de licoes-producao-veo §REF —
+    #     DISTINTIVO, NUNCA DETERIORADO (cicatriz limpa, pinta, covinha,
+    #     sinal de nascenca, dente separado). ⛔ dente lascado ficou de fora.
+    #   · nenhuma repete ancora dos REFS nem das VITIMAS deste arquivo: os
+    #     tres aparecem no mesmo quadro e ancora identica remenda o morphing
+    #     que o F4b evita.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 52,
+     "hook": ("woman with dark hair in a high twisted knot, a tall "
+              "straight-backed frame and a fine scar through her left eyebrow"),
+     "payoff": ("with dark hair in a high twisted knot and a fine scar through "
+                "her left eyebrow, in a forest green dress")},
+    {"idade": 69,
+     "hook": ("woman with white hair combed straight back, thick round glasses "
+              "and a dark mole beside her nostril"),
+     "payoff": ("with white hair combed straight back, thick round glasses and "
+                "a dark mole beside her nostril, in a teal cardigan")},
+    {"idade": 66,
+     "hook": ("woman with a thin white braid down her back, narrow reading "
+              "glasses low on her nose and a deep dimple in her right cheek"),
+     "payoff": ("with a thin white braid down her back, narrow reading glasses "
+                "and a deep dimple in her right cheek, in a mustard blouse")},
+    {"idade": 53,
+     "hook": ("woman with a heavy gray-streaked ponytail, broad shoulders and "
+              "a gap between her front teeth"),
+     "payoff": ("with a heavy gray-streaked ponytail and a gap between her "
+                "front teeth, in a denim shirt dress")},
+    {"idade": 68,
+     "hook": ("woman with wispy silver hair in a loose bun, gold-rimmed "
+              "glasses on a beaded chain and sun freckles across her cheeks"),
+     "payoff": ("with wispy silver hair in a loose bun, gold-rimmed glasses "
+                "and freckled cheeks, in a rose-pink cardigan")},
+    {"idade": 65,
+     "hook": ("woman with a tight iron-gray perm, heavy dark brows and a small "
+              "birthmark high on her right cheek"),
+     "payoff": ("with a tight iron-gray perm and a small birthmark high on her "
+                "right cheek, in a copper dress")},
+    {"idade": 67,
+     "hook": ("woman with a thick gray shag cut, a thin wiry build and a "
+              "sharply hooked nose"),
+     "payoff": ("with a thick gray shag cut, a thin wiry build and a sharply "
+                "hooked nose, in an ivory blouse")},
 ]
 
 # ---------------------------------------------------------------------------

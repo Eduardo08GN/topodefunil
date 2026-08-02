@@ -278,6 +278,37 @@ REFS = [
     {"idade": 64, "marca": "a full head of gray hair with a bright white streak at his left temple and a deep dimple in his chin",
      "cabelo": "gray", "roupa": "Plain teal crew-neck tee shirt.",
      "roupa_curta": "teal tee shirt"},
+    # + 2026-08-02: o operador mediu o pool inteiro e viu SEMPRE O MESMO ROSTO.
+    # As nove acima descrevem o narrador so' por CABELO mais uma ancora — nove
+    # homens descritos so' por cabelo sao o mesmo homem nove vezes, e o gerador
+    # devolvia quase a mesma cara. As quatro novas trazem os eixos rasos daqui:
+    #   · 71 — PORTE de rosto (longo e estreito) mais PELE de idade (mancha
+    #     senil na tempora).
+    #   · 61 — PELE (rugas fundas em leque no canto dos olhos) mais ancora de
+    #     lobulo rasgado, mesma familia da orelha entalhada ja' usada aqui.
+    #   · 73 — PORTE de rosto (olhos fundos sob arcada pesada) mais ancora de
+    #     cicatriz limpa no labio.
+    #   · 69 — PORTE de corpo (armacao longa e esgalgada) mais ancora de
+    #     sobrancelhas unidas numa linha so'.
+    #   · a ancora e' sempre do lado ✅ de licoes-producao-veo §REF —
+    #     DISTINTIVO, NUNCA DETERIORADO. ⛔ dente lascado, palpebra caida e
+    #     nariz quebrado ficaram de fora: viram mendigo e matam a credibilidade.
+    #   · OCULOS, PELO FACIAL e CALVICIE continuam ZERADOS aqui DE PROPOSITO
+    #     (PE9/F4b): sao os tres eixos que pertencem a' VITIMA. Enche-los no
+    #     narrador destrui o contraste de 3 eixos que nasce por construcao.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 71, "marca": "a thick snow-white mane brushed back over his ears, a long narrow face, and a dark age spot the size of a nickel on his right temple",
+     "cabelo": "snow-white", "roupa": "Plain tan crew-neck tee shirt.",
+     "roupa_curta": "tan tee shirt"},
+    {"idade": 61, "marca": "a full head of ash-gray hair long enough to curl at his collar, deep lines fanning from the corners of his eyes, and a torn right earlobe",
+     "cabelo": "ash-gray", "roupa": "Plain faded red crew-neck tee shirt.",
+     "roupa_curta": "faded red tee shirt"},
+    {"idade": 73, "marca": "a thick pewter flat-top cut, deep-set eyes under a heavy brow, and a pale scar splitting his upper lip",
+     "cabelo": "pewter", "roupa": "Plain heather gray crew-neck tee shirt.",
+     "roupa_curta": "heather gray tee shirt"},
+    {"idade": 69, "marca": "a heavy gray-brown mop combed forward over his forehead, a long rangy frame, and thick eyebrows that meet in a single line above his nose",
+     "cabelo": "gray-brown", "roupa": "Plain dusty blue crew-neck tee shirt.",
+     "roupa_curta": "dusty blue tee shirt"},
 ]
 
 VITIMAS = [
@@ -301,6 +332,30 @@ VITIMAS = [
      "camisa": "a light peach t-shirt"},
     {"idade": 67, "marca": "bald man with a close-trimmed sandy mustache and oval brown-framed glasses",
      "camisa": "a soft mint green polo shirt"},
+    # + 2026-08-02: o operador mediu o pool inteiro e viu A MESMA VITIMA
+    # voltando — as nove acima variam bigode e oculos e mais nada, entao o
+    # gerador recebia quase a mesma frase e devolvia quase o mesmo rosto. As
+    # tres novas trazem os eixos que este pool nao acionava: PORTE
+    # (compleicao), PELE (textura de idade) e uma ANCORA FACIAL permanente
+    # (P6), que e' o que faz o rosto voltar igual entre as cenas.
+    #   · careca + bigode + oculos continua TRAVADO nas tres (PE9/F4b: sao os
+    #     3 eixos que separam a vitima do narrador a' distancia).
+    #   · a ancora e' sempre do lado ✅ de licoes-producao-veo §REF —
+    #     DISTINTIVO, NUNCA DETERIORADO (pinta, covinha, feicao de nariz).
+    #     ⛔ dente lascado, bigode manchado de nicotina e oculos remendados
+    #     com fita ficaram de fora: viram mendigo e matam a credibilidade.
+    #   · nenhuma repete ancora dos REFS deste arquivo — mancha senil na
+    #     tempora, lobulo rasgado, cicatriz no labio, sobrancelhas unidas,
+    #     covinha no queixo. Ancora identica entre narrador e vitima remenda o
+    #     morphing que o PE9 existe para impedir, e os dois aparecem juntos no
+    #     mesmo IMAGE 01/05.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 69, "marca": "bald man with a heavy build and jowls, a full snow-white walrus mustache, small half-moon glasses low on his nose and a raised mole beside one nostril",
+     "camisa": "a washed-out lavender bowling shirt"},
+    {"idade": 68, "marca": "bald man with a soft middle and liver-spotted temples, a thin mustache dyed too dark for his age, chunky red plastic glasses and a deep dimple in his left cheek",
+     "camisa": "a washed tan plaid flannel shirt"},
+    {"idade": 56, "marca": "bald man with a tall rangy frame and a prominent Adam's apple, a thick charcoal mustache gray only at the tips, plain metal glasses with clip-on sun lenses flipped up and a bump in the bridge of his nose",
+     "camisa": "a loose seafoam green fishing shirt"},
 ]
 
 MULHERES = [
@@ -316,6 +371,54 @@ MULHERES = [
     {"idade": 55, "payoff": "with cropped white hair, in a coral sundress"},
     {"idade": 59, "payoff": "with loose gray waves, in a forest green dress"},
     {"idade": 58, "payoff": "with a low ponytail, in a cream blouse and a charcoal skirt"},
+    # + 2026-08-02: mesma medicao que gerou o bloco das VITIMAS logo acima, so'
+    # que do lado da mulher do payoff — o operador viu SEMPRE O MESMO ROSTO. As
+    # dez acima dizem CABELO + VESTIDO e mais nada: dez mulheres descritas so'
+    # por cabelo sao a mesma mulher dez vezes, e o gerador devolvia quase a
+    # mesma cara. As seis novas abrem os tres eixos ZERADOS deste pool:
+    #   · PORTE — slight, broad-shouldered, short-round, heavy-set,
+    #     tall-narrow, wiry. Nenhuma das dez acima menciona compleicao.
+    #   · OCULOS — correntinha de micangas, meia-lua, armacao vermelha grossa,
+    #     oculos de sol na cabeca. Eram 0/10 aqui.
+    #   · PELE — deeply lined, sun-weathered, freckles, laugh lines.
+    #   · e uma ANCORA FACIAL permanente em cada (P6), sempre do lado ✅ da
+    #     tabela de licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO
+    #     (pinta, cicatriz limpa, sarda, dente separado). ⛔ dente lascado
+    #     ficou de fora: vira mendigo e mata a credibilidade.
+    #   · ⛔ zero `big`/`huge`: o payoff aterrissa na IMAGE 04/05 e o
+    #     BANIDOS_IMAGE deste motor pega `big(?!-box)`.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes do payoff.
+    {"idade": 66,
+     "payoff": "with a small, slight frame and a deeply lined face, thin "
+               "white hair set in tight permed curls, reading glasses on a "
+               "beaded chain and a dark mole beside her right nostril, in a "
+               "printed housedress under a soft blue cardigan"},
+    {"idade": 57,
+     "payoff": "with broad shoulders and sun-weathered skin, her hair in a "
+               "high messy topknot and a thin scar through her right "
+               "eyebrow, in a moss green shirt dress with the sleeves "
+               "rolled up"},
+    {"idade": 63,
+     "payoff": "with a short, round frame, hair dyed flat dark brown under a "
+               "blunt fringe, half-moon reading glasses low on her nose and "
+               "a raised mole on her chin, in a camel knit twinset and a "
+               "single strand of pearls"},
+    {"idade": 64,
+     "payoff": "with a heavy-set frame, a shaggy shoulder-length "
+               "gray-and-black cut, sunglasses pushed up on her head and a "
+               "wide gap between her front teeth, in an orange tunic top and "
+               "white capri pants"},
+    {"idade": 65,
+     "payoff": "with a tall, narrow build, a long face and thick freckles "
+               "across her nose, fine silver hair swept back into a "
+               "tortoiseshell comb and a chunky amber ring, in a gray "
+               "sweater and a long denim skirt"},
+    {"idade": 53,
+     "payoff": "with a wiry, broad-shouldered build and deep laugh lines "
+               "around her mouth, short spiky ash-blond hair growing out at "
+               "the roots, thick red-framed glasses and a small scar at the "
+               "corner of her mouth, in a checked blue-and-white blouse and "
+               "dark jeans"},
 ]
 
 # prop do payoff (cena 4) — F15: ja' ereto no IMAGE, dimensionado por escala

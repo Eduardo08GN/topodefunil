@@ -235,11 +235,56 @@ usar aspas duplas para citar termo técnico.
 
 ---
 
+## 15. ⛔ MEDIR A DIMENSÃO ERRADA — pool cheio, repertório vazio
+
+O operador: *"seu repertório de personagens está fraquíssimo em boa parte dos
+agentes"*. Eu já tinha medido esses pools e passado: 8, 9, 14 entradas, todas
+distintas, nenhuma concentração acima do teto. **O número estava certo e a
+conclusão errada** — eu contei *quantas entradas existem* quando o que importa
+é *quantos eixos físicos as entradas acionam*.
+
+Medido depois: os REFS do VAZAMENTO tinham **cabelo em 100%** das entradas e
+**óculos em 0%, pelo facial em 0%, pele em 22%**. Nove homens descritos só pelo
+cabelo são o mesmo homem nove vezes — e o gerador devolve o mesmo rosto, que
+foi exatamente a queixa. No repo inteiro: **19 eixos zerados e 24 magros**.
+
+**A forma do erro é a de sempre**, só que na métrica: contar é verificar a
+FORMA do pool; perguntar se as pessoas parecem diferentes é verificar a FUNÇÃO.
+
+**O que impede:** [`medir_personagens.py`](medir_personagens.py) — lê os motores
+como árvore (`ast`, sem importar) e reporta cobertura por eixo: cabelo, pelo
+facial, óculos, porte, pele, âncora facial. `--gate` sai 1 se algum eixo estiver
+zerado. Entrada nova de personagem difere das outras em **≥ 3 eixos**.
+
+## 16. ⛔ E O MEDIDOR TAMBÉM MENTE — 22 dos 41 achados eram falso positivo
+
+A primeira versão do `medir_personagens.py` acusou **41 eixos zerados**. Vinte e
+dois não existiam:
+
+- `FIGURANTES` do ESCANDALO é `(1, 2)` — a **contagem** de figurantes. Meu regex
+  casou o nome e nunca olhou o conteúdo;
+- cobrei **pelo facial em pool de mulher** — barba de mulher;
+- o PRISMA **decompõe** o REF em `REF_IDADES × REF_FISICOS × REF_MARCAS`, que se
+  combinam no sorteio: cada parte é magra por construção, o **produto** é que
+  precisa cobrir.
+
+Se eu tivesse relatado os 41, teria mandado o operador consertar o que estava
+certo — a §6 de novo, agora vestida de ferramenta.
+
+**O que impede:** a §2 vale para o medidor igual vale para o motor. Antes de
+reportar achado de linter novo, **abrir os 3 primeiros e conferir na mão**. E o
+próprio medidor carrega no cabeçalho a lista do que já o fez mentir.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
 - [ ] **400 sorteios** pelas 5 páginas, `sortear → montar → lint`, **0 ERRO medido**
 - [ ] Nenhum eixo acima de **~17%** de concentração; mínimo **9 opções** por eixo
+- [ ] `python funil-organico/medir_personagens.py --gate` — **exit 0**, nenhum eixo
+      físico zerado. Contar entradas não basta: dez homens descritos só por cabelo
+      são o mesmo homem dez vezes, e o gerador devolve o mesmo rosto (§15)
 - [ ] Numeração de regra **bate caractere por caractere** entre motor e doutrina
 - [ ] Cada slot de copy **cumpre a função** pela qual existe (§4) — e se dá para
       checar por regex, **virou linter**

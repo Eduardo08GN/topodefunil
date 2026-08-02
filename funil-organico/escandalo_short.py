@@ -517,6 +517,42 @@ NARRADORAS = [
     {"id": "crespo_solto", "idade": 32,
      "marca": "a big loose curl-out worn wide and a small vertical scar through her left eyebrow",
      "roupa": "a cropped terracotta rib tank and a flat gold collar"},
+    # + 2026-08-02: mesma medicao que gerou os blocos dos HOMENS logo abaixo,
+    # so' que do lado da narradora — o operador viu SEMPRE O MESMO ROSTO. As
+    # quinze acima descrevem a pessoa por CABELO mais uma ancora: quinze
+    # mulheres descritas so' por cabelo sao a mesma mulher quinze vezes, e o
+    # gerador devolvia quase a mesma cara. As cinco novas trazem os eixos que
+    # este pool nao acionava:
+    #   · PORTE — era 0/15 aqui. broad-shouldered, tall lean, square e
+    #     short-waisted, compact, stocky. E' o eixo que muda a silhueta no
+    #     plano medio, onde a narradora vive nas tres cenas.
+    #   · OCULOS — armacao preta pesada e oculos de leitura baixos no nariz
+    #     (o pool so' tinha um redondo de ouro em quinze).
+    #   · PELE — sun-weathered.
+    #   · a ancora facial (P6) continua obrigatoria e sempre do lado ✅ de
+    #     licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO (cicatriz
+    #     limpa, pinta, ruga vertical). ⛔ dente lascado ficou de fora.
+    #   · FIGURINO: 3 cropped e 2 cobertas, dentro da proporcao que o
+    #     cabecalho deste pool ja' autoriza.
+    #   · ⛔ nenhuma diz postura: `stooped`/`curvado` colidiria com a travada
+    #     da ES4, que escreve `upright, chin level`. Ombro e' FORMA, nao pose.
+    #   · zero mencao a etnia: [D4] a narradora do ESCANDALO e' solta e nao
+    #     recebe injecao de etnia nenhuma — a variacao mora no cabelo.
+    {"id": "oculos_grossos", "idade": 50,
+     "marca": "a broad-shouldered build, blunt-cut iron-grey hair, heavy black-framed glasses and a notched scar in her upper lip",
+     "roupa": "a boxy oatmeal linen shirt and gold studs"},
+    {"id": "alta_sol", "idade": 44,
+     "marca": "a tall, lean frame, sun-weathered skin, ash-brown hair knotted low and a mole on her jawline",
+     "roupa": "a cropped khaki tank and sunglasses up in her hair"},
+    {"id": "leitura_quadrada", "idade": 52,
+     "marca": "a square, short-waisted build, close-cropped grey hair, reading glasses low on her nose and a deep vertical brow line",
+     "roupa": "a chambray shirt, cuffs turned back"},
+    {"id": "nariz_adunco", "idade": 31,
+     "marca": "a compact build, black hair shaved close on one side and a faint scar across her hooked nose",
+     "roupa": "a cropped olive tank and short black-painted nails"},
+    {"id": "cornrows_troncuda", "idade": 35,
+     "marca": "a stocky build, cornrows to the nape, heavy brows and a pale scar beside her left eye",
+     "roupa": "a cropped scarlet knit top and a gold cuff"},
 ]
 
 # ⭐ [D2]/[D4] O HOMEM — o que REAGE no hook e SEGURA A PROVA na cena 3. Dois
@@ -572,6 +608,40 @@ HOMENS_CLARA = [
     {"id": "nariz_torto", "idade": 70,
      "marca": "thin white hair combed forward and a nose broken and set crooked years ago",
      "roupa": "a pale grey flannel shirt", "calca": "navy work trousers"},
+    # + 2026-08-02: o operador mediu os dois pools e viu SEMPRE O MESMO ROSTO.
+    # As catorze acima descrevem o homem quase so' por CABELO mais uma ancora —
+    # catorze homens descritos so' por cabelo sao o mesmo homem catorze vezes, e
+    # o gerador devolvia quase a mesma cara. As quatro novas trazem os eixos
+    # que este pool nao acionava:
+    #   · 56 — OCULOS, o eixo ZERADO aqui (0/14): armacao preta grossa, mais
+    #     PORTE barrigudo.
+    #   · 58 — PORTE seco e nervoso mais PELE castigada de sol, mais bigode
+    #     chevron e dente de ouro (ancora ✅, a mesma coroa de ouro que ja'
+    #     roda em quatro motores).
+    #   · 67 — OCULOS de leitura meia-lua mais PORTE de ombros estreitos e
+    #     caidos, barba curta aparada e orelha entalhada.
+    #   · 69 — PORTE de pescoco grosso mais rosto barbeado e sinal de
+    #     nascenca vinho na tempora.
+    #   · a ancora e' sempre do lado ✅ de licoes-producao-veo §REF —
+    #     DISTINTIVO, NUNCA DETERIORADO (cicatriz limpa, dente de ouro,
+    #     orelha entalhada, sinal de nascenca).
+    #   · ⛔ ombro caido e' FORMA do ombro, nao postura: `stooped`/`curvado`
+    #     colidiria com a travada da ES4, que escreve `upright, chin level`.
+    #   · o espelho por indice com o pool ESCURA (mesma idade, mesma roupa,
+    #     mesma calca) esta' mantido nas quatro.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"id": "oculos_barriga", "idade": 56,
+     "marca": "a round-bellied build, sandy-grey hair over a receding hairline, thick black-framed glasses and a pitted scar on his right jaw",
+     "roupa": "a grey bowling shirt", "calca": "black work jeans"},
+    {"id": "chevron_ouro", "idade": 58,
+     "marca": "a lean wiry build, sun-creased skin, close iron-grey hair, a thick chevron moustache and a gold front tooth",
+     "roupa": "a faded chambray work shirt", "calca": "dark green work trousers"},
+    {"id": "leitura_orelha", "idade": 67,
+     "marca": "narrow sloping shoulders, white hair, a short boxed beard, half-moon reading glasses down his nose and a notched left ear",
+     "roupa": "a burgundy cardigan", "calca": "pleated beige trousers"},
+    {"id": "pescoco_mancha", "idade": 69,
+     "marca": "a broad thick-necked build, straight white hair cut short, a clean-shaven face and a port-wine birthmark on his right temple",
+     "roupa": "a maroon zip-up fleece", "calca": "washed indigo carpenter jeans"},
 ]
 
 HOMENS_ESCURA = [
@@ -618,6 +688,28 @@ HOMENS_ESCURA = [
     {"id": "nariz_torto_escuro", "idade": 70,
      "marca": "thin white hair worn close and a nose broken and set crooked years ago",
      "roupa": "a pale grey flannel shirt", "calca": "navy work trousers"},
+    # + 2026-08-02: o espelho das quatro novas do pool CLARA — mesma medicao (o
+    # operador viu sempre o mesmo rosto, porque as catorze acima descreviam a
+    # pessoa quase so' por cabelo), mesmos eixos novos, mesma idade, mesma
+    # roupa e mesma calca por indice. So' o descritor de cabelo/barba muda,
+    # que e' onde a etnia se le' [D2]/[D4].
+    #   · 56 — OCULOS (eixo ZERADO aqui) mais PORTE barrigudo.
+    #   · 58 — PORTE seco e nervoso mais PELE castigada de sol, bigode chevron
+    #     e dente de ouro.
+    #   · 67 — OCULOS de leitura meia-lua mais ombros estreitos e caidos.
+    #   · 69 — PORTE de pescoco grosso mais sinal de nascenca vinho na tempora.
+    {"id": "oculos_recuado", "idade": 56,
+     "marca": "a round-bellied build, grey stubble over a receding hairline, thick black-framed glasses and a pitted scar on his right jaw",
+     "roupa": "a grey bowling shirt", "calca": "black work jeans"},
+    {"id": "chevron_raspado", "idade": 58,
+     "marca": "a lean wiry build, sun-creased skin, a grey buzz cut, a thick chevron moustache and a gold front tooth",
+     "roupa": "a faded chambray work shirt", "calca": "dark green work trousers"},
+    {"id": "leitura_coils", "idade": 67,
+     "marca": "narrow sloping shoulders, close white coils, a short boxed beard, half-moon reading glasses down his nose and a notched left ear",
+     "roupa": "a burgundy cardigan", "calca": "pleated beige trousers"},
+    {"id": "pescoco_cachos", "idade": 69,
+     "marca": "a broad thick-necked build, tight white curls cut short, a clean-shaven face and a port-wine birthmark on his right temple",
+     "roupa": "a maroon zip-up fleece", "calca": "washed indigo carpenter jeans"},
 ]
 
 

@@ -396,6 +396,39 @@ NARRADORAS = [
     {"id": "coque_bagunca", "idade": 36,
      "marca": "sandy-blonde hair in a messy topknot and pale grey-green eyes under heavy dark brows",
      "roupa": "a cropped sage-green tank top and a slim gold watch"},
+    # + 2026-08-02: mesma medicao que gerou o bloco dos CORPOS_PROVA logo
+    # abaixo, so' que do lado da narradora — o operador viu SEMPRE O MESMO
+    # ROSTO. As catorze acima descrevem a pessoa por CABELO mais uma ancora:
+    # catorze mulheres descritas so' por cabelo sao a mesma mulher catorze
+    # vezes, e o gerador devolvia quase a mesma cara. As cinco novas trazem os
+    # eixos que este pool nao acionava:
+    #   · PORTE — era 0/14 aqui. heavy-set, tall lean, short compact, full
+    #     rounded, small wiry. E' o eixo que muda a silhueta no plano medio,
+    #     que e' onde a narradora vive nas tres cenas.
+    #   · OCULOS — armacao preta grossa e oculos de sol no cabelo (o pool so'
+    #     tinha um fio de ouro em catorze).
+    #   · PELE — sun-weathered, manchas de sol nas macas do rosto.
+    #   · a ancora facial (P6) continua obrigatoria e sempre do lado ✅ de
+    #     licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO (cicatriz
+    #     limpa, fenda no queixo, pinta). ⛔ dente lascado ficou de fora.
+    #   · [D3] `cropped` no inicio da roupa nas cinco, como manda o pool.
+    #   · zero mencao a etnia: a narradora do TROCA e' solta e nao recebe
+    #     injecao de etnia nenhuma — a variacao mora no cabelo.
+    {"id": "oculos_grossos_lenco", "idade": 47,
+     "marca": "a heavy-set build, a faded bandana folded back over thick greying hair, thick black-framed glasses and a raised pale scar through her left eyebrow",
+     "roupa": "a cropped rust-brown corduroy overshirt and one wide gold cuff on her right wrist"},
+    {"id": "locs_alta_seca", "idade": 52,
+     "marca": "a tall lean frame with narrow sloping shoulders, shoulder-length locs pulled back off her face, sun-weathered skin and a deep cleft in her chin",
+     "roupa": "a cropped sand-coloured linen shirt tied at the ribs and thin gold hoops"},
+    {"id": "oculos_sol_baixinha", "idade": 35,
+     "marca": "a short compact build, dark sunglasses pushed up into thick sun-bleached waves, a wide flat nose and a dark mole under her right eye",
+     "roupa": "a cropped faded-red sleeveless top and a chunky gold curb chain"},
+    {"id": "cornrows_cheia", "idade": 44,
+     "marca": "a full rounded build, tight cornrows gathered into a low bun, dark sun spots scattered across her cheekbones and a short vertical scar at the corner of her mouth",
+     "roupa": "a cropped teal wrap top and two gold studs in her left ear"},
+    {"id": "raspado_lateral", "idade": 49,
+     "marca": "a small wiry frame, dark hair worn long on one side and shaved close over the other ear, wide-set eyes and a dark mole low on her right jawline",
+     "roupa": "a cropped oatmeal cable-knit sweater and thin gold rings on four fingers"},
 ]
 
 # ⭐ [D2] O CORPO-PROVA E' TRAVADO pela etnia da pagina. Dois pools espelhados
@@ -457,6 +490,36 @@ CORPOS_PROVA_CLARA = [
      "marca": "a close silver crew cut and a long-healed nick through his right eyebrow",
      "roupa": "a blue-and-white plaid short-sleeve shirt",
      "calca": "brown canvas work pants"},
+    # + 2026-08-02: o operador mediu os dois pools e viu SEMPRE O MESMO ROSTO.
+    # As doze acima descrevem o corpo-prova quase so' por CABELO mais uma
+    # ancora — doze homens descritos so' por cabelo sao o mesmo homem doze
+    # vezes, e o gerador devolvia quase a mesma cara. As tres novas trazem os
+    # eixos que este pool nao acionava:
+    #   · 52 — OCULOS, o eixo ZERADO aqui (0/12): oculos de leitura baixos no
+    #     nariz, mais entrada de cabelo recuada e orelha entalhada.
+    #   · 54 — PORTE (ombros caidos) mais PELO FACIAL de costeleta.
+    #   · 62 — PORTE de rosto (mandibula larga e quadrada) mais PELE castigada
+    #     de sol e barba por fazer.
+    #   · a ancora e' sempre do lado ✅ de licoes-producao-veo §REF —
+    #     DISTINTIVO, NUNCA DETERIORADO (cicatriz limpa, orelha entalhada).
+    #   · ⛔ nenhuma diz postura: `stooped`/`curvado` colide com a travada da
+    #     F12b, que ja' escreve `upright, chin level` na mesma sentenca do
+    #     IMAGE 03. Ombro caido e' FORMA do ombro, nao postura.
+    #   · o espelho por indice com o pool ESCURA (mesma idade, mesma roupa,
+    #     mesma calca) esta' mantido nas tres.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"id": "leitura_orelha", "idade": 52,
+     "marca": "a receding sandy hairline, reading glasses low on his nose and a notched left ear",
+     "roupa": "a short-sleeve grey chambray shirt buttoned to the collar",
+     "calca": "dark green work trousers"},
+    {"id": "costeleta_cicatriz", "idade": 54,
+     "marca": "sloping shoulders, thick rust-red sideburns and a raised scar along his left jaw",
+     "roupa": "a washed-out teal work shirt with the top button open",
+     "calca": "sand-coloured duck trousers"},
+    {"id": "mandibula_sol", "idade": 62,
+     "marca": "a broad square jaw under close grey stubble, sun-weathered skin and a horseshoe scar at his hairline",
+     "roupa": "a dark brown short-sleeve utility shirt",
+     "calca": "faded grey denim jeans"},
 ]
 CORPOS_PROVA_ESCURA = [
     {"id": "prata_barba", "idade": 58,
@@ -507,6 +570,26 @@ CORPOS_PROVA_ESCURA = [
      "marca": "a neat grey beard and a long-healed nick through his right eyebrow",
      "roupa": "a blue-and-white plaid short-sleeve shirt",
      "calca": "brown canvas work pants"},
+    # + 2026-08-02: o espelho das tres novas do pool CLARA — mesma medicao (o
+    # operador viu sempre o mesmo rosto, porque as doze acima descreviam a
+    # pessoa quase so' por cabelo), mesmos eixos novos, mesma idade, mesma
+    # roupa e mesma calca por indice. So' o descritor de cabelo/barba muda,
+    # que e' onde a etnia se le' [D2].
+    #   · 52 — OCULOS (eixo ZERADO aqui) mais entrada recuada e orelha entalhada.
+    #   · 54 — PORTE (ombros caidos) mais PELO FACIAL de costeleta.
+    #   · 62 — PORTE de rosto (mandibula larga) mais barba por fazer.
+    {"id": "taper_leitura", "idade": 52,
+     "marca": "a receding grey taper, reading glasses low on his nose and a notched left ear",
+     "roupa": "a short-sleeve grey chambray shirt buttoned to the collar",
+     "calca": "dark green work trousers"},
+    {"id": "costeletas_grisalhas", "idade": 54,
+     "marca": "sloping shoulders, thick grey muttonchop sideburns and a raised scar along his left jaw",
+     "roupa": "a washed-out teal work shirt with the top button open",
+     "calca": "sand-coloured duck trousers"},
+    {"id": "ondas_mandibula", "idade": 62,
+     "marca": "a broad square jaw under grey stubble, short grey waves and a horseshoe scar at his hairline",
+     "roupa": "a dark brown short-sleeve utility shirt",
+     "calca": "faded grey denim jeans"},
 ]
 
 

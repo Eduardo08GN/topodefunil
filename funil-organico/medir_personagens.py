@@ -1,0 +1,312 @@
+# -*- coding: utf-8 -*-
+"""Mede a DIVERSIDADE DESCRITIVA dos pools de personagem dos motores.
+
+    python funil-organico/medir_personagens.py            # relatorio
+    python funil-organico/medir_personagens.py --gate      # sai 1 se houver ZERO
+    python funil-organico/medir_personagens.py --arquivo troca_short.py
+
+POR QUE ESTE ARQUIVO EXISTE (2026-08-02). O operador reclamou que os agentes
+geravam sempre a mesma cara: "seu repertorio de personagens esta fraquissimo".
+A contagem de entradas nao mostrava nada de errado — os pools tinham 8, 9, 14
+opcoes. O defeito estava em OUTRA dimensao: as entradas descreviam a pessoa
+so' por CABELO. Dez homens descritos so' por cabelo sao o mesmo homem dez
+vezes, e o gerador devolve o mesmo rosto.
+
+Entao a metrica nao e' "quantas entradas o pool tem" (isso o medir_vicio.py
+mede) e sim "quantos EIXOS FISICOS as entradas realmente acionam".
+
+⛔ EIXO COM ZERO MENCOES E' REPROVACAO. Todo motor novo passa por aqui antes
+de virar .exe — e' o gate de personagem do checklist de licoes-de-construcao.
+
+⚠️ ESTE MEDIDOR JA' MENTIU UMA VEZ. A v1 acusou 41 eixos zerados e 22 eram
+FALSO POSITIVO:
+  · FIGURANTES do ESCANDALO e' (1, 2) — a CONTAGEM de figurantes, nao gente.
+    Por isso o e_pool_de_gente(): pool sem texto descritivo nao e' pool de
+    personagem so' porque o NOME parece.
+  · pool de mulher nao tem pelo facial. Cobrar isso e' cobrar barba de mulher.
+  · o PRISMA decompoe o REF em REF_IDADES x REF_FISICOS x REF_MARCAS, que se
+    COMBINAM no sorteio: cada pool sozinho e' magro por construcao, o PRODUTO
+    e' que precisa cobrir os eixos.
+Linter que reprova o que esta' certo nunca foi testado — vale para o medidor
+igual vale para o motor (licoes-de-construcao §linter contra template).
+"""
+import argparse
+import ast
+import io
+import os
+import re
+import sys
+
+FO = os.path.dirname(os.path.abspath(__file__))
+
+# os eixos que fazem duas pessoas parecerem diferentes num plano medio.
+# ⛔ nao existe eixo de ETNIA aqui de proposito: etnia e' injetada por pagina
+# pelo dict ETNIA do motor (congruencia com o avatar), nunca pela descricao.
+# ⚠️ prefixo termina em \w* de proposito. A v3 escrevia "freckl" dentro de
+# \b(...)\b e por isso NUNCA casava com "freckles" nem "freckled" — o eixo pele
+# do organicwave aparecia zerado com as tres entradas preenchidas.
+EIXOS = {
+    "cabelo":  r"\b(hair|bald\w*|buzz|crew.?cut|ponytail|braid\w*|dreadlock\w*|"
+               r"afro|topknot|bun|shaved head|receding|comb-?over|curls?|locs|"
+               r"perm\w*|pixie|bob|fringe|mane|shag|flat-?top|taper|hairline)\b",
+    "pelo_facial": r"\b(beard\w*|mustache\w*|moustache\w*|goatee|stubble|"
+               r"sideburns|muttonchop\w*|clean-?shaven|whiskers|chin.?strap|"
+               r"chevron|walrus)\b",
+    "oculos":  r"\b(glasses|spectacles|bifocal\w*|readers|shades|lenses|"
+               r"rimless|half-?rim|half-?moon|wire-?rimmed|wire-?frame\w*|"
+               r"sunglasses|clip-?on)\b",
+    "porte":   r"\b(heavy-?set|stocky|thin|lean|bony|barrel-?chested|burly|"
+               r"wiry|slight|paunch\w*|round-?faced|tall|short|stout|gaunt|"
+               r"husky|compact|rangy|solid|thickset|petite|small-?framed|"
+               r"long-?limbed|full-?figured|slim|trim|broad-?shouldered|"
+               r"heavy through|broad shoulders|sloping shoulders|wide hips|"
+               r"narrow waist|swimmer's shoulders|narrow build|square frame|"
+               r"\w+ frame|\w+ build)\b",
+    # ⛔ "olive" e "fair" sairam: casavam com COR DE ROUPA ("olive summer
+    # dress") e davam eixo de pele preenchido onde nao havia pele nenhuma.
+    # ⛔ "dark-skinned" saiu porque etnia nao entra por descricao (vem do
+    # dict ETNIA por pagina) — cobrar isso seria cobrar a regra ao contrario.
+    "pele":    r"\b(freckl\w*|weathered|sun-?weathered|leathery|lined|ruddy|"
+               r"sallow|pockmarked|smooth-?skinned|deeply lined|creased|"
+               r"sun-?spotted|age spots?|liver-?spotted|laugh lines|"
+               r"lines fanning|tan\w* from|tanned)\b",
+    # ancora facial permanente (P6) — e' o que faz o rosto VOLTAR igual na
+    # cena seguinte. ⛔ so' do lado distintivo: cicatriz limpa, mecha, pinta.
+    # dente lascado / palpebra caida viram mendigo e matam a credibilidade
+    # (licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO).
+    "ancora":  r"\b(scars?|birthmark\w*|moles?|streak\w*|notched|dimple\w*|"
+               r"cleft|gap between|beauty mark|crown|stud|hoop|"
+               r"patch of white|white streak|silver streak)\b",
+}
+
+# ⭐ CONTROLES DO PROPRIO MEDIDOR. Este arquivo ja' mentiu TRES vezes (ver
+# cabecalho). Cada eixo carrega frases que TEM de casar e frases que NAO podem
+# casar — as negativas sao os falsos positivos reais que ja' aconteceram.
+# `--autoteste` roda isso; o --gate roda antes de medir qualquer coisa.
+CONTROLES = {
+    "pele":   ([u"a dense spray of dark freckles",
+                u"skin tanned and freckled from the sun",
+                u"dark age spots across his right temple",
+                u"deep laugh lines around her mouth"],
+               [u"a fitted olive summer dress", u"a rose-pink cardigan"]),
+    "porte":  ([u"petite and small-framed",
+                u"broad shoulders and clear definition in her arms",
+                u"wide hips and a narrow waist",
+                u"broad-shouldered with strong arms",
+                u"a tall rangy frame"],
+               [u"a wide brush mustache", u"a broad square jaw"]),
+    "cabelo": ([u"thin white hair set in tight permed curls",
+                u"a high messy topknot", u"a cropped platinum pixie cut"],
+               [u"thick black-framed glasses"]),
+    "oculos": ([u"half-moon reading glasses low on her nose",
+                u"thin gold wire-rimmed glasses",
+                u"sunglasses pushed up on her head"],
+               [u"a fitted denim shirtdress"]),
+    "pelo_facial": ([u"a full snow-white walrus mustache", u"close grey stubble",
+                     u"thick rust-red sideburns"],
+                    [u"a heavy gray-brown mop combed forward"]),
+    "ancora": ([u"a thin scar through her right eyebrow",
+                u"a coin-sized dark birthmark on his crown",
+                u"a wide gap between her front teeth"],
+               [u"a printed housedress"]),
+}
+
+
+def autoteste():
+    """Falha ANTES de medir se algum eixo voltou a mentir. Devolve nº de falhas."""
+    falhas = 0
+    for eixo, (devem, nao_devem) in sorted(CONTROLES.items()):
+        for frase in devem:
+            if not re.search(EIXOS[eixo], frase, re.I):
+                print("  AUTOTESTE FALHOU  %-12s deveria casar: %r" % (eixo, frase))
+                falhas += 1
+        for frase in nao_devem:
+            achado = re.search(EIXOS[eixo], frase, re.I)
+            if achado:
+                print("  AUTOTESTE FALHOU  %-12s nao podia casar %r (casou %r)"
+                      % (eixo, frase, achado.group(0)))
+                falhas += 1
+    print("autoteste do medidor: %s" % ("%d falha(s)" % falhas if falhas else "ok"))
+    return falhas
+
+# ⚠️ o sufixo opcional NAO e' enfeite. A v2 deste regex terminava em ")$" e por
+# isso era CEGA para HOMENS_CLARA, CORPOS_PROVA_ESCURA e REFS_H_CLARA — ou seja,
+# o elenco masculino do ESCANDALO, do TROCA e do ORGANICWAVE inteiro nunca foi
+# medido, e o organicwave_short.py nao aparecia UMA VEZ no relatorio. Gate que
+# nao ve o pool nao reprova o pool: ele so' produz um "passou" mentiroso.
+NOMES_DE_POOL = re.compile(
+    r"^(REFS?|REF|HOMENS|MULHERES|NARRADORAS?|NARRADORES?|VITIMAS?|"
+    r"ARQUETIPOS?|PACIENTES?|FIGURANTES?|PLATEIA|TESTEMUNHAS?|CORPOS?_PROVA|"
+    r"MONTANHESES?|ESPECIALISTAS?)(_[A-Z_]+)?$")
+
+# pools que se COMBINAM no sorteio — medir o produto, nao as partes
+COMBINAM = {"randomizador-prisma.py": ["REF_IDADES", "REF_FISICOS", "REF_MARCAS"]}
+
+# ⭐ ZEROS QUE SUSTENTAM REGRA. Nem todo eixo vazio e' pobreza: em alguns pools
+# o vazio E' a regra, e preencher DESTROI o contraste que faz o video funcionar.
+# Gate que berra pra sempre e' gate que ninguem le' — entao esses saem da
+# reprovacao e aparecem rotulados. Cada linha citou o codigo que a sustenta.
+# ⛔ so' entra aqui zero VERIFICADO no arquivo, nunca zero que deu trabalho.
+EXCECOES = {
+    ("flagrante_lucas.py", "REFS", "pelo_facial"):
+        "F4b (flagrante_lucas.py:346) — o REF e' barbeado e sem oculos DE "
+        "PROPOSITO: careca+bigode+oculos e' o que marca a VITIMA. Encher aqui "
+        "apaga o contraste que separa os dois no plano medio.",
+    ("flagrante_lucas.py", "REFS", "oculos"): "idem F4b",
+    ("pee_lucas.py", "REFS", "pelo_facial"): "idem F4b/PE9 — o PEE herda o contraste",
+    ("pee_lucas.py", "REFS", "oculos"): "idem F4b/PE9",
+    ("vazamento_lucas.py", "REFS", "pelo_facial"):
+        "o BLOCO 0 ja' renderiza `clean-shaven` em string TRAVADA "
+        "(vazamento_lucas.py:819) — barba no pool contradiria o proprio prompt.",
+    ("necrose_lucas.py", "ARQUETIPOS", "pelo_facial"):
+        "NE5 — ARQUETIPOS e' cenario+chapeu+animal. O rosto mora em REFS.",
+    ("necrose_lucas.py", "ARQUETIPOS", "oculos"): "idem NE5",
+    ("randomizador-prisma.py", "REF_IDADES+REF_FISICOS+REF_MARCAS", "pele"):
+        "FORA DE ESCOPO — o PRISMA e' a outra engine, e a ordem de iteracao "
+        "de 2026-08-02 e' `por enquanto apenas os AGENTES SHORTS`. Lacuna real, "
+        "so' que nao e' desta frente.",
+}
+
+FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)
+IGNORAR = ("short_comum.py", "ui_agente.py", "medir_personagens.py")
+
+PISO_MAGRO = 30.0   # abaixo disso o eixo existe mas quase nao e' sorteado
+
+
+def texto_da_entrada(v):
+    """Concatena tudo que e' string na entrada, seja dict, str ou tupla."""
+    if isinstance(v, str):
+        return v
+    if isinstance(v, dict):
+        return " ".join(str(x) for x in v.values() if isinstance(x, str))
+    if isinstance(v, (list, tuple)):
+        return " ".join(texto_da_entrada(x) for x in v)
+    return ""
+
+
+def e_pool_de_gente(entradas):
+    """(1, 2) nao e' gente. Exige texto com cara de descricao fisica."""
+    textos = [texto_da_entrada(v) for v in entradas]
+    if not any(textos):
+        return False
+    return sum(len(t) for t in textos) / float(len(textos)) >= 15
+
+
+def pools_do_arquivo(caminho):
+    """Le o .py como ARVORE, nao importa o modulo — nao dispara efeito nenhum."""
+    with io.open(caminho, encoding="utf-8") as f:
+        arvore = ast.parse(f.read())
+    achados = {}
+    for no in arvore.body:
+        if not isinstance(no, ast.Assign):
+            continue
+        for alvo in no.targets:
+            if not isinstance(alvo, ast.Name) or not NOMES_DE_POOL.match(alvo.id):
+                continue
+            try:
+                valor = ast.literal_eval(no.value)
+            except (ValueError, SyntaxError):
+                continue
+            if isinstance(valor, (list, tuple)) and valor and e_pool_de_gente(valor):
+                achados[alvo.id] = list(valor)
+    return achados
+
+
+def relatar(rotulo, textos, zerados, magros, declarados, arq, feminino):
+    print("  %-16s n=%-3d distintas=%-3d" % (rotulo, len(textos), len(set(textos))))
+    for eixo, padrao in EIXOS.items():
+        if eixo == "pelo_facial" and feminino:
+            print("      %-12s    —     pool feminino, eixo nao se aplica" % eixo)
+            continue
+        bate = sum(1 for t in textos if re.search(padrao, t, re.I))
+        pct = 100.0 * bate / len(textos)
+        motivo = EXCECOES.get((arq, rotulo, eixo))
+        if bate == 0 and motivo:
+            sinal, alvo = "zero por doutrina", declarados
+        elif bate == 0:
+            sinal, alvo = "ZERO  <<<", zerados
+        elif pct < PISO_MAGRO:
+            sinal, alvo = "magro", magros
+        else:
+            sinal, alvo = "ok", None
+        if alvo is not None:
+            alvo.append((arq, rotulo, eixo))
+        print("      %-12s %3d/%-3d  %5.1f%%  %s" % (eixo, bate, len(textos), pct, sinal))
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--gate", action="store_true",
+                    help="sai com codigo 1 se algum eixo estiver zerado")
+    ap.add_argument("--arquivo", help="medir so' um motor")
+    ap.add_argument("--autoteste", action="store_true",
+                    help="so' roda os controles do medidor e sai")
+    args = ap.parse_args()
+
+    # ⛔ medidor mente. Roda os controles ANTES de reportar qualquer numero.
+    falhas = autoteste()
+    if args.autoteste:
+        return 1 if falhas else 0
+    if falhas:
+        print("⛔ o medidor esta' quebrado — conserte o regex antes de confiar "
+              "no relatorio abaixo")
+
+    if args.arquivo:
+        arquivos = [args.arquivo]
+    else:
+        arquivos = sorted(a for a in os.listdir(FO)
+                          if a.endswith(".py") and not a.endswith("_app.py")
+                          and a not in IGNORAR)
+    zerados, magros, declarados = [], [], []
+    for arq in arquivos:
+        try:
+            pools = pools_do_arquivo(os.path.join(FO, arq))
+        except (SyntaxError, IOError) as e:
+            print("%s: NAO LE (%s)" % (arq, e))
+            continue
+        if not pools:
+            continue
+        print("\n" + "=" * 74 + "\n" + arq + "\n" + "=" * 74)
+        combinam = COMBINAM.get(arq, [])
+        partes = []
+        for nome, entradas in sorted(pools.items()):
+            textos = [texto_da_entrada(v).lower() for v in entradas]
+            if nome in combinam:
+                partes.append(textos)
+                print("  %-16s n=%-3d  (parte do produto, medido junto abaixo)"
+                      % (nome, len(entradas)))
+                continue
+            feminino = (re.match(r"(MULHERES|NARRADORAS)", nome) is not None
+                        or any(FEMININO.search(t) for t in textos))
+            relatar(nome, textos, zerados, magros, declarados, arq, feminino)
+        if len(partes) > 1:
+            juntos = [" ".join(p[i % len(p)] for p in partes)
+                      for i in range(max(len(p) for p in partes))]
+            relatar("+".join(combinam), juntos, zerados, magros, declarados,
+                    arq, False)
+
+    print("\n" + "=" * 74)
+    print("EIXOS ZERADOS: %d   (reprovacao)" % len(zerados))
+    for a, n, e in zerados:
+        print("  %-26s %-16s %s" % (a, n, e))
+    print("EIXOS MAGROS (<%.0f%%): %d   (aviso)" % (PISO_MAGRO, len(magros)))
+    for a, n, e in magros:
+        print("  %-26s %-16s %s" % (a, n, e))
+    print("ZERO POR DOUTRINA: %d   (nao e' pobreza, e' a regra)" % len(declarados))
+    for a, n, e in declarados:
+        print("  %-26s %-16s %-12s %s" % (a, n, e, EXCECOES[(a, n, e)].split(" — ")[0]))
+    # excecao declarada que deixou de estar zerada = alguem encheu um eixo que
+    # sustentava contraste. Nao e' erro de gate, e' regra quebrada em silencio.
+    orfas = [k for k in EXCECOES if k[0] in arquivos and k not in declarados]
+    if orfas:
+        print("\n⚠️  EXCECAO DECLARADA QUE NAO ESTA' MAIS ZERADA — confira se a "
+              "regra foi quebrada, ou remova a excecao:")
+        for a, n, e in orfas:
+            print("  %-26s %-16s %s" % (a, n, e))
+    if args.gate and (zerados or orfas):
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

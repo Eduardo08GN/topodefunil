@@ -349,6 +349,43 @@ ARQUETIPOS = [
      "animais": ["a full-grown black bear", "a full-grown bull elk"],
      "luz": "Warm open meadow daylight, soft and clear.",
      "audio": "bees, wind through tall grass"},
+
+    # + 2026-08-02: mesma passada de repertorio que abriu o pool REFS logo
+    # abaixo. ⚠️ ESTE bloco NAO e' ganho de personagem — arquetipo e' CENARIO
+    # + CHAPEU + ANIMAL (NE5), e o rosto mora nos REFS. E' ganho de CENARIO:
+    # os dezesseis acima ja' repetiam luz e fundo no lote, e a familia
+    # montanhes e a nativa eram as unicas com set de INVERNO e de AGUA
+    # PARADA zerados. As duas novas entram exatamente por ai:
+    #   · montanhes_passo — o unico set de neve fechada do pool, com luz azul
+    #     chapada sem sombra, e dois animais novos (alce macho, carcaju).
+    #   · nativo_lago — o unico set de agua parada com bruma, luz fria vinda
+    #     de baixo, e lince, que ainda nao existia no pool.
+    #   · ⛔ ZERO OCULOS no `chapeu`: o montanhes do NECROSE e' o PROPRIO
+    #     narrador/REF, e a string `mesmo` das cenas 2-5 so' reafirma "same
+    #     hat, same beard, same <marca>" — oculos sumiriam da cena 2 em
+    #     diante e o Veo trocaria de pessoa (P6). Chapeu e' chapeu.
+    #   · os `animais` comecam todos em "a ": a IMAGE 04 faz
+    #     .replace("a ", "", 1) e um "an ..." sairia "the same an ...".
+    #   · o animal continua prop de DOMINANCIA (NE4), nunca bicho de
+    #     estimacao: nada deitado, nada de coleira.
+    {"id": "montanhes_passo", "selo": "N", "familia": "montanhes",
+     "set": "a windswept high pass in deep winter, a cairn of stacked flat "
+            "stones beside him, an unbroken snowfield falling away behind "
+            "and bare black rock above",
+     "curto": "the same snow pass",
+     "chapeu": "a thick knitted wool cap pulled down over his ears",
+     "animais": ["a full-grown bull moose", "a heavy-shouldered wolverine"],
+     "luz": "Flat cold blue winter light off the snow, almost shadowless.",
+     "audio": "wind driving loose snow over stone"},
+    {"id": "nativo_lago", "selo": "N", "familia": "nativo norte-americano",
+     "set": "a stony northern lakeshore in the last hour of daylight, a "
+            "birch-bark canoe pulled up on the stones behind him, dark "
+            "spruce forest across flat water, low mist on the surface",
+     "curto": "the same lakeshore",
+     "chapeu": "a headband of dark otter fur",
+     "animais": ["a full-grown bull elk", "a full-grown lynx"],
+     "luz": "Cool blue light coming off still water, soft and even.",
+     "audio": "water lapping on stones, a loon calling"},
 ]
 
 # NE4 - o animal e prop de STATUS (a alavanca do leao do Kofi), nao de
@@ -430,6 +467,26 @@ REFS = [
                "white beard tied with two leather cords",
      "marca": "a pale scar through his upper lip and a heavy silver hoop in "
               "his left earlobe"},
+    # + 2026-08-02: o operador mediu o pool inteiro e viu SEMPRE O MESMO ROSTO.
+    # As onze acima variam cabelo e barba e mais nada de estrutural, entao o
+    # gerador recebia quase a mesma frase e devolvia quase o mesmo montanhes.
+    # A nova abre o eixo ZERADO deste pool: OCULOS (0/11), que nenhuma das onze
+    # menciona — e traz junto um PORTE novo (cintura grossa, nao seca).
+    #   · 68 — oculos de leitura na ponta do nariz mais falha entre os dentes
+    #     da frente; barba branca curta de um polegar, corte escovinha.
+    #   · a ancora e' do lado ✅ de licoes-producao-veo §REF — DISTINTIVO,
+    #     NUNCA DETERIORADO (falha entre os dentes, nao dente lascado).
+    #   · o CHAPEU nao mora aqui (NE5): vem do arquetipo.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 68,
+     "corpo": "a heavily muscled thick-waisted frame - a deep heavy chest, "
+              "forearms like fence posts and a hard stomach with clearly cut "
+              "abdominal muscles",
+     "cabeca": "coarse iron-gray hair in a flat brush cut and a short "
+               "bristly white beard no longer than a thumb",
+     "marca": "a wide gap between his two front teeth that shows whenever he "
+              "talks, and thin gold-rimmed reading glasses on the end of his "
+              "nose"},
 ]
 
 # NE6 - O RITUAL E O GELATIN TRICK (correcao do operador, 2026-07-30).

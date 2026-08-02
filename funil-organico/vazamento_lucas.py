@@ -250,6 +250,51 @@ REFS = [
      "marca": "a bald crown with cropped gray hair at the sides and a thin pale "
               "scar along his jawline",
      "roupa2": "a navy blue short-sleeve camp shirt"},
+    # + 2026-08-02: o operador mediu o pool inteiro e viu SEMPRE O MESMO ROSTO.
+    # As nove acima descrevem a pessoa quase so' por CABELO — nove homens
+    # descritos so' por cabelo sao o mesmo homem nove vezes, e o gerador
+    # devolvia quase a mesma cara. As quatro novas entram cada uma por um eixo
+    # que estava zerado ou raso aqui:
+    #   · 60 — PORTE de lutador (pescoco grosso, ombros pesados) e ancora de
+    #     cicatriz limpa no labio.
+    #   · 75 — PORTE seco e ossudo mais PELE de idade (manchas senis).
+    #   · 73 — OCULOS, o eixo ZERADO deste pool (0/9), mais calvicie total.
+    #   · 65 — OCULOS de leitura mais entrada de cabelo em V, cabelo ralo.
+    #   · a ancora e' sempre do lado ✅ de licoes-producao-veo §REF —
+    #     DISTINTIVO, NUNCA DETERIORADO (cicatriz limpa, mancha, mecha).
+    #   · PELO FACIAL continua fora de proposito: o BLOCO 0 deste motor ja'
+    #     renderiza `clean-shaven` em string travada, e barba aqui poria o
+    #     motor a se contradizer dentro do mesmo bloco.
+    #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    {"idade": 60, "musculo": "a broad thick-necked wrestler's build with heavy "
+                             "shoulders, a deep chest and a hard flat stomach",
+     "marca": "jet-black hair going gray only at the temples, cut in a short "
+              "flat-top, and a thick white scar running down through his upper lip",
+     "roupa2": "a white ribbed sleeveless undershirt"},
+    {"idade": 75, "musculo": "a rangy hard-muscled build with wide bony shoulders, "
+                             "stringy sinewy arms and a lean ridged stomach",
+     "marca": "a full head of snow-white hair long enough to touch his collar and "
+              "a cluster of dark age spots across his right temple",
+     "roupa2": "a sand-colored short-sleeve safari shirt with buttoned epaulets"},
+    {"idade": 73, "musculo": "a blocky powerlifter's build with a heavy chest, wide "
+                             "back muscles and a thick hard midsection",
+     "marca": "a completely bald smooth scalp with no hair left at the sides, thin "
+              "gold wire-rimmed glasses, and a deep pitted scar high on his right "
+              "cheekbone",
+     "roupa2": "a teal short-sleeve bowling shirt with cream side panels"},
+    {"idade": 65, "musculo": "a build that tapers hard from wide flaring back "
+                             "muscles to a narrow waist, with square chest muscles "
+                             "and thick round shoulders",
+     "marca": "a sharp widow's peak in thinning ash-gray hair, square silver-rimmed "
+              "reading glasses low on the tip of his nose, and a wide pale scar "
+              "across his forehead above the left eyebrow",
+     # ⚠️ 2026-08-02: esta entrada nascia com "an oval name patch on the chest"
+     # e foi corrigida no mesmo dia, antes de ir ao ar. Cracha/etiqueta com
+     # nome PEDE TEXTO NA CENA, e a cauda travada do IMAGE deste motor fecha
+     # com "no text, no watermark" — o prompt se contradizia sozinho. Trocado
+     # so' o pedaco do cracha; a camisa de mecanico fica.
+     "roupa2": "a khaki short-sleeve mechanic's shirt with a buttoned flap "
+               "pocket on the chest"},
 ]
 
 # V12 ⭐ — a mulher de 30-35 na cena 4, SEMPRE. Linda, abracada em pe, muda, rindo.
@@ -276,6 +321,52 @@ MULHERES = [
     {"idade": 33, "desc": "long dark hair with sun-lightened ends falling past her "
                           "shoulders, a small crescent scar on her left temple, a fitted "
                           "red sleeveless sundress"},
+    # + 2026-08-02: mesma medicao que gerou o bloco dos REFS logo acima, so'
+    # que do lado da mulher da cena 4 — o operador viu SEMPRE O MESMO ROSTO. E
+    # aqui o vicio era literal: as OITO acima abrem TODAS em "long ... hair".
+    # Oito mulheres descritas so' por cabelo comprido sao a mesma mulher oito
+    # vezes. As seis novas quebram isso por construcao e trazem os eixos que o
+    # pool nao acionava:
+    #   · CABELO que nao e' comprido — bob reto, corte abaixo da orelha, twist
+    #     baixo, pixie, raspado lateral, coque com oculos de sol em cima.
+    #   · OCULOS — tortoiseshell grosso, fio de ouro. Eram 0/8 aqui.
+    #   · PORTE — long-limbed, ombros de nadadora, encorpada, ombros
+    #     quadrados. Nenhuma das oito menciona compleicao.
+    #   · PELE — sardas, marca de sol nos ombros.
+    #   · a ancora facial (P6) continua obrigatoria em cada uma e sempre do
+    #     lado ✅ de licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO
+    #     (pinta, sarda, cicatriz limpa, dente separado). ⛔ dente lascado
+    #     ficou de fora: colide com o `strikingly beautiful` que o motor
+    #     concatena logo depois.
+    #   · o literal `fitted` e a peca fechada estao nas seis: e' o que a V12
+    #     cobra, e a idade dos dois vai escrita em toda mencao.
+    #   · ⛔ nenhuma entrada de 30 anos: `IDADE_EXT[30]` e' ("thirty",
+    #     "thirty") e cinco moldes de CORPO escrevem "Thirty-{n} years old" —
+    #     sairia "Thirty-thirty years old", a reincidencia exata do bug
+    #     "Thirty-4" documentado mais abaixo neste arquivo.
+    {"idade": 34, "desc": "a blunt dark bob cut level with her jaw, thick "
+                          "tortoiseshell glasses, tall and long-limbed, a small dark "
+                          "mole on the point of her chin, a fitted denim shirtdress"},
+    {"idade": 31, "desc": "wavy copper-red hair cropped just below her ears, broad "
+                          "swimmer's shoulders, a heavy dusting of freckles across "
+                          "her nose and cheekbones, a narrow gap between her front "
+                          "teeth, a fitted white sundress"},
+    {"idade": 35, "desc": "dark hair in a low twist with one silver streak at the "
+                          "temple, solidly built, sun-freckled shoulders, a fine pale "
+                          "scar across the bridge of her nose, a fitted "
+                          "mustard-yellow tank dress"},
+    {"idade": 32, "desc": "a cropped platinum pixie cut, thin gold wire-rimmed "
+                          "glasses, high sharp cheekbones, a dark beauty mark at the "
+                          "outer corner of her right eye, a fitted black polka-dot "
+                          "sundress"},
+    {"idade": 34, "desc": "dark hair shaved close on one side, falling in waves on "
+                          "the other, long-legged, a faint tan line across her "
+                          "shoulders, a thin white scar through her upper lip, a "
+                          "fitted olive tank top and khaki shorts"},
+    {"idade": 33, "desc": "hair twisted up in a knot with sunglasses pushed up on "
+                          "top of her head, tall with square shoulders, heavy dark "
+                          "eyebrows, a small raised scar under her right eye, a "
+                          "fitted rust-orange linen jumpsuit"},
 ]
 
 # Prop do payoff (cena 4) — F15: JA' ereto no IMAGE, dimensionado por escala
