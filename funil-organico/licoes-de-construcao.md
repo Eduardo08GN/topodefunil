@@ -275,6 +275,27 @@ certo — a §6 de novo, agora vestida de ferramenta.
 reportar achado de linter novo, **abrir os 3 primeiros e conferir na mão**. E o
 próprio medidor carrega no cabeçalho a lista do que já o fez mentir.
 
+### As três formas do erro, todas cometidas no mesmo dia (2026-08-02)
+
+No aceite do RESSURREICAO o instrumento errou **três vezes**, e as três quase
+viraram defeito relatado ao operador:
+
+| Forma | O que aconteceu | Como se detecta |
+|---|---|---|
+| **Sonda velha** | a sonda da R7 procurava `silent\|pause` e marcou **0/400** depois que a correção trocou a formulação (o apagão virou 0,8s ancorado no morph, com literal novo). Zero súbito em regra que estava em 400/400 **não é regra sumida** | um zero que apareceu **de repente** é suspeita contra a sonda, não contra o motor |
+| **Regra larga demais** | a lente cobrava `your {o}` **sozinho** e acusou 175/400 — mas a doutrina **permite** condicional e pergunta; só a soma com prazo é proibida. Cobrar isso é cobrar o hook inteiro do agente | reler a regra **na doutrina** antes de codificar a lente, e codificar a **composição**, não o token |
+| **Escopo errado** | a mesma lente varria os 3 takes **juntos**, e a regra é "no mesmo take de 8s": hook da cena 1 + prazo da cena 2 são 16 segundos de distância | a unidade da regra (vídeo? take? bloco? fala?) entra na lente **explicitamente** |
+
+E o mesmo dia deu o caso simétrico, que é pior: o **`_rs10_prazo` existia desde
+o primeiro dia do motor e nunca acusou uma vez** — o regex listava
+`days|weeks|months` e não `seconds`. **Regra escrita não é regra que pega.**
+
+**O que impede:** toda lente nova nasce com **controle positivo e negativo** —
+frases que *têm* de casar e frases que *não podem* — e eles rodam **antes** de
+qualquer número ser olhado. É o que o `medir_personagens.py --autoteste` faz.
+E `0 ERRO` num lote grande é **suspeita**, não aprovação: sabotar de propósito é
+a única forma de distinguir motor limpo de linter morto.
+
 ---
 
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
@@ -288,6 +309,11 @@ próprio medidor carrega no cabeçalho a lista do que já o fez mentir.
 - [ ] Numeração de regra **bate caractere por caractere** entre motor e doutrina
 - [ ] Cada slot de copy **cumpre a função** pela qual existe (§4) — e se dá para
       checar por regex, **virou linter**
+- [ ] **Sabotei o linter e ele acusou** — `0 ERRO` num lote grande é suspeita, não
+      aprovação: pode ser motor limpo ou regra morta (§16). Uma sabotagem por
+      regra travada, e a sabotagem tem que **chegar** onde a regra olha
+- [ ] Toda lente/medição nova tem **controle positivo e negativo**, rodados
+      antes de eu olhar o número (§16)
 - [ ] Uso do orçamento medido contra a **capacidade real**, não contra o teto (§5)
 - [ ] **Li algumas falas inteiras renderizadas**, não só os pools
 - [ ] `git diff` conferido: nenhuma string validada redigitada sem ordem
