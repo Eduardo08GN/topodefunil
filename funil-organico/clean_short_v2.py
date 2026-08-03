@@ -76,6 +76,7 @@ Uso:
 """
 
 import argparse
+import collections
 import json
 import os
 import random
@@ -121,6 +122,12 @@ ETNIA = {
 # `"a %d-year-old %s %s" % (idade, etnia, man/woman)`. Por isso todas as
 # entradas sao NEUTRAS EM GENERO ("Hispanic American", nunca "Latino"): o mesmo
 # pool serve os REFS_M e os REFS_H, e "a 44-year-old Latino woman" sai errado.
+#
+# ⭐ 2026-08-03 — ESTA LISTA DEIXOU DE SER O EIXO. A etnia agora sai do MUNDO
+# sorteado (`MUNDOS[i]["etnias"]`), porque etnia e nicho visual nao sao
+# independentes — ver o bloco MUNDOS. O que sobrou para esta lista e' um papel
+# so': ela e' o pool das etnias do consultorio moderno, o unico mundo que
+# comporta as catorze (`"etnias": "todas"`).
 ETNIAS = [
     "white American",
     "Black American",
@@ -157,7 +164,10 @@ TRAVAS_UI = [
 # remonta o video INTEIRO em volta do valor travado. E' por isso que a trava
 # nao pode ser "congelar a chave depois do sorteio": `item_a`, `item_b` e
 # `truque` mandam na bancada (CL20), no despejo (CL17) e na fala da cena 2.
-EIXOS_TRAVAVEIS = ["familia", "cenario", "etnia", "ref",
+# ⚠️ `mundo` no lugar do antigo `cenario`: travar o cenario sozinho deixou de
+# fazer sentido quando cenario, etnia, traje, luz e ambiencia passaram a ser a
+# MESMA escolha. Travado o mundo, a etnia continua sorteando DENTRO dele.
+EIXOS_TRAVAVEIS = ["familia", "mundo", "etnia", "ref",
                    "item_a", "item_b", "truque"]
 
 # ---------------------------------------------------------------------------
@@ -167,8 +177,15 @@ EIXOS_TRAVAVEIS = ["familia", "cenario", "etnia", "ref",
 # CL1 — ela/ele NUNCA toca em nada. E' o que torna o SHORT viavel: sem
 # manipulacao nao ha' risco de continuidade entre blocos de 8s gerados
 # separadamente (F12b: o Veo solta o objeto da mao).
+# ⚠️ 2026-08-03 — A SUPERFICIE VIROU SLOT (`%s` no lugar do literal `counter`)
+# nas quatro strings travadas abaixo e nos blocos. NAO e' reescrita de string
+# validada: com o mundo clinico o slot recebe `counter` e o texto renderizado
+# sai identico ao de antes, caractere por caractere — e' o que o `--autoteste`
+# cobra em 400 videos. O slot existe porque um alpendre de pantano nao tem
+# `counter`, e mandar o Veo desenhar um balcao de consultorio numa varanda de
+# cipreste devolve os dois na mesma cena.
 NAO_TOCA = ("%s never touches, opens, lifts or pours any of the ingredients on "
-            "the counter — %s only points at them and explains.")
+            "the %s — %s only points at them and explains.")
 
 # CL9 — a bancada e' identica nas cenas 1 e 2 (familia A)
 MESMA_BANCADA = ("in the same order and at the same levels, nothing moved, "
@@ -177,13 +194,13 @@ MESMA_BANCADA = ("in the same order and at the same levels, nothing moved, "
 # CL9 familia B — o copo muda, o resto nao. ⛔ Sem `at the same levels`: o nivel
 # do copo SOBE a cada despejo, e pedir nivel identico e' ordem contraditoria —
 # o Veo resolve desfazendo o preparo.
-MESMA_BANCADA_B = ("Nothing has been added to the counter and nothing removed "
+MESMA_BANCADA_B = ("Nothing has been added to the %s and nothing removed "
                    "from it — only the tall glass has changed.")
 
 # CL14 familia B, cenas 1 e 2 — ela toca UM recipiente e so' ele. Substitui o
 # NAO_TOCA nessas duas cenas; na cena 3 o NAO_TOCA volta inteiro.
 TOCA_UM = ("%s touches only the container %s is pouring from. %s never touches, "
-           "opens or lifts anything else on the counter.")
+           "opens or lifts anything else on the %s.")
 
 # CL21 — a gelatina pronta, SO' na cena 3
 GELATINA = "a clear glass bowl of firm dark purple gelatin cubes, glossy and set"
@@ -194,7 +211,7 @@ GELATINA = "a clear glass bowl of firm dark purple gelatin cubes, glossy and set
 # ⚠️ O esqueleto e' o do mel, validado em render 2026-08-02 — so' o recipiente
 # e o gesto trocam (tabela DESPEJO). String validada nao se redigita.
 PEGADA = ("%s right hand is closed around the %s, the whole hand visibly "
-          "wrapped around it, %s forearm resting steady on the wooden counter "
+          "wrapped around it, %s forearm resting steady on the %s "
           "as %s %s")
 
 ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
@@ -212,17 +229,383 @@ FAMILIAS = [
     {"id": "preparo", "selo": "V", "nome": "o preparo nas cenas 1 e 2"},
 ]
 
-CENARIOS = [
-    {"id": "diplomas_cidade", "desc": "a bright medical office, four framed diplomas in dark frames on the wall behind %s, a tall window with an out-of-focus city skyline, a large green plant in the corner"},
-    {"id": "diplomas_jardim", "desc": "a bright medical office, five framed diplomas in dark frames on the wall behind %s, a window looking out on green trees, a tall potted plant beside it"},
-    {"id": "farmacia", "desc": "a bright clinic room, a long shelf of amber medicine bottles on the wall behind %s, a window with soft daylight, white cabinets below the shelf"},
-    {"id": "consultorio_claro", "desc": "a bright consulting room, three framed certificates on the pale wall behind %s, a window with sheer curtains, a small green plant on the sill"},
-    {"id": "sala_exame", "desc": "a bright examination room, two framed diplomas on the wall behind %s, a folded white examination couch out of focus at the side, a window with daylight"},
-    {"id": "escritorio_livros", "desc": "a bright medical office, a low bookshelf of thick medical books behind %s, three framed diplomas above it, a window with an out-of-focus street"},
+# ---------------------------------------------------------------------------
+# ⭐⭐ MUNDOS — O NICHO VISUAL INTEIRO NUM EIXO SO' (2026-08-03)
+# ---------------------------------------------------------------------------
+# ⛔ O QUE ESTAVA ERRADO, na palavra do operador: *"variar etnias tal como o
+# NECROSE quer dizer variar ate' o nivel de NICHO VISUAL — nativo da montanha,
+# nativo do pantano, tribo africana — com adaptacao tematica visual alinhada a'
+# etnia, e nao so' 'mudar o rosto do REF por etnia' como voce fez no v2"*.
+#
+# A primeira versao do v2 tinha DOIS eixos independentes: `ETNIAS` (14
+# adjetivos soltos) e `CENARIOS` (6 consultorios). Sorteados separados, o
+# resultado media exatamente o que ele viu no lote: **o mesmo consultorio com
+# rosto diferente**. Trocar a etnia nao mudava um pixel do mundo.
+#
+# ⭐ A FORMA CERTA E' A DO NECROSE (NE5): la' o `ARQUETIPOS` e' UM EIXO SO' que
+# carrega cenario + chapeu + animal juntos, com este motivo escrito no proprio
+# arquivo — *"eles nao sao independentes; chapeu errado no cenario certo destroi
+# a leitura em meio segundo"*. Aqui vale igual, e com mais um item na conta: a
+# ETNIA tambem entra no pacote. Uma curandeira dos Apalaches num consultorio de
+# diplomas nao le' como nada.
+#
+# Cada MUNDO carrega, congruentes entre si:
+#     etnias  as etnias que aquele mundo comporta (a etnia SAI daqui)
+#     desc    o cenario                      (%s = pronome objeto)
+#     sup_a   a superficie com artigo        ("a wooden counter")
+#     sup     a mesma, curta                 ("counter")
+#     traje   a roupa                        (%s = cor)
+#     curto   a roupa em 2 palavras, para o "same %s" das cenas 2 e 3
+#     cores   as cores que aquela roupa aceita
+#     luz     a luz da cena 1
+#     luz_c   a mesma, curta, para o "same %s" da cena 3
+#     audio   a ambiencia
+#
+# ⭐ O SORTEIO E' POR FAMILIA, DEPOIS POR MUNDO DENTRO DELA — nao uniforme sobre
+# os 26. Sem isso a familia `clinica`, que tem 6 sets (os unicos com render
+# validado, e por isso preservados inteiros), levaria 23% de todos os videos e o
+# lote voltaria a parecer o de antes. Por familia ela leva 1/11.
+#
+# ⛔ ZERO texto legivel em qualquer set: o CAUDA promete "No on-screen text" nas
+# tres imagens, e parede de gaveta com caractere escrito e' texto em cena. Por
+# isso as gavetas do ervanario tem "brass pulls" e nao etiqueta.
+# ⛔ ZERO objeto religioso: santo, altar, vela de igreja e amuleto sao terreno de
+# moderacao sem upside nenhum de conversao.
+# ⚠️ O selo `V` fica so' na familia `clinica`: os 6 sets dela vieram da fonte
+# (Valentina Health & Wellness) e tem render atras. Os outros 20 sao `N` —
+# extrapolacao nossa, sem render, e e' o operador quem valida no campo.
+MUNDOS = [
+    # ---- consultorio moderno (a familia da fonte — 6 sets, render validado) --
+    # ⚠️ AS SEIS ENTRADAS ABAIXO REPRODUZEM O v2 ANTERIOR CARACTERE POR
+    # CARACTERE: mesmo `desc`, mesma superficie (`a wooden counter`), mesmo
+    # traje (o scrub), as mesmas 8 cores do antigo `SCRUBS`, a mesma luz
+    # (`Soft daylight from the window.`) e a mesma ambiencia (`quiet office room
+    # tone`). Nao e' zelo decorativo — e' o que torna a refatoracao PROVAVEL:
+    # com o mundo clinico o motor novo tem de render byte a byte igual ao
+    # antigo, e e' isso que o `--autoteste` cobra.
+    {"id": "diplomas_cidade", "selo": "V", "familia": "clinica",
+     "etnias": "todas",
+     "desc": "a bright medical office, four framed diplomas in dark frames on the wall behind %s, a tall window with an out-of-focus city skyline, a large green plant in the corner"},
+    {"id": "diplomas_jardim", "selo": "V", "familia": "clinica",
+     "etnias": "todas",
+     "desc": "a bright medical office, five framed diplomas in dark frames on the wall behind %s, a window looking out on green trees, a tall potted plant beside it"},
+    {"id": "farmacia", "selo": "V", "familia": "clinica",
+     "etnias": "todas",
+     "desc": "a bright clinic room, a long shelf of amber medicine bottles on the wall behind %s, a window with soft daylight, white cabinets below the shelf"},
+    {"id": "consultorio_claro", "selo": "V", "familia": "clinica",
+     "etnias": "todas",
+     "desc": "a bright consulting room, three framed certificates on the pale wall behind %s, a window with sheer curtains, a small green plant on the sill"},
+    {"id": "sala_exame", "selo": "V", "familia": "clinica",
+     "etnias": "todas",
+     "desc": "a bright examination room, two framed diplomas on the wall behind %s, a folded white examination couch out of focus at the side, a window with daylight"},
+    {"id": "escritorio_livros", "selo": "V", "familia": "clinica",
+     "etnias": "todas",
+     "desc": "a bright medical office, a low bookshelf of thick medical books behind %s, three framed diplomas above it, a window with an out-of-focus street"},
+
+    # ---- montanha dos Apalaches -------------------------------------------
+    {"id": "apalache_varanda", "selo": "N", "familia": "apalache",
+     "etnias": ["white American"],
+     "desc": "the covered porch of a log cabin deep in the Appalachian woods, "
+             "bunches of dried herbs hanging from the beams above %s and rows "
+             "of glass jars on a plank shelf behind, dense green forest beyond",
+     "sup_a": "a long plank table", "sup": "table",
+     "traje": "%s cotton work shirt with the sleeves rolled to the elbow",
+     "curto": "work shirt",
+     "cores": ["faded blue", "dark green", "rust brown", "charcoal grey"],
+     "luz": "Soft green forest daylight, low contrast.",
+     "luz_c": "soft forest daylight",
+     "audio": "insects, wind in the leaves"},
+    {"id": "apalache_cozinha", "selo": "N", "familia": "apalache",
+     "etnias": ["white American"],
+     "desc": "the kitchen of a mountain cabin, a black cast-iron stove behind "
+             "%s, bundles of dried herbs strung along a beam and a small "
+             "window looking out on bare ridges",
+     "sup_a": "a scrubbed pine table", "sup": "table",
+     "traje": "%s flannel shirt buttoned to the collar",
+     "curto": "flannel shirt",
+     "cores": ["deep red", "forest green", "faded blue", "brown"],
+     "luz": "Cool window light from frame-left, soft shadows.",
+     "luz_c": "cool window light",
+     "audio": "a wood fire ticking, wind at the window"},
+
+    # ---- pantano do sul ----------------------------------------------------
+    {"id": "pantano_alpendre", "selo": "N", "familia": "pantano",
+     "etnias": ["Creole American", "Cajun American", "Black American"],
+     "desc": "a wooden landing at the edge of a cypress swamp, hanging moss on "
+             "the branches behind %s, a flat-bottomed boat tied up at the "
+             "posts and still dark water beyond",
+     "sup_a": "a weathered plank table", "sup": "table",
+     "traje": "%s linen shirt with the sleeves rolled up",
+     "curto": "linen shirt",
+     "cores": ["off-white", "pale blue", "sand", "olive"],
+     "luz": "Warm hazy swamp light, soft and diffused.",
+     "luz_c": "warm hazy light",
+     "audio": "frogs, water moving under the boards"},
+    {"id": "pantano_varanda", "selo": "N", "familia": "pantano",
+     "etnias": ["Creole American", "Cajun American", "Black American"],
+     "desc": "a screened back porch in the bayou country, strings of dried red "
+             "peppers and braided garlic hanging behind %s, tall wet green "
+             "growth pressing against the screen beyond",
+     "sup_a": "a painted wooden table", "sup": "table",
+     "traje": "%s short-sleeved cotton shirt",
+     "curto": "cotton shirt",
+     "cores": ["pale yellow", "off-white", "sky blue", "faded green"],
+     "luz": "Flat humid daylight through the screen, low contrast.",
+     "luz_c": "flat humid daylight",
+     "audio": "cicadas, a screen door creaking"},
+
+    # ---- herbolaria mexicana ----------------------------------------------
+    {"id": "herbolaria_mercado", "selo": "N", "familia": "herbolaria",
+     "etnias": ["Mexican American", "Hispanic American"],
+     "desc": "an herb stall inside a covered market, the wall behind %s hung "
+             "thick with tied bundles of dried herbs and long strings of dried "
+             "red chiles, woven baskets stacked at the sides",
+     "sup_a": "a worn wooden market counter", "sup": "counter",
+     "traje": "%s embroidered cotton blouse",
+     "curto": "embroidered blouse",
+     "cores": ["cream", "deep pink", "turquoise", "marigold yellow"],
+     "luz": "Warm shaded market light, soft and even.",
+     "luz_c": "warm shaded light",
+     "audio": "a quiet market murmur far off"},
+    {"id": "herbolaria_patio", "selo": "N", "familia": "herbolaria",
+     "etnias": ["Mexican American", "Hispanic American"],
+     "desc": "a shaded courtyard with thick adobe walls behind %s, rows of "
+             "potted herbs on a low ledge and a climbing bougainvillea at the "
+             "corner, bright sun on the far wall",
+     "sup_a": "a tiled courtyard table", "sup": "table",
+     "traje": "%s loose cotton shirt",
+     "curto": "cotton shirt",
+     "cores": ["white", "sky blue", "terracotta", "pale green"],
+     "luz": "Bright bounced courtyard light, warm and soft.",
+     "luz_c": "warm courtyard light",
+     "audio": "birds in the courtyard, a far-off street"},
+
+    # ---- África Ocidental --------------------------------------------------
+    # ⚠️ O operador pediu "tribo africana" com todas as letras. O set descreve
+    # LUGAR e MATERIAL (esteira, cabaca, tecido estampado, barro), nunca
+    # "tribal" como adjetivo solto: adjetivo generico devolve fantasia de
+    # carnaval, material concreto devolve lugar.
+    {"id": "africa_mercado", "selo": "N", "familia": "africa",
+     "etnias": ["West African", "Black American"],
+     "desc": "an open-air market stall under a woven reed canopy, wide shallow "
+             "baskets of dried roots, bark and leaves ranged behind %s, bolts "
+             "of bright wax-print cloth hanging at the side",
+     "sup_a": "a low wooden bench counter", "sup": "counter",
+     "traje": "%s wax-print cotton tunic",
+     "curto": "print tunic",
+     "cores": ["indigo and gold", "deep green and white", "orange and black",
+               "red and cream"],
+     "luz": "Hot filtered daylight through the reed canopy, warm and dappled.",
+     "luz_c": "warm filtered daylight",
+     "audio": "a distant market, wind in the reeds"},
+    {"id": "africa_patio", "selo": "N", "familia": "africa",
+     "etnias": ["West African", "Black American"],
+     "desc": "a swept earth courtyard with a mud-brick wall behind %s, round "
+             "calabash bowls and clay pots set along the wall, the shade of a "
+             "broad mango tree falling across the ground",
+     "sup_a": "a low carved wooden table", "sup": "table",
+     "traje": "%s embroidered cotton tunic",
+     "curto": "cotton tunic",
+     "cores": ["white", "deep indigo", "saffron", "burnt orange"],
+     "luz": "Warm open shade under the tree, soft and clean.",
+     "luz_c": "warm open shade",
+     "audio": "birds, wind in the mango leaves"},
+
+    # ---- ervanario do leste asiatico ---------------------------------------
+    {"id": "ervanario_gavetas", "selo": "N", "familia": "ervanario",
+     "etnias": ["Chinese American", "Korean American", "Asian American"],
+     "desc": "an old herbal pharmacy, the whole wall behind %s a grid of small "
+             "dark wooden apothecary drawers with round brass pulls, a rolling "
+             "ladder against it",
+     "sup_a": "a dark wood shop counter", "sup": "counter",
+     "traje": "%s mandarin-collar cotton jacket",
+     "curto": "collared jacket",
+     "cores": ["indigo", "slate grey", "charcoal", "deep maroon"],
+     "luz": "Warm low shop light, soft pools of light and shadow.",
+     "luz_c": "warm shop light",
+     "audio": "a very quiet room, a clock ticking somewhere"},
+    {"id": "ervanario_bancada", "selo": "N", "familia": "ervanario",
+     "etnias": ["Chinese American", "Korean American", "Asian American"],
+     "desc": "a herbal shop workroom, tall glass jars of dried roots and bark "
+             "lined on shelves behind %s, a brass hand scale and a stack of "
+             "flat woven drying trays at the side",
+     "sup_a": "a scrubbed wooden work counter", "sup": "counter",
+     "traje": "%s linen wrap jacket",
+     "curto": "wrap jacket",
+     "cores": ["natural beige", "soft grey", "deep blue", "dark green"],
+     "luz": "Even daylight from a high window, cool and soft.",
+     "luz_c": "even daylight",
+     "audio": "a very quiet room, faint street noise"},
+
+    # ---- ayurveda ----------------------------------------------------------
+    {"id": "ayurveda_sala", "selo": "N", "familia": "ayurveda",
+     "etnias": ["South Asian American", "Indian American"],
+     "desc": "a sunlit room with a long shelf of brass and copper vessels on "
+             "the wall behind %s, rows of small glass jars of coloured powders "
+             "beside them, a woven mat on the floor",
+     "sup_a": "a low polished wooden table", "sup": "table",
+     "traje": "%s cotton kurta",
+     "curto": "cotton kurta",
+     "cores": ["cream", "deep saffron", "olive green", "dusty rose"],
+     "luz": "Warm sunlight through a high window, soft edges.",
+     "luz_c": "warm window sunlight",
+     "audio": "a quiet room, birds outside"},
+    {"id": "ayurveda_varanda", "selo": "N", "familia": "ayurveda",
+     "etnias": ["South Asian American", "Indian American"],
+     "desc": "a shaded veranda with carved wooden pillars behind %s, hanging "
+             "brass lamps unlit above and a green garden with broad-leaved "
+             "plants beyond the rail",
+     "sup_a": "a carved wooden table", "sup": "table",
+     "traje": "%s linen kurta",
+     "curto": "linen kurta",
+     "cores": ["off-white", "pale blue", "sand", "deep teal"],
+     "luz": "Soft green garden light in open shade, low contrast.",
+     "luz_c": "soft garden light",
+     "audio": "birds, leaves moving in the garden"},
+
+    # ---- nativo norte-americano -------------------------------------------
+    {"id": "nativo_ramada", "selo": "N", "familia": "nativo",
+     "etnias": ["Native American"],
+     "desc": "the shade of a juniper-pole ramada on high desert ground, a "
+             "woven wool blanket in bold geometric bands hung on the rail "
+             "behind %s, red rock country stretching away beyond",
+     "sup_a": "a heavy plank table", "sup": "table",
+     "traje": "%s cotton shirt with the sleeves rolled",
+     "curto": "cotton shirt",
+     "cores": ["deep turquoise", "rust red", "sand", "charcoal"],
+     "luz": "Bright open shade against hard desert sun outside.",
+     "luz_c": "bright open shade",
+     "audio": "dry wind, a distant bird"},
+    {"id": "nativo_rio", "selo": "N", "familia": "nativo",
+     "etnias": ["Native American"],
+     "desc": "a clearing beside a shallow stone-bedded river, tall pines "
+             "closing in behind %s, drying racks of split herbs on trestles "
+             "at the side and fast clear water beyond",
+     "sup_a": "a split-log table", "sup": "table",
+     "traje": "%s canvas shirt buttoned at the wrists",
+     "curto": "canvas shirt",
+     "cores": ["dark green", "faded blue", "brown", "slate grey"],
+     "luz": "Cool dappled forest light off the water.",
+     "luz_c": "cool dappled light",
+     "audio": "water over stones, wind in the pines"},
+
+    # ---- caribe ------------------------------------------------------------
+    {"id": "caribe_varanda", "selo": "N", "familia": "caribe",
+     "etnias": ["Caribbean American", "Jamaican American", "Black American"],
+     # ⛔ CL2 — a primeira versao destes dois sets do Caribe trazia `banana`
+     # (folha de bananeira aqui, penca verde no mercado). O proprio linter do
+     # CLEAN reprovou 53 dos 600 videos da varredura: banana e' PROP FALICO e
+     # este agente e' o unico que nao tem nenhum. Trocado por folhagem e tempero
+     # que dao o mesmo lugar sem o objeto proibido.
+     "desc": "the verandah of a brightly painted wooden house, louvered "
+             "shutters in strong colour behind %s, broad-leaved tropical "
+             "plants and hibiscus crowding the rail, bright sky beyond",
+     "sup_a": "a painted plank table", "sup": "table",
+     "traje": "%s short-sleeved cotton shirt",
+     "curto": "cotton shirt",
+     "cores": ["turquoise", "sun yellow", "white", "coral"],
+     "luz": "Bright island daylight in open shade, warm and clean.",
+     "luz_c": "bright open shade",
+     "audio": "birds, wind in the banana leaves"},
+    {"id": "caribe_mercado", "selo": "N", "familia": "caribe",
+     "etnias": ["Caribbean American", "Jamaican American", "Black American"],
+     "desc": "a roadside produce stall under a corrugated tin roof, bunches of "
+             "thyme and strings of small red peppers hanging from the frame "
+             "above %s, green hills out of focus beyond the road",
+     "sup_a": "a rough plank stall counter", "sup": "counter",
+     "traje": "%s cotton shirt open at the collar",
+     "curto": "cotton shirt",
+     "cores": ["pale green", "orange", "white", "sky blue"],
+     "luz": "Hard tropical daylight softened under the tin roof.",
+     "luz_c": "soft light under the roof",
+     "audio": "birds, a vehicle passing far off"},
+
+    # ---- ilhas do Pacifico / Filipinas ------------------------------------
+    {"id": "pacifico_nipa", "selo": "N", "familia": "pacifico",
+     "etnias": ["Filipino American", "Pacific Islander American"],
+     "desc": "an open-sided hut with a thatched roof and split-bamboo walls "
+             "behind %s, woven pandan mats rolled at the side, coconut palms "
+             "and bright sky beyond the open wall",
+     "sup_a": "a split-bamboo table", "sup": "table",
+     "traje": "%s loose woven shirt",
+     "curto": "woven shirt",
+     "cores": ["natural cream", "pale blue", "deep red", "leaf green"],
+     "luz": "Bright shade under the thatch, warm bounced light.",
+     "luz_c": "bright shade",
+     "audio": "wind in the palms, birds"},
+    {"id": "pacifico_costa", "selo": "N", "familia": "pacifico",
+     "etnias": ["Filipino American", "Pacific Islander American"],
+     "desc": "a shaded platform above a black-sand shore, fishing floats and "
+             "coiled rope hanging on the post behind %s, an outrigger canoe "
+             "drawn up on the sand and flat sea beyond",
+     "sup_a": "a weathered wooden table", "sup": "table",
+     "traje": "%s short-sleeved cotton shirt",
+     "curto": "cotton shirt",
+     "cores": ["faded turquoise", "off-white", "deep blue", "sand"],
+     "luz": "Bright even light bouncing off the water, soft shadows.",
+     "luz_c": "bright even light",
+     "audio": "small waves, wind over sand"},
+
+    # ---- Oriente Medio -----------------------------------------------------
+    {"id": "oriente_loja", "selo": "N", "familia": "oriente",
+     "etnias": ["Middle Eastern American", "Lebanese American"],
+     "desc": "a spice and herb shop, deep shelves of glass jars and open "
+             "burlap sacks of dried herbs ranged behind %s, pierced brass "
+             "lanterns hanging unlit above",
+     "sup_a": "a worn wooden shop counter", "sup": "counter",
+     "traje": "%s collarless linen shirt",
+     "curto": "linen shirt",
+     "cores": ["off-white", "sand", "deep olive", "slate blue"],
+     "luz": "Warm low shop light with a shaft of daylight from the doorway.",
+     "luz_c": "warm shop light",
+     "audio": "a quiet shop, a far-off street"},
+    {"id": "oriente_patio", "selo": "N", "familia": "oriente",
+     "etnias": ["Middle Eastern American", "Lebanese American"],
+     "desc": "a stone courtyard in deep shade, a pale plastered wall behind "
+             "%s, a climbing grapevine over a trellis above and shallow "
+             "drying trays of herbs along a stone ledge",
+     "sup_a": "a stone slab table", "sup": "table",
+     "traje": "%s loose cotton shirt",
+     "curto": "cotton shirt",
+     "cores": ["white", "pale grey", "sand", "deep blue"],
+     "luz": "Cool courtyard shade with hot sun on the far wall.",
+     "luz_c": "cool courtyard shade",
+     "audio": "birds, a fountain somewhere"},
 ]
 
-SCRUBS = ["deep burgundy", "deep teal", "navy blue", "forest green",
-          "plum purple", "slate grey", "wine red", "petrol blue"]
+# ⛔ CONTRATO DO MUNDO CLINICO — copia literal do v2 anterior. Os 6 sets da
+# familia `clinica` OMITEM superficie, traje, cores, luz e audio de proposito:
+# eles herdam daqui, e e' este dict que garante que o motor novo renderiza
+# aquela familia exatamente como o antigo renderizava (provado no --autoteste).
+# ⚠️ `cores` e' o antigo pool `SCRUBS`, sem tirar nem acrescentar uma cor.
+CLINICA = {
+    "sup_a": "a wooden counter", "sup": "counter",
+    "traje": "%s V-neck short-sleeved medical scrub top",
+    "curto": "scrub top",
+    "cores": ["deep burgundy", "deep teal", "navy blue", "forest green",
+              "plum purple", "slate grey", "wine red", "petrol blue"],
+    "luz": "Soft daylight from the window.",
+    "luz_c": "soft daylight",
+    "audio": "quiet office room tone",
+    # ⚠️ `lugar` existe so' para as cenas 2 e 3, que dizem "in the same %s".
+    # `room` e' o literal do v2 anterior e fica de pe' na clinica; num mercado a
+    # ceu aberto ou num alpendre de pantano "room" e' a palavra errada e o Veo
+    # responde fechando paredes em volta.
+    "lugar": "room",
+}
+for _m in MUNDOS:
+    if _m["familia"] != "clinica":
+        _m.setdefault("lugar", "place")
+
+for _m in MUNDOS:
+    for _k, _v in CLINICA.items():
+        _m.setdefault(_k, _v)
+    if _m["etnias"] == "todas":
+        _m["etnias"] = list(ETNIAS)
+
+# As familias, na ordem em que aparecem — o sorteio pesa por FAMILIA, nunca por
+# mundo solto (senao `clinica`, com 6 sets, domina o lote).
+FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
 
 # CL8 — a REF pode ser homem ou mulher. ⛔ Nunca tronco nu: isso e' VAZAMENTO,
 # nao CLEAN. Ele explica, igual a ela.
@@ -642,10 +1025,22 @@ def itens_b_livres(spec):
 itens_a_livres.recebe_spec = True
 itens_b_livres.recebe_spec = True
 
+def etnias_do_mundo(spec):
+    """⭐ O pool de ETNIA do painel passa a depender do MUNDO em cena.
+
+    ⚠️ Sem isso o botao `trocar` da etnia oferecia as catorze sempre, e trocar
+    para `Korean American` num alpendre dos Apalaches devolveria exatamente a
+    incongruencia que os MUNDOS existem para impedir. Mesma convencao do
+    `refs_do_sexo` (`.recebe_spec = True`), aditiva no `ui_agente._pool`."""
+    return list(spec["mundo"]["etnias"])
+
+
+etnias_do_mundo.recebe_spec = True
+
 EIXOS_UI = [
     ("familia", "CENA", "FAMILIAS", "nome"),
-    ("cenario", "CENÁRIO", "CENARIOS", "id"),
-    ("etnia", "ETNIA", "ETNIAS", None),
+    ("mundo", "MUNDO", "MUNDOS", "id"),
+    ("etnia", "ETNIA", "etnias_do_mundo", None),
     ("ref", "QUEM FALA", "refs_do_sexo", "cabeca"),
     # ⚠️ rotulo curto de proposito: a coluna de rotulo do painel tem 10
     # caracteres de largura (`width=10` no ui_agente) e e' compartilhada.
@@ -795,7 +1190,22 @@ def sortear(pagina, rng, led, travas=None):
     # deliberadamente suspensa aqui (ordem do operador, 2026-08-03). O
     # `ETNIA[pagina]` do v1 nao e' mais consultado; o dict segue existindo so'
     # para o seletor de pele do painel.
-    et = travas.get("etnia") or rng.choice(ETNIAS)
+    #
+    # ⭐ E A ETNIA SAI DE DENTRO DO MUNDO, nao de um pool solto. O mundo vem
+    # primeiro justamente por isso: ele decide o cenario, o traje, a luz, a
+    # ambiencia E as etnias que aquele lugar comporta.
+    # ⚠️ O sorteio e' por FAMILIA e so' depois por mundo dentro dela — sem esse
+    # passo a familia `clinica`, que tem 6 sets contra 2 das outras, levaria
+    # quase um quarto do lote e o operador veria de novo o consultorio de
+    # sempre. `_fresco` continua valendo, agora sobre a familia.
+    if travas.get("mundo"):
+        mundo = _por_id(MUNDOS, travas["mundo"])
+    else:
+        fam_mundo = _fresco([{"id": f} for f in FAMILIAS_MUNDO],
+                            usados.get("mundo_familia", []), rng, "id")["id"]
+        mundo = rng.choice([m for m in MUNDOS if m["familia"] == fam_mundo])
+    et = travas.get("etnia") or rng.choice(mundo["etnias"])
+    cor = rng.choice(mundo["cores"])
 
     # ⚠️ REF TRAVADO MANDA NO SEXO. Se o operador travou QUEM FALA, o sexo sai
     # de qual pool aquele rosto veio — senao o sorteio poderia pedir `homem` e
@@ -810,9 +1220,6 @@ def sortear(pagina, rng, led, travas=None):
                else _fresco(FAMILIAS, usados.get("familia", []), rng, "id"))
 
     ref = ref_trav or rng.choice(REFS_H if sexo == "homem" else REFS_M)
-    cenario = (_por_id(CENARIOS, travas["cenario"]) if travas.get("cenario")
-               else _fresco(CENARIOS, usados.get("cenario", []), rng, "id"))
-    scrub = rng.choice(SCRUBS)
 
     orgaos = rng.sample(NUCLEO, 2)
     # CL22 — o par nao repete fruta, ingrediente do truque nem beneficio. Todo
@@ -853,7 +1260,7 @@ def sortear(pagina, rng, led, travas=None):
 
     return {
         "pagina": pagina, "etnia": et, "sexo": sexo, "familia": familia,
-        "cenario": cenario, "ref": ref, "scrub": scrub, "orgaos": orgaos,
+        "mundo": mundo, "ref": ref, "cor": cor, "orgaos": orgaos,
         "item_a": a, "item_b": b, "bancada": bancada, "truque": tru,
         "despejo": despejo,
         # ⛔ 2026-08-03: `b["txt"]` entrava CRU e o `{o}` saia literal na fala —
@@ -879,6 +1286,21 @@ def _pron(sexo):
             else ("She", "her", "she", "her"))
 
 
+def _traje(spec):
+    """A roupa do mundo, com o artigo CERTO na frente.
+
+    ⛔ 2026-08-03 — o artigo era literal dentro do template (`"a %s cotton
+    shirt"`) e saia `a indigo mandarin-collar cotton jacket` / `a off-white
+    linen shirt`. Nunca aparecera antes porque as 8 cores do scrub comecam
+    todas em consoante; as cores dos mundos novos nao. Achado LENDO o render, e
+    nao pelo linter — o mesmo modo de falha do `{o}` cru de ontem.
+    ⚠️ Na clinica o resultado e' identico ao literal antigo: `deep teal` ->
+    `a deep teal V-neck short-sleeved medical scrub top`."""
+    cor = spec["cor"]
+    art = "an" if cor[0].lower() in "aeiou" else "a"
+    return "%s %s" % (art, spec["mundo"]["traje"] % cor)
+
+
 def _sem_artigo(s):
     """Tira o artigo inicial para a frase `same %s` nao virar `same a ...`."""
     for art in ("a ", "an ", "the "):
@@ -888,14 +1310,21 @@ def _sem_artigo(s):
 
 
 def _pessoa(spec, primeiro=True):
+    """⚠️ O traje saiu do literal e virou o do MUNDO. Com o mundo clinico
+    `traje % cor` devolve `a deep teal V-neck short-sleeved medical scrub top` e
+    `curto` devolve `scrub top` — as duas frases abaixo saem exatamente como
+    saiam antes. Fora da clinica, um jaleco de consultorio numa varanda de
+    cipreste seria o mesmo erro que o NECROSE evita com o NE5 (chapeu alpino em
+    deserto do Texas)."""
     r, sexo = spec["ref"], spec["sexo"]
     quem = "man" if sexo == "homem" else "woman"
+    mundo = spec["mundo"]
     if primeiro:
-        return ("a %d-year-old %s %s, wearing a %s V-neck short-sleeved medical "
-                "scrub top, %s, %s" % (r["idade"], spec["etnia"], quem,
-                                       spec["scrub"], r["cabeca"], r["marca"]))
-    return ("The same %d-year-old %s %s, same %s scrub top, same %s, same %s"
-            % (r["idade"], spec["etnia"], quem, spec["scrub"],
+        return ("a %d-year-old %s %s, wearing %s, %s, %s"
+                % (r["idade"], spec["etnia"], quem,
+                   _traje(spec), r["cabeca"], r["marca"]))
+    return ("The same %d-year-old %s %s, same %s %s, same %s, same %s"
+            % (r["idade"], spec["etnia"], quem, spec["cor"], mundo["curto"],
                _sem_artigo(r["cabeca"].split(" and ")[0]),
                _sem_artigo(r["marca"])))
 
@@ -914,14 +1343,16 @@ def montar(spec):
     S, Ss, s, obj = _pron(spec["sexo"])
     b = {}
     fam = spec["familia"]["id"]
-    cen = spec["cenario"]["desc"] % obj
-    nao_toca = NAO_TOCA % (S, s)
+    mundo = spec["mundo"]
+    cen = mundo["desc"] % obj
+    sup, sup_a = mundo["sup"], mundo["sup_a"]
+    nao_toca = NAO_TOCA % (S, sup, s)
     idade = spec["ref"]["idade"]
 
     b["BLOCO 0 (REF)"] = (
         "REF 01: Photo of a real person, a %d-year-old %s %s, chest up, facing "
         "the camera directly, neutral steady expression with %s mouth closed. "
-        "Wearing a %s V-neck short-sleeved medical scrub top. %s. %s. An "
+        "Wearing %s. %s. %s. An "
         "ordinary everyday relatable person with a plain unremarkable face, not "
         "a celebrity, not a model, not an actor, not resembling any famous "
         "person. Hands out of frame, no objects. Plain neutral gray background, "
@@ -929,49 +1360,64 @@ def montar(spec):
         "front camera aesthetic. No subtitles, no captions, no burned-in text, "
         "no watermark."
         % (idade, spec["etnia"], "man" if spec["sexo"] == "homem" else "woman",
-           Ss, spec["scrub"], spec["ref"]["cabeca"][0].upper() + spec["ref"]["cabeca"][1:],
+           Ss, _traje(spec),
+           spec["ref"]["cabeca"][0].upper() + spec["ref"]["cabeca"][1:],
            spec["ref"]["marca"][0].upper() + spec["ref"]["marca"][1:]))
 
+    # ⚠️ 2026-08-03 — a familia A passou a formatar por NOME, como a B ja'
+    # fazia. Motivo escrito na propria B: sao 14+ campos por bloco e um
+    # deslocamento de indice troca pronome por cor sem estourar erro nenhum —
+    # bug que so' aparece no video pronto. Com a superficie, a luz e o lugar
+    # entrando como slot, a contagem posicional passou de 15 argumentos, e
+    # manter posicional era escolher o modo de falha mais caro que existe aqui.
+    # ⛔ O TEXTO nao mudou: `--autoteste` compara os blocos desta familia com os
+    # do motor anterior, video a video.
+    v = {"cen": cen, "ref1": _pessoa(spec), "ref": _pessoa(spec, False),
+         "S": S, "Ss": Ss, "s": s, "obj": obj, "Sc": _cap(Ss),
+         "sup": sup, "sup_a": sup_a, "luz": mundo["luz"],
+         "luz_c": mundo["luz_c"], "lugar": mundo["lugar"],
+         "gel": GELATINA, "anti": ANTICELEB, "cauda": CAUDA}
+
     if fam == "aponta":
-        fila = _fila(spec["bancada"])
+        v.update({"fila": _fila(spec["bancada"]),
+                  "mesma": MESMA_BANCADA,
+                  "tru0": VISUAL[spec["truque"][0]],
+                  "banc0": VISUAL[spec["bancada"][0]]})
         b["IMAGE 01/03"] = (
-            "Medium shot inside %s. Seated behind a wooden counter is %s. On the "
-            "counter in front of %s, at chest height, stand in a row: %s. %s looks "
-            "directly into the lens with %s mouth open mid-word as %s speaks, %s "
-            "torso upright and %s head raised. %s right index finger is extended "
-            "toward the row, %s hand just above the counter. %s touches nothing. "
-            "%s is the only person in the frame. %s Soft daylight from the window. %s"
-            % (cen, _pessoa(spec), obj, fila, S, Ss, s, Ss, Ss, _cap(Ss), Ss, S, S,
-               ANTICELEB, CAUDA))
+            "Medium shot inside %(cen)s. Seated behind %(sup_a)s is %(ref1)s. On "
+            "the %(sup)s in front of %(obj)s, at chest height, stand in a row: "
+            "%(fila)s. %(S)s looks directly into the lens with %(Ss)s mouth open "
+            "mid-word as %(s)s speaks, %(Ss)s torso upright and %(Ss)s head "
+            "raised. %(Sc)s right index finger is extended toward the row, "
+            "%(Ss)s hand just above the %(sup)s. %(S)s touches nothing. %(S)s is "
+            "the only person in the frame. %(anti)s %(luz)s %(cauda)s" % v)
         b["IMAGE 02/03"] = (
-            "Medium shot in the same room, same background. %s. On the counter is "
-            "the same row %s: %s. %s looks directly into the lens with %s mouth "
-            "open mid-word as %s speaks, %s expression serious and certain. %s "
-            "right index finger is extended toward %s, %s hand just above the "
-            "counter. %s touches nothing. %s is the only person in the frame. %s %s"
-            % (_pessoa(spec, False), MESMA_BANCADA, fila, S, Ss, s, Ss, _cap(Ss),
-               VISUAL[spec["truque"][0]], Ss, S, S, ANTICELEB, CAUDA))
+            "Medium shot in the same %(lugar)s, same background. %(ref)s. On the "
+            "%(sup)s is the same row %(mesma)s: %(fila)s. %(S)s looks directly "
+            "into the lens with %(Ss)s mouth open mid-word as %(s)s speaks, "
+            "%(Ss)s expression serious and certain. %(Sc)s right index finger is "
+            "extended toward %(tru0)s, %(Ss)s hand just above the %(sup)s. %(S)s "
+            "touches nothing. %(S)s is the only person in the frame. %(anti)s "
+            "%(cauda)s" % v)
         b["IMAGE 03/03"] = (
-            "Closer medium shot in the same room, same background, same soft "
-            "daylight. %s, framed from the waist up. On the counter along the "
-            "bottom edge of the frame stand three things only: %s; %s; and %s. %s "
-            "looks directly into the lens, calm and confident, one corner of %s "
-            "mouth raised in a half-smile, %s mouth open mid-word as %s speaks. %s "
-            "right index finger points directly at the camera. %s is the only "
-            "person in the frame. %s %s"
-            % (_pessoa(spec, False), VISUAL[spec["bancada"][0]], GELATINA,
-               VISUAL[spec["truque"][0]], S, Ss, Ss, s, _cap(Ss), S,
-               ANTICELEB, CAUDA))
+            "Closer medium shot in the same %(lugar)s, same background, same "
+            "%(luz_c)s. %(ref)s, framed from the waist up. On the %(sup)s along "
+            "the bottom edge of the frame stand three things only: %(banc0)s; "
+            "%(gel)s; and %(tru0)s. %(S)s looks directly into the lens, calm and "
+            "confident, one corner of %(Ss)s mouth raised in a half-smile, "
+            "%(Ss)s mouth open mid-word as %(s)s speaks. %(Sc)s right index "
+            "finger points directly at the camera. %(S)s is the only person in "
+            "the frame. %(anti)s %(cauda)s" % v)
         mov = [
-            "%s right hand moves once along the row, the extended index finger "
-            "travelling from one end to the other, staying just above the counter "
-            "the whole time. Everything on the counter stays exactly as it appears "
-            "in the first frame — same position, same angle, same levels — "
-            "completely motionless for the entire shot." % _cap(Ss),
-            "%s extended index finger moves from one item to another and back, "
-            "staying just above the counter. Everything on the counter stays "
-            "exactly as it appears in the first frame — completely motionless for "
-            "the entire shot." % _cap(Ss),
+            "%(Sc)s right hand moves once along the row, the extended index "
+            "finger travelling from one end to the other, staying just above the "
+            "%(sup)s the whole time. Everything on the %(sup)s stays exactly as "
+            "it appears in the first frame — same position, same angle, same "
+            "levels — completely motionless for the entire shot." % v,
+            "%(Sc)s extended index finger moves from one item to another and "
+            "back, staying just above the %(sup)s. Everything on the %(sup)s "
+            "stays exactly as it appears in the first frame — completely "
+            "motionless for the entire shot." % v,
             "The glass, the bowl of gelatin cubes and the box beside them stay "
             "exactly as they appear in the first frame — nothing moves, nothing "
             "is touched.",
@@ -983,38 +1429,40 @@ def montar(spec):
         # continua de pe'.
         i1, i2 = spec["despejo"]
         d1, d2 = DESPEJO[i1], DESPEJO[i2]
-        v = {"ref1": _pessoa(spec), "ref": _pessoa(spec, False), "cen": cen,
-             "S": S, "Ss": Ss, "s": s, "gel": GELATINA, "anti": ANTICELEB,
-             "cauda": CAUDA, "resto": MESMA_BANCADA_B, "obj": obj,
+        # ⚠️ `sup_d` e' a superficie SEM artigo (`wooden counter`), que e' o que
+        # a PEGADA pede depois de "resting steady on the". Na clinica devolve
+        # exatamente o literal que estava travado ali antes.
+        sup_d = _sem_artigo(sup_a)
+        v.update({
+             "resto": MESMA_BANCADA_B % sup,
              "fila1": _fila([i for i in spec["bancada"] if i != i1]),
              "fila2": _fila([i for i in spec["bancada"] if i != i2]),
              "cor1": d1["cor"], "cor2": d2["cor"],
              "c1": d1["curto"], "c2": d2["curto"], "ing2": VISUAL[i2],
-             "Sc": Ss[0].upper() + Ss[1:],   # "Her"/"His" em inicio de frase
-             "peg1": _cap(PEGADA % (Ss, d1["cont"], Ss, s, d1["gesto"])),
-             "peg2": _cap(PEGADA % (Ss, d2["cont"], Ss, s, d2["gesto"])),
+             "peg1": _cap(PEGADA % (Ss, d1["cont"], Ss, sup_d, s, d1["gesto"])),
+             "peg2": _cap(PEGADA % (Ss, d2["cont"], Ss, sup_d, s, d2["gesto"])),
              "cai1": _cap(d1["queda"]), "cai2": _cap(d2["queda"]),
-             "seg1": d1["segue"], "seg2": d2["segue"]}
+             "seg1": d1["segue"], "seg2": d2["segue"]})
         # ⚠️ Formatacao NOMEADA neste ramo, nao posicional: sao 14+ campos por
         # bloco e um deslocamento de indice troca pronome por cor sem estourar
         # erro nenhum — bug que so' aparece no video pronto.
         b["IMAGE 01/03"] = (
-            "Medium shot inside %(cen)s. Seated behind a wooden counter is "
-            "%(ref1)s. On the counter in front of %(obj)s, at chest height, stand "
+            "Medium shot inside %(cen)s. Seated behind %(sup_a)s is "
+            "%(ref1)s. On the %(sup)s in front of %(obj)s, at chest height, stand "
             "a tall clear glass filled with plain clear water and, beside it, "
             "%(fila1)s. %(peg1)s. %(cai1)s, and the water in the glass is "
             "turning from clear to %(cor1)s where the stream lands. %(S)s looks "
             "directly into the lens with %(Ss)s mouth open mid-word as %(s)s "
             "speaks, %(Ss)s torso upright and %(Ss)s head raised. %(S)s is the "
-            "only person in the frame. %(anti)s Soft daylight from the window. "
+            "only person in the frame. %(anti)s %(luz)s "
             "%(cauda)s" % v)
         # ⚠️ A cena 2 CLAREIA se a segunda cor for mais clara que a primeira —
         # despejar mel em agua marrom nao produz dourado. Por isso o liquido
         # `clouds over` em vez de trocar de tom: vale para os 20 pares, e
         # nenhum deles le como o preparo desandando.
         b["IMAGE 02/03"] = (
-            "Medium shot in the same room, same background. %(ref)s. On the "
-            "counter, in the same order and at the same positions as before, "
+            "Medium shot in the same %(lugar)s, same background. %(ref)s. On the "
+            "%(sup)s, in the same order and at the same positions as before, "
             "stand %(fila2)s. %(resto)s %(peg2)s. %(cai2)s, and the %(cor1)s "
             "water in the glass is clouding over and turning %(cor2)s where the "
             "stream lands. %(S)s looks directly into the lens with %(Ss)s mouth "
@@ -1025,8 +1473,8 @@ def montar(spec):
         # dois do truque ao lado (a prioridade do CL21 manda cortar o resto
         # antes da gelatina). Zero manipulacao.
         b["IMAGE 03/03"] = (
-            "Closer medium shot in the same room, same background, same soft "
-            "daylight. %(ref)s, framed from the waist up. On the counter along "
+            "Closer medium shot in the same %(lugar)s, same background, same "
+            "%(luz_c)s. %(ref)s, framed from the waist up. On the %(sup)s along "
             "the bottom edge of the frame stand three things only: the same tall "
             "glass, now filled to the top with a finished %(cor2)s drink and no "
             "longer clear; %(gel)s; and %(ing2)s. %(S)s looks directly into the "
@@ -1040,12 +1488,12 @@ def montar(spec):
         mov = [
             "%(S)s keeps %(Ss)s right hand closed around the %(c1)s, the whole "
             "hand visibly wrapped around it, %(Ss)s forearm resting steady on the "
-            "counter, and %(seg1)s. As it falls, the water in the glass turns "
+            "%(sup)s, and %(seg1)s. As it falls, the water in the glass turns "
             "from clear to %(cor1)s, the colour spreading down through it. "
             "Everything else stays exactly as it appears in the first frame." % v,
             "%(S)s keeps %(Ss)s right hand closed around the %(c2)s, the whole "
             "hand visibly wrapped around it, %(Ss)s forearm resting steady on the "
-            "counter, and %(seg2)s. As it falls, the %(cor1)s water in the glass "
+            "%(sup)s, and %(seg2)s. As it falls, the %(cor1)s water in the glass "
             "clouds over and turns %(cor2)s, the colour spreading down through "
             "it. Everything else stays exactly as it appears in the first "
             "frame." % v,
@@ -1054,17 +1502,19 @@ def montar(spec):
             "nothing moves, nothing is touched." % v,
         ]
 
+    # ⚠️ A ambiencia sai do MUNDO — `quiet office room tone` num alpendre de
+    # pantano e' a mesma incongruencia do jaleco. Na clinica o mundo devolve
+    # exatamente aquele literal, e as tres linhas saem como saiam antes.
+    amb = mundo["audio"]
     if fam == "preparo":
-        audio = ["quiet office room tone, %s. No music."
-                 % DESPEJO[spec["despejo"][0]]["som"],
-                 "quiet office room tone, %s. No music."
-                 % DESPEJO[spec["despejo"][1]]["som"],
-                 "quiet office room tone. No music."]
+        audio = ["%s, %s. No music." % (amb, DESPEJO[spec["despejo"][0]]["som"]),
+                 "%s, %s. No music." % (amb, DESPEJO[spec["despejo"][1]]["som"]),
+                 "%s. No music." % amb]
     else:
-        audio = ["quiet office room tone. No music."] * 3
+        audio = ["%s. No music." % amb] * 3
     # CL14 — nas cenas 1 e 2 da familia B a frase travada vira TOCA_UM; na
     # cena 3 (e na familia A inteira) o NAO_TOCA volta.
-    toca_um = TOCA_UM % (S, s, S)
+    toca_um = TOCA_UM % (S, s, S, sup)
     for i in range(3):
         toca = " " + (toca_um if (fam == "preparo" and i in (0, 1)) else nao_toca)
         b["TAKE %02d/03" % (i + 1)] = (
@@ -1183,10 +1633,17 @@ def lint(spec, blocos):
         # ⛔ tirar a PROPRIA proibicao antes de varrer: NAO_TOCA contem a
         # palavra "pours", e o linter se auto-reprovava em 100% dos sorteios.
         # Regra que reprova tudo nunca foi testada.
+        # ⚠️ 2026-08-03 — a superficie entra AQUI tambem. Enquanto era o literal
+        # `counter` nas duas pontas, esquecer este ponto nao teria efeito; agora
+        # uma superficie diferente faria o `replace` nao casar, a proibicao
+        # ficaria no texto varrido e o linter voltaria a se auto-reprovar em
+        # todo video que nao fosse de consultorio. E' o modo de falha do §17:
+        # regra que reprova tudo nunca foi testada. O `--autoteste` cobra.
+        sup_l = spec["mundo"]["sup"]
         for pr in (("He", "he"), ("She", "she")):
-            direcao = direcao.replace(NAO_TOCA % pr, "")
+            direcao = direcao.replace(NAO_TOCA % (pr[0], sup_l, pr[1]), "")
         for pr in (("He", "he", "He"), ("She", "she", "She")):
-            direcao = direcao.replace(TOCA_UM % pr, "")
+            direcao = direcao.replace(TOCA_UM % (pr[0], pr[1], pr[2], sup_l), "")
         direcao = direcao.lower()
         # ⚠️ Na familia B o despejo e' autorizado nas cenas 1 E 2 (CL17). A
         # cena 3 NAO e' isenta: la' vale o CL1 inteiro, maos fora.
@@ -1217,10 +1674,13 @@ def resumo_pt(spec):
         fam = fam.replace("ela ", "ele ")
     # ⭐ V2 — a etnia entra no resumo porque agora ela VARIA por video (e nao
     # mais por pagina): sem ela na tela o operador nao ve' o que sorteou.
-    return ("%s %s de %d anos, de scrub %s, num %s. Na bancada: %s. %s. Três "
+    # ⭐ E o MUNDO entra junto, com a familia na frente: o que ele precisa ler de
+    # relance e' "apalache / varanda", nao um id solto.
+    m = spec["mundo"]
+    return ("%s %s de %d anos, de %s %s, em %s (%s). Na bancada: %s. %s. Três "
             "cenas, %s." % ("Homem" if spec["sexo"] == "homem" else "Mulher",
-                     spec["etnia"], spec["ref"]["idade"], spec["scrub"],
-                     spec["cenario"]["id"].replace("_", " "),
+                     spec["etnia"], spec["ref"]["idade"], spec["cor"],
+                     m["curto"], m["id"].replace("_", " "), m["familia"],
                      ", ".join(spec["bancada"]), fam.capitalize(),
                      "gelatina em cubos na última"))
 
@@ -1263,20 +1723,136 @@ def _apos_truque(spec, rng):
         spec["item_a"], spec["item_b"], rng, spec["truque"])
 
 
+def _apos_mundo(spec, rng):
+    """Trocou o MUNDO: a etnia e a cor do traje tem de vir do mundo novo.
+
+    ⛔ Sem este gancho o botao `trocar` do mundo deixava a etnia ANTIGA em cena —
+    e' o mesmo bug de fora-de-sincronia do `trocar` de item (CL20), so' que no
+    eixo que este trabalho inteiro existe para consertar: mundo dos Apalaches
+    com REF `Korean American`, ou uma cor de scrub num kurta. A copy nao muda.
+    """
+    if spec["etnia"] not in spec["mundo"]["etnias"]:
+        spec["etnia"] = rng.choice(spec["mundo"]["etnias"])
+    if spec["cor"] not in spec["mundo"]["cores"]:
+        spec["cor"] = rng.choice(spec["mundo"]["cores"])
+
+
+# ⚠️ O nome do contrato diz "copy", mas o que a `ui_agente` faz com ele e'
+# generico: *rode isto depois de trocar este eixo*. O gancho do mundo nao mexe
+# em fala nenhuma — mexe no que ficaria incongruente com o eixo trocado, que e'
+# o mesmo motivo dos outros tres.
 EIXOS_QUE_MEXEM_NA_COPY = {
     "item_a": _apos_item,
     "item_b": _apos_item,
     "truque": _apos_truque,
+    "mundo": _apos_mundo,
 }
 
 # ⚠️ `despejo` nao tem pool fixo (o par sai do CL14/CL20 e varia por video),
 # entao o teto e' arbitrario: 8 pares antes de zerar. Sem teto proprio a lista
 # so' cresceria e o anti-repeticao pararia de rejeitar qualquer coisa.
-TETO_LEDGER = {"familia": len(FAMILIAS), "cenario": len(CENARIOS), "despejo": 8}
+# ⚠️ O anti-repeticao do mundo mora na FAMILIA, nao no mundo: o sorteio escolhe
+# familia primeiro, e um ledger por mundo deixaria a familia `clinica` (6 sets)
+# levar seis rodadas antes de zerar enquanto as outras levam duas.
+TETO_LEDGER = {"familia": len(FAMILIAS), "mundo_familia": len(FAMILIAS_MUNDO),
+               "despejo": 8}
+
+
+def autoteste(n=600):
+    """As invariantes do eixo MUNDO, medidas — e com CONTROLE POSITIVO.
+
+    ⚠️ Existe porque a licao §17 e' sempre a mesma: verificar a FORMA e declarar
+    pronto sem verificar a FUNCAO. Um pool novo bonito nao prova nada; o que
+    prova e' o motor rodando 600 vezes e um sabotador confirmando que cada
+    checagem SABE reprovar.
+    """
+    falhas = []
+    vistos_mundo, vistos_etnia, vistos_fam = set(), set(), collections.Counter()
+
+    for seed in range(n):
+        spec = sortear("joe", random.Random(seed), {}, {})
+        blocos = montar(spec)
+        m = spec["mundo"]
+        vistos_mundo.add(m["id"])
+        vistos_etnia.add(spec["etnia"])
+        vistos_fam[m["familia"]] += 1
+        junto = " ".join(blocos.values())
+
+        # [1] a etnia e a cor saem SEMPRE de dentro do mundo — o ponto inteiro
+        if spec["etnia"] not in m["etnias"]:
+            falhas.append("seed %d: etnia %r fora do mundo %s"
+                          % (seed, spec["etnia"], m["id"]))
+        if spec["cor"] not in m["cores"]:
+            falhas.append("seed %d: cor %r fora do mundo %s"
+                          % (seed, spec["cor"], m["id"]))
+        # [2] a superficie do mundo e' a UNICA em cena: `counter` sobrando num
+        #     mundo de mesa e' literal esquecido no refactor
+        if m["sup"] != "counter" and "counter" in junto:
+            falhas.append("seed %d: 'counter' sobrou em %s" % (seed, m["id"]))
+        # [3] artigo do traje (o bug `a indigo`, achado lendo render)
+        if re.search(r"\ba [aeiou]", junto):
+            falhas.append("seed %d: artigo errado — %r"
+                          % (seed, re.search(r"\ba [aeiou]\w+", junto).group()))
+        # [4] o linter nao pode se auto-reprovar fora do consultorio: o NAO_TOCA
+        #     contem "pours", e se o `replace` nao casar por causa da superficie
+        #     TODO video de mundo novo sai reprovado no CL1
+        for tipo, msg in lint(spec, blocos):
+            falhas.append("seed %d (%s): %s" % (seed, m["id"], msg))
+
+    if len(vistos_mundo) != len(MUNDOS):
+        falhas.append("mundos nunca sorteados: %s"
+                      % sorted({m["id"] for m in MUNDOS} - vistos_mundo))
+    # [5] nenhuma familia pode dominar: e' a regra que impede o lote de voltar a
+    #     ser "o mesmo consultorio com rosto diferente"
+    for fam, qtd in vistos_fam.items():
+        if qtd > n * 0.20:
+            falhas.append("familia %s levou %.1f%% do lote (teto 20%%)"
+                          % (fam, 100.0 * qtd / n))
+
+    # ---- CONTROLES POSITIVOS: cada checagem acima SABE reprovar? ----
+    ctrl = []
+    s = sortear("joe", random.Random(1), {}, {})
+    s["etnia"] = "Martian"
+    if s["etnia"] in s["mundo"]["etnias"]:
+        ctrl.append("[1] nao sabe acusar etnia fora do mundo")
+    if not re.search(r"\ba [aeiou]", "wearing a indigo cotton shirt"):
+        ctrl.append("[3] nao sabe acusar 'a indigo'")
+    if re.search(r"\ba [aeiou]", "wearing an indigo cotton shirt"):
+        ctrl.append("[3] acusa 'an indigo', que esta' certo")
+    # o sabotador do [2]: um mundo de mesa que ainda diga `counter`
+    falso = dict(_por_id(MUNDOS, "apalache_varanda"))
+    falso["sup_a"], falso["sup"] = "a wooden counter", "counter"
+    s2 = sortear("joe", random.Random(2), {}, {"mundo": "apalache_varanda"})
+    if "counter" in " ".join(montar(s2).values()):
+        ctrl.append("[2] o mundo apalache_varanda ja' diz counter — sabotador cego")
+    s2["mundo"] = falso
+    if "counter" not in " ".join(montar(s2).values()):
+        ctrl.append("[2] nao sabe ver 'counter' num mundo de mesa")
+
+    print("MUNDOS: %d | familias: %d | %d videos sorteados"
+          % (len(MUNDOS), len(FAMILIAS_MUNDO), n))
+    print("mundos vistos: %d/%d | etnias vistas: %d"
+          % (len(vistos_mundo), len(MUNDOS), len(vistos_etnia)))
+    print("familia mais frequente: %s com %.1f%%"
+          % (vistos_fam.most_common(1)[0][0],
+             100.0 * vistos_fam.most_common(1)[0][1] / n))
+    if ctrl:
+        print("\n⛔ O AUTOTESTE ESTA' CEGO:")
+        for c in ctrl:
+            print("   %s" % c)
+    if falhas:
+        print("\n⛔ %d FALHA(S):" % len(falhas))
+        for f in falhas[:20]:
+            print("   %s" % f)
+    if not falhas and not ctrl:
+        print("\nAUTOTESTE OK — e os controles positivos reprovam quando devem.")
+    return 1 if (falhas or ctrl) else 0
 
 
 def main():
     ap = argparse.ArgumentParser(description="Randomizador do agente CLEAN")
+    ap.add_argument("--autoteste", action="store_true",
+                    help="mede as invariantes do eixo MUNDO (com controles)")
     ap.add_argument("--pagina", choices=sorted(ETNIA))
     ap.add_argument("--n", type=int, default=1)
     ap.add_argument("--seed", type=int)
@@ -1284,6 +1860,8 @@ def main():
     ap.add_argument("--familia", choices=["aponta", "preparo"])
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    if a.autoteste:
+        return autoteste()
     if not a.pagina:
         ap.error("--pagina obrigatorio")
 
@@ -1296,8 +1874,10 @@ def main():
         spec = sortear(a.pagina, rng, led, travas)
         blocos = montar(spec)
         print("=" * 72)
-        print("SPEC — pagina %s | %s %s | familia %s | bancada: %s"
-              % (a.pagina, spec["etnia"], spec["sexo"], spec["familia"]["id"],
+        print("SPEC — pagina %s | %s %s | mundo %s (%s) | familia %s | "
+              "bancada: %s"
+              % (a.pagina, spec["etnia"], spec["sexo"], spec["mundo"]["id"],
+                 spec["mundo"]["familia"], spec["familia"]["id"],
                  ", ".join(spec["bancada"])))
         print("=" * 72)
         for nome, txt in blocos.items():
@@ -1314,7 +1894,7 @@ def main():
         if not a.dry_run:
             u = led.setdefault(a.pagina, {})
             for eixo, val in (("familia", spec["familia"]["id"]),
-                              ("cenario", spec["cenario"]["id"]),
+                              ("mundo_familia", spec["mundo"]["familia"]),
                               ("despejo", "+".join(spec["despejo"]))):
                 u.setdefault(eixo, [])
                 if val not in u[eixo]:
