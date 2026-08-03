@@ -164,6 +164,14 @@ EXCECOES = {
     ("necrose_short.py", "ARQUETIPOS", "pelo_facial"):
         "NE5 — ARQUETIPOS e' cenario+chapeu+animal. O rosto mora em REFS.",
     ("necrose_short.py", "ARQUETIPOS", "oculos"): "idem NE5",
+    ("ressurreicao_short.py", "NARRADORAS", "oculos"):
+        "LEI DO REF (2026-08-03) — neste agente a narradora e' sempre linda, "
+        "jovem e de sex appeal alto, por ordem do operador. Oculos de leitura "
+        "brigam com isso frontalmente. ⚠️ E este eixo zerado e' o REGISTRO de "
+        "um erro meu: a passada de variedade de 02/08 otimizava para ESTE "
+        "medidor, que premia oculos e pele marcada — e ele me devolveu "
+        "narradoras de 47 e 52 anos, grisalhas e de oculos de leitura, num "
+        "agente de nutra sexual. Otimizei a metrica contra o objetivo.",
 }
 
 FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)

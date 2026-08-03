@@ -582,104 +582,105 @@ RS_RECEITA_TAKE = (
 # tapered e crespo: o render varia sozinho. ⛔ Zero adjetivo de etnia aqui.
 # ⚠️ Solta na etnia, NAO na idade: piso de 28 (IDADE_MINIMA_NARRADORA).
 NARRADORAS = [
-    {"id": "ruiva_sardas", "idade": 29,
-     "cabelo": "long copper-red hair parted low on one side",
+
+    # ⛔ LEI DO REF (2026-08-03): linda, jovem, sex appeal alto.
+    # A ancora facial (P6) continua obrigatoria, mas vem do lado bonito.
+    {"id": "ruiva_sardas", "idade": 30,
+     "cabelo": "long copper-red hair falling loose past her shoulders",
      "oculos": "",
-     "porte": "small and narrow through the shoulders",
-     "rosto": "a heavy dusting of freckles across her nose and cheeks",
+     "porte": "slim with a narrow waist",
+     "rosto": "a light dusting of freckles across her nose and green eyes",
      "roupa": "a cropped dark-green ribbed tank top and black leggings"},
-    {"id": "oculos_redondos", "idade": 37,
-     "cabelo": "wavy caramel-blonde hair pushed back off a high forehead",
-     "oculos": "thin round gold-rimmed glasses",
-     "porte": "tall and long-limbed",
-     "rosto": "a small dark mole beside her left nostril",
-     "roupa": "a cropped charcoal ribbed tank top and high-waisted black leggings"},
-    {"id": "afro_curto", "idade": 34,
-     "cabelo": "a short natural afro shaved close at the sides",
+    {"id": "loira_ondas", "idade": 29,
+     "cabelo": "long honey-blonde waves pushed back off her face",
      "oculos": "",
-     "porte": "broad-shouldered and squarely built",
-     "rosto": "a small dark beauty mark high on her left cheekbone",
+     "porte": "tall and long-legged",
+     "rosto": "a small dark beauty mark just above her lip",
+     "roupa": "a cropped white ribbed tank top and high-waisted black leggings"},
+    {"id": "afro_solto", "idade": 29,
+     "cabelo": "a full soft afro worn wide and loose",
+     "oculos": "",
+     "porte": "slim and lightly toned through the arms",
+     "rosto": "high cheekbones and a small mole on her right cheekbone",
      "roupa": "a cropped mustard knit top and a thin gold chain"},
-    {"id": "loira_raiz", "idade": 41,
-     "cabelo": "long honey-blonde hair with grown-out roots",
+    {"id": "morena_rabo", "idade": 31,
+     "cabelo": "glossy dark-brown hair in a high sleek ponytail",
      "oculos": "",
-     "porte": "heavy-set and full through the arms",
-     "rosto": "sun-freckled skin and a deep dimple in her right cheek",
-     "roupa": "a fitted black t-shirt tucked into high-waisted jeans"},
-    {"id": "rabo_alto", "idade": 30,
-     "cabelo": "jet-black hair pulled into a high slicked-back ponytail",
-     "oculos": "",
-     "porte": "compact and thick through the shoulders",
-     "rosto": "a wide gap between her front teeth",
-     "roupa": "a cropped grey sweatshirt cut off above the waist"},
-    {"id": "tranca_caixa", "idade": 31,
+     "porte": "slim through the waist with full hips",
+     "rosto": "large dark eyes and a shallow dimple in her left cheek",
+     "roupa": "a fitted black scoop-neck top and dark jeans"},
+    {"id": "tranca_longa", "idade": 28,
      "cabelo": "waist-length box braids gathered over one shoulder",
      "oculos": "",
-     "porte": "tall and heavy-boned",
-     "rosto": "a small raised scar at the point of her chin",
-     "roupa": "a cropped burgundy tank top and stacked gold bangles"},
-    {"id": "grisalha_meia_lua", "idade": 47,
-     "cabelo": "silver-streaked dark hair in a loose low bun",
-     "oculos": "half-moon reading glasses pushed up onto her head",
-     "porte": "short and square through the middle",
-     "rosto": "weathered skin and deep laugh lines at the outer corners of her eyes",
-     "roupa": "a denim shirt knotted at the waist over a plain vest"},
-    {"id": "bob_platinado", "idade": 28,
+     "porte": "tall and slim-hipped",
+     "rosto": "full lips and a tiny beauty spot at the corner of her right eye",
+     "roupa": "a cropped terracotta rib tank and gold hoop earrings"},
+    {"id": "platinada_bob", "idade": 28,
      "cabelo": "a bleached-platinum bob cut sharp at the jaw",
      "oculos": "",
-     "porte": "very slight and narrow-framed",
-     "rosto": "a small hoop through her left nostril",
-     "roupa": "a cropped lilac zip-up and gold rings on three fingers"},
-    {"id": "franja_reta", "idade": 33,
-     "cabelo": "long chestnut hair with a blunt fringe cut straight across",
-     # ⚠️ `glasses`, nao `frames`: o gate de personagem casa o eixo por palavra,
-     # e `frames` nao conta como oculos. Mesma imagem, medicao honesta.
-     "oculos": "heavy black rectangular glasses",
-     "porte": "average height and softly built",
-     "rosto": "a small crescent birthmark at her right temple",
-     "roupa": "a rust-orange long-sleeve top pushed up to the elbows"},
-    {"id": "cachos_bronze", "idade": 39,
-     "cabelo": "tight auburn-dyed curls worn wide",
+     "porte": "petite and fine-boned",
+     "rosto": "pale grey eyes and a faint scar through her right eyebrow",
+     "roupa": "a cropped light-grey tank top and black leggings"},
+    {"id": "castanha_franja", "idade": 28,
+     "cabelo": "long chestnut hair with a soft curtain fringe",
      "oculos": "",
-     "porte": "tall and rangy",
-     "rosto": "a thin pale scar along her left jawline",
-     "roupa": "a cropped emerald wrap top and long gold drop earrings"},
-    {"id": "tapered_macas", "idade": 43,
-     "cabelo": "a close tapered cut faded high at the sides",
-     "oculos": "thin wire-framed oval glasses low on her nose",
-     "porte": "lean and flat-shouldered",
-     "rosto": "a beauty mark under her right eye",
-     "roupa": "a charcoal turtleneck and heavy gold hoops"},
-    {"id": "tranca_unica", "idade": 30,
-     "cabelo": "long jet-black hair in a single braid over one shoulder",
+     "porte": "slim and softly built",
+     "rosto": "a heart-shaped face and a small dark mole under her left eye",
+     "roupa": "a fitted cream ribbed top and pale denim shorts"},
+    {"id": "cachos_ruivos", "idade": 30,
+     "cabelo": "loose auburn curls worn long and wide",
      "oculos": "",
-     "porte": "short and round-shouldered",
-     "rosto": "a small dark tattoo of three stars behind her right ear",
-     "roupa": "a cropped white crochet top and gold bangles"},
-    {"id": "coque_bagunca", "idade": 36,
-     "cabelo": "sandy-blonde hair twisted into a messy topknot",
+     "porte": "slender with strong shoulders",
+     "rosto": "freckled cheeks and one dimple that only shows on the left",
+     "roupa": "a cropped olive tank top and black leggings"},
+    {"id": "preta_lisa", "idade": 33,
+     "cabelo": "long jet-black hair worn straight and glossy",
      "oculos": "",
-     "porte": "broad and strong through the back",
-     "rosto": "faintly freckled skin and pale grey-green eyes under heavy dark brows",
-     "roupa": "a sage-green tank top and a slim gold watch"},
-    {"id": "morango_gatinho", "idade": 45,
-     "cabelo": "long wavy strawberry-blonde hair",
-     "oculos": "tortoiseshell cat-eye glasses",
-     "porte": "small and fine-boned",
-     "rosto": "lightly freckled skin and a beauty mark just above her upper lip",
-     "roupa": "a cropped pale-blue knit top and a thin gold chain bracelet"},
-    {"id": "crespo_solto", "idade": 32,
-     "cabelo": "a big loose curl-out worn wide off the face",
+     "porte": "tall and athletic through the legs",
+     "rosto": "sharp cheekbones and a small gold stud in her left nostril",
+     "roupa": "a fitted burgundy wrap top and dark jeans"},
+    {"id": "coque_bagunca", "idade": 30,
+     "cabelo": "sandy-blonde hair twisted into a loose messy bun",
      "oculos": "",
-     "porte": "tall and broad through the chest",
-     "rosto": "a small vertical scar through her left eyebrow",
-     "roupa": "a cropped terracotta rib tank and a flat gold collar"},
-    {"id": "grisalha_curta", "idade": 52,
-     "cabelo": "close-cropped steel-grey hair worn natural",
-     "oculos": "square gold-rimmed reading glasses",
-     "porte": "stocky and thick through the forearms",
-     "rosto": "deeply lined skin and a deep vertical line between her brows",
-     "roupa": "a plain navy work shirt with the sleeves rolled"},
+     "porte": "slim with a flat stomach",
+     "rosto": "blue eyes set wide apart and a light spray of freckles",
+     "roupa": "a cropped pale-blue tank top and white shorts"},
+    {"id": "cacheada_media", "idade": 32,
+     "cabelo": "shoulder-length dark curls with warm highlights",
+     "oculos": "",
+     "porte": "narrow-waisted and lightly toned",
+     "rosto": "a full mouth and a small crescent birthmark at her right temple",
+     "roupa": "a fitted rust-orange top with the sleeves pushed up"},
+    {"id": "morena_solta", "idade": 29,
+     "cabelo": "long dark-brown hair loose and slightly wavy",
+     "oculos": "",
+     "porte": "tall and slim through the waist",
+     "rosto": "wide hazel eyes and a small dimple in her chin",
+     "roupa": "a cropped charcoal ribbed tank top and black leggings"},
+    {"id": "loira_trancinha", "idade": 31,
+     "cabelo": "pale blonde hair in a single loose side braid",
+     "oculos": "",
+     "porte": "petite and lightly muscled",
+     "rosto": "clear blue eyes and a tiny freckle on her left eyelid",
+     "roupa": "a fitted white cropped tee and high-waisted jeans"},
+    {"id": "crespa_alta", "idade": 34,
+     "cabelo": "a long twist-out worn big and off the face",
+     "oculos": "",
+     "porte": "tall and strong-shouldered",
+     "rosto": "a wide bright smile and a small mole above her left brow",
+     "roupa": "a cropped emerald knit top and thin gold hoops"},
+    {"id": "ruiva_curta", "idade": 29,
+     "cabelo": "a short tousled copper crop swept to one side",
+     "oculos": "",
+     "porte": "slim and narrow-shouldered",
+     "rosto": "grey-green eyes and freckles scattered over her collarbones",
+     "roupa": "a cropped black tank top and light denim shorts"},
+    {"id": "castanha_alta", "idade": 31,
+     "cabelo": "long light-brown hair with sun-lightened ends",
+     "oculos": "",
+     "porte": "tall and long-limbed",
+     "rosto": "a straight nose and a small dark mole beside her mouth",
+     "roupa": "a fitted sand-coloured rib top and dark leggings"},
 ]
 
 # ⭐ O CORPO-PROVA — o homem da cena 3 (F12b/TR10/ES4). TRAVADO na etnia da
@@ -1503,48 +1504,24 @@ MECANISMOS_PROP = [
 # pessoa no claim, some a posse da promessa, e nao custa um frame.
 # ⛔ Nenhuma com prazo. ⚠️ Numeros por extenso: o Veo soletra algarismo.
 HOOKS = [
-    {"degrau": 3, "txt": "If you want your {o} doing what that just did, hear me out."},
-    {"degrau": 3, "txt": "If you want your {o} to do that, watch this whole thing."},
-    {"degrau": 3, "txt": "Want your {o} doing what you just watched? Then stay right here."},
-    {"degrau": 3, "txt": "If your {o} still quits on you, this is the one to watch."},
-    {"degrau": 3, "txt": "If you want your {o} answering like that, this is where it starts."},
-    {"degrau": 3, "txt": "If your {o} has gone quiet on you, watch this all the way."},
+
+    # ⛔⛔ REESCRITO EM 2026-08-03 — ordem do operador: "reescreva toda a
+    # copy do agente para satisfazer a todas as pontuacoes criticas".
+    # A hierarquia agora e' CONTEXTO -> DESCOBERTA -> RECEITA -> OPEN LOOP ->
+    # GELATINA -> PROVA -> CTA. O espectador sabe do que se trata na
+    # PRIMEIRA frase; esconde-se o COMO, nunca o SOBRE O QUE.
+    {"degrau": 2, "txt": "My husband couldn't stay hard past sixty. If that's your {o}, watch this."},
+    {"degrau": 2, "txt": "Sixty-one, and my man quit on me in bed. Sound like your {o}?"},
+    {"degrau": 2, "txt": "My husband went soft every time. If your {o} does that, stay here."},
+    {"degrau": 2, "txt": "He stopped even trying at fifty-eight. If that's your {o}, watch."},
+    {"degrau": 2, "txt": "My husband hadn't been hard in two years. If that's your {o}, watch this."},
+    {"degrau": 2, "txt": "He'd lose it ten minutes in. If your {o} quits like that, watch."},
+    {"degrau": 2, "txt": "Sixty-three and nothing worked for him. If your {o} gave up too, watch."},
+    {"degrau": 2, "txt": "My man was done in bed at sixty. If that's your {o}, stay with me."},
     {"degrau": 4, "txt": "They say {s} does this. Watch it happen."},
     {"degrau": 4, "txt": "Every man on this app swears by {s}. Here's why."},
-    {"degrau": 4, "txt": "They've been saying {s} for years. Now watch."},
-    {"degrau": 4, "txt": "Half the internet swears by {s}. This is what they mean."},
-    {"degrau": 4, "txt": "My grandfather swore by {s}. I laughed at him too."},
-    {"degrau": 4, "txt": "That one about {s} has been going around forever. Watch."},
-    {"degrau": 2, "txt": "Pour {s} on it and watch what your {o} could do."},
-    # ⛔ estas duas SAIRAM do degrau 2 em 2026-08-03 e foram para o 5. Elas
-    # nomeiam a substancia e o gesto, mas NUNCA dizem que aquilo e' o corpo
-    # dele — o espectador tinha de inferir a transferencia. Medido no lote que
-    # o operador reprovou: 2 de 8 sorteios fechavam a cena 1 sem uma unica
-    # mencao ao orgao. O degrau 2 agora e' 100% transferencia.
-    {"degrau": 5, "txt": "{s} on it. That's the whole thing. Watch."},
-    {"degrau": 5, "txt": "Two handfuls of {s}, poured straight on. Watch it."},
-    # ⭐⭐ A FAMILIA DIRETA — ordem do operador em 2026-08-03, com o take
-    # renderizado na mao: "para de fazer copy que nao diz nada com nada".
-    # A fonte que ele mandou junto e' brutal e nao pede licenca:
-    #     `pour raw honey on your Johnson every night`
-    #     `and it will grow 5 inches in one week`
-    # ⛔ NAO copiamos aquilo: `every night` e `in one week` sao marcador de
-    # PRAZO, e `5 inches` e' promessa de MEDIDA — as duas coisas que derrubaram
-    # o video do NECROSE. O que se copia e' a ESTRUTURA: a demo transfere para o
-    # corpo dele numa frase so', sem rodeio e sem deixis.
-    # ⚠️ E ela e' AFIRMATIVA, nao condicional. A regra antiga so' admitia `your
-    # {o}` em condicional ou pergunta; o operador mandou ser direto e a decisao
-    # e' dele. O prazo continua BANIDO — e' o prazo que derruba, nao a
-    # afirmativa (RS10 cobra a SOMA das duas).
-    {"degrau": 2, "txt": "This is what {s} does to your {o}."},
-    {"degrau": 2, "txt": "{s} on it. This is what it does to your {o}."},
-    {"degrau": 2, "txt": "Watch {s} hit it. Your {o} does the same thing."},
-    {"degrau": 2, "txt": "That's {s}, and that's your {o} on it."},
-    {"degrau": 2, "txt": "{s} does this. To that, and to your {o}."},
     {"degrau": 5, "txt": "{s}. Every guy has heard of it. Almost nobody knows why."},
-    {"degrau": 5, "txt": "Nobody explains what {s} actually does. I will."},
-    {"degrau": 5, "txt": "There's a reason men keep {s} in the cupboard."},
-    {"degrau": 5, "txt": "{s}. Two dollars a box. Watch what it does."},
+    {"degrau": 5, "txt": "{s} on it. That's the whole thing. Watch."},
 ]
 
 # ⭐ MODO DEFAULT (`--credibilidade confirma`): colado no crescimento, a fala
@@ -1582,20 +1559,25 @@ HOOKS = [
 # derrubou o NECROSE. Hora da noite em NARRATIVA (`at three in the morning`) nao
 # e' posologia: e' quando ela acordou, nao quando ele toma.
 CONFIRMACOES = [
-    "Then she feels it at three in the morning.",
-    "She's going to wake up and find that.",
-    "The first time she feels it, she goes quiet.",
-    "She'll roll over at two and stop talking.",
-    "Watch her face the night she finds out.",
-    "She wakes up, feels that, and says nothing.",
-    "Her hand lands on it and she freezes.",
-    "She finds that in the dark and stares.",
-    "She'll feel it before you say one word.",
-    "That's what she reaches for at three in the morning.",
-    "She won't ask. She'll just look at you.",
-    "The night she feels that, she stops sleeping.",
-    "She'll notice before you do. They always do.",
-    "One night she reaches over and goes still.",
+    # ⛔⛔ REESCRITO EM 2026-08-03 — ordem do operador: "reescreva toda a
+    # copy do agente para satisfazer a todas as pontuacoes criticas".
+    # A hierarquia agora e' CONTEXTO -> DESCOBERTA -> RECEITA -> OPEN LOOP ->
+    # GELATINA -> PROVA -> CTA. O espectador sabe do que se trata na
+    # PRIMEIRA frase; esconde-se o COMO, nunca o SOBRE O QUE.
+    "Then his brother told me about this.",
+    "So I started making him this.",
+    "A woman at my salon gave me this.",
+    "Then I found this in my own kitchen.",
+    "His doctor never mentioned it. A neighbour did.",
+    "So I tried this on him. Once.",
+    "Then my aunt handed me this recipe.",
+    "A nurse at his clinic told me quietly.",
+    "So I made him this instead of the pills.",
+    "Then I found the thing nobody sells.",
+    "A man at his shop swore by this.",
+    "So I stopped buying pills and made this.",
+    "Then his old army friend let it slip.",
+    "So I put this in his glass that week.",
 ]
 
 # MODO `--credibilidade desmente`: o TR8 do TROCA, variante DESMENTE, literal.
@@ -1666,78 +1648,25 @@ DESMENTIDOS = [
 # ⚠️ Benson §3 preservado em todas: culpa-se o SISTEMA e a informacao errada,
 # nunca o prospecto.
 BULLETS = [
-    # ⭐⭐ A FAMILIA DA CONSEQUENCIA — ordem do operador, 2026-08-03. O molde e'
-    # literal dele: "she will never let you stop taking this". O bullet deixa de
-    # ser queixa contra o sistema e passa a ser O QUE ACONTECE DEPOIS, na voz
-    # dela. E' o fecho do arco que o beat anterior abriu: ela sentiu, e agora e'
-    # ela quem nao deixa parar.
-    # ⛔ Zero prazo (RS10). Zero medida. Zero fisiologia (e' da cena 2).
-    {"cred": "ambas", "txt": "She will never let you stop doing this."},
-    {"cred": "ambas", "txt": "She'll be the one hiding the jar."},
-    {"cred": "ambas", "txt": "After that, she's the one asking."},
-    # ⛔ MUDANCA SEM DIZER O QUE MUDOU — conserto de 2026-08-03. O operador leu
-    # `My sister asked what changed.` no app e cravou: "o que mudou?". A frase
-    # abria a pergunta e a fala acabava — pergunta sem resposta e' o mesmo vicio
-    # da frase orfa, com outra roupa. Era `She'll want to know what changed.
-    # Don't tell her.` REGRA NOVA: se a frase abre a pergunta, a proxima
-    # RESPONDE — ou nao se abre pergunta nenhuma e se diz logo o resultado.
-    # ⚠️ Mesma contagem de palavras (9), entao nao mexe no orcamento da cena 1.
-    {"cred": "ambas", "txt": "She'll notice you're hard again. Don't tell her why."},
-    {"cred": "ambas", "txt": "You won't be the one bringing it up anymore."},
-    {"cred": "ambas", "txt": "She'll start going to bed early."},
-    {"cred": "ambas", "txt": "That's the night she stops rolling away."},
-    {"cred": "ambas", "txt": "She'll never let that jar leave the house."},
-    # a familia do VILAO (Benson §3) fica, em minoria: ela cabe quando o beat
-    # anterior ja' pagou a consequencia e sobra folga de palavra.
-    {"cred": "ambas", "txt": "Nobody makes a dime when the {o} works."},
-    {"cred": "ambas", "txt": "Your doctor treats the pill, never the {o}."},
-    # ⛔⛔ VERBO DE ENCANAMENTO NO LUGAR DO RESULTADO — conserto de 2026-08-03.
-    # Queixa do operador lendo o app: "Opens o QUE? Com tanto verbo que voce
-    # poderia usar de forma mais obvia pra dizer que DEIXA O PINTO MELHOR, voce
-    # usa 'opens'?". Era `never what opens the {o}` — descreve o vaso abrindo,
-    # que e' o mecanismo; o homem quer o RESULTADO.
-    # ⭐ REGRA NOVA: verbo de RESULTADO, dito como um homem diria (gets it hard /
-    # wakes it back up / keeps his {o} hard). ⛔ NAO trocar `open` por outro
-    # eufemismo de encanamento (`unblocks`, `restores flow`) — trocar metafora
-    # por metafora nao conserta nada (licoes-de-construcao §17).
-    # ⚠️ Custa 1 palavra (9 contra 8 + {o}) e cabe: o TETO_FALA[1]=27 nao subiu.
-    {"cred": "ambas", "txt": "That aisle sells pills, never what gets the {o} hard."},
-    # ⛔⛔ FRASE ORFA — CONSERTO DE 2026-08-03, mesma ordem do operador ("arrume
-    # isso em todos os agentes que estao com esse vicio"). `They sold you the
-    # age excuse instead.` nomeia a CAUSA (a desculpa da idade) e nao diz
-    # desculpa PARA O QUE — o espectador ouve a queixa e nao sabe do que se
-    # trata. Agora o alvo entra NA MESMA FRASE.
-    # ⚠️ ⛔ O ALVO NAO PODE SER `{o}`: este bullet mora na familia SEM `{o}`, que
-    # e' a que o `_montar_falas` sorteia quando o hook JA' nomeou o orgao (a
-    # cena 1 nomeia exatamente uma vez — duas em 8 segundos e' bordao). Por
-    # isso o alvo e' `going soft`, que diz o que a desculpa encobre sem repetir
-    # o substantivo. Custo: 9 palavras contra 7 — cabe no TETO_FALA[1] = 27.
-    {"cred": "ambas", "txt": "They sold you the age excuse for going soft."},
-    # ⛔ as duas de moldura de BOATO: so' rodam quando a fala ja' desmentiu.
-    {"cred": "desmente", "txt": "Half the internet still says it works."},
-    {"cred": "desmente", "txt": "That one has been going around for years."},
-    # + medido depois do primeiro lote: no degrau 3 os seis hooks nomeiam o
-    # orgao, entao a regra de nomea-lo UMA vez por cena deixava a cena 1 com
-    # apenas TRES bullets — 182/180/38 em 400 sorteios. Tres opcoes ficam abaixo
-    # da barra do operador ("nada menos que os demais agentes SHORT"), e o
-    # conserto e' pool, nao regra: mais quatro da mesma familia, todas SEM `{o}`.
-    # ⚠️ No degrau 2 (default desde 2026-08-02) so' um dos tres hooks nomeia o
-    # orgao, entao as onze de cima voltam a entrar no sorteio padrao.
-    {"cred": "ambas", "txt": "She'll ask. Say nothing and do it again."},
-    {"cred": "ambas", "txt": "She won't let that stop. Not now."},
-    # ⛔⛔ AS DUAS DA MESMA DOENCA — conserto de 2026-08-03. A segunda e' a frase
-    # que o operador citou verbatim (`Nobody makes a dime telling you what opens
-    # it.` -> "Opens o QUE?"). A primeira (`what closes it`) NAO foi citada e o
-    # medidor de regex nao a pega, mas e' o MESMO verbo de encanamento com o
-    # sinal trocado: fechar o que? Consertar so' a que o medidor acusa e' curar o
-    # sintoma — o operador leria a irma amanha.
-    # ⭐ Nesta familia o alvo NAO pode ser `{o}`: as duas moram no grupo SEM
-    # `{o}`, o que o `_montar_falas` sorteia quando o hook JA' nomeou o orgao (a
-    # cena 1 nomeia exatamente uma vez). Por isso o resultado entra por `it` +
-    # `hard`/`up`, que e' o registro da casa e ja' roda em producao.
-    # ⚠️ Custo: +1 palavra cada (9 e 10). ⛔ TETO_FALA[1] nao subiu.
-    {"cred": "ambas", "txt": "Your doctor was never taught what gets it up."},
-    {"cred": "ambas", "txt": "Nobody makes a dime telling you what gets it hard."},
+    # ⛔⛔ REESCRITO EM 2026-08-03 — ordem do operador: "reescreva toda a
+    # copy do agente para satisfazer a todas as pontuacoes criticas".
+    # A hierarquia agora e' CONTEXTO -> DESCOBERTA -> RECEITA -> OPEN LOOP ->
+    # GELATINA -> PROVA -> CTA. O espectador sabe do que se trata na
+    # PRIMEIRA frase; esconde-se o COMO, nunca o SOBRE O QUE.
+    {"cred": "ambas", "txt": "Watch what it does to that. It did the same to him."},
+    {"cred": "ambas", "txt": "That's what it did to him. Watch."},
+    {"cred": "ambas", "txt": "What you're watching happen there happened to him."},
+    {"cred": "ambas", "txt": "Look at that. That's him now."},
+    {"cred": "ambas", "txt": "That's not a trick. That's what happened to him."},
+    {"cred": "ambas", "txt": "See that? That was him inside a month."},
+    {"cred": "ambas", "txt": "Watch it. Then look at him in the last shot."},
+    # ⚠️ era `That right there is what changed for him.` — a construcao exata
+    # que o operador reprovou ("O que mudou?"). Aponta sem dizer.
+    {"cred": "ambas", "txt": "That right there is his {o} now."},
+    {"cred": "ambas", "txt": "What it does to that, it did to him."},
+    {"cred": "ambas", "txt": "That's the whole reason I'm filming this."},
+    {"cred": "ambas", "txt": "Keep your eyes on it. That's him."},
+    {"cred": "ambas", "txt": "That's what I saw the first night."},
 ]
 
 # ---------------------------------------------------------------------------
@@ -1758,65 +1687,25 @@ BULLETS = [
 # que ele ja' deu.
 # ⚠️ `cred` filtra por modo: `ambas` roda nos dois.
 FUNDIDAS = [
-    {"cred": "ambas", "txt": "A spoon of {r}, a pour of warm water, stirred down. Real vasodilators. But without the gelatin trick that glass does nothing at all for his {o}."},
-    {"cred": "desmente", "txt": "Forget the powder. {r} in warm water, stirred until it turns. That's nitric oxide. And without the gelatin trick his {o} never feels one drop of it."},
-    {"cred": "confirma", "txt": "Outside, that took four seconds. Inside, it takes {r} and warm water. Circulation. But the gelatin trick is the half nobody hands you, and his {o} needed it."},
-    {"cred": "ambas", "txt": "Here's the half they give away: {r}, warm water, one turn of the spoon. Collagen. Here's the half they don't: the gelatin trick, and his {o} felt that one."},
-    {"cred": "ambas", "txt": "Two fingers of {r} into warm water. Good for oxygen. But nobody hands you the gelatin trick, and that is the half his {o} was missing."},
-    # ⛔⛔ FRASE ORFA — CONSERTO DE 2026-08-03, E A ENTRADA E' A QUE O OPERADOR
-    # CITOU. Ele leu o take renderizado ("It isn't age. The blood flow got
-    # choked off. Parsley and warm water open it. Real vasodilators. And the
-    # gelatin trick is what keeps his old boy open.") e cravou: "deveria ser it
-    # isn't age QUE ESTA CAUSANDO O SEU JOHN-SON NAO FUNCIONAR MAIS. Voce tem
-    # que contextualizar mais as coisas. Ta' deixando o viewer sem entender o
-    # contexto e do que se trata."
-    # ⭐ A REGRA NOVA: toda frase que nomeia uma CAUSA carrega, NA MESMA FRASE, o
-    # que ela quebra. Aqui DUAS nomeavam causa e nenhuma dizia sobre o que ela
-    # age — `It isn't age.` (idade causando o que?) e `The blood flow got choked
-    # off.` (estrangulado onde?). O orgao so' chegava na ULTIMA frase, e o
-    # operador reprovou exatamente essa cena: nao vale "aparece em algum lugar".
-    # ⭐ O conserto FUNDE as duas numa frase so' e poe o alvo dentro dela — assim
-    # ele cabe no teto em vez de estoura-lo: 31 palavras contra 27, e 33 no pior
-    # par {r}/{o} (TETO_FALA[2] = 34). ⛔ Subir o teto nao era opcao.
-    # ⚠️ `he went soft`, nao `you`: o que se cobra e' REFERENTE, nao pessoa — a
-    # fundida ja' conta a historia do homem (`his {o}` na frase do gelatin
-    # trick) e trocar a pessoa no meio quebraria o arco.
-    # ⛔ Zero prazo e zero medida na frase nova (RS10 / a linha do NECROSE).
-    # ⛔⛔ SEGUNDA PASSADA NA MESMA ENTRADA — 2026-08-03. O conserto de ontem
-    # (frase orfa) resolveu METADE: a causa passou a carregar o efeito na mesma
-    # frase, mas o efeito virou pronome (`he went soft`) e as tres acoes do
-    # produto ficaram em verbo de ENCANAMENTO — `open it` e `keeps his {o}
-    # open`. O operador leu de novo hoje e apertou a regra:
-    #   "deveria ser: it isn't age THAT'S KILLING YOUR JOHN-SON, the blood flow
-    #    got choked off e ele went soft"
-    #   "Com tanto verbo que voce poderia usar de forma mais obvia pra dizer que
-    #    DEIXA O PINTO MELHOR, voce usa 'opens'?"
-    # ⭐ AS DUAS REGRAS NOVAS, as duas nesta linha:
-    #   [1] a clausula da CAUSA nomeia O ORGAO, nao um pronome — `killing your
-    #       {o}` no lugar de `and he went soft`;
-    #   [2] a acao do produto e' verbo de RESULTADO — `get it hard again` e
-    #       `keeps it working` no lugar de `open it` / `keeps his {o} open`.
-    # ⛔ TETO: `and he went soft` (4 palavras) SAI para pagar `that's killing
-    # your {o}` (3 + {o}) e o `again`. Base 30 -> pior par {r}/{o} = 34, que e'
-    # exatamente TETO_FALA[2]. ⛔ O teto NAO subiu; encurtou-se outra coisa na
-    # mesma entrada, que e' o que a ordem manda.
-    # ⛔ RS10: `your {o}` aqui exige ZERO marcador de prazo na MESMA fala — a
-    # cena 2 e' uma fala so' e esta entrada nao tem prazo nem medida nenhuma.
-    # ⚠️ enxugado no mesmo dia: `is what keeps it working` -> `keeps it hard`.
-    # A entrada saia com 35 palavras contra teto 34 nas receitas de nome longo
-    # (`beet powder`, `cider vinegar`) — 2 em 600. O fecho perdeu duas palavras
-    # e ganhou o verbo obvio; a frase que o operador pediu fica intacta.
-    {"cred": "ambas", "txt": "It isn't age that's killing your {o} — the blood flow got choked off. {r} and warm water get it hard again. Real vasodilators. And the gelatin trick keeps it hard."},
-    {"cred": "ambas", "txt": "My aunt gave me this one: {r}, warm water, stir it clear. Oxygen. On its own it did nothing — the gelatin trick is what finished it for his {o}."},
-    {"cred": "desmente", "txt": "That powder never did a thing. This does: {r}, warm water, one stir. Vasodilators. And the gelatin trick, without which his {o} stays exactly where it is."},
-    {"cred": "ambas", "txt": "Nobody hands you the whole thing. {r}, warm water, stirred down — real collagen. And the gelatin trick, the half his {o} was waiting on."},
-    {"cred": "ambas", "txt": "Watch. {r} goes in, warm water over it, stir it down. That's nitric oxide. Skip the gelatin trick and his {o} feels none of it."},
-    {"cred": "confirma", "txt": "You saw what that does on a bench. In a glass it's {r} and warm water. Circulation. And the gelatin trick, which is the part his {o} needed."},
-    {"cred": "ambas", "txt": "A pour of {r}, warm water, stirred until the colour turns. Vasodilators, plain and simple. But without the gelatin trick his {o} gets none of it."},
-    {"cred": "ambas", "txt": "Spoon of {r}. Warm water. Stir. That's the oxygen half. The other half is the gelatin trick, and his {o} answered inside three weeks."},
-    {"cred": "ambas", "txt": "Here's the part they leave out. {r} on its own is half a recipe — without the gelatin trick the collagen never reaches his {o} at all."},
-    {"cred": "ambas", "txt": "{r} and warm water, stirred with a wooden spoon. That's the vasodilator half. The gelatin trick is the other half, and his {o} needed both."},
-    {"cred": "confirma", "txt": "That was four seconds on a bench. This is the inside version: {r}, warm water, stirred down. Nitric oxide. Plus the gelatin trick his {o} needed."},
+    # ⛔⛔ REESCRITO EM 2026-08-03 — ordem do operador: "reescreva toda a
+    # copy do agente para satisfazer a todas as pontuacoes criticas".
+    # A hierarquia agora e' CONTEXTO -> DESCOBERTA -> RECEITA -> OPEN LOOP ->
+    # GELATINA -> PROVA -> CTA. O espectador sabe do que se trata na
+    # PRIMEIRA frase; esconde-se o COMO, nunca o SOBRE O QUE.
+    {"cred": "ambas", "txt": "It starts with {r} and warm water, stirred down. That part everybody knows. The part they leave out is the gelatin trick, and that's the half his {o} needed."},
+    {"cred": "ambas", "txt": "The base is easy: {r}, warm water, one stir. Nobody hides that. What they hide is the gelatin trick, and without it his {o} stayed down."},
+    {"cred": "ambas", "txt": "Half of it is {r} and warm water. That half does nothing alone. The gelatin trick is the other half, and it's the one that got his {o} hard."},
+    {"cred": "ambas", "txt": "You start with {r} and warm water. Everyone stops there. I didn't, because the gelatin trick is what got his {o} hard."},
+    {"cred": "ambas", "txt": "It's {r}, warm water, stirred until it turns. Simple. But there's one more step, the gelatin trick, and that step is what woke his {o} up."},
+    {"cred": "ambas", "txt": "{r} and warm water is where it starts. That's the part they'll tell you. The gelatin trick is the part they won't, and his {o} needed it."},
+    {"cred": "ambas", "txt": "First {r}, then warm water, stirred clear. That's two of three. The third is the gelatin trick, and it got his {o} standing again."},
+    {"cred": "ambas", "txt": "Anyone can do the {r} and warm water. Almost nobody does the gelatin trick after it, and that's the step that got his {o} hard again."},
+    {"cred": "ambas", "txt": "{r} in warm water, one turn of the spoon. That much is free. The gelatin trick is what I paid to learn, and his {o} came back on it."},
+    {"cred": "ambas", "txt": "The drink is {r} and warm water. Alone it did nothing. Then I added the gelatin trick and his {o} came back hard."},
+    {"cred": "ambas", "txt": "It's {r} and warm water to start. Every recipe online stops right there. Mine doesn't — the gelatin trick got his {o} working."},
+    {"cred": "ambas", "txt": "Two things in the glass: {r} and warm water. A third thing goes in after, the gelatin trick, and that's the one that got his {o} back."},
+    {"cred": "ambas", "txt": "{r}, warm water, stir. That's the part I can say out loud. The gelatin trick is the rest of it, and it's what got him hard again."},
+    {"cred": "ambas", "txt": "Start with {r} and warm water. Good on its own, useless for this. The gelatin trick is what made it work on his {o}."},
 ]
 
 # ---------------------------------------------------------------------------
@@ -1838,35 +1727,25 @@ FUNDIDAS = [
 # ⚠️ `voz`: `intima` exige relacao de parceria; `terceiro` roda com qualquer uma.
 # O motor FILTRA — nao se reescreve pool.
 PROVAS = [
-    {"voz": "intima", "txt": "Now his {o} won't let me sleep."},
-    {"voz": "intima", "txt": "His {o} wakes up before he does."},
-    {"voz": "intima", "txt": "I beg his {o} for mercy now."},
-    {"voz": "intima", "txt": "His {o} gives me no quiet nights."},
-    {"voz": "intima", "txt": "Done by ten before. His {o} isn't."},
-    {"voz": "intima", "txt": "I stopped asking. His {o} started answering."},
-    {"voz": "terceiro", "txt": "His {o} doesn't take no anymore."},
-    {"voz": "terceiro", "txt": "His {o} gave the whole thing away."},
-    {"voz": "intima", "txt": "Three weeks in, his {o} outlasts me."},
-    # ⛔⛔ A ENTRADA QUE O OPERADOR CITOU DUAS VEZES — conserto de 2026-08-03.
-    # Era `My sister asked what changed. His {o}.` e ele reclamou dos DOIS
-    # defeitos que ela junta numa frase so':
-    #   "His old boy o QUE?"  -> FRAGMENTO SEM PREDICADO: `His {o}.` e' sintagma
-    #    nominal solto. Toda frase precisa de verbo finito.
-    #   "O que mudou?"        -> MUDANCA SEM DIZER O QUE MUDOU: abre `what
-    #    changed` e a fala acaba sem responder.
-    # ⭐ REGRA NOVA: a resposta vem NA FRASE SEGUINTE e ela tem verbo de
-    # RESULTADO. `noticed` no lugar de `asked what changed` tira a pergunta
-    # pendurada, e `gets hard again` da' predicado E resposta de uma vez.
-    # ⚠️ Custa 1 palavra (7 + {o} contra 6 + {o}) — a cena 3 cabe (teto 30).
-    {"voz": "terceiro", "txt": "My sister noticed. His {o} gets hard again."},
-    {"voz": "terceiro", "txt": "His {o} quit waiting on him."},
-    {"voz": "terceiro", "txt": "His {o} stopped apologizing. So did he."},
-    {"voz": "terceiro", "txt": "Nineteen days later his {o} doesn't quit."},
-    {"voz": "intima", "txt": "His {o} turns the lamp back on."},
-    {"voz": "intima", "txt": "His {o} runs the schedule now."},
-    {"voz": "terceiro", "txt": "Sixty-two, and his {o} acts thirty."},
-    {"voz": "intima", "txt": "I said goodnight. His {o} disagreed."},
-    {"voz": "terceiro", "txt": "Ask what his {o} does at midnight."},
+    # ⛔⛔ REESCRITO EM 2026-08-03 — ordem do operador: "reescreva toda a
+    # copy do agente para satisfazer a todas as pontuacoes criticas".
+    # A hierarquia agora e' CONTEXTO -> DESCOBERTA -> RECEITA -> OPEN LOOP ->
+    # GELATINA -> PROVA -> CTA. O espectador sabe do que se trata na
+    # PRIMEIRA frase; esconde-se o COMO, nunca o SOBRE O QUE.
+    {"voz": "terceiro", "txt": "His {o} hasn't gone soft since."},
+    {"voz": "intima", "txt": "That's him. His {o} never quits now."},
+    {"voz": "intima", "txt": "Two years of a dead {o}, and now this."},
+    {"voz": "terceiro", "txt": "His {o} is harder now than at forty."},
+    {"voz": "terceiro", "txt": "Same man whose {o} had given up."},
+    {"voz": "intima", "txt": "His {o} stands like that now."},
+    {"voz": "terceiro", "txt": "Same man, same age. His {o} doesn't quit."},
+    {"voz": "terceiro", "txt": "His {o} hasn't needed a pill since."},
+    {"voz": "intima", "txt": "That's what his {o} does now."},
+    {"voz": "intima", "txt": "His {o} is what wakes me up now."},
+    {"voz": "terceiro", "txt": "His {o} went from dead to this."},
+    {"voz": "intima", "txt": "His {o} hasn't gone soft on me since."},
+    {"voz": "terceiro", "txt": "His {o} had stopped answering. Look at it."},
+    {"voz": "intima", "txt": "His {o} is harder than the day we met."},
 ]
 
 # ⭐ AS BARREIRAS, e este e' o lugar delas: DEPOIS da prova e NUNCA antes dela. A
@@ -1909,22 +1788,27 @@ BARREIRAS = [
 # ⚠️ ENTROPIA DE FORMA, nao so' de contagem: 5 das 16 levam a keyword FORA da
 # posicao inicial, senao o --stats conta 16 e a variacao percebida e' 3.
 CTAS = [
-    "Comment gelatin, and I'll send you the whole recipe tonight.",
-    "Comment gelatin, and the recipe's on your phone tonight.",
-    "Comment gelatin, and I'll send you both halves.",
-    "Comment gelatin, and I'll tell you exactly what to buy.",
-    "Comment gelatin, one word, and the recipe is yours.",
-    "Comment gelatin, and I'll send the other half.",
-    "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send the missing half.",
-    "Want it? Comment gelatin, and I'll send the recipe tonight.",
-    "Comment gelatin, and I'll send you the measurements.",
-    "Comment gelatin, and I'll send it before you scroll.",
-    "Comment gelatin, and I'll send all four ingredients.",
-    "It's four lines. Comment gelatin, and I'll send it.",
-    "Comment gelatin, and I'll send you where to get it.",
-    "Comment gelatin, nothing else, and I'll send the recipe.",
-    "Comment gelatin, and I'll send the part nobody posts.",
+    # ⛔⛔ REESCRITO EM 2026-08-03 — ordem do operador: "reescreva toda a
+    # copy do agente para satisfazer a todas as pontuacoes criticas".
+    # A hierarquia agora e' CONTEXTO -> DESCOBERTA -> RECEITA -> OPEN LOOP ->
+    # GELATINA -> PROVA -> CTA. O espectador sabe do que se trata na
+    # PRIMEIRA frase; esconde-se o COMO, nunca o SOBRE O QUE.
+    "Comment gelatin, and I'll send the recipe.",
+    "Comment gelatin, and the full recipe goes to you.",
+    "Comment gelatin, and I'll send the missing step.",
+    "Comment gelatin, and I'll send you all three steps.",
+    # ⚠️ era `and you get what I used` — encurtei e a ISCA foi junto: o linter
+    # exige que o CTA diga O QUE CHEGA, e "o que eu usei" nao nomeia entrega.
+    "Comment gelatin, and you get the recipe I used.",
+    "Comment gelatin, and I'll write out the glass.",
+    "Comment gelatin, and I'll send the step everyone skips.",
+    "Comment gelatin, and I'll send you the whole thing.",
+    "Comment gelatin, and the recipe is yours.",
+    "Comment gelatin, and I'll send what to buy.",
+    "Comment gelatin, and I'll send you the exact recipe.",
+    "Comment gelatin, and I'll send the third ingredient.",
+    "Comment gelatin, and I'll send it my way.",
+    "Comment gelatin, and I'll send his recipe.",
 ]
 
 # ⭐ O follow-gate que ja' usamos JA' E' o "porque" de Langer (1978): pedido +
