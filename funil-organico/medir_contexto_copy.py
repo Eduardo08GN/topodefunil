@@ -63,9 +63,12 @@ sys.path.insert(0, FO)
 # Gate que nao ve' o motor nao reprova o motor — ele so' produz um "passou"
 # mentiroso (§7 das licoes, e e' o mesmo defeito que deixou o elenco masculino
 # inteiro de tres motores fora do `medir_personagens.py`).
-MOTORES = ["clean_short", "escandalo_short", "troca_short", "organicwave_short",
-           "ressurreicao_short", "flagrante_short", "pee_short",
-           "vazamento_short", "necrose_short", "exterior_short"]
+# ⚠️ 2026-08-03: `clean_short_v2` entrou aqui na revisao do proprio v2. Ele
+# tinha nascido FORA desta lista — o `--gate` rodava verde sem nunca ter olhado
+# para o motor novo, que e' exatamente o "passou" mentiroso descrito acima.
+MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
+           "organicwave_short", "ressurreicao_short", "flagrante_short",
+           "pee_short", "vazamento_short", "necrose_short", "exterior_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

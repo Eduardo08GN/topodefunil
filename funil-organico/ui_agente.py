@@ -16,6 +16,26 @@ Uma so' interface serve todos os agentes portados. Cada motor
 ...mais a API que o gerador ja' expoe: ETNIA, sortear, montar, lint,
 _carregar_ledger, _gravar_ledger, NUCLEO, TETO_FALA, _palavras, LEDGER.
 
+⭐ DOIS CONTRATOS OPCIONAIS DE TRAVA (2026-08-03) — os dois lidos com
+`getattr(motor, ..., [])`, entao motor que nao declara nada nao ve' nada e nao
+muda de comportamento. E' obrigatorio: esta interface e' compartilhada pelos dez
+agentes SHORT.
+
+    TRAVAS_UI        [(chave, rotulo, [opcoes])] — PRE-SELECAO. O painel desenha
+                     `livre | opcao | opcao` no topo; o que nao estiver em
+                     `livre` entra em `sortear(..., travas)`.
+    EIXOS_TRAVAVEIS  [chave, ...] — CADEADO por eixo, ao lado do `trocar`.
+                     Cadeado fechado = aquele eixo NAO e' re-sorteado no SORTEAR
+                     VIDEO: o valor que esta' na tela e' devolvido ao motor
+                     dentro de `travas`, e o motor remonta o video em volta
+                     dele. ⚠️ E' o motor que reconstroi, nao a UI que congela a
+                     chave: eixo travado costuma mandar em coisas derivadas (no
+                     CLEAN o item da copy manda na bancada e no despejo), e
+                     congelar por fora deixa o video incoerente consigo mesmo.
+
+⚠️ Declarar qualquer um dos dois implica que `sortear()` daquele motor aceita o
+quarto argumento `travas`.
+
 Duplicar esta interface por agente seria o mesmo erro que a regra P9 proibe
 na doutrina: copia envelhece e mente.
 """
@@ -66,6 +86,10 @@ AVISO = "#ffb02e"
 
 ASSINATURA = "by Eddie"
 
+# o rotulo do "sem pre-selecao" do TRAVAS_UI. Constante porque ele e' comparado,
+# nao so' exibido: `sortear` so' manda a trava quando o valor NAO e' este.
+LIVRE = "livre"
+
 F_UI = ("Segoe UI", 10)
 F_UI_B = ("Segoe UI Semibold", 10)
 F_TIT = ("Segoe UI Semibold", 17)
@@ -90,6 +114,15 @@ class App(tk.Tk):
         self.blocos = {}
         self.achados = []
         self.rng = random.Random()
+
+        # os dois contratos de trava, resolvidos UMA vez (ver o cabecalho).
+        # ⚠️ `getattr` com default: os outros nove motores nao declaram nenhum
+        # dos dois e nao podem quebrar por causa disso.
+        self.travas_ui = list(getattr(motor, "TRAVAS_UI", []) or [])
+        self.eixos_travaveis = list(getattr(motor, "EIXOS_TRAVAVEIS", []) or [])
+        self.var_trava = {}
+        self.var_cadeado = {}
+        self.b_cadeado = {}
 
         self._estilos()
         self._topo()
@@ -178,7 +211,50 @@ class App(tk.Tk):
         tk.Label(cx, text="pele", font=F_SMALL, bg=BG,
                  fg=MUTED).pack(side="right", padx=(0, 6))
 
+        self._barra_travas()
         tk.Frame(self, bg=LINE, height=1).pack(fill="x", padx=16, pady=(10, 0))
+
+    def _barra_travas(self):
+        """A pre-selecao do TRAVAS_UI — `livre | opcao | opcao` por eixo.
+
+        ⛔ Nao desenha NADA quando o motor nao declara TRAVAS_UI: nove dos dez
+        agentes nao declaram, e o painel deles tem de continuar igual ao pixel.
+        ⚠️ O default e' `livre` em todos, entao abrir o app e clicar em SORTEAR
+        VÍDEO devolve exatamente o mesmo comportamento de antes desta barra.
+        """
+        if not self.travas_ui:
+            return
+        f = tk.Frame(self, bg=BG)
+        f.pack(fill="x", padx=16, pady=(9, 0))
+        tk.Label(f, text="pré-seleção", font=F_SMALL, bg=BG,
+                 fg=MUTED).pack(side="left", padx=(0, 10))
+        for chave, rotulo, opcoes in self.travas_ui:
+            self.var_trava[chave] = tk.StringVar(value=LIVRE)
+            tk.Label(f, text=rotulo, font=F_SMALL, bg=BG,
+                     fg=TXT).pack(side="left", padx=(6, 5))
+            grupo = []
+            for op in [LIVRE] + list(opcoes):
+                b = tk.Button(f, text=op, font=F_SMALL, relief="flat", bd=0,
+                              cursor="hand2", padx=11, pady=4)
+                b.configure(command=lambda c=chave, o=op, g=grupo:
+                            self._escolher_trava(c, o, g))
+                b.pack(side="left", padx=(0, 2))
+                grupo.append((op, b))
+            self._pintar_trava(chave, grupo)
+
+    def _escolher_trava(self, chave, opcao, grupo):
+        self.var_trava[chave].set(opcao)
+        self._pintar_trava(chave, grupo)
+        self.sortear()
+
+    def _pintar_trava(self, chave, grupo):
+        atual = self.var_trava[chave].get()
+        for op, b in grupo:
+            on = (op == atual)
+            b.configure(bg=ACCENT if on else PANEL2,
+                        fg="#ffffff" if on else MUTED,
+                        activebackground=ACCENT_D if on else LINE,
+                        activeforeground="#ffffff")
 
     # -------------------------------------------------------------- esquerda
     def _rolagem(self, pai, largura):
@@ -247,6 +323,16 @@ class App(tk.Tk):
                       activebackground=LINE, activeforeground=ACCENT,
                       relief="flat", bd=0, cursor="hand2", padx=10, pady=2,
                       command=lambda c=chave: self.trocar_eixo(c)).pack(side="right")
+            # ⭐ o CADEADO, a' esquerda do `trocar` — so' nos eixos que o motor
+            # declarou travaveis. Motor sem EIXOS_TRAVAVEIS nao ganha botao.
+            if chave in self.eixos_travaveis:
+                self.var_cadeado[chave] = tk.BooleanVar(value=False)
+                bc = tk.Button(lin, text="trava", font=F_SMALL, relief="flat",
+                               bd=0, cursor="hand2", padx=9, pady=2)
+                bc.configure(command=lambda c=chave: self.alternar_cadeado(c))
+                bc.pack(side="right", padx=(0, 7))
+                self.b_cadeado[chave] = bc
+                self._pintar_cadeado(chave)
             v = tk.Label(lin, text="—", font=F_UI_B, bg=PANEL, fg=TXT,
                          anchor="w", wraplength=300, justify="left")
             v.pack(side="left", fill="x", expand=True)
@@ -363,12 +449,49 @@ class App(tk.Tk):
         self.lbl_toast = tk.Label(r, text="", font=F_UI_B, bg=BG, fg=OK)
         self.lbl_toast.pack(side="right")
 
+    # ----------------------------------------------------------------- trava
+    def alternar_cadeado(self, chave):
+        var = self.var_cadeado[chave]
+        var.set(not var.get())
+        self._pintar_cadeado(chave)
+        self._toast("%s %s" % (chave, "TRAVADO — não sai no sorteio"
+                               if var.get() else "destravado"))
+
+    def _pintar_cadeado(self, chave):
+        on = self.var_cadeado[chave].get()
+        self.b_cadeado[chave].configure(
+            text="TRAVADO" if on else "trava",
+            bg=ACCENT if on else PANEL2, fg="#ffffff" if on else MUTED,
+            activebackground=ACCENT_D if on else LINE,
+            activeforeground="#ffffff")
+
+    def travas(self):
+        """O que o sorteio NAO pode mexer, no formato que o motor espera.
+
+        `None` quando o motor nao declara contrato nenhum — e' o sinal para
+        chamar `sortear()` com tres argumentos, como os nove outros esperam.
+        ⚠️ O cadeado devolve o VALOR QUE ESTA' NA TELA (`self.spec[chave]`), nao
+        um id: quem remonta o video em volta dele e' o motor.
+        """
+        if not (self.travas_ui or self.eixos_travaveis):
+            return None
+        t = {}
+        for chave, var in self.var_trava.items():
+            if var.get() != LIVRE:
+                t[chave] = var.get()
+        for chave, var in self.var_cadeado.items():
+            if var.get() and self.spec and chave in self.spec:
+                t[chave] = self.spec[chave]
+        return t
+
     # ------------------------------------------------------------------ acao
     def sortear(self):
         seed = self.var_seed.get().strip()
         self.rng = random.Random(int(seed)) if seed.isdigit() else random.Random()
-        self.spec = self.m.sortear(self.var_pag.get(), self.rng,
-                                   self.m._carregar_ledger())
+        travas = self.travas()
+        args = (self.var_pag.get(), self.rng, self.m._carregar_ledger())
+        self.spec = (self.m.sortear(*args) if travas is None
+                     else self.m.sortear(*args, travas))
         self._preencher_copy()
         self._marcar_limpo()
         self._render()
@@ -390,7 +513,12 @@ class App(tk.Tk):
             # quebrados sem ninguem perceber (2026-07-31).
             self._toast("eixo %s: %s" % (chave, e))
             return
-        opcoes = [x for x in pool if x is not self.spec[chave]] or pool
+        # ⚠️ `!=` e nao `is not`: os pools novos do CLEAN V2 devolvem STRING
+        # (etnia) e LISTA (o par do truque), montadas na hora — identidade nao
+        # exclui o valor que ja' esta' na tela, e o botao `trocar` devolvia o
+        # mesmo. Para os pools de DICT o resultado e' o mesmo de antes: as
+        # entradas sao unicas, entao so' a atual sai da lista.
+        opcoes = [x for x in pool if x != self.spec[chave]] or pool
         self.spec[chave] = self.rng.choice(opcoes)
         reescreve = getattr(self.m, "EIXOS_QUE_MEXEM_NA_COPY", {}).get(chave)
         if reescreve:
@@ -410,6 +538,13 @@ class App(tk.Tk):
 
         ⚠️ E o pool pode ser uma FUNCAO da pagina em vez de lista: quando a
         congruencia de etnia trava o elenco, o agente expoe `mulheres_de(pag)`.
+
+        ⭐ 2026-08-03 — e ha' pool que depende do SPEC, nao da pagina: o `QUEM
+        FALA` do CLEAN sai de `REFS_H` ou `REFS_M` conforme o sexo em cena, e
+        nome de pool nenhum resolve isso (era o bug: o painel oferecia as
+        MULHERES com um homem no video). A convencao e' ADITIVA — o callable
+        marcado com `.recebe_spec = True` recebe o spec inteiro; sem a marca,
+        continua recebendo a pagina, que e' o caso dos outros nove motores.
         """
         pool = getattr(self.m, nome, None)
         if pool is None:
@@ -417,7 +552,10 @@ class App(tk.Tk):
         if pool is None:
             raise AttributeError("pool '%s' nao existe nem no motor nem no base"
                                  % nome)
-        return pool(self.spec["pagina"]) if callable(pool) else pool
+        if not callable(pool):
+            return pool
+        return pool(self.spec if getattr(pool, "recebe_spec", False)
+                    else self.spec["pagina"])
 
     def pele_atual(self):
         return "clara" if "white" in self.m.ETNIA[self.var_pag.get()] else "escura"
@@ -480,16 +618,33 @@ class App(tk.Tk):
         self.lbl_sujo.configure(text="")
 
     # --------------------------------------------------------------- render
+    @staticmethod
+    def _texto_eixo(v, campo):
+        """O que o painel mostra na linha de um eixo.
+
+        ⚠️ Ate' 2026-08-03 isto assumia DICT: `"selo" in v` num valor de texto
+        e' teste de SUBSTRING, e `v.get(...)` numa string estoura
+        AttributeError dentro do callback do tkinter — ou seja, o painel morria
+        calado. O CLEAN V2 poe' no painel um eixo de STRING (a etnia) e um de
+        LISTA (o par do truque), entao os tres casos ficam explicitos.
+        Para DICT o comportamento e' o mesmo de sempre, caractere por caractere.
+        """
+        if isinstance(v, str):
+            return v
+        if isinstance(v, (list, tuple)):
+            return " + ".join(str(x) for x in v)
+        if isinstance(v, dict):
+            if "selo" in v:
+                return "%s   [%s]" % (v.get(campo, "?"), v["selo"])
+            if "idade" in v:
+                return "%dy · %s" % (v["idade"], v.get(campo, "?"))
+            return v.get(campo, "?")
+        return str(v)
+
     def _render(self):
         for chave, _r, _p, campo in self.m.EIXOS_UI:
-            v = self.spec[chave]
-            if "selo" in v:
-                txt = "%s   [%s]" % (v.get(campo, "?"), v["selo"])
-            elif "idade" in v:
-                txt = "%dy · %s" % (v["idade"], v.get(campo, "?"))
-            else:
-                txt = v.get(campo, "?")
-            self.lbl_eixo[chave].configure(text=txt)
+            self.lbl_eixo[chave].configure(
+                text=self._texto_eixo(self.spec[chave], campo))
 
         self.lbl_resumo.configure(text=self.m.resumo_pt(self.spec))
         self._pintar_pele()
