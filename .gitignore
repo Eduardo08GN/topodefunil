@@ -2,11 +2,14 @@ node_modules/
 .DS_Store
 .playwright-mcp/
 funil-organico/.ledger-v6.json
-funil-organico/.escandalo-short-ledger.json
-funil-organico/.clean-short-ledger.json
-funil-organico/.clean-short-v2-ledger.json
-funil-organico/.ressurreicao-short-ledger.json
-funil-organico/.exterior-short-ledger.json
+# ⭐ GLOB, nao um por agente. A lista nominal cobria 5 dos 12 ledgers: FLAGRANTE,
+# NECROSE, PEE, VAZAMENTO, TROCA, ORGANICWAVE e COLO ficaram de fora, e bastava
+# rodar um deles para o ledger virar arquivo solto a espera de entrar num commit
+# por acidente. Agente novo passa a estar coberto no dia em que nasce.
+# ⛔ O `.prisma-ledger.json` continua VERSIONADO de proposito (CLAUDE.md) — por
+# isso a excecao logo abaixo.
+funil-organico/.*-ledger.json
+!funil-organico/.prisma-ledger.json
 funil-organico/__pycache__/
 
 # artefatos de build do PyInstaller

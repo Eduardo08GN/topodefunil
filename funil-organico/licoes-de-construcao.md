@@ -366,6 +366,38 @@ alguém reescreve um pool, a camada PT fica órfã **em silêncio** — nenhum l
 de motor olha para tradução. Toda alteração de copy tem de sair com a tradução
 na mesma entrega, medida.
 
+### ⛔⛔ A emenda cara: consertei o MEDIDOR e não o MEDIDO
+
+No dia seguinte, o mesmo bug apareceu de novo — e a causa foi o meu conserto.
+
+Eu tinha corrigido a âncora de pontuação **no verificador**. O verificador
+passou a dizer `0 templates sem PT`. Mas quem traduz para o usuário é outro
+arquivo, e nele a âncora continuava errada: **151 falas saíam inteiras em
+inglês no painel enquanto o relatório mostrava cobertura cheia.**
+
+> **Consertar a lente não conserta o que ela olha.** E é pior que não consertar
+> nada: agora o número me dava permissão para ir embora.
+
+**O que impede:** achou um bug de casamento/parsing num verificador? Perguntar
+**onde mais esse mesmo código roda**. Aqui eram dois: `checar.py` (mede) e
+`traducao.py` (faz). Corrigir só o primeiro é maquiar o painel.
+
+### ⛔ E o corolário: a correção seguinte quebrou um agente que estava zerado
+
+Ao consertar o tradutor, quebrei a fala no travessão **antes** de tentar casar
+o template. Passou de 95,4% para 92,8% e **derrubou o TROCA de 0 para 38 falas
+quebradas** — porque metade dos templates tem travessão *dentro*
+(`gelatin trick - days, not months`), e quebrar ali destrói o template.
+
+O jeito certo foi o travessão como **último recurso**: tenta casar inteiro,
+e só se falhar tenta partir. Regra geral: **separador que também aparece dentro
+do conteúdo não pode ser aplicado antes da tentativa de casamento inteiro.**
+
+⚠️ **E o que revelou a regressão foi medir os OUTROS agentes.** Se eu tivesse
+olhado só o número do agente que estava consertando, teria comemorado 92,8%
+sem ver que quebrei um vizinho. **Toda correção em código compartilhado se mede
+no parque inteiro, não no caso que motivou a correção.**
+
 ---
 
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
@@ -394,6 +426,10 @@ na mesma entrega, medida.
 - [ ] `git diff` conferido: nenhuma string validada redigitada sem ordem
 - [ ] **Mexi em copy? A tradução PT saiu junto**, e eu **li duas falas
       renderizadas inteiras** — não confiei só no número (§18)
+- [ ] **Consertei um verificador? Procurei o MESMO bug no código que ele
+      verifica** — lente consertada não conserta o objeto (§18)
+- [ ] **Alterei código compartilhado? Medi o parque INTEIRO**, não só o agente
+      que motivou a mudança (§18)
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
 - [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
 
