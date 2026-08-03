@@ -369,7 +369,7 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   | o que ela faz | **só aponta**, não toca em nada | **prepara nas cenas 1 e 2**, um ingrediente por cena |
   | a bancada | estática nas 3 cenas | o copo **muda de estado duas vezes** |
   | a cena 3 | dedo na câmera | **mãos fora** — só o resultado pronto + a gelatina |
-  | selo | 🟢 24 gerações, zero restrição | 🟡 despejo na cena 2 aprovado em render; **na cena 1, não testado** |
+  | selo | 🟢 24 gerações, zero restrição | 🟢 despejo nas duas cenas aprovado em render (`0726.mp4`, 2026-08-02) |
 
   ⚠️ **Por que a B existe:** eu tinha excluído o reel 1 por causa da manipulação
   contínua de objeto (F12b). O operador apontou o óbvio — **ele tem quase o
@@ -970,33 +970,50 @@ espectador lê antes de ouvir.
 | lote | resultado |
 |---|---|
 | família A — imagens e takes | **24 gerações, zero restrição** |
-| família B — vídeo completo, 20,6s | **aprovado pelo operador**, copy exata nas 3 cenas |
+| família B — despejo só na cena 2, vídeo de 20,6s | **aprovado pelo operador**, copy exata nas 3 cenas |
+| família B — **despejo nas cenas 1 e 2** (`0726.mp4`, 20,2s) | ⭐ **aprovado**, 2026-08-02 |
 
-⚠️ **O que foi medido na família B foi o despejo só na CENA 2.** A configuração
-atual — despejo também na **cena 1**, um ingrediente por cena (CL17, ordem do
-operador 2026-08-02) — **ainda não passou por render.** O risco herdado é o
-mesmo (F12b, o Veo soltando o recipiente) e as travas são as mesmas, mas
-**dobrou o número de blocos que o carregam.** Selo da cena 1 da família B: 🟡
-até o primeiro lote. **Selo é medição, não palpite** — vale nos dois sentidos.
+⭐ **O DESPEJO NA CENA 1 PASSOU** (medido em `0726.mp4`, 2026-08-02). Era o
+único 🟡 que restava no agente. O que a medição mostrou:
+
+| o que se temia | o que aconteceu |
+|---|---|
+| o Veo soltar o recipiente na cena 1 (F12b) | **não soltou** — nem o pote de mel na cena 1, nem a caixa de canela na cena 2 |
+| dobrar os blocos com manipulação dobrar o risco | as três travas do CL17 seguraram nos dois |
+| a copy derivar num vídeo com duas ações manuais | **palavra por palavra** — transcrita e conferida linha a linha contra o roteiro |
+
+A transcrição bateu 3/3 nas falas, com `man-hood` saindo como "manhood" na
+fala — que é exatamente o `nucleo_sonoro` fazendo o trabalho dele: hífen para
+o classificador, fonema inteiro para o TTS.
+
+> **Quatro vezes eu presumi risco sem testar neste agente, e nas quatro eu
+> estava errado.** A fruta partida, a densidade de vocabulário, a manipulação
+> de objeto da família B, e agora a manipulação em duas cenas. Selo é medição.
+
+⚠️ Falta o selo de **conversão** — moderação e render aprovados não são vídeo
+que converte.
 
 É o ângulo mais limpo do repertório: nada em cena que um classificador de
 imagem possa ler como anatomia. Nenhum dos oito agentes tem selo de moderação
 tão bom, e a explicação é a própria especificação do CL2.
 
-⚠️ **Três suspeitas minhas que os testes derrubaram**, registradas para eu não
-repetir:
+⚠️ **Quatro suspeitas minhas que os testes derrubaram**, registradas para eu
+não repetir:
 1. a **fruta partida** como leitura anatômica — passou 4 de 4
 2. a **densidade** de `load` + órgão nomeado na cena 2 — passou 4 de 4
 3. a **manipulação de objeto** da família B, que eu quase usei para descartar o
    reel de 13,3k — **o Veo não soltou o pote**. As três travas do CL17
    seguraram: punho inteiro visível, antebraço apoiado, e nada de
    `completely motionless` num objeto que alguém segura
+4. a **manipulação em DUAS cenas**, que eu marquei 🟡 por conta própria ao
+   dobrar os blocos com objeto na mão — `0726.mp4` passou nas duas
 
-> **Selo é medição, não palpite.** As três vezes que eu presumi risco sem
+> **Selo é medição, não palpite.** As quatro vezes que eu presumi risco sem
 > testar, eu estava errado — e a terceira quase custou o melhor reel da fonte.
+> Palpite pessimista não é prudência: é uma reprovação inventada.
 
 ⚠️ Falta o selo de **conversão** — moderação e render aprovados não são vídeo
-que converte.
+que converte. **Este é o único selo que o CLEAN ainda não tem.**
 
 ---
 

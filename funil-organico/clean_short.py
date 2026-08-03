@@ -106,9 +106,10 @@ CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 # ---------------------------------------------------------------------------
 FAMILIAS = [
     {"id": "aponta", "selo": "V", "nome": "a fileira apontada"},
-    # ⚠️ selo N: o despejo na CENA 2 passou em render (2026-08-02); o da CENA 1
-    # ainda nao. Selo e' medicao, nao palpite — desce ate' o primeiro lote.
-    {"id": "preparo", "selo": "N", "nome": "o preparo nas cenas 1 e 2"},
+    # ⭐ selo V desde 2026-08-02: o video 0726 saiu em 20,2s com despejo nas
+    # DUAS cenas, o Veo nao soltou nenhum dos recipientes, e a copy chegou
+    # palavra por palavra (transcrita e conferida contra o roteiro).
+    {"id": "preparo", "selo": "V", "nome": "o preparo nas cenas 1 e 2"},
 ]
 
 CENARIOS = [
