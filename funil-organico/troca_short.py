@@ -1106,7 +1106,7 @@ FUNDIDAS = [
     # ve' nao e' vicio que nao existe (licoes-de-construcao §16).
     # O `That's` saiu para pagar as palavras do alvo. 23 -> 25 palavras.
     {"voz": "neutra",
-     "txt": "Doctors never say his {o} lost its blood flow. Gelatin does the job {s} never could — the gelatin trick — and he proved it in weeks."},
+     "txt": "Doctors never say his {o} lost its blood flow. Gelatin does what {s} never could — the gelatin trick."},
     {"voz": "conjugal",
      "txt": "Trade it. One spoon of gelatin, cold water, nightly. The gelatin trick, and his {o} stopped quitting on us months ago."},
     {"voz": "neutra",

@@ -36,25 +36,37 @@ novo com outra seed.
 [`PIPELINE-NOVO-AGENTE.md`](PIPELINE-NOVO-AGENTE.md). Ler antes de construir
 qualquer agente novo.
 
+## ⛔⛔ ESCOPO — SÓ EXISTEM OS `*_short.py` (2026-08-03)
+
+> **Quando o Ed disser "os agentes" — melhorar, ajustar, medir, ler — ele está
+> sempre falando dos SHORT.** Não pergunte qual.
+
+Os **nove agentes** deste funil são os `<angulo>_short.py` em `funil-organico/`:
+`clean` · `escandalo` · `troca` · `organicwave` · `ressurreicao` · `flagrante` ·
+`pee` · `vazamento` · `necrose`. Três cenas de 8s, destino AdBatch Vertical 3.
+**Cada um é autossuficiente e é a FONTE DA VERDADE do seu ângulo** — correção de
+regra entra no `_short`.
+
+⛔ **Tudo com label `lucas` mudou-se para
+[`agentes-de-terceiros/`](agentes-de-terceiros/) e não existe para nós.** São de
+um amigo do Ed, que arquitetou de outra forma. **Não ler, não medir, não
+consertar, não citar.** Os `.exe` deles seguem na área de trabalho e continuam
+funcionando — ordem dele de manter como estão.
+
+⚠️ Até 2026-08-03 quatro SHORT faziam `import <agente>_lucas as base`. Foram
+desacoplados por **cópia literal**, com duas provas antes do commit: importação
+dos `*_lucas` bloqueada (os 9 rodam) e **equivalência bit a bit** em 5 seeds e
+4.000 vídeos — o refactor não mudou um caractere do vídeo gerado.
+
 **Agente maduro vira ferramenta.** Quando as regras param de mudar, o agente é
-portado para código: motor (`<agente>_lucas.py` — pools sorteáveis, strings
+portado para código: motor (`<agente>_short.py` — pools sorteáveis, strings
 travadas como constantes, linter em regex), app tkinter offline e `.exe`
 entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
 [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
-Portados ate agora: **FLAGRANTE**, **PEE**, **VAZAMENTO**, **NECROSE** e **TROCA** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
-⭐ **SHORT NATIVO** e a terceira via, e nao tem motor longo nenhum: **ORGANICWAVE** e
-**TROCA** (2026-08-01) nascem em 3 cenas porque a fonte garimpada e' de 12-14s,
-**ESCANDALO** (2026-08-02) porque o angulo nasce em tres cenas mesmo com fonte de 42s,
-e **RESSURREICAO** (2026-08-02) porque o angulo ja' existia em 5 cenas mas cabe
-inteiro em tres batidas — despejo/crescimento, receita incompleta, prova.
-⚠️ No RESSURREICAO a variante SHORT **nao revoga** o arco longo de 5 cenas: os dois
-formatos coexistem no mesmo `.md`, e nao existe `ressurreicao_lucas.py`.
-Nao criar `<agente>_lucas.py` de 5 cenas para eles — o motor curto e' o motor.
-Cada um tem tambem a variante **SHORT** (3 cenas de 8s, para o AdBatch Vertical 3):
-`<agente>_short.py` **deriva** do motor longo em vez de copia-lo — a maquinaria do
-colapso mora em `short_comum.py`. ⚠️ A copy fundida da cena 2 carrega
-obrigatoriamente o literal `gelatin trick` e o mecanismo do agente, porque as cenas
-que os traziam sao justamente as que caem.
+A interface é compartilhada (`ui_agente.py`), só o motor muda; a maquinaria do
+colapso de 5 para 3 cenas mora em `short_comum.py`.
+⚠️ A copy fundida da cena 2 carrega obrigatoriamente o literal `gelatin trick` e
+o mecanismo do agente, porque as cenas que os traziam são justamente as que caem.
 ⚠️ **Vai pro código o mecânico e verificável; fica no Markdown o julgamento.**
 String validada é **constante**, nunca redigitada — comprimir o D1 na mão já
 entregou esqueleto 3D no lugar da placa em corte.

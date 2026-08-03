@@ -147,28 +147,32 @@ COMBINAM = {"randomizador-prisma.py": ["REF_IDADES", "REF_FISICOS", "REF_MARCAS"
 # Gate que berra pra sempre e' gate que ninguem le' — entao esses saem da
 # reprovacao e aparecem rotulados. Cada linha citou o codigo que a sustenta.
 # ⛔ so' entra aqui zero VERIFICADO no arquivo, nunca zero que deu trabalho.
+# ⚠️ AS CHAVES MUDARAM DE ARQUIVO EM 2026-08-03. Os pools moraram nos `*_lucas`
+# ate' o desacoplamento; agora vivem nos `_short`, que sao a fonte da verdade.
+# A regra que cada excecao sustenta nao mudou uma virgula — so' o endereco.
 EXCECOES = {
-    ("flagrante_lucas.py", "REFS", "pelo_facial"):
-        "F4b (flagrante_lucas.py:346) — o REF e' barbeado e sem oculos DE "
-        "PROPOSITO: careca+bigode+oculos e' o que marca a VITIMA. Encher aqui "
-        "apaga o contraste que separa os dois no plano medio.",
-    ("flagrante_lucas.py", "REFS", "oculos"): "idem F4b",
-    ("pee_lucas.py", "REFS", "pelo_facial"): "idem F4b/PE9 — o PEE herda o contraste",
-    ("pee_lucas.py", "REFS", "oculos"): "idem F4b/PE9",
-    ("vazamento_lucas.py", "REFS", "pelo_facial"):
-        "o BLOCO 0 ja' renderiza `clean-shaven` em string TRAVADA "
-        "(vazamento_lucas.py:819) — barba no pool contradiria o proprio prompt.",
-    ("necrose_lucas.py", "ARQUETIPOS", "pelo_facial"):
+    ("flagrante_short.py", "REFS", "pelo_facial"):
+        "F4b — o REF e' barbeado e sem oculos DE PROPOSITO: careca+bigode+"
+        "oculos e' o que marca a VITIMA. Encher aqui apaga o contraste que "
+        "separa os dois no plano medio.",
+    ("flagrante_short.py", "REFS", "oculos"): "idem F4b",
+    ("pee_short.py", "REFS", "pelo_facial"): "idem F4b/PE9 — o PEE herda o contraste",
+    ("pee_short.py", "REFS", "oculos"): "idem F4b/PE9",
+    ("vazamento_short.py", "REFS", "pelo_facial"):
+        "o BLOCO 0 ja' renderiza `clean-shaven` em string TRAVADA — barba no "
+        "pool contradiria o proprio prompt.",
+    ("necrose_short.py", "ARQUETIPOS", "pelo_facial"):
         "NE5 — ARQUETIPOS e' cenario+chapeu+animal. O rosto mora em REFS.",
-    ("necrose_lucas.py", "ARQUETIPOS", "oculos"): "idem NE5",
-    ("randomizador-prisma.py", "REF_IDADES+REF_FISICOS+REF_MARCAS", "pele"):
-        "FORA DE ESCOPO — o PRISMA e' a outra engine, e a ordem de iteracao "
-        "de 2026-08-02 e' `por enquanto apenas os AGENTES SHORTS`. Lacuna real, "
-        "so' que nao e' desta frente.",
+    ("necrose_short.py", "ARQUETIPOS", "oculos"): "idem NE5",
 }
 
 FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)
-IGNORAR = ("short_comum.py", "ui_agente.py", "medir_personagens.py")
+# ⛔ SO' OS `_short` — ordem do operador 2026-08-03. Os `*_lucas` sao de
+# terceiro, sairam para `agentes-de-terceiros/` e nao entram nem em leitura.
+# O PRISMA e' a outra engine e tambem esta' fora do escopo de iteracao.
+IGNORAR = ("short_comum.py", "ui_agente.py", "medir_personagens.py",
+           "medir_contexto_copy.py", "distribuir.py", "nucleo_sonoro.py",
+           "randomizador-prisma.py", "randomizador-v6.py")
 
 PISO_MAGRO = 30.0   # abaixo disso o eixo existe mas quase nao e' sorteado
 

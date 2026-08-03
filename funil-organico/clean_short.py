@@ -132,6 +132,17 @@ REFS_M = [
     {"idade": 39, "cabeca": "short natural curls kept close", "marca": "a small gap between her front teeth"},
     {"idade": 50, "cabeca": "greying hair pulled back into a tight ponytail", "marca": "deep smile lines around her eyes"},
     {"idade": 45, "cabeca": "long braids gathered over one shoulder", "marca": "a small dark mole on her chin"},
+    # + 2026-08-03: o CLEAN nasceu depois da passada de personagens de 02/08 e
+    # ficou de fora dela. Medido pelo `medir_personagens.py`: OCULOS em 0% e
+    # PELE em 0% dos dois pools — seis pessoas descritas so' por cabelo sao a
+    # mesma pessoa seis vezes, e o gerador devolve o mesmo rosto (§15 das
+    # licoes). As tres novas de cada pool trazem os eixos zerados.
+    {"idade": 52, "cabeca": "silver-streaked hair in a loose twist, thin wire-rimmed glasses",
+     "marca": "sun-weathered skin and a fine scar through her left eyebrow"},
+    {"idade": 38, "cabeca": "a blunt dark bob and heavy black-framed glasses",
+     "marca": "a dense spray of freckles across her nose"},
+    {"idade": 49, "cabeca": "close-cropped grey curls, half-moon reading glasses low on her nose",
+     "marca": "deeply lined skin and a dark birthmark at her temple"},
 ]
 REFS_H = [
     {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a small scar through his right eyebrow"},
@@ -140,6 +151,16 @@ REFS_H = [
     {"idade": 55, "cabeca": "thinning grey hair and a full grey moustache", "marca": "heavy creases at the corners of his eyes"},
     {"idade": 41, "cabeca": "short cropped hair and a neat goatee", "marca": "a faint scar on his chin"},
     {"idade": 50, "cabeca": "salt-and-pepper hair cut short, clean-shaven", "marca": "a small notch in his right eyebrow"},
+    # + 2026-08-03 — mesmo motivo do REFS_M acima: oculos e pele estavam em 0%.
+    # ⛔ Nenhuma repete a ancora facial das seis de cima (cicatriz na
+    # sobrancelha, linhas na testa, pinta na bochecha, vincos no olho, cicatriz
+    # no queixo, entalhe na sobrancelha): ancora repetida remenda o morphing.
+    {"idade": 57, "cabeca": "a bald crown with grey at the sides and a chevron moustache, thin gold-rimmed glasses",
+     "marca": "sun-weathered skin and a coin-sized birthmark on his left temple"},
+    {"idade": 43, "cabeca": "thick dark hair with a sharp widow's peak, clean-shaven, boxy clear-framed glasses",
+     "marca": "freckled skin across the bridge of his nose"},
+    {"idade": 61, "cabeca": "a full head of white hair and a bristly white beard, heavy black-framed bifocals",
+     "marca": "deeply lined skin and a pale scar along his right jaw"},
 ]
 
 # CL14 — os DOIS ingredientes do truque. Piso e teto: sao dois, sempre, em

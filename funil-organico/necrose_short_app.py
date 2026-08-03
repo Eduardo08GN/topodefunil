@@ -4,8 +4,8 @@
 AGENTE NECROSE SHORT — app desktop offline.
 
 Ponto de entrada enxuto: a interface mora em ui_agente.py (compartilhada por
-todos os agentes portados), a doutrina em necrose_lucas.py e o colapso para
-3 cenas em necrose_short.py.
+todos os agentes portados), e a doutrina inteira do NECROSE — strings travadas,
+pools e o colapso para 3 cenas — em necrose_short.py.
 
     python funil-organico/necrose_short_app.py
 """
