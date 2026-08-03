@@ -3,22 +3,26 @@
     "arquetipo": [
       "cowboy_mesa",
       "nativo_canyon",
-      "montanhes_lago"
+      "montanhes_lago",
+      "redneck_celeiro"
     ],
     "familia": [
       "cowboy",
       "nativo norte-americano",
-      "montanhes"
+      "montanhes",
+      "redneck"
     ],
     "receita": [
       "gelatina_limao",
       "gelatina_agua",
-      "gelatina_mel"
+      "gelatina_mel",
+      "gelatina_limao"
     ],
     "mesa": [
       "tampa_caminhonete",
       "barril",
-      "tronco"
+      "tronco",
+      "mesa_madeira"
     ]
   }
 }
