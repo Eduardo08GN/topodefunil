@@ -332,6 +332,42 @@ não media o que o operador estava reclamando — §15 de novo, agora em copy.
 
 ---
 
+## 18. ⛔ ÂNCORA DE PONTUAÇÃO: o medidor dizia 0 com 48 falas meio em inglês
+
+Terceira vez que o **medidor** é o culpado (§15, §16, agora esta). O verificador
+de tradução casa o template contra os trechos da fala gerada — e a regex que ele
+compila é **ancorada no fim**:
+
+| onde | o texto |
+|---|---|
+| pool do motor | `Ginger and cinnamon wake your {o} up` — **sem ponto final** |
+| trecho da fala | `Ginger and cinnamon wake your wiener up.` — **com ponto**, porque veio de um `split` por sentença |
+
+A regex nunca casou. Resultado: **`templates sem PT: 0`** enquanto o app mostrava
+frase pela metade em inglês. E o mesmo desencontro do outro lado — o dicionário
+tinha a chave *com* ponto e o pool consulta *sem* — fazia o relatório acusar 18
+templates que já estavam traduzidos.
+
+> **Medidor que mente é pior que medidor nenhum:** com nenhum eu vou olhar; com
+> um mentindo eu declaro pronto e vou embora.
+
+**O que impede:** ao casar template contra texto renderizado, **normalizar a
+pontuação terminal dos dois lados** antes de comparar. Vale para qualquer lente
+que compare *string gravada no pool* com *string que passou por montagem de
+frase* — a montagem sempre acrescenta pontuação que o pool não tem.
+
+⚠️ **O que revelou o erro não foi o medidor: foi ler a saída.** Duas falas lidas
+inteiras mostraram inglês no meio do português, e só então eu fui olhar por que
+o número dizia zero. **Ler a saída continua sendo o único controle que nenhum
+medidor substitui.**
+
+📌 **E o gatilho que produziu tudo isso:** copy alterada a montante. Quando
+alguém reescreve um pool, a camada PT fica órfã **em silêncio** — nenhum linter
+de motor olha para tradução. Toda alteração de copy tem de sair com a tradução
+na mesma entrega, medida.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -356,6 +392,8 @@ não media o que o operador estava reclamando — §15 de novo, agora em copy.
 - [ ] Uso do orçamento medido contra a **capacidade real**, não contra o teto (§5)
 - [ ] **Li algumas falas inteiras renderizadas**, não só os pools
 - [ ] `git diff` conferido: nenhuma string validada redigitada sem ordem
+- [ ] **Mexi em copy? A tradução PT saiu junto**, e eu **li duas falas
+      renderizadas inteiras** — não confiei só no número (§18)
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
 - [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
 
