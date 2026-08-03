@@ -784,36 +784,77 @@ MESAS = [
 # soda` e imagem que contradiz a boca queima o take. ⛔ Zero embalagem lisa ou
 # generica: a marca real e legivel e' ordem do operador. ARM & HAMMER e' a da
 # fonte; as outras sao SKUs e marcas reais de bicarbonato do varejo US.
+# ⛔⛔ SO' CAIXA DE PAPELAO — ORDEM DO OPERADOR, 2026-08-03, DEPOIS DE VER O
+# RENDER. Ele recebeu um video com um POTE CILINDRICO na mao da narradora e
+# escreveu: *"nao havia te pedido para mudar a marca da caixa de baking soda pra
+# esse formato cilindrico: seja rigoroso e fiel a' forma de apresentacao da
+# marca: aquela embalagem box classica"*.
+#
+# O pool tinha SEIS entradas que NAO sao caixa, e que estavam la' por minha
+# conta, nao por pedido dele — `ah_shaker` (frasco cilindrico de tampa
+# flip-top), `clabber` (lata cilindrica), `ah_pouch`, `ah_saco_grande` e
+# `milliard` (sacos) e `bobs` (pacote plastico). Metade do pool podia sair
+# cilindrica ou mole, e a caixa laranja e' justamente o que faz "bicarbonato"
+# ser lido em 0,2s sem uma palavra. As seis sairam.
+# `ah_familia` era `carton` e virou `box`: e' a mesma embalagem, e a palavra
+# `carton` convida o gerador a variar a forma.
+# ⚠️ E A FORMA NAO FICA SO' NA PALAVRA `box` — `box` sozinho ja' devolveu
+# cilindro. A geometria vai ESCRITA, em EX_CAIXA_FORMA.
 CAIXAS = [
     {"id": "ah_classica", "recipiente": "box",
      "caixa": "the classic one-pound orange Arm & Hammer baking soda box, the "
               "brand name large and sharp across the front"},
-    {"id": "ah_familia", "recipiente": "carton",
-     "caixa": "a large family-size Arm & Hammer baking soda carton, the orange "
-              "panel square to the lens"},
+    {"id": "ah_familia", "recipiente": "box",
+     "caixa": "a large family-size Arm & Hammer baking soda box, the orange "
+              "front panel square to the lens"},
     {"id": "ah_rasgada", "recipiente": "box",
      "caixa": "an Arm & Hammer baking soda box with the top corner torn open "
               "along the perforation"},
-    {"id": "ah_pouch", "recipiente": "pouch",
-     "caixa": "a heavy resealable Arm & Hammer baking soda pouch, the orange "
-              "label facing out"},
-    {"id": "ah_shaker", "recipiente": "shaker",
-     "caixa": "the Arm & Hammer baking soda shaker with its yellow flip-top cap"},
-    {"id": "ah_saco_grande", "recipiente": "bag",
-     "caixa": "a bulk Arm & Hammer baking soda bag, the top folded down once"},
-    {"id": "bobs", "recipiente": "package",
-     "caixa": "a Bob's Red Mill baking soda package with its red-and-blue label"},
-    {"id": "clabber", "recipiente": "tin",
-     "caixa": "a Clabber Girl baking soda tin"},
     {"id": "great_value", "recipiente": "box",
      "caixa": "a Great Value baking soda box from Walmart"},
     {"id": "kroger", "recipiente": "box",
      "caixa": "a Kroger-brand baking soda box"},
-    {"id": "milliard", "recipiente": "bag",
-     "caixa": "a Milliard bulk baking soda bag"},
     {"id": "whole_foods", "recipiente": "box",
      "caixa": "a 365 by Whole Foods Market baking soda box"},
+    # ⚠️ O corte para 6 furava o piso do proprio motor (`MIN_OPCOES = 9` por
+    # eixo visual, cobrado no autoteste). ⛔ Baixar o piso seria resolver a
+    # ordem dele afrouxando a regra que segura TODOS os eixos — as quatro
+    # abaixo repoem a entropia DENTRO da caixa classica, variando TAMANHO e
+    # ESTADO da embalagem, que e' o que a fonte mostra. Nenhuma forma nova.
+    {"id": "ah_bico", "recipiente": "box",
+     "caixa": "an Arm & Hammer baking soda box with the pour spout tab folded "
+              "open at the top corner"},
+    {"id": "ah_pequena", "recipiente": "box",
+     "caixa": "a small eight-ounce Arm & Hammer baking soda box, the orange "
+              "front panel facing the lens"},
+    {"id": "ah_amassada", "recipiente": "box",
+     "caixa": "a well-used Arm & Hammer baking soda box, one bottom corner "
+              "dented from the cupboard, the orange front still square to the "
+              "lens"},
+    {"id": "signature", "recipiente": "box",
+     "caixa": "a Signature Select baking soda box"},
 ]
+
+# ⛔⛔ A BLINDAGEM DE FORMA DA CAIXA — irma da EX_BLINDAGEM_FORMA do geoduck.
+# ⚠️ Por que a NEGACAO entra aqui, se o repo prega que silencio vence negacao: a
+# regra de nao-negar e' de DECLARACAO DE CONFORMIDADE (nunca escrever "not a
+# celebrity", "fully clothed") — la' negar planta a palavra no classificador de
+# moderacao. Isto e' outra coisa: e' desambiguacao de FORMA, e o precedente e' a
+# blindagem do geoduck DESTE MESMO agente, que so' parou de virar pato quando a
+# lista de negacao entrou. Prop que o gerador troca de forma se descreve pelos
+# dois lados.
+EX_CAIXA_FORMA = (
+    "The baking soda package is a rectangular cardboard box with flat faces "
+    "and square corners, taller than it is wide and shallow from front to "
+    "back, with a flat top and a perforated pour spout at one top corner. It "
+    "is not a cylinder, not a canister, not a tub, not a tin, not a jar, not a "
+    "bottle, not a pouch, not a bag and not a shaker."
+)
+
+# ⛔ O miolo invariante, para o linter cobrar sem depender da frase inteira
+# (licoes §2 — comparar com o template cru e' falso positivo garantido no dia em
+# que a string ganhar slot).
+M_CAIXA_FORMA = "rectangular cardboard box with flat faces"
 
 # ⛔ A geometria travada NAO se abre: a caixa esta' sempre na MAO ESQUERDA, a'
 # altura do peito, de boca para baixo, inclinada ~45°, jorro em diagonal (EX4).
@@ -1705,12 +1746,16 @@ def montar(spec):
     # ⛔ Zero plateia (EX11): plateia e' ESCANDALO/FLAGRANTE, e e' um dos quatro
     # ingredientes da composicao que produziu as recusas deterministicas de
     # 2026-07-30.
+    # ⛔ EX_CAIXA_FORMA entra logo depois da geometria, onde a caixa acabou de
+    # ser nomeada: e' o bloco em que ela esta' NA MAO e despejando, o mesmo em
+    # que o operador viu o cilindro.
     b["IMAGE 01/03"] = (
-        "IMAGE 01/03: Medium shot on %s. %s %s %s She is looking down at the "
+        "IMAGE 01/03: Medium shot on %s. %s %s %s %s She is looking down at the "
         "powder, not at the lens. They are the only two people in the frame. "
         "%s %s %s"
         % (var["set"],
            EX_GEOMETRIA_IMAGE % (ela, cx["caixa"], desp_img, ele),
+           EX_CAIXA_FORMA,
            EX_VARANDA_TRAVADA, EX_BLINDAGEM_FORMA, marca,
            luz, CAUDA)
     )
@@ -1743,8 +1788,9 @@ def montar(spec):
         "of her, side by side and untouched: the same whole geoduck clam "
         "standing upright with the siphon pointing straight up and white "
         "powder still settled over its top third, and, lying on its side "
-        "beside it, %s. %s %s %s %s %s"
+        "beside it, %s. %s %s %s %s %s %s"
         % (var["re_ancora"], mesma, mesa["mesa"], tampo, cx["caixa"],
+           EX_CAIXA_FORMA,
            EX_PLANTADO_IMAGE % (_sem_artigo(mec["plantado"]), tabua,
                                 mec["pousado"]),
            EX_BLINDAGEM_FORMA, marca, luz, CAUDA)
@@ -2069,6 +2115,37 @@ def _ex6_marca(spec, blocos, achados):
         achados.append(("ERRO", "EX6: IMAGE 01/03 nao nomeia o bicarbonato na "
                                 "embalagem — a boca diz `baking soda` e imagem "
                                 "que contradiz a boca queima o take"))
+
+    # ⛔⛔ EX6b — A EMBALAGEM E' CAIXA DE PAPELAO, SEMPRE (ordem do operador,
+    # 2026-08-03, depois de receber um render com pote cilindrico).
+    # Cobrado nos DOIS lados, como o resto do EX6: a blindagem de forma tem de
+    # estar onde a caixa aparece, e nenhum bloco pode nomear uma forma que nao
+    # e' caixa. So' o primeiro lado deixaria alguem reabrir o pool amanha' com
+    # uma lata e o linter continuaria verde.
+    for nome in ("IMAGE 01/03", "IMAGE 02/03"):
+        if M_CAIXA_FORMA not in blocos[nome]:
+            achados.append(("ERRO", "EX6b: %s sem a blindagem de forma da caixa "
+                                    "— `box` sozinho ja' devolveu cilindro no "
+                                    "render" % nome))
+    # ⚠️ Varre o texto da CAIXA, nao o bloco inteiro: a propria EX_CAIXA_FORMA
+    # diz `not a cylinder, not a tin...`, e varrer o bloco acusaria a blindagem
+    # de ser o defeito que ela conserta (licoes §2 — o linter que se
+    # auto-reprova). O `recipiente` entra junto porque e' ele que vira `the %s`
+    # no jorro do TAKE 01.
+    proibidas = ("cylinder", "cylindrical", "canister", "tub", "tin", "jar",
+                 "bottle", "pouch", "bag", "shaker", "carton", "package")
+    txt_caixa = spec["caixa"]["caixa"].lower()
+    for forma in proibidas:
+        if re.search(r"\b%s\b" % forma, txt_caixa):
+            achados.append(("ERRO", "EX6b: a CAIXA %s e' `%s` — a embalagem tem "
+                                    "de ser a caixa de papelao classica"
+                            % (spec["caixa"]["id"], forma)))
+    if spec["caixa"]["recipiente"] != "box":
+        achados.append(("ERRO", "EX6b: o `recipiente` da CAIXA %s e' %r — o "
+                                "slot vira `the %s` no jorro do TAKE 01 e "
+                                "contradiria a imagem"
+                        % (spec["caixa"]["id"], spec["caixa"]["recipiente"],
+                           spec["caixa"]["recipiente"])))
 
 
 def _ex7_blindagem(spec, blocos, achados):
