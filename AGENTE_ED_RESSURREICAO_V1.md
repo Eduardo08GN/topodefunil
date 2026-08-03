@@ -70,7 +70,7 @@ onde a DEMO da spec envolva despejo — ou comissão do operador.
 |---|---|---|
 | **Ressurreição monumental** (Tanisha) | prop GIGANTE murcho/dobrado (`comically large` — nasce grande) sobre bandeja inox; narrador pequeno em frente; luva azul despejando | lab / bancada |
 | **Pouring de mão** (H7) | prop normal, pequeno/murcho na mão; substância despejada por cima | kitchen / garage / qualquer bancada |
-| **Pouring de bancada** (H7, terceira forma — 2026-08-02) | prop normal, pequeno/murcho **solto, em pé, no eixo central da bancada, sem nenhuma mão tocando**; substância despejada por cima. ⭐ Objeto livre = escala ambígua = o morph pode acontecer (R4-emenda) | home office / cozinha / qualquer bancada |
+| **Pouring de bancada** (H7, terceira forma — 2026-08-02) | prop normal, pequeno/murcho **em pé sobre a bancada, com uma mão dela fechada na base** e a outra despejando por cima. ⛔ Esta linha dizia *solto, sem nenhuma mão tocando* — **revogado no primeiro render** (R4): sem âncora física o prop cresce **para dentro da mesa** | home office / cozinha / qualquer bancada |
 
 ---
 
@@ -80,17 +80,23 @@ onde a DEMO da spec envolva despejo — ou comissão do operador.
   primeiro frame = estado ANTES. `a short, stubby...` / `long soft drooping
   limp neck`. Prop já grande não tem pra onde crescer.
 
-  ⚠️ **PEQUENO e MURCHO não são a mesma coisa, e na terceira forma só cabe o
-  primeiro** (registrado em 2026-08-02, ao conferir R1 contra a R4-emenda). Na
-  **pouring de bancada** o prop está **solto, em pé, sobre a própria base** — e
-  **prop murcho não fica em pé**. As duas regras se contradiziam no papel; o
-  motor resolveu escolhendo *pequeno* e calando, o que é a forma silenciosa do
-  mesmo problema. A regra passa a dizer qual vale onde:
+  ⚠️ **PEQUENO e MURCHO não são a mesma coisa**, e a distinção nasceu de uma
+  regra que **já não existe**. Enquanto valeu a emenda da âncora sem mão, o prop
+  tinha de se equilibrar sozinho — e **prop murcho não fica em pé**. O motor
+  resolveu escolhendo *pequeno* e calando sobre a rigidez.
 
   | Forma | Estado ANTES |
   |---|---|
   | Ressurreição monumental · Pouring de mão | **murcho** — a mão ou a bandeja sustenta, então ele pode pender |
-  | **Pouring de bancada** | **pequeno e firme**, em pé sobre a própria base — ⛔ nunca `drooping`/`limp`, que derrubariam a âncora da R4-emenda |
+  | **Pouring de bancada** | **pequeno**; e desde a revogação da emenda (R4) a mão dela também sustenta, então `drooping`/`limp` **voltam a caber** aqui |
+
+  ⛔ **PENDÊNCIA ABERTA, ALÇADA DO ED (2026-08-02).** As 14 entradas de
+  `PROPS_MURCHOS` foram escritas **sob a regra revogada**: 14 de 14 descrevem o
+  prop *standing on its cut end*, equilibrando-se sozinho, e só 2 mencionam
+  firmeza. Elas continuam funcionando — a mão segura o que antes se equilibrava
+  — mas o pool inteiro está deixando na mesa o estado **murcho** que a R1 pede e
+  que agora é possível de novo. **Trocar isso é copy/cena, e a decisão não é
+  minha.**
 
   ⭐ E o contraste continua inteiro, porque ele é de **escala**, não de rigidez:
   `no longer than her palm and as thick as her wrist` → `as long as her forearm
@@ -175,26 +181,69 @@ onde a DEMO da spec envolva despejo — ou comissão do operador.
   (`never leaving his hands, never set down` + `no floating objects`) — o Veo
   desamarra o objeto justamente no frame em que ele muda de forma.
 
-  ⭐ **EMENDA DE 2026-08-02 — A ÂNCORA QUANDO NÃO HÁ MÃO NENHUMA.** A regra
-  acima cobre o prop **nas mãos** ou **na bandeja**. A fonte trouxe um terceiro
-  caso que ela não previa e que a variante SHORT roda: o prop **solto, em pé, no
-  eixo central da bancada, sem nenhuma mão tocando**. Medido, é justamente isso
-  que torna o crescimento possível — **mão em quadro dá escala e denuncia o
-  efeito**; objeto livre = escala ambígua = o morph pode acontecer. A âncora
-  passa a ser a **base cravada na superfície**: do primeiro frame ao corte, base
-  no mesmo ponto, **zero tombo, zero rotação, zero deslize — cresce só para
-  cima**. É isso que faz ler como *crescimento* e não como *troca de objeto*.
-  **Frase travada para o TAKE:**
+  ⛔⛔ **A "EMENDA DA ÂNCORA SEM MÃO" FOI REVOGADA NO MESMO DIA EM QUE NASCEU
+  (2026-08-02), NO PRIMEIRO RENDER.** Ela dizia que o prop devia ficar **solto,
+  em pé, no eixo central da bancada, sem nenhuma mão tocando**, com o argumento
+  de que *mão em quadro dá escala e denuncia o efeito*, e punha como âncora a
+  **base cravada na superfície**:
   ```
+  ⛔ REVOGADA — não usar:
   the base of it stays pinned to the same spot on the <bancada> and never moves,
   never tips, never slides; it only grows upward
   ```
-  ⚠️ **`<bancada>` é SLOT, e escrevia `desk` até 2026-08-02.** O motor sempre
-  teve o `%s` ali — quem copiasse a travada daqui gravaria a palavra *desk* numa
-  cena de garagem, de alpendre ou de oficina de porão (o eixo CENÁRIO tem
-  `workbench`, `bench top`, `counter`, `island`, `side table`, `table`).
-  ⚠️ **A amarração continua DUPLA** — o que muda é o **ponto** de amarração, não
-  a regra: `no floating objects` permanece obrigatório.
+
+  **Por que quebrou, e o defeito é de lógica, não de sorte.** *Base cravada no
+  mesmo ponto* + *só cresce para cima* são duas ordens que o modelo **não tem
+  como satisfazer juntas** enquanto o corpo alonga. Ele fecha a conta pelo único
+  caminho que sobra: **enfia a base dentro da mesa**. No render o proxy afunda no
+  tampo e o pó forma uma cratera em volta do buraco. E o frame 0 já nascia
+  implausível — fruta em pé no próprio eixo maior, sem apoio, não para em pé no
+  mundo real, e implausibilidade no primeiro frame contamina o take inteiro por
+  I2V.
+
+  ⭐ **A REGRA VOLTA A SER A R4 ORIGINAL, e ela estava certa desde sempre: a mão
+  segura.** Ordem do operador lendo o render — **uma mão fecha na base do prop e
+  o segura em pé sobre a bancada; a outra despeja.** A mão é a âncora **física**:
+  dá ao modelo um *motivo visível* para a base não se mover, em vez de uma
+  proibição abstrata que ele contorna.
+
+  ⚠️ E o medo que motivou a emenda se inverte e joga a favor: com o punho fechado
+  na base, o que cresce é explicitamente **o trecho acima do punho** — a mão
+  deixa de ser o que denuncia o efeito e vira **a régua que o torna legível**.
+
+  **Frases travadas para o TAKE — as duas, e a segunda não é opcional:**
+  ```
+  her other hand is closed around the base of it and holds it standing upright on
+  the <bancada> the whole time; that hand never lets go, never lifts and never
+  changes position, and only the part above her fist gets longer
+  ```
+  ```
+  The top of the <bancada> is solid and unbroken all the way across, and the
+  bottom end of it rests on that surface inside her fist the entire time; it stays
+  on top of the <bancada> and no part of it ever goes below the surface.
+  ```
+  ⚠️ **A segunda existe porque tirar a ordem contraditória não basta:** o modelo
+  já tem o atalho de afundar o objeto e precisa ouvir o contrário **em
+  afirmativa** — `solid and unbroken` guia, `does not sink` só planta a palavra
+  (mesma lógica da `FRASE_SEM_MARCA`).
+
+  ⚠️ **`her other hand`, e não `her left hand`:** o pool de DESPEJOS nomeia a mão
+  que despeja (quase todos a direita, um a esquerda). Travar a mão que segura num
+  lado fixo brigaria com o pool.
+
+  ⛔ **CONSEQUÊNCIA MECÂNICA — as duas mãos ficam ocupadas o take inteiro.** Saem
+  do sorteio: todo despejo que usa a mão livre para outra coisa (apoiar o
+  antebraço, bater na caixa, segurar colher, aparar o que cai) e **toda reação de
+  mão, punho ou dedo**. `one hand goes flat on her own chest` manda o modelo
+  **largar o prop no meio do crescimento** — foi exatamente o que o render fez.
+  Custo medido: DESPEJOS 12 → **8**, REAÇÕES 14 → **9**. As entradas não foram
+  apagadas (string validada é constante), estão marcadas e filtradas.
+
+  ⚠️ **`<bancada>` é SLOT.** O motor tem `%s` ali — quem copiar a travada daqui
+  com a palavra fixa grava *desk* numa cena de garagem ou de oficina de porão (o
+  eixo CENÁRIO tem `workbench`, `bench top`, `counter`, `island`, `side table`).
+  ⚠️ **A amarração continua DUPLA:** a mão é o primeiro fio, `no floating
+  objects` é o segundo e permanece obrigatório.
 - **R5 — GEODUCK SÓ COM BLINDAGEM.** Armadilha documentada: geoduck viram pato/
   ganso no TAKE (prop-metaforas). Preferir pepino/banana/daikon; se geoduck,
   descrever `giant clam with a long pale siphon` e nunca `neck` sozinho.
@@ -358,7 +407,7 @@ que o repo já codificou.
 
 | Cena | Beat | Piso-Teto | O que a copy FAZ | O que a tela mostra |
 |---|---|---|---|---|
-| **1** (8s) | **O DESPEJO E O CRESCIMENTO** | 16-27 | o comando/promessa **antes** do morph e a volta **depois** dele — com o vão de ~0,8s no meio (R7) | o prop pequeno/murcho **solto em pé** na bancada (R1/R4-emenda) · o jato contínuo · o morph dentro da oclusão (R8) · alguém reagindo **durante** (R3) |
+| **1** (8s) | **O DESPEJO E O CRESCIMENTO** | 16-27 | o comando/promessa **antes** do morph e a volta **depois** dele — com o vão de ~0,8s no meio (R7) | o prop pequeno/murcho **em pé, preso pela base na mão dela** (R1/R4) · o jato contínuo · o morph dentro da oclusão (R8) · alguém reagindo **durante** (R3) |
 | **2** (8s) | **A RECEITA INCOMPLETA ⭐** | 26-34 | a **copy fundida**: ingredientes por **forma e gesto** + a palavra técnica + a virada *sem o gelatin trick isso não basta*, com o literal **`gelatin trick`** e o mecanismo com **DESTINO nomeado** | as mãos executando o preparo; o objeto do mecanismo **já plantado no frame 1**, e a mão dela **pousando ao lado dele** no fim do take |
 | **3** (8s) | **A PROVA + CTA** | 20-30 | ordem travada: **[PROVA] → [bullet de barreira] → [`Comment gelatin,`] → [follow-gate]**. A prova traz `{o}`, senão não tem referente | a **F12b/TR10/ES4**: ele de pé, mudo, o proxy nas duas mãos dele contra a frente da peça de roupa; ela ao lado, apontando sem encostar, falando na lente |
 
@@ -624,7 +673,7 @@ e a doutrina ia até a `TR14`;
 |---|---|---|---|
 | **RS1** | R2-emenda — escala diferencial no TAKE 01 | **RS11** | §travas — `the victim`/`groin`/`mouth open`… |
 | **RS2** | R8 — a oclusão pelo jato | **RS12** | §travas — declaração de conformidade |
-| **RS3** | R4-emenda — base cravada + `no floating objects` | **RS13** | §travas — ausência declarada pela negação + P12 |
+| **RS3** | R4 — mão na base + superfície sólida + `no floating objects` | **RS13** | §travas — ausência declarada pela negação + P12 |
 | **RS4** | R7 — o apagão de 0,8s | **RS14** | ES13/ES14 — `books` e objeto banido |
 | **RS5** | R2b elemento 7 — trava de identidade | **RS15** | §prop — contraste de tom prop × substância |
 | **RS6** | ⭐ achado ⑧ — nada cresce nas cenas 2 e 3 (+ a travada de imobilidade) | **RS16** | TR7/ES8 — o recibo é mudo; **F12c** — e fica fora dos IMAGE 01 e 03 |
@@ -669,7 +718,7 @@ numeração do motor no mesmo commit**, ou não entra.
 - [ ] Crescimento em ~3s, dobrando, sem `slowly`/`gradually` (R2)?
 - [ ] ⭐ **Escala DIFERENCIAL escrita (R2): alonga muito, engrossa pouco?** Sem isso o Veo escala tudo junto e a leitura vira **inchaço**
 - [ ] **Bloco de coreografia no TAKE (R2b): âncora fixa + analogia física + propagação + estado final travado, em batidas com segundos?**
-- [ ] Reação humana DURANTE o crescimento (R3)? Amarração dupla (R4) — e, se o prop está solto na bancada, a **base cravada** no lugar das mãos (R4-emenda)?
+- [ ] Reação humana DURANTE o crescimento (R3), **de rosto ou tronco — nunca de mão**, porque as duas estão ocupadas? Amarração dupla (R4): **mão fechada na base** + superfície sólida + `no floating objects`?
 - [ ] Prop fora da lista de armadilha, ou blindado — vocabulário **+ coreografia + negação ampliada** (R5)?
 - [ ] ⭐ **O morph cai num vão sem fala e sem legenda (R7)?** Fala promete antes, volta depois
 - [ ] ⭐ **A oclusão está escrita (R8): o jato engrossa, cobre e a ponta reaparece?** ⛔ Sem corte, sem efeito gráfico

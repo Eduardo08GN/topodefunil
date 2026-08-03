@@ -313,19 +313,54 @@ RS_APAGAO = (
 )
 
 # ---------------------------------------------------------------------------
-# [4] R4-EMENDA — A ANCORA QUANDO NAO HA' MAO NENHUMA. A R4 cobre o prop nas
-# maos ou na bandeja; aqui ele esta' solto, em pe', no eixo central da bancada.
-# Medido: posicao ZERO, base cravada em y=715 do frame 0 ao corte, zero tombo,
-# zero rotacao, zero deslize. E' isso que faz ler como CRESCIMENTO e nao como
-# TROCA DE OBJETO. Slot: bancada.
+# [4] R4 — A MAO SEGURA A BASE. ⛔⛔ REVOGA A "R4-EMENDA (ancora sem mao)" DE
+# 2026-08-02, QUE DUROU MENOS DE UM DIA E FOI REPROVADA NO PRIMEIRO RENDER.
+#
+# O QUE A EMENDA DIZIA: o prop fica solto, em pe', no eixo central da bancada,
+# sem nenhuma mao tocando — "mao em quadro daria escala e denunciaria o efeito".
+# A ancora era `the base of it stays pinned to the same spot on the <bancada>
+# and never moves, never tips, never slides; it only grows upward`.
+#
+# ⛔ POR QUE QUEBROU, e o defeito e' de LOGICA, nao de sorte: `base cravada no
+# mesmo ponto` + `so' cresce para cima` sao duas ordens que o modelo NAO tem
+# como satisfazer juntas quando o corpo alonga. Ele resolve a conta pelo unico
+# jeito que sobra — ENFIANDO A BASE DENTRO DA MESA. Render de 2026-08-02: a
+# banana afunda no tampo e o po' forma uma cratera em volta do buraco.
+# ⛔ E o frame 0 ja' nascia implausivel: fruta em pe' no proprio eixo maior, sem
+# nada segurando, nao para em pe' no mundo real — o gerador entrega equilibrio
+# impossivel, e implausibilidade no primeiro frame contamina o take inteiro.
+#
+# ⭐ ORDEM DO OPERADOR (2026-08-02, lendo o render): a REF segura a base do prop
+# em pe' com UMA mao e despeja com a OUTRA. E' o retorno a' R4 original
+# (`never leaving his hands, never set down`) — a emenda e' que era o desvio.
+# A mao que segura vira a ANCORA FISICA de verdade: ela da' ao modelo um motivo
+# visivel para a base nao se mover, em vez de uma proibicao abstrata.
+# ⚠️ O medo de "mao em quadro da' escala" se inverte aqui e joga a favor: com o
+# punho fechado na base, o que cresce e' explicitamente o TRECHO ACIMA DO PUNHO,
+# e a mao vira a regua que TORNA o crescimento legivel.
+# Slots: bancada.
 # ---------------------------------------------------------------------------
-RS_BASE_CRAVADA = (
-    "the base of it stays pinned to the same spot on the %s and never moves, "
-    "never tips, never slides; it only grows upward"
+# ⚠️ "her other hand" e nao "her left hand": os DESPEJOS nomeiam a mao que
+# despeja (quase todos a direita, um a esquerda), e travar a mao que segura em
+# um lado fixo brigaria com esse pool. Generico casa com os dois.
+RS_BASE_NA_MAO = (
+    "her other hand is closed around the base of it and holds it standing "
+    "upright on the %s the whole time; that hand never lets go, never lifts and "
+    "never changes position, and only the part above her fist gets longer"
 )
 
-# ⚠️ A amarracao continua DUPLA (R4): o que muda e' o PONTO de amarracao, nao a
-# regra. `no floating objects` permanece obrigatorio.
+# ⛔ A TRAVA CONTRA O AFUNDAMENTO. Nao basta tirar a ordem contraditoria: o
+# modelo ja' aprendeu esse atalho e precisa ouvir o contrario em afirmativa.
+# ⚠️ AFIRMATIVA, nunca negacao pura: `the surface is solid and unbroken` guia,
+# `does not sink` so' planta a palavra (mesma logica da FRASE_SEM_MARCA).
+# Slots: bancada · bancada.
+RS_SUPERFICIE_SOLIDA = (
+    "The top of the %s is solid and unbroken all the way across, and the bottom "
+    "end of it rests on that surface inside her fist the entire time; it stays "
+    "on top of the %s and no part of it ever goes below the surface."
+)
+
+# ⚠️ A amarracao continua DUPLA (R4): a mao e' o primeiro fio, este e' o segundo.
 RS_SEM_FLUTUAR = "No floating objects."
 
 # ---------------------------------------------------------------------------
@@ -347,21 +382,23 @@ RS_SEM_FLUTUAR = "No floating objects."
 # `slowly`.
 # ⚠️ Estoura o orcamento de 80-150 palavras do TAKE — e' EXCECAO AUTORIZADA pela
 # R2b (prop de armadilha documentada paga essa conta).
-# Slots, nesta ordem: prop · bancada · bancada(RS_BASE_CRAVADA) · analogia ·
-#                     topo · prop · bancada · prop · prop
+# Slots, nesta ordem: prop · bancada · bancada(RS_BASE_NA_MAO) · analogia ·
+#                     topo · prop · bancada · prop · prop ·
+#                     bancada · bancada (RS_SUPERFICIE_SOLIDA)
 # ---------------------------------------------------------------------------
 RS_CRESCIMENTO_TAKE = (
     "0 to 3 seconds: the %s stands on the %s exactly as it appears in the first "
     "frame and does not change. "
-    + RS_BASE_CRAVADA[0].upper() + RS_BASE_CRAVADA[1:] + ". "
-    "3 to 5 seconds: it gets longer %s. The growth travels from that pinned "
-    "base up toward the free tip, and " + RS_ESCALA_DIFERENCIAL + ". %s comes "
+    + RS_BASE_NA_MAO[0].upper() + RS_BASE_NA_MAO[1:] + ". "
+    "3 to 5 seconds: it gets longer %s. The growth travels up out of her fist "
+    "toward the free tip, and " + RS_ESCALA_DIFERENCIAL + ". %s comes "
     "back into view at the new height and is the smallest part of it now. "
     "5 to 8 seconds: it does not move again. It stays at exactly that length "
     "for the rest of the shot, and never grows past the length of her forearm. "
     "There is only ONE %s in this shot, the same one already standing on the "
     "%s in the first frame. That exact same %s is the one that gets longer. No "
-    "second %s appears at any point and nothing new grows beside it."
+    "second %s appears at any point and nothing new grows beside it. "
+    + RS_SUPERFICIE_SOLIDA
 )
 
 # O ESTADO FINAL declarado com a escala inteira. ⛔ A declaracao de escala tem de
@@ -818,8 +855,14 @@ def mulheres_de(pagina):
 # ---------------------------------------------------------------------------
 # ⭐ O EIXO DO AGENTE — O PROP QUE RESSUSCITA.
 # R1: o IMAGE e' o primeiro frame = estado ANTES. Todos comecam PEQUENOS e EM
-# PE', base apoiada na superficie (R4-emenda/achado ⑤: a ancora nao e' a mao, e'
-# a base cravada). Prop ja' grande nao tem pra onde crescer.
+# PE', base SEGURA NA MAO dela sobre a superficie (R4). Prop ja' grande nao tem
+# pra onde crescer.
+# ⛔ PENDENCIA ABERTA, ALCADA DO ED (2026-08-02): as 14 entradas abaixo foram
+# escritas sob a "R4-emenda" que mandava o prop se equilibrar SOZINHO — 14 de 14
+# dizem `standing on its cut end`. A emenda foi REVOGADA no primeiro render (o
+# prop crescia para dentro da mesa), e agora a mao dela sustenta. As entradas
+# continuam funcionando, mas o pool inteiro esta' deixando de usar o estado
+# MURCHO que a R1 pede e que voltou a ser possivel. Trocar isso e' cena/copy.
 # ⚠️ A ESCALA DIFERENCIAL esta' embutida nos dois estados, com regua no quadro:
 #   `antes`  = no longer than her palm and as thick as her wrist   (razao ~2,0)
 #   `depois` = as long as her forearm and still no thicker than her wrist
@@ -1017,7 +1060,7 @@ SUBSTANCIAS = [
 # terceiro em corpo alheio, sem virilha humana em quadro.
 # Slots img: %s = pote da substancia · %s = nome do prop.
 DESPEJOS = [
-    {"id": "alto_direita",
+    {"id": "alto_direita", "mao_livre": True,
      "img": "Her right hand holds %s high above the %s, already pouring; her left forearm rests flat on the surface.",
      "take": "Her right hand keeps the carton tipped at the same height and does not lower it."},
     {"id": "duas_maos",
@@ -1035,13 +1078,13 @@ DESPEJOS = [
     {"id": "ombro_alto",
      "img": "Her right hand holds %s up level with her own shoulder, tipped over the %s and already pouring.",
      "take": "Her hand stays level with her shoulder and does not drop."},
-    {"id": "batendo",
+    {"id": "batendo", "mao_livre": True,
      "img": "Her right hand holds %s over the %s, already pouring, while her left hand taps the side of it to keep it running.",
      "take": "Her left hand keeps tapping the same spot and her right hand does not lower the carton."},
     {"id": "cotovelo_apoiado",
      "img": "Her right elbow is planted on the surface and her hand holds %s tipped over the %s, already pouring.",
      "take": "Her elbow stays planted and her hand does not lower the carton."},
-    {"id": "colher_livre",
+    {"id": "colher_livre", "mao_livre": True,
      "img": "Her right hand holds %s tipped over the %s, already pouring; a wooden spoon is held idle in her left hand.",
      "take": "Her right hand keeps the carton tipped at the same height and the spoon in her left hand never moves."},
     {"id": "peito",
@@ -1050,7 +1093,7 @@ DESPEJOS = [
     {"id": "circulo",
      "img": "Her right hand holds %s tipped over the %s, already pouring, moving in a slow small circle above it.",
      "take": "Her hand keeps making the same small circle at the same height for the whole shot."},
-    {"id": "mao_em_concha",
+    {"id": "mao_em_concha", "mao_livre": True,
      "img": "Her right hand holds %s tipped over the %s, already pouring, while her cupped left hand catches what misses.",
      "take": "Her cupped left hand stays where it is and her right hand does not lower the carton."},
 ]
@@ -1061,6 +1104,15 @@ DESPEJOS = [
 # milagre.
 # ⛔ zero `mouth open` / `lips parted` / `open-mouthed` / `tongue`: a reacao entra
 # por sobrancelha, olho arregalado e gesto parado.
+# ⛔⛔ E DESDE 2026-08-02 A REACAO E' DE ROSTO E TRONCO, NUNCA DE MAO. Com a R4
+# restaurada as DUAS maos estao ocupadas — uma segura a base do prop, a outra
+# despeja — entao `one hand goes flat on her own chest` manda o modelo largar o
+# prop no meio do crescimento, que e' o unico jeito de ele obedecer. Foi
+# exatamente o que o render de 2026-08-02 fez: a mao subiu ao peito, o pote
+# sumiu e a banana ficou equilibrada sozinha.
+# ⚠️ As entradas de mao NAO foram apagadas — string validada e' constante, e
+# elas voltam a valer em qualquer variante sem prop na mao. Sao FILTRADAS no
+# sorteio pelo campo `maos`.
 REACOES = [
     {"id": "sobrancelhas_altas",
      "desc": "her eyebrows shoot up and stop there and her eyes stretch wide"},
@@ -1070,25 +1122,25 @@ REACOES = [
      "desc": "her eyes stretch wide and turn straight to the lens, eyebrows high"},
     {"id": "testa_franzida",
      "desc": "her forehead pulls into deep horizontal lines under raised brows, her eyes wide"},
-    {"id": "mao_no_rosto",
+    {"id": "mao_no_rosto", "maos": True,
      "desc": "one hand stops halfway to her own face, fingers spread, her eyes wide"},
     {"id": "sobrancelha_unica",
      "desc": "one eyebrow drives far higher than the other and both her eyes go wide"},
     {"id": "riso_preso",
      "desc": "her cheeks push up and her eyes crease shut at the corners, caught mid-laugh"},
-    {"id": "mao_no_peito",
+    {"id": "mao_no_peito", "maos": True,
      "desc": "one hand goes flat on her own chest, her eyebrows high and her eyes wide"},
     {"id": "cabeca_inclinada",
      "desc": "her head tips to one side, eyebrows up, eyes wide and unblinking"},
-    {"id": "punho_no_queixo",
+    {"id": "punho_no_queixo", "maos": True,
      "desc": "one fist stops just under her chin, knuckles up, her eyes wide above it"},
     {"id": "ombros_altos",
      "desc": "her shoulders come up around her ears, eyebrows high, eyes wide and staring"},
-    {"id": "dedo_parado",
+    {"id": "dedo_parado", "maos": True,
      "desc": "one index finger stops mid-point at nothing, her eyes wide and her brows high"},
     {"id": "sobrancelhas_juntas",
      "desc": "both eyebrows drive up and pinch together, her eyes wide, caught mid-word"},
-    {"id": "recuo_tronco",
+    {"id": "recuo_tronco", "maos": True,
      "desc": "she rocks back a hand's width from the surface, eyebrows high, eyes wide and locked"},
 ]
 
@@ -2252,8 +2304,16 @@ def sortear(pagina, rng, ledger, credibilidade=None, degrau=None, analogia=None)
     prop = _evitando(rng, PROPS_MURCHOS, hist.get("prop", [])[-2:])
     sub = _evitando(rng, [s for s in SUBSTANCIAS if s["tom"] != prop["tom"]],
                     hist.get("substancia", [])[-2:])
-    desp = _evitando(rng, DESPEJOS, hist.get("despejo", [])[-2:])
-    rea = _evitando(rng, REACOES, hist.get("reacao", [])[-2:])
+    # ⛔ R4 (2026-08-02): uma mao segura a base do prop, a outra despeja — entao
+    # as DUAS estao ocupadas o take inteiro. Sai do sorteio todo despejo que
+    # ocupa a mao livre com outra coisa (apoiar o antebraco, bater na caixa,
+    # segurar colher, aparar o que cai) e toda reacao de mao/punho/dedo, mais a
+    # que exige recuar do balcao. Deixar entrar manda o modelo LARGAR o prop no
+    # meio do crescimento — foi o que o render fez antes desta trava.
+    desp = _evitando(rng, [d for d in DESPEJOS if not d.get("mao_livre")],
+                     hist.get("despejo", [])[-2:])
+    rea = _evitando(rng, [r for r in REACOES if not r.get("maos")],
+                    hist.get("reacao", [])[-2:])
     ana = _evitando(rng, [a for a in ANALOGIAS if a["familia"] == fam],
                     hist.get("analogia", [])[-2:])
     rec = _evitando(rng, RECEITAS, hist.get("receita", [])[-2:])
@@ -2332,9 +2392,13 @@ def montar(spec):
 
     # --- IMAGE 01/03 — O DESPEJO JA' EM ANDAMENTO ---------------------------
     # R1: o IMAGE e' o primeiro frame = estado ANTES. O prop pequeno, EM PE',
-    # solto no eixo central da bancada, sem nenhuma mao tocando (R4-emenda) — e'
-    # isso que torna o crescimento possivel: mao em quadro daria escala e
-    # denunciaria o efeito.
+    # com a MAO ESQUERDA DELA FECHADA NA BASE (R4) e a direita despejando.
+    # ⛔ Ate' 2026-08-02 este bloco punha o prop "solto, sem nenhuma mao tocando"
+    # pela R4-emenda, com o argumento de que mao em quadro daria escala e
+    # denunciaria o efeito. O render provou o contrario duas vezes: fruta em pe'
+    # no proprio eixo maior sem apoio ja' nasce implausivel no frame 0, e a base
+    # sem ancora fisica faz o modelo resolver o alongamento AFUNDANDO o prop na
+    # mesa. A mao nao denuncia o efeito — ela e' a regua que o torna legivel.
     # ⚠️ Nao existe frame de "antes" do POURING: o video abre com o despejo ja'
     # correndo, e o anel de po' ja' formado (a mesma economia do TR4).
     # ⛔ SEM bancada-recibo: este bloco ja' carrega ela + o prop + o pote + o
@@ -2342,11 +2406,12 @@ def montar(spec):
     b["IMAGE 01/03"] = (
         "IMAGE 01/03: Medium shot in %s, camera low and close to the top of the "
         "%s. Standing behind the %s is %s. %s Standing upright on the %s in "
-        "front of her, in the middle of it and not held by anyone: %s. %s runs "
-        "from her hand down onto it in one unbroken column. %s %s %s %s %s"
+        "front of her, held at its base in her closed fist that rests on "
+        "the %s: %s. %s runs "
+        "from her other hand down onto it in one unbroken column. %s %s %s %s %s"
         % (cen["set"], bnc, bnc, ela,
            desp["img"] % (_pote(sub["caixa"]), prop["nome"]),
-           bnc, prop["antes"], _maiuscula(sub["jato"]),
+           bnc, bnc, prop["antes"], _maiuscula(sub["jato"]),
            RS_ANEL_IMAGE % (_anel(sub), bnc),
            RS_PLATEIA_INTERNA_IMAGE % prop["nome"],
            FRASE_SEM_MARCA, luz, CAUDA)
@@ -2421,7 +2486,7 @@ def montar(spec):
         % (desp["take"].replace("carton", _recipiente(sub["caixa"])),
            RS_CRESCIMENTO_TAKE % (prop["nome"], bnc, bnc, ana["desc"],
                                   _maiuscula(prop["topo"]), prop["nome"], bnc,
-                                  prop["nome"], prop["nome"]),
+                                  prop["nome"], prop["nome"], bnc, bnc),
            RS_JATO_MASCARA % (sub["jato"], prop["nome"], sub["fala"],
                               prop["topo"]),
            RS_ESTADO_FINAL_TAKE % prop["depois"],
@@ -2476,7 +2541,7 @@ def montar(spec):
 #
 #   RS1  R2-emenda  escala diferencial     RS11 §travas  tokens proibidos
 #   RS2  R8         o jato-mascara         RS12 §travas  conformidade
-#   RS3  R4-emenda  base cravada           RS13 §travas  ausencia por negacao
+#   RS3  R4         mao na base+superficie RS13 §travas  ausencia por negacao
 #   RS4  R7         o apagao               RS14 ES13/ES14 texto e objeto banido
 #   RS5  R2b/el.7   trava de identidade    RS15 §prop    contraste de tom
 #   RS6  achado ⑧   nada cresce nas 2 e 3  RS16 TR7/ES8  recibo mudo
@@ -2499,7 +2564,12 @@ def montar(spec):
 
 M_ESCALA_DIF = ("width barely changes", "slimmer in proportion")
 M_JATO = "is hidden inside it and cannot be seen"
-M_BASE = "never moves, never tips, never slides"
+# ⛔ MIOLO INVARIANTE, nunca a constante inteira (§2 das licoes): a constante tem
+# slot e a comparacao daria 100% de falso positivo.
+M_BASE = "never lets go, never lifts and never changes position"
+M_SUPERFICIE = "no part of it ever goes below the surface"
+# ⛔ a formulacao da R4-emenda revogada. Se voltar, o prop volta a afundar.
+M_BASE_REVOGADA = "not held by anyone"
 M_APAGAO = "for eight tenths of a second around the moment it changes"
 M_IDENTIDADE = ("There is only ONE", "No second")
 M_F12B = ("in both his own fists one stacked above the other",
@@ -2544,13 +2614,29 @@ def _rs2_jato(spec, blocos, achados):
 
 
 def _rs3_base(spec, blocos, achados):
-    """R4-emenda: a ancora e' a base cravada. Sem ela le' como TROCA DE OBJETO,
-    nao como crescimento."""
+    """R4: a ancora e' a MAO fechada na base, e a bancada e' solida.
+
+    ⛔ Ate' 2026-08-02 esta regra cobrava a "base cravada na bancada" da
+    R4-emenda. `base cravada` + `so' cresce para cima` sao ordens que o modelo
+    nao consegue satisfazer juntas, e ele resolvia enfiando o prop na mesa. A
+    emenda foi revogada no primeiro render."""
     if M_BASE not in blocos["TAKE 01/03"]:
-        achados.append(("ERRO", "RS3 (R4-emenda): TAKE 01/03 sem a base cravada"))
+        achados.append(("ERRO", "RS3 (R4): TAKE 01/03 sem a mao fechada na "
+                                "base — sem ancora fisica o prop afunda na "
+                                "bancada ou o take le' como TROCA DE OBJETO"))
+    if M_SUPERFICIE not in blocos["TAKE 01/03"]:
+        achados.append(("ERRO", "RS3 (R4): TAKE 01/03 sem a trava de superficie "
+                                "solida — e' o que impede o prop de crescer "
+                                "PARA DENTRO da bancada"))
     if RS_SEM_FLUTUAR not in blocos["TAKE 01/03"]:
         achados.append(("ERRO", "RS3 (R4): a amarracao e' DUPLA — falta "
                                 "'No floating objects.' no TAKE 01/03"))
+    for nome in ("IMAGE 01/03", "TAKE 01/03"):
+        if M_BASE_REVOGADA in blocos[nome]:
+            achados.append(("ERRO", "RS3 (R4): %s traz %r — e' a R4-emenda "
+                                    "REVOGADA, e ela poe o prop em pe' sem "
+                                    "apoio no frame 0"
+                            % (nome, M_BASE_REVOGADA)))
 
 
 def _rs4_apagao(spec, blocos, achados):
