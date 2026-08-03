@@ -60,6 +60,38 @@ https://<vsl-da-pagina>/?aff_id=<aff-da-pagina>&subid=<pagina>
 | 9 | `dailyvitalitymethod.site` | `tqwepmv042n3y13xiy68ve0v` | — | ✅ **no ar** (HTTPS) |
 | 10 | `menresethub.site` | `u3szzoq1y9vcgoapsi2jnq0e` | — | ✅ **no ar** (HTTPS) |
 | 11 | `mensresetclub.online` | `t9wzm0j2pctbql7tsu3nbbor` | — | ✅ **no ar** (HTTPS) |
+| 12 | `dailyvitalreport.store` ⛔ **do LUCAS** | `kw5fu21f7rad8fnklgf1iiqn` | `http://kw5fu21f7rad8fnklgf1iiqn.159.195.12.135.sslip.io/` | ✅ **no ar** (HTTPS) |
+
+### ⛔⛔ O #12 NÃO É DESTA OPERAÇÃO — não misturar
+
+`dailyvitalreport.store` é do **Lucas**, subiu em 2026-08-03 e divide só o VPS.
+Tudo o mais é separado, e a confusão aqui custa comissão indo para a pessoa
+errada:
+
+| | os 11 acima | o #12 |
+|---|---|---|
+| pasta no `projetosweb` | `bridge-pages/bp-<dominio>` | `bridge-pages/bp-dailyvitalreport` |
+| oferta | Horsewood `VHG2-L1ML3` · Ragnaroak `VHGML5-3` | `horsewood.us/VHGTH-L3/` |
+| `aff_id` | **45158** · **2470** | **44878** |
+| gerado por | `bridge-pages/_build.py` | ⛔ **fora do `_build.py`, de propósito** |
+
+⛔ **Não acrescentar `bp-dailyvitalreport` à tabela `PAGINAS` do `_build.py`.**
+O gerador reescreveria o `aff_id` do Lucas com um dos desta operação no
+próximo build — que é exatamente o erro que motivou deletar o redirector
+central.
+
+**As 5 URLs dele**, uma por página de Facebook, cada uma com o `subid` fixo no
+HTML (sem JS):
+
+| Página | URL | `subid` |
+|---|---|---|
+| Reggie Harris | `dailyvitalreport.store/reggie` | `reggie` |
+| Otis & Gloria Living | `dailyvitalreport.store/otisgloria` | `otisgloria` |
+| Denise Walker | `dailyvitalreport.store/denise` | `denise` |
+| Wayne Miller | `dailyvitalreport.store/wayne` | `wayne` |
+| Jennifer Moore | `dailyvitalreport.store/jennifer` | `jennifer` |
+
+A raiz `dailyvitalreport.store/` serve a mesma matéria **sem** `subid`.
 
 ### ⭐ Lote 2 — 2026-08-03: qual página do Facebook usa qual bridge
 
