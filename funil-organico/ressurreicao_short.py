@@ -216,15 +216,34 @@ CREDIBILIDADE_PADRAO = "confirma"
 # NO POOL: ele soma `your <nucleo>` + PRAZO no mesmo take de 8s, que e' a
 # composicao exata que derrubou o video do NECROSE — a fala da fonte e' reprovada
 # pelo NOSSO PROPRIO linter (RS10) antes de chegar ao Veo.
-#   2 🔴 assertiva sem prazo
-#   3 🟡 condicional — a UNICA validada em producao (DEFAULT)
+#   2 🔴 assertiva sem prazo — ⚠️ ver a nota abaixo: o 🔴 e' da FONTE, nao nosso
+#   3 🟡 condicional
 #   4 🟢 a ATRIBUICAO (`they say`) — o achado de moderacao deste angulo
 #   5 🟢 plana
-# ⚠️ O default e' 3 e nao o mais arriscado: no ESCANDALO o degrau 1 e' default
-# porque houve ordem explicita [D3]; aqui nao ha' ordem, e nao se escolhe risco
-# pelo operador.
+#
+# ⭐⭐ DEFAULT 2 — ORDEM DO OPERADOR, 2026-08-02, e o motivo e' COPY, nao risco.
+# O default era 3, e o degrau 3 e' o UNICO dos quatro cujos hooks NAO nomeiam a
+# substancia: medido, 0 de 400 videos diziam o nome dela na cena 1. A fonte diz
+# na palavra 3 (`Pour baking soda on your Johnson...`). Sem o nome da coisa, os
+# beats seguintes viravam anafora sem antecedente — `the mechanism`, `that's not
+# on you`, `explained it`, tres definidos apontando para nada. O operador leu o
+# take renderizado e cravou: "quem ve o video nem entende do que se trata".
+#
+# ⚠️ E O 🔴 DO DEGRAU 2 NAO TRANSFERE PARA O NOSSO POOL. O selo foi dado a'
+# formulacao LITERAL DA FONTE, que tem dois gatilhos que nenhuma das nossas tem:
+#   fonte:  `Pour baking soda ON YOUR JOHN-SON and watch it SWELL UP.`
+#   nossa:  `Pour {s} ON IT and watch what your {o} could do.`
+# A nossa despeja no PROXY, nao no corpo, e nao tem verbo de inchaco. Medido nas
+# tres entradas do degrau 2: zero aplicacao no corpo, zero vocabulario de
+# inchaco.
+# ⚠️ Residual honesto: `watch what your {o} could do` nao e' condicional de
+# forma (nao abre com `if`), embora `could` seja modalidade condicional. Das 3
+# entradas do degrau 2, so' essa nomeia o orgao; as outras duas nao o citam.
+# ⭐ BONUS MEDIDO: no degrau 3 os SEIS hooks nomeavam o orgao, e a regra de
+# nomea-lo uma vez por cena deixava a cena 1 com apenas TRES bullets sorteaveis.
+# No degrau 2 so' um dos tres nomeia — o pool de bullets volta a abrir.
 DEGRAUS = (2, 3, 4, 5)
-DEGRAU_PADRAO = 3
+DEGRAU_PADRAO = 2
 
 # ⭐ A familia da analogia fisica. `extensao` (uma ponta fixa, a outra viaja,
 # espessura constante) e' o default POR FORCA DA R2-EMENDA. `pressao` descreve
@@ -1483,21 +1502,33 @@ HOOKS = [
 # ⛔ ZERO afirmacao sobre o corpo do espectador com prazo na mesma cena.
 # ⛔ ZERO palavra tecnica: a cena 2 reserva EXATAMENTE UMA, e gastar uma aqui faz
 # duas no video.
+# ⛔⛔ REESCRITO EM 2026-08-02 POR ORDEM DO OPERADOR — "copy vaga, quem ve o
+# video nem entende do que se trata". Medido antes: 10 das 14 entradas NAO
+# tinham um unico substantivo concreto. `You just watched the mechanism work.`
+# e' meta-fala: declara que houve um mecanismo em vez de dizer QUAL. A fonte, no
+# mesmo slot, diz `the cayenne forces your blood vessels to open up`.
+# ⭐ A REGRA NOVA: toda entrada nomeia SANGUE, VASO ou PRESSAO. Nenhuma
+# sobrevive so' de `that` / `it` / `the mechanism`.
+# ⛔ E o vocabulario e' de PROPOSITO o mais chao possivel — `blood`, `vessels`,
+# `pressure`, `flow`. `circulation`, `oxygen`, `collagen`, `nitric oxide` e
+# `vasodilator` sao as palavras tecnicas da CENA 2, e gastar uma aqui faz duas
+# no video.
+# ⛔ Zero afirmacao sobre o corpo do espectador com prazo (RS10).
 CONFIRMACOES = [
     "Nothing was faked there. That is blood flow.",
-    "Same thing, under the skin, every single time.",
-    "You just watched the mechanism work.",
     "That's what blood flow looks like from outside.",
-    "Nothing was edited. That's the whole point.",
     "That is what open blood vessels do.",
-    "Now put that same thing inside a man.",
-    "Same principle exactly. Only slower and warmer.",
     "That's not sleight of hand. It's pressure.",
-    "Every man who sees this asks the same thing.",
-    "That was the demonstration. Here's the real one.",
-    "What you just saw is not the product.",
-    "That's the outside version. The inside one matters.",
-    "That happened in four seconds. Nothing added.",
+    "Same blood, same pressure, under the skin.",
+    "That is blood filling something that was empty.",
+    "Nothing was edited. That is blood, moving.",
+    "Now put that same blood pressure inside a man.",
+    "Same pressure exactly. Only slower and warmer.",
+    "Every man asks how blood does that.",
+    "That was blood under pressure. Nothing else.",
+    "What you saw was pressure, not a product.",
+    "Outside it's visible. Inside it's the same blood.",
+    "No trick, no edit. Just blood pressure.",
 ]
 
 # MODO `--credibilidade desmente`: o TR8 do TROCA, variante DESMENTE, literal.
@@ -1554,31 +1585,45 @@ DESMENTIDOS = [
 # ser sorteada — filtro, como o `voz` das PROVAS e o `cabecas` das BANCADAS.
 # ⚠️ `They sold you the age excuse instead.` continua `ambas` de proposito: ela
 # e' Benson §3 (culpar o sistema), nao moldura de boato — nao contradiz nada.
+# ⛔⛔ REESCRITO EM 2026-08-02, MESMA ORDEM DAS CONFIRMACOES. O bullet tinha
+# vilao concreto (medico, corredor de farmacia, propaganda) mas AFIRMAVA QUE
+# ALGO FOI SONEGADO SEM NUNCA DIZER O QUE. `Not your fault. Nobody explains the
+# {o}.` — explica O QUE sobre ele? `That's not on you. Nobody ever explained
+# it.` — "it" nao tem antecedente nenhum, e foi a frase que o operador citou:
+# "wtf is she talking about???".
+# ⭐ A REGRA NOVA: o bullet nomeia O QUE FOI SONEGADO, nao so' que houve
+# sonegacao. `what shuts it down`, `what opens it`, `the cause` — o objeto do
+# verbo passa a existir.
+# ⛔ E evita `blood`, que e' a palavra do beat anterior: bullet ecoando o beat
+# gasta duas das ~16 palavras que sobram na cena e o `_repete` derruba o par.
+# ⚠️ Benson §3 preservado em todas: culpa-se o SISTEMA e a informacao errada,
+# nunca o prospecto.
 BULLETS = [
-    {"cred": "ambas", "txt": "Nobody ever told the {o} any different."},
-    {"cred": "ambas", "txt": "Everybody has tried that on the {o} once."},
+    {"cred": "ambas", "txt": "Nobody ever told you what shuts the {o} down."},
+    {"cred": "ambas", "txt": "Everybody tries a pill. Nobody opens the {o}."},
     {"cred": "ambas", "txt": "Nobody makes a dime when the {o} works."},
-    {"cred": "ambas", "txt": "Your doctor has never once mentioned the {o}."},
-    {"cred": "ambas", "txt": "Not your fault. Nobody explains the {o}."},
-    {"cred": "ambas", "txt": "That aisle has nothing in it for the {o}."},
-    {"cred": "ambas", "txt": "Nobody ever sat you down about the {o}."},
+    {"cred": "ambas", "txt": "Your doctor treats the pill, never the {o}."},
+    {"cred": "ambas", "txt": "Not your fault. Nobody names what closes it."},
+    {"cred": "ambas", "txt": "That aisle sells pills, never what opens the {o}."},
+    {"cred": "ambas", "txt": "Nobody sat you down and drew the {o}."},
     {"cred": "ambas", "txt": "Twenty years of ads, never once the {o}."},
-    {"cred": "ambas", "txt": "You were never told, and that cost the {o}."},
+    {"cred": "ambas", "txt": "Nobody named the cause, and that cost the {o}."},
     {"cred": "ambas", "txt": "Nobody gets paid explaining the {o} to you."},
     {"cred": "ambas", "txt": "They sold you the age excuse instead."},
     # ⛔ as duas de moldura de BOATO: so' rodam quando a fala ja' desmentiu.
     {"cred": "desmente", "txt": "Half the internet still says it works."},
     {"cred": "desmente", "txt": "That one has been going around for years."},
-    # + medido depois do primeiro lote: no degrau 3 (o DEFAULT) os seis hooks
-    # nomeiam o orgao, entao a regra de nomea-lo UMA vez por cena deixava a
-    # cena 1 com apenas TRES bullets — 182/180/38 em 400 sorteios. Tres opcoes
-    # no modo padrao ficam abaixo da barra do operador ("nada menos que os
-    # demais agentes SHORT"), e o conserto e' pool, nao regra: mais quatro da
-    # mesma familia (Benson §3, culpar o sistema), todas SEM `{o}`.
-    {"cred": "ambas", "txt": "That's not on you. Nobody ever explained it."},
-    {"cred": "ambas", "txt": "Twenty years of ads never said this."},
-    {"cred": "ambas", "txt": "Your doctor was never taught this either."},
-    {"cred": "ambas", "txt": "Nobody makes a dime telling you this."},
+    # + medido depois do primeiro lote: no degrau 3 os seis hooks nomeiam o
+    # orgao, entao a regra de nomea-lo UMA vez por cena deixava a cena 1 com
+    # apenas TRES bullets — 182/180/38 em 400 sorteios. Tres opcoes ficam abaixo
+    # da barra do operador ("nada menos que os demais agentes SHORT"), e o
+    # conserto e' pool, nao regra: mais quatro da mesma familia, todas SEM `{o}`.
+    # ⚠️ No degrau 2 (default desde 2026-08-02) so' um dos tres hooks nomeia o
+    # orgao, entao as onze de cima voltam a entrar no sorteio padrao.
+    {"cred": "ambas", "txt": "That's not on you. Nobody named the cause."},
+    {"cred": "ambas", "txt": "Twenty years of ads never named the cause."},
+    {"cred": "ambas", "txt": "Your doctor was never taught what closes it."},
+    {"cred": "ambas", "txt": "Nobody makes a dime telling you what opens it."},
 ]
 
 # ---------------------------------------------------------------------------

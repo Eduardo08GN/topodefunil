@@ -509,6 +509,64 @@ bloquear, a bissecção já tem o alvo isolado
 
 ---
 
+### ⛔⛔ A CENA 1 DIZ O NOME DA COISA — o default do degrau, e por quê (2026-08-02)
+
+O operador leu um take renderizado e cravou: *"quem vê o vídeo nem entende do
+que se trata"*. Ele estava certo, e a causa era **uma linha**.
+
+| | a fonte | o nosso, antes |
+|---|---|---|
+| hook | `Pour baking soda on your Johnson and watch it swell up overnight` | `If you want your peck-er to do that, watch this whole thing` |
+| o que nomeia | **substância + órgão + resultado** | só o órgão; aponta para a tela |
+| beat seguinte | `the cayenne forces your blood vessels to open up` | `You just watched the mechanism work` |
+
+`DEGRAU_PADRAO` era **3**, e o degrau 3 é o **único dos quatro cujos hooks não
+nomeiam a substância**. Medido: **0 de 400 vídeos** diziam o nome dela na cena 1
+— a fonte diz na palavra 3. Sem o nome da coisa, tudo que vinha depois virava
+anáfora sem antecedente: *the mechanism*, *that's not on you*, *explained it* —
+três definidos apontando para nada.
+
+⭐ **Decisão do operador: `DEGRAU_PADRAO = 2`.**
+
+⚠️ **E o selo 🔴 do degrau 2 não transfere para o nosso pool.** Ele foi dado à
+formulação **literal da fonte**, que tem dois gatilhos que nenhuma das nossas
+tem:
+
+| | aplica no corpo | verbo de inchaço |
+|---|---|---|
+| fonte (🔴) | `on your John-son` | `swell up` |
+| nossas 3 | **`on it`** — o proxy | **nenhum** |
+
+⚠️ **Residual honesto:** `watch what your {o} could do` não abre com `if`, embora
+`could` seja modalidade condicional. Das três entradas do degrau 2, só essa nomeia
+o órgão.
+
+⭐ **Bônus medido:** no degrau 3 os **seis** hooks nomeavam o órgão, e a regra de
+nomeá-lo uma vez por cena deixava a cena 1 com apenas **três** bullets sorteáveis.
+No degrau 2 só um dos três nomeia — o pool inteiro volta a abrir.
+
+#### Os dois pools reescritos
+
+**CONFIRMACOES** — 10 das 14 não tinham um único substantivo concreto.
+⭐ Regra nova: **toda entrada nomeia sangue, vaso ou pressão.** Vocabulário
+deliberadamente chão — `circulation`, `oxygen`, `collagen`, `nitric oxide` e
+`vasodilator` são as palavras técnicas da **cena 2**, e gastar uma aqui faz duas
+no vídeo.
+
+**BULLETS** — tinham vilão concreto (médico, corredor de farmácia, propaganda)
+mas **afirmavam que algo foi sonegado sem nunca dizer o quê**. `That's not on
+you. Nobody ever explained it.` — `it` não tem antecedente, e foi a frase citada.
+⭐ Regra nova: **o bullet nomeia o que foi sonegado** (`what shuts it down`,
+`what opens it`, `the cause`), não só que houve sonegação. Benson §3 preservado
+em todas: culpa-se o sistema, nunca o prospecto. ⛔ E evitam `blood`, que é a
+palavra do beat anterior — eco gasta duas das ~16 palavras que sobram e o
+`_repete` derruba o par.
+
+**Medido em 400 vídeos, depois:** a cena 1 nomeia a substância em **400/400**
+(era 0/400) e diz sangue/vaso/pressão em **400/400**.
+
+---
+
 ### ⭐ O flag `--credibilidade` — e o default é CONFIRMA
 
 Assinatura: `sortear(pagina, rng, ledger, credibilidade=None)` · CLI
