@@ -41,14 +41,20 @@ TITULO = "AGENTE CLEAN"
 SLUG = "clean-short"
 SUBTITULO = "a fileira apontada, em 3 cenas · gerador offline de prompts Veo"
 
+# ⛔⛔ FORMATO ALINHADO AOS OUTROS NOVE MOTORES EM 2026-08-03. Este era o unico
+# `ETNIA` que guardava DICT por pagina (`{"dominio": ..., "etnia": "branco"}`).
+#
+# O QUE ISSO QUEBRAVA, e o operador achou no app: o seletor `pele clara/escura`
+# do `ui_agente.py` classifica com `"white" in ETNIA[pagina]`. Com string isso
+# testa SUBSTRING e funciona; com dict testa CHAVE, nao acha `white` em lugar
+# nenhum, e TODA pagina cai em `escura`. Resultado: o botao nao respondia e o
+# agente so' gerava REF de pele escura.
+# ⚠️ O campo `dominio` nao era lido em lugar nenhum do motor — so' o `["etnia"]`
+# era usado, uma vez. Entao alinhar nao perdeu informacao nenhuma.
 ETNIA = {
-    "joe":    {"dominio": "manresethub.pro",        "etnia": "branco"},
-    "marcus": {"dominio": "vitalresetlab.site",     "etnia": "negro"},
-    "ray":    {"dominio": "primalvitalityhub.site", "etnia": "branco"},
-    "chuck":  {"dominio": "allmensnatural.site",    "etnia": "negro"},
-    "matt":   {"dominio": "steadystrengthhub.site", "etnia": "branco"},
+    "joe": "white American", "ray": "white American", "matt": "white American",
+    "marcus": "Black American", "chuck": "Black American",
 }
-_ET = {"branco": "white American", "negro": "Black American"}
 
 # ---------------------------------------------------------------------------
 # ⭐ TRAVAS — eixos que o operador PRE-SELECIONA e o sorteio nao mexe
@@ -248,19 +254,19 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 TETO_FALA = {1: 22, 2: 24, 3: 22}
 
 HOOKS = [
-    "You don't need a pill to get hard. These four are two dollars.",
+    "You don't need a pill to get your {o} hard. These four cost two dollars.",
     "Urologists won't tell you this. These four wake your {o} up.",
-    "Four things from the produce aisle. Every one helps your {o}.",
-    "Doctors make no money when a man fixes his {o} with groceries.",
-    "You pay three hundred a month for what these four do for two dollars.",
+    "Four things from the produce aisle. Every one gets your {o} standing.",
+    "Doctors make no money when groceries get a man's {o} working again.",
+    "Three hundred a month for a pill. These four get your {o} hard for two.",
     "Your doctor never told you this secret. This is what makes your {o} work.",
-    "Men over fifty, look at these four. Your {o} has been waiting.",
-    "Forget the pharmacy. These four do more for your {o} than the pill.",
-    "Every one of these is at your grocery store. Your {o} needs all four.",
-    "You don't need a prescription to get hard. You need these four.",
-    "The pill people hope you never learn what these do for your {o}.",
-    "These four cost less than two dollars. Your {o} feels all of them.",
-    "Stop buying pills. Start buying these four and watch your {o}.",
+    "Men over fifty, look at these four. They put your {o} back to work.",
+    "Forget the pharmacy. These four get your {o} harder than the pill does.",
+    "Every one is at your grocery store, and all four wake your {o} up.",
+    "You don't need a prescription to get your {o} hard. You need these four.",
+    "The pill people hope you never learn that these four harden your {o}.",
+    "These four cost two dollars, and your {o} gets hard on all of them.",
+    "Stop buying pills. Start buying these four and watch your {o} go back into business.",
     "Nobody told you groceries could get your {o} hard. These four are the secret.",
 ]
 
@@ -299,21 +305,21 @@ ITEM_A = [
     {"txt": "Tomatoes protect your prostate", "itens": ["tomate"], "ben": "prostata"},
 ]
 ITEM_B = [
-    {"txt": "Kale and honey make your milk sweet for the girls", "itens": ["couve", "mel"], "ben": "leite"},
-    {"txt": "Spinach and honey make your milk sweet for her", "itens": ["espinafre", "mel"], "ben": "leite"},
-    {"txt": "Kale and baking soda keep you going all night", "itens": ["couve", "bicarbonato"], "ben": "aguenta"},
-    {"txt": "Coconut and honey bring your twenties back", "itens": ["coco", "mel"], "ben": "vinte-anos"},
+    {"txt": "Kale and honey get your {o} ready", "itens": ["couve", "mel"], "ben": "pronto"},
+    {"txt": "Spinach and honey put your {o} to work", "itens": ["espinafre", "mel"], "ben": "trabalho"},
+    {"txt": "Kale and baking soda keep your {o} going", "itens": ["couve", "bicarbonato"], "ben": "aguenta"},
+    {"txt": "Coconut and honey bring your {o} back", "itens": ["coco", "mel"], "ben": "volta"},
     # CL24 (2026-08-03) — a unica linha do ITEM_B que citava fluxo sem endereco
-    {"txt": "Beetroot and baking soda open the blood flow down there", "itens": ["beterraba", "bicarbonato"], "ben": "fluxo"},
-    {"txt": "Watermelon and honey sweeten your milk for the girls", "itens": ["melancia", "mel"], "ben": "leite"},
-    {"txt": "Ginger and cinnamon wake the whole system up", "itens": ["gengibre", "canela"], "ben": "acorda"},
-    {"txt": "Celery and baking soda thicken your milk", "itens": ["aipo", "bicarbonato"], "ben": "engrossa"},
-    {"txt": "Pineapple and honey make your milk sweet", "itens": ["abacaxi", "mel"], "ben": "leite"},
+    {"txt": "Beetroot and baking soda send blood to your {o}", "itens": ["beterraba", "bicarbonato"], "ben": "irriga"},
+    {"txt": "Watermelon and honey wake your {o} early", "itens": ["melancia", "mel"], "ben": "cedo"},
+    {"txt": "Ginger and cinnamon wake your {o} up", "itens": ["gengibre", "canela"], "ben": "acorda"},
+    {"txt": "Celery and baking soda keep your {o} awake", "itens": ["aipo", "bicarbonato"], "ben": "acordado"},
+    {"txt": "Pineapple and honey get your {o} up", "itens": ["abacaxi", "mel"], "ben": "sobe"},
     # ⛔ era `Passion fruit and cinnamon harden you fast` — a UNICA linha dos
     # dois pools que prometia dureza. A dureza e' exclusiva do gelatin trick
     # (CL23, ordem do operador 2026-08-02).
     # CL24 (2026-08-03) — `widen every vessel` nao dizia vaso de onde
-    {"txt": "Passion fruit and cinnamon widen every vessel down there", "itens": ["maracuja", "canela"], "ben": "vasos"},
+    {"txt": "Passion fruit and cinnamon feed your {o}", "itens": ["maracuja", "canela"], "ben": "alimenta"},
 ]
 
 # ⭐⭐ CL24 — MECANISMO SEM ENDERECO E' FISIOLOGIA SOLTA (queixa do operador,
@@ -557,7 +563,7 @@ def sortear(pagina, rng, led, travas=None):
     respeita — e' o que o painel usa para pre-selecao (TRAVAS_UI)."""
     travas = travas or {}
     usados = led.get(pagina, {})
-    et = _ET[ETNIA[pagina]["etnia"]]
+    et = ETNIA[pagina]
 
     sexo = travas.get("sexo") or rng.choice(["homem", "mulher"])
     fam_id = travas.get("familia")
@@ -614,7 +620,16 @@ def sortear(pagina, rng, led, travas=None):
         "cenario": cenario, "ref": ref, "scrub": scrub, "orgaos": orgaos,
         "item_a": a, "item_b": b, "bancada": bancada, "truque": tru,
         "despejo": despejo,
-        "falas": [hook, "%s. %s. %s" % (a["txt"], b["txt"], virada), cta],
+        # ⛔ 2026-08-03: `b["txt"]` entrava CRU e o `{o}` saia literal na fala —
+        # `Pineapple and honey get your {o} up`. O bug so' nasceu agora porque
+        # ate' hoje nenhum ITEM_B tinha placeholder (falavam `your milk`, `the
+        # whole system`), entao ninguem precisava formatar. Ordem do operador:
+        # a cena 2 nomeia o orgao. ⚠️ So' apareceu porque li a fala renderizada
+        # — o linter nao reprova `{o}` cru.
+        "falas": [hook,
+                  "%s. %s. %s" % (a["txt"], b["txt"].format(o=orgaos[1]),
+                                  virada),
+                  cta],
     }
 
 
@@ -985,7 +1000,9 @@ def nova_fala(spec, i, rng):
     # cena 2: mantem os itens da bancada, troca so' a virada — e so' entre as
     # que cabem no teto depois de substituir o orgao (CL13)
     a, b = spec["item_a"], spec["item_b"]
-    return "%s. %s. %s" % (a["txt"], b["txt"],
+    # ⛔ mesmo conserto do `montar()`: `b["txt"]` tem `{o}` desde 2026-08-03 e
+    # sem o format o botao `trocar` da UI devolvia a fala com o placeholder cru.
+    return "%s. %s. %s" % (a["txt"], b["txt"].format(o=o[1]),
                            rng.choice(_viradas_que_cabem(a, b, o[1])).format(o=o[1]))
 
 
