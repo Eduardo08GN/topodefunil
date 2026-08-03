@@ -106,19 +106,49 @@ ETNIA = {
 # ⚠️ As MAOS estao conferidas na fonte, nao supostas: ela esta' de frente, entao
 # a mao que aparece a' esquerda do espectador e' a DIREITA dela (a do frasco), e
 # a que aparece a' direita e' a ESQUERDA (a do prop).
+# ⛔⛔ A PRIMEIRA VERSAO DESTA TRAVADA FOI JOGADA FORA EM 2026-08-03, E
+# A LICAO E' MINHA. O operador pos o render do agente ao lado do print da fonte:
+# *"Cade a perna do homem? Quem segura o prop e' o segundo personagem, com a
+# cintura pra cima cortado no frame do video. Esta' bem errado essa
+# assertividade sua."*
+#
+# Ele esta' certo. Eu li o frame e COLAPSEI DOIS PERSONAGENS EM UM: as pernas de
+# calca caqui que ocupam a metade de baixo do quadro NAO sao dela — sao de um
+# HOMEM sentado de frente para a camera, cortado na cintura, sem rosto e sem
+# tronco. E' a MAO DELE que segura o prop em pe' no proprio colo. Ela entra por
+# tras, do peito para cima, e despeja. O motor gerava a narradora com o prop
+# entre as PROPRIAS pernas — outro video, e sem o personagem que da' ao hook o
+# dono do problema.
+#
+# ⚠️ O QUE FICA: eu declarei conformidade posicional elemento por elemento sobre
+# uma leitura que nunca conferi com a pergunta certa — *de quem e' esta perna?*.
+# Descricao detalhada de um quadro errado e' pior que descricao vaga: ela TRAVA
+# o erro. Regra: **antes de travar geometria com duas partes de corpo, contar
+# quantas PESSOAS ha' no quadro.**
+#
+# ⛔ OS ELEMENTOS, com posicao, altura e DONO:
+#   1. CAMERA .... frontal, na altura do colo de quem esta' sentado
+#   2. HOMEM ..... metade de baixo do quadro, perto da camera, joelhos abertos,
+#                  CORTADO NA CINTURA — zero rosto, zero tronco
+#   3. PROP ...... vertical no punho ESQUERDO DELE, apoiado na coxa dele
+#   4. MULHER .... atras do colo dele, cabeca e ombros ACIMA dos joelhos dele
+#   5. FRASCO .... mao DIREITA DELA, sobre o colo dele, um palmo acima do topo
+#                  do prop e ligeiramente a frame-left, bocal para baixo ~45°
+#   6. JORRO ..... linha unica atravessando o vao ate' o topo do prop
 CO_GEOMETRIA = (
-    "Sitting in a chair facing the camera, filmed straight on at chest height "
-    "and framed from mid-thigh up, is %s, her knees apart so her thighs fill "
-    "the bottom third of the frame in a wide V. Held upright inside her closed "
-    "left fist, above her lap and centred between her knees, is %s; her fist "
-    "is wrapped around %s, her forearm resting along her thigh, and it points "
-    "straight up for the whole shot. Her right hand is raised to waist height, "
-    "a hand's width above the top of it and slightly to frame-left of it, "
-    "holding %s tipped mouth-down at about forty-five degrees. %s falls from "
-    "its mouth straight down across the open gap and lands on "
-    "the very top of it, one unbroken line. Her head and shoulders are above "
-    "and behind her raised hand, upright and square to the lens, and the "
-    "setting behind her stays visible over both shoulders."
+    "Filmed straight on from the height of a seated person's lap. Filling the "
+    "bottom half of the frame, close to the camera, is a man's lap: he sits "
+    "facing the camera with his knees apart, wearing %s, and he is cropped at "
+    "the waist so that no torso and no face are anywhere in the frame — only "
+    "his legs and his hands. %s Held upright in his closed left fist, resting "
+    "on his thigh and centred between his knees, is %s; his fist is wrapped "
+    "around %s and it points straight up for the whole shot. Behind his lap, "
+    "seated and facing the camera with her head and shoulders above his knees, "
+    "is %s. Her right hand reaches out over his lap, a hand's width above the "
+    "top of it and slightly to frame-left of it, holding %s tipped mouth-down "
+    "at about forty-five degrees. %s falls from its mouth straight down across "
+    "the open gap and lands on the very top of it, one unbroken line. The "
+    "setting behind her stays visible over both her shoulders."
 )
 
 # ⛔ CO2 — no TAKE da cena 1 o prop NAO muda de estado. Este agente nao tem
@@ -127,11 +157,12 @@ CO_GEOMETRIA = (
 # ⚠️ ⛔ Nunca `completely motionless` num objeto que uma mao segura: e' ordem
 # impossivel e o Veo resolve SOLTANDO o objeto (F12b). Diz-se pela POSICAO.
 CO_PROP_ESTAVEL = (
-    "Her left fist stays closed around it and her forearm stays resting on her "
+    "His left fist stays closed around it and his hand stays resting on his "
     "thigh, so it stays upright in exactly the same place, at the same height "
-    "and the same angle, same size, same shape, same colour. Her right hand "
-    "keeps the bottle at the same height and the same tilt. Only the falling "
-    "stream moves."
+    "and the same angle, same size, same shape, same colour. He does not "
+    "shift, his knees stay where they are and his face never comes into the "
+    "frame. Her right hand keeps the bottle at the same height and the same "
+    "tilt. Only the falling stream moves, and only she speaks."
 )
 
 # ⛔ CO3 — a bancada das cenas 2 e 3 e' a MESMA, e a unica coisa que muda entre
@@ -514,6 +545,64 @@ NARRADORAS = [
 # nao e' frase que se diz. Este agente nao tem marisco — e' produce.
 # ⚠️ `em_pe` descreve como o objeto FICA EM PE', que e' a exigencia do CO1: prop
 # que nao para em pe' sozinho nao serve a este hook.
+# ---------------------------------------------------------------------------
+# ⭐ HOMENS — o segundo personagem da cena 1, cortado na cintura
+# ---------------------------------------------------------------------------
+# ⛔ ELE E' O DONO DO PROBLEMA, e por isso existe: sem ele o hook e' uma mulher
+# despejando oleo numa fruta; com ele, e' o colo de um homem sendo tratado na
+# frente da camera. Foi o que eu tinha perdido na primeira leitura da fonte.
+# ⛔ ZERO ROSTO E ZERO TRONCO — corte na cintura. E' a mesma economia do EX5 do
+# EXTERIOR: um rosto a menos para manter identico entre blocos de 8s. Aqui o
+# corte e' mais alto ainda (so' pernas e maos), entao a ANCORA DISTINTIVA TEM DE
+# MORAR NA MAO E NA CALCA — nao ha' onde mais.
+# ⛔ Zero adjetivo de etnia nas entradas: quem injeta e' a montagem, a partir do
+# MUNDO. Mesmo contrato das NARRADORAS.
+# ⚠️ A calca e' sempre COMPRIDA e o joelho fica coberto: perna nua de homem
+# adulto sentado com o colo em primeiro plano e' geometria que o classificador
+# olha com lupa, sem nada a ganhar em conversao.
+HOMENS = [
+    {"id": "cargo_caqui", "selo": "V",
+     "calca": "loose khaki cargo trousers",
+     "maos": "broad and squared, with short blunt nails",
+     "marca": "a plain gold wedding band on his left ring finger"},
+    {"id": "jeans_escuro", "selo": "N",
+     "calca": "dark straight-leg jeans",
+     "maos": "large, with heavy knuckles",
+     "marca": "a pale old scar across the back of his left hand"},
+    {"id": "moletom_cinza", "selo": "N",
+     "calca": "grey sweatpants",
+     "maos": "thick-fingered, the skin dry across the knuckles",
+     "marca": "a wide steel watch loose on his left wrist"},
+    {"id": "chino_bege", "selo": "N",
+     "calca": "beige chino trousers",
+     "maos": "long and bony, with prominent veins",
+     "marca": "a faded green tattoo band around his left wrist"},
+    {"id": "jeans_gasto", "selo": "N",
+     "calca": "faded blue jeans worn white at the knee",
+     "maos": "work-hardened, with calloused palms",
+     "marca": "a thumbnail ridged and darkened from an old injury"},
+    {"id": "calca_lona", "selo": "N",
+     "calca": "heavy brown canvas work trousers",
+     "maos": "big and weathered, with cracked skin at the joints",
+     "marca": "a thick silver ring on his left index finger"},
+    {"id": "moletom_marinho", "selo": "N",
+     "calca": "navy jogging bottoms with a drawstring",
+     "maos": "soft and wide, with neatly cut nails",
+     "marca": "a small dark mole on the back of his left hand"},
+    {"id": "calca_social", "selo": "N",
+     "calca": "charcoal dress trousers with a pressed crease",
+     "maos": "clean and slim",
+     "marca": "a leather-strapped watch sitting square on his left wrist"},
+    {"id": "bermuda_comprida", "selo": "N",
+     "calca": "long olive utility trousers with a side pocket",
+     "maos": "square, with sun-darkened backs",
+     "marca": "a white band of untanned skin where a ring used to be"},
+    {"id": "jeans_preto", "selo": "N",
+     "calca": "black jeans",
+     "maos": "heavy, with thick wrists",
+     "marca": "a raised knuckle on his left middle finger, healed crooked"},
+]
+
 PROPS = [
     {"id": "banana", "selo": "V", "nome": "banana",
      "img": "a ripe yellow banana, peeled halfway down with the peel folded "
@@ -786,7 +875,8 @@ TRAVAS_UI = [
     ("familia_mundo", "nicho", ["livre"] + FAMILIAS_MUNDO),
 ]
 
-EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "prop", "substancia", "receita"]
+EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "homem", "prop",
+                   "substancia", "receita"]
 
 
 def etnias_do_mundo(spec):
@@ -802,6 +892,7 @@ EIXOS_UI = [
     ("mundo", "MUNDO", "MUNDOS", "id"),
     ("etnia", "ETNIA", "etnias_do_mundo", None),
     ("ref", "QUEM FALA", "NARRADORAS", "cabeca"),
+    ("homem", "O COLO", "HOMENS", "calca"),
     ("prop", "O PROP", "PROPS", "nome"),
     ("substancia", "A ISCA", "SUBSTANCIAS", "nome"),
     ("receita", "RECEITA", "RECEITAS", None),
@@ -979,14 +1070,18 @@ def sortear(pagina, rng, led, travas=None):
              if travas.get("substancia")
              else _fresco(SUBSTANCIAS, usados.get("substancia", []), rng, "id"))
     receita = travas.get("receita") or rng.choice(RECEITAS)
+    # ⛔ O SEGUNDO PERSONAGEM da cena 1 — o dono do colo. Sem ele o hook e' uma
+    # mulher despejando oleo numa fruta.
+    homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
+             else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
 
     # ⛔ Dois orgaos DIFERENTES no mesmo video: repetir o substantivo em 24
     # segundos vira bordao.
     orgaos = rng.sample(NUCLEO, 2)
 
     spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
-            "ref": ref, "prop": prop, "substancia": subst, "receita": receita,
-            "orgaos": orgaos}
+            "ref": ref, "homem": homem, "prop": prop, "substancia": subst,
+            "receita": receita, "orgaos": orgaos}
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
     return spec
 
@@ -1013,7 +1108,7 @@ def montar(spec):
     bloco, e um deslocamento de indice posicional troca pronome por cor sem
     estourar erro nenhum (bug que so' aparece no video pronto)."""
     m, ref, prop = spec["mundo"], spec["ref"], spec["prop"]
-    sub = spec["substancia"]
+    sub, hom = spec["substancia"], spec["homem"]
     v = {
         "sala": m["sala"], "sala_c": m["sala_c"], "banc": m["banc"],
         "sup": m["sup"], "sup_a": m["sup_a"], "sup_d": _sem_artigo(m["sup_a"]),
@@ -1033,8 +1128,18 @@ def montar(spec):
     # ⛔ `_cap` no jorro: ele abre frase dentro da travada, e sem isto o bloco
     # sai com `a thin line of golden-green oil falls...` em minuscula no meio do
     # texto. Achado LENDO o render — o linter passou 600/600.
-    v["geometria"] = CO_GEOMETRIA % (v["pessoa"], v["prop_img"],
-                                     v["prop_punho"], sub["frasco"],
+    # ⚠️ A etnia do homem vem do MUNDO, igual a' dela — congruencia de casal na
+    # mesma cena. E ela entra na MAO, que e' a unica pele dele em quadro.
+    # ⚠️ A etnia dele vem do MUNDO, igual a' dela, e entra na MAO — a unica pele
+    # dele em quadro. ⛔ O campo `maos` nao repete o substantivo `hands`: a
+    # primeira versao saia "His Hispanic American hands, broad squared hands
+    # with short blunt nails" (achado lendo o render).
+    v["homem_maos"] = ("His hands are the only skin of his in the frame — %s, "
+                       "%s, and %s." % (spec["etnia"], hom["maos"],
+                                        hom["marca"]))
+    v["geometria"] = CO_GEOMETRIA % (hom["calca"], v["homem_maos"],
+                                     v["prop_img"], v["prop_punho"],
+                                     v["pessoa"], sub["frasco"],
                                      _cap(sub["jorro"]))
     v["layout"] = CO_BANCADA_LAYOUT % m["sup"]
     # ⛔ A pegada e' no SACHE, nao no copo: e' o sache que ela inclina, e o copo
@@ -1068,8 +1173,9 @@ def montar(spec):
     # em prompt de imagem e' superficie para o gerador escolher sozinho.
     b["IMAGE 01/03"] = (
         "Medium shot in %(sala)s. %(geometria)s She is looking straight into "
-        "the lens with her mouth open mid-word as she speaks. She is the only "
-        "person in the frame. %(anti)s %(luz)s %(cauda)s" % v)
+        "the lens with her mouth open mid-word as she speaks. They are the "
+        "only two people in the frame, and his face is not in it. %(anti)s "
+        "%(luz)s %(cauda)s" % v)
 
     # --- CENA 2 — DE PE' NA BANCADA, A RECEITA (o mecanismo) ----------------
     # ⚠️ MUDA DE AMBIENTE (ordem do operador): a fonte corta de sentada para de
@@ -1116,8 +1222,8 @@ def montar(spec):
     # preenche com o frame; a contradicao ele resolve mexendo no que estava
     # certo.
     mov = [
-        "%(estavel)s She never moves it away from her lap and never sets it "
-        "down." % v,
+        "%(estavel)s She never moves the bottle away from his lap and never "
+        "sets it down." % v,
         "She keeps her right hand closed around the sachet, her forearm "
         "resting steady on the %(sup)s, and tips it a little further so the "
         "pale powder keeps falling into the glass. Her left hand stays flat on "
@@ -1133,13 +1239,24 @@ def montar(spec):
              "%s, a spoon against glass. No music." % m["audio"],
              "%s. No music." % m["audio"]]
 
+    # ⛔ O ELENCO MUDA ENTRE AS CENAS e a frase travada tem de acompanhar: a
+    # cena 1 tem DOIS (ela + o colo dele), as cenas 2 e 3 tem ela sozinha.
+    # ⚠️ Na cena 1 e' `only she speaks`, nunca `she is the only person`: afirmar
+    # que ela e' a unica com um segundo corpo em quadro e' ordem contraditoria, e
+    # o Veo resolve APAGANDO O HOMEM — justamente o personagem que da' ao hook o
+    # dono do problema.
+    elenco = ["He never speaks and his face never enters the frame; only she "
+              "speaks.",
+              "She is the only person in the shot.",
+              "She is the only person in the shot."]
     for i in range(3):
         b["TAKE %02d/03" % (i + 1)] = (
             "Animate the provided image exactly. Handheld iPhone shot, very "
             "slight natural sway, no cuts. The %d-year-old woman speaks "
-            "straight into the lens. %s She is the only person in the shot.\n"
+            "straight into the lens. %s %s\n"
             'Dialogue: "%s"\nAudio: %s'
-            % (ref["idade"], mov[i], sonorizar(spec["falas"][i]), audio[i]))
+            % (ref["idade"], mov[i], elenco[i], sonorizar(spec["falas"][i]),
+               audio[i]))
 
     return sc.selar_takes(sc.selar_tags(b))
 
@@ -1218,6 +1335,36 @@ def lint(spec, blocos):
                                 "cena 1 e a 2 sao em ambientes DIFERENTES neste "
                                 "agente, e e' ai' que o Veo troca de pessoa"
                         % nome))
+
+    # --- CO13: o elenco da cena 1 sao DOIS, e ele nao tem rosto -------------
+    # ⛔⛔ Esta regra existe porque eu ERREI a leitura da fonte e o operador
+    # achou no render: as pernas do quadro sao de um SEGUNDO PERSONAGEM, um
+    # homem cortado na cintura, e e' a mao dele que segura o prop. O motor
+    # gerava a narradora com o prop entre as proprias pernas.
+    # ⚠️ Cobrado dos DOIS lados, senao um refactor futuro derruba o homem de
+    # novo em silencio: a cena 1 TEM de trazer o corte na cintura e NAO PODE
+    # dizer que ela e' a unica pessoa; as cenas 2 e 3 TEM de dizer.
+    i1 = blocos["IMAGE 01/03"]
+    if "cropped at the waist" not in i1:
+        ach.append(("ERRO", "CO13: IMAGE 01/03 sem o corte na cintura do homem "
+                            "— o dono do colo e' o segundo personagem, e sem o "
+                            "corte declarado o Veo poe o rosto dele em quadro"))
+    if "no torso and no face" not in i1:
+        ach.append(("ERRO", "CO13: IMAGE 01/03 nao proibe rosto e tronco do "
+                            "homem — sao dois blocos de 8s depois sem ele, e "
+                            "rosto em quadro vira pessoa para manter identica"))
+    if "only person" in i1 or "only person" in blocos["TAKE 01/03"]:
+        ach.append(("ERRO", "CO13: a cena 1 declara pessoa UNICA e tem DUAS — "
+                            "ordem contraditoria: o Veo resolve apagando o "
+                            "homem, que e' o dono do problema"))
+    for nome in ("IMAGE 02/03", "IMAGE 03/03", "TAKE 02/03", "TAKE 03/03"):
+        if "only person" not in blocos[nome]:
+            ach.append(("ERRO", "CO13: %s sem a trava de pessoa unica — o homem "
+                                "so' existe na cena 1" % nome))
+    if spec["homem"]["marca"] not in i1:
+        ach.append(("ERRO", "CO13: o homem entrou sem ancora distintiva na mao "
+                            "— ele nao tem rosto, entao a mao e a calca sao a "
+                            "unica identidade que ele tem"))
 
     # --- CO5: a gelatina em cubos so' na cena 3 -----------------------------
     for nome in ("IMAGE 01/03", "IMAGE 02/03"):
@@ -1307,7 +1454,7 @@ EIXOS_QUE_MEXEM_NA_COPY = {
 }
 
 TETO_LEDGER = {"familia_mundo": len(FAMILIAS_MUNDO), "prop": len(PROPS),
-               "substancia": len(SUBSTANCIAS)}
+               "substancia": len(SUBSTANCIAS), "homem": len(HOMENS)}
 
 MIN_OPCOES = 7          # piso por eixo visual
 
@@ -1340,6 +1487,7 @@ def autoteste(n=600):
         vistos["prop"].add(spec["prop"]["id"])
         vistos["substancia"].add(spec["substancia"]["id"])
         vistos["ref"].add(spec["ref"]["idade"])
+        vistos["homem"].add(spec["homem"]["id"])
         fam[spec["mundo"]["familia"]] += 1
         for i, f in enumerate(spec["falas"], 1):
             larguras[i].append(_palavras(f))
@@ -1348,12 +1496,13 @@ def autoteste(n=600):
 
     # cobertura
     for eixo, pool in (("mundo", MUNDOS), ("prop", PROPS),
-                       ("substancia", SUBSTANCIAS)):
+                       ("substancia", SUBSTANCIAS), ("homem", HOMENS)):
         if len(vistos[eixo]) != len(pool):
             falhas.append("%s: %d de %d nunca sorteados"
                           % (eixo, len(pool) - len(vistos[eixo]), len(pool)))
     for nome, pool in (("MUNDOS", MUNDOS), ("NARRADORAS", NARRADORAS),
                        ("PROPS", PROPS), ("SUBSTANCIAS", SUBSTANCIAS),
+                      ("HOMENS", HOMENS),
                        ("RECEITAS", RECEITAS), ("ROTINAS", ROTINAS),
                        ("DESMENTIDOS", DESMENTIDOS),
                        ("ISCAS_PROMESSA", ISCAS_PROMESSA)):
@@ -1392,6 +1541,19 @@ def autoteste(n=600):
         "the same %d-year-old" % s["ref"]["idade"], "a")
     if not any("CO7" in msg for _, msg in lint(s, b5)):
         ctrl.append("[CO7] nao acusa a cena 2 sem a ancora de continuidade")
+    # [CO13] o homem apagado da cena 1 — o defeito que o operador achou
+    b7 = dict(b)
+    b7["IMAGE 01/03"] = b7["IMAGE 01/03"].replace("cropped at the waist", "seated")
+    if not any("CO13" in msg for _, msg in lint(s, b7)):
+        ctrl.append("[CO13] nao acusa a cena 1 sem o corte na cintura")
+    b8 = dict(b)
+    b8["IMAGE 01/03"] += " She is the only person in the frame."
+    if not any("CO13" in msg for _, msg in lint(s, b8)):
+        ctrl.append("[CO13] nao acusa a cena 1 declarando pessoa unica com duas")
+    b9 = dict(b)
+    b9["IMAGE 02/03"] = b9["IMAGE 02/03"].replace("only person", "main person")
+    if not any("CO13" in msg for _, msg in lint(s, b9)):
+        ctrl.append("[CO13] nao acusa a cena 2 sem a trava de pessoa unica")
     # [CO5] gelatina adiantada
     b6 = dict(b)
     b6["IMAGE 01/03"] += " " + CO_GELATINA
@@ -1476,6 +1638,7 @@ def main():
             u = led.setdefault(a.pagina, {})
             for eixo, val in (("familia_mundo", spec["mundo"]["familia"]),
                               ("prop", spec["prop"]["id"]),
+                              ("homem", spec["homem"]["id"]),
                               ("substancia", spec["substancia"]["id"])):
                 u.setdefault(eixo, [])
                 if val not in u[eixo]:

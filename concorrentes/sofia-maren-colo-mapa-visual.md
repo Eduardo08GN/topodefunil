@@ -48,30 +48,44 @@ male health protocol with 50 plus recipes and methods. #syntheticperformer #ad"*
 | o par promessa → desmentido | o prop no colo |
 | a forma da receita (pó + líquido, de manhã, em jejum) | os ingredientes |
 | keyword + isca + follow-gate na cena 3 | a escalada que abre o CTA |
-| ela sozinha em quadro nas 3 cenas | o cenário e a etnia |
+| **dois na cena 1** (o colo dele + ela), ela sozinha nas cenas 2 e 3 | o cenário e a etnia |
 
 ---
 
 ## Leitura ótica — os três quadros
 
-### Cena 1 · t=00:00–00:09 — sentada, a isca no colo
+### Cena 1 · t=00:00–00:09 — o colo dele, a mão dela
 
-**É o agente inteiro.** Conferido no crop ampliado que o operador mandou:
+**É o agente inteiro, e são DOIS personagens.**
 
-- **Câmera** frontal, altura do peito, enquadra do meio da coxa para cima.
-- **Pernas** joelhos abertos, coxas em V ocupando o terço inferior do quadro.
-- **Prop** banana descascada até a metade, casca dobrada em tiras na base,
-  **em pé dentro do punho esquerdo fechado**, acima do colo, centrada entre os
-  joelhos, antebraço apoiado na coxa. ⚠️ **Não** apoiada no assento — erro que
-  cometi na primeira versão do motor e que o operador corrigiu no crop.
-- **Frasco** mão direita, altura da cintura, um palmo acima do topo do prop e
-  ligeiramente a frame-left dele, bocal para baixo a ~45°.
-- **Jorro** linha única e contínua atravessando o vão entre o frasco e o topo do
-  prop. É o vão que faz o jorro existir na tela.
-- **Rosto** acima e atrás da mão levantada, olhando na lente, falando.
+> ⛔ **Erro de leitura que custou uma reescrita inteira do motor (2026-08-03).**
+> Na primeira passada eu li as pernas de calça cáqui como sendo *dela* e escrevi
+> a geometria com a narradora segurando o prop entre as próprias pernas. O
+> operador pôs o render ao lado da fonte: *"Cadê a perna do homem? Quem segura o
+> prop é o segundo personagem, com a cintura pra cima cortado no frame."*
+> **Antes de travar geometria com duas partes de corpo, conte quantas PESSOAS
+> há no quadro.**
+
+- **Câmera** frontal, na altura do colo de quem está sentado.
+- **O homem** ocupa a metade de baixo do quadro, perto da câmera: sentado de
+  frente, joelhos abertos, calça cáqui comprida, **cortado na cintura — sem
+  tronco e sem rosto em quadro**. Só pernas e mãos.
+- **O prop** banana descascada até a metade, casca dobrada em tiras na base,
+  **em pé no punho esquerdo DELE**, apoiado na coxa dele, centrado entre os
+  joelhos dele.
+- **A mulher** atrás do colo dele, sentada, cabeça e ombros **acima dos joelhos
+  dele**, olhando na lente e falando. Top verde canelado cropped, óculos
+  redondos finos.
+- **O frasco** mão direita DELA, estendida sobre o colo dele, um palmo acima do
+  topo do prop e ligeiramente a frame-left, bocal para baixo a ~45°.
+- **O jorro** linha única e contínua atravessando o vão. É o vão que faz o jorro
+  existir na tela.
 - **Fundo** estante de livros, três certificados emoldurados, bandeirinha dos
   EUA, janela com planta a frame-right.
-- **Traje** top verde canelado cropped, calça cáqui, óculos redondos finos.
+
+⭐ **Por que o homem existe:** sem ele o hook é uma mulher despejando óleo numa
+fruta. Com ele, é **o colo de um homem sendo tratado na frente da câmera** — o
+dono do problema está em quadro, e é a mão dele que segura a própria metáfora.
 
 ### Cena 2 · t=00:10–00:22 — **de pé na bancada**, a receita
 

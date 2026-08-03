@@ -1,8 +1,8 @@
 # AGENTE ED — COLO V1
 
-> **A isca no colo.** Ela manda despejar uma substância absurda sobre um prop
-> fálico apoiado no próprio colo, desmente a promessa na mesma respiração e
-> entrega a receita de verdade.
+> **A isca no colo.** Ela despeja uma substância absurda sobre um prop fálico
+> que **um homem sem rosto segura no próprio colo**, desmente a promessa na
+> mesma respiração e entrega a receita de verdade.
 
 **Fonte:** SOFIA MAREN, reel `facebook.com/reel/1580259273673843` (40s, 3,2K
 views). Leitura ótica completa e copy verbatim em
@@ -21,7 +21,7 @@ operador, 2026-08-03.
 
 | cena | onde | o quê |
 |---|---|---|
-| 1 | **sentada** | a isca no colo + o desmentido (o hook) |
+| 1 | **sentada, atrás do colo dele** | a isca no colo **dele** + o desmentido (o hook) — **dois personagens** |
 | 2 | **de pé, na bancada** | a receita — o `gelatin trick` |
 | 3 | **de pé, na bancada** | o CTA, com a gelatina na mão |
 
@@ -34,13 +34,22 @@ troca de pessoa. A defesa é a **CO7**, obrigatória.
 
 ## As regras
 
-**CO1 — a geometria do colo.** É o agente inteiro. Câmera frontal na altura do
-peito, enquadrando do meio da coxa para cima; joelhos abertos, coxas em V no
-terço inferior; o prop **em pé dentro do punho esquerdo**, acima do colo,
-centrado entre os joelhos, antebraço na coxa; o frasco na direita, altura da
-cintura, um palmo acima do topo do prop e a frame-left dele, bocal a 45°; o
-jorro em linha única atravessando o vão. ⛔ O prop **não** fica em pé sozinho
-num assento — prop sem mão entra na mesa, e o Veo resolve a física inventando.
+**CO1 — a geometria do colo, e são DOIS personagens.** É o agente inteiro.
+Câmera frontal na altura do colo de quem está sentado. Na metade de baixo do
+quadro, perto da câmera, **o colo de um homem cortado na cintura** — sem tronco
+e sem rosto, só pernas e mãos —, joelhos abertos, e o prop **em pé no punho
+esquerdo dele**, apoiado na coxa dele. Atrás do colo dele, ela sentada, cabeça e
+ombros acima dos joelhos dele, falando na lente; a mão direita dela estendida
+sobre o colo dele, um palmo acima do topo do prop e a frame-left, bocal a 45°; o
+jorro em linha única atravessando o vão.
+
+> ⛔ **Erro que custou a primeira versão do motor.** Eu li as pernas do frame
+> como sendo dela e gerei a narradora com o prop entre as próprias pernas. O
+> operador achou no render: *"Cadê a perna do homem? Quem segura o prop é o
+> segundo personagem, com a cintura pra cima cortado no frame."*
+> **Antes de travar geometria com duas partes de corpo, conte quantas PESSOAS há
+> no quadro.** Descrição detalhada de um quadro errado é pior que descrição
+> vaga: ela trava o erro.
 
 **CO2 — nada cresce.** O bit visual é o **despejo**. Crescimento é do
 RESSURREICAO; duas mecânicas de choque no mesmo vídeo somam a uma.
@@ -70,6 +79,14 @@ ser congruente com o que a VSL vende, que é regra inviolável.
 **CO12 — cota do órgão 2 de 3**, garantida no sorteio e não só cobrada no
 linter: motor que produz vídeo reprovado é o defeito, o linter é só o aviso.
 
+**CO13 — o elenco muda entre as cenas, e o linter cobra dos dois lados.** A cena
+1 tem **dois** (o colo dele + ela) e declara o corte na cintura e a proibição de
+rosto e tronco; as cenas 2 e 3 têm ela sozinha e declaram pessoa única. ⛔ Na
+cena 1 é `only she speaks`, **nunca** `she is the only person`: afirmar pessoa
+única com dois corpos em quadro é ordem contraditória, e o Veo resolve apagando
+o homem — justamente o personagem que dá ao hook o dono do problema. E como ele
+não tem rosto, **a âncora distintiva mora na mão e na calça**.
+
 ⛔ **P12 vale integralmente aqui** — zero marca ou rótulo legível. A exceção da
 marca real é nominal do EXTERIOR e só dele.
 
@@ -81,6 +98,7 @@ marca real é nominal do EXTERIOR e só dele.
 |---|---|---|
 | MUNDOS | 12 em 9 famílias | **a etnia sai de dentro do mundo** |
 | NARRADORAS | 12 | zero etnia nas entradas; a montagem injeta |
+| HOMENS | 10 | o colo da cena 1 — âncora na mão e na calça, sem rosto |
 | PROPS | 10 | todos cabem em `on your ___` |
 | SUBSTANCIAS | 12 | todas líquidas, todas despejadas |
 | RECEITAS · ROTINAS · DESMENTIDOS | 10 · 14 · 7 | |
@@ -114,8 +132,8 @@ gerou **a mesma imagem** — mulher no colo, prop ereto — sem bloqueio nenhum.
 
 ⚠️ **Este agente é o mais exposto a esse caso**, porque a palavra `lap` é o
 centro da geometria dele. Se a cena 1 for recusada, a primeira alavanca é
-trocar o token: `above her lap` → `above her knees`, `between her knees` →
-`between her thighs`, `resting along her thigh` → `resting on her leg`.
+trocar o token: `a man's lap` → `a man's knees`, `resting on his thigh` →
+`resting on his knee`, `centred between his knees` → `held in front of him`.
 
 **As 4 alavancas, nesta ordem:**
 1. **Trocar o token exato** que o classificador reconhece.

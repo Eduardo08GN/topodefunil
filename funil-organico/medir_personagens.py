@@ -173,6 +173,20 @@ EXCECOES = {
         "12/12, ancora 12/12) sao os unicos que o espectador ve'.",
     ("exterior_short.py", "HOMENS_SEM_ROSTO", "pelo_facial"): "idem EX5",
     ("exterior_short.py", "HOMENS_SEM_ROSTO", "oculos"): "idem EX5",
+    # ⛔ COLO — o corte e' MAIS ALTO que o do EXTERIOR: la' e' no peito, aqui e'
+    # na CINTURA. Nao ha' cabeca, nao ha' tronco, nao ha' rosto — so' pernas e
+    # maos. Cobrar cabelo, barba, oculos ou pele DE ROSTO de um personagem que
+    # nao tem cabeca em quadro e' o medidor pedindo para desenhar o que a
+    # decisao de projeto tirou do enquadramento.
+    # ⚠️ E ele NAO fica sem identidade: como nao ha' rosto, a ancora migrou para
+    # a MAO e a CALCA (aliança, cicatriz no dorso, relogio, unha marcada,
+    # tatuagem no pulso), que sao a unica pele dele em quadro. O eixo `porte`
+    # continua sendo cobrado e continua cheio.
+    ("colo_short.py", "HOMENS", "cabelo"):
+        "CO1/CO13 — o homem entra CORTADO NA CINTURA, sem cabeca e sem tronco "
+        "em quadro. A identidade dele mora na mao e na calca, nao no rosto.",
+    ("colo_short.py", "HOMENS", "pelo_facial"): "idem CO1/CO13 — sem rosto",
+    ("colo_short.py", "HOMENS", "oculos"): "idem CO1/CO13 — sem rosto",
     ("ressurreicao_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF (2026-08-03) — neste agente a narradora e' sempre linda, "
         "jovem e de sex appeal alto, por ordem do operador. Oculos de leitura "
