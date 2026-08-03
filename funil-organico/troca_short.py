@@ -127,7 +127,7 @@ TETO_TOTAL = 96
 ETNIA = {"joe": "white American", "ray": "white American", "matt": "white American",
          "marcus": "Black American", "chuck": "Black American"}
 
-NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 
 
 # ---------------------------------------------------------------------------

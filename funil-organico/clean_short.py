@@ -243,7 +243,7 @@ DESPEJO = {
 # do CL22 nao precisa mais descartar par nenhum. Ele fica como rede de
 # seguranca, nao como mecanismo.
 # ---------------------------------------------------------------------------
-NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 TETO_FALA = {1: 22, 2: 24, 3: 22}
 
 HOOKS = [

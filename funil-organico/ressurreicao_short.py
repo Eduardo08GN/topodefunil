@@ -193,7 +193,11 @@ TETO_TOTAL = 96
 ETNIA = {"joe": "white American", "ray": "white American", "matt": "white American",
          "marcus": "Black American", "chuck": "Black American"}
 
-NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
+# ⭐ OS DIRETOS — os tres que NOMEIAM o orgao. `tool`, `soldier` e
+# `old boy` sao apelido afetivo e suavizam; entram em minoria.
+NUCLEO_DIRETO = ["Johnson", "pecker", "wiener"]
+
 
 # ⛔ PISO DE IDADE 28 — herdado do organicwave_short (`IDADE_MINIMA_MULHER`) com
 # o motivo escrito: "ja' pagamos para descobrir que idade em cena com conteudo de
@@ -2443,7 +2447,18 @@ def sortear(pagina, rng, ledger, credibilidade=None, degrau=None, analogia=None)
     relacao = _relacao(rng, nar["idade"], hom["idade"])
     # tres substantivos DISTINTOS de uma vez: um por cena. Rotacao e' do VIDEO,
     # nao da fala.
-    orgaos = rng.sample(NUCLEO, 3)
+    # ⛔⛔ PELO MENOS DUAS DAS TRES CENAS USAM PALAVRA DIRETA (2026-08-03).
+    # Ordem do operador, lendo o app: "use palavras alusivas mais diretas ao
+    # penis, tal como wiener, peck-er, john-son, do que manhood".
+    # `manhood` fala de MASCULINIDADE, nao do orgao — e' abstracao, o mesmo
+    # vicio da copy num nivel abaixo. Saiu do pool dos 9 motores.
+    # `soldier`, `old boy` e `tool` sao apelido afetivo: suavizam. Ficam, porque
+    # tres motores os usam como fallback e porque variedade tambem conta — mas
+    # entram em MINORIA, nunca em duas cenas do mesmo video.
+    diretos = rng.sample(NUCLEO_DIRETO, 2)
+    resto = [n for n in NUCLEO if n not in diretos]
+    orgaos = diretos + [rng.choice(resto)]
+    rng.shuffle(orgaos)
     falas = _montar_falas(rng, sub, rec, orgaos, relacao, cred, deg)
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], rec, sub)
 

@@ -602,7 +602,7 @@ MESAS = [
 # POOLS DE COPY
 # ---------------------------------------------------------------------------
 
-NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 
 # NE7 — o hook e' "from this to this", com o gesto sincronizado na batida das
 # palavras. A fonte abre nomeando o orgao no primeiro segundo.

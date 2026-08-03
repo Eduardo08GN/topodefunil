@@ -558,7 +558,7 @@ MULHERES = [
 # POOLS DE COPY — o molde e' sorteado, a frase cha' vence sempre (arsenal)
 # ---------------------------------------------------------------------------
 
-NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 
 HOOKS = [
     "Everyone at {evento} had already heard the gossip that his {o} doesn't work anymore. His hangs just like this.",

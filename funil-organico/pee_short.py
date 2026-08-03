@@ -476,7 +476,7 @@ PROPS = [
 # POOLS DE COPY
 # ---------------------------------------------------------------------------
 
-NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 
 # PE6 ⭐ — a regra mais importante do agente. O hook LIGA o mijo ao orgao NA
 # MESMA FALA. Hook so' de mijo REPROVA: o homem com ED nao se reconhece, acha

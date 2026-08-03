@@ -429,7 +429,7 @@ PROPS_PAYOFF = [
 # POOLS DE COPY
 # ---------------------------------------------------------------------------
 
-NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 
 # O hook herda a ECONOMIA da fonte: orgao nomeado + mecanismo + comando, em <=8s
 # ⛔ 2026-08-03 — FRASE ORFA. O operador leu um take e reprovou: "it isn't age"
