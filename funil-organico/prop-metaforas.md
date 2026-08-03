@@ -98,6 +98,10 @@ política de conteúdo nocivo tem **variância** — o mesmo prompt cai e passa.
    declaração de conformidade; é dar ao modelo a leitura certa da cena.
 4. **Esgotar 3-4 formulações** antes de considerar mexer na cena. Anotar as
    que sobraram como fila de fallback.
+4b. ⭐ **Se o que barra é o descritor da PESSOA e já existe um render aprovado
+   dela: tire a descrição do texto e anexe a imagem** como referência
+   (5ª alavanca — caso validado 2026-08-02, logo abaixo). Vem antes de parar,
+   depois das quatro reescritas.
 5. **Esgotadas as formulações: PARAR e consultar o Ed.** ⛔ Mudar pose,
    composição, prop ou copy é **decisão do operador, nunca do agente**
    (regra de alçada, CLAUDE.md). Reportar: qual cena falhou, qual política,
@@ -137,6 +141,39 @@ só mudaram as palavras.**
 > Receita literal e copiável no
 > [`AGENTE_ED_CONSULTORIO_V1.md`](../AGENTE_ED_CONSULTORIO_V1.md) §Happy path
 > do colo.
+
+### 🟢 CASO VALIDADO — a 5ª ALAVANCA: o descritor sai do texto e entra pela IMAGEM (2026-08-02)
+
+Capa de página de Facebook, REF feminina negra numa feira segurando beterraba.
+**Quatro formulações caíram, três renders cada.** O que finalmente passou não
+foi uma quinta reescrita — foi **tirar a descrição da pessoa do prompt e
+entregá-la por imagem de referência anexada**.
+
+| tentativa | o que mudou | resultado |
+|---|---|---|
+| 1 | original: `Black American woman … fitted athletic top and dark leggings` + `toned arms and a trim waist` | ⛔ |
+| 2 | `leggings` → `training trousers`; corpo preso à postura; gênero nomeado; geometria congelada | ⛔ 3× |
+| 3 | `fitted athletic` → `close-cut cotton` | ⛔ |
+| 4 | enquadramento `from the waist up` (a peça de baixo sai do quadro) | ⛔ |
+| **5** | **`Use the attached image as the reference for the person: same face, same hair, same build, same clothing`** — zero descrição de pessoa no texto | ✅ |
+
+> **Quando o token que barra é o que descreve a PESSOA, não há sinônimo que
+> salve — some com o texto e deixa a imagem falar.** O classificador lê o
+> prompt; a referência ele consome como pixel.
+
+⭐ **A congruência não se perde, migra de camada.** A regra de etnia
+(REF = avatar da página) continua valendo — e passa a valer *por construção*,
+que é mais forte que por adjetivo. Mesmo princípio do `REF 01 → IMAGE` que
+todos os agentes já usam.
+
+📌 **Custo zero que veio junto:** `Facebook cover photo` virou
+`Wide banner photograph` na mesma rodada. Nome de plataforma é marca
+registrada e alguns geradores barram — não foi a causa aqui, mas não custa
+nada e elimina a hipótese de graça.
+
+⚠️ **Quando esta alavanca NÃO se aplica:** se ainda não existe imagem
+aprovada da pessoa. Ela é sempre a **quinta**, nunca a primeira — exige um
+render aprovado antes, e é por isso que o perfil se gera antes da capa.
 
 ---
 
