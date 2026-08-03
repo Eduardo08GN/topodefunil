@@ -30,7 +30,6 @@ import json
 import os
 import random
 import re
-import sys
 
 from nucleo_sonoro import sonorizar
 
@@ -259,7 +258,9 @@ HOOKS = [
 # apareca em QUALQUER linha do ITEM_B. Antes os dois pools compartilhavam as
 # frutas e os beneficios, e o solver do CL22 tinha de descartar 12 dos 100
 # pares; agora os 100 sao validos e a repeticao deixa de ser possivel.
-# ⚠️ O ITEM_B nao mudou uma virgula — o operador aprovou aquelas linhas.
+# ⚠️ O ITEM_B nao mudou uma virgula naquela passagem — o operador aprovou
+# aquelas linhas. Em 2026-08-03 duas delas ganharam `down there` (CL24), e so'
+# isso: nenhuma trocou de ingrediente, de beneficio nem de sujeito.
 # ⛔ Ao acrescentar linha aqui, conferir contra INGREDIENTES_B/BENEFICIOS_B (o
 # teste de disjuncao no fim do arquivo reprova sozinho).
 ITEM_A = [
@@ -267,11 +268,12 @@ ITEM_A = [
     {"txt": "Garlic raises your drive", "itens": ["alho"], "ben": "libido"},
     {"txt": "Walnuts sharpen the feeling", "itens": ["nozes"], "ben": "sensacao"},
     {"txt": "Blueberries steady the pressure", "itens": ["mirtilo"], "ben": "pressao"},
-    {"txt": "Turmeric fights inflammation", "itens": ["curcuma"], "ben": "inflamacao"},
+    # CL24 (2026-08-03) — as duas linhas abaixo citavam mecanismo sem endereco
+    {"txt": "Turmeric fights inflammation down there", "itens": ["curcuma"], "ben": "inflamacao"},
     {"txt": "Oats speed your recovery", "itens": ["aveia"], "ben": "recupera"},
     {"txt": "Avocado feeds the pump", "itens": ["abacate"], "ben": "bomba"},
     {"txt": "Cayenne heats you up", "itens": ["pimenta"], "ben": "calor"},
-    {"txt": "Grapes carry oxygen down", "itens": ["uva"], "ben": "oxigenio"},
+    {"txt": "Grapes carry oxygen down there", "itens": ["uva"], "ben": "oxigenio"},
     {"txt": "Tomatoes protect your prostate", "itens": ["tomate"], "ben": "prostata"},
 ]
 ITEM_B = [
@@ -279,7 +281,8 @@ ITEM_B = [
     {"txt": "Spinach and honey make your milk sweet for her", "itens": ["espinafre", "mel"], "ben": "leite"},
     {"txt": "Kale and baking soda keep you going all night", "itens": ["couve", "bicarbonato"], "ben": "aguenta"},
     {"txt": "Coconut and honey bring your twenties back", "itens": ["coco", "mel"], "ben": "vinte-anos"},
-    {"txt": "Beetroot and baking soda open the blood flow", "itens": ["beterraba", "bicarbonato"], "ben": "fluxo"},
+    # CL24 (2026-08-03) — a unica linha do ITEM_B que citava fluxo sem endereco
+    {"txt": "Beetroot and baking soda open the blood flow down there", "itens": ["beterraba", "bicarbonato"], "ben": "fluxo"},
     {"txt": "Watermelon and honey sweeten your milk for the girls", "itens": ["melancia", "mel"], "ben": "leite"},
     {"txt": "Ginger and cinnamon wake the whole system up", "itens": ["gengibre", "canela"], "ben": "acorda"},
     {"txt": "Celery and baking soda thicken your milk", "itens": ["aipo", "bicarbonato"], "ben": "engrossa"},
@@ -287,8 +290,47 @@ ITEM_B = [
     # ⛔ era `Passion fruit and cinnamon harden you fast` — a UNICA linha dos
     # dois pools que prometia dureza. A dureza e' exclusiva do gelatin trick
     # (CL23, ordem do operador 2026-08-02).
-    {"txt": "Passion fruit and cinnamon widen every vessel", "itens": ["maracuja", "canela"], "ben": "vasos"},
+    # CL24 (2026-08-03) — `widen every vessel` nao dizia vaso de onde
+    {"txt": "Passion fruit and cinnamon widen every vessel down there", "itens": ["maracuja", "canela"], "ben": "vasos"},
 ]
+
+# ⭐⭐ CL24 — MECANISMO SEM ENDERECO E' FISIOLOGIA SOLTA (queixa do operador,
+# 2026-08-03). Ele leu um take renderizado — "It isn't age. The blood flow got
+# choked off. Parsley and warm water open it." — e devolveu: "Deveria ser: it
+# isn't age THAT'S CAUSING YOUR JOHN-SON NOT WORKING ANYMORE. Voce tem que
+# contextualizar mais as coisas. Ta' deixando o viewer sem entender o contexto e
+# do que se trata."
+# Aqui o vicio saiu na outra forma, a da CENA: 49 das 200 cenas 2 falavam de
+# inflamacao, oxigenio, fluxo e vasos e NUNCA diziam onde. Inflamacao ONDE? Abre
+# o fluxo PRA ONDE? Quatro linhas dos dois pools, medidas com
+# `medir_contexto_copy.py --motor clean_short`.
+# ⭐ A REGRA: a linha que cita mecanismo NOMEIA o que esta' quebrado, na mesma
+# frase — o orgao do NUCLEO ou `down there`, o eufemismo da casa
+# (signature-verbal.md; o flagrante_lucas ja' diz `the blood flow down there`).
+# ⚠️ Nao e' questao de PESSOA, e' de REFERENTE: quem nao cita mecanismo nao
+# mudou uma virgula, e nenhuma frase trocou de sujeito.
+# ⛔ O endereco custa 2 palavras e o teto da cena 2 nao subiu: o item A que paga
+# o endereco pode chegar a 5 palavras (era 4 fixo), e so' ele — a virada
+# continua intocavel (CL15) e o `_viradas_que_cabem` continua descartando a que
+# nao couber.
+_MECANISMO = re.compile(r"\b(age|genetics|hormones?|testosterone|blood ?flow|"
+                        r"circulation|vasodilator\w*|nitric oxide|collagen|"
+                        r"oxygen|vessels?|arter\w+|inflammation|choked|blocked|"
+                        r"shut down|cut off)\b", re.I)
+_ENDERECO = re.compile(r"\b(?:%s)\b|\bdown there\b|\bin bed\b"
+                       r"|\b(?:quits?|fails?|won'?t work|goes soft)\b"
+                       % "|".join(NUCLEO), re.I)
+
+
+def _enderecos(txt):
+    """Quais enderecos esta frase nomeia — o solver usa para nao repetir."""
+    return {m.group(0).lower() for m in _ENDERECO.finditer(txt)}
+
+
+for _x in ITEM_A + ITEM_B:
+    assert not (_MECANISMO.search(_x["txt"]) and not _ENDERECO.search(_x["txt"])), (
+        "CL24: '%s' cita mecanismo e nao diz onde — nomeie o orgao ou "
+        "`down there` na mesma frase" % _x["txt"])
 
 # CL15 — a VIRADA e' INTOCAVEL: encurta-se o item A antes dela. Abre com "But"
 # porque o contraste explicito e' o que faz a curiosidade.
@@ -397,8 +439,11 @@ for _a in ITEM_A:
         % (_a["txt"], _a["ben"]))
     assert "milk" not in _a["txt"].lower(), (
         "CL22: item A '%s' cita leite — leite e' assunto do item B" % _a["txt"])
-    assert len(_a["txt"].split()) <= 4, (
-        "CL15: item A '%s' passa de 4 palavras" % _a["txt"])
+    # CL15 + CL24 — 4 palavras e' o teto; quem paga o endereco pode chegar a 5,
+    # porque `down there` custa 2 e a virada nao se encurta.
+    _teto_a = 5 if _ENDERECO.search(_a["txt"]) else 4
+    assert len(_a["txt"].split()) <= _teto_a, (
+        "CL15: item A '%s' passa de %d palavras" % (_a["txt"], _teto_a))
 for _p in (ITEM_A, ITEM_B):
     for _x in _p:
         for _i in _x["itens"]:
@@ -458,8 +503,15 @@ def _fresco(pool, usados, rng, chave):
 def _colide(a, b):
     """CL22 — o par item A / item B repete fruta, ingrediente do truque ou
     beneficio? Colidiu, sorteia-se outro item B: rejeita-se o PAR, nunca se
-    reescreve a frase para disfarcar."""
-    return bool(set(a["itens"]) & set(b["itens"])) or a["ben"] == b["ben"]
+    reescreve a frase para disfarcar.
+
+    CL24 (2026-08-03) — e nao repete o ENDERECO. `down there` nas duas frases
+    seguidas e' gagueira, nao enfase, e o CL22 ja' trata item repetido como um
+    item a menos. Sao 4 pares dos 100; todo item A continua com 8 item B livres.
+    """
+    if set(a["itens"]) & set(b["itens"]) or a["ben"] == b["ben"]:
+        return True
+    return bool(_enderecos(a["txt"]) & _enderecos(b["txt"]))
 
 
 def _viradas_que_cabem(a, b, orgao):

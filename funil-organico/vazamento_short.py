@@ -120,8 +120,16 @@ FUNDIDAS = [
     "nothing for your {o} and the blood flow stays shut. Thirty-{n} years old, "
     "and she brags about mine.",
 
-    "Without the gelatin trick, baking soda does nothing for your {o}. That's "
-    "blood flow, choked off decades back. She's {n_ext}, half my age, and she "
+    # ⛔ CONSERTO 2026-08-03 — FRASE ORFA. `That's blood flow, choked off
+    # decades back.` nao dizia choked off ONDE: o orgao estava na frase
+    # ANTERIOR, e o espectador ouve a causa solta. Queixa literal do operador
+    # sobre o mesmo vicio em outro agente: "ta' deixando o viewer sem entender
+    # o contexto e do que se trata".
+    # ⭐ A regra: a frase que nomeia a CAUSA carrega, NA MESMA FRASE, o que ela
+    # quebra. ⚠️ O gasto foi pago dentro da propria entrada — TETO_FALA da cena
+    # 2 (36) intacto.
+    "Without the gelatin trick, baking soda does nothing. That's the blood flow "
+    "to your {o}, choked off decades back. She's {n_ext}, half my age, and she "
     "found out what mine does.",
 
     "Stop before you tell the guys. Without the gelatin trick, that baking "

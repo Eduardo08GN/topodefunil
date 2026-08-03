@@ -590,6 +590,17 @@ NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"
 # A fonte nunca afirma, ela CONDICIONA: "If you want your soldier to go from
 # this to this in just one month". Tres dos quatro hooks tinham se afastado
 # dessa forma sem que eu percebesse.
+#
+# ⭐ 2026-08-03 — FRASE ORFA (queixa do operador, lendo um take renderizado:
+# "Voce tem que contextualizar mais as coisas. Ta' deixando o viewer sem
+# entender o contexto e do que se trata"). REGRA NOVA: toda frase que nomeia
+# uma CAUSA carrega, NA MESMA FRASE, o que ela quebra — nao vale o orgao
+# aparecer "em algum lugar da cena", que foi exatamente o que ele reprovou.
+#   errado: "Your doctor calls it age."   -> idade estragando O QUE?
+#   certo:  "Your doctor blames age when a man's {o} quits."
+# Alterado aqui so' o [5]. Os outros sete nao tem o vicio: ou nao nomeiam
+# causa nenhuma, ou apontam os dois modelos com deitico + gesto sincronizado
+# (NE7), que e' o formato do angulo.
 HOOKS = [
     "If you want your {o} to go from this to this in one month, watch close.",
     "If your {o} looks more like this one than that one, watch close, brother.",
@@ -599,25 +610,38 @@ HOOKS = [
     # do video — repetia dentro do lote. Pool de 4 para 8, e no maximo 1 entrada
     # usa o vocativo "brother".
     "If your wife could see your {o} tonight, would she see this one or that one?",
-    "Your doctor calls it age. If your {o} is this one, not that one, he's wrong.",
+    "Your doctor blames age when a man's {o} quits. He's wrong. Is yours this one or that one?",
     "Waiting turns that one into this one. How close is your {o} tonight?",
     "This one costs a man his marriage. That one keeps it. Which is your {o}?",
 ]
 
 # NE — cena 2: o MUP de Georgi (alivio de culpa + vilao), com o modelo PODRE
 # erguido. ⚠️ "blood flow" literal e' obrigatorio (o linter cobra).
+#
+# ⭐ 2026-08-03 — FRASE ORFA. Mesma queixa do operador que reescreveu o HOOKS
+# [5] acima: a fala abria com uma causa solta ("It's not age and it's not
+# you.", "Doctors call this getting older. It isn't.", "You did not eat your
+# way into that.", "Sitting still all day does it.") e o espectador passava
+# 4-5 segundos ouvindo fisiologia sem saber do que se tratava — o orgao so'
+# chegava na frase seguinte. REGRA NOVA: a frase que nomeia a causa carrega o
+# alvo NA MESMA FRASE.
+# COMO SE CONSERTOU, sem estourar o TETO_FALA[2]=26: em vez de repetir o
+# substantivo em duas frases (com "old boy" isso custa +2 palavras e estoura),
+# a causa e o mecanismo viraram UMA frase e o orgao entrou nas primeiras
+# palavras dela. Alterados: [0], [2], [3], [4], [8].
+# Intocados: [1], [5], [6], [7] — nessas a frase causal ja' nomeia o orgao.
 CAUSAS = [
-    "This is not what age does to a man, brother. This is what happens when the blood flow to your {o} gets choked off.",
+    "What stopped your {o} wasn't age, brother — the blood flow to it got choked off, year after year.",
     "Nobody is born with this. Your {o} got here because the blood flow to it got shut down, year after year.",
-    "It's not age and it's not you. Something squeezed the blood flow to your {o} shut, and nobody told you.",
-    "Doctors call this getting older. It isn't. The blood flow to your {o} got strangled, and that is fixable.",
+    "It's not age that shut your {o} down, and it's not you — something squeezed its blood flow off, and nobody told you.",
+    "Doctors call it age when your {o} goes quiet. It isn't — the blood flow to your {o} got strangled, and that is fixable.",
     # + 2026-08-01: o operador mediu vicio no lote - as mesmas quatro causas
     # voltando, e "brother" em cima do hook. As novas entram sem vocativo.
-    "You did not eat your way into that. The blood flow to your {o} got choked off, quiet, year after year.",
+    "Nothing you eat did that to your {o} — the blood flow to it got choked off, quiet, year after year.",
     "Your heart still pumps fine. It's the small blood flow down to your {o} that got choked off first.",
     "That didn't happen overnight and it isn't your fault. Blood flow to your {o} gets choked off a little each year.",
     "Ask any man out here past sixty. The blood flow to his {o} got choked off and nobody ever told him why.",
-    "Sitting still all day does it. The blood flow to your {o} gets choked off and stays choked.",
+    "Sitting still all day is what shuts your {o} down — the blood flow to it gets choked off and stays choked.",
 ]
 
 RECEITAS_FALA = [

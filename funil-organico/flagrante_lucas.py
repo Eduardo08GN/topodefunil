@@ -551,11 +551,43 @@ QUEM_CONTOU = [
     "his barber", "a man from his church", "his old boss", "his cousin",
 ]
 
+# ⛔ 2026-08-03 — FRASE ORFA. O operador leu um take renderizado e reprovou:
+# "It isn't age. The blood flow got choked off." -> "deveria ser: it isn't age
+# THAT'S CAUSING YOUR JOHN-SON NOT WORKING ANYMORE. Voce tem que contextualizar
+# mais as coisas. Ta' deixando o viewer sem entender o contexto e do que se
+# trata." O espectador ouvia fisiologia solta e so' descobria o assunto na
+# ULTIMA frase — e o operador reprovou exatamente essa cena, com o orgao la'.
+# ⭐ REGRA NOVA: toda frase que nomeia uma CAUSA carrega, NA MESMA FRASE, o que
+#    ela quebra. Nao vale "aparece em algum lugar da cena".
+#      certo:  "It isn't age that's got your {o} quitting."
+#      errado: "It isn't age." / "The blood flow got choked off."
+# Tres entradas deste pool tinham a causa numa frase e o alvo em outra (as de
+# indice 2, 3 e 11 — as unicas do motor inteiro, medidas por varredura do pool,
+# nao por sorteio). Consertadas abaixo. As demais ja' nasceram com causa e alvo
+# na mesma frase e NAO foram tocadas: string validada e' constante.
+# ⚠️ O alvo ENGORDA a frase e o teto da cena 2 e' 30 palavras. Onde nao coube,
+#    encurtou-se OUTRA coisa da mesma entrada (o vocativo "brother", o dedo
+#    "Right here") — nunca se subiu o teto nem se devolveu a frase vaga.
+#    Pior caso medido depois: 29, 26 e 29 palavras.
+# ⚠️ Pessoa mantida como a frase ja' usava (`your {o}`): estas falam com o
+#    espectador. Terceira pessoa nao e' o defeito — o que se cobra e' REFERENTE.
+# ⛔⛔ REVISAO 2026-08-03 — a [3] foi consertada DUAS vezes. A primeira tentativa
+#    trocou "It's not your age, brother, and it's not you. The blood stopped
+#    reaching your {o}." por "...and it's not you, the blood stopped reaching
+#    your {o}.": apagou o vocativo e trocou o PONTO por VIRGULA. O medidor de
+#    frase orfa zerou — ele corta a fala em [.!?] — mas o espectador ouvia
+#    exatamente as mesmas palavras (95% identicas), com o alvo so' na palavra 14
+#    de 15 da frase de causa. Medido: reescrever "." por "," nas 3 orfas do HEAD
+#    zera o medidor sem acrescentar UMA palavra. O medidor mede pontuacao.
+# ⭐ O aceite nao e' "a lente zerou": e' o ALVO PRESO A CAUSA pela oracao
+#    relativa, como o operador escreveu ("it isn't age THAT'S CAUSING YOUR
+#    JOHN-SON..."). Na [2] o alvo cai na palavra 9/9, na [11] na 8/9 e agora na
+#    [3] na 8/11 — e nao na 14/15 atras de uma virgula.
 DESCOBERTAS = [
     "That's when {quem} pulled him aside and gave him the gelatin trick. It's not age, brother, the blood flow to your {o} got choked off.",
     "That's when {quem} handed him the gelatin trick. It's not age, brother, your {o} got its blood flow choked off.",
-    "That's when {quem} gave him the gelatin trick. It's not age. Right here, the blood flow to your {o} got choked off.",
-    "That's when {quem} leaned over and whispered the gelatin trick. It's not your age, brother, and it's not you. The blood stopped reaching your {o}.",
+    "That's when {quem} gave him the gelatin trick. It isn't age that's got your {o} quitting. The blood flow down there got choked off.",
+    "That's when {quem} leaned over and whispered the gelatin trick. It's not your age that's starving your {o}, it's the blood.",
     "That's when {quem} finally told him about the gelatin trick. Your wife isn't bored, brother, and you're not done. The blood stopped filling your {o}.",
     "I laughed at the gelatin trick the first time. {quem} wouldn't let him laugh. Give it two days, brother, and the blood finds your {o} again.",
     "{quem} passed him the gelatin trick in a parking lot. Every man I know over sixty is on it now. The blood has to reach your {o}.",
@@ -565,7 +597,7 @@ DESCOBERTAS = [
     "No doctor told him about the gelatin trick. It came from {quem}. The blood flow to your {o} got choked off.",
     "Two days later {quem} sent him the gelatin trick. The blood flow to your {o} got choked off, and it is fixable.",
     "It was {quem} who handed him the gelatin trick. The blood stopped reaching your {o}, and nobody tells you that.",
-    "Same week, {quem} showed him the gelatin trick. It was never age. The blood flow to your {o} got choked off.",
+    "Same week, {quem} showed him the gelatin trick. It was never age that stopped your {o}. Down there, the blood flow got choked off.",
 ]
 
 RITUAIS = [

@@ -1044,6 +1044,32 @@ DESMENTIDOS = [
 # que nomeava a narradora como a vizinha ou a mulher que faz as compras — e a
 # relacao nomeada e' a alavanca 2 do protocolo de recusa: contradize-la na fala
 # a anula.
+#
+# ⛔⛔ FRASE ORFA — ORDEM DO ED, 2026-08-03, lendo um take renderizado
+# -------------------------------------------------------------------
+# A queixa, palavras dele: "Voce tem que contextualizar mais as coisas. Ta'
+# deixando o viewer sem entender o contexto e do que se trata. Arrume isso em
+# todos os agentes que estao com esse vicio." O take que ele leu dizia
+# "It isn't age. The blood flow got choked off." — cinco segundos de fisiologia
+# solta, e o orgao so' aparecendo na ULTIMA frase.
+#
+# ⭐ A REGRA NOVA: **toda frase que nomeia uma CAUSA carrega, NA MESMA FRASE, o
+# que ela quebra.** Nao vale "aparece em algum lugar da cena": o operador
+# reprovou exatamente uma cena em que o orgao estava la', na ultima frase.
+#   ✅ "The blood flow to his {o} got choked off"
+#   ⛔ "It's blood flow, choked off"        (choked off ONDE?)
+#   ⛔ "Doctors never say blood flow."      (blood flow PARA ONDE?)
+#
+# ⚠️ TERCEIRA PESSOA NAO E' O DEFEITO — o que se cobra e' REFERENTE, nao pessoa.
+# As duas entradas abaixo falam do homem da historia, entao o alvo entra como
+# `his {o}` / `my husband's {o}`. ⛔ E entra em 3a pessoa TAMBEM por RS10: `your
+# <orgao>` somado a marcador de prazo no mesmo take de 8s e' a composicao que
+# derrubou o video do NECROSE, e a cena 2 e' justamente onde a prova pode trazer
+# prazo.
+# ⚠️ O TETO NAO SUBIU. A cena 2 estava com folga ZERO (max fundida 25 + max
+# prova 7 + 2 de slot = 34 = TETO_FALA[2]), entao as duas reescritas cabem em
+# 24 e 25 palavras — o `max` do pool nao mudou. As entradas [3] e [10] eram as
+# UNICAS com o vicio; nenhuma outra string do pool foi tocada.
 FUNDIDAS = [
     {"voz": "neutra",
      "txt": "Forget that. This is what actually works — gelatin. That's the gelatin trick, and if you want the blood back in your {o}, that's the one."},
@@ -1051,8 +1077,15 @@ FUNDIDAS = [
      "txt": "Drop that. Pick this up. Gelatin in cold water, every single night — they call it the gelatin trick, and your {o} remembers."},
     {"voz": "neutra",
      "txt": "That never worked on anybody. This did. A spoon of gelatin, stirred cold — the gelatin trick — and the blood flow came back to his {o}."},
+    # FRASE ORFA (Ed, 2026-08-03). Era: "It was never {s}. It's blood flow,
+    # choked off, and gelatin opens it. That's the gelatin trick, and my
+    # husband's {o} came back." — "It's blood flow, choked off" nao diz ONDE, e
+    # o orgao so' chegava na ultima frase, que e' exatamente o arranjo que o
+    # operador reprovou. O alvo entrou na frase da causa; o `my husband's`
+    # migrou para la' junto (a voz conjugal continua declarada) e a frase final
+    # virou o batismo puro. 23 -> 24 palavras.
     {"voz": "conjugal",
-     "txt": "It was never {s}. It's blood flow, choked off, and gelatin opens it. That's the gelatin trick, and my husband's {o} came back."},
+     "txt": "It was never {s}. The blood flow to my husband's {o} got choked off, and gelatin opened it back up. That's the gelatin trick."},
     {"voz": "neutra",
      "txt": "Set that down. This one's real: gelatin, stirred into cold water. The gelatin trick. Nineteen days and his {o} was back for good."},
     {"voz": "neutra",
@@ -1065,8 +1098,15 @@ FUNDIDAS = [
      "txt": "Wrong jar. This one. Gelatin in warm water, stirred until it's gone. They call it the gelatin trick, and his {o} answers now."},
     {"voz": "neutra",
      "txt": "That jar goes down. This one comes up. Gelatin — the gelatin trick — and the blood flow his {o} lost is running again."},
+    # FRASE ORFA (Ed, 2026-08-03). Era: "Doctors never say blood flow." — nomeia
+    # a causa e nao diz para ONDE o sangue nao vai; o orgao vinha so' na ultima
+    # frase, o mesmo arranjo reprovado. ⚠️ O regex do medidor NAO pegava esta
+    # (ele so' ve' fisiologia colada a verbo de estrangulamento), mas a regra do
+    # operador e' de FRASE e esta e' a mesma frase orfa — instrumento que nao
+    # ve' nao e' vicio que nao existe (licoes-de-construcao §16).
+    # O `That's` saiu para pagar as palavras do alvo. 23 -> 25 palavras.
     {"voz": "neutra",
-     "txt": "Doctors never say blood flow. Gelatin does the job {s} never could. That's the gelatin trick, and his {o} proved it in weeks."},
+     "txt": "Doctors never say his {o} lost its blood flow. Gelatin does the job {s} never could — the gelatin trick — and he proved it in weeks."},
     {"voz": "conjugal",
      "txt": "Trade it. One spoon of gelatin, cold water, nightly. The gelatin trick, and his {o} stopped quitting on us months ago."},
     {"voz": "neutra",

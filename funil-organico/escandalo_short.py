@@ -1240,13 +1240,28 @@ HOOKS = [
 #     ✅ "Nobody makes a dime if your {o} starts working" (fala do vilao)
 # As 10 entradas passaram pelo `_afirma_no_corpo()` com as 7 palavras do NUCLEO:
 # zero disparos. Oito delas dizem `the {o}`, nao `your {o}`.
+#
+# ⭐ FRASE ORFA — CORRECAO DE 2026-08-03 (ordem do operador, lendo um take
+# renderizado: "voce tem que contextualizar mais as coisas, ta' deixando o viewer
+# sem entender o contexto e do que se trata").
+# A REGRA NOVA: toda frase que nomeia uma CAUSA carrega, NA MESMA FRASE, o que
+# ela quebra. Nao vale o orgao "aparecer em algum lugar da cena" — o operador
+# reprovou exatamente uma cena em que o orgao estava la', na ULTIMA frase.
+#     ⛔ "They sold you the age excuse."  -> desculpa para O QUE?
+#     ✅ "They sold you the age excuse, and the {o} paid for it."
+# Aqui a causa (a desculpa da idade) e o alvo (o orgao) ficam na mesma oracao.
+# ⚠️ MESMA CONTAGEM DE PALAVRAS da entrada antiga (12 com `Johnson`, 13 com `old
+# boy`): o alvo nao foi SOMADO ao teto da cena 1 — o segundo beat ("Sixty was
+# never the {o}'s problem") foi absorvido pelo primeiro. Teto nao se sobe.
+# ⚠️ Continua `the {o}`, nunca `your {o}`: em forma afirmativa o `_afirma_no_corpo`
+# reprovaria (ES5), e nunca `his {o}`, que a ES1_MENCAO proibe na cena 1.
 VILOES = [
     "Nobody makes a dime if your {o} starts working on its own.",
     "That aisle has your money and nothing in it for the {o}.",
     "You've watched that ad a hundred times. It never once mentioned the {o}.",
     "Your grandfather knew this. Then somebody put a prescription on the {o}.",
     "Nobody told you, and that silence cost the {o} ten good years.",
-    "They sold you the age excuse. Sixty was never the {o}'s problem.",
+    "They sold you the age excuse, and the {o} paid for it.",
     "Your doctor won't say this. There's no billing code for the {o}.",
     "Who gets paid if your {o} never changes? Somebody does.",
     "Add up what you've spent. None of it was meant for the {o}.",

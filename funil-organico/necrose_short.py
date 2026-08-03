@@ -98,14 +98,25 @@ FUNDIDAS = [
     "Stir {ing}. That's the gelatin trick — it opens the blood flow your {o} "
     "lost. Mine came back like this.",
 
-    "That rotten one on the stand was blood flow, choked off. Stir {ing} — the whole gelatin trick, and "
-    "it walked my {o} back.",
+    # ⛔ CONSERTO 2026-08-03 — FRASE ORFA. As tres entradas marcadas abaixo
+    # abriam com a causa e so' nomeavam o orgao DUAS FRASES DEPOIS. Queixa
+    # literal do operador, lendo um take renderizado de outro agente: "It isn't
+    # age. The blood flow got choked off." -> "deveria ser it isn't age THAT'S
+    # CAUSING YOUR JOHN-SON NOT WORKING ANYMORE. Ta' deixando o viewer sem
+    # entender o contexto e do que se trata."
+    # ⭐ A regra: a frase que nomeia a CAUSA carrega, NA MESMA FRASE, o que ela
+    # quebra. Nao vale "o orgao aparece em algum lugar da fala".
+    # ⚠️ O gasto de palavra foi pago encurtando a MESMA entrada, nunca subindo
+    # o TETO_FALA (cena 2 = 34).
+    "That rotten one was the blood flow to my {o}, choked off. Stir {ing} — the "
+    "whole gelatin trick, and it walked back.",
 
     "The blood flow to your {o} got choked off. Stir {ing}. That's the gelatin "
     "trick, and this is me now.",
 
-    "It's not age — the blood flow got strangled. Stir {ing}. That's the "
-    "gelatin trick, and my {o} hasn't quit since.",
+    # ⛔ conserto 2026-08-03 — frase orfa (ver o bloco acima)
+    "It's not age — it's the blood flow to your {o}, strangled. Stir {ing}. "
+    "That's the gelatin trick, and mine hasn't quit since.",
 
     "Stir {ing}. That's the gelatin trick, and the blood flow came back. So did "
     "my {o}.",
@@ -124,8 +135,9 @@ FUNDIDAS = [
     "Doctors said age. It was blood flow. Stir {ing} — the gelatin trick — "
     "and look what my {o} does now.",
 
-    "The blood flow gets choked off, that's all. Stir {ing}. That's the "
-    "gelatin trick. This is my {o} now.",
+    # ⛔ conserto 2026-08-03 — frase orfa (ver o bloco acima)
+    "The blood flow to your {o} gets choked off, that's all. Stir {ing}. "
+    "That's the gelatin trick. This is mine now.",
 
     "Stir {ing} every night. Gelatin trick. It brings the blood flow back "
     "— my {o} hasn't quit since.",

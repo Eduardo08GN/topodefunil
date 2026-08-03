@@ -1657,7 +1657,17 @@ BULLETS = [
     {"cred": "ambas", "txt": "Nobody makes a dime when the {o} works."},
     {"cred": "ambas", "txt": "Your doctor treats the pill, never the {o}."},
     {"cred": "ambas", "txt": "That aisle sells pills, never what opens the {o}."},
-    {"cred": "ambas", "txt": "They sold you the age excuse instead."},
+    # ⛔⛔ FRASE ORFA — CONSERTO DE 2026-08-03, mesma ordem do operador ("arrume
+    # isso em todos os agentes que estao com esse vicio"). `They sold you the
+    # age excuse instead.` nomeia a CAUSA (a desculpa da idade) e nao diz
+    # desculpa PARA O QUE — o espectador ouve a queixa e nao sabe do que se
+    # trata. Agora o alvo entra NA MESMA FRASE.
+    # ⚠️ ⛔ O ALVO NAO PODE SER `{o}`: este bullet mora na familia SEM `{o}`, que
+    # e' a que o `_montar_falas` sorteia quando o hook JA' nomeou o orgao (a
+    # cena 1 nomeia exatamente uma vez — duas em 8 segundos e' bordao). Por
+    # isso o alvo e' `going soft`, que diz o que a desculpa encobre sem repetir
+    # o substantivo. Custo: 9 palavras contra 7 — cabe no TETO_FALA[1] = 27.
+    {"cred": "ambas", "txt": "They sold you the age excuse for going soft."},
     # ⛔ as duas de moldura de BOATO: so' rodam quando a fala ja' desmentiu.
     {"cred": "desmente", "txt": "Half the internet still says it works."},
     {"cred": "desmente", "txt": "That one has been going around for years."},
@@ -1697,7 +1707,26 @@ FUNDIDAS = [
     {"cred": "confirma", "txt": "Outside, that took four seconds. Inside, it takes {r} and warm water. Circulation. But the gelatin trick is the half nobody hands you, and his {o} needed it."},
     {"cred": "ambas", "txt": "Here's the half they give away: {r}, warm water, one turn of the spoon. Collagen. Here's the half they don't: the gelatin trick, and his {o} felt that one."},
     {"cred": "ambas", "txt": "Two fingers of {r} into warm water. Good for oxygen. But nobody hands you the gelatin trick, and that is the half his {o} was missing."},
-    {"cred": "ambas", "txt": "It isn't age. The blood flow got choked off. {r} and warm water open it. Real vasodilators. And the gelatin trick is what keeps his {o} open."},
+    # ⛔⛔ FRASE ORFA — CONSERTO DE 2026-08-03, E A ENTRADA E' A QUE O OPERADOR
+    # CITOU. Ele leu o take renderizado ("It isn't age. The blood flow got
+    # choked off. Parsley and warm water open it. Real vasodilators. And the
+    # gelatin trick is what keeps his old boy open.") e cravou: "deveria ser it
+    # isn't age QUE ESTA CAUSANDO O SEU JOHN-SON NAO FUNCIONAR MAIS. Voce tem
+    # que contextualizar mais as coisas. Ta' deixando o viewer sem entender o
+    # contexto e do que se trata."
+    # ⭐ A REGRA NOVA: toda frase que nomeia uma CAUSA carrega, NA MESMA FRASE, o
+    # que ela quebra. Aqui DUAS nomeavam causa e nenhuma dizia sobre o que ela
+    # age — `It isn't age.` (idade causando o que?) e `The blood flow got choked
+    # off.` (estrangulado onde?). O orgao so' chegava na ULTIMA frase, e o
+    # operador reprovou exatamente essa cena: nao vale "aparece em algum lugar".
+    # ⭐ O conserto FUNDE as duas numa frase so' e poe o alvo dentro dela — assim
+    # ele cabe no teto em vez de estoura-lo: 31 palavras contra 27, e 33 no pior
+    # par {r}/{o} (TETO_FALA[2] = 34). ⛔ Subir o teto nao era opcao.
+    # ⚠️ `he went soft`, nao `you`: o que se cobra e' REFERENTE, nao pessoa — a
+    # fundida ja' conta a historia do homem (`his {o}` na frase do gelatin
+    # trick) e trocar a pessoa no meio quebraria o arco.
+    # ⛔ Zero prazo e zero medida na frase nova (RS10 / a linha do NECROSE).
+    {"cred": "ambas", "txt": "It isn't age — the blood flow got choked off and he went soft. {r} and warm water open it. Real vasodilators. And the gelatin trick is what keeps his {o} open."},
     {"cred": "ambas", "txt": "My aunt gave me this one: {r}, warm water, stir it clear. Oxygen. On its own it did nothing — the gelatin trick is what finished it for his {o}."},
     {"cred": "desmente", "txt": "That powder never did a thing. This does: {r}, warm water, one stir. Vasodilators. And the gelatin trick, without which his {o} stays exactly where it is."},
     {"cred": "ambas", "txt": "Nobody hands you the whole thing. {r}, warm water, stirred down — real collagen. And the gelatin trick, the half his {o} was waiting on."},

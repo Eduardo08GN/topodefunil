@@ -406,16 +406,25 @@ PROPS_PAYOFF = [
 NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
 
 # O hook herda a ECONOMIA da fonte: orgao nomeado + mecanismo + comando, em <=8s
+# ⛔ 2026-08-03 — FRASE ORFA. O operador leu um take e reprovou: "it isn't age"
+# deveria ser "it isn't age THAT'S CAUSING YOUR JOHN-SON NOT WORKING ANYMORE...
+# ta' deixando o viewer sem entender o contexto e do que se trata".
+# REGRA NOVA: toda frase que nomeia uma CAUSA carrega, NA MESMA FRASE, o que ela
+# quebra. Nao vale o orgao aparecer "em algum lugar da cena" — a cena reprovada
+# tinha o orgao na ULTIMA frase. Aqui isso derrubou 4 entradas: as duas com
+# "That's blood flow choked off." solta, o fragmento "Blood flow." e o
+# "It's blood flow, not you." — em todas o orgao passou para dentro da propria
+# frase da causa. Teto da cena 1 (20) respeitado no pior caso, {o} = "old boy".
 HOOKS = [
     "This is what happens to your {o} when American men ignore blood flow too long. Do this tonight.",
-    "Your {o} stopped showing up years ago. That's blood flow choked off. Do this before it's too late.",
+    "Your {o} stopped showing up because the blood flow to it choked off. Do this before it's too late.",
     "This is what ignoring blood flow does to your {o}. Fix yours tonight, brother.",
-    "American men let this happen to their {o} every day. Blood flow. Do this before it's too late.",
+    "American men let the blood flow to their {o} get choked off. Do this before it's too late.",
     "Your wife stopped reaching for you. Nobody told you your {o} lost blood flow. Fix it tonight.",
     "Doctors billed you for twenty years and never once checked the blood flow to your {o}. Do this tonight.",
-    "She already knows your {o} won't work tonight. That's blood flow choked off. Fix it before Friday.",
+    "She already knows your {o} won't work tonight — that's blood flow, choked off. Fix it before Friday.",
     "You apologized in the dark again last night. Blood flow quit reaching your {o}. Do this tonight.",
-    "She said it's okay, honey, and rolled over. It's blood flow, not you. Fix your {o} tonight.",
+    "She said it's okay, honey, and rolled over. It's blood flow, not you — fix your {o} tonight.",
     "You plan your nights around a pill that never opened the blood flow to your {o}. Do this tonight instead.",
     "Nobody in my house buys those pills anymore. Blood flow quit your {o}, brother. Stop paying them.",
     "I went four years without finishing once, brother. Blood flow quit my {o}. Give me sixty seconds.",
@@ -451,25 +460,38 @@ RECEITAS = [
 # V6 ⭐⭐ — a regra central: a receita que ele acabou de dar e' INCOMPLETA.
 # (1) a negacao vem antes da solucao, (2) o orgao e' nomeado na mesma frase,
 # (3) usa o sim que o espectador ja' deu. ⛔ nunca `not just any gelatin`.
+# ⛔ 2026-08-03 — FRASE ORFA (a mesma queixa que reescreveu os HOOKS acima). O
+# operador leu "It isn't age. The blood flow got choked off." e cobrou:
+# "voce tem que contextualizar mais as coisas, ta' deixando o viewer sem
+# entender o contexto e do que se trata". REGRA NOVA: a frase que nomeia a
+# causa carrega o alvo NA MESMA FRASE. Aqui o vicio estava em 15 das 16
+# entradas — a emenda do MUP virava duas frases de fisiologia solta
+# ("It's not age." / "Your blood flow got choked off.") e o orgao ficava
+# so' na frase anterior. Todas ganharam o orgao dentro da frase da causa.
+# ⚠️ O que NAO mudou: o literal `without the gelatin trick`, a negacao antes
+# da solucao, o `for your {o}` na frase da negacao (V6.2) e o `blood flow`
+# que o linter cobra. Onde o alvo nao coube, encurtei OUTRA coisa da propria
+# entrada — o teto de 34 da cena 3 e' medido no pior caso, {o} = "old boy".
+# A entrada 9 nao tinha o vicio (o orgao ja' vinha na frase) e nao foi tocada.
 VIRADAS = [
-    "But here's what most guys never find out. Without the gelatin trick, baking soda alone does nothing for your {o}. It's not age, brother — your blood flow got choked off.",
-    "But here's the thing most guys never realize. Without the gelatin trick, baking soda on its own does nothing for your {o}. It's not age. Your blood flow got choked off.",
-    "You didn't fail, brother. Nobody gave you the other half. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got choked off.",
-    "Stop right there. Without the gelatin trick, that baking soda is half a recipe and your {o} stays down. It's not age. Your blood flow got squeezed shut.",
-    "I gave you half on purpose. Without the gelatin trick, that recipe does nothing for your {o}. It's not age, brother — your blood flow got pinched off decades ago.",
-    "Now don't go telling the guys yet. Without the gelatin trick, baking soda by itself does nothing for your {o}. It's not age, brother. Your blood flow got shut down.",
-    "You're one ingredient short, brother. Without the gelatin trick, baking soda does nothing for your {o}. It's not age. Your blood flow got choked off while you waited.",
-    "She's waited two years already. Without the gelatin trick, baking soda does nothing for your {o}, and she waits two more. It's not age — your blood flow got choked off.",
-    "I mixed that same spoon for a year and nothing moved. Without the gelatin trick, baking soda does nothing for your {o}. It's not age, brother — your blood flow got clamped shut.",
+    "But here's what most guys never find out. Without the gelatin trick, baking soda alone does nothing for your {o} — it's not age, brother, it's blood flow, choked off.",
+    "But here's the thing most guys never realize. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — the blood flow to your {o} got choked off.",
+    "You didn't fail, brother. Nobody gave you the other half. Without the gelatin trick, baking soda does nothing for your {o}, and the blood flow to it stays choked off.",
+    "Stop right there. Without the gelatin trick, that baking soda is half a recipe and your {o} stays down. It's not age — it's the blood flow to your {o}, squeezed shut.",
+    "I gave you half on purpose. Without the gelatin trick, that recipe does nothing for your {o}. It's not age — the blood flow to your {o} got pinched off decades ago.",
+    "Now don't go telling the guys yet. Without the gelatin trick, baking soda does nothing for your {o}. It's not age, brother — the blood flow to your {o} got shut down.",
+    "You're one ingredient short, brother. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — the blood flow to your {o} got choked off while you waited.",
+    "She's waited two years already. Without the gelatin trick, baking soda does nothing for your {o}, and she waits two more. It's not age — your {o} got its blood flow choked off.",
+    "I mixed that same spoon for a year and nothing moved. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your {o} lost its blood flow.",
     "I did this wrong first. I quit for a month. I told my wife it was over. Without the gelatin trick, baking soda does nothing for your {o} — your blood flow stays shut.",
-    "Every man I gave this to called me back angry. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got sealed off years back.",
+    "Every man I gave this to called me back angry. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your {o} got its blood flow sealed off.",
     # + 2026-08-01: o operador mediu vicio de vocativo — "brother" em quase toda
     # virada. Cinco entradas novas, nenhuma com vocativo.
-    "Go ahead and try it without me. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got pinched shut years ago.",
-    "You've already lost ten years to this. Without the gelatin trick, baking soda does nothing for your {o}. It's not age. Your blood flow got clamped off.",
-    "Your doctor won't tell you this part. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got shut down.",
-    "My neighbor mixed it wrong all summer and gave up. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your blood flow got sealed shut.",
-    "Now you know what the pill people never sold you. Without the gelatin trick, baking soda does nothing for your {o}. Your blood flow got choked off, not your age.",
+    "Go ahead and try it without me. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — the blood flow to your {o} got pinched shut.",
+    "You've already lost ten years to this. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — the blood flow to your {o} got clamped off.",
+    "Your doctor won't tell you this part. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — the blood flow to your {o} got cut off.",
+    "My neighbor mixed it wrong all summer and gave up. Without the gelatin trick, baking soda does nothing for your {o}. It's not age — your {o} got its blood flow sealed shut.",
+    "Now you know what the pill people never sold you. Without the gelatin trick, baking soda does nothing for your {o}. Your {o} got its blood flow choked off — that's not age.",
 ]
 
 # V12 — a copy da cena 4 e' DIRETA sobre ela, com o substantivo-nucleo.

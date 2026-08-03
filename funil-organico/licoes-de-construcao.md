@@ -285,6 +285,8 @@ viraram defeito relatado ao operador:
 | **Sonda velha** | a sonda da R7 procurava `silent\|pause` e marcou **0/400** depois que a correção trocou a formulação (o apagão virou 0,8s ancorado no morph, com literal novo). Zero súbito em regra que estava em 400/400 **não é regra sumida** | um zero que apareceu **de repente** é suspeita contra a sonda, não contra o motor |
 | **Regra larga demais** | a lente cobrava `your {o}` **sozinho** e acusou 175/400 — mas a doutrina **permite** condicional e pergunta; só a soma com prazo é proibida. Cobrar isso é cobrar o hook inteiro do agente | reler a regra **na doutrina** antes de codificar a lente, e codificar a **composição**, não o token |
 | **Escopo errado** | a mesma lente varria os 3 takes **juntos**, e a regra é "no mesmo take de 8s": hook da cena 1 + prazo da cena 2 são 16 segundos de distância | a unidade da regra (vídeo? take? bloco? fala?) entra na lente **explicitamente** |
+| **Escopo largo demais** (2026-08-03) | ao medir a frase órfã, contei `his {o}` como vício e acusei **400 em 200 vídeos** no FLAGRANTE. Falso: naquele ângulo a narradora conta a história de **um terceiro** e o espectador se identifica — `his old boy went soft` é o *formato*, não o defeito | antes de codificar, perguntar **de que ângulo é a regra**: o que vale no RESSURREICAO pode ser a espinha do FLAGRANTE |
+| **Escopo estreito demais** (2026-08-03) | corrigi para medir por **cena** ("o órgão aparece em algum lugar?") — e o medidor **aprovou exatamente a cena que o operador tinha reprovado**, porque `his old boy` estava na última frase. A queixa era de **frase** | quando um medidor aprova o caso que motivou sua existência, ele está medindo outra coisa. **O caso reprovado vira controle** |
 
 E o mesmo dia deu o caso simétrico, que é pior: o **`_rs10_prazo` existia desde
 o primeiro dia do motor e nunca acusou uma vez** — o regex listava
@@ -295,6 +297,38 @@ frases que *têm* de casar e frases que *não podem* — e eles rodam **antes** 
 qualquer número ser olhado. É o que o `medir_personagens.py --autoteste` faz.
 E `0 ERRO` num lote grande é **suspeita**, não aprovação: sabotar de propósito é
 a única forma de distinguir motor limpo de linter morto.
+
+---
+
+## 17. ⛔ TROCAR UMA ABSTRAÇÃO POR OUTRA E CHAMAR DE CONSERTO
+
+O operador reprovou a cena 1 do RESSURREICAO três vezes seguidas, no mesmo slot,
+em dois dias. Meus dois primeiros "consertos" **não eram consertos**:
+
+| | o que a cena dizia | meu diagnóstico | por que ainda estava errado |
+|---|---|---|---|
+| original | `You just watched the mechanism work.` | meta-fala: declara que houve um mecanismo em vez de dizer qual | — |
+| conserto 1 | `Outside it's visible. Inside it's the same blood.` | "agora tem substantivo concreto" | **fisiologia ainda é conversa.** O espectador não quer saber de sangue, quer saber do pinto dele |
+| conserto 2 *(dele)* | `That's baking soda, and that's your Johnson on it. Her hand lands on it and she freezes.` | — | funciona porque nomeia **o que ele reconhece em si** e **o que ela sente** |
+
+E a mesma coisa na cena 2: `It isn't age.` — idade causando **o quê**? Eu tinha
+medido aquele pool e aprovado, porque `blood flow` e `vasodilators` **contam
+como concretos** num detector de substantivo.
+
+**A lição:** *concretude não é vocabulário técnico.* `nitric oxide` é mais
+técnico e menos concreto que `she freezes`. O teste não é "tem substantivo?" —
+é **"o espectador reconhece isso em si mesmo?"**. Fisiologia é o mecanismo do
+produto; o espectador compra o **resultado no corpo dele e a reação de alguém**.
+
+**Como se detecta antes de o operador ver:** ler a fala inteira renderizada em
+voz alta e perguntar *"do que ela está falando?"*. Se a resposta precisa de
+contexto que o vídeo não deu, é órfã. Vale como item de checklist e virou
+medidor: [`medir_contexto_copy.py`](medir_contexto_copy.py), que cobra o alvo
+**na mesma frase** da causa.
+
+⚠️ **E o corolário caro:** eu "consertei" duas vezes e nas duas declarei
+resolvido com número (`400/400 nomeiam a substância`). O número estava certo e
+não media o que o operador estava reclamando — §15 de novo, agora em copy.
 
 ---
 
@@ -313,7 +347,12 @@ a única forma de distinguir motor limpo de linter morto.
       aprovação: pode ser motor limpo ou regra morta (§16). Uma sabotagem por
       regra travada, e a sabotagem tem que **chegar** onde a regra olha
 - [ ] Toda lente/medição nova tem **controle positivo e negativo**, rodados
-      antes de eu olhar o número (§16)
+      antes de eu olhar o número (§16) — e **o caso que o operador reprovou
+      entra como controle**, senão o medidor aprova justamente ele
+- [ ] `python funil-organico/medir_contexto_copy.py --gate` — **exit 0**. Toda
+      frase que nomeia uma causa diz, **na mesma frase**, o que ela quebra (§17)
+- [ ] **Li a fala inteira em voz alta e perguntei "do que ela está falando?"**
+      Se precisa de contexto que o vídeo não deu, é órfã (§17)
 - [ ] Uso do orçamento medido contra a **capacidade real**, não contra o teto (§5)
 - [ ] **Li algumas falas inteiras renderizadas**, não só os pools
 - [ ] `git diff` conferido: nenhuma string validada redigitada sem ordem

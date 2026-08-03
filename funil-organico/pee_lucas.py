@@ -487,7 +487,23 @@ MECANISMOS = [
     "It's his prostate squeezing the pipe shut. Same pressure keeps the blood out of your {o}.",
     "His prostate is clamping down on the pipe. That same pressure is what starves your {o}.",
     "It's the prostate choking the line. The same squeeze is why your {o} can't fill anymore.",
-    "It's not his age. His prostate swelled up and pinched the pipe. Same pinch is why no blood gets to your {o}.",
+    # ⭐ 2026-08-03 — FRASE ORFA. O operador leu um take pronto e reprovou:
+    # "It isn't age. The blood flow got choked off." -> "deveria ser it isn't
+    # age QUE ESTA' CAUSANDO seu John-son nao funcionar mais. Voce tem que
+    # contextualizar mais as coisas. Ta' deixando o viewer sem entender o
+    # contexto e do que se trata."
+    # REGRA NOVA: toda frase que nomeia uma CAUSA carrega, NA MESMA FRASE, o
+    # que ela quebra. Nao vale o orgao aparecer "em algum lugar da cena" — a
+    # cena reprovada tinha o orgao na ultima frase. Aqui "It's not his age."
+    # era a unica frase orfa do motor inteiro (medido: 14 de 14 renderizacoes
+    # orfas vinham desta entrada). O alvo entrou NELA, em TERCEIRA PESSOA,
+    # porque a frase fala do homem da historia — a pessoa que a frase ja' usa
+    # e' a que se mantem (`his {o}` aqui, `your {o}` na frase de fechamento).
+    # ⛔ Teto da cena 2 = 26 palavras. O objeto engordou a entrada em 5, entao
+    # a ultima frase foi comprimida na mesma entrada ("is why no blood gets to
+    # your {o}" -> "starves your {o} of blood"): 24 palavras com nucleo de uma
+    # palavra, 26 no pior caso ("old boy", que conta 2). Nada de subir o teto.
+    "It's not his age that shut his {o} down. His prostate swelled up and pinched the pipe. Same pinch starves your {o} of blood.",
     "Pills don't touch this. It's his prostate pressing the line flat, and that same press is why your {o} can't fill.",
     "They never told him why, because a fixed man buys nothing. His prostate is sitting on that pipe and shutting your {o} down.",
     "Picture a boot standing on a garden hose. That's his prostate on the line, and it's why your {o} won't fill.",

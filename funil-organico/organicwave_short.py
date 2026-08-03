@@ -454,21 +454,34 @@ HOOKS = [
     "My doctor gave me a pill and a shrug. Two years later this was still my {o}.",
 ]
 
+# ⛔ 2026-08-03 — FRASE ORFA. O operador leu um take renderizado ("It isn't
+# age. The blood flow got choked off.") e reprovou: "voce tem que
+# contextualizar mais as coisas, ta' deixando o viewer sem entender do que se
+# trata". Idade causando O QUE? estrangulado ONDE? Nao adianta o orgao aparecer
+# na ULTIMA frase da cena — foi exatamente essa cena que ele reprovou.
+# ⭐ REGRA NOVA: toda frase que nomeia uma CAUSA (idade, blood flow) carrega,
+#    NA MESMA FRASE, o que ela quebra. Mantem-se a pessoa que a frase ja' usa —
+#    aqui 1a pessoa, entao `my {o}`.
+# ⚠️ Conserto CIRURGICO: so' a primeira frase das entradas 0, 3, 6 e 7 mudou.
+#    As demais ja' traziam o alvo na mesma frase ("the blood flow my {o} lost")
+#    e nao foram tocadas. Os fechamentos validados ficaram intactos: o alvo
+#    entrou por dentro do teto de 36 palavras, medido no pior caso
+#    (`old boy` + a receita mais longa).
 FUNDIDAS = [
     # ⚠️ O item aprovado terminava em "nineteen days later mine came back",
     # sem nomear o orgao. Como o CTA tambem nao nomeia, a cota caia para 1/3 e
     # o linter reprovava 69 de 300 sorteios. Uma palavra mudou — `mine` virou
     # `my {o}` — e o operador foi avisado.
-    "It was never age — it's blood flow, choked off. Stir {ing}. That's the gelatin trick, and nineteen days later my {o} came back.",
+    "It wasn't age — my {o} lost its blood flow. Stir {ing}. That's the gelatin trick, and nineteen days later my {o} came back.",
     "Stir {ing}. They call it the gelatin trick, and it opens the blood flow your {o} lost. This is me now.",
     "My neighbor gave me this. Stir {ing} — the gelatin trick. The blood flow came back, and so did my {o}.",
-    "Nobody told me it was blood flow. Stir {ing}, that's the whole gelatin trick, and my {o} hasn't quit since.",
+    "Nobody told me my {o} was starved of blood flow. Stir {ing}, that's the whole gelatin trick, and my {o} hasn't quit since.",
     "Two dollars, brother. Stir {ing} — the gelatin trick — and the blood flow that left my {o} came right back.",
     # + 2026-08-01: cinco fundidas so' repetiam na cena 2. Seis a mais, todas
     # carregando o literal "gelatin trick" e o blood flow, como manda a regra.
     "Nineteen days. Stir {ing}, that's the gelatin trick, and the blood flow my {o} lost came back.",
-    "My doctor never once said blood flow. Stir {ing}. The gelatin trick gave me my {o} back.",
-    "It's blood flow, not the calendar. Stir {ing}. That's the gelatin trick, and my {o} works again.",
+    "My doctor never once said my {o} was short on blood flow. Stir {ing}. The gelatin trick gave me my {o} back.",
+    "It's the blood flow to my {o}, not the calendar. Stir {ing}. That's the gelatin trick, and my {o} works again.",
     "Stir {ing} before bed. That's the gelatin trick. The blood flow came back and my {o} with it.",
     "Three weeks on the gelatin trick. Stir {ing}. The blood flow my {o} was missing is running again.",
     "My wife noticed before I did. Stir {ing}, the gelatin trick, and the blood flow found my {o} again.",
@@ -512,23 +525,36 @@ HOOKS_F = [
     "Look at this one. That was my husband's {o} for two years, and I started thinking it was me.",
     "I was about to leave. The bedroom was dead, and his {o} looked exactly like this.",
     "I stopped undressing in front of him. Not because of me — because of this. Because of his {o}.",
-    "He blamed his age. I blamed myself. It was neither of us — his {o} looked like this every night.",
+    # ⛔ 2026-08-03 — FRASE ORFA (ver o bloco da FUNDIDAS). "He blamed his age."
+    # nomeia a causa e nao diz o que ela quebrou. O alvo entrou na MESMA frase,
+    # na terceira pessoa que a frase ja' usava: `for going soft`.
+    "He blamed his age for going soft. I blamed myself. It was neither of us — his {o} looked like this every night.",
     "Four hundred a month on pills, and his {o} still looked like this. I stopped asking.",
     "We hadn't touched in eight months. This was his {o}, and he wouldn't talk about it.",
     "My man is {n}. This was his {o} in March. I'm the one who found what fixed it.",
     # + 2026-08-01: mesmo vicio da persona masculina — os oito hooks dela
     # voltavam no lote. Quatro dores a mais, nenhuma com vocativo.
     "Nine years together and I was sleeping alone in my own bed. This was his {o}.",
-    "He turned {n} and everything stopped. Not our marriage, just this. His {o}, every single night.",
+    # ⛔ 2026-08-03 — FRASE ORFA. "He turned {n} and everything stopped."
+    # culpava a idade e deixava o orgao para a TERCEIRA frase, que e' o defeito
+    # exato que o operador reprovou. O alvo subiu para a frase da causa.
+    "He turned {n} and his {o} stopped. Not our marriage, just this — every single night.",
     "Two years I thought he was cheating. He wasn't. This was his {o}, and he was hiding it.",
     "He said he was tired. For eight months I believed him. This is what his {o} looked like.",
 ]
 
+# ⛔ 2026-08-03 — FRASE ORFA, o mesmo conserto da FUNDIDAS masculina (a queixa
+# do operador esta' documentada la'). Aqui a pessoa da frase e' a terceira — a
+# mulher conta a historia do marido —, entao o alvo entra como `his {o}` e nao
+# como `your {o}`: o que se cobra e' REFERENTE, nao pessoa.
+# ⚠️ So' as entradas 0 e 3 mudaram; as outras sete ja' diziam o alvo na mesma
+#    frase. A entrada 0 e' a mais apertada do motor (36 de teto 36 no pior caso)
+#    e o conserto entrou sem somar uma palavra.
 FUNDIDAS_F = [
-    "It was never his age — it's blood flow, choked off. I stir {ing}. That's the gelatin trick, and nineteen days later his {o} came back.",
+    "It wasn't age — his {o} lost its blood flow. I stir {ing}. That's the gelatin trick, and nineteen days later his {o} came back.",
     "I stir {ing} for him. They call it the gelatin trick, and it opens the blood flow his {o} lost. And he came back.",
     "My aunt gave me this. I stir {ing} — the gelatin trick. The blood flow came back, and so did his {o}.",
-    "Nobody told us it was blood flow. I stir {ing}, that's the whole gelatin trick, and his {o} hasn't quit since.",
+    "Nobody told us his {o} had no blood flow. I stir {ing}, that's the whole gelatin trick, and his {o} hasn't quit since.",
     "Two dollars, girls. I stir {ing} — the gelatin trick — and the blood flow that left his {o} came right back.",
     # + 2026-08-01: mesma expansao da masculina, a cena 2 dela repetia. Quatro
     # a mais, todas com o literal "gelatin trick" e o blood flow no lugar.
