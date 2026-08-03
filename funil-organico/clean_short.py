@@ -211,9 +211,11 @@ DESPEJO = {
 }
 
 # ---------------------------------------------------------------------------
-# BANCO DE COPY — 1414 combinacoes (14 · 1232 · 168), nenhuma estoura os 7s
-# (CL13). A cena 2 caiu de 1400 para 1232 com o CL22: dos 100 pares item A x
-# item B, 12 colidem e estao fora do sorteio (88 x 14 viradas).
+# BANCO DE COPY — 1582 combinacoes (14 · 1400 · 168), nenhuma estoura os 7s
+# (CL13), medido com o orgao JA' substituido.
+# ⚠️ A cena 2 tem os 1400 de volta porque os pools ficaram DISJUNTOS: o solver
+# do CL22 nao precisa mais descartar par nenhum. Ele fica como rede de
+# seguranca, nao como mecanismo.
 # ---------------------------------------------------------------------------
 NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
 TETO_FALA = {1: 22, 2: 24, 3: 22}
@@ -246,17 +248,25 @@ HOOKS = [
 # entao a colisao seria quase certa (falha em producao 2026-08-02 —
 # "Pineapple sweetens your milk. Spinach and honey make your milk sweet for
 # her." saiu no ar).
+# ⭐⭐ O ITEM A E' DISJUNTO DO ITEM B — POR CONSTRUCAO, NAO POR SOLVER (ordem do
+# operador, 2026-08-02). Nenhuma linha daqui usa ingrediente ou beneficio que
+# apareca em QUALQUER linha do ITEM_B. Antes os dois pools compartilhavam as
+# frutas e os beneficios, e o solver do CL22 tinha de descartar 12 dos 100
+# pares; agora os 100 sao validos e a repeticao deixa de ser possivel.
+# ⚠️ O ITEM_B nao mudou uma virgula — o operador aprovou aquelas linhas.
+# ⛔ Ao acrescentar linha aqui, conferir contra INGREDIENTES_B/BENEFICIOS_B (o
+# teste de disjuncao no fim do arquivo reprova sozinho).
 ITEM_A = [
-    {"txt": "Beetroot opens the flow", "itens": ["beterraba"], "ben": "fluxo"},
-    {"txt": "Watermelon builds your stamina", "itens": ["melancia"], "ben": "aguenta"},
-    {"txt": "Pomegranate pushes blood down", "itens": ["roma"], "ben": "sangue"},
-    {"txt": "Ginger wakes the system", "itens": ["gengibre"], "ben": "acorda"},
-    {"txt": "Celery thickens the tip", "itens": ["aipo"], "ben": "engrossa"},
-    {"txt": "Passion fruit hardens you", "itens": ["maracuja"], "ben": "endurece"},
-    {"txt": "Coconut restores your twenties", "itens": ["coco"], "ben": "vinte-anos"},
-    {"txt": "Pineapple cleans your blood", "itens": ["abacaxi"], "ben": "sangue"},
-    {"txt": "Spinach keeps you going", "itens": ["espinafre"], "ben": "aguenta"},
-    {"txt": "Cinnamon steadies the pressure", "itens": ["canela"], "ben": "pressao"},
+    {"txt": "Pomegranate cleans your blood", "itens": ["roma"], "ben": "sangue"},
+    {"txt": "Garlic raises your drive", "itens": ["alho"], "ben": "libido"},
+    {"txt": "Walnuts sharpen the feeling", "itens": ["nozes"], "ben": "sensacao"},
+    {"txt": "Blueberries steady the pressure", "itens": ["mirtilo"], "ben": "pressao"},
+    {"txt": "Turmeric fights inflammation", "itens": ["curcuma"], "ben": "inflamacao"},
+    {"txt": "Oats speed your recovery", "itens": ["aveia"], "ben": "recupera"},
+    {"txt": "Avocado feeds the pump", "itens": ["abacate"], "ben": "bomba"},
+    {"txt": "Cayenne heats you up", "itens": ["pimenta"], "ben": "calor"},
+    {"txt": "Grapes carry oxygen down", "itens": ["uva"], "ben": "oxigenio"},
+    {"txt": "Tomatoes protect your prostate", "itens": ["tomate"], "ben": "prostata"},
 ]
 ITEM_B = [
     {"txt": "Kale and honey make your milk sweet for the girls", "itens": ["couve", "mel"], "ben": "leite"},
@@ -268,7 +278,10 @@ ITEM_B = [
     {"txt": "Ginger and cinnamon wake the whole system up", "itens": ["gengibre", "canela"], "ben": "acorda"},
     {"txt": "Celery and baking soda thicken your milk", "itens": ["aipo", "bicarbonato"], "ben": "engrossa"},
     {"txt": "Pineapple and honey make your milk sweet", "itens": ["abacaxi", "mel"], "ben": "leite"},
-    {"txt": "Passion fruit and cinnamon harden you fast", "itens": ["maracuja", "canela"], "ben": "endurece"},
+    # ⛔ era `Passion fruit and cinnamon harden you fast` — a UNICA linha dos
+    # dois pools que prometia dureza. A dureza e' exclusiva do gelatin trick
+    # (CL23, ordem do operador 2026-08-02).
+    {"txt": "Passion fruit and cinnamon widen every vessel", "itens": ["maracuja", "canela"], "ben": "vasos"},
 ]
 
 # CL15 — a VIRADA e' INTOCAVEL: encurta-se o item A antes dela. Abre com "But"
@@ -330,9 +343,23 @@ GATES = [
 # CATALOGO VISUAL — como cada ingrediente aparece na bancada
 # ---------------------------------------------------------------------------
 VISUAL = {
+    # --- citados pelo ITEM_A (disjuntos do ITEM_B) ---
+    # ⛔ CL2: nada alongado. A pimenta entra em PO', nunca a vagem inteira, e o
+    # abacate parte-se como o limao — a regua e' "um estranho olhando so' pensa
+    # em comida".
+    "roma": "a whole pomegranate cut in half with the red seeds facing up",
+    "alho": "a whole head of garlic with two loose cloves beside it",
+    "nozes": "a small white saucer of shelled walnut halves",
+    "mirtilo": "a small white bowl of fresh blueberries",
+    "curcuma": "a small glass bowl of bright yellow turmeric powder",
+    "aveia": "a white bowl of dry rolled oats",
+    "abacate": "an avocado cut in half, both halves cut-side up on a white plate",
+    "pimenta": "a small glass bowl of red cayenne pepper powder",
+    "uva": "a bunch of dark red grapes",
+    "tomate": "two ripe red tomatoes, one cut in half",
+    # --- citados pelo ITEM_B ---
     "beterraba": "two whole raw beetroots with their deep purple skin",
     "melancia": "a thick wedge of fresh watermelon, the red flesh facing out",
-    "roma": "a whole pomegranate cut in half with the red seeds facing up",
     "gengibre": "a knob of fresh ginger root",
     "aipo": "three stalks of fresh celery",
     "maracuja": "two passion fruits, one cut in half",
@@ -347,6 +374,45 @@ VISUAL = {
     "vinagre": "a glass bottle of apple cider vinegar with its printed paper label facing the camera",
 }
 IDS_TRUQUE = {t["id"] for t in TRUQUE}
+
+# ⭐⭐ CL22 NA CARGA DO MODULO — os dois pools tem de ser disjuntos, e isso se
+# verifica ao importar, nao no linter de um sorteio. Linter so' pega o que o
+# sorteio calhou de gerar; assercao pega a linha errada no instante em que
+# alguem a escreve. Foi copy repetida saindo no ar duas vezes (2026-08-02) que
+# pagou por esta linha.
+INGREDIENTES_B = {i for b in ITEM_B for i in b["itens"]}
+BENEFICIOS_B = {b["ben"] for b in ITEM_B}
+for _a in ITEM_A:
+    assert not (set(_a["itens"]) & INGREDIENTES_B), (
+        "CL22: item A '%s' usa ingrediente que o item B tambem usa: %s"
+        % (_a["txt"], ", ".join(sorted(set(_a["itens"]) & INGREDIENTES_B))))
+    assert _a["ben"] not in BENEFICIOS_B, (
+        "CL22: item A '%s' usa o beneficio '%s', que o item B tambem usa"
+        % (_a["txt"], _a["ben"]))
+    assert "milk" not in _a["txt"].lower(), (
+        "CL22: item A '%s' cita leite — leite e' assunto do item B" % _a["txt"])
+    assert len(_a["txt"].split()) <= 4, (
+        "CL15: item A '%s' passa de 4 palavras" % _a["txt"])
+for _p in (ITEM_A, ITEM_B):
+    for _x in _p:
+        for _i in _x["itens"]:
+            assert _i in VISUAL, "CL20: '%s' citado na copy e sem VISUAL" % _i
+
+# ⭐⭐ CL23 — A DUREZA E' EXCLUSIVA DO GELATIN TRICK (ordem do operador,
+# 2026-08-02). Nenhum ingrediente deixa duro: eles dao fluxo, resistencia,
+# vasos, recuperacao, sensacao. Quem endurece e' o truque, e so' ele — e' o que
+# faz o espectador precisar do truque em vez de so' da lista de compras.
+# ⛔ Saiu no ar `Passion fruit hardens you. (...) But the gelatin trick is what
+# gets you rock hard.`: a fruta ja' entregava o que a virada vende.
+_DUREZA = re.compile(r"\b(hard|harder|hardens?|hardening|stiff|stiffens?|"
+                     r"erect|as rock|to stone|steel)\b", re.I)
+for _x in ITEM_A + ITEM_B:
+    assert not _DUREZA.search(_x["txt"]), (
+        "CL23: '%s' promete dureza — so' o gelatin trick endurece" % _x["txt"])
+for _v in VIRADAS:
+    if _DUREZA.search(_v):
+        assert "gelatin trick" in _v, (
+            "CL23: a virada '%s' promete dureza sem nomear o gelatin trick" % _v)
 
 CENAS_UI = ["1 · A FILEIRA", "2 · A LISTA + A VIRADA", "3 · CTA"]
 

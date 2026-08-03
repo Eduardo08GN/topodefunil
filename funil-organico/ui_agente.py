@@ -181,17 +181,57 @@ class App(tk.Tk):
         tk.Frame(self, bg=LINE, height=1).pack(fill="x", padx=16, pady=(10, 0))
 
     # -------------------------------------------------------------- esquerda
+    def _rolagem(self, pai, largura):
+        """Devolve um Frame que ROLA dentro de uma coluna de largura fixa.
+
+        ⚠️ Sem isto a coluna e' um Frame de altura fixa e o que nao coubesse na
+        janela ficava simplesmente inalcancavel — nos agentes de 5 cenas o
+        botao `aplicar copy e revalidar` some abaixo da borda, e nao ha' como
+        chegar nele (relatado em producao, 2026-08-02).
+        """
+        ext = tk.Frame(pai, bg=BG, width=largura)
+        ext.pack(side="left", fill="y")
+        ext.pack_propagate(False)
+
+        cv = tk.Canvas(ext, bg=BG, highlightthickness=0, bd=0)
+        sb = tk.Scrollbar(ext, orient="vertical", command=cv.yview,
+                          relief="flat", bd=0, bg=PANEL2,
+                          troughcolor=PANEL, activebackground=LINE)
+        cv.configure(yscrollcommand=sb.set)
+        sb.pack(side="right", fill="y")
+        cv.pack(side="left", fill="both", expand=True)
+
+        col = tk.Frame(cv, bg=BG)
+        jan = cv.create_window((0, 0), window=col, anchor="nw")
+        # ⚠️ O frame interno TEM de acompanhar a largura do canvas: dentro de um
+        # canvas ele nao herda largura nenhuma, e todo `fill="x"` colapsaria
+        # para o tamanho do texto.
+        cv.bind("<Configure>", lambda e: cv.itemconfigure(jan, width=e.width))
+        col.bind("<Configure>",
+                 lambda _e: cv.configure(scrollregion=cv.bbox("all")))
+
+        def roda(e):
+            caixa = cv.bbox("all")
+            if caixa and caixa[3] > cv.winfo_height():   # so' rola se precisar
+                cv.yview_scroll(int(-e.delta / 120), "units")
+            return "break"
+
+        # ⚠️ `bind_all` so' enquanto o ponteiro esta' sobre a coluna. Um bind
+        # global permanente roubaria a roda do Text da direita.
+        ext.bind("<Enter>", lambda _e: ext.bind_all("<MouseWheel>", roda))
+        ext.bind("<Leave>", lambda _e: ext.unbind_all("<MouseWheel>"))
+        return col
+
     def _coluna_esq(self, pai):
-        col = tk.Frame(pai, bg=BG, width=490)
-        col.pack(side="left", fill="y")
-        col.pack_propagate(False)
+        # a barra come' ~15px: as wraplength daqui pra baixo contam com isso
+        col = self._rolagem(pai, 490)
 
         self._passo(col, 1, "O vídeo sorteado", "não gostou de um eixo? troque só ele")
 
         res = tk.Frame(col, bg=PANEL2)
         res.pack(fill="x")
         self.lbl_resumo = tk.Label(res, text="", font=F_UI, bg=PANEL2, fg=TXT,
-                                   wraplength=450, justify="left", anchor="w",
+                                   wraplength=435, justify="left", anchor="w",
                                    padx=14, pady=11)
         self.lbl_resumo.pack(fill="x")
 
@@ -248,7 +288,7 @@ class App(tk.Tk):
         # avisa que o TAKE sai com o termo hifenizado (o painel mostra a copy
         # limpa; o bloco entregue leva a reescrita fonetica)
         self.lbl_sonoro = tk.Label(cc, text="", font=F_SMALL, bg=PANEL, fg=MUTED,
-                                   anchor="w", justify="left", wraplength=440)
+                                   anchor="w", justify="left", wraplength=425)
         self.lbl_sonoro.pack(fill="x", padx=13, pady=(0, 12))
 
     # ---------------------------------------------------------------- direita

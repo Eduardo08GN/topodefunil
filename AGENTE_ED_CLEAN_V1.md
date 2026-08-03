@@ -608,13 +608,17 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   ⛔ A gelatina aparece **apenas na cena 3**. Nas cenas 1 e 2 ela não existe —
   senão o payoff chega antes da promessa.
 
-- **CL22 — ⭐⭐ ITEM A E ITEM B NUNCA REPETEM FRUTA, INGREDIENTE NEM BENEFÍCIO
-  NO MESMO TAKE** (falha em produção, 2026-08-02).
+- **CL22 — ⭐⭐ OS POOLS DO ITEM A E DO ITEM B SÃO DISJUNTOS** (duas falhas em
+  produção, 2026-08-02).
 
-  **O que saiu:** `Pineapple sweetens your milk. Spinach and honey make your
-  milk sweet for her.` Duas frases seguidas dizendo **a mesma coisa** — o
-  segundo item não acrescenta nada, e a lista, que é o fio narrativo inteiro
-  deste ângulo (CL6), para de avançar bem no meio.
+  **O que saiu, duas vezes:**
+  ```
+  Pineapple sweetens your milk. Spinach and honey make your milk sweet for her.
+  Coconut restores your twenties. Coconut and honey bring your twenties back.
+  ```
+  Duas frases seguidas dizendo **a mesma coisa** — o segundo item não
+  acrescenta nada, e a lista, que é o fio narrativo inteiro deste ângulo
+  (CL6), para de avançar bem no meio.
 
   > **Numa estrutura de lista, item repetido não é redundância — é um item a
   > menos.** O espectador para de contar motivos e começa a sair.
@@ -622,33 +626,92 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   A cena 2 tem **duas** entradas e um teto de 24 palavras (CL13). Se as duas
   dizem o mesmo, o vídeo gastou metade do orçamento de fala à toa.
 
-  **A trava, nas três dimensões:**
+  **A regra, nas três dimensões.** Nenhum item A pode compartilhar com
+  **nenhum** item B:
 
-  | dimensão | ⛔ colide quando |
+  | dimensão | ⛔ exemplo do que não pode coexistir nos pools |
   |---|---|
-  | **fruta** | `Beetroot…` + `Beetroot and baking soda…` |
-  | **ingrediente do truque** | `Cinnamon…` + `Ginger and cinnamon…` |
+  | **fruta** | `Coconut restores…` + `Coconut and honey bring…` |
+  | **ingrediente do truque** | `Cinnamon steadies…` + `Ginger and cinnamon…` |
   | **benefício** | `Spinach keeps you going` + `Kale and baking soda keep you going all night` |
 
-  ⛔ Colidiu em **qualquer** uma das três, **sorteia-se outro item B**. Não se
-  reescreve a frase para disfarçar — troca-se o par. Todo item A tem no mínimo
-  **8** item B livres, então o solver nunca fica sem saída.
+  ⭐⭐ **E a trava é de CONSTRUÇÃO, não de sorteio** (ordem do operador,
+  2026-08-02). O ITEM A foi reescrito inteiro para não tocar em nada que o ITEM
+  B usa; o ITEM B **não mudou uma vírgula**, porque o operador aprovou aquelas
+  linhas.
 
-  ⚠️ **O leite é o caso mais agudo, e por isso virou regra de lista:** metade
-  do pool do ITEM B fala em adoçar o leite. Logo **nenhuma linha do ITEM A pode
-  citar leite** — a colisão seria quase certa. Foi por isso que
-  `Pineapple sweetens your milk` virou `Pineapple cleans your blood`.
+  | | ingredientes | benefícios |
+  |---|---|---|
+  | **ITEM A** | romã · alho · nozes · mirtilo · cúrcuma · aveia · abacate · pimenta · uva · tomate | sangue · libido · sensação · pressão · inflamação · recuperação · bomba · calor · oxigênio · próstata |
+  | **ITEM B** | couve · mel · espinafre · bicarbonato · coco · beterraba · melancia · gengibre · canela · aipo · abacaxi · maracujá | leite · aguenta · vinte-anos · fluxo · acorda · engrossa · próprio |
+  | **interseção** | ⭐ **vazia** | ⭐ **vazia** |
 
-  **Para o motor (CL18):**
+  📌 **Por que construção e não solver.** A primeira correção deixou os pools
+  se sobrepondo e mandou o solver rejeitar os pares repetidos. Funcionava — e
+  custava **12 dos 100 pares**, derrubando a cena 2 de 1400 para 1232. Pagar a
+  repetição com repertório é conserto de sintoma. Consertar o pool fraco
+  resolve os dois: zero repetição **e** 1400 combinações.
+
+  **No motor, a asserção roda na CARGA DO MÓDULO, não no linter:**
   ```python
-  # a cena 2 é um PAR, e o par é rejeitado, não corrigido
-  while colide(a, b):          # fruta | ingrediente do truque | benefício
-      b = rng.choice(ITEM_B)
+  INGREDIENTES_B = {i for b in ITEM_B for i in b["itens"]}
+  BENEFICIOS_B   = {b["ben"] for b in ITEM_B}
+  for a in ITEM_A:
+      assert not (set(a["itens"]) & INGREDIENTES_B)
+      assert a["ben"] not in BENEFICIOS_B
   ```
+  ⚠️ **Linter só pega o que o sorteio calhou de gerar; asserção pega a linha
+  errada no instante em que alguém a escreve.** O solver `_colide()` continua
+  no `sortear()` como rede de segunda camada.
 
-  ⚠️ **E isto conversa com o CL20:** a bancada nasce da copy. Par que colide não
-  só soa repetido — ele também deixa a bancada com um item a menos do que a
+  ⚠️ **E isto conversa com o CL20:** a bancada nasce da copy. Par que repete não
+  só soa redundante — ele também deixa a bancada com um item a menos do que a
   fileira precisa para ler como fileira.
+
+- **CL23 — ⭐⭐ A DUREZA É EXCLUSIVA DO `GELATIN TRICK`. NENHUM INGREDIENTE
+  ENDURECE** (ordem do operador, 2026-08-02).
+
+  **O que saiu:**
+  ```
+  Passion fruit hardens you. (…) But the gelatin trick is what gets you rock hard.
+  ```
+  A fruta já entregou o que a virada vende. Se o maracujá endurece, **o
+  espectador não precisa do truque** — ele precisa de maracujá, que ele compra
+  sozinho, sem comentar, sem entrar na DM.
+
+  > **O que a lista entrega e o que o truque entrega não podem ser a mesma
+  > coisa.** A lista é o motivo de ficar; o truque é o motivo de comentar. Se a
+  > lista já resolve, o CTA é decorativo.
+
+  É o mesmo mecanismo do **CL7** (os itens funcionam, mas sozinhos não bastam),
+  levado até a palavra: não basta *dizer* que falta algo se a copy anterior já
+  prometeu o resultado final.
+
+  | | |
+  |---|---|
+  | ⛔ os ingredientes **nunca** | `hard` · `harder` · `hardens` · `stiff` · `erect` · `as rock` · `to stone` · `steel` |
+  | ✅ os ingredientes entregam | fluxo · resistência · **vasos dilatados** · recuperação · sensação · pressão · libido · oxigênio |
+  | ✅ só o truque | `the gelatin trick gets your {o} rock hard` |
+
+  Foi por isso que `Passion fruit and cinnamon harden you fast` virou
+  `Passion fruit and cinnamon widen every vessel` — a **única** linha dos dois
+  pools que prometia dureza.
+
+  **No motor, asserção na carga do módulo** (como o CL22): reprova qualquer
+  item A ou item B com vocabulário de dureza, e qualquer virada que prometa
+  dureza **sem** nomear o `gelatin trick`.
+
+  ⚠️ 🟡 **PENDENTE — três HOOKS da cena 1 violam esta regra e eu não os
+  toquei** (copy é do operador, `CLAUDE.md` §Regra de alçada). Eles atribuem a
+  dureza aos quatro itens, não ao truque:
+  ```
+  You don't need a pill to get hard. These four are two dollars.
+  You don't need a prescription to get hard. You need these four.
+  Nobody told you groceries could get your {o} hard. These four are the secret.
+  ```
+  A asserção do motor **não cobre os HOOKS** justamente para não travar o app
+  com copy aprovada. Decisão do Ed: reescrever os três, ou aceitar que na cena
+  1 a promessa é isca e o CL23 vale só da cena 2 em diante.
 
 ---
 
@@ -696,29 +759,20 @@ segundos.
 | cena | combinações |
 |---|---|
 | 1 · A FILEIRA | 14 |
-| 2 · A LISTA + A VIRADA | **1232** |
+| 2 · A LISTA + A VIRADA | **1400** |
 | 3 · CTA | 168 |
 
-⚠️ **A cena 2 caiu de 1400 para 1232 com o CL22.** Dos 100 pares item A × item
-B, **12 colidem** (mesma fruta, mesmo ingrediente do truque ou mesmo benefício)
-e estão fora do sorteio; sobram 88 pares × 14 viradas. Contado no motor, não a
-olho — foi assim que apareceu o par melancia/couve, que eu tinha deixado passar
-na leitura manual. Os 12 banidos:
+⚠️ **Os 1400 da cena 2 são os 100 pares × 14 viradas — todos válidos.** Não é
+que o solver do CL22 parou de rodar: é que **não sobrou nada para ele
+descartar**, porque os dois pools ficaram disjuntos. Ele continua no motor
+como rede de segurança.
 
-| item A | colide com | por quê |
-|---|---|---|
-| `Beetroot opens the flow` | `Beetroot and baking soda open the blood flow` | fruta **e** benefício |
-| `Watermelon builds your stamina` | `Watermelon and honey sweeten your milk for the girls` | fruta |
-| `Watermelon builds your stamina` | `Kale and baking soda keep you going all night` | benefício |
-| `Ginger wakes the system` | `Ginger and cinnamon wake the whole system up` | fruta **e** benefício |
-| `Celery thickens the tip` | `Celery and baking soda thicken your milk` | fruta **e** benefício |
-| `Passion fruit hardens you` | `Passion fruit and cinnamon harden you fast` | fruta **e** benefício |
-| `Coconut restores your twenties` | `Coconut and honey bring your twenties back` | fruta **e** benefício |
-| `Pineapple cleans your blood` | `Pineapple and honey make your milk sweet` | fruta |
-| `Spinach keeps you going` | `Spinach and honey make your milk sweet for her` | fruta |
-| `Spinach keeps you going` | `Kale and baking soda keep you going all night` | benefício |
-| `Cinnamon steadies the pressure` | `Ginger and cinnamon wake the whole system up` | ingrediente do truque |
-| `Cinnamon steadies the pressure` | `Passion fruit and cinnamon harden you fast` | ingrediente do truque |
+📌 **Como se chegou aqui.** A primeira tentativa manteve os pools se
+sobrepondo e deixou o solver rejeitar os pares repetidos — 12 dos 100 caíam, e
+a cena 2 descia para 1232. Funcionava, mas pagava a repetição com repertório.
+O operador mandou o caminho certo (2026-08-02): **consertar o ITEM A**, que era
+o lado fraco, e não tocar no ITEM B, que ele aprovou. Resultado: zero
+repetição possível **e** os 1400 de volta.
 
 ---
 
@@ -749,21 +803,30 @@ Montagem: `{item A}. {item B}. {virada}`.
 
 ### ITEM A — abre a lista, teto de 4 palavras (10)
 
-⛔ **Nenhuma linha desta lista cita o leite** (CL22). O leite é assunto do ITEM
-B, que vem logo em seguida — repetir aqui produz a fala redundante que o
-operador barrou em 2026-08-02 (`Pineapple sweetens your milk.` seguido de
-`Spinach and honey make your milk sweet for her.`).
+⭐⭐ **Este pool é DISJUNTO do ITEM B** (ordem do operador, 2026-08-02).
+Nenhuma linha daqui usa ingrediente ou benefício que apareça em **qualquer**
+linha do ITEM B. Não é o solver que garante — é a construção.
 
-- `Beetroot opens the flow`
-- `Watermelon builds your stamina`
-- `Pomegranate pushes blood down`
-- `Ginger wakes the system`
-- `Celery thickens the tip`
-- `Passion fruit hardens you`
-- `Coconut restores your twenties`
-- `Pineapple cleans your blood`
-- `Spinach keeps you going`
-- `Cinnamon steadies the pressure`
+| # | linha | ingrediente | benefício |
+|---|---|---|---|
+| 1 | `Pomegranate cleans your blood` | romã | sangue |
+| 2 | `Garlic raises your drive` | alho | libido |
+| 3 | `Walnuts sharpen the feeling` | nozes | sensação |
+| 4 | `Blueberries steady the pressure` | mirtilo | pressão |
+| 5 | `Turmeric fights inflammation` | cúrcuma | inflamação |
+| 6 | `Oats speed your recovery` | aveia | recuperação |
+| 7 | `Avocado feeds the pump` | abacate | bomba |
+| 8 | `Cayenne heats you up` | pimenta (em pó) | calor |
+| 9 | `Grapes carry oxygen down` | uva | oxigênio |
+| 10 | `Tomatoes protect your prostate` | tomate | próstata |
+
+⛔ **Nenhuma cita o leite** — o leite é assunto exclusivo do ITEM B.
+⛔ **A pimenta entra em PÓ, nunca a vagem inteira** (CL2: nada alongado em
+cena). Mesma razão pela qual o abacate se parte como o limão.
+
+⚠️ **Ao acrescentar linha aqui, conferir contra o ITEM B.**
+[`clean_short.py`](funil-organico/clean_short.py) reprova sozinho na carga do
+módulo — a asserção roda no `import`, não no linter de um sorteio.
 
 ### ITEM B — leva o ingrediente do truque junto (10)
 
@@ -946,6 +1009,7 @@ que converte.
 - [ ] **`gelatin trick` literal na cena 2** · CTA GELATIN + follow-gate na cena 3?
 - [ ] **Tetos de fala**: 20-26 / 26-34 / 22-28?
 - [ ] ⭐⭐ **Item A e item B não repetem fruta, ingrediente nem benefício** (CL22)? ⛔ Nenhum item A cita leite?
+- [ ] ⭐⭐ **Nenhum ingrediente promete dureza** — só o `gelatin trick` endurece (CL23)?
 - [ ] ⛔ **Zero comparação numérica de tamanho** (CL10)?
 - [ ] Cada cena com 2ª pessoa ou imperativo (P22)?
 
