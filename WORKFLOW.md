@@ -231,7 +231,7 @@ O PRISMA sorteia; o especialista do ângulo sorteado executa.
 |---|---|---|
 | `AGENTE_ED_FLAGRANTE_V1.md` | humilhação pública (M15) | 20-50x a média (Tanisha) |
 | `AGENTE_ED_GEMEO_V1.md` | antes/depois gêmeo (M6) | ⭐ **345K — o recorde** (Zariah) |
-| `AGENTE_ED_RESSURREICAO_V1.md` | despejo → prop ressuscita (H6/H7/P17) | Tanisha 1.6K, IA aprovada na moderação |
+| `AGENTE_ED_RESSURREICAO_V1.md` | **o despejo que ressuscita** — o líquido cai sobre o prop murcho e ele **alonga na tela**, dentro do take. ⭐ Emendado em 2026-08-02 com a fonte medida em pixels: a escala é **diferencial** (altura 2,31× / largura 1,44× — ele *alonga*, não incha, e termina 61% mais esguio), o morph mora no **apagão de fala** (R7) e acontece **oculto dentro do jato** (R8). ⭐ Ganhou variante **SHORT nativa 3×8s** com flag `--credibilidade confirma\|desmente` (default `confirma`) | Tanisha 1.6K, IA aprovada na moderação · Zariah 345K (mesma mecânica em cut seco) · fonte nova Sofia Maren `2357188248143783` **3.872**, a mediana da própria página — ⚠️ **nada entrou por performance**, entrou por medição. Motor `ressurreicao_short.py` + `.exe` |
 | `AGENTE_ED_DEMO_QUIMICA_V1.md` | a reação química é a prova (M4/E5) | 7.1K/5K/4.3K |
 | `AGENTE_ED_SUBSTANCIA_ABSURDA_V1.md` | comando impossível (M1/M8) | 18K — top Kofi&Simba |
 | `AGENTE_ED_DIAGNOSTICO_V1.md` | "this is you" — tríade/contrastes (M3/E8) | 10K |

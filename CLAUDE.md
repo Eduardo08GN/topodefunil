@@ -43,8 +43,12 @@ entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
 [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
 Portados ate agora: **FLAGRANTE**, **PEE**, **VAZAMENTO**, **NECROSE** e **TROCA** — a interface e' compartilhada (`ui_agente.py`), so' o motor muda.
 ⭐ **SHORT NATIVO** e a terceira via, e nao tem motor longo nenhum: **ORGANICWAVE** e
-**TROCA** (2026-08-01) nascem em 3 cenas porque a fonte garimpada e' de 12-14s, e
-**ESCANDALO** (2026-08-02) porque o angulo nasce em tres cenas mesmo com fonte de 42s.
+**TROCA** (2026-08-01) nascem em 3 cenas porque a fonte garimpada e' de 12-14s,
+**ESCANDALO** (2026-08-02) porque o angulo nasce em tres cenas mesmo com fonte de 42s,
+e **RESSURREICAO** (2026-08-02) porque o angulo ja' existia em 5 cenas mas cabe
+inteiro em tres batidas — despejo/crescimento, receita incompleta, prova.
+⚠️ No RESSURREICAO a variante SHORT **nao revoga** o arco longo de 5 cenas: os dois
+formatos coexistem no mesmo `.md`, e nao existe `ressurreicao_lucas.py`.
 Nao criar `<agente>_lucas.py` de 5 cenas para eles — o motor curto e' o motor.
 Cada um tem tambem a variante **SHORT** (3 cenas de 8s, para o AdBatch Vertical 3):
 `<agente>_short.py` **deriva** do motor longo em vez de copia-lo — a maquinaria do
@@ -75,7 +79,11 @@ masculino na cena 3 — Julie Evans, mediana 25,5K em 7 reels),
 **ESCANDALO** (a plateia congelada que a fala nunca menciona: 1-2 figurantes mudos,
 em foco ao lado da cabeça dela, congelados de olhos arregalados enquanto ela ergue o
 par eixo+orifício; o homem do hook volta como corpo-prova na cena 3 — Sofia Maren,
-32.930 no reel fundador).
+32.930 no reel fundador),
+**RESSURREICAO** (o despejo faz o prop murcho **alongar na tela** — e a escala é
+**diferencial**: altura 2,31× contra largura 1,44×, medido em pixels na fonte, então
+ele alonga em vez de inchar; escala uniforme lê como tumescência e já derrubou vídeo
+nosso. O morph mora no apagão de fala e acontece oculto dentro do jato).
 Tabela completa com evidências no WORKFLOW.md. Todos enxutos: regras
 próprias + mecânica por ponteiro (V4/PRISMA/arsenal). O PRISMA sorteia a spec;
 o especialista do ângulo sorteado executa. ⛔ `fake_broadcast` está banido.

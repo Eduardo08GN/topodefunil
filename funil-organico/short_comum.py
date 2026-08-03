@@ -475,6 +475,49 @@ def lint_cta_literal(fala_cta, achados, rotulo="a cena do CTA"):
                                 "2026-08-02)" % (rotulo, CTA_LITERAL)))
 
 
+# ---------------------------------------------------------------------------
+# ⛔ SE UMA CENA CRESCE, AS OUTRAS NAO CRESCEM
+# ---------------------------------------------------------------------------
+# Doutrina: RESSURREICAO §"Se a cena 1 cresce, nada cresce nas cenas 2 e 3", que
+# declara literalmente "vira LINTER no short_comum.py e vale para todo SHORT que
+# vier". Ate' 2026-08-02 a regra existia so' dentro do `ressurreicao_short.py` —
+# o ponteiro da doutrina apontava para um arquivo que nao a tinha.
+#
+# O arco longo ja' proibe PICO2 da familia crescimento (o hook ja' cresceu; dois
+# choques iguais somam a um). Em 24 segundos a regra fica mais dura: fora da
+# cena que cresce, o prop e' OBJETO ESTATICO DECLARADO.
+#
+# ⚠️⚠️ POR QUE E' OPT-IN E NAO RODA SOZINHA DENTRO DO `lint_curto`: medido em
+# 2026-08-02, 100 sorteios por motor. Ligada para todos, ela reprovaria
+# ORGANICWAVE, FLAGRANTE, PEE, VAZAMENTO e NECROSE em **100% dos sorteios** —
+# os cinco declaram o prop `stiff` no IMAGE do payoff, que la' e' o estado
+# correto e validado em render. Linter que reprova tudo nunca foi testado
+# (licoes-de-construcao §2), e ligar isto no automatico seria trocar um ponteiro
+# morto por cinco motores quebrados. Quem cresce numa cena so' chama; os outros
+# nao chamam.
+CRESCIMENTO = re.compile(
+    r"\b(grows?|growing|lengthens?|extends?|expands?|doubles?|swells?|swelling|"
+    r"rises?|stiffens?|stiff|limp|sags?|erect|pulse|throb)\b", re.I)
+
+
+def lint_nada_cresce(blocos, achados, excecao=(), rotulo="a regra"):
+    """Vocabulario de crescimento fora dos blocos que tem licenca para cresce-lo.
+
+    excecao — chaves de bloco onde crescer e' o trabalho (ex.: ("TAKE 01/03",)).
+    ⚠️ So' varre a DIRECAO de cena: a fala nunca entra na varredura de token.
+    """
+    for nome in sorted(blocos):
+        if nome in excecao or nome.startswith("BLOCO"):
+            continue
+        direcao = blocos[nome].split(chr(10) + "Dialogue:")[0]
+        achado = sorted({m.group(0).lower()
+                         for m in CRESCIMENTO.finditer(direcao)})
+        if achado:
+            achados.append(("ERRO", "%s: %s tem vocabulario de crescimento %s — "
+                                    "so' a cena do bit visual cresce"
+                            % (rotulo, nome, achado)))
+
+
 def lint_sem_texto(blocos, achados):
     """Guarda da trava — sem isto ela sai de novo no proximo refactor."""
     for chave in sorted(blocos):

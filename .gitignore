@@ -3,6 +3,7 @@ node_modules/
 .playwright-mcp/
 funil-organico/.ledger-v6.json
 funil-organico/.escandalo-short-ledger.json
+funil-organico/.ressurreicao-short-ledger.json
 funil-organico/__pycache__/
 
 # artefatos de build do PyInstaller

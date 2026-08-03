@@ -402,6 +402,81 @@ estado final do original** (`when it is up there is nothing left hanging over
 the edge`). Sem ela, a solução preguiçosa — deixar o velho parado e subir um
 novo — continua satisfazendo o prompt.
 
+#### ⭐⭐ Elemento 8 — OCLUSÃO: o jato é a cortina, não só o cabo (2026-08-02)
+
+> **Selo 🟡** — medição frame a frame da fonte
+> ([`sofia-maren-pouring-mapa-visual`](../concorrentes/sofia-maren-pouring-mapa-visual.md)),
+> **sem render nosso ainda**. Sobe a 🟢 no primeiro take que sair.
+
+Medido no MP4: o jato de pó **engrossa 0,3s antes** do morph, e entre 3,6 e 4,0s
+o prop **some dentro da coluna**. É lá dentro que a escala vira; o
+reconhecimento vem quando a **ponta reaparece lá em cima**, na altura nova.
+
+> **O despejo faz dois trabalhos: é o CABO que liga causa a efeito, e é a
+> CORTINA que esconde a transformação.** Sem a cortina, o Veo tem de resolver a
+> mudança de forma **em campo aberto** — que é a parte cara, e é exatamente onde
+> ele inventa (bicho se levantando, segundo prop, anatomia impossível). Aqui o
+> próprio prompt entrega a cortina.
+
+```
+A third of a second before it changes, <jato> thickens into a wide column and
+the <prop> is hidden inside it and cannot be seen. It comes back out of the
+column of <substância> already at its new length, <topo> first. The column thins
+again the instant it stops.
+```
+
+⚠️ **Não marca segundos absolutos, de propósito.** O bloco de batidas (R2b) já
+possui o relógio (`0 to 3 seconds:` / `3 to 5 seconds:`); uma oclusão que
+também dissesse `0 to 3 seconds:` disputaria o mesmo intervalo com ele, e prompt
+que se contradiz o modelo resolve como quiser. A âncora é **o instante da
+mudança**.
+
+⚠️ **A oclusão é de PÓ, nunca de corte.** A detecção de cena na fonte confirma
+que **não há corte dentro do crescimento** — é morph em plano contínuo. ⛔ Zero
+`cut`, zero `transition`, e **zero efeito gráfico**: sem partícula, sem glow,
+sem whoosh, sem flash, sem trilha. O crescimento é **puramente geométrico**, e a
+cor do prop **não muda**.
+
+⚠️ **Se o take tem um cronômetro (monte de pó crescendo na mesa), o jato NÃO
+para.** Na fonte ele para 0,05s depois do morph, porque lá o reel continua por
+mais 35 segundos. Num take de 8s, parar o despejo mata o cronômetro — e sem
+tempo passado o crescimento não tem por que ter acontecido. A coluna **afina**;
+a mão **não baixa**.
+
+#### ⭐ Emenda ao elemento 4 — a escala é DIFERENCIAL: alonga muito, engrossa pouco
+
+⚠️ **Isto não é um elemento novo, e a distinção importa:** é propriedade do
+**estado final travado** (elemento 4), e por isso entrou como emenda da **R2** do
+[`RESSURREICAO`](../AGENTE_ED_RESSURREICAO_V1.md), não como batida.
+⛔ **Numeração:** o mapa da fonte propôs escala=8 e oclusão=9; a doutrina fechou
+em **oclusão = 8** e escala = propriedade do 4. É esta que vale. Quem encontrar
+a outra numeração em qualquer arquivo está lendo coisa desatualizada.
+
+Medido em pixels (quadro 480×853, câmera provada fixa):
+
+| Medida | Antes | Depois | Fator |
+|---|---|---|---|
+| **altura** | 149px | 345px | **2,31×** |
+| **largura** | 73px | 105px | **1,44×** |
+| razão comprimento/largura | 2,04 | 3,29 | **+61%** |
+
+> **Ele não incha: ele ALONGA.** Termina **61% mais esguio** do que começou.
+
+⛔ **Por que o silêncio sobre a grossura é perigoso:** mandar "dobrar de
+comprimento" e calar sobre largura **autoriza** o Veo a escalar o objeto
+inteiro — e escala uniforme lê como **inchaço**, que é o vocabulário de
+tumescência (`swell`, `swelling`, `pulse`) que já derrubou vídeo nosso. A regra
+diz as **duas** coisas:
+
+```
+its length roughly doubles while its width barely changes, so it finishes
+noticeably slimmer in proportion than it started
+```
+
+⭐ E a explicação física sai de graça: a **mesma quantidade de pó** espalhada
+numa área 2,3× maior vira **estria vertical** em vez de capa — o prop sai de
+"nevado" e chega em "molhado e estriado".
+
 #### ⛔ Prop com prior dominante não serve para take de transformação
 
 O geoduck queimou **5 tentativas seguidas** no mesmo lote. A causa não foi
