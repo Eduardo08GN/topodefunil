@@ -395,6 +395,41 @@ def orgao_de(base, fala, padrao="Johnson"):
 SEM_TEXTO_TAKE = "No on-screen text, no subtitles, no captions, no watermark."
 
 
+def selar_tags(blocos):
+    """Todo bloco IMAGE/TAKE comeca com o proprio nome. Idempotente.
+
+    ⛔ Achado do operador em 2026-08-03, lendo o app: o CLEAN entregava os seis
+    blocos SEM a tag — `Animate the provided image exactly...` em vez de
+    `TAKE 03/03: Animate...`. Os outros nove motores traziam.
+
+    POR QUE IMPORTA, e nao e' cosmetico: o AdBatch Vertical parseia o roteiro
+    colado procurando os cabecalhos de bloco. Bloco sem tag ou entra no slot
+    errado ou nao entra. E quando o operador copia os 3 IMAGE de uma vez, a tag
+    e' a UNICA coisa que separa um do outro no texto corrido.
+
+    ⚠️ `BLOCO 0 (REF)` fica de fora de proposito: la' a convencao e' `REF 01:`,
+    que e' o que o AdBatch espera — nao o nome da chave.
+    """
+    for chave, txt in list(blocos.items()):
+        if not chave.startswith(("IMAGE", "TAKE")):
+            continue
+        if txt.lstrip().startswith(chave):
+            continue
+        blocos[chave] = "%s: %s" % (chave, txt.lstrip())
+    return blocos
+
+
+def lint_tags(blocos, achados):
+    """Guarda do contrato acima — sem isto ele sai de novo no proximo refactor."""
+    for chave in sorted(blocos):
+        if not chave.startswith(("IMAGE", "TAKE")):
+            continue
+        if not blocos[chave].lstrip().startswith(chave):
+            achados.append(("ERRO", "%s nao comeca com a propria tag — o "
+                                    "AdBatch parseia por cabecalho de bloco"
+                            % chave))
+
+
 def selar_takes(blocos):
     """Poe a trava de texto queimado em todo bloco TAKE. Idempotente."""
     for chave, txt in list(blocos.items()):

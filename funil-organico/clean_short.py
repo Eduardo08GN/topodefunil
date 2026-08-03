@@ -31,6 +31,7 @@ import os
 import random
 import re
 
+import short_comum as sc
 from nucleo_sonoro import sonorizar
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -822,12 +823,22 @@ def montar(spec):
             'Dialogue: "%s"\nAudio: %s'
             % (idade, "man" if spec["sexo"] == "homem" else "woman",
                mov[i], toca, S, sonorizar(spec["falas"][i]), audio[i]))
-    return b
+    # ⛔ 2026-08-03: os seis blocos saiam SEM a tag (`Animate the provided
+    # image...` em vez de `TAKE 03/03: Animate...`), e o AdBatch parseia por
+    # cabecalho de bloco. Os outros nove motores traziam; so' este escapou.
+    # Normaliza aqui, num lugar so': os blocos sao montados em SETE pontos
+    # (duas familias de cena x tres IMAGE, mais o laco dos TAKE), e remendar os
+    # sete e' garantir que o proximo refactor esquece um.
+    return sc.selar_tags(b)
 
 
 def lint(spec, blocos):
     ach = []
     falas = spec["falas"]
+
+    # ⛔ 2026-08-03: guarda do contrato de tag. O operador achou os seis blocos
+    # sem `IMAGE 0x/03:` / `TAKE 0x/03:` no proprio app.
+    sc.lint_tags(blocos, ach)
 
     for i, f in enumerate(falas, 1):
         n = _palavras(f)
