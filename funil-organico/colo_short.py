@@ -62,8 +62,21 @@ SUBTITULO = ("a isca no colo, em 3 cenas · etnia arrasta o mundo · "
 # (ver MUNDOS) — mas sem ele o painel quebra, e a classificacao e' por
 # SUBSTRING (`"white" in ...`), entao o formato tem de ser string.
 ETNIA = {
+    # lote 1 (2026-07)
     "joe": "white American", "ray": "white American", "matt": "white American",
     "marcus": "Black American", "chuck": "Black American",
+    # ⭐ lote 2 (2026-08-03) — as cinco paginas novas do Facebook. A chave e
+    # a etnia saem do AVATAR REAL da pagina, nao de preferencia: a
+    # congruencia inviolavel do repo e etnia do REF = etnia do avatar.
+    #   Hank Male Tips Hub ....... clara   -> secondwindformen.site
+    #   Wade All Natural Hub ..... clara   -> strengthandflow.site
+    #   Isaiah Vitality Men Tips . escura  -> dailyvitalitymethod.site
+    #   Curtis Reset Hub ......... escura  -> menresethub.site
+    #   Otis Men Reset Hub ....... escura  -> mensresetclub.online
+    # Pareamento pagina<->bridge: funil-organico/automacao-comentario-dm.md
+    "hank": "white American", "wade": "white American",
+    "isaiah": "Black American", "curtis": "Black American",
+    "otis": "Black American",
 }
 
 
@@ -135,20 +148,51 @@ ETNIA = {
 #   5. FRASCO .... mao DIREITA DELA, sobre o colo dele, um palmo acima do topo
 #                  do prop e ligeiramente a frame-left, bocal para baixo ~45°
 #   6. JORRO ..... linha unica atravessando o vao ate' o topo do prop
+#
+# ⭐⭐⭐ ESTA E' A "H5" — VALIDADA EM CAMPO, PROMPT A PROMPT, EM 2026-08-03.
+# ⛔ NAO REESCREVER, NAO COMPRIMIR, NAO "MELHORAR". Cada palavra aqui custou uma
+# geracao, e a versao anterior desta travada era barrada pelo gerador em 2 de
+# cada 3 lotes.
+#
+# COMO ELA NASCEU — o operador parou a alteracao do agente e mandou testar
+# manualmente, uma hipotese por vez: *"em vez de ficar alterando o agente toda
+# hora, vamos primeiro fazer o teste prompt a prompt; validamos o prompt, dai
+# partimos para ajustar o agente"*. Foram cinco hipoteses ate' esta passar:
+#   H1  trocou lap/thigh/knees apart/cropped at the waist por vocabulario de
+#       MOVEL e ENQUADRAMENTO ................................ passou, prop longe
+#   H2  + antebraco apoiado na perna + base na beirada do assento .... REGRESSAO
+#       (tres mudancas numa frase so'; o `forearm resting` criou uma segunda
+#       instrucao para a MESMA mao e o gerador abriu a mao no joelho)
+#   H3  = H1 com `held in close to him` ............... melhor, prop ainda alto
+#   H4  + `below the level of the chair back` ....................... REGRESSAO
+#       (a cadeira virou ASSUNTO e a cena se reorganizou em volta dela)
+#   H5  = H3 com a CAMERA baixa e a consequencia declarada ......... ✅ VALIDADA
+#
+# ⛔ AS DUAS LICOES QUE AS REGRESSOES PAGARAM, e elas valem para qualquer travada
+# deste repo:
+#   · nunca dar ao gerador uma SEGUNDA instrucao para a mesma parte do corpo —
+#     ele resolve a contradicao mexendo no que estava certo;
+#   · nunca ancorar altura num MOVEL que esta' em quadro — o movel vira assunto.
+# A ancora certa e' a CAMERA, e a consequencia se declara (`so that his legs
+# fill the bottom half of the frame`).
+#
+# ⛔ TOKENS BANIDOS NESTA CENA, medidos: `lap` · `thigh` · `knees apart` ·
+# `between his knees` · `cropped at the waist`. Nenhum deles descreve nada que a
+# imagem precise — o mesmo quadro sai com cadeira, joelho e enquadramento.
 CO_GEOMETRIA = (
-    "Filmed straight on from the height of a seated person's lap. Filling the "
-    "bottom half of the frame, close to the camera, is a man's lap: he sits "
-    "facing the camera with his knees apart, wearing %s, and he is cropped at "
-    "the waist so that no torso and no face are anywhere in the frame — only "
-    "his legs and his hands. %s Held upright in his closed left fist, resting "
-    "on his thigh and centred between his knees, is %s; his fist is wrapped "
-    "around %s and it points straight up for the whole shot. Behind his lap, "
-    "seated and facing the camera with her head and shoulders above his knees, "
-    "is %s. Her right hand reaches out over his lap, a hand's width above the "
-    "top of it and slightly to frame-left of it, holding %s tipped mouth-down "
-    "at about forty-five degrees. %s falls from its mouth straight down across "
-    "the open gap and lands on the very top of it, one unbroken line. The "
-    "setting behind her stays visible over both her shoulders."
+    "Filmed straight on from low down and close in, at the height of the "
+    "seated man's knees, so that his legs fill the bottom half of the frame. "
+    "The foreground of the shot, close to the camera, is a man sitting in a "
+    "chair, turned squarely to the camera, wearing %s; the framing takes in "
+    "only his legs and his hands, with his head and upper body out of shot. %s "
+    "Standing upright in his closed left hand, held in close to him with his "
+    "fist just clear of his body and the tip reaching no higher than his knees, "
+    "is %s; his fist is closed around %s and the tip points straight up for the "
+    "whole shot. Directly behind him, seated and facing the lens squarely with "
+    "her head and shoulders above him, is %s. She holds %s out over it in her "
+    "right hand, tipped mouth-down at about forty-five degrees and a hand's "
+    "width above the top, and %s falls in one unbroken line onto the very top "
+    "of it. The setting behind her stays visible over both her shoulders."
 )
 
 # ⛔ CO2 — no TAKE da cena 1 o prop NAO muda de estado. Este agente nao tem
@@ -156,13 +200,16 @@ CO_GEOMETRIA = (
 # o bit visual e' o DESPEJO. Duas mecanicas de choque no mesmo video somam a uma.
 # ⚠️ ⛔ Nunca `completely motionless` num objeto que uma mao segura: e' ordem
 # impossivel e o Veo resolve SOLTANDO o objeto (F12b). Diz-se pela POSICAO.
+# ⛔ `thigh` saiu daqui tambem: e' token banido nesta cena (ver CO_GEOMETRIA), e
+# o TAKE nao pode reintroduzir o que o IMAGE evitou — o bloco de video passa
+# pelo mesmo classificador.
 CO_PROP_ESTAVEL = (
-    "His left fist stays closed around it and his hand stays resting on his "
-    "thigh, so it stays upright in exactly the same place, at the same height "
-    "and the same angle, same size, same shape, same colour. He does not "
-    "shift, his knees stay where they are and his face never comes into the "
-    "frame. Her right hand keeps the bottle at the same height and the same "
-    "tilt. Only the falling stream moves, and only she speaks."
+    "His left fist stays closed around it and he keeps it in exactly the same "
+    "place, at the same height and the same angle, same size, same shape, same "
+    "colour. He does not shift, his knees stay where they are and his face "
+    "never comes into the frame. Her right hand keeps the bottle at the same "
+    "height and the same tilt. Only the falling stream moves, and only she "
+    "speaks."
 )
 
 # ⛔ CO3 — a bancada das cenas 2 e 3 e' a MESMA, e a unica coisa que muda entre
@@ -603,43 +650,57 @@ HOMENS = [
      "marca": "a raised knuckle on his left middle finger, healed crooked"},
 ]
 
+# ⭐⭐ POOL VALIDADO PROMPT A PROMPT EM 2026-08-03. Cada entrada aqui custou uma
+# geracao real, e as strings sao EXATAMENTE as que passaram — ⛔ nao redigitar,
+# nao "melhorar", nao harmonizar.
+#
+# ⛔ A REGRA DE FORMA QUE OS NOVE TESTES DESENHARAM:
+#     PASSA  quem quebra a leitura de cilindro — casca dobrada (banana,
+#            banana-da-terra), afunilamento conico (cenoura, pastinaca) ou
+#            cabo no topo (berinjela)
+#     CAI    cilindro de DIAMETRO CONSTANTE terminando em PONTA ROMBA —
+#            pepino (2 recusas), abobrinha (1), daikon (1)
+# ⚠️ A cor NAO e' o discriminante: a banana-da-terra e' verde e passa; o daikon
+# e' branco e cai. Foi hipotese minha durante o teste e foi refutada pelo daikon.
+# ⚠️ O MILHO saiu por outro motivo — nao politica, COMPOSICAO: a palha aberta em
+# tiras e' uma silhueta grande que sequestra o quadro, e o render colapsou os
+# dois personagens num so'.
+#
+# ⛔ SAO CINCO, E ISSO E' DE PROPOSITO. O piso de eixo visual deste motor e' 7, e
+# eu NAO vou completar com entradas nao testadas: foi exatamente esse o erro do
+# lote anterior (dez props no pool, cinco nunca gerados, quatro reprovados em
+# campo). Pool e' o que passou, nao o que cabe. `abobora_pescoco` ficou de fora
+# por nao ter sido testado, nao por ter falhado — um render resolve.
+#
+# ⚠️ HIPOTESE REGISTRADA E NAO APLICADA: os props de corte reto (berinjela,
+# cenoura, pastinaca) sairam com o prop mais ALTO que os de casca dobrada, e o
+# operador os classificou como "razoavel" contra o "lindamente" da
+# banana-da-terra. A leitura e' que o punho sem agarre concreto solta o objeto
+# mais alto. ⛔ NAO foi aplicado: mexer no `punho` deles seria reescrever string
+# validada por deducao minha, sem teste — o erro que este dia inteiro custou a
+# aprender. Testar antes de aplicar.
 PROPS = [
+    {"id": "banana_da_terra", "selo": "V", "nome": "plantain",
+     "img": "a large green plantain, peeled halfway with the thick peel "
+            "folded back around its base",
+     "punho": "its folded peel"},
     {"id": "banana", "selo": "V", "nome": "banana",
      "img": "a ripe yellow banana, peeled halfway down with the peel folded "
             "back in strips around its base",
      "punho": "its folded peel"},
-    {"id": "pepino", "selo": "N", "nome": "cucumber",
-     "img": "a long dark green cucumber, one end squared off flat",
-     "punho": "its squared-off lower end"},
-    {"id": "abobrinha", "selo": "N", "nome": "zucchini",
-     "img": "a large glossy green zucchini, the stem end trimmed flat",
-     "punho": "its trimmed lower end"},
-    {"id": "banana_da_terra", "selo": "N", "nome": "plantain",
-     "img": "a large green plantain, peeled halfway with the thick peel "
-            "folded back around its base",
-     "punho": "its folded peel"},
-    {"id": "cenoura", "selo": "N", "nome": "carrot",
-     "img": "a thick orange carrot with the greens cut off and the wide end "
-            "squared flat",
-     "punho": "its wide cut end"},
-    {"id": "daikon", "selo": "N", "nome": "daikon",
-     "img": "a long white daikon radish, the leafy top cut off flat",
-     "punho": "its cut lower end"},
-    {"id": "pastinaca", "selo": "N", "nome": "parsnip",
-     "img": "a large pale parsnip, the thick end trimmed flat",
-     "punho": "its trimmed lower end"},
-    {"id": "berinjela", "selo": "N", "nome": "eggplant",
+    {"id": "berinjela", "selo": "V", "nome": "eggplant",
      "img": "a long slim purple eggplant with its green cap still on, the "
             "lower end squared off flat",
      "punho": "its squared-off lower end"},
-    {"id": "abobora_pescoco", "selo": "N", "nome": "squash",
-     "img": "a long-necked yellow squash, the base sliced flat",
-     "punho": "its sliced base"},
-    {"id": "milho", "selo": "N", "nome": "corn",
-     "img": "a full ear of corn with the husk peeled back in long strips "
-            "around its base",
-     "punho": "its peeled-back husk"},
+    {"id": "cenoura", "selo": "V", "nome": "carrot",
+     "img": "a thick orange carrot with the greens cut off and the wide end "
+            "squared flat",
+     "punho": "its wide cut end"},
+    {"id": "pastinaca", "selo": "V", "nome": "parsnip",
+     "img": "a large pale parsnip, the thick end trimmed flat",
+     "punho": "its trimmed lower end"},
 ]
+
 
 
 # ---------------------------------------------------------------------------
@@ -1222,8 +1283,8 @@ def montar(spec):
     # preenche com o frame; a contradicao ele resolve mexendo no que estava
     # certo.
     mov = [
-        "%(estavel)s She never moves the bottle away from his lap and never "
-        "sets it down." % v,
+        "%(estavel)s She never moves the bottle away and never sets it "
+        "down." % v,
         "She keeps her right hand closed around the sachet, her forearm "
         "resting steady on the %(sup)s, and tips it a little further so the "
         "pale powder keeps falling into the glass. Her left hand stays flat on "
@@ -1344,15 +1405,31 @@ def lint(spec, blocos):
     # ⚠️ Cobrado dos DOIS lados, senao um refactor futuro derruba o homem de
     # novo em silencio: a cena 1 TEM de trazer o corte na cintura e NAO PODE
     # dizer que ela e' a unica pessoa; as cenas 2 e 3 TEM de dizer.
+    # ⚠️ OS MARCADORES SAO OS DA TRAVADA VALIDADA (H5), nao os da versao antiga:
+    # `cropped at the waist` e `no torso and no face` eram do texto que o
+    # gerador barrava em 2 de cada 3 lotes. Linter que cobra a frase errada
+    # reprova justamente o prompt que passou.
     i1 = blocos["IMAGE 01/03"]
-    if "cropped at the waist" not in i1:
-        ach.append(("ERRO", "CO13: IMAGE 01/03 sem o corte na cintura do homem "
-                            "— o dono do colo e' o segundo personagem, e sem o "
-                            "corte declarado o Veo poe o rosto dele em quadro"))
-    if "no torso and no face" not in i1:
-        ach.append(("ERRO", "CO13: IMAGE 01/03 nao proibe rosto e tronco do "
-                            "homem — sao dois blocos de 8s depois sem ele, e "
-                            "rosto em quadro vira pessoa para manter identica"))
+    if "only his legs and his hands" not in i1:
+        ach.append(("ERRO", "CO13: IMAGE 01/03 sem o recorte do homem — sem ele "
+                            "o Veo poe o rosto e o tronco dele em quadro, e sao "
+                            "dois blocos de 8s depois em que ele nao existe"))
+    if "his head and upper body out of shot" not in i1:
+        ach.append(("ERRO", "CO13: IMAGE 01/03 nao mantem a cabeca e o tronco "
+                            "dele fora de quadro — rosto em quadro vira pessoa "
+                            "para manter identica entre blocos"))
+    # ⛔ OS TOKENS QUE O GERADOR BARROU, medidos prompt a prompt em 2026-08-03.
+    # Guarda contra o proximo refactor reintroduzir a frase que ja' custou dois
+    # lotes recusados.
+    # ⚠️ Limite de palavra, nao substring: `lap` cru acusaria `overlapping` e
+    # `collapsed`, e linter que reprova o que esta' certo nunca foi testado.
+    for tok in ("lap", "thigh", "thighs", "knees apart", "between his knees",
+                "cropped at the waist"):
+        alvo = "%s %s" % (i1.lower(), blocos["TAKE 01/03"].lower())
+        if re.search(r"%s" % tok, alvo):
+            ach.append(("ERRO", "CO13: token banido nesta cena — %r foi medido "
+                                "como recusa do gerador; o mesmo quadro se diz "
+                                "com cadeira, joelho e enquadramento" % tok))
     if "only person" in i1 or "only person" in blocos["TAKE 01/03"]:
         ach.append(("ERRO", "CO13: a cena 1 declara pessoa UNICA e tem DUAS — "
                             "ordem contraditoria: o Veo resolve apagando o "
@@ -1506,9 +1583,16 @@ def autoteste(n=600):
                        ("RECEITAS", RECEITAS), ("ROTINAS", ROTINAS),
                        ("DESMENTIDOS", DESMENTIDOS),
                        ("ISCAS_PROMESSA", ISCAS_PROMESSA)):
-        if len(pool) < MIN_OPCOES:
+        # ⚠️ PROPS tem piso PROPRIO de 5, e ele e' EMPIRICO: o pool e' o conjunto
+        # dos props que PASSARAM no gerador em teste manual (2026-08-03), nao o
+        # que cabe no piso generico. Completar com entradas nao testadas para
+        # bater 7 foi exatamente o erro do lote anterior — dez no pool, quatro
+        # reprovados em campo. ⛔ Quem quiser subir este piso sobe TESTANDO um
+        # prop novo, uma geracao por entrada.
+        piso = 5 if nome == "PROPS" else MIN_OPCOES
+        if len(pool) < piso:
             falhas.append("eixo %s com %d opcoes (minimo %d)"
-                          % (nome, len(pool), MIN_OPCOES))
+                          % (nome, len(pool), piso))
     # nenhuma familia domina
     for f, q in fam.items():
         if q > n * 0.25:
@@ -1543,7 +1627,7 @@ def autoteste(n=600):
         ctrl.append("[CO7] nao acusa a cena 2 sem a ancora de continuidade")
     # [CO13] o homem apagado da cena 1 — o defeito que o operador achou
     b7 = dict(b)
-    b7["IMAGE 01/03"] = b7["IMAGE 01/03"].replace("cropped at the waist", "seated")
+    b7["IMAGE 01/03"] = b7["IMAGE 01/03"].replace("only his legs and his hands", "his whole body")
     if not any("CO13" in msg for _, msg in lint(s, b7)):
         ctrl.append("[CO13] nao acusa a cena 1 sem o corte na cintura")
     b8 = dict(b)

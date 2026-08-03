@@ -111,13 +111,53 @@ apontar pra mesma coisa: a receita do gelatin trick.**
 Todas gelatin; muda só o slug/domínio (e a VSL de destino, mas o link da DM é
 sempre a **bridge**, não a VSL direta).
 
-| Página | Link na DM |
+### Lote 1 — as 5 primeiras
+
+| Página (nome real no Facebook) | Link na DM | Pele |
+|---|---|---|
+| Joe's Wellness hub | `https://manresethub.pro/?p=manresethub` | clara |
+| Marcus' Men Reset Hub | `https://vitalresetlab.site/?p=vitalresetlab` | escura |
+| Ray's Natural Vitality Hub | `https://primalvitalityhub.site/?p=primalvitalityhub` | clara |
+| Chuck's Men Welness Hub | `https://allmensnatural.site/?p=allmensnatural` | escura |
+| Matt's Natural Reset Tips | `https://steadystrengthhub.site/?p=steadystrengthhub` | clara |
+
+### Lote 2 — as 5 de 2026-08-03
+
+⭐ **O pareamento página ↔ bridge é 1:1 e está travado aqui.** Foi definido depois
+que as páginas foram criadas: quatro bridges já tinham sido batizadas com a
+persona certa (Hank, Wade, Curtis, Otis) e a quinta (`dailyvitalitymethod`,
+provisoriamente "Dale") ficou para o **Isaiah**, que foi a página que nasceu no
+lugar.
+
+| Página (nome real no Facebook) | Link na DM | Pele |
+|---|---|---|
+| Hank Male Tips Hub | `https://secondwindformen.site/?p=secondwindformen` | clara |
+| Wade All Natural Hub | `https://strengthandflow.site/?p=strengthandflow` | clara |
+| Isaiah Vitality Men Tips | `https://dailyvitalitymethod.site/?p=dailyvitalitymethod` | escura |
+| Curtis Reset Hub | `https://menresethub.site/?p=menresethub` | escura |
+| Otis Men Reset Hub | `https://mensresetclub.online/?p=mensresetclub` | escura |
+
+> ⚠️⚠️ **DUAS ARMADILHAS DE NOME NESTA TABELA — conferir a palavra inteira antes
+> de colar o link:**
+>
+> · **`menresethub.site` (Curtis) NÃO é `manresethub.pro` (Joe).** Uma letra —
+>   **men** contra **man** — separa duas páginas de donos de persona diferentes,
+>   e as duas existem. Link trocado manda a venda do Curtis para a atribuição do
+>   Joe, e o Telegram vai mostrar a página errada sem reclamar de nada.
+>
+> · **"Wade All Natural Hub" (página) NÃO é `allmensnatural.site` (bridge do
+>   Chuck).** O nome da página do Wade ecoa o domínio do Chuck e eles não têm
+>   nada a ver: o Wade vai para `strengthandflow.site`.
+
+### ⛔ Congruência de etnia — vale na hora de gerar o criativo
+
+A regra inviolável do repo é *etnia do REF do criativo = etnia do avatar da
+página*. Com 10 páginas no ar, o mapa é:
+
+| pele | páginas |
 |---|---|
-| Joe's Wellness hub | `https://manresethub.pro/?p=manresethub` |
-| Marcus' Men Reset Hub | `https://vitalresetlab.site/?p=vitalresetlab` |
-| Ray's Natural Vitality Hub | `https://primalvitalityhub.site/?p=primalvitalityhub` |
-| Chuck's Men Welness Hub | `https://allmensnatural.site/?p=allmensnatural` |
-| Matt's Natural Reset Tips | `https://steadystrengthhub.site/?p=steadystrengthhub` |
+| **clara** (REF branco) | Joe · Ray · Matt · Hank · Wade |
+| **escura** (REF afro-americano) | Marcus · Chuck · Isaiah · Curtis · Otis |
 
 ---
 
@@ -138,6 +178,23 @@ Caixa de Entrada → Automações → "Comentar para enviar mensagem" → Editar
 ---
 
 ## Status
+
+Atualizado em **2026-08-03**.
+
+### Lote 2 — as 5 novas (a configurar)
+
+- [ ] **Hank Male Tips Hub** — `secondwindformen`
+- [ ] **Wade All Natural Hub** — `strengthandflow`
+- [ ] **Isaiah Vitality Men Tips** — `dailyvitalitymethod`
+- [ ] **Curtis Reset Hub** — `menresethub`
+- [ ] **Otis Men Reset Hub** — `mensresetclub`
+
+> As 5 bridges já estão **no ar com HTTPS e com o tracking conferido em
+> produção** (subid próprio, `aff_id` 45158 / Horsewood, notificação de venda
+> testada de ponta a ponta em 2026-08-03). O que falta nelas é só a automação no
+> Meta.
+
+### Lote 1
 
 Atualizado em **2026-07-27**.
 

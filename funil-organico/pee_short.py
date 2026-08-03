@@ -120,8 +120,21 @@ ANTICELEB = "Ordinary relatable face, not a celebrity."
 CAUDA = "iPhone shot, natural grain, no text, no watermark."
 
 ETNIA = {
+    # lote 1 (2026-07)
     "joe": "white American", "ray": "white American", "matt": "white American",
     "marcus": "Black American", "chuck": "Black American",
+    # ⭐ lote 2 (2026-08-03) — as cinco paginas novas do Facebook. A chave e
+    # a etnia saem do AVATAR REAL da pagina, nao de preferencia: a
+    # congruencia inviolavel do repo e etnia do REF = etnia do avatar.
+    #   Hank Male Tips Hub ....... clara   -> secondwindformen.site
+    #   Wade All Natural Hub ..... clara   -> strengthandflow.site
+    #   Isaiah Vitality Men Tips . escura  -> dailyvitalitymethod.site
+    #   Curtis Reset Hub ......... escura  -> menresethub.site
+    #   Otis Men Reset Hub ....... escura  -> mensresetclub.online
+    # Pareamento pagina<->bridge: funil-organico/automacao-comentario-dm.md
+    "hank": "white American", "wade": "white American",
+    "isaiah": "Black American", "curtis": "Black American",
+    "otis": "Black American",
 }
 
 # ---------------------------------------------------------------------------

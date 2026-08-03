@@ -25,6 +25,11 @@ redirector central (ver [ARQUITETURA-OPERACAO](ARQUITETURA-OPERACAO.md)).
 | Ray | `primalvitalityhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 | Chuck | `allmensnatural.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
 | Matt | `steadystrengthhub.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
+| Hank | `secondwindformen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Wade | `strengthandflow.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Isaiah | `dailyvitalitymethod.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Curtis | `menresethub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Otis | `mensresetclub.online` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 
 ```
 https://<vsl-da-pagina>/?aff_id=<aff-da-pagina>&subid=<pagina>
@@ -50,6 +55,39 @@ https://<vsl-da-pagina>/?aff_id=<aff-da-pagina>&subid=<pagina>
 | 4 | `primalvitalityhub.site` | `srd3jdzrvc0n7ri3yetjjmuq` | `http://srd3jdzrvc0n7ri3yetjjmuq.159.195.12.135.sslip.io/bp1/` | ✅ **no ar** (HTTPS) |
 | 5 | `allmensnatural.site` | `iuge7sircaf0myor1jdl77jv` | `http://iuge7sircaf0myor1jdl77jv.159.195.12.135.sslip.io/bp1/` | ✅ **no ar** (HTTPS) |
 | 6 | `steadystrengthhub.site` | `xkma961zrq3jxraw5z4vpg47` | `http://xkma961zrq3jxraw5z4vpg47.159.195.12.135.sslip.io/bp1/` | ✅ **no ar** (HTTPS) |
+| 7 | `secondwindformen.site` | `p6b0bb2bsbychxyzs8m0axzp` | — | ✅ **no ar** (HTTPS) |
+| 8 | `strengthandflow.site` | `t8koxrte3s7530p5b6mazkjv` | — | ✅ **no ar** (HTTPS) |
+| 9 | `dailyvitalitymethod.site` | `tqwepmv042n3y13xiy68ve0v` | — | ✅ **no ar** (HTTPS) |
+| 10 | `menresethub.site` | `u3szzoq1y9vcgoapsi2jnq0e` | — | ✅ **no ar** (HTTPS) |
+| 11 | `mensresetclub.online` | `t9wzm0j2pctbql7tsu3nbbor` | — | ✅ **no ar** (HTTPS) |
+
+### ⭐ Lote 2 — 2026-08-03: qual página do Facebook usa qual bridge
+
+⛔ **O pareamento é 1:1 e a fonte da verdade é este quadro** (repetido no
+[`automacao-comentario-dm.md`](automacao-comentario-dm.md), que é onde o link vai
+para dentro da DM).
+
+| Página no Facebook | Bridge | `subid` | UUID Coolify |
+|---|---|---|---|
+| Hank Male Tips Hub | `secondwindformen.site` | `secondwindformen` | `p6b0bb2bsbychxyzs8m0axzp` |
+| Wade All Natural Hub | `strengthandflow.site` | `strengthandflow` | `t8koxrte3s7530p5b6mazkjv` |
+| Isaiah Vitality Men Tips | `dailyvitalitymethod.site` | `dailyvitalitymethod` | `tqwepmv042n3y13xiy68ve0v` |
+| Curtis Reset Hub | `menresethub.site` | `menresethub` | `u3szzoq1y9vcgoapsi2jnq0e` |
+| Otis Men Reset Hub | `mensresetclub.online` | `mensresetclub` | `t9wzm0j2pctbql7tsu3nbbor` |
+
+> ⚠️ **`menresethub.site` (Curtis) NÃO é `manresethub.pro` (Joe).** Uma letra —
+> **men** contra **man** — separa duas páginas diferentes, e as duas estão no ar.
+> Trocar o link manda a venda do Curtis para a atribuição do Joe, e a notificação
+> do Telegram mostra a página errada sem acusar erro nenhum.
+>
+> ⚠️ **"Wade All Natural Hub" (página) NÃO é `allmensnatural.site` (bridge do
+> Chuck).** O nome da página ecoa o domínio de outra; o Wade vai para
+> `strengthandflow.site`.
+
+⭐ **Tracking conferido em produção em 2026-08-03**: as 5 servem o próprio `subid`
+por padrão (sem depender do `?p=`), `aff_id=45158`, e o circuito
+bridge → BuyGoods → Telegram foi testado de ponta a ponta com controles (segredo
+inválido barrado, dedup funcionando, subid fora do mapa caindo como slug cru).
 
 Todos os 6 apps: deploy **finished**, servindo HTTP 200 (`index.html` 5.1 KB + `hero.png` 1.6 MB).
 

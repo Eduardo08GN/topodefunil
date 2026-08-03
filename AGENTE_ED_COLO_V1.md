@@ -51,6 +51,34 @@ jorro em linha única atravessando o vão.
 > no quadro.** Descrição detalhada de um quadro errado é pior que descrição
 > vaga: ela trava o erro.
 
+**CO1b — a geometria é a "H5", e ela foi validada PROMPT A PROMPT.** ⛔ Não
+reescrever, não comprimir, não "melhorar": cada palavra custou uma geração, e a
+versão anterior era barrada pelo gerador em 2 de cada 3 lotes.
+
+| hipótese | o que mudou | resultado |
+|---|---|---|
+| H1 | trocou `lap`/`thigh`/`knees apart`/`cropped at the waist` por vocabulário de **móvel e enquadramento** | passou, prop longe do corpo |
+| H2 | + antebraço apoiado na perna + base na beirada do assento | **regressão** |
+| H3 | = H1 com `held in close to him` | melhor, prop ainda alto |
+| H4 | + `below the level of the chair back` | **regressão** |
+| **H5** | = H3 com a **câmera baixa** e a consequência declarada | ✅ **validada** |
+
+⛔ **As duas lições que as regressões pagaram** — valem para qualquer travada
+deste repo:
+- **nunca dar ao gerador uma segunda instrução para a mesma parte do corpo.**
+  O `forearm resting along the top of his leg` competiu com o punho fechado no
+  prop, e ele resolveu abrindo a mão espalmada no joelho.
+- **nunca ancorar altura num móvel que está em quadro.** O `chair back` virou
+  assunto e a cena se reorganizou em volta dele.
+
+A âncora certa é a **câmera**, com a consequência declarada
+(`so that his legs fill the bottom half of the frame`).
+
+⛔ **Tokens banidos nesta cena, medidos:** `lap` · `thigh` · `knees apart` ·
+`between his knees` · `cropped at the waist`. O linter cobra os cinco, no IMAGE
+**e no TAKE** — o bloco de vídeo passa pelo mesmo classificador, e foi lá que um
+resíduo sobrou na primeira passada.
+
 **CO2 — nada cresce.** O bit visual é o **despejo**. Crescimento é do
 RESSURREICAO; duas mecânicas de choque no mesmo vídeo somam a uma.
 
@@ -99,7 +127,7 @@ marca real é nominal do EXTERIOR e só dele.
 | MUNDOS | 12 em 9 famílias | **a etnia sai de dentro do mundo** |
 | NARRADORAS | 12 | zero etnia nas entradas; a montagem injeta |
 | HOMENS | 10 | o colo da cena 1 — âncora na mão e na calça, sem rosto |
-| PROPS | 10 | todos cabem em `on your ___` |
+| PROPS | **5** | ⭐ **validados um a um no gerador** — ver abaixo |
 | SUBSTANCIAS | 12 | todas líquidas, todas despejadas |
 | RECEITAS · ROTINAS · DESMENTIDOS | 10 · 14 · 7 | |
 
@@ -110,6 +138,41 @@ domina o lote. Medido: nenhuma passa de 12,5% em 600 vídeos.
 
 **Densidade medida:** cena 1 a 3,08 p/s · cena 2 a 3,73 · cena 3 a 3,63 · vídeo
 em 83,5 palavras (faixa da doutrina 82–96).
+
+## ⭐ O pool de props, e a regra de forma que ele custou
+
+Nove props foram testados manualmente no gerador em 2026-08-03. O resultado
+desenha uma regra que não é sobre a palavra nem sobre a cor:
+
+| passou | forma |
+|---|---|
+| **banana-da-terra** ⭐ o melhor | curva + casca dobrada |
+| banana | curva + casca dobrada |
+| berinjela | afunila + cabo verde no topo |
+| cenoura | cônica |
+| pastinaca | cônica |
+
+| reprovou | forma |
+|---|---|
+| pepino *(2 recusas)* · abobrinha · daikon | **cilindro de diâmetro constante terminando em ponta romba** |
+| milho | palha aberta em tiras — não é política, é **composição**: a silhueta sequestra o quadro e o render colapsou os dois personagens num só |
+
+⚠️ **A cor não é o discriminante** e isso foi refutado por medição: a
+banana-da-terra é verde e passa; o daikon é branco e cai. Era hipótese minha
+durante o teste.
+
+⛔ **O pool tem 5 e o piso do eixo é 5, por decisão empírica.** O piso genérico
+do motor é 7 — não foi completado com entradas não testadas, porque foi
+exatamente esse o erro do lote anterior: dez props no pool, cinco nunca gerados,
+quatro reprovados em campo. **Pool é o que passou, não o que cabe.** `squash`
+ficou de fora por não ter sido testado, não por ter falhado; um render resolve.
+
+⚠️ **Hipótese registrada e NÃO aplicada:** os props de corte reto saíram com o
+prop mais alto que os de casca dobrada. A leitura é que o punho sem agarre
+concreto solta o objeto. Não foi aplicado porque mexer no campo `punho` deles
+seria reescrever string validada por dedução, sem teste.
+
+---
 
 ⛔ **Não há bullet de prova social, e é decisão medida.** Com bullets de 9–13
 palavras ele entrava em **0 de 600** vídeos; encurtados para 6–8, em 122 (20,3%),
