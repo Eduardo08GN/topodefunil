@@ -41,9 +41,9 @@ qualquer agente novo.
 > **Quando o Ed disser "os agentes" — melhorar, ajustar, medir, ler — ele está
 > sempre falando dos SHORT.** Não pergunte qual.
 
-Os **nove agentes** deste funil são os `<angulo>_short.py` em `funil-organico/`:
-`clean` · `escandalo` · `troca` · `organicwave` · `ressurreicao` · `flagrante` ·
-`pee` · `vazamento` · `necrose`. Três cenas de 8s, destino AdBatch Vertical 3.
+Os **doze agentes** deste funil são os `<angulo>_short.py` em `funil-organico/`:
+`clean` · `clean_v2` · `escandalo` · `troca` · `organicwave` · `ressurreicao` ·
+`flagrante` · `pee` · `vazamento` · `necrose` · `exterior` · `colo`. Três cenas de 8s, destino AdBatch Vertical 3.
 **Cada um é autossuficiente e é a FONTE DA VERDADE do seu ângulo** — correção de
 regra entra no `_short`.
 
@@ -92,6 +92,11 @@ masculino na cena 3 — Julie Evans, mediana 25,5K em 7 reels),
 em foco ao lado da cabeça dela, congelados de olhos arregalados enquanto ela ergue o
 par eixo+orifício; o homem do hook volta como corpo-prova na cena 3 — Sofia Maren,
 32.930 no reel fundador),
+**COLO** (a isca no colo: prop fálico em pé no punho dela, acima do colo e entre
+os joelhos, com substância absurda despejada por cima; ela desmente a própria
+promessa na mesma respiração e corta para a bancada, de pé, com a receita — a
+etnia arrasta o mundo inteiro, 12 mundos em 9 famílias — Sofia Maren, reel
+1580259273673843),
 **RESSURREICAO** (o despejo faz o prop murcho **alongar na tela** — e a escala é
 **diferencial**: altura 2,31× contra largura 1,44×, medido em pixels na fonte, então
 ele alonga em vez de inchar; escala uniforme lê como tumescência e já derrubou vídeo

@@ -38,7 +38,7 @@ DEST = os.path.join(os.path.expanduser("~"), "Desktop", "agentes_py")
 # na area de trabalho como estao — e' exatamente por isso que eles nao entram
 # aqui: o build falharia (o .py nao mora mais em funil-organico/) e, se um dia
 # passasse, sobrescreveria o binario que ele pediu para preservar.
-ORDEM = ["EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSURREICAO-SHORT",
+ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSURREICAO-SHORT",
          "ESCANDALO-SHORT", "TROCA-SHORT", "PEE-SHORT", "FLAGRANTE-SHORT",
          "VAZAMENTO-SHORT", "NECROSE-SHORT", "ORGANICWAVE-SHORT"]
 

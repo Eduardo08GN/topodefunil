@@ -1837,11 +1837,15 @@ def autoteste(n=600):
           % (vistos_fam.most_common(1)[0][0],
              100.0 * vistos_fam.most_common(1)[0][1] / n))
     if ctrl:
-        print("\n⛔ O AUTOTESTE ESTA' CEGO:")
+        # ⚠️ Marcador ASCII: o console do Windows e' cp1252 e o `⛔` levanta
+        # UnicodeEncodeError. Como estas duas linhas so' sao impressas QUANDO HA'
+        # FALHA, o crash acontecia exatamente na hora em que o relatorio importa.
+        # Achado no COLO, corrigido nos dois.
+        print("\n>> O AUTOTESTE ESTA' CEGO:")
         for c in ctrl:
             print("   %s" % c)
     if falhas:
-        print("\n⛔ %d FALHA(S):" % len(falhas))
+        print("\n>> %d FALHA(S):" % len(falhas))
         for f in falhas[:20]:
             print("   %s" % f)
     if not falhas and not ctrl:
