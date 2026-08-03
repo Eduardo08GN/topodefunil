@@ -55,18 +55,19 @@ Medir o CLEAN por ele é usar a régua errada. Fica registrado aqui para ningué
 
 ## O ARCO — 3 CENAS DE 8s
 
-⚠️ **Duas famílias de cena, uma copy só** (CL16). A tabela abaixo é a família
-**A**; a **B** troca o que a tela mostra, nunca o que a fala diz.
+⚠️ **Duas famílias de cena, uma copy só** (CL16). A copy é idêntica nas duas —
+o que muda é só o que a tela mostra.
 
+| Cena | Beat | O que a copy FAZ | Tela — família **A** | Tela — família **B** |
+|---|---|---|---|---|
+| **1** | A FILEIRA | nega a pílula **ou** nomeia o vilão oculto, e abre a lista | os 5 elementos obrigatórios (abaixo); ela **aponta** | os 5 elementos + ela **despeja o ingrediente 1** no copo de água limpa |
+| **2** | A LISTA + A VIRADA | `{item A}. {item B + ingrediente do truque}. {virada}` — a virada nomeia o `gelatin trick` e afirma que **nada funciona sem ele** (CL15) | mesma bancada; o dedo passa de um copo ao ingrediente do truque | ela **despeja o ingrediente 2**; a cor fecha no copo |
+| **3** | CTA | `GELATIN` + follow-gate + a isca | plano mais fechado, bancada ainda no quadro, dedo na câmera | **mãos fora**: só o copo pronto + a gelatina em cubos, e ela apresenta |
 
-| Cena | Beat | O que a copy FAZ | O que a tela mostra |
-|---|---|---|---|
-| **1** | A FILEIRA | nega a pílula **ou** nomeia o vilão oculto, e abre a lista | os 5 elementos obrigatórios (abaixo) |
-| **2** | A LISTA + A VIRADA | `{item A}. {item B + ingrediente do truque}. {virada}` — a virada nomeia o `gelatin trick` e afirma que **nada funciona sem ele** (CL15) | mesma bancada; o dedo passa de um copo ao ingrediente do truque |
-| **3** | CTA | `GELATIN` + follow-gate + a isca | plano mais fechado, bancada ainda no quadro, dedo na câmera |
-
-⚠️ **A bancada é a mesma nas três cenas** — mesmos itens, mesmas posições,
-mesmos níveis de líquido. Ver **CL9**.
+⚠️ **Na família A a bancada é a mesma nas três cenas** — mesmos itens, mesmas
+posições, mesmos níveis de líquido (**CL9**). **Na família B o copo é a única
+coisa que muda**, e a mudança é declarada com todas as letras em cada IMAGE
+(**CL17**). O resto da bancada continua travado nas duas.
 
 ---
 
@@ -108,6 +109,11 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   ⛔ **Banido no IMAGE e no TAKE:** `pours`, `stirs`, `picks up`, `squeezes`,
   `mixes`, `holds up`. A mão dela só **aponta** e **gesticula no ar**.
 
+  ⚠️ **Isto é a família A na íntegra, e a cena 3 das duas famílias.** Na
+  **família B** o despejo é autorizado nas **cenas 1 e 2** — um recipiente por
+  cena, um ingrediente por cena, com as travas anti-F12b do **CL17**. Fora
+  desse recorte, o CL1 vale sem exceção.
+
 - **CL2 — ⭐⭐ ZERO PROP FÁLICO, ZERO ANATOMIA, ZERO VÍTIMA** (ordem do operador,
   2026-08-02 — é a razão de existir do agente). O CLEAN existe para produzir
   criativo que **não mostra nada** que simule ou remeta a órgão.
@@ -137,6 +143,12 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   que o nomeia**.
   **Frase travada para o IMAGE:** `her index finger extended toward the [item],
   her hand just above the counter`.
+
+  ⚠️ **Na família B, o despejo faz esse papel nas cenas 1 e 2.** A mão que
+  verte é o que liga a fala ao objeto, e **não há dedo apontado enquanto ela
+  verte** — pedir as duas coisas ao mesmo tempo é o que faz o Veo soltar o
+  recipiente. O dedo do CL4 volta **obrigatório na cena 3**, onde as mãos estão
+  livres: ele aponta o copo pronto, a gelatina, e depois a câmera.
 
 - **CL5 — TAKE ÚNICO POR CENA, CÂMERA FIXA, PLANO MÉDIO.** Zero corte, zero
   zoom, zero pan. A câmera não se move em nenhuma das três cenas — só a cena 3
@@ -193,13 +205,26 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   ⚠️ **A cena 3 é a exceção, e é deliberada:** a **gelatina em cubos entra**
   (CL21), e o resto pode ser reduzido para ela não disputar atenção. Fora isso,
   o que permanecer permanece igual.
-  **Frase travada, obrigatória nas cenas 2 e 3:**
+  **Frase travada da família A, obrigatória nas cenas 2 e 3:**
   ```
   the same row of items on the counter in front of her, in the same order and
   at the same levels, nothing moved, nothing added, nothing removed
   ```
   ⚠️ É o que substitui a coreografia de continuidade dos outros agentes. Sem
   ela, o Veo reorganiza a bancada a cada bloco e o vídeo montado pula.
+
+  ⚠️ **Na família B a frase muda, porque o copo muda** (CL17). A trava
+  continua valendo para **tudo menos o copo**, e o copo é declarado à parte —
+  nunca deixado por inferir.
+  **Frase travada da família B, obrigatória na cena 2:**
+  ```
+  On the counter, in the same order and at the same positions as before, stand
+  {a fileira}. Nothing has been added to the counter and nothing removed from
+  it — only the tall glass has changed.
+  ```
+  ⛔ Na família B **não se usa `at the same levels`**: o nível do copo sobe a
+  cada despejo, e pedir nível idêntico é ordem contraditória — o Veo resolve
+  desfazendo o preparo.
 
 - **CL10 — O ITEM NOMEADO É COMIDA COMUM, E O BENEFÍCIO É FISIOLÓGICO.**
   Beterraba, maracujá, couve, coco, melancia, romã, gengibre. O benefício se
@@ -256,8 +281,22 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   virada, nunca três. O terceiro item entra em outro vídeo do lote — é para
   isso que o pool existe.
 
-- **CL14 — ⭐⭐ OS INGREDIENTES DO TRUQUE ESTÃO NA BANCADA, NO MÁXIMO DOIS, E
-  NINGUÉM ENCOSTA NELES** (ordem do operador, 2026-08-02).
+  ⛔ **O teto se mede DEPOIS de substituir o órgão, nunca no template.**
+  `{o}` é uma palavra; `old boy` são **duas**. O banco foi verificado com o
+  placeholder, e por isso duas viradas estouravam o teto sempre que o sorteio
+  caía em `old boy` — **0,2% dos vídeos saíam reprovados pelo próprio linter**,
+  desde o primeiro commit. Descoberto em varredura de 12 mil sorteios,
+  2026-08-02.
+
+  > **Contar o molde não é contar a peça.** Todo teto de fala se afere no texto
+  > final, com o slot já preenchido.
+
+  A correção é de sorteio, não de copy: descarta-se a virada que não couber
+  com aquele órgão. ⛔ **Encurtar a virada continua proibido** (CL15).
+
+- **CL14 — ⭐⭐ OS INGREDIENTES DO TRUQUE ESTÃO NA BANCADA — SÃO DOIS, SEMPRE, E
+  NAS TRÊS IMAGENS** (ordem do operador, 2026-08-02). Quem pode encostar neles,
+  e em qual cena, é o que separa as duas famílias — ver o fim desta regra.
 
   A fileira de sucos deixa de ser só fruta: **um ou dois ingredientes do
   `gelatin trick` ficam na bancada junto com os copos** — caixa de bicarbonato,
@@ -283,100 +322,22 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   **não existe fórmula para o criativo contradizer**, e a escolha dos dois é
   livre.
 
-  ⛔ **E ninguém toca neles.** Vale o CL1 com força dobrada: ela **não pega,
-  não abre, não despeja, não polvilha** a caixa nem o pote. **Só aponta e
-  explica falando.** Manipular pó ou líquido em bloco de 8s é o padrão que
-  bugou o Veo em produção — é a mesma razão do F12b.
+  ⛔ **Na família A, ninguém toca neles.** Vale o CL1 com força dobrada: ela
+  **não pega, não abre, não despeja, não polvilha** a caixa nem o pote. **Só
+  aponta e explica falando.** Manipular pó ou líquido em bloco de 8s é o padrão
+  que bugou o Veo em produção — é a mesma razão do F12b.
 
-  **Frase travada, obrigatória nos três TAKEs:**
+  **Frase travada da família A, obrigatória nos três TAKEs — e da família B,
+  obrigatória na cena 3:**
   ```
   She never touches, opens, lifts or pours any of the ingredients on the
   counter — she only points at them and explains.
   ```
 
-  ⚠️ **O quarto copo é o truque.** Ele mantém a cor dos outros; o que sugere o
-  truque é o **ingrediente ao lado dele**, não uma cor diferente. ⛔ Fruta solta
-  decorativa sai da bancada para dar lugar a eles.
-
-- **CL15 — ⭐⭐ A VIRADA DA GELATINA É INTOCÁVEL** (ordem do operador,
-  2026-08-02). Na cena 2, **encurta-se qualquer coisa antes de encurtar a
-  virada** — o item A cabe em 4 palavras justamente para a virada caber
-  inteira.
-
-  > **A virada é o que desperta a curiosidade.** É ela que faz o comentário
-  > acontecer, e comentário é a métrica do funil.
-
-  Ela diz o nome do truque **com todas as letras** e afirma, sem rodeio, que
-  **nada funciona sem ele**:
-  ```
-  But without the gelatin trick none of this works.
-  ```
-  ⛔ Banido: insinuar (`that's half of it`), abreviar (`the trick`), ou
-  terminar a cena sem dizer `gelatin trick` literalmente.
-
-- **CL14 — ⭐⭐ OS INGREDIENTES DO TRUQUE ESTÃO NA BANCADA, NO MÁXIMO DOIS, E
-  NINGUÉM ENCOSTA NELES** (ordem do operador, 2026-08-02).
-
-  A fileira de sucos deixa de ser só fruta: **um ou dois ingredientes do
-  `gelatin trick` ficam na bancada junto com os copos** — caixa de bicarbonato,
-  pote de mel, pau de canela, meio limão. A leitura que isso produz é a que
-  interessa: **eles já estão dentro dos copos.**
-
-  ⛔ **Nunca mais de dois.** Três ou mais viram poluição visual e a fileira
-  para de ler em meio segundo, que é o que o hook precisa.
-
-  ⛔ **E ninguém toca neles.** Vale o CL1 com força dobrada: ela **não pega,
-  não abre, não despeja, não polvilha** a caixa nem o pote. **Só aponta e
-  explica falando.** Manipular pó ou líquido em bloco de 8s é o padrão que
-  bugou o Veo em produção — é a mesma razão do F12b.
-
-  **Frase travada, obrigatória nos três TAKEs:**
-  ```
-  She never touches, opens, lifts or pours any of the ingredients on the
-  counter — she only points at them and explains.
-  ```
-
-  ⚠️ **O quarto copo é o truque.** Ele mantém a cor dos outros; o que sugere o
-  truque é o **ingrediente ao lado dele**, não uma cor diferente. ⛔ Fruta solta
-  decorativa sai da bancada para dar lugar a eles.
-
-- **CL15 — ⭐⭐ A VIRADA DA GELATINA É INTOCÁVEL** (ordem do operador,
-  2026-08-02). Na cena 2, **encurta-se qualquer coisa antes de encurtar a
-  virada** — o item A cabe em 4 palavras justamente para a virada caber
-  inteira.
-
-  > **A virada é o que desperta a curiosidade.** É ela que faz o comentário
-  > acontecer, e comentário é a métrica do funil.
-
-  Ela diz o nome do truque **com todas as letras** e afirma, sem rodeio, que
-  **nada funciona sem ele**:
-  ```
-  But without the gelatin trick none of this works.
-  ```
-  ⛔ Banido: insinuar (`that's half of it`), abreviar (`the trick`), ou
-  terminar a cena sem dizer `gelatin trick` literalmente.
-
-- **CL14 — ⭐⭐ OS INGREDIENTES DO TRUQUE ESTÃO NA BANCADA, NO MÁXIMO DOIS, E
-  NINGUÉM ENCOSTA NELES** (ordem do operador, 2026-08-02).
-
-  A fileira de sucos deixa de ser só fruta: **um ou dois ingredientes do
-  `gelatin trick` ficam na bancada junto com os copos** — caixa de bicarbonato,
-  pote de mel, pau de canela, meio limão. A leitura que isso produz é a que
-  interessa: **eles já estão dentro dos copos.**
-
-  ⛔ **Nunca mais de dois.** Três ou mais viram poluição visual e a fileira
-  para de ler em meio segundo, que é o que o hook precisa.
-
-  ⛔ **E ninguém toca neles.** Vale o CL1 com força dobrada: ela **não pega,
-  não abre, não despeja, não polvilha** a caixa nem o pote. **Só aponta e
-  explica falando.** Manipular pó ou líquido em bloco de 8s é o padrão que
-  bugou o Veo em produção — é a mesma razão do F12b.
-
-  **Frase travada, obrigatória nos três TAKEs:**
-  ```
-  She never touches, opens, lifts or pours any of the ingredients on the
-  counter — she only points at them and explains.
-  ```
+  ⚠️ **Na família B, cenas 1 e 2, esta frase é substituída** (CL17): ela toca
+  **um** recipiente — o que está vertendo — e nada mais. O piso de dois não
+  muda: **os dois ingredientes continuam em cena nas três imagens**, inclusive
+  o que ainda não foi usado e o que já foi.
 
   ⚠️ **O quarto copo é o truque.** Ele mantém a cor dos outros; o que sugere o
   truque é o **ingrediente ao lado dele**, não uma cor diferente. ⛔ Fruta solta
@@ -405,47 +366,109 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   | | **A — A FILEIRA** | **B — O PREPARO** |
   |---|---|---|
   | fonte | reel 2 · 7,1k comentários | **reel 1 · 13,3k comentários** |
-  | o que ela faz | **só aponta**, não toca em nada | **prepara na cena 2** |
-  | a bancada | estática nas 3 cenas | o copo **muda de estado** |
-  | selo | 🟢 24 gerações, zero restrição | 🟡 não testado |
+  | o que ela faz | **só aponta**, não toca em nada | **prepara nas cenas 1 e 2**, um ingrediente por cena |
+  | a bancada | estática nas 3 cenas | o copo **muda de estado duas vezes** |
+  | a cena 3 | dedo na câmera | **mãos fora** — só o resultado pronto + a gelatina |
+  | selo | 🟢 24 gerações, zero restrição | 🟡 despejo na cena 2 aprovado em render; **na cena 1, não testado** |
 
   ⚠️ **Por que a B existe:** eu tinha excluído o reel 1 por causa da manipulação
   contínua de objeto (F12b). O operador apontou o óbvio — **ele tem quase o
   dobro de comentários** —, e a exclusão foi feita sem teste. Preocupação
   técnica não medida não derruba o sinal mais forte dos dados.
 
-- **CL17 — ⭐⭐ NA FAMÍLIA B, O ESTADO DO COPO É A HISTÓRIA — E MUDA EM UMA
-  DIREÇÃO SÓ.**
+- **CL17 — ⭐⭐ NA FAMÍLIA B ELA PREPARA A RECEITA NAS CENAS 1 E 2 — UM
+  INGREDIENTE POR CENA** (ordem do operador, 2026-08-02).
 
   ```
-  CENA 1   copo com ÁGUA LIMPA e transparente.      Ela aponta.
-  CENA 2   ela DESPEJA. O líquido muda de cor.      A cor nasce no copo.
-  CENA 3   copo PRONTO + a GELATINA EM CUBOS.       Ela aponta pra câmera.
+  CENA 1   água limpa no copo. Ela DESPEJA O INGREDIENTE 1.   o preparo já começou no frame 1
+  CENA 2   ela DESPEJA O INGREDIENTE 2. A cor fecha.          o líquido muda de estado na tela
+  CENA 3   copo PRONTO + a GELATINA EM CUBOS. MÃOS FORA.      ela apresenta e aponta
   ```
 
-  **Limpo → mudando → pronto.** Isso desarma o risco de continuidade que
-  reprovaria a família: a mudança de estado deixa de ser acidente e vira o arco.
+  **Preparando → preparando → pronto.** A cena 1 **não é mais explicação
+  apontada**: é o primeiro despejo. Isso desarma o risco de continuidade que
+  reprovaria a família — a mudança de estado deixa de ser acidente e vira o
+  arco, e o preparo passa a ocupar dois terços do vídeo em vez de um.
   ⛔ Cada IMAGE **declara o estado do copo com todas as letras** — nunca deixa
   o Veo inferir.
 
-  ⚠️ **A manipulação é EXCLUSIVA da cena 2**, e é **uma ação só**: ela ergue um
-  recipiente e despeja. Nada de quatro ingredientes em sequência como no reel
-  original — não cabe em 8s e multiplica o risco por quatro.
+  ### Os dois ingredientes: ambos em cena sempre, um manipulado por vez
 
-  **Anti-F12b — o que impede o Veo de soltar o objeto:**
+  O **piso de dois do CL14 não muda** — os dois ingredientes do truque estão na
+  bancada desde o frame 1 e não saem em nenhuma das três imagens. O que muda de
+  cena para cena é **qual deles a mão toca**:
+
+  | | ingrediente **1** | ingrediente **2** |
+  |---|---|---|
+  | **cena 1** | ⭐ **despejado** (na mão dela, em quadro) | em cena, na bancada, intocado |
+  | **cena 2** | de volta na bancada, intocado | ⭐ **despejado** (na mão dela) |
+  | **cena 3** | sai, se a bancada apertar (CL21) | em cena, intocado |
+
+  ⚠️ **O que está na mão continua contando para o piso de dois** — ele está em
+  quadro, só não está na fileira. Foi assim que o motor deixou de perder o
+  ingrediente despejado da IMAGE 01 (bug corrigido em 2026-08-02: o mel era
+  despejado na cena 2 e **não aparecia na cena 1**).
+
+  ⚠️ **A cena 3 é a exceção, e quem manda nela é o CL21:** ali a prioridade é
+  copo pronto → gelatina → **um** dos dois do truque. O motor mostra o
+  ingrediente **2**, o último despejado.
+
+  ⛔ **Nunca o mesmo ingrediente duas vezes.** ⛔ **Nunca os dois na mesma
+  cena.** ⛔ **Zero manipulação na cena 3** — ela é a apresentação do resultado,
+  e é o que dá ao vídeo um fim, não um corte.
+
+  **Pool dos dois (o do CL14):** bicarbonato · mel · canela · limão · vinagre.
+  ⛔ O **sachê de gelatina não entra no pool do preparo** — gelatina só na cena
+  3, e em cubos (CL21). Despejá-la antes entrega o payoff antes da promessa.
+
+  ### A ação travada de cada ingrediente
+
+  Uma ação, um recipiente, uma cena. A embalagem é a do **CL19** — rótulo e
+  logotipo à mostra, nunca recipiente anônimo.
+
+  Cada um tem **gesto**, **queda** e **cor** — os três travados juntos, porque
+  descrever a queda sem a cor deixa o Veo escolher o resultado. Espelham a
+  tabela `DESPEJO` de [`clean_short.py`](funil-organico/clean_short.py):
+
+  | ingrediente | gesto | o que cai | cor que nasce |
+  |---|---|---|---|
+  | bicarbonato | `tips the box over the tall glass` | `a short stream of fine white powder is falling from the box into the glass` | `clouded milky white` |
+  | mel | `tilts the jar over the tall glass` | `a slow thread of golden honey is falling from the jar into the glass` | `warm gold` |
+  | canela | `tips the box over the tall glass` | `a fine fall of brown cinnamon dust is dropping from the box into the glass` | `cloudy warm brown` |
+  | limão | `presses the lemon half over the tall glass` | `clear juice is running from the lemon half down into the glass` | `pale cloudy yellow` |
+  | vinagre | `tilts the bottle over the tall glass` | `a thin clear stream is running from the bottle into the glass` | `pale amber` |
+
+  ⚠️ **A linha do mel é a validada em render** (2026-08-02). As outras quatro
+  copiam a gramática dela e trocam só o recipiente, o gesto e a cor.
+
+  ⛔ **Na cena 2 o líquido `clouds over`, nunca troca de tom limpo.** Se a cor
+  2 for mais clara que a cor 1, dizer "turns to" faz a bebida **clarear** — e
+  despejar mel em água marrom não clareia nada. A fórmula travada é
+  `the {cor 1} water in the glass is clouding over and turning {cor 2}`, que
+  funciona nos 20 pares ordenados.
+
+  ⚠️ **Uma ação por cena, e só uma.** Nada de dois ou quatro ingredientes em
+  sequência como no reel original — não cabe em 8s e multiplica o risco por
+  quatro. O que o reel faz em 40s, nós fazemos em duas batidas de 8s.
+
+  **Anti-F12b — o que impede o Veo de soltar o objeto** (vale nas cenas 1 e 2):
   - a mão fecha em punho inteiro no recipiente, visível:
     `her right hand closed around the small jar, the whole hand visibly
     wrapped around it`
   - estabiliza-se o **braço**, nunca o objeto: ⛔ `completely motionless` num
     recipiente que alguém segura é ordem impossível, e o Veo resolve soltando
   - o resto da bancada **continua imóvel**, e isso sim se declara
+  - ⛔ **nada de apontar com a outra mão enquanto verte** (CL4): duas tarefas
+    manuais no mesmo bloco de 8s é a receita do glitch
 
-  ⛔ **Na cena 2 da família B, a frase travada do CL14 muda** — ela toca **um**
-  recipiente e só ele:
+  ⛔ **Nas cenas 1 e 2 da família B, a frase travada do CL14 muda** — ela toca
+  **um** recipiente e só ele:
   ```
-  She touches only the jar she is pouring from. She never touches, opens or
-  lifts anything else on the counter.
+  She touches only the container she is pouring from. She never touches, opens
+  or lifts anything else on the counter.
   ```
+  ✅ **Na cena 3 a frase travada do CL14 volta inteira** — mãos fora de tudo,
+  ela só aponta e explica.
 
 - **CL18 — ⭐ O SORTEIO DA FAMÍLIA É UM EIXO DO MOTOR** (para quando o agente
   virar Python). `FAMILIA` entra como eixo sorteável de duas opções, no mesmo
@@ -464,6 +487,16 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
 
   ⚠️ **O ledger anti-repetição inclui a família**, senão um lote de 10 vídeos
   sai com 9 de uma e 1 da outra por azar de sorteio.
+
+  ⚠️ **Sorteada a família B, sorteia-se também a ORDEM dos dois ingredientes**
+  (CL17): qual vai na cena 1 e qual vai na cena 2. Não é eixo novo — os dois já
+  saem do CL14/CL20; o que se sorteia é só a ordem, e ela também entra no
+  ledger. Mesma dupla na mesma ordem em dois vídeos do lote é o mesmo vídeo.
+
+  ```python
+  if spec["familia"] == "preparo":
+      spec["despejo"] = list(rng.sample(spec["truque"], 2))   # [cena 1, cena 2]
+  ```
 
 - **CL19 — ⭐⭐ O INGREDIENTE DO TRUQUE É EMBALAGEM DE VAREJO DE VERDADE, COM A
   MARCA APARECENDO** (ordem do operador, 2026-08-02, depois de duas falhas
@@ -575,6 +608,48 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   ⛔ A gelatina aparece **apenas na cena 3**. Nas cenas 1 e 2 ela não existe —
   senão o payoff chega antes da promessa.
 
+- **CL22 — ⭐⭐ ITEM A E ITEM B NUNCA REPETEM FRUTA, INGREDIENTE NEM BENEFÍCIO
+  NO MESMO TAKE** (falha em produção, 2026-08-02).
+
+  **O que saiu:** `Pineapple sweetens your milk. Spinach and honey make your
+  milk sweet for her.` Duas frases seguidas dizendo **a mesma coisa** — o
+  segundo item não acrescenta nada, e a lista, que é o fio narrativo inteiro
+  deste ângulo (CL6), para de avançar bem no meio.
+
+  > **Numa estrutura de lista, item repetido não é redundância — é um item a
+  > menos.** O espectador para de contar motivos e começa a sair.
+
+  A cena 2 tem **duas** entradas e um teto de 24 palavras (CL13). Se as duas
+  dizem o mesmo, o vídeo gastou metade do orçamento de fala à toa.
+
+  **A trava, nas três dimensões:**
+
+  | dimensão | ⛔ colide quando |
+  |---|---|
+  | **fruta** | `Beetroot…` + `Beetroot and baking soda…` |
+  | **ingrediente do truque** | `Cinnamon…` + `Ginger and cinnamon…` |
+  | **benefício** | `Spinach keeps you going` + `Kale and baking soda keep you going all night` |
+
+  ⛔ Colidiu em **qualquer** uma das três, **sorteia-se outro item B**. Não se
+  reescreve a frase para disfarçar — troca-se o par. Todo item A tem no mínimo
+  **8** item B livres, então o solver nunca fica sem saída.
+
+  ⚠️ **O leite é o caso mais agudo, e por isso virou regra de lista:** metade
+  do pool do ITEM B fala em adoçar o leite. Logo **nenhuma linha do ITEM A pode
+  citar leite** — a colisão seria quase certa. Foi por isso que
+  `Pineapple sweetens your milk` virou `Pineapple cleans your blood`.
+
+  **Para o motor (CL18):**
+  ```python
+  # a cena 2 é um PAR, e o par é rejeitado, não corrigido
+  while colide(a, b):          # fruta | ingrediente do truque | benefício
+      b = rng.choice(ITEM_B)
+  ```
+
+  ⚠️ **E isto conversa com o CL20:** a bancada nasce da copy. Par que colide não
+  só soa repetido — ele também deixa a bancada com um item a menos do que a
+  fileira precisa para ler como fileira.
+
 ---
 
 ## A COPY
@@ -615,14 +690,35 @@ faz**; a imagem mostra que eles existem.
 
 ## BANCO DE COPY — o que varia em cada take
 
-Verificado contra o teto do **CL13** em **1582 combinações**: **nenhuma** estoura
-os 7 segundos.
+Verificado contra o teto do **CL13**: **nenhuma** combinação estoura os 7
+segundos.
 
 | cena | combinações |
 |---|---|
 | 1 · A FILEIRA | 14 |
-| 2 · A LISTA + A VIRADA | **1400** |
+| 2 · A LISTA + A VIRADA | **1232** |
 | 3 · CTA | 168 |
+
+⚠️ **A cena 2 caiu de 1400 para 1232 com o CL22.** Dos 100 pares item A × item
+B, **12 colidem** (mesma fruta, mesmo ingrediente do truque ou mesmo benefício)
+e estão fora do sorteio; sobram 88 pares × 14 viradas. Contado no motor, não a
+olho — foi assim que apareceu o par melancia/couve, que eu tinha deixado passar
+na leitura manual. Os 12 banidos:
+
+| item A | colide com | por quê |
+|---|---|---|
+| `Beetroot opens the flow` | `Beetroot and baking soda open the blood flow` | fruta **e** benefício |
+| `Watermelon builds your stamina` | `Watermelon and honey sweeten your milk for the girls` | fruta |
+| `Watermelon builds your stamina` | `Kale and baking soda keep you going all night` | benefício |
+| `Ginger wakes the system` | `Ginger and cinnamon wake the whole system up` | fruta **e** benefício |
+| `Celery thickens the tip` | `Celery and baking soda thicken your milk` | fruta **e** benefício |
+| `Passion fruit hardens you` | `Passion fruit and cinnamon harden you fast` | fruta **e** benefício |
+| `Coconut restores your twenties` | `Coconut and honey bring your twenties back` | fruta **e** benefício |
+| `Pineapple cleans your blood` | `Pineapple and honey make your milk sweet` | fruta |
+| `Spinach keeps you going` | `Spinach and honey make your milk sweet for her` | fruta |
+| `Spinach keeps you going` | `Kale and baking soda keep you going all night` | benefício |
+| `Cinnamon steadies the pressure` | `Ginger and cinnamon wake the whole system up` | ingrediente do truque |
+| `Cinnamon steadies the pressure` | `Passion fruit and cinnamon harden you fast` | ingrediente do truque |
 
 ---
 
@@ -653,6 +749,11 @@ Montagem: `{item A}. {item B}. {virada}`.
 
 ### ITEM A — abre a lista, teto de 4 palavras (10)
 
+⛔ **Nenhuma linha desta lista cita o leite** (CL22). O leite é assunto do ITEM
+B, que vem logo em seguida — repetir aqui produz a fala redundante que o
+operador barrou em 2026-08-02 (`Pineapple sweetens your milk.` seguido de
+`Spinach and honey make your milk sweet for her.`).
+
 - `Beetroot opens the flow`
 - `Watermelon builds your stamina`
 - `Pomegranate pushes blood down`
@@ -660,7 +761,7 @@ Montagem: `{item A}. {item B}. {virada}`.
 - `Celery thickens the tip`
 - `Passion fruit hardens you`
 - `Coconut restores your twenties`
-- `Pineapple sweetens your milk`
+- `Pineapple cleans your blood`
 - `Spinach keeps you going`
 - `Cinnamon steadies the pressure`
 
@@ -749,6 +850,10 @@ Montagem: `{cta} {gate}`.
 ✅ **Embalagem de varejo, rótulo impresso e logotipo à mostra** (CL19).
 ⛔ Nunca `with no label`, nunca recipiente anônimo.
 
+⚠️ **Na família B, o pool do despejo são os 5 primeiros** — o sachê de gelatina
+fica de fora, porque gelatina só aparece na cena 3 e em cubos (CL21). Ação
+travada de cada um: ver a tabela do **CL17**.
+
 - `a cardboard grocery box of baking soda standing upright, its printed label and logo clearly visible on the front`
 - `a glass jar of raw honey with its printed paper label facing the camera`
 - `a glass bottle of apple cider vinegar with its printed label facing the camera`
@@ -777,6 +882,13 @@ espectador lê antes de ouvir.
 |---|---|
 | família A — imagens e takes | **24 gerações, zero restrição** |
 | família B — vídeo completo, 20,6s | **aprovado pelo operador**, copy exata nas 3 cenas |
+
+⚠️ **O que foi medido na família B foi o despejo só na CENA 2.** A configuração
+atual — despejo também na **cena 1**, um ingrediente por cena (CL17, ordem do
+operador 2026-08-02) — **ainda não passou por render.** O risco herdado é o
+mesmo (F12b, o Veo soltando o recipiente) e as travas são as mesmas, mas
+**dobrou o número de blocos que o carregam.** Selo da cena 1 da família B: 🟡
+até o primeiro lote. **Selo é medição, não palpite** — vale nos dois sentidos.
 
 É o ângulo mais limpo do repertório: nada em cena que um classificador de
 imagem possa ler como anatomia. Nenhum dos oito agentes tem selo de moderação
@@ -817,17 +929,23 @@ que converte.
 ## CHECKLIST CLEAN
 
 - [ ] ⭐⭐ **A fileira de 3-5 itens comestíveis está na bancada desde o primeiro frame** (CL1)?
-- [ ] ⭐⭐ **Ela NÃO toca em nada nas três cenas** — só aponta (CL1)? ⛔ Zero `pours`/`stirs`/`picks up`/`holds up`?
+- [ ] ⭐⭐ **Família A — ela NÃO toca em nada nas três cenas**, só aponta (CL1)? ⛔ Zero `pours`/`stirs`/`picks up`/`holds up`?
+- [ ] ⭐⭐ **Família B — um ingrediente despejado na cena 1, o OUTRO na cena 2, MÃOS FORA na cena 3** (CL17)? ⛔ Nunca o mesmo duas vezes, nunca os dois na mesma cena?
+- [ ] ⭐ **Família B — os DOIS ingredientes do truque estão em cena nas três imagens** (CL14), inclusive o que ainda não foi usado e o que já foi?
+- [ ] ⭐ **Família B — o estado do copo está declarado com todas as letras em cada IMAGE**: água limpa → cor nascendo → pronto (CL17)?
+- [ ] **Família B — a ação de despejo é a travada do ingrediente sorteado** (tabela do CL17), uma só por cena, com punho inteiro visível?
+- [ ] **Família B — o dedo do CL4 aparece na cena 3**, e ⛔ ninguém aponta enquanto verte?
 - [ ] ⭐⭐ **Zero prop fálico, zero anatomia, zero vítima, zero plateia** (CL2)?
 - [ ] **Scrub de cor saturada, não jaleco branco** + diplomas ou frascos ao fundo (CL3)? ⛔ Zero marca legível?
 - [ ] **O dedo aponta o item no momento em que o nomeia** (CL4)?
 - [ ] **Take único, câmera fixa, plano médio** nas três (CL5)?
 - [ ] ⭐⭐ **A virada da gelatina está na CENA 2** — os itens funcionam, mas sozinhos não bastam (CL7)?
-- [ ] **A bancada é idêntica nas três cenas**, com a frase travada nas cenas 2 e 3 (CL9)?
+- [ ] **A bancada é idêntica nas três cenas**, com a frase travada nas cenas 2 e 3 (CL9)? Na família B, ⛔ sem `at the same levels` e com o copo declarado à parte?
 - [ ] **REF feminina sozinha, 35-50, etnia da página** (CL8)? ⛔ Zero segundo personagem?
 - [ ] **Cota do órgão 2/3**, rotacionada, nunca pronome?
 - [ ] **`gelatin trick` literal na cena 2** · CTA GELATIN + follow-gate na cena 3?
 - [ ] **Tetos de fala**: 20-26 / 26-34 / 22-28?
+- [ ] ⭐⭐ **Item A e item B não repetem fruta, ingrediente nem benefício** (CL22)? ⛔ Nenhum item A cita leite?
 - [ ] ⛔ **Zero comparação numérica de tamanho** (CL10)?
 - [ ] Cada cena com 2ª pessoa ou imperativo (P22)?
 

@@ -3,7 +3,7 @@
 """
 clean_short.py — randomizador + gerador + linter do AGENTE CLEAN.
 
-A aponta apontada: profissional de saude sozinha(o) de scrub, uma aponta de
+A fileira apontada: profissional de saude sozinha(o) de scrub, uma fileira de
 itens comestiveis na bancada, e o dedo ligando cada item a um beneficio.
 ZERO prop falico, ZERO anatomia, ZERO vitima.
 
@@ -11,7 +11,11 @@ Fonte: Valentina Health & Wellness, 2 reels (13,3k e 7,1k comentarios).
 Doutrina: AGENTE_ED_CLEAN_V1.md · concorrentes/clean-mapa-visual.md
 
 ⭐ SHORT NATIVO — 3 cenas de 8s. Nao deriva de motor longo e nao tera versao
-longa (CL16). Duas FAMILIAS de cena, uma copy so'.
+longa (CL16). Duas FAMILIAS de cena, uma copy so':
+
+    aponta   ela so' aponta, a bancada nao muda em nenhuma das 3 cenas
+    preparo  ela PREPARA nas cenas 1 e 2 — um ingrediente por cena — e a
+             cena 3 e' so' o resultado pronto ao lado da gelatina (CL17)
 
 ⭐ SEXO E' TRAVA, NAO SORTEIO (ordem do operador, 2026-08-02): o painel deixa
 pre-selecionar homem/mulher e a escolha nao e' re-sorteada.
@@ -35,7 +39,7 @@ LEDGER = os.path.join(AQUI, ".clean-short-ledger.json")
 
 TITULO = "AGENTE CLEAN"
 SLUG = "clean-short"
-SUBTITULO = "a aponta apontada, em 3 cenas · gerador offline de prompts Veo"
+SUBTITULO = "a fileira apontada, em 3 cenas · gerador offline de prompts Veo"
 
 ETNIA = {
     "joe":    {"dominio": "manresethub.pro",        "etnia": "branco"},
@@ -66,19 +70,32 @@ TRAVAS_UI = [
 NAO_TOCA = ("%s never touches, opens, lifts or pours any of the ingredients on "
             "the counter — %s only points at them and explains.")
 
-# CL9 — a bancada e' identica nas cenas 1 e 2
+# CL9 — a bancada e' identica nas cenas 1 e 2 (familia A)
 MESMA_BANCADA = ("in the same order and at the same levels, nothing moved, "
                  "nothing added, nothing removed")
+
+# CL9 familia B — o copo muda, o resto nao. ⛔ Sem `at the same levels`: o nivel
+# do copo SOBE a cada despejo, e pedir nivel identico e' ordem contraditoria —
+# o Veo resolve desfazendo o preparo.
+MESMA_BANCADA_B = ("Nothing has been added to the counter and nothing removed "
+                   "from it — only the tall glass has changed.")
+
+# CL14 familia B, cenas 1 e 2 — ela toca UM recipiente e so' ele. Substitui o
+# NAO_TOCA nessas duas cenas; na cena 3 o NAO_TOCA volta inteiro.
+TOCA_UM = ("%s touches only the container %s is pouring from. %s never touches, "
+           "opens or lifts anything else on the counter.")
 
 # CL21 — a gelatina pronta, SO' na cena 3
 GELATINA = "a clear glass bowl of firm dark purple gelatin cubes, glossy and set"
 
-# CL17 — anti-F12b na cena 2 da familia B: punho inteiro + antebraco apoiado.
-# ⛔ Nunca `completely motionless` num recipiente que alguem segura: e' ordem
-# impossivel e o Veo resolve SOLTANDO o objeto.
-PEGADA = ("%s right hand is closed around the glass jar of raw honey, the whole "
-          "hand visibly wrapped around it, %s forearm resting steady on the "
-          "wooden counter as %s tilts the jar over the tall glass")
+# CL17 — anti-F12b nas cenas 1 e 2 da familia B: punho inteiro + antebraco
+# apoiado. ⛔ Nunca `completely motionless` num recipiente que alguem segura:
+# e' ordem impossivel e o Veo resolve SOLTANDO o objeto.
+# ⚠️ O esqueleto e' o do mel, validado em render 2026-08-02 — so' o recipiente
+# e o gesto trocam (tabela DESPEJO). String validada nao se redigita.
+PEGADA = ("%s right hand is closed around the %s, the whole hand visibly "
+          "wrapped around it, %s forearm resting steady on the wooden counter "
+          "as %s %s")
 
 ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
              "actor, not resembling any famous person.")
@@ -88,8 +105,10 @@ CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 # EIXOS SORTEAVEIS
 # ---------------------------------------------------------------------------
 FAMILIAS = [
-    {"id": "aponta", "selo": "V", "nome": "a aponta apontada"},
-    {"id": "preparo", "selo": "V", "nome": "o preparo na cena 2"},
+    {"id": "aponta", "selo": "V", "nome": "a fileira apontada"},
+    # ⚠️ selo N: o despejo na CENA 2 passou em render (2026-08-02); o da CENA 1
+    # ainda nao. Selo e' medicao, nao palpite — desce ate' o primeiro lote.
+    {"id": "preparo", "selo": "N", "nome": "o preparo nas cenas 1 e 2"},
 ]
 
 CENARIOS = [
@@ -135,8 +154,66 @@ TRUQUE = [
     {"id": "vinagre", "img": "a glass bottle of apple cider vinegar with its printed paper label facing the camera"},
 ]
 
+# CL17 — a acao travada de cada ingrediente do truque, na familia B. Uma acao,
+# um recipiente, uma cena: o ingrediente 1 e' despejado na CENA 1 e o 2 na CENA
+# 2. ⛔ Nunca o mesmo duas vezes, ⛔ nunca os dois na mesma cena, ⛔ ZERO
+# manipulacao na cena 3.
+# ⚠️ O sache de gelatina NAO entra aqui: gelatina so' na cena 3 e em cubos
+# (CL21) — despeja-la antes entrega o payoff antes da promessa.
+# ⚠️ A linha do `mel` e' a validada em render 2026-08-02; as outras quatro
+# copiam a gramatica dela e trocam so' o recipiente, o gesto e a cor.
+DESPEJO = {
+    "bicarbonato": {
+        "cont": "cardboard box of baking soda",
+        "curto": "box",
+        "gesto": "tips the box over the tall glass",
+        "queda": "a short stream of fine white powder is falling from the box into the glass",
+        "segue": "tips it a little further so the stream of white powder keeps falling into the glass",
+        "cor": "clouded milky white",
+        "som": "a soft dry pour",
+    },
+    "mel": {
+        "cont": "glass jar of raw honey",
+        "curto": "jar",
+        "gesto": "tilts the jar over the tall glass",
+        "queda": "a slow thread of golden honey is falling from the jar into the glass",
+        "segue": "tilts it a little further so the thread of honey keeps falling into the glass",
+        "cor": "warm gold",
+        "som": "a soft pour",
+    },
+    "canela": {
+        "cont": "small cardboard box of ground cinnamon",
+        "curto": "box",
+        "gesto": "tips the box over the tall glass",
+        "queda": "a fine fall of brown cinnamon dust is dropping from the box into the glass",
+        "segue": "tips it a little further so the brown cinnamon dust keeps falling into the glass",
+        "cor": "cloudy warm brown",
+        "som": "a soft dry pour",
+    },
+    "limao": {
+        "cont": "lemon half",
+        "curto": "lemon half",
+        "gesto": "presses the lemon half over the tall glass",
+        "queda": "clear juice is running from the lemon half down into the glass",
+        "segue": "presses it a little harder so the juice keeps running down into the glass",
+        "cor": "pale cloudy yellow",
+        "som": "a soft trickle",
+    },
+    "vinagre": {
+        "cont": "glass bottle of apple cider vinegar",
+        "curto": "bottle",
+        "gesto": "tilts the bottle over the tall glass",
+        "queda": "a thin clear stream is running from the bottle into the glass",
+        "segue": "tilts it a little further so the clear stream keeps running into the glass",
+        "cor": "pale amber",
+        "som": "a soft pour",
+    },
+}
+
 # ---------------------------------------------------------------------------
-# BANCO DE COPY — verificado em 1582 combinacoes, nenhuma estoura os 7s (CL13)
+# BANCO DE COPY — 1414 combinacoes (14 · 1232 · 168), nenhuma estoura os 7s
+# (CL13). A cena 2 caiu de 1400 para 1232 com o CL22: dos 100 pares item A x
+# item B, 12 colidem e estao fora do sorteio (88 x 14 viradas).
 # ---------------------------------------------------------------------------
 NUCLEO = ["Johnson", "soldier", "pecker", "manhood", "wiener", "tool", "old boy"]
 TETO_FALA = {1: 22, 2: 24, 3: 22}
@@ -161,29 +238,37 @@ HOOKS = [
 # CL20 — a bancada e' DERIVADA da copy: `itens` e' o que precisa estar em cena.
 # ⛔ Sortear bancada e copy em separado foi o que produziu coco numa fala de
 # beterraba (falha em producao, 2026-08-02).
+# CL22 — `ben` e' a etiqueta do BENEFICIO, e existe so' para o solver de
+# colisao. Item A e item B nunca repetem fruta, ingrediente do truque nem
+# beneficio: em estrutura de LISTA, item repetido nao e' redundancia — e' um
+# item a menos, e a cena 2 gastou metade das 24 palavras a' toa.
+# ⛔ Nenhum item A cita LEITE: metade do pool de item B fala em adocar o leite,
+# entao a colisao seria quase certa (falha em producao 2026-08-02 —
+# "Pineapple sweetens your milk. Spinach and honey make your milk sweet for
+# her." saiu no ar).
 ITEM_A = [
-    {"txt": "Beetroot opens the flow", "itens": ["beterraba"]},
-    {"txt": "Watermelon builds your stamina", "itens": ["melancia"]},
-    {"txt": "Pomegranate pushes blood down", "itens": ["roma"]},
-    {"txt": "Ginger wakes the system", "itens": ["gengibre"]},
-    {"txt": "Celery thickens the tip", "itens": ["aipo"]},
-    {"txt": "Passion fruit hardens you", "itens": ["maracuja"]},
-    {"txt": "Coconut restores your twenties", "itens": ["coco"]},
-    {"txt": "Pineapple sweetens your milk", "itens": ["abacaxi"]},
-    {"txt": "Spinach keeps you going", "itens": ["espinafre"]},
-    {"txt": "Cinnamon steadies the pressure", "itens": ["canela"]},
+    {"txt": "Beetroot opens the flow", "itens": ["beterraba"], "ben": "fluxo"},
+    {"txt": "Watermelon builds your stamina", "itens": ["melancia"], "ben": "aguenta"},
+    {"txt": "Pomegranate pushes blood down", "itens": ["roma"], "ben": "sangue"},
+    {"txt": "Ginger wakes the system", "itens": ["gengibre"], "ben": "acorda"},
+    {"txt": "Celery thickens the tip", "itens": ["aipo"], "ben": "engrossa"},
+    {"txt": "Passion fruit hardens you", "itens": ["maracuja"], "ben": "endurece"},
+    {"txt": "Coconut restores your twenties", "itens": ["coco"], "ben": "vinte-anos"},
+    {"txt": "Pineapple cleans your blood", "itens": ["abacaxi"], "ben": "sangue"},
+    {"txt": "Spinach keeps you going", "itens": ["espinafre"], "ben": "aguenta"},
+    {"txt": "Cinnamon steadies the pressure", "itens": ["canela"], "ben": "pressao"},
 ]
 ITEM_B = [
-    {"txt": "Kale and honey make your milk sweet for the girls", "itens": ["couve", "mel"]},
-    {"txt": "Spinach and honey make your milk sweet for her", "itens": ["espinafre", "mel"]},
-    {"txt": "Kale and baking soda keep you going all night", "itens": ["couve", "bicarbonato"]},
-    {"txt": "Coconut and honey bring your twenties back", "itens": ["coco", "mel"]},
-    {"txt": "Beetroot and baking soda open the blood flow", "itens": ["beterraba", "bicarbonato"]},
-    {"txt": "Watermelon and honey sweeten your milk for the girls", "itens": ["melancia", "mel"]},
-    {"txt": "Ginger and cinnamon wake the whole system up", "itens": ["gengibre", "canela"]},
-    {"txt": "Celery and baking soda thicken your milk", "itens": ["aipo", "bicarbonato"]},
-    {"txt": "Pineapple and honey make your milk sweet", "itens": ["abacaxi", "mel"]},
-    {"txt": "Passion fruit and cinnamon harden you fast", "itens": ["maracuja", "canela"]},
+    {"txt": "Kale and honey make your milk sweet for the girls", "itens": ["couve", "mel"], "ben": "leite"},
+    {"txt": "Spinach and honey make your milk sweet for her", "itens": ["espinafre", "mel"], "ben": "leite"},
+    {"txt": "Kale and baking soda keep you going all night", "itens": ["couve", "bicarbonato"], "ben": "aguenta"},
+    {"txt": "Coconut and honey bring your twenties back", "itens": ["coco", "mel"], "ben": "vinte-anos"},
+    {"txt": "Beetroot and baking soda open the blood flow", "itens": ["beterraba", "bicarbonato"], "ben": "fluxo"},
+    {"txt": "Watermelon and honey sweeten your milk for the girls", "itens": ["melancia", "mel"], "ben": "leite"},
+    {"txt": "Ginger and cinnamon wake the whole system up", "itens": ["gengibre", "canela"], "ben": "acorda"},
+    {"txt": "Celery and baking soda thicken your milk", "itens": ["aipo", "bicarbonato"], "ben": "engrossa"},
+    {"txt": "Pineapple and honey make your milk sweet", "itens": ["abacaxi", "mel"], "ben": "leite"},
+    {"txt": "Passion fruit and cinnamon harden you fast", "itens": ["maracuja", "canela"], "ben": "endurece"},
 ]
 
 # CL15 — a VIRADA e' INTOCAVEL: encurta-se o item A antes dela. Abre com "But"
@@ -298,6 +383,29 @@ def _fresco(pool, usados, rng, chave):
     return rng.choice(livres)
 
 
+def _colide(a, b):
+    """CL22 — o par item A / item B repete fruta, ingrediente do truque ou
+    beneficio? Colidiu, sorteia-se outro item B: rejeita-se o PAR, nunca se
+    reescreve a frase para disfarcar."""
+    return bool(set(a["itens"]) & set(b["itens"])) or a["ben"] == b["ben"]
+
+
+def _viradas_que_cabem(a, b, orgao):
+    """CL13 — o teto se mede DEPOIS de substituir o orgao.
+
+    ⚠️ `_palavras` conta `{o}` como UMA palavra, mas `old boy` sao DUAS. O
+    banco de copy foi verificado com o placeholder, nao com o texto final, e
+    por isso duas viradas estouravam o teto de 24 sempre que o sorteio caia em
+    `old boy` — 0,2% dos videos saiam reprovados pelo proprio linter. Bug
+    latente desde o primeiro commit, medido em varredura 2026-08-02.
+    ⛔ Nao se encurta a virada (CL15): descarta-se a que nao couber.
+    """
+    base = "%s. %s. " % (a["txt"], b["txt"])
+    cabem = [v for v in VIRADAS
+             if _palavras(base + v.format(o=orgao)) <= TETO_FALA[2]]
+    return cabem or VIRADAS
+
+
 def sortear(pagina, rng, led, travas=None):
     """Monta a spec. `travas` = {'sexo': 'homem'} fixa o eixo e o sorteio
     respeita — e' o que o painel usa para pre-selecao (TRAVAS_UI)."""
@@ -316,14 +424,17 @@ def sortear(pagina, rng, led, travas=None):
 
     orgaos = rng.sample(NUCLEO, 2)
     a = rng.choice(ITEM_A)
-    b = rng.choice(ITEM_B)
+    # CL22 — o par nao repete fruta, ingrediente do truque nem beneficio. Todo
+    # item A tem no minimo 8 item B livres, entao a lista nunca fica vazia e
+    # nao ha' laco de tentativa e erro.
+    b = rng.choice([x for x in ITEM_B if not _colide(a, x)])
     # ⚠️ COTA: o HOOK sempre carrega o {o} (11 dos 14 hooks tem). Isso garante
     # o piso de 1/3 e libera as 14 VIRADAS — inclusive as 9 de negacao, que nao
     # nomeiam o orgao e que o operador aprovou uma a uma.
     # ⛔ Exigir {o} tambem na virada dava cota 2/3, mas matava 9 das 14 linhas
     # dele. Copy aprovada nao se descarta para satisfazer contador.
     hook = rng.choice([h for h in HOOKS if "{o}" in h]).format(o=orgaos[0])
-    virada = rng.choice(VIRADAS).format(o=orgaos[1])
+    virada = rng.choice(_viradas_que_cabem(a, b, orgaos[1])).format(o=orgaos[1])
     cta = "%s %s" % (rng.choice(CTAS), rng.choice(GATES))
 
     # CL14 — DOIS do truque, sempre. Os que a copy ja' cita contam; o resto
@@ -340,16 +451,42 @@ def sortear(pagina, rng, led, travas=None):
     # CL20 — a bancada nasce da copy MAIS os dois do truque
     bancada = [i for i in citados if i not in IDS_TRUQUE] + tru
 
+    # CL17/CL18 — a ORDEM do despejo: qual dos dois vai na cena 1 e qual na
+    # cena 2. Entra no ledger, senao dois videos do lote saem com a mesma dupla
+    # na mesma ordem — que e' o mesmo video.
+    # ⚠️ Calculada SEMPRE, nas duas familias: o botao `trocar cena` do painel
+    # vira spec["familia"] direto, sem passar por sortear(), e montar() ficaria
+    # sem a chave.
+    ordens = [list(tru), [tru[1], tru[0]]]
+    usados_d = usados.get("despejo", [])
+    despejo = rng.choice([o for o in ordens
+                          if "+".join(o) not in usados_d] or ordens)
+
     return {
         "pagina": pagina, "etnia": et, "sexo": sexo, "familia": familia,
         "cenario": cenario, "ref": ref, "scrub": scrub, "orgaos": orgaos,
         "item_a": a, "item_b": b, "bancada": bancada, "truque": tru,
+        "despejo": despejo,
         "falas": [hook, "%s. %s. %s" % (a["txt"], b["txt"], virada), cta],
     }
 
 
 def _pron(sexo):
-    return ("He", "his", "he") if sexo == "homem" else ("She", "her", "she")
+    """(sujeito, possessivo, sujeito minusculo, OBJETO).
+
+    ⚠️ O objeto existe porque `his` nao serve de complemento: `in front of his`
+    saia em todo video de REF masculina. Em `her` os dois casos coincidem, e por
+    isso o bug passou despercebido — so' metade dos sorteios o mostrava."""
+    return (("He", "his", "he", "him") if sexo == "homem"
+            else ("She", "her", "she", "her"))
+
+
+def _sem_artigo(s):
+    """Tira o artigo inicial para a frase `same %s` nao virar `same a ...`."""
+    for art in ("a ", "an ", "the "):
+        if s.startswith(art):
+            return s[len(art):]
+    return s
 
 
 def _pessoa(spec, primeiro=True):
@@ -361,20 +498,25 @@ def _pessoa(spec, primeiro=True):
                                        spec["scrub"], r["cabeca"], r["marca"]))
     return ("The same %d-year-old %s %s, same %s scrub top, same %s, same %s"
             % (r["idade"], spec["etnia"], quem, spec["scrub"],
-               r["cabeca"].split(" and ")[0], r["marca"]))
+               _sem_artigo(r["cabeca"].split(" and ")[0]),
+               _sem_artigo(r["marca"])))
 
 
 def _fila(ids):
     return ", ".join(VISUAL[i] for i in ids)
 
 
+def _cap(s):
+    return s[0].upper() + s[1:] if s else s
+
+
 def montar(spec):
     """Os 7 blocos. ⚠️ montar() e' o UNICO ponto que olha spec['familia'] —
     sortear() e o banco de copy sao identicos nas duas (CL16)."""
-    S, Ss, s = _pron(spec["sexo"])
+    S, Ss, s, obj = _pron(spec["sexo"])
     b = {}
     fam = spec["familia"]["id"]
-    cen = spec["cenario"]["desc"] % ("her" if spec["sexo"] == "mulher" else "him")
+    cen = spec["cenario"]["desc"] % obj
     nao_toca = NAO_TOCA % (S, s)
     idade = spec["ref"]["idade"]
 
@@ -401,7 +543,7 @@ def montar(spec):
             "torso upright and %s head raised. %s right index finger is extended "
             "toward the row, %s hand just above the counter. %s touches nothing. "
             "%s is the only person in the frame. %s Soft daylight from the window. %s"
-            % (cen, _pessoa(spec), Ss, fila, S, Ss, s, Ss, Ss, Ss, Ss, S, S,
+            % (cen, _pessoa(spec), obj, fila, S, Ss, s, Ss, Ss, _cap(Ss), Ss, S, S,
                ANTICELEB, CAUDA))
         b["IMAGE 02/03"] = (
             "Medium shot in the same room, same background. %s. On the counter is "
@@ -409,7 +551,7 @@ def montar(spec):
             "open mid-word as %s speaks, %s expression serious and certain. %s "
             "right index finger is extended toward %s, %s hand just above the "
             "counter. %s touches nothing. %s is the only person in the frame. %s %s"
-            % (_pessoa(spec, False), MESMA_BANCADA, fila, S, Ss, s, Ss, Ss,
+            % (_pessoa(spec, False), MESMA_BANCADA, fila, S, Ss, s, Ss, _cap(Ss),
                VISUAL[spec["truque"][0]], Ss, S, S, ANTICELEB, CAUDA))
         b["IMAGE 03/03"] = (
             "Closer medium shot in the same room, same background, same soft "
@@ -420,78 +562,113 @@ def montar(spec):
             "right index finger points directly at the camera. %s is the only "
             "person in the frame. %s %s"
             % (_pessoa(spec, False), VISUAL[spec["bancada"][0]], GELATINA,
-               VISUAL[spec["truque"][0]], S, Ss, Ss, s, Ss, S, ANTICELEB, CAUDA))
+               VISUAL[spec["truque"][0]], S, Ss, Ss, s, _cap(Ss), S,
+               ANTICELEB, CAUDA))
         mov = [
             "%s right hand moves once along the row, the extended index finger "
             "travelling from one end to the other, staying just above the counter "
             "the whole time. Everything on the counter stays exactly as it appears "
             "in the first frame — same position, same angle, same levels — "
-            "completely motionless for the entire shot." % Ss,
+            "completely motionless for the entire shot." % _cap(Ss),
             "%s extended index finger moves from one item to another and back, "
             "staying just above the counter. Everything on the counter stays "
             "exactly as it appears in the first frame — completely motionless for "
-            "the entire shot." % Ss,
+            "the entire shot." % _cap(Ss),
             "The glass, the bowl of gelatin cubes and the box beside them stay "
             "exactly as they appear in the first frame — nothing moves, nothing "
             "is touched.",
         ]
     else:
-        outros = [i for i in spec["bancada"] if i != "mel"]
-        fila = _fila(outros)
+        # CL17 — o ingrediente 1 e' despejado na cena 1, o 2 na cena 2. O que
+        # esta' na mao sai da fileira da bancada NAQUELA cena e volta na
+        # seguinte; assim os DOIS aparecem nas tres imagens e o piso do CL14
+        # continua de pe'.
+        i1, i2 = spec["despejo"]
+        d1, d2 = DESPEJO[i1], DESPEJO[i2]
+        v = {"ref1": _pessoa(spec), "ref": _pessoa(spec, False), "cen": cen,
+             "S": S, "Ss": Ss, "s": s, "gel": GELATINA, "anti": ANTICELEB,
+             "cauda": CAUDA, "resto": MESMA_BANCADA_B, "obj": obj,
+             "fila1": _fila([i for i in spec["bancada"] if i != i1]),
+             "fila2": _fila([i for i in spec["bancada"] if i != i2]),
+             "cor1": d1["cor"], "cor2": d2["cor"],
+             "c1": d1["curto"], "c2": d2["curto"], "ing2": VISUAL[i2],
+             "Sc": Ss[0].upper() + Ss[1:],   # "Her"/"His" em inicio de frase
+             "peg1": _cap(PEGADA % (Ss, d1["cont"], Ss, s, d1["gesto"])),
+             "peg2": _cap(PEGADA % (Ss, d2["cont"], Ss, s, d2["gesto"])),
+             "cai1": _cap(d1["queda"]), "cai2": _cap(d2["queda"]),
+             "seg1": d1["segue"], "seg2": d2["segue"]}
+        # ⚠️ Formatacao NOMEADA neste ramo, nao posicional: sao 14+ campos por
+        # bloco e um deslocamento de indice troca pronome por cor sem estourar
+        # erro nenhum — bug que so' aparece no video pronto.
         b["IMAGE 01/03"] = (
-            "Medium shot inside %s. Seated behind a wooden counter is %s. On the "
-            "counter in front of %s, at chest height, stand a tall clear glass "
-            "filled with plain clear water, and %s. %s looks directly into the "
-            "lens with %s mouth open mid-word as %s speaks, %s torso upright and "
-            "%s head raised. %s right index finger is extended toward the glass of "
-            "clear water, %s hand just above the counter. %s touches nothing. %s "
-            "is the only person in the frame. %s Soft daylight from the window. %s"
-            % (cen, _pessoa(spec), Ss, fila, S, Ss, s, Ss, Ss, Ss, Ss, S, S,
-               ANTICELEB, CAUDA))
+            "Medium shot inside %(cen)s. Seated behind a wooden counter is "
+            "%(ref1)s. On the counter in front of %(obj)s, at chest height, stand "
+            "a tall clear glass filled with plain clear water and, beside it, "
+            "%(fila1)s. %(peg1)s. %(cai1)s, and the water in the glass is "
+            "turning from clear to %(cor1)s where the stream lands. %(S)s looks "
+            "directly into the lens with %(Ss)s mouth open mid-word as %(s)s "
+            "speaks, %(Ss)s torso upright and %(Ss)s head raised. %(S)s is the "
+            "only person in the frame. %(anti)s Soft daylight from the window. "
+            "%(cauda)s" % v)
+        # ⚠️ A cena 2 CLAREIA se a segunda cor for mais clara que a primeira —
+        # despejar mel em agua marrom nao produz dourado. Por isso o liquido
+        # `clouds over` em vez de trocar de tom: vale para os 20 pares, e
+        # nenhum deles le como o preparo desandando.
         b["IMAGE 02/03"] = (
-            "Medium shot in the same room, same background. %s. %s. A slow thread "
-            "of golden honey is falling from the jar into the glass, and the water "
-            "in the glass is turning from clear to warm gold where the stream "
-            "lands. Everything else on the counter is exactly where it was: %s. %s "
-            "looks directly into the lens with %s mouth open mid-word as %s speaks, "
-            "%s expression serious and certain. %s is the only person in the frame. "
-            "%s %s"
-            % (_pessoa(spec, False), PEGADA % (Ss, Ss, s), fila, S, Ss, s, Ss, S,
-               ANTICELEB, CAUDA))
+            "Medium shot in the same room, same background. %(ref)s. On the "
+            "counter, in the same order and at the same positions as before, "
+            "stand %(fila2)s. %(resto)s %(peg2)s. %(cai2)s, and the %(cor1)s "
+            "water in the glass is clouding over and turning %(cor2)s where the "
+            "stream lands. %(S)s looks directly into the lens with %(Ss)s mouth "
+            "open mid-word as %(s)s speaks, %(Ss)s expression serious and "
+            "certain. %(S)s is the only person in the frame. %(anti)s "
+            "%(cauda)s" % v)
+        # CL21 — a cena 3 e' o RESULTADO: copo pronto + gelatina, e so' um dos
+        # dois do truque ao lado (a prioridade do CL21 manda cortar o resto
+        # antes da gelatina). Zero manipulacao.
         b["IMAGE 03/03"] = (
             "Closer medium shot in the same room, same background, same soft "
-            "daylight. %s, framed from the waist up. On the counter along the "
-            "bottom edge of the frame stand three things only: the same tall "
-            "glass, now filled to the top with a finished warm golden drink and no "
-            "longer clear; %s; and %s. %s looks directly into the lens, calm and "
-            "confident, one corner of %s mouth raised in a half-smile, %s mouth "
-            "open mid-word as %s speaks. %s right index finger points directly at "
-            "the camera. %s is the only person in the frame. %s %s"
-            % (_pessoa(spec, False), GELATINA, VISUAL["mel"], S, Ss, Ss, s, Ss,
-               S, ANTICELEB, CAUDA))
+            "daylight. %(ref)s, framed from the waist up. On the counter along "
+            "the bottom edge of the frame stand three things only: the same tall "
+            "glass, now filled to the top with a finished %(cor2)s drink and no "
+            "longer clear; %(gel)s; and %(ing2)s. %(S)s looks directly into the "
+            "lens, calm and confident, one corner of %(Ss)s mouth raised in a "
+            "half-smile, %(Ss)s mouth open mid-word as %(s)s speaks. %(Sc)s right "
+            "index finger points directly at the camera. %(S)s is the only person "
+            "in the frame. %(anti)s %(cauda)s" % v)
+        # ⚠️ A clausula de toque saiu daqui: o TAKE ja' carrega o TOCA_UM
+        # (CL14), e dizer a mesma regra duas vezes no mesmo prompt e' so' ruido.
+        # Fica a clausula de CONTINUIDADE, que e' o que a validacao segurou.
         mov = [
-            "%s extended index finger moves once along the row, staying just above "
-            "the counter. Everything on the counter stays exactly as it appears in "
-            "the first frame — completely motionless for the entire shot, and the "
-            "water in the glass stays clear." % Ss,
-            "%s keeps %s right hand closed around the jar, the whole hand visibly "
-            "wrapped around it, %s forearm resting steady on the counter, and "
-            "tilts it a little further so the thread of honey keeps falling into "
-            "the glass. As it falls, the water in the glass turns from clear to "
-            "warm gold, the colour spreading down through it. %s touches only the "
-            "jar %s is pouring from, and everything else stays exactly as it "
-            "appears in the first frame." % (S, Ss, Ss, S, s),
-            "The finished golden drink, the bowl of gelatin cubes and the jar "
-            "beside them stay exactly as they appear in the first frame — nothing "
-            "moves, nothing is touched.",
+            "%(S)s keeps %(Ss)s right hand closed around the %(c1)s, the whole "
+            "hand visibly wrapped around it, %(Ss)s forearm resting steady on the "
+            "counter, and %(seg1)s. As it falls, the water in the glass turns "
+            "from clear to %(cor1)s, the colour spreading down through it. "
+            "Everything else stays exactly as it appears in the first frame." % v,
+            "%(S)s keeps %(Ss)s right hand closed around the %(c2)s, the whole "
+            "hand visibly wrapped around it, %(Ss)s forearm resting steady on the "
+            "counter, and %(seg2)s. As it falls, the %(cor1)s water in the glass "
+            "clouds over and turns %(cor2)s, the colour spreading down through "
+            "it. Everything else stays exactly as it appears in the first "
+            "frame." % v,
+            "The finished %(cor2)s drink, the bowl of gelatin cubes and the "
+            "%(c2)s beside them stay exactly as they appear in the first frame — "
+            "nothing moves, nothing is touched." % v,
         ]
 
-    audio = ["quiet office room tone. No music.",
-             "quiet office room tone, a soft pour. No music." if fam == "preparo"
-             else "quiet office room tone. No music.",
-             "quiet office room tone. No music."]
+    if fam == "preparo":
+        audio = ["quiet office room tone, %s. No music."
+                 % DESPEJO[spec["despejo"][0]]["som"],
+                 "quiet office room tone, %s. No music."
+                 % DESPEJO[spec["despejo"][1]]["som"],
+                 "quiet office room tone. No music."]
+    else:
+        audio = ["quiet office room tone. No music."] * 3
+    # CL14 — nas cenas 1 e 2 da familia B a frase travada vira TOCA_UM; na
+    # cena 3 (e na familia A inteira) o NAO_TOCA volta.
+    toca_um = TOCA_UM % (S, s, S)
     for i in range(3):
-        toca = "" if (fam == "preparo" and i == 1) else " " + nao_toca
+        toca = " " + (toca_um if (fam == "preparo" and i in (0, 1)) else nao_toca)
         b["TAKE %02d/03" % (i + 1)] = (
             "Animate the provided image exactly. Handheld iPhone shot, very "
             "slight natural sway, no cuts. The %d-year-old %s speaks straight "
@@ -552,6 +729,32 @@ def lint(spec, blocos):
         ach.append(("ERRO", "CL20: a copy cita %s e a bancada nao tem"
                             % ", ".join(sorted(citados - set(spec["bancada"])))))
 
+    # CL22 — item A e item B nunca repetem fruta, ingrediente nem beneficio
+    if _colide(spec["item_a"], spec["item_b"]):
+        ach.append(("ERRO", "CL22: item A e item B se repetem — \"%s\" + \"%s\""
+                            % (spec["item_a"]["txt"], spec["item_b"]["txt"])))
+    if "milk" in spec["item_a"]["txt"].lower():
+        ach.append(("ERRO", "CL22: item A cita leite — o leite e' assunto do "
+                            "item B, que vem logo em seguida"))
+
+    # CL17 — familia B: um ingrediente por cena, os dois em cena nas tres
+    if spec["familia"]["id"] == "preparo":
+        d = spec["despejo"]
+        if len(set(d)) != 2 or set(d) != set(spec["truque"]):
+            ach.append(("ERRO", "CL17: o despejo tem de ser os DOIS do truque, "
+                                "um por cena — veio %s" % ", ".join(d)))
+        for nome in ("IMAGE 01/03", "IMAGE 02/03"):
+            img = blocos.get(nome, "")
+            for ing in spec["truque"]:
+                if VISUAL[ing] not in img and DESPEJO[ing]["cont"] not in img:
+                    ach.append(("ERRO", "CL14: '%s' fora de %s — os dois do "
+                                        "truque estao nas tres imagens"
+                                        % (ing, nome)))
+        t3 = blocos.get("TAKE 03/03", "").lower()
+        if any(w in t3 for w in ("keeps falling", "keeps running", "pouring from")):
+            ach.append(("ERRO", "CL17: manipulacao na cena 3 — ela so' apresenta "
+                                "o resultado pronto"))
+
     # CL21 — a gelatina SO' na cena 3
     for nome in ("IMAGE 01/03", "IMAGE 02/03"):
         if "gelatin cubes" in blocos.get(nome, ""):
@@ -569,14 +772,22 @@ def lint(spec, blocos):
         # Regra que reprova tudo nunca foi testada.
         for pr in (("He", "he"), ("She", "she")):
             direcao = direcao.replace(NAO_TOCA % pr, "")
+        for pr in (("He", "he", "He"), ("She", "she", "She")):
+            direcao = direcao.replace(TOCA_UM % pr, "")
         direcao = direcao.lower()
-        if nome.endswith("02/03") and spec["familia"]["id"] == "preparo":
-            continue
-        for tok in ("pours", "stirs", "picks up", "squeezes", "holds up"):
-            if tok in direcao:
-                ach.append(("ERRO", "CL1: '%s' em %s — %s so' aponta"
-                                    % (tok, nome, "ele" if spec["sexo"] == "homem"
-                                       else "ela")))
+        # ⚠️ Na familia B o despejo e' autorizado nas cenas 1 E 2 (CL17). A
+        # cena 3 NAO e' isenta: la' vale o CL1 inteiro, maos fora.
+        # ⛔ O `continue` antigo pulava tambem o CL2 na cena isenta — prop
+        # falico nunca deixa de ser proibido.
+        isenta = (spec["familia"]["id"] == "preparo"
+                  and nome.endswith(("01/03", "02/03")))
+        if not isenta:
+            for tok in ("pours", "stirs", "picks up", "squeezes", "holds up"):
+                if tok in direcao:
+                    ach.append(("ERRO", "CL1: '%s' em %s — %s so' aponta"
+                                        % (tok, nome,
+                                           "ele" if spec["sexo"] == "homem"
+                                           else "ela")))
         for tok in ("cucumber", "banana", "eggplant", "sausage", "geoduck",
                     "anatomy model", "bare-chested"):
             if tok in direcao:
@@ -587,7 +798,8 @@ def lint(spec, blocos):
 
 def resumo_pt(spec):
     fam = ("ela aponta, nada se mexe" if spec["familia"]["id"] == "aponta"
-           else "ela prepara na cena 2, o copo muda de cor")
+           else "ela despeja %s na cena 1 e %s na cena 2, e a cena 3 e' so' o "
+                "copo pronto" % tuple(spec["despejo"]))
     if spec["sexo"] == "homem":
         fam = fam.replace("ela ", "ele ")
     return ("%s de %d anos, de scrub %s, num %s. Na bancada: %s. %s. Três cenas, "
@@ -608,12 +820,19 @@ def nova_fala(spec, i, rng):
         return rng.choice([h for h in HOOKS if "{o}" in h]).format(o=o[0])
     if i == 2:
         return "%s %s" % (rng.choice(CTAS), rng.choice(GATES))
-    # cena 2: mantem os itens da bancada, troca so' a virada
-    return "%s. %s. %s" % (spec["item_a"]["txt"], spec["item_b"]["txt"],
-                           rng.choice(VIRADAS).format(o=o[1]))
+    # cena 2: mantem os itens da bancada, troca so' a virada — e so' entre as
+    # que cabem no teto depois de substituir o orgao (CL13)
+    a, b = spec["item_a"], spec["item_b"]
+    return "%s. %s. %s" % (a["txt"], b["txt"],
+                           rng.choice(_viradas_que_cabem(a, b, o[1])).format(o=o[1]))
 
 
 EIXOS_QUE_MEXEM_NA_COPY = {}
+
+# ⚠️ `despejo` nao tem pool fixo (o par sai do CL14/CL20 e varia por video),
+# entao o teto e' arbitrario: 8 pares antes de zerar. Sem teto proprio a lista
+# so' cresceria e o anti-repeticao pararia de rejeitar qualquer coisa.
+TETO_LEDGER = {"familia": len(FAMILIAS), "cenario": len(CENARIOS), "despejo": 8}
 
 
 def main():
@@ -655,12 +874,12 @@ def main():
         if not a.dry_run:
             u = led.setdefault(a.pagina, {})
             for eixo, val in (("familia", spec["familia"]["id"]),
-                              ("cenario", spec["cenario"]["id"])):
+                              ("cenario", spec["cenario"]["id"]),
+                              ("despejo", "+".join(spec["despejo"]))):
                 u.setdefault(eixo, [])
                 if val not in u[eixo]:
                     u[eixo].append(val)
-                if len(u[eixo]) >= len({"familia": FAMILIAS,
-                                        "cenario": CENARIOS}[eixo]):
+                if len(u[eixo]) >= TETO_LEDGER[eixo]:
                     u[eixo] = [val]
     if not a.dry_run:
         _gravar_ledger(led)
