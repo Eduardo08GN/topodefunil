@@ -433,6 +433,33 @@ número que a própria faixa exige como mínimo). Doutrina e motor têm de bater
 ([`licoes-de-construcao`](funil-organico/licoes-de-construcao.md) §3): regra que
 o motor cita e a doutrina não tem manda o operador ler a regra errada.
 
+### 🟡 A densidade do TAKE 01 — decisão registrada, não resolvida (2026-08-02)
+
+Medido em 60 sorteios por motor, **direção de cena** (sem a fala):
+
+| Motor | TAKE 01 | TAKE 02 | TAKE 03 |
+|---|---|---|---|
+| ORGANICWAVE | 84 | 68 | 88 |
+| ESCANDALO | 109 | 147 | 116 |
+| TROCA | 111 | 171 | 95 |
+| **RESSURREICAO** | **493** | 159 | 117 |
+
+O TAKE 01 é **~3× o maior precedente do repo**. Não é regra violada — a **R2b**
+autoriza explicitamente estourar o orçamento de 80-150 para coreografia de prop
+com armadilha documentada, e é justamente essa cena que carrega os 8 elementos
+(âncora, analogia física, propagação, estado final, escala diferencial, oclusão,
+apagão, reação). As cenas 2 e 3 ficam **dentro** do orçamento.
+
+⚠️ Mas a **F12c** diz que densidade é superfície de bloqueio, e esta é a cena
+mais cara do vídeo. **Decisão do operador em 2026-08-02: não enxugar antes do
+primeiro render — gerar o lote e medir na moderação real.** Se passar, o teto
+sobe para todo take de crescimento **com evidência**, e o selo vira 🟢. Se
+bloquear, a bissecção já tem o alvo isolado
+([`RUNBOOK-bisseccao-moderacao`](funil-organico/RUNBOOK-bisseccao-moderacao.md)).
+⛔ Não "otimizar" isto por conta própria: é a única cena que ainda não tem render.
+
+---
+
 ### ⭐ O flag `--credibilidade` — e o default é CONFIRMA
 
 Assinatura: `sortear(pagina, rng, ledger, credibilidade=None)` · CLI
@@ -552,6 +579,26 @@ foi testada*. **Quem cresce numa cena só chama; os outros não chamam.**
   ⛔ **`your {o}` + marcador de PRAZO no mesmo take de 8s** é a composição exata
   que derrubou o vídeo do NECROSE por conteúdo nocivo — e `your {o}` entra em
   forma **condicional ou de pergunta**, nunca afirmativa.
+
+  ⭐ **CORREÇÃO DE 2026-08-02 — a regra existia e nunca disparou.** O `RS10_PRAZO`
+  listava só `days|weeks|months` e por isso **não via `seconds`**. Medido: **33
+  em 400 vídeos** juntavam o hook `If you want your {o} …` com o bullet
+  `That happened in four seconds.` na cena 1, e o linter reportava **0 ERRO**.
+  Regra escrita não é regra que pega — `_rs10_prazo` existia desde o primeiro dia
+  e nunca acusou uma vez.
+
+  Duas mudanças, e **nenhuma toca copy** (alçada do Ed — as duas frases seguem
+  intactas nos pools, só deixam de sair juntas):
+  1. o regex passou a cobrir `seconds|minutes|hours` (e `by morning`/`by tomorrow`);
+  2. ⭐ a regra saiu do linter e entrou no **sorteio**: se o hook traz `your {o}`,
+     nem o beat2 nem o bullet com prazo são sorteados. Antes o motor **montava o
+     vídeo proibido e reclamava depois**; agora ele não monta, e o linter fica
+     como rede.
+
+  ⚠️ E o bullet fala da duração **do que a tela mostrou**, não do corpo de quem
+  assiste. A trava vale assim mesmo: *o classificador julga tokens e geometria,
+  não intenção* ([`CLAUDE.md`](CLAUDE.md) §a lição que generaliza). Medido depois
+  da trava: **0 em 400**.
 - ⛔ **Zero declaração de conformidade** em qualquer bloco (`not a celebrity`,
   `fully clothed`, `they are adults`): **silêncio vence negação**.
   ⛔ **Zero marca legível** (P12) — e a ausência de rótulo se declara pela

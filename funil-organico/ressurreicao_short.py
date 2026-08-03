@@ -2057,9 +2057,19 @@ def _repete(hook, bullet):
 # take de 8s e' a composicao literal que derrubou o video do NECROSE por
 # "politicas contra a geracao de conteudo nocivo". Uma regra que nao ve' metade
 # das formas do prazo nao esta' cobrindo a composicao — esta' fingindo cobrir.
+# ⛔⛔ BURACO TAPADO EM 2026-08-02. A v1 listava so' `days|weeks|months` e por
+# isso deixava passar `That happened in four seconds.` — medido, 33 em 400
+# videos casavam `your {o}` no hook com esse bullet na cena 1, e a regra
+# reportava 0 ERRO. Regra escrita nao e' regra que pega: o `_rs10_prazo` existia
+# desde o primeiro dia e nunca disparou uma vez.
+# ⚠️ E' o bullet que fala da duracao DO QUE A TELA MOSTROU, nao do corpo de quem
+# assiste. Vale a trava assim mesmo: o classificador julga TOKEN e GEOMETRIA,
+# nunca intencao (CLAUDE.md §a licao que generaliza).
 RS10_PRAZO = re.compile(
     r"\b(overnight|by next|by the|before bed|every (morning|night)|tonight|"
-    r"(in|inside|within|after)\s+[\w-]+\s+(days?|weeks?|months?))\b", re.I)
+    r"by morning|by tomorrow|"
+    r"(in|inside|within|after)\s+[\w-]+\s+"
+    r"(seconds?|minutes?|hours?|days?|weeks?|months?))\b", re.I)
 RS10_CORPO_2A = re.compile(
     r"\byour\s+(?:\w+\s+){0,2}(%s)\b" % "|".join(NUCLEO), re.I)
 
@@ -2128,10 +2138,27 @@ def _montar_falas(rng, sub, rec, orgaos, relacao, credibilidade, degrau):
     hook_nomeia = "{o}" in hk["txt"]
 
     beat2 = CONFIRMACOES if credibilidade == "confirma" else DESMENTIDOS
+    # ⛔⛔ RS10 NO SORTEIO, nao so' no linter (ordem do operador, 2026-08-02).
+    # Se o hook trouxe `your {o}`, nada que entra na MESMA fala de 8s pode
+    # trazer marcador de prazo — e' a composicao que derrubou o NECROSE.
+    # ⚠️ Ate' hoje isto era so' ERRO de lint: o motor MONTAVA o video proibido e
+    # reclamava depois. Agora ele nao monta. O linter fica como rede.
+    # ⛔ NENHUMA DAS DUAS COPIES FOI ALTERADA — copy e' alcada do operador. O que
+    # muda e' o SORTEIO: elas continuam nos pools e so' deixam de sair juntas.
+    prazo_proibido = bool(RS10_CORPO_2A.search(hook))
+
+    def _sem_prazo(itens):
+        """⚠️ `or itens` e' rede, nao gambiarra: pool vazio deixaria a cena 1
+        abaixo do PISO_FALA. Medido em 400 sorteios: nunca e' acionada."""
+        if not prazo_proibido:
+            return itens
+        return [x for x in itens if not RS10_PRAZO.search(x)] or itens
+
+    beat2 = _sem_prazo(beat2)
     # ⛔ o bullet obedece ao MODO (ver o campo `cred` do pool): duas entradas
     # emolduram o crescimento como boato e so' podem rodar depois do desmentido.
-    elegiveis = [b["txt"] for b in BULLETS
-                 if b["cred"] in ("ambas", credibilidade)]
+    elegiveis = _sem_prazo([b["txt"] for b in BULLETS
+                            if b["cred"] in ("ambas", credibilidade)])
     pref = [b for b in elegiveis if ("{o}" in b) != hook_nomeia]
     resto = [b for b in elegiveis if ("{o}" in b) == hook_nomeia]
 
