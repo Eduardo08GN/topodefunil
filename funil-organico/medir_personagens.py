@@ -187,6 +187,19 @@ EXCECOES = {
         "em quadro. A identidade dele mora na mao e na calca, nao no rosto.",
     ("colo_short.py", "HOMENS", "pelo_facial"): "idem CO1/CO13 — sem rosto",
     ("colo_short.py", "HOMENS", "oculos"): "idem CO1/CO13 — sem rosto",
+    # ⛔ COLO — LEI DO REF (2026-08-03): *"ref mulheres sempre muito lindas"*.
+    # ⚠️ E ESTE EIXO ZERADO E' O REGISTRO DE UM ERRO MEU, o MESMO do
+    # RESSURREICAO e cometido de novo dez dias depois: escrevi o pool otimizando
+    # para ESTE medidor, que premia oculos e pele marcada, e ele me devolveu
+    # narradoras de 40, 42 e 44 anos, grisalhas, de oculos de leitura e "deeply
+    # lined skin" — num agente em que ela e' quem vende para homem. O operador
+    # viu no lote e mandou reescrever.
+    # ⚠️ A ancora facial NAO sumiu: ela migrou para sinal de BELEZA — marca de
+    # nascenca, covinha, olho de cor incomum, sarda, falha entre os dentes,
+    # malar alto. Distintivo, nunca deteriorado.
+    ("colo_short.py", "NARRADORAS", "oculos"):
+        "LEI DO REF — oculos de leitura brigam frontalmente com 'linda e jovem'. "
+        "Os outros eixos continuam cheios (cabelo, porte, pele, ancora).",
     ("ressurreicao_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF (2026-08-03) — neste agente a narradora e' sempre linda, "
         "jovem e de sex appeal alto, por ordem do operador. Oculos de leitura "

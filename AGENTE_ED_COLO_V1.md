@@ -79,6 +79,24 @@ A âncora certa é a **câmera**, com a consequência declarada
 **e no TAKE** — o bloco de vídeo passa pelo mesmo classificador, e foi lá que um
 resíduo sobrou na primeira passada.
 
+**CO14 — LEI DO REF: a narradora é sempre muito bonita e jovem.** Ordem do
+operador, 2026-08-03, olhando o lote: *"ref mulheres sempre muito lindas"*. Vale
+como lei permanente, não como ajuste de lote. Pool com 23 a 35 anos, zero óculos,
+zero grisalho, zero linha profunda.
+
+> ⚠️ **Este pool foi reescrito porque a primeira versão era o mesmo erro que já
+> custou o RESSURREICAO.** Eu escrevi as entradas otimizando para o
+> `medir_personagens.py`, que premia óculos, pele marcada e linhas profundas — e
+> ele devolveu narradoras de 40, 42 e 44 anos, grisalhas, de óculos de leitura,
+> num agente em que ela é quem vende para homem. **Otimizei a métrica contra o
+> objetivo**, dez dias depois de ter aprendido exatamente isso.
+
+⛔ **A âncora facial continua obrigatória** (P6) — sem ela o Veo troca de rosto
+entre os blocos de 8s, e aqui a cena 1 e a 2 são em ambientes diferentes, que é
+onde ele mais troca. Mas ela é **distintiva, nunca deteriorada**: marca de
+nascença, covinha, olho de cor incomum, sarda, falha entre os dentes, malar alto.
+⛔ Nunca dente lascado, pálpebra caída, pele castigada.
+
 **CO2 — nada cresce.** O bit visual é o **despejo**. Crescimento é do
 RESSURREICAO; duas mecânicas de choque no mesmo vídeo somam a uma.
 
@@ -125,7 +143,7 @@ marca real é nominal do EXTERIOR e só dele.
 | eixo | tamanho | observação |
 |---|---|---|
 | MUNDOS | 12 em 9 famílias | **a etnia sai de dentro do mundo** |
-| NARRADORAS | 12 | zero etnia nas entradas; a montagem injeta |
+| NARRADORAS | 12 | 23–35 anos, **lei do REF** (CO14); zero etnia nas entradas |
 | HOMENS | 10 | o colo da cena 1 — âncora na mão e na calça, sem rosto |
 | PROPS | **5** | ⭐ **validados um a um no gerador** — ver abaixo |
 | SUBSTANCIAS | 12 | todas líquidas, todas despejadas |

@@ -521,63 +521,78 @@ FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
 # ⚠️ Os eixos que o `medir_personagens.py` cobra estao todos cobertos: cabelo,
 # oculos, pele, porte e ancora. ⛔ `pelo_facial` e' zero POR DOUTRINA: sao todas
 # mulheres.
+# ⛔⛔ LEI DO REF — A NARRADORA E' SEMPRE MUITO BONITA E JOVEM.
+# Ordem do operador, 2026-08-03, olhando o lote: *"ref mulheres sempre muito
+# lindas"*. Vale como lei permanente deste agente, nao como ajuste de lote.
+#
+# ⚠️ ESTE POOL FOI REESCRITO PORQUE A PRIMEIRA VERSAO ERA O MESMO ERRO QUE JA'
+# CUSTOU O RESSURREICAO: eu escrevi as entradas otimizando para o
+# `medir_personagens.py`, que premia OCULOS, PELE MARCADA e LINHAS PROFUNDAS —
+# e o pool devolveu narradoras de 40, 42 e 44 anos, grisalhas, de oculos de
+# leitura e "deeply lined skin", num agente em que ela e' quem vende para homem.
+# Otimizar a metrica contra o objetivo. O eixo `oculos` fica ZERADO de proposito
+# e a excecao esta' declarada no medidor.
+#
+# ⛔ A ANCORA FACIAL CONTINUA OBRIGATORIA (P6) — sem ela o Veo troca de rosto
+# entre os blocos de 8s, e neste agente a cena 1 e a 2 sao em ambientes
+# diferentes, que e' onde ele mais troca. Mas ela e' DISTINTIVA, NUNCA
+# DETERIORADA (licoes-producao-veo §REF): sinal de beleza — marca de nascenca,
+# covinha, olho de cor incomum, sarda, falha entre os dentes da frente, malar
+# alto. ⛔ Nunca dente lascado, palpebra caida, pele castigada.
 NARRADORAS = [
-    {"idade": 35,
+    {"idade": 27,
      "corpo": "slim and toned, with a flat midriff",
-     "cabeca": "long wavy honey-blonde hair falling past her shoulders and "
-               "thin round wire-rimmed glasses",
-     "marca": "a small dark mole just above her left eyebrow"},
-    {"idade": 31,
+     "cabeca": "long wavy honey-blonde hair falling past her shoulders",
+     "marca": "a small dark beauty mark just above her lip"},
+    {"idade": 24,
      "corpo": "lean and athletic, with defined shoulders",
      "cabeca": "long dark hair pulled back into a high ponytail",
-     "marca": "a fine pale scar through her right eyebrow and freckles across "
-              "the bridge of her nose"},
-    {"idade": 38,
-     "corpo": "slim with a strong straight back",
-     "cabeca": "shoulder-length auburn hair tucked behind one ear and heavy "
-               "black-framed glasses",
-     "marca": "a small gap between her front teeth that shows when she talks"},
-    {"idade": 29,
+     "marca": "striking pale green eyes and a light spray of freckles across "
+              "her nose"},
+    {"idade": 31,
+     "corpo": "slim, with a long neck and fine collarbones",
+     "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
+     "marca": "a small gap between her front teeth that shows when she smiles"},
+    {"idade": 26,
      "corpo": "compact and athletic, with toned arms",
      "cabeca": "tight natural curls kept short and close",
-     "marca": "a dark beauty spot high on her right cheekbone"},
-    {"idade": 42,
-     "corpo": "slender, with a long neck and fine collarbones",
-     "cabeca": "straight black hair cut in a blunt shoulder-length bob",
-     "marca": "sun-weathered skin and deep smile lines at the corners of her "
-              "eyes"},
+     "marca": "high sharp cheekbones and a dark beauty spot on her right "
+              "cheekbone"},
+    {"idade": 29,
+     "corpo": "slender and long-limbed",
+     "cabeca": "straight black hair cut in a blunt glossy bob",
+     "marca": "full lips and a deep dimple in her left cheek"},
     {"idade": 33,
      "corpo": "toned and broad-shouldered, like a swimmer",
      "cabeca": "long braids gathered over one shoulder",
-     "marca": "a small silver hoop in her left nostril and a tiny scar on her "
-              "chin"},
-    {"idade": 36,
+     "marca": "a small silver hoop in her left nostril and a wide bright smile"},
+    {"idade": 25,
      "corpo": "slim-hipped and wiry",
-     "cabeca": "thick copper-red hair twisted up and pinned loosely",
-     "marca": "a dense spray of freckles over both cheeks"},
-    {"idade": 27,
+     "cabeca": "thick copper-red hair falling loose past her shoulders",
+     "marca": "a dense spray of freckles over both cheeks and pale blue eyes"},
+    {"idade": 28,
      "corpo": "petite and tightly muscled",
      "cabeca": "dark hair in a high messy bun with loose strands at the temples",
-     "marca": "a small crescent scar at the left corner of her mouth"},
-    {"idade": 40,
-     "corpo": "tall and lean, with square shoulders",
-     "cabeca": "silver-streaked dark hair in a low twist and thin gold-rimmed "
-               "glasses",
-     "marca": "a coin-sized birthmark low on her right jaw"},
-    {"idade": 34,
-     "corpo": "athletic with a narrow waist",
-     "cabeca": "chin-length wavy light-brown hair pushed back off her forehead",
-     "marca": "eyes of two different colours, one green and one brown"},
+     "marca": "a beauty mark at the left corner of her mouth"},
     {"idade": 30,
+     "corpo": "tall and lean, with square shoulders",
+     "cabeca": "long dark hair with a sharp widow's peak",
+     "marca": "eyes of two different colours, one green and one brown"},
+    {"idade": 32,
+     "corpo": "athletic, with a narrow waist",
+     "cabeca": "chin-length wavy caramel hair pushed back off her forehead",
+     "marca": "a small heart-shaped birthmark below her right ear"},
+    {"idade": 23,
      "corpo": "slim and long-limbed",
      "cabeca": "very long straight dark hair parted in the middle",
-     "marca": "a thin pale scar running down the side of her neck"},
-    {"idade": 44,
-     "corpo": "trim and squarely built, with strong forearms",
-     "cabeca": "close-cropped grey-streaked natural hair",
-     "marca": "deeply lined skin around the eyes and a small dark mole beside "
-              "her nose"},
+     "marca": "arched brows and a small beauty mark high on her left cheek"},
+    {"idade": 35,
+     "corpo": "trim and curvy, with a defined waist",
+     "cabeca": "thick dark hair in a low glossy ponytail",
+     "marca": "a fine pale scar through her right eyebrow and smooth clear "
+              "skin"},
 ]
+
 
 
 # ---------------------------------------------------------------------------
