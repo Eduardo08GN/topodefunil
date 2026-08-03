@@ -451,7 +451,18 @@ HOOKS = [
     "She already knows your {o} won't work tonight — that's blood flow, choked off. Fix it before Friday.",
     "You apologized in the dark again last night. Blood flow quit reaching your {o}. Do this tonight.",
     "She said it's okay, honey, and rolled over. It's blood flow, not you — fix your {o} tonight.",
-    "You plan your nights around a pill that never opened the blood flow to your {o}. Do this tonight instead.",
+    # ⛔ CONSERTO 2026-08-03 (2a passada, achado da revisao) — VERBO DE
+    # ENCANAMENTO (familia [V]). Queixa do operador lendo o app: "Opens o QUE?
+    # Com tanto verbo que voce poderia usar pra dizer que DEIXA O PINTO MELHOR,
+    # voce usa 'opens'?". Este era o unico HOOK que usava `open` como promessa:
+    # `a pill that never OPENED the blood flow to your {o}` descreve o vaso, nao
+    # o homem. ⭐ REGRA NOVA: verbo de RESULTADO (`got your {o} hard`), e o
+    # mecanismo `blood flow` continua NA MESMA FRASE — trocar `open` por outro
+    # eufemismo de encanamento (`unblocks`, `restores flow`) nao e' conserto.
+    # ⚠️ TETO cena 1 (20) MELHORA: 21 -> 20 palavras no pior caso ({o} = "old
+    # boy"). ⚠️ RS10: caiu o `Do this tonight instead`, entao esta entrada deixou
+    # de somar `your {o}` + marcador de prazo na mesma fala de 8s.
+    "You plan your nights around a pill that never got your {o} hard — that's blood flow, not your age.",
     "Nobody in my house buys those pills anymore. Blood flow quit your {o}, brother. Stop paying them.",
     "I went four years without finishing once, brother. Blood flow quit my {o}. Give me sixty seconds.",
     "For four years I told my wife I was just tired. Blood flow quit my {o}. Don't lie to her.",
@@ -552,15 +563,35 @@ BARREIRAS = [
     "You do it once, alone, and it stays your business.",
 ]
 
+# ⛔ CONSERTO 2026-08-03 — MUDANCA SEM DIZER O QUE MUDOU (familia [C]).
+# O operador leu no proprio app "My sister asked what changed." e cobrou: "o que
+# mudou?". Aqui o vicio era o mesmo em tres entradas deste pool — a fala abria a
+# pergunta ("she asks what changed", "she'll ask what got into you") e ACABAVA,
+# entao o CTA inteiro passava sem nunca dizer o que o negocio faz pelo homem.
+# ⭐ REGRA NOVA: se a frase abre a pergunta, ela mesma RESPONDE, e responde com
+# VERBO DE RESULTADO ("got you hard again", "you're hard again"), nunca com
+# verbo de encanamento nem com outra abstracao — trocar metafora por metafora
+# nao e' conserto (§17 de licoes-de-construcao.md).
+# ⚠️ TETO_FALA da cena 3 (40) intacto: cada entrada reescrita tem MENOS ou o
+# MESMO numero de palavras da que substituiu (12->12, 11->11, 10->9), e o gasto
+# do verbo obvio foi pago DENTRO da propria entrada (caiu "Next"/"video" na
+# primeira, "You'll remember this" virou "Remember this" na segunda).
+# ⚠️ RS10: nenhuma delas escreve `your <orgao>`, entao o marcador de prazo
+# ("Friday night", "tonight") continua sozinho na fala. Zero medida de resultado.
 PACING = [
-    "Next Friday night, when she asks what changed, you'll remember this video.",
-    "Next Friday night she'll ask what changed. You'll remember this.",
+    "Friday night, when she asks what got you hard again, remember this.",
+    # ⚠️ 2026-08-03, 2a passada: a 1a versao deste conserto escreveu "Next Friday
+    # night she'll find out you're hard again. Remember this." — 11 palavras
+    # contra as 10 da entrada que substituiu, e o pior CTA renderizado subiu de
+    # 44 para 45 palavras (teto 40). Regra [1]: se o verbo obvio nao couber,
+    # ENCURTE OUTRA COISA na mesma entrada — nunca suba o TETO_FALA. Caiu "Next".
+    "Friday night she'll find out you're hard again. Remember this.",
     # + 2026-08-01: so' havia duas entradas, ambas em "next Friday night" — todo
     # CTA do lote marcava a mesma sexta. Quatro janelas novas.
     "Saturday morning, when she's still smiling, you'll think back to this.",
     "The next time she reaches over in bed, you'll remember tonight.",
     "Two weeks from now you'll wonder why nobody told you sooner.",
-    "One month from tonight, she'll ask what got into you.",
+    "One month from tonight, she'll know you're hard again.",
 ]
 
 GATES = [
@@ -999,8 +1030,16 @@ FUNDIDAS = [
     "soda does nothing for your {o} — your blood flow got squeezed shut. "
     "She's {n_ext} and she won't leave me alone.",
 
+    # ⛔ CONSERTO 2026-08-03 (2a passada, achado da revisao) — VERBO DE
+    # ENCANAMENTO (familia [V]). Era a unica FUNDIDA com `open`: `the blood flow
+    # never OPENS for your {o}` entrega o vaso abrindo quando o homem quer saber
+    # se fica duro. ⭐ REGRA NOVA: verbo de RESULTADO (`never gets your {o}
+    # hard`) com o mecanismo `blood flow` de sujeito, na mesma frase.
+    # ⚠️ TETO cena 2 (36) intacto: mesma contagem de palavras da entrada que
+    # substituiu (`never opens for your {o}` = `never gets your {o} hard`).
+    # ⚠️ RS10: sem marcador de prazo nesta fala, o `your {o}` segue sozinho.
     "Without the gelatin trick, the baking soda is half the job and the blood "
-    "flow never opens for your {o}. She's {n_ext}, half my age, and she's the "
+    "flow never gets your {o} hard. She's {n_ext}, half my age, and she's the "
     "one keeping me up.",
 ]
 

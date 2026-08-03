@@ -32,9 +32,15 @@ REPO = os.path.dirname(os.path.abspath(__file__))
 DEST = os.path.join(os.path.expanduser("~"), "Desktop", "agentes_py")
 
 # SHORT primeiro: e' o que esta' em producao hoje (AdBatch Vertical 3).
+# ⛔ SO' OS SHORT. As pastas PEE / FLAGRANTE / VAZAMENTO / NECROSE (sem sufixo)
+# sao os agentes de arco longo, com label `lucas`, que sairam para
+# `agentes-de-terceiros/` em 2026-08-03. O operador mandou MANTER os .exe deles
+# na area de trabalho como estao — e' exatamente por isso que eles nao entram
+# aqui: o build falharia (o .py nao mora mais em funil-organico/) e, se um dia
+# passasse, sobrescreveria o binario que ele pediu para preservar.
 ORDEM = ["CLEAN-SHORT", "RESSURREICAO-SHORT", "ESCANDALO-SHORT", "TROCA-SHORT",
          "PEE-SHORT", "FLAGRANTE-SHORT", "VAZAMENTO-SHORT", "NECROSE-SHORT",
-         "ORGANICWAVE-SHORT", "PEE", "FLAGRANTE", "VAZAMENTO", "NECROSE"]
+         "ORGANICWAVE-SHORT"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)

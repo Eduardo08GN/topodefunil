@@ -721,9 +721,30 @@ BARREIRAS = [
 ]
 
 PACING = [
-    "Next Friday night she'll ask what changed.",
-    "Next Friday night, when she asks what changed, you'll remember this.",
-    "A month from tonight you won't recognise yourself.",
+    # ⛔ CONSERTO 2026-08-03 — MUDANCA SEM DIZER O QUE MUDOU.
+    # Queixa do operador, lendo as falas no proprio app: "My sister asked what
+    # changed." -> "O que mudou?". A frase abria a pergunta e a fala acabava:
+    # se a frase pergunta, a proxima RESPONDE — e aqui nao havia proxima.
+    # ⭐ Isto pesa dobrado nesta cena: a cena 3 e' o CTA e e' a UNICA das tres
+    # que nao nomeia o orgao (cota 2/3). Com o future pacing vago, os 8 segundos
+    # inteiros do pedido nao diziam o que o homem ganha. Agora dizem, com o
+    # verbo de resultado do registro da casa (`hard again`).
+    # ⛔ RS10 / A LINHA DO NECROSE: aqui NAO entra substantivo do NUCLEO. Esta
+    # cena e' toda feita de marcador de prazo ("Next Friday night", "tonight",
+    # "A month from tonight"), e `your <orgao>` + prazo no mesmo take de 8s foi
+    # o que derrubou um video nosso por conteudo nocivo. O resultado entra so'
+    # pelo verbo e pelo pronome — zero anatomia, zero medida.
+    # ⚠️ Teto: [1] e [2] ficaram com o MESMO numero de palavras de antes; so' o
+    # [0] custou +2, e ele e' o mais curto do pool. O TETO_FALA[3]=34 nao subiu.
+    # Alterados: [0], [1], [2]. Dos outros tres, [3] e [5] prometem uma REACAO
+    # nomeada (agradecer, sorrir), que nao e' mudanca de objeto oculto.
+    # ⚠️ [4] ("see what Saturday feels like") NAO nomeia reacao nenhuma e e' o
+    # unico residuo vago do pool — 121 falas de cena 3 medidas em varredura
+    # ampla. Nao foi tocado: nao abre pergunta nem afirma mudanca, entao nao e'
+    # o vicio que o operador apontou, e copy e' alcada do Ed.
+    "Next Friday night she'll ask why you're hard again.",
+    "When she asks how you got hard again, you'll remember tonight.",
+    "A month from tonight you'll be hard again.",
     # + 2026-08-01: o operador mediu vicio no lote - o mesmo future pacing em
     # todo CTA. Pool de 3 para 6.
     "Two weeks from now you'll thank me.",
@@ -1125,8 +1146,26 @@ TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 34, 3: TETO_FALA_LONGO[5]}
 # nomeia o orgao), e o linter reprova o sorteio inteiro. Medido: um unico
 # template sem `{o}` reprovou 48 de 300 sorteios.
 FUNDIDAS = [
-    "Stir {ing}. That's the gelatin trick — it opens the blood flow your {o} "
-    "lost. Mine came back like this.",
+    # ⛔ CONSERTO 2026-08-03 — VERBO DE ENCANAMENTO NO LUGAR DO RESULTADO.
+    # Queixa do operador, lendo as falas no proprio app: "Com tanto verbo que
+    # voce poderia usar de forma mais obvia pra dizer que DEIXA O PINTO MELHOR,
+    # voce usa 'opens'?" — e ele reclamou de `opens it` / `what opens it` no
+    # mesmo dia, em tres agentes.
+    # ⭐ A regra: o `blood flow` continua obrigatorio (o linter cobra o MUP),
+    # mas ele nao pode ser o OBJETO do unico verbo da frase. O mecanismo abrindo
+    # e' encanamento; o homem quer o resultado. Entra verbo de resultado, dito
+    # como um homem diria: `got my {o} hard again`.
+    # ⛔ NAO se troca `open` por outro eufemismo de encanamento (`unblocks`,
+    # `restores flow`, `frees it up`) — trocar metafora por metafora nao
+    # conserta nada (licoes-de-construcao §17).
+    # ⚠️ O gasto de palavra foi pago DENTRO da propria entrada: "Mine came back
+    # like this" encurtou para "Like this", e as duas ficaram com o mesmo
+    # tamanho de antes. O TETO_FALA[2]=34 nao subiu.
+    # ⚠️ RS10: nenhuma das duas junta `your {o}` com marcador de prazo — as duas
+    # falam do orgao em 1a pessoa (`my {o}`) e nao tem prazo nem medida.
+    # Alterados: [0] e [7]. Nenhuma outra entrada tem verbo de encanamento.
+    "Stir {ing}. That's the gelatin trick — it got the blood flow back and my "
+    "{o} hard again. Like this.",
 
     # ⛔ CONSERTO 2026-08-03 — FRASE ORFA. As tres entradas marcadas abaixo
     # abriam com a causa e so' nomeavam o orgao DUAS FRASES DEPOIS. Queixa
@@ -1159,8 +1198,11 @@ FUNDIDAS = [
     "Nobody told me it was blood flow. Stir {ing}. The gelatin trick. My "
     "{o} looks like this now.",
 
-    "Stir {ing}. Gelatin trick. It opened the blood flow back up, and my "
-    "{o} ended up like this.",
+    # ⛔ conserto 2026-08-03 — verbo de encanamento (ver o bloco no topo do
+    # pool). `opened the blood flow back up` e' o mesmo vicio do [0], so' que
+    # no passado; e `ended up like this` nao diz o que ele virou.
+    "Stir {ing}. Gelatin trick. The blood flow came back and it got my {o} "
+    "hard again. Like this.",
 
     "Doctors said age. It was blood flow. Stir {ing} — the gelatin trick — "
     "and look what my {o} does now.",

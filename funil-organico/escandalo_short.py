@@ -1388,7 +1388,18 @@ PROVAS = [
     {"voz": "terceiro", "txt": "His {o} doesn't take no anymore."},
     {"voz": "terceiro", "txt": "His {o} gave the whole thing away."},
     {"voz": "intima", "txt": "Three weeks in, his {o} outlasts me."},
-    {"voz": "terceiro", "txt": "My sister asked what changed. His {o}."},
+    # 2026-08-03 — QUEIXA DO OPERADOR lendo o app: "My sister asked what
+    # changed. His old boy." -> "His old boy o QUE?" / "O que mudou?". Duas
+    # doencas na mesma entrada: [C] a frase abria a pergunta e a fala acabava
+    # sem responder, e [F] `His {o}.` e' sintagma nominal solto, sem verbo
+    # finito. REGRA NOVA: se a frase abre a pergunta, a proxima RESPONDE, e
+    # responde com VERBO DE RESULTADO dito como um homem diria (`gets it hard
+    # again`), nunca com verbo de encanamento. ⛔ Toda frase precisa de verbo
+    # finito. E `what changed` sai INTEIRO da fala: manter a pergunta e
+    # responder logo depois ainda gasta 2 palavras para adiar o beneficio — o
+    # que ele quer ouvir e' o resultado, nao a pergunta sobre ele.
+    # Custo: 7 -> 10 palavras, dentro do teto 26 da cena 3.
+    {"voz": "terceiro", "txt": "My sister asked. I said his {o} gets hard again."},
     {"voz": "terceiro", "txt": "His {o} quit waiting on him."},
     {"voz": "terceiro", "txt": "His {o} stopped apologizing. So did he."},
     {"voz": "terceiro", "txt": "Nineteen days later his {o} doesn't quit."},
@@ -1400,7 +1411,14 @@ PROVAS = [
     # sobreviveram e foram medidas em 2800 sorteios.
     {"voz": "intima", "txt": "I said goodnight. His {o} disagreed."},
     {"voz": "terceiro", "txt": "His {o} works harder than the truck."},
-    {"voz": "intima", "txt": "I don't finish movies anymore. His {o}."},
+    # 2026-08-03 — mesma queixa, mesma familia [F]: `His {o}.` sozinho nao diz
+    # o que o orgao TEM nem o que ele FAZ. O predicado entra com verbo de
+    # resultado do registro da casa (`gets him standing again`), e a piada do
+    # filme fica de pe' sozinha: o filme nao acaba porque ele levanta antes.
+    # ⛔ NAO se troca `open` por outro eufemismo de encanamento — trocar
+    # metafora por metafora nao conserta nada (§17 das licoes).
+    # Custo: 7 -> 10 palavras, dentro do teto 26 da cena 3.
+    {"voz": "intima", "txt": "I don't finish movies anymore. His {o} stands up first."},
     {"voz": "intima", "txt": "Two in the morning. His {o} again."},
     {"voz": "terceiro", "txt": "The whole street knows about his {o} now."},
     {"voz": "terceiro", "txt": "Ask what his {o} does at midnight."},

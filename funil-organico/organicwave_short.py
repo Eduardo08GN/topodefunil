@@ -473,7 +473,20 @@ FUNDIDAS = [
     # o linter reprovava 69 de 300 sorteios. Uma palavra mudou — `mine` virou
     # `my {o}` — e o operador foi avisado.
     "It wasn't age — my {o} lost its blood flow. Stir {ing}. That's the gelatin trick, and nineteen days later my {o} came back.",
-    "Stir {ing}. They call it the gelatin trick, and it opens the blood flow your {o} lost. This is me now.",
+    # ⛔ 2026-08-03 — VERBO DE ENCANAMENTO. O operador leu esta fala no app:
+    # "Nobody makes a dime telling you what opens it" / "it opens the blood flow
+    # your {o} lost" -> "Opens o QUE? Com tanto verbo que voce poderia usar de
+    # forma mais obvia pra dizer que DEIXA O PINTO MELHOR, voce usa 'opens'?".
+    # ⭐ REGRA NOVA: o verbo da promessa e' de RESULTADO, dito como um homem
+    #    diria — `gets your {o} hard again`. ⛔ Nao trocar `open` por outro
+    #    eufemismo de encanamento (`unblocks`, `restores flow`): trocar
+    #    abstracao por abstracao nao e' conserto (licoes §17).
+    # ⚠️ O `blood flow` NAO sai — o linter cobra o literal. Ele deixa de ser a
+    #    promessa e vira o motivo, na MESMA frase do orgao (regra da frase orfa).
+    # ⚠️ Coube sem subir TETO_FALA, mas COMEU FOLGA: pior caso (`old boy` + o
+    #    ritual mais longo) sobe de 32 para 35 de 36. Sobra UMA palavra — quem
+    #    for mexer nesta entrada ou alongar RECEITAS mede antes.
+    "Stir {ing}. They call it the gelatin trick, and it gets your {o} hard again — the blood flow comes back. This is me now.",
     "My neighbor gave me this. Stir {ing} — the gelatin trick. The blood flow came back, and so did my {o}.",
     "Nobody told me my {o} was starved of blood flow. Stir {ing}, that's the whole gelatin trick, and my {o} hasn't quit since.",
     "Two dollars, brother. Stir {ing} — the gelatin trick — and the blood flow that left my {o} came right back.",
@@ -493,7 +506,16 @@ CTAS = [
     # E' a mais direta do pool e a unica que casa com a keyword RECIPE
     # que o Veo Editor ja' destaca na legenda.
     "Comment gelatin, and I'll send you the recipe tonight. {gate}",
-    "Next Friday night she'll ask what changed. Comment gelatin, and I'll send you the exact one I use. {gate}",
+    # ⛔ 2026-08-03 — MUDANCA SEM DIZER O QUE MUDOU. O operador, lendo o app:
+    # "My sister asked what changed." -> "O que mudou?". `what changed` abre a
+    # pergunta e a fala acaba, entao o espectador nunca ouve a promessa.
+    # ⭐ REGRA NOVA: se a frase abre a pergunta, ela mesma RESPONDE — e a
+    #    resposta e' o resultado no corpo dele, nao o mecanismo.
+    # ⚠️ Teto da cena 3 e' 34 e a troca custava 3 palavras: `night` saiu e
+    #    `send you` virou `send`, entao o pior caso (com o gate mais longo)
+    #    SOBE de 32 para 33 — o corte devolveu 2 das 3, nao todas. Sobra UMA
+    #    palavra. A isca do CTA continua (`the exact one I use`).
+    "Next Friday she'll ask what got you hard again. Comment gelatin, and I'll send the exact one I use. {gate}",
     "A month from tonight you won't recognise yourself. Comment gelatin, and I'll send you where I get mine. {gate}",
     "I waited two years to find this. Comment gelatin, and I'll send the recipe tonight. {gate}",
     "Comment gelatin, and I'll send you the one my neighbor sent me. Nobody in my house ever knew. {gate}",
@@ -552,7 +574,16 @@ HOOKS_F = [
 #    e o conserto entrou sem somar uma palavra.
 FUNDIDAS_F = [
     "It wasn't age — his {o} lost its blood flow. I stir {ing}. That's the gelatin trick, and nineteen days later his {o} came back.",
-    "I stir {ing} for him. They call it the gelatin trick, and it opens the blood flow his {o} lost. And he came back.",
+    # ⛔ 2026-08-03 — VERBO DE ENCANAMENTO, o espelho feminino da FUNDIDAS[1]
+    # (a queixa do operador esta' documentada la'): `it opens the blood flow his
+    # {o} lost` descreve o vaso abrindo quando a promessa e' o RESULTADO.
+    # ⭐ Mesma regra nova: verbo de resultado (`got his {o} hard again`), com o
+    #    `blood flow` rebaixado a motivo e na mesma frase do orgao. A pessoa da
+    #    frase continua a terceira — o que se cobra e' REFERENTE, nao pessoa.
+    # ⚠️ Esta e' a entrada mais apertada da persona feminina. Para caber sem
+    #    subir o TETO_FALA, `They call it` foi encurtado para `That's` — o
+    #    fechamento validado `And he came back.` fica. 35 de 36 no pior caso.
+    "I stir {ing} for him. That's the gelatin trick — the blood flow came back and his {o} got hard again. And he came back.",
     "My aunt gave me this. I stir {ing} — the gelatin trick. The blood flow came back, and so did his {o}.",
     "Nobody told us his {o} had no blood flow. I stir {ing}, that's the whole gelatin trick, and his {o} hasn't quit since.",
     "Two dollars, girls. I stir {ing} — the gelatin trick — and the blood flow that left his {o} came right back.",
