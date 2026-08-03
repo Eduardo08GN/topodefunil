@@ -32,8 +32,8 @@ REPO = os.path.dirname(os.path.abspath(__file__))
 DEST = os.path.join(os.path.expanduser("~"), "Desktop", "agentes_py")
 
 # SHORT primeiro: e' o que esta' em producao hoje (AdBatch Vertical 3).
-ORDEM = ["RESSURREICAO-SHORT", "ESCANDALO-SHORT", "TROCA-SHORT", "PEE-SHORT",
-         "FLAGRANTE-SHORT", "VAZAMENTO-SHORT", "NECROSE-SHORT",
+ORDEM = ["CLEAN-SHORT", "RESSURREICAO-SHORT", "ESCANDALO-SHORT", "TROCA-SHORT",
+         "PEE-SHORT", "FLAGRANTE-SHORT", "VAZAMENTO-SHORT", "NECROSE-SHORT",
          "ORGANICWAVE-SHORT", "PEE", "FLAGRANTE", "VAZAMENTO", "NECROSE"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
