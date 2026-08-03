@@ -290,11 +290,21 @@ RS_ESCALA_DIFERENCIAL = (
 # Slots: jato da substancia · nome do prop · NOME FALADO da substancia · topo.
 # ⚠️ O terceiro slot e' o nome falado (ver divergencia 3 da docstring).
 # ---------------------------------------------------------------------------
+# ⛔ REESCRITA EM 2026-08-03, com a substancia virando LIQUIDA. A versao de po'
+# dizia `thickens into a wide column and the <prop> is hidden INSIDE it`: volume
+# opaco engolindo o objeto. Liquido nao tem volume — tem LAMINA. Entao a oclusao
+# passa de "dentro da coluna" para "atras da cortina": o jato ALARGA numa folha
+# que corre pela frente do prop, e o reconhecimento vem quando a ponta reaparece
+# na altura nova. Mesma funcao (o morph acontece oculto, o Veo nao precisa
+# resolver mudanca de forma em campo aberto), fisica outra.
+# ⚠️ SELO 🟡 — a versao de po' tinha medicao de fonte; esta e' traducao de
+# mecanica, sem render nosso ainda. Sobe a 🟢 no primeiro take que sair.
 RS_JATO_MASCARA = (
-    "A third of a second before it changes, %s thickens into a wide column and "
-    "the %s is hidden inside it and cannot be seen. It comes back out of the "
-    "column of %s already at its new length, %s first. The column thins again "
-    "the instant it stops."
+    "A third of a second before it changes, %s widens into a broad falling "
+    "sheet that runs down the whole front of the %s, and it is hidden behind "
+    "that sheet and cannot be seen. It comes back out of the running %s already "
+    "at its new length, %s first. The sheet narrows to a thread again the "
+    "instant it stops."
 )
 
 # ---------------------------------------------------------------------------
@@ -972,101 +982,119 @@ PROPS_MURCHOS = [
 ]
 
 # A SUBSTANCIA DESPEJADA — o que cai por cima.
-# ⚠️ TODAS sao SECAS e granulosas, e nao por gosto: as tres mecanicas medidas
-# dependem disso — o jato-mascara (R8) precisa de coluna OPACA, o MONTE na mesa
-# e' o CRONOMETRO, e a ESTRIA vertical no prop crescido e' a explicacao fisica do
-# morph (a mesma quantidade de po' numa area 2,3x maior vira listra em vez de
-# capa).
-# ⛔ P12: recipiente por FORMA, virado de boca pra baixo, zero marca. A caixa
-# laranja de bicarbonato da fonte fica legivel o hook inteiro e e' o pior caso do
-# garimpo.
+# ⛔⛔ TODAS SAO LIQUIDAS, e isso e' ORDEM DO OPERADOR (2026-08-03), com a fonte
+# na mao: "substancia sempre sera liquido e ocorrendo pouring, nunca powders
+# como esta atualmente". O reel de referencia despeja OLEO de uma garrafa ambar
+# sobre o proxy, e a legenda diz `this is what black seed oil`.
+#
+# ⚠️ O QUE ISSO CUSTOU, E O CONSERTO DE CADA UM. As tres mecanicas medidas
+# dependiam de po' SECO, e nenhuma delas foi abandonada — foram traduzidas:
+#   · JATO-MASCARA (R8) — precisava de coluna OPACA. Fio de liquido nao esconde
+#     nada, entao o jato passa a ALARGAR NUMA CORTINA que corre pela frente do
+#     prop: a oclusao deixa de ser volume de po' e passa a ser lamina de
+#     liquido. Mesma funcao, fisica outra.
+#   · MONTE na mesa = CRONOMETRO. Po' vira monte, liquido vira POCA — e poca
+#     espalha melhor: e' ainda mais legivel que "passou tempo".
+#   · ESTRIA vertical = explicacao fisica do morph. No po' era "a mesma
+#     quantidade numa area 2,3x maior vira listra". No liquido e' melhor ainda:
+#     ele ESCORRE, entao a listra e' o comportamento natural, nao um efeito que
+#     o modelo precisa inventar. ⭐ E o brilho ganha: superficie molhada pega a
+#     luz e o alongamento fica mais legivel do que em fosco.
+# ⛔ Cada `capa`/`estria` diz que o prop fica MOLHADO e BRILHANTE — sem isso o
+#   Veo entrega a fruta seca com o liquido caindo ao lado.
+#
+# ⛔ P12: recipiente por FORMA, inclinado, zero marca. A caixa laranja de
+# bicarbonato da fonte fica legivel o hook inteiro e e' o pior caso do garimpo.
 # ⚠️ `fala` tem no maximo 2 palavras — o pior caso do teto da cena 1 depende
 # disso. `tom` pareia por CONTRASTE com o prop (RS15).
+# ⚠️ CONTRATO DE FORMATO, cobrado pelo self-test: `caixa` termina em
+# `, tipped mouth-down in her raised hand` (o `_pote` corta ai') e `monte`
+# contem ` spreading into` (o `_anel` e o `_monte_verbo` cortam ai').
 SUBSTANCIAS = [
-    {"id": "bicarbonato", "fala": "baking soda", "tom": "claro",
-     "caixa": "a plain pale cardboard carton of fine white powder, turned mouth-down in her raised hand",
-     "jato": "a steady column of fine white powder",
-     "monte": "a ring of white powder spreading into a wide flat mound",
-     "capa": "its whole surface gone chalk-white",
-     "estria": "white streaks running down from its shoulders over two thirds of its length"},
-    {"id": "farinha", "fala": "flour", "tom": "claro",
-     "caixa": "a plain paper sack of soft white flour, the top rolled back and turned mouth-down in her raised hand",
-     "jato": "a soft column of white flour",
-     "monte": "a ring of flour spreading into a wide flat mound",
-     "capa": "its whole surface floured over matte white",
-     "estria": "soft white streaks running down from its shoulders over two thirds of its length"},
-    {"id": "amido", "fala": "cornstarch", "tom": "claro",
-     "caixa": "a plain white cardboard box of very fine bright-white powder, turned mouth-down in her raised hand",
-     "jato": "a dense column of very fine bright-white powder",
-     "monte": "a ring of bright-white powder spreading into a wide flat mound",
-     "capa": "its whole surface packed bright white",
-     "estria": "bright white streaks running down from its shoulders over two thirds of its length"},
-    {"id": "sal", "fala": "sea salt", "tom": "claro",
-     "caixa": "a plain cardboard cylinder of coarse white crystals, turned mouth-down in her raised hand",
-     "jato": "a rattling column of coarse white crystals",
-     "monte": "a ring of coarse crystals spreading into a wide flat mound",
-     "capa": "its whole surface crusted over in coarse white grains",
-     "estria": "lines of coarse white grains running down from its shoulders over two thirds of its length"},
-    {"id": "acucar", "fala": "sugar", "tom": "claro",
-     "caixa": "a plain glass canister of white granulated sugar, turned mouth-down in her raised hand",
-     "jato": "a bright column of granulated sugar",
-     "monte": "a ring of sugar spreading into a wide flat mound",
-     "capa": "its whole surface sugared over in a solid white coat",
-     "estria": "glittering white streaks running down from its shoulders over two thirds of its length"},
-    {"id": "leite_po", "fala": "powdered milk", "tom": "claro",
-     "caixa": "a plain unlabelled tin of chalk-white powder, turned mouth-down in her raised hand",
-     "jato": "a thick column of chalk-white powder",
-     "monte": "a ring of chalk-white powder spreading into a wide flat mound",
-     "capa": "its whole surface gone flat chalk-white",
-     "estria": "chalk-white streaks running down from its shoulders over two thirds of its length"},
-    {"id": "fuba", "fala": "cornmeal", "tom": "claro",
-     "caixa": "a plain cloth sack of pale yellow meal, turned mouth-down in her raised hand",
-     "jato": "a grainy column of pale yellow meal",
-     "monte": "a ring of pale yellow meal spreading into a wide flat mound",
-     "capa": "its whole surface covered in pale yellow meal",
-     "estria": "pale yellow streaks running down from its shoulders over two thirds of its length"},
-    {"id": "aveia", "fala": "oat flour", "tom": "claro",
-     "caixa": "a plain kraft-paper bag of pale oat flour, turned mouth-down in her raised hand",
-     "jato": "a soft column of pale oat flour",
-     "monte": "a ring of oat flour spreading into a wide flat mound",
-     "capa": "its whole surface dusted over pale oatmeal grey",
-     "estria": "pale oatmeal streaks running down from its shoulders over two thirds of its length"},
-    {"id": "gergelim", "fala": "sesame seed", "tom": "claro",
-     "caixa": "a plain glass jar of pale sesame seed, turned mouth-down in her raised hand",
-     "jato": "a hissing column of pale sesame seed",
-     "monte": "a ring of pale seed spreading into a wide flat mound",
-     "capa": "its whole surface stuck over with pale seed",
-     "estria": "lines of pale seed running down from its shoulders over two thirds of its length"},
-    {"id": "canela", "fala": "cinnamon", "tom": "escuro",
-     "caixa": "a plain unlabelled tin of red-brown ground cinnamon, turned mouth-down in her raised hand",
-     "jato": "a fine column of red-brown ground cinnamon",
-     "monte": "a ring of red-brown powder spreading into a wide flat mound",
-     "capa": "its whole surface gone flat red-brown",
-     "estria": "red-brown streaks running down from its shoulders over two thirds of its length"},
-    {"id": "cacau", "fala": "cocoa", "tom": "escuro",
-     "caixa": "a plain unlabelled tin of dark unsweetened cocoa powder, turned mouth-down in her raised hand",
-     "jato": "a dark column of unsweetened cocoa powder",
-     "monte": "a ring of dark powder spreading into a wide flat mound",
-     "capa": "its whole surface gone matte dark brown",
-     "estria": "dark brown streaks running down from its shoulders over two thirds of its length"},
-    {"id": "cafe", "fala": "ground coffee", "tom": "escuro",
-     "caixa": "a plain kraft-paper bag of dark ground coffee, turned mouth-down in her raised hand",
-     "jato": "a coarse column of dark ground coffee",
-     "monte": "a ring of dark grounds spreading into a wide flat mound",
-     "capa": "its whole surface packed over in dark grounds",
-     "estria": "dark coffee streaks running down from its shoulders over two thirds of its length"},
-    {"id": "papoula", "fala": "poppy seed", "tom": "escuro",
-     "caixa": "a plain glass jar of tiny blue-black poppy seed, turned mouth-down in her raised hand",
-     "jato": "a hissing column of tiny blue-black seed",
-     "monte": "a ring of blue-black seed spreading into a wide flat mound",
-     "capa": "its whole surface stuck over with blue-black seed",
-     "estria": "lines of blue-black seed running down from its shoulders over two thirds of its length"},
-    {"id": "paprica", "fala": "paprika", "tom": "escuro",
-     "caixa": "a plain unlabelled tin of deep red paprika, turned mouth-down in her raised hand",
-     "jato": "a fine column of deep red paprika",
-     "monte": "a ring of deep red powder spreading into a wide flat mound",
-     "capa": "its whole surface gone deep matte red",
-     "estria": "deep red streaks running down from its shoulders over two thirds of its length"},
+    {"id": "oleo_negro", "fala": "black seed oil", "tom": "escuro",
+     "caixa": "a plain amber glass bottle of dark oil, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of near-black oil",
+     "monte": "a ring of dark oil spreading into a wide glossy pool",
+     "capa": "its whole surface wet and shining near-black",
+     "estria": "dark oil running down in bands from its shoulders over two thirds of its length"},
+    {"id": "mel", "fala": "raw honey", "tom": "claro",
+     "caixa": "a plain clear glass jar of thick golden honey, tipped mouth-down in her raised hand",
+     "jato": "a slow rope of thick golden honey",
+     "monte": "a ring of honey spreading into a wide glossy pool",
+     "capa": "its whole surface glazed wet and golden",
+     "estria": "golden honey sliding down in slow bands from its shoulders over two thirds of its length"},
+    {"id": "azeite", "fala": "olive oil", "tom": "claro",
+     "caixa": "a plain green glass cruet of pale green oil, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of pale green oil",
+     "monte": "a ring of pale oil spreading into a wide glossy pool",
+     "capa": "its whole surface wet and shining pale green",
+     "estria": "pale green oil running down from its shoulders over two thirds of its length"},
+    {"id": "melaco", "fala": "molasses", "tom": "escuro",
+     "caixa": "a plain heavy glass jug of near-black syrup, tipped mouth-down in her raised hand",
+     "jato": "a slow rope of near-black syrup",
+     "monte": "a ring of dark syrup spreading into a wide glossy pool",
+     "capa": "its whole surface coated wet and near-black",
+     "estria": "near-black syrup crawling down from its shoulders over two thirds of its length"},
+    {"id": "ricino", "fala": "castor oil", "tom": "claro",
+     "caixa": "a plain clear glass bottle of colourless oil, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of clear colourless oil",
+     "monte": "a ring of clear oil spreading into a wide glossy pool",
+     "capa": "its whole surface wet and glassy with clear oil",
+     "estria": "clear oil running down in bright lines from its shoulders over two thirds of its length"},
+    {"id": "beterraba", "fala": "beet juice", "tom": "escuro",
+     "caixa": "a plain clear glass bottle of deep red juice, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of deep red juice",
+     "monte": "a ring of red juice spreading into a wide glossy pool",
+     "capa": "its whole surface wet and stained deep red",
+     "estria": "deep red juice running down from its shoulders over two thirds of its length"},
+    {"id": "coco", "fala": "coconut oil", "tom": "claro",
+     "caixa": "a plain wide-mouthed glass jar of melted coconut oil, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of warm melted coconut oil",
+     "monte": "a ring of clear oil spreading into a wide glossy pool",
+     "capa": "its whole surface wet and gleaming with clear oil",
+     "estria": "clear oil running down in bright lines from its shoulders over two thirds of its length"},
+    {"id": "cafe_frio", "fala": "cold brew", "tom": "escuro",
+     "caixa": "a plain brown glass flask of near-black coffee, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of near-black coffee",
+     "monte": "a ring of dark coffee spreading into a wide glossy pool",
+     "capa": "its whole surface wet and shining dark brown",
+     "estria": "dark coffee running down from its shoulders over two thirds of its length"},
+    {"id": "vinagre", "fala": "cider vinegar", "tom": "claro",
+     "caixa": "a plain clear glass bottle of pale amber vinegar, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of pale amber vinegar",
+     "monte": "a ring of pale vinegar spreading into a wide glossy pool",
+     "capa": "its whole surface wet and shining pale amber",
+     "estria": "pale amber vinegar running down from its shoulders over two thirds of its length"},
+    {"id": "bordo", "fala": "maple syrup", "tom": "escuro",
+     "caixa": "a plain glass decanter of dark brown syrup, tipped mouth-down in her raised hand",
+     "jato": "a slow rope of dark brown syrup",
+     "monte": "a ring of dark syrup spreading into a wide glossy pool",
+     "capa": "its whole surface glazed wet and dark brown",
+     "estria": "dark syrup sliding down in slow bands from its shoulders over two thirds of its length"},
+    {"id": "aloe", "fala": "aloe juice", "tom": "claro",
+     "caixa": "a plain clear glass bottle of thick pale juice, tipped mouth-down in her raised hand",
+     "jato": "a thick thread of pale cloudy juice",
+     "monte": "a ring of pale juice spreading into a wide glossy pool",
+     "capa": "its whole surface wet and slick with pale juice",
+     "estria": "pale juice running down from its shoulders over two thirds of its length"},
+    {"id": "roma", "fala": "pomegranate", "tom": "escuro",
+     "caixa": "a plain clear glass bottle of dark red juice, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of dark red juice",
+     "monte": "a ring of dark red juice spreading into a wide glossy pool",
+     "capa": "its whole surface wet and stained dark red",
+     "estria": "dark red juice running down from its shoulders over two thirds of its length"},
+    {"id": "glicerina", "fala": "glycerin", "tom": "claro",
+     "caixa": "a plain small clear glass flask of clear syrup, tipped mouth-down in her raised hand",
+     "jato": "a slow thread of clear heavy syrup",
+     "monte": "a ring of clear syrup spreading into a wide glossy pool",
+     "capa": "its whole surface wet and glassy with clear syrup",
+     "estria": "clear syrup crawling down in bright lines from its shoulders over two thirds of its length"},
+    {"id": "cha_preto", "fala": "black tea", "tom": "escuro",
+     "caixa": "a plain brown glass bottle of strong dark tea, tipped mouth-down in her raised hand",
+     "jato": "a steady thread of strong dark tea",
+     "monte": "a ring of dark tea spreading into a wide glossy pool",
+     "capa": "its whole surface wet and shining dark",
+     "estria": "dark tea running down from its shoulders over two thirds of its length"},
 ]
 
 # O GESTO DO DESPEJO.
@@ -2016,8 +2044,11 @@ def _peca(calca):
 # cilindro — e os TAKEs do pool DESPEJOS foram escritos com "the carton". Mandar
 # "the carton" num take cuja imagem tem um saco de pano e' contradicao dentro do
 # proprio bloco. O motor resolve o SLOT; ⛔ nenhum dos dois pools se reescreve.
-_RECIPIENTES = ("carton", "cylinder", "canister", "sack", "box", "tin", "bag",
-                "jar")
+# ⛔ 2026-08-03: os de po' (carton, sack, box, bag, canister...) ficaram so' para
+# o caso de alguem reintroduzir um solido — a SUBSTANCIA deste agente e' LIQUIDA
+# por ordem do operador, e liquido sai de garrafa, nao de saco.
+_RECIPIENTES = ("bottle", "flask", "jug", "cruet", "decanter", "jar", "tin",
+                "carton", "cylinder", "canister", "sack", "box", "bag")
 
 
 def _recipiente(caixa):
@@ -2036,8 +2067,11 @@ def _pote(caixa):
     cortar so' a primeira deixava a farinha com a mao errada em quadro, e o
     self-test cobra o contrato dos dois lados.
     """
-    return re.split(r",? and turned mouth-down|, turned mouth-down",
-                    caixa)[0].rstrip(", ")
+    # ⚠️ `tipped` entrou em 2026-08-03 com as substancias liquidas: garrafa se
+    # INCLINA, nao se vira de boca para baixo. As formas de po' ficam no regex
+    # para nao quebrar quem copiar uma travada antiga.
+    return re.split(r",? and (?:turned|tipped) mouth-down"
+                    r"|, (?:turned|tipped) mouth-down", caixa)[0].rstrip(", ")
 
 
 def _anel(sub):
@@ -2603,8 +2637,13 @@ def montar(spec):
         "very slight natural sway, no cuts, and the camera does not move. %s "
         "%s %s %s %s %s %s %s%s\n"
         "Dialogue: \"%s\"\n"
-        "Audio: dry powder hissing onto wood, quiet room tone in the %s. No "
-        "music."
+        # ⛔ 2026-08-03: era `dry powder hissing onto wood` e sobreviveu a' troca
+        # do pool porque estava numa TRAVADA, nao no pool. Som de po' seco com
+        # oleo caindo na imagem e' contradicao que o Veo resolve inventando —
+        # e ele resolve pela TRILHA, nao pela imagem. Achado por medicao: o
+        # literal saia em 120 de 120 takes depois da troca.
+        "Audio: liquid pouring in a steady stream and running over the surface, "
+        "quiet room tone in the %s. No music."
         % (desp["take"].replace("carton", _recipiente(sub["caixa"])),
            RS_CRESCIMENTO_TAKE % (prop["nome"], bnc, bnc, ana["desc"],
                                   _maiuscula(prop["topo"]), prop["nome"], bnc,
@@ -2685,7 +2724,10 @@ def montar(spec):
 # testada (licoes-de-construcao §2).
 
 M_ESCALA_DIF = ("width barely changes", "slimmer in proportion")
-M_JATO = "is hidden inside it and cannot be seen"
+# ⛔ 2026-08-03: era `is hidden inside it and cannot be seen`, do tempo do po'.
+# Com a substancia liquida a oclusao virou LAMINA e nao volume — o miolo mudou
+# junto com a travada, senao o linter reprova 100% dos sorteios.
+M_JATO = "hidden behind that sheet and cannot be seen"
 # ⛔ MIOLO INVARIANTE, nunca a constante inteira (§2 das licoes): a constante tem
 # slot e a comparacao daria 100% de falso positivo.
 M_BASE = "never lets go, never lifts and never changes position"
