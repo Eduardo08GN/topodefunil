@@ -441,11 +441,27 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   ⚠️ **A linha do mel é a validada em render** (2026-08-02). As outras quatro
   copiam a gramática dela e trocam só o recipiente, o gesto e a cor.
 
-  ⛔ **Na cena 2 o líquido `clouds over`, nunca troca de tom limpo.** Se a cor
-  2 for mais clara que a cor 1, dizer "turns to" faz a bebida **clarear** — e
-  despejar mel em água marrom não clareia nada. A fórmula travada é
-  `the {cor 1} water in the glass is clouding over and turning {cor 2}`, que
-  funciona nos 20 pares ordenados.
+  ⭐⭐ **A ORDEM NÃO É SORTEADA: O MAIS CLARO NA CENA 1, O MAIS ESCURO NA CENA
+  2.** A bebida só pode **escurecer**. A escala é a da coluna "cor" acima:
+
+  ```
+  bicarbonato  <  limão  <  vinagre  <  mel  <  canela
+    (mais claro)                              (mais escuro)
+  ```
+
+  ⛔ **Sorteando a ordem, METADE das 20 combinações mandava o Veo CLAREAR o
+  líquido** — `cloudy warm brown` recebendo pó branco e virando
+  `clouded milky white`. Física impossível: o Veo ou ignora a instrução ou
+  inventa um corte. Descoberto em 2026-08-02, num sorteio real que caiu em
+  canela → bicarbonato — e **o linter tinha aprovado**, porque contava
+  ingredientes, não física.
+
+  > **Continuidade de cor não é gosto, é causalidade.** O que entra no copo só
+  > pode somar.
+
+  ⛔ **E mesmo escurecendo, a cena 2 usa `clouds over`, nunca "turns to" seco.**
+  A fórmula travada é `the {cor 1} water in the glass is clouding over and
+  turning {cor 2}`.
 
   ⚠️ **Uma ação por cena, e só uma.** Nada de dois ou quatro ingredientes em
   sequência como no reel original — não cabe em 8s e multiplica o risco por
@@ -488,15 +504,19 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   ⚠️ **O ledger anti-repetição inclui a família**, senão um lote de 10 vídeos
   sai com 9 de uma e 1 da outra por azar de sorteio.
 
-  ⚠️ **Sorteada a família B, sorteia-se também a ORDEM dos dois ingredientes**
-  (CL17): qual vai na cena 1 e qual vai na cena 2. Não é eixo novo — os dois já
-  saem do CL14/CL20; o que se sorteia é só a ordem, e ela também entra no
-  ledger. Mesma dupla na mesma ordem em dois vídeos do lote é o mesmo vídeo.
+  ⛔ **A ordem do despejo NÃO é eixo sorteável** (CL17). Ela sai do tom: o mais
+  claro na cena 1, o mais escuro na cena 2. Sortear isso foi erro meu, e
+  metade das ordens mandava a bebida clarear.
 
   ```python
-  if spec["familia"] == "preparo":
-      spec["despejo"] = list(rng.sample(spec["truque"], 2))   # [cena 1, cena 2]
+  spec["despejo"] = sorted(spec["truque"], key=lambda i: DESPEJO[i]["tom"])
   ```
+
+  ⚠️ **Calculado nas duas famílias, sempre.** O botão `trocar cena` do painel
+  vira `spec["familia"]` direto, sem passar por `sortear()` — chave que só
+  existisse na família B deixaria `montar()` sem ela, e o tkinter engole a
+  exceção no callback (foi assim que os seis eixos dos SHORT ficaram quebrados
+  sem ninguém ver, em 2026-07-31).
 
 - **CL19 — ⭐⭐ O INGREDIENTE DO TRUQUE É EMBALAGEM DE VAREJO DE VERDADE, COM A
   MARCA APARECENDO** (ordem do operador, 2026-08-02, depois de duas falhas
@@ -701,17 +721,23 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   item A ou item B com vocabulário de dureza, e qualquer virada que prometa
   dureza **sem** nomear o `gelatin trick`.
 
-  ⚠️ 🟡 **PENDENTE — três HOOKS da cena 1 violam esta regra e eu não os
-  toquei** (copy é do operador, `CLAUDE.md` §Regra de alçada). Eles atribuem a
-  dureza aos quatro itens, não ao truque:
+  ⭐ **O CL23 VALE DA CENA 2 EM DIANTE. A CENA 1 É ISCA E FICA COMO ESTÁ**
+  (decisão do operador, 2026-08-02). Três hooks atribuem a dureza aos quatro
+  itens, e **é de propósito** — são hooks chamativos, e o trabalho do hook é
+  parar o scroll, não ser fiel ao mecanismo:
   ```
   You don't need a pill to get hard. These four are two dollars.
   You don't need a prescription to get hard. You need these four.
   Nobody told you groceries could get your {o} hard. These four are the secret.
   ```
-  A asserção do motor **não cobre os HOOKS** justamente para não travar o app
-  com copy aprovada. Decisão do Ed: reescrever os três, ou aceitar que na cena
-  1 a promessa é isca e o CL23 vale só da cena 2 em diante.
+
+  > **A cena 1 promete; a cena 2 corrige.** É a mesma mecânica do CL7 — o hook
+  > diz que os quatro resolvem, e a virada revela que sem o truque nada
+  > funciona. A contradição é o gancho, não um erro.
+
+  ⛔ **Não "consertar" esses três lendo o CL23 fora de contexto.** A asserção do
+  motor cobre ITEM A, ITEM B e as VIRADAS — **os HOOKS ficam de fora de
+  propósito**, e é por esta decisão, não por esquecimento.
 
 ---
 

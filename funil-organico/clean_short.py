@@ -170,6 +170,7 @@ DESPEJO = {
         "queda": "a short stream of fine white powder is falling from the box into the glass",
         "segue": "tips it a little further so the stream of white powder keeps falling into the glass",
         "cor": "clouded milky white",
+        "tom": 1,
         "som": "a soft dry pour",
     },
     "mel": {
@@ -179,6 +180,7 @@ DESPEJO = {
         "queda": "a slow thread of golden honey is falling from the jar into the glass",
         "segue": "tilts it a little further so the thread of honey keeps falling into the glass",
         "cor": "warm gold",
+        "tom": 4,
         "som": "a soft pour",
     },
     "canela": {
@@ -188,6 +190,7 @@ DESPEJO = {
         "queda": "a fine fall of brown cinnamon dust is dropping from the box into the glass",
         "segue": "tips it a little further so the brown cinnamon dust keeps falling into the glass",
         "cor": "cloudy warm brown",
+        "tom": 5,
         "som": "a soft dry pour",
     },
     "limao": {
@@ -197,6 +200,7 @@ DESPEJO = {
         "queda": "clear juice is running from the lemon half down into the glass",
         "segue": "presses it a little harder so the juice keeps running down into the glass",
         "cor": "pale cloudy yellow",
+        "tom": 2,
         "som": "a soft trickle",
     },
     "vinagre": {
@@ -206,6 +210,7 @@ DESPEJO = {
         "queda": "a thin clear stream is running from the bottle into the glass",
         "segue": "tilts it a little further so the clear stream keeps running into the glass",
         "cor": "pale amber",
+        "tom": 3,
         "som": "a soft pour",
     },
 }
@@ -517,16 +522,17 @@ def sortear(pagina, rng, led, travas=None):
     # CL20 — a bancada nasce da copy MAIS os dois do truque
     bancada = [i for i in citados if i not in IDS_TRUQUE] + tru
 
-    # CL17/CL18 — a ORDEM do despejo: qual dos dois vai na cena 1 e qual na
-    # cena 2. Entra no ledger, senao dois videos do lote saem com a mesma dupla
-    # na mesma ordem — que e' o mesmo video.
+    # CL17 — ⭐ A ORDEM DO DESPEJO NAO E' SORTEADA: o mais CLARO vai na cena 1 e
+    # o mais ESCURO na cena 2, sempre. A bebida so' pode escurecer.
+    # ⛔ Sorteando a ordem, METADE das 20 combinacoes mandava o Veo CLAREAR o
+    # liquido — `cloudy warm brown` recebendo po' branco e virando
+    # `clouded milky white`. Fisica impossivel: o Veo ou ignora ou inventa um
+    # corte. Medido em 2026-08-02, depois que um sorteio real caiu em
+    # canela -> bicarbonato.
     # ⚠️ Calculada SEMPRE, nas duas familias: o botao `trocar cena` do painel
     # vira spec["familia"] direto, sem passar por sortear(), e montar() ficaria
     # sem a chave.
-    ordens = [list(tru), [tru[1], tru[0]]]
-    usados_d = usados.get("despejo", [])
-    despejo = rng.choice([o for o in ordens
-                          if "+".join(o) not in usados_d] or ordens)
+    despejo = sorted(tru, key=lambda i: DESPEJO[i]["tom"])
 
     return {
         "pagina": pagina, "etnia": et, "sexo": sexo, "familia": familia,
@@ -809,6 +815,11 @@ def lint(spec, blocos):
         if len(set(d)) != 2 or set(d) != set(spec["truque"]):
             ach.append(("ERRO", "CL17: o despejo tem de ser os DOIS do truque, "
                                 "um por cena — veio %s" % ", ".join(d)))
+        # ⛔ a bebida so' escurece: cena 2 nunca pode ser mais clara que a 1
+        if DESPEJO[d[1]]["tom"] < DESPEJO[d[0]]["tom"]:
+            ach.append(("ERRO", "CL17: o despejo CLAREIA a bebida (%s -> %s) — "
+                                "o mais escuro vai na cena 2"
+                                % (DESPEJO[d[0]]["cor"], DESPEJO[d[1]]["cor"])))
         for nome in ("IMAGE 01/03", "IMAGE 02/03"):
             img = blocos.get(nome, "")
             for ing in spec["truque"]:
