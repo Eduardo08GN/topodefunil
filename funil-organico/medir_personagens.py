@@ -164,6 +164,15 @@ EXCECOES = {
     ("necrose_short.py", "ARQUETIPOS", "pelo_facial"):
         "NE5 — ARQUETIPOS e' cenario+chapeu+animal. O rosto mora em REFS.",
     ("necrose_short.py", "ARQUETIPOS", "oculos"): "idem NE5",
+    ("exterior_short.py", "HOMENS_SEM_ROSTO", "cabelo"):
+        "EX5 — geometria travada do IMAGE 01: ele entra CORTADO NO PEITO, sem "
+        "rosto em quadro. E' a economia que justifica o agente — um rosto a "
+        "menos para manter identico entre tres blocos de 8s gerados "
+        "separadamente. Encher este eixo e' desenhar o que a decisao de projeto "
+        "tirou do enquadramento. Os tres eixos que sobram (porte 12/12, pele "
+        "12/12, ancora 12/12) sao os unicos que o espectador ve'.",
+    ("exterior_short.py", "HOMENS_SEM_ROSTO", "pelo_facial"): "idem EX5",
+    ("exterior_short.py", "HOMENS_SEM_ROSTO", "oculos"): "idem EX5",
     ("ressurreicao_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF (2026-08-03) — neste agente a narradora e' sempre linda, "
         "jovem e de sex appeal alto, por ordem do operador. Oculos de leitura "

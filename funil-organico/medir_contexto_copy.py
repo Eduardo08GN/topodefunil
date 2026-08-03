@@ -59,9 +59,13 @@ sys.path.insert(0, FO)
 # base` e puxam os pools de copy de la'. Entao o conserto e' escrito no arquivo
 # `_lucas` e o efeito TEM DE SER MEDIDO AQUI, no `_short`. Medir o `_lucas`
 # mede o arco longo, que esta' fora de escopo e tem tetos diferentes.
+# ⚠️ 2026-08-03: `exterior_short` entrou aqui NO MESMO COMMIT em que nasceu.
+# Gate que nao ve' o motor nao reprova o motor — ele so' produz um "passou"
+# mentiroso (§7 das licoes, e e' o mesmo defeito que deixou o elenco masculino
+# inteiro de tres motores fora do `medir_personagens.py`).
 MOTORES = ["clean_short", "escandalo_short", "troca_short", "organicwave_short",
            "ressurreicao_short", "flagrante_short", "pee_short",
-           "vazamento_short", "necrose_short"]
+           "vazamento_short", "necrose_short", "exterior_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

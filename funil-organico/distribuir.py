@@ -38,9 +38,9 @@ DEST = os.path.join(os.path.expanduser("~"), "Desktop", "agentes_py")
 # na area de trabalho como estao — e' exatamente por isso que eles nao entram
 # aqui: o build falharia (o .py nao mora mais em funil-organico/) e, se um dia
 # passasse, sobrescreveria o binario que ele pediu para preservar.
-ORDEM = ["CLEAN-SHORT", "RESSURREICAO-SHORT", "ESCANDALO-SHORT", "TROCA-SHORT",
-         "PEE-SHORT", "FLAGRANTE-SHORT", "VAZAMENTO-SHORT", "NECROSE-SHORT",
-         "ORGANICWAVE-SHORT"]
+ORDEM = ["EXTERIOR-SHORT", "CLEAN-SHORT", "RESSURREICAO-SHORT",
+         "ESCANDALO-SHORT", "TROCA-SHORT", "PEE-SHORT", "FLAGRANTE-SHORT",
+         "VAZAMENTO-SHORT", "NECROSE-SHORT", "ORGANICWAVE-SHORT"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)
