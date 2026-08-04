@@ -591,6 +591,34 @@ NARRADORAS = [
      "cabeca": "thick dark hair in a low glossy ponytail",
      "marca": "a fine pale scar through her right eyebrow and smooth clear "
               "skin"},
+    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
+    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
+    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
+    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    {"idade": 26,
+     "corpo": "broad-shouldered and athletic, with a narrow waist",
+     "cabeca": "blunt-cut glossy black hair at the collarbone",
+     "marca": "striking pale green eyes and clear even skin"},
+    {"idade": 34,
+     "corpo": "tall and lean, with long legs",
+     "cabeca": "ash-brown hair knotted low at the nape",
+     "marca": "smooth sun-kissed skin and a small mole on her jawline"},
+    {"idade": 24,
+     "corpo": "compact and hard-trained, with cut arms",
+     "cabeca": "black hair shaved close on one side",
+     "marca": "a straight fine nose over a wide full mouth"},
+    {"idade": 29,
+     "corpo": "short-waisted and powerful, shoulders clearly defined",
+     "cabeca": "cornrows running to the nape",
+     "marca": "high round cheekbones and glowing deep brown skin"},
+    {"idade": 32,
+     "corpo": "slim and strong, with a long back",
+     "cabeca": "thick dark curls gathered high off her neck",
+     "marca": "a small silver stud high in one ear and clear skin"},
+    {"idade": 27,
+     "corpo": "wiry and quick, with defined calves",
+     "cabeca": "a short blunt bob with a heavy fringe",
+     "marca": "wide dark eyes and a beauty mark under the right one"},
 ]
 
 
@@ -663,6 +691,34 @@ HOMENS = [
      "calca": "black jeans",
      "maos": "heavy, with thick wrists",
      "marca": "a raised knuckle on his left middle finger, healed crooked"},
+    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
+    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
+    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
+    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    {"id": "sarja_verde", "selo": "N",
+     "calca": "dark green twill trousers",
+     "maos": "wide and flat-backed, the nails short and clean",
+     "marca": "a woven leather band on his left wrist"},
+    {"id": "jeans_claro", "selo": "N",
+     "calca": "light stonewashed jeans",
+     "maos": "narrow and long-fingered, the tendons standing out",
+     "marca": "a black rubber sports watch on his left wrist"},
+    {"id": "corduroy_ferrugem", "selo": "N",
+     "calca": "rust corduroy trousers",
+     "maos": "square and heavy, the palms deeply lined",
+     "marca": "a copper ring worn thin on his left middle finger"},
+    {"id": "moletom_carvao", "selo": "N",
+     "calca": "charcoal jogging bottoms with a drawstring",
+     "maos": "thick through the palm, the knuckles darkened",
+     "marca": "a faint white burn mark across the back of his left hand"},
+    {"id": "cargo_cinza", "selo": "N",
+     "calca": "grey cargo trousers with a knee pocket",
+     "maos": "big and blunt, the fingertips flattened",
+     "marca": "a split thumbnail healed into two ridges"},
+    {"id": "linho_areia", "selo": "N",
+     "calca": "sand-coloured linen trousers",
+     "maos": "smooth and even, with neatly filed nails",
+     "marca": "a slim silver band on his left ring finger"},
 ]
 
 # ⭐⭐ POOL VALIDADO PROMPT A PROMPT EM 2026-08-03. Cada entrada aqui custou uma

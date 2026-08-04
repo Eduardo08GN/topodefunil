@@ -436,6 +436,40 @@ REFS = [
     {"idade": 62, "marca": "a square powerfully built frame, thick dark hair combed up into a high pompadour and one eyebrow gone completely white",
      "cabelo": "dark", "roupa": "Plain stone gray crew-neck tee shirt.",
      "roupa_curta": "stone gray tee shirt"},
+    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
+    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
+    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
+    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    {"idade": 58,
+     "marca": "thick chestnut hair with a bright white streak at the left temple",
+     "cabelo": "chestnut",
+     "roupa": "Plain charcoal crew-neck tee shirt.",
+     "roupa_curta": "charcoal tee shirt"},
+    {"idade": 63,
+     "marca": "a full head of wavy steel-grey hair and a cleft chin",
+     "cabelo": "steel-grey",
+     "roupa": "Plain olive crew-neck tee shirt.",
+     "roupa_curta": "olive tee shirt"},
+    {"idade": 55,
+     "marca": "dense dark hair swept back and very pale blue eyes",
+     "cabelo": "dark",
+     "roupa": "Plain rust-red crew-neck tee shirt.",
+     "roupa_curta": "rust-red tee shirt"},
+    {"idade": 61,
+     "marca": "a thick grey afro worn low and a broad flattened nose",
+     "cabelo": "grey",
+     "roupa": "Plain slate-blue crew-neck tee shirt.",
+     "roupa_curta": "slate-blue tee shirt"},
+    {"idade": 68,
+     "marca": "a full head of white hair combed sideways and a long thin face",
+     "cabelo": "white",
+     "roupa": "Plain sand crew-neck tee shirt.",
+     "roupa_curta": "sand tee shirt"},
+    {"idade": 59,
+     "marca": "salt-and-pepper locs gathered back and deep-set dark eyes",
+     "cabelo": "salt-and-pepper",
+     "roupa": "Plain forest-green crew-neck tee shirt.",
+     "roupa_curta": "forest-green tee shirt"},
 ]
 
 VITIMAS = [

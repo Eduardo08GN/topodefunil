@@ -646,6 +646,40 @@ HOMENS_SEM_ROSTO = [
      "roupa": "a blue-and-white striped short-sleeve shirt",
      "pele": "weathered, deeply creased skin",
      "marca": "a liver-spotted patch and a mole at his right wrist bone"},
+    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
+    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
+    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
+    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    {"id": "polo_vinho", "idade": 55,
+     "porte": "broad and barrel-chested, thick through the middle",
+     "roupa": "a deep wine-red polo shirt",
+     "pele": "forearms heavily freckled and hard at the elbow",
+     "marca": "a wide steel watch loose on his left wrist"},
+    {"id": "regata_cinza", "idade": 44,
+     "porte": "lean and wiry, with corded forearms",
+     "roupa": "a heather-grey sleeveless vest",
+     "pele": "a scatter of dark moles across the shoulder",
+     "marca": "a faded green tattoo band around his left forearm"},
+    {"id": "flanela_verde", "idade": 51,
+     "porte": "heavy-boned with a long back and wide hands",
+     "roupa": "a forest-green flannel shirt with the sleeves cut off",
+     "pele": "weathered skin cracked across the knuckles",
+     "marca": "a thick silver ring on his left index finger"},
+    {"id": "henley_areia", "idade": 47,
+     "porte": "compact and solid, shoulders square",
+     "roupa": "a sand-coloured henley with the sleeves pushed up",
+     "pele": "forearms with a raised keloid line above the wrist",
+     "marca": "a woven leather cord knotted at his left wrist"},
+    {"id": "camisa_xadrez_azul", "idade": 58,
+     "porte": "tall and rangy, narrow through the hips",
+     "roupa": "a blue-and-white checked work shirt",
+     "pele": "thin skin drawn tight over the tendons of the forearm",
+     "marca": "a white band of untanned skin where a ring used to be"},
+    {"id": "camiseta_preta", "idade": 42,
+     "porte": "thick-armed and heavy-shouldered",
+     "roupa": "a plain black cotton t-shirt",
+     "pele": "forearms dark and thickly covered to the wrist",
+     "marca": "a thumbnail ridged and darkened from an old injury"},
 ]
 
 

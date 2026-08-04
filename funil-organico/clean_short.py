@@ -190,6 +190,34 @@ REFS_M = [
      "marca": "a dense spray of freckles across her nose"},
     {"idade": 40, "cabeca": "dark hair with a sharp widow's peak, swept back",
      "marca": "eyes of two different colours, one green and one brown"},
+    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
+    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
+    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
+    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    {"idade": 26,
+     "cabeca": "long jet-black hair in a single braid over one shoulder",
+     "marca": "high round cheekbones and clear glowing skin"},
+    {"idade": 31,
+     "cabeca": "a bleached-platinum bob cut sharp at the jaw",
+     "marca": "a small silver hoop through her left nostril"},
+    {"idade": 24,
+     "cabeca": "thick copper-red hair falling loose past her shoulders",
+     "marca": "a dense spray of freckles over both cheeks and pale blue eyes"},
+    {"idade": 33,
+     "cabeca": "a big loose curl-out worn wide",
+     "marca": "full lips and a deep dimple in her left cheek"},
+    {"idade": 28,
+     "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
+     "marca": "eyes of two different colours, one green and one brown"},
+    {"idade": 35,
+     "cabeca": "waist-length box braids gathered over one shoulder",
+     "marca": "smooth luminous skin and a wide bright smile"},
+    {"idade": 27,
+     "cabeca": "very long straight dark hair parted in the middle",
+     "marca": "arched brows and a small beauty mark high on her left cheek"},
+    {"idade": 30,
+     "cabeca": "chin-length wavy caramel hair pushed back off her forehead",
+     "marca": "a small heart-shaped birthmark below her right ear"},
 ]
 REFS_H = [
     {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a small scar through his right eyebrow"},
@@ -208,6 +236,34 @@ REFS_H = [
      "marca": "freckled skin across the bridge of his nose"},
     {"idade": 61, "cabeca": "a full head of white hair and a bristly white beard, heavy black-framed bifocals",
      "marca": "deeply lined skin and a pale scar along his right jaw"},
+    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
+    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
+    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
+    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    {"idade": 52,
+     "cabeca": "a shaved head and a full salt-and-pepper beard",
+     "marca": "a broad flattened nose that has been broken once"},
+    {"idade": 45,
+     "cabeca": "thick dark hair going grey at the temples, clean-shaven",
+     "marca": "a deep vertical crease between his eyebrows"},
+    {"idade": 57,
+     "cabeca": "close-cropped iron-grey hair and a neat pencil moustache",
+     "marca": "wire-rimmed glasses and a heavy square jaw"},
+    {"idade": 41,
+     "cabeca": "dark curls kept short and dense, a two-day shadow",
+     "marca": "a notch cut through his right eyebrow"},
+    {"idade": 60,
+     "cabeca": "a bald crown with white hair close at the sides",
+     "marca": "a thick white moustache and heavy hooded eyelids"},
+    {"idade": 49,
+     "cabeca": "wavy salt-and-pepper hair worn long at the collar",
+     "marca": "a pale crescent scar on his left cheekbone"},
+    {"idade": 54,
+     "cabeca": "grey hair in a flat brush cut and a short greying beard",
+     "marca": "very pale blue eyes under dark brows"},
+    {"idade": 44,
+     "cabeca": "close-cropped coils with a sharp lined edge, clean-shaven",
+     "marca": "a wide gap between his two front teeth"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -250,6 +306,14 @@ CORPOS_M = [
     "a muscular fit build, defined deltoids and biceps, a flat hard midsection and a straight confident posture, veins visible along each forearm, skin bright and healthy",
     "an athlete's figure, hard muscled shoulders and arms, a thick strong waist and back, veins raised along the forearms and the backs of her hands, plainly in peak health",
     "a powerfully built woman, muscled shoulders and arms, a hard trim waist and an easy confident carriage, skin clear and healthy",
+    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
+    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
+    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
+    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    "the dense build of a man who lifts, thick through the chest and shoulders, forearms corded, skin taut and even",
+    "a lean hard frame with a flat stomach and a visible line down the centre, shoulders square, skin clear",
+    "the heavy-boned build of a wrestler, a thick neck and broad flat chest, arms full and solid, skin healthy",
+    "a swimmer's build, long muscled arms and a wide back tapering to the waist, shoulders capped and round, skin clear",
 ]
 
 # CL14 — os DOIS ingredientes do truque. Piso e teto: sao dois, sempre, em

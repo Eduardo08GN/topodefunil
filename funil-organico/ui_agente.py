@@ -233,7 +233,19 @@ class App(tk.Tk):
             tk.Label(f, text=rotulo, font=F_SMALL, bg=BG,
                      fg=TXT).pack(side="left", padx=(6, 5))
             grupo = []
-            for op in [LIVRE] + list(opcoes):
+            # ⛔ DEDUPE, e ele conserta um defeito VISIVEL: esta barra ja'
+            # prepende o `livre`, e os motores declaram `["livre"] + POOL` —
+            # entao o botao saia DUPLICADO, dois `livre` laranja lado a lado.
+            # ⚠️ Achado em 2026-08-04 LENDO O PRINT do .exe do RECEITA, nao por
+            # teste: nenhum smoke test olha para pixel, e o COLO carregava o
+            # mesmo defeito desde que a barra nasceu.
+            # ⚠️ Corrigido AQUI e nao nos motores de proposito (P9): assim vale
+            # para o COLO sem toca-lo e para todo agente que nascer copiando o
+            # `TRAVAS_UI` dele — que e' exatamente como este nasceu.
+            vistos = set()
+            ordenadas = [o for o in [LIVRE] + list(opcoes)
+                         if not (o in vistos or vistos.add(o))]
+            for op in ordenadas:
                 b = tk.Button(f, text=op, font=F_SMALL, relief="flat", bd=0,
                               cursor="hand2", padx=11, pady=4)
                 b.configure(command=lambda c=chave, o=op, g=grupo:
