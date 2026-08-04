@@ -417,7 +417,7 @@ class App(tk.Tk):
             # recusa e' o da Vertical 5/4, e o aviso diz para onde ele vai.
             vazio_fila = [f'{s["ignorados"]} zip(s) no Downloads IGNORADO(s):',
                           'sao da AdBatch Vertical 5/4',
-                          '(adbatch_vertical_5*.zip, adbatch_lote*.zip).',
+                          '(adbatch_vertical_5*, _4, _output, adbatch_lote*).',
                           'Quem edita esses e o Veo Editor v1.2 —',
                           'abra ele. Qualquer OUTRO .zip que cair',
                           'no Downloads esta esteira pega sozinha.']

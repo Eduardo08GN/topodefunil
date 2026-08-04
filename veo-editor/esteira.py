@@ -63,7 +63,25 @@ CONFIG = os.path.join(BASE, "config.json")
 # Nomes vem da familia documentada em RUNBOOK-adbatch-vertical.md §A FAMILIA:
 # V5 -> adbatch_vertical_5.zip · V4 -> adbatch_lote.zip
 # V3 -> adbatch_vertical_3.zip / adbatch_vertical_output.zip
-_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?(?:[345]|output)|lote)"
+# ⭐⭐ 2026-08-04 — A VERTICAL 3 VOLTOU PARA A v2.0, E ISSO SUPERSEDE A NOTA
+# ACIMA (de 2026-08-03). ⛔ A nota fica registrada de proposito: ela nao estava
+# errada, a PREMISSA dela e' que deixou de existir.
+#
+# Ela dizia: "a Vertical 3 saiu daqui porque TODO video SHORT saia a 1.35x
+# quando o operador queria 1x". No dia 04 o proprio operador baixou o piso desta
+# esteira para **1.130x** — ou seja, ele escolheu a aceleracao que quer para o
+# SHORT, aqui. O motivo do desvio caiu junto.
+#
+# ⛔ E o custo do desvio foi medido em campo, duas vezes no mesmo dia: o zip
+# `adbatch_vertical_3.zip` caia no Downloads, esta esteira o recusava, e o aviso
+# dizia ao operador que era arquivo da Vertical 5/4 mandando abrir o v1.2 — que
+# nem estava aberto. Resultado: lote parado e painel dizendo "Esteira ociosa",
+# com o mascote apagado (ele acende pela FILA, e nada entrava na fila).
+#
+# ⚠️ FRAGMENTO ESPELHADO: esta linha e' identica nos dois esteira.py e as leituras
+# sao OPOSTAS (v1.2 usa como INCLUSAO, v2.0 dentro de um `(?!...)`). Mexeu numa,
+# mexe na outra no mesmo commit.
+_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?(?:[45]|output)|lote)"
 PADRAO_DOWNLOADS = re.compile(_V5_V4 + r".*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video

@@ -53,24 +53,39 @@ CONFIG = os.path.join(BASE, "config.json")
 # ele ia quebrar de novo na proxima renomeacao. Um .zip estranho no Downloads
 # vira erro visivel em 05_erros; um lote nao-reconhecido virava silencio.
 #
-# Sobrou UMA excecao, e ela nao e' cosmetica: o v1.2 (C:\Users\edlut\VeoEditor)
-# vigia a MESMA pasta Downloads e cuida da familia AdBatch, que sai com jitter
-# ~0.99x em vez da aceleracao 1.35x daqui. Sem esta guarda o lote sairia
-# acelerado e errado, e — de novo — sem erro nenhum na tela.
+# ⛔ HISTORICO DAS EXCECOES QUE JA' MORARAM AQUI — fica registrado para ninguem
+# reintroduzir nenhuma delas achando que e' ideia nova:
+#   · guarda contra o v1.2 (que vigia a MESMA pasta Downloads);
+#   · "a Vertical 3 saiu daqui em 2026-08-03" (para sair a 1x pelo v1.2, quando
+#     esta esteira ainda corria a 1.35x — piso hoje e' 1.130, escolhido pelo
+#     proprio operador, entao a premissa caiu).
+# As duas eram defensaveis quando foram escritas e as duas terminaram em lote
+# parado. A ordem abaixo encerra a familia inteira de excecoes por NOME.
 #
-# ⭐ A VERTICAL 3 SAIU DAQUI EM 2026-08-03 (ordem do operador). Ela e' o destino
-# dos 12 agentes SHORT e vinha caindo nesta esteira, entao TODO video SHORT
-# saia a 1.35x quando o operador queria 1x. Agora e' do v1.2, junto com a 5 e a
-# 4. Esta esteira volta a ser o que o nome dela diz: o resto.
-# ⚠️ Inclui `adbatch_vertical_output.zip`, que e' o nome REAL que a ferramenta
-# gera — o `adbatch_vertical_3.zip` do RUNBOOK e' o previsto, nao o observado.
+# ⛔⛔⛔ QUALQUER .ZIP QUE CAIR NO DOWNLOADS VAI PARA A EDICAO. SEM EXCECAO.
 #
-# ⚠️⚠️ FRAGMENTO ESPELHADO — a copia literal de _V5_V4 mora no v1.2
-# (VeoEditor/esteira.py), la' como padrao POSITIVO: o que ele captura tem de
-# estar excluido aqui. Mexeu num, mexe no outro no mesmo commit, senao as duas
-# esteiras brigam pelo mesmo zip.
-_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?(?:[345]|output)|lote)"
-PADRAO_DOWNLOADS = re.compile(r"(?!" + _V5_V4 + r").*\.zip$", re.I)
+# Ordem do operador, 2026-08-04, com todas as letras:
+#     "cara, todo e qualquer zip que cair nessa pasta tem que ir pra execucao
+#      de edicao. Resolva uma vez por todas essa encheção de saco de
+#      travamento"
+#
+# ⛔ NAO EXISTE MAIS LISTA, NEM WHITELIST NEM BLACKLIST. O historico de tentar
+# casar nome de arquivo com ferramenta e' um historico de lotes parados:
+#   · whitelist "^adbatch...vertical...3" — o Flow renomeou o pacote sozinho
+#     para `adbatch_vertical_output.zip` e a esteira ficou muda (2026-08-01);
+#   · blacklist `[345]` para mandar a Vertical 3 ao v1.2 — travou o lote DUAS
+#     vezes em 2026-08-04, com o painel dizendo "Esteira ociosa" e o mascote
+#     apagado, porque nada entrava na fila.
+#
+# ⚠️ O nome do ZIP e' contrato com uma ferramenta que muda sem avisar. Casar com
+# ele quebra na proxima renomeacao — sempre quebrou. Um .zip estranho vira erro
+# VISIVEL em 05_erros; um lote nao-reconhecido virava SILENCIO, que e' pior.
+#
+# ⚠️ CONSEQUENCIA ACEITA E DECLARADA: se o v1.2 estiver aberto ao mesmo tempo,
+# os dois vigiam a MESMA pasta e o primeiro a ver o arquivo leva. Quem cuida da
+# familia 5/4 e' o v1.2 — entao **nao rode os dois juntos**. A ordem acima
+# escolheu destravar a esteira em vez de arbitrar por nome, e essa e' a troca.
+PADRAO_DOWNLOADS = re.compile(r".*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 # ---------------------------------------------------------------------------
 # A DIFERENCA DA v2.0 — a taxa de aceleracao
@@ -91,14 +106,23 @@ DIAS_ARQUIVO = 14
 #
 #   1.350  ->  30s sai com 22.2s
 #   1.377  ->  30s sai com 21.8s
+#   1.130  ->  30s sai com 26.5s
 #
 # ⚠️ 30s, nao 24s: medido em dois videos reais (24s a 1.248x e 26s a 1.149x
 # devolvem ~30s de entrada nos dois). Os takes da AdBatch Vertical 3 nao estao
 # saindo com 8s. A taxa e' proporcional, entao o resultado acompanha a entrada.
 #
 # O jitter e' PERCENTUAL do piso, nao um numero solto: a intencao do operador
-# e' "2%", e escrever 0.027 esconderia isso na proxima vez que o piso mudar.
-PISO_VEL = 1.350                  # ordem do operador, 2026-07-31
+# e' "2%", e escrever 0.0226 esconderia isso na proxima vez que o piso mudar.
+#
+# ⛔⛔ O REPO ESTAVA MENTINDO SOBRE ESTE NUMERO — achado em 2026-08-04.
+# Aqui estava escrito 1.350 (ordem de 2026-07-31); a copia que roda na maquina
+# do operador estava em **1.205** (ordem de 2026-08-03, aplicada so' la'). O
+# painel dele mostrava 1.206x-1.229x, que e' 1.205 + 2%, e o repo dizia outra
+# coisa. Quem manda e' a pasta `agentes_py\VEO-EDITOR-2.0`, porque e' ela que
+# executa — e uma correcao feita so' no destino nao volta sozinha para ca'.
+# ⚠️ Alterou a taxa? Altera NOS DOIS, no mesmo commit.
+PISO_VEL = 1.130                  # ordem do operador, 2026-08-04 (era 1.205)
 JITTER = 0.02                     # 2% do piso, SO' para cima
 BANDA = round(PISO_VEL * JITTER, 4)
 VEL_MIN = PISO_VEL

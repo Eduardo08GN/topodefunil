@@ -11,6 +11,7 @@ O resultado vai pra pasta de SAIDA como <nome>.mp4.
 
 import os
 import re
+import collections
 import sys
 import json
 import shutil
@@ -138,6 +139,33 @@ def concat(takes, out, cortes=None):
     for t in takes:
         inputs += ["-i", t]
 
+    # ⛔⛔ NORMALIZACAO DE GEOMETRIA — 2026-08-04.
+    # O docstring desta funcao sempre prometeu "aguenta params diferentes do
+    # Veo". ELA NAO AGUENTAVA: `null`/`anull` entregavam os streams crus ao
+    # `concat`, que exige largura, altura, SAR e layout de audio IDENTICOS.
+    #
+    # Custou dois lotes parados em 05_erros (13:34 e 13:37 de 2026-08-04) com
+    # `Input link in0:v0 parameters (size 1280x2274) do not match ... (720x1280)`
+    # e `Nothing was written into output file`. Medido no zip que falhou: o
+    # AdBatch devolveu `video_01` em 720x1280 e os outros dois em 1280x2274 —
+    # MESMO aspecto (0.5625 vs 0.5629), tamanhos diferentes. O gerador nao
+    # garante resolucao uniforme entre takes do mesmo lote, e a esteira tem de
+    # tolerar isso em vez de morrer.
+    #
+    # ⚠️ O ALVO E' A RESOLUCAO MAIS FREQUENTE, desempatando pela maior area:
+    # mantem a maioria dos takes em resolucao nativa e reescala so' o
+    # divergente. Com 2 de 3 em 1280x2274, so' o take de 720 e' tocado.
+    # ⚠️ `force_original_aspect_ratio=decrease` + `pad` existem para o caso em
+    # que os aspectos REALMENTE diferem: ai' entra tarja preta em vez de
+    # distorcer o rosto. No caso medido nao ha' tarja, porque o aspecto bate.
+    # ⚠️ `setsar=1` e `fps` fecham os outros dois parametros que o concat
+    # compara e que ninguem lembra ate' quebrar.
+    alvo = collections.Counter(dims(t) for t in takes).most_common()
+    W, H = max((d for d, n in alvo if n == alvo[0][1]), key=lambda d: d[0] * d[1])
+    norma_v = (f"scale={W}:{H}:force_original_aspect_ratio=decrease,"
+               f"pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1,fps=30")
+    norma_a = "aformat=sample_rates=48000:channel_layouts=stereo"
+
     partes, rotulos = [], ""
     for i, t in enumerate(takes):
         corte = cortes.get(t)
@@ -146,11 +174,11 @@ def concat(takes, out, cortes=None):
             fim = float(corte[1]) if len(corte) > 1 and corte[1] else None
             tv = f"trim=start={ini:.3f}" + (f":end={fim:.3f}" if fim else "")
             ta = f"atrim=start={ini:.3f}" + (f":end={fim:.3f}" if fim else "")
-            partes.append(f"[{i}:v:0]{tv},setpts=PTS-STARTPTS[v{i}]")
-            partes.append(f"[{i}:a:0]{ta},asetpts=PTS-STARTPTS[a{i}]")
+            partes.append(f"[{i}:v:0]{tv},setpts=PTS-STARTPTS,{norma_v}[v{i}]")
+            partes.append(f"[{i}:a:0]{ta},asetpts=PTS-STARTPTS,{norma_a}[a{i}]")
         else:
-            partes.append(f"[{i}:v:0]null[v{i}]")
-            partes.append(f"[{i}:a:0]anull[a{i}]")
+            partes.append(f"[{i}:v:0]{norma_v}[v{i}]")
+            partes.append(f"[{i}:a:0]{norma_a}[a{i}]")
         rotulos += f"[v{i}][a{i}]"
 
     fc = ";".join(partes) + f";{rotulos}concat=n={len(takes)}:v=1:a=1[v][a]"
