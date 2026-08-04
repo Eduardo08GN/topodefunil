@@ -54,14 +54,22 @@ CONFIG = os.path.join(BASE, "config.json")
 # vira erro visivel em 05_erros; um lote nao-reconhecido virava silencio.
 #
 # Sobrou UMA excecao, e ela nao e' cosmetica: o v1.2 (C:\Users\edlut\VeoEditor)
-# vigia a MESMA pasta Downloads e cuida da AdBatch Vertical 5/4, que sai com
-# jitter ~0.99x em vez da aceleracao 1.35x daqui. Sem esta guarda o lote V5
-# sairia acelerado e errado, e — de novo — sem erro nenhum na tela.
+# vigia a MESMA pasta Downloads e cuida da familia AdBatch, que sai com jitter
+# ~0.99x em vez da aceleracao 1.35x daqui. Sem esta guarda o lote sairia
+# acelerado e errado, e — de novo — sem erro nenhum na tela.
 #
-# ⚠️ FRAGMENTO ESPELHADO — a copia literal de _V5_V4 mora no v1.2
+# ⭐ A VERTICAL 3 SAIU DAQUI EM 2026-08-03 (ordem do operador). Ela e' o destino
+# dos 12 agentes SHORT e vinha caindo nesta esteira, entao TODO video SHORT
+# saia a 1.35x quando o operador queria 1x. Agora e' do v1.2, junto com a 5 e a
+# 4. Esta esteira volta a ser o que o nome dela diz: o resto.
+# ⚠️ Inclui `adbatch_vertical_output.zip`, que e' o nome REAL que a ferramenta
+# gera — o `adbatch_vertical_3.zip` do RUNBOOK e' o previsto, nao o observado.
+#
+# ⚠️⚠️ FRAGMENTO ESPELHADO — a copia literal de _V5_V4 mora no v1.2
 # (VeoEditor/esteira.py), la' como padrao POSITIVO: o que ele captura tem de
-# estar excluido aqui. Mexeu num, mexe no outro no mesmo commit.
-_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?5|lote)"
+# estar excluido aqui. Mexeu num, mexe no outro no mesmo commit, senao as duas
+# esteiras brigam pelo mesmo zip.
+_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?(?:[345]|output)|lote)"
 PADRAO_DOWNLOADS = re.compile(r"(?!" + _V5_V4 + r").*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 # ---------------------------------------------------------------------------

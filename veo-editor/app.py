@@ -406,10 +406,19 @@ class App(tk.Tk):
 
         vazio_fila = "Nenhum zip aguardando. Baixe um lote no Flow."
         if s.get("ignorados"):
+            # ⚠️ O aviso enuncia o filtro REAL (esteira.PADRAO_DOWNLOADS), nao
+            # um resumo dele. A versao antiga dizia 'nome nao comeca com
+            # "adbatch"' — e o arquivo do operador se chamava
+            # `adbatch_vertical_output.zip`, que COMECA com adbatch. Ele foi
+            # conferir o nome no WinRAR, e o nome estava certo o tempo todo.
+            # ⚠️ A v2.0 ja' tinha corrigido esta mesma mensagem em 2026-08-01,
+            # depois de dois lotes parados. Chegou aqui com dois dias de atraso:
+            # mensagem espelhada tambem envelhece em separado.
             vazio_fila = [f'{s["ignorados"]} zip(s) no Downloads IGNORADO(s):',
-                          'nome nao comeca com "adbatch".',
-                          'Renomeie o arquivo, ou defina uma',
-                          'Pasta vigiada dedicada (la qualquer',
+                          'esta esteira pega a familia AdBatch',
+                          '(vertical 5, 4 e 3). Qualquer OUTRO .zip',
+                          'e do Veo Editor 2.0 — abra ele, ou defina',
+                          'uma Pasta vigiada dedicada (la qualquer',
                           '.zip e capturado).']
         self._set_lista("fila", self.lst_fila, s["pendentes"], vazio_fila)
 

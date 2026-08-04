@@ -44,17 +44,26 @@ CONFIG = os.path.join(BASE, "config.json")
 # contrario: aqui era "^adbatch.*" com a v2.0 recortada por um "(?!...)".
 #
 # A fronteira segue sendo a mesma coisa e pela mesma razao: as duas esteiras
-# fazem poll na MESMA pasta Downloads, e o lote de 40s da V5 sai daqui com
-# jitter ~0.99x enquanto o de 24s sai da v2.0 acelerado 1.35x. Quem pegasse o
-# zip da outra entregaria o video com a velocidade errada, sem erro na tela.
+# fazem poll na MESMA pasta Downloads, e quem pegasse o zip da outra entregaria
+# o video com a velocidade errada, sem erro nenhum na tela.
 #
-# ⚠️ FRAGMENTO ESPELHADO — a copia literal deste _V5_V4 mora na v2.0
+# ⭐ A VERTICAL 3 ENTROU AQUI EM 2026-08-03 (ordem do operador). Ela e' o destino
+# dos 12 agentes SHORT, e estava caindo na v2.0 — ou seja, TODO video SHORT
+# saia acelerado 1.35x quando o operador queria 1x. Nao havia erro na tela: o
+# lote era editado, so' que na esteira errada.
+# ⚠️ O nome real que a ferramenta gera e' `adbatch_vertical_output.zip`, nao o
+# `adbatch_vertical_3.zip` que o RUNBOOK documenta. Os dois casam aqui, porque
+# quem manda e' o arquivo que chega, nao o que a doutrina previa.
+#
+# ⚠️⚠️ FRAGMENTO ESPELHADO — a copia literal deste _NOSSOS mora na v2.0
 # (VEO-EDITOR-2.0/esteira.py), la' dentro de um "(?!...)". O que casa AQUI tem
-# de estar excluido LA'. Mexeu num, mexe no outro no mesmo commit.
+# de estar excluido LA'. Mexeu num, mexe no outro no mesmo commit, senao as
+# duas esteiras brigam pelo mesmo zip.
 #
 # Nomes vem da familia documentada em RUNBOOK-adbatch-vertical.md §A FAMILIA:
 # V5 -> adbatch_vertical_5.zip · V4 -> adbatch_lote.zip
-_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?5|lote)"
+# V3 -> adbatch_vertical_3.zip / adbatch_vertical_output.zip
+_V5_V4 = r"adbatch[_ -]?(?:vertical[_ -]?(?:[345]|output)|lote)"
 PADRAO_DOWNLOADS = re.compile(_V5_V4 + r".*\.zip$", re.I)
 DIAS_ARQUIVO = 14
 VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
