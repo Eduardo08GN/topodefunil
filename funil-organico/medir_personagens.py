@@ -39,6 +39,20 @@ import sys
 
 FO = os.path.dirname(os.path.abspath(__file__))
 
+# ⛔⛔ SAIDA EM UTF-8, SEMPRE. O console do Windows e' cp1252 e nao imprime os
+# marcadores deste arquivo. Isto ja' foi remendado emoji a emoji e VOLTOU no
+# primeiro merge — por isso agora e' no topo, uma linha que cobre todo print
+# presente e futuro.
+# ⚠️ O padrao que faz o bug ser caro: os prints com marcador so' rodam QUANDO HA'
+# ALGO A REPORTAR. O crash acontece exatamente na hora em que a mensagem
+# importa, e nunca no caminho feliz — foi assim que o aviso de "excecao
+# declarada que nao esta' mais zerada" ficou invisivel duas vezes.
+for _f in (sys.stdout, sys.stderr):
+    try:
+        _f.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 # os eixos que fazem duas pessoas parecerem diferentes num plano medio.
 # ⛔ nao existe eixo de ETNIA aqui de proposito: etnia e' injetada por pagina
 # pelo dict ETNIA do motor (congruencia com o avatar), nunca pela descricao.
@@ -197,6 +211,19 @@ EXCECOES = {
     # ⚠️ A ancora facial NAO sumiu: ela migrou para sinal de BELEZA — marca de
     # nascenca, covinha, olho de cor incomum, sarda, falha entre os dentes,
     # malar alto. Distintivo, nunca deteriorado.
+    # ⛔ CLEAN e CLEAN V2 — LEI DO REF (2026-08-03): *"quero todos os refs
+    # homens musculosos e todas as refs mulheres lindas no agente clean short"*.
+    # ⚠️ TERCEIRA VEZ que este medidor PRODUZIU o defeito que deveria pegar: as
+    # tres ultimas entradas do REFS_M foram escritas para preencher os eixos
+    # `oculos` e `pele` que ele premia, e trouxeram `half-moon reading glasses`,
+    # `silver-streaked hair`, `sun-weathered skin` e idade 52 — num agente cuja
+    # REF vende para homem. Nota boa, personagem errada.
+    # ⚠️ So' o pool FEMININO tem excecao. No REFS_H oculos e grisalho FICAM, e de
+    # proposito: no homem eles leem como CREDIBILIDADE, o oposto do efeito nela.
+    ("clean_short.py", "REFS_M", "oculos"):
+        "LEI DO REF — oculos de leitura brigam frontalmente com 'linda'. Cabelo "
+        "e ancora seguem cheios, e o PORTE mora no eixo proprio CORPOS_M (CL24).",
+    ("clean_short_v2.py", "REFS_M", "oculos"): "idem clean_short",
     ("colo_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF — oculos de leitura brigam frontalmente com 'linda e jovem'. "
         "Os outros eixos continuam cheios (cabelo, porte, pele, ancora).",

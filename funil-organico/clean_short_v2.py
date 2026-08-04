@@ -630,26 +630,43 @@ for _m in MUNDOS:
 # mundo solto (senao `clinica`, com 6 sets, domina o lote).
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
 
-# CL8 — a REF pode ser homem ou mulher. ⛔ Nunca tronco nu: isso e' VAZAMENTO,
-# nao CLEAN. Ele explica, igual a ela.
+# ⛔⛔ LEI DO REF — A REF MULHER E' SEMPRE MUITO BONITA (2026-08-03).
+# Ordem do operador: *"quero todos os refs homens musculosos e todas as refs
+# mulheres lindas no agente clean short"*. O CL24 (corpo treinado) resolveu o
+# CORPO das duas; esta lei e' sobre o ROSTO e a IDADE dela.
+#
+# ⚠️ O POOL ANTERIOR ERA O MESMO ERRO DO RESSURREICAO E DO COLO, e esta e' a
+# TERCEIRA vez: as tres ultimas entradas foram escritas para preencher os eixos
+# `oculos` e `pele` do `medir_personagens.py`, e trouxeram
+# `half-moon reading glasses low on her nose`, `silver-streaked hair`,
+# `sun-weathered skin`, `deeply lined skin` e idade ate' 52. O medidor dava nota
+# boa e devolvia a personagem errada num agente cuja REF vende para homem.
+# Otimizar a metrica contra o objetivo.
+# ⛔ A ancora facial continua obrigatoria (P6) — sem ela o Veo troca de rosto
+# entre blocos. Mas ela e' DISTINTIVA e nunca DETERIORADA: marca de nascenca,
+# covinha, olho de cor incomum, sarda, malar alto, falha entre os dentes.
+# ⚠️ O eixo `oculos` fica ZERADO de proposito e a excecao esta' declarada no
+# medidor. ⛔ So' no pool FEMININO: no REFS_H oculos e grisalho ficam, porque no
+# homem eles leem como CREDIBILIDADE — o oposto do efeito na mulher.
 REFS_M = [
-    {"idade": 44, "cabeca": "her hair in neat cornrows pulled back", "marca": "a small mole above her left eyebrow"},
-    {"idade": 41, "cabeca": "her hair in a low tidy bun", "marca": "a small scar at the corner of her jaw"},
-    {"idade": 47, "cabeca": "shoulder-length straight hair tucked behind her ears", "marca": "a faint freckle high on her right cheek"},
-    {"idade": 39, "cabeca": "short natural curls kept close", "marca": "a faint dimple in her left cheek"},
-    {"idade": 50, "cabeca": "greying hair pulled back into a tight ponytail", "marca": "deep smile lines around her eyes"},
-    {"idade": 45, "cabeca": "long braids gathered over one shoulder", "marca": "a small dark mole on her chin"},
-    # + 2026-08-03: o CLEAN nasceu depois da passada de personagens de 02/08 e
-    # ficou de fora dela. Medido pelo `medir_personagens.py`: OCULOS em 0% e
-    # PELE em 0% dos dois pools — seis pessoas descritas so' por cabelo sao a
-    # mesma pessoa seis vezes, e o gerador devolve o mesmo rosto (§15 das
-    # licoes). As tres novas de cada pool trazem os eixos zerados.
-    {"idade": 52, "cabeca": "silver-streaked hair in a loose twist, thin wire-rimmed glasses",
-     "marca": "sun-weathered skin and a fine scar through her left eyebrow"},
-    {"idade": 38, "cabeca": "a blunt dark bob and heavy black-framed glasses",
+    {"idade": 29, "cabeca": "her hair in neat cornrows pulled back",
+     "marca": "a small dark beauty mark above her left eyebrow"},
+    {"idade": 32, "cabeca": "her hair in a sleek low bun",
+     "marca": "high cheekbones and a small scar at the corner of her jaw"},
+    {"idade": 27, "cabeca": "shoulder-length glossy straight hair tucked behind her ears",
+     "marca": "a light spray of freckles high on her cheeks"},
+    {"idade": 34, "cabeca": "short natural curls kept close",
+     "marca": "a deep dimple in her left cheek"},
+    {"idade": 30, "cabeca": "long hair pulled back into a high ponytail",
+     "marca": "striking pale green eyes"},
+    {"idade": 36, "cabeca": "long braids gathered over one shoulder",
+     "marca": "a small dark beauty mark on her chin"},
+    {"idade": 28, "cabeca": "a blunt glossy dark bob",
+     "marca": "full lips and a small gap between her front teeth"},
+    {"idade": 38, "cabeca": "thick auburn hair falling loose past her shoulders",
      "marca": "a dense spray of freckles across her nose"},
-    {"idade": 49, "cabeca": "close-cropped grey curls, half-moon reading glasses low on her nose",
-     "marca": "deeply lined skin and a dark birthmark at her temple"},
+    {"idade": 40, "cabeca": "dark hair with a sharp widow's peak, swept back",
+     "marca": "eyes of two different colours, one green and one brown"},
 ]
 REFS_H = [
     {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a small scar through his right eyebrow"},
