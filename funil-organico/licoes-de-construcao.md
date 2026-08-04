@@ -436,6 +436,142 @@ prompt** — para isso, montar e ler.
 
 ---
 
+## 20. ⛔⛔ "SHE NOTICED." — o vício crônico de ser vago em copy
+
+**Terceira vez que o operador me para pelo mesmo motivo** (§17 foi a primeira,
+a frase órfã do RESSURREICAO; a segunda foi a prova sem `{o}` do TROCA). Em
+2026-08-04, propondo o pool de bullets do agente novo, escrevi:
+
+```
+SHE NOTICED
+```
+
+O operador respondeu com a única coisa que importa — **o que o espectador pensa
+ao ouvir aquilo**:
+
+> *"Ela notou o quê? **WTF???**"*
+
+E nomeou o defeito: **"vício crônico seu de drifting de copy"**. A forma certa,
+ditada por ele:
+
+| | |
+|---|---|
+| ❌ o que eu escrevi | `She noticed.` |
+| ✅ o que converte | `she noticed his John-son harder than ever` |
+
+**Por que eu reincido, e é sempre a mesma mecânica:** a frase me parece completa
+**porque eu tenho o contexto da cena na cabeça**. Eu sei que ela notou o pau
+dele — acabei de escrever a cena. O espectador chegou agora, no scroll, com o
+som pela metade, e recebe um sujeito reagindo a coisa nenhuma.
+
+⚠️ **E é pior num slot de REAÇÃO do que em qualquer outro.** Reação de terceiro
+é o slot que carrega a **prova social** — é ele que diz que funcionou. Vago ali,
+o vídeo perde justamente a prova, e perde em silêncio: passa em todo linter de
+forma, porque `She noticed.` é uma sentença perfeita.
+
+**A regra, e ela não tem exceção:**
+
+> **Todo verbo de percepção ou reação nomeia o órgão NA MESMA SENTENÇA.**
+> `noticed`, `saw`, `felt`, `froze`, `stopped`, `stared`, `couldn't believe` —
+> nenhum deles sai sozinho. Sentença é a unidade; frase vizinha não paga (§16,
+> escopo).
+
+**O que impede** — vira linter, não comentário (§4). Sentença com verbo de
+percepção/reação e **sem** substantivo do `NUCLEO` na mesma sentença = **ERRO**.
+Nasce dentro do agente novo, com controle positivo (`She noticed.`,
+`Her jaw dropped.`) e negativo (`she noticed his John-son harder than ever`)
+rodados **antes** de qualquer número ser olhado (§16).
+
+⚠️ **Promoção para o `short_comum.py` só depois de medir o parque inteiro** —
+ligar lente nova para os doze de uma vez é como eu quebrei um vizinho ao
+consertar o tradutor (§18).
+
+📌 **O teste barato, e é o mesmo do §17, agora explícito para reação:** ler a
+sentença **sozinha, fora do vídeo**, e perguntar *"o quê?"*. Se a pergunta tem
+resposta só na cena, na frase anterior ou na minha cabeça, a sentença está vaga.
+
+---
+
+## 21. ⛔⛔⛔ POR QUE EU REINCIDO NA COPY VAGA — a investigação que o operador pediu
+
+**Quarta ocorrência no mesmo dia** (2026-08-04). O operador leu o take 2
+renderizado do ESCANDALO e parou tudo:
+
+> *"«I read every forum there is and found nothing» — telespectador: «read what?
+> WTF? What the hell is she talking about???»"*
+
+E então fez a pergunta que este capítulo existe para responder:
+
+> ***"Você precisa investigar o porquê você está cometendo de forma teimosa e
+> recorrente isso. Seria cálculo cego de encaixe matemático de fala pra caber
+> dentro do espaço curto de duração de vídeo? Se sim, você está sacrificando
+> todo o nosso funil de vendas em prol disso."***
+
+### O que a medição disse — e ela desmente a minha própria desculpa
+
+Medido em 120 sorteios × 13 motores, olhando a **primeira sentença de cada
+cena** (a que o espectador ouve antes de qualquer outra):
+
+| motor | aberturas órfãs | folga média naquelas falas |
+|---|---|---|
+| clean | 81,1% | **+3,9 palavras** |
+| pee | 75,0% | +4,7 |
+| organicwave | 70,6% | **+7,2** |
+| flagrante | 66,9% | +5,6 |
+| necrose | 66,7% | +6,5 |
+| **escandalo** | **64,2%** | **+3,1** |
+| receita | 61,7% | +1,9 |
+| troca | 36,4% | +2,6 |
+
+> **A hipótese do encaixe matemático CAI.** Sobravam 2 a 7 palavras exatamente
+> nas falas onde eu omiti o referente. O teto nunca me obrigou.
+
+### A causa raiz, e são três camadas
+
+**1. Eu construí todas as lentes na UNIDADE ERRADA.** A cota do órgão cobra a
+CENA. A §20 cobra a última sentença. A RE20 cobra o beat do vilão. **Nenhuma
+lente jamais olhou a PRIMEIRA sentença** — e é ela que decide se o espectador
+fica. Toda vez que eu media, o órgão *estava lá*, na terceira frase, e eu ia
+embora satisfeito. O instrumento dizia verde sobre o lugar errado.
+
+**2. Eu escrevo com a cena inteira na memória de trabalho.** Ao escrever *"I
+read every forum there is"* eu estou segurando *"...e aí veio o gelatin trick e
+o pau dele voltou"* na cabeça. A sentença me parece completa porque o PARÁGRAFO
+está completo. O espectador recebe **em série**, uma frase de cada vez, e a
+primeira chega sozinha.
+
+**3. O orçamento não é a causa, mas é uma PRESSÃO DE SELEÇÃO real.** O
+`_cabem()` descarta em silêncio a linha que não cabe. Ao longo de dezenas de
+entradas isso enviesa o pool para o curto — e **a forma mais barata de encurtar
+uma frase é matar o objeto dela**, que é gramaticalmente opcional e
+comunicativamente obrigatório. Não foi o teto que me obrigou; foi o teto que me
+*educou* errado. É a parte da hipótese do operador que está certa.
+
+### A regra, e ela é dele
+
+> **"Sempre leia: se a sentença dá afirmativo para possibilidade do leitor
+> dizer «wtf he/she talking about?», é drifting de copy vaga, é DESCARTE de
+> copy."**
+
+⛔ O veredito é **descarte**, não conserto: a linha sai do pool. E o teste roda
+**sentença a sentença, lida isolada** — nunca sobre a fala inteira, porque lida
+inteira ela sempre faz sentido para quem a escreveu.
+
+### O que impede
+
+| | |
+|---|---|
+| **ES22** (ESCANDALO) | a primeira sentença da cena 2 nomeia o órgão. Controle negativo = a frase exata que o operador reprovou |
+| **§20 / RE12** | a reação nomeia o órgão na mesma sentença |
+| **RE20** | o vilão nomeia quem esconde ou quem lucra |
+| **`medir_contexto_copy --gate`** | frase que nomeia causa sem dizer o que ela quebra |
+
+⚠️ **E o que ainda NÃO está travado:** as aberturas órfãs dos outros 12 motores
+(36% a 81%). Estão **medidas e registradas** aqui, não corrigidas — reescrever
+copy dos doze é decisão do operador, não minha (regra de alçada).
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -457,6 +593,14 @@ prompt** — para isso, montar e ler.
       frase que nomeia uma causa diz, **na mesma frase**, o que ela quebra (§17)
 - [ ] **Li a fala inteira em voz alta e perguntei "do que ela está falando?"**
       Se precisa de contexto que o vídeo não deu, é órfã (§17)
+- [ ] **Nenhuma sentença de percepção/reação sem o órgão nela** — `She noticed.`
+      faz o espectador perguntar *"notou o quê?"* e a prova social morre em
+      silêncio. Verbo de reação e `NUCLEO` na MESMA sentença (§20)
+- [ ] ⭐ **TESTE WTF, sentença a sentença, lida ISOLADA** (§21): se dá para o
+      espectador perguntar *"do que ele/ela está falando?"*, é **descarte** de
+      copy, não conserto. Vale principalmente para a **PRIMEIRA** sentença de
+      cada cena — é ela que decide se ele fica, e era a única que nenhuma
+      lente minha olhava
 - [ ] Uso do orçamento medido contra a **capacidade real**, não contra o teto (§5)
 - [ ] **Li algumas falas inteiras renderizadas**, não só os pools
 - [ ] `git diff` conferido: nenhuma string validada redigitada sem ordem

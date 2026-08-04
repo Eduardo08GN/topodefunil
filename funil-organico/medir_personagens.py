@@ -235,6 +235,30 @@ EXCECOES = {
         "medidor, que premia oculos e pele marcada — e ele me devolveu "
         "narradoras de 47 e 52 anos, grisalhas e de oculos de leitura, num "
         "agente de nutra sexual. Otimizei a metrica contra o objetivo.",
+    # ⛔⛔ ESCANDALO — LEI DO REF (2026-08-04): *"mulheres sempre super fit e
+    # lindas nos videos gerados pelo agente short escandalo"*.
+    # ⚠️⚠️ QUARTA VEZ que este medidor PRODUZIU o defeito que deveria pegar, e
+    # esta foi a pior: o ESCANDALO era o UNICO dos quatro agentes de narradora
+    # feminina SEM excecao declarada aqui. Sem ela, o gate reprovava o pool
+    # certo — entao em 2026-08-02 eu enchi o pool para passar no gate e ele
+    # devolveu narradoras de 44, 47, 50 e 52 anos, grisalhas, de oculos de
+    # leitura, com `sun-weathered skin`, `deep laugh lines` e `a notched scar in
+    # her upper lip`. O operador viu no lote e mandou reescrever.
+    # ⛔ A licao que fica: quando tres agentes irmaos tem excecao e um nao tem,
+    # o que falta e' a EXCECAO, nao o conteudo do pool. Consertar so' o pool
+    # deixaria o defeito voltar no proximo aceite (licoes-de-construcao §18).
+    ("escandalo_short.py", "NARRADORAS", "oculos"):
+        "LEI DO REF — oculos de leitura brigam frontalmente com 'super fit e "
+        "linda'. Os outros eixos continuam cheios: PORTE atletico em 20/20 "
+        "(era 5/20), cabelo e ancora facial de beleza em 100%.",
+    # ⛔ RECEITA — LEI DO REF. O pool MULHERES e' a parceira do payoff (cena 3),
+    # e a lei vale igual: 30-35 anos, sempre bonita. ⚠️ `pele` NAO entra na
+    # excecao — ela esta' em 12/12, so' que sempre como SINAL DE BELEZA
+    # (`smooth`, `clear`, `glowing`, `sun-kissed`), nunca como deterioracao.
+    # E' a diferenca que os outros tres agentes aprenderam do jeito caro.
+    ("receita_short.py", "MULHERES", "oculos"):
+        "LEI DO REF — oculos de leitura brigam frontalmente com 'linda'. "
+        "Cabelo, porte, pele e ancora facial seguem em 100% do pool.",
 }
 
 FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)
