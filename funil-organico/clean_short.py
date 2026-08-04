@@ -751,8 +751,20 @@ def montar(spec):
     idade = spec["ref"]["idade"]
 
     b["BLOCO 0 (REF)"] = (
-        "REF 01: Photo of a real person, a %d-year-old %s %s, chest up, facing "
-        "the camera directly, neutral steady expression with %s mouth closed. "
+        # ⭐⭐ O CORPO TEM DE ESTAR AQUI (2026-08-03). Ele ja' estava nos IMAGE
+        # e NAO estava no REF, e o operador nao viu diferenca nenhuma na
+        # musculatura — com razao: o REF 01 e' a imagem de IDENTIDADE, gerada
+        # primeiro e usada como base das tres cenas. Se ela sai com corpo
+        # comum, o gerador segue a IMAGEM e ignora o texto das cenas. E' a
+        # mesma 5a alavanca do prop-metaforas: quando texto e imagem
+        # discordam, a imagem vence.
+        # ⚠️ As clausulas de MAO sao removidas: o REF e' `chest up` com
+        # `Hands out of frame`, e mandar desenhar veia no dorso da mao numa
+        # foto sem mao e' ordem contraditoria — o tipo de coisa que o gerador
+        # "resolve" do jeito errado.
+        "REF 01: Photo of a real person, a %d-year-old %s %s with %s, chest up, "
+        "facing the camera directly, neutral steady expression with %s mouth "
+        "closed. "
         "Wearing a %s V-neck short-sleeved medical scrub top. %s. %s. An "
         "ordinary everyday relatable person with a plain unremarkable face, not "
         "a celebrity, not a model, not an actor, not resembling any famous "
@@ -761,6 +773,8 @@ def montar(spec):
         "front camera aesthetic. No subtitles, no captions, no burned-in text, "
         "no watermark."
         % (idade, spec["etnia"], "man" if spec["sexo"] == "homem" else "woman",
+           ", ".join(c for c in spec.get("corpo", "").split(", ")
+                     if "hand" not in c.lower()),
            Ss, spec["scrub"], spec["ref"]["cabeca"][0].upper() + spec["ref"]["cabeca"][1:],
            spec["ref"]["marca"][0].upper() + spec["ref"]["marca"][1:]))
 

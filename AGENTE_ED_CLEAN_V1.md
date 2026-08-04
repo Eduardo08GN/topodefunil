@@ -771,6 +771,23 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   desenha na sequência em que lê — corpo depois da roupa vira roupa larga com
   corpo genérico dentro.
 
+  ⛔⛔ **E O CORPO TEM DE ESTAR NO `REF 01`, NÃO SÓ NOS `IMAGE`.** Na primeira
+  entrega eu pus só nos IMAGE, e **o operador não viu diferença nenhuma na
+  musculatura** — com razão:
+
+  > O `REF 01` é a imagem de **identidade**. Ela é gerada primeiro e vira a base
+  > das três cenas. Se ela sai com corpo comum, o gerador **segue a imagem e
+  > ignora o texto** das cenas.
+
+  É a **5ª alavanca** do [`prop-metaforas`](funil-organico/prop-metaforas.md)
+  §Recusa, aplicada ao contrário: lá a imagem venceu o texto a nosso favor;
+  aqui venceu contra. **Quando texto e imagem discordam, a imagem vence — nos
+  dois sentidos.**
+
+  ⚠️ **As cláusulas de MÃO saem do REF.** Ele é `chest up` com
+  `Hands out of frame`; mandar desenhar veia no dorso da mão numa foto sem mão
+  é ordem contraditória, e o gerador "resolve" contradição do jeito errado.
+
   ⚠️ **Cada linha é curta e ancorada em GEOMETRIA** (ombro, antebraço, veia),
   não em pilha de adjetivo. É o mesmo princípio do CL19: *categoria e adjetivo
   fazem o gerador escolher; geometria e conteúdo fazem o gerador desenhar.*
