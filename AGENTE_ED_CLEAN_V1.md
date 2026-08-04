@@ -788,6 +788,34 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   `Hands out of frame`; mandar desenhar veia no dorso da mão numa foto sem mão
   é ordem contraditória, e o gerador "resolve" contradição do jeito errado.
 
+- **CL25 — ⛔⛔ OS DENTES SÃO ANCORADOS EM TODA IMAGE DE BOCA ABERTA**
+  (falha em produção, 2026-08-03).
+
+  A boca fica `mouth open mid-word` nas **três** IMAGEs e nada descrevia os
+  dentes. **O que o gerador não recebe, ele inventa:** saíam homens com dente
+  da frente torto ou quebrado, e o Veo às vezes animava **banguelo**.
+
+  **Frase travada, obrigatória sempre que a boca abre:**
+  ```
+  the front teeth even and complete
+  ```
+
+  ⛔ **Âncora POSITIVA, nunca negativa.** `no missing teeth` é negação, e
+  negação não cria forma — é o mesmo erro do `with no label` do CL19, que
+  devolveu caixa branca genérica. Diz-se o que **tem**: fileira completa e
+  pareja.
+
+  ⛔ **E saiu a marca facial que pedia o defeito.** `a small gap between her
+  front teeth` era âncora de identidade legítima, mas o gerador exagera
+  imperfeição dentária até virar dente faltando. Virou
+  `a faint dimple in her left cheek`. **Dente não serve de marca distintiva** —
+  é a região que os geradores erram mais.
+
+  ⚠️ **São 5 pontos por agente, não 3.** As duas famílias têm IMAGEs próprias,
+  e a frase `mouth open mid-word` aparece **quebrada entre linhas** no fonte —
+  `grep "mouth open mid-word"` acha 4 e esconde 3. Conferir na **saída
+  renderizada**, nunca no código.
+
   ⚠️ **Cada linha é curta e ancorada em GEOMETRIA** (ombro, antebraço, veia),
   não em pilha de adjetivo. É o mesmo princípio do CL19: *categoria e adjetivo
   fazem o gerador escolher; geometria e conteúdo fazem o gerador desenhar.*
@@ -1113,6 +1141,7 @@ que converte. **Este é o único selo que o CLEAN ainda não tem.**
 - [ ] **Tetos de fala**: 20-26 / 26-34 / 22-28?
 - [ ] ⭐⭐ **Item A e item B não repetem fruta, ingrediente nem benefício** (CL22)? ⛔ Nenhum item A cita leite?
 - [ ] ⭐⭐ **Nenhum ingrediente promete dureza** — só o `gelatin trick` endurece (CL23)?
+- [ ] ⛔ **Toda IMAGE de boca aberta traz `the front teeth even and complete`** (CL25)? ⛔ Nenhuma marca facial cita dente?
 - [ ] ⭐⭐ **O REF tem corpo treinado, com veia e saúde visíveis** (CL24)? ⛔ Sem tronco nu, sem fisiculturista, e o corpo vem **antes** do traje na frase?
 - [ ] ⛔ **Zero comparação numérica de tamanho** (CL10)?
 - [ ] Cada cena com 2ª pessoa ou imperativo (P22)?

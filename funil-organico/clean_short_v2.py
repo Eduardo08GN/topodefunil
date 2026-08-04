@@ -231,6 +231,16 @@ ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
              "actor, not resembling any famous person.")
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
+# ⛔⛔ OS DENTES SAO ANCORADOS (2026-08-03, falha em producao). A boca fica
+# ABERTA mid-word nas tres IMAGEs e nada descrevia os dentes — e o que o
+# gerador nao recebe, ele inventa: saiam homens com dente da frente torto,
+# quebrado, e o Veo as vezes animava BANGUELO.
+# ⚠️ Ancora POSITIVA, nunca negativa. `no missing teeth` e' negacao, e negacao
+# nao cria forma — e' o mesmo erro do `with no label` do CL19, que devolveu
+# caixa branca generica. Diz-se o que TEM: fileira completa e pareja.
+DENTES = "%s front teeth even and complete"
+
+
 # ---------------------------------------------------------------------------
 # EIXOS SORTEAVEIS
 # ---------------------------------------------------------------------------
@@ -626,7 +636,7 @@ REFS_M = [
     {"idade": 44, "cabeca": "her hair in neat cornrows pulled back", "marca": "a small mole above her left eyebrow"},
     {"idade": 41, "cabeca": "her hair in a low tidy bun", "marca": "a small scar at the corner of her jaw"},
     {"idade": 47, "cabeca": "shoulder-length straight hair tucked behind her ears", "marca": "a faint freckle high on her right cheek"},
-    {"idade": 39, "cabeca": "short natural curls kept close", "marca": "a small gap between her front teeth"},
+    {"idade": 39, "cabeca": "short natural curls kept close", "marca": "a faint dimple in her left cheek"},
     {"idade": 50, "cabeca": "greying hair pulled back into a tight ponytail", "marca": "deep smile lines around her eyes"},
     {"idade": 45, "cabeca": "long braids gathered over one shoulder", "marca": "a small dark mole on her chin"},
     # + 2026-08-03: o CLEAN nasceu depois da passada de personagens de 02/08 e
@@ -1462,15 +1472,17 @@ def montar(spec):
             "Medium shot inside %(cen)s. Seated behind %(sup_a)s is %(ref1)s. On "
             "the %(sup)s in front of %(obj)s, at chest height, stand in a row: "
             "%(fila)s. %(S)s looks directly into the lens with %(Ss)s mouth open "
-            "mid-word as %(s)s speaks, %(Ss)s torso upright and %(Ss)s head "
+            "mid-word as %(s)s speaks, the front teeth even and complete, %(Ss)s "
+            "torso upright and %(Ss)s head "
             "raised. %(Sc)s right index finger is extended toward the row, "
             "%(Ss)s hand just above the %(sup)s. %(S)s touches nothing. %(S)s is "
             "the only person in the frame. %(anti)s %(luz)s %(cauda)s" % v)
         b["IMAGE 02/03"] = (
             "Medium shot in the same %(lugar)s, same background. %(ref)s. On the "
             "%(sup)s is the same row %(mesma)s: %(fila)s. %(S)s looks directly "
-            "into the lens with %(Ss)s mouth open mid-word as %(s)s speaks, "
-            "%(Ss)s expression serious and certain. %(Sc)s right index finger is "
+            "into the lens with %(Ss)s mouth open mid-word as %(s)s speaks, the "
+            "front teeth even and complete, %(Ss)s expression serious and "
+            "certain. %(Sc)s right index finger is "
             "extended toward %(tru0)s, %(Ss)s hand just above the %(sup)s. %(S)s "
             "touches nothing. %(S)s is the only person in the frame. %(anti)s "
             "%(cauda)s" % v)
@@ -1480,7 +1492,8 @@ def montar(spec):
             "the bottom edge of the frame stand three things only: %(banc0)s; "
             "%(gel)s; and %(tru0)s. %(S)s looks directly into the lens, calm and "
             "confident, one corner of %(Ss)s mouth raised in a half-smile, "
-            "%(Ss)s mouth open mid-word as %(s)s speaks. %(Sc)s right index "
+            "%(Ss)s mouth open mid-word as %(s)s speaks, the front teeth even and "
+            "complete. %(Sc)s right index "
             "finger points directly at the camera. %(S)s is the only person in "
             "the frame. %(anti)s %(cauda)s" % v)
         mov = [
@@ -1528,7 +1541,8 @@ def montar(spec):
             "%(fila1)s. %(peg1)s. %(cai1)s, and the water in the glass is "
             "turning from clear to %(cor1)s where the stream lands. %(S)s looks "
             "directly into the lens with %(Ss)s mouth open mid-word as %(s)s "
-            "speaks, %(Ss)s torso upright and %(Ss)s head raised. %(S)s is the "
+            "speaks, the front teeth even and complete, %(Ss)s torso upright and "
+            "%(Ss)s head raised. %(S)s is the "
             "only person in the frame. %(anti)s %(luz)s "
             "%(cauda)s" % v)
         # ⚠️ A cena 2 CLAREIA se a segunda cor for mais clara que a primeira —
@@ -1541,7 +1555,8 @@ def montar(spec):
             "stand %(fila2)s. %(resto)s %(peg2)s. %(cai2)s, and the %(cor1)s "
             "water in the glass is clouding over and turning %(cor2)s where the "
             "stream lands. %(S)s looks directly into the lens with %(Ss)s mouth "
-            "open mid-word as %(s)s speaks, %(Ss)s expression serious and "
+            "open mid-word as %(s)s speaks, the front teeth even and complete, "
+            "%(Ss)s expression serious and "
             "certain. %(S)s is the only person in the frame. %(anti)s "
             "%(cauda)s" % v)
         # CL21 — a cena 3 e' o RESULTADO: copo pronto + gelatina, e so' um dos
@@ -1554,7 +1569,8 @@ def montar(spec):
             "glass, now filled to the top with a finished %(cor2)s drink and no "
             "longer clear; %(gel)s; and %(ing2)s. %(S)s looks directly into the "
             "lens, calm and confident, one corner of %(Ss)s mouth raised in a "
-            "half-smile, %(Ss)s mouth open mid-word as %(s)s speaks. %(Sc)s right "
+            "half-smile, %(Ss)s mouth open mid-word as %(s)s speaks, the front teeth "
+            "even and complete. %(Sc)s right "
             "index finger points directly at the camera. %(S)s is the only person "
             "in the frame. %(anti)s %(cauda)s" % v)
         # ⚠️ A clausula de toque saiu daqui: o TAKE ja' carrega o TOCA_UM
