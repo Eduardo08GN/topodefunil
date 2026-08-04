@@ -436,6 +436,42 @@ prompt** — para isso, montar e ler.
 
 ---
 
+## 20. ⛔ 100% DE AMOSTRA NÃO É 100% — o medidor mentiu pela QUARTA vez
+
+Eu declarei ao operador, com número na mão: **`2160/2160 = 100%`**, tradução
+completa nos doze agentes. Ele pediu para ajustar mesmo assim. Fui medir fundo:
+
+| sorteios por agente | templates sem PT que apareceram |
+|---|---|
+| 60 *(o default)* | **0** ← o número que eu reportei |
+| 400 | **+10** |
+| 1.200 | **+1** |
+| 3.000 | 0 |
+| 6.000 | 0 — convergiu |
+
+**Onze templates sem tradução**, e o relatório dizia 100%. Eles vivem em
+combinações raras de pool — um item A que só casa com dois item B, um gate que
+só aparece com uma família — e 60 sorteios simplesmente nunca os tiravam.
+
+> **Cobertura de amostra mede o que o sorteio calhou de gerar, não o que o
+> agente é capaz de gerar.** Com pool combinatório, a cauda é longa e é
+> exatamente onde mora o que ninguém revisou.
+
+**O que impede:**
+- ⛔ **Não basta aumentar o número.** Número maior sempre acha mais, até
+  convergir. O que prova cobertura é **convergência**: dois patamares seguidos
+  sem achado novo.
+- O default do `checar.py` subiu de 60 para **400**, e ganhou `--fundo` (3.000).
+  Quando o resultado é limpo mas a amostra é pequena, ele **avisa na tela** que
+  aquilo é amostra.
+- Antes de dizer "100%" para o operador: **rodar `--fundo` e ver convergir.**
+
+⚠️ **E a linha do aviso não pode ter emoji.** A primeira versão tinha `⚠️`, e o
+console do Windows é cp1252: `UnicodeEncodeError` derrubando o próprio
+verificador na hora de avisar.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -468,6 +504,8 @@ prompt** — para isso, montar e ler.
       que motivou a mudança (§18)
 - [ ] **Conferi a frase no PROMPT MONTADO, não no `.py`** — `grep` no fonte não
       vê string quebrada entre linhas adjacentes (§19)
+- [ ] **Declarei 100%? Rodei em DOIS patamares de amostra e vi convergir** —
+      100% de 60 sorteios escondeu 11 templates sem tradução (§20)
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
 - [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
 
