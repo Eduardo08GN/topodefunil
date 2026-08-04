@@ -471,87 +471,101 @@ ES_PLANTADO_IMAGE = "The %s has been standing on the %s since the first frame, %
 # deliberada do UN1 do UNCAO, que continua valendo integralmente la'.
 # ⛔ Zero `baby tee`: o token `baby` entra de graca num prompt que ja' pareia
 # mulher com homem de 55-70 e objeto falico. `ringer tee` e' a mesma peca.
+# ⛔⛔ LEI DO REF — A NARRADORA E' SEMPRE SUPER FIT E LINDA.
+# Ordem do operador, 2026-08-04, olhando o lote gerado por este agente:
+# *"mulheres sempre super fit e lindas nos videos gerados pelo agente short
+# escandalo"*. Vale como lei permanente, nao como ajuste de lote.
+#
+# ⚠️⚠️ ESTE POOL FOI REESCRITO PORQUE ERA A **QUARTA** OCORRENCIA DO MESMO ERRO
+# MEU — depois do RESSURREICAO, do CLEAN e do COLO, e pela mesma causa exata:
+# eu escrevi as cinco ultimas entradas (2026-08-02) para PREENCHER OS EIXOS QUE
+# O `medir_personagens.py` PREMIA — `oculos`, `pele`, `porte` — e ele me
+# devolveu narradoras de 44, 47, 50 e 52 anos, grisalhas, de oculos de leitura,
+# com `sun-weathered skin`, `deep laugh lines` e `a notched scar in her upper
+# lip`. Num agente em que ela e' quem vende para homem.
+#
+# ⛔ E A CAUSA RAIZ NAO ERA O POOL, ERA O MEDIDOR: os outros tres agentes tem
+# excecao declarada para `oculos`; o ESCANDALO nao tinha. Sem a excecao, o gate
+# reprovava o pool certo e o proximo agente o enchia de oculos de novo.
+# A excecao foi adicionada junto com esta reescrita — consertar so' o pool
+# deixaria o defeito voltar sozinho (licoes-de-construcao §18).
+#
+# AS TRAVAS DESTE POOL, e nenhuma e' negociavel:
+#   · IDADE 28-35 — o piso e' o `IDADE_MINIMA_NARRADORA` (moderacao, ja' pago em
+#     campo) e o teto e' a lei do REF. ⛔ Nada acima de 35.
+#   · PORTE em 100% das entradas, e sempre ATLETICO: e' o eixo que muda a
+#     silhueta no plano medio, onde ela vive nas tres cenas.
+#   · ⛔ ZERO oculos, ZERO grisalho, ZERO pele castigada, ZERO ruga de expressao.
+#   · ANCORA FACIAL (P6) obrigatoria e sempre SINAL DE BELEZA — sarda, covinha,
+#     pinta, olho de cor incomum, falha entre os dentes, malar alto, argola no
+#     nariz. ⛔ Nunca cicatriz feia, palpebra caida, dente lascado.
+#   · ⛔ nenhuma diz POSTURA: `stooped` colidiria com a travada da ES4, que ja'
+#     escreve `upright, chin level`. Ombro e' FORMA, nao pose.
+#   · zero mencao a etnia [D4]/ES11 — a variacao mora no CABELO.
 NARRADORAS = [
     {"id": "ruiva_sardas", "idade": 29,
-     "marca": "long copper-red hair and a heavy dusting of freckles across her nose and cheeks",
+     "marca": "a lean toned build with a flat midriff, long copper-red hair and a heavy dusting of freckles across her nose and cheeks",
      "roupa": "a cropped dark-green ribbed tank top and black leggings"},
-    {"id": "oculos_redondos", "idade": 37,
-     "marca": "wavy caramel-blonde hair, thin round gold-rimmed glasses and a small dark mole beside her left nostril",
+    {"id": "caramelo_pinta", "idade": 31,
+     "marca": "a slim athletic build with defined shoulders, wavy caramel-blonde hair and a small dark mole beside her left nostril",
      "roupa": "a cropped charcoal ribbed tank top and high-waisted black leggings"},
     {"id": "afro_curto", "idade": 34,
-     "marca": "a short natural afro and a small dark beauty mark high on her left cheekbone",
+     "marca": "a compact tightly muscled build, a short natural afro and a small dark beauty mark high on her left cheekbone",
      "roupa": "a cropped mustard knit top and a thin gold chain"},
-    {"id": "loira_raiz", "idade": 41,
-     "marca": "long honey-blonde hair with grown-out roots and a deep dimple in her right cheek",
+    {"id": "loira_covinha", "idade": 33,
+     "marca": "a trim athletic build with a defined waist, long honey-blonde hair and a deep dimple in her right cheek",
      "roupa": "a fitted black t-shirt tucked into high-waisted jeans"},
     {"id": "rabo_alto", "idade": 30,
-     "marca": "jet-black hair in a high slicked-back ponytail and a wide gap between her front teeth",
+     "marca": "a lean dancer's build with long limbs, jet-black hair in a high slicked-back ponytail and a wide gap between her front teeth",
      "roupa": "a cropped grey sweatshirt cut off above the waist"},
     {"id": "tranca_caixa", "idade": 31,
-     "marca": "waist-length box braids and a small raised scar at the point of her chin",
+     "marca": "a toned swimmer's build with square shoulders, waist-length box braids and full lips over a strong even smile",
      "roupa": "a cropped burgundy tank top and stacked gold bangles"},
-    {"id": "grisalha_coque", "idade": 47,
-     "marca": "silver-streaked dark hair in a loose bun and deep laugh lines at the outer corners of her eyes",
+    {"id": "cacho_alto", "idade": 28,
+     "marca": "a slim strong build with a narrow waist, thick dark curls gathered high off her neck and a small heart-shaped birthmark below her right ear",
      "roupa": "a denim shirt knotted at the waist over a plain vest"},
     {"id": "bob_platinado", "idade": 28,
-     "marca": "a bleached-platinum bob cut sharp at the jaw and a small hoop through her left nostril",
+     "marca": "a wiry athletic build with slim hips, a bleached-platinum bob cut sharp at the jaw and a small hoop through her left nostril",
      "roupa": "a cropped lilac zip-up and gold rings on three fingers"},
     {"id": "franja_reta", "idade": 33,
-     "marca": "long chestnut hair with a blunt fringe and a small crescent birthmark at her right temple",
+     "marca": "a slender long-limbed build, long chestnut hair with a blunt fringe and a small crescent birthmark at her right temple",
      "roupa": "a rust-orange long-sleeve top pushed up to the elbows"},
-    {"id": "cachos_bronze", "idade": 39,
-     "marca": "tight auburn-dyed curls and a thin pale scar along her left jawline",
+    {"id": "cachos_bronze", "idade": 32,
+     "marca": "a firm athletic build with toned arms, tight auburn curls worn loose and high sharp cheekbones over a wide bright smile",
      "roupa": "a cropped emerald wrap top and long gold drop earrings"},
-    {"id": "tapered_macas", "idade": 43,
-     "marca": "a close tapered cut faded at the sides and a beauty mark under her right eye",
+    {"id": "tapered_macas", "idade": 34,
+     "marca": "a lean muscular build with a long neck, a close tapered cut faded at the sides and a beauty mark under her right eye",
      "roupa": "a charcoal turtleneck and heavy gold hoops"},
     {"id": "tranca_unica", "idade": 30,
-     "marca": "long jet-black hair in a single braid over one shoulder and a small dark tattoo of three stars behind her right ear",
+     "marca": "a tall lean build with fine collarbones, long jet-black hair in a single braid over one shoulder and a small dark tattoo of three stars behind her right ear",
      "roupa": "a cropped white crochet top and gold bangles"},
-    {"id": "coque_bagunca", "idade": 36,
-     "marca": "sandy-blonde hair in a messy topknot and pale grey-green eyes under heavy dark brows",
+    {"id": "coque_bagunca", "idade": 32,
+     "marca": "a slim toned build with a flat stomach, sandy-blonde hair in a messy topknot and pale grey-green eyes under dark brows",
      "roupa": "a sage-green tank top and a slim gold watch"},
-    {"id": "morango_lente", "idade": 45,
-     "marca": "long wavy strawberry-blonde hair and a beauty mark just above her upper lip",
+    {"id": "morango_lente", "idade": 35,
+     "marca": "a fit toned build with a small waist, long wavy strawberry-blonde hair and a beauty mark just above her upper lip",
      "roupa": "a cropped pale-blue knit top and a thin gold chain bracelet"},
     {"id": "crespo_solto", "idade": 32,
-     "marca": "a big loose curl-out worn wide and a small vertical scar through her left eyebrow",
+     "marca": "a strong compact build with toned shoulders, a big loose curl-out worn wide and arched brows over dark almond eyes",
      "roupa": "a cropped terracotta rib tank and a flat gold collar"},
-    # + 2026-08-02: mesma medicao que gerou os blocos dos HOMENS logo abaixo,
-    # so' que do lado da narradora — o operador viu SEMPRE O MESMO ROSTO. As
-    # quinze acima descrevem a pessoa por CABELO mais uma ancora: quinze
-    # mulheres descritas so' por cabelo sao a mesma mulher quinze vezes, e o
-    # gerador devolvia quase a mesma cara. As cinco novas trazem os eixos que
-    # este pool nao acionava:
-    #   · PORTE — era 0/15 aqui. broad-shouldered, tall lean, square e
-    #     short-waisted, compact, stocky. E' o eixo que muda a silhueta no
-    #     plano medio, onde a narradora vive nas tres cenas.
-    #   · OCULOS — armacao preta pesada e oculos de leitura baixos no nariz
-    #     (o pool so' tinha um redondo de ouro em quinze).
-    #   · PELE — sun-weathered.
-    #   · a ancora facial (P6) continua obrigatoria e sempre do lado ✅ de
-    #     licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO (cicatriz
-    #     limpa, pinta, ruga vertical). ⛔ dente lascado ficou de fora.
-    #   · FIGURINO: 3 cropped e 2 cobertas, dentro da proporcao que o
-    #     cabecalho deste pool ja' autoriza.
-    #   · ⛔ nenhuma diz postura: `stooped`/`curvado` colidiria com a travada
-    #     da ES4, que escreve `upright, chin level`. Ombro e' FORMA, nao pose.
-    #   · zero mencao a etnia: [D4] a narradora do ESCANDALO e' solta e nao
-    #     recebe injecao de etnia nenhuma — a variacao mora no cabelo.
-    {"id": "oculos_grossos", "idade": 50,
-     "marca": "a broad-shouldered build, blunt-cut iron-grey hair, heavy black-framed glasses and a notched scar in her upper lip",
-     "roupa": "a boxy oatmeal linen shirt and gold studs"},
-    {"id": "alta_sol", "idade": 44,
-     "marca": "a tall, lean frame, sun-weathered skin, ash-brown hair knotted low and a mole on her jawline",
-     "roupa": "a cropped khaki tank and sunglasses up in her hair"},
-    {"id": "leitura_quadrada", "idade": 52,
-     "marca": "a square, short-waisted build, close-cropped grey hair, reading glasses low on her nose and a deep vertical brow line",
-     "roupa": "a chambray shirt, cuffs turned back"},
-    {"id": "nariz_adunco", "idade": 31,
-     "marca": "a compact build, black hair shaved close on one side and a faint scar across her hooked nose",
+    # + 2026-08-04: as cinco que substituem as cinco velhas (44-52 anos,
+    # grisalhas e de oculos). Elas trazem os MESMOS eixos que aquelas traziam —
+    # PORTE variado e ancora facial forte — sem nada que brigue com a lei do
+    # REF. O porte agora esta' em 20/20, nao em 5/20.
+    {"id": "ombro_largo", "idade": 29,
+     "marca": "a broad-shouldered athletic build with a narrow waist, blunt-cut glossy black hair at the collarbone and striking pale green eyes",
+     "roupa": "a cropped oatmeal rib tank and gold studs"},
+    {"id": "alta_bronzeada", "idade": 33,
+     "marca": "a tall lean frame with long legs, smooth sun-kissed skin, ash-brown hair knotted low and a small mole on her jawline",
+     "roupa": "a cropped khaki tank and a thin leather cord at her wrist"},
+    {"id": "cintura_curta", "idade": 30,
+     "marca": "a short-waisted powerful build with visible shoulder definition, close-cropped dark hair and eyes of two different colours, one green and one brown",
+     "roupa": "a chambray shirt tied off above the waist, cuffs turned back"},
+    {"id": "raspado_lateral", "idade": 31,
+     "marca": "a compact hard-trained build, black hair shaved close on one side and a straight fine nose over a wide full mouth",
      "roupa": "a cropped olive tank and short black-painted nails"},
-    {"id": "cornrows_troncuda", "idade": 35,
-     "marca": "a stocky build, cornrows to the nape, heavy brows and a pale scar beside her left eye",
+    {"id": "cornrows_forte", "idade": 35,
+     "marca": "a solidly athletic build with cut arms, cornrows running to the nape and smooth clear skin over high round cheekbones",
      "roupa": "a cropped scarlet knit top and a gold cuff"},
 ]
 
@@ -587,7 +601,7 @@ HOMENS_CLARA = [
     {"id": "bigode_guidao", "idade": 57,
      "marca": "a shaved head and a thick grey handlebar moustache",
      "roupa": "a mustard-yellow snap-button shirt", "calca": "black work trousers"},
-    {"id": "dentes_falha", "idade": 66,
+    {"id": "dentes_falha", "idade": 65,
      "marca": "white hair combed straight back and a wide gap between his front teeth",
      "roupa": "a cream short-sleeve camp shirt", "calca": "olive cargo pants"},
     {"id": "sinal_olho", "idade": 59,
@@ -602,10 +616,10 @@ HOMENS_CLARA = [
     {"id": "corte_sobrancelha", "idade": 65,
      "marca": "a close silver crew cut and a long-healed nick through his right eyebrow",
      "roupa": "a blue-and-white plaid short-sleeve shirt", "calca": "brown canvas work pants"},
-    {"id": "costeleta_larga", "idade": 68,
+    {"id": "costeleta_larga", "idade": 64,
      "marca": "white hair parted at the side and wide old-fashioned sideburns down to the jaw",
      "roupa": "a tan corduroy shirt buttoned to the collar", "calca": "dark brown slacks"},
-    {"id": "nariz_torto", "idade": 70,
+    {"id": "nariz_torto", "idade": 63,
      "marca": "thin white hair combed forward and a nose broken and set crooked years ago",
      "roupa": "a pale grey flannel shirt", "calca": "navy work trousers"},
     # + 2026-08-02: o operador mediu os dois pools e viu SEMPRE O MESMO ROSTO.
@@ -636,12 +650,51 @@ HOMENS_CLARA = [
     {"id": "chevron_ouro", "idade": 58,
      "marca": "a lean wiry build, sun-creased skin, close iron-grey hair, a thick chevron moustache and a gold front tooth",
      "roupa": "a faded chambray work shirt", "calca": "dark green work trousers"},
-    {"id": "leitura_orelha", "idade": 67,
+    {"id": "leitura_orelha", "idade": 62,
      "marca": "narrow sloping shoulders, white hair, a short boxed beard, half-moon reading glasses down his nose and a notched left ear",
      "roupa": "a burgundy cardigan", "calca": "pleated beige trousers"},
-    {"id": "pescoco_mancha", "idade": 69,
+    {"id": "pescoco_mancha", "idade": 61,
      "marca": "a broad thick-necked build, straight white hair cut short, a clean-shaven face and a port-wine birthmark on his right temple",
      "roupa": "a maroon zip-up fleece", "calca": "washed indigo carpenter jeans"},
+    # + 2026-08-04: DEZ pares novos, por ordem do operador — *"aumente o pool
+    # de personagens para o escandalo short, esta muito repetitivo"*. 18 -> 28.
+    # ⚠️ Todos 55-65: acima disso a entrada e' PESO MORTO, porque a narradora
+    # vai ate' 35 (lei do REF) e o TETO_DIF_IDADE=30 poe o teto real em 65.
+    # Cinco entradas antigas (66-70) nunca eram sorteadas e foram trazidas
+    # para a banda no mesmo commit — 13 sorteaveis viraram 28.
+    # ⛔ FIGURINO TODO NOVO: nenhuma roupa e nenhuma calca repete as 18
+    # anteriores. Num plano medio o olho le' a ROUPA antes do rosto, e dez
+    # homens novos na mesma camisa verde seriam o mesmo homem de novo.
+    {"id": "bigode_aviador", "idade": 57,
+     "marca": "a thick sandy-grey moustache, wire-rimmed aviator glasses and a heavy square jaw",
+     "roupa": "a dark teal short-sleeve work shirt", "calca": "dark olive work trousers"},
+    {"id": "careca_barbudo", "idade": 61,
+     "marca": "a shaved head, a full salt-and-pepper beard and a deep scar through his upper lip",
+     "roupa": "a sand-coloured linen shirt open at the collar", "calca": "faded black jeans"},
+    {"id": "onda_longa", "idade": 63,
+     "marca": "wavy white hair worn long over the ears, clean-shaven, and very pale blue eyes",
+     "roupa": "a black quilted vest over a white tee", "calca": "light grey cargo trousers"},
+    {"id": "costeleta_nariz", "idade": 59,
+     "marca": "a short grey crew cut, thick mutton-chop sideburns and a bulbous reddened nose",
+     "roupa": "a mustard waffle-knit long-sleeve", "calca": "rust corduroy trousers"},
+    {"id": "ruivo_sardento", "idade": 56,
+     "marca": "thinning ginger-grey hair, a freckled scalp and pale lashes",
+     "roupa": "a washed denim western shirt with pearl snaps", "calca": "stonewashed blue jeans"},
+    {"id": "bico_viuva", "idade": 64,
+     "marca": "a widow's peak gone white, heavy black-rimmed glasses and a cleft in his chin",
+     "roupa": "a deep purple polo shirt", "calca": "navy chinos"},
+    {"id": "dente_ouro", "idade": 60,
+     "marca": "close-cropped iron-grey hair, a neat pencil moustache and a gold tooth that shows when he grins",
+     "roupa": "an oatmeal fisherman's sweater", "calca": "brown duck canvas trousers"},
+    {"id": "sobrancelha_farta", "idade": 62,
+     "marca": "a full head of white hair swept sideways, bushy untamed eyebrows and a long thin face",
+     "roupa": "a brick-red short-sleeve button-down", "calca": "charcoal jogging bottoms"},
+    {"id": "cavanhaque_claro", "idade": 58,
+     "marca": "a bald crown ringed with grey, a heavy grey soul patch and deep laugh lines",
+     "roupa": "a hunter-green thermal henley", "calca": "tan work trousers"},
+    {"id": "franja_prata", "idade": 55,
+     "marca": "short silver hair combed forward, clean-shaven, and a broad flat nose with an old bump",
+     "roupa": "a pale yellow guayabera shirt", "calca": "dark green corduroys"},
 ]
 
 HOMENS_ESCURA = [
@@ -667,7 +720,7 @@ HOMENS_ESCURA = [
     {"id": "careca_bigode", "idade": 57,
      "marca": "a bald head and a thick grey moustache",
      "roupa": "a mustard-yellow snap-button shirt", "calca": "black work trousers"},
-    {"id": "branco_falha", "idade": 66,
+    {"id": "branco_falha", "idade": 65,
      "marca": "short white hair and a wide gap between his front teeth",
      "roupa": "a cream short-sleeve camp shirt", "calca": "olive cargo pants"},
     {"id": "hightop_sinal", "idade": 59,
@@ -682,10 +735,10 @@ HOMENS_ESCURA = [
     {"id": "barba_corte", "idade": 65,
      "marca": "a neat grey beard and a long-healed nick through his right eyebrow",
      "roupa": "a blue-and-white plaid short-sleeve shirt", "calca": "brown canvas work pants"},
-    {"id": "costeleta_grisalha", "idade": 68,
+    {"id": "costeleta_grisalha", "idade": 64,
      "marca": "close white hair and wide old-fashioned sideburns down to the jaw",
      "roupa": "a tan corduroy shirt buttoned to the collar", "calca": "dark brown slacks"},
-    {"id": "nariz_torto_escuro", "idade": 70,
+    {"id": "nariz_torto_escuro", "idade": 63,
      "marca": "thin white hair worn close and a nose broken and set crooked years ago",
      "roupa": "a pale grey flannel shirt", "calca": "navy work trousers"},
     # + 2026-08-02: o espelho das quatro novas do pool CLARA — mesma medicao (o
@@ -704,12 +757,51 @@ HOMENS_ESCURA = [
     {"id": "chevron_raspado", "idade": 58,
      "marca": "a lean wiry build, sun-creased skin, a grey buzz cut, a thick chevron moustache and a gold front tooth",
      "roupa": "a faded chambray work shirt", "calca": "dark green work trousers"},
-    {"id": "leitura_coils", "idade": 67,
+    {"id": "leitura_coils", "idade": 62,
      "marca": "narrow sloping shoulders, close white coils, a short boxed beard, half-moon reading glasses down his nose and a notched left ear",
      "roupa": "a burgundy cardigan", "calca": "pleated beige trousers"},
-    {"id": "pescoco_cachos", "idade": 69,
+    {"id": "pescoco_cachos", "idade": 61,
      "marca": "a broad thick-necked build, tight white curls cut short, a clean-shaven face and a port-wine birthmark on his right temple",
      "roupa": "a maroon zip-up fleece", "calca": "washed indigo carpenter jeans"},
+    # + 2026-08-04: DEZ pares novos, por ordem do operador — *"aumente o pool
+    # de personagens para o escandalo short, esta muito repetitivo"*. 18 -> 28.
+    # ⚠️ Todos 55-65: acima disso a entrada e' PESO MORTO, porque a narradora
+    # vai ate' 35 (lei do REF) e o TETO_DIF_IDADE=30 poe o teto real em 65.
+    # Cinco entradas antigas (66-70) nunca eram sorteadas e foram trazidas
+    # para a banda no mesmo commit — 13 sorteaveis viraram 28.
+    # ⛔ FIGURINO TODO NOVO: nenhuma roupa e nenhuma calca repete as 18
+    # anteriores. Num plano medio o olho le' a ROUPA antes do rosto, e dez
+    # homens novos na mesma camisa verde seriam o mesmo homem de novo.
+    {"id": "bigode_aviador_escuro", "idade": 57,
+     "marca": "a thick greying moustache, wire-rimmed aviator glasses and a heavy square jaw",
+     "roupa": "a dark teal short-sleeve work shirt", "calca": "dark olive work trousers"},
+    {"id": "careca_barbudo_escuro", "idade": 61,
+     "marca": "a shaved head, a full grey-flecked beard and a deep scar through his upper lip",
+     "roupa": "a sand-coloured linen shirt open at the collar", "calca": "faded black jeans"},
+    {"id": "twists_longos", "idade": 63,
+     "marca": "silver twists worn long to the shoulders, clean-shaven, and deep-set dark eyes",
+     "roupa": "a black quilted vest over a white tee", "calca": "light grey cargo trousers"},
+    {"id": "costeleta_fade", "idade": 59,
+     "marca": "a short grey fade, thick greying sideburns and a broad flat nose",
+     "roupa": "a mustard waffle-knit long-sleeve", "calca": "rust corduroy trousers"},
+    {"id": "sardas_escuras", "idade": 56,
+     "marca": "thinning grey hair with a receding line and a scatter of dark freckles across his cheeks",
+     "roupa": "a washed denim western shirt with pearl snaps", "calca": "stonewashed blue jeans"},
+    {"id": "testa_alta", "idade": 64,
+     "marca": "a high grey hairline, heavy black-rimmed glasses and a cleft in his chin",
+     "roupa": "a deep purple polo shirt", "calca": "navy chinos"},
+    {"id": "dente_ouro_escuro", "idade": 60,
+     "marca": "close-cropped grey coils, a neat pencil moustache and a gold tooth that shows when he grins",
+     "roupa": "an oatmeal fisherman's sweater", "calca": "brown duck canvas trousers"},
+    {"id": "afro_largo", "idade": 62,
+     "marca": "a full grey afro worn wide, bushy untamed eyebrows and a long narrow face",
+     "roupa": "a brick-red short-sleeve button-down", "calca": "charcoal jogging bottoms"},
+    {"id": "cavanhaque_escuro", "idade": 58,
+     "marca": "a bald crown ringed with grey, a heavy grey soul patch and deep laugh lines",
+     "roupa": "a hunter-green thermal henley", "calca": "tan work trousers"},
+    {"id": "ondas_prata", "idade": 55,
+     "marca": "short silver waves brushed forward, clean-shaven, and high broad cheekbones",
+     "roupa": "a pale yellow guayabera shirt", "calca": "dark green corduroys"},
 ]
 
 
@@ -962,6 +1054,25 @@ FISICAS = [
      "desc": "the liquid separates into two clean bands, dark below and pale above, with a sharp line between them"},
     {"id": "bolhas", "exige": None,
      "desc": "small tight bubbles climb the inside of the glass and cling there in lines"},
+    # + 2026-08-04: SEIS fisicas universais novas. ⚠️ Nao e' capricho — e'
+    # aritmetica do `--stats`: as `exige: None` sao as unicas disponiveis para
+    # TODA receita, e eram 6. Com seis opcoes o teto de concentracao de 17% e'
+    # inalcancavel por construcao (1/6 = 16,7%, e qualquer desvio do sorteio
+    # estoura). O self-test reprovou em 17,5% no `espuma`.
+    # ⛔ A correcao e' POOL, nunca teto: afrouxar a barra seria maquiar o painel.
+    # Doze universais poem o piso teorico em 8,3%.
+    {"id": "neblina", "exige": None,
+     "desc": "a milky haze spreads out from the spoon and fills the glass evenly"},
+    {"id": "anel_superficie", "exige": None,
+     "desc": "a thin bright ring forms where the liquid meets the glass and stays there"},
+    {"id": "grumos", "exige": None,
+     "desc": "small soft lumps form and hang suspended halfway down the glass"},
+    {"id": "fios_descendo", "exige": None,
+     "desc": "fine threads trail down from the surface like roots and reach the bottom"},
+    {"id": "clareia", "exige": None,
+     "desc": "the liquid clouds over completely and then clears again from the top down"},
+    {"id": "borda_escura", "exige": None,
+     "desc": "a darker rim gathers at the edge of the surface while the centre stays pale"},
 ]
 
 
@@ -1318,27 +1429,89 @@ FECHOS = [
 # ⚠️ TODO template precisa do slot `{o}`: no degrau 1 a cena 1 nao nomeia o
 # nucleo, entao as cenas 2 e 3 sao as unicas que sustentam a cota de 2/3. Um
 # unico item sem `{o}` derrubaria o lote inteiro.
+# ⛔⛔ POOL REESCRITO EM 2026-08-04 — A CENA 2 DEIXA DE ENSAIAR A RECEITA.
+#
+# Ordem do operador, lendo o TAKE 02 renderizado (`{r} into the glass, warm
+# water over it, stir. Vasodilators. Without the gelatin trick it stays a warm
+# drink and his {o} never knows. That's it. Both halves.`):
+#
+#     "a ref 'ensaia uma receita' e o take acaba: isso nao agrega nada em termos
+#      de persuasao e nao cabe aqui no contexto de um take de poucos segundos.
+#      Aqui poderia haver uma copy falada mais estrategica, com funcao pratica
+#      mais eficaz, tal como: 'depois de tanto pesquisar, procurar, descobri um
+#      truque chamado gelatin trick com ingredientes baratos que fez o peck-er
+#      do meu parceiro mudar da agua pro vinho'."
+#
+# ⛔ O DIAGNOSTICO, e ele e' o vicio §4: o slot passava no linter e nao cumpria a
+# funcao. `{r} in, warm water, stir` e' INSTRUCAO — e a instrucao ja' esta' sendo
+# EXECUTADA pelas maos dela no mesmo quadro. Gastar 8 segundos de boca narrando o
+# que o olho ja' ve' e' pagar duas vezes pelo mesmo beat e nao comprar nada.
+#
+# ⭐ A ESTRUTURA NOVA, quatro beats, e ela e' obrigatoria em toda entrada:
+#     1. A BUSCA ......... o que ela tentou e falhou (e' aqui que mora a negacao)
+#     2. A DESCOBERTA .... o mecanismo BATIZADO: `gelatin trick`
+#     3. O BARATO ........ o `{r}` entra como PROVA DE PRECO, nao como passo
+#     4. O RESULTADO ..... o que aconteceu com o `{o}` DELE, nomeado
+#
+# ⭐⭐ POR QUE A ESTRUTURA SALVA AS TRAVAS EM VEZ DE BRIGAR COM ELAS: a ES6 exige
+# um marcador de NEGACAO antes do batismo, e a busca fracassada e' o lugar mais
+# natural do video para ele — `two years of pills and nothing` faz o espectador
+# SENTIR A FALTA antes de saber do que. A regra continua inteira e a copy ficou
+# melhor. ⛔ ES7 continua valendo: UMA palavra tecnica por entrada, nunca duas.
+#
+# ⛔ E O VICIO DE DRIFTING FICA DE FORA POR CONSTRUCAO: o beat 4 de TODA entrada
+# nomeia o `{o}` e diz o que ele passou a FAZER. Nenhuma termina em reacao vaga
+# — `she noticed` sem objeto e' exatamente o que o operador reprovou no mesmo
+# dia (licoes-de-construcao §20).
+#
+# ⚠️ 22 ENTRADAS, e a variacao e' nos QUATRO beats de forma independente: seis
+# buscas diferentes, sete fontes de descoberta (ela mesma, comentario, cunhada,
+# enfermeira, forum, colega dele, farmaceutico), cinco formas de dizer o preco e
+# dez resultados distintos. ⛔ A imagem do operador (`da agua pro vinho`) entra
+# UMA vez, nao vinte: repetir o exemplo dado e' o que ele chamou de maritaca.
+# ⛔⛔ REESCRITO EM 2026-08-04 — A PRIMEIRA SENTENCA PASSA A CARREGAR O ORGAO.
+#
+# O operador leu o TAKE 02 renderizado e parou tudo:
+#
+#     "I read every forum there is and found nothing"
+#     telespectador: "read WHAT? WTF? What the hell is she talking about?"
+#
+# ⛔ O DEFEITO: a fala abria com uma BUSCA sem OBJETO. O espectador chega no
+# meio do scroll, ouve a primeira sentenca antes de qualquer outra, e ela nao
+# dizia procurando O QUE. O orgao so' aparecia na TERCEIRA sentenca — tarde
+# demais para quem decide em dois segundos se fica.
+#
+# ⚠️⚠️ E A MEDICAO DESMENTIU A MINHA PROPRIA DESCULPA. A hipotese era encaixe
+# matematico — copy curta para caber nos 8s. Medido no parque: 64,2% das
+# primeiras sentencas do ESCANDALO eram orfas, e a folga media nessas falas era
+# de **+3,1 palavras**. O espaco existia. Nao foi o teto que me obrigou.
+# Detalhe da causa raiz em `licoes-de-construcao.md` §21.
+#
+# ⭐ A REGRA QUE FICA: a PRIMEIRA sentenca da cena 2 nomeia o orgao. Cobrada
+# pelo linter (ES22), com o caso do operador como controle.
 FUNDIDAS = [
-    "A spoon of {r}, a pour of warm water. Real vasodilators. But without the gelatin trick, that glass does nothing for his {o}.",
-    "Watch. {r} in, warm water on top, stir it down. That's nitric oxide. Skip the gelatin trick and his {o} feels none of it.",
-    "Here's the part they leave out. {r} on its own is half a recipe — without the gelatin trick, the circulation never reaches his {o}.",
-    "{r}, warm water, a spoon. Collagen, that's the word. But the gelatin trick is the half nobody hands you, and his {o} needed it.",
-    "Two fingers of {r} into warm water. Good for circulation. But nobody gets the gelatin trick, and that's the half his {o} was missing.",
-    "{r} into the glass, warm water over it, stir. Vasodilators. Without the gelatin trick it stays a warm drink and his {o} never knows.",
-    "My aunt gave me this: {r}, warm water, stir it down. Oxygen. On its own it did nothing — the gelatin trick finished his {o}.",
-    "{r} and warm water. That's the vasodilator half. The gelatin trick is the other half, and his {o} needed both of them.",
-    "A pour of {r}, warm water, stir it clear. Circulation. Alone it does nothing; the gelatin trick is what his {o} was waiting on.",
-    "Nobody hands you the whole thing. {r}, warm water, stirred down — real nitric oxide. And the gelatin trick, the half his {o} needed.",
-    "{r} in warm water, stirred until the colour turns. Vasodilators, plain and simple. But without the gelatin trick his {o} gets none of it.",
-    "Spoon of {r}. Warm water. Stir. That's the circulation half. The other half is the gelatin trick, and his {o} answered inside three weeks.",
-    "That's {r} in warm water. Vasodilators, that's the whole science. And the gelatin trick, without which his {o} stays exactly where it was.",
-    "Here's the half they give away: {r}, warm water, one stir — collagen. Here's the half they don't: the gelatin trick, and his {o} felt it.",
-    "{r}, warm water, stirred with a wooden spoon. Circulation. Half a recipe without the gelatin trick, and his {o} felt the other half.",
-    "Start with {r} and warm water. Nitric oxide, that's the mechanism. Now, without the gelatin trick, none of it reaches his {o}.",
-    # + 2026-08-02: ampliacao de variancia por ordem do operador.
-    # Verificacao adversarial reprovou 32 de 54 propostas; estas
-    # sobreviveram e foram medidas em 2800 sorteios.
-    "You can make this tonight: {r}, warm water, one turn of the spoon. Oxygen. But without the gelatin trick his {o} feels nothing.",
+    "I went looking for anything that would fix his {o} and found nothing. The gelatin trick did it — {r}, real collagen, pennies.",
+    "Two years of pills and nothing moved his {o}. Then the gelatin trick — {r}, vasodilators, four dollars — and he was back.",
+    "Every doctor we saw had nothing for his {o}. The gelatin trick was {r} and honest collagen, and it worked inside a week.",
+    "I read every forum there is looking for something for his {o} and found nothing. Then the gelatin trick: {r}, oxygen, pennies.",
+    "Nobody could tell us what was wrong with his {o}. A nurse named the gelatin trick — {r}, vasodilators, four dollars — and it changed.",
+    "The pharmacy had a shelf for his {o} and nothing on it that worked. The gelatin trick is {r} and cheap collagen.",
+    "We spent a fortune and never got his {o} back. The gelatin trick did it for {r} and small change — real circulation.",
+    "Three specialists, never a straight answer about his {o}. A woman in a comment section gave me the gelatin trick — {r}, real circulation.",
+    "The pills did nothing for his {o} and neither did the patches. The gelatin trick is {r}, straight collagen, next to free.",
+    "I looked for two years for something that would wake his {o} up. Nothing did. Then the gelatin trick — {r}, oxygen, pennies.",
+    "His doctor had nothing left to offer for his {o}. My sister-in-law handed me the gelatin trick — {r}, pure collagen, small change.",
+    "He would never talk to a doctor about his {o}. A man at his shop gave him the gelatin trick — {r}, oxygen, a few dollars.",
+    "Months of looking and nothing changed for his {o}. Then the gelatin trick: cheap {r}, plain collagen, and it came back.",
+    "I never thought a kitchen would do anything for his {o}. The gelatin trick did — {r} for pocket change, real circulation.",
+    "We had stopped trying anything for his {o}. Nothing we bought did a thing. The gelatin trick is {r}, vasodilators, four dollars.",
+    "He had given up on his {o}. I didn't. I found the gelatin trick — {r}, nitric oxide, the cheapest thing in the house.",
+    "Nothing on that pharmacy shelf did a thing for his {o}. The gelatin trick is {r} and honest collagen, and it brought him back.",
+    "Every website sells you something for his {o}. Nobody sells the gelatin trick — it is {r}, circulation, and a few dollars.",
+    "The expensive things did nothing for his {o}. The cheap one worked: the gelatin trick, {r}, vasodilators, less than a coffee.",
+    "Two hundred dollars a month and his {o} never moved. The gelatin trick is {r} and collagen and small change, and it did.",
+    "I did not find this in a clinic and nobody made a cent off his {o}. The gelatin trick, {r}, nitric oxide, and it works.",
+    "The famous ones did nothing for his {o}. The gelatin trick is not famous — {r}, cheap collagen — and it got him standing again.",
 ]
 
 # O selo curto que fecha a fundida e cobra o PISO de 26 da cena 2.
@@ -1752,6 +1925,41 @@ def _eco(*partes):
     return any(corpo.count(e) > 1 for e in ECOS)
 
 
+# ⛔ ES20b — DOIS PRECOS DIFERENTES NA MESMA RESPIRACAO (2026-08-04).
+# O `_eco` acima so' pega o MESMO fato repetido. As FUNDIDAS novas trazem preco
+# dentro da propria fala (`a dollar of {r}`, `four dollars`, `pennies`) e o pool
+# de SELOS tem `Two dollars a box.` — o sorteio solto devolvia
+# *"...a dollar of garlic... Two dollars a box."*, dois precos diferentes para a
+# mesma coisa em oito segundos. Achado LENDO a saida renderizada (§19), nao pelo
+# linter: nenhum fato se REPETIA, entao o `_eco` passava limpo.
+# ⚠️ So' AMOUNT conta. Varrer `cheap`/`cheapest` esvaziaria o pool de selos e
+# reprovaria copy que esta' certa — a regra e' sobre CIFRA, nao sobre barateza.
+_PRECO = re.compile(
+    r"\b(?:a|one|two|three|four|five|six|ten|twenty|fifty|a few|"
+    r"two hundred|a couple of)\s+(?:hundred\s+)?dollars?\b"
+    r"|\bpennies\b|\b(?:pocket|small)\s+change\b|\bnext to free\b"
+    r"|\bless than a coffee\b", re.I)
+
+
+def _precos(*partes):
+    """As cifras distintas ditas nas partes."""
+    return {m.group(0).lower() for m in _PRECO.finditer(" ".join(partes))}
+
+
+def _preco_novo(fund, selo):
+    """O SELO acrescenta uma cifra que a fundida ja' nao tinha?
+
+    ⛔⛔ A REGRA E' SOBRE O SELO, NUNCA SOBRE A FUNDIDA — e a primeira versao
+    errou exatamente isso, do jeito da §16 ("regra larga demais"). Ela contava
+    as cifras da fala inteira e reprovava
+    *"Two hundred dollars a month and nothing to show... small change"* — que
+    tem duas cifras DE PROPOSITO: o contraste caro/barato e' o argumento da
+    entrada, nao um descuido. Quem escreveu a fundida escolheu suas cifras; o
+    que o sorteio nao pode e' colar uma TERCEIRA por cima.
+    """
+    return bool(_precos(fund)) and bool(_precos(selo) - _precos(fund))
+
+
 # P22 — "cada cena aterrissa em 2a pessoa OU IMPERATIVO" (checklist da
 # doutrina). O imperativo conta: `Watch what my hands do.` fala com o espectador
 # tanto quanto `your {o}`.
@@ -1849,7 +2057,7 @@ def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
         rng.choice(FUNDIDAS).format(r=receita["fala"], o=orgaos[1]))
     selo = _escolher(
         rng, SELOS,
-        lambda s: (not _eco(fund, s)
+        lambda s: (not _eco(fund, s) and not _preco_novo(fund, s)
                    and PISO_FALA[2] <= _palavras("%s %s" % (fund, s)) <= TETO_FALA[2]))
     c2 = "%s %s" % (fund, selo)
 
@@ -1949,7 +2157,11 @@ def sortear(pagina, rng, ledger, degrau=None, geometria=None, figurantes=None):
             "homem2": hom2, "reacao2": rea2, "par": par, "receita": rec,
             "fisica": fis, "cenario": cen, "bancada": ban, "mecanismo": mec,
             "degrau": degrau, "geometria": geometria, "figurantes": figurantes,
-            "relacao": relacao, "falas": falas}
+            "relacao": relacao, "falas": falas,
+            # ⭐ 50/50, ordem do operador 2026-08-04. ⚠️ Sorteado com `rng`, nunca
+            # derivado do cenario: amarrar a bandeira ao set faria dela mais um
+            # atributo fixo, que e' exatamente o estado que ele mandou quebrar.
+            "bandeira": rng.random() < 0.5}
 
 
 # ---------------------------------------------------------------------------
@@ -1966,6 +2178,16 @@ def montar(spec):
     falas = spec["falas"]
     bnc = cen["bancada"]
     luz = _maiuscula(cen["luz"])
+
+    # ⭐⭐ A BANDEIRA E' 50/50 (ordem do operador, 2026-08-04). Ela estava escrita
+    # DENTRO da string de cada cenario, entao aparecia em 100% dos videos — e o
+    # proprio autoteste a exigia em 15/15. Aqui ela sai por remocao exata quando
+    # o sorteio diz que nao, e o `lint_bandeira` confere no TEXTO MONTADO.
+    # ⛔ Nao se reescreve o pool: as 15 strings de cenario sao copy validada.
+    com_bandeira = spec.get("bandeira", True)
+    cen_set = cen["set"] if com_bandeira else sc.tirar_bandeira(cen["set"])
+    cen_anc = (cen["re_ancora"] if com_bandeira
+               else sc.tirar_bandeira(cen["re_ancora"]))
 
     # ⚠️ ES3/ES11 — A ANCORA DE CONTINUIDADE VOLTA INTEIRA, com a marca facial,
     # tanto na narradora (que esta' nas tres cenas) quanto no homem (que volta na
@@ -2021,7 +2243,7 @@ def montar(spec):
     b["IMAGE 01/03"] = (
         "IMAGE 01/03: Medium shot in %s. Standing in the middle of the frame is "
         "%s. She looks straight into the lens. %s %s %s %s"
-        % (cen["set"], ela, par_img, plateia_img, luz, CAUDA)
+        % (cen_set, ela, par_img, plateia_img, luz, CAUDA)
     )
 
     # --- IMAGE 02/03 — A RECEITA INCOMPLETA ----------------------------------
@@ -2038,7 +2260,7 @@ def montar(spec):
         "behind it, talking straight to camera. On the wooden board in front of "
         "her: %s. Also on the %s: %s. %s %s She is the only person in the frame. "
         "%s %s"
-        % (bnc, cen["re_ancora"], mesma, rec["img"], bnc, mec["plantado"],
+        % (bnc, cen_anc, mesma, rec["img"], bnc, mec["plantado"],
            ES_PLANTADO_IMAGE % (_sem_artigo(mec["curto"]), bnc, mec["pousado"]),
            recibo, luz, CAUDA)
     )
@@ -2072,7 +2294,7 @@ def montar(spec):
         "same %d-year-old %s man with %s, in %s and %s, stands beside her, "
         "upright, chin level, his eyes on the lens, saying nothing. %s %s "
         "They are the only two people in the frame. %s %s"
-        % (cen["re_ancora"], mesma, hom["idade"], et,
+        % (cen_anc, mesma, hom["idade"], et,
            hom["marca"], hom["roupa"], hom["calca"],
            ES_F12B_IMAGE % (_peca(hom["calca"]), par["e_img_dele"],
                             spec["relacao"]),
@@ -2880,6 +3102,55 @@ def _es20_eco(spec, blocos, achados):
                             % (e, corpo.count(e))))
 
 
+def _es21_bandeira(spec, blocos, achados):
+    """ES21 — ⭐ A BANDEIRA E' 50/50, e some INTEIRA quando o sorteio diz que nao.
+
+    ⛔ Ordem do operador, 2026-08-04: *"todos os takes estao possuindo bandeiras
+    dos EUA, quero algo 50%/50%"*. Ate' aqui ela estava escrita DENTRO da string
+    de cada cenario, e o proprio `--stats` a exigia em 15/15 — nao havia eixo
+    para sortear, havia texto.
+
+    ⚠️ A lente varre o TEXTO MONTADO e cobra os dois lados: sorteou sem e sobrou
+    bandeira = a remocao nao pegou; sorteou com e nenhum bloco a mostra = o eixo
+    nao chegou ao prompt. E cobra a PROSA (virgula dupla, `and` orfao), porque
+    remocao por regex em prosa erra em silencio.
+    """
+    sc.lint_bandeira(spec, blocos, achados, rotulo="ES21")
+
+
+def _es22_abertura(spec, blocos, achados):
+    """ES22 — ⭐⭐ A PRIMEIRA SENTENCA DA CENA 2 NOMEIA O ORGAO.
+
+    ⛔ Ordem do operador, 2026-08-04, lendo o take renderizado:
+    *"'I read every forum there is and found nothing' — telespectador: 'read
+    WHAT? WTF? What the hell is she talking about?'"*
+
+    ⚠️ POR QUE A UNIDADE E' A PRIMEIRA SENTENCA E NAO A FALA: a cota do orgao
+    ja' cobrava a CENA, e passava — o orgao aparecia, so' que na terceira
+    sentenca. Quem chega no scroll ouve a primeira antes de qualquer outra, e
+    decide ali se fica. Cobrar a cena e' cobrar o lugar errado.
+
+    ⚠️ E a desculpa do orcamento foi MEDIDA e caiu: 64,2% das aberturas eram
+    orfas com folga media de +3,1 palavras. Havia espaco (licoes §21).
+    """
+    prim = _sentencas_es(spec["falas"][1])
+    if prim and not any(o.lower() in prim[0].lower() for o in NUCLEO):
+        achados.append(("ERRO", "ES22: a abertura da cena 2 nao nomeia o orgao "
+                                "— %r deixa o espectador perguntando "
+                                "'procurando o QUE?' no segundo em que ele "
+                                "decide se fica" % prim[0]))
+    for linha in FUNDIDAS:
+        p0 = _sentencas_es(linha)
+        if p0 and "{o}" not in p0[0]:
+            achados.append(("ERRO", "ES22: entrada do pool FUNDIDAS abre sem "
+                                    "`{o}` — %r" % p0[0]))
+
+
+def _sentencas_es(fala):
+    import re as _re
+    return [s.strip() for s in _re.split(r"(?<=[.!?])\s+", fala or "") if s.strip()]
+
+
 def lint(spec, blocos):
     # ⚠️ `teto_total` explicito: o padrao do `lint_curto` e' a soma dos tetos
     # (82), que aqui e' o PISO do orcamento da doutrina — o AVISO dispararia
@@ -2894,7 +3165,8 @@ def lint(spec, blocos):
                 _es6_incompleta, _es7_tecnica, _es8_recibo, _es9_keyword,
                 _es10_degrau, _es11_casting, _es12_livro, _es13_texto,
                 _es14_densidade, _es15_elenco, _es16_orcamento,
-                _es17_conformidade, _es19_gates, _es20_eco))
+                _es17_conformidade, _es19_gates, _es20_eco, _es21_bandeira,
+                _es22_abertura))
 
 
 # ---------------------------------------------------------------------------
