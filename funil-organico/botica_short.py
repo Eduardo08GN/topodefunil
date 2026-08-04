@@ -806,38 +806,125 @@ VILOES = [
 #
 # ⭐ O SLOT `{r}` E' O INGREDIENTE RARO **COM O APOSTO COLADO** — a montagem
 # injeta `nome, aposto`, nunca o nome sozinho (BO8).
+# ⚠️ ENCURTADAS EM 2026-08-04 por ARITMETICA, nao por gosto. A cena 2 passou a
+# carregar TRES beats — receita + o passo retido + a promessa — e o modelo do
+# passo retido e' mais longo que o antigo. Com as receitas anteriores a conta
+# dava 42 palavras contra teto de 32. Quem entra por ultimo nao paga a conta
+# sozinho: as tres partes encolhem juntas.
 RECEITAS = [
-    "Into the {v}: a spoon of gelatin, {c}, and {r}",
-    "Start with gelatin, then {c}, then {r}, all into the {v}",
-    "In the {v}: gelatin first, {c} after, and last {r}",
-    "A spoon of gelatin, {c} and {r}, straight into the {v}",
-    "Gelatin goes in the {v} with {c}, and then {r}",
-    "In the {v} put the gelatin, add {c}, and finish with {r}",
+    "Into the {v}: gelatin, {c}, and {r}",
+    "Gelatin, {c} and {r}, into the {v}",
+    "In the {v}: gelatin first, then {c}, then {r}",
+    "A spoon of gelatin, {c} and {r}, into the {v}",
+    "Gelatin goes in the {v} with {c} and {r}",
+    "Gelatin, {c}, {r} — all of it into the {v}",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
 # duas coisas que o colapso de 52 segundos para 24 ameacava levar embora.
+# ⛔⛔ REESCRITO EM 2026-08-04 — O PASSO RETIDO, NAO A REVELACAO.
+#
+# Ordem do operador, lendo o TAKE 02 renderizado
+# ("Into the metal sieve: gelatin, oats, and tongkat ali. That is the gelatin
+#  trick, and your weiner feels it first."):
+#
+#     *"Tome cuidado ao dizer que X E' o gelatin trick: pode matar a
+#      curiosidade."*
+#
+# ⛔ E ele esta' certo pela mecanica do funil: se a cena 2 mostra a receita
+# INTEIRA e ainda bate o martelo dizendo que aquilo E' o mecanismo, o espectador
+# ja' tem tudo — e nao ha' motivo para comentar. O CTA vende o que a cena 2
+# entregou de graca.
+#
+# ⭐ A FORMA ESCOLHIDA PELO OPERADOR (opcao `c`): FALTA UM PASSO.
+#     "There's one step I'm not showing here. That's the gelatin trick."
+# A receita fica visivel e verdadeira; o que falta e' um passo, e o passo tem
+# nome. A lacuna e' o que o comentario compra.
+# ⚠️ O literal `gelatin trick` continua obrigatorio (congruencia com a VSL) — ele
+# e' NOMEADO, so' nao e' ENTREGUE. Nomear nao gasta; entregar gasta.
 ANCORAS = [
-    "%s. That is the gelatin trick, and your {o} feels it first.",
-    "%s. That is the gelatin trick, and it is your {o} that wakes up.",
-    "%s. The gelatin trick, and your {o} answers again in days.",
-    "%s. That is the gelatin trick — days, not months, for your {o}.",
-    "%s. That is the gelatin trick, and your {o} stops letting you down.",
+    "%s. There's one step I'm not showing here. That's the gelatin trick.",
+    "%s. One step stays off camera, and that's the gelatin trick.",
+    "%s. I left one step out on purpose. That's the gelatin trick.",
+    "%s. What I'm not showing you is the gelatin trick.",
+    "%s. There's a step missing here, and it's the gelatin trick.",
+    "%s. The part I skipped is the gelatin trick.",
+    "%s. One thing isn't in that bowl. That's the gelatin trick.",
+    "%s. There's a step after this one. That's the gelatin trick.",
 ]
 
-# ⚠️ ONDE COMPRAR — ordem do operador: *"marcas ditas ou any grocery store, pode
-# ser ambos por sorteio"*. As marcas dao acessibilidade real; a forma neutra
-# existe para o lote nao virar bordao publicitario.
-# ⛔ SO' NA FALA. Marca legivel na IMAGEM continua proibida (P12) — os potes do
-# cenario sao todos `unlabelled`.
-ONDE = [
-    "You can get all of it at Walmart or Costco.",
-    "All of it is at Walmart.",
-    "Costco has every one of these.",
-    "Any grocery store carries all of it.",
-    "You can buy every one of these at any grocery store.",
-    "It is all on the shelf at any supermarket.",
+# ---------------------------------------------------------------------------
+# ⭐⭐ PROMESSAS — o terceiro beat da cena 2, no lugar do bullet de loja
+# ---------------------------------------------------------------------------
+# ⛔ ORDEM DO OPERADOR, 2026-08-04: *"usar bullet de store, loja nao tem funcao
+# pratica: melhor seria bullet de promessa"*. O `ONDE` (`You can buy all of it
+# at Walmart`) era fiel a' fonte e nao movia ninguem — saiu do pool inteiro.
+#
+# ⛔⛔ E A RESSALVA DELE E' A REGRA DESTE POOL: *"«you'll be a new person» apenas
+# seria vago pq pode ser nova pessoa por qualquer circunstancia — o que seria
+# copy drifting"*. Novo POR QUE? Toda entrada nomeia o ORGAO, ou nomeia o que a
+# mulher percebe NELE. Promessa sem referente e' a §20 outra vez.
+#
+# ⚠️ FALA COM O HOMEM, em 2a pessoa. A narradora e' a esposa e ate' aqui ela
+# contava do marido dela; neste beat ela vira para a lente e fala com QUEM
+# ASSISTE — que e' homem. `Seu marido sera' outro` conversaria com a esposa
+# dele, nao com ele.
+# ⚠️ VARIACAO ALTA por ordem explicita: *"capriche nas variacoes de pool
+# semantica aqui, nao quero videos repetitivos mesmo sorteando"*. Sao 16, em
+# quatro familias semanticas — o corpo dele, a reacao dela, a rotina que volta,
+# e o homem que ele era.
+# ⛔⛔ TODA ENTRADA CARREGA `{o}` — e o linter cobra dos dois lados (BO15).
+# A primeira versao tinha cinco sem: `Mornings go back to what they were`
+# (que manhas?), `You get back the version of yourself she fell for` (versao em
+# que sentido?), `She stops pretending to be asleep` (de que ela desistiu?).
+# Sao exatamente a promessa vaga que o operador descreveu — nova pessoa POR
+# QUALQUER CIRCUNSTANCIA. A regra e' simples e verificavel: promessa sem orgao
+# nao entra.
+# ⭐⭐ O CRITERIO DE CURADORIA, e ele vale para QUALQUER pool deste repo.
+# Ordem do operador, 2026-08-04: *"«your wife will notice before you do» >>
+# «you'll be a new person». Copys que fazem STACK de varios angulos de apelos
+# persuasivos sempre vencem na curadoria de candidatos"*. E, na mensagem
+# seguinte, o par que ele nomeia: **PROMESSA + DESEJO OCULTO**.
+#
+# A linha entrega um RESULTADO e, na mesma respiracao, toca o que o espectador
+# quer e nao diz em voz alta. `you'll be a new person` so' promete — e promete
+# vago, porque novo pode ser por qualquer circunstancia.
+#
+# ⛔ AUDITADAS UMA A UMA E QUATRO FORAM TROCADAS por entregarem so' a promessa:
+#   `Your {o} remembers what it used to do.`        so' resultado
+#   `Your {o} answers the first time again.`        so' resultado
+#   `Your {o} makes mornings what they used to be.` so' resultado
+#   `You'll stop planning your night around...`     so' alivio, sem ela
+#
+# ⚠️ E EMPILHAR NAO AFROUXA O REFERENTE: toda entrada continua com `{o}`. A forma
+# que ganha e' `your wife will notice your {o} before you do` — os dois angulos
+# **e** o objeto. Sem o objeto, e' "notara' o que?" (§20).
+#
+# O desejo oculto deste funil: ela querer de novo · ela tomar a iniciativa · ele
+# parar de ser motivo de pena · nao precisar explicar nada.
+PROMESSAS = [
+    # ela nota — o desejo de ser visto
+    "Your wife notices your {o} before you do.",
+    "Your wife talks about your {o} before you do.",
+    "She'll ask what changed, and your {o} already told her.",
+    "Your {o} is up before you are, and she knows it.",
+    # ela toma a iniciativa — o desejo de ser querido
+    "Your wife reaches over again, and your {o} is why.",
+    "Your {o} wakes her up before the alarm does.",
+    "Your {o} shows up, and she stops pretending to sleep.",
+    "She stops setting the alarm, and your {o} is the reason.",
+    # ele volta a ser homem aos olhos dela — o desejo de dignidade
+    "You'll be a new man, and your {o} tells her first.",
+    "You get the old you back, and she notices your {o} first.",
+    "She looks at you like before, and your {o} earned it.",
+    "You'll be the man she married, {o} and all.",
+    # a vergonha acaba — o desejo de nao precisar explicar
+    "You'll stop apologising, and she'll stop pretending your {o} was fine.",
+    "Your {o} gets you in trouble, and she is not complaining.",
+    "You stop dreading the bedroom, and your {o} is why she smiles.",
+    "You'll feel it in your {o} inside a week, and so will she.",
 ]
+
 
 
 # ---------------------------------------------------------------------------
@@ -1074,31 +1161,30 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         # palavras do aposto num video de 24 segundos e' pagar duas vezes pela
         # mesma informacao — e a cena 2 e' a mais densa das tres.
         rec_slots = dict(v=met["vaso_fala"], c=com["nome"], r=raro["nome"])
-        # ⚠️ O ESPACO DO `ONDE` E' RESERVADO NA CONTA DESDE O PRIMEIRO SORTEIO.
-        # Sem isso a receita e a ancora sao escolhidas contra o teto cheio, o
-        # `onde` entra por cima e a cena estoura — foi o que aconteceu ao ligar
-        # o pool: 34 a 40 palavras contra teto de 32. Quem escolhe primeiro tem
-        # de saber o que ainda vem depois.
+        # ⚠️ O ESPACO DA PROMESSA E' RESERVADO NA CONTA DESDE O PRIMEIRO SORTEIO.
+        # Sem isso a receita e a ancora sao escolhidas contra o teto cheio, a
+        # promessa entra por cima e a cena estoura — foi o que aconteceu quando
+        # o terceiro beat entrou: 34 a 40 palavras contra teto de 32. Quem
+        # escolhe primeiro tem de saber o que ainda vem depois.
         curto_a = min(ANCORAS, key=lambda a: _palavras(a % ""))
-        curto_o = min(ONDE, key=_palavras)
+        curto_p = min(PROMESSAS, key=_palavras)
         rec = rng.choice(_cabem(
             RECEITAS,
             lambda x: (curto_a % x.format(**rec_slots)).format(o=o2)
-            + " " + curto_o,
+            + " " + curto_p.format(o=o2),
             TETO_FALA[2])).format(**rec_slots)
         anc = rng.choice(_cabem(
-            ANCORAS, lambda a: (a % rec).format(o=o2) + " " + curto_o,
+            ANCORAS,
+            lambda a: (a % rec).format(o=o2) + " " + curto_p.format(o=o2),
             TETO_FALA[2]))
         meio = (anc % rec).format(o=o2)
-        # ⛔ O `ONDE` ERA POOL MORTO — definido e nunca chamado. Achado ao medir
-        # a cena 2 depois que o aposto saiu dela: ela caiu para 3,12 p/s, com
-        # ~6 palavras de folga. E a copy que preenche estava ali, escrita, fiel
-        # a' fonte ("You can buy some of these at Walmart or Costco") e ja'
-        # autorizada pelo operador — marcas ditas OU loja generica, por sorteio.
-        # ⚠️ Pool declarado e nao usado e' pior que pool inexistente: ele mente
-        # sobre a variancia do agente na hora de contar eixos.
-        onde = rng.choice(_cabem(ONDE, lambda x: meio + " " + x, TETO_FALA[2]))
-        f[1] = "%s %s" % (meio, onde)
+        # ⭐ A PROMESSA fecha a cena 2, no lugar do bullet de loja. Ela fala com
+        # o HOMEM que assiste, em 2a pessoa, e nomeia o orgao ou o que ela nota
+        # nele — promessa sem referente e' "novo por que?".
+        prom = rng.choice(_na_faixa(
+            PROMESSAS, lambda x: meio + " " + x.format(o=o2),
+            PISO_FALA[2], TETO_FALA[2]))
+        f[1] = "%s %s" % (meio, prom.format(o=o2))
 
     if 2 in quais:
         isca_e = rng.choice(ISCAS_ENTREGA)
@@ -1264,7 +1350,11 @@ def montar(spec):
         BO_HOMEM_TAKE,
     ]
     audio = ["%s. No music." % m["audio"],
-             "%s, the sound of the %s. No music." % (m["audio"], met["curto"]),
+             # ⚠️ SEM `the` aqui: o campo `curto` dos METODOS JA' traz o artigo
+             # (`the metal sieve`). A versao anterior saia "the sound of the the
+             # metal sieve" — achado LENDO o TAKE renderizado, nao no fonte, e
+             # invisivel em qualquer linter de conteudo.
+             "%s, the sound of %s. No music." % (m["audio"], met["curto"]),
              "%s. No music." % m["audio"]]
 
     for i in range(3):
@@ -1377,6 +1467,43 @@ def lint(spec, blocos):
             ach.append(("ERRO", "BO8: aposto de %r com %d palavras (regra de "
                                 "economia: 3-10, teto duro 12)"
                         % (r["nome"], len(r["aposto"].split()))))
+
+    # --- BO15: ⭐ a PROMESSA nomeia o orgao, e o mecanismo nao e' ENTREGUE ---
+    # ⛔ Ordem do operador, 2026-08-04, duas partes:
+    #   1. *"tome cuidado ao dizer que X E' o gelatin trick: pode matar a
+    #      curiosidade"* -> a cena 2 declara um passo RETIDO, nunca equipara a
+    #      receita visivel ao mecanismo.
+    #   2. *"«you'll be a new person» apenas seria vago pq pode ser nova pessoa
+    #      por qualquer circunstancia"* -> promessa sem orgao e' promessa de
+    #      nada.
+    # ⭐⭐ O STACK E' COBRADO, NAO CONFIADO. Criterio de curadoria do operador:
+    # a linha vence quando empilha PROMESSA + DESEJO OCULTO, e o desejo oculto
+    # deste funil mora na REACAO DELA. A involuntariedade e' a alavanca de
+    # credibilidade: `my {o} is harder` e' alegacao, `she noticed before I did`
+    # e' evidencia — por isso toda promessa tem de ter ELA em cena, nao so' o
+    # resultado.
+    for linha in PROMESSAS:
+        if "{o}" not in linha:
+            ach.append(("ERRO", "BO15: promessa sem `{o}` — %r e' 'novo por "
+                                "que?'" % linha))
+        if not re.search(r"\b(she|her|wife)\b", linha, re.I):
+            ach.append(("ERRO", "BO15: promessa sem o DESEJO OCULTO — %r entrega "
+                                "so' o resultado. Sem a reacao dela e' alegacao "
+                                "do proprio homem, e alegacao nao prova nada"
+                        % linha))
+    ultima = _sentencas(falas[1])[-1] if _sentencas(falas[1]) else ""
+    if not any(o.lower() in ultima.lower() for o in NUCLEO):
+        ach.append(("ERRO", "BO15: a promessa que fecha a cena 2 nao nomeia o "
+                            "orgao — %r promete mudanca sem dizer em que"
+                    % ultima))
+    # ⛔ E o mecanismo NAO pode ser entregue como equivalente da receita: se a
+    # cena 2 diz "that is the gelatin trick" logo depois de listar tudo, o
+    # espectador ja' tem o produto e nao tem por que comentar.
+    if re.search(r"(that|this) is the gelatin trick[^.]*\band\b", falas[1], re.I):
+        ach.append(("ERRO", "BO15: a cena 2 equipara a receita visivel ao "
+                            "mecanismo e emenda o beneficio — isso entrega o "
+                            "produto de graca e mata a curiosidade que o CTA "
+                            "existe para cobrar"))
 
     # --- BO11: zero nome cientifico na fala ---------------------------------
     corpo = " ".join(falas)
