@@ -812,7 +812,7 @@ PERDAS = [
     "Thirty-one years of marriage nearly ended because my {o} quit",
     "I was losing the woman I married because my {o} stopped answering",
     "My wife was done with me because my {o} hadn't worked in two years",
-    "I almost lost her because my {o} embarrassed me every single time",
+    "I almost lost my wife because my {o} embarrassed me every single time",
     "I was losing my wife because my {o} let me down every night",
 ]
 
@@ -859,32 +859,44 @@ REJEICOES = [
 # ⛔ Zero `{o}` obrigatorio aqui: a PERDA ja' nomeia o orgao em 100% das
 # entradas, e repetir o substantivo duas vezes em 8 segundos vira bordao.
 VILOES = [
-    "Doctors don't want you knowing this one.",
-    "My doctor had a prescription pad and nothing else.",
-    "No one makes a dime when a man fixes this in his own kitchen.",
-    # ⚠️ Era `They sold me the age excuse for eleven years.` e o
-    # `medir_contexto_copy --gate` reprovou, com razao: `age` e' uma CAUSA
-    # nomeada sem dizer o que ela quebra — a frase orfa da §17. Aqui a causa
-    # saiu inteira; quem carrega o orgao e' a PERDA, na mesma cena.
-    "They had an excuse ready for eleven years and never an answer.",
-    "Every ad on television points you at the expensive answer.",
-    "No doctor gets paid for the answer that actually worked.",
-    "Nobody told my father, and he died not knowing.",
-    "They will sell you a monthly plan before they sell you the truth.",
-    "Add up what they took from me. None of it was meant to work.",
-    "The pharmacy had a shelf for this and nothing on it that helped.",
-    "Nobody at that clinic was paid to tell me the cheap answer.",
-    "My grandfather knew this. Then somebody put a price on it.",
-    "Somebody profits every month that goes by without an answer.",
-    "They kept me on a waiting list and off the answer.",
+    "The pharmacy industry sells you pills and buries what costs two dollars.",
+    "My doctor had a prescription pad and nothing on it that worked.",
+    "Drug companies sell refills. Nothing on that shelf was built to finish.",
+    "The pharmacy sold me eleven years of excuses and never one answer.",
+    "Every television ad points you at the expensive pill and away from this.",
+    "No doctor gets paid for the answer that costs two dollars.",
+    "The clinic had a code to bill and nothing to tell my father.",
+    "The pharmacy industry sells you a monthly plan and hides the cheap fix.",
+    "Add up what the pharmacy took from me. None of it worked.",
+    "The drug companies own the pill. Nobody owns what my grandfather knew.",
+    "The clinic was paid to prescribe, never to tell me the cheap answer.",
+    # ⚠️ Era "...need you believing it is age and nothing else." e o
+    # `medir_contexto_copy --gate` reprovou, com razao: nomeia a CAUSA (`age`)
+    # sem dizer o que ela quebra — a frase orfa da §17. Reescrita sem a moldura
+    # causal; o vilao continua nomeado e continua dizendo o que vende.
+    "The pill companies need you buying refills instead of asking questions.",
+    "Every pharmacy in this town sells the refill and not the recipe.",
+    "The drug industry profits every month a man stays broken.",
 ]
 
 # ⛔ RE20 — QUEM esconde, ou QUEM lucra. Um dos dois, nomeado.
 # ⚠️ A lista sai das entradas do pool, mas a lente roda sobre a fala MONTADA
 # (§19): frase quebrada entre literais adjacentes nao aparece no grep do fonte.
+# ⛔⛔ PRONOME NAO E' AGENTE NOMEADO — corrigido em 2026-08-04.
+# O operador leu "They will sell you a monthly plan before they sell you the
+# truth" e perguntou: *"who will sell what and with what purpose?"*.
+# A primeira versao desta lente aceitava `they`, `them`, `nobody` e `somebody`
+# como agente — ou seja, ELA CARREGAVA O VICIO QUE EXISTIA PARA PEGAR. `They`
+# nao diz quem; `the pharmacy industry` diz.
+#
+# ⭐ O modelo que o operador ditou tem TRES partes:
+#       [QUEM] + [o que ele te VENDE] + [o que ele te ESCONDE]
+#       "the pharmacy industry will sell you pills and not let you know the
+#        truth that works"
 VILAO_AGENTE = re.compile(
-    r"\b(doctors?|nobody|no one|somebody|they|them|pharmac(?:y|ies)|clinic|"
-    r"ads?|television|compan(?:y|ies)|prescription)\b", re.I)
+    r"\b(pharmac(?:y|ies|eutical|y industry)|drug compan(?:y|ies)|"
+    r"drug industry|pill compan(?:y|ies)|doctors?|clinic|chemists?|"
+    r"television ad)\b", re.I)
 
 
 # ---------------------------------------------------------------------------
@@ -1434,8 +1446,8 @@ def montar(spec):
                 "and the same angle over the bowl, and the powder keeps falling "
                 "in the same steady stream into the water. Nothing else enters "
                 "the frame and his head and body never come into shot.")
-        fala1 = ("A man's voice speaks over the shot; nobody is visible from "
-                 "the wrists up and no face appears.")
+        fala1 = ("The voice is the same man whose hands are in the frame, "
+                 "speaking over the shot; no face appears.")
     else:
         mov1 = ("He keeps the box tipped at the same height and the same angle "
                 "over the bowl in both hands, and the powder keeps falling in "
@@ -1455,7 +1467,8 @@ def montar(spec):
     ]
     elenco = [
         fala1,
-        "A man's voice speaks over the shot; no face appears in the frame.",
+        "The voice is the same man whose hands are in the frame, speaking "
+        "over the shot; no face appears.",
         "Only the man speaks, straight into the lens; she stays silent.",
     ]
     audio = ["%s, dry powder falling into water. No music." % m["audio"],
@@ -1582,6 +1595,27 @@ def lint(spec, blocos):
         ach.append(("ERRO", "RE15: a cena 1 tem %d sentenca(s) — ela precisa dos "
                             "tres beats: perda, rejeicao e vilao"
                     % len(sents1)))
+
+
+    # --- RE22: ⭐ a PERDA nomeia QUEM ---------------------------------------
+    # ⛔ Ordem do operador, 2026-08-04, lendo o app: `I almost lost her` ->
+    # *"lost who? His mom? His sister? Wtf are he talking about?"*. Pronome nao
+    # e' referente. A perda diz `my wife` / `my marriage`, com todas as letras.
+    # ⚠️⛔ ESTAS LINHAS JA' NASCERAM QUEBRADAS UMA VEZ: escritas por heredoc, o
+    # `` do padrao virou um BYTE DE BACKSPACE (0x08) DENTRO da string raw, e o
+    # regex passou a exigir um caractere invisivel — reprovava 100% do pool com
+    # uma mensagem perfeitamente plausivel. E' a §2 outra vez: linter que
+    # reprova tudo, a suspeita e' DELE. Regex se escreve no arquivo, nunca por
+    # script com escape.
+    quem = r"\b(my wife|my marriage|the woman I married|marriage)\b"
+    if sents1 and not re.search(quem, sents1[0], re.I):
+        ach.append(("ERRO", "RE22: a perda da cena 1 nao nomeia QUEM se perde — "
+                            "%r deixa o espectador perguntando 'perdeu quem?'"
+                    % sents1[0]))
+    for linha in PERDAS:
+        if not re.search(quem, linha, re.I):
+            ach.append(("ERRO", "RE22: entrada do pool PERDAS sem dizer quem se "
+                                "perde — %r" % linha))
 
     # --- RE20: ⭐ o vilao NOMEIA quem esconde ou quem lucra ------------------
     # ⛔ Ordem do operador (2026-08-04) e regra de FUNCAO. `Nobody told me this`
