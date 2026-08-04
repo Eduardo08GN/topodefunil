@@ -183,6 +183,44 @@ REFS_H = [
      "marca": "deeply lined skin and a pale scar along his right jaw"},
 ]
 
+# ---------------------------------------------------------------------------
+# ⭐ CL24 — O CORPO E' SEMPRE TREINADO (ordem do operador, 2026-08-03)
+# ---------------------------------------------------------------------------
+# O REF do CLEAN passa a ter corpo descrito: musculo e veia visiveis, saude
+# evidente. A razao e' de conversao — quem da' conselho de vitalidade masculina
+# tem de PARECER que o conselho funcionou nele.
+#
+# ⛔ "SEM EXAGERAR" e' parte da ordem, nao enfeite. Nada de fisiculturista: o
+# registro do CLEAN e' consultorio, e musculo estourado vira outro angulo.
+# ⛔ E CONTINUA VALENDO O CL8: nunca tronco nu. O que se ve' e' o que um scrub
+# de manga curta e decote em V deixa ver — antebraco, ombro, pescoco, colarinho.
+# Corpo aparece PELA ROUPA, nunca sem ela.
+# ⚠️ As frases NAO citam a peca de roupa de proposito: o v2 troca o traje
+# conforme o MUNDO, e `under the scrub` sairia errado numa varanda. Descreve-se
+# o corpo; a roupa assenta depois. Assim o mesmo pool serve os dois agentes e
+# nao vira fragmento espelhado que envelhece em separado.
+#
+# ⚠️ ISTO MEXE NO SELO. O 🟢 do CLEAN foi medido em 24 geracoes SEM descricao de
+# corpo. E em 2026-08-03 a mesma familia de frase (`toned arms`, `trim waist`)
+# travou 4x seguidas no gerador de IMAGEM da capa da Denise — densidade de
+# adjetivo de corpo e' superficie de bloqueio conhecida. Por isso cada linha
+# aqui e' curta e ancorada em GEOMETRIA (ombro, antebraco, veia) em vez de
+# empilhar adjetivo. Se vier recusa, a primeira coisa a encurtar e' esta.
+CORPOS_H = [
+    "a solid trained build, broad shoulders and thick forearms with veins standing out along them, skin clear and healthy",
+    "a lean hard frame, square shoulders and defined arms, a vein tracing each forearm, plainly in good condition",
+    "a strong compact build, a thick neck and heavy shoulders, forearms corded and veined, healthy colour in his face",
+    "a trained frame, a broad chest and shoulders, forearms ropy with visible veins, clearly in good health",
+    "a powerful but not bulky build, defined shoulders and arms, veins visible on the backs of his hands, skin clear and well",
+]
+CORPOS_M = [
+    "a lean athletic build, sculpted shoulders and defined arms, a fine vein tracing each forearm, skin clear and healthy",
+    "a toned strong frame, firm shoulders and a trim waist, forearms lightly veined, healthy colour in her face",
+    "a fit sculpted build, defined arms and a straight confident posture, a soft vein visible along each forearm, skin bright and healthy",
+    "an athletic figure, shoulders and arms clearly trained, trim through the waist, faint veins on the backs of her hands, plainly in good health",
+    "a strong feminine build, defined arms and shoulders, a trim waist and an easy confident carriage, skin clear and healthy",
+]
+
 # CL14 — os DOIS ingredientes do truque. Piso e teto: sao dois, sempre, em
 # todas as tres imagens. Nao precisam ser citados na copy — estao ali para
 # gerar curiosidade. ⭐ E' seguro porque a VSL L2ML3 NUNCA os nomeia (conferido
@@ -584,6 +622,8 @@ def sortear(pagina, rng, led, travas=None):
                else _fresco(FAMILIAS, usados.get("familia", []), rng, "id"))
 
     ref = rng.choice(REFS_H if sexo == "homem" else REFS_M)
+    # CL24 — o corpo e sempre treinado, e acompanha o sexo do REF
+    corpo = rng.choice(CORPOS_H if sexo == "homem" else CORPOS_M)
     cenario = _fresco(CENARIOS, usados.get("cenario", []), rng, "id")
     scrub = rng.choice(SCRUBS)
 
@@ -630,7 +670,8 @@ def sortear(pagina, rng, led, travas=None):
 
     return {
         "pagina": pagina, "etnia": et, "sexo": sexo, "familia": familia,
-        "cenario": cenario, "ref": ref, "scrub": scrub, "orgaos": orgaos,
+        "cenario": cenario, "ref": ref, "scrub": scrub, "corpo": corpo,
+        "orgaos": orgaos,
         "item_a": a, "item_b": b, "bancada": bancada, "truque": tru,
         "despejo": despejo,
         # ⛔ 2026-08-03: `b["txt"]` entrava CRU e o `{o}` saia literal na fala —
@@ -665,13 +706,23 @@ def _sem_artigo(s):
 
 
 def _pessoa(spec, primeiro=True):
+    """⭐ CL24: o corpo entra LOGO DEPOIS da idade/etnia e ANTES do traje.
+
+    A ordem importa. O gerador desenha na sequencia em que le', e corpo depois
+    da roupa vira roupa larga com corpo generico dentro. Antes dela, a roupa
+    assenta sobre o corpo que ja' existe."""
     r, sexo = spec["ref"], spec["sexo"]
     quem = "man" if sexo == "homem" else "woman"
+    corpo = spec.get("corpo", "")
     if primeiro:
-        return ("a %d-year-old %s %s, wearing a %s V-neck short-sleeved medical "
-                "scrub top, %s, %s" % (r["idade"], spec["etnia"], quem,
-                                       spec["scrub"], r["cabeca"], r["marca"]))
-    return ("The same %d-year-old %s %s, same %s scrub top, same %s, same %s"
+        return ("a %d-year-old %s %s with %s, wearing a %s V-neck short-sleeved "
+                "medical scrub top, %s, %s"
+                % (r["idade"], spec["etnia"], quem, corpo, spec["scrub"],
+                   r["cabeca"], r["marca"]))
+    # nas cenas 2 e 3 o corpo e' RE-ANCORA curta: repetir a descricao inteira
+    # gasta prompt e o Veo ja' tem o frame anterior como referencia
+    return ("The same %d-year-old %s %s, same build, same %s scrub top, "
+            "same %s, same %s"
             % (r["idade"], spec["etnia"], quem, spec["scrub"],
                _sem_artigo(r["cabeca"].split(" and ")[0]),
                _sem_artigo(r["marca"])))

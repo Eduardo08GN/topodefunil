@@ -739,6 +739,39 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   motor cobre ITEM A, ITEM B e as VIRADAS — **os HOOKS ficam de fora de
   propósito**, e é por esta decisão, não por esquecimento.
 
+- **CL24 — ⭐⭐ O REF É SEMPRE TREINADO: MÚSCULO E VEIA VISÍVEIS, SAÚDE EVIDENTE**
+  (ordem do operador, 2026-08-03). Vale nos **dois** agentes CLEAN.
+
+  > **Quem dá conselho de vitalidade masculina tem de parecer que o conselho
+  > funcionou nele.** Corpo comum entrega dica; corpo treinado entrega prova.
+
+  | | |
+  |---|---|
+  | ✅ o que se vê | ombro, pescoço, antebraço, veia no antebraço e no dorso da mão, pele limpa |
+  | ✅ registro | homem = masculinidade · mulher = porte atlético e postura confiante |
+  | ⛔ **sem exagerar** | nada de fisiculturista, `six-pack`, `shredded`, `jacked`, corpo oleado |
+  | ⛔ **CL8 continua** | **nunca tronco nu** — o corpo aparece **pela roupa**, jamais sem ela |
+
+  ⚠️ **As frases não citam a peça de roupa, de propósito.** O V2 troca o traje
+  conforme o mundo, e `under the scrub` sairia errado numa varanda. Descreve-se
+  o **corpo**; a roupa assenta depois. Assim o mesmo pool serve os dois agentes
+  e não vira fragmento espelhado que envelhece separado.
+
+  ⚠️ **A ORDEM IMPORTA: o corpo entra ANTES do traje na frase.** O gerador
+  desenha na sequência em que lê — corpo depois da roupa vira roupa larga com
+  corpo genérico dentro.
+
+  ⚠️ **Cada linha é curta e ancorada em GEOMETRIA** (ombro, antebraço, veia),
+  não em pilha de adjetivo. É o mesmo princípio do CL19: *categoria e adjetivo
+  fazem o gerador escolher; geometria e conteúdo fazem o gerador desenhar.*
+
+  🟡 **ISTO MEXE NO SELO, e o risco é conhecido.** O 🟢 do CLEAN foi medido em
+  24 gerações **sem descrição de corpo**. E em 2026-08-03 a mesma família de
+  frase (`toned arms`, `trim waist`) travou **4 vezes seguidas** no gerador de
+  imagem da capa da Denise — densidade de adjetivo de corpo é superfície de
+  bloqueio medida, não teórica. **Se vier recusa, a primeira coisa a encurtar
+  é o CL24**, nunca a cena.
+
 ---
 
 ## A COPY
@@ -1053,6 +1086,7 @@ que converte. **Este é o único selo que o CLEAN ainda não tem.**
 - [ ] **Tetos de fala**: 20-26 / 26-34 / 22-28?
 - [ ] ⭐⭐ **Item A e item B não repetem fruta, ingrediente nem benefício** (CL22)? ⛔ Nenhum item A cita leite?
 - [ ] ⭐⭐ **Nenhum ingrediente promete dureza** — só o `gelatin trick` endurece (CL23)?
+- [ ] ⭐⭐ **O REF tem corpo treinado, com veia e saúde visíveis** (CL24)? ⛔ Sem tronco nu, sem fisiculturista, e o corpo vem **antes** do traje na frase?
 - [ ] ⛔ **Zero comparação numérica de tamanho** (CL10)?
 - [ ] Cada cena com 2ª pessoa ou imperativo (P22)?
 
