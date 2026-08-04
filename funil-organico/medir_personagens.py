@@ -259,6 +259,14 @@ EXCECOES = {
     ("receita_short.py", "MULHERES", "oculos"):
         "LEI DO REF — oculos de leitura brigam frontalmente com 'linda'. "
         "Cabelo, porte, pele e ancora facial seguem em 100% do pool.",
+    # ⛔ BOTICA — a boticaria e' REF feminina: vale a lei do REF inteira.
+    # ⚠️ DECISAO DECLARADA: a FONTE deste agente e' uma mulher de ~40 de oculos,
+    # e a autoridade dela vem de PARECER curandeira. Escolhi a lei do operador
+    # sobre a fonte — a tradicao entra pelo TRAJE do mundo, nao pelo desgaste do
+    # rosto. Se ele preferir o contrario, e' uma linha no pool.
+    ("botica_short.py", "REFS", "oculos"):
+        "LEI DO REF — oculos brigam frontalmente com 'linda'. Cabelo 12/12, "
+        "porte 10/12, pele 6/12 e ancora 6/12 seguem cheios.",
 }
 
 FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)

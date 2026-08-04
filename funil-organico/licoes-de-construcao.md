@@ -572,6 +572,72 @@ copy dos doze é decisão do operador, não minha (regra de alçada).
 
 ---
 
+## 22. ⛔⛔⛔ A LENTE CARREGAVA O VÍCIO QUE EXISTIA PARA PEGAR
+
+**Quinta e sexta ocorrências**, no mesmo dia (2026-08-04), horas depois de eu
+escrever a §21 dizendo que tinha entendido.
+
+| o que saiu no app | o operador |
+|---|---|
+| `I almost lost her because my pecker embarrassed me` | *"lost **who**? His mom? His sister? Wtf are he talking about?"* |
+| `They will sell you a monthly plan before they sell you the truth` | *"**who** will sell **what** and with **what purpose**?"* |
+
+E a frase dele: ***"Mais uma vez você cometeu seu vício mais crônico de todos!
+Inacreditável!"***
+
+### O que era novo, e é pior que a §21
+
+A §21 diz que eu media a **unidade errada**. Isto é outra coisa:
+
+> **Eu construí a lente RE20 para exigir "o vilão nomeia QUEM" — e aceitei
+> `they`, `them`, `nobody` e `somebody` como resposta válida.**
+
+Pronome não é nome. A regex que eu escrevi para pegar o vício **continha o
+vício**. Ela rodou verde em 600 sorteios, com controle positivo e negativo
+passando, e mandou para produção exatamente a frase que o operador reprovou.
+
+**A forma que generaliza:** ao escrever a lista de tokens aceitos por uma lente,
+eu incluo o que é **fácil de casar**, não o que **cumpre a função**. `they`
+aparece em toda frase de vilão — por isso entrou. É a §4 mudada de lugar: agora
+não é o slot que não cumpre a função, é a **lente**.
+
+**O que impede:** toda lista de tokens aceitos passa pelo teste da função, item
+por item. *"`they` diz QUEM esconde?"* Não → fora. E o controle positivo tem de
+incluir **a forma quase-certa**, não só a obviamente errada: `They will sell
+you…` parece um vilão e não é.
+
+### ⭐ O modelo do vilão, ditado pelo operador
+
+```
+[QUEM] + [o que ele te VENDE] + [o que ele te ESCONDE]
+```
+> *"the pharmacy industry will sell you pills and not let you know the truth
+> that works"*
+
+⛔ E o mesmo vale para a PERDA: **quem** se perde, nomeado. `my wife`, nunca
+`her`.
+
+### ⛔ E o bug de escrita que custou três rodadas
+
+Ao corrigir isso por script, escrevi a regex num heredoc:
+
+```python
+t = t.replace(..., 'r"\\b(my wife|...)"')     # vira \b na string...
+```
+
+`\b` numa string Python **não-raw** é o caractere **BACKSPACE (0x08)**. O arquivo
+ficou com `r"<BS>(my wife|…)"` — um byte invisível dentro de uma string raw, e o
+padrão passou a exigir um backspace no texto. **Reprovou 100% do pool** com uma
+mensagem perfeitamente plausível, e eu caí nele **duas vezes seguidas**.
+
+> **Regex se escreve no ARQUIVO, com edição literal — nunca por script com
+> escape.** E `0x08` no fonte é invisível no `git diff` e no editor.
+
+Sintoma de reconhecimento: linter novo que reprova **tudo** — §2 outra vez, e a
+suspeita é sempre dele.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -601,6 +667,13 @@ copy dos doze é decisão do operador, não minha (regra de alçada).
       copy, não conserto. Vale principalmente para a **PRIMEIRA** sentença de
       cada cena — é ela que decide se ele fica, e era a única que nenhuma
       lente minha olhava
+- [ ] ⭐ **Li a LISTA DE TOKENS que a minha lente aceita, item por item, e
+      perguntei de cada um "isto cumpre a função?"** (§22). `they` como "agente
+      nomeado" fez a lente carregar o vício que existia para pegar. O controle
+      positivo inclui a forma **quase-certa**, não só a obviamente errada
+- [ ] **Escrevi regex por EDIÇÃO LITERAL, nunca por script com escape** (§22):
+      `\b` num heredoc vira BACKSPACE (0x08), invisível no diff, e o padrão
+      passa a exigir um caractere que não existe
 - [ ] Uso do orçamento medido contra a **capacidade real**, não contra o teto (§5)
 - [ ] **Li algumas falas inteiras renderizadas**, não só os pools
 - [ ] `git diff` conferido: nenhuma string validada redigitada sem ordem

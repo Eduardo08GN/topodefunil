@@ -77,7 +77,7 @@ sys.path.insert(0, AQUI)
 MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "organicwave_short", "ressurreicao_short", "flagrante_short",
            "pee_short", "vazamento_short", "necrose_short", "exterior_short",
-           "colo_short", "receita_short"]
+           "colo_short", "receita_short", "botica_short"]
 
 # ⭐ O QUE CONTA COMO REFERENTE, e a lista e' deliberadamente CURTA:
 #   · o orgao (o pool NUCLEO do proprio motor), ou
