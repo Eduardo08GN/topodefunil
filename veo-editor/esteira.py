@@ -409,6 +409,45 @@ def _worker():
 
 # ---------------- API usada pelo app ----------------
 
+def enfileirar_manual(caminhos):
+    """⭐ MODO MANUAL (2026-08-03): o operador escolhe os takes na mao.
+
+    Recebe os caminhos JA' NA ORDEM (take 1, 2, 3) e devolve o nome do job.
+
+    ⚠️ NAO existe um segundo caminho de edicao aqui. Esta funcao so' MONTA UM
+    ZIP em 01_entrada e deixa o watcher/worker que ja' rodam fazerem o resto.
+    E' de proposito: legenda, dessilenciamento, velocidade, pin do CTA e
+    registro de "prontos hoje" saem identicos ao fluxo automatico porque sao
+    literalmente o mesmo codigo. Um segundo pipeline seria a mesma armadilha
+    do fragmento espelhado — nasce igual e envelhece diferente.
+
+    ⚠️ Os arquivos entram renomeados `01_`, `02_`, `03_` porque `coletar_takes`
+    ordena por `_natural`: sem o prefixo, `cena10.mp4` viria antes de
+    `cena2.mp4` e o video sairia fora de ordem sem erro nenhum.
+    """
+    caminhos = [c for c in caminhos if c]
+    if not caminhos:
+        raise ValueError("nenhum take selecionado")
+    for c in caminhos:
+        if not os.path.isfile(c):
+            raise ValueError("arquivo nao encontrado: %s" % os.path.basename(c))
+        if not c.lower().endswith(VIDEO_EXT):
+            raise ValueError("nao e' video: %s" % os.path.basename(c))
+
+    _preparar_pastas()
+    nome = "manual_%s.zip" % datetime.now().strftime("%Y%m%d_%H%M%S")
+    destino = _nome_unico(D_ENTRADA, nome)
+    # monta num temporario e so' depois move para 01_entrada: o watcher faz
+    # poll por tamanho estavel, e um zip crescendo na pasta vigiada ja' foi
+    # capturado pela metade em producao.
+    tmp = destino + ".parcial"
+    with zipfile.ZipFile(tmp, "w", zipfile.ZIP_STORED) as z:
+        for i, c in enumerate(caminhos, 1):
+            z.write(c, "%02d_%s" % (i, os.path.basename(c)))
+    os.replace(tmp, destino)
+    return os.path.basename(destino)
+
+
 def iniciar():
     """Sobe watcher + worker (idempotente). Chamar no boot do app."""
     global _iniciada

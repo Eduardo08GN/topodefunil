@@ -240,7 +240,35 @@ class App(tk.Tk):
         self.lst_fila = tk.Listbox(sec_fila, bg=SURFACE, fg=INK, relief="flat",
                                    font=FT, highlightthickness=0, bd=0,
                                    selectbackground=SURFACE2, activestyle="none")
-        self.lst_fila.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        self.lst_fila.pack(fill="both", expand=True, padx=12, pady=(0, 8))
+
+        # ⭐ TAKES MANUAIS (2026-08-03) — subir os 3 videos na mao, sem zip.
+        # Mora aqui embaixo da fila de proposito: e' a mesma esteira, so' que
+        # alimentada pela mao em vez do watcher.
+        tk.Frame(sec_fila, bg=LINE, height=1).pack(fill="x", padx=12)
+        tk.Label(sec_fila, text="TAKES MANUAIS", bg=SURFACE, fg=MUT,
+                 font=("Segoe UI", 8, "bold"), anchor="w").pack(fill="x", padx=12,
+                                                                pady=(8, 4))
+        self.manual = [None, None, None]
+        self.lb_manual = []
+        for i in range(3):
+            lin = tk.Frame(sec_fila, bg=SURFACE)
+            lin.pack(fill="x", padx=12, pady=1)
+            tk.Label(lin, text="%d" % (i + 1), bg=SURFACE2, fg=GOLD, font=FT,
+                     width=2).pack(side="left", ipady=2)
+            b = tk.Button(lin, text="escolher...", command=lambda k=i: self._pick(k),
+                          font=FT, bg=SURFACE, fg=DIM, relief="flat", bd=0,
+                          cursor="hand2", anchor="w", padx=8,
+                          activebackground=SURFACE2, activeforeground=INK)
+            b.pack(side="left", fill="x", expand=True)
+            self.lb_manual.append(b)
+        acao_m = tk.Frame(sec_fila, bg=SURFACE)
+        acao_m.pack(fill="x", padx=12, pady=(6, 12))
+        self.bt_manual = botao(acao_m, "Editar agora", self._editar_manual,
+                               primario=True)
+        self.bt_manual.pack(side="left")
+        self.bt_manual.configure(state="disabled")
+        botao(acao_m, "Limpar", self._limpar_manual).pack(side="left", padx=(8, 0))
 
         # editando agora
         sec_atual = Secao(corpo, "Editando agora")
@@ -359,6 +387,56 @@ class App(tk.Tk):
             return
         if not esteira.definir_pasta_vigiada(os.path.normpath(p)):
             messagebox.showerror("Veo Editor", "Pasta invalida.", parent=self)
+
+    # ---------------- takes manuais ----------------
+
+    def _pick(self, i):
+        """Escolhe o video do slot i. Aceita multipla selecao: quem marca os
+        tres de uma vez preenche os tres slots dali pra baixo, em ordem."""
+        paths = filedialog.askopenfilenames(
+            parent=self, title="Take %d" % (i + 1),
+            filetypes=[("Videos", "*.mp4 *.mov *.mkv *.webm *.m4v *.avi"),
+                       ("Todos", "*.*")])
+        if not paths:
+            return
+        for k, p in enumerate(paths):
+            if i + k < 3:
+                self.manual[i + k] = os.path.normpath(p)
+        self._pintar_manual()
+
+    def _limpar_manual(self):
+        self.manual = [None, None, None]
+        self._pintar_manual()
+
+    def _pintar_manual(self):
+        for i, b in enumerate(self.lb_manual):
+            p = self.manual[i]
+            nome = os.path.basename(p) if p else "escolher..."
+            if len(nome) > 26:
+                nome = nome[:12] + "..." + nome[-11:]
+            b.configure(text=nome, fg=INK if p else DIM)
+        # ⚠️ habilita com UM take, nao com tres: lote de 2 cenas existe, e
+        # travar o botao obrigaria o operador a inventar um terceiro video.
+        n = sum(1 for p in self.manual if p)
+        self.bt_manual.configure(state="normal" if n else "disabled",
+                                 text="Editar agora" if n <= 1
+                                 else "Editar agora (%d takes)" % n)
+
+    def _editar_manual(self):
+        escolhidos = [p for p in self.manual if p]
+        if not escolhidos:
+            return
+        try:
+            nome = esteira.enfileirar_manual(escolhidos)
+        except Exception as e:  # noqa: BLE001
+            messagebox.showerror("Veo Editor", str(e), parent=self)
+            return
+        self._limpar_manual()
+        messagebox.showinfo(
+            "Veo Editor",
+            "%d take(s) enviados como %s.\n\nA esteira pega em segundos e o "
+            "resultado aparece em Prontos hoje." % (len(escolhidos), nome),
+            parent=self)
 
     def _ver(self):
         sel = self.tree.selection()
