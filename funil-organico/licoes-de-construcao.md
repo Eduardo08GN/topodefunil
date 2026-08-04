@@ -400,6 +400,42 @@ no parque inteiro, não no caso que motivou a correção.**
 
 ---
 
+## 19. ⛔ GREP NO CÓDIGO NÃO VÊ FRASE QUEBRADA ENTRE LINHAS
+
+Três vezes no mesmo dia, e a terceira quase foi entregue.
+
+Ao ancorar os dentes do CLEAN (CL25), procurei os pontos com
+`grep "mouth open mid-word"`. Achou **4**. Existiam **7**: o Python quebra
+string longa em várias literais adjacentes, e a frase mora partida —
+
+```python
+"...with %(Ss)s mouth "
+"open mid-word as %(s)s speaks, ..."     # ← o grep nunca vê a frase inteira
+```
+
+Editei os 4, medi **o código**, declarei pronto. Metade dos blocos continuava
+sem âncora, e só apareceu ao **renderizar e ler a saída**.
+
+> **O código é o que eu escrevo; o prompt é o que o modelo recebe.** São coisas
+> diferentes sempre que há concatenação, `%`-format ou `.join()` no meio — e
+> num gerador de prompt há sempre.
+
+**O que impede:** verificar no **texto montado**, nunca no fonte. Concretamente:
+`montar(spec)` num laço, e conferir a presença da frase no bloco renderizado com
+os espaços normalizados (`re.sub(r"\s+", " ", texto)`).
+
+⚠️ **E remendar às cegas cria defeito novo.** No meio disso eu duplicei a
+palavra `speaks` em dois blocos — `"...as she speaks, the front teeth even and
+complete, speaks, her torso upright..."`. Não aparece no `git diff`, porque
+cada linha isolada está correta; só aparece na frase montada.
+
+📌 **Generaliza para todo medidor deste repo:** os que leem `.py` com `ast` ou
+regex (`medir_personagens`, `checar.py`) medem *pools*, não *saída*. Servem para
+achar buraco de repertório. **Não servem para provar que uma frase chegou ao
+prompt** — para isso, montar e ler.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -430,6 +466,8 @@ no parque inteiro, não no caso que motivou a correção.**
       verifica** — lente consertada não conserta o objeto (§18)
 - [ ] **Alterei código compartilhado? Medi o parque INTEIRO**, não só o agente
       que motivou a mudança (§18)
+- [ ] **Conferi a frase no PROMPT MONTADO, não no `.py`** — `grep` no fonte não
+      vê string quebrada entre linhas adjacentes (§19)
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
 - [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
 
