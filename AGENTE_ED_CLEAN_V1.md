@@ -745,12 +745,22 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   > **Quem dá conselho de vitalidade masculina tem de parecer que o conselho
   > funcionou nele.** Corpo comum entrega dica; corpo treinado entrega prova.
 
+  ⭐ **SUBIU ~30% EM 2026-08-03** (segunda ordem do operador, no mesmo dia): o
+  alvo passou de *"pessoa que se cuida"* para **ATLETA**. Entraram massa nos
+  ombros, deltoide e trapézio nomeados, e veia correndo até o pulso.
+
   | | |
   |---|---|
-  | ✅ o que se vê | ombro, pescoço, antebraço, veia no antebraço e no dorso da mão, pele limpa |
-  | ✅ registro | homem = masculinidade · mulher = porte atlético e postura confiante |
-  | ⛔ **sem exagerar** | nada de fisiculturista, `six-pack`, `shredded`, `jacked`, corpo oleado |
+  | ✅ o alvo | **atleta**, não pessoa comum que não treina |
+  | ✅ o que se vê | deltoide, trapézio, pescoço, peito, antebraço cordado, veia até o pulso e no dorso da mão |
+  | ✅ registro | homem = massa e dureza · mulher = músculo real com postura confiante |
+  | ⛔ **o teto** | atleta, **não fisiculturista**: nada de `six-pack`, `shredded`, `jacked`, corpo oleado, veia de competição ou definição de palco |
   | ⛔ **CL8 continua** | **nunca tronco nu** — o corpo aparece **pela roupa**, jamais sem ela |
+
+  ⚠️ **O piso e o teto são medidos, não julgados.** Cada linha carrega ao menos
+  **2 marcadores de atleta** (`athlete`, `muscled`, `deltoids`, `traps`,
+  `heavy`, `corded`…) e **zero** termo de palco. Foi assim que uma das dez
+  saiu fraca na primeira passada e foi reforçada antes de ir para o app.
 
   ⚠️ **As frases não citam a peça de roupa, de propósito.** O V2 troca o traje
   conforme o mundo, e `under the scrub` sairia errado numa varanda. Descreve-se

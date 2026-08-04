@@ -669,8 +669,12 @@ REFS_H = [
 # evidente. A razao e' de conversao — quem da' conselho de vitalidade masculina
 # tem de PARECER que o conselho funcionou nele.
 #
-# ⛔ "SEM EXAGERAR" e' parte da ordem, nao enfeite. Nada de fisiculturista: o
-# registro do CLEAN e' consultorio, e musculo estourado vira outro angulo.
+# ⭐ SUBIU ~30% EM 2026-08-03 (segunda ordem do operador): o alvo passou a ser
+# ATLETA, nao "pessoa que se cuida". Entraram massa nos ombros, deltoide e
+# trapezio nomeados, veia que corre ate' o pulso.
+# ⛔ O teto continua: atleta, NAO fisiculturista. Nada de musculo estourado,
+# corpo oleado, veia de competicao ou definicao de palco — o registro do
+# CLEAN e' consultorio, e passar disso vira outro angulo.
 # ⛔ E CONTINUA VALENDO O CL8: nunca tronco nu. O que se ve' e' o que um scrub
 # de manga curta e decote em V deixa ver — antebraco, ombro, pescoco, colarinho.
 # Corpo aparece PELA ROUPA, nunca sem ela.
@@ -686,18 +690,18 @@ REFS_H = [
 # aqui e' curta e ancorada em GEOMETRIA (ombro, antebraco, veia) em vez de
 # empilhar adjetivo. Se vier recusa, a primeira coisa a encurtar e' esta.
 CORPOS_H = [
-    "a solid trained build, broad shoulders and thick forearms with veins standing out along them, skin clear and healthy",
-    "a lean hard frame, square shoulders and defined arms, a vein tracing each forearm, plainly in good condition",
-    "a strong compact build, a thick neck and heavy shoulders, forearms corded and veined, healthy colour in his face",
-    "a trained frame, a broad chest and shoulders, forearms ropy with visible veins, clearly in good health",
-    "a powerful but not bulky build, defined shoulders and arms, veins visible on the backs of his hands, skin clear and well",
+    "the heavy trained build of an athlete, thick deltoids and a broad deep chest, forearms corded with veins standing out along them, skin clear and healthy",
+    "a powerful athletic frame, wide square shoulders and heavy muscled arms, thick veins running down each forearm, plainly in hard condition",
+    "a muscular athlete's build, a thick neck, heavy traps and broad shoulders, forearms roped with standing veins, healthy colour in his face",
+    "the dense trained frame of a lifter, deep chest and thick round shoulders, arms heavy and veined to the wrist, clearly in peak health",
+    "a hard muscular build with real mass across the shoulders and arms, veins raised along the forearms and the backs of his hands, skin clear and well",
 ]
 CORPOS_M = [
-    "a lean athletic build, sculpted shoulders and defined arms, a fine vein tracing each forearm, skin clear and healthy",
-    "a toned strong frame, firm shoulders and a trim waist, forearms lightly veined, healthy colour in her face",
-    "a fit sculpted build, defined arms and a straight confident posture, a soft vein visible along each forearm, skin bright and healthy",
-    "an athletic figure, shoulders and arms clearly trained, trim through the waist, faint veins on the backs of her hands, plainly in good health",
-    "a strong feminine build, defined arms and shoulders, a trim waist and an easy confident carriage, skin clear and healthy",
+    "the trained build of an athlete, sculpted round shoulders and clearly muscled arms, veins tracing each forearm, skin clear and healthy",
+    "a strong athletic frame, firm rounded shoulders and hard arms, a tight waist, forearms visibly veined, healthy colour in her face",
+    "a muscular fit build, defined deltoids and biceps, a flat hard midsection and a straight confident posture, veins visible along each forearm, skin bright and healthy",
+    "an athlete's figure, hard muscled shoulders and arms, a thick strong waist and back, veins raised along the forearms and the backs of her hands, plainly in peak health",
+    "a powerfully built woman, muscled shoulders and arms, a hard trim waist and an easy confident carriage, skin clear and healthy",
 ]
 
 # gerar curiosidade. ⭐ E' seguro porque a VSL L2ML3 NUNCA os nomeia (conferido
