@@ -553,6 +553,117 @@ def lint_nada_cresce(blocos, achados, excecao=(), rotulo="a regra"):
                             % (rotulo, nome, achado)))
 
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ A BANDEIRA E' 50/50 — ordem do operador, 2026-08-04
+# ---------------------------------------------------------------------------
+# *"varie tb a presenca ou nao de bandeiras: todos os takes estao possuindo
+#   bandeiras dos EUA, quero algo 50%/50% aparecendo, outra metade das
+#   ocorrencias nao"*.
+#
+# ⛔ O ESTADO ANTERIOR ERA 100%, E POR CONSTRUCAO: a bandeira estava ESCRITA
+# DENTRO da string de cada cenario (`...and a US flag on a floor stand in the
+# corner`), em 4 motores — ESCANDALO, RESSURREICAO, TROCA e VAZAMENTO. Nao havia
+# eixo para sortear; havia texto. O ESCANDALO ainda tinha um autoteste que
+# EXIGIA a bandeira em 15/15 cenarios (ES13).
+#
+# ⚠️ POR QUE REMOCAO EXATA E NAO REESCRITA DOS POOLS: reescrever 56 strings de
+# cenario a mao e' redigitar copy validada — o erro que o repo ja' pagou (o D1
+# comprimido na mao virou esqueleto 3D). Aqui a clausula da bandeira e' um
+# recorte REGULAR (comeca em `, ` ou ` and `, termina na proxima virgula), e ela
+# sai por substituicao verificada em vez de por edicao humana.
+#
+# ⛔ E A REMOCAO E' COBRADA, NAO CONFIADA: `lint_bandeira` varre o TEXTO MONTADO
+# e reprova se sobrou `flag`, se ficou virgula dupla, ` and ,` ou espaco duplo.
+# Regex que erra em prosa erra silenciosamente; por isso a lente vem junto.
+_BANDEIRA = re.compile(
+    r"(?:,\s*|\s+and\s+)(?:a|an|the)\s+(?:small\s+|large\s+)?"
+    r"(?:US|American)\s+flag\b[^,.]*", re.I)
+
+_SUJEIRA = ((r"\s*,\s*,", ","), (r"\s+and\s*,", ","), (r"\s{2,}", " "),
+            (r"\s+([,.])", r"\1"), (r",\s*$", ""), (r"\s+and\s*$", ""))
+
+
+def tirar_bandeira(texto):
+    """Devolve o texto sem a clausula da bandeira, com a prosa normalizada."""
+    fora = _BANDEIRA.sub("", texto or "")
+    for padrao, troca in _SUJEIRA:
+        fora = re.sub(padrao, troca, fora)
+    return fora.strip()
+
+
+def tem_bandeira(texto):
+    return re.search(r"\b(?:US|American)\s+flag\b", texto or "", re.I) is not None
+
+
+def lint_bandeira(spec, blocos, achados, rotulo="bandeira"):
+    """A bandeira aparece se e' para aparecer, e some inteira se nao e'.
+
+    ⚠️ Varre o TEXTO MONTADO, nunca o pool (§19): a string do cenario e' montada
+    dentro de um bloco maior, e `grep` no fonte nao ve frase quebrada entre
+    literais adjacentes.
+    """
+    quer = bool(spec.get("bandeira"))
+    for nome in sorted(blocos):
+        if nome.startswith("BLOCO"):
+            continue
+        txt = blocos[nome]
+        if not quer and tem_bandeira(txt):
+            achados.append(("ERRO", "%s: %s sorteou SEM bandeira e o texto ainda "
+                                    "traz uma — a remocao nao pegou a clausula"
+                            % (rotulo, nome)))
+        for padrao, msg in ((r",\s*,", "virgula dupla"),
+                            (r"\s+and\s*,", "'and' orfao antes de virgula"),
+                            (r"\s{2,}", "espaco duplo"),
+                            (r"\s+[,.]", "espaco antes de pontuacao")):
+            if re.search(padrao, txt):
+                achados.append(("ERRO", "%s: %s com %s — a remocao da bandeira "
+                                        "estragou a prosa" % (rotulo, nome, msg)))
+    if quer and not any(tem_bandeira(t) for k, t in blocos.items()
+                        if not k.startswith("BLOCO")):
+        achados.append(("ERRO", "%s: sorteou COM bandeira e nenhum bloco a "
+                                "mostra" % rotulo))
+
+
+def autoteste_bandeira():
+    """Controles positivos e negativos com as clausulas REAIS dos 4 motores.
+
+    ⛔ Rodam ANTES de qualquer numero ser olhado (licoes §16). O caso que motiva
+    a lente — texto que ficou com bandeira depois de sortear sem — e' o primeiro.
+    """
+    casos = [
+        ("a home office with a full wall of dark hardback spines with gold "
+         "detailing, two framed documents in dark wood frames with gold foil "
+         "seals and a US flag on a floor stand in the corner",
+         "a home office with a full wall of dark hardback spines with gold "
+         "detailing, two framed documents in dark wood frames with gold foil "
+         "seals"),
+        ("a small older American kitchen with laminate counters and a window "
+         "over the sink, a US flag magnet on the fridge door",
+         "a small older American kitchen with laminate counters and a window "
+         "over the sink"),
+        ("a bright kitchen with a white refrigerator, a small American flag on "
+         "a stand on the counter, and a bowl of lemons",
+         "a bright kitchen with a white refrigerator, and a bowl of lemons"),
+        ("the same wood-panelled study, the shelf of dark hardbacks behind her "
+         "and the small US flag in its brass stand",
+         "the same wood-panelled study, the shelf of dark hardbacks behind her"),
+    ]
+    falhas = []
+    for entrada, esperado in casos:
+        saida = tirar_bandeira(entrada)
+        if saida != esperado:
+            falhas.append("removeu errado:\n   deu = %r\n   era = %r"
+                          % (saida, esperado))
+        if tem_bandeira(saida):
+            falhas.append("sobrou bandeira em %r" % saida)
+    # ⛔ CONTROLE NEGATIVO: texto sem bandeira nao pode ser tocado
+    limpo = "a plain kitchen with a stainless counter and a stack of chairs"
+    if tirar_bandeira(limpo) != limpo:
+        falhas.append("mexeu em texto que nao tinha bandeira: %r"
+                      % tirar_bandeira(limpo))
+    return falhas
+
+
 def lint_sem_texto(blocos, achados):
     """Guarda da trava — sem isto ela sai de novo no proximo refactor."""
     for chave in sorted(blocos):

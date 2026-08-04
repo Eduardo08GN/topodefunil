@@ -2462,7 +2462,9 @@ def sortear(pagina, rng, ledger, credibilidade=None, degrau=None, analogia=None)
     falas = _montar_falas(rng, sub, rec, orgaos, relacao, cred, deg)
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], rec, sub)
 
-    return {"pagina": pagina, "narradora": nar, "corpo_prova": hom,
+    return {"pagina": pagina,
+            # 50/50, ordem do operador 2026-08-04
+            "bandeira": rng.random() < 0.5, "narradora": nar, "corpo_prova": hom,
             "cenario": cen, "prop": prop, "substancia": sub, "despejo": desp,
             "reacao": rea, "analogia": ana, "receita": rec, "mecanismo": mec,
             "bancada": ban, "relacao": relacao, "credibilidade": cred,
@@ -2500,6 +2502,16 @@ def montar(spec):
     rea, ana, rec = spec["reacao"], spec["analogia"], spec["receita"]
     mec, ban, falas = spec["mecanismo"], spec["bancada"], spec["falas"]
     bnc = cen["bancada"]
+
+    # ⭐⭐ A BANDEIRA E' 50/50 (ordem do operador, 2026-08-04). Ela estava escrita
+    # DENTRO da string de cada cenario, entao saia em 100% dos videos. Aqui ela
+    # sai por remocao EXATA quando o sorteio diz que nao, e o `lint_bandeira`
+    # confere no TEXTO MONTADO — inclusive a prosa (virgula dupla, `and` orfao).
+    # ⛔ O pool nao e' reescrito: as strings de cenario sao copy validada.
+    com_bandeira = spec.get("bandeira", True)
+    cen_set = cen["set"] if com_bandeira else sc.tirar_bandeira(cen["set"])
+    cen_anc = (cen["re_ancora"] if com_bandeira
+               else sc.tirar_bandeira(cen["re_ancora"]))
     luz = _maiuscula(cen["luz"])
 
     # ⚠️ A ANCORA DE CONTINUIDADE E' A NARRADORA — ela esta' nas tres cenas, e a
@@ -2545,7 +2557,7 @@ def montar(spec):
         "front of her, held at its base in her closed fist that rests on "
         "the %s: %s. %s runs "
         "from her other hand down onto it in one unbroken column. %s %s %s %s %s"
-        % (cen["set"], bnc, bnc, ela,
+        % (cen_set, bnc, bnc, ela,
            desp["img"] % (_pote(sub["caixa"]), prop["nome"]),
            bnc, bnc, prop["antes"], _maiuscula(sub["jato"]),
            RS_ANEL_IMAGE % (_anel(sub), bnc),
@@ -2565,7 +2577,7 @@ def montar(spec):
         "behind it talking straight to camera. On the %s in front of her, on a "
         "wooden board: %s. %s Still standing on its own base at the far end of "
         "the %s, the %s, now %s. %s %s %s"
-        % (bnc, cen["re_ancora"], mesma, bnc, rec["img"],
+        % (bnc, cen_anc, mesma, bnc, rec["img"],
            RS_PLANTADO_IMAGE % (_sem_artigo(mec["plantado"]), bnc,
                                 mec["pousado"]),
            bnc, prop["nome"], escala_dela, recibo, luz, CAUDA)
@@ -2585,7 +2597,7 @@ def montar(spec):
         "%d-year-old %s man, %s, in %s and %s, stands beside her, upright, chin "
         "level, his eyes on the lens, saying nothing. %s %s They are the only "
         "two people in the frame. %s %s"
-        % (cen["re_ancora"], mesma, hom["idade"], et, _descricao(hom),
+        % (cen_anc, mesma, hom["idade"], et, _descricao(hom),
            hom["roupa"], hom["calca"],
            RS_F12B_IMAGE % (_peca(hom["calca"]), prop["dele"], spec["relacao"]),
            RS_KEYWORD_NA_MAO_IMAGE % mec["curto"], luz, CAUDA)
@@ -3060,6 +3072,18 @@ def _rs_travadas(spec, blocos, achados):
                                         "descrita" % (chave, achado)))
 
 
+
+def _bandeira_5050(spec, blocos, achados):
+    """⭐ A BANDEIRA E' 50/50, e some INTEIRA quando o sorteio diz que nao.
+
+    ⛔ Ordem do operador, 2026-08-04: *"todos os takes estao possuindo bandeiras
+    dos EUA, quero algo 50%/50%"*. Ate' aqui ela estava escrita DENTRO da string
+    de cada cenario — nao havia eixo para sortear, havia texto.
+    ⚠️ A lente varre o TEXTO MONTADO e cobra os dois lados, mais a PROSA: remocao
+    por regex em prosa erra em silencio, e silencio e' o que nao pode acontecer.
+    """
+    sc.lint_bandeira(spec, blocos, achados, rotulo="bandeira 50/50")
+
 def lint(spec, blocos):
     # ⚠️ `teto_total` explicito: o padrao do `lint_curto` e' a soma dos tetos
     # (91), que aqui e' MENOR que a borda de cima da faixa da doutrina (96) — o
@@ -3072,7 +3096,7 @@ def lint(spec, blocos):
                 _rs10_prazo, _rs11_tokens, _rs12_conformidade, _rs13_negacao,
                 _rs14_texto_e_objeto, _rs15_contraste, _rs16_recibo,
                 _rs17_credibilidade, _rs18_analogia, _rs19_casting, _rs20_piso,
-                _rs25_transferencia, _rs_travadas))
+                _rs25_transferencia, _rs_travadas, _bandeira_5050))
 
 
 # ---------------------------------------------------------------------------

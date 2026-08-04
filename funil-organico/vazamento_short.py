@@ -736,7 +736,9 @@ def sortear_longo(pagina, rng, ledger):
         rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES)),
     ]
     return {"pagina": pagina, "cozinha": coz, "quintal": qui, "prop": prop,
-            "ref": ref, "mulher": mul, "falas": falas}
+            "ref": ref, "mulher": mul, "falas": falas,
+            # 50/50, ordem do operador 2026-08-04
+            "bandeira": rng.random() < 0.5}
 
 
 # ---------------------------------------------------------------------------
@@ -754,6 +756,15 @@ def montar_longo(spec):
     corpo = ("bare-chested, %s, skin with a light sheen of sweat. %s."
              % (ref["musculo"], ref["marca"].capitalize()))
 
+
+    # ⭐⭐ A BANDEIRA E' 50/50 (ordem do operador, 2026-08-04). Ela estava escrita
+    # DENTRO das strings de COZINHAS e QUINTAIS, entao saia em 100% dos videos.
+    # Aqui ela sai por remocao EXATA quando o sorteio diz que nao, e o
+    # `lint_bandeira` confere no TEXTO MONTADO — inclusive a prosa.
+    # ⛔ O pool nao e' reescrito: as strings de set sao copy validada.
+    com_bandeira = spec.get("bandeira", True)
+    coz_set = coz["set"] if com_bandeira else sc.tirar_bandeira(coz["set"])
+    qui_set = qui["set"] if com_bandeira else sc.tirar_bandeira(qui["set"])
     b = {}
 
     # O cabecalho REF faz parte do bloco, igual ao "IMAGE 01/05:" dos outros.
@@ -771,7 +782,7 @@ def montar_longo(spec):
         "IMAGE 01/05: Medium shot inside %s. Seated behind a wooden kitchen table is "
         "a %d-year-old %s man, %s Jaw tight, brow furrowed, eyes locked on the lens, "
         "mouth open mid-shout. %s %s He is alone in the frame. %s %s %s"
-        % (coz["set"], ref["idade"], et, corpo, GEODUCK_IMAGE, VAZAMENTO_IMAGE,
+        % (coz_set, ref["idade"], et, corpo, GEODUCK_IMAGE, VAZAMENTO_IMAGE,
            ANTICELEB, coz["luz"], CAUDA)
     )
 
@@ -782,7 +793,7 @@ def montar_longo(spec):
         "powder into a glass jar of gelatin on the table. His left hand holds a wooden "
         "stirring stick above the jar. He is speaking, looking directly at the camera. "
         "He is alone in the frame. %s The scene is lit by %s %s"
-        % (qui["set"], ref["idade"], et, ref["marca"], ref["roupa2"], ANTICELEB,
+        % (qui_set, ref["idade"], et, ref["marca"], ref["roupa2"], ANTICELEB,
            luz_ext, CAUDA)
     )
 
@@ -1160,11 +1171,23 @@ def _blocos_travados(spec, blocos, achados):
             achados.append(("AVISO", "V8: %s nao declara que ele esta sozinho" % nome))
 
 
+def _bandeira_5050(spec, blocos, achados):
+    """⭐ A BANDEIRA E' 50/50, e some INTEIRA quando o sorteio diz que nao.
+
+    ⛔ Ordem do operador, 2026-08-04. Ate' aqui ela estava escrita DENTRO das
+    strings de COZINHAS e QUINTAIS — nao havia eixo, havia texto.
+    ⚠️ Varre o TEXTO MONTADO e cobra os dois lados, mais a prosa: remocao por
+    regex em prosa erra em silencio.
+    """
+    sc.lint_bandeira(spec, blocos, achados, rotulo="bandeira 50/50")
+
+
 def lint(spec, blocos):
     return sc.lint_curto(
         _MOTOR_LONGO, spec, blocos, MAPA, TETO_FALA,
         literais=("gelatin trick", "without the gelatin trick", "blood flow"),
-        extras=(_hook, _v6_negacao, _blocos_travados))
+        extras=(_hook, _v6_negacao, _blocos_travados,
+                _bandeira_5050))
 
 
 # ---------------------------------------------------------------------------

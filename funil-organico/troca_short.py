@@ -1672,7 +1672,9 @@ def sortear(pagina, rng, ledger, degrau=None):
     falas = _montar_falas(rng, sub, orgaos, relacao, degrau)
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], sub)
 
-    return {"pagina": pagina, "narradora": nar, "corpo_prova": hom,
+    return {"pagina": pagina,
+            # 50/50, ordem do operador 2026-08-04
+            "bandeira": rng.random() < 0.5, "narradora": nar, "corpo_prova": hom,
             "cenario": cen, "proxy": prox, "substancia": sub, "textura": tex,
             "mecanismo": mec, "bancada": ban, "degrau": degrau,
             "relacao": relacao, "falas": falas}
@@ -1702,6 +1704,16 @@ def montar(spec):
     mec, ban = spec["mecanismo"], spec["bancada"]
     falas = spec["falas"]
     bnc = cen["bancada"]
+
+    # ⭐⭐ A BANDEIRA E' 50/50 (ordem do operador, 2026-08-04). Ela estava escrita
+    # DENTRO da string de cada cenario, entao saia em 100% dos videos. Aqui ela
+    # sai por remocao EXATA quando o sorteio diz que nao, e o `lint_bandeira`
+    # confere no TEXTO MONTADO — inclusive a prosa (virgula dupla, `and` orfao).
+    # ⛔ O pool nao e' reescrito: as strings de cenario sao copy validada.
+    com_bandeira = spec.get("bandeira", True)
+    cen_set = cen["set"] if com_bandeira else sc.tirar_bandeira(cen["set"])
+    cen_anc = (cen["re_ancora"] if com_bandeira
+               else sc.tirar_bandeira(cen["re_ancora"]))
     luz = cen["luz"][0].upper() + cen["luz"][1:]
 
     # ⚠️ TR18 — A ANCORA DE CONTINUIDADE AQUI E' INVERTIDA em relacao aos
@@ -1743,7 +1755,7 @@ def montar(spec):
         "wooden board lies on the %s in front of her. Standing on the %s since "
         "before the shot began: %s. Also on the %s, open since the first frame: "
         "%s. %s She is the only person in the frame. %s %s"
-        % (cen["set"], bnc, ela, prox["img"], tex["desc"] % sub["fala"],
+        % (cen_set, bnc, ela, prox["img"], tex["desc"] % sub["fala"],
            TR_PROXY_NA_MAO, TR_MAO_LIVRE % sub["fala"],
            bnc, bnc, sub["pote"], bnc, mec["plantado"], recibo, luz, CAUDA)
     )
@@ -1764,7 +1776,7 @@ def montar(spec):
         "behind it talking straight to camera. %s, %s, is still upright in her "
         "left fist beside her cheek. On the %s in front of her, on a wooden "
         "board: %s. %s %s She is the only person in the frame. %s %s"
-        % (bnc, cen["re_ancora"], mesma,
+        % (bnc, cen_anc, mesma,
            prox["img"][0].upper() + prox["img"][1:], tex["curta"] % sub["fala"],
            bnc, mec["plantado"],
            TR_TROCA_IMAGE % (_sem_artigo(mec["curto"]), bnc, mec["pousado"]),
@@ -1794,7 +1806,7 @@ def montar(spec):
         "her, upright, chin level, his eyes on the lens, saying nothing. %s "
         "Behind them on the %s, still where it was: %s. They are the only two "
         "people in the frame. %s %s %s"
-        % (cen["re_ancora"], mesma, spec["relacao"], hom["idade"], et,
+        % (cen_anc, mesma, spec["relacao"], hom["idade"], et,
            hom["marca"], hom["roupa"], hom["calca"],
            TR_MAO_PROPRIA_IMAGE % (_peca(hom["calca"]),
                                    "%s, the %s still on it"
@@ -2332,6 +2344,18 @@ def _tr_figurino(spec, blocos, achados):
                                      "decisao [D3]" % nome))
 
 
+
+def _bandeira_5050(spec, blocos, achados):
+    """⭐ A BANDEIRA E' 50/50, e some INTEIRA quando o sorteio diz que nao.
+
+    ⛔ Ordem do operador, 2026-08-04: *"todos os takes estao possuindo bandeiras
+    dos EUA, quero algo 50%/50%"*. Ate' aqui ela estava escrita DENTRO da string
+    de cada cenario — nao havia eixo para sortear, havia texto.
+    ⚠️ A lente varre o TEXTO MONTADO e cobra os dois lados, mais a PROSA: remocao
+    por regex em prosa erra em silencio, e silencio e' o que nao pode acontecer.
+    """
+    sc.lint_bandeira(spec, blocos, achados, rotulo="bandeira 50/50")
+
 def lint(spec, blocos):
     # ⚠️ `teto_total` explicito: o padrao do `lint_curto` e' a soma dos tetos
     # (82), que aqui e' o PISO do orcamento da doutrina — o AVISO dispararia
@@ -2343,7 +2367,8 @@ def lint(spec, blocos):
                 _tr_proxy_mudo, _tr_eco, _tr_orcamento, _tr_batismo, _tr_cta,
                 _tr_gates, _tr_troca, _tr_sem_crescimento, _tr_agencia,
                 _tr_tokens, _tr_marca, _tr_verbos, _tr_recibo, _tr_ancoras,
-                _tr_congruencia, _tr_voz, _tr_figurino))
+                _tr_congruencia, _tr_voz, _tr_figurino,
+                _bandeira_5050))
 
 
 # ---------------------------------------------------------------------------
