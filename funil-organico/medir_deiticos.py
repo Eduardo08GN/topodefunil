@@ -42,6 +42,7 @@ passar. Medidor que nao reprova o caso conhecido mede outra coisa.
     python funil-organico/medir_deiticos.py --motor receita
 """
 import argparse
+import io
 import importlib
 
 import os
@@ -265,6 +266,29 @@ def main():
     ap.add_argument("--gate", action="store_true",
                     help="exit 1 se qualquer motor tiver achado")
     a = ap.parse_args()
+
+    # ⛔⛔ BYTES DE CONTROLE NO FONTE — varredura criada em 2026-08-05.
+    # Escrevi tres regex por heredoc e o shell converteu cada `\b` em BACKSPACE
+    # (0x08). O regex virou "backspace + palavra + backspace", nunca casou, e a
+    # regra ficou CEGA: no DUPLA reprovava 100% (barulhento, eu vi na hora), mas
+    # no CHA e no COLO era o oposto — `re.search(r"\byour\b", ...)` passava
+    # sempre, e a regra que cobrava a segunda pessoa na abertura nao cobrava
+    # nada. Dano invisivel: o arquivo LE certo em qualquer editor, o pyflakes
+    # passa, o autoteste passa.
+    # ⚠️ Roda antes de qualquer numero, como os controles.
+    import glob as _glob
+    _sujos = []
+    for _f in sorted(_glob.glob(os.path.join(AQUI, "*.py"))):
+        with io.open(_f, "rb") as _fh:
+            _b = _fh.read()
+        _n = sum(_b.count(bytes([_c])) for _c in (8, 11, 12, 27))
+        if _n:
+            _sujos.append("%s: %d byte(s) de controle" % (os.path.basename(_f), _n))
+    if _sujos:
+        print(">> BYTE DE CONTROLE NO FONTE — regex mudo, regra cega:")
+        for _s in _sujos:
+            print("   " + _s)
+        return 1
 
     # ⛔ CONTROLES PRIMEIRO. Numero de medidor cego e' pior que numero nenhum.
     falhas = rodar_controles()

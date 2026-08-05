@@ -2072,7 +2072,7 @@ def lint(spec, blocos):
         # destinatario e' quem assiste; sem imperativo nem 2a pessoa, a frase
         # fica sem dono e vira slogan.
         if not (re.match(r"(say|wave|kiss) goodbye", a1)
-                or re.search(r"your", a1)):
+                or re.search(r"\byour\b", a1)):
             ach.append(("ERRO", "BO9: a abertura da cena 1 nao fala COM ele — "
                                 "sem imperativo nem `your`, o problema nao tem "
                                 "dono e a frase vira slogan (%r)" % sents1[0]))

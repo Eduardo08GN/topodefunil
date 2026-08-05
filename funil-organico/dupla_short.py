@@ -168,16 +168,98 @@ BO_DUPLA = (
 # a cor faz o trabalho: vermelho e laranja num copo transparente.
 # ⚠️ A SEGUNDA MULHER continua em quadro, atras, MUDA. Sem isso o Veo perde a
 # dupla entre a cena 1 e a 3 e devolve outra pessoa no payoff.
+# ⭐⭐ AS CONFORMACOES DO PREPARO — ordem do operador, 2026-08-05, lendo o lote:
+# *"eu te falei pra voce criar uma pool de conformacao de prep receita diferente,
+# nao quero so' essa conformacao da ref pouring duas jarras num copo, escolha
+# mais pelo menos 4 conformacoes pra pool"*.
+#
+# ⛔ A RECEITA NAO MUDA — beterraba + cenoura + o raro + o gelatin trick, que e'
+# o que a fala nomeia. O que varia e' a FISICA: como os dois sucos chegam ao
+# copo. Trocar os ingredientes junto quebraria a copy, que e' alcada do operador.
+#
+# ⛔⛔ CADA ENTRADA CARREGA O SEU `mov` E O SEU `audio`. E' obrigatorio, nao
+# organizacao: se o movimento vier de fora, o TAKE volta a mandar socar pilao
+# numa cena de despejo — o defeito que a lente `lint_take_vs_image` foi criada
+# para pegar hoje. Conformacao e movimento sao a mesma decisao.
+#
+# ⚠️ A BETERRABA APARECE EM TODAS. A versao anterior punha *"a whole pomegranate
+# and two carrots"* na bancada enquanto a boca dizia `beetroot juice` — a fruta
+# errada em 88,8% dos videos, achada na auditoria da etapa [7].
+PREPAROS = [
+    {"id": "dois_jarros",
+     "bancada": "a tall clear glass, and beside it %(raro_img)s, two raw "
+                "beetroots and two carrots",
+     "acao": "She holds a glass jug in each hand and pours both at once into "
+             "the tall glass — deep red juice from the left jug and bright "
+             "orange juice from the right — the two streams falling together",
+     "mov": "She keeps pouring from both jugs at once into the tall glass, the "
+            "two streams meeting in it the whole time, her forearms steady. She "
+            "never sets either jug down.",
+     "audio": "juice pouring into a glass"},
+
+    {"id": "liquidificador",
+     "bancada": "a blender jug on its base, filled with cut beetroot and "
+                "carrot, a tall clear glass beside it and %(raro_img)s",
+     "acao": "Her right hand rests on the blender base and her left sets the "
+             "lid down onto the jug, the cut beetroot and carrot packed inside "
+             "against the glass",
+     "mov": "Her left hand presses the lid down onto the blender jug and stays "
+            "there; her right hand stays flat on the base.",
+     "audio": "a blender motor starting up"},
+
+    {"id": "espremedor",
+     "bancada": "a stainless juicer with a tall clear glass under its spout, "
+                "%(raro_img)s and a bowl of cut beetroot and carrot",
+     "acao": "Her right hand pushes a carrot down the juicer chute with the "
+             "plunger while bright orange juice runs from the spout into the "
+             "glass, a beetroot already fed through and staining the pulp red",
+     "mov": "Her right hand keeps pressing the plunger down the chute at the "
+            "same slow rate and the juice keeps running from the spout into the "
+            "glass. Her left hand stays flat on the %(sup)s.",
+     "audio": "a juicer running"},
+
+    {"id": "camadas",
+     "bancada": "a tall clear glass already filled in two layers — deep red "
+                "below and bright orange above — with %(raro_img)s beside it, "
+                "two raw beetroots and two carrots",
+     "acao": "Her right hand turns a long spoon slowly through the glass and "
+             "the two layers begin to marble into each other",
+     "mov": "Her right hand keeps turning the long spoon slowly through the "
+            "glass the whole time and never lifts it clear. Her left hand stays "
+            "flat on the %(sup)s.",
+     "audio": "a spoon turning in a glass"},
+
+    {"id": "medidor",
+     "bancada": "a tall clear glass, a graduated glass measuring jug of deep "
+                "red juice in her hand, a second jug of bright orange juice "
+                "waiting beside it, %(raro_img)s, two raw beetroots and two "
+                "carrots",
+     "acao": "Her right hand tips the measuring jug and a steady thread of deep "
+             "red juice falls into the tall glass, filling it to the halfway "
+             "mark",
+     "mov": "Her right hand keeps the measuring jug at the same tilt and the "
+            "red thread keeps falling into the glass at the same rate. She "
+            "never sets the jug down and never picks up the second one.",
+     "audio": "juice pouring into a glass"},
+
+    {"id": "coador",
+     "bancada": "a fine mesh sieve set over a tall clear glass, deep red pulp "
+                "in it, %(raro_img)s, two raw beetroots and two carrots",
+     "acao": "Her right hand presses the back of a spoon into the pulp in the "
+             "sieve and deep red juice runs through the mesh into the glass "
+             "below",
+     "mov": "Her right hand keeps pressing the back of the spoon into the pulp "
+            "in the sieve at the same slow rate and the juice keeps running "
+            "through into the glass. Her left hand holds the sieve rim steady.",
+     "audio": "juice dripping through a sieve"},
+]
+
 BO_PREPARO = (
     "Medium shot in %(coz)s, filmed straight on at the height of the %(sup)s, "
     "framed so that %(sup_a)s runs across the bottom third of the picture. "
     "Standing behind it, centred in the frame, is %(ancora)s. On the %(sup)s in "
-    "front of her stands a tall clear glass, and beside it %(raro_img)s, a whole "
-    "pomegranate and two carrots. She holds a glass jug in each hand and pours "
-    "both at once into the tall glass — deep red juice from the left jug and "
-    "bright orange juice from the right — the two streams falling together. She "
-    "looks directly into the lens with her mouth open mid-word as she speaks. "
-    "%(amiga)s"
+    "front of her stands %(bancada)s. %(acao)s. She looks directly into the lens "
+    "with her mouth open mid-word as she speaks. %(amiga)s"
 )
 
 # ⭐ A AMIGA — a segunda mulher, MUDA nas tres cenas. Ela e' quem segura o prop
@@ -1324,6 +1406,14 @@ HOMENS = [
 # DIAGNOSTICO: obriga o cara a se reconhecer no prop murcho antes de ouvir a
 # oferta. Sem isso os dois props em quadro viram decoracao — a imagem mostra uma
 # comparacao que a fala nao usa.
+# ⛔⛔ NENHUMA ENTRADA CARREGA CONTRASTE PROPRIO. Sairam tres em 2026-08-05:
+#   · `is this one and not the other` — ja' era uma VIRADA, e com a virada
+#     sorteada por cima saia *"is this one and not the other instead of the one
+#     my friend has"*: dois contrastes na mesma frase, e o fio se perde;
+#   · `is the one on the left` e `looks like the one on my side` — posicao de
+#     QUADRO, que o espectador nao mapeia. Ele ve' duas mulheres, nao um eixo.
+# ⭐ O primeiro deitico fica com quem FALA, porque e' ela que segura o murcho e
+# a lente esta' nela. Quem nomeia o outro lado e' a VIRADA.
 PROBLEMAS = [
     "If your {o} looks like this one",
     "If your {o} looks more like this one",
@@ -1331,12 +1421,12 @@ PROBLEMAS = [
     "If your {o} is closer to this one",
     "If your {o} has been looking like this one",
     "If your {o} ended up like this one",
-    "If your {o} is this one and not the other",
-    "If your {o} looks like the one on my side",
     "If your {o} matches this one here",
     "If your {o} went the way of this one",
-    "If your {o} is the one on the left",
     "If your {o} turned into this one",
+    "If your {o} has gone the way of this one",
+    "If your {o} sits closer to this one",
+    "If your {o} is looking like this one lately",
 ]
 
 # ⭐⭐ CENA 1, segundo beat — O SEGUNDO DEITICO. E' a metade que fecha o `from
@@ -1351,15 +1441,35 @@ PROBLEMAS = [
 # soltos e o espectador nao sabe qual dos dois e' ele.
 # ⛔ Beat CURTO de proposito: quem carrega o significado e' o PROP na mao da
 # outra mulher, erguido a altura do peito (lido na fonte). A palavra so' aponta.
+# ⛔⛔ TODA ENTRADA NOMEIA QUEM SEGURA O OUTRO PROP. Ordem do operador,
+# 2026-08-05, lendo o render *"If your peck-er has been looking like this one
+# and not this one, this secret is for you"*: **"excesso de pronome. A proxy que
+# a amiga ao lado esta segurando voce tem que especificar pro telespectador"** —
+# e a forma que ele escreveu a mao: *"essa daqui e nao A QUE MINHA AMIGA ESTA
+# SEGURANDO"*.
+# ⚠️ `this one` DUAS VEZES na mesma frase e' deitico sem referente: os dois
+# apontam para lugar nenhum e o espectador nao sabe qual e' qual. O primeiro
+# deitico (`this one`) fica com quem fala, porque ela segura o murcho e a lente
+# esta' nela; o SEGUNDO tem de dizer que o outro esta' na mao da amiga.
+# ⛔ Metade das entradas antigas era `this one` puro. As oito que sobreviveram
+# viraram catorze, e todas nomeiam a amiga ou a mao dela.
 VIRADAS = [
-    "rather than this one",
-    "and not this one",
-    "instead of this one",
+    "and not the one my friend is holding",
+    "rather than the one my friend is holding",
+    "and not the one she is holding",
     "rather than the one she is holding",
-    "and not the one beside it",
-    "rather than this one here",
-    "instead of the one on her side",
-    "and not this one right here",
+    "and not the one in her hand",
+    "rather than the one in her hand",
+    "and not the one my girl is holding",
+    "instead of the one my friend has",
+    "and not the one she has got there",
+    # ⛔ Aqui esteve `rather than the one beside me` — e "beside me" e' quem
+    # FALA, nao a amiga. O deitico voltava para o proprio murcho dela.
+    "rather than the one she is showing you",
+    "and not the one my friend brought",
+    "instead of the one in her hand",
+    "and not the big one she is holding",
+    "rather than the one my friend is showing you",
 ]
 
 # ⚠️ O fecho vem depois do aposto do raro, entao a virgula ANTES dele mora na
@@ -1370,15 +1480,21 @@ VIRADAS = [
 # ⭐ CENA 1, fecho — A QUALIFICACAO. `is for you` fecha o diagnostico: quem se
 # reconheceu no prop murcho acabou de ser convocado. Exclui quem nao se
 # reconheceu, e exclusao e' o que faz o resto assistir.
+# ⛔⛔ TODO FECHO NOMEIA O QUE E' QUE E' PARA ELE. Sairam tres em 2026-08-05
+# (`this one is for you`, `then this is for you, brother`, `then keep watching,
+# this is for you`): eram um TERCEIRO deitico numa frase que ja' tinha dois, e
+# nenhum dizia o que o espectador ganha. *"this one is for you"* logo depois de
+# *"this one and not the one she is holding"* faz o `this one` apontar para o
+# prop, nao para o truque — a frase promete um vegetal.
 FECHOS = [
     "this secret trick is for you",
     "then this gelatin trick is for you",
-    "this one is for you",
     "then the gelatin trick is for you",
     "this secret is for you",
-    "then this is for you, brother",
     "this trick was made for you",
-    "then keep watching, this is for you",
+    "this gelatin trick is for you",
+    "then this recipe is for you",
+    "this little trick is for you",
 ]
 
 # ⛔ O VILAO — na fonte e' `Pharmacies don't want you to know this.` O operador
@@ -1794,6 +1910,7 @@ EIXOS_UI = [
     ("traje", "O TRAJE DELA", "trajes_do_mundo", None),
     ("amiga", "A AMIGA", "REFS", "cabeca"),
     ("prop", "O PAR DE PROPS", "PROPS", "nome"),
+    ("preparo", "A BANCADA (conformacao)", "PREPAROS", "id"),
     ("raro", "O RARO", "RAROS", "nome"),
 ]
 
@@ -2216,13 +2333,18 @@ def sortear(pagina, rng, led, travas=None):
     # ⭐ UM raro por video, sorteado entre os nove (ordem do operador)
     raro = (_por_id(RAROS, travas["raro"]) if travas.get("raro")
             else _fresco(RAROS, usados.get("raro", []), rng, "id"))
+    # ⭐ A CONFORMACAO DO PREPARO — eixo proprio desde 2026-08-05, por ordem do
+    # operador. Entra no ledger como os outros: a mesma bancada em videos
+    # seguidos da mesma pagina e' o que ele ve' primeiro no lote.
+    preparo = (_por_id(PREPAROS, travas["preparo"]) if travas.get("preparo")
+               else _fresco(PREPAROS, usados.get("preparo", []), rng, "id"))
 
     # ⛔ Dois orgaos DIFERENTES no mesmo video: repetir o substantivo em 24
     # segundos vira bordao.
     orgaos = rng.sample(NUCLEO, 2)
 
     spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
-            "traje": traje, "traje_amiga": traje_amiga,
+            "traje": traje, "traje_amiga": traje_amiga, "preparo": preparo,
             "reacao": reacao, "apelo": apelo,
             "reacao_amiga": reacao_amiga,
             "ref": ref, "amiga": amiga, "homem": homem,
@@ -2305,12 +2427,17 @@ def montar(spec):
 
     # --- CENA 2 — O PREPARO (o mecanismo) -----------------------------------
     # ⚠️ O utensilio VARIA (ordem do operador) e o verbo do TAKE acompanha.
+    _pr = spec["preparo"]
     b["IMAGE 02/03"] = (
-        "%(preparo)s %(anti)s %(luz)s %(cauda)s"
-        % dict(v, preparo=BO_PREPARO % dict(v, amiga=BO_AMIGA_FUNDO % (
-            _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
-            _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
-                   spec["reacao_amiga"][0]))))
+        "%(cena)s %(anti)s %(luz)s %(cauda)s"
+        % dict(v, cena=BO_PREPARO % dict(
+            v,
+            bancada=_pr["bancada"] % v,
+            acao=_pr["acao"],
+            amiga=BO_AMIGA_FUNDO % (
+                _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
+                _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
+                spec["reacao_amiga"][0]))))
 
     # --- CENA 3 — AS DUAS + O PROP GIGANTE + O COPO + O CTA -----------------
     # ⭐ O objeto da keyword esta' NA MAO no frame em que a boca diz `gelatin,`.
@@ -2354,9 +2481,13 @@ def montar(spec):
          "own piece at the same height and the same distance from the lens, "
          "same size, same shape, same colour. Neither lowers her arm and "
          "neither sets anything down."),
-        ("She keeps pouring from both jugs at once into the tall glass, the two "
-         "streams meeting in it the whole time, her forearms steady. She never "
-         "sets either jug down. %(nao_toca)s" % v),
+        # ⛔ O movimento vem da CONFORMACAO SORTEADA, nunca de uma string fixa:
+        # e' isso que impede o TAKE de descrever outra bancada.
+        # ⚠️ O `mov` passa pelo `% v` como a bancada. Sem isso o `%(sup)s` saia
+        # CRU no prompt em 201 de 600 videos — e nenhum linter pegava, porque o
+        # guard de placeholder olha os blocos e o TAKE e' montado depois deles.
+        # Achado LENDO as seis conformacoes geradas, uma a uma.
+        ((spec["preparo"]["mov"] % v) + " " + v["nao_toca"]),
         ("She holds the glass steady at chest height the whole time and never "
          "sets it down. Her other hand keeps the piece upright and never lowers "
          "it."),
@@ -2371,8 +2502,9 @@ def montar(spec):
         BO_AMIGA_TAKE % spec["reacao_amiga"][1],
     ]
     audio = ["%s. No music." % m["audio"],
-             # ⛔ Era `the sound of the stone mortar` numa cena de despejo.
-             "%s, juice pouring into a glass. No music." % m["audio"],
+             # ⛔ O som tambem sai da conformacao — ele tambem e' parte do
+             # prompt, e tambem contradizia a IMAGE quando vinha de fora.
+             "%s, %s. No music." % (m["audio"], spec["preparo"]["audio"]),
              "%s. No music." % m["audio"]]
 
     for i in range(3):
@@ -2712,6 +2844,27 @@ def lint(spec, blocos):
     # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
     # ⛔ PAINEL HONESTO — 2026-08-05. Nenhum eixo desenhado no painel pode
     # deixar de chegar ao video.
+    # ⛔⛔ O SEGUNDO DEITICO TEM DE NOMEAR QUEM SEGURA O OUTRO PROP.
+    # Ordem do operador, 2026-08-05, lendo o render *"like this one and not this
+    # one"*: **"excesso de pronome. A proxy que a amiga ao lado esta segurando
+    # voce tem que especificar pro telespectador"**.
+    # ⚠️ Dois `this one` na mesma frase apontam para lugar nenhum: o espectador
+    # ve' dois objetos e nao sabe qual e' qual, e o hook inteiro depende disso.
+    for _v in VIRADAS:
+        if not re.search(r"\b(she|her|my friend|my girl)\b", _v):
+            ach.append(("ERRO", "BO16: a virada %r nao nomeia quem segura o "
+                                "outro prop — deitico sem referente" % _v))
+    _f1 = (spec["falas"][0] or "")
+    if len(re.findall(r"\bthis one\b", _f1, re.I)) > 1:
+        ach.append(("ERRO", "BO16: a cena 1 diz `this one` duas vezes — os dois "
+                            "deiticos apontam para lugar nenhum e o espectador "
+                            "nao sabe qual e' qual (%r)" % _f1))
+    # ⛔ O FECHO nao pode ser mais um deitico: `this one is for you` logo depois
+    # do par faz o `this one` apontar para o PROP, e a frase promete um vegetal.
+    if re.search(r"\bthis one is for you\b", _f1, re.I):
+        ach.append(("ERRO", "BO16: o fecho da cena 1 e' um terceiro deitico — "
+                            "ele tem de nomear O QUE e' que e' para ele"))
+
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
 
     sc.lint_take_vs_image(blocos, ach)
@@ -2918,6 +3071,16 @@ def autoteste(n=600):
     # repertorio sem vilao e esperava reprovacao — hoje esse e' o repertorio
     # CERTO. Controle de regra aposentada que fica para tras vira ruido, e ruido
     # ensina o operador a ignorar o autoteste.
+
+    # ⭐ [BO16] o deitico orfao — a ordem do operador em um controle
+    s16 = dict(s, falas=list(s["falas"]))
+    s16["falas"][0] = "If your tool looks like this one and not this one, ok."
+    if not any("BO16" in msg for _, msg in lint(s16, b)):
+        ctrl.append("[BO16] NAO acusa `this one` duas vezes na cena 1")
+    s16b = dict(s, falas=list(s["falas"]))
+    s16b["falas"][0] = "If your tool looks like that, this one is for you."
+    if not any("BO16" in msg for _, msg in lint(s16b, b)):
+        ctrl.append("[BO16] NAO acusa o fecho `this one is for you`")
 
     # ⭐⭐ [BO6] AS SONDAS DO ANGULO CERTO. As duas que estavam aqui vigiavam o
     # HOMEM MUDO do BOTICA — e a segunda apontava para `never at the camera`,

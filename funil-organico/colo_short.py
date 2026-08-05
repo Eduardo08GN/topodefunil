@@ -1517,7 +1517,7 @@ def lint(spec, blocos):
     for tok in ("lap", "thigh", "thighs", "knees apart", "between his knees",
                 "cropped at the waist"):
         alvo = "%s %s" % (i1.lower(), blocos["TAKE 01/03"].lower())
-        if re.search(r"%s" % tok, alvo):
+        if re.search(r"\b%s\b" % tok, alvo):
             ach.append(("ERRO", "CO13: token banido nesta cena — %r foi medido "
                                 "como recusa do gerador; o mesmo quadro se diz "
                                 "com cadeira, joelho e enquadramento" % tok))
