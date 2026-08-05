@@ -757,6 +757,80 @@ receita, dita na frase anterior) e **dêitico que aponta para o prop em quadro**
 
 ---
 
+## 26. ⛔⛔⛔ O EXEMPLO DELE É REFERÊNCIA DE FORMA, NUNCA ESPECIFICAÇÃO DE MÉTRICA
+
+**Data:** 2026-08-04. **O que eu fiz:** o operador reescreveu um take à mão para
+me mostrar o molde do vilão. O take dele tinha 33 palavras. Eu **subi o teto de
+fala de 31 para 33** para acomodá-lo.
+
+Ele parou:
+
+> *"Eu não testei o meu exemplo contra o teto. Pare de ser literal com meus
+> exemplos, eles são apenas referência, não absolutismo. Você errou quando
+> assumiu que eu verifiquei o meu exemplo contra o teto."*
+
+E, na mesma conversa:
+
+> *"Pare de reproduzir literalmente meus exemplos como uma maritaca repetindo o
+> dono. Você tem que entender a IDEIA que quero passar."*
+
+⭐ **A separação que eu não fiz:** o exemplo dele especifica a **FORMA** — as
+quatro partes do molde, a ordem dos beats, o registro. A **MÉTRICA** (quantas
+palavras cabem em 8 segundos) é física e continua sendo minha obrigação medir.
+**Forma se copia; métrica se mede.** Assumir que ele validou a métrica é inventar
+uma verificação que ninguém fez.
+
+⚠️ **E o custo tem duas partes.** A primeira é óbvia: eu afrouxei uma trava
+física. A segunda é sutil e pior — copiar o exemplo ao pé da letra faz o
+repertório do agente ficar **do tamanho do exemplo**, que é exatamente o
+mode-collapse que os randomizadores existem para evitar.
+
+⛔ **O que impede:** quando ele der um exemplo, extrair a REGRA e depois testar a
+regra contra as travas físicas do motor. Se o exemplo dele violar uma trava,
+isso não é permissão para mover a trava: é a hora de dizer *"o seu exemplo tem
+33 palavras e o teto físico é 32; a forma eu aplico, e ela cabe assim"*.
+
+⭐ **Corolário do próprio dele, dito na sequência:** ao comprimir para caber, o
+que sai é palavra que **não carrega nada**. Nunca sai o referente. Comprimir
+matando o "do que se trata" troca um defeito por outro pior — ver §20, §24.
+
+---
+
+## 27. ⛔⛔⛔ A LENTE DO TETO CONFERIA COERÊNCIA INTERNA, NÃO CAPACIDADE FÍSICA
+
+**Data:** 2026-08-04. Descoberto ao auditar os 14 motores depois do aviso dele.
+**Cinco motores cortavam fala em produção e nenhum medidor sabia.**
+
+| motor | cena | estouro | pior caso |
+|---|---|---|---|
+| `vazamento` | 3 | **53,5%** | **48 palavras = 6,0 p/s** |
+| `exterior` | 3 | **95,7%** | 34 palavras |
+| `vazamento` | 2 | 32,5% | 36 palavras |
+| `organicwave` | 2 | 9,0% | 34 palavras |
+| `flagrante` | 2 | 6,0% | 33 palavras |
+| `necrose` | 3 | 3,2% | 36 palavras |
+
+⛔⛔ **Cada motor já tinha a lente do próprio teto — e todas passavam.** Porque
+comparavam a fala com o `TETO_FALA` **declarado naquele arquivo**. Se o teto
+declarado é 40, uma fala de 40 palavras passa no lint e é cortada no render.
+
+**A regra media coerência interna, não a coisa que precisava ser verdade.** É a
+§16 na forma mais cara: o medidor conferia o que era fácil conferir. Um teto
+declarado acima da capacidade física não é uma escolha de estilo — é uma trava
+desligada, e o lint vira carimbo.
+
+⚠️ **E o `_cabem()` tem um fallback `or pool`** que devolve o pool inteiro quando
+nada cabe. Ele existe por bom motivo (lista vazia derrubaria o sorteio com
+`IndexError` em vez de acusar pelo linter), mas é um caminho de estouro
+**silencioso**: quando o orçamento aperta, ele entrega a fala longa sem reclamar.
+
+⛔ **O que impede:** [`medir_teto_fala.py`](medir_teto_fala.py), que compara com
+o número **físico** (32) e não com o declarado, e que também acusa **teto
+declarado acima de 32 mesmo quando ainda não estourou** — bomba armada é a
+entrada longa que alguém vai acrescentar amanhã.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**

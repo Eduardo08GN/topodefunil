@@ -1085,11 +1085,21 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # capacidade real de 3,4-4,0 — oito palavras de silencio por video. O terceiro
 # beat (o VILAO, ordem do operador) ocupa exatamente essa folga. ⛔ Teto folgado
 # nao e' seguranca: e' frase morta esperando para nascer (licoes §5).
-# ⚠️ cena 1 subiu de 31 para 33 em 2026-08-04: e' o comprimento exato do
-# take que o operador escreveu a mao (perda 13 + vilao 20). Com 31 a linha
-# dele nao gerava. Em troca a REJEICAO virou opcional — foi o proprio
-# exemplo dele que a deixou de fora para caber o vilao inteiro.
-TETO_FALA = {1: 33, 2: 33, 3: 31}
+# ⛔⛔ TETO = 32, E ELE E' FISICO: 8 segundos a 3,4-4,0 palavras/s comportam
+# 27-32 palavras (licoes-de-construcao §5). Acima disso a fala NAO e' apertada —
+# e' CORTADA, porque o take acaba antes dela.
+#
+# ⚠️ EU JA' SUBI ESTE TETO PARA 33 UMA VEZ, EM 2026-08-04, E ESTAVA ERRADO.
+# O operador tinha reescrito um take a mao para me mostrar o molde do vilao, e
+# esse take tinha 33 palavras. Eu tratei o COMPRIMENTO do exemplo dele como
+# especificacao e subi o teto para acomoda-lo. Ele corrigiu:
+#     *"eu nao testei o meu exemplo contra o teto. Pare de ser literal com meus
+#      exemplos, eles sao apenas referencia, nao absolutismo."*
+# ⭐ O que o exemplo dele especifica e' a FORMA (as quatro partes do molde), nao
+# a metrica. Metrica se mede; forma se copia.
+# ⚠️ E a linha longa dele CONTINUA GERANDO com teto 32, porque a rejeicao e'
+# opcional e as perdas curtas abrem espaco: 10 (perda) + 20 (vilao) = 30.
+TETO_FALA = {1: 32, 2: 32, 3: 31}
 PISO_FALA = {1: 24, 2: 24, 3: 22}
 
 
