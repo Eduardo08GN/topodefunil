@@ -1283,29 +1283,101 @@ HOMENS = [
 #
 # ⛔ O PROP GIGANTE CONTINUA NO QUADRO (ordem do operador), agora como metafora
 # MUDA: a imagem carrega o proxy, a fala carrega o que esta' em jogo.
-ISCAS = [
-    "My husband's {o} had quit on us both, and then I came across {r} and a gelatin trick.",
-    "My husband's {o} had been dead for years, until I got hold of {r} and a gelatin trick.",
-    "My man's {o} stopped working at sixty, and what turned it around was {r} and a gelatin trick.",
-    "For three years my husband's {o} gave up on him, then I found {r} and a gelatin trick.",
-    "My husband's {o} had not worked in years, and what brought it back was {r} and a gelatin trick.",
-    "My husband's {o} went quiet on us, until a neighbour put me onto {r} and a gelatin trick.",
-    "Nobody told me my husband's {o} could come back. It took {r} and a gelatin trick.",
-    "My husband's {o} quit on him years ago, until my sister sent me {r} and a gelatin trick.",
-    "My husband's {o} had let us both down for years, then I found {r} and a gelatin trick.",
-    "My husband's {o} had given up on us, until I read about {r} and a gelatin trick.",
-    "My husband's {o} had been gone a long time, and then came {r} and a gelatin trick.",
-    "My husband's {o} stopped answering years ago, until I got my hands on {r} and a gelatin trick.",
-    "My husband's {o} had been finished for years, and what fixed it was {r} and a gelatin trick.",
-    "My husband's {o} walked out on us both, and then I found {r} and a gelatin trick.",
-    "My husband's {o} had not stirred in years, until I got hold of {r} and a gelatin trick.",
-    "My husband's {o} was long gone, and then a friend told me about {r} and a gelatin trick.",
-    "The doctors had my husband's {o} written off, and then I came across {r} and a gelatin trick.",
-    "The pharmacy took our money for years while my husband's {o} stayed dead, until {r} and a gelatin trick.",
-    "Two doctors shrugged at my husband's {o}, and what worked was {r} and a gelatin trick.",
-    "Every pill the pharmacy sold us failed my husband's {o}, until {r} and a gelatin trick.",
-    "The clinic had nothing for my husband's {o}, and then I came across {r} and a gelatin trick.",
-    "The chemist kept selling us refills while my husband's {o} stayed dead, until {r} and a gelatin trick.",
+# ⛔⛔ REESTRUTURADO EM 2026-08-05 — A CENA 1 VIROU TRES BEATS COMPOSTOS.
+# O operador comparou o que o agente gerou com o que ele queria:
+#
+#   gerado: "The chemist kept selling us refills while my husband's weiner
+#            stayed dead, until mucuna, the famous velvet bean of the tropics
+#            and a gelatin trick."
+#   ele:    "My husband's weiner stayed dead, things changed when i discovered
+#            mucuna, the famous velvet bean of the tropics and a secret gelatin
+#            trick."
+#
+# ⭐ TRES DIFERENCAS, e nenhuma e' de comprimento:
+#   1. O PROBLEMA ABRE. O vilao ocupava a abertura e empurrava o problema para
+#      o meio — e a abertura pertence ao que esta' em jogo.
+#   2. `until {r}` NAO TEM VERBO. "until mucuna, the famous velvet bean" promete
+#      uma virada e entrega um substantivo: a frase fica truncada. A virada
+#      precisa de verbo — "Things changed when I discovered".
+#   3. `secret` entra como ADJETIVO do mecanismo (`a secret gelatin trick`).
+#      ⚠️ De proposito DIFERENTE da cena 2, que usa `and a secret: the gelatin
+#      trick` — a mesma construcao duas vezes em 24 segundos vira bordao.
+#
+# ⛔ O VILAO SAIU DO ESCOPO DA CENA 1, por ordem expressa dele. Consequencia
+# registrada: a farmacia so' existia nessas iscas, entao ela sai do video
+# inteiro. A lente BO3 foi aposentada junto — regra que cobra o que o operador
+# mandou tirar e' regra que reprova a producao.
+#
+# ⛔⛔ E O INGLES DO EXEMPLO DELE NAO FOI COPIADO — ordem dele: *"tomar cuidado
+# com o efeito maritaca seu: minha coesao de escrita do ingles no exemplo ta'
+# errada, ajustar isso"*. A frase dele e' comma splice com `i` minusculo
+# ("stayed dead, things changed when i discovered"). Aqui o problema fecha em
+# PONTO, a virada abre em maiuscula, e o aposto do raro leva virgula dos DOIS
+# lados, como manda a gramatica. O que se copia do exemplo e' a FORMA (§26).
+#
+# ⭐ POOL COMPOSTA, nao lista chapada: 16 problemas x 12 viradas x 6 fechos =
+# 1152 aberturas distintas antes de multiplicar pelos 9 raros. O operador pediu
+# "um pool rico com variacoes do sentido", e variacao de sentido se consegue
+# combinando beats, nao repetindo a mesma frase com sinonimos.
+PROBLEMAS = [
+    "My husband's {o} had been dead for years",
+    "My husband's {o} stayed dead no matter what we tried",
+    "My husband's {o} had quit on us both",
+    "My husband's {o} had not worked in years",
+    "My husband's {o} went quiet on us a long time ago",
+    "My man's {o} stopped working at sixty",
+    "My husband's {o} had given up on us",
+    "For three years my husband's {o} gave up on him",
+    "My husband's {o} had been finished for a long time",
+    "My husband's {o} let us both down every single night",
+    "My husband's {o} stopped answering years ago",
+    "My husband's {o} had been gone since his fifties",
+    # ⚠️ era "My husband and I had not touched each other in years" e a BO9
+    # reprovou com razao: abertura sem o orgao vira receita de cozinha.
+    # ⚠️ encurtada de "My husband and I had not touched in years": com 12
+    # palavras ela + o raro mais longo estouravam o teto e ela NUNCA saia
+    # em 5000 sorteios. Entrada que nao gera nao e' repertorio.
+    # ⚠️ SEGUNDA correcao desta entrada, e as duas foram do linter. Primeiro
+    # ela nao nomeava o ORGAO (BO9); encurtei e passou a nao nomear a PESSOA
+    # (BO9 outra vez). O teto de 28 nao paga uma abertura de 13 palavras com
+    # o raro mais longo, entao a saida foi trocar a imagem por uma mais curta
+    # que carrega os dois: quem (`my husband`) e o que (`{o}`).
+    "My husband slept facing the wall, and his {o} was why",
+    "My husband's {o} embarrassed him every time",
+    "My husband's {o} had been asleep for a decade",
+    "My husband stopped reaching for me, and his {o} was why",
+]
+
+VIRADAS = [
+    "Things changed when I discovered",
+    "That changed the day I found",
+    "It all turned around once I got hold of",
+    "Everything shifted when I came across",
+    "That ended the week I found",
+    # ⛔ era "It came back after I started using" e o `medir_deiticos` acusou:
+    # pronome nu como sujeito de estado do corpo e' a familia (B), a mesma
+    # que o operador reprovou no RECEITA. Pool novo reintroduz vicio velho.
+    "He was a different man after I started using",
+    "What turned it around was",
+    "The change started when a neighbour told me about",
+    "It all changed once my sister sent me",
+    "That was over the day I read about",
+    "Everything was different after I got my hands on",
+    "The turn came when I finally found",
+]
+
+# ⚠️ O fecho vem depois do aposto do raro, entao a virgula ANTES dele mora na
+# montagem (`%s, %s`), nunca aqui — senao o aposto fica sem fechar.
+FECHOS = [
+    "and a secret gelatin trick",
+    "plus a secret gelatin trick",
+    "and one secret gelatin trick",
+    "and a secret gelatin trick on top",
+    "and a gelatin trick nobody sells",
+    "and the secret gelatin trick with it",
+    "and a gelatin trick I keep to myself",
+    "and one gelatin trick nobody talks about",
+    "and a secret gelatin trick my grandmother used",
 ]
 
 # ⛔ O VILAO — na fonte e' `Pharmacies don't want you to know this.` O operador
@@ -1864,10 +1936,24 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         # ⚠️ O beat do vilao custava 9 a 14 palavras num take que ja' apertava,
         # e era ele que empurrava a cena para o teto. O vilao NAO sumiu: ele
         # desceu para dentro da isca, em seis das vinte e duas entradas.
-        iscas_slots = dict(o=o1, r=raro_falado(spec["raro"]))
-        f[0] = rng.choice(
-            _cabem(ISCAS, lambda i: i.format(**iscas_slots),
-                   TETO_FALA[1])).format(**iscas_slots)
+        # ⭐ TRES BEATS, sorteados em CADEIA e do mais longo para o mais curto:
+        # o FECHO carrega o literal `gelatin trick` (intocavel), a VIRADA e o
+        # problema cedem em volta. ⛔ Fallback e' a entrada mais CURTA, nunca
+        # `or pool`.
+        r_fal = raro_falado(spec["raro"])
+
+        def _c1(pb, vr, fc):
+            return "%s. %s %s, %s." % (pb.format(o=o1), vr, r_fal, fc)
+
+        cv = min(VIRADAS, key=_palavras)
+        cf = min(FECHOS, key=_palavras)
+        pb = rng.choice(_cabem(PROBLEMAS, lambda x: _c1(x, cv, cf),
+                               TETO_FALA[1]))
+        vr = rng.choice(_cabem(VIRADAS, lambda x: _c1(pb, x, cf),
+                               TETO_FALA[1]))
+        fc = rng.choice(_cabem(FECHOS, lambda x: _c1(pb, vr, x),
+                               TETO_FALA[1]))
+        f[0] = _c1(pb, vr, fc)
 
     if 1 in quais:
         met, com, raro = spec["metodo"], spec["comum"], spec["raro"]
@@ -2257,24 +2343,17 @@ def lint(spec, blocos):
                             "operador: so' a promessa, sem centimetro"
                     % hit.group(0)))
 
-    # --- BO3: o vilao existe no REPERTORIO, e nomeia QUEM --------------------
-    # ⛔⛔ A REGRA MUDOU DE UNIDADE EM 2026-08-05, e a mudanca e' deliberada.
-    # Ela cobrava o vilao em TODO sorteio, como segunda sentenca da cena 1. O
-    # operador aposentou esse beat (era ele que estourava o teto e cortava a
-    # fala) e o exemplo que ele escreveu a mao NAO tem vilao. Regra que reprova
-    # a copy que o operador escreveu e' regra mal escrita (licoes §2, §16).
-    # ⭐ Mas o vilao nao pode sumir: o angulo deste agente e' a botica de casa
-    # contra a FARMACIA, nomeada ja' na fonte. Entao a lente passou a cobrar o
-    # REPERTORIO — uma parcela minima das iscas tem de nomear quem lucra — em
-    # vez de cobrar cada video.
-    # ⛔ PRONOME NAO E' AGENTE: `nobody`, `somebody`, `they` nao nomeiam ninguem.
-    _AGENTE = (r"\b(pharmac\w+|chemist\w*|drug compan\w+|drug industry|"
-               r"pill compan\w+|doctors?|clinic)\b")
-    com_vilao = [x for x in ISCAS if re.search(_AGENTE, x, re.I)]
-    if len(com_vilao) < max(3, len(ISCAS) // 6):
-        ach.append(("ERRO", "BO3: so' %d de %d iscas nomeiam a farmacia ou o "
-                            "medico — o vilao do angulo esta' sumindo do "
-                            "repertorio" % (len(com_vilao), len(ISCAS))))
+    # --- BO3: APOSENTADA EM 2026-08-05 -------------------------------------
+    # ⛔ Ordem do operador: *"tirar o vilao do escopo do take 1"*. A lente cobrava
+    # que uma parcela das iscas nomeasse a farmacia; sem vilao na cena 1 ela
+    # reprovaria 100% da producao. Regra que cobra o que o operador mandou tirar
+    # nao e' defesa, e' sabotagem.
+    # ⚠️ CONSEQUENCIA REGISTRADA, porque ela e' real e ele decidiu com ela na
+    # mesa: a farmacia so' existia nessas iscas — zero mencoes em ANCORAS,
+    # PROMESSAS, RECEITAS, USOS, GATES e ISCAS_ENTREGA. Ela sai do video inteiro.
+    # O angulo continua sendo a botica de casa, so' que sem o adversario dito em
+    # voz alta: ele fica implicito no `nobody sells` dos fechos e na propria
+    # existencia da receita caseira.
 
     # --- BO4: o mecanismo ----------------------------------------------------
     if "gelatin trick" not in " ".join(falas).lower():
@@ -2483,7 +2562,8 @@ def autoteste(n=600):
     for nome, pool in (("MUNDOS", MUNDOS), ("METODOS", METODOS),
                        ("RAROS", RAROS), ("COMUNS", COMUNS),
                        ("SUBSTANCIAS", SUBSTANCIAS), ("REFS", REFS),
-                       ("HOMENS", HOMENS), ("ISCAS", ISCAS),
+                       ("HOMENS", HOMENS), ("PROBLEMAS", PROBLEMAS),
+                       ("VIRADAS", VIRADAS), ("FECHOS", FECHOS),
                        ("USOS", USOS),
                        ("ISCAS_ENTREGA", ISCAS_ENTREGA)):
         # ⚠️ PROPS tem piso PROPRIO de 5 e ele e' EMPIRICO: o pool e' o conjunto
@@ -2544,26 +2624,10 @@ def autoteste(n=600):
     if not any("BO10" in msg for _, msg in lint(s10, b)):
         ctrl.append("[BO10] nao acusa medida de crescimento")
 
-    # ⭐ [BO3] O CONTROLE SEGUE A REGRA, e a regra mudou de unidade em
-    # 2026-08-05: o vilao deixou de ser cobrado por SORTEIO (o beat foi
-    # aposentado pelo operador) e passou a ser cobrado no REPERTORIO.
-    # ⚠️ O controle antigo montava uma cena 1 sem vilao e esperava reprovacao —
-    # e ele ficou CEGO no instante em que a regra mudou, o que e' exatamente o
-    # que o autoteste existe para gritar. Agora o controle mexe no POOL.
-    _iscas_reais = list(ISCAS)
-    try:
-        ISCAS[:] = [x for x in ISCAS
-                    if not re.search(r"pharmac|chemist|doctor|clinic", x, re.I)]
-        if not any("BO3" in msg for _, msg in lint(s, b)):
-            ctrl.append("[BO3] NAO acusa um repertorio de iscas em que NENHUMA "
-                        "nomeia a farmacia — o vilao do angulo sumiria em "
-                        "silencio")
-    finally:
-        ISCAS[:] = _iscas_reais
-    # ⚠️ controle positivo: o repertorio REAL nao pode ser acusado.
-    if any("BO3" in msg for _, msg in lint(s, b)):
-        ctrl.append("[BO3] acusa o repertorio real — a cota de vilao esta' alta "
-                    "demais")
+    # ⚠️ O controle de BO3 saiu junto com a lente em 2026-08-05. Ele montava um
+    # repertorio sem vilao e esperava reprovacao — hoje esse e' o repertorio
+    # CERTO. Controle de regra aposentada que fica para tras vira ruido, e ruido
+    # ensina o operador a ignorar o autoteste.
 
     # [BO6] o homem falando / olhando a lente
     b6 = dict(b)
