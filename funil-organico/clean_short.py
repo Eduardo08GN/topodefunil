@@ -1312,6 +1312,13 @@ def lint(spec, blocos):
     if "foreground" not in blocos.get("IMAGE 01/03", ""):
         ach.append(("ERRO", "CL27: IMAGE 01 sem os itens em primeiro plano "
                             "(foreground) — a cena sai longe demais"))
+    # ⛔⛔ TAKE CONTRA IMAGE — 2026-08-05. Este motor tem `lint()` proprio e NAO
+    # passa pelo `lint_curto`, entao a lente compartilhada nao chegava aqui.
+    # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
+    # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
+    # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    sc.lint_take_vs_image(blocos, ach)
+
     return ach
 
 

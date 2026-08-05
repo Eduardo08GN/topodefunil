@@ -945,6 +945,59 @@ valor não mudou. Sete eixos, sete medições. É barato e é a única prova.
 
 ---
 
+## 30. ⛔⛔ EU CONFERI OS `IMAGE` E DECLAREI PRONTO SEM ABRIR UM `TAKE`
+
+**O caso (PLACA e DUPLA, 2026-08-05).** De manhã consertei o PLACA, que gerava
+as cenas do DUPLA (§29). Reescrevi os três `IMAGE`, medi 600 sorteios sem ERRO,
+recompilei, commitei. À tarde, ao rodar a **etapa [7]** e ler o vídeo produzido,
+o `TAKE 01` dizia:
+
+> *"Her right hand keeps the dish at the same height and the same tilt. Only the
+> falling scatter moves."*
+
+Numa cena sem prato e sem despejo. E o `TAKE 02` mandava tampar o liquidificador
+enquanto a `IMAGE` mostrava uma colher num caneco. O DUPLA tinha os mesmos três,
+mais um `TAKE 03` falando de *"the man behind her"* numa cena de duas mulheres.
+
+**Por que passou em 600 sorteios.** Todo linter do repo olhava **um bloco por
+vez**. Nenhum comparava o `TAKE` com a `IMAGE` do mesmo bloco — e a doutrina que
+isso viola estava escrita em comentário em **seis motores** e vigiada em nenhum:
+
+> *Contradição entre IMAGE e TAKE é pior que omissão: a omissão o gerador
+> preenche com o frame; a contradição ele resolve mexendo no que estava certo.*
+
+**O que impede:** `sc.lint_take_vs_image` — cobra que o objeto citado na
+**direção** do TAKE exista na IMAGE do mesmo bloco, e que `only person in the
+shot` não conviva com um segundo corpo na imagem.
+
+**As três coisas que a lente me ensinou enquanto eu a escrevia**, e cada uma foi
+um falso positivo antes de ser regra:
+
+| Versão | Acusava | Por que estava errada |
+|---|---|---|
+| olhar o bloco inteiro | `You already own the glass` (RESSURREICAO) | isso está na **FALA**. Direção manda desenhar; fala é o que a boca diz. Erro de categoria |
+| `behind her and` como pista de pessoa | *"documents behind her and the US flag"* | pista de **posição**, não de gente |
+| `beside her at frame` | cenário | idem |
+
+> **Falso positivo é pior que lente nenhuma:** o operador aprende a ignorar a
+> lente, e ela para de proteger o caso real.
+
+**E a armadilha final, que quase me fez declarar vitória de novo.** Rodei a lente
+nos 17 motores e vi **"limpo"** em quatorze. Fui conferir: **sete deles não
+chamam `lint_curto`** — têm `lint()` próprio, e a lente nunca rodou neles. O
+"limpo" era ausência de medição, não ausência de defeito. Ao plugar nos sete, o
+DUPLA saltou de "limpo" para **200 de 200**.
+
+> ⭐ **Medir a lente é medir TAMBÉM se ela é chamada.** Cobertura silenciosa lê
+> como aprovação.
+
+**O que ela achou fora do meu escopo:** ESCANDALO e RESSURREICAO mandam animar
+*"a wooden spoon"* que não está na IMAGE. É defeito real, e o conserto é CENA —
+alçada do operador. Os `.exe` dos dois **não foram recompilados**, para não
+travar a produção dele com um linter que reprova antes de a decisão existir.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -1000,6 +1053,13 @@ valor não mudou. Sete eixos, sete medições. É barato e é a única prova.
       vê string quebrada entre linhas adjacentes (§19)
 - [ ] **Declarei 100%? Rodei em DOIS patamares de amostra e vi convergir** —
       100% de 60 sorteios escondeu 11 templates sem tradução (§23)
+- [ ] **Li os três `TAKE` inteiros**, não só os `IMAGE` — cada TAKE anima a
+      SUA cena e nenhuma outra (§30)
+- [ ] **A lente nova é CHAMADA pelo motor?** Sete motores têm `lint()`
+      próprio e não passam pelo `lint_curto` — "limpo" neles pode ser
+      ausência de medição (§30)
+- [ ] **`resumo_pt` descreve ESTE vídeo?** É o texto que o operador lê para
+      aprovar em dois segundos; herdado, faz ele aprovar o que não viu
 - [ ] **Motor copiado?** As três listas do §29 percorridas: toda `BO_*` de
       cena, toda regra do `lint()`, toda sonda do `autoteste()`
 - [ ] **Cada cadeado MEDIDO** — travar o eixo, sortear 30×, conferir que não

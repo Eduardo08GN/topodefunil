@@ -162,10 +162,21 @@ BO_PLACA = (
 # crescimento: quem cresce e' o RESSURREICAO. O bit visual aqui e' o DESPEJO.
 # ⚠️ Nunca `completely motionless` num objeto que a mao segura — ordem impossivel,
 # e o Veo resolve SOLTANDO o objeto (F12b). Diz-se pela POSICAO.
-BO_ISCA_ESTAVEL = (
-    "Her left hand keeps it in exactly the same place, at the same distance from "
-    "the lens, same size, same shape, same colour. Her right hand keeps the dish "
-    "at the same height and the same tilt. Only the falling scatter moves."
+# ⛔⛔ REESCRITO. Aqui esteve o BO_ISCA_ESTAVEL do BOTICA — *"Her right hand
+# keeps the dish at the same height and the same tilt. Only the falling scatter
+# moves."* — num TAKE cuja IMAGE nao tem prato nenhum e nao tem despejo nenhum.
+# Contradicao entre IMAGE e TAKE e' PIOR que omissao: a omissao o gerador
+# preenche com o frame; a contradicao ele resolve mexendo no que estava certo.
+# ⚠️ Achado LENDO o video produzido na etapa [7], nao pelo linter — este motor
+# passava 600 sorteios sem ERRO com esta contradicao dentro. Consertei as IMAGE
+# do PLACA de manha e declarei pronto sem abrir um unico TAKE (§29 outra vez, uma
+# camada mais fundo).
+# ⭐ O que esta cena tem: o DEDO APONTANDO e a placa. Nada se move a nao ser ela.
+BO_APONTA_ESTAVEL = (
+    "Her extended arm and her pointing index finger stay exactly where they are "
+    "the whole time. The man beside her does not move, does not lower his shirt "
+    "and does not shift what he is holding. The card stays where it is taped, "
+    "fully legible, and nothing on it changes."
 )
 
 # ⭐⭐ BO3 — O PREPARO. ⛔ ORDEM DO OPERADOR: o utensilio NAO E' FIXO. A fonte usa
@@ -2300,26 +2311,33 @@ def montar(spec):
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;
     # a contradicao ele resolve mexendo no que estava certo.
+    # ⛔⛔ O TAKE ANIMA A IMAGE — cada um destes descreve a cena que esta' NO
+    # QUADRO daquele bloco, e nenhum outro.
     mov = [
-        BO_ISCA_ESTAVEL + " She never lowers either hand and never sets "
-        "anything down.",
-        ("She keeps her right hand closed around %(vaso_curto)s, her forearm "
-         "resting steady on the %(sup)s, and %(acao)s. Her left hand stays flat "
-         "on the %(sup)s beside it. %(nao_toca)s" % v),
+        BO_APONTA_ESTAVEL,
+        # ⛔ A cena 2 do PLACA e' a COLHER no caneco, nao o liquidificador do
+        # BOTICA. O `mov` dizia *"tips the last of it in and sets the lid on"*
+        # contra uma IMAGE que mostra ela mexendo com uma colher comprida.
+        ("She keeps her right hand closed around the long spoon and keeps "
+         "stirring in slow circles the whole time. Her left hand stays flat on "
+         "the %(sup)s beside the mug. %(nao_toca)s" % v),
         ("She holds the glass steady at chest height the whole time and never "
-         "sets it down."),
+         "sets it down. Her other hand keeps the fruit upright and never lowers "
+         "it."),
     ]
+    # ⛔ A CENA 1 TEM DUAS PESSOAS POR CONSTRUCAO — ela e o corpo dele. Declarar
+    # `only person in the shot` ali e' ordem contraditoria, e o Veo resolve
+    # APAGANDO o homem, que e' justamente o que o angulo mostra.
     elenco = [
-        "She is the only person in the shot.",
+        "Only she speaks, straight into the lens. The man never speaks, never "
+        "turns and his face is never shown.",
         "She is the only person in the shot.",
         BO_HOMEM_TAKE % spec["reacao"][1],
     ]
     audio = ["%s. No music." % m["audio"],
-             # ⚠️ SEM `the` aqui: o campo `curto` dos METODOS JA' traz o artigo
-             # (`the metal sieve`). A versao anterior saia "the sound of the the
-             # metal sieve" — achado LENDO o TAKE renderizado, nao no fonte, e
-             # invisivel em qualquer linter de conteudo.
-             "%s, the sound of %s. No music." % (m["audio"], met["curto"]),
+             # ⛔ Era `the sound of the blender jug` numa cena de colher. O som
+             # tambem e' parte do prompt e tambem contradizia a IMAGE.
+             "%s, a spoon turning in a glass mug. No music." % m["audio"],
              "%s. No music." % m["audio"]]
 
     for i in range(3):
@@ -2652,6 +2670,13 @@ def lint(spec, blocos):
         ach.append(("ERRO", "placeholder cru no prompt: %s"
                     % re.findall(r"\{\w+\}", junto)[:3]))
 
+    # ⛔⛔ TAKE CONTRA IMAGE — 2026-08-05. Este motor tem `lint()` proprio e NAO
+    # passa pelo `lint_curto`, entao a lente compartilhada nao chegava aqui.
+    # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
+    # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
+    # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    sc.lint_take_vs_image(blocos, ach)
+
     return ach
 
 
@@ -2665,13 +2690,20 @@ def prop_n(spec):
 
 def resumo_pt(spec):
     m = spec["mundo"]
-    return ("Mulher %s de %d anos, em %s (%s). Cena 1: despeja %s sobre %s "
-            "esticado na lente + o vilao. Cena 2: %s com %s e %s. Cena 3: o "
-            "copo na mao, com um homem de %d anos mudo e espantado atras.%s"
-            % (spec["etnia"], spec["ref"]["idade"], m["id"].replace("_", " "),
-               m["familia"], spec["substancia"]["nome"], spec["prop"]["nome"],
-               spec["metodo"]["id"].replace("_", " "), spec["comum"]["nome"],
-               spec["raro"]["nome"], spec["homem"]["idade"],
+    # ⛔ REESCRITO. Aqui estava o resumo do BOTICA, palavra por palavra: ele
+    # anunciava despejo de substancia, liquidificador e prop esticado na lente —
+    # nada disso existe neste angulo. E' o texto que o operador le no painel para
+    # aprovar ou re-sortear em dois segundos: resumo errado faz ele aprovar um
+    # video que nao viu. Achado LENDO o video da etapa [7].
+    return ("Mulher %s de %d anos, de %s, em %s (%s). Cena 1: ela aponta para o "
+            "corpo dele (do peito para baixo, sem rosto), %s na virilha e a "
+            "placa «%s» ao lado. Cena 2: a bancada com a receita, ela "
+            "mexendo com a colher. Cena 3: %s na mao dela + o copo, com um homem "
+            "de %d anos mudo e espantado atras.%s"
+            % (spec["etnia"], spec["ref"]["idade"], spec["traje"][1],
+               m["id"].replace("_", " "), m["familia"],
+               spec["prop"]["murcho"].split(",")[0], spec["placa"],
+               spec["prop"]["gigante"].split(",")[0], spec["homem"]["idade"],
                " Com bandeira." if spec.get("bandeira") else " Sem bandeira."))
 
 

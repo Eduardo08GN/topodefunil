@@ -2264,6 +2264,13 @@ def lint(spec, blocos):
         ach.append(("ERRO", "placeholder cru no prompt: %s"
                     % re.findall(r"\{\w+\}", junto)[:3]))
 
+    # ⛔⛔ TAKE CONTRA IMAGE — 2026-08-05. Este motor tem `lint()` proprio e NAO
+    # passa pelo `lint_curto`, entao a lente compartilhada nao chegava aqui.
+    # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
+    # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
+    # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    sc.lint_take_vs_image(blocos, ach)
+
     return ach
 
 

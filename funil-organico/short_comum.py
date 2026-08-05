@@ -194,7 +194,8 @@ def bloco_base(blocos, mapa, tipo, cena_base):
 # ---------------------------------------------------------------------------
 
 def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
-               limpar_direcao=None, extras=(), cota_min=2, teto_total=None):
+               limpar_direcao=None, extras=(), cota_min=2, teto_total=None,
+               objetos_ok=()):
     """As regras que valem para qualquer SHORT de 3 cenas.
 
     Reusa as TABELAS do motor base (BANIDOS_*), nunca as reescreve. O que muda
@@ -312,6 +313,10 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
     # ⛔ valem para TODO agente SHORT, sem excecao — inclusive os que ainda
     # vao nascer (ordem do operador, 2026-08-02)
     lint_sem_texto(blocos, achados)
+    # ⛔⛔ 2026-08-05: TAKE contra IMAGE. Vale para TODO agente SHORT, inclusive
+    # os que ainda vao nascer. `objetos_ok` deixa o motor declarar as excecoes
+    # que ele CONFERIU — e declarar excecao e' declarar que alguem olhou.
+    lint_take_vs_image(blocos, achados, objetos_ok)
     if falas:
         lint_isca_cta(falas[-1], achados, "a cena 3 (CTA)")
         lint_cta_literal(falas[-1], achados, "a cena 3 (CTA)")
@@ -672,3 +677,112 @@ def lint_sem_texto(blocos, achados):
                                     "pode gravar legenda ou marca no video, e "
                                     "a nossa legenda nasce depois, no Editor"
                             % chave))
+
+
+# ---------------------------------------------------------------------------
+# ⛔⛔ TAKE CONTRA IMAGE — a lente que faltava, e ela custou dois agentes
+# ---------------------------------------------------------------------------
+# Criada em 2026-08-05, ao rodar a etapa [7] do PLACA. O motor passava 600
+# sorteios sem um ERRO e o TAKE 01 dizia *"Her right hand keeps the dish at the
+# same height and the same tilt. Only the falling scatter moves"* — contra uma
+# IMAGE sem prato e sem despejo. O TAKE 02 mandava tampar o liquidificador
+# enquanto a IMAGE mostrava uma colher num caneco. Nada disso e' visivel a um
+# linter que olha um bloco por vez.
+#
+# ⭐ A DOUTRINA QUE ELA DEFENDE: *contradicao entre IMAGE e TAKE e' PIOR que
+# omissao — a omissao o gerador preenche com o frame; a contradicao ele resolve
+# mexendo no que estava certo.* Estava escrita em comentario em seis motores e
+# vigiada em nenhum.
+#
+# ⚠️ ESTA LENTE E' DE OBJETO, NAO DE PROSA. Ela nao tenta entender a cena: pega
+# um punhado de substantivos que SO' fazem sentido se o objeto estiver em quadro,
+# e cobra que quem aparece no TAKE apareca na IMAGE do MESMO bloco. Falso
+# positivo aqui e' barato (o motor declara a excecao); falso negativo custou dois
+# agentes entregues com prompt contraditorio.
+OBJETOS_TAKE = {
+    "the dish": ("dish",),
+    "the falling scatter": ("falling", "scatter", "pouring", "tipped over"),
+    "blender": ("blender",),
+    "the lid": ("lid",),
+    "the spoon": ("spoon",),
+    "the long spoon": ("spoon",),
+    "the mug": ("mug",),
+    "the glass": ("glass",),
+    "the card": ("card",),
+    "the sign": ("card", "sign"),
+    "the jug": ("jug", "blender"),
+    "the pan": ("pan", "hotplate"),
+    "the straw": ("straw",),
+    "the mortar": ("mortar",),
+    "the pestle": ("pestle",),
+    "the sieve": ("sieve",),
+    "the jar": ("jar",),
+}
+
+
+def _direcao(take):
+    """So' a DIRECAO do TAKE — sem a fala e sem o audio.
+
+    ⛔ A primeira versao desta lente lia o bloco inteiro e acusava o
+    RESSURREICAO por *"You already own the glass"* — que esta' na FALA, onde a
+    copy pode citar objeto que nao esta' em quadro (metafora, posse, memoria).
+    Direcao e fala sao dois registros: um manda o gerador desenhar, o outro e'
+    o que a boca diz. Confundir os dois e' o mesmo erro de categoria que fez a
+    lente acusar cenario como se fosse gente.
+    """
+    for corte in ("\nDialogue:", 'Dialogue: "', "\nAudio:"):
+        if corte in take:
+            take = take.split(corte)[0]
+    return take
+
+
+def lint_take_vs_image(blocos, achados, excecoes=()):
+    """Cobra que o objeto citado no TAKE exista na IMAGE do MESMO bloco.
+
+    `excecoes` recebe as chaves de OBJETOS_TAKE que aquele motor sabe que sao
+    seguras — mas declarar excecao e' declarar que ALGUEM CONFERIU, e fica
+    escrito no motor com o porque.
+    """
+    for chave in sorted(blocos):
+        if not chave.startswith("TAKE"):
+            continue
+        img = blocos.get(chave.replace("TAKE", "IMAGE"), "")
+        if not img:
+            continue
+        low = _direcao(blocos[chave]).lower()
+        for termo, provas in OBJETOS_TAKE.items():
+            if termo in excecoes or termo not in low:
+                continue
+            if not any(p in img.lower() for p in provas):
+                achados.append((
+                    "ERRO",
+                    "%s cita %r e a IMAGE do mesmo bloco nao tem esse objeto — "
+                    "contradicao entre TAKE e IMAGE e' pior que omissao: o "
+                    "gerador resolve mexendo no que estava certo" % (chave, termo)))
+
+    # ⭐ A OUTRA METADE: contagem de gente. `only person in the shot` num TAKE
+    # cuja IMAGE tem um segundo corpo e' ordem contraditoria, e o Veo resolve
+    # APAGANDO o segundo corpo — que costuma ser justamente o bit do angulo.
+    for chave in sorted(blocos):
+        if not chave.startswith("TAKE"):
+            continue
+        img = blocos.get(chave.replace("TAKE", "IMAGE"), "").lower()
+        if not img or "only person in the shot" not in _direcao(
+                blocos[chave]).lower():
+            continue
+        # ⛔ AS PISTAS SAO DE PESSOA, NUNCA DE POSICAO. A primeira versao tinha
+        # `behind her and` e `beside her at frame`, e as duas casavam com
+        # CENARIO — *"the two framed documents behind her and the US flag"* no
+        # ESCANDALO, *"a living room out of focus behind her and a small US
+        # flag"* no RESSURREICAO. Falso positivo e' pior que lente nenhuma: o
+        # operador aprende a ignorar a lente, e ela para de proteger o caso real.
+        for pista in ("is a man", "stands a man", "a man shown", "her friend",
+                      "second woman", "another woman", "is a %d-year-old man",
+                      "man stands", "man is standing", "man sits"):
+            if pista in img:
+                achados.append((
+                    "ERRO",
+                    "%s declara `only person in the shot` e a IMAGE do mesmo "
+                    "bloco tem um segundo corpo (%r) — o Veo resolve a "
+                    "contradicao APAGANDO o segundo corpo" % (chave, pista)))
+                break
