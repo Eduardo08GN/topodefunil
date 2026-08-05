@@ -364,7 +364,7 @@ TOCA_UM = ("%s touches only the container %s is pouring from. %s never touches, 
            "opens or lifts anything else on the %s.")
 
 # CL21 — a gelatina pronta, SO' na cena 3
-GELATINA = "a clear glass bowl of firm dark purple gelatin cubes, glossy and set"
+GELATINA = "a clear glass bowl of firm vivid purple gelatin cubes, glossy and set"
 
 # CL17 — anti-F12b nas cenas 1 e 2 da familia B: punho inteiro + antebraco
 # apoiado. ⛔ Nunca `completely motionless` num recipiente que alguem segura:

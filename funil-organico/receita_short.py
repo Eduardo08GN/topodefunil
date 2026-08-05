@@ -155,7 +155,7 @@ RE_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 # ⭐ RE6 — A TACA DO PAYOFF. Lida na fonte em t=00:18: taca larga de coupe cheia
 # de cubos de gelatina rosa, estendida para a lente.
 # ⛔ Ela so' existe na CENA 3. Mostrar antes entrega o payoff antes da promessa.
-RE_TACA = ("a wide-bowled glass coupe heaped with firm deep-pink gelatin cubes, "
+RE_TACA = ("a wide-bowled glass coupe heaped with firm vivid purple gelatin cubes, "
            "glossy and set")
 
 # ⛔ RE7 — A ANCORA DE CONTINUIDADE do modo `terceira`. Rosto E idade, nunca so'

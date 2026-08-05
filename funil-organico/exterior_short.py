@@ -1030,13 +1030,13 @@ REACOES = [
 # contradicao dentro do proprio IMAGE.
 MECANISMOS = [
     {"id": "tigela_cubos",
-     "plantado": "a shallow white bowl of firm amber gelatin cut into cubes, "
+     "plantado": "a shallow white bowl of firm vivid purple gelatin cut into cubes, "
                  "each cube wobbling slightly",
-     "curto": "the shallow white bowl of amber gelatin cubes",
+     "curto": "the shallow white bowl of vivid purple gelatin cubes",
      "pousado": "uncovered, its serving spoon lying on the board beside it"},
     {"id": "pote_firme",
-     "plantado": "a clear glass jar of gelatin already set firm and amber",
-     "curto": "the glass jar of set amber gelatin",
+     "plantado": "a clear glass jar of gelatin already set firm and vivid purple",
+     "curto": "the glass jar of set vivid purple gelatin",
      "pousado": "already open, its lid lying face-up on the board beside it"},
     {"id": "sache_aberto",
      "plantado": "a plain white sachet of pale gelatin powder torn open at the "
@@ -1054,14 +1054,14 @@ MECANISMOS = [
               "through it",
      "pousado": "already stirred, the wet spoon lying on the board beside it"},
     {"id": "panela_morna",
-     "plantado": "a small enamel saucepan of warm amber gelatin with a spoon "
+     "plantado": "a small enamel saucepan of warm vivid purple gelatin with a spoon "
                  "standing in it",
-     "curto": "the enamel saucepan of warm amber gelatin",
+     "curto": "the enamel saucepan of warm vivid purple gelatin",
      "pousado": "already open, its lid lying face-up on the board beside it"},
     {"id": "pires_cubos",
-     "plantado": "three firm amber gelatin cubes stacked on a small white "
+     "plantado": "three firm vivid purple gelatin cubes stacked on a small white "
                  "saucer",
-     "curto": "the saucer of stacked amber gelatin cubes",
+     "curto": "the saucer of stacked vivid purple gelatin cubes",
      "pousado": "uncovered, the emptied mould lying on the board beside it"},
     {"id": "tigela_lisa",
      "plantado": "a plain glass bowl of gelatin set firm, the surface catching "
@@ -1079,14 +1079,14 @@ MECANISMOS = [
      "curto": "the torn white sachet of gelatin powder",
      "pousado": "already poured, the wet spoon lying on the board beside it"},
     {"id": "forma_cubos",
-     "plantado": "a shallow metal tray of set amber gelatin scored right "
+     "plantado": "a shallow metal tray of set vivid purple gelatin scored right "
                  "through into squares",
-     "curto": "the metal tray of amber gelatin squares",
+     "curto": "the metal tray of vivid purple gelatin squares",
      "pousado": "uncovered, the scoring knife lying on the board beside it"},
     {"id": "tigela_madeira",
-     "plantado": "a turned wooden bowl of firm amber gelatin cubes piled above "
+     "plantado": "a turned wooden bowl of firm vivid purple gelatin cubes piled above "
                  "the rim",
-     "curto": "the wooden bowl of amber gelatin cubes",
+     "curto": "the wooden bowl of vivid purple gelatin cubes",
      "pousado": "uncovered, the emptied glass measure standing on the board "
                 "beside it"},
 ]

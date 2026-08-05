@@ -227,7 +227,7 @@ CO_PEGADA = ("Her right hand is closed around the %s, the whole hand visibly "
 # ⭐ Ela esta' NA MAO dela no frame em que a boca diz `gelatin,` — a fonte faz
 # exatamente isso com o livro (t=00:35), que e' a keyword dela (`book`). O objeto
 # da keyword na mao e' o que faz a palavra grudar.
-CO_GELATINA = ("a clear glass bowl of firm dark purple gelatin cubes, glossy "
+CO_GELATINA = ("a clear glass bowl of firm vivid purple gelatin cubes, glossy "
                "and set")
 # ⚠️ POSICAO LIDA NA FONTE (t=00:35): o objeto da keyword sobe na mao ESQUERDA,
 # a frame-right, na altura da bochecha, e o indicador DIREITO cruza o corpo e
