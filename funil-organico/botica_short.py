@@ -1355,24 +1355,50 @@ PROBLEMAS = [
     "Nothing woke my husband's {o}",
     "For years my husband's {o} failed",
     "My husband's {o} embarrassed him",
+    # + 2026-08-05 — todas em 4-6 palavras, com QUEM e O QUE, variando o verbo da falha
+    "My husband's {o} was asleep",
+    "My husband's {o} had failed",
+    "My husband's {o} would not answer",
+    "My husband's {o} had gone cold",
+    "My husband's {o} was over",
+    "My husband's {o} had checked out",
+    "My husband's {o} stayed asleep",
+    "My husband's {o} had no life left",
+    "My husband's {o} let him down",
+    "My husband's {o} was beaten",
+    "My man's {o} stopped answering",
+    "My husband's {o} had retired early",
 ]
 
 VIRADAS = [
     "Things changed when I discovered",
     "That changed the day I found",
-    "It all turned around once I got hold of",
+    "That turned around once I found",
     "Everything shifted when I came across",
     "That ended the week I found",
     # ⛔ era "It came back after I started using" e o `medir_deiticos` acusou:
     # pronome nu como sujeito de estado do corpo e' a familia (B), a mesma
     # que o operador reprovou no RECEITA. Pool novo reintroduz vicio velho.
-    "He was a different man after I started using",
+    "He changed the week I found",
     "What turned it around was",
-    "The change started when a neighbour told me about",
+    "A neighbour told me about",
     "It all changed once my sister sent me",
     "That was over the day I read about",
-    "Everything was different after I got my hands on",
+    "Everything changed after I got",
     "The turn came when I finally found",
+    # + 2026-08-05 — viradas com VERBO — nunca `until {ingrediente}`, que fica truncado
+    "That changed the month I found",
+    "Everything turned around after I found",
+    "It changed for good when I found",
+    "That stopped the day I tried",
+    "What finally worked was",
+    "It all changed when a friend gave me",
+    "That was over once I started using",
+    "The change came the week I found",
+    "It turned around when I switched to",
+    "What did it for him was",
+    "That ended after I brought home",
+    "Everything was different once I had",
 ]
 
 # ⚠️ O fecho vem depois do aposto do raro, entao a virgula ANTES dele mora na
@@ -1387,6 +1413,16 @@ FECHOS = [
     "and a gelatin trick I keep to myself",
     "and one gelatin trick nobody talks about",
     "and a secret gelatin trick my grandmother used",
+    # + 2026-08-05 — o literal `gelatin trick` e' intocavel; varia o qualificador
+    "and a quiet gelatin trick",
+    "and one gelatin trick from home",
+    "plus the gelatin trick behind it",
+    "and a gelatin trick nobody mentions",
+    "and one secret gelatin trick more",
+    "and the gelatin trick that finished it",
+    "and a gelatin trick kept in the family",
+    "plus one gelatin trick of my own",
+    "and a gelatin trick no shop carries",
 ]
 
 # ⛔ O VILAO — na fonte e' `Pharmacies don't want you to know this.` O operador
@@ -1487,6 +1523,22 @@ RECEITAS = [
     "{c} and a pinch of {r}",
     "{c}, plus {r}",
     "some {c} and {r}",
+    # + 2026-08-05 — so' os ingredientes VISIVEIS — a gelatina fica de fora, e' o segredo
+    "{c} and {r} together",
+    "{c}, then {r}",
+    "a spoon of {c} and {r}",
+    # ⛔ NAO ACRESCENTAR RECEITA QUE SE AUTO-FECHA. Aqui esteve `{c} and {r},
+    # nothing more` e o render saiu **"Turmeric and sarsaparilla, NOTHING MORE
+    # AND one thing I keep back: the gelatin trick"** — a receita declarava a
+    # lista encerrada e a clausula do segredo emendava mesmo assim.
+    # ⚠️ A receita e' uma lista ABERTA por construcao: a ancora SEMPRE cola
+    # `and <segredo>: the gelatin trick` no fim dela. Nenhum linter pega isso,
+    # porque as duas metades sao gramaticais — so' a leitura do render pega.
+    "{c} and a spoon of {r}",
+    "two things: {c} and {r}",
+    "{c} first, then {r}",
+    "{c} mixed with {r}",
+    "a pinch of {c} and {r}",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
@@ -1542,6 +1594,17 @@ ANCORAS = [
     "%s and a secret nobody sells: the gelatin trick.",
     "%s and my grandmother's secret: the gelatin trick.",
     "%s and one more thing: the gelatin trick.",
+    # + 2026-08-05 — clausula, nunca sentenca propria — e o mecanismo e' NOMEADO, nao entregue
+    "%s and one thing more: the gelatin trick.",
+    "%s and the part I hold back: the gelatin trick.",
+    "%s and what nobody sells: the gelatin trick.",
+    "%s and a step I keep: the gelatin trick.",
+    "%s and my own secret: the gelatin trick.",
+    "%s and one last thing: the gelatin trick.",
+    "%s and the missing piece: the gelatin trick.",
+    "%s and a trick from home: the gelatin trick.",
+    "%s and something I do not show: the gelatin trick.",
+    "%s and the step nobody prints: the gelatin trick.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -1623,6 +1686,21 @@ PROMESSAS = [
     "Your {o} gets you in trouble, and she is not complaining.",
     "You stop dreading the bedroom, and your {o} is why she smiles.",
     "You'll feel it in your {o} inside a week, and so will she.",
+    # + 2026-08-05 — toda promessa nomeia o ORGAO e traz ELA — reacao dela e' prova, auto-relato e' alegacao
+    "Your wife will feel your {o} that same night.",
+    "She will reach for your {o} first.",
+    "Your wife will not let your {o} rest.",
+    "She stops pretending, and your {o} is why.",
+    "Your wife will ask what happened to your {o}.",
+    "She will notice your {o} before the coffee.",
+    "Your {o} answers, and she stops asking.",
+    "She will hold on to your {o} again.",
+    "Your wife wakes to your {o}, not to the alarm.",
+    "She will want your {o} in the morning.",
+    "Your {o} shows up, and your wife notices.",
+    "She stops sleeping turned away, and your {o} is why.",
+    "Your wife will be the one reaching, and your {o} is why.",
+    "She looks at your {o} the way she used to.",
 ]
 
 
@@ -1648,6 +1726,19 @@ USOS = [
     "One glass a day, and your {o} stops letting you down.",
     "Take it every morning and your {o} answers again inside a week.",
     "Drink it warm before bed and your {o} is up before you are.",
+    # + 2026-08-05 — o USO nomeia o orgao — sem ele o espectador nao sabe para que serve
+    "Drink it before bed and your {o} feels it by morning.",
+    "One glass at night, and your {o} is what wakes.",
+    "Take it every morning and your {o} does the rest.",
+    "Drink it warm and your {o} answers within the week.",
+    "A glass a day, and your {o} stops letting him down.",
+    "Drink this daily and your {o} comes back on its own.",
+    "One glass before bed, and your {o} does not go quiet.",
+    "Drink it every morning and your {o} holds all night.",
+    "Take a glass at night and your {o} shows up for her.",
+    "One glass, every single day, and your {o} does the talking.",
+    "Drink it first thing and your {o} follows within days.",
+    "A glass each night, and your {o} stops going missing.",
 ]
 
 # ⛔⛔ A ESCALADA SAIU DA CENA 3 — decisao MEDIDA, nao estetica.
@@ -1663,6 +1754,20 @@ ISCAS_ENTREGA = [
     "the exact recipe", "the recipe and the measurements",
     "the recipe and the doses", "the exact measurements",
     "the recipe", "the full routine", "the whole thing written out",
+    # + 2026-08-05 — sintagma NOMINAL curto: e' o que o CTA promete no DM.
+    # ⚠️ Tres das minhas primeiras entradas aqui (`the exact recipe`, `the
+    # complete recipe`, `the recipe and the doses`) JA' EXISTIAM nas linhas
+    # acima, e a duplicata passou despercebida porque o bloco antigo tem varias
+    # entradas por linha. Duplicata dobra em silencio a chance da linha e ocupa
+    # um slot que devia ser repertorio novo — agora ha' trava no autoteste.
+    "the full measurements",
+    "the written recipe",
+    "the exact steps",
+    "every step of it",
+    "the recipe in full",
+    "the missing step",
+    "the whole method",
+    "the recipe and the timing",
 ]
 
 GATES = [
@@ -1674,6 +1779,17 @@ GATES = [
     "Follow me, or I will not be able to find your comment.",
     "Follow me first, or I cannot reply.",
     "Do not forget to follow, or the app will not let me answer.",
+    # + 2026-08-05 — o gate e' o beat que cede espaco quando o teto aperta
+    "Follow me first, or your comment will not reach me.",
+    "You have to follow me, or I will not find you.",
+    "Follow me before you comment, or I cannot send it.",
+    "Follow first, otherwise I have no way to answer.",
+    "I can only reply if you are following me.",
+    "Follow me, or your comment gets lost in the pile.",
+    "Follow me first, or the message will not go through.",
+    "You must be following me for me to reply.",
+    "Follow me, otherwise I cannot get back to you.",
+    "Follow first, or I have no way to send it.",
 ]
 
 # ⛔ As palavras do orgao. Rotacionam DENTRO do video (nunca a mesma duas vezes).
@@ -2600,6 +2716,24 @@ def autoteste(n=600):
                           % (k, 100.0 * q / n))
 
     # ---- CONTROLES ---------------------------------------------------------
+    # ⛔⛔ NENHUM POOL COM ENTRADA REPETIDA — trava criada em 2026-08-05.
+    # Ao ampliar os pools eu acrescentei tres iscas que JA' EXISTIAM. Duplicata
+    # nao quebra nada: ela dobra em silencio a chance daquela linha e ocupa um
+    # slot que deveria ser repertorio novo. O sintoma so' apareceu porque a
+    # cobertura media 15 de 18 sem conseguir apontar as faltantes.
+    # ⚠️ Compara pelo TEXTO da entrada, nao pelo objeto — pools de tupla e de
+    # dict entram por `str`.
+    for _n, _p in (("PROBLEMAS", PROBLEMAS), ("VIRADAS", VIRADAS),
+                   ("FECHOS", FECHOS), ("RECEITAS", RECEITAS),
+                   ("ANCORAS", ANCORAS), ("PROMESSAS", PROMESSAS),
+                   ("USOS", USOS), ("ISCAS_ENTREGA", ISCAS_ENTREGA),
+                   ("GATES", GATES), ("REFS", REFS), ("HOMENS", HOMENS),
+                   ("REACOES_HOMEM", REACOES_HOMEM), ("MUNDOS", MUNDOS)):
+        _txt = [str(_x) for _x in _p]
+        _rep = sorted({_x for _x in _txt if _txt.count(_x) > 1})
+        for _x in _rep:
+            falhas.append("pool %s tem entrada REPETIDA: %s" % (_n, _x[:70]))
+
     ctrl = []
     s = sortear("joe", random.Random(1), {}, {})
     b = montar(s)
