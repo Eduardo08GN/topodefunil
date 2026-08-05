@@ -130,6 +130,19 @@ class App(tk.Tk):
         # muda nada — o botao acendia e o sorteio seguia aleatorio. Motor que
         # declara a flag recebe travas["pele"] e remonta o video em volta.
         self.pele_travavel = bool(getattr(motor, "PELE_TRAVAVEL", False))
+        # ⭐ 4o contrato aditivo (2026-08-05): MODO_BELA. Ordem do operador,
+        # lendo os lotes do DUPLA e do PLACA: *"gostei muito da ideia de ref
+        # feminina lindas super models com corpao e pouca roupa. Estou pensando
+        # em colocar um toggle de trava pra modo ref mulher bela em todos os ui
+        # ux pertinentes dos agentes shorts"*. Motor que declara recebe
+        # travas["bela"] e remonta a REF, a roupa e a clausula do rosto.
+        # ⭐ Dois modos, mesmo contrato: `MODO_BELA` (mulher super model) e
+        # `MODO_FORTE` (homem musculoso). Ordem do operador, 2026-08-05.
+        # ⛔ Guardados num dicionario e nao em dois atributos: um terceiro modo
+        # amanha nao pode custar mais um par de `if` espalhado pela classe.
+        self.modos = [m for m in ("bela", "forte")
+                      if getattr(motor, "MODO_%s" % m.upper(), False)]
+        self.modo_on = {m: False for m in self.modos}
         self.pele_travada = None
         self.var_trava = {}
         self.var_cadeado = {}
@@ -221,6 +234,19 @@ class App(tk.Tk):
             self.b_pele[pele] = b
         tk.Label(cx, text="pele", font=F_SMALL, bg=BG,
                  fg=MUTED).pack(side="right", padx=(0, 6))
+
+        # ⭐⭐ OS TOGGLES DE REF — so' os que o motor declara.
+        self.b_modo = {}
+        for _m in reversed(self.modos):
+            b = tk.Button(cx, text="ref %s" % _m, font=F_SMALL, relief="flat",
+                          bd=0, cursor="hand2", padx=12, pady=5,
+                          command=lambda k=_m: self.alternar_modo(k))
+            b.pack(side="right", padx=(0, 4))
+            self.b_modo[_m] = b
+        if self.modos:
+            tk.Label(cx, text="modo", font=F_SMALL, bg=BG,
+                     fg=MUTED).pack(side="right", padx=(14, 6))
+            self._pintar_modos()
 
         self._barra_travas()
         tk.Frame(self, bg=LINE, height=1).pack(fill="x", padx=16, pady=(10, 0))
@@ -496,7 +522,8 @@ class App(tk.Tk):
         ⚠️ O cadeado devolve o VALOR QUE ESTA' NA TELA (`self.spec[chave]`), nao
         um id: quem remonta o video em volta dele e' o motor.
         """
-        if not (self.travas_ui or self.eixos_travaveis or self.pele_travavel):
+        if not (self.travas_ui or self.eixos_travaveis or self.pele_travavel
+                or self.modos):
             return None
         t = {}
         for chave, var in self.var_trava.items():
@@ -509,6 +536,11 @@ class App(tk.Tk):
         # etnia travada na tela e' mais especifica que clara/escura.
         if self.pele_travada and "etnia" not in t:
             t["pele"] = self.pele_travada
+        # ⚠️ Os modos entram por ULTIMO e NAO sobrescrevem o cadeado de `ref`:
+        # REF travada na tela e' mais especifica que "uma bela qualquer".
+        for _m, _on in self.modo_on.items():
+            if _on and "ref" not in t:
+                t[_m] = True
         return t
 
     # ------------------------------------------------------------------ acao
@@ -625,6 +657,34 @@ class App(tk.Tk):
             self.var_pag.set(self.rng.choice(self.grupos[pele]))
         self.sortear()
         self._toast("pele %s — página %s" % (pele, self.var_pag.get()))
+
+    ROTULO_MODO = {
+        "bela": "super model, corpo escultural, pouca roupa",
+        "forte": "homem forte e musculoso",
+    }
+
+    def alternar_modo(self, chave):
+        """Liga/desliga um modo de REF e refaz o video inteiro.
+
+        ⛔ E' TRAVA, nao pre-selecao: enquanto ligado, TODO sorteio respeita.
+        Um botao que so' valesse para o proximo sorteio seria o mesmo cadeado
+        que nao trava — e o operador confia no que esta' aceso.
+        """
+        self.modo_on[chave] = not self.modo_on[chave]
+        self._pintar_modos()
+        self.sortear()
+        self._toast("modo REF %s %s" % (
+            chave.upper(),
+            "LIGADO — " + self.ROTULO_MODO.get(chave, "")
+            if self.modo_on[chave] else "desligado"))
+
+    def _pintar_modos(self):
+        for chave, b in self.b_modo.items():
+            on = self.modo_on[chave]
+            b.configure(bg=ACCENT if on else PANEL2,
+                        fg="#ffffff" if on else MUTED,
+                        activebackground=ACCENT_D if on else LINE,
+                        activeforeground="#ffffff")
 
     def _pintar_pele(self):
         # ⚠️ Motor com PELE_TRAVAVEL: aceso = TRAVADO, apagado = livre. Acender

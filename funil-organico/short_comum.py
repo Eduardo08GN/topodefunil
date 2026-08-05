@@ -830,3 +830,469 @@ def lint_painel_honesto(motor, spec, blocos, achados):
                 "PAINEL: o eixo %r esta' no painel e o valor sorteado (%r) nao "
                 "aparece em bloco nenhum — o operador troca e o video nao muda"
                 % (eixo, str(alvo)[:44])))
+
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ MODO REF BELA — o toggle compartilhado
+# ---------------------------------------------------------------------------
+# Ordem do operador, 2026-08-05, lendo os lotes do DUPLA e do PLACA: *"gostei
+# muito da ideia de ref feminina lindas super models com corpao e pouca roupa.
+# Estou pensando em colocar um toggle de trava pra modo ref mulher bela em todos
+# os ui ux pertinentes dos agentes shorts, que, quando ativados, gera refs
+# mulheres com essas caracteristicas"*.
+#
+# ⛔ E' UM CONTRATO, NAO 16 IMPLEMENTACOES. O pool de REFs e o de roupas moram
+# AQUI e valem para todo motor que declarar `MODO_BELA = True`. Um pool por
+# motor divergiria em uma semana — e "duas classificacoes divergentes" e' o
+# fragmento espelhado que a P9 proibe.
+#
+# ⚠️ ADITIVO: lido com `getattr`, entao motor que nao declara nada nao muda de
+# comportamento. Mesma disciplina do `PELE_TRAVAVEL`.
+#
+# ⭐ O QUE O MODO MUDA, e sao TRES coisas, porque o operador nomeou as tres:
+#   1. o CORPO e o ROSTO — pool proprio, registro top model;
+#   2. a ROUPA — pouca, e com a perna em quadro;
+#   3. a clausula ANTICELEB — `strikingly beautiful` no lugar de `ordinary
+#      relatable face, not a model`, que brigava de frente com o resto (CL26).
+# Mudar so' o rosto e deixar a roupa e a clausula velhas devolveria a
+# contradicao que o CLEAN ja' pagou: o gerador recebe "linda" no corpo e "cara
+# comum" no rosto na mesma frase, e resolve contra nos.
+
+# ⛔ 30 entradas, CINCO ruivas de tons DIFERENTES (auburn, copper, ginger, dark
+# red, mahogany) — ruiva nao e' uma cor so', e repetir `red hair` devolveria a
+# mesma mulher cinco vezes.
+# ⚠️ Cada uma varia CORPO, CABECA e MARCA juntos: duas mulheres de cabelo
+# diferente e mesmo porte leem como a mesma pessoa (licao do medir_personagens).
+REFS_BELAS = [
+    {"idade": 23, "corpo": "tall and long-legged with a sculpted waist",
+     "cabeca": "deep auburn hair falling in loose waves past her shoulders",
+     "marca": "a light spray of freckles across her nose and green eyes"},
+    {"idade": 26, "corpo": "sculptural with an hourglass figure and long legs",
+     "cabeca": "copper-red hair in a high glossy ponytail",
+     "marca": "pale green eyes and a small beauty mark above her lip"},
+    {"idade": 22, "corpo": "willowy and sculpted with a flat stomach",
+     "cabeca": "bright ginger hair cut in long layers",
+     "marca": "heavy freckling across her cheeks and hazel eyes"},
+    {"idade": 21, "corpo": "sculpturally curvy with a narrow waist",
+     "cabeca": "dark red hair swept over one shoulder",
+     "marca": "a small gold hoop in her left nostril and clear skin"},
+    {"idade": 25, "corpo": "tall and statuesque with a sculpted line",
+     "cabeca": "strawberry-blonde hair in a loose braid",
+     "marca": "wide-set blue eyes and a faint scar through one eyebrow"},
+    {"idade": 24, "corpo": "slim and toned with a dancer's line",
+     "cabeca": "jet-black hair in a sleek centre part",
+     "marca": "sharp cheekbones and a small mole on her jaw"},
+    {"idade": 27, "corpo": "long-legged and slender with square shoulders",
+     "cabeca": "platinum blonde hair in a blunt shoulder-length cut",
+     "marca": "ice-blue eyes and a dimple in one cheek"},
+    {"idade": 23, "corpo": "curvy and athletic with a small waist",
+     "cabeca": "tight dark curls gathered high on her head",
+     "marca": "glowing deep brown skin and a wide bright smile"},
+    {"idade": 22, "corpo": "tall and slim with an hourglass line",
+     "cabeca": "chestnut hair in long beachy waves",
+     "marca": "a gap between her front teeth and warm brown eyes"},
+    {"idade": 21, "corpo": "petite and curvy with a defined waist",
+     "cabeca": "honey-blonde hair in a high messy bun",
+     "marca": "a scatter of freckles and full lips"},
+    {"idade": 26, "corpo": "lean and toned with a flat stomach and long arms",
+     "cabeca": "long jet-black hair worn straight to the waist",
+     "marca": "almond eyes and a small stud in one nostril"},
+    {"idade": 25, "corpo": "shapely with toned arms and a narrow waist",
+     "cabeca": "caramel balayage falling past her shoulders",
+     "marca": "a beauty mark at the corner of her right eye"},
+    {"idade": 22, "corpo": "slim-hipped and elegant with a long neck",
+     "cabeca": "sandy blonde hair in a fishtail braid",
+     "marca": "a slight overbite that shows when she smiles"},
+    {"idade": 23, "corpo": "curvy and strong with a small waist",
+     "cabeca": "long box braids gathered over one shoulder",
+     "marca": "high round cheekbones and a gold nose ring"},
+    {"idade": 24, "corpo": "tall and lean with swimmer's shoulders",
+     "cabeca": "auburn hair in a low glossy ponytail",
+     "marca": "dark freckles across both cheeks and grey eyes"},
+    {"idade": 27, "corpo": "softly curvy with a full figure and a narrow waist",
+     "cabeca": "dark brown hair in heavy waves with a deep side part",
+     "marca": "a small raised birthmark on her temple"},
+    {"idade": 23, "corpo": "slim and supple with a very straight back",
+     "cabeca": "copper hair cropped into a long bob",
+     "marca": "pale skin, freckles and bright green eyes"},
+    {"idade": 21, "corpo": "long-limbed and shapely with a defined waist",
+     "cabeca": "black hair in a high sleek ponytail",
+     "marca": "a thin scar along her jawline and full brows"},
+    {"idade": 25, "corpo": "trim and athletic with a flat stomach",
+     "cabeca": "golden blonde hair in loose waves",
+     "marca": "a small dimple in one cheek only"},
+    {"idade": 21, "corpo": "tall and willowy with narrow hips",
+     "cabeca": "dark auburn hair in a half-up twist",
+     "marca": "wide hazel eyes and a light dusting of freckles"},
+    {"idade": 22, "corpo": "curvy with a small waist and long legs",
+     "cabeca": "tight coils cropped close to the head",
+     "marca": "sculpted cheekbones and a small gold stud"},
+    {"idade": 26, "corpo": "slim with a long waist and square shoulders",
+     "cabeca": "ash-brown hair in a sleek low bun",
+     "marca": "grey-green eyes and a faint mark between her brows"},
+    {"idade": 24, "corpo": "shapely and toned with a narrow waist",
+     "cabeca": "ginger hair in loose curls past her shoulders",
+     "marca": "heavy freckling and a small chin dimple"},
+    {"idade": 27, "corpo": "tall and slim with a graceful neck",
+     "cabeca": "long dark hair in a high crown braid",
+     "marca": "a beauty mark high on her left cheek"},
+    {"idade": 22, "corpo": "petite and shapely with a defined waist",
+     "cabeca": "bleached blonde hair in a blunt chin-length bob",
+     "marca": "wide dark eyes and a faint scar on her chin"},
+    {"idade": 23, "corpo": "athletic and curvy with strong shoulders",
+     "cabeca": "long waves in a rich mahogany red",
+     "marca": "clear skin and a small hoop in her right nostril"},
+    {"idade": 23, "corpo": "long-legged and lean with a flat stomach",
+     "cabeca": "dark brown hair in a slicked-back ponytail",
+     "marca": "sharp brows and a small mole under one eye"},
+    {"idade": 25, "corpo": "curvy and confident with a very narrow waist",
+     "cabeca": "honey-red hair falling in soft waves",
+     "marca": "a dense spray of freckles across her nose"},
+    {"idade": 21, "corpo": "slim and elegant with long arms",
+     "cabeca": "black hair in a smooth shoulder-length cut",
+     "marca": "a thin white streak at her temple and dark eyes"},
+    {"idade": 24, "corpo": "tall with a small waist and full shoulders",
+     "cabeca": "strawberry-blonde hair in a high loose bun",
+     "marca": "green eyes and a small beauty spot on her cheekbone"},
+]
+
+# ⭐⭐ A ROUPA DO MODO. *"pouca roupa"*, e o eixo que o operador chamou de bullet
+# de retencao no CHA: decote, saia curta, PERNA EM QUADRO.
+# ⛔ SILHUETA VARIADA, nao a mesma peca em vinte cores. Vinte entradas do mesmo
+# corte com cor diferente leem como uniforme, e uniforme mata a leitura de
+# "pessoas diferentes" — foi essa a licao dos trajes por mundo do BOTICA.
+# ⚠️ PALETA AMERICANA DE RUA. Fora: ochre, terracotta, sand, sage, rust, burnt
+# orange — a paleta de terra que o gerador le como traje etnico, e que fez o
+# operador perguntar *"norte americano costuma usar roupa de tribo?"*.
+ROUPAS_BELAS = [
+    ("%s ribbed knit halter top with a deep cowl front and a very short skirt",
+     "knit cowl halter"),
+    ("%s cropped tank with a deep scoop front and very short denim shorts",
+     "deep-scoop tank"),
+    ("%s halter top with a plunging front, worn with a short wrap skirt",
+     "plunging halter"),
+    ("%s satin cami with thin straps and a very short pleated skirt",
+     "satin cami"),
+    ("%s off-shoulder crop top with high-cut shorts", "off-shoulder crop"),
+    ("%s tight ribbed crop top with a short A-line skirt", "ribbed crop top"),
+    ("%s knotted shirt tied under the bust and open at the top, with cut-off "
+     "shorts", "knotted shirt"),
+    ("%s low-cut slip dress cut short above the knee", "short slip dress"),
+    ("%s fitted crop top under an open shirt, with a mini skirt",
+     "fitted crop top"),
+    ("%s one-shoulder crop top with a very short skirt", "one-shoulder crop"),
+    ("%s corset-style top with short denim cut-offs", "corset-style top"),
+    ("%s zip-front top worn half unzipped with a very short skirt",
+     "half-zipped top"),
+    ("%s halter mini dress with an open back", "halter mini dress"),
+    ("%s cropped cardigan buttoned once over bare skin, with a mini skirt",
+     "single-button cardigan"),
+    ("%s lace-trimmed cami with a short flared skirt", "lace-trimmed cami"),
+    ("%s wrapped halter fastened behind with very short shorts", "tied halter"),
+]
+
+# ⛔⛔ O POOL ACIMA NAO USA VOCABULARIO QUE AS LENTES DO REPO VIGIAM. Tres
+# entradas foram reescritas em 2026-08-05 porque o modo BELA, ao entrar, fez o
+# linter de DOIS agentes reprovar por colisao de palavra, nao por defeito:
+#   · `deep cowl neckline` -> o EX7 do DUPLA vigia `neck` perto do molusco, e
+#     `neckline` contem `neck`;
+#   · `low-rise denim shorts` -> o BO2 do CHA vigia vocabulario de CRESCIMENTO,
+#     e `low-rise` contem `rise`.
+# ⚠️ Pool compartilhado herda TODAS as lentes de TODOS os motores. Uma palavra
+# inocente aqui reprova a producao de um agente que eu nem estava olhando — e o
+# jeito de descobrir isso e' rodar o linter dos dois modos em todo motor, que e'
+# o que a medicao abaixo faz.
+# ⛔⛔ SEM EXTREMO DE BIQUINI — ordem do operador, 2026-08-05: *"pouca roupa
+# (saia curta, tops, etc (sem extremo de biquini))"*. Toda entrada e' TOP + PECA
+# DE BAIXO ou VESTIDO CURTO; nenhuma e' roupa de banho, nenhuma e' so' sutia.
+# ⚠️ A linha e' essa: o hook vive de sex appeal, e roupa de banho tira o video
+# do registro de "mulher na cozinha de casa" — que e' o que faz a receita
+# parecer real.
+# ⭐⭐ OS OLHOS FORA DO COMUM — ordem do operador, 2026-08-05: *"olhos azuis,
+# roxos, verdes, amarelos, coisa bem diferente fora do comum"*.
+# ⛔ E' UM EIXO PROPRIO, nao uma edicao das 30 marcas. Editar a `marca` de cada
+# REF acoplaria olho e rosto para sempre: a mesma mulher sairia sempre com o
+# mesmo olho, e o eixo que o operador quer VARIANDO ficaria travado por
+# construcao. Separado, sao 30 x 14 combinacoes.
+# ⚠️ Descricao de COR e de LUZ, nunca de lente de contato: `violet` e `amber` o
+# gerador entrega como iris; `contact lenses` ele entrega como acessorio, e o
+# artificio mata o "mulher de verdade na cozinha".
+OLHOS_BELAS = [
+    "striking pale blue eyes",
+    "deep violet eyes",
+    "bright emerald green eyes",
+    "amber-yellow eyes",
+    "pale grey-blue eyes that catch the light",
+    "unusual golden-hazel eyes",
+    "vivid turquoise eyes",
+    "dark violet eyes with a pale ring",
+    "clear ice-blue eyes",
+    "luminous green eyes",
+    "warm amber eyes",
+    "one blue eye and one green eye",
+    "deep indigo-blue eyes",
+    "pale gold-flecked green eyes",
+]
+
+CORES_BELAS = ["black", "white", "scarlet", "cobalt", "hot pink", "emerald",
+               "burgundy", "silver", "cream", "dusty rose", "gold",
+               "denim blue"]
+
+# ⛔ A CLAUSULA. Sem ela o gerador recebe "linda" no corpo e `ordinary relatable
+# face, not a model` no rosto NA MESMA FRASE — o CLEAN pagou essa contradicao em
+# 2026-08-04 (CL26) e resolveu do mesmo jeito. A protecao de IDENTIDADE fica
+# inteira; so' sai o "comum" e o "nao e' modelo".
+ANTICELEB_BELA = ("A strikingly beautiful face, not a celebrity, not "
+                  "resembling any famous person.")
+
+
+
+def _sem_olhos(marca):
+    """A marca facial sem a mencao de olhos — o olho vem do eixo proprio.
+
+    ⚠️ Limpa as tres formas que o pool usa: `X and <cor> eyes`, `<cor> eyes and
+    X` e `<cor> eyes` sozinho. Se sobrar vazio, devolve `clear skin` — marca
+    vazia derrubaria a frase do BLOCO 0 com uma virgula solta.
+    """
+    m = re.sub(r",?\s*\band\b[^,]*\beyes\b", "", marca, flags=re.I)
+    m = re.sub(r"^[^,]*\beyes\b\s+and\s+", "", m, flags=re.I)
+    m = re.sub(r"^[^,]*\beyes\b,?\s*", "", m, flags=re.I)
+    m = re.sub(r"\s{2,}", " ", m).strip(" ,")
+    return m or "clear skin"
+
+def ref_bela(molde, rng):
+    """Uma REF do modo BELA no FORMATO DO MOTOR que pediu.
+
+    `molde` e' uma entrada qualquer do pool original — serve so' para dizer
+    QUAIS CAMPOS aquele motor espera. Os campos que o pool bela conhece
+    (`idade`, `corpo`, `cabeca`, `marca`) sao preenchidos por ele; os que so'
+    existem naquele motor (`roupa`, `oculos`, `porte`, `pele`, `pelo`...)
+    recebem o valor coerente com o modo.
+
+    ⛔ POR QUE NAO DEVOLVER O DICIONARIO CRU: os pools tem formatos diferentes —
+    o RESSURREICAO tem `porte`/`rosto`/`oculos`, o FLAGRANTE tem `roupa_curta`,
+    o VAZAMENTO tem `musculo`. Devolver o formato do pool bela quebraria o
+    `montar()` de cada um com KeyError, e KeyError dentro do callback do tkinter
+    morre CALADO — foi assim que o botao `trocar` de seis agentes ficou quebrado
+    sem ninguem perceber em 2026-07-31.
+    """
+    base = dict(rng.choice(REFS_BELAS))
+    # ⭐ O OLHO E' SORTEADO A PARTE e entra NA MARCA — que e' o campo que todo
+    # motor ja' renderiza. Assim ele chega ao quadro sem eu tocar em 16 motores.
+    # ⛔ E O OLHO ANTIGO SAI ANTES. Quinze das 30 marcas ja' descrevem os olhos
+    # (`... and green eyes`), e sem esta limpeza o prompt saia com DOIS:
+    # *"luminous green eyes, wide-set blue eyes and a faint scar"*. Duas cores
+    # para o mesmo par de olhos e' contradicao, e o gerador resolve inventando
+    # uma terceira. Achado LENDO as tres primeiras saidas do helper.
+    base["marca"] = "%s, %s" % (rng.choice(OLHOS_BELAS),
+                                _sem_olhos(base["marca"]))
+    tpl, curto = rng.choice(ROUPAS_BELAS)
+    roupa = tpl % rng.choice(CORES_BELAS)
+    saida = {}
+    for campo in molde:
+        if campo in base:
+            saida[campo] = base[campo]
+        elif campo in ("roupa", "roupa2", "roupa_curta", "traje"):
+            saida[campo] = roupa
+        elif campo == "oculos":
+            saida[campo] = ""            # ⛔ Lei do REF: zero oculos
+        elif campo == "pelo":
+            saida[campo] = ""
+        elif campo in ("porte", "musculo"):
+            saida[campo] = base["corpo"]
+        elif campo == "rosto":
+            saida[campo] = base["marca"]
+        elif campo == "cabelo":
+            saida[campo] = base["cabeca"]
+        elif campo == "pele":
+            saida[campo] = "clear even skin"
+        elif campo == "id":
+            saida[campo] = "bela_%d" % base["idade"]
+        else:
+            # ⚠️ Campo que este helper nao conhece MANTEM o valor do molde. E'
+            # de proposito: inventar valor para campo desconhecido e' como o
+            # `or pool` do `_cabem` — parece funcionar e mente em silencio.
+            saida[campo] = molde[campo]
+    saida["_bela"] = True
+    saida["_roupa_curta"] = curto
+    return saida
+
+
+def traje_bela(rng):
+    """Uma roupa do MODO BELA no formato `(template_com_%s_de_cor, curto)` —
+    o mesmo que os pools de traje por mundo devolvem, para o motor nao precisar
+    saber de onde ela veio."""
+    tpl, curto = rng.choice(ROUPAS_BELAS)
+    return (tpl, curto)
+
+
+def corpo_bela(spec, sufixo=", %s"):
+    """O CORPO da REF, para o motor colar na ancora quando o modo esta' ligado.
+
+    ⛔ Devolve "" quando o modo esta' desligado — assim o motor cola sem `if`, e
+    a cena normal nao muda um caractere.
+    ⚠️ Existe porque em tres dos cinco primeiros motores ligados o `corpo` so'
+    aparecia no BLOCO 0 e nunca na CENA: a REF entrava escultural na foto de
+    referencia e generica no quadro. O operador pediu *"corpo escultural"*, e
+    corpo que nao chega ao frame nao e' corpo.
+    """
+    if not spec.get("bela"):
+        return ""
+    r = spec.get("ref") or spec.get("narradora") or {}
+    c = r.get("corpo") or r.get("porte") or ""
+    return (sufixo % c) if c else ""
+
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ MODO REF FORTE — o irmao masculino do MODO BELA
+# ---------------------------------------------------------------------------
+# Ordem do operador, 2026-08-05: *"quero um toggle similar para homens fortes
+# bem musculosos, atraentes tb, que, quando ativados, serao capazes de gerar
+# prompts refs dentro dessas caracteristicas"*.
+#
+# ⛔ MESMO CONTRATO DO BELA, de proposito: `MODO_FORTE = True` no motor, a UI
+# desenha o botao, `travas["forte"]` chega no `sortear`, e o helper devolve a REF
+# no FORMATO DAQUELE MOTOR. Dois contratos diferentes para a mesma ideia
+# divergiriam na primeira manutencao.
+#
+# ⚠️ CORPO-PROVA x NARRADOR. Em varios motores o homem e' o CORPO-PROVA da cena
+# 3 — o espectador tem de se ver nele. Musculoso demais afasta: `he could never
+# be me`. Por isso o pool e' de homem FORTE E CRIVEL (pescador, mecanico,
+# bombeiro), nao de fisiculturista — e o operador pediu "atraentes", nao
+# "monstruosos".
+REFS_FORTES = [
+    {"idade": 29, "corpo": "tall and heavily built with broad shoulders and thick forearms",
+     "cabeca": "dark hair cropped short with a faded side",
+     "marca": "a strong square jaw and a short beard"},
+    {"idade": 34, "corpo": "broad-chested and powerfully built with a thick neck",
+     "cabeca": "close-shaved head",
+     "marca": "a small scar through one eyebrow and heavy brows"},
+    {"idade": 27, "corpo": "lean and cut with wide shoulders and a flat stomach",
+     "cabeca": "dark curls kept short",
+     "marca": "sharp cheekbones and a clean jawline"},
+    {"idade": 31, "corpo": "big and solid through the chest and arms",
+     "cabeca": "sandy hair pushed back",
+     "marca": "a heavy stubble and a deep smile line"},
+    {"idade": 36, "corpo": "thickset and strong with heavy shoulders",
+     "cabeca": "greying hair cut close at the sides",
+     "marca": "a weathered face and a full dark beard"},
+    {"idade": 28, "corpo": "athletic and broad with defined arms",
+     "cabeca": "black hair in a low fade",
+     "marca": "a small chip in one front tooth and a wide smile"},
+    {"idade": 33, "corpo": "tall and muscular with a deep chest",
+     "cabeca": "auburn hair cut short and pushed to one side",
+     "marca": "freckles across the nose and a strong brow"},
+    {"idade": 30, "corpo": "powerfully built with thick arms and a narrow waist",
+     "cabeca": "dark hair with a widow's peak",
+     "marca": "a straight nose and a trimmed goatee"},
+    {"idade": 26, "corpo": "solid and toned with square shoulders",
+     "cabeca": "light brown hair worn a little long on top",
+     "marca": "a dimple in one cheek and clean-shaven"},
+    {"idade": 38, "corpo": "heavy through the chest and shoulders, still hard",
+     "cabeca": "salt-and-pepper hair cropped short",
+     "marca": "deep lines at the eyes and a grey-flecked beard"},
+    {"idade": 32, "corpo": "broad and strong with heavy forearms",
+     "cabeca": "black hair shaved at the sides",
+     "marca": "a faded tattoo up one forearm and a hard jaw"},
+    {"idade": 29, "corpo": "tall and rangy with wide shoulders and long arms",
+     "cabeca": "dirty-blond hair pushed back off the forehead",
+     "marca": "a cleft chin and pale stubble"},
+    {"idade": 35, "corpo": "compact and thickly muscled through the neck and arms",
+     "cabeca": "dark hair kept very short",
+     "marca": "a broken nose set slightly off centre"},
+    {"idade": 27, "corpo": "big-shouldered and lean with a hard stomach",
+     "cabeca": "tight dark curls cropped close",
+     "marca": "a small keloid scar on the jaw and a bright smile"},
+    {"idade": 31, "corpo": "strongly built with a barrel chest and thick wrists",
+     "cabeca": "red-brown hair cut short",
+     "marca": "heavy freckling on the arms and a copper beard"},
+    {"idade": 34, "corpo": "tall and heavy-framed with wide shoulders",
+     "cabeca": "grey-streaked dark hair combed back",
+     "marca": "a deep vertical line between the brows"},
+]
+
+# ⭐ OS OLHOS, mesmo eixo do BELA — *"coisa bem diferente fora do comum"*.
+OLHOS_FORTES = [
+    "striking pale blue eyes",
+    "deep grey-green eyes",
+    "unusual amber eyes",
+    "vivid green eyes",
+    "ice-blue eyes under heavy brows",
+    "dark violet-grey eyes",
+    "pale gold-flecked hazel eyes",
+    "one blue eye and one brown eye",
+    "clear steel-blue eyes",
+    "deep emerald eyes",
+]
+
+# ⭐ A ROUPA. *"fortes bem musculosos, atraentes"* — a roupa mostra o corpo sem
+# virar academia: regata, camisa aberta, camiseta justa.
+# ⛔ NADA DE SUNGA OU POSE DE FISICULTURISTA: o corpo-prova tem de ser um homem
+# na cozinha de casa, nao um atleta em competicao. Corpo-prova que o espectador
+# nao consegue ser nao prova nada.
+ROUPAS_FORTES = [
+    ("%s ribbed tank top that shows his shoulders and arms", "ribbed tank"),
+    ("%s fitted t-shirt stretched across the chest", "fitted t-shirt"),
+    ("%s work shirt with the sleeves cut off at the shoulder", "cut-off work shirt"),
+    ("%s open flannel shirt over a tight white tank", "open flannel"),
+    ("%s plain t-shirt with the sleeves rolled up over the biceps",
+     "rolled-sleeve t-shirt"),
+    ("%s henley with the buttons open at the chest", "open henley"),
+    ("%s sleeveless denim shirt worn open over a bare chest",
+     "open denim shirt"),
+    ("%s tight athletic top damp across the back", "athletic top"),
+    ("%s short-sleeved shirt unbuttoned to the middle of the chest",
+     "unbuttoned shirt"),
+    ("%s worn t-shirt with a torn collar, tight through the shoulders",
+     "worn t-shirt"),
+]
+
+CORES_FORTES = ["black", "white", "charcoal", "navy", "olive", "burgundy",
+                "denim blue", "grey", "forest green", "rust red"]
+
+# ⛔ A clausula do rosto, no registro masculino. Mesma logica do CL26: se o corpo
+# diz "powerfully built" e o rosto diz "ordinary relatable face, not a model", o
+# gerador recebe as duas na mesma frase e resolve contra nos.
+ANTICELEB_FORTE = ("A rugged good-looking face, not a celebrity, not "
+                   "resembling any famous person.")
+
+
+def ref_forte(molde, rng):
+    """Uma REF masculina do MODO FORTE no FORMATO DO MOTOR que pediu.
+
+    Espelho exato do `ref_bela` — ver a docstring de la' para o porque de nao
+    devolver o dicionario cru.
+    """
+    base = dict(rng.choice(REFS_FORTES))
+    base["marca"] = "%s, %s" % (rng.choice(OLHOS_FORTES),
+                                _sem_olhos(base["marca"]))
+    tpl, curto = rng.choice(ROUPAS_FORTES)
+    roupa = tpl % rng.choice(CORES_FORTES)
+    saida = {}
+    for campo in molde:
+        if campo in base:
+            saida[campo] = base[campo]
+        elif campo in ("roupa", "roupa2", "roupa_curta", "traje"):
+            saida[campo] = roupa
+        elif campo in ("oculos", "pelo"):
+            saida[campo] = ""
+        elif campo in ("porte", "musculo"):
+            saida[campo] = base["corpo"]
+        elif campo == "rosto":
+            saida[campo] = base["marca"]
+        elif campo == "cabelo":
+            saida[campo] = base["cabeca"]
+        elif campo == "pele":
+            saida[campo] = "clear skin"
+        elif campo == "id":
+            saida[campo] = "forte_%d" % base["idade"]
+        else:
+            saida[campo] = molde[campo]
+    saida["_forte"] = True
+    saida["_roupa_curta"] = curto
+    return saida
+
+
+def traje_forte(rng):
+    """A roupa do MODO FORTE no formato `(template, curto)`."""
+    return rng.choice(ROUPAS_FORTES)

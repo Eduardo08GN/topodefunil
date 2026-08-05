@@ -1470,6 +1470,14 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # palavras (2,0-3,1 palavras/s).
 # ⚠️ cena 2 cortava em 12,8%. A cadeia ja' reserva ancora e promessa antes da receita.
 # ⛔ NAO baixar o [3] junto: medido, ele vai de max 31 para 36 pelo `or pool`.
+# ⭐⭐ MODO REF BELA — contrato compartilhado (short_comum), 2026-08-05.
+# Ordem do operador: *"toggle de trava pra modo ref mulher bela em todos os ui
+# ux pertinentes dos agentes shorts, que, quando ativados, gera refs mulheres
+# com essas caracteristicas"* — super model, corpao, pouca roupa.
+# ⛔ O pool e o helper moram no `short_comum`: um pool por motor divergiria em
+# uma semana, e classificacao divergente e' o fragmento espelhado que a P9 proibe.
+MODO_BELA = True
+
 TETO_FALA = {1: 25, 2: 25, 3: 25}
 PISO_FALA = {1: 18, 2: 15, 3: 23}
 
@@ -1854,9 +1862,15 @@ def sortear(pagina, rng, led, travas=None):
     # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
     # traje SORTEADO, senao a ancora descreve uma roupa que nao esta' em cena.
     apelo = rng.choice(APELO_EUA)
+    # ⛔ NO MODO BELA A ROUPA TAMBEM MUDA. O operador nomeou TRES coisas —
+    # *"super models com corpao e pouca roupa"* — e trocar so' o rosto e o corpo
+    # deixaria a REF de biquini de tricô amish. Aqui o traje vem do MUNDO, entao
+    # o modo o substitui pelo pool proprio do `short_comum`.
     traje = (_por_traje(mundo, travas["traje"]) if travas.get("traje")
+             else sc.traje_bela(rng) if travas.get("bela")
              else _fresco_traje(mundo["trajes"], usados.get("traje", []), rng))
     ref = (_por_id(REFS, travas["ref"], "cabeca") if travas.get("ref")
+           else sc.ref_bela(REFS[0], rng) if travas.get("bela")
            else rng.choice(REFS))
     # ⛔ SEM homem, SEM prop falico, SEM substancia absurda, SEM utensilio: a
     # fonte nao tem nenhum dos quatro. Estavam aqui por heranca do BOTICA, e
@@ -1871,7 +1885,15 @@ def sortear(pagina, rng, led, travas=None):
     # segundos vira bordao.
     orgaos = rng.sample(NUCLEO, 2)
 
-    spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
+    # ⭐ A FLAG VIAJA NO SPEC. O `montar()` nao recebe `travas`, e sem
+
+    # isto a clausula do rosto e o `resumo_pt` ficavam na versao comum
+
+    # enquanto o corpo e a roupa ja' eram os do modo — a contradicao
+
+    # exata que o CL26 documenta.
+
+    spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor,
             "traje": traje, "apelo": apelo, "ref": ref,
             "comum": com, "raro": raro, "orgaos": orgaos,
             # ⭐ 50/50, ordem do operador 2026-08-04
@@ -1919,7 +1941,7 @@ def montar(spec):
         "pessoa": _pessoa(spec), "ancora": _ancora(spec),
         "Ancora": _cap(_ancora(spec)),
         "comum_img": com["img"], "raro_img": raro["img"],
-        "mug": BO_MUG, "anti": ANTICELEB, "cauda": CAUDA, "band": band,
+        "mug": BO_MUG, "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB), "cauda": CAUDA, "band": band,
         "band_v": (BANDEIRA_VAR if spec.get("bandeira") else ""),
     }
     v["nao_toca"] = BO_NAO_TOCA % m["sup"]

@@ -1005,6 +1005,14 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # ⛔ NAO baixar [2] e [3] junto: medido, a cena 2 vai de max 32 para 34 e a 3 de
 # 31 para 37, porque o `_cabem` termina em `or pool` e devolve tudo quando nada
 # cabe. Baixar o teto dessas duas PIORA.
+# ⭐⭐ MODO REF BELA — contrato compartilhado (short_comum), 2026-08-05.
+# Ordem do operador: *"toggle de trava pra modo ref mulher bela em todos os ui
+# ux pertinentes dos agentes shorts, que, quando ativados, gera refs mulheres
+# com essas caracteristicas"* — super model, corpao, pouca roupa.
+# ⛔ O pool e o helper moram no `short_comum`: um pool por motor divergiria em
+# uma semana, e classificacao divergente e' o fragmento espelhado que a P9 proibe.
+MODO_BELA = True
+
 TETO_FALA = {1: 25, 2: 32, 3: 25}
 PISO_FALA = {1: 20, 2: 22, 3: 24}
 
@@ -1215,7 +1223,9 @@ def sortear(pagina, rng, led, travas=None):
 
     et = travas.get("etnia") or rng.choice(mundo["etnias"])
     cor = rng.choice(mundo["cores"])
-    ref = travas.get("ref") or rng.choice(NARRADORAS)
+    ref = (travas.get("ref")
+           or (sc.ref_bela(NARRADORAS[0], rng) if travas.get("bela")
+               else rng.choice(NARRADORAS)))
     prop = (_por_id(PROPS, travas["prop"]) if travas.get("prop")
             else _fresco(PROPS, usados.get("prop", []), rng, "id"))
     subst = (_por_id(SUBSTANCIAS, travas["substancia"])
@@ -1231,7 +1241,15 @@ def sortear(pagina, rng, led, travas=None):
     # segundos vira bordao.
     orgaos = rng.sample(NUCLEO, 2)
 
-    spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
+    # ⭐ A FLAG VIAJA NO SPEC. O `montar()` nao recebe `travas`, e sem
+
+    # isto a clausula do rosto e o `resumo_pt` ficavam na versao comum
+
+    # enquanto o corpo e a roupa ja' eram os do modo — a contradicao
+
+    # exata que o CL26 documenta.
+
+    spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor,
             "ref": ref, "homem": homem, "prop": prop, "substancia": subst,
             "receita": receita, "orgaos": orgaos}
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
@@ -1275,7 +1293,8 @@ def montar(spec):
         "estavel": CO_PROP_ESTAVEL,
         "nao_toca": CO_NAO_TOCA % m["sup"],
         "resto": CO_MESMA_BANCADA % m["sup"],
-        "anti": ANTICELEB, "cauda": CAUDA,
+        "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB),
+        "cauda": CAUDA,
     }
     # ⛔ `_cap` no jorro: ele abre frase dentro da travada, e sem isto o bloco
     # sai com `a thin line of golden-green oil falls...` em minuscula no meio do

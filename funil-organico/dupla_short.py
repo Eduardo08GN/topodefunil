@@ -1870,6 +1870,14 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # palavras (2,0-3,1 palavras/s).
 # ⚠️ cena 2 cortava em 12,8%. A cadeia ja' reserva ancora e promessa antes da receita.
 # ⛔ NAO baixar o [3] junto: medido, ele vai de max 31 para 36 pelo `or pool`.
+# ⭐⭐ MODO REF BELA — contrato compartilhado (short_comum), 2026-08-05.
+# Ordem do operador: *"toggle de trava pra modo ref mulher bela em todos os ui
+# ux pertinentes dos agentes shorts, que, quando ativados, gera refs mulheres
+# com essas caracteristicas"* — super model, corpao, pouca roupa.
+# ⛔ O pool e o helper moram no `short_comum`: um pool por motor divergiria em
+# uma semana, e classificacao divergente e' o fragmento espelhado que a P9 proibe.
+MODO_BELA = True
+
 TETO_FALA = {1: 25, 2: 25, 3: 25}
 PISO_FALA = {1: 18, 2: 15, 3: 23}
 
@@ -2309,9 +2317,15 @@ def sortear(pagina, rng, led, travas=None):
     # traje SORTEADO, senao a ancora descreve uma roupa que nao esta' em cena.
     reacao = _fresco_traje(REACOES_HOMEM, usados.get("reacao", []), rng)
     apelo = rng.choice(APELO_EUA)
+    # ⛔ NO MODO BELA A ROUPA TAMBEM MUDA. O operador nomeou TRES coisas —
+    # *"super models com corpao e pouca roupa"* — e trocar so' o rosto e o corpo
+    # deixaria a REF de biquini de tricô amish. Aqui o traje vem do MUNDO, entao
+    # o modo o substitui pelo pool proprio do `short_comum`.
     traje = (_por_traje(mundo, travas["traje"]) if travas.get("traje")
+             else sc.traje_bela(rng) if travas.get("bela")
              else _fresco_traje(mundo["trajes"], usados.get("traje", []), rng))
     ref = (_por_id(REFS, travas["ref"], "cabeca") if travas.get("ref")
+           else sc.ref_bela(REFS[0], rng) if travas.get("bela")
            else rng.choice(REFS))
     # ⭐ A AMIGA sai do MESMO pool da narradora e NUNCA e' a mesma pessoa: duas
     # mulheres no quadro com a mesma descricao viram gemeas no render.
@@ -2331,6 +2345,10 @@ def sortear(pagina, rng, led, travas=None):
     # cara de espanto, ou risos, etc".
     reacao_amiga = _fresco_traje(REACOES_AMIGA,
                                  usados.get("reacao_amiga", []), rng)
+    # ⛔ O eixo HOMEM ficou MORTO quando o corpo-prova masculino saiu da cena
+    # 3 (etapa [7], 2026-08-05). Continua sorteado so' para o `resumo_pt` e o
+    # ledger nao quebrarem, e NAO recebe o MODO_FORTE: modo que nao muda pixel
+    # nenhum e' botao que mente.
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
              else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
     prop = (_por_id(PROPS, travas["prop"]) if travas.get("prop")
@@ -2355,7 +2373,15 @@ def sortear(pagina, rng, led, travas=None):
     # segundos vira bordao.
     orgaos = rng.sample(NUCLEO, 2)
 
-    spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
+    # ⭐ A FLAG VIAJA NO SPEC. O `montar()` nao recebe `travas`, e sem
+
+    # isto a clausula do rosto e o `resumo_pt` ficavam na versao comum
+
+    # enquanto o corpo e a roupa ja' eram os do modo — a contradicao
+
+    # exata que o CL26 documenta.
+
+    spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor,
             "traje": traje, "traje_amiga": traje_amiga, "preparo": preparo,
             "reacao": reacao, "apelo": apelo,
             "reacao_amiga": reacao_amiga,
@@ -2407,7 +2433,7 @@ def montar(spec):
         "Ancora": _cap(_ancora(spec)),
         "vaso": met["vaso"], "vaso_curto": met["curto"], "acao": met["acao"],
         "comum_img": com["img"], "raro_img": raro["img"],
-        "copo": BO_COPO, "anti": ANTICELEB, "cauda": CAUDA, "band": band,
+        "copo": BO_COPO, "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB), "cauda": CAUDA, "band": band,
     }
     v["nao_toca"] = BO_NAO_TOCA % m["sup"]
 
