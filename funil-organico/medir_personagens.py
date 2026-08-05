@@ -268,6 +268,10 @@ EXCECOES = {
     # ⛔⛔ DUPLA — a lei do REF e' o ANGULO, nao regra herdada. Ordem do
     # operador: "duas mulheres novinhas lindas com vestido mais curto". Um eixo
     # de oculos cheio aqui seria o motor contrariando a propria razao de existir.
+    # ⛔ PLACA — mesma razao: a REF e' a bullet de retencao, e o angulo e' a
+    # humilhacao publica do corpo dele. Oculos de leitura brigam com "linda".
+    ("placa_short.py", "REFS", "oculos"):
+        "LEI DO REF — a REF deste angulo e' a bullet de retencao.",
     ("dupla_short.py", "REFS", "oculos"):
         "LEI DO REF — as duas mulheres sao a bullet de retencao deste angulo, "
         "por encomenda do operador.",
