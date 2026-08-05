@@ -642,6 +642,15 @@ def mulheres_de(pagina):
 # DIFERENTE do proxy em quadro, senao a alavanca 3 (nomear o genero da imagem)
 # aponta para dentro da propria cena e nao desambigua nada.
 PROXIES = [
+    # ⭐ O GEODUCK — ordem do operador, 2026-08-05: *"esta faltando um big
+    # geoduck de proxy no agente troca"*. E' o proxy de maior semelhanca
+    # anatomica do repertorio, e por isso o de maior risco de moderacao.
+    # ⛔ DUAS TRAVAS DE FORMA, herdadas do EXTERIOR (regras EX7, pagas em
+    # recusa): a peca e' o `siphon`, NUNCA `neck`; e no TAKE ele e' `the clam`,
+    # nunca a especie nomeada. Quem editar esta entrada tem de manter as duas.
+    {"id": "geoduck", "nome": "clam", "analogia": "squash",
+     "img": "a very large whole geoduck clam, its thick siphon extending well past the shell, as long as her forearm",
+     "img_dele": "a very large whole geoduck clam, its thick siphon extending well past the shell, as long as his forearm"},
     {"id": "cenoura", "nome": "carrot", "analogia": "squash",
      "img": "a large raw carrot, the skin still rough, as long as her forearm and as thick as her wrist",
      "img_dele": "a large raw carrot, the skin still rough, as long as his forearm and as thick as his wrist"},
@@ -1671,7 +1680,7 @@ def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
     return [c1, c2, c3]
 
 
-def sortear(pagina, rng, ledger, degrau=None):
+def sortear(pagina, rng, ledger, travas=None):
     """TR20 — anti-repeticao por ledger, por pagina.
 
     Os dois eixos de ROSTO evitam os 3 ultimos (rosto repetido e' o que o
@@ -1683,11 +1692,23 @@ def sortear(pagina, rng, ledger, degrau=None):
     narradora como a vizinha — e a relacao nomeada e' a alavanca 2 do protocolo
     de recusa: contradize-la na fala a anula.
     """
+    # ⛔⛔ O 4o POSICIONAL E' `travas`, NAO `degrau`. A ui_agente chama
+    # `sortear(pag, rng, led, travas_dict)` sempre que o motor declara
+    # EIXOS_TRAVAVEIS — e com a assinatura antiga o dicionario caia dentro de
+    # `degrau` e virava estado invalido em silencio. O `degrau` do CLI passa a
+    # viajar DENTRO das travas, que e' o unico canal que a UI conhece.
+    travas = travas or {}
+    degrau = travas.get("degrau")
     hist = ledger.get(pagina, {})
     nar = _evitando(rng, NARRADORAS, hist.get("narradora", [])[-3:])
     hom = _evitando(rng, homens_de(pagina), hist.get("corpo_prova", [])[-3:])
     cen = _evitando(rng, CENARIOS, hist.get("cenario", [])[-2:])
-    prox = _evitando(rng, PROXIES, hist.get("proxy", [])[-2:])
+    # ⭐ CADEADO DO PROXY — ordem do operador, 2026-08-05: *"coloca um botao de
+    # trava no proxy tb"*. A UI devolve o DICIONARIO que esta' na tela (nao um
+    # id), entao ele entra direto: quem remonta o video em volta dele e' daqui
+    # para baixo.
+    prox = travas.get("proxy") or _evitando(rng, PROXIES,
+                                            hist.get("proxy", [])[-2:])
     sub = _evitando(rng, SUBSTANCIAS, hist.get("substancia", [])[-2:])
     texturas = TEXTURAS if sub.get("fluida", True) else         [x for x in TEXTURAS if not x.get("fluida", True)]
     tex = _evitando(rng, texturas, hist.get("textura", [])[-2:])
@@ -2418,6 +2439,11 @@ EIXOS_UI = [
     ("bancada", "A BANCADA-RECIBO", "BANCADAS", "itens"),
 ]
 
+# ⭐ O CADEADO. So' o PROXY por ora — e' o que o operador pediu. Acrescentar
+# outro eixo aqui e' UMA linha no `sortear` (`travas.get("x") or ...`) mais o
+# nome nesta lista; sem a linha no sortear o botao aparece e nao trava nada.
+EIXOS_TRAVAVEIS = ["proxy"]
+
 PT_CENARIO = {
     "cozinha_modesta": "Na cozinha modesta de laminado",
     "cozinha_ilha": "Na cozinha aberta com ilha de mármore",
@@ -2656,7 +2682,7 @@ def autoteste(n_por_pagina=80, seed=7, degrau=None):
     for pag in sorted(ETNIA):
         ledger = {}
         for _ in range(n_por_pagina):
-            spec = sortear(pag, rng, ledger, degrau)
+            spec = sortear(pag, rng, ledger, {"degrau": degrau})
             blocos = montar(spec)
             for nivel, msg in lint(spec, blocos):
                 if nivel == "ERRO":
@@ -2757,7 +2783,7 @@ def main():
     ledger = _carregar_ledger()
     saida = 0
     for i in range(a.n):
-        spec = sortear(a.pagina, rng, ledger, a.degrau)
+        spec = sortear(a.pagina, rng, ledger, {"degrau": a.degrau})
         blocos = montar(spec)
         achados = lint(spec, blocos)
         if a.n > 1:
