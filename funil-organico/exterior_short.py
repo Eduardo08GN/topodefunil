@@ -211,7 +211,14 @@ CENAS_UI = ["1 · A ISCA E O DESMENTIDO", "2 · A REGRA E O MECANISMO",
 #
 # ⚠️ PISO_FALA[2] = 24 e' DIVERGENCIA DECLARADA da doutrina (28) — a conta inteira
 # esta' na divergencia 1 da docstring. ⛔ Alcada do Ed: trocar e' editar uma linha.
-TETO_FALA = {1: 28, 2: 32, 3: 34}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de render, nao de conta: 32
+# cortou, 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 palavras/s).
+# ⚠️ cena 1 cortava em 1,0%. `_op1` ja' peneira contra o teto.
+# ⛔⛔ NAO TOCAR no [2] nem no [3]: medido com os tres em 25, 600 de 600 sorteios
+# levantam IndexError (sequencia vazia). O piso da cena 3 e' 32 — ver PARTE 2.
+TETO_FALA = {1: 25, 2: 32, 3: 34}
 PISO_FALA = {1: 22, 2: 24, 3: 30}
 
 # ⚠️ A borda de CIMA da faixa 82-96 da doutrina. ⛔ Nao usar a soma dos tetos

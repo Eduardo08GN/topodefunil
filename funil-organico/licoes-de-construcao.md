@@ -876,9 +876,21 @@ palavras, nenhum teto honesto fecharia. **Antes de calibrar teto, somar os
 pisos dos beats obrigatórios** — se a soma já ocupa o orçamento, o problema não
 é o teto, é o repertório.
 
-⚠️ **Corolário sobre a §27:** o gate `medir_teto_fala.py` usa 32 como limite
-absoluto — ele pega o que é *certamente* impossível. Ele **não** garante que
-uma cena de 31 caiba. Gate de teto é piso de qualidade, não certificado.
+⚠️ **Corolário sobre a §27:** o gate `medir_teto_fala.py` usava 32 como limite
+absoluto — ele pegava o que era *certamente* impossível, e **não** garantia que
+uma cena de 31 coubesse. Gate de teto é piso de qualidade, não certificado.
+
+⛔⛔ **O NÚMERO FINAL É 25, e a ordem que o fixou é permanente.** Ed, 2026-08-05:
+*"Sempre meça. Não pode haver cortes de fala."* Os exemplos que ele escreve à
+mão vivem em **16-25 palavras (2,0-3,1 p/s)** — essa é a taxa real da narração,
+não os 4,0 da §5.
+
+⭐⭐ **E a coluna que decide não é o máximo, é o MÍNIMO** — `medir_teto_fala.py
+--curva`. Se o piso do motor já passa do teto, **baixar o teto não resolve
+nada**: o motor não sabe falar mais curto, e o único caminho é encurtar copy.
+Sem essa coluna a gente troca o teto e o render continua cortando, que foi
+exatamente o que aconteceu duas vezes. Medido nos 14 motores em 2026-08-05:
+**28 das 42 cenas cortavam fala**, sendo 8 delas com o piso acima de 25.
 
 ---
 
@@ -886,6 +898,12 @@ uma cena de 31 caiba. Gate de teto é piso de qualidade, não certificado.
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
 - [ ] **400 sorteios** pelas 5 páginas, `sortear → montar → lint`, **0 ERRO medido**
+- [ ] `python funil-organico/medir_teto_fala.py --curva --motor <nome>` —
+      **nenhuma cena acima de 25 palavras**, e o `min` de cada cena **≤ 25**.
+      ⛔ Ordem permanente do operador: *"não pode haver cortes de fala"*. Uma
+      fala cortada mata o CTA, e o vídeo inteiro deixa de converter
+- [ ] `python funil-organico/medir_deiticos.py --motor <nome>` — **zero** achado
+      nas três famílias de drifting (§24)
 - [ ] Nenhum eixo acima de **~17%** de concentração; mínimo **9 opções** por eixo
 - [ ] `python funil-organico/medir_personagens.py --gate` — **exit 0**, nenhum eixo
       físico zerado. Contar entradas não basta: dez homens descritos só por cabelo

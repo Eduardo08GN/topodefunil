@@ -842,6 +842,29 @@ def _sortear_evitando(rng, pool, recentes, chave="id"):
 
 # ⚠️ era `nova_fala` no arquivo de origem — renomeada porque este arquivo tem a
 # sua propria `nova_fala`, de 3 cenas. Fora a linha do `def`, copia literal.
+def _cta_curto(rng):
+    """CTA + GATE somam num take so', e ninguem olhava a soma.
+
+    ⛔ ORDEM: o CTA sai PRIMEIRO — e' ele que carrega o literal `Comment
+    gelatin,` e a isca, os dois intocaveis — ja' reservando o gate mais curto.
+    O GATE sai por ULTIMO porque e' o beat intercambiavel do par: e' ele que
+    absorve a sobra em vez de ser cortado pelo fim do take.
+    ⚠️ Fallback e' a entrada mais CURTA do pool, NUNCA `or pool`: `or pool`
+    devolve o pool inteiro e reintroduz o estouro em silencio.
+    ⭐ Medido em 4.000 sorteios da cadeia: max 25, 0,0% acima. Nenhuma entrada
+    fica inalcancavel — 14/14 CTAS e 11/11 GATES continuam saindo.
+    """
+    cg = min(GATES, key=_palavras)
+
+    def _ok(pool, monta):
+        v = [x for x in pool if _palavras(monta(x)) <= TETO_FALA[3]]
+        return v or [min(pool, key=lambda x: _palavras(monta(x)))]
+
+    cta = rng.choice(_ok(CTAS, lambda c: c.format(gate=cg)))
+    return cta.format(gate=rng.choice(
+        _ok(GATES, lambda g: cta.format(gate=g))))
+
+
 def _nova_fala_longo(spec, i, rng):
     """Re-sorteia a fala da cena i (0-4) mantendo o substantivo-nucleo daquela
     cena — a rotacao do orgao e' do video inteiro, nao da linha."""
@@ -856,7 +879,7 @@ def _nova_fala_longo(spec, i, rng):
     if i == 3:
         return rng.choice(REDENCOES).format(eco=oc["eco"], brag=rng.choice(BRAGGING),
                                             o=o, barreira=rng.choice(BARREIRAS))
-    return rng.choice(CTAS).format(gate=rng.choice(GATES))
+    return _cta_curto(rng)
 
 
 # ⚠️ era `sortear` no arquivo de origem — renomeada pelo mesmo motivo.
@@ -881,7 +904,7 @@ def _sortear_longo(pagina, rng, ledger):
         rng.choice(RITUAIS).format(o=orgaos[2]),
         rng.choice(REDENCOES).format(eco=oc["eco"], brag=rng.choice(BRAGGING),
                                      o=orgaos[3], barreira=rng.choice(BARREIRAS)),
-        rng.choice(CTAS).format(gate=rng.choice(GATES)),
+        _cta_curto(rng),
     ]
 
     return {
@@ -1086,7 +1109,12 @@ CENAS_UI = ["1 · O FLAGRANTE", "2 · O TRUQUE + A VIRADA", "3 · CTA PREPARANDO
 # ficava de fora era sempre o fecho da virada.
 # ⚠️ O linter era mudo porque comparava com o teto DECLARADO AQUI. Teto acima da
 # capacidade fisica nao e' escolha de estilo — e' a trava desligada (§27).
-TETO_FALA = {1: 24, 2: 32, 3: 28}
+# ⛔⛔ TETO 25 — ordem permanente do operador: nao pode haver corte de fala.
+# ⚠️ A cena 3 cortava em 27,8%, e AQUI O TETO SOZINHO NAO RESOLVE: medido, ela
+# continuava em 27,8% mesmo com o teto em 25, porque o CTA era montado com
+# `rng.choice(CTAS).format(gate=rng.choice(GATES))` — sem consultar orcamento
+# nenhum. Precisou do `_cta_curto` abaixo.
+TETO_FALA = {1: 24, 2: 32, 3: 25}
 
 
 # ---------------------------------------------------------------------------

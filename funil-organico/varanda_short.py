@@ -73,12 +73,12 @@ import short_comum as sc
 from nucleo_sonoro import sonorizar
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-LEDGER = os.path.join(AQUI, ".botica-short-ledger.json")
+LEDGER = os.path.join(AQUI, ".varanda-short-ledger.json")
 
-TITULO = "AGENTE BOTICA SHORT"
-SLUG = "botica-short"
-SUBTITULO = ("a botica de casa contra a farmacia · o preparo e' a prova · "
-             "gerador offline de prompts Veo")
+TITULO = "AGENTE VARANDA SHORT"
+SLUG = "varanda-short"
+SUBTITULO = ("a varanda americana · ela e' o hook · o cha que abre a "
+             "circulacao · gerador offline de prompts Veo")
 
 ETNIA = {
     "joe": "white American", "ray": "white American", "matt": "white American",
@@ -1334,95 +1334,68 @@ HOMENS = [
 # John-son do marido nao funcionar"*. Todas dizem QUEM (`my husband`) e O QUE
 # (`{o}`) em 4-6 palavras, que e' o minimo que a BO9 aceita — e a variacao
 # mora no VERBO da falha, nao em adornos.
+# ⭐⭐ CENA 1 — O ADEUS. Fiel a fonte: *"Say goodbye to a soft Johnson and poor
+# blood flow."* E' o hook mais direto de todo o repo, porque nomeia o orgao na
+# PRIMEIRA palavra falada e o problema na segunda.
+# ⛔ TODA entrada nomeia o `{o}`. Sem ele o espectador ouve uma promessa de cha.
+# ⚠️ E o corpo dela e' o outro hook, mas esse mora na IMAGE, nao aqui: ordem do
+# operador, *"essa e' nossa bullet de retencao de hook para esse agente"*.
 PROBLEMAS = [
-    "My husband's {o} was dead",
-    "My husband's {o} had quit",
-    "My husband's {o} stopped working",
-    "My husband's {o} never worked",
-    "My husband's {o} gave up",
-    "My husband's {o} was finished",
-    "My husband's {o} went dead",
-    "My husband's {o} was long gone",
-    "My husband's {o} stayed down",
-    "My husband's {o} had shut down",
-    "My husband's {o} slept for years",
-    "My husband's {o} quit on him",
-    "My husband's {o} had gone silent",
-    "My husband's {o} stopped for good",
-    "My husband's {o} was done",
-    "My man's {o} was dead",
-    "My man's {o} had quit",
-    "Nothing woke my husband's {o}",
-    "For years my husband's {o} failed",
-    "My husband's {o} embarrassed him",
-    # + 2026-08-05 — todas em 4-6 palavras, com QUEM e O QUE, variando o verbo da falha
-    "My husband's {o} was asleep",
-    "My husband's {o} had failed",
-    "My husband's {o} would not answer",
-    "My husband's {o} had gone cold",
-    "My husband's {o} was over",
-    "My husband's {o} had checked out",
-    "My husband's {o} stayed asleep",
-    "My husband's {o} had no life left",
-    "My husband's {o} let him down",
-    "My husband's {o} was beaten",
-    "My man's {o} stopped answering",
-    "My husband's {o} had retired early",
+    "Say goodbye to a soft {o} and poor blood flow",
+    "Say goodbye to a soft {o} and the nights you dread",
+    "Say goodbye to a {o} that quits halfway",
+    "Say goodbye to a soft {o} for good",
+    "Say goodbye to a {o} that will not stay up",
+    "Say goodbye to a soft {o} and the excuses",
+    "Say goodbye to a {o} that goes down early",
+    "Forget the soft {o} and the poor blood flow",
+    "Forget a {o} that lets you down at midnight",
+    "That soft {o} of yours has an expiry date",
+    "Your soft {o} is not your age, it is your blood flow",
+    "A soft {o} is a circulation problem, nothing else",
+    "Stop blaming your age for a soft {o}",
+    "Nobody warned you a soft {o} starts in the blood",
+    "Say goodbye to a soft {o} and the silence after",
+    "Say goodbye to a {o} you have to apologise for",
 ]
 
+# ⭐ CENA 1, segundo beat — O COPO. Fiel a fonte: *"One single cup can help
+# support healthy circulation where it matters most."*
+# ⛔ `support healthy circulation` e' linguagem de SUPLEMENTO, nao de remedio, e
+# fica assim de proposito: promessa de cura e' o que derruba pagina.
+# ⚠️ `where it matters most` e' o indireto da fonte e funciona — o espectador
+# resolve sozinho, e a cena 1 ja' nomeou o orgao com todas as letras.
 VIRADAS = [
-    "Things changed when I discovered",
-    "That changed the day I found",
-    "That turned around once I found",
-    "Everything shifted when I came across",
-    "That ended the week I found",
-    # ⛔ era "It came back after I started using" e o `medir_deiticos` acusou:
-    # pronome nu como sujeito de estado do corpo e' a familia (B), a mesma
-    # que o operador reprovou no RECEITA. Pool novo reintroduz vicio velho.
-    "He changed the week I found",
-    "What turned it around was",
-    "A neighbour told me about",
-    "It all changed once my sister sent me",
-    "That was over the day I read about",
-    "Everything changed after I got",
-    "The turn came when I finally found",
-    # + 2026-08-05 — viradas com VERBO — nunca `until {ingrediente}`, que fica truncado
-    "That changed the month I found",
-    "Everything turned around after I found",
-    "It changed for good when I found",
-    "That stopped the day I tried",
-    "What finally worked was",
-    "It all changed when a friend gave me",
-    "That was over once I started using",
-    "The change came the week I found",
-    "It turned around when I switched to",
-    "What did it for him was",
-    "That ended after I brought home",
-    "Everything was different once I had",
+    "One single cup supports healthy circulation where it matters most",
+    "One cup a day supports the circulation that matters most",
+    "One single cup, and the blood goes where you need it",
+    "One cup every morning supports blood flow where it counts",
+    "One single cup is all it takes to support that circulation",
+    "One warm cup supports healthy blood flow down there",
+    "One cup a morning, and the circulation follows",
+    "One single cup supports the flow you stopped having",
+    "One cup is enough to support healthy circulation",
+    "One single cup, every morning, for the circulation that matters",
+    "One cup supports the blood flow your {o} lost",
+    "One single cup and your circulation gets help where it counts",
 ]
 
 # ⚠️ O fecho vem depois do aposto do raro, entao a virgula ANTES dele mora na
 # montagem (`%s, %s`), nunca aqui — senao o aposto fica sem fechar.
+# ⭐ CENA 1, fecho curto. A fonte nao tem, mas o take sobra tempo com o hook
+# em duas sentencas — e o fecho compra urgencia sem gastar referente.
+# ⚠️ Entrada CURTA por regra: a cena 1 fecha em 25 palavras e os dois beats de
+# cima ja' custam 20.
 FECHOS = [
-    "and a secret gelatin trick",
-    "plus a secret gelatin trick",
-    "and one secret gelatin trick",
-    "and a secret gelatin trick on top",
-    "and a gelatin trick nobody sells",
-    "and the secret gelatin trick with it",
-    "and a gelatin trick I keep to myself",
-    "and one gelatin trick nobody talks about",
-    "and a secret gelatin trick my grandmother used",
-    # + 2026-08-05 — o literal `gelatin trick` e' intocavel; varia o qualificador
-    "and a quiet gelatin trick",
-    "and one gelatin trick from home",
-    "plus the gelatin trick behind it",
-    "and a gelatin trick nobody mentions",
-    "and one secret gelatin trick more",
-    "and the gelatin trick that finished it",
-    "and a gelatin trick kept in the family",
-    "plus one gelatin trick of my own",
-    "and a gelatin trick no shop carries",
+    "before it gets worse",
+    "starting tomorrow morning",
+    "and it costs almost nothing",
+    "from your own kitchen",
+    "and nobody sells it to you",
+    "with what is already in the fridge",
+    "and it takes ten minutes",
+    "before you give up on it",
+    "and no pharmacy carries it",
 ]
 
 # ⛔ O VILAO — na fonte e' `Pharmacies don't want you to know this.` O operador
@@ -1514,31 +1487,22 @@ VILOES_APOSENTADO = [
 # do ingrediente no pool COMUNS. Template que qualifica um slot preenchido
 # por outro pool duplica quando os dois carregam a mesma palavra — e nenhum
 # linter pega isso, porque a frase e' gramatical. Achado LENDO a saida (§19).
+# ⭐⭐ CENA 2 — A RECEITA, fiel a fonte: *"Cut three lemons, add a piece of
+# fresh ginger, and one clove of garlic."*
+# ⛔ Os tres ingredientes da fonte FICAM — limao, gengibre e alho sao o que a
+# imagem mostra fervendo, e a copy tem de bater com o quadro. O ingrediente
+# RARO entra por cima, no beat seguinte.
+# ⚠️ Nenhuma entrada se auto-fecha (`nothing else`, `that is all`): o beat
+# seguinte sempre emenda, e lista fechada + emenda foi defeito pago no BOTICA.
 RECEITAS = [
-    "{c} and {r}",
-    "{c} with {r}",
-    "{c}, {r}",
-    "a little {c} and {r}",
-    "just {c} and {r}",
-    "{c} and a pinch of {r}",
-    "{c}, plus {r}",
-    "some {c} and {r}",
-    # + 2026-08-05 — so' os ingredientes VISIVEIS — a gelatina fica de fora, e' o segredo
-    "{c} and {r} together",
-    "{c}, then {r}",
-    "a spoon of {c} and {r}",
-    # ⛔ NAO ACRESCENTAR RECEITA QUE SE AUTO-FECHA. Aqui esteve `{c} and {r},
-    # nothing more` e o render saiu **"Turmeric and sarsaparilla, NOTHING MORE
-    # AND one thing I keep back: the gelatin trick"** — a receita declarava a
-    # lista encerrada e a clausula do segredo emendava mesmo assim.
-    # ⚠️ A receita e' uma lista ABERTA por construcao: a ancora SEMPRE cola
-    # `and <segredo>: the gelatin trick` no fim dela. Nenhum linter pega isso,
-    # porque as duas metades sao gramaticais — so' a leitura do render pega.
-    "{c} and a spoon of {r}",
-    "two things: {c} and {r}",
-    "{c} first, then {r}",
-    "{c} mixed with {r}",
-    "a pinch of {c} and {r}",
+    "Cut three lemons, add fresh ginger and one clove of garlic",
+    "Three lemons, a piece of fresh ginger, one clove of garlic",
+    "Slice three lemons, drop in ginger and a clove of garlic",
+    "Three lemons cut open, fresh ginger, one garlic clove",
+    "Cut two lemons, add ginger and a clove of garlic",
+    "Three lemons, ginger, and one clove of garlic in the pot",
+    "Halve three lemons, add ginger and garlic",
+    "Three sliced lemons, a thumb of ginger, one garlic clove",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
@@ -1585,26 +1549,22 @@ RECEITAS = [
 # receita ao mecanismo — o risco que ele mesmo tinha apontado. `and a secret:`
 # custa 3 palavras e faz o mesmo trabalho da retencao: a receita visivel esta'
 # incompleta, e o que falta tem nome.
+# ⭐ CENA 2, segundo beat — A FERVURA + O RARO. A fonte diz so' *"Then let it
+# boil for 10 minutes"*; o ingrediente raro e' adicao nossa, por ordem do
+# operador: *"no take 2 de prep receita pode incluir o pool com aqueles
+# ingredientes fodas"*.
+# ⛔ O `{r}` entra SEMPRE com o aposto colado (`maca root, that Andean root from
+# Peru`) — nome solto e' termo aleatorio jogado no roteiro. Regra herdada do
+# BOTICA e cobrada pelo linter.
 ANCORAS = [
-    "%s and a secret: the gelatin trick.",
-    "%s and one secret: the gelatin trick.",
-    "%s plus a secret — the gelatin trick.",
-    "%s and the one secret: the gelatin trick.",
-    "%s and one thing I keep back: the gelatin trick.",
-    "%s and a secret nobody sells: the gelatin trick.",
-    "%s and my grandmother's secret: the gelatin trick.",
-    "%s and one more thing: the gelatin trick.",
-    # + 2026-08-05 — clausula, nunca sentenca propria — e o mecanismo e' NOMEADO, nao entregue
-    "%s and one thing more: the gelatin trick.",
-    "%s and the part I hold back: the gelatin trick.",
-    "%s and what nobody sells: the gelatin trick.",
-    "%s and a step I keep: the gelatin trick.",
-    "%s and my own secret: the gelatin trick.",
-    "%s and one last thing: the gelatin trick.",
-    "%s and the missing piece: the gelatin trick.",
-    "%s and a trick from home: the gelatin trick.",
-    "%s and something I do not show: the gelatin trick.",
-    "%s and the step nobody prints: the gelatin trick.",
+    "%s. Then let it boil for ten minutes with {r}",
+    "%s. Boil it ten minutes and drop in {r}",
+    "%s. Let it boil ten minutes, then add {r}",
+    "%s. Ten minutes on the boil, with {r} in it",
+    "%s. Boil for ten minutes together with {r}",
+    "%s. Let it go ten minutes, and add {r}",
+    "%s. Ten minutes boiling, and in goes {r}",
+    "%s. Boil ten minutes, then stir in {r}",
 ]
 
 # ---------------------------------------------------------------------------
@@ -1656,51 +1616,24 @@ ANCORAS = [
 #
 # O desejo oculto deste funil: ela querer de novo · ela tomar a iniciativa · ele
 # parar de ser motivo de pena · nao precisar explicar nada.
+# ⭐ CENA 2, fecho — O USO + A PROMESSA. Fiel a fonte: *"Drink one cup every
+# single morning and wake up feeling like a man again."*
+# ⚠️ As duas primeiras sao a linha da FONTE, quase literal. As demais empilham
+# PROMESSA + DESEJO OCULTO (a reacao DELA), que e' o criterio de curadoria do
+# operador — `she noticed` e' evidencia, `my {o} is harder` e' alegacao.
 PROMESSAS = [
-    # + 2026-08-05 — as seis abaixo sao as CURTAS, no registro que o operador
-    # escreveu a mao ("Your wife will be surprised with your John-son"). Com o
-    # vaso fora da receita, a cena 2 tem folga para respirar em vez de correr.
-    "Your wife will be surprised with your {o}.",
-    "Your wife will not believe your {o}.",
-    "She will notice your {o} first.",
-    "Your wife will talk about your {o}.",
-    "She will feel your {o} before she asks.",
-    "Your wife will want your {o} again.",
-    # ela nota — o desejo de ser visto
-    "Your wife notices your {o} before you do.",
-    "Your wife talks about your {o} before you do.",
-    "She'll ask what changed, and your {o} already told her.",
-    "Your {o} is up before you are, and she knows it.",
-    # ela toma a iniciativa — o desejo de ser querido
-    "Your wife reaches over again, and your {o} is why.",
-    "Your {o} wakes her up before the alarm does.",
-    "Your {o} shows up, and she stops pretending to sleep.",
-    "She stops setting the alarm, and your {o} is the reason.",
-    # ele volta a ser homem aos olhos dela — o desejo de dignidade
-    "You'll be a new man, and your {o} tells her first.",
-    "You get the old you back, and she notices your {o} first.",
-    "She looks at you like before, and your {o} earned it.",
-    "You'll be the man she married, {o} and all.",
-    # a vergonha acaba — o desejo de nao precisar explicar
-    "You'll stop apologising, and she'll stop pretending your {o} was fine.",
-    "Your {o} gets you in trouble, and she is not complaining.",
-    "You stop dreading the bedroom, and your {o} is why she smiles.",
-    "You'll feel it in your {o} inside a week, and so will she.",
-    # + 2026-08-05 — toda promessa nomeia o ORGAO e traz ELA — reacao dela e' prova, auto-relato e' alegacao
-    "Your wife will feel your {o} that same night.",
-    "She will reach for your {o} first.",
-    "Your wife will not let your {o} rest.",
-    "She stops pretending, and your {o} is why.",
-    "Your wife will ask what happened to your {o}.",
-    "She will notice your {o} before the coffee.",
-    "Your {o} answers, and she stops asking.",
-    "She will hold on to your {o} again.",
-    "Your wife wakes to your {o}, not to the alarm.",
-    "She will want your {o} in the morning.",
-    "Your {o} shows up, and your wife notices.",
-    "She stops sleeping turned away, and your {o} is why.",
-    "Your wife will be the one reaching, and your {o} is why.",
-    "She looks at your {o} the way she used to.",
+    "Drink one cup every morning and wake up feeling like a man again.",
+    "Drink a cup every single morning and wake up a man again.",
+    "One cup each morning, and you wake up feeling like yourself.",
+    "Drink it every morning and your {o} wakes before you do.",
+    "One cup a day, and your wife notices your {o} first.",
+    "Drink it warm every morning and your {o} answers again.",
+    "One cup before breakfast, and your {o} stops going quiet.",
+    "Drink one cup daily and your {o} holds through the night.",
+    "One cup every morning, and she feels your {o} again.",
+    "Drink it first thing and your {o} shows up for her.",
+    "One cup a morning, and your wife stops pretending.",
+    "Drink it every day and your {o} does the talking.",
 ]
 
 
@@ -1717,28 +1650,23 @@ PROMESSAS = [
 # ⛔⛔ O CENTIMETRO SAI. Ordem do operador: *"so' a promessa sem centimetro"*.
 # A fonte promete `5 inches faster in a week`; nos ficamos com a promessa. O
 # linter varre qualquer medida (BO10).
+# ⭐⭐ CENA 3 — O PAYOFF. A fonte NAO tem esta cena (ela so' fala com a lente
+# segurando um livro). O payoff e' comissao do operador: *"pode colocar ela
+# segurando um geoduck bem grande e ereto no take 3, com pool de props grandes e
+# eretos, duas amigas do lado dela ambas com pool de cara de espanto, ou risos"*.
+# ⛔ A fala NAO descreve o prop — quem descreve e' a IMAGE. Dizer em voz alta o
+# que o quadro mostra gasta o orcamento de 8s e nao acrescenta nada.
 USOS = [
-    "Drink this every morning and it goes straight to your {o}.",
-    "One glass every morning, and your {o} is what feels it.",
-    "Drink it first thing and your {o} gets the blood it stopped getting.",
-    "Every morning on an empty stomach, and your {o} notices before you do.",
-    "Drink this daily and your {o} comes back to what it was.",
-    "One glass a day, and your {o} stops letting you down.",
-    "Take it every morning and your {o} answers again inside a week.",
-    "Drink it warm before bed and your {o} is up before you are.",
-    # + 2026-08-05 — o USO nomeia o orgao — sem ele o espectador nao sabe para que serve
-    "Drink it before bed and your {o} feels it by morning.",
-    "One glass at night, and your {o} is what wakes.",
-    "Take it every morning and your {o} does the rest.",
-    "Drink it warm and your {o} answers within the week.",
-    "A glass a day, and your {o} stops letting him down.",
-    "Drink this daily and your {o} comes back on its own.",
-    "One glass before bed, and your {o} does not go quiet.",
-    "Drink it every morning and your {o} holds all night.",
-    "Take a glass at night and your {o} shows up for her.",
-    "One glass, every single day, and your {o} does the talking.",
-    "Drink it first thing and your {o} follows within days.",
-    "A glass each night, and your {o} stops going missing.",
+    "This is what one month of that cup looks like",
+    "One month of that cup, and this is the result",
+    "That is what the cup does in a month",
+    "Thirty days of that cup, and here we are",
+    "This is your {o} after a month on that cup",
+    "One month in, and the cup did this",
+    "That cup, every morning for a month, does this",
+    "This is what happens when you drink it daily",
+    "A month of that cup and nobody is quiet anymore",
+    "That is the cup working, thirty mornings in",
 ]
 
 # ⛔⛔ A ESCALADA SAIU DA CENA 3 — decisao MEDIDA, nao estetica.
@@ -1823,13 +1751,7 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # 5 + raro 10 + fecho 5.
 # ⛔ A CENA 3 CONTINUA EM 31 E ISSO E' RISCO CONHECIDO — ver o relatorio ao
 # operador. Baixa-la exige encurtar o CTA, que e' alcada dele.
-# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
-# pode haver cortes de fala."* O numero vem de render, nao de conta: 32
-# cortou, 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
-# palavras (2,0-3,1 palavras/s).
-# ⚠️ cena 2 cortava em 12,8%. A cadeia ja' reserva ancora e promessa antes da receita.
-# ⛔ NAO baixar o [3] junto: medido, ele vai de max 31 para 36 pelo `or pool`.
-TETO_FALA = {1: 25, 2: 25, 3: 31}
+TETO_FALA = {1: 25, 2: 28, 3: 31}
 PISO_FALA = {1: 18, 2: 15, 3: 23}
 
 
@@ -2079,12 +2001,20 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         # o FECHO carrega o literal `gelatin trick` (intocavel), a VIRADA e o
         # problema cedem em volta. ⛔ Fallback e' a entrada mais CURTA, nunca
         # `or pool`.
-        r_fal = raro_falado(spec["raro"])
-
+        # ⛔⛔ O INGREDIENTE RARO NAO ENTRA NA CENA 1 DESTE AGENTE — e o motor de
+        # origem o injetava aqui. Na fonte a cena 1 e' hook puro (`Say goodbye
+        # to a soft Johnson and poor blood flow. One single cup can help support
+        # healthy circulation`), e o raro so' aparece na panela, na cena 2.
+        # ⚠️ Achado LENDO o primeiro sorteio (§19): saia **"...where it counts
+        # ginkgo, the leaf off that ancient Chinese tree, from your own
+        # kitchen"* — o aposto encaixado no meio de uma frase que nao pedia
+        # ingrediente nenhum. Gramatical, e sem sentido.
+        # ⚠️ E as VIRADAS levam `.format(o=...)` porque algumas nomeiam o orgao;
+        # sem isso o placeholder `{o}` chegava CRU no prompt.
         def _c1(pb, vr, fc):
-            return "%s. %s %s, %s." % (pb.format(o=o1), vr, r_fal, fc)
+            return "%s. %s, %s." % (pb.format(o=o1), vr.format(o=o1), fc)
 
-        cv = min(VIRADAS, key=_palavras)
+        cv = min(VIRADAS, key=lambda x: _palavras(x.format(o=o1)))
         cf = min(FECHOS, key=_palavras)
         pb = rng.choice(_cabem(PROBLEMAS, lambda x: _c1(x, cv, cf),
                                TETO_FALA[1]))
@@ -2095,33 +2025,38 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         f[0] = _c1(pb, vr, fc)
 
     if 1 in quais:
-        met, com, raro = spec["metodo"], spec["comum"], spec["raro"]
-        # ⚠️ SEM o aposto aqui: ele ja' foi pago na cena 1. Repetir os 5-9
+        raro = spec["raro"]
+        # ⭐⭐ OS SLOTS MUDARAM EM RELACAO AO MOTOR DE ORIGEM, e a razao e' a
+        # fonte: aqui os tres ingredientes VISIVEIS sao fixos (limao, gengibre,
+        # alho — e' o que ferve na panela em quadro), entao a RECEITA nao tem
+        # slot nenhum. Quem carrega o `{r}` e' a ANCORA, no beat da fervura.
+        # ⚠️ SEM o aposto aqui: ele ja' foi pago na cena 1. Repetir as 5-9
         # palavras do aposto num video de 24 segundos e' pagar duas vezes pela
         # mesma informacao — e a cena 2 e' a mais densa das tres.
-        rec_slots = dict(v=met["vaso_fala"], c=com["nome"], r=raro["nome"])
+        rec_slots = dict(r=raro["nome"])
         # ⚠️ O ESPACO DA PROMESSA E' RESERVADO NA CONTA DESDE O PRIMEIRO SORTEIO.
-        # Sem isso a receita e a ancora sao escolhidas contra o teto cheio, a
-        # promessa entra por cima e a cena estoura — foi o que aconteceu quando
-        # o terceiro beat entrou: 34 a 40 palavras contra teto de 32. Quem
-        # escolhe primeiro tem de saber o que ainda vem depois.
-        curto_a = min(ANCORAS, key=lambda a: _palavras(a % ""))
+        # Sem isso a receita e a ancora sao escolhidas contra o teto cheio e a
+        # promessa entra por cima, estourando a cena. Quem escolhe primeiro tem
+        # de saber o que ainda vem depois.
+        curto_a = min(ANCORAS,
+                      key=lambda a: _palavras((a % "").format(**rec_slots)))
         curto_p = min(PROMESSAS, key=_palavras)
         rec = rng.choice(_cabem(
             RECEITAS,
-            lambda x: (curto_a % x.format(**rec_slots)).format(o=o2)
+            lambda x: ((curto_a % x).format(**rec_slots)).format(o=o2)
             + " " + curto_p.format(o=o2),
-            TETO_FALA[2])).format(**rec_slots)
+            TETO_FALA[2]))
         anc = rng.choice(_cabem(
             ANCORAS,
-            lambda a: _cap((a % rec).format(o=o2)) + " " + curto_p.format(o=o2),
+            lambda a: _cap(((a % rec).format(**rec_slots)).format(o=o2))
+            + " " + curto_p.format(o=o2),
             TETO_FALA[2]))
         # ⛔ `_cap` porque a receita ABRE a sentenca. Ate' 2026-08-05 ela comecava
         # com o literal `Gelatin,` e a maiuscula vinha de graca; com a gelatina
         # fora da lista, o primeiro token passou a ser `{c}` em minuscula e o
         # render saiu **`baking soda, fenugreek and one secret...`**. Achado LENDO
         # a saida, nao pelo linter — frase em minuscula e' gramaticalmente valida.
-        meio = _cap((anc % rec).format(o=o2))
+        meio = _cap(((anc % rec).format(**rec_slots)).format(o=o2))
         # ⭐ A PROMESSA fecha a cena 2, no lugar do bullet de loja. Ela fala com
         # o HOMEM que assiste, em 2a pessoa, e nomeia o orgao ou o que ela nota
         # nele — promessa sem referente e' "novo por que?".

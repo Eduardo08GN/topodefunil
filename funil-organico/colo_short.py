@@ -996,7 +996,15 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # ⚠️ A cena 3 e' a mais densa das tres por construcao: ela carrega escalada +
 # keyword + isca + follow-gate, quatro funcoes em 8 segundos. O EXTERIOR roda a
 # dele a 4,20 p/s e o operador decidiu medir em campo; esta fica em ~3,9.
-TETO_FALA = {1: 29, 2: 32, 3: 31}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de render, nao de conta: 32
+# cortou, 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 palavras/s).
+# ⚠️ cena 1 cortava em 29,5%. A cadeia ja' reservava o espaco; so' o teto estava largo.
+# ⛔ NAO baixar [2] e [3] junto: medido, a cena 2 vai de max 32 para 34 e a 3 de
+# 31 para 37, porque o `_cabem` termina em `or pool` e devolve tudo quando nada
+# cabe. Baixar o teto dessas duas PIORA.
+TETO_FALA = {1: 25, 2: 32, 3: 31}
 PISO_FALA = {1: 20, 2: 22, 3: 24}
 
 
