@@ -265,6 +265,12 @@ EXCECOES = {
     # e a autoridade dela vem de PARECER curandeira. Escolhi a lei do operador
     # sobre a fonte — a tradicao entra pelo TRAJE do mundo, nao pelo desgaste do
     # rosto. Se ele preferir o contrario, e' uma linha no pool.
+    # ⛔⛔ DUPLA — a lei do REF e' o ANGULO, nao regra herdada. Ordem do
+    # operador: "duas mulheres novinhas lindas com vestido mais curto". Um eixo
+    # de oculos cheio aqui seria o motor contrariando a propria razao de existir.
+    ("dupla_short.py", "REFS", "oculos"):
+        "LEI DO REF — as duas mulheres sao a bullet de retencao deste angulo, "
+        "por encomenda do operador.",
     ("botica_short.py", "REFS", "oculos"):
         "LEI DO REF — oculos brigam frontalmente com 'linda'. Cabelo 12/12, "
         "porte 10/12, pele 6/12 e ancora 6/12 seguem cheios.",
