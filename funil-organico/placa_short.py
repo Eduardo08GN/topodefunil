@@ -105,14 +105,24 @@ ETNIA = {
 # esquerda fala; a da direita nao abre a boca.
 # ⛔ Os dois props no MESMO frame, e nenhum deles encostado no corpo de ninguem:
 # proxy junto do corpo e' o que a moderacao pega (ver prop-metaforas).
-BO_DUPLA = (
-    "Two women stand side by side, shoulder to shoulder, filmed straight on "
-    "from the waist up. On frame-left is a %d-year-old %s woman, %s, %s, "
-    "wearing %s; she holds %s raised at chest height in her right hand. On "
-    "frame-right is a %d-year-old %s woman, %s, %s, wearing %s; she holds %s "
-    "raised at chest height in her left hand. Both objects are fully in frame "
-    "and neither touches either woman's body. The woman on the left looks "
-    "straight into the lens with her mouth open mid-word as she speaks."
+# ⭐⭐ O QUADRO 1 DO PLACA — a humilhacao publica do corpo dele. Lido na fonte
+# frame a frame: ela aponta com a mao para um prop MURCHO segurado na virilha de
+# um homem de camisa LEVANTADA, e ao lado ha' um cartao branco escrito a mao.
+# ⛔ Ele NAO tem rosto em quadro (enquadrado do peito para baixo): o rosto dele
+# transformaria a cena numa acusacao a uma pessoa. Sem rosto, e' o corpo de
+# qualquer um — e o espectador se ve ali.
+# ⚠️ E' o unico motor do repo onde TEXTO EM CENA e' permitido, por isso a cauda
+# negativa dele diz `no burned-in text` em vez de `no on-screen text`: a trava
+# existe para impedir LEGENDA QUEIMADA, nao um prop que tem letra.
+BO_PLACA = (
+    "Standing at frame-left, filmed from the waist up, is a %d-year-old %s "
+    "woman, %s, %s, wearing %s. She is turned towards the lens and looking "
+    "straight into it, her mouth open mid-word as she speaks. Her right arm is "
+    "extended towards frame-right, index finger pointing. Beside her at "
+    "frame-right stands a man shown only from the chest down, his shirt lifted "
+    "and held up with one hand, bare stomach visible; in his other hand, held "
+    "low in front of him, is %s. Taped beside it is a plain white card with "
+    "\"%s\" written on it by hand in thick black marker."
 )
 
 # ⛔ BO2 — no TAKE da cena 1 o prop NAO muda de estado. Este agente nao tem
@@ -134,16 +144,20 @@ BO_ISCA_ESTAVEL = (
 # a cor faz o trabalho: vermelho e laranja num copo transparente.
 # ⚠️ A SEGUNDA MULHER continua em quadro, atras, MUDA. Sem isso o Veo perde a
 # dupla entre a cena 1 e a 3 e devolve outra pessoa no payoff.
+# ⭐ O QUADRO 2 DO PLACA — a bancada. Lido na fonte: potes ROTULADOS de caldo de
+# osso e mel cru, colher de mel, limoes, uma caneca de vidro. Ela sozinha.
+# ⛔ SEM o despejo duplo de sucos: aquilo e' o DUPLA. Aqui o gesto e' mexer.
 BO_PREPARO = (
     "Medium shot in %(coz)s, filmed straight on at the height of the %(sup)s, "
     "framed so that %(sup_a)s runs across the bottom third of the picture. "
     "Standing behind it, centred in the frame, is %(ancora)s. On the %(sup)s in "
-    "front of her stands a tall clear glass, and beside it %(raro_img)s, a whole "
-    "pomegranate and two carrots. She holds a glass jug in each hand and pours "
-    "both at once into the tall glass — deep red juice from the left jug and "
-    "bright orange juice from the right — the two streams falling together. She "
-    "looks directly into the lens with her mouth open mid-word as she speaks. "
-    "%(amiga)s"
+    "front of her stand a wide-mouthed jar of pale powder, a jar of honey with "
+    "a wooden dipper resting in it, two cut lemon halves and a clear glass mug "
+    "of warm water. Her right hand is closed around a long spoon standing in "
+    "the mug and she stirs it in slow circles; her left hand rests flat on the "
+    "%(sup)s beside it. Nothing else is touched, moved or lifted. She looks "
+    "directly into the lens with her mouth open mid-word as she speaks. She is "
+    "the only person in the frame."
 )
 
 # ⭐ A AMIGA — a segunda mulher, MUDA nas tres cenas. Ela e' quem segura o prop
@@ -161,11 +175,12 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
                "nothing is added to it or taken away.")
 
 # ⭐ BO5 — O COPO DO PAYOFF, lido em 0:30: ela empurra o copo para a lente com a
-# mao, o liquido opaco e cremoso, dois canudos dentro.
+# mao, o liquido opaco e cremoso, UM canudo dentro (ordem do operador, ao ler
+# o render: *"dois canudos? quero so' um"* — dois leem como bebida de casal).
 # ⛔ Ele so' existe na CENA 3, e e' o objeto da keyword — esta' na mao no frame em
 # que a boca diz `gelatin,`. Mostra-lo antes entrega o payoff antes da promessa.
-BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, two "
-           "paper straws standing in it")
+BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, a "
+           "single paper straw standing in it")
 
 # ⭐⭐ BO6 — O HOMEM MUDO. Ordem do operador: *"no take final, alem do ref
 # falando, havera um homem sempre atras, com cara de espanto e surpresa e
@@ -239,7 +254,7 @@ BO_ANCORA = ("the same %d-year-old %s woman from the first scene, same %s, same 
 
 ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
              "actor, not resembling any famous person.")
-CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
+CAUDA = "Shot on iPhone, natural grain. No burned-in text, no watermark."
 
 
 # ---------------------------------------------------------------------------
@@ -860,6 +875,16 @@ SUBSTANCIAS = [
 # ⛔ OS DOIS FICAM NO MESMO QUADRO, um por mulher, erguidos a altura do
 # peito — lido na fonte, frame a frame. E' isso que faz o `from this to
 # this` resolver: o deitico duplo aponta para dois objetos VISIVEIS.
+# ⭐⭐ AS PLACAS ESCRITAS A MAO — o eixo que da' nome ao agente. Lido na fonte:
+# um CARTAO BRANCO LISO, letra de caneta grossa, segurado ao lado do prop.
+# ⛔ Texto CURTO e em MAIUSCULAS por razao mecanica: o Veo escreve bem duas ou
+# tres palavras e transforma sentenca longa em rabisco.
+PLACAS = [
+    "SMALL BANANA", "DEAD ON ARRIVAL", "OUT OF ORDER", "RETIRED EARLY",
+    "NOT WORKING", "GAME OVER", "CLOSED FOR YEARS", "NO SIGNAL",
+    "STILL SLEEPING", "SHRUNK", "LIGHTS OUT", "PERMANENTLY CLOSED",
+]
+
 PARES = [
     {"id": "banana", "nome": "banana",
      "murcho": "a small blackened banana, shrivelled and soft, barely the length of her palm",
@@ -2069,11 +2094,9 @@ def sortear(pagina, rng, led, travas=None):
            else rng.choice(REFS))
     # ⭐ A AMIGA sai do MESMO pool da narradora e NUNCA e' a mesma pessoa: duas
     # mulheres no quadro com a mesma descricao viram gemeas no render.
-    amiga = rng.choice([x for x in REFS if x is not ref])
-    # ⚠️ a reacao dela e' sorteada junto — ordem do operador: "ambas com pool de
-    # cara de espanto, ou risos, etc".
-    reacao_amiga = _fresco_traje(REACOES_HOMEM,
-                                 usados.get("reacao_amiga", []), rng)
+    # ⭐ A PLACA e' eixo proprio, sorteada por video.
+    placa = travas.get("placa") or _fresco_traje(
+        [(p, p) for p in PLACAS], usados.get("placa", []), rng)[0]
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
              else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
     prop = (_por_id(PROPS, travas["prop"]) if travas.get("prop")
@@ -2095,8 +2118,8 @@ def sortear(pagina, rng, led, travas=None):
 
     spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
             "traje": traje, "reacao": reacao, "apelo": apelo,
-            "reacao_amiga": reacao_amiga,
-            "ref": ref, "amiga": amiga, "homem": homem,
+            "placa": placa,
+            "ref": ref, "homem": homem,
             "prop": prop, "substancia": sub,
             "metodo": dict(met, vaso_fala=_sem_artigo(met["curto"])),
             "comum": com, "raro": raro, "orgaos": orgaos,
@@ -2144,7 +2167,7 @@ def montar(spec):
         "Ancora": _cap(_ancora(spec)),
         "vaso": met["vaso"], "vaso_curto": met["curto"], "acao": met["acao"],
         "comum_img": com["img"], "raro_img": raro["img"],
-        "copo": BO_COPO, "anti": ANTICELEB, "cauda": CAUDA, "band": band,
+        "copo": BO_COPO, "gigante": prop["gigante"], "anti": ANTICELEB, "cauda": CAUDA, "band": band,
     }
     v["nao_toca"] = BO_NAO_TOCA % m["sup"]
 
@@ -2164,22 +2187,19 @@ def montar(spec):
     # Mesma economia do EXTERIOR e do TROCA — 8 segundos nao pagam preparacao.
     # ⛔ AQUI NAO EXISTE `only person`: a cena 1 tem DUAS por construcao. A
     # trava de pessoa unica das outras cenas foi removida junto (BO6 reescrito).
-    _a, _r = spec["amiga"], spec["ref"]
+    _r = spec["ref"]
     b["IMAGE 01/03"] = (
-        "Medium shot in %(coz)s.%(band)s %(duplo)s %(anti)s %(luz)s %(cauda)s"
-        % dict(v, duplo=BO_DUPLA % (
+        "Medium shot in %(coz)s.%(band)s %(pl)s %(anti)s %(luz)s %(cauda)s"
+        % dict(v, pl=BO_PLACA % (
             _r["idade"], spec["etnia"], _sem_artigo(_r["cabeca"]),
             _sem_artigo(_r["marca"]), _traje(spec), prop["murcho"],
-            _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
-            _sem_artigo(_a["marca"]), _traje(spec), prop["gigante"])))
+            spec["placa"])))
 
     # --- CENA 2 — O PREPARO (o mecanismo) -----------------------------------
     # ⚠️ O utensilio VARIA (ordem do operador) e o verbo do TAKE acompanha.
     b["IMAGE 02/03"] = (
         "%(preparo)s %(anti)s %(luz)s %(cauda)s"
-        % dict(v, preparo=BO_PREPARO % dict(v, amiga=BO_AMIGA_FUNDO % (
-            _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
-            _sem_artigo(_a["marca"]), _traje(spec), spec["reacao_amiga"][0]))))
+        % dict(v, preparo=BO_PREPARO % v))
 
     # --- CENA 3 — O COPO + O HOMEM MUDO + O CTA -----------------------------
     # ⭐ O objeto da keyword esta' NA MAO no frame em que a boca diz `gelatin,`.
@@ -2187,16 +2207,13 @@ def montar(spec):
     b["IMAGE 03/03"] = (
         "Closer medium shot in the same place, same background, same %(luz_c)s, "
         "filmed straight on and framed from the waist up. %(Ancora)s, standing "
-        "centred in the frame, holding %(copo)s up at chest height, turned "
-        "towards the lens. She looks directly into the camera, calm and "
+        "centred in the frame and turned towards the lens, holding "
+        "%(gigante)s. Her other hand holds %(copo)s. "
+        "She looks directly into the camera, calm and "
         "certain, her mouth open mid-word as she speaks, her front teeth even "
-        "and complete. %(amiga)s %(homem)s %(anti)s %(cauda)s"
+        "and complete. %(homem)s %(anti)s %(cauda)s"
         % dict(v, homem=BO_HOMEM % (hom["idade"], spec["etnia"], hom["marca"],
-                                    hom["roupa"], spec["reacao"][0]),
-               amiga=BO_AMIGA_FUNDO % (
-                   _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
-                   _sem_artigo(_a["marca"]), _traje(spec),
-                   spec["reacao_amiga"][0])))
+                                    hom["roupa"], spec["reacao"][0])))
 
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;
@@ -2465,14 +2482,27 @@ def lint(spec, blocos):
     # ⛔ REESCRITO: no BOTICA a escala vinha do ENQUADRAMENTO (mao esticada para
     # a lente). Aqui ela vem da COMPARACAO — dois props no mesmo quadro, um
     # murcho e um gigante. Exigir a clausula do outro angulo reprovaria tudo.
-    if "raised at chest height" not in i1:
+    # ⛔ REESCRITO PARA O PLACA. No DUPLA a escala vinha da COMPARACAO (dois
+    # props no mesmo quadro, `raised at chest height`); aqui vem do DEDO
+    # APONTANDO para o corpo dele. E' o gesto que diz "olhem isto".
+    if "index finger pointing" not in i1:
         ach.append(("ERRO", "BO1: IMAGE 01/03 sem a escala por ENQUADRAMENTO — "
                             "sem ela o prop vira um objeto qualquer na mao"))
-    # ⛔ AQUI SAO DOIS PROPS, nao um. A lente herdada olhava `prop["img"]`;
-    # neste angulo o par murcho/gigante tem de estar INTEIRO no quadro 1 — se
-    # so' um aparece, o `from this to this` fica sem a metade que ele aponta.
-    if spec["prop"]["murcho"] not in i1 or spec["prop"]["gigante"] not in i1:
-        ach.append(("ERRO", "BO1: IMAGE 01/03 sem o prop sorteado"))
+    # ⛔ NO PLACA OS DOIS PROPS NAO DIVIDEM QUADRO — isso e' o DUPLA. Aqui o
+    # MURCHO abre o video na virilha dele e o GIGANTE fecha na mao dela; o
+    # intervalo entre um e outro e' a receita. Exigir os dois na cena 1
+    # devolveria a imagem do outro angulo, que foi o defeito de origem.
+    if spec["prop"]["murcho"] not in i1:
+        ach.append(("ERRO", "BO1: IMAGE 01/03 sem o prop MURCHO — e' o corpo do "
+                            "problema, o que a placa acusa"))
+    if spec["prop"]["gigante"] not in i3:
+        ach.append(("ERRO", "BO1: IMAGE 03/03 sem o prop GIGANTE — sem ele a "
+                            "placa da cena 1 nunca e' desmentida"))
+    # ⭐ A PLACA e' o angulo. Se o cartao nao chega ao quadro, este agente e' um
+    # BOTICA com outra copy.
+    if spec["placa"] not in i1:
+        ach.append(("ERRO", "BO1: IMAGE 01/03 sem a PLACA escrita a mao — e' o "
+                            "eixo que da' nome ao agente"))
 
     # --- BO5: o copo so' na cena 3 -------------------------------------------
     for nome in ("IMAGE 01/03", "IMAGE 02/03"):
@@ -2492,13 +2522,13 @@ def lint(spec, blocos):
         ach.append(("ERRO", "BO6: TAKE 03/03 sem a trava de mudez — sem ela o "
                             "segundo corpo dubla a fala dela (falha que derrubou "
                             "a cena do casal do VAZAMENTO)"))
-    # ⛔ REESCRITO: neste angulo NAO existe cena de pessoa unica — a dupla e' o
-    # angulo. A trava vira o seu oposto: a AMIGA tem de estar nas tres cenas, e
-    # muda nas tres, senao o Veo perde a comparacao ou dubla as duas.
-    for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
-        if "never speaks" not in blocos[nome] and nome != "IMAGE 01/03":
-            ach.append(("ERRO", "BO6: %s sem a trava de pessoa unica — o homem "
-                                "so' existe na cena 3" % nome))
+    # ⛔ REESCRITO: o PLACA nao tem amiga (isso e' o DUPLA). O segundo corpo da
+    # cena 1 e' o HOMEM SEM ROSTO da placa, e o da cena 3 e' o corpo-prova. A
+    # cena 2 e' a unica de pessoa unica — e tem de continuar sendo: uma segunda
+    # pessoa na bancada rouba o quadro da receita, que e' o que se vende.
+    if BO_HOMEM.split("%s")[0].strip()[:24] in blocos["IMAGE 02/03"]:
+        ach.append(("ERRO", "BO6: a cena 2 tem um segundo corpo — a bancada e' "
+                            "dela sozinha, o homem entra so' no payoff"))
     if "only person" in i3:
         ach.append(("ERRO", "BO6: a cena 3 declara pessoa UNICA e tem DUAS — "
                             "ordem contraditoria: o Veo resolve apagando o "
@@ -2709,14 +2739,22 @@ def autoteste(n=600):
     s = sortear("joe", random.Random(1), {}, {})
     b = montar(s)
 
-    # ⭐ [BO8] o raro sem o aposto — a diretiva inteira do operador em um controle
-    # ⚠️ O controle apontava para a cena 2 e ficou CEGO quando o aposto mudou
-    # para a cena 1 — controle que nao acompanha a regra deixa de ser controle.
-    s8 = dict(s, falas=list(s["falas"]))
-    s8["falas"][0] = s8["falas"][0].replace(
-        raro_falado(s["raro"]), s["raro"]["nome"])
-    if not any("BO8" in msg for _, msg in lint(s8, b)):
-        ctrl.append("[BO8] NAO acusa o ingrediente raro sem o aposto na cena 1")
+    # ⭐⭐ [BO1] A PLACA FORA DO QUADRO — este e' O controle deste agente.
+    # ⛔ A sonda que estava aqui era herdada do BOTICA (raro sem aposto na cena
+    # 1) e vigiava uma regra que este angulo desligou: no PLACA a cena 1 e' o
+    # cartao, nao a receita. Controle que vigia regra morta e' decoracao.
+    # ⚠️ E' o defeito que o operador pegou lendo o prompt: o PLACA gerando a
+    # imagem do DUPLA. Se a placa some do quadro 1, este agente vira outro.
+    b1 = dict(b)
+    b1["IMAGE 01/03"] = b1["IMAGE 01/03"].replace(s["placa"], "SOMETHING")
+    if not any("BO1" in msg for _, msg in lint(s, b1)):
+        ctrl.append("[BO1] NAO acusa a PLACA fora do quadro 1 — o eixo do agente")
+
+    # ⭐ [BO1] o prop GIGANTE fora do payoff: sem ele a placa nunca e' desmentida
+    b1b = dict(b)
+    b1b["IMAGE 03/03"] = b1b["IMAGE 03/03"].replace(s["prop"]["gigante"], "a mug")
+    if not any("BO1" in msg for _, msg in lint(s, b1b)):
+        ctrl.append("[BO1] NAO acusa o prop GIGANTE fora da cena 3")
     if any("BO8" in msg for _, msg in lint(s, b)):
         ctrl.append("[BO8] acusa a forma CERTA (nome + aposto)")
 

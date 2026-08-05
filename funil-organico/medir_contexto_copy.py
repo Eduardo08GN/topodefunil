@@ -69,7 +69,8 @@ sys.path.insert(0, FO)
 MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "organicwave_short", "ressurreicao_short", "flagrante_short",
            "pee_short", "vazamento_short", "necrose_short", "exterior_short",
-           "colo_short", "receita_short", "botica_short"]
+           "colo_short", "receita_short", "botica_short",
+           "dupla_short", "placa_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

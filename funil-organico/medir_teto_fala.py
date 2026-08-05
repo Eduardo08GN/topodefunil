@@ -50,7 +50,8 @@ if AQUI not in sys.path:
 # ⛔ Escopo do repo: os quatorze SHORT. `*_lucas` nao existe para nos.
 MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "ressurreicao", "flagrante", "pee", "vazamento", "necrose",
-           "exterior", "colo", "receita", "botica"]
+           "exterior", "colo", "receita", "botica",
+           "dupla", "placa"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #
