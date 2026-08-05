@@ -118,6 +118,22 @@ PEGADA = ("%s right hand is closed around the %s, the whole hand visibly "
 
 ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
              "actor, not resembling any famous person.")
+# ⭐ CL26 — a clausula anti-celebridade tem SEXO (ordem do operador,
+# 2026-08-04: *"todas precisam ser absolutamente lindas"*). No homem, "cara
+# comum" e' credibilidade. Na mulher, o `plain unremarkable face` brigava DE
+# FRENTE com a ordem: o gerador recebia "linda" no corpo e "sem graca" no
+# rosto na mesma frase, e resolvia a contradicao contra nos. A protecao de
+# identidade (nao-celebridade) fica nas duas versoes; so' sai o "comum".
+ANTICELEB_M = ("A strikingly beautiful face, not a celebrity, not resembling "
+               "any famous person.")
+# O par do REF 01 — mesma regra, na frase inteira de pessoa:
+REF_ROSTO_H = ("An ordinary everyday relatable person with a plain "
+               "unremarkable face, not a celebrity, not a model, not an "
+               "actor, not resembling any famous person.")
+REF_ROSTO_M = ("A strikingly beautiful woman, her face flawless and "
+               "photogenic, her hair silky, smooth and healthy with a soft "
+               "shine, yet not a celebrity, not an actress, not resembling "
+               "any famous person.")
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 # ⛔⛔ OS DENTES SAO ANCORADOS (2026-08-03, falha em producao). A boca fica
@@ -127,6 +143,12 @@ CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 # ⚠️ Ancora POSITIVA, nunca negativa. `no missing teeth` e' negacao, e negacao
 # nao cria forma — e' o mesmo erro do `with no label` do CL19, que devolveu
 # caixa branca generica. Diz-se o que TEM: fileira completa e pareja.
+# ⭐⭐ 2026-08-04 (foto de campo): a ancora de TEXTO sozinha nao segurou — o
+# operador mandou o print de uma REF feminina banguela. A lei subiu de nivel:
+# o REF 01 agora SORRI mostrando a fileira branca completa, e os dentes passam
+# a morar na IMAGEM de identidade (5a alavanca — quando texto e imagem
+# discordam, a imagem vence; as cenas seguem a foto). As ancoras de texto nas
+# cenas continuam, como reforco.
 DENTES = "%s front teeth even and complete"
 
 
@@ -167,56 +189,70 @@ SCRUBS = ["deep burgundy", "deep teal", "navy blue", "forest green",
 # Otimizar a metrica contra o objetivo.
 # ⛔ A ancora facial continua obrigatoria (P6) — sem ela o Veo troca de rosto
 # entre blocos. Mas ela e' DISTINTIVA e nunca DETERIORADA: marca de nascenca,
-# covinha, olho de cor incomum, sarda, malar alto, falha entre os dentes.
+# covinha, olho de cor incomum, sarda, malar alto.
+# ⛔⛔ DENTE NAO E' MARCA (CL25, foto de campo 2026-08-04): `a small gap
+# between her front teeth` era ancora legitima, mas o gerador EXAGERA
+# imperfeicao dentaria ate' virar dente faltando — o operador mandou o print.
+# E' a regiao que os geradores mais erram; assert de carga logo abaixo.
 # ⚠️ O eixo `oculos` fica ZERADO de proposito e a excecao esta' declarada no
 # medidor. ⛔ So' no pool FEMININO: no REFS_H oculos e grisalho ficam, porque no
 # homem eles leem como CREDIBILIDADE — o oposto do efeito na mulher.
+# ⭐ CL26 — O CABELO E' SEMPRE HIDRATADO E COM BRILHO (2026-08-04, prints de
+# campo): `thick auburn hair falling loose` sem qualificador de textura saiu
+# RESSECADO, duro, sem hidratacao. Todo `cabeca` feminino carrega um token de
+# saude capilar (glossy/silky/sleek/sheen/smooth) — assert de carga abaixo.
 REFS_M = [
-    {"idade": 29, "cabeca": "her hair in neat cornrows pulled back",
+    {"idade": 29, "cabeca": "her hair in neat glossy cornrows pulled back",
      "marca": "a small dark beauty mark above her left eyebrow"},
-    {"idade": 32, "cabeca": "her hair in a sleek low bun",
+    {"idade": 32, "cabeca": "her hair in a sleek shining low bun",
      "marca": "high cheekbones and a small scar at the corner of her jaw"},
     {"idade": 27, "cabeca": "shoulder-length glossy straight hair tucked behind her ears",
      "marca": "a light spray of freckles high on her cheeks"},
-    {"idade": 34, "cabeca": "short natural curls kept close",
+    {"idade": 34, "cabeca": "short soft natural curls, glossy and well-defined",
      "marca": "a deep dimple in her left cheek"},
-    {"idade": 30, "cabeca": "long hair pulled back into a high ponytail",
+    {"idade": 30, "cabeca": "long silky hair pulled back into a smooth high ponytail",
      "marca": "striking pale green eyes"},
-    {"idade": 36, "cabeca": "long braids gathered over one shoulder",
+    {"idade": 36, "cabeca": "long neat braids with a healthy sheen, gathered over one shoulder",
      "marca": "a small dark beauty mark on her chin"},
     {"idade": 28, "cabeca": "a blunt glossy dark bob",
-     "marca": "full lips and a small gap between her front teeth"},
-    {"idade": 38, "cabeca": "thick auburn hair falling loose past her shoulders",
+     "marca": "full lips and a small dark beauty mark just below the outer "
+              "corner of her left eye"},
+    {"idade": 38, "cabeca": "thick silky auburn hair, smooth and glossy, falling loose past her shoulders",
      "marca": "a dense spray of freckles across her nose"},
-    {"idade": 40, "cabeca": "dark hair with a sharp widow's peak, swept back",
+    {"idade": 40, "cabeca": "smooth glossy dark hair with a sharp widow's peak, swept back",
      "marca": "eyes of two different colours, one green and one brown"},
     # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
     # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
     # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
     # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    # ⚠️ Ajustadas na resolucao do rebase (2026-08-04): todo cabelo ganhou o
+    # token de hidratacao do CL26 (o assert barrou `long jet-black hair` seco),
+    # e duas ancoras REPETIDAS foram trocadas — covinha funda na bochecha
+    # esquerda (= idade 34) e heterocromia verde/marrom (= idade 40). Ancora
+    # repetida remenda o morphing, regra do proprio pool.
     {"idade": 26,
-     "cabeca": "long jet-black hair in a single braid over one shoulder",
+     "cabeca": "long silky jet-black hair in a single braid over one shoulder",
      "marca": "high round cheekbones and clear glowing skin"},
     {"idade": 31,
-     "cabeca": "a bleached-platinum bob cut sharp at the jaw",
+     "cabeca": "a sleek bleached-platinum bob cut sharp at the jaw",
      "marca": "a small silver hoop through her left nostril"},
     {"idade": 24,
-     "cabeca": "thick copper-red hair falling loose past her shoulders",
+     "cabeca": "thick glossy copper-red hair falling loose past her shoulders",
      "marca": "a dense spray of freckles over both cheeks and pale blue eyes"},
     {"idade": 33,
-     "cabeca": "a big loose curl-out worn wide",
-     "marca": "full lips and a deep dimple in her left cheek"},
+     "cabeca": "a big loose curl-out worn wide, soft and glossy",
+     "marca": "full lips and a faint dimple in her right cheek"},
     {"idade": 28,
      "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
-     "marca": "eyes of two different colours, one green and one brown"},
+     "marca": "striking light amber eyes"},
     {"idade": 35,
-     "cabeca": "waist-length box braids gathered over one shoulder",
+     "cabeca": "waist-length box braids with a healthy sheen, gathered over one shoulder",
      "marca": "smooth luminous skin and a wide bright smile"},
     {"idade": 27,
-     "cabeca": "very long straight dark hair parted in the middle",
+     "cabeca": "very long silky straight dark hair parted in the middle",
      "marca": "arched brows and a small beauty mark high on her left cheek"},
     {"idade": 30,
-     "cabeca": "chin-length wavy caramel hair pushed back off her forehead",
+     "cabeca": "chin-length smooth wavy caramel hair pushed back off her forehead",
      "marca": "a small heart-shaped birthmark below her right ear"},
 ]
 REFS_H = [
@@ -263,11 +299,25 @@ REFS_H = [
      "marca": "very pale blue eyes under dark brows"},
     {"idade": 44,
      "cabeca": "close-cropped coils with a sharp lined edge, clean-shaven",
-     "marca": "a wide gap between his two front teeth"},
+     # ⛔ era `a wide gap between his two front teeth` — o assert do CL25
+     # barrou no primeiro merge (dente nao e' marca; vira banguelo no Veo)
+     "marca": "a single deep dimple in his left cheek"},
 ]
 
+# ⛔ CL25 — assert de carga: nenhuma marca facial volta a pedir defeito de
+# dente. O gap "saiu" uma vez SO' NA DOUTRINA e continuou no motor ate' a foto
+# de campo de 2026-08-04 — regra sem assert e' regra que volta.
+for _r in REFS_M + REFS_H:
+    assert "teeth" not in _r["marca"] and "tooth" not in _r["marca"], (
+        "CL25: marca facial cita dente: %r" % _r["marca"])
+# ⛔ CL26 — assert de carga: todo cabelo feminino com token de saude capilar
+for _r in REFS_M:
+    assert any(t in _r["cabeca"] for t in ("glossy", "silky", "sleek",
+                                           "sheen", "smooth")), (
+        "CL26: cabelo feminino sem brilho/hidratacao: %r" % _r["cabeca"])
+
 # ---------------------------------------------------------------------------
-# ⭐ CL24 — O CORPO E' SEMPRE TREINADO (ordem do operador, 2026-08-03)
+# ⭐ CL24 — O CORPO MASCULINO E' SEMPRE TREINADO (ordem do operador, 2026-08-03)
 # ---------------------------------------------------------------------------
 # O REF do CLEAN passa a ter corpo descrito: musculo e veia visiveis, saude
 # evidente. A razao e' de conversao — quem da' conselho de vitalidade masculina
@@ -276,6 +326,9 @@ REFS_H = [
 # ⭐ SUBIU ~30% EM 2026-08-03 (segunda ordem do operador): o alvo passou a ser
 # ATLETA, nao "pessoa que se cuida". Entraram massa nos ombros, deltoide e
 # trapezio nomeados, veia que corre ate' o pulso.
+# ⛔⛔ DESDE 2026-08-04 O CL24 E' SO' DO HOMEM. A mulher saiu dele — o pool
+# antigo dava a ela deltoide, biceps e antebraco veiado, e o operador viu o
+# resultado: "está gerando muito musculosa". O corpo dela mora no CL26 abaixo.
 # ⛔ O teto continua: atleta, NAO fisiculturista. Nada de musculo estourado,
 # corpo oleado, veia de competicao ou definicao de palco — o registro do
 # CLEAN e' consultorio, e passar disso vira outro angulo.
@@ -299,22 +352,49 @@ CORPOS_H = [
     "a muscular athlete's build, a thick neck, heavy traps and broad shoulders, forearms roped with standing veins, healthy colour in his face",
     "the dense trained frame of a lifter, deep chest and thick round shoulders, arms heavy and veined to the wrist, clearly in peak health",
     "a hard muscular build with real mass across the shoulders and arms, veins raised along the forearms and the backs of his hands, skin clear and well",
-]
-CORPOS_M = [
-    "the trained build of an athlete, sculpted round shoulders and clearly muscled arms, veins tracing each forearm, skin clear and healthy",
-    "a strong athletic frame, firm rounded shoulders and hard arms, a tight waist, forearms visibly veined, healthy colour in her face",
-    "a muscular fit build, defined deltoids and biceps, a flat hard midsection and a straight confident posture, veins visible along each forearm, skin bright and healthy",
-    "an athlete's figure, hard muscled shoulders and arms, a thick strong waist and back, veins raised along the forearms and the backs of her hands, plainly in peak health",
-    "a powerfully built woman, muscled shoulders and arms, a hard trim waist and an easy confident carriage, skin clear and healthy",
     # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
     # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
     # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
     # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    # ⚠️ Estas 4 entraram originalmente no CORPOS_M por engano de colagem
+    # (sao corpos de homem: "a man who lifts", "wrestler") — movidas para ca'
+    # na resolucao do rebase de 2026-08-04, sem perder uma linha.
     "the dense build of a man who lifts, thick through the chest and shoulders, forearms corded, skin taut and even",
     "a lean hard frame with a flat stomach and a visible line down the centre, shoulders square, skin clear",
     "the heavy-boned build of a wrestler, a thick neck and broad flat chest, arms full and solid, skin healthy",
     "a swimmer's build, long muscled arms and a wide back tapering to the waist, shoulders capped and round, skin clear",
 ]
+# ---------------------------------------------------------------------------
+# ⭐⭐ CL26 — O CORPO FEMININO E' SENSUAL, NUNCA MUSCULOSO (2026-08-04)
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"a mulher deve ser sensual, ter apenas seios e gluteos
+# avantajados, além de uma beleza facial incrivel, todas precisam ser
+# absolutamente lindas, independente de selecionar para negras ou brancas"*.
+# O pool anterior era o CL24 aplicado a ela (deltoide, biceps, veia) e saiu
+# "muito musculosa" em producao.
+# ⚠️ A anatomia da linha e' fixa: SILHUETA -> busto -> quadril -> cintura ->
+# pele -> BELEZA FACIAL. Cada linha fecha com a beleza do rosto porque a ordem
+# vale para todas as etnias — a beleza mora na frase, nao no cast.
+# ⛔ Zero termo de musculo/veia/atleta — assert de carga abaixo.
+# ⛔ CL8 continua: nunca corpo exposto; a silhueta aparece PELA roupa.
+# ⚠️ Clausulas de quadril/cintura sao separadas por virgula DE PROPOSITO:
+# o REF e' `chest up` e o filtro do REF descarta o que esta' fora de quadro
+# (mesma logica das clausulas de mao do CL24).
+CORPOS_M = [
+    "a stunning hourglass figure, a full bust, full rounded hips, a slim waist, smooth glowing skin and a strikingly beautiful face",
+    "a shapely feminine figure, a generous bust, softly curved hips, a narrow waist, flawless radiant skin and a stunningly beautiful face",
+    "a soft curvaceous figure, a full bust, full hips, a small waist, luminous clear skin and a remarkably beautiful face",
+    "an eye-catching feminine silhouette, a full bust, rounded hips, a slim waist, glowing healthy skin and striking facial beauty",
+    "a graceful curvy figure, a full bust, generous hips, a cinched-in waist, smooth radiant skin and an exceptionally beautiful face",
+]
+# ⛔ CL26 — assert de carga (mesmo padrao do CL22): musculo no pool feminino e'
+# regressao, e toda linha carrega a beleza facial por extenso.
+for _c in CORPOS_M:
+    assert not any(t in _c for t in ("muscl", "vein", "athlet", "deltoid",
+                                     "biceps", "traps", "hard")), (
+        "CL26: termo de musculo no pool feminino: %r" % _c)
+    assert "beautiful" in _c or "beauty" in _c, (
+        "CL26: linha sem beleza facial: %r" % _c)
 
 # CL14 — os DOIS ingredientes do truque. Piso e teto: sao dois, sempre, em
 # todas as tres imagens. Nao precisam ser citados na copy — estao ali para
@@ -336,13 +416,28 @@ TRUQUE = [
 # (CL21) — despeja-la antes entrega o payoff antes da promessa.
 # ⚠️ A linha do `mel` e' a validada em render 2026-08-02; as outras quatro
 # copiam a gramatica dela e trocam so' o recipiente, o gesto e a cor.
+# ⭐⭐ CL28 — A DOSE E' PEQUENA E MEDIDA (takes de campo, 2026-08-04). Os
+# videos saiam com o frasco EMBORCADO e o copo enchendo: o pote de mel
+# entornado de cabeca para baixo ate' o copo virar suco laranja, a caixa de
+# canela invertida despejando uma coluna de po'. A causa estava NO PROPRIO
+# PROMPT: `tips it a little further so the stream keeps falling` — inclinar
+# MAIS e nunca parar, por 8s, e' a receita do exagero. Tres leis por
+# ingrediente, nas tres camadas (gesto no IMAGE, queda no IMAGE, segue no
+# TAKE):
+#   1. GESTO com teto de angulo: o frasco fica QUASE EM PE', nunca emborcado;
+#   2. QUEDA com dose NOMEADA: colherada, pitada, fio fino, gotas — nunca
+#      jato grosso sem medida;
+#   3. SEGUE que TERMINA: o fio afina e PARA dentro do take, e o copo segue
+#      quase cheio de agua — nunca enche, nunca vira o ingrediente.
+# ⚠️ Ancora positiva como sempre: diz-se a dose que CAI, nao "don't pour
+# too much" (negacao nao cria forma — CL19/CL25).
 DESPEJO = {
     "bicarbonato": {
         "cont": "cardboard box of baking soda",
         "curto": "box",
-        "gesto": "tips the box over the tall glass",
-        "queda": "a short stream of fine white powder is falling from the box into the glass",
-        "segue": "tips it a little further so the stream of white powder keeps falling into the glass",
+        "gesto": "tilts the box only slightly over the tall glass, the box staying nearly upright",
+        "queda": "a small spoonful of fine white powder is sifting from the box into the glass",
+        "segue": "holds it steady at that slight angle as a small spoonful of white powder sifts into the glass and stops, the glass still nearly full of clear water",
         "cor": "clouded milky white",
         "tom": 1,
         "som": "a soft dry pour",
@@ -350,9 +445,9 @@ DESPEJO = {
     "mel": {
         "cont": "glass jar of raw honey",
         "curto": "jar",
-        "gesto": "tilts the jar over the tall glass",
-        "queda": "a slow thread of golden honey is falling from the jar into the glass",
-        "segue": "tilts it a little further so the thread of honey keeps falling into the glass",
+        "gesto": "tilts the jar only slightly over the tall glass, the jar staying nearly upright",
+        "queda": "a single thin thread of golden honey, no more than a spoonful, is drizzling from the jar into the glass",
+        "segue": "holds it steady at that slight angle as one thin thread of honey, no more than a spoonful, drizzles into the glass and tapers off, the glass still nearly full of water",
         "cor": "warm gold",
         "tom": 4,
         "som": "a soft pour",
@@ -360,9 +455,9 @@ DESPEJO = {
     "canela": {
         "cont": "small cardboard box of ground cinnamon",
         "curto": "box",
-        "gesto": "tips the box over the tall glass",
-        "queda": "a fine fall of brown cinnamon dust is dropping from the box into the glass",
-        "segue": "tips it a little further so the brown cinnamon dust keeps falling into the glass",
+        "gesto": "tilts the box only slightly over the tall glass, the box staying nearly upright",
+        "queda": "a light pinch of brown cinnamon dust is sifting from the box into the glass",
+        "segue": "holds it steady at that slight angle as a light pinch of cinnamon dust sifts into the glass and stops, the glass still nearly full of water",
         "cor": "cloudy warm brown",
         "tom": 5,
         "som": "a soft dry pour",
@@ -370,9 +465,9 @@ DESPEJO = {
     "limao": {
         "cont": "lemon half",
         "curto": "lemon half",
-        "gesto": "presses the lemon half over the tall glass",
-        "queda": "clear juice is running from the lemon half down into the glass",
-        "segue": "presses it a little harder so the juice keeps running down into the glass",
+        "gesto": "presses the lemon half gently once over the tall glass",
+        "queda": "a few drops of clear juice are falling from the lemon half into the glass",
+        "segue": "gives it one gentle press so a few drops of juice fall into the glass and stop, the glass still nearly full of water",
         "cor": "pale cloudy yellow",
         "tom": 2,
         "som": "a soft trickle",
@@ -380,9 +475,9 @@ DESPEJO = {
     "vinagre": {
         "cont": "glass bottle of apple cider vinegar",
         "curto": "bottle",
-        "gesto": "tilts the bottle over the tall glass",
-        "queda": "a thin clear stream is running from the bottle into the glass",
-        "segue": "tilts it a little further so the clear stream keeps running into the glass",
+        "gesto": "tilts the bottle only slightly over the tall glass, the bottle staying nearly upright",
+        "queda": "a short thin splash of clear liquid, about a spoonful, is falling from the bottle into the glass",
+        "segue": "holds it steady at that slight angle as a spoonful-sized splash of clear liquid falls into the glass and stops, the glass still nearly full of water",
         "cor": "pale amber",
         "tom": 3,
         "som": "a soft pour",
@@ -721,7 +816,7 @@ def sortear(pagina, rng, led, travas=None):
                else _fresco(FAMILIAS, usados.get("familia", []), rng, "id"))
 
     ref = rng.choice(REFS_H if sexo == "homem" else REFS_M)
-    # CL24 — o corpo e sempre treinado, e acompanha o sexo do REF
+    # CL24/CL26 — o corpo acompanha o sexo: treinado nele, sensual nela
     corpo = rng.choice(CORPOS_H if sexo == "homem" else CORPOS_M)
     cenario = _fresco(CENARIOS, usados.get("cenario", []), rng, "id")
     scrub = rng.choice(SCRUBS)
@@ -804,8 +899,18 @@ def _sem_artigo(s):
     return s
 
 
+def _corpo_ref(spec):
+    """O corpo no REF, sem as clausulas FORA DE QUADRO. O REF e' `chest up`:
+    mandar desenhar veia no dorso da mao (CL24) ou quadril e cintura (CL26)
+    numa foto cortada no peito e' ordem contraditoria — o tipo de coisa que o
+    gerador "resolve" do jeito errado. Busto, pele e rosto ficam."""
+    return ", ".join(c for c in spec.get("corpo", "").split(", ")
+                     if not any(t in c.lower() for t in ("hand", "hip",
+                                                         "waist")))
+
+
 def _pessoa(spec, primeiro=True):
-    """⭐ CL24: o corpo entra LOGO DEPOIS da idade/etnia e ANTES do traje.
+    """⭐ CL24/CL26: o corpo entra LOGO DEPOIS da idade/etnia e ANTES do traje.
 
     A ordem importa. O gerador desenha na sequencia em que le', e corpo depois
     da roupa vira roupa larga com corpo generico dentro. Antes dela, a roupa
@@ -845,6 +950,9 @@ def montar(spec):
     nao_toca = NAO_TOCA % (S, s)
     idade = spec["ref"]["idade"]
 
+    # CL26 — a clausula anti-celebridade acompanha o sexo em TODOS os blocos
+    anti = ANTICELEB if spec["sexo"] == "homem" else ANTICELEB_M
+
     b["BLOCO 0 (REF)"] = (
         # ⭐⭐ O CORPO TEM DE ESTAR AQUI (2026-08-03). Ele ja' estava nos IMAGE
         # e NAO estava no REF, e o operador nao viu diferenca nenhuma na
@@ -853,38 +961,51 @@ def montar(spec):
         # comum, o gerador segue a IMAGEM e ignora o texto das cenas. E' a
         # mesma 5a alavanca do prop-metaforas: quando texto e imagem
         # discordam, a imagem vence.
-        # ⚠️ As clausulas de MAO sao removidas: o REF e' `chest up` com
-        # `Hands out of frame`, e mandar desenhar veia no dorso da mao numa
-        # foto sem mao e' ordem contraditoria — o tipo de coisa que o gerador
-        # "resolve" do jeito errado.
+        # ⭐⭐ E OS DENTES TAMBEM (2026-08-04, foto de campo): o REF saia de
+        # boca FECHADA, entao a imagem de identidade nunca estabelecia os
+        # dentes — e o que a imagem nao tem, o Veo inventa nas cenas de boca
+        # aberta. Saiu banguela em producao. Agora o REF SORRI mostrando a
+        # fileira branca completa; as cenas herdam os dentes da foto.
+        # ⚠️ As clausulas de MAO, QUADRIL e CINTURA sao removidas
+        # (_corpo_ref): o REF e' `chest up` com `Hands out of frame`, e mandar
+        # desenhar o que esta' fora de quadro e' ordem contraditoria — o tipo
+        # de coisa que o gerador "resolve" do jeito errado.
         "REF 01: Photo of a real person, a %d-year-old %s %s with %s, chest up, "
-        "facing the camera directly, neutral steady expression with %s mouth "
-        "closed. "
-        "Wearing a %s V-neck short-sleeved medical scrub top. %s. %s. An "
-        "ordinary everyday relatable person with a plain unremarkable face, not "
-        "a celebrity, not a model, not an actor, not resembling any famous "
-        "person. Hands out of frame, no objects. Plain neutral gray background, "
+        "facing the camera directly, a wide warm natural smile with the lips "
+        "parted, showing a full row of clean white teeth, the front teeth even "
+        "and complete. "
+        "Wearing a %s V-neck short-sleeved medical scrub top. %s. %s. %s "
+        "Hands out of frame, no objects. Plain neutral gray background, "
         "soft even frontal light. Slight sensor grain, soft focus, raw iPhone "
         "front camera aesthetic. No subtitles, no captions, no burned-in text, "
         "no watermark."
         % (idade, spec["etnia"], "man" if spec["sexo"] == "homem" else "woman",
-           ", ".join(c for c in spec.get("corpo", "").split(", ")
-                     if "hand" not in c.lower()),
-           Ss, spec["scrub"], spec["ref"]["cabeca"][0].upper() + spec["ref"]["cabeca"][1:],
-           spec["ref"]["marca"][0].upper() + spec["ref"]["marca"][1:]))
+           _corpo_ref(spec),
+           spec["scrub"], spec["ref"]["cabeca"][0].upper() + spec["ref"]["cabeca"][1:],
+           spec["ref"]["marca"][0].upper() + spec["ref"]["marca"][1:],
+           REF_ROSTO_H if spec["sexo"] == "homem" else REF_ROSTO_M))
 
     if fam == "aponta":
         fila = _fila(spec["bancada"])
+        # ⭐ CL27 (2026-08-04) — a CENA 1 e' rente a camera: bancada na borda de
+        # baixo do quadro e itens GRANDES em primeiro plano. O "Medium shot"
+        # solto saia longe demais e os ingredientes viravam miniatura — o
+        # operador anexou o enquadramento certo (homem apontando, caixas
+        # legiveis perto da lente). E' a MESMA geometria que o IMAGE 03 ja'
+        # usava e que valida bem: waist up + bottom edge of the frame.
         b["IMAGE 01/03"] = (
-            "Medium shot inside %s. Seated behind a wooden counter is %s. On the "
-            "counter in front of %s, at chest height, stand in a row: %s. %s looks "
+            "Close medium shot inside %s. Seated behind a wooden counter is %s, "
+            "framed from the waist up, the counter running along the bottom "
+            "edge of the frame, close to the camera. On the counter in front "
+            "of %s, large and clearly readable in the foreground near the "
+            "lens, stand in a row: %s. %s looks "
             "directly into the lens with %s mouth open mid-word as %s speaks, the front "
             "teeth even and complete, %s "
             "torso upright and %s head raised. %s right index finger is extended "
             "toward the row, %s hand just above the counter. %s touches nothing. "
             "%s is the only person in the frame. %s Soft daylight from the window. %s"
             % (cen, _pessoa(spec), obj, fila, S, Ss, s, Ss, Ss, _cap(Ss), Ss, S, S,
-               ANTICELEB, CAUDA))
+               anti, CAUDA))
         b["IMAGE 02/03"] = (
             "Medium shot in the same room, same background. %s. On the counter is "
             "the same row %s: %s. %s looks directly into the lens with %s mouth "
@@ -893,7 +1014,7 @@ def montar(spec):
             "right index finger is extended toward %s, %s hand just above the "
             "counter. %s touches nothing. %s is the only person in the frame. %s %s"
             % (_pessoa(spec, False), MESMA_BANCADA, fila, S, Ss, s, Ss, _cap(Ss),
-               VISUAL[spec["truque"][0]], Ss, S, S, ANTICELEB, CAUDA))
+               VISUAL[spec["truque"][0]], Ss, S, S, anti, CAUDA))
         b["IMAGE 03/03"] = (
             "Closer medium shot in the same room, same background, same soft "
             "daylight. %s, framed from the waist up. On the counter along the "
@@ -905,7 +1026,7 @@ def montar(spec):
             "person in the frame. %s %s"
             % (_pessoa(spec, False), VISUAL[spec["bancada"][0]], GELATINA,
                VISUAL[spec["truque"][0]], S, Ss, Ss, s, _cap(Ss), S,
-               ANTICELEB, CAUDA))
+               anti, CAUDA))
         mov = [
             "%s right hand moves once along the row, the extended index finger "
             "travelling from one end to the other, staying just above the counter "
@@ -928,7 +1049,7 @@ def montar(spec):
         i1, i2 = spec["despejo"]
         d1, d2 = DESPEJO[i1], DESPEJO[i2]
         v = {"ref1": _pessoa(spec), "ref": _pessoa(spec, False), "cen": cen,
-             "S": S, "Ss": Ss, "s": s, "gel": GELATINA, "anti": ANTICELEB,
+             "S": S, "Ss": Ss, "s": s, "gel": GELATINA, "anti": anti,
              "cauda": CAUDA, "resto": MESMA_BANCADA_B, "obj": obj,
              "fila1": _fila([i for i in spec["bancada"] if i != i1]),
              "fila2": _fila([i for i in spec["bancada"] if i != i2]),
@@ -942,9 +1063,14 @@ def montar(spec):
         # ⚠️ Formatacao NOMEADA neste ramo, nao posicional: sao 14+ campos por
         # bloco e um deslocamento de indice troca pronome por cor sem estourar
         # erro nenhum — bug que so' aparece no video pronto.
+        # ⭐ CL27 (2026-08-04) — cena 1 rente a camera, mesma moldura da
+        # familia A: bancada na borda de baixo, itens grandes perto da lente.
         b["IMAGE 01/03"] = (
-            "Medium shot inside %(cen)s. Seated behind a wooden counter is "
-            "%(ref1)s. On the counter in front of %(obj)s, at chest height, stand "
+            "Close medium shot inside %(cen)s. Seated behind a wooden counter is "
+            "%(ref1)s, framed from the waist up, the counter running along the "
+            "bottom edge of the frame, close to the camera. On the counter in "
+            "front of %(obj)s, large and clearly visible in the foreground "
+            "near the lens, stand "
             "a tall clear glass filled with plain clear water and, beside it, "
             "%(fila1)s. %(peg1)s. %(cai1)s, and the water in the glass is "
             "turning from clear to %(cor1)s where the stream lands. %(S)s looks "
@@ -1114,6 +1240,17 @@ def lint(spec, blocos):
         if any(w in t3 for w in ("keeps falling", "keeps running", "pouring from")):
             ach.append(("ERRO", "CL17: manipulacao na cena 3 — ela so' apresenta "
                                 "o resultado pronto"))
+        # CL28 — a dose e' medida e o jato TERMINA (takes de campo 2026-08-04:
+        # pote emborcado, copo cheio). Despejo continuo de 8s = "esvazie o
+        # frasco" para o Veo.
+        for nome in ("TAKE 01/03", "TAKE 02/03"):
+            t = blocos.get(nome, "").lower()
+            if "keeps falling" in t or "keeps running" in t:
+                ach.append(("ERRO", "CL28: despejo continuo em %s — o jato tem "
+                                    "de parar dentro do take" % nome))
+            if not any(d in t for d in ("spoonful", "pinch", "a few drops")):
+                ach.append(("ERRO", "CL28: %s sem dose nomeada (colherada, "
+                                    "pitada, gotas)" % nome))
 
     # CL21 — a gelatina SO' na cena 3
     for nome in ("IMAGE 01/03", "IMAGE 02/03"):
@@ -1153,6 +1290,28 @@ def lint(spec, blocos):
             if tok in direcao:
                 ach.append(("ERRO", "CL2: '%s' em %s — o CLEAN nao tem prop "
                                     "falico nem tronco nu" % (tok, nome)))
+
+    # CL25 — o REF sorri mostrando os dentes (2026-08-04): e' a imagem de
+    # identidade que estabelece a fileira; sem isso o Veo inventa banguelo.
+    ref = blocos.get("BLOCO 0 (REF)", "")
+    if "smile" not in ref or "white teeth" not in ref:
+        ach.append(("ERRO", "CL25: o REF nao sorri mostrando dentes brancos"))
+    # CL26 — a mulher nunca sai "comum": beleza declarada, zero musculo
+    if spec["sexo"] == "mulher":
+        if "plain unremarkable" in ref:
+            ach.append(("ERRO", "CL26: 'plain unremarkable face' numa REF "
+                                "feminina — a clausula e' a masculina"))
+        if "beautiful" not in ref:
+            ach.append(("ERRO", "CL26: REF feminina sem beleza facial "
+                                "declarada"))
+        if not any(t in ref for t in ("glossy", "silky", "sleek", "sheen",
+                                      "smooth")):
+            ach.append(("ERRO", "CL26: REF feminina sem cabelo hidratado/"
+                                "com brilho (saiu ressecado em campo)"))
+    # CL27 — cena 1 rente a camera: itens em primeiro plano, nunca ao longe
+    if "foreground" not in blocos.get("IMAGE 01/03", ""):
+        ach.append(("ERRO", "CL27: IMAGE 01 sem os itens em primeiro plano "
+                            "(foreground) — a cena sai longe demais"))
     return ach
 
 
