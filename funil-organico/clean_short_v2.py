@@ -204,19 +204,53 @@ ROTULO_FORMATA_O = True
 # travou `escura` e recebeu um REF Asian American. Para ele, escura = NEGRO.
 # Asiatico, latino, mediterraneo, nativo e mestico nao sao nem clara nem
 # escura: so' saem com a pele LIVRE.
-PELE_ETNIAS = {
-    "escura": ("Black American", "West African", "Jamaican American",
-               "Caribbean American", "Creole American"),
-    "clara": ("white American", "Cajun American"),
+# ⛔⛔ REESCRITA EM 2026-08-05 (2a ordem do operador): a regra era LISTA
+# FECHADA — escura = 5 etnias, clara = 2 — e isso amarrava o lote a um punhado
+# de mundos. Ordem dele: *"tem varias outras etnias que o personagem poderia ser
+# negro, como latinos... eu quero que nao entre, quando negro estiver setado,
+# somente aquelas com probabilidade de 90% de nao nascer uma pessoa negra, como
+# alguns paises asiaticos... para os restantes quero que seja capaz de criar
+# tanto pessoas negras como pessoas de pele branca"*.
+#
+# ⭐ Entao a regra VIROU DE LADO: nao e' mais quem ENTRA, e' quem NAO PODE.
+# Tudo que nao esta' vetado abaixo e' elegivel para aquela pele, e a ancora do
+# prompt (`Black Hispanic American, deep brown skin`) resolve o resto. Um
+# hispanico, um mexicano ou um caribenho pode ser negro OU branco — e' o mundo
+# real, e e' o que multiplica o repertorio sem furar a trava.
+#
+# ⚠️ O criterio do veto e' o do operador, ao pe' da letra: entra no veto so' a
+# etnia em que a pele seria implausivel (~90%). Nao e' juizo estetico.
+#   · leste/sudeste asiatico e ilhas: `Black Chinese American` nao existe como
+#     imagem crivel, e `White Korean American` tampouco;
+#   · sul da Asia e Oriente Medio: mesmo motivo, nos dois sentidos;
+#   · `Native American`: o mundo `nativo` vende a identidade nativa, e cruza-la
+#     apaga o que faz aquele set funcionar;
+#   · na CLARA entram no veto as etnias explicitamente negras (um `white
+#     Jamaican American` contradiz o proprio nome), e na ESCURA as brancas.
+PELE_VETO = {
+    "escura": ("Asian American", "Chinese American", "Korean American",
+               "Vietnamese American", "Filipino American", "Japanese American",
+               "Pacific Islander American", "Indian American",
+               "South Asian American", "Lebanese American",
+               "Middle Eastern American", "Native American",
+               "white American", "Cajun American"),
+    "clara": ("Asian American", "Chinese American", "Korean American",
+              "Vietnamese American", "Filipino American", "Japanese American",
+              "Pacific Islander American", "Indian American",
+              "South Asian American", "Native American",
+              "Black American", "West African", "Jamaican American",
+              "Caribbean American", "Creole American"),
 }
 
 
-def _pele_de(etnia):
-    """A pele da etnia pela lista explicita — ou None (neutra, so' no livre)."""
-    for pele, ets in PELE_ETNIAS.items():
-        if etnia in ets:
-            return pele
-    return None
+def _pele_ok(etnia, pele):
+    """Esta etnia pode render nesta pele? Sem pele travada, tudo pode.
+
+    ⚠️ Uma etnia pode valer para as DUAS (hispanico, mexicano, mestico) — por
+    isso a resposta e' booleana e nao mais "a pele desta etnia". A funcao
+    antiga `_pele_de` devolvia uma pele so' e era justamente o que estreitava
+    o lote."""
+    return not pele or etnia not in PELE_VETO[pele]
 
 
 # ⛔⛔ O NOME DA ETNIA NAO ANCORA A PELE (print de campo, 2026-08-05). Com a
@@ -241,7 +275,7 @@ def _comporta(mundo, pele):
     """O mundo tem alguma etnia daquela pele? ⚠️ Funcao de MODULO, nao closure:
     `sortear` e `_apos_mundo` decidem a mesma coisa e duas copias divergiriam
     (P9). Sem pele travada todo mundo comporta."""
-    return not pele or any(_pele_de(e) == pele for e in mundo["etnias"])
+    return not pele or any(_pele_ok(e, pele) for e in mundo["etnias"])
 
 
 def _mundo_da_pele(mundo, pele, rng):
@@ -763,16 +797,20 @@ for _m in MUNDOS:
         assert _a not in _m["desc"], (
             "mundo %r usa o consultorio do V1 (%r)" % (_m["id"], _a))
 
-# ⛔ assert de carga da TRAVA DE PELE: toda etnia do PELE_ETNIAS tem de existir
-# em algum mundo — um rename de etnia nos MUNDOS nao pode deixar a lista
-# apontando para o nada (a trava viraria botao morto de novo, em silencio).
+# ⛔ assert de carga da TRAVA DE PELE. Com a regra de VETO o risco virou o
+# oposto do de antes: nao e' mais lista apontando para o nada, e' veto largo
+# demais estrangulando a pele. Entao cobra-se PISO — cada pele precisa de
+# elegiveis de sobra e de mundos suficientes, senao o `trocar etnia` volta a
+# nao ter o que oferecer, que foi exatamente a reclamacao de campo.
 _ETNIAS_EM_MUNDO = {e for _m in MUNDOS for e in _m["etnias"]}
-for _p, _ets in PELE_ETNIAS.items():
-    for _e in _ets:
-        assert _e in _ETNIAS_EM_MUNDO, (
-            "PELE_ETNIAS[%r] cita etnia que nenhum mundo tem: %r" % (_p, _e))
-    assert any(_pele_de(e) == _p for e in _ETNIAS_EM_MUNDO), (
-        "nenhum mundo comporta a pele %r" % _p)
+for _p in PELE_VETO:
+    _eleg = [e for e in _ETNIAS_EM_MUNDO if _pele_ok(e, _p)]
+    assert len(_eleg) >= 5, (
+        "pele %r com so' %d etnias elegiveis: %s" % (_p, len(_eleg), _eleg))
+    _mundos_p = [_m for _m in MUNDOS
+                 if any(_pele_ok(e, _p) for e in _m["etnias"])]
+    assert len(_mundos_p) >= 6, (
+        "pele %r cabe em so' %d mundos" % (_p, len(_mundos_p)))
 
 # ⛔⛔ LEI DO REF — A REF MULHER E' SEMPRE MUITO BONITA (2026-08-03).
 # Ordem do operador: *"quero todos os refs homens musculosos e todas as refs
@@ -1399,7 +1437,7 @@ def etnias_do_mundo(spec):
     proibe e' trava furada, so' que por clique em vez de sorteio."""
     pele = spec.get("pele")
     return [e for e in spec["mundo"]["etnias"]
-            if not pele or _pele_de(e) == pele] or list(spec["mundo"]["etnias"])
+            if _pele_ok(e, pele)] or list(spec["mundo"]["etnias"])
 
 
 etnias_do_mundo.recebe_spec = True
@@ -1429,7 +1467,31 @@ def _carregar_ledger():
         return {}
 
 
-def _gravar_ledger(led):
+def _anotar(led, spec):
+    """Marca no ledger os eixos que o anti-repeticao usa. ⚠️ Existia so' DENTRO
+    do `main()` do CLI — por isso o painel nao tinha como registrar nada."""
+    u = led.setdefault(spec["pagina"], {})
+    for eixo, val in (("familia", spec["familia"]["id"]),
+                      ("mundo_familia", spec["mundo"]["familia"]),
+                      ("despejo", "+".join(spec["despejo"]))):
+        u.setdefault(eixo, [])
+        if val not in u[eixo]:
+            u[eixo].append(val)
+        if len(u[eixo]) >= TETO_LEDGER[eixo]:
+            u[eixo] = [val]
+    return led
+
+
+def _gravar_ledger(led, spec=None):
+    """⛔ 2026-08-05: o botao `marcar como usado` do painel NUNCA funcionou
+    neste motor. A `ui_agente` chama `_gravar_ledger(led, spec)` (convencao do
+    ESCANDALO) e aqui a funcao aceitava UM argumento — `TypeError` dentro do
+    callback do tkinter, que sob `pythonw` nao tem stderr: o botao mostrava o
+    toast "registrado no ledger" e nao registrava nada. Toast nao e' prova.
+    ⚠️ `spec` e' OPCIONAL para o CLI continuar chamando com um argumento so'.
+    ⛔ Achado clicando em TODOS os botoes do painel, nao lendo o codigo."""
+    if spec is not None:
+        _anotar(led, spec)
     try:
         with open(LEDGER, "w", encoding="utf-8") as f:
             json.dump(led, f, ensure_ascii=False, indent=1)
@@ -1586,7 +1648,7 @@ def sortear(pagina, rng, led, travas=None):
         et = travas["etnia"]
     elif pele:
         et = rng.choice([e for e in mundo["etnias"]
-                         if _pele_de(e) == pele] or mundo["etnias"])
+                         if _pele_ok(e, pele)] or mundo["etnias"])
     else:
         et = rng.choice(mundo["etnias"])
     cor = rng.choice(mundo["cores"])
@@ -2209,7 +2271,7 @@ def lint(spec, blocos):
     # `Creole American` travados em `escura` devolveram homens claros nos dois
     # lotes de campo de 2026-08-05.
     if spec.get("pele"):
-        if _pele_de(spec["etnia"]) != spec["pele"]:
+        if not _pele_ok(spec["etnia"], spec["pele"]):
             ach.append(("ERRO", "pele travada em %s e a etnia sorteada e' %s"
                                 % (spec["pele"], spec["etnia"])))
         palavra, tom = PELE_PROMPT[spec["pele"]]
@@ -2297,10 +2359,10 @@ def _apos_mundo(spec, rng):
     # familia que comporta — a mesma decisao do `sortear`, pelo mesmo helper.
     pele = spec.get("pele")
     spec["mundo"] = _mundo_da_pele(spec["mundo"], pele, rng)
-    if spec["etnia"] not in spec["mundo"]["etnias"] or (
-            pele and _pele_de(spec["etnia"]) != pele):
+    if spec["etnia"] not in spec["mundo"]["etnias"] or not _pele_ok(
+            spec["etnia"], pele):
         spec["etnia"] = rng.choice([e for e in spec["mundo"]["etnias"]
-                                    if not pele or _pele_de(e) == pele])
+                                    if _pele_ok(e, pele)])
     if spec["cor"] not in spec["mundo"]["cores"]:
         spec["cor"] = rng.choice(spec["mundo"]["cores"])
 
@@ -2484,15 +2546,8 @@ def main():
         else:
             print("LINTER: OK — nenhuma violacao mecanica.")
         if not a.dry_run:
-            u = led.setdefault(a.pagina, {})
-            for eixo, val in (("familia", spec["familia"]["id"]),
-                              ("mundo_familia", spec["mundo"]["familia"]),
-                              ("despejo", "+".join(spec["despejo"]))):
-                u.setdefault(eixo, [])
-                if val not in u[eixo]:
-                    u[eixo].append(val)
-                if len(u[eixo]) >= TETO_LEDGER[eixo]:
-                    u[eixo] = [val]
+            # ⚠️ mesma anotacao que o painel usa — uma regra, um lugar (P9).
+            _anotar(led, spec)
     if not a.dry_run:
         _gravar_ledger(led)
     return 0
