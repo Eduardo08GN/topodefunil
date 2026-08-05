@@ -16,10 +16,14 @@ Uma so' interface serve todos os agentes portados. Cada motor
 ...mais a API que o gerador ja' expoe: ETNIA, sortear, montar, lint,
 _carregar_ledger, _gravar_ledger, NUCLEO, TETO_FALA, _palavras, LEDGER.
 
-⭐ DOIS CONTRATOS OPCIONAIS DE TRAVA (2026-08-03) — os dois lidos com
-`getattr(motor, ..., [])`, entao motor que nao declara nada nao ve' nada e nao
-muda de comportamento. E' obrigatorio: esta interface e' compartilhada pelos dez
-agentes SHORT.
+⭐ TRES CONTRATOS OPCIONAIS DE TRAVA (2026-08-03; o 3o em 2026-08-05) — todos
+lidos com `getattr(motor, ...)`, entao motor que nao declara nada nao ve' nada e
+nao muda de comportamento. E' obrigatorio: esta interface e' compartilhada por
+todos os agentes SHORT.
+
+    PELE_TRAVAVEL    True = a etnia deste motor e' LIVRE (nao vem da pagina) e
+                     o seletor clara/escura do painel vira TRAVA de verdade:
+                     entra em `sortear(..., travas)` como travas["pele"].
 
     TRAVAS_UI        [(chave, rotulo, [opcoes])] — PRE-SELECAO. O painel desenha
                      `livre | opcao | opcao` no topo; o que nao estiver em
@@ -120,6 +124,13 @@ class App(tk.Tk):
         # dos dois e nao podem quebrar por causa disso.
         self.travas_ui = list(getattr(motor, "TRAVAS_UI", []) or [])
         self.eixos_travaveis = list(getattr(motor, "EIXOS_TRAVAVEIS", []) or [])
+        # ⭐ 3o contrato aditivo (2026-08-05): PELE_TRAVAVEL. Nos motores de
+        # etnia POR PAGINA o seletor de pele funciona trocando a pagina; no
+        # CLEAN V2 a etnia e' livre (sai do MUNDO) e a troca de pagina nao
+        # muda nada — o botao acendia e o sorteio seguia aleatorio. Motor que
+        # declara a flag recebe travas["pele"] e remonta o video em volta.
+        self.pele_travavel = bool(getattr(motor, "PELE_TRAVAVEL", False))
+        self.pele_travada = None
         self.var_trava = {}
         self.var_cadeado = {}
         self.b_cadeado = {}
@@ -485,7 +496,7 @@ class App(tk.Tk):
         ⚠️ O cadeado devolve o VALOR QUE ESTA' NA TELA (`self.spec[chave]`), nao
         um id: quem remonta o video em volta dele e' o motor.
         """
-        if not (self.travas_ui or self.eixos_travaveis):
+        if not (self.travas_ui or self.eixos_travaveis or self.pele_travavel):
             return None
         t = {}
         for chave, var in self.var_trava.items():
@@ -494,6 +505,10 @@ class App(tk.Tk):
         for chave, var in self.var_cadeado.items():
             if var.get() and self.spec and chave in self.spec:
                 t[chave] = self.spec[chave]
+        # ⚠️ a pele entra POR ULTIMO e nunca sobrescreve o cadeado de etnia:
+        # etnia travada na tela e' mais especifica que clara/escura.
+        if self.pele_travada and "etnia" not in t:
+            t["pele"] = self.pele_travada
         return t
 
     # ------------------------------------------------------------------ acao
@@ -573,7 +588,23 @@ class App(tk.Tk):
         return "clara" if "white" in self.m.ETNIA[self.var_pag.get()] else "escura"
 
     def trocar_pele(self, pele):
-        """Sorteia uma pagina daquela pele e refaz o video inteiro."""
+        """Sorteia uma pagina daquela pele e refaz o video inteiro.
+
+        ⭐ Motor com PELE_TRAVAVEL (etnia livre, caso do CLEAN V2): o botao
+        vira TRAVA — clicou, todo sorteio respeita ate' destravar (clicar de
+        novo na mesma pele). Trocar a pagina nao adiantaria: o V2 ignora
+        `ETNIA[pagina]` de proposito, e era por isso que o botao acendia sem
+        travar nada."""
+        if self.pele_travavel:
+            if self.pele_travada == pele:
+                self.pele_travada = None
+                self.sortear()
+                self._toast("pele livre")
+            else:
+                self.pele_travada = pele
+                self.sortear()
+                self._toast("pele travada: %s" % pele)
+            return
         if self.pele_atual() == pele:
             atuais = [p for p in self.grupos[pele] if p != self.var_pag.get()]
             if not atuais:            # so' existe uma pagina dessa pele
@@ -586,7 +617,9 @@ class App(tk.Tk):
         self._toast("pele %s — página %s" % (pele, self.var_pag.get()))
 
     def _pintar_pele(self):
-        atual = self.pele_atual()
+        # ⚠️ Motor com PELE_TRAVAVEL: aceso = TRAVADO, apagado = livre. Acender
+        # a pele da pagina aqui seria mentir — a pagina nao manda na etnia.
+        atual = self.pele_travada if self.pele_travavel else self.pele_atual()
         for pele, b in self.b_pele.items():
             ativo = (pele == atual)
             b.configure(bg=ACCENT if ativo else PANEL2,

@@ -183,6 +183,22 @@ TRAVAS_UI = [
 EIXOS_TRAVAVEIS = ["familia", "mundo", "etnia", "ref",
                    "item_a", "item_b", "truque"]
 
+# ⭐⭐ TRAVA DE PELE (2026-08-05, ordem do operador: *"quando eu travo a cor da
+# pele para negro ou branco... preciso que sempre respeite"*).
+# O seletor clara/escura do painel era um botao MORTO neste motor: ele troca a
+# PAGINA, e o V2 ignora `ETNIA[pagina]` de proposito (etnia livre, sorteada de
+# dentro do MUNDO). O operador clicava, o botao acendia, e o sorteio seguia
+# aleatorio — pior que nao ter botao, porque PARECIA travado.
+# Contrato aditivo, lido pela ui_agente com getattr: motor sem a flag nao muda.
+PELE_TRAVAVEL = True
+
+
+def _pele_de(etnia):
+    """clara/escura pela MESMA regra do seletor do painel (paginas_por_pele):
+    clara = etnia com `white`; escura = todas as outras. Duas classificacoes
+    divergentes seriam o fragmento espelhado que a P9 proibe."""
+    return "clara" if "white" in etnia else "escura"
+
 # ---------------------------------------------------------------------------
 # STRINGS TRAVADAS — copia literal da doutrina. NAO REESCREVER.
 # ---------------------------------------------------------------------------
@@ -1435,13 +1451,40 @@ def sortear(pagina, rng, led, travas=None):
     # passo a familia `clinica`, que tem 6 sets contra 2 das outras, levaria
     # quase um quarto do lote e o operador veria de novo o consultorio de
     # sempre. `_fresco` continua valendo, agora sobre a familia.
+    # ⭐ TRAVA DE PELE — a pele chega em travas["pele"] ("clara"/"escura") e o
+    # sorteio remonta o video em volta dela: o mundo so' sai entre os que
+    # COMPORTAM aquela pele, e a etnia sorteia dentro do mundo ja' filtrada.
+    # ⚠️ Mundo travado incompativel CEDE e e' re-sorteado, de preferencia na
+    # mesma familia (mesmo precedente do truque: antes de reprovar o sorteio,
+    # o eixo derivado cede). ⛔ A etnia NUNCA sai de fora do mundo — e' a
+    # invariante [1] do autoteste; por isso quem se move e' o mundo.
+    pele = travas.get("pele")
+
+    def _comporta(m):
+        return any(_pele_de(e) == pele for e in m["etnias"])
+
     if travas.get("mundo"):
         mundo = _por_id(MUNDOS, travas["mundo"])
+        if pele and not _comporta(mundo):
+            mundo = rng.choice(
+                [m for m in MUNDOS if m["familia"] == mundo["familia"]
+                 and _comporta(m)]
+                or [m for m in MUNDOS if _comporta(m)])
     else:
         fam_mundo = _fresco([{"id": f} for f in FAMILIAS_MUNDO],
                             usados.get("mundo_familia", []), rng, "id")["id"]
-        mundo = rng.choice([m for m in MUNDOS if m["familia"] == fam_mundo])
-    et = travas.get("etnia") or rng.choice(mundo["etnias"])
+        cand = [m for m in MUNDOS if m["familia"] == fam_mundo]
+        if pele:
+            cand = ([m for m in cand if _comporta(m)]
+                    or [m for m in MUNDOS if _comporta(m)])
+        mundo = rng.choice(cand)
+    if travas.get("etnia"):
+        et = travas["etnia"]
+    elif pele:
+        et = rng.choice([e for e in mundo["etnias"]
+                         if _pele_de(e) == pele] or mundo["etnias"])
+    else:
+        et = rng.choice(mundo["etnias"])
     cor = rng.choice(mundo["cores"])
 
     # ⚠️ REF TRAVADO MANDA NO SEXO. Se o operador travou QUEM FALA, o sexo sai
