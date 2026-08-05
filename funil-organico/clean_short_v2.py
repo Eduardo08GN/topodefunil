@@ -193,11 +193,25 @@ EIXOS_TRAVAVEIS = ["familia", "mundo", "etnia", "ref",
 PELE_TRAVAVEL = True
 
 
+# ⛔⛔ A CLASSIFICACAO E' LISTA EXPLICITA, NUNCA "tudo que nao e' branco"
+# (print de campo 2026-08-05): a primeira versao herdou a regra binaria do
+# paginas_por_pele — clara = tem `white`, escura = o resto — e o operador
+# travou `escura` e recebeu um REF Asian American. Para ele, escura = NEGRO.
+# Asiatico, latino, mediterraneo, nativo e mestico nao sao nem clara nem
+# escura: so' saem com a pele LIVRE.
+PELE_ETNIAS = {
+    "escura": ("Black American", "West African", "Jamaican American",
+               "Caribbean American", "Creole American"),
+    "clara": ("white American", "Cajun American"),
+}
+
+
 def _pele_de(etnia):
-    """clara/escura pela MESMA regra do seletor do painel (paginas_por_pele):
-    clara = etnia com `white`; escura = todas as outras. Duas classificacoes
-    divergentes seriam o fragmento espelhado que a P9 proibe."""
-    return "clara" if "white" in etnia else "escura"
+    """A pele da etnia pela lista explicita — ou None (neutra, so' no livre)."""
+    for pele, ets in PELE_ETNIAS.items():
+        if etnia in ets:
+            return pele
+    return None
 
 # ---------------------------------------------------------------------------
 # STRINGS TRAVADAS — copia literal da doutrina. NAO REESCREVER.
@@ -667,6 +681,17 @@ for _m in MUNDOS:
 # As familias, na ordem em que aparecem — o sorteio pesa por FAMILIA, nunca por
 # mundo solto (senao `clinica`, com 6 sets, domina o lote).
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
+
+# ⛔ assert de carga da TRAVA DE PELE: toda etnia do PELE_ETNIAS tem de existir
+# em algum mundo — um rename de etnia nos MUNDOS nao pode deixar a lista
+# apontando para o nada (a trava viraria botao morto de novo, em silencio).
+_ETNIAS_EM_MUNDO = {e for _m in MUNDOS for e in _m["etnias"]}
+for _p, _ets in PELE_ETNIAS.items():
+    for _e in _ets:
+        assert _e in _ETNIAS_EM_MUNDO, (
+            "PELE_ETNIAS[%r] cita etnia que nenhum mundo tem: %r" % (_p, _e))
+    assert any(_pele_de(e) == _p for e in _ETNIAS_EM_MUNDO), (
+        "nenhum mundo comporta a pele %r" % _p)
 
 # ⛔⛔ LEI DO REF — A REF MULHER E' SEMPRE MUITO BONITA (2026-08-03).
 # Ordem do operador: *"quero todos os refs homens musculosos e todas as refs
