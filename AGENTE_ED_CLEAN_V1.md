@@ -94,7 +94,7 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
 
 ---
 
-## REGRAS PRÓPRIAS (CL1-CL21)
+## REGRAS PRÓPRIAS (CL1-CL28)
 
 - **CL1 — ⭐⭐ A FILEIRA É O PROP, E ELA NÃO TOCA EM NADA.** Três a cinco itens
   comestíveis alinhados na bancada, à altura do peito, **enquadrados desde o
@@ -432,14 +432,17 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
 
   | ingrediente | gesto | o que cai | cor que nasce |
   |---|---|---|---|
-  | bicarbonato | `tips the box over the tall glass` | `a short stream of fine white powder is falling from the box into the glass` | `clouded milky white` |
-  | mel | `tilts the jar over the tall glass` | `a slow thread of golden honey is falling from the jar into the glass` | `warm gold` |
-  | canela | `tips the box over the tall glass` | `a fine fall of brown cinnamon dust is dropping from the box into the glass` | `cloudy warm brown` |
-  | limão | `presses the lemon half over the tall glass` | `clear juice is running from the lemon half down into the glass` | `pale cloudy yellow` |
-  | vinagre | `tilts the bottle over the tall glass` | `a thin clear stream is running from the bottle into the glass` | `pale amber` |
+  | bicarbonato | `tilts the box only slightly over the tall glass, the box staying nearly upright` | `a small spoonful of fine white powder is sifting from the box into the glass` | `clouded milky white` |
+  | mel | `tilts the jar only slightly over the tall glass, the jar staying nearly upright` | `a single thin thread of golden honey, no more than a spoonful, is drizzling from the jar into the glass` | `warm gold` |
+  | canela | `tilts the box only slightly over the tall glass, the box staying nearly upright` | `a light pinch of brown cinnamon dust is sifting from the box into the glass` | `cloudy warm brown` |
+  | limão | `presses the lemon half gently once over the tall glass` | `a few drops of clear juice are falling from the lemon half into the glass` | `pale cloudy yellow` |
+  | vinagre | `tilts the bottle only slightly over the tall glass, the bottle staying nearly upright` | `a short thin splash of clear liquid, about a spoonful, is falling from the bottle into the glass` | `pale amber` |
 
   ⚠️ **A linha do mel é a validada em render** (2026-08-02). As outras quatro
   copiam a gramática dela e trocam só o recipiente, o gesto e a cor.
+  ⭐ **Reescritas em 2026-08-04 pelo CL28 (dose medida):** o gesto ganhou o
+  teto de ângulo e a queda ganhou a dose nomeada — a gramática e as cores não
+  mudaram. Ver CL28 para o porquê (takes de campo com o pote emborcado).
 
   ⭐⭐ **A ORDEM NÃO É SORTEADA: O MAIS CLARO NA CENA 1, O MAIS ESCURO NA CENA
   2.** A bebida só pode **escurecer**. A escala é a da coluna "cor" acima:
@@ -739,8 +742,11 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   motor cobre ITEM A, ITEM B e as VIRADAS — **os HOOKS ficam de fora de
   propósito**, e é por esta decisão, não por esquecimento.
 
-- **CL24 — ⭐⭐ O REF É SEMPRE TREINADO: MÚSCULO E VEIA VISÍVEIS, SAÚDE EVIDENTE**
-  (ordem do operador, 2026-08-03). Vale nos **dois** agentes CLEAN.
+- **CL24 — ⭐⭐ O REF MASCULINO É SEMPRE TREINADO: MÚSCULO E VEIA VISÍVEIS,
+  SAÚDE EVIDENTE** (ordem do operador, 2026-08-03). Vale nos **dois** agentes
+  CLEAN. ⛔⛔ **Desde 2026-08-04 é SÓ DO HOMEM** — a mulher tinha o mesmo pool
+  (deltoide, bíceps, antebraço veiado) e o operador viu o resultado em campo:
+  *"está gerando muito musculosa"*. O corpo dela mora no **CL26**.
 
   > **Quem dá conselho de vitalidade masculina tem de parecer que o conselho
   > funcionou nele.** Corpo comum entrega dica; corpo treinado entrega prova.
@@ -753,7 +759,7 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   |---|---|
   | ✅ o alvo | **atleta**, não pessoa comum que não treina |
   | ✅ o que se vê | deltoide, trapézio, pescoço, peito, antebraço cordado, veia até o pulso e no dorso da mão |
-  | ✅ registro | homem = massa e dureza · mulher = músculo real com postura confiante |
+  | ✅ registro | homem = massa e dureza · **mulher = CL26, nunca este pool** |
   | ⛔ **o teto** | atleta, **não fisiculturista**: nada de `six-pack`, `shredded`, `jacked`, corpo oleado, veia de competição ou definição de palco |
   | ⛔ **CL8 continua** | **nunca tronco nu** — o corpo aparece **pela roupa**, jamais sem ela |
 
@@ -784,18 +790,33 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
   aqui venceu contra. **Quando texto e imagem discordam, a imagem vence — nos
   dois sentidos.**
 
-  ⚠️ **As cláusulas de MÃO saem do REF.** Ele é `chest up` com
-  `Hands out of frame`; mandar desenhar veia no dorso da mão numa foto sem mão
-  é ordem contraditória, e o gerador "resolve" contradição do jeito errado.
+  ⚠️ **As cláusulas de MÃO, QUADRIL e CINTURA saem do REF** (`_corpo_ref`).
+  Ele é `chest up` com `Hands out of frame`; mandar desenhar veia no dorso da
+  mão — ou quadril e cintura (CL26) — numa foto cortada no peito é ordem
+  contraditória, e o gerador "resolve" contradição do jeito errado. Busto,
+  pele e rosto ficam.
 
-- **CL25 — ⛔⛔ OS DENTES SÃO ANCORADOS EM TODA IMAGE DE BOCA ABERTA**
-  (falha em produção, 2026-08-03).
+- **CL25 — ⛔⛔ OS DENTES MORAM NO REF SORRIDENTE + ÂNCORA EM TODA IMAGE DE
+  BOCA ABERTA** (falha em produção 2026-08-03; **subiu de nível em 2026-08-04
+  com foto de campo**).
 
   A boca fica `mouth open mid-word` nas **três** IMAGEs e nada descrevia os
   dentes. **O que o gerador não recebe, ele inventa:** saíam homens com dente
   da frente torto ou quebrado, e o Veo às vezes animava **banguelo**.
 
-  **Frase travada, obrigatória sempre que a boca abre:**
+  ⭐⭐ **A CAMADA QUE FALTAVA: O REF 01 SORRI MOSTRANDO OS DENTES**
+  (2026-08-04). A âncora de texto sozinha **não segurou** — o operador mandou
+  prints: com o REF de **boca fechada**, a imagem de identidade nunca
+  estabelece dente nenhum, e cada cena de boca aberta inventa a própria
+  arcada, com imperfeição. É a mesma física do corpo no CL24: **quando texto e
+  imagem discordam, a imagem vence.** O REF agora sai travado com:
+  ```
+  a wide warm natural smile with the lips parted, showing a full row of
+  clean white teeth, the front teeth even and complete
+  ```
+  As cenas herdam os dentes **da foto**; a frase de texto vira reforço.
+
+  **Frase travada, obrigatória sempre que a boca abre nas cenas:**
   ```
   the front teeth even and complete
   ```
@@ -807,25 +828,90 @@ Zero corte, zero movimento de câmera. Ver **CL5**.
 
   ⛔ **E saiu a marca facial que pedia o defeito.** `a small gap between her
   front teeth` era âncora de identidade legítima, mas o gerador exagera
-  imperfeição dentária até virar dente faltando. Virou
-  `a faint dimple in her left cheek`. **Dente não serve de marca distintiva** —
-  é a região que os geradores erram mais.
+  imperfeição dentária até virar dente faltando — a mulher do print de campo
+  de 2026-08-04 é exatamente essa marca renderizada. **Dente não serve de
+  marca distintiva** — é a região que os geradores erram mais. Virou
+  `a small dark beauty mark just below the outer corner of her left eye`.
+  ⚠️ **Lição de processo:** esta remoção já tinha sido *escrita na doutrina*
+  em 03/08 e **não estava no motor** — regra sem assert é regra que volta.
+  Agora há **assert de carga** nos dois motores: marca com `teeth`/`tooth`
+  derruba o import.
 
   ⚠️ **São 5 pontos por agente, não 3.** As duas famílias têm IMAGEs próprias,
   e a frase `mouth open mid-word` aparece **quebrada entre linhas** no fonte —
   `grep "mouth open mid-word"` acha 4 e esconde 3. Conferir na **saída
   renderizada**, nunca no código.
 
-  ⚠️ **Cada linha é curta e ancorada em GEOMETRIA** (ombro, antebraço, veia),
-  não em pilha de adjetivo. É o mesmo princípio do CL19: *categoria e adjetivo
-  fazem o gerador escolher; geometria e conteúdo fazem o gerador desenhar.*
-
   🟡 **ISTO MEXE NO SELO, e o risco é conhecido.** O 🟢 do CLEAN foi medido em
   24 gerações **sem descrição de corpo**. E em 2026-08-03 a mesma família de
   frase (`toned arms`, `trim waist`) travou **4 vezes seguidas** no gerador de
   imagem da capa da Denise — densidade de adjetivo de corpo é superfície de
   bloqueio medida, não teórica. **Se vier recusa, a primeira coisa a encurtar
-  é o CL24**, nunca a cena.
+  é o CL24/CL26**, nunca a cena.
+
+- **CL26 — ⭐⭐ O CORPO FEMININO É SENSUAL, NUNCA MUSCULOSO — E ELA É SEMPRE
+  ABSOLUTAMENTE LINDA** (ordem do operador, 2026-08-04).
+
+  > *"A mulher deve ser sensual, ter apenas seios e glúteos avantajados, além
+  > de uma beleza facial incrível, todas precisam ser absolutamente lindas,
+  > independente de selecionar para negras ou brancas."*
+
+  O pool anterior era o CL24 aplicado a ela — deltoide, bíceps, antebraço
+  veiado — e saiu **"muito musculosa"** em produção. O `CORPOS_M` foi
+  reescrito inteiro; o CL24 ficou só masculino.
+
+  | | |
+  |---|---|
+  | ✅ anatomia da linha | **silhueta → busto → quadril → cintura → pele → beleza facial**, sempre nessa ordem |
+  | ✅ a beleza | **fecha toda linha por extenso** (`strikingly beautiful face`) — mora na frase, não no cast, por isso vale para toda etnia |
+  | ✅ **o cabelo** | **sempre hidratado e com brilho** (`glossy`/`silky`/`sleek`/`sheen`/`smooth` em todo `cabeca` feminino + `her hair silky, smooth and healthy` travado no REF) — cabelo sem qualificador de textura saiu **ressecado e duro** em campo (prints 2026-08-04); assert de carga cobra o token |
+  | ⛔ proibido | qualquer termo de músculo, veia ou atleta no pool feminino — **assert de carga** derruba o import |
+  | ⛔ CL8 continua | nunca corpo exposto; a silhueta aparece **pela roupa** |
+
+  ⭐ **A cláusula anti-celebridade ganhou SEXO.** O REF feminino recebia
+  `plain unremarkable face` — "linda" no corpo e "sem graça" no rosto na
+  mesma frase, e o gerador resolvia a contradição contra nós. Agora:
+  homem = `ordinary relatable` (credibilidade); mulher =
+  `strikingly beautiful... yet not a celebrity, not an actress` (a proteção
+  de identidade fica, o "comum" sai). O linter reprova `plain unremarkable`
+  em REF feminina.
+
+- **CL27 — ⭐ A CENA 1 É RENTE À CÂMERA: INGREDIENTES GRANDES EM PRIMEIRO
+  PLANO** (ordem do operador, 2026-08-04, com foto de referência).
+
+  O `Medium shot` solto saía **longe demais** e os ingredientes viravam
+  miniatura ilegível. A moldura nova é a mesma geometria que o IMAGE 03 já
+  validava: pessoa `framed from the waist up`, a superfície `running along
+  the bottom edge of the frame, close to the camera`, e os itens
+  `large and clearly readable in the foreground near the lens`.
+  ⛔ No V2 a moldura usa `%(sup)s` (a superfície do mundo), nunca o literal
+  `counter` — invariante [2] do autoteste. O linter cobra `foreground` no
+  IMAGE 01.
+
+- **CL28 — ⛔⛔ A DOSE É PEQUENA E MEDIDA: O FRASCO QUASE NÃO INCLINA E O
+  JATO TERMINA** (takes de campo, 2026-08-04).
+
+  Os vídeos saíam com o frasco **emborcado** e o copo **enchendo**: pote de
+  mel de cabeça para baixo até o copo virar suco laranja, caixa de canela
+  invertida despejando uma coluna de pó. **A causa estava no próprio
+  prompt:** `tips it a little further so the stream keeps falling` — inclinar
+  MAIS e nunca parar, por 8 segundos, é a receita do exagero. Despejo
+  contínuo de 8s lê como *"esvazie o frasco"*.
+
+  **Três leis por ingrediente, nas três camadas** (gesto e queda no IMAGE,
+  segue no TAKE):
+
+  | camada | lei | exemplo (mel) |
+  |---|---|---|
+  | gesto | teto de ângulo: **quase em pé**, nunca emborcado | `tilts the jar only slightly..., the jar staying nearly upright` |
+  | queda | dose **nomeada**: colherada, pitada, fio, gotas | `a single thin thread of golden honey, no more than a spoonful` |
+  | segue | o jato **TERMINA** no take e o copo segue água | `...drizzles into the glass and tapers off, the glass still nearly full of water` |
+
+  ⚠️ Âncora positiva, como sempre: diz-se a dose que **cai**, não
+  `don't pour too much` (CL19/CL25 — negação não cria forma). O linter
+  reprova `keeps falling`/`keeps running` nos TAKEs 1–2 e cobra dose nomeada
+  (`spoonful`/`pinch`/`a few drops`) em cada um. A tabela completa está no
+  CL17.
 
 ---
 
@@ -1141,8 +1227,10 @@ que converte. **Este é o único selo que o CLEAN ainda não tem.**
 - [ ] **Tetos de fala**: 20-26 / 26-34 / 22-28?
 - [ ] ⭐⭐ **Item A e item B não repetem fruta, ingrediente nem benefício** (CL22)? ⛔ Nenhum item A cita leite?
 - [ ] ⭐⭐ **Nenhum ingrediente promete dureza** — só o `gelatin trick` endurece (CL23)?
-- [ ] ⛔ **Toda IMAGE de boca aberta traz `the front teeth even and complete`** (CL25)? ⛔ Nenhuma marca facial cita dente?
-- [ ] ⭐⭐ **O REF tem corpo treinado, com veia e saúde visíveis** (CL24)? ⛔ Sem tronco nu, sem fisiculturista, e o corpo vem **antes** do traje na frase?
+- [ ] ⭐⭐ **O REF SORRI mostrando a fileira branca completa** (CL25)? ⛔ Toda IMAGE de boca aberta traz `the front teeth even and complete`? ⛔ Nenhuma marca facial cita dente?
+- [ ] ⭐⭐ **REF masculino com corpo treinado e veia** (CL24)? **REF feminino sensual e absolutamente lindo, zero músculo** (CL26)? ⛔ Sem tronco nu, sem `plain unremarkable` nela, e o corpo vem **antes** do traje na frase?
+- [ ] ⭐ **Cena 1 rente à câmera: itens grandes em `foreground`** (CL27)?
+- [ ] ⛔ **Família B: dose nomeada e jato que TERMINA nos TAKEs 1–2** (CL28)? Frasco quase em pé, copo que segue água?
 - [ ] ⛔ **Zero comparação numérica de tamanho** (CL10)?
 - [ ] Cada cena com 2ª pessoa ou imperativo (P22)?
 

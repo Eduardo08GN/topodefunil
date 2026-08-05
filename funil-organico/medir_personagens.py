@@ -222,7 +222,8 @@ EXCECOES = {
     # proposito: no homem eles leem como CREDIBILIDADE, o oposto do efeito nela.
     ("clean_short.py", "REFS_M", "oculos"):
         "LEI DO REF — oculos de leitura brigam frontalmente com 'linda'. Cabelo "
-        "e ancora seguem cheios, e o PORTE mora no eixo proprio CORPOS_M (CL24).",
+        "e ancora seguem cheios, e o PORTE mora no eixo proprio CORPOS_M "
+        "(CL26 desde 2026-08-04: sensual, nunca musculoso).",
     ("clean_short_v2.py", "REFS_M", "oculos"): "idem clean_short",
     ("colo_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF — oculos de leitura brigam frontalmente com 'linda e jovem'. "
