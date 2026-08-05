@@ -115,7 +115,28 @@ HTML (sem JS):
 | Wayne Miller | `dailyvitalreport.store/wayne` | `wayne` |
 | Jennifer Moore | `dailyvitalreport.store/jennifer` | `jennifer` |
 
+**⭐ Lote 2 — 2026-08-05** (5 páginas novas do Lucas, mesmas regras):
+
+| Página | URL | `subid` | Perfil |
+|---|---|---|---|
+| Yvonne Bradley | `dailyvitalreport.store/yvonne` | `yvonne` | mulher negra |
+| Curtis Grant | `dailyvitalreport.store/curtis` | `curtis` | homem negro |
+| Carol Whitfield | `dailyvitalreport.store/carol` | `carol` | mulher branca |
+| Hank & Marlene Daily | `dailyvitalreport.store/hankmarlene` | `hankmarlene` | casal branco |
+| Dale Pruitt | `dailyvitalreport.store/dale` | `dale` | homem branco |
+
 A raiz `dailyvitalreport.store/` serve a mesma matéria **sem** `subid`.
+
+⭐ **O app tem auto-deploy pelo webhook do GitHub App.** O lote 2 subiu sozinho
+depois do `git push` no `projetosweb` — não foi preciso chamar
+`POST /api/v1/deploy`. Levou menos de 2 minutos entre o push e as 5 URLs
+respondendo 200.
+
+✅ **Verificado no ar em 2026-08-05** (`curl` nas 10 URLs): cada uma com 4 links,
+`aff_id=44878` em todas e o `subid` próprio de cada página, `hero.jpg` em 200.
+⚠️ **200 não prova conteúdo** — a conferência é do `subid` renderizado, não do
+código de status: uma pasta copiada sem trocar o `subid` responderia 200 e
+mandaria a atribuição para a página errada.
 
 ### ⭐ Lote 2 — 2026-08-03: qual página do Facebook usa qual bridge
 
