@@ -107,6 +107,7 @@ DIAS_ARQUIVO = 14
 #   1.350  ->  30s sai com 22.2s
 #   1.377  ->  30s sai com 21.8s
 #   1.130  ->  30s sai com 26.5s
+#   1.070  ->  30s sai com 28.0s   (o piso de hoje, 2026-08-05)
 #
 # ⚠️ 30s, nao 24s: medido em dois videos reais (24s a 1.248x e 26s a 1.149x
 # devolvem ~30s de entrada nos dois). Os takes da AdBatch Vertical 3 nao estao
@@ -122,8 +123,8 @@ DIAS_ARQUIVO = 14
 # coisa. Quem manda e' a pasta `agentes_py\VEO-EDITOR-2.0`, porque e' ela que
 # executa — e uma correcao feita so' no destino nao volta sozinha para ca'.
 # ⚠️ Alterou a taxa? Altera NOS DOIS, no mesmo commit.
-PISO_VEL = 1.130                  # ordem do operador, 2026-08-04 (era 1.205)
-JITTER = 0.02                     # 2% do piso, SO' para cima
+PISO_VEL = 1.070                  # ordem do operador, 2026-08-05 (era 1.130)
+JITTER = 0.02                     # 2% do piso, SO' para cima — INALTERADO
 BANDA = round(PISO_VEL * JITTER, 4)
 VEL_MIN = PISO_VEL
 VEL_MAX = round(PISO_VEL + BANDA, 4)
