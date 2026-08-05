@@ -313,6 +313,24 @@ PEGADA = ("%s right hand is closed around the %s, the whole hand visibly "
           "wrapped around it, %s forearm resting steady on the %s "
           "as %s %s")
 
+# ⭐⭐ CL29 — A VOZ E' SEMPRE INGLES AMERICANO (ordem do operador, 2026-08-05:
+# *"todos os audios sempre tenham o sotaque americano, independentemente da
+# etnia"*). O take 3 saiu com sotaque caribenho num mundo de mangueiras.
+#
+# ⚠️ POR QUE SO' O TAKE 3 DERRAPOU, medido lendo os tres blocos lado a lado:
+# a linha de fala e' IDENTICA nos tres, mas nos takes 1 e 2 tudo o que vem
+# depois dela fala da PESSOA (`He keeps his right hand closed around the
+# box...`) e o audio ainda carrega o som do despejo. No take 3 a direcao inteira
+# fala de OBJETOS parados e o audio fica so' com a ambiencia do MUNDO — e' a
+# unica pista de voz que sobra, entao o gerador tira o sotaque do cenario.
+# ⛔ A ambiencia NAO se toca (e' cena, alcada do operador): ancora-se a voz.
+# ⚠️ Duas ancoras, como no CL25 e na trava de pele — uma so' ja' provou ser
+# fraca duas vezes esta semana: uma na DIRECAO (onde ele fala) e outra no
+# campo `Audio:` (onde o gerador decide o timbre).
+# ⛔ Ancora POSITIVA: diz-se QUAL sotaque, nunca `no foreign accent`.
+SOTAQUE = "in a natural American English accent"
+VOZ = "The voice is natural American English with a standard United States accent"
+
 ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
              "actor, not resembling any famous person.")
 # ⭐ CL26 — a clausula anti-celebridade tem SEXO (ordem do operador,
@@ -1945,11 +1963,15 @@ def montar(spec):
     # exatamente aquele literal, e as tres linhas saem como saiam antes.
     amb = mundo["audio"]
     if fam == "preparo":
-        audio = ["%s, %s. No music." % (amb, DESPEJO[spec["despejo"][0]]["som"]),
-                 "%s, %s. No music." % (amb, DESPEJO[spec["despejo"][1]]["som"]),
-                 "%s. No music." % amb]
+        audio = ["%s, %s" % (amb, DESPEJO[spec["despejo"][0]]["som"]),
+                 "%s, %s" % (amb, DESPEJO[spec["despejo"][1]]["som"]),
+                 amb]
     else:
-        audio = ["%s. No music." % amb] * 3
+        audio = [amb] * 3
+    # ⭐ CL29 — a voz entra nas TRES linhas, num lugar so'. O take 3 e' o mais
+    # exposto (a ambiencia do mundo era a unica pista de voz que sobrava), mas
+    # ancorar so' nele deixaria a regra dependendo de qual cena derrapa.
+    audio = ["%s. %s. No music." % (a, VOZ) for a in audio]
     # CL14 — nas cenas 1 e 2 da familia B a frase travada vira TOCA_UM; na
     # cena 3 (e na familia A inteira) o NAO_TOCA volta.
     toca_um = TOCA_UM % (S, s, S, sup)
@@ -1958,10 +1980,11 @@ def montar(spec):
         b["TAKE %02d/03" % (i + 1)] = (
             "Animate the provided image exactly. Handheld iPhone shot, very "
             "slight natural sway, no cuts. The %d-year-old %s speaks straight "
-            "into the lens. %s%s %s is the only person in the shot.\n"
+            "into the lens %s. %s%s %s is the only person in the shot.\n"
             'Dialogue: "%s"\nAudio: %s'
             % (idade, "man" if spec["sexo"] == "homem" else "woman",
-               mov[i], toca, S, sonorizar(spec["falas"][i]), audio[i]))
+               SOTAQUE, mov[i], toca, S, sonorizar(spec["falas"][i]),
+               audio[i]))
     # ⛔ 2026-08-03: os seis blocos saiam SEM a tag (`Animate the provided
     # image...` em vez de `TAKE 03/03: Animate...`), e o AdBatch parseia por
     # cabecalho de bloco. Os outros nove motores traziam; so' este escapou.
@@ -2134,6 +2157,16 @@ def lint(spec, blocos):
     if "foreground" not in blocos.get("IMAGE 01/03", ""):
         ach.append(("ERRO", "CL27: IMAGE 01 sem os itens em primeiro plano "
                             "(foreground) — a cena sai longe demais"))
+
+    # ⭐ CL29 — a voz e' ingles americano nos TRES takes, nas duas camadas.
+    # Sem isto o take 3 tirava o sotaque da ambiencia do mundo (caribenho num
+    # mundo de mangueiras — relatado com os tres videos lado a lado).
+    for nome in ("TAKE 01/03", "TAKE 02/03", "TAKE 03/03"):
+        txt = blocos.get(nome, "")
+        if SOTAQUE not in txt:
+            ach.append(("ERRO", "CL29: %s sem o sotaque na direcao" % nome))
+        if VOZ not in txt:
+            ach.append(("ERRO", "CL29: %s sem a voz no campo Audio" % nome))
 
     # ⭐ TRAVA DE PELE — as duas ancoras nos QUATRO blocos de imagem. O nome da
     # etnia sozinho ja' provou nao ancorar nada: `Caribbean American` e
