@@ -178,7 +178,13 @@ CENAS_UI = ["1 · O ESCANDALO", "2 · A RECEITA INCOMPLETA", "3 · A PROVA + CTA
 # esperando para nascer, e foi assim que o slot virou enchimento.
 # ⛔ O hook do degrau 1 fica limitado a 14 palavras: com o vilao de 14 no lugar
 # do fecho, hook de 16 dava 30 exatos, folga ZERO (3,75 palavras/s).
-TETO_FALA = {1: 30, 2: 34, 3: 26}
+# ⛔ 34 estava ACIMA DO FISICO (32 = 8s a 4,0 palavras/s, licoes §5).
+# Nao estourava por sorte do pool — o maximo GERADO medido em 600
+# sorteios era 31. Mas teto declarado acima da capacidade e' bomba
+# armada: o lint compara com ESTE numero, entao aprovaria a primeira
+# entrada longa que alguem acrescentasse, e a fala sairia cortada no
+# render sem ninguem ver (licoes §27). Baixado em 2026-08-04.
+TETO_FALA = {1: 30, 2: 32, 3: 26}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
 # ⚠️ A borda de CIMA da faixa da doutrina. ⛔ Nao usar a soma dos tetos (82):

@@ -1079,7 +1079,14 @@ CENAS_UI = ["1 · O FLAGRANTE", "2 · O TRUQUE + A VIRADA", "3 · CTA PREPARANDO
 # dois de cada tres videos, e aviso que sempre dispara e' aviso que ninguem le.
 # Os numeros abaixo sao o p90 medido de cada pool herdado.
 # ⛔ Recalibrar os tetos do motor BASE e' decisao do operador — nao foi feito.
-TETO_FALA = {1: 24, 2: 34, 3: 28}
+# ⛔⛔ A CENA 2 CAIU DE 34 PARA 32 EM 2026-08-04 — 34 esta' ACIMA DO FISICO.
+# 8 segundos a 4,0 palavras/s comportam 32 (licoes-de-construcao §5). Com teto
+# 34 o lint aprovava fala de 33 e 34 palavras, e elas eram CORTADAS no render:
+# medido, 6,7% das 6240 combinacoes do template x slots passavam de 32, e o que
+# ficava de fora era sempre o fecho da virada.
+# ⚠️ O linter era mudo porque comparava com o teto DECLARADO AQUI. Teto acima da
+# capacidade fisica nao e' escolha de estilo — e' a trava desligada (§27).
+TETO_FALA = {1: 24, 2: 32, 3: 28}
 
 
 # ---------------------------------------------------------------------------
@@ -1165,8 +1172,23 @@ FUNDIDAS = [
 
 def _fundir(spec, rng):
     o = sc.orgao_de(_LONGO, spec["falas_base"][3])
-    return rng.choice(FUNDIDAS).format(
-        o=o, quem=rng.choice(QUEM_CONTOU), brag=rng.choice(BRAGGING))
+    # ⛔ O TEMPLATE sorteia UNIFORME e nao se re-sorteia. Re-sortear a copy
+    # enviesaria o pool para as fundidas curtas; o estouro nasce do PRODUTO
+    # template x slot, nao da frase. Entao quem cede sao os SLOTS.
+    # ⚠️ Filtro determinístico, NUNCA laco de rejeicao: sem `while`, sem
+    # `range(40)` — laco de rejeicao num motor que roda dentro da janela do
+    # `.exe` e' risco de travar a interface na mao do operador.
+    # ⚠️ Fallback = a entrada mais CURTA, nunca `or pool`: `or pool` devolve
+    # tudo e reintroduz o estouro em silencio.
+    tpl = rng.choice(FUNDIDAS)
+    curto_b = min(BRAGGING, key=_palavras)
+    vq = [q for q in QUEM_CONTOU
+          if _palavras(tpl.format(o=o, quem=q, brag=curto_b)) <= TETO_FALA[2]]
+    quem = rng.choice(vq or [min(QUEM_CONTOU, key=_palavras)])
+    vb = [b for b in BRAGGING
+          if _palavras(tpl.format(o=o, quem=quem, brag=b)) <= TETO_FALA[2]]
+    brag = rng.choice(vb or [min(BRAGGING, key=_palavras)])
+    return tpl.format(o=o, quem=quem, brag=brag)
 
 
 # ---------------------------------------------------------------------------

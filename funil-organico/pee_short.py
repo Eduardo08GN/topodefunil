@@ -940,7 +940,13 @@ CENAS_UI = ["1 · A MANCHA", "2 · O TRUQUE + A VIRADA", "3 · CTA PREPARANDO"]
 # As pontas herdam o teto do ARCO LONGO — os pools sao os mesmos, e no PEE eles
 # estao bem calibrados (0% de estouro em 300 sorteios medidos). So' a cena 2
 # tem teto proprio, porque a copy dela e' propria.
-TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 34, 3: TETO_FALA_LONGO[5]}
+# ⛔ 34 estava ACIMA DO FISICO (32 = 8s a 4,0 palavras/s, licoes §5).
+# Nao estourava por sorte do pool — o maximo GERADO medido em 600
+# sorteios era 31. Mas teto declarado acima da capacidade e' bomba
+# armada: o lint compara com ESTE numero, entao aprovaria a primeira
+# entrada longa que alguem acrescentasse, e a fala sairia cortada no
+# render sem ninguem ver (licoes §27). Baixado em 2026-08-04.
+TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 32, 3: TETO_FALA_LONGO[5]}
 
 
 # ---------------------------------------------------------------------------

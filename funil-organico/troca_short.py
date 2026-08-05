@@ -109,7 +109,13 @@ CENAS_UI = ["1 · A CRENDICE", "2 · A TROCA + O BATISMO", "3 · O CORPO-PROVA +
 # como "julgamento que mora na doutrina" foi o que deixou 48% das cenas 2
 # abaixo dele: piso nao cobrado e' piso que nao existe. Os dois sao mecanicos e
 # moram aqui.
-TETO_FALA = {1: 22, 2: 34, 3: 26}
+# ⛔ 34 estava ACIMA DO FISICO (32 = 8s a 4,0 palavras/s, licoes §5).
+# Nao estourava por sorte do pool — o maximo GERADO medido em 600
+# sorteios era 32. Mas teto declarado acima da capacidade e' bomba
+# armada: o lint compara com ESTE numero, entao aprovaria a primeira
+# entrada longa que alguem acrescentasse, e a fala sairia cortada no
+# render sem ninguem ver (licoes §27). Baixado em 2026-08-04.
+TETO_FALA = {1: 22, 2: 32, 3: 26}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
 # ⚠️ TENSAO ARITMETICA REGISTRADA (nao resolvida — e' alcada do Ed):

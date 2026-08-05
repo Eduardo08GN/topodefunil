@@ -891,7 +891,7 @@ def _sortear_longo(pagina, rng, ledger):
         rng.choice(CAUSAS).format(o=orgaos[1]),
         rng.choice(RECEITAS_FALA).format(o=orgaos[2], ing=rec["fala"]),
         rng.choice(PROVAS).format(o=orgaos[3], barreira=rng.choice(BARREIRAS)),
-        rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES)),
+        _cta(rng),
     ]
     return {"pagina": pagina, "arquetipo": arq, "animal": animal,
             "receita": rec, "mesa": mesa, "ref": ref, "falas": falas}
@@ -1036,7 +1036,7 @@ def _nova_fala_longo(spec, i, rng):
         return rng.choice(RECEITAS_FALA).format(o=o, ing=spec["receita"]["fala"])
     if i == 3:
         return rng.choice(PROVAS).format(o=o, barreira=rng.choice(BARREIRAS))
-    return rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES))
+    return _cta(rng)
 
 
 # ---------------------------------------------------------------------------
@@ -1134,7 +1134,13 @@ CENAS_UI = ["1 · O HOOK", "2 · RITUAL + PROVA", "3 · CTA SOBRE A BANCADA"]
 # porque a copy dela e' propria. 34 palavras em 8s e' leitura de anuncio, nao
 # conversa — e e' o mesmo limite da cena mais carregada da versao longa. Acima
 # disso o Veo atropela: foi medido em 45 e a fala saiu embolada.
-TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 34, 3: TETO_FALA_LONGO[5]}
+# ⛔⛔ CENAS 2 E 3 CAIRAM PARA 32 EM 2026-08-04. 34 (cena 2) e o herdado da
+# cena 5 longa (cena 3) estao ACIMA DO FISICO: 8s a 4,0 palavras/s = 32
+# (licoes §5). Na longa o CTA tinha uma cena inteira so' para ele; aqui
+# divide os mesmos 8s com o pacing e o gate. Medido antes: cena 3 estourava
+# em 3,2% e cena 2 em 1,7%, e o que ficava de fora era o FIM do gate de
+# follow — a maquina de conversao morrendo no ar.
+TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 32, 3: 32}
 
 
 # ---------------------------------------------------------------------------
@@ -1238,9 +1244,41 @@ FUNDIDAS = [
 ]
 
 
+def _cta(rng, teto=None):
+    """PACING + molde do CTA + GATE somam num take so', e ninguem olhava.
+
+    ⛔ ORDEM DELIBERADA: o molde do CTA sai primeiro (carrega a isca e o
+    literal `Comment gelatin,`, que sao intocaveis), o pacing depois, e o
+    GATE por ULTIMO — o gate e' o beat intercambiavel do trio, entao e' ele
+    que absorve a sobra em vez de ser cortado pelo fim do take.
+    ⚠️ Fallback = a entrada mais CURTA, NUNCA `or pool`: `or pool` devolve o
+    pool inteiro e reintroduz o estouro em silencio.
+    """
+    teto = TETO_FALA[3] if teto is None else teto
+    cp = min(PACING, key=_palavras)
+    cg = min(GATES, key=_palavras)
+
+    def _ok(pool, monta):
+        return ([x for x in pool if _palavras(monta(x)) <= teto]
+                or [min(pool, key=lambda x: _palavras(monta(x)))])
+
+    c = rng.choice(_ok(CTAS, lambda c: c.format(pacing=cp, gate=cg)))
+    p = rng.choice(_ok(PACING, lambda p: c.format(pacing=p, gate=cg)))
+    g = rng.choice(_ok(GATES, lambda g: c.format(pacing=p, gate=g)))
+    return c.format(pacing=p, gate=g)
+
+
 def _fundir(spec, rng):
     o = sc.orgao_de(_LONGO, spec["falas_base"][3], "soldier")
-    return rng.choice(FUNDIDAS).format(o=o, ing=spec["receita"]["fala"])
+    ing = spec["receita"]["fala"]
+    # ⚠️ o {ing} vai de 7 a 12 palavras e JA' foi decidido pelo sorteio do
+    # PROP — a fundida tinha de ceder a ele, e nao o contrario.
+    # ⛔ nunca `or FUNDIDAS`.
+    cabem = [x for x in FUNDIDAS
+             if _palavras(x.format(o=o, ing=ing)) <= TETO_FALA[2]]
+    x = (rng.choice(cabem) if cabem
+         else min(FUNDIDAS, key=lambda y: _palavras(y.format(o=o, ing=ing))))
+    return x.format(o=o, ing=ing)
 
 
 # ---------------------------------------------------------------------------

@@ -70,11 +70,14 @@ def medir(nome, n=600):
     est, mx, ex = {}, {}, {}
     for i in range(n):
         p = pags[i % len(pags)]
-        # ⚠️ duas assinaturas convivem no repo.
-        try:
-            spec = M.sortear(p, random.Random(i), {}, {})
-        except TypeError:
-            spec = M.sortear(p, random.Random(i), {})
+        # ⛔⛔ TRES ARGUMENTOS, SEMPRE. A versao anterior tentava
+        # `sortear(p, rng, {}, {})` e caia para 3 no TypeError — e isso estava
+        # ERRADO: o 4o posicional NAO e' `travas` em todo motor. No ESCANDALO e'
+        # `degrau`, no RESSURREICAO e' `credibilidade`. Passar `{}` ali injetava
+        # um degrau invalido e o motor gerava fala fora da escada, sem erro de
+        # tipo — ou seja, o medidor media um motor em estado que o operador
+        # nunca produz. Todos os eixos opcionais tem default, entao 3 basta.
+        spec = M.sortear(p, random.Random(i), {})
         for c, fala in enumerate(spec["falas"], 1):
             q = M._palavras(fala)
             if q > mx.get(c, 0):

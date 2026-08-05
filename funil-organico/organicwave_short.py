@@ -57,7 +57,12 @@ CENAS_UI = ["1 · A DOR (1ª pessoa)", "2 · O GELATIN TRICK + A PROVA", "3 · C
 # Os tetos descrevem a copy APROVADA, nao o contrario: os 36 itens foram
 # curados pelo operador, entao o limite segue o p95 medido deles. Serve
 # para pegar a cauda longa, nao para reprovar o pool.
-TETO_FALA = {1: 24, 2: 36, 3: 34}
+# ⛔⛔ CENAS 2 E 3 CAIRAM DE 36/34 PARA 32 EM 2026-08-04. Os dois estavam
+# ACIMA DO FISICO: 8s a 4,0 palavras/s = 32 (licoes §5). O p95 do pool nao
+# manda no relogio — teto acima da capacidade fisica faz o lint APROVAR uma
+# fala que o take corta (licoes §27). Medido antes: c2 estourava em 7,3% e
+# o que ficava de fora era o fecho da fundida.
+TETO_FALA = {1: 24, 2: 32, 3: 32}
 
 # congruencia inviolavel: a etnia do REF e' a do avatar da pagina
 ETNIA = {"joe": "white American", "ray": "white American", "matt": "white American",
@@ -704,11 +709,34 @@ def _evitando(rng, pool, recentes):
 PERSONAS = [{"id": "homem"}, {"id": "mulher"}]
 
 
+def _cabe(pool, monta, teto):
+    """As entradas que cabem no teto.
+
+    ⛔ SEM `or pool`: quando nada cabe devolve a MAIS CURTA, nunca o pool
+    inteiro — `or pool` e' o estouro silencioso, porque entrega a fala longa
+    sem reclamar exatamente quando o orcamento esta' apertado.
+    """
+    ok = [x for x in pool if _palavras(monta(x)) <= teto]
+    return ok if ok else [min(pool, key=lambda x: _palavras(monta(x)))]
+
+
+def _pools(persona_id):
+    return ((HOOKS_F, FUNDIDAS_F, CTAS_F) if persona_id == "mulher"
+            else (HOOKS, FUNDIDAS, CTAS))
+
+
+def _cta_gate(rng, ctas):
+    """O CTA sai primeiro (carrega a isca e o literal `Comment gelatin,`);
+    o GATE e' que cede, porque e' o beat intercambiavel do par."""
+    cta = rng.choice(ctas)
+    return cta.format(gate=rng.choice(
+        _cabe(GATES, lambda g: cta.format(gate=g), TETO_FALA[3])))
+
+
 def sortear(pagina, rng, ledger):
     hist = ledger.get(pagina, {})
     amb = _evitando(rng, AMBIENTES, hist.get("ambiente", [])[-2:])
     prop = _evitando(rng, PROPS, hist.get("prop", [])[-2:])
-    rec = _evitando(rng, RECEITAS, hist.get("receita", [])[-2:])
     isca = _evitando(rng, ISCA, hist.get("isca", [])[-3:])
     persona = _evitando(rng, PERSONAS, hist.get("persona", [])[-1:])
     ref = rng.choice(homens_de(pagina))
@@ -716,18 +744,23 @@ def sortear(pagina, rng, ledger):
 
     orgaos = rng.sample(NUCLEO, 3)
     n = IDADE_EXT[ref["idade"]]
-    if persona["id"] == "mulher":
-        falas = [
-            rng.choice(HOOKS_F).format(o=orgaos[0], n=n, N=n.capitalize()),
-            rng.choice(FUNDIDAS_F).format(o=orgaos[1], ing=rec["fala"]),
-            rng.choice(CTAS_F).format(gate=rng.choice(GATES)),
-        ]
-    else:
-        falas = [
-            rng.choice(HOOKS).format(o=orgaos[0], n=n, N=n.capitalize()),
-            rng.choice(FUNDIDAS).format(o=orgaos[1], ing=rec["fala"]),
-            rng.choice(CTAS).format(gate=rng.choice(GATES)),
-        ]
+    hooks, fundidas, ctas = _pools(persona["id"])
+    # ⭐ A FUNDIDA SORTEIA UNIFORME E A RECEITA E' QUE CEDE — e a escolha foi
+    # medida, nao estetica. `rec["fala"]` varia de 7 a 11 palavras e e' eixo de
+    # RITUAL (o que ele faz em cena); a fundida e' copy curada. Filtrar a
+    # fundida derrubaria em 32% o unico beat com o verbo de RESULTADO
+    # (`hard again`, o conserto de 2026-08-03). Medido: assim ele fica em 9,5%
+    # contra 9,7% de hoje, e nenhuma receita morre.
+    fund = rng.choice(fundidas)
+    rec = _evitando(rng, _cabe(RECEITAS,
+                               lambda r: fund.format(o=orgaos[1], ing=r["fala"]),
+                               TETO_FALA[2]),
+                    hist.get("receita", [])[-2:])
+    falas = [
+        rng.choice(hooks).format(o=orgaos[0], n=n, N=n.capitalize()),
+        fund.format(o=orgaos[1], ing=rec["fala"]),
+        _cta_gate(rng, ctas),
+    ]
     return {"pagina": pagina, "ambiente": amb, "prop": prop, "receita": rec,
             "isca": isca, "ref": ref, "mulher": mul, "persona": persona,
             "falas": falas}
@@ -992,7 +1025,12 @@ def resumo_pt(spec):
 def _recopiar_receita(spec, rng):
     """A receita entra na fala da cena 2 — trocar o ritual exige reescrever."""
     o = sc.orgao_de(sys.modules[__name__], spec["falas"][1])
-    spec["falas"][1] = rng.choice(FUNDIDAS).format(o=o, ing=spec["receita"]["fala"])
+    # ⚠️ AQUI e' o inverso do sorteio, de proposito: a receita ja' esta' NA TELA
+    # (o operador acabou de troca-la), entao quem cede e' a fundida.
+    _, fundidas, _ = _pools(spec["persona"]["id"])
+    ing = spec["receita"]["fala"]
+    spec["falas"][1] = rng.choice(_cabe(
+        fundidas, lambda x: x.format(o=o, ing=ing), TETO_FALA[2])).format(o=o, ing=ing)
 
 
 def _recopiar_persona(spec, rng):
@@ -1002,14 +1040,15 @@ def _recopiar_persona(spec, rng):
     voz do homem. O eixo nao e' de elenco, e' de roteiro.
     """
     n = IDADE_EXT[spec["ref"]["idade"]]
-    fem = spec["persona"]["id"] == "mulher"
-    hooks, fundidas, ctas = ((HOOKS_F, FUNDIDAS_F, CTAS_F) if fem
-                             else (HOOKS, FUNDIDAS, CTAS))
+    hooks, fundidas, ctas = _pools(spec["persona"]["id"])
     orgaos = rng.sample(NUCLEO, 2)
+    ing = spec["receita"]["fala"]
+    fund = rng.choice(_cabe(fundidas, lambda x: x.format(o=orgaos[1], ing=ing),
+                            TETO_FALA[2]))
     spec["falas"] = [
         rng.choice(hooks).format(o=orgaos[0], n=n, N=n.capitalize()),
-        rng.choice(fundidas).format(o=orgaos[1], ing=spec["receita"]["fala"]),
-        rng.choice(ctas).format(gate=rng.choice(GATES)),
+        fund.format(o=orgaos[1], ing=ing),
+        _cta_gate(rng, ctas),
     ]
 
 
@@ -1020,12 +1059,17 @@ EIXOS_QUE_MEXEM_NA_COPY = {"receita": _recopiar_receita,
 
 def nova_fala(spec, i, rng):
     o = sc.orgao_de(sys.modules[__name__], spec["falas"][i])
+    # ⚠️ os pools seguem a PERSONA — o botao `trocar` usava HOOKS/FUNDIDAS/CTAS
+    # fixos, entao numa spec de persona feminina ele devolvia fala de homem.
+    hooks, fundidas, ctas = _pools(spec["persona"]["id"])
     if i == 0:
         n = IDADE_EXT[spec["ref"]["idade"]]
-        return rng.choice(HOOKS).format(o=o, n=n, N=n.capitalize())
+        return rng.choice(hooks).format(o=o, n=n, N=n.capitalize())
     if i == 1:
-        return rng.choice(FUNDIDAS).format(o=o, ing=spec["receita"]["fala"])
-    return rng.choice(CTAS).format(gate=rng.choice(GATES))
+        ing = spec["receita"]["fala"]
+        return rng.choice(_cabe(fundidas, lambda x: x.format(o=o, ing=ing),
+                                TETO_FALA[2])).format(o=o, ing=ing)
+    return _cta_gate(rng, ctas)
 
 
 # ---------------------------------------------------------------------------

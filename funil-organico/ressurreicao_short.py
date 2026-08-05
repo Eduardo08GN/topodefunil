@@ -180,7 +180,13 @@ CENAS_UI = ["1 · O DESPEJO E O CRESCIMENTO", "2 · A RECEITA INCOMPLETA",
 # ⚠️ Teto conservador vira espaco morto, e espaco morto vira enchimento
 # (licoes-de-construcao §5): no ESCANDALO o teto era 22, a capacidade real 27-32
 # e as falas mediam 18,4 — o slot que sobrava virou "Give me eight seconds".
-TETO_FALA = {1: 27, 2: 34, 3: 30}
+# ⛔ 34 estava ACIMA DO FISICO (32 = 8s a 4,0 palavras/s, licoes §5).
+# Nao estourava por sorte do pool — o maximo GERADO medido em 600
+# sorteios era 30. Mas teto declarado acima da capacidade e' bomba
+# armada: o lint compara com ESTE numero, entao aprovaria a primeira
+# entrada longa que alguem acrescentasse, e a fala sairia cortada no
+# render sem ninguem ver (licoes §27). Baixado em 2026-08-04.
+TETO_FALA = {1: 27, 2: 32, 3: 30}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
 # ⚠️ A borda de CIMA da faixa 82-96 da doutrina. ⛔ Nao usar a soma dos tetos

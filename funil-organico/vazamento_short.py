@@ -733,7 +733,7 @@ def sortear_longo(pagina, rng, ledger):
         rng.choice(VIRADAS).format(o=orgaos[2]),
         rng.choice(PROVAS).format(o=orgaos[3], barreira=rng.choice(BARREIRAS),
                                   **_idade_slots(mul["idade"])),
-        rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES)),
+        _cta_montado(rng),
     ]
     return {"pagina": pagina, "cozinha": coz, "quintal": qui, "prop": prop,
             "ref": ref, "mulher": mul, "falas": falas,
@@ -905,7 +905,7 @@ def nova_fala_longo(spec, i, rng):
     if i == 3:
         return rng.choice(PROVAS).format(o=o, barreira=rng.choice(BARREIRAS),
                                          **_idade_slots(mul["idade"]))
-    return rng.choice(CTAS).format(pacing=rng.choice(PACING), gate=rng.choice(GATES))
+    return _cta_montado(rng)
 
 
 # ---------------------------------------------------------------------------
@@ -979,8 +979,16 @@ MAPA_COPY = (1, None, 5)          # None = a fundida
 CENAS_UI = ["1 · O VAZAMENTO", "2 · A RECEITA INCOMPLETA + A PROVA",
             "3 · CTA PREPARANDO"]
 
-# As pontas herdam o teto do motor longo — mesmos pools, mesma regua.
-TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 36, 3: TETO_FALA_LONGO[5]}
+# ⛔⛔ AS CENAS 2 E 3 NAO HERDAM MAIS O TETO DO LONGO — corrigido 2026-08-04.
+# O comentario antigo dizia "mesmos pools, mesma regua" e a regua estava
+# ERRADA: na versao longa o CTA tinha uma cena inteira so' para ele; aqui
+# ele divide os mesmos 8 segundos com o pacing e o gate. Herdar 40 dali fez
+# este motor virar o pior do repo — medido, a cena 3 gerava ate' 48 palavras
+# (6,0 p/s) e 53,5% dos videos tinham fala cortada. O que ficava de fora era
+# o GATE DE FOLLOW INTEIRO: nao o hook, nao o `Comment gelatin,` — a
+# maquina de conversao morrendo no ar, em metade do lote.
+# ⚠️ 8s a 4,0 palavras/s = 32 (licoes-de-construcao §5 e §27).
+TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 32, 3: 32}
 
 
 # ---------------------------------------------------------------------------
@@ -1068,9 +1076,40 @@ FUNDIDAS = [
 ]
 
 
+def _cta_montado(rng, teto=None):
+    """PACING + corpo do CTA + GATE somam num take so', e ninguem olhava.
+
+    ⛔ ORDEM DELIBERADA: o corpo do CTA sai primeiro (carrega a isca e o
+    literal `Comment gelatin,`, intocavel pela automacao de DM), o pacing
+    depois, e o GATE por ULTIMO — o gate e' o beat intercambiavel do trio,
+    entao e' ele que absorve a sobra em vez de ser cortado pelo fim do take.
+    ⚠️ Fallback = a entrada mais CURTA, NUNCA `or pool`.
+    """
+    teto = TETO_FALA[3] if teto is None else teto
+    corpo = lambda c: c.replace("{pacing}", "").replace("{gate}", "").strip()
+    min_p = min(_palavras(x) for x in PACING)
+    min_g = min(_palavras(x) for x in GATES)
+    vc = [c for c in CTAS if _palavras(corpo(c)) + min_p + min_g <= teto]
+    cta = rng.choice(vc or [min(CTAS, key=lambda c: _palavras(corpo(c)))])
+    n_c = _palavras(corpo(cta))
+    vp = [p for p in PACING if n_c + _palavras(p) + min_g <= teto]
+    pac = rng.choice(vp or [min(PACING, key=_palavras)])
+    vg = [g for g in GATES
+          if n_c + _palavras(pac) + _palavras(g) <= teto]
+    gate = rng.choice(vg or [min(GATES, key=_palavras)])
+    return cta.format(pacing=pac, gate=gate)
+
+
 def _fundir(spec, rng):
     o = sc.orgao_de(_MOTOR_LONGO, spec["falas_base"][3])
-    return rng.choice(FUNDIDAS).format(o=o, **_idade_slots(spec["mulher"]["idade"]))
+    idade = _idade_slots(spec["mulher"]["idade"])
+    # ⚠️ sem `or FUNDIDAS`: lista vazia e' resposta legitima e quem decide e'
+    # o chamador. `or pool` devolveria tudo e reintroduziria o estouro.
+    cabem = [f for f in FUNDIDAS
+             if _palavras(f.format(o=o, **idade)) <= TETO_FALA[2]]
+    esc = (rng.choice(cabem) if cabem
+           else min(FUNDIDAS, key=lambda f: _palavras(f.format(o=o, **idade))))
+    return esc.format(o=o, **idade)
 
 
 # ---------------------------------------------------------------------------

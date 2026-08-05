@@ -43,7 +43,7 @@ passar. Medidor que nao reprova o caso conhecido mede outra coisa.
 """
 import argparse
 import importlib
-import io
+
 import os
 import random
 import re
@@ -238,10 +238,14 @@ def varrer(nome, n=250, seed=11):
     rng = random.Random(seed)
     for i in range(n):
         pag = paginas[i % len(paginas)]
-        try:
-            spec = mod.sortear(pag, random.Random(rng.randrange(1 << 30)), {}, {})
-        except TypeError:
-            spec = mod.sortear(pag, random.Random(rng.randrange(1 << 30)), {})
+        # ⛔⛔ TRES ARGUMENTOS, SEMPRE. A versao anterior tentava
+        # `sortear(p, rng, {}, {})` e caia para 3 no TypeError — e isso estava
+        # ERRADO: o 4o posicional NAO e' `travas` em todo motor. No ESCANDALO e'
+        # `degrau`, no RESSURREICAO e' `credibilidade`. Passar `{}` ali injetava
+        # um degrau invalido e o motor gerava fala fora da escada, sem erro de
+        # tipo — ou seja, o medidor media um motor em estado que o operador
+        # nunca produz. Todos os eixos opcionais tem default, entao 3 basta.
+        spec = mod.sortear(pag, random.Random(rng.randrange(1 << 30)), {})
         for cena, fala in enumerate(spec["falas"], 1):
             for s in sentencas(fala):
                 total += 1
