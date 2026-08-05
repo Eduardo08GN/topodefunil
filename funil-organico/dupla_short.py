@@ -188,7 +188,7 @@ BO_DUPLA = (
 PREPAROS = [
     {"id": "dois_jarros",
      "bancada": "a tall clear glass, and beside it %(raro_img)s, two raw "
-                "beetroots and two carrots",
+                "beetroots, two carrots and a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
      "acao": "She holds a glass jug in each hand and pours both at once into "
              "the tall glass — deep red juice from the left jug and bright "
              "orange juice from the right — the two streams falling together",
@@ -199,7 +199,8 @@ PREPAROS = [
 
     {"id": "liquidificador",
      "bancada": "a blender jug on its base, filled with cut beetroot and "
-                "carrot, a tall clear glass beside it and %(raro_img)s",
+                "carrot, a tall clear glass beside it, %(raro_img)s and "
+                "a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
      "acao": "Her right hand rests on the blender base and her left sets the "
              "lid down onto the jug, the cut beetroot and carrot packed inside "
              "against the glass",
@@ -209,7 +210,8 @@ PREPAROS = [
 
     {"id": "espremedor",
      "bancada": "a stainless juicer with a tall clear glass under its spout, "
-                "%(raro_img)s and a bowl of cut beetroot and carrot",
+                "%(raro_img)s, a bowl of cut beetroot and carrot and "
+                "a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
      "acao": "Her right hand pushes a carrot down the juicer chute with the "
              "plunger while bright orange juice runs from the spout into the "
              "glass, a beetroot already fed through and staining the pulp red",
@@ -221,7 +223,7 @@ PREPAROS = [
     {"id": "camadas",
      "bancada": "a tall clear glass already filled in two layers — deep red "
                 "below and bright orange above — with %(raro_img)s beside it, "
-                "two raw beetroots and two carrots",
+                "two raw beetroots, two carrots and a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
      "acao": "Her right hand turns a long spoon slowly through the glass and "
              "the two layers begin to marble into each other",
      "mov": "Her right hand keeps turning the long spoon slowly through the "
@@ -232,8 +234,8 @@ PREPAROS = [
     {"id": "medidor",
      "bancada": "a tall clear glass, a graduated glass measuring jug of deep "
                 "red juice in her hand, a second jug of bright orange juice "
-                "waiting beside it, %(raro_img)s, two raw beetroots and two "
-                "carrots",
+                "waiting beside it, %(raro_img)s, two raw beetroots, two "
+                "carrots and a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
      "acao": "Her right hand tips the measuring jug and a steady thread of deep "
              "red juice falls into the tall glass, filling it to the halfway "
              "mark",
@@ -244,7 +246,8 @@ PREPAROS = [
 
     {"id": "coador",
      "bancada": "a fine mesh sieve set over a tall clear glass, deep red pulp "
-                "in it, %(raro_img)s, two raw beetroots and two carrots",
+                "in it, %(raro_img)s, two raw beetroots, two carrots and "
+                "a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
      "acao": "Her right hand presses the back of a spoon into the pulp in the "
              "sieve and deep red juice runs through the mesh into the glass "
              "below",
@@ -2062,13 +2065,18 @@ def _apelo(spec):
 
 
 def _traje_de(spec, chave):
+    """⛔ A COR SEGUE A CHAVE: `traje_amiga` usa `cor_amiga`. Sem isto as duas
+    saem da mesma cor mesmo com pecas diferentes."""
     """O traje de UMA das duas mulheres, com o artigo certo.
 
     ⛔ Existe porque as duas apareciam com a MESMA roupa: eu chamava `_traje`
     duas vezes e o spec so' tinha um traje. Duas mulheres identicas da cintura
     para cima viram uniforme — e o operador leu isso no render.
     """
-    cor = spec["cor"]
+    # ⛔ A COR SEGUE A CHAVE: `traje_amiga` usa `cor_amiga`. Sem isto as duas
+    # saem da MESMA COR mesmo com pecas diferentes — meia correcao le como
+    # uniforme do mesmo jeito, e o operador pegou no render pela segunda vez.
+    cor = spec.get("cor_amiga" if chave == "traje_amiga" else "cor") or spec["cor"]
     return "%s %s" % (_artigo(cor), spec[chave][0] % cor)
 
 
@@ -2312,6 +2320,14 @@ def sortear(pagina, rng, led, travas=None):
     et = travas.get("etnia") or rng.choice(_etnias_ok(mundo)
                                            or mundo["etnias"])
     cor = travas.get("cor") or rng.choice(mundo["cores"])
+    # ⛔⛔ COR PROPRIA PARA A AMIGA. Com uma cor so' as duas saiam vestidas
+    # igual mesmo com pecas diferentes — o operador pegou no render, e e' a
+    # segunda vez que este angulo devolve "uniforme": duas mulheres identicas
+    # da cintura para cima matam a leitura de "duas pessoas".
+    # ⚠️ `or [cor]` no fallback: mundo com uma cor so' nao pode derrubar o
+    # sorteio, e nesse caso a repeticao e' honesta (nao ha' o que variar).
+    _outras = [c for c in mundo["cores"] if c != cor] or [cor]
+    cor_amiga = travas.get("cor_amiga") or rng.choice(_outras)
     # ⭐ O TRAJE E' EIXO PROPRIO desde 2026-08-05, com pool por mundo. Cada
     # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
     # traje SORTEADO, senao a ancora descreve uma roupa que nao esta' em cena.
@@ -2383,6 +2399,7 @@ def sortear(pagina, rng, led, travas=None):
 
     spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor,
             "traje": traje, "traje_amiga": traje_amiga, "preparo": preparo,
+            "cor_amiga": cor_amiga,
             "reacao": reacao, "apelo": apelo,
             "reacao_amiga": reacao_amiga,
             "ref": ref, "amiga": amiga, "homem": homem,
@@ -2903,6 +2920,34 @@ def lint(spec, blocos):
         ach.append(("ERRO", "BO16: o fecho da cena 1 e' um terceiro deitico — "
                             "ele tem de nomear O QUE e' que e' para ele"))
 
+    # ⛔⛔ AS DUAS SAIRAM DO RENDER, 2026-08-05, e viram regra para nao voltarem.
+    #
+    # 1) AS DUAS MULHERES NAO PODEM SAIR DA MESMA COR. O operador sorteou sem
+    #    fixar nada e leu *"mesmo ambiente + cores de roupa iguais"*. Eu ja'
+    #    tinha dado PECA propria para cada uma e nao COR — meia correcao le como
+    #    uniforme do mesmo jeito, e uniforme mata a leitura de "duas pessoas".
+    if spec.get("cor_amiga") and spec["cor_amiga"] == spec["cor"]:
+        ach.append(("ERRO", "DU1: as duas mulheres com a MESMA cor (%s) — peca "
+                            "diferente na mesma cor ainda le como uniforme"
+                    % spec["cor"]))
+    #
+    # 2) A TIGELA DE GELATINA NA BANCADA DA CENA 2. Ordem do operador: *"seria
+    #    ao menos conveniente ela ter uma bowl de cubos de gelatina nas mesas no
+    #    take 2 ja' que a gravitacao e' em torno do gelatin trick"*. E' defeito
+    #    de FUNCAO: a fala diz `and a secret gelatin trick` e a bancada nao tinha
+    #    gelatina nenhuma — o espectador ouve o mecanismo e nao ve' onde ele mora.
+    # ⚠️ E ela SO' existe na cena 2: na 1 entregaria o mecanismo antes da
+    #    promessa, na 3 competiria com o copo, que e' o objeto da keyword.
+    if "gelatin cubes" not in blocos["IMAGE 02/03"]:
+        ach.append(("ERRO", "DU2: a bancada da cena 2 sem a tigela de cubos de "
+                            "gelatina — a fala nomeia o mecanismo e o quadro "
+                            "nao mostra onde ele mora"))
+    for _n in ("IMAGE 01/03", "IMAGE 03/03"):
+        if "gelatin cubes" in blocos[_n]:
+            ach.append(("ERRO", "DU2: a tigela de gelatina fora da cena 2 (%s) "
+                                "— na 1 entrega o mecanismo antes da promessa, "
+                                "na 3 disputa o quadro com o copo" % _n))
+
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
 
     # ⛔⛔ AS TRAVAS DE FORMA DO GEODUCK, que o EXTERIOR pagou em recusa (EX7).
@@ -3131,6 +3176,18 @@ def autoteste(n=600):
     # repertorio sem vilao e esperava reprovacao — hoje esse e' o repertorio
     # CERTO. Controle de regra aposentada que fica para tras vira ruido, e ruido
     # ensina o operador a ignorar o autoteste.
+
+    # ⭐ [DU1] as duas da mesma cor
+    s_du1 = dict(s, cor_amiga=s["cor"])
+    if not any("DU1" in msg for _, msg in lint(s_du1, b)):
+        ctrl.append("[DU1] NAO acusa as duas mulheres com a mesma cor")
+
+    # ⭐ [DU2] a bancada sem a tigela de gelatina
+    b_du2 = dict(b)
+    b_du2["IMAGE 02/03"] = b_du2["IMAGE 02/03"].replace(
+        "vivid purple gelatin cubes", "sliced apples")
+    if not any("DU2" in msg for _, msg in lint(s, b_du2)):
+        ctrl.append("[DU2] NAO acusa a cena 2 sem a tigela de gelatina")
 
     # ⭐ [BO16] o deitico orfao — a ordem do operador em um controle
     s16 = dict(s, falas=list(s["falas"]))
