@@ -1062,72 +1062,72 @@ PROPS = [
 # ⛔ Zero adjetivo de etnia nas entradas: quem injeta e' a montagem, a partir do
 # MUNDO. Mesmo contrato do COLO, NECROSE e EXTERIOR.
 REFS = [
-    {"idade": 29, "corpo": "slim and upright, with fine collarbones",
+    {"idade": 29, "corpo": "slim with an hourglass figure and a narrow waist",
      "cabeca": "copper-red hair pinned back off her face",
      "marca": "a heavy dusting of freckles across her nose and clear skin"},
-    {"idade": 34, "corpo": "trim and athletic, with a straight back",
+    {"idade": 34, "corpo": "toned and curvy, with a clearly defined waist",
      "cabeca": "long dark hair in a low twist",
      "marca": "high round cheekbones and lightly tanned even skin"},
-    {"idade": 26, "corpo": "lean and long-limbed",
+    {"idade": 26, "corpo": "long-legged and slender, with a graceful neck and full shoulders",
      "cabeca": "honey-blonde hair braided over one shoulder",
      "marca": "pale green eyes, a light spray of freckles and a beauty mark above her lip"},
-    {"idade": 31, "corpo": "compact and strong, with toned forearms",
+    {"idade": 31, "corpo": "shapely and strong, with toned arms and a small waist",
      "cabeca": "tight natural curls gathered high",
      "marca": "glowing deep brown skin and a wide bright smile"},
-    {"idade": 37, "corpo": "slender, with square shoulders",
+    {"idade": 37, "corpo": "slim-hipped and elegant, with a long line from neck to shoulder",
      "cabeca": "straight black hair parted in the middle",
      "marca": "full lips, a deep dimple in her left cheek and warm tanned skin"},
-    {"idade": 28, "corpo": "toned and broad-shouldered, like a swimmer",
+    {"idade": 28, "corpo": "athletic and curvy, with swimmer's shoulders and a narrow waist",
      "cabeca": "long braids gathered at the nape",
      "marca": "a small silver hoop in her left nostril and clear skin"},
-    {"idade": 33, "corpo": "slim-hipped and wiry",
+    {"idade": 33, "corpo": "softly curved and full-figured, with a defined waist",
      "cabeca": "chestnut hair in a loose knot with strands escaping",
      "marca": "a dusting of freckles and a small crescent birthmark at her right temple"},
-    {"idade": 25, "corpo": "petite and tightly muscled",
+    {"idade": 25, "corpo": "trim and shapely, standing very straight",
      "cabeca": "dark hair in a high smooth bun",
      "marca": "eyes of two different colours, one green and one brown"},
-    {"idade": 36, "corpo": "tall and lean, with a long neck",
+    {"idade": 36, "corpo": "tall and statuesque, with a long waist",
      "cabeca": "auburn hair coiled and pinned at the back",
      "marca": "a fine pale scar through one eyebrow and smooth clear skin"},
-    {"idade": 30, "corpo": "firm and athletic, with a narrow waist",
+    {"idade": 30, "corpo": "petite and curvy, with a small frame and a defined waist",
      "cabeca": "black hair in a thick plait down her back",
      "marca": "smoothly tanned skin and a dark beauty spot high on her left cheekbone"},
-    {"idade": 27, "corpo": "slim and toned, with a flat stomach",
+    {"idade": 27, "corpo": "lean and toned, with a flat stomach and long arms",
      "cabeca": "wavy caramel hair tucked behind her ears",
      "marca": "a gap between her front teeth that shows when she smiles"},
-    {"idade": 38, "corpo": "strong-shouldered and upright",
+    {"idade": 38, "corpo": "full-figured and confident, with rounded shoulders and a narrow waist",
      "cabeca": "silver-free dark hair wound into a bun",
      "marca": "arched brows over wide dark eyes and clear skin"},
     # + 2026-08-05 — o operador leu tres lotes e reclamou da repeticao de
     # pessoas e roupa. Estas dez variam CORPO e FORMATO DE CABECA, nao so' cor.
-    {"idade": 32, "corpo": "softly full-figured, with rounded shoulders",
+    {"idade": 32, "corpo": "slim and supple, with a dancer's line",
      "cabeca": "loose dark curls falling past her shoulders",
      "marca": "a small dark mole just above her lip and clear skin"},
-    {"idade": 24, "corpo": "petite and compact, with narrow shoulders",
+    {"idade": 24, "corpo": "compact and shapely, with strong shoulders and a small waist",
      "cabeca": "jet-black hair in a blunt chin-length bob",
      "marca": "wide-set almond eyes and a faint pale scar on her chin"},
-    {"idade": 35, "corpo": "tall and broad through the shoulders",
+    {"idade": 35, "corpo": "tall and slim with an hourglass line",
      "cabeca": "tight coils cropped close to the head",
      "marca": "sharply cut cheekbones and a small gold stud in one nostril"},
-    {"idade": 29, "corpo": "curvy and softly built",
+    {"idade": 29, "corpo": "curvy and athletic, with a long neck and a defined waist",
      "cabeca": "dark hair with a deep side part falling in heavy waves",
      "marca": "a beauty spot at the outer corner of her right eye"},
-    {"idade": 27, "corpo": "lean and wiry, with a long neck",
+    {"idade": 27, "corpo": "slender and fine-boned, with elegant posture",
      "cabeca": "ash-brown hair twisted into a loose topknot",
      "marca": "pale grey eyes and a faint round mark between her brows"},
-    {"idade": 33, "corpo": "strong and squarely built",
+    {"idade": 33, "corpo": "toned and full-figured, with a small waist and straight back",
      "cabeca": "thick black hair coiled into two low buns",
      "marca": "full arched brows and a thin scar along her jawline"},
-    {"idade": 26, "corpo": "slight and narrow-shouldered",
+    {"idade": 26, "corpo": "long-limbed and shapely, with a narrow waist",
      "cabeca": "waist-length straight black hair worn loose",
      "marca": "a dimple that shows in one cheek only"},
-    {"idade": 31, "corpo": "athletic and square-shouldered",
+    {"idade": 31, "corpo": "trim and athletic, with a flat stomach and square shoulders",
      "cabeca": "copper braids wrapped into a crown around her head",
      "marca": "a scatter of dark freckles across both cheeks"},
-    {"idade": 37, "corpo": "sturdy and full-hipped",
+    {"idade": 37, "corpo": "softly curvy, with a full figure and a defined waist",
      "cabeca": "glossy black hair in a low ponytail",
      "marca": "a small raised birthmark on her right temple"},
-    {"idade": 28, "corpo": "willowy and fine-boned",
+    {"idade": 28, "corpo": "slim and long-waisted, with a very straight back",
      "cabeca": "sandy hair in a thick fishtail braid",
      "marca": "a slight overbite that shows when she talks"},
 ]
@@ -1360,13 +1360,22 @@ VILOES_APOSENTADO = [
 # passo retido e' mais longo que o antigo. Com as receitas anteriores a conta
 # dava 42 palavras contra teto de 32. Quem entra por ultimo nao paga a conta
 # sozinho: as tres partes encolhem juntas.
+# ⛔⛔ O VASO SAIU DA FALA EM 2026-08-05. Toda entrada terminava em `into
+# the {v}` e o operador reescreveu o take sem isso.
+# ⚠️ A razao e' economia pura: o vaso ESTA' NO QUADRO — a mao dela esta'
+# fechada nele, o audio traz o som dele, e a IMAGE o descreve. Dizer em voz
+# alta o que a imagem ja' mostra gasta 3 a 4 palavras num take de 8s e nao
+# acrescenta nada que o espectador nao esteja vendo.
+# ⭐ `{v}` continua no dict do metodo e no prompt de IMAGE. So' saiu da FALA.
 RECEITAS = [
-    "Into the {v}: gelatin, {c}, and {r}",
-    "Gelatin, {c} and {r}, into the {v}",
-    "In the {v}: gelatin first, then {c}, then {r}",
-    "A spoon of gelatin, {c} and {r}, into the {v}",
-    "Gelatin goes in the {v} with {c} and {r}",
-    "Gelatin, {c}, {r} — all of it into the {v}",
+    "Gelatin, {c} and {r}",
+    "A spoon of gelatin, {c} and {r}",
+    "Gelatin first, then {c}, then {r}",
+    "Gelatin, {c}, {r} — that is all of it",
+    "A spoon of gelatin with {c} and {r}",
+    "Gelatin, a little {c}, and {r}",
+    "Just gelatin, {c} and {r}",
+    "Gelatin, {c} and {r}, nothing else",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
@@ -1464,6 +1473,15 @@ ANCORAS = [
 # O desejo oculto deste funil: ela querer de novo · ela tomar a iniciativa · ele
 # parar de ser motivo de pena · nao precisar explicar nada.
 PROMESSAS = [
+    # + 2026-08-05 — as seis abaixo sao as CURTAS, no registro que o operador
+    # escreveu a mao ("Your wife will be surprised with your John-son"). Com o
+    # vaso fora da receita, a cena 2 tem folga para respirar em vez de correr.
+    "Your wife will be surprised with your {o}.",
+    "Your wife will not believe your {o}.",
+    "She will notice your {o} first.",
+    "Your wife will talk about your {o}.",
+    "She will feel your {o} before she asks.",
+    "Your wife will want your {o} again.",
     # ela nota — o desejo de ser visto
     "Your wife notices your {o} before you do.",
     "Your wife talks about your {o} before you do.",
@@ -1557,8 +1575,11 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # reescreveu a mao tem 25 palavras (3,1 p/s).
 # ⚠️ 28 = 3,5 p/s, a metade conservadora da faixa. O piso cai junto porque a
 # cena perdeu um beat inteiro (o vilao).
-TETO_FALA = {1: 28, 2: 32, 3: 31}
-PISO_FALA = {1: 20, 2: 22, 3: 23}
+# ⚠️ cena 2: teto 32 -> 28 e piso 22 -> 15 em 2026-08-05. A receita perdeu o
+# vaso e o operador quer a cena CURTA — o exemplo que ele escreveu a mao tem
+# 16 palavras. Piso 22 acusaria silencio numa fala que ele mesmo pediu.
+TETO_FALA = {1: 28, 2: 28, 3: 31}
+PISO_FALA = {1: 20, 2: 15, 3: 23}
 
 
 # ---------------------------------------------------------------------------
@@ -1683,20 +1704,23 @@ def _por_traje(mundo, curto):
 # de devolver o rosto de alguem real.
 # ⚠️ E a estetica UGC continua: iPhone cru, grao, luz frontal. O apelo entra na
 # PESSOA, nao na producao — modelo em estudio nao converte neste funil.
+# ⚠️ REFORCADO EM 2026-08-05: *"pelo amor de Deus, DE mais sex appeal pra
+# essas mulheres, estao muito feias e sem shape"*. A primeira versao falava
+# so' de rosto e cabelo — e o BLOCO 0 e' `chest up`, entao rosto sozinho nao
+# resolve FIGURA. Agora a clausula nomeia o corpo, e o campo `corpo` das 22
+# REFS foi reescrito junto: ele dizia `slim and upright`, `lean and
+# long-limbed` — descricao atletica e neutra, que o gerador le como magra e
+# sem forma.
+# ⛔ Continua tasteful de proposito: `figure`, `shapely`, `toned`. Termo
+# explicito nao converte melhor e ainda arrisca recusa do gerador, que custa
+# lote (ver RUNBOOK-bisseccao-moderacao).
 APELO_EUA = [
-    "A strikingly attractive everyday woman, well groomed, with clear even skin "
-    "and softly styled hair, not a celebrity, not resembling any famous person.",
-    "A very good-looking everyday woman with glowing skin, light natural "
-    "make-up and a trim figure, not a celebrity, not resembling any famous "
-    "person.",
-    "An unusually pretty everyday woman with fine features and healthy glossy "
-    "hair, not a celebrity, not resembling any famous person.",
-    "A head-turning everyday woman, carefully groomed, with bright eyes and "
-    "full lips, not a celebrity, not resembling any famous person.",
-    "A notably beautiful everyday woman with high cheekbones and smooth clear "
-    "skin, not a celebrity, not resembling any famous person.",
-    "A very attractive everyday woman with a toned figure and shining hair, "
-    "not a celebrity, not resembling any famous person.",
+    "A strikingly attractive everyday woman, well groomed, with clear even skin, softly styled hair and a noticeably good figure, not a celebrity, not resembling any famous person.",
+    "A very good-looking everyday woman with glowing skin, light natural make-up and a shapely figure, not a celebrity, not resembling any famous person.",
+    "An unusually pretty everyday woman with fine features, healthy glossy hair and a trim shapely body, not a celebrity, not resembling any famous person.",
+    "A head-turning everyday woman, carefully groomed, with bright eyes, full lips and a striking figure, not a celebrity, not resembling any famous person.",
+    "A notably beautiful everyday woman with high cheekbones, smooth clear skin and a curvy figure, not a celebrity, not resembling any famous person.",
+    "A very attractive everyday woman with a toned shapely figure, shining hair and even skin, not a celebrity, not resembling any famous person.",
 ]
 
 APELO_PADRAO = (
