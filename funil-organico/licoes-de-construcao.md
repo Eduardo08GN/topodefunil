@@ -856,6 +856,26 @@ que vale é o do render — o cálculo perde para a evidência. E ⚠️ **§5 c
 valendo na outra direção**: teto conservador demais vira espaço morto e o slot
 vira enchimento. A faixa útil é estreita e se acha medindo, não deduzindo.
 
+⛔⛔ **SEGUNDA EVIDÊNCIA, no mesmo dia — e ela mostra que eu não tinha aprendido
+a lição, só ajustado o número.** Baixei o teto do BOTICA para 28 e o operador
+mandou outro render **cortado em `secret`**, com a fala em **exatamente 28
+palavras**. Duas vezes seguidas o teto que eu escolhi era o comprimento que
+cortava.
+
+⚠️ **O erro de método é o mesmo nas duas:** eu escolhi o número pelo que *cabia
+na conta* e depois esperei o render reprovar. O caminho certo é o inverso —
+**partir do que já se sabe que fala sem cortar** (os exemplos que o operador
+escreve à mão vivem em 3,0-3,1 p/s, nunca em 4,0) e só subir se sobrar silêncio
+medido.
+
+⭐ **E havia uma aritmética que eu não tinha feito.** Na cena 1 do BOTICA o
+ingrediente raro custa até **10 palavras** (o aposto é obrigatório por outra
+regra), a virada mais curta 5 e o fecho mais curto 5: são **20 palavras
+comprometidas antes de a abertura dizer qualquer coisa**. Com aberturas de 11
+palavras, nenhum teto honesto fecharia. **Antes de calibrar teto, somar os
+pisos dos beats obrigatórios** — se a soma já ocupa o orçamento, o problema não
+é o teto, é o repertório.
+
 ⚠️ **Corolário sobre a §27:** o gate `medir_teto_fala.py` usa 32 como limite
 absoluto — ele pega o que é *certamente* impossível. Ele **não** garante que
 uma cena de 31 caiba. Gate de teto é piso de qualidade, não certificado.

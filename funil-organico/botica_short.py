@@ -1319,33 +1319,42 @@ HOMENS = [
 # 1152 aberturas distintas antes de multiplicar pelos 9 raros. O operador pediu
 # "um pool rico com variacoes do sentido", e variacao de sentido se consegue
 # combinando beats, nao repetindo a mesma frase com sinonimos.
+# ⛔⛔ ENCURTADAS DE 7-11 PARA 4-6 PALAVRAS EM 2026-08-05 — segunda evidencia
+# de corte no mesmo dia. O operador mandou o render:
+#   "My husband stopped reaching for me, and his John-son was why. Things
+#    changed when I discovered fenugreek, ... and a secret gelatin trick."
+# ...e a fala CORTOU em `secret`. A linha tinha 28 palavras — exatamente o
+# teto que eu tinha acabado de definir como seguro.
+#
+# ⭐ A ARITMETICA QUE EU NAO TINHA FEITO: o raro mais longo custa 10 palavras
+# (o aposto e' obrigatorio, BO8), a virada mais curta 5 e o fecho mais curto
+# 5. Sao 20 palavras COMPROMETIDAS antes de a abertura dizer qualquer coisa.
+# Abertura de 11 palavras nao cabia em teto nenhum que respeitasse o relogio.
+# ⛔ Ordem dele: *"usar formas de escrever sentencas mais curtas que fala do
+# John-son do marido nao funcionar"*. Todas dizem QUEM (`my husband`) e O QUE
+# (`{o}`) em 4-6 palavras, que e' o minimo que a BO9 aceita — e a variacao
+# mora no VERBO da falha, nao em adornos.
 PROBLEMAS = [
-    "My husband's {o} had been dead for years",
-    "My husband's {o} stayed dead no matter what we tried",
-    "My husband's {o} had quit on us both",
-    "My husband's {o} had not worked in years",
-    "My husband's {o} went quiet on us a long time ago",
-    "My man's {o} stopped working at sixty",
-    "My husband's {o} had given up on us",
-    "For three years my husband's {o} gave up on him",
-    "My husband's {o} had been finished for a long time",
-    "My husband's {o} let us both down every single night",
-    "My husband's {o} stopped answering years ago",
-    "My husband's {o} had been gone since his fifties",
-    # ⚠️ era "My husband and I had not touched each other in years" e a BO9
-    # reprovou com razao: abertura sem o orgao vira receita de cozinha.
-    # ⚠️ encurtada de "My husband and I had not touched in years": com 12
-    # palavras ela + o raro mais longo estouravam o teto e ela NUNCA saia
-    # em 5000 sorteios. Entrada que nao gera nao e' repertorio.
-    # ⚠️ SEGUNDA correcao desta entrada, e as duas foram do linter. Primeiro
-    # ela nao nomeava o ORGAO (BO9); encurtei e passou a nao nomear a PESSOA
-    # (BO9 outra vez). O teto de 28 nao paga uma abertura de 13 palavras com
-    # o raro mais longo, entao a saida foi trocar a imagem por uma mais curta
-    # que carrega os dois: quem (`my husband`) e o que (`{o}`).
-    "My husband slept facing the wall, and his {o} was why",
-    "My husband's {o} embarrassed him every time",
-    "My husband's {o} had been asleep for a decade",
-    "My husband stopped reaching for me, and his {o} was why",
+    "My husband's {o} was dead",
+    "My husband's {o} had quit",
+    "My husband's {o} stopped working",
+    "My husband's {o} never worked",
+    "My husband's {o} gave up",
+    "My husband's {o} was finished",
+    "My husband's {o} went dead",
+    "My husband's {o} was long gone",
+    "My husband's {o} stayed down",
+    "My husband's {o} had shut down",
+    "My husband's {o} slept for years",
+    "My husband's {o} quit on him",
+    "My husband's {o} had gone silent",
+    "My husband's {o} stopped for good",
+    "My husband's {o} was done",
+    "My man's {o} was dead",
+    "My man's {o} had quit",
+    "Nothing woke my husband's {o}",
+    "For years my husband's {o} failed",
+    "My husband's {o} embarrassed him",
 ]
 
 VIRADAS = [
@@ -1690,8 +1699,16 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # ⚠️ cena 2: teto 32 -> 28 e piso 22 -> 15 em 2026-08-05. A receita perdeu o
 # vaso e o operador quer a cena CURTA — o exemplo que ele escreveu a mao tem
 # 16 palavras. Piso 22 acusaria silencio numa fala que ele mesmo pediu.
-TETO_FALA = {1: 28, 2: 28, 3: 31}
-PISO_FALA = {1: 20, 2: 15, 3: 23}
+# ⛔⛔ CENA 1: 28 -> 25 EM 2026-08-05. SEGUNDA evidencia de corte no mesmo dia.
+# Primeiro 32 cortou; baixei para 28 e 28 CORTOU TAMBEM. O numero nao sai de
+# calculo, sai de render (licoes §28).
+# ⚠️ 25 palavras = 3,1 p/s, que e' a taxa dos exemplos que o operador escreve
+# a mao. E 25 e' exatamente o pior caso viavel da cena 1: abertura 5 + virada
+# 5 + raro 10 + fecho 5.
+# ⛔ A CENA 3 CONTINUA EM 31 E ISSO E' RISCO CONHECIDO — ver o relatorio ao
+# operador. Baixa-la exige encurtar o CTA, que e' alcada dele.
+TETO_FALA = {1: 25, 2: 28, 3: 31}
+PISO_FALA = {1: 18, 2: 15, 3: 23}
 
 
 # ---------------------------------------------------------------------------
