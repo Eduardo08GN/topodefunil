@@ -26,6 +26,11 @@ redirector central (ver [ARQUITETURA-OPERACAO](ARQUITETURA-OPERACAO.md)).
 | Chuck | `allmensnatural.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
 | Matt | `steadystrengthhub.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
 | Hank | `secondwindformen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| _(a definir)_ | `morningritualmen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| _(a definir)_ | `stridebackmen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| _(a definir)_ | `menritualhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| _(a definir)_ | `thefitmenhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| _(a definir)_ | `menvitalityhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 | Wade | `strengthandflow.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 | Isaiah | `dailyvitalitymethod.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 | Curtis | `menresethub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
@@ -60,6 +65,25 @@ https://<vsl-da-pagina>/?aff_id=<aff-da-pagina>&subid=<pagina>
 | 9 | `dailyvitalitymethod.site` | `tqwepmv042n3y13xiy68ve0v` | — | ✅ **no ar** (HTTPS) |
 | 10 | `menresethub.site` | `u3szzoq1y9vcgoapsi2jnq0e` | — | ✅ **no ar** (HTTPS) |
 | 11 | `mensresetclub.online` | `t9wzm0j2pctbql7tsu3nbbor` | — | ✅ **no ar** (HTTPS) |
+| 13 | `morningritualmen.site` | `tlx57qzzdzscgypkkkw61505` | — | ✅ **no ar** (HTTPS, 2026-08-04) |
+| 14 | `stridebackmen.site` | `idx2ek34etgj5dmpspc59iuu` | — | ✅ **no ar** (HTTPS, 2026-08-04) |
+| 15 | `menritualhub.site` | `k1476zn3nxztce9yi07rf75p` | — | ✅ **no ar** (HTTPS, 2026-08-04) |
+| 16 | `thefitmenhub.site` | `oi771du8quctmppyogchvo7l` | — | ✅ **no ar** (HTTPS, 2026-08-04) |
+| 17 | `menvitalityhub.site` | `x1369zh3c0wjkfp3m0m3rffa` | — | ✅ **no ar** (HTTPS, 2026-08-04) |
+
+> ⚠️ **As cinco de 2026-08-04 servem de `/bridge-pages/bp-<slug>`, não de `bp1`.**
+> Cada uma tem pasta própria com Dockerfile, `hero.png` e `index.html` — o
+> `bp1` é só a do Joe. E o `pagina` das cinco está `(a definir)` no `_build.py`
+> e `[definir]` no dict do `webhooks/vendas-telegram`, **de propósito**: o
+> notificador precisa do nome REAL da página do Facebook, e nome plausível e
+> errado já custou uma venda sem origem (o fantasma `Dale`). Trocar assim que
+> as páginas existirem.
+>
+> ✅ **Postback testado nos cinco em 2026-08-04**, no endpoint `/venda` (não em
+> `/`, que é o health check e responde `OK` sem notificar nada). Controle
+> negativo com segredo errado registrou `[auth] segredo invalido`; os cinco
+> reais não geraram nenhuma linha `[telegram] ... falhou`, e as cinco
+> mensagens chegaram no Telegram com o domínio certo.
 | 12 | `dailyvitalreport.store` ⛔ **do LUCAS** | `kw5fu21f7rad8fnklgf1iiqn` | `http://kw5fu21f7rad8fnklgf1iiqn.159.195.12.135.sslip.io/` | ✅ **no ar** (HTTPS) |
 
 ### ⛔⛔ O #12 NÃO É DESTA OPERAÇÃO — não misturar
