@@ -211,7 +211,7 @@ MUNDOS = [
             "row of unlabelled glass spice jars on a shelf above the sink, a "
             "kettle on the hob and a window looking onto the yard",
      "coz_c": "oak suburban kitchen",
-     "sup_a": "a worn beige laminate countertop", "sup": "countertop",
+     "sup_a": "a speckled granite countertop", "sup": "countertop",
      "traje": "%s knit sweater with the sleeves pushed back",
      "curto": "knit sweater",
      "cores": ["cream", "dusty rose", "navy", "sage"],
@@ -221,11 +221,11 @@ MUNDOS = [
 
     {"id": "apalache", "selo": "N", "familia": "apalache",
      "etnias": ["white American"],
-     "coz": "a mountain-cabin kitchen with bare pine board walls, bundles of "
-            "dried plants hanging upside down from a beam and rows of "
-            "unlabelled jars on a rough shelf, a black wood stove in the corner",
-     "coz_c": "pine cabin kitchen",
-     "sup_a": "a scarred pine plank counter", "sup": "counter",
+     "coz": "a mountain-lodge kitchen with finished pine panelling, bundles of "
+            "dried plants hanging from a rail and rows of unlabelled jars "
+            "behind glass cabinet doors, a black enamel range in the corner",
+     "coz_c": "pine lodge kitchen",
+     "sup_a": "a thick oiled butcher-block counter", "sup": "counter",
      "traje": "%s quilted flannel shirt with the sleeves rolled",
      "curto": "quilted flannel shirt",
      "cores": ["dark red", "forest green", "brown", "slate blue"],
@@ -265,7 +265,7 @@ MUNDOS = [
      "etnias": ["Caribbean American"],
      "coz": "a Caribbean kitchen with mint-green walls and louvred windows "
             "standing open onto broad green leaves, unlabelled jars of bark and "
-            "dried flowers on a shelf and chipped enamel bowls by the sink",
+            "dried flowers on a fitted shelf and matched enamel bowls by the sink",
      "coz_c": "mint-green island kitchen",
      "sup_a": "a pale speckled stone counter", "sup": "counter",
      "traje": "%s loose linen blouse worn open at the collar",
@@ -305,11 +305,12 @@ MUNDOS = [
 
     {"id": "africa_oeste", "selo": "N", "familia": "africana",
      "etnias": ["West African"],
-     "coz": "a West African kitchen with painted concrete walls in pale ochre, "
-            "unlabelled jars and calabashes of dried bark and seed on a shelf, "
-            "a tall wooden mortar by the doorway and a door open onto red earth",
-     "coz_c": "ochre concrete kitchen",
-     "sup_a": "a smooth poured concrete counter", "sup": "counter",
+     "coz": "a well-kept West African kitchen with glazed tiled walls, rows of "
+            "unlabelled jars and calabashes of dried bark and seed in a fitted "
+            "cabinet, a carved mortar on the side and a door open onto a swept "
+            "green courtyard",
+     "coz_c": "tiled West African kitchen",
+     "sup_a": "a polished dark granite counter", "sup": "counter",
      "traje": "%s short-sleeved embroidered cotton tunic",
      "curto": "embroidered tunic",
      "cores": ["white", "indigo", "sand", "deep green"],
@@ -319,11 +320,11 @@ MUNDOS = [
 
     {"id": "africa_leste", "selo": "N", "familia": "africana",
      "etnias": ["East African"],
-     "coz": "an East African kitchen with whitewashed walls and a low shuttered "
-            "window, woven baskets and unlabelled jars of dried leaves hanging "
-            "from nails, a dented aluminium kettle on the hob",
-     "coz_c": "whitewashed kitchen",
-     "sup_a": "a plain scrubbed wooden counter", "sup": "counter",
+     "coz": "a tidy East African kitchen with pale tiled walls and a wide "
+            "shuttered window, woven baskets and unlabelled jars of dried "
+            "leaves ranged along a fitted shelf, a stainless kettle on the hob",
+     "coz_c": "pale tiled kitchen",
+     "sup_a": "a solid hardwood worktop", "sup": "worktop",
      "traje": "%s open-collared cotton shirt",
      "curto": "cotton shirt",
      "cores": ["white", "pale grey", "tan", "sky blue"],
@@ -347,11 +348,12 @@ MUNDOS = [
 
     {"id": "andina", "selo": "N", "familia": "andina",
      "etnias": ["Andean South American"],
-     "coz": "an Andean kitchen with rough plastered walls, woven cloth on a "
-            "bench, unlabelled sacks and jars of dried root and grain along a "
-            "shelf and a clay stove in the corner",
-     "coz_c": "plastered andean kitchen",
-     "sup_a": "a worn wooden work table", "sup": "table",
+     "coz": "an Andean kitchen with smooth painted walls and a tiled splashback, "
+            "fine woven cloth folded on a bench, labelled sacks and jars of "
+            "dried root and grain squared along a built shelf and a glazed "
+            "tiled stove in the corner",
+     "coz_c": "tiled andean kitchen",
+     "sup_a": "a thick oiled hardwood work table", "sup": "table",
      "traje": "%s woven wool cardigan over a plain blouse",
      "curto": "wool cardigan",
      "cores": ["deep red", "burnt orange", "cream", "indigo"],
