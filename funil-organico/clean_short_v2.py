@@ -218,6 +218,57 @@ def _pele_de(etnia):
             return pele
     return None
 
+
+# ⛔⛔ O NOME DA ETNIA NAO ANCORA A PELE (print de campo, 2026-08-05). Com a
+# pele travada em `escura` o sorteio entregou `Caribbean American` — que ESTA'
+# certo na lista — e o gerador devolveu quatro homens de pele clara: ele leu a
+# etnia como NACIONALIDADE, nao como cor. Ordem do operador: *"no prompt nao
+# esta' especificando para gerar uma pessoa negra, isso deve estar setado no
+# bloco 0 de ref e nas 3 imagens caso seja travado"*.
+# ⚠️ Duas ancoras, porque uma so' ja' provou ser fraca: a PALAVRA da raca antes
+# da etnia (`Black Caribbean American`) e a CLAUSULA DE TOM logo depois
+# (`deep brown skin`). Mesma logica do CL25: o que o gerador nao recebe, ele
+# inventa — e o que ele recebe uma vez so', ele negocia.
+# ⛔ So' com a pele TRAVADA. No sorteio livre a etnia continua saindo crua e a
+# ambiguidade e' proposital: e' o repertorio que o eixo MUNDO existe para dar.
+PELE_PROMPT = {
+    "escura": ("Black", "deep brown skin"),
+    "clara": ("White", "fair skin"),
+}
+
+
+def _comporta(mundo, pele):
+    """O mundo tem alguma etnia daquela pele? ⚠️ Funcao de MODULO, nao closure:
+    `sortear` e `_apos_mundo` decidem a mesma coisa e duas copias divergiriam
+    (P9). Sem pele travada todo mundo comporta."""
+    return not pele or any(_pele_de(e) == pele for e in mundo["etnias"])
+
+
+def _mundo_da_pele(mundo, pele, rng):
+    """Troca o mundo pelo mais proximo que COMPORTA a pele — mesma familia de
+    preferencia. ⛔ A pele travada e' soberana: entre respeitar o mundo e
+    respeitar a pele, quem cede e' o mundo (mesmo precedente do truque)."""
+    if _comporta(mundo, pele):
+        return mundo
+    return rng.choice(
+        [x for x in MUNDOS if x["familia"] == mundo["familia"]
+         and _comporta(x, pele)]
+        or [x for x in MUNDOS if _comporta(x, pele)])
+
+
+def _etnia_visivel(etnia, pele):
+    """(etnia como o prompt diz, clausula de tom) — o par de ancoras da pele.
+
+    ⚠️ Sem duplicar a palavra: `Black American` e `white American` ja' a
+    carregam, e `Black Black American` e' o tipo de frase que faz o gerador
+    desconfiar do prompt inteiro."""
+    if not pele:
+        return etnia, ""
+    palavra, tom = PELE_PROMPT[pele]
+    if palavra.lower() in etnia.lower():
+        return etnia, tom
+    return "%s %s" % (palavra, etnia), tom
+
 # ---------------------------------------------------------------------------
 # STRINGS TRAVADAS — copia literal da doutrina. NAO REESCREVER.
 # ---------------------------------------------------------------------------
@@ -1314,8 +1365,16 @@ def etnias_do_mundo(spec):
     ⚠️ Sem isso o botao `trocar` da etnia oferecia as catorze sempre, e trocar
     para `Korean American` num alpendre dos Apalaches devolveria exatamente a
     incongruencia que os MUNDOS existem para impedir. Mesma convencao do
-    `refs_do_sexo` (`.recebe_spec = True`), aditiva no `ui_agente._pool`."""
-    return list(spec["mundo"]["etnias"])
+    `refs_do_sexo` (`.recebe_spec = True`), aditiva no `ui_agente._pool`.
+
+    ⛔ E COM A PELE TRAVADA O POOL ENCOLHE (2026-08-05). Era a ultima porta
+    aberta da trava: o sorteio respeitava, o `trocar mundo` respeitava, e o
+    `trocar` da propria ETNIA oferecia as claras do mundo — 245 dos 400
+    sorteios de teste tinham pelo menos uma. Botao que oferece o que a trava
+    proibe e' trava furada, so' que por clique em vez de sorteio."""
+    pele = spec.get("pele")
+    return [e for e in spec["mundo"]["etnias"]
+            if not pele or _pele_de(e) == pele] or list(spec["mundo"]["etnias"])
 
 
 etnias_do_mundo.recebe_spec = True
@@ -1489,24 +1548,14 @@ def sortear(pagina, rng, led, travas=None):
     # o eixo derivado cede). ⛔ A etnia NUNCA sai de fora do mundo — e' a
     # invariante [1] do autoteste; por isso quem se move e' o mundo.
     pele = travas.get("pele")
-
-    def _comporta(m):
-        return any(_pele_de(e) == pele for e in m["etnias"])
-
     if travas.get("mundo"):
-        mundo = _por_id(MUNDOS, travas["mundo"])
-        if pele and not _comporta(mundo):
-            mundo = rng.choice(
-                [m for m in MUNDOS if m["familia"] == mundo["familia"]
-                 and _comporta(m)]
-                or [m for m in MUNDOS if _comporta(m)])
+        mundo = _mundo_da_pele(_por_id(MUNDOS, travas["mundo"]), pele, rng)
     else:
         fam_mundo = _fresco([{"id": f} for f in FAMILIAS_MUNDO],
                             usados.get("mundo_familia", []), rng, "id")["id"]
-        cand = [m for m in MUNDOS if m["familia"] == fam_mundo]
-        if pele:
-            cand = ([m for m in cand if _comporta(m)]
-                    or [m for m in MUNDOS if _comporta(m)])
+        cand = [m for m in MUNDOS if m["familia"] == fam_mundo
+                and _comporta(m, pele)] or [m for m in MUNDOS
+                                            if _comporta(m, pele)]
         mundo = rng.choice(cand)
     if travas.get("etnia"):
         et = travas["etnia"]
@@ -1573,6 +1622,11 @@ def sortear(pagina, rng, led, travas=None):
     return {
         "pagina": pagina, "etnia": et, "sexo": sexo, "familia": familia,
         "mundo": mundo, "ref": ref, "cor": cor, "corpo": corpo,
+        # ⚠️ a pele viaja NA SPEC porque `montar()` precisa dela para ancorar
+        # o prompt, e o botao `trocar mundo` precisa dela para nao devolver
+        # uma etnia fora da trava. ⛔ Nao e' eixo travavel nem entra no
+        # ledger: e' o estado do seletor, nao um sorteio.
+        "pele": pele,
         "orgaos": orgaos,
         "item_a": a, "item_b": b, "bancada": bancada, "truque": tru,
         "despejo": despejo,
@@ -1642,15 +1696,24 @@ def _pessoa(spec, primeiro=True):
     r, sexo = spec["ref"], spec["sexo"]
     quem = "man" if sexo == "homem" else "woman"
     mundo = spec["mundo"]
+    # ⭐ TRAVA DE PELE — as duas ancoras entram nas TRES imagens, nao so' no
+    # REF: o gerador de IMAGEM le' cada bloco sozinho, e a cena que ficar sem
+    # a palavra da raca volta a decidir por conta propria.
+    etnia, tom = _etnia_visivel(spec["etnia"], spec.get("pele"))
     if primeiro:
         # ⭐ CL24: o corpo entra ANTES do traje. O gerador desenha na sequencia
         # em que le', e corpo depois da roupa vira roupa larga com corpo
         # generico dentro.
+        # ⚠️ O tom de pele vem ANTES do corpo pelo mesmo motivo: e' o primeiro
+        # traco que o gerador fixa da pessoa.
+        corpo = spec.get("corpo", "")
         return ("a %d-year-old %s %s with %s, wearing %s, %s, %s"
-                % (r["idade"], spec["etnia"], quem, spec.get("corpo", ""),
+                % (r["idade"], etnia, quem,
+                   "%s, %s" % (tom, corpo) if tom else corpo,
                    _traje(spec), r["cabeca"], r["marca"]))
-    return ("The same %d-year-old %s %s, same build, same %s %s, same %s, same %s"
-            % (r["idade"], spec["etnia"], quem, spec["cor"], mundo["curto"],
+    return ("The same %d-year-old %s %s, %ssame build, same %s %s, same %s, same %s"
+            % (r["idade"], etnia, quem, "same %s, " % tom if tom else "",
+               spec["cor"], mundo["curto"],
                _sem_artigo(r["cabeca"].split(" and ")[0]),
                _sem_artigo(r["marca"])))
 
@@ -1704,8 +1767,16 @@ def montar(spec):
         "soft even frontal light. Slight sensor grain, soft focus, raw iPhone "
         "front camera aesthetic. No subtitles, no captions, no burned-in text, "
         "no watermark."
-        % (idade, spec["etnia"], "man" if spec["sexo"] == "homem" else "woman",
-           _corpo_ref(spec),
+        # ⭐ TRAVA DE PELE — a palavra da raca antes da etnia e a clausula de
+        # tom antes do corpo. AQUI e' o ponto mais importante dos quatro: o
+        # REF 01 e' a imagem de IDENTIDADE, e as tres cenas seguem o rosto
+        # dela (5a alavanca). REF claro = video claro, por mais que as cenas
+        # peçam o contrario.
+        % (idade, _etnia_visivel(spec["etnia"], spec.get("pele"))[0],
+           "man" if spec["sexo"] == "homem" else "woman",
+           ", ".join(x for x in
+                     (_etnia_visivel(spec["etnia"], spec.get("pele"))[1],
+                      _corpo_ref(spec)) if x),
            _traje(spec),
            spec["ref"]["cabeca"][0].upper() + spec["ref"]["cabeca"][1:],
            spec["ref"]["marca"][0].upper() + spec["ref"]["marca"][1:],
@@ -2063,6 +2134,25 @@ def lint(spec, blocos):
     if "foreground" not in blocos.get("IMAGE 01/03", ""):
         ach.append(("ERRO", "CL27: IMAGE 01 sem os itens em primeiro plano "
                             "(foreground) — a cena sai longe demais"))
+
+    # ⭐ TRAVA DE PELE — as duas ancoras nos QUATRO blocos de imagem. O nome da
+    # etnia sozinho ja' provou nao ancorar nada: `Caribbean American` e
+    # `Creole American` travados em `escura` devolveram homens claros nos dois
+    # lotes de campo de 2026-08-05.
+    if spec.get("pele"):
+        if _pele_de(spec["etnia"]) != spec["pele"]:
+            ach.append(("ERRO", "pele travada em %s e a etnia sorteada e' %s"
+                                % (spec["pele"], spec["etnia"])))
+        palavra, tom = PELE_PROMPT[spec["pele"]]
+        for nome in ("BLOCO 0 (REF)", "IMAGE 01/03", "IMAGE 02/03",
+                     "IMAGE 03/03"):
+            txt = blocos.get(nome, "")
+            if palavra.lower() not in txt.lower():
+                ach.append(("ERRO", "pele travada e %s sem a palavra '%s'"
+                                    % (nome, palavra)))
+            if tom not in txt:
+                ach.append(("ERRO", "pele travada e %s sem o tom '%s'"
+                                    % (nome, tom)))
     return ach
 
 
@@ -2131,8 +2221,17 @@ def _apos_mundo(spec, rng):
     eixo que este trabalho inteiro existe para consertar: mundo dos Apalaches
     com REF `Korean American`, ou uma cor de scrub num kurta. A copy nao muda.
     """
-    if spec["etnia"] not in spec["mundo"]["etnias"]:
-        spec["etnia"] = rng.choice(spec["mundo"]["etnias"])
+    # ⛔ E A TRAVA DE PELE CONTINUA SOBERANA AQUI (2026-08-05). Sem isto o
+    # botao `trocar` do mundo furava a trava por um caminho lateral: o sorteio
+    # respeitava e o clique seguinte devolvia qualquer etnia do mundo novo.
+    # ⚠️ Mundo sorteado que nao comporta a pele CEDE e vira o vizinho de
+    # familia que comporta — a mesma decisao do `sortear`, pelo mesmo helper.
+    pele = spec.get("pele")
+    spec["mundo"] = _mundo_da_pele(spec["mundo"], pele, rng)
+    if spec["etnia"] not in spec["mundo"]["etnias"] or (
+            pele and _pele_de(spec["etnia"]) != pele):
+        spec["etnia"] = rng.choice([e for e in spec["mundo"]["etnias"]
+                                    if not pele or _pele_de(e) == pele])
     if spec["cor"] not in spec["mundo"]["cores"]:
         spec["cor"] = rng.choice(spec["mundo"]["cores"])
 
