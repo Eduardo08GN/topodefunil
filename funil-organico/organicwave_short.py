@@ -62,7 +62,11 @@ CENAS_UI = ["1 · A DOR (1ª pessoa)", "2 · O GELATIN TRICK + A PROVA", "3 · C
 # manda no relogio — teto acima da capacidade fisica faz o lint APROVAR uma
 # fala que o take corta (licoes §27). Medido antes: c2 estourava em 7,3% e
 # o que ficava de fora era o fecho da fundida.
-TETO_FALA = {1: 24, 2: 32, 3: 32}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
+# cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+TETO_FALA = {1: 24, 2: 25, 3: 25}
 
 # congruencia inviolavel: a etnia do REF e' a do avatar da pagina
 ETNIA = {"joe": "white American", "ray": "white American", "matt": "white American",
@@ -728,7 +732,12 @@ def _pools(persona_id):
 def _cta_gate(rng, ctas):
     """O CTA sai primeiro (carrega a isca e o literal `Comment gelatin,`);
     o GATE e' que cede, porque e' o beat intercambiavel do par."""
-    cta = rng.choice(ctas)
+    # ⛔ 2026-08-05 — o CTA tambem cede agora. Ele saia CRU e so' o gate
+    # filtrava: com CTA longo + gate mais curto a cena ainda estourava em 34%.
+    # ⚠️ O CTA sai primeiro (carrega `Comment gelatin,` e a isca) ja' reservando
+    # o gate mais curto; o gate, que e' intercambiavel, cede ao que sobrou.
+    _cg = min(GATES, key=_palavras)
+    cta = rng.choice(_cabe(ctas, lambda c: c.format(gate=_cg), TETO_FALA[3]))
     return cta.format(gate=rng.choice(
         _cabe(GATES, lambda g: cta.format(gate=g), TETO_FALA[3])))
 
@@ -751,7 +760,15 @@ def sortear(pagina, rng, ledger):
     # fundida derrubaria em 32% o unico beat com o verbo de RESULTADO
     # (`hard again`, o conserto de 2026-08-03). Medido: assim ele fica em 9,5%
     # contra 9,7% de hoje, e nenhuma receita morre.
-    fund = rng.choice(fundidas)
+    # ⛔ 2026-08-05: a fundida passa a ceder ao teto tambem AQUI. Ela ja'
+    # cedia no caminho do app (_recopiar), mas nao no sorteio — e 85,2% da
+    # cena 2 estourava. Consertar so' um caminho deixa o outro furado.
+    # ⚠️ reserva a RECEITA mais curta de verdade — `'x'*40` vale UMA palavra
+    # para o `_palavras` e nao reservava nada.
+    _cr = min(RECEITAS, key=lambda r: _palavras(r["fala"]))["fala"]
+    fund = rng.choice(_cabe(fundidas,
+                            lambda x: x.format(o=orgaos[1], ing=_cr),
+                            TETO_FALA[2]))
     rec = _evitando(rng, _cabe(RECEITAS,
                                lambda r: fund.format(o=orgaos[1], ing=r["fala"]),
                                TETO_FALA[2]),

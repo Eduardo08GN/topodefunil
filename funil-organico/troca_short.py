@@ -115,7 +115,11 @@ CENAS_UI = ["1 · A CRENDICE", "2 · A TROCA + O BATISMO", "3 · O CORPO-PROVA +
 # armada: o lint compara com ESTE numero, entao aprovaria a primeira
 # entrada longa que alguem acrescentasse, e a fala sairia cortada no
 # render sem ninguem ver (licoes §27). Baixado em 2026-08-04.
-TETO_FALA = {1: 22, 2: 32, 3: 26}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
+# cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+TETO_FALA = {1: 22, 2: 25, 3: 25}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
 # ⚠️ TENSAO ARITMETICA REGISTRADA (nao resolvida — e' alcada do Ed):
@@ -1615,13 +1619,26 @@ def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
                                                         o=orgaos[0]),
                     rng.choice(DESMENTIDOS))
 
-    fund = rng.choice(fund_pool)["txt"].format(s=subst["fala"], o=orgaos[1])
+    # ⛔ A FUNDIDA passa a ceder ao teto (2026-08-05, zero corte de fala).
+    # Antes era `rng.choice(fund_pool)` cru: 95,2% dos sorteios da cena 2
+    # passavam de 25 palavras. ⚠️ Fallback na mais CURTA, nunca `or pool`.
+    # ⚠️ A cena 2 e' FUNDIDA + PROVA. Filtrar so' a fundida nao adianta: a
+    # prova entra por cima e estoura. Reserva-se a prova mais CURTA aqui, e
+    # depois a prova cede ao que sobrou (o `_escolher` abaixo ja' recebe o teto).
+    _cp = min(_palavras(p) for p in PROVAS)
+    _fc = [f for f in fund_pool
+           if _palavras(f["txt"].format(s=subst["fala"], o=orgaos[1])) + _cp
+           <= TETO_FALA[2]]
+    fund = rng.choice(_fc or [min(fund_pool, key=lambda f: _palavras(
+        f["txt"].format(s=subst["fala"], o=orgaos[1])))])["txt"].format(
+            s=subst["fala"], o=orgaos[1])
     tem_2a = bool(TR8_CORPO_2A.search(fund))
     falta_p22 = not _aterrissa(fund)
     prova = _escolher(rng, PROVAS,
                       lambda p: not (tem_2a and TR8_PRAZO.search(p))
                       and not _eco(fund, p)
-                      and not (falta_p22 and not P22_2A.search(p)))
+                      and not (falta_p22 and not P22_2A.search(p))
+                      and _palavras(fund) + _palavras(p) <= TETO_FALA[2])
     c2 = "%s %s" % (fund, prova)
 
     # ⚠️ o eco e' medido contra o VIDEO INTEIRO, nao so' dentro da cena: a
@@ -1643,6 +1660,13 @@ def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
         rng, GATES,
         lambda g: not _eco(c1, c2, testemunho, cta, g)
         and _palavras("%s %s %s" % (testemunho, cta, g)) <= TETO_FALA[3])
+    # ⛔ 2026-08-05: a soma dos TRES beats passa a ser conferida. O gate e' o
+    # beat intercambiavel, entao e' ele que cede — nunca o CTA, que carrega o
+    # literal `Comment gelatin,` e a isca.
+    _g = [g for g in GATES
+          if _palavras(testemunho) + _palavras(cta) + _palavras(g)
+          <= TETO_FALA[3]]
+    gate = rng.choice(_g) if _g else min(GATES, key=_palavras)
     c3 = "%s %s %s" % (testemunho, cta, gate)
     return [c1, c2, c3]
 

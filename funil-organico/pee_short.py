@@ -946,7 +946,11 @@ CENAS_UI = ["1 · A MANCHA", "2 · O TRUQUE + A VIRADA", "3 · CTA PREPARANDO"]
 # armada: o lint compara com ESTE numero, entao aprovaria a primeira
 # entrada longa que alguem acrescentasse, e a fala sairia cortada no
 # render sem ninguem ver (licoes §27). Baixado em 2026-08-04.
-TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 32, 3: TETO_FALA_LONGO[5]}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
+# cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 25, 3: TETO_FALA_LONGO[5]}
 
 
 # ---------------------------------------------------------------------------
@@ -1067,7 +1071,13 @@ FUNDIDAS = [
 
 def _fundir(spec, rng):
     o = sc.orgao_de(_LONGO, spec["falas_base"][3])
-    return rng.choice(FUNDIDAS).format(o=o)
+    # ⛔ 2026-08-05 — a fundida cede ao teto. Era `rng.choice(FUNDIDAS)`
+    # cru e 73% dos sorteios da cena 2 passavam de 25 palavras.
+    # ⚠️ Fallback na entrada mais CURTA, nunca `or FUNDIDAS`.
+    cabem = [x for x in FUNDIDAS if _palavras(x.format(o=o)) <= TETO_FALA[2]]
+    esc = (rng.choice(cabem) if cabem
+           else min(FUNDIDAS, key=lambda x: _palavras(x.format(o=o))))
+    return esc.format(o=o)
 
 
 # ---------------------------------------------------------------------------

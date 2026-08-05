@@ -1829,7 +1829,7 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # palavras (2,0-3,1 palavras/s).
 # ⚠️ cena 2 cortava em 12,8%. A cadeia ja' reserva ancora e promessa antes da receita.
 # ⛔ NAO baixar o [3] junto: medido, ele vai de max 31 para 36 pelo `or pool`.
-TETO_FALA = {1: 25, 2: 25, 3: 31}
+TETO_FALA = {1: 25, 2: 25, 3: 25}
 PISO_FALA = {1: 18, 2: 15, 3: 23}
 
 
@@ -2138,8 +2138,19 @@ def _falas(spec, rng, quais=(0, 1, 2)):
             return "%s %s and I'll send you %s. %s" % (
                 uso.format(o=o1), sc.CTA_LITERAL, isca_e, gate)
 
-        uso = rng.choice(_cabem(USOS, lambda u: _c3(u, curto_g), TETO_FALA[3]))
-        gate = rng.choice(_cabem(GATES, lambda g: _c3(uso, g), TETO_FALA[3]))
+        # ⛔ 2026-08-05 — `_cabem` termina em `or pool`, e com teto 25 ele
+        # devolvia o pool INTEIRO: a cena 3 subiu de max 31 para 36. Aqui o
+        # fallback e' a entrada mais CURTA, e a ISCA tambem cede — ela e' o
+        # unico slot com folga (`the whole recipe` vs `the recipe and the
+        # measurements`), e o `Comment gelatin,` e' intocavel.
+        def _ok(pool, monta):
+            v = [x for x in pool if _palavras(monta(x)) <= TETO_FALA[3]]
+            return v or [min(pool, key=lambda x: _palavras(monta(x)))]
+
+        isca_e = min(ISCAS_ENTREGA, key=_palavras) if _palavras(
+            _c3(min(USOS, key=_palavras), curto_g)) > TETO_FALA[3] else isca_e
+        uso = rng.choice(_ok(USOS, lambda u: _c3(u, curto_g)))
+        gate = rng.choice(_ok(GATES, lambda g: _c3(uso, g)))
         f[2] = _c3(uso, gate)
 
     return f

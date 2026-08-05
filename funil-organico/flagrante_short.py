@@ -1114,7 +1114,11 @@ CENAS_UI = ["1 · O FLAGRANTE", "2 · O TRUQUE + A VIRADA", "3 · CTA PREPARANDO
 # continuava em 27,8% mesmo com o teto em 25, porque o CTA era montado com
 # `rng.choice(CTAS).format(gate=rng.choice(GATES))` — sem consultar orcamento
 # nenhum. Precisou do `_cta_curto` abaixo.
-TETO_FALA = {1: 24, 2: 32, 3: 25}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
+# cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+TETO_FALA = {1: 24, 2: 25, 3: 25}
 
 
 # ---------------------------------------------------------------------------
@@ -1208,8 +1212,18 @@ def _fundir(spec, rng):
     # `.exe` e' risco de travar a interface na mao do operador.
     # ⚠️ Fallback = a entrada mais CURTA, nunca `or pool`: `or pool` devolve
     # tudo e reintroduz o estouro em silencio.
-    tpl = rng.choice(FUNDIDAS)
+    # ⛔ 2026-08-05 — O TEMPLATE TAMBEM CEDE. O comentario acima dizia que so'
+    # os slots cediam, e isso valia com teto 32: com teto 25 existem templates
+    # que nao cabem NEM com o `quem` e o `brag` mais curtos do pool, e o
+    # fallback entregava um estouro de 30 palavras. Agora o template e' filtrado
+    # primeiro, contra os slots minimos, e so' depois os slots cedem.
     curto_b = min(BRAGGING, key=_palavras)
+    curto_q = min(QUEM_CONTOU, key=_palavras)
+    _vt = [t for t in FUNDIDAS
+           if _palavras(t.format(o=o, quem=curto_q, brag=curto_b))
+           <= TETO_FALA[2]]
+    tpl = rng.choice(_vt or [min(FUNDIDAS, key=lambda t: _palavras(
+        t.format(o=o, quem=curto_q, brag=curto_b)))])
     vq = [q for q in QUEM_CONTOU
           if _palavras(tpl.format(o=o, quem=q, brag=curto_b)) <= TETO_FALA[2]]
     quem = rng.choice(vq or [min(QUEM_CONTOU, key=_palavras)])

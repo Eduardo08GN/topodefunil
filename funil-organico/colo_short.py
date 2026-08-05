@@ -1004,7 +1004,7 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # ⛔ NAO baixar [2] e [3] junto: medido, a cena 2 vai de max 32 para 34 e a 3 de
 # 31 para 37, porque o `_cabem` termina em `or pool` e devolve tudo quando nada
 # cabe. Baixar o teto dessas duas PIORA.
-TETO_FALA = {1: 25, 2: 32, 3: 31}
+TETO_FALA = {1: 25, 2: 32, 3: 25}
 PISO_FALA = {1: 20, 2: 22, 3: 24}
 
 
@@ -1174,9 +1174,20 @@ def _falas(spec, rng, quais=(0, 1, 2)):
             return "%s — %s and I'll send you %s. %s" % (
                 rot.format(o=o2), sc.CTA_LITERAL, isca, gate)
 
+        # ⛔ 2026-08-05 — `_cabem` termina em `or pool` e com teto 25 devolvia o
+        # pool INTEIRO: a cena 3 subiu de max 31 para 36. Fallback passa a ser a
+        # entrada mais CURTA, e a ISCA cede junto (unico slot com folga; o
+        # `Comment gelatin,` e' intocavel).
         curto_g = min(GATES, key=_palavras)
-        rot = rng.choice(_cabem(pool, lambda r: _c3(r, curto_g), TETO_FALA[3]))
-        gate = rng.choice(_cabem(GATES, lambda g: _c3(rot, g), TETO_FALA[3]))
+
+        def _ok(p, monta):
+            v = [x for x in p if _palavras(monta(x)) <= TETO_FALA[3]]
+            return v or [min(p, key=lambda x: _palavras(monta(x)))]
+
+        if _palavras(_c3(min(pool, key=_palavras), curto_g)) > TETO_FALA[3]:
+            isca = min(ISCAS_ENTREGA, key=_palavras)
+        rot = rng.choice(_ok(pool, lambda r: _c3(r, curto_g)))
+        gate = rng.choice(_ok(GATES, lambda g: _c3(rot, g)))
         f[2] = _c3(rot, gate)
 
     return f

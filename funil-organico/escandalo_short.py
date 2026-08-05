@@ -190,7 +190,7 @@ CENAS_UI = ["1 · O ESCANDALO", "2 · A RECEITA INCOMPLETA", "3 · A PROVA + CTA
 # palavras (2,0-3,1 palavras/s).
 # ⚠️ cena 3 cortava em 0,5%. Enumeracao exaustiva: 99,1% das 5.610 combinacoes ja'
 # cabiam em 25, e sobrevivem 22/22 PROVAS, 17/17 CTAS e 15/15 GATES.
-TETO_FALA = {1: 30, 2: 32, 3: 25}
+TETO_FALA = {1: 25, 2: 32, 3: 25}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
 # ⚠️ A borda de CIMA da faixa da doutrina. ⛔ Nao usar a soma dos tetos (82):

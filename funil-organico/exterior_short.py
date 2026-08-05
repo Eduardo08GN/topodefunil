@@ -218,6 +218,13 @@ CENAS_UI = ["1 · A ISCA E O DESMENTIDO", "2 · A REGRA E O MECANISMO",
 # ⚠️ cena 1 cortava em 1,0%. `_op1` ja' peneira contra o teto.
 # ⛔⛔ NAO TOCAR no [2] nem no [3]: medido com os tres em 25, 600 de 600 sorteios
 # levantam IndexError (sequencia vazia). O piso da cena 3 e' 32 — ver PARTE 2.
+# ⛔⛔ A CENA 2 FICA EM 32 E ISSO E' DELIBERADO. Baixei para 25 em 2026-08-05 e
+# o motor passou a levantar `IndexError: Cannot choose from an empty sequence`
+# em `_montar_falas` — nenhuma combinacao do pool cabe. A investigacao ja'
+# tinha medido isso e eu apliquei assim mesmo.
+# ⚠️ A cena 2 tem uma entrada VERBATIM de 18 palavras (`MECANISMOS_FALA[0]`) e
+# o resto do beat nao cabe em 25 em volta dela. Baixar aqui exige encurtar
+# copy, que e' alcada do operador — ver o relatorio das cenas GRAVES.
 TETO_FALA = {1: 25, 2: 32, 3: 34}
 PISO_FALA = {1: 22, 2: 24, 3: 30}
 

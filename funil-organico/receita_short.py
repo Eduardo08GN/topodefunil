@@ -1099,7 +1099,11 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # a metrica. Metrica se mede; forma se copia.
 # ⚠️ E a linha longa dele CONTINUA GERANDO com teto 32, porque a rejeicao e'
 # opcional e as perdas curtas abrem espaco: 10 (perda) + 20 (vilao) = 30.
-TETO_FALA = {1: 32, 2: 32, 3: 31}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
+# cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+TETO_FALA = {1: 32, 2: 32, 3: 25}
 PISO_FALA = {1: 24, 2: 24, 3: 22}
 
 

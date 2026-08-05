@@ -1140,7 +1140,11 @@ CENAS_UI = ["1 · O HOOK", "2 · RITUAL + PROVA", "3 · CTA SOBRE A BANCADA"]
 # divide os mesmos 8s com o pacing e o gate. Medido antes: cena 3 estourava
 # em 3,2% e cena 2 em 1,7%, e o que ficava de fora era o FIM do gate de
 # follow — a maquina de conversao morrendo no ar.
-TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 32, 3: 32}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
+# cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 25, 3: 25}
 
 
 # ---------------------------------------------------------------------------
@@ -1274,8 +1278,21 @@ def _fundir(spec, rng):
     # ⚠️ o {ing} vai de 7 a 12 palavras e JA' foi decidido pelo sorteio do
     # PROP — a fundida tinha de ceder a ele, e nao o contrario.
     # ⛔ nunca `or FUNDIDAS`.
-    cabem = [x for x in FUNDIDAS
-             if _palavras(x.format(o=o, ing=ing)) <= TETO_FALA[2]]
+    # ⛔ 2026-08-05 — quando NENHUMA fundida cabe com aquele `ing`, o fallback
+    # entregava a mais curta e ainda assim estourava (medido: max 27 com teto
+    # 25). Nesse caso quem cede e' a RECEITA: troca-se por uma mais curta que
+    # permita ao menos uma fundida caber. O prop em cena nao muda — `ing` e' so'
+    # a enumeracao falada.
+    def _cabem_com(g):
+        return [x for x in FUNDIDAS
+                if _palavras(x.format(o=o, ing=g)) <= TETO_FALA[2]]
+
+    cabem = _cabem_com(ing)
+    if not cabem:
+        for alt in sorted(RECEITAS_PROP, key=lambda r: _palavras(r["fala"])):
+            if _cabem_com(alt["fala"]):
+                ing, cabem = alt["fala"], _cabem_com(alt["fala"])
+                break
     x = (rng.choice(cabem) if cabem
          else min(FUNDIDAS, key=lambda y: _palavras(y.format(o=o, ing=ing))))
     return x.format(o=o, ing=ing)

@@ -186,7 +186,11 @@ CENAS_UI = ["1 · O DESPEJO E O CRESCIMENTO", "2 · A RECEITA INCOMPLETA",
 # armada: o lint compara com ESTE numero, entao aprovaria a primeira
 # entrada longa que alguem acrescentasse, e a fala sairia cortada no
 # render sem ninguem ver (licoes §27). Baixado em 2026-08-04.
-TETO_FALA = {1: 27, 2: 32, 3: 30}
+# ⛔⛔ TETO 25 — ordem permanente do operador, 2026-08-05: *"sempre meca. Nao
+# pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
+# cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
+# palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+TETO_FALA = {1: 25, 2: 32, 3: 25}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
 # ⚠️ A borda de CIMA da faixa 82-96 da doutrina. ⛔ Nao usar a soma dos tetos
@@ -2370,14 +2374,27 @@ def _montar_falas(rng, sub, rec, orgaos, relacao, credibilidade, degrau):
     # ----- cena 2 ----------------------------------------------------------
     fund = [f for f in FUNDIDAS if f["cred"] in ("ambas", credibilidade)]
     cand = [f["txt"].format(r=rec["fala"], o=orgaos[1]) for f in fund or FUNDIDAS]
+    # ⚠️ `or cand` devolvia o pool inteiro quando a faixa ficava vazia — e
+    # com o teto em 25 isso acontecia. Agora o fallback e a MAIS CURTA.
     ok = [c for c in cand if PISO_FALA[2] <= _w(c) <= TETO_FALA[2]]
-    c2 = rng.choice(ok or cand)
+    if not ok:
+        ok = ([c for c in cand if _w(c) <= TETO_FALA[2]]
+              or [min(cand, key=_w)])
+    c2 = rng.choice(ok)
 
     # ----- cena 3 ----------------------------------------------------------
     voz = voz_da_relacao(relacao)
     provas = [p for p in PROVAS if voz == "intima" or p["voz"] == "terceiro"]
-    prova = rng.choice(provas)["txt"].format(o=orgaos[2])
-    cta = rng.choice(CTAS)
+    # ⛔ 2026-08-05 — prova e CTA passam a ceder ao teto. Saiam crus, e so' o
+    # gate filtrava: 2% da cena 3 ainda estourava.
+    _mg = min(_w(g) for g in GATES)
+    _pv = [p for p in provas
+           if _w(p["txt"].format(o=orgaos[2])) + _mg + _MIN_BARREIRA
+           <= TETO_FALA[3] - min(_w(c) for c in CTAS)]
+    prova = rng.choice(_pv or provas)["txt"].format(o=orgaos[2])
+    cta = rng.choice([c for c in CTAS
+                      if _w(prova) + _w(c) + _mg + _MIN_BARREIRA
+                      <= TETO_FALA[3]] or [min(CTAS, key=_w)])
     gate = rng.choice([g for g in GATES
                        if _w(prova) + _w(cta) + _w(g) + _MIN_BARREIRA
                        <= TETO_FALA[3]] or GATES)
