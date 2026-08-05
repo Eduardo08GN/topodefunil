@@ -826,7 +826,11 @@ HOOKS = [
     "The pill people hope you never learn that these four harden your {o}.",
     "These four cost two dollars, and your {o} gets hard on all of them.",
     "Stop buying pills. Start buying these four and watch your {o} go back into business.",
-    "Nobody told you groceries could get your {o} hard. These four are the secret.",
+    # ⛔ Era "...get your {o} hard. These four are the secret." e a SEGUNDA
+    # sentenca, lida sozinha, e' "segredo de que?" — a familia (C) que o
+    # operador reprovou no RECEITA em 2026-08-04. O destino mudou de
+    # sentenca em vez de ser acrescentado: custa 3 palavras, nao 7.
+    "Nobody told you groceries could get a man hard. These four are the secret to your {o}.",
 ]
 
 # CL20 — a bancada e' DERIVADA da copy: `itens` e' o que precisa estar em cena.

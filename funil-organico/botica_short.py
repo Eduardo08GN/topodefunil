@@ -784,16 +784,16 @@ ISCAS = [
 # ⛔ PRONOME NAO E' QUEM. `They`, `nobody`, `somebody` nao nomeiam ninguem, e a
 # primeira versao deste pool (e da lente que o cobra) aceitava os tres.
 VILOES = [
-    "The pharmacy industry sells you pills and keeps this off the label.",
+    "The pharmacy industry sells you pills and keeps the kitchen mix off the label.",
     "No drug company makes a cent off a kitchen shelf.",
-    "The chemists keep this off the shelf because they cannot bill you for it.",
+    "The chemists keep the two-dollar mix off the shelf; they cannot bill you for it.",
     "The chemists would rather sell you the box behind the counter.",
-    "Doctors do not hand this out, and it is not because it fails.",
-    "The drug companies advertise the pill and never this.",
+    "Doctors do not hand the cheap recipe out, and not because it fails.",
+    "The drug companies advertise the pill and never the mix that hardens him.",
     "The pill companies need you buying the little blue box instead.",
-    "My grandmother knew this. Then the drug industry put a price on it.",
-    "The pharmacy sells you a monthly refill and hides what costs pennies.",
-    "Every pharmacy ad sells the expensive answer and buries the cheap one.",
+    "My grandmother knew this recipe. Then the drug industry put a price on it.",
+    "The pharmacy sells you a monthly refill and hides the mix that costs pennies.",
+    "Every pharmacy ad sells the expensive pill and buries the cheap recipe.",
 ]
 
 
