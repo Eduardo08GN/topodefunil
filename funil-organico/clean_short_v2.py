@@ -227,6 +227,14 @@ ROTULO_FORMATA_O = True
 #     apaga o que faz aquele set funcionar;
 #   · na CLARA entram no veto as etnias explicitamente negras (um `white
 #     Jamaican American` contradiz o proprio nome), e na ESCURA as brancas.
+# ⛔⛔ CORRIGIDO NO MESMO DIA (2026-08-05), com o operador em campo: eu apliquei
+# o veto dos 90% NAS DUAS peles e ele reclamou, com razao —
+# *"as pessoas asiaticas, orientais nao estao mais aparecendo quando eu seto cor
+# de pele branca, esses eram para nao aparecer somente em pele escura"*.
+# A ordem dele era sobre a ESCURA: um `Black Chinese American` nao existe. Mas
+# asiatico TEM pele clara, e `clara` e' pele, nao raca europeia. O veto da clara
+# encolheu para o que de fato contradiz pele clara: as etnias explicitamente
+# negras. Erro meu de simetria — copiei a lista de um lado para o outro.
 PELE_VETO = {
     "escura": ("Asian American", "Chinese American", "Korean American",
                "Vietnamese American", "Filipino American", "Japanese American",
@@ -234,12 +242,28 @@ PELE_VETO = {
                "South Asian American", "Lebanese American",
                "Middle Eastern American", "Native American",
                "white American", "Cajun American"),
+    "clara": ("Black American", "West African", "Jamaican American",
+              "Caribbean American", "Creole American"),
+}
+
+# ⛔ E A PALAVRA DA RACA NAO CABE EM TODA ETNIA CLARA. `White Chinese American`
+# e' contradicao — o gerador recebe duas ordens e resolve inventando um rosto
+# mestico que nao e' nem um nem outro. Nestas a ancora e' SO' O TOM (`fair
+# skin`), que e' o que o operador quer dizer com "pele branca". Nas europeias e
+# nas latinas/levantinas a palavra `White` fica: `White Hispanic American` e'
+# categoria real e ancora bem.
+# ⚠️ Levantinas entram aqui tambem: `White Lebanese American` nao esta' errado
+# (o censo dos EUA classifica assim), mas o gerador ja' desenha essas etnias de
+# pele clara por padrao — a palavra so' acrescenta atrito. Ficam com a palavra
+# as europeias e as LATINAS, onde `White Hispanic American` e' categoria
+# corrente e de fato desambigua entre um latino claro e um escuro.
+SEM_PALAVRA_RACA = {
     "clara": ("Asian American", "Chinese American", "Korean American",
               "Vietnamese American", "Filipino American", "Japanese American",
               "Pacific Islander American", "Indian American",
               "South Asian American", "Native American",
-              "Black American", "West African", "Jamaican American",
-              "Caribbean American", "Creole American"),
+              "Lebanese American", "Middle Eastern American"),
+    "escura": (),
 }
 
 
@@ -295,11 +319,15 @@ def _etnia_visivel(etnia, pele):
 
     ⚠️ Sem duplicar a palavra: `Black American` e `white American` ja' a
     carregam, e `Black Black American` e' o tipo de frase que faz o gerador
-    desconfiar do prompt inteiro."""
+    desconfiar do prompt inteiro.
+    ⛔ E sem FORCAR a palavra onde ela contradiz a etnia (SEM_PALAVRA_RACA):
+    num `Chinese American` de pele clara sai so' o tom, porque `White Chinese
+    American` sao duas ordens no mesmo sintagma. O tom sozinho basta — e' ele
+    que carrega a pele."""
     if not pele:
         return etnia, ""
     palavra, tom = PELE_PROMPT[pele]
-    if palavra.lower() in etnia.lower():
+    if palavra.lower() in etnia.lower() or etnia in SEM_PALAVRA_RACA[pele]:
         return etnia, tom
     return "%s %s" % (palavra, etnia), tom
 
@@ -2275,10 +2303,15 @@ def lint(spec, blocos):
             ach.append(("ERRO", "pele travada em %s e a etnia sorteada e' %s"
                                 % (spec["pele"], spec["etnia"])))
         palavra, tom = PELE_PROMPT[spec["pele"]]
+        # ⚠️ A PALAVRA da raca so' e' cobrada onde ela CABE. Num asiatico de
+        # pele clara ela nao entra (SEM_PALAVRA_RACA) — cobrar `White` ali
+        # seria o linter exigindo a contradicao que o motor evita de proposito.
+        # ⛔ O TOM e' cobrado sempre: e' ele que carrega a pele nos dois casos.
+        cobra_palavra = spec["etnia"] not in SEM_PALAVRA_RACA[spec["pele"]]
         for nome in ("BLOCO 0 (REF)", "IMAGE 01/03", "IMAGE 02/03",
                      "IMAGE 03/03"):
             txt = blocos.get(nome, "")
-            if palavra.lower() not in txt.lower():
+            if cobra_palavra and palavra.lower() not in txt.lower():
                 ach.append(("ERRO", "pele travada e %s sem a palavra '%s'"
                                     % (nome, palavra)))
             if tom not in txt:
