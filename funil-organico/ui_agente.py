@@ -692,9 +692,11 @@ class App(tk.Tk):
             # ⚠️ pool com placeholder: o ITEM_B do CLEAN carrega `{o}` e o
             # painel mostrava o template cru (`your {o} going` — print do
             # operador, 2026-08-05). Mostra-se o texto como o video FALA,
-            # formatado com o orgao deste sorteio; motor sem `orgaos` ou sem
-            # placeholder passa reto.
-            if "{" in txt:
+            # formatado com o orgao deste sorteio.
+            # ⛔ OPT-IN por motor (ROTULO_FORMATA_O): ordem do operador de
+            # 2026-08-05 — mexer SO' no V2. Motor sem a flag mostra o rotulo
+            # exatamente como sempre mostrou, placeholder e tudo.
+            if "{" in txt and getattr(self.m, "ROTULO_FORMATA_O", False):
                 try:
                     txt = txt.format(o=self.spec["orgaos"][1])
                 except (KeyError, IndexError):

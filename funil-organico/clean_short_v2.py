@@ -192,6 +192,11 @@ EIXOS_TRAVAVEIS = ["familia", "mundo", "etnia", "ref",
 # Contrato aditivo, lido pela ui_agente com getattr: motor sem a flag nao muda.
 PELE_TRAVAVEL = True
 
+# ⭐ O painel formata o `{o}` dos rotulos de eixo com o orgao do sorteio
+# (`your Johnson ready`, nunca `your {o} ready`). Opt-in por ordem do operador
+# (2026-08-05): a correcao e' SO' do V2; o V1 fica exatamente como estava.
+ROTULO_FORMATA_O = True
+
 
 # ⛔⛔ A CLASSIFICACAO E' LISTA EXPLICITA, NUNCA "tudo que nao e' branco"
 # (print de campo 2026-08-05): a primeira versao herdou a regra binaria do
