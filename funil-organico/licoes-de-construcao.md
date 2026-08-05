@@ -671,6 +671,92 @@ verificador na hora de avisar.
 
 ---
 
+## 24. ⛔⛔⛔ O VÍCIO SE MUDOU PARA O FIM DA FRASE — e a lente olhava só o começo
+
+**Data:** 2026-08-04. **Custo:** três renders reprovados no mesmo dia, e a
+descoberta de que 12 das 14 entradas de um pool que eu tinha declarado limpo
+carregavam o mesmo defeito.
+
+O operador leu três takes do RECEITA e corrigiu os três à mão:
+
+| gerado | reação dele | o que devia ser |
+|---|---|---|
+| `...points you at the expensive pill and away from this.` | *"Drifting identificado 'away from this.' From what???"* | `...at the expensive pill, the secret is in this natural trick.` |
+| `Nobody owns what my grandfather knew.` | — | `Nobody owns what my grandfather knew to trully save my john-son and my marriage` |
+| `It came back full and stayed hard...` | — | `My tool came back full and stayed hard...` |
+
+⚠️ **A segunda foi a cara.** Ao reler o pool inteiro com o teste WTF, não eram
+duas linhas ruins: eram **12 de 14**. Toda entrada terminava num substantivo
+abstrato sem destino — `what costs two dollars`, `nothing that worked`, `the
+cheap fix`, `asking questions`, `a man stays broken`.
+
+⛔⛔ **E todas passavam pela minha lente RE20**, que existia exatamente para
+cobrar isso. Porque **RE20 cobrava o agente no COMEÇO da frase e nunca olhava o
+fim.** Eu tinha escrito a regra a partir do exemplo que o operador me deu
+(`[QUEM] + [o que VENDE] + [o que ESCONDE]`) e não percebi que o molde dele
+tinha uma quarta parte que eu não codifiquei:
+
+> **[QUEM] + [o que ele te VENDE] + [o que ele te ESCONDE] + [PARA QUE SERVE]**
+
+Sem a quarta parte o espectador ouve uma briga com a farmácia e **não sabe o que
+ele ganha se a farmácia perder**.
+
+⭐ **A causa raiz é a mesma da §22, num disfarce novo.** Lá o vício era *sujeito
+sem objeto* (`She noticed.`). Aqui é *objeto sem substantivo*: a frase termina
+apontando o dedo para o vazio. A lente pegava a forma que eu já conhecia e o
+vício simplesmente **mudou de posição dentro da frase**.
+
+⛔ **O que impede:** ao escrever lente de slot, cobrir a frase INTEIRA, não a
+posição onde o defeito apareceu da última vez. E ao receber um molde do
+operador, **contar as partes** — se ele deu quatro e a lente cobra três, a
+quarta é exatamente onde o vício vai morar.
+
+⭐ **E a escassez de repertório empurra para o pronome.** O motor sorteava DUAS
+grafias do órgão por vídeo, com um comentário meu explicando que bastava
+"porque repetir o substantivo vira bordão". Essa premissa falsa é o que
+empurrou metade dos slots para `It` e `this`. O operador mostrou a saída usando
+**quatro grafias** nos takes que corrigiu (`weiner`…`john-son`, `tool`…`soljer`).
+`NUCLEO` sempre teve cinco. **Bordão é a mesma palavra duas vezes; grafia
+diferente não é.**
+
+---
+
+## 25. ⛔⛔ O CONTROLE ACERTAVA POR COINCIDÊNCIA DA COPY VIZINHA
+
+**Data:** 2026-08-04. Descoberto porque o autoteste roda os controles antes dos
+números — ele acusou a si mesmo.
+
+O controle negativo do `She noticed.` trocava a última sentença assim:
+
+```python
+re.sub(r"[^.]+\.$", "She noticed.", falas[1])     # ⛔ sem o \s*
+```
+
+Sem o `\s*`, a troca comia o espaço separador e produzia
+`...twenty years.She noticed.`. E `_sentencas` divide em `. ` — então devolvia
+**as duas grudadas como uma sentença só**. A sentença grudada carregava o órgão
+da frase anterior, e RE12 passava.
+
+⚠️ **Ele funcionou por dois meses.** Só quebrou no dia em que a copy VIZINHA
+mudou: enquanto o resultado começava com `It came back...` a frase grudada não
+tinha órgão e o controle acertava; quando o resultado passou a nomear o órgão, o
+controle ficou cego.
+
+⛔ **Controle que depende da copy ao redor não é controle.** É a §16 aplicada ao
+próprio medidor: se ele só reprova o caso conhecido por acidente, ele mede outra
+coisa. **Todo controle tem de construir a string inteira que ele afirma testar**,
+nunca derivá-la por substituição parcial de uma fala sorteada.
+
+⚠️ **Corolário que já cobrou duas vezes hoje:** ao estreitar uma lente, o teste
+não é "o número caiu" — é **ler os flagrantes**. A primeira versão do
+`medir_deiticos.py` acusou 302 frases do RESSURREICAO e 22 do NECROSE, todas
+corretas, com uma tabela perfeitamente plausível. Vídeo tem duas saídas que
+texto não tem: **anáfora do CTA** (`or Facebook won't deliver it` — `it` é a
+receita, dita na frase anterior) e **dêitico que aponta para o prop em quadro**
+(`His hangs just like this`). Regra que ignora isso manda consertar copy certa.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
