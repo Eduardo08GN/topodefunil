@@ -153,16 +153,60 @@ BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, two "
 # da plateia congelada do ESCANDALO: ele encena o espanto NO LUGAR do espectador.
 # ⚠️ `Only she speaks` e' obrigatorio no TAKE — sem isso o segundo corpo dubla a
 # fala dela, que e' a falha que derrubou a cena do casal do VAZAMENTO.
+# ⭐⭐ A FEICAO DELE E' POOL desde 2026-08-05 — ordem do operador: *"A feicao de
+# reacao do cara no take 3 tem que variar tb na pool, se sorrindo, cara de
+# surpresa, etc"*. Antes era UMA string travada (olhos arregalados, boca
+# aberta), e por isso os tres prints que ele mandou tinham o mesmo homem com a
+# mesma cara.
+# ⛔ O QUE NAO VARIA, porque e' a mecanica do angulo e o linter trava: ele olha
+# o COPO e nunca a lente, e NUNCA fala. A reacao muda de SABOR (espanto, riso,
+# incredulidade, orgulho), nunca de direcao nem de mudez.
+# ⚠️ Cada entrada e' (clausula da IMAGE, clausula do TAKE) e as duas tem de
+# descrever a MESMA coisa: o take anima a image, nao inventa outro gesto — e
+# contradicao entre os dois e' pior que omissao, porque o Veo resolve mexendo
+# no que estava certo.
+REACOES_HOMEM = [
+    ("his eyes are wide and his eyebrows are raised, his mouth open in plain "
+     "astonishment",
+     "holds his astonished expression without moving"),
+    ("a slow grin is spreading across his face and his eyebrows are lifted",
+     "holds that spreading grin without moving"),
+    ("his eyebrows are drawn together and his head is tilted, caught between "
+     "a frown and a smile",
+     "holds that half-frowning, half-smiling look without moving"),
+    ("his lips are pressed shut and his brows are high, plainly holding back "
+     "a laugh",
+     "keeps his lips pressed shut on the laugh without moving"),
+    ("he is grinning openly, eyes crinkled at the corners",
+     "holds that open grin without moving"),
+    ("one eyebrow is raised and his mouth is slightly open as he leans a "
+     "little closer",
+     "holds that leaning, one-eyebrow look without moving"),
+    ("his jaw has gone slack and he is blinking slowly, as if recounting "
+     "something",
+     "keeps that slack-jawed look without moving"),
+    ("his mouth is open in a delighted laugh with no sound coming out",
+     "holds that silent, delighted laugh without moving"),
+    ("his chin is lifted and he is nodding very slightly, mouth open",
+     "keeps his chin lifted and nods very slightly"),
+    ("his eyes have gone round and one hand has stopped halfway to his mouth",
+     "keeps his hand frozen halfway to his mouth"),
+    ("his brows are high and he is smiling with his mouth closed, looking "
+     "pleased with himself",
+     "holds that closed-mouth, pleased smile without moving"),
+    ("his eyes are narrowed slightly and his mouth is open, plainly not "
+     "believing it",
+     "holds that disbelieving look without moving"),
+]
+
 BO_HOMEM = (
     "Standing behind her and slightly to frame-left, close enough to be in the "
-    "same focus, is a %d-year-old %s man, %s, wearing %s. His eyes are wide and "
-    "his eyebrows are raised, his mouth open in plain astonishment, and he is "
+    "same focus, is a %d-year-old %s man, %s, wearing %s. %s, and he is "
     "looking directly at the glass in her hand — never at the camera."
 )
 BO_HOMEM_TAKE = (
-    "The man behind her holds his astonished expression without moving, eyes "
-    "fixed on the glass the whole time, and never speaks. Only she speaks, "
-    "straight into the lens."
+    "The man behind her %s, eyes fixed on the glass the whole time, and never "
+    "speaks. Only she speaks, straight into the lens."
 )
 
 # ⛔ BO7 — A ANCORA DE CONTINUIDADE. Rosto E idade, nunca so' roupa: no VAZAMENTO
@@ -190,7 +234,7 @@ CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 # `unlabelled glass jars`.
 # ⚠️ O selo `V` fica so' no mundo da fonte (o amish); os outros sao `N`.
 MUNDOS = [
-    {"id": "amish", "selo": "V", "familia": "amish",
+    {"id": "amish", "eua": True, "selo": "V", "familia": "amish",
      "etnias": ["white American"],
      "coz": "a rustic timber farmhouse kitchen with open shelves of unlabelled "
             "glass jars of dried herbs from floor to ceiling, a hand pump by "
@@ -215,7 +259,7 @@ MUNDOS = [
      "luz_c": "soft window daylight",
      "audio": "quiet room tone, a wood floor creaking"},
 
-    {"id": "americana_comum", "selo": "N", "familia": "americana",
+    {"id": "americana_comum", "eua": True, "selo": "N", "familia": "americana",
      "etnias": ["white American"],
      "coz": "an ordinary American suburban kitchen, honey-oak cabinets and a "
             "row of unlabelled glass spice jars on a shelf above the sink, a "
@@ -240,7 +284,7 @@ MUNDOS = [
      "luz_c": "warm overhead light",
      "audio": "a fridge humming, quiet room tone"},
 
-    {"id": "apalache", "selo": "N", "familia": "apalache",
+    {"id": "apalache", "eua": True, "selo": "N", "familia": "apalache",
      "etnias": ["white American"],
      "coz": "a mountain-lodge kitchen with finished pine panelling, bundles of "
             "dried plants hanging from a rail and rows of unlabelled jars "
@@ -265,7 +309,7 @@ MUNDOS = [
      "luz_c": "low grey daylight",
      "audio": "wind at the window, a stove ticking"},
 
-    {"id": "sulista", "selo": "N", "familia": "sulista",
+    {"id": "sulista", "eua": True, "selo": "N", "familia": "sulista",
      "etnias": ["Black American"],
      "coz": "a Southern kitchen with pale yellow beadboard walls, a screen door "
             "open onto a green yard, unlabelled mason jars of dried leaves and "
@@ -290,7 +334,7 @@ MUNDOS = [
      "luz_c": "bright daylight through the door",
      "audio": "cicadas outside, a screen door creaking"},
 
-    {"id": "mexicana", "selo": "N", "familia": "mexicana",
+    {"id": "mexicana", "eua": False, "selo": "N", "familia": "mexicana",
      "etnias": ["Mexican American"],
      "coz": "a Mexican American kitchen with hand-painted blue and yellow tiles "
             "across the backsplash, clay pots and unlabelled jars of dried "
@@ -315,7 +359,7 @@ MUNDOS = [
      "luz_c": "warm low afternoon sun",
      "audio": "a radio playing faintly in another room"},
 
-    {"id": "caribenha", "selo": "N", "familia": "caribenha",
+    {"id": "caribenha", "eua": False, "selo": "N", "familia": "caribenha",
      "etnias": ["Caribbean American"],
      "coz": "a Caribbean kitchen with mint-green walls and louvred windows "
             "standing open onto broad green leaves, unlabelled jars of bark and "
@@ -340,7 +384,7 @@ MUNDOS = [
      "luz_c": "hard bright daylight",
      "audio": "birds outside, a ceiling fan turning"},
 
-    {"id": "leste_asia", "selo": "N", "familia": "asiatica",
+    {"id": "leste_asia", "eua": False, "selo": "N", "familia": "asiatica",
      "etnias": ["East Asian American"],
      "coz": "a compact East Asian kitchen with a wall of small wooden drawers "
             "and unlabelled glass jars of dried roots and bark, a clay pot on "
@@ -365,7 +409,7 @@ MUNDOS = [
      "luz_c": "even cool daylight",
      "audio": "a clay pot simmering, quiet room tone"},
 
-    {"id": "sul_asia", "selo": "N", "familia": "sul_asiatica",
+    {"id": "sul_asia", "eua": False, "selo": "N", "familia": "sul_asiatica",
      "etnias": ["South Asian American"],
      "coz": "a South Asian kitchen with polished stone surfaces, a row of round "
             "steel tins and unlabelled jars of coloured powders along an open "
@@ -390,7 +434,7 @@ MUNDOS = [
      "luz_c": "warm even daylight",
      "audio": "a pressure cooker hissing softly, quiet room tone"},
 
-    {"id": "africa_oeste", "selo": "N", "familia": "africana",
+    {"id": "africa_oeste", "eua": False, "selo": "N", "familia": "africana",
      "etnias": ["West African"],
      "coz": "a well-kept West African kitchen with glazed tiled walls, rows of "
             "unlabelled jars and calabashes of dried bark and seed in a fitted "
@@ -416,7 +460,7 @@ MUNDOS = [
      "luz_c": "strong flat daylight",
      "audio": "voices far off outside, quiet room tone"},
 
-    {"id": "africa_leste", "selo": "N", "familia": "africana",
+    {"id": "africa_leste", "eua": False, "selo": "N", "familia": "africana",
      "etnias": ["East African"],
      "coz": "a tidy East African kitchen with pale tiled walls and a wide "
             "shuttered window, woven baskets and unlabelled jars of dried "
@@ -441,7 +485,7 @@ MUNDOS = [
      "luz_c": "soft shuttered daylight",
      "audio": "a kettle ticking, quiet room tone"},
 
-    {"id": "mediterranea", "selo": "N", "familia": "mediterranea",
+    {"id": "mediterranea", "eua": False, "selo": "N", "familia": "mediterranea",
      "etnias": ["Mediterranean"],
      "coz": "a whitewashed Mediterranean kitchen with a low arched window, "
             "bunches of dried herbs hanging on a hook, unlabelled jars of seed "
@@ -466,7 +510,7 @@ MUNDOS = [
      "luz_c": "hard bright sun",
      "audio": "gulls far off, quiet room tone"},
 
-    {"id": "andina", "selo": "N", "familia": "andina",
+    {"id": "andina", "eua": False, "selo": "N", "familia": "andina",
      "etnias": ["Andean South American"],
      "coz": "an Andean kitchen with smooth painted walls and a tiled splashback, "
             "fine woven cloth folded on a bench, labelled sacks and jars of "
@@ -491,6 +535,284 @@ MUNDOS = [
      "luz": "Cool high-altitude daylight from a small window at frame-right.",
      "luz_c": "cool high daylight",
      "audio": "wind outside, quiet room tone"},
+
+    # ======================================================================
+    # + 2026-08-05 — DOZE ARQUETIPOS NORTE-AMERICANOS.
+    # ⛔ Ordem do operador: *"preciso que popule com varias pools de varios
+    # arqueticos de africa north americans no agente e north americans white
+    # people"*.
+    # ⚠️ E o gargalo era pior do que parecia: `Black American` tinha UM UNICO
+    # mundo (`sulista`) contra tres do `white American` — e METADE das paginas
+    # do funil e' Black American. Cinco paginas sorteavam sempre a mesma
+    # cozinha. Agora sao 7 e 9.
+    # ⭐ Cada arquetipo e' uma REGIAO com cultura material propria, nao um
+    # rotulo: Lowcountry, Delta, Grandes Lagos, Creole, Atlanta e Harlem; e
+    # Meio-Oeste, Nova Inglaterra, Texas, Noroeste, italo e polonesa.
+    # ======================================================================
+    {"id": "gullah", "selo": "N", "familia": "gullah",
+     "etnias": ["Black American"],
+     "eua": True,
+     "coz": "a Lowcountry kitchen with wide beadboard walls painted haint blue, a tall sash window onto live oaks and hanging moss, rows of unlabelled jars of dried root and bark in a fitted shelf and a cast-iron pot on the hob",
+     "coz_c": "haint-blue Lowcountry kitchen",
+     "sup_a": "a scrubbed heart-pine counter", "sup": "counter",
+     "trajes": [
+         ("%s wide-sleeved cotton blouse with a wrapped head tie",
+          "wrapped head tie"),
+         ("%s indigo-dyed shift dress with a woven sweetgrass belt",
+          "indigo shift"),
+         ("%s fitted short-sleeved blouse over a long tie-dyed skirt",
+          "tie-dyed skirt"),
+         ("%s linen tunic with a strip-woven cloth over one shoulder",
+          "strip-woven cloth"),
+         ("%s buttoned cotton dress with a full-length work apron",
+          "work apron"),
+     ],
+     "cores": ["indigo", "haint blue", "deep coral", "ochre", "emerald", "white"],
+     "luz": "Soft green-filtered daylight through the tall sash window.",
+     "luz_c": "green-filtered daylight",
+     "audio": "cicadas and marsh birds outside"},
+    {"id": "delta", "selo": "N", "familia": "delta",
+     "etnias": ["Black American"],
+     "eua": True,
+     "coz": "a Delta farmhouse kitchen with white-painted plank walls, a wide window onto flat cotton fields, unlabelled jars of dried leaf and root ranged on a built shelf and a heavy cream enamel range",
+     "coz_c": "white plank Delta kitchen",
+     "sup_a": "a thick oiled oak counter", "sup": "counter",
+     "trajes": [
+         ("%s printed cotton house dress with a bib apron",
+          "bib apron"),
+         ("%s fitted gingham blouse tucked into a wide skirt",
+          "gingham blouse"),
+         ("%s sleeveless denim shift over a plain tee",
+          "denim shift"),
+         ("%s wrapped cotton dress with a knotted head scarf",
+          "knotted head scarf"),
+         ("%s buttoned work shirt with the sleeves rolled to the elbow",
+          "rolled work shirt"),
+     ],
+     "cores": ["deep red", "cobalt", "marigold", "forest green", "plum", "white"],
+     "luz": "Flat bright daylight off the fields through the wide window.",
+     "luz_c": "flat field daylight",
+     "audio": "a tractor far off, wind in the screen"},
+    {"id": "grandes_lagos", "selo": "N", "familia": "grandes_lagos",
+     "etnias": ["Black American"],
+     "eua": True,
+     "coz": "a well-kept city apartment kitchen with glazed white tile to the ceiling, tall sash windows onto the brick building opposite, unlabelled glass jars of dried herb behind a glass-front cabinet and a heavy enamel stove",
+     "coz_c": "white-tiled city kitchen",
+     "sup_a": "a polished speckled granite counter", "sup": "counter",
+     "trajes": [
+         ("%s ribbed knit sweater with the sleeves pushed up",
+          "ribbed knit sweater"),
+         ("%s silk headwrap tied high over a fitted blouse",
+          "silk headwrap"),
+         ("%s wrap dress belted at the waist",
+          "wrap dress"),
+         ("%s tailored blouse under a fitted waistcoat",
+          "fitted waistcoat"),
+         ("%s long-sleeved top with a beaded necklace at the throat",
+          "beaded necklace"),
+     ],
+     "cores": ["burgundy", "royal blue", "mustard", "emerald", "charcoal", "cream"],
+     "luz": "Cool north light through the tall sash windows.",
+     "luz_c": "cool north light",
+     "audio": "city traffic far below, a radiator ticking"},
+    {"id": "creole", "selo": "N", "familia": "creole",
+     "etnias": ["Black American"],
+     "eua": True,
+     "coz": "a New Orleans Creole kitchen with tall shuttered French doors onto a courtyard, plaster walls in soft ochre, unlabelled apothecary jars of dried root along a carved shelf and a copper pot on the hob",
+     "coz_c": "ochre Creole kitchen",
+     "sup_a": "a veined marble counter", "sup": "counter",
+     "trajes": [
+         ("%s ruffled cotton blouse with a fitted bodice",
+          "ruffled blouse"),
+         ("%s madras head tie knotted high above a fitted dress",
+          "madras head tie"),
+         ("%s embroidered linen dress with a lace collar",
+          "lace collar"),
+         ("%s short-sleeved blouse under a long striped apron",
+          "striped apron"),
+         ("%s draped shawl over a high-necked fitted dress",
+          "draped shawl"),
+     ],
+     "cores": ["deep purple", "gold", "wine", "sea green", "coral", "cream"],
+     "luz": "Warm dappled light through the shuttered French doors.",
+     "luz_c": "dappled courtyard light",
+     "audio": "a courtyard fountain, distant brass"},
+    {"id": "atlanta", "selo": "N", "familia": "atlanta",
+     "etnias": ["Black American"],
+     "eua": True,
+     "coz": "a bright modern suburban kitchen with white shaker cabinets and a subway-tiled splashback, a wide window onto a kept back garden, labelled glass jars of dried herb on floating shelves and a stainless range",
+     "coz_c": "white shaker kitchen",
+     "sup_a": "a honed black granite island", "sup": "island",
+     "trajes": [
+         ("%s fitted knit top with the sleeves pushed back",
+          "fitted knit top"),
+         ("%s satin headwrap tied over a sleeveless shell top",
+          "satin headwrap"),
+         ("%s buttoned linen shirt worn open over a vest top",
+          "open linen shirt"),
+         ("%s jersey wrap top knotted at the side",
+          "jersey wrap top"),
+         ("%s cotton dress under a cropped denim jacket",
+          "cropped denim jacket"),
+     ],
+     "cores": ["dusty rose", "olive", "burnt orange", "teal", "ivory", "wine"],
+     "luz": "Bright even daylight through the wide garden window.",
+     "luz_c": "bright garden daylight",
+     "audio": "birds in the garden, a fridge humming"},
+    {"id": "harlem", "selo": "N", "familia": "harlem",
+     "etnias": ["Black American"],
+     "eua": True,
+     "coz": "a brownstone kitchen with tall bay windows onto a tree-lined street, dark stained cabinets with glass doors, unlabelled jars of dried root on an open shelf and a heavy cast-iron pot on the range",
+     "coz_c": "brownstone kitchen",
+     "sup_a": "a thick oiled butcher-block counter", "sup": "counter",
+     "trajes": [
+         ("%s long cardigan over a fitted shell top",
+          "long cardigan"),
+         ("%s printed headwrap tied at the front over a roll-neck",
+          "printed headwrap"),
+         ("%s buttoned shirt-dress with a wide belt",
+          "wide belt"),
+         ("%s wide-legged jumpsuit with the sleeves rolled",
+          "wide-legged jumpsuit"),
+         ("%s knitted vest over a long-sleeved blouse",
+          "knitted vest"),
+     ],
+     "cores": ["mustard", "rust", "deep teal", "burgundy", "camel", "ivory"],
+     "luz": "Soft filtered light through the tall bay windows.",
+     "luz_c": "filtered bay-window light",
+     "audio": "street noise below, a stoop conversation"},
+    {"id": "meio_oeste", "selo": "N", "familia": "meio_oeste",
+     "etnias": ["white American"],
+     "eua": True,
+     "coz": "a Midwest farmhouse kitchen with painted wainscot and a wide window onto flat corn fields, glass-front cabinets of home preserves, unlabelled jars of dried herb on a built shelf and a big cream enamel range",
+     "coz_c": "farmhouse kitchen",
+     "sup_a": "a thick maple butcher-block counter", "sup": "counter",
+     "trajes": [
+         ("%s fitted gingham shirt tucked into a denim skirt",
+          "gingham shirt"),
+         ("%s knitted cardigan over a plain blouse",
+          "knitted cardigan"),
+         ("%s bib apron over a long-sleeved tee",
+          "bib apron"),
+         ("%s corduroy pinafore over a roll-neck",
+          "corduroy pinafore"),
+         ("%s short-sleeved shirt with a dish towel tucked at the waist",
+          "tucked dish towel"),
+     ],
+     "cores": ["barn red", "denim blue", "sage", "mustard", "hunter green", "cream"],
+     "luz": "Wide flat daylight off the fields.",
+     "luz_c": "flat prairie daylight",
+     "audio": "wind over the fields, a screen door"},
+    {"id": "nova_inglaterra", "selo": "N", "familia": "nova_inglaterra",
+     "etnias": ["white American"],
+     "eua": True,
+     "coz": "a New England coastal kitchen with white-painted panelling and a window onto grey water and rigging, glass-front cabinets of preserves, unlabelled jars of dried herb along a plate rail and a cream enamel range",
+     "coz_c": "white-panelled coastal kitchen",
+     "sup_a": "a honed slate counter", "sup": "counter",
+     "trajes": [
+         ("%s cable-knit fisherman jumper",
+          "cable-knit jumper"),
+         ("%s fitted striped Breton top with the sleeves pushed up",
+          "Breton top"),
+         ("%s quilted waistcoat over a checked shirt",
+          "quilted waistcoat"),
+         ("%s oilskin apron buttoned over a roll-neck",
+          "oilskin apron"),
+         ("%s linen shirt-dress belted at the waist",
+          "linen shirt-dress"),
+     ],
+     "cores": ["navy", "seafoam", "brick red", "forest green", "slate grey", "oatmeal"],
+     "luz": "Cool overcast light off the water.",
+     "luz_c": "cool overcast sea light",
+     "audio": "gulls and rigging outside"},
+    {"id": "texas", "selo": "N", "familia": "texas",
+     "etnias": ["white American"],
+     "eua": True,
+     "coz": "a Texas ranch kitchen with hand-glazed talavera tiles behind a wide range, exposed cedar beams, unlabelled jars of dried herb in a tall pine dresser and a window onto open scrub",
+     "coz_c": "cedar-beamed ranch kitchen",
+     "sup_a": "a thick mesquite-wood counter", "sup": "counter",
+     "trajes": [
+         ("%s fitted pearl-snap western shirt with the sleeves rolled",
+          "pearl-snap shirt"),
+         ("%s denim shirt-dress with a tooled leather belt",
+          "tooled leather belt"),
+         ("%s suede waistcoat over a fitted blouse",
+          "suede waistcoat"),
+         ("%s checked shirt knotted at the waist",
+          "knotted checked shirt"),
+         ("%s cotton blouse with a bandana tied at the throat",
+          "bandana"),
+     ],
+     "cores": ["turquoise", "rust", "denim blue", "burnt orange", "deep red", "bone"],
+     "luz": "Hard bright sun through the scrub-side window.",
+     "luz_c": "hard ranch sunlight",
+     "audio": "wind over dry scrub, a distant gate"},
+    {"id": "noroeste", "selo": "N", "familia": "noroeste",
+     "etnias": ["white American"],
+     "eua": True,
+     "coz": "a Pacific Northwest kitchen with wide fir boards and open shelving, tall windows onto dark evergreens and rain, labelled glass jars of dried herb in a run of fitted shelves and a matte black range",
+     "coz_c": "fir-panelled kitchen",
+     "sup_a": "a live-edge walnut counter", "sup": "counter",
+     "trajes": [
+         ("%s heavy flannel shirt worn open over a fitted tee",
+          "open flannel"),
+         ("%s waffle-knit roll-neck with the sleeves pushed up",
+          "waffle roll-neck"),
+         ("%s canvas work apron over a long-sleeved shirt",
+          "canvas apron"),
+         ("%s chunky wool cardigan with deep pockets",
+          "chunky cardigan"),
+         ("%s denim dungarees over a striped long-sleeve",
+          "denim dungarees"),
+     ],
+     "cores": ["moss green", "rust", "slate blue", "mustard", "charcoal", "oatmeal"],
+     "luz": "Soft grey rain light through the tall windows.",
+     "luz_c": "grey rain light",
+     "audio": "rain on the glass, wind in the firs"},
+    {"id": "italo_americana", "selo": "N", "familia": "italo_americana",
+     "etnias": ["white American"],
+     "eua": True,
+     "coz": "an Italian-American kitchen with a tiled splashback in green and cream, a crowded dresser of matched crockery, unlabelled jars of dried herb on an open shelf and a big pot on a six-burner range",
+     "coz_c": "green-tiled kitchen",
+     "sup_a": "a thick marble pastry counter", "sup": "counter",
+     "trajes": [
+         ("%s fitted wrap-front blouse with three-quarter sleeves",
+          "wrap-front blouse"),
+         ("%s floral housecoat buttoned to the throat",
+          "floral housecoat"),
+         ("%s knitted twinset with a fine gold chain",
+          "knitted twinset"),
+         ("%s plain blouse under a full pinny",
+          "full pinny"),
+         ("%s belted shirt-dress with the sleeves rolled",
+          "belted shirt-dress"),
+     ],
+     "cores": ["deep red", "olive", "navy", "gold", "aubergine", "cream"],
+     "luz": "Warm kitchen light with sun through a side window.",
+     "luz_c": "warm side-window light",
+     "audio": "a radio in another room, a pot lid"},
+    {"id": "polonesa", "selo": "N", "familia": "polonesa",
+     "etnias": ["white American"],
+     "eua": True,
+     "coz": "a Polish-American kitchen with cream-painted cabinets and a hand-painted folk border along the wall, a tall dresser of matched china, unlabelled jars of dried herb and a heavy enamel range",
+     "coz_c": "folk-bordered kitchen",
+     "sup_a": "a scrubbed birch counter", "sup": "counter",
+     "trajes": [
+         ("%s embroidered folk blouse with full sleeves",
+          "embroidered folk blouse"),
+         ("%s printed headscarf tied under the chin over a fitted dress",
+          "printed headscarf"),
+         ("%s wool waistcoat over a white blouse",
+          "wool waistcoat"),
+         ("%s buttoned housedress with a half apron",
+          "half apron"),
+         ("%s knitted jumper with the sleeves pushed back",
+          "knitted jumper"),
+     ],
+     "cores": ["deep red", "cobalt", "forest green", "amber", "burgundy", "white"],
+     "luz": "Clean cool daylight through a lace-edged window.",
+     "luz_c": "cool lace-filtered daylight",
+     "audio": "a clock ticking, a kettle settling"},
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -1069,15 +1391,27 @@ RECEITAS = [
 # nome. A lacuna e' o que o comentario compra.
 # ⚠️ O literal `gelatin trick` continua obrigatorio (congruencia com a VSL) — ele
 # e' NOMEADO, so' nao e' ENTREGUE. Nomear nao gasta; entregar gasta.
+# ⛔⛔ REESCRITO EM 2026-08-05 — A CLAUSULA DE RETENCAO SAIU.
+# Ordem do operador lendo o TAKE 02: *"retirar 'There's one step I'm not
+# showing here.' esse bullet copy falada nao e' relevante o suficiente pra
+# ocupar espaco precioso de tempo"*. Eram 7 palavras num take de 8s.
+#
+# ⚠️ ISTO REVERTE A OPCAO `c` QUE ELE MESMO ESCOLHEU EM 2026-08-04, e a
+# consequencia esta' registrada aqui de proposito: sem o passo retido, a
+# cena 2 passa a EQUIPARAR a receita visivel ao mecanismo — que e' o que
+# ele tinha alertado (*"pode matar a curiosidade"*). Ele viu os renders e
+# decidiu que as 7 palavras custam mais do que a lacuna compra. A lente
+# BO15 continua barrando a forma pior (equiparar E emendar o beneficio na
+# MESMA sentenca), que e' o caso que entrega tudo de uma vez.
 ANCORAS = [
-    "%s. There's one step I'm not showing here. That's the gelatin trick.",
-    "%s. One step stays off camera, and that's the gelatin trick.",
-    "%s. I left one step out on purpose. That's the gelatin trick.",
-    "%s. What I'm not showing you is the gelatin trick.",
-    "%s. There's a step missing here, and it's the gelatin trick.",
-    "%s. The part I skipped is the gelatin trick.",
-    "%s. One thing isn't in that bowl. That's the gelatin trick.",
-    "%s. There's a step after this one. That's the gelatin trick.",
+    "%s. That's the gelatin trick.",
+    "%s. They call that the gelatin trick.",
+    "%s. That right there is the gelatin trick.",
+    "%s. That's what the gelatin trick is.",
+    "%s. That's the gelatin trick, nothing fancier.",
+    "%s. Around here that's called the gelatin trick.",
+    "%s. That mix is the gelatin trick.",
+    "%s. That's the gelatin trick my grandmother used.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -1338,6 +1672,47 @@ def _por_traje(mundo, curto):
     return mundo["trajes"][0]
 
 
+# ⭐⭐ O APELO DA REF — ordem do operador, 2026-08-05: *"As mulheres tem que ter
+# mais sex appeal tb, quando for dos EUA"*.
+# ⛔ E havia uma CONTRADICAO LITERAL no BLOCO 0: ele mandava *"an ordinary
+# everyday relatable person with a plain unremarkable face, NOT A MODEL"*. Pedir
+# apelo com essa frase no prompt e' dar duas ordens opostas ao gerador, e ele
+# resolve pela ultima. A frase saiu dos mundos dos EUA e ficou nos outros.
+# ⚠️ O QUE FICA NOS DOIS CASOS: `not a celebrity, not resembling any famous
+# person`. Essa nao e' estetica — e' a trava de identidade que impede o gerador
+# de devolver o rosto de alguem real.
+# ⚠️ E a estetica UGC continua: iPhone cru, grao, luz frontal. O apelo entra na
+# PESSOA, nao na producao — modelo em estudio nao converte neste funil.
+APELO_EUA = [
+    "A strikingly attractive everyday woman, well groomed, with clear even skin "
+    "and softly styled hair, not a celebrity, not resembling any famous person.",
+    "A very good-looking everyday woman with glowing skin, light natural "
+    "make-up and a trim figure, not a celebrity, not resembling any famous "
+    "person.",
+    "An unusually pretty everyday woman with fine features and healthy glossy "
+    "hair, not a celebrity, not resembling any famous person.",
+    "A head-turning everyday woman, carefully groomed, with bright eyes and "
+    "full lips, not a celebrity, not resembling any famous person.",
+    "A notably beautiful everyday woman with high cheekbones and smooth clear "
+    "skin, not a celebrity, not resembling any famous person.",
+    "A very attractive everyday woman with a toned figure and shining hair, "
+    "not a celebrity, not resembling any famous person.",
+]
+
+APELO_PADRAO = (
+    "An ordinary everyday relatable person with a plain unremarkable face, not "
+    "a celebrity, not a model, not an actor, not resembling any famous person.")
+
+
+def _apelo(spec):
+    """A clausula de apresentacao da REF: apelo nos mundos dos EUA, o registro
+    relatable nos demais. ⚠️ `.get` e nao `[...]`: mundo sem o selo cai no
+    padrao em vez de derrubar o sorteio."""
+    if not spec["mundo"].get("eua"):
+        return APELO_PADRAO
+    return spec["apelo"]
+
+
 def _traje(spec):
     """A roupa SORTEADA do mundo, com o artigo certo.
 
@@ -1497,6 +1872,8 @@ def sortear(pagina, rng, led, travas=None):
     # ⭐ O TRAJE E' EIXO PROPRIO desde 2026-08-05, com pool por mundo. Cada
     # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
     # traje SORTEADO, senao a ancora descreve uma roupa que nao esta' em cena.
+    reacao = _fresco_traje(REACOES_HOMEM, usados.get("reacao", []), rng)
+    apelo = rng.choice(APELO_EUA)
     traje = (_por_traje(mundo, travas["traje"]) if travas.get("traje")
              else _fresco_traje(mundo["trajes"], usados.get("traje", []), rng))
     ref = (_por_id(REFS, travas["ref"], "cabeca") if travas.get("ref")
@@ -1521,7 +1898,7 @@ def sortear(pagina, rng, led, travas=None):
     orgaos = rng.sample(NUCLEO, 2)
 
     spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
-            "traje": traje,
+            "traje": traje, "reacao": reacao, "apelo": apelo,
             "ref": ref, "homem": homem, "prop": prop, "substancia": sub,
             "metodo": dict(met, vaso_fala=_sem_artigo(met["curto"])),
             "comum": com, "raro": raro, "orgaos": orgaos,
@@ -1577,13 +1954,11 @@ def montar(spec):
     b["BLOCO 0 (REF)"] = (
         "REF 01: Photo of a real person, a %(idade)d-year-old %(etnia)s woman, "
         "chest up, facing the camera directly, neutral steady expression with "
-        "her mouth closed. %(pessoa_curta)s An ordinary everyday relatable "
-        "person with a plain unremarkable face, not a celebrity, not a model, "
-        "not an actor, not resembling any famous person. Hands out of frame, "
+        "her mouth closed. %(pessoa_curta)s %(apelo)s Hands out of frame, "
         "no objects. Plain neutral gray background, soft even frontal light. "
         "Slight sensor grain, soft focus, raw iPhone front camera aesthetic. "
         "No subtitles, no captions, no burned-in text, no watermark."
-        % dict(v, pessoa_curta="%s. %s. Wearing %s."
+        % dict(v, apelo=_apelo(spec), pessoa_curta="%s. %s. Wearing %s."
                % (_cap(ref["cabeca"]), _cap(ref["marca"]), _traje(spec))))
 
     # --- CENA 1 — A ISCA NA LENTE + O VILAO ---------------------------------
@@ -1611,7 +1986,7 @@ def montar(spec):
         "certain, her mouth open mid-word as she speaks, her front teeth even "
         "and complete. %(homem)s %(anti)s %(cauda)s"
         % dict(v, homem=BO_HOMEM % (hom["idade"], spec["etnia"], hom["marca"],
-                                    hom["roupa"])))
+                                    hom["roupa"], spec["reacao"][0])))
 
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;
@@ -1628,7 +2003,7 @@ def montar(spec):
     elenco = [
         "She is the only person in the shot.",
         "She is the only person in the shot.",
-        BO_HOMEM_TAKE,
+        BO_HOMEM_TAKE % spec["reacao"][1],
     ]
     audio = ["%s. No music." % m["audio"],
              # ⚠️ SEM `the` aqui: o campo `curto` dos METODOS JA' traz o artigo
