@@ -225,29 +225,34 @@ REFS_M = [
     # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
     # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
     # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
+    # ⚠️ Ajustadas na resolucao do rebase (2026-08-04): todo cabelo ganhou o
+    # token de hidratacao do CL26 (o assert barrou `long jet-black hair` seco),
+    # e duas ancoras REPETIDAS foram trocadas — covinha funda na bochecha
+    # esquerda (= idade 34) e heterocromia verde/marrom (= idade 40). Ancora
+    # repetida remenda o morphing, regra do proprio pool.
     {"idade": 26,
-     "cabeca": "long jet-black hair in a single braid over one shoulder",
+     "cabeca": "long silky jet-black hair in a single braid over one shoulder",
      "marca": "high round cheekbones and clear glowing skin"},
     {"idade": 31,
-     "cabeca": "a bleached-platinum bob cut sharp at the jaw",
+     "cabeca": "a sleek bleached-platinum bob cut sharp at the jaw",
      "marca": "a small silver hoop through her left nostril"},
     {"idade": 24,
-     "cabeca": "thick copper-red hair falling loose past her shoulders",
+     "cabeca": "thick glossy copper-red hair falling loose past her shoulders",
      "marca": "a dense spray of freckles over both cheeks and pale blue eyes"},
     {"idade": 33,
-     "cabeca": "a big loose curl-out worn wide",
-     "marca": "full lips and a deep dimple in her left cheek"},
+     "cabeca": "a big loose curl-out worn wide, soft and glossy",
+     "marca": "full lips and a faint dimple in her right cheek"},
     {"idade": 28,
      "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
-     "marca": "eyes of two different colours, one green and one brown"},
+     "marca": "striking light amber eyes"},
     {"idade": 35,
-     "cabeca": "waist-length box braids gathered over one shoulder",
+     "cabeca": "waist-length box braids with a healthy sheen, gathered over one shoulder",
      "marca": "smooth luminous skin and a wide bright smile"},
     {"idade": 27,
-     "cabeca": "very long straight dark hair parted in the middle",
+     "cabeca": "very long silky straight dark hair parted in the middle",
      "marca": "arched brows and a small beauty mark high on her left cheek"},
     {"idade": 30,
-     "cabeca": "chin-length wavy caramel hair pushed back off her forehead",
+     "cabeca": "chin-length smooth wavy caramel hair pushed back off her forehead",
      "marca": "a small heart-shaped birthmark below her right ear"},
 ]
 REFS_H = [
@@ -294,7 +299,9 @@ REFS_H = [
      "marca": "very pale blue eyes under dark brows"},
     {"idade": 44,
      "cabeca": "close-cropped coils with a sharp lined edge, clean-shaven",
-     "marca": "a wide gap between his two front teeth"},
+     # ⛔ era `a wide gap between his two front teeth` — o assert do CL25
+     # barrou no primeiro merge (dente nao e' marca; vira banguelo no Veo)
+     "marca": "a single deep dimple in his left cheek"},
 ]
 
 # ⛔ CL25 — assert de carga: nenhuma marca facial volta a pedir defeito de

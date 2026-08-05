@@ -698,6 +698,34 @@ REFS_M = [
      "marca": "a dense spray of freckles across her nose"},
     {"idade": 40, "cabeca": "smooth glossy dark hair with a sharp widow's peak, swept back",
      "marca": "eyes of two different colours, one green and one brown"},
+    # + 2026-08-04: ampliacao por ordem do operador (*"aumente o pool de
+    # personagens"*), espelhada do clean_short no rebase — la' as entradas
+    # chegaram sem o token de cabelo do CL26 e com 2 ancoras repetidas; aqui
+    # ja' entram corrigidas, identicas ao v1.
+    {"idade": 26,
+     "cabeca": "long silky jet-black hair in a single braid over one shoulder",
+     "marca": "high round cheekbones and clear glowing skin"},
+    {"idade": 31,
+     "cabeca": "a sleek bleached-platinum bob cut sharp at the jaw",
+     "marca": "a small silver hoop through her left nostril"},
+    {"idade": 24,
+     "cabeca": "thick glossy copper-red hair falling loose past her shoulders",
+     "marca": "a dense spray of freckles over both cheeks and pale blue eyes"},
+    {"idade": 33,
+     "cabeca": "a big loose curl-out worn wide, soft and glossy",
+     "marca": "full lips and a faint dimple in her right cheek"},
+    {"idade": 28,
+     "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
+     "marca": "striking light amber eyes"},
+    {"idade": 35,
+     "cabeca": "waist-length box braids with a healthy sheen, gathered over one shoulder",
+     "marca": "smooth luminous skin and a wide bright smile"},
+    {"idade": 27,
+     "cabeca": "very long silky straight dark hair parted in the middle",
+     "marca": "arched brows and a small beauty mark high on her left cheek"},
+    {"idade": 30,
+     "cabeca": "chin-length smooth wavy caramel hair pushed back off her forehead",
+     "marca": "a small heart-shaped birthmark below her right ear"},
 ]
 REFS_H = [
     {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a small scar through his right eyebrow"},
@@ -716,6 +744,34 @@ REFS_H = [
      "marca": "freckled skin across the bridge of his nose"},
     {"idade": 61, "cabeca": "a full head of white hair and a bristly white beard, heavy black-framed bifocals",
      "marca": "deeply lined skin and a pale scar along his right jaw"},
+    # + 2026-08-04: ampliacao por ordem do operador, espelhada do clean_short
+    # no rebase. A ultima chegou com `a wide gap between his two front teeth`
+    # de marca — o assert do CL25 barrou (dente vira banguelo no Veo) e ela
+    # entra ja' corrigida, identica ao v1.
+    {"idade": 52,
+     "cabeca": "a shaved head and a full salt-and-pepper beard",
+     "marca": "a broad flattened nose that has been broken once"},
+    {"idade": 45,
+     "cabeca": "thick dark hair going grey at the temples, clean-shaven",
+     "marca": "a deep vertical crease between his eyebrows"},
+    {"idade": 57,
+     "cabeca": "close-cropped iron-grey hair and a neat pencil moustache",
+     "marca": "wire-rimmed glasses and a heavy square jaw"},
+    {"idade": 41,
+     "cabeca": "dark curls kept short and dense, a two-day shadow",
+     "marca": "a notch cut through his right eyebrow"},
+    {"idade": 60,
+     "cabeca": "a bald crown with white hair close at the sides",
+     "marca": "a thick white moustache and heavy hooded eyelids"},
+    {"idade": 49,
+     "cabeca": "wavy salt-and-pepper hair worn long at the collar",
+     "marca": "a pale crescent scar on his left cheekbone"},
+    {"idade": 54,
+     "cabeca": "grey hair in a flat brush cut and a short greying beard",
+     "marca": "very pale blue eyes under dark brows"},
+    {"idade": 44,
+     "cabeca": "close-cropped coils with a sharp lined edge, clean-shaven",
+     "marca": "a single deep dimple in his left cheek"},
 ]
 
 # ⛔ CL25 — assert de carga: nenhuma marca facial volta a pedir defeito de
