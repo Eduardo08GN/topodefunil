@@ -190,6 +190,11 @@ CENAS_UI = ["1 · O DESPEJO E O CRESCIMENTO", "2 · A RECEITA INCOMPLETA",
 # pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
 # cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
 # palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+# ⭐⭐ MODOS DE REF — contrato compartilhado (short_comum), 2026-08-05.
+# Toggles de `ref bela` (super model, corpo escultural, pouca roupa,
+# olhos fora do comum) e `ref forte` (homem musculoso e atraente).
+# ⛔ Desligados, o prompt volta IDENTICO ao de antes do recurso.
+
 TETO_FALA = {1: 25, 2: 32, 3: 25}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
@@ -2420,7 +2425,8 @@ def _montar_falas(rng, sub, rec, orgaos, relacao, credibilidade, degrau):
 _MIN_BARREIRA = min(_w(b) for b in BARREIRAS)
 
 
-def sortear(pagina, rng, ledger, credibilidade=None, degrau=None, analogia=None):
+def sortear(pagina, rng, ledger, travas=None, degrau=None,
+            analogia=None):
     """Anti-repeticao por ledger, por pagina.
 
     Os dois eixos de ROSTO evitam os 3 ultimos (rosto repetido e' o que o
@@ -2437,12 +2443,27 @@ def sortear(pagina, rng, ledger, credibilidade=None, degrau=None, analogia=None)
     · a RELACAO e' sorteada ANTES das falas, porque ela manda na VOZ da prova;
     · a BANCADA e' sorteada DEPOIS das falas, porque o recibo tem de ser mudo.
     """
+    # ⛔⛔ O 4o POSICIONAL E' `travas`. A ui_agente passa o dicionario de
+    # travas ali sempre que o motor declara contrato, e com a assinatura
+    # antiga ele cairia dentro de `credibilidade` virando estado invalido EM
+    # SILENCIO. O parametro antigo viaja DENTRO das travas — mesmo
+    # conserto do TROCA. ⚠️ Desempacotar aqui, na PRIMEIRA linha do corpo:
+    # a primeira versao fazia isso la' embaixo, no site da REF, e `credibilidade`
+    # e' usado antes — UnboundLocalError em 100%% dos sorteios.
+    travas = travas if isinstance(travas, dict) else (
+        {"credibilidade": travas} if travas else {})
+    credibilidade = travas.get("credibilidade")
     cred = credibilidade or CREDIBILIDADE_PADRAO
     deg = degrau or DEGRAU_PADRAO
     fam = analogia or ANALOGIA_PADRAO
 
     hist = ledger.get(pagina, {})
     elegiveis = [n for n in NARRADORAS if n["idade"] >= IDADE_MINIMA_NARRADORA]
+    # ⚠️ 28 e' o piso da RS19 — ela fala do marido.
+    # ⛔ SEM MODO_BELA AQUI. A RS23 (§travas) BANE vocabulario de desejo no
+    # prompt — a roupa entra como PECA DESCRITA, nunca como adjetivo de corpo —
+    # e o modo BELA e' exatamente esse vocabulario (`curvy`, `sculpted`). Os
+    # dois se excluem por construcao, e a RS23 nasceu de render recusado.
     nar = _evitando(rng, elegiveis, hist.get("narradora", [])[-3:])
     pares = [h for h in homens_de(pagina)
              if abs(h["idade"] - nar["idade"]) <= TETO_DIF_IDADE]
@@ -3565,7 +3586,8 @@ def autoteste(n_por_pagina=80, seed=7, credibilidade=None, degrau=None,
     for pag in sorted(ETNIA):
         ledger = {}
         for _ in range(n_por_pagina):
-            spec = sortear(pag, rng, ledger, credibilidade, degrau, analogia)
+            spec = sortear(pag, rng, ledger, {"credibilidade": credibilidade},
+                           degrau, analogia)
             blocos = montar(spec)
             for nivel, msg in lint(spec, blocos):
                 if nivel == "ERRO":

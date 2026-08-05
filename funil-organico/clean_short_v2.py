@@ -1149,6 +1149,14 @@ DESPEJO = {
 # seguranca, nao como mecanismo.
 # ---------------------------------------------------------------------------
 NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
+# ⭐⭐ MODOS DE REF — contrato compartilhado (short_comum), 2026-08-05.
+# Ordem do operador: toggles de `ref bela` (super model, corpo
+# escultural, pouca roupa, olhos fora do comum) e `ref forte` (homem
+# musculoso e atraente). ⛔ Desligados, o prompt volta IDENTICO ao de
+# antes do recurso — provado caractere por caractere em 200 seeds.
+MODO_BELA = True
+MODO_FORTE = True
+
 TETO_FALA = {1: 22, 2: 24, 3: 22}
 
 HOOKS = [
@@ -1693,7 +1701,15 @@ def sortear(pagina, rng, led, travas=None):
     familia = (_por_id(FAMILIAS, travas["familia"]) if travas.get("familia")
                else _fresco(FAMILIAS, usados.get("familia", []), rng, "id"))
 
-    ref = ref_trav or rng.choice(REFS_H if sexo == "homem" else REFS_M)
+    # ⭐ MODO BELA / MODO FORTE — ver a nota do clean_short.
+    if ref_trav:
+        ref = ref_trav
+    elif sexo == "homem":
+        ref = (sc.ref_forte(REFS_H[0], rng) if travas.get("forte")
+               else rng.choice(REFS_H))
+    else:
+        ref = (sc.ref_bela(REFS_M[0], rng) if travas.get("bela")
+               else rng.choice(REFS_M))
     # CL24/CL26 — o corpo acompanha o sexo: treinado nele, sensual nela
     corpo = rng.choice(CORPOS_H if sexo == "homem" else CORPOS_M)
 

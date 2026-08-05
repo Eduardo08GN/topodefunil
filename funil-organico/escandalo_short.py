@@ -190,6 +190,12 @@ CENAS_UI = ["1 · O ESCANDALO", "2 · A RECEITA INCOMPLETA", "3 · A PROVA + CTA
 # palavras (2,0-3,1 palavras/s).
 # ⚠️ cena 3 cortava em 0,5%. Enumeracao exaustiva: 99,1% das 5.610 combinacoes ja'
 # cabiam em 25, e sobrevivem 22/22 PROVAS, 17/17 CTAS e 15/15 GATES.
+# ⭐⭐ MODOS DE REF — contrato compartilhado (short_comum), 2026-08-05.
+# Toggles de `ref bela` (super model, corpo escultural, pouca roupa,
+# olhos fora do comum) e `ref forte` (homem musculoso e atraente).
+# ⛔ Desligados, o prompt volta IDENTICO ao de antes do recurso.
+MODO_BELA = True
+
 TETO_FALA = {1: 25, 2: 32, 3: 25}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
@@ -2097,7 +2103,8 @@ def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
     return [c1, c2, c3]
 
 
-def sortear(pagina, rng, ledger, degrau=None, geometria=None, figurantes=None):
+def sortear(pagina, rng, ledger, travas=None, geometria=None,
+            figurantes=None):
     """ES21 — anti-repeticao por ledger, por pagina.
 
     ⚠️ A assinatura tem de aceitar `sortear(pagina, rng, ledger)` com tres
@@ -2108,6 +2115,16 @@ def sortear(pagina, rng, ledger, degrau=None, geometria=None, figurantes=None):
     dela, e a relacao nomeada e' a alavanca 2 do protocolo de recusa —
     contradize-la na fala a ANULA.
     """
+    # ⛔⛔ O 4o POSICIONAL E' `travas`. A ui_agente passa o dicionario de
+    # travas ali sempre que o motor declara contrato, e com a assinatura
+    # antiga ele cairia dentro de `degrau` virando estado invalido EM
+    # SILENCIO. O parametro antigo viaja DENTRO das travas — mesmo
+    # conserto do TROCA. ⚠️ Desempacotar aqui, na PRIMEIRA linha do corpo:
+    # a primeira versao fazia isso la' embaixo, no site da REF, e `degrau`
+    # e' usado antes — UnboundLocalError em 100%% dos sorteios.
+    travas = travas if isinstance(travas, dict) else (
+        {"degrau": travas} if travas else {})
+    degrau = travas.get("degrau")
     degrau = DEGRAU_PADRAO if degrau is None else degrau
     geometria = GEOMETRIA_PADRAO if geometria is None else geometria
     figurantes = FIGURANTES_PADRAO if figurantes is None else figurantes
@@ -2115,7 +2132,11 @@ def sortear(pagina, rng, ledger, degrau=None, geometria=None, figurantes=None):
     hist = ledger.get(pagina, {})
     pool_h = homens_de(pagina)
 
-    nar = _evitando(rng, NARRADORAS, hist.get("narradora", [])[-3:])
+    # ⚠️ 28 e' o piso da ES11 — ela fala do marido.
+    nar = (sc.ref_bela(NARRADORAS[0], rng,
+                       idade_min=IDADE_MINIMA_NARRADORA)
+           if travas.get("bela")
+           else _evitando(rng, NARRADORAS, hist.get("narradora", [])[-3:]))
     # ⛔ ES11/TETO_DIF_IDADE: o homem sai do pool JA' FILTRADO pela diferenca de
     # idade. A cena 3 poe os dois num quadro de proxy falico, e a politica de
     # menores e' a determinista — nao cede a regerar. Filtro por construcao, com
@@ -2123,6 +2144,10 @@ def sortear(pagina, rng, ledger, degrau=None, geometria=None, figurantes=None):
     # AVISO da ES11 acusa.
     pool_ok = [h for h in pool_h
                if h["idade"] - nar["idade"] <= TETO_DIF_IDADE] or pool_h
+    # ⛔ SEM MODO_FORTE AQUI. Este slot e' o FIGURANTE CONGELADO, e a ES11
+    # exige 55-70 anos: ele e' a plateia muda que encena o constrangimento, nao
+    # o corpo-prova. Homem musculoso de 26-38 nao e' o que a cena pede, e
+    # forcar o modo reprovava 200 de 200.
     hom = _evitando(rng, pool_ok, hist.get("homem", [])[-3:])
     rea = _evitando(rng, REACOES, hist.get("reacao", [])[-2:])
 
@@ -3462,7 +3487,8 @@ def _rodada(n_por_pagina, rng, degrau, geometria, figurantes, m=None):
     for pag in sorted(ETNIA):
         ledger = {}
         for _ in range(n_por_pagina):
-            spec = sortear(pag, rng, ledger, degrau, geometria, figurantes)
+            spec = sortear(pag, rng, ledger, {"degrau": degrau},
+                           geometria, figurantes)
             blocos = montar(spec)
             for nivel, msg in lint(spec, blocos):
                 if nivel == "ERRO":
@@ -3862,7 +3888,8 @@ def main():
     ledger = _carregar_ledger()
     saida = 0
     for i in range(a.n):
-        spec = sortear(a.pagina, rng, ledger, a.degrau, a.geometria,
+        spec = sortear(a.pagina, rng, ledger, {"degrau": a.degrau},
+                       a.geometria,
                        a.figurantes)
         blocos = montar(spec)
         achados = lint(spec, blocos)

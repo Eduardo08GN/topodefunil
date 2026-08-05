@@ -119,6 +119,13 @@ CENAS_UI = ["1 · A CRENDICE", "2 · A TROCA + O BATISMO", "3 · O CORPO-PROVA +
 # pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
 # cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
 # palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+# ⭐⭐ MODOS DE REF — contrato compartilhado (short_comum), 2026-08-05.
+# Toggles de `ref bela` (super model, corpo escultural, pouca roupa,
+# olhos fora do comum) e `ref forte` (homem musculoso e atraente).
+# ⛔ Desligados, o prompt volta IDENTICO ao de antes do recurso.
+MODO_BELA = True
+MODO_FORTE = True
+
 TETO_FALA = {1: 22, 2: 25, 3: 25}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
@@ -1700,8 +1707,15 @@ def sortear(pagina, rng, ledger, travas=None):
     travas = travas or {}
     degrau = travas.get("degrau")
     hist = ledger.get(pagina, {})
-    nar = _evitando(rng, NARRADORAS, hist.get("narradora", [])[-3:])
-    hom = _evitando(rng, homens_de(pagina), hist.get("corpo_prova", [])[-3:])
+    # ⭐ MODOS DE REF — a narradora e o corpo-prova, cada um com o seu.
+    # ⚠️ 28 e' o piso do TR11 — ver a nota em `sc.ref_bela`.
+    nar = (sc.ref_bela(NARRADORAS[0], rng,
+                       idade_min=IDADE_MINIMA_NARRADORA)
+           if travas.get("bela")
+           else _evitando(rng, NARRADORAS, hist.get("narradora", [])[-3:]))
+    _hpool = homens_de(pagina)
+    hom = (sc.ref_forte(_hpool[0], rng) if travas.get("forte")
+           else _evitando(rng, _hpool, hist.get("corpo_prova", [])[-3:]))
     cen = _evitando(rng, CENARIOS, hist.get("cenario", [])[-2:])
     # ⭐ CADEADO DO PROXY — ordem do operador, 2026-08-05: *"coloca um botao de
     # trava no proxy tb"*. A UI devolve o DICIONARIO que esta' na tela (nao um

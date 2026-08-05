@@ -1104,6 +1104,13 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
 # cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
 # palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+# ⭐⭐ MODOS DE REF — contrato compartilhado (short_comum), 2026-08-05.
+# Ordem do operador: toggles de `ref bela` (super model, corpo
+# escultural, pouca roupa, olhos fora do comum) e `ref forte` (homem
+# musculoso e atraente). ⛔ Desligados, o prompt volta IDENTICO ao de
+# antes do recurso — provado caractere por caractere em 200 seeds.
+MODO_BELA = True
+
 TETO_FALA = {1: 32, 2: 32, 3: 25}
 PISO_FALA = {1: 24, 2: 24, 3: 22}
 
@@ -1407,8 +1414,11 @@ def sortear(pagina, rng, led, travas=None):
     cor = travas.get("cor") or rng.choice(mundo["cores"])
     ref = _por_id(REFS, travas["ref"], "cabeca") if travas.get("ref") \
         else rng.choice(REFS)
-    mulher = _por_id(MULHERES, travas["mulher"], "cabeca") \
-        if travas.get("mulher") else rng.choice(MULHERES)
+    # ⭐ MODO BELA — contrato do short_comum, 2026-08-05.
+    mulher = (_por_id(MULHERES, travas["mulher"], "cabeca")
+              if travas.get("mulher")
+              else sc.ref_bela(MULHERES[0], rng) if travas.get("bela")
+              else rng.choice(MULHERES))
 
     poss = _lugares_possiveis(mundo)
     lugar = (_por_id(poss, travas["lugar"]) if travas.get("lugar")

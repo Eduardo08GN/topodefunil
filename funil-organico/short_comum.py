@@ -864,6 +864,32 @@ def lint_painel_honesto(motor, spec, blocos, achados):
 # ⚠️ Cada uma varia CORPO, CABECA e MARCA juntos: duas mulheres de cabelo
 # diferente e mesmo porte leem como a mesma pessoa (licao do medir_personagens).
 REFS_BELAS = [
+    # ⭐ AS OITO DE 28+ — existem para os motores com piso de idade (TR11,
+    # ES11, RS19). Sem elas o `idade_min` nao tinha o que sortear.
+    {"idade": 28, "corpo": "tall and sculpturally curvy with a narrow waist",
+     "cabeca": "long dark hair falling in heavy glossy waves",
+     "marca": "high cheekbones and a small beauty mark on the jaw"},
+    {"idade": 29, "corpo": "statuesque and toned with long legs",
+     "cabeca": "honey-blonde hair in a deep side part",
+     "marca": "a wide full mouth and clear skin"},
+    {"idade": 30, "corpo": "shapely and strong with a sculpted waist",
+     "cabeca": "copper hair in loose waves past the shoulders",
+     "marca": "a dense spray of freckles and a straight nose"},
+    {"idade": 30, "corpo": "long-limbed and lean with square shoulders",
+     "cabeca": "black hair in a sleek high ponytail",
+     "marca": "sharp brows and a small gold hoop in one nostril"},
+    {"idade": 31, "corpo": "curvy and sculpted with a very narrow waist",
+     "cabeca": "chestnut hair cut into long layers",
+     "marca": "a faint dimple in one cheek and full lips"},
+    {"idade": 31, "corpo": "tall and athletic with a flat stomach",
+     "cabeca": "dark auburn hair gathered in a low knot",
+     "marca": "a small scar at the hairline and even skin"},
+    {"idade": 32, "corpo": "softly curvy and toned with a long waist",
+     "cabeca": "ash-blonde hair in a blunt shoulder cut",
+     "marca": "a beauty mark above the lip and a strong jaw"},
+    {"idade": 33, "corpo": "slim and sculptural with a graceful neck",
+     "cabeca": "long box braids gathered high",
+     "marca": "sculpted cheekbones and a small stud in one nostril"},
     {"idade": 23, "corpo": "tall and long-legged with a sculpted waist",
      "cabeca": "deep auburn hair falling in loose waves past her shoulders",
      "marca": "a light spray of freckles across her nose and green eyes"},
@@ -887,7 +913,7 @@ REFS_BELAS = [
      "marca": "ice-blue eyes and a dimple in one cheek"},
     {"idade": 23, "corpo": "curvy and athletic with a small waist",
      "cabeca": "tight dark curls gathered high on her head",
-     "marca": "glowing deep brown skin and a wide bright smile"},
+     "marca": "clear deep brown skin and a wide bright smile"},
     {"idade": 22, "corpo": "tall and slim with an hourglass line",
      "cabeca": "chestnut hair in long beachy waves",
      "marca": "a gap between her front teeth and warm brown eyes"},
@@ -1060,7 +1086,7 @@ def _sem_olhos(marca):
     m = re.sub(r"\s{2,}", " ", m).strip(" ,")
     return m or "clear skin"
 
-def ref_bela(molde, rng):
+def ref_bela(molde, rng, idade_min=None):
     """Uma REF do modo BELA no FORMATO DO MOTOR que pediu.
 
     `molde` e' uma entrada qualquer do pool original — serve so' para dizer
@@ -1076,7 +1102,17 @@ def ref_bela(molde, rng):
     morre CALADO — foi assim que o botao `trocar` de seis agentes ficou quebrado
     sem ninguem perceber em 2026-07-31.
     """
-    base = dict(rng.choice(REFS_BELAS))
+    # ⛔ O PISO DE IDADE E' DO MOTOR, nao do pool. O TROCA exige narradora
+    # com 28+ (TR11: ela fala do marido) e o pool bela vai de 21 a 27 por ordem
+    # do operador (*"novinhas"*). Os dois se chocaram em 200 de 200 sorteios ate'
+    # este parametro existir. ⚠️ Quando NENHUMA entrada atinge o piso, ele CEDE
+    # e a mais velha do pool entra: derrubar o sorteio por causa de um toggle
+    # seria o botao que quebra o app, nao o que muda a REF.
+    _pool = REFS_BELAS
+    if idade_min:
+        _pool = [r for r in REFS_BELAS if r["idade"] >= idade_min] or [
+            max(REFS_BELAS, key=lambda r: r["idade"])]
+    base = dict(rng.choice(_pool))
     # ⭐ O OLHO E' SORTEADO A PARTE e entra NA MARCA — que e' o campo que todo
     # motor ja' renderiza. Assim ele chega ao quadro sem eu tocar em 16 motores.
     # ⛔ E O OLHO ANTIGO SAI ANTES. Quinze das 30 marcas ja' descrevem os olhos
@@ -1257,13 +1293,26 @@ ANTICELEB_FORTE = ("A rugged good-looking face, not a celebrity, not "
                    "resembling any famous person.")
 
 
-def ref_forte(molde, rng):
+def ref_forte(molde, rng, idade_min=None, idade_max=None):
     """Uma REF masculina do MODO FORTE no FORMATO DO MOTOR que pediu.
 
     Espelho exato do `ref_bela` — ver a docstring de la' para o porque de nao
     devolver o dicionario cru.
+
+    ⛔ A FAIXA E' DO MOTOR. O ESCANDALO tem `TETO_DIF_IDADE = 30` entre narradora
+    e corpo-prova, e uma faixa propria para o figurante; o RESSURREICAO tem a
+    mesma. Um pool compartilhado que ignore isso reprova a producao do motor —
+    medido em 200 sorteios antes deste parametro existir.
+    ⚠️ Quando NENHUMA entrada cabe na faixa, ela CEDE e a mais proxima entra:
+    derrubar o sorteio por causa de um toggle seria o botao que quebra o app.
     """
-    base = dict(rng.choice(REFS_FORTES))
+    _pool = REFS_FORTES
+    if idade_min is not None:
+        _pool = [r for r in _pool if r["idade"] >= idade_min] or _pool
+    if idade_max is not None:
+        _pool = [r for r in _pool if r["idade"] <= idade_max] or [
+            min(REFS_FORTES, key=lambda r: r["idade"])]
+    base = dict(rng.choice(_pool))
     base["marca"] = "%s, %s" % (rng.choice(OLHOS_FORTES),
                                 _sem_olhos(base["marca"]))
     tpl, curto = rng.choice(ROUPAS_FORTES)
