@@ -197,10 +197,20 @@ MUNDOS = [
             "the basin and a wide plank table",
      "coz_c": "timber herb kitchen",
      "sup_a": "a heavy scrubbed pine table", "sup": "table",
-     "traje": "%s long-sleeved high-collared dress under a black bib apron, "
-              "with a white cap tied under the chin",
-     "curto": "black bib apron",
-     "cores": ["deep plum", "dark brown", "slate blue", "forest green"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s long-sleeved high-collared dress under a black bib apron, with a white cap tied under the chin",
+          "black bib apron"),
+         ("%s plain caped dress with a white organdy apron over it",
+          "organdy apron"),
+         ("%s long-sleeved dress with a dark shawl pinned across the shoulders",
+          "pinned shawl"),
+         ("%s wide-skirted work dress with the sleeves buttoned at the wrist",
+          "work dress"),
+         ("%s plain dress under a full-length dark pinafore",
+          "dark pinafore"),
+     ],
+     "cores": ["deep plum", "dark brown", "slate blue", "forest green", "charcoal", "wine"],
      "luz": "Soft daylight coming in from a window at frame-right.",
      "luz_c": "soft window daylight",
      "audio": "quiet room tone, a wood floor creaking"},
@@ -212,9 +222,20 @@ MUNDOS = [
             "kettle on the hob and a window looking onto the yard",
      "coz_c": "oak suburban kitchen",
      "sup_a": "a speckled granite countertop", "sup": "countertop",
-     "traje": "%s knit sweater with the sleeves pushed back",
-     "curto": "knit sweater",
-     "cores": ["cream", "dusty rose", "navy", "sage"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s knit sweater with the sleeves pushed back",
+          "knit sweater"),
+         ("%s checked flannel shirt tucked in at the waist",
+          "checked flannel"),
+         ("%s sleeveless denim shirt over a plain tee",
+          "denim shirt"),
+         ("%s ribbed turtleneck under a heavy canvas apron",
+          "canvas apron"),
+         ("%s short-sleeved henley with a dish towel over one shoulder",
+          "henley"),
+     ],
+     "cores": ["dusty rose", "navy", "sage", "mustard", "burgundy", "cream"],
      "luz": "Warm overhead kitchen light with weak daylight behind it.",
      "luz_c": "warm overhead light",
      "audio": "a fridge humming, quiet room tone"},
@@ -226,9 +247,20 @@ MUNDOS = [
             "behind glass cabinet doors, a black enamel range in the corner",
      "coz_c": "pine lodge kitchen",
      "sup_a": "a thick oiled butcher-block counter", "sup": "counter",
-     "traje": "%s quilted flannel shirt with the sleeves rolled",
-     "curto": "quilted flannel shirt",
-     "cores": ["dark red", "forest green", "brown", "slate blue"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s quilted flannel shirt with the sleeves rolled",
+          "quilted flannel shirt"),
+         ("%s corduroy shirt-jacket over a plain work tee",
+          "corduroy shirt-jacket"),
+         ("%s wool vest over a long-sleeved plaid shirt",
+          "wool vest"),
+         ("%s heavy knit cardigan with wooden buttons",
+          "knit cardigan"),
+         ("%s denim dungarees over a long-sleeved shirt",
+          "denim dungarees"),
+     ],
+     "cores": ["dark red", "forest green", "brown", "slate blue", "mustard", "charcoal"],
      "luz": "Low grey mountain daylight through a small window at frame-left.",
      "luz_c": "low grey daylight",
      "audio": "wind at the window, a stove ticking"},
@@ -240,9 +272,20 @@ MUNDOS = [
             "roots along an open shelf and a cast-iron skillet on the hob",
      "coz_c": "yellow beadboard kitchen",
      "sup_a": "a pale blue painted wooden counter", "sup": "counter",
-     "traje": "%s short-sleeved button-down shirt",
-     "curto": "button-down shirt",
-     "cores": ["cream", "sky blue", "khaki", "soft grey"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s short-sleeved button-down shirt",
+          "button-down shirt"),
+         ("%s floral house dress with a half apron tied at the waist",
+          "half apron"),
+         ("%s sleeveless linen shift with a headwrap in the same cloth",
+          "matching headwrap"),
+         ("%s wide-collared blouse tucked into a long skirt",
+          "wide-collared blouse"),
+         ("%s cotton shirt with the sleeves rolled and a printed apron",
+          "printed apron"),
+     ],
+     "cores": ["sky blue", "deep coral", "emerald", "plum", "marigold", "cream"],
      "luz": "Bright soft daylight through the open screen door.",
      "luz_c": "bright daylight through the door",
      "audio": "cicadas outside, a screen door creaking"},
@@ -254,9 +297,20 @@ MUNDOS = [
             "herbs stacked on an open shelf and a flat steel comal on the hob",
      "coz_c": "talavera-tiled kitchen",
      "sup_a": "a terracotta-tiled counter", "sup": "counter",
-     "traje": "%s embroidered cotton blouse",
-     "curto": "embroidered blouse",
-     "cores": ["cream", "pale blue", "tan", "deep red"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s embroidered cotton blouse",
+          "embroidered blouse"),
+         ("%s square-necked huipil with woven trim at the hem",
+          "huipil"),
+         ("%s ruffled off-shoulder blouse with a woven belt",
+          "ruffled blouse"),
+         ("%s plain blouse under a striped woven apron",
+          "striped apron"),
+         ("%s long-sleeved blouse with a rebozo folded over one shoulder",
+          "rebozo"),
+     ],
+     "cores": ["deep red", "marigold", "turquoise", "magenta", "cobalt", "cream"],
      "luz": "Warm afternoon sun coming in low from frame-left.",
      "luz_c": "warm low afternoon sun",
      "audio": "a radio playing faintly in another room"},
@@ -268,9 +322,20 @@ MUNDOS = [
             "dried flowers on a fitted shelf and matched enamel bowls by the sink",
      "coz_c": "mint-green island kitchen",
      "sup_a": "a pale speckled stone counter", "sup": "counter",
-     "traje": "%s loose linen blouse worn open at the collar",
-     "curto": "loose linen blouse",
-     "cores": ["white", "pale yellow", "sea blue", "sand"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s loose linen blouse worn open at the collar",
+          "loose linen blouse"),
+         ("%s madras-check wrap top knotted at the waist",
+          "wrap top"),
+         ("%s sleeveless cotton shift with a tall bright headwrap",
+          "bright headwrap"),
+         ("%s short-sleeved blouse with a full printed skirt",
+          "printed skirt"),
+         ("%s off-shoulder blouse with wide ruffled sleeves",
+          "ruffled sleeves"),
+     ],
+     "cores": ["sea blue", "coral", "lime green", "hot pink", "pale yellow", "white"],
      "luz": "Hard bright island daylight coming through the louvres.",
      "luz_c": "hard bright daylight",
      "audio": "birds outside, a ceiling fan turning"},
@@ -282,9 +347,20 @@ MUNDOS = [
             "the hob and a bamboo steamer stacked on a shelf",
      "coz_c": "wooden-drawer kitchen",
      "sup_a": "a pale grey stone counter", "sup": "counter",
-     "traje": "%s round-collared cotton jacket",
-     "curto": "cotton jacket",
-     "cores": ["indigo", "oat", "charcoal", "moss green"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s round-collared cotton jacket",
+          "cotton jacket"),
+         ("%s side-fastening mandarin-collar tunic",
+          "mandarin tunic"),
+         ("%s wide-sleeved linen wrap top tied at the side",
+          "linen wrap top"),
+         ("%s quilted vest over a long-sleeved shirt",
+          "quilted vest"),
+         ("%s plain shirt under a dark half apron with deep pockets",
+          "half apron"),
+     ],
+     "cores": ["indigo", "charcoal", "moss green", "deep teal", "rust", "oat"],
      "luz": "Even cool daylight from a window behind the camera.",
      "luz_c": "even cool daylight",
      "audio": "a clay pot simmering, quiet room tone"},
@@ -296,9 +372,20 @@ MUNDOS = [
             "shelf, a heavy pestle and a steel tumbler beside the sink",
      "coz_c": "polished stone kitchen",
      "sup_a": "a dark polished granite counter", "sup": "counter",
-     "traje": "%s long-sleeved kurta",
-     "curto": "kurta",
-     "cores": ["off-white", "pale blue", "sand", "deep maroon"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s long-sleeved kurta",
+          "kurta"),
+         ("%s cotton sari with the pallu tucked in at the waist",
+          "cotton sari"),
+         ("%s salwar kameez with a light dupatta over one shoulder",
+          "salwar kameez"),
+         ("%s short-sleeved kurti over straight trousers",
+          "kurti"),
+         ("%s printed blouse with a wrapped cotton shawl",
+          "cotton shawl"),
+     ],
+     "cores": ["deep maroon", "marigold", "emerald", "saffron", "royal blue", "off-white"],
      "luz": "Warm even daylight from a window at frame-right.",
      "luz_c": "warm even daylight",
      "audio": "a pressure cooker hissing softly, quiet room tone"},
@@ -311,9 +398,20 @@ MUNDOS = [
             "green courtyard",
      "coz_c": "tiled West African kitchen",
      "sup_a": "a polished dark granite counter", "sup": "counter",
-     "traje": "%s short-sleeved embroidered cotton tunic",
-     "curto": "embroidered tunic",
-     "cores": ["white", "indigo", "sand", "deep green"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s short-sleeved embroidered cotton tunic",
+          "embroidered tunic"),
+         ("%s wax-print wrapper tied at the waist with a matching top",
+          "wax-print wrapper"),
+         ("%s wide-sleeved boubou with gold thread at the neck",
+          "boubou"),
+         ("%s fitted print dress with a tall matching headwrap",
+          "tall headwrap"),
+         ("%s plain blouse under a wax-print apron",
+          "wax-print apron"),
+     ],
+     "cores": ["indigo", "deep green", "ochre", "bright orange", "royal blue", "white"],
      "luz": "Strong flat daylight coming through the open doorway.",
      "luz_c": "strong flat daylight",
      "audio": "voices far off outside, quiet room tone"},
@@ -325,9 +423,20 @@ MUNDOS = [
             "leaves ranged along a fitted shelf, a stainless kettle on the hob",
      "coz_c": "pale tiled kitchen",
      "sup_a": "a solid hardwood worktop", "sup": "worktop",
-     "traje": "%s open-collared cotton shirt",
-     "curto": "cotton shirt",
-     "cores": ["white", "pale grey", "tan", "sky blue"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s open-collared cotton shirt",
+          "cotton shirt"),
+         ("%s printed kanga wrapped over one shoulder",
+          "kanga"),
+         ("%s long tunic dress with fine embroidery at the neckline",
+          "tunic dress"),
+         ("%s sleeveless linen top with a folded headscarf",
+          "folded headscarf"),
+         ("%s buttoned blouse with a wrapped patterned skirt",
+          "patterned skirt"),
+     ],
+     "cores": ["deep purple", "terracotta", "bright green", "sky blue", "cobalt", "white"],
      "luz": "Soft daylight through the shutters at frame-left.",
      "luz_c": "soft shuttered daylight",
      "audio": "a kettle ticking, quiet room tone"},
@@ -339,9 +448,20 @@ MUNDOS = [
             "and leaf on an open shelf and a large tin of oil by the door",
      "coz_c": "whitewashed arched kitchen",
      "sup_a": "a thick pale marble counter", "sup": "counter",
-     "traje": "%s linen blouse with the sleeves rolled",
-     "curto": "linen blouse",
-     "cores": ["white", "pale blue", "sand", "olive"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s linen blouse with the sleeves rolled",
+          "linen blouse"),
+         ("%s sleeveless cotton dress with a canvas apron over it",
+          "canvas apron"),
+         ("%s buttoned shirt-dress belted at the waist",
+          "shirt-dress"),
+         ("%s crocheted cardigan over a plain vest top",
+          "crocheted cardigan"),
+         ("%s wide-necked blouse with a scarf knotted at the throat",
+          "knotted scarf"),
+     ],
+     "cores": ["olive", "terracotta", "deep navy", "mustard", "pale blue", "white"],
      "luz": "Hard bright Mediterranean sun through the arched window.",
      "luz_c": "hard bright sun",
      "audio": "gulls far off, quiet room tone"},
@@ -354,9 +474,20 @@ MUNDOS = [
             "tiled stove in the corner",
      "coz_c": "tiled andean kitchen",
      "sup_a": "a thick oiled hardwood work table", "sup": "table",
-     "traje": "%s woven wool cardigan over a plain blouse",
-     "curto": "wool cardigan",
-     "cores": ["deep red", "burnt orange", "cream", "indigo"],
+     # ⭐ CINCO trajes, com SILHUETA diferente — nao cinco cores do mesmo.
+     "trajes": [
+         ("%s woven wool cardigan over a plain blouse",
+          "wool cardigan"),
+         ("%s embroidered wool skirt with a fitted jacket",
+          "embroidered skirt"),
+         ("%s striped manta folded over the shoulders",
+          "striped manta"),
+         ("%s knitted vest over a long-sleeved blouse",
+          "knitted vest"),
+         ("%s pleated pollera with a plain buttoned top",
+          "pollera"),
+     ],
+     "cores": ["deep red", "burnt orange", "indigo", "emerald", "magenta", "cream"],
      "luz": "Cool high-altitude daylight from a small window at frame-right.",
      "luz_c": "cool high daylight",
      "audio": "wind outside, quiet room tone"},
@@ -645,6 +776,38 @@ REFS = [
     {"idade": 38, "corpo": "strong-shouldered and upright",
      "cabeca": "silver-free dark hair wound into a bun",
      "marca": "arched brows over wide dark eyes and clear skin"},
+    # + 2026-08-05 — o operador leu tres lotes e reclamou da repeticao de
+    # pessoas e roupa. Estas dez variam CORPO e FORMATO DE CABECA, nao so' cor.
+    {"idade": 32, "corpo": "softly full-figured, with rounded shoulders",
+     "cabeca": "loose dark curls falling past her shoulders",
+     "marca": "a small dark mole just above her lip and clear skin"},
+    {"idade": 24, "corpo": "petite and compact, with narrow shoulders",
+     "cabeca": "jet-black hair in a blunt chin-length bob",
+     "marca": "wide-set almond eyes and a faint pale scar on her chin"},
+    {"idade": 35, "corpo": "tall and broad through the shoulders",
+     "cabeca": "tight coils cropped close to the head",
+     "marca": "sharply cut cheekbones and a small gold stud in one nostril"},
+    {"idade": 29, "corpo": "curvy and softly built",
+     "cabeca": "dark hair with a deep side part falling in heavy waves",
+     "marca": "a beauty spot at the outer corner of her right eye"},
+    {"idade": 27, "corpo": "lean and wiry, with a long neck",
+     "cabeca": "ash-brown hair twisted into a loose topknot",
+     "marca": "pale grey eyes and a faint round mark between her brows"},
+    {"idade": 33, "corpo": "strong and squarely built",
+     "cabeca": "thick black hair coiled into two low buns",
+     "marca": "full arched brows and a thin scar along her jawline"},
+    {"idade": 26, "corpo": "slight and narrow-shouldered",
+     "cabeca": "waist-length straight black hair worn loose",
+     "marca": "a dimple that shows in one cheek only"},
+    {"idade": 31, "corpo": "athletic and square-shouldered",
+     "cabeca": "copper braids wrapped into a crown around her head",
+     "marca": "a scatter of dark freckles across both cheeks"},
+    {"idade": 37, "corpo": "sturdy and full-hipped",
+     "cabeca": "glossy black hair in a low ponytail",
+     "marca": "a small raised birthmark on her right temple"},
+    {"idade": 28, "corpo": "willowy and fine-boned",
+     "cabeca": "sandy hair in a thick fishtail braid",
+     "marca": "a slight overbite that shows when she talks"},
 ]
 
 
@@ -707,6 +870,48 @@ HOMENS = [
      "marca": "a burly build, a short grey afro and a broad open face, with a "
               "small birthmark high on one cheek",
      "roupa": "a sand-coloured linen shirt"},
+    # + 2026-08-05, mesma ordem do operador. Porte, cabeca e pelo facial variam
+    # juntos: dois homens de cabelo diferente e mesmo porte leem como o mesmo.
+    {"id": "bigode_farto", "idade": 57,
+     "marca": "a lean upright frame, dark hair combed to one side and a thick "
+              "moustache, with deep laugh lines around the eyes",
+     "roupa": "a striped short-sleeve shirt"},
+    {"id": "calvo_barba", "idade": 51,
+     "marca": "a heavy build, a shaved head and a full salt-and-pepper beard, "
+              "with a broad flat nose",
+     "roupa": "a denim work shirt"},
+    {"id": "branco_liso", "idade": 62,
+     "marca": "a narrow build, straight white hair falling over the forehead, "
+              "hollow cheeks and a cleft chin",
+     "roupa": "a pale blue oxford shirt"},
+    {"id": "locs_curtas", "idade": 45,
+     "marca": "a stocky athletic build, short twisted locs and a trimmed "
+              "goatee, with a small scar on his temple",
+     "roupa": "a burgundy polo shirt"},
+    {"id": "sobrancelha_farta", "idade": 59,
+     "marca": "a solid build, thinning grey hair and very heavy dark eyebrows, "
+              "with a bulbous nose",
+     "roupa": "a khaki utility shirt"},
+    {"id": "queimado_sol", "idade": 48,
+     "marca": "a rangy build, sun-bleached brown hair and a deep tan line "
+              "across the forehead, with a squint at the corners of both eyes",
+     "roupa": "a faded teal work shirt"},
+    {"id": "cavanhaque_branco", "idade": 65,
+     "marca": "a spare frame, close-cropped white hair and a white goatee, "
+              "with prominent ears",
+     "roupa": "a grey chambray shirt"},
+    {"id": "cacheado_grisalho", "idade": 43,
+     "marca": "a broad build, dense curly hair going grey at the temples and a "
+              "strong square jaw, with a chipped front tooth",
+     "roupa": "a black crew-neck tee"},
+    {"id": "bochechudo", "idade": 56,
+     "marca": "a round-faced heavy build, dark hair receding at the temples "
+              "and full cheeks, with a dimpled chin",
+     "roupa": "a plaid flannel shirt"},
+    {"id": "magro_alto", "idade": 50,
+     "marca": "a very tall gaunt frame, iron-grey hair cropped short and a "
+              "long straight nose, with deep-set eyes",
+     "roupa": "a white undershirt beneath an open work shirt"},
 ]
 
 
@@ -1006,7 +1211,7 @@ TRAVAS_UI = [
 ]
 
 EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "homem", "prop", "substancia",
-                   "metodo", "comum", "raro", "cor"]
+                   "metodo", "comum", "raro", "cor", "traje"]
 
 
 def etnias_do_mundo(spec):
@@ -1018,10 +1223,20 @@ def etnias_do_mundo(spec):
 
 etnias_do_mundo.recebe_spec = True
 
+
+def trajes_do_mundo(spec):
+    """O pool de TRAJE depende do MUNDO — kurta em cozinha amish e' a mesma
+    incongruencia que a etnia errada. A UI lista os nomes curtos."""
+    return [x[1] for x in spec["mundo"]["trajes"]]
+
+
+trajes_do_mundo.recebe_spec = True
+
 EIXOS_UI = [
     ("mundo", "A BOTICA", "MUNDOS", "id"),
     ("etnia", "ETNIA", "etnias_do_mundo", None),
     ("ref", "A BOTICARIA", "REFS", "cabeca"),
+    ("traje", "O TRAJE", "trajes_do_mundo", None),
     ("homem", "O ESPANTADO", "HOMENS", "marca"),
     ("prop", "O PROP", "PROPS", "nome"),
     ("substancia", "A ISCA", "SUBSTANCIAS", "nome"),
@@ -1072,12 +1287,41 @@ def _artigo(s):
     return "an" if s[:1].lower() in "aeiou" else "a"
 
 
+def _fresco_traje(pool, usados, rng):
+    """Como `_fresco`, mas o pool de trajes e' de TUPLAS `(template, curto)` e
+    nao de dicts — `_fresco` chama `.get()` e quebra. A chave de frescor e' o
+    nome curto.
+    ⚠️ `or pool` aqui e' correto e nao e' o estouro silencioso do teto: quando
+    todos ja' sairam, repetir e' a unica saida possivel.
+    """
+    livres = [x for x in pool if x[1] not in usados] or pool
+    return rng.choice(livres)
+
+
+def _por_traje(mundo, curto):
+    """Acha o traje do mundo pelo nome curto (a trava da UI guarda o curto).
+
+    ⚠️ Devolve o primeiro do mundo quando o curto nao pertence a ele — o
+    operador pode ter travado um traje e depois trocado de mundo, e travar
+    `kurta` num mundo amish nao pode derrubar o sorteio.
+    """
+    for x in mundo["trajes"]:
+        if x[1] == curto:
+            return x
+    return mundo["trajes"][0]
+
+
 def _traje(spec):
-    """A roupa do mundo com o artigo certo. ⛔ O artigo NAO mora no template:
-    cores como `off-white`, `indigo` e `olive` sairiam `a off-white` — bug pago
-    no CLEAN v2 e achado LENDO o render, nao pelo linter."""
+    """A roupa SORTEADA do mundo, com o artigo certo.
+
+    ⛔ O artigo NAO mora no template: cores como `off-white`, `indigo` e `olive`
+    sairiam `a off-white` — bug pago no CLEAN v2 e achado LENDO o render.
+    ⚠️ Ate' 2026-08-05 isto lia `spec["mundo"]["traje"]`, UM traje por mundo, e
+    o operador mandou tres prints de tres mundos diferentes com a mesma blusa
+    bege. Agora o traje e' um eixo proprio, sorteado entre cinco silhuetas.
+    """
     cor = spec["cor"]
-    return "%s %s" % (_artigo(cor), spec["mundo"]["traje"] % cor)
+    return "%s %s" % (_artigo(cor), spec["traje"][0] % cor)
 
 
 def _sem_artigo(s):
@@ -1221,6 +1465,11 @@ def sortear(pagina, rng, led, travas=None):
 
     et = travas.get("etnia") or rng.choice(mundo["etnias"])
     cor = travas.get("cor") or rng.choice(mundo["cores"])
+    # ⭐ O TRAJE E' EIXO PROPRIO desde 2026-08-05, com pool por mundo. Cada
+    # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
+    # traje SORTEADO, senao a ancora descreve uma roupa que nao esta' em cena.
+    traje = (_por_traje(mundo, travas["traje"]) if travas.get("traje")
+             else _fresco_traje(mundo["trajes"], usados.get("traje", []), rng))
     ref = (_por_id(REFS, travas["ref"], "cabeca") if travas.get("ref")
            else rng.choice(REFS))
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
@@ -1243,6 +1492,7 @@ def sortear(pagina, rng, led, travas=None):
     orgaos = rng.sample(NUCLEO, 2)
 
     spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
+            "traje": traje,
             "ref": ref, "homem": homem, "prop": prop, "substancia": sub,
             "metodo": dict(met, vaso_fala=_sem_artigo(met["curto"])),
             "comum": com, "raro": raro, "orgaos": orgaos,
@@ -1263,7 +1513,7 @@ def _ancora(spec):
     """⛔ BO7 — rosto E idade, nunca so' roupa."""
     r = spec["ref"]
     return BO_ANCORA % (r["idade"], spec["etnia"], _sem_artigo(r["cabeca"]),
-                        _sem_artigo(r["marca"]), spec["mundo"]["curto"])
+                        _sem_artigo(r["marca"]), spec["traje"][1])
 
 
 # ⭐ A BANDEIRA, 50/50 — ordem do operador. Ela nao mora nas strings de cenario
