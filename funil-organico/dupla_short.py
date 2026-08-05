@@ -165,7 +165,9 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 # ⛔ Ele so' existe na CENA 3, e e' o objeto da keyword — esta' na mao no frame em
 # que a boca diz `gelatin,`. Mostra-lo antes entrega o payoff antes da promessa.
 BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, two "
-           "paper straws standing in it")
+           "a single paper straw standing in it")
+# ⛔ UM canudo. Eram dois e o operador reprovou o render: *"dois canudos? quero
+# so' um"*. Dois canudos leem como bebida COMPARTILHADA — e este copo e' dele.
 
 # ⭐⭐ BO6 — O HOMEM MUDO. Ordem do operador: *"no take final, alem do ref
 # falando, havera um homem sempre atras, com cara de espanto e surpresa e
@@ -186,6 +188,42 @@ BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, two "
 # descrever a MESMA coisa: o take anima a image, nao inventa outro gesto — e
 # contradicao entre os dois e' pior que omissao, porque o Veo resolve mexendo
 # no que estava certo.
+# ⭐⭐ AS REACOES DA AMIGA — pool PROPRIO, e ele existe porque o operador leu o
+# render e reprovou: *"personagem com cara de nojo?"*.
+# ⛔ A amiga reagia com o pool do HOMEM ESPANTADO, que tem entradas de duvida e
+# incredulidade (`eyebrows drawn together`, `caught between a frown and a smile`,
+# `plainly not believing it`). Numa mulher jovem ao lado de outra, franzir a
+# testa nao le como espanto — le como NOJO, e nojo no rosto de quem esta' ao lado
+# do prop mata a promessa inteira.
+# ⚠️ Aqui so' entra o que e' POSITIVO: admiracao, riso, surpresa boa, orgulho.
+# Nada de franzir, estreitar os olhos ou duvidar.
+REACOES_AMIGA = [
+    ("her eyebrows are raised and she is smiling widely, delighted",
+     "holds that delighted smile without moving"),
+    ("she is laughing openly with her head tipped back a little",
+     "keeps laughing silently without moving"),
+    ("her eyes are wide and she is grinning, plainly impressed",
+     "holds that impressed grin without moving"),
+    ("she is smiling with her lips pressed together, eyebrows high",
+     "holds that closed-lip smile without moving"),
+    ("her mouth is open in a happy gasp, eyes bright",
+     "holds that open, happy expression without moving"),
+    ("she is beaming, one hand resting on the other woman's shoulder",
+     "keeps beaming, hand steady on the shoulder"),
+    ("her chin is lifted and she is nodding, smiling broadly",
+     "keeps nodding and smiling broadly"),
+    ("she is smiling with her eyes crinkled at the corners, amused",
+     "holds that amused smile without moving"),
+    ("her eyebrows are high and she is biting back a laugh",
+     "keeps biting back the laugh without moving"),
+    ("she is smiling wide with her eyes on the object, clearly approving",
+     "holds that approving smile without moving"),
+    ("her mouth is open in a silent wow, eyes shining",
+     "holds that silent wow without moving"),
+    ("she is grinning and raising both eyebrows at once",
+     "holds that raised-eyebrow grin without moving"),
+]
+
 REACOES_HOMEM = [
     ("his eyes are wide and his eyebrows are raised, his mouth open in plain "
      "astonishment",
@@ -296,7 +334,7 @@ MUNDOS = [
          ("%s cut-off tee knotted above the waist with track shorts",
           "knotted tee"),
      ],
-     "cores": ["black", "white", "burgundy", "olive", "grey", "cobalt"],
+     "cores": ["black", "white", "burgundy", "cobalt", "grey", "scarlet"],
      "luz": "Hard afternoon light through the fire-escape window.",
      "luz_c": "fire-escape light",
      "audio": "a subway rumbling, a siren far off"},
@@ -318,7 +356,7 @@ MUNDOS = [
          ("%s sheer blouse knotted at the ribs over a bandeau",
           "knotted blouse"),
      ],
-     "cores": ["deep purple", "gold", "emerald", "coral", "white", "wine"],
+     "cores": ["emerald", "white", "hot pink", "cobalt", "black", "gold"],
      "luz": "Warm damp light through the screen door.",
      "luz_c": "warm bayou light",
      "audio": "cicadas, a ceiling fan, rain on the porch"},
@@ -340,7 +378,7 @@ MUNDOS = [
          ("%s short sundress with a tooled leather belt",
           "short sundress"),
      ],
-     "cores": ["turquoise", "rust", "denim blue", "bone", "burnt orange", "deep red"],
+     "cores": ["denim blue", "white", "scarlet", "black", "turquoise", "cream"],
      "luz": "Hard dry sunlight through the scrub-side window.",
      "luz_c": "hard Texas sun",
      "audio": "wind over dry grass, a distant gate"},
@@ -362,7 +400,7 @@ MUNDOS = [
          ("%s cropped sweatshirt with running shorts",
           "cropped sweatshirt"),
      ],
-     "cores": ["dark red", "forest green", "denim blue", "mustard", "charcoal", "cream"],
+     "cores": ["dark red", "denim blue", "forest green", "white", "black", "cream"],
      "luz": "Soft mountain daylight through a small window.",
      "luz_c": "soft mountain light",
      "audio": "birds, wind in the pines, a wood stove"},
@@ -384,7 +422,7 @@ MUNDOS = [
          ("%s sheer cover-up over a swim top",
           "sheer cover-up"),
      ],
-     "cores": ["hot pink", "turquoise", "white", "coral", "lime green", "gold"],
+     "cores": ["hot pink", "turquoise", "white", "lime green", "black", "gold"],
      "luz": "Bright hard sun through the glass wall.",
      "luz_c": "bright Miami sun",
      "audio": "palms in the wind, a pool filter"},
@@ -406,7 +444,7 @@ MUNDOS = [
          ("%s knotted crop tee and cut-offs",
           "knotted crop tee"),
      ],
-     "cores": ["sand", "terracotta", "sage", "white", "dusty rose", "ochre"],
+     "cores": ["white", "black", "dusty rose", "denim blue", "olive", "cream"],
      "luz": "Flat bright coastal daylight.",
      "luz_c": "flat coastal light",
      "audio": "gulls far off, a wind chime"},
@@ -428,7 +466,7 @@ MUNDOS = [
          ("%s sports bra under an open zip-up, short shorts",
           "open zip-up"),
      ],
-     "cores": ["black", "hot pink", "white", "navy", "silver", "leopard"],
+     "cores": ["black", "hot pink", "white", "navy", "silver", "scarlet"],
      "luz": "Cool grey daylight through the bay window.",
      "luz_c": "cool bay-window light",
      "audio": "a highway hum, a dog next door"},
@@ -450,7 +488,7 @@ MUNDOS = [
          ("%s bandeau under an open denim shirt",
           "open denim shirt"),
      ],
-     "cores": ["barn red", "denim blue", "cream", "mustard", "sage", "black"],
+     "cores": ["denim blue", "white", "scarlet", "black", "cream", "emerald"],
      "luz": "Warm golden light through the sink window.",
      "luz_c": "warm golden light",
      "audio": "a screen door, crickets starting"},
@@ -472,7 +510,7 @@ MUNDOS = [
          ("%s tank top knotted at the waist with leggings",
           "knotted tank"),
      ],
-     "cores": ["burgundy", "royal blue", "black", "mustard", "camel", "white"],
+     "cores": ["burgundy", "royal blue", "black", "white", "camel", "scarlet"],
      "luz": "Cool north light off the brick.",
      "luz_c": "cool north light",
      "audio": "a radiator ticking, traffic below"},
@@ -494,7 +532,7 @@ MUNDOS = [
          ("%s thin-strapped bodysuit with a short wrap skirt",
           "wrap skirt"),
      ],
-     "cores": ["terracotta", "turquoise", "sand", "burnt orange", "white", "deep red"],
+     "cores": ["turquoise", "white", "black", "scarlet", "denim blue", "cream"],
      "luz": "Hard desert sun through the deep window.",
      "luz_c": "hard desert sun",
      "audio": "wind over dry ground, a distant truck"},
@@ -516,7 +554,7 @@ MUNDOS = [
          ("%s tight ribbed top with a short skirt",
           "ribbed top"),
      ],
-     "cores": ["navy", "brick red", "cream", "forest green", "grey", "white"],
+     "cores": ["navy", "white", "brick red", "forest green", "grey", "black"],
      "luz": "Cool overcast light through the street window.",
      "luz_c": "cool street light",
      "audio": "traffic, a church bell far off"},
@@ -538,7 +576,7 @@ MUNDOS = [
          ("%s thin-strapped bodysuit and a short wrap skirt",
           "wrap skirt"),
      ],
-     "cores": ["dusty rose", "olive", "burnt orange", "teal", "ivory", "wine"],
+     "cores": ["dusty rose", "white", "black", "teal", "gold", "wine"],
      "luz": "Bright even daylight through the garden window.",
      "luz_c": "bright garden light",
      "audio": "birds in the garden, a fridge humming"},
@@ -560,7 +598,7 @@ MUNDOS = [
          ("%s open plaid shirt over a vest top, cut-offs",
           "open plaid"),
      ],
-     "cores": ["barn red", "denim blue", "sage", "mustard", "cream", "hunter green"],
+     "cores": ["denim blue", "white", "scarlet", "black", "cream", "hunter green"],
      "luz": "Wide flat daylight off the fields.",
      "luz_c": "flat prairie light",
      "audio": "wind over the fields, a screen door"},
@@ -604,7 +642,7 @@ MUNDOS = [
          ("%s knotted tee over a bandeau, cut-offs",
           "knotted tee"),
      ],
-     "cores": ["navy", "seafoam", "brick red", "white", "slate grey", "coral"],
+     "cores": ["navy", "white", "seafoam", "brick red", "black", "coral"],
      "luz": "Cool bright light off the water.",
      "luz_c": "cool sea light",
      "audio": "gulls and rigging outside"},
@@ -626,7 +664,7 @@ MUNDOS = [
          ("%s thin-strapped bodysuit with high-cut shorts",
           "bodysuit"),
      ],
-     "cores": ["black", "gold", "hot pink", "silver", "deep red", "white"],
+     "cores": ["black", "gold", "hot pink", "silver", "scarlet", "white"],
      "luz": "Hard desert light through the balcony door.",
      "luz_c": "hard balcony light",
      "audio": "distant traffic, an air-conditioner"},
@@ -902,75 +940,106 @@ PROPS = PARES   # o contrato do painel usa `PROPS`
 # BELEZA, nunca deterioracao.
 # ⛔ Zero adjetivo de etnia nas entradas: quem injeta e' a montagem, a partir do
 # MUNDO. Mesmo contrato do COLO, NECROSE e EXTERIOR.
+# ⭐⭐ REFS ESTILO TOP MODEL — ordem do operador, 2026-08-05: *"alimente
+# mais o pool de roupas e personagens (lembre-se, mulheres lindas, estilo
+# top model)"* e *"quero ruivas lindas tb"*.
+# ⚠️ 30 entradas, CINCO ruivas de tons diferentes (auburn, copper, ginger,
+# dark red, mahogany) — ruiva nao e' uma cor so', e repetir "red hair" em
+# cinco entradas devolveria a mesma mulher cinco vezes.
+# ⛔ Cada uma varia CORPO, CABECA e MARCA juntos. Duas mulheres de cabelo
+# diferente e mesmo porte leem como a mesma pessoa — foi essa a licao que
+# criou o `medir_personagens.py`.
 REFS = [
-    {"idade": 29, "corpo": "slim with an hourglass figure and a narrow waist",
-     "cabeca": "copper-red hair pinned back off her face",
-     "marca": "a heavy dusting of freckles across her nose and clear skin"},
-    {"idade": 34, "corpo": "toned and curvy, with a clearly defined waist",
-     "cabeca": "long dark hair in a low twist",
-     "marca": "high round cheekbones and lightly tanned even skin"},
-    {"idade": 26, "corpo": "long-legged and slender, with a graceful neck and full shoulders",
-     "cabeca": "honey-blonde hair braided over one shoulder",
-     "marca": "pale green eyes, a light spray of freckles and a beauty mark above her lip"},
-    {"idade": 31, "corpo": "shapely and strong, with toned arms and a small waist",
-     "cabeca": "tight natural curls gathered high",
+    {"idade": 24, "corpo": "tall and long-legged with a very small waist",
+     "cabeca": "deep auburn hair falling in loose waves past her shoulders",
+     "marca": "a light spray of freckles across her nose and green eyes"},
+    {"idade": 27, "corpo": "slim with an hourglass figure and long legs",
+     "cabeca": "copper-red hair in a high glossy ponytail",
+     "marca": "pale green eyes and a small beauty mark above her lip"},
+    {"idade": 23, "corpo": "willowy and fine-boned with a flat stomach",
+     "cabeca": "bright ginger hair cut in long layers",
+     "marca": "heavy freckling across her cheeks and hazel eyes"},
+    {"idade": 29, "corpo": "curvy with a narrow waist and full shoulders",
+     "cabeca": "dark red hair swept over one shoulder",
+     "marca": "a small gold hoop in her left nostril and clear skin"},
+    {"idade": 26, "corpo": "tall and statuesque with a long waist",
+     "cabeca": "strawberry-blonde hair in a loose braid",
+     "marca": "wide-set blue eyes and a faint scar through one eyebrow"},
+    {"idade": 25, "corpo": "slim and toned with a dancer's line",
+     "cabeca": "jet-black hair in a sleek centre part",
+     "marca": "sharp cheekbones and a small mole on her jaw"},
+    {"idade": 28, "corpo": "long-legged and slender with square shoulders",
+     "cabeca": "platinum blonde hair in a blunt shoulder-length cut",
+     "marca": "ice-blue eyes and a dimple in one cheek"},
+    {"idade": 24, "corpo": "curvy and athletic with a small waist",
+     "cabeca": "tight dark curls gathered high on her head",
      "marca": "glowing deep brown skin and a wide bright smile"},
-    {"idade": 37, "corpo": "slim-hipped and elegant, with a long line from neck to shoulder",
-     "cabeca": "straight black hair parted in the middle",
-     "marca": "full lips, a deep dimple in her left cheek and warm tanned skin"},
-    {"idade": 28, "corpo": "athletic and curvy, with swimmer's shoulders and a narrow waist",
-     "cabeca": "long braids gathered at the nape",
-     "marca": "a small silver hoop in her left nostril and clear skin"},
-    {"idade": 33, "corpo": "softly curved and full-figured, with a defined waist",
-     "cabeca": "chestnut hair in a loose knot with strands escaping",
-     "marca": "a dusting of freckles and a small crescent birthmark at her right temple"},
-    {"idade": 25, "corpo": "trim and shapely, standing very straight",
-     "cabeca": "dark hair in a high smooth bun",
-     "marca": "eyes of two different colours, one green and one brown"},
-    {"idade": 36, "corpo": "tall and statuesque, with a long waist",
-     "cabeca": "auburn hair coiled and pinned at the back",
-     "marca": "a fine pale scar through one eyebrow and smooth clear skin"},
-    {"idade": 30, "corpo": "petite and curvy, with a small frame and a defined waist",
-     "cabeca": "black hair in a thick plait down her back",
-     "marca": "smoothly tanned skin and a dark beauty spot high on her left cheekbone"},
-    {"idade": 27, "corpo": "lean and toned, with a flat stomach and long arms",
-     "cabeca": "wavy caramel hair tucked behind her ears",
-     "marca": "a gap between her front teeth that shows when she smiles"},
-    {"idade": 38, "corpo": "full-figured and confident, with rounded shoulders and a narrow waist",
-     "cabeca": "silver-free dark hair wound into a bun",
-     "marca": "arched brows over wide dark eyes and clear skin"},
-    # + 2026-08-05 — o operador leu tres lotes e reclamou da repeticao de
-    # pessoas e roupa. Estas dez variam CORPO e FORMATO DE CABECA, nao so' cor.
-    {"idade": 32, "corpo": "slim and supple, with a dancer's line",
-     "cabeca": "loose dark curls falling past her shoulders",
-     "marca": "a small dark mole just above her lip and clear skin"},
-    {"idade": 24, "corpo": "compact and shapely, with strong shoulders and a small waist",
-     "cabeca": "jet-black hair in a blunt chin-length bob",
-     "marca": "wide-set almond eyes and a faint pale scar on her chin"},
-    {"idade": 35, "corpo": "tall and slim with an hourglass line",
+    {"idade": 30, "corpo": "tall and slim with an hourglass line",
+     "cabeca": "chestnut hair in long beachy waves",
+     "marca": "a gap between her front teeth and warm brown eyes"},
+    {"idade": 22, "corpo": "petite and curvy with a defined waist",
+     "cabeca": "honey-blonde hair in a high messy bun",
+     "marca": "a scatter of freckles and full lips"},
+    {"idade": 27, "corpo": "lean and toned with a flat stomach and long arms",
+     "cabeca": "long jet-black hair worn straight to the waist",
+     "marca": "almond eyes and a small stud in one nostril"},
+    {"idade": 26, "corpo": "shapely with toned arms and a narrow waist",
+     "cabeca": "caramel balayage falling past her shoulders",
+     "marca": "a beauty mark at the corner of her right eye"},
+    {"idade": 23, "corpo": "slim-hipped and elegant with a long neck",
+     "cabeca": "sandy blonde hair in a fishtail braid",
+     "marca": "a slight overbite that shows when she smiles"},
+    {"idade": 31, "corpo": "curvy and strong with a small waist",
+     "cabeca": "long box braids gathered over one shoulder",
+     "marca": "high round cheekbones and a gold nose ring"},
+    {"idade": 25, "corpo": "tall and lean with swimmer's shoulders",
+     "cabeca": "auburn hair in a low glossy ponytail",
+     "marca": "dark freckles across both cheeks and grey eyes"},
+    {"idade": 28, "corpo": "softly curvy with a full figure and a narrow waist",
+     "cabeca": "dark brown hair in heavy waves with a deep side part",
+     "marca": "a small raised birthmark on her temple"},
+    {"idade": 24, "corpo": "slim and supple with a very straight back",
+     "cabeca": "copper hair cropped into a long bob",
+     "marca": "pale skin, freckles and bright green eyes"},
+    {"idade": 29, "corpo": "long-limbed and shapely with a defined waist",
+     "cabeca": "black hair in a high sleek ponytail",
+     "marca": "a thin scar along her jawline and full brows"},
+    {"idade": 26, "corpo": "trim and athletic with a flat stomach",
+     "cabeca": "golden blonde hair in loose waves",
+     "marca": "a small dimple in one cheek only"},
+    {"idade": 22, "corpo": "tall and willowy with narrow hips",
+     "cabeca": "dark auburn hair in a half-up twist",
+     "marca": "wide hazel eyes and a light dusting of freckles"},
+    {"idade": 30, "corpo": "curvy with a small waist and long legs",
      "cabeca": "tight coils cropped close to the head",
-     "marca": "sharply cut cheekbones and a small gold stud in one nostril"},
-    {"idade": 29, "corpo": "curvy and athletic, with a long neck and a defined waist",
-     "cabeca": "dark hair with a deep side part falling in heavy waves",
-     "marca": "a beauty spot at the outer corner of her right eye"},
-    {"idade": 27, "corpo": "slender and fine-boned, with elegant posture",
-     "cabeca": "ash-brown hair twisted into a loose topknot",
-     "marca": "pale grey eyes and a faint round mark between her brows"},
-    {"idade": 33, "corpo": "toned and full-figured, with a small waist and straight back",
-     "cabeca": "thick black hair coiled into two low buns",
-     "marca": "full arched brows and a thin scar along her jawline"},
-    {"idade": 26, "corpo": "long-limbed and shapely, with a narrow waist",
-     "cabeca": "waist-length straight black hair worn loose",
-     "marca": "a dimple that shows in one cheek only"},
-    {"idade": 31, "corpo": "trim and athletic, with a flat stomach and square shoulders",
-     "cabeca": "copper braids wrapped into a crown around her head",
-     "marca": "a scatter of dark freckles across both cheeks"},
-    {"idade": 37, "corpo": "softly curvy, with a full figure and a defined waist",
-     "cabeca": "glossy black hair in a low ponytail",
-     "marca": "a small raised birthmark on her right temple"},
-    {"idade": 28, "corpo": "slim and long-waisted, with a very straight back",
-     "cabeca": "sandy hair in a thick fishtail braid",
-     "marca": "a slight overbite that shows when she talks"},
+     "marca": "sculpted cheekbones and a small gold stud"},
+    {"idade": 27, "corpo": "slim with a long waist and square shoulders",
+     "cabeca": "ash-brown hair in a sleek low bun",
+     "marca": "grey-green eyes and a faint mark between her brows"},
+    {"idade": 25, "corpo": "shapely and toned with a narrow waist",
+     "cabeca": "ginger hair in loose curls past her shoulders",
+     "marca": "heavy freckling and a small chin dimple"},
+    {"idade": 28, "corpo": "tall and slim with a graceful neck",
+     "cabeca": "long dark hair in a high crown braid",
+     "marca": "a beauty mark high on her left cheek"},
+    {"idade": 23, "corpo": "petite and shapely with a defined waist",
+     "cabeca": "bleached blonde hair in a blunt chin-length bob",
+     "marca": "wide dark eyes and a faint scar on her chin"},
+    {"idade": 31, "corpo": "athletic and curvy with strong shoulders",
+     "cabeca": "long waves in a rich mahogany red",
+     "marca": "clear skin and a small hoop in her right nostril"},
+    {"idade": 24, "corpo": "long-legged and lean with a flat stomach",
+     "cabeca": "dark brown hair in a slicked-back ponytail",
+     "marca": "sharp brows and a small mole under one eye"},
+    {"idade": 26, "corpo": "curvy and confident with a very narrow waist",
+     "cabeca": "honey-red hair falling in soft waves",
+     "marca": "a dense spray of freckles across her nose"},
+    {"idade": 29, "corpo": "slim and elegant with long arms",
+     "cabeca": "black hair in a smooth shoulder-length cut",
+     "marca": "a thin white streak at her temple and dark eyes"},
+    {"idade": 25, "corpo": "tall with a small waist and full shoulders",
+     "cabeca": "strawberry-blonde hair in a high loose bun",
+     "marca": "green eyes and a small beauty spot on her cheekbone"},
 ]
 
 
@@ -1780,6 +1849,17 @@ def _apelo(spec):
     return spec["apelo"]
 
 
+def _traje_de(spec, chave):
+    """O traje de UMA das duas mulheres, com o artigo certo.
+
+    ⛔ Existe porque as duas apareciam com a MESMA roupa: eu chamava `_traje`
+    duas vezes e o spec so' tinha um traje. Duas mulheres identicas da cintura
+    para cima viram uniforme — e o operador leu isso no render.
+    """
+    cor = spec["cor"]
+    return "%s %s" % (_artigo(cor), spec[chave][0] % cor)
+
+
 def _traje(spec):
     """A roupa SORTEADA do mundo, com o artigo certo.
 
@@ -1997,9 +2077,15 @@ def sortear(pagina, rng, led, travas=None):
     # ⭐ A AMIGA sai do MESMO pool da narradora e NUNCA e' a mesma pessoa: duas
     # mulheres no quadro com a mesma descricao viram gemeas no render.
     amiga = rng.choice([x for x in REFS if x is not ref])
+    # ⛔ TRAJE PROPRIO PARA CADA UMA. O operador leu o render e perguntou *"que
+    # roupa e' essa?"* — as duas apareciam com o MESMO vestido, porque eu passava
+    # `_traje(spec)` duas vezes. Duas mulheres identicas da cintura para cima
+    # viram uniforme, e uniforme mata a leitura de "duas pessoas".
+    _tj = mundo["trajes"]
+    traje_amiga = rng.choice([x for x in _tj if x is not None])
     # ⚠️ a reacao dela e' sorteada junto — ordem do operador: "ambas com pool de
     # cara de espanto, ou risos, etc".
-    reacao_amiga = _fresco_traje(REACOES_HOMEM,
+    reacao_amiga = _fresco_traje(REACOES_AMIGA,
                                  usados.get("reacao_amiga", []), rng)
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
              else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
@@ -2021,7 +2107,8 @@ def sortear(pagina, rng, led, travas=None):
     orgaos = rng.sample(NUCLEO, 2)
 
     spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
-            "traje": traje, "reacao": reacao, "apelo": apelo,
+            "traje": traje, "traje_amiga": traje_amiga,
+            "reacao": reacao, "apelo": apelo,
             "reacao_amiga": reacao_amiga,
             "ref": ref, "amiga": amiga, "homem": homem,
             "prop": prop, "substancia": sub,
@@ -2098,7 +2185,8 @@ def montar(spec):
             _r["idade"], spec["etnia"], _sem_artigo(_r["cabeca"]),
             _sem_artigo(_r["marca"]), _traje(spec), prop["murcho"],
             _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
-            _sem_artigo(_a["marca"]), _traje(spec), prop["gigante"])))
+            _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
+            prop["gigante"])))
 
     # --- CENA 2 — O PREPARO (o mecanismo) -----------------------------------
     # ⚠️ O utensilio VARIA (ordem do operador) e o verbo do TAKE acompanha.
@@ -2106,7 +2194,8 @@ def montar(spec):
         "%(preparo)s %(anti)s %(luz)s %(cauda)s"
         % dict(v, preparo=BO_PREPARO % dict(v, amiga=BO_AMIGA_FUNDO % (
             _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
-            _sem_artigo(_a["marca"]), _traje(spec), spec["reacao_amiga"][0]))))
+            _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
+                   spec["reacao_amiga"][0]))))
 
     # --- CENA 3 — O COPO + O HOMEM MUDO + O CTA -----------------------------
     # ⭐ O objeto da keyword esta' NA MAO no frame em que a boca diz `gelatin,`.
