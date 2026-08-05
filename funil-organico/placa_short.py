@@ -939,8 +939,20 @@ PLACAS = [
 ]
 
 PARES = [
+    # ⭐⭐ O GEODUCK — ordem do operador, 2026-08-05: *"esta faltando prop
+    # geoduck no dupla e no outro"*. E' o par de maior semelhanca anatomica do
+    # repertorio, e por isso o de maior risco de moderacao.
+    # ⛔ DUAS TRAVAS DE FORMA, herdadas do EXTERIOR (regra EX7, paga em recusa):
+    #   1. a peca e' o `siphon`, NUNCA `neck`;
+    #   2. a especie so' e' nomeada na IMAGE; no TAKE ele e' `the piece`.
+    # ⚠️ A escala e' DIFERENCIAL como nos outros pares: o murcho e' curto E
+    # recolhido, o gigante e' longo E estendido. Mudar so' o tamanho leria como
+    # a mesma peca de perto e de longe.
+    {"id": "geoduck", "nome": "clam",
+     "murcho": "a small shrivelled geoduck clam, its siphon limp and drawn back against the shell, barely the length of his palm",
+     "gigante": "an enormous geoduck clam, its thick siphon extending straight out well past the shell, longer than her forearm, held upright"},
     {"id": "banana", "nome": "banana",
-     "murcho": "a small blackened banana, shrivelled and soft, barely the length of her palm",
+     "murcho": "a small blackened banana, shrivelled and soft, barely the length of his palm",
      "gigante": "an enormous bright yellow banana, longer than her forearm, held upright"},
     {"id": "plantain", "nome": "plantain",
      "murcho": "a small withered plantain gone dark and limp",
@@ -2341,7 +2353,7 @@ def montar(spec):
          "stirring in slow circles the whole time. Her left hand stays flat on "
          "the %(sup)s beside the mug. %(nao_toca)s" % v),
         ("She holds the glass steady at chest height the whole time and never "
-         "sets it down. Her other hand keeps the fruit upright and never lowers "
+         "sets it down. Her other hand keeps the piece upright and never lowers "
          "it."),
     ]
     # ⛔ A CENA 1 TEM DUAS PESSOAS POR CONSTRUCAO — ela e o corpo dele. Declarar
@@ -2697,6 +2709,40 @@ def lint(spec, blocos):
     # ⛔ PAINEL HONESTO — 2026-08-05. Nenhum eixo desenhado no painel pode
     # deixar de chegar ao video.
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
+
+    # ⛔⛔ AS TRAVAS DE FORMA DO GEODUCK, que o EXTERIOR pagou em recusa (EX7).
+    # ⚠️ Elas nasceram como "escrevi a string certa" — e regra que depende de eu
+    # lembrar nao e' regra. Custam duas linhas e valem para qualquer prop novo.
+    _tk = " ".join(v for k, v in blocos.items() if k.startswith("TAKE")).lower()
+    for _proibido in ("geoduck", "clam"):
+        if _proibido in _tk:
+            ach.append(("ERRO", "EX7: o TAKE nomeia a especie (%r) — no TAKE o "
+                                "prop e' generico; a especie so' vive na IMAGE"
+                        % _proibido))
+    # ⛔ SO' O `neck` DO MOLUSCO. A primeira versao olhava a palavra solta e
+    # acusava `a halter top tied at the neck` — o TRAJE, em 11 de 600 videos.
+    # Falso positivo e' pior que lente nenhuma: o operador aprende a ignorar.
+    for _b in blocos.values():
+        _l = _b.lower()
+        for _m in ("clam", "shell", "geoduck"):
+            _i = _l.find(_m)
+            if _i >= 0 and "neck" in _l[max(0, _i - 90):_i + 90]:
+                ach.append(("ERRO", "EX7: `neck` ao lado do molusco — a peca do "
+                                    "geoduck e' o `siphon`, e `neck` ja' "
+                                    "derrubou render nosso"))
+                break
+
+    # ⛔⛔ O PRONOME DO MURCHO. Neste angulo o prop murcho esta' na mao DELE
+    # (virilha, camisa erguida) e o gigante na mao DELA. O pool veio do DUPLA,
+    # onde os dois estao com mulheres, e chegou aqui com dois `her` — invisivel
+    # em qualquer linter de conteudo e visivel no render.
+    for _p in PROPS:
+        if "her" in _p["murcho"].split():
+            ach.append(("ERRO", "PLACA: o prop murcho %r fala em `her` e ele "
+                                "esta' na mao DELE" % _p["id"]))
+        if "his" in _p["gigante"].split():
+            ach.append(("ERRO", "PLACA: o prop gigante %r fala em `his` e ele "
+                                "esta' na mao DELA" % _p["id"]))
 
     sc.lint_take_vs_image(blocos, ach)
 

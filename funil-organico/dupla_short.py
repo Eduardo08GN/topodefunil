@@ -1026,6 +1026,18 @@ SUBSTANCIAS = [
 # peito — lido na fonte, frame a frame. E' isso que faz o `from this to
 # this` resolver: o deitico duplo aponta para dois objetos VISIVEIS.
 PARES = [
+    # ⭐⭐ O GEODUCK — ordem do operador, 2026-08-05: *"esta faltando prop
+    # geoduck no dupla e no outro"*. E' o par de maior semelhanca anatomica do
+    # repertorio, e por isso o de maior risco de moderacao.
+    # ⛔ DUAS TRAVAS DE FORMA, herdadas do EXTERIOR (regra EX7, paga em recusa):
+    #   1. a peca e' o `siphon`, NUNCA `neck`;
+    #   2. a especie so' e' nomeada na IMAGE; no TAKE ele e' `the piece`.
+    # ⚠️ A escala e' DIFERENCIAL como nos outros pares: o murcho e' curto E
+    # recolhido, o gigante e' longo E estendido. Mudar so' o tamanho leria como
+    # a mesma peca de perto e de longe.
+    {"id": "geoduck", "nome": "clam",
+     "murcho": "a small shrivelled geoduck clam, its siphon limp and drawn back against the shell, barely the length of her palm",
+     "gigante": "an enormous geoduck clam, its thick siphon extending straight out well past the shell, longer than her forearm, held upright"},
     {"id": "banana", "nome": "banana",
      "murcho": "a small blackened banana, shrivelled and soft, barely the length of her palm",
      "gigante": "an enormous bright yellow banana, longer than her forearm, held upright"},
@@ -2866,6 +2878,28 @@ def lint(spec, blocos):
                             "ele tem de nomear O QUE e' que e' para ele"))
 
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
+
+    # ⛔⛔ AS TRAVAS DE FORMA DO GEODUCK, que o EXTERIOR pagou em recusa (EX7).
+    # ⚠️ Elas nasceram como "escrevi a string certa" — e regra que depende de eu
+    # lembrar nao e' regra. Custam duas linhas e valem para qualquer prop novo.
+    _tk = " ".join(v for k, v in blocos.items() if k.startswith("TAKE")).lower()
+    for _proibido in ("geoduck", "clam"):
+        if _proibido in _tk:
+            ach.append(("ERRO", "EX7: o TAKE nomeia a especie (%r) — no TAKE o "
+                                "prop e' generico; a especie so' vive na IMAGE"
+                        % _proibido))
+    # ⛔ SO' O `neck` DO MOLUSCO. A primeira versao olhava a palavra solta e
+    # acusava `a halter top tied at the neck` — o TRAJE, em 11 de 600 videos.
+    # Falso positivo e' pior que lente nenhuma: o operador aprende a ignorar.
+    for _b in blocos.values():
+        _l = _b.lower()
+        for _m in ("clam", "shell", "geoduck"):
+            _i = _l.find(_m)
+            if _i >= 0 and "neck" in _l[max(0, _i - 90):_i + 90]:
+                ach.append(("ERRO", "EX7: `neck` ao lado do molusco — a peca do "
+                                    "geoduck e' o `siphon`, e `neck` ja' "
+                                    "derrubou render nosso"))
+                break
 
     sc.lint_take_vs_image(blocos, ach)
 
