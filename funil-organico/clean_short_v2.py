@@ -1808,7 +1808,23 @@ def montar(spec):
     # manter posicional era escolher o modo de falha mais caro que existe aqui.
     # ⛔ O TEXTO nao mudou: `--autoteste` compara os blocos desta familia com os
     # do motor anterior, video a video.
-    v = {"cen": cen, "ref1": _pessoa(spec), "ref": _pessoa(spec, False),
+    # ⛔⛔ CL30 — O CENARIO SE REPETE POR EXTENSO NAS TRES IMAGEs (relatado com
+    # os tres frames, 2026-08-05: a cena 1 saiu na varanda do pantano e as
+    # cenas 2 e 3 numa PAREDE CINZA LISA).
+    #
+    # ⚠️ A causa nao e' o gerador desobedecendo — e' o prompt sem conteudo.
+    # As IMAGEs 02/03 diziam so' `in the same place, same background`, e `same`
+    # e' um PONTEIRO: ele precisa de um antecedente. O gerador nao ve' a IMAGE
+    # 01 (cada bloco e' gerado sozinho); a unica imagem que ele tem em maos e' o
+    # REF 01 — cujo fundo e' literalmente `Plain neutral gray background`.
+    # Entao `same background` resolvia certo: igual ao REF. Parede cinza.
+    # ⛔ E' a 5a alavanca de novo: quando texto e imagem discordam, a IMAGEM
+    # vence. Ponteiro perde para foto; conteudo empata e ganha.
+    # ⚠️ Por isso `mesmo_cen` repete a descricao INTEIRA do mundo, e a luz entra
+    # nas tres (a IMAGE 02 nao tinha nenhuma pista de luz).
+    mesmo_cen = ("the background identical to the first frame: %s" % cen)
+    v = {"cen": cen, "mesmo_cen": mesmo_cen,
+         "ref1": _pessoa(spec), "ref": _pessoa(spec, False),
          "S": S, "Ss": Ss, "s": s, "obj": obj, "Sc": _cap(Ss),
          "sup": sup, "sup_a": sup_a, "luz": mundo["luz"],
          "luz_c": mundo["luz_c"], "lugar": mundo["lugar"],
@@ -1838,16 +1854,16 @@ def montar(spec):
             "%(Ss)s hand just above the %(sup)s. %(S)s touches nothing. %(S)s is "
             "the only person in the frame. %(anti)s %(luz)s %(cauda)s" % v)
         b["IMAGE 02/03"] = (
-            "Medium shot in the same %(lugar)s, same background. %(ref)s. On the "
+            "Medium shot in the same %(lugar)s, %(mesmo_cen)s. %(ref)s. On the "
             "%(sup)s is the same row %(mesma)s: %(fila)s. %(S)s looks directly "
             "into the lens with %(Ss)s mouth open mid-word as %(s)s speaks, the "
             "front teeth even and complete, %(Ss)s expression serious and "
             "certain. %(Sc)s right index finger is "
             "extended toward %(tru0)s, %(Ss)s hand just above the %(sup)s. %(S)s "
             "touches nothing. %(S)s is the only person in the frame. %(anti)s "
-            "%(cauda)s" % v)
+            "%(luz)s %(cauda)s" % v)
         b["IMAGE 03/03"] = (
-            "Closer medium shot in the same %(lugar)s, same background, same "
+            "Closer medium shot in the same %(lugar)s, %(mesmo_cen)s. Same "
             "%(luz_c)s. %(ref)s, framed from the waist up. On the %(sup)s along "
             "the bottom edge of the frame stand three things only: %(banc0)s; "
             "%(gel)s; and %(tru0)s. %(S)s looks directly into the lens, calm and "
@@ -1915,20 +1931,20 @@ def montar(spec):
         # `clouds over` em vez de trocar de tom: vale para os 20 pares, e
         # nenhum deles le como o preparo desandando.
         b["IMAGE 02/03"] = (
-            "Medium shot in the same %(lugar)s, same background. %(ref)s. On the "
+            "Medium shot in the same %(lugar)s, %(mesmo_cen)s. %(ref)s. On the "
             "%(sup)s, in the same order and at the same positions as before, "
             "stand %(fila2)s. %(resto)s %(peg2)s. %(cai2)s, and the %(cor1)s "
             "water in the glass is clouding over and turning %(cor2)s where the "
             "stream lands. %(S)s looks directly into the lens with %(Ss)s mouth "
             "open mid-word as %(s)s speaks, the front teeth even and complete, "
             "%(Ss)s expression serious and "
-            "certain. %(S)s is the only person in the frame. %(anti)s "
+            "certain. %(S)s is the only person in the frame. %(anti)s %(luz)s "
             "%(cauda)s" % v)
         # CL21 — a cena 3 e' o RESULTADO: copo pronto + gelatina, e so' um dos
         # dois do truque ao lado (a prioridade do CL21 manda cortar o resto
         # antes da gelatina). Zero manipulacao.
         b["IMAGE 03/03"] = (
-            "Closer medium shot in the same %(lugar)s, same background, same "
+            "Closer medium shot in the same %(lugar)s, %(mesmo_cen)s. Same "
             "%(luz_c)s. %(ref)s, framed from the waist up. On the %(sup)s along "
             "the bottom edge of the frame stand three things only: the same tall "
             "glass, now filled to the top with a finished %(cor2)s drink and no "
@@ -2157,6 +2173,19 @@ def lint(spec, blocos):
     if "foreground" not in blocos.get("IMAGE 01/03", ""):
         ach.append(("ERRO", "CL27: IMAGE 01 sem os itens em primeiro plano "
                             "(foreground) — a cena sai longe demais"))
+
+    # ⛔ CL30 — o cenario POR EXTENSO nas tres IMAGEs. `same background` sozinho
+    # e' ponteiro sem antecedente, e o gerador o resolvia contra o REF (fundo
+    # cinza liso): a cena 1 saia na varanda e as cenas 2 e 3 numa parede.
+    _, _, _, _obj = _pron(spec["sexo"])
+    cen = spec["mundo"]["desc"] % _obj
+    for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
+        if cen not in blocos.get(nome, ""):
+            ach.append(("ERRO", "CL30: %s sem a descricao do cenario por "
+                                "extenso — 'same background' nao basta" % nome))
+        if spec["mundo"]["luz"] not in blocos.get(nome, "") and \
+                spec["mundo"]["luz_c"] not in blocos.get(nome, ""):
+            ach.append(("ERRO", "CL30: %s sem pista de luz" % nome))
 
     # ⭐ CL29 — a voz e' ingles americano nos TRES takes, nas duas camadas.
     # Sem isto o take 3 tirava o sotaque da ambiencia do mundo (caribenho num
