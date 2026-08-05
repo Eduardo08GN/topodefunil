@@ -268,6 +268,16 @@ EXCECOES = {
     ("botica_short.py", "REFS", "oculos"):
         "LEI DO REF — oculos brigam frontalmente com 'linda'. Cabelo 12/12, "
         "porte 10/12, pele 6/12 e ancora 6/12 seguem cheios.",
+    # ⛔⛔ VARANDA — aqui a lei do REF nao e' so' regra herdada, e' O ANGULO.
+    # Ordem do operador ao encomendar o agente: *"a ref mulher tem que ser
+    # extremamente linda e com um corpo muito atrativo (...) essa e' nossa
+    # bullet de retencao de hook para esse agente"*. Um eixo `oculos` cheio
+    # aqui seria o motor contrariando a propria razao de existir.
+    # ⚠️ E o eixo dos HOMENS tambem: neste angulo nao ha' homem de oculos
+    # porque nao ha' homem — o take 3 e' ela com duas amigas.
+    ("varanda_short.py", "REFS", "oculos"):
+        "LEI DO REF levada ao extremo — a beleza da REF E' a bullet de "
+        "retencao deste angulo, por encomenda do operador.",
 }
 
 FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)
