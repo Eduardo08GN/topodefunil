@@ -1367,15 +1367,45 @@ VILOES_APOSENTADO = [
 # alta o que a imagem ja' mostra gasta 3 a 4 palavras num take de 8s e nao
 # acrescenta nada que o espectador nao esteja vendo.
 # ⭐ `{v}` continua no dict do metodo e no prompt de IMAGE. So' saiu da FALA.
+# ⛔⛔ A GELATINA SAIU DA LISTA DE INGREDIENTES EM 2026-08-05, e a mudanca e'
+# do operador: *"Fresh ginger and epimedium and a secret: the gelatin trick"*.
+# ⭐ E' melhor do que estava, por dois motivos que valem registrar:
+#   1. ECONOMIA — a receita falada listava `gelatin` e depois a ancora dizia
+#      `gelatin trick`. A palavra aparecia duas vezes num take de 8s.
+#   2. CURIOSIDADE — listar a gelatina COMO INGREDIENTE e depois chamar o
+#      conjunto de `gelatin trick` entrega o mecanismo. Deixando-a fora da
+#      lista, o que o espectador VE e' uma receita incompleta e o que falta
+#      tem nome. E' a lacuna que o comentario compra — a mesma funcao da
+#      opcao `c` de 2026-08-04, agora em 6 palavras em vez de 7 e sem uma
+#      sentenca propria.
+# ⚠️ `gelatin` continua sendo dito (dentro de `gelatin trick`) e a gelatina
+# continua NO QUADRO e no prompt de IMAGE. So' saiu da ENUMERACAO falada.
+# ⛔⛔ A GELATINA SAIU DA LISTA DE INGREDIENTES EM 2026-08-05, ordem do
+# operador: *"Fresh ginger and epimedium and a secret: the gelatin trick"*.
+# ⭐ E' melhor do que estava, por dois motivos:
+#   1. ECONOMIA — a receita listava `gelatin` e a ancora repetia `gelatin
+#      trick`. A palavra saia duas vezes num take de 8s.
+#   2. CURIOSIDADE — listar a gelatina e depois chamar o conjunto de `gelatin
+#      trick` ENTREGA o mecanismo. Fora da lista, o espectador ve uma receita
+#      incompleta e o que falta tem nome. E' a lacuna que o comentario compra.
+# ⚠️ `gelatin` continua sendo dito (dentro de `gelatin trick`) e a gelatina
+# continua no QUADRO e no prompt de IMAGE. So' saiu da enumeracao falada.
+#
+# ⛔⛔ E NENHUMA ENTRADA COMECA COM ADJETIVO — licao paga no primeiro render.
+# A primeira versao tinha `Fresh {c} and {r}` e o sorteio devolveu
+# **`Fresh fresh ginger and maca root`**, porque `fresh ginger` JA' e' o nome
+# do ingrediente no pool COMUNS. Template que qualifica um slot preenchido
+# por outro pool duplica quando os dois carregam a mesma palavra — e nenhum
+# linter pega isso, porque a frase e' gramatical. Achado LENDO a saida (§19).
 RECEITAS = [
-    "Gelatin, {c} and {r}",
-    "A spoon of gelatin, {c} and {r}",
-    "Gelatin first, then {c}, then {r}",
-    "Gelatin, {c}, {r} — that is all of it",
-    "A spoon of gelatin with {c} and {r}",
-    "Gelatin, a little {c}, and {r}",
-    "Just gelatin, {c} and {r}",
-    "Gelatin, {c} and {r}, nothing else",
+    "{c} and {r}",
+    "{c} with {r}",
+    "{c}, {r}",
+    "a little {c} and {r}",
+    "just {c} and {r}",
+    "{c} and a pinch of {r}",
+    "{c}, plus {r}",
+    "some {c} and {r}",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
@@ -1412,15 +1442,25 @@ RECEITAS = [
 # decidiu que as 7 palavras custam mais do que a lacuna compra. A lente
 # BO15 continua barrando a forma pior (equiparar E emendar o beneficio na
 # MESMA sentenca), que e' o caso que entrega tudo de uma vez.
+# ⛔⛔ REESCRITO 2026-08-05 — A ANCORA DEIXOU DE SER SENTENCA E VIROU CLAUSULA.
+# Forma do operador: *"Fresh ginger and epimedium AND A SECRET: the gelatin
+# trick"*. Antes eram duas sentencas (`... into the mortar. That's the gelatin
+# trick.`); agora e' uma so'.
+# ⭐ E isto RECUPERA a curiosidade que a versao anterior tinha matado. Em
+# 2026-08-04 ele mandou tirar `There's one step I'm not showing here` por
+# custar 7 palavras, e o que sobrou (`That's the gelatin trick`) EQUIPARAVA a
+# receita ao mecanismo — o risco que ele mesmo tinha apontado. `and a secret:`
+# custa 3 palavras e faz o mesmo trabalho da retencao: a receita visivel esta'
+# incompleta, e o que falta tem nome.
 ANCORAS = [
-    "%s. That's the gelatin trick.",
-    "%s. They call that the gelatin trick.",
-    "%s. That right there is the gelatin trick.",
-    "%s. That's what the gelatin trick is.",
-    "%s. That's the gelatin trick, nothing fancier.",
-    "%s. Around here that's called the gelatin trick.",
-    "%s. That mix is the gelatin trick.",
-    "%s. That's the gelatin trick my grandmother used.",
+    "%s and a secret: the gelatin trick.",
+    "%s and one secret: the gelatin trick.",
+    "%s plus a secret — the gelatin trick.",
+    "%s and the one secret: the gelatin trick.",
+    "%s and one thing I keep back: the gelatin trick.",
+    "%s and a secret nobody sells: the gelatin trick.",
+    "%s and my grandmother's secret: the gelatin trick.",
+    "%s and one more thing: the gelatin trick.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -1849,9 +1889,14 @@ def _falas(spec, rng, quais=(0, 1, 2)):
             TETO_FALA[2])).format(**rec_slots)
         anc = rng.choice(_cabem(
             ANCORAS,
-            lambda a: (a % rec).format(o=o2) + " " + curto_p.format(o=o2),
+            lambda a: _cap((a % rec).format(o=o2)) + " " + curto_p.format(o=o2),
             TETO_FALA[2]))
-        meio = (anc % rec).format(o=o2)
+        # ⛔ `_cap` porque a receita ABRE a sentenca. Ate' 2026-08-05 ela comecava
+        # com o literal `Gelatin,` e a maiuscula vinha de graca; com a gelatina
+        # fora da lista, o primeiro token passou a ser `{c}` em minuscula e o
+        # render saiu **`baking soda, fenugreek and one secret...`**. Achado LENDO
+        # a saida, nao pelo linter — frase em minuscula e' gramaticalmente valida.
+        meio = _cap((anc % rec).format(o=o2))
         # ⭐ A PROMESSA fecha a cena 2, no lugar do bullet de loja. Ela fala com
         # o HOMEM que assiste, em 2a pessoa, e nomeia o orgao ou o que ela nota
         # nele — promessa sem referente e' "novo por que?".
@@ -2061,9 +2106,21 @@ MEDIDA = re.compile(r"\b\d+\s*(inch|inches|cm|centimet\w*)\b"
                     r"|\b(an|one|two|three|four|five)\s+(inch|inches)\b", re.I)
 
 # ⛔ BO11 — nome cientifico NUNCA na fala.
+# ⛔⛔ `epimedium\s+\w+` REPROVAVA A COPY DO PROPRIO OPERADOR — corrigido
+# 2026-08-05. O padrao existia para pegar o binomio `Epimedium spp.`, mas casava
+# `epimedium` seguido de QUALQUER palavra: a frase que ele escreveu a mao
+# ("Fresh ginger and epimedium and a secret") era acusada de nome cientifico.
+# ⚠️ `epimedium` E' o nome POPULAR no nosso pool — esta' no campo `nome`, e BO8
+# exige que ele apareca na cena 2. A lente estava proibindo o que outra lente
+# obrigava, e so' nao explodia antes porque a receita antiga punha uma virgula
+# depois dele. Mudar a ordem das palavras acordou o conflito.
+# ⭐ Agora so' o que e' de fato binomio: o epiteto tem de ser `spp.` ou um nome
+# de especie, nunca uma palavra funcional do ingles.
 CIENTIFICO = re.compile(
-    r"\b(lepidium|eurycoma|tribulus terrestris|epimedium\s+\w+|trigonella|"
-    r"ptychopetalum|ginkgo biloba|mucuna pruriens|smilax)\b", re.I)
+    r"\b(lepidium|eurycoma|tribulus terrestris|epimedium\s+(?:spp\.?|"
+    r"grandiflorum|sagittatum|brevicornum|koreanum)|trigonella|"
+    r"ptychopetalum|ginkgo biloba|mucuna pruriens|smilax\s+(?:spp\.?|\w+ata))"
+    r"\b", re.I)
 
 
 def lint(spec, blocos):
