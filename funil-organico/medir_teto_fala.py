@@ -52,8 +52,21 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "ressurreicao", "flagrante", "pee", "vazamento", "necrose",
            "exterior", "colo", "receita", "botica"]
 
-# ⭐ O numero que manda. 8s x 4,0 palavras/s, o topo da faixa medida.
-TETO_FISICO = 32
+# ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
+#
+#     32 -> cortou (BOTICA cena 1, 2026-08-04)
+#     28 -> cortou (BOTICA cena 1, 2026-08-05)
+#     25 -> e' o mais longo que o OPERADOR escreve a mao. Os exemplos dele
+#           vivem entre 16 e 25 palavras, ou seja 2,0 a 3,1 palavras/s.
+#
+# ⛔ Eu cheguei aqui pelo caminho errado duas vezes: escolhi o numero pelo topo
+# aritmetico da faixa (4,0 p/s) e esperei o render reprovar. A faixa 3,4-4,0 da
+# §5 descreve o que a narracao PODE fazer no melhor caso, nao o que ela faz. O
+# numero honesto e' o maior que ja' se viu falar inteiro — nao o maior que cabe
+# na conta.
+# ⚠️ Ordem do operador, 2026-08-05: *"sempre meca. Nao pode haver cortes de
+# fala."* Este arquivo e' a resposta a primeira metade.
+TETO_FISICO = 25
 SEGUNDOS = 8.0
 
 
@@ -87,6 +100,51 @@ def medir(nome, n=600):
     return est, mx, ex, dict(getattr(M, "TETO_FALA", {})), n
 
 
+def curva(alvos, n):
+    """A distribuicao, e sobretudo o MINIMO que cada cena consegue gerar.
+
+    ⭐⭐ O `min` e' o numero que decide a estrategia, e e' o que eu nunca tinha
+    medido: se o minimo ja' esta' acima do teto fisico, BAIXAR O TETO NAO
+    RESOLVE — o motor nao sabe falar mais curto, e o unico caminho e' encurtar
+    a copy. Sem esta coluna a gente fica trocando teto e o render continua
+    cortando.
+    """
+    print("%-16s %-4s %5s %5s %5s %5s   %s"
+          % ("motor", "cena", "min", "p50", "p90", "max", "veredito"))
+    print("-" * 86)
+    ruins = 0
+    for nome in alvos:
+        try:
+            M = carregar(nome)
+        except Exception as e:                       # noqa: BLE001
+            print("%-16s ERRO: %s" % (nome, str(e)[:40]))
+            continue
+        pags = sorted(getattr(M, "ETNIA", {"joe": None}))
+        dist = {}
+        for i in range(n):
+            spec = M.sortear(pags[i % len(pags)], random.Random(i), {})
+            for c, f in enumerate(spec["falas"], 1):
+                dist.setdefault(c, []).append(M._palavras(f))
+        for c in sorted(dist):
+            v = sorted(dist[c])
+            q = len(v)
+            acima = 100.0 * sum(1 for x in v if x > TETO_FISICO) / q
+            if v[0] > TETO_FISICO:
+                ver = ("⛔ PISO %d > teto: BAIXAR O TETO NAO RESOLVE, "
+                       "e' preciso encurtar copy" % v[0])
+                ruins += 1
+            elif acima > 0:
+                ver = "⚠️ %.1f%% acima — cabe so' apertando o sorteio" % acima
+                ruins += 1
+            else:
+                ver = "ok"
+            print("%-16s %-4d %5d %5d %5d %5d   %s"
+                  % (nome, c, v[0], v[q // 2], v[int(q * 0.9)], v[-1], ver))
+    print("")
+    print("cenas que ainda cortam fala: %d" % ruins)
+    return 1 if ruins else 0
+
+
 def main():
     ap = argparse.ArgumentParser(
         description="Gate do teto de fala: 8s comportam no maximo %d palavras"
@@ -96,9 +154,15 @@ def main():
     ap.add_argument("--mostrar", action="store_true",
                     help="imprime a fala mais longa de cada cena que estoura")
     ap.add_argument("--gate", action="store_true", help="exit 1 se algum estoura")
+    ap.add_argument("--curva", action="store_true",
+                    help="distribuicao por cena e o PISO do motor (o mais curto "
+                         "que ele consegue gerar) — e' ele que diz se baixar o "
+                         "teto resolve ou se e' preciso encurtar copy")
     a = ap.parse_args()
 
     alvos = [a.motor] if a.motor else MOTORES
+    if a.curva:
+        return curva(alvos, a.n)
     print("teto fisico: %d palavras em %.0fs (%.1f p/s)\n"
           % (TETO_FISICO, SEGUNDOS, TETO_FISICO / SEGUNDOS))
     print("%-16s %-12s %-14s %s"
