@@ -545,7 +545,17 @@ class App(tk.Tk):
         # exclui o valor que ja' esta' na tela, e o botao `trocar` devolvia o
         # mesmo. Para os pools de DICT o resultado e' o mesmo de antes: as
         # entradas sao unicas, entao so' a atual sai da lista.
-        opcoes = [x for x in pool if x != self.spec[chave]] or pool
+        # ⛔ POOL DE UM SO' VALOR: o `or pool` devolvia o MESMO valor e o botao
+        # ficava mudo — "cliquei e nao acontece nada", que e' indistinguivel de
+        # botao quebrado. Acontece de verdade: 4 dos 20 mundos do CLEAN V2 tem
+        # uma etnia unica (`apalache` so' comporta `white American`), e ai' o
+        # eixo nao TEM alternativa. Dizer isso e' honesto; ficar mudo nao e'.
+        # ⚠️ So' a mensagem muda; o comportamento e' o mesmo de antes.
+        opcoes = [x for x in pool if x != self.spec[chave]]
+        if not opcoes:
+            self._toast("%s: só existe esta opção aqui — troque outro eixo"
+                        % chave)
+            return
         self.spec[chave] = self.rng.choice(opcoes)
         reescreve = getattr(self.m, "EIXOS_QUE_MEXEM_NA_COPY", {}).get(chave)
         if reescreve:
