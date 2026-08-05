@@ -158,8 +158,16 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 BO_ANCORA = ("the same %d-year-old %s woman from the first scene, same %s, same "
              "%s, same %s")
 
-ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
-             "actor, not resembling any famous person.")
+# ⭐⭐ A CLAUSULA ANTI-CELEBRIDADE, NO REGISTRO DE MULHER. Ordem do operador,
+# 2026-08-05, lendo o prompt gerado: a REF deste angulo **e' top model**.
+# ⛔ `Ordinary relatable face, not a model` brigava DE FRENTE com o pool: o
+# gerador recebia "tall and long-legged, strikingly beautiful" no corpo e "cara
+# comum, nao e' modelo" no rosto NA MESMA FRASE, e resolvia a contradicao contra
+# nos — rosto sem graca em cima de um corpo encomendado bonito.
+# ⚠️ E' o mesmo conserto que o CLEAN ja' tinha feito (CL26): a protecao de
+# IDENTIDADE (nao-celebridade) fica; so' sai o "comum" e o "nao e' modelo".
+ANTICELEB = ("A strikingly beautiful face, not a celebrity, not resembling "
+             "any famous person.")
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 
@@ -1595,9 +1603,15 @@ APELO_EUA = [
     "A very attractive everyday woman with a toned shapely figure, shining hair and even skin, not a celebrity, not resembling any famous person.",
 ]
 
+# ⛔ HOJE E' CODIGO MORTO: os 16 mundos deste motor sao todos `eua: True`,
+# entao `_apelo` nunca cai aqui (medido). Fica porque um mundo novo sem o
+# selo o religa — e no registro ANTIGO ele entregaria `plain unremarkable
+# face` num agente cuja REF o operador encomendou top model. Codigo morto
+# com a regra errada dentro e' bomba com pino: alguem acrescenta um mundo e
+# o vicio volta calado, sem lint, sem autoteste, sem aviso.
 APELO_PADRAO = (
-    "An ordinary everyday relatable person with a plain unremarkable face, not "
-    "a celebrity, not a model, not an actor, not resembling any famous person.")
+    "A strikingly beautiful everyday woman, not a celebrity, not resembling "
+    "any famous person.")
 
 
 def _apelo(spec):

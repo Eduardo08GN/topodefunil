@@ -275,8 +275,16 @@ BO_HOMEM_TAKE = (
 BO_ANCORA = ("the same %d-year-old %s woman from the first scene, same %s, same "
              "%s, same %s")
 
-ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
-             "actor, not resembling any famous person.")
+# ⭐⭐ A CLAUSULA ANTI-CELEBRIDADE, NO REGISTRO DE MULHER. Ordem do operador,
+# 2026-08-05, lendo o prompt gerado: a REF deste angulo **e' top model**.
+# ⛔ `Ordinary relatable face, not a model` brigava DE FRENTE com o pool: o
+# gerador recebia "tall and long-legged, strikingly beautiful" no corpo e "cara
+# comum, nao e' modelo" no rosto NA MESMA FRASE, e resolvia a contradicao contra
+# nos — rosto sem graca em cima de um corpo encomendado bonito.
+# ⚠️ E' o mesmo conserto que o CLEAN ja' tinha feito (CL26): a protecao de
+# IDENTIDADE (nao-celebridade) fica; so' sai o "comum" e o "nao e' modelo".
+ANTICELEB = ("A strikingly beautiful face, not a celebrity, not resembling "
+             "any famous person.")
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 
@@ -1835,9 +1843,15 @@ APELO_EUA = [
     "A very attractive everyday woman with a toned shapely figure, shining hair and even skin, not a celebrity, not resembling any famous person.",
 ]
 
+# ⛔ HOJE E' CODIGO MORTO: os 16 mundos deste motor sao todos `eua: True`,
+# entao `_apelo` nunca cai aqui (medido). Fica porque um mundo novo sem o
+# selo o religa — e no registro ANTIGO ele entregaria `plain unremarkable
+# face` num agente cuja REF o operador encomendou top model. Codigo morto
+# com a regra errada dentro e' bomba com pino: alguem acrescenta um mundo e
+# o vicio volta calado, sem lint, sem autoteste, sem aviso.
 APELO_PADRAO = (
-    "An ordinary everyday relatable person with a plain unremarkable face, not "
-    "a celebrity, not a model, not an actor, not resembling any famous person.")
+    "A strikingly beautiful everyday woman, not a celebrity, not resembling "
+    "any famous person.")
 
 
 def _apelo(spec):
@@ -2357,18 +2371,13 @@ def lint(spec, blocos):
     raro = spec["raro"]
     # ⛔ No BOTICA o raro era o segredo da cena 1. Aqui a cena 1 e' o DEITICO
     # DUPLO e o raro entra na cena 2, com o acafrao da fonte.
-    if False:
-        ach.append(("ERRO", "BO8: a cena 1 nao nomeia o ingrediente raro (%s) — "
-                            "e' ele o segredo que segura o espectador"
-                    % raro["nome"]))
-    # ⛔ APOSTO DISPENSADO NESTE ANGULO — ver o comentario em `_falas`. A fonte
-    # nao o traz e ele nao cabe em 25 palavras junto com os dois sucos.
-    elif False:
-        ach.append(("ERRO", "BO8: `%s` entrou SEM o aposto na cena 1 — nome solto "
-                            "e' um termo aleatorio jogado no roteiro, e o "
-                            "espectador nao faz ideia do que e'" % raro["nome"]))
-    # ⚠️ o aposto foi da cena 1 para a 2 junto com o raro — a cena 1 aqui e' o
-    # deitico duplo e nao tem espaco para 5-9 palavras de aposto.
+    # ⛔⛔ AS DUAS REGRAS DO BOTICA (raro na cena 1, aposto obrigatorio) FORAM
+    # APAGADAS, nao desligadas com `if False`. Elas nao valem aqui: a cena 1 e' o
+    # deitico duplo e a fonte diz apenas *"a pinch of saffron"*, sem explicar. O
+    # aposto custaria 5-9 palavras e MEDIDO levava a cena 2 a 39 contra teto 25.
+    # ⚠️ `if False` nao e' apagar: ele deixa a SONDA correspondente do autoteste
+    # viva e cega, passando sempre sem proteger nada (§29). Foi assim que este
+    # motor ficou o dia inteiro com um controle decorativo.
     if raro["nome"] not in falas[1]:
         ach.append(("ERRO", "BO8: a cena 2 nao nomeia o ingrediente raro (%s) na "
                             "receita" % raro["nome"]))
@@ -2710,16 +2719,17 @@ def autoteste(n=600):
     s = sortear("joe", random.Random(1), {}, {})
     b = montar(s)
 
-    # ⭐ [BO8] o raro sem o aposto — a diretiva inteira do operador em um controle
-    # ⚠️ O controle apontava para a cena 2 e ficou CEGO quando o aposto mudou
-    # para a cena 1 — controle que nao acompanha a regra deixa de ser controle.
+    # ⭐ [BO8] o raro FORA da cena 2 — a regra que este angulo de fato tem.
+    # ⚠️ A sonda anterior mexia em `falas[0]` procurando aposto, e o aposto foi
+    # DISPENSADO aqui por medicao. Ela passava sempre. Sonda de regra morta e'
+    # decoracao — e decoracao que faz o autoteste inteiro perder o direito de
+    # ser acreditado, porque ele imprime "OK" do mesmo jeito.
     s8 = dict(s, falas=list(s["falas"]))
-    s8["falas"][0] = s8["falas"][0].replace(
-        raro_falado(s["raro"]), s["raro"]["nome"])
+    s8["falas"][1] = s8["falas"][1].replace(s["raro"]["nome"], "something")
     if not any("BO8" in msg for _, msg in lint(s8, b)):
-        ctrl.append("[BO8] NAO acusa o ingrediente raro sem o aposto na cena 1")
+        ctrl.append("[BO8] NAO acusa o raro ausente da receita da cena 2")
     if any("BO8" in msg for _, msg in lint(s, b)):
-        ctrl.append("[BO8] acusa a forma CERTA (nome + aposto)")
+        ctrl.append("[BO8] acusa a forma CERTA (raro nomeado na cena 2)")
 
     # ⭐ [BO9] o caso que o operador reprovou: a cena 1 falando do vegetal
     s9b = dict(s, falas=list(s["falas"]))
