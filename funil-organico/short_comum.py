@@ -786,3 +786,47 @@ def lint_take_vs_image(blocos, achados, excecoes=()):
                     "bloco tem um segundo corpo (%r) — o Veo resolve a "
                     "contradicao APAGANDO o segundo corpo" % (chave, pista)))
                 break
+
+
+def lint_painel_honesto(motor, spec, blocos, achados):
+    """⛔⛔ EIXO DO PAINEL QUE NAO CHEGA AO VIDEO — criada em 2026-08-05.
+
+    A auditoria da etapa [7] achou SETE eixos fantasma em dois motores: o
+    PLACA desenhava SUBSTANCIA, METODO, COMUM e RARO no painel e o DUPLA
+    desenhava SUBSTANCIA, METODO e COMUM — todos sorteados, todos rotacionados
+    no ledger, nenhum chegando a bloco nenhum. Sobraram da copia do BOTICA,
+    onde eles existem.
+
+    ⚠️ Eixo que aparece no painel e nao muda o video e' PIOR que eixo ausente:
+    o operador troca, le o prompt, ve que nada mudou, e para de confiar no
+    painel inteiro. Mesma familia do cadeado que nao trava.
+
+    ⭐ A lente e' de PRESENCA, nao de semantica: ela so' pergunta se o valor
+    sorteado aparece em algum bloco. Eixo cujo valor e' um `id` interno
+    (`mundo`, `metodo`) declara-se em `IGNORA_PAINEL` no motor.
+    """
+    junto = " ".join(blocos.values()).lower()
+    ignora = set(getattr(motor, "IGNORA_PAINEL", ()) or ())
+    ignora |= {"etnia", "cor", "mundo"}
+    for eixo in [e[0] for e in getattr(motor, "EIXOS_UI", [])]:
+        if eixo in ignora or eixo not in spec:
+            continue
+        # ⛔ QUALQUER campo do eixo serve como prova de presenca. A primeira
+        # versao olhava so' `nome` e acusava o COMUM do CHA, que chega ao quadro
+        # pelo campo `img` (`a shallow dish of deep red powder`) — o eixo estava
+        # em cena, so' nao pelo nome. Lente que exige a prova numa forma so' e'
+        # lente que inventa defeito.
+        v = spec[eixo]
+        if isinstance(v, dict):
+            provas = [x for x in v.values() if isinstance(x, str) and len(x) > 3]
+        elif isinstance(v, (tuple, list)):
+            provas = [str(x) for x in v if isinstance(x, str) and len(x) > 3]
+        else:
+            provas = [str(v)]
+        alvo = provas[0] if provas else None
+        if provas and not any(p.lower() in junto for p in provas):
+            achados.append((
+                "ERRO",
+                "PAINEL: o eixo %r esta' no painel e o valor sorteado (%r) nao "
+                "aparece em bloco nenhum — o operador troca e o video nao muda"
+                % (eixo, str(alvo)[:44])))

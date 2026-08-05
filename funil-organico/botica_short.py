@@ -68,6 +68,7 @@ import json
 import os
 import random
 import re
+import sys
 
 import short_comum as sc
 from nucleo_sonoro import sonorizar
@@ -2605,6 +2606,10 @@ def lint(spec, blocos):
     # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
     # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
     # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    # ⛔ PAINEL HONESTO — 2026-08-05. Nenhum eixo desenhado no painel pode
+    # deixar de chegar ao video.
+    sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
+
     sc.lint_take_vs_image(blocos, ach)
 
     return ach

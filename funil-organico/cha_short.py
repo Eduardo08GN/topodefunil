@@ -68,6 +68,7 @@ import json
 import os
 import random
 import re
+import sys
 
 import short_comum as sc
 from nucleo_sonoro import sonorizar
@@ -1776,9 +1777,14 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         # `hard` quebraria a automacao de DM, como `BOOK` e `YES`.
         # ⚠️ 2.4K comentarios contra 1.4K reacoes na fonte: e' este beat que faz
         # este angulo valer o lugar dele no repertorio.
+        # ⛔ `o2`, NAO `o1`. O sorteio tira DOIS orgaos diferentes justamente
+        # para o substantivo nao virar bordao em 24 segundos — e este motor
+        # gastava `o1` na cena 1 e de novo na cena 3, deixando `o2` morto em
+        # 600 de 600 videos. A cena 2 e' a receita e nao nomeia orgao, entao o
+        # par certo e' cena 1 = o1, cena 3 = o2.
         def _c3(uso, isca, gate):
             return "%s %s and I'll send you %s. %s" % (
-                uso.format(o=o1), sc.CTA_LITERAL, isca, gate)
+                uso.format(o=o2), sc.CTA_LITERAL, isca, gate)
 
         ci = min(ISCAS_ENTREGA, key=_palavras)
         cg = min(GATES, key=_palavras)
@@ -2269,6 +2275,10 @@ def lint(spec, blocos):
     # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
     # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
     # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    # ⛔ PAINEL HONESTO — 2026-08-05. Nenhum eixo desenhado no painel pode
+    # deixar de chegar ao video.
+    sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
+
     sc.lint_take_vs_image(blocos, ach)
 
     return ach
@@ -2318,10 +2328,14 @@ def _apos_cena1(spec, rng):
 
 
 def _apos_cena2(spec, rng):
-    """Trocou o METODO, o COMUM ou o RARO: os tres estao NA FALA da cena 2."""
-    if "vaso_fala" not in spec["metodo"]:
-        spec["metodo"] = dict(spec["metodo"],
-                              vaso_fala=_sem_artigo(spec["metodo"]["curto"]))
+    """Trocou o COMUM ou o RARO: o RARO esta' na fala da cena 2.
+
+    ⛔ Aqui havia um guard de `spec["metodo"]` herdado do BOTICA — e este motor
+    NAO TEM metodo. Trocar COMUM ou RARO no painel estourava KeyError dentro do
+    callback do tkinter, que sob `pythonw` nao tem stderr: o botao simplesmente
+    nao fazia nada, e a IMAGE ficava com um ingrediente e a boca com outro.
+    ⚠️ Achado por auditoria, nao por lint — nenhuma lente executa o painel.
+    """
     spec["falas"][1] = nova_fala(spec, 1, rng)
 
 

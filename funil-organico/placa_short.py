@@ -68,6 +68,7 @@ import json
 import os
 import random
 import re
+import sys
 
 import short_comum as sc
 from nucleo_sonoro import sonorizar
@@ -1780,8 +1781,9 @@ TRAVAS_UI = [
     ("familia_mundo", "nicho", FAMILIAS_MUNDO),
 ]
 
-EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "homem", "prop", "substancia",
-                   "metodo", "comum", "raro", "cor", "traje"]
+# ⛔ So' os eixos que este motor de fato sorteia E entrega em quadro.
+EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "homem", "prop", "cor", "traje",
+                   "placa"]
 
 
 def etnias_do_mundo(spec):
@@ -1802,20 +1804,26 @@ def trajes_do_mundo(spec):
 
 trajes_do_mundo.recebe_spec = True
 
+# ⛔⛔ QUATRO EIXOS SAIRAM DAQUI EM 2026-08-05, achados na auditoria da etapa
+# [7]: SUBSTANCIA, METODO, COMUM e RARO eram sorteados, rotacionados no ledger e
+# desenhados no painel — e NAO CHEGAVAM A NENHUM BLOCO. A receita deste angulo e'
+# FECHADA (caldo de osso, mel cru e limao, lida na fonte) e o utensilio e' a
+# colher; nenhum dos quatro tem onde entrar.
+# ⚠️ Eixo que aparece no painel e nao muda o video e' pior que eixo ausente: o
+# operador troca, olha o prompt, ve que nada mudou, e para de confiar no painel
+# inteiro. Mesma familia do cadeado que nao trava.
 EIXOS_UI = [
-    ("mundo", "A BOTICA", "MUNDOS", "id"),
+    ("mundo", "A COZINHA", "MUNDOS", "id"),
     ("etnia", "ETNIA", "etnias_do_mundo", None),
-    ("ref", "A BOTICARIA", "REFS", "cabeca"),
+    ("ref", "A REF", "REFS", "cabeca"),
     ("traje", "O TRAJE", "trajes_do_mundo", None),
-    ("homem", "O ESPANTADO", "HOMENS", "marca"),
-    ("prop", "O PROP", "PROPS", "nome"),
-    ("substancia", "A ISCA", "SUBSTANCIAS", "nome"),
-    ("metodo", "O PREPARO", "METODOS", "id"),
-    ("comum", "O COMUM", "COMUNS", "nome"),
-    ("raro", "O RARO", "RAROS", "nome"),
+    ("homem", "O CORPO-PROVA (cena 3)", "HOMENS", "marca"),
+    ("prop", "O PAR DE PROPS", "PROPS", "nome"),
+    ("placa", "A PLACA", "PLACAS", None),
 ]
 
-CENAS_UI = ["1 · a isca + o vilao", "2 · o preparo", "3 · o copo + CTA"]
+CENAS_UI = ["1 · a placa + o corpo dele", "2 · a receita",
+            "3 · o prop grande + CTA"]
 
 
 # ---------------------------------------------------------------------------
@@ -1875,6 +1883,17 @@ def _por_traje(mundo, curto):
     operador pode ter travado um traje e depois trocado de mundo, e travar
     `kurta` num mundo amish nao pode derrubar o sorteio.
     """
+    # ⛔⛔ ACEITA TUPLA. A `ui_agente.travas()` devolve o VALOR QUE ESTA' NA TELA,
+    # e o valor na tela e' a TUPLA `(template, curto)` — nao o curto. Com esta
+    # funcao aceitando so' string, o cadeado do traje APARECIA e nao segurava.
+    # ⚠️ Consertei isto no CHA de manha e NAO nos dois irmaos, que foram
+    # construidos do mesmo tronco. Correcao aplicada num motor e nao nos irmaos
+    # e' o §29 na direcao oposta — e so' apareceu porque o cadeado passou a ser
+    # MEDIDO (travar, sortear 30x, conferir), nunca declarado.
+    # ⭐ TRAVA EXPLICITA VENCE O MUNDO: os trajes destes motores sao roupa
+    # americana de rua, nao traje etnico, e atravessam qualquer mundo.
+    if isinstance(curto, (tuple, list)):
+        return tuple(curto)
     for x in mundo["trajes"]:
         if x[1] == curto:
             return x
@@ -2675,6 +2694,10 @@ def lint(spec, blocos):
     # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
     # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
     # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    # ⛔ PAINEL HONESTO — 2026-08-05. Nenhum eixo desenhado no painel pode
+    # deixar de chegar ao video.
+    sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
+
     sc.lint_take_vs_image(blocos, ach)
 
     return ach

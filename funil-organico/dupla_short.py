@@ -68,6 +68,7 @@ import json
 import os
 import random
 import re
+import sys
 
 import short_comum as sc
 from nucleo_sonoro import sonorizar
@@ -145,18 +146,18 @@ BO_DUPLA = (
     "frame-right is a %d-year-old %s woman, %s, %s, wearing %s; she holds %s "
     "raised at chest height in her left hand. Both objects are fully in frame "
     "and neither touches either woman's body. The woman on the left looks "
-    "straight into the lens with her mouth open mid-word as she speaks."
+    "straight into the lens with her mouth open mid-word as she speaks. The "
+    "woman on the right keeps her mouth closed and never speaks."
 )
 
 # ⛔ BO2 — no TAKE da cena 1 o prop NAO muda de estado. Este agente nao tem
-# crescimento: quem cresce e' o RESSURREICAO. O bit visual aqui e' o DESPEJO.
+# crescimento: quem cresce e' o RESSURREICAO. O bit visual aqui e' a COMPARACAO.
 # ⚠️ Nunca `completely motionless` num objeto que a mao segura — ordem impossivel,
 # e o Veo resolve SOLTANDO o objeto (F12b). Diz-se pela POSICAO.
-BO_ISCA_ESTAVEL = (
-    "Her left hand keeps it in exactly the same place, at the same distance from "
-    "the lens, same size, same shape, same colour. Her right hand keeps the dish "
-    "at the same height and the same tilt. Only the falling scatter moves."
-)
+# ⛔⛔ O `BO_ISCA_ESTAVEL` do BOTICA FOI APAGADO daqui. Ele descrevia *"Her right
+# hand keeps the dish... Only the falling scatter moves"* — prato e despejo, numa
+# cena de dois props erguidos. Enquanto ele existia no arquivo, bastava alguem
+# religa-lo por copia; string morta do angulo errado e' bomba com pino.
 
 # ⭐⭐ BO3 — O PREPARO. ⛔ ORDEM DO OPERADOR: o utensilio NAO E' FIXO. A fonte usa
 # liquidificador; travar isso faria os videos deste agente parecerem o mesmo
@@ -1777,16 +1778,22 @@ def trajes_do_mundo(spec):
 
 trajes_do_mundo.recebe_spec = True
 
+# ⛔⛔ TRES EIXOS SAIRAM DAQUI EM 2026-08-05, achados na auditoria da etapa [7]:
+# SUBSTANCIA, METODO e COMUM eram sorteados, rotacionados no ledger e desenhados
+# no painel — e NAO CHEGAVAM A NENHUM BLOCO. A cena 1 deste angulo e' a
+# COMPARACAO de dois props (nao ha' despejo, logo nao ha' substancia), e a cena 2
+# e' o DESPEJO DOS DOIS SUCOS (nao ha' utensilio, logo nao ha' metodo).
+# ⚠️ Eixo que aparece no painel e nao muda o video e' pior que eixo ausente: o
+# operador troca, olha o prompt, ve que nada mudou, e para de confiar no painel.
+# ⛔ O `homem` tambem saiu: a cena 3 deste angulo e' das DUAS MULHERES, e o
+# corpo-prova masculino do BOTICA foi removido junto.
 EIXOS_UI = [
-    ("mundo", "A BOTICA", "MUNDOS", "id"),
+    ("mundo", "A COZINHA", "MUNDOS", "id"),
     ("etnia", "ETNIA", "etnias_do_mundo", None),
-    ("ref", "A BOTICARIA", "REFS", "cabeca"),
-    ("traje", "O TRAJE", "trajes_do_mundo", None),
-    ("homem", "O ESPANTADO", "HOMENS", "marca"),
-    ("prop", "O PROP", "PROPS", "nome"),
-    ("substancia", "A ISCA", "SUBSTANCIAS", "nome"),
-    ("metodo", "O PREPARO", "METODOS", "id"),
-    ("comum", "O COMUM", "COMUNS", "nome"),
+    ("ref", "A QUE FALA", "REFS", "cabeca"),
+    ("traje", "O TRAJE DELA", "trajes_do_mundo", None),
+    ("amiga", "A AMIGA", "REFS", "cabeca"),
+    ("prop", "O PAR DE PROPS", "PROPS", "nome"),
     ("raro", "O RARO", "RAROS", "nome"),
 ]
 
@@ -1850,6 +1857,17 @@ def _por_traje(mundo, curto):
     operador pode ter travado um traje e depois trocado de mundo, e travar
     `kurta` num mundo amish nao pode derrubar o sorteio.
     """
+    # ⛔⛔ ACEITA TUPLA. A `ui_agente.travas()` devolve o VALOR QUE ESTA' NA TELA,
+    # e o valor na tela e' a TUPLA `(template, curto)` — nao o curto. Com esta
+    # funcao aceitando so' string, o cadeado do traje APARECIA e nao segurava.
+    # ⚠️ Consertei isto no CHA de manha e NAO nos dois irmaos, que foram
+    # construidos do mesmo tronco. Correcao aplicada num motor e nao nos irmaos
+    # e' o §29 na direcao oposta — e so' apareceu porque o cadeado passou a ser
+    # MEDIDO (travar, sortear 30x, conferir), nunca declarado.
+    # ⭐ TRAVA EXPLICITA VENCE O MUNDO: os trajes destes motores sao roupa
+    # americana de rua, nao traje etnico, e atravessam qualquer mundo.
+    if isinstance(curto, (tuple, list)):
+        return tuple(curto)
     for x in mundo["trajes"]:
         if x[1] == curto:
             return x
@@ -2173,8 +2191,13 @@ def sortear(pagina, rng, led, travas=None):
     # roupa e' essa?"* — as duas apareciam com o MESMO vestido, porque eu passava
     # `_traje(spec)` duas vezes. Duas mulheres identicas da cintura para cima
     # viram uniforme, e uniforme mata a leitura de "duas pessoas".
-    _tj = mundo["trajes"]
-    traje_amiga = rng.choice([x for x in _tj if x is not None])
+    # ⛔⛔ `x is not traje`, NAO `x is not None`. A versao anterior filtrava
+    # coisa nenhuma — `None` nunca esta' no pool — e as duas sortavam a MESMA
+    # roupa em 20,7% dos videos, que e' exatamente o defeito que este bloco foi
+    # escrito para impedir. O comentario dizia a intencao certa e o codigo fazia
+    # outra coisa: comentario nao e' guarda.
+    _tj = [x for x in mundo["trajes"] if x is not traje] or mundo["trajes"]
+    traje_amiga = rng.choice(_tj)
     # ⚠️ a reacao dela e' sorteada junto — ordem do operador: "ambas com pool de
     # cara de espanto, ou risos, etc".
     reacao_amiga = _fresco_traje(REACOES_AMIGA,
@@ -2289,22 +2312,30 @@ def montar(spec):
             _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
                    spec["reacao_amiga"][0]))))
 
-    # --- CENA 3 — O COPO + O HOMEM MUDO + O CTA -----------------------------
+    # --- CENA 3 — AS DUAS + O PROP GIGANTE + O COPO + O CTA -----------------
     # ⭐ O objeto da keyword esta' NA MAO no frame em que a boca diz `gelatin,`.
-    # ⛔ BO5 — o copo so' existe aqui. BO6 — o homem e' mudo e olha o copo.
+    # ⛔⛔ TRES CORRECOES, todas achadas na auditoria da etapa [7]:
+    #   1. HAVIA UM HOMEM AQUI. Heranca do BOTICA, e o operador nunca o pediu —
+    #      a ordem dele foi *"o take final deve ter as duas mulheres novinhas
+    #      lindas com uma delas segurando o geoduck ereto e bem grande"*. Com
+    #      ele a cena tinha TRES pessoas e o terceiro corpo roubava o quadro do
+    #      prop, que e' o payoff.
+    #   2. O PROP GIGANTE NAO ESTAVA EM QUADRO. A ordem do operador pede ele
+    #      explicitamente, e sem ele a cena 3 nao desmente o murcho da cena 1.
+    #   3. A amiga usava `_traje(spec)` — a roupa da OUTRA. As duas apareciam
+    #      iguais aqui mesmo depois de eu consertar as cenas 1 e 2.
     b["IMAGE 03/03"] = (
         "Closer medium shot in the same place, same background, same %(luz_c)s, "
         "filmed straight on and framed from the waist up. %(Ancora)s, standing "
-        "centred in the frame, holding %(copo)s up at chest height, turned "
-        "towards the lens. She looks directly into the camera, calm and "
-        "certain, her mouth open mid-word as she speaks, her front teeth even "
-        "and complete. %(amiga)s %(homem)s %(anti)s %(cauda)s"
-        % dict(v, homem=BO_HOMEM % (hom["idade"], spec["etnia"], hom["marca"],
-                                    hom["roupa"], spec["reacao"][0]),
-               amiga=BO_AMIGA_FUNDO % (
+        "centred in the frame and turned towards the lens, holding %(gigante)s. "
+        "Her other hand holds %(copo)s. She looks directly into the camera, calm "
+        "and certain, her mouth open mid-word as she speaks, her front teeth "
+        "even and complete. %(amiga)s %(anti)s %(cauda)s"
+        % dict(v, gigante=prop["gigante"],
+               amiga=_cap(BO_AMIGA_FUNDO % (
                    _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
-                   _sem_artigo(_a["marca"]), _traje(spec),
-                   spec["reacao_amiga"][0])))
+                   _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
+                   spec["reacao_amiga"][0]))))
 
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;
@@ -2584,26 +2615,45 @@ def lint(spec, blocos):
         ach.append(("ERRO", "BO5: a cena 3 tem de mostrar o copo na mao — e' o "
                             "objeto da keyword"))
 
-    # --- BO6: ⭐ o homem e' MUDO e olha o COPO -------------------------------
-    if "never at the camera" not in i3:
-        ach.append(("ERRO", "BO6: o homem da cena 3 nao esta' travado olhando o "
-                            "copo — se ele olha a lente, disputa o quadro com "
-                            "ela em vez de encenar o espanto"))
-    if "never speaks" not in blocos["TAKE 03/03"]:
-        ach.append(("ERRO", "BO6: TAKE 03/03 sem a trava de mudez — sem ela o "
-                            "segundo corpo dubla a fala dela (falha que derrubou "
-                            "a cena do casal do VAZAMENTO)"))
-    # ⛔ REESCRITO: neste angulo NAO existe cena de pessoa unica — a dupla e' o
-    # angulo. A trava vira o seu oposto: a AMIGA tem de estar nas tres cenas, e
-    # muda nas tres, senao o Veo perde a comparacao ou dubla as duas.
+    # --- BO6: ⭐⭐ AS DUAS MULHERES, e SO' elas ------------------------------
+    # ⛔⛔ REESCRITO. As tres regras que estavam aqui vigiavam um HOMEM MUDO —
+    # heranca literal do BOTICA, num angulo que o operador definiu como *"duas
+    # mulheres novinhas lindas"*. Elas cobravam que ele olhasse o copo, que
+    # tivesse trava de mudez e que so' existisse na cena 3, e o motor obedecia:
+    # a cena 3 saia com TRES pessoas e o terceiro corpo roubava o quadro do prop
+    # gigante, que e' o payoff. Achado na auditoria da etapa [7].
+    # ⭐ O que a lente vigia agora e' o angulo de verdade: a AMIGA nas tres
+    # cenas, muda, e nenhum terceiro corpo.
+    _a_idade = "the same %d-year-old" % spec["amiga"]["idade"]
     for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
-        if "never speaks" not in blocos[nome] and nome != "IMAGE 01/03":
-            ach.append(("ERRO", "BO6: %s sem a trava de pessoa unica — o homem "
-                                "so' existe na cena 3" % nome))
+        if "never speaks" not in blocos[nome]:
+            ach.append(("ERRO", "BO6: %s sem a trava de mudez da segunda mulher "
+                                "— sem ela o Veo dubla a fala nas duas bocas "
+                                "(falha que derrubou a cena do casal do "
+                                "VAZAMENTO)" % nome))
+    if "never speaks" not in blocos["TAKE 03/03"]:
+        ach.append(("ERRO", "BO6: TAKE 03/03 sem a trava de mudez"))
+    # ⛔ NENHUM TERCEIRO CORPO. O homem do BOTICA saiu; se ele voltar por
+    # copia, esta lente grita antes do render.
+    for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
+        for pista in (" man,", " man ", " his ", " he "):
+            if pista in blocos[nome].replace("American man", "AMERICANO"):
+                ach.append(("ERRO", "BO6: %s tem um HOMEM em quadro (%r) — este "
+                                    "angulo e' de duas mulheres, e o terceiro "
+                                    "corpo rouba o quadro do prop"
+                            % (nome, pista.strip())))
+                break
     if "only person" in i3:
         ach.append(("ERRO", "BO6: a cena 3 declara pessoa UNICA e tem DUAS — "
-                            "ordem contraditoria: o Veo resolve apagando o "
-                            "homem, que e' o espanto do espectador"))
+                            "ordem contraditoria: o Veo resolve apagando a "
+                            "amiga, que e' o angulo inteiro"))
+    # ⭐ A AMIGA TEM ANCORA PROPRIA nas cenas 2 e 3 — sem ela o Veo troca a
+    # segunda mulher entre os blocos e a comparacao perde o dono.
+    for nome in ("IMAGE 02/03", "IMAGE 03/03"):
+        if _a_idade not in blocos[nome].lower() and _a_idade.lower() not in blocos[nome].lower():
+            ach.append(("ERRO", "BO6: %s sem a ancora da segunda mulher (%s) — "
+                                "e' onde o Veo a troca por outra pessoa"
+                        % (nome, _a_idade)))
 
     # --- BO7: a ancora de continuidade nas cenas 2 e 3 ----------------------
     for nome in ("IMAGE 02/03", "IMAGE 03/03"):
@@ -2660,6 +2710,10 @@ def lint(spec, blocos):
     # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
     # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
     # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    # ⛔ PAINEL HONESTO — 2026-08-05. Nenhum eixo desenhado no painel pode
+    # deixar de chegar ao video.
+    sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
+
     sc.lint_take_vs_image(blocos, ach)
 
     return ach
@@ -2865,16 +2919,27 @@ def autoteste(n=600):
     # CERTO. Controle de regra aposentada que fica para tras vira ruido, e ruido
     # ensina o operador a ignorar o autoteste.
 
-    # [BO6] o homem falando / olhando a lente
+    # ⭐⭐ [BO6] AS SONDAS DO ANGULO CERTO. As duas que estavam aqui vigiavam o
+    # HOMEM MUDO do BOTICA — e a segunda apontava para `never at the camera`,
+    # literal que este motor nao tem mais. Ela passava sempre, e foi ela que
+    # deixou o homem do BOTICA morar na cena 3 deste agente por um dia inteiro.
     b6 = dict(b)
     b6["TAKE 03/03"] = b6["TAKE 03/03"].replace("never speaks", "also speaks")
     if not any("BO6" in msg for _, msg in lint(s, b6)):
-        ctrl.append("[BO6] nao acusa o homem sem a trava de mudez")
+        ctrl.append("[BO6] NAO acusa a segunda mulher sem a trava de mudez")
+    # ⭐ o terceiro corpo — o defeito de verdade, plantado
     b6b = dict(b)
-    b6b["IMAGE 03/03"] = b6b["IMAGE 03/03"].replace("never at the camera",
-                                                    "and at the camera")
+    b6b["IMAGE 03/03"] = b6b["IMAGE 03/03"].replace(
+        "%(anti)s" % {"anti": ANTICELEB},
+        "Behind them stands a 60-year-old man, his mouth open. " + ANTICELEB)
     if not any("BO6" in msg for _, msg in lint(s, b6b)):
-        ctrl.append("[BO6] nao acusa o homem olhando a lente")
+        ctrl.append("[BO6] NAO acusa um TERCEIRO CORPO na cena 3")
+    # ⭐ a ancora da segunda mulher, sem a qual o Veo a troca entre os blocos
+    b6c = dict(b)
+    b6c["IMAGE 03/03"] = b6c["IMAGE 03/03"].replace(
+        "the same %d-year-old" % s["amiga"]["idade"], "a")
+    if not any("BO6" in msg for _, msg in lint(s, b6c)):
+        ctrl.append("[BO6] NAO acusa a cena 3 sem a ancora da segunda mulher")
 
     # [BO5] copo adiantado
     b5 = dict(b)

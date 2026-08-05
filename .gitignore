@@ -17,3 +17,11 @@ build/
 dist/
 *.spec
 __pycache__/
+
+# ⛔ Rascunhos de subagente. Em 2026-08-05 dois deles (_cha_patch.py,
+# _tmp_cha_fix.py — copias de 141KB do cha_short) entraram no repo por um
+# `git add -A` meu enquanto uma auditoria rodava, e derrubaram o gate de
+# personagens: o medidor varre *_short.py e afins e passou a contar dois
+# motores fantasma.
+_*.py
+*_tmp_*.py
