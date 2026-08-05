@@ -894,6 +894,57 @@ exatamente o que aconteceu duas vezes. Medido nos 14 motores em 2026-08-05:
 
 ---
 
+## 29. ⛔⛔ COPIAR UM MOTOR TRAZ O LINTER **E AS CENAS** — e só um dos dois grita
+
+**O que aconteceu.** Criei o PLACA copiando `dupla_short.py`. Troquei a
+identidade, troquei os pools de copy, e parei ali. O operador pegou lendo o
+prompt gerado: *"me parece que o agente placa está gerando os prompts image do
+agente dupla"*. Estava mesmo — duas mulheres lado a lado com um par de props,
+quando o PLACA é UMA mulher apontando o prop na virilha DELE com uma placa
+escrita à mão. A fala era a certa; a imagem era de outro ângulo.
+
+**Por que passou.** Motor copiado traz duas heranças, e elas falham de jeitos
+opostos:
+
+| Herança | Como falha | Ruído |
+|---|---|---|
+| **O LINTER** | reprova 100% da produção na hora | ALTO — impossível não ver |
+| **AS CENAS** | geram um prompt **válido** do ângulo errado | **ZERO** |
+| **AS SONDAS do autoteste** | passam sempre, vigiando regra morta | **ZERO** |
+
+O barulhento me obrigou a olhar. O silencioso chegou ao render. E a terceira
+linha é a pior: uma sonda que vigia regra desligada dá "AUTOTESTE OK" e o
+autoteste inteiro perde o direito de ser acreditado.
+
+**O que impede.** Ao copiar um motor, três listas, nesta ordem, antes de rodar
+qualquer coisa:
+
+1. **Toda constante `BO_*` de cena** — cada uma é uma decisão visual do OUTRO
+   ângulo até que eu a reescreva ou a apague.
+2. **Toda regra do `lint()`** — reescrever ou apagar, nunca `if False`. Regra
+   desligada com `if False` deixa a sonda correspondente viva e cega.
+3. **Toda sonda do `autoteste()`** — cada uma tem de apontar para uma regra que
+   este ângulo TEM. Sonda de regra morta é decoração.
+
+**O corolário que vale para tudo.** *A lente tem de acompanhar a regra.* Toda
+vez que eu movo uma regra (o raro saiu da cena 1 e foi para a cena 2, o
+aposto mudou de cena, o traje virou eixo próprio), a sonda que a vigiava fica
+apontando para o lugar vazio e passa a devolver verde eterno. Aconteceu três
+vezes no mesmo dia: BO8 no PLACA, BO8 no CHA, e o controle do aposto no BOTICA.
+
+**Segunda ocorrência, mesmo dia, forma diferente — o botão que mente.** No CHA
+declarei `EIXOS_TRAVAVEIS` copiando a lista do BOTICA: `homem`, `prop`,
+`substancia`, `metodo` — quatro eixos que este motor não sorteia. O cadeado
+apareceria no painel e não travaria nada. Pior que cadeado ausente: o operador
+confia nele. E o cadeado do `traje`, que este ângulo TEM, também não segurava —
+`_por_traje` só aceitava string e a UI passa a tupla.
+
+Nenhum dos dois apareceu no lint, no autoteste ou no pyflakes. Apareceram porque
+**passei a medir o cadeado**: travar o eixo, sortear 30 vezes, conferir que o
+valor não mudou. Sete eixos, sete medições. É barato e é a única prova.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -949,6 +1000,12 @@ exatamente o que aconteceu duas vezes. Medido nos 14 motores em 2026-08-05:
       vê string quebrada entre linhas adjacentes (§19)
 - [ ] **Declarei 100%? Rodei em DOIS patamares de amostra e vi convergir** —
       100% de 60 sorteios escondeu 11 templates sem tradução (§23)
+- [ ] **Motor copiado?** As três listas do §29 percorridas: toda `BO_*` de
+      cena, toda regra do `lint()`, toda sonda do `autoteste()`
+- [ ] **Cada cadeado MEDIDO** — travar o eixo, sortear 30×, conferir que não
+      mudou. Botão que mente é pior que botão ausente (§29)
+- [ ] **Cada eixo de `EIXOS_TRAVAVEIS` existe no spec** — herdado da cópia,
+      ele desenha cadeado para eixo que o motor não sorteia
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
 - [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
 

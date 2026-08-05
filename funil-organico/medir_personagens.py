@@ -272,6 +272,16 @@ EXCECOES = {
     # humilhacao publica do corpo dele. Oculos de leitura brigam com "linda".
     ("placa_short.py", "REFS", "oculos"):
         "LEI DO REF — a REF deste angulo e' a bullet de retencao.",
+    # ⛔ CHA — a ordem do operador para este agente e' a mais explicita do repo:
+    # *"a ref mulher tem que ser extremamente linda e com um corpo muito
+    # atrativo, e' imperativo que ela use roupas com muito decote"*. O eixo
+    # `oculos` e' o oposto exato do que foi encomendado — zera-lo aqui e' cumprir
+    # a regra, nao furar a lente.
+    # ⚠️ `pele` esteve declarado aqui e SAIU: os REFS top model variam pele, e a
+    # propria lente avisou que a excecao virou letra morta. Excecao que nao e'
+    # mais necessaria e' permissao esquecida ligada.
+    ("cha_short.py", "REFS", "oculos"):
+        "LEI DO REF — a REF deste angulo E' a bullet de retencao do hook.",
     ("dupla_short.py", "REFS", "oculos"):
         "LEI DO REF — as duas mulheres sao a bullet de retencao deste angulo, "
         "por encomenda do operador.",

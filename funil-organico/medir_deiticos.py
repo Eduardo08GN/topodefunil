@@ -57,7 +57,7 @@ if AQUI not in sys.path:
 MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "ressurreicao", "flagrante", "pee", "vazamento", "necrose",
            "exterior", "colo", "receita", "botica",
-           "dupla", "placa"]
+           "dupla", "placa", "cha"]
 
 # --------------------------------------------------------------------------
 # OS REFERENTES QUE CONTAM COMO "a frase disse do que se trata"

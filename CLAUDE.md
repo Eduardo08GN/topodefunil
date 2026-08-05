@@ -41,10 +41,10 @@ qualquer agente novo.
 > **Quando o Ed disser "os agentes" — melhorar, ajustar, medir, ler — ele está
 > sempre falando dos SHORT.** Não pergunte qual.
 
-Os **quatorze agentes** deste funil são os `<angulo>_short.py` em `funil-organico/`:
+Os **dezessete agentes** deste funil são os `<angulo>_short.py` em `funil-organico/`:
 `clean` · `clean_v2` · `escandalo` · `troca` · `organicwave` · `ressurreicao` ·
 `flagrante` · `pee` · `vazamento` · `necrose` · `exterior` · `colo` · `receita` ·
-`botica`.
+`botica` · `dupla` · `placa` · `cha`.
 Três cenas de 8s, destino AdBatch Vertical 3.
 **Cada um é autossuficiente e é a FONTE DA VERDADE do seu ângulo** — correção de
 regra entra no `_short`.
@@ -117,7 +117,17 @@ etnia arrasta o mundo inteiro, 12 mundos em 9 famílias — Sofia Maren, reel
 **RESSURREICAO** (o despejo faz o prop murcho **alongar na tela** — e a escala é
 **diferencial**: altura 2,31× contra largura 1,44×, medido em pixels na fonte, então
 ele alonga em vez de inchar; escala uniforme lê como tumescência e já derrubou vídeo
-nosso. O morph mora no apagão de fala e acontece oculto dentro do jato).
+nosso. O morph mora no apagão de fala e acontece oculto dentro do jato),
+**CHA** (a caneca estendida na lente: ela sentada na varanda de casa, braço
+esticado, a caneca de vidro com chá verde grande em primeiro plano e ela menor
+atrás — corta para a cozinha da **mesma casa**, com a mesma roupa, e a receita é
+limões + gengibre + alho + o raro fervendo numa panela sobre fogareiro. ⭐ Único
+ângulo com **corte de ambiente dentro do vídeo**, e por isso varanda e cozinha
+são **um eixo só**. ⛔ Sem homem, sem prop fálico, sem substância absurda, sem
+vilão — a fonte não tem nenhum dos quatro. ⭐⭐ **O traje é a bullet de retenção**
+por ordem do operador (decote, saia curta, pernas em quadro), e é o eixo que o
+painel põe logo abaixo da REF — Alani bussy, reel 1669063827687365, 31K views /
+1.4K reações / **2.4K comentários**, o melhor CTA de comentário do repertório).
 Tabela completa com evidências no WORKFLOW.md. Todos enxutos: regras
 próprias + mecânica por ponteiro (V4/PRISMA/arsenal). O PRISMA sorteia a spec;
 o especialista do ângulo sorteado executa. ⛔ `fake_broadcast` está banido.
