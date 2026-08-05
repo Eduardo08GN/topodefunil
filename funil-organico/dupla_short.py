@@ -99,11 +99,27 @@ ETNIA = {
 PELE_TRAVAVEL = True
 
 
+# ⛔⛔ A CLASSIFICACAO E' LISTA EXPLICITA, NUNCA "tudo que nao e' branco".
+# Correcao de campo do operador em 2026-08-05, com print: no CLEAN V2 ele travou
+# `escura` e recebeu um REF Asian American. **Para ele, escura = NEGRO.**
+# ⚠️ Asiatico, latino, mediterraneo, nativo e mestico nao sao nem clara nem
+# escura — so' saem com a pele LIVRE. A regra binaria do `paginas_por_pele`
+# (clara = tem `white`, escura = o resto) e' o que produzia o defeito, e eu a
+# tinha herdado meia hora antes achando que estava sendo congruente.
+# ⛔ Mesma lista dos outros motores: classificacoes divergentes entre agentes
+# seriam o fragmento espelhado que a P9 proibe.
+PELE_ETNIAS = {
+    "escura": ("Black American",),
+    "clara": ("white American",),
+}
+
+
 def _pele_de(etnia):
-    """clara/escura pela MESMA regra do seletor do painel (`paginas_por_pele`):
-    clara = etnia com `white`; escura = todas as outras. Duas classificacoes
-    divergentes seriam o fragmento espelhado que a P9 proibe."""
-    return "clara" if "white" in etnia else "escura"
+    """A pele da etnia pela lista explicita — ou None (neutra, so' no livre)."""
+    for pele, ets in PELE_ETNIAS.items():
+        if etnia in ets:
+            return pele
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -2096,6 +2112,12 @@ def sortear(pagina, rng, led, travas=None):
     def _comporta(m):
         return not pele or any(_pele_de(e) == pele for e in m["etnias"])
 
+    def _etnias_ok(m):
+        """As etnias do mundo que servem a' pele pedida. ⛔ Sem este filtro o
+        mundo passava (tem UMA etnia da pele) e a etnia sorteava entre TODAS as
+        dele — foi assim que `escura` devolveu Asian American."""
+        return [e for e in m["etnias"] if not pele or _pele_de(e) == pele]
+
     fam_trava = travas.get("familia_mundo")
     if travas.get("mundo"):
         mundo = _por_id(MUNDOS, travas["mundo"])
@@ -2122,9 +2144,8 @@ def sortear(pagina, rng, led, travas=None):
                            or [m for m in MUNDOS if _comporta(m)]
                            or MUNDOS)
 
-    et = travas.get("etnia") or rng.choice(
-        [e for e in mundo["etnias"] if _comporta({"etnias": [e]})]
-        or mundo["etnias"])
+    et = travas.get("etnia") or rng.choice(_etnias_ok(mundo)
+                                           or mundo["etnias"])
     cor = travas.get("cor") or rng.choice(mundo["cores"])
     # ⭐ O TRAJE E' EIXO PROPRIO desde 2026-08-05, com pool por mundo. Cada
     # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
@@ -2850,8 +2871,10 @@ def autoteste(n=600):
                         "que sortear e a pele vai ceder calada" % _pele)
             continue
         _fora, _solta = 0, 0
+        _vistas = set()
         for _k in range(120):
             _s = sortear("joe", random.Random(_k), {}, {"pele": _pele})
+            _vistas.add(_s["etnia"])
             if _pele_de(_s["etnia"]) != _pele:
                 _fora += 1
             if _s["etnia"] not in _s["mundo"]["etnias"]:
@@ -2863,6 +2886,18 @@ def autoteste(n=600):
             ctrl.append("[PELE] a etnia saiu de FORA do mundo em %d de 120 — a "
                         "trava esta' sendo satisfeita quebrando a invariante"
                         % _solta)
+        # ⛔⛔ A TERCEIRA INVARIANTE, e ela e' correcao DE CAMPO do operador
+        # (2026-08-05, com print): `escura` significa NEGRO. Asiatico, latino e
+        # mestico nao sao nem clara nem escura — so' saem com a pele LIVRE.
+        # ⚠️ Checar so' `_pele_de(etnia) == pele` NAO pega isto: com a regra
+        # binaria antiga (`clara = tem white, escura = o resto`) o Asian
+        # American passava como "escura" e a sonda dizia OK. A sonda tem de
+        # olhar as etnias QUE SAIRAM contra a lista explicita.
+        _fora_lista = _vistas - set(PELE_ETNIAS[_pele])
+        if _fora_lista:
+            ctrl.append("[PELE] a trava %r devolveu etnia fora da lista: %s — "
+                        "escura significa NEGRO, e neutras so' saem no livre"
+                        % (_pele, ", ".join(sorted(_fora_lista))))
 
     # o lote limpo NAO pode ser acusado
     if [x for t, x in lint(s, b) if t == "ERRO"]:
