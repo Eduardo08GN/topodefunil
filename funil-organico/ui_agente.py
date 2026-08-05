@@ -688,8 +688,18 @@ class App(tk.Tk):
 
     def _render(self):
         for chave, _r, _p, campo in self.m.EIXOS_UI:
-            self.lbl_eixo[chave].configure(
-                text=self._texto_eixo(self.spec[chave], campo))
+            txt = self._texto_eixo(self.spec[chave], campo)
+            # ⚠️ pool com placeholder: o ITEM_B do CLEAN carrega `{o}` e o
+            # painel mostrava o template cru (`your {o} going` — print do
+            # operador, 2026-08-05). Mostra-se o texto como o video FALA,
+            # formatado com o orgao deste sorteio; motor sem `orgaos` ou sem
+            # placeholder passa reto.
+            if "{" in txt:
+                try:
+                    txt = txt.format(o=self.spec["orgaos"][1])
+                except (KeyError, IndexError):
+                    pass
+            self.lbl_eixo[chave].configure(text=txt)
 
         self.lbl_resumo.configure(text=self.m.resumo_pt(self.spec))
         self._pintar_pele()
