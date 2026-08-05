@@ -424,32 +424,20 @@ FAMILIAS = [
 # (Valentina Health & Wellness) e tem render atras. Os outros 20 sao `N` —
 # extrapolacao nossa, sem render, e e' o operador quem valida no campo.
 MUNDOS = [
-    # ---- consultorio moderno (a familia da fonte — 6 sets, render validado) --
-    # ⚠️ AS SEIS ENTRADAS ABAIXO REPRODUZEM O v2 ANTERIOR CARACTERE POR
-    # CARACTERE: mesmo `desc`, mesma superficie (`a wooden counter`), mesmo
-    # traje (o scrub), as mesmas 8 cores do antigo `SCRUBS`, a mesma luz
-    # (`Soft daylight from the window.`) e a mesma ambiencia (`quiet office room
-    # tone`). Nao e' zelo decorativo — e' o que torna a refatoracao PROVAVEL:
-    # com o mundo clinico o motor novo tem de render byte a byte igual ao
-    # antigo, e e' isso que o `--autoteste` cobra.
-    {"id": "diplomas_cidade", "selo": "V", "familia": "clinica",
-     "etnias": "todas",
-     "desc": "a bright medical office, four framed diplomas in dark frames on the wall behind %s, a tall window with an out-of-focus city skyline, a large green plant in the corner"},
-    {"id": "diplomas_jardim", "selo": "V", "familia": "clinica",
-     "etnias": "todas",
-     "desc": "a bright medical office, five framed diplomas in dark frames on the wall behind %s, a window looking out on green trees, a tall potted plant beside it"},
-    {"id": "farmacia", "selo": "V", "familia": "clinica",
-     "etnias": "todas",
-     "desc": "a bright clinic room, a long shelf of amber medicine bottles on the wall behind %s, a window with soft daylight, white cabinets below the shelf"},
-    {"id": "consultorio_claro", "selo": "V", "familia": "clinica",
-     "etnias": "todas",
-     "desc": "a bright consulting room, three framed certificates on the pale wall behind %s, a window with sheer curtains, a small green plant on the sill"},
-    {"id": "sala_exame", "selo": "V", "familia": "clinica",
-     "etnias": "todas",
-     "desc": "a bright examination room, two framed diplomas on the wall behind %s, a folded white examination couch out of focus at the side, a window with daylight"},
-    {"id": "escritorio_livros", "selo": "V", "familia": "clinica",
-     "etnias": "todas",
-     "desc": "a bright medical office, a low bookshelf of thick medical books behind %s, three framed diplomas above it, a window with an out-of-focus street"},
+    # ⛔⛔ A FAMILIA `clinica` SAIU EM 2026-08-05, POR ORDEM DO OPERADOR:
+    # *"nao quero que os cenarios/mundo do agente v1 se repitam no agente da v2"*.
+    # Eram SEIS mundos (diplomas_cidade, diplomas_jardim, farmacia,
+    # consultorio_claro, sala_exame, escritorio_livros) e os seis eram copia
+    # BYTE A BYTE dos CENARIOS do clean_short.py — mesmo id e mesmo `desc`.
+    # Existiam para provar a refatoracao (o motor novo tinha de render igual ao
+    # antigo no mundo clinico); essa prova ja' foi dada e arquivada no commit
+    # do eixo MUNDO. Agora eles so' faziam o V2 repetir o V1.
+    # ⚠️ Eram tambem os unicos `selo: V` e os unicos com `etnias: "todas"`. O
+    # que sobra: 20 mundos, 10 familias, 19 etnias, e as duas peles da trava
+    # continuam cobertas (escura em 6 mundos, clara em 4) — medido.
+    # ⛔ O dict CLINICA logo abaixo FICA: ele e' a tabela de DEFAULTS que os
+    # outros mundos herdam por setdefault, nao uma entrada de cenario.
+    # ⛔ E o V1 nao foi tocado: quem se move e' o V2 (assert de carga abaixo).
 
     # ---- montanha dos Apalaches -------------------------------------------
     {"id": "apalache_varanda", "selo": "N", "familia": "apalache",
@@ -755,6 +743,25 @@ for _m in MUNDOS:
 # As familias, na ordem em que aparecem — o sorteio pesa por FAMILIA, nunca por
 # mundo solto (senao `clinica`, com 6 sets, domina o lote).
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
+
+# ⛔⛔ NENHUM MUNDO DO V2 REPETE CENARIO DO V1 (ordem do operador, 2026-08-05).
+# ⚠️ Lista CONGELADA aqui em vez de `import clean_short`: os SHORT sao
+# autossuficientes por decisao de projeto (desacoplamento de 2026-08-03) e o
+# app entregue nao leva o motor do V1 junto — um import quebraria o .exe. A
+# copia e' segura porque o V1 esta' CONGELADO por ordem do operador; o
+# `--autoteste` confere contra o arquivo real quando ele existe ao lado.
+# ⛔ O `assinatura` pega o caso que o id sozinho nao pega: cenario clinico
+# reescrito com id novo continua sendo o territorio do V1.
+CENARIOS_V1 = ("diplomas_cidade", "diplomas_jardim", "farmacia",
+               "consultorio_claro", "sala_exame", "escritorio_livros")
+_ASSINATURA_V1 = ("bright medical office", "bright clinic room",
+                  "bright consulting room", "bright examination room")
+for _m in MUNDOS:
+    assert _m["id"] not in CENARIOS_V1, (
+        "mundo %r e' cenario do V1 — o V2 nao repete o V1" % _m["id"])
+    for _a in _ASSINATURA_V1:
+        assert _a not in _m["desc"], (
+            "mundo %r usa o consultorio do V1 (%r)" % (_m["id"], _a))
 
 # ⛔ assert de carga da TRAVA DE PELE: toda etnia do PELE_ETNIAS tem de existir
 # em algum mundo — um rename de etnia nos MUNDOS nao pode deixar a lista
@@ -2372,6 +2379,26 @@ def autoteste(n=600):
 
     # ---- CONTROLES POSITIVOS: cada checagem acima SABE reprovar? ----
     ctrl = []
+    # [6] ZERO sobreposicao com os cenarios do V1 — conferida contra o ARQUIVO
+    #     real, nao contra a copia congelada. So' roda no repo: no .exe o motor
+    #     do V1 nao viaja junto, e ai' vale o assert de carga.
+    try:
+        import clean_short as _v1
+    except ImportError:
+        print("(V1 fora de alcance — vale o assert de carga)")
+    else:
+        _ids1 = {c["id"] for c in _v1.CENARIOS}
+        _desc1 = {c["desc"] for c in _v1.CENARIOS}
+        for _m in MUNDOS:
+            if _m["id"] in _ids1:
+                falhas.append("mundo %s repete cenario do V1 (id)" % _m["id"])
+            if _m["desc"] in _desc1:
+                falhas.append("mundo %s repete cenario do V1 (desc)" % _m["id"])
+        # sabotador: a checagem SABE reprovar?
+        if not (_ids1 & set(CENARIOS_V1)) or set(CENARIOS_V1) != _ids1:
+            ctrl.append("[6] a copia congelada CENARIOS_V1 divergiu do V1 real: "
+                        "%s" % sorted(_ids1 ^ set(CENARIOS_V1)))
+
     s = sortear("joe", random.Random(1), {}, {})
     s["etnia"] = "Martian"
     if s["etnia"] in s["mundo"]["etnias"]:
