@@ -1355,15 +1355,33 @@ VILOES_APOSENTADO = [
 # mel cru sobre a mesa, colher de mel, limoes ao lado, caneca de vidro.
 # ⛔ O colageno da fonte NAO entra na fala: e' claim de mecanismo fisiologico e
 # nao e' o que a VSL vende. O que fica sao os ingredientes, que a imagem mostra.
+# ⛔⛔ TRES ERROS GRAVES CONSERTADOS AQUI, achados comparando a copy gerada com
+# a transcricao da fonte, a pedido do operador:
+#
+#   1. O VEICULO tinha sumido. A fonte termina em *"into a cup of warm water"* e
+#      a minha parava em "lemon juice" — a fala descrevia um po' com mel e limao
+#      enquanto o take 3 mostrava um COPO CHEIO. A receita nao produzia o que a
+#      imagem mostra.
+#   2. O MODO DE USO tinha sumido INTEIRO. A fonte diz *"Drink it first thing in
+#      the morning before food"*; medido, `drink`/`morning`/`before food` estavam
+#      AUSENTES de todos os pools. Receita sem quando-tomar nao vira rotina.
+#   3. As MEDIDAS voltaram: `tablespoon` do caldo e `teaspoon` do mel, como na
+#      fonte. Medida especifica e' credibilidade de receita real; "one spoon" e'
+#      alguem improvisando.
+#
+# ⚠️ Receita e modo de uso vem FUNDIDOS numa oracao so' (`in warm water, first
+# thing`) porque 8 segundos nao pagam dois beats separados — a fonte tem 17s
+# para isso. E `raw` honey ficou: e' o que esta' escrito no rotulo do pote que
+# aparece em cena.
 RECEITAS = [
-    "A spoonful of bone broth powder, raw honey and half a lemon",
-    "Bone broth powder, a spoon of raw honey, half a lemon",
-    "A tablespoon of bone broth powder with honey and lemon",
-    "Bone broth powder, raw honey and the juice of half a lemon",
-    "One spoon of bone broth powder, honey, and lemon juice",
-    "Bone broth powder with raw honey and fresh lemon",
-    "A spoon of bone broth powder, honey and lemon in warm water",
-    "Bone broth powder, honey, lemon — into warm water",
+    "A tablespoon of bone broth powder, raw honey and lemon in warm water, first thing",
+    "Bone broth powder, raw honey and half a lemon in warm water, before food",
+    "A tablespoon of bone broth powder with raw honey and lemon in warm water each morning",
+    "Bone broth powder, a teaspoon of raw honey, lemon, in warm water first thing",
+    "A tablespoon of bone broth powder and raw honey in warm water, before you eat",
+    "Bone broth powder with raw honey and lemon, in warm water every morning",
+    "A tablespoon of bone broth powder, raw honey, half a lemon, in warm water",
+    "Bone broth powder, raw honey and lemon juice in warm water, first thing",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
@@ -1419,15 +1437,18 @@ RECEITAS = [
 # INTEIRA e cobra o comentario pelo "protocolo completo"; aqui a lacuna e' um
 # PASSO, que e' mais barato (3 palavras) e mais forte — a receita visivel fica
 # verdadeira e incompleta ao mesmo tempo.
+# ⚠️ ENCURTADA para pagar o modo de uso que voltou. O beat do segredo custava
+# ate' 9 palavras e a cena 2 tem 25 no total — as duas primeiras entradas tem 4,
+# e sao elas que cabem quando a receita vem completa com veiculo e horario.
 ANCORAS = [
-    "%s. And one step I keep back: the gelatin trick",
-    "%s. Plus the step nobody prints: the gelatin trick",
-    "%s. And the part I do not show: the gelatin trick",
-    "%s. And one more thing: the gelatin trick",
+    "%s. Plus the gelatin trick",
+    "%s. And the gelatin trick",
+    "%s. Plus one secret: the gelatin trick",
+    "%s. And one step more: the gelatin trick",
     "%s. Plus a secret: the gelatin trick",
     "%s. And the missing piece: the gelatin trick",
     "%s. And my own secret: the gelatin trick",
-    "%s. Plus one step more: the gelatin trick",
+    "%s. Plus the step nobody prints: the gelatin trick",
 ]
 
 # ---------------------------------------------------------------------------
@@ -1534,20 +1555,20 @@ PROMESSAS = [
 # e um homem a mais atras, mudo e espantado.
 # ⛔ A fala NAO descreve o prop nem quem esta' em cena — quem descreve e' a
 # IMAGE. Dizer em voz alta o que o quadro mostra gasta o orcamento de 8s.
+# ⚠️ O PRAZO INVENTADO SAIU. Eu tinha escrito `One month on it` e a fonte NAO
+# tem prazo nenhum — e o operador ja' tinha mandado tirar prazo no DUPLA. Claim
+# de tempo e' promessa que ninguem pode cumprir e que a pagina paga.
 USOS = [
-    "This is him one month later",
-    "One month on it, and here he is",
-    "This is what a month of it does",
-    "Thirty days later, and look at him",
-    "One month in, and this is him",
-    "This is him after four weeks of it",
-    # ⛔ era "A month of that cup, and here we are" e a BO9 reprovou com razao:
-    # `here we are` nao nomeia ninguem, e a cena 3 abre APONTANDO para o
-    # corpo-prova. Referente vago no primeiro segundo e' o vicio cronico.
-    "A month of that cup, and look at him",
+    "This is him now",
+    "And here he is now",
+    "This is him after it",
+    "That is him today",
+    "Here he is, same man",
     "This is what he looks like now",
-    "One month, and he is not the same",
-    "That is him a month in",
+    "And look at him now",
+    "That is him, after the trick",
+    "This is him since he started",
+    "Here he is now, see for yourself",
 ]
 
 # ⛔⛔ A ESCALADA SAIU DA CENA 3 — decisao MEDIDA, nao estetica.
@@ -1558,25 +1579,24 @@ USOS = [
 # "tem mais" e a ISCA ja' diz o que chega. Keyword, isca e gate sao lei do repo
 # e nao encolhem. Fica registrado para ninguem "reintroduzir a escalada" sem
 # saber o que vai sair no lugar.
+# ⛔⛔ GRAVE: a isca era `the exact steps` — uma DESCRICAO. A fonte oferece um
+# OBJETO NOMEADO: *"my complete protocol for men that I put together through
+# years of experience"*, *"my ancient man's power Bible"*. Nome, autoria e
+# escassez sao o que fazem o comentario valer a pena; descricao generica nao
+# compra nada.
+# ⚠️ `Bible` da fonte NAO entra: termo religioso em pagina de nutra e' risco de
+# review desnecessario. `protocol`, `guide` e `method` fazem o mesmo trabalho.
 ISCAS_ENTREGA = [
-    "the whole recipe", "the full recipe", "the complete recipe",
-    "the exact recipe", "the recipe and the measurements",
-    "the recipe and the doses", "the exact measurements",
-    "the recipe", "the full routine", "the whole thing written out",
-    # + 2026-08-05 — sintagma NOMINAL curto: e' o que o CTA promete no DM.
-    # ⚠️ Tres das minhas primeiras entradas aqui (`the exact recipe`, `the
-    # complete recipe`, `the recipe and the doses`) JA' EXISTIAM nas linhas
-    # acima, e a duplicata passou despercebida porque o bloco antigo tem varias
-    # entradas por linha. Duplicata dobra em silencio a chance da linha e ocupa
-    # um slot que devia ser repertorio novo — agora ha' trava no autoteste.
-    "the full measurements",
-    "the written recipe",
-    "the exact steps",
-    "every step of it",
-    "the recipe in full",
-    "the missing step",
-    "the whole method",
-    "the recipe and the timing",
+    "my full men's protocol",
+    "the whole men's protocol",
+    "my complete protocol",
+    "the protocol I put together",
+    "my old man's power guide",
+    "the full guide",
+    "my whole men's method",
+    "the complete method",
+    "my private protocol",
+    "the protocol nobody sells",
 ]
 
 GATES = [
@@ -1892,7 +1912,12 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         # (`from this to this`) mais a promessa de entrega — o ingrediente so'
         # aparece na panela, na cena 2. Herdado do motor de origem e removido.
         def _c1(pb, vr, fc):
-            return "%s %s, %s." % (pb.format(o=o1), vr, fc)
+            # ⚠️ A VIRGULA VAI DEPOIS DO GERUNDIO, como na fonte: *"Having a
+            # small and disgusting banana, and that's exactly why..."*. Ela
+            # estava entre a virada e o fecho, e a frase saia corrida — sem a
+            # pausa que separa o DIAGNOSTICO da CONDICAO, o `and` emenda duas
+            # oracoes e o hook perde o respiro.
+            return "%s, %s %s." % (pb.format(o=o1), vr, fc)
 
         cv = min(VIRADAS, key=_palavras)
         cf = min(FECHOS, key=_palavras)
