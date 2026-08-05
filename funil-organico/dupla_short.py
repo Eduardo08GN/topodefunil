@@ -89,6 +89,23 @@ ETNIA = {
 }
 
 
+# ⭐⭐ PELE TRAVAVEL — contrato aditivo criado no CLEAN V2 em 2026-08-05, e este
+# motor tem exatamente o mesmo defeito que o criou: o seletor clara/escura do
+# painel troca a PAGINA, e este motor IGNORA `ETNIA[pagina]` de proposito (a
+# etnia sai de dentro do MUNDO, doutrina "etnia arrasta o mundo inteiro"). O
+# operador clicava, o botao acendia, e o sorteio seguia aleatorio — pior que nao
+# ter botao, porque PARECIA travado.
+# ⚠️ Lido pela ui_agente com `getattr`: motor sem a flag nao muda de comportamento.
+PELE_TRAVAVEL = True
+
+
+def _pele_de(etnia):
+    """clara/escura pela MESMA regra do seletor do painel (`paginas_por_pele`):
+    clara = etnia com `white`; escura = todas as outras. Duas classificacoes
+    divergentes seriam o fragmento espelhado que a P9 proibe."""
+    return "clara" if "white" in etnia else "escura"
+
+
 # ---------------------------------------------------------------------------
 # STRINGS TRAVADAS — leitura otica da fonte. NAO REESCREVER.
 # ---------------------------------------------------------------------------
@@ -2066,18 +2083,48 @@ def sortear(pagina, rng, led, travas=None):
     travas = travas or {}
     usados = led.get(pagina, {})
 
+    # ⭐ TRAVA DE PELE — a pele chega em travas["pele"] ("clara"/"escura") e o
+    # sorteio REMONTA O VIDEO EM VOLTA DELA: o mundo so' sai entre os que
+    # COMPORTAM aquela pele, e a etnia sorteia dentro do mundo ja' filtrado.
+    # ⛔ A ETNIA NUNCA SAI DE FORA DO MUNDO — e' a invariante do autoteste, e e'
+    # ela que faz "etnia arrasta o mundo inteiro" ser verdade em vez de slogan.
+    # Por isso quem se move e' o MUNDO, nunca a etnia.
+    # ⚠️ Mundo travado incompativel CEDE e e' re-sorteado, de preferencia na
+    # mesma familia: antes de derrubar o sorteio, o eixo derivado cede.
+    pele = travas.get("pele")
+
+    def _comporta(m):
+        return not pele or any(_pele_de(e) == pele for e in m["etnias"])
+
     fam_trava = travas.get("familia_mundo")
     if travas.get("mundo"):
         mundo = _por_id(MUNDOS, travas["mundo"])
+        if not _comporta(mundo):
+            mundo = rng.choice(
+                [m for m in MUNDOS if m["familia"] == mundo["familia"]
+                 and _comporta(m)]
+                or [m for m in MUNDOS if _comporta(m)]
+                or [mundo])
     else:
         if fam_trava and fam_trava != "livre":
             fam = fam_trava
         else:
             fam = _fresco([{"id": x} for x in FAMILIAS_MUNDO],
                           usados.get("familia_mundo", []), rng, "id")["id"]
-        mundo = rng.choice([m for m in MUNDOS if m["familia"] == fam])
+        cand = [m for m in MUNDOS if m["familia"] == fam and _comporta(m)]
+        # ⛔ Familia sem mundo daquela pele: a FAMILIA cede, a pele nao.
+        # ⛔⛔ E SE NEM O FALLBACK TIVER MUNDO, A PELE CEDE — nao o sorteio.
+        # Achado sabotando `_pele_de` para provar que a sonda acusa: o
+        # `rng.choice([])` levantava IndexError e derrubava o app do operador.
+        # Perder a trava e' ruim; quebrar o app na mao dele e' pior, e um pool
+        # de mundos editado amanha pode zerar uma das peles sem ninguem notar.
+        mundo = rng.choice(cand
+                           or [m for m in MUNDOS if _comporta(m)]
+                           or MUNDOS)
 
-    et = travas.get("etnia") or rng.choice(mundo["etnias"])
+    et = travas.get("etnia") or rng.choice(
+        [e for e in mundo["etnias"] if _comporta({"etnias": [e]})]
+        or mundo["etnias"])
     cor = travas.get("cor") or rng.choice(mundo["cores"])
     # ⭐ O TRAJE E' EIXO PROPRIO desde 2026-08-05, com pool por mundo. Cada
     # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
@@ -2784,6 +2831,38 @@ def autoteste(n=600):
     s4["falas"][1] = s4["falas"][1].replace("gelatin trick", "morning routine")
     if not any("BO4" in msg for _, msg in lint(s4, b)):
         ctrl.append("[BO4] nao acusa a cena 2 sem o `gelatin trick`")
+
+    # ⭐⭐ [PELE] A TRAVA DE PELE, MEDIDA — nao declarada. Contrato criado em
+    # 2026-08-05 porque o seletor clara/escura era um botao MORTO neste motor
+    # (etnia livre, vinda do mundo). Um contrato novo sem sonda e' a mesma
+    # armadilha do §29: ninguem percebe quando ele para de valer.
+    # ⛔ Duas invariantes, as duas cobradas em 120 sorteios por pele:
+    #   1. a pele sorteada e' a pedida;
+    #   2. a etnia continua vindo de DENTRO do mundo — se ela passar a sair
+    #      solta para satisfazer a trava, "etnia arrasta o mundo" virou slogan.
+    for _pele in ("clara", "escura"):
+        # ⛔ A COBERTURA E' CHECADA ANTES DOS 120 SORTEIOS. Ao contrario, a
+        # sonda gastava 120 sorteios contra uma trava impossivel e so' depois
+        # reportava — e no caminho podia derrubar o proprio autoteste.
+        if not [m for m in MUNDOS
+                if any(_pele_de(e) == _pele for e in m["etnias"])]:
+            ctrl.append("[PELE] nenhum mundo comporta %r — a trava nao tem o "
+                        "que sortear e a pele vai ceder calada" % _pele)
+            continue
+        _fora, _solta = 0, 0
+        for _k in range(120):
+            _s = sortear("joe", random.Random(_k), {}, {"pele": _pele})
+            if _pele_de(_s["etnia"]) != _pele:
+                _fora += 1
+            if _s["etnia"] not in _s["mundo"]["etnias"]:
+                _solta += 1
+        if _fora:
+            ctrl.append("[PELE] trava %r furou em %d de 120 sorteios"
+                        % (_pele, _fora))
+        if _solta:
+            ctrl.append("[PELE] a etnia saiu de FORA do mundo em %d de 120 — a "
+                        "trava esta' sendo satisfeita quebrando a invariante"
+                        % _solta)
 
     # o lote limpo NAO pode ser acusado
     if [x for t, x in lint(s, b) if t == "ERRO"]:
