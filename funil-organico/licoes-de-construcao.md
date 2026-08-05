@@ -831,6 +831,37 @@ entrada longa que alguém vai acrescentar amanhã.
 
 ---
 
+## 28. ⛔⛔ O TOPO DA FAIXA NÃO É TETO — 32 PALAVRAS AINDA CORTA
+
+**Data:** 2026-08-05. **Evidência:** um render, não uma conta.
+
+Eu tinha acabado de estabelecer 32 palavras como teto físico (§27), tirado da
+§5: *"capacidade real de 8s na nossa taxa de fala (3,4-4,0 p/s) = 27-32"*. O
+operador mandou um TAKE 01 do BOTICA com a fala **cortada** — e ela tinha
+**exatamente 32 palavras**.
+
+⚠️ **O erro foi pegar o TOPO de uma faixa e chamar de teto.** A faixa 3,4-4,0
+p/s descreve o que a narração *pode* fazer, não o que ela faz sempre. 32
+palavras exige que a REF fale a 4,0 p/s — o limite superior — durante os 8
+segundos inteiros, sem respirar. Qualquer narradora um pouco mais lenta, e a
+frase não termina.
+
+⭐ **A reescrita dele tinha 25 palavras = 3,1 p/s.** Ou seja, o operador
+naturalmente escreve *abaixo* da faixa que a doutrina declara. Isso é dado, não
+opinião: é a taxa que ele considera falável.
+
+⛔ **O que impede:** teto por cena calibrado no que o motor **realmente entrega
+sem cortar**, não no máximo aritmético. Quando houver render cortado, o número
+que vale é o do render — o cálculo perde para a evidência. E ⚠️ **§5 continua
+valendo na outra direção**: teto conservador demais vira espaço morto e o slot
+vira enchimento. A faixa útil é estreita e se acha medindo, não deduzindo.
+
+⚠️ **Corolário sobre a §27:** o gate `medir_teto_fala.py` usa 32 como limite
+absoluto — ele pega o que é *certamente* impossível. Ele **não** garante que
+uma cena de 31 caiba. Gate de teto é piso de qualidade, não certificado.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
