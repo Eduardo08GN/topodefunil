@@ -1153,8 +1153,26 @@ FUNDIDAS = [
     # operador e' de FRASE e esta e' a mesma frase orfa — instrumento que nao
     # ve' nao e' vicio que nao existe (licoes-de-construcao §16).
     # O `That's` saiu para pagar as palavras do alvo. 23 -> 25 palavras.
+    # ⛔⛔ DRIFTING — ORDEM DO ED, 2026-08-06, lendo o take 2 renderizado.
+    # Era: "Doctors never say his {o} lost its blood flow. Gelatin does what
+    # {s} never could — the gelatin trick."
+    # A segunda frase COMPARA o mecanismo com a isca e nao diz o que ele
+    # DEVOLVE. "Faz o que o mel nunca fez" nao entrega nada em que o espectador
+    # possa agir: ele sai sem saber o que a gelatina resolve. Era a UNICA das 15
+    # fundidas com destino zero — as outras 14 fecham em "his {o} answers now",
+    # "the blood flow came back", "his {o} has not quit since March".
+    # A reescrita do operador: `There's one secret no one tells you: a gelatin
+    # trick that can bring your john-son back to life.` — anuncio do segredo,
+    # mecanismo nomeado, e o que ele RESTAURA.
+    # ⚠️ 20 palavras, nao as 27 da versao dele: a fundida e' capada em
+    # TETO_FALA[2] menos a prova mais curta (25-5). Com 27 ela cairia fora do
+    # `_fc` e nunca seria sorteada — "consertar" tornando inalcancavel e' pior
+    # que o defeito, porque o pool encolhe sem ninguem perceber.
+    # ⚠️ Fechei em `brings it back` e nao em `your {o}`: `it` retoma o blood
+    # flow da frase anterior (referente na propria fala), e assim a entrada nao
+    # aciona a TR8, que estreitaria o pool de provas por prazo.
     {"voz": "neutra",
-     "txt": "Doctors never say his {o} lost its blood flow. Gelatin does what {s} never could — the gelatin trick."},
+     "txt": "Doctors never say his {o} lost its blood flow. Nobody tells you the secret: the gelatin trick brings it back."},
     {"voz": "conjugal",
      "txt": "Trade it. One spoon of gelatin, cold water, nightly. The gelatin trick, and his {o} stopped quitting on us months ago."},
     {"voz": "neutra",
@@ -1576,6 +1594,26 @@ TR8_NUMERO = re.compile(
 
 TR8_PRAZO = re.compile(r"\b(\w+\s+(?:days?|weeks?|months?))\b|\bsince\s+[A-Z]",
                        re.I)
+
+# ⛔⛔ TR16 — PRONOME SEM DONO (Ed, 2026-08-06, no mesmo take que trouxe o
+# drifting da fundida). A prova `He'll tell you if you ask him.` caiu numa fala
+# cuja fundida nunca apresentou homem nenhum, e o espectador pergunta "quem?".
+#
+# ⚠️ O comentario do pool de PROVAS ja' dizia "ZERO DEIXIS A PESSOA" e listava
+# cinco entradas removidas por isso — e QUATRO com o mesmo defeito continuaram
+# la'. Foi correcao declarada pronta com o vicio ainda dentro: o mesmo modo de
+# falha das licoes §29-§32. Medido: 24 dos 180 pares (13%) deixavam o pronome
+# orfao.
+#
+# ⛔ A correcao NAO e' apagar as quatro provas. Elas sao boas quando a fundida
+# fala de um homem ("his {o}", "my husband's {o}") — apagar encolheria o pool
+# em 33% para resolver 13% dos casos. O que se cobra e' o PAR: a prova com
+# pronome so' entra se a fundida tiver apresentado alguem, exatamente como a
+# prova com prazo ja' se re-sorteia diante de 2a pessoa.
+TR16_PRONOME = re.compile(r"^\s*(he|him|his|the same man|same man|that man)\b",
+                          re.I)
+TR16_ANTECEDENTE = re.compile(
+    r"\b(his|him|husband|husband's|a man i know|my man)\b", re.I)
 TR8_CORPO_2A = re.compile(
     r"\byour\s+(?:\w+\s+){0,2}(%s)\b" % "|".join(NUCLEO), re.I)
 
@@ -1657,11 +1695,37 @@ def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
             s=subst["fala"], o=orgaos[1])
     tem_2a = bool(TR8_CORPO_2A.search(fund))
     falta_p22 = not _aterrissa(fund)
-    prova = _escolher(rng, PROVAS,
-                      lambda p: not (tem_2a and TR8_PRAZO.search(p))
-                      and not _eco(fund, p)
-                      and not (falta_p22 and not P22_2A.search(p))
-                      and _palavras(fund) + _palavras(p) <= TETO_FALA[2])
+    # ⛔ TR16: a prova que abre com pronome so' entra se a fundida tiver
+    # apresentado o homem. Sem isto, 13% dos pares mandavam o espectador
+    # perguntar "he quem?" — o drifting que o Ed leu no take renderizado.
+    tem_homem = bool(TR16_ANTECEDENTE.search(fund))
+
+    # ⛔⛔ RESTRICAO DURA x BRANDA — e por que isto NAO usa `_escolher`.
+    # O `_escolher` tenta 12 vezes e, se nenhuma serve, DEVOLVE A ULTIMA assim
+    # mesmo. Quando somei a TR16 as condicoes, o pool de provas ficou mais
+    # apertado, o fallback passou a disparar mais, e o maximo da cena 2 subiu
+    # de 26 para 27 palavras — eu tinha acabado de introduzir corte de fala
+    # tentando consertar drifting. O estouro nao aparecia em lugar nenhum: e' o
+    # caminho silencioso que as licoes chamam de `or pool`.
+    #
+    # A saida e' em degraus. O TETO, a TR8 e a TR16 sao DURAS — violar
+    # qualquer uma entrega video quebrado (fala cortada, recusa do gerador,
+    # pronome sem dono). Eco e P22 sao BRANDAS: pioram o take, nao o quebram.
+    # Se nada passar nas duas camadas, cai na prova mais CURTA, que e' a unica
+    # escolha que garante o teto.
+    def _dura(p):
+        return (_palavras(fund) + _palavras(p) <= TETO_FALA[2]
+                and not (tem_2a and TR8_PRAZO.search(p))
+                and not (TR16_PRONOME.match(p) and not tem_homem))
+
+    def _branda(p):
+        return (not _eco(fund, p)
+                and not (falta_p22 and not P22_2A.search(p)))
+
+    _cands = [p for p in PROVAS if _dura(p) and _branda(p)] \
+        or [p for p in PROVAS if _dura(p)]
+    prova = (rng.choice(_cands) if _cands
+             else min(PROVAS, key=_palavras))
     c2 = "%s %s" % (fund, prova)
 
     # ⚠️ o eco e' medido contra o VIDEO INTEIRO, nao so' dentro da cena: a
@@ -2034,6 +2098,72 @@ def _tr_crendice(spec, blocos, achados):
         achados.append(("ERRO", "TR8: a crendice nao carrega promessa "
                                 "(numerica ou de resistencia) — sem o segundo "
                                 "choque o comando e' so' esquisito"))
+
+
+def _tr_pronome_orfao(spec, blocos, achados):
+    """TR16 — ⛔ PRONOME SEM DONO na fala.
+
+    Ed, 2026-08-06, lendo o take 2 renderizado: a fala fechava em `He'll tell
+    you if you ask him.` e nenhuma frase anterior apresentara homem nenhum. O
+    espectador pergunta "he quem?" e o take inteiro se perde.
+
+    ⚠️ A cobranca e' de REFERENTE, nao de pessoa. `his {o}` logo antes resolve
+    o pronome; o que reprova e' o pronome que abre uma frase sem que a PROPRIA
+    fala tenha apresentado alguem.
+
+    ⛔ SO' A CENA 2. Na primeira versao eu cobrei as tres e o linter acusou 245
+    de 400 sorteios — todos na cena 3, onde o testemunho abre com `He reaches
+    first now...` e o homem ESTA' EM QUADRO: ele e' o corpo-prova, o referente
+    e' visual e a fala nao precisa reapresenta-lo. A cena 2 e' o caso oposto,
+    e e' por isso que o defeito nasce la': o IMAGE 02 declara que ela e' a
+    unica pessoa no quadro, entao um `He` ali nao tem dono em lugar nenhum.
+    """
+    for i, fala in enumerate(spec["falas"], 1):
+        if i != 2:
+            continue
+        frases = [f.strip() for f in re.split(r"(?<=[.!?])\s+", fala) if f.strip()]
+        vistos = ""
+        for f in frases:
+            if TR16_PRONOME.match(f) and not TR16_ANTECEDENTE.search(vistos):
+                achados.append((
+                    "ERRO",
+                    "TR16: cena %d abre uma frase com pronome sem dono (%r) — "
+                    "nada antes na fala apresentou esse homem" % (i, f[:44])))
+                break
+            vistos += " " + f
+
+
+# a frase que carrega o literal do mecanismo tem de dizer o que ele DEVOLVE
+TR17_DESTINO = re.compile(
+    r"\b(back|again|answers?|answered|remembers?|running|hard|returns?|"
+    r"alive|life|awake|up|bigger|stopped quitting|has not quit|had not quit|"
+    r"not quit|works?|working)\b", re.I)
+
+
+def _tr_mecanismo_sem_destino(spec, blocos, achados):
+    """TR17 — ⛔ O MECANISMO ANUNCIADO SEM DIZER O QUE ELE DEVOLVE.
+
+    Ed, 2026-08-06: `Gelatin does what honey never could — the gelatin trick.`
+    COMPARA o mecanismo com a isca e nao entrega nada em que agir. E' irma da
+    regra da FRASE ORFA (§17, causa sem dizer o que ela quebra): la' a causa
+    precisa nomear o que quebrou, aqui o mecanismo precisa nomear o que volta.
+
+    A janela e' a frase do literal MAIS a seguinte — varias fundidas boas poem
+    o destino logo depois (`The gelatin trick. His {o} has not quit since
+    March.`), e cobrar tudo numa frase so' reprovaria copy que funciona.
+    """
+    for i, fala in enumerate(spec["falas"], 1):
+        frases = [f.strip() for f in re.split(r"(?<=[.!?])\s+", fala) if f.strip()]
+        for j, f in enumerate(frases):
+            if "gelatin trick" not in f.lower():
+                continue
+            janela = " ".join(frases[j:j + 2])
+            if not TR17_DESTINO.search(janela):
+                achados.append((
+                    "ERRO",
+                    "TR17: cena %d nomeia o gelatin trick e nao diz o que ele "
+                    "devolve (%r)" % (i, janela[:56])))
+            break
 
 
 def _tr_claim_prazo(spec, blocos, achados):
@@ -2436,6 +2566,7 @@ def lint(spec, blocos):
         sys.modules[__name__], spec, blocos, (1, 2, 3), TETO_FALA,
         literais=("gelatin trick",), teto_total=TETO_TOTAL,
         extras=(_tr_crendice, _tr_claim_prazo, _tr_segunda_pessoa,
+                _tr_pronome_orfao, _tr_mecanismo_sem_destino,
                 _tr_proxy_mudo, _tr_eco, _tr_orcamento, _tr_batismo, _tr_cta,
                 _tr_gates, _tr_troca, _tr_sem_crescimento, _tr_agencia,
                 _tr_tokens, _tr_marca, _tr_verbos, _tr_recibo, _tr_ancoras,
