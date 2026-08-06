@@ -694,17 +694,30 @@ CANECAS = [
 # ⭐ O RARO entra aqui, com o APOSTO — ordem do operador: *"no take 2 de prep
 # receita pode incluir o pool com aqueles ingredientes fodas"*. O aposto e' lei
 # do repo (`maca root, that Andean root from Peru`), nunca o nome cientifico.
+# ⭐⭐ CENA 2 — A RECEITA. Fonte, 0:06: *"Cut three lemons, add a piece of fresh
+# ginger, and one clove of garlic."*
+# ⭐ O RARO entra aqui, com o APOSTO — ordem do operador: *"no take 2 de prep
+# receita pode incluir o pool com aqueles ingredientes fodas"*. O aposto e' lei
+# do repo (`maca root, that Andean root from Peru`), nunca o nome cientifico.
+#
+# ⛔⛔ AS CURTAS EXISTEM PARA O SEGREDO CABER. Em 2026-08-06 o operador leu o
+# TAKE e apontou que o `gelatin trick` estava coadjuvante; o conserto foi dar 6-9
+# palavras ao SEGREDO, e elas saem daqui. Por isso metade das entradas larga o
+# alho ou comprime as medidas — o proprio operador escreveu o exemplo dele sem o
+# alho. ⚠️ O quadro mostra os limoes, o gengibre E o alho na bancada, entao a
+# fala pode omitir um deles sem contradizer a imagem; o que ela NAO pode omitir
+# e' o segredo, que so' existe na fala.
 RECEITAS = [
-    "Cut three lemons, add fresh ginger and one clove of garlic, plus {r}",
-    "Three lemons, a piece of fresh ginger, one clove of garlic and {r}",
-    "Cut three lemons, drop in fresh ginger and garlic, then {r}",
-    "Three cut lemons, fresh ginger, one clove of garlic, and {r}",
-    "Cut up three lemons with fresh ginger and garlic, then add {r}",
-    "Three lemons, ginger, one clove of garlic — and {r}",
-    "Slice three lemons, add ginger and a clove of garlic, plus {r}",
-    "Cut three lemons, add ginger, garlic, and {r}",
-    "Three lemons cut open, fresh ginger, garlic, and {r}",
-    "Cut three lemons in, add ginger and garlic, then {r}",
+    "Three lemons, fresh ginger, and {r}",
+    "Cut three lemons, add ginger, and {r}",
+    "Three cut lemons, ginger, garlic, and {r}",
+    "Cut three lemons, ginger and garlic, then {r}",
+    "Three lemons, a piece of ginger, and {r}",
+    "Cut three lemons in, add ginger, and {r}",
+    "Three lemons cut open, fresh ginger, and {r}",
+    "Cut three lemons, drop in ginger and {r}",
+    "Three lemons, ginger, one clove of garlic, and {r}",
+    "Cut three lemons open, add ginger and {r}",
 ]
 
 # ⭐ CENA 2, FECHO — a fervura. Fonte, 0:11: *"Then let it boil for 10 minutes."*
@@ -723,28 +736,39 @@ FERVURAS = [
 # ⛔ E' aqui que a congruencia com a VSL mora: o mecanismo que o criativo promete
 # tem de ser o que a pagina vende. A fonte guarda "the extra ingredient I like to
 # add" para o DM; nos guardamos o mesmo lugar, com o nosso mecanismo no lugar.
+# ⭐⭐ O SEGREDO E' A REVELACAO, NAO O ULTIMO ITEM DA LISTA.
+# Ordem do operador, 2026-08-06, lendo o TAKE 02 renderizado: o `gelatin trick`
+# saia como *"...garlic, and ginkgo, ... and one gelatin trick"* — item N de uma
+# enumeracao, com o mesmo peso do alho. A forma que ele pediu poe uma PAUSA e um
+# ROTULO antes do nome: *"and... the secret: THE GELATIN TRICK."*
+#
+# ⛔ TODA ENTRADA TEM AS TRES PARTES, nesta ordem:
+#   1. a CONJUNCAO que separa da lista (`and`, `plus`, `then`);
+#   2. o ROTULO que anuncia hierarquia (`the secret`, `the one thing`, `the
+#      part nobody sells`) seguido de DOIS PONTOS;
+#   3. o LITERAL `the gelatin trick`, intocavel.
+# Sem o rotulo, o trick volta a ser alho. E' o rotulo que faz o espectador
+# entender que o que vem depois nao e' ingrediente — e' o mecanismo.
+#
+# ⚠️ CUSTAM 6-9 PALAVRAS, contra as 4 da versao anterior. O espaco sai da
+# RECEITA, e sai de la' de proposito: o quadro da cena 2 JA' MOSTRA os limoes, o
+# gengibre e o alho. O que o quadro nao mostra — e por isso a fala tem de
+# carregar — e' o segredo.
 SEGREDOS = [
-    # ⛔ AS QUATRO CURTAS EXISTEM POR MEDICAO, NAO POR GOSTO. O piso da cena 2 e'
-    # ditado pelo RARO: `tongkat ali, a root from the forests of Southeast Asia`
-    # custa 10 palavras, e com a menor receita (7) e a menor fervura (4) o menor
-    # combo possivel dava 27 contra um teto de 25. Nao ha' sorteio que salve um
-    # piso acima do teto — quem cede tem de ser o beat com folga, e e' este.
-    # ⚠️ `the` faz o trabalho que as palavras cortadas faziam: artigo definido
-    # num objeto nunca explicado le como coisa retida, nao como coisa esquecida.
-    "plus the gelatin trick",
-    "and the gelatin trick",
-    "plus my gelatin trick",
-    "and one gelatin trick",
-    "and one secret I add: the gelatin trick",
-    "plus the secret I add: the gelatin trick",
-    "and the one thing I hold back: the gelatin trick",
-    "and a secret on top: the gelatin trick",
-    "plus one gelatin trick nobody sells",
-    "and the gelatin trick I keep to myself",
-    "and one secret more: the gelatin trick",
-    "plus a gelatin trick nobody mentions",
-    "and my grandmother's secret: the gelatin trick",
-    "and the part I never post: the gelatin trick",
+    "and the secret: the gelatin trick",
+    "plus the secret: the gelatin trick",
+    "and then the secret: the gelatin trick",
+    "and the one thing nobody sells: the gelatin trick",
+    "plus the part I hold back: the gelatin trick",
+    "and the real secret: the gelatin trick",
+    "and the one step nobody posts: the gelatin trick",
+    "plus my grandmother's secret: the gelatin trick",
+    "and the last thing: the gelatin trick",
+    "and the piece nobody tells you: the gelatin trick",
+    "plus the one I never post: the gelatin trick",
+    "and here is the secret: the gelatin trick",
+    "and the part that does it: the gelatin trick",
+    "plus the quiet one: the gelatin trick",
 ]
 
 # ⭐⭐ CENA 3 — O USO. Fonte, 0:13: *"Drink one cup every single morning and wake
@@ -2306,6 +2330,10 @@ def lint(spec, blocos):
     # ⛔ PAINEL HONESTO — 2026-08-05. Nenhum eixo desenhado no painel pode
     # deixar de chegar ao video.
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
+
+    # ⛔ HIERARQUIA DO MECANISMO — diretriz do operador, 2026-08-06 (§31).
+    # So dispara quando a cena 2 mostra preparo em quadro.
+    sc.lint_hierarquia_mecanismo(spec, blocos, ach)
 
     sc.lint_take_vs_image(blocos, ach)
 

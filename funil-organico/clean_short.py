@@ -1339,6 +1339,10 @@ def lint(spec, blocos):
     # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles
     # nunca rodaram a lente. "Limpo" sem cobertura e' o pior resultado possivel,
     # porque parece verde. Medir a lente e' medir TAMBEM se ela e' chamada.
+    # ⛔ HIERARQUIA DO MECANISMO — diretriz do operador, 2026-08-06 (§31).
+    # So dispara quando a cena 2 mostra preparo em quadro.
+    sc.lint_hierarquia_mecanismo(spec, blocos, ach)
+
     sc.lint_take_vs_image(blocos, ach)
 
     return ach

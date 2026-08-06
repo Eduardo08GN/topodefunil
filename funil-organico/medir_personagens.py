@@ -280,6 +280,10 @@ EXCECOES = {
     # ⚠️ `pele` esteve declarado aqui e SAIU: os REFS top model variam pele, e a
     # propria lente avisou que a excecao virou letra morta. Excecao que nao e'
     # mais necessaria e' permissao esquecida ligada.
+    # ⛔ TRIO — mesma razao: a REF e as duas sentadas sao a bullet de
+    # retencao, e o operador pediu "extremamente lindas". Oculos brigam.
+    ("trio_short.py", "REFS", "oculos"):
+        "LEI DO REF — as tres mulheres sao a bullet de retencao do angulo.",
     ("cha_short.py", "REFS", "oculos"):
         "LEI DO REF — a REF deste angulo E' a bullet de retencao do hook.",
     ("dupla_short.py", "REFS", "oculos"):

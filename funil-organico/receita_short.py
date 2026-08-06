@@ -1954,6 +1954,10 @@ def lint(spec, blocos):
     # deixar de chegar ao video.
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
 
+    # ⛔ HIERARQUIA DO MECANISMO — diretriz do operador, 2026-08-06 (§31).
+    # So dispara quando a cena 2 mostra preparo em quadro.
+    sc.lint_hierarquia_mecanismo(spec, blocos, ach)
+
     sc.lint_take_vs_image(blocos, ach)
 
     return ach

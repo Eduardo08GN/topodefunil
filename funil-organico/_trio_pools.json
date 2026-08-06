@@ -1,0 +1,47 @@
+{
+ "DIAGNOSTICOS": [
+  "If your {o} looks like this one",
+  "If your {o} looks more like this one",
+  "If your {o} is anything like this one",
+  "If your {o} ended up like this one",
+  "If your {o} hangs like this one",
+  "If your {o} droops like this one",
+  "If your {o} stays down like this one",
+  "If your {o} went soft like this one",
+  "If your {o} gave out like this one"
+ ],
+ "VIRADAS": [
+  "and you want it like the one she is holding",
+  "and you want it looking like the one she holds",
+  "and you want your {o} like the one she has"
+ ],
+ "FECHOS": [
+  "no prescription, no shots, no copay, listen carefully",
+  "no doctor visit, no drugstore run, listen carefully",
+  "no injections, no pharmacy bill, listen carefully",
+  "no pharmacy line, no needles, listen up",
+  "no needles, no clinic, pay attention"
+ ],
+ "RECEITAS": [
+  "Pomegranate juice, beetroot powder, raw honey and fresh ginger, all in warm water.",
+  "Stir pomegranate juice, beetroot powder, raw honey and fresh ginger into warm water.",
+  "Pour pomegranate juice, beetroot powder, raw honey and ginger into warm water.",
+  "It's just pomegranate juice, beetroot powder, raw honey and ginger in warm water."
+ ],
+ "MECANISMOS": [
+  "Pomegranate opens the vessels feeding your {o}, and one secret gelatin trick",
+  "Ginger warms the vessels down there, plus my secret gelatin trick",
+  "Beet powder pushes circulation into your {o}, and one secret gelatin trick",
+  "Ginger keeps the blood moving down there, plus my secret gelatin trick",
+  "Honey moves that mix into your {o}, plus a secret gelatin trick",
+  "Pomegranate puts blood back in your {o}, plus a secret gelatin trick"
+ ],
+ "USOS_GATES": [
+  "USO: Drink one glass daily and your {o} stays ready for her",
+  "USO: Drink one glass first thing and your {o} holds all night",
+  "USO: A glass every morning and your {o} wakes up with you",
+  "GATE: Follow me, or I cannot message you.",
+  "GATE: Follow me, or your comment never reaches me.",
+  "GATE: Follow me, or the app blocks my message."
+ ]
+}

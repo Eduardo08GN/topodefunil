@@ -998,6 +998,63 @@ travar a produção dele com um linter que reprova antes de a decisão existir.
 
 ---
 
+## 31. ⛔⛔ EU FIZ O BEAT ERRADO CEDER — o mecanismo virou item de lista
+
+**O caso (CHA, 2026-08-06).** O operador leu o `TAKE 02` gerado e apontou:
+
+> *"O centro de gravitação nosso, que é o mecanismo único `gelatin trick`, está
+> apenas coadjuvante na medida em que ele é elencado durante a fala do ref no
+> take 2."*
+
+A fala saía assim:
+
+> *"Three lemons cut open, fresh ginger, garlic, and ginkgo, the leaf off that
+> ancient Chinese tree. Then boil it ten minutes, **and one gelatin trick**."*
+
+Sete itens numa enumeração, e o `gelatin trick` era o sétimo. O espectador ouve
+uma lista de compras. Mas o `gelatin trick` **é o que a VSL vende e é a palavra
+que o CTA pede** — ele não pode ter o peso do alho.
+
+**A causa foi minha, e foi de PROJETO, não de redação.** No dia anterior eu
+tinha medido a cena 2 estourando o teto de 25 (o `tongkat ali` com aposto custa
+10 palavras) e encurtei o pool `SEGREDOS` de 8 para 4 palavras. Ao encurtar,
+matei a hierarquia:
+
+| antes | depois | efeito |
+|---|---|---|
+| `and one secret I add: the gelatin trick` | `and one gelatin trick` | virou item N |
+
+> **Eu escolhi o beat que cede pela facilidade, não pela função.** O `SEGREDO`
+> era o mais fácil de encurtar e o único que não podia encolher.
+
+**A forma que o operador escreveu à mão**, e que virou a regra:
+
+> *"...and ginkgo, the leaf off that ancient Chinese tree **and... THE SECRET:
+> the gelatin trick.**"*
+
+Três partes, nenhuma opcional: **conjunção** que separa da lista → **rótulo com
+dois-pontos** que anuncia hierarquia → **o literal**. Sem o rótulo o trick volta
+a ser alho; é o rótulo que diz que o que vem depois não é ingrediente.
+
+**De onde sai o espaço:** da RECEITA, sempre. Ordem do operador quando eu
+apresentei o conflito de teto — *"retire um ingrediente da elencação então,
+melhor fazer assim e manter a hierarquia"*. E a razão é boa: **o quadro já
+mostra os ingredientes.** O que o quadro não mostra, e por isso só a fala pode
+carregar, é o segredo.
+
+**Onde aplica:** toda cena 2 que tem **preparo em quadro** (bancada, panela,
+copo, liquidificador). Onde não há preparo, a fala não está enumerando e não há
+lista da qual se destacar.
+
+**O que impede:** `sc.lint_hierarquia_mecanismo` — só dispara quando a IMAGE da
+cena mostra preparo, e cobra o rótulo com dois-pontos antes do literal.
+
+> ⭐ **A pergunta que generaliza:** quando o teto aperta e algum beat tem de
+> ceder, o que cede é o que o QUADRO JÁ CONTA. O que só existe na fala é o
+> último a encolher.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
@@ -1053,6 +1110,10 @@ travar a produção dele com um linter que reprova antes de a decisão existir.
       vê string quebrada entre linhas adjacentes (§19)
 - [ ] **Declarei 100%? Rodei em DOIS patamares de amostra e vi convergir** —
       100% de 60 sorteios escondeu 11 templates sem tradução (§23)
+- [ ] **A cena 2 mostra preparo?** Então o `gelatin trick` vem com rótulo e
+      dois-pontos, nunca como item da enumeração (§31)
+- [ ] **Algum beat teve de ceder pelo teto?** Cedeu o que o QUADRO JÁ
+      CONTA — não o que só existe na fala (§31)
 - [ ] **Li os três `TAKE` inteiros**, não só os `IMAGE` — cada TAKE anima a
       SUA cena e nenhuma outra (§30)
 - [ ] **A lente nova é CHAMADA pelo motor?** Sete motores têm `lint()`

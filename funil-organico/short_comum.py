@@ -1379,3 +1379,120 @@ def ref_forte(molde, rng, idade_min=None, idade_max=None):
 def traje_forte(rng):
     """A roupa do MODO FORTE no formato `(template, curto)`."""
     return rng.choice(ROUPAS_FORTES)
+
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ A HIERARQUIA DO MECANISMO — diretriz do operador, 2026-08-06
+# ---------------------------------------------------------------------------
+# *"Registre essa diretriz pra todo take 2 que haja recipe prep com a cena."*
+#
+# ⛔ O DEFEITO: numa cena 2 que MOSTRA o preparo, a fala enumera ingredientes —
+# e o `gelatin trick` entrava no fim da enumeracao, com o mesmo peso do alho:
+#
+#     "...garlic, and ginkgo, the leaf off that ancient Chinese tree.
+#      Then boil it ten minutes, and one gelatin trick."
+#
+# O espectador ouve uma lista de compras com sete itens. O `gelatin trick` e' o
+# CENTRO DE GRAVIDADE do funil — e' o que a VSL vende e a palavra que o CTA pede
+# — e estava coadjuvante.
+#
+# ⭐ A FORMA QUE O OPERADOR ESCREVEU A MAO:
+#
+#     "...and ginkgo, the leaf off that ancient Chinese tree
+#      and... THE SECRET: the gelatin trick."
+#
+# Sao TRES partes, e nenhuma e' opcional:
+#   1. a CONJUNCAO que separa da lista (`and`, `plus`, `then`);
+#   2. o ROTULO que anuncia hierarquia, seguido de DOIS PONTOS — `the secret:`,
+#      `the one thing nobody sells:`, `the part I hold back:`;
+#   3. o LITERAL `gelatin trick`, intocavel.
+# Sem o rotulo, o trick volta a ser alho. E' o rotulo que diz ao espectador que
+# o que vem depois nao e' ingrediente: e' o mecanismo.
+#
+# ⚠️ ONDE APLICA: cena 2 que tem PREPARO EM QUADRO (bancada, panela, copo,
+# liquidificador). Onde a cena 2 nao mostra preparo, a fala nao esta' enumerando
+# e nao ha' lista da qual se destacar.
+#
+# ⛔ E DE ONDE SAI O ESPACO: da RECEITA, sempre. O quadro JA' MOSTRA os
+# ingredientes; o que o quadro nao mostra — e por isso so' a fala carrega — e' o
+# segredo. O operador foi explicito: *"retire um ingrediente da elencacao entao,
+# melhor fazer assim e manter a hierarquia"*.
+# ⚠️ Foi esse o meu erro de projeto: com o teto de 25 apertando, eu encurtei o
+# SEGREDO de 8 para 4 palavras. Fiz o beat errado ceder — encolhi justamente o
+# unico que nao podia encolher.
+ROTULOS_HIERARQUIA = (
+    "secret", "one thing", "part i hold", "part nobody", "step nobody",
+    "piece nobody", "last thing", "one step", "thing more", "part that does",
+    "quiet one", "one i never", "what nobody",
+    # ⚠️ acrescentados ao medir: a lista incompleta reprovava rotulo VALIDO
+    # (`and one more thing: the gelatin trick`) — lente cuja tabela nao
+    # acompanha o repertorio vira falso positivo silencioso.
+    "more thing", "one secret", "the real", "hold back", "keep back",
+    "never post", "grandmother", "nobody sells", "nobody tells",
+    "nobody posts", "part that", "last thing", "one step",
+)
+
+
+def lint_hierarquia_mecanismo(spec, blocos, achados, cena=2, rotulo="HIER"):
+    """Cobra que o `gelatin trick` da cena com PREPARO venha anunciado.
+
+    ⛔ So' roda quando a IMAGE daquela cena mostra preparo — bancada, panela,
+    copo, liquidificador. Sem preparo em quadro nao ha' enumeracao, e sem
+    enumeracao nao ha' do que se destacar.
+    ⚠️ A lente e' de FORMA (dois pontos depois de um rotulo), nao de semantica:
+    ela nao tenta julgar se o rotulo e' bom. Lente que tenta julgar gosto vira
+    ruido; esta so' garante que a hierarquia EXISTE.
+    """
+    fala = (spec.get("falas") or [""] * 3)[cena - 1] or ""
+    if "gelatin trick" not in fala.lower():
+        return
+    # ⛔⛔ O GATILHO E' A ENUMERACAO, NAO A BANCADA. A primeira versao usava
+    # "a IMAGE mostra preparo" como proxy de "a fala esta' enumerando", e errou
+    # em cinco motores: no CLEAN a fala e' *"But nothing works without the
+    # gelatin trick"* e no COLO e' *"That's the gelatin trick, and your {o}..."*
+    # — nos dois o trick ABRE a oracao, que e' hierarquia maxima. Nao havia
+    # lista da qual se destacar, e a lente reprovava 150 de 150.
+    # ⚠️ Terceira vez hoje que uma lente minha reprova por proxy errado. Falso
+    # positivo e' pior que lente nenhuma: o operador aprende a ignorar.
+    # ⭐ O teste certo: ANTES do literal ha' uma ENUMERACAO de ingredientes —
+    # duas virgulas ou mais, ou dois ingredientes nomeados. So' entao o trick
+    # corre o risco de virar item N.
+    antes = fala.lower().split("gelatin trick")[0]
+    # ⛔⛔ SO' CONTA A SENTENCA EM QUE O TRICK ESTA'. Se ele abre a propria
+    # oracao — `... first thing. Plus the gelatin trick.` — ele JA' esta'
+    # destacado: a hierarquia veio do ponto final, nao precisa de rotulo.
+    # ⚠️ Isso reprovava CLEAN, COLO e PLACA, e nos tres a construcao estava
+    # certa: `But without the gelatin trick they do nothing` (contraste),
+    # `That's the gelatin trick, and...` (abre a sentenca). Quarta vez hoje que
+    # uma lente minha reprova por proxy errado — e a terceira em que o conserto
+    # e' OLHAR MENOS TEXTO, nao mais.
+    _sent = antes
+    for corte in (". ", "! ", "? "):
+        if corte in _sent:
+            _sent = _sent.rsplit(corte, 1)[1]
+    _ingr = ("lemon", "ginger", "garlic", "honey", "beet", "pomegranate",
+             "carrot", "juice", "powder", "water", "clove", "spoon", "milk",
+             "watermelon", "fenugreek")
+    enumera = (_sent.count(",") >= 2
+               or sum(1 for w in _ingr if w in _sent) >= 2)
+    if not enumera:
+        return
+    antes = _sent
+    # ⛔⛔ O QUE MARCA A HIERARQUIA E' O SEPARADOR, NAO A PALAVRA. A versao
+    # anterior exigia um rotulo de uma LISTA FECHADA, e reprovava rotulos
+    # perfeitamente validos que eu nao tinha previsto — `a step I keep:`, `a
+    # secret —`, `something I do not show:`. Lista fechada de linguagem natural
+    # nunca fecha: sempre falta a proxima forma.
+    # ⭐ O teste robusto: entre a enumeracao e o literal ha' DOIS PONTOS ou
+    # TRAVESSAO. E' o sinal tipografico da revelacao, e ele independe de qual
+    # substantivo o redator escolheu. Quinta correcao desta lente hoje, e a
+    # unica que nao depende de eu adivinhar vocabulario.
+    if re.search(r"[:—–]\s*(the\s+)?$", antes[-40:]):
+        return
+    achados.append((
+        "ERRO",
+        "%s: o `gelatin trick` da cena %d entra como item da lista, sem "
+        "hierarquia. Numa cena que MOSTRA o preparo a fala enumera, e o "
+        "mecanismo fica com o peso do alho. Falta o rotulo com dois pontos "
+        "antes dele (`and the secret: the gelatin trick`) — diretriz do "
+        "operador, 2026-08-06. %r" % (rotulo, cena, fala[-70:])))
