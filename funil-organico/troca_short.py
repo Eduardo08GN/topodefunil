@@ -1303,24 +1303,35 @@ BARREIRAS = [
 # o --stats contava 18 e a variacao percebida era 3. Sete entradas passaram a
 # levar a keyword em outra posicao. ⛔ A forma da keyword nao muda: `gelatin`
 # minusculo, seguido de virgula.
+# ⛔⛔ O CTA TEM DE NOMEAR O QUE E ENVIADO — ordem do Ed, 2026-08-06, lendo o
+# take 3 renderizado: *"'and I'll send it.' — enviar o QUE?? a isca tinha que
+# estar expressa: 'que eu envio a receita', e nao 'que eu envio ela'"*.
+# A fala que ele leu era `It's four lines long. Comment gelatin, and I'll send
+# it.` — dois pronomes sem dono numa frase so: o que tem quatro linhas, e o
+# que sera enviado. O espectador comenta sem saber o que vai receber, e o CTA
+# e' o unico ponto do video onde ele age.
+# ⚠️ 14 das 18 entradas ja nomeavam ("the recipe", "the measurements", "all
+# four ingredients"). As 5 trocadas mantiveram a MESMA contagem de palavras: a
+# cena 3 ja esta 12,8% acima do teto e um CTA mais longo vira corte de fala.
+# ⛔ O `_tr_isca_nomeada` cobra isso a cada sorteio.
 CTAS = [
     "Comment gelatin, and I'll send you the whole recipe tonight.",
     "Comment gelatin, and the recipe's in your inbox in ten minutes.",
     "Comment gelatin, and I'll send you exactly what to buy.",
     "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll tell you how much and when.",
+    "Comment gelatin, and I'll send the dose and the timing.",
     "Comment gelatin, and I'll send you the full recipe.",
     "Comment gelatin, one word, and the recipe is yours tonight.",
     "Comment gelatin, and the recipe's on your phone tonight.",
     "Comment gelatin, and I'll send you the measurements.",
-    "Comment gelatin, and I'll send the whole thing, free.",
+    "Comment gelatin, and I'll send the whole recipe, free.",
     "Comment gelatin, that's the word, and I'll send the recipe.",
     "Comment gelatin, and I'll send the recipe my aunt sent me.",
     "Comment gelatin, and I'll send you all four ingredients.",
     "Want it? Comment gelatin, and I'll send you the recipe tonight.",
-    "Comment gelatin, and I'll send it before you scroll away.",
-    "It's four lines long. Comment gelatin, and I'll send it.",
-    "Comment gelatin, and I'll send you where to get it.",
+    "Comment gelatin, and I'll send the recipe before you scroll.",
+    "Comment gelatin, and I'll send the recipe — four lines long.",
+    "Comment gelatin, and I'll send where to buy the gelatin.",
     "Comment gelatin, nothing else, and the recipe is yours.",
 ]
 
@@ -1857,11 +1868,27 @@ def montar(spec):
     # cenas), e a descricao volta INTEIRA, com a marca facial. Ancora curta
     # ("same hair") carrega a roupa e perde o rosto — foi assim que o
     # VAZAMENTO devolveu um senhor de oculos e bigode no lugar do corpo-prova.
-    # ⛔ E ela nunca leva adjetivo de etnia (TR11/[D2]): ela e' sorteada livre.
-    ela = ("a %d-year-old woman with %s, wearing %s"
-           % (nar["idade"], nar["marca"], nar["roupa"]))
-    mesma = ("The same %d-year-old woman, with %s, wearing %s"
-             % (nar["idade"], nar["marca"], nar["roupa"]))
+    # ⛔⛔ A NARRADORA PASSA A LEVAR A ETNIA DA PAGINA — ORDEM DO ED, 2026-08-06.
+    # Ele setou `pele escura` na UI e recebeu narradora branca ao lado de um
+    # corpo-prova negro: *"se eu setei pele escura, as refs tem que ter pele
+    # escura ue"*.
+    #
+    # ⚠️ ISTO REVERTE O [D2], que era decisao dele e esta escrita no topo do
+    # arquivo: "o espectador de 50+ se identifica com o CORPO, nao com quem
+    # narra — entao a congruencia vale onde ela vende". So o HOMEM casava com o
+    # avatar. O proprio comentario do pool ja antecipava a virada: *"Se o
+    # operador quiser garantir proporcao, isso e' ORDEM DELE — nao se decide
+    # aqui."* E' esta a ordem.
+    #
+    # ⚠️ O QUE SE PERDE, para ficar registrado: a narradora era o maior eixo de
+    # variacao visual do lote (8 arquetipos, cabelo afro/box braids/ruivo/
+    # platinado). Amarrada a pagina, esse eixo encolhe pela metade — cada
+    # pagina passa a sortear so dentro da propria etnia. O ganho e a
+    # congruencia que o CLAUDE.md chama de inviolavel e que o video quebrava.
+    ela = ("a %d-year-old %s woman with %s, wearing %s"
+           % (nar["idade"], et, nar["marca"], nar["roupa"]))
+    mesma = ("The same %d-year-old %s woman, with %s, wearing %s"
+             % (nar["idade"], et, nar["marca"], nar["roupa"]))
     recibo = TR_BANCADA_RECIBO % (bnc, ban["itens"])
     analogia = ANALOGIAS[prox["analogia"]]
     gatilho = _gatilho_reacao(falas[0])
@@ -1872,11 +1899,12 @@ def montar(spec):
     # O corpo-prova entra novo na cena 3 e nao tem REF — por isso ele leva
     # artigo indefinido la' (TR17).
     b["BLOCO 0 (REF)"] = (
-        "REF 01: Photo of a real person, a %d-year-old woman, chest up, facing "
-        "the camera directly, calm steady expression. %s. Wearing %s. Plain "
-        "neutral gray background, soft even frontal light. No subtitles, no "
-        "captions, no burned-in text, no watermark."
-        % (nar["idade"], nar["marca"][0].upper() + nar["marca"][1:], nar["roupa"])
+        "REF 01: Photo of a real person, a %d-year-old %s woman, chest up, "
+        "facing the camera directly, calm steady expression. %s. Wearing %s. "
+        "Plain neutral gray background, soft even frontal light. No subtitles, "
+        "no captions, no burned-in text, no watermark."
+        % (nar["idade"], et, nar["marca"][0].upper() + nar["marca"][1:],
+           nar["roupa"])
     )
 
     # --- IMAGE 01/03 — A CRENDICE -------------------------------------------
@@ -2470,7 +2498,11 @@ def _tr_ancoras(spec, blocos, achados):
     Veo tentaria casar com um rosto que nenhuma cena anterior mostrou.
     """
     et = ETNIA[spec["pagina"]]
-    ancora = "the same %d-year-old woman" % spec["narradora"]["idade"]
+    # ⚠️ A ancora carrega a ETNIA desde 2026-08-06. Quando a narradora passou a
+    # nomear a etnia, esta string deixou de casar e o TR18 acusou 1600 de 1600
+    # sorteios — o linter da continuidade caiu junto com a mudanca do casting.
+    # Ela tem de descrever a narradora COMO ELA E' ESCRITA, senao mede outra.
+    ancora = "the same %d-year-old %s woman" % (spec["narradora"]["idade"], et)
     for nome in ("IMAGE 02/03", "IMAGE 03/03"):
         if ancora.lower() not in blocos[nome].lower():
             achados.append(("ERRO", "TR18: %s sem a ancora '%s' — sem o rosto "
@@ -2495,18 +2527,60 @@ def _tr_ancoras(spec, blocos, achados):
                                 "corpo DELE — na cena 3 quem segura e' ele"))
 
 
+# a isca: o que o espectador RECEBE ao comentar. Sem um destes, o CTA manda
+# agir sem dizer em troca de que.
+TR19_ISCA = re.compile(
+    r"\b(recipe|measurements|ingredients|dose|what to buy|where to buy)\b",
+    re.I)
+
+
+def _tr_isca_nomeada(spec, blocos, achados):
+    """TR19 - o CTA nomeia O QUE sera enviado.
+
+    Ed, 2026-08-06, lendo o take 3: "and I'll send it" - enviar o QUE? A isca
+    tem de estar expressa. E o unico ponto do video onde se pede uma acao, e
+    pedir sem dizer a troca desperdica o take inteiro.
+    """
+    fala = spec["falas"][2] if len(spec["falas"]) > 2 else ""
+    if "comment gelatin" not in fala.lower():
+        return
+    if not TR19_ISCA.search(fala):
+        achados.append((
+            "ERRO",
+            "TR19: cena 3 pede o comentario e nao diz o que envia (%r)"
+            % fala[-58:]))
+
+
 def _tr_congruencia(spec, blocos, achados):
-    """TR11 — [D2]: a etnia do HOMEM e' a da pagina; a dela nunca e' escrita."""
+    """TR11 — a etnia dos DOIS e' a da pagina.
+
+    ⛔⛔ ESTE LINTER FOI INVERTIDO (Ed, 2026-08-06). Ele PROIBIA a etnia da
+    narradora — cobrava que ela nunca aparecesse, por causa do [D2]. Era ele
+    que garantia o defeito que o operador leu na tela: `pele escura` na UI,
+    corpo-prova negro, narradora branca ao lado.
+
+    Agora cobra o contrario: a REF e as tres IMAGE nomeiam a etnia dela, e ela
+    e' a mesma da pagina. Congruencia de casting e' inviolavel no CLAUDE.md, e
+    quem media estava medindo o avesso.
+    """
     et = ETNIA[spec["pagina"]]
     if "%s man" % et not in blocos["IMAGE 03/03"]:
         achados.append(("ERRO", "TR11: IMAGE 03/03 sem a etnia '%s' no "
                                 "corpo-prova — congruencia inviolavel com o "
                                 "avatar da pagina" % et))
+    # ela: cobrada onde ela e' apresentada — o REF e as duas primeiras cenas
+    for nome in ("BLOCO 0 (REF)", "IMAGE 01/03", "IMAGE 02/03"):
+        txt = blocos.get(nome, "")
+        if "%s woman" % et not in txt:
+            achados.append(("ERRO", "TR11: %s sem a etnia '%s' na narradora — "
+                                    "e' o defeito que entregava mulher branca "
+                                    "com corpo-prova negro" % (nome, et)))
+    # e nenhuma outra etnia pode escapar em lugar nenhum
+    outra = "Black American" if "white" in et else "white American"
     for nome, txt in sorted(blocos.items()):
-        if re.search(r"(white|black) American\s+woman", txt, re.I):
-            achados.append(("ERRO", "TR11: %s declara etnia da narradora — ela "
-                                    "e' sorteada livre [D2] e o motor nunca "
-                                    "escreve a etnia dela" % nome))
+        if re.search(r"%s\s+(woman|man)" % re.escape(outra), txt, re.I):
+            achados.append(("ERRO", "TR11: %s traz '%s' numa pagina de avatar "
+                                    "'%s' — casting cruzado" % (nome, outra, et)))
     if spec["narradora"]["idade"] < IDADE_MINIMA_NARRADORA:
         achados.append(("ERRO", "TR11: narradora com %d anos (piso %d) — idade "
                                 "em cena com conteudo de ED e' zona sensivel, e "
@@ -2566,7 +2640,7 @@ def lint(spec, blocos):
         sys.modules[__name__], spec, blocos, (1, 2, 3), TETO_FALA,
         literais=("gelatin trick",), teto_total=TETO_TOTAL,
         extras=(_tr_crendice, _tr_claim_prazo, _tr_segunda_pessoa,
-                _tr_pronome_orfao, _tr_mecanismo_sem_destino,
+                _tr_pronome_orfao, _tr_mecanismo_sem_destino, _tr_isca_nomeada,
                 _tr_proxy_mudo, _tr_eco, _tr_orcamento, _tr_batismo, _tr_cta,
                 _tr_gates, _tr_troca, _tr_sem_crescimento, _tr_agencia,
                 _tr_tokens, _tr_marca, _tr_verbos, _tr_recibo, _tr_ancoras,
