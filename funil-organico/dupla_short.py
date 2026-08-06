@@ -2972,7 +2972,22 @@ def lint(spec, blocos):
         _l = _b.lower()
         for _m in ("clam", "shell", "geoduck"):
             _i = _l.find(_m)
-            if _i >= 0 and "neck" in _l[max(0, _i - 90):_i + 90]:
+            # ⛔ SO' O `neck` DO MOLUSCO. Duas versoes anteriores tentaram
+            # listar as pecas de roupa que contem "neck" (crew-neck, neckline,
+            # tied at the neck) e as duas ficaram incompletas — lista fechada
+            # de linguagem natural nunca fecha.
+            # ⭐ O teste que funciona: o `neck` tem de estar no MESMO SINTAGMA
+            # do molusco. Se houver `wearing` ou `top` entre os dois, e' roupa.
+            # ⛔ A SENTENCA do molusco, nao uma janela de caracteres. A janela
+            # de 90 pegava a roupa de OUTRA mulher da mesma cena.
+            _ss = re.split(r"(?<=[.;])\s+", _l)
+            _viz = next((x for x in _ss if _m in x), "")
+            _entre = _viz.split("neck")[0][-70:] if "neck" in _viz else ""
+            _e_roupa = any(w in _entre for w in
+                           ("wearing", " top ", "blouse", "dress", "shirt",
+                            "tee", "cami", "halter", "bodysuit", "sweater"))
+            _tem = "neck" in _viz and not _e_roupa
+            if _i >= 0 and _tem:
                 ach.append(("ERRO", "EX7: `neck` ao lado do molusco — a peca do "
                                     "geoduck e' o `siphon`, e `neck` ja' "
                                     "derrubou render nosso"))

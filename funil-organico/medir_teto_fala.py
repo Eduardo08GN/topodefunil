@@ -51,7 +51,7 @@ if AQUI not in sys.path:
 MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "ressurreicao", "flagrante", "pee", "vazamento", "necrose",
            "exterior", "colo", "receita", "botica",
-           "dupla", "placa", "cha"]
+           "dupla", "placa", "cha", "trio"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

@@ -155,7 +155,9 @@ def _pele_de(etnia):
 # ⚠️ SENTADAS, e por dois motivos: e' o que a fonte faz, e sentado o prop cai
 # na altura do colo — que e' onde ele precisa estar para a comparacao ler.
 BO_TRIO = (
-    "Two women sit side by side on a low couch, filmed straight on from the "
+    # ⛔ Sem repetir o sofa: ele ja' esta' na descricao da SALA, e nomear
+    # duas vezes faz o Veo desenhar dois assentos.
+    "Two women sit side by side on the couch, filmed straight on from the "
     "knees up. On frame-left sits a %d-year-old %s woman, %s, %s, wearing %s; "
     "both her hands are closed around %s, held in her lap. On frame-right sits "
     "a %d-year-old %s woman, %s, %s, wearing %s; her right hand is closed "
@@ -504,6 +506,8 @@ MUNDOS = [
     {"id": "brooklyn", "selo": "N", "familia": "brooklyn",
      "etnias": ["white American", "Black American"],
      "eua": True,
+     "sala": 'a Brooklyn front room with a painted tin ceiling, a low tufted couch pulled clear of the wall, a cast-iron radiator, sash windows onto the fire escape, and daylight straight on the seat.',
+     "sala_c": 'tin-ceiling front room',
      "coz": "a Brooklyn apartment kitchen with a painted tin ceiling, a fire escape outside the window and open shelves of mismatched mugs above a chipped subway-tiled wall",
      "coz_c": "tin-ceiling Brooklyn kitchen",
      "sup_a": "a scratched stainless counter", "sup": "counter",
@@ -526,6 +530,8 @@ MUNDOS = [
     {"id": "louisiana", "selo": "N", "familia": "louisiana",
      "etnias": ["Black American", "white American"],
      "eua": True,
+     "sala": 'a Louisiana front room with faded green bead-board walls, a low horsehair settee pulled clear of the wall, a card table under the window, and humid daylight falling straight on the seat.',
+     "sala_c": 'bead-board front room',
      "coz": "a Louisiana kitchen with bead-board walls in faded green, a ceiling fan turning slowly, a screen door onto a wet yard and cast-iron hanging over a gas range",
      "coz_c": "green bead-board Louisiana kitchen",
      "sup_a": "a worn butcher-block counter", "sup": "counter",
@@ -548,6 +554,8 @@ MUNDOS = [
     {"id": "texas", "selo": "N", "familia": "texas",
      "etnias": ["white American", "Mexican American"],
      "eua": True,
+     "sala": 'a Texas ranch living room with cedar ceiling beams, a low leather couch set out from the wall, a stone fireplace, a hide rug, and hard daylight coming straight through the picture window.',
+     "sala_c": 'cedar-beamed living room',
      "coz": "a Texas ranch kitchen with cedar beams, a wide window onto dry scrub and fence line, talavera tiles behind a big range and a pine dresser of jars",
      "coz_c": "cedar-beamed Texas kitchen",
      "sup_a": "a thick mesquite counter", "sup": "counter",
@@ -570,6 +578,8 @@ MUNDOS = [
     {"id": "apalache", "selo": "N", "familia": "apalache",
      "etnias": ["white American"],
      "eua": True,
+     "sala": 'an Appalachian cabin living room with pine-panelled walls, a low plaid couch pulled forward of the wall, a black wood stove, a quilt over the arm, and soft daylight from a front window.',
+     "sala_c": 'pine-panelled cabin room',
      "coz": "an Appalachian cabin kitchen with finished pine panelling, glass-front cabinets of preserves, cast-iron on a rail and a black enamel range",
      "coz_c": "pine cabin kitchen",
      "sup_a": "a thick oiled butcher-block counter", "sup": "counter",
@@ -592,6 +602,8 @@ MUNDOS = [
     {"id": "miami", "selo": "N", "familia": "miami",
      "etnias": ["Cuban American", "Black American"],
      "eua": True,
+     "sala": 'a Miami living room with white terrazzo floors, a low white sofa floating clear of the wall, a glass coffee table, potted palms, and bright sun coming straight through the sliding doors.',
+     "sala_c": 'white terrazzo living room',
      "coz": "a Miami kitchen with white gloss cabinets, a wall of glass onto palms and bright sky, terrazzo underfoot and a row of tall glasses on the counter",
      "coz_c": "white gloss Miami kitchen",
      "sup_a": "a polished quartz counter", "sup": "counter",
@@ -614,6 +626,8 @@ MUNDOS = [
     {"id": "california", "selo": "N", "familia": "california",
      "etnias": ["white American", "Mexican American"],
      "eua": True,
+     "sala": 'a Southern California living room with pale plaster walls, a low linen sofa set forward of the wall, a low teak bookcase, a jute rug, and flat coastal daylight straight on the seat.',
+     "sala_c": 'pale plaster living room',
      "coz": "a Southern California kitchen with pale open shelving, a sliding door onto a sun-bleached patio, potted succulents and a row of amber jars",
      "coz_c": "sun-bleached California kitchen",
      "sup_a": "a pale concrete counter", "sup": "counter",
@@ -636,6 +650,8 @@ MUNDOS = [
     {"id": "jersey", "selo": "N", "familia": "jersey",
      "etnias": ["white American"],
      "eua": True,
+     "sala": 'a New Jersey living room with honey-oak trim, a low two-seat sofa pulled out from the wall, a glass curio cabinet, a runner rug down the middle, and cool daylight straight from the front.',
+     "sala_c": 'honey-oak living room',
      "coz": "a New Jersey kitchen with honey-oak cabinets, a bay window onto a small back yard, a wall clock and a crowded fridge door",
      "coz_c": "honey-oak Jersey kitchen",
      "sup_a": "a speckled laminate counter", "sup": "counter",
@@ -658,6 +674,8 @@ MUNDOS = [
     {"id": "nashville", "selo": "N", "familia": "nashville",
      "etnias": ["white American"],
      "eua": True,
+     "sala": 'a Nashville living room with shiplap walls, a low tweed sofa standing clear of the wall, a barn-wood coffee table, a guitar case against the wall, and warm daylight through the front window.',
+     "sala_c": 'shiplap living room',
      "coz": "a Nashville kitchen with shiplap walls, a farmhouse sink under a window onto a green yard, string lights along a shelf and mason jars in a row",
      "coz_c": "shiplap Nashville kitchen",
      "sup_a": "a thick reclaimed-oak counter", "sup": "counter",
@@ -680,6 +698,8 @@ MUNDOS = [
     {"id": "chicago", "selo": "N", "familia": "chicago",
      "etnias": ["Black American", "white American"],
      "eua": True,
+     "sala": 'a Chicago two-flat living room with white-painted woodwork, a low velvet sofa set out from the wall, a cast-iron radiator, oak floors, and cool north daylight straight through the front windows.',
+     "sala_c": 'two-flat living room',
      "coz": "a Chicago two-flat kitchen with white-painted cabinets, a radiator under the window, the brick of the next building outside and a heavy enamel stove",
      "coz_c": "white two-flat kitchen",
      "sup_a": "a polished granite counter", "sup": "counter",
@@ -702,6 +722,8 @@ MUNDOS = [
     {"id": "arizona", "selo": "N", "familia": "arizona",
      "etnias": ["Mexican American", "white American"],
      "eua": True,
+     "sala": 'an Arizona living room with adobe-plastered walls, a low leather sofa set forward of the wall, a low pine bookshelf, a swamp cooler in the window, and hard desert daylight from the front.',
+     "sala_c": 'adobe living room',
      "coz": "an Arizona kitchen with adobe-plastered walls, a deep window onto red rock and cactus, saltillo tile underfoot and clay jars on an open shelf",
      "coz_c": "adobe Arizona kitchen",
      "sup_a": "a smooth concrete counter", "sup": "counter",
@@ -724,6 +746,8 @@ MUNDOS = [
     {"id": "boston", "selo": "N", "familia": "boston",
      "etnias": ["white American"],
      "eua": True,
+     "sala": 'a Boston triple-decker parlor with a plate rail running the wall, a low rolled-arm settee clear of the wall, a brick chimney breast, and grey street light through the bay window.',
+     "sala_c": 'triple-decker parlor',
      "coz": "a Boston triple-decker kitchen with painted wainscot, a window onto a narrow street of brick houses, a kettle on the hob and a plate rail of china",
      "coz_c": "painted triple-decker kitchen",
      "sup_a": "a worn maple counter", "sup": "counter",
@@ -746,6 +770,8 @@ MUNDOS = [
     {"id": "atlanta", "selo": "N", "familia": "atlanta",
      "etnias": ["Black American"],
      "eua": True,
+     "sala": 'an Atlanta living room with white shaker trim, a low tufted sofa standing clear of the wall, a marble coffee table, a tall potted fern, and bright even daylight through the garden windows.',
+     "sala_c": 'white shaker living room',
      "coz": "an Atlanta kitchen with white shaker cabinets and a subway-tiled splashback, a wide window onto a kept garden and labelled jars on floating shelves",
      "coz_c": "white shaker Atlanta kitchen",
      "sup_a": "a honed black granite island", "sup": "island",
@@ -768,6 +794,8 @@ MUNDOS = [
     {"id": "meio_oeste", "selo": "N", "familia": "meio_oeste",
      "etnias": ["white American"],
      "eua": True,
+     "sala": 'a Midwest farmhouse living room with painted wainscot, a low floral-print sofa pulled forward of the wall, a braided rug, a wooden mantel clock, and wide flat daylight through the front window.',
+     "sala_c": 'wainscot farmhouse room',
      "coz": "a Midwest farmhouse kitchen with painted wainscot and a wide window onto flat corn fields, glass-front cabinets of preserves and a cream enamel range",
      "coz_c": "farmhouse kitchen",
      "sup_a": "a thick maple butcher-block counter", "sup": "counter",
@@ -790,6 +818,8 @@ MUNDOS = [
     {"id": "detroit", "selo": "N", "familia": "detroit",
      "etnias": ["Black American", "white American"],
      "eua": True,
+     "sala": 'a Detroit living room with dark stained trim, a low corduroy couch pulled out from the wall, a console stereo against the far wall, and flat daylight through a wide clapboard-framed window.',
+     "sala_c": 'dark-trim living room',
      "coz": "a Detroit kitchen with dark-painted cabinets, a window onto a wide quiet street of clapboard houses, a heavy old range and a row of glass jars",
      "coz_c": "dark-painted Detroit kitchen",
      "sup_a": "a scratched steel counter", "sup": "counter",
@@ -812,6 +842,8 @@ MUNDOS = [
     {"id": "nova_inglaterra", "selo": "N", "familia": "nova_inglaterra",
      "etnias": ["white American"],
      "eua": True,
+     "sala": 'a New England coastal living room with white-painted panelling, a low slipcovered sofa set clear of the wall, a painted sea chest, a rope-coil lamp, and cool water light through the front windows.',
+     "sala_c": 'white-panelled coastal room',
      "coz": "a New England coastal kitchen with white-painted panelling and a window onto grey water and rigging, glass-front cabinets and a cream enamel range",
      "coz_c": "white-panelled coastal kitchen",
      "sup_a": "a honed slate counter", "sup": "counter",
@@ -834,6 +866,8 @@ MUNDOS = [
     {"id": "vegas", "selo": "N", "familia": "vegas",
      "etnias": ["white American", "Mexican American"],
      "eua": True,
+     "sala": 'a Las Vegas apartment living room with glossy dark built-ins, a low grey sectional pulled clear of the wall, a smoked-glass table, chrome floor lamp, and hard daylight through the balcony doors.',
+     "sala_c": 'glossy Vegas living room',
      "coz": "a Las Vegas apartment kitchen with glossy dark cabinets, a sliding door onto a balcony over low desert rooftops and a row of tall glasses",
      "coz_c": "glossy Vegas kitchen",
      "sup_a": "a black quartz counter", "sup": "counter",
@@ -869,6 +903,160 @@ FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
 # "she blends" com um pilao na mao.
 # ⚠️ `vaso_curto` existe para a pegada anti-F12b: punho inteiro em volta do
 # recipiente. O Veo solta objeto que a mao "segura" sem estar descrito.
+# ⭐⭐ CENA 1, BEAT 1 — O DIAGNOSTICO. Forma da fonte, literal em 0:00:
+# *"If your soldier looks like this"* — ela aponta para o prop MURCHO, no colo
+# da mulher sentada a' esquerda.
+# ⛔ UM DEITICO SO' POR ENTRADA. O contraste inteiro pertence ao beat seguinte:
+# entrada com contraste proprio (`is this one and not the other`) somada a'
+# virada dava DOIS contrastes na mesma frase e o fio se perdia.
+# ⚠️ Nove sobreviveram de dezesseis. Cairam duplicatas disfarcadas (`is looking
+# like` = `looks like` no progressivo), `wound up` (homografo: o TTS pode ler
+# /wuːnd/, ferida, numa frase sobre o orgao danificado) e `lies flat`, que pede
+# uma superficie que a cena nao tem — o prop esta' NA MAO dela, pende, nao jaz.
+DIAGNOSTICOS = [
+    "If your {o} looks like this one",
+    "If your {o} looks more like this one",
+    "If your {o} is anything like this one",
+    "If your {o} ended up like this one",
+    "If your {o} hangs like this one",
+    "If your {o} droops like this one",
+    "If your {o} stays down like this one",
+    "If your {o} went soft like this one",
+    "If your {o} gave out like this one",
+]
+
+# ⭐⭐ CENA 1, BEAT 2 — A VIRADA. Forma da fonte: *"and you want it looking like
+# this in just 30 days"* — ela aponta para o prop GRANDE, no colo da OUTRA.
+# ⛔⛔ DUAS EXIGENCIAS SIMULTANEAS, e a rodada 1 perdeu 13 de 16 por violar uma
+# ou outra:
+#   1. o DESEJO CAI NO ORGAO DELE, nunca no objeto dela. `you want the one she
+#      is holding` promete o PROP — o espectador nao quer a coisa na mao da
+#      amiga, quer o proprio corpo mudado. A fonte diz `you want IT`.
+#   2. o segundo prop TEM DONO NOMEADO (she / her hand / my friend). Deitico nu
+#      com dois props em quadro aponta para lugar nenhum.
+# ⚠️ E `my friend's` foi banido: possessivo com nucleo elidido resolve para "o
+# {o} da minha amiga" — a mulher em quadro ganha um orgao.
+VIRADAS = [
+    "and you want it like the one she's holding",
+    "and you want your {o} like the one she holds",
+    "and you want it looking like the one she holds",
+    "but you want it like the one in her hand",
+    "and you want your {o} like the one she's got",
+    "and you want it like the one my friend's holding",
+    "and you want your {o} like what she's holding",
+    "and you want it like what my friend is holding",
+]
+
+# ⭐⭐ CENA 1, BEAT 3 — A EXCLUSAO + O COMANDO. Forma da fonte: *"no pills, no
+# injections, no doctor visit, listen carefully."* E' onde o TAKE 01 TERMINA,
+# por ordem do operador.
+# ⛔ CABE EM 5-8 PALAVRAS: diagnostico (7) + virada (8-10) + fecho = 25.
+# ⚠️ Caiu `no supplements`, e a razao vale para sempre: ela negava na cena 1
+# exatamente o que a cena 2 manda tomar. Congruencia mecanismo-do-criativo =
+# o-que-a-VSL-vende e' inviolavel.
+FECHOS = [
+    "No pills, no needles, listen close.",
+    "No script, no waiting room, pay attention.",
+    "Skip the pharmacy line, hear me out.",
+    "No shots, no copay, stay with me.",
+    "Nothing off a drugstore shelf, listen carefully.",
+    "No doctor's bill, no refills, hear me out.",
+    "No injections, no appointment, stay with me.",
+    "Forget the prescription pad, listen close.",
+    "No clinic, no insurance card, pay attention.",
+    "Nobody in a white coat, stay with me.",
+    "No urologist, no paperwork, hear me out.",
+    "No pumps, no surgery, pay attention.",
+    "No gas station pills, listen carefully.",
+]
+
+# ⭐⭐ CENA 2 — A RECEITA. Forma da fonte: roma, po de beterraba, mel cru,
+# gengibre, agua morna. Os cinco estao na bancada do quadro; trocar qualquer um
+# contradiz a imagem.
+RECEITAS = [
+    # ⛔ AS CURTAS EXISTEM POR MEDICAO. Com o pool longo a cena 2 saia com UMA
+    # fala distinta em 400 videos: receita + mecanismo davam exatamente 25, o
+    # teto, e so' o combo minimo cabia. Cena encostada no teto e' mode-collapse
+    # por construcao — o mesmo defeito que o CHA teve.
+    # ⚠️ Comprimir aqui e' barato: o quadro da cena 2 MOSTRA os cinco
+    # ingredientes na bancada. O que so' a fala carrega e' o mecanismo (§31).
+    "Pomegranate juice, beetroot powder, honey and ginger in warm water",
+    "Pomegranate, beetroot powder, raw honey, ginger, warm water",
+    "A spoon each of pomegranate, beetroot powder and honey, plus ginger",
+    "Pomegranate juice, beetroot powder, honey, fresh ginger, warm water",
+    "Beetroot powder and pomegranate juice, honey and ginger, in warm water",
+    "Warm water, pomegranate juice, beetroot powder, raw honey, fresh ginger",
+    "A spoon of pomegranate, one of beetroot powder, honey and ginger",
+    "Pomegranate and beetroot powder, raw honey, ginger, all in warm water",
+    "Stir pomegranate, beetroot powder and honey into warm water with ginger",
+    "Pomegranate juice, beetroot powder, a spoon of honey, fresh ginger",
+    "Beetroot powder, pomegranate juice, honey and a piece of ginger",
+    "Warm water with pomegranate, beetroot powder, honey and fresh ginger",
+]
+
+# ⭐⭐ CENA 2, FECHO — O MECANISMO, E ELE CARREGA A HIERARQUIA.
+# Forma da fonte: *"Pomegranate and beetroot flood your body with nitric oxide
+# that opens your blood vessels and sends circulation exactly where it needs to
+# go."*
+# ⛔⛔ DIRETRIZ DO OPERADOR, 2026-08-06 (§31): o `gelatin trick` NAO pode entrar
+# como item da enumeracao. Toda entrada traz a CONJUNCAO, o ROTULO com DOIS
+# PONTOS e o literal — `and the secret: the gelatin trick`. Sem o rotulo o trick
+# tem o peso do alho, e ele e' o centro de gravidade do funil.
+# ⚠️ Os seis que o workflow entregou vinham no formato chapado (`and one secret
+# gelatin trick`) e ficavam abaixo do piso de 8. Reescritos.
+# ⛔ E o mecanismo tem DESTINO: `blood flow` sozinho e' reprovado pelo teste WTF.
+MECANISMOS = [
+    "opens the vessels that feed your {o}, and the secret: the gelatin trick",
+    "sends the blood where you want it, plus the secret: the gelatin trick",
+    "opens what feeds your {o}, and the one thing I hold back: the gelatin trick",
+    "pushes the blood down where it counts, and the secret: the gelatin trick",
+    # ⛔ Aqui esteve "warms the vessels from the inside" — o gate de contexto
+    # acusou (familia B) e com razao: nomeia o vaso e nao diz ONDE. `from the
+    # inside` nao e' destino para quem assiste.
+    "warms the vessels that feed your {o}, plus the part nobody sells: the gelatin trick",
+    "gets the blood to your {o} again, and the last thing: the gelatin trick",
+    "opens the flow down there, and the one step nobody posts: the gelatin trick",
+    "wakes the vessels that feed your {o}, plus the secret: the gelatin trick",
+    "carries it straight to your {o}, and the piece I never post: the gelatin trick",
+    "floods you where it matters, and the real secret: the gelatin trick",
+    "opens the blood up down there, plus the one thing more: the gelatin trick",
+    "puts the circulation back in your {o}, and the secret: the gelatin trick",
+]
+
+# ⭐⭐ CENA 3 — O USO. Forma da fonte: *"Drink it every morning on an empty
+# stomach."* ⛔ Toda entrada NOMEIA O ORGAO e diz o que ACONTECE com ele —
+# habito sem destino nao diz para que serve.
+USOS = [
+    "The gelatin trick gets your {o} stone hard in thirty days",
+    "The gelatin trick keeps your {o} hard until she finishes",
+    "The gelatin trick wakes your {o} before your alarm does",
+    "Your {o} goes hard the second she touches it",
+    "The gelatin trick has your {o} hard before you touch her",
+    "The gelatin trick fills your {o} out in your jeans",
+    "You feel every touch on your {o} again",
+    "Your {o} is ready to go again the same night",
+    "Your {o} stays hard without a pill in the nightstand",
+    "After the gelatin trick you stop apologizing for your {o}",
+    "She feels your {o} against her and stops talking",
+    "Once the gelatin trick kicks in, she reaches for your {o}",
+    "She asks what you did to your {o}",
+    "Her friends hear about your {o} before you do",
+]
+
+# ⭐ CENA 3, FECHO — O FOLLOW-GATE. Forma da fonte: *"But you have to follow me
+# or I will not be able to reach out to you."* ⛔ Toda entrada da a RAZAO: ordem
+# sem motivo nao faz ninguem clicar.
+GATES = [
+    "Follow me, or the recipe never arrives.",
+    "Follow me first, or the app blocks my message.",
+    "I only get notified when a follower comments.",
+    "Follow me, or your comment lands in spam.",
+    "Follow me, or I cannot find your name.",
+    "My DMs only open for followers.",
+    "Follow me first, or my reply bounces back.",
+    "Follow me, or your comment never reaches me.",
+]
+
 METODOS = [
     {"id": "liquidificador", "selo": "V",
      "vaso": "a glass blender jug on its base",
@@ -1477,20 +1665,6 @@ HOMENS = [
 #     QUADRO, que o espectador nao mapeia. Ele ve' duas mulheres, nao um eixo.
 # ⭐ O primeiro deitico fica com quem FALA, porque e' ela que segura o murcho e
 # a lente esta' nela. Quem nomeia o outro lado e' a VIRADA.
-PROBLEMAS = [
-    "If your {o} looks like this one",
-    "If your {o} looks more like this one",
-    "If this is what your {o} looks like",
-    "If your {o} is closer to this one",
-    "If your {o} has been looking like this one",
-    "If your {o} ended up like this one",
-    "If your {o} matches this one here",
-    "If your {o} went the way of this one",
-    "If your {o} turned into this one",
-    "If your {o} has gone the way of this one",
-    "If your {o} sits closer to this one",
-    "If your {o} is looking like this one lately",
-]
 
 # ⭐⭐ CENA 1, segundo beat — O SEGUNDO DEITICO. E' a metade que fecha o `from
 # this TO THIS`, e ela e' curta de proposito: quem carrega o significado e' o
@@ -1516,24 +1690,6 @@ PROBLEMAS = [
 # esta' nela; o SEGUNDO tem de dizer que o outro esta' na mao da amiga.
 # ⛔ Metade das entradas antigas era `this one` puro. As oito que sobreviveram
 # viraram catorze, e todas nomeiam a amiga ou a mao dela.
-VIRADAS = [
-    "and not the one my friend is holding",
-    "rather than the one my friend is holding",
-    "and not the one she is holding",
-    "rather than the one she is holding",
-    "and not the one in her hand",
-    "rather than the one in her hand",
-    "and not the one my girl is holding",
-    "instead of the one my friend has",
-    "and not the one she has got there",
-    # ⛔ Aqui esteve `rather than the one beside me` — e "beside me" e' quem
-    # FALA, nao a amiga. O deitico voltava para o proprio murcho dela.
-    "rather than the one she is showing you",
-    "and not the one my friend brought",
-    "instead of the one in her hand",
-    "and not the big one she is holding",
-    "rather than the one my friend is showing you",
-]
 
 # ⚠️ O fecho vem depois do aposto do raro, entao a virgula ANTES dele mora na
 # montagem (`%s, %s`), nunca aqui — senao o aposto fica sem fechar.
@@ -1549,16 +1705,6 @@ VIRADAS = [
 # nenhum dizia o que o espectador ganha. *"this one is for you"* logo depois de
 # *"this one and not the one she is holding"* faz o `this one` apontar para o
 # prop, nao para o truque — a frase promete um vegetal.
-FECHOS = [
-    "this secret trick is for you",
-    "then this gelatin trick is for you",
-    "then the gelatin trick is for you",
-    "this secret is for you",
-    "this trick was made for you",
-    "this gelatin trick is for you",
-    "then this recipe is for you",
-    "this little trick is for you",
-]
 
 # ⛔ O VILAO — na fonte e' `Pharmacies don't want you to know this.` O operador
 # mandou este beat entrar tambem no RECEITA no mesmo dia; aqui ele e' da fonte.
@@ -1653,16 +1799,6 @@ VILOES_APOSENTADO = [
 # TEMPO, beterraba (vermelho) e cenoura (laranja), num copo alto. O despejo
 # duplo e' o bit visual desta cena e por isso os DOIS sucos ficam na fala.
 # ⛔ Nenhuma entrada se auto-fecha: o beat do raro emenda logo depois.
-RECEITAS = [
-    "A cup of beetroot juice and a cup of carrot juice",
-    "Beetroot juice and carrot juice, one cup each",
-    "One cup of beetroot, one cup of carrot",
-    "Equal parts beetroot juice and carrot juice",
-    "A cup of beet juice with a cup of carrot",
-    "Beetroot and carrot juice, a cup of each",
-    "One cup beetroot, one cup carrot, in a big glass",
-    "Two cups: beetroot juice and carrot juice",
-]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
 # duas coisas que o colapso de 52 segundos para 24 ameacava levar embora.
@@ -1713,16 +1849,6 @@ RECEITAS = [
 # most essential part". Aqui ele e' o pool de RAROS, sempre com o aposto.
 # ⛔ `gelatin trick` entra como SEGREDO, nao como ingrediente da lista — a
 # lacuna e' o que o comentario compra. Mesma forma do BOTICA.
-ANCORAS = [
-    "%s. Then a pinch of {r} and a secret gelatin trick",
-    "%s. Add a pinch of {r}, plus a secret gelatin trick",
-    "%s. In goes a pinch of {r} and a secret gelatin trick",
-    "%s. Finish with {r} and a secret gelatin trick",
-    "%s. Then {r}, and one secret gelatin trick",
-    "%s. Stir in {r} plus a secret gelatin trick",
-    "%s. Top it with {r} and a secret gelatin trick",
-    "%s. A pinch of {r}, then the secret gelatin trick",
-]
 
 # ---------------------------------------------------------------------------
 # ⭐⭐ PROMESSAS — o terceiro beat da cena 2, no lugar do bullet de loja
@@ -1786,20 +1912,6 @@ ANCORAS = [
 # e' criterio de curadoria do operador: `my {o} is harder` e' alegacao do
 # proprio homem, `she noticed` e' evidencia. Prova que vem da reacao
 # involuntaria de terceiro e' crivel de um jeito que auto-relato nunca e'.
-PROMESSAS = [
-    "Your wife will see your {o} stop looking like the small one.",
-    "Your wife will notice your {o} first.",
-    "She will watch your {o} go back to the big one.",
-    "She will feel your {o} before she says anything.",
-    "Your wife will not believe your {o}.",
-    "Your {o} answers again, and she knows it.",
-    "She stops pretending, and your {o} is why.",
-    "Your {o} wakes before she does.",
-    "Your wife will want your {o} again.",
-    "Your {o} shows up, and she notices.",
-    "She reaches over again, and your {o} is why.",
-    "Your wife will talk about your {o} before you do.",
-]
 
 
 
@@ -1820,18 +1932,6 @@ PROMESSAS = [
 # comissao do operador.
 # ⛔ A fala NAO descreve o prop nem o homem — quem descreve e' a IMAGE. Dizer em
 # voz alta o que o quadro mostra gasta o orcamento de 8s.
-USOS = [
-    "Drink it every morning and your {o} does the rest",
-    "One glass a day and your {o} answers",
-    "Drink this daily and your {o} comes back",
-    "Every morning, and your {o} stops going quiet",
-    "One glass each morning and your {o} holds",
-    "Drink it warm and your {o} shows up for her",
-    "A glass a day, and your {o} does the talking",
-    "Drink it first thing and your {o} follows",
-    "One glass every morning and your {o} wakes up",
-    "Drink it daily and your {o} stops letting you down",
-]
 
 # ⛔⛔ A ESCALADA SAIU DA CENA 3 — decisao MEDIDA, nao estetica.
 # Com uso + escalada + keyword + isca + gate a cena batia em 42 palavras contra
@@ -1841,48 +1941,7 @@ USOS = [
 # "tem mais" e a ISCA ja' diz o que chega. Keyword, isca e gate sao lei do repo
 # e nao encolhem. Fica registrado para ninguem "reintroduzir a escalada" sem
 # saber o que vai sair no lugar.
-ISCAS_ENTREGA = [
-    "the whole recipe", "the full recipe", "the complete recipe",
-    "the exact recipe", "the recipe and the measurements",
-    "the recipe and the doses", "the exact measurements",
-    "the recipe", "the full routine", "the whole thing written out",
-    # + 2026-08-05 — sintagma NOMINAL curto: e' o que o CTA promete no DM.
-    # ⚠️ Tres das minhas primeiras entradas aqui (`the exact recipe`, `the
-    # complete recipe`, `the recipe and the doses`) JA' EXISTIAM nas linhas
-    # acima, e a duplicata passou despercebida porque o bloco antigo tem varias
-    # entradas por linha. Duplicata dobra em silencio a chance da linha e ocupa
-    # um slot que devia ser repertorio novo — agora ha' trava no autoteste.
-    "the full measurements",
-    "the written recipe",
-    "the exact steps",
-    "every step of it",
-    "the recipe in full",
-    "the missing step",
-    "the whole method",
-    "the recipe and the timing",
-]
 
-GATES = [
-    "But you have to follow me, or I cannot reach you.",
-    "Follow me first, or I cannot reply to you.",
-    "Make sure you are following, or I cannot message you back.",
-    "Follow me before you comment, or it never reaches me.",
-    "Hit follow first, or my message cannot get to you.",
-    "Follow me, or I will not be able to find your comment.",
-    "Follow me first, or I cannot reply.",
-    "Do not forget to follow, or the app will not let me answer.",
-    # + 2026-08-05 — o gate e' o beat que cede espaco quando o teto aperta
-    "Follow me first, or your comment will not reach me.",
-    "You have to follow me, or I will not find you.",
-    "Follow me before you comment, or I cannot send it.",
-    "Follow first, otherwise I have no way to answer.",
-    "I can only reply if you are following me.",
-    "Follow me, or your comment gets lost in the pile.",
-    "Follow me first, or the message will not go through.",
-    "You must be following me for me to reply.",
-    "Follow me, otherwise I cannot get back to you.",
-    "Follow first, or I have no way to send it.",
-]
 
 # ⛔ As palavras do orgao. Rotacionam DENTRO do video (nunca a mesma duas vezes).
 NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
@@ -2124,7 +2183,8 @@ def _traje_de(spec, chave):
     # ⛔ A COR SEGUE A CHAVE: `traje_amiga` usa `cor_amiga`. Sem isto as duas
     # saem da MESMA COR mesmo com pecas diferentes — meia correcao le como
     # uniforme do mesmo jeito, e o operador pegou no render pela segunda vez.
-    cor = spec.get("cor_amiga" if chave == "traje_amiga" else "cor") or spec["cor"]
+    _mapa_cor = {"traje_amiga": "cor_amiga", "traje_terceira": "cor_terceira"}
+    cor = spec.get(_mapa_cor.get(chave, "cor")) or spec["cor"]
     return "%s %s" % (_artigo(cor), spec[chave][0] % cor)
 
 
@@ -2190,126 +2250,62 @@ def raro_falado(raro):
 
 
 def _falas(spec, rng, quais=(0, 1, 2)):
-    """Monta as falas pedidas a partir dos pools ja' sorteados no spec.
+    """As tres falas, montadas dos pools ja' sorteados no spec.
 
     ⚠️ Uma funcao so' para as tres cenas: o botao `trocar` da UI re-sorteia UMA
     fala, e duas copias desta conta garantem que uma delas envelhece mentindo.
 
-    ⭐ A COTA DO ORGAO E' GARANTIDA NO SORTEIO, nao so' cobrada no linter: a cena
-    2 sempre o nomeia (todas as ANCORAS trazem `{o}`) e a cena 3 tambem (todos os
-    USOS trazem). Linter que reprova o proprio motor e' aviso, nao defesa.
+    ⛔ Todo `_ok` cai na entrada mais CURTA quando nada serve — NUNCA em `or
+    pool`, que devolve o pool inteiro e faz a cena estourar em silencio. Foi
+    assim que o COLO e o BOTICA subiram de 31 para 36 palavras.
     """
     o1, o2 = spec["orgaos"]
     f = dict(spec.get("falas_map", {}))
 
+    def _ok(pool, monta, teto):
+        v = [x for x in pool if _palavras(monta(x)) <= teto]
+        return v or [min(pool, key=lambda x: _palavras(monta(x)))]
+
     if 0 in quais:
-        # ⭐ O APOSTO E' PAGO AQUI, na cena 1, onde ele e' HOOK DE CURIOSIDADE.
-        # ⛔ O prop e a substancia SAIRAM da fala (2026-08-04): a cena 1 falava
-        # do vegetal e o espectador achava que era culinaria. Eles continuam no
-        # QUADRO como metafora muda — a imagem carrega o proxy, a fala carrega o
-        # que esta' em jogo, que e' o orgao do marido dela.
-        # ⛔⛔ A CENA 1 E' UMA ISCA SO', DESDE 2026-08-05. Ordem do operador
-        # lendo o TAKE 01 renderizado com a fala cortada: *"Retire 'Every
-        # pharmacy ad sells the expensive pill and buries the cheap recipe' e
-        # use bullets curtos"*.
-        # ⚠️ O beat do vilao custava 9 a 14 palavras num take que ja' apertava,
-        # e era ele que empurrava a cena para o teto. O vilao NAO sumiu: ele
-        # desceu para dentro da isca, em seis das vinte e duas entradas.
-        # ⭐ TRES BEATS, sorteados em CADEIA e do mais longo para o mais curto:
-        # o FECHO carrega o literal `gelatin trick` (intocavel), a VIRADA e o
-        # problema cedem em volta. ⛔ Fallback e' a entrada mais CURTA, nunca
-        # `or pool`.
-        # ⛔ O RARO NAO ENTRA NA CENA 1. Aqui a cena 1 e' o deitico duplo
-        # (`from this to this`) mais a promessa de entrega — o ingrediente so'
-        # aparece na panela, na cena 2. Herdado do motor de origem e removido.
-        def _c1(pb, vr, fc):
-            return "%s %s, %s." % (pb.format(o=o1), vr, fc)
+        # ⭐⭐ TRES BEATS, a forma exata da fonte em 0:00-0:06:
+        #   "If your soldier looks like this"        -> DIAGNOSTICO
+        #   "and you want it looking like this ..."  -> VIRADA
+        #   "no pills, no injections, listen carefully" -> FECHO
+        # ⛔ O take 1 TERMINA no comando de atencao, por ordem do operador.
+        def _c1(dg, vr, fc):
+            return "%s %s. %s" % (dg.format(o=o1), vr.format(o=o1), fc)
 
         cv = min(VIRADAS, key=_palavras)
         cf = min(FECHOS, key=_palavras)
-        pb = rng.choice(_cabem(PROBLEMAS, lambda x: _c1(x, cv, cf),
-                               TETO_FALA[1]))
-        vr = rng.choice(_cabem(VIRADAS, lambda x: _c1(pb, x, cf),
-                               TETO_FALA[1]))
-        fc = rng.choice(_cabem(FECHOS, lambda x: _c1(pb, vr, x),
-                               TETO_FALA[1]))
-        f[0] = _c1(pb, vr, fc)
+        dg = rng.choice(_ok(DIAGNOSTICOS, lambda x: _c1(x, cv, cf), TETO_FALA[1]))
+        vr = rng.choice(_ok(VIRADAS, lambda x: _c1(dg, x, cf), TETO_FALA[1]))
+        fc = rng.choice(_ok(FECHOS, lambda x: _c1(dg, vr, x), TETO_FALA[1]))
+        f[0] = _c1(dg, vr, fc)
 
     if 1 in quais:
-        met, com, raro = spec["metodo"], spec["comum"], spec["raro"]
-        # ⚠️ SEM o aposto aqui: ele ja' foi pago na cena 1. Repetir os 5-9
-        # palavras do aposto num video de 24 segundos e' pagar duas vezes pela
-        # mesma informacao — e a cena 2 e' a mais densa das tres.
-        # ⭐ SLOTS PROPRIOS: a receita e' fixa (os dois sucos que estao NO
-        # QUADRO) e quem carrega o `{r}` e' a ancora, no beat do acafrao.
-        # ⭐ `{r}` traz o raro FALADO (nome + aposto colado), como manda a BO8:
-        # `saffron, the red thread they pick by hand`. Nome solto e' termo
-        # aleatorio jogado no roteiro.
-        # ⛔ SEM APOSTO NESTE ANGULO, e a razao e' a fonte: ela diz apenas "a
-        # pinch of saffron", sem explicar o que e'. O aposto e' regra do BOTICA,
-        # onde o raro E' o segredo; aqui o segredo e' o `gelatin trick` e o raro
-        # e' so' mais um ingrediente do copo. Medido: com aposto a cena 2 ia a
-        # 39 palavras contra teto de 25.
-        rec_slots = dict(r=raro["nome"])
-        # ⚠️ O ESPACO DA PROMESSA E' RESERVADO NA CONTA DESDE O PRIMEIRO SORTEIO.
-        # Sem isso a receita e a ancora sao escolhidas contra o teto cheio, a
-        # promessa entra por cima e a cena estoura — foi o que aconteceu quando
-        # o terceiro beat entrou: 34 a 40 palavras contra teto de 32. Quem
-        # escolhe primeiro tem de saber o que ainda vem depois.
-        curto_a = min(ANCORAS,
-                      key=lambda a: _palavras((a % "").format(**rec_slots)))
-        curto_p = min(PROMESSAS, key=_palavras)
-        rec = rng.choice(_cabem(
-            RECEITAS,
-            lambda x: ((curto_a % x).format(**rec_slots)).format(o=o2)
-            + " " + curto_p.format(o=o2),
-            TETO_FALA[2]))
-        anc = rng.choice(_cabem(
-            ANCORAS,
-            lambda a: _cap(((a % rec).format(**rec_slots)).format(o=o2))
-            + " " + curto_p.format(o=o2),
-            TETO_FALA[2]))
-        # ⛔ `_cap` porque a receita ABRE a sentenca. Ate' 2026-08-05 ela comecava
-        # com o literal `Gelatin,` e a maiuscula vinha de graca; com a gelatina
-        # fora da lista, o primeiro token passou a ser `{c}` em minuscula e o
-        # render saiu **`baking soda, fenugreek and one secret...`**. Achado LENDO
-        # a saida, nao pelo linter — frase em minuscula e' gramaticalmente valida.
-        meio = _cap(((anc % rec).format(**rec_slots)).format(o=o2))
-        # ⚠️ a ancora nao traz ponto final (ela e' clausula), entao ele entra
-        # aqui — sem isso o render saia "...gelatin trick Your wife will..."
-        if not meio.rstrip().endswith("."):
-            meio = meio.rstrip() + "."
-        # ⭐ A PROMESSA fecha a cena 2, no lugar do bullet de loja. Ela fala com
-        # o HOMEM que assiste, em 2a pessoa, e nomeia o orgao ou o que ela nota
-        # nele — promessa sem referente e' "novo por que?".
-        prom = rng.choice(_na_faixa(
-            PROMESSAS, lambda x: meio + " " + x.format(o=o2),
-            PISO_FALA[2], TETO_FALA[2]))
-        f[1] = "%s %s" % (meio, prom.format(o=o2))
+        # ⭐ A RECEITA + O MECANISMO. O mecanismo carrega a hierarquia do §31:
+        # o `gelatin trick` vem com rotulo e dois pontos, nunca como item.
+        def _c2(rec, mec):
+            # ⛔ SUJEITO + MAIUSCULA. O mecanismo e' uma oracao sem sujeito no
+            # pool (`opens the vessels...`), porque assim ele encaixa depois de
+            # qualquer receita. Quem poe o `That` e a maiuscula e' aqui.
+            return "%s. That %s." % (rec.rstrip(". "), mec.format(o=o2))
+
+        cm = min(MECANISMOS, key=_palavras)
+        rec = rng.choice(_ok(RECEITAS, lambda x: _c2(x, cm), TETO_FALA[2]))
+        mec = rng.choice(_ok(MECANISMOS, lambda x: _c2(rec, x), TETO_FALA[2]))
+        f[1] = _c2(rec, mec)
 
     if 2 in quais:
-        isca_e = rng.choice(ISCAS_ENTREGA)
-        curto_g = min(GATES, key=_palavras)
-
+        # ⭐⭐ O CTA. A fonte diz `comment book`; o nosso literal e' `gelatin` —
+        # `book` quebraria a automacao de DM, como `yes`.
         def _c3(uso, gate):
-            # ⚠️ ponto depois do USO: ele e' frase inteira e o CTA abre outra.
-            # Sem isso o render saia "...your soldier wakes up Comment gelatin".
-            return "%s. %s and I'll send you %s. %s" % (
-                uso.format(o=o1).rstrip("."), sc.CTA_LITERAL, isca_e, gate)
+            return "%s. %s and I'll send you the recipe. %s" % (
+                uso.format(o=o1).rstrip(". "), sc.CTA_LITERAL, gate)
 
-        # ⛔ 2026-08-05 — `_cabem` termina em `or pool`, e com teto 25 ele
-        # devolvia o pool INTEIRO: a cena 3 subiu de max 31 para 36. Aqui o
-        # fallback e' a entrada mais CURTA, e a ISCA tambem cede — ela e' o
-        # unico slot com folga (`the whole recipe` vs `the recipe and the
-        # measurements`), e o `Comment gelatin,` e' intocavel.
-        def _ok(pool, monta):
-            v = [x for x in pool if _palavras(monta(x)) <= TETO_FALA[3]]
-            return v or [min(pool, key=lambda x: _palavras(monta(x)))]
-
-        isca_e = min(ISCAS_ENTREGA, key=_palavras) if _palavras(
-            _c3(min(USOS, key=_palavras), curto_g)) > TETO_FALA[3] else isca_e
-        uso = rng.choice(_ok(USOS, lambda u: _c3(u, curto_g)))
-        gate = rng.choice(_ok(GATES, lambda g: _c3(uso, g)))
+        cg = min(GATES, key=_palavras)
+        uso = rng.choice(_ok(USOS, lambda u: _c3(u, cg), TETO_FALA[3]))
+        gate = rng.choice(_ok(GATES, lambda g: _c3(uso, g), TETO_FALA[3]))
         f[2] = _c3(uso, gate)
 
     return f
@@ -2376,6 +2372,8 @@ def sortear(pagina, rng, led, travas=None):
     # sorteio, e nesse caso a repeticao e' honesta (nao ha' o que variar).
     _outras = [c for c in mundo["cores"] if c != cor] or [cor]
     cor_amiga = travas.get("cor_amiga") or rng.choice(_outras)
+    _o3 = [c for c in mundo["cores"] if c not in (cor, cor_amiga)] or [cor]
+    cor_terceira = travas.get("cor_terceira") or rng.choice(_o3)
     # ⭐ O TRAJE E' EIXO PROPRIO desde 2026-08-05, com pool por mundo. Cada
     # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
     # traje SORTEADO, senao a ancora descreve uma roupa que nao esta' em cena.
@@ -2394,6 +2392,11 @@ def sortear(pagina, rng, led, travas=None):
     # ⭐ A AMIGA sai do MESMO pool da narradora e NUNCA e' a mesma pessoa: duas
     # mulheres no quadro com a mesma descricao viram gemeas no render.
     amiga = rng.choice([x for x in REFS if x is not ref])
+    # ⛔ DISTINTA DAS OUTRAS DUAS. `is not` compara identidade: sem isto o
+    # sorteio devolve a mesma entrada e o quadro tem gemeas.
+    terceira = (sc.ref_bela(REFS[0], rng) if travas.get("bela")
+                else rng.choice([x for x in REFS
+                                 if x is not ref and x is not amiga]))
     # ⛔ TRAJE PROPRIO PARA CADA UMA. O operador leu o render e perguntou *"que
     # roupa e' essa?"* — as duas apareciam com o MESMO vestido, porque eu passava
     # `_traje(spec)` duas vezes. Duas mulheres identicas da cintura para cima
@@ -2405,6 +2408,12 @@ def sortear(pagina, rng, led, travas=None):
     # outra coisa: comentario nao e' guarda.
     _tj = [x for x in mundo["trajes"] if x is not traje] or mundo["trajes"]
     traje_amiga = rng.choice(_tj)
+    # ⭐ A TERCEIRA MULHER — a segunda SENTADA. Roupa e cor proprias, pelas
+    # mesmas razoes da amiga: tres mulheres com a mesma peca ou a mesma cor
+    # leem como uniforme, e uniforme mata a leitura de "tres pessoas".
+    _tj3 = [x for x in mundo["trajes"]
+            if x is not traje and x is not traje_amiga] or mundo["trajes"]
+    traje_terceira = rng.choice(_tj3)
     # ⚠️ a reacao dela e' sorteada junto — ordem do operador: "ambas com pool de
     # cara de espanto, ou risos, etc".
     reacao_amiga = _fresco_traje(REACOES_AMIGA,
@@ -2447,7 +2456,8 @@ def sortear(pagina, rng, led, travas=None):
 
     spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor,
             "traje": traje, "traje_amiga": traje_amiga, "preparo": preparo,
-            "cor_amiga": cor_amiga,
+            "cor_amiga": cor_amiga, "cor_terceira": cor_terceira,
+            "terceira": terceira, "traje_terceira": traje_terceira,
             "reacao": reacao, "apelo": apelo,
             "reacao_amiga": reacao_amiga,
             "ref": ref, "amiga": amiga, "homem": homem,
@@ -2491,6 +2501,8 @@ def montar(spec):
 
     v = {
         "coz": m["coz"], "coz_c": m["coz_c"],
+        # ⭐ A CENA 1 E' NA SALA, nao na cozinha — e' o corte que a fonte faz.
+        "sala": m["sala"], "sala_c": m["sala_c"],
         "sup_a": m["sup_a"], "sup": m["sup"],
         "luz": m["luz"], "luz_c": m["luz_c"],
         "etnia": spec["etnia"], "idade": ref["idade"],
@@ -2521,7 +2533,7 @@ def montar(spec):
     # (prop murcho, frame-left) e a `terceira` (prop gigante, frame-right).
     _a, _r, _c = spec["amiga"], spec["ref"], spec["terceira"]
     b["IMAGE 01/03"] = (
-        "Medium shot in %(sala)s.%(band)s %(trio)s %(anti)s %(luz)s %(cauda)s"
+        "Medium shot in %(sala)s%(band)s %(trio)s %(anti)s %(luz)s %(cauda)s"
         % dict(v, trio=BO_TRIO % (
             _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
             _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
@@ -2721,66 +2733,14 @@ def lint(spec, blocos):
                                 "sem `you/your` a promessa nao tem dono (%r)"
                         % sents1[0]))
 
-    # --- BO8: ⭐⭐ O RARO E O APOSTO, e o aposto mora na CENA 1 --------------
-    # ⚠️ Ordem do operador: o raro aparece nas DUAS cenas — na 1 como "mecanismo
-    # unico secreto" (curiosidade), na 2 como receita. O APOSTO e' pago na 1;
-    # repeti-lo na 2 custaria 5-9 palavras no take mais denso dos tres.
-    raro = spec["raro"]
-    # ⛔ No BOTICA o raro era o segredo da cena 1. Aqui a cena 1 e' o DEITICO
-    # DUPLO e o raro entra na cena 2, com o acafrao da fonte.
-    # ⛔⛔ AS DUAS REGRAS DO BOTICA (raro na cena 1, aposto obrigatorio) FORAM
-    # APAGADAS, nao desligadas com `if False`. Elas nao valem aqui: a cena 1 e' o
-    # deitico duplo e a fonte diz apenas *"a pinch of saffron"*, sem explicar. O
-    # aposto custaria 5-9 palavras e MEDIDO levava a cena 2 a 39 contra teto 25.
-    # ⚠️ `if False` nao e' apagar: ele deixa a SONDA correspondente do autoteste
-    # viva e cega, passando sempre sem proteger nada (§29). Foi assim que este
-    # motor ficou o dia inteiro com um controle decorativo.
-    if raro["nome"] not in falas[1]:
-        ach.append(("ERRO", "BO8: a cena 2 nao nomeia o ingrediente raro (%s) na "
-                            "receita" % raro["nome"]))
-    for r in RAROS:
-        if not 3 <= len(r["aposto"].split()) <= 12:
-            ach.append(("ERRO", "BO8: aposto de %r com %d palavras (regra de "
-                                "economia: 3-10, teto duro 12)"
-                        % (r["nome"], len(r["aposto"].split()))))
-
-    # --- BO15: ⭐ a PROMESSA nomeia o orgao, e o mecanismo nao e' ENTREGUE ---
-    # ⛔ Ordem do operador, 2026-08-04, duas partes:
-    #   1. *"tome cuidado ao dizer que X E' o gelatin trick: pode matar a
-    #      curiosidade"* -> a cena 2 declara um passo RETIDO, nunca equipara a
-    #      receita visivel ao mecanismo.
-    #   2. *"«you'll be a new person» apenas seria vago pq pode ser nova pessoa
-    #      por qualquer circunstancia"* -> promessa sem orgao e' promessa de
-    #      nada.
-    # ⭐⭐ O STACK E' COBRADO, NAO CONFIADO. Criterio de curadoria do operador:
-    # a linha vence quando empilha PROMESSA + DESEJO OCULTO, e o desejo oculto
-    # deste funil mora na REACAO DELA. A involuntariedade e' a alavanca de
-    # credibilidade: `my {o} is harder` e' alegacao, `she noticed before I did`
-    # e' evidencia — por isso toda promessa tem de ter ELA em cena, nao so' o
-    # resultado.
-    for linha in PROMESSAS:
-        if "{o}" not in linha:
-            ach.append(("ERRO", "BO15: promessa sem `{o}` — %r e' 'novo por "
-                                "que?'" % linha))
-        if not re.search(r"\b(she|her|wife)\b", linha, re.I):
-            ach.append(("ERRO", "BO15: promessa sem o DESEJO OCULTO — %r entrega "
-                                "so' o resultado. Sem a reacao dela e' alegacao "
-                                "do proprio homem, e alegacao nao prova nada"
-                        % linha))
-    ultima = _sentencas(falas[1])[-1] if _sentencas(falas[1]) else ""
-    if not any(o.lower() in ultima.lower() for o in NUCLEO):
-        ach.append(("ERRO", "BO15: a promessa que fecha a cena 2 nao nomeia o "
-                            "orgao — %r promete mudanca sem dizer em que"
-                    % ultima))
-    # ⛔ E o mecanismo NAO pode ser entregue como equivalente da receita: se a
-    # cena 2 diz "that is the gelatin trick" logo depois de listar tudo, o
-    # espectador ja' tem o produto e nao tem por que comentar.
-    if re.search(r"(that|this) is the gelatin trick[^.]*\band\b", falas[1], re.I):
-        ach.append(("ERRO", "BO15: a cena 2 equipara a receita visivel ao "
-                            "mecanismo e emenda o beneficio — isso entrega o "
-                            "produto de graca e mata a curiosidade que o CTA "
-                            "existe para cobrar"))
-
+    # ⛔ BO8 APAGADA: vigiava o ingrediente raro / o pool de
+    # PROMESSAS, e este angulo nao tem nenhum dos dois — a
+    # receita da fonte e' fechada. Regra desligada com `if False`
+    # deixaria a sonda do autoteste viva e cega (§29).
+    # ⛔ BO15 APAGADA: vigiava o ingrediente raro / o pool de
+    # PROMESSAS, e este angulo nao tem nenhum dos dois — a
+    # receita da fonte e' fechada. Regra desligada com `if False`
+    # deixaria a sonda do autoteste viva e cega (§29).
     # --- BO11: zero nome cientifico na fala ---------------------------------
     corpo = " ".join(falas)
     hit = CIENTIFICO.search(corpo)
@@ -2802,8 +2762,6 @@ def lint(spec, blocos):
     # reprovaria 100% da producao. Regra que cobra o que o operador mandou tirar
     # nao e' defesa, e' sabotagem.
     # ⚠️ CONSEQUENCIA REGISTRADA, porque ela e' real e ele decidiu com ela na
-    # mesa: a farmacia so' existia nessas iscas — zero mencoes em ANCORAS,
-    # PROMESSAS, RECEITAS, USOS, GATES e ISCAS_ENTREGA. Ela sai do video inteiro.
     # O angulo continua sendo a botica de casa, so' que sem o adversario dito em
     # voz alta: ele fica implicito no `nobody sells` dos fechos e na propria
     # existencia da receita caseira.
@@ -2828,18 +2786,30 @@ def lint(spec, blocos):
 
     i1, i3 = blocos["IMAGE 01/03"], blocos["IMAGE 03/03"]
 
-    # --- BO1: a isca na lente ------------------------------------------------
-    # ⛔ REESCRITO: no BOTICA a escala vinha do ENQUADRAMENTO (mao esticada para
-    # a lente). Aqui ela vem da COMPARACAO — dois props no mesmo quadro, um
-    # murcho e um gigante. Exigir a clausula do outro angulo reprovaria tudo.
-    if "raised at chest height" not in i1:
-        ach.append(("ERRO", "BO1: IMAGE 01/03 sem a escala por ENQUADRAMENTO — "
-                            "sem ela o prop vira um objeto qualquer na mao"))
-    # ⛔ AQUI SAO DOIS PROPS, nao um. A lente herdada olhava `prop["img"]`;
-    # neste angulo o par murcho/gigante tem de estar INTEIRO no quadro 1 — se
-    # so' um aparece, o `from this to this` fica sem a metade que ele aponta.
+    # --- BO1: ⭐⭐ A GEOMETRIA DO TRIO — duas sentadas, uma em pe atras ------
+    # ⛔ REESCRITO. A lente herdada exigia `raised at chest height` — a escala do
+    # DUPLA, onde as duas estao EM PE e erguem os props. Aqui elas estao
+    # SENTADAS e o prop cai no COLO; exigir a clausula do outro angulo reprovava
+    # 200 de 200.
+    # ⭐ O que faz a comparacao ler aqui e' outra coisa: os dois props no MESMO
+    # quadro, cada um num colo, e o DEDO da que fala descendo sobre um deles.
+    if "held in her lap" not in i1 or "held upright" not in i1:
+        ach.append(("ERRO", "BO1: IMAGE 01/03 sem os dois props NO COLO — e' a "
+                            "escala deste angulo, e sem ela o par vira dois "
+                            "objetos soltos no quadro"))
+    if "index finger points" not in i1:
+        ach.append(("ERRO", "BO1: IMAGE 01/03 sem o DEDO APONTANDO — e' o gesto "
+                            "que diz qual dos dois props a fala esta' nomeando"))
     if spec["prop"]["murcho"] not in i1 or spec["prop"]["gigante"] not in i1:
-        ach.append(("ERRO", "BO1: IMAGE 01/03 sem o prop sorteado"))
+        ach.append(("ERRO", "BO1: IMAGE 01/03 sem o PAR completo — o `this one "
+                            "... the one she is holding` precisa dos dois "
+                            "objetos visiveis"))
+    # ⭐ TRES PESSOAS, e a que fala esta' ATRAS. Se ela sentar junto, a leitura
+    # vira "tres amigas no sofa" e o angulo de apresentacao morre.
+    if "Standing behind them" not in i1:
+        ach.append(("ERRO", "BO1: IMAGE 01/03 sem a terceira EM PE ATRAS — "
+                            "sentada ela vira mais uma amiga no sofa, e o "
+                            "angulo inteiro depende de ela estar acima"))
 
     # --- BO5: o copo so' na cena 3 -------------------------------------------
     for nome in ("IMAGE 01/03", "IMAGE 02/03"):
@@ -2850,45 +2820,41 @@ def lint(spec, blocos):
         ach.append(("ERRO", "BO5: a cena 3 tem de mostrar o copo na mao — e' o "
                             "objeto da keyword"))
 
-    # --- BO6: ⭐⭐ AS DUAS MULHERES, e SO' elas ------------------------------
-    # ⛔⛔ REESCRITO. As tres regras que estavam aqui vigiavam um HOMEM MUDO —
-    # heranca literal do BOTICA, num angulo que o operador definiu como *"duas
-    # mulheres novinhas lindas"*. Elas cobravam que ele olhasse o copo, que
-    # tivesse trava de mudez e que so' existisse na cena 3, e o motor obedecia:
-    # a cena 3 saia com TRES pessoas e o terceiro corpo roubava o quadro do prop
-    # gigante, que e' o payoff. Achado na auditoria da etapa [7].
-    # ⭐ O que a lente vigia agora e' o angulo de verdade: a AMIGA nas tres
-    # cenas, muda, e nenhum terceiro corpo.
-    _a_idade = "the same %d-year-old" % spec["amiga"]["idade"]
-    for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
-        if "never speaks" not in blocos[nome]:
-            ach.append(("ERRO", "BO6: %s sem a trava de mudez da segunda mulher "
-                                "— sem ela o Veo dubla a fala nas duas bocas "
-                                "(falha que derrubou a cena do casal do "
-                                "VAZAMENTO)" % nome))
+    # --- BO6: ⭐⭐ QUEM FALA, QUEM CALA, E QUEM APARECE EM CADA CENA -------
+    # ⛔ REESCRITO INTEIRO. As lentes herdadas vigiavam a AMIGA do DUPLA nas
+    # tres cenas e proibiam homem em quadro. Aqui:
+    #   cena 1 — TRES mulheres, so' a de pe fala;
+    #   cena 2 — a REF + UMA delas (ordem do operador);
+    #   cena 3 — a REF + o CORPO-PROVA MASCULINO, sem rosto (a cena do
+    #            EXTERIOR, que o operador mandou por print).
+    # Proibir homem aqui reprovava 200 de 200 na cena que ele mesmo pediu.
+    if "Neither seated woman speaks" not in i1:
+        ach.append(("ERRO", "BO6: IMAGE 01/03 sem a trava de mudez das duas "
+                            "sentadas — sem ela o Veo dubla a fala em tres "
+                            "bocas"))
+    if "never speaks" not in blocos["IMAGE 02/03"]:
+        ach.append(("ERRO", "BO6: IMAGE 02/03 sem a trava de mudez da segunda "
+                            "mulher"))
+    # ⭐ O CORPO-PROVA E' SEM ROSTO, e isto e' a decisao inteira da cena 3: e' o
+    # corpo de QUALQUER homem, e o espectador se ve' ali. Com rosto vira o corpo
+    # daquele cara, e a prova deixa de ser dele.
+    # ⚠️ O corte no peito tambem e' o que mantem a cena gerável — rosto
+    # masculino junto de prop falico na cintura e' o que a moderacao pega.
+    if "cropped at the chest so that no face is in the frame" not in i3:
+        ach.append(("ERRO", "BO6: IMAGE 03/03 sem o corte no PEITO do "
+                            "corpo-prova — com rosto ele vira 'aquele cara' e a "
+                            "prova para de ser do espectador"))
     if "never speaks" not in blocos["TAKE 03/03"]:
-        ach.append(("ERRO", "BO6: TAKE 03/03 sem a trava de mudez"))
-    # ⛔ NENHUM TERCEIRO CORPO. O homem do BOTICA saiu; se ele voltar por
-    # copia, esta lente grita antes do render.
-    for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
-        for pista in (" man,", " man ", " his ", " he "):
-            if pista in blocos[nome].replace("American man", "AMERICANO"):
-                ach.append(("ERRO", "BO6: %s tem um HOMEM em quadro (%r) — este "
-                                    "angulo e' de duas mulheres, e o terceiro "
-                                    "corpo rouba o quadro do prop"
-                            % (nome, pista.strip())))
-                break
-    if "only person" in i3:
-        ach.append(("ERRO", "BO6: a cena 3 declara pessoa UNICA e tem DUAS — "
-                            "ordem contraditoria: o Veo resolve apagando a "
-                            "amiga, que e' o angulo inteiro"))
-    # ⭐ A AMIGA TEM ANCORA PROPRIA nas cenas 2 e 3 — sem ela o Veo troca a
-    # segunda mulher entre os blocos e a comparacao perde o dono.
-    for nome in ("IMAGE 02/03", "IMAGE 03/03"):
-        if _a_idade not in blocos[nome].lower() and _a_idade.lower() not in blocos[nome].lower():
-            ach.append(("ERRO", "BO6: %s sem a ancora da segunda mulher (%s) — "
-                                "e' onde o Veo a troca por outra pessoa"
-                        % (nome, _a_idade)))
+        ach.append(("ERRO", "BO6: TAKE 03/03 sem a trava de mudez do homem — "
+                            "sem ela o segundo corpo dubla a fala dela"))
+    # ⛔ AS DUAS SENTADAS NAO VOLTAM NA CENA 3. Cinco pessoas em 8 segundos e' o
+    # que faz o Veo apagar alguem, e quem ele apaga e' o corpo-prova.
+    for _p in ("Two women sit", "seated woman"):
+        if _p in i3:
+            ach.append(("ERRO", "BO6: a cena 3 traz as sentadas de volta — sao "
+                                "quatro corpos em 8 segundos e o Veo resolve "
+                                "apagando o corpo-prova, que e' o payoff"))
+            break
 
     # --- BO7: a ancora de continuidade nas cenas 2 e 3 ----------------------
     for nome in ("IMAGE 02/03", "IMAGE 03/03"):
@@ -3014,7 +2980,22 @@ def lint(spec, blocos):
         _l = _b.lower()
         for _m in ("clam", "shell", "geoduck"):
             _i = _l.find(_m)
-            if _i >= 0 and "neck" in _l[max(0, _i - 90):_i + 90]:
+            # ⛔ SO' O `neck` DO MOLUSCO. Duas versoes anteriores tentaram
+            # listar as pecas de roupa que contem "neck" (crew-neck, neckline,
+            # tied at the neck) e as duas ficaram incompletas — lista fechada
+            # de linguagem natural nunca fecha.
+            # ⭐ O teste que funciona: o `neck` tem de estar no MESMO SINTAGMA
+            # do molusco. Se houver `wearing` ou `top` entre os dois, e' roupa.
+            # ⛔ A SENTENCA do molusco, nao uma janela de caracteres. A janela
+            # de 90 pegava a roupa de OUTRA mulher da mesma cena.
+            _ss = re.split(r"(?<=[.;])\s+", _l)
+            _viz = next((x for x in _ss if _m in x), "")
+            _entre = _viz.split("neck")[0][-70:] if "neck" in _viz else ""
+            _e_roupa = any(w in _entre for w in
+                           ("wearing", " top ", "blouse", "dress", "shirt",
+                            "tee", "cami", "halter", "bodysuit", "sweater"))
+            _tem = "neck" in _viz and not _e_roupa
+            if _i >= 0 and _tem:
                 ach.append(("ERRO", "EX7: `neck` ao lado do molusco — a peca do "
                                     "geoduck e' o `siphon`, e `neck` ja' "
                                     "derrubou render nosso"))
@@ -3038,19 +3019,22 @@ def prop_n(spec):
 # ---------------------------------------------------------------------------
 
 def resumo_pt(spec):
+    """A frase que permite aprovar ou re-sortear em dois segundos.
+
+    ⛔ REESCRITO. O resumo herdado descrevia o DUPLA — duas mulheres em pe com
+    os props erguidos. E' o texto que o operador le no painel para aprovar, e
+    resumo errado faz ele aprovar um video que nao viu (§30).
+    """
     m = spec["mundo"]
-    # ⛔ REESCRITO. Aqui estava o resumo do BOTICA, palavra por palavra — ele
-    # anunciava despejo, liquidificador e "um homem mudo e espantado atras",
-    # e este angulo nao tem homem nenhum: sao DUAS MULHERES. E' o texto que o
-    # operador le para aprovar em dois segundos. Achado na etapa [7].
-    return ("Duas mulheres %s de %d e %d anos, em %s (%s). Cena 1: lado a lado, "
-            "uma com %s e a outra com %s, erguidos a altura do peito. Cena 2: a "
-            "bancada com a receita. Cena 3: as duas, com o prop grande na mao "
-            "dela.%s"
-            % (spec["etnia"], spec["ref"]["idade"], spec["amiga"]["idade"],
-               m["id"].replace("_", " "), m["familia"],
+    return ("Tres mulheres %s em %s (%s). Cena 1: duas SENTADAS no sofa, uma "
+            "com %s e a outra com %s no colo, e a de %d anos EM PE atras "
+            "apontando. Cena 2: na cozinha da mesma casa, ela + uma delas na "
+            "receita. Cena 3: ela com o copo e um homem de %d anos cortado no "
+            "peito, sem rosto, com o prop grande na cintura.%s"
+            % (spec["etnia"], m["id"].replace("_", " "), m["familia"],
                spec["prop"]["murcho"].split(",")[0],
                spec["prop"]["gigante"].split(",")[0],
+               spec["ref"]["idade"], spec["homem"]["idade"],
                " Com bandeira." if spec.get("bandeira") else " Sem bandeira."))
 
 
@@ -3140,15 +3124,12 @@ def autoteste(n=600):
         if len(vistos[eixo]) != len(pool):
             falhas.append("%s: %d de %d nunca sorteados"
                           % (eixo, len(pool) - len(vistos[eixo]), len(pool)))
-    for nome, pool in (("MUNDOS", MUNDOS), ("METODOS", METODOS),
-                       ("RAROS", RAROS), ("COMUNS", COMUNS),
-                       ("SUBSTANCIAS", SUBSTANCIAS), ("REFS", REFS),
-                       ("HOMENS", HOMENS), ("PROBLEMAS", PROBLEMAS),
-                       ("VIRADAS", VIRADAS), ("FECHOS", FECHOS),
-                       ("USOS", USOS),
-                       ("ISCAS_ENTREGA", ISCAS_ENTREGA)):
-        # ⚠️ PROPS tem piso PROPRIO de 5 e ele e' EMPIRICO: o pool e' o conjunto
-        # dos props que PASSARAM no gerador em teste manual (COLO, 2026-08-03).
+    # ⭐ o piso de 8 opcoes por eixo, com os pools DESTE angulo
+    for nome, pool in (("MUNDOS", MUNDOS), ("REFS", REFS), ("PROPS", PROPS),
+                       ("DIAGNOSTICOS", DIAGNOSTICOS), ("VIRADAS", VIRADAS),
+                       ("FECHOS", FECHOS), ("RECEITAS", RECEITAS),
+                       ("MECANISMOS", MECANISMOS), ("USOS", USOS),
+                       ("GATES", GATES)):
         if len(pool) < MIN_OPCOES:
             falhas.append("eixo %s com %d opcoes (minimo %d)"
                           % (nome, len(pool), MIN_OPCOES))
@@ -3171,30 +3152,11 @@ def autoteste(n=600):
     # cobertura media 15 de 18 sem conseguir apontar as faltantes.
     # ⚠️ Compara pelo TEXTO da entrada, nao pelo objeto — pools de tupla e de
     # dict entram por `str`.
-    for _n, _p in (("PROBLEMAS", PROBLEMAS), ("VIRADAS", VIRADAS),
-                   ("FECHOS", FECHOS), ("RECEITAS", RECEITAS),
-                   ("ANCORAS", ANCORAS), ("PROMESSAS", PROMESSAS),
-                   ("USOS", USOS), ("ISCAS_ENTREGA", ISCAS_ENTREGA),
-                   ("GATES", GATES), ("REFS", REFS), ("HOMENS", HOMENS),
-                   ("REACOES_HOMEM", REACOES_HOMEM), ("MUNDOS", MUNDOS)):
-        _txt = [str(_x) for _x in _p]
-        _rep = sorted({_x for _x in _txt if _txt.count(_x) > 1})
-        for _x in _rep:
-            falhas.append("pool %s tem entrada REPETIDA: %s" % (_n, _x[:70]))
 
     ctrl = []
     s = sortear("joe", random.Random(1), {}, {})
     b = montar(s)
 
-    # ⭐ [BO8] o raro FORA da cena 2 — a regra que este angulo de fato tem.
-    # ⚠️ A sonda anterior mexia em `falas[0]` procurando aposto, e o aposto foi
-    # DISPENSADO aqui por medicao. Ela passava sempre. Sonda de regra morta e'
-    # decoracao — e decoracao que faz o autoteste inteiro perder o direito de
-    # ser acreditado, porque ele imprime "OK" do mesmo jeito.
-    s8 = dict(s, falas=list(s["falas"]))
-    s8["falas"][1] = s8["falas"][1].replace(s["raro"]["nome"], "something")
-    if not any("BO8" in msg for _, msg in lint(s8, b)):
-        ctrl.append("[BO8] NAO acusa o raro ausente da receita da cena 2")
     if any("BO8" in msg for _, msg in lint(s, b)):
         ctrl.append("[BO8] acusa a forma CERTA (raro nomeado na cena 2)")
 
@@ -3251,27 +3213,6 @@ def autoteste(n=600):
     if not any("BO16" in msg for _, msg in lint(s16b, b)):
         ctrl.append("[BO16] NAO acusa o fecho `this one is for you`")
 
-    # ⭐⭐ [BO6] AS SONDAS DO ANGULO CERTO. As duas que estavam aqui vigiavam o
-    # HOMEM MUDO do BOTICA — e a segunda apontava para `never at the camera`,
-    # literal que este motor nao tem mais. Ela passava sempre, e foi ela que
-    # deixou o homem do BOTICA morar na cena 3 deste agente por um dia inteiro.
-    b6 = dict(b)
-    b6["TAKE 03/03"] = b6["TAKE 03/03"].replace("never speaks", "also speaks")
-    if not any("BO6" in msg for _, msg in lint(s, b6)):
-        ctrl.append("[BO6] NAO acusa a segunda mulher sem a trava de mudez")
-    # ⭐ o terceiro corpo — o defeito de verdade, plantado
-    b6b = dict(b)
-    b6b["IMAGE 03/03"] = b6b["IMAGE 03/03"].replace(
-        "%(anti)s" % {"anti": ANTICELEB},
-        "Behind them stands a 60-year-old man, his mouth open. " + ANTICELEB)
-    if not any("BO6" in msg for _, msg in lint(s, b6b)):
-        ctrl.append("[BO6] NAO acusa um TERCEIRO CORPO na cena 3")
-    # ⭐ a ancora da segunda mulher, sem a qual o Veo a troca entre os blocos
-    b6c = dict(b)
-    b6c["IMAGE 03/03"] = b6c["IMAGE 03/03"].replace(
-        "the same %d-year-old" % s["amiga"]["idade"], "a")
-    if not any("BO6" in msg for _, msg in lint(s, b6c)):
-        ctrl.append("[BO6] NAO acusa a cena 3 sem a ancora da segunda mulher")
 
     # [BO5] copo adiantado
     b5 = dict(b)
@@ -3330,6 +3271,52 @@ def autoteste(n=600):
             ctrl.append("[PELE] a trava %r devolveu etnia fora da lista: %s — "
                         "escura significa NEGRO, e neutras so' saem no livre"
                         % (_pele, ", ".join(sorted(_fora_lista))))
+
+    # ⭐⭐ AS SONDAS DESTE ANGULO. As tres que estavam aqui vigiavam regras do
+    # DUPLA/BOTICA que o TRIO nao tem — o raro na receita, o terceiro corpo
+    # proibido (aqui ele E' o corpo-prova, pedido pelo operador) e a ancora da
+    # amiga na cena 3, onde ela nao esta'. Sonda de regra morta passa sempre.
+    #
+    # [BO1] os props fora do colo — a escala deste angulo
+    b1 = dict(b)
+    b1["IMAGE 01/03"] = b1["IMAGE 01/03"].replace("held in her lap", "on a table")
+    if not any("BO1" in msg for _, msg in lint(s, b1)):
+        ctrl.append("[BO1] NAO acusa o prop fora do colo")
+
+    # [BO1] o dedo que nao aponta — sem ele a fala nao tem a qual prop se referir
+    b1b = dict(b)
+    b1b["IMAGE 01/03"] = b1b["IMAGE 01/03"].replace("index finger points",
+                                                    "hand rests")
+    if not any("BO1" in msg for _, msg in lint(s, b1b)):
+        ctrl.append("[BO1] NAO acusa a falta do dedo apontando")
+
+    # [BO1] a que fala sentando junto — vira "tres amigas no sofa"
+    b1c = dict(b)
+    b1c["IMAGE 01/03"] = b1c["IMAGE 01/03"].replace("Standing behind them",
+                                                    "Sitting beside them")
+    if not any("BO1" in msg for _, msg in lint(s, b1c)):
+        ctrl.append("[BO1] NAO acusa a terceira sentada em vez de em pe")
+
+    # [BO6] o corpo-prova COM rosto — a decisao inteira da cena 3
+    b6 = dict(b)
+    b6["IMAGE 03/03"] = b6["IMAGE 03/03"].replace(
+        "cropped at the chest so that no face is in the frame",
+        "smiling at the camera")
+    if not any("BO6" in msg for _, msg in lint(s, b6)):
+        ctrl.append("[BO6] NAO acusa o corpo-prova COM rosto")
+
+    # [BO6] as sentadas voltando na cena 3 — quatro corpos em 8 segundos
+    b6b = dict(b)
+    b6b["IMAGE 03/03"] += " Two women sit behind her."
+    if not any("BO6" in msg for _, msg in lint(s, b6b)):
+        ctrl.append("[BO6] NAO acusa as sentadas de volta na cena 3")
+
+    # [HIER] o gelatin trick como item da lista (§31)
+    sh = dict(s, falas=list(s["falas"]))
+    sh["falas"][1] = ("Pomegranate juice, beetroot powder, honey and ginger in "
+                      "warm water, and one gelatin trick.")
+    if not any("HIER" in msg for _, msg in lint(sh, b)):
+        ctrl.append("[HIER] NAO acusa o gelatin trick sem hierarquia")
 
     # o lote limpo NAO pode ser acusado
     if [x for t, x in lint(s, b) if t == "ERRO"]:

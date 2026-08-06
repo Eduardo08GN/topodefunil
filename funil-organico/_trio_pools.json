@@ -11,22 +11,45 @@
   "If your {o} gave out like this one"
  ],
  "VIRADAS": [
-  "and you want it like the one she is holding",
+  "and you want it like the one she's holding",
+  "and you want your {o} like the one she holds",
   "and you want it looking like the one she holds",
-  "and you want your {o} like the one she has"
+  "but you want it like the one in her hand",
+  "and you want your {o} like the one she's got",
+  "and you want it like the one my friend's holding",
+  "and you want your {o} like what she's holding",
+  "and you want it like what my friend is holding"
  ],
  "FECHOS": [
-  "no prescription, no shots, no copay, listen carefully",
-  "no doctor visit, no drugstore run, listen carefully",
-  "no injections, no pharmacy bill, listen carefully",
-  "no pharmacy line, no needles, listen up",
-  "no needles, no clinic, pay attention"
+  "No pills, no needles, listen close.",
+  "No script, no waiting room, pay attention.",
+  "Skip the pharmacy line, hear me out.",
+  "No shots, no copay, stay with me.",
+  "Nothing off a drugstore shelf, listen carefully.",
+  "No doctor's bill, no refills, hear me out.",
+  "No injections, no appointment, stay with me.",
+  "Forget the prescription pad, listen close.",
+  "No clinic, no insurance card, pay attention.",
+  "Nobody in a white coat, stay with me.",
+  "No urologist, no paperwork, hear me out.",
+  "No pumps, no surgery, pay attention.",
+  "No gas station pills, listen carefully."
  ],
  "RECEITAS": [
-  "Pomegranate juice, beetroot powder, raw honey and fresh ginger, all in warm water.",
-  "Stir pomegranate juice, beetroot powder, raw honey and fresh ginger into warm water.",
-  "Pour pomegranate juice, beetroot powder, raw honey and ginger into warm water.",
-  "It's just pomegranate juice, beetroot powder, raw honey and ginger in warm water."
+  "Pomegranate juice, beetroot powder, raw honey and fresh ginger in warm water",
+  "Start with warm water, add pomegranate juice, beetroot powder, raw honey and fresh ginger",
+  "Everything goes in warm water: pomegranate juice, beetroot powder, raw honey, fresh ginger",
+  "Stir pomegranate juice, beetroot powder, raw honey and fresh ginger into warm water",
+  "Whisk raw honey and beetroot powder into warm water, add pomegranate juice, fresh ginger",
+  "Pour pomegranate juice over beetroot powder, raw honey and fresh ginger in warm water",
+  "Drop fresh ginger into warm water with pomegranate juice, beetroot powder and raw honey",
+  "Beetroot powder dissolves in warm water with pomegranate juice, raw honey and fresh ginger",
+  "A spoon of pomegranate juice, beetroot powder, raw honey, fresh ginger in warm water",
+  "A piece of fresh ginger, pomegranate juice, beetroot powder, raw honey in warm water",
+  "You need pomegranate juice, beetroot powder, raw honey and fresh ginger in warm water",
+  "Nothing fancy: pomegranate juice, beetroot powder, raw honey and fresh ginger in warm water",
+  "In a glass of warm water: pomegranate juice, beetroot powder, raw honey, fresh ginger",
+  "Raw honey last, after pomegranate juice, beetroot powder and fresh ginger hit warm water"
  ],
  "MECANISMOS": [
   "Pomegranate opens the vessels feeding your {o}, and one secret gelatin trick",
@@ -37,11 +60,27 @@
   "Pomegranate puts blood back in your {o}, plus a secret gelatin trick"
  ],
  "USOS_GATES": [
-  "USO: Drink one glass daily and your {o} stays ready for her",
-  "USO: Drink one glass first thing and your {o} holds all night",
-  "USO: A glass every morning and your {o} wakes up with you",
-  "GATE: Follow me, or I cannot message you.",
-  "GATE: Follow me, or your comment never reaches me.",
-  "GATE: Follow me, or the app blocks my message."
+  "USO: The gelatin trick gets your {o} stone hard in thirty days",
+  "USO: The gelatin trick keeps your {o} hard until she finishes",
+  "USO: The gelatin trick wakes your {o} before your alarm does",
+  "USO: Your {o} goes hard the second she touches it",
+  "USO: The gelatin trick has your {o} hard before you touch her",
+  "USO: The gelatin trick fills your {o} out in your jeans",
+  "USO: You feel every touch on your {o} again",
+  "USO: Your {o} is ready to go again the same night",
+  "USO: Your {o} stays hard without a pill in the nightstand",
+  "USO: After the gelatin trick you stop apologizing for your {o}",
+  "USO: She feels your {o} against her and stops talking",
+  "USO: Once the gelatin trick kicks in, she reaches for your {o}",
+  "USO: She asks what you did to your {o}",
+  "USO: Her friends hear about your {o} before you do",
+  "GATE: Follow me, or the recipe never arrives.",
+  "GATE: Follow me first, or the app blocks my message.",
+  "GATE: I only get notified when a follower comments.",
+  "GATE: Follow me, or your comment lands in spam.",
+  "GATE: Follow me, or I cannot find your name.",
+  "GATE: My DMs only open for followers.",
+  "GATE: Follow me first, or my reply bounces back.",
+  "GATE: Follow me, or your comment never reaches me."
  ]
 }
