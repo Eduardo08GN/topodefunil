@@ -113,7 +113,7 @@ HTML (sem JS):
 | Otis & Gloria Living | `dailyvitalreport.store/otisgloria` | `otisgloria` |
 | Denise Walker | `dailyvitalreport.store/denise` | `denise` |
 | Wayne Miller | `dailyvitalreport.store/wayne` | `wayne` |
-| Jennifer Moore | `dailyvitalreport.store/jennifer` | `jennifer` |
+| Jennifer Miller | `dailyvitalreport.store/jennifer` | `jennifer` |
 
 **⭐ Lote 2 — 2026-08-05** (5 páginas novas do Lucas, mesmas regras):
 
