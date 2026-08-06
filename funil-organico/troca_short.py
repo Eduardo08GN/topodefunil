@@ -141,7 +141,14 @@ TETO_TOTAL = 96
 # congruencia [D2]: so' o CORPO-PROVA casa com o avatar da pagina.
 # A narradora NAO usa este dict — ela e' sorteada livre, e o motor nunca
 # escreve adjetivo de etnia junto dela (TR18).
-ETNIA = {"joe": "white American", "ray": "white American", "matt": "white American",
+ETNIA = {
+    # ⭐ As 5 paginas do lote de 2026-08-05. Split 3 brancos / 2 negros —
+    # a razao (volume absoluto x prevalencia) esta' escrita no
+    # `bridge-pages-deploy.md`.
+    "roy": "white American", "dean": "white American",
+    "earl": "white American",
+    "jason": "Black American", "philippe": "Black American",
+    "joe": "white American", "ray": "white American", "matt": "white American",
          "marcus": "Black American", "chuck": "Black American"}
 
 NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]

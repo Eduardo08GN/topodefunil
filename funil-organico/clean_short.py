@@ -52,6 +52,11 @@ SUBTITULO = "a fileira apontada, em 3 cenas · gerador offline de prompts Veo"
 # ⚠️ O campo `dominio` nao era lido em lugar nenhum do motor — so' o `["etnia"]`
 # era usado, uma vez. Entao alinhar nao perdeu informacao nenhuma.
 ETNIA = {
+    # ⭐ As 5 paginas do lote de 2026-08-05. Split 3 brancos / 2 negros —
+    # a razao esta' no `bridge-pages-deploy.md`.
+    "roy": "white American", "dean": "white American",
+    "earl": "white American",
+    "jason": "Black American", "philippe": "Black American",
     # lote 1 (2026-07)
     "joe": "white American", "ray": "white American", "matt": "white American",
     "marcus": "Black American", "chuck": "Black American",

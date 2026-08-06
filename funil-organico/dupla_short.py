@@ -82,6 +82,12 @@ SUBTITULO = ("duas mulheres, dois props · o antes e o depois no MESMO "
              "quadro · gerador offline de prompts Veo")
 
 ETNIA = {
+    # ⭐ As 5 paginas do lote de 2026-08-05. Split 3 brancos / 2 negros —
+    # a razao (volume absoluto x prevalencia) esta' escrita no
+    # `bridge-pages-deploy.md`.
+    "roy": "white American", "dean": "white American",
+    "earl": "white American",
+    "jason": "Black American", "philippe": "Black American",
     "joe": "white American", "ray": "white American", "matt": "white American",
     "marcus": "Black American", "chuck": "Black American",
     "hank": "white American", "wade": "white American",
