@@ -331,7 +331,8 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
 # SORTEIO
 # ---------------------------------------------------------------------------
 
-def sortear_curto(base, pagina, rng, ledger, mapa, fundir, mapa_copy=None):
+def sortear_curto(base, pagina, rng, ledger, mapa, fundir, mapa_copy=None,
+                  travas=None):
     """Sorteia pelo motor base e colapsa as 5 falas em 3.
 
     `fundir(spec, rng)` devolve a fala da cena 2 do SHORT — a fundida. As
@@ -350,7 +351,18 @@ def sortear_curto(base, pagina, rng, ledger, mapa, fundir, mapa_copy=None):
     mesmos 8 segundos, em vez de olhar um talking head por um terco do video.
     """
     mapa_copy = mapa_copy or mapa
-    spec = base.sortear(pagina, rng, ledger)
+    # ⛔ A TRAVA ATRAVESSA ATE' O MOTOR LONGO. Nos agentes derivados a REF e'
+    # sorteada la' dentro, e sem repassar o dicionario o toggle acenderia e nao
+    # mudaria nada — o botao que mente, que ja' me pegou tres vezes hoje.
+    # ⚠️ ADITIVO: motor longo que nao aceita `travas` continua sendo chamado com
+    # tres argumentos, entao nada muda para quem nao declara o contrato.
+    if travas:
+        try:
+            spec = base.sortear(pagina, rng, ledger, travas)
+        except TypeError:
+            spec = base.sortear(pagina, rng, ledger)
+    else:
+        spec = base.sortear(pagina, rng, ledger)
     spec["falas_base"] = list(spec["falas"])
     spec["falas"] = [spec["falas_base"][mapa_copy[0] - 1],
                      fundir(spec, rng),
@@ -1206,7 +1218,7 @@ REFS_FORTES = [
     {"idade": 27, "corpo": "lean and cut with wide shoulders and a flat stomach",
      "cabeca": "dark curls kept short",
      "marca": "sharp cheekbones and a clean jawline"},
-    {"idade": 31, "corpo": "big and solid through the chest and arms",
+    {"idade": 31, "corpo": "heavy and solid through the chest and arms",
      "cabeca": "sandy hair pushed back",
      "marca": "a heavy stubble and a deep smile line"},
     {"idade": 36, "corpo": "thickset and strong with heavy shoulders",
@@ -1236,7 +1248,7 @@ REFS_FORTES = [
     {"idade": 35, "corpo": "compact and thickly muscled through the neck and arms",
      "cabeca": "dark hair kept very short",
      "marca": "a broken nose set slightly off centre"},
-    {"idade": 27, "corpo": "big-shouldered and lean with a hard stomach",
+    {"idade": 27, "corpo": "wide-shouldered and lean with a hard stomach",
      "cabeca": "tight dark curls cropped close",
      "marca": "a small keloid scar on the jaw and a bright smile"},
     {"idade": 31, "corpo": "strongly built with a barrel chest and thick wrists",

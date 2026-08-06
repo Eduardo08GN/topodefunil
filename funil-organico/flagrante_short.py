@@ -883,7 +883,11 @@ def _nova_fala_longo(spec, i, rng):
 
 
 # ⚠️ era `sortear` no arquivo de origem — renomeada pelo mesmo motivo.
-def _sortear_longo(pagina, rng, ledger):
+def _sortear_longo(pagina, rng, ledger, travas=None):
+    # ⛔ A REF DESTE AGENTE SAI AQUI, no motor longo embutido — nao no
+    # `sortear` de tres argumentos la' de baixo. Por isso a trava atravessa
+    # `sc.sortear_curto` ate' aqui: sem isso o toggle acenderia e nao mudaria
+    # nada, que e' o botao que mente.
     hist = ledger.get(pagina, {})
     # evita repetir o valor dos ultimos N videos da mesma pagina
     ev = lambda eixo, n: hist.get(eixo, [])[-n:]
@@ -891,7 +895,11 @@ def _sortear_longo(pagina, rng, ledger):
     oc = _sortear_evitando(rng, OCASIOES, ev("ocasiao", 3))
     prop = _sortear_evitando(rng, PROPS, ev("prop", 3))
     amb = _sortear_evitando(rng, AMBIENTES, ev("ambiente", 2))
-    ref = rng.choice(REFS)
+    # ⭐ MODO BELA / MODO FORTE — contrato do short_comum.
+    # ⚠️ A REF deste angulo e' o NARRADOR (homem), e a mulher e' a vitima do
+    # flagrante. Por isso `forte` vale para a REF e `bela` para as MULHERES.
+    ref = (sc.ref_forte(REFS[0], rng) if (travas or {}).get("forte")
+           else rng.choice(REFS))
     vit = rng.choice(VITIMAS)
     mul = rng.choice(MULHERES)
 
@@ -1118,6 +1126,11 @@ CENAS_UI = ["1 · O FLAGRANTE", "2 · O TRUQUE + A VIRADA", "3 · CTA PREPARANDO
 # pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
 # cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
 # palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+# ⭐⭐ MODOS DE REF — contrato compartilhado (short_comum),
+# 2026-08-05. ⛔ Desligados, o prompt volta IDENTICO ao de antes
+# do recurso — provado caractere por caractere.
+MODO_FORTE = True
+
 TETO_FALA = {1: 24, 2: 25, 3: 25}
 
 
@@ -1257,8 +1270,9 @@ def _gravar_ledger(ledger, spec):
         json.dump(ledger, f, indent=2, ensure_ascii=False)
 
 
-def sortear(pagina, rng, ledger):
-    return sc.sortear_curto(_LONGO, pagina, rng, ledger, MAPA, _fundir, MAPA_COPY)
+def sortear(pagina, rng, ledger, travas=None):
+    return sc.sortear_curto(_LONGO, pagina, rng, ledger, MAPA, _fundir,
+                            MAPA_COPY, travas)
 
 
 def montar(spec):

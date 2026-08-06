@@ -225,6 +225,11 @@ CENAS_UI = ["1 · A ISCA E O DESMENTIDO", "2 · A REGRA E O MECANISMO",
 # ⚠️ A cena 2 tem uma entrada VERBATIM de 18 palavras (`MECANISMOS_FALA[0]`) e
 # o resto do beat nao cabe em 25 em volta dela. Baixar aqui exige encurtar
 # copy, que e' alcada do operador — ver o relatorio das cenas GRAVES.
+# ⛔⛔ SEM MODO BELA NESTE MOTOR (2026-08-05). Tres lentes batem de uma
+# vez: EX7 (`neck`, a regra do geoduck, paga em recusa), EX9
+# (vocabulario banido) e EX10 (a narradora tem de existir numa tabela
+# propria). O modo reprovava 65 de 200.
+
 TETO_FALA = {1: 25, 2: 32, 3: 34}
 PISO_FALA = {1: 22, 2: 24, 3: 30}
 
@@ -1676,7 +1681,7 @@ def _orgaos(rng):
     return diretos + [rng.choice(resto)]
 
 
-def sortear(pagina, rng, ledger):
+def sortear(pagina, rng, ledger, travas=None):
     """Anti-repeticao por ledger, por pagina.
 
     ⚠️ Nenhum eixo visual depende de outro neste agente, e isso e' consequencia

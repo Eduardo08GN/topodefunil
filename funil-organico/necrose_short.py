@@ -877,12 +877,18 @@ def _evitando(rng, pool, recentes):
     return rng.choice(livres if livres else pool)
 
 
-def _sortear_longo(pagina, rng, ledger):
+def _sortear_longo(pagina, rng, ledger, travas=None):
+    # ⛔ A REF DESTE AGENTE SAI AQUI, no motor longo embutido — nao no
+    # `sortear` de tres argumentos la' de baixo. Por isso a trava atravessa
+    # `sc.sortear_curto` ate' aqui: sem isso o toggle acenderia e nao mudaria
+    # nada, que e' o botao que mente.
     hist = ledger.get(pagina, {})
     arq = _evitando(rng, ARQUETIPOS, hist.get("arquetipo", [])[-4:])
     rec = _evitando(rng, RECEITAS_PROP, hist.get("receita", [])[-2:])
     mesa = _evitando(rng, MESAS, hist.get("mesa", [])[-2:])
-    ref = rng.choice(REFS)
+    # ⭐ MODO FORTE — a REF deste angulo e' o montanhes de tronco nu.
+    ref = (sc.ref_forte(REFS[0], rng) if (travas or {}).get("forte")
+           else rng.choice(REFS))
     animal = rng.choice(arq["animais"])      # so as congruentes com o arquetipo
 
     orgaos = rng.sample(NUCLEO, 4)
@@ -1144,6 +1150,11 @@ CENAS_UI = ["1 · O HOOK", "2 · RITUAL + PROVA", "3 · CTA SOBRE A BANCADA"]
 # pode haver cortes de fala."* O numero vem de RENDER, nao de conta: 32
 # cortou e 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
 # palavras (2,0-3,1 p/s). Ver licoes-de-construcao §28.
+# ⭐⭐ MODOS DE REF — contrato compartilhado (short_comum),
+# 2026-08-05. ⛔ Desligados, o prompt volta IDENTICO ao de antes
+# do recurso — provado caractere por caractere.
+MODO_FORTE = True
+
 TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 25, 3: 25}
 
 
@@ -1323,9 +1334,9 @@ def _gravar_ledger(ledger, spec):
         json.dump(ledger, f, indent=2, ensure_ascii=False)
 
 
-def sortear(pagina, rng, ledger):
+def sortear(pagina, rng, ledger, travas=None):
     return sc.sortear_curto(_LONGO, pagina, rng, ledger, MAPA, _fundir,
-                            MAPA_COPY)
+                            MAPA_COPY, travas)
 
 
 def montar(spec):

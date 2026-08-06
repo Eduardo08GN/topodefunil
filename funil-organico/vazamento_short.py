@@ -719,7 +719,10 @@ def _evitando(rng, pool, recentes):
     return rng.choice(livres if livres else pool)
 
 
-def sortear_longo(pagina, rng, ledger):
+def sortear_longo(pagina, rng, ledger, travas=None):
+    # ⛔ A REF e a MULHER saem AQUI, no motor longo embutido. A trava
+    # atravessa `sc.sortear_curto` ate' este ponto — sem isso o toggle
+    # acenderia e nao mudaria nada.
     hist = ledger.get(pagina, {})
     coz = _evitando(rng, COZINHAS, hist.get("cozinha", [])[-2:])
     qui = _evitando(rng, QUINTAIS, hist.get("quintal", [])[-2:])
@@ -988,6 +991,12 @@ CENAS_UI = ["1 · O VAZAMENTO", "2 · A RECEITA INCOMPLETA + A PROVA",
 # o GATE DE FOLLOW INTEIRO: nao o hook, nao o `Comment gelatin,` — a
 # maquina de conversao morrendo no ar, em metade do lote.
 # ⚠️ 8s a 4,0 palavras/s = 32 (licoes-de-construcao §5 e §27).
+# ⛔⛔ SEM MODOS DE REF NESTE MOTOR (2026-08-05). Ele tem `IDADE_EXT`,
+# uma tabela indexada POR IDADE que traduz o numero para a expressao
+# falada, e o pool compartilhado tem idades que ela nao conhece — o
+# sorteio morre com KeyError. Ligar exige reconstruir a tabela, e isso
+# mudaria o comportamento NORMAL, que hoje esta' provado identico.
+
 TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 32, 3: 32}
 
 
@@ -1136,9 +1145,9 @@ def _gravar_ledger(ledger, spec):
         json.dump(ledger, f, indent=2, ensure_ascii=False)
 
 
-def sortear(pagina, rng, ledger):
-    return sc.sortear_curto(_MOTOR_LONGO, pagina, rng, ledger, MAPA, _fundir,
-                            MAPA_COPY)
+def sortear(pagina, rng, ledger, travas=None):
+    return sc.sortear_curto(_MOTOR_LONGO, pagina, rng, ledger, MAPA,
+                            _fundir, MAPA_COPY, travas)
 
 
 def montar(spec):
