@@ -26,11 +26,11 @@ redirector central (ver [ARQUITETURA-OPERACAO](ARQUITETURA-OPERACAO.md)).
 | Chuck | `allmensnatural.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
 | Matt | `steadystrengthhub.site` | `ragnaroak.us/VHGML5-3/` | **2470** |
 | Hank | `secondwindformen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
-| _(a definir)_ | `morningritualmen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
-| _(a definir)_ | `stridebackmen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
-| _(a definir)_ | `menritualhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
-| _(a definir)_ | `thefitmenhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
-| _(a definir)_ | `menvitalityhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Philippe Laurent | `morningritualmen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Jason H. | `stridebackmen.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Earl Hodge | `menritualhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Dean Whitaker | `thefitmenhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
+| Roy Tanner | `menvitalityhub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 | Wade | `strengthandflow.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 | Isaiah | `dailyvitalitymethod.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
 | Curtis | `menresethub.site` | `horsewood.us/VHG2-L1ML3/` | **45158** |
@@ -213,3 +213,37 @@ Após propagação, o Traefik emite o certificado e `https://<dominio>/bp1/` res
 2. Setar FQDN (`PATCH /api/v1/applications/<uuid>` com `domains`).
 3. Disparar deploy (`GET /api/v1/deploy?uuid=<uuid>`).
 4. Apontar DNS (registro A → VPS).
+
+---
+
+## O SPLIT ETNICO DAS 5 PAGINAS NOVAS (2026-08-05)
+
+**3 avatares brancos · 2 avatares negros.** A decisao e' de VOLUME, e vale
+separar duas coisas que se confundem:
+
+- **Prevalencia** de disfuncao eretil e' MAIOR entre homens negros nos EUA —
+  puxada pelas comorbidades (diabetes, hipertensao, obesidade).
+- **Volume absoluto de compra** e' dos brancos: ~60% da populacao masculina
+  adulta contra ~13% de negros. Mesmo com prevalencia menor, o numero de
+  compradores e' varias vezes maior.
+
+Para resposta direta o que paga escala e' volume absoluto -> a MAIORIA (branco)
+leva 3 paginas, a minoria leva 2. Mesma proporcao das 5 paginas antigas
+(Joe/Ray/Matt brancos, Marcus/Chuck negros).
+
+⚠️ RESSALVA HONESTA: prevalencia e populacao sao dados que eu tenho com
+confianca; **participacao de mercado por etnia em nutra de ED especificamente
+nao e' dado publico que eu conheca** — a divisao acima e' inferencia de volume
+populacional. Dado de plataforma (Meta Ads, Buy Goods) ganha desta inferencia.
+
+| Pagina | Avatar | Dominio |
+|---|---|---|
+| Jason H. | negro, 50s, musculoso | `stridebackmen.site` |
+| Philippe Laurent | negro, 50s, musculoso | `morningritualmen.site` |
+| Roy Tanner | branco, 55, comum | `menvitalityhub.site` |
+| Dean Whitaker | branco, 48, comum | `thefitmenhub.site` |
+| Earl Hodge | branco, 60, comum | `menritualhub.site` |
+
+⭐ A ETNIA DA PAGINA TRAVA A ETNIA DO REF DO CRIATIVO (congruencia inviolavel).
+Ao acrescentar estas paginas ao `ETNIA` dos motores: Roy/Dean/Earl como
+`white American`, Jason/Philippe como `Black American`.
