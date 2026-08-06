@@ -107,25 +107,41 @@ central.
 **As 5 URLs dele**, uma por página de Facebook, cada uma com o `subid` fixo no
 HTML (sem JS):
 
-| Página | URL | `subid` |
-|---|---|---|
-| Reggie Harris | `dailyvitalreport.store/reggie` | `reggie` |
-| Otis & Gloria Living | `dailyvitalreport.store/otisgloria` | `otisgloria` |
-| Denise Walker | `dailyvitalreport.store/denise` | `denise` |
-| Wayne Miller | `dailyvitalreport.store/wayne` | `wayne` |
-| Jennifer Miller | `dailyvitalreport.store/jennifer` | `jennifer` |
+### ⭐⭐ 2026-08-06 — AS 10 PÁGINAS SE ESPALHARAM POR 5 DOMÍNIOS, 2 EM CADA
 
-**⭐ Lote 2 — 2026-08-05** (5 páginas novas do Lucas, mesmas regras):
+⛔ **`dailyvitalreport.store` não hospeda mais as 10.** O operador comprou 4
+domínios e pediu a divisão: *"dessa forma as páginas ficarão mais seguras caso
+um link seja marcado"*. Antes, um domínio marcado derrubava **as 10 URLs de uma
+vez**; agora derruba **2**.
 
-| Página | URL | `subid` | Perfil |
-|---|---|---|---|
-| Yvonne Bradley | `dailyvitalreport.store/yvonne` | `yvonne` | mulher negra |
-| Curtis Grant | `dailyvitalreport.store/curtis` | `curtis` | homem negro |
-| Carol Whitfield | `dailyvitalreport.store/carol` | `carol` | mulher branca |
-| Hank & Marlene Daily | `dailyvitalreport.store/hankmarlene` | `hankmarlene` | casal branco |
-| Dale Pruitt | `dailyvitalreport.store/dale` | `dale` | homem branco |
+| Domínio | App Coolify (UUID) | Página | `subid` | Avatar |
+|---|---|---|---|---|
+| `dailyvitalreport.store` | `kw5fu21f7rad8fnklgf1iiqn` | Reggie Harris | `reggie` | homem negro |
+| " | " | Jennifer Miller | `jennifer` | mulher branca |
+| `dailyfactreport.site` | `uurhd13s9x1rei59f5gqm3jc` | Denise Walker | `denise` | mulher negra |
+| " | " | Wayne Miller | `wayne` | homem branco |
+| `plainfactsdaily.site` | `vx3q4f59noi9u5cr7fx6jzj3` | Otis & Gloria | `otisgloria` | casal negro |
+| " | " | Dale Pruitt | `dale` | homem branco |
+| `thedailyfinding.site` | `b5e8211hjaxecijcgybsvgde` | Curtis Grant | `curtis` | homem negro |
+| " | " | Carol Whitfield | `carol` | mulher branca |
+| `everydaydigest.site` | `goc65jdh6xw2po2ja3mk99sa` | Yvonne Bradley | `yvonne` | mulher negra |
+| " | " | Hank & Marlene | `hankmarlene` | casal branco |
 
-A raiz `dailyvitalreport.store/` serve a mesma matéria **sem** `subid`.
+⚠️ **O pareamento não é aleatório:** cada domínio leva **uma página de avatar
+negro e uma de avatar branco**. Um domínio marcado não apaga um demográfico
+inteiro do funil.
+
+⚠️ **Cada bridge tem marca própria** no `<title>` e nas páginas legais — Daily
+Fact Report, Plain Facts Daily, The Daily Finding, Everyday Digest. São cinco
+sites que se parecem, não cinco cópias com o nome trocado.
+
+⛔ **As 8 pastas que migraram foram REMOVIDAS do `bp-dailyvitalreport`**, por
+ordem do operador. Corte limpo: manter as URLs velhas vivas seria manter o alvo
+grande, que é justamente o que a divisão desfaz.
+⚠️ **Consequência:** `dailyvitalreport.store/{denise,wayne,otisgloria}` passou a
+dar 404, e as bios dessas 3 páginas no Facebook precisaram ser trocadas.
+
+A raiz de cada domínio serve a mesma matéria **sem** `subid`.
 
 ⭐ **O app tem auto-deploy pelo webhook do GitHub App.** O lote 2 subiu sozinho
 depois do `git push` no `projetosweb` — não foi preciso chamar
