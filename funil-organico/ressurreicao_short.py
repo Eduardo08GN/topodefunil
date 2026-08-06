@@ -195,6 +195,9 @@ CENAS_UI = ["1 · O DESPEJO E O CRESCIMENTO", "2 · A RECEITA INCOMPLETA",
 # olhos fora do comum) e `ref forte` (homem musculoso e atraente).
 # ⛔ Desligados, o prompt volta IDENTICO ao de antes do recurso.
 
+# ⭐⭐ MODO BELA — com o filtro de banidos do proprio motor (RS23).
+MODO_BELA = True
+
 TETO_FALA = {1: 25, 2: 32, 3: 25}
 PISO_FALA = {1: 16, 2: 26, 3: 20}
 
@@ -2460,11 +2463,17 @@ def sortear(pagina, rng, ledger, travas=None, degrau=None,
     hist = ledger.get(pagina, {})
     elegiveis = [n for n in NARRADORAS if n["idade"] >= IDADE_MINIMA_NARRADORA]
     # ⚠️ 28 e' o piso da RS19 — ela fala do marido.
-    # ⛔ SEM MODO_BELA AQUI. A RS23 (§travas) BANE vocabulario de desejo no
-    # prompt — a roupa entra como PECA DESCRITA, nunca como adjetivo de corpo —
-    # e o modo BELA e' exatamente esse vocabulario (`curvy`, `sculpted`). Os
-    # dois se excluem por construcao, e a RS23 nasceu de render recusado.
-    nar = _evitando(rng, elegiveis, hist.get("narradora", [])[-3:])
+    # ⭐ MODO BELA — o operador decidiu inclui-lo aqui depois de eu reportar
+    # o conflito com a RS23. **A RS23 NAO FOI FURADA**: o helper recebe a
+    # lista de banidos do proprio motor (`BANIDOS_DESEJO`) e so' sorteia
+    # entradas que ja' a respeitam. A regra continua valendo e o modo entra
+    # POR BAIXO dela — furar seria reintroduzir vocabulario que ja' custou
+    # recusa em render.
+    nar = (sc.ref_bela(elegiveis[0], rng,
+                       idade_min=IDADE_MINIMA_NARRADORA,
+                       banidos=tuple(BANIDOS_DESEJO))
+           if (travas or {}).get("bela")
+           else _evitando(rng, elegiveis, hist.get("narradora", [])[-3:]))
     pares = [h for h in homens_de(pagina)
              if abs(h["idade"] - nar["idade"]) <= TETO_DIF_IDADE]
     hom = _evitando(rng, pares or homens_de(pagina),

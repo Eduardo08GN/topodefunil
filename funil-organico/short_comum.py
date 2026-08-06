@@ -1098,7 +1098,7 @@ def _sem_olhos(marca):
     m = re.sub(r"\s{2,}", " ", m).strip(" ,")
     return m or "clear skin"
 
-def ref_bela(molde, rng, idade_min=None):
+def ref_bela(molde, rng, idade_min=None, banidos=()):
     """Uma REF do modo BELA no FORMATO DO MOTOR que pediu.
 
     `molde` e' uma entrada qualquer do pool original — serve so' para dizer
@@ -1120,10 +1120,27 @@ def ref_bela(molde, rng, idade_min=None):
     # este parametro existir. ⚠️ Quando NENHUMA entrada atinge o piso, ele CEDE
     # e a mais velha do pool entra: derrubar o sorteio por causa de um toggle
     # seria o botao que quebra o app, nao o que muda a REF.
+    # ⛔⛔ O MOTOR PASSA A PROPRIA LISTA DE BANIDOS. O RESSURREICAO tem a RS23
+    # (`BANIDOS_DESEJO`: sexy, curvy, revealing, cleavage...) e o pool bela usa
+    # `curvy`. Filtrar aqui e' RESPEITAR a regra, nao furar: o modo entra por
+    # baixo dela. Furar seria reintroduzir um vocabulario que ja' custou recusa.
+    # ⚠️ Se o filtro esvaziar o pool, ele CEDE — derrubar o sorteio por causa de
+    # um toggle e' o botao que quebra o app.
     _pool = REFS_BELAS
+    if banidos:
+        _b = tuple(x.lower() for x in banidos)
+        _pool = [r for r in _pool
+                 if not any(w in (r["corpo"] + " " + r["cabeca"] + " "
+                                  + r["marca"]).lower() for w in _b)] or _pool
     if idade_min:
-        _pool = [r for r in REFS_BELAS if r["idade"] >= idade_min] or [
-            max(REFS_BELAS, key=lambda r: r["idade"])]
+        # ⛔ O FALLBACK SAI DO POOL JA' FILTRADO (`_pool`), nunca do REFS_BELAS
+        # inteiro. A primeira versao caia no `max(REFS_BELAS)` e trazia de volta
+        # uma entrada que o filtro de BANIDOS tinha acabado de excluir — o
+        # RESSURREICAO reprovava 65 de 200 com `curvy` vindo justamente dai'.
+        # ⚠️ Fallback que ignora um filtro anterior e' a mesma familia do
+        # `or pool` do `_cabem`: parece funcionar e desfaz a regra em silencio.
+        _pool = [r for r in _pool if r["idade"] >= idade_min] or [
+            max(_pool, key=lambda r: r["idade"])]
     base = dict(rng.choice(_pool))
     # ⭐ O OLHO E' SORTEADO A PARTE e entra NA MARCA — que e' o campo que todo
     # motor ja' renderiza. Assim ele chega ao quadro sem eu tocar em 16 motores.
@@ -1134,7 +1151,12 @@ def ref_bela(molde, rng, idade_min=None):
     # uma terceira. Achado LENDO as tres primeiras saidas do helper.
     base["marca"] = "%s, %s" % (rng.choice(OLHOS_BELAS),
                                 _sem_olhos(base["marca"]))
-    tpl, curto = rng.choice(ROUPAS_BELAS)
+    _rp = ROUPAS_BELAS
+    if banidos:
+        _b = tuple(x.lower() for x in banidos)
+        _rp = [p for p in ROUPAS_BELAS
+               if not any(w in p[0].lower() for w in _b)] or ROUPAS_BELAS
+    tpl, curto = rng.choice(_rp)
     roupa = tpl % rng.choice(CORES_BELAS)
     saida = {}
     for campo in molde:

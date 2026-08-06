@@ -702,7 +702,26 @@ def _palavras(txt):
 # moldes que escrevem "Thirty-{n} years old".
 # ⚠️ Passar o digito cru (idade - 30) entregava "Thirty-4" na fala — bug visto
 # no painel em 2026-07-30. O REF fala o que esta' escrito.
+# ⛔ A TABELA COBRIA SO' 30-35 e o motor morria com KeyError em qualquer
+# idade fora disso — foi ela, e so' ela, que barrou os modos de REF aqui.
+# ⚠️ E' so' numero -> palavra falada: ampliar nao muda regra nenhuma, e as
+# entradas 30-35 seguem EXATAMENTE como estavam (a equivalencia bit a bit
+# do caminho normal depende disso).
 IDADE_EXT = {
+    21: ("twenty-one", "one"),
+    22: ("twenty-two", "two"),
+    23: ("twenty-three", "three"),
+    24: ("twenty-four", "four"),
+    25: ("twenty-five", "five"),
+    26: ("twenty-six", "six"),
+    27: ("twenty-seven", "seven"),
+    28: ("twenty-eight", "eight"),
+    29: ("twenty-nine", "nine"),
+    36: ("thirty-six", "six"),
+    37: ("thirty-seven", "seven"),
+    38: ("thirty-eight", "eight"),
+    39: ("thirty-nine", "nine"),
+    40: ("forty", "forty"),
     30: ("thirty", "thirty"), 31: ("thirty-one", "one"),
     32: ("thirty-two", "two"), 33: ("thirty-three", "three"),
     34: ("thirty-four", "four"), 35: ("thirty-five", "five"),
@@ -727,7 +746,12 @@ def sortear_longo(pagina, rng, ledger, travas=None):
     coz = _evitando(rng, COZINHAS, hist.get("cozinha", [])[-2:])
     qui = _evitando(rng, QUINTAIS, hist.get("quintal", [])[-2:])
     prop = _evitando(rng, PROPS_PAYOFF, hist.get("prop", [])[-2:])
-    ref, mul = rng.choice(REFS), rng.choice(MULHERES)
+    # ⭐ MODOS DE REF. A REF deste angulo e' o corpo-prova MUSCULOSO (a fonte
+    # o especifica assim) e a MULHER e' a do casal — cada um leva o seu modo.
+    _tv = travas or {}
+    ref = (sc.ref_forte(REFS[0], rng) if _tv.get("forte") else rng.choice(REFS))
+    mul = (sc.ref_bela(MULHERES[0], rng) if _tv.get("bela")
+           else rng.choice(MULHERES))
 
     orgaos = rng.sample(NUCLEO, 4)
     falas = [
@@ -996,6 +1020,12 @@ CENAS_UI = ["1 · O VAZAMENTO", "2 · A RECEITA INCOMPLETA + A PROVA",
 # falada, e o pool compartilhado tem idades que ela nao conhece — o
 # sorteio morre com KeyError. Ligar exige reconstruir a tabela, e isso
 # mudaria o comportamento NORMAL, que hoje esta' provado identico.
+
+# ⭐⭐ MODOS DE REF. Entraram depois que a `IDADE_EXT` foi ampliada
+# de 30-35 para 21-40 — era ela, e so' ela, que barrava. As entradas
+# antigas nao foram tocadas, entao o caminho normal segue identico.
+MODO_BELA = True
+MODO_FORTE = True
 
 TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 32, 3: 32}
 
