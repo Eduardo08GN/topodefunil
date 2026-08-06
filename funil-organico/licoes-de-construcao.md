@@ -1055,6 +1055,48 @@ cena mostra preparo, e cobra o rótulo com dois-pontos antes do literal.
 
 ---
 
+## 32. ⛔⛔ A INTEGRAÇÃO RESPONDIA 401 DESDE SEMPRE — e o erro estava escrito para ser engolido
+
+**Onde:** `automaweb/src/lib/buygoods.ts`, na guia Tracking do funil.
+**Não é lição de agente** — está aqui porque a causa raiz é a MESMA das §29-§31,
+e é aqui que ela mora.
+
+Escrevi a integração de receita, o `tsc` passou, o painel montou, as colunas
+apareceram. Declarei a construção pronta. Só quando fui **medir** é que
+apareceu: a API respondia **HTTP 401 em toda chamada, desde a primeira**. Três
+defeitos empilhados, e nenhum dos três fazia barulho:
+
+1. **O token estava percent-encoded.** Foi copiado de dentro de uma URL, onde
+   já vinha com `%3D` no lugar do `=` final. Como `searchParams.set` codifica de
+   novo, o servidor recebia `%253D` — token errado, 401 garantido.
+2. **Os nomes dos campos eram chute.** A ClickCRM devolve `subid1` e
+   `conversions_count`; eu lia `subid` e `conversions`. Com o token corrigido e
+   isso não, a junção daria vazio e a venda daria zero — **sem erro nenhum**.
+3. **`if (!r.ok) break` devolvia lista vazia.** Este é o pior. Um 401 ficava
+   visualmente **idêntico** a "não vendeu nada". O operador olharia um zero de
+   cara honesta por semanas.
+
+Os três compõem o mesmo desenho: **eu construí um caminho em que a falha tem a
+mesma aparência do sucesso magro.** Zero venda é um resultado plausível num
+funil novo — foi justamente essa plausibilidade que me faria aceitar o número.
+
+**O que impede:** `prisma/conferir-buygoods.ts`, versionado. Ele não pergunta
+"a chamada respondeu?", pergunta **"os 15 subids nossos existem do lado deles?"**
+— e imprime `[!]` para cada página ausente. Mais: a lib agora devolve
+`{dados, erro}` e o erro **sobe até a tela**, num aviso que diz que a receita
+está fora e que o resto continua valendo.
+
+> ⭐ **A pergunta que generaliza:** diante de um resultado vazio, *provei que
+> está vazio, ou só constatei que veio vazio?* Antes de acreditar no parser,
+> olhe a resposta CRUA. Um `[]` que veio de 401 e um `[]` que veio de "não
+> houve venda" são a mesma variável em memória e coisas opostas no mundo.
+
+> ⚠️ **Corolário de infra:** integração de terceiro que pode falhar **precisa
+> de um estado de erro visível**. "Degradar sem derrubar o painel" é certo;
+> "degradar sem contar a ninguém" é mentira com cara de dado.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
