@@ -1097,8 +1097,77 @@ está fora e que o resto continua valendo.
 
 ---
 
+## 33. ⛔⛔⛔ SETE LENTES, ZERO ACHADO — e o PRIMEIRO LOTE tinha quatro defeitos
+
+**Onde:** FALTA, 2026-08-06, na revisão adversarial que o operador exigiu como
+condição de entrega (*"não aceito drifting de copy mais hein"*).
+
+**O que eu fiz certo, e por isso a lição dói.** O espaço de copy do agente é
+finito — 288 + 288 + 24 = **600 falas**. Não amostrei: enumerei as 600. Escrevi
+**sete lentes novas**, de fora do agente, depois da copy, justamente para não
+repetir o vício de linter que valida o que o autor já pensou. Elas acharam
+cinco defeitos reais, inclusive dois graves: a receita que abria com sintagma
+nominal sem verbo em **288 de 288** combinações, e 60 falas estourando o teto
+que o sorteio só escondia. Corrigi, remedi, e o painel ficou todo verde:
+
+```
+600 falas, 7 lentes            -> 0 achado
+linter próprio, 2.400 sorteios -> 0 ERRO, 0 aviso
+gates, deíticos, teto de fala  -> exit 0
+```
+
+**Declarei a revisão concluída.** Aí gerei **um** lote de entrega — e o prompt
+saiu com quatro defeitos:
+
+| defeito | como saía |
+|---|---|
+| português cru no prompt em inglês | `pours a thin steady stream over the peça anatômica` |
+| dois verbos finitos na mesma oração | `the moulded shaft lies folded down against the base changes on camera` |
+| ponto duplo nos quatro blocos | `not resembling any famous person..` |
+| plural de elenco com ela sozinha | `the wall behind them` + `She is the only person in the frame` |
+
+**A causa:** as sete lentes mediam a **FALA**. Nenhuma media o **BLOCO**. E o
+que vai para o Veo é o bloco. Eu tinha construído um aparato de medição
+impecável em cima de **uma das duas metades do produto**, e o verde dele me
+convenceu de que o produto inteiro estava medido.
+
+> ⛔ **A regra:** *cobertura de lente não é qualidade — é cobertura.* Antes de
+> chamar uma revisão de completa, **listar o que a revisão NÃO olhou**. Se essa
+> lista não existir, a revisão não terminou; ela só terminou onde eu parei.
+
+> ⭐ **E o teste que expõe isso em 30 segundos: GERE UM LOTE E LEIA.** Não o
+> `resumo_pt`, não as falas — o bloco inteiro, como o operador vai colar no
+> gerador. Os quatro defeitos eram visíveis a olho nu na primeira leitura. Isto
+> é a §30 outra vez (*"conferi os IMAGE e declarei pronto sem abrir um TAKE"*),
+> num disfarce mais convincente: agora eu tinha números.
+
+### ⛔⛔ E a lente nova nasceu cega — na mesma hora em que a escrevi
+
+Escrevi a **FA10** para pegar o defeito nº2. Ela checava se a string montada
+continha `"%s, changes on camera" % antes`. Reinjetei o defeito original
+(`antes = "the moulded shaft lies folded down"`) e **ela passou**: a vírgula
+continuava no lugar. Ela media a **FORMA do encaixe**, nunca a **NATUREZA do
+que encaixou** — que é literalmente o vício que ela existia para pegar. Agora
+mede o campo, com regex de verbo finito que **ignora particípio de propósito**
+(`hanging`, `lying` são as formas que *podem* estar ali).
+
+> ⛔ **Corolário, e ele é o mais importante desta seção:** **zero achado num
+> motor já corrigido não distingue lente boa de lente morta.** Uma lente nova
+> só está provada quando o defeito que a motivou é **reinjetado** e ela grita.
+> Fiz isso com os quatro, mais um quinto (o mesmo defeito no outro prop): as
+> cinco acusaram, o motor corrigido passou limpo. **Sem esse passo, eu teria
+> commitado duas lentes decorativas e o registro escrito de que elas funcionam.**
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
+- [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
+      gerador — não o `resumo_pt`, não só as falas (§33). Os defeitos de prompt
+      não aparecem em nenhum medidor de copy porque nenhum medidor de copy olha
+      para lá
+- [ ] **Lente nova? Reinjete o defeito que a motivou e veja-a gritar** (§33).
+      Zero achado num motor já corrigido não distingue lente boa de lente morta
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
 - [ ] **400 sorteios** pelas 5 páginas, `sortear → montar → lint`, **0 ERRO medido**
 - [ ] `python funil-organico/medir_teto_fala.py --curva --motor <nome>` —
