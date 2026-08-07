@@ -260,7 +260,7 @@ PROPS = [
      "nome": "geoduck",
      "img": "a large geoduck clam, its long siphon neck hanging slack and "
             "folded down over her fingers",
-     "antes": "the long siphon neck hangs slack and folded down",
+     "antes": "the long siphon neck, hanging slack and folded down",
      "depois": "the same siphon neck has drawn up long and straight, standing "
                "clear of her hand, no thicker than before",
      "curto": "geoduck"},
@@ -268,10 +268,14 @@ PROPS = [
      "nome": "peça anatômica",
      "img": "a life-size anatomical cross-section model of the male pelvis in "
             "moulded plastic, the shaft lying folded down against the base",
-     "antes": "the moulded shaft lies folded down against the base",
+     "antes": "the moulded shaft, lying folded down against the base",
      "depois": "the same moulded shaft has risen and extended straight out "
                "from the base, the same thickness as before",
-     "curto": "peça anatômica"},
+     # ⛔⛔ ESTE CAMPO ENTRA NO TAKE EM INGLES — era "peça anatômica" e o
+     # prompt saia com *"pours a thin steady stream over the peça anatômica"*.
+     # O campo `nome` (que e' PT) serve ao painel e ao resumo; o `curto` serve
+     # ao PROMPT, e sao coisas diferentes.
+     "curto": "anatomical model"},
 ]
 
 # ⚠️ A cena 3 pede o par GRANDE do prop — é o payoff, e ele tem de ser
@@ -286,7 +290,12 @@ PROPS_GRANDES = {
 # ⭐ A ALTERNATIVA, PRONTA PARA TROCA DE UMA LINHA. O operador escolheu o morph
 # VISÍVEL ciente do risco; se o gerador recusar, esta constante põe a mudança
 # escondida dentro do jato, que é a forma que passou no RESSURREICAO.
-MORPH_VISIVEL = ("As the liquid runs over it, %(antes)s changes on camera: "
+# ⛔ A VIRGULA DEPOIS DE %(antes)s NAO E' ENFEITE. O campo era uma ORACAO com
+# verbo finito ("the moulded shaft LIES folded down...") encaixada num slot de
+# sintagma nominal, e o prompt saia com dois verbos brigando: *"the moulded
+# shaft lies folded down against the base changes on camera"*. Agora o campo
+# `antes` e' sintagma nominal + participio, entre virgulas.
+MORPH_VISIVEL = ("As the liquid runs over it, %(antes)s, changes on camera: "
                  "%(depois)s. The change happens in one continuous take, with "
                  "no cut.")
 MORPH_OCULTO = ("The falling liquid covers it completely for a moment. When "
@@ -451,7 +460,10 @@ ANTICELEB = ("not resembling any famous person, not a celebrity")
 CAUDA = ("Slight sensor grain, soft focus, raw iPhone front camera aesthetic. "
          "No subtitles, no captions, no burned-in text, no watermark.")
 
-BANDEIRA = " A small US flag sticker is stuck on the wall behind them."
+# ⚠️ "in the background", nao "behind them": a cena 2 tem UMA pessoa em
+# quadro, e o plural saia contradizendo o "She is the only person in the frame"
+# da mesma frase.
+BANDEIRA = " A small US flag sticker is stuck on the wall in the background."
 
 # ⛔ O que está na bancada NÃO se mexe. Sem esta trava o Veo inventa mãos
 # mexendo em potes ao fundo e a continuidade entre os blocos de 8s morre.
@@ -876,7 +888,13 @@ def montar(spec):
         "prop_grande": PROPS_GRANDES[prop["id"]], "prop_curto": prop["curto"],
         "sub": sub["nome"], "vaso": met["vaso"], "acao": met["acao"],
         "com_img": com["img"], "raro_img": raro["img"],
-        "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB),
+        # ⚠️ `.rstrip(".")` — os quatro blocos escrevem "%(anti)s." e o
+        # ANTICELEB_BELA (compartilhado) ja' termina em ponto: saia
+        # *"not resembling any famous person.."* nos quatro. Normalizar aqui e'
+        # melhor que tirar o ponto do template, que os outros agentes usam sem
+        # ponto proprio.
+        "anti": (sc.ANTICELEB_BELA if spec.get("bela")
+                 else ANTICELEB).rstrip("."),
         "cauda": CAUDA, "band": band,
         "morph": MORPH % {"antes": prop["antes"], "depois": prop["depois"]},
         "idade": ref["idade"], "etnia": spec["etnia"], "marca": ref["marca"],
@@ -1069,6 +1087,80 @@ def _fa_duas(spec, blocos, achados):
                                 "mais visível que existe"))
 
 
+# ⛔⛔ FA8 — A LENTE QUE FALTAVA, e a razao dela esta' escrita aqui para nao se
+# perder: a revisao adversarial de 2026-08-06 varreu as 600 falas com sete
+# lentes e devolveu ZERO. Ai eu gerei UM lote de entrega e o prompt trouxe
+# QUATRO defeitos que nenhuma delas podia ver — porque todas mediam a FALA, e
+# nenhuma media o BLOCO:
+#   · *"pours a thin steady stream over the peça anatômica"* — portugues cru
+#     dentro do TAKE em ingles, do rotulo de painel usado como termo de prompt;
+#   · *"the moulded shaft lies folded down against the base changes on
+#     camera"* — dois verbos finitos brigando, de encaixar oracao em slot de
+#     sintagma nominal;
+#   · *"not resembling any famous person.."* — ponto duplo nos quatro blocos;
+#   · *"the wall behind them"* numa cena que diz, na mesma frase, que ela e' a
+#     unica pessoa em quadro.
+# Nenhum e' sutil. Todos sao mecanicos e verificaveis — ou seja, sao exatamente
+# o que o runbook manda mandar para o codigo.
+_PT_NO_PROMPT = re.compile(r"[áàâãéêíóôõúüçÁÀÂÃÉÊÍÓÔÕÚÜÇ]")
+
+
+def _fa_bloco_limpo(spec, blocos, achados):
+    """FA8 — o bloco vai para o Veo: ingles, pontuacao sa, elenco coerente."""
+    for nome, txt in blocos.items():
+        m = _PT_NO_PROMPT.search(txt)
+        if m:
+            i = max(0, m.start() - 40)
+            achados.append(("ERRO", "FA8: %s tem PORTUGUES no prompt (…%s…)"
+                            % (nome, txt[i:m.start() + 20])))
+        if ".." in txt.replace("...", ""):
+            achados.append(("ERRO", "FA8: %s tem ponto duplo" % nome))
+        # plural de elenco numa cena declaradamente de uma pessoa so'
+        if "only person in the frame" in txt and re.search(
+                r"\bbehind them\b|\bbetween them\b|\bthey are\b", txt, re.I):
+            achados.append(("ERRO", "FA8: %s diz que ela esta' SOZINHA e usa "
+                                    "plural de elenco na mesma frase" % nome))
+
+
+# ⚠️ Verbo FINITO em ingles no estado ANTES. O campo ocupa slot de sujeito
+# ("%(antes)s, changes on camera") — se ele proprio conjugar, o prompt sai com
+# dois verbos brigando pela mesma oracao.
+# ⛔ A forma participial (`hanging`, `lying`) e' justamente a que PODE estar
+# ali, entao o padrao ignora `-ing` de proposito.
+_VERBO_FINITO = re.compile(
+    r"\b(hangs?|lies|lie|sits?|rests?|stands?|is|are|was|were|has|have|"
+    r"points?|droops?|falls?|leans?|curls?)\b", re.I)
+
+
+def _fa_morph_gramatical(spec, blocos, achados):
+    """FA10 — o morph e' a cena inteira; e o estado ANTES e' SINTAGMA NOMINAL.
+
+    ⛔⛔ ESTA LENTE JA' NASCEU CEGA UMA VEZ, na mesma hora em que foi escrita.
+    A primeira versao checava se a string montada continha
+    `"%s, changes on camera" % antes` — ou seja, checava a VIRGULA. Reinjetei o
+    defeito original (`antes` = "the moulded shaft lies folded down") e ela
+    PASSOU, porque a virgula continuava no lugar: o prompt saia agramatical e a
+    lente dizia limpo. Ela media a FORMA do encaixe, nunca a NATUREZA do que
+    encaixou. Agora mede o campo."""
+    antes, depois = spec["prop"]["antes"], spec["prop"]["depois"]
+    m = _VERBO_FINITO.search(antes)
+    if m:
+        achados.append(("ERRO", "FA10: o estado ANTES do prop %r conjuga "
+                                "(%r) — ele entra como SUJEITO de 'changes on "
+                                "camera' e o prompt fica com dois verbos"
+                        % (spec["prop"]["id"], m.group(0))))
+    t = blocos["TAKE 01/03"]
+    if MORPH is MORPH_VISIVEL:
+        if ("%s, changes on camera" % antes) not in t:
+            achados.append(("ERRO", "FA10: o morph nao encaixa o estado ANTES "
+                                    "entre virgulas"))
+        if depois not in t.split("changes on camera:", 1)[-1]:
+            achados.append(("ERRO", "FA10: o estado DEPOIS nao vem apos os "
+                                    "dois-pontos do morph"))
+    elif depois not in t:
+        achados.append(("ERRO", "FA10: morph oculto sem o estado DEPOIS"))
+
+
 def _sentencas(t):
     return [x.strip() for x in re.split(r"(?<=[.!?])\s+", t) if x.strip()]
 
@@ -1127,7 +1219,7 @@ def lint(spec, blocos):
                                 "do que se trata" % (i, sents[0][:46])))
 
     for extra in (_fa_sem_homem, _fa_prop, _fa_morph, _fa_buraco, _fa_raro,
-                  _fa_duas):
+                  _fa_duas, _fa_bloco_limpo, _fa_morph_gramatical):
         extra(spec, blocos, ach)
     return ach
 
@@ -1139,8 +1231,10 @@ def resumo_pt(spec):
             "e a peça que falta só é dita. Cena 3: as duas — uma com %s grande "
             "e ereto, a outra com o copo. Três cenas de 8s."
             % (spec["etnia"], r["idade"], m["familia"], spec["substancia"]["nome"],
-               p["curto"], spec["metodo"]["curto"], spec["comum"]["nome"],
-               spec["raro"]["nome"], p["curto"]))
+               # o resumo e' PT: usa "nome". O campo "curto" agora e' o termo
+               # INGLES que vai para o prompt, e aqui ele nao pode aparecer.
+               p["nome"], spec["metodo"]["curto"], spec["comum"]["nome"],
+               spec["raro"]["nome"], p["nome"]))
 
 
 def nova_fala(spec, cena, rng):
