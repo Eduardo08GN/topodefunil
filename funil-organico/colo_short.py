@@ -317,9 +317,12 @@ CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 # ⚠️ Lista EXPLICITA, nunca "tudo que nao e' branco": e' a mesma correcao que o
 # CLEAN V2 pagou em campo (travou `escura` e recebeu um Asian American).
 PELE_ETNIAS = {
-    "escura": ("Black American", "West African", "Jamaican American",
-               "Caribbean American", "Creole American"),
-    "clara": ("white American", "Cajun American"),
+    # ⚠️ Mexican American e Cuban American ficam FORA das duas listas de
+    # proposito, exatamente como no TRIO: a trava de pele filtra por elas, e
+    # forcar uma classificacao produziria o erro que o CLEAN V2 pagou em
+    # campo (travou `escura` e recebeu um Asian American).
+    "escura": ("Black American",),
+    "clara": ("white American",),
 }
 PELE_TRAVAVEL = True
 
@@ -333,205 +336,517 @@ def _pele_de(etnia):
 
 
 MUNDOS = [
-    # ---- a fonte: home office americano ------------------------------------
-    {"id": "escritorio_casa", "selo": "V", "familia": "americana",
+    # ---- brooklyn ----
+    {"id": "brooklyn", "selo": "N", "familia": "brooklyn",
+     "etnias": ["white American", "Black American"],
+     "sala": "the front parlor of a Brooklyn brownstone apartment, a worn "
+             "velvet armchair set against the exposed brick wall, a tall "
+             "sash window at frame-right with a black fire escape and the "
+             "plain brick wall of the building across the street beyond, "
+             "small potted plants crowded on the sill where the sun comes "
+             "in",
+     "sala_c": "the same brownstone parlor",
+     "banc": "the narrow galley kitchen of the same brownstone apartment, "
+             "a tiled wall and open shelves of glass jars behind her, the "
+             "same sash-window light reaching down the hall",
+     "sup_a": "a narrow stainless steel counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped ribbed tank top with high-waisted vintage jeans",
+          "cropped tank"],
+         ["%s bias-cut satin slip dress with thin straps and bare shoulders",
+          "slip dress"],
+         ["%s cropped baby tee tucked into a denim mini skirt",
+          "baby tee"],
+         ["%s tube top with hip-slung cargo pants slung at the hips",
+          "tube top"],
+         ["%s fine-knit mesh long-sleeve crop top with a leather mini skirt",
+          "mesh crop"],
+     ],
+     "cores": ["black", "washed burgundy", "bone white", "olive green"],
+     "luz": "Hard afternoon sun cutting in slanted bars through the tall "
+            "sash window at frame-right.",
+     "luz_c": "hard slanted sunlight",
+     "audio": "distant traffic, a subway rumbling",
+     },
+    # ---- jersey ----
+    {"id": "jersey", "selo": "N", "familia": "jersey",
      "etnias": ["white American"],
-     "sala": "a home office corner of a bright American house, a tall wooden "
-             "bookshelf packed with books behind her, three framed "
-             "certificates and a small United States flag on the shelf above, "
-             "a window with a leafy plant at frame-right",
-     "sala_c": "the same home office corner",
-     "banc": "the kitchen of the same bright American house, pale cabinets and "
-             "a window behind her, a wooden chopping board at the side",
-     "sup_a": "a butcher-block kitchen counter", "sup": "counter",
-     "traje": "%s fitted ribbed tank top",
-     "curto": "ribbed tank",
-     "cores": ["deep green", "black", "cream", "dusty blue"],
-     "luz": "Bright even daylight from the window at frame-right.",
-     "luz_c": "bright window daylight",
-     "audio": "quiet room tone"},
-    {"id": "varanda_envidracada", "selo": "N", "familia": "americana",
+     "sala": "the carpeted den of a New Jersey split-level house, a big "
+             "plaid sectional sofa along the wood-paneled wall, a sliding "
+             "glass door at frame-left standing open onto a small deck "
+             "with an above-ground pool out of focus beyond, a brass floor "
+             "lamp in the corner",
+     "sala_c": "the same paneled den",
+     "banc": "the kitchen up the short flight of the same split-level, oak "
+             "cabinets and a window over the sink looking out at the same "
+             "deck",
+     "sup_a": "a speckled laminate kitchen island",
+     "sup": "island",
+     "trajes": [
+         ["%s velour tracksuit jacket unzipped over a cropped top with hip-slung track pants",
+          "velour tracksuit"],
+         ["%s halter-neck bodycon mini dress",
+          "bodycon dress"],
+         ["%s cropped hoodie cut short above tight high-waisted leggings",
+          "cropped hoodie"],
+         ["%s strappy scoop-neck bodysuit with high-waisted denim shorts",
+          "strappy bodysuit"],
+         ["%s fitted off-the-shoulder crop top with hip-slung flare jeans",
+          "off-shoulder crop"],
+     ],
+     "cores": ["hot pink", "white", "black", "gold"],
+     "luz": "Warm low light spilling in through the open sliding door, the "
+            "paneled corners of the room falling into deep shadow.",
+     "luz_c": "warm low door light",
+     "audio": "a window fan humming, cicadas",
+     },
+    # ---- boston ----
+    {"id": "boston", "selo": "N", "familia": "boston",
      "etnias": ["white American"],
-     "sala": "a glassed-in sun porch of an American house, potted ferns "
-             "crowding the rail behind her, a low bookshelf at frame-left and "
-             "a green lawn out of focus beyond the glass",
-     "sala_c": "the same sun porch",
-     "banc": "the kitchen just inside the same house, open shelves of glass "
-             "jars behind her and the sun porch out of focus beyond",
-     "sup_a": "a white kitchen counter", "sup": "counter",
-     "traje": "%s cropped cotton tank top",
-     "curto": "cotton tank",
-     "cores": ["white", "sage green", "soft grey", "pale blue"],
-     "luz": "Soft diffused daylight through the glass, low contrast.",
-     "luz_c": "soft diffused daylight",
-     "audio": "birds outside, quiet room tone"},
-
-    # ---- montanha dos Apalaches --------------------------------------------
-    {"id": "apalache_cabana", "selo": "N", "familia": "apalache",
+     "sala": "the second-floor front room of a Boston triple-decker, a "
+             "padded bow-window seat built into the tall bay window with "
+             "white wainscoting behind it and a cast-iron radiator at one "
+             "end, wet slate rooftops and brick chimneys of the block "
+             "filling the panes and a flat pale sky washing the room",
+     "sala_c": "the same bow-window seat",
+     "banc": "the kitchen at the back of the same triple-decker, painted "
+             "cabinets and a deep porcelain sink behind her, the wooden "
+             "back-porch stairs through the window",
+     "sup_a": "a chipped porcelain-topped kitchen table",
+     "sup": "table",
+     "trajes": [
+         ["%s cable-knit crop sweater with a pleated tennis skirt",
+          "crop sweater"],
+         ["%s ribbed turtleneck cropped at the ribs with a corduroy mini skirt",
+          "cropped turtleneck"],
+         ["%s cropped sleeveless polo shirt with a plaid wool mini skirt",
+          "cropped polo"],
+         ["%s cropped rugby-stripe top with high-waisted running shorts",
+          "rugby crop"],
+         ["%s waffle-knit thermal top cropped above the navel with bike shorts",
+          "cropped thermal"],
+     ],
+     "cores": ["navy", "heather grey", "cream", "deep crimson"],
+     "luz": "Flat cool overcast light off the pale sky, almost no shadow.",
+     "luz_c": "flat overcast light",
+     "audio": "a radiator ticking, quiet street",
+     },
+    # ---- nova_inglaterra ----
+    {"id": "nova_inglaterra", "selo": "N", "familia": "nova_inglaterra",
      "etnias": ["white American"],
-     "sala": "the front room of a log cabin in the Appalachian woods, bunches "
-             "of dried herbs hanging from a beam behind her and rows of glass "
-             "jars on a plank shelf, dense green forest through the window",
-     "sala_c": "the same cabin front room",
-     "banc": "the kitchen of the same cabin, a black cast-iron stove behind "
-             "her and more hanging herbs along the beam",
-     "sup_a": "a scrubbed pine table", "sup": "table",
-     "traje": "%s cotton work shirt knotted at the waist",
-     "curto": "work shirt",
-     "cores": ["faded blue", "dark green", "rust brown", "cream"],
-     "luz": "Soft green forest daylight, low contrast.",
-     "luz_c": "soft forest daylight",
-     "audio": "insects, wind in the leaves"},
-
-    # ---- sul dos EUA --------------------------------------------------------
-    {"id": "sul_varanda", "selo": "N", "familia": "sulista",
+     "sala": "the keeping room of an old New England farmhouse, a "
+             "black-painted Windsor chair on a hooked rug over wide pine "
+             "floorboards, a deep brick hearth with a cast-iron kettle on "
+             "its crane and a low fire in it behind the chair, maple "
+             "branches in full leaf outside the small-paned window at "
+             "frame-left",
+     "sala_c": "the same farmhouse keeping room",
+     "banc": "the kitchen through the doorway of the same farmhouse, a dry "
+             "sink and a shelf of stoneware crocks behind her, the same "
+             "small-paned windows along the wall",
+     "sup_a": "a worn soapstone counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s gingham crop top with denim cut-offs",
+          "gingham crop"],
+         ["%s short cotton sundress with thin straps and a full skirt",
+          "short sundress"],
+         ["%s flannel shirt knotted high above the waist over a fitted camisole with a short chambray skirt",
+          "knotted flannel"],
+         ["%s cotton eyelet crop top with high-waisted linen shorts",
+          "eyelet crop"],
+         ["%s fitted crop top under cut-off denim overall shorts",
+          "overall shorts"],
+     ],
+     "cores": ["barn red", "soft indigo", "buttermilk white", "seafoam green"],
+     "luz": "Warm firelight off the low hearth mixed with pale daylight "
+            "from the small-paned window.",
+     "luz_c": "firelight and pale daylight",
+     "audio": "a crackling fire, birdsong",
+     },
+    # ---- louisiana ----
+    {"id": "louisiana", "selo": "N", "familia": "louisiana",
+     "etnias": ["Black American", "white American"],
+     "sala": "the front room of a Louisiana shotgun house, a worn velvet "
+             "armchair beside tall shuttered French doors, a slow ceiling "
+             "fan turning above her and a live oak draped with Spanish "
+             "moss out on the street beyond",
+     "sala_c": "the same shotgun house room",
+     "banc": "the narrow kitchen at the back of the same shotgun house, "
+             "beadboard cabinets and a heavy cast-iron skillet by the "
+             "window, the shuttered French doors of the front room visible "
+             "down the hall",
+     "sup_a": "a scarred cypress-wood counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped eyelet camisole with a short seersucker skirt",
+          "eyelet camisole"],
+         ["%s off-the-shoulder crop top with a short flared skirt",
+          "off-shoulder crop"],
+         ["%s bias-cut slip dress with thin straps, cut above the knee",
+          "slip dress"],
+         ["%s lace-trimmed corset top with high-waisted cotton shorts",
+          "corset top"],
+         ["%s strapless cotton romper cut short above the knee",
+          "short romper"],
+     ],
+     "cores": ["cream", "deep magenta", "faded blue", "moss green"],
+     "luz": "Warm humid afternoon light through the shutters, slatted "
+            "shadows falling across the floor.",
+     "luz_c": "warm slatted shutter light",
+     "audio": "ceiling fan hum, cicadas outside",
+     },
+    # ---- atlanta ----
+    {"id": "atlanta", "selo": "N", "familia": "atlanta",
      "etnias": ["Black American"],
-     "sala": "the covered front porch of a Southern wooden house, a painted "
-             "porch swing and a hanging fern behind her, tall green trees and "
-             "a quiet street beyond the rail",
-     "sala_c": "the same front porch",
-     "banc": "the kitchen just inside the same house, warm painted cabinets "
-             "behind her and a window over the sink",
-     "sup_a": "a worn wooden kitchen counter", "sup": "counter",
-     "traje": "%s fitted cotton tank top",
-     "curto": "cotton tank",
-     "cores": ["burnt orange", "white", "deep teal", "mustard"],
-     "luz": "Warm late afternoon light, soft shadows.",
+     "sala": "the living room of a modern Atlanta townhouse, a low grey "
+             "sectional sofa against an exposed brick wall, a tall "
+             "monstera in a woven basket at frame-left and "
+             "floor-to-ceiling windows showing green treetops over the "
+             "city",
+     "sala_c": "the same townhouse living room",
+     "banc": "the open kitchen of the same townhouse, matte black cabinets "
+             "and a subway-tile backsplash behind her, the grey sectional "
+             "and the brick wall out of focus beyond",
+     "sup_a": "a white quartz kitchen island",
+     "sup": "island",
+     "trajes": [
+         ["%s cropped ribbed workout tank with high-waisted leggings",
+          "workout tank"],
+         ["%s cropped hoodie ending above the waist with matching bike shorts",
+          "cropped hoodie"],
+         ["%s satin camisole with a low back and a short pencil skirt",
+          "satin camisole"],
+         ["%s sheer long-sleeve mesh crop top over a fitted sports top with cropped joggers",
+          "mesh crop"],
+         ["%s one-shoulder knit crop top with a short faux-leather skirt",
+          "one-shoulder knit"],
+     ],
+     "cores": ["black", "warm caramel", "ivory", "deep plum"],
+     "luz": "Cool bright daylight from the tall windows, crisp and even.",
+     "luz_c": "cool tall-window daylight",
+     "audio": "faint city traffic hum",
+     },
+    # ---- nashville ----
+    {"id": "nashville", "selo": "N", "familia": "nashville",
+     "etnias": ["white American"],
+     "sala": "the front room of a Nashville craftsman bungalow, a worn tan "
+             "leather bench under a wide window with wooden blinds, a "
+             "stone hearth with a rough cedar mantel behind her and an "
+             "acoustic guitar on a stand in the corner",
+     "sala_c": "the same bungalow front room",
+     "banc": "the kitchen of the same bungalow, painted shaker cabinets "
+             "and open pine shelves behind her, the stone hearth and cedar "
+             "mantel showing through the doorway",
+     "sup_a": "a worn oak farmhouse table",
+     "sup": "table",
+     "trajes": [
+         ["%s gingham crop top knotted high at the ribs with denim cut-off shorts",
+          "gingham crop"],
+         ["%s fringed suede halter top with a denim mini skirt",
+          "fringed halter"],
+         ["%s pearl-snap western shirt worn open over a cropped rib tank with high-waisted jeans",
+          "western shirt"],
+         ["%s cropped leather jacket over a fitted lace bodysuit with a short corduroy skirt",
+          "leather jacket"],
+         ["%s short tiered denim dress with a square neckline",
+          "tiered dress"],
+     ],
+     "cores": ["off-white", "rust red", "dusty gold", "black"],
+     "luz": "Soft grey-blue daylight through the wide window, flat and "
+            "even.",
+     "luz_c": "flat grey-blue daylight",
+     "audio": "a quiet street, wind chimes",
+     },
+    # ---- miami ----
+    {"id": "miami", "selo": "N", "familia": "miami",
+     "etnias": ["Cuban American", "Black American"],
+     "sala": "the living room of a pastel Miami apartment, a rattan "
+             "peacock chair against a wall of jalousie windows, a polished "
+             "terrazzo floor and tall palms swaying just outside the glass",
+     "sala_c": "the same pastel living room",
+     "banc": "the galley kitchen of the same apartment, mint-green tile "
+             "behind her and a small stovetop coffee pot on the burner, "
+             "the terrazzo floor running in from the living room",
+     "sup_a": "a tiled breakfast bar",
+     "sup": "bar",
+     "trajes": [
+         ["%s halter crop top with high-waisted linen shorts",
+          "halter crop"],
+         ["%s cut-out bodysuit with a wrap mini skirt",
+          "cutout bodysuit"],
+         ["%s ruched bandeau top with high-waisted white jeans",
+          "bandeau top"],
+         ["%s cropped tie-front shirt with a short ruffled rumba skirt",
+          "tie-front shirt"],
+         ["%s strappy bodycon mini dress",
+          "bodycon mini"],
+     ],
+     "cores": ["hot coral", "white", "aqua blue", "lime green"],
+     "luz": "Hard bright sun bounced off the pale walls, clean and "
+            "high-key.",
+     "luz_c": "bright high-key sun",
+     "audio": "palm fronds rustling, distant gulls",
+     },
+    # ---- california ----
+    {"id": "california", "selo": "N", "familia": "california",
+     "etnias": ["white American", "Mexican American"],
+     "sala": "the living room of a Southern California bungalow with pale "
+             "plaster walls and a jute rug, a low rattan armchair with "
+             "flat canvas cushions, a hanging macrame planter and a row of "
+             "potted ferns along the sill, a wide picture window at "
+             "frame-left opening onto a sun-bleached patio",
+     "sala_c": "the same bungalow living room",
+     "banc": "the kitchen of the same bungalow, pale open shelving stacked "
+             "with ceramic bowls behind her and the same patio glare "
+             "coming through the door",
+     "sup_a": "a pale concrete counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped ribbed tank with high-waisted linen shorts",
+          "ribbed crop"],
+         ["%s thin-strapped slip dress cut short above the knee",
+          "slip dress"],
+         ["%s triangle bikini top under an open gauze shirt, with a short sarong tied at the hip",
+          "gauze shirt"],
+         ["%s cropped terry-cloth polo with matching micro shorts",
+          "terry set"],
+         ["%s low-cut halter crop top with a short wrap skirt",
+          "halter crop"],
+     ],
+     "cores": ["white", "sand beige", "faded olive", "black"],
+     "luz": "Flat bright coastal daylight, soft-edged and even, from the "
+            "picture window at frame-left.",
+     "luz_c": "flat coastal daylight",
+     "audio": "a wind chime, distant gulls",
+     },
+    # ---- arizona ----
+    {"id": "arizona", "selo": "N", "familia": "arizona",
+     "etnias": ["Mexican American", "white American"],
+     "sala": "the front room of an Arizona adobe house with thick "
+             "ochre-plastered walls, a low carved wooden bench heaped with "
+             "striped wool blankets, a beehive corner fireplace at "
+             "frame-right and a deep-set window dropping hard desert sun "
+             "across the saltillo tile floor",
+     "sala_c": "the same adobe front room",
+     "banc": "the kitchen of the same adobe house, clay jars and dried "
+             "chile bundles on an open shelf behind her, the same deep-set "
+             "window looking out on red rock and cactus",
+     "sup_a": "a hand-painted tile counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s off-shoulder crop blouse with embroidered trim and a short tiered skirt",
+          "crop blouse"],
+         ["%s bandeau top with hip-slung canvas shorts",
+          "bandeau top"],
+         ["%s square-neck crop top tucked into a short pleated skirt",
+          "square crop"],
+         ["%s short button-front sundress worn open at the throat, cut well above the knee",
+          "short sundress"],
+         ["%s crochet crop top with high-waisted shorts",
+          "crochet crop"],
+     ],
+     "cores": ["turquoise", "terracotta", "cream", "black"],
+     "luz": "Hard desert sun through the deep-set window, shadows cut "
+            "sharp on the tile.",
+     "luz_c": "hard desert sun",
+     "audio": "dry wind, a distant truck",
+     },
+    # ---- vegas ----
+    {"id": "vegas", "selo": "N", "familia": "vegas",
+     "etnias": ["white American", "Mexican American"],
+     "sala": "the living room of a top-floor Las Vegas apartment with "
+             "glossy dark built-ins along the wall and a polished concrete "
+             "floor, a low grey sectional with a smoked-glass table in "
+             "front of her, a chrome floor lamp at frame-right and "
+             "floor-to-ceiling balcony glass behind showing low desert "
+             "rooftops",
+     "sala_c": "the same top-floor living room",
+     "banc": "the kitchen of the same top-floor apartment, glossy dark "
+             "cabinets and a stack of tumblers by the sink behind her, "
+             "light off the same balcony glass filling the room",
+     "sup_a": "a black quartz island",
+     "sup": "island",
+     "trajes": [
+         ["%s tight low-cut bodycon mini dress",
+          "bodycon mini"],
+         ["%s satin cami with thin straps and short satin shorts",
+          "satin cami"],
+         ["%s cropped mesh-panel top with a short leather skirt",
+          "mesh crop"],
+         ["%s sheer robe worn open over a bra top and high-cut shorts",
+          "sheer robe"],
+         ["%s one-shoulder bodysuit with a very short skirt",
+          "one-shoulder bodysuit"],
+     ],
+     "cores": ["black", "gold", "silver", "hot pink"],
+     "luz": "Cool even light bouncing off the balcony glass and the "
+            "polished floor.",
+     "luz_c": "cool bounced light",
+     "audio": "an air-conditioner, faint traffic",
+     },
+    # ---- texas ----
+    {"id": "texas", "selo": "N", "familia": "texas",
+     "etnias": ["white American", "Mexican American"],
+     "sala": "the den of a Texas ranch house with cedar beams overhead and "
+             "a rough stone fireplace behind her, a worn leather club "
+             "chair with a folded hide over the arm, a pair of dusty boots "
+             "on the plank floor and a screen door standing open onto dry "
+             "scrub at frame-left",
+     "sala_c": "the same ranch den",
+     "banc": "the kitchen of the same ranch house, a pine hutch stacked "
+             "with enamel plates and a cast-iron skillet behind her, the "
+             "same screen door letting the hot scrub light in",
+     "sup_a": "a thick mesquite butcher block",
+     "sup": "block",
+     "trajes": [
+         ["%s pearl-snap western shirt knotted high at the ribs with short denim cut-offs",
+          "knotted pearl-snap"],
+         ["%s bandana halter tied at the back with a short suede skirt",
+          "bandana halter"],
+         ["%s low-cut fitted tee tucked into short shorts with a tooled leather belt",
+          "fitted tee"],
+         ["%s fringed crop top with a short denim skirt",
+          "fringed crop"],
+         ["%s gingham tie-front top cropped at the ribs with high-waisted shorts",
+          "gingham tie-front"],
+     ],
+     "cores": ["washed indigo", "white", "scarlet", "black"],
+     "luz": "Warm low afternoon light coming flat through the open screen "
+            "door.",
      "luz_c": "warm afternoon light",
-     "audio": "cicadas, a screen door creaking"},
-    {"id": "sul_sala", "selo": "N", "familia": "sulista",
-     "etnias": ["Black American"],
-     "sala": "the sitting room of a Southern house, a wall of framed family "
-             "photographs behind her, a tall potted plant at frame-left and "
-             "lace curtains moving at the window",
-     "sala_c": "the same sitting room",
-     "banc": "the kitchen of the same house, a shelf of storage jars behind "
-             "her and a window with lace curtains",
-     "sup_a": "a laminate kitchen counter", "sup": "counter",
-     "traje": "%s ribbed knit top",
-     "curto": "knit top",
-     "cores": ["cream", "deep purple", "olive", "rust"],
-     "luz": "Soft filtered daylight through the curtains.",
-     "luz_c": "soft filtered daylight",
-     "audio": "quiet room tone, a clock ticking"},
-
-    # ---- Mexico / herbolaria ------------------------------------------------
-    {"id": "mexicana_patio", "selo": "N", "familia": "mexicana",
-     "etnias": ["Mexican American", "Hispanic American"],
-     "sala": "a shaded courtyard with thick adobe walls, rows of potted herbs "
-             "on a low ledge behind her and a climbing bougainvillea at the "
-             "corner, bright sun on the far wall",
-     "sala_c": "the same shaded courtyard",
-     "banc": "the open kitchen off the same courtyard, hanging bundles of "
-             "dried herbs and strings of dried red chiles behind her",
-     "sup_a": "a tiled kitchen counter", "sup": "counter",
-     "traje": "%s embroidered cotton blouse",
-     "curto": "embroidered blouse",
-     "cores": ["cream", "deep pink", "turquoise", "marigold yellow"],
-     "luz": "Bright bounced courtyard light, warm and soft.",
-     "luz_c": "warm courtyard light",
-     "audio": "birds in the courtyard, a far-off street"},
-
-    # ---- Caribe -------------------------------------------------------------
-    {"id": "caribe_varanda", "selo": "N", "familia": "caribenha",
-     "etnias": ["Caribbean American", "Jamaican American"],
-     "sala": "the verandah of a brightly painted wooden house, louvered "
-             "shutters in strong colour behind her, broad-leaved tropical "
-             "plants and hibiscus crowding the rail, bright sky beyond",
-     "sala_c": "the same verandah",
-     "banc": "the kitchen just inside the same house, open shelves of spice "
-             "jars behind her and bright light from the verandah door",
-     "sup_a": "a painted wooden counter", "sup": "counter",
-     "traje": "%s cropped cotton top",
-     "curto": "cotton top",
-     "cores": ["turquoise", "sun yellow", "white", "coral"],
-     "luz": "Bright island daylight in open shade, warm and clean.",
-     "luz_c": "bright open shade",
-     "audio": "birds, wind in the leaves"},
-
-    # ---- Leste asiatico -----------------------------------------------------
-    {"id": "asia_sala", "selo": "N", "familia": "asiatica",
-     "etnias": ["Korean American", "Chinese American", "Asian American"],
-     "sala": "a calm minimal sitting room, a low wooden shelf of ceramic jars "
-             "behind her, a paper screen at frame-left and a single tall plant "
-             "in the corner",
-     "sala_c": "the same sitting room",
-     "banc": "the kitchen of the same apartment, a wall of small wooden "
-             "drawers with brass pulls behind her",
-     "sup_a": "a pale wood kitchen counter", "sup": "counter",
-     "traje": "%s linen wrap top",
-     "curto": "wrap top",
-     "cores": ["natural beige", "soft grey", "deep blue", "off-white"],
-     "luz": "Even cool daylight from a high window.",
-     "luz_c": "even cool daylight",
-     "audio": "a very quiet room, faint street noise"},
-    {"id": "asia_bambu", "selo": "N", "familia": "asiatica",
-     "etnias": ["Filipino American", "Vietnamese American"],
-     "sala": "an open-sided room with split-bamboo walls and a thatched roof, "
-             "woven pandan mats rolled at the side behind her, coconut palms "
-             "and bright sky beyond the open wall",
-     "sala_c": "the same open room",
-     "banc": "the cooking side of the same room, clay pots and woven baskets "
-             "on a shelf behind her",
-     "sup_a": "a split-bamboo counter", "sup": "counter",
-     "traje": "%s loose woven top",
-     "curto": "woven top",
-     "cores": ["natural cream", "pale blue", "deep red", "leaf green"],
-     "luz": "Bright shade under the thatch, warm bounced light.",
-     "luz_c": "bright shade",
-     "audio": "wind in the palms, birds"},
-
-    # ---- Sul da Asia --------------------------------------------------------
-    {"id": "sulasia_sala", "selo": "N", "familia": "sul_asiatica",
-     "etnias": ["South Asian American", "Indian American"],
-     "sala": "a sunlit room with a long shelf of brass and copper vessels "
-             "behind her, rows of small glass jars of coloured powders beside "
-             "them and a woven mat on the floor",
-     "sala_c": "the same sunlit room",
-     "banc": "the kitchen of the same house, brass vessels on an open shelf "
-             "behind her and a window with a green garden beyond",
-     "sup_a": "a polished stone counter", "sup": "counter",
-     "traje": "%s cotton kurta top",
-     "curto": "kurta top",
-     "cores": ["cream", "deep saffron", "olive green", "dusty rose"],
-     "luz": "Warm sunlight through a high window, soft edges.",
-     "luz_c": "warm window sunlight",
-     "audio": "a quiet room, birds outside"},
-
-    # ---- Africa Ocidental ---------------------------------------------------
-    {"id": "africa_patio", "selo": "N", "familia": "africana",
-     "etnias": ["West African", "Black American"],
-     "sala": "a swept earth courtyard with a mud-brick wall behind her, round "
-             "calabash bowls and clay pots set along the wall and the shade of "
-             "a broad mango tree falling across the ground",
-     "sala_c": "the same courtyard",
-     "banc": "the cooking shelter at the edge of the same courtyard, wide "
-             "shallow baskets of dried roots and leaves on a shelf behind her",
-     "sup_a": "a low carved wooden counter", "sup": "counter",
-     "traje": "%s wax-print cotton top",
-     "curto": "print top",
-     "cores": ["indigo and gold", "deep green and white", "orange and black",
-               "red and cream"],
-     "luz": "Warm open shade under the tree, soft and clean.",
-     "luz_c": "warm open shade",
-     "audio": "birds, wind in the mango leaves"},
-
-    # ---- Mediterraneo / Oriente Medio --------------------------------------
-    {"id": "mediterraneo_patio", "selo": "N", "familia": "mediterranea",
-     "etnias": ["Middle Eastern American", "Lebanese American"],
-     "sala": "a stone courtyard in deep shade, a pale plastered wall behind "
-             "her, a climbing grapevine over a trellis above and shallow "
-             "drying trays of herbs along a stone ledge",
-     "sala_c": "the same stone courtyard",
-     "banc": "the kitchen opening onto the same courtyard, shelves of glass "
-             "jars and open sacks of dried herbs behind her",
-     "sup_a": "a stone slab counter", "sup": "counter",
-     "traje": "%s collarless linen top",
-     "curto": "linen top",
-     "cores": ["off-white", "sand", "deep olive", "slate blue"],
-     "luz": "Cool courtyard shade with hot sun on the far wall.",
-     "luz_c": "cool courtyard shade",
-     "audio": "birds, a fountain somewhere"},
+     "audio": "cicadas, a screen door tapping",
+     },
+    # ---- apalache ----
+    {"id": "apalache", "selo": "N", "familia": "apalache",
+     "etnias": ["white American"],
+     "sala": "the front room of a hollow farmhouse in the Appalachian "
+             "mountains, a horsehair settee under a quilt pieced in small "
+             "squares, a fiddle and a hand-carved walking stick hanging on "
+             "the plank wall behind her, a rag rug over the wide "
+             "floorboards and a laurel-choked slope filling the window at "
+             "frame-left",
+     "sala_c": "the same farmhouse front room",
+     "banc": "the kitchen of the same hollow farmhouse, a punched-tin "
+             "jelly cupboard and a hand pump at the dry sink behind her, "
+             "the same laurel slope in the window",
+     "sup_a": "a battered oak kitchen table",
+     "sup": "table",
+     "trajes": [
+         ["%s gingham crop top knotted under the bust with cut-off denim shorts",
+          "gingham crop"],
+         ["%s thin cotton sundress cut short above the knee, straps slipped off the shoulders",
+          "short sundress"],
+         ["%s calico halter top tied behind the neck with cut-off denim shorts",
+          "calico halter"],
+         ["%s plaid flannel shirt worn open over a fitted cropped tank and frayed jean shorts",
+          "open flannel"],
+         ["%s cut-off denim shortalls buckled loose over a snug cropped tee, legs bare",
+          "denim shortalls"],
+     ],
+     "cores": ["faded red", "washed blue", "cream", "moss green"],
+     "luz": "Grey light off a wet hollow coming flat through the window, "
+            "cool and low-contrast.",
+     "luz_c": "flat hollow light",
+     "audio": "creek water, a hound barking",
+     },
+    # ---- meio_oeste ----
+    {"id": "meio_oeste", "selo": "N", "familia": "meio_oeste",
+     "etnias": ["white American"],
+     "sala": "the wood-panelled family room of a Midwestern farmhouse, a "
+             "brown corduroy sofa with a crocheted afghan folded over the "
+             "arm, a boxy wooden console cabinet at frame-left with a "
+             "ceramic pheasant on top, and a wide window behind the sofa "
+             "opening onto flat corn fields",
+     "sala_c": "the same panelled family room",
+     "banc": "the kitchen of the same Midwestern farmhouse, harvest-gold "
+             "cabinets and a window over the sink behind her, the same "
+             "corn fields flat beyond the glass",
+     "sup_a": "a wide steel-edged kitchen counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped cutoff sweatshirt slipping off one shoulder with denim shorts",
+          "cut sweatshirt"],
+         ["%s bandeau top with high-waisted denim shorts, shoulders and midriff bare",
+          "bandeau top"],
+         ["%s stretch bodysuit with a scooped neckline and a short pleated skirt",
+          "scooped bodysuit"],
+         ["%s sleeveless jersey crop top knotted at the hip over running shorts",
+          "jersey crop"],
+         ["%s thin-strap cotton camisole with the hem loose over jeans rolled low on the hips",
+          "strap camisole"],
+     ],
+     "cores": ["cream", "faded maroon", "navy blue", "butter yellow"],
+     "luz": "Low late-day sun raking in sideways over the fields, long "
+            "warm shadows across the panelling.",
+     "luz_c": "low raking sun",
+     "audio": "wind over fields, distant tractor",
+     },
+    # ---- chicago ----
+    {"id": "chicago", "selo": "N", "familia": "chicago",
+     "etnias": ["Black American", "white American"],
+     "sala": "the front room of a Chicago two-flat, a low velvet couch set "
+             "into a three-pane bay window, dark oak trim and a built-in "
+             "bookcase with leaded glass doors behind her, a cast-iron "
+             "radiator under the sill and the brick wall of the next "
+             "building close beyond the glass",
+     "sala_c": "the same bay-window front room",
+     "banc": "the galley kitchen of the same two-flat, painted cabinets "
+             "and the glazed back door onto the wooden rear stairs behind "
+             "her",
+     "sup_a": "a chipped white tile counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped hoodie cut off above the navel with high-waisted leggings",
+          "cropped hoodie"],
+         ["%s satin slip dress on thin straps, cut short above the knee",
+          "satin slip"],
+         ["%s fitted crop tank under an open oversized leather jacket, midriff bare, with low-slung wide-leg trousers",
+          "crop tank"],
+         ["%s bodycon knit mini dress with a bare back",
+          "mini dress"],
+         ["%s cropped puffer vest zipped over a thin long-sleeve top, midriff bare, with high-waisted jeans",
+          "puffer crop"],
+     ],
+     "cores": ["black", "deep burgundy", "silver grey", "ivory"],
+     "luz": "Cool blue north light bouncing off the brick wall next door, "
+            "soft and even.",
+     "luz_c": "cool north light",
+     "audio": "an el train, muffled traffic",
+     },
+    # ---- detroit ----
+    {"id": "detroit", "selo": "N", "familia": "detroit",
+     "etnias": ["Black American", "white American"],
+     "sala": "the living room of a Detroit brick bungalow, a tufted "
+             "leather armchair pulled up to a tiled fireplace, a wide "
+             "plaster arch through to the dining room behind her, a floor "
+             "lamp with a fringed shade throwing light in from frame-right "
+             "and a pale cold window over the front porch",
+     "sala_c": "the same bungalow living room",
+     "banc": "the kitchen of the same brick bungalow, painted steel "
+             "cabinets and the swinging door through to that same dining "
+             "room behind her, checkered vinyl underfoot",
+     "sup_a": "a boomerang-pattern formica dinette table",
+     "sup": "table",
+     "trajes": [
+         ["%s knotted jersey tee tied above the waist with track pants rolled low at the hip",
+          "knotted tee"],
+         ["%s off-the-shoulder knit top cropped above the navel with fitted jeans",
+          "off-shoulder knit"],
+         ["%s fitted sleeveless turtleneck cropped at the ribs with a wrap mini skirt",
+          "turtleneck crop"],
+         ["%s zip-front velour track top cropped at the ribs, unzipped at the chest, with hip-slung wide jeans",
+          "track top"],
+         ["%s sleeveless mini dress cut above the knee with a front zip pulled low at the chest",
+          "zip mini"],
+     ],
+     "cores": ["charcoal", "deep red", "off-white", "cobalt blue"],
+     "luz": "Warm lamplight indoors set against the pale cold daylight at "
+            "the window behind her.",
+     "luz_c": "warm indoor lamplight",
+     "audio": "furnace humming, a passing car",
+     },
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -571,85 +886,218 @@ FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
 # covinha, olho de cor incomum, sarda, falha entre os dentes da frente, malar
 # alto. ⛔ Nunca dente lascado, palpebra caida, pele castigada.
 NARRADORAS = [
-    {"idade": 27,
-     "corpo": "slim and toned, with a flat midriff",
-     "cabeca": "long wavy honey-blonde hair falling past her shoulders",
-     "marca": "a small dark beauty mark just above her lip"},
-    {"idade": 24,
-     "corpo": "lean and athletic, with defined shoulders",
-     "cabeca": "long dark hair pulled back into a high ponytail",
-     "marca": "striking pale green eyes and a light spray of freckles across "
-              "her nose"},
-    {"idade": 31,
-     "corpo": "slim, with a long neck and fine collarbones",
-     "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
-     "marca": "a small gap between her front teeth that shows when she smiles"},
-    {"idade": 26,
-     "corpo": "compact and athletic, with toned arms",
-     "cabeca": "tight natural curls kept short and close",
-     "marca": "high sharp cheekbones and a dark beauty spot on her right "
-              "cheekbone"},
-    {"idade": 29,
-     "corpo": "slender and long-limbed",
-     "cabeca": "straight black hair cut in a blunt glossy bob",
-     "marca": "full lips and a deep dimple in her left cheek"},
-    {"idade": 33,
-     "corpo": "toned and broad-shouldered, like a swimmer",
-     "cabeca": "long braids gathered over one shoulder",
-     "marca": "a small silver hoop in her left nostril and a wide bright smile"},
     {"idade": 25,
-     "corpo": "slim-hipped and wiry",
-     "cabeca": "thick copper-red hair falling loose past her shoulders",
-     "marca": "a dense spray of freckles over both cheeks and pale blue eyes"},
+     "cabeca": "long loose waves falling well past her shoulders",
+     "marca": "a tiny dark mole at the outer corner of her left eye",
+     "corpo": "a full hourglass shape with a very narrow waist, a heavy "
+              "round bust, a soft flat belly, broad curved hips and strong "
+              "shapely legs",
+     },
+    {"idade": 31,
+     "cabeca": "long spiral curls hanging loose down her back",
+     "marca": "a deep dimple that shows only in her right cheek",
+     "corpo": "tall and statuesque with wide hips and a long torso, a high "
+              "full chest, a firm smooth midriff, a deep round backside "
+              "and very long muscular legs",
+     },
+    {"idade": 22,
+     "cabeca": "a blunt glossy cut falling to mid-back",
+     "marca": "a scattering of dark freckles across the bridge of her nose",
+     "corpo": "short and thickly curvy from top to bottom, a full soft "
+              "bust, a rounded softly padded tummy, wide generous hips and "
+              "short thick legs",
+     },
     {"idade": 28,
-     "corpo": "petite and tightly muscled",
-     "cabeca": "dark hair in a high messy bun with loose strands at the temples",
-     "marca": "a beauty mark at the left corner of her mouth"},
-    {"idade": 30,
-     "corpo": "tall and lean, with square shoulders",
-     "cabeca": "long dark hair with a sharp widow's peak",
-     "marca": "eyes of two different colours, one green and one brown"},
-    {"idade": 32,
-     "corpo": "athletic, with a narrow waist",
-     "cabeca": "chin-length wavy caramel hair pushed back off her forehead",
-     "marca": "a small heart-shaped birthmark below her right ear"},
-    {"idade": 23,
-     "corpo": "slim and long-limbed",
-     "cabeca": "very long straight dark hair parted in the middle",
-     "marca": "arched brows and a small beauty mark high on her left cheek"},
-    {"idade": 35,
-     "corpo": "trim and curvy, with a defined waist",
-     "cabeca": "thick dark hair in a low glossy ponytail",
-     "marca": "a fine pale scar through her right eyebrow and smooth clear "
-              "skin"},
-    # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
-    # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
-    # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
-    # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
-    {"idade": 26,
-     "corpo": "broad-shouldered and athletic, with a narrow waist",
-     "cabeca": "blunt-cut glossy black hair at the collarbone",
-     "marca": "striking pale green eyes and clear even skin"},
+     "cabeca": "loose curtain-banged hair falling past her shoulders",
+     "marca": "a pair of unusually pale grey eyes under straight dark "
+              "brows",
+     "corpo": "an athletic build on a wide-hipped frame, a full high bust, "
+              "a firm ridged stomach, a lifted muscular seat and long "
+              "powerful legs",
+     },
     {"idade": 34,
-     "corpo": "tall and lean, with long legs",
-     "cabeca": "ash-brown hair knotted low at the nape",
-     "marca": "smooth sun-kissed skin and a small mole on her jawline"},
-    {"idade": 24,
-     "corpo": "compact and hard-trained, with cut arms",
-     "cabeca": "black hair shaved close on one side",
-     "marca": "a straight fine nose over a wide full mouth"},
+     "cabeca": "waist-length hair parted straight down the middle",
+     "marca": "a small crescent-shaped birthmark on her left temple",
+     "corpo": "full-figured and soft all over, a very full heavy bust, a "
+              "rounded soft waistline, a broad heavy rear and smooth full "
+              "legs",
+     },
+    {"idade": 26,
+     "cabeca": "a deep side part with thick loose curls",
+     "marca": "a fine pale scar tracing the line of her jaw",
+     "corpo": "a pear-shaped build with a small waist, a rounded "
+              "medium-full bust, a smooth flat midriff, very wide flaring "
+              "hips and long heavy legs",
+     },
+    {"idade": 30,
+     "cabeca": "heavy blown-out hair swinging below her shoulder blades",
+     "marca": "a tiny gold stud set in her left nostril",
+     "corpo": "broad-shouldered and solidly built, a full weighty chest, a "
+              "thick firm middle, a broad round bottom and sturdy thick "
+              "legs",
+     },
+    {"idade": 23,
+     "cabeca": "long choppy layers falling loose past her chest",
+     "marca": "a narrow gap between her two front teeth",
+     "corpo": "a top-heavy build with sloping shoulders and a short "
+              "cinched waist, a very full high bust, a taut flat stomach, "
+              "a high round seat and smooth thick legs",
+     },
+    {"idade": 33,
+     "cabeca": "poker-straight hair hanging loose past her elbows",
+     "marca": "one hazel eye and one clear blue eye",
+     "corpo": "tall and full-figured with a long waist, a large soft bust, "
+              "a gently curved stomach, heavy rounded hips and long thick "
+              "legs",
+     },
     {"idade": 29,
-     "corpo": "short-waisted and powerful, shoulders clearly defined",
-     "cabeca": "cornrows running to the nape",
-     "marca": "high round cheekbones and glowing deep brown skin"},
-    {"idade": 32,
-     "corpo": "slim and strong, with a long back",
-     "cabeca": "thick dark curls gathered high off her neck",
-     "marca": "a small silver stud high in one ear and clear skin"},
+     "cabeca": "long hair tousled and pushed over one shoulder",
+     "marca": "a shallow cleft in the middle of her chin",
+     "corpo": "a short strong frame with a nipped-in waist, a round high "
+              "chest, a firm flat abdomen, a very full lifted rear and "
+              "short muscular legs",
+     },
     {"idade": 27,
-     "corpo": "wiry and quick, with defined calves",
-     "cabeca": "a short blunt bob with a heavy fringe",
-     "marca": "wide dark eyes and a beauty mark under the right one"},
+     "cabeca": "a blunt jet-black bob cut level at the chin",
+     "marca": "a dark beauty mark high on her right cheekbone",
+     "corpo": "a deep hourglass shape with a hand-span waist, a heavy "
+              "round bust, a soft rounded lower belly, a wide flaring seat "
+              "and full tapering legs",
+     },
+    {"idade": 31,
+     "cabeca": "a cropped pixie feathered soft across the forehead",
+     "marca": "a deep dimple that dents her left cheek when she talks",
+     "corpo": "a tall statuesque frame that carries real weight, a heavy "
+              "low-set bust, a gently domed stomach, a broad deep backside "
+              "and long thick legs",
+     },
+    {"idade": 24,
+     "cabeca": "honey-blonde waves cut short just below the ears",
+     "marca": "a scatter of freckles across the bridge of her nose",
+     "corpo": "a top-heavy build with a sharply nipped waist, a very full "
+              "high shelf of a bust, a small soft curve below the navel, a "
+              "wide round bottom and sturdy smooth legs",
+     },
+    {"idade": 29,
+     "cabeca": "a soft brown mid-length cut with heavy curtain bangs",
+     "marca": "a fine pale scar cutting through her left eyebrow",
+     "corpo": "an athletic build with a broad flaring pelvis, a firm high "
+              "bust, a hard flat abdomen with a visible center line, a "
+              "squared muscular seat and thick sprinter legs",
+     },
+    {"idade": 22,
+     "cabeca": "short tight curls piled full and high",
+     "marca": "wide-set eyes of an unusual amber gold",
+     "corpo": "a pear-shaped body with a tiny waist above heavy hips, a "
+              "round upturned bust, a smooth flat stomach, a wide low-set "
+              "rear and full heavy legs",
+     },
+    {"idade": 33,
+     "cabeca": "a chestnut lob shaved close underneath on one side",
+     "marca": "a tiny silver stud in her left nostril",
+     "corpo": "a tall broad-shouldered frame, a full round bust set high, "
+              "a long smooth stomach, a firm shelf-like rear and very long "
+              "strong legs",
+     },
+    {"idade": 26,
+     "cabeca": "a copper-red wolf cut layered to the collarbone",
+     "marca": "a small mole just below the corner of her mouth",
+     "corpo": "a short plush body with a low easy waist, a large heavy "
+              "bust, a rounded padded belly, a broad wide-set bottom and "
+              "thick smooth legs",
+     },
+    {"idade": 30,
+     "cabeca": "a dark undercut with the top swept long",
+     "marca": "a narrow gap between her front teeth and a small mole below "
+              "one eye",
+     "corpo": "a curvy build cinched hard at the middle, a rounded medium "
+              "bust, a firm flat stomach, a very deep round rear and short "
+              "thick legs",
+     },
+    {"idade": 23,
+     "cabeca": "an ash-blonde shag falling loose to the shoulders",
+     "marca": "one bright grey eye and one deep brown eye",
+     "corpo": "a long-limbed body wide at the chest and hips, a heavy full "
+              "bust, a softly rounded lower stomach, a big sloping rear "
+              "and long thick legs",
+     },
+    {"idade": 34,
+     "cabeca": "a side-parted crop set into shining finger waves",
+     "marca": "a small crescent birthmark on her jaw below one ear",
+     "corpo": "a big strong frame with a wide back and heavy hips, a full "
+              "weighty bust, a firm stomach under a soft layer, a very "
+              "round high rear and thick powerful legs",
+     },
+    {"idade": 26,
+     "cabeca": "a long sleek jet-black ponytail pulled high",
+     "marca": "a shallow cleft in her chin",
+     "corpo": "a full hourglass build with a very small waist, a heavy "
+              "round bust, a soft flat stomach, wide firm glutes and long "
+              "smooth legs",
+     },
+    {"idade": 31,
+     "cabeca": "honey-blonde hair wrapped into a glossy topknot",
+     "marca": "a small dark mole at the outer corner of her left eye",
+     "corpo": "a tall statuesque build with a long torso, a very full high "
+              "bust, a smooth softly toned stomach, heavy round glutes and "
+              "long strong legs",
+     },
+    {"idade": 24,
+     "cabeca": "one thick chestnut braid over her shoulder",
+     "marca": "a tiny beauty mark high on her right cheekbone",
+     "corpo": "a short deeply curved build, a large soft low bust, a "
+              "rounded belly, wide heavy glutes and short thick legs",
+     },
+    {"idade": 29,
+     "cabeca": "a tight three-strand braid pinned down her back",
+     "marca": "a small gold stud in her right nostril",
+     "corpo": "a broad-shouldered athletic build with wide hips, a full "
+              "bust, a hard flat stomach, wide round glutes and thick "
+              "strong legs",
+     },
+    {"idade": 22,
+     "cabeca": "copper-red hair twisted into a low bun",
+     "marca": "a crescent-shaped birthmark at her right temple",
+     "corpo": "a long-limbed curvy build with a small waist, a high round "
+              "bust, a narrow midsection, high firm glutes and very long "
+              "legs",
+     },
+    {"idade": 34,
+     "cabeca": "half her dark waves clipped back loosely",
+     "marca": "a deep dimple that shows only in her left cheek",
+     "corpo": "an evenly plush build with a low soft waist, a heavy full "
+              "bust sitting low, a full soft stomach, broad soft glutes "
+              "and full smooth legs",
+     },
+    {"idade": 27,
+     "cabeca": "dark brown hair in two neat space buns",
+     "marca": "a narrow pale scar just under her lower lip",
+     "corpo": "a top-heavy build with a narrow waist, a very full heavy "
+              "bust, a small soft stomach, neat high glutes and straight "
+              "strong legs",
+     },
+    {"idade": 25,
+     "cabeca": "a red bandana tying back her thick curls",
+     "marca": "a narrow gap between her front teeth and a light spray of "
+              "freckles across her nose",
+     "corpo": "a deep pear-shaped build, a full soft bust, a soft flat "
+              "stomach, very wide heavy glutes and thick smooth legs",
+     },
+    {"idade": 32,
+     "cabeca": "a wide braid wrapped over her head",
+     "marca": "a small pale birthmark shaped like a comma below her left "
+              "eye",
+     "corpo": "a tall heavy-set build with wide square shoulders, a high "
+              "generous bust, a firm rounded stomach, deep round glutes "
+              "and long heavy legs",
+     },
+    {"idade": 28,
+     "cabeca": "caramel hair twisted up into a claw clip",
+     "marca": "a fine pale scar splitting her right eyebrow",
+     "corpo": "a strong-hipped curvy build with a small waist, a firm "
+              "round bust, a soft toned stomach, high lifted round glutes "
+              "and heavy smooth legs",
+     },
 ]
 
 
@@ -1120,11 +1568,20 @@ def _artigo(s):
 
 
 def _traje(spec):
-    """A roupa do mundo com o artigo certo. ⛔ O artigo NAO mora no template:
-    cores como `off-white`, `indigo` e `olive` sairiam `a off-white` — bug pago
-    no CLEAN v2 no mesmo dia, e achado LENDO o render, nao pelo linter."""
+    """A roupa SORTEADA do mundo, com o artigo certo.
+
+    ⛔ O artigo NAO mora no template: cores como `off-white`, `indigo` e
+    `olive` sairiam `a off-white` — bug pago no CLEAN v2 no mesmo dia, e achado
+    LENDO o render, nao pelo linter.
+
+    ⭐⭐ ERA UM TRAJE POR MUNDO, agora sao CINCO e o traje e' EIXO SORTEADO
+    (2026-08-06, ordem do operador). Com um traje fixo por mundo, escolher a
+    regiao escolhia a roupa — e um lote inteiro de uma regiao saia com a mesma
+    blusa em quatro cores. O traje sorteado viaja no spec, entao a montagem
+    e a ancora de continuidade leem o MESMO par.
+    """
     cor = spec["cor"]
-    return "%s %s" % (_artigo(cor), spec["mundo"]["traje"] % cor)
+    return "%s %s" % (_artigo(cor), spec["traje"][0] % cor)
 
 
 def _sem_artigo(s):
@@ -1274,6 +1731,10 @@ def sortear(pagina, rng, led, travas=None):
 
     et = travas.get("etnia") or rng.choice(_etnias_ok(mundo))
     cor = rng.choice(mundo["cores"])
+    # ⭐ O TRAJE E' EIXO: cinco por mundo, sorteado por video. Viaja no spec
+    # como o par [template, curto] — a montagem usa o template, a ancora de
+    # continuidade usa o curto, e os dois SAO O MESMO par por construcao.
+    traje = rng.choice(mundo["trajes"])
     ref = (travas.get("ref")
            or (sc.ref_bela(NARRADORAS[0], rng) if travas.get("bela")
                else rng.choice(NARRADORAS)))
@@ -1300,7 +1761,7 @@ def sortear(pagina, rng, led, travas=None):
 
     # exata que o CL26 documenta.
 
-    spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor,
+    spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor, "traje": traje,
             "ref": ref, "homem": homem, "prop": prop, "substancia": subst,
             "receita": receita, "orgaos": orgaos}
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
@@ -1319,7 +1780,7 @@ def _ancora(spec):
     de pessoa, e o TAKE diz `She is the only person`."""
     r = spec["ref"]
     return CO_ANCORA % (r["idade"], spec["etnia"], spec["cor"],
-                        spec["mundo"]["curto"],
+                        spec["traje"][1],
                         _sem_artigo(r["cabeca"].split(" and ")[0]),
                         _sem_artigo(r["marca"]))
 
@@ -1665,11 +2126,14 @@ def resumo_pt(spec):
     # ⚠️ A receita corta na VIRGULA, nao em 48 caracteres: o corte cego partia a
     # frase no meio ("in a ") e o operador lia um resumo truncado no painel.
     receita = spec["receita"].split(",")[0].lower()
-    return ("Mulher %s de %d anos, de %s %s, em %s (%s). Cena 1 sentada: "
+    # ⚠️ O `(familia)` saiu: com os mundos por REGIAO o id E' a familia, e o
+    # painel escrevia "em chicago (chicago)". Repetir a mesma palavra entre
+    # parenteses nao informa nada — so' ensina o operador a ignorar o resumo.
+    return ("Mulher %s de %d anos, de %s %s, em %s. Cena 1 sentada: "
             "despeja %s sobre %s no colo. Cenas 2 e 3 de pé na bancada: %s. "
             "Gelatina em cubos na mão no CTA."
-            % (spec["etnia"], spec["ref"]["idade"], spec["cor"], m["curto"],
-               m["id"].replace("_", " "), m["familia"],
+            % (spec["etnia"], spec["ref"]["idade"], spec["cor"], spec["traje"][1],
+               m["id"].replace("_", " "),
                spec["substancia"]["nome"], spec["prop"]["nome"], receita))
 
 
