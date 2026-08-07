@@ -41,12 +41,9 @@ errada não grita — foi assim que o PLACA passou a gerar as IMAGEs do DUPLA.
 Há um teste de aceite que prova que nenhuma string de cena do DUPLA
 sobreviveu aqui.
 """
-import argparse
 import json
 import os
-import random
 import re
-import sys
 
 import short_comum as sc
 
