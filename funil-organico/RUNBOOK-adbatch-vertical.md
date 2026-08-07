@@ -12,6 +12,15 @@
 
 ---
 
+## ⭐ O CÓDIGO-FONTE ESTÁ VERSIONADO
+
+Transcrito do editor do Flow em 2026-08-07, com o que só o código revela:
+[`adbatch-vertical/README.md`](adbatch-vertical/README.md) — inclui o
+`durationSeconds: 10` (contra os 8s da nossa doutrina de teto de fala), o
+modelo real em uso (`Omni Flash`, não Veo 3.1), o truncamento silencioso em
+4.000 caracteres com a folga medida por motor, e o contrato do parser linha a
+linha. O Montador Vertical 3 está em `montador-vertical-3/`.
+
 ## O LUGAR DELA NO PIPELINE
 
 ```
