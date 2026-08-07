@@ -144,6 +144,9 @@ class App(tk.Tk):
                       if getattr(motor, "MODO_%s" % m.upper(), False)]
         self.modo_on = {m: False for m in self.modos}
         self.pele_travada = None
+        # ⚠️ defaults ANTES de montar a tela: `travas()` consulta os dois, e
+        # quem monta os botoes e' o `_topo()`, que roda depois daqui.
+        self.sexos, self.b_sexo, self.sexo_travado = [], {}, None
         self.var_trava = {}
         self.var_cadeado = {}
         self.b_cadeado = {}
@@ -234,6 +237,31 @@ class App(tk.Tk):
             self.b_pele[pele] = b
         tk.Label(cx, text="pele", font=F_SMALL, bg=BG,
                  fg=MUTED).pack(side="right", padx=(0, 6))
+
+        # ⭐⭐ SELETOR DE SEXO DE QUEM NARRA (2026-08-06). Ordem do operador:
+        # *"assim como existe o botao de pele clara e escura, tambem haja o
+        # botao de selecionar homem ou mulher para deixar travado"*.
+        # ⛔ So' aparece nos motores que DECLARAM os dois sexos em `SEXOS` —
+        # e' a marcacao que ele pediu na mesma mensagem. Nos treze que so'
+        # produzem um sexo o botao nao existe: botao que nao muda nada e' a
+        # forma-sem-funcao que o botao de pele ja' custou caro.
+        # ⚠️ E nao aparece onde o sexo JA' e' eixo de pre-selecao (`sexo` em
+        # TRAVAS_UI, como no CLEAN): dois controles para a mesma trava e' a
+        # cópia espelhada que diverge na semana seguinte.
+        self.b_sexo = {}
+        self.sexo_travado = None
+        _ja_e_eixo = any(t[0] == "sexo" for t in self.travas_ui)
+        self.sexos = ([] if _ja_e_eixo
+                      else list(getattr(motor, "SEXOS", []) or []))
+        if len(self.sexos) > 1:
+            for _s in reversed(self.sexos):
+                b = tk.Button(cx, text=_s, font=F_SMALL, relief="flat", bd=0,
+                              cursor="hand2", padx=12, pady=5,
+                              command=lambda k=_s: self.trocar_sexo(k))
+                b.pack(side="right", padx=(0, 2))
+                self.b_sexo[_s] = b
+            tk.Label(cx, text="narra", font=F_SMALL, bg=BG,
+                     fg=MUTED).pack(side="right", padx=(0, 6))
 
         # ⭐⭐ OS TOGGLES DE REF — so' os que o motor declara.
         self.b_modo = {}
@@ -522,8 +550,11 @@ class App(tk.Tk):
         ⚠️ O cadeado devolve o VALOR QUE ESTA' NA TELA (`self.spec[chave]`), nao
         um id: quem remonta o video em volta dele e' o motor.
         """
+        # ⚠️ `self.sexos` entra nesta conta desde 2026-08-06: sem ele o
+        # ORGANICWAVE caía no ramo de tres argumentos e a trava de quem narra
+        # nunca chegava ao motor — botao aceso, sorteio livre.
         if not (self.travas_ui or self.eixos_travaveis or self.pele_travavel
-                or self.modos):
+                or self.modos or self.sexos):
             return None
         t = {}
         for chave, var in self.var_trava.items():
@@ -536,6 +567,10 @@ class App(tk.Tk):
         # etnia travada na tela e' mais especifica que clara/escura.
         if self.pele_travada and "etnia" not in t:
             t["pele"] = self.pele_travada
+        # ⚠️ O sexo entra pela mesma porta da pele e pelo mesmo motivo: e' uma
+        # trava GROSSA, e qualquer cadeado de tela e' mais especifico que ela.
+        if self.sexo_travado and "sexo" not in t:
+            t["sexo"] = self.sexo_travado
         # ⚠️ Os modos entram por ULTIMO e NAO sobrescrevem o cadeado de `ref`:
         # REF travada na tela e' mais especifica que "uma bela qualquer".
         for _m, _on in self.modo_on.items():
@@ -689,6 +724,31 @@ class App(tk.Tk):
         self._toast("pele travada: %s" % pele)
         self._toast("pele %s — página %s" % (pele, self.var_pag.get()))
 
+    def trocar_sexo(self, sexo):
+        """Trava QUEM NARRA em homem ou mulher. Clicar de novo destrava.
+
+        ⛔ Mesmo contrato do botao de pele, de proposito: aceso = travado, e o
+        segundo clique solta. Foi a licao de 2026-08-06 — o botao de pele fazia
+        duas coisas diferentes em motores diferentes e o operador nunca sabia
+        se estava travado ou so' sorteado.
+        """
+        if self.sexo_travado == sexo:
+            self.sexo_travado = None
+            self.sortear()
+            self._toast("quem narra: livre")
+            return
+        self.sexo_travado = sexo
+        self.sortear()
+        self._toast("quem narra travado: %s" % sexo)
+
+    def _pintar_sexo(self):
+        for sexo, b in self.b_sexo.items():
+            ativo = (sexo == self.sexo_travado)
+            b.configure(bg=ACCENT if ativo else PANEL2,
+                        fg="#ffffff" if ativo else MUTED,
+                        activebackground=ACCENT_D if ativo else LINE,
+                        activeforeground="#ffffff")
+
     ROTULO_MODO = {
         "bela": "super model, corpo escultural, pouca roupa",
         "forte": "homem forte e musculoso",
@@ -806,6 +866,7 @@ class App(tk.Tk):
 
         self.lbl_resumo.configure(text=self.m.resumo_pt(self.spec))
         self._pintar_pele()
+        self._pintar_sexo()
 
         usados = sorted({t for f in self.spec["falas"] for t in termos_reescritos(f)})
         self.lbl_sonoro.configure(

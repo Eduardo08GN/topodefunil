@@ -69,6 +69,17 @@ CENAS_UI = ["1 · A DOR (1ª pessoa)", "2 · O GELATIN TRICK + A PROVA", "3 · C
 TETO_FALA = {1: 24, 2: 25, 3: 25}
 
 # congruencia inviolavel: a etnia do REF e' a do avatar da pagina
+# ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
+# Ordem do operador: *"uma marcacao dentro dos agentes python, de todos, pra
+# saber se aquele agente gera roteiros com personagem homens e mulheres como
+# narrador/apresentador ou se so' gera com um dos dois"*.
+# ⛔ MEDIDO, nao lido: 120 sorteios por agente, olhando o BLOCO 0 do prompt.
+# Declarar de cabeca aqui seria a mesma FORMA-sem-FUNCAO que ja' custou o
+# botao de pele morto em tres motores.
+# ⚠️ Com DOIS sexos a UI desenha a trava homem/mulher; com um so', nao desenha
+# botao nenhum — botao que nao trava nada e' pior que botao nenhum.
+SEXOS = ("homem", "mulher")
+
 ETNIA = {"joe": "white American", "ray": "white American", "matt": "white American",
          "marcus": "Black American", "chuck": "Black American"}
 
@@ -742,12 +753,21 @@ def _cta_gate(rng, ctas):
         _cabe(GATES, lambda g: cta.format(gate=g), TETO_FALA[3])))
 
 
-def sortear(pagina, rng, ledger):
+def sortear(pagina, rng, ledger, travas=None):
+    """⭐ `travas` entrou em 2026-08-06 só para a trava de QUEM NARRA.
+
+    Este era o único dos três motores de dois sexos que não recebia travas — a
+    UI passava `travas["sexo"]` e o botão não travava nada. Assinatura aditiva:
+    quem chama sem o argumento continua sorteando como sempre.
+    """
+    travas = travas or {}
     hist = ledger.get(pagina, {})
     amb = _evitando(rng, AMBIENTES, hist.get("ambiente", [])[-2:])
     prop = _evitando(rng, PROPS, hist.get("prop", [])[-2:])
     isca = _evitando(rng, ISCA, hist.get("isca", [])[-3:])
-    persona = _evitando(rng, PERSONAS, hist.get("persona", [])[-1:])
+    _sexo = travas.get("sexo")
+    _pool = [p for p in PERSONAS if p["id"] == _sexo] if _sexo else PERSONAS
+    persona = _evitando(rng, _pool or PERSONAS, hist.get("persona", [])[-1:])
     ref = rng.choice(homens_de(pagina))
     mul = rng.choice(mulheres_de(pagina))
 

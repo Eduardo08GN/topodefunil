@@ -207,6 +207,17 @@ TETO_TOTAL = 96
 # [D4] congruencia: so' o HOMEM casa com o avatar da pagina. A narradora NAO usa
 # este dict — ela e' sorteada livre, e o motor nunca escreve adjetivo de etnia
 # junto dela (ES11).
+# ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
+# Ordem do operador: *"uma marcacao dentro dos agentes python, de todos, pra
+# saber se aquele agente gera roteiros com personagem homens e mulheres como
+# narrador/apresentador ou se so' gera com um dos dois"*.
+# ⛔ MEDIDO, nao lido: 120 sorteios por agente, olhando o BLOCO 0 do prompt.
+# Declarar de cabeca aqui seria a mesma FORMA-sem-FUNCAO que ja' custou o
+# botao de pele morto em tres motores.
+# ⚠️ Com DOIS sexos a UI desenha a trava homem/mulher; com um so', nao desenha
+# botao nenhum — botao que nao trava nada e' pior que botao nenhum.
+SEXOS = ("mulher",)
+
 ETNIA = {
     # ⭐ As 5 paginas do lote de 2026-08-05. Split 3 brancos / 2 negros —
     # a razao (volume absoluto x prevalencia) esta' escrita no

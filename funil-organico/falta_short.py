@@ -57,6 +57,17 @@ SUBTITULO = ("a receita aparece incompleta · a parte que falta é o mecanismo �
 
 # ⚠️ A etnia aqui NAO vem da pagina — vem do MUNDO (doutrina "etnia arrasta o
 # mundo inteiro"). A tabela existe so' para a UI listar as paginas.
+# ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
+# Ordem do operador: *"uma marcacao dentro dos agentes python, de todos, pra
+# saber se aquele agente gera roteiros com personagem homens e mulheres como
+# narrador/apresentador ou se so' gera com um dos dois"*.
+# ⛔ MEDIDO, nao lido: 120 sorteios por agente, olhando o BLOCO 0 do prompt.
+# Declarar de cabeca aqui seria a mesma FORMA-sem-FUNCAO que ja' custou o
+# botao de pele morto em tres motores.
+# ⚠️ Com DOIS sexos a UI desenha a trava homem/mulher; com um so', nao desenha
+# botao nenhum — botao que nao trava nada e' pior que botao nenhum.
+SEXOS = ("mulher",)
+
 ETNIA = {
     "roy": "white American", "dean": "white American", "earl": "white American",
     "jason": "Black American", "philippe": "Black American",
