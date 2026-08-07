@@ -448,22 +448,39 @@ COMUNS = [
 # francesa, que é a forma que ele conhece melhor. Aqui nenhum par compartilha
 # corpo de vidro com haste dentro.
 METODOS = [
+    # ⛔⛔ O POOL INTEIRO FOI REFEITO (2026-08-07). O operador viu o lote e
+    # disse: *"seu settings de hardware do meal prep take 2 esta ruim"*. E
+    # estava: pilao de pedra, peneira sobre tigela de aco, moedor de manivela e
+    # coador de pano NAO leem como bebida sendo preparada — leem como qualquer
+    # outra coisa. O video vende um COPO, e a cena 2 tem de mostrar o copo
+    # nascendo.
+    # ⚠️ E cada vasilhame tem SILHUETA E MATERIAL PROPRIOS, que e' a licao do
+    # BOTICA: metade do pool era de vidro e o gerador colapsava quatro deles
+    # numa prensa francesa, a forma que ele conhece melhor. Aqui nao ha' dois
+    # corpos de vidro com haste dentro.
     {"id": "liquidificador", "vaso": "a blender jug on its base",
      "acao": "drops the pieces into the blender jug", "curto": "blender"},
-    {"id": "tigela_fouet", "vaso": "a wide ceramic bowl with a wire whisk in it",
+    {"id": "jarra_vidro",
+     "vaso": "a tall glass pitcher with a long steel spoon standing in it",
+     "acao": "stirs it through the glass pitcher", "curto": "glass pitcher"},
+    {"id": "mason", "vaso": "a wide-mouth mason jar with its lid off beside it",
+     "acao": "screws the lid on the mason jar and shakes it once",
+     "curto": "mason jar"},
+    {"id": "tigela_fouet",
+     "vaso": "a wide ceramic bowl with a wire whisk resting in it",
      "acao": "whisks it in the ceramic bowl", "curto": "ceramic bowl"},
-    {"id": "pilao", "vaso": "a heavy stone mortar with the pestle standing in it",
-     "acao": "grinds it down in the stone mortar", "curto": "stone mortar"},
-    {"id": "panela", "vaso": "a small enamel pan on a low flame",
-     "acao": "stirs it in the enamel pan", "curto": "enamel pan"},
-    {"id": "jarra", "vaso": "a stoneware pitcher with a long wooden spoon",
-     "acao": "stirs it through the stoneware pitcher", "curto": "pitcher"},
-    {"id": "peneira", "vaso": "a fine metal sieve resting over a steel bowl",
-     "acao": "presses it through the sieve", "curto": "sieve"},
-    {"id": "moedor", "vaso": "a hand-crank grinder clamped to the edge",
-     "acao": "cranks it through the grinder", "curto": "grinder"},
-    {"id": "coador", "vaso": "a wide crock with a square of cloth tied over it",
-     "acao": "strains it through the cloth", "curto": "cloth strainer"},
+    {"id": "coqueteleira",
+     "vaso": "a stainless steel shaker cup with the cap off on the surface",
+     "acao": "caps the steel shaker and shakes it twice", "curto": "shaker"},
+    {"id": "medidor",
+     "vaso": "a heavy glass measuring jug with a pouring spout",
+     "acao": "pours it from the measuring jug", "curto": "measuring jug"},
+    {"id": "caneca_garrafa",
+     "vaso": "a thick ceramic mug beside a small unlabelled glass bottle",
+     "acao": "tips the small bottle into the mug", "curto": "mug"},
+    {"id": "mixer",
+     "vaso": "a tall plastic beaker with a hand blender standing in it",
+     "acao": "runs the hand blender down into the beaker", "curto": "beaker"},
 ]
 
 
@@ -879,9 +896,20 @@ def sortear(pagina, rng, ledger, travas=None):
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
              else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
     adesivo = rng.choice(ADESIVOS)
-    met = _fresco(METODOS, usados.get("metodo", []), rng, "id")
-    com = _fresco(COMUNS, usados.get("comum", []), rng, "id")
-    raro = _fresco(RAROS, usados.get("raro", []), rng, "id")
+    # ⛔⛔ ESTES TRES ACENDIAM O BOTAO E NAO TRAVAVAM NADA. Estavam em
+    # EIXOS_TRAVAVEIS desde o nascimento do agente, o painel desenhava o
+    # `trava`, e o sorteio seguia aleatorio — o operador clicava e nao
+    # acontecia nada. E' o MESMO defeito que o CLEAN V2 pagou em campo com a
+    # trava de pele, e que o amigo do Ed achou depois no COLO e no RECEITA.
+    # ⚠️ Achado testando eixo por eixo, nao lendo o codigo: `mundo`, `homem` e
+    # `prop` travavam; estes tres, nao. Contar entradas em EIXOS_TRAVAVEIS
+    # nunca acusaria — a lista estava certa, quem nao lia era o sorteio.
+    met = (_por_id(METODOS, travas["metodo"]) if travas.get("metodo")
+           else _fresco(METODOS, usados.get("metodo", []), rng, "id"))
+    com = (_por_id(COMUNS, travas["comum"]) if travas.get("comum")
+           else _fresco(COMUNS, usados.get("comum", []), rng, "id"))
+    raro = (_por_id(RAROS, travas["raro"]) if travas.get("raro")
+            else _fresco(RAROS, usados.get("raro", []), rng, "id"))
     reacao = rng.choice(REACOES_AMIGA)
     if travas.get("bela"):
         tpl, _curto = sc.traje_bela(rng)
