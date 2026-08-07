@@ -1349,7 +1349,7 @@ HOOKS = [
     # o unico que importa, e o video nao nomeia nenhum dos tres nem o eleito.
     # ⚠️ Um laco aberto que a cena 2 paga ("the gelatin trick") e' legitimo e
     # continua nos outros hooks; uma ENUMERACAO anunciada e nunca dita, nao.
-    {"degrau": 1, "txt": "One thing stops the {e} going in the {f} after sixty. It is not age."},
+    {"degrau": 1, "txt": "One thing decides if the {e} still goes in the {f} at sixty."},
     {"degrau": 1, "txt": "Your wife wants the {e} in the {f} tonight. Not next Christmas."},
     {"degrau": 1, "txt": "Could you put the {e} in the {f} tonight and again tomorrow?"},
 ]
