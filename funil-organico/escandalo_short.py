@@ -1317,7 +1317,7 @@ MECANISMOS_PROP = [
 # Placeholders: {e} eixo do par, {f} orificio, {o} orgao.
 HOOKS = [
     {"degrau": 1, "txt": "If you wanna put your {e} in your partner's {f} five nights a week..."},
-    {"degrau": 1, "txt": "If your {e} still fits your wife's {f} every night, this is for you."},
+    {"degrau": 1, "txt": "If you want your {e} still fitting your wife's {f} every night, this is for you."},
     {"degrau": 1, "txt": "Guys still putting the {e} in the {f} at seventy do one thing first."},
     {"degrau": 1, "txt": "You want your {e} going in that {f} five nights a week? Start here."},
     {"degrau": 1, "txt": "The {e} in the {f} four nights a week at sixty-two. That's the goal."},
@@ -1344,7 +1344,12 @@ HOOKS = [
     # + 2026-08-02: ampliacao de variancia por ordem do operador.
     # Verificacao adversarial reprovou 32 de 54 propostas; estas
     # sobreviveram e foram medidas em 2800 sorteios.
-    {"degrau": 1, "txt": "Three things stop the {e} going in the {f} after sixty. Only one matters."},
+    # ⛔ ERA "Three things stop the {e} going in the {f} after sixty. Only one
+    # matters." — prometia uma LISTA de tres bloqueios e ainda prometia eleger
+    # o unico que importa, e o video nao nomeia nenhum dos tres nem o eleito.
+    # ⚠️ Um laco aberto que a cena 2 paga ("the gelatin trick") e' legitimo e
+    # continua nos outros hooks; uma ENUMERACAO anunciada e nunca dita, nao.
+    {"degrau": 1, "txt": "One thing stops the {e} going in the {f} after sixty. It is not age."},
     {"degrau": 1, "txt": "Your wife wants the {e} in the {f} tonight. Not next Christmas."},
     {"degrau": 1, "txt": "Could you put the {e} in the {f} tonight and again tomorrow?"},
 ]
@@ -1384,7 +1389,7 @@ HOOKS = [
 # ela quebra. Nao vale o orgao "aparecer em algum lugar da cena" — o operador
 # reprovou exatamente uma cena em que o orgao estava la', na ULTIMA frase.
 #     ⛔ "They sold you the age excuse."  -> desculpa para O QUE?
-#     ✅ "They sold you the age excuse, and the {o} paid for it."
+#     ✅ "They sold you the age excuse, and your {o} paid for it."
 # Aqui a causa (a desculpa da idade) e o alvo (o orgao) ficam na mesma oracao.
 # ⚠️ MESMA CONTAGEM DE PALAVRAS da entrada antiga (12 com `Johnson`, 13 com `old
 # boy`): o alvo nao foi SOMADO ao teto da cena 1 — o segundo beat ("Sixty was
@@ -1399,7 +1404,7 @@ VILOES = [
     "Nobody told you, and that silence cost the {o} ten good years.",
     "They sold you the age excuse, and the {o} paid for it.",
     "Your doctor won't say this. There's no billing code for the {o}.",
-    "Who gets paid if your {o} never changes? Somebody does.",
+    "Who gets paid if your {o} never changes? The pharmacy does.",
     "Add up what you've spent. None of it was meant for the {o}.",
     "They'll sell you a monthly plan before they'll sell the {o} an answer.",
 ]
@@ -1532,7 +1537,7 @@ FUNDIDAS = [
     "We had stopped trying anything for his {o}. Nothing we bought did a thing. The gelatin trick is {r}, vasodilators, four dollars.",
     "He had given up on his {o}. I didn't. I found the gelatin trick — {r}, nitric oxide, the cheapest thing in the house.",
     "Nothing on that pharmacy shelf did a thing for his {o}. The gelatin trick is {r} and honest collagen, and it brought him back.",
-    "Every website sells you something for his {o}. Nobody sells the gelatin trick — it is {r}, circulation, and a few dollars.",
+    "Every website sold him something for his {o}. Nobody sells the gelatin trick — it is {r}, circulation, and a few dollars.",
     "The expensive things did nothing for his {o}. The cheap one worked: the gelatin trick, {r}, vasodilators, less than a coffee.",
     "Two hundred dollars a month and his {o} never moved. The gelatin trick is {r} and collagen and small change, and it did.",
     "I did not find this in a clinic and nobody made a cent off his {o}. The gelatin trick, {r}, nitric oxide, and it works.",
@@ -1546,11 +1551,11 @@ FUNDIDAS = [
 SELOS = [
     "Two dollars a box.",
     "Same glass, every time.",
-    "Nothing else in it.",
-    "No pills, nothing else.",
-    "That's the whole preparation.",
-    "That's it. Both halves.",
-    "One glass, two halves.",
+    "There is one step I left out.",
+    "No pills anywhere near it.",
+    "The amounts are the whole trick.",
+    "I did not say the amounts.",
+    "One glass, last thing at night.",
     "I watched him do it.",
     "He didn't believe it either.",
     "Cheapest thing in the kitchen.",
@@ -1619,7 +1624,7 @@ PROVAS = [
     {"voz": "intima", "txt": "I don't finish movies anymore. His {o} stands up first."},
     {"voz": "intima", "txt": "Two in the morning. His {o} again."},
     {"voz": "terceiro", "txt": "The whole street knows about his {o} now."},
-    {"voz": "terceiro", "txt": "Ask what his {o} does at midnight."},
+    {"voz": "terceiro", "txt": "At midnight his {o} is the one still awake."},
 ]
 
 # ⛔ ES12 — keyword travada em `gelatin`, MINUSCULA e SEGUIDA DE VIRGULA dentro
@@ -1633,18 +1638,18 @@ PROVAS = [
 CTAS = [
     "Comment gelatin, and I'll send you the whole recipe.",
     "Comment gelatin, and the recipe's on your phone tonight.",
-    "Comment gelatin, and I'll send you both halves.",
-    "Comment gelatin, and I'll tell you exactly what to buy.",
+    "Comment gelatin, and I'll send you the amounts.",
+    "Comment gelatin, and I'll tell you how much of each.",
     "Comment gelatin, one word, and the recipe is yours.",
-    "Comment gelatin, and I'll send the other half.",
+    "Comment gelatin, and I'll send the step I left out.",
     "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send the missing half.",
-    "Want it? Comment gelatin, and I'll send the recipe tonight.",
+    "Comment gelatin, and I'll send the missing amounts.",
+    "Comment gelatin, and I'll send the recipe tonight.",
     "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send it before you scroll.",
-    "Comment gelatin, and I'll send all four ingredients.",
-    "It's four lines. Comment gelatin, and I'll send it.",
-    "Comment gelatin, and I'll send where to get it.",
+    "Comment gelatin, and I'll send the recipe before you scroll.",
+    "Comment gelatin, and I'll send the amounts written out.",
+    "Comment gelatin, and I'll send the recipe written out.",
+    "Comment gelatin, and I'll send where to buy the collagen.",
     "Comment gelatin, nothing else, and I'll send the recipe.",
     "Comment gelatin, and the whole recipe comes to you.",
     # + 2026-08-02: ampliacao de variancia por ordem do operador.
@@ -2030,6 +2035,52 @@ def _escolher(rng, pool, ok, tentativas=12):
 # SORTEIO
 # ---------------------------------------------------------------------------
 
+# ⛔⛔ O DRIFTING MAIS CARO DESTE AGENTE, medido em 1.200 sorteios: 100% dos
+# videos. A cena 1 fala em SEGUNDA pessoa — "your {o}", "guys", "you" — e a
+# cena 2 abre em TERCEIRA sobre um homem especifico: "He would never talk to a
+# doctor", "His doctor had nothing left", "We spent a fortune and never got his
+# {o} back". Quem entra no video pelo scroll ouve "he" e nao tem em quem
+# pendurar: as 22 FUNDIDAS e as 22 PROVAS falam de um homem que o AUDIO nunca
+# apresenta.
+#
+# ⚠️ E o motor JA' SABIA quem ele e': a `relacao` ("his wife of thirty years")
+# e' sorteada e entra no IMAGE, onde e' a alavanca 2 do protocolo de recusa. Ou
+# seja — o GERADOR sabia de quem se falava; o ESPECTADOR nunca.
+#
+# A correcao nomeia o homem UMA vez, na primeira mencao da cena 2, com o termo
+# que a relacao ja' autoriza. Depois dela, todo "he/his/we" tem dono.
+# ⛔ Nao inventa relacao nova: le' a que foi sorteada. Contradizer a relacao na
+# fala e' ANULA-LA, e a relacao anulada custa a alavanca de moderacao (ES4).
+_TRATAMENTO = (
+    ("his wife of", "my husband"),
+    ("his partner of", "my partner"),
+    ("the woman he has been with", "my man"),
+)
+
+# ⛔⛔ FRONTEIRA DE PALAVRA, e a constante mora AQUI de proposito: este `\b`
+# ja' virou BACKSPACE (0x08) ao passar por um heredoc, a regex ficou muda, a
+# nomeacao parou de acontecer EM SILENCIO e so' o gate de contexto viu.
+# ⚠️ Sem a fronteira, `find("his ")` casava dentro de "this " e cuspia
+# *"I did not find tmy husband's in a clinic"* em 9 de 1.200 sorteios.
+_PRIMEIRO_MASC = re.compile(r"\b(his|him)\b")
+
+
+def _nomeia_o_homem(txt, relacao):
+    """Troca a PRIMEIRA mencao masculina da cena 2 pelo termo da relacao."""
+    termo = next((t for pref, t in _TRATAMENTO if relacao.startswith(pref)),
+                 "my husband")
+    if txt.startswith("He "):
+        return termo[0].upper() + termo[1:] + txt[2:]
+    m = _PRIMEIRO_MASC.search(txt)
+    if not m:
+        return txt
+    # `him something` -> `my husband something` (objeto, sem genitivo)
+    if m.group(1).lower() == "him":
+        return txt[:m.start(1)] + termo + txt[m.end(1):]
+    # `his {o}` -> `my husband's {o}`; `his doctor` -> `my husband's doctor`
+    return txt[:m.start(1)] + termo + "'s" + txt[m.end(1):]
+
+
 def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
     """As tres falas, cada uma somando dois ou tres pools.
 
@@ -2078,8 +2129,10 @@ def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
                    and (_aterrissa(hook) or _aterrissa(x))))
     c1 = "%s %s" % (hook, vilao.format(o=orgaos[0]))
 
-    fund = _inicio_de_frase(
-        rng.choice(FUNDIDAS).format(r=receita["fala"], o=orgaos[1]))
+    fund = _nomeia_o_homem(
+        _inicio_de_frase(
+            rng.choice(FUNDIDAS).format(r=receita["fala"], o=orgaos[1])),
+        relacao)
     selo = _escolher(
         rng, SELOS,
         lambda s: (not _eco(fund, s) and not _preco_novo(fund, s)
