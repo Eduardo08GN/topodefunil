@@ -484,7 +484,12 @@ DESMENTIDOS = [
     "But combined with the secret I found, your {o} answers again.",
     "Dripping {s} on your {o} does nothing overnight. "
     "But combined with the secret I found, your {o} comes back.",
-    "They swear {s} fixes your {o} overnight. It won't. "
+    # ⛔ ERA "It won't." — reprovado na revisao adversarial de 2026-08-06. E' a
+    # MESMA forma que ele reprovou no TROCA ("and I'll send it" — *enviar o
+    # QUE??*): verbo elidido, objeto nenhum. Pior: o antecedente mais proximo
+    # de "It" nao e' a substancia, e' o proprio orgao — dito uma palavra antes.
+    # "That's a lie" fecha a sentenca sozinha e aponta para a CRENDICE.
+    "They swear {s} fixes your {o} overnight. That's a lie. "
     "Combined with the secret I found, your {o} comes back.",
     "{S} on your {o} won't work overnight. "
     "But combined with the secret I found, your {o} answers again.",
@@ -510,18 +515,32 @@ RECEITAS = [
     # 25: nenhuma entrada cabia, nem no melhor caso. O comum esta na bancada em
     # IMAGE 02, visivel. O que SO' a fala pode carregar e' a peca que falta.
     # ⚠️ O raro FICA, por ordem expressa do operador.
-    "{R}. And the piece everyone leaves out: the gelatin trick, "
-    "and the blood comes back to your {o}.",
-    "{R}. The one thing nobody includes: the gelatin trick, "
+    # ⛔⛔ TODA ENTRADA ABRE COM VERBO DE PREPARO — correcao da revisao
+    # adversarial de 2026-08-06. Antes a fala comecava com o nome do raro e um
+    # ponto: *"Ginkgo, the leaf off that ancient Chinese tree."* — sintagma
+    # nominal solto, sem verbo, em 288 de 288 combinacoes. Nao e' receita: e'
+    # uma etiqueta. A fonte diz `In a blender, combine two cups of fresh
+    # pineapple` — IMPERATIVO, dirigido ao espectador, enquanto ela prepara em
+    # quadro. Aqui o verbo volta.
+    # ⚠️ O verbo e' NEUTRO DE UTENSILIO de proposito: `add`/`use`/`in goes`
+    # servem ao liquidificador, ao pilao, a peneira e ao coador. `blend`
+    # contradiria 7 dos 8 metodos do pool.
+    # ⛔ E ELE CUSTA ZERO: cada prefixo foi pago cortando o mesmo tanto na
+    # cauda. Antes 60 das 288 combinacoes ESTOURAVAM o teto (ate' 28 palavras)
+    # e o `_escolher` so' as escondia — com o raro mais longo sobravam 4 dos 6
+    # templates. Agora cabem 6 de 6 em todos os 8 raros.
+    "Add {R}. The piece everyone leaves out: the gelatin trick, "
+    "and the blood returns to your {o}.",
+    "Start with {R}. What nobody includes: the gelatin trick, "
     "the missing piece that opens your {o} again.",
-    "{R}. And what's always left out: the gelatin trick, "
+    "In goes {R}. Always left out: the gelatin trick, "
     "the missing part that brings your {o} back.",
-    "{R}. Nobody hands you the last piece: the gelatin trick, "
+    "Now add {R}. Nobody hands you the last piece: the gelatin trick, "
     "and your {o} answers again.",
-    "{R}. The piece they hold back: the gelatin trick, "
-    "the missing part that puts the blood back in your {o}.",
-    "{R}. And the one they skip: the gelatin trick, "
-    "the missing piece that wakes your {o} up.",
+    "Add {R}. The piece they hold back: the gelatin trick, "
+    "and the blood fills your {o} again.",
+    "Use {R}. The one they skip: the gelatin trick, "
+    "the missing piece that wakes your {o}.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -535,8 +554,16 @@ CTAS = [
     # 2026-08-02, depois de ver renders com a legenda "COMMENT HONEY": a
     # legenda do video sai do audio, e comando variavel faz o modelo
     # parafrasear a keyword. O `lint_cta_literal` cobra isso nos 18.
+    # ⛔⛔ QUEM OMITE E' O MUNDO, NUNCA ELA — correcao da revisao adversarial de
+    # 2026-08-06. Duas entradas diziam *"I'll send the piece I left out"*, e a
+    # cena 2 diz, em 5 dos 6 templates, que quem deixa de fora e'
+    # everyone/nobody/they. Eram 2.016 pares em que ela acusava o mundo de
+    # omitir e uma respiracao depois assumia a omissao. A tensao nao vem de ela
+    # ter escondido: vem de A RECEITA DO MUNDO estar furada e ela ter a peca.
+    # ⚠️ E' tambem o enquadramento que o operador ditou — *"missing part da
+    # receita sera entregue ao comentar gelatin"*: a peca falta NA RECEITA.
     "Comment gelatin, and I'll send you the missing part.",
-    "Comment gelatin, and I'll send the piece I left out.",
+    "Comment gelatin, and I'll send you what's missing.",
     "Comment gelatin, one word, and I'll send the missing part.",
     "Comment gelatin, and I'll send you the part nobody includes.",
     "Comment gelatin, and I'll send the missing piece tonight.",
@@ -544,7 +571,7 @@ CTAS = [
     # FALTA, que é o ângulo inteiro. O CTA tem de prometer exatamente o que a
     # cena 2 disse que ficou de fora, senão o vídeo abre um buraco e entrega
     # outra coisa.
-    "Comment gelatin, and I'll send the part I left out.",
+    "Comment gelatin, and I'll send you the missing step.",
 ]
 
 GATES = [
@@ -662,6 +689,43 @@ def _escolher(rng, pool, ok, tamanho=None):
     return min(pool, key=tamanho or _palavras)
 
 
+# ⛔ Palavras de liga: repetir "the", "your" ou "and" entre cenas nao e' eco, e'
+# ingles. O eco que machuca e' o de CONTEUDO — verbo e substantivo.
+_LIGA = frozenset(
+    "the a an and or but your you it on in of to that this with i me my so "
+    "first no not won't will is are be one".split())
+
+
+def _bigramas(t, orgao):
+    """Pares de palavras de conteudo, sem o orgao (ele repete DE PROPOSITO)."""
+    p = [w.strip(".,:;!?").lower() for w in t.split()]
+    p = [w for w in p if w != orgao]
+    return {(a, b) for a, b in zip(p, p[1:])
+            if not (a in _LIGA and b in _LIGA)}
+
+
+# ⛔⛔ O ECO QUE E' PARA ACONTECER. Ordem do operador, palavra por palavra:
+# *"the secret gelatin trick, (aposto the missing part) (vira isca pro cta
+# final)"*. O aposto da cena 2 TEM de reaparecer no CTA — e' o que costura a
+# promessa a entrega. Sem esta excecao o guarda de eco derrubava exatamente a
+# costura do angulo: a cena 3 caia de 4,2% para 1,2% de uso nos CTAs que
+# nomeiam a peca, e o vidoe prometia uma coisa depois de anunciar outra.
+# ⚠️ A excecao e' por PALAVRA, nao por par — e isso e' medicao, nao gosto. Com
+# a excecao so' nos pares ("missing","part") etc., o que continuava derrubando
+# o CTA era o par vizinho ("the","missing"): os quatro CTAs que nomeiam a peca
+# cairam para 200 usos em 2.400 contra 800 dos dois que nao a nomeiam — o
+# guarda estava premiando justamente os CTAs mais fracos.
+_ECO_PALAVRA = frozenset(["missing"])
+_ECO_PAR = frozenset([("gelatin", "trick"), ("nobody", "includes")])
+
+
+def _colide(anterior, candidata, orgao):
+    comuns = _bigramas(anterior, orgao) & _bigramas(candidata, orgao)
+    resto = {c for c in comuns
+             if c not in _ECO_PAR and not (_ECO_PALAVRA & set(c))}
+    return bool(resto)
+
+
 def sortear(pagina, rng, ledger, travas=None):
     travas = travas or {}
     usados = (ledger or {}).get(pagina, {})
@@ -733,15 +797,31 @@ def _montar_falas(rng, sub, orgao, com, raro):
                                              o=orgao))
     ).format(s=sub["fala"], S=sub["fala"].capitalize(), o=orgao)
 
+    # ⛔ O RARO ENTRA EM MINUSCULA. Ele abria a frase e por isso era
+    # capitalizado; desde que os templates ganharam verbo de preparo
+    # ("Add {R}."), capitalizar produzia *"Add Maca root, that Andean root
+    # from Peru."* — e a legenda queimada sai do audio, entao a maiuscula no
+    # meio da frase vira erro visivel no video.
     c2 = _escolher(
         rng, RECEITAS,
-        lambda t: _palavras(t.format(R=raro["fala"], o=orgao)) <= TETO_FALA[2],
+        lambda t: (_palavras(t.format(R=raro["fala"], o=orgao)) <= TETO_FALA[2]
+                   and not _colide(c1, t.format(R=raro["fala"], o=orgao), orgao)),
         tamanho=lambda t: _palavras(t.format(R=raro["fala"], o=orgao))
-    ).format(R=raro["fala"][0].upper() + raro["fala"][1:], o=orgao)
+    ).format(R=raro["fala"], o=orgao)
 
-    cta = rng.choice(CTAS)
+    # ⛔⛔ O GUARDA DE ECO ENTRE CENAS — revisao adversarial de 2026-08-06.
+    # As tres falas eram sorteadas cegas umas das outras, e em 17% dos pares a
+    # cena 2 repetia literalmente o fecho da cena 1: *"your peck-er comes
+    # back"* e depois *"the blood comes back to your peck-er"*; ou
+    # "answers again" duas vezes em 24 segundos. O payoff perde forca quando
+    # a segunda vez chega — e o CTA "the piece I left out" ecoava o "always
+    # left out" da cena 2 na mesma respiracao.
+    cta = _escolher(rng, CTAS,
+                    lambda c: not _colide(c1 + " " + c2, c, orgao))
     gate = _escolher(rng, GATES,
-                     lambda g: _palavras(cta) + _palavras(g) <= TETO_FALA[3])
+                     lambda g: (_palavras(cta) + _palavras(g) <= TETO_FALA[3]
+                                and not _colide(c1 + " " + c2 + " " + cta, g,
+                                                orgao)))
     return [c1, c2, "%s %s" % (cta, gate)]
 
 
@@ -843,8 +923,13 @@ def montar(spec):
     # vende.
     b["IMAGE 02/03"] = (
         "IMAGE 02/03: Medium shot in %(coz_c)s, %(luz_c)s. %(Ancora)s, wearing "
+        # ⛔ ERA "never touched and never mentioned". A segunda metade
+        # CONTRADIZ A FALA: a cena 2 nomeia o raro em voz alta, por ordem do
+        # operador — e' o eixo dele. A primeira metade era redundante: o
+        # %(nao_toca)s logo abaixo ja' cobre a bancada inteira. Achado da
+        # revisao adversarial de 2026-08-06.
         "%(traje)s, stands at %(sup_a)s with %(vaso)s in front of her. Laid "
-        "out on the surface beside it, never touched and never mentioned: "
+        "out on the surface beside it: "
         "%(com_img)s and %(raro_img)s. She is the only person in the frame. "
         "Shot from chest height, straight on. %(nao_toca)s%(band)s %(anti)s. "
         "%(cauda)s" % dict(v, Ancora=_ancora(spec)[0].upper() + _ancora(spec)[1:]))
