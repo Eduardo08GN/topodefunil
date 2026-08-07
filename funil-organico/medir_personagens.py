@@ -225,6 +225,13 @@ EXCECOES = {
         "e ancora seguem cheios, e o PORTE mora no eixo proprio CORPOS_M "
         "(CL26 desde 2026-08-04: sensual, nunca musculoso).",
     ("clean_short_v2.py", "REFS_M", "oculos"): "idem clean_short",
+    ("falta_short.py", "REFS", "oculos"):
+        "LEI DO REF — este agente nasce em MODO BELA por ordem do operador "
+        "(*mulheres extremamente lindas, roupa curta*), e oculos de leitura "
+        "brigam frontalmente com isso. Os outros eixos seguem cheios: cabelo, "
+        "marca facial, porte e idade. ⚠️ Sao DUAS mulheres em quadro, entao o "
+        "eixo que carrega a variacao aqui e' o CABELO — e' o que separa uma da "
+        "outra no mesmo frame.",
     ("colo_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF — oculos de leitura brigam frontalmente com 'linda e jovem'. "
         "Os outros eixos continuam cheios (cabelo, porte, pele, ancora).",
