@@ -264,37 +264,41 @@ BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, a "
 # contradicao entre os dois e' pior que omissao, porque o Veo resolve mexendo
 # no que estava certo.
 REACOES_HOMEM = [
-    ("his eyes are wide and his eyebrows are raised, his mouth open in plain "
-     "astonishment",
-     "holds his astonished expression without moving"),
-    ("a slow grin is spreading across his face and his eyebrows are lifted",
-     "holds that spreading grin without moving"),
-    ("his eyebrows are drawn together and his head is tilted, caught between "
-     "a frown and a smile",
-     "holds that half-frowning, half-smiling look without moving"),
-    ("his lips are pressed shut and his brows are high, plainly holding back "
-     "a laugh",
-     "keeps his lips pressed shut on the laugh without moving"),
-    ("he is grinning openly, eyes crinkled at the corners",
-     "holds that open grin without moving"),
-    ("one eyebrow is raised and his mouth is slightly open as he leans a "
-     "little closer",
-     "holds that leaning, one-eyebrow look without moving"),
-    ("his jaw has gone slack and he is blinking slowly, as if recounting "
-     "something",
-     "keeps that slack-jawed look without moving"),
-    ("his mouth is open in a delighted laugh with no sound coming out",
-     "holds that silent, delighted laugh without moving"),
-    ("his chin is lifted and he is nodding very slightly, mouth open",
-     "keeps his chin lifted and nods very slightly"),
-    ("his eyes have gone round and one hand has stopped halfway to his mouth",
-     "keeps his hand frozen halfway to his mouth"),
-    ("his brows are high and he is smiling with his mouth closed, looking "
-     "pleased with himself",
-     "holds that closed-mouth, pleased smile without moving"),
-    ("his eyes are narrowed slightly and his mouth is open, plainly not "
-     "believing it",
-     "holds that disbelieving look without moving"),
+    # ⛔⛔ A CARA DE SURPRESA SAIU (2026-08-07, ordem do operador). O pool
+    # anterior tinha 12 entradas e SETE delas eram boca aberta ou olho
+    # arregalado — "his eyes are wide... his mouth open in plain astonishment",
+    # "his eyes have gone round", "his jaw has gone slack". Renderizado, aquilo
+    # nao le' como reacao humana: le' como emoji de espanto colado num homem,
+    # e e' uma das assinaturas mais reconheciveis de video feito por IA.
+    # ⭐ O que fica: uma pessoa NORMAL olhando para o copo. A reacao continua
+    # variando de sabor — atencao, aprovacao contida, interesse, um aceno — e
+    # continua muda e virada para o copo, nunca para a lente.
+    # ⚠️ Cada entrada e' (clausula da IMAGE, clausula do TAKE) e as duas tem de
+    # descrever a MESMA coisa: o take anima a image, nao inventa outro gesto.
+    ("his face is relaxed and he is looking down at it steadily",
+     "keeps looking down at it, his face relaxed and still"),
+    ("he is watching it with a small closed-mouth smile",
+     "holds that small closed-mouth smile without moving"),
+    ("his brows are relaxed and his lips are pressed lightly together",
+     "keeps his lips lightly pressed and does not move"),
+    ("he is looking at it with his head very slightly tilted",
+     "keeps his head slightly tilted and does not move"),
+    ("he is nodding once, slowly, his mouth closed",
+     "finishes the slow nod and then stays still"),
+    ("his eyes are steady on it and one corner of his mouth is lifted",
+     "holds that one-sided look without moving"),
+    ("he is looking down at it with a calm, unhurried expression",
+     "keeps that calm expression and does not move"),
+    ("his chin is lowered slightly and he is looking at it from under his brows",
+     "keeps his chin lowered and does not move"),
+    ("he is looking at it plainly, his face giving nothing away",
+     "keeps that plain expression without moving"),
+    ("his mouth is closed and he is looking at it the way a man reads a label",
+     "keeps reading it with his mouth closed, not moving"),
+    ("he is looking at it and breathing out slowly through his nose",
+     "finishes the slow breath and stays looking at it"),
+    ("his expression is settled and he is looking at it without blinking much",
+     "keeps that settled expression and does not move"),
 ]
 
 BO_HOMEM = (
