@@ -219,7 +219,7 @@ class App(tk.Tk):
         cb = ttk.Combobox(cx, textvariable=self.var_pag, values=sorted(self.m.ETNIA),
                           state="readonly", width=9, font=F_UI)
         cb.pack(side="right", padx=(0, 14), ipady=4)
-        cb.bind("<<ComboboxSelected>>", lambda _e: self.sortear())
+        cb.bind("<<ComboboxSelected>>", lambda _e: self._escolher_pagina())
         tk.Label(cx, text="página", font=F_SMALL, bg=BG,
                  fg=MUTED).pack(side="right", padx=(0, 5))
 
@@ -547,6 +547,14 @@ class App(tk.Tk):
     def sortear(self):
         seed = self.var_seed.get().strip()
         self.rng = random.Random(int(seed)) if seed.isdigit() else random.Random()
+        # ⭐ PELE TRAVADA NUM MOTOR DE ETNIA-POR-PAGINA: a trava e' aplicada
+        # AQUI, sorteando dentro do grupo. Sem isto o botao segurava so' o
+        # primeiro video e o SORTEAR seguinte trazia a outra pele de volta —
+        # era o "botao que nao trava" de novo, so' que uma tela adiante.
+        if self.pele_travada and not self.pele_travavel:
+            grupo = self.grupos.get(self.pele_travada) or []
+            if grupo and self.var_pag.get() not in grupo:
+                self.var_pag.set(self.rng.choice(grupo))
         travas = self.travas()
         args = (self.var_pag.get(), self.rng, self.m._carregar_ledger())
         self.spec = (self.m.sortear(*args) if travas is None
@@ -629,33 +637,56 @@ class App(tk.Tk):
     def pele_atual(self):
         return "clara" if "white" in self.m.ETNIA[self.var_pag.get()] else "escura"
 
-    def trocar_pele(self, pele):
-        """Sorteia uma pagina daquela pele e refaz o video inteiro.
-
-        ⭐ Motor com PELE_TRAVAVEL (etnia livre, caso do CLEAN V2): o botao
-        vira TRAVA — clicou, todo sorteio respeita ate' destravar (clicar de
-        novo na mesma pele). Trocar a pagina nao adiantaria: o V2 ignora
-        `ETNIA[pagina]` de proposito, e era por isso que o botao acendia sem
-        travar nada."""
-        if self.pele_travavel:
-            if self.pele_travada == pele:
-                self.pele_travada = None
-                self.sortear()
-                self._toast("pele livre")
-            else:
-                self.pele_travada = pele
-                self.sortear()
-                self._toast("pele travada: %s" % pele)
-            return
-        if self.pele_atual() == pele:
-            atuais = [p for p in self.grupos[pele] if p != self.var_pag.get()]
-            if not atuais:            # so' existe uma pagina dessa pele
-                self._toast("já está em pele %s" % pele)
-                return
-            self.var_pag.set(self.rng.choice(atuais))
-        else:
-            self.var_pag.set(self.rng.choice(self.grupos[pele]))
+    def _escolher_pagina(self):
+        """⚠️ ESCOLHA EXPLICITA VENCE A TRAVA. Se a pele esta' travada em
+        `escura` e o operador seleciona no combo uma pagina de pele clara, ele
+        esta' dizendo o que quer — e o painel obedecendo a trava por cima disso
+        seria o botao decidindo contra o clique. A trava cai e o botao apaga.
+        ⛔ So' vale para motor de etnia-por-pagina: onde a etnia e' livre
+        (PELE_TRAVAVEL) a pagina nao manda na etnia e nao ha' conflito."""
+        if (self.pele_travada and not self.pele_travavel
+                and self.var_pag.get() not in (self.grupos.get(self.pele_travada) or [])):
+            self.pele_travada = None
+            self._toast("pele destravada — você escolheu a página na mão")
         self.sortear()
+
+    def trocar_pele(self, pele):
+        """⭐⭐ O BOTAO DE PELE E' UMA TRAVA — EM TODOS OS AGENTES (2026-08-06).
+
+        Antes ele fazia DUAS coisas diferentes conforme o motor, e o operador
+        batia de frente com isso: nos que declaram `PELE_TRAVAVEL` era trava
+        (clicou, fica), e nos outros era um pulo — trocava para uma pagina
+        daquela pele UMA vez, e o proximo SORTEAR podia devolver a outra. Mesmo
+        botao, duas promessas: o tipo de coisa que faz o operador parar de
+        confiar no painel inteiro.
+
+        Agora clicar SEMPRE trava, e clicar de novo na mesma pele destrava. O
+        que muda por baixo e' so' QUEM filtra:
+
+          · motor com PELE_TRAVAVEL  -> a trava vai em `travas["pele"]` e o
+            motor remonta o video em volta dela (a etnia dele e' livre, nao
+            vem da pagina);
+          · motor sem a flag         -> a etnia vem de `ETNIA[pagina]`, entao
+            quem filtra e' a PAGINA, a cada sorteio (ver `sortear`).
+        """
+        if self.pele_travada == pele:
+            self.pele_travada = None
+            self.sortear()
+            self._toast("pele livre")
+            return
+        self.pele_travada = pele
+        # motor de etnia-por-pagina: ja' pula para uma pagina da pele pedida,
+        # senao o primeiro sorteio sairia com a pagina errada em cena.
+        if not self.pele_travavel:
+            grupo = self.grupos.get(pele) or []
+            if not grupo:
+                self.pele_travada = None
+                self._toast("este agente nao tem pagina de pele %s" % pele)
+                return
+            if self.var_pag.get() not in grupo:
+                self.var_pag.set(self.rng.choice(grupo))
+        self.sortear()
+        self._toast("pele travada: %s" % pele)
         self._toast("pele %s — página %s" % (pele, self.var_pag.get()))
 
     ROTULO_MODO = {

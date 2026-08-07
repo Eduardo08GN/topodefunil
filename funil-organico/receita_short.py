@@ -209,6 +209,30 @@ CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 # ⛔ ZERO texto legivel em qualquer set: a CAUDA promete "No on-screen text".
 # ⚠️ O selo `V` fica so' no mundo da fonte; os outros sao `N` (extrapolacao
 # nossa, sem render — quem valida em campo e' o operador).
+# ⭐⭐ TRAVA DE PELE (2026-08-06, ordem do operador: *"ajuste todos os agentes
+# python para serem compativeis com o item de selecionar a cor de pele"*).
+# ⛔ Este motor tinha o MESMO botao morto que o CLEAN V2 tinha: a etnia sai de
+# dentro do MUNDO, nao de `ETNIA[pagina]`, entao o seletor clara/escura do
+# painel — que funciona trocando a PAGINA — acendia e o sorteio seguia
+# aleatorio. Achado medindo os 18 agentes, nao lendo o codigo.
+# ⚠️ Lista EXPLICITA, nunca "tudo que nao e' branco": e' a mesma correcao que o
+# CLEAN V2 pagou em campo (travou `escura` e recebeu um Asian American).
+PELE_ETNIAS = {
+    "escura": ("Black American", "West African", "Jamaican American",
+               "Caribbean American", "Creole American"),
+    "clara": ("white American", "Cajun American"),
+}
+PELE_TRAVAVEL = True
+
+
+def _pele_de(etnia):
+    """A pele da etnia pela lista explicita — ou None (neutra, so' no livre)."""
+    for _pele, _ets in PELE_ETNIAS.items():
+        if etnia in _ets:
+            return _pele
+    return None
+
+
 MUNDOS = [
     # ---- a fonte: farmhouse americana --------------------------------------
     {"id": "fazenda_americana", "selo": "V", "familia": "americana",
@@ -1400,23 +1424,44 @@ def sortear(pagina, rng, led, travas=None):
     # ⭐ O MUNDO VEM PRIMEIRO: ele decide cozinha, bancada, traje, luz, ambiencia,
     # as etnias que aquele lugar comporta E quais LUGARES o payoff aceita.
     # Sorteio por FAMILIA e so' depois por mundo dentro dela.
+    # ⭐ TRAVA DE PELE — o mundo so' sai entre os que COMPORTAM a pele, e a
+    # etnia sorteia dentro do mundo ja' filtrada.
+    # ⛔ O filtro da ETNIA e' tao necessario quanto o do mundo: sem ele o mundo
+    # passa (tem UMA etnia da pele) e a etnia sorteia entre TODAS as dele.
+    _pele = travas.get("pele")
+
+    def _comporta(_m):
+        return not _pele or any(_pele_de(e) == _pele for e in _m["etnias"])
+
+    def _etnias_ok(_m):
+        return [e for e in _m["etnias"] if not _pele or _pele_de(e) == _pele]
+
     fam_trava = travas.get("familia_mundo")
     if travas.get("mundo"):
         mundo = _por_id(MUNDOS, travas["mundo"])
+        if not _comporta(mundo):
+            # ⛔ entre respeitar o mundo e respeitar a pele, cede o MUNDO
+            mundo = rng.choice([m for m in MUNDOS
+                                if m["familia"] == mundo["familia"]
+                                and _comporta(m)]
+                               or [m for m in MUNDOS if _comporta(m)])
     else:
         if fam_trava and fam_trava != "livre":
             fam = fam_trava
         else:
             fam = _fresco([{"id": f} for f in FAMILIAS_MUNDO],
                           usados.get("familia_mundo", []), rng, "id")["id"]
-        mundo = rng.choice([m for m in MUNDOS if m["familia"] == fam])
+        _cand = [m for m in MUNDOS if m["familia"] == fam
+                 and _comporta(m)]
+        # familia sem mundo daquela pele: a FAMILIA cede, a pele nao
+        mundo = rng.choice(_cand or [m for m in MUNDOS if _comporta(m)])
 
     # ⭐⭐ O TOGGLE. `livre` (ou ausente) sorteia; qualquer outro valor fixa.
     enq = travas.get("enquadramento")
     if enq in (None, "", "livre"):
         enq = rng.choice(ENQUADRAMENTOS)
 
-    et = travas.get("etnia") or rng.choice(mundo["etnias"])
+    et = travas.get("etnia") or rng.choice(_etnias_ok(mundo))
     cor = travas.get("cor") or rng.choice(mundo["cores"])
     ref = _por_id(REFS, travas["ref"], "cabeca") if travas.get("ref") \
         else rng.choice(REFS)

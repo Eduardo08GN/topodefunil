@@ -500,48 +500,48 @@ NARRADORAS = [
     {"id": "solto_longo", "idade": 30,
      "cabelo": "long hair worn loose and falling well past her shoulders",
      "oculos": "",
-     "porte": "slim with a narrow waist",
+     "porte": "a gym-fit hourglass figure, a full bust, a flat toned stomach, firm round glutes and long lean legs",
      "rosto": "a light spray of freckles across her nose and a small dark mole "
               "at her jawline",
      "roupa": "a fitted white tank top and denim cut-offs"},
     {"id": "rabo_alto", "idade": 29,
      "cabelo": "hair pulled back into a high sleek ponytail",
      "oculos": "",
-     "porte": "tall and long-legged",
+     "porte": "a tall athletic build, a full high bust, a tight defined midsection, firm glutes and long toned legs",
      "rosto": "large dark eyes and a shallow dimple in her left cheek",
      "roupa": "a pale-blue button-front shirt tied at the waist"},
     {"id": "tranca_unica", "idade": 28,
      "cabelo": "very long hair gathered over one shoulder in a single thick "
                "braid",
      "oculos": "",
-     "porte": "slim-hipped and lightly toned",
+     "porte": "a sculpted gym body, a full bust, visible abs, a small waist and firm rounded glutes",
      "rosto": "a full mouth, a beauty mark at the corner of her right eye and "
               "gold hoop earrings",
      "roupa": "a rust ribbed tank top"},
     {"id": "bob_platina", "idade": 31,
      "cabelo": "a bleached-platinum bob cut sharp at the jaw",
      "oculos": "",
-     "porte": "petite and fine-boned",
+     "porte": "a compact fitness figure, a full bust, a hard flat stomach, a narrow waist and firm glutes",
      "rosto": "a faint scar through her right eyebrow and a straight nose",
      "roupa": "a black cropped tee and high-waisted white shorts"},
     {"id": "volume_solto", "idade": 29,
      "cabelo": "thick hair worn big and loose, standing out wide around her "
                "face",
      "oculos": "",
-     "porte": "slim and lightly toned through the arms",
+     "porte": "an athletic figure with a deep waist-to-hip line, a generous bust, a toned flat stomach, firm glutes and strong smooth legs",
      "rosto": "high cheekbones and a small mole on her right cheekbone",
      "roupa": "a mustard knit tank top and a thin gold chain"},
     {"id": "coque_bagunca", "idade": 32,
      "cabelo": "hair twisted up into a loose messy bun",
      "oculos": "mirrored aviator sunglasses pushed up into her hair",
-     "porte": "slim with a flat stomach",
+     "porte": "a lean gym-built figure, a full bust, sharply defined abs, a tiny waist and firm high glutes",
      "rosto": "wide-set eyes, a light spray of freckles and a shallow dimple "
               "in her chin",
      "roupa": "a pale-blue tank top and white shorts"},
     {"id": "cachos_medios", "idade": 30,
      "cabelo": "shoulder-length hair worn in loose curls",
      "oculos": "",
-     "porte": "slim-waisted and softly built",
+     "porte": "a full-figured fitness body, a full bust, a toned stomach, wide firm hips and round glutes",
      "rosto": "a full mouth and a small crescent birthmark at her right temple",
      "roupa": "a rust-orange top with the sleeves pushed up"},
     # ⚠️ `crop of hair` e `a small silver hoop in each ear` NAO sao enfeite: a
@@ -553,46 +553,46 @@ NARRADORAS = [
     {"id": "crop_curto", "idade": 29,
      "cabelo": "a short tousled crop of hair swept hard to one side",
      "oculos": "round sunglasses pushed up on her forehead",
-     "porte": "slim and narrow-shouldered",
+     "porte": "a trained slender figure, a full bust, a flat sculpted stomach, a narrow waist and firm glutes",
      "rosto": "freckles scattered over her collarbones and a small silver hoop "
               "in each ear",
      "roupa": "a black cropped tank top and light denim shorts"},
     {"id": "volume_alto", "idade": 34,
      "cabelo": "hair worn big and swept up off her face",
      "oculos": "",
-     "porte": "tall and strong-shouldered",
+     "porte": "a tall strong fitness build, a full bust, a toned midsection, firm glutes and powerful smooth legs",
      "rosto": "a wide bright smile and a small mole above her left brow",
      "roupa": "an emerald cropped knit top and thin gold hoops"},
     {"id": "franja_cortina", "idade": 28,
      "cabelo": "long hair with a soft curtain fringe framing her face",
      "oculos": "narrow black sunglasses pushed up on her head",
-     "porte": "slim and softly rounded",
+     "porte": "a strongly shaped athletic figure, a full round bust, a flat toned belly, a small waist and firm glutes",
      "rosto": "a heart-shaped face and a dark mole under her left eye",
      "roupa": "a cream ribbed top and pale denim shorts"},
     {"id": "liso_glossy", "idade": 33,
      "cabelo": "long jet-black hair worn straight and glossy",
      "oculos": "",
-     "porte": "tall and athletic through the legs",
+     "porte": "a long-limbed gym figure, a full bust, visible abs, a cinched waist and firm lifted glutes",
      "rosto": "sharp cheekbones and a small gold stud in her left nostril",
      "roupa": "a burgundy wrap top and dark jeans"},
     {"id": "meio_preso", "idade": 31,
      "cabelo": "hair pinned back on one side and left down on the other",
      "oculos": "tortoiseshell sunglasses hooked into the front of her top",
-     "porte": "petite and lightly muscled",
+     "porte": "a petite hard-trained figure, a full bust, a flat stomach and firm round glutes",
      "rosto": "a tiny freckle on her left eyelid and a faint pale scar on her "
               "left cheekbone",
      "roupa": "a white cropped tee and high-waisted jeans"},
     {"id": "ondas_soltas", "idade": 29,
      "cabelo": "long hair worn in loose waves pushed back off her face",
      "oculos": "folding sunglasses hooked at her collar",
-     "porte": "tall and long-limbed",
+     "porte": "a tall toned figure, a full bust, a lean defined waist, firm glutes and long tanned legs",
      "rosto": "skin tanned from the sun and a small dark beauty mark just "
               "above her lip",
      "roupa": "a white ribbed tank top and khaki shorts"},
     {"id": "coque_baixo", "idade": 32,
      "cabelo": "hair pulled into a low twisted knot at the nape",
      "oculos": "",
-     "porte": "slim through the waist with full hips",
+     "porte": "a full hourglass gym figure, a generous bust, a flat trained stomach, wide hips and firm glutes",
      "rosto": "smooth-skinned, with a deep dimple that only shows on the left",
      "roupa": "a sage-green scoop top and dark jeans"},
 ]
@@ -1725,7 +1725,40 @@ def sortear(pagina, rng, ledger, travas=None):
 # 3 TAKE agrupados. ⛔ Nunca intercalar. Numeracao x/03. Destino: AdBatch
 # Vertical 3.
 
-def _descricao_dela(p):
+# ⭐⭐ EX14 — A NARRADORA E' SEMPRE LINDA E DE CORPO FITNESS (ordem do
+# operador, 2026-08-06): *"o agente exterior short deve gerar somente mulheres
+# extremamente lindas e sensuais, com corpos fitness de academia, barriga
+# sarada, seios e gluteos duros"*.
+# ⚠️ O pool anterior dizia `slim`, `petite`, `lightly toned` — magra, que nao e'
+# a mesma coisa que treinada. Os 14 portes foram reescritos com a mesma
+# anatomia de frase: SILHUETA -> busto -> abdomen -> gluteo -> pernas.
+# ⛔ A ordem das clausulas nao e' estetica: e' o que deixa o filtro do REF
+# cortar exatamente o que esta' fora de quadro, sem perder o resto.
+# ⛔⛔ NAO EXISTE FRASE DE BELEZA AQUI, E E' DE PROPOSITO. A primeira versao
+# desta regra injetava "a strikingly beautiful and sensual woman" no REF — e o
+# proprio linter reprovou 420 vezes, porque `beautiful` esta' no
+# BANIDOS_DESEJO. Ao ler o EX9 inteiro, a razao fica clara: a regra se chama
+# "A LEI DA REF: LINDA E JOVEM" e quer o MESMO resultado que o operador pediu.
+# Ela so' diz COMO — *"a atratividade entra por DESCRICAO FISICA CONCRETA"*.
+# Os 14 portes fitness SAO essa descricao concreta. O adjetivo seria a versao
+# preguicosa da mesma ordem, e a que este agente ja' provou que o gerador
+# recusa. ⛔ Nao reintroduzir: mexer aqui e' reabrir 420 reprovacoes.
+
+# ⛔ FORA DE QUADRO NAO SE DESCREVE. O REF e' `chest up`: pedir abdomen,
+# cintura, gluteo ou perna numa foto cortada no peito e' ordem contraditoria, e
+# o gerador "resolve" contradicao do jeito errado. E' a mesma licao do CL24 do
+# CLEAN, que custou uma rodada de REFs erradas para ser aprendida.
+_FORA_DO_PEITO = ("stomach", "abs", "belly", "waist", "midsection",
+                  "glute", "hip", "leg")
+
+
+def _porte_ref(porte):
+    """O porte SEM o que o `chest up` nao mostra. Silhueta e busto ficam."""
+    return ", ".join(c for c in porte.split(", ")
+                     if not any(t in c.lower() for t in _FORA_DO_PEITO))
+
+
+def _descricao_dela(p, so_peito=False):
     """A narradora em UMA oracao, com os eixos que a fazem ser OUTRA pessoa.
 
     ⚠️ Dez pessoas descritas so' por cabelo sao a MESMA pessoa dez vezes, e o
@@ -1738,7 +1771,9 @@ def _descricao_dela(p):
         partes.append(p["oculos"])
     partes.append(p["rosto"])
     marca = ", ".join(partes[:-1]) + " and " + partes[-1]
-    return "%s, with %s" % (p["porte"], marca)
+    # ⭐ EX14: no REF entra so' o que cabe no `chest up` (ver _porte_ref)
+    porte = _porte_ref(p["porte"]) if so_peito else p["porte"]
+    return "%s, with %s" % (porte, marca)
 
 
 def _descricao_dele(p):
@@ -1797,7 +1832,8 @@ def montar(spec):
         "facing the camera directly, calm steady expression. %s. Wearing %s. "
         "Plain neutral gray background, soft even frontal light. No subtitles, "
         "no captions, no burned-in text, no watermark."
-        % (nar["idade"], et, _maiuscula(_descricao_dela(nar)), nar["roupa"])
+        % (nar["idade"], et, _maiuscula(_descricao_dela(nar, so_peito=True)),
+           nar["roupa"])
     )
 
     # --- IMAGE 01/03 — ⭐⭐ A GEOMETRIA TRAVADA (EX4) ------------------------
