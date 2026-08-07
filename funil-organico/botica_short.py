@@ -150,8 +150,43 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 # mao, o liquido opaco e cremoso, dois canudos dentro.
 # ⛔ Ele so' existe na CENA 3, e e' o objeto da keyword — esta' na mao no frame em
 # que a boca diz `gelatin,`. Mostra-lo antes entrega o payoff antes da promessa.
-BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, two "
-           "paper straws standing in it")
+# ⛔⛔ UM CANUDO, E O COPO VARIA — ordem do Ed, repetida. Ele ja tinha pedido
+# ("dois canudos? quero so um") e eu nao apliquei AQUI: isto era uma CONSTANTE,
+# nao um pool, entao saia identico em 100% dos videos, sempre com os dois
+# canudos. Constante nao varia por definicao — foi o proprio formato que fez o
+# pedido dele nao chegar neste agente.
+#
+# ⚠️ O QUE NAO PODE MUDAR entre as variacoes, porque e' o que faz a cena
+# funcionar: o liquido e' OPACO e CLARO (a gelatina tem de parecer bebida, nao
+# agua), o copo esta' CHEIO ATE A BORDA, e ele e' o objeto que a mao empurra
+# para a lente no frame em que a boca diz `gelatin`. O que varia e' o vasilhame
+# e o canudo — nunca a leitura.
+COPOS = [
+    "a tall clear glass filled to the top with a thick pale drink, a single "
+    "paper straw standing in it",
+    "a straight-sided mason jar filled to the top with a thick pale drink, one "
+    "striped paper straw standing in it",
+    "a heavy tumbler filled to the top with a thick pale drink, one short paper "
+    "straw standing in it",
+    "a ribbed drinking glass filled to the top with a thick pale drink, a single "
+    "paper straw standing in it",
+    "a stemless glass filled to the top with a thick pale drink, one paper straw "
+    "leaning against the rim",
+    "a tall narrow glass filled to the top with a thick pale drink, a single "
+    "wide paper straw standing in it",
+    "a squat wide-mouthed glass filled to the top with a thick pale drink, one "
+    "paper straw standing in it",
+    "a clear glass mug filled to the top with a thick pale drink, a single paper "
+    "straw standing in it",
+    "a footed glass filled to the top with a thick pale drink, one paper straw "
+    "standing in it",
+    "a plain drinking glass filled to the top with a thick pale drink, a single "
+    "paper straw resting in it",
+]
+
+# ⚠️ mantido como nome so' para o que ainda referencia a constante fora do
+# sorteio; o valor real do video vem de `spec["copo"]`.
+BO_COPO = COPOS[0]
 
 # ⭐⭐ BO6 — O HOMEM MUDO. Ordem do operador: *"no take final, alem do ref
 # falando, havera um homem sempre atras, com cara de espanto e surpresa e
@@ -824,6 +859,64 @@ MUNDOS = [
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ O TOGGLE DE PELE — ORDEM DO ED, 2026-08-06
+# ---------------------------------------------------------------------------
+# Ele setou `pele clara` e recebeu ora REF clara, ora escura. O motivo: neste
+# agente a etnia NAO vem da pagina, vem do MUNDO sorteado
+# (`rng.choice(mundo["etnias"])`) — e o seletor de pele da UI, para motor que
+# nao declara `PELE_TRAVAVEL`, so' TROCA DE PAGINA. Trocar a pagina aqui nao
+# muda nada. O toggle estava inerte, e a palavra `pele` nao aparecia uma vez
+# neste arquivo fora de um comentario.
+#
+# ⛔ A TRAVA ENTRA ANTES DO SORTEIO DA FAMILIA, nao depois na etnia. Filtrar so'
+# a etnia deixaria o cenario, o traje, a luz e o audio do mundo errado — uma
+# mulher branca numa cozinha do Caribe com jarros de casca de arvore. O eixo do
+# BOTICA arrasta o mundo inteiro, entao a trava tem de agir no mundo.
+#
+# ⚠️ ONDE EU DECIDI, PARA VOCE PODER MOVER EM UMA LINHA: quatro etnias sao
+# genuinamente limitrofes num toggle binario. Coloquei `Mexican American`,
+# `Andean South American`, `Mediterranean` e `East Asian American` em CLARA, e
+# `South Asian American` em ESCURA. Se discordar de alguma, e' mudar de lista.
+PELE_TRAVAVEL = True
+
+
+# ⛔⛔ A CLASSIFICACAO E' LISTA EXPLICITA, NUNCA "tudo que nao e' branco".
+# Correcao de campo do operador em 2026-08-05, com print: no CLEAN V2 ele
+# travou `escura` e recebeu um REF Asian American. **Para ele, escura = NEGRO.**
+# ⚠️ Asiatico, latino, mediterraneo, andino e mestico nao sao nem clara nem
+# escura — so' saem com a pele LIVRE.
+# ⛔ MESMA LISTA DOS OUTROS MOTORES (cha, dupla, placa, trio). Eu tinha escrito
+# uma tabela propria classificando Mexican/Mediterranean/Andean como clara e
+# South Asian como escura — exatamente o erro que ele ja' havia corrigido, e
+# classificacao divergente entre agentes e' o fragmento espelhado que a P9
+# proibe. Copiado de `cha_short.py`, sem uma virgula de diferenca.
+PELE_ETNIAS = {
+    "escura": ("Black American",),
+    "clara": ("white American",),
+}
+
+
+def _pele_de(etnia):
+    """A pele da etnia pela lista explicita — ou None (neutra, so' no livre)."""
+    for pele, ets in PELE_ETNIAS.items():
+        if etnia in ets:
+            return pele
+    return None
+
+
+def mundos_da_pele(pele):
+    """Os mundos que COMPORTAM a pele pedida.
+
+    ⛔ Cede em vez de derrubar: se a trava nao deixar mundo nenhum de pe,
+    devolve a lista inteira. Botao que zera o sorteio e' botao que quebra o
+    app, nao que muda a REF — licoes-de-construcao.
+    """
+    if pele not in ("clara", "escura"):
+        return MUNDOS
+    filtrados = [m for m in MUNDOS if any(_pele_de(e) == pele for e in m["etnias"])]
+    return filtrados or MUNDOS
+
 
 # ---------------------------------------------------------------------------
 # ⭐ METODOS — O PREPARO, E ELE NAO E' FIXO
@@ -1420,12 +1513,16 @@ FECHOS = [
     "and a gelatin trick I keep to myself",
     "and one gelatin trick nobody talks about",
     "and a secret gelatin trick my grandmother used",
-    # + 2026-08-05 — o literal `gelatin trick` e' intocavel; varia o qualificador
-    "and a quiet gelatin trick",
+    # ⛔ Era "and a quiet gelatin trick" — Ed, 2026-08-06: *"que adjetivo sem
+    # sentido e nonsense e esse?"*. Truque silencioso nao significa nada e ainda
+    # dilui o nome do mecanismo. O literal e' intocavel; o que varia tem de
+    # dizer algo de ACESSO ou ORIGEM, como o resto do pool ja fazia.
+    # ⚠️ O `_adjetivo_do_mecanismo` em short_comum agora reprova isso nos 18.
+    "and a gelatin trick nobody wrote down",
     "and one gelatin trick from home",
-    "plus the gelatin trick behind it",
+    "plus the gelatin trick that made it work",
     "and a gelatin trick nobody mentions",
-    "and one secret gelatin trick more",
+    "and one gelatin trick that never left the house",
     "and the gelatin trick that finished it",
     "and a gelatin trick kept in the family",
     "plus one gelatin trick of my own",
@@ -1860,7 +1957,7 @@ TRAVAS_UI = [
 ]
 
 EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "homem", "prop", "substancia",
-                   "metodo", "comum", "raro", "cor", "traje"]
+                   "metodo", "comum", "raro", "cor", "traje", "copo"]
 
 
 def etnias_do_mundo(spec):
@@ -1892,6 +1989,7 @@ EIXOS_UI = [
     ("metodo", "O PREPARO", "METODOS", "id"),
     ("comum", "O COMUM", "COMUNS", "nome"),
     ("raro", "O RARO", "RAROS", "nome"),
+    ("copo", "O COPO", "COPOS", None),
 ]
 
 CENAS_UI = ["1 · a isca + o vilao", "2 · o preparo", "3 · o copo + CTA"]
@@ -2178,22 +2276,39 @@ def sortear(pagina, rng, led, travas=None):
     usados = led.get(pagina, {})
 
     fam_trava = travas.get("familia_mundo")
+    # ⭐ a pele filtra o UNIVERSO de mundos antes de qualquer sorteio (ver a
+    # tabela PELE_DE_ETNIA no topo). Sem trava, `_disponiveis` e' MUNDOS.
+    _pele = travas.get("pele")
+    _disponiveis = mundos_da_pele(_pele)
+    _familias = list(dict.fromkeys(m["familia"] for m in _disponiveis))
     if travas.get("mundo"):
         mundo = _por_id(MUNDOS, travas["mundo"])
     else:
         if fam_trava and fam_trava != "livre":
             fam = fam_trava
         else:
-            fam = _fresco([{"id": x} for x in FAMILIAS_MUNDO],
+            fam = _fresco([{"id": x} for x in _familias],
                           usados.get("familia_mundo", []), rng, "id")["id"]
-        mundo = rng.choice([m for m in MUNDOS if m["familia"] == fam])
+        # ⚠️ o `or` cede: familia travada na UI que nao tem mundo daquela pele
+        # (ex.: nicho=caribenha + pele=clara) mantem a FAMILIA, porque ela foi
+        # escolhida a mao e escolha explicita ganha de toggle.
+        mundo = rng.choice(
+            [m for m in _disponiveis if m["familia"] == fam]
+            or [m for m in MUNDOS if m["familia"] == fam]
+        )
 
-    et = travas.get("etnia") or rng.choice(mundo["etnias"])
+    # ⛔ a etnia tambem cede a pele: um mundo pode listar mais de uma, e sem
+    # este filtro o sorteio poderia devolver a que contradiz a trava.
+    _ets = [e for e in mundo["etnias"] if _pele_de(e) == _pele]         if _pele in ("clara", "escura") else []
+    et = travas.get("etnia") or rng.choice(_ets or mundo["etnias"])
     cor = travas.get("cor") or rng.choice(mundo["cores"])
     # ⭐ O TRAJE E' EIXO PROPRIO desde 2026-08-05, com pool por mundo. Cada
     # entrada e' (template_com_%s_de_cor, nome_curto) — o curto tem de vir do
     # traje SORTEADO, senao a ancora descreve uma roupa que nao esta' em cena.
     reacao = _fresco_traje(REACOES_HOMEM, usados.get("reacao", []), rng)
+    # ⭐ O COPO virou eixo: sorteado, travavel e visivel no painel.
+    copo = travas.get("copo") or _fresco([{"id": c} for c in COPOS],
+                                         usados.get("copo", []), rng, "id")["id"]
     apelo = rng.choice(APELO_EUA)
     # ⛔ NO MODO BELA A ROUPA TAMBEM MUDA. O operador nomeou TRES coisas —
     # *"super models com corpao e pouca roupa"* — e trocar so' o rosto e o corpo
@@ -2235,6 +2350,7 @@ def sortear(pagina, rng, led, travas=None):
 
     spec = {"pagina": pagina, "bela": bool(travas.get("bela")),
             "forte": bool(travas.get("forte")), "mundo": mundo, "etnia": et, "cor": cor,
+            "copo": copo,
             "traje": traje, "reacao": reacao, "apelo": apelo,
             "ref": ref, "homem": homem, "prop": prop, "substancia": sub,
             "metodo": dict(met, vaso_fala=_sem_artigo(met["curto"])),
@@ -2283,7 +2399,7 @@ def montar(spec):
         "Ancora": _cap(_ancora(spec)),
         "vaso": met["vaso"], "vaso_curto": met["curto"], "acao": met["acao"],
         "comum_img": com["img"], "raro_img": raro["img"],
-        "copo": BO_COPO, "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB), "cauda": CAUDA, "band": band,
+        "copo": spec.get("copo", BO_COPO), "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB), "cauda": CAUDA, "band": band,
     }
     v["nao_toca"] = BO_NAO_TOCA % m["sup"]
 
@@ -2565,11 +2681,17 @@ def lint(spec, blocos):
         ach.append(("ERRO", "BO1: IMAGE 01/03 sem o prop sorteado"))
 
     # --- BO5: o copo so' na cena 3 -------------------------------------------
+    # ⚠️ Mede o copo SORTEADO, nao a constante. Quando o copo virou eixo
+    # (2026-08-06), este linter continuou procurando `BO_COPO` — que agora e' so'
+    # a primeira entrada do pool — e acusou 1064 de 1200 sorteios. O linter caiu
+    # junto com a mudanca porque descrevia o copo como ele NAO e' mais escrito;
+    # foi o mesmo erro que quebrou a ancora do TROCA algumas horas antes.
+    copo = spec.get("copo", BO_COPO)
     for nome in ("IMAGE 01/03", "IMAGE 02/03"):
-        if BO_COPO in blocos[nome]:
+        if copo in blocos[nome]:
             ach.append(("ERRO", "BO5: o copo pronto fora da cena 3 (%s) — "
                                 "entrega o payoff antes da promessa" % nome))
-    if BO_COPO not in i3:
+    if copo not in i3:
         ach.append(("ERRO", "BO5: a cena 3 tem de mostrar o copo na mao — e' o "
                             "objeto da keyword"))
 
@@ -2709,7 +2831,8 @@ EIXOS_QUE_MEXEM_NA_COPY = {
 
 TETO_LEDGER = {"familia_mundo": len(FAMILIAS_MUNDO), "prop": len(PROPS),
                "substancia": len(SUBSTANCIAS), "metodo": len(METODOS),
-               "comum": len(COMUNS), "raro": len(RAROS), "homem": len(HOMENS)}
+               "comum": len(COMUNS), "raro": len(RAROS), "homem": len(HOMENS),
+               "copo": len(COPOS)}
 
 MIN_OPCOES = 8
 

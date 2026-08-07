@@ -193,6 +193,40 @@ def bloco_base(blocos, mapa, tipo, cena_base):
 # LINTER
 # ---------------------------------------------------------------------------
 
+# ⛔⛔ O QUE PODE VIR COLADO EM `gelatin trick` — ordem do Ed, 2026-08-06,
+# lendo um take renderizado: *"quiet gelatin trick???? que adjetivo sem sentido
+# e nonsense e esse?"*.
+#
+# O pool do BOTICA varia o QUALIFICADOR do mecanismo de proposito, e a maioria
+# diz algo real sobre ACESSO ou ORIGEM: `secret`, `nobody sells`, `kept in the
+# family`, `I keep to myself`. Mas `quiet` nao diz nada — um truque silencioso
+# nao significa coisa nenhuma, e ainda dilui o nome do mecanismo, que e' o
+# centro de gravidade do funil inteiro.
+#
+# ⚠️ E' ALLOWLIST, nao lista de proibidos. Enumerar adjetivos ruins e' corrida
+# perdida: o proximo seria `gentle`, `humble`, `simple`. O que se permite antes
+# do literal e' artigo, numeral e os DOIS qualificadores aprovados — o resto do
+# tempero vem DEPOIS do literal ("gelatin trick nobody sells"), onde ele
+# qualifica sem se disfarcar de nome.
+_ANTES_DO_MECANISMO = re.compile(r"\b(\w+)\s+gelatin\s+trick\b", re.I)
+_QUALIFICADOR_OK = frozenset((
+    "a", "an", "one", "the", "that", "this", "my", "her", "his", "same",
+    "secret", "whole",
+))
+
+
+def _adjetivo_do_mecanismo(corpo, achados):
+    for m in _ANTES_DO_MECANISMO.finditer(corpo):
+        palavra = m.group(1).lower()
+        if palavra not in _QUALIFICADOR_OK:
+            achados.append((
+                "ERRO",
+                "qualificador '%s' colado em 'gelatin trick' — so' artigo, "
+                "numeral, 'secret' ou 'whole' podem vir antes do literal; o "
+                "resto qualifica DEPOIS ('gelatin trick nobody sells')"
+                % palavra))
+
+
 def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
                limpar_direcao=None, extras=(), cota_min=2, teto_total=None,
                objetos_ok=()):
@@ -259,6 +293,7 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
             achados.append(("ERRO", "expressao literal '%s' ausente — ela morava "
                                     "numa cena que o SHORT nao tem, e precisa "
                                     "vir na copy fundida" % lit))
+    _adjetivo_do_mecanismo(corpo, achados)
 
     # CTA — a cena 3 do SHORT e' a cena 5 do base, mesmas travas
     cta = falas[2]
