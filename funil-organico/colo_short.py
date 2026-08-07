@@ -1365,26 +1365,30 @@ DESMENTIDOS = [
 # ⚠️ A fonte diz "a tablespoon of X to a glass of Y" — e' a gramatica de receita
 # que soa caseira. Mantida.
 RECEITAS = [
-    "A spoon of gelatin and a spoon of ginger in a glass of pomegranate juice, "
-    "every morning on an empty stomach",
-    "A spoon of gelatin and a spoon of turmeric in a glass of warm water, "
-    "first thing in the morning",
-    "A spoon of gelatin in a glass of watermelon juice, every morning before "
-    "you eat anything",
-    "A spoon of gelatin and a squeeze of lemon in a glass of cold water, every "
-    "single morning",
-    "A spoon of gelatin and a spoon of raw honey in a glass of warm milk, "
-    "before bed",
-    "A spoon of gelatin and a spoon of cinnamon in a glass of black coffee, "
-    "every morning",
-    "A spoon of gelatin and a spoon of beet powder in a glass of water, on an "
-    "empty stomach",
-    "A spoon of gelatin in a glass of orange juice with a pinch of cayenne, "
-    "every morning",
-    "A spoon of gelatin and a spoon of ginger in a glass of warm water, twice "
-    "a day",
-    "A spoon of gelatin and a spoon of cocoa in a glass of warm milk, every "
-    "night",
+    # ⛔⛔ MEDIDA E VASILHAME SAIRAM DA BOCA (2026-08-07, ordem do operador:
+    # *"pronunciar spoon, etc e' desperdicar tempo valioso; o mesmo vale para
+    # 'half of a lemon' em vez de apenas 'lemon'"* · *"ela nao precisa ter que
+    # falar colher para aparecer uma colher na receita, tanto faz"*).
+    # A colher CONTINUA em cena — so' sai do audio.
+    #
+    # ⭐ E NAO E' ECONOMIA DE ESTILO, E' O CORTE DE FALA: a cena 2 declarava
+    # teto de 32 palavras contra o limite fisico de 25 em 8s, e 100% das falas
+    # estouravam. `A spoon of gelatin and a spoon of cocoa in a glass of warm
+    # milk` gastava NOVE palavras em duas colheres e um copo que o quadro ja'
+    # mostra. Agora sao quatro.
+    # ⚠️ FICA o momento do dia (vende habito) e FICA `gelatin`, que e' o
+    # literal do mecanismo e a palavra do CTA.
+    "Gelatin and ginger in pomegranate juice, every morning on an empty "
+    "stomach",
+    "Gelatin and turmeric in warm water, first thing in the morning",
+    "Gelatin in watermelon juice, every morning before you eat anything",
+    "Gelatin and lemon in cold water, every single morning",
+    "Gelatin and raw honey in warm milk, before bed",
+    "Gelatin and cinnamon in black coffee, every morning",
+    "Gelatin and beet powder in water, on an empty stomach",
+    "Gelatin in orange juice with cayenne, every morning",
+    "Gelatin and ginger in warm water, twice a day",
+    "Gelatin and cocoa in warm milk, every night",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — sao
@@ -1491,8 +1495,17 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 # uma semana, e classificacao divergente e' o fragmento espelhado que a P9 proibe.
 MODO_BELA = True
 
-TETO_FALA = {1: 25, 2: 32, 3: 25}
-PISO_FALA = {1: 20, 2: 22, 3: 24}
+# ⛔ O TETO DA CENA 2 CAIU DE 32 PARA 25 (2026-08-07). O 32 era o teto da copy
+# VERBOSA — `A spoon of gelatin and a spoon of cocoa in a glass of warm milk`
+# gastava nove palavras em duas colheres e um copo. Com medida e vasilhame fora
+# da boca, a fala cabe no limite FISICO de 25 em 8s, que e' o mesmo dos outros
+# 18 motores. O medidor acusava 100% de corte de fala nesta cena; agora 0%.
+# ⚠️ Teto declarado acima do fisico nao e' folga, e' permissao para cortar fala.
+TETO_FALA = {1: 25, 2: 25, 3: 25}
+# ⚠️ O piso da cena 2 caiu de 22 para 18 pelo MESMO motivo do teto: a fala
+# enxuta entrega o mesmo conteudo em menos palavra, e piso alto demais nao
+# produz densidade — produz um filtro que rejeita a copy boa e devolve a longa.
+PISO_FALA = {1: 20, 2: 18, 3: 24}
 
 
 # ---------------------------------------------------------------------------
