@@ -41,10 +41,10 @@ qualquer agente novo.
 > **Quando o Ed disser "os agentes" — melhorar, ajustar, medir, ler — ele está
 > sempre falando dos SHORT.** Não pergunte qual.
 
-Os **dezoito agentes** deste funil são os `<angulo>_short.py` em `funil-organico/`:
+Os **dezenove agentes** deste funil são os `<angulo>_short.py` em `funil-organico/`:
 `clean` · `clean_v2` · `escandalo` · `troca` · `organicwave` · `ressurreicao` ·
 `flagrante` · `pee` · `vazamento` · `necrose` · `exterior` · `colo` · `receita` ·
-`botica` · `dupla` · `placa` · `cha` · `trio`.
+`botica` · `dupla` · `placa` · `cha` · `trio` · `falta`.
 Três cenas de 8s, destino AdBatch Vertical 3.
 **Cada um é autossuficiente e é a FONTE DA VERDADE do seu ângulo** — correção de
 regra entra no `_short`.
@@ -137,8 +137,22 @@ de "duas amigas comparando" para "alguém apresentando dois casos". Corta para a
 cozinha da mesma casa (a REF + uma delas) e fecha na cena do EXTERIOR — ela com
 o copo, ele **cortado no peito, sem rosto**, com o prop grande na cintura.
 ⛔ O CTA da fonte é `book`, proibido aqui: virou `gelatin` — Alexis Lin
-Wellness, reel 1255806096524989).
-Tabela completa com evidências no WORKFLOW.md. Todos enxutos: regras
+Wellness, reel 1255806096524989),
+**FALTA** (a receita entregue **inteira menos um pedaço**, e o vídeo diz isso
+na cara: a isca deixa de ser *"te mando a receita"* e vira **te mando o pedaço
+que falta** — que É o gelatin trick. ⭐ É o único ângulo em que a promessa do
+CTA nasce nomeada dentro da cena 2 (`the missing part`) e reaparece literal no
+CTA; o guarda de eco do motor bloqueia repetição entre cenas **menos** essa,
+que é a costura. ⭐ Duas mulheres nas três cenas e ⛔ **nenhum homem** — a
+fonte tem um cozinhando ao fundo e ele saiu por ordem do operador. O prop do
+hook é **eixo sorteado**: geoduck OU peça anatômica peniana, e ele **muda na
+tela** durante o despejo — ⚠️ com escala **diferencial**, nunca uniforme, que é
+a lição paga do RESSURREICAO. MODO BELA de nascença, 15 arquétipos por região
+dos EUA — reel 1753888712524981).
+Tabela completa com evidências no WORKFLOW.md.
+⚠️ **Essa tabela está atrasada**: DUPLA, PLACA, CHA, TRIO e FALTA ainda não têm
+linha lá — os cinco são motor-only (sem `AGENTE_ED_*.md`), e a descrição acima
+é hoje a fonte da verdade deles. Todos enxutos: regras
 próprias + mecânica por ponteiro (V4/PRISMA/arsenal). O PRISMA sorteia a spec;
 o especialista do ângulo sorteado executa. ⛔ `fake_broadcast` está banido.
 
