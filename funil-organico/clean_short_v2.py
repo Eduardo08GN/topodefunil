@@ -1343,7 +1343,7 @@ CTAS = [
     "Comment gelatin, and I'll send exactly what to buy, right now.",
     "Comment gelatin, and I'll send the measurements straight away.",
     "Comment gelatin, to get the full recipe right now.",
-    "Comment gelatin, and I'll send the part I can't post here.",
+    "Comment gelatin, and I'll send the recipe I can't post here.",
     "Comment gelatin, and I'll send you the secret trick.",
     "Comment gelatin, and I'll send the trick that makes these work.",
     "Comment gelatin, and I'll send you the complete trick.",

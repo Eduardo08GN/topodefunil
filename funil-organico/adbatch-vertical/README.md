@@ -38,12 +38,15 @@ Toda a nossa doutrina de teto de fala está calibrada em **8 segundos a
 3,1 palavras/s = 25 palavras** (`medir_teto_fala.py`, `TETO_FALA` nos 19
 motores). O código pede **10 segundos**.
 
-⚠️ **Não conclua daí que o teto pode subir.** Há duas leituras e o código não
-decide entre elas: ou o modelo entrega 10s e temos 6 palavras de folga por
-cena, ou ele trunca em 8s e o parâmetro é aspiracional. **É medição de campo,
-não de código** — cronometrar um take renderizado resolve em um minuto. Até
-lá, o teto de 25 fica, porque errar para menos custa silêncio e errar para
-mais custa fala cortada, que mata o CTA.
+✅ **RESOLVIDO POR MEDIÇÃO DE CAMPO, 2026-08-07.** O operador gerou um take e
+o player do Flow marcou **`00:08:00`** de duração total. O `durationSeconds: 10`
+é **aspiracional** — o que sai são 8 segundos. Portanto o teto de 25 palavras
+(8s × 3,1 p/s) está CERTO e não sobe.
+
+⚠️ Fica o registro do método, que vale para a próxima: eu tinha escrito aqui
+que era "medição de campo, não de código", e era mesmo — um print do player
+resolveu o que nenhuma leitura de fonte resolveria. Parâmetro pedido não é
+resultado entregue.
 
 ### 2. O modelo de vídeo é `Omni Flash`, não Veo 3.1
 

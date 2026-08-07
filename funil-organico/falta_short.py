@@ -553,78 +553,66 @@ NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and "
 # ⚠️ A frase nomeia o órgão NA MESMA FRASE da causa (regra da FRASE ÓRFÃ, §17):
 # "won't bring it back" sem dizer o quê é fisiologia solta.
 DESMENTIDOS = [
-    # ⛔⛔ A VIRADA E' DITADA E NAO SE REESCREVE: *"but combined with the secret
-    # I discovered will"*. A construcao dele esta' preservada; o que ela ganhou
-    # foi o DESTINO que faltava — sem terminar no orgao, "it will" o QUE?
+    # ⛔⛔⛔ TODO HOOK DIZ O QUE SE FAZ COM O RARO. Ordem do operador em
+    # 2026-08-07, lendo um take renderizado: *"every morning just ginko?? WTF?
+    # Ginkgo pra que? pra passar na bunda? pra plantar??? Vc tem que ser CLARO,
+    # taxativo"*.
+    # ⚠️ Dez dos vinte hooks nomeavam o raro e paravam ali — "Six weeks of {r}
+    # alone", "Every morning, just {r}". Numa cena onde NAO ha' copo nem
+    # bancada em quadro (o hook e' o homem com o prop preso), a fala e' o
+    # UNICO lugar onde o verbo pode existir. Cena 2 pode dizer so' "Add {R}"
+    # porque o liquidificador esta' na tela; o hook nao pode.
+    # ⛔ O verbo e' de BEBER, nao de tomar capsula: o mecanismo do video e' uma
+    # bebida, e o payoff da cena 3 e' um copo.
     #
-    # ⭐⭐ E O QUE ELA DESMENTE MUDOU (2026-08-07). Era uma substancia topica
-    # ("pouring olive oil on your {o}"), e o operador tirou o despejo da cena:
-    # a fala descrevia uma acao que o video nao mostra mais. Agora desmente o
-    # RARO TOMADO SOZINHO — e' o mesmo raro da cena 2, e a corrente fecha em
-    # tres degraus:
-    #     cena 1  o raro sozinho nao resolve
-    #     cena 2  use o raro + a peca que todos pulam, o gelatin trick
-    #     cena 3  comente gelatin e eu te mando a peca que falta
-    # ⛔ Se a cena 1 desmentisse um raro e a cena 2 receitasse OUTRO, o
-    # espectador ouviria dois suplementos e nao saberia o assunto.
-    #
-    # ⛔ O RARO ENTRA NU AQUI ({r} = `nome`), sem aposto — decisao do operador.
-    # Com `maca root, that Andean root from Peru` o hook estoura o teto de 25.
-    # O hook nomeia; a cena 2 explica.
-    # ⚠️ Teto medido no PIOR caso (`horny goat weed` + `john-son`): 20 a 24.
+    # ⛔ A VIRADA CONTINUA DITADA e nao se reescreve: *"but combined with the
+    # secret I discovered will"*. O que ela ganhou foi o DESTINO — sem terminar
+    # no orgao, "it will" o QUE?
+    # ⚠️ Teto medido no PIOR caso (`horny goat weed` + `john-son`).
     #
     # ── o dinheiro gasto ────────────────────────────────────────────────────
-    "Two bottles of just {r} and your {o} never answered once. "
+    "Two bottles of {r} swallowed and your {o} never answered once. "
     "But combined with the secret I found, your {o} answers again.",
-    "You paid good money for {r} and your {o} never noticed. "
+    "You paid good money to drink {r} and your {o} never noticed. "
     "But combined with the secret I found, your {o} comes back.",
-    "The {r} you bought promised everything and left your {o} down. "
+    "The {r} you drink promised everything and left your {o} down. "
     "But combined with the secret I found, your {o} wakes up.",
-    "The label swears {r} alone is all your {o} needs. "
+    "The label swears drinking {r} alone is all your {o} needs. "
     "But combined with the secret I found, your {o} comes back.",
-    "Whoever sold you {r} alone skipped the step your {o} needed. "
+    "Whoever sold you {r} to drink skipped the step your {o} needed. "
     "But combined with the secret I found, your {o} answers again.",
-    "Doubling the dose of {r} alone still leaves your {o} quiet. "
+    "Doubling the dose of {r} you drink still leaves your {o} quiet. "
     "But combined with the secret I found, your {o} wakes up.",
     # ── o tempo perdido ─────────────────────────────────────────────────────
-    "Six weeks of {r} alone and your {o} won't stand up. "
+    "Six weeks drinking {r} and your {o} won't stand up. "
     "But combined with the secret I found, your {o} comes back.",
-    "Three months of {r} alone and your {o} still goes soft. "
+    "Three months drinking {r} and your {o} still goes soft. "
     "But combined with the secret I found, your {o} comes back.",
-    "Eight months of {r} alone and your {o} still plays dead. "
+    "Eight months drinking {r} and your {o} still plays dead. "
     "But combined with the secret I found, your {o} wakes up.",
-    "A year of {r} alone and your {o} still gives out. "
+    "A year of drinking {r} and your {o} still gives out. "
     "But combined with the secret I found, your {o} answers again.",
-    "All winter on {r} alone and your {o} stayed asleep. "
+    "All winter drinking {r} and your {o} stayed asleep. "
     "But combined with the secret I found, your {o} wakes up.",
-    "Every morning, just {r}, and your {o} still ignores you. "
+    "Drinking {r} and nothing else, your {o} still ignores you. "
     "But combined with the secret I found, your {o} wakes up.",
-    "You swallow {r} alone every night, and your {o} still sleeps. "
+    "You swallow {r} and nothing else, and your {o} still sleeps. "
     "But combined with the secret I found, your {o} wakes up.",
     # ── a metade: o raro nao e' mentira, e' INCOMPLETO ─────────────────────
-    # ⭐ E' o angulo mais colado no nome do agente, e o que menos ofende quem
-    # ja' acredita no suplemento — que e' o publico que compra.
     "Taken alone, {r} never reaches your {o}. "
     "But combined with the secret I found, your {o} wakes up.",
-    "No amount of {r} alone will wake your {o}. "
+    "No amount of {r} you drink will wake your {o}. "
     "But combined with the secret I found, your {o} comes back.",
     "Swallowing {r} alone does half the work your {o} needs. "
     "But combined with the secret I found, your {o} answers again.",
-    "Your {o} stayed silent because {r} alone was never enough. "
+    "Your {o} stayed silent because drinking {r} was never enough. "
     "But combined with the secret I found, your {o} wakes up.",
     "Your {o} didn't fail you. Taking {r} alone was never enough. "
     "But combined with the secret I found, your {o} comes back.",
-    "Nobody told you {r} does nothing for your {o} alone. "
+    "Nobody told you drinking {r} alone does nothing for your {o}. "
     "But combined with the secret I found, your {o} answers again.",
-    "Your wife stopped asking, and {r} alone never woke your {o}. "
+    "Your wife stopped asking, and drinking {r} never woke your {o}. "
     "But combined with the secret I found, your {o} answers again.",
-    # ⛔ QUATRO ENTRADAS FORAM CORTADAS do lote de 24, e cada uma por um motivo:
-    #   · "Since Christmas you've taken..." — data fixa; rodando em julho mente
-    #   · "You've taken {r} alone for months..." e "You've taken {r} for
-    #     months..." — quase identicas entre si
-    #   · "You wake up soft because..." — AFIRMA sobre o corpo do espectador,
-    #     que e' a classe exata que derrubou o video do NECROSE por politica e
-    #     virou a regra ES5 do ESCANDALO
 ]
 
 # ---------------------------------------------------------------------------
@@ -682,28 +670,20 @@ RECEITAS = [
 # um take do TROCA: *"'and I'll send it' — enviar o QUÊ??"*. Aqui o que se
 # envia tem nome próprio: A PARTE QUE FALTA.
 CTAS = [
-    # ⛔ O literal e' "Comment gelatin," COM VIRGULA — ordem do operador de
-    # 2026-08-02, depois de ver renders com a legenda "COMMENT HONEY": a
-    # legenda do video sai do audio, e comando variavel faz o modelo
-    # parafrasear a keyword. O `lint_cta_literal` cobra isso nos 18.
-    # ⛔⛔ QUEM OMITE E' O MUNDO, NUNCA ELA — correcao da revisao adversarial de
-    # 2026-08-06. Duas entradas diziam *"I'll send the piece I left out"*, e a
-    # cena 2 diz, em 5 dos 6 templates, que quem deixa de fora e'
-    # everyone/nobody/they. Eram 2.016 pares em que ela acusava o mundo de
-    # omitir e uma respiracao depois assumia a omissao. A tensao nao vem de ela
-    # ter escondido: vem de A RECEITA DO MUNDO estar furada e ela ter a peca.
-    # ⚠️ E' tambem o enquadramento que o operador ditou — *"missing part da
-    # receita sera entregue ao comentar gelatin"*: a peca falta NA RECEITA.
-    "Comment gelatin, and I'll send you the missing part.",
-    "Comment gelatin, and I'll send you what's missing.",
-    "Comment gelatin, one word, and I'll send the missing part.",
-    "Comment gelatin, and I'll send you the part nobody includes.",
-    "Comment gelatin, and I'll send the missing piece tonight.",
-    # ⛔ Era "the rest of the recipe" — isca válida, mas não nomeia A PARTE QUE
-    # FALTA, que é o ângulo inteiro. O CTA tem de prometer exatamente o que a
-    # cena 2 disse que ficou de fora, senão o vídeo abre um buraco e entrega
-    # outra coisa.
-    "Comment gelatin, and I'll send you the missing step.",
+    # ⛔⛔ TODOS OS SEIS NOMEIAM A RECEITA (2026-08-07). O pool anterior dizia
+    # "the missing part", "what's missing", "the missing piece" — e nenhum
+    # dizia de QUE. O operador leu o painel e reprovou os seis de uma vez.
+    # ⚠️ O literal e' "Comment gelatin," COM VIRGULA — ordem de 2026-08-02,
+    # depois de renders com a legenda "COMMENT HONEY": a legenda sai do audio,
+    # e comando variavel faz o modelo parafrasear a keyword.
+    "Comment gelatin, and I'll send the recipe with the missing piece.",
+    "Comment gelatin, and I'll send you the recipe and the part they skip.",
+    "Comment gelatin, one word, and I'll send the recipe with the missing part.",
+    "Comment gelatin, and I'll send the part of the recipe nobody posts.",
+    "Comment gelatin, and I'll send you the recipe with the step they leave out.",
+    "Comment gelatin, and I'll send the whole recipe, missing piece included.",
+    "Comment gelatin, and I'll send you the recipe and the piece nobody includes.",
+    "Comment gelatin, and I'll send the recipe with the part I left out.",
 ]
 
 GATES = [
@@ -1253,7 +1233,13 @@ def _fa_buraco(spec, blocos, achados):
                      r"back\b|\bskips?\b|\bnobody (includes|hands)\b", f2, re.I):
         achados.append(("ERRO", "FA4: a cena 2 não diz que FALTA uma peça — sem "
                                 "isso o ângulo vira mais uma receita"))
-    if not re.search(r"\bmissing\b|\bpiece\b|\bpart\b", f3, re.I):
+    # ⚠️ A LENTE ERA ESTREITA: conhecia so' missing/piece/part e reprovava
+    # *"the recipe with the step they leave out"* — frase que NOMEIA a parte
+    # que falta, so' que com outra palavra. Regex que conhece meia familia
+    # de sinonimos mede outra coisa (mesmo erro do `leaves out` x `left
+    # out`, pago em 06/08).
+    if not re.search(r"\bmissing\b|\bpiece\b|\bpart\b|\bstep\b|"
+                     r"\bleaves? out\b|\bleft out\b|\bskips?\b", f3, re.I):
         achados.append(("ERRO", "FA4: o CTA não nomeia a parte que falta — é "
                                 "exatamente o que ele promete entregar"))
 

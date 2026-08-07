@@ -1835,13 +1835,13 @@ CTAS = [
     # PRIMEIRA frase; esconde-se o COMO, nunca o SOBRE O QUE.
     "Comment gelatin, and I'll send the recipe.",
     "Comment gelatin, and the full recipe goes to you.",
-    "Comment gelatin, and I'll send the missing step.",
+    "Comment gelatin, and I'll send the missing recipe step.",
     "Comment gelatin, and I'll send you all three steps.",
     # ⚠️ era `and you get what I used` — encurtei e a ISCA foi junto: o linter
     # exige que o CTA diga O QUE CHEGA, e "o que eu usei" nao nomeia entrega.
     "Comment gelatin, and you get the recipe I used.",
     "Comment gelatin, and I'll write out the glass.",
-    "Comment gelatin, and I'll send the step everyone skips.",
+    "Comment gelatin, and I'll send the recipe step everyone skips.",
     "Comment gelatin, and I'll send you the whole thing.",
     "Comment gelatin, and the recipe is yours.",
     "Comment gelatin, and I'll send what to buy.",

@@ -1652,9 +1652,9 @@ CTAS = [
     "Comment gelatin, and I'll send you the amounts.",
     "Comment gelatin, and I'll tell you how much of each.",
     "Comment gelatin, one word, and the recipe is yours.",
-    "Comment gelatin, and I'll send the step I left out.",
+    "Comment gelatin, and I'll send the recipe step I left out.",
     "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send the missing amounts.",
+    "Comment gelatin, and I'll send the amounts for the recipe.",
     "Comment gelatin, and I'll send the recipe tonight.",
     "Comment gelatin, and the recipe goes out tonight.",
     "Comment gelatin, and I'll send the recipe before you scroll.",
@@ -1666,7 +1666,7 @@ CTAS = [
     # + 2026-08-02: ampliacao de variancia por ordem do operador.
     # Verificacao adversarial reprovou 32 de 54 propostas; estas
     # sobreviveram e foram medidas em 2800 sorteios.
-    "Comment gelatin, and I'll send the part nobody posts.",
+    "Comment gelatin, and I'll send the recipe nobody posts.",
 ]
 
 # ⛔ ES19 — REGRA DE POOL, medida pelo operador no TROCA: "brother" caia em

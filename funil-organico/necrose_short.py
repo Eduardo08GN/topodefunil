@@ -825,7 +825,7 @@ CTAS = [
     "{pacing} Comment gelatin, one word, and the recipe is yours. {gate}",
     "{pacing} Comment gelatin, and I'll send you the whole thing tonight. {gate}",
     "{pacing} Comment gelatin, and the recipe lands in your messages tonight. {gate}",
-    "{pacing} Comment gelatin, and I'll send the steps in order. {gate}",
+    "{pacing} Comment gelatin, and I'll send the recipe steps in order. {gate}",
 ]
 
 # ---------------------------------------------------------------------------
