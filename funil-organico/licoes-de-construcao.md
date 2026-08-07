@@ -1160,6 +1160,45 @@ mede o campo, com regex de verbo finito que **ignora particípio de propósito**
 
 ---
 
+## 34. ⛔⛔⛔ 16 DOS 19 APPS QUEBRARAM NA ABERTURA — e o verificador dizia tudo verde
+
+**Onde:** `ui_agente.py`, 2026-08-06, o seletor de QUEM NARRA. Relato do
+operador com print: *"Estou tentando abrir os agentes python e a maioria está
+dando esse erro"* — `NameError: name 'motor' is not defined`.
+
+**A causa, em uma linha de código:** dentro do `_topo()` eu escrevi
+`getattr(motor, "SEXOS", ...)` — mas `motor` só existe como parâmetro do
+`__init__`; dentro dos métodos o nome é `self.m`. Erro de iniciante, num
+arquivo que eu já tinha editado dezenas de vezes.
+
+**Por que TRÊS camadas de verificação não pegaram:**
+
+| camada | o que ela media | por que passou |
+|---|---|---|
+| `verificar_entrega` | importa o motor, `sortear`/`montar`/`lint`, tradução | nunca instancia a `App` |
+| `medir_trava_sexo` | a trava, 120/120, com controle negativo | chama `m.sortear(travas=...)` direto — sem UI |
+| gates + lint | copy e personagem | idem |
+
+O aparato inteiro media o **motor**, e a linha quebrada morava na **janela**.
+E o pior: o CLEAN e o V2 abriam normalmente — neles `_ja_e_eixo` é verdadeiro
+e o Python **nem avalia** o ramo com o nome errado. Ou seja: se eu tivesse
+aberto um app para "conferir", provavelmente teria aberto o CLEAN V2 (o que eu
+estava mexendo) e declarado pronto do mesmo jeito.
+
+> ⛔ **A regra: a UI também é FUNÇÃO, e função só conta verificada onde ela
+> roda.** Entrega de app passa a incluir a `sonda_ui`: instanciar
+> `ui_agente.App(motor)` em cada pasta entregue, rodar `update()` + um
+> `sortear()` pelo caminho da UI, destruir. 19 janelas abertas de verdade,
+> não 19 motores importados.
+
+> ⚠️ **Corolário do ramo não-avaliado:** em código com `if` por agente, o
+> teste de UM agente não prova o parque — o CLEAN abria porque o ramo quebrado
+> nem rodava nele. É a §18 (*"alterei código compartilhado? medi o parque
+> INTEIRO"*) com um agravante: aqui "medir o parque" tem de significar medir
+> **pelo caminho que o operador usa**, não pelo atalho que o medidor prefere.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1239,6 +1278,9 @@ mede o campo, com regex de verbo finito que **ignora particípio de propósito**
 - [ ] **Cada eixo de `EIXOS_TRAVAVEIS` existe no spec** — herdado da cópia,
       ele desenha cadeado para eixo que o motor não sorteia
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
+- [ ] **Mexi na `ui_agente`? A `sonda_ui` abriu as 19 JANELAS** — motor
+      importado não prova painel construído, e ramo por agente esconde o
+      NameError dos agentes que não o executam (§34)
 - [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
 
 ---

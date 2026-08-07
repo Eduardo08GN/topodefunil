@@ -250,9 +250,14 @@ class App(tk.Tk):
         # cópia espelhada que diverge na semana seguinte.
         self.b_sexo = {}
         self.sexo_travado = None
+        # ⛔ `self.m`, nunca `motor`: `_topo` nao recebe o motor por parametro,
+        # e o NameError so' estourava ao ABRIR o painel — 16 dos 19 apps
+        # entregues quebrados na cara do operador, enquanto o verificador
+        # media o motor e dizia tudo verde. UI tambem e' funcao: verificar
+        # entrega passa a abrir a janela (sonda_ui), nao so' importar o motor.
         _ja_e_eixo = any(t[0] == "sexo" for t in self.travas_ui)
         self.sexos = ([] if _ja_e_eixo
-                      else list(getattr(motor, "SEXOS", []) or []))
+                      else list(getattr(self.m, "SEXOS", []) or []))
         if len(self.sexos) > 1:
             for _s in reversed(self.sexos):
                 b = tk.Button(cx, text=_s, font=F_SMALL, relief="flat", bd=0,
