@@ -73,6 +73,15 @@ ETNIA = {
 # o mesmo que o operador encontrou no BOTICA em 2026-08-06.
 PELE_TRAVAVEL = True
 
+# ⭐ MODO BELA — o mesmo defeito de FORMA-sem-FUNCAO, do outro lado. O `sortear`
+# ja' le' `travas["bela"]` e remonta REF, amiga, traje e clausula do rosto, e o
+# docstring do app promete *"MODO BELA de nascenca, por ordem dele"* — mas sem
+# esta linha o painel nao desenha o toggle (a UI so' desenha os modos que o
+# motor DECLARA, via `getattr(motor, "MODO_BELA")`). Codigo escrito e
+# inalcancavel: o operador nunca conseguiria ligar o modo.
+# ⛔ Nao ha' MODO_FORTE aqui de proposito — este agente nao tem homem em cena.
+MODO_BELA = True
+
 # ⛔⛔ LISTA EXPLICITA, nunca "tudo que nao e' branco". Correcao de campo dele,
 # com print: **escura = NEGRO**. Asiatico, latino e mestico nao sao nem clara
 # nem escura — so' saem com a pele LIVRE.

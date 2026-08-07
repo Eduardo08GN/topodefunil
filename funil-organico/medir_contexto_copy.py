@@ -70,7 +70,11 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "organicwave_short", "ressurreicao_short", "flagrante_short",
            "pee_short", "vazamento_short", "necrose_short", "exterior_short",
            "colo_short", "receita_short", "botica_short",
-           "dupla_short", "placa_short", "cha_short", "trio_short"]
+           "dupla_short", "placa_short", "cha_short", "trio_short",
+           # ⚠️ 2026-08-06: `falta_short` entrou aqui pelo MESMO motivo do
+           # v2 acima — nasceu fora da lista e o `--gate` passou verde sem
+           # nunca ter olhado para ele.
+           "falta_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

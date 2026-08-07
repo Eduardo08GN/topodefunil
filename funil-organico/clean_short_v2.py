@@ -395,8 +395,36 @@ PEGADA = ("%s right hand is closed around the %s, the whole hand visibly "
 # fraca duas vezes esta semana: uma na DIRECAO (onde ele fala) e outra no
 # campo `Audio:` (onde o gerador decide o timbre).
 # ⛔ Ancora POSITIVA: diz-se QUAL sotaque, nunca `no foreign accent`.
-SOTAQUE = "in a natural American English accent"
-VOZ = "The voice is natural American English with a standard United States accent"
+#
+# ⭐⭐ CL31 (2026-08-06) — AS DUAS ANCORAS ESTAVAM LA' E O TAKE 3 CONTINUOU
+# DERRAPANDO. Relato dele com video: *"ja' peguei mais de 5 sorteios em que isso
+# aconteceu"*. Conferido no prompt gerado: os tres takes trazem SOTAQUE e VOZ,
+# palavra por palavra. Ou seja — o CL29 diagnosticou certo e receitou fraco.
+# Duas coisas mudaram, e nenhuma delas e' cena nem copy:
+#
+#   1. POSICAO. O campo saia `Audio: a distant market, wind in the reeds. The
+#      voice is ...` — a AMBIENCIA abria o campo e emoldurava tudo que vinha
+#      depois. Num mundo `africa_mercado` o gerador lia o LUGAR primeiro e
+#      tirava o timbre dali. Agora a voz e' o primeiro token do campo `Audio:`
+#      e a ambiencia vem atras, sem trocar uma letra da ambiencia.
+#   2. CONCRETUDE. `natural American English` e' ADJETIVO generico, e generico
+#      perde para um cenario concreto — a mesma licao que o EX9 do EXTERIOR
+#      ensinou com `beautiful` e que o CL25 ensinou com os dentes: o gerador
+#      julga TOKEN, nao intencao. `General American` e' o nome proprio do
+#      sotaque neutro dos EUA, com referente concreto (telejornal).
+#
+# ⛔ Continua valendo a ancora POSITIVA: nada de `no African accent`. Negacao
+# nao cria forma — cria o token que ela queria evitar.
+SOTAQUE = ("in a flat General American accent, the neutral accent of United "
+           "States network television")
+VOZ = ("The voice is flat General American, the neutral English of United "
+       "States network television")
+
+# ⛔ guarda de regressao: ancora que vira negacao para de ancorar.
+for _a in (SOTAQUE, VOZ):
+    assert "General American" in _a, "CL31: ancora sem o nome do sotaque: %r" % _a
+    assert not re.search(r"\bno\s+\w+\s+accent|without .{0,20}accent", _a, re.I), (
+        "CL31: ancora NEGATIVA — diz-se qual sotaque e', nunca qual nao e': %r" % _a)
 
 ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
              "actor, not resembling any famous person.")
@@ -2105,7 +2133,10 @@ def montar(spec):
     # ⭐ CL29 — a voz entra nas TRES linhas, num lugar so'. O take 3 e' o mais
     # exposto (a ambiencia do mundo era a unica pista de voz que sobrava), mas
     # ancorar so' nele deixaria a regra dependendo de qual cena derrapa.
-    audio = ["%s. %s. No music." % (a, VOZ) for a in audio]
+    # ⭐⭐ CL31 — a VOZ ABRE o campo, a ambiencia vem atras. Era `(a, VOZ)`: o
+    # lugar emoldurava o campo e o gerador tirava o timbre dele. A ambiencia
+    # segue intacta (e' cena, alcada do operador) — so' deixou de vir primeiro.
+    audio = ["%s. %s. No music." % (VOZ, a[:1].upper() + a[1:]) for a in audio]
     # CL14 — nas cenas 1 e 2 da familia B a frase travada vira TOCA_UM; na
     # cena 3 (e na familia A inteira) o NAO_TOCA volta.
     toca_um = TOCA_UM % (S, s, S, sup)
@@ -2314,6 +2345,14 @@ def lint(spec, blocos):
             ach.append(("ERRO", "CL29: %s sem o sotaque na direcao" % nome))
         if VOZ not in txt:
             ach.append(("ERRO", "CL29: %s sem a voz no campo Audio" % nome))
+        # ⭐ CL31 — PRESENCA NAO BASTA, POSICAO CONTA. As duas ancoras ja'
+        # estavam nos tres takes quando ele relatou o 6o sorteio torto: o que
+        # faltava era a voz ABRIR o campo `Audio:`, no lugar da ambiencia.
+        # Regra que so' se confere no olho volta na semana seguinte.
+        linha = next((l for l in txt.splitlines() if l.startswith("Audio:")), "")
+        if linha and not linha.startswith("Audio: %s." % VOZ):
+            ach.append(("ERRO", "CL31: %s com a ambiencia na frente da voz "
+                                "no campo Audio" % nome))
 
     # ⭐ TRAVA DE PELE — as duas ancoras nos QUATRO blocos de imagem. O nome da
     # etnia sozinho ja' provou nao ancorar nada: `Caribbean American` e
