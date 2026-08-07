@@ -1501,13 +1501,13 @@ VILOES_APOSENTADO = [
 # para isso. E `raw` honey ficou: e' o que esta' escrito no rotulo do pote que
 # aparece em cena.
 RECEITAS = [
-    "A tablespoon of bone broth powder, raw honey and lemon in warm water, first thing",
-    "Bone broth powder, raw honey and half a lemon in warm water, before food",
+    "Bone broth powder, raw honey and lemon in warm water, first thing",
+    "Bone broth powder, raw honey and lemon in warm water, before food",
     "A tablespoon of bone broth powder with raw honey and lemon in warm water each morning",
-    "Bone broth powder, a teaspoon of raw honey, lemon, in warm water first thing",
-    "A tablespoon of bone broth powder and raw honey in warm water, before you eat",
+    "Bone broth powder, raw honey, lemon, in warm water first thing",
+    "Bone broth powder and raw honey in warm water, before you eat",
     "Bone broth powder with raw honey and lemon, in warm water every morning",
-    "A tablespoon of bone broth powder, raw honey, half a lemon, in warm water",
+    "Bone broth powder, raw honey, lemon, in warm water",
     "Bone broth powder, raw honey and lemon juice in warm water, first thing",
 ]
 

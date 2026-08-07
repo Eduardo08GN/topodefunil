@@ -1073,13 +1073,13 @@ COMUNS = [
      "img": "a knob of fresh ginger root grated into a dish"},
     {"id": "curcuma", "nome": "turmeric",
      "img": "an unlabelled jar of deep yellow powder"},
-    {"id": "aveia", "nome": "a spoon of oats",
+    {"id": "aveia", "nome": "oats",
      "img": "a small bowl of rolled oats"},
     {"id": "leite", "nome": "warm milk",
      "img": "a small jug of milk"},
     {"id": "beterraba", "nome": "beet powder",
      "img": "a shallow dish of deep red powder"},
-    {"id": "caiena", "nome": "a pinch of cayenne",
+    {"id": "caiena", "nome": "cayenne",
      "img": "a tiny unlabelled shaker of bright red powder"},
 ]
 
@@ -1624,13 +1624,13 @@ RECEITAS = [
     "{c}, {r}",
     "a little {c} and {r}",
     "just {c} and {r}",
-    "{c} and a pinch of {r}",
+    "{c} and {r}",
     "{c}, plus {r}",
     "some {c} and {r}",
     # + 2026-08-05 — so' os ingredientes VISIVEIS — a gelatina fica de fora, e' o segredo
     "{c} and {r} together",
     "{c}, then {r}",
-    "a spoon of {c} and {r}",
+    "{c} and {r}",
     # ⛔ NAO ACRESCENTAR RECEITA QUE SE AUTO-FECHA. Aqui esteve `{c} and {r},
     # nothing more` e o render saiu **"Turmeric and sarsaparilla, NOTHING MORE
     # AND one thing I keep back: the gelatin trick"** — a receita declarava a
@@ -1638,11 +1638,11 @@ RECEITAS = [
     # ⚠️ A receita e' uma lista ABERTA por construcao: a ancora SEMPRE cola
     # `and <segredo>: the gelatin trick` no fim dela. Nenhum linter pega isso,
     # porque as duas metades sao gramaticais — so' a leitura do render pega.
-    "{c} and a spoon of {r}",
+    "{c} and {r}",
     "two things: {c} and {r}",
     "{c} first, then {r}",
     "{c} mixed with {r}",
-    "a pinch of {c} and {r}",
+    "{c} and {r}",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as

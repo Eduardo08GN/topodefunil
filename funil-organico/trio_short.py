@@ -986,10 +986,10 @@ RECEITAS = [
     "Pomegranate juice, beetroot powder, honey, fresh ginger, warm water",
     "Beetroot powder and pomegranate juice, honey and ginger, in warm water",
     "Warm water, pomegranate juice, beetroot powder, raw honey, fresh ginger",
-    "A spoon of pomegranate, one of beetroot powder, honey and ginger",
+    "Pomegranate, one of beetroot powder, honey and ginger",
     "Pomegranate and beetroot powder, raw honey, ginger, all in warm water",
     "Stir pomegranate, beetroot powder and honey into warm water with ginger",
-    "Pomegranate juice, beetroot powder, a spoon of honey, fresh ginger",
+    "Pomegranate juice, beetroot powder, honey, fresh ginger",
     "Beetroot powder, pomegranate juice, honey and a piece of ginger",
     "Warm water with pomegranate, beetroot powder, honey and fresh ginger",
 ]

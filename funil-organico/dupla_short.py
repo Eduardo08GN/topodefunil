@@ -1672,14 +1672,14 @@ RECEITAS = [
 # ⛔ `gelatin trick` entra como SEGREDO, nao como ingrediente da lista — a
 # lacuna e' o que o comentario compra. Mesma forma do BOTICA.
 ANCORAS = [
-    "%s. Then a pinch of {r} and a secret gelatin trick",
-    "%s. Add a pinch of {r}, plus a secret gelatin trick",
-    "%s. In goes a pinch of {r} and a secret gelatin trick",
+    "%s. Then {r} and a secret gelatin trick",
+    "%s. Add {r}, plus a secret gelatin trick",
+    "%s. In goes {r} and a secret gelatin trick",
     "%s. Finish with {r} and a secret gelatin trick",
     "%s. Then {r}, and one secret gelatin trick",
     "%s. Stir in {r} plus a secret gelatin trick",
     "%s. Top it with {r} and a secret gelatin trick",
-    "%s. A pinch of {r}, then the secret gelatin trick",
+    "%s. {r}, then the secret gelatin trick",
 ]
 
 # ---------------------------------------------------------------------------

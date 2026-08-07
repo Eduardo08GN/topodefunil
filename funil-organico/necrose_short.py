@@ -547,13 +547,13 @@ RECEITAS_PROP = [
              "of water and a metal spoon",
      "acao": "tearing the sachet open, tipping the powder into the glass "
              "of water and stirring it in slow circles",
-     "fala": "a spoonful of gelatin into a glass of cold water"},
+     "fala": "gelatin into cold water"},
     {"id": "gelatina_bicarbonato", "selo": "V",
      "mesa": "a plain white sachet of pale powder with no label, an open box "
              "of baking soda, a glass jar and a wooden spoon",
      "acao": "tipping the powder from the sachet into the jar, pouring "
              "the baking soda in over it and stirring the two together for a minute",
-     "fala": "a spoonful of gelatin into a jar of baking soda"},
+     "fala": "gelatin into baking soda"},
     {"id": "gelatina_mel", "selo": "N",
      "mesa": "a plain white sachet of pale powder with no label, a wooden mug "
              "of warm water, a jar of honey and a spoon",
@@ -565,7 +565,7 @@ RECEITAS_PROP = [
              "cold water, a halved lemon and a metal spoon",
      "acao": "emptying the sachet into the glass, squeezing the halved "
              "lemon over it and stirring it through",
-     "fala": "a spoonful of gelatin into cold water with fresh lemon"},
+     "fala": "gelatin into cold water with fresh lemon"},
     # + 2026-08-01: o operador mediu vicio no lote - o mesmo ritual voltando.
     # O que varia continua sendo COMO a gelatina e preparada, nunca o que e.
     {"id": "gelatina_cafe", "selo": "N",
@@ -573,7 +573,7 @@ RECEITAS_PROP = [
              "mug of black coffee and a metal spoon",
      "acao": "tearing the sachet open, shaking the powder into the mug of "
              "coffee and stirring it until the powder is gone",
-     "fala": "a spoonful of gelatin into black coffee"},
+     "fala": "gelatin into black coffee"},
     {"id": "gelatina_vinagre", "selo": "N",
      "mesa": "a plain white sachet of pale powder with no label, a glass jar "
              "of water, a dark bottle of cider vinegar and a wooden spoon",
@@ -585,19 +585,19 @@ RECEITAS_PROP = [
              "warm milk and a long-handled spoon",
      "acao": "tipping the powder from the sachet into the tin cup and "
              "whisking it into the warm milk until it thickens",
-     "fala": "a spoonful of gelatin into warm milk"},
+     "fala": "gelatin into warm milk"},
     {"id": "gelatina_sal", "selo": "N",
      "mesa": "a plain white sachet of pale powder with no label, a small dish "
              "of coarse sea salt, a glass of warm water and a metal spoon",
      "acao": "tearing the sachet open into the glass, pinching the coarse "
              "salt in over it and stirring it through the warm water",
-     "fala": "gelatin and a pinch of salt into warm water"},
+     "fala": "gelatin and salt into warm water"},
     {"id": "gelatina_canela", "selo": "N",
      "mesa": "a plain white sachet of pale powder with no label, a heap of "
              "ground cinnamon on a saucer, a mug of hot water and a spoon",
      "acao": "emptying the sachet into the mug, tapping the ground cinnamon "
              "in over it and stirring until nothing is left floating",
-     "fala": "gelatin and a spoon of cinnamon into hot water"},
+     "fala": "gelatin and cinnamon into hot water"},
 ]
 
 MESAS = [

@@ -1010,7 +1010,7 @@ CRENDICES = [
     {"degrau": "condicional",
      "txt": "Want your {o} ten times bigger? Then rub {s} straight on it tonight."},
     {"degrau": "resistencia",
-     "txt": "A spoonful of {s} on your {o} beats every pill on the shelf."},
+     "txt": "Rubbing {s} on your {o} beats every pill on the shelf."},
     {"degrau": "assertiva",
      "txt": "A little {s} on your {o}. That's the whole thing. Ten times bigger."},
     {"degrau": "testemunho",
