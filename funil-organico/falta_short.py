@@ -125,6 +125,7 @@ def _pele_de(etnia):
 # de superfície, luz E etnia juntas. Trocar só o rosto deixa a cozinha errada.
 MUNDOS = [
     {"id": "apalache", "familia": "apalache",
+     "audio": "wind in the trees, a quiet house",
      "coz": "an Appalachian farmhouse kitchen with painted board walls and a "
             "deep porcelain sink",
      "coz_c": "the same Appalachian farmhouse kitchen",
@@ -133,6 +134,7 @@ MUNDOS = [
      "luz_c": "the same flat grey daylight",
      "etnias": ["white American"]},
     {"id": "sulista", "familia": "sulista",
+     "audio": "cicadas outside, a ceiling fan",
      "coz": "a Southern kitchen with pale yellow beadboard walls and a screen "
             "door standing open",
      "coz_c": "the same Southern kitchen",
@@ -141,6 +143,7 @@ MUNDOS = [
      "luz_c": "the same warm afternoon light",
      "etnias": ["Black American"]},
     {"id": "texas", "familia": "texas",
+     "audio": "a screen door creaking, dry wind",
      "coz": "a Texas ranch kitchen with saltillo tile and a heavy iron range",
      "coz_c": "the same Texas ranch kitchen",
      "sup_a": "a thick butcher block", "sup": "butcher block",
@@ -148,6 +151,7 @@ MUNDOS = [
      "luz_c": "the same hard midday sun",
      "etnias": ["white American"]},
     {"id": "meio_oeste", "familia": "meio_oeste",
+     "audio": "a refrigerator hum, a quiet street",
      "coz": "a Midwestern kitchen with laminate cabinets and a wall clock",
      "coz_c": "the same Midwestern kitchen",
      "sup_a": "a speckled formica counter", "sup": "formica counter",
@@ -155,6 +159,7 @@ MUNDOS = [
      "luz_c": "the same even overcast light",
      "etnias": ["white American"]},
     {"id": "nova_inglaterra", "familia": "nova_inglaterra",
+     "audio": "a radiator ticking, gulls far off",
      "coz": "a New England kitchen with white shaker cabinets and a soapstone "
             "sink",
      "coz_c": "the same New England kitchen",
@@ -163,6 +168,7 @@ MUNDOS = [
      "luz_c": "the same cool north light",
      "etnias": ["white American"]},
     {"id": "harlem", "familia": "harlem",
+     "audio": "faint traffic, a radio two floors down",
      "coz": "a Harlem brownstone kitchen with pressed tin ceiling and tall "
             "narrow windows",
      "coz_c": "the same brownstone kitchen",
@@ -171,6 +177,7 @@ MUNDOS = [
      "luz_c": "the same warm city light",
      "etnias": ["Black American"]},
     {"id": "atlanta", "familia": "atlanta",
+     "audio": "birds in the back yard, a quiet house",
      "coz": "an Atlanta kitchen with dark wood cabinets and a wide island",
      "coz_c": "the same Atlanta kitchen",
      "sup_a": "a granite island", "sup": "granite island",
@@ -178,6 +185,7 @@ MUNDOS = [
      "luz_c": "the same bright filtered daylight",
      "etnias": ["Black American"]},
     {"id": "delta", "familia": "delta",
+     "audio": "crickets, a slow ceiling fan",
      "coz": "a Mississippi Delta kitchen with a chipped enamel stove and a "
             "hanging bare bulb",
      "coz_c": "the same Delta kitchen",
@@ -186,6 +194,7 @@ MUNDOS = [
      "luz_c": "the same low warm lamplight",
      "etnias": ["Black American"]},
     {"id": "gullah", "familia": "gullah",
+     "audio": "waves far off, wind through a screen",
      "coz": "a Lowcountry kitchen with blue-washed boards and a window onto "
             "marsh grass",
      "coz_c": "the same Lowcountry kitchen",
@@ -194,14 +203,20 @@ MUNDOS = [
      "luz_c": "the same soft coastal light",
      "etnias": ["Black American"]},
     {"id": "noroeste", "familia": "noroeste",
+     "audio": "rain on the window, a quiet kitchen",
      "coz": "a Pacific Northwest kitchen with cedar shelving and a window onto "
             "wet firs",
      "coz_c": "the same Northwest kitchen",
      "sup_a": "a slab fir counter", "sup": "fir counter",
-     "luz": "dim green light through rain on the glass",
-     "luz_c": "the same dim green light",
+     # ⛔ ERA "dim green light": o operador viu o lote e disse *"tire esse ar de
+     # blade runner 2049, esta em tom esverdeado villeneuve"*. Medido nos 15
+     # mundos, ESTE era o unico com luz colorida — os outros 14 ja eram
+     # neutros. Nao era grading do gerador: era o motor pedindo verde.
+     "luz": "cool grey daylight through rain on the glass",
+     "luz_c": "the same cool grey daylight",
      "etnias": ["white American"]},
     {"id": "grandes_lagos", "familia": "grandes_lagos",
+     "audio": "wind against the glass, a quiet house",
      "coz": "a Great Lakes kitchen with knotty pine panelling and a chest "
             "freezer humming",
      "coz_c": "the same Great Lakes kitchen",
@@ -210,6 +225,7 @@ MUNDOS = [
      "luz_c": "the same pale winter light",
      "etnias": ["white American"]},
     {"id": "creole", "familia": "creole",
+     "audio": "a streetcar far off, cicadas",
      "coz": "a New Orleans kitchen with a tall shuttered window and a cast "
             "iron pot on the range",
      "coz_c": "the same New Orleans kitchen",
@@ -218,6 +234,7 @@ MUNDOS = [
      "luz_c": "the same heavy humid light",
      "etnias": ["Black American"]},
     {"id": "amish", "familia": "amish",
+     "audio": "a clock ticking, birds outside",
      "coz": "a plain country kitchen with no appliances on the walls and a "
             "hand pump at the sink",
      "coz_c": "the same plain country kitchen",
@@ -226,6 +243,7 @@ MUNDOS = [
      "luz_c": "the same daylight, no electric light",
      "etnias": ["white American"]},
     {"id": "italo_americana", "familia": "italo_americana",
+     "audio": "a pot simmering, a quiet kitchen",
      "coz": "an Italian-American kitchen with a tiled backsplash and braided "
             "garlic on a hook",
      "coz_c": "the same Italian-American kitchen",
@@ -234,6 +252,7 @@ MUNDOS = [
      "luz_c": "the same warm bulb light",
      "etnias": ["white American"]},
     {"id": "americana", "familia": "americana",
+     "audio": "a refrigerator hum, a quiet house",
      "coz": "a plain suburban American kitchen with oak cabinets and a fridge "
             "covered in magnets",
      "coz_c": "the same suburban kitchen",
@@ -273,69 +292,105 @@ def mundos_da_pele(pele):
 # RESSURREICAO, medida em pixels: altura 2,31× contra largura 1,44×. O objeto
 # ALONGA. "Fica maior" lê como tumescência e derruba o vídeo.
 PROPS = [
-    {"id": "geoduck", "tipo": "molusco",
-     "nome": "geoduck",
-     "img": "a large geoduck clam, its long siphon neck hanging slack and "
-            "folded down over her fingers",
-     "antes": "the long siphon neck, hanging slack and folded down",
-     "depois": "the same siphon neck has drawn up long and straight, standing "
-               "clear of her hand, no thicker than before",
-     "curto": "geoduck"},
-    {"id": "peca", "tipo": "anatomia",
-     "nome": "peça anatômica",
-     "img": "a life-size anatomical cross-section model of the male pelvis in "
-            "moulded plastic, the shaft lying folded down against the base",
-     "antes": "the moulded shaft, lying folded down against the base",
-     "depois": "the same moulded shaft has risen and extended straight out "
-               "from the base, the same thickness as before",
-     # ⛔⛔ ESTE CAMPO ENTRA NO TAKE EM INGLES — era "peça anatômica" e o
-     # prompt saia com *"pours a thin steady stream over the peça anatômica"*.
-     # O campo `nome` (que e' PT) serve ao painel e ao resumo; o `curto` serve
-     # ao PROMPT, e sao coisas diferentes.
-     "curto": "anatomical model"},
+    # ⛔⛔ SAIU A PECA ANATOMICA (ordem do operador, 2026-08-07). O prop deixa
+    # de ser segurado na mao e passa a ficar PRESO NELE: um proxy murcho,
+    # colado na vertical na frente do short com silver tape.
+    # ⚠️ VERTICAL, e isso e' lição paga em geracao: eu tinha escrito `taped
+    # horizontally across the front` e o Veo entregou exatamente isso — o prop
+    # deitado. A fita e' que atravessa; o prop desce reto.
+    # ⚠️ E a redacao e' `taped upright along the front of his shorts`, nao
+    # `pointing straight down` nem `at the zipper`: as duas ultimas puseram o
+    # holofote na virilha e a IMAGE 01 foi recusada por politica.
+    {"id": "banana", "nome": "banana murcha",
+     "img": "a small withered brown banana",
+     "curto": "taped banana"},
+    {"id": "pepino", "nome": "pepino murcho",
+     "img": "a limp shrivelled cucumber",
+     "curto": "taped cucumber"},
+    {"id": "cenoura", "nome": "cenoura mole",
+     "img": "a thin soft carrot bent over on itself",
+     "curto": "taped carrot"},
+    {"id": "abobrinha", "nome": "abobrinha murcha",
+     "img": "a soft drooping yellow squash",
+     "curto": "taped squash"},
+    {"id": "salsicha", "nome": "salsicha fria",
+     "img": "a single pale cold sausage hanging slack",
+     "curto": "taped sausage"},
 ]
 
-# ⚠️ A cena 3 pede o par GRANDE do prop — é o payoff, e ele tem de ser
-# visivelmente maior que o do hook, na mesma espécie.
-PROPS_GRANDES = {
-    "geoduck": "a very large geoduck clam, its siphon neck drawn up long and "
-               "straight above her fist",
-    "peca": "the same anatomical cross-section model, the moulded shaft risen "
-            "and extended straight out from the base",
-}
+# ⭐ A FITA. Vale para os cinco: e' ela que faz o proxy virar protese comica em
+# vez de comida na mao. Duas tiras curtas ATRAVESSADAS, o prop na vertical.
+FITA = ("taped upright along the front of his shorts, held by two short "
+        "strips of silver duct tape")
 
-# ⭐ A ALTERNATIVA, PRONTA PARA TROCA DE UMA LINHA. O operador escolheu o morph
-# VISÍVEL ciente do risco; se o gerador recusar, esta constante põe a mudança
-# escondida dentro do jato, que é a forma que passou no RESSURREICAO.
-# ⛔ A VIRGULA DEPOIS DE %(antes)s NAO E' ENFEITE. O campo era uma ORACAO com
-# verbo finito ("the moulded shaft LIES folded down...") encaixada num slot de
-# sintagma nominal, e o prompt saia com dois verbos brigando: *"the moulded
-# shaft lies folded down against the base changes on camera"*. Agora o campo
-# `antes` e' sintagma nominal + participio, entre virgulas.
-MORPH_VISIVEL = ("As the liquid runs over it, %(antes)s, changes on camera: "
-                 "%(depois)s. The change happens in one continuous take, with "
-                 "no cut.")
-MORPH_OCULTO = ("The falling liquid covers it completely for a moment. When "
-                "the stream moves on, %(depois)s. The change is never seen "
-                "happening.")
-MORPH = MORPH_VISIVEL
+# ⭐⭐ O ADESIVO NA BARRIGA — o bit visual que o operador escolheu do
+# video-fonte. Desenho a mao em papel branco, colado na pele.
+# ⚠️ Papel COLADO, nunca desenho na pele: tinta em pele nua e' outro
+# classificador.
+ADESIVOS = [
+    "a square white paper sticker with a hand-drawn sad face",
+    "a round white paper sticker with a hand-drawn frowning face",
+    "a square white paper sticker with a hand-drawn downward arrow",
+    "a round white paper sticker with a hand-drawn sleeping face",
+]
+
+# ⭐⭐ O PAYOFF DA CENA 3 — o geoduck grande, na mao DELE, e nenhuma fita.
+# ⚠️ `with nothing taped to them and no tape anywhere on him` nao e'
+# redundancia: o Veo carrega adereco da cena anterior por continuidade, entao
+# a ausencia precisa ser DITA, nao so' omitida.
+PROP_GRANDE = ("a very large geoduck clam upright in both fists at chest "
+               "height, its long siphon neck extended straight upward and "
+               "clear of his hands")
+SEM_FITA = "with nothing taped to them and no tape anywhere on him"
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ O HOMEM — o corpo-prova, e o unico que nao fala
+# ---------------------------------------------------------------------------
+# ⛔ ELE ENTROU NESTA PASSADA (2026-08-07). Ate' aqui o agente proibia homem em
+# cena por ordem do operador; ele reviu depois de ver o video-fonte novo. O
+# linter FA1 foi INVERTIDO: era "nenhum homem" e virou "o homem e' obrigatorio
+# nas cenas 1 e 3, e proibido na 2".
+HOMENS = [
+    # ⛔⛔ MARCA FACIAL OBRIGATORIA, e nao e' enfeite: ele aparece nas cenas 1 e
+    # 3, com um corte no meio, e sem ancora distintiva o Veo devolve OUTRO
+    # homem na cena 3 — o payoff deixa de ser o mesmo sujeito e o video perde a
+    # prova. Foi o gate de personagens que pegou o buraco.
+    # ⚠️ Os oculos FICAM aqui de proposito: no homem eles leem como
+    # CREDIBILIDADE, o oposto do efeito na REF (a LEI DO REF os bane nela).
+    # ⛔ ZERO adjetivo de etnia dentro das entradas — quem injeta e' a montagem,
+    # a partir do mundo. Mesmo contrato do pool das mulheres.
+    {"id": "grisalho", "idade": 61, "corpo": "bare-chested, heavy build",
+     "cabeca": "grey stubble", "calca": "loose khaki shorts",
+     "marca": "a deep vertical crease between his eyebrows", "oculos": ""},
+    {"id": "careca", "idade": 66, "corpo": "bare-chested, a soft round belly",
+     "cabeca": "bald with a grey fringe", "calca": "faded denim shorts",
+     "marca": "a small dark mole on his right cheek",
+     "oculos": "thin wire-rimmed glasses"},
+    {"id": "bigode", "idade": 58, "corpo": "bare-chested, thick through the chest",
+     "cabeca": "a heavy grey moustache", "calca": "grey sweat shorts",
+     "marca": "a pale scar through his left eyebrow", "oculos": ""},
+    {"id": "barba_branca", "idade": 69, "corpo": "bare-chested, lean and stooped",
+     "cabeca": "a short white beard", "calca": "olive cargo shorts",
+     "marca": "heavy folds under both eyes",
+     "oculos": "square reading glasses pushed up on his forehead"},
+    {"id": "cabelo_ralo", "idade": 63, "corpo": "bare-chested, a wide soft middle",
+     "cabeca": "thin grey hair combed back", "calca": "navy gym shorts",
+     "marca": "a broad flat nose broken once and never set", "oculos": ""},
+    {"id": "queimado", "idade": 57, "corpo": "bare-chested, broad and sun-reddened",
+     "cabeca": "close-cropped salt-and-pepper hair", "calca": "tan work shorts",
+     "marca": "a white patch of old sun damage on his left temple",
+     "oculos": "dark aviator glasses pushed up into his hair"},
+]
 
 
 # ---------------------------------------------------------------------------
-# ⭐⭐ A ISCA DESMENTIDA — o que ela despeja no prop
+# ⛔⛔ AQUI MORAVA `SUBSTANCIAS` — a isca topica que ela despejava no prop.
+# Removida em 2026-08-07: o operador tirou o DESPEJO da cena ("nao havera mais
+# despejo, melhor o ref com maos livres fazendo gesto apontando pra prop
+# enquanto ela fala"). Sem garrafa em quadro, um pool de liquidos era codigo
+# que so' alimentava uma fala descrevendo acao que o video nao mostra.
+# ⭐ O que a isca era, a fala agora e': o hook desmente o RARO TOMADO SOZINHO.
 # ---------------------------------------------------------------------------
-# ⚠️ Na fonte é vinagre de maçã. O pool mantém a forma: líquido de despensa que
-# a internet promete e que o vídeo desmente na mesma respiração.
-SUBSTANCIAS = [
-    {"id": "vinagre", "nome": "apple cider vinegar", "fala": "apple cider vinegar"},
-    {"id": "azeite", "nome": "olive oil", "fala": "olive oil"},
-    {"id": "mel", "nome": "raw honey", "fala": "raw honey"},
-    {"id": "limao", "nome": "lemon juice", "fala": "lemon juice"},
-    {"id": "castor", "nome": "castor oil", "fala": "castor oil"},
-    {"id": "alcool", "nome": "rubbing alcohol", "fala": "rubbing alcohol"},
-    {"id": "coco", "nome": "coconut oil", "fala": "coconut oil"},
-    {"id": "salmoura", "nome": "pickle brine", "fala": "pickle brine"},
-]
 
 # ---------------------------------------------------------------------------
 # ⭐⭐ O RARO — o ingrediente que entra na receita com nome popular + aposto
@@ -498,30 +553,78 @@ NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and "
 # ⚠️ A frase nomeia o órgão NA MESMA FRASE da causa (regra da FRASE ÓRFÃ, §17):
 # "won't bring it back" sem dizer o quê é fisiologia solta.
 DESMENTIDOS = [
-    # ⛔⛔ A VIRADA TERMINA NO ORGAO, e isso e' correcao de drifting.
-    # O operador ditou "but combined with the secret I discovered will" e a
-    # construcao dele esta preservada literalmente. Mas terminar ali reprova no
-    # `medir_deiticos` familia C: nome ABSTRATO ("the secret") sem DESTINO —
-    # sozinha no scroll, "it will" o QUE? Ele mesmo acabou de dizer que nao
-    # aceita mais drifting, entao a frase ganha o destino que faltava sem
-    # perder uma palavra da construcao dele.
-    "Pouring {s} on your {o} won't bring it back overnight. "
+    # ⛔⛔ A VIRADA E' DITADA E NAO SE REESCREVE: *"but combined with the secret
+    # I discovered will"*. A construcao dele esta' preservada; o que ela ganhou
+    # foi o DESTINO que faltava — sem terminar no orgao, "it will" o QUE?
+    #
+    # ⭐⭐ E O QUE ELA DESMENTE MUDOU (2026-08-07). Era uma substancia topica
+    # ("pouring olive oil on your {o}"), e o operador tirou o despejo da cena:
+    # a fala descrevia uma acao que o video nao mostra mais. Agora desmente o
+    # RARO TOMADO SOZINHO — e' o mesmo raro da cena 2, e a corrente fecha em
+    # tres degraus:
+    #     cena 1  o raro sozinho nao resolve
+    #     cena 2  use o raro + a peca que todos pulam, o gelatin trick
+    #     cena 3  comente gelatin e eu te mando a peca que falta
+    # ⛔ Se a cena 1 desmentisse um raro e a cena 2 receitasse OUTRO, o
+    # espectador ouviria dois suplementos e nao saberia o assunto.
+    #
+    # ⛔ O RARO ENTRA NU AQUI ({r} = `nome`), sem aposto — decisao do operador.
+    # Com `maca root, that Andean root from Peru` o hook estoura o teto de 25.
+    # O hook nomeia; a cena 2 explica.
+    # ⚠️ Teto medido no PIOR caso (`horny goat weed` + `john-son`): 20 a 24.
+    #
+    # ── o dinheiro gasto ────────────────────────────────────────────────────
+    "Two bottles of just {r} and your {o} never answered once. "
+    "But combined with the secret I found, your {o} answers again.",
+    "You paid good money for {r} and your {o} never noticed. "
     "But combined with the secret I found, your {o} comes back.",
-    "Rubbing {s} on your {o} won't wake it up overnight. "
+    "The {r} you bought promised everything and left your {o} down. "
     "But combined with the secret I found, your {o} wakes up.",
-    "{S} alone won't bring your {o} back overnight. "
-    "But combined with the secret I found, your {o} answers again.",
-    "Dripping {s} on your {o} does nothing overnight. "
+    "The label swears {r} alone is all your {o} needs. "
     "But combined with the secret I found, your {o} comes back.",
-    # ⛔ ERA "It won't." — reprovado na revisao adversarial de 2026-08-06. E' a
-    # MESMA forma que ele reprovou no TROCA ("and I'll send it" — *enviar o
-    # QUE??*): verbo elidido, objeto nenhum. Pior: o antecedente mais proximo
-    # de "It" nao e' a substancia, e' o proprio orgao — dito uma palavra antes.
-    # "That's a lie" fecha a sentenca sozinha e aponta para a CRENDICE.
-    "They swear {s} fixes your {o} overnight. That's a lie. "
-    "Combined with the secret I found, your {o} comes back.",
-    "{S} on your {o} won't work overnight. "
+    "Whoever sold you {r} alone skipped the step your {o} needed. "
     "But combined with the secret I found, your {o} answers again.",
+    "Doubling the dose of {r} alone still leaves your {o} quiet. "
+    "But combined with the secret I found, your {o} wakes up.",
+    # ── o tempo perdido ─────────────────────────────────────────────────────
+    "Six weeks of {r} alone and your {o} won't stand up. "
+    "But combined with the secret I found, your {o} comes back.",
+    "Three months of {r} alone and your {o} still goes soft. "
+    "But combined with the secret I found, your {o} comes back.",
+    "Eight months of {r} alone and your {o} still plays dead. "
+    "But combined with the secret I found, your {o} wakes up.",
+    "A year of {r} alone and your {o} still gives out. "
+    "But combined with the secret I found, your {o} answers again.",
+    "All winter on {r} alone and your {o} stayed asleep. "
+    "But combined with the secret I found, your {o} wakes up.",
+    "Every morning, just {r}, and your {o} still ignores you. "
+    "But combined with the secret I found, your {o} wakes up.",
+    "You swallow {r} alone every night, and your {o} still sleeps. "
+    "But combined with the secret I found, your {o} wakes up.",
+    # ── a metade: o raro nao e' mentira, e' INCOMPLETO ─────────────────────
+    # ⭐ E' o angulo mais colado no nome do agente, e o que menos ofende quem
+    # ja' acredita no suplemento — que e' o publico que compra.
+    "Taken alone, {r} never reaches your {o}. "
+    "But combined with the secret I found, your {o} wakes up.",
+    "No amount of {r} alone will wake your {o}. "
+    "But combined with the secret I found, your {o} comes back.",
+    "Swallowing {r} alone does half the work your {o} needs. "
+    "But combined with the secret I found, your {o} answers again.",
+    "Your {o} stayed silent because {r} alone was never enough. "
+    "But combined with the secret I found, your {o} wakes up.",
+    "Your {o} didn't fail you. Taking {r} alone was never enough. "
+    "But combined with the secret I found, your {o} comes back.",
+    "Nobody told you {r} does nothing for your {o} alone. "
+    "But combined with the secret I found, your {o} answers again.",
+    "Your wife stopped asking, and {r} alone never woke your {o}. "
+    "But combined with the secret I found, your {o} answers again.",
+    # ⛔ QUATRO ENTRADAS FORAM CORTADAS do lote de 24, e cada uma por um motivo:
+    #   · "Since Christmas you've taken..." — data fixa; rodando em julho mente
+    #   · "You've taken {r} alone for months..." e "You've taken {r} for
+    #     months..." — quase identicas entre si
+    #   · "You wake up soft because..." — AFIRMA sobre o corpo do espectador,
+    #     que e' a classe exata que derrubou o video do NECROSE por politica e
+    #     virou a regra ES5 do ESCANDALO
 ]
 
 # ---------------------------------------------------------------------------
@@ -619,24 +722,24 @@ PISO_FALA = {1: 16, 2: 20, 3: 12}
 TETO_TOTAL = 72
 
 TRAVAS_UI = [("familia_mundo", "regiao", FAMILIAS_MUNDO)]
-EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "amiga", "prop", "substancia",
+EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "amiga", "homem", "prop",
                    "metodo", "comum", "raro"]
 EIXOS_UI = [
     ("mundo", "A REGIAO", "MUNDOS", "id"),
     ("etnia", "ETNIA", "etnias_do_mundo", None),
     ("ref", "QUEM FALA", "REFS", "cabeca"),
     ("amiga", "A AMIGA", "REFS", "cabeca"),
-    ("prop", "O PROP", "PROPS", "nome"),
-    ("substancia", "A ISCA", "SUBSTANCIAS", "nome"),
+    ("homem", "O CORPO-PROVA", "HOMENS", "id"),
+    ("prop", "O PROP PRESO", "PROPS", "nome"),
     ("metodo", "O PREPARO", "METODOS", "curto"),
     ("comum", "O COMUM", "COMUNS", "nome"),
     ("raro", "O RARO", "RAROS", "nome"),
 ]
-CENAS_UI = ["1 · a isca desmentida", "2 · a receita com o buraco",
+CENAS_UI = ["1 · o corpo-prova acusado", "2 · a receita com o buraco",
             "3 · o copo + CTA"]
 
 TETO_LEDGER = {"familia_mundo": len(FAMILIAS_MUNDO), "prop": len(PROPS),
-               "substancia": len(SUBSTANCIAS), "metodo": len(METODOS),
+               "homem": len(HOMENS), "metodo": len(METODOS),
                "comum": len(COMUNS), "raro": len(RAROS), "ref": len(REFS)}
 
 NUCLEO = ("soldier", "manhood", "member", "john-son", "peck-er", "wiener")
@@ -790,9 +893,12 @@ def sortear(pagina, rng, ledger, travas=None):
         amiga = travas.get("amiga") or rng.choice(
             [r for r in REFS if r["id"] != ref.get("id")])
 
-    prop = _por_id(PROPS, travas["prop"]) if travas.get("prop") else \
-        _fresco(PROPS, usados.get("prop", []), rng, "id")
-    sub = _fresco(SUBSTANCIAS, usados.get("substancia", []), rng, "id")
+    prop = (_por_id(PROPS, travas["prop"]) if travas.get("prop")
+            else _fresco(PROPS, usados.get("prop", []), rng, "id"))
+    # ⭐ O HOMEM E O ADESIVO — os dois eixos que entraram com a cena nova.
+    homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
+             else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
+    adesivo = rng.choice(ADESIVOS)
     met = _fresco(METODOS, usados.get("metodo", []), rng, "id")
     com = _fresco(COMUNS, usados.get("comum", []), rng, "id")
     raro = _fresco(RAROS, usados.get("raro", []), rng, "id")
@@ -800,37 +906,46 @@ def sortear(pagina, rng, ledger, travas=None):
     if travas.get("bela"):
         tpl, _curto = sc.traje_bela(rng)
         traje = tpl % rng.choice(sc.CORES_BELAS) if "%s" in tpl else tpl
+        # ⛔ A AMIGA TEM ROUPA PROPRIA. As duas vestiam a MESMA, e duas
+        # mulheres de traje identico no mesmo quadro leem como a mesma pessoa
+        # duplicada — exatamente o que o eixo da amiga existe para impedir. No
+        # lote que o operador aprovou elas estavam diferentes.
+        for _ in range(8):
+            tpl2, _c2 = sc.traje_bela(rng)
+            traje_amiga = (tpl2 % rng.choice(sc.CORES_BELAS)
+                           if "%s" in tpl2 else tpl2)
+            if traje_amiga != traje:
+                break
     else:
         traje = rng.choice(TRAJES_PADRAO)
+        traje_amiga = rng.choice([t for t in TRAJES_PADRAO if t != traje])
     orgao = rng.choice(NUCLEO)
 
-    falas = _montar_falas(rng, sub, orgao, com, raro)
+    falas = _montar_falas(rng, orgao, raro)
 
     return {
         "pagina": pagina, "mundo": mundo, "etnia": et, "ref": ref,
-        "amiga": amiga, "prop": prop, "substancia": sub, "metodo": met,
+        "amiga": amiga, "prop": prop, "homem": homem,
+        "adesivo": adesivo, "metodo": met,
         "comum": com, "raro": raro, "reacao": reacao, "orgao": orgao,
         "bela": bool(travas.get("bela")), "falas": falas, "traje": traje,
+        "traje_amiga": traje_amiga,
         "bandeira": rng.random() < 0.5,
     }
 
 
-def _montar_falas(rng, sub, orgao, com, raro):
-    """As tres falas, cada uma cedendo ao teto ANTES de ser escolhida."""
+def _montar_falas(rng, orgao, raro):
+    """As tres falas. ⛔ O MESMO RARO nas cenas 1 e 2 — e' a corrente do video.
+
+    ⭐ Nu no hook (`nome`), com aposto na cena 2 (`fala`). Decisao do operador:
+    com o aposto o hook estoura o teto de 25. O hook nomeia, a cena 2 explica.
+    """
     c1 = _escolher(
         rng, DESMENTIDOS,
-        lambda t: _palavras(t.format(s=sub["fala"], S=sub["fala"].capitalize(),
-                                     o=orgao)) <= TETO_FALA[1],
-        tamanho=lambda t: _palavras(t.format(s=sub["fala"],
-                                             S=sub["fala"].capitalize(),
-                                             o=orgao))
-    ).format(s=sub["fala"], S=sub["fala"].capitalize(), o=orgao)
+        lambda t: _palavras(t.format(r=raro["nome"], o=orgao)) <= TETO_FALA[1],
+        tamanho=lambda t: _palavras(t.format(r=raro["nome"], o=orgao))
+    ).format(r=raro["nome"], o=orgao)
 
-    # ⛔ O RARO ENTRA EM MINUSCULA. Ele abria a frase e por isso era
-    # capitalizado; desde que os templates ganharam verbo de preparo
-    # ("Add {R}."), capitalizar produzia *"Add Maca root, that Andean root
-    # from Peru."* — e a legenda queimada sai do audio, entao a maiuscula no
-    # meio da frase vira erro visivel no video.
     c2 = _escolher(
         rng, RECEITAS,
         lambda t: (_palavras(t.format(R=raro["fala"], o=orgao)) <= TETO_FALA[2]
@@ -838,13 +953,6 @@ def _montar_falas(rng, sub, orgao, com, raro):
         tamanho=lambda t: _palavras(t.format(R=raro["fala"], o=orgao))
     ).format(R=raro["fala"], o=orgao)
 
-    # ⛔⛔ O GUARDA DE ECO ENTRE CENAS — revisao adversarial de 2026-08-06.
-    # As tres falas eram sorteadas cegas umas das outras, e em 17% dos pares a
-    # cena 2 repetia literalmente o fecho da cena 1: *"your peck-er comes
-    # back"* e depois *"the blood comes back to your peck-er"*; ou
-    # "answers again" duas vezes em 24 segundos. O payoff perde forca quando
-    # a segunda vez chega — e o CTA "the piece I left out" ecoava o "always
-    # left out" da cena 2 na mesma respiracao.
     cta = _escolher(rng, CTAS,
                     lambda c: not _colide(c1 + " " + c2, c, orgao))
     gate = _escolher(rng, GATES,
@@ -891,33 +999,44 @@ def montar(spec):
     """Os 7 blocos. Formatacao NOMEADA de ponta a ponta — sao 12+ campos por
     bloco, e um deslocamento posicional troca prop por pessoa sem estourar
     erro nenhum (bug que so' aparece no video pronto)."""
-    m, ref, prop = spec["mundo"], spec["ref"], spec["prop"]
-    sub, met, com, raro = (spec["substancia"], spec["metodo"], spec["comum"],
-                           spec["raro"])
+    m, ref, prop, hom = spec["mundo"], spec["ref"], spec["prop"], spec["homem"]
+    met, com, raro = spec["metodo"], spec["comum"], spec["raro"]
     band = BANDEIRA if spec.get("bandeira") else ""
 
     v = {
         "coz": m["coz"], "coz_c": m["coz_c"], "sup_a": m["sup_a"],
         "sup": m["sup"], "luz": m["luz"], "luz_c": m["luz_c"],
+        "audio": m["audio"],
         "pessoa": _pessoa(spec), "ancora": _ancora(spec),
-        "amiga": _amiga(spec), "reacao": spec["reacao"],
+        "amiga": _amiga(spec), "traje_amiga": spec["traje_amiga"],
         "traje": _traje(spec), "prop_img": prop["img"],
-        "prop_grande": PROPS_GRANDES[prop["id"]], "prop_curto": prop["curto"],
-        "sub": sub["nome"], "vaso": met["vaso"], "acao": met["acao"],
+        "prop_curto": prop["curto"], "fita": FITA,
+        "prop_grande": PROP_GRANDE, "sem_fita": SEM_FITA,
+        "adesivo": spec["adesivo"],
+        "h_idade": hom["idade"], "h_corpo": hom["corpo"],
+        "h_cabeca": hom["cabeca"], "h_calca": hom["calca"],
+        "vaso": met["vaso"], "acao": met["acao"],
         "com_img": com["img"], "raro_img": raro["img"],
-        # ⚠️ `.rstrip(".")` — os quatro blocos escrevem "%(anti)s." e o
-        # ANTICELEB_BELA (compartilhado) ja' termina em ponto: saia
-        # *"not resembling any famous person.."* nos quatro. Normalizar aqui e'
-        # melhor que tirar o ponto do template, que os outros agentes usam sem
-        # ponto proprio.
+        # ⚠️ `.rstrip(".")` — os blocos escrevem "%(anti)s." e o ANTICELEB_BELA
+        # (compartilhado) ja' termina em ponto: saia "famous person.." nos
+        # quatro. Normalizar aqui e' melhor que tirar o ponto do template, que
+        # os outros agentes usam sem ponto proprio.
         "anti": (sc.ANTICELEB_BELA if spec.get("bela")
                  else ANTICELEB).rstrip("."),
         "cauda": CAUDA, "band": band,
-        "morph": MORPH % {"antes": prop["antes"], "depois": prop["depois"]},
         "idade": ref["idade"], "etnia": spec["etnia"], "marca": ref["marca"],
         "cabeca": ref["cabeca"],
+        "f1": spec["falas"][0], "f2": spec["falas"][1], "f3": spec["falas"][2],
     }
     v["nao_toca"] = NAO_TOCA % m["sup"]
+    # ⚠️ A MARCA entra SEMPRE; os oculos so' quando existem. Sem a marca
+    # o Veo devolve outro homem na cena 3 e o payoff perde a prova.
+    v["h_marca"] = hom["marca"]
+    v["h_oculos"] = (" and " + hom["oculos"]) if hom["oculos"] else ""
+    v["homem"] = ("a %(h_idade)d-year-old %(etnia)s man, %(h_corpo)s, "
+                  "%(h_cabeca)s and %(h_marca)s, wearing %(h_calca)s"
+                  "%(h_oculos)s" % v)
+    v["Ancora"] = _ancora(spec)[0].upper() + _ancora(spec)[1:]
 
     b = {}
     b["BLOCO 0 (REF)"] = (
@@ -927,77 +1046,110 @@ def montar(spec):
         "%(anti)s. Hands out of frame, no objects. Plain neutral gray "
         "background, soft even frontal light. %(cauda)s" % v)
 
-    # --- CENA 1 — A ISCA DESMENTIDA -----------------------------------------
-    # ⛔ O prop nasce MURCHO e muda em cena. O despejo cai SOBRE ele, nunca no
-    # copo: e' o objeto que desmente a crendice, e por isso ele tem de estar
-    # na lente, na altura do peito, antes de qualquer coisa acontecer.
+    # --- CENA 1 — O CORPO-PROVA E A ACUSACAO --------------------------------
+    # ⛔⛔ A COMPOSICAO E' DO OPERADOR, validada prompt a prompt no Veo antes de
+    # virar codigo. Tres pessoas, tres funcoes:
+    #   · o HOMEM a esquerda, tronco nu, adesivo na barriga e o proxy murcho
+    #     preso de fita — ele nunca fala e nunca se mexe. E' a prova.
+    #   · a REF ao centro, MAOS LIVRES e vazias sobre a bancada. Ela so' fala.
+    #   · a AMIGA a direita, de quatro EM CIMA da bancada, apontando para o
+    #     prop sem encostar. E' ela que acusa — e foi a peca que o operador
+    #     aprovou primeiro no lote de teste.
+    # ⛔ A REF NAO APONTA. Dois bracos apontando a mesma coisa e' ruido, e o
+    # operador escolheu a de cima ("gostei do fato de que quem aponta e' a
+    # mulher linda que esta em cima da superficie").
+    # ⛔ E NAO HA' DESPEJO. Saiu a garrafa, saiu a substancia topica e saiu o
+    # morph — sem liquido caindo, nada motivava a mudanca em cena, e o morph
+    # solto era o que mais chamava o classificador. O antes/depois passou a
+    # acontecer ENTRE a cena 1 e a 3.
     b["IMAGE 01/03"] = (
-        "IMAGE 01/03: Medium shot in %(coz)s, %(luz)s. Standing behind "
-        "%(sup_a)s is %(pessoa)s, wearing %(traje)s. She looks straight into "
-        "the lens. Held out towards the camera in her left hand, at chest "
-        "height: %(prop_img)s. In her right hand, tipped over it, a plain "
-        "unlabelled bottle of %(sub)s. Beside her stands %(amiga)s, wearing "
-        "%(traje)s, %(reacao)s — she never looks at the lens. They are the "
-        "only two people in the frame. %(nao_toca)s%(band)s %(anti)s. "
-        "%(cauda)s" % v)
+        "IMAGE 01/03: Medium wide shot in %(coz)s, %(luz)s, natural colour "
+        "with no colour grading. Frame-left, standing and facing the camera "
+        "with his arms at his sides, is %(homem)s; %(adesivo)s is stuck flat "
+        "on his belly, and %(prop_img)s is %(fita)s. Centre frame, standing "
+        "behind %(sup_a)s, is %(pessoa)s, wearing %(traje)s; both her hands "
+        "are empty and rest on the surface, and she looks straight into the "
+        "lens with her mouth open mid-word. Frame-right, up on %(sup_a)s on "
+        "her hands and knees, her head towards the right edge of the frame "
+        "and her hips raised towards the centre, her back level and her face "
+        "turned to the lens, is %(amiga)s, wearing %(traje_amiga)s; her left "
+        "hand "
+        "is flat on the surface and her right arm reaches across with the "
+        "index finger pointing at the %(prop_curto)s, without touching it. "
+        "They are the only three people in the frame. %(nao_toca)s%(band)s "
+        "%(anti)s. %(cauda)s" % v)
 
     b["TAKE 01/03"] = (
         "TAKE 01/03: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway. The camera does not move and there is no "
-        "cut. She keeps talking to the lens and never lowers her left hand. "
-        "The bottle in her right hand pours a thin steady stream over the "
-        "%(prop_curto)s the whole time. %(morph)s The second woman does not "
-        "speak, does not move her feet, and keeps her eyes on the "
-        "%(prop_curto)s. Only she speaks. No on-screen text, no subtitles, no "
-        "captions, no watermark." % v)
+        "cut. She keeps talking straight to the lens the whole time and her "
+        "hands stay resting on the surface. The man does not move and does "
+        "not speak, and keeps his arms at his sides; the %(prop_curto)s stays "
+        "in exactly the same place and at the same angle, and the tape never "
+        "comes loose. The woman on the surface stays completely still on her "
+        "hands and knees, her right arm held out and her finger still "
+        "pointing at the %(prop_curto)s without touching it, her face turned "
+        "to the lens, and she never speaks. Only she speaks.\n"
+        'Dialogue: "%(f1)s"\n'
+        "Audio: %(audio)s. No music.\n"
+        "No on-screen text, no subtitles, no captions, no watermark." % v)
 
     # --- CENA 2 — A RECEITA COM O BURACO ------------------------------------
-    # ⛔ O RARO E O COMUM ESTAO EM QUADRO, mas o gelatin trick NAO. E' o
-    # angulo inteiro: a bancada mostra a receita, e a peca que falta so'
-    # existe na fala. Mostrar gelatina aqui entregaria de graca o que o CTA
-    # vende.
+    # ⛔ O RARO E O COMUM ESTAO EM QUADRO, mas o gelatin trick NAO. E' o angulo
+    # inteiro: a bancada mostra a receita, e a peca que falta so' existe na
+    # fala. Mostrar gelatina aqui entregaria de graca o que o CTA vende.
+    # ⛔ O HOMEM NAO ENTRA AQUI. A cena 2 e' a receita, e um terceiro corpo
+    # tiraria o foco da bancada — que e' onde a receita se prova.
     b["IMAGE 02/03"] = (
-        "IMAGE 02/03: Medium shot in %(coz_c)s, %(luz_c)s. %(Ancora)s, wearing "
-        # ⛔ ERA "never touched and never mentioned". A segunda metade
-        # CONTRADIZ A FALA: a cena 2 nomeia o raro em voz alta, por ordem do
-        # operador — e' o eixo dele. A primeira metade era redundante: o
-        # %(nao_toca)s logo abaixo ja' cobre a bancada inteira. Achado da
-        # revisao adversarial de 2026-08-06.
-        "%(traje)s, stands at %(sup_a)s with %(vaso)s in front of her. Laid "
-        "out on the surface beside it: "
-        "%(com_img)s and %(raro_img)s. She is the only person in the frame. "
-        "Shot from chest height, straight on. %(nao_toca)s%(band)s %(anti)s. "
-        "%(cauda)s" % dict(v, Ancora=_ancora(spec)[0].upper() + _ancora(spec)[1:]))
+        "IMAGE 02/03: Medium shot in %(coz_c)s, %(luz_c)s, natural colour "
+        "with no colour grading. %(Ancora)s, wearing %(traje)s, stands at "
+        "%(sup_a)s with %(vaso)s in front of her. Laid out on the surface "
+        "beside it: %(com_img)s and %(raro_img)s. She is the only person in "
+        "the frame. Shot from chest height, straight on. %(nao_toca)s%(band)s "
+        "%(anti)s. %(cauda)s" % v)
 
     b["TAKE 02/03"] = (
         "TAKE 02/03: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts, and the camera does not move. She "
         "talks straight into the lens while she %(acao)s, one continuous "
         "movement, and never stops looking at the camera. Nothing else on the "
-        "surface is picked up. She is the only person who appears. No "
-        "on-screen text, no subtitles, no captions, no watermark." % v)
+        "surface is picked up. She is the only person who appears.\n"
+        'Dialogue: "%(f2)s"\n'
+        "Audio: %(audio)s. No music.\n"
+        "No on-screen text, no subtitles, no captions, no watermark." % v)
 
-    # --- CENA 3 — AS DUAS, O PROP GRANDE E O COPO ---------------------------
-    # ⛔ ORDEM DO OPERADOR: uma segura o prop GRANDE, ja' ereto; a outra segura
-    # o copo. E' o payoff em dois objetos, e o contraste com o prop murcho da
-    # cena 1 e' a prova visual do mecanismo.
+    # --- CENA 3 — O PAYOFF NAS MAOS DELE ------------------------------------
+    # ⛔ ORDEM DO OPERADOR: *"cena 3 sera o homem segurando geoduck grande e
+    # neck ereta, retire a silvertape com prop do short dele na cena 3"*.
+    # ⚠️ O `%(sem_fita)s` nao e' redundancia: o Veo carrega adereco da cena
+    # anterior por continuidade, entao a AUSENCIA precisa ser dita.
+    # ⚠️ E ele entra COM A CABECA EM QUADRO. A versao cortada na cintura foi
+    # recusada por politica — torso masculino decapitado com objeto na virilha
+    # e' o par que o classificador pega. Pessoa inteira le' como pessoa.
     b["IMAGE 03/03"] = (
-        "IMAGE 03/03: Closer medium shot in %(coz_c)s, %(luz_c)s, framed from "
-        "the waist up. %(Ancora)s, wearing %(traje)s, stands frame-right "
-        "holding a tall glass filled to the top with a thick pale drink, a "
-        "single paper straw standing in it. Frame-left, %(amiga)s, wearing "
-        "%(traje)s, holds %(prop_grande)s upright in both fists at chest "
-        "height. They are the only two people in the frame.%(band)s %(anti)s. "
-        "%(cauda)s" % dict(v, Ancora=_ancora(spec)[0].upper() + _ancora(spec)[1:]))
+        "IMAGE 03/03: Medium wide shot in %(coz_c)s, %(luz_c)s, natural "
+        "colour with no colour grading. Frame-left, standing and facing the "
+        "camera, is the same %(h_idade)d-year-old %(etnia)s man, %(h_corpo)s, "
+        "%(h_cabeca)s and %(h_marca)s, wearing %(h_calca)s%(h_oculos)s "
+        "%(sem_fita)s; he holds "
+        "%(prop_grande)s, and his face is relaxed and looking off to the "
+        "side. Frame-right, standing behind %(sup_a)s, is %(ancora)s, wearing "
+        "%(traje)s; she holds a tall glass filled to the top with a thick "
+        "pale drink, a single paper straw standing in it, and looks straight "
+        "into the lens with her mouth open mid-word. They are the only two "
+        "people in the frame. %(nao_toca)s%(band)s %(anti)s. %(cauda)s" % v)
 
     b["TAKE 03/03"] = (
         "TAKE 03/03: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts, and the camera does not move. She "
         "holds the glass steady at chest height the whole time and never sets "
-        "it down. The second woman holds the %(prop_curto)s completely still, "
-        "keeps her eyes on it, and never speaks. Only she speaks, straight "
-        "into the lens. No on-screen text, no subtitles, no captions, no "
-        "watermark." % v)
+        "it down, and she talks straight into the lens. The man does not move "
+        "and does not speak; he keeps both fists closed around the geoduck at "
+        "the same height and the same angle, and its neck stays extended "
+        "straight upward for the whole shot. Only she speaks.\n"
+        'Dialogue: "%(f3)s"\n'
+        "Audio: %(audio)s. No music.\n"
+        "No on-screen text, no subtitles, no captions, no watermark." % v)
 
     return b
 
@@ -1005,55 +1157,81 @@ def montar(spec):
 # ---------------------------------------------------------------------------
 # LINTER — as regras deste ângulo
 # ---------------------------------------------------------------------------
-_HOMEM = re.compile(r"\b(a|the|his|one)\s+(?:\w+\s+){0,3}(man|men|husband|"
-                    r"boyfriend|guy)\b", re.I)
+# ⛔⛔ ESTE REGEX JA' NASCEU CEGO: com {0,3} e \w+ ele nao casava
+# "a 61-year-old white American man" — "61-year-old" tem hifen, quebra em
+# TRES tokens e estoura a janela. A lente FA1 acusou os 1.200 sorteios de
+# nao terem homem, num agente em que o homem esta' em DUAS das tres cenas.
+# ⚠️ Agora aceita hifen ([\w-]) e uma janela de 6, que cobre
+# "a 61-year-old white American man" e "the same 61-year-old ... man".
+_HOMEM = re.compile(r"\b(a|the|his|one|same)\s+(?:[\w-]+\s+){0,6}"
+                    r"(man|men|husband|boyfriend|guy)\b", re.I)
 
 
-def _fa_sem_homem(spec, blocos, achados):
-    """FA1 — ⛔ NENHUM HOMEM EM CENA. Ordem do operador na entrevista: a fonte
-    tem um homem cozinhando ao fundo e ele SAI. São as duas mulheres nas três
-    cenas, e um terceiro corpo em quadro muda a leitura do vídeo inteiro."""
-    for nome, txt in sorted(blocos.items()):
-        if _HOMEM.search(txt):
-            achados.append(("ERRO", "FA1: %s traz um homem em cena — este "
-                                    "ângulo é só as duas mulheres" % nome))
+def _fa_homem(spec, blocos, achados):
+    """FA1 — ⛔⛔ INVERTIDO EM 2026-08-07. Ate' aqui esta lente BANIA homem em
+    cena ("este angulo e' so' as duas mulheres"). O operador reviu depois de
+    ver o video-fonte novo: o homem virou o CORPO-PROVA e agora e'
+    obrigatorio nas cenas 1 e 3 — e proibido na 2, que e' a receita.
+
+    ⚠️ Uma lente que sobrevive a uma inversao de regra sem ser reescrita e'
+    uma lente que passou a medir o contrario do que a doutrina diz. Por isso
+    ela mudou de NOME junto: `_fa_sem_homem` -> `_fa_homem`.
+    """
+    for nome in ("IMAGE 01/03", "IMAGE 03/03"):
+        if not _HOMEM.search(blocos[nome]):
+            achados.append(("ERRO", "FA1: %s sem o homem em cena — ele e' o "
+                                    "corpo-prova deste angulo" % nome))
+    if _HOMEM.search(blocos["IMAGE 02/03"]):
+        achados.append(("ERRO", "FA1: IMAGE 02/03 traz homem — a cena 2 e' a "
+                                "receita, e ela e' dela sozinha"))
+    for nome in ("TAKE 01/03", "TAKE 03/03"):
+        if "does not speak" not in blocos[nome]:
+            achados.append(("ERRO", "FA1: %s sem a trava de fala do homem — "
+                                    "sem ela o segundo corpo dubla a narradora"
+                            % nome))
 
 
 def _fa_prop(spec, blocos, achados):
-    """FA2 — o prop SORTEADO está na cena 1, e a versão grande na cena 3.
+    """FA2 — o prop sorteado esta' PRESO nele na cena 1; o geoduck grande esta'
+    nas maos dele na cena 3.
 
     ⚠️ Mede o prop do `spec`, nunca uma constante: quando o prop virou eixo, um
-    linter que olhasse string fixa acusaria metade dos sorteios. Foi o que
-    aconteceu com o copo do BOTICA no mesmo dia."""
+    linter que olhasse string fixa acusaria metade dos sorteios."""
     if spec["prop"]["img"] not in blocos["IMAGE 01/03"]:
         achados.append(("ERRO", "FA2: IMAGE 01/03 sem o prop sorteado (%s)"
                         % spec["prop"]["id"]))
-    if PROPS_GRANDES[spec["prop"]["id"]] not in blocos["IMAGE 03/03"]:
-        achados.append(("ERRO", "FA2: IMAGE 03/03 sem a versão grande do prop "
-                                "— o contraste com o murcho é a prova visual"))
+    if FITA not in blocos["IMAGE 01/03"]:
+        achados.append(("ERRO", "FA2: IMAGE 01/03 sem a fita — sem ela o prop "
+                                "vira comida na mao e a piada morre"))
+    if PROP_GRANDE not in blocos["IMAGE 03/03"]:
+        achados.append(("ERRO", "FA2: IMAGE 03/03 sem o geoduck do payoff"))
+    if SEM_FITA not in blocos["IMAGE 03/03"]:
+        achados.append(("ERRO", "FA2: IMAGE 03/03 nao DIZ que nao ha' fita — o "
+                                "Veo carrega adereco da cena anterior por "
+                                "continuidade, e ausencia omitida ele preenche"))
 
 
-def _fa_morph(spec, blocos, achados):
-    """FA3 — a mudança do prop está no TAKE 01, e ela ALONGA sem engrossar.
+def _fa_nada_cresce(spec, blocos, achados):
+    """FA3 — ⛔ NADA CRESCE EM CENA NESTE AGENTE.
 
-    ⛔⛔ A escala é DIFERENCIAL. Medido em pixels na fonte do RESSURREICAO:
-    altura 2,31× contra largura 1,44×. Se a descrição disser que o objeto fica
-    MAIOR, lê como tumescência e o gerador recusa — foi assim que caiu um
-    vídeo nosso na política de conteúdo nocivo."""
-    t1 = blocos["TAKE 01/03"]
-    if spec["prop"]["depois"] not in t1:
-        achados.append(("ERRO", "FA3: TAKE 01/03 sem a mudança do prop — o "
-                                "despejo sem morph é só um líquido caindo"))
-    # ⛔ NEGAÇÃO NÃO CONTA. A primeira versão acusava `no thicker than before` —
-    # a frase que EXISTE justamente para impedir o inchaço. A lente reprovava o
-    # texto que CUMPRE a regra, em 418 de 800 sorteios. Suspeitar da lente antes
-    # do código é a lição que mais se repetiu esta semana.
-    _cresce = re.sub(r"\b(no|not|never|same)\s+\w+", " ", t1, flags=re.I)
-    if re.search(r"\b(bigger|larger|swell\w*|thicker|grows|expands)\b",
-                 _cresce, re.I):
-        achados.append(("ERRO", "FA3: TAKE 01/03 descreve o prop ficando MAIOR "
-                                "— a escala é diferencial (alonga, não incha); "
-                                "'maior' lê como tumescência e derruba o vídeo"))
+    O morph morreu junto com o despejo (2026-08-07): sem liquido caindo, nada
+    motivava a mudanca, e o morph solto era o que mais chamava o classificador.
+    O antes/depois passou a acontecer ENTRE a cena 1 e a 3 — murcho e preso la',
+    grande e na mao dele aqui.
+
+    ⛔ Mas a guarda FICA, e apontada para os blocos inteiros: se alguma edicao
+    futura reintroduzir vocabulario de crescimento, lê como tumescencia e
+    derruba o video. Foi assim que caiu um video nosso na politica de conteudo
+    nocivo.
+    ⚠️ NEGACAO NAO CONTA: a primeira versao desta lente acusava `no thicker
+    than before` — a frase que EXISTIA para impedir o inchaco — em 418 de 800
+    sorteios."""
+    for nome, txt in sorted(blocos.items()):
+        limpo = re.sub(r"\b(no|not|never|same)\s+\w+", " ", txt, flags=re.I)
+        if re.search(r"\b(bigger|larger|swell\w*|thicker|grows|expands|"
+                     r"rises|risen|inflat\w*)\b", limpo, re.I):
+            achados.append(("ERRO", "FA3: %s descreve algo CRESCENDO — neste "
+                                    "agente nada cresce em cena" % nome))
 
 
 def _fa_buraco(spec, blocos, achados):
@@ -1081,10 +1259,25 @@ def _fa_buraco(spec, blocos, achados):
 
 
 def _fa_raro(spec, blocos, achados):
-    """FA5 — o raro entra na fala com nome popular + aposto, nunca científico."""
-    if spec["raro"]["fala"] not in spec["falas"][1]:
+    """FA5 — ⛔⛔ O MESMO RARO NAS DUAS CENAS, e e' a corrente do video:
+    nu no hook, com aposto na cena 2.
+
+    cena 1: o raro SOZINHO nao resolve · cena 2: use o raro + a peca que todos
+    pulam · cena 3: comente gelatin e eu mando a peca. Se a cena 1 desmentisse
+    um raro e a cena 2 receitasse OUTRO, o espectador ouviria dois suplementos
+    e nao saberia o assunto.
+    ⛔ O aposto no hook estoura o teto de 25 — por isso ele so' existe na 2."""
+    nome, fala = spec["raro"]["nome"], spec["raro"]["fala"]
+    if nome.lower() not in spec["falas"][0].lower():
+        achados.append(("ERRO", "FA5: o hook nao nomeia o raro sorteado (%s) — "
+                                "sem ele a cena 1 desmente o nada"
+                        % spec["raro"]["id"]))
+    if fala not in spec["falas"][1]:
         achados.append(("ERRO", "FA5: a cena 2 não traz o raro sorteado com o "
                                 "aposto (%s)" % spec["raro"]["id"]))
+    if re.search(r",\s*(that|the)\b", spec["falas"][0]):
+        achados.append(("ERRO", "FA5: o aposto vazou para o hook — ele so' cabe "
+                                "na cena 2, e no hook estoura o teto"))
 
 
 def _fa_duas(spec, blocos, achados):
@@ -1092,7 +1285,10 @@ def _fa_duas(spec, blocos, achados):
 
     ⚠️ A cena 2 é o preparo e ela está sozinha: a amiga voltando ali tiraria o
     foco da bancada, que é onde a receita se prova."""
-    for nome in ("IMAGE 01/03", "IMAGE 03/03"):
+    if "only three people" not in blocos["IMAGE 01/03"]:
+        achados.append(("ERRO", "FA6: IMAGE 01/03 sem a trava de elenco de TRES "
+                                "— o homem, quem fala e quem aponta"))
+    for nome in ("IMAGE 03/03",):
         if "only two people" not in blocos[nome]:
             achados.append(("ERRO", "FA6: %s sem a trava de elenco — sem ela o "
                                     "Veo enche o fundo de gente" % nome))
@@ -1149,33 +1345,28 @@ _VERBO_FINITO = re.compile(
     r"points?|droops?|falls?|leans?|curls?)\b", re.I)
 
 
-def _fa_morph_gramatical(spec, blocos, achados):
-    """FA10 — o morph e' a cena inteira; e o estado ANTES e' SINTAGMA NOMINAL.
+def _fa_fala_no_take(spec, blocos, achados):
+    """FA10 — ⛔⛔⛔ A FALA ESTA' NOS TRES TAKES.
 
-    ⛔⛔ ESTA LENTE JA' NASCEU CEGA UMA VEZ, na mesma hora em que foi escrita.
-    A primeira versao checava se a string montada continha
-    `"%s, changes on camera" % antes` — ou seja, checava a VIRGULA. Reinjetei o
-    defeito original (`antes` = "the moulded shaft lies folded down") e ela
-    PASSOU, porque a virgula continuava no lugar: o prompt saia agramatical e a
-    lente dizia limpo. Ela media a FORMA do encaixe, nunca a NATUREZA do que
-    encaixou. Agora mede o campo."""
-    antes, depois = spec["prop"]["antes"], spec["prop"]["depois"]
-    m = _VERBO_FINITO.search(antes)
-    if m:
-        achados.append(("ERRO", "FA10: o estado ANTES do prop %r conjuga "
-                                "(%r) — ele entra como SUJEITO de 'changes on "
-                                "camera' e o prompt fica com dois verbos"
-                        % (spec["prop"]["id"], m.group(0))))
-    t = blocos["TAKE 01/03"]
-    if MORPH is MORPH_VISIVEL:
-        if ("%s, changes on camera" % antes) not in t:
-            achados.append(("ERRO", "FA10: o morph nao encaixa o estado ANTES "
-                                    "entre virgulas"))
-        if depois not in t.split("changes on camera:", 1)[-1]:
-            achados.append(("ERRO", "FA10: o estado DEPOIS nao vem apos os "
-                                    "dois-pontos do morph"))
-    elif depois not in t:
-        achados.append(("ERRO", "FA10: morph oculto sem o estado DEPOIS"))
+    E' a lente que nao existia, e a ausencia dela custou um lote inteiro. O
+    agente montava as tres falas, mostrava no painel, salvava no .txt — e
+    NENHUMA entrava no prompt. A linha Dialogue aparecia 0 vezes neste motor,
+    contra
+    1 a 13 em todos os outros dezoito. Os videos saiam MUDOS, e o operador so'
+    descobriu gerando: *"vc esqueceu de incluir as falas em todos os takes, o
+    agente atualmente nao gera prompt com a parte da fala"*.
+
+    ⚠️ Nenhuma lente antiga podia pegar: todas mediam a FALA (teto, drifting,
+    eco) ou o BLOCO (portugues, pontuacao) — nenhuma media a JUNCAO dos dois.
+    Cobertura de lente nao e' qualidade, e' cobertura.
+    """
+    for i, nome in enumerate(("TAKE 01/03", "TAKE 02/03", "TAKE 03/03")):
+        fala = spec["falas"][i]
+        if ('Dialogue: "%s"' % fala) not in blocos[nome]:
+            achados.append(("ERRO", "FA10: %s nao carrega a fala da cena %d — "
+                                    "o video sai MUDO" % (nome, i + 1)))
+        if "Audio:" not in blocos[nome]:
+            achados.append(("ERRO", "FA10: %s sem a linha de Audio" % nome))
 
 
 def _sentencas(t):
@@ -1235,23 +1426,28 @@ def lint(spec, blocos):
                                 "referente — %r deixa o espectador perguntando "
                                 "do que se trata" % (i, sents[0][:46])))
 
-    for extra in (_fa_sem_homem, _fa_prop, _fa_morph, _fa_buraco, _fa_raro,
-                  _fa_duas, _fa_bloco_limpo, _fa_morph_gramatical):
+    for extra in (_fa_homem, _fa_prop, _fa_nada_cresce, _fa_buraco, _fa_raro,
+                  _fa_duas, _fa_bloco_limpo, _fa_fala_no_take):
         extra(spec, blocos, ach)
     return ach
 
 
 def resumo_pt(spec):
-    m, r, p = spec["mundo"], spec["ref"], spec["prop"]
-    return ("Mulher %s de %d anos, em %s. Cena 1: despeja %s sobre %s na lente, "
-            "com uma amiga ao lado, e ele muda em cena. Cena 2: %s com %s e %s, "
-            "e a peça que falta só é dita. Cena 3: as duas — uma com %s grande "
-            "e ereto, a outra com o copo. Três cenas de 8s."
-            % (spec["etnia"], r["idade"], m["familia"], spec["substancia"]["nome"],
-               # o resumo e' PT: usa "nome". O campo "curto" agora e' o termo
-               # INGLES que vai para o prompt, e aqui ele nao pode aparecer.
-               p["nome"], spec["metodo"]["curto"], spec["comum"]["nome"],
-               spec["raro"]["nome"], p["nome"]))
+    """⚠️ O resumo e' PT e descreve o que o operador VAI VER. Ele ficou para
+    tras na reformulacao de 2026-08-07 — ainda falava de despejo, de substancia
+    e de um prop que muda em cena, todos removidos — e quebrou no primeiro
+    sorteio por ler `spec["substancia"]`, que nao existe mais.
+    ⛔ Resumo desatualizado nao e' cosmetico: e' o unico lugar onde o operador
+    le' o video ANTES de gastar credito gerando."""
+    m, r, p, h = spec["mundo"], spec["ref"], spec["prop"], spec["homem"]
+    return ("Mulher %s de %d anos, em %s. Cena 1: homem de %d anos de tronco "
+            "nu com %s presa de fita no short e adesivo na barriga; ela fala "
+            "de mãos livres e a amiga, de quatro na bancada, aponta pro prop. "
+            "Cena 2: %s com %s e %s, e a peça que falta só é dita. Cena 3: ele "
+            "com o geoduck grande e sem fita, ela com o copo. Três cenas de 8s."
+            % (spec["etnia"], r["idade"], m["familia"], h["idade"], p["nome"],
+               spec["metodo"]["curto"], spec["comum"]["nome"],
+               spec["raro"]["nome"]))
 
 
 def nova_fala(spec, cena, rng):

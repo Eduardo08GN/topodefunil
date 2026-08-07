@@ -225,6 +225,13 @@ EXCECOES = {
         "e ancora seguem cheios, e o PORTE mora no eixo proprio CORPOS_M "
         "(CL26 desde 2026-08-04: sensual, nunca musculoso).",
     ("clean_short_v2.py", "REFS_M", "oculos"): "idem clean_short",
+    ("falta_short.py", "HOMENS", "pele"):
+        "CONTRATO DO MOTOR — as entradas do pool carregam ZERO adjetivo de "
+        "etnia, e quem injeta e' a montagem, a partir do MUNDO sorteado (o "
+        "homem sai como '%s man' com a etnia do mundo). E' o mesmo contrato "
+        "do pool das mulheres deste agente e do NECROSE/EXTERIOR. Pool com "
+        "etnia dentro quebraria a congruencia de mundo, que e' inviolavel "
+        "neste funil.",
     ("falta_short.py", "REFS", "oculos"):
         "LEI DO REF — este agente nasce em MODO BELA por ordem do operador "
         "(*mulheres extremamente lindas, roupa curta*), e oculos de leitura "
