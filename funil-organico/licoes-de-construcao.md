@@ -1267,6 +1267,57 @@ sempre com outra roupa: **verificar a FORMA e não a FUNÇÃO**.
 
 ---
 
+## 36. ⛔⛔ O BEAT ORÇAVA CONTRA O PIOR CASO DE UM BEAT QUE ERA SORTEADO SOLTO DEPOIS
+
+**A cena 3 do `receita_short` entregava DOZE falas distintas em 400 vídeos — e as
+400 começavam pela mesma frase.** Não havia bug: cada linha estava aprovada, o
+linter passava, o autoteste dizia OK e o `medir_teto_fala` não reclamava. O que
+havia era um **orçamento pessimista**:
+
+```python
+esc  = rng.choice(_cabem(ESCALADAS,
+           lambda e: "...%s..." % max(ISCAS_ENTREGA, key=_palavras), TETO))
+isca = rng.choice(livres)      # <- livre, DEPOIS, sem teto nenhum
+```
+
+A escalada reservava espaço para a isca **mais longa** — e a isca era escolhida
+livremente na linha seguinte, sem orçamento nenhum. Pagava-se o preço da isca de
+5 palavras em **todo** sorteio, inclusive nos que usavam a de 2. Sobrevivia
+**1 escalada de 10 e 2 gates de 9**.
+
+> **Reservar o pior caso de um beat que depois se escolhe livre é pessimismo
+> puro.** A ordem certa é a mesma que tirou o TROCA do corte de fala: cada beat
+> filtra contra o **mínimo** dos outros, e o beat sem restrição própria é
+> escolhido **dentro** do orçamento, não antes dele.
+
+`12 → 55` falas distintas, escaladas `1 → 4`, gates `2 → 6`, teto respeitado
+(máx. 25 de 25), **sem mudar uma palavra**. As seis escaladas que continuam de
+fora têm 26-27 palavras no melhor caso possível — essas são copy, e copy é
+alçada do operador (§CL15: descarta-se a linha, nunca se encurta a linha).
+
+**O sintoma, para achar o próximo:** uma cena com contagem de falas distintas
+**uma ordem de grandeza abaixo das vizinhas** no mesmo motor. Foi assim que este
+apareceu — `368/357/12`.
+
+### ⚠️ E a sonda que foi caçar isso errou primeiro, do jeito de sempre
+
+A primeira versão do `medir_alcance.py` olhava só `spec["falas"]` e **acusou 18
+dos 19 motores**. Pool que alimenta os **blocos** (traje, corpo, apelo) nunca
+aparece na fala — eram falsos positivos em massa. A assinatura estava visível de
+longe: **pools 100% mortos em série**.
+
+> **Lente que acusa quase todo mundo está medindo a coisa errada, não
+> encontrando uma epidemia.** Antes de reportar uma varredura, olhe a taxa de
+> acusação: 95% dos alvos sujos é diagnóstico da lente, não do repo.
+
+Com falas **+** blocos, e separando as três perguntas que a mistura confundia —
+(1) o pool é referenciado? (2) quantas entradas saem? (3) quantas falas
+distintas por cena? — sobraram 12 de 19. Duas defesas ficaram no arquivo:
+prefixo abaixo de 20 caracteres não credita entrada nenhuma, e pool `0 de N` não
+é acusado (é pool que a sonda não alcança, não pool morto).
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1353,6 +1404,17 @@ sempre com outra roupa: **verificar a FORMA e não a FUNÇÃO**.
       pode podar o substantivo que carrega o sentido (§35)
 - [ ] **A forma do pool varia?** Contar quantas entradas abrem a segunda oração
       do mesmo jeito. Acima de ~30% é mode-collapse, e nenhum linter acusa (§35)
+- [ ] ⭐ `python funil-organico/medir_alcance.py --motor <nome>` — e **comparar
+      as falas distintas de cada cena entre si**. Cena uma ordem de grandeza
+      abaixo das vizinhas (`368/357/12`) é orçamento pessimista, não copy
+      pobre (§36)
+- [ ] **Nenhum beat orça contra o MÁXIMO de outro beat** — se o outro é
+      escolhido livre depois, paga-se o pior caso em todo sorteio. Cada beat
+      filtra contra o **mínimo** dos outros, e o beat sem restrição própria é
+      escolhido **dentro** do orçamento (§36)
+- [ ] **Varredura acusou quase todos os alvos? A lente está errada** — 18 de 19
+      motores sujos foi diagnóstico da sonda, não do repo. Olhar a taxa de
+      acusação **antes** de reportar (§36)
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
 - [ ] **Mexi na `ui_agente`? A `sonda_ui` abriu as 19 JANELAS** — motor
       importado não prova painel construído, e ramo por agente esconde o
