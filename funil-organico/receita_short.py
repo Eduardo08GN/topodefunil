@@ -1406,20 +1406,38 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         # mesmas palavras, num take que ja' e' o mais denso dos tres.
         # ⚠️ Resolvido no SORTEIO, nao so' cobrado no linter: linter que reprova
         # o proprio motor e' aviso, nao defesa.
+        # ⛔⛔ A ESCALADA ORCAVA CONTRA A ISCA MAIS LONGA — e a isca era sorteada
+        # SOLTA logo abaixo, sem orcamento nenhum. Reservar o pior caso de um
+        # beat que depois se escolhe livre e' pessimismo puro: paga-se o preco
+        # da isca de 5 palavras em TODO sorteio, inclusive nos que usam a de 2.
+        # ⚠️ MEDIDO em 2026-08-08: a cena 3 entregava DOZE falas distintas em
+        # 400 sorteios, e as 400 comecavam pela MESMA escalada — 1 das 10 cabia
+        # no orcamento pessimista, e os GATES ficavam em 2 dos 9.
+        # ⭐ A ordem certa e' a mesma do TROCA: cada beat filtra contra o MENOR
+        # dos outros, e o beat sem restricao propria e' escolhido DENTRO do
+        # orcamento em vez de antes dele. Alcance: escaladas 1 -> 4 de 10,
+        # gates 2 -> 6 de 9.
+        # ⛔ NENHUMA PALAVRA MUDA AQUI. As seis escaladas que continuam de fora
+        # tem 26-27 palavras no melhor caso possivel: so' encurtando a copy, que
+        # e' alcada do operador (CL15 — descarta-se a linha, nunca se encurta).
         curto_g = min(GATES, key=_palavras)
+        curta_i = min(ISCAS_ENTREGA, key=_palavras)
+
+        def _f3(rot, isca_, gate):
+            return "%s — %s and I'll send you %s. %s" % (
+                rot.format(o=o1), sc.CTA_LITERAL, isca_, gate)
+
         esc = rng.choice(_cabem(
-            ESCALADAS,
-            lambda e: "%s — %s and I'll send you %s. %s"
-            % (e.format(o=o1), sc.CTA_LITERAL, max(ISCAS_ENTREGA, key=_palavras),
-               curto_g),
-            TETO_FALA[3]))
+            ESCALADAS, lambda e: _f3(e, curta_i, curto_g), TETO_FALA[3]))
+        # ⚠️ RE19 CONTINUA VALENDO: a isca nao pode repetir o miolo da escalada.
+        # O filtro de teto entra DEPOIS dele, nunca no lugar dele.
         miolo = _miolo(esc)
         livres = [i for i in ISCAS_ENTREGA if _miolo(i) != miolo] or ISCAS_ENTREGA
-        isca = rng.choice(livres)
+        isca = rng.choice(_cabem(
+            livres, lambda x: _f3(esc, x, curto_g), TETO_FALA[3]))
 
         def _c3(rot, gate):
-            return "%s — %s and I'll send you %s. %s" % (
-                rot.format(o=o1), sc.CTA_LITERAL, isca, gate)
+            return _f3(rot, isca, gate)
 
         gate = rng.choice(_cabem(GATES, lambda g: _c3(esc, g), TETO_FALA[3]))
         f[2] = _c3(esc, gate)
