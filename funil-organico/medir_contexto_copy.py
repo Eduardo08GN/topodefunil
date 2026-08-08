@@ -75,7 +75,8 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # v2 acima — nasceu fora da lista e o `--gate` passou verde sem
            # nunca ter olhado para ele.
            "falta_short",
-           "trio16_short"]
+           "trio16_short",
+           "dupla16_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

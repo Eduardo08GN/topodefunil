@@ -309,6 +309,12 @@ EXCECOES = {
     ("dupla_short.py", "REFS", "oculos"):
         "LEI DO REF — as duas mulheres sao a bullet de retencao deste angulo, "
         "por encomenda do operador.",
+    # ⛔ DUPLA 16 herda o pool REFS do DUPLA por copia literal, entao herda a
+    # razao inteira. Excecao declarada no dia em que o motor nasceu — deixar o
+    # gate vermelho "porque eu sei que e' de proposito" e' como o operador
+    # aprende a ignorar o gate.
+    ("dupla16_short.py", "REFS", "oculos"):
+        "LEI DO REF — mesmo pool e mesma razao do dupla_short.py.",
     ("botica_short.py", "REFS", "oculos"):
         "LEI DO REF — oculos brigam frontalmente com 'linda'. Cabelo 12/12, "
         "porte 10/12, pele 6/12 e ancora 6/12 seguem cheios.",
