@@ -2125,6 +2125,31 @@ def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
                                                    f=par["fala_f"],
                                                    o=orgaos[0])) is None]
     hook_pool = seguros or hook_pool
+
+    # ⛔⛔ O HOOK ERA SORTEADO SEM ORCAMENTO NENHUM, e o VILAO tinha de absorver
+    # sozinho o que sobrasse. Quando o hook saia longo, nenhum vilao satisfazia
+    # o predicado abaixo e o `_escolher` caia no fallback — devolvia um vilao
+    # qualquer e a cena 1 ia a 29 palavras, contra teto 25.
+    # ⚠️ MEDIDO em 2026-08-08 pelo `medir_teto_fala --curva`: 7,2% dos sorteios
+    # acima do teto fisico, ou seja FALA CORTADA no render, com o piso do motor
+    # em 23 — o pool sabia falar curto, a cadeia e' que nao pedia.
+    # ⭐ Mesmo conserto que tirou o TROCA da lista dos que cortam fala: o beat
+    # sem restricao propria passa a ser escolhido DENTRO do orcamento, e o
+    # criterio nao e' "o menor vilao cabe" e sim "existe vilao que satisfaz o
+    # predicado INTEIRO" — piso, teto e a P22 do `_aterrissa`.
+    # ⛔ NENHUMA PALAVRA MUDA: muda quais hooks entram no sorteio.
+    def _tem_vilao(h):
+        t = h["txt"].format(e=par["fala_e"], f=par["fala_f"], o=orgaos[0])
+        return any(PISO_FALA[1]
+                   <= _palavras("%s %s" % (t, x.format(o=orgaos[0])))
+                   <= TETO_FALA[1]
+                   and (_aterrissa(t) or _aterrissa(x))
+                   for x in VILOES)
+
+    # ⚠️ `or hook_pool` porque lista vazia nao pode existir: antes de derrubar o
+    # sorteio, o teto cede e quem reclama e' o linter — e' ele que tem de
+    # aparecer, nao um IndexError.
+    hook_pool = [h for h in hook_pool if _tem_vilao(h)] or hook_pool
     hook = rng.choice(hook_pool)["txt"].format(e=par["fala_e"],
                                                f=par["fala_f"], o=orgaos[0])
     # ⚠️ O fecho e' quem fecha o orcamento da cena 1 E quem cobre a P22 quando o

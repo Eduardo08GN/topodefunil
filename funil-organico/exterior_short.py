@@ -230,7 +230,16 @@ CENAS_UI = ["1 · A ISCA E O DESMENTIDO", "2 · A REGRA E O MECANISMO",
 # (vocabulario banido) e EX10 (a narradora tem de existir numa tabela
 # propria). O modo reprovava 65 de 200.
 
-TETO_FALA = {1: 25, 2: 32, 3: 34}
+# ⛔⛔ O TETO DECLARADO DA CENA 2 ERA 32 — 8 segundos nao comportam 32
+# palavras (licoes §27/§28: a lente conferia COERENCIA INTERNA, nao
+# capacidade FISICA; teto declarado 32 faz uma fala de 32 passar no lint
+# e ser cortada no render). Desce para o fisico 25, e o piso 24 continua
+# alcancavel — o menor par REGRA+MECANISMO da 21.
+# ⚠️ A CENA 3 FICA EM 34 DE PROPOSITO e continua na lista dos que cortam:
+# la' o MENOR par possivel ja' da' 32 palavras, entao baixar o teto so'
+# trocaria fala cortada por sorteio impossivel. Aquilo e' copy, e copy e'
+# alcada do operador.
+TETO_FALA = {1: 25, 2: 25, 3: 34}
 PISO_FALA = {1: 22, 2: 24, 3: 30}
 
 # ⚠️ A borda de CIMA da faixa 82-96 da doutrina. ⛔ Nao usar a soma dos tetos
@@ -1649,7 +1658,19 @@ def _montar_falas(rng, orgaos):
     # ----- cena 2 ----------------------------------------------------------
     # ⛔ A REGRA vem SEMPRE (EX2). O que se escolhe e' qual forma dela cabe junto
     # com o mecanismo sorteado.
-    mec = rng.choice(MECANISMOS_FALA).format(o=orgaos[1])
+    # ⛔⛔ O MECANISMO ERA SORTEADO SEM ORCAMENTO e a REGRA tinha de absorver.
+    # ⚠️ MEDIDO em 2026-08-08: 34,2% das cenas 2 acima do teto FISICO de 25
+    # palavras — fala cortada no render — com o piso do motor em 24. O pool
+    # sabia falar curto; a cadeia e' que nao pedia.
+    # ⭐ Mesmo conserto do TROCA e do ESCANDALO: o beat sem restricao propria
+    # passa a ser escolhido dentro do orcamento. Custo medido e assumido: UM dos
+    # dez mecanismos (o de 18 palavras) nao deixa espaco para regra nenhuma e
+    # sai do sorteio. Ele so' produzia fala que o take cortava.
+    # ⚠️ `or MECANISMOS_FALA` porque lista vazia derrubaria o sorteio.
+    _sobra = [m for m in MECANISMOS_FALA
+              if any(_w("%s %s" % (r, m.format(o=orgaos[1]))) <= TETO_FALA[2]
+                     for r in REGRAS)]
+    mec = rng.choice(_sobra or MECANISMOS_FALA).format(o=orgaos[1])
 
     def _c2(r):
         return "%s %s" % (r, mec)
@@ -1660,8 +1681,12 @@ def _montar_falas(rng, orgaos):
                 and _w(_c2(r)) <= TETO_FALA[2]
                 and not (sem_eco and _repete(r, mec))]
 
+    # ⚠️ ULTIMO DEGRAU NOVO: com o teto no fisico, um mecanismo longo pode nao
+    # deixar NENHUMA regra sob 25, e `rng.choice([])` derrubaria o sorteio com
+    # IndexError. Antes de quebrar, cede o teto e entrega a combinacao mais
+    # curta — e quem reclama e' o linter, que e' o que tem de aparecer.
     op = (_op2(True, True) or _op2(True, False) or _op2(False, True)
-          or _op2(False, False))
+          or _op2(False, False) or [min(REGRAS, key=lambda r: _w(_c2(r)))])
     c2 = _c2(rng.choice(op))
 
     # ----- cena 3 ----------------------------------------------------------
