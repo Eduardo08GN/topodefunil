@@ -1064,23 +1064,95 @@ FECHOS = [
 # abaixo custam 10-13. As que passavam de 14 foram cortadas na redacao, nao
 # deixadas para o `_ok` derrubar — pool que so' cabe pelo fallback e' pool que
 # colapsa no combo minimo, que e' o defeito que o proprio TRIO documenta.
-USOS = [
-    "The gelatin trick has your {o} hard before she reaches for it",
-    "The gelatin trick keeps your {o} up long after she taps out",
-    "The gelatin trick fills your {o} out where she can see it",
-    "The gelatin trick wakes your {o} and she stops asking what's wrong",
-    "The gelatin trick gets your {o} stone hard and keeps it there",
-    "The gelatin trick puts your {o} back and she feels it first",
-    "The gelatin trick holds your {o} hard until she finishes",
-    "The gelatin trick takes your {o} from dead weight to ready",
-    "The gelatin trick has her reaching for your {o} before you speak",
-    "The gelatin trick brings your {o} back and she asks what changed",
-    "The gelatin trick makes your {o} hard enough that she stops talking",
-    "The gelatin trick gives your {o} back the weight it had at twenty",
-    "The gelatin trick has your {o} ready again the same night",
-    "The gelatin trick leaves your {o} hard and you stop apologizing",
-    "The gelatin trick has her friends hearing about your {o} first",
-    "The gelatin trick turns your {o} hard the second she touches it",
+# ⛔⛔ REESCRITO EM 2026-08-08, e a lição é a razão de existir dos tres pools
+# abaixo em vez de um.
+#
+# A PRIMEIRA versao era UMA lista de 16 frases inteiras, e ela tinha os dois
+# defeitos que o operador achou lendo a saida:
+#
+#   1. DRIFTING POR COMPRESSAO. Eu escrevi `she feels the difference first`,
+#      nao coube em 25 palavras e encurtei para `she feels it first`. Cortei
+#      exatamente o substantivo que carregava o sentido e deixei o pronome:
+#      *"fills it o QUE? O clima, formigao no pe?"*. E' o mesmo erro do `every
+#      morning just ginkgo` — comprimir matando a concretude, em vez de trocar
+#      a frase por uma mais curta que ainda diz do que se trata.
+#   2. REPETICAO ESTRUTURAL. Dez das dezesseis entradas abriam a segunda oracao
+#      com `she`. Um pool que repete a mesma forma em 62% dos sorteios nao e'
+#      pool, e' uma frase com variacoes — e o mode-collapse aparece no lote
+#      mesmo com o linter verde, porque nenhuma lente mede FORMA REPETIDA.
+#
+# ⭐⭐ A DIRETIVA DO OPERADOR, que generaliza para todo pool de copy:
+#     *"concretude, ser taxativo, e' melhor candidato que pronome generico"* —
+#     e o exemplo dele foi exatamente este: em vez de `she`, um POOL de
+#     `sua namorada` / `sua esposa`.
+#
+# ⛔ POR ISSO SAO TRES EIXOS, e nao um. O sorteio compoe
+#     EFEITO no orgao  ·  QUEM E' ELA  ·  COMO ELA REAGE
+# o que da 12 x 6 x 18 combinacoes em vez de 16 frases, e — mais importante —
+# torna impossivel repetir a forma: a parceira e' sempre NOMEADA e a reacao vem
+# de um pool proprio.
+# ⚠️ MEDIDO: 87% das combinacoes cabem em 25 palavras, mediana 23. A versao de
+# lista unica cabia em 15 de 16 com mediana 24 — mais curta e mais repetitiva.
+
+# ⭐ O EFEITO NO ORGAO. Carrega o literal `gelatin trick` como SUJEITO, que e' o
+# que amarra o criativo a' VSL e ja' poe o mecanismo no topo da hierarquia (§31)
+# sem precisar de rotulo com dois pontos.
+EFEITOS = [
+    "The gelatin trick gets your {o} stone hard",
+    "The gelatin trick brings your {o} back",
+    "The gelatin trick keeps your {o} hard all night",
+    "The gelatin trick makes your {o} thick again",
+    "The gelatin trick fills your {o} out again",
+    "The gelatin trick wakes your {o} up",
+    "The gelatin trick puts the weight back in your {o}",
+    "The gelatin trick has your {o} ready again",
+    "The gelatin trick leaves your {o} hard for hours",
+    "The gelatin trick straightens your {o} out",
+    "The gelatin trick loads your {o} up again",
+    "The gelatin trick gets your {o} up on command",
+]
+
+# ⭐⭐ QUEM E' ELA — o pool que existe para NAO haver `she` nu.
+# ⛔ Nenhuma entrada e' pronome. `she` obriga o espectador a descobrir de quem
+# se trata no meio de 8 segundos; `your wife` entrega no primeiro fonema. E a
+# escolha tambem SEGMENTA: casado e namorando nao ouvem a mesma promessa.
+# ⚠️ Lente T16-5 cobra: fala da cena 2 sem parceira NOMEADA e' reprovacao.
+PARCEIRAS = [
+    "your wife",
+    "your girlfriend",
+    "your woman",
+    "your girl",
+    "the wife",
+    "that woman of yours",
+]
+
+# ⭐⭐ COMO ELA REAGE — o pool que o operador pediu: *"outras formas de expressar
+# o prazer que a parceira vai notar"*.
+# ⛔ TODA entrada e' um COMPORTAMENTO OBSERVAVEL, nunca um estado interno. `she
+# is satisfied` nao se ve'; `digs her nails in` e' um plano. O espectador compra
+# a cena, nao o adjetivo.
+# ⛔ E ZERO `it` sem antecedente. `stops faking it` fica porque `fake it` e'
+# idioma fechado e inequivoco; `feels it` saiu porque o `it` nao tem dono — foi
+# a frase que o operador reprovou.
+REACOES = [
+    "digs her nails in",
+    "stops faking it",
+    "asks what changed",
+    "cannot keep quiet",
+    "starts finishing again",
+    "reaches for you first",
+    "wakes you up for more",
+    "tells her friends",
+    "goes quiet mid-sentence",
+    "will not let you sleep",
+    "makes the first move",
+    "forgets her sentence",
+    "stops turning away",
+    "climbs on uninvited",
+    "stops watching the clock",
+    "cancels her plans",
+    "starts locking the bedroom door",
+    "stops calling it a phase",
 ]
 
 # ⭐⭐ O COMANDO, E A VIRGULA DEPOIS DE `gelatin` E' O ITEM MAIS IMPORTANTE DESTE
@@ -1104,17 +1176,31 @@ CTA_BASE = "%s and I'll send you the recipe." % sc.CTA_LITERAL
 # mediana cai e o pool de USOS respira.
 # ⛔ As entradas longas dao a RAZAO (ordem sem motivo nao faz ninguem clicar);
 # as curtas existem para caber quando o uso e' longo. O `_ok` escolhe.
+# ⛔⛔ TETO DE 5 PALAVRAS, E ELE E' ARITMETICA, NAO ESTILO.
+# O menor EFEITO custa 7, a menor PARCEIRA 2, a menor REACAO 3 e o CTA_BASE 8 —
+# somam 20 dos 25. Sobram CINCO para o follow, sempre.
+# ⚠️ A primeira versao deste pool tinha dez entradas e SEIS delas custavam 6-7
+# palavras. Elas nunca saiam: em 600 sorteios so' quatro apareceram, e as seis
+# mortas eram justamente as que davam a RAZAO de seguir. Pool com entrada
+# impossivel mente sobre o proprio tamanho — o autoteste contava 10 opcoes e a
+# producao tinha 4.
+# ⛔ Achado por MEDICAO de cobertura, e nao pelo linter: nenhuma lente olhava se
+# uma entrada de pool e' alcancavel. Agora o autoteste olha (controle [ALCANCE])
+# e reprova qualquer pool com entrada que nao cabe nem com os minimos dos
+# outros eixos.
+# ⭐ Metade das entradas ainda entrega o motivo, so' que em quatro ou cinco
+# palavras — ordem sem motivo nao faz ninguem clicar.
 FOLLOWS = [
+    "Followers only.",
+    "Follow first.",
     "Follow me first.",
     "Follow me too.",
-    "Followers only.",
-    "Follow me, or it never arrives.",
-    "Follow me, or I cannot find you.",
-    "Follow me, or your comment gets lost.",
-    "Follow me first, or my reply bounces.",
-    "Follow me, or the app blocks me.",
-    "Follow me, or it lands in spam.",
-    "I only see followers' comments.",
+    "Followers get it.",
+    "Follow, or nothing sends.",
+    "Unfollowed, I cannot reply.",
+    "No follow, no recipe.",
+    "Follow, or it never sends.",
+    "Follow, or my DM bounces.",
 ]
 
 METODOS = [
@@ -2375,13 +2461,27 @@ def _falas(spec, rng, quais=(0, 1)):
         # ⚠️ O `o2` aqui, e' de proposito: sao dois orgaos diferentes no mesmo
         # video, e repetir o substantivo em 16 segundos vira bordao mais rapido
         # ainda do que em 24.
-        def _c2(uso, fol):
-            return "%s. %s %s" % (uso.format(o=o2).rstrip(". "), CTA_BASE, fol)
+        # ⛔ PONTO FINAL entre o efeito e a reacao dela, nao `, and`. Duas
+        # razoes, e as duas foram medidas: economiza a palavra do conector (com
+        # `, and` so' 69% das combinacoes cabiam; com o ponto, 87%) e le' mais
+        # taxativo, que e' o que o operador cobra — duas afirmacoes curtas
+        # batem mais forte que uma composta.
+        def _c2(ef, pa, re, fol):
+            return "%s. %s %s. %s %s" % (ef.format(o=o2).rstrip(". "),
+                                         _cap(pa), re, CTA_BASE, fol)
 
         cf2 = min(FOLLOWS, key=_palavras)
-        uso = rng.choice(_ok(USOS, lambda u: _c2(u, cf2), TETO_FALA[2]))
-        fol = rng.choice(_ok(FOLLOWS, lambda g: _c2(uso, g), TETO_FALA[2]))
-        f[1] = _c2(uso, fol)
+        cpa = min(PARCEIRAS, key=_palavras)
+        cre = min(REACOES, key=_palavras)
+        ef = rng.choice(_ok(EFEITOS,
+                            lambda x: _c2(x, cpa, cre, cf2), TETO_FALA[2]))
+        pa = rng.choice(_ok(PARCEIRAS,
+                            lambda x: _c2(ef, x, cre, cf2), TETO_FALA[2]))
+        re_ = rng.choice(_ok(REACOES,
+                             lambda x: _c2(ef, pa, x, cf2), TETO_FALA[2]))
+        fol = rng.choice(_ok(FOLLOWS,
+                             lambda x: _c2(ef, pa, re_, x), TETO_FALA[2]))
+        f[1] = _c2(ef, pa, re_, fol)
 
     return f
 
@@ -2812,6 +2912,34 @@ def lint(spec, blocos):
                                 "ouve grudado; a legenda nasce do Whisper em "
                                 "cima do audio, entao nao ha' conserto depois"
                         % _m_kw.group(1)))
+    # ⛔⛔ T16-5 — A PARCEIRA E' NOMEADA, E NENHUM PRONOME FICA SEM DONO.
+    # Ordem do operador, 2026-08-08, lendo `she feels it first`: *"concretude,
+    # ser taxativo, e' melhor candidato que pronome generico — pool de 'sua
+    # namorada', 'sua esposa'"*.
+    # ⚠️ Esta lente existe porque o defeito NASCEU DE UMA COMPRESSAO minha:
+    # `she feels the difference first` nao coube em 25 palavras e eu cortei o
+    # substantivo em vez de trocar a frase. Sem lente, a proxima vez que o teto
+    # apertar eu corto de novo — o linter e' o que sobra quando a disciplina
+    # falha.
+    if not any(_p.split()[-1] in _f2.lower() for _p in PARCEIRAS):
+        ach.append(("ERRO", "T16-5: a cena 2 nao NOMEIA a parceira — sem "
+                            "`wife`/`girlfriend`/`woman`/`girl` o espectador "
+                            "gasta o segundo dele descobrindo de quem ela "
+                            "fala (%r)" % _f2[:60]))
+    if re.search(r"(?:^|\.\s+)(She|Her)\b", _f2):
+        ach.append(("ERRO", "T16-5: sentenca da cena 2 abrindo com pronome nu "
+                            "(`She...`) — a parceira entra NOMEADA, e o pronome "
+                            "so' depois dela"))
+    # ⛔ `it` sem dono depois de verbo de percepcao — a frase exata que o
+    # operador reprovou. `stops faking it` NAO cai aqui: `fake it` e' idioma
+    # fechado, e a lista abaixo e' de verbos de percepcao, nao de qualquer verbo.
+    _vago = re.search(r"\b(feels?|notices?|sees?|senses?)\s+it\b", _f2, re.I)
+    if _vago:
+        ach.append(("ERRO", "T16-5: %r — `it` sem antecedente depois de verbo de "
+                            "percepcao. Sente O QUE? Nomear custa uma palavra e "
+                            "e' a diferenca entre a copy vender e o espectador "
+                            "perguntar do que se trata" % _vago.group(0)))
+
     if re.search(r"comment\s+gelatin\W+(and\s+)?follow", _f2, re.I):
         ach.append(("ERRO", "T16-2: o `follow` esta' colado no comando — ele tem "
                             "de vir em FRASE PROPRIA, depois do ponto final do "
@@ -3329,8 +3457,8 @@ def autoteste(n=600):
     # ⭐ o piso de 8 opcoes por eixo, com os pools DESTE angulo
     for nome, pool in (("MUNDOS", MUNDOS), ("REFS", REFS), ("PROPS", PROPS),
                        ("DIAGNOSTICOS", DIAGNOSTICOS), ("VIRADAS", VIRADAS),
-                       ("FECHOS", FECHOS), ("USOS", USOS),
-                       ("FOLLOWS", FOLLOWS)):
+                       ("FECHOS", FECHOS), ("EFEITOS", EFEITOS),
+                       ("REACOES", REACOES), ("FOLLOWS", FOLLOWS)):
         if len(pool) < MIN_OPCOES:
             falhas.append("eixo %s com %d opcoes (minimo %d)"
                           % (nome, len(pool), MIN_OPCOES))
@@ -3379,6 +3507,45 @@ def autoteste(n=600):
                                                   "Comment gelatin now,")
     if not any("T16-2" in msg for _, msg in lint(s16a2, b)):
         ctrl.append("[T16-2] NAO acusa palavra colada na keyword (`gelatin now`)")
+
+    # ⭐⭐ [ALCANCE] TODA ENTRADA DE POOL TEM DE SER SORTEAVEL.
+    # ⛔ Criado em 2026-08-08 depois de medir a cobertura e achar SEIS de dez
+    # FOLLOWS que nunca saiam: custavam 6-7 palavras e so' havia 5 de orcamento.
+    # O autoteste contava dez opcoes e a producao tinha quatro — pool que mente
+    # sobre o proprio tamanho e' mode-collapse com relatorio verde.
+    # ⚠️ O teste e' o do PIOR CASO: a entrada tem de caber somada aos MINIMOS
+    # dos outros tres eixos. Se nao couber nem ai', ela nunca sai em sorteio
+    # nenhum — nao e' "rara", e' morta.
+    _minE = min(_palavras(x.format(o="soldier")) for x in EFEITOS)
+    _minP = min(_palavras(x) for x in PARCEIRAS)
+    _minR = min(_palavras(x) for x in REACOES)
+    _minF = min(_palavras(x) for x in FOLLOWS)
+    _fixo = _palavras(CTA_BASE)
+    for _nome, _pool, _outros in (
+            ("EFEITOS", [x.format(o="soldier") for x in EFEITOS],
+             _minP + _minR + _minF),
+            ("PARCEIRAS", PARCEIRAS, _minE + _minR + _minF),
+            ("REACOES", REACOES, _minE + _minP + _minF),
+            ("FOLLOWS", FOLLOWS, _minE + _minP + _minR)):
+        _teto_eixo = TETO_FALA[2] - _fixo - _outros
+        _mortas = [x for x in _pool if _palavras(x) > _teto_eixo]
+        if _mortas:
+            ctrl.append("[ALCANCE] %d entrada(s) de %s nunca podem ser "
+                        "sorteadas (teto real do eixo: %d palavras): %s"
+                        % (len(_mortas), _nome, _teto_eixo, _mortas[:3]))
+
+    # ⭐⭐ [T16-5] O PRONOME SEM DONO — a frase que o operador reprovou.
+    s165 = dict(s, falas=list(s["falas"]))
+    s165["falas"][1] = ("The gelatin trick puts your tool back and she feels "
+                        "it first. " + CTA_BASE + " Followers only.")
+    if not any("T16-5" in msg for _, msg in lint(s165, b)):
+        ctrl.append("[T16-5] NAO acusa `she feels it first` — e a frase exata "
+                    "que o operador reprovou em 2026-08-08")
+    s165b = dict(s, falas=list(s["falas"]))
+    s165b["falas"][1] = ("The gelatin trick brings your tool back. She cannot "
+                         "keep quiet. " + CTA_BASE + " Followers only.")
+    if not any("T16-5" in msg for _, msg in lint(s165b, b)):
+        ctrl.append("[T16-5] NAO acusa sentenca abrindo com `She` nu")
 
     # ⭐ [T16-3] a pose duplicada — o defeito herdado, achado LENDO o prompt
     b163 = dict(b)

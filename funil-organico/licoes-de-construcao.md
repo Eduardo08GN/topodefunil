@@ -1199,6 +1199,74 @@ estava mexendo) e declarado pronto do mesmo jeito.
 
 ---
 
+## 35. ⛔⛔ COMPRIMI A FRASE MATANDO O SUBSTANTIVO — e escrevi um pool que repetia a mesma forma em 62%
+
+**O que aconteceu.** No TRIO 16 escrevi `she feels the difference first`. Não
+coube no teto de 25 palavras. Cortei `the difference` e entreguei
+**`she feels it first`**.
+
+O operador leu: *"fills it o QUÊ??? O clima, formigão no pé???"*
+
+E emendou a diretriz que generaliza:
+
+> *"concretude, ser taxativo, é melhor candidato que pronomes genéricos
+> (pool de 'sua namorada', 'sua esposa') para fugir do copy drifting"*
+
+**As duas causas, e a segunda é pior que a primeira.**
+
+**(a) Comprimir podando o núcleo.** Quando o teto aperta, o reflexo errado é
+tirar palavras da frase que já está escrita. Sai primeiro o substantivo — que é
+justamente o que carrega o sentido — e fica o pronome, que é gramática. O certo
+é **trocar a frase inteira por uma mais curta que ainda diz do que se trata**.
+É o mesmo erro do `every morning just ginkgo` (§*drifting*): o corte parecia
+economia e era amputação.
+
+**(b) Lista única de frases prontas repete a FORMA.** Dez das minhas dezesseis
+entradas abriam a segunda oração com `she`. **62% do pool com a mesma
+estrutura** — e nenhum linter acusa, porque todos medem *conteúdo* (token
+banido, teto, referente) e nenhum mede *forma repetida*. Mode-collapse com o
+relatório verde.
+
+**O conserto que virou método:** decompor a frase em **eixos sorteáveis** em vez
+de escrever frases inteiras.
+
+```
+antes:  USOS = [16 frases prontas]                  -> 276 falas distintas/600
+depois: EFEITOS(12) x PARCEIRAS(6) x REACOES(18)    -> 587 falas distintas/600
+```
+
+Com três eixos é **impossível** repetir a forma: a parceira é sempre nomeada
+(pool próprio, zero pronome) e a reação vem de um pool que só aceita
+**comportamento observável** (`digs her nails in`), nunca estado interno
+(`is satisfied`) — o espectador compra a cena, não o adjetivo.
+
+**A regra virou lente** (`T16-5`), porque regra que depende de eu lembrar não é
+regra: reprova fala sem parceira nomeada, sentença abrindo com `She` nu, e verbo
+de percepção seguido de `it` sem antecedente.
+
+### ⛔ E o mesmo dia entregou o irmão deste defeito: **entrada de pool que nunca sai**
+
+Medindo cobertura em 600 sorteios, **seis das dez entradas de `FOLLOWS` nunca
+apareceram**. Não eram raras — eram **impossíveis**: custavam 6-7 palavras e o
+orçamento real do eixo era 5 (`TETO_FALA − CTA fixo − mínimos dos outros três
+eixos`). O autoteste contava dez opções; a produção tinha quatro. E as seis
+mortas eram justamente as que davam a **razão** de seguir.
+
+Nenhuma lente pegava, e o motivo é instrutivo: todas verificam a frase
+**montada**, que sempre cabe por causa do fallback do `_ok`. Nenhuma verificava
+se cada **entrada** é alcançável.
+
+> **Vira controle de autoteste, não comentário.** `[ALCANCE]`: para cada eixo,
+> o teto real é `TETO − partes fixas − Σ mínimos dos outros`; qualquer entrada
+> acima disso reprova o lote.
+
+**O que fazer sempre:** depois de escrever um pool sob teto de palavras, medir
+**cobertura** — quantas entradas realmente saem em N sorteios — e não só se o
+linter passou. Passar no linter e ter metade do pool morto é o mesmo defeito de
+sempre com outra roupa: **verificar a FORMA e não a FUNÇÃO**.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1277,6 +1345,14 @@ estava mexendo) e declarado pronto do mesmo jeito.
       mudou. Botão que mente é pior que botão ausente (§29)
 - [ ] **Cada eixo de `EIXOS_TRAVAVEIS` existe no spec** — herdado da cópia,
       ele desenha cadeado para eixo que o motor não sorteia
+- [ ] **Cobertura de pool MEDIDA**, não contada no código: sortear 600× e ver
+      quantas entradas de cada eixo realmente saem. Entrada que não cabe com os
+      mínimos dos outros eixos está morta e o autoteste conta como viva (§35)
+- [ ] **Nenhum pronome genérico na copy falada** — `she`/`it` sem dono é
+      drifting. A parceira é NOMEADA (pool próprio), e comprimir a frase nunca
+      pode podar o substantivo que carrega o sentido (§35)
+- [ ] **A forma do pool varia?** Contar quantas entradas abrem a segunda oração
+      do mesmo jeito. Acima de ~30% é mode-collapse, e nenhum linter acusa (§35)
 - [ ] `.exe` **recompilado** — sem isso a correção não chega no operador
 - [ ] **Mexi na `ui_agente`? A `sonda_ui` abriu as 19 JANELAS** — motor
       importado não prova painel construído, e ramo por agente esconde o
