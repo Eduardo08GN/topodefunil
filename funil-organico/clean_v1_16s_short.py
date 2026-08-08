@@ -1115,6 +1115,19 @@ def montar(spec):
     # CL26 — a clausula anti-celebridade acompanha o sexo em TODOS os blocos
     anti = ANTICELEB if spec["sexo"] == "homem" else ANTICELEB_M
 
+    # ⭐⭐ 16S5 — O ITEM QUE A FALA CITA TEM DE ESTAR NA CENA 2 (2026-08-08).
+    # Relato dele com o video pronto: *"no final ele fala sobre abacate e
+    # gelatina, mas o que aparece na cena e' a canela + gelatina"*. Medido: 54%
+    # dos take 2 que citavam ingrediente mostravam OUTRO — todos na familia
+    # `preparo`, onde a imagem final desenha o copo pronto, a gelatina e o
+    # ingrediente do DESPEJO, que nao tem relacao com o que a fala nomeou.
+    # ⚠️ A regra dele tem duas metades, e a segunda importa tanto quanto:
+    # *"caso o CTA cite somente a gelatina, ai nao tem problema gerar qualquer
+    # ingrediente"*. Por isso `citado` e' None quando a fala nao nomeia item —
+    # e nesse caso a cena segue como estava.
+    citado = (spec["item_a"]["itens"][0]
+              if spec["item_a"]["txt"] in spec["falas"][1] else None)
+
     b["BLOCO 0 (REF)"] = (
         # ⭐⭐ O CORPO TEM DE ESTAR AQUI (2026-08-03). Ele ja' estava nos IMAGE
         # e NAO estava no REF, e o operador nao viu diferenca nenhuma na
@@ -1186,8 +1199,9 @@ def montar(spec):
             "front teeth even and complete. %s "
             "right index finger points directly at the camera. %s is the only "
             "person in the frame. %s %s"
-            % (_pessoa(spec, False), VISUAL[spec["bancada"][0]], GELATINA,
-               VISUAL[spec["truque"][0]], S, Ss, Ss, s, _cap(Ss), S,
+            # ⭐ 16S5 — o primeiro objeto e' o ingrediente CITADO na fala
+            % (_pessoa(spec, False), VISUAL[citado or spec["bancada"][0]],
+               GELATINA, VISUAL[spec["truque"][0]], S, Ss, Ss, s, _cap(Ss), S,
                anti, CAUDA))
         mov = [
             "%s right hand moves once along the row, the extended index finger "
@@ -1224,7 +1238,10 @@ def montar(spec):
              "fila1": _fila([i for i in spec["bancada"] if i != i1]),
              "fila2": _fila([i for i in spec["bancada"] if i != i2]),
              "cor1": d1["cor"], "cor2": d2["cor"],
-             "c1": d1["curto"], "c2": d2["curto"], "ing2": VISUAL[i2],
+             # ⭐ 16S5 — o terceiro objeto da cena 2 e' o ingrediente CITADO
+             # na fala. Sem `citado`, volta a ser o do despejo, como antes.
+             "c1": d1["curto"], "c2": d2["curto"],
+             "ing2": VISUAL[citado or i2],
              "Sc": Ss[0].upper() + Ss[1:],   # "Her"/"His" em inicio de frase
              "peg1": _cap(PEGADA % (Ss, d1["cont"], Ss, s, d1["gesto"])),
              "peg2": _cap(PEGADA % (Ss, d2["cont"], Ss, s, d2["gesto"])),
@@ -1292,9 +1309,14 @@ def montar(spec):
             "clouds over and turns %(cor2)s, the colour spreading down through "
             "it. Everything else stays exactly as it appears in the first "
             "frame." % v,
+            # ⛔ 16S5 — NAO se nomeia mais o vasilhame aqui. Ele era `%(c2)s`
+            # (o pote do despejo), e desde que a cena 2 passou a mostrar o
+            # ingrediente CITADO na fala, o pote pode nao estar mais em quadro:
+            # o TAKE citava `the jar` e a IMAGE nao tinha jar nenhum em 54 dos
+            # 400 sorteios. Contradicao entre TAKE e IMAGE e' pior que omissao.
             "The finished %(cor2)s drink, the bowl of gelatin cubes and the "
-            "%(c2)s beside them stay exactly as they appear in the first frame — "
-            "nothing moves, nothing is touched." % v,
+            "third item beside them stay exactly as they appear in the first "
+            "frame — nothing moves, nothing is touched." % v,
         ]
 
     # ⭐⭐ 16S — DE TRES BLOCOS PARA DOIS. A cena do MEIO cai; ficam a fileira
