@@ -216,29 +216,38 @@ CENAS_UI = ["1 · A ISCA E O DESMENTIDO", "2 · A REGRA E O MECANISMO",
 # cortou, 28 cortou. Os exemplos que ele escreve a mao vivem em 16-25
 # palavras (2,0-3,1 palavras/s).
 # ⚠️ cena 1 cortava em 1,0%. `_op1` ja' peneira contra o teto.
-# ⛔⛔ NAO TOCAR no [2] nem no [3]: medido com os tres em 25, 600 de 600 sorteios
-# levantam IndexError (sequencia vazia). O piso da cena 3 e' 32 — ver PARTE 2.
-# ⛔⛔ A CENA 2 FICA EM 32 E ISSO E' DELIBERADO. Baixei para 25 em 2026-08-05 e
-# o motor passou a levantar `IndexError: Cannot choose from an empty sequence`
-# em `_montar_falas` — nenhuma combinacao do pool cabe. A investigacao ja'
-# tinha medido isso e eu apliquei assim mesmo.
-# ⚠️ A cena 2 tem uma entrada VERBATIM de 18 palavras (`MECANISMOS_FALA[0]`) e
-# o resto do beat nao cabe em 25 em volta dela. Baixar aqui exige encurtar
-# copy, que e' alcada do operador — ver o relatorio das cenas GRAVES.
+#
+# ⛔⛔ HISTORICO DA CENA 2, E ELE TEM DUAS TENTATIVAS — a segunda pegou.
+#
+# 2026-08-05: baixei o teto da cena 2 de 32 para 25 e o motor passou a levantar
+# `IndexError: Cannot choose from an empty sequence`. Voltou para 32 e ficou
+# escrito aqui que era DELIBERADO e para NAO TOCAR. A leitura estava errada: o
+# IndexError nao provava que a copy nao cabia — provava que a ESCADA de
+# degradacao do `_op2` nao tinha fundo. Os quatro degraus dela exigem todos
+# `<= TETO_FALA[2]`, entao com o teto no fisico um mecanismo longo zerava os
+# quatro e o `rng.choice([])` derrubava o sorteio. O sintoma era da escada, nao
+# do pool.
+#
+# 2026-08-08: desceu para 25 e FICOU, porque duas coisas mudaram junto:
+#   · a escada ganhou fundo garantido (`or [min(REGRAS, ...)]`) — antes de
+#     quebrar, cede o teto e deixa o linter reclamar, que e' quem tem de falar;
+#   · o MECANISMO passou a ser escolhido dentro do orcamento, em vez de solto.
+# ⚠️ MEDIDO depois: 0 ERRO e 0 AVISO em 400 sorteios, maximo 25 palavras, e a
+# cena 2 saiu da lista das que cortam fala (era 34,2% dos sorteios acima do
+# teto fisico — ou seja, fala CORTADA no render).
+# ⚠️ CUSTO ASSUMIDO, tambem medido: 164 -> 112 falas distintas na cena 2, e UM
+# dos dez `MECANISMOS_FALA` (o VERBATIM de 18 palavras) nao deixa espaco para
+# regra nenhuma e sai do sorteio. Ele so' produzia fala que o take cortava.
+# ⛔ Recuperar essas 52 e' encurtar copy — alcada do operador.
+#
+# ⛔⛔ A CENA 3 FICA EM 34 DE PROPOSITO e continua na lista das que cortam: la' o
+# MENOR par possivel ja' da' 32 palavras, entao baixar o teto so' trocaria fala
+# cortada por sorteio impossivel. Aquilo e' copy, e copy e' alcada do operador.
+#
 # ⛔⛔ SEM MODO BELA NESTE MOTOR (2026-08-05). Tres lentes batem de uma
 # vez: EX7 (`neck`, a regra do geoduck, paga em recusa), EX9
 # (vocabulario banido) e EX10 (a narradora tem de existir numa tabela
 # propria). O modo reprovava 65 de 200.
-
-# ⛔⛔ O TETO DECLARADO DA CENA 2 ERA 32 — 8 segundos nao comportam 32
-# palavras (licoes §27/§28: a lente conferia COERENCIA INTERNA, nao
-# capacidade FISICA; teto declarado 32 faz uma fala de 32 passar no lint
-# e ser cortada no render). Desce para o fisico 25, e o piso 24 continua
-# alcancavel — o menor par REGRA+MECANISMO da 21.
-# ⚠️ A CENA 3 FICA EM 34 DE PROPOSITO e continua na lista dos que cortam:
-# la' o MENOR par possivel ja' da' 32 palavras, entao baixar o teto so'
-# trocaria fala cortada por sorteio impossivel. Aquilo e' copy, e copy e'
-# alcada do operador.
 TETO_FALA = {1: 25, 2: 25, 3: 34}
 PISO_FALA = {1: 22, 2: 24, 3: 30}
 
