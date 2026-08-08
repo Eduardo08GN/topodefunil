@@ -1656,7 +1656,10 @@ CTAS = [
     "Comment gelatin, and the recipe goes out tonight.",
     "Comment gelatin, and I'll send the amounts for the recipe.",
     "Comment gelatin, and I'll send the recipe tonight.",
-    "Comment gelatin, and the recipe goes out tonight.",
+    # ⛔ AQUI HAVIA UMA SEGUNDA COPIA de "and the recipe goes out tonight."
+    # (2026-08-08). Ela ja' esta' quatro linhas acima. Duplicata nao quebra
+    # nada — por isso e' cara: dobra a chance daquela entrada e ocupa um slot
+    # que devia ser repertorio novo. O sintoma so' aparece no LOTE.
     "Comment gelatin, and I'll send the recipe before you scroll.",
     "Comment gelatin, and I'll send the amounts written out.",
     "Comment gelatin, and I'll send the recipe written out.",

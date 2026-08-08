@@ -820,7 +820,10 @@ CTAS = [
     # voltando. Pool de 4 para 12, keyword sempre minuscula e com virgula.
     "{pacing} Comment gelatin, and the recipe is yours. {gate}",
     "{pacing} Comment gelatin, and I'll write you back tonight. {gate}",
-    "{pacing} Comment gelatin, and I'll send you the recipe. {gate}",
+    # ⛔ AQUI HAVIA UMA SEGUNDA COPIA de "and I'll send you the recipe."
+    # (2026-08-08). Ela e' a PRIMEIRA do pool, com o comentario que explica por
+    # que ela existe — a expansao de 2026-08-01 a reescreveu sem notar. Dobrava
+    # a chance justamente do CTA mais generico.
     "{pacing} Comment gelatin, and it lands in your messages tonight. {gate}",
     "{pacing} Comment gelatin, one word, and the recipe is yours. {gate}",
     "{pacing} Comment gelatin, and I'll send you the whole thing tonight. {gate}",
