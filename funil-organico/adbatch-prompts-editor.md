@@ -982,17 +982,28 @@ Copy falada: esta linha tem que sumir
 Dialogue: "test line two"
 
 Me responda, SEM gerar nada e SEM sair da aba de imagens:
-(a) quantos blocos o parser devolveu, de que tipo e com que indice;
-(b) o que o contador de roteiro exibe;
-(c) se o aviso ambar de bloco ignorado acendeu, e com que texto;
-(d) o conteudo exato do campo de prompt dos 2 cards na aba "2. Videos";
-(e) confirme que a linha "Dialogue:" SOBREVIVEU nos dois takes e que a linha
+(a) quantos blocos o parseBlocks devolveu, de que tipo e com que indice;
+(b) quantos SLOTS a grade desenhou e o que caiu em cada um;
+(c) o que o contador de roteiro exibe;
+(d) se o aviso ambar de bloco ignorado acendeu, e com que texto;
+(e) o conteudo exato do campo de prompt dos 2 cards na aba "2. Videos";
+(f) confirme que a linha "Dialogue:" SOBREVIVEU nos dois takes e que a linha
     "Copy falada:" SUMIU do take 02.
 
-RESULTADO EXIGIDO: 1 REF + 2 IMAGE (slots 01 e 02) + 2 TAKE (slots 01 e 02);
-contador "REF: sim · IMAGE: 2/2 · TAKE: 2/2" em verde; aviso ambar aceso por
-causa do IMAGE 03; as duas linhas Dialogue presentes; a linha "Copy falada:"
-ausente.
+RESULTADO EXIGIDO — e repare que (a) e (b) dao numeros DIFERENTES de propos.:
+
+  (a) parseBlocks devolve SEIS blocos: 1 REF, tres IMAGE (indices 1, 2 e 3) e
+      dois TAKE (1 e 2).
+      ⛔⛔ O PARSER NAO DESCARTA NADA. Ele so' le' e devolve. Se voce "corrigir"
+      o parser para nao devolver o IMAGE 03, quebrou o contrato dele — o teto
+      de slots e aplicado DEPOIS do parse, na hora de mapear bloco -> slot.
+  (b) a grade desenha DOIS slots: slot 01 com o IMAGE 01 e o TAKE 01, slot 02
+      com o IMAGE 02 e o TAKE 02. O IMAGE 03 nao entra em slot nenhum e nao
+      desloca ninguem.
+  (c) contador "REF: sim · IMAGE: 2/2 · TAKE: 2/2" em verde.
+  (d) aviso ambar aceso: "Blocos acima de 02 ignorados."
+  (e) os dois cards da aba de videos ja' preenchidos, SEM ter gerado imagem.
+  (f) as duas linhas Dialogue presentes; a linha "Copy falada:" ausente.
 
 Se der qualquer outro resultado, a implementacao esta errada — me diga o que
 deu, NAO conserte por conta propria.
