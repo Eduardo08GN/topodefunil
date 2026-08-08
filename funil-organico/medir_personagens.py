@@ -196,6 +196,15 @@ EXCECOES = {
     # a MAO e a CALCA (aliança, cicatriz no dorso, relogio, unha marcada,
     # tatuagem no pulso), que sao a unica pele dele em quadro. O eixo `porte`
     # continua sendo cobrado e continua cheio.
+    # ⛔ COLO 16 herda os pools por copia literal.
+    ("colo16_short.py", "HOMENS", "cabelo"):
+        "herdado do colo_short.py por copia literal.",
+    ("colo16_short.py", "HOMENS", "pelo_facial"):
+        "herdado do colo_short.py por copia literal.",
+    ("colo16_short.py", "HOMENS", "oculos"):
+        "herdado do colo_short.py por copia literal.",
+    ("colo16_short.py", "NARRADORAS", "oculos"):
+        "herdado do colo_short.py por copia literal.",
     ("colo_short.py", "HOMENS", "cabelo"):
         "CO1/CO13 — o homem entra CORTADO NA CINTURA, sem cabeca e sem tronco "
         "em quadro. A identidade dele mora na mao e na calca, nao no rosto.",

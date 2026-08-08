@@ -80,7 +80,8 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "falta16_short",
            "placa16_short",
            "troca16_short",
-           "botica16_short"]
+           "botica16_short",
+           "colo16_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 
