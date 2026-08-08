@@ -1675,11 +1675,11 @@ PROMESSAS16 = [
     "The wife asks what changed",
     "Your woman goes quiet",
     "Your girlfriend cannot keep quiet",
-    "Your wife reaches first",
+    "Your wife reaches for you first",
     "Your girl stops turning away",
     "The wife cancels her plans",
     "Your woman makes the first move",
-    "Your girlfriend notices first",
+    "Your girlfriend notices before you do",
     "Your wife stops watching the clock",
     "Your girl climbs on uninvited",
     "The wife will not sleep",
@@ -2491,8 +2491,64 @@ CIENTIFICO = re.compile(
     r"\b", re.I)
 
 
+
+
+# ---------------------------------------------------------------------------
+# ⛔⛔ T16-5b — O PRONOME SEM DONO, EM TODAS AS CENAS
+# ---------------------------------------------------------------------------
+# Ordem do operador, 2026-08-08, lendo o painel do PLACA 16:
+#     "...why the gelatin trick exists before she stops asking."
+#     -> *"She who??? stopping asking about what????"*
+#
+# ⚠️ A lente T16-5 original olhava SO' A CENA DO CTA. O defeito estava na cena
+# 1, que vem dos pools herdados do motor de 24s. Lente que cobre uma cena de
+# duas nao e' lente, e' amostra.
+#
+# ⛔⛔ E ELA NAO ADIVINHA. Cada motor DECLARA abaixo os pronomes cujo referente
+# esta' EM QUADRO. Foi isso que impediu o conserto errado: varrendo por
+# CONTAGEM, o TRIO e o DUPLA apareciam com mais de 50% da cena 1 "defeituosa" —
+# e ali o `she` de `the one she holds` aponta para a mulher VISIVEL segurando o
+# prop gigante, que e' regra do proprio operador ("o segundo prop tem dono
+# nomeado: she / her hand / my friend"). Ler as frases custou dez minutos e
+# salvou dois motores certos.
+#
+# ⭐ Quem acrescentar entrada de pool com pronome nu tem de vir aqui declarar
+# por que ele tem dono. Declaracao explicita e' o oposto de adivinhacao.
+PRONOME_VISUAL = ("she holds", "she is holding", "she's holding", "she is showing", "in her hand", "she has", "she has got")
+
+_PRON_NU = re.compile(r"\b(she|her|he|his)\b", re.I)
+_TEM_DONO = re.compile(
+    r"\b(wife|girlfriend|woman|girl|friend|husband|boyfriend|man|men|guy|"
+    r"marriage)\b", re.I)
+# ⛔ Verbos que pedem objeto e ficam pendurados sem ele: `stops asking` —
+# parando de perguntar O QUE? E' a mesma familia do pronome sem dono, e o
+# operador reprovou exatamente esta forma.
+_PENDURADO = re.compile(
+    r"\b(stops?|starts?|keeps?|quits?)\s+(asking|telling|talking|wondering|"
+    r"complaining|noticing|checking)\b"
+    r"(?!\s+(what|about|for|the|her|his|you|it|at|to))", re.I)
+
+
+def _t16_5b(spec, blocos, achados):
+    for _i, _fala in enumerate(spec.get("falas") or [], 1):
+        if (_PRON_NU.search(_fala) and not _TEM_DONO.search(_fala)
+                and not any(_v in _fala.lower() for _v in PRONOME_VISUAL)):
+            achados.append((
+                "ERRO",
+                "T16-5b: cena %d usa pronome NU sem dizer de quem se trata e "
+                "sem referente em quadro declarado — o espectador gasta o "
+                "segundo dele perguntando `quem?` (%r)" % (_i, _fala[:64])))
+        _p = _PENDURADO.search(_fala)
+        if _p:
+            achados.append((
+                "ERRO",
+                "T16-5b: cena %d tem `%s` sem objeto — parando de perguntar O "
+                "QUE? Verbo pendurado e' a mesma familia do pronome sem dono"
+                % (_i, _p.group(0))))
+
 def lint(spec, blocos):
     ach = []
+    _t16_5b(spec, blocos, ach)
     falas = spec["falas"]
     m = spec["mundo"]
 
