@@ -326,6 +326,9 @@ EXCECOES = {
     # aprende a ignorar o gate.
     ("dupla16_short.py", "REFS", "oculos"):
         "LEI DO REF — mesmo pool e mesma razao do dupla_short.py.",
+    # ⛔ BOTICA 16 herda o pool REFS por copia literal — mesma razao.
+    ("botica16_short.py", "REFS", "oculos"):
+        "LEI DO REF — mesmo pool e mesma razao do botica_short.py.",
     ("botica_short.py", "REFS", "oculos"):
         "LEI DO REF — oculos brigam frontalmente com 'linda'. Cabelo 12/12, "
         "porte 10/12, pele 6/12 e ancora 6/12 seguem cheios.",
