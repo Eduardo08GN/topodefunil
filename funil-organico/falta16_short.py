@@ -716,14 +716,26 @@ VENDAS = [
 # automacao de DM casa palavra EXATA; a legenda nasce do Whisper em cima do
 # audio e nao ha' conserto depois. Lente T16-2.
 CTAS = [
-    "Comment gelatin, and I'll send the missing piece.",
-    "Comment gelatin, and I'll send the part they skip.",
-    "Comment gelatin, and I'll send the piece nobody posts.",
-    "Comment gelatin, and I'll send the step they hold back.",
+    # ⛔⛔ TODA ENTRADA NOMEIA `recipe`. Ordem do operador, 2026-08-08, lendo
+    # o app: *"seja mais taxativo: I'll send recipe ou I'll send the complete
+    # recipe. `and I'll send the part they leave out` da' vazao pra pessoa
+    # ficar em duvida: qual parte de QUE??"*
+    # ⚠️ E O DEFEITO FOI MEU, NA COMPRESSAO DO PORTE: o motor de 24s tem as
+    # OITO CTAs nomeando `recipe` (`the recipe with the missing part`, `the
+    # recipe with the step they leave out`). Ao apertar para 25 palavras eu
+    # cortei justamente o substantivo que diz O QUE e' entregue — e' a §35,
+    # `COMPRIMI A FRASE MATANDO O SUBSTANTIVO`, cometida por mim de novo.
+    # ⭐ A COSTURA DO ANGULO NAO SE PERDE: quem diz que falta uma peca e' a
+    # PRIMEIRA sentenca da cena 2, e a lente FA4 cobra isso separadamente. O
+    # CTA responde aquela falta com a palavra que fecha — `complete`.
+    "Comment gelatin, and I'll send the complete recipe.",
+    "Comment gelatin, and I'll send the full recipe.",
+    "Comment gelatin, and I'll send the whole recipe.",
+    "Comment gelatin, and I'll send you the complete recipe.",
+    "Comment gelatin, and I'll send the complete recipe tonight.",
     "Comment gelatin, and I'll send the recipe with the missing piece.",
-    "Comment gelatin, and I'll send the part they leave out.",
-    "Comment gelatin, and I'll send the piece nobody includes.",
-    "Comment gelatin, and I'll send the missing step.",
+    "Comment gelatin, and I'll send the recipe with the missing step.",
+    "Comment gelatin, and I'll send the recipe nobody posts complete.",
 ]
 
 # ⭐ O FOLLOW — curto por ARITMETICA. Ver o controle [ALCANCE] do autoteste:
@@ -1371,10 +1383,18 @@ def _fa_buraco(spec, blocos, achados):
     # e' por isso que o `nova_fala` de la' ficou quebrado sem ninguem ver.
     _sn = _sentencas(f2)
     _cta_txt = " ".join(_sn[1:]) if len(_sn) >= 2 else ""
-    if not re.search(r"\bmissing\b|\bpiece\b|\bpart\b|\bstep\b|"
-                     r"\bleaves? out\b|\bleft out\b|\bskips?\b", _cta_txt, re.I):
-        achados.append(("ERRO", "FA4: o CTA não nomeia a parte que falta — é "
-                                "exatamente o que ele promete entregar"))
+    # ⛔⛔ A LENTE MUDOU DE PERGUNTA — 2026-08-08, ordem do operador. Ela
+    # aceitava `the part they leave out` como suficiente, e o operador leu
+    # isso no app e reprovou: *"da' vazao pra pessoa ficar em duvida: qual
+    # parte de QUE??"*. Nomear a FALTA nao e' nomear o ENTREGUE.
+    # ⭐ Agora ela cobra o substantivo do produto: `recipe`. E' mais forte e
+    # mais barato de verificar — e a costura do angulo continua coberta pela
+    # checagem de cima, que exige a falta na primeira sentenca da cena 2.
+    if not re.search(r"\brecipe\b", _cta_txt, re.I):
+        achados.append(("ERRO", "FA4: o CTA não nomeia a RECEITA — sem o "
+                                "substantivo do que é entregue, `a parte que "
+                                "falta` deixa o espectador perguntando `parte "
+                                "de quê?`"))
 
 
 def _fa_raro(spec, blocos, achados):
@@ -1591,10 +1611,24 @@ def lint(spec, blocos):
                                 "buraco (piece/part/step) — sem isso o CTA "
                                 "promete algo que o video nunca mencionou "
                                 "(%r)" % _venda))
-        if not _nucleo_seam(_resto):
-            ach.append(("ERRO", "FA16-1: o CTA nao promete o BURACO — vira "
-                                "um CTA de receita qualquer e o angulo "
-                                "morre (%r)" % _resto))
+        # ⛔⛔ ESTA METADE FOI DERRUBADA PELO OPERADOR — 2026-08-08. Ela exigia
+        # que o CTA nomeasse o buraco (piece/part/step), e ele leu a saida no
+        # app e reprovou exatamente isso:
+        #
+        #     *"and I'll send the part they leave out da' vazao pra pessoa
+        #      ficar em duvida: qual parte de QUE??"*
+        #     *"seja mais taxativo: I'll send recipe ou I'll send the complete
+        #      recipe"*
+        #
+        # ⭐ Nomear a FALTA nao e' nomear o ENTREGUE. O CTA passou a cobrar o
+        # substantivo do produto (`recipe`), e quem cobra e' a FA4 — mais forte
+        # e mais barato de verificar.
+        # ⚠️ A COSTURA NAO SE PERDE: a checagem de cima, que exige o buraco
+        # NOMEADO na venda, continua intacta. O buraco e' dito; o CTA responde
+        # a ele com a palavra que fecha (`complete`).
+        # ⛔ E a anti-gagueira abaixo continua valendo para os CTAs que ainda
+        # nomeiam o buraco (`the recipe with the missing piece`): repetir o
+        # mesmo substantivo em tres segundos le' como gagueira, nao retomada.
         if _nucleo_seam(_venda) & _nucleo_seam(_resto):
             ach.append(("AVISO", "FA16-1: venda e CTA repetem %s em tres "
                                  "segundos — le' como gagueira, nao como "
