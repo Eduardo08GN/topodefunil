@@ -1011,7 +1011,145 @@ deu, NAO conserte por conta propria.
 
 ⚠️ Se ele regredir alguma coisa, use o **PROMPT R** acima.
 
-### 🧾 O Montador Vertical 3 NÃO precisa de versão 2
+# CRIAÇÃO DO MONTADOR VERTICAL 2 — o último degrau da esteira de 16s
+
+> Fecha o par da AdBatch Vertical 2. Escrito relendo os **quatro** arquivos
+> transcritos em [`montador-vertical-3/`](montador-vertical-3/): `App.tsx`,
+> `components-VideoSlot.tsx`, `components-PreviewModal.tsx` e `types.ts`.
+>
+> ⭐ **O que justifica uma ferramenta nova, e não usar a de 3:** o rótulo do
+> slot é travado **por índice, na marra** —
+> `slot.index === 0 ? 'HOOK' : slot.index === 1 ? 'MECANISMO' : 'CTA'`.
+> No formato de 16s o segundo take é a **prova + o CTA**, então a de 3 desenha
+> `SLOT 02 — MECANISMO` em cima do slot do CTA. Rótulo que mente é da mesma
+> família do botão que não trava: o operador aprende a ignorar a tela.
+>
+> ⚠️ **O resto funciona igual.** Medido no fonte: o `handleDownload` faz
+> `slots.forEach` e grava **só os preenchidos**, então um pacote de 2 já sai
+> `video_01.mp4` + `video_02.mp4` com a numeração certa. A V2 é **cosmética +
+> um bug**, não uma reescrita.
+
+## PROMPT MONTADOR V2 — criação, prompt único
+
+*Cole numa ferramenta **nova**, em branco.*
+
+```text
+Crie uma ferramenta chamada "Montador Vertical 2". Ela NAO gera nada: pega
+DOIS videos que ja existem na midia do Flow, deixa eu ordenar, e exporta um
+ZIP. E o ultimo degrau de uma esteira — a geracao acontece em outra
+ferramenta.
+
+Titulo na tela: "Montador Vertical 2"
+Subtitulo: "Organize os videos do lote na ordem correta para exportar o
+pacote da esteira."
+
+=== ESTADO ===
+Exatamente DOIS slots, criados no estado inicial:
+  [{ index: 0, media: null }, { index: 1, media: null }]
+Cada slot guarda um MediaItem do Flow ou null. Nao ha prompt, nao ha
+geracao, nao ha chamada de modelo em lugar nenhum desta ferramenta.
+
+=== O ROTULO DE CADA SLOT ===
+  slot.index === 0  ->  "SLOT 01 — HOOK"
+  slot.index === 1  ->  "SLOT 02 — CTA"
+⛔ Sao esses dois literais, e nao ha um terceiro caso. Se voce escrever um
+ternario com fallback (`index === 0 ? 'HOOK' : index === 1 ? 'CTA' : algo`),
+o `algo` e codigo morto que so serve para esconder um bug no dia em que
+alguem acrescentar um slot.
+
+=== SELECIONAR, TROCAR, REMOVER ===
+- Slot vazio: card com borda tracejada, icone de video e o texto
+  "Selecionar video". Clicar no card abre Flow.media.select({ filter: 'video' }).
+  Se eu cancelar a selecao, NAO quebre nada e NAO mostre erro — so nao muda o
+  slot.
+- Slot cheio: o video renderiza dentro do card em aspect-[9/16], object-cover,
+  playsInline e MUTED (na grade), com o nome do arquivo numa faixa degrade no
+  rodape do card.
+- Abaixo do card cheio, dois botoes de 32px lado a lado, texto em caixa alta
+  pequena: "TROCAR" (reabre o seletor para aquele slot) e "REMOVER" (volta o
+  slot para null).
+- No cabecalho do card cheio, duas setas (chevron_left / chevron_right) que
+  TROCAM o conteudo com o slot vizinho. A seta da ponta fica DESABILITADA
+  (opacidade baixa, cursor not-allowed): a esquerda no slot 01, a direita no
+  slot 02.
+- As setas so aparecem quando ha video naquele slot.
+
+⛔⛔ A TROCA TEM DE SER IMUTAVEL. A ferramenta irma faz assim, e esta ERRADO:
+
+    const newSlots = [...prev];
+    newSlots[index].media = newSlots[targetIndex].media;   // escreve no objeto ORIGINAL
+
+`[...prev]` e copia RASA: o array e novo, mas os objetos dentro dele sao os
+mesmos. Hoje funciona porque o array novo forca o re-render; quebra no dia em
+que alguem memoizar o slot. Escreva devolvendo OBJETOS novos:
+
+    setSlots(prev => prev.map((s, i) =>
+      i === index      ? { ...s, media: prev[targetIndex].media } :
+      i === targetIndex ? { ...s, media: prev[index].media } : s));
+
+=== UM VIDEO POR VEZ ===
+Registre um listener global do evento 'play' na FASE DE CAPTURA
+(`window.addEventListener('play', handler, true)`), porque o evento 'play' NAO
+borbulha. Quando qualquer video comecar a tocar, pause todos os outros da
+pagina. Remova o listener no cleanup do useEffect.
+⚠️ Sem isso os dois tocam juntos e nao da para julgar nenhum.
+
+=== MODAL DE CONFERENCIA ===
+Clicar no VIDEO de um slot (nao no card vazio) abre um modal em tela cheia:
+overlay escuro com backdrop-blur, o player em aspect-[9/16] com altura 90vh,
+object-contain, controls e autoPlay. Fecha clicando no overlay ou no X do
+canto superior direito. ⛔ O clique DENTRO do player nao pode fechar o modal —
+use stopPropagation no container do video.
+
+=== EXPORTACAO ===
+Botao no rodape: "BAIXAR PACOTE ZIP (N)", com N = quantidade de slots
+preenchidos, em tempo real. Desabilitado enquanto N for zero.
+Quando faltar video, um aviso ambar no rodape dizendo quantos faltam de 2.
+
+Empacote com JSZip:
+- nome do arquivo dentro do ZIP: video_01.mp4 e video_02.mp4
+- nome do ZIP: adbatch_vertical_2.zip
+
+⛔⛔ O NOME VEM DO INDICE DO SLOT, NUNCA DA ORDEM DE PREENCHIMENTO. Percorra
+os DOIS slots em ordem e grave so os que tem midia. Se eu preencher apenas o
+slot 02, o ZIP sai com um arquivo so, chamado video_02.mp4 — COM o buraco,
+sem renumerar para video_01. O indice e o contrato da esteira inteira: bloco N
+-> imagem N -> take N -> video N -> video_0N.mp4.
+
+=== REGRA FINAL ===
+Interface em portugues. Esta ferramenta nao chama modelo nenhum, nao gera
+imagem nem video, e nao traduz nada.
+
+=== TESTE DE ACEITACAO — rode ANTES de responder ===
+Com a ferramenta recem-carregada:
+
+(a) me diga quantos slots a grade desenhou e o rotulo EXATO de cada um;
+(b) preencha SO o slot 02, baixe o ZIP e me diga o nome do ZIP e o nome do
+    arquivo la dentro;
+(c) preencha os dois, use a seta para trocar, e me confirme que os videos
+    trocaram de lugar e que a seta da esquerda do slot 01 continua
+    desabilitada;
+(d) com os dois preenchidos, de play no segundo e me confirme que o primeiro
+    pausou;
+(e) clique no video do slot 01 e me confirme que o modal abriu, que ele toca
+    sozinho, e que clicar DENTRO do player nao fecha.
+
+RESULTADO EXIGIDO:
+  (a) DOIS slots: "SLOT 01 — HOOK" e "SLOT 02 — CTA".
+  (b) adbatch_vertical_2.zip contendo UM arquivo, chamado video_02.mp4.
+      ⛔ Se sair video_01.mp4, a numeracao esta seguindo a ordem de
+      preenchimento em vez do indice do slot, e isso quebra a esteira.
+  (c) os dois trocados, seta da ponta desabilitada.
+  (d) o primeiro pausado.
+  (e) modal aberto, tocando, e o clique no player nao fecha.
+
+Se der qualquer outro resultado, a implementacao esta errada — me diga o que
+deu, NAO conserte por conta propria.
+```
+
+---
+
+### 🧾 Por que a de 3 ainda serve, se você não quiser a V2 agora
 
 Medido no fonte (`montador-vertical-3/App.tsx`), não suposto:
 
