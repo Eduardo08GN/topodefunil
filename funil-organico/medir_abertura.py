@@ -74,10 +74,22 @@ import sys
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AQUI)
 
+# ⛔⛔ ESTA LISTA E' MANTIDA A MAO, e ficou DOZE motores atrasada — de 14 num
+# parque de 26. Motor que nao esta' aqui nao e' medido, e "sem achado" nele
+# significa "ninguem olhou", nao "esta' limpo". E' a §16 na forma mais barata de
+# cometer: a regra media o que ja' estava na lista.
+# ⚠️ Motor novo entra AQUI no mesmo commit em que nasce — junto com as listas do
+# `medir_teto_fala`, `medir_deiticos`, `medir_contexto_copy` e `medir_alcance`.
 MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "organicwave_short", "ressurreicao_short", "flagrante_short",
            "pee_short", "vazamento_short", "necrose_short", "exterior_short",
-           "colo_short", "receita_short", "botica_short"]
+           "colo_short", "receita_short", "botica_short",
+           # + 2026-07-28/08-05: os cinco motor-only, sem `AGENTE_ED_*.md`
+           "dupla_short", "placa_short", "cha_short", "trio_short",
+           "falta_short",
+           # + 2026-08-08: a familia 16s — 2 takes de 8s, AdBatch Vertical 2
+           "trio16_short", "dupla16_short", "falta16_short", "placa16_short",
+           "troca16_short", "botica16_short", "colo16_short"]
 
 # ⭐ O QUE CONTA COMO REFERENTE, e a lista e' deliberadamente CURTA:
 #   · o orgao (o pool NUCLEO do proprio motor), ou
