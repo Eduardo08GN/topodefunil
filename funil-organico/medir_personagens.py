@@ -225,6 +225,11 @@ EXCECOES = {
         "e ancora seguem cheios, e o PORTE mora no eixo proprio CORPOS_M "
         "(CL26 desde 2026-08-04: sensual, nunca musculoso).",
     ("clean_short_v2.py", "REFS_M", "oculos"): "idem clean_short",
+    # ⛔ FALTA 16 herda o pool HOMENS por copia literal — mesmo contrato.
+    ("falta16_short.py", "HOMENS", "pele"):
+        "CONTRATO DO MOTOR — identico ao falta_short.py: as entradas do "
+        "pool nao carregam adjetivo de etnia, quem injeta e a montagem "
+        "a partir do MUNDO sorteado.",
     ("falta_short.py", "HOMENS", "pele"):
         "CONTRATO DO MOTOR — as entradas do pool carregam ZERO adjetivo de "
         "etnia, e quem injeta e' a montagem, a partir do MUNDO sorteado (o "
@@ -232,6 +237,9 @@ EXCECOES = {
         "do pool das mulheres deste agente e do NECROSE/EXTERIOR. Pool com "
         "etnia dentro quebraria a congruencia de mundo, que e' inviolavel "
         "neste funil.",
+    # ⛔ FALTA 16 herda o pool REFS do FALTA por copia literal.
+    ("falta16_short.py", "REFS", "oculos"):
+        "LEI DO REF — mesmo pool e mesma razao do falta_short.py.",
     ("falta_short.py", "REFS", "oculos"):
         "LEI DO REF — este agente nasce em MODO BELA por ordem do operador "
         "(*mulheres extremamente lindas, roupa curta*), e oculos de leitura "

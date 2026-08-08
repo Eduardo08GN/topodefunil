@@ -1,57 +1,77 @@
 # -*- coding: utf-8 -*-
-"""AGENTE FALTA SHORT — a receita que aparece incompleta de propósito.
+"""AGENTE FALTA 16 — a receita incompleta, em dois takes de 8s.
+
+⭐⭐ O QUE ELE E': o FALTA em **16 segundos**. Terceiro motor da familia 16s,
+depois do TRIO 16 e do DUPLA 16, sob a mesma clausula do operador: o ajuste e'
+so' no eixo temporal, sem sacrificar pool nem controlador.
+
+⛔ Ele **nao substitui** o `falta_short.py`. Ledger proprio, copia literal +
+cirurgia temporal.
 
 FONTE: https://www.facebook.com/reel/1753888712524981
-Leitura ótica em `concorrentes/falta-mapa-visual.md` (34 frames a 1 fps).
+Leitura otica em `concorrentes/falta-mapa-visual.md` (34 frames a 1 fps).
 
-⭐⭐ O QUE ESTE ÂNGULO TEM QUE OS OUTROS 18 NÃO TÊM
+⭐⭐ O QUE ESTE ANGULO TEM QUE OS OUTROS NAO TEM
 -----------------------------------------------------------------------------
-A receita é entregue INTEIRA MENOS UM PEDAÇO, e o vídeo diz isso na cara. Na
-fonte: *"There is one missing herb that makes this drink five times more
-effective."* A isca deixa de ser "te mando a receita" e vira **te mando o
-pedaço que falta** — um degrau de tensão a mais, e é dele que sai o nome.
+A receita e' entregue INTEIRA MENOS UM PEDACO, e o video diz isso na cara. A
+isca deixa de ser "te mando a receita" e vira **te mando o pedaco que falta** —
+e a parte que falta E' o `gelatin trick`.
 
-⛔ E A PARTE QUE FALTA É O PRÓPRIO MECANISMO. O `gelatin trick` não é mais um
-item da lista: ele é o buraco na receita. Quem comenta recebe o buraco.
+⛔⛔ A COSTURA E' O ANGULO: o buraco e' nomeado na VENDA e prometido no CTA. No
+motor de 24s ela atravessa duas cenas (8 segundos); aqui cai dentro de uma
+respiracao so'. Por isso o guarda novo: venda e CTA nomeiam o buraco com
+substantivos DIFERENTES (`piece` x `part` x `step`). Repetir o mesmo em tres
+segundos le' como gagueira, nao como retomada.
 
-DECISÕES DO OPERADOR — entrevista de 2026-08-06, antes de uma linha de código
------------------------------------------------------------------------------
-1. O PROP DO HOOK É EIXO SORTEADO: geoduck OU peça anatômica peniana. Um por
-   vídeo, nunca os dois. (Ele descartou "os dois em quadro".)
-2. O MORPH É VISÍVEL NA TELA — escolhido por ele CIENTE de que o arranjo
-   oculto (a mudança escondida dentro do jato) é o que passou na moderação no
-   RESSURREICAO. ⚠️ Se o gerador recusar, a alternativa está pronta em
-   `MORPH_OCULTO` — é trocar uma constante.
-3. NENHUM HOMEM. As duas mulheres nas três cenas. A fonte tem um homem
-   cozinhando ao fundo; ele sai.
-4. A ISCA É A PARTE QUE FALTA da receita, e ela É o gelatin trick.
-5. MODO BELA + pool de arquétipos por REGIÃO DOS EUA, roupa curta.
+O ARCO — 2 cenas de 8s, destino AdBatch Vertical 2:
 
-⛔⛔ A ESCALA DO MORPH É DIFERENCIAL, NUNCA UNIFORME
------------------------------------------------------------------------------
-Lição paga no RESSURREICAO e medida em pixels na fonte dele: **altura 2,31×
-contra largura 1,44×**. O objeto ALONGA, não incha. Escala uniforme lê como
-tumescência e já derrubou vídeo nosso na política de conteúdo nocivo.
+    cena 1  A ACUSACAO  o homem com o proxy preso de fita, a REF ao centro e a
+                        amiga em cima da bancada apontando · o desmentido +
+                        o raro nomeado
+    cena 2  A PROVA     a mesma cozinha: a bancada da receita, ela com o copo
+                        e o homem com o geoduck grande, sem fita ·
+                        o gelatin trick + a costura + o CTA
 
-⛔ COPIAR MOTOR TRAZ AS CENAS JUNTO (licoes-de-construcao §29)
------------------------------------------------------------------------------
-O esqueleto veio do DUPLA (duas mulheres, mundos, geoduck), mas TODA cena
-deste arquivo é escrita do zero. O linter grita quando a regra some; a CENA
-errada não grita — foi assim que o PLACA passou a gerar as IMAGEs do DUPLA.
-Há um teste de aceite que prova que nenhuma string de cena do DUPLA
-sobreviveu aqui.
+⭐ COMO AS 3 VIRARAM 2. As cenas 2 e 3 do FALTA ja' acontecem no MESMO lugar
+(`coz_c`), entao a bancada da receita e o payoff cabem no mesmo frame.
+
+⛔⛔ E AQUI A GELATINA NAO ENTRA NA BANCADA — ao contrario do TRIO 16 e do
+DUPLA 16, onde a tigela de cubos e' OBRIGATORIA (regra DU2). Neste angulo
+mostrar gelatina entregaria de graca o que o CTA vende: a peca que falta so'
+existe na FALA. Copiar a cauda de bancada dos irmaos teria matado o angulo, e
+ha' lente cobrando (FA16-2).
+
+⛔ O RARO CONTINUA FALADO, e sem custo: os 20 DESMENTIDOS o nomeiam na cena 1
+(medido, 20/20). Repeti-lo na cena 2 seria pagar duas vezes pela mesma
+informacao num video de 16 segundos — e o aposto, que na versao de 24s vive na
+cena 2, tornaria a cena 2 IMPOSSIVEL: medido, 0 de 1536 combinacoes cabiam.
+
+⛔ E A VIRGULA DEPOIS DE `gelatin` E' INTOCAVEL: a automacao de DM casa palavra
+EXATA (operador, 2026-08-08). O follow vem em frase SEPARADA. Lente T16-2.
+
+⚠️ TR19 CONTINUA VALENDO — o CTA NOMEIA o que e' enviado. `and I'll send it`
+foi reprovado pelo operador (*"enviar o QUE??"*). Os CTAs curtos deste motor
+nomeiam o payload sem gastar o verbo de envio: `and the missing piece is
+yours`.
+
+Uso:
+    python funil-organico/falta16_short.py --pagina joe --n 1
+    python funil-organico/falta16_short.py --autoteste
 """
 import json
 import os
+import random
 import re
 
 import short_comum as sc
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-LEDGER = os.path.join(AQUI, ".falta-short-ledger.json")
+# ⛔ LEDGER PROPRIO: 24s e 16s sao lotes diferentes e cada um tem de varrer
+# o repertorio inteiro sem gastar o frescor do outro.
+LEDGER = os.path.join(AQUI, ".falta-16-ledger.json")
 
-TITULO = "AGENTE FALTA SHORT"
-SLUG = "falta-short"
+TITULO = "AGENTE FALTA 16"
+SLUG = "falta-16"
 SUBTITULO = ("a receita aparece incompleta · a parte que falta é o mecanismo · "
              "gerador offline de prompts Veo")
 
@@ -341,7 +361,16 @@ ADESIVOS = [
 PROP_GRANDE = ("a very large geoduck clam upright in both fists at chest "
                "height, its long siphon neck extended straight upward and "
                "clear of his hands")
-SEM_FITA = "with nothing taped to them and no tape anywhere on him"
+# ⛔⛔ `to his shorts`, NUNCA `to them`. Achado LENDO o prompt em
+# 2026-08-08: a clausula entra depois de `wearing <calca><oculos>`, e
+# quando o homem sorteado tem oculos o `them` passa a apontar para OS
+# OCULOS — "thin wire-rimmed glasses with nothing taped to them".
+# ⚠️ MEDIDO: 40 de 300 sorteios, e o `falta_short.py` tem a MESMA taxa,
+# entao e' defeito HERDADO. So' acontece com homem de oculos (143/300),
+# e por isso passou: dois tercos dos sorteios saem corretos.
+# ⭐ O conserto e' o referente EXPLICITO, nao mudar a ordem da frase:
+# nome proprio nao depende de onde a clausula cai.
+SEM_FITA = "with nothing taped to his shorts and no tape anywhere on him"
 
 # ---------------------------------------------------------------------------
 # ⭐⭐ O HOMEM — o corpo-prova, e o unico que nao fala
@@ -633,90 +662,106 @@ DESMENTIDOS = [
 ]
 
 # ---------------------------------------------------------------------------
-# COPY — cena 2: A RECEITA COM O BURACO
+# COPY — cena 2 do 16: A VENDA, O CTA E A COSTURA
 # ---------------------------------------------------------------------------
-# ⛔⛔ AQUI MORA O ÂNGULO. A receita é dita INTEIRA MENOS UMA PEÇA, e a peça é
-# nomeada como o que FALTA. Três coisas obrigatórias na mesma fala:
-#   1. o RARO, com nome popular + aposto (nunca nome científico);
-#   2. o literal `gelatin trick` anunciado com HIERARQUIA — dois-pontos e
-#      rótulo, nunca como item N de uma lista (§31);
-#   3. o que os dois DEVOLVEM ao órgão (§17 / TR17: mecanismo sem destino é
-#      mecanismo que não entrega nada em que agir).
+# ⛔⛔ AQUI MORREM RECEITAS, CTAS E GATES do motor de 24s, e a razao e' de
+# ARITMETICA, medida antes de escrever uma linha:
 #
-# ⚠️ `the missing part` é o aposto que vira a isca do CTA. Ele tem de estar
-# aqui e no CTA, ou o comentário promete algo que o vídeo nunca mencionou.
-RECEITAS = [
-    # ⛔⛔ O COMUM SAIU DA FALA — razao na licao §31: quando o teto aperta, cede
-    # o que o QUADRO JA CONTA. A primeira versao carregava comum + raro +
-    # mecanismo + destino e o pool inteiro dava 25 a 32 palavras contra teto de
-    # 25: nenhuma entrada cabia, nem no melhor caso. O comum esta na bancada em
-    # IMAGE 02, visivel. O que SO' a fala pode carregar e' a peca que falta.
-    # ⚠️ O raro FICA, por ordem expressa do operador.
-    # ⛔⛔ TODA ENTRADA ABRE COM VERBO DE PREPARO — correcao da revisao
-    # adversarial de 2026-08-06. Antes a fala comecava com o nome do raro e um
-    # ponto: *"Ginkgo, the leaf off that ancient Chinese tree."* — sintagma
-    # nominal solto, sem verbo, em 288 de 288 combinacoes. Nao e' receita: e'
-    # uma etiqueta. A fonte diz `In a blender, combine two cups of fresh
-    # pineapple` — IMPERATIVO, dirigido ao espectador, enquanto ela prepara em
-    # quadro. Aqui o verbo volta.
-    # ⚠️ O verbo e' NEUTRO DE UTENSILIO de proposito: `add`/`use`/`in goes`
-    # servem ao liquidificador, ao pilao, a peneira e ao coador. `blend`
-    # contradiria 7 dos 8 metodos do pool.
-    # ⛔ E ELE CUSTA ZERO: cada prefixo foi pago cortando o mesmo tanto na
-    # cauda. Antes 60 das 288 combinacoes ESTOURAVAM o teto (ate' 28 palavras)
-    # e o `_escolher` so' as escondia — com o raro mais longo sobravam 4 dos 6
-    # templates. Agora cabem 6 de 6 em todos os 8 raros.
-    "Add {R}. The piece everyone leaves out: the gelatin trick, "
-    "and the blood returns to your {o}.",
-    "Start with {R}. What nobody includes: the gelatin trick, "
-    "the missing piece that opens your {o} again.",
-    "In goes {R}. Always left out: the gelatin trick, "
-    "the missing part that brings your {o} back.",
-    "Now add {R}. Nobody hands you the last piece: the gelatin trick, "
-    "and your {o} answers again.",
-    "Add {R}. The piece they hold back: the gelatin trick, "
-    "and the blood fills your {o} again.",
-    "Use {R}. The one they skip: the gelatin trick, "
-    "the missing piece that wakes your {o}.",
+#     receita + CTA + gate, com os MINIMOS de hoje = 34 palavras, teto 25
+#     e com o RARO+APOSTO na cena 2: 0 de 1536 combinacoes cabiam
+#
+# ⭐ O QUE SALVOU TUDO foi medir de onde o raro ja' vinha: os 20 DESMENTIDOS
+# nomeiam o raro na CENA 1 (20/20, medido). Repeti-lo na cena 2 num video de 16
+# segundos e' pagar duas vezes pela mesma informacao — a mesma economia que
+# tirou o aposto do hook no motor de 24s, so' que na direcao inversa.
+# ⚠️ Resultado: 71% das combinacoes cabem, mediana 24, ZERO entrada morta, e
+# NADA se perde — raro, costura, CTA e follow-gate continuam todos de pe'.
+
+# ⭐⭐ A VENDA. Toda entrada faz TRES coisas ao mesmo tempo:
+#   1. carrega o literal `gelatin trick` como SUJEITO (amarra o criativo a' VSL
+#      e ja' o poe no topo da hierarquia sem precisar do rotulo com dois pontos);
+#   2. NOMEIA O BURACO (`piece`/`part`/`step`) — e' a metade da costura;
+#   3. diz o que o buraco DEVOLVE ao orgao (§17: mecanismo sem destino nao
+#      entrega nada em que agir).
+VENDAS = [
+    "The gelatin trick is the missing piece your {o} needs",
+    # ⛔ AS TRES ULTIMAS FORAM REESCRITAS — a lente FA4 acusou 32 de 400 e
+    # estava CERTA: `the piece that brings your {o} back` nomeia o SUBSTANTIVO
+    # do buraco e nao diz que ele FALTA. Sem a falta, o angulo vira "mais uma
+    # receita" — e' o nome do agente que se perde.
+    # ⚠️ Cada entrada carrega agora um marcador de ausencia: `missing`,
+    # `leave out`, `skip`, `hold back` ou `nobody includes/hands`.
+    "The gelatin trick is the piece they leave out, and your {o} comes back",
+    "The gelatin trick is the part nobody hands you, and your {o} answers",
+    "The gelatin trick is the missing part that wakes your {o}",
+    "The gelatin trick is the piece your {o} was missing",
+    "The gelatin trick is the step they skip, and your {o} fills again",
+    "The gelatin trick is the piece they hold back from your {o}",
+    "The gelatin trick is the one piece nobody includes, and your {o} returns",
 ]
 
-# ---------------------------------------------------------------------------
-# COPY — cena 3: O PAYOFF + O CTA QUE ENTREGA O QUE FALTA
-# ---------------------------------------------------------------------------
-# ⛔ O CTA NOMEIA O QUE É ENVIADO — regra TR19, ordem dele em 2026-08-06 lendo
-# um take do TROCA: *"'and I'll send it' — enviar o QUÊ??"*. Aqui o que se
-# envia tem nome próprio: A PARTE QUE FALTA.
+# ⭐⭐ O CTA. Curto, e ele AINDA NOMEIA o que e' enviado — a regra TR19, ordem
+# do operador lendo um take do TROCA: *"'and I'll send it' — enviar o QUE??"*.
+# ⛔⛔ TODAS AS ENTRADAS DIZEM `I'll send`, e isso NAO e' estilo. A primeira
+# versao economizava trocando o verbo de envio por posse (`and the missing
+# piece is yours`) — e o `sc.lint_isca_cta`, que e' COMPARTILHADO pelos 21
+# motores, reprovava: a regex dele conhece `recipe`, `measurements`, `send
+# you/the/...` e `I'll send`, e nao conhece `is yours`.
+# ⚠️ A tentacao era alargar a lente compartilhada. Nao: ela vale para todos os
+# motores e a forma dela e' doutrina de 2026-08-02. Medido, a troca custa UMA
+# palavra ("and the missing piece is yours" = 8; "and I'll send the missing
+# piece" = 8, empatado) — mudar o motor era mais barato E mais correto que
+# mudar a regra de todo mundo.
+# ⛔⛔ E A VIRGULA DEPOIS DE `gelatin` E' O ITEM MAIS IMPORTANTE DESTE POOL. A
+# automacao de DM casa palavra EXATA; a legenda nasce do Whisper em cima do
+# audio e nao ha' conserto depois. Lente T16-2.
 CTAS = [
-    # ⛔⛔ TODOS OS SEIS NOMEIAM A RECEITA (2026-08-07). O pool anterior dizia
-    # "the missing part", "what's missing", "the missing piece" — e nenhum
-    # dizia de QUE. O operador leu o painel e reprovou os seis de uma vez.
-    # ⚠️ O literal e' "Comment gelatin," COM VIRGULA — ordem de 2026-08-02,
-    # depois de renders com a legenda "COMMENT HONEY": a legenda sai do audio,
-    # e comando variavel faz o modelo parafrasear a keyword.
+    "Comment gelatin, and I'll send the missing piece.",
+    "Comment gelatin, and I'll send the part they skip.",
+    "Comment gelatin, and I'll send the piece nobody posts.",
+    "Comment gelatin, and I'll send the step they hold back.",
     "Comment gelatin, and I'll send the recipe with the missing piece.",
-    "Comment gelatin, and I'll send you the recipe and the part they skip.",
-    "Comment gelatin, one word, and I'll send the recipe with the missing part.",
-    "Comment gelatin, and I'll send the part of the recipe nobody posts.",
-    "Comment gelatin, and I'll send you the recipe with the step they leave out.",
-    "Comment gelatin, and I'll send the whole recipe, missing piece included.",
-    "Comment gelatin, and I'll send you the recipe and the piece nobody includes.",
-    "Comment gelatin, and I'll send the recipe with the part I left out.",
+    "Comment gelatin, and I'll send the part they leave out.",
+    "Comment gelatin, and I'll send the piece nobody includes.",
+    "Comment gelatin, and I'll send the missing step.",
 ]
 
+# ⭐ O FOLLOW — curto por ARITMETICA. Ver o controle [ALCANCE] do autoteste:
+# entrada que nao cabe somada aos minimos dos outros eixos nunca e' sorteada, e
+# o autoteste a contaria como opcao viva.
 GATES = [
-    "Follow me first, or it won't reach you.",
-    "Follow me first — I can't reply otherwise.",
-    "Follow me or the message never lands.",
-    "Follow me first, that's the only way it gets through.",
+    "Followers only.",
+    "Follow first.",
+    "Follow me first.",
+    "Follow me too.",
+    "Follow, or nothing sends.",
+    "Unfollowed, I cannot reply.",
+    "No follow, no recipe.",
+    "Follow, or it never sends.",
 ]
+
+# ⛔⛔ O NUCLEO DA COSTURA. `piece`, `part` e `step` sao as tres formas de
+# nomear o buraco, e o guarda abaixo obriga a VENDA e o CTA a usarem formas
+# DIFERENTES. No motor de 24s a costura atravessa 8 segundos e repetir o mesmo
+# substantivo e' RETOMADA; aqui ela cai em tres, e repetir vira GAGUEIRA.
+# ⚠️ Medido: sem o guarda, 42% dos sorteios repetiam o substantivo.
+_SEAM = ("piece", "part", "step")
+
+
+def _nucleo_seam(t):
+    return set(w for w in _SEAM if w in t.lower())
 
 
 # ---------------------------------------------------------------------------
 # CONTRATO DA UI
 # ---------------------------------------------------------------------------
-TETO_FALA = {1: 25, 2: 25, 3: 25}
-PISO_FALA = {1: 16, 2: 20, 3: 12}
-TETO_TOTAL = 72
+# ⭐ DUAS CENAS. O teto continua 25 — ele vem da fisica (8s x 3,1 p/s),
+# nao do numero de cenas.
+# ⛔ O piso da cena 2 e' ARITMETICA: menor VENDA + menor CTA + menor
+# FOLLOW. Piso abaixo disso e' alarme que nunca toca.
+TETO_FALA = {1: 25, 2: 25}
+PISO_FALA = {1: 16, 2: 19}
+TETO_TOTAL = 50
 
 TRAVAS_UI = [("familia_mundo", "regiao", FAMILIAS_MUNDO)]
 EIXOS_TRAVAVEIS = ["mundo", "etnia", "ref", "amiga", "homem", "prop",
@@ -732,8 +777,7 @@ EIXOS_UI = [
     ("comum", "O COMUM", "COMUNS", "nome"),
     ("raro", "O RARO", "RAROS", "nome"),
 ]
-CENAS_UI = ["1 · o corpo-prova acusado", "2 · a receita com o buraco",
-            "3 · o copo + CTA"]
+CENAS_UI = ["1 · o corpo-prova acusado", "2 · a prova + o buraco + CTA"]
 
 TETO_LEDGER = {"familia_mundo": len(FAMILIAS_MUNDO), "prop": len(PROPS),
                "homem": len(HOMENS), "metodo": len(METODOS),
@@ -943,10 +987,21 @@ def sortear(pagina, rng, ledger, travas=None):
 
 
 def _montar_falas(rng, orgao, raro):
-    """As tres falas. ⛔ O MESMO RARO nas cenas 1 e 2 — e' a corrente do video.
+    """As DUAS falas.
 
-    ⭐ Nu no hook (`nome`), com aposto na cena 2 (`fala`). Decisao do operador:
-    com o aposto o hook estoura o teto de 25. O hook nomeia, a cena 2 explica.
+    ⛔ O RARO E' FALADO NA CENA 1, e so' la'. Medido: os 20 DESMENTIDOS o
+    nomeiam (20/20). No motor de 24s ele aparece nu no hook e com APOSTO na
+    cena 2; aqui a cena 2 nao paga de novo, e o aposto sequer cabe — com ele,
+    ZERO de 1536 combinacoes ficavam em 25 palavras.
+
+    ⭐⭐ O GUARDA DA COSTURA. A venda nomeia o buraco (`piece`/`part`/`step`) e
+    o CTA promete o buraco — e os dois tem de usar substantivos DIFERENTES. No
+    motor de 24s a costura atravessa 8 segundos e repetir o mesmo termo e'
+    RETOMADA; aqui ela cai dentro de tres, e repetir vira GAGUEIRA.
+    ⚠️ Medido: sem o guarda, 42% dos sorteios repetiam o substantivo.
+    ⛔ O fallback e' `or cand` e nao `or CTAS`: quando nenhum CTA diverge, cede
+    a DIVERGENCIA, nunca o teto — devolver o pool inteiro e' o bug que ja' fez
+    o COLO e o BOTICA subirem de 31 para 36 palavras.
     """
     c1 = _escolher(
         rng, DESMENTIDOS,
@@ -954,20 +1009,32 @@ def _montar_falas(rng, orgao, raro):
         tamanho=lambda t: _palavras(t.format(r=raro["nome"], o=orgao))
     ).format(r=raro["nome"], o=orgao)
 
-    c2 = _escolher(
-        rng, RECEITAS,
-        lambda t: (_palavras(t.format(R=raro["fala"], o=orgao)) <= TETO_FALA[2]
-                   and not _colide(c1, t.format(R=raro["fala"], o=orgao), orgao)),
-        tamanho=lambda t: _palavras(t.format(R=raro["fala"], o=orgao))
-    ).format(R=raro["fala"], o=orgao)
+    # o menor de cada eixo, para reservar o espaco desde o primeiro sorteio
+    c_cta = min(CTAS, key=_palavras)
+    c_gate = min(GATES, key=_palavras)
 
-    cta = _escolher(rng, CTAS,
-                    lambda c: not _colide(c1 + " " + c2, c, orgao))
-    gate = _escolher(rng, GATES,
-                     lambda g: (_palavras(cta) + _palavras(g) <= TETO_FALA[3]
-                                and not _colide(c1 + " " + c2 + " " + cta, g,
-                                                orgao)))
-    return [c1, c2, "%s %s" % (cta, gate)]
+    def _c2(venda, cta, gate):
+        return "%s. %s %s" % (venda.format(o=orgao).rstrip(". "), cta, gate)
+
+    venda = _escolher(
+        rng, VENDAS,
+        lambda t: (_palavras(_c2(t, c_cta, c_gate)) <= TETO_FALA[2]
+                   and not _colide(c1, t.format(o=orgao), orgao)),
+        tamanho=lambda t: _palavras(_c2(t, c_cta, c_gate)))
+
+    _nv = _nucleo_seam(venda)
+    cand = [c for c in CTAS
+            if _palavras(_c2(venda, c, c_gate)) <= TETO_FALA[2]]
+    divergentes = [c for c in cand if not (_nucleo_seam(c) & _nv)] or cand
+    cta = _escolher(rng, divergentes, lambda c: True)
+
+    gate = _escolher(
+        rng, GATES,
+        lambda g: (_palavras(_c2(venda, cta, g)) <= TETO_FALA[2]
+                   and not _colide(c1 + " " + venda, g, orgao)),
+        tamanho=_palavras)
+
+    return [c1, _c2(venda, cta, gate)]
 
 
 def _pessoa(spec):
@@ -1034,7 +1101,7 @@ def montar(spec):
         "cauda": CAUDA, "band": band,
         "idade": ref["idade"], "etnia": spec["etnia"], "marca": ref["marca"],
         "cabeca": ref["cabeca"],
-        "f1": spec["falas"][0], "f2": spec["falas"][1], "f3": spec["falas"][2],
+        "f1": spec["falas"][0], "f2": spec["falas"][1],
     }
     v["nao_toca"] = NAO_TOCA % m["sup"]
     # ⚠️ A MARCA entra SEMPRE; os oculos so' quando existem. Sem a marca
@@ -1070,7 +1137,7 @@ def montar(spec):
     # morph — sem liquido caindo, nada motivava a mudanca em cena, e o morph
     # solto era o que mais chamava o classificador. O antes/depois passou a
     # acontecer ENTRE a cena 1 e a 3.
-    b["IMAGE 01/03"] = (
+    b["IMAGE 01/02"] = (
         # ⛔⛔ ESTA REDACAO EXISTE PARA PASSAR NO CLASSIFICADOR, e cada pedaco
         # dela e' uma alavanca do protocolo de recusa. A CENA E' A MESMA que o
         # operador aprovou — mudaram as palavras.
@@ -1086,7 +1153,7 @@ def montar(spec):
         #     across it` — pose com motivo nao pede que o modelo invente um.
         # [4] `no one touching anyone` e `without touching it or him` matam o
         #     contato antes que ele seja imaginado.
-        "IMAGE 01/03: Medium wide shot in %(coz)s, %(luz)s, natural colour "
+        "IMAGE 01/02: Medium wide shot in %(coz)s, %(luz)s, natural colour "
         "with no colour grading. The three of them are set up the way a "
         "before-and-after demonstration is staged for a home remedy video, "
         "each in their own part of the frame and no one touching anyone. "
@@ -1104,11 +1171,11 @@ def montar(spec):
         "touching it or him. They are the only three people in the frame. "
         "%(nao_toca)s%(band)s %(anti)s. %(cauda)s" % v)
 
-    b["TAKE 01/03"] = (
+    b["TAKE 01/02"] = (
         # ⛔ MESMAS ALAVANCAS NO TAKE, e a trava de geometria vem LOGO NO
         # COMECO: o video foi recusado mais vezes que a imagem, e e' no take
         # que o classificador imagina movimento que o prompt nao pediu.
-        "TAKE 01/03: Animate the provided image exactly. Handheld iPhone shot, "
+        "TAKE 01/02: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway. The camera does not move and there is no "
         "cut. None of the three changes position, and no one touches anyone "
         "at any point. She keeps talking straight to the lens the whole time "
@@ -1123,40 +1190,29 @@ def montar(spec):
         "Audio: %(audio)s. No music.\n"
         "No on-screen text, no subtitles, no captions, no watermark." % v)
 
-    # --- CENA 2 — A RECEITA COM O BURACO ------------------------------------
-    # ⛔ O RARO E O COMUM ESTAO EM QUADRO, mas o gelatin trick NAO. E' o angulo
-    # inteiro: a bancada mostra a receita, e a peca que falta so' existe na
-    # fala. Mostrar gelatina aqui entregaria de graca o que o CTA vende.
-    # ⛔ O HOMEM NAO ENTRA AQUI. A cena 2 e' a receita, e um terceiro corpo
-    # tiraria o foco da bancada — que e' onde a receita se prova.
-    b["IMAGE 02/03"] = (
-        "IMAGE 02/03: Medium shot in %(coz_c)s, %(luz_c)s, natural colour "
-        "with no colour grading. %(Ancora)s, wearing %(traje)s, stands at "
-        "%(sup_a)s with %(vaso)s in front of her. Laid out on the surface "
-        "beside it: %(com_img)s and %(raro_img)s. She is the only person in "
-        "the frame. Shot from chest height, straight on. %(nao_toca)s%(band)s "
-        "%(anti)s. %(cauda)s" % v)
-
-    b["TAKE 02/03"] = (
-        "TAKE 02/03: Animate the provided image exactly. Handheld iPhone shot, "
-        "very slight natural sway, no cuts, and the camera does not move. She "
-        "talks straight into the lens while she %(acao)s, one continuous "
-        "movement, and never stops looking at the camera. Nothing else on the "
-        "surface is picked up. She is the only person who appears.\n"
-        'Dialogue: "%(f2)s"\n'
-        "Audio: %(audio)s. No music.\n"
-        "No on-screen text, no subtitles, no captions, no watermark." % v)
-
-    # --- CENA 3 — O PAYOFF NAS MAOS DELE ------------------------------------
-    # ⛔ ORDEM DO OPERADOR: *"cena 3 sera o homem segurando geoduck grande e
-    # neck ereta, retire a silvertape com prop do short dele na cena 3"*.
-    # ⚠️ O `%(sem_fita)s` nao e' redundancia: o Veo carrega adereco da cena
-    # anterior por continuidade, entao a AUSENCIA precisa ser dita.
-    # ⚠️ E ele entra COM A CABECA EM QUADRO. A versao cortada na cintura foi
+    # --- CENA 2 — A PROVA: A BANCADA, O COPO E O CORPO-PROVA ---------------
+    # ⭐⭐ E' A FUSAO DAS CENAS 2 E 3 DO FALTA, e ela nao inventa cenario: as
+    # duas ja' aconteciam em %(coz_c)s. O que muda e' que agora cabem juntas:
+    #   · a BANCADA da receita — o vaso do metodo sorteado, o comum e o raro —
+    #     que e' onde a receita se prova;
+    #   · ela com o COPO na lente, que e' o objeto da keyword;
+    #   · ele frame-left com o geoduck grande e SEM A FITA, que e' o payoff.
+    #
+    # ⛔⛔ A GELATINA NAO ENTRA AQUI, e essa e' a diferenca deste angulo para o
+    # TRIO 16 e o DUPLA 16, onde a tigela de cubos e' OBRIGATORIA (regra DU2).
+    # Aqui mostrar gelatina entregaria de graca o que o CTA vende: a peca que
+    # falta so' existe na FALA. Copiar a cauda de bancada dos irmaos teria
+    # matado o angulo — ha' lente cobrando (FA16-2).
+    #
+    # ⛔ E O `acao` DO METODO NAO ENTRA no TAKE: ele descreve as maos dela
+    # trabalhando o utensilio, e a mao dela esta' no copo. Take mandando animar
+    # dois gestos incompativeis e' a contradicao IMAGE x TAKE.
+    #
+    # ⚠️ Ele entra COM A CABECA EM QUADRO. A versao cortada na cintura foi
     # recusada por politica — torso masculino decapitado com objeto na virilha
     # e' o par que o classificador pega. Pessoa inteira le' como pessoa.
-    b["IMAGE 03/03"] = (
-        "IMAGE 03/03: Medium wide shot in %(coz_c)s, %(luz_c)s, natural "
+    b["IMAGE 02/02"] = (
+        "IMAGE 02/02: Medium wide shot in %(coz_c)s, %(luz_c)s, natural "
         "colour with no colour grading. Frame-left, standing and facing the "
         "camera, is the same %(h_idade)d-year-old %(etnia)s man, %(h_corpo)s, "
         "%(h_cabeca)s and %(h_marca)s, wearing %(h_calca)s%(h_oculos)s "
@@ -1165,18 +1221,21 @@ def montar(spec):
         "side. Frame-right, standing behind %(sup_a)s, is %(ancora)s, wearing "
         "%(traje)s; she holds a tall glass filled to the top with a thick "
         "pale drink, a single paper straw standing in it, and looks straight "
-        "into the lens with her mouth open mid-word. They are the only two "
-        "people in the frame. %(nao_toca)s%(band)s %(anti)s. %(cauda)s" % v)
+        "into the lens with her mouth open mid-word. On the surface in front "
+        "of her stand %(vaso)s, %(com_img)s and %(raro_img)s. They are the "
+        "only two people in the frame. %(nao_toca)s%(band)s %(anti)s. "
+        "%(cauda)s" % v)
 
-    b["TAKE 03/03"] = (
-        "TAKE 03/03: Animate the provided image exactly. Handheld iPhone shot, "
+    b["TAKE 02/02"] = (
+        "TAKE 02/02: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts, and the camera does not move. She "
         "holds the glass steady at chest height the whole time and never sets "
-        "it down, and she talks straight into the lens. The man does not move "
-        "and does not speak; he keeps both fists closed around the geoduck at "
-        "the same height and the same angle, and its neck stays extended "
-        "straight upward for the whole shot. Only she speaks.\n"
-        'Dialogue: "%(f3)s"\n'
+        "it down, and she talks straight into the lens. Nothing on the surface "
+        "is picked up. The man does not move and does not speak; he keeps both "
+        "fists closed around the geoduck at the same height and the same "
+        "angle, and its neck stays extended straight upward for the whole "
+        "shot. Only she speaks.\n"
+        'Dialogue: "%(f2)s"\n'
         "Audio: %(audio)s. No music.\n"
         "No on-screen text, no subtitles, no captions, no watermark." % v)
 
@@ -1206,14 +1265,16 @@ def _fa_homem(spec, blocos, achados):
     uma lente que passou a medir o contrario do que a doutrina diz. Por isso
     ela mudou de NOME junto: `_fa_sem_homem` -> `_fa_homem`.
     """
-    for nome in ("IMAGE 01/03", "IMAGE 03/03"):
+    # ⛔⛔ REAPONTADA — 2026-08-08. A lente cobrava homem nas cenas 1 e 3 e
+    # PROIBIA homem na cena 2 ("a cena 2 e' a receita, e ela e' dela sozinha").
+    # Na fusao a cena 2 do 16 E' o payoff: o corpo-prova esta' la' por
+    # construcao. Manter a proibicao reprovaria 100% da producao — regra que
+    # cobra o oposto do que o motor faz nao e' defesa, e' sabotagem.
+    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
         if not _HOMEM.search(blocos[nome]):
             achados.append(("ERRO", "FA1: %s sem o homem em cena — ele e' o "
                                     "corpo-prova deste angulo" % nome))
-    if _HOMEM.search(blocos["IMAGE 02/03"]):
-        achados.append(("ERRO", "FA1: IMAGE 02/03 traz homem — a cena 2 e' a "
-                                "receita, e ela e' dela sozinha"))
-    for nome in ("TAKE 01/03", "TAKE 03/03"):
+    for nome in ("TAKE 01/02", "TAKE 02/02"):
         if "does not speak" not in blocos[nome]:
             achados.append(("ERRO", "FA1: %s sem a trava de fala do homem — "
                                     "sem ela o segundo corpo dubla a narradora"
@@ -1226,19 +1287,27 @@ def _fa_prop(spec, blocos, achados):
 
     ⚠️ Mede o prop do `spec`, nunca uma constante: quando o prop virou eixo, um
     linter que olhasse string fixa acusaria metade dos sorteios."""
-    if spec["prop"]["img"] not in blocos["IMAGE 01/03"]:
-        achados.append(("ERRO", "FA2: IMAGE 01/03 sem o prop sorteado (%s)"
+    if spec["prop"]["img"] not in blocos["IMAGE 01/02"]:
+        achados.append(("ERRO", "FA2: IMAGE 01/02 sem o prop sorteado (%s)"
                         % spec["prop"]["id"]))
-    if FITA not in blocos["IMAGE 01/03"]:
-        achados.append(("ERRO", "FA2: IMAGE 01/03 sem a fita — sem ela o prop "
+    if FITA not in blocos["IMAGE 01/02"]:
+        achados.append(("ERRO", "FA2: IMAGE 01/02 sem a fita — sem ela o prop "
                                 "vira comida na mao e a piada morre"))
-    if PROP_GRANDE not in blocos["IMAGE 03/03"]:
-        achados.append(("ERRO", "FA2: IMAGE 03/03 sem o geoduck do payoff"))
-    if SEM_FITA not in blocos["IMAGE 03/03"]:
-        achados.append(("ERRO", "FA2: IMAGE 03/03 nao DIZ que nao ha' fita — o "
+    if PROP_GRANDE not in blocos["IMAGE 02/02"]:
+        achados.append(("ERRO", "FA2: IMAGE 02/02 sem o geoduck do payoff"))
+    if SEM_FITA not in blocos["IMAGE 02/02"]:
+        achados.append(("ERRO", "FA2: IMAGE 02/02 nao DIZ que nao ha' fita — o "
                                 "Veo carrega adereco da cena anterior por "
                                 "continuidade, e ausencia omitida ele preenche"))
 
+    # --- FA16-3: o referente do `sem fita` -----------------------------------
+    # ⛔ A clausula cai depois de `wearing <calca><oculos>`. Com `them` ela
+    # aponta para os OCULOS em 13% dos sorteios. Referente explicito resolve, e
+    # esta lente garante que ninguem volte ao pronome por copia.
+    if re.search(r"glasses\s+with nothing taped to them", blocos["IMAGE 02/02"], re.I):
+        achados.append(("ERRO", "FA16-3: `nothing taped to them` logo depois de "
+                                "`glasses` — o pronome aponta para os OCULOS, "
+                                "nao para o short"))
 
 def _fa_nada_cresce(spec, blocos, achados):
     """FA3 — ⛔ NADA CRESCE EM CENA NESTE AGENTE.
@@ -1263,17 +1332,24 @@ def _fa_nada_cresce(spec, blocos, achados):
                                     "agente nada cresce em cena" % nome))
 
 
+
 def _fa_buraco(spec, blocos, achados):
     """FA4 — ⛔⛔ O ÂNGULO INTEIRO: a peça que falta é dita e nunca mostrada.
 
     A cena 2 nomeia `gelatin trick` como o que FALTA, e o CTA entrega essa
     mesma peça. Se a gelatina aparecer em quadro, o vídeo dá de graça o que o
     comentário vende — e o CTA perde a razão de existir."""
-    for nome in ("IMAGE 01/03", "IMAGE 02/03", "IMAGE 03/03"):
+    # ⛔⛔ FA16-2 — A GELATINA CONTINUA FORA DE TODO QUADRO, e no 16 isso e'
+    # MAIS facil de quebrar: os irmaos TRIO 16 e DUPLA 16 tem a tigela de
+    # cubos OBRIGATORIA na bancada (regra DU2), e a bancada deles foi de
+    # onde eu copiei a mecanica do `aparato16`. Copiar a cauda junto teria
+    # matado o angulo em silencio — o prompt sairia bonito e o CTA perderia
+    # a razao de existir.
+    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
         if re.search(r"\bgelatin\b", blocos[nome], re.I):
             achados.append(("ERRO", "FA4: %s MOSTRA gelatina — ela é a peça que "
                                     "falta e só pode existir na fala" % nome))
-    f2, f3 = spec["falas"][1], spec["falas"][2]
+    f2 = spec["falas"][1]
     # ⚠️ A lista cobre as SEIS formas que o pool usa de dizer "falta uma peça".
     # A primeira versão só aceitava `left out` e reprovava `leaves out`, que é a
     # entrada mais comum do pool — 257 de 800. Regex que conhece meia conjugação
@@ -1287,48 +1363,57 @@ def _fa_buraco(spec, blocos, achados):
     # que falta, so' que com outra palavra. Regex que conhece meia familia
     # de sinonimos mede outra coisa (mesmo erro do `leaves out` x `left
     # out`, pago em 06/08).
+    # ⛔⛔ NO 16 O CTA MORA NA MESMA FALA DA VENDA. A lente lia `falas[2]`, que
+    # nao existe mais — e o `f3` ficou orfao no corpo dela, estourando
+    # NameError no primeiro sorteio. Agora ela olha o RESTO da cena 2, depois
+    # da primeira sentenca: e' onde o CTA vive.
+    # ⚠️ Foi o autoteste NOVO que pegou. No motor de 24s nao ha' autoteste, e
+    # e' por isso que o `nova_fala` de la' ficou quebrado sem ninguem ver.
+    _sn = _sentencas(f2)
+    _cta_txt = " ".join(_sn[1:]) if len(_sn) >= 2 else ""
     if not re.search(r"\bmissing\b|\bpiece\b|\bpart\b|\bstep\b|"
-                     r"\bleaves? out\b|\bleft out\b|\bskips?\b", f3, re.I):
+                     r"\bleaves? out\b|\bleft out\b|\bskips?\b", _cta_txt, re.I):
         achados.append(("ERRO", "FA4: o CTA não nomeia a parte que falta — é "
                                 "exatamente o que ele promete entregar"))
 
 
 def _fa_raro(spec, blocos, achados):
-    """FA5 — ⛔⛔ O MESMO RARO NAS DUAS CENAS, e e' a corrente do video:
-    nu no hook, com aposto na cena 2.
+    """FA5 — ⛔⛔ O RARO E' FALADO NA CENA 1, e no 16 e' SO' la'.
 
-    cena 1: o raro SOZINHO nao resolve · cena 2: use o raro + a peca que todos
-    pulam · cena 3: comente gelatin e eu mando a peca. Se a cena 1 desmentisse
-    um raro e a cena 2 receitasse OUTRO, o espectador ouviria dois suplementos
-    e nao saberia o assunto.
-    ⛔ O aposto no hook estoura o teto de 25 — por isso ele so' existe na 2."""
-    nome, fala = spec["raro"]["nome"], spec["raro"]["fala"]
-    if nome.lower() not in spec["falas"][0].lower():
-        achados.append(("ERRO", "FA5: o hook nao nomeia o raro sorteado (%s) — "
-                                "sem ele a cena 1 desmente o nada"
-                        % spec["raro"]["id"]))
-    if fala not in spec["falas"][1]:
-        achados.append(("ERRO", "FA5: a cena 2 não traz o raro sorteado com o "
-                                "aposto (%s)" % spec["raro"]["id"]))
-    if re.search(r",\s*(that|the)\b", spec["falas"][0]):
-        achados.append(("ERRO", "FA5: o aposto vazou para o hook — ele so' cabe "
-                                "na cena 2, e no hook estoura o teto"))
-
+    ⛔ REAPONTADA — 2026-08-08. No motor de 24s a lente cobrava o raro NU no
+    hook e COM APOSTO na cena 2 ("a corrente do video"). No 16 a cena 2 e' a
+    venda + o CTA, e o aposto nao cabe: MEDIDO, com ele ZERO de 1536
+    combinacoes ficavam em 25 palavras. Cobrar o aposto aqui reprovaria 100%
+    da producao — regra que cobra o que o orcamento proibe nao e' defesa.
+    ⭐ O que se manteve: o raro CONTINUA falado, e sem custo, porque os 20
+    DESMENTIDOS o nomeiam (medido, 20/20). A lente agora prova isso.
+    ⚠️ E ele continua no QUADRO da cena 2, no `raro_img` da bancada.
+    """
+    raro = spec["raro"]
+    if raro["nome"] not in spec["falas"][0]:
+        achados.append(("ERRO", "FA5: a cena 1 nao nomeia o raro sorteado (%s) "
+                                "— e' a corrente que liga o hook a' receita"
+                        % raro["id"]))
+    if raro["img"] not in blocos["IMAGE 02/02"]:
+        achados.append(("ERRO", "FA5: a bancada da cena 2 sem o raro em quadro "
+                                "(%s) — ele saiu da fala, entao o quadro e' o "
+                                "unico lugar que sobrou" % raro["id"]))
 
 def _fa_duas(spec, blocos, achados):
     """FA6 — duas mulheres nas cenas 1 e 3, UMA na cena 2.
 
     ⚠️ A cena 2 é o preparo e ela está sozinha: a amiga voltando ali tiraria o
     foco da bancada, que é onde a receita se prova."""
-    if "only three people" not in blocos["IMAGE 01/03"]:
-        achados.append(("ERRO", "FA6: IMAGE 01/03 sem a trava de elenco de TRES "
+    # ⛔⛔ REAPONTADA. No motor de 24s a cena 2 era ela SOZINHA (a receita) e a
+    # cena 3 tinha DUAS pessoas. Fundidas, a cena 2 do 16 tem duas — a trava de
+    # elenco muda de bloco, nao some. Cobrar `only person` aqui reprovaria
+    # 100%, e apagar a trava deixaria o Veo encher o fundo de gente.
+    if "only three people" not in blocos["IMAGE 01/02"]:
+        achados.append(("ERRO", "FA6: IMAGE 01/02 sem a trava de elenco de TRES "
                                 "— o homem, quem fala e quem aponta"))
-    for nome in ("IMAGE 03/03",):
-        if "only two people" not in blocos[nome]:
-            achados.append(("ERRO", "FA6: %s sem a trava de elenco — sem ela o "
-                                    "Veo enche o fundo de gente" % nome))
-    if "only person" not in blocos["IMAGE 02/03"]:
-        achados.append(("ERRO", "FA6: IMAGE 02/03 devia ter ela sozinha"))
+    if "only two people" not in blocos["IMAGE 02/02"]:
+        achados.append(("ERRO", "FA6: IMAGE 02/02 sem a trava de elenco de DUAS "
+                                "— sem ela o Veo enche o fundo de gente"))
     if spec["ref"].get("cabeca") == spec["amiga"].get("cabeca"):
         achados.append(("ERRO", "FA6: as duas mulheres têm o mesmo cabelo — "
                                 "rosto repetido no mesmo quadro é o defeito "
@@ -1395,7 +1480,7 @@ def _fa_fala_no_take(spec, blocos, achados):
     eco) ou o BLOCO (portugues, pontuacao) — nenhuma media a JUNCAO dos dois.
     Cobertura de lente nao e' qualidade, e' cobertura.
     """
-    for i, nome in enumerate(("TAKE 01/03", "TAKE 02/03", "TAKE 03/03")):
+    for i, nome in enumerate(("TAKE 01/02", "TAKE 02/02")):
         fala = spec["falas"][i]
         if ('Dialogue: "%s"' % fala) not in blocos[nome]:
             achados.append(("ERRO", "FA10: %s nao carrega a fala da cena %d — "
@@ -1421,8 +1506,44 @@ def lint(spec, blocos):
 
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
-    sc.lint_isca_cta(falas[2], ach, "a cena 3 (CTA)")
-    sc.lint_cta_literal(falas[2], ach, "a cena 3 (CTA)")
+    sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
+    sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
+    # ⛔⛔ T16-2 — A KEYWORD NAO PODE TER PALAVRA COLADA NELA.
+    # A automacao de DM casa palavra EXATA (operador, 2026-08-08) e a
+    # legenda nasce do Whisper em cima do audio: nao ha' conserto depois.
+    # A regra e' POSICIONAL — depois de `comment gelatin` vem VIRGULA.
+    # ⚠️ `finditer`, nao `search`: `gelatin` aparece duas vezes na fala (no
+    # `gelatin trick` e no comando), e olhar so' a primeira dava verde para
+    # `Comment gelatin now,`.
+    _f2 = falas[1] or ""
+    for _kw in re.finditer(r"comment\s+gelatin(.)", _f2, re.I):
+        if _kw.group(1) != ",":
+            ach.append(("ERRO", "T16-2: `comment gelatin%s...` — a keyword "
+                                "tem de ser fechada por VIRGULA" % _kw.group(1)))
+    if re.search(r"comment\s+gelatin\W+(and\s+)?follow", _f2, re.I):
+        ach.append(("ERRO", "T16-2: o `follow` esta' colado no comando"))
+    # ⛔⛔ FA16-1 — A COSTURA, e ela e' o angulo inteiro.
+    # O buraco tem de ser nomeado NA VENDA e prometido NO CTA, com
+    # substantivos DIFERENTES. No motor de 24s a costura atravessa 8
+    # segundos e repetir o mesmo termo e' RETOMADA; aqui ela cai dentro de
+    # tres, e repetir vira GAGUEIRA. Medido: sem o guarda, 42% repetiam.
+    _sents = _sentencas(_f2)
+    if len(_sents) >= 2:
+        _venda, _resto = _sents[0], " ".join(_sents[1:])
+        if not _nucleo_seam(_venda):
+            ach.append(("ERRO", "FA16-1: a venda da cena 2 nao NOMEIA o "
+                                "buraco (piece/part/step) — sem isso o CTA "
+                                "promete algo que o video nunca mencionou "
+                                "(%r)" % _venda))
+        if not _nucleo_seam(_resto):
+            ach.append(("ERRO", "FA16-1: o CTA nao promete o BURACO — vira "
+                                "um CTA de receita qualquer e o angulo "
+                                "morre (%r)" % _resto))
+        if _nucleo_seam(_venda) & _nucleo_seam(_resto):
+            ach.append(("AVISO", "FA16-1: venda e CTA repetem %s em tres "
+                                 "segundos — le' como gagueira, nao como "
+                                 "retomada"
+                        % sorted(_nucleo_seam(_venda) & _nucleo_seam(_resto))))
     sc.lint_bandeira(spec, blocos, ach, rotulo="FA7")
 
     if not blocos.get("BLOCO 0 (REF)", "").lstrip().upper().startswith("REF"):
@@ -1451,7 +1572,9 @@ def lint(spec, blocos):
     # ⛔ A primeira sentenca e' a que o espectador ouve sozinha no scroll, antes
     # de qualquer outra — e era a unica que nenhuma lente minha olhava.
     orgaos = [o.lower() for o in NUCLEO]
-    alvos = [(1, orgaos), (3, orgaos + ["gelatin", "missing", "piece", "part"])]
+    # ⚠️ A cena 2 do 16 abre com a VENDA, que traz `gelatin` e o buraco.
+    alvos = [(1, orgaos),
+             (2, orgaos + ["gelatin", "missing", "piece", "part", "step"])]
     for i, termos in alvos:
         sents = _sentencas(falas[i - 1])
         if not sents:
@@ -1478,23 +1601,194 @@ def resumo_pt(spec):
     return ("Mulher %s de %d anos, em %s. Cena 1: homem de %d anos de tronco "
             "nu com %s presa de fita no short e adesivo na barriga; ela fala "
             "de mãos livres e a amiga, de quatro na bancada, aponta pro prop. "
-            "Cena 2: %s com %s e %s, e a peça que falta só é dita. Cena 3: ele "
-            "com o geoduck grande e sem fita, ela com o copo. Três cenas de 8s."
+            "Cena 2: a mesma cozinha — ele com o geoduck grande e SEM fita, ela "
+            "com o copo, e na bancada %s com %s e %s. A peça que falta só é "
+            "dita, nunca mostrada. Dois takes de 8s = 16s."
             % (spec["etnia"], r["idade"], m["familia"], h["idade"], p["nome"],
                spec["metodo"]["curto"], spec["comum"]["nome"],
                spec["raro"]["nome"]))
 
 
 def nova_fala(spec, cena, rng):
-    """Re-sorteia UMA fala sem mexer nas outras — o botão `trocar` da copy."""
-    # ⛔⛔ CONSERTO DE CRASH — 2026-08-08. Esta chamada passava CINCO argumentos
-    # para uma funcao de tres, e `spec["substancia"]` nao existe desde a
-    # reformulacao de 2026-08-07: clicar em `trocar` no painel levantava
-    # KeyError: 'substancia'.
-    # ⚠️ POR QUE SOBREVIVEU: este motor nao tem `autoteste()` nem CLI. Nada
-    # nunca chamou `nova_fala`, entao nada nunca falhou — forma sem funcao na
-    # versao mais pura (§29). Achado ao portar o FALTA 16, que ganhou autoteste
-    # e sonda propria para esta funcao.
-    # ⛔ NAO e' mudanca de copy nem de cena: e' um botao que quebrava o app.
+    """Re-sorteia UMA fala sem mexer nas outras — o botao `trocar` da copy.
+
+    ⛔⛔ ESTA FUNCAO ESTAVA QUEBRADA NO MOTOR DE 24s, e o conserto veio para ca'
+    junto. Ela chamava `_montar_falas(rng, spec["substancia"], spec["orgao"],
+    spec["comum"], spec["raro"])` — CINCO argumentos numa funcao de tres, e
+    `spec["substancia"]` nem existe desde a reformulacao de 2026-08-07. Clicar
+    em `trocar` no painel levantava KeyError.
+    ⚠️ POR QUE SOBREVIVEU: este motor nao tinha `autoteste()` nem CLI. Nada
+    nunca chamou `nova_fala`, entao nada nunca falhou. E' a forma-sem-funcao do
+    §29 na sua versao mais pura: codigo que ninguem executa nao tem defeito
+    ate' o operador clicar.
+    ⛔ E' por isso que o `autoteste()` deste arquivo CHAMA nova_fala nas duas
+    cenas — cobertura de lente nao e' qualidade, e' cobertura.
+    """
     novas = _montar_falas(rng, spec["orgao"], spec["raro"])
     return novas[cena - 1]
+
+# ---------------------------------------------------------------------------
+# AUTOTESTE
+# ---------------------------------------------------------------------------
+# ⛔⛔ O MOTOR DE 24s NAO TEM ESTE BLOCO, e foi por isso que o `nova_fala` dele
+# ficou quebrado sem ninguem ver. `0 ERRO` num lote grande e' SUSPEITA, nao
+# aprovacao — por isso cada trava tem sabotador, e o sabotador tem de CHEGAR
+# onde a regra olha (licoes §16).
+
+def autoteste(n=400):
+    import collections
+    falhas, ctrl = [], []
+    vistos = collections.defaultdict(set)
+    larguras = {1: [], 2: []}
+    seam_igual = 0
+
+    for seed in range(n):
+        spec = sortear("joe", random.Random(seed), {}, {})
+        blocos = montar(spec)
+        for tipo, msg in lint(spec, blocos):
+            if tipo == "ERRO":
+                falhas.append("seed %d: %s" % (seed, msg))
+        for eixo in ("mundo", "prop", "homem", "metodo", "comum", "raro"):
+            vistos[eixo].add(spec[eixo]["id"])
+        vistos["ref"].add(spec["ref"]["cabeca"])
+        for i, f in enumerate(spec["falas"], 1):
+            larguras[i].append(_palavras(f))
+        _s = _sentencas(spec["falas"][1])
+        if len(_s) >= 2 and (_nucleo_seam(_s[0]) & _nucleo_seam(" ".join(_s[1:]))):
+            seam_igual += 1
+
+    for eixo, pool in (("mundo", MUNDOS), ("prop", PROPS), ("homem", HOMENS),
+                       ("metodo", METODOS), ("comum", COMUNS), ("raro", RAROS)):
+        if len(vistos[eixo]) != len(pool):
+            falhas.append("%s: %d de %d nunca sorteados"
+                          % (eixo, len(pool) - len(vistos[eixo]), len(pool)))
+
+    # ⭐⭐ [ALCANCE] toda entrada de pool tem de ser sortavel. Criado no TRIO 16
+    # depois de achar SEIS de dez FOLLOWS que nunca saiam — o autoteste contava
+    # dez opcoes e a producao tinha quatro. Nenhuma outra lente pega: todas
+    # verificam a frase MONTADA, que sempre cabe por causa do fallback.
+    _mV = min(_palavras(x.format(o="soldier")) for x in VENDAS)
+    _mC = min(_palavras(x) for x in CTAS)
+    _mG = min(_palavras(x) for x in GATES)
+    for _nome, _pool, _outros in (("VENDAS", [x.format(o="soldier") for x in VENDAS], _mC + _mG),
+                                  ("CTAS", CTAS, _mV + _mG),
+                                  ("GATES", GATES, _mV + _mC)):
+        _teto = TETO_FALA[2] - _outros
+        _mortas = [x for x in _pool if _palavras(x) > _teto]
+        if _mortas:
+            ctrl.append("[ALCANCE] %d entrada(s) de %s nunca sao sorteadas "
+                        "(teto real %d): %s" % (len(_mortas), _nome, _teto,
+                                                _mortas[:2]))
+
+    s = sortear("joe", random.Random(1), {}, {})
+    b = montar(s)
+
+    # ⭐⭐ [NOVA_FALA] o botao `trocar` do painel. Sonda que NAO existia no motor
+    # de 24s, e por isso ele ficou com a funcao quebrada em producao.
+    for cena in (1, 2):
+        try:
+            f = nova_fala(s, cena, random.Random(9))
+            if not f or _palavras(f) > TETO_FALA[cena]:
+                ctrl.append("[NOVA_FALA] cena %d devolveu %r" % (cena, f))
+        except Exception as e:
+            ctrl.append("[NOVA_FALA] cena %d ESTOUROU: %s: %s"
+                        % (cena, type(e).__name__, e))
+
+    # [T16-2] a keyword grudada
+    s2 = dict(s, falas=list(s["falas"]))
+    s2["falas"][1] = s2["falas"][1].replace("Comment gelatin,", "Comment gelatin now,")
+    if not any("T16-2" in m for _, m in lint(s2, b)):
+        ctrl.append("[T16-2] NAO acusa palavra colada na keyword")
+
+    # [FA16-1] a costura: o CTA sem o buraco
+    s3 = dict(s, falas=list(s["falas"]))
+    _sn = _sentencas(s["falas"][1])
+    s3["falas"][1] = _sn[0] + " Comment gelatin, and I'll send the recipe. Follow first."
+    if not any("FA16-1" in m for _, m in lint(s3, b)):
+        ctrl.append("[FA16-1] NAO acusa o CTA que nao promete o buraco")
+
+    # [FA16-2] a gelatina em quadro — o angulo inteiro
+    b2 = dict(b)
+    b2["IMAGE 02/02"] += " A shallow bowl of vivid purple gelatin cubes."
+    if not any("FA4" in m for _, m in lint(s, b2)):
+        ctrl.append("[FA16-2] NAO acusa gelatina em quadro — o CTA perde a "
+                    "razao de existir e nenhuma outra lente olha")
+
+    # [FA10] o take sem a fala — o defeito que deixou o FALTA mudo
+    b3 = dict(b)
+    b3["TAKE 02/02"] = b3["TAKE 02/02"].replace('Dialogue: "', 'Copy: "')
+    if not any("FA10" in m for _, m in lint(s, b3)):
+        ctrl.append("[FA10] NAO acusa o TAKE sem a linha Dialogue")
+
+    if [x for t, x in lint(s, b) if t == "ERRO"]:
+        ctrl.append("o lote limpo esta' sendo reprovado")
+
+    print("MUNDOS %d | PROPS %d | HOMENS %d | METODOS %d | RAROS %d | REFS %d"
+          % (len(MUNDOS), len(PROPS), len(HOMENS), len(METODOS), len(RAROS),
+             len(REFS)))
+    print("%d videos | mundos %d/%d | raros %d/%d"
+          % (n, len(vistos["mundo"]), len(MUNDOS), len(vistos["raro"]),
+             len(RAROS)))
+    for i in (1, 2):
+        Lw = larguras[i]
+        print("  cena %d: %d-%d palavras (media %.1f) | piso %d teto %d"
+              % (i, min(Lw), max(Lw), sum(Lw) / float(len(Lw)),
+                 PISO_FALA[i], TETO_FALA[i]))
+    print("  costura com substantivo REPETIDO: %d de %d (%.0f%%)"
+          % (seam_igual, n, 100.0 * seam_igual / n))
+
+    if ctrl:
+        print("\n>> O AUTOTESTE ESTA' CEGO:")
+        for c in ctrl:
+            print("   %s" % c)
+    if falhas:
+        print("\n>> %d FALHA(S):" % len(falhas))
+        for f in falhas[:15]:
+            print("   %s" % f)
+    if not falhas and not ctrl:
+        print("\nAUTOTESTE OK — e os controles reprovam quando devem.")
+    return 1 if (falhas or ctrl) else 0
+
+
+def main():
+    import argparse
+    ap = argparse.ArgumentParser(
+        description="Randomizador do agente FALTA 16 (2 takes de 8s)")
+    ap.add_argument("--pagina", choices=sorted(ETNIA))
+    ap.add_argument("--n", type=int, default=1)
+    ap.add_argument("--seed", type=int)
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--autoteste", action="store_true")
+    a = ap.parse_args()
+    if a.autoteste:
+        return autoteste()
+    if not a.pagina:
+        ap.error("--pagina obrigatorio")
+    seed = a.seed if a.seed is not None else random.randrange(10 ** 6)
+    rng = random.Random(seed)
+    led = _carregar_ledger()
+    for _ in range(a.n):
+        spec = sortear(a.pagina, rng, led)
+        blocos = montar(spec)
+        print("=" * 72)
+        print("SPEC — pagina %s | seed %s" % (a.pagina, seed))
+        print(resumo_pt(spec))
+        print("=" * 72)
+        for nome in ["BLOCO 0 (REF)"] + sorted(k for k in blocos
+                                               if not k.startswith("BLOCO")):
+            print(blocos[nome] if nome.startswith("BLOCO")
+                  else "\n%s\n%s" % ("-" * 72, blocos[nome]))
+        ach = lint(spec, blocos)
+        print("\n" + "=" * 72)
+        if ach:
+            for tipo, msg in ach:
+                print("[%s] %s" % (tipo, msg))
+        else:
+            print("LINTER: OK — nenhuma violacao mecanica.")
+        if not a.dry_run:
+            _gravar_ledger(led, spec)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
