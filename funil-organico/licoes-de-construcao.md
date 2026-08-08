@@ -1299,6 +1299,38 @@ alçada do operador (§CL15: descarta-se a linha, nunca se encurta a linha).
 **uma ordem de grandeza abaixo das vizinhas** no mesmo motor. Foi assim que este
 apareceu — `368/357/12`.
 
+### ⛔⛔ E o contra-exemplo, medido no mesmo dia: **no COLO a correção PIORA**
+
+O `colo_short` cena 3 tem a **forma** exata do defeito — `isca = rng.choice(...)`
+livre antes de qualquer orçamento, e a rotina filtrada contra `min(GATES)` em vez
+do gate real. Reimplementar a correção canônica e rodar **30 seeds × 400
+sorteios** derrubou as falas distintas de **145,6 para 123,2**; a variante "gate
+primeiro" derrubou para 103,7.
+
+O motivo: quando o orçamento é tão apertado que quase nada cabe, escolher o beat
+livre **dentro** do orçamento concentra o sorteio nas poucas entradas curtas —
+enquanto o desenho antigo espalhava por caminhos diferentes conforme a isca
+sorteada. Medido: das 14 ROTINAS, com isca de 3 palavras sobrevivem 4; com isca
+de 5, sobrevive **1**.
+
+E o número que fecha a discussão, verificado à mão fora do motor:
+
+| | cena 3 do COLO |
+|---|---|
+| combinações brutas (rotina × isca × gate × órgão) | **6.300** |
+| que **cabem** em 25 palavras | **167** |
+| que realmente saem em 400 sorteios | **151** (90,4%) |
+| falas geradas acima do teto | **0** |
+
+⛔ **97% do espaço combinatório é morto pelo teto, não pela ordem de escolha.**
+Com 90% do que cabe já saindo, não existe ganho mecânico — o teto de variedade é
+o **comprimento da copy**, e isso é alçada do operador.
+
+> **A lição sobre a lição:** §36 é um padrão a **investigar**, nunca a aplicar de
+> reflexo. Antes de reordenar, medir os dois mundos — quantas entradas cabem
+> hoje e quantas caberiam — e **rodar as duas versões**. Achar a forma do defeito
+> não é achar o defeito.
+
 ### ⚠️ E a sonda que foi caçar isso errou primeiro, do jeito de sempre
 
 A primeira versão do `medir_alcance.py` olhava só `spec["falas"]` e **acusou 18
@@ -1412,6 +1444,10 @@ prefixo abaixo de 20 caracteres não credita entrada nenhuma, e pool `0 de N` n�
       escolhido livre depois, paga-se o pior caso em todo sorteio. Cada beat
       filtra contra o **mínimo** dos outros, e o beat sem restrição própria é
       escolhido **dentro** do orçamento (§36)
+- [ ] ⛔ **Achou a forma do §36? RODE AS DUAS VERSÕES antes de trocar.** No COLO
+      a correção canônica derrubou as falas distintas de 145,6 para 123,2 em 30
+      seeds. Compare também **combinações que cabem** × **combinações que saem**:
+      acima de ~90% de cobertura não há ganho mecânico nenhum, o teto é a copy
 - [ ] **Varredura acusou quase todos os alvos? A lente está errada** — 18 de 19
       motores sujos foi diagnóstico da sonda, não do repo. Olhar a taxa de
       acusação **antes** de reportar (§36)
