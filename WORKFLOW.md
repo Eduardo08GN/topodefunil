@@ -248,13 +248,68 @@ O PRISMA sorteia; o especialista do ângulo sorteado executa.
 | `AGENTE_ED_NECROSE_V1.md` | **os dois órgãos lado a lado** — dois modelos anatômicos 3D em pedestal de aço, um **apodrecido** e um **são**, nas mãos de um montanhês de tronco nu com um **lobo** atrás, no topo de uma montanha nevada. O contraste é em **cinco eixos** (cor, superfície, volume, contorno, eixo), nunca em tamanho. Antes/depois do ÓRGÃO, sem corpo, sem vítima, sem plateia — o ângulo mais barato de produzir do repertório | 🟡 piloto — fonte Alaskan Mountain Men Tips reel 1740829770294515: **1.9K/307/103**. Leitura ótica do hook 2026-07-30 |
 | `AGENTE_ED_TROCA_V1.md` | **a troca dentro do mesmo quadro** — narradora sozinha na cozinha manda esfregar uma substância banal no órgão e promete o absurdo; então **desmente a própria isca**, o proxy desce e a gelatina sobe **no mesmo ponto do quadro, mesma mão, mesma altura, sem corte**. A cena 3 traz o **corpo-prova** masculino segurando o próprio prop no colo (F12b) enquanto ela aponta sem encostar. ⭐ **SHORT nativo, 3×8s** — não deriva de motor longo. ⚠️ O prop **não cresce**: a promessa é verbal e quem a paga é a reação facial dela | 🟡 piloto — leitura ótica de 8 reels 2026-08-01 (Julie Evans: **29.7K/25.9K/25.6K/17.3K/11.6K**, mediana 25,5K; Sofia Maren **82.2K**, caso à parte). Motor `troca_short.py` + `.exe` |
 | `AGENTE_ED_ESCANDALO_V1.md` | **o escândalo alheio** — a narradora ergue um **par de props** (eixo + orifício) à altura do peito enquanto **1-2 figurantes mudos**, em foco no mesmo plano da cabeça dela, **congelam de olhos arregalados** — e a fala **nunca os menciona**: eles encenam o escândalo **no lugar do espectador**, e é isso que autoriza o espectador a rir em vez de sentir vergonha. Na cena 3 o **mesmo homem volta como corpo-prova** (F12b), e é ele que fecha o arco. ⭐ **SHORT nativo, 3×8s** — não deriva de motor longo | 🟡 piloto — leitura ótica de 2 reels 2026-08-01 (Sofia Maren: `2399917880833589` **32.930 views**; `1717554112910680` **sem métrica pública**; e `1331253995741999` **82.169** da mesma página, já registrado no garimpo anterior). ⚠️ Marcou **2,5 de 4** no critério: o operador decidiu construir mesmo assim. Motor `escandalo_short.py` |
-
 | `AGENTE_ED_BOTICA_V1.md` | **a botica de casa contra a farmácia** — uma mulher de traje tradicional, numa cozinha forrada de potes de ervas secas, prepara a receita **em cena, com utensílio em movimento** (nenhum outro agente tem isso). O vilão é a FARMÁCIA e vem da própria fonte. ⭐ **Pool de 9 ingredientes raros** (maca, tongkat ali, tribulus, epimedium, fenugreek, muira puama, ginkgo, mucuna, sarsaparilla) que entram sempre como `nome popular + aposto` de 3-10 palavras, ⛔ nunca com nome científico. ⛔ O operador proibiu fixar o liquidificador — 12 métodos. Na cena 3 um **homem mudo** olha o copo com espanto, encenando no lugar do espectador. ⭐ **Primeiro agente que NASCE com a §21 aplicada**: nenhuma abertura de cena é órfã, por construção e por linter | 🟡 piloto — fonte True Health reel `3973945436069257` (52,2s): **1K reações / 1K comentários / 53 shares**, e comentário é o KPI do funil. Motor `botica_short.py` + `.exe`. Medido: 600 vídeos, 0 ERRO |
 | `AGENTE_ED_RECEITA_V1.md` | **a receita é a prova** — um homem de 57-69 confessa em **primeira pessoa** que estava perdendo a mulher, e a evidência que ele oferece não é um corpo: é a **bancada dele**, o pó da caixa de gelatina caindo na tigela. Único ângulo do repertório **sem prop fálico e sem corpo-prova** nas duas primeiras cenas; o rosto só existe na cena 3. ⭐ **Toggle de enquadramento na cena 1** (`corte de maos` ⟷ `terceira pessoa`), cobrado pelo linter dos dois lados. ⛔ O **cavalo vivo da fonte foi cortado** e a entropia dele virou pool de **lugares masculinos** (garagem em 5 entradas distintas); o cavalo sobrevive só como silhueta impressa na caixa. ⭐ **SHORT nativo, 3×8s** | 🟡 piloto — fonte reel `1683536299390859` (19,8s), leitura ótica 2026-08-04. Motor `receita_short.py` + `.exe`. Medido: 600 vídeos, 0 ERRO, toggle 47/53 |
+
+### ⭐ Os cinco **motor-only** — sem `AGENTE_ED_*.md`
+
+⚠️ Estes cinco nasceram direto em código. **Não existe arquivo de doutrina
+deles**: a fonte da verdade é o próprio `<angulo>_short.py` + a descrição abaixo.
+Todos 3 cenas × 8s, teto 25 palavras por cena, ledger próprio.
+
+| Motor | Ângulo | Evidência |
+|---|---|---|
+| `dupla_short.py` | **as duas amigas, em pé, lado a lado** — uma com o prop murcho, outra com o grande, comparação **horizontal**, a REF falando entre elas | fonte lida oticamente; ⛔ é a geometria que o separa do TRIO — lá quem fala está **acima e atrás** |
+| `placa_short.py` | **a placa anatômica em corte** — o modelo seccionado na bancada como peça de aula, e o mecanismo explicado sobre ele | ⚠️ lição paga: comprimir o D1 na mão entregou **esqueleto 3D** no lugar da placa em corte — string validada é constante, nunca redigitada |
+| `cha_short.py` | **a caneca estendida na lente** — ela na varanda de casa, braço esticado, a caneca de chá verde grande em primeiro plano e ela menor atrás; corta para a cozinha da **mesma casa, mesma roupa**. ⭐ Único ângulo com **corte de ambiente dentro do vídeo** (varanda e cozinha são **um eixo só**). ⛔ Sem homem, sem prop fálico, sem substância absurda, sem vilão — a fonte não tem nenhum dos quatro. ⭐⭐ O **traje é a bullet de retenção** por ordem do operador, e é o eixo que o painel põe logo abaixo da REF | Alani bussy, reel `1669063827687365`: **31K views / 1.4K reações / 2.4K comentários** — ⭐ o **melhor CTA de comentário do repertório** |
+| `trio_short.py` | **a especialista que apresenta dois casos** — duas mulheres **sentadas** num sofá, cada uma com um geoduck no colo (um murcho, um grande), e a REF **em pé atrás**, inclinada entre os ombros delas, o dedo descendo sobre um deles. A leitura muda de "duas amigas comparando" para "alguém apresentando dois casos". Fecha na cena do EXTERIOR, ele **cortado no peito, sem rosto** | Alexis Lin Wellness, reel `1255806096524989`. ⛔ O CTA da fonte é `book`, proibido aqui — virou `gelatin` |
+| `falta_short.py` | **a receita entregue inteira menos um pedaço** — a isca deixa de ser *"te mando a receita"* e vira **te mando o pedaço que falta**, que É o `gelatin trick`. ⭐ Único ângulo em que a promessa do CTA nasce nomeada dentro da cena 2 (`the missing part`) e reaparece literal no CTA: o guarda de eco bloqueia repetição entre cenas **menos** essa, que é a costura. ⭐ Duas mulheres nas três cenas e ⛔ **nenhum homem** (a fonte tem um cozinhando ao fundo; saiu por ordem do operador). O prop do hook é **eixo sorteado** e **muda na tela** durante o despejo — ⚠️ com escala **diferencial**, nunca uniforme, que é a lição paga do RESSURREICAO | MODO BELA de nascença, 15 arquétipos por região dos EUA — reel `1753888712524981` |
+
+### ⭐⭐ A família **16s** — 2 takes de 8s, destino **AdBatch Vertical 2** (2026-08-08)
+
+⛔ **Não substituem os de 24s.** São formatos diferentes, ledger próprio cada um,
+e os dois coexistem. Cada um nasceu por **cópia literal** do motor de 24s com
+cirurgia só no **eixo temporal**: as cenas 2 e 3 (que já aconteciam no mesmo
+ambiente) fundem num quadro só, e a copy passa a ser hook + `uso com gelatin
+trick` + CTA. ⛔ Ordem do operador em todos: *"não sacrifique nem faça
+regressão que ocasione perda de entropia ao adequar temporalmente"* — e a
+entropia **subiu** em todos os sete.
+
+⚠️ **A ferramenta do Flow ainda não existe.** O prompt de criação da AdBatch
+Vertical 2 está em
+[`adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md)
+§*CRIAÇÃO DA V2*, e é ele que precisa ir primeiro — o Montador só recebe o que a
+AdBatch produzir.
+
+⛔ **O `follow` do CTA nunca encosta na keyword**: a automação de DM casa palavra
+**exata**, então o comando é `Comment gelatin, and I'll send you the recipe.` e o
+*follow* vem em **frase separada**. Lente `T16-2` trava isso.
+
+Coluna medida com `python funil-organico/medir_alcance.py`, **400 sorteios**,
+falas distintas na cena 1 / na cena 2 (a fundida):
+
+| Motor | Nasceu de | Falas distintas c1/c2 | Nota |
+|---|---|---|---|
+| `trio16_short.py` | `trio_short` | 376 / 394 | ⭐ o primeiro. A copy da cena fundida foi decomposta em **3 eixos compostos** (efeito × parceira nomeada × reação) depois que o operador reprovou `she feels it first` — *"fills it o QUE???"*. Daí nasceram a lente **T16-5** (pronome sem dono) e o controle **[ALCANCE]** |
+| `dupla16_short.py` | `dupla_short` | 389 / 400 | achou a **pose duplicada** que estava também no motor de 24s — corrigida nos dois |
+| `falta16_short.py` | `falta_short` | 337 / 317 | a costura `the missing part` sobrevive à fusão |
+| `placa16_short.py` | `placa_short` | 380 / 391 | ⛔ trouxe o drifting `before she stops asking` que o operador pegou — *"She who??? stopping asking about what????"*. Daí a lente **T16-5b**, que cobre **todas** as cenas, não só a fundida |
+| `troca16_short.py` | `troca_short` | 396 / 364 | ⚠️ teto da cena 1 é **22**, não 25. Único dos sete com abertura órfã no medidor (`Put that down.` — e esse `that` é o prop, que o quadro mostra) |
+| `botica16_short.py` | `botica_short` | 397 / 369 | ⚠️ o **utensílio em movimento** foi levado ao operador antes de decidir, não decidido sozinho |
+| `colo16_short.py` | `colo_short` | 368 / 361 | ⛔ o eixo *a receita* **saiu do painel**: medi e ele não cabia nos 16s. Painel que mostra eixo que não chega no vídeo é pior que painel sem o eixo |
+
+⭐ Prova de que a disciplina pegou: no `medir_abertura.py`, **seis dos sete
+marcam 0,0% de abertura órfã**, contra 33-67% dos motores de 24s de onde
+nasceram.
 
 ⛔ `fake_broadcast` foi **removido** do pool de conceitos (ordem do operador,
 2026-07-28 — risco de ban). Micro-hooks do V5 renomeados **M1-M7 → D1-D7**
 (colisão de namespace com os moldes). `dispositivo=nenhum` extinto (P18).
+
+### As engines genéricas
+
+| Arquivo | Papel |
+|---|---|
 | `AGENTE_ED_ORGANIC_WAVE_V5.md` | biblioteca de dispositivos H1-H10 / M1-M7 + templates Veo (Apêndice C) |
 | `AGENTE_ED_ORGANIC_WAVE_V4.md` | **o motor** — regras de IMAGE/TAKE, estética, anti-glitch, formato |
 | `AGENTE_ED_ORGANIC_WAVE_V3/V2.md` | histórico, não usar |
@@ -298,7 +353,10 @@ Ver também [`funil-organico/PENDENCIAS.md`](funil-organico/PENDENCIAS.md).
 
 | # | Item | Prioridade |
 |---|---|---|
+| 0 | ⭐⭐ **Criar a AdBatch Vertical 2 no builder do Flow** — prompt pronto em [`adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md) §*CRIAÇÃO DA V2*. ⛔ **Bloqueia os sete agentes 16s inteiros**: eles emitem `IMAGE 01/02` e só rodam de verdade quando a ferramenta existir. O Montador Vertical 2 vem **depois** — ele só recebe o que a AdBatch produzir | 🔴 alta |
 | 1 | **Rotacionar o token da API do Coolify** — foi exposto em chat | 🔴 alta |
+| 1b | ⛔ **Decisões de copy que são só do operador** (medidas, não opinadas): **TROCA cena 2** não tem combinação possível — a menor FUNDIDA (20) + menor PROVA (5) + 1 = 26 contra teto 25, as 15 FUNDIDAS estão mortas e a cena cai no fallback em 100% dos sorteios; **BOTICA cena 3** entrega 30 falas distintas em 400, com GATES 17 de 18 e USOS 12 de 20 inalcançáveis; **RECEITA** tem 6 escaladas de 10 com 26-27 palavras no melhor caso. Rodar `python funil-organico/medir_alcance.py` para a lista atual | 🔴 alta |
+| 1c | **`VILOES_APOSENTADO` é pool órfão** em `botica`, `dupla`, `placa` e `trio` — definido, nunca referenciado. Ligar ou remover é decisão de copy | 🟡 |
 | 2 | ~~Travar os 5 REFs de persona~~ — **obsoleto**: política mudou para REF solto por vídeo (2026-07-28) | ✅ resolvido por mudança de política |
 | 3 | Automação Comentário→DM em **Marcus, Ray e Chuck** (kit pronto) | 🟡 |
 | 4 | Subir o AdBatch atualizado pro Flow (código pronto em `projetosweb`, falta colar no builder) | 🟡 |
