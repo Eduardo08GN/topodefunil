@@ -45,6 +45,15 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 `github_app_uuid: yhriwaecxwznwiino9848rg1`. Esse é o GitHub App já instalado
 que dá acesso ao repo privado.
 
+## ⭐ LOTE INTEIRO? LEIA ISTO ANTES
+
+Para subir VARIAS paginas de uma vez — dominio, build, cofre, Coolify,
+tracking e notificacao — a sequencia completa e as armadilhas estao em
+[`RUNBOOK-lote-de-bridges.md`](RUNBOOK-lote-de-bridges.md). Ele tem o caminho
+feliz e o **caminho ruim**, escrito a partir dos desvios reais do lote 4.
+⛔ A licao que vale por todas: **200 OK nao significa "deu certo" em lugar
+nenhum deste sistema** — tres componentes respondem 200 enquanto descartam.
+
 ## 4. Receita: subir uma bridge page nova
 
 Pré-requisito: os arquivos do site já commitados no repo `projetosweb`, numa
