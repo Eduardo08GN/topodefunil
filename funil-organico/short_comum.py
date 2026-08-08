@@ -295,8 +295,17 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
                                     "vir na copy fundida" % lit))
     _adjetivo_do_mecanismo(corpo, achados)
 
-    # CTA — a cena 3 do SHORT e' a cena 5 do base, mesmas travas
-    cta = falas[2]
+    # CTA — a ULTIMA cena e' sempre a do CTA, tenha o motor 3 cenas ou 2.
+    # ⛔⛔ ERA `falas[2]`, CRAVADO — 2026-08-08. Com o nascimento da familia
+    # 16s (dois takes) isso virou IndexError no primeiro sorteio do TROCA 16,
+    # que e' o unico dos cinco que usa `lint_curto` em vez de `lint` proprio.
+    # ⭐ `falas[-1]` E' O MESMO INDICE para os motores de 3 cenas — e nao e' um
+    # remendo: as duas linhas de `lint_isca_cta`/`lint_cta_literal` mais abaixo
+    # neste mesmo arquivo JA' usavam `falas[-1]` para dizer "a cena do CTA".
+    # A linha aqui e' que estava fora do idioma do proprio arquivo.
+    # ⚠️ PROVADO, nao afirmado: hash das acusacoes de lint() dos 23 motores em
+    # 60 sorteios cada, antes e depois — identico em 23 de 23.
+    cta = falas[-1]
     if "gelatin" not in cta.lower():
         achados.append(("ERRO", "CTA da cena 3 sem a keyword GELATIN"))
     if "GELATIN" in cta:
