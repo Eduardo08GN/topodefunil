@@ -738,8 +738,286 @@ teste anterior e me mostre, em ordem:
 
 ---
 
+# CRIAÇÃO DA V2 — ferramenta nova, 2 cenas (o formato 16s)
+
+> Nasce para o **AGENTE TRIO 16**: 2 takes de 8s = 16 segundos. A V3 continua
+> existindo e continua sendo a ferramenta dos 19 motores de 3 cenas — a V2 **não
+> substitui nada**, é uma segunda ferramenta.
+>
+> ⭐ **Ela nasce em paridade com a V3 v2.5**, não com a V3 original. Tudo o que
+> as baterias V3-1 e V3-2 acrescentaram depois (campo único de roteiro, contador
+> ao vivo, botão armado) já entra na especificação. Criar em v1 e depois aplicar
+> duas baterias seria pagar duas vezes pelo mesmo aprendizado.
+>
+> ⚠️ **A especificação abaixo descreve o CÓDIGO REAL da V3**, transcrito em
+> `adbatch-vertical/`, não o prompt de criação da V3 que está mais acima neste
+> arquivo. Os dois divergem em quatro pontos, e onde divergem **manda o código**:
+>
+> | ponto | prompt de criação da V3 (aspiração) | código real hoje |
+> |---|---|---|
+> | modelo de vídeo | `Veo 3.1 - Lite [Lower Priority]` | **`Omni Flash`** |
+> | duração | `8` | **`10`** (aspiracional — sai 8s) |
+> | nome do ZIP | `adbatch_vertical_3.zip` | **`adbatch_vertical_output.zip`** |
+> | nome do arquivo | `video_01.mp4` | **`slot_01_variant_A.mp4`** |
+>
+> A V2 nasce **igual à V3 de hoje** nos três primeiros e com o ZIP renomeado. Se
+> um dia o PROMPT 0 (prioridade baixa) for aplicado, ele vale para as duas.
+
+## PROMPT V2 — criação, prompt único
+
+*Cole numa ferramenta **nova**, em branco. Sem preâmbulo anti-regressão: não há
+o que regredir.*
+
+```text
+Crie uma ferramenta de producao de anuncios verticais em lote, chamada
+"AdBatch Vertical 2", com EXATAMENTE 2 cenas por lote. Ela funciona em duas
+etapas: primeiro gera as imagens, depois gera os videos a partir dessas mesmas
+imagens, sem download nem reupload no meio.
+
+=== O QUE AMARRA TUDO: O INDICE ===
+bloco N -> imagem N -> take N -> video N -> slot_0N_variant_X.mp4
+Numere sempre pelo indice de origem, NUNCA pela ordem em que a geracao
+terminar. Slot que falhou deixa buraco na numeracao; nunca renumere.
+MAX_SLOTS = 2, como constante unica usada em todo lugar. A grade mostra
+sempre 2 slots (01 e 02), mesmo vazios.
+
+=== PARSER DE BLOCOS — copie EXATAMENTE, inclusive a regex ===
+Este parser custou seis rodadas de correcao na ferramenta irma. Nao "melhore",
+nao simplifique, nao unifique. Implemente em utils/parser.ts com estas quatro
+pecas, nesta ordem:
+
+1. normalizeText(text): troca CRLF por LF; depois DUAS substituicoes, ambas
+   escritas no codigo-fonte com ESCAPE UNICODE, jamais com o caractere colado
+   (colar o caractere invisivel dentro da regra que o remove ja aconteceu
+   nesta base, e o arquivo fica sujo sem ninguem ver):
+   (a) uma classe de caracteres que remove, POR PONTO DE CODIGO:
+       U+200B zero width space, U+200C zero width non-joiner,
+       U+200D zero width joiner, U+FEFF BOM, U+2060 word joiner,
+       U+00AD soft hyphen.
+   (b) uma segunda que troca U+00A0 (nbsp) por espaco comum U+0020.
+   NAO E OPCIONAL: o copy/paste traz esses invisiveis e sem a limpeza o parser
+   cai no fallback de "1 bloco" sem nenhum sinal na tela.
+
+2. cleanContent(lines, type): descarta linha decorativa — /^([-=])\1+$/ e
+   /^---.*---$/ — e, SO quando type === 'TAKE', descarta linhas que comecam com
+   "Copy falada:" ou "Contagem:".
+   ATENCAO: linhas que comecam com "Dialogue:" e "Audio:" NAO sao metadados.
+   Elas sao o prompt de fala e de som, e TEM que chegar ao modelo. Filtrar
+   essas duas gera video mudo.
+
+3. removeLabels(text): remove do INICIO
+   /^(HOOK|CTA|REFORCO|MECANISMO|INTRO|BODY|OUTRO|OFERTA)\s*([+:—–-])\s*/i
+
+4. parseBlocks(text): divide por CABECALHO, nao por separador, com esta regex
+   literal:
+
+   /^(?:[*#> ]+)?(REF|IMAGE|TAKE)(?![A-Z])(?:\s*(\d+))?(?:[A-Z])?(?:\/\d+)?(?:\s*[:—–-])?\s*(.*)$/i
+
+   - aceita *, #, > e espaco antes (markdown colado)
+   - o lookahead (?![A-Z]) impede "IMAGENS" de virar cabecalho
+   - o indice e o PRIMEIRO numero: em "IMAGE 01/02" le 01 e DESCARTA o /02
+   - o resto da linha depois do cabecalho ja entra no conteudo, nunca some
+   Devolve { type, index, content } por bloco.
+
+Bloco IMAGE ou TAKE com indice acima de 2 e DESCARTADO — nunca cria slot
+extra, nunca desloca os outros. Quando algo for descartado, acenda um aviso
+ambar na barra lateral: "Blocos acima de 02 ignorados." O descarte nunca pode
+ser silencioso.
+
+O bloco REF nao conta para esse teto: ele nao e slot.
+
+=== CAMPO UNICO DE ROTEIRO ===
+UM textarea so na barra lateral, SEMPRE VISIVEL nas duas abas — nunca dentro
+de um ternario de stage. Estado unico: scriptText. Placeholder:
+"Cole o roteiro inteiro: REF + IMAGE 01/02 + TAKE 01/02"
+
+DOIS useEffect independentes leem o mesmo scriptText: um filtra b.type ===
+'IMAGE' e alimenta imagePrompt, o outro filtra b.type === 'TAKE' e alimenta
+videoPrompt. NAO unifique os dois useEffect.
+
+O textarea NAO fica disabled durante a geracao: eu tenho que poder corrigir o
+roteiro enquanto as imagens saem. Só os BOTOES de disparo ficam disabled.
+
+Abaixo do textarea, um contador ao vivo do que o parser encontrou:
+   "REF: sim/nao · IMAGE: N/2 · TAKE: N/2"
+verde quando 2/2, ambar quando parcial, cinza quando zero. E a prova de que os
+takes entraram sem precisar trocar de aba.
+
+=== ETAPA 1 — IMAGENS ===
+Painel "Consistencia Visual" na barra lateral: Sem referencia -> Gerando ->
+thumbnail com a tag "REF GERADO" e o id. Um link discreto "ou anexar
+manualmente" permite subir uma imagem; se eu anexar, esse mediaId substitui o
+gerado.
+
+O botao "Gerar Lote com Referencia" faz a sequencia inteira sozinho:
+(a) se ha bloco REF no roteiro e nenhuma referencia carregada, gera a imagem do
+    REF e AGUARDA concluir;
+(b) so entao dispara os 2 slots IMAGE, passando o mediaId do REF em
+    referenceImageMediaIds de CADA chamada;
+(c) enquanto o REF gera, os slots ficam em "aguardando referencia".
+
+Se o REF falhar, o lote NAO dispara: mostre o erro e um botao que regera so o
+REF. Nunca gere as imagens sem referencia em silencio.
+
+Guardar o id da referencia em estado NAO BASTA: ele tem que entrar na
+requisicao de cada slot. Cada card exibe no rodape a tag "REF:[ultimos 4
+digitos do id]" como prova visual de que a referencia foi anexada.
+
+Rodar o lote de novo preenche apenas os buracos: filtre os slots que ja estao
+em sucesso. Nunca refaca o que deu certo.
+
+Modelo de imagem: "🍌 Nano Banana 2", aspectRatio "9:16".
+Uma imagem = um enquadramento unico. Jamais colagem, grade, mosaico, multiplos
+paineis ou storyboard dentro de uma mesma imagem.
+
+=== TRAVA DE MODELO, fail-closed ===
+Declare as duas listas:
+  VALID_IMAGE_MODELS = ['🍌 Nano Banana Pro', '🍌 Nano Banana 2', '🍌 Nano Banana 2 Lite']
+  VALID_VIDEO_MODELS = ['Omni Flash', 'Veo 3.1 - Lite', 'Veo 3.1 - Fast', 'Veo 3.1 - Quality']
+Num useEffect de montagem, se IMAGE_MODEL ou VIDEO_MODEL nao estiver na sua
+lista, BLOQUEIE a geracao inteira e mostre em vermelho:
+  'MODELO NAO ENCONTRADO: "<nome>". Geracao bloqueada por seguranca.'
+Nunca caia num modelo padrao. Um rename do lado do Google tem que virar erro
+visivel, nao lote gerado no modelo errado.
+
+=== PORTAO DE REVISAO ===
+A aba "2. Videos" destrava assim que houver PELO MENOS UMA imagem com sucesso.
+Nao trave a aba durante o lote: olhar nao dispara nada. Os BOTOES de disparo
+continuam disabled enquanto o lote roda.
+
+⛔ NAO implemente disparo automatico de video. E semiautomatico de proposito:
+as imagens terminam, o botao fica armado, e EU clico. A janela entre imagem
+pronta e video disparado e onde eu regero imagem torta — auto-disparo em cima
+de imagem ruim queima 4 variantes de video.
+
+O botao de disparo tem tres estados visiveis:
+  · sem take em memoria -> disabled, rotulo "Cole os TAKE no roteiro"
+  · take ok, imagem nao -> disabled, rotulo "Aguardando imagens"
+  · take ok e >=1 imagem -> habilitado, "Disparar Videos (1→2)", com anel
+    branco pulsando (ring-2 ring-white/40 animate-pulse)
+
+=== ETAPA 2 — VIDEOS ===
+O take N anima a imagem do slot N: cada chamada passa a imagem daquele slot
+como frame inicial (firstFrameImageMediaId). O texto do TAKE e a direcao de
+movimento e de fala.
+
+Modelo: "Omni Flash", aspectRatio "9:16", durationSeconds 10.
+
+QUATRO VARIANTES POR SLOT (A, B, C, D). A sequencia e SERIAL POR SLOT e
+PARALELA POR VARIANTE: aguarde as 4 variantes do slot 01 com
+Promise.allSettled antes de comecar o slot 02. Isso e anti rate-limit, nao e
+estilo — nao paralelize os slots entre si.
+
+allSettled, nunca all: uma variante que falha nao pode cancelar as outras.
+
+Eu escolho UMA variante por slot (chosenIndex). Slot sem escolha fica fora do
+ZIP, e o rodape lista quais faltam.
+
+Se houver TAKE sem imagem correspondente, marque alerta naquele card em vez de
+travar o lote inteiro.
+
+=== PROMPT EDITAVEL POR CARD (nas duas etapas) ===
+Cada slot guarda TRES campos por prompt, separados para imagem e para video:
+  promptFromScript : o que veio do texto colado
+  prompt           : o que vai para o modelo
+  promptDirty      : true quando eu editei na mao
+
+A regra de merge e o coracao da feature:
+  prompt = promptDirty ? prompt : promptFromScript
+Recolar o roteiro atualiza os cards que eu NAO editei e nunca atropela os que
+eu editei.
+
+Cada card tem um textarea editavel, um contador "1234/4000" e — quando
+promptDirty estiver ligado — o rotulo vira "Selo: Editado" com um botao
+"Restaurar" (icone undo, ambar) que devolve promptFromScript e desliga o dirty.
+
+TETO DE 4000 CARACTERES por prompt: .slice(0, 4000) no onChange E de novo
+antes da chamada ao SDK. O corte hoje e silencioso na ferramenta irma; aqui eu
+quero o contador ficando vermelho ao passar de 3800, para eu ver chegando.
+
+=== ACOES POR CARD ===
+Dois botoes de 32px, SEMPRE VISIVEIS (nao dependem de hover), fundo solido,
+texto em caixa alta pequena:
+- "Regerar": refaz APENAS aquele slot, com o prompt atual do card e a mesma
+  referencia ativa. Nunca regera o REF, nunca toca no outro slot.
+- "Baixar": baixa o arquivo daquele card.
+Em loading, os dois ficam desabilitados.
+
+=== REVISAO DO VIDEO ===
+- Cada card da Etapa 2 mostra LADO A LADO, mesma altura: a esquerda a imagem
+  que serviu de frame inicial, com opacidade reduzida e o rotulo "QUADRO BASE";
+  a direita o video. E o que permite julgar se o video respeitou o frame.
+- Clicar no video abre um modal em tela cheia: overlay escuro com blur, 90vh,
+  9:16, controles nativos, autoPlay. Fecha no clique fora ou no X. Clique
+  dentro do player nao fecha.
+- UM VIDEO POR VEZ: listener global do evento 'play' na FASE DE CAPTURA. Quando
+  qualquer video comeca, pause todos os outros da pagina.
+
+=== EXPORTACAO ===
+Botao "Baixar Pacote ZIP (N)" na barra lateral da Etapa 2, contador em tempo
+real, desabilitado enquanto nao houver escolha nenhuma. Empacota com JSZip so
+as variantes escolhidas.
+
+Nomes sempre pelo indice do SLOT, com dois digitos:
+- video individual:  slot_01_variant_A.mp4
+- dentro do ZIP:     slot_01_variant_A.mp4
+- nome do ZIP:       adbatch_vertical_2.zip
+
+=== REGRA FINAL ===
+NAO TRADUZA NADA. Prompts e roteiros vao para o modelo exatamente como
+colados, em ingles. A interface e em portugues; o conteudo, nunca.
+
+=== TESTE DE ACEITACAO — rode ANTES de responder ===
+Com a ferramenta recem-carregada e ainda na aba "1. Imagens", cole este texto
+literal no campo unico:
+
+REF 01: Photo of a real person, a 24-year-old woman, chest up, facing the camera.
+IMAGE 01/02: two women sit on a couch, a third stands behind them.
+IMAGE 02/02: she holds a glass in a kitchen, a man stands at frame-right.
+IMAGE 03/02: this block must be discarded.
+TAKE 01/02: she speaks to the lens, no cuts.
+Dialogue: "test line one"
+TAKE 02/02: she holds the glass steady.
+Copy falada: esta linha tem que sumir
+Dialogue: "test line two"
+
+Me responda, SEM gerar nada e SEM sair da aba de imagens:
+(a) quantos blocos o parser devolveu, de que tipo e com que indice;
+(b) o que o contador de roteiro exibe;
+(c) se o aviso ambar de bloco ignorado acendeu, e com que texto;
+(d) o conteudo exato do campo de prompt dos 2 cards na aba "2. Videos";
+(e) confirme que a linha "Dialogue:" SOBREVIVEU nos dois takes e que a linha
+    "Copy falada:" SUMIU do take 02.
+
+RESULTADO EXIGIDO: 1 REF + 2 IMAGE (slots 01 e 02) + 2 TAKE (slots 01 e 02);
+contador "REF: sim · IMAGE: 2/2 · TAKE: 2/2" em verde; aviso ambar aceso por
+causa do IMAGE 03; as duas linhas Dialogue presentes; a linha "Copy falada:"
+ausente.
+
+Se der qualquer outro resultado, a implementacao esta errada — me diga o que
+deu, NAO conserte por conta propria.
+```
+
+⚠️ Se ele regredir alguma coisa, use o **PROMPT R** acima.
+
+### 🧾 O Montador Vertical 3 NÃO precisa de versão 2
+
+Medido no fonte (`montador-vertical-3/App.tsx`), não suposto:
+
+- os 3 slots nascem `media: null` e o `downloadZip` faz `slots.forEach` gravando
+  **só os preenchidos** — com os slots 0 e 1 cheios, o ZIP sai `video_01.mp4` +
+  `video_02.mp4`, numeração correta, sem buraco;
+- o terceiro slot fica vazio na tela e não atrapalha o download.
+
+A única esquisitice é cosmética: os rótulos são travados por índice
+(`slot.index === 0 ? 'HOOK' : ...`), então o **slot 2 aparece como `MECANISMO`**
+quando no 16s ele é o CTA. Um vídeo de 16s monta na ferramenta de hoje.
+
+---
+
 ## Conexões
 
+- [`adbatch-vertical/README.md`](adbatch-vertical/README.md) — o código-fonte transcrito das duas ferramentas e o que só ele revela
 - [`RUNBOOK-adbatch-vertical.md`](RUNBOOK-adbatch-vertical.md) — a arquitetura, o contrato do parser e o levantamento do atraso da V4
 - [`RUNBOOK-bisseccao-moderacao.md`](RUNBOOK-bisseccao-moderacao.md) — a mesma disciplina de variável única, aplicada à moderação do Veo
 - [`../WORKFLOW.md`](../WORKFLOW.md) §Passo 3 — onde a ferramenta entra no funil
