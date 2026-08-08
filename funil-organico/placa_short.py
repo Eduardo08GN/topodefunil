@@ -2383,7 +2383,14 @@ def montar(spec):
         "certain, her mouth open mid-word as she speaks, her front teeth even "
         "and complete. %(homem)s %(anti)s %(cauda)s"
         % dict(v, homem=BO_HOMEM % (hom["idade"], spec["etnia"], hom["marca"],
-                                    hom["roupa"], spec["reacao"][0])))
+        # ⛔⛔ `_cap` NA REACAO. As entradas de REACOES_HOMEM comecam em
+        # MINUSCULA de proposito (encaixam no meio de frase noutros
+        # motores) e a `BO_HOMEM` poe um PONTO antes delas — o bloco saia
+        # com "wearing a burgundy polo shirt. his chin is lowered".
+        # ⚠️ MEDIDO em 2026-08-08: 300 de 300 blocos. Frase em minuscula
+        # e gramaticalmente valida — nenhum guard de placeholder, token
+        # banido ou teto a pega. So LENDO.
+                                    hom["roupa"], _cap(spec["reacao"][0]))))
 
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;

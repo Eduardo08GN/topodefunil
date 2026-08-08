@@ -1633,19 +1633,23 @@ VILOES_APOSENTADO = [
 # do ingrediente no pool COMUNS. Template que qualifica um slot preenchido
 # por outro pool duplica quando os dois carregam a mesma palavra — e nenhum
 # linter pega isso, porque a frase e' gramatical. Achado LENDO a saida (§19).
+# ⛔⛔ QUATRO COPIAS DE `{c} and {r}` FORAM REMOVIDAS — 2026-08-08. A entrada
+# aparecia CINCO vezes: com isso ela tinha cinco vezes a chance das outras e
+# ocupava quatro slots que deviam ser repertorio novo.
+# ⚠️ Duplicata nao quebra nada, e por isso e' cara: o autoteste ja' a
+# reportava (`pool RECEITAS tem entrada REPETIDA`) e o motor seguia gerando.
+# O sintoma so' aparece no LOTE, como 'esses videos parecem iguais'.
 RECEITAS = [
     "{c} and {r}",
     "{c} with {r}",
     "{c}, {r}",
     "a little {c} and {r}",
     "just {c} and {r}",
-    "{c} and {r}",
     "{c}, plus {r}",
     "some {c} and {r}",
     # + 2026-08-05 — so' os ingredientes VISIVEIS — a gelatina fica de fora, e' o segredo
     "{c} and {r} together",
     "{c}, then {r}",
-    "{c} and {r}",
     # ⛔ NAO ACRESCENTAR RECEITA QUE SE AUTO-FECHA. Aqui esteve `{c} and {r},
     # nothing more` e o render saiu **"Turmeric and sarsaparilla, NOTHING MORE
     # AND one thing I keep back: the gelatin trick"** — a receita declarava a
@@ -1653,11 +1657,9 @@ RECEITAS = [
     # ⚠️ A receita e' uma lista ABERTA por construcao: a ancora SEMPRE cola
     # `and <segredo>: the gelatin trick` no fim dela. Nenhum linter pega isso,
     # porque as duas metades sao gramaticais — so' a leitura do render pega.
-    "{c} and {r}",
     "two things: {c} and {r}",
     "{c} first, then {r}",
     "{c} mixed with {r}",
-    "{c} and {r}",
 ]
 
 # ⛔ A ANCORA. Toda entrada traz o literal `gelatin trick` E nomeia o orgao — as
@@ -2454,7 +2456,14 @@ def montar(spec):
         "certain, her mouth open mid-word as she speaks, her front teeth even "
         "and complete. %(homem)s %(anti)s %(cauda)s"
         % dict(v, homem=BO_HOMEM % (hom["idade"], spec["etnia"], hom["marca"],
-                                    hom["roupa"], spec["reacao"][0])))
+        # ⛔⛔ `_cap` NA REACAO. As entradas de REACOES_HOMEM comecam em
+        # MINUSCULA de proposito (encaixam no meio de frase noutros
+        # motores) e a `BO_HOMEM` poe um PONTO antes delas — o bloco saia
+        # com "wearing a burgundy polo shirt. his chin is lowered".
+        # ⚠️ MEDIDO em 2026-08-08: 300 de 300 blocos. Frase em minuscula
+        # e gramaticalmente valida — nenhum guard de placeholder, token
+        # banido ou teto a pega. So LENDO.
+                                    hom["roupa"], _cap(spec["reacao"][0]))))
 
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;
@@ -2994,8 +3003,15 @@ def autoteste(n=600):
         ctrl.append("[BO6] nao acusa o homem olhando a lente")
 
     # [BO5] copo adiantado
+    # ⛔⛔ A SONDA ESTAVA CEGA, e o proprio autoteste a reportava assim todo
+    # dia: ela injetava a CONSTANTE `BO_COPO` na cena 1, e a lente procura o
+    # copo SORTEADO (`spec["copo"]`, eixo desde 2026-08-06). Quando os dois
+    # saem diferentes — que e' o caso na maioria dos sorteios — a sabotagem
+    # nunca chega na regra, e a regra do copo nao protegia nada.
+    # ⚠️ Mesma classe da sonda do CO7 no COLO: sonda que nao altera O QUE A
+    # LENTE OLHA passa sempre, e passar sempre e' o mesmo que nao existir.
     b5 = dict(b)
-    b5["IMAGE 01/03"] += " " + BO_COPO
+    b5["IMAGE 01/03"] += " " + s.get("copo", BO_COPO)
     if not any("BO5" in msg for _, msg in lint(s, b5)):
         ctrl.append("[BO5] nao acusa o copo fora da cena 3")
 

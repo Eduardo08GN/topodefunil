@@ -341,7 +341,12 @@ ADESIVOS = [
 PROP_GRANDE = ("a very large geoduck clam upright in both fists at chest "
                "height, its long siphon neck extended straight upward and "
                "clear of his hands")
-SEM_FITA = "with nothing taped to them and no tape anywhere on him"
+# ⛔⛔ `to his shorts`, NUNCA `to them`. A clausula entra depois de
+# `wearing <calca><oculos>`, e quando o homem sorteado tem oculos o
+# `them` passa a apontar para OS OCULOS.
+# ⚠️ MEDIDO: 40 de 300 sorteios — so acontece com homem de oculos
+# (143/300), e por isso passou: dois tercos saem corretos.
+SEM_FITA = "with nothing taped to his shorts and no tape anywhere on him"
 
 # ---------------------------------------------------------------------------
 # ⭐⭐ O HOMEM — o corpo-prova, e o unico que nao fala
@@ -544,7 +549,12 @@ REACOES_AMIGA = [
 ]
 
 # ⭐ A cláusula anti-celebridade, no registro de mulher.
-ANTICELEB = ("not resembling any famous person, not a celebrity")
+# ⛔⛔ MAIUSCULA. A clausula entra depois de `%(band)s`, que termina em
+# ponto — e o bloco saia com "...on the wall in the background. not
+# resembling any famous person". MEDIDO: 900 ocorrencias em 300 sorteios
+# (tres blocos por video). Frase em minuscula e gramaticalmente valida:
+# nenhum linter a pega, so LENDO o prompt.
+ANTICELEB = ("Not resembling any famous person, not a celebrity")
 
 CAUDA = ("Slight sensor grain, soft focus, raw iPhone front camera aesthetic. "
          "No subtitles, no captions, no burned-in text, no watermark.")

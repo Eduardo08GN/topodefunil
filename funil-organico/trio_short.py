@@ -2485,6 +2485,22 @@ def sortear(pagina, rng, led, travas=None):
     return spec
 
 
+# ⛔⛔ A POSE MORA NA FRASE QUE POSICIONA, NUNCA DENTRO DO PROP.
+# Achado LENDO o prompt gerado em 2026-08-08, ao portar este motor para 16s.
+# Cinco das seis entradas de PARES trazem `held upright` no campo `gigante`, e
+# as strings que posicionam o objeto acrescentam a sua — saia
+#     "...longer than her forearm, held upright raised at chest height"
+# ⚠️ Nao sao a mesma coisa: `raised at chest height` tem ALTURA, `held upright`
+# nao. Duas ordens de pose para o mesmo objeto e' ordem ambigua, e o Veo
+# escolhe uma.
+# ⛔ Corta a CLAUSULA inteira, nao as duas palavras: o plantain traz `held
+# upright in her fist`, e tirar so' `held upright` deixaria `, in her fist`
+# pendurado — meia correcao le' pior que o defeito.
+def _sem_pose(s):
+    i = s.find(", held upright")
+    return s[:i] if i >= 0 else s
+
+
 def _pessoa(spec):
     r = spec["ref"]
     return ("a %d-year-old %s woman, %s, %s, %s, wearing %s"
@@ -2555,7 +2571,7 @@ def montar(spec):
             prop["murcho"],
             _c["idade"], spec["etnia"], _sem_artigo(_c["cabeca"]),
             _sem_artigo(_c["marca"]), _traje_de(spec, "traje_terceira"),
-            prop["gigante"],
+            _sem_pose(prop["gigante"]),
             _pessoa(spec))))
 
     # --- CENA 2 — O PREPARO (o mecanismo) -----------------------------------
@@ -2589,7 +2605,7 @@ def montar(spec):
         "%(cauda)s"
         % dict(v, corpo=BO_CORPO_PROVA % (
             hom["idade"], spec["etnia"], hom["marca"], hom["roupa"],
-            prop["gigante"])))
+            _sem_pose(prop["gigante"]))))
 
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;
@@ -2626,8 +2642,18 @@ def montar(spec):
     # tres. Declarar `only person in the shot` e' ordem contraditoria, e o Veo
     # resolve APAGANDO a segunda, que e' o bit inteiro do angulo.
     elenco = [
-        "Only the woman on frame-left speaks, straight into the lens. The other "
-        "never speaks and keeps her eyes on what she is holding.",
+        # ⛔⛔ QUEM FALA E A QUE ESTA EM PE ATRAS, e esta linha dizia o
+        # contrario. Herdada do DUPLA, onde as duas estao EM PE lado a
+        # lado e `frame-left` E quem fala. Aqui frame-left e uma das
+        # SENTADAS, e a IMAGE diz na mesma respiracao `Neither seated
+        # woman speaks`.
+        # ⚠️ MEDIDO em 2026-08-08: 300 de 300 sorteios. Contradicao IMAGE
+        # x TAKE e pior que omissao — a omissao o gerador preenche com o
+        # frame, a contradicao ele resolve mexendo no que estava certo, e
+        # aqui o que estava certo e a boca que fala.
+        "Only the woman standing behind them speaks, straight into the lens. "
+        "Neither seated woman speaks and both keep their eyes on what they "
+        "are holding.",
         "She is the only person in the shot.",
         BO_CORPO_PROVA_TAKE,
     ]
@@ -2815,7 +2841,11 @@ def lint(spec, blocos):
     if "index finger points" not in i1:
         ach.append(("ERRO", "BO1: IMAGE 01/03 sem o DEDO APONTANDO — e' o gesto "
                             "que diz qual dos dois props a fala esta' nomeando"))
-    if spec["prop"]["murcho"] not in i1 or spec["prop"]["gigante"] not in i1:
+    # ⚠️ `_sem_pose` TAMBEM AQUI: a lente compara com o que o BLOCO recebe.
+    # Sem isto ela acusaria os sorteios CERTOS — lente que compara com a
+    # forma do POOL em vez da forma do PROMPT inventa defeito.
+    if (spec["prop"]["murcho"] not in i1
+            or _sem_pose(spec["prop"]["gigante"]) not in i1):
         ach.append(("ERRO", "BO1: IMAGE 01/03 sem o PAR completo — o `this one "
                             "... the one she is holding` precisa dos dois "
                             "objetos visiveis"))

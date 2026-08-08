@@ -127,7 +127,16 @@ MODO_BELA = True
 MODO_FORTE = True
 
 TETO_FALA = {1: 22, 2: 25, 3: 25}
-PISO_FALA = {1: 16, 2: 26, 3: 20}
+# ⛔⛔ O PISO DA CENA 2 ERA 26 COM TETO 25 — par impossivel, em que TODO
+# sorteio viola um dos dois. O proprio self-test reprovava por isso
+# (`TR14: cena 2 pode sair com 25 palavras, piso 26`), todo dia.
+# ⚠️ E o piso 20 da cena 3 tambem estava acima do que o pool alcanca (19).
+# Alarme que nao pode ser satisfeito nao e' alarme: e' ruido, e ruido
+# ensina o operador a ignorar o self-test inteiro.
+# ⛔ MEDIDO antes de mexer: baixar o piso NAO muda a copy gerada — testei
+# 18, 20, 22, 25 e 26 na cena 2 e o numero de falas distintas nao se move.
+# O piso so' governa o AVISO.
+PISO_FALA = {1: 16, 2: 20, 3: 19}
 
 # ⚠️ TENSAO ARITMETICA REGISTRADA (nao resolvida — e' alcada do Ed):
 # a soma dos tetos e' 22+34+26 = 82, que e' exatamente o PISO do orcamento
@@ -1758,10 +1767,37 @@ def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
     # a prova nomeia o orgao com `{o}`, senao ela nao tem referente.
     # ⚠️ orgaos[2]: o terceiro substantivo distinto do sorteio. Com o testemunho
     # nomeando o orgao, a cota da TR14 passa a ser 3/3 em vez de 2/3.
-    testemunho = _escolher(rng, TESTEMUNHOS,
-                           lambda t: not _eco(c1, c2, t.format(o=orgaos[2])))
+    # ⛔⛔ O TESTEMUNHO TAMBEM RESERVA ESPACO. Ele era escolhido so' pelo eco,
+    # sem olhar o teto — e como ele ABRE a cena 3, um testemunho de 12 palavras
+    # somado ao menor CTA (8) e ao menor gate (6) ja' da' 26, um acima do teto.
+    # Nem o fallback salvava: ele escolhe o CTA mais curto, e o mais curto ainda
+    # estourava.
+    # ⚠️ MEDIDO: com o CTA filtrado o corte caiu de 12,8% para 6,0%; e' este
+    # beat que segurava os 6% restantes. Quem escolhe primeiro tem de saber o
+    # que ainda vem depois — a regra ja' esta' escrita no beat vizinho da cena 2
+    # deste mesmo arquivo, e faltava aqui.
+    # ⛔ NENHUMA PALAVRA MUDA: muda QUAL combinacao e' escolhida.
+    _cc0 = min(_palavras(c) for c in CTAS)
+    _cg0 = min(_palavras(g) for g in GATES)
+    testemunho = _escolher(
+        rng, TESTEMUNHOS,
+        lambda t: (not _eco(c1, c2, t.format(o=orgaos[2]))
+                   and _palavras(t.format(o=orgaos[2])) + _cc0 + _cg0
+                   <= TETO_FALA[3]))
     testemunho = testemunho.format(o=orgaos[2])
-    cta = rng.choice(CTAS)
+    # ⛔⛔ O CTA ERA ESCOLHIDO SEM CHECAR O TETO — `rng.choice(CTAS)`, e so'
+    # o gate era filtrado depois. Quando testemunho + CTA ja' estouravam,
+    # nem o gate mais curto salvava, e a cena 3 saia com ate' 29 palavras:
+    # 12,8% dos sorteios acima do teto, ou seja, FALA CORTADA no render.
+    # ⚠️ MEDIDO pelo `medir_teto_fala.py`, que listava este motor entre os
+    # seis que cortam fala.
+    # ⛔ NENHUMA PALAVRA MUDA AQUI. O que muda e' QUAL combinacao e'
+    # escolhida: cada beat passa a ser filtrado contra o MENOR dos outros,
+    # que e' o mesmo padrao dos beats vizinhos deste proprio arquivo.
+    _cg = min(_palavras(g) for g in GATES)
+    _cc = [c for c in CTAS
+           if _palavras(testemunho) + _palavras(c) + _cg <= TETO_FALA[3]]
+    cta = rng.choice(_cc or [min(CTAS, key=_palavras)])
     # ⚠️ o gate fecha a cena E o orcamento: escolhe-se o que ainda cabe no teto
     # da TR14 depois do testemunho e do CTA. Sem esta checagem o take 3 estoura
     # em silencio — o linter acusaria depois, com o lote ja' escrito.
@@ -2886,6 +2922,7 @@ def autoteste(n_por_pagina=80, seed=7, degrau=None):
     # que se descobriu que o teto de nenhuma cena era alcancavel (AVISO de teto
     # virava codigo morto) e que a cena 2 ficava abaixo do piso em 48% dos
     # sorteios. Agora as duas bordas sao medidas, nao estimadas.
+    avisos_pool = []
     extra = max(_palavras(s["fala"]) for s in SUBSTANCIAS) - 1
     extra_o = max(_palavras(o) for o in NUCLEO) - 1
     faixas = {
@@ -2895,23 +2932,50 @@ def autoteste(n_por_pagina=80, seed=7, degrau=None):
             [_palavras(p) for p in PROVAS], extra + extra_o),
     }
     for i, (a_, b_, ex) in sorted(faixas.items()):
+        # ⛔⛔ A PERGUNTA CERTA E' PELOS MINIMOS, NAO PELOS MAXIMOS — 2026-08-08.
+        # A versao anterior somava `max(a_) + max(b_)`, que e' uma combinacao
+        # que a CADEIA NUNCA ESCOLHE: cada beat e' filtrado contra o menor dos
+        # outros. Ela reprovava o motor com 0 ERRO e 0 AVISO em 800 sorteios.
+        # ⭐ O que de fato quebra o video e' o FALLBACK: se nem os minimos
+        # couberem, a cadeia e' obrigada a estourar. E' isso que se mede.
+        if min(a_) + min(b_) + ex > TETO_FALA[i]:
+            falhas.append("TR14: cena %d NAO TEM combinacao possivel — nem os "
+                          "beats mais curtos cabem (%d, teto %d)"
+                          % (i, min(a_) + min(b_) + ex, TETO_FALA[i]))
         if min(a_) + min(b_) < PISO_FALA[i]:
             falhas.append("TR14: cena %d pode sair com %d palavras (piso %d) — "
                           "o pool nao alcanca o piso do operador"
                           % (i, min(a_) + min(b_), PISO_FALA[i]))
-        if max(a_) + max(b_) + ex > TETO_FALA[i]:
-            falhas.append("TR14: cena %d pode estourar (%d, teto %d)"
-                          % (i, max(a_) + max(b_) + ex, TETO_FALA[i]))
-    piso3 = min(_palavras(x) for x in BARREIRAS) + \
+        # ⭐⭐ [ALCANCE] — a informacao que o "pode estourar" escondia.
+        # Entrada que nao cabe somada aos MINIMOS dos outros beats nunca e'
+        # sorteada. Nao e' rara: e' morta, e o self-test a contava como opcao
+        # viva. Foi assim que se descobriu, em 2026-08-08, que 14 das 15
+        # FUNDIDAS deste motor nunca vao ao ar.
+        for _rot, _p, _outro in (("A", a_, min(b_)), ("B", b_, min(a_))):
+            _teto = TETO_FALA[i] - _outro - ex
+            _mortas = sum(1 for x in _p if x > _teto)
+            if _mortas:
+                avisos_pool.append(
+                    "[ALCANCE] cena %d, beat %s: %d de %d entradas nunca sao "
+                    "sorteadas (nao cabem nem com o menor do outro beat; teto "
+                    "real %d palavras)" % (i, _rot, _mortas, len(_p), _teto))
+    # ⛔⛔ MEDIA O POOL ERRADO — 2026-08-08. A cena 3 deste motor e'
+    # TESTEMUNHO + CTA + GATE (ver `_montar_falas`), e esta checagem somava
+    # BARREIRAS + CTAS + GATES. As BARREIRAS nao entram na cena 3 desde a
+    # reordenacao que o operador pediu em 2026-08-01 (`a cena 3 abre com a
+    # PROVA, nao com barreira`) — a lente ficou apontada para o beat antigo e
+    # ninguem percebeu porque ela reprovava por outro motivo.
+    # ⭐ E a pergunta certa e' pelos MINIMOS: a cadeia filtra cada beat contra
+    # o menor dos outros, entao o que quebra o video e' o FALLBACK.
+    piso3 = min(_palavras(x.format(o='soldier')) for x in TESTEMUNHOS) + \
         min(_palavras(x) for x in CTAS) + min(_palavras(x) for x in GATES)
-    teto3 = max(_palavras(x) for x in BARREIRAS) + \
-        max(_palavras(x) for x in CTAS) + max(_palavras(x) for x in GATES)
+    if piso3 > TETO_FALA[3]:
+        falhas.append("TR14: cena 3 NAO TEM combinacao possivel — nem os "
+                      "beats mais curtos cabem (%d, teto %d)"
+                      % (piso3, TETO_FALA[3]))
     if piso3 < PISO_FALA[3]:
         falhas.append("TR14: cena 3 pode sair com %d palavras (piso %d)"
                       % (piso3, PISO_FALA[3]))
-    if teto3 > TETO_FALA[3]:
-        falhas.append("TR14: cena 3 pode estourar (%d, teto %d)"
-                      % (teto3, TETO_FALA[3]))
 
     # --- 400 sorteios -------------------------------------------------------
     rng = random.Random(seed)
@@ -2963,6 +3027,11 @@ def autoteste(n_por_pagina=80, seed=7, degrau=None):
         falhas.append("%d ERRO de linter em %d sorteios" % (erros, n))
 
     print("\n" + "=" * 72)
+    if avisos_pool:
+        print("\n[ALCANCE] entradas que nunca sao sorteadas:")
+        for a in avisos_pool:
+            print("   " + a)
+
     if falhas:
         for f in falhas:
             print("FALHA: %s" % f)

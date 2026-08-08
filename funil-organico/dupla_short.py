@@ -2433,6 +2433,19 @@ def sortear(pagina, rng, led, travas=None):
     return spec
 
 
+# ⛔⛔ A POSE MORA NA FRASE QUE POSICIONA, NUNCA DENTRO DO PROP.
+# Achado LENDO o prompt gerado em 2026-08-08, ao portar este motor para 16s.
+# O campo `gigante` termina em `held upright` e a `BO_DUPLA` acrescenta
+# `raised at chest height` — saia a ordem dupla em 300 de 300 blocos.
+# ⚠️ Nao sao a mesma coisa: `raised at chest height` tem ALTURA, `held upright`
+# nao. Duas ordens de pose para o mesmo objeto e' ordem ambigua.
+# ⛔ Corta a CLAUSULA inteira: o plantain traz `held upright in her fist`, e
+# tirar so' as duas palavras deixaria `, in her fist` pendurado.
+def _sem_pose(s):
+    i = s.find(", held upright")
+    return s[:i] if i >= 0 else s
+
+
 def _pessoa(spec):
     r = spec["ref"]
     return ("a %d-year-old %s woman, %s, %s, %s, wearing %s"
@@ -2499,7 +2512,7 @@ def montar(spec):
             _sem_artigo(_r["marca"]), _traje(spec), prop["murcho"],
             _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
             _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
-            prop["gigante"])))
+            _sem_pose(prop["gigante"]))))
 
     # --- CENA 2 — O PREPARO (o mecanismo) -----------------------------------
     # ⚠️ O utensilio VARIA (ordem do operador) e o verbo do TAKE acompanha.
@@ -2534,7 +2547,7 @@ def montar(spec):
         "Her other hand holds %(copo)s. She looks directly into the camera, calm "
         "and certain, her mouth open mid-word as she speaks, her front teeth "
         "even and complete. %(amiga)s %(anti)s %(cauda)s"
-        % dict(v, gigante=prop["gigante"],
+        % dict(v, gigante=_sem_pose(prop["gigante"]),
                amiga=_cap(BO_AMIGA_FUNDO % (
                    _a["idade"], spec["etnia"], _sem_artigo(_a["cabeca"]),
                    _sem_artigo(_a["marca"]), _traje_de(spec, "traje_amiga"),
@@ -2575,7 +2588,15 @@ def montar(spec):
         "Only the woman on frame-left speaks, straight into the lens. The other "
         "never speaks and keeps her eyes on what she is holding.",
         "She is the only person in the shot.",
-        BO_AMIGA_TAKE % spec["reacao_amiga"][1],
+        # ⛔⛔ NO PAYOFF ELA ESTA CENTRADA, NAO EM FRAME-LEFT. A
+        # `BO_AMIGA_TAKE` termina em "Only the woman on frame-left
+        # speaks" e serve a cena 1, onde as duas estao lado a lado. Na
+        # cena 3 a IMAGE diz `standing centred in the frame` — e o TAKE
+        # mandava falar a de frame-left, que ali e a AMIGA, muda por
+        # construcao. MEDIDO: 300 de 300 sorteios.
+        (BO_AMIGA_TAKE % spec["reacao_amiga"][1]).replace(
+            "Only the woman on frame-left speaks",
+            "Only the woman standing centred in the frame speaks"),
     ]
     audio = ["%s. No music." % m["audio"],
              # ⛔ O som tambem sai da conformacao — ele tambem e' parte do
@@ -2811,7 +2832,10 @@ def lint(spec, blocos):
     # ⛔ AQUI SAO DOIS PROPS, nao um. A lente herdada olhava `prop["img"]`;
     # neste angulo o par murcho/gigante tem de estar INTEIRO no quadro 1 — se
     # so' um aparece, o `from this to this` fica sem a metade que ele aponta.
-    if spec["prop"]["murcho"] not in i1 or spec["prop"]["gigante"] not in i1:
+    # ⚠️ `_sem_pose` TAMBEM AQUI: a lente compara com o que o BLOCO
+    # recebe, nao com a forma do pool.
+    if (spec["prop"]["murcho"] not in i1
+            or _sem_pose(spec["prop"]["gigante"]) not in i1):
         ach.append(("ERRO", "BO1: IMAGE 01/03 sem o prop sorteado"))
 
     # --- BO5: o copo so' na cena 3 -------------------------------------------
