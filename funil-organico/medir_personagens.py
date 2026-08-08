@@ -248,6 +248,10 @@ EXCECOES = {
         "CONTRATO DO MOTOR — identico ao falta_short.py: as entradas do "
         "pool nao carregam adjetivo de etnia, quem injeta e a montagem "
         "a partir do MUNDO sorteado.",
+    # ⚠️ o CLEAN V1 16SEG e' COPIA LITERAL do clean_short e herda o MESMO
+    # REFS_M — conferido com `a.REFS_M == b.REFS_M`, nao de olho. A isencao
+    # acompanha o pool: ela e' da REGRA, nao do arquivo.
+    ("clean_v1_16s_short.py", "REFS_M", "oculos"): "idem clean_short",
     ("falta_short.py", "HOMENS", "pele"):
         "CONTRATO DO MOTOR — as entradas do pool carregam ZERO adjetivo de "
         "etnia, e quem injeta e' a montagem, a partir do MUNDO sorteado (o "
