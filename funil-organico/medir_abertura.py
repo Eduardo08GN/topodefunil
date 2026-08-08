@@ -90,7 +90,7 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # + 2026-08-08: a familia 16s — 2 takes de 8s, AdBatch Vertical 2
            "trio16_short", "dupla16_short", "falta16_short", "placa16_short",
            "troca16_short", "botica16_short", "colo16_short",
-           "exterior16_short"]
+           "exterior16_short", "escandalo16_short"]
 
 # ⭐ O QUE CONTA COMO REFERENTE, e a lista e' deliberadamente CURTA:
 #   · o orgao (o pool NUCLEO do proprio motor), ou

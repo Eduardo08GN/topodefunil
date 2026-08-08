@@ -288,6 +288,13 @@ EXCECOES = {
     # ⛔ A licao que fica: quando tres agentes irmaos tem excecao e um nao tem,
     # o que falta e' a EXCECAO, nao o conteudo do pool. Consertar so' o pool
     # deixaria o defeito voltar no proximo aceite (licoes-de-construcao §18).
+    # ⭐ ESCANDALO 16 (2026-08-08) — mesma NARRADORAS, mesma lei. O motor
+    # nasceu por copia literal do de 24s e o pool nao mudou; a excecao do
+    # arquivo original nao alcanca o arquivo novo porque a chave inclui o nome
+    # do arquivo. ⚠️ Conferido: o pool e' o mesmo objeto, entrada por entrada.
+    ("escandalo16_short.py", "NARRADORAS", "oculos"):
+        "idem escandalo_short — LEI DO REF, oculos de leitura brigam com "
+        "'super fit e linda'. Pool identico, copia literal.",
     ("escandalo_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF — oculos de leitura brigam frontalmente com 'super fit e "
         "linda'. Os outros eixos continuam cheios: PORTE atletico em 20/20 "
