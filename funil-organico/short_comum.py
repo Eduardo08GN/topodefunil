@@ -343,8 +343,17 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
     # lugar do corpo-prova — e como o TAKE diz "Only he speaks", o estranho
     # falava a fala do REF. Relatado em producao, 2026-07-31.
     # O insert de maos nao entra: ele nao mostra pessoa nenhuma.
-    for nome in sorted(k for k in blocos if k.startswith("IMAGE")):
-        if nome.endswith("01/03"):
+    # ⛔⛔ O PRIMEIRO BLOCO E' O QUE APRESENTA — e ele era identificado pela
+    # STRING `01/03`, cravada na familia de 3 cenas. Nos motores de 16s o
+    # primeiro bloco chama-se `01/02`, entao ele NAO era pulado e a ancora `the
+    # same N-year-old` era cobrada justamente do bloco que apresenta o homem.
+    # ⚠️ Passou despercebido nos sete primeiros 16s porque nenhum deles tem
+    # homem na cena 1 — o EXTERIOR 16 e' o primeiro, e reprovou de cara.
+    # ⭐ Agora o primeiro e' o MENOR da ordem alfabetica dos IMAGE, que e' o
+    # `01/xx` em qualquer familia: 3 cenas, 2 cenas ou a que vier.
+    _imgs = sorted(k for k in blocos if k.startswith("IMAGE"))
+    for nome in _imgs:
+        if _imgs and nome == _imgs[0]:
             continue
         txt = blocos[nome]
         if re.search(r"\d+-year-old[^.]{0,40}\bman\b", txt) and \

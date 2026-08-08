@@ -47,7 +47,7 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "exterior", "colo", "receita", "botica", "dupla", "placa",
            "cha", "trio", "falta",
            "trio16", "dupla16", "falta16", "placa16", "troca16", "botica16",
-           "colo16"]
+           "colo16", "exterior16"]
 
 N = 400
 # ⚠️ prefixo curto credita a entrada ERRADA quando duas comecam igual — foi

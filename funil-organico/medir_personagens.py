@@ -187,6 +187,15 @@ EXCECOES = {
         "12/12, ancora 12/12) sao os unicos que o espectador ve'.",
     ("exterior_short.py", "HOMENS_SEM_ROSTO", "pelo_facial"): "idem EX5",
     ("exterior_short.py", "HOMENS_SEM_ROSTO", "oculos"): "idem EX5",
+    # ⭐ EXTERIOR 16 (2026-08-08) — mesmo corte no peito, mesma razao. O
+    # motor nasceu por copia literal do de 24s: a cena fundida herdou o
+    # quadro da cena 3, onde ele entra cortado no peito segurando o geoduck
+    # limpo. Cobrar cabelo, barba ou oculos de um personagem que NAO TEM
+    # CABECA em quadro e' cobrar o que a cena proibe.
+    ("exterior16_short.py", "HOMENS_SEM_ROSTO", "cabelo"):
+        "idem EX5 do exterior_short — corte no peito, sem rosto em quadro",
+    ("exterior16_short.py", "HOMENS_SEM_ROSTO", "pelo_facial"): "idem EX5",
+    ("exterior16_short.py", "HOMENS_SEM_ROSTO", "oculos"): "idem EX5",
     # ⛔ COLO — o corte e' MAIS ALTO que o do EXTERIOR: la' e' no peito, aqui e'
     # na CINTURA. Nao ha' cabeca, nao ha' tronco, nao ha' rosto — so' pernas e
     # maos. Cobrar cabelo, barba, oculos ou pele DE ROSTO de um personagem que
