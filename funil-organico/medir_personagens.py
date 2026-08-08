@@ -298,6 +298,12 @@ EXCECOES = {
     # retencao, e o operador pediu "extremamente lindas". Oculos brigam.
     ("trio_short.py", "REFS", "oculos"):
         "LEI DO REF — as tres mulheres sao a bullet de retencao do angulo.",
+    # ⛔ TRIO 16 herda o pool REFS do TRIO por copia literal, entao herda a
+    # razao inteira. Excecao declarada no dia em que o motor nasceu — deixar o
+    # gate vermelho "porque eu sei que e' de proposito" e' como o operador
+    # aprende a ignorar o gate.
+    ("trio16_short.py", "REFS", "oculos"):
+        "LEI DO REF — mesmo pool e mesma razao do trio_short.py.",
     ("cha_short.py", "REFS", "oculos"):
         "LEI DO REF — a REF deste angulo E' a bullet de retencao do hook.",
     ("dupla_short.py", "REFS", "oculos"):

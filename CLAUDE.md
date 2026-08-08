@@ -49,6 +49,21 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 **Cada um é autossuficiente e é a FONTE DA VERDADE do seu ângulo** — correção de
 regra entra no `_short`.
 
+⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s.**
+`trio16_short.py` — **2 takes de 8s**, destino **AdBatch Vertical 2**. Ele
+**não substitui** o `trio_short.py`: são formatos diferentes, ledger próprio
+cada um, e os dois coexistem. Nasceu por cópia literal do TRIO com cirurgia só
+no eixo temporal — as cenas 2 e 3 (que já aconteciam na mesma cozinha) fundem
+num quadro só, e a copy passa a ser hook + `uso com gelatin trick` + CTA.
+⛔ **O `follow` do CTA nunca encosta na keyword**: a automação de DM casa
+palavra **exata**, então o comando é `Comment gelatin, and I'll send you the
+recipe.` e o *follow* vem em frase separada. Lente `T16-2` trava isso.
+⚠️ A ferramenta do Flow ainda não existe — o prompt de criação da **AdBatch
+Vertical 2** está em
+[`adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md)
+§*CRIAÇÃO DA V2*. O Montador Vertical 3 já serve para 2 vídeos (medido no
+fonte); só o rótulo do slot 2 mente.
+
 ⛔ **Tudo com label `lucas` mudou-se para
 [`agentes-de-terceiros/`](agentes-de-terceiros/) e não existe para nós.** São de
 um amigo do Ed, que arquitetou de outra forma. **Não ler, não medir, não
