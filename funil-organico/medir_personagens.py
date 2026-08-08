@@ -292,6 +292,9 @@ EXCECOES = {
     # de oculos cheio aqui seria o motor contrariando a propria razao de existir.
     # ⛔ PLACA — mesma razao: a REF e' a bullet de retencao, e o angulo e' a
     # humilhacao publica do corpo dele. Oculos de leitura brigam com "linda".
+    # ⛔ PLACA 16 herda o pool REFS por copia literal — mesma razao.
+    ("placa16_short.py", "REFS", "oculos"):
+        "LEI DO REF — mesmo pool e mesma razao do placa_short.py.",
     ("placa_short.py", "REFS", "oculos"):
         "LEI DO REF — a REF deste angulo e' a bullet de retencao.",
     # ⛔ CHA — a ordem do operador para este agente e' a mais explicita do repo:
