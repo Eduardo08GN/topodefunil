@@ -632,91 +632,92 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # a desgraca do colega, a desgraca do narrador e nenhuma saida. O video de 16s
 # nao tem cena do meio para consertar isso: a cena 2 ja' entra no mecanismo.
 #
-# ⭐ O ARCO NOVO da cena 1, tres beats, na ordem em que o ouvido recebe:
+# ⭐ O ARCO NOVO da cena 1, DOIS beats, na ordem em que o ouvido recebe:
 #
-#     FOFOCA   a humilhacao publica    -> por que ele para de scrollar
-#     ANCORA   `His hangs like this.`  -> o que amarra o PROP ao orgao
-#     VIRADA   `One trick later, ...`  -> a promessa de saida
+#     HUMILHACAO   quem soube + a reacao publica  -> por que ele para de scrollar
+#     VIRADA       `...the gelatin trick...`      -> a saida, com nome
 #
-# ⛔ A ANCORA fica, e nao e' enfeite: e' a unica frase que faz o geoduck no colo
-# do colega LER como o orgao. Sem ela o espectador ve um homem segurando um
-# molusco e ouve uma fofoca — o bit visual desliga.
+# ⛔⛔ AS DUAS DECISOES ABAIXO SAO DO OPERADOR, E AS DUAS CONTRARIAM O QUE EU
+# TINHA ESCRITO NA PRIMEIRA VERSAO. Eu levei dez candidatos; ele reescreveu
+# quatro deles a mao, e os quatro concordavam entre si:
 #
-# ⛔⛔ A VIRADA NAO NOMEIA O MECANISMO. `gelatin trick` e `blood flow` sao da
-# cena 2, e antecipa-los aqui queima a lacuna de curiosidade e repete a mesma
-# frase duas vezes em 16 segundos. Aqui e' `one trick`, sem sobrenome.
-# ⚠️ E ela NAO reusa os verbos do `TRUQUES16` (`changes that`, `turns that
-# around`): tease e payoff com a mesma locucao, a 8 segundos de distancia,
-# soa disco arranhado. A virada daqui e' SOCIAL — quem ria para de rir — que
-# e' a materia-prima das REDENCOES e o DNA deste angulo.
+#   1. A ANCORA DO PROP SAIU. Eu tinha argumentado que `His pecker hangs like
+#      this` era a unica frase que faz o geoduck no colo LER como o orgao. Ele
+#      apagou a ancora nos QUATRO e pos no lugar a humilhacao explicita (`they
+#      all laughed in front of him`, `They all mocked him`). O prop ja' esta'
+#      no colo do sujeito EM QUADRO enquanto a fala diz que o {o} dele parou —
+#      a ligacao se faz pela imagem, e as 5-6 palavras da ancora valem mais
+#      compradas na risada, que e' o que este angulo vende.
 #
-# ⭐ Por que TRES POOLS e nao 13 frases prontas: o orcamento. A cena 1 tem 24
-# palavras e a fofoca sozinha come 10-14 delas. Com a frase inteira travada nao
-# havia como caber a virada sem apagar a ancora. Decomposto, o solver de
-# `_hook16` escolhe cada beat contra o que sobra — e a entropia SOBE de 13
-# hooks para 16 x 12 x 12.
+#   2. O MECANISMO E' NOMEADO AQUI. Eu tinha travado `one trick` sem sobrenome
+#      para nao queimar a lacuna de curiosidade. Ele reprovou:
+#      *"Vc tem que ser mais claro e mais taxativo, nao pode dar vazao a
+#      duvidas para os viewers. Sempre faca revisao adversarial: o viewer leigo
+#      consegue ler/escutar rapido a copy e entender do que se trata? Se a
+#      resposta for sequer um talvez, e' descarte."*
+#      `one trick` e' exatamente um talvez. A lacuna que vende nao e' o NOME do
+#      truque — e' a RECEITA, que so' o CTA entrega. Nomear cedo ancora e ainda
+#      martela a keyword do comentario.
+#
+# ⛔ REVISAO ADVERSARIAL, a regra que sobra: TODA SENTENCA TEM ASSUNTO PROPRIO —
+# ou nomeia o {o}, ou nomeia o `gelatin trick`. Nenhuma sobrevive de pronome
+# emprestado da anterior. Foi o que matou `His droops like this.` (his O QUE?)
+# e `One trick later, nobody laughs at him.` (que truque?).
+#
+# ⭐ ORCAMENTO GARANTIDO POR CONSTRUCAO, nao por solver: 11-14 + 9-10 = no
+# maximo 24, que e' o teto. Nenhuma combinacao das 16 x 14 estoura, e por isso
+# NENHUMA entrada fica inalcancavel — o solver de `_hook16` vira rede de
+# seguranca, nao filtro. Foi assim que se matou o mode-collapse da versao
+# anterior (quatro entradas levavam 67% do lote).
 
-# ⚠️⚠️ 11-12 PALAVRAS, E O APERTO DA FAIXA E' A CORRECAO, NAO ESTILO. A primeira
-# versao ia de 10 a 14 e MEDIU mode-collapse: com 24 palavras para tres beats, a
-# fofoca de 14 nao deixava virada nenhuma caber, entao o solver so' conseguia
-# escolher as curtas — quatro entradas levavam 67% do lote e as seis mais longas
-# ficavam em ~1% cada. Pool de tamanho DESIGUAL num orcamento apertado nao e'
-# pool de 16: e' pool de 4 com seis enfeites. Reescritas todas para a mesma
-# faixa, os 16 saem parelhos.
-# ⛔ Toda entrada carrega `{o}` na PRIMEIRA sentenca — e' o referente que o
+# ⚠️ 11-14 palavras com `{evento}` de 3 (o pior caso). Uma sentenca ou duas.
+# ⛔ Toda entrada nomeia o `{o}` na PRIMEIRA sentenca — e' o referente que o
 # `medir_abertura` cobra, e e' o que diz ao espectador do que se trata.
-FOFOCAS16 = [
-    "Everyone at {evento} heard his {o} doesn't work anymore.",
-    "The whole {evento} heard that his {o} quit on him.",
-    "Every man at {evento} heard his {o} can't finish anymore.",
-    "Word got around {evento} that his {o} doesn't work anymore.",
-    "Every guy at {evento} knows his {o} quit on him.",
-    "Half of {evento} heard the gossip about his dead {o}.",
-    "His wife told everyone at {evento} that his {o} quit.",
+HUMILHACOES16 = [
+    "Everybody at {evento} heard his {o} quit on him.",
+    # ⚠️ `told everyone at {evento}`, nunca `told {evento}`: a metonimia funciona
+    # em `The whole church hall knew` mas trava em `told that boat`, e frase que
+    # trava o ouvido no segundo 2 e' scroll perdido. Sao as tres entradas de
+    # `told` do pool — e assim elas tambem passam pela correcao de preposicao.
+    "His wife told everyone at {evento} his {o} was dead, they laughed.",
+    "Every man at {evento} knew his {o} was finished, they mocked him.",
+    "Everyone at {evento} laughed because his {o} stopped working.",
+    "Word got around {evento} that his {o} was dead, and they laughed.",
+    "His own brother told everyone at {evento} his {o} was done.",
+    "Half of {evento} heard his {o} quit, and they mocked him.",
+    "The women at {evento} heard his {o} stopped working, they whispered.",
     "Nobody at {evento} was surprised his {o} quit years ago.",
-    "Every husband at {evento} heard his {o} quit on him.",
-    "Everybody at {evento} heard that his {o} went dead.",
-    "His crew at {evento} heard his {o} gave out.",
-    "Neighbors at {evento} heard his {o} went soft on him.",
-    "Cousins at {evento} heard the gossip that his {o} quit.",
-    "The men at {evento} laughed about his {o} that night.",
-    "Word got around {evento} that his {o} finally quit.",
-    "Half of {evento} knows his {o} quit on him.",
+    "His crew at {evento} heard his {o} gave out, they laughed.",
+    "Every guy at {evento} knew his {o} quit on him.",
+    "The whole {evento} knew his {o} was finished, they said it out loud.",
+    "Cousins at {evento} heard his {o} shut down, they laughed at him.",
+    "Neighbors at {evento} heard his {o} went soft, they mocked him.",
+    "The men at {evento} laughed at him because his {o} quit.",
+    "His partner told everyone at {evento} his {o} hasn't worked in years.",
 ]
 
-# ⚠️ 4-6 palavras. O sujeito e' `His` com o substantivo elidido — o orgao da
-# frase anterior. E' o deitico DE PROPOSITO: ele aponta para o prop em quadro.
-ANCORAS16 = [
-    "His hangs just like this.",
-    "His hangs like this.",
-    "His hangs down like this.",
-    "His hangs over his own fingers.",
-    "His droops like this.",
-    "His stays down like this.",
-    "His stays folded like this.",
-    "His curls over his thumb.",
-    "His sinks into his lap.",
-    "His sags off his fingers.",
-    "His hides in his own fist.",
-    "His lies flat in his hand.",
-]
-
-# ⚠️ 5-7 palavras. ⛔ `one trick` sem sobrenome, virada SOCIAL, verbo fora do
-# vocabulario do `TRUQUES16`. ⛔ E nada de verbo de ereccao (`stands up`,
-# `works again`, `is back`) — licao paga em campo no COLO 16, 2026-08-09.
+# ⚠️ 9-10 palavras, TODAS nomeando `gelatin trick`.
+# ⭐ Quatro portadores da virada, porque na fonte ela vem de lugares diferentes:
+# o TEMPO (`nineteen days of`), um TERCEIRO (`a buddy gave him`), ELE MESMO
+# (`he found`) e o PROPRIO NARRADOR (`I told him about`) — este ultimo e' do
+# operador, e e' o mais forte: ele esta' apontando para o colega EM QUADRO.
+# ⛔ Nada de verbo de ereccao (`stands up`, `works again`, `is back`) — licao
+# paga em campo no COLO 16, 2026-08-09.
 VIRADAS16 = [
-    "One trick later, nobody was laughing.",
-    "One trick ended the laughing.",
-    "Then one trick shut them all up.",
-    "One trick, and the laughing stopped.",
-    "Then a buddy gave him one trick.",
-    "One trick later, they asked him why.",
-    "Then one trick flipped the whole thing.",
-    "One trick, and his wife bragged instead.",
-    "One trick later, nobody laughs at him.",
-    "Then one trick made him the story.",
-    "A buddy's trick ended all of that.",
-    "One trick, and they quit whispering.",
+    "Nineteen days of the gelatin trick fixed all that.",
+    "Then a buddy at work gave him the gelatin trick.",
+    "When he discovered the gelatin trick, all that changed.",
+    "I told him about the gelatin trick, everything changed.",
+    "Three weeks on the gelatin trick and nobody laughs now.",
+    "The gelatin trick fixed him in nineteen days flat.",
+    "Then his own brother handed him the gelatin trick.",
+    "I gave him the gelatin trick, and it all changed.",
+    "Two weeks of the gelatin trick shut them all up.",
+    "He found the gelatin trick, and the jokes stopped.",
+    "The gelatin trick ended every one of those jokes.",
+    "I showed him the gelatin trick that same night.",
+    "Nineteen days of the gelatin trick and she bragged instead.",
+    "He got the gelatin trick from me, everything changed.",
 ]
 
 QUEM_CONTOU = [
@@ -940,7 +941,13 @@ def _hook_fmt(hook, oc, o):
     ev = oc["plateia_evento"]
     if "The whole {evento}" in hook or "the whole {evento}" in hook:
         ev = re.sub(r"^(that|this|the)\s+", "", ev, flags=re.I)
-    return hook.format(evento=ev, o=o)
+    txt = hook.format(evento=ev, o=o)
+    # ⚠️ MESMO BUG, OUTRA PREPOSICAO — achado na revisao adversarial de
+    # 2026-08-09. Todos os 14 eventos aceitam `at`, menos um: `at that boat` e'
+    # agramatical, e o Veo NARRA o erro nos 2 segundos que decidem o scroll.
+    # ⛔ Consertado AQUI e nao no pool, pelo mesmo motivo do bloco acima: nem o
+    # evento nem as 16 humilhacoes sao redigitados. O errado e' a montagem.
+    return re.sub(r"\bat (that boat)\b", r"on \1", txt)
 
 
 def _mediana(vals):
@@ -949,31 +956,16 @@ def _mediana(vals):
 
 
 def _hook16(oc, o, rng):
-    """A cena 1 do 16s: FOFOCA + ANCORA + VIRADA, dentro das 24 palavras.
+    """A cena 1 do 16s: HUMILHACAO + VIRADA, dentro das 24 palavras.
 
-    ⛔⛔ A ORDEM DE ESCOLHA E' A REGRA MEDIDA NOS OUTROS DOIS MOTORES (`_fundir`
-    aqui embaixo, `_cta_curto` acima): QUEM CARREGA O INTOCAVEL ESCOLHE PRIMEIRO
-    e reserva so' o MINIMO dos outros; o beat INTERCAMBIAVEL escolhe por ULTIMO,
-    porque e' ele que absorve a sobra em vez de ser cortado pelo fim do take.
-
-        1. VIRADA  — o beat que o operador mandou existir, e o mais ESCASSO:
-                     as 12 entradas dizem coisas DIFERENTES
-        2. FOFOCA  — 16 entradas com a mesma funcao; reserva a MEDIANA da
-                     ancora, nao o maximo (orcamento pessimista mata pool)
-        3. ANCORA  — 12 entradas que dizem a MESMA coisa em 4-6 palavras: e'
-                     o unico beat que encolhe sem perder funcao
-
-    ⚠️⚠️ A PRIMEIRA VERSAO PUNHA A FOFOCA NA FRENTE, e o argumento era bom — ela
-    carrega `{evento}` e `{o}`. MEDIDO em 1.200 sorteios, deu mode-collapse na
-    virada: a fofoca escolhia livre, comia ate' 14 palavras, e sobrava orcamento
-    so' para a virada mais curta do pool — `One trick ended the laughing.` saia
-    em 44% dos videos. ⭐ O criterio nao e' "quem e' importante" e sim QUEM TEM
-    MENOS SUBSTITUTOS: os 16 jeitos de contar a fofoca sao intercambiaveis, os
-    12 jeitos de virar o jogo nao sao. Invertido, 12/12 e 16/16 saem, e a
-    virada mais frequente cai para ~11%.
+    ⭐ AQUI NAO HA' BEAT ESPREMIDO, e e' de proposito: as faixas foram escritas
+    para que 11-14 + 9-10 nunca passe de 24. As duas escolhas sao LIVRES, as
+    16 x 14 combinacoes saem todas, e o `_cabe` fica so' como rede — se alguem
+    ampliar um pool com entrada longa demais no futuro, ele corta em vez de
+    deixar a fala ser cortada no render.
 
     ⚠️ O `{evento}` varia de 2 a 3 palavras e ISSO ENTRA NO ORCAMENTO — por isso
-    a fofoca e' medida DEPOIS de formatada, nunca no template.
+    a humilhacao e' medida DEPOIS de formatada, nunca no template.
     """
     def _cabe(pool, reserva, fmt=None):
         def _n(x):
@@ -982,14 +974,10 @@ def _hook16(oc, o, rng):
         return v or [min(pool, key=_n)]
 
     fmt = lambda x: _hook_fmt(x, oc, o)                          # noqa: E731
-    _mn_a = min(_palavras(x) for x in ANCORAS16)
-    vir = rng.choice(_cabe(
-        VIRADAS16, _mn_a + min(_palavras(fmt(x)) for x in FOFOCAS16)))
-    fof = fmt(rng.choice(_cabe(
-        FOFOCAS16,
-        _palavras(vir) + _mediana([_palavras(a) for a in ANCORAS16]), fmt)))
-    anc = rng.choice(_cabe(ANCORAS16, _palavras(fof) + _palavras(vir)))
-    return "%s %s %s" % (fof, anc, vir)
+    hum = fmt(rng.choice(_cabe(
+        HUMILHACOES16, min(_palavras(x) for x in VIRADAS16), fmt)))
+    vir = rng.choice(_cabe(VIRADAS16, _palavras(hum)))
+    return "%s %s" % (hum, vir)
 
 
 def _sortear_evitando(rng, pool, recentes, chave="id"):
@@ -1457,6 +1445,31 @@ GATES16 = [
 ]
 
 
+def _sem_eco(pool, fala1):
+    """Tira do pool da cena 2 o truque cujo VERBO a cena 1 ja' gastou.
+
+    ⛔ NASCEU DE UMA CONSEQUENCIA, nao de gosto. Quando o operador mandou nomear
+    o `gelatin trick` ja' na cena 1 (2026-08-09), o literal passou a aparecer nas
+    DUAS cenas — o que e' bom, martela a keyword. O que nao pode e' vir com o
+    MESMO verbo colado nele oito segundos depois:
+
+        cena 1: "When he discovered the gelatin trick, all that changed."
+        cena 2: "The gelatin trick changes that."        <- disco arranhado
+
+    Compara os radicais de 5 letras das palavras que vem DEPOIS do literal, dos
+    dois lados. ⚠️ Radical, nao palavra: `changed` e `changes` sao o mesmo eco
+    para o ouvido, e comparar a palavra inteira nao pegaria nenhum dos dois.
+    ⚠️ Fallback e' o pool inteiro — filtro que zera nao pode zerar a escolha.
+    """
+    def _radicais(txt):
+        d = txt.lower().split("gelatin trick", 1)[-1]
+        return {w[:5] for w in re.findall(r"[a-z]{5,}", d)}
+
+    gastos = _radicais(fala1)
+    v = [x for x in pool if not (_radicais(x) & gastos)]
+    return v or pool
+
+
 def _fundir(spec, rng):
     """A cena fundida do 16s — reconstruida, nao herdada.
 
@@ -1480,8 +1493,12 @@ def _fundir(spec, rng):
     _mn_c = min(_palavras(x) for x in CTAS16)
     _mn_g = min(_palavras(x) for x in GATES16)
 
+    # ⚠️ `falas_base[0]` E' A CENA 1 — `spec["falas"]` ainda nao existe aqui: e'
+    # o `sortear_curto` que a monta DEPOIS, com o resultado desta funcao dentro.
+    truques = _sem_eco(TRUQUES16, spec["falas_base"][0])
+
     mec = rng.choice(_cabe(MECANISMOS16, _mn_t + _mn_c + _mn_g)).format(o=o)
-    tru = rng.choice(_cabe(TRUQUES16, _palavras(mec) + _mn_c
+    tru = rng.choice(_cabe(truques, _palavras(mec) + _mn_c
                            + _rsv([_palavras(g) for g in GATES16])))
     cta = rng.choice(_cabe(CTAS16, _palavras(mec) + _palavras(tru)
                            + _rsv([_palavras(g) for g in GATES16])))
