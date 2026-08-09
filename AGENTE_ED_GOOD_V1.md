@@ -166,6 +166,75 @@ outros. Manter assim.
 
 ---
 
+## 6. ⭐⭐ TOGGLE DE ENQUADRAMENTO — `casal na agua` ⟷ `so as maos`
+
+**Fonte:** leitura ótica a 1 fps de mais três reels, 2026-08-09 —
+`prep1.mp4` (13,9s), `prep2.mp4`, `prep3.mp4`.
+
+⛔⛔ **A COPY É A MESMA, PALAVRA POR PALAVRA.** Os três `prep` falam o mesmo
+arco do GOOD — *"If you are single, this is not for you. If you are married, be
+very careful. **She will not be able to keep up.** This mixture makes your body
+harder and stronger than it has been in years. Comment recipe... Follow me."*
+
+O que muda é **só o quadro**. Por isso o operador decidiu (2026-08-09):
+*"pode ser um toggle dentro do good"*.
+
+| | `casal na agua` | `so as maos` |
+|---|---|---|
+| quem aparece | homem + mulher, corpo inteiro | **só as mãos dele** |
+| rosto | ele fala na lente | **nenhum, em nenhum frame** |
+| a prova | o corpo dele + ela colada | **a bancada e o post-it** |
+| cenário | jacuzzi, quintal, sol | **pia de banheiro de casa, luz chapada** |
+| câmera | frontal, altura do peito | **de cima, macro na bancada** |
+
+⭐ É o mesmo par que o repo já tem entre CONSULTORIO (corpo-prova) e RECEITA
+(a bancada é a prova). E o toggle é **de enquadramento**, exatamente como o
+`corte de maos ⟷ terceira pessoa` do RECEITA.
+
+### O quadro de `so as maos`, medido na fonte
+
+- mãos de homem negro mais velho, **pele marcada, aliança de ouro**
+- ⛔ **ZERO mulher** — ordem do operador: *"só mãos, sem mulher"*
+- na bancada, tudo em quadro **desde o primeiro frame**: copo de água com
+  colher de metal apoiada na borda, sachê `gelatin` legível, e o post-it
+- cenário de casa real ao fundo: pasta de dente, sabonete líquido, escova
+  ⚠️ **sem marca legível** — a fonte mostra `Colgate`; aqui a embalagem é
+  genérica, como manda a regra do BOTICA
+
+⭐⭐ **É o enquadramento mais barato e mais seguro do repertório inteiro:** sem
+rosto para manter idêntico entre takes, sem corpo, sem prop fálico, sem
+despejo. Só mãos e uma bancada.
+
+### ⭐ O POST-IT — pool de rótulos
+
+> Ordem do operador: *"growth trick tem função de contextualização visual do
+> que se trata o truque, portanto mantenha-o — crie pool de outros termos para
+> o post-it que contextualize isso (que remete à melhora da função do wiener)"*
+
+O post-it é **manuscrito, caneta azul, papel amarelo**, apoiado na bancada em
+primeiro plano. Ele existe para o espectador entender do que se trata **sem a
+fala** — é o único elemento do quadro que nomeia o assunto.
+
+Pool a cobrir (o motor amplia e o operador aprova):
+
+```
+GROWTH TRICK      (o da fonte)
+HARD AGAIN
+FIRM TRICK
+BLOOD FLOW
+THE FIX
+NIGHT FIX
+```
+
+⚠️ **Isto é texto em quadro**, então herda a exceção declarada do sachê (§3): a
+palavra está no OBJETO, escrita à mão, não queimada na tela pelo gerador. A
+trava `No on-screen text` continua valendo para legenda e marca d'água.
+⛔ E os rótulos ficam **sugestivos, nunca explícitos** — palavra anatômica num
+post-it legível é superfície de bloqueio sem função, e a lição do repo é que o
+classificador julga tokens.
+
+---
+
 ## Conexões
 
 - [`WORKFLOW.md`](WORKFLOW.md) — a operação inteira
