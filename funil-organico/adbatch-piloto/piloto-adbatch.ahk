@@ -1,85 +1,69 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
-SendMode "Event"          ; ⚠️ Event, nao Input: apps tkinter e o Chrome perdem
-SetKeyDelay 30, 30        ;    cliques sinteticos rapidos demais.
-SetMouseDelay 40
+SendMode "Event"          ; ⚠️ Event, nao Input: tkinter e Chrome perdem
+SetKeyDelay 40, 40        ;    entrada sintetica rapida demais.
+SetMouseDelay 50
 CoordMode "Mouse", "Screen"
 CoordMode "Pixel", "Screen"
 
 /*
 ===============================================================================
- PILOTO ADBATCH — o ciclo agente -> AdBatch Vertical 2, em N abas
+ PILOTO ADBATCH — agente -> AdBatch Vertical 2, em N abas
 ===============================================================================
 
- O QUE ELE FAZ, por aba do Chrome:
-   1. no AGENTE (monitor vertical): seleciona BLOCO 0 (REF) e copia
-   2. copia os 2 IMAGE
-   3. copia os 2 TAKE
-   4. no CHROME (monitor horizontal): cola os tres no "Roteiro Master"
-   5. clica em "Gerar Lote com Referencia"
-   6. volta ao agente, marca como usado e sorteia o proximo (Ctrl+R)
-   7. proxima aba
+ POR CICLO:
+   1. AGENTE  — Ctrl+0 copia o ROTEIRO INTEIRO (REF + 2 IMAGE + 2 TAKE)
+   2. CHROME  — cola na caixa "Cole o roteiro inteiro" e clica em Gerar
+   3. AGENTE  — Ctrl+4 marca como usado, Ctrl+R sorteia o proximo
+   4. proxima aba
 
- Depois de preencher todas, entra em RONDA: revisita cada aba e, se um slot
- ainda estiver vazio, clica REGERAR nele. Repete ate' todos cheios ou ate' o
- limite de rondas.
+ ⭐⭐ SO' EXISTEM **DUAS** COORDENADAS OBRIGATORIAS, e as duas sao do Chrome.
+ A primeira versao clicava nos botoes do agente e pedia ONZE pontos. Ao MEDIR,
+ descobriu-se que o layout da janela do agente e' mais LARGO que o monitor
+ vertical de 1080px: `COPIAR BLOCO` e `marcar como usado` ficam CORTADOS na
+ borda, e a janela nao reflui — so' clipa. Nao havia coordenada valida ali.
+ ⭐ A saida foi consertar a CAUSA: o `ui_agente.py` ganhou atalhos de teclado
+ (Ctrl+0/1/2/3/4). Tecla nao tem coordenada, nao depende de onde a janela
+ esta', e nao quebra quando o operador arrasta a janela.
 
- ⛔⛔ NADA DE COORDENADA CHUTADA. Rode a CALIBRACAO uma vez (F9): o script
- pergunta alvo por alvo, voce poe o mouse em cima e aperta F9 de novo. Fica
- tudo gravado no .ini ao lado — nao se perde ao fechar.
-
- ⚠️⚠️ A ARMADILHA DESTE TIPO DE SCRIPT E' O CLIPBOARD MUDO: se um clique de
- copiar falha, a area de transferencia continua com o conteudo ANTERIOR e o
- script cola o video da aba passada sem reclamar. Por isso, a cada copia:
- limpa o clipboard, clica, espera, e CONFERE A ASSINATURA do conteudo
- (`REF 01:`, `IMAGE 01/02`, `TAKE 01/02`). Assinatura errada = para e avisa.
+ ⚠️⚠️ A ARMADILHA QUE SOBRA E' O CLIPBOARD MUDO: se o Ctrl+0 nao chegar na
+ janela certa, a area de transferencia fica com o roteiro ANTERIOR e o lote
+ sai com a REF de um video e as cenas de outro — sem aviso, aparecendo so' no
+ render com o credito gasto. Por isso, a cada ciclo: limpa o clipboard, manda
+ a tecla, espera, e CONFERE as CINCO partes, uma a uma.
 
  TECLAS
-   F9   calibrar (ou recalibrar) os pontos de clique
-   F10  rodar o ciclo completo
-   F8   ensaio seco: percorre tudo SEM colar e SEM clicar em Gerar
-   Esc  aborta na hora, em qualquer momento
-   F12  mostra o log da ultima execucao
-
+   F9   calibrar (6 pontos, todos no Chrome — 2 obrigatorios, 4 para a ronda)
+   F8   ensaio seco — copia e confere, mas nao cola e nao clica em Gerar
+   F10  rodar
+   F12  log
+   Esc  aborta (so' ativo enquanto roda)
 ===============================================================================
 */
 
 INI := A_ScriptDir "\piloto-adbatch.ini"
 ARQ_LOG := A_ScriptDir "\piloto-adbatch.log"
 
-; --- os alvos de clique, na ordem em que a calibracao pergunta ---------------
-; chave | onde | o que e'
 ALVOS := [
-    ["ag_bloco_ref", "AGENTE",  "o item BLOCO 0 (REF) na lista da secao 3"],
-    ["ag_copiar",    "AGENTE",  "o botao laranja COPIAR BLOCO"],
-    ["ag_imgs",      "AGENTE",  "o botao 'copiar os 2 IMAGE'"],
-    ["ag_takes",     "AGENTE",  "o botao 'copiar os 2 TAKE'"],
-    ["ag_usado",     "AGENTE",  "o botao 'marcar como usado'"],
-    ["cr_roteiro",   "CHROME",  "a caixa 'Cole o roteiro inteiro...' (Roteiro Master)"],
-    ["cr_gerar",     "CHROME",  "o botao 'Gerar Lote com Referencia'"],
-    ["cr_slot1",     "CHROME",  "o MEIO do quadro cinza do SLOT 01 (onde a imagem aparece)"],
-    ["cr_slot2",     "CHROME",  "o MEIO do quadro cinza do SLOT 02"],
-    ["cr_reger1",    "CHROME",  "o botao REGERAR do SLOT 01"],
-    ["cr_reger2",    "CHROME",  "o botao REGERAR do SLOT 02"],
+    ["cr_roteiro", "a caixa 'Cole o roteiro inteiro...' (Roteiro Master)"],
+    ["cr_gerar",   "o botao 'Gerar Lote com Referencia'"],
+    ["cr_slot1",   "o MEIO do quadro cinza do SLOT 01"],
+    ["cr_slot2",   "o MEIO do quadro cinza do SLOT 02"],
+    ["cr_reger1",  "o botao REGERAR do SLOT 01"],
+    ["cr_reger2",  "o botao REGERAR do SLOT 02"],
 ]
 
 global abortar := false
-global linhas := []
-; ⚠️ `rodando` existe so' para escopar o Esc. Sem isso o script sequestra a
-; tecla Esc do Windows inteiro enquanto estiver carregado, e o operador perde
-; o Esc em toda janela — automacao que atrapalha fora da propria tarefa e' pior
-; que automacao nenhuma.
 global rodando := false
+global linhas := []
 
-; =============================================================================
-;  TECLAS
-; =============================================================================
 F9::  calibrar()
 F10:: rodar(false)
 F8::  rodar(true)
 F12:: mostrarLog()
-#HotIf rodando          ; ⛔ o Esc so' existe ENQUANTO o ciclo roda
-Esc:: {
+
+#HotIf rodando          ; ⛔ o Esc so' existe ENQUANTO o ciclo roda, senao o
+Esc:: {                 ;    script sequestra o Esc do Windows inteiro
     global abortar
     abortar := true
     ToolTip "ABORTANDO..."
@@ -88,11 +72,9 @@ Esc:: {
 #HotIf
 
 ; =============================================================================
-;  CALIBRACAO
-; =============================================================================
 calibrar() {
-    global INI, ALVOS, rodando
-    rodando := true          ; o Esc precisa funcionar durante a calibracao
+    global rodando
+    rodando := true
     try
         calibrarMiolo()
     finally
@@ -101,30 +83,24 @@ calibrar() {
 
 calibrarMiolo() {
     global INI, ALVOS
-    MsgBox(
-        "CALIBRACAO — " ALVOS.Length " pontos.`n`n"
-        "Para cada um: leve o mouse ate' o alvo e aperte F9.`n"
-        "O script NAO clica em nada agora, so' anota onde e'.`n`n"
-        "⚠️ Deixe as duas janelas ja' abertas e do jeito que vao ficar:`n"
-        "   · o AGENTE no monitor vertical`n"
-        "   · o Chrome com a AdBatch Vertical 2 no horizontal`n`n"
-        "Mover ou redimensionar uma janela depois disso obriga a recalibrar.",
-        "Piloto AdBatch — calibrar")
+    MsgBox("CALIBRACAO — " ALVOS.Length " pontos, todos no CHROME.`n`n"
+           "Para cada um: leve o mouse ate' o alvo e aperte F9.`n"
+           "O script nao clica em nada agora.`n`n"
+           "⭐ Os botoes do AGENTE nao precisam de calibracao: o piloto usa os "
+           "atalhos de teclado (Ctrl+0, Ctrl+4, Ctrl+R).", "Piloto AdBatch")
 
     for alvo in ALVOS {
-        chave := alvo[1], onde := alvo[2], desc := alvo[3]
-        ToolTip "[" onde "]  aponte para:`n" desc "`n`n(F9 confirma · Esc cancela)"
+        ToolTip "[CHROME] aponte para:`n" alvo[2] "`n`n(F9 confirma · Esc cancela)"
         if !esperarF9()
             return ToolTip()
         MouseGetPos(&x, &y)
-        IniWrite x, INI, "pontos", chave "_x"
-        IniWrite y, INI, "pontos", chave "_y"
-        ToolTip "gravado: " chave " = " x "," y
+        IniWrite x, INI, "pontos", alvo[1] "_x"
+        IniWrite y, INI, "pontos", alvo[1] "_y"
+        ToolTip "gravado: " alvo[1] " = " x "," y
         Sleep 350
     }
     ToolTip()
 
-    ; ⭐ a COR DO SLOT VAZIO — e' com ela que a ronda sabe se a imagem chegou.
     p := lerPonto("cr_slot1")
     cor := PixelGetColor(p.x, p.y)
     IniWrite cor, INI, "pontos", "cor_vazio"
@@ -134,25 +110,20 @@ calibrarMiolo() {
     if (n.Result = "OK" && IsInteger(n.Value))
         IniWrite n.Value, INI, "config", "abas"
 
-    MsgBox("Calibrado.`n`nCor do slot vazio: " cor "`n"
-           "Abas: " IniRead(INI, "config", "abas", "?") "`n`n"
-           "F8 = ensaio seco (recomendado da primeira vez)`n"
-           "F10 = rodar de verdade", "Piloto AdBatch")
+    MsgBox("Calibrado.`n`nCor do slot vazio: " cor
+           "`nAbas: " IniRead(INI, "config", "abas", "?")
+           "`n`nF8 = ensaio seco · F10 = rodar", "Piloto AdBatch")
 }
 
 esperarF9() {
-    global abortar
-    abortar := false
     KeyWait "F9", "U"
     loop {
-        if abortar
+        if GetKeyState("Escape", "P")
             return false
         if GetKeyState("F9", "P") {
             KeyWait "F9", "U"
             return true
         }
-        if GetKeyState("Escape", "P")
-            return false
         Sleep 40
     }
 }
@@ -170,36 +141,44 @@ clicar(chave, seco := false) {
     p := lerPonto(chave)
     if seco {
         MouseMove p.x, p.y, 2
-        ToolTip "[seco] clicaria em " chave " (" p.x "," p.y ")"
-        Sleep 260
+        ToolTip "[seco] clicaria em " chave
+        Sleep 280
         return
     }
     Click p.x, p.y
-    Sleep 160
+    Sleep 180
 }
 
 ; =============================================================================
-;  COPIA COM CONFERENCIA DE ASSINATURA
+;  O ROTEIRO, PELO ATALHO — com conferencia das cinco partes
 ; =============================================================================
-; ⛔⛔ ISTO E' O CORACAO DA SEGURANCA DO SCRIPT. Sem a conferencia, um clique
-; que nao pegou deixa o clipboard com o conteudo do video ANTERIOR, e o lote
-; sai com a REF de um video e as cenas de outro — erro que so' aparece no
-; render, quando ja' se gastou credito.
-copiar(chaves, assinatura, rotulo) {
+pegarRoteiro(tAgente) {
+    if !WinExist(tAgente)
+        throw Error("nao achei a janela do agente (titulo comeca com '" tAgente "')")
+    WinActivate tAgente
+    if !WinWaitActive(tAgente, , 4)
+        throw Error("a janela do agente nao veio para a frente")
+    Sleep 350
+
     A_Clipboard := ""
-    for c in chaves
-        clicar(c)
-    if !ClipWait(3, 0)
-        throw Error(rotulo ": nada foi copiado em 3s — o clique nao pegou o botao")
+    Send "^0"                       ; copiar_tudo() do ui_agente
+    if !ClipWait(4, 0)
+        throw Error("Ctrl+0 nao copiou nada.`n`nO .exe deste agente foi "
+                    "recompilado depois de 2026-08-08? Os atalhos so' existem "
+                    "nas versoes novas.")
     txt := A_Clipboard
-    if !InStr(txt, assinatura)
-        throw Error(rotulo ": o texto copiado nao contem " assinatura "`n`n"
-                    "primeiros 120 caracteres:`n" SubStr(txt, 1, 120))
+
+    ; ⛔ AS CINCO PARTES, uma a uma. Procurar so' por `IMAGE` nao basta: se
+    ; vier apenas o 01/02, o lote sai pela metade e o slot 2 fica vazio para
+    ; sempre — e o video so' seria descoberto quebrado depois do render.
+    for parte in ["REF 01:", "IMAGE 01/02", "IMAGE 02/02", "TAKE 01/02", "TAKE 02/02"] {
+        if !InStr(txt, parte)
+            throw Error("o roteiro copiado nao tem " parte "`n`n"
+                        "primeiros 150 caracteres:`n" SubStr(txt, 1, 150))
+    }
     return txt
 }
 
-; =============================================================================
-;  O CICLO
 ; =============================================================================
 rodar(seco) {
     global rodando
@@ -207,13 +186,13 @@ rodar(seco) {
     try
         rodarMiolo(seco)
     finally {
-        rodando := false      ; ⛔ SEMPRE, inclusive se algo estourar no meio —
-        ToolTip()             ;    senao o Esc fica sequestrado para sempre
+        rodando := false     ; ⛔ SEMPRE — senao o Esc fica sequestrado
+        ToolTip()
     }
 }
 
 rodarMiolo(seco) {
-    global abortar, linhas, INI, ARQ_LOG
+    global abortar, linhas, INI
     abortar := false
     linhas := []
 
@@ -233,37 +212,16 @@ rodarMiolo(seco) {
         i := A_Index
         if abortar
             break
-        ToolTip "aba " i "/" abas " — copiando do agente..."
-
+        ToolTip "aba " i "/" abas " — pegando o roteiro no agente..."
         try {
-            ; ---- 1. o agente entrega as tres partes -------------------------
-            if !WinExist(tAgente)
-                throw Error("nao achei a janela do agente (" tAgente ")")
-            WinActivate tAgente
-            WinWaitActive tAgente, , 3
-            Sleep 250
+            roteiro := pegarRoteiro(tAgente)
+            anotar("aba " i ": roteiro OK, " StrLen(roteiro) " caracteres")
 
-            ref   := copiar(["ag_bloco_ref", "ag_copiar"], "REF 01:",     "BLOCO 0 (REF)")
-            imgs  := copiar(["ag_imgs"],                   "IMAGE 01/02", "os 2 IMAGE")
-            takes := copiar(["ag_takes"],                  "TAKE 01/02",  "os 2 TAKE")
-
-            ; ⚠️ conferencia extra: os DOIS de cada par tem de estar la'. O
-            ; botao diz "os 2", mas se o motor tiver gerado so' um, o lote sai
-            ; pela metade e o slot 2 fica vazio para sempre.
-            if !InStr(imgs, "IMAGE 02/02")
-                throw Error("so' veio UM bloco IMAGE — falta o 02/02")
-            if !InStr(takes, "TAKE 02/02")
-                throw Error("so' veio UM bloco TAKE — falta o 02/02")
-
-            roteiro := ref "`n`n" imgs "`n`n" takes
-            anotar("aba " i ": roteiro montado, " StrLen(roteiro) " caracteres")
-
-            ; ---- 2. o Chrome recebe -----------------------------------------
             if !WinExist(tChrome)
                 throw Error("nao achei a janela do Chrome (" tChrome ")")
             WinActivate tChrome
-            WinWaitActive tChrome, , 3
-            Sleep 250
+            WinWaitActive tChrome, , 4
+            Sleep 300
             irParaAba(i)
 
             if seco {
@@ -272,92 +230,85 @@ rodarMiolo(seco) {
                 anotar("aba " i ": [seco] colaria e clicaria em Gerar")
             } else {
                 clicar("cr_roteiro")
-                Send "^a"                    ; limpa o que estiver la'
-                Sleep 80
+                Send "^a"
+                Sleep 100
                 A_Clipboard := roteiro
                 ClipWait(2, 0)
                 Send "^v"
-                Sleep 700                    ; o app precisa reparsear o texto
+                Sleep 900                 ; o app reparseia o texto colado
                 clicar("cr_gerar")
-                Sleep 900
+                Sleep 1000
                 anotar("aba " i ": colado e Gerar clicado")
-            }
 
-            ; ---- 3. o agente sorteia o proximo -------------------------------
-            if !seco {
                 WinActivate tAgente
-                WinWaitActive tAgente, , 3
-                Sleep 200
-                clicar("ag_usado")
+                WinWaitActive tAgente, , 4
                 Sleep 250
-                Send "^r"                    ; SORTEAR VIDEO
-                Sleep 900
+                Send "^4"                 ; marcar como usado
+                Sleep 300
+                Send "^r"                 ; sortear o proximo
+                Sleep 1100
             }
-
         } catch as e {
             anotar("aba " i ": PAROU — " e.Message)
             ToolTip()
             MsgBox("Parei na aba " i ".`n`n" e.Message
-                   "`n`nNada foi colado nesta aba. Corrija e rode de novo.",
-                   "Piloto AdBatch", 16)
+                   "`n`nNada foi colado nesta aba.", "Piloto AdBatch", 16)
             return
         }
     }
     ToolTip()
 
-    if (seco) {
+    if seco {
         anotar("ensaio seco terminou sem erro")
         return MsgBox("Ensaio seco OK — os " abas " ciclos rodariam.`n`n"
-                      "F12 ve' o log. F10 roda de verdade.", "Piloto AdBatch")
+                      "⚠️ Ele COPIOU de verdade do agente (inofensivo) e "
+                      "conferiu as cinco partes. So' nao colou nem gerou."
+                      "`n`nF12 ve' o log. F10 roda de verdade.", "Piloto AdBatch")
     }
-
     ronda()
 }
 
 irParaAba(n) {
-    ; ⚠️ Ctrl+1..8 vai direto; Ctrl+9 e' SEMPRE a ultima aba no Chrome, entao
-    ; da nona em diante o jeito honesto e' contar a partir da primeira.
+    ; ⚠️ Ctrl+9 no Chrome vai para a ULTIMA aba, nao para a nona.
     if (n <= 8) {
         Send "^" n
     } else {
         Send "^1"
-        Sleep 120
+        Sleep 150
         loop n - 1 {
             Send "^{Tab}"
-            Sleep 90
+            Sleep 110
         }
     }
-    Sleep 400
+    Sleep 450
 }
 
 ; =============================================================================
-;  RONDA — volta em cada aba e regera o slot que ficou vazio
-; =============================================================================
 ronda() {
     global abortar, INI
-    abas   := Integer(IniRead(INI, "config", "abas", "0"))
-    corVaz := IniRead(INI, "pontos", "cor_vazio", "")
-    maxR   := Integer(IniRead(INI, "config", "rondas", "6"))
-    espera := Integer(IniRead(INI, "config", "espera_s", "45"))
+    abas    := Integer(IniRead(INI, "config", "abas", "0"))
+    corVaz  := IniRead(INI, "pontos", "cor_vazio", "")
+    maxR    := Integer(IniRead(INI, "config", "rondas", "6"))
+    espera  := Integer(IniRead(INI, "config", "espera_s", "45"))
     tChrome := IniRead(INI, "config", "titulo_chrome", "Google Flow")
 
     if (corVaz = "") {
         anotar("ronda pulada: cor do slot vazio nao calibrada")
-        return MsgBox("Lotes disparados.`n`nA ronda foi pulada — a cor do slot "
-                      "vazio nao esta' calibrada (F9).", "Piloto AdBatch")
+        return MsgBox("Lotes disparados. Ronda pulada (falta calibrar a cor).",
+                      "Piloto AdBatch")
     }
 
     loop maxR {
         r := A_Index
         if abortar
             break
-        ToolTip "ronda " r "/" maxR " — esperando " espera "s antes de conferir"
+        ToolTip "ronda " r "/" maxR " — esperando " espera "s"
         if !dormir(espera * 1000)
             break
 
         pendentes := 0
         WinActivate tChrome
-        WinWaitActive tChrome, , 3
+        WinWaitActive tChrome, , 4
         loop abas {
             i := A_Index
             if abortar
@@ -368,28 +319,26 @@ ronda() {
                 p := lerPonto(par[1])
                 if (PixelGetColor(p.x, p.y) = corVaz) {
                     vazios++
-                    ; ⚠️ so' regera a partir da SEGUNDA ronda: na primeira o
+                    ; ⚠️ so' regera da SEGUNDA ronda em diante: na primeira o
                     ; slot vazio provavelmente ainda esta' gerando, e clicar
-                    ; REGERAR ali joga fora o trabalho em andamento e gasta
-                    ; credito de novo.
+                    ; REGERAR ali joga fora o trabalho e gasta credito de novo.
                     if (r >= 2)
                         clicar(par[2])
                 }
             }
             if vazios
                 pendentes++
-            anotar("ronda " r ", aba " i ": " vazios " slot(s) vazio(s)")
+            anotar("ronda " r ", aba " i ": " vazios " vazio(s)")
         }
         ToolTip()
         if (pendentes = 0) {
-            anotar("ronda " r ": todas as abas com as duas imagens")
-            return MsgBox("Pronto — as " abas " abas estao com as duas imagens.",
+            anotar("ronda " r ": tudo cheio")
+            return MsgBox("Pronto — as " abas " abas com as duas imagens.",
                           "Piloto AdBatch")
         }
     }
-    MsgBox("Fim das rondas. Ainda ha' aba com slot vazio.`n`n"
-           "F12 ve' o log — pode ser fila do Flow, credito, ou a cor do slot "
-           "vazio calibrada em cima de um pixel que muda.", "Piloto AdBatch", 48)
+    MsgBox("Fim das rondas, ainda ha' slot vazio. F12 ve' o log.",
+           "Piloto AdBatch", 48)
 }
 
 dormir(ms) {
@@ -403,9 +352,6 @@ dormir(ms) {
     return true
 }
 
-; =============================================================================
-;  ARQ_LOG
-; =============================================================================
 anotar(txt) {
     global linhas, ARQ_LOG
     linha := FormatTime(, "HH:mm:ss") "  " txt

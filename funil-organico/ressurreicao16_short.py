@@ -162,8 +162,13 @@ SUBTITULO = ("o despejo que ressuscita — o prop murcho que alonga na tela, "
              "dentro da coluna de po' · 3 cenas")
 SLUG = "ressurreicao-16"
 
-CENAS_UI = ["1 · O DESPEJO E O CRESCIMENTO", "2 · A RECEITA INCOMPLETA",
-            "3 · A PROVA + CTA"]
+# ⛔⛔ DUAS CENAS. A 2 (a receita na bancada) morre como QUADRO e sobrevive
+# como FALA; a fundida herda o quadro da 3, que e' o payoff.
+# ⚠️ ESTE CAMPO FICOU PARA TRAS NO PORTE e o app QUEBRAVA ao abrir:
+# `IndexError` em `_preencher_copy`, porque a UI monta uma caixa de texto
+# por rotulo de CENAS_UI e pedia a fala[2], que nao existe mais. Nenhum
+# medidor pegou — todos olham o motor, e este defeito so' existe na JANELA.
+CENAS_UI = ["1 · O DESPEJO E O CRESCIMENTO", "2 · A RECEITA + PROVA + CTA"]
 
 # ---------------------------------------------------------------------------
 # ORCAMENTO — piso E teto, e os dois sao mecanicos

@@ -162,6 +162,24 @@ class App(tk.Tk):
         self.bind("<Control-r>", lambda _e: self.sortear())
         self.bind("<Control-s>", lambda _e: self.salvar())
 
+        # ⭐⭐ ATALHOS DE COPIA — 2026-08-08, para o Piloto AdBatch.
+        # ⛔ POR QUE ELES EXISTEM. O piloto (AutoHotkey) precisava CLICAR nos
+        # botoes da secao 3, e clique depende de coordenada de tela. Medido no
+        # dia: o layout desta janela e' mais LARGO que o monitor vertical de
+        # 1080px, entao `COPIAR BLOCO` e `marcar como usado` ficam CORTADOS na
+        # borda — nao ha' coordenada valida para eles ali. E a janela nao
+        # reflui: ela so' clipa.
+        # ⭐ Com atalho, o piloto nao precisa de coordenada NENHUMA deste lado:
+        # ativa a janela e manda a tecla. Sai a fragilidade inteira.
+        # ⚠️ `Control-0` e' o que o AdBatch de fato quer — ele tem UMA caixa
+        # ("Cole o roteiro inteiro") e parseia REF/IMAGE/TAKE de dentro dela.
+        # Copiar em tres pedacos e remontar do lado de fora era trabalho a toa.
+        self.bind("<Control-Key-0>", lambda _e: self.copiar_tudo())
+        self.bind("<Control-Key-1>", lambda _e: self.copiar_ref())
+        self.bind("<Control-Key-2>", lambda _e: self.copiar_grupo("IMAGE"))
+        self.bind("<Control-Key-3>", lambda _e: self.copiar_grupo("TAKE"))
+        self.bind("<Control-Key-4>", lambda _e: self.marcar_usado())
+
         self.sortear()
 
     # ---------------------------------------------------------------- estilo
@@ -937,6 +955,37 @@ class App(tk.Tk):
         self._clip(self.txt_bloco.get("1.0", "end").rstrip())
         self._piscar(self.b_copiar, ACCENT)
         self._toast("%s copiado" % self._nome_sel())
+
+    def copiar_ref(self):
+        """O BLOCO 0 (REF) — sem depender de qual item esta' selecionado.
+
+        ⚠️ O `copiar_bloco` copia o bloco SELECIONADO na lista. Chamado por
+        atalho, ele copiaria o que estivesse marcado — que no meio de um lote
+        automatizado pode ser qualquer um. Aqui o alvo e' nomeado.
+        """
+        nome = next((k for k in self.blocos if k.startswith("BLOCO 0")), None)
+        if nome is None:
+            return self._toast("nao ha' BLOCO 0 (REF) neste roteiro")
+        self._clip(self.blocos[nome])
+        self._toast("%s copiado" % nome)
+
+    def copiar_tudo(self):
+        """⭐ O ROTEIRO INTEIRO — REF + IMAGEs + TAKEs, na ordem, de uma vez.
+
+        E' o formato que a AdBatch Vertical espera na caixa "Cole o roteiro
+        inteiro": ela le' o texto todo e conta os REF/IMAGE/TAKE de dentro.
+        ⛔ A ORDEM E' FIXA e nao e' a alfabetica: o REF vem primeiro porque a
+        ferramenta usa a referencia para as imagens seguintes.
+        """
+        ref = [k for k in self.blocos if k.startswith("BLOCO 0")]
+        img = sorted(k for k in self.blocos if k.startswith("IMAGE"))
+        tak = sorted(k for k in self.blocos if k.startswith("TAKE"))
+        ordem = ref + img + tak
+        if not ordem:
+            return self._toast("nao ha' blocos para copiar")
+        self._clip("\n\n".join(self.blocos[n] for n in ordem))
+        self._toast("roteiro inteiro copiado — %d blocos (%d REF, %d IMAGE, "
+                    "%d TAKE)" % (len(ordem), len(ref), len(img), len(tak)))
 
     def copiar_grupo(self, prefixo):
         nomes = sorted(k for k in self.blocos if k.startswith(prefixo))
