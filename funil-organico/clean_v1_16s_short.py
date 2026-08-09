@@ -27,6 +27,9 @@ O QUE MUDOU EM RELACAO AO V1
   · GATES comprimidos de 8-11 para 2-7 palavras. Sem isso o pedido de seguir
     nao caberia em take nenhum e cairia em 100% dos videos
   · ancora de SOTAQUE AMERICANO nos dois takes (CL29/CL31, nascidas no V2)
+  · 16S6 (2026-08-09): ancora de TRILHA reforcada (o `No music.` de duas
+    palavras nao segurava — trilha em 20+ takes de campo) e ancora de RITMO
+    (fala curta saia em camera lenta para encher os 8 segundos)
 
     aponta   ela so' aponta, a bancada nao muda em nenhuma das 2 cenas
     preparo  ela PREPARA na cena 1 e a cena 2 e' o resultado pronto ao lado
@@ -72,6 +75,58 @@ for _a in (SOTAQUE, VOZ):
     assert "General American" in _a, "ancora sem o nome do sotaque: %r" % _a
     assert not re.search(r"\bno\s+\w+\s+accent", _a, re.I), (
         "ancora NEGATIVA — diz-se qual sotaque e', nunca qual nao e'")
+
+# ⭐⭐ 16S6 (2026-08-09) — DUAS ANCORAS NASCIDAS DE RELATO DE CAMPO. As duas
+# tem a MESMA causa raiz do CL31: a regra estava escrita, so' que na posicao
+# mais fraca do prompt e na forma que o gerador menos respeita.
+#
+# (a) TRILHA — `No music.` NAO segurava. O operador contou trilha em mais de
+#     20 takes. Duas palavras NEGATIVAS no FIM do campo `Audio:` sao o pior
+#     lugar possivel. A receita e' a do CL31, aplicada a outro eixo:
+#       POSICAO     a regra deixa de ser rabicho e passa a FECHAR o campo;
+#       POSITIVO    declara-se o conjunto COMPLETO do que EXISTE antes de
+#                   negar o que nao existe;
+#       CONCRETUDE  `raw sound recorded live by the phone microphone` exclui
+#                   trilha por CONSTRUCAO — trilha e' pos-producao, e som
+#                   cru nao tem pos-producao;
+#       SINONIMO    o gerador casa TOKEN. Quem so' le `music` nao cobre
+#                   `song`, `soundtrack`, `score`, `melody`, `beat`.
+#
+# (b) RITMO — take de fala curta saia com o personagem falando em CAMERA
+#     LENTA. O gerador le a duracao do clipe como duracao da FALA e estica as
+#     silabas ate' encher os 8s. Por isso nao basta pedir velocidade normal:
+#     tem de estar escrito que SOBRAR SILENCIO no fim e' o resultado certo.
+#     Sem a segunda metade ele continua achando que precisa preencher o tempo.
+#     ⛔ A ancora fala da BOCA, nunca do corpo: na familia `preparo` a cena 1
+#     tem despejo em andamento, e mandar "ficar parado" contradiria o `mov` —
+#     contradicao dentro do prompt e' o que faz o Veo apagar o que estava certo.
+SEM_TRILHA = (
+    "This is raw sound recorded live by the phone microphone, with nothing "
+    "added afterwards: the whole audio track is the speaking voice plus that "
+    "room tone and nothing else. There is no music anywhere in this clip: no "
+    "song, no soundtrack, no score, no background music, no melody, no "
+    "instruments, no beat. Where nobody is speaking there is room tone only, "
+    "never music")
+# ⚠️ `%(S)s` so' no INICIO de frase e `%(s)s` no meio. A primeira versao usava
+# o pronome maiusculo nas tres posicoes e saia *"on purpose: She says it"* —
+# defeito que nao quebra nada, aparece no prompt colado no Veo e so' se ve
+# lendo o bloco pronto.
+RITMO = (
+    "%(S)s delivers the line at a normal conversational speed, the ordinary "
+    "pace of everyday American speech, and never stretches, drags or slows the "
+    "words down. The line is short on purpose: %(s)s says it once at that "
+    "normal speed and then stops speaking, mouth closed, still looking into "
+    "the lens. The leftover silence at the end of the clip is expected and "
+    "correct, and %(s)s never slows the delivery down to fill the time. "
+    "Everything in the shot plays at real-time speed.")
+for _t in ("no song", "no soundtrack", "no score", "no background music",
+           "no melody", "no beat"):
+    assert _t in SEM_TRILHA, "ancora de trilha sem o sinonimo %r" % _t
+assert "raw sound recorded live" in SEM_TRILHA, (
+    "ancora de trilha sem a ancora POSITIVA de som cru")
+for _t in ("normal conversational speed", "expected and correct",
+           "real-time speed"):
+    assert _t in RITMO, "ancora de ritmo sem %r" % _t
 
 # ⛔⛔ FORMATO ALINHADO AOS OUTROS NOVE MOTORES EM 2026-08-03. Este era o unico
 # `ETNIA` que guardava DICT por pagina (`{"dominio": ..., "etnia": "branco"}`).
@@ -1340,19 +1395,27 @@ def montar(spec):
         amb = ["quiet office room tone"] * 2
     # ⭐ CL31 — a VOZ ABRE o campo `Audio:` e a ambiencia vem atras. Era a
     # ambiencia que abria, e o gerador tirava o timbre do lugar.
-    audio = ["%s. %s. No music." % (VOZ, a[0].upper() + a[1:]) for a in amb]
+    # ⭐⭐ 16S6 — e o campo FECHA com a ancora de trilha, que antes era um
+    # `No music.` de duas palavras e nao segurava em campo.
+    audio = ["%s. %s. %s." % (VOZ, a[0].upper() + a[1:], SEM_TRILHA)
+             for a in amb]
     # CL14 — na cena 1 da familia B a frase travada vira TOCA_UM; na cena 2
     # (e na familia A inteira) o NAO_TOCA volta.
     toca_um = TOCA_UM % (S, s, S)
+    # ⭐⭐ 16S6 — o RITMO entra COLADO na ancora de sotaque, antes do movimento:
+    # as duas descrevem a MESMA coisa (como a fala sai da boca) e separa-las
+    # pelo bloco de movimento e' o que deixava a segunda solta no fim do
+    # paragrafo, de onde o gerador ja' descartou o `No music.`
+    ritmo = RITMO % {"S": S, "s": s}
     for i in range(2):
         toca = " " + (toca_um if (fam == "preparo" and i == 0) else nao_toca)
         b["TAKE %02d/02" % (i + 1)] = (
             "Animate the provided image exactly. Handheld iPhone shot, very "
             "slight natural sway, no cuts. The %d-year-old %s speaks straight "
-            "into the lens %s. %s%s %s is the only person in the shot.\n"
+            "into the lens %s. %s %s%s %s is the only person in the shot.\n"
             'Dialogue: "%s"\nAudio: %s'
             % (idade, "man" if spec["sexo"] == "homem" else "woman",
-               SOTAQUE, mov[i], toca, S, sonorizar(spec["falas"][i]),
+               SOTAQUE, ritmo, mov[i], toca, S, sonorizar(spec["falas"][i]),
                audio[i]))
     # ⛔ 2026-08-03: os seis blocos saiam SEM a tag (`Animate the provided
     # image...` em vez de `TAKE 03/03: Animate...`), e o AdBatch parseia por
@@ -1529,6 +1592,43 @@ def lint(spec, blocos):
     if "foreground" not in blocos.get("IMAGE 01/02", ""):
         ach.append(("ERRO", "CL27: IMAGE 01 sem os itens em primeiro plano "
                             "(foreground) — a cena sai longe demais"))
+
+    # ⭐⭐ 16S6 — as duas ancoras novas nos DOIS takes, e a de trilha no lugar
+    # certo. ⚠️ O `Audio:` e' cobrado por POSICAO, nao so' por presenca: o que
+    # falhou em campo nao foi a ausencia da regra, foi ela estar no fim como
+    # rabicho de duas palavras. Lente que so' procura a string aprovaria de
+    # novo exatamente o prompt que gerou os 20 takes com trilha.
+    for nome in ("TAKE 01/02", "TAKE 02/02"):
+        t = blocos.get(nome, "")
+        direcao, _, aud = t.partition("\nAudio: ")
+        if "normal conversational speed" not in direcao:
+            ach.append(("ERRO", "16S6: %s sem a ancora de RITMO — fala curta "
+                                "sai esticada para encher os 8s" % nome))
+        if "expected and correct" not in direcao:
+            ach.append(("ERRO", "16S6: %s manda falar normal mas nao AUTORIZA "
+                                "o silencio no fim — sem isso o gerador "
+                                "continua enchendo o tempo" % nome))
+        if not aud.startswith(VOZ):
+            ach.append(("ERRO", "CL31: %s — o campo Audio nao ABRE com a voz"
+                                % nome))
+        # ⛔ LITERAIS, nunca `endswith(SEM_TRILHA)`. A primeira versao cobrava a
+        # saida CONTRA A PROPRIA CONSTANTE: enfraquecer SEM_TRILHA mudava os
+        # dois lados da comparacao e a lente aprovava calada. O controle
+        # negativo pegou — voltei a ancora para `No music` e nao saiu um erro.
+        # Guarda que se move junto com o que guarda nao guarda nada.
+        if "raw sound recorded live" not in aud:
+            ach.append(("ERRO", "16S6: %s sem a ancora POSITIVA de som cru — "
+                                "so' negar `music` nao segurou em campo"
+                                % nome))
+        for _s in ("no song", "no soundtrack", "no score",
+                   "no background music", "no melody", "no beat"):
+            if _s not in aud:
+                ach.append(("ERRO", "16S6: %s sem o sinonimo '%s' — o gerador "
+                                    "casa TOKEN, nao sentido" % (nome, _s)))
+        if not aud.rstrip().endswith("never music."):
+            ach.append(("ERRO", "16S6: %s — o campo Audio nao FECHA na ancora "
+                                "de trilha; foi de rabicho no fim que o "
+                                "`No music.` velho nao segurou" % nome))
     # ⛔⛔ TAKE CONTRA IMAGE — 2026-08-05. Este motor tem `lint()` proprio e NAO
     # passa pelo `lint_curto`, entao a lente compartilhada nao chegava aqui.
     # ⚠️ Foi assim que a primeira varredura deu "limpo" para sete motores: eles

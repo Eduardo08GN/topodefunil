@@ -291,6 +291,41 @@ de as strings travadas terem virado constantes em
 
 ---
 
+## ⭐⭐ REGRA DE UMA LINHA NO FIM DO PROMPT É REGRA QUE O VEO DESCARTA (2026-08-09)
+
+Dois relatos de campo do operador no mesmo dia, no `clean_v1_16s_short`, e a
+mesma causa raiz — **a regra estava escrita, no pior lugar e na pior forma**:
+
+| Defeito em campo | O que estava no prompt | Por que não segurou |
+|---|---|---|
+| trilha sonora em **20+ takes** | `No music.` no fim do `Audio:` | negativa de duas palavras, posição de rabicho |
+| fala curta saindo em **câmera lenta** | nada | o gerador lê a duração do clipe como duração da **fala** e estica as sílabas até encher os 8s |
+
+**A receita é a mesma do CL31** (que consertou o sotaque pelo mesmo caminho), e
+vale para qualquer regra que o gerador venha ignorando:
+
+1. **POSIÇÃO** — a regra sai do fim e passa a *fechar* o campo com peso próprio.
+2. **POSITIVO** — declare o conjunto **completo do que existe** antes de negar o
+   que não existe: *"the whole audio track is the speaking voice plus that room
+   tone and nothing else"*.
+3. **CONCRETUDE** — ancore em algo que exclua o defeito **por construção**:
+   `raw sound recorded live by the phone microphone, with nothing added
+   afterwards`. Trilha é pós-produção; som cru não tem pós-produção.
+4. **SINÔNIMO** — o gerador casa **token**. Quem só escreve `music` não cobre
+   `song`, `soundtrack`, `score`, `melody`, `beat`.
+
+⭐ **E para a câmera lenta, pedir velocidade normal não basta: é preciso
+AUTORIZAR o silêncio.** Sem *"the leftover silence at the end of the clip is
+expected and correct"*, o gerador continua achando que tem de preencher o tempo
+e volta a esticar. A âncora fala da **boca**, nunca do corpo — mandar "ficar
+parado" contradiz o bloco de movimento, e contradição dentro do prompt é o que
+faz o Veo apagar o que estava certo.
+
+⚠️ **Aplicado só no `clean_v1_16s_short` (ordem do operador).** Os outros 28
+`*_short.py` continuam com o `No music.` de duas palavras.
+
+---
+
 ## ⭐ ERRO BARULHENTO × ERRO SILENCIOSO (o viés a corrigir)
 
 - **Amputar a cena** → o gerador **grita** (VIDEO GENERATION FAILED). Aprendi a temer.
