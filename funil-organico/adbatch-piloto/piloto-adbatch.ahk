@@ -43,6 +43,11 @@ CoordMode "Pixel", "Screen"
 
 INI := A_ScriptDir "\piloto-adbatch.ini"
 ARQ_LOG := A_ScriptDir "\piloto-adbatch.log"
+; ⭐⭐ ONDE A FASE 1 DEIXA O RECADO PARA A FASE 2.
+; ⛔ Sem isto a Fase 2 nao existe: quando as imagens ficam prontas, o
+; agente ja' sorteou outros dez videos e o roteiro daquela aba SUMIU.
+; O take tem de ser guardado no momento em que passa pela mao do piloto.
+DIR_ROT := A_ScriptDir "\roteiros"
 
 ALVOS := [
     ["cr_roteiro", "a caixa 'Cole o roteiro inteiro...' (Roteiro Master)"],
@@ -188,6 +193,40 @@ clicar(chave, seco := false) {
 ; =============================================================================
 ;  O ROTEIRO, PELO ATALHO — com conferencia das cinco partes
 ; =============================================================================
+; =============================================================================
+;  RECORTE DOS TAKES — o que a Fase 2 vai colar em cada imagem
+; =============================================================================
+; ⚠️ O corte e' pelo ROTULO, nao por contagem de linhas: o TAKE tem numero
+; variavel de linhas (a fala muda de tamanho) e cortar por posicao entregaria
+; meio bloco. Cada take vai do proprio rotulo ate' o rotulo seguinte.
+recortarTake(roteiro, rotulo) {
+    i := InStr(roteiro, rotulo)
+    if !i
+        return ""
+    resto := SubStr(roteiro, i)
+    ; o proximo rotulo TAKE, se houver, fecha o bloco
+    j := InStr(resto, "TAKE ", , 2)
+    return Trim(j ? SubStr(resto, 1, j - 1) : resto, " `t`r`n")
+}
+
+gravarRoteiro(aba, roteiro) {
+    global DIR_ROT
+    if !DirExist(DIR_ROT)
+        DirCreate DIR_ROT
+    t1 := recortarTake(roteiro, "TAKE 01/02")
+    t2 := recortarTake(roteiro, "TAKE 02/02")
+    if (t1 = "" || t2 = "")
+        throw Error("nao consegui recortar os dois TAKE do roteiro da aba " aba)
+    ; ⚠️ um arquivo por take, com o numero da aba no nome: e' assim que a Fase 2
+    ; sabe qual take pertence a qual imagem sem depender de ordem de nada.
+    for par in [[1, t1], [2, t2]] {
+        arq := Format("{1}\\aba{2:02}-take{3}.txt", DIR_ROT, aba, par[1])
+        if FileExist(arq)
+            FileDelete arq
+        FileAppend par[2], arq, "UTF-8"
+    }
+}
+
 pegarRoteiro(tAgente) {
     if !WinExist(tAgente)
         throw Error("nao achei a janela do agente (titulo comeca com '" tAgente "')")
@@ -251,7 +290,13 @@ rodarMiolo(seco) {
         ToolTip "aba " i "/" abas " — pegando o roteiro no agente..."
         try {
             roteiro := pegarRoteiro(tAgente)
-            anotar("aba " i ": roteiro OK, " StrLen(roteiro) " caracteres")
+            ; ⭐ GRAVA ANTES DE COLAR. Se gravasse depois, uma falha no meio do
+            ; caminho deixaria a aba com lote disparado e sem take guardado — e
+            ; a Fase 2 nao teria o que animar naquela imagem.
+            if !seco
+                gravarRoteiro(i, roteiro)
+            anotar("aba " i ": roteiro OK, " StrLen(roteiro) " caracteres"
+                   (seco ? " [seco: nao gravei]" : ", takes gravados"))
 
             if !WinExist(tChrome)
                 throw Error("nao achei a janela do Chrome (" tChrome ")")
