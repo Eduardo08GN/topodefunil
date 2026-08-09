@@ -272,6 +272,12 @@ EXCECOES = {
     ("colo_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF — oculos de leitura brigam frontalmente com 'linda e jovem'. "
         "Os outros eixos continuam cheios (cabelo, porte, pele, ancora).",
+    # ⭐ RESSURREICAO 16 (2026-08-08) — mesma NARRADORAS, mesma lei. Motor
+    # nascido por copia literal; a chave da excecao inclui o nome do arquivo,
+    # entao a do original nao alcanca o novo. ⚠️ Conferido: pool identico.
+    ("ressurreicao16_short.py", "NARRADORAS", "oculos"):
+        "idem ressurreicao_short — LEI DO REF, oculos de leitura brigam com "
+        "'super fit e linda'. Pool identico, copia literal.",
     ("ressurreicao_short.py", "NARRADORAS", "oculos"):
         "LEI DO REF (2026-08-03) — neste agente a narradora e' sempre linda, "
         "jovem e de sex appeal alto, por ordem do operador. Oculos de leitura "
