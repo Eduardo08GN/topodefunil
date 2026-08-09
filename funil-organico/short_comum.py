@@ -426,9 +426,16 @@ def sortear_curto(base, pagina, rng, ledger, mapa, fundir, mapa_copy=None,
     else:
         spec = base.sortear(pagina, rng, ledger)
     spec["falas_base"] = list(spec["falas"])
-    spec["falas"] = [spec["falas_base"][mapa_copy[0] - 1],
-                     fundir(spec, rng),
-                     spec["falas_base"][mapa_copy[2] - 1]]
+    # ⛔⛔ O TAMANHO VEM DO MAPA, nao mais cravado em tres. A familia 16s passa
+    # um `mapa_copy` de DOIS e a linha antiga indexava `mapa_copy[2]` — que
+    # nao existe — estourando `IndexError: tuple index out of range` no
+    # primeiro sorteio.
+    # ⚠️ Cada posicao do mapa diz de onde vem a fala daquela cena: um numero
+    # aponta para a fala do motor base, e `None` significa "esta e' a fundida".
+    # Comportamento dos motores de 3 cenas INALTERADO por construcao.
+    spec["falas"] = [fundir(spec, rng) if orig is None
+                     else spec["falas_base"][orig - 1]
+                     for orig in mapa_copy]
     return spec
 
 
