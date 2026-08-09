@@ -1190,14 +1190,44 @@ GATES16 = [
 
 
 def _fundir(spec, rng):
+    """`MECANISMO + PROVA + CTA [+ GATE]`, tudo dentro do teto da cena 2.
+
+    ⛔⛔ RELIGADO EM 2026-08-09. Esta funcao devolvia so' uma `FUNDIDAS` — o
+    video inteiro saia SEM `Comment gelatin`, e o linter reprovava 400 de 400
+    sorteios. E reprovava certo: video de funil sem CTA e' pior que video que
+    nao gera, porque o defeito e' silencioso.
+    ⚠️ E NAO FALTAVA COPY. As quatro pools de 16s (`MECANISMOS16`, `PROVAS16`,
+    `CTAS16`, `GATES16`) ja' estavam escritas logo acima, com nota de
+    *"confirmado pelo operador em 2026-08-09"* — e nenhuma era lida por
+    ninguem. Faltava a solda, nao o material.
+    ⭐ 8 x 8 x 8 = 512 combinacoes antes do gate, contra as 14 `FUNDIDAS`
+    fixas de antes.
+
+    ⛔ A ORDEM DE MONTAGEM NAO E' ARBITRARIA — e' a mesma licao do CLEAN
+    16seg: sorteia-se entre os TRIOS QUE CABEM, nunca se sorteia solto para
+    testar depois. Sorteando solto, so' o trio mais curto de todos sobrevive
+    e o pool inteiro colapsa em duas ou tres falas.
+    """
     o = sc.orgao_de(_LONGO, spec["falas_base"][3])
-    # ⛔ 2026-08-05 — a fundida cede ao teto. Era `rng.choice(FUNDIDAS)`
-    # cru e 73% dos sorteios da cena 2 passavam de 25 palavras.
-    # ⚠️ Fallback na entrada mais CURTA, nunca `or FUNDIDAS`.
-    cabem = [x for x in FUNDIDAS if _palavras(x.format(o=o)) <= TETO_FALA[2]]
-    esc = (rng.choice(cabem) if cabem
-           else min(FUNDIDAS, key=lambda x: _palavras(x.format(o=o))))
-    return esc.format(o=o)
+
+    def cabe(t):
+        return _palavras(t) <= TETO_FALA[2]
+
+    trios = [(x, p, c) for x in MECANISMOS16 for p in PROVAS16 for c in CTAS16
+             if cabe("%s %s %s" % (x.format(o=o), p.format(o=o), c))]
+    if not trios:
+        # ⛔ rede sem invencao: o trio mais curto que existe. Nunca `or pool`
+        # cru, que e' o que estourava o teto antes.
+        trios = [min(((x, p, c) for x in MECANISMOS16 for p in PROVAS16
+                      for c in CTAS16),
+                     key=lambda t: _palavras("%s %s %s"
+                                             % (t[0].format(o=o),
+                                                t[1].format(o=o), t[2])))]
+    x, p, c = rng.choice(trios)
+    base = "%s %s %s" % (x.format(o=o), p.format(o=o), c)
+    # o gate e' o primeiro a cair quando o teto aperta (mesma ordem do CLEAN)
+    gates = [g for g in GATES16 if cabe("%s %s" % (base, g))]
+    return "%s %s" % (base, rng.choice(gates)) if gates else base
 
 
 # ---------------------------------------------------------------------------
@@ -1304,13 +1334,19 @@ def _blocos_travados(spec, blocos, achados):
                    (PLATEIA_IMAGE, "plateia PE4")):
         if s not in i1:
             achados.append(("ERRO", "a cena da mancha sem a string travada: %s" % rot))
-    # a cena do payoff virou a 2 do SHORT, mas a trava do prop e' a mesma
-    # ⛔ 2026-08-09 — era `4` cravado, e o MAPA deste 16s e' `(1, 3)`: a cena 4
-    # nao esta' nele e o `.index(4)` estourava `ValueError` dentro do LINTER.
-    # ⚠️ Agora aponta para a ULTIMA cena do MAPA, que e' onde o payoff mora em
-    # qualquer colapso — 3 cenas ou 2. Regra escrita em termos de posicao no
-    # arco, nao de numero cravado, nao quebra no proximo formato temporal.
-    if "motionless" not in sc.bloco_base(blocos, MAPA, "TAKE", MAPA[-1]).lower():
+    # ⛔⛔ 2026-08-09 — A REGRA SO' VALE SE A CENA DO PAYOFF ESTIVER NO VIDEO.
+    # Ela guarda a cena 4 do arco longo: o casal com o prop, que tem de ficar
+    # IMOVEL. O MAPA deste 16s e' `(1, 3)` — a cena 4 nao entra, e o video nao
+    # tem prop nenhum para ficar imovel.
+    # ⚠️ Duas versoes erradas antes desta, e as duas por nao ler o que a regra
+    # guarda: `4` cravado estourava `ValueError` no `.index`; apontar para
+    # `MAPA[-1]` fazia ela cobrar imobilidade da cena da BANCADA, onde as maos
+    # mexem a colher de proposito — reprovava 400 de 400 e teria ensinado o
+    # operador a ignorar o linter.
+    # ⛔ Regra que nao se aplica se DESLIGA, nao se afrouxa.
+    if 4 not in MAPA:
+        return
+    if "motionless" not in sc.bloco_base(blocos, MAPA, "TAKE", 4).lower():
         achados.append(("ERRO", "o TAKE do payoff sem declaracao de imobilidade "
                                 "do prop"))
 
