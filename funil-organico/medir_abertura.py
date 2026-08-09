@@ -92,7 +92,8 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "troca16_short", "botica16_short", "colo16_short",
            "exterior16_short", "escandalo16_short",
            "ressurreicao16_short",
-           "flagrante16_short"]
+           "flagrante16_short",
+           "good16_short"]
 
 # ⭐ O QUE CONTA COMO REFERENTE, e a lista e' deliberadamente CURTA:
 #   · o orgao (o pool NUCLEO do proprio motor), ou
