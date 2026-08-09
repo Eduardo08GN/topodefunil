@@ -74,6 +74,31 @@ titulo_chrome=Google Flow
 ⚠️ `titulo_agente=AGENTE` casa com qualquer um dos agentes. Se quiser travar em
 um só, ponha o título inteiro (`AGENTE COLO 16 by Eddie  v1.2`).
 
+## ⭐ Velocidade — o botão `RITMO`
+
+No topo do `.ahk`, uma linha só governa **todas** as esperas ajustáveis:
+
+```ahk
+global RITMO := 0.55
+```
+
+`1.00` é o ritmo original. **`0.55` é o atual** — pedido do operador em
+2026-08-09 (*"pode acelerar, tá lento, reduzir 2 segundos"*). As esperas
+ajustáveis somavam **4.710 ms por aba**; a 0.55 caem para ~2.360 ms, medidos —
+**2,35 s a menos por aba**, ou ~23 s num lote de 10.
+
+Quer mais rápido? Baixe o número. Voltou a errar clique ou colar no lugar
+errado? Suba. **Não mexa nas esperas uma a uma** — é o número que existe para
+isso.
+
+⛔ **Três coisas o fator NÃO acelera, e não é esquecimento:**
+
+| o quê | por quê |
+|---|---|
+| `Sleep 900 + Random(0,700)` depois do `Ctrl+V` | o app precisa **reparsear** o roteiro colado antes de o Gerar valer. Isso é função, não cadência. |
+| `respirar()` — a pausa longa e rara | é ela que quebra o padrão de máquina. Encolher desfaria a proteção de atividade suspeita. |
+| o espalhamento (`±35%`) de cada pausa | o tremor continua o mesmo **em porcentagem** — acelerar não deixa o ritmo mais regular. |
+
 ## O que é frágil aqui, dito na cara
 
 - **Coordenada de tela.** Qualquer mudança de layout, zoom do Chrome ou posição

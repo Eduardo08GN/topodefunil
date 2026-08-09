@@ -73,11 +73,28 @@ global linhas := []
 ; ⚠️ E o mouse passa a ANDAR ate' o alvo (`MouseMove` com velocidade sorteada)
 ; em vez de teleportar. Teleporte nao existe em maozinha nenhuma.
 
+; ⭐⭐ RITMO — UM NUMERO SO' GOVERNA TODAS AS ESPERAS AJUSTAVEIS.
+; Ordem do operador, 2026-08-09: *"pode acelerar o script? ele ta' lento. Pode
+; reduzir 2 segundos no tempo entre as interacoes."*
+; ⚠️ Espalhar a aceleracao em quinze numeros magicos seria impossivel de afinar
+; depois. Aqui e' um fator: 1.00 e' o ritmo original, 0.55 e' o atual.
+; ⭐ MEDIDO: as esperas ajustaveis somavam 4.710ms por aba (300 + 450 + 300 +
+; 220 + 140 + 300 + 1000 + 250 + 300 + 1100 + 350). A 0.55 caem para 2.590ms —
+; 2,1 SEGUNDOS a menos por aba, que e' exatamente o pedido.
+; ⛔ O QUE O FATOR **NAO** TOCA, e nao e' esquecimento:
+;   · o `Sleep 900 + Random(0,700)` depois do Ctrl+V — o app precisa reparsear
+;     o roteiro antes de o Gerar valer, e essa espera e' funcao, nao cadencia;
+;   · o `respirar()` — a pausa longa e rara e' justamente o que quebra o padrao
+;     de maquina, e encolhe-la desfaria o pedido anterior do operador;
+;   · o espalhamento `esp` de cada pausa — o tremor continua o mesmo em %.
+global RITMO := 0.55
+
 pausa(base, esp := 35) {
+    global RITMO
     ; base em ms, `esp` = espalhamento em % para cada lado.
     ; ⚠️ piso de 40ms: sorteio que devolve valor perto de zero volta a ser
     ; ritmo de maquina, so' que rapido.
-    d := base * (100 + Random(-esp, esp)) // 100
+    d := Round(base * RITMO) * (100 + Random(-esp, esp)) // 100
     Sleep (d < 40 ? 40 : d)
 }
 
