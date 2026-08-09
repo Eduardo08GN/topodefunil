@@ -194,8 +194,20 @@ def bloco_base(blocos, mapa, tipo, cena_base):
     nada — a cena 4 virou 02/03. Este helper faz a traducao, para que as
     regras continuem sendo escritas em termos da cena ORIGINAL, que e' como a
     doutrina fala delas (NE11 = "a cena 4 e o geoduck").
+
+    ⛔⛔ O TOTAL NAO E' 3 — 2026-08-09. Esta funcao cravava `/03` e explodia com
+    `KeyError: 'IMAGE 01/03'` no PEE 16, que tem DOIS blocos. E' a TERCEIRA peca
+    da maquinaria compartilhada a assumir tres cenas: o `montar_curto` foi
+    generalizado em 18aa6dd, o `sortear_curto` em 70228dd, e faltava esta.
+    ⚠️ O total agora sai dos BLOCOS QUE EXISTEM, nao de constante nenhuma —
+    assim nao ha' uma quarta peca esperando o proximo formato temporal.
     """
-    return blocos["%s %02d/03" % (tipo, mapa.index(cena_base) + 1)]
+    n = mapa.index(cena_base) + 1
+    for chave in blocos:
+        if chave.startswith("%s %02d/" % (tipo, n)):
+            return blocos[chave]
+    raise KeyError("%s %02d/?? nao existe (blocos: %s)"
+                   % (tipo, n, sorted(k for k in blocos if k.startswith(tipo))))
 
 
 # ---------------------------------------------------------------------------

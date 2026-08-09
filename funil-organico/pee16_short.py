@@ -1232,16 +1232,28 @@ def sortear(pagina, rng, ledger, travas=None):
 
 def montar(spec):
     b = sc.montar_curto(_LONGO, spec, MAPA)
-    # a cena 3 e' a unica que nao vem pronta do base — ver o comentario
-    # do MAPA e a docstring de short_comum.bancada_com_rosto
-    # ⚠️ DUAS cenas nao vem prontas do base, e as duas por ordem do
-    # operador: a 2, para o narrador nao sumir no terco do meio; e a 3,
-    # para o rosto aparecer enquanto prepara. As duas recombinam blocos
-    # validados — ver as docstrings em short_comum.
-    i2, t2 = sc.redencao_com_ref(_LONGO, spec, spec["falas"][1])
-    b["IMAGE 02/03"], b["TAKE 02/03"] = i2, t2
-    i3, t3 = sc.bancada_com_rosto(_LONGO, spec, spec["falas"][2])
-    b["IMAGE 03/03"], b["TAKE 03/03"] = i3, t3
+    # ⛔⛔ CONSERTADO EM 2026-08-09. O agente NAO ABRIA: montava as cenas 2 e 3
+    # do formato de 3 cenas (`spec["falas"][2]`) enquanto o `sortear_curto` ja'
+    # entregava DUAS falas — `IndexError: list index out of range` no primeiro
+    # sorteio, antes da janela subir. E ainda gravava com as tags `02/03` e
+    # `03/03`, que o `montar_curto` ja' tinha parado de emitir.
+    # ⚠️ Sobrou do colapso: o `montar_curto` foi generalizado em 18aa6dd e o
+    # `sortear_curto` em 70228dd, mas o override daqui ficou para tras. Terceira
+    # peca da mesma familia.
+    #
+    # ⭐ QUAL DAS DUAS CENAS ESPECIAIS SOBREVIVE — as duas nasceram de ordem do
+    # operador em 2026-07-31 e, com dois takes, so' uma cabe:
+    #   `redencao_com_ref`   punha o NARRADOR de volta em quadro, porque em 3
+    #                        cenas ele sumia no terco do meio;
+    #   `bancada_com_rosto`  poe o ROSTO no ritual, porque a cena do CTA sem
+    #                        cara nao converte (*"pedido sem cara"*).
+    # Fica a SEGUNDA. O motivo da primeira era o meio do video, e em 2 cenas
+    # nao existe meio — o narrador ja' esta' na cena 1. O motivo da segunda
+    # continua inteiro: a cena 2 e' onde mora o `Comment gelatin`.
+    # ⚠️ Para inverter a escolha e' UMA linha: trocar `bancada_com_rosto` por
+    # `redencao_com_ref` abaixo. As duas tem a mesma assinatura.
+    i2, t2 = sc.bancada_com_rosto(_LONGO, spec, spec["falas"][1], n=2, total=2)
+    b["IMAGE 02/02"], b["TAKE 02/02"] = i2, t2
     # ⛔ trava de texto queimado em todo TAKE — o watermark que o
     # operador viu vazando nos reels da concorrente (2026-08-01).
     return sc.selar_takes(b)
@@ -1293,7 +1305,12 @@ def _blocos_travados(spec, blocos, achados):
         if s not in i1:
             achados.append(("ERRO", "a cena da mancha sem a string travada: %s" % rot))
     # a cena do payoff virou a 2 do SHORT, mas a trava do prop e' a mesma
-    if "motionless" not in sc.bloco_base(blocos, MAPA, "TAKE", 4).lower():
+    # ⛔ 2026-08-09 — era `4` cravado, e o MAPA deste 16s e' `(1, 3)`: a cena 4
+    # nao esta' nele e o `.index(4)` estourava `ValueError` dentro do LINTER.
+    # ⚠️ Agora aponta para a ULTIMA cena do MAPA, que e' onde o payoff mora em
+    # qualquer colapso — 3 cenas ou 2. Regra escrita em termos de posicao no
+    # arco, nao de numero cravado, nao quebra no proximo formato temporal.
+    if "motionless" not in sc.bloco_base(blocos, MAPA, "TAKE", MAPA[-1]).lower():
         achados.append(("ERRO", "o TAKE do payoff sem declaracao de imobilidade "
                                 "do prop"))
 
