@@ -57,6 +57,33 @@ global abortar := false
 global rodando := false
 global linhas := []
 
+; =============================================================================
+;  CADENCIA HUMANA — ordem do operador, 2026-08-08
+; =============================================================================
+; ⛔⛔ O QUE MAIS DENUNCIA NAO E' O RITMO, E' A PRECISAO. Um humano nunca clica
+; duas vezes no MESMO PIXEL, e o piloto clicava exatamente no ponto calibrado
+; em 100% das vezes, dez abas seguidas. Ritmo constante e' suspeito; coordenada
+; identica repetida e' impossivel. Por isso ha' DUAS aleatorizacoes aqui, e a
+; do pixel importa mais que a do relogio.
+; ⚠️ E o mouse passa a ANDAR ate' o alvo (`MouseMove` com velocidade sorteada)
+; em vez de teleportar. Teleporte nao existe em maozinha nenhuma.
+
+pausa(base, esp := 35) {
+    ; base em ms, `esp` = espalhamento em % para cada lado.
+    ; ⚠️ piso de 40ms: sorteio que devolve valor perto de zero volta a ser
+    ; ritmo de maquina, so' que rapido.
+    d := base * (100 + Random(-esp, esp)) // 100
+    Sleep (d < 40 ? 40 : d)
+}
+
+respirar() {
+    ; ⭐ A pausa longa e RARA — a pessoa que para para olhar a tela. Um ritmo
+    ; uniforme, mesmo com ruido, ainda e' uniforme: o que quebra o padrao e' a
+    ; excecao ocasional, nao o tremor constante.
+    if (Random(1, 100) <= 22)
+        Sleep Random(1200, 3400)
+}
+
 F9::  calibrar()
 F10:: rodar(false)
 F8::  rodar(true)
@@ -139,14 +166,23 @@ lerPonto(chave) {
 
 clicar(chave, seco := false) {
     p := lerPonto(chave)
+    ; ⛔ NUNCA no mesmo pixel: ±6px em volta do ponto calibrado. Os alvos sao
+    ; botoes e caixas de texto — 6px cabe folgado em qualquer um deles, e e'
+    ; suficiente para a sequencia de cliques nao ser identica.
+    x := p.x + Random(-6, 6)
+    y := p.y + Random(-6, 6)
     if seco {
-        MouseMove p.x, p.y, 2
+        MouseMove x, y, Random(8, 22)
         ToolTip "[seco] clicaria em " chave
-        Sleep 280
+        pausa(280)
         return
     }
-    Click p.x, p.y
-    Sleep 180
+    ; ⚠️ o mouse ANDA (velocidade 8-22; quanto maior, mais devagar) e so'
+    ; depois clica — com um respiro curto no meio, como quem mira.
+    MouseMove x, y, Random(8, 22)
+    pausa(120, 50)
+    Click
+    pausa(180)
 }
 
 ; =============================================================================
@@ -158,7 +194,7 @@ pegarRoteiro(tAgente) {
     WinActivate tAgente
     if !WinWaitActive(tAgente, , 4)
         throw Error("a janela do agente nao veio para a frente")
-    Sleep 350
+    pausa(350)
 
     A_Clipboard := ""
     Send "^0"                       ; copiar_tudo() do ui_agente
@@ -221,7 +257,7 @@ rodarMiolo(seco) {
                 throw Error("nao achei a janela do Chrome (" tChrome ")")
             WinActivate tChrome
             WinWaitActive tChrome, , 4
-            Sleep 300
+            pausa(300)
             irParaAba(i)
 
             if seco {
@@ -230,23 +266,29 @@ rodarMiolo(seco) {
                 anotar("aba " i ": [seco] colaria e clicaria em Gerar")
             } else {
                 clicar("cr_roteiro")
+                pausa(220, 60)
                 Send "^a"
-                Sleep 100
+                pausa(140, 60)
                 A_Clipboard := roteiro
                 ClipWait(2, 0)
                 Send "^v"
-                Sleep 900                 ; o app reparseia o texto colado
+                ; ⚠️ ESTA e' a unica espera que NAO deve encolher: o app
+                ; precisa reparsear o roteiro colado antes de o Gerar valer.
+                ; Aqui o sorteio so' ADICIONA tempo, nunca tira.
+                Sleep 900 + Random(0, 700)
+                respirar()
                 clicar("cr_gerar")
-                Sleep 1000
+                pausa(1000)
                 anotar("aba " i ": colado e Gerar clicado")
 
                 WinActivate tAgente
                 WinWaitActive tAgente, , 4
-                Sleep 250
+                pausa(250)
                 Send "^4"                 ; marcar como usado
-                Sleep 300
+                pausa(300)
                 Send "^r"                 ; sortear o proximo
-                Sleep 1100
+                pausa(1100)
+                respirar()                ; entre uma aba e outra
             }
         } catch as e {
             anotar("aba " i ": PAROU — " e.Message)
@@ -274,13 +316,13 @@ irParaAba(n) {
         Send "^" n
     } else {
         Send "^1"
-        Sleep 150
+        pausa(150, 50)
         loop n - 1 {
             Send "^{Tab}"
-            Sleep 110
+            pausa(110, 60)
         }
     }
-    Sleep 450
+    pausa(450)
 }
 
 ; =============================================================================
@@ -303,7 +345,9 @@ ronda() {
         if abortar
             break
         ToolTip "ronda " r "/" maxR " — esperando " espera "s"
-        if !dormir(espera * 1000)
+        ; ⚠️ ±18% na espera da ronda: um alarme que dispara a cada 45s
+        ; cravados por seis rondas e' relogio, nao gente.
+        if !dormir(espera * 1000 * (100 + Random(-18, 18)) // 100)
             break
 
         pendentes := 0
@@ -314,6 +358,7 @@ ronda() {
             if abortar
                 break
             irParaAba(i)
+            pausa(400, 45)
             vazios := 0
             for par in [["cr_slot1", "cr_reger1"], ["cr_slot2", "cr_reger2"]] {
                 p := lerPonto(par[1])
