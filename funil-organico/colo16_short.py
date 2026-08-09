@@ -207,13 +207,25 @@ ETNIA = {
 CO_GEOMETRIA = (
     "Filmed straight on from low down and close in, at the height of the "
     "seated man's knees, so that his legs fill the bottom half of the frame. "
+    # ⛔⛔ DE LADO, NAO DE FRENTE — hipotese do operador, 2026-08-09, tirada do
+    # unico enquadramento que PASSOU no lote reprovado: o homem sentado de
+    # viés, nao de frente para a lente.
+    # ⚠️ A leitura por tras dela: de frente, as duas pernas abertas para a
+    # camera com o prop no meio formam a geometria que o classificador de video
+    # pesa. De lado, a mesma cena existe — o prop continua no punho dele, na
+    # mesma altura — mas a composicao deixa de ser frontal.
+    # ⛔ A CENA NAO MUDOU: mesmo homem, mesmo prop, mesmo despejo, mesma mulher
+    # atras. Mudou o ANGULO DA CADEIRA, que e' `forma de dizer`, nao conteudo.
     "The foreground of the shot, close to the camera, is a man sitting in a "
-    "chair, turned squarely to the camera, wearing %s; the framing takes in "
+    "chair turned side-on to the camera so that he is seen from his left side, "
+    "wearing %s; the framing takes in "
     "only his legs and his hands, with his head and upper body out of shot. %s "
     "Standing upright in his closed left hand, held in close to him with his "
     "fist just clear of his body and the tip reaching no higher than his knees, "
     "is %s; his fist is closed around %s and the tip points straight up for the "
-    "whole shot. Directly behind him, seated and facing the lens squarely with "
+    "whole shot. In his other hand, resting on his knee and turned so the face "
+    "of it is readable to the camera, he holds %s. "
+    "Directly behind him, seated and facing the lens squarely with "
     "her head and shoulders above him, is %s. She holds %s out over it in her "
     "right hand, tipped mouth-down at about forty-five degrees and a hand's "
     "width above the top, and %s falls in one unbroken line onto the very top "
@@ -1247,6 +1259,27 @@ HOMENS = [
 # mais alto. ⛔ NAO foi aplicado: mexer no `punho` deles seria reescrever string
 # validada por deducao minha, sem teste — o erro que este dia inteiro custou a
 # aprender. Testar antes de aplicar.
+# ---------------------------------------------------------------------------
+# ⭐ O POST-IT NA MAO LIVRE DELE — pedido do operador, 2026-08-09
+# ---------------------------------------------------------------------------
+# ⛔⛔ DESENHO, NUNCA PALAVRA. Todo TAKE deste repo carrega `No on-screen text,
+# no subtitles, no captions, no watermark` — texto vindo do gerador entra por
+# cima da legenda que nasce depois, no Editor, e nao sai. Um post-it COM
+# PALAVRAS contradiz a propria trava do bloco.
+# ⭐ O pool e' o mesmo do FALTA, que ja' roda em campo: carinha triste, seta
+# para baixo, cara dormindo. O desenho diz a mesma coisa que a palavra diria e
+# nao aciona a trava de texto.
+# ⚠️ E ele ocupa a mao LIVRE (a direita): a esquerda esta' fechada no prop, e
+# mao com duas tarefas e' ordem contraditoria — o Veo resolve soltando uma.
+ADESIVOS = [
+    "a square yellow sticky note with a hand-drawn sad face on it",
+    "a square yellow sticky note with a hand-drawn frowning face on it",
+    "a square yellow sticky note with a hand-drawn downward arrow on it",
+    "a square yellow sticky note with a hand-drawn sleeping face on it",
+    "a square yellow sticky note with a hand-drawn flat line on it",
+]
+
+
 PROPS = [
     {"id": "banana_da_terra", "selo": "V", "nome": "plantain",
      "img": "a large green plantain, peeled halfway with the thick peel "
@@ -1267,6 +1300,15 @@ PROPS = [
     {"id": "pastinaca", "selo": "V", "nome": "parsnip",
      "img": "a large pale parsnip, the thick end trimmed flat",
      "punho": "its trimmed lower end"},
+    # ⭐ GEODUCK — pedido do operador em 2026-08-09. E' o unico prop do pool
+    # que NAO e' vegetal: e' molusco, e o `prop-metaforas.md` registra que
+    # vocabulario de molusco passou onde vocabulario anatomico barrou.
+    # ⚠️ `nome` e' o que a FALA diz (`Pour X on your geoduck`), entao ele entra
+    # em minuscula e sem artigo, como os outros.
+    {"id": "geoduck", "selo": "V", "nome": "geoduck",
+     "img": "a whole geoduck clam, its long siphon neck extended straight up "
+            "out of the pale ridged shell",
+     "punho": "its shell"},
 ]
 
 
@@ -1850,6 +1892,7 @@ def sortear(pagina, rng, led, travas=None):
     ref = (travas.get("ref")
            or (sc.ref_bela(NARRADORAS[0], rng) if travas.get("bela")
                else rng.choice(NARRADORAS)))
+    adesivo = rng.choice(ADESIVOS)
     prop = (_por_id(PROPS, travas["prop"]) if travas.get("prop")
             else _fresco(PROPS, usados.get("prop", []), rng, "id"))
     subst = (_por_id(SUBSTANCIAS, travas["substancia"])
@@ -1874,7 +1917,7 @@ def sortear(pagina, rng, led, travas=None):
     # exata que o CL26 documenta.
 
     spec = {"pagina": pagina, "bela": bool(travas.get("bela")), "mundo": mundo, "etnia": et, "cor": cor, "traje": traje,
-            "ref": ref, "homem": homem, "prop": prop, "substancia": subst,
+            "ref": ref, "homem": homem, "adesivo": adesivo, "prop": prop, "substancia": subst,
             "receita": receita, "orgaos": orgaos}
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
     return spec
@@ -1932,8 +1975,11 @@ def montar(spec):
     v["homem_maos"] = ("His hands are the only skin of his in the frame — %s, "
                        "%s, and %s." % (spec["etnia"], hom["maos"],
                                         hom["marca"]))
+    # ⚠️ o post-it entra ENTRE o prop e a mulher — e' a ordem em que a
+    # geometria descreve o quadro, de baixo para cima.
     v["geometria"] = CO_GEOMETRIA % (hom["calca"], v["homem_maos"],
                                      v["prop_img"], v["prop_punho"],
+                                     spec["adesivo"],
                                      v["pessoa"], sub["frasco"],
                                      _cap(sub["jorro"]))
     v["layout"] = CO_BANCADA_LAYOUT % m["sup"]
