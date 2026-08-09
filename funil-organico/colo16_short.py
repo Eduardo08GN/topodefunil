@@ -1402,20 +1402,22 @@ SUBSTANCIAS = [
 # nomeiam a ESPOSA, que e' o desarme validado no caso Ray/consultorio: ali
 # `the woman` barrou e `his wife of forty years` passou, com a cena intacta.
 ISCAS_PROMESSA = [
+    # --- as SEM `{o}`, herdadas do motor de 24s -----------------------------
     "and watch how you'll start lasting hours in the bedroom",
     "and watch how you'll be ready again in ten minutes",
     "and watch how you'll go all night like you're twenty",
-    "and watch how it fixes your {o} by the weekend",
     "and watch how you'll never go soft again",
-    "and watch how your {o} stands up on command",
     "and watch how you'll last three times longer tonight",
-    "and watch how it wakes your {o} up in one day",
-    # + 2026-08-09 — estado e consequencia, sem verbo de subida
-    "and watch how your wife notices your {o} by the weekend",
-    "and watch how your wife feels your {o} by Friday",
-    "and watch how your {o} works again by the weekend",
-    "and watch how your {o} is back by the weekend",
-    "and watch how your wife stops asking about your {o}",
+    # --- as COM `{o}`: VERBO NEUTRO DE TRANSFORMACAO ------------------------
+    "and watch how your {o} changes",
+    "and watch how fast your {o} changes",
+    "and watch how your {o} changes by the weekend",
+    "and watch what changes for your {o} by the weekend",
+    "and watch how your {o} responds",
+    "and watch how your {o} reacts by the weekend",
+    "and watch how different your {o} gets",
+    "and watch how your {o} turns around by the weekend",
+    "and watch what happens to your {o} by the weekend",
 ]
 
 # ---------------------------------------------------------------------------
