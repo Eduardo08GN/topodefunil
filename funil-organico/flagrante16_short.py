@@ -612,20 +612,111 @@ MULHERES = [
 
 NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 
-HOOKS = [
-    "Everyone at {evento} had already heard the gossip that his {o} doesn't work anymore. His hangs just like this.",
-    "The whole {evento} had heard the gossip that his {o} quit on him. His hangs just like this.",
-    "Every man at {evento} had heard the gossip that his {o} can't stand up anymore. His hangs like this.",
-    "Word got around {evento} that his {o} doesn't work anymore. His hangs just like this.",
-    "Every guy at {evento} had heard the gossip that his {o} can't finish anymore. She knows it. His hangs down like this.",
-    "Half the people at {evento} had heard the gossip that his {o} can't get hard anymore. His hangs over his own fingers.",
-    "The women at {evento} had already heard the gossip that his {o} stopped working. His wife told them. His droops like this.",
-    "Nobody at {evento} was surprised. They'd heard the gossip that his {o} hasn't worked in two years. His stays down like this.",
-    "Every husband at {evento} had heard the gossip that his {o} quit and his wife stopped asking. His stays folded like this.",
-    "Everybody at {evento} heard the gossip that his {o} went dead on him. I was that man. His curls over his thumb.",
-    "His crew at {evento} heard the gossip that his {o} gave out on him. Mine did too. His sinks into his lap.",
-    "Neighbors at {evento} heard the gossip that his {o} went soft. I stopped reaching for my wife. His sags off his fingers.",
-    "Cousins at {evento} heard the gossip that his {o} shut down. That was me at sixty. His hides in his own fist.",
+# ===========================================================================
+# ⭐⭐ A CENA 1 — FOFOCA + ANCORA + VIRADA (2026-08-09)
+# ===========================================================================
+# ⛔⛔ ORDEM DO OPERADOR. Ele leu um take renderizado e parou o lote:
+#
+#     "Neighbors at that company meeting heard the gossip that his soldier
+#      went soft. I stopped reaching for my wife. His sags off his fingers."
+#
+#     *"ficaria melhor se a oracao «I stopped reaching for my wife. His sags
+#      off his fingers.» tivesse funcao de REVIRAVOLTA: «mas um truque que ele
+#      descobriu o fez dar a volta por cima». Muito mais coeso e menos copy
+#      drifting."*
+#
+# ⚠️ O DEFEITO TINHA NOME, e ele estava em 8 dos 13 hooks: a terceira sentenca
+# EMPILHAVA HUMILHACAO em vez de virar o jogo — e em cinco delas trocava de
+# NARRADOR no meio do hook (`I stopped reaching for my wife`, `I was that man`,
+# `Mine did too`, `That was me at sixty`). O espectador ouvia, em 8 segundos,
+# a desgraca do colega, a desgraca do narrador e nenhuma saida. O video de 16s
+# nao tem cena do meio para consertar isso: a cena 2 ja' entra no mecanismo.
+#
+# ⭐ O ARCO NOVO da cena 1, tres beats, na ordem em que o ouvido recebe:
+#
+#     FOFOCA   a humilhacao publica    -> por que ele para de scrollar
+#     ANCORA   `His hangs like this.`  -> o que amarra o PROP ao orgao
+#     VIRADA   `One trick later, ...`  -> a promessa de saida
+#
+# ⛔ A ANCORA fica, e nao e' enfeite: e' a unica frase que faz o geoduck no colo
+# do colega LER como o orgao. Sem ela o espectador ve um homem segurando um
+# molusco e ouve uma fofoca — o bit visual desliga.
+#
+# ⛔⛔ A VIRADA NAO NOMEIA O MECANISMO. `gelatin trick` e `blood flow` sao da
+# cena 2, e antecipa-los aqui queima a lacuna de curiosidade e repete a mesma
+# frase duas vezes em 16 segundos. Aqui e' `one trick`, sem sobrenome.
+# ⚠️ E ela NAO reusa os verbos do `TRUQUES16` (`changes that`, `turns that
+# around`): tease e payoff com a mesma locucao, a 8 segundos de distancia,
+# soa disco arranhado. A virada daqui e' SOCIAL — quem ria para de rir — que
+# e' a materia-prima das REDENCOES e o DNA deste angulo.
+#
+# ⭐ Por que TRES POOLS e nao 13 frases prontas: o orcamento. A cena 1 tem 24
+# palavras e a fofoca sozinha come 10-14 delas. Com a frase inteira travada nao
+# havia como caber a virada sem apagar a ancora. Decomposto, o solver de
+# `_hook16` escolhe cada beat contra o que sobra — e a entropia SOBE de 13
+# hooks para 16 x 12 x 12.
+
+# ⚠️⚠️ 11-12 PALAVRAS, E O APERTO DA FAIXA E' A CORRECAO, NAO ESTILO. A primeira
+# versao ia de 10 a 14 e MEDIU mode-collapse: com 24 palavras para tres beats, a
+# fofoca de 14 nao deixava virada nenhuma caber, entao o solver so' conseguia
+# escolher as curtas — quatro entradas levavam 67% do lote e as seis mais longas
+# ficavam em ~1% cada. Pool de tamanho DESIGUAL num orcamento apertado nao e'
+# pool de 16: e' pool de 4 com seis enfeites. Reescritas todas para a mesma
+# faixa, os 16 saem parelhos.
+# ⛔ Toda entrada carrega `{o}` na PRIMEIRA sentenca — e' o referente que o
+# `medir_abertura` cobra, e e' o que diz ao espectador do que se trata.
+FOFOCAS16 = [
+    "Everyone at {evento} heard his {o} doesn't work anymore.",
+    "The whole {evento} heard that his {o} quit on him.",
+    "Every man at {evento} heard his {o} can't finish anymore.",
+    "Word got around {evento} that his {o} doesn't work anymore.",
+    "Every guy at {evento} knows his {o} quit on him.",
+    "Half of {evento} heard the gossip about his dead {o}.",
+    "His wife told everyone at {evento} that his {o} quit.",
+    "Nobody at {evento} was surprised his {o} quit years ago.",
+    "Every husband at {evento} heard his {o} quit on him.",
+    "Everybody at {evento} heard that his {o} went dead.",
+    "His crew at {evento} heard his {o} gave out.",
+    "Neighbors at {evento} heard his {o} went soft on him.",
+    "Cousins at {evento} heard the gossip that his {o} quit.",
+    "The men at {evento} laughed about his {o} that night.",
+    "Word got around {evento} that his {o} finally quit.",
+    "Half of {evento} knows his {o} quit on him.",
+]
+
+# ⚠️ 4-6 palavras. O sujeito e' `His` com o substantivo elidido — o orgao da
+# frase anterior. E' o deitico DE PROPOSITO: ele aponta para o prop em quadro.
+ANCORAS16 = [
+    "His hangs just like this.",
+    "His hangs like this.",
+    "His hangs down like this.",
+    "His hangs over his own fingers.",
+    "His droops like this.",
+    "His stays down like this.",
+    "His stays folded like this.",
+    "His curls over his thumb.",
+    "His sinks into his lap.",
+    "His sags off his fingers.",
+    "His hides in his own fist.",
+    "His lies flat in his hand.",
+]
+
+# ⚠️ 5-7 palavras. ⛔ `one trick` sem sobrenome, virada SOCIAL, verbo fora do
+# vocabulario do `TRUQUES16`. ⛔ E nada de verbo de ereccao (`stands up`,
+# `works again`, `is back`) — licao paga em campo no COLO 16, 2026-08-09.
+VIRADAS16 = [
+    "One trick later, nobody was laughing.",
+    "One trick ended the laughing.",
+    "Then one trick shut them all up.",
+    "One trick, and the laughing stopped.",
+    "Then a buddy gave him one trick.",
+    "One trick later, they asked him why.",
+    "Then one trick flipped the whole thing.",
+    "One trick, and his wife bragged instead.",
+    "One trick later, nobody laughs at him.",
+    "Then one trick made him the story.",
+    "A buddy's trick ended all of that.",
+    "One trick, and they quit whispering.",
 ]
 
 QUEM_CONTOU = [
@@ -852,6 +943,55 @@ def _hook_fmt(hook, oc, o):
     return hook.format(evento=ev, o=o)
 
 
+def _mediana(vals):
+    v = sorted(vals)
+    return v[len(v) // 2]
+
+
+def _hook16(oc, o, rng):
+    """A cena 1 do 16s: FOFOCA + ANCORA + VIRADA, dentro das 24 palavras.
+
+    ⛔⛔ A ORDEM DE ESCOLHA E' A REGRA MEDIDA NOS OUTROS DOIS MOTORES (`_fundir`
+    aqui embaixo, `_cta_curto` acima): QUEM CARREGA O INTOCAVEL ESCOLHE PRIMEIRO
+    e reserva so' o MINIMO dos outros; o beat INTERCAMBIAVEL escolhe por ULTIMO,
+    porque e' ele que absorve a sobra em vez de ser cortado pelo fim do take.
+
+        1. VIRADA  — o beat que o operador mandou existir, e o mais ESCASSO:
+                     as 12 entradas dizem coisas DIFERENTES
+        2. FOFOCA  — 16 entradas com a mesma funcao; reserva a MEDIANA da
+                     ancora, nao o maximo (orcamento pessimista mata pool)
+        3. ANCORA  — 12 entradas que dizem a MESMA coisa em 4-6 palavras: e'
+                     o unico beat que encolhe sem perder funcao
+
+    ⚠️⚠️ A PRIMEIRA VERSAO PUNHA A FOFOCA NA FRENTE, e o argumento era bom — ela
+    carrega `{evento}` e `{o}`. MEDIDO em 1.200 sorteios, deu mode-collapse na
+    virada: a fofoca escolhia livre, comia ate' 14 palavras, e sobrava orcamento
+    so' para a virada mais curta do pool — `One trick ended the laughing.` saia
+    em 44% dos videos. ⭐ O criterio nao e' "quem e' importante" e sim QUEM TEM
+    MENOS SUBSTITUTOS: os 16 jeitos de contar a fofoca sao intercambiaveis, os
+    12 jeitos de virar o jogo nao sao. Invertido, 12/12 e 16/16 saem, e a
+    virada mais frequente cai para ~11%.
+
+    ⚠️ O `{evento}` varia de 2 a 3 palavras e ISSO ENTRA NO ORCAMENTO — por isso
+    a fofoca e' medida DEPOIS de formatada, nunca no template.
+    """
+    def _cabe(pool, reserva, fmt=None):
+        def _n(x):
+            return _palavras(fmt(x) if fmt else x)
+        v = [x for x in pool if _n(x) + reserva <= TETO_FALA[1]]
+        return v or [min(pool, key=_n)]
+
+    fmt = lambda x: _hook_fmt(x, oc, o)                          # noqa: E731
+    _mn_a = min(_palavras(x) for x in ANCORAS16)
+    vir = rng.choice(_cabe(
+        VIRADAS16, _mn_a + min(_palavras(fmt(x)) for x in FOFOCAS16)))
+    fof = fmt(rng.choice(_cabe(
+        FOFOCAS16,
+        _palavras(vir) + _mediana([_palavras(a) for a in ANCORAS16]), fmt)))
+    anc = rng.choice(_cabe(ANCORAS16, _palavras(fof) + _palavras(vir)))
+    return "%s %s %s" % (fof, anc, vir)
+
+
 def _sortear_evitando(rng, pool, recentes, chave="id"):
     """Sorteia evitando os valores usados recentemente naquela pagina."""
     livres = [x for x in pool if x.get(chave, x) not in recentes]
@@ -890,7 +1030,7 @@ def _nova_fala_longo(spec, i, rng):
     o = next((n for n in NUCLEO if n.lower() in spec["falas"][i].lower()), "Johnson")
     oc = spec["ocasiao"]
     if i == 0:
-        return _hook_fmt(rng.choice(HOOKS), oc, o)
+        return _hook16(oc, o, rng)
     if i == 1:
         return rng.choice(DESCOBERTAS).format(quem=rng.choice(QUEM_CONTOU), o=o)
     if i == 2:
@@ -926,7 +1066,7 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     orgaos = rng.sample(NUCLEO, 4)
 
     falas = [
-        _hook_fmt(rng.choice(HOOKS), oc, orgaos[0]),
+        _hook16(oc, orgaos[0], rng),
         rng.choice(DESCOBERTAS).format(quem=rng.choice(QUEM_CONTOU), o=orgaos[1]),
         rng.choice(RITUAIS).format(o=orgaos[2]),
         rng.choice(REDENCOES).format(eco=oc["eco"], brag=rng.choice(BRAGGING),
@@ -1326,10 +1466,9 @@ def _fundir(spec, rng):
     MEDIANA — regra medida no ESCANDALO 16, dos dois defeitos opostos.
     """
     o = sc.orgao_de(_LONGO, spec["falas_base"][3])
-
-    def _rsv(vals):
-        v = sorted(vals)
-        return v[len(v) // 2]
+    # ⚠️ `_rsv` local virou `_mediana` no topo do arquivo — mesma funcao, agora
+    # compartilhada com o solver da cena 1. Corpo identico, nada mais mudou.
+    _rsv = _mediana
 
     def _cabe(pool, reserva):
         def _n(x):
