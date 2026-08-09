@@ -59,16 +59,25 @@ def espelho(spec, mapa):
 
 
 def montar_curto(base, spec, mapa):
-    """Roda o montar() do motor base e devolve so' as cenas do mapa, /03."""
+    """Roda o montar() do motor base e devolve so' as cenas do mapa.
+
+    ⛔⛔ O TOTAL VEM DO TAMANHO DO MAPA, nao mais cravado em 3. A familia 16s
+    (2 takes de 8s) passa um mapa de dois, e com o `/03` fixo aqui os blocos
+    sairiam rotulados `01/03` e `02/03` num video de duas cenas — o AdBatch
+    Vertical 2 conta os rotulos e recusaria o roteiro.
+    ⚠️ Comportamento dos motores de 3 cenas INALTERADO: `len(mapa)` e' 3 neles,
+    e o formato `%02d/%02d` devolve exatamente `01/03` como antes.
+    """
     b5 = base.montar(espelho(spec, mapa))
+    total = len(mapa)
 
     b = {"BLOCO 0 (REF)": b5["BLOCO 0 (REF)"]}
     for novo, orig in enumerate(mapa, 1):
         for tipo in ("IMAGE", "TAKE"):
             velho = "%s %02d/05" % (tipo, orig)
-            chave = "%s %02d/03" % (tipo, novo)
+            chave = "%s %02d/%02d" % (tipo, novo, total)
             b[chave] = b5[velho].replace("%s %02d/05:" % (tipo, orig),
-                                         "%s %02d/03:" % (tipo, novo), 1)
+                                         "%s %02d/%02d:" % (tipo, novo, total), 1)
     return b
 
 
