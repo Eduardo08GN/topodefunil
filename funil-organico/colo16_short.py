@@ -1330,6 +1330,35 @@ SUBSTANCIAS = [
 # nossa; seguida do desmentido ela e' a isca que o video existe para derrubar. O
 # linter cobra o par (CO8) — e e' regra de FUNCAO, do tipo que o repo aprendeu a
 # cobrar depois de tres slots que passavam na forma e nao cumpriam o papel.
+# ⛔⛔ AS ENTRADAS COM `{o}` FORAM DE TRES PARA OITO — 2026-08-09, e o motivo
+# foi RECUSA MEDIDA EM CAMPO: o operador relatou ~95% dos TAKE 1 deste motor
+# reprovando no gerador, contra quase nenhuma no `colo_short` de 24s.
+#
+# ⭐ O CRUZAMENTO DOS DOIS MOTORES ISOLOU A VARIAVEL. Medido em 120 sorteios de
+# cada: a IMAGE 01 e' IDENTICA (2296 chars nos dois) e a direcao do TAKE e'
+# IDENTICA (918 chars). O que muda e' o DIALOGO — e a distribuicao das
+# promessas:
+#       promessa                              24s    16s
+#       it fixes your {o} by the weekend      23%    37%
+#       it wakes your {o} up in one day       24%    33%
+#       your {o} stands up on command         24%    29%
+#       as cinco sem `{o}`                    25%     0%
+#
+# ⛔ A CAUSA E' O PROPRIO COLAPSO TEMPORAL, nao um descuido: o `_com_o()` filtra
+# as entradas que nomeiam o orgao, e com DUAS cenas em vez de tres a cota do
+# orgao cai quase sempre na cena 1. No motor de 24s a terceira cena dividia
+# essa carga; aqui nao ha' terceira.
+# ⚠️ Resultado: 100% dos takes 1 saem com verbo de MOVIMENTO DE ERECAO
+# (`stands up`, `wakes up`) num quadro que ja' tem prop falico no colo
+# recebendo liquido. `prop-metaforas.md` registra o caso irmao: *"movimento de
+# inchar-e-assentar num prop ereto e' descricao de tumescencia, e o moderador
+# de video le' isso mesmo com vocabulario de fruta"*.
+#
+# ⭐⭐ A SAIDA MANTEM O TAXATIVO — ordem do operador: *"encontre uma solucao sem
+# deixar de ser taxativo"*. As cinco novas nomeiam o orgao (taxativo) mas
+# entregam ESTADO ou CONSEQUENCIA, nao movimento de subida. E tres delas
+# nomeiam a ESPOSA, que e' o desarme validado no caso Ray/consultorio: ali
+# `the woman` barrou e `his wife of forty years` passou, com a cena intacta.
 ISCAS_PROMESSA = [
     "and watch how you'll start lasting hours in the bedroom",
     "and watch how you'll be ready again in ten minutes",
@@ -1339,6 +1368,12 @@ ISCAS_PROMESSA = [
     "and watch how your {o} stands up on command",
     "and watch how you'll last three times longer tonight",
     "and watch how it wakes your {o} up in one day",
+    # + 2026-08-09 — estado e consequencia, sem verbo de subida
+    "and watch how your wife notices your {o} by the weekend",
+    "and watch how your wife feels your {o} by Friday",
+    "and watch how your {o} works again by the weekend",
+    "and watch how your {o} is back by the weekend",
+    "and watch how your wife stops asking about your {o}",
 ]
 
 # ---------------------------------------------------------------------------
