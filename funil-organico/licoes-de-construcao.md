@@ -1452,6 +1452,13 @@ idade`) roda junto com o positivo.
       não aparecem em nenhum medidor de copy porque nenhum medidor de copy olha
       para lá
 - [ ] **Lente nova? Reinjete o defeito que a motivou e veja-a gritar** (§33).
+- [ ] **Escreveu `.py` por heredoc? Varra bytes de controle** (§37). `\b` e `\1`
+      dentro de heredoc não-citado chegam ao arquivo como `\x08` e `\x01`. O
+      Python compila, o editor não mostra nada, e o regex simplesmente **nunca
+      casa** — no caso real, um `^(naquele|aquela|…)\x08` deixava `this store`
+      sair como *"aquela loja"* em vez de *"esta loja"*: português plausível,
+      dêitico invertido, invisível para qualquer medidor de cobertura.
+      `[i for i,c in enumerate(open(f,'rb').read()) if c<9 or 13<c<32]`
       Zero achado num motor já corrigido não distingue lente boa de lente morta
 - [ ] `python -m pyflakes <motor>.py` — saída **vazia**
 - [ ] **400 sorteios** pelas 5 páginas, `sortear → montar → lint`, **0 ERRO medido**
