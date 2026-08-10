@@ -562,21 +562,34 @@ COPOS = [
 # ⭐ E A FALHA DESTE ANGULO TEM DOIS LADOS: o corpo (aqui) e o casamento
 # (o pool seguinte). Os dois cabem no take 1, e e' isso que o separa dos outros
 # vinte — nos outros o take 1 so' tem o corpo.
+# ⛔⛔ A FALHA E' CURTA E A APOSTA CABE EM QUATRO PALAVRAS — reescrita
+# 2026-08-10 por ordem do operador, e e' a SEGUNDA vez que ele faz esta mesma
+# correcao no mesmo dia (a primeira foi no FLAGRANTE 16):
+#   *"uma unica frase curta dizendo 'my pecker went soft e eu estava com medo de
+#    perde-la' ja' esta' suficiente. Tu ta' gastando fala com detalhes
+#    secundarios desnecessarios no drama com a mulher. No que voce poderia
+#    colocar uma frase com funcao de descoberta de reviravolta positiva."*
+# ⚠️ O que saiu: `I never explained`, `Nine months without her hand on me`,
+# `Twenty six years married, and she was already packing a bag`. Sao 11 palavras
+# de drama de segunda ordem ocupando o lugar da DESCOBERTA — e o take 1 fechava
+# no fundo do poco, sem nenhuma razao para o espectador continuar.
+# ⭐ Agora cada entrada carrega A FALHA + A APOSTA em 11-12 palavras, e o slot
+# seguinte (VIRADAS) fecha o take apontando para frente.
 FALHAS = [
-    "My {o} quit on me at fifty five, and I hid it.",
-    "Two years my {o} went soft every night, and I said nothing.",
-    "My {o} gave out halfway, three nights running, and I quit trying.",
-    "For eight months my {o} did nothing at all, dead every night.",
-    "My {o} stopped working at fifty seven and I never told her.",
-    "I'd lose it ten minutes in, and my {o} quit after that.",
-    "Four nights out of five my {o} went soft and stayed there.",
-    "My {o} shut down after fifty, and no doctor said why.",
-    "Nine months straight my {o} was not working, not even once.",
-    "My {o} failed me three nights in a row, then every night.",
-    "At fifty eight my {o} went soft, and it stayed that way.",
-    "My {o} gave out on our anniversary, and I never explained.",
-    "Twice a week my {o} quit halfway, and she stopped asking.",
-    "My {o} was useless for two years and I blamed the job.",
+    "My {o} gave out on our anniversary. I was losing her.",
+    "My {o} quit on me at fifty five. She was almost gone.",
+    "My {o} went soft every single night. I was losing my wife.",
+    "My {o} stopped working two years ago. My marriage was going.",
+    "My {o} gave out halfway, three nights running. She was leaving.",
+    "My {o} was dead by our anniversary. I could feel her going.",
+    "My {o} quit on me before sixty. I was watching her go.",
+    "My {o} went soft ten minutes in. We were nearly done.",
+    "My {o} did nothing for eight months. Her bags were packed.",
+    "My {o} shut down after fifty. I was afraid of losing her.",
+    "My {o} quit halfway, twice a week. She stopped looking at me.",
+    "My {o} hadn't worked in a year. I was losing my marriage.",
+    "My {o} failed me again last Saturday. She was done asking.",
+    "My {o} was finished by fifty eight. I was losing her.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -590,19 +603,28 @@ FALHAS = [
 # ⚠️ E sem verbo de ereccao em lugar nenhum: `is back`, `comes back`, `came
 # back` sao tokens do CT7, e uma frase sobre o CASAMENTO voltando com esses
 # verbos ficaria a um passo de ser lida como frase sobre o orgao.
-CUSTOS = [
-    "She stopped reaching for me eight months back, and I counted.",
-    "She slept turned away from me for the last two years.",
-    "Twenty six years married, and she was already packing a bag.",
-    "She quit touching me, and two years of that finished us.",
-    "My wife stopped asking, and I watched her decide to leave.",
-    "She was one week from moving out, and I knew why.",
-    "Nine months without her hand on me, and she was gone.",
-    "She stayed on her side of that bed for two years.",
-    "She stopped saying goodnight, and I let that run for months.",
-    "Her suitcase sat by our door for a whole month, packed.",
-    "She stopped looking at me in bed, and I let her.",
-    "Thirty one years, and she was sleeping in the other room.",
+# ⭐⭐ A VIRADA — o beat que substituiu o CUSTO (2026-08-10).
+# O take 1 tem de FECHAR APONTANDO PARA FRENTE, nunca empilhando drama. E' a
+# forma que o operador escreveu a mao:
+#     "My pecker gave out on our anniversary. I was losing her.
+#      Everything started to change when I discovered the gelatin trick."
+# ⚠️ 9-10 palavras, e TODAS nomeiam o `gelatin trick` — aqui ele e' a DESCOBERTA,
+# nao o mecanismo. A razao dele (verbo de efeito + alvo, CT3) mora na cena 2,
+# que e' onde ela cabe: cobrar a razao nas DUAS mencoes seria redundancia paga
+# em palavras que o take nao tem.
+VIRADAS = [
+    "Everything started to change when I discovered the gelatin trick.",
+    "Everything changed the week I found the gelatin trick.",
+    "Then a buddy told me about the gelatin trick.",
+    "All of that turned around with the gelatin trick.",
+    "Everything turned when I finally tried the gelatin trick.",
+    "It all changed after I started the gelatin trick.",
+    "Then I found the gelatin trick, and everything shifted.",
+    "Everything changed the night I made the gelatin trick.",
+    "That all ended when I discovered the gelatin trick.",
+    "One month on the gelatin trick and everything changed.",
+    "Everything got better the day I found the gelatin trick.",
+    "My brother handed me the gelatin trick, and everything changed.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -671,7 +693,7 @@ MECANISMOS = [
 # REFERENTE, e ficam nomeadas aqui para ninguem "melhorar" de volta:
 #
 #     ✗ "She unpacked that bag that week."   ← em 31 de 36 sorteios NAO havia
-#       mala nenhuma no take 1 (so' 2 das 12 entradas de CUSTOS citam bag ou
+#       mala nenhuma no take 1 (so' 2 das 12 entradas de VIRADAS citam bag ou
 #       suitcase). E `that week` nunca tem semana.
 #     ✗ "She quit sleeping on that side."    ← em 27 de 35 sorteios nao havia
 #       lado nenhum. E pior que o outro: o take 2 se passa DENTRO D'AGUA, entao
@@ -832,8 +854,8 @@ def _falas(spec, rng, quais=(0, 1)):
 
     if 0 in quais:
         # a FALHA carrega o orgao e o numero — menos substitutos, escolhe antes.
-        fa = rng.choice(_cabe(FALHAS, _mn(CUSTOS), 1, o)).format(o=o)
-        cu = rng.choice(_cabe(CUSTOS, _palavras(fa), 1))
+        fa = rng.choice(_cabe(FALHAS, _mn(VIRADAS), 1, o)).format(o=o)
+        cu = rng.choice(_cabe(VIRADAS, _palavras(fa), 1))
         f[0] = "%s %s" % (fa, cu)
 
     if 1 in quais:
@@ -1312,8 +1334,8 @@ def autoteste(n=400):
     # opcao viva. E' a licao §36 do repo.
     o_pior = max(sc.APELIDOS_16, key=len)
     for rot, pool, cena, outros in (
-            ("FALHAS", FALHAS, 1, [CUSTOS]),
-            ("CUSTOS", CUSTOS, 1, [FALHAS]),
+            ("FALHAS", FALHAS, 1, [VIRADAS]),
+            ("VIRADAS", VIRADAS, 1, [FALHAS]),
             ("MECANISMOS", MECANISMOS, 2, [PROVAS, CTAS]),
             ("PROVAS", PROVAS, 2, [MECANISMOS, CTAS]),
             ("CTAS", CTAS, 2, [MECANISMOS, PROVAS])):

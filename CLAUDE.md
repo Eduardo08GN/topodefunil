@@ -55,20 +55,27 @@ Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
-`pee16` · `good16` · `wife16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor)
+`pee16` · `good16` · `bed16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor)
 
-⭐ **`wife16` (2026-08-10) — o casamento na beira do fim.** Segundo motor do
-parque com **narrador homem** (o outro é o `good16`) e o único cuja prova não é
-um corpo nem um prop: é a **postura dela**. Take 1, o quarto à noite — ele na
-beirada da cama, tronco nu, cabisbaixo; ela atrás, **braços cruzados**, virada
-para o outro lado. Take 2, a água da mesma casa — ela **colada** nele, os dois
-com o copo do gelatin trick na mão, ele **com rosto e reconhecidamente o mesmo
-homem**. ⛔ **Não tem prop fálico, e isso é propriedade do ângulo, não
+⭐ **`bed16` (2026-08-10) — a cama fria e a tigela.** (Nasceu como `wife16` e
+foi renomeado no mesmo dia, por ordem do operador: o que nomeia o ângulo é a
+cama, não a esposa.) Segundo motor do parque com **narrador homem** (o outro é
+o `good16`) e o único cuja prova não é um corpo nem um prop. ⭐⭐ **A tigela é o
+fio do vídeo**: no take 1 ela está **no colo dele**, sozinho, mexendo a mistura
+âmbar com a colher, enquanto ela, vários pés atrás e de **braços cruzados**,
+**encara** ele; no take 2 a **mesma tigela** está **nas mãos dela**, com os
+cubos de gelatina, os dois colados dentro d'água. O mesmo objeto conta o antes
+e o depois sem uma palavra. ⛔ A **profundidade de campo é a copy visual** do
+take 1 — ele grande e nítido na frente, ela menor e suave atrás — e é pedida
+explicitamente. ⛔ **Não tem prop fálico, e isso é propriedade do ângulo, não
 esquecimento.** Um eixo só (a região) arrasta etnia + quarto + água + luz +
 áudio + traje dela — 15 regiões dos EUA, mecânica do `falta16` fundida com a do
-`good16`. ⚠️ A doutrina mora no cabeçalho do motor: a **leitura ótica da fonte
-está pendente** (o reel não baixa sem login), então os pools de fala são
-construção nossa sob o contrato, não verbatim.
+`good16`. ⭐ **MODO BELA** pelo contrato compartilhado: desligado entrega a
+esposa realista do print (44-52 anos), ligado traz a REF do pool bela — e o
+modo move idade, porte e traje dela **dentro da região sorteada**. ⚠️ A
+doutrina mora no cabeçalho do motor: a **leitura ótica da fonte está pendente**
+(reel 1752010159557238, que também não baixa sem login), então os pools de fala
+são construção nossa sob o contrato, não verbatim.
 
 Cada um **não substitui** o SHORT do mesmo ângulo: são formatos diferentes e os
 dois coexistem. Nasceram por cópia literal com cirurgia só no eixo temporal — as

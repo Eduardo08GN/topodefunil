@@ -6,15 +6,20 @@ AGENTE GOOD 16 — app desktop offline.
 Ponto de entrada enxuto: a interface mora em ui_agente.py e a doutrina em
 good16_short.py.
 
-⭐ O QUE MUDA EM RELACAO AO PAINEL DO COLO SHORT:
+⭐ O PAINEL, como ele esta' depois da passada de 2026-08-10:
 
   · DUAS cenas de copy em vez de tres.
-  · ⛔ O eixo A RECEITA SAIU DO PAINEL. Ele vivia SO' na fala da cena 2, que no
-    16 virou prova + CTA + gate, e o layout da bancada e' string fixa — a
-    receita nao chega a quadro nenhum. Eixo no painel que nao muda o video e'
-    pior que eixo ausente: o operador troca, ve' que nada mudou e para de
-    confiar no painel inteiro.
-  · O resto dos eixos continua: mundo, etnia, ref, homem, prop, substancia.
+  · QUATRO eixos: A REGIAO (15 arquetipos dos EUA), QUEM FALA, A MULHER e A
+    TIGELA. ⛔ Eixo no painel que nao muda o video e' pior que eixo ausente —
+    o operador troca, ve' que nada mudou e para de confiar no painel inteiro.
+    Por isso os quatro sao cobrados a cada sorteio pelo `lint_painel_honesto`.
+  · Uma pre-selecao de REGIAO (`TRAVAS_UI`), que filtra o mundo sorteado.
+  · ⭐⭐ DOIS TOGGLES DE MODO, e o `ref forte` NASCE MARCADO — o motor declara
+    `MODOS_DEFAULT = ("forte",)` e a `ui_agente` le' isso com `getattr`. Ordem
+    do operador, 2026-08-10.
+  · ⛔ SAIU O TOGGLE DE ENQUADRAMENTO (`casal na agua` / `so as maos`): o macro
+    sem rosto foi aposentado por ordem do operador, e com um enquadramento so'
+    o eixo deixou de existir. Ver o tumulo no cabecalho do `good16_short.py`.
 
 ⛔ Ledger PROPRIO (`.good-16-ledger.json`).
 

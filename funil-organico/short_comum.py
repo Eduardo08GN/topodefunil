@@ -768,7 +768,14 @@ def lint_copy16(base, spec, achados, isca_absurda=True):
                      r"never works|doesn't work|does not work|hasn't worked|"
                      r"can't finish|couldn't|won't|failed|fails|shut down|"
                      r"went out|not working|no longer|killed|kills|wrecked|"
-                     r"ruined|finished|gone|useless|nothing happens)\b",
+                     r"ruined|finished|gone|useless|nothing happens|"
+                     # + 2026-08-10, segunda vez que a lista cresce no mesmo
+                     # dia: reprovava `My pecker did nothing for eight months`
+                     # e `My pecker hadn't worked in a year`, que enunciam a
+                     # falha melhor que metade da lista. A lente aprende o
+                     # verbo; a copy nao se dobra ao regex.
+                     r"did nothing|does nothing|doing nothing|hadn't worked|"
+                     r"had not worked|never worked|stopped responding)\b",
                      f1, re.I):
         achados.append(("AVISO", "CT2: o take 1 nao enuncia FALHA nenhuma — "
                                  "sem dano concreto o espectador nao se "

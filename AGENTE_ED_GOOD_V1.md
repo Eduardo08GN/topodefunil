@@ -166,7 +166,24 @@ outros. Manter assim.
 
 ---
 
-## 6. ⭐⭐ TOGGLE DE ENQUADRAMENTO — `casal na agua` ⟷ `so as maos`
+## 6. ⛔ APOSENTADO EM 2026-08-10 — o TOGGLE DE ENQUADRAMENTO
+
+> **Ordem do operador, 2026-08-10: o enquadramento `so as maos` SAIU.** O
+> motor `good16_short.py` passou a ter um enquadramento so' — o casal na agua
+> — e com um so' o eixo inteiro deixou de existir: sairam o toggle da UI, o
+> ramo de montagem, a lente GO3 e os pools que so' serviam ao macro (POSTITS,
+> BANCADAS, CLUTTER, e o `bancada` do ledger).
+>
+> ⚠️ **Esta secao fica INTEIRA e sem edicao**, porque ela e' leitura otica de
+> fonte — e' o que os `prep*.mp4` mostram, e isso continua verdade. O que
+> mudou foi a DECISAO de producao, nao a fonte. Se o operador quiser o macro de
+> volta um dia, a especificacao esta' aqui inteira.
+>
+> ⭐ O que sobreviveu da secao e migrou para o take 2 do motor: o sache com
+> `GELATIN` legivel, que hoje aparece **amassado na borda da piscina, ao lado
+> da tigela** (§ o preparo). O POST-IT nao migrou — nao ha' bancada.
+
+### (registro historico) O toggle como ele foi especificado
 
 **Fonte:** leitura ótica a 1 fps de mais três reels, 2026-08-09 —
 `prep1.mp4` (13,9s), `prep2.mp4`, `prep3.mp4`.

@@ -86,10 +86,10 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "clean_v1_16s_short",
            "ressurreicao16_short",
            "flagrante16_short", "good16_short",
-           # + 2026-08-10: o WIFE 16 entra AQUI no commit em que nasce — gate
+           # + 2026-08-10: o BED 16 entra AQUI no commit em que nasce — gate
            # que nao ve' o motor nao reprova o motor, so' produz um "passou"
            # mentiroso.
-           "wife16_short"]
+           "bed16_short", "wife16_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

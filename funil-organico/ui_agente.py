@@ -142,7 +142,18 @@ class App(tk.Tk):
         # amanha nao pode custar mais um par de `if` espalhado pela classe.
         self.modos = [m for m in ("bela", "forte")
                       if getattr(motor, "MODO_%s" % m.upper(), False)]
-        self.modo_on = {m: False for m in self.modos}
+        # ⭐ 5o contrato aditivo (2026-08-10): MODOS_DEFAULT — quais modos
+        # nascem LIGADOS. Ordem do operador para o GOOD 16: *"toggle marcado
+        # como default"* no modo FORTE.
+        # ⛔ Ate' aqui TODO modo nascia desligado, e um motor que quisesse o
+        # contrario so' poderia consegui-lo mentindo no `sortear` (ligando o
+        # modo sem trava) — o botao apagado e o video ligado, que e' a
+        # forma-sem-funcao ao contrario e pior: o operador desliga e nada muda.
+        # ⚠️ ADITIVO e lido com `getattr`: motor que nao declara `MODOS_DEFAULT`
+        # continua nascendo com TUDO desligado, e por isso nenhum dos outros
+        # motores muda de comportamento (medido nos 33, nao prometido).
+        _padrao = tuple(getattr(motor, "MODOS_DEFAULT", ()) or ())
+        self.modo_on = {m: (m in _padrao) for m in self.modos}
         self.pele_travada = None
         # ⚠️ defaults ANTES de montar a tela: `travas()` consulta os dois, e
         # quem monta os botoes e' o `_topo()`, que roda depois daqui.
