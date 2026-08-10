@@ -49,15 +49,43 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 **Cada um é autossuficiente e é a FONTE DA VERDADE do seu ângulo** — correção de
 regra entra no `_short`.
 
-⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s.**
-`trio16_short.py` — **2 takes de 8s**, destino **AdBatch Vertical 2**. Ele
-**não substitui** o `trio_short.py`: são formatos diferentes, ledger próprio
-cada um, e os dois coexistem. Nasceu por cópia literal do TRIO com cirurgia só
-no eixo temporal — as cenas 2 e 3 (que já aconteciam na mesma cozinha) fundem
-num quadro só, e a copy passa a ser hook + `uso com gelatin trick` + CTA.
-⛔ **O `follow` do CTA nunca encosta na keyword**: a automação de DM casa
-palavra **exata**, então o comando é `Comment gelatin, and I'll send you the
-recipe.` e o *follow* vem em frase separada. Lente `T16-2` trava isso.
+⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
+com **catorze agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
+Vertical 2**, ledger próprio cada um:
+
+`trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
+`colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
+`pee16` · `good16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor)
+
+Cada um **não substitui** o SHORT do mesmo ângulo: são formatos diferentes e os
+dois coexistem. Nasceram por cópia literal com cirurgia só no eixo temporal — as
+duas cenas finais fundem num quadro só.
+
+### ⛔⛔ [`CONTRATO-COPY-16S.md`](funil-organico/CONTRATO-COPY-16S.md) — leia antes de escrever copy de 16s
+
+Sete travas em código (`short_comum.lint_copy16`), cobradas de fora por
+`python funil-organico/medir_copy16.py --gate`. Nasceram de uma revisão
+adversarial de 6 lentes sobre lotes renderizados (2026-08-10), e do fato de que
+os **sete defeitos apareciam em quase todos os motores ao mesmo tempo** — o que
+não é erro de quem escreveu o pool, é ausência de contrato.
+
+| | |
+|---|---|
+| **CT1** | nada depois da sentença do CTA — o `follow` vai **antes** |
+| **CT2** | o take 1 enuncia a **falha dele**, com dano concreto |
+| **CT3** | `gelatin trick` carrega **verbo de efeito + alvo** na mesma sentença |
+| **CT4** | **um** apelido do órgão por vídeo, repetido nos dois takes |
+| **CT5** | nenhum **ingrediente** nomeado na fala — a receita é a moeda |
+| **CT6** | o CTA diz **onde** a receita chega (`goes to your messages`) |
+| **CT7** | verbo de ereção **colado no órgão** é proibido |
+
+⛔ **O CT4 reverte a regra antiga** de "substantivos distintos por cena". Em 24s
+e cinco cenas o bordão é o risco; em 16s e duas cenas o corte zera a memória de
+trabalho, e trocar `soldier` por `Johnson` no segundo 9 obriga a remapear. A
+variação continua **entre** vídeos.
+
+⛔ **O `follow` nunca encosta na keyword**: a automação de DM casa palavra
+**exata**. Lente `T16-2` trava isso, e o CT1 manda o follow para antes do CTA.
 ⚠️ A ferramenta do Flow ainda não existe — o prompt de criação da **AdBatch
 Vertical 2** está em
 [`adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md)
@@ -253,6 +281,7 @@ Inventário atual de domínios e apps:
 - **AdBatch Vertical (a ferramenta do Flow que vira o roteiro em vídeo):** [`funil-organico/RUNBOOK-adbatch-vertical.md`](funil-organico/RUNBOOK-adbatch-vertical.md) — arquitetura, contrato do parser e a família 5/4/3. ⭐ **Código-fonte das duas ferramentas, versionado e comentado:** [`funil-organico/adbatch-vertical/README.md`](funil-organico/adbatch-vertical/README.md) — o que só o código revela (`durationSeconds: 10`, modelo `Omni Flash`, corte silencioso em 4.000 chars). Prompts prontos pro Criador de Ferramentas: [`funil-organico/adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md). ⚠️ **Um assunto por prompt** — o editor regride.
 - **Investigar uma recusa do Veo (método):** [`funil-organico/RUNBOOK-bisseccao-moderacao.md`](funil-organico/RUNBOOK-bisseccao-moderacao.md) — bissecção com variável única. ⚠️ **Regerar 2× antes de investigar**: a política de conteúdo nocivo tem variância.
 - **Lições de produção Veo (moderação + copy):** [`funil-organico/licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) — playbook das lições pagas em campo; ler antes de gerar lote.
+- ⛔⛔ **Contrato de copy da família 16s:** [`funil-organico/CONTRATO-COPY-16S.md`](funil-organico/CONTRATO-COPY-16S.md) — **ler antes de escrever ou alterar copy de qualquer `*16_short.py`.** Sete travas em `short_comum.lint_copy16`, cobradas por `python funil-organico/medir_copy16.py --gate`. Tem também os quatro achados da revisão adversarial que **não** viraram trava, com o motivo de cada um.
 - ⛔ **Lições de construção — os erros do assistente:** [`funil-organico/licoes-de-construcao.md`](funil-organico/licoes-de-construcao.md) — **ler antes de construir ou alterar agente.** 23 modos de falha já cometidos, com o que impede cada um, e o checklist de entrega. A causa raiz é uma só: *verificar a FORMA e declarar pronto sem verificar a FUNÇÃO*. Corolário: **aceite é MEDIÇÃO, nunca RELATO** — nem meu, nem de subagente. Dois gates: `python funil-organico/medir_personagens.py --gate` (eixo físico zerado = reprovação) e `python funil-organico/medir_contexto_copy.py --gate` (frase que nomeia causa sem dizer o que ela quebra = reprovação — §17, *"tá deixando o viewer sem entender do que se trata"*).
 - **Mapa visual da Tanisha (base do CONSULTORIO):** [`concorrentes/tanisha-mapa-visual.md`](concorrentes/tanisha-mapa-visual.md).
 - `funil-organico/` — doutrina de copy, criativos, arquitetura do funil, runbooks.

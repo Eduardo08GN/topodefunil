@@ -22,6 +22,51 @@
 > **exterior** (o que se joga por cima) e a cena inteira acontece num
 > **exterior** (a varanda).
 
+
+---
+
+## ⛔⛔ ESTE ARQUIVO DESCREVE A VERSÃO DE 5 CENAS. A DE PRODUÇÃO É A DE 16s.
+
+> **Existe um `exterior16_short.py`** — 2 takes de 8s, destino **AdBatch Vertical
+> 2** — e é ele que roda hoje. Ele **não substitui** o motor de 24s: são
+> formatos diferentes, ledger próprio cada um, e os dois coexistem.
+
+⚠️ **A copy de exemplo que aparece daqui para baixo é a de 24s.** Copiá-la para
+o 16s é o erro que esta seção existe para impedir: em 16 segundos o arco tem
+duas batidas, não cinco, e a copy é governada por outro contrato.
+
+### A copy de 16s obedece ao [`CONTRATO-COPY-16S.md`](funil-organico/CONTRATO-COPY-16S.md)
+
+Sete travas em código (`short_comum.lint_copy16`), cobradas por
+`python funil-organico/medir_copy16.py --motor exterior16`:
+
+| | |
+|---|---|
+| **CT1** | nada depois da sentença do CTA — o `follow` vai **antes** |
+| **CT2** | o take 1 enuncia a **falha dele**, com dano concreto |
+| **CT3** | `gelatin trick` carrega **verbo de efeito + alvo** na mesma sentença |
+| **CT4** | **um** apelido do órgão por vídeo, repetido nos dois takes |
+| **CT5** | nenhum **ingrediente** nomeado na fala — a receita é a moeda |
+| **CT6** | o CTA diz **onde** a receita chega (`goes to your messages`) |
+| **CT7** | verbo de ereção **colado no órgão** é proibido |
+
+⛔ O **CT4 reverte** a regra antiga de "substantivos distintos por cena", que
+ainda vale para o motor de 24s descrito abaixo. Em 16s o corte zera a memória de
+trabalho do espectador, e trocar o apelido no segundo 9 obriga a remapear.
+
+### O que estava quebrado neste ângulo, medido em 200 sorteios (2026-08-10)
+
+```
+CT1 100% · CT2 100% · CT3 100% · CT4 100%
+```
+
+⚠️ E o defeito específico dele: era o pior dos sete: nenhum homem falhava em segundo algum, o take 1 fechava em negacao tripla sem substituto, e `swell up` prometia tamanho (e em ingles americano e' picada de abelha).
+
+Origem da reforma: revisão adversarial de **6 lentes independentes** sobre lotes
+renderizados — 127 achados, 79 derrubados na refutação, 48 de pé.
+
+---
+
 ---
 
 ## ⛔⛔ A LEI DESTE AGENTE — leia antes de qualquer outra linha

@@ -4,6 +4,51 @@
 > que **um homem sem rosto segura no próprio colo**, desmente a promessa na
 > mesma respiração e entrega a receita de verdade.
 
+
+---
+
+## ⛔⛔ ESTE ARQUIVO DESCREVE A VERSÃO DE 5 CENAS. A DE PRODUÇÃO É A DE 16s.
+
+> **Existe um `colo16_short.py`** — 2 takes de 8s, destino **AdBatch Vertical
+> 2** — e é ele que roda hoje. Ele **não substitui** o motor de 24s: são
+> formatos diferentes, ledger próprio cada um, e os dois coexistem.
+
+⚠️ **A copy de exemplo que aparece daqui para baixo é a de 24s.** Copiá-la para
+o 16s é o erro que esta seção existe para impedir: em 16 segundos o arco tem
+duas batidas, não cinco, e a copy é governada por outro contrato.
+
+### A copy de 16s obedece ao [`CONTRATO-COPY-16S.md`](funil-organico/CONTRATO-COPY-16S.md)
+
+Sete travas em código (`short_comum.lint_copy16`), cobradas por
+`python funil-organico/medir_copy16.py --motor colo16`:
+
+| | |
+|---|---|
+| **CT1** | nada depois da sentença do CTA — o `follow` vai **antes** |
+| **CT2** | o take 1 enuncia a **falha dele**, com dano concreto |
+| **CT3** | `gelatin trick` carrega **verbo de efeito + alvo** na mesma sentença |
+| **CT4** | **um** apelido do órgão por vídeo, repetido nos dois takes |
+| **CT5** | nenhum **ingrediente** nomeado na fala — a receita é a moeda |
+| **CT6** | o CTA diz **onde** a receita chega (`goes to your messages`) |
+| **CT7** | verbo de ereção **colado no órgão** é proibido |
+
+⛔ O **CT4 reverte** a regra antiga de "substantivos distintos por cena", que
+ainda vale para o motor de 24s descrito abaixo. Em 16s o corte zera a memória de
+trabalho do espectador, e trocar o apelido no segundo 9 obriga a remapear.
+
+### O que estava quebrado neste ângulo, medido em 200 sorteios (2026-08-10)
+
+```
+CT1 100% · CT2 65% · CT3 64% · CT4 100% · CT7 12%
+```
+
+⚠️ E o defeito específico dele: carregava uma REGRESSAO VIVA: `The gelatin trick gets your soldier hard` — o mesmo verbo de ereccao que em 2026-08-09 fez ~95% dos takes 1 deste agente serem reprovados pelo gerador. A correcao de campo nunca chegou ao pool da cena 2.
+
+Origem da reforma: revisão adversarial de **6 lentes independentes** sobre lotes
+renderizados — 127 achados, 79 derrubados na refutação, 48 de pé.
+
+---
+
 **Fonte:** SOFIA MAREN, reel `facebook.com/reel/1580259273673843` (40s, 3,2K
 views). Leitura ótica completa e copy verbatim em
 [`concorrentes/sofia-maren-colo-mapa-visual.md`](concorrentes/sofia-maren-colo-mapa-visual.md).
