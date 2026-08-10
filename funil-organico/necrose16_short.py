@@ -756,14 +756,23 @@ HOOKS = [
 # NE7 exige que a cena 1 CONDICIONE, e um imperativo de atencao nao afirma nada.
 # ⚠️ 2-5 palavras — o hook come 12-14 do teto de 20.
 FECHOS_H = [
-    "Watch close, brother.",
-    "Look close.",
-    "Pay attention to this.",
-    "Watch what happens next.",
-    "Give me eight seconds.",
-    "Do not scroll past this.",
-    "Watch, then decide.",
-    "Stay with me here.",
+    # ⛔ 2026-08-10 — ORDEM DO OPERADOR: *"`Watch how to fix it` e' mais coeso e
+    # traz mais contexto que `Watch, then decide`"*. Ele esta' certo: o fecho
+    # antigo era comando de ATENCAO puro (`Watch close`, `Pay attention`), que
+    # gasta a batida sem entregar nada. Agora ele APONTA O CONSERTO — e' a
+    # ponte que o take 2 vai pagar.
+    # ⛔⛔ E TODOS SAO IMPESSOAIS, o que aqui e' obrigatorio e nao estetico: com
+    # o MODO BELA ligado quem fala o take 1 e' uma MULHER, entao um fecho como
+    # `Watch what fixed mine` quebraria na boca dela. Nenhum tem primeira pessoa.
+    # ⚠️ E nenhum AFIRMA sobre o corpo dele (NE7) — imperativo nao afirma.
+    "Watch how to fix it.",
+    "Watch what fixes it.",
+    "Here's how to fix it.",
+    "Watch how to fix that.",
+    "Watch how it gets fixed.",
+    "Watch how to fix yours.",
+    "Here's what fixes it.",
+    "Watch how that gets fixed.",
 ]
 
 
