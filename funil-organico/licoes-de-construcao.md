@@ -1378,6 +1378,53 @@ aprova o que o operador reprova de olho. A assinatura já é reconhecível: semp
 que a saída final é **construída** a partir de partes, medir as partes é medir
 outra coisa.
 
+### ⚠️⚠️ E depois de fechar 100%, o painel AINDA tinha inglês
+
+Com `74.400/74.400 = 100%` medido, um dos primeiros vídeos que abri na entrega
+trazia `Married men, use this. com caution` e `Comment gelatin, e recipe hits
+your messages inteira`. A medição de 100% estava certa e era **irrelevante**,
+porque perguntava outra coisa:
+
+| lente | pergunta | o que deixa passar |
+|---|---|---|
+| exatidão | *algum molde casou a fala inteira?* | molde **errado** que casa conta como acerto |
+| sobra de pool | *sobrou valor de pool em inglês?* | inglês que veio do **molde**, não do pool |
+| **inglês na saída** | *tem palavra inglesa na frase?* | — é esta que o operador faz de olho |
+
+A terceira achou **7,2% de falas sujas** onde as outras duas viam 100%.
+
+> **Toda lente de aprovação tem que ser a pergunta que o operador faz olhando o
+> resultado.** Se ele olha a frase e vê inglês, a lente pergunta "tem inglês na
+> frase" — não "casou molde", que é uma pergunta sobre o mecanismo, não sobre o
+> produto.
+
+⚠️ E a lente nova errou na primeira rodada do jeito clássico do §36: acusou
+**37 de 37 motores**, 25,6%. A culpa eram três palavras na lista de "inglês" que
+são português — `do` (de+o), `use` (imperativo de usar) e `come` (verbo comer).
+Tiradas as três, o número real era 7,2%. *Lente que acusa todo mundo está errada
+antes de o repo estar.*
+
+### ⛔⛔⛔ TRÊS GUARDAS SEGUIDOS FURADOS PELA MESMA PERGUNTA ERRADA
+
+Fechar esses 7,2% expôs um defeito de fundo no tradutor. O guarda que rejeita
+"slot que engoliu oração" perguntava, nas suas três versões, **se a saída ficou
+diferente da entrada** — e molde-passagem sempre muda alguma coisa:
+
+1. `{o}` no **fim** do molde vira `(.+?)$` e come a frase inteira
+2. molde-passagem `{p}, {f}.` tem PT **idêntico** ao inglês: devolveu a frase
+   crua com um ponto a mais, e "ganhou um ponto" contava como tradução
+3. `{a} and {b}` devolveu `gelatin e salt into warm water` — trocou uma
+   palavra, logo "traduziu"
+
+Os três produziam o mesmo sintoma no painel: meia frase em inglês com o placar
+em 100%.
+
+> **A condição de aceite do guarda tem que ser a MESMA da lente de aceite do
+> produto.** O guarda agora pergunta *"depois de traduzido, o slot ainda tem
+> palavra inglesa?"* — a mesma pergunta do operador, aplicada um nível abaixo.
+> Enquanto o guarda mediu "mudou?" e a lente mediu "está em português?", as
+> duas nunca iam concordar.
+
 ### ⚠️ O corolário que apareceu junto: gênero não cabe no template
 
 Com a fala montada sob a lente apareceu `na sua pepino`. O template escreve o
