@@ -843,6 +843,11 @@ def lint_copy16(base, spec, achados, isca_absurda=True):
                      # 16. Quarta vez que esta lista cresce hoje, sempre pelo
                      # mesmo motivo: ela reprovou copy que enuncia a falha.
                      r"has not worked|hasn't stood|hasnt worked|"
+                     # + `struggling to stay hard`, do FIGHT 16 — e' o hook
+                     # VERBATIM da fonte, e enuncia a falha em 2a pessoa sem
+                     # nomear o orgao (a formula segura do GOOD). Quinta vez que
+                     # esta lista cresce por reprovar copy certa.
+                     r"struggl\w*|can't stay|cannot stay|can't keep it|"
                      r"did nothing|does nothing|doing nothing|hadn't worked|"
                      r"had not worked|never worked|stopped responding)\b",
                      f1, re.I):
