@@ -656,6 +656,17 @@ VIRADAS = [
 # espectador entra; ali o depoimento nao e' variedade, e' a transferencia
 # perdida. O depoimento continua vivo onde ele custa nada: na cena 1 e na
 # PROVA (`she quit sleeping on that side`).
+# ⚠️⚠️ TEMPO VERBAL: o MECANISMO E' PRESENTE SIMPLES, sempre. Ele descreve
+# o que o truque FAZ — verdade geral sobre o produto — e o alvo e' o corpo
+# DELE, que ainda nao foi consertado. Duas entradas nasceram no PASSADO
+# (`fixed`/`gave blood flow to your {o}`) e o operador pegou lendo o app:
+# elas eram DEPOIMENTO em 1a pessoa (`to MY {o}`), e quando eu virei o
+# possessivo para `your` esqueci de virar o verbo. Passado + 2a pessoa diz
+# que o truque ja' consertou o corpo de quem esta' assistindo, o que e'
+# falso e soa quebrado.
+# ⛔ O depoimento continua vivo onde ele e' verdade: na cena 1 (a falha e a
+# virada) e na PROVA (`she quit sleeping on that side`), que sao passado
+# com sujeito na 1a/3a pessoa.
 MECANISMOS = [
     # 9 palavras
     "The gelatin trick opens blood flow to your {o}.",
@@ -668,8 +679,8 @@ MECANISMOS = [
     "The gelatin trick carries blood flow into your {o}.",
     "The gelatin trick starts blood flow to your {o}.",
     "The gelatin trick brings blood flow to your {o}.",
-    "The gelatin trick fixed blood flow to your {o}.",
-    "The gelatin trick gave blood flow to your {o}.",
+    "The gelatin trick fixes blood flow to your {o}.",
+    "The gelatin trick sends blood flow to your {o}.",
     # 8 palavras — a folga que tira o take 2 de cima do teto
     "The gelatin trick moves blood into your {o}.",
     "The gelatin trick pushes blood into your {o}.",

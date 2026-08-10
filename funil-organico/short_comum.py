@@ -663,6 +663,11 @@ VERBOS_EFEITO_16 = (
     "bring", "holds", "hold", "keeps", "keep", "loosens", "loosen",
     "unblocks", "unblock", "clears", "clear", "moves", "move", "pushes",
     "push", "reaches", "reach", "does", "did", "changes", "changed",
+    # + 2026-08-10: `sends` faltava e reprovou `The gelatin trick sends blood
+    # flow to your {o}` — um mecanismo com verbo e alvo perfeitos. Terceira vez
+    # no dia em que uma lista de verbos cresce por ter reprovado copy certa.
+    "sends", "send", "drives", "drive", "returns", "return", "repairs",
+    "repair", "frees", "free",
     "fixed", "fixes", "turned", "turns", "ended", "ends", "stops", "stopped",
     "starts", "started", "gave", "gives", "made", "makes", "worked", "works",
 )
