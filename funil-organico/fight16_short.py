@@ -1095,6 +1095,73 @@ def _traje_dela(spec, take):
     return fonte["dela_bela" if spec.get("bela") else "dela"]
 
 
+# ===========================================================================
+# ⛔⛔ FT14 — A MULHER TROCAVA ENTRE OS DOIS TAKES (2026-08-10, relato de campo)
+# ===========================================================================
+# O operador mediu ~15% dos videos com uma mulher no take 1 e OUTRA no take 2, e
+# mandou os dois prompts. A causa nao e' falta de ancora: e' CONTRADICAO DENTRO
+# DA PROPRIA FRASE, e sao DUAS, empilhadas na mesma oracao:
+#
+#   1. ETNIA x PELE
+#      "a 23-year-old WHITE AMERICAN woman, ..., CLEAR DEEP BROWN SKIN and ..."
+#      A etnia vem do campo `etnia` do pool; o tom de pele vem do `marca` do
+#      pool BELA compartilhado (`sc.ref_bela`). Sao DUAS AUTORIDADES para o
+#      MESMO atributo, e elas se contradizem em boa parte dos sorteios.
+#
+#   2. SORRISO x CARA FECHADA  (so' no take 1)
+#      "... and A WIDE BRIGHT SMILE, ... staring straight at him with A HARD
+#       CLOSED EXPRESSION."
+#      O sorriso e' identidade (vem do pool); a cara fechada e' CENA (a briga).
+#
+# ⭐ E E' POR ISSO QUE O DEFEITO APARECE NO CORTE, e nao dentro de um quadro: os
+# dois IMAGE sao gerados SEPARADAMENTE, e diante de uma contradicao o gerador
+# escolhe um lado — so' que escolhe INDEPENDENTEMENTE em cada chamada. No take 1
+# ele obedeceu `white American`; no take 2 obedeceu `deep brown skin`. Duas
+# mulheres. E' a mesma familia das DUAS COLHERES e da CAIXA DE PAPELAO MOLHADA:
+# contradicao dentro do prompt nunca vira "meio termo", vira invencao.
+#
+# ⛔ O CONSERTO E' TIRAR A SEGUNDA AUTORIDADE, NUNCA ACRESCENTAR MAIS ANCORA.
+# Repetir "it is the same woman" nao resolve — a contradicao continua la', e a
+# frase nova so' disputa com ela. Quem sai e' o TOM DE PELE do pool bela: a
+# etnia declarada passa a ser a UNICA voz sobre a cor da pele.
+# ⚠️ Por que a etnia fica e a pele sai, e nao o contrario: quando o pool bela
+# NAO traz clausula de pele (metade das entradas), tirar a etnia deixaria a
+# mulher sem nenhuma definicao — e ai' o gerador escolheria livre em cada
+# take, que e' o MESMO bug pela outra ponta. Autoridade unica tem de estar
+# SEMPRE presente, e so' a etnia esta'.
+_CLAUSULA = re.compile(r",\s*|\s+and\s+")
+_TOM_DE_PELE = re.compile(r"\bskin\b|\bcomplexion\b|\bcomplected\b", re.I)
+_SORRISO = re.compile(r"\bsmile\b|\bsmiling\b|\bgrin\w*\b", re.I)
+
+
+def _marca_dela(spec, take):
+    """A descricao dela sem as clausulas que brigam com a CENA daquele take.
+
+    ⛔ So' age no MODO BELA. Com o modo desligado a mulher vem do pool deste
+    arquivo, que foi escrito SEM tom de pele e SEM sorriso justamente para nao
+    brigar — mexer ali seria consertar o que nao esta' quebrado.
+    ⚠️ E age por CLAUSULA, nao por regex na string inteira: cirurgia de regex
+    num texto que ja' foi montado deixa virgula orfa e ` and ` solto, e isso ja'
+    entregou prompt com pontuacao quebrada neste repo.
+    """
+    marca = spec["mulher"]["marca"]
+    if not spec.get("bela"):
+        return marca
+    partes = [p.strip() for p in _CLAUSULA.split(marca) if p.strip()]
+    fica = []
+    for p in partes:
+        if _TOM_DE_PELE.search(p):
+            continue                       # briga com a ETNIA declarada
+        if take == 1 and _SORRISO.search(p):
+            continue                       # briga com `a hard closed expression`
+        fica.append(p)
+    if not fica:                           # rede: nunca devolver string vazia
+        return partes[0]
+    if len(fica) == 1:
+        return fica[0]
+    return ", ".join(fica[:-1]) + " and " + fica[-1]
+
+
 def montar(spec):
     q, a = spec["quarto"], spec["ambiente"]
     h, w = spec["homem"], spec["mulher"]
@@ -1134,7 +1201,7 @@ def montar(spec):
         "They are the only two people in the frame. %s. %s"
         % (q["cen"], h["idade"], et, spec["corpo_h"], spec["toalha"],
            _cap(h["marca"]), h["sinal"], _cap(q["ela"]),
-           w["idade"], w["etnia"], w["porte"], w["marca"],
+           w["idade"], w["etnia"], w["porte"], _marca_dela(spec, 1),
            _traje_dela(spec, 1), _cap(q["luz"]), CAUDA))
 
     b["TAKE 01/02"] = (
@@ -1166,12 +1233,13 @@ def montar(spec):
         "the first scene, %s, %s, %s, %s, his face fully in frame and turned to "
         "the camera. It is the same man, not a different person. Pressed "
         "against his side with her shoulder against his chest is the same "
-        "%d-year-old %s woman, %s, %s, wearing %s; she looks at him and says "
+        "%d-year-old %s woman, %s, %s, wearing %s; she is smiling happily, a "
+        "wide open smile with her eyes bright, looking at him, and she says "
         "nothing. In one hand he holds %s, and in his other hand he holds %s.%s "
         "They are the only two people in the frame. %s. %s"
         % (a["cen"], a["pose"], h["idade"], et, h["marca"], h["sinal"],
            spec["corpo_h"], a["dele"],
-           w["idade"], w["etnia"], w["porte"], w["marca"],
+           w["idade"], w["etnia"], w["porte"], _marca_dela(spec, 2),
            _traje_dela(spec, 2), TIGELA_CUBOS, CAIXA_BICARBONATO,
            (" " + a["maos"]) if a.get("maos") else "",
            _cap(a["luz"]), CAUDA))
@@ -1181,7 +1249,8 @@ def montar(spec):
         "very slight natural sway, no cuts, and the camera does not move. He "
         "talks straight into the lens the whole time and it is the same man as "
         "in the first scene. She stays pressed against his side and never "
-        "moves away from him, and she never speaks. Only he speaks. He keeps "
+        "moves away from him, she keeps smiling happily the whole time, and "
+        "she never speaks. Only he speaks. He keeps "
         "the bowl in one hand and the box in the other the whole time and "
         "never sets either one down. Nothing else in the frame changes.\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
@@ -1462,11 +1531,25 @@ def _ft11_bela(spec, blocos, achados):
             achados.append(("ERRO", "FT11: %s sem o porte sorteado dela (%r) — "
                                     "corpo que nao chega ao frame nao e' corpo"
                             % (k, w["porte"][:34])))
-        if w["marca"] not in bl:
+        # ⚠️ 2026-08-10: compara com a marca SANEADA (`_marca_dela`), nao com o
+        # campo cru do pool. Desde a FT14 a descricao dela perde, por take, as
+        # clausulas que brigam com a cena — e uma lente que cobrasse o texto
+        # ORIGINAL reprovaria 100% dos sorteios em MODO BELA, que e' a lente
+        # contra o proprio template (licoes §16). O que ela guarda continua
+        # sendo o mesmo: a ancora facial TEM de chegar aos dois quadros.
+        marca_no_bloco = _marca_dela(spec, t)
+        if marca_no_bloco not in bl:
             achados.append(("ERRO", "FT11: %s sem a marca facial dela — ela "
                                     "reaparece depois de um corte e de uma "
                                     "troca de lugar inteira, e sem ancora o Veo "
                                     "troca de mulher" % k))
+        # ⛔ e a ancora nao pode ter sido esvaziada pelo saneamento: se sobrar
+        # so' a cor dos olhos, duas mulheres diferentes do pool viram a mesma
+        # frase e o corte deixa de ter ancora nenhuma.
+        if len(marca_no_bloco.split()) < 3:
+            achados.append(("ERRO", "FT11: %s ficou com a marca dela reduzida a "
+                                    "%r — o saneamento da FT14 comeu a ancora "
+                                    "inteira" % (k, marca_no_bloco)))
         if _traje_dela(spec, t) not in bl:
             achados.append(("ERRO", "FT11: %s sem o traje do estado atual do "
                                     "modo BELA (%r)"
@@ -1492,6 +1575,54 @@ def _ft11_bela(spec, blocos, achados):
 _MESMO_LUGAR = re.compile(
     r"\bthe same (room|bedroom|bathroom|house|hotel|cabin|suite|place|"
     r"apartment|motel)\b", re.I)
+
+
+def _ft14_mulher_sem_contradicao(spec, blocos, achados):
+    """FT14 — a descricao dela nao pode brigar consigo mesma (2026-08-10).
+
+    ⛔ Relato de campo: ~15% dos videos com uma mulher no take 1 e outra no
+    take 2. A causa foi CONTRADICAO na frase, nao falta de ancora — ver o bloco
+    do `_marca_dela`. Esta lente cobra o resultado nos BLOCOS MONTADOS, que e'
+    onde o defeito aparecia; um teste de pool nao o veria, porque nenhuma das
+    duas metades esta' errada sozinha.
+    """
+    i1 = blocos.get("IMAGE 01/02", "")
+    i2 = blocos.get("IMAGE 02/02", "")
+    # a frase dela comeca na idade e vai ate' o traje — pega o trecho
+    for bloco, rot, take in ((i1, "IMAGE 01/02", 1), (i2, "IMAGE 02/02", 2)):
+        m = re.search(r"%d-year-old %s woman[^.;]*"
+                      % (spec["mulher"]["idade"], re.escape(spec["mulher"]["etnia"])),
+                      bloco)
+        if not m:
+            achados.append(("ERRO", "FT14: %s nao traz a mulher com idade e "
+                                    "etnia declaradas — sem autoridade unica "
+                                    "sobre a aparencia, o gerador escolhe "
+                                    "sozinho e escolhe DIFERENTE em cada take"
+                                    % rot))
+            continue
+        trecho = m.group(0)
+        if _TOM_DE_PELE.search(trecho):
+            achados.append(("ERRO", "FT14: %s declara a etnia dela E um tom de "
+                                    "pele na mesma frase (%r) — duas "
+                                    "autoridades para o mesmo atributo, e o "
+                                    "gerador resolve DIFERENTE em cada take"
+                                    % (rot, trecho[:90])))
+        if take == 1 and _SORRISO.search(trecho):
+            achados.append(("ERRO", "FT14: a IMAGE 01/02 poe sorriso na "
+                                    "descricao dela e `a hard closed "
+                                    "expression` na mesma frase (%r)"
+                                    % trecho[:90]))
+    # ⭐ ordem do operador, 2026-08-10: *"mulher no take 2 sempre sorrindo
+    # feliz"*. E' o payoff visual do angulo — a inversao da cara fechada do
+    # take 1 — entao vale nos DOIS blocos do take 2, imagem e movimento.
+    if "smiling happily" not in i2:
+        achados.append(("ERRO", "FT14: a IMAGE 02/02 nao diz que ela esta' "
+                                "sorrindo feliz — e' a inversao que o angulo "
+                                "vende, e foi pedida nominalmente"))
+    if "keeps smiling happily" not in blocos.get("TAKE 02/02", ""):
+        achados.append(("ERRO", "FT14: o TAKE 02/02 nao manda ela CONTINUAR "
+                                "sorrindo — sorriso so' na IMAGE some no "
+                                "movimento"))
 
 
 def _ft13_lugares_independentes(spec, blocos, achados):
@@ -1533,7 +1664,7 @@ def lint(spec, blocos):
     for f in (_ft1_ela_muda, _ft2_inversao, _ft3_ancora, _ft4_duas_maos,
               _ft5_sem_texto, _ft6_sem_prop, _ft7_orcamento, _ft8_etnia,
               _ft9_toalha, _ft10_deitico_orfao, _ft11_bela, _ft12_contrato16,
-              _ft13_lugares_independentes):
+              _ft13_lugares_independentes, _ft14_mulher_sem_contradicao):
         f(spec, blocos, ach)
     return ach
 
