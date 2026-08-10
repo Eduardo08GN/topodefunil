@@ -666,6 +666,9 @@ VERBOS_EFEITO_16 = (
     # + 2026-08-10: `sends` faltava e reprovou `The gelatin trick sends blood
     # flow to your {o}` — um mecanismo com verbo e alvo perfeitos. Terceira vez
     # no dia em que uma lista de verbos cresce por ter reprovado copy certa.
+    # + `unchokes`, do NECROSE 16: e' o verbo que casa com o mecanismo do
+    # angulo (`the blood flow got strangled`), e a lente o reprovava.
+    "unchokes", "unchoke", "unclogs", "unclog", "revives", "revive",
     "sends", "send", "drives", "drive", "returns", "return", "repairs",
     "repair", "frees", "free",
     "fixed", "fixes", "turned", "turns", "ended", "ends", "stops", "stopped",
@@ -814,6 +817,11 @@ def lint_copy16(base, spec, achados, isca_absurda=True):
                      # e `My pecker hadn't worked in a year`, que enunciam a
                      # falha melhor que metade da lista. A lente aprende o
                      # verbo; a copy nao se dobra ao regex.
+                     # + `has not worked` (a forma SEM contracao — a lista so'
+                     # conhecia `hasn't worked`) e `hasn't stood`, do NECROSE
+                     # 16. Quarta vez que esta lista cresce hoje, sempre pelo
+                     # mesmo motivo: ela reprovou copy que enuncia a falha.
+                     r"has not worked|hasn't stood|hasnt worked|"
                      r"did nothing|does nothing|doing nothing|hadn't worked|"
                      r"had not worked|never worked|stopped responding)\b",
                      f1, re.I):

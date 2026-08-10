@@ -50,7 +50,7 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **quinze agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
+com **dezesseis agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
 Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·

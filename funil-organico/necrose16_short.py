@@ -658,19 +658,70 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # Alterado aqui so' o [5]. Os outros sete nao tem o vicio: ou nao nomeiam
 # causa nenhuma, ou apontam os dois modelos com deitico + gesto sincronizado
 # (NE7), que e' o formato do angulo.
+# ⛔ CT2 (2026-08-10) — TODA ENTRADA ENUNCIA A FALHA. As oito antigas eram
+# perguntas comparativas puras (`is your {o} this one or that one?`): o
+# espectador via os dois modelos e ouvia uma escolha, mas nada dizia que o corpo
+# DELE falhou. Medido: 88% dos videos sem falha enunciada. Aqui a comparacao
+# fica — ela e' o angulo — e cada entrada ganha o verbo que nomeia o dano.
 HOOKS = [
-    "If you want your {o} to go from this to this in one month, watch close.",
-    "If your {o} looks more like this one than that one, watch close, brother.",
-    "Nobody wants this one. If you want your {o} to look like that one, watch close.",
-    "If you had to pick tonight, is your {o} this one or that one?",
-    # + 2026-08-01: o pool tinha 4 entradas e a cena 1 — a fala mais importante
-    # do video — repetia dentro do lote. Pool de 4 para 8, e no maximo 1 entrada
-    # usa o vocativo "brother".
-    "If your wife could see your {o} tonight, would she see this one or that one?",
-    "Your doctor blames age when a man's {o} quits. He's wrong. Is yours this one or that one?",
-    "Waiting turns that one into this one. How close is your {o} tonight?",
-    "This one costs a man his marriage. That one keeps it. Which is your {o}?",
+    "If your {o} quit on you, is it this one tonight or that one?",
+    "If your {o} went dead, is it this one or that one?",
+    "If your {o} stopped working, is it this one or that one?",
+    "If your {o} hasn't worked in months, this one is you, not that one.",
+    "If your {o} went soft for good, is it this one or that one?",
+    "If your {o} gave out, look at this one, then look at that one.",
+    "If your {o} quit, which is it tonight, this one or that one?",
+    "If your {o} died down there, is it this one or that one?",
+    # + 2026-08-10: de 8 para 24. Com 8 entradas a cena 1 tinha 24 falas
+    # distintas em 400 sorteios (8 hooks x 3 apelidos), contra 285 do WIFE 16 e
+    # 332 do BED 16 — o hook e' o unico eixo de fala deste take, entao o pool
+    # dele E' a entropia toda.
+    "If your {o} has gone quiet, is it this one or that one?",
+    "If your {o} failed you last night, this one is you, not that one.",
+    "If your {o} quit before you finished, is it this one or that one?",
+    "If your {o} stopped answering, look at this one, then at that one.",
+    "If your {o} went soft at fifty, is it this one or that one?",
+    "If your {o} hasn't stood a chance, this one is you, not that one.",
+    "If your {o} gave out on you, which is it, this one or that one?",
+    "If your {o} died on you years back, is it this one or that one?",
+    "If your {o} quit halfway, look at this one, then look at that one.",
+    "If your {o} stopped working at sixty, is it this one or that one?",
+    "If your {o} went dead quiet, which one is yours, this or that one?",
+    "If your {o} failed you again, this one is you, not that one.",
+    "If your {o} has not worked in years, is it this one or that one?",
+    "If your {o} quit on your wife, is it this one or that one?",
+    "If your {o} went soft every night, look at this one, then that one.",
+    "If your {o} gave out before sixty, is it this one or that one?",
 ]
+
+# ⭐ O FECHO — segunda batida da cena 1, criada em 2026-08-10 junto com a
+# ampliacao do hook. ⛔ Ela e' COMANDO, nunca afirmacao sobre o corpo dele: a
+# NE7 exige que a cena 1 CONDICIONE, e um imperativo de atencao nao afirma nada.
+# ⚠️ 2-5 palavras — o hook come 12-14 do teto de 20.
+FECHOS_H = [
+    "Watch close, brother.",
+    "Look close.",
+    "Pay attention to this.",
+    "Watch what happens next.",
+    "Give me eight seconds.",
+    "Do not scroll past this.",
+    "Watch, then decide.",
+    "Stay with me here.",
+]
+
+
+def _hook_com_fecho(rng, o):
+    """A cena 1: HOOK condicional + FECHO imperativo, dentro do teto de 20.
+
+    ⛔ O fecho so' entra se couber — o hook e' intocavel (carrega a condicional
+    da NE7, os dois deiticos e o verbo de falha do CT2), e o fecho e' o beat
+    intercambiavel. Quem carrega o intocavel escolhe primeiro; quem e'
+    intercambiavel absorve a sobra ou fica de fora.
+    """
+    h = rng.choice(HOOKS).format(o=o)
+    cabem = [f for f in FECHOS_H
+             if _palavras("%s %s" % (h, f)) <= TETO_FALA[1]]
+    return "%s %s" % (h, rng.choice(cabem)) if cabem else h
 
 # NE — cena 2: o MUP de Georgi (alivio de culpa + vilao), com o modelo PODRE
 # erguido. ⚠️ "blood flow" literal e' obrigatorio (o linter cobra).
@@ -917,7 +968,7 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
 
     orgaos = sc.orgaos_sorteaveis(rng, 4)
     falas = [
-        rng.choice(HOOKS).format(o=orgaos[0]),
+        _hook_com_fecho(rng, orgaos[0]),
         rng.choice(CAUSAS).format(o=orgaos[1]),
         rng.choice(RECEITAS_FALA).format(o=orgaos[2], ing=rec["fala"]),
         rng.choice(PROVAS).format(o=orgaos[3], barreira=rng.choice(BARREIRAS)),
@@ -1059,7 +1110,7 @@ def _nova_fala_longo(spec, i, rng):
     """Re-sorteia a fala da cena i (0-4) mantendo o substantivo-nucleo dela."""
     o = next((n for n in NUCLEO if n.lower() in spec["falas"][i].lower()), "soldier")
     if i == 0:
-        return rng.choice(HOOKS).format(o=o)
+        return _hook_com_fecho(rng, o)
     if i == 1:
         return rng.choice(CAUSAS).format(o=o)
     if i == 2:
@@ -1354,42 +1405,57 @@ def _cta(rng, teto=None):
 # ou de uma CAUSA/PROVA ja' validada no arco longo.
 
 # ⚠️ 10-11 palavras. Carregam OS DOIS literais que o linter cobra.
+# ⛔ CT3 — a sentenca do `gelatin trick` carrega VERBO DE EFEITO e ALVO. Tres
+# das oito antigas fechavam em `brings it back` / `gives it back`, com o alvo na
+# frase ANTERIOR: 72% dos videos com o mecanismo virando rotulo.
 MECANISMOS16 = [
-    "The gelatin trick brings the blood flow back to your {o}.",
-    "It's blood flow, not age. The gelatin trick brings it back.",
+    "The gelatin trick brings blood flow back to your {o}.",
     "The gelatin trick unchokes the blood flow to your {o}.",
-    "Your {o} lost blood flow. The gelatin trick gives it back.",
-    "The gelatin trick reopens the blood flow your {o} lost.",
-    "Choked blood flow, not age. The gelatin trick undoes that.",
-    "The gelatin trick puts the blood flow back in your {o}.",
-    "The blood flow got strangled. The gelatin trick brings it back.",
+    "The gelatin trick puts blood flow back into your {o}.",
+    "It's blood flow, not age. The gelatin trick feeds your {o}.",
+    "The gelatin trick opens the blood flow to your {o}.",
+    "The gelatin trick sends blood flow back into your {o}.",
+    "The gelatin trick clears the blood flow to your {o}.",
+    # ⚠️ era `Blood flow died in there. The gelatin trick restores your
+    # {o}.` — o `medir_contexto_copy` reprovou: a causa (`blood flow died`)
+    # vinha SEM dizer o que ela quebra, na propria sentenca. §17.
+    "The gelatin trick restores the blood flow your {o} lost.",
 ]
 
 # ⚠️ 5-7 palavras, PRIMEIRA PESSOA e terminando em deitico — a assinatura do
 # NECROSE: ele aponta o modelo apodrecido e diz que aquilo era ele.
 # ⛔ Metade carrega `{o}` para a cota do orgao nao depender so' do hook.
+# ⛔ CT7 — NENHUMA usa verbo de ereccao colado no orgao. Duas das oito antigas
+# eram `Mine came back like this.` e `My {o} came back like this.` — 18% dos
+# videos. E' a mesma familia de verbo que fez ~95% dos takes do COLO 16 serem
+# reprovados pelo gerador em 2026-08-09. A prova aqui e' COMPARATIVA (o modelo
+# podre virou o sadio), e comparacao nao precisa de verbo de tumescencia.
 PROVAS16 = [
-    "Mine came back like this.",
+    "Mine changed like this.",
     "This is my {o} now.",
     "My {o} hasn't quit since.",
     "Look what mine does now.",
     "That rotten one was me.",
-    "My {o} came back like this.",
     "Thirty days, and this is mine.",
     "That was me. This is me now.",
+    "Mine went from that to this.",
 ]
 
 # ⚠️ 7-8 palavras, TODAS nomeando `recipe` — a isca que o linter cobra. Sao os
 # nucleos dos CTAS do arco longo, sem `{pacing}` e sem `{gate}`.
+# ⛔ CT6 — TODA entrada diz ONDE a receita chega. As oito antigas paravam em
+# `and the recipe is yours` (100% dos videos sem endereco). O KPI e' uma
+# confissao publica num feed onde o comentario leva nome e foto; a clausula de
+# entrega e' a cobertura social, e custa as MESMAS palavras.
 CTAS16 = [
-    "Comment gelatin, and the recipe is yours.",
-    "Comment gelatin, and I'll send you the recipe.",
-    "Comment gelatin, and I'll send the recipe tonight.",
-    "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send the whole recipe.",
-    "Comment gelatin, and I'll send you the measurements.",
-    "Comment gelatin, and I'll write you the recipe.",
-    "Comment gelatin, and I'll send the full recipe.",
+    "Comment gelatin, and the recipe goes to your messages.",
+    "Comment gelatin, and I'll send the recipe to your inbox.",
+    "Comment gelatin, and the recipe lands in your messages.",
+    "Comment gelatin, and the recipe arrives in your messages.",
+    "Comment gelatin, and your inbox gets the recipe tonight.",
+    "Comment gelatin, and the whole recipe hits your messages.",
+    "Comment gelatin, and I'll send the recipe by message.",
+    "Comment gelatin, and the recipe comes to your inbox.",
 ]
 
 # ⚠️ 2-5 palavras, FRASE SEPARADA — nunca colada no `Comment gelatin,`.
@@ -1436,9 +1502,14 @@ def _fundir(spec, rng):
                                                 x[1].format(o=o), x[2])))]
     a, b, c = rng.choice(trios)
     base = "%s %s %s" % (a.format(o=o), b.format(o=o), c)
-    # o gate e' o primeiro a cair quando o teto aperta
-    gates = [g for g in GATES16 if cabe("%s %s" % (base, g))]
-    return "%s %s" % (base, rng.choice(gates)) if gates else base
+    # ⛔⛔ CT1 + CT8 (2026-08-10) — O GATE SAIU DA FALA. Ordem do operador:
+    # *"a mensagem e' enviada independente de seguirem ou nao"*. O beat vivia
+    # DEPOIS do CTA, que e' o defeito mais caro do contrato: a ultima coisa no
+    # ouvido, colada no unico pedido que gera receita, era uma condicional na
+    # recompensa. Medido aqui: 31% dos videos. O video termina no pedido.
+    # ⚠️ `GATES16` fica no arquivo marcado como aposentado — mexer nas
+    # entradas dele NAO muda video nenhum.
+    return base
 
 
 # ---------------------------------------------------------------------------
@@ -1563,11 +1634,20 @@ def _blocos_travados(spec, blocos, achados):
 
 
 def lint(spec, blocos):
+    # ⛔⛔ O CONTRATO DE COPY 16s, ligado em 2026-08-10. Ate' aqui este
+    # motor nao o chamava — ele nasceu antes do contrato, e violava CT1
+    # (31%), CT2 (88%), CT3 (72%), CT6 (100%), CT7 (18%) e CT8 (31%).
+    # ⚠️ `isca_absurda=False`: a cena 1 daqui nao promete nada que o
+    # video desminta — ela CONDICIONA (NE7), o que torna o CT7 valido
+    # nos dois takes.
+    _ct16 = []
+    sc.lint_copy16(sys.modules[__name__], spec, _ct16,
+                   isca_absurda=False)
     return sc.lint_curto(
         _LONGO, spec, blocos, MAPA, TETO_FALA,
         literais=("gelatin trick", "blood flow"),
         limpar_direcao=_limpar_animal,
-        extras=(_ne7_hook, _blocos_travados))
+        extras=(_ne7_hook, _blocos_travados)) + _ct16
 
 
 # ---------------------------------------------------------------------------
