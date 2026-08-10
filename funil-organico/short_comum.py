@@ -608,6 +608,216 @@ def lint_cta_literal(fala_cta, achados, rotulo="a cena do CTA"):
                                 "2026-08-02)" % (rotulo, CTA_LITERAL)))
 
 
+# ###########################################################################
+# ⭐⭐⭐ CONTRATO DE COPY DA FAMILIA 16s — v2, 2026-08-10
+# ###########################################################################
+# ⛔ ORDEM DO OPERADOR: *"agentes troca16, ressurreicao16, exterior16,
+# flagrante16, pee16, escandalo16, colo16 precisam de reformulacao total de
+# suas copys"*, depois de uma revisao adversarial de 6 lentes independentes
+# sobre 3 lotes renderizados (127 achados, 79 derrubados na refutacao, 48 de
+# pe'). Doutrina completa e o porque de cada regra:
+#     funil-organico/CONTRATO-COPY-16S.md
+#
+# ⚠️⚠️ POR QUE ISTO E' CODIGO E NAO SO' DOCUMENTO. Os sete defeitos abaixo
+# foram MEDIDOS nos sete motores antes da reforma, 200 sorteios cada:
+#
+#     sentenca depois do CTA ......... 100% em 6 de 7 motores
+#     `gelatin trick` como rotulo nu .. 60% a 100%
+#     ingrediente entregue de graca ... 56% e 62% (ESCANDALO, RESSURREICAO)
+#     verbo de ereccao no take do CTA . 12% a 100%
+#     apelido do orgao muda no corte .. 98% a 100%
+#
+# Nao ha' um so' desses que um humano pegue relendo o pool: todos aparecem na
+# COMBINACAO. Regra que so' vive em Markdown volta em duas semanas.
+#
+# ⭐ A ESTRUTURA TRAVADA DO VIDEO:
+#     TAKE 1   gancho visual + A FALHA DELE, com dano concreto
+#     TAKE 2   mecanismo COM RAZAO -> (prova) -> follow -> CTA        <- fim
+#
+# ⛔ E A DESCOBERTA QUE FAZ A CONTA FECHAR: a cobertura social nao cabe como
+# beat proprio em 25 palavras. Ela mora DENTRO da sentenca do CTA —
+# `Comment gelatin, and the recipe goes to your messages.` custa as MESMAS 9
+# palavras do CTA antigo e entrega de graca (a) o endereco da entrega, (b) a
+# privacidade e (c) o fato de que nao e' na tela publica. O KPI e' uma
+# confissao publica num feed onde o comentario leva nome e foto; sem essa
+# clausula, quanto melhor o diagnostico em 2a pessoa, mais caro fica comentar.
+
+# ⚠️ Verbos que qualificam como RAZAO ao lado do `gelatin trick`. Lista
+# generosa e para CRESCER — o que ela proibe e' o rotulo NU (`The gelatin
+# trick is the half that works.`), nao um verbo especifico.
+# ⛔ Nenhum verbo de ereccao entra aqui: `hard`, `stands up`, `works again` sao
+# a licao paga em campo no COLO 16 (~95% de recusa do gerador, 2026-08-09).
+VERBOS_EFEITO_16 = (
+    "opens", "open", "firms", "firm", "fills", "fill", "feeds", "feed",
+    "restores", "restore", "carries", "carry", "puts", "put", "brings",
+    "bring", "holds", "hold", "keeps", "keep", "loosens", "loosen",
+    "unblocks", "unblock", "clears", "clear", "moves", "move", "pushes",
+    "push", "reaches", "reach", "does", "did", "changes", "changed",
+    "fixed", "fixes", "turned", "turns", "ended", "ends", "stops", "stopped",
+    "starts", "started", "gave", "gives", "made", "makes", "worked", "works",
+)
+
+# ⛔ O ALVO: o mecanismo tem de dizer sobre O QUE ele age. Sem alvo, `blood
+# flow` solto vende circulacao ou coracao, que e' outra categoria de produto
+# (§17 — causa nomeada sem dizer o que ela quebra).
+ALVOS_16 = ("blood", "body", "flow", "pressure")
+
+# ⛔ A sentenca do CTA tem de dizer ONDE a receita chega. E' a cobertura
+# social e a mecanica da entrega no mesmo folego.
+ENTREGA_16 = re.compile(
+    r"\b(your (messages?|inbox|dms?)|by message|in private|nobody (else )?sees)\b",
+    re.I)
+
+# ⛔ Verbo de ereccao na fala do CTA — ali e' claim NOSSO sobre o produto.
+# ⚠️ No take 1 da isca absurda ele e' permitido: la' a promessa e' justamente
+# a que vai ser desmentida meio segundo depois, e proibi-la mataria o angulo.
+ERECAO_16 = re.compile(
+    r"\b(hard|harder|hardness|stands? up|stood up|wakes? up|woke up|"
+    r"works? again|is back|comes? back|came back|swells?|swelling|erect)\b",
+    re.I)
+
+# ⛔ Ingrediente na fala = moeda gasta antes do pedido. A receita e' a UNICA
+# coisa que o comentario compra; nomear o conteudo dela na tela publica esvazia
+# o CTA nao so' deste video, mas dos outros 49 da mesma pagina.
+# ⚠️ `gelatin` NAO entra: ela e' a keyword, tem de ser dita.
+INGREDIENTES_16 = re.compile(
+    r"\b(pomegranate|collagen|cacao|cocoa|garlic|parsley|cayenne|beet(root)?|"
+    r"turmeric|ginger|honey|cinnamon|watermelon|citrulline|arginine|"
+    r"maca|ginseng|nettle|celery|spinach|olive oil|coconut oil|flaxseed|"
+    r"peanut butter|aloe|apple cider vinegar|baking soda)\b", re.I)
+
+_RX_SENT = re.compile(r"(?<=[.!?])\s+")
+
+
+def _sentencas16(txt):
+    return [s.strip() for s in _RX_SENT.split(txt or "") if s.strip()]
+
+
+def lint_copy16(base, spec, achados, isca_absurda=True):
+    """As sete travas do contrato de copy 16s. Chamada pelo `lint` do motor.
+
+    base          — o modulo do motor (usa `NUCLEO`)
+    isca_absurda  — True quando o take 1 do angulo E' uma promessa falsa que
+                    ele mesmo desmente (TROCA, EXTERIOR, COLO). So' muda o
+                    CT7: la' o verbo de ereccao e' a isca, nao o claim.
+    """
+    falas = spec["falas"]
+    if len(falas) < 2:
+        return
+    f1, f2 = falas[0], falas[-1]
+    sents = _sentencas16(f2)
+
+    # --- CT1 — nada depois da sentenca do CTA -----------------------------
+    # ⛔ O defeito mais caro do lote antigo, e o unico que estava em 6 de 7
+    # motores em 100% dos sorteios. A ultima coisa no ouvido, colada no unico
+    # pedido que gera receita, era `The algorithm hides me from non-followers`
+    # / `Followers get answered first` / `Follow me.` — expectativa negativa,
+    # condicional na recompensa, ou um segundo CTA nu. A posicao final e' a
+    # que fica; ela tem de ser o pedido.
+    icta = next((i for i, s in enumerate(sents)
+                 if "comment gelatin" in s.lower()), None)
+    if icta is None:
+        achados.append(("ERRO", "CT1: a fala do CTA nao tem a sentenca "
+                                "`Comment gelatin,`"))
+    elif icta != len(sents) - 1:
+        achados.append(("ERRO", "CT1: ha' %d sentenca(s) DEPOIS do CTA (%r) — "
+                                "o video tem de terminar no pedido, e o follow "
+                                "vem ANTES dele"
+                        % (len(sents) - 1 - icta, sents[-1])))
+
+    # --- CT2 — a falha masculina e' enunciada no take 1 -------------------
+    # ⛔ Em dois dos tres videos revisados nao existia UMA sentenca dizendo o
+    # que o corpo dele faz de errado (`never changes` descreve nada). Sem
+    # auto-reconhecimento nao ha' comentario: ele nao comenta porque a copy e'
+    # boa, comenta porque se viu.
+    if not re.search(r"\b(quit|quits|quitting|soft|softens|stopped|stops|"
+                     r"dead|died|gave out|gives out|lose it|lost it|loses it|"
+                     r"never works|doesn't work|does not work|hasn't worked|"
+                     r"can't finish|couldn't|won't|failed|fails|shut down|"
+                     r"went out|not working|no longer)\b", f1, re.I):
+        achados.append(("AVISO", "CT2: o take 1 nao enuncia FALHA nenhuma — "
+                                 "sem dano concreto o espectador nao se "
+                                 "reconhece e nao comenta"))
+
+    # --- CT3 — `gelatin trick` com razao na mesma sentenca ----------------
+    # ⛔ Nome de mecanismo sem razao ao lado nao vira crenca: vira ruido de
+    # marca. `The gelatin trick is the half that works.` nao diz o que a
+    # gelatina FAZ, e o espectador nao tem no que acreditar.
+    for s in sents + _sentencas16(f1):
+        if "gelatin trick" not in s.lower():
+            continue
+        baixo = s.lower()
+        tem_verbo = any(re.search(r"\b%s\b" % v, baixo) for v in VERBOS_EFEITO_16)
+        tem_alvo = (any(n.lower() in baixo for n in base.NUCLEO)
+                    or any(a in baixo for a in ALVOS_16))
+        if not (tem_verbo and tem_alvo):
+            achados.append(("ERRO", "CT3: `gelatin trick` sem razao em %r — a "
+                                    "sentenca precisa de VERBO de efeito e de "
+                                    "ALVO (o orgao, o sangue, o corpo)" % s))
+        break
+
+    # --- CT4 — um apelido do orgao por video ------------------------------
+    # ⛔⛔ ISTO REVERTE A REGRA ANTERIOR, e a reversao e' declarada. Ate' hoje
+    # varios motores EXIGIAM substantivos DIFERENTES entre as cenas ("duas
+    # mencoes iguais em 16 segundos sao bordao") — e o resultado medido foi o
+    # apelido mudando no corte em 98-100% dos videos. Em 24s e cinco cenas o
+    # bordao e' o risco; em 16s e duas cenas o risco e' o oposto: o corte
+    # zera a memoria de trabalho, e trocar `soldier` por `Johnson` no segundo
+    # 9 obriga o espectador a remapear justamente quando ele ja' esta' com um
+    # pe' fora. A variacao continua existindo ENTRE videos, que e' onde ela
+    # nunca custou nada.
+    n1 = {n for n in base.NUCLEO if n.lower() in f1.lower()}
+    n2 = {n for n in base.NUCLEO if n.lower() in f2.lower()}
+    if n1 and n2 and not (n1 & n2):
+        achados.append(("ERRO", "CT4: o apelido do orgao MUDA no corte (%s -> "
+                                "%s) — um termo por video, repetido nos dois "
+                                "takes" % (sorted(n1), sorted(n2))))
+
+    # --- CT5 — nenhum ingrediente nomeado na fala do CTA ------------------
+    m = INGREDIENTES_16.search(f2)
+    if m:
+        achados.append(("ERRO", "CT5: a fala do CTA entrega o ingrediente %r — "
+                                "a receita e' a UNICA moeda que o comentario "
+                                "compra, e entregue uma vez ela esta' gasta "
+                                "para todos os videos da pagina" % m.group(0)))
+
+    # --- CT6 — a sentenca do CTA diz ONDE a receita chega -----------------
+    if icta is not None and not ENTREGA_16.search(sents[icta]):
+        achados.append(("AVISO", "CT6: o CTA nao diz que a receita chega por "
+                                 "MENSAGEM — o comentario leva nome e foto, e "
+                                 "sem a cobertura o custo social de comentar "
+                                 "fica maior que a curiosidade"))
+
+    # --- CT7 — verbo de ereccao COM O ORGAO na mesma sentenca -------------
+    # ⚠️⚠️ A PRIMEIRA VERSAO DESTA TRAVA PROIBIA O TOKEN EM QUALQUER LUGAR DA
+    # FALA, e ela acusou o GOOD 16 em 87% dos sorteios — em cima de
+    # `This leaves your body harder than it has felt in decades`, que e' a copy
+    # DA FONTE de um video que converte e que passa no gerador justamente por
+    # falar do CORPO. A licao paga no COLO nao e' sobre a palavra: e' sobre a
+    # palavra COLADA NO ORGAO. `your soldier hard` reprova; `your body harder`
+    # nao. Sem esta precisao a lente proibiria a unica formula segura que o
+    # parque tem — e' o modo de falha §16, lente que reprova o que esta' certo.
+    def _erecao_no_orgao(fala, rotulo):
+        for s in _sentencas16(fala):
+            m = ERECAO_16.search(s)
+            if not m:
+                continue
+            if any(n.lower() in s.lower() for n in base.NUCLEO):
+                achados.append((
+                    "ERRO",
+                    "CT7: %s diz %r na mesma sentenca do orgao (%r) — verbo que "
+                    "descreve o orgao voltando a funcionar e' lido como "
+                    "tumescencia e reprova no gerador (licao paga no COLO 16, "
+                    "~95%% dos takes 1). Sobre o CORPO passa; sobre o ORGAO nao."
+                    % (rotulo, m.group(0), s)))
+                return
+
+    _erecao_no_orgao(f2, "a fala do CTA")
+    if not isca_absurda:
+        _erecao_no_orgao(f1, "o take 1 (e este angulo nao tem isca absurda "
+                             "para desmentir)")
+
+
 # ---------------------------------------------------------------------------
 # ⛔ SE UMA CENA CRESCE, AS OUTRAS NAO CRESCEM
 # ---------------------------------------------------------------------------
