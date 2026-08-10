@@ -154,6 +154,21 @@ BO_PREPARO = (
 BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and "
                "nothing is added to it or taken away.")
 
+# ⭐⭐ BO8 — A GELATINA NA BANCADA DA CENA 2. Ordem do operador, 2026-08-10:
+# *"o botica sempre deve ter o pote de gelatina transparente no take 2 em cima
+# da mesa, em todas as imagens 2 e take 2, alem do copo que o marido ira beber"*.
+# ⛔ E' DEFEITO DE FUNCAO, nao decoracao: a fala da cena 2 nomeia o `gelatin
+# trick` e a bancada nao mostrava gelatina nenhuma — o espectador ouve o
+# mecanismo e nao ve' onde ele mora. Mesma correcao que o DUPLA/TRIO ja' tinham
+# (DU2) e que este motor nunca recebeu.
+# ⛔ COPIA LITERAL da string do COLO16 (`CO_GELATINA`), que ja' tem render
+# atras dela. NAO REESCREVER: `pote transparente` e' o pedido, e `clear glass
+# bowl` e' a forma que passou.
+# ⚠️ SO' NA CENA 2. Na cena 1 ela entregaria o mecanismo antes da promessa —
+# a mesma razao pela qual o copo tambem so' existe aqui (BO5).
+BO_GELATINA = ("a clear glass bowl of firm vivid purple gelatin cubes, glossy "
+               "and set")
+
 # ⭐ BO5 — O COPO DO PAYOFF, lido em 0:30: ela empurra o copo para a lente com a
 # mao, o liquido opaco e cremoso, dois canudos dentro.
 # ⛔ Ele so' existe na CENA 3, e e' o objeto da keyword — esta' na mao no frame em
@@ -222,35 +237,49 @@ REACOES_HOMEM = [
     # "his eyes have gone round", "his jaw has gone slack". Renderizado, aquilo
     # nao le' como reacao humana: le' como emoji de espanto colado num homem,
     # e e' uma das assinaturas mais reconheciveis de video feito por IA.
-    # ⭐ O que fica: uma pessoa NORMAL olhando para o copo. A reacao continua
-    # variando de sabor — atencao, aprovacao contida, interesse, um aceno — e
-    # continua muda e virada para o copo, nunca para a lente.
-    # ⚠️ Cada entrada e' (clausula da IMAGE, clausula do TAKE) e as duas tem de
-    # descrever a MESMA coisa: o take anima a image, nao inventa outro gesto.
-    ("his face is relaxed and he is looking down at it steadily",
-     "keeps looking down at it, his face relaxed and still"),
-    ("he is watching it with a small closed-mouth smile",
-     "holds that small closed-mouth smile without moving"),
-    ("his brows are relaxed and his lips are pressed lightly together",
-     "keeps his lips lightly pressed and does not move"),
-    ("he is looking at it with his head very slightly tilted",
-     "keeps his head slightly tilted and does not move"),
-    ("he is nodding once, slowly, his mouth closed",
-     "finishes the slow nod and then stays still"),
-    ("his eyes are steady on it and one corner of his mouth is lifted",
-     "holds that one-sided look without moving"),
-    ("he is looking down at it with a calm, unhurried expression",
-     "keeps that calm expression and does not move"),
-    ("his chin is lowered slightly and he is looking at it from under his brows",
-     "keeps his chin lowered and does not move"),
-    ("he is looking at it plainly, his face giving nothing away",
-     "keeps that plain expression without moving"),
-    ("his mouth is closed and he is looking at it the way a man reads a label",
-     "keeps reading it with his mouth closed, not moving"),
-    ("he is looking at it and breathing out slowly through his nose",
-     "finishes the slow breath and stays looking at it"),
-    ("his expression is settled and he is looking at it without blinking much",
-     "keeps that settled expression and does not move"),
+    #
+    # ⛔⛔ E AGORA O POOL NEUTRO SAIU TAMBEM — ordem do operador, 2026-08-10,
+    # com quatro renders do MESMO prompt na mao: *"o marido nao parece feliz,
+    # ele deve estar sempre sorrindo como se estivesse feliz e animado"*.
+    # ⚠️ POR QUE O NEUTRO FALHOU, e a licao que fica: as doze entradas anteriores
+    # eram todas ausencia de expressao — `face relaxed`, `lips pressed lightly`,
+    # `giving nothing away`, `plain expression`. Lidas pelo gerador junto de um
+    # homem de 60+ atras de uma mulher, "sem expressao" nao rende neutro: rende
+    # SERIO, as vezes contrariado. Foi exatamente o que voltou nos quatro
+    # frames. Corrigir a cara de emoji tirando a emocao inteira trocou um
+    # defeito por outro — o meio-termo nao e' a ausencia, e' a emocao CERTA.
+    # ⭐ O que fica: um homem visivelmente FELIZ, e o sabor do sorriso e' que
+    # varia — largo, contido, risonho, orgulhoso, animado. Nada de boca aberta
+    # de espanto, que e' a assinatura de IA que 2026-08-07 cortou.
+    # ⛔ O QUE NAO VARIA, porque e' a mecanica do angulo e o linter trava: ele
+    # olha o COPO e nunca a lente, e NUNCA fala.
+    # ⚠️ Cada entrada e' (clausula da IMAGE, clausula do TAKE). A do TAKE ja'
+    # NAO e' mais de imobilidade: desde 2026-08-10 ele PEGA O COPO E BEBE
+    # (BO_HOMEM_TAKE), e esta clausula diz com que cara ele faz isso.
+    ("he is smiling broadly, delighted, the lines deep at the corners of his eyes",
+     "keeps that broad delighted smile"),
+    ("he is grinning with his eyes crinkled almost shut",
+     "keeps grinning with his eyes crinkled"),
+    ("he is beaming at it, eyebrows lifted and happy",
+     "keeps beaming, eyebrows lifted"),
+    ("he is laughing quietly, his shoulders loose and easy",
+     "keeps that quiet laugh going"),
+    ("he is smiling wide enough to show his teeth, plainly pleased",
+     "keeps that wide pleased smile"),
+    ("he is smiling with his chin lifted, proud and cheerful",
+     "keeps his chin lifted and stays cheerful"),
+    ("he is smiling and nodding, visibly happy about it",
+     "keeps smiling and nods again, happy"),
+    ("he is grinning like a man about to enjoy himself",
+     "keeps that eager grin"),
+    ("he is smiling warmly, his whole face lit up",
+     "keeps that warm lit-up smile"),
+    ("he is smiling with obvious excitement, eyes bright",
+     "keeps that excited smile, eyes bright"),
+    ("he is smiling openly, happy and impatient for it",
+     "keeps that open happy smile"),
+    ("he is smiling with his eyebrows raised, delighted and eager",
+     "keeps that delighted look, eyebrows raised"),
 ]
 
 BO_HOMEM = (
@@ -258,9 +287,28 @@ BO_HOMEM = (
     "same focus, is a %d-year-old %s man, %s, wearing %s. %s, and he is "
     "looking directly at the glass in her hand — never at the camera."
 )
+# ⭐⭐ BO6b — ELE PEGA O COPO E BEBE. Ordem do operador, 2026-08-10: *"deve
+# pegar o copo da mao dela e comecar a beber, sem dizer uma palavra, e ela
+# olhar e ficar sorrindo, feliz por ele estar tomando o copo"*.
+# ⭐ A IMAGE NAO MUDA DE COMPOSICAO: no frame 0 o copo continua na mao dela,
+# como sempre esteve — e' o objeto da keyword e a boca diz `gelatin,` com ele
+# em quadro (BO5). O gesto e' do TAKE, que e' o que o AdBatch anima. Assim a
+# ordem do operador entra sem tocar no frame que a lente BO5 protege.
+# ⛔ AS TRES TRAVAS DO ANGULO CONTINUAM, e continuam sendo cobradas: ele NUNCA
+# fala, NUNCA olha a lente, e quem fala e' so' ela. O que mudou foi a MAO, nao
+# a boca nem o olhar.
+# ⚠️ Ordem temporal EXPLICITA (`then`), e nao duas ordens simultaneas: o Veo
+# resolve simultaneidade impossivel escolhendo uma das duas, e a que ele
+# costuma soltar e' a segunda pessoa inteira.
+# ⛔ O LITERAL `never speaks` E' COBRADO POR LENTE (BO6) — a primeira versao
+# desta string dizia `he never says a word`, que e' a mesma ordem em ingles e
+# reprovou 600 de 600. Sinonimo nao passa em lente de literal, e a lente esta'
+# certa: a mudez do segundo corpo e' o que derrubou a cena do casal do
+# VAZAMENTO, e regra paga em render nao se afrouxa para caber numa frase nova.
 BO_HOMEM_TAKE = (
-    "The man behind her %s, eyes fixed on the glass the whole time, and never "
-    "speaks. Only she speaks, straight into the lens."
+    "The man behind her %s. He reaches across, takes the glass out of her hand, "
+    "lifts it to his mouth and drinks from it. He never speaks and never looks "
+    "at the camera. Only she speaks, straight into the lens."
 )
 
 # ⛔ BO7 — A ANCORA DE CONTINUIDADE. Rosto E idade, nunca so' roupa: no VAZAMENTO
@@ -1255,8 +1303,20 @@ REFS = [
 # quadro (mesma regra do COLO).
 # ⚠️ Ele existe para encenar o espanto NO LUGAR do espectador, que e' a mecanica
 # da plateia congelada do ESCANDALO. Por isso ele olha o COPO, nunca a lente.
+#
+# ⭐⭐ TODOS DE 60+ — ordem do operador, 2026-08-10: *"a narradora sempre deve
+# ser uma mulher jovem de 20 a 25 anos e o marido de 60+"*. O pool ia de 41 a
+# 66 e a mediana era 53: mais da metade dos videos entregava um casal de idades
+# proximas, e o contraste que o angulo vende — a jovem e o marido velho — so'
+# saia por sorte do sorteio.
+# ⛔ AS IDADES SUBIRAM, AS PESSOAS NAO MUDARAM. Cada entrada continua sendo o
+# mesmo homem (porte, marca de rosto, roupa): o que se mexeu foi o numero e,
+# onde o numero passou a mentir, a COR DO CABELO. `coppery hair` num homem de
+# 61 e `wavy dark hair` num de 63 sao a mesma contradicao que o gerador resolve
+# contra nos — ele escolhe o cabelo e devolve um homem de 45.
+# ⚠️ Sem inventar entrada nova para "encher": as 22 sao as 22 que ja' existiam.
 HOMENS = [
-    {"id": "grisalho_barbudo", "idade": 58,
+    {"id": "grisalho_barbudo", "idade": 62,
      "marca": "a heavy-set build, thick silver hair and a short grey beard, "
               "weathered skin and a pale scar through one eyebrow",
      "roupa": "a plain navy work shirt"},
@@ -1264,23 +1324,23 @@ HOMENS = [
      "marca": "a stocky build, a bald crown with white hair at the sides and a "
               "thick moustache, ruddy skin and a large mole on his cheek",
      "roupa": "a heather-grey pocket tee"},
-    {"id": "cabelo_farto", "idade": 46,
-     "marca": "a tall lean frame, a full head of dark hair going grey at the "
-              "temples, clean-shaven, with a deep cleft in his chin",
+    {"id": "cabelo_farto", "idade": 64,
+     "marca": "a tall lean frame, a full head of thick grey hair, "
+              "clean-shaven, with a deep cleft in his chin",
      "roupa": "an olive canvas shirt with the sleeves rolled"},
-    {"id": "sardas_ruivo", "idade": 41,
-     "marca": "a wiry build, coppery hair and heavy freckling across the nose, "
-              "with a gap between his front teeth",
+    {"id": "sardas_ruivo", "idade": 61,
+     "marca": "a wiry build, faded coppery hair gone white at the temples and "
+              "heavy freckling across the nose, with a gap between his front teeth",
      "roupa": "a faded red flannel shirt"},
-    {"id": "fade_grisalho", "idade": 55,
+    {"id": "fade_grisalho", "idade": 66,
      "marca": "a broad-shouldered build, a close grey fade and a neat chinstrap "
               "beard, smooth skin and a small gold stud in one ear",
      "roupa": "a slate-blue polo shirt"},
-    {"id": "locs_oculos", "idade": 49,
+    {"id": "locs_oculos", "idade": 67,
      "marca": "a solid build, salt-and-pepper locs gathered back, wire-rimmed "
               "glasses and a raised mole beside his right eye",
      "roupa": "a charcoal henley with the sleeves pushed up"},
-    {"id": "corte_militar", "idade": 52,
+    {"id": "corte_militar", "idade": 68,
      "marca": "a thickset build, an iron-grey brush cut, sun-weathered skin and "
               "a broad nose broken once",
      "roupa": "a mustard snap-button shirt"},
@@ -1288,61 +1348,61 @@ HOMENS = [
      "marca": "a barrel-chested build, a shaved head and a neat white goatee, "
               "with a white streak in one eyebrow",
      "roupa": "a cream short-sleeve camp shirt"},
-    {"id": "onda_longa", "idade": 44,
-     "marca": "a slim build, wavy dark hair worn a little long at the collar, "
+    {"id": "onda_longa", "idade": 63,
+     "marca": "a slim build, wavy grey hair worn a little long at the collar, "
               "clean-shaven, with a deep dimple in his left cheek",
      "roupa": "a forest-green work shirt"},
     {"id": "sobrancelha_oculos", "idade": 66,
      "marca": "a gaunt frame, white hair combed back, heavy black-framed "
               "glasses and deeply lined skin",
      "roupa": "a blue-and-white checked shirt"},
-    {"id": "queixo_fendido", "idade": 47,
-     "marca": "a compact build, sandy hair going grey at the sides, tanned skin "
+    {"id": "queixo_fendido", "idade": 61,
+     "marca": "a compact build, sandy hair gone grey at the sides, tanned skin "
               "and a strong cleft chin",
      "roupa": "a rust-red pocket tee"},
-    {"id": "afro_curto", "idade": 54,
+    {"id": "afro_curto", "idade": 69,
      "marca": "a burly build, a short grey afro and a broad open face, with a "
               "small birthmark high on one cheek",
      "roupa": "a sand-coloured linen shirt"},
     # + 2026-08-05, mesma ordem do operador. Porte, cabeca e pelo facial variam
     # juntos: dois homens de cabelo diferente e mesmo porte leem como o mesmo.
-    {"id": "bigode_farto", "idade": 57,
-     "marca": "a lean upright frame, dark hair combed to one side and a thick "
-              "moustache, with deep laugh lines around the eyes",
+    {"id": "bigode_farto", "idade": 64,
+     "marca": "a lean upright frame, steel-grey hair combed to one side and a "
+              "thick moustache, with deep laugh lines around the eyes",
      "roupa": "a striped short-sleeve shirt"},
-    {"id": "calvo_barba", "idade": 51,
-     "marca": "a heavy build, a shaved head and a full salt-and-pepper beard, "
+    {"id": "calvo_barba", "idade": 70,
+     "marca": "a heavy build, a shaved head and a full white beard, "
               "with a broad flat nose",
      "roupa": "a denim work shirt"},
     {"id": "branco_liso", "idade": 62,
      "marca": "a narrow build, straight white hair falling over the forehead, "
               "hollow cheeks and a cleft chin",
      "roupa": "a pale blue oxford shirt"},
-    {"id": "locs_curtas", "idade": 45,
-     "marca": "a stocky athletic build, short twisted locs and a trimmed "
-              "goatee, with a small scar on his temple",
+    {"id": "locs_curtas", "idade": 60,
+     "marca": "a stocky athletic build, short twisted grey locs and a trimmed "
+              "white goatee, with a small scar on his temple",
      "roupa": "a burgundy polo shirt"},
-    {"id": "sobrancelha_farta", "idade": 59,
+    {"id": "sobrancelha_farta", "idade": 65,
      "marca": "a solid build, thinning grey hair and very heavy dark eyebrows, "
               "with a bulbous nose",
      "roupa": "a khaki utility shirt"},
-    {"id": "queimado_sol", "idade": 48,
-     "marca": "a rangy build, sun-bleached brown hair and a deep tan line "
+    {"id": "queimado_sol", "idade": 62,
+     "marca": "a rangy build, sun-bleached grey hair and a deep tan line "
               "across the forehead, with a squint at the corners of both eyes",
      "roupa": "a faded teal work shirt"},
-    {"id": "cavanhaque_branco", "idade": 65,
+    {"id": "cavanhaque_branco", "idade": 71,
      "marca": "a spare frame, close-cropped white hair and a white goatee, "
               "with prominent ears",
      "roupa": "a grey chambray shirt"},
-    {"id": "cacheado_grisalho", "idade": 43,
-     "marca": "a broad build, dense curly hair going grey at the temples and a "
+    {"id": "cacheado_grisalho", "idade": 63,
+     "marca": "a broad build, dense curly grey hair and a "
               "strong square jaw, with a chipped front tooth",
      "roupa": "a black crew-neck tee"},
-    {"id": "bochechudo", "idade": 56,
-     "marca": "a round-faced heavy build, dark hair receding at the temples "
+    {"id": "bochechudo", "idade": 67,
+     "marca": "a round-faced heavy build, grey hair receding at the temples "
               "and full cheeks, with a dimpled chin",
      "roupa": "a plaid flannel shirt"},
-    {"id": "magro_alto", "idade": 50,
+    {"id": "magro_alto", "idade": 72,
      "marca": "a very tall gaunt frame, iron-grey hair cropped short and a "
               "long straight nose, with deep-set eyes",
      "roupa": "a white undershirt beneath an open work shirt"},
@@ -1714,6 +1774,14 @@ NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
 MODO_BELA = True
 MODO_FORTE = True
 
+# ⭐⭐ A FAIXA DA NARRADORA — ordem do operador, 2026-08-10: *"a narradora
+# sempre deve ser uma mulher jovem de 20 a 25 anos e o marido de 60+"*.
+# ⛔ Os dois numeros sao TRAVA, nao preferencia, e os dois tem lente atras
+# (BO9). Antes deste dia o motor entregava narradora de 24 a 38 e marido de 41
+# a 66 — a leitura de "a jovem e o marido velho" so' saia por sorte.
+REF_IDADE_MAX = 25
+HOMEM_IDADE_MIN = 60
+
 # ⭐ DUAS CENAS. O teto vem da fisica (8s x 3,1 p/s).
 TETO_FALA = {1: 25, 2: 25}
 PISO_FALA = {1: 18, 2: 20}
@@ -2052,6 +2120,20 @@ def sortear(pagina, rng, led, travas=None):
     copo = travas.get("copo") or _fresco([{"id": c} for c in COPOS],
                                          usados.get("copo", []), rng, "id")["id"]
     apelo = rng.choice(APELO_EUA)
+    # ⭐⭐ BELA DE NASCENCA — ordem do operador, 2026-08-10, lendo o render:
+    # *"a narradora sempre deve ser uma mulher jovem de 20 a 25 anos. A
+    # narradora sempre deve ser linda e sexy, corpo escultural e roupas que
+    # valorizam seu belo corpo, nunca um macacao feio igual foi o caso dessa
+    # personagem, que saiu com macacao na imagem 1"*.
+    # ⛔ O MACACAO NAO ERA ACIDENTE — era o pool. O traje vinha do MUNDO, e o
+    # mundo amish/apalache traz `denim dungarees over a striped long-sleeve`.
+    # Enquanto `bela` fosse TOGGLE, o sorteio normal continuava entregando
+    # macacao; o toggle so' consertava quando o operador lembrava de clicar.
+    # ⭐ Aqui ele deixa de ser toggle e passa a ser o ESTADO do motor: `bela`
+    # nasce ligado e as travas so' podem confirma-lo. E' o mesmo desenho do
+    # FALTA (`MODO_BELA` de nascenca), e por isso o resto do motor nao muda —
+    # `spec["bela"]` ja' comanda traje, REF, clausula de rosto e resumo.
+    travas = dict(travas, bela=True)
     # ⛔ NO MODO BELA A ROUPA TAMBEM MUDA. O operador nomeou TRES coisas —
     # *"super models com corpao e pouca roupa"* — e trocar so' o rosto e o corpo
     # deixaria a REF de biquini de tricô amish. Aqui o traje vem do MUNDO, entao
@@ -2059,8 +2141,14 @@ def sortear(pagina, rng, led, travas=None):
     traje = (_por_traje(mundo, travas["traje"]) if travas.get("traje")
              else sc.traje_bela(rng) if travas.get("bela")
              else _fresco_traje(mundo["trajes"], usados.get("traje", []), rng))
+    # ⭐ A FAIXA 20-25 e' do operador e entra como TETO no helper compartilhado
+    # (`idade_max`, criado hoje). Sem ele o pool bela ia ate' 33.
+    # ⚠️ O piso real do pool e' 21, dentro da faixa pedida — nao ha' entrada de
+    # 20, e inventar uma seria acrescentar personagem nao testada a um pool
+    # compartilhado por 16 motores para "bater o numero".
     ref = (_por_id(REFS, travas["ref"], "cabeca") if travas.get("ref")
-           else sc.ref_bela(REFS[0], rng) if travas.get("bela")
+           else sc.ref_bela(REFS[0], rng, idade_max=REF_IDADE_MAX)
+           if travas.get("bela")
            else rng.choice(REFS))
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
              else sc.ref_forte(HOMENS[0], rng) if travas.get("forte")
@@ -2146,8 +2234,15 @@ def montar(spec):
         "vaso": met["vaso"], "vaso_curto": met["curto"], "acao": met["acao"],
         "comum_img": com["img"], "raro_img": raro["img"],
         "copo": spec.get("copo", BO_COPO), "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB), "cauda": CAUDA, "band": band,
+        "gelatina": BO_GELATINA,
     }
-    v["nao_toca"] = BO_NAO_TOCA % m["sup"]
+    # ⛔ BO8 — a gelatina entra NOMEADA na trava do take, nao so' no `nothing
+    # else is touched`. O copo SAI de cena na mao dele agora, e o Veo que perde
+    # o objeto da mao tende a mexer no que sobrou na bancada para preencher os
+    # 8 segundos. O objeto que a fala nomeia e' o ultimo que pode sumir.
+    v["nao_toca"] = (BO_NAO_TOCA % m["sup"]
+                     + " The bowl of gelatin cubes stays on the %s the whole "
+                       "time, in full view and untouched." % m["sup"])
 
     b = {}
     b["BLOCO 0 (REF)"] = (
@@ -2184,7 +2279,8 @@ def montar(spec):
         "running across the bottom third of the picture. %(Ancora)s, standing "
         "centred behind it, holding %(copo)s up at chest height, turned "
         "towards the lens. On the %(sup)s in front of her stands %(vaso)s, and "
-        "beside it %(comum_img)s and %(raro_img)s. She looks directly into the "
+        "beside it %(comum_img)s, %(raro_img)s and %(gelatina)s. She looks "
+        "directly into the "
         "camera, calm and certain, her mouth open mid-word as she speaks, her "
         "front teeth even and complete. %(homem)s %(anti)s %(cauda)s"
         % dict(v, homem=BO_HOMEM % (hom["idade"], spec["etnia"], hom["marca"],
@@ -2196,12 +2292,24 @@ def montar(spec):
     mov = [
         BO_ISCA_ESTAVEL + " She never lowers either hand and never sets "
         "anything down.",
-        # ⭐⭐ O TAKE 2 ANIMA UM QUADRO PARADO. O gesto do utensilio NAO entra:
-        # a mao dela esta' no copo, e o vaso e' objeto em quadro, nao acao.
+        # ⭐⭐ O TAKE 2 TEM UM GESTO SO', E ELE E' DELE. Ordem do operador,
+        # 2026-08-10: ele tira o copo da mao dela e bebe; ela solta, olha e
+        # sorri, feliz por ele estar tomando.
+        # ⛔ ELA NAO ENTREGA O COPO — ele TIRA. A diferenca importa no render:
+        # "she hands him the glass" poe as duas maos em movimento e o copo
+        # troca de dono no meio do quadro; "she lets go when he takes it" deixa
+        # UMA mao agindo, que e' a dele, e a dela so' abre.
+        # ⛔ O gesto do utensilio continua FORA: o vaso e' objeto em quadro, nao
+        # acao, e a mao dela ja' esta' ocupada.
         # ⛔ `nao_toca` continua — sem ele o Veo mexe em tudo o que esta' na
         # bancada e a continuidade morre dentro dos 8 segundos.
-        ("She holds the glass steady at chest height the whole time and never "
-         "sets it down. " + v["nao_toca"]),
+        # ⚠️ E ela continua falando NA LENTE: o sorriso vem DEPOIS, no fim do
+        # movimento. Mandar olhar para ele e falar na lente ao mesmo tempo e' a
+        # simultaneidade impossivel que o Veo resolve contra nos.
+        ("She holds the glass out at chest height and speaks straight into the "
+         "lens; she lets go of it the moment he takes it, and then turns her "
+         "head towards him and smiles, plainly happy to watch him drink it. "
+         + v["nao_toca"]),
     ]
     elenco = [
         "She is the only person in the shot.",
@@ -2566,6 +2674,63 @@ def lint(spec, blocos):
                             "ordem contraditoria: o Veo resolve apagando o "
                             "homem, que e' o espanto do espectador"))
 
+    # --- BO8: ⭐⭐ A GELATINA NA BANCADA DA CENA 2 ---------------------------
+    # ⛔ Ordem do operador, 2026-08-10: *"sempre deve ter o pote de gelatina
+    # transparente no take 2 em cima da mesa, em TODAS as imagens 2 e take 2"*.
+    # E' defeito de FUNCAO: a fala nomeia o `gelatin trick` e o quadro nao
+    # mostrava onde ele mora. A lente existe porque o pedido tem a palavra
+    # "sempre" — e "sempre" que depende de eu lembrar nao e' sempre.
+    if BO_GELATINA not in i2:
+        ach.append(("ERRO", "BO8: IMAGE 02/02 sem o pote de gelatina na bancada "
+                            "— a fala nomeia o `gelatin trick` e o quadro nao "
+                            "mostra onde ele mora"))
+    if "bowl of gelatin cubes stays" not in blocos["TAKE 02/02"]:
+        ach.append(("ERRO", "BO8: TAKE 02/02 sem a trava do pote de gelatina — "
+                            "o copo sai da mao dela na mao dele, e o Veo que "
+                            "perde o objeto da mao mexe no que sobrou na "
+                            "bancada"))
+    if BO_GELATINA in i1:
+        ach.append(("ERRO", "BO8: a gelatina pronta na cena 1 — entrega o "
+                            "mecanismo antes da promessa, igual ao copo (BO5)"))
+
+    # --- BO6b: ⭐⭐ ELE PEGA O COPO E BEBE -----------------------------------
+    # ⛔ Ordem do operador, 2026-08-10. As tres pecas do gesto sao cobradas
+    # separadamente porque cada uma sozinha ja' e' um video diferente: sem
+    # `takes the glass` ele fica parado olhando (o estado que ele reprovou);
+    # sem `drinks` ele so' segura; sem o sorriso dela a cena vira ele tomando o
+    # copo e ela indiferente.
+    _tk2 = blocos["TAKE 02/02"]
+    for _peca, _porque in (
+            ("takes the glass out of her hand", "ele nao chega a pegar o copo"),
+            ("drinks from it", "ele pega o copo e nao bebe"),
+            ("smiles", "ela nao reage ao marido bebendo")):
+        if _peca not in _tk2:
+            ach.append(("ERRO", "BO6b: TAKE 02/02 sem %r — %s" % (_peca, _porque)))
+    # ⛔ E O SORRISO DELE E' DA IMAGE, nao do take: o frame 0 e' o que o gerador
+    # copia, e homem serio no frame 0 continua serio nos 8 segundos. Foi
+    # exatamente isso que voltou nos quatro renders que o operador mandou.
+    if not re.search(r"\b(smil\w*|grin\w*|beam\w*|laugh\w*)\b", i2):
+        ach.append(("ERRO", "BO6b: IMAGE 02/02 sem o marido SORRINDO — o frame 0 "
+                            "manda, e cara neutra no frame 0 renderiza como "
+                            "cara seria nos 8 segundos"))
+
+    # --- BO9: ⭐⭐ A FAIXA DE IDADE DO CASAL ---------------------------------
+    # ⛔ Ordem do operador, 2026-08-10: narradora 20-25, marido 60+. As duas sao
+    # trava. A do marido olha o POOL inteiro, nao o sorteio: uma entrada de 45
+    # nao aparece em 600 sorteios de linter e aparece no video do operador.
+    if spec["ref"]["idade"] > REF_IDADE_MAX:
+        ach.append(("ERRO", "BO9: narradora com %d anos (teto %d) — a faixa e' "
+                            "ordem do operador"
+                    % (spec["ref"]["idade"], REF_IDADE_MAX)))
+    if spec["homem"]["idade"] < HOMEM_IDADE_MIN:
+        ach.append(("ERRO", "BO9: marido com %d anos (piso %d) — o contraste de "
+                            "idade e' o que o angulo vende"
+                    % (spec["homem"]["idade"], HOMEM_IDADE_MIN)))
+    if not spec.get("bela"):
+        ach.append(("ERRO", "BO9: video fora do MODO BELA — neste motor ele nao "
+                            "e' toggle, e' o estado: sem ele o traje volta a "
+                            "sair do mundo e o macacao amish volta com ele"))
+
     # --- BO7: a ancora de continuidade nas cenas 2 e 3 ----------------------
     for nome in ("IMAGE 02/02", "IMAGE 02/02"):
         if ("the same %d-year-old" % spec["ref"]["idade"]
@@ -2776,6 +2941,42 @@ def autoteste(n=600):
     ctrl = []
     s = sortear("joe", random.Random(1), {}, {})
     b = montar(s)
+
+    # ⭐⭐ [BO9] AS DUAS FAIXAS MORAM NO POOL — e por isso a trava tem de estar
+    # AQUI, e nao so' no `lint()`. Licao paga hoje no TRIO 16: la' a correcao
+    # inteira era texto de pool, o `lint()` so' a cobrava QUANDO o pool a
+    # declarava, e apagar o campo do pool passava em branco no lote de 600.
+    # Lente que so' olha o prompt nao ve' o pool mudar.
+    # ⚠️ Varre o POOL INTEIRO, nao o sorteio: uma entrada de 45 anos entre 22
+    # sai em poucos por cento dos videos — passa despercebida no lote do linter
+    # e aparece justamente no video que o operador vai gerar.
+    _jovens = [h["id"] for h in HOMENS if h["idade"] < HOMEM_IDADE_MIN]
+    if _jovens:
+        ctrl.append("[BO9] HOMENS abaixo de %d anos no pool: %s — o contraste "
+                    "de idade e' o que o angulo vende"
+                    % (HOMEM_IDADE_MIN, _jovens))
+    if REF_IDADE_MAX > 25:
+        ctrl.append("[BO9] REF_IDADE_MAX subiu para %d — a ordem do operador e' "
+                    "narradora de 20 a 25" % REF_IDADE_MAX)
+    if not s.get("bela"):
+        ctrl.append("[BO9] o sorteio saiu FORA do modo bela — neste motor ele "
+                    "nao e' toggle, e' o estado; sem ele o traje volta a sair "
+                    "do mundo e o macacao amish volta com ele")
+    # ⛔ E o traje NUNCA e' macacao: foi o defeito nomeado pelo operador
+    # (*"nunca um macacao feio igual foi o caso dessa personagem"*), e ele vinha
+    # do pool de traje do MUNDO, nao de um sorteio azarado.
+    for _r in (sc.ROUPAS_BELAS if hasattr(sc, "ROUPAS_BELAS") else []):
+        if "dungarees" in _r[0].lower() or "overall" in _r[0].lower():
+            ctrl.append("[BO9] macacao dentro de ROUPAS_BELAS (%r) — o pool "
+                        "bela e' justamente o que tira o macacao de cena" % _r[1])
+
+    # ⭐⭐ [BO8] O POTE DE GELATINA — mesma razao. A string e' constante e a
+    # lente do `lint()` a compara com ela mesma: se alguem apagar a constante,
+    # os dois lados somem juntos e a lente concorda em silencio.
+    if "vivid purple" not in BO_GELATINA or "clear glass" not in BO_GELATINA:
+        ctrl.append("[BO8] BO_GELATINA deixou de ser o pote TRANSPARENTE de "
+                    "gelatina ROXA — as duas palavras sao o pedido do operador "
+                    "e a cor e' a mesma em todos os agentes do gelatin trick")
 
     # ⭐⭐ [ALCANCE] TODA ENTRADA DE POOL TEM DE SER SORTEAVEL.
     # ⛔⛔ ESTE MOTOR E' A RAZAO MAIS FORTE PARA A TRAVA EXISTIR. Medido no

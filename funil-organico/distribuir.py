@@ -67,9 +67,16 @@ def pasta_de(nome):
 # na area de trabalho como estao — e' exatamente por isso que eles nao entram
 # aqui: o build falharia (o .py nao mora mais em funil-organico/) e, se um dia
 # passasse, sobrescreveria o binario que ele pediu para preservar.
+#
+# ⚠️ ESTA LISTA E' A UNICA PORTA DE ENTRADA — `agentes()` so' enxerga quem esta'
+# aqui, e `--so NOME` de quem falta sai no aviso de "nenhum agente encontrado".
+# A area de trabalho ja' tem ~40 pastas e esta lista tem 13: quem nao esta'
+# nela NAO recebe a correcao no .exe, mesmo com o repo certo. Acrescentado o
+# TRIO16-SHORT em 2026-08-10, ao entregar a escala do prop da cena 2.
 ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSURREICAO-SHORT",
          "ESCANDALO-SHORT", "TROCA-SHORT", "PEE-SHORT", "FLAGRANTE-SHORT",
-         "VAZAMENTO-SHORT", "NECROSE-SHORT", "ORGANICWAVE-SHORT"]
+         "VAZAMENTO-SHORT", "NECROSE-SHORT", "ORGANICWAVE-SHORT",
+         "TRIO16-SHORT"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)

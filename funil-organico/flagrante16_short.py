@@ -115,10 +115,19 @@ AGENCIA_IMAGE = (
     "In his own fist on his lap he holds {prop_murcho}. Beside him {ref_desc} "
     "points his finger down at it without touching him, talking to camera."
 )
+# ⭐ A CARA DELE E' ANCORA POSITIVA, nao proibicao. Tirar `laughter` do audio
+# resolveu a causa (o Veo sincroniza rosto com som), mas o rosto so' fica certo
+# se o prompt DISSER como ele esta' — `never speaks` descreve a boca parada, e
+# boca parada nao e' cara de humilhado.
+# ⛔ Nada de `he does not laugh`: negacao cria o token que ela queria evitar,
+# a mesma licao do `no foreign accent` do CL31.
 AGENCIA_TAKE = (
     "The {ref_curto}-haired man speaks calmly to camera, his pointing finger "
     "stays close but never touches the seated man. The seated man keeps his "
-    "head down, blinks slowly, never speaks, his fist stays on his own lap."
+    "head down, blinks slowly, never speaks, his fist stays on his own lap. "
+    "His mouth stays closed and turned down at the corners and his eyes stay "
+    "lowered the whole time, his face fallen and humiliated while the others "
+    "laugh around him."
 )
 
 # ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
@@ -161,7 +170,7 @@ OCASIOES = [
         "plateia": "guests", "plateia_evento": "that wedding",
         "eco": "same reception hall",
         "luz_hook": "Warm string-light glow.",
-        "audio": "reception chatter, laughter, glasses clinking.",
+        "audio": "reception chatter, glasses clinking.",
     },
     {
         "id": "confraternizacao", "selo": "V",
@@ -171,7 +180,7 @@ OCASIOES = [
         "plateia": "coworkers", "plateia_evento": "that Christmas party",
         "eco": "the next company party",
         "luz_hook": "Warm string-light glow mixed with overhead fluorescent.",
-        "audio": "party chatter, laughter, a plastic cup set down.",
+        "audio": "party chatter, a plastic cup set down.",
     },
     {
         "id": "pescaria_firma", "selo": "N",
@@ -182,7 +191,7 @@ OCASIOES = [
         "plateia": "coworkers", "plateia_evento": "that boat",
         "eco": "same dock, same crew",
         "luz_hook": "Bright overcast daylight.",
-        "audio": "water lapping the dock, laughter, a cooler lid closing.",
+        "audio": "water lapping the dock, a cooler lid closing.",
     },
     {
         "id": "reuniao_firma", "selo": "N",
@@ -192,7 +201,7 @@ OCASIOES = [
         "plateia": "colleagues", "plateia_evento": "that company meeting",
         "eco": "same conference room",
         "luz_hook": "Flat office fluorescent light.",
-        "audio": "office chatter, laughter, a laptop closing.",
+        "audio": "office chatter, a laptop closing.",
     },
     {
         "id": "churrasco", "selo": "V",
@@ -202,7 +211,7 @@ OCASIOES = [
         "plateia": "relatives", "plateia_evento": "that cookout",
         "eco": "same backyard, same crowd",
         "luz_hook": "Late afternoon sunlight.",
-        "audio": "cookout chatter, laughter, a grill hissing.",
+        "audio": "cookout chatter, a grill hissing.",
     },
     {
         "id": "jantar_amigos", "selo": "N",
@@ -213,7 +222,7 @@ OCASIOES = [
         "plateia": "dinner guests", "plateia_evento": "that dinner table",
         "eco": "same dinner table",
         "luz_hook": "Warm dining room lamp light.",
-        "audio": "dinner chatter, laughter, cutlery on plates.",
+        "audio": "dinner chatter, cutlery on plates.",
     },
     {
         "id": "aniversario", "selo": "V",
@@ -223,7 +232,7 @@ OCASIOES = [
         "plateia": "family members", "plateia_evento": "that anniversary party",
         "eco": "same hall, same song",
         "luz_hook": "Warm overhead hall light.",
-        "audio": "party chatter, laughter, a chair scraping.",
+        "audio": "party chatter, a chair scraping.",
     },
     {
         "id": "clube_golfe", "selo": "N",
@@ -233,7 +242,7 @@ OCASIOES = [
         "plateia": "club members", "plateia_evento": "that clubhouse",
         "eco": "same clubhouse table",
         "luz_hook": "Bright window daylight.",
-        "audio": "clubhouse chatter, laughter, ice in a glass.",
+        "audio": "clubhouse chatter, ice in a glass.",
     },
     # + 2026-08-01: o operador mediu vicio no lote — o mesmo punhado de
     # eventos voltando. Pool dobrado, todas selo N (ainda sem numero).
@@ -245,7 +254,7 @@ OCASIOES = [
         "plateia": "churchgoers", "plateia_evento": "that church hall",
         "eco": "same fellowship hall",
         "luz_hook": "Flat overhead hall light.",
-        "audio": "hall chatter, laughter, a coffee urn hissing.",
+        "audio": "hall chatter, a coffee urn hissing.",
     },
     {
         "id": "clube_veteranos", "selo": "N",
@@ -255,7 +264,7 @@ OCASIOES = [
         "plateia": "old servicemen", "plateia_evento": "that veterans hall",
         "eco": "same veterans hall, same table",
         "luz_hook": "Dim amber bar light.",
-        "audio": "bar chatter, laughter, a glass set down on wood.",
+        "audio": "bar chatter, a glass set down on wood.",
     },
     {
         "id": "boliche", "selo": "N",
@@ -266,7 +275,7 @@ OCASIOES = [
         "plateia": "league bowlers", "plateia_evento": "that bowling league",
         "eco": "same lane, same league night",
         "luz_hook": "Cool overhead alley light.",
-        "audio": "pins falling, laughter, a ball rolling on wood.",
+        "audio": "pins falling, a ball rolling on wood.",
     },
     {
         "id": "lanchonete", "selo": "N",
@@ -276,7 +285,7 @@ OCASIOES = [
         "plateia": "diner regulars", "plateia_evento": "that diner booth",
         "eco": "same booth, same waitress",
         "luz_hook": "Hard morning light through the window blinds.",
-        "audio": "diner chatter, laughter, mugs set on a counter.",
+        "audio": "diner chatter, mugs set on a counter.",
     },
     {
         "id": "reencontro", "selo": "N",
@@ -286,7 +295,7 @@ OCASIOES = [
         "plateia": "old classmates", "plateia_evento": "that class reunion",
         "eco": "same gym, same crowd",
         "luz_hook": "Cool overhead gym light.",
-        "audio": "reunion chatter, laughter, a punch ladle clinking.",
+        "audio": "reunion chatter, a punch ladle clinking.",
     },
     {
         "id": "feira_condado", "selo": "N",
@@ -297,63 +306,49 @@ OCASIOES = [
         "plateia": "fairgoers", "plateia_evento": "that county fair",
         "eco": "same fair, same tent",
         "luz_hook": "Bright daylight under canvas shade.",
-        "audio": "fairground chatter, laughter, a distant loudspeaker.",
+        "audio": "fairground chatter, a distant loudspeaker.",
     },
 ]
 
 # Ancora de escala obrigatoria nos dois estados (F12 / F15).
 # murcho: "no longer than his thumb" · ereto: "as long as her forearm"
+# ⛔⛔ POOL ENXUTO A QUATRO — ordem do operador, 2026-08-10: *"remova todos os
+# itens de prop que nao se parecem com penis, como aspargo, cenoura e qualquer
+# coisa esquisita, deixe somente banana, linguica, pepino e beringela"*.
+# Sairam: geoduck, okra, aspargo, daikon, cenoura, alho_poro.
+# ⚠️ COM O GEODUCK FORA, `marisco` e' False em todo o pool e a `NEGACAO_AVE`
+# (a trava que impedia o Veo de desenhar um ganso) nunca mais dispara. Fica no
+# codigo porque o campo continua existindo — se o geoduck voltar, a trava volta
+# junto. Nao se remove guarda por estar ociosa.
+#
+# ⭐⭐ O MURCHO TEM UMA FORMA SO' — relato de campo do operador com quatro
+# renders do MESMO prompt: em tres deles o Veo entregou coisa irreconhecivel
+# (um anel, um toco, um embrulho) e so' num saiu certo — o prop caido, dobrando
+# por cima da mao fechada. Ele apontou esse e pediu ele sempre.
+# ⛔ Por isso a geometria NAO e' escrita item a item: e' um molde unico com o
+# nome do item entrando num %s. Descricao livre por item foi o que deixou o
+# gerador escolher — e ele escolheu errado em 3 de 4.
+_MURCHO = ("a small %s held in his closed fist at his lap, no longer than his "
+           "thumb, shriveled and wrinkled, completely limp and soft, the free "
+           "end drooping down and folding over the side of his hand under its "
+           "own weight, clearly unable to hold itself up")
+_ERETO = ("%s held upright at shoulder height, stiff and straight, as long as "
+          "her forearm and as thick as her wrist")
+
 PROPS = [
-    {"id": "geoduck", "pt": "um geoduck", "marisco": True,
-     "murcho": ("a small geoduck clam by its pale ridged shell, its siphon no "
-                "longer than his thumb, shriveled and wrinkled, completely "
-                "soft, folded over on itself"),
-     "ereto": ("a geoduck clam upright by its shell at shoulder height, its "
-               "siphon held stiff and straight, as long as her forearm and as "
-               "thick as her wrist")},
+    # ⚠️ O campo `pt` e' do Ed (2026-08-10) e fica: e' ele que o painel usa.
     {"id": "banana", "pt": "uma banana", "marisco": False,
-     "murcho": ("a small banana, no longer than his thumb, shriveled and "
-                "wrinkled, skin dull and spotted, completely soft, folded "
-                "over on itself"),
-     "ereto": ("a banana upright at shoulder height, held stiff and straight, "
-               "as long as her forearm and as thick as her wrist")},
-    {"id": "okra", "pt": "um quiabo", "marisco": False,
-     "murcho": ("a small wilted okra pod, no longer than his thumb, shriveled "
-                "and completely soft, drooping over his fingers"),
-     "ereto": ("an okra pod upright at shoulder height, held stiff and "
-               "straight, as long as her forearm")},
-    {"id": "pepino", "pt": "um pepino", "marisco": False,
-     "murcho": ("a small shrivelled cucumber, no longer than his thumb, "
-                "wrinkled and completely soft, folded over on itself"),
-     "ereto": ("a cucumber upright at shoulder height, held stiff and "
-               "straight, as long as her forearm and as thick as her wrist")},
-    {"id": "aspargo", "pt": "um aspargo", "marisco": False,
-     "murcho": ("a small wilted asparagus stalk, no longer than his thumb, "
-                "limp and drooping over his fingers"),
-     "ereto": ("an asparagus stalk upright at shoulder height, held stiff and "
-               "straight, as long as her forearm")},
-    {"id": "daikon", "pt": "um nabo daikon", "marisco": False,
-     "murcho": ("a small shrivelled daikon radish, no longer than his thumb, "
-                "wrinkled and completely soft, drooping over his fingers"),
-     "ereto": ("a daikon radish upright at shoulder height, held stiff and "
-               "straight, as long as her forearm and as thick as her wrist")},
+     "murcho": _MURCHO % "banana, skin dull and spotted",
+     "ereto": _ERETO % "a banana"},
     {"id": "linguica", "pt": "uma linguiça", "marisco": False,
-     "murcho": ("a small pale sausage, no longer than his thumb, shriveled "
-                "and completely soft, folded over on itself"),
-     "ereto": ("a thick sausage upright at shoulder height, held stiff and "
-               "straight, as long as her forearm")},
-    # + 2026-08-01: o operador mediu vicio — sempre o mesmo prop na mao do
-    # lote. Dois novos, com as duas ancoras de escala obrigatorias (F12/F15).
-    {"id": "cenoura", "pt": "uma cenoura", "marisco": False,
-     "murcho": ("a small limp carrot, no longer than his thumb, shriveled and "
-                "wrinkled, completely soft, drooping over his fingers"),
-     "ereto": ("a carrot upright at shoulder height, held stiff and straight, "
-               "as long as her forearm")},
-    {"id": "alho_poro", "pt": "um alho-poró", "marisco": False,
-     "murcho": ("a small wilted leek, no longer than his thumb, shriveled and "
-                "completely soft, folded over on itself"),
-     "ereto": ("a leek stalk upright at shoulder height, held stiff and "
-               "straight, as long as her forearm and as thick as her wrist")},
+     "murcho": _MURCHO % "cured sausage link",
+     "ereto": _ERETO % "a cured sausage link"},
+    {"id": "pepino", "pt": "um pepino", "marisco": False,
+     "murcho": _MURCHO % "cucumber",
+     "ereto": _ERETO % "a cucumber"},
+    {"id": "beringela", "pt": "uma berinjela", "marisco": False,
+     "murcho": _MURCHO % "eggplant",
+     "ereto": _ERETO % "an eggplant"},
 ]
 
 # Set das cenas 2/3/5. Escopo do D1 (P15): bancada ou interno — todos servem.
@@ -1001,6 +996,16 @@ def _hook_fmt(hook, oc, o):
     ev = oc["plateia_evento"]
     if "The whole {evento}" in hook or "the whole {evento}" in hook:
         ev = re.sub(r"^(that|this|the)\s+", "", ev, flags=re.I)
+    # ⛔⛔ O DEITICO — relato de campo do operador, 2026-08-10, o mesmo defeito
+    # que ele pegou no PEE 16 e no NECROSE 16. Os 14 eventos sao DISTAIS
+    # (`that dinner table`), mas o narrador esta' SENTADO A MESA, apontando o
+    # dedo para o homem ao lado. Dizer "aquela mesa de jantar" de dentro dela
+    # e' o dedo apontando para fora de onde ele ja' esta'.
+    # ⚠️ Nao e' o tempo verbal: passado sobre cena ao vivo passaria. Quebra o
+    # DEDO. ⛔ Corrigido na montagem, nunca no pool — mesma regra dos dois
+    # blocos acima.
+    if ev.lower().startswith("that "):
+        ev = "this " + ev[5:]
     txt = hook.format(evento=ev, o=o)
     # ⚠️ MESMO BUG, OUTRA PREPOSICAO — achado na revisao adversarial de
     # 2026-08-09. Todos os 14 eventos aceitam `at`, menos um: `at that boat` e'
@@ -1168,8 +1173,18 @@ def _montar_longo(spec):
     # Consistencia Visual em vez de tentar encaixa-lo num slot da grade.
     # ⛔ Nao remover: sem ele a referencia e descartada em silencio.
     b["BLOCO 0 (REF)"] = (
+                # ⛔⛔ CL25 — O REF SORRI MOSTRANDO OS DENTES. Relato de campo do
+        # operador, 2026-08-10: *"os dentes do narrador estao pessimos, parece
+        # que estao podres ou que estao prestes a cair"*.
+        # A REF dizia so' `calm expression` — boca fechada. Sem dentes na
+        # imagem de identidade o Veo INVENTA a dentadura quando a boca abre no
+        # take, e inventa mal. E' a mesma licao que o CLEAN pagou em
+        # 2026-08-04 e resolveu com esta linha; aqui ela faltava.
+        # ⚠️ A ancora e' POSITIVA e vai na REF, nao no TAKE: o take herda o
+        # rosto do primeiro frame, entao e' o frame que precisa ter a boca
+        # certa. Descrever dente no TAKE chega tarde.
         "REF 01: Photo of a real person, a %d-year-old %s man, chest up, facing camera, "
-        "calm expression. Lean muscular build, chest and shoulders visible. %s. "
+        "a wide warm natural smile with the lips parted, showing a full row of clean white teeth, the front teeth even, white and complete. The dense build of a man who lifts, thick through the chest and shoulders, forearms corded, skin taut and even. %s. "
         "%s %s Plain gray background, soft light. No text, no watermark."
         % (ref["idade"], et, ref["marca"].capitalize(), ref["roupa"], ANTICELEB)
     )
@@ -1881,11 +1896,26 @@ def _ct16(spec, blocos, achados):
 _APOSENTADA_CT4 = "substantivo repetido no video"
 
 
+def _cl25_dentes(spec, blocos, achados):
+    """⛔ O REF tem de sorrir mostrando os dentes — CL25, 2026-08-10.
+
+    Sem esta ancora na imagem de identidade o Veo inventa a dentadura quando a
+    boca abre no take, e inventa podre. Foi relato de campo com render na mao.
+    ⚠️ A lente olha o REF, nao o TAKE: o take herda o rosto do primeiro frame.
+    """
+    ref = blocos.get("BLOCO 0 (REF)", "")
+    for pedaco in ("natural smile", "clean white teeth", "even, white and complete"):
+        if pedaco not in ref:
+            achados.append(("ERRO", "CL25: o REF nao declara %r — sem dentes na "
+                                    "imagem de identidade o Veo inventa banguelo"
+                                    % pedaco))
+
+
 def lint(spec, blocos):
     achados = sc.lint_curto(
         _LONGO, spec, blocos, MAPA, TETO_FALA,
         literais=("gelatin trick", "blood flow"),
-        extras=(_imobilidade, _ct16))
+        extras=(_imobilidade, _ct16, _cl25_dentes))
     return [(n, m) for n, m in achados
             if not (n == "AVISO" and m.startswith(_APOSENTADA_CT4))]
 

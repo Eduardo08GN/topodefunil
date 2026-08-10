@@ -162,6 +162,16 @@ ETNIA = {
 
 # PE5 — sempre lugar publico movimentado, zero marca legivel (P12).
 # ⚠️ Nao existe versao privada da mancha: sem plateia nao ha' flagrante.
+# ⛔⛔ RISADA NAO ENTRA NO AUDIO — 2026-08-10. O operador pegou isto no
+# FLAGRANTE 16 com o render na mao (*"o homem que deveria estar extremamente
+# triste da' risada junto com todo mundo"*), e aqui o caso e' PIOR: a vitima
+# deste angulo esta' CHORANDO na IMAGE, e o campo `Audio:` cueava `laughter`.
+# O Veo sincroniza ROSTO com AUDIO — som de riso faz toda cara em quadro rir,
+# inclusive a que o texto manda estar em lagrimas.
+# ⭐ Nao faz falta: a plateia continua rindo NA IMAGEM. Sai a pista sonora que
+# arrastava o rosto errado junto.
+# ⚠️ Estendi do FLAGRANTE para ca' por ser o mesmo defeito na mesma cena — o
+# operador reportou um so'.
 LOCAIS = [
     {"id": "mercado", "selo": "V",
      "cenario": "a busy big-box supermarket aisle",
@@ -170,14 +180,14 @@ LOCAIS = [
      "plateia": "shoppers", "plateia_evento": "that store",
      "eco": "the same aisle",
      "luz": "Hard fluorescent overhead light.",
-     "audio": "store ambience, laughter, a cart rolling."},
+     "audio": "store ambience, a cart rolling."},
     {"id": "farmacia", "selo": "N",
      "cenario": "a pharmacy aisle",
      "detalhe": "shelves of unlabeled boxes, a counter out of focus behind them",
      "plateia": "customers", "plateia_evento": "that pharmacy",
      "eco": "the same pharmacy counter",
      "luz": "Flat white pharmacy light.",
-     "audio": "quiet store ambience, laughter, a scanner beeping."},
+     "audio": "quiet store ambience, a scanner beeping."},
     {"id": "fila_caixa", "selo": "V",
      "cenario": "a supermarket checkout line",
      "detalhe": "a conveyor belt with groceries, a register out of focus, "
@@ -185,7 +195,7 @@ LOCAIS = [
      "plateia": "people in line", "plateia_evento": "that checkout line",
      "eco": "the same checkout line",
      "luz": "Hard fluorescent overhead light.",
-     "audio": "checkout beeps, laughter, bags rustling."},
+     "audio": "checkout beeps, bags rustling."},
     {"id": "ferragens", "selo": "N",
      "cenario": "a hardware store aisle",
      "detalhe": "racks of tools and paint cans, a flatbed cart beside him, "
@@ -193,14 +203,14 @@ LOCAIS = [
      "plateia": "customers", "plateia_evento": "that hardware store",
      "eco": "the same tool aisle",
      "luz": "Cool warehouse overhead light.",
-     "audio": "warehouse ambience, laughter, a cart squeaking."},
+     "audio": "warehouse ambience, a cart squeaking."},
     {"id": "hortifruti", "selo": "N",
      "cenario": "the produce section of a supermarket",
      "detalhe": "crates of fruit and vegetables, a misting sprayer above them",
      "plateia": "shoppers", "plateia_evento": "that produce aisle",
      "eco": "the same produce aisle",
      "luz": "Bright white produce light.",
-     "audio": "store ambience, laughter, the mist sprayer hissing."},
+     "audio": "store ambience, the mist sprayer hissing."},
     {"id": "conveniencia", "selo": "N",
      "cenario": "a gas station convenience store",
      "detalhe": "a coffee counter and snack racks, a glass door out of focus, "
@@ -208,7 +218,7 @@ LOCAIS = [
      "plateia": "customers", "plateia_evento": "that gas station",
      "eco": "the same store counter",
      "luz": "Harsh white overhead light.",
-     "audio": "store ambience, laughter, a door chime."},
+     "audio": "store ambience, a door chime."},
     # + 2026-08-01: o operador mediu vicio — os mesmos cenarios voltando no
     # lote. Pool ampliado com tres lugares publicos fora do varejo de rua.
     {"id": "feira", "selo": "N",
@@ -218,7 +228,7 @@ LOCAIS = [
      "plateia": "shoppers", "plateia_evento": "that farmers market",
      "eco": "the same market row",
      "luz": "Open midday sunlight.",
-     "audio": "market chatter, laughter, a vendor calling out."},
+     "audio": "market chatter, a vendor calling out."},
     {"id": "racao", "selo": "N",
      "cenario": "a farm and feed store aisle",
      "detalhe": "stacked sacks of feed on wooden pallets, a hand truck beside "
@@ -226,7 +236,7 @@ LOCAIS = [
      "plateia": "customers", "plateia_evento": "that feed store",
      "eco": "the same feed aisle",
      "luz": "Dusty daylight from high windows.",
-     "audio": "warehouse ambience, laughter, a pallet jack rattling."},
+     "audio": "warehouse ambience, a pallet jack rattling."},
     {"id": "pesca", "selo": "N",
      "cenario": "a crowded bait and tackle shop",
      "detalhe": "walls of fishing rods and bins of tackle, a live bait tank "
@@ -234,7 +244,7 @@ LOCAIS = [
      "plateia": "customers", "plateia_evento": "that tackle shop",
      "eco": "the same tackle shop",
      "luz": "Warm overhead shop light.",
-     "audio": "shop ambience, laughter, the bait tank bubbling."},
+     "audio": "shop ambience, the bait tank bubbling."},
 ]
 
 # PE1 — a mancha vive do CONTRASTE. Roupa de baixo sempre CLARA.
@@ -847,7 +857,7 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     orgaos = [_o1] * 4
     hook = _hook_sem_colisao(rng, orgaos)
     falas = [
-        hook.format(evento=local["plateia_evento"], o=orgaos[0]),
+        hook.format(evento=_aqui(local["plateia_evento"]), o=orgaos[0]),
         rng.choice(MECANISMOS).format(o=orgaos[1]),
         rng.choice(RITUAIS).format(o=orgaos[2]),
         rng.choice(REDENCOES).format(eco=local["eco"], o=orgaos[3],
@@ -875,8 +885,27 @@ def _montar_longo(spec):
     # Consistencia Visual em vez de tentar encaixa-lo num slot da grade.
     # ⛔ Nao remover: sem ele a referencia e descartada em silencio.
     b["BLOCO 0 (REF)"] = (
+        # ⛔⛔ 2026-08-10 — `Lean muscular build` ENTREGAVA MAGRO. Relato de
+        # campo do operador com o render na mao: o narrador saia franzino, sem
+        # o porte que o angulo pede. O Veo le' `lean` primeiro e o resto vira
+        # detalhe — mesma licao do CL25 com os dentes e do EX9 com `beautiful`:
+        # adjetivo generico perde para a palavra concreta que vem antes.
+        # ⭐ Agora e' o padrao do CLEAN V1, que ele pediu nominalmente: nada de
+        # `lean`, e o corpo e' descrito pelo QUE ELE FAZ (`a man who lifts`),
+        # nao por um adjetivo de forma.
+                # ⛔⛔ CL25 — O REF SORRI MOSTRANDO OS DENTES. Relato de campo do
+        # operador, 2026-08-10: *"os dentes do narrador estao pessimos, parece
+        # que estao podres ou que estao prestes a cair"*.
+        # A REF dizia so' `calm expression` — boca fechada. Sem dentes na
+        # imagem de identidade o Veo INVENTA a dentadura quando a boca abre no
+        # take, e inventa mal. E' a mesma licao que o CLEAN pagou em
+        # 2026-08-04 e resolveu com esta linha; aqui ela faltava.
+        # ⚠️ A ancora e' POSITIVA e vai na REF, nao no TAKE: o take herda o
+        # rosto do primeiro frame, entao e' o frame que precisa ter a boca
+        # certa. Descrever dente no TAKE chega tarde.
         "REF 01: Photo of a real person, a %d-year-old %s man, chest up, facing camera, "
-        "calm expression. Lean muscular build, chest and shoulders visible. %s. "
+        "a wide warm natural smile with the lips parted, showing a full row of clean white teeth, the front teeth even, white and complete. The dense build of a man who lifts, thick through the "
+        "chest and shoulders, forearms corded, skin taut and even. %s. "
         "%s %s Plain gray background, soft light. No text, no watermark."
         % (ref["idade"], et, ref["marca"].capitalize(), ref["roupa"], ANTICELEB)
     )
@@ -968,7 +997,8 @@ def _nova_fala_longa(spec, i, rng):
     o = next((n for n in NUCLEO if n.lower() in spec["falas"][i].lower()), "Johnson")
     loc = spec["local"]
     if i == 0:
-        return rng.choice(HOOKS).format(evento=loc["plateia_evento"], o=o)
+        return rng.choice(HOOKS).format(evento=_aqui(loc["plateia_evento"]),
+                                    o=o)
     if i == 1:
         return rng.choice(MECANISMOS).format(o=o)
     if i == 2:
@@ -1484,6 +1514,21 @@ def sortear(pagina, rng, ledger, travas=None):
                             MAPA_COPY, travas)
 
 
+# ⛔⛔ O DEITICO DO HOOK — 2026-08-10, relato de campo do operador.
+# Os 20 hooks dizem `in {evento}`, e os 14 eventos sao todos DISTAIS: `that
+# store`, `that pharmacy`, `that produce aisle`. Mas na cena 1 o narrador esta'
+# DENTRO do lugar, agachado ao lado do homem — e apontava para "aquela loja"
+# estando nela.
+# ⚠️ Nao e' o tempo verbal: passado sobre cena ao vivo passaria ("acabou de
+# acontecer"). O que quebra e' o DEDO apontando para fora de onde ele ja' esta'.
+# Mesma familia do defeito do NECROSE 16, que o operador pegou lendo a copy.
+# ⛔ A troca acontece SO' AQUI, no 16s. O arco de 5 cenas tem cenas em outro
+# lugar, e la' o `that` esta' certo — mexer no pool quebraria o motor longo.
+def _aqui(evento):
+    """`that store` -> `this store`: o narrador esta' dentro do lugar."""
+    return evento[5:] and "this " + evento[5:] if evento.startswith("that ")         else evento
+
+
 def montar(spec):
     b = sc.montar_curto(_LONGO, spec, MAPA)
     # ⛔⛔ CONSERTADO EM 2026-08-09. O agente NAO ABRIA: montava as cenas 2 e 3
@@ -1606,11 +1651,27 @@ def _ct16(spec, blocos, achados):
 _APOSENTADA_CT4 = "substantivo repetido no video"
 
 
+def _cl25_dentes(spec, blocos, achados):
+    """⛔ O REF tem de sorrir mostrando os dentes — CL25, 2026-08-10.
+
+    Sem esta ancora na imagem de identidade o Veo inventa a dentadura quando a
+    boca abre no take, e inventa podre. Foi relato de campo com render na mao.
+    ⚠️ A lente olha o REF, nao o TAKE: o take herda o rosto do primeiro frame.
+    """
+    ref = blocos.get("BLOCO 0 (REF)", "")
+    for pedaco in ("natural smile", "clean white teeth", "even, white and complete"):
+        if pedaco not in ref:
+            achados.append(("ERRO", "CL25: o REF nao declara %r — sem dentes na "
+                                    "imagem de identidade o Veo inventa banguelo"
+                                    % pedaco))
+
+
 def lint(spec, blocos):
     achados = sc.lint_curto(
         _LONGO, spec, blocos, MAPA, TETO_FALA,
         literais=("gelatin trick", "prostate"),
-        extras=(_pe6_hook, _pe1_roupa_clara, _blocos_travados, _ct16))
+        extras=(_pe6_hook, _pe1_roupa_clara, _blocos_travados,
+                _ct16, _cl25_dentes))
     return [a for a in achados if not a[1].startswith(_APOSENTADA_CT4)]
 
 

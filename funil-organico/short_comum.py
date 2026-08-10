@@ -110,20 +110,41 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3):
     ref, amb = spec["ref"], spec["ambiente"]
     luz = amb["luz"]
 
+    # ⛔⛔ DUAS COLHERES — relato de campo do operador, 2026-08-10, com o render
+    # na mao: colher DENTRO do copo e outra na mesa, e o sache aberto na mao,
+    # obrigando a regerar o take varias vezes.
+    #
+    # A CAUSA NAO ERA A CONTAGEM, ERA A AGENDA. O TAKE mandava TRES acoes ao
+    # mesmo tempo — `stir the spoon` + `tipping the sachet` + `stirring it in
+    # slow circles` — para DUAS maos, e a IMAGE punha as duas maos no copo
+    # com sache E colher em jogo. O modelo precisa da colher em dois estados
+    # (parada enquanto ele despeja, girando enquanto mexe) e resolve
+    # DESENHANDO DUAS. Mesma familia do 16S5: contradicao dentro do prompt,
+    # e o gerador resolve duplicando em vez de escolher.
+    #
+    # ⭐ Agora e' UMA acao, UMA mao, UM estado: o sache JA' FOI despejado e
+    # esta' vazio e dobrado na bancada; ele so' gira a colher. O despejo nao
+    # se perde — ele acabou de acontecer, e a fala o nomeia.
+    # ⚠️ E a contagem entra EXPLICITA (`exactly one spoon`): o objeto que ja'
+    # duplicou uma vez precisa de numero, nao de artigo.
     img = (
         "IMAGE %02d/%02d: Medium shot in %s. The same %d-year-old %s man, %s, "
         "%s, stands behind the %s, speaking to the camera. On the counter in "
-        "front of him are an open white sachet, a glass of water and a spoon, "
-        "and both his hands are at the glass mid-action. He is alone in frame. "
-        "%s %s"
+        "front of him are a tall glass of water with exactly one spoon standing "
+        "in it, and one empty white sachet lying flat and folded beside the "
+        "glass, already used. His right hand rests on the spoon; his left hand "
+        "is open on the counter, holding nothing. There is exactly one spoon in "
+        "the shot and nothing else on the counter. He is alone in frame. %s %s"
         % (n, total, amb["set"], ref["idade"], et, ref["marca"],
            ref["roupa_curta"], amb["bancada"], luz.capitalize(), base.CAUDA)
     )
     take = (
         "TAKE %02d/%02d: Animate the image exactly. Handheld iPhone, slight "
-        "sway, no cuts. His hands stir the spoon while he talks, tipping the "
-        "sachet into the glass and stirring it in slow circles. His eyes stay on "
-        "the lens the whole time. He is alone in the shot.\n"
+        "sway, no cuts. His right hand turns the spoon in the glass in slow "
+        "circles while he talks — that is the only movement. His left hand "
+        "stays where it is. The empty sachet stays flat on the counter and is "
+        "never picked up. Nothing is poured and nothing new enters the frame. "
+        "His eyes stay on the lens the whole time. He is alone in the shot.\n"
         "Dialogue: \"%s\"\n"
         "Audio: spoon clinking glass, quiet room tone. No music."
         % (n, total, base.sonorizar(fala))
@@ -1501,7 +1522,7 @@ def _sem_olhos(marca):
     m = re.sub(r"\s{2,}", " ", m).strip(" ,")
     return m or "clear skin"
 
-def ref_bela(molde, rng, idade_min=None, banidos=()):
+def ref_bela(molde, rng, idade_min=None, banidos=(), idade_max=None):
     """Uma REF do modo BELA no FORMATO DO MOTOR que pediu.
 
     `molde` e' uma entrada qualquer do pool original — serve so' para dizer
@@ -1544,6 +1565,16 @@ def ref_bela(molde, rng, idade_min=None, banidos=()):
         # `or pool` do `_cabem`: parece funcionar e desfaz a regra em silencio.
         _pool = [r for r in _pool if r["idade"] >= idade_min] or [
             max(_pool, key=lambda r: r["idade"])]
+    # ⭐ O TETO, simetrico ao piso — 2026-08-10, pedido do operador no BOTICA 16:
+    # *"a narradora sempre deve ser uma mulher jovem de 20 a 25 anos"*. O piso
+    # ja' existia (TROCA/RESSURREICAO precisam de 28+); sem o teto, o mesmo pool
+    # entregava 33 anos num motor que pediu 25.
+    # ⚠️ CEDE do mesmo jeito que o piso, e pelo mesmo motivo: pool vazio derruba
+    # o sorteio, e derrubar o sorteio por causa de um filtro e' o botao que
+    # quebra o app em vez do que muda a REF.
+    if idade_max:
+        _pool = [r for r in _pool if r["idade"] <= idade_max] or [
+            min(_pool, key=lambda r: r["idade"])]
     base = dict(rng.choice(_pool))
     # ⭐ O OLHO E' SORTEADO A PARTE e entra NA MARCA — que e' o campo que todo
     # motor ja' renderiza. Assim ele chega ao quadro sem eu tocar em 16 motores.

@@ -485,11 +485,19 @@ BO_HOMEM = (
 # de ser dele.
 # ⚠️ O corte no PEITO tambem e' o que mantem a cena gerável: rosto masculino
 # junto de prop falico na cintura e' a combinacao que a moderacao pega.
+# ⭐ O ULTIMO `%s` E' A CAUDA DO PROP (`cauda_c2`), e o LUGAR dela e' este —
+# 2026-08-10. Nao e' preciosismo de pontuacao: a cauda anti-bicho fala do
+# MOLUSCO, e posta depois de *"Only his chest, his arms and his hands are in the
+# picture."* ela passa a qualificar o HOMEM — `no eyes, no head, nothing alive`
+# logo apos a frase que descreve o corpo dele. E' assim que o NECROSE a escreve
+# tambem: colada na sentenca do molusco, antes da proxima frase de cena.
+# ⚠️ O texto travado nao mudou uma letra — entrou um SLOT, que fica vazio para
+# todo par sem `cauda_c2`.
 BO_CORPO_PROVA = (
     "Standing at frame-right, cropped at the chest so that no face is in the "
     "frame, is a %d-year-old %s man, %s, wearing %s. His right hand is closed "
     "around %s, held upright at the height of his waist, well clear of his "
-    "body. Only his chest, his arms and his hands are in the picture."
+    "body.%s Only his chest, his arms and his hands are in the picture."
 )
 
 BO_CORPO_PROVA_TAKE = (
@@ -1420,9 +1428,40 @@ PARES = [
     # ⚠️ A escala e' DIFERENCIAL como nos outros pares: o murcho e' curto E
     # recolhido, o gigante e' longo E estendido. Mudar so' o tamanho leria como
     # a mesma peca de perto e de longe.
+    #
+    # ⭐⭐ `gigante_c2` — A ESCALA DO NECROSE NA MAO DO HOMEM. Ordem do
+    # operador, 2026-08-10, lendo o render: *"o geoduck do take 2 esta' muito
+    # pequeno; quero o tamanho do NECROSE"*. Dois defeitos somavam:
+    #   1. A ANCORA ERA FEMININA NA MAO DELE. O campo `gigante` diz `longer
+    #      than HER forearm` e a cena 2 e' `HIS right hand is closed around
+    #      ...` — o possessivo aponta para um corpo que nao esta' na frase, e
+    #      escala sem referente o Veo resolve pelo tamanho natural do molusco.
+    #   2. FALTAVA A SEGUNDA DIMENSAO. `enormous ... longer than her forearm`
+    #      da' comprimento e nao da' GROSSURA, e o render devolve uma peca
+    #      longa e fina. O NECROSE (NE11) dimensiona pelas DUAS — `as long as
+    #      his forearm and as thick as his wrist` — e e' esse par que faz o
+    #      tamanho aparecer na tela.
+    # ⛔ COPIA LITERAL DA SPEC DO NECROSE (`GEODUCK_PAYOFF`), com UMA troca: a
+    # ancora vertical de la' e' `reaching well above the top of his head`, e
+    # aqui NAO HA CABECA EM QUADRO (o corpo-prova e' cortado no peito, BO6).
+    # Ancora que aponta para fora do frame e' ancora nenhuma — entra a do
+    # TORSO, que e' o que esta' visivel: do punho ao alto do peito.
+    # ⛔ E a CLAUSULA ANTI-BICHO vem JUNTO, nao e' enfeite: e' nessa escala que
+    # o geoduck erguido passa a ler como ganso, e foi por isso que o NECROSE a
+    # escreveu. Subir o tamanho sem ela e' reintroduzir o defeito que ele pagou.
+    # Ela entra como `cauda_c2`, DEPOIS da frase que posiciona — dentro do campo
+    # do prop ela deixaria a pose (`, held upright at the height of his waist`)
+    # pendurada no fim de `nothing alive`.
+    # ⚠️ Sem `held upright` dentro do campo: a pose mora na frase que POSICIONA
+    # (T16-3), e este campo entra CRU na cena 2, sem passar pelo `_sem_pose`.
+    # ⚠️ Vocabulario proibido pela `lint_nada_cresce` (BO2), que varre a IMAGE
+    # 02/02: nada de `rises`, `stiff`, `erect`, `extends`. Por isso `standing
+    # straight up` no lugar do `rises straight up` do NECROSE.
     {"id": "geoduck", "nome": "clam",
      "murcho": "a small shrivelled geoduck clam, its siphon limp and drawn back against the shell, barely the length of her palm",
-     "gigante": "an enormous geoduck clam, its thick siphon extending straight out well past the shell, longer than her forearm, held upright"},
+     "gigante": "an enormous geoduck clam, its thick siphon extending straight out well past the shell, longer than her forearm, held upright",
+     "gigante_c2": "an enormous geoduck clam, its thick siphon standing straight up out of the pale ridged shell, as long as his forearm and as thick as his wrist, reaching from his fist up to the top of his chest, its surface taut and glossy, streaked with darker mottled lines running along its length",
+     "cauda_c2": "No bird, no goose, no duck, no swan, no snake, no feathers, no beak, no eyes, no head, nothing alive."},
     {"id": "banana", "nome": "banana",
      "murcho": "a small blackened banana, shrivelled and soft, barely the length of her palm",
      "gigante": "an enormous bright yellow banana, longer than her forearm, held upright"},
@@ -2671,6 +2710,29 @@ def _sem_pose(s):
     return s[:i] if i >= 0 else s
 
 
+# ⛔⛔ O POSSESSIVO DO PORTADOR — 2026-08-10, achado ao medir a queixa do
+# operador sobre o tamanho do geoduck no take 2.
+# Os campos de PARES nasceram para a cena 1, onde quem segura e' MULHER, e por
+# isso a escala deles e' ancorada em `her forearm` / `her wrist` / `her fist`.
+# Na cena 2 o mesmo campo entra dentro de *"HIS right hand is closed around
+# ..."* — e sai `His right hand is closed around an enormous bright yellow
+# banana, longer than HER forearm`. Nao e' so' feio: a ancora de escala aponta
+# para um corpo que nao esta' na frase, e ancora sem referente o Veo resolve
+# entregando o tamanho natural do objeto. E' metade da causa do prop pequeno.
+# ⛔ TRANSPOSICAO VERIFICADA, NUNCA REDIGITACAO. Sao 12 pares; reescrever as 12
+# strings a mao e' redigitar copy validada — o erro que este repo ja' pagou (o
+# D1 comprimido na mao virou esqueleto 3D). Aqui a troca e' um recorte REGULAR
+# (`her` isolado) e vem com lente atras: T16-5 reprova se sobrar `her` dentro da
+# sentenca do corpo-prova.
+# ⚠️ So' se aplica ao campo do PROP dentro da cena 2. A cena 1 fica intacta —
+# la' o portador e' ela, e `her` esta' certo.
+_POSSE = re.compile(r"\bher\b")
+
+
+def _posse_dele(s):
+    return _POSSE.sub("his", s)
+
+
 def _pessoa(spec):
     r = spec["ref"]
     return ("a %d-year-old %s woman, %s, %s, %s, wearing %s"
@@ -2770,6 +2832,17 @@ def montar(spec):
     # normalmente o corpo-prova, que e' o payoff. Decisao do operador.
     _pr = spec["preparo"]
     hom = spec["homem"]
+    # ⭐⭐ A ESCALA DO PROP GRANDE NA MAO DO HOMEM — ordem do operador,
+    # 2026-08-10: *"o geoduck do take 2 esta' muito pequeno; quero o tamanho do
+    # NECROSE"*. Quando o par sorteado traz `gigante_c2`, e' ELE que vai para a
+    # cena 2 — dimensionado por biologia do prop + escala corporal MASCULINA
+    # (NE11), porque quem segura aqui e' ele. O campo `gigante` continua
+    # intacto e continua servindo a cena 1, onde quem segura e' ela.
+    # ⚠️ `gigante_c2` entra CRU: ele ja' nasce sem `held upright`, entao nao
+    # passa pelo `_sem_pose` — que so' existe para limpar a pose dos campos
+    # antigos. O fallback mantem os pares sem a chave exatamente como estavam.
+    _grande_c2 = prop.get("gigante_c2") or _posse_dele(_sem_pose(prop["gigante"]))
+    _cauda_c2 = prop.get("cauda_c2", "")
     b["IMAGE 02/02"] = (
         "Medium shot in %(coz)s, same house, filmed straight on and framed from "
         "the waist up, with %(sup_a)s running across the bottom third of the "
@@ -2782,7 +2855,7 @@ def montar(spec):
                bancada=(_pr["aparato16"] + BANCADA16_CAUDA) % v,
                corpo=BO_CORPO_PROVA % (
                    hom["idade"], spec["etnia"], hom["marca"], hom["roupa"],
-                   _sem_pose(prop["gigante"]))))
+                   _grande_c2, (" " + _cauda_c2) if _cauda_c2 else "")))
 
     # ⛔⛔ O TAKE ANIMA A IMAGE — ELE NAO INVENTA OUTRO GESTO. Contradicao entre
     # IMAGE e TAKE e' pior que omissao: a omissao o gerador preenche com o frame;
@@ -3212,6 +3285,58 @@ def lint(spec, blocos):
                             "da `bancada16`, e o copo de destino ficou em cena "
                             "junto com o da mao dela" % _copos))
 
+    # --- T16-5: ⭐⭐ A ESCALA DO PROP GRANDE NA MAO DO HOMEM -----------------
+    # ⛔⛔ Ordem do operador, 2026-08-10, lendo o render da cena 2: *"o geoduck
+    # do take 2 esta' muito pequeno; quero o tamanho do NECROSE"*. Esta lente
+    # existe porque a correcao inteira e' TEXTO — e texto sem lente atras volta
+    # ao estado anterior no proximo refactor sem uma unica acusacao.
+    #
+    # ⭐ Ela cobra as DUAS metades da causa, separadamente:
+    #   1. o POSSESSIVO. `His right hand is closed around ..., longer than HER
+    #      forearm` ancora a escala num corpo que nao esta' na frase, e o Veo
+    #      resolve entregando o tamanho natural do objeto. A varredura e' so'
+    #      dentro da SENTENCA do corpo-prova — a primeira metade da IMAGE 02/02
+    #      e' dela, e la' `her` esta' correto (sentenca, nao janela: janela de
+    #      caracteres foi o que fez a lente do `neck` acusar traje).
+    #   2. a SPEC DIMENSIONAL do par que a declara (`gigante_c2`). Quando o
+    #      pool traz o campo, ele TEM de chegar ao prompt inteiro, com a cauda
+    #      anti-bicho junto — as duas sao a mesma licao do NECROSE (NE11), e
+    #      subir a escala sem a cauda e' reintroduzir o geoduck-ganso.
+    _corpo_i2 = ""
+    _ini = i2.find("His right hand is closed around")
+    if _ini < 0:
+        ach.append(("ERRO", "T16-5: IMAGE 02/02 sem a mao do corpo-prova no "
+                            "prop — e' ele quem segura o prop grande na cena 2"))
+    else:
+        _corpo_i2 = re.split(r"(?<=\.)\s", i2[_ini:])[0]
+        if _POSSE.search(_corpo_i2):
+            ach.append(("ERRO", "T16-5: possessivo FEMININO na escala do prop "
+                                "na mao do homem (%r) — a ancora aponta para um "
+                                "corpo que nao esta' na frase, e ancora sem "
+                                "referente o Veo resolve entregando o tamanho "
+                                "natural do objeto" % _corpo_i2[-60:]))
+    _gc2 = spec["prop"].get("gigante_c2")
+    if _gc2:
+        if _gc2 not in i2:
+            ach.append(("ERRO", "T16-5: o par %r declara `gigante_c2` (a escala "
+                                "do NECROSE) e a IMAGE 02/02 nao a traz — a "
+                                "cena 2 caiu de volta no campo `gigante`, que e' "
+                                "dimensionado para a MAO DELA na cena 1"
+                        % spec["prop"]["id"]))
+        for _dim in ("as long as his forearm", "as thick as his wrist"):
+            if _dim not in i2:
+                ach.append(("ERRO", "T16-5: IMAGE 02/02 sem a ancora %r — o "
+                                    "NECROSE dimensiona o geoduck pelas DUAS "
+                                    "(comprimento E grossura), e so' o "
+                                    "comprimento devolve peca longa e fina"
+                            % _dim))
+        _cd2 = spec["prop"].get("cauda_c2")
+        if _cd2 and _cd2 not in i2:
+            ach.append(("ERRO", "T16-5: IMAGE 02/02 sem a cauda anti-bicho do "
+                                "par %r — nessa escala o molusco erguido le' "
+                                "como ganso, e foi por isso que o NECROSE a "
+                                "escreveu" % spec["prop"]["id"]))
+
     # --- BO6: ⭐⭐ QUEM FALA, QUEM CALA, E QUEM APARECE EM CADA CENA -------
     # ⛔ REESCRITO INTEIRO. As lentes herdadas vigiavam a AMIGA do DUPLA nas
     # tres cenas e proibiam homem em quadro. Aqui:
@@ -3545,6 +3670,38 @@ def autoteste(n=600):
     ctrl = []
     s = sortear("joe", random.Random(1), {}, {})
     b = montar(s)
+
+    # ⭐⭐ [T16-5] A ESCALA DO PROP GRANDE MORA NO POOL — e por isso a trava
+    # tem de estar AQUI e nao so' no `lint()`. Medido em 2026-08-10: com o
+    # campo `gigante_c2` apagado do par, o motor volta silenciosamente ao campo
+    # da cena 1 (dimensionado para a mao DELA), o geoduck volta ao tamanho que
+    # o operador reprovou — e o `lint()` nao acusa NADA, porque ele so' cobra a
+    # spec quando o pool a declara. Lente que so' olha o prompt nao ve' o pool
+    # sumir; e' o controle 1 que passou em branco.
+    _geo = _por_id(PROPS, "geoduck")
+    for _campo in ("gigante_c2", "cauda_c2"):
+        if not _geo.get(_campo):
+            ctrl.append("[T16-5] o par geoduck perdeu o campo %r — a cena 2 "
+                        "cai de volta na escala da cena 1 (`her forearm`) e o "
+                        "prop volta ao tamanho natural do molusco" % _campo)
+    for _dim in ("as long as his forearm", "as thick as his wrist"):
+        if _dim not in _geo.get("gigante_c2", ""):
+            ctrl.append("[T16-5] `gigante_c2` do geoduck sem a ancora %r — o "
+                        "NECROSE (NE11) dimensiona pelas DUAS, e so' o "
+                        "comprimento devolve peca longa e fina" % _dim)
+    # ⛔ E o campo nao pode carregar pose: ele entra CRU na cena 2, e a frase
+    # que POSICIONA ja' traz `held upright at the height of his waist` (T16-3).
+    if "held upright" in _geo.get("gigante_c2", ""):
+        ctrl.append("[T16-5] `gigante_c2` com pose embutida — ela mora na frase "
+                    "que posiciona, e duas ordens de pose o Veo resolve "
+                    "escolhendo uma")
+    # ⛔ E nada de vocabulario que a `lint_nada_cresce` (BO2) varre na IMAGE
+    # 02/02: o NECROSE escreve `rises straight up ... held stiff`, e as duas
+    # palavras sao proibidas neste motor.
+    _cres = sc.CRESCIMENTO.findall(_geo.get("gigante_c2", ""))
+    if _cres:
+        ctrl.append("[T16-5] `gigante_c2` com vocabulario de crescimento %s — "
+                    "BO2 varre a IMAGE 02/02 e reprova o lote inteiro" % _cres)
 
     # ⛔ O controle de BO8 saiu junto com a lente. Ele era invertido (acusa se a
     # lente reprovar a forma certa) e, com BO8 apagada, nunca podia disparar —
