@@ -419,6 +419,33 @@ EXCECOES = {
         "LEI DO REF — pool em MODO BELA (27-31 anos, porte atletico).",
     ("wife16_short.py", "MULHERES", "oculos"):
         "LEI DO REF — pool em MODO BELA (29-34 anos).",
+
+    # ⛔⛔ FIGHT 16 — TRES ISENCOES, E AS TRES SAO CONTRATO DA CENA, nao buraco.
+    # ⚠️ Conferidas UMA A UMA lendo os blocos montados, nao supostas por analogia
+    # com o motor irmao. A analogia so' vale onde o contrato e' literalmente o
+    # mesmo, e esta' dito em cada linha qual e'.
+    ("fight16_short.py", "HOMENS", "pele"):
+        "CONTRATO DO MOTOR — identico ao falta_short.py e ao bed16_short.py: "
+        "pool sem etnia, quem injeta e' a trava de pagina.",
+    # ⛔ A CENA NAO COMPORTA OCULOS, e isso e' verificavel nos dois blocos: no
+    # take 1 ele acabou de sair do banho (tronco nu, TOALHA na cintura) e num
+    # dos dez ambientes do take 2 ele esta' DENTRO da agua, com a agua no peito.
+    # ⚠️ E ha' um motivo estrutural em cima do de cena: ele e' a UNICA coisa que
+    # atravessa o corte neste angulo (os dois eixos de cena sao independentes),
+    # entao a descricao dele E' a ancora de continuidade. Oculos que aparecem
+    # num take e somem no outro trocam a pessoa — que e' exatamente o defeito
+    # que a lente FT3 existe para impedir.
+    ("fight16_short.py", "HOMENS", "oculos"):
+        "CONTRATO DA CENA — ele sai do banho de toalha no take 1 e um dos dez "
+        "ambientes do take 2 e' dentro d'agua; e a descricao dele e' a ancora "
+        "de continuidade entre dois lugares independentes.",
+    # ⛔ Nela o motivo se soma: METADE dos sorteios deste motor a poe em MODO
+    # BELA (`sc.ref_bela`), onde a LEI DO REF proibe oculos por ordem permanente
+    # do operador. Um pool com oculos entregaria a REF bela de oculos em 50% do
+    # lote, que e' o oposto do que a lei manda.
+    ("fight16_short.py", "MULHERES", "oculos"):
+        "LEI DO REF + CENA — metade dos sorteios a traz do pool bela, e ela "
+        "reaparece no take 2 dentro d'agua em um dos dez ambientes.",
 }
 
 FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)

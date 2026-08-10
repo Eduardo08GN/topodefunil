@@ -53,7 +53,9 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "exterior", "colo", "receita", "botica",
            "dupla", "placa", "cha", "trio", "falta", "trio16", "dupla16", "falta16", "placa16", "troca16", "botica16", "colo16", "exterior16", "escandalo16", "ressurreicao16", "flagrante16", "good16",
            # + 2026-08-10: o BED 16, no commit em que nasce
-           "bed16", "necrose16", "wife16"]
+           "bed16", "necrose16", "wife16",
+           # + 2026-08-10: o FIGHT 16, no commit em que nasce
+           "fight16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

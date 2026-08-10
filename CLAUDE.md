@@ -50,12 +50,13 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **dezesseis agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
+com **dezessete agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
 Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
-`pee16` · `good16` · `bed16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor)
+`pee16` · `good16` · `bed16` · `fight16` · (+ `clean_v1_16s`/`clean_v2_16s`, do
+outro autor)
 
 ⭐ **`bed16` (2026-08-10) — a cama fria e a tigela.** (Nasceu como `wife16` e
 foi renomeado no mesmo dia, por ordem do operador: o que nomeia o ângulo é a
@@ -76,6 +77,28 @@ modo move idade, porte e traje dela **dentro da região sorteada**. ⚠️ A
 doutrina mora no cabeçalho do motor: a **leitura ótica da fonte está pendente**
 (reel 1752010159557238, que também não baixa sem login), então os pools de fala
 são construção nossa sob o contrato, não verbatim.
+
+⭐ **`fight16` (2026-08-10) — a briga no quarto.** Terceiro motor do parque com
+**narrador homem** (os outros são `good16` e `bed16`). No take 1 ele está **de
+pé**, tronco nu, **toalha branca na cintura**, uma mão aberta se explicando
+**para a lente**, enquanto ela, atrás, de **braços cruzados**, o encara — muda.
+No take 2 os dois estão **colados**, e ⭐⭐ **ele carrega a prova nas duas
+mãos**: a tigela de cubos de gelatina numa, a **caixa de bicarbonato** na outra
+(o CT5 em quadro aberto — o lugar do ingrediente é a imagem, nunca a fala).
+⭐ A copy é a da **fonte lida a 1 fps** (reel 1337455585246706), com a virada
+que o operador escreveu à mão: `Struggling to stay hard? I thought it was just
+age. But things changed when I discovered the gelatin trick.`
+⛔⛔ **É o único 16s com DOIS EIXOS DE CENA INDEPENDENTES**, e é isso que o
+separa do irmão estrutural `bed16`: lá os dois ambientes são da **mesma casa** e
+vêm do mesmo eixo (a região arrasta quarto + água), aqui o operador ditou **duas
+listas separadas** — 8 quartos da briga e os **10 ambientes do casal**, palavra
+por palavra dele. Consequência em código: a continuidade **não pode exigir a
+mesma casa**; o que atravessa o corte é **o mesmo HOMEM** (lente `FT3`), e a
+`FT13` proíbe dizer `the same room/house` no take 2. ⛔ **Sem prop fálico** — a
+prova é o casal. ⭐ **MODO BELA**: desligado entrega a mulher realista do print
+(34-43), ligado traz a REF do pool bela. ⚠️ Nenhum pool de fala diz idade, e
+isso é a pendência B do `bed16` impedida na origem. Spec completa em
+[`SPEC-FIGHT-16.md`](funil-organico/SPEC-FIGHT-16.md).
 
 Cada um **não substitui** o SHORT do mesmo ângulo: são formatos diferentes e os
 dois coexistem. Nasceram por cópia literal com cirurgia só no eixo temporal — as

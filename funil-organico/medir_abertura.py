@@ -95,7 +95,9 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            "flagrante16_short",
            "good16_short",
            # + 2026-08-10: o BED 16, no commit em que nasce
-           "bed16_short", "necrose16_short", "wife16_short"]
+           "bed16_short", "necrose16_short", "wife16_short",
+           # + 2026-08-10: o FIGHT 16, no commit em que nasce
+           "fight16_short"]
 
 # ⭐ O QUE CONTA COMO REFERENTE, e a lista e' deliberadamente CURTA:
 #   · o orgao (o pool NUCLEO do proprio motor), ou

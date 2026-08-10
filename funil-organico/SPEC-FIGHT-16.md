@@ -1,8 +1,18 @@
 # SPEC — AGENTE FIGHT 16 (a briga no quarto)
 
-> **Estado: fonte lida e destilada, motor NÃO construído.** Este arquivo existe
-> para o build começar sem repetir nada — a leitura ótica custou os cookies do
-> operador e não pode ser refeita à toa.
+> ## ✅ **Estado: MOTOR CONSTRUÍDO E ENTREGUE** (2026-08-10)
+>
+> `fight16_short.py` + `fight16_short_app.py` no repo, `.exe` em
+> `Desktop\agentes_py\AGENTES-16\FIGHT-16`. **A fonte da verdade do ângulo
+> passou a ser o cabeçalho do motor** — este arquivo fica como o registro da
+> leitura ótica (que custou os cookies do operador e não se refaz à toa) e do
+> que foi decidido antes de existir uma linha de código.
+>
+> ⚠️ **Onde o motor DIVERGIU desta spec, quem manda é o motor.** O §7 abaixo
+> está preservado como foi escrito; as diferenças estão declaradas no cabeçalho
+> do `fight16_short.py`, com a medição de cada uma. A maior é o pool de
+> `HABITOS`: `One bowl every night.` saiu, porque vasilhame na fala é dose e a
+> ordem permanente do operador é que a fala não paga o que o quadro mostra.
 
 **Ordem do operador, 2026-08-10:** *"bora montar o agente fight16"*.
 
@@ -126,16 +136,26 @@ tigela. Declarar isso no cabeçalho para ninguém "consertar" depois.
 
 ---
 
-## 6. CHECKLIST DO BUILD
+## 6. CHECKLIST DO BUILD — ✅ fechado em 2026-08-10
 
-- [ ] `fight16_short.py` + `fight16_short_app.py` (nascer do `bed16`, cirurgia nos dois eixos de cena)
-- [ ] pools de fala a partir da §2, sob as **nove travas** desde o nascimento
-- [ ] MODO BELA pelo contrato compartilhado
-- [ ] lentes `FT*`: ela muda · a inversão (braços cruzados → colada) · âncora do homem · a tigela **e** a caixa nas duas mãos · sem texto queimado · sem prop fálico
-- [ ] registrar nas **seis** listas de medidores
-- [ ] medir: `medir_copy16` · `teto_fala` · `contexto_copy --gate` · `deiticos` · `alcance` + laço de 400 nos dois estados do MODO BELA
-- [ ] abrir a janela · compilar o `.exe` · entregar em `AGENTES-16\FIGHT-16`
-- [ ] CLAUDE.md: a família 16s passa a ter **dezessete** agentes
+- [x] `fight16_short.py` + `fight16_short_app.py` (nasceu do `bed16`, cirurgia nos dois eixos de cena)
+- [x] pools de fala a partir da §2, sob as **nove travas** desde o nascimento — **0% em todas**
+- [x] MODO BELA pelo contrato compartilhado (`sc.ref_bela`)
+- [x] treze lentes `FT1`–`FT13`, com controle positivo nas duas que podiam virar forma sem função (`FT10`, `FT13`)
+- [x] registrado nas **seis** listas de medidores
+- [x] medido: `copy16` 0/0/0 · `teto` 24-25/25 · `contexto --gate` 0 órfãs · `deiticos` 0 · `alcance` ok · autoteste de 400 nos dois estados do MODO BELA, **0 ERRO / 0 AVISO**
+- [x] janela aberta, callbacks exercidos (nova_fala, os 4 cadeados, o ledger), `.exe` compilado e lançado — vivo
+- [x] CLAUDE.md: a família 16s passa a ter **dezessete** agentes
+
+### O que a construção achou e a spec não previa
+
+| | |
+|---|---|
+| **a caixa molhada** | o primeiro render pôs ele **dentro da jacuzzi, com a água no peito, segurando uma caixa de papelão**. Passou nas treze lentes e nos seis medidores — nenhum cruza o OBJETO com o LUGAR. Achado **lendo o bloco em voz alta**. Consertado com a cláusula `maos` na entrada da jacuzzi, mais a lente `FT4` e um controle de autoteste que exige a cláusula de todo ambiente cuja pose diga `water`. |
+| **o piso da mulher** | o pool bela do repo vai até **33**, não 32. Com o piso realista em 33 os dois estados do toggle se tocavam numa idade e o controle acusou. Piso movido para 34. |
+| **`⛔` no `resumo_pt`** | o console do Windows é cp1252: o marcador derrubava o motor na **primeira** geração pela linha de comando, com o `--autoteste` verde (ele não chama a função). |
+| **`medir_contexto_copy`** | acusou 116 de 400 — e estava **errado**: o `ALVO` dele não conhecia `stay hard` / `stay firm` / `keep it up`, que são a forma mais segura do parque para enunciar a falha. Regex cresceu, sem regressão nos outros 35 motores. |
+| **`medir_abertura`** | acusa **100%** das cenas 1, e o veredito humano é que ele está errado — os hooks não nomeiam o órgão **de propósito** (é o que faz o CT7 passar por construção). O próprio medidor proíbe usar o `--gate` dele como aceite. O `good16` está em 100% pela mesma fórmula e está em produção. |
 
 ---
 

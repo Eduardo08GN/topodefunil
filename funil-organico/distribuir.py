@@ -76,7 +76,10 @@ def pasta_de(nome):
 ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSURREICAO-SHORT",
          "ESCANDALO-SHORT", "TROCA-SHORT", "PEE-SHORT", "FLAGRANTE-SHORT",
          "VAZAMENTO-SHORT", "NECROSE-SHORT", "ORGANICWAVE-SHORT",
-         "TRIO16-SHORT"]
+         "TRIO16-SHORT",
+         # + 2026-08-10: o FIGHT 16 nasce ja' na lista. Motor que fica de fora
+         # daqui NAO recebe correcao no .exe, mesmo com o repo certo.
+         "FIGHT-16"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)

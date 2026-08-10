@@ -89,7 +89,9 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # + 2026-08-10: o BED 16 entra AQUI no commit em que nasce — gate
            # que nao ve' o motor nao reprova o motor, so' produz um "passou"
            # mentiroso.
-           "bed16_short", "necrose16_short", "wife16_short"]
+           "bed16_short", "necrose16_short", "wife16_short",
+           # + 2026-08-10: o FIGHT 16, no commit em que nasce
+           "fight16_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 
@@ -113,9 +115,22 @@ MECANISMO = re.compile(
     r"inflammation|choked|blocked|shut down|cut off)\b", re.I)
 
 # o ALVO — o que esta' quebrado, em qualquer pessoa
+# ⚠️⚠️ CRESCEU EM 2026-08-10, e pelo motivo de sempre: ELA REPROVOU COPY CERTA.
+# O FIGHT 16 nasceu com o hook VERBATIM da fonte (`Struggling to stay hard?`) e
+# 116 de 400 cenas cairam como orfas [B] — a cena nomeia a causa (`age`) e diz
+# exatamente o que ela quebra, so' que numa forma que este regex nao conhecia.
+# ⛔ `stay hard` / `stay firm` / `keep it up` sao a formula MAIS SEGURA do parque
+# para enunciar a falha: elas falam do CORPO sem nomear o orgao, que e' o que faz
+# o CT7 passar por construcao e o gerador nao recusar. A lista so' conhecia
+# `stay SOFT` — a forma negativa, que quase nenhum motor usa.
+# ⚠️ E' a mesma correcao que o `sc.lint_copy16` levou hoje ao aprender
+# `struggl\w*`: o medidor aprende a forma, a copy nao se dobra ao regex
+# (licoes §16 — lente que reprova o que esta' certo treina o operador a ignorar
+# o relatorio inteiro).
 ALVO = re.compile(
     r"\b(%s)\b"
     r"|\b(went|goes|going|stay\w*|get\w*) soft\b"
+    r"|\b(stay|staying|stayed) (hard|firm)\b|\bkeep(ing)? it up\b"
     r"|\b(quit\w*|fail\w*|stopped working|won'?t work|doesn'?t work|"
     r"not working|gone quiet)\b"
     r"|\berection\b|\bin bed\b|\bdown there\b|\bbedroom\b" % ORGAO, re.I)
