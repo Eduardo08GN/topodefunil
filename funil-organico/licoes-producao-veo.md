@@ -326,6 +326,49 @@ faz o Veo apagar o que estava certo.
 
 ---
 
+## ⛔⛔ A IMAGEM PEDE SOM, E O SOM CONTAMINA O ROSTO (2026-08-10)
+
+Terceira volta do mesmo defeito no FLAGRANTE 16: o homem humilhado, que segura o
+prop murcho, **ria junto com a plateia**. Duas rodadas anteriores atacaram o
+áudio — tirei `laughter` de todos os 14 pools de ambiente — e o bug voltou.
+
+A causa não estava no áudio. Estava na **direção visual**:
+
+```
+...his face fallen and humiliated while the others laugh around him.
+The woman keeps laughing, the colleagues keep laughing in the background.
+Audio: office chatter, a laptop closing. No music.
+```
+
+Três `laughing` na imagem, zero no áudio. **O Veo lê `laughing`, sintetiza a
+gargalhada que ninguém pediu, e depois sincroniza o rosto do homem sentado com o
+som que ele mesmo acabou de criar.** A risada não entrava pelo áudio — entrava
+pela imagem e **voltava** como áudio.
+
+> **Pool de áudio limpo não é trilha limpa.** Todo verbo de ação sonora na
+> direção visual (`laugh`, `shout`, `cheer`, `clap`, `gasp`) é um pedido de som
+> implícito. Se a cena precisa do gesto sem o ruído, o silêncio tem de ser
+> **descrito**, não presumido.
+
+⭐ A forma que funciona é **descrever o silêncio como imagem**, colada em cada
+menção do riso — não proibi-lo no fim do prompt:
+
+```
+The others around him are laughing in complete silence: their mouths are
+open and their shoulders shake, and not one sound comes out of them.
+```
+
+⚠️ E aí o áudio pode negar explicitamente, porque a negação deixa de contradizer
+a imagem: `no laughter, no laughing voices, no giggling, no chuckling anywhere
+on the track. No music.` — mesmo idioma do `No music.`, que já funciona.
+
+⛔ **Não vale `he does not laugh`** para o personagem triste: negação cria o
+token que se queria evitar (mesma lição do `no foreign accent` do CL31). Ele
+recebe âncora **positiva** — `mouth closed and turned down at the corners`,
+`face fallen and humiliated`. Quem ganha a negação é a **trilha**, nunca o rosto.
+
+---
+
 ## ⭐ ERRO BARULHENTO × ERRO SILENCIOSO (o viés a corrigir)
 
 - **Amputar a cena** → o gerador **grita** (VIDEO GENERATION FAILED). Aprendi a temer.

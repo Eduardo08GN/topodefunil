@@ -81,8 +81,29 @@ def montar_curto(base, spec, mapa):
     return b
 
 
-def bancada_com_rosto(base, spec, fala, n=3, total=3):
+def bancada_com_rosto(base, spec, fala, n=3, total=3, modo="colher"):
     """A cena do ritual COM O ROSTO em quadro — recombinacao, nao invencao.
+
+    ⭐⭐ DOIS MODOS (2026-08-10). O parametro existe porque SEIS motores chamam
+    esta funcao (FLAGRANTE, PEE e NECROSE, nas versoes short e 16) e a ordem do
+    operador foi para UM deles. Mudar o corpo mudaria os seis calados.
+
+      `colher`         o de sempre: copo com uma colher, sache vazio na bancada,
+                       ele gira a colher enquanto fala. NAO SE TOCA.
+      `sache_erguido`  o novo, so' do FLAGRANTE 16: o copo JA' esta' pronto,
+                       roxo, parado na bancada, e ele ERGUE o sache branco
+                       rotulado, mostrando para a lente enquanto fala.
+
+    ⛔ POR QUE O MODO NOVO EXISTE — relato do operador com dois renders na mao
+    (2026-08-10): *"o take 2 ele esta' mexendo a agua e nao despeja a gelatina"*.
+    E' o mesmo defeito de familia do sache duplicado: a cena PROMETE o gelatin
+    trick e MOSTRA um homem mexendo agua transparente. O espectador nao ve'
+    gelatina nenhuma, e a fala fica sem lastro na imagem.
+    ⭐ A solucao que ele ditou nao e' fazer o modelo despejar — despejo e' acao
+    em dois estados e ja' provou que duplica objeto. E' tirar a acao do quadro:
+    o copo ja' NASCE pronto e roxo (o resultado), e a prova do que ha' dentro
+    dele passa a ser o SACHE ERGUIDO na mao (a causa). Zero movimento de
+    preparo, duas evidencias paradas.
 
     ⚠️ Ordem do operador, 2026-07-31: "rosto aparente enquanto prepara".
 
@@ -127,6 +148,8 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3):
     # se perde — ele acabou de acontecer, e a fala o nomeia.
     # ⚠️ E a contagem entra EXPLICITA (`exactly one spoon`): o objeto que ja'
     # duplicou uma vez precisa de numero, nao de artigo.
+    if modo == "sache_erguido":
+        return _bancada_sache(base, spec, fala, n, total, et, ref, amb, luz)
     img = (
         "IMAGE %02d/%02d: Medium shot in %s. The same %d-year-old %s man, %s, "
         "%s, stands behind the %s, speaking to the camera. On the counter in "
@@ -147,6 +170,65 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3):
         "His eyes stay on the lens the whole time. He is alone in the shot.\n"
         "Dialogue: \"%s\"\n"
         "Audio: spoon clinking glass, quiet room tone. No music."
+        % (n, total, base.sonorizar(fala))
+    )
+    return img, take
+
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ O MODO `sache_erguido` — o copo pronto e o sache na mao (2026-08-10)
+# ---------------------------------------------------------------------------
+# ⛔ O ROTULO EM INGLES E' EXCECAO DECLARADA, e precisa ser declarada DENTRO do
+# prompt. A cauda dos motores diz `no text`; um sache escrito e' texto. Sem
+# desmanchar a contradicao o gerador escolhe um dos dois — e ja' escolheu errado
+# antes. O precedente e' o `SACHE_ROTULO` do GOOD 16: a palavra esta' no OBJETO,
+# impressa na embalagem, e a trava continua valendo para legenda, marca d'agua e
+# texto de interface. Por isso a cauda daqui e' PROPRIA e nao usa `base.CAUDA`.
+#
+# ⚠️ ROXO, e nao "colorido": `vivid purple` e' a cor travada da gelatina em TODO
+# o parque. Copo de cor indefinida devolve agua transparente, que e' exatamente
+# o defeito que este modo existe para matar.
+#
+# ⚠️ E o copo NAO tem colher. A colher so' faz sentido com movimento de mexer, e
+# aqui nao ha' preparo nenhum — deixa-la em quadro sem funcao e' convidar o
+# modelo a inventar a acao de volta.
+SACHE_FLAGRANTE = (
+    "a small white sachet with the words GELATIN HORSE TRICK printed across "
+    "the front in plain black capital letters")
+
+CAUDA_ROTULO = (
+    "The printed words on the sachet are part of the packaging and are the "
+    "only writing anywhere in the shot. iPhone shot, natural grain, no "
+    "on-screen text, no subtitles, no captions, no watermark.")
+
+
+def _bancada_sache(base, spec, fala, n, total, et, ref, amb, luz):
+    """Copo pronto e roxo na bancada; o sache erguido na mao, para a lente."""
+    img = (
+        "IMAGE %02d/%02d: Medium shot in %s. The same %d-year-old %s man, %s, "
+        "%s, stands behind the %s, facing the camera. On the counter in front "
+        "of him stands one tall clear glass, already filled with vivid purple "
+        "liquid, finished and untouched — there is no spoon in it and no spoon "
+        "anywhere in the shot. He holds %s up beside his own face in his right "
+        "hand, unopened and full, turned so the printed front faces the lens. "
+        "His left hand rests flat on the counter. Nothing else is on the "
+        "counter. He is alone in frame. %s %s"
+        % (n, total, amb["set"], ref["idade"], et, ref["marca"],
+           ref["roupa_curta"], amb["bancada"], SACHE_FLAGRANTE,
+           luz.capitalize(), CAUDA_ROTULO)
+    )
+    take = (
+        "TAKE %02d/%02d: Animate the image exactly. Handheld iPhone, slight "
+        "sway, no cuts. He talks to the camera and holds the sachet up where "
+        "it is, turning it very slightly so the printed front stays readable — "
+        "that is the only movement. The glass of purple liquid stays on the "
+        "counter, still and untouched, the whole time. He never opens the "
+        "sachet, never pours anything, never stirs, and never puts the sachet "
+        "down. Nothing new enters the frame. His eyes stay on the lens the "
+        "whole time. He is alone in the shot. The words printed on the sachet "
+        "stay exactly as they are and are packaging, not added text.\n"
+        "Dialogue: \"%s\"\n"
+        "Audio: quiet room tone, his voice only. No music."
         % (n, total, base.sonorizar(fala))
     )
     return img, take

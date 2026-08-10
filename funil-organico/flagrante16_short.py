@@ -121,13 +121,28 @@ AGENCIA_IMAGE = (
 # boca parada nao e' cara de humilhado.
 # ⛔ Nada de `he does not laugh`: negacao cria o token que ela queria evitar,
 # a mesma licao do `no foreign accent` do CL31.
+#
+# ⛔⛔ 2026-08-10, TERCEIRA VOLTA DO MESMO BUG — o operador mandou tres renders:
+# *"o personagem que e' pra estar triste da risada junto"*. Tirar a risada do
+# POOL DE AUDIO nao bastou, e agora se sabe por que: os pools de audio estao
+# limpos ha' dias, mas a DIRECAO VISUAL diz `laughing` tres vezes. O Veo le'
+# `laughing`, SINTETIZA a gargalhada que ninguem pediu, e depois sincroniza o
+# rosto do homem sentado com o som que ele mesmo criou. A risada nao entrava
+# pelo audio: entrava pela imagem e voltava como audio.
+#
+# ⭐ A ordem do operador e' a solucao: *"quero que as pessoas estejam rindo sem
+# fazer absolutamente nenhum som"*. Entao o SILENCIO vira descricao POSITIVA e
+# concreta, colada em cada mencao de riso — boca aberta, ombros tremendo, nada
+# saindo. Descrever o silencio e' diferente de proibir o som: da' ao modelo uma
+# imagem para desenhar em vez de um token para evitar.
 AGENCIA_TAKE = (
     "The {ref_curto}-haired man speaks calmly to camera, his pointing finger "
     "stays close but never touches the seated man. The seated man keeps his "
     "head down, blinks slowly, never speaks, his fist stays on his own lap. "
     "His mouth stays closed and turned down at the corners and his eyes stay "
-    "lowered the whole time, his face fallen and humiliated while the others "
-    "laugh around him."
+    "lowered the whole time, his face fallen and humiliated. The others around "
+    "him are laughing in complete silence: their mouths are open and their "
+    "shoulders shake, and not one sound comes out of them."
 )
 
 # ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
@@ -246,16 +261,14 @@ OCASIOES = [
     },
     # + 2026-08-01: o operador mediu vicio no lote — o mesmo punhado de
     # eventos voltando. Pool dobrado, todas selo N (ainda sem numero).
-    {
-        "id": "igreja_social", "selo": "N",
-        "cenario": "a church fellowship hall after service",
-        "detalhe": "folding tables with coffee urns and paper cups",
-        "assento": "on a folding chair", "posicao_mulher": "Across the table",
-        "plateia": "churchgoers", "plateia_evento": "that church hall",
-        "eco": "same fellowship hall",
-        "luz_hook": "Flat overhead hall light.",
-        "audio": "hall chatter, a coffee urn hissing.",
-    },
+    # ⛔⛔ 2026-08-10 — IGREJA BANIDA DESTE AGENTE, POR ORDEM DIRETA DO
+    # OPERADOR: *"Nunca jamais deve citar igreja em lugar nenhum, nem como
+    # cenário nem nada."* A ocasiao `igreja_social` (salao paroquial depois do
+    # culto) saiu inteira daqui, e junto saiu `a man from his church` do
+    # QUEM_CONTOU e a linha dela do dicionario de resumo. Nao e' so' cenario:
+    # e' QUALQUER mencao.
+    # ⚠️ Pool de 14 -> 13 ocasioes. Nao repor com nada parecido (capela,
+    # paroquia, congregacao, grupo de oracao).
     {
         "id": "clube_veteranos", "selo": "N",
         "cenario": "a veterans club hall on a Friday night",
@@ -697,7 +710,7 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "manhood", "equipment"]
 HUMILHACOES16 = [
     "Everybody at {evento} heard his {o} quit on him last spring.",
     # ⚠️ `told everyone at {evento}`, nunca `told {evento}`: a metonimia funciona
-    # em `The whole church hall knew` mas trava em `told that boat`, e frase que
+    # em `The whole veterans hall knew` mas trava em `told that boat`, e frase que
     # trava o ouvido no segundo 2 e' scroll perdido. Sao as tres entradas de
     # `told` do pool — e assim elas tambem passam pela correcao de preposicao.
     "His wife told everyone at {evento} his {o} died two years ago.",
@@ -781,7 +794,7 @@ QUEM_CONTOU = [
     "an old army friend", "his own son-in-law",
     # + 2026-08-01: o operador mediu vicio — sempre as mesmas bocas contando
     # o segredo no lote. Quatro fontes novas.
-    "his barber", "a man from his church", "his old boss", "his cousin",
+    "his barber", "his old boss", "his cousin", "a man from his gym",
 ]
 
 # ⛔ 2026-08-03 — FRASE ORFA. O operador leu um take renderizado e reprovou:
@@ -1229,11 +1242,19 @@ def _montar_longo(spec):
         % (amb["curto"], luz, ref["idade"], et, ref["marca"], CAUDA)
     )
 
+    # ⚠️ A MULHER E A PLATEIA repetem o riso, e cada repeticao e' uma chance de
+    # o modelo gerar som. O silencio anda junto com elas, na mesma sentenca —
+    # regra no fim do prompt e' regra descartada (licoes-producao-veo).
+    # ⚠️ E o AUDIO nomeia a ausencia, do mesmo jeito que `No music.` ja' faz e
+    # funciona: a trilha e' so' o ambiente e a voz de quem narra.
     b["TAKE 01/05"] = (
         "TAKE 01/05: Animate the image exactly. Handheld iPhone, slight sway, "
-        "no cuts. %s What he holds stays exactly as shown — %s The woman keeps "
-        "laughing, the %s keep laughing in the background.\n"
-        "Dialogue: \"%s\"\nAudio: %s No music."
+        "no cuts. %s What he holds stays exactly as shown — %s The woman and "
+        "the %s behind her go on laughing the same silent way, mouths open and "
+        "no sound leaving them.\n"
+        "Dialogue: \"%s\"\nAudio: %s Only that room tone and the speaking "
+        "voice — no laughter, no laughing voices, no giggling, no chuckling "
+        "anywhere on the track. No music."
         % (AGENCIA_TAKE.format(ref_curto=ref["cabelo"]), IMOBILIDADE,
            oc["plateia"], sonorizar(falas[0]), oc["audio"])
     )
@@ -1297,7 +1318,7 @@ PT_OCASIAO = {
     # sorteios (6/14, medido). O resumo e' onde o operador aprova ou re-sorteia
     # antes de gastar credito: fallback e' o painel dizendo "algum lugar".
     # As seis nasceram depois deste dicionario e ninguem voltou aqui.
-    "igreja_social": "No salão da igreja", "clube_veteranos": "No clube dos veteranos",
+    "clube_veteranos": "No clube dos veteranos",
     "boliche": "Na noite de boliche", "lanchonete": "Na lanchonete de estrada",
     "reencontro": "No reencontro de turma", "feira_condado": "Na feira do condado",
 }
@@ -1818,7 +1839,13 @@ def montar(spec):
     # quadro da bancada com rosto — o payoff — e leva o truque para a fala.
     # ⚠️ `n=2, total=2`: sem isso a helper rotula `03/03` num video de duas
     # cenas, e a AdBatch Vertical 2 CONTA os rotulos.
-    i2, t2 = sc.bancada_com_rosto(_LONGO, spec, spec["falas"][1], n=2, total=2)
+    # ⭐ 2026-08-10 — `sache_erguido`: copo ja' pronto e roxo, sache rotulado
+    # erguido na mao. Ordem do operador com dois renders na mao — o modo antigo
+    # entregava ele MEXENDO AGUA TRANSPARENTE, sem gelatina nenhuma em quadro.
+    # ⛔ O modo e' so' deste motor: os outros cinco que chamam esta funcao
+    # seguem no `colher` e nao foram tocados.
+    i2, t2 = sc.bancada_com_rosto(_LONGO, spec, spec["falas"][1], n=2, total=2,
+                                  modo="sache_erguido")
     b["IMAGE 02/02"], b["TAKE 02/02"] = i2, t2
     # ⛔ trava de texto queimado em todo TAKE — o watermark que o
     # operador viu vazando nos reels da concorrente (2026-08-01).
