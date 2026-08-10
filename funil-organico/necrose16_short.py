@@ -546,6 +546,63 @@ REFS = [
               "nose"},
 ]
 
+# ===========================================================================
+# ⭐⭐ MODO BELA — E' EXCEPCIONAL NESTE AGENTE. Ordem do operador, 2026-08-10:
+# ===========================================================================
+#   *"quando ativado, o REF passa a ser uma mulher linda no PRIMEIRO take; o
+#    segundo take continua do jeito que esta'. Apenas excepcionalmente o modo
+#    bela e' levemente diferente para o caso do necrose16 — quando eu pedir pra
+#    implementar modo bela em outros agentes, continua conforme o sempre
+#    combinado."*
+#
+# ⛔⛔ EM TODO O RESTO DO PARQUE o MODO BELA troca a MULHER que ja' existe na
+# cena por uma do pool bela. Aqui ele troca QUEM APRESENTA — e so' no take 1.
+# Quem escrever "modo bela" em outro agente NAO deve copiar isto.
+#
+# ⭐ E o angulo comporta a troca sem quebrar nada, o que foi conferido antes de
+# implementar:
+#   · a copy do take 1 e' toda CONDICIONAL em 2a pessoa e IMPERATIVA (`If your
+#     {o} quit on you...` / `Watch close`) — nao ha' uma primeira pessoa
+#     masculina nela, entao ela cabe na boca dela sem reescrever uma linha;
+#   · a copy do take 2 e' que carrega o `This is my {o} now`, e o take 2 NAO
+#     muda: quem prova continua sendo ele.
+#   · ela APRESENTA os dois modelos, ele PROVA. Sao funcoes diferentes, e por
+#     isso a troca de rosto no corte nao le' como troca de persona.
+#
+# ⛔ O BLOCO 0 (REF) CONTINUA SENDO ELE, e isso e' arquitetura, nao escolha: a
+# AdBatch Vertical 2 recebe UMA foto de referencia, e ela tem de ancorar quem
+# precisa de consistencia facial no bloco que a usa. Ela aparece em UM take so'
+# e entra por descricao, como todo personagem secundario do repo ja' entra.
+#
+# ⛔ LEI DO REF: 20-35, sempre bonita, marca facial obrigatoria, zero
+# oculos/grisalho/pele castigada.
+MULHERES_BELA = [
+    {"idade": 27, "corpo": "a slim toned build with a flat stomach",
+     "cabeca": "long dark hair falling loose over one shoulder",
+     "marca": "a small beauty spot above her lip"},
+    {"idade": 24, "corpo": "a lean athletic build",
+     "cabeca": "sandy-blonde hair in a high ponytail",
+     "marca": "a dense spray of freckles across her nose"},
+    {"idade": 31, "corpo": "a slim figure with a full bust",
+     "cabeca": "auburn waves pushed back off her face",
+     "marca": "a small mole beside her right eye"},
+    {"idade": 26, "corpo": "a toned build with long arms",
+     "cabeca": "black hair in a smooth low ponytail",
+     "marca": "a thin scar through one eyebrow"},
+    {"idade": 29, "corpo": "a slim toned frame",
+     "cabeca": "chestnut hair cut just below the jaw",
+     "marca": "pale green eyes under dark brows"},
+    {"idade": 23, "corpo": "a lean build with a flat stomach",
+     "cabeca": "long honey-blonde hair, wind-blown",
+     "marca": "a small gold stud in one nostril"},
+    {"idade": 33, "corpo": "a fit build with square shoulders",
+     "cabeca": "dark curls gathered at the nape",
+     "marca": "a beauty spot high on her left cheek"},
+    {"idade": 25, "corpo": "a slender toned build",
+     "cabeca": "straight black hair past her shoulders",
+     "marca": "a faint dimple in her left cheek"},
+]
+
 # NE6 - O RITUAL E O GELATIN TRICK (correcao do operador, 2026-07-30).
 # A primeira versao copiou a receita da FONTE (curcuma + pimenta + mel + limao)
 # e quebrou a congruencia inviolavel: o mecanismo do criativo tem que ser o que
@@ -961,6 +1018,10 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     ref = (sc.ref_forte(REFS[0], rng) if (travas or {}).get("forte")
            else rng.choice(REFS))
     animal = rng.choice(arq["animais"])      # so as congruentes com o arquetipo
+    # ⭐ MODO BELA — quem APRESENTA no take 1. Sorteada sempre (custa nada) e
+    # so' usada quando a trava esta' ligada, para o painel poder mostrar o eixo.
+    bela = rng.choice(MULHERES_BELA)
+    modo_bela = bool((travas or {}).get("bela"))
     # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
     # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
     # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
@@ -975,7 +1036,8 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
         _cta(rng),
     ]
     return {"pagina": pagina, "arquetipo": arq, "animal": animal,
-            "receita": rec, "mesa": mesa, "ref": ref, "falas": falas}
+            "receita": rec, "mesa": mesa, "ref": ref, "falas": falas,
+            "bela": bela, "modo_bela": modo_bela}
 
 
 def _montar_longo(spec):
@@ -985,9 +1047,17 @@ def _montar_longo(spec):
     falas = spec["falas"]
 
     # o chapeu vem do ARQUETIPO, nunca do REF (NE5)
-    quem = ("a %d-year-old %s man, bare-chested, %s, %s, wearing %s, %s"
-            % (ref["idade"], et, ref["corpo"], ref["cabeca"], arq["chapeu"],
-               ref["marca"]))
+    # ⭐ MODO BELA (excepcional neste agente): com a trava ligada, quem
+    # apresenta os dois modelos no TAKE 1 e' uma mulher. O take 2 nao muda —
+    # quem prova continua sendo ele, e o `mesmo` abaixo segue descrevendo-o.
+    if spec.get("modo_bela"):
+        b_ = spec["bela"]
+        quem = ("a %d-year-old %s woman, %s, %s, %s"
+                % (b_["idade"], et, b_["corpo"], b_["cabeca"], b_["marca"]))
+    else:
+        quem = ("a %d-year-old %s man, bare-chested, %s, %s, wearing %s, %s"
+                % (ref["idade"], et, ref["corpo"], ref["cabeca"],
+                   arq["chapeu"], ref["marca"]))
     # marca sem o artigo: depois de "same" ele sobra ("same a deep cleft...")
     marca_s = re.sub(r"^an? ", "", ref["marca"])
     mesmo = ("The same %d-year-old %s man, same hat, same beard, same %s, "
@@ -1248,6 +1318,10 @@ CENAS_UI = ["1 · OS DOIS MODELOS", "2 · O GEODUCK + MECANISMO + CTA"]
 # 2026-08-05. ⛔ Desligados, o prompt volta IDENTICO ao de antes
 # do recurso — provado caractere por caractere.
 MODO_FORTE = True
+# ⭐⭐ MODO BELA — EXCEPCIONAL NESTE AGENTE: ele troca QUEM APRESENTA no take
+# 1 por uma mulher, e o take 2 nao muda. Ver o cabecalho de MULHERES_BELA.
+# ⛔ Nao copiar este comportamento para outro agente.
+MODO_BELA = True
 
 TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 25}
 
@@ -1633,6 +1707,32 @@ def _blocos_travados(spec, blocos, achados):
             achados.append(("AVISO", "NE9: %s nao declara que ele esta sozinho" % nome))
 
 
+def _ne_bela(spec, blocos, achados):
+    """⭐ MODO BELA — o eixo tem de CHEGAR ao quadro, e so' ao take 1.
+
+    ⛔ Botao que acende e nao muda o video e' o pior tipo de recurso: some da
+    medicao e reaparece como "o modo nao faz nada" tres semanas depois. Esta
+    lente cobra os DOIS estados, e cobra que o take 2 fique intacto — que e'
+    exatamente o que o operador pediu ao abrir a excecao.
+    """
+    i1, i2 = blocos["IMAGE 01/02"], blocos["IMAGE 02/02"]
+    if spec.get("modo_bela"):
+        if "woman" not in i1:
+            achados.append(("ERRO", "NE-BELA: a trava esta' ligada e a IMAGE 01 "
+                                    "nao poe a mulher — o botao mente"))
+        if str(spec["bela"]["idade"]) not in i1:
+            achados.append(("ERRO", "NE-BELA: a mulher sorteada nao chega a' "
+                                    "IMAGE 01 (eixo de painel sem efeito)"))
+        if "man" not in i2:
+            achados.append(("ERRO", "NE-BELA: o take 2 perdeu o homem — o modo "
+                                    "so' troca quem APRESENTA, e quem PROVA "
+                                    "continua sendo ele"))
+    else:
+        if "woman" in i1:
+            achados.append(("ERRO", "NE-BELA: a trava esta' DESLIGADA e a IMAGE "
+                                    "01 poe uma mulher"))
+
+
 def lint(spec, blocos):
     # ⛔⛔ O CONTRATO DE COPY 16s, ligado em 2026-08-10. Ate' aqui este
     # motor nao o chamava — ele nasceu antes do contrato, e violava CT1
@@ -1647,7 +1747,7 @@ def lint(spec, blocos):
         _LONGO, spec, blocos, MAPA, TETO_FALA,
         literais=("gelatin trick", "blood flow"),
         limpar_direcao=_limpar_animal,
-        extras=(_ne7_hook, _blocos_travados)) + _ct16
+        extras=(_ne7_hook, _blocos_travados, _ne_bela)) + _ct16
 
 
 # ---------------------------------------------------------------------------

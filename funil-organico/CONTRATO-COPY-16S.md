@@ -243,3 +243,31 @@ lista não é medido, e "sem achado" nele significa *ninguém olhou*.
 - [`licoes-de-construcao.md`](licoes-de-construcao.md) — os modos de falha do assistente
 - [`RUNBOOK-app-offline.md`](RUNBOOK-app-offline.md) — motor → app → `.exe`
 - [`licoes-producao-veo.md`](licoes-producao-veo.md) — as lições pagas em render
+
+---
+
+## ⚠️ A exceção declarada: o MODO BELA do NECROSE 16
+
+Em **todo o resto do parque** o MODO BELA troca a **mulher que já existe na
+cena** por uma do pool bela. No `necrose16` ele faz outra coisa, por ordem do
+operador (2026-08-10):
+
+> *"quando ativado, o REF passa a ser uma mulher linda no **primeiro take**; o
+> segundo take continua do jeito que está. Apenas excepcionalmente o modo bela é
+> levemente diferente para o caso do necrose16 — quando eu pedir pra implementar
+> modo bela em outros agentes, continua conforme o sempre combinado."*
+
+⛔ **Quem for implementar MODO BELA em outro agente não deve copiar isso.**
+
+O ângulo comporta a troca porque as duas funções são separadas — **ela
+apresenta, ele prova**:
+
+| | |
+|---|---|
+| a copy do take 1 | toda **condicional em 2ª pessoa** e imperativa — zero primeira pessoa masculina, então cabe na boca dela sem reescrever uma linha |
+| a copy do take 2 | é a que carrega `This is my {o} now`, e o take 2 **não muda** |
+| o `BLOCO 0 (REF)` | continua sendo **ele** — a AdBatch Vertical 2 recebe **uma** foto de referência, e ela ancora quem precisa de consistência facial. Ela entra por descrição, como todo personagem secundário do repo |
+
+A lente `NE-BELA` cobra os **dois** estados: com a trava ligada, a mulher chega
+à `IMAGE 01/02` **e** o homem continua na `IMAGE 02/02`; com ela desligada,
+nenhuma mulher aparece na primeira.
