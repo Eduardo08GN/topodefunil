@@ -102,7 +102,16 @@ isso é a pendência B do `bed16` impedida na origem. ⭐⭐ **A falsa causa do 
 to stay firm every night?» — firm WHAT?? my butt?? / «I thought age did that to
 every man» — did that to WHO or to WHAT???"*. O nome entra na **falsa causa**,
 nunca no hook: o CT7 vale por **sentença**, então o verbo de ereção fica numa e o
-órgão na vizinha — o ouvido junta, o classificador não. Spec completa em
+órgão na vizinha — o ouvido junta, o classificador não.
+⛔⛔ **E essa sentença carrega `not`/`never` obrigatoriamente** — segunda
+correção do operador no mesmo dia (*"tem que ter o NOT, senão não faz
+sentido"*). A forma afirmativa (`I figured age was what killed my pecker`) só
+funcionava se a virada a desmentisse, e **só 1 das 6 viradas desmente** (a que
+abre com `But`). Como o sorteio cruza qualquer falsa com qualquer virada, em
+**5 de 6 vídeos** o take 1 fechava *afirmando* que a idade matou o órgão — o
+contrário do que a VSL vende. É o modo de falha do pool combinatório: cada beat
+lido sozinho estava certo, e o **par** estava errado. O guarda ficou na lista
+(negação em toda entrada), não no sorteio. Spec completa em
 [`SPEC-FIGHT-16.md`](funil-organico/SPEC-FIGHT-16.md).
 
 ### ⛔⛔ CONTRA A CELEBRIDADE, SILÊNCIO — NUNCA `not a celebrity` (2026-08-10)

@@ -648,7 +648,7 @@ HOOKS = [
     # espectador chega no meio do scroll sem nada antes desta sentenca. `in
     # bed` custa UMA palavra e diz o campo sem nomear o orgao (que e' o que
     # mantem o CT7 passando neste beat).
-    "Struggling to stay firm in bed every night?",
+    "Struggling to stay firm in bed?",
     "Struggling to last ten minutes in bed?",
     "Struggling to stay hard the whole night?",
     # ⛔ `keep it up` guardava a mesma armadilha do `firm`: `it` sem dono. Com
@@ -707,13 +707,46 @@ HOOKS = [
 # combinacao cabe por construcao e a rede do `_cabe` nunca dispara.
 # ⛔ Quem acrescentar uma entrada de 9 aqui tem de encurtar um hook — o
 # autoteste diz na hora, mas a conta e' esta.
+#
+# ⛔⛔⛔ A NEGACAO E' OBRIGATORIA — CONSERTO DE 2026-08-10, NO MESMO DIA.
+# ---------------------------------------------------------------------------
+# O operador leu o take pronto e devolveu o `NOT` escrito a mao:
+#
+#     eu entreguei : "I figured age was what killed my peck-er."
+#     ele corrigiu : "I figured age was NOT what killed my peck-er."
+#     *"Tem que ter o NOT, senao nao faz sentido."*
+#
+# ⭐ E O DEFEITO ERA MEU, DE ORCAMENTO DE SENTIDO, nao de gosto dele. A forma
+# afirmativa so' funciona se a VIRADA a desmentir, e a unica virada que
+# desmente e' a que comeca com `But` — a verbatim dele. As outras CINCO abrem
+# com `Everything changed` / `Then I found` / `Three weeks on`, e nenhuma
+# contradiz nada. Como o sorteio cruza qualquer falsa com qualquer virada, em
+# 5 de 6 sorteios o video AFIRMAVA que a idade matou o orgao e nunca voltava
+# atras. O claim do video passava a ser o contrario do que a VSL vende.
+# ⚠️ Este e' o modo de falha do pool combinatorio: cada beat lido sozinho
+# estava certo, e o par estava errado. Nao havia lente que olhasse o PAR — a
+# rede agora e' o controle de negacao no autoteste, que cobra o token em TODA
+# entrada e nao depende de qual virada saiu.
+#
+# ⛔ ENTAO O BEAT MUDOU DE FUNCAO, e o nome do pool ficou por compatibilidade:
+# ele nao ENUNCIA mais a falsa causa, ele a DESMENTE. E' a mesma coisa que a
+# cena 2 vende (nao e' idade, e' fluxo), so' que dita em 1a pessoa e oito
+# segundos antes.
+# ⛔ TODA ENTRADA CARREGA `not` OU `never` — sem excecao, e o autoteste reprova
+# quem entrar sem. Entrada afirmativa aqui reintroduz o defeito inteiro.
+#
+# ⚠️ NOVE PALAVRAS EXATAS (a negacao custou uma). Com FALSA 9 e VIRADA ate' 9,
+# o teto de 25 obriga o HOOK a ficar em ate' 7 — foi por isso que
+# `Struggling to stay firm IN BED EVERY NIGHT?` (8) encurtou para
+# `Struggling to stay firm in bed?` (6). O controle de cobertura do autoteste
+# faz essa conta sozinho e reprova se alguem esquecer.
 FALSAS = [
-    "I thought my {o} quit because of age.",
-    "I figured age was what killed my {o}.",
-    "I blamed the years for my {o} quitting.",
-    "I told myself every man's {o} does that.",
-    "I thought age did that to my {o}.",
-    "I figured losing my {o} was just aging.",
+    "I figured age was not what killed my {o}.",    # ← a forma dele, literal
+    "I thought age was not what stopped my {o}.",
+    "Turns out age was not what took my {o}.",
+    "It was not age that shut my {o} down.",
+    "My age was never what my {o} was fighting.",
+    "It was never age doing that to my {o}.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -1693,6 +1726,19 @@ def autoteste(n=400):
                       "(%s) — ordem do operador de 2026-08-10, e sem isso o "
                       "espectador ouve `did that` sem objeto"
                       % (len(mudas), mudas[0][:40]))
+    # ⛔⛔ A NEGACAO EM TODA FALSA — o conserto do operador de 2026-08-10.
+    # Sem `not`/`never` a sentenca AFIRMA que a idade matou o orgao, e so' UMA
+    # das seis viradas a desmente (`But things changed...`). Nos outros 5/6 dos
+    # sorteios o video fecharia o take 1 sustentando o contrario do que a VSL
+    # vende. ⚠️ O controle mora na LISTA de proposito: o defeito nasce no PAR
+    # falsa x virada, e nao ha' como cobra-lo no sorteio sem enumerar 36 pares.
+    # Exigir a negacao em cada entrada torna todo par seguro por construcao.
+    sem_not = [x for x in FALSAS if not re.search(r"\b(not|never)\b", x, re.I)]
+    if sem_not:
+        falhas.append("A FALSA CAUSA TEM DE SER DESMENTIDA NA PROPRIA "
+                      "SENTENCA: %d entrada(s) sem `not`/`never` (%s) — so' a "
+                      "virada `But things changed` contradiz, e ela e' 1 de 6"
+                      % (len(sem_not), sem_not[0][:40]))
     erecao = [x for x in FALSAS if sc.ERECAO_16.search(x)]
     if erecao:
         falhas.append("CT7: %d FALSA(S) com verbo de ereccao NA SENTENCA DO "
