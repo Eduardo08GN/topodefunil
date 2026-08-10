@@ -329,6 +329,9 @@ OCASIOES = [
 # itens de prop que nao se parecem com penis, como aspargo, cenoura e qualquer
 # coisa esquisita, deixe somente banana, linguica, pepino e beringela"*.
 # Sairam: geoduck, okra, aspargo, daikon, cenoura, alho_poro.
+# ⛔ E A TRES, no mesmo dia: *"remova o prop beringela"*. Restam banana,
+# linguica e pepino — os tres alongados. A berinjela e' bojuda e nao
+# le' como o orgao; foi a propria forma dela que a tirou do pool.
 # ⚠️ COM O GEODUCK FORA, `marisco` e' False em todo o pool e a `NEGACAO_AVE`
 # (a trava que impedia o Veo de desenhar um ganso) nunca mais dispara. Fica no
 # codigo porque o campo continua existindo — se o geoduck voltar, a trava volta
@@ -359,9 +362,6 @@ PROPS = [
     {"id": "pepino", "pt": "um pepino", "marisco": False,
      "murcho": _MURCHO % "cucumber",
      "ereto": _ERETO % "a cucumber"},
-    {"id": "beringela", "pt": "uma berinjela", "marisco": False,
-     "murcho": _MURCHO % "eggplant",
-     "ereto": _ERETO % "an eggplant"},
 ]
 
 # Set das cenas 2/3/5. Escopo do D1 (P15): bancada ou interno — todos servem.
