@@ -2089,7 +2089,15 @@ def montar(spec):
     # continua inteiro: a cena 2 e' onde mora o `Comment gelatin`.
     # ⚠️ Para inverter a escolha e' UMA linha: trocar `bancada_com_rosto` por
     # `redencao_com_ref` abaixo. As duas tem a mesma assinatura.
-    i2, t2 = sc.bancada_com_rosto(_LONGO, spec, spec["falas"][1], n=2, total=2)
+    # ⭐ 2026-08-10 — `sache_erguido`, o mesmo modo que o FLAGRANTE 16 recebeu
+    # horas antes, pelo relato IDENTICO do operador: *"copo de agua transparente
+    # mexendo com uma colher, e o saco da gelatina sem nome nenhum"*.
+    # O copo ja' nasce cheio de `vivid purple`, sem colher em quadro, e ele
+    # ergue o sache rotulado GELATIN HORSE TRICK para a lente enquanto fala.
+    # ⛔ Nao ha' despejo: acao em dois estados e' o que faz o modelo duplicar
+    # objeto. Duas evidencias PARADAS — o roxo (resultado) e o sache (causa).
+    i2, t2 = sc.bancada_com_rosto(_LONGO, spec, spec["falas"][1], n=2, total=2,
+                                  modo="sache_erguido")
     b["IMAGE 02/02"], b["TAKE 02/02"] = i2, t2
     # ⛔ trava de texto queimado em todo TAKE — o watermark que o
     # operador viu vazando nos reels da concorrente (2026-08-01).

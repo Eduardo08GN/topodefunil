@@ -192,7 +192,12 @@ def bancada_com_rosto(base, spec, fala, n=3, total=3, modo="colher"):
 # ⚠️ E o copo NAO tem colher. A colher so' faz sentido com movimento de mexer, e
 # aqui nao ha' preparo nenhum — deixa-la em quadro sem funcao e' convidar o
 # modelo a inventar a acao de volta.
-SACHE_FLAGRANTE = (
+#
+# ⭐ 2026-08-10 (2): o PEE 16 entrou no mesmo modo, pelo MESMO relato —
+# *"copo de agua transparente mexendo com uma colher, e o saco da gelatina
+# sem nome nenhum"*. Por isso a constante deixou de se chamar
+# `SACHE_FLAGRANTE`: o rotulo nao e' de um agente, e' do modo.
+SACHE_ROTULADO = (
     "a small white sachet with the words GELATIN HORSE TRICK printed across "
     "the front in plain black capital letters")
 
@@ -206,23 +211,28 @@ def _bancada_sache(base, spec, fala, n, total, et, ref, amb, luz):
     """Copo pronto e roxo na bancada; o sache erguido na mao, para a lente."""
     img = (
         "IMAGE %02d/%02d: Medium shot in %s. The same %d-year-old %s man, %s, "
-        "%s, stands behind the %s, facing the camera. On the counter in front "
+        # ⚠️ A SUPERFICIE E' UMA SO', e por isso `amb["bancada"]` entra DUAS
+        # vezes. O molde antigo dizia `behind the dining table` e logo depois
+        # `on the counter` — duas superficies na mesma frase, e o gerador tem
+        # todo o direito de desenhar as duas. Mesmo defeito de familia das duas
+        # colheres: contradicao dentro do prompt, resolvida por duplicacao.
+        "%s, stands behind the %s, facing the camera. On that same %s in front "
         "of him stands one tall clear glass, already filled with vivid purple "
         "liquid, finished and untouched — there is no spoon in it and no spoon "
         "anywhere in the shot. He holds %s up beside his own face in his right "
         "hand, unopened and full, turned so the printed front faces the lens. "
-        "His left hand rests flat on the counter. Nothing else is on the "
-        "counter. He is alone in frame. %s %s"
+        "His left hand rests flat on that same surface, which holds nothing "
+        "else. He is alone in frame. %s %s"
         % (n, total, amb["set"], ref["idade"], et, ref["marca"],
-           ref["roupa_curta"], amb["bancada"], SACHE_FLAGRANTE,
+           ref["roupa_curta"], amb["bancada"], amb["bancada"], SACHE_ROTULADO,
            luz.capitalize(), CAUDA_ROTULO)
     )
     take = (
         "TAKE %02d/%02d: Animate the image exactly. Handheld iPhone, slight "
         "sway, no cuts. He talks to the camera and holds the sachet up where "
         "it is, turning it very slightly so the printed front stays readable — "
-        "that is the only movement. The glass of purple liquid stays on the "
-        "counter, still and untouched, the whole time. He never opens the "
+        "that is the only movement. The glass of purple liquid stays where it "
+        "is, still and untouched, the whole time. He never opens the "
         "sachet, never pours anything, never stirs, and never puts the sachet "
         "down. Nothing new enters the frame. His eyes stay on the lens the "
         "whole time. He is alone in the shot. The words printed on the sachet "
