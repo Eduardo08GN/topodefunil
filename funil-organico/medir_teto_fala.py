@@ -55,7 +55,13 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # + 2026-08-10: o BED 16, no commit em que nasce
            "bed16", "necrose16", "wife16",
            # + 2026-08-10: o FIGHT 16, no commit em que nasce
-           "fight16"]
+           "fight16",
+           # ⚠️ 2026-08-10: `pee16` entrou aqui na reforma dos pools de
+           # personagem dele — e descobriu-se que ele NUNCA tinha estado
+           # nesta lista. O motor existe desde 08-09 e este medidor nunca
+           # olhou para ele: gate que nao ve o motor nao reprova o motor,
+           # so produz um "passou" mentiroso (licoes §7).
+           "pee16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

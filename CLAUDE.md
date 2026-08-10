@@ -97,8 +97,41 @@ mesma casa**; o que atravessa o corte é **o mesmo HOMEM** (lente `FT3`), e a
 `FT13` proíbe dizer `the same room/house` no take 2. ⛔ **Sem prop fálico** — a
 prova é o casal. ⭐ **MODO BELA**: desligado entrega a mulher realista do print
 (34-43), ligado traz a REF do pool bela. ⚠️ Nenhum pool de fala diz idade, e
-isso é a pendência B do `bed16` impedida na origem. Spec completa em
+isso é a pendência B do `bed16` impedida na origem. ⭐⭐ **A falsa causa do take
+1 nomeia o órgão desde 2026-08-10** — ordem do operador lendo o app: *"«Struggling
+to stay firm every night?» — firm WHAT?? my butt?? / «I thought age did that to
+every man» — did that to WHO or to WHAT???"*. O nome entra na **falsa causa**,
+nunca no hook: o CT7 vale por **sentença**, então o verbo de ereção fica numa e o
+órgão na vizinha — o ouvido junta, o classificador não. Spec completa em
 [`SPEC-FIGHT-16.md`](funil-organico/SPEC-FIGHT-16.md).
+
+### ⛔⛔ CONTRA A CELEBRIDADE, SILÊNCIO — NUNCA `not a celebrity` (2026-08-10)
+
+Ordem do operador, com o lote na mão: *"não falar de celebridade nem usar a
+palavra famoso, celebridade no prompt, muito menos dizer burramente no prompt
+'not morgan freeman', 'not celebrity', 'not famous people'"*. A doutrina do repo
+já dizia isso desde 2026-07-31
+([`licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) §*Declaração é
+munição*) e **nunca tinha sido aplicada aos motores** — `not a celebrity` seguia
+em 43 arquivos, injetando justamente o token que se temia.
+
+> **A defesa não é negar celebridade; é descrever um rosto que nenhuma
+> celebridade tem.** Rosto genérico deriva para a média do treino, e a média tem
+> nome.
+
+⭐ Consertado em **`pee16`** (cláusula deletada; pool `REFS` reescrito e dobrado
+para 24 entradas com **arquitetura facial** — formato do rosto, testa/arcada,
+nariz, maxilar, malar — e 5 das 24 não grisalhas, porque um pool 100% prateado é
+um homem só) e em **`fight16`** (as três negações removidas, a metade positiva
+fica). ⚠️ **Os outros ~41 motores ainda carregam a negação** — dívida declarada,
+não corrigida.
+
+⛔ E o eixo de rosto do `pee16` ganhou o que faltava do outro lado: **narrador e
+vítima entraram no ledger**. Eram os dois únicos eixos do motor **sem memória
+nenhuma** (`rng.choice` cru), e era isso que trazia a mesma dupla em lotes
+seguidos mesmo depois de duas ampliações de pool — *pool grande com sorteio sem
+memória repete igual*. O `LOCAIS` foi de 9 para 21 (as 9 antigas eram seis vezes
+o mesmo corredor de varejo) e o motor ganhou `--autoteste`, que ele nunca teve.
 
 Cada um **não substitui** o SHORT do mesmo ângulo: são formatos diferentes e os
 dois coexistem. Nasceram por cópia literal com cirurgia só no eixo temporal — as

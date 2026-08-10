@@ -385,10 +385,23 @@ EXCECOES = {
         "idem necrose_short (NE5) — pool identico, conferido (n=18).",
     ("necrose16_short.py", "ARQUETIPOS", "oculos"):
         "idem necrose_short (NE5) — pool identico, conferido (n=18).",
+    # ⚠️⚠️ AS DUAS LINHAS ABAIXO FORAM REESCRITAS EM 2026-08-10, e a reescrita
+    # e' o ponto: elas diziam *"pool identico ao pee_short, conferido (n=13)"*,
+    # e isso DEIXOU DE SER VERDADE no commit em que o pool REFS do pee16 foi
+    # reescrito e dobrado (n=24) para matar o atrator de celebridade. A razao
+    # da isencao nao mudou uma virgula — mas a JUSTIFICATIVA mudou de "e' o
+    # mesmo pool do vizinho" para "e' o contrato deste angulo". Isencao que
+    # aponta para um pool que nao existe mais e' permissao esquecida ligada.
     ("pee16_short.py", "REFS", "pelo_facial"):
-        "idem pee_short (F4b/PE9) — pool identico, conferido (n=13).",
-    ("pee16_short.py", "REFS", "oculos"):
-        "idem pee_short (F4b/PE9) — pool identico, conferido (n=13).",
+        "PE9/F4b — o narrador e' BARBEADO e SEM OCULOS de proposito: careca + "
+        "bigode + oculos e' o que marca a VITIMA, e os dois dividem o IMAGE 01 "
+        "num plano medio. Encher qualquer um dos dois aqui apaga o contraste "
+        "de 3 eixos que separa os dois a' distancia. ⭐ O pool proprio do "
+        "pee16 (n=24, reescrito em 2026-08-10) cobra os dois em autoteste "
+        "(`python funil-organico/pee16_short.py --autoteste`), e os outros "
+        "quatro eixos estao cheios: cabelo 92%, porte 63%, pele 42%, "
+        "ancora 79%.",
+    ("pee16_short.py", "REFS", "oculos"): "idem PE9/F4b — ver a linha acima",
 
     # ⛔ CONTRATO DO MOTOR, o mesmo do falta_short: NENHUMA entrada do pool
     # masculino carrega adjetivo de etnia — conferido chave a chave, as seis

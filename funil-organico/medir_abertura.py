@@ -97,7 +97,12 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # + 2026-08-10: o BED 16, no commit em que nasce
            "bed16_short", "necrose16_short", "wife16_short",
            # + 2026-08-10: o FIGHT 16, no commit em que nasce
-           "fight16_short"]
+           "fight16_short",
+           # ⚠️ 2026-08-10: `pee16_short` entrou aqui na reforma dos pools
+           # de personagem dele. Ele NUNCA tinha estado nesta lista — o
+           # motor existe desde 08-09 e este medidor nunca olhou para ele.
+           # Gate que nao ve o motor nao reprova o motor (licoes §7).
+           "pee16_short"]
 
 # ⭐ O QUE CONTA COMO REFERENTE, e a lista e' deliberadamente CURTA:
 #   · o orgao (o pool NUCLEO do proprio motor), ou

@@ -79,7 +79,15 @@ ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSU
          "TRIO16-SHORT",
          # + 2026-08-10: o FIGHT 16 nasce ja' na lista. Motor que fica de fora
          # daqui NAO recebe correcao no .exe, mesmo com o repo certo.
-         "FIGHT-16"]
+         "FIGHT-16",
+         # ⛔⛔ + 2026-08-10: o PEE-16, e a ausencia dele era exatamente o
+         # defeito que este comentario descreve. A pasta
+         # `AGENTES-16/PEE-16` EXISTE na area de trabalho e o operador usa o
+         # .exe de la' — mas o nome nunca esteve nesta lista, entao o
+         # `distribuir.py` NUNCA o recompilou. O .exe que ele rodava era o do
+         # dia em que a pasta foi criada, e todo conserto feito no repo desde
+         # entao ficou so' no repo.
+         "PEE-16"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)
