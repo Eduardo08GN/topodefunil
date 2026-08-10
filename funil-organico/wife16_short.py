@@ -422,6 +422,41 @@ HOMENS = [
     {"id": "ondulado", "idade": 56,
      "marca": "short wavy grey hair and a close grey beard",
      "sinal": "a white patch of old sun damage on his left temple"},
+    # + 2026-08-10, ordem do operador: *"alimente o pool de personagens com mais
+    # variacoes tb"*. De 6 para 15. ⛔ Todo homem daqui e' 55-62, casado ha'
+    # decadas e com a cara vivida — o corpo dele NAO e' o argumento neste angulo
+    # (a prova e' a postura dela), entao a variacao serve a RECONHECIMENTO: o
+    # espectador tem de ver um sujeito que podia ser ele.
+    # ⚠️ Cada entrada precisa de `marca` (cabeca/barba) E `sinal` (marca facial),
+    # porque as duas sao repetidas no take 2 como ancora de continuidade — sem
+    # elas o Veo desenha outra pessoa depois do corte.
+    {"id": "grisalho_risca", "idade": 56,
+     "marca": "grey hair combed to one side and a heavy grey moustache",
+     "sinal": "a small scar through his left eyebrow"},
+    {"id": "cabelo_branco_liso", "idade": 61,
+     "marca": "thick white hair and a clean-shaven face",
+     "sinal": "deep laugh lines around his eyes"},
+    {"id": "barba_curta_sal", "idade": 58,
+     "marca": "short salt-and-pepper hair and three days of grey stubble",
+     "sinal": "a broad flat nose broken once and never set"},
+    {"id": "entradas_bigode", "idade": 60,
+     "marca": "hair receding at the temples and a full grey moustache",
+     "sinal": "a mole below his right eye"},
+    {"id": "raspado_barba_cheia", "idade": 57,
+     "marca": "hair clipped down to the scalp and a full salt-and-pepper beard",
+     "sinal": "a heavy brow and a squared jaw"},
+    {"id": "onda_grisalha", "idade": 59,
+     "marca": "wavy grey hair pushed back and a trimmed grey beard",
+     "sinal": "a small cleft in his chin"},
+    {"id": "cavanhaque_branco", "idade": 62,
+     "marca": "close-cropped white hair and a short white goatee",
+     "sinal": "a weathered squint at the corners of his eyes"},
+    {"id": "topete_grisalho", "idade": 55,
+     "marca": "grey hair still full on top and a shadow of stubble",
+     "sinal": "a chipped front tooth that shows when he talks"},
+    {"id": "careca_bigode", "idade": 60,
+     "marca": "a bald crown with grey at the sides and a thick grey moustache",
+     "sinal": "a pale old scar along his jaw"},
 ]
 
 # ⛔ Ele esta' de TRONCO NU no take 1 (frame da fonte) e com a agua no peito no
@@ -435,6 +470,13 @@ CORPOS_H = [
     "solid through the chest with heavy upper arms",
     "wide through the shoulders with a low round belly",
     "thick through the neck and shoulders, softened with age",
+    # + 2026-08-10: de 6 para 12.
+    "lean and stooped with the shoulder blades showing",
+    "thick through the middle with heavy sloping shoulders",
+    "wiry and flat-chested with ropey forearms",
+    "square and solid, the chest gone slack",
+    "big-framed and heavy, the belly resting on his lap",
+    "narrow-shouldered with a soft chest and thin arms",
 ]
 
 
@@ -472,6 +514,26 @@ MULHERES = [
     {"id": "asiatica_lisa", "idade": 28, "etnia": "Asian American",
      "marca": "straight black hair to the shoulders and a faint scar on her "
               "chin"},
+    # + 2026-08-10: de 10 para 18. ⛔ LEI DO REF — 25-38, sempre bonita, marca
+    # facial obrigatoria, zero oculos/grisalho/pele castigada. ⭐ A etnia dela e'
+    # SOLTA (quem casa com a pagina e' ELE, que e' quem fala), e por isso o pool
+    # cobre pele clara, negra, latina e asiatica.
+    {"id": "castanha_curta", "idade": 33, "etnia": "white American",
+     "marca": "chin-length dark brown hair tucked behind one ear and a small mole on her jaw"},
+    {"id": "afro_baixo", "idade": 30, "etnia": "Black American",
+     "marca": "a short natural afro and a beauty spot high on her right cheek"},
+    {"id": "coque_baixo", "idade": 35, "etnia": "Latina American",
+     "marca": "black hair in a low bun and a thin gold chain at her throat"},
+    {"id": "liso_longo_preto", "idade": 28, "etnia": "Asian American",
+     "marca": "long straight black hair and a small dark mole beside her mouth"},
+    {"id": "loira_curta", "idade": 36, "etnia": "white American",
+     "marca": "a blonde bob cut just below the jaw and pale freckles across her nose"},
+    {"id": "trancas_coque", "idade": 32, "etnia": "Black American",
+     "marca": "braids gathered into a high bun and a small scar through one eyebrow"},
+    {"id": "ondulado_castanho", "idade": 34, "etnia": "Latina American",
+     "marca": "loose brown waves past her shoulders and a beauty spot under her left eye"},
+    {"id": "rabo_alto", "idade": 27, "etnia": "white American",
+     "marca": "dark hair pulled into a high ponytail and a small silver hoop in one ear"},
 ]
 
 
@@ -759,7 +821,7 @@ CTAS = [
     "%s and the recipe hits your inbox tonight." % sc.CTA_LITERAL,
     "%s and I'll send the recipe by message." % sc.CTA_LITERAL,
     "%s and the recipe arrives in your messages." % sc.CTA_LITERAL,
-    "%s and only your messages get the recipe." % sc.CTA_LITERAL,
+    "%s and the recipe arrives in your messages." % sc.CTA_LITERAL,
     "%s and I'll send the recipe in private." % sc.CTA_LITERAL,
     "%s and the recipe comes to your inbox." % sc.CTA_LITERAL,
     "%s and your inbox gets the recipe tonight." % sc.CTA_LITERAL,
@@ -997,7 +1059,7 @@ def montar(spec):
         "against his side with her shoulder against his chest is the same "
         "%d-year-old %s woman, %s, wearing %s; she looks at him and says "
         "nothing. Each of them is holding %s, one in his hand and one in "
-        "hers, and both are drinking. They are the only two people in the "
+        "hers. They are the only two people in the "
         "frame. %s. %s"
         % (m["a_cen"], h["idade"], et, h["marca"], h["sinal"], spec["corpo_h"],
            m["a_agua"], w["idade"], w["etnia"], w["marca"], m["dela_a"],
@@ -1009,8 +1071,9 @@ def montar(spec):
         "talks straight into the lens the whole time and it is the same man as "
         "in the first scene. She stays pressed against his side and never "
         "moves away from him, and she never speaks. Only he speaks. Each of "
-        "them keeps hold of their own drink and lifts it to drink once, and "
-        "neither hands theirs to the other. The water keeps moving the way "
+        "them simply holds their own drink the whole time and neither one "
+        "drinks from it or lifts it to their mouth, and neither hands theirs "
+        "to the other. The water keeps moving the way "
         "water moves and nothing else in the frame changes.\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
         % (sonorizar(spec["falas"][1]), m["a_audio"]))
@@ -1112,15 +1175,24 @@ def _wf4_copo(spec, blocos, achados):
         achados.append(("ERRO", "WF4: a IMAGE 02 nao poe o copo nas maos dos "
                                 "DOIS — a bebida e' o gelatin trick e a prova "
                                 "e' o casal bebendo"))
-    if "both are drinking" not in i2:
-        achados.append(("ERRO", "WF4: a IMAGE 02 nao mostra os dois bebendo"))
+    # ⛔ 2026-08-10 — ORDEM DO OPERADOR: *"o REF so' tem que parar de falar
+    # enquanto bebe, deixe-os apenas segurando as bebidas, nao precisa deles
+    # tomarem no take"*. Beber e falar ao mesmo tempo e' fisicamente
+    # incompativel, e o gerador resolve o conflito do pior jeito possivel: ou
+    # corta a fala no gole, ou anima uma boca que fala com o copo na frente.
+    # A prova visual e' o copo NA MAO DOS DOIS, nao o gole.
+    # ⚠️ A lente NAO morreu — trocou de pergunta: antes cobrava o gole,
+    # agora cobra que ele NAO aconteca.
+    if "and both are drinking" in i2:
+        achados.append(("ERRO", "WF4: a IMAGE 02 poe os dois BEBENDO — beber e falar ao mesmo tempo nao cabe em 8 segundos; eles apenas SEGURAM"))
     if spec["copo"]["img"] not in i2:
         achados.append(("ERRO", "WF4: o copo sorteado (%r) nao chega a' IMAGE "
                                 "02 — eixo de painel que nao muda o video"
                         % spec["copo"]["id"]))
-    if "lifts it to drink" not in t2:
-        achados.append(("ERRO", "WF4: o TAKE 02 nao anima o gole — copo parado "
-                                "na mao durante 8 segundos le' como adereco"))
+    if "neither one drinks from it" not in t2:
+        achados.append(("ERRO", "WF4: o TAKE 02 nao proibe o gole — sem a "
+                                "proibicao explicita o gerador poe o copo na "
+                                "boca no meio da fala"))
 
 
 def _wf5_sem_texto(spec, blocos, achados):
