@@ -51,7 +51,10 @@ MOTORES = ["troca16", "ressurreicao16", "exterior16", "flagrante16",
            "pee16", "escandalo16", "colo16",
            # os demais 16s: entram na medicao desde ja', mesmo antes da
            # reforma — numero que ninguem olha e' numero que envelhece
-           "trio16", "dupla16", "falta16", "placa16", "botica16", "good16"]
+           "trio16", "dupla16", "falta16", "placa16", "botica16", "good16",
+           # + 2026-08-10: o WIFE 16 entra AQUI no commit em que nasce — ele
+           # ja' nasce sob o contrato, e motor fora da lista nao e' medido.
+           "wife16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.

@@ -51,7 +51,9 @@ if AQUI not in sys.path:
 MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "ressurreicao", "flagrante", "pee", "vazamento", "necrose",
            "exterior", "colo", "receita", "botica",
-           "dupla", "placa", "cha", "trio", "falta", "trio16", "dupla16", "falta16", "placa16", "troca16", "botica16", "colo16", "exterior16", "escandalo16", "ressurreicao16", "flagrante16", "good16"]
+           "dupla", "placa", "cha", "trio", "falta", "trio16", "dupla16", "falta16", "placa16", "troca16", "botica16", "colo16", "exterior16", "escandalo16", "ressurreicao16", "flagrante16", "good16",
+           # + 2026-08-10: o WIFE 16, no commit em que nasce
+           "wife16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #
