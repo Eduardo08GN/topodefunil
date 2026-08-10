@@ -605,11 +605,19 @@ AVISOS = [
     "If you are single, skip this one.",
     "Single men, this is not for you.",
     "Single men, close this video right now.",
-    "If nobody is waiting at home, skip this.",
+    "If you are not married, skip this one.",
     "This is not for single men, at all.",
-    "If you sleep alone, this is not for you.",
+    "If you have no wife, skip this one.",
     "Single men, you can scroll past this one.",
-    "If there is no wife at home, skip it.",
+    # ⛔ 2026-08-10 — TRES ENTRADAS SAIRAM POR AMBIGUIDADE, apontadas pelo
+    # operador em `If there is no wife at home, skip it`: *"o cara pode ser
+    # casado e a mulher simplesmente saiu pra fazer compra"*.
+    # ⭐ O defeito e' de CATEGORIA, nao de palavra: as tres descreviam quem
+    # esta' em casa NAQUELE MOMENTO (`no wife at home`, `nobody waiting`,
+    # `you sleep alone`) quando o filtro do angulo e' ESTADO CIVIL. Todo
+    # estado momentaneo admite a leitura errada, e o espectador que se
+    # exclui por engano nao volta.
+    "If you do not have a wife, skip it.",
     "Not for single men. I mean that.",
     "If you are single, close this right now.",
 ]
@@ -621,14 +629,19 @@ ESPOSAS = [
     "If you are married, thank me later.",
     "If you have a wife, go easy with it.",
     "Married men, use this with caution.",
-    "But if there is a wife at home, listen.",
+    # ⛔ MESMA CORRECAO DO POOL DE AVISOS, aplicada ao espelho: tres
+    # entradas condicionavam pela PRESENCA dela (`a wife at home`, `still in
+    # your bed`, `home tonight`) quando o filtro e' ESTADO CIVIL. O operador
+    # apontou o defeito do outro lado; a classe e' a mesma e o conserto
+    # tambem — se a mulher saiu para o mercado, o casado se exclui por engano.
+    "But if you are married, listen close.",
     "Married men, take this one slow.",
-    "If she is still in your bed, go slow.",
+    "If you share a bed with a wife, go slow.",
     "Husbands, do not say I never warned you.",
     "If you are married, take it easy at first.",
     "And if there is a wife, ease into it.",
     "Married men, start with less than you think.",
-    "If your wife is home tonight, be careful.",
+    "If you have a wife, be careful tonight.",
 ]
 
 # ⛔ E' o beat que faz o video existir: a promessa vem da MULHER nao dar conta,
