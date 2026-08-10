@@ -720,35 +720,46 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # espectador via os dois modelos e ouvia uma escolha, mas nada dizia que o corpo
 # DELE falhou. Medido: 88% dos videos sem falha enunciada. Aqui a comparacao
 # fica — ela e' o angulo — e cada entrada ganha o verbo que nomeia o dano.
+# ⛔⛔ 2026-08-10 — A COMPARACAO VIROU UMA CONDICAO SO'. Ordem do operador:
+#   *"seria melhor e mais coeso se a copy do take 1 fosse `If your wiener looks
+#    more like this one than that one, watch how it gets fixed`"*
+# ⚠️ A forma antiga era PERGUNTA + COMANDO (`is it this one or that one? Watch
+# how it gets fixed.`). Duas estruturas para dizer uma coisa so' — e a pergunta
+# ainda devolvia ao espectador um trabalho que ele nao tem por que fazer.
+# ⭐ A comparacao direta ja' e' a condicional que a NE7 exige, ja' carrega os
+# DOIS deiticos, e emenda no fecho sem respirar.
+#
+# ⛔ E O CT2 CONTINUA DE PE' POR UM DETALHE: `looks more like this one` nao tem
+# verbo de falha nenhum, e sem ele o take 1 nao enuncia dano. Quem passou a
+# carregar a falha e' o ADJETIVO DO MODELO PODRE — `this dead one`, `this
+# ruined one`, `this wrecked one`. A forma do operador fica intacta e a trava
+# nao precisou ser afrouxada.
+# ⚠️ 11-14 palavras; o fecho come 3-5 do teto de 20.
 HOOKS = [
-    "If your {o} quit on you, is it this one tonight or that one?",
-    "If your {o} went dead, is it this one or that one?",
-    "If your {o} stopped working, is it this one or that one?",
-    "If your {o} hasn't worked in months, this one is you, not that one.",
-    "If your {o} went soft for good, is it this one or that one?",
-    "If your {o} gave out, look at this one, then look at that one.",
-    "If your {o} quit, which is it tonight, this one or that one?",
-    "If your {o} died down there, is it this one or that one?",
-    # + 2026-08-10: de 8 para 24. Com 8 entradas a cena 1 tinha 24 falas
-    # distintas em 400 sorteios (8 hooks x 3 apelidos), contra 285 do WIFE 16 e
-    # 332 do BED 16 — o hook e' o unico eixo de fala deste take, entao o pool
-    # dele E' a entropia toda.
-    "If your {o} has gone quiet, is it this one or that one?",
-    "If your {o} failed you last night, this one is you, not that one.",
-    "If your {o} quit before you finished, is it this one or that one?",
-    "If your {o} stopped answering, look at this one, then at that one.",
-    "If your {o} went soft at fifty, is it this one or that one?",
-    "If your {o} hasn't stood a chance, this one is you, not that one.",
-    "If your {o} gave out on you, which is it, this one or that one?",
-    "If your {o} died on you years back, is it this one or that one?",
-    "If your {o} quit halfway, look at this one, then look at that one.",
-    "If your {o} stopped working at sixty, is it this one or that one?",
-    "If your {o} went dead quiet, which one is yours, this or that one?",
-    "If your {o} failed you again, this one is you, not that one.",
-    "If your {o} has not worked in years, is it this one or that one?",
-    "If your {o} quit on your wife, is it this one or that one?",
-    "If your {o} went soft every night, look at this one, then that one.",
-    "If your {o} gave out before sixty, is it this one or that one?",
+    "If your {o} quit and looks more like this one than that one.",
+    "If your {o} went soft and looks more like this one than that one.",
+    "If your {o} stopped working and looks like this one, not that one.",
+    "If your {o} gave out and looks more like this one than that one.",
+    "If your {o} failed and looks more like this one than that one.",
+    "If your {o} died on you and looks like this one, not that one.",
+    "If your {o} hasn't worked and looks like this one, not that one.",
+    "If your {o} is dead and looks more like this one than that one.",
+    "If your {o} shut down and looks like this one, not that one.",
+    "If your {o} went dead and sits closer to this one than that one.",
+    "If your {o} quit on you and looks like this one, not that one.",
+    "If your {o} is finished and looks more like this one than that one.",
+    "If your {o} stopped and looks a lot more like this one than that one.",
+    "If your {o} went soft for good and looks like this one, not that one.",
+    "If your {o} gave out and is closer to this one than to that one.",
+    "If your {o} died and matches this one a lot more than that one.",
+    "If your {o} quit halfway and looks more like this one than that one.",
+    "If your {o} has not worked and looks like this one, not that one.",
+    "If your {o} failed you and looks more like this one than that one.",
+    "If your {o} is useless now and looks like this one, not that one.",
+    "If your {o} is ruined and looks more like this one than that one.",
+    "If your {o} quit years back and looks like this one, not that one.",
+    "If your {o} stopped working and is closer to this one than that one.",
+    "If your {o} went dead and looks like this one instead of that one.",
 ]
 
 # ⭐ O FECHO — segunda batida da cena 1, criada em 2026-08-10 junto com a
