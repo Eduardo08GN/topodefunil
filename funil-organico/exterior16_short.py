@@ -1663,8 +1663,10 @@ def _evitando(rng, pool, recentes):
 # ⛔⛔ DUAS ORDENS DELE, E AS DUAS VIRARAM LENTE:
 #   1. *"nao use pronome, seja taxativo e claro"* — reprovou `That's what he's
 #      holding.`: `he` sem dono e `that` sem referente. Nenhuma entrada abaixo
-#      abre com pronome, e a PROVA nomeia o homem (`the man beside me`), que e'
-#      quem esta' no quadro segurando o prop limpo.
+#      abre com pronome, e o DISCLOSURE nomeia o vinculo (`my husband`), que e'
+#      quem esta' no quadro segurando o prop limpo. ⚠️ Ate' 2026-08-09 esse
+#      beat era a PROVA (`the man beside me`) — o operador trocou por
+#      disclosure em primeira pessoa; ver o cabecalho de DISCLOSURES16.
 #   2. *"muito vaga e ocupando tempo precioso"* — reprovou `The outside changes
 #      nothing.`: o de fora DE QUE, muda O QUE. Todo beat aqui nomeia coisa
 #      concreta: sangue, pressao, o orgao, o homem, o gelatin trick.
@@ -1688,21 +1690,57 @@ MECANISMOS16 = [
     "Your {o} firms on pressure behind the blood.",
 ]
 
-# ⚠️ 8-9 palavras. ⛔⛔ O HOMEM E' NOMEADO, NUNCA `he`. Ele esta' no quadro,
-# cortado no peito, segurando o geoduck limpo — se a fala nao o nomeia, ele e'
-# decoracao, e decoracao em 8 segundos e' o desperdicio que o operador apontou.
-# ⭐ E o literal `gelatin trick` mora AQUI, obrigatorio: e' a cena que caiu
-# (a 3 do motor de 24s) que o trazia.
-PROVAS16 = [
-    "The man beside me used the gelatin trick.",
-    "The man beside me runs the gelatin trick.",
-    "The man beside me did the gelatin trick.",
-    "The man in frame used the gelatin trick.",
-    "The man beside me started the gelatin trick.",
-    "The man next to me used the gelatin trick.",
-    "The man beside me swears by the gelatin trick.",
-    "The man next to me runs the gelatin trick.",
+# ⭐⭐ O DISCLOSURE — ordem do operador, 2026-08-09, e ela e' de ARCO.
+# ---------------------------------------------------------------------------
+# Ele leu um lote e escreveu:
+#
+#     *"Acho que uma copy melhor para o take 2 seria um DISCLOSURE do take 1:
+#      what really worked for my husband or fiancee (por conta do pool) was the
+#      gelatin trick I've discovered."*
+#
+# ⭐ E ele esta' certo sobre o buraco. A cena 1 termina em `And you're right` —
+# ela ACABA DE DEMOLIR a isca e deixa a pergunta aberta *"entao o que funciona?"*.
+# A PROVA antiga (`The man beside me used the gelatin trick.`) respondia de
+# lado: um terceiro anonimo fez uma coisa. Disclosure responde de frente, e em
+# primeira pessoa — quem fala e' a mulher que viu funcionar em casa.
+#
+# ⚠️ MAS A VERSAO LITERAL DELE NAO CABE, e o motivo esta' medido, nao suposto.
+# A dele tem 23 palavras somando CTA e follow e SO' cabe porque larga o
+# MECANISMO — e o mecanismo e' o herdeiro funcional de A REGRA (EX2), a unica
+# peca que nenhum outro agente do parque tem, cobrada em ERRO por `_ex2_regra`.
+# Sem `blood` + `pressure` + orgao, o EXTERIOR 16 vira "isca absurda + gelatin
+# trick", que qualquer um dos outros vinte ja' e'. Entao o disclosure entra NO
+# LUGAR DA PROVA, no mesmo orcamento de 6-9 palavras, e o mecanismo fica.
+# ⛔ Se ele quiser a versao literal mesmo assim, e' decisao dele — mas custa
+# aposentar a `_ex2_regra` e deixar a cena 2 sem nomear o orgao (cota 1/2).
+#
+# ⚠️ 6-9 palavras COM o `{par}` de 2 ja' contado. O teto de 9 nao e' estetico:
+# com o mecanismo mais curto (6), o CTA mais curto (8) e o follow mais curto
+# (2), sobram exatamente 9. Entrada de 10 seria [ALCANCE] morto.
+# ⛔ Toda entrada carrega `{par}` E o literal `gelatin trick` — cobrado no
+# `_contrato_dos_pools`, nao afirmado aqui.
+DISCLOSURES16 = [
+    "What worked for {par} was the gelatin trick.",
+    "What fixed {par} was the gelatin trick.",
+    "{par} did the gelatin trick instead.",
+    "What worked for {par}: the gelatin trick.",
+    "I found the gelatin trick for {par}.",
+    "I gave {par} the gelatin trick.",
+    "The gelatin trick is what worked for {par}.",
+    "{par} got there on the gelatin trick.",
+    "The gelatin trick is what fixed {par}.",
 ]
+
+# ⛔⛔ TODAS COM DUAS PALAVRAS, e isso e' orcamento, nao gosto: uma entrada de
+# tres empurraria os disclosures de 9 para fora da banda e mataria dois deles em
+# silencio. Cobrado no `_contrato_dos_pools`.
+# ⚠️ `fiance`, nao `fiancee`: no ingles dos EUA a forma com dois `e` e' a
+# MULHER noiva. Quem esta' no quadro e' ele.
+# ⭐ O homem continua NOMEADO — o que muda e' que ele deixa de ser um terceiro
+# anonimo (`the man beside me`) e passa a ser o dela. Ele esta' cortado no peito
+# e sem rosto, entao o espectador nao julga a idade: o vinculo e' o que a fala
+# disser.
+PARES16 = ("my husband", "my man", "my fiance", "my partner")
 
 # ⚠️ 2-4 palavras, e FRASE SEPARADA — nunca colada no `Comment gelatin,`.
 # ⛔⛔ A automacao de DM casa a palavra EXATA: se o follow encostar na keyword,
@@ -1754,7 +1792,8 @@ def _montar_falas(rng, orgaos):
 
     # ----- cena 2 — ⭐⭐ A FUNDIDA -------------------------------------------
     # Forma aprovada pelo operador (lote 1, 2026-08-08):
-    #     {MECANISMO} {PROVA, com o homem NOMEADO} {CTA} {FOLLOW}
+    #     {MECANISMO} {DISCLOSURE, com o VINCULO nomeado} {CTA} {FOLLOW}
+    # ⚠️ era `{PROVA, com o homem NOMEADO}` ate' 2026-08-09.
     #
     # ⛔⛔ CADA BEAT ORCA CONTRA O MINIMO DOS OUTROS, e o beat sem restricao
     # propria e' escolhido DENTRO do orcamento — nunca antes dele. E' a licao
@@ -1778,16 +1817,34 @@ def _montar_falas(rng, orgaos):
         v = [x for x in pool if _n(x) + reserva <= TETO_FALA[2]]
         return v or [min(pool, key=_n)]
 
-    _mn_p = min(_w(x) for x in PROVAS16)
+    # ⚠️ O `{par}` e' resolvido ANTES de medir: todas as entradas de PARES16 tem
+    # duas palavras (contrato), mas medir o molde com `{par}` cru contaria 1 e o
+    # orcamento sairia otimista em uma palavra — exatamente o erro de medir a
+    # string-molde em vez da string final.
+    par = rng.choice(PARES16)
+    _disc = [d.format(par=par) for d in DISCLOSURES16]
+    _mn_m = min(_w(x.format(o=orgaos[1])) for x in MECANISMOS16)
     _mn_c = min(_w(x) for x in CTAS)
     _mn_f = min(_w(x) for x in FOLLOWS16)
 
-    mecan = rng.choice(_cabe16(MECANISMOS16, _mn_p + _mn_c + _mn_f))
+    # ⛔⛔ O DISCLOSURE ESCOLHE PRIMEIRO, E ISSO FOI MEDIDO — nao e' preferencia.
+    # Com o MECANISMO na frente (a ordem de 2026-08-08, quando o beat 2 era a
+    # PROVA), o [ALCANCE] do sorteio real deu 7 de 9 disclosures vivos, um deles
+    # em 0,7% e o mais frequente em 31,8%: os mecanismos vao de 6 a 8 palavras e
+    # so' DOIS tem 6, entao disclosure de 9 so' cabia em ~2% dos sorteios.
+    # ⭐ O criterio e' o mesmo do FLAGRANTE 16: escolhe primeiro QUEM TEM MENOS
+    # SUBSTITUTOS. Os dez mecanismos dizem a MESMA coisa (sangue + pressao +
+    # orgao) de dez jeitos; os nove disclosures dizem coisas diferentes (o que
+    # funcionou / eu dei / eu achei / consertou). Quem e' intercambiavel absorve
+    # a sobra — aqui, o mecanismo.
+    # ⚠️ E o mecanismo continua 10/10 alcancavel: com disclosure curto sobra
+    # espaco para os de 8 palavras. Conferido no [ALCANCE].
+    disc = rng.choice(_cabe16(_disc, _mn_m + _mn_c + _mn_f))
+    mecan = rng.choice(_cabe16(MECANISMOS16, _w(disc) + _mn_c + _mn_f))
     mecan = mecan.format(o=orgaos[1])
-    prova = rng.choice(_cabe16(PROVAS16, _w(mecan) + _mn_c + _mn_f))
-    cta = rng.choice(_cabe16(CTAS, _w(mecan) + _w(prova) + _mn_f))
-    fol = rng.choice(_cabe16(FOLLOWS16, _w(mecan) + _w(prova) + _w(cta)))
-    c2 = "%s %s %s %s" % (mecan, prova, cta, fol)
+    cta = rng.choice(_cabe16(CTAS, _w(mecan) + _w(disc) + _mn_f))
+    fol = rng.choice(_cabe16(FOLLOWS16, _w(mecan) + _w(disc) + _w(cta)))
+    c2 = "%s %s %s %s" % (mecan, disc, cta, fol)
 
     return [_pontuar(c1), _pontuar(c2)]
 
@@ -2850,6 +2907,23 @@ def _contrato_dos_pools(falhas):
         if "gelatin trick" not in t:
             falhas.append("FUNDIDAS[%d] sem o literal `gelatin trick` — o "
                           "criativo deixa de ser congruente com a VSL" % i)
+    # ⛔ O DISCLOSURE (2026-08-09) — dois contratos, os dois ja' teriam quebrado
+    # calados: entrada sem `{par}` volta a ser o terceiro anonimo que o operador
+    # trocou, e entrada sem `gelatin trick` fura a EX3 so' em alguns sorteios.
+    for i, t in enumerate(DISCLOSURES16):
+        if "{par}" not in t:
+            falhas.append("DISCLOSURES16[%d] sem `{par}` — sem o vinculo a fala "
+                          "volta a ser prova de terceiro anonimo" % i)
+        if "gelatin trick" not in t:
+            falhas.append("DISCLOSURES16[%d] sem o literal `gelatin trick` — a "
+                          "EX3 batiza na cena fundida e esta entrada nao batiza"
+                          % i)
+    # ⛔ Duas palavras cada: uma de tres empurra os disclosures de 9 para fora
+    # da banda e mata dois deles em silencio (ver comentario do pool).
+    for p in PARES16:
+        if _w(p) != 2:
+            falhas.append("PARES16 %r nao tem duas palavras — muda o orcamento "
+                          "da cena 2 e mata disclosure por [ALCANCE]" % p)
     for i, t in enumerate(CTAS):
         if sc.CTA_LITERAL not in t:
             falhas.append("CTAS[%d] sem o literal %r" % (i, sc.CTA_LITERAL))
@@ -2958,29 +3032,34 @@ def _viabilidade(falhas):
             falhas.append("cena 1 sem combinacao na banda para a isca %r"
                           % i[:34])
 
-    c2 = [(_w(r) + _w(m) + ex_o, m) for r in REGRAS for m in MECANISMOS_FALA]
+    # ⛔⛔ ESTE BLOCO MEDIA O MOTOR ERRADO, e por isso o autoteste inteiro nunca
+    # rodou ate' o fim neste agente. Herdado do porte de 24s, ele enumerava
+    # REGRAS x MECANISMOS_FALA (cena 2 de la') e FUNDIDAS x CTAS x GATES (cena 3
+    # de la') — e estourava `KeyError: 3` em `PISO_FALA[3]`, que num motor de
+    # DUAS cenas nao existe. Resultado: `python -c "autoteste()"` morria antes
+    # dos sorteios, e o numero que ele imprimia antes de morrer era sobre pools
+    # que a cena 2 do 16s NAO USA.
+    # ⚠️ E' o modo de falha §16 na forma mais cara: lente que roda, imprime
+    # numero e mede outra coisa. Agora enumera a cadeia REAL do `_montar_falas`.
+    # ⚠️ REGRAS / MECANISMOS_FALA / FUNDIDAS / GATES continuam no arquivo: o
+    # `_ex2_regra` e o `CONTROLE_REGRA` ainda os usam como controle da lente.
+    # Eles nao alimentam mais a fala — quem alimenta e' a familia `*16`.
+    c2 = [(_w(m) + ex_o + _w(d) + _w(p) - 1 + _w(c) + _w(f), m, d)
+          for m in MECANISMOS16 for d in DISCLOSURES16 for p in PARES16
+          for c in CTAS for f in FOLLOWS16]
     ok2 = [x for x in c2 if PISO_FALA[2] <= x[0] <= TETO_FALA[2]]
-    mecs = len({m for _, m in ok2})
-    print("  cena 2: faixa real %d-%d | %d de %d na banda %d-%d | %d de %d "
-          "mecanismos sorteaveis"
+    print("  cena 2: faixa real %d-%d | %d de %d na banda %d-%d"
           % (min(x[0] for x in c2), max(x[0] for x in c2), len(ok2), len(c2),
-             PISO_FALA[2], TETO_FALA[2], mecs, len(MECANISMOS_FALA)))
-    for m in MECANISMOS_FALA:
-        if not [1 for r in REGRAS
-                if PISO_FALA[2] <= _w(r) + _w(m) + ex_o <= TETO_FALA[2]]:
-            falhas.append("cena 2: o mecanismo %r nunca cabe na banda"
-                          % m[:34])
-
-    c3 = [_w(f) + ex_o + _w(c) + _w(g)
-          for f in FUNDIDAS for c in CTAS for g in GATES]
-    ok3 = [x for x in c3 if PISO_FALA[3] <= x <= TETO_FALA[3]]
-    print("  cena 3: faixa real %d-%d | %d de %d combinacoes na banda %d-%d"
-          % (min(c3), max(c3), len(ok3), len(c3), PISO_FALA[3], TETO_FALA[3]))
-    for f in FUNDIDAS:
-        if not [1 for c in CTAS for g in GATES
-                if PISO_FALA[3] <= _w(f) + ex_o + _w(c) + _w(g) <= TETO_FALA[3]]:
-            falhas.append("cena 3 sem combinacao na banda para a fundida %r"
-                          % f[:34])
+             PISO_FALA[2], TETO_FALA[2]))
+    print("          %d de %d mecanismos e %d de %d disclosures alcancaveis"
+          % (len({m for _, m, _ in ok2}), len(MECANISMOS16),
+             len({d for _, _, d in ok2}), len(DISCLOSURES16)))
+    for m in MECANISMOS16:
+        if not [1 for x in ok2 if x[1] == m]:
+            falhas.append("cena 2: o mecanismo %r nunca cabe na banda" % m[:34])
+    for d in DISCLOSURES16:
+        if not [1 for x in ok2 if x[2] == d]:
+            falhas.append("cena 2: o disclosure %r nunca cabe na banda" % d[:34])
 
 
 def autoteste(n_por_pagina=80, seed=7):
@@ -2999,7 +3078,13 @@ def autoteste(n_por_pagina=80, seed=7):
     copy = {"ISCAS": len(ISCAS), "DESMENTIDOS": len(DESMENTIDOS),
             "ALIANCAS": len(ALIANCAS), "REGRAS": len(REGRAS),
             "MECANISMOS_FALA": len(MECANISMOS_FALA), "FUNDIDAS": len(FUNDIDAS),
-            "CTAS": len(CTAS), "GATES": len(GATES)}
+            "CTAS": len(CTAS), "GATES": len(GATES),
+            # ⭐ os pools que de fato alimentam a cena 2 do 16s. Sem eles o
+            # relatorio listava oito pools e nenhum deles era o que sai no
+            # video — relatorio que nao cita quem fala nao serve de inventario.
+            "MECANISMOS16": len(MECANISMOS16),
+            "DISCLOSURES16": len(DISCLOSURES16), "PARES16": len(PARES16),
+            "FOLLOWS16": len(FOLLOWS16)}
     for nome, piso in sorted(MIN_COPY.items()):
         if copy[nome] < piso:
             falhas.append("pool de copy %s com %d entradas (minimo %d)"
@@ -3056,9 +3141,13 @@ def autoteste(n_por_pagina=80, seed=7):
     # capacidade real de um take cheio de 8s: 27-32 palavras (3,4-4,0 p/s, medido
     # no ESCANDALO). ⚠️ A cena 3 no teto da doutrina pede 4,25 p/s — a tensao 🔴
     # aberta da EX12, decisao do Ed.
-    capacidade = {1: (27, 32), 2: (27, 32), 3: (27, 32)}
+    # ⛔ O SEGUNDO RESQUICIO DA CENA 3, e ele derrubava o autoteste na ultima
+    # linha: `palavras[3]` existe como lista VAZIA e `sum([])/0` estoura. O
+    # laco agora sai do proprio TETO_FALA, que e' quem sabe quantas cenas o
+    # motor tem — numero de cenas cravado a mao envelhece a cada porte.
+    capacidade = {1: (27, 32), 2: (27, 32)}
     tot = 0.0
-    for i in (1, 2, 3):
+    for i in sorted(TETO_FALA):
         v = palavras[i]
         media = sum(v) / float(len(v))
         tot += media
