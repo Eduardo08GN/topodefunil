@@ -1523,24 +1523,43 @@ VILOES = [
 #     leituras cabem, e elas dizem o contrario uma da outra. `Two of three
 #     nights your {o} won't work?` diz a mesma coisa e nao vira charada, porque
 #     o verbo (`won't work`) carrega o sinal junto com a fracao.
+# ⛔⛔ ESTE POOL DEIXOU DE SER A FALHA E VIROU A DESCOBERTA — 2026-08-10.
+# Ordem do operador, sobre `Every Saturday the wiener quits before you finish`:
+#   *"esta' desnecessario, pois se o cara quer 'putting your sausage in her
+#    donut at seventy', se ele ta' interessado nisso, ele ja' ta' com problema
+#    no Johnson dele, portanto fica redundante. Melhor seria colocar no lugar
+#    uma frase com funcao introdutoria: I've discovered a trick que vai fix
+#    your pecker."*
+# ⭐ E ele esta' certo sobre a redundancia: o HOOK deste angulo ja' pressupoe o
+# problema — quem se interessa por "ainda por o pepino na rosquinha aos setenta"
+# ja' se declarou. Gastar a segunda batida repetindo a falha e' pagar duas vezes
+# pela mesma informacao, no take que so' tem 25 palavras.
+# ⚠️ MAS A FALHA NAO PODE SUMIR (CT2): sem dano nomeado o espectador nao se
+# reconhece. ⭐ A saida e' cada entrada carregar as DUAS coisas numa batida so':
+# a DESCOBERTA nomeia o `gelatin trick` E diz O QUE ele conserta — e o que ele
+# conserta E' a falha. Uma batida, duas funcoes, zero palavra repetida.
+# ⚠️ 9-11 palavras. ⛔ Nenhuma usa verbo de ereccao colado no orgao (CT7).
+# ⛔⛔ E NENHUMA DIZ `your {o}` NEM `on you`, e isso e' a ES5: a cena 1 deste
+# angulo CONDICIONA, nunca AFIRMA sobre o corpo do espectador. A primeira
+# versao deste pool tinha cinco entradas com `your`/`on you` e levou 83 ERRO
+# em 300 sorteios. A segunda pessoa deste take mora no HOOK (`if the cucumber
+# still goes in the donut at sixty`), que e' onde ela sempre morou.
 FALHAS = [
-    "Ten minutes in, the {o} quits on you.",
-    "Twenty minutes in, the {o} goes soft on you.",
-    "Halfway through, the {o} quits and you're done.",
-    "Two minutes of trying and your {o} won't hold?",
-    "By eleven the {o} quits and your wife rolls over.",
-    "Four years, and your {o} hasn't worked once?",
-    "Every Saturday the {o} quits before you finish.",
-    "Sixty years old and the {o} gave out on you.",
-    "Fifteen minutes, and the {o} shut down on you.",
-    "Twice this week the {o} quit on you.",
-    "Nine at night and your {o} has already quit?",
-    "Married thirty years, and the {o} stopped showing up.",
-    "Ten minutes in and your {o} quits on you?",
-    "Soft by eleven, and the {o} has quit again.",
-    "Fifty-eight years old and the {o} went out early.",
-    "Two of three nights your {o} won't work?",
-    "Ten minutes is all, and then the {o} quits.",
+    "There's a gelatin trick that fixes a {o} that quit.",
+    "I found the gelatin trick that fixes a soft {o}.",
+    "There's a gelatin trick for a {o} that went soft.",
+    "I found the gelatin trick for a {o} that stopped.",
+    "I discovered the gelatin trick that ends a dead {o}.",
+    "There's a gelatin trick that fixes a {o} gone dead.",
+    "The gelatin trick I found repairs a {o} that quit.",
+    "I discovered the gelatin trick for a {o} that failed.",
+    "There's a gelatin trick that fixes a {o} that stopped.",
+    "I found the gelatin trick that ends a soft {o}.",
+    "There's a gelatin trick that repairs a dead {o}.",
+    "I discovered the gelatin trick that fixes a quitting {o}.",
+    "The gelatin trick I found fixes a {o} gone soft.",
+    "There's a gelatin trick for a {o} that gave out.",
+    "I found the gelatin trick that fixes a {o} gone quiet.",
 ]
 
 # ⚠️ PARADO, NAO APAGADO. O FECHO saiu do slot da cena 1 pela ordem acima —
@@ -3972,7 +3991,7 @@ def _recopiar_tudo(spec, rng):
     spec["relacao"] = _relacao(rng, spec["narradora"]["idade"],
                                spec["homem"]["idade"])
     spec["falas"] = _montar_falas(rng, spec["par"], spec["receita"],
-                                  rng.sample(NUCLEO, 3), spec["relacao"],
+                                  sc.orgaos_sorteaveis(rng, 3), spec["relacao"],
                                   spec["degrau"])
     if any(_cita(" ".join(spec["falas"]), c) for c in spec["bancada"]["cabecas"]):
         spec["bancada"] = _bancada_livre(rng, spec["falas"], [], spec["receita"])

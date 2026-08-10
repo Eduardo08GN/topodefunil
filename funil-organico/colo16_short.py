@@ -1769,7 +1769,7 @@ GATES = [
 # ⛔⛔ AS PALAVRAS DO ORGAO — E A REGRA AQUI FOI REVERTIDA EM 2026-08-10.
 #
 # ANTES: *"rotacionam DENTRO do video (nunca a mesma duas vezes)"*, e o
-# `sortear()` fazia `rng.sample(NUCLEO, 2)` para garantir dois apelidos
+# `sortear()` fazia `sc.orgaos_sorteaveis(rng, 2)` para garantir dois apelidos
 # diferentes. Medido: o apelido mudava no corte em **100% dos videos**.
 #
 # AGORA (CT4 do CONTRATO-COPY-16S.md): **UM apelido por video, repetido nos
@@ -2231,7 +2231,7 @@ def sortear(pagina, rng, led, travas=None):
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
              else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
 
-    # ⛔⛔ REVERTIDO EM 2026-08-10 (CT4). Era `rng.sample(NUCLEO, 2)` — dois
+    # ⛔⛔ REVERTIDO EM 2026-08-10 (CT4). Era `sc.orgaos_sorteaveis(rng, 2)` — dois
     # orgaos DIFERENTES no mesmo video, "porque repetir o substantivo vira
     # bordao". Medido depois do colapso para 16s: o apelido mudava no corte em
     # 100% dos videos, e em duas cenas o corte ZERA a memoria de trabalho —

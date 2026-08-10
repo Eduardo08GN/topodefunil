@@ -853,8 +853,12 @@ def sortear(pagina, rng, led, travas=None):
     corpo = rng.choice(CORPOS_H if sexo == "homem" else CORPOS_M)
     cenario = _fresco(CENARIOS, usados.get("cenario", []), rng, "id")
     scrub = rng.choice(SCRUBS)
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
 
-    orgaos = rng.sample(NUCLEO, 2)
+    orgaos = sc.orgaos_sorteaveis(rng, 2)
     a = rng.choice(ITEM_A)
     # CL22 — o par nao repete fruta, ingrediente do truque nem beneficio. Todo
     # item A tem no minimo 8 item B livres, entao a lista nunca fica vazia e

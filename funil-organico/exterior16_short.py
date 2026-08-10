@@ -399,7 +399,7 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # ⭐ OS DIRETOS — os tres que NOMEIAM o orgao. `tool` e `soldier` sao apelido
 # afetivo e suavizam; entram em minoria, nunca nas duas cenas que a fonte nomeia.
 # ⚠️ DIVERGENCIA MINIMA E DECLARADA da letra da EX14, que escreve
-# `rng.sample(NUCLEO, 2)`: aqui e' `rng.sample(NUCLEO_DIRETO, 2)`. O motivo e' a
+# `sc.orgaos_sorteaveis(rng, 2)`: aqui e' `rng.sample(NUCLEO_DIRETO, 2)`. O motivo e' a
 # ordem do operador de 2026-08-03 que trocou o pool dos nove motores ("use
 # palavras alusivas mais diretas ao penis, tal como wiener, peck-er, john-son, do
 # que manhood"), e a fonte diz `Johnson` nas DUAS cenas em que nomeia. Sortear os

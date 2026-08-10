@@ -1862,7 +1862,11 @@ def sortear(pagina, rng, ledger, travas=None):
     # TR6/cota do orgao: tres substantivos DISTINTOS sorteados de uma vez. So'
     # dois entram em fala (o CTA nao nomeia o orgao) — o terceiro fica de
     # reserva para o `nova_fala()` da UI nao repetir o que ja' esta' em cena.
-    orgaos = rng.sample(NUCLEO, 3)
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
+    orgaos = sc.orgaos_sorteaveis(rng, 3)
     falas = _montar_falas(rng, sub, orgaos, relacao, degrau)
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], sub)
 
@@ -2781,7 +2785,7 @@ def _recopiar_tudo(spec, rng):
     (esposa, vizinha, a mulher que cozinha) acompanha: a relacao e' recalculada
     ANTES das falas, para que o filtro de voz da cena 2 valha.
     """
-    orgaos = rng.sample(NUCLEO, 3)
+    orgaos = sc.orgaos_sorteaveis(rng, 3)
     spec["relacao"] = _relacao(rng, spec["narradora"]["idade"],
                                spec["corpo_prova"]["idade"])
     spec["falas"] = _montar_falas(rng, spec["substancia"], orgaos,

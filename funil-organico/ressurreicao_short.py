@@ -2526,9 +2526,12 @@ def sortear(pagina, rng, ledger, travas=None, degrau=None,
     # `soldier`, `old boy` e `tool` sao apelido afetivo: suavizam. Ficam, porque
     # tres motores os usam como fallback e porque variedade tambem conta — mas
     # entram em MINORIA, nunca em duas cenas do mesmo video.
-    diretos = rng.sample(NUCLEO_DIRETO, 2)
-    resto = [n for n in NUCLEO if n not in diretos]
-    orgaos = diretos + [rng.choice(resto)]
+    # ⛔ 2026-08-10 — o `resto` trazia `soldier`/`tool` de volta pela porta
+    # dos fundos: 25% dos videos no exterior e 75% no ressurreicao. So' os
+    # tres apelidos sao sorteaveis (ordem do operador, parque inteiro). Com
+    # tres termos e mais de tres cenas ha' repeticao, e isso e' aritmetica:
+    # ver `short_comum.orgaos_sorteaveis`.
+    orgaos = sc.orgaos_sorteaveis(rng, 3)
     rng.shuffle(orgaos)
     falas = _montar_falas(rng, sub, rec, orgaos, relacao, cred, deg)
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], rec, sub)

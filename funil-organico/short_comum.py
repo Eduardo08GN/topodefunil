@@ -288,7 +288,17 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
                                 "substantivo do nucleo: %s"
                         % (len(cenas), cota_min,
                            [i for i in (1, 2, 3) if i not in cenas])))
-    if len(set(usados)) < len(usados):
+    # ⛔⛔ AVISO APOSENTADO EM 2026-08-10, e a aposentadoria e' ARITMETICA.
+    # Ele cobrava substantivos DISTINTOS entre as cenas. O operador reduziu o
+    # pool sorteavel a TRES apelidos (`pecker`, `wiener`, `Johnson`) no parque
+    # inteiro — e um motor de CINCO cenas com tres termos REPETE por definicao.
+    # Medido no dia da mudanca: 600 avisos em 120 sorteios por motor, todos
+    # inevitaveis. Alarme que nao pode ser satisfeito nao e' alarme, e' ruido
+    # que ensina a ignorar o linter inteiro (a mesma licao do piso do TROCA).
+    # ⚠️ A regra que sobreviveu e' o CT4 do contrato 16s: UM apelido por
+    # video, repetido nos dois takes — la' a repeticao e' o desenho, nao o
+    # defeito, porque o corte de 8s zera a memoria de trabalho do espectador.
+    if False and len(set(usados)) < len(usados):
         achados.append(("AVISO", "substantivo repetido no video: %s"
                         % sorted({u for u in usados if usados.count(u) > 1})))
 
@@ -695,6 +705,31 @@ FOLLOW_16 = re.compile(
 # dos EUA. Os dois continuam no `NUCLEO` de cada motor porque as lentes os
 # usam para DETECTAR o orgao — o que muda e' que nao sao mais SORTEAVEIS.
 APELIDOS_16 = ("pecker", "wiener", "Johnson")
+
+
+def orgaos_sorteaveis(rng, n):
+    """`n` apelidos do orgao, sorteados SO' entre os tres autorizados.
+
+    ⛔ ORDEM DO OPERADOR, 2026-08-10, e ela vale para o PARQUE INTEIRO, nao so'
+    para os 16s: *"todos os agentes que apresentam soldier como termo alusivo
+    devem receber a pool de opcoes de termos alusivos wiener, john-son, peck-er
+    somente"*.
+    ⚠️ MEDIDO ANTES: 27 motores sorteavam termo fora dos tres — `tool` em ate'
+    74% dos videos (receita_short) e `soldier` em ate' 72%. O FALTA sorteava
+    ainda `manhood`, `member` e, pior, `john-son`/`peck-er` JA' HIFENIZADOS
+    dentro da FALA: a hifenizacao e' do TAKE (ela existe para o Veo nao soletrar
+    a palavra), e na fala ela vira texto quebrado.
+    ⛔ `soldier` soa filme de guerra para ouvido americano e `tool` e' ambiguo
+    em giria dos EUA — os dois seguem no `NUCLEO` de cada motor porque as
+    LENTES os usam para DETECTAR o orgao. O que muda e' que nao sao sorteaveis.
+
+    ⚠️ COM TRES TERMOS E CINCO CENAS NAO HA' COMO NAO REPETIR, e isso e'
+    aritmetica, nao descuido: embaralha-se os tres e repete-se em ciclo, de modo
+    que as N primeiras cenas nunca repitam entre si antes de esgotar o trio.
+    """
+    base = list(APELIDOS_16)
+    rng.shuffle(base)
+    return [base[i % len(base)] for i in range(n)]
 
 # ⛔ Verbo de ereccao na fala do CTA — ali e' claim NOSSO sobre o produto.
 # ⚠️ No take 1 da isca absurda ele e' permitido: la' a promessa e' justamente

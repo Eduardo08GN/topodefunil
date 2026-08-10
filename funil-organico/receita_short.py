@@ -1515,7 +1515,11 @@ def sortear(pagina, rng, led, travas=None):
     # primeiro, 24 segundos depois.
     # ⚠️ Eram DOIS ate' 2026-08-04, e a escassez era a desculpa que empurrava
     # slot para pronome. `NUCLEO` tem 5 grafias — nunca faltou.
-    orgaos = rng.sample(NUCLEO, 4)
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
+    orgaos = sc.orgaos_sorteaveis(rng, 4)
 
     spec = {"pagina": pagina, "mundo": mundo, "etnia": et, "cor": cor,
             "enquadramento": enq, "ref": ref, "mulher": mulher, "lugar": lugar,
@@ -1909,8 +1913,13 @@ def lint(spec, blocos):
         ach.append(("ERRO", "RE4: cota do orgao %d/3 (minimo 2) — cenas sem "
                             "substantivo do nucleo: %s"
                     % (len(cota), [i for i in (1, 2, 3) if i not in cota])))
-    if len(set(spec["orgaos"])) < 4:
-        ach.append(("ERRO", "RE4: o video nao tem quatro grafias distintas do "
+    # ⚠️ 4 -> 3 em 2026-08-10: a RE4 exigia QUATRO grafias distintas, e o
+    # operador reduziu o pool sorteavel a TRES (`pecker`, `wiener`,
+    # `Johnson`). Lente que pede quatro de um pool de tres reprova 100% dos
+    # sorteios — alarme impossivel de satisfazer nao e' alarme, e' ruido que
+    # ensina a ignorar o linter inteiro.
+    if len(set(spec["orgaos"])) < 3:
+        ach.append(("ERRO", "RE4: o video nao tem tres grafias distintas do "
                             "orgao — %s" % (spec["orgaos"],)))
 
     i1, i2, i3 = (blocos["IMAGE 01/03"], blocos["IMAGE 02/03"],

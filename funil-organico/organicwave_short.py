@@ -770,8 +770,12 @@ def sortear(pagina, rng, ledger, travas=None):
     persona = _evitando(rng, _pool or PERSONAS, hist.get("persona", [])[-1:])
     ref = rng.choice(homens_de(pagina))
     mul = rng.choice(mulheres_de(pagina))
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
 
-    orgaos = rng.sample(NUCLEO, 3)
+    orgaos = sc.orgaos_sorteaveis(rng, 3)
     n = IDADE_EXT[ref["idade"]]
     hooks, fundidas, ctas = _pools(persona["id"])
     # ⭐ A FUNDIDA SORTEIA UNIFORME E A RECEITA E' QUE CEDE — e a escolha foi
@@ -1078,7 +1082,7 @@ def _recopiar_persona(spec, rng):
     """
     n = IDADE_EXT[spec["ref"]["idade"]]
     hooks, fundidas, ctas = _pools(spec["persona"]["id"])
-    orgaos = rng.sample(NUCLEO, 2)
+    orgaos = sc.orgaos_sorteaveis(rng, 2)
     ing = spec["receita"]["fala"]
     fund = rng.choice(_cabe(fundidas, lambda x: x.format(o=orgaos[1], ing=ing),
                             TETO_FALA[2]))

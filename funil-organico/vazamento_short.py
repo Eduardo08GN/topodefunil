@@ -769,8 +769,12 @@ def sortear_longo(pagina, rng, ledger, travas=None):
     ref = (sc.ref_forte(REFS[0], rng) if _tv.get("forte") else rng.choice(REFS))
     mul = (sc.ref_bela(MULHERES[0], rng) if _tv.get("bela")
            else rng.choice(MULHERES))
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
 
-    orgaos = rng.sample(NUCLEO, 4)
+    orgaos = sc.orgaos_sorteaveis(rng, 4)
     falas = [
         rng.choice(HOOKS).format(o=orgaos[0]),
         rng.choice(RECEITAS).format(o=orgaos[1]),

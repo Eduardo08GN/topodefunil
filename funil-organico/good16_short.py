@@ -78,7 +78,7 @@ O ARCO — 2 cenas de 8s, destino AdBatch Vertical 2:
    postura do print fica de pe' e a fala tem para onde sair.
 
 ⚠️ PENDENCIA DE COPY, DECLARADA E NAO CORRIGIDA (copy e' alcada do operador):
-   uma das seis entradas de AVISOS termina em `stay away from this.` — deitico
+   uma das seis entradas de AVISOS termina em `stay away from this method.` — deitico
    terminal em construcao de contraste, que o `medir_deiticos` acusa em ~50 de
    1750 sentencas. Medido ANTES e DEPOIS desta passada: o numero nao mudou,
    porque a copy do take 1 nao foi tocada. ⭐ O que mudou foi o quadro: a tigela
@@ -570,8 +570,8 @@ SACHE = ("%s, empty and crumpled, with the lettering face up and readable"
 # ⛔ Por isso o CT2 e' filtrado no `lint` deste motor, e SO' o CT2 — ver
 # `_go11_contrato16`.
 AVISOS = [
-    "If you are single, stay away from this.",
-    "If you are single, do not try this.",
+    "If you are single, stay away from this method.",
+    "If you are single, do not try this method.",
     "If you are single, this is not for you.",
     "If you are single, do not touch this.",
     "If you are single, skip this one.",

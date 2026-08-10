@@ -293,7 +293,7 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # ⭐ OS DIRETOS — os tres que NOMEIAM o orgao. `tool` e `soldier` sao apelido
 # afetivo e suavizam; entram em minoria, nunca nas duas cenas que a fonte nomeia.
 # ⚠️ DIVERGENCIA MINIMA E DECLARADA da letra da EX14, que escreve
-# `rng.sample(NUCLEO, 2)`: aqui e' `rng.sample(NUCLEO_DIRETO, 2)`. O motivo e' a
+# `sc.orgaos_sorteaveis(rng, 2)`: aqui e' `rng.sample(NUCLEO_DIRETO, 2)`. O motivo e' a
 # ordem do operador de 2026-08-03 que trocou o pool dos nove motores ("use
 # palavras alusivas mais diretas ao penis, tal como wiener, peck-er, john-son, do
 # que manhood"), e a fonte diz `Johnson` nas DUAS cenas em que nomeia. Sortear os
@@ -1728,9 +1728,12 @@ def _orgaos(rng):
     do RESTO do nucleo — e' onde os apelidos afetivos (`tool`, `soldier`) entram,
     em minoria, como manda a ordem de 2026-08-03.
     """
-    diretos = rng.sample(NUCLEO_DIRETO, 2)
-    resto = [n for n in NUCLEO if n not in diretos]
-    return diretos + [rng.choice(resto)]
+    # ⛔ 2026-08-10 — o `resto` trazia `soldier`/`tool` de volta pela porta
+    # dos fundos: 25% dos videos no exterior e 75% no ressurreicao. So' os
+    # tres apelidos sao sorteaveis (ordem do operador, parque inteiro). Com
+    # tres termos e mais de tres cenas ha' repeticao, e isso e' aritmetica:
+    # ver `short_comum.orgaos_sorteaveis`.
+    return sc.orgaos_sorteaveis(rng, 3)
 
 
 def sortear(pagina, rng, ledger, travas=None):

@@ -1867,7 +1867,7 @@ def sortear(pagina, rng, ledger, travas=None):
     relacao = _relacao(rng, nar["idade"], hom["idade"])
 
     # ⛔⛔ CT4 — UM APELIDO DO ORGAO POR VIDEO, REPETIDO NOS DOIS TAKES.
-    # ISTO REVERTE a regra que estava aqui (`rng.sample(NUCLEO, 3)`, tres
+    # ISTO REVERTE a regra que estava aqui (`sc.orgaos_sorteaveis(rng, 3)`, tres
     # substantivos DISTINTOS por sorteio), e a reversao e' declarada:
     #   · em 24s e cinco cenas o risco e' o BORDAO — duas mencoes iguais viram
     #     tique, e por isso o motor de 24s rotaciona;
@@ -2926,7 +2926,7 @@ def _recopiar_tudo(spec, rng):
     ANTES das falas, para que o filtro de voz da cena 2 valha.
     """
     # ⛔ CT4: um apelido por video (ver a nota no `sortear`).
-    _o = rng.choice(NUCLEO)
+    _o = rng.choice(sc.APELIDOS_16)
     orgaos = [_o, _o, _o]
     spec["relacao"] = _relacao(rng, spec["narradora"]["idade"],
                                spec["corpo_prova"]["idade"])

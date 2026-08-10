@@ -2275,7 +2275,11 @@ def sortear(pagina, rng, led, travas=None):
 
     # ⛔ Dois orgaos DIFERENTES no mesmo video: repetir o substantivo em 24
     # segundos vira bordao.
-    orgaos = rng.sample(NUCLEO, 2)
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
+    orgaos = sc.orgaos_sorteaveis(rng, 2)
 
     # ⭐ A FLAG VIAJA NO SPEC. O `montar()` nao recebe `travas`, e sem
 
@@ -2506,12 +2510,12 @@ def lint(spec, blocos):
     # ⚠️ a cena 2 deste angulo abre com a RECEITA da fonte — caldo de osso, mel
     # e limao. Sao os referentes concretos aqui, e o pool inteiro os nomeia.
     alvos = [(2, ["gelatin", "broth", "honey", "lemon"]
-                 + [o.lower() for o in NUCLEO]),
+                 + [o.lower() for o in sc.APELIDOS_16]),
              # ⚠️ a cena 3 deste angulo abre apontando para O HOMEM que esta'
              # em quadro (`That is him a month in`) — o referente e' o corpo-
              # prova, nao o orgao. `him`/`he` conta, e e' mais forte: o
              # espectador esta' VENDO de quem ela fala.
-             (3, ["him", "he ", "his "] + [o.lower() for o in NUCLEO])]
+             (3, ["him", "he ", "his "] + [o.lower() for o in sc.APELIDOS_16])]
     for i, termos in alvos:
         sents = _sentencas(falas[i - 1])
         if not sents:

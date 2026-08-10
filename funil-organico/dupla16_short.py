@@ -2231,7 +2231,11 @@ def sortear(pagina, rng, led, travas=None):
 
     # ⛔ Dois orgaos DIFERENTES no mesmo video: repetir o substantivo em 24
     # segundos vira bordao.
-    orgaos = rng.sample(NUCLEO, 2)
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
+    orgaos = sc.orgaos_sorteaveis(rng, 2)
 
     # ⭐ A FLAG VIAJA NO SPEC. O `montar()` nao recebe `travas`, e sem
 
@@ -2631,7 +2635,7 @@ def lint(spec, blocos):
     # `falas` tem DOIS itens e `falas[2]` estourava IndexError. Lente que olha
     # cena inexistente e' sonda cega no melhor caso e crash no pior — aqui foi o
     # pior, e foi o autoteste que pegou na primeira rodada.
-    alvos = [(2, ["gelatin"] + [o.lower() for o in NUCLEO])]
+    alvos = [(2, ["gelatin"] + [o.lower() for o in sc.APELIDOS_16])]
     for i, termos in alvos:
         sents = _sentencas(falas[i - 1])
         if not sents:

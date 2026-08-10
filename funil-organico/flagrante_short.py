@@ -921,7 +921,11 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     mul = rng.choice(MULHERES)
 
     # 4 substantivos distintos do nucleo, um por cena 1-4 (cota 75%)
-    orgaos = rng.sample(NUCLEO, 4)
+    # ⛔ 2026-08-10 — SO' OS TRES APELIDOS SAO SORTEAVEIS (ordem do
+    # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
+    # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
+    # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
+    orgaos = sc.orgaos_sorteaveis(rng, 4)
 
     falas = [
         _hook_fmt(rng.choice(HOOKS), oc, orgaos[0]),

@@ -937,7 +937,7 @@ def sortear(pagina, rng, ledger, travas=None):
     else:
         traje = rng.choice(TRAJES_PADRAO)
         traje_amiga = rng.choice([t for t in TRAJES_PADRAO if t != traje])
-    orgao = rng.choice(NUCLEO)
+    orgao = rng.choice(sc.APELIDOS_16)
 
     falas = _montar_falas(rng, orgao, raro)
 
@@ -1460,7 +1460,7 @@ def lint(spec, blocos):
     # --- FA9: a abertura de cada cena tem REFERENTE (licoes §21) ------------
     # ⛔ A primeira sentenca e' a que o espectador ouve sozinha no scroll, antes
     # de qualquer outra — e era a unica que nenhuma lente minha olhava.
-    orgaos = [o.lower() for o in NUCLEO]
+    orgaos = [o.lower() for o in sc.APELIDOS_16]
     alvos = [(1, orgaos), (3, orgaos + ["gelatin", "missing", "piece", "part"])]
     for i, termos in alvos:
         sents = _sentencas(falas[i - 1])
