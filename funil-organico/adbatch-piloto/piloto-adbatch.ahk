@@ -77,10 +77,11 @@ global linhas := []
 ; Ordem do operador, 2026-08-09: *"pode acelerar o script? ele ta' lento. Pode
 ; reduzir 2 segundos no tempo entre as interacoes."*
 ; ⚠️ Espalhar a aceleracao em quinze numeros magicos seria impossivel de afinar
-; depois. Aqui e' um fator: 1.00 e' o ritmo original, 0.20 e' o atual.
+; depois. Aqui e' um fator: 1.00 e' o ritmo original, 0.10 e' o atual.
 ; ⭐ MEDIDO, rodando as 13 esperas de uma aba isoladas:
 ;     RITMO 0.55  ->  ~2.480 ms   (o ajuste de 2026-08-09)
-;     RITMO 0.20  ->  ~1.080 ms   (o ajuste de 2026-08-10)
+;     RITMO 0.20  ->   1.063 ms   (medido)
+;     RITMO 0.10  ->   ver abaixo (o ajuste de 2026-08-10, 2a rodada)
 ; A base sem fator soma 4.710 ms. O segundo corte tirou ~1,4 s por aba, que
 ; e' o que o operador pediu: *"o tempo entre as interacoes diminua 1 segundo
 ; e meio"*.
@@ -96,16 +97,16 @@ global linhas := []
 ;   · o `respirar()` — a pausa longa e rara e' justamente o que quebra o padrao
 ;     de maquina, e encolhe-la desfaria o pedido anterior do operador;
 ;   · o espalhamento `esp` de cada pausa — o tremor continua o mesmo em %.
-global RITMO := 0.20
+global RITMO := 0.10
 
 pausa(base, esp := 35) {
     global RITMO
     ; base em ms, `esp` = espalhamento em % para cada lado.
-    ; ⚠️ piso de 25ms: sorteio que devolve valor perto de zero volta a ser
+    ; ⚠️ piso de 15ms: sorteio que devolve valor perto de zero volta a ser
     ; ritmo de maquina, so' que rapido. Era 40 ate' o RITMO cair para 0.20 —
     ; ver a nota do RITMO acima.
     d := Round(base * RITMO) * (100 + Random(-esp, esp)) // 100
-    Sleep (d < 25 ? 25 : d)
+    Sleep (d < 15 ? 15 : d)
 }
 
 respirar() {

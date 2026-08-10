@@ -509,6 +509,22 @@ MULHERES = [
 # um pool era de vidro e o gerador colapsou quatro entradas numa prensa
 # francesa, a forma que ele conhece melhor. ⛔ E todas sao de CERAMICA/BARRO,
 # porque e' o que o print mostra — variar o material seria inventar cena.
+# ⭐ A CAIXA DE BICARBONATO — 2026-08-10, ordem do operador: *"quero que apareca
+# uma caixa de baking soda ao lado da bowl de gelatina em 50% da ocorrencia dos
+# videos"*.
+# ⭐ Vem da FONTE: os dois reels lidos a 1 fps (1752010159557238 e
+# 1244976845366022) poem as caixas em quadro com ROTULO LEGIVEL — JELL-O, Arm &
+# Hammer, mel — e a fala NUNCA lista ingrediente. E' o CT5 na pratica: o lugar
+# do ingrediente e' a IMAGEM, nao a fala. A caixa faz o preparo parecer receita
+# de cozinha de verdade sem gastar uma palavra do teto de 25.
+# ⛔ 50% E' EIXO DE MEDICAO, NAO ENFEITE: metade do lote com e metade sem e' o
+# que permite ver em campo se a caixa muda alguma coisa. Fixar em 100% mataria
+# a comparacao, e o operador pediu metade.
+# ⚠️ Ela entra nos DOIS takes ou em NENHUM — a tigela esta' nos dois, e uma
+# caixa que aparece so' no segundo le' como objeto que alguem trouxe no corte.
+CAIXA_BICARBONATO = ("an orange and yellow cardboard box of baking soda, the "
+                     "label sharp and readable, standing on the same edge")
+
 TIGELAS = [
     {"id": "creme_lisa", "curto": "ceramica creme",
      "img": "a heavy cream ceramic bowl of glossy amber gelatin mixture with a "
@@ -862,10 +878,14 @@ def sortear(pagina, rng, ledger, travas=None):
 
     tigela = (_por_id(TIGELAS, travas["tigela"]) if travas.get("tigela")
               else _fresco(TIGELAS, hist.get("tigela", [])[-3:], rng))
+    # ⭐ 50/50: metade dos videos com a caixa de bicarbonato ao lado da
+    # tigela. Eixo de medicao de campo, nao enfeite.
+    bicarb = (rng.random() < 0.5)
 
     spec = {
         "pagina": pagina, "etnia": etnia, "bela": bela, "forte": forte,
         "mundo": mundo, "homem": homem, "mulher": mulher, "tigela": tigela,
+        "bicarb": bicarb,
         # ⭐ Com o MODO FORTE ligado o corpo vem DO HELPER, junto do rosto e da
         # idade: sortear um corpo do pool velho por cima do homem forte seria
         # colar um tronco de 58 anos num rosto de 34.
@@ -907,6 +927,16 @@ def _traje_dela(spec):
     return m["dela_bela"] if spec.get("bela") else m["dela"]
 
 
+
+def _bicarb(spec):
+    """A caixa de bicarbonato ao lado da tigela, ou nada.
+
+    ⛔ Devolve string VAZIA quando o eixo esta' desligado, para as duas
+    IMAGEs usarem a MESMA string-molde nos dois estados: dois caminhos de
+    montagem divergem com o tempo, um caminho so' nao.
+    """
+    return ", with %s" % CAIXA_BICARBONATO if spec.get("bicarb") else ""
+
 def montar(spec):
     m, h, w = spec["mundo"], spec["homem"], spec["mulher"]
     et = spec["etnia"]
@@ -942,12 +972,12 @@ def montar(spec):
         "chest, shoulders and arms out of the water, is a %d-year-old %s man, "
         "bare-chested, %s, %s, %s, a gold wedding band on his hand, talking "
         "straight to camera. His hands are empty and rest on the edge in front "
-        "of him, and on %s, in front of him and untouched, sits %s. Beside "
+        "of him, and on %s, in front of him and untouched, sits %s%s. Beside "
         "him, leaning in against his shoulder with the water at her chest, is "
         "a %d-year-old %s woman, %s, %s, %s, wearing %s; she looks at the lens "
         "and says nothing. They are the only two people in the frame. %s. %s"
         % (m["cen"], m["agua"], h["idade"], et, h["cabeca"], h["marca"],
-           spec["corpo_h"], m["borda"], spec["tigela"]["img"],
+           spec["corpo_h"], m["borda"], spec["tigela"]["img"], _bicarb(spec),
            w["idade"], w["etnia"], w["cabeca"], w["marca"], w["porte"],
            _traje_dela(spec), _cap(m["luz"]), CAUDA))
 
@@ -965,13 +995,14 @@ def montar(spec):
         "from the first scene, bare-chested, %s, %s, %s, a gold wedding band "
         "on his hand, his face turned to the camera and smiling. It is the "
         "same man, not a different person. On the edge in front of him sits "
-        "%s, and he is stirring it with the spoon. Right beside the bowl, on "
+        "%s%s, and he is stirring it with the spoon. Right beside the bowl, on "
         "the same edge, lies %s. Pressed against his side with her shoulder "
         "against his arm is a %d-year-old %s woman, %s, %s, %s, wearing %s; "
         "she is looking down at the bowl and says nothing. They are the only "
         "two people in the frame. %s. %s"
         % (m["cen"], m["agua"], m["borda"], h["idade"], et, h["cabeca"],
-           h["marca"], spec["corpo_h"], spec["tigela"]["img"], SACHE,
+           h["marca"], spec["corpo_h"], spec["tigela"]["img"], _bicarb(spec),
+           SACHE,
            w["idade"], w["etnia"], w["cabeca"], w["marca"], w["porte"],
            _traje_dela(spec), _cap(m["luz"]), CAUDA))
 
@@ -1278,6 +1309,26 @@ def _go11_contrato16(spec, blocos, achados):
                     if not msg.startswith("CT2:")])
 
 
+def _go_bicarb(spec, blocos, achados):
+    """⭐ A caixa de bicarbonato: nos DOIS takes ou em NENHUM.
+
+    ⛔ A tigela esta' nas duas cenas. Uma caixa que aparecesse so' na segunda
+    leria como objeto que alguem trouxe durante o corte — e o corte de 8s e'
+    justamente onde o espectador nao perdoa incoerencia de objeto.
+    ⚠️ E a lente cobra os DOIS estados do eixo: ligado, ela tem de estar nas
+    duas IMAGEs; desligado, nao pode estar em nenhuma. Eixo cobrado so' quando
+    esta' ligado deixa passar exatamente o caso em que ele vaza.
+    """
+    t1 = "baking soda" in blocos["IMAGE 01/02"]
+    t2 = "baking soda" in blocos["IMAGE 02/02"]
+    if spec.get("bicarb"):
+        if not (t1 and t2):
+            achados.append(("ERRO", "GO-BICARB: eixo ligado e a caixa nao chega "
+                                    "as duas IMAGEs (01=%s, 02=%s)" % (t1, t2)))
+    elif t1 or t2:
+        achados.append(("ERRO", "GO-BICARB: eixo DESLIGADO e a caixa apareceu"))
+
+
 def lint(spec, blocos):
     """⚠️ Lint PROPRIO, nao `sc.lint_curto`. Aquele e' da maquinaria de
     colapso 5->3 e pede `base` e `mapa`, que este motor nao tem: ele nao
@@ -1292,7 +1343,7 @@ def lint(spec, blocos):
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_go1_corpo_nao_orgao, _go2_ela_muda, _go4_sache, _go5_orcamento,
               _go6_etnia, _go7_ancora, _go8_tigela, _go9_mistura,
-              _go10_modos, _go11_contrato16):
+              _go10_modos, _go11_contrato16, _go_bicarb):
         f(spec, blocos, ach)
     return ach
 
