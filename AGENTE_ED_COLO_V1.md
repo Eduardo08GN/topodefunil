@@ -10,7 +10,7 @@ views). Leitura ótica completa e copy verbatim em
 
 **Motor (fonte da verdade executável):**
 [`funil-organico/colo_short.py`](funil-organico/colo_short.py) · app
-`colo_short_app.py` · `.exe` em `Desktop\agentes_py\COLO-SHORT`.
+`colo_short_app.py` · `.exe` em `Desktop\agentes_py\AGENTES-SHORT\COLO-SHORT`.
 
 ⚠️ **Só existe versão SHORT.** Não há arco longo e não haverá — ordem do
 operador, 2026-08-03.

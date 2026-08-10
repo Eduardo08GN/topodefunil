@@ -47,7 +47,7 @@ uma cena, uma vítima, uma evidência, um arco.
 --- daqui pra baixo o agente vira FERRAMENTA (só quando maduro) ---
 [9]  motor        → <agente>_lucas.py: pools + strings travadas + linter
 [10] app          → <agente>_lucas_app.py: interface tkinter offline
-[11] executável   → .exe entregue em C:\Users\edlut\Desktop\agentes_py
+[11] executável   → .exe entregue em C:\Users\edlut\Desktop\agentes_py\AGENTES-<FAMILIA>
 ```
 
 ⚠️ **As etapas 9-11 são opcionais e só entram depois do [8].** Portar um agente

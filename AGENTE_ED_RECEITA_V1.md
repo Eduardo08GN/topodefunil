@@ -4,7 +4,7 @@
 > estava perdendo a mulher, e o que ele oferece como evidência não é um corpo —
 > é a própria bancada dele, sem rosto em quadro até o payoff.
 
-- **Motor:** [`funil-organico/receita_short.py`](funil-organico/receita_short.py) · app + `.exe` em `agentes_py\RECEITA-SHORT`
+- **Motor:** [`funil-organico/receita_short.py`](funil-organico/receita_short.py) · app + `.exe` em `agentes_py\AGENTES-SHORT\RECEITA-SHORT`
 - **Ledger:** `.receita-short-ledger.json`
 - **Fonte:** reel `facebook.com/reel/1683536299390859` (19,8s). Leitura ótica
   frame a frame + Whisper, 2026-08-04. Baixado pela rota 2b do

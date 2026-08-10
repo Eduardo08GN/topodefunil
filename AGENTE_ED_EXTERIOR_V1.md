@@ -158,7 +158,7 @@ Duas portas de entrada, nunca improviso:
    python funil-organico/exterior_short.py --stats
    ```
    Ou o app offline: `AGENTE-EXTERIOR-SHORT.exe` em
-   `C:\Users\edlut\Desktop\agentes_py\EXTERIOR-SHORT`.
+   `C:\Users\edlut\Desktop\agentes_py\AGENTES-SHORT\EXTERIOR-SHORT`.
 2. **Comissão do operador**, para spec dirigida. ⚠️ `exterior` **não** está no
    `randomizador-prisma.py` — enquanto não entrar lá, o PRISMA não o sorteia.
 

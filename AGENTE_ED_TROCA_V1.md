@@ -94,7 +94,7 @@ Duas portas de entrada, nunca improviso:
    python funil-organico/troca_short.py --pagina <joe|marcus|ray|chuck|matt> --n 10
    ```
    Ou o app offline: `AGENTE-TROCA-SHORT.exe` em
-   `C:\Users\edlut\Desktop\agentes_py\TROCA-SHORT`.
+   `C:\Users\edlut\Desktop\agentes_py\AGENTES-SHORT\TROCA-SHORT`.
 2. **Comissão do operador**, para spec dirigida. ⚠️ `troca` ainda **não** está no
    `randomizador-prisma.py` — o ângulo não introduziu conceito novo de eixo, e
    enquanto não entrar lá o PRISMA não o sorteia.

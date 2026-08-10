@@ -78,7 +78,9 @@ dos `*_lucas` bloqueada (os 9 rodam) e **equivalência bit a bit** em 5 seeds e
 **Agente maduro vira ferramenta.** Quando as regras param de mudar, o agente é
 portado para código: motor (`<agente>_short.py` — pools sorteáveis, strings
 travadas como constantes, linter em regex), app tkinter offline e `.exe`
-entregue em `C:\Users\edlut\Desktop\agentes_py`. Receita e gotchas:
+entregue em `C:\Users\edlut\Desktop\agentes_py`, dentro de **uma das três
+famílias** (`AGENTES-NORMAIS` · `AGENTES-SHORT` · `AGENTES-16`, reorganização de
+2026-08-09 — o `distribuir.py` classifica pelo sufixo do nome). Receita e gotchas:
 [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
 A interface é compartilhada (`ui_agente.py`), só o motor muda; a maquinaria do
 colapso de 5 para 3 cenas mora em `short_comum.py`.

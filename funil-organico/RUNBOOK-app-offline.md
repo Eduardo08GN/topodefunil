@@ -246,15 +246,42 @@ motor.LEDGER = os.path.join(BASE, ".flagrante-ledger.json")
 ## A ENTREGA NO PC
 
 Raiz: **`C:\Users\edlut\Desktop\agentes_py`** — plural de propósito. **Uma
-subpasta por agente**, cada uma com o próprio `.exe` e o próprio ledger:
+subpasta por agente**, cada uma com o próprio `.exe` e o próprio ledger.
+
+### ⭐⭐ TRÊS FAMÍLIAS, desde 2026-08-09
+
+Ordem do operador. A raiz tinha **38 pastas soltas** e ficou impossível de
+varrer a olho; agora são três, e o sufixo do nome decide sozinho onde a pasta
+mora:
 
 ```
 agentes_py\
-  FLAGRANTE\  AGENTE-FLAGRANTE.exe  · flagrante_lucas.py  + app + ui_agente.py
-  PEE\        AGENTE-PEE.exe        · pee_lucas.py        + app + ui_agente.py
-  VAZAMENTO\  AGENTE-VAZAMENTO.exe  · vazamento_lucas.py  + app + ui_agente.py
-  NECROSE\    AGENTE-NECROSE.exe    · necrose_lucas.py    + app + ui_agente.py
+  AGENTES-NORMAIS\   4 · arco longo, 5 cenas
+      FLAGRANTE\  NECROSE\  PEE\  VAZAMENTO\
+  AGENTES-SHORT\    19 · 3 cenas de 8s · AdBatch Vertical 3
+      BOTICA-SHORT\  CHA-SHORT\  CLEAN-SHORT\  CLEAN-SHORT-V2\  COLO-SHORT\
+      DUPLA-SHORT\  ESCANDALO-SHORT\  EXTERIOR-SHORT\  FALTA-SHORT\
+      FLAGRANTE-SHORT\  NECROSE-SHORT\  ORGANICWAVE-SHORT\  PEE-SHORT\
+      PLACA-SHORT\  RECEITA-SHORT\  RESSURREICAO-SHORT\  TRIO-SHORT\
+      TROCA-SHORT\  VAZAMENTO-SHORT\
+  AGENTES-16\       14 · 2 takes de 8s · AdBatch Vertical 2
+      BOTICA-16\  CLEAN-V1-16S\  CLEAN-V2-16S\  COLO-16\  DUPLA-16\
+      ESCANDALO-16\  EXTERIOR-16\  FALTA-16\  FLAGRANTE-16\  GOOD-16\
+      PLACA-16\  RESSURREICAO-16\  TRIO-16\  TROCA-16\
+  PILOTO-ADBATCH\   ⬅ não é agente, fica na raiz
+  VEO-EDITOR-2.0\   ⬅ idem
 ```
+
+⚠️ **A regra de classificação está em código, não só aqui:**
+`distribuir.py:familia()` — termina em `-16`/`-16S` → **AGENTES-16**; contém
+`-SHORT` → **AGENTES-SHORT**; o resto → **AGENTES-NORMAIS**. Agente novo criado
+com `--novo` **nasce direto na família**, nunca mais na raiz.
+
+⛔ **O `distribuir.py` quase virou entrega verde e vazia por causa disso.** Ele
+procurava `<raiz>\<nome>` e fazia `continue` quando a pasta não existia — depois
+da reorganização não acharia **nenhuma**, imprimiria nada e sairia com código
+**0**. Agora o caminho passa por `pasta_de()` (que ainda aceita a raiz plana, a
+máquina do Lucas continua assim) e **laço vazio devolve 1 com mensagem**.
 
 ⚠️ **A raiz é por máquina.** No PC do Ed é `C:\Users\edlut\Desktop\agentes_py`;
 no do Lucas, `C:\Users\lucas\Desktop\agentes_py`. O repo é a fonte comum; o

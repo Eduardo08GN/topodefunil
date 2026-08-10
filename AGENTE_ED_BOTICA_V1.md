@@ -4,7 +4,7 @@
 > tradicional, numa cozinha forrada de potes de ervas secas, prepara a receita na
 > frente da câmera — e o vilão é a **farmácia**.
 
-- **Motor:** [`funil-organico/botica_short.py`](funil-organico/botica_short.py) · app + `.exe` em `agentes_py\BOTICA-SHORT`
+- **Motor:** [`funil-organico/botica_short.py`](funil-organico/botica_short.py) · app + `.exe` em `agentes_py\AGENTES-SHORT\BOTICA-SHORT`
 - **Ledger:** `.botica-short-ledger.json`
 - **Fonte:** `True Health`, reel `facebook.com/reel/3973945436069257` (52,2s) —
   **1K reações / 1K comentários / 53 shares**. Comentário é o KPI do funil, e a

@@ -23,6 +23,7 @@ morar em pasta temporaria.
 import argparse
 import glob
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -30,6 +31,34 @@ import tempfile
 
 REPO = os.path.dirname(os.path.abspath(__file__))
 DEST = os.path.join(os.path.expanduser("~"), "Desktop", "agentes_py")
+
+# ⭐⭐ AS TRES FAMILIAS — ordem do operador, 2026-08-09. A raiz tinha 38 pastas
+# soltas e virou tres: `AGENTES-NORMAIS` (arco longo), `AGENTES-SHORT` (3 cenas,
+# AdBatch Vertical 3) e `AGENTES-16` (2 takes, AdBatch Vertical 2).
+# ⛔⛔ ISTO NAO E' COSMETICO PARA ESTE ARQUIVO. O `agentes()` procurava
+# `DEST/<nome>` e faz `continue` quando a pasta nao existe — depois da
+# reorganizacao ele nao acharia NENHUMA e o script sairia com codigo 0 dizendo
+# nada, que e' o pior jeito de falhar: entrega verde sem entregar. Por isso o
+# caminho passa por `pasta_de()` e o `main()` grita quando o laco roda vazio.
+# ⚠️ O fallback para a raiz FICA: a maquina do Lucas continua plana, e o repo
+# e' comum as duas.
+
+
+def familia(nome):
+    if re.search(r"-16S?$", nome):
+        return "AGENTES-16"
+    if "-SHORT" in nome:
+        return "AGENTES-SHORT"
+    return "AGENTES-NORMAIS"
+
+
+def pasta_de(nome):
+    """Onde a pasta do agente MORA hoje — na familia, ou na raiz antiga."""
+    for cand in (os.path.join(DEST, familia(nome), nome),
+                 os.path.join(DEST, nome)):
+        if os.path.isdir(cand):
+            return cand
+    return None
 
 # SHORT primeiro: e' o que esta' em producao hoje (AdBatch Vertical 3).
 # ⛔ SO' OS SHORT. As pastas PEE / FLAGRANTE / VAZAMENTO / NECROSE (sem sufixo)
@@ -49,8 +78,8 @@ COMUNS = ["short_comum.py", "ui_agente.py", "nucleo_sonoro.py"]
 
 def agentes():
     for nome in ORDEM:
-        pasta = os.path.join(DEST, nome)
-        if not os.path.isdir(pasta):
+        pasta = pasta_de(nome)
+        if pasta is None:
             continue
         apps = [f for f in os.listdir(pasta) if f.endswith("_app.py")]
         exes = [f for f in os.listdir(pasta) if f.upper().endswith(".EXE")]
@@ -65,13 +94,14 @@ def bootstrap(nome, motor):
     existe la' — de proposito, para nao espalhar motor de um agente na pasta de
     outro. Entao a primeira copia precisa de um passo explicito."""
     if nome not in ORDEM:
-        return "⛔ %s nao esta' em ORDEM — acrescente antes, senao agentes() " \
-               "nunca vai enxergar a pasta" % nome
+        return "ERRO: %s nao esta' em ORDEM — acrescente antes, senao " \
+               "agentes() nunca vai enxergar a pasta" % nome
     app = os.path.splitext(motor)[0] + "_app.py"
     for f in COMUNS + [motor, app]:
         if not os.path.exists(os.path.join(REPO, f)):
-            return "⛔ falta no repo: %s" % f
-    pasta = os.path.join(DEST, nome)
+            return "ERRO: falta no repo: %s" % f
+    # ⭐ agente novo nasce JA' na familia dele — nunca mais na raiz
+    pasta = pasta_de(nome) or os.path.join(DEST, familia(nome), nome)
     if not os.path.isdir(pasta):
         os.makedirs(pasta)
     for f in COMUNS + [motor, app]:
@@ -140,6 +170,10 @@ def compilar(ag):
     return True, "%.1f MB" % (os.path.getsize(novo) / 1e6)
 
 
+# ⚠️ Nos COMENTARIOS o simbolo pode ficar; no que sai por `print()` NAO. O
+# console do Windows e' cp1252 e o `⛔` levanta UnicodeEncodeError — o script
+# morre exatamente na hora de avisar que algo deu errado, que e' quando ele mais
+# precisa falar. Mesma licao ja' paga nos autotestes do COLO e do ESCANDALO.
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--so", help="so' este agente (nome da pasta)")
@@ -150,18 +184,21 @@ def main():
 
     if a.novo:
         if not a.motor:
-            print("⛔ --novo exige --motor <arquivo>.py")
+            print("ERRO: --novo exige --motor <arquivo>.py")
             return 1
         msg = bootstrap(a.novo, a.motor)
         print("[%-18s] %s" % (a.novo, msg))
-        if msg.startswith("⛔"):
+        if msg.startswith("ERRO"):
             return 1
         a.so = a.so or a.novo
 
-    falhas = 0
+    falhas = vistos = 0
     for ag in agentes():
         if a.so and ag["nome"] != a.so:
             continue
+        # ⚠️ conta DEPOIS do filtro: `--so NOME-ERRADO` tem de cair no aviso
+        # junto com a raiz vazia, e nao sair calado com codigo 0.
+        vistos += 1
         trocados = sincronizar(ag)
         print("[%-18s] sync: %s" % (ag["nome"],
                                     ", ".join(trocados) if trocados else "nada novo"))
@@ -175,6 +212,13 @@ def main():
             falhas += 1
             print("    %s" % msg.replace("\n", "\n    "))
         sys.stdout.flush()
+    # ⛔ LACO VAZIO E' FALHA, NAO SUCESSO. Sem isto, uma raiz reorganizada (ou um
+    # --so escrito errado) sai com codigo 0 e a impressao de que recompilou.
+    if not vistos:
+        print("\n>> NENHUM agente encontrado em %s" % DEST)
+        print("   procurei em <raiz>/AGENTES-{NORMAIS,SHORT,16}/<nome> e na "
+              "raiz antiga. Confira o --so e o ORDEM.")
+        return 1
     return 1 if falhas else 0
 
 
