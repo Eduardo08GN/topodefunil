@@ -1350,6 +1350,54 @@ prefixo abaixo de 20 caracteres não credita entrada nenhuma, e pool `0 de N` n�
 
 ---
 
+## 37. ⛔⛔ COBERTURA DE 100% COM O PAINEL EM INGLÊS — o medidor media o INSUMO
+
+O verificador da camada de tradução cravava **100% de cobertura** e o operador
+via frase em inglês no painel. Os dois estavam certos, porque mediam coisas
+diferentes:
+
+| medida | pergunta | resposta |
+|---|---|---|
+| cobertura | *todo template literal em `.py` tem PT?* | 100% — e era verdade |
+| entrega | *toda fala MONTADA sai em PT?* | 95,1%, com 271 fragmentos crus |
+
+A diferença inteira é **concatenação**. O motor não guarda a fala pronta: ele
+sorteia `hook` + `mecanismo` + `prova` e cola. Nenhuma das 99 frases que faltavam
+existia como literal em arquivo nenhum — elas **nascem no `montar()`**. Um
+medidor que varre o código-fonte procurando strings jamais as veria, por mais
+fundo que fosse a varredura, porque não é questão de amostra: é questão de estar
+olhando para o lugar errado.
+
+> **Mede-se o ENTREGÁVEL, não o insumo.** Se o operador vê a fala montada, a
+> medida roda em cima da fala montada — `sortear()` → `montar()` → traduzir →
+> contar. Cobertura de pool, de template ou de pedaço é diagnóstico interno, e
+> nenhum número dela autoriza dizer "está pronto".
+
+⚠️ É a mesma família do §23 e do §34, e é a **quinta** vez que um medidor meu
+aprova o que o operador reprova de olho. A assinatura já é reconhecível: sempre
+que a saída final é **construída** a partir de partes, medir as partes é medir
+outra coisa.
+
+### ⚠️ O corolário que apareceu junto: gênero não cabe no template
+
+Com a fala montada sob a lente apareceu `na sua pepino`. O template escreve o
+determinante **antes de saber** que palavra cai no slot, e o mesmo molde do COLO
+recebe `banana` (f) e `pepino` (m) — não existe escolha certa na hora de
+escrever. Consertar entrada por entrada seria consertar o sintoma.
+
+> Quando o erro depende de um **valor que só existe em tempo de montagem**, a
+> correção mora numa **passada depois do preenchimento**, nunca no molde. Igual
+> à contração de preposição (`em aquele` → `naquele`), que nasceu do mesmo
+> raciocínio.
+
+⛔ E **não se adivinha gênero por terminação**: `-a` acerta `banana` e erra
+`problema`. A passada só toca palavra com gênero **declarado** — artigo colado
+no glossário ou tabela escrita à mão. Palavra desconhecida sai intacta, e o
+controle negativo (`a gente vai a pé`, `ele começou a falar`, `o problema é a
+idade`) roda junto com o positivo.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no

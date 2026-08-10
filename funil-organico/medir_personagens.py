@@ -367,6 +367,58 @@ EXCECOES = {
     ("botica_short.py", "REFS", "oculos"):
         "LEI DO REF — oculos brigam frontalmente com 'linda'. Cabelo 12/12, "
         "porte 10/12, pele 6/12 e ancora 6/12 seguem cheios.",
+
+    # ---------------------------------------------------------------------
+    # ⭐ 2026-08-10 — os 16s que entraram sem isencao e deixavam o gate vermelho
+    # ---------------------------------------------------------------------
+    # ⛔ Herança NAO se presume: cada uma das cinco abaixo foi provada com
+    # `a.POOL == b.POOL` no interpretador, nao de olho no diff. Onde o pool NAO
+    # era identico, nao entrou isencao nenhuma — foi para o relatorio do
+    # operador. E' a mesma disciplina do `clean_v1_16s_short` acima.
+    ("clean_v2_16s_short.py", "REFS_M", "oculos"):
+        "idem clean_short_v2 — pool identico, conferido (n=17).",
+    ("flagrante16_short.py", "REFS", "pelo_facial"):
+        "idem flagrante_short (F4b) — pool identico, conferido (n=18).",
+    ("flagrante16_short.py", "REFS", "oculos"):
+        "idem flagrante_short (F4b) — pool identico, conferido (n=18).",
+    ("necrose16_short.py", "ARQUETIPOS", "pelo_facial"):
+        "idem necrose_short (NE5) — pool identico, conferido (n=18).",
+    ("necrose16_short.py", "ARQUETIPOS", "oculos"):
+        "idem necrose_short (NE5) — pool identico, conferido (n=18).",
+    ("pee16_short.py", "REFS", "pelo_facial"):
+        "idem pee_short (F4b/PE9) — pool identico, conferido (n=13).",
+    ("pee16_short.py", "REFS", "oculos"):
+        "idem pee_short (F4b/PE9) — pool identico, conferido (n=13).",
+
+    # ⛔ CONTRATO DO MOTOR, o mesmo do falta_short: NENHUMA entrada do pool
+    # masculino carrega adjetivo de etnia — conferido chave a chave, as seis
+    # entradas de cada um so' tem `idade`, `cabeca`/`marca` e `sinal`. Quem
+    # injeta a etnia e' a pagina (trava ETNIA), e pool com etnia dentro
+    # quebraria a congruencia de mundo.
+    # ⚠️ O pool FEMININO destes dois motores TEM `etnia` dentro, e por isso
+    # `pele` la' nao aparece zerado. A assimetria e' de proposito.
+    ("good16_short.py", "HOMENS", "pele"):
+        "CONTRATO DO MOTOR — identico ao falta_short.py: pool sem etnia, "
+        "quem injeta e' a trava de pagina.",
+    ("bed16_short.py", "HOMENS", "pele"):
+        "CONTRATO DO MOTOR — identico ao falta_short.py: pool sem etnia, "
+        "quem injeta e' a trava de pagina.",
+
+    # ⛔ LEI DO REF nos pools femininos que NASCERAM em MODO BELA. A prova nao
+    # e' o nome do pool, e' o conteudo dele: idades 24-34 e descritores de
+    # beleza (`slim toned`, `flat stomach`, `beauty spot`, `freckles`). Oculos
+    # de leitura brigam frontalmente com isso, e a lei e' ordem permanente do
+    # operador desde 2026-08-03.
+    # ⚠️ O `bed16_short` NAO entra aqui de proposito: o pool dele e' a esposa de
+    # 46-50 anos, escrita COM marcas de desgaste (`going dry at the ends`,
+    # `heavy through the middle`, `a deep line between her brows`). MODO BELA
+    # nao se aplica, entao o zero de la' e' buraco de verdade e fica vermelho.
+    ("necrose16_short.py", "MULHERES_BELA", "oculos"):
+        "LEI DO REF — pool em MODO BELA (24-31 anos, corpo tonificado).",
+    ("good16_short.py", "MULHERES", "oculos"):
+        "LEI DO REF — pool em MODO BELA (27-31 anos, porte atletico).",
+    ("wife16_short.py", "MULHERES", "oculos"):
+        "LEI DO REF — pool em MODO BELA (29-34 anos).",
 }
 
 FEMININO = re.compile(r"\b(she|her|woman|women|hers)\b", re.I)
