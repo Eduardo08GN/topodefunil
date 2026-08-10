@@ -1,8 +1,26 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 SendMode "Event"          ; ⚠️ Event, nao Input: tkinter e Chrome perdem
-SetKeyDelay 40, 40        ;    entrada sintetica rapida demais.
-SetMouseDelay 50
+                          ;    entrada sintetica rapida demais.
+; ⛔⛔ 2026-08-10, 4a rodada de aceleracao. O operador pediu mais velocidade
+; SEM encurtar a ronda de 15s — e o RITMO ja' estava no limite (ver a nota
+; dele abaixo). O que sobrou de gordura sao ESTES DOIS, que sao FIXOS por
+; tecla e por clique e ficam FORA do fator: num ciclo com ~8 teclas e 2
+; cliques eles somavam mais que as 13 pausas inteiras.
+;     SetKeyDelay    40 -> 22 ms   (por tecla, antes E depois)
+;     SetMouseDelay  50 -> 28 ms   (por acao de mouse)
+; ⚠⚠⚠ E ESTE E' O UNICO AJUSTE DE VELOCIDADE COM RISCO DE FALHA SILENCIOSA.
+; Abaixo de um certo limiar o tkinter e o Chrome DESCARTAM a entrada
+; sintetica: a tecla nao chega, o clipboard fica com o roteiro ANTERIOR, e o
+; lote sai com a REF de um video e as cenas de outro — sem aviso, aparecendo
+; so' no render com o credito gasto. A conferencia das cinco partes (ver a
+; nota do CLIPBOARD MUDO) e' a rede que pega isso, e o F8 existe para
+; exercita-la de graca.
+; ⛔ ORDEM PARA QUEM MEXER AQUI DE NOVO: rode o F8 (ensaio seco) UMA vez
+; depois de baixar estes numeros. Ele copia e confere sem colar e sem gastar
+; credito. Se o F8 acusar parte faltando, SUBA os dois de volta.
+SetKeyDelay 22, 22
+SetMouseDelay 28
 CoordMode "Mouse", "Screen"
 CoordMode "Pixel", "Screen"
 
@@ -90,13 +108,15 @@ global linhas := []
 ; quando base*RITMO cai abaixo do piso, a pausa vira CONSTANTE e a
 ; aleatoriedade daquela espera morre. 40 -> 25 -> 15 -> 8 ms, acompanhando
 ; 0.55 -> 0.20 -> 0.10 -> 0.05. A 0.05 restam 3 das 13 no piso.
-; ⛔⛔ E AQUI ACABA O QUE O RITMO CONSEGUE FAZER. O SetKeyDelay 40 e o
-; SetMouseDelay 50 (topo do arquivo) sao FIXOS por tecla e por clique, fora
-; do fator — num ciclo com ~8 teclas e 2 cliques eles ja' somam mais que as 13
-; pausas inteiras. Cortar o RITMO de novo vai render cada vez menos tempo
-; real, e mexer nos delays de entrada e' outro problema: abaixo deles o
-; tkinter e o Chrome DESCARTAM a entrada sintetica, e a tecla se perde em
-; silencio — que e' o pior modo de falha deste script.
+; ⛔⛔ E AQUI ACABA O QUE O RITMO CONSEGUE FAZER. Os delays de ENTRADA (topo do
+; arquivo) sao FIXOS por tecla e por clique, fora do fator — num ciclo com ~8
+; teclas e 2 cliques eles ja' somam mais que as 13 pausas inteiras. Cortar o
+; RITMO de novo rende cada vez menos tempo real.
+; ⚠️ Na 4a rodada de aceleracao (2026-08-10) foi exatamente ali que se foi
+; buscar o tempo: SetKeyDelay 40 -> 22 e SetMouseDelay 50 -> 28, mais a
+; velocidade do MouseMove de 8-22 para 4-11. ⛔ Esse e' o unico ajuste de
+; velocidade deste script COM RISCO DE FALHA SILENCIOSA — leia a nota do topo
+; antes de baixar de novo, e rode o F8.
 ; ⛔ O QUE O FATOR **NAO** TOCA, e nao e' esquecimento:
 ;   · o `Sleep 900 + Random(0,700)` depois do Ctrl+V — o app precisa reparsear
 ;     o roteiro antes de o Gerar valer, e essa espera e' funcao, nao cadencia;
@@ -211,14 +231,14 @@ clicar(chave, seco := false) {
     x := p.x + Random(-6, 6)
     y := p.y + Random(-6, 6)
     if seco {
-        MouseMove x, y, Random(8, 22)
+        MouseMove x, y, Random(4, 11)
         ToolTip "[seco] clicaria em " chave
         pausa(280)
         return
     }
     ; ⚠️ o mouse ANDA (velocidade 8-22; quanto maior, mais devagar) e so'
     ; depois clica — com um respiro curto no meio, como quem mira.
-    MouseMove x, y, Random(8, 22)
+    MouseMove x, y, Random(4, 11)
     pausa(120, 50)
     Click
     pausa(180)
