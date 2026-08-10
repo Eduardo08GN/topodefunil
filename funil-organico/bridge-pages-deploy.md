@@ -2,6 +2,24 @@
 
 Registro de todas as bridge pages do funil orgânico ED, hospedadas no VPS via Coolify.
 
+## ⛔⛔ TRÊS DONOS DIVIDEM ESTE VPS — e só o VPS
+
+| dono | pasta no `projetosweb` | apps | `aff_id` |
+|---|---|---|---|
+| **Ed** (esta operação) | `/bridge-pages` | um por domínio (`*-bp`, `*-bp1`) | **45158** · **2470** |
+| **a PARCEIRA** (amiga do Ed) | `/parceira-bridges` | `parceira-bridges-4dom` — **um só, 10 domínios** | **52138** |
+| **o LUCAS** | `/bridge-pages/bp-dailyvitalreport` e irmãos | `dailyvitalreport-bp` e irmãos | **44878** |
+
+⚠️ **A parceira usa a MESMA oferta que o Ed** (`horsewood.us/VHG2-L1ML3/`). Ver
+`horsewood` numa página dela **não é erro** — o que separa o dinheiro é o
+**número** do `aff_id`. A conferência é sempre do número, nunca da oferta.
+
+⛔ **O documento que garante o isolamento é
+`projetosweb/parceira-bridges/PROPRIEDADE-E-ISOLAMENTO.md`** — mapa dos 10
+domínios dela, as quatro camadas que impedem a mistura (guarda de afiliado que
+aborta o build, pasta irmã, app próprio, `root` por domínio) e a receita para
+acrescentar mais um. **Ler antes de tocar em `/parceira-bridges`.**
+
 ## Infra
 
 - **VPS:** `159.195.12.135` (Netcup)
