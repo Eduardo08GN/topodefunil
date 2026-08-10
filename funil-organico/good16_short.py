@@ -585,6 +585,18 @@ SACHE = ("%s, empty and crumpled, with the lettering face up and readable"
 # regra que sobra e' esta: quem nao enuncia falha TEM DE SABER que nao enuncia.
 # ⛔ Por isso o CT2 e' filtrado no `lint` deste motor, e SO' o CT2 — ver
 # `_go11_contrato16`.
+# ⭐ 2026-08-10 — POOLS AMPLIADOS por ordem do operador: *"tem de ter pool com
+# leve variacao da copy falada (sem sair do campo semantico). Atualmente ela
+# so' tem a mesma versao de copy hardcoded"*.
+# ⚠️ E o diagnostico dele era preciso, mesmo com 150/183 falas distintas em
+# 400: o CAMPO estava certo, o MOLDE e' que era unico. Os 8 MISTURAS abriam
+# todos em `The gelatin trick in this bowl` ou `One bowl of the gelatin
+# trick` e fechavam em `makes your body stronger`; os 6 AVISOS eram todos
+# `If you are single, X`. Variar a PALAVRA dentro do mesmo molde nao varia o
+# video — o ouvido reconhece a forma, nao o sinonimo.
+# ⛔ O que NAO muda: GO1 (a fala nunca nomeia o orgao — a seguranca deste
+# angulo e' falar do CORPO), CT3 (o `gelatin trick` com verbo de efeito e
+# alvo na mesma sentenca) e CT5 (nenhum ingrediente).
 AVISOS = [
     "If you are single, stay away from this method.",
     "If you are single, do not try this method.",
@@ -592,6 +604,14 @@ AVISOS = [
     "If you are single, do not touch this.",
     "If you are single, skip this one.",
     "Single men, this is not for you.",
+    "Single men, close this video right now.",
+    "If nobody is waiting at home, skip this.",
+    "This is not for single men, at all.",
+    "If you sleep alone, this is not for you.",
+    "Single men, you can scroll past this one.",
+    "If there is no wife at home, skip it.",
+    "Not for single men. I mean that.",
+    "If you are single, close this right now.",
 ]
 
 ESPOSAS = [
@@ -601,6 +621,14 @@ ESPOSAS = [
     "If you are married, thank me later.",
     "If you have a wife, go easy with it.",
     "Married men, use this with caution.",
+    "But if there is a wife at home, listen.",
+    "Married men, take this one slow.",
+    "If she is still in your bed, go slow.",
+    "Husbands, do not say I never warned you.",
+    "If you are married, take it easy at first.",
+    "And if there is a wife, ease into it.",
+    "Married men, start with less than you think.",
+    "If your wife is home tonight, be careful.",
 ]
 
 # ⛔ E' o beat que faz o video existir: a promessa vem da MULHER nao dar conta,
@@ -611,6 +639,13 @@ AGUENTAM = [
     "She will not keep up with you.",
     "Your wife will not keep up.",
     "She is not going to keep up.",
+    "She will not last as long.",
+    "Your wife will not be ready.",
+    "She will tap out first.",
+    "She will ask you to stop.",
+    "Your wife will need a break.",
+    "She will not last the night.",
+    "She will be the one quitting.",
 ]
 
 # ---------------------------------------------------------------------------
@@ -652,6 +687,16 @@ MISTURAS = [
     "One bowl of the gelatin trick a night makes your body harder.",
     "One bowl of the gelatin trick a night keeps your body strong.",
     "One bowl of the gelatin trick nightly makes your body stronger.",
+    "This bowl is the gelatin trick, and it repairs your body.",
+    "This bowl holds the gelatin trick, and it makes your body stronger.",
+    "Every night this bowl of the gelatin trick feeds your whole body.",
+    "A bowl of the gelatin trick every night makes your body harder.",
+    "The gelatin trick in this bowl puts strength back into your body.",
+    "Nightly, this bowl of the gelatin trick makes your whole body harder.",
+    "The gelatin trick sits in this bowl and it feeds your body.",
+    "The gelatin trick in this bowl works your body harder every night.",
+    "The gelatin trick in this bowl sends blood back through your body.",
+    "This bowl of the gelatin trick makes your body harder every week.",
 ]
 
 # ⚠️ O beat mais dispensavel dos tres, e o unico que nao carrega promessa nem
@@ -664,6 +709,12 @@ PRECOS = [
     "Costs next to nothing.",
     "Costs pocket change.",
     "The price is nothing.",
+    "Costs you pennies.",
+    "Cheaper than coffee.",
+    "Almost free, really.",
+    "Costs you nothing.",
+    "Pennies a night.",
+    "Barely costs anything.",
 ]
 
 # ⛔⛔ A fonte pede `recipe`. NAO COPIAMOS o comando: a automacao de DM casa
@@ -1211,9 +1262,19 @@ def _go8_tigela(spec, blocos, achados):
 # tem que ser taxativa se referindo a MISTURA da receita"*.
 # ⛔ A lente e' de FUNCAO, nao de forma: nao basta a fala ter mudado, ela tem de
 # NOMEAR o que esta' na tigela. Sao as duas formas que os pools usam.
+# ⛔⛔ ERA UMA LISTA BRANCA COM OS TRES MOLDES QUE EXISTIAM, e por isso ela
+# CODIFICAVA A MONOTONIA que o operador foi reclamar em 2026-08-10: qualquer
+# forma nova de nomear a mistura era reprovada por construcao, entao o pool
+# so' podia crescer em SINONIMO dentro dos mesmos tres moldes — e o ouvido
+# reconhece a FORMA, nao o sinonimo.
+# ⭐ Agora ela cobra a FUNCAO, que e' o que a ordem dele sempre quis: a fala
+# tem de amarrar o `gelatin trick` ao RECIPIENTE na mesma sentenca. Assim
+# `This bowl holds the gelatin trick` passa, e um `gelatin trick` solto — sem
+# dizer que esta na tigela — continua caindo.
+# ⚠️ LICAO: lente escrita a partir do que existe vira TETO do que pode existir.
 _MISTURA_NOMEADA = re.compile(
-    r"\b(the gelatin trick in this bowl|the gelatin trick I mix in this bowl|"
-    r"one bowl of the gelatin trick)\b", re.I)
+    r"[^.!?]*\bgelatin trick\b[^.!?]*\bbowl\b"
+    r"|[^.!?]*\bbowl\b[^.!?]*\bgelatin trick\b", re.I)
 # ⛔ E o outro lado da mesma ordem: pronome sem dono. `This leaves your body
 # harder` era a copy de ontem — o `This` apontava para um sache que o
 # espectador via meio segundo antes, e num video de 16s com corte no meio isso
