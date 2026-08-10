@@ -138,6 +138,40 @@ ENTROPIA
 · P22 por cena entrou no --stats. ⛔ O AVISO por video NAO foi calado: calar o
   medidor nao e' cobrar a regra.
 
+⭐⭐ REFORMA DA COPY FALADA — CONTRATO DE COPY 16s, 2026-08-10
+-------------------------------------------------------------
+Ordem do operador depois de uma revisao adversarial de 6 lentes independentes
+sobre lotes renderizados. Doutrina: `funil-organico/CONTRATO-COPY-16S.md`;
+lente: `short_comum.lint_copy16`; medidor: `medir_copy16.py`.
+⛔ SO' A FALA MUDOU. Nenhum bloco IMAGE/TAKE, nenhum pool de cena, nenhuma
+travada — o quadro e' alcada do operador.
+
+    ANTES (medido, 200 sorteios)      DEPOIS (medido, 200 sorteios)
+    CT1 100%  CT2 94%  CT3 100%       CT1..CT7 todos 0%
+    CT4 100%  CT5 100% CT6 100%
+
+A estrutura passou a ser:
+    TAKE 1   hook (degrau sorteavel) + A FALHA DELE, com dano concreto
+    TAKE 2   mecanismo COM RAZAO -> prova curta -> follow -> CTA   <- FIM
+
+O que saiu de cada slot, e por que:
+  · o VILAO OCULTO deu lugar a FALHA. Ele dizia de quem e' a culpa e nunca do
+    QUE; e o operador ja' mandara tirar a farmacia da boca ("polui a copy e
+    gera drifting"). Pool PARADO em VILOES, nao apagado.
+  · a RECEITA FALADA (`{r}` + `collagen`) saiu inteira: entregava DOIS
+    ingredientes de graca antes do pedido, e a receita e' a UNICA moeda que o
+    comentario compra — gasta uma vez, esta' gasta para os outros 49 videos da
+    pagina. Pools PARADOS em ABERTURAS16 e RECEITAS16.
+  · o GATE deixou de fechar o video. Ele era a ULTIMA coisa no ouvido, colada
+    no unico pedido que gera receita, e era ameaca. Virou FOLLOW de tres
+    palavras ANTES do CTA. Pool PARADO em GATES.
+  · o CTA passou a dizer ONDE a receita chega — mesma contagem de palavras,
+    e paga a cobertura social do comentario, que leva nome e foto no feed.
+  · o apelido do orgao passou a ser UM por video, repetido nos dois takes. ⛔
+    E' uma REVERSAO declarada da regra de 24s, e o AVISO antigo do
+    `lint_curto` esta' aposentado no `lint()` deste motor, com o motivo
+    escrito ali.
+
 Uso:
     python funil-organico/escandalo_short.py --pagina joe --n 2
     python funil-organico/escandalo_short.py --pagina marcus --n 3 --seed 42
@@ -172,7 +206,7 @@ SLUG = "escandalo-16"
 
 # ⛔⛔ DUAS CENAS. A 2 (a receita executada na bancada) morre como QUADRO e
 # sobrevive como FALA; a fundida herda o quadro da 3, que e o payoff.
-CENAS_UI = ["1 · O ESCANDALO", "2 · A RECEITA + PROVA + CTA"]
+CENAS_UI = ["1 · O ESCANDALO + A FALHA", "2 · MECANISMO + PROVA + FOLLOW + CTA"]
 
 # ES16. ⚠️ O ORCAMENTO E' PISO **E** TETO. Tratar o piso como "julgamento que
 # mora na doutrina" foi o que deixou 48% das cenas 2 do TROCA abaixo dele: piso
@@ -1418,6 +1452,19 @@ HOOKS = [
 # never the {o}'s problem") foi absorvido pelo primeiro. Teto nao se sobe.
 # ⚠️ Continua `the {o}`, nunca `your {o}`: em forma afirmativa o `_afirma_no_corpo`
 # reprovaria (ES5), e nunca `his {o}`, que a ES1_MENCAO proibe na cena 1.
+# ⛔⛔ POOL PARADO EM 2026-08-10 — O VILAO SAIU DO SLOT, A FALHA ENTROU.
+# Duas ordens do operador convergiram no mesmo slot:
+#   1. *"o vilao (a farmacia) polui a copy e gera drifting"* — e a entrada
+#      "Who gets paid if your {o} never changes? The pharmacy does." e' a
+#      farmacia nomeada na boca, alem de "never changes" nao descrever NADA
+#      (muda como? de que para que?);
+#   2. o CONTRATO DE COPY 16s, CT2 — MEDIDO em 200 sorteios: 94% dos videos
+#      deste motor nao tinham UMA sentenca dizendo o que o corpo dele faz de
+#      errado. Sem auto-reconhecimento nao ha' comentario: ele nao comenta
+#      porque a copy e' boa, comenta porque SE VIU.
+# ⛔ Em 8 segundos ha' lugar para hook + UM beat. Vilao e falha disputavam o
+# mesmo slot, e a falha ganha porque e' ela que o KPI paga.
+# ⚠️ PARADO, NAO APAGADO: e' copy validada e trazer de volta e' alcada do Ed.
 VILOES = [
     "Nobody makes a dime if your {o} starts working on its own.",
     "That aisle has your money and nothing in it for the {o}.",
@@ -1429,6 +1476,71 @@ VILOES = [
     "Who gets paid if your {o} never changes? The pharmacy does.",
     "Add up what you've spent. None of it was meant for the {o}.",
     "They'll sell you a monthly plan before they'll sell the {o} an answer.",
+]
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ CT2 — A FALHA DELE, O SEGUNDO BEAT DA CENA 1 (2026-08-10)
+# ---------------------------------------------------------------------------
+# Contrato de copy 16s, CT2: *"o take 1 enuncia a FALHA, com dano concreto e de
+# preferencia um numero"*. A melhor linha medida do parque inteiro e' de cinco
+# palavras — `He'd lose it ten minutes in.` — um numero, um dano, nenhuma
+# metafora. Este pool e' essa linha em dezoito formas.
+#
+# ⛔⛔ AS QUATRO CERCAS DESTE POOL, e nenhuma e' negociavel:
+#   · ES1 — ZERO `he`/`him`/`his`. E' a trava que da' nome ao agente: o
+#     figurante congelado existe 100% na imagem e 0% na fala. A falha aqui e'
+#     do ESPECTADOR, nao de um terceiro — e' por isso que ela morde.
+#   · ES5 — nunca `your <nucleo>` em forma AFIRMATIVA. Ou a frase diz
+#     `the {o}` (a forma que 14 das 18 usam), ou ela e' PERGUNTA e termina em
+#     `?`. Afirmar o estado do corpo de quem assiste e' a composicao que
+#     derrubou o video do NECROSE por conteudo nocivo.
+#   · CT7 — nenhum verbo de ereccao colado no orgao. Aqui o movimento e' o
+#     inverso (quita, amolece, apaga), entao a cerca nao aperta — mas
+#     `works again`/`comes back`/`hard` ficam fora por construcao.
+#   · ES5/PRAZO — ZERO `in three months` / `three weeks later`: somado ao
+#     `your {o}` que os hooks dos degraus 2 e 3 ja' trazem, e' a linha do
+#     NECROSE de novo. Os numeros deste pool sao de RELOGIO e de IDADE, nunca
+#     de prazo de tratamento.
+# ⚠️ TAMANHOS PARECIDOS de proposito (7-10 palavras): pool que vai de 5 a 14
+# num teto de 25 nao e' pool de 18, e' pool de 4 com catorze enfeites — o
+# orcamento mata as entradas longas e quatro delas levam o lote inteiro.
+# ⚠️ Todas nomeiam o `{o}`: no degrau 1 o hook nao carrega nucleo nenhum, e a
+# cota do orgao (2 de 2) e o CT4 dependem desta frase.
+# ⚠️ TREZE DAS DEZESSETE FALAM EM 2a PESSOA, e o numero e' MEDIDO, nao
+# estetico: no degrau 4 nenhum dos cinco hooks aterrissa (a P22 do checklist da
+# doutrina pede 2a pessoa ou imperativo por cena), entao a FALHA aterrissa
+# sozinha — e o pool efetivo daquele degrau e' so' o que carrega `you`/`your`.
+# ⭐ MEDIDO em 400 sorteios por degrau (conferencia de 2026-08-10, 2.800
+# videos): 17/17 vivas nos degraus 1, 2 e 3, montados, dois figurantes e
+# d2+montados+2fig; 13/17 no degrau 4, e as QUATRO que faltam sao exatamente as
+# de 3a pessoa — nao e' entrada morta por aritmetica de orcamento, e' a P22
+# cobrando o que tem de cobrar. ⛔ Zerar essa diferenca so' seria possivel
+# escrevendo as dezessete em 2a pessoa, e ai' o pool vira uma frase so'
+# repetida dezessete vezes.
+# ⛔ DERRUBADA NA LEITURA EM VOZ ALTA (conferencia 2026-08-10):
+#   · `One night in six, and the {o} failed you.` — a FRACAO nao resolve numa
+#     audicao so'. "Uma noite em seis" e' a noite BOA ou a noite RUIM? As duas
+#     leituras cabem, e elas dizem o contrario uma da outra. `Two of three
+#     nights your {o} won't work?` diz a mesma coisa e nao vira charada, porque
+#     o verbo (`won't work`) carrega o sinal junto com a fracao.
+FALHAS = [
+    "Ten minutes in, the {o} quits on you.",
+    "Twenty minutes in, the {o} goes soft on you.",
+    "Halfway through, the {o} quits and you're done.",
+    "Two minutes of trying and your {o} won't hold?",
+    "By eleven the {o} quits and your wife rolls over.",
+    "Four years, and your {o} hasn't worked once?",
+    "Every Saturday the {o} quits before you finish.",
+    "Sixty years old and the {o} gave out on you.",
+    "Fifteen minutes, and the {o} shut down on you.",
+    "Twice this week the {o} quit on you.",
+    "Nine at night and your {o} has already quit?",
+    "Married thirty years, and the {o} stopped showing up.",
+    "Ten minutes in and your {o} quits on you?",
+    "Soft by eleven, and the {o} has quit again.",
+    "Fifty-eight years old and the {o} went out early.",
+    "Two of three nights your {o} won't work?",
+    "Ten minutes is all, and then the {o} quits.",
 ]
 
 # ⚠️ PARADO, NAO APAGADO. O FECHO saiu do slot da cena 1 pela ordem acima —
@@ -2139,6 +2251,18 @@ def _nomeia_o_homem(txt, relacao):
 # ⛔ E cumpre a ordem do operador: `my husband's`, nunca `his` solto.
 # ⭐ E' o arco da propria fonte, comprimido: *"Months of looking and nothing
 # changed for my husband's Johnson. Then the gelatin trick..."*
+# ⛔⛔ POOLS PARADOS EM 2026-08-10 — os dois beats fundiram em MECANISMOS16.
+# Motivo MEDIDO, 200 sorteios, contrato de copy 16s:
+#   · CT5 em 100% — as oito RECEITAS16 entregam DOIS ingredientes de graca
+#     (`{r}` sorteado + `collagen`) ANTES do pedido. E o dano nao e' de um
+#     video: a receita e' a UNICA moeda que o comentario compra, e entregue
+#     uma vez na pagina ela esta' gasta para os outros 49 que pedem a mesma
+#     palavra pela mesma receita.
+#   · CT3 em 100% — `The gelatin trick: {r} and collagen.` e' ROTULO NU. Diz o
+#     nome do mecanismo e nao diz o que ele FAZ, entao nao ha' no que
+#     acreditar: vira ruido de marca.
+# ⚠️ PARADOS, NAO APAGADOS. Se o Ed decidir um dia que a pagina pode gastar a
+# moeda, eles voltam com uma linha.
 ABERTURAS16 = [
     "Nothing worked on my husband's {o}.",
     "Nothing worked for my husband's {o}.",
@@ -2162,34 +2286,277 @@ RECEITAS16 = [
 ]
 
 
-# ⚠️ 7-10 palavras. ⛔⛔ TODA ENTRADA NOMEIA `recipe` — e' o substantivo do que
-# a pessoa recebe no DM. Prometer `the amounts` sem dizer de que deixa o
-# espectador em duvida na hora exata em que ele decidiria comentar.
-CTAS16 = [
-    "Comment gelatin, and I'll send the recipe.",
-    "Comment gelatin, and I'll send the complete recipe.",
-    "Comment gelatin, and I'll send you the recipe.",
-    "Comment gelatin, and I'll send the recipe tonight.",
-    "Comment gelatin, and I'll send the amounts for the recipe.",
-    "Comment gelatin, and I'll send the whole recipe.",
-    "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send you the full recipe.",
+# ---------------------------------------------------------------------------
+# ⭐⭐ CT3 — O MECANISMO COM RAZAO, a primeira sentenca do take 2 (2026-08-10)
+# ---------------------------------------------------------------------------
+# UMA sentenca que carrega, de uma vez, as cinco coisas que este slot deve:
+#   1. o literal `gelatin trick` (ES6, congruencia com a VSL — inviolavel);
+#   2. um VERBO DE EFEITO (CT3) — `feeds`, `puts`, `keeps`, `fills`, `carries`;
+#   3. o ALVO (CT3) — o orgao, nomeado, nunca `blood flow` solto (§17: causa
+#      nomeada sem dizer o que ela quebra);
+#   4. o DONO (ordem do operador 2026-08-08, *"nao use pronome, seja taxativo"*)
+#      — `{d}` e' `my husband's` / `my partner's` / `my man's`, DERIVADO da
+#      relacao sorteada. ⛔ Nao e' mais cravado em `my husband's`: a relacao
+#      nomeada no IMAGE 02 e' a alavanca 2 do protocolo de recusa, e a fala
+#      dizer `my husband` sobre um IMAGE que diz `his partner of thirty years`
+#      ANULA a relacao — que e' perder a alavanca (ES4);
+#   5. EXATAMENTE UMA palavra tecnica (ES7) — e ⛔ `collagen` esta' fora por
+#      construcao, porque o CT5 a bane como ingrediente; `vasodilators` saiu na
+#      2a conferencia por nao sobreviver a uma audicao (motivo logo abaixo).
+#      Sobram `circulation`, `oxygen` e `nitric oxide`, que sao FISIOLOGIA, nao
+#      lista de compras: nao ha' como comprar `circulation` no mercado.
+#
+# ⛔ CT7 — nenhum verbo de ereccao encostado no orgao. `puts circulation back
+# in {d} {o}` passa; `gets {d} {o} hard` reprova no gerador (~95% medido em
+# campo no COLO 16). O que a frase promete e' CIRCULACAO, e o espectador faz a
+# conta sozinho.
+# ⚠️ 8-10 palavras, banda estreita de proposito. Em 25 palavras com quatro
+# beats a folga total e' de 2 palavras: entrada de 12 nunca sairia, e pool com
+# entrada morta e' pool que mente no --stats.
+#
+# ⛔ DERRUBADA NA LEITURA EM VOZ ALTA (2a conferencia, 2026-08-10):
+#   · `The gelatin trick works like vasodilators on {d} {o}.` — `vasodilators`
+#     e' a unica palavra do motor inteiro que um americano de 60 anos nao
+#     decodifica DENTRO da sentenca: ela chega em ~1,2s, no meio do primeiro
+#     beat do take 2, que e' onde ele decide se fica. Quem conhece a palavra a
+#     conhece do FOLHETO DE UM REMEDIO, e ai' ela nao ajuda — encosta o
+#     mecanismo caseiro na farmacia, que e' o vilao que este funil vende
+#     contra. ⚠️ Ela passava as sete travas: nenhuma lente a acusa, e por isso
+#     so' a audicao a pegou (§19). ⛔ `vasodilator` FICA em ES7_TECNICAS: a
+#     lista e' de DETECCAO, e se alguem a reintroduzir eu quero as duas lentes
+#     acusando. Sobram `circulation`, `oxygen` e `nitric oxide` — as tres sao
+#     fisiologia que o proprio nicho ja' fala em anuncio, nao bula.
+MECANISMOS16 = [
+    "The gelatin trick feeds {d} {o} oxygen.",
+    "The gelatin trick gives {d} {o} circulation.",
+    "The gelatin trick fills {d} {o} with oxygen.",
+    "The gelatin trick put circulation into {d} {o}.",
+    "The gelatin trick pushes oxygen into {d} {o}.",
+    "The gelatin trick carries oxygen to {d} {o}.",
+    "The gelatin trick keeps circulation in {d} {o}.",
+    "The gelatin trick restores circulation to {d} {o}.",
+    "The gelatin trick holds oxygen in {d} {o}.",
+    "The gelatin trick brings circulation back to {d} {o}.",
+    "The gelatin trick moves oxygen back into {d} {o}.",
+    "The gelatin trick feeds nitric oxide to {d} {o}.",
+    "The gelatin trick fixed the circulation to {d} {o}.",
+    "The gelatin trick clears the circulation to {d} {o}.",
+    "The gelatin trick started circulation in {d} {o} again.",
+    "Nothing but the gelatin trick feeds {d} {o} oxygen.",
+    "Nothing but the gelatin trick gives {d} {o} circulation.",
 ]
 
 
+# ---------------------------------------------------------------------------
+# ⭐ A PROVA CURTA — o segundo beat do take 2 (2026-08-10)
+# ---------------------------------------------------------------------------
+# 4-5 palavras. E' a unica batida do video em que a mulher diz o que MUDOU na
+# casa, e ela fala do HOMEM, nunca do orgao — de proposito:
+# ⛔ CT7 — a prova e' o lugar natural do `stays hard` / `wakes up` / `comes
+# back`, e e' exatamente onde eles reprovam. Sem o orgao na sentenca a lente
+# nem precisa apertar: o dano ja' esta' fora por construcao.
+# ⭐⭐ E ELA CARREGA A NEGACAO DA ES6, todas as 18. A ES6 exige o marcador de
+# falta em volta do batismo do mecanismo, e no formato 16s a FALTA de verdade
+# mora no take 1 (o CT2, a falha dele) — do outro lado do corte. O marcador
+# dentro do take fica aqui, colado no mecanismo, sem gastar palavra propria.
+# ⚠️ `he` aqui TEM dono: a sentenca anterior acabou de dizer `{d} {o}`. E' a
+# diferenca entre anafora e drifting.
+# ⚠️ TAMANHOS EQUILIBRADOS de proposito. Medido no pool de 2026-08-09 (3 de 4
+# palavras contra 15 de 5): as tres curtas levavam 25% do lote, porque a prova
+# e' o TERCEIRO beat a escolher e herda a sobra do mecanismo e do CTA — quando
+# os dois saem longos, so' as curtas cabem. Pool torto no beat que escolhe por
+# ultimo nao e' pool de 18, e' pool de 3 com quinze enfeites.
+#
+# ⛔⛔ CINCO ENTRADAS DERRUBADAS NA LEITURA EM VOZ ALTA (conferencia
+# 2026-08-10). O criterio nao foi estilo: foi *o que um americano de 50-70 anos
+# entende OUVINDO UMA VEZ*, e a prova e' a batida que tem 1,3 segundo para
+# entrar. Nenhuma delas era acusada por lente nenhuma — todas passavam o
+# contrato inteiro, e e' por isso que so' a leitura as pegou (§19).
+#   · `I don't sleep anymore.` — a leitura literal e' INSONIA, e insonia e'
+#     queixa, nao prova. A intencao (a casa passou a virar a noite) exige uma
+#     inferencia que o ouvido nao faz em 1,3s, e ela poe a NARRADORA no lugar
+#     do deficit. ⚠️ `Nobody sleeps in this house.` fica: o sujeito plural e a
+#     casa entregam o casal, nao um sintoma de uma pessoa so'.
+#   · `Nothing gets done before midnight.` — sem sujeito humano nenhum, a
+#     primeira leitura e' TAREFA DE CASA / procrastinacao. Nao diz nada sobre
+#     ele, e prova que nao fala do homem nao e' prova.
+#   · `I never win that argument.` — `that argument` e' DEITICO SEM DONO: nao
+#     ha' discussao nenhuma em lugar nenhum do video para o `that` apontar. E'
+#     o modo de falha do pronome generico, com determinante no lugar do
+#     pronome — o medidor de deiticos nao o pega porque a lista dele e' de
+#     pronomes.
+#   · `Nobody gets an early night.` — `an early night` e' britanismo; o
+#     americano de 60 anos diz `turn in early`. E carrega a mesma ambiguidade
+#     de insonia da primeira.
+#   · `My husband doesn't quit now.` — ⛔ CONTRADIZ A RELACAO SORTEADA. Era a
+#     UNICA entrada do pool que renomeia o dono, e ela o renomeia CRAVADO:
+#     medido em 2.000 sorteios, 20 videos (1,0%) diziam
+#     *"...circulation to my partner's soldier. My husband doesn't quit now."*
+#     na mesma respiracao. Anular a relacao nomeada e' perder a alavanca 2 do
+#     protocolo de recusa (ES4) — o mesmo defeito que o `_dono()` acabou de
+#     consertar do outro lado. As doze entradas em `he`/`him` ja' cobrem o
+#     slot, e nelas o dono vem da sentenca anterior, que e' anafora legitima.
+#
+# ⛔⛔ MAIS DUAS DERRUBADAS NA 2a CONFERENCIA (2026-08-10). O criterio aqui nao
+# e' "vago" — e' AMBIGUO PARA O LADO ERRADO: as duas admitem uma leitura em que
+# o homem esta' PIOR, e prova que pode ser lida como queixa nao e' prova.
+#   · `He doesn't ask twice.` — a leitura pretendida e' *nao precisa pedir duas
+#     vezes* (ela diz sim de primeira). A leitura literal e' *pede uma vez e
+#     desiste* — que e' exatamente a FALHA do take 1 sobrevivendo ao gelatin
+#     trick. Duas leituras opostas na mesma sentenca, e a errada e' a mais
+#     curta de alcancar. ⚠️ `I don't refuse him anymore.` diz a leitura boa sem
+#     charada e fica.
+#   · `He never runs out.` — `run out` em ingles pede complemento (`run out OF
+#     something`). Nua, a primeira leitura de um ouvido americano e' `run out
+#     [the door]`, ou seja o homem SAINDO. `Nothing tires him out.` e `Nothing
+#     wears him down anymore.` cobrem o mesmo sentido com o verbo completo.
+# ⚠️ Pool de 11, contra piso 11 do MIN_COPY — este slot esta' NO limite, e a
+# proxima derrubada exige reposicao pelo Ed. Registrado, nao contornado.
+PROVAS16 = [
+    "He doesn't quit anymore.",
+    "Nothing stops him now.",
+    "Nobody sleeps in this house.",
+    "He doesn't wait now.",
+    "Nothing tires him out.",
+    "I don't refuse him anymore.",
+    "He doesn't stop at midnight.",
+    "Never a quiet night.",
+    "He doesn't slow down.",
+    "Nothing wears him down anymore.",
+    "He doesn't need convincing now.",
+]
+
+
+# ---------------------------------------------------------------------------
+# ⭐ O FOLLOW — terceiro beat, e ele vem ANTES do CTA (CT1, 2026-08-10)
+# ---------------------------------------------------------------------------
+# ⛔⛔ A INVERSAO E' O CONSERTO MAIS CARO DO CONTRATO: 100% dos sorteios deste
+# motor terminavam o video num GATE (`The algorithm hides me from
+# non-followers.`, `Followers get answered first.`, `No follow, no message.`)
+# — ou seja, a ULTIMA coisa no ouvido, colada no unico pedido que gera receita,
+# era uma EXPECTATIVA NEGATIVA sobre a entrega ou uma CONDICIONAL na
+# recompensa. A posicao final e' a que fica, e ela tem de ser o pedido.
+# ⭐ O follow nao morreu — mudou de lugar. E mudando de lugar ele tambem mudou
+# de forma: la' no fim precisava ser AMEACA para segurar o ouvido; aqui, antes
+# do pedido, basta ser INSTRUCAO. Tres palavras, imperativo, zero ameaca.
+# ⚠️ TODAS com 3 palavras exatas — e' o beat mais intercambiavel do take, entao
+# e' ele quem absorve a sobra do orcamento. Banda de tamanho zero significa que
+# nenhuma entrada morre por aritmetica: as 16 alcancam.
+# ⚠️ DUAS com vocativo (ES19: o operador mediu `brother` em 31-73% dos videos
+# do TROCA e mandou variar — 2 de 16 mantem a textura sem virar bordao).
+# ⛔⛔ POOL APOSENTADO EM 2026-08-10 — ELE NAO CHEGA MAIS AO VIDEO.
+# Ordem do operador: *"nao acho que deva ter follow me no cta, a mensagem e'
+# enviada independente de seguirem ou nao"* (CT8 do CONTRATO-COPY-16S).
+# O gate existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao de
+# DM, e quem opera a automacao corrigiu a premissa.
+# ⚠️ POR QUE NAO FOI APAGADO: o autoteste e os contratos deste motor ainda o
+# validam (contagem minima, vocativo, tamanho), e apagar exigiria mexer neles
+# no mesmo commit em que a copy inteira mudou — duas cirurgias de uma vez e'
+# como se perde o rastro do que quebrou o que.
+# ⛔ ENTAO FICA ESTE AVISO: melhorar as entradas abaixo NAO muda um unico
+# video. Se o follow voltar um dia, ele volta ANTES do CTA (CT1) e por decisao
+# do operador, nao por alguem reativar a variavel.
+FOLLOWS16 = [
+    "Follow me first.",
+    "Tap follow first.",
+    "Hit follow first.",
+    "Follow, then comment.",
+    "Follow me now.",
+    "Tap follow now.",
+    "Hit follow now.",
+    "Follow me, brother.",
+    "Follow first, brother.",
+    "Follow me here.",
+    "Follow me today.",
+    "Follow me tonight.",
+    "Follow before commenting.",
+    "Tap follow here.",
+    "Hit follow today.",
+    "Follow this page.",
+]
+
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ O CTA — a ULTIMA sentenca do video, e ela diz ONDE a receita chega (CT6)
+# ---------------------------------------------------------------------------
+# ⛔⛔ A CONTA QUE FAZ A COBERTURA SOCIAL CABER. Ela nao cabe como batida
+# propria em 25 palavras; mora DENTRO da sentenca do CTA, de graca:
+#     antes:  Comment gelatin, and I'll send the recipe.            (9 palavras)
+#     depois: Comment gelatin, and the recipe goes to your messages. (9 palavras)
+# Mesmo custo, e entrega tres coisas que o pool antigo nao entregava: (a) o
+# ENDERECO da entrega, (b) a PRIVACIDADE e (c) o fato de que nao e' na tela
+# publica. O KPI deste funil e' uma CONFISSAO PUBLICA — o comentario leva nome
+# e foto e vai para o feed da mulher dele —, e quanto melhor o diagnostico em
+# 2a pessoa, MAIS CARO fica comentar. Em 48 segundos de copy revisada nao havia
+# UMA palavra baixando esse custo.
+# ⛔ O literal `Comment gelatin,` e' intocavel (a legenda do video nasce do
+# Whisper em cima do audio gerado, e a automacao de DM casa palavra exata).
+# ⛔ TODA entrada nomeia `recipe`: prometer `the amounts` sem dizer de que e' a
+# duvida que o operador reprovou no FALTA 16.
+# ⚠️ 8-9 palavras, metade em cada tamanho: quando o mecanismo sai com 10, so'
+# as de 8 cabem — pool torto aqui viraria oito entradas mortas.
+CTAS16 = [
+    "Comment gelatin, and the recipe hits your inbox.",
+    "Comment gelatin, and the recipe comes in private.",
+    "Comment gelatin, and nobody else sees the recipe.",
+    "Comment gelatin, and your inbox gets the recipe.",
+    "Comment gelatin, and the recipe reaches your messages.",
+    "Comment gelatin, and the recipe lands in private.",
+    "Comment gelatin, and the recipe goes in private.",
+    "Comment gelatin, and your messages get the recipe.",
+    "Comment gelatin, and the recipe goes to your messages.",
+    "Comment gelatin, and the recipe lands in your inbox.",
+    "Comment gelatin, and the recipe waits in your messages.",
+    "Comment gelatin, and I'll send the recipe in private.",
+    "Comment gelatin, and the whole recipe reaches your inbox.",
+    "Comment gelatin, and the recipe arrives in your messages.",
+    "Comment gelatin, and I'll send the recipe by message.",
+    "Comment gelatin, and the recipe sits in your inbox.",
+]
+
+
+# ⛔ O DONO DO ORGAO — derivado da RELACAO sorteada, nunca cravado.
+# `his wife of N years` -> `my husband's`; `his partner of N years` ->
+# `my partner's`; `the woman he has been with` -> `my man's`.
+# ⚠️ As tres custam DUAS palavras exatas, entao a escolha nao mexe no orcamento
+# do take — se custassem diferente, a relacao sorteada estaria decidindo em
+# silencio quais mecanismos cabem.
+def _abre(frase):
+    """A primeira palavra da sentenca, em minusculas e sem pontuacao.
+
+    ⚠️ Existe para o guarda de gagueira do take 2 (mecanismo -> prova). Nao
+    reaproveita o `_eco`, que varre FATO repetido: aqui o que repete e' a
+    PALAVRA DE ABERTURA, e ela nao e' fato nenhum.
+    """
+    m = re.search(r"[A-Za-z'\-]+", frase or "")
+    return m.group(0).lower() if m else ""
+
+
+def _dono(relacao):
+    termo = next((t for pref, t in _TRATAMENTO if relacao.startswith(pref)),
+                 "my husband")
+    return termo + "'s"
+
+
 def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
-    """As tres falas, cada uma somando dois ou tres pools.
+    """As DUAS falas do 16s, montadas pelo contrato de copy (2026-08-10).
+
+        TAKE 1   hook (degrau sorteavel) + A FALHA DELE, com dano concreto
+        TAKE 2   mecanismo COM RAZAO -> prova curta -> follow -> CTA   <- FIM
 
     ⚠️ ES16: a compressao aqui e' de BEAT, nao de fala — a taxa de palavras da
     fonte e a nossa sao a MESMA (3,3-3,6 vs 3,4-4,0 p/s). Uma frase por cena
-    deixaria ar num take de 8s, e ar vira pausa morta. Por isso cena 1 = hook +
-    fecho, cena 2 = fundida + selo, cena 3 = prova + CTA + gate.
+    deixaria ar num take de 8s, e ar vira pausa morta.
 
-    Quatro filtros por construcao, todos com varredura de fallback:
+    Filtros por construcao, todos com varredura de fallback:
     · o DEGRAU do hook e' escolha do Ed (ES10), nao do sorteio
     · o PISO e o TETO por cena (ES16) — piso nao cobrado e' piso que nao existe
-    · a voz da PROVA x a relacao nomeada da cena 3 (ES4)
-    · eco de FATO dentro do video inteiro (ES20)
+    · a P22 (2a pessoa ou imperativo) em cada cena
+    · CT4 — UM apelido do orgao por video, o MESMO nos dois takes
+
+    ⚠️ `receita` continua na assinatura e nao entra mais em fala nenhuma: o CT5
+    tirou o ingrediente da boca. O eixo segue vivo na IMAGE/TAKE e no ledger —
+    quem foi embora foi a MENCAO FALADA, nao o eixo.
     """
 
     hook_pool = [h for h in HOOKS if h["degrau"] == degrau] or HOOKS
@@ -2219,35 +2586,39 @@ def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
     # criterio nao e' "o menor vilao cabe" e sim "existe vilao que satisfaz o
     # predicado INTEIRO" — piso, teto e a P22 do `_aterrissa`.
     # ⛔ NENHUMA PALAVRA MUDA: muda quais hooks entram no sorteio.
-    def _tem_vilao(h):
+    # ⭐ 2026-08-10: o beat que absorve deixou de ser o VILAO e passou a ser a
+    # FALHA (CT2). A mecanica de orcamento e' a mesma, caractere por caractere.
+    def _tem_falha(h):
         t = h["txt"].format(e=par["fala_e"], f=par["fala_f"], o=orgaos[0])
         return any(PISO_FALA[1]
                    <= _palavras("%s %s" % (t, x.format(o=orgaos[0])))
                    <= TETO_FALA[1]
                    and (_aterrissa(t) or _aterrissa(x))
-                   for x in VILOES)
+                   for x in FALHAS)
 
     # ⚠️ `or hook_pool` porque lista vazia nao pode existir: antes de derrubar o
     # sorteio, o teto cede e quem reclama e' o linter — e' ele que tem de
     # aparecer, nao um IndexError.
-    hook_pool = [h for h in hook_pool if _tem_vilao(h)] or hook_pool
+    hook_pool = [h for h in hook_pool if _tem_falha(h)] or hook_pool
     hook = rng.choice(hook_pool)["txt"].format(e=par["fala_e"],
                                                f=par["fala_f"], o=orgaos[0])
-    # ⚠️ O fecho e' quem fecha o orcamento da cena 1 E quem cobre a P22 quando o
-    # hook do degrau 4 sai em pura 3a pessoa.
-    # ⭐ ES23 — o segundo beat da cena 1 e' o VILAO OCULTO, nao mais o fecho
-    # (ordem do operador, 2026-08-02). O fecho tratava de atencao ("Give me
-    # eight seconds") e o que faltava ali era MOTIVO — mais o nome do orgao,
-    # que nenhum hook do degrau 1 trazia.
-    # ⚠️ O vilao carrega `{o}`: e' por ele que a cena 1 passou a nomear o orgao
-    # em 100% dos sorteios (era 0%).
-    vilao = _escolher(
-        rng, VILOES,
+    # ⭐⭐ CT2 — o segundo beat da cena 1 e' A FALHA DELE, com dano concreto.
+    # Foi o FECHO ("Give me eight seconds" — atencao, sem motivo), depois o
+    # VILAO OCULTO (motivo, sem dano), e agora e' o DANO. A escada e' a mesma
+    # pergunta tres vezes: o que esta' faltando neste slot?
+    #   · fecho ..... nao dizia nada sobre ele
+    #   · vilao ..... dizia de quem e' a culpa, e nunca do que
+    #   · falha ..... diz o que o corpo dele FAZ de errado, e um numero
+    # MEDIDO antes da troca: 94% dos videos sem UMA sentenca de falha.
+    # ⚠️ A falha carrega `{o}`: e' por ela que a cena 1 nomeia o orgao em 100%
+    # dos sorteios, inclusive no degrau 1, cujos hooks nomeiam os PROPS.
+    falha = _escolher(
+        rng, FALHAS,
         lambda x: (PISO_FALA[1]
                    <= _palavras("%s %s" % (hook, x.format(o=orgaos[0])))
                    <= TETO_FALA[1]
                    and (_aterrissa(hook) or _aterrissa(x))))
-    c1 = "%s %s" % (hook, vilao.format(o=orgaos[0]))
+    c1 = "%s %s" % (hook, falha.format(o=orgaos[0]))
 
     # ----- cena 2 — ⭐⭐ A FUNDIDA -------------------------------------------
     # ⛔⛔ CADA BEAT ORCA CONTRA O MINIMO DOS OUTROS, e o beat sem restricao
@@ -2260,57 +2631,69 @@ def _montar_falas(rng, par, receita, orgaos, relacao, degrau):
         v = [x for x in pool if _n(x) + reserva <= TETO_FALA[2]]
         return v or [min(pool, key=_n)]
 
-    _r = receita["fala"]
-    _fr = lambda x: x.format(r=_r, o=orgaos[1])
-    # ⛔⛔ A RESERVA E' A MEDIANA, NAO O MINIMO — e este numero foi MEDIDO.
-    # Reservando o MINIMO de cada beat seguinte, os beats de cima gastam toda a
-    # folga e o ultimo (o GATE) fica so' com as entradas mais curtas: medi 9
-    # gates distintos em 400 sorteios, e DOIS deles levavam 381 dos 400. Isso e'
-    # mode-collapse no beat que fecha o video.
-    # ⭐ Reservar a MEDIANA deixa o gate respirar sem arriscar estouro — quem
-    # garante que a cadeia sempre fecha e' o fallback do _cabe16 logo acima,
-    # que devolve a entrada mais curta quando nada cabe.
-    # ⚠️ E a licao do COLO vale aqui: NAO troquei por reflexo, MEDI AS DUAS.
-    #     reserva pelo MINIMO ..... 385 falas distintas |  9 gates | 192x o 1o
-    #     reserva pela MEDIANA .... 367 falas distintas | 15 gates |  40x o 1o
-    # Cinco por cento de fala em troca do pool inteiro de gates respirando.
-    def _rsv(vals):
-        v = sorted(vals)
-        return v[len(v) // 2]
+    # ⭐ O DONO sai da RELACAO sorteada — duas palavras, sempre, seja qual for.
+    _d = _dono(relacao)
+    # ⛔⛔ CT4 — O MESMO APELIDO NOS DOIS TAKES, e isto REVERTE a regra antiga.
+    # Ate' 2026-08-09 o take 1 usava `orgaos[0]` e o take 2 usava `orgaos[1]`,
+    # cumprindo o AVISO de "substantivo repetido no video" do `lint_curto`. O
+    # resultado MEDIDO foi o apelido mudando no corte em 100% dos videos.
+    # Em 24s e cinco cenas o bordao e' o risco; em 16s e DUAS cenas o risco e'
+    # o oposto — o corte zera a memoria de trabalho, e trocar `soldier` por
+    # `Johnson` no segundo 9 obriga o espectador a remapear no instante em que
+    # ele ja' esta' com um pe' fora. A variacao continua existindo ENTRE
+    # videos (`orgaos` sai de `rng.sample`), que e' onde ela nunca custou nada.
+    _o = orgaos[0]
+    _fm = lambda x: x.format(d=_d, o=_o)
 
-    _mn_c = _rsv([_palavras(x) for x in CTAS16])
-    _mn_g = _rsv([_palavras(g) for g in GATES])
+    # ⛔⛔ A ORDEM DE ESCOLHA E' POR NUMERO DE SUBSTITUTOS, NAO PELA ORDEM EM
+    # QUE AS FRASES SAEM DA BOCA. Quem escolhe primeiro e' quem tem menos
+    # substitutos; o beat intercambiavel escolhe por ULTIMO e absorve a sobra.
+    #   1º MECANISMO — carrega cinco exigencias de uma vez (literal, verbo,
+    #      alvo, dono e a palavra tecnica da ES7). Nao ha' substituto.
+    #   2º CTA ....... literal travado + isca + endereco de entrega (CT6).
+    #   3º PROVA ..... 4-5 palavras, ampla.
+    #   4º FOLLOW .... tres palavras, dezesseis formas de dizer a mesma coisa.
+    #      E' ele quem absorve, e por isso todas as entradas tem o MESMO
+    #      tamanho: banda zero significa que nenhuma morre por aritmetica.
+    # ⚠️ Cada um reserva o MINIMO dos que ainda faltam — com folga total de 2
+    # palavras em 25, reservar a mediana (a regra do pool anterior, onde a
+    # folga era de 6) mataria as entradas longas do mecanismo e do CTA.
+    _mn_m = min(_palavras(_fm(x)) for x in MECANISMOS16)
+    _mn_p = min(_palavras(_fm(x)) for x in PROVAS16)
+    _mn_f = min(_palavras(x) for x in FOLLOWS16)
+    _mn_c = min(_palavras(x) for x in CTAS16)
 
-    # ⛔⛔ A ABERTURA VEM PRIMEIRO, e nao e' escolha de estilo: as duas lentes
-    # do angulo obrigam. A ES22 exige o ORGAO na primeira sentenca e a ES6
-    # exige a NEGACAO antes do batismo do mecanismo — com a receita abrindo,
-    # as duas reprovavam (medido: 185 + 52 ERROs em 200 sorteios).
-    # ⭐ A forma A que o operador aprovou esta' preservada: a RECEITA continua
-    # sendo o beat que paga, e o que veio para a frente dela e' o setup que a
-    # fonte tambem tem — *"nothing changed for my husband's Johnson. Then the
-    # gelatin trick..."*
-    _fp = lambda x: x.format(o=orgaos[1])
-    # ⛔⛔ A ABERTURA RESERVA O MINIMO DOS OUTROS, NAO A MEDIANA — e os dois
-    # numeros foram medidos. Reservando a mediana, UMA das oito aberturas cabia
-    # (a de 5 palavras): 400 de 400 videos comecavam pela mesma frase, e o
-    # [ALCANCE] acusou 7 de 8 inalcancaveis. A abertura e' a sentenca que decide
-    # se o espectador fica — e' o ultimo beat que pode ficar preso a uma opcao.
-    # ⭐ A regra que sai daqui: o beat escolhido PRIMEIRO reserva o MINIMO dos
-    # outros (ele precisa de liberdade); os do MEIO reservam a mediana (senao
-    # gastam a folga toda e o ULTIMO e' que fica preso, que foi o defeito do
-    # gate, tambem medido aqui: 9 gates distintos com min, 15 com mediana).
-    _mn_r = min(_palavras(_fr(x)) for x in RECEITAS16)
-    _mn_c0 = min(_palavras(x) for x in CTAS16)
-    _mn_g0 = min(_palavras(g) for g in GATES)
-    abre16 = _fp(rng.choice(_cabe16(
-        ABERTURAS16, _mn_r + _mn_c0 + _mn_g0, _fp)))
-    rec16 = _fr(rng.choice(_cabe16(
-        RECEITAS16, _palavras(abre16) + _mn_c + _mn_g, _fr)))
+    mec16 = _fm(rng.choice(_cabe16(MECANISMOS16, _mn_c + _mn_p + _mn_f, _fm)))
     cta16 = rng.choice(_cabe16(
-        CTAS16, _palavras(abre16) + _palavras(rec16) + _mn_g, lambda x: x))
-    _usado = _palavras(abre16) + _palavras(rec16) + _palavras(cta16)
-    gate16 = rng.choice(_cabe16(GATES, _usado, lambda x: x))
-    c2 = "%s %s %s %s" % (abre16, rec16, cta16, gate16)
+        CTAS16, _palavras(mec16) + _mn_p + _mn_f, lambda x: x))
+    # ⛔⛔ GAGUEIRA DE ABERTURA — achada LENDO a saida, nao por lente (§19).
+    # Duas das dezoito MECANISMOS16 abrem em `Nothing but the gelatin trick...`
+    # e cinco das PROVAS16 abrem em `Nothing`/`Nobody`. Sorteadas soltas, as
+    # duas primeiras sentencas do take 2 saiam com a MESMA palavra de abertura
+    # colada — *"Nothing but the gelatin trick gives my partner's soldier
+    # circulation. Nothing tires him out."* — em 56 de 2.000 videos (2,8%).
+    # Ouvido uma vez isso nao le' como paralelismo, le' como travada de fala,
+    # e acontece nos 1,5s em que o espectador decide se o take 2 vale.
+    # ⚠️ O `_eco` nao pega: ele varre FATO repetido, e `Nothing` nao e' fato.
+    # ⚠️ E' filtro por CONSTRUCAO com fallback (`or`), como todos os outros
+    # deste motor: se o orcamento apertar a ponto de so' sobrar prova com a
+    # mesma abertura, o sorteio nao cai — quem reclama e' o linter.
+    # ⛔ So' o par mecanismo->prova precisa do guarda: o FOLLOW abre em
+    # `Follow`/`Tap`/`Hit` e o CTA abre em `Comment`, sempre, por construcao.
+    _cab_p = _cabe16(PROVAS16, _palavras(mec16) + _palavras(cta16) + _mn_f, _fm)
+    _cab_p = [x for x in _cab_p if _abre(_fm(x)) != _abre(mec16)] or _cab_p
+    pro16 = _fm(rng.choice(_cab_p))
+    _usado = _palavras(mec16) + _palavras(cta16) + _palavras(pro16)
+    # ⛔⛔ CT8 (2026-08-10) — O BEAT DO FOLLOW SAIU DA FALA.
+    # Ordem do operador: *"nao acho que deva ter follow me no cta, a
+    # mensagem e' enviada independente de seguirem ou nao"*. O gate
+    # existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao
+    # de DM, e quem opera a automacao corrigiu. As palavras liberadas
+    # vao para o mecanismo e a prova.
+    # ⛔⛔ CT1 — O CTA E' A ULTIMA COISA DO VIDEO. Nada depois dele, nunca.
+    # A ordem falada e' mecanismo -> prova -> follow -> CTA, mesmo tendo o CTA
+    # sido ESCOLHIDO em segundo: escolher e falar sao duas ordens diferentes.
+    c2 = "%s %s %s" % (mec16, pro16, cta16)
     return [c1, c2]
 
 
@@ -2397,7 +2780,15 @@ def sortear(pagina, rng, ledger, travas=None, geometria=None,
     # ES16/cota do orgao: tres substantivos DISTINTOS sorteados de uma vez. No
     # degrau 1 (e no 4) o primeiro nao entra em fala nenhuma — fica de reserva
     # para o `nova_fala()` da UI nao repetir o que ja' esta' em cena.
-    orgaos = rng.sample(NUCLEO, 3)
+    # ⛔⛔ CT4b (2026-08-10) — SO' TRES APELIDOS SAO SORTEAVEIS.
+    # Ordem do operador: *"quero que vc use weiner e john-son pra se referir ao
+    # orgao tb, nao apenas pec-ker"*. `soldier` soa filme de guerra para ouvido
+    # americano e `tool` e' ambiguo em giria dos EUA; os dois seguem no NUCLEO
+    # porque as LENTES os usam para DETECTAR o orgao — o que muda e' que nao
+    # sao mais sorteaveis. O CT4 trava UM apelido por video; sem isto aqui, um
+    # apelido por video vira o MESMO apelido no lote inteiro.
+    _o1 = rng.choice(sc.APELIDOS_16)
+    orgaos = [_o1] * 3
     falas = _montar_falas(rng, par, rec, orgaos, relacao, degrau)
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], rec)
 
@@ -3329,8 +3720,17 @@ def _es19_gates(spec, blocos, achados):
     e o vicio que o operador mediu (31-73%) volta. A trava VIVA e' a do
     self-test, que exige CTAS e BARREIRAS sem vocativo nenhum.
     """
-    # ⚠️ indice 1: o CTA e o gate vivem na cena FUNDIDA, a ultima das duas.
-    hits = _achar(spec["falas"][1], VOCATIVOS)
+    # ⚠️ indice 1: o CTA e o follow vivem na cena FUNDIDA, a ultima das duas.
+    # ⛔⛔ SO' VOCATIVO DE VERDADE — correcao de 2026-08-10, e ela e' o modo de
+    # falha §16 (lente que reprova o que esta' certo). Com o `{d}` derivado da
+    # relacao, a fala passou a poder dizer `my man's {o}`, e o `\bman\b` do
+    # `_achar` casava DENTRO do possessivo: 25 de 800 videos acusados de "dois
+    # vocativos" por uma frase que nao tem nenhum. Vocativo e' quem esta'
+    # DESTACADO POR VIRGULA (`Follow first, brother.`); `my man's tool` e'
+    # sintagma possessivo e nao chama ninguem.
+    hits = [v for v in VOCATIVOS
+            if re.search(r",\s*%s\b(?!')" % re.escape(v),
+                         spec["falas"][1], re.I)]
     if len(hits) > 1:
         achados.append(("AVISO", "ES19: dois vocativos na cena 3 (%s) — o "
                                  "operador mediu vicio de 'brother' e mandou "
@@ -3387,10 +3787,18 @@ def _es22_abertura(spec, blocos, achados):
                                 "— %r deixa o espectador perguntando "
                                 "'procurando o QUE?' no segundo em que ele "
                                 "decide se fica" % prim[0]))
-    for linha in FUNDIDAS:
+    # ⭐ 2026-08-10: a enumeracao mudou de pool junto com a copy. Quem abre a
+    # cena 2 agora e' o MECANISMO (CT3), e ele nomeia o orgao dentro da mesma
+    # sentenca em que batiza o `gelatin trick` — a ES22 e o CT3 passaram a ser
+    # a mesma frase, e nao mais duas frases disputando os 8 segundos.
+    # ⛔ A enumeracao sobre FUNDIDAS/ABERTURAS16 saiu porque os dois pools estao
+    # PARADOS (o CT5 tirou o ingrediente da boca). Cobrar pool que nao chega ao
+    # video e' lente que reprova o que nao existe — e cobrar SO' ele seria pior:
+    # o pool vivo ficaria sem guarda nenhuma.
+    for linha in MECANISMOS16:
         p0 = _sentencas_es(linha)
         if p0 and "{o}" not in p0[0]:
-            achados.append(("ERRO", "ES22: entrada do pool FUNDIDAS abre sem "
+            achados.append(("ERRO", "ES22: entrada do pool MECANISMOS16 abre sem "
                                     "`{o}` — %r" % p0[0]))
 
 
@@ -3399,14 +3807,37 @@ def _sentencas_es(fala):
     return [s.strip() for s in _re.split(r"(?<=[.!?])\s+", fala or "") if s.strip()]
 
 
+# ⭐⭐ A LENTE DO CONTRATO DE COPY 16s (2026-08-10).
+# ⛔ `isca_absurda=False`: este angulo NAO promete nada que ele desminta meio
+# segundo depois. A isca absurda e' do TROCA, do EXTERIOR e do COLO — la' o
+# verbo de ereccao no take 1 E' o gancho. Aqui a promessa do hook e' literal, e
+# o CT7 vale nos DOIS takes.
+def _ct16(spec, blocos, achados):
+    sc.lint_copy16(sys.modules[__name__], spec, achados, isca_absurda=False)
+
+
+# ⛔⛔ LENTE APOSENTADA — "substantivo repetido no video" (AVISO do lint_curto).
+# Ela nasceu para os motores de 24s e CINCO cenas, onde duas mencoes iguais sao
+# bordao. O CT4 do contrato de copy 16s REVERTE a regra para a familia de dois
+# takes, e a reversao e' declarada: em 16 segundos o corte zera a memoria de
+# trabalho, e trocar o apelido no segundo 9 obriga o espectador a remapear
+# justamente quando ele ja' esta' com um pe' fora. Medido: o apelido mudava no
+# corte em 100% dos videos deste motor.
+# ⚠️ O AVISO mora no `short_comum`, que e' compartilhado com os 24s — la' ele
+# continua CERTO e nao se toca. Quem tem de calar e' o motor de 16s, e cala
+# AQUI, nomeando o que caiu e por que. ⛔ Filtro por prefixo exato: calar por
+# substring larga apagaria acusacao futura em silencio, que e' o oposto do que
+# uma aposentadoria declarada deve fazer.
+_APOSENTADO_24S = "substantivo repetido no video"
+
+
 def lint(spec, blocos):
     # ⚠️ `teto_total` explicito: o padrao do `lint_curto` e' a soma dos tetos
     # (82), que aqui e' o PISO do orcamento da doutrina — o AVISO dispararia
     # acima do numero que a ES16 exige como MINIMO. A borda de cima e' 96.
-    # ⚠️ `cota_min=2`: nos degraus 1 e 4 a cena 1 nao carrega substantivo do
-    # nucleo por construcao, entao as cenas 2 e 3 seguram a cota sozinhas — e as
-    # duas o carregam em 100% do pool.
-    return sc.lint_curto(
+    # ⚠️ `cota_min=2`: as DUAS falas carregam o nucleo (a FALHA na cena 1, o
+    # MECANISMO na cena 2), inclusive no degrau 1, cujos hooks nomeiam os props.
+    achados = sc.lint_curto(
         sys.modules[__name__], spec, blocos, (1, 2, 3), TETO_FALA,
         literais=("gelatin trick",), cota_min=2, teto_total=TETO_TOTAL,
         extras=(_es1_plateia, _es2_par, _es3_arco, _es4_agencia, _es5_sem_dose,
@@ -3414,7 +3845,8 @@ def lint(spec, blocos):
                 _es10_degrau, _es11_casting, _es12_livro, _es13_texto,
                 _es14_densidade, _es15_elenco, _es16_orcamento,
                 _es17_conformidade, _es19_gates, _es20_eco, _es21_bandeira,
-                _es22_abertura))
+                _es22_abertura, _ct16))
+    return [(n, m) for n, m in achados if not m.startswith(_APOSENTADO_24S)]
 
 
 # ---------------------------------------------------------------------------
@@ -3462,8 +3894,8 @@ def resumo_pt(spec):
         "%s, uma narradora de %d anos ergue o par (%s + %s) %s à altura do "
         "peito enquanto %s de pele %s, ao lado da cabeça dela e no mesmo foco, "
         "%s congelado%s — e a fala nunca os menciona. Na cena 2 ela está "
-        "sozinha, prepara %s em água morna e declara a receita incompleta sem o "
-        "gelatin trick. Na cena 3 o MESMO homem de %d anos segura o eixo nas "
+        "sozinha, prepara %s em água morna, e a FALA diz o que o gelatin trick "
+        "faz com o órgão dele. Na cena 3 o MESMO homem de %d anos segura o eixo nas "
         "duas mãos dele, contra a frente da peça de baixo (%s), olhando na "
         "lente, enquanto ela "
         "aponta sem encostar com %s na mão livre. Três cenas de 8s, degrau %d "
@@ -3645,7 +4077,27 @@ TETO_FREQ = 0.17        # nenhum item pode concentrar mais que isso
 # 8 no degrau 4 (nenhum dos 5 hooks de la' aterrissa na P22, entao o fecho tem
 # de aterrissar sozinho).
 MIN_COPY = {"HOOKS": 16, "FUNDIDAS": 13, "CTAS": 14, "GATES": 11,
-            "FECHOS": 11, "SELOS": 11, "PROVAS": 14, "BARREIRAS": 11}
+            "FECHOS": 11, "SELOS": 11, "PROVAS": 14, "BARREIRAS": 11,
+            # + 2026-08-10, os cinco pools do contrato de copy 16s. Os pisos
+            # sao o tamanho DE HOJE menos dois: piso igual ao tamanho atual e'
+            # piso que so' serve para impedir crescimento, e piso muito abaixo
+            # nao cobra nada. ⛔ Os quatro pools do take 2 substituem
+            # ABERTURAS16 (8) + RECEITAS16 (8) + GATES (15): a entropia falada
+            # subiu de 8x8x8x15 = 7.680 para 17x11x16x16 = 47.872 combinacoes.
+            # ⚠️ FALHAS, MECANISMOS16 e PROVAS16 RE-DERIVADAS em 2026-08-10,
+            # nas DUAS conferencias que leram a saida em voz alta: os pools
+            # encolheram de 18 para 17, de 18 para 17 e de 18 para 11 porque
+            # uma, uma e SETE entradas foram derrubadas por nao sobreviverem a
+            # uma unica audicao (o motivo de cada uma esta' escrito em cima do
+            # proprio pool). O piso segue a
+            # MESMA regra dos outros — tamanho de hoje menos dois — e nao a
+            # regra "nunca abaixa": piso que trava um pool no tamanho que ele
+            # tinha quando a copy era ruim obriga a repor lixo para passar no
+            # self-test. ⛔ O que nao pode acontecer em silencio e' o
+            # encolhimento; por isso os cinco textos ficam NOMEADOS no
+            # comentario do pool, e nenhum piso desce abaixo de MIN_OPCOES (9).
+            "FALHAS": 15, "MECANISMOS16": 16, "PROVAS16": 11,
+            "FOLLOWS16": 14, "CTAS16": 14}
 MIN_HOOKS_D1 = 6        # o degrau 1 e' o default: precisa de pool proprio
 
 # ⭐ ES22, correcao de 2026-08-02 — A ENTROPIA POR `id` NAO E' A ENTROPIA QUE O
@@ -3692,6 +4144,29 @@ def _id_hook(fala, degrau):
     return "?"
 
 
+# ⭐⭐ [ALCANCE] — de volta ao TEMPLATE que produziu a frase (2026-08-10).
+# ⛔ Existe porque contar `len(pool)` nao e' medir entropia: o orcamento de 25
+# palavras pode deixar metade das entradas INALCANCAVEIS, e o `--stats`
+# continuaria imprimindo o tamanho do pool como se todas saissem. Entrada que
+# nunca chega ao video esta' morta, e pool com entrada morta mente.
+# ⚠️ A comparacao e' em MINUSCULAS: o motor capitaliza o inicio da frase, e uma
+# busca case-sensitive ja' declarou entrada viva como morta em outro motor.
+_RX_SLOT = re.compile(r"\{[a-z]\}")
+
+
+def _id_beat(pool, fala):
+    baixo = fala.lower()
+    melhor = "?"
+    for i, tpl in enumerate(pool):
+        partes = [p for p in _RX_SLOT.split(tpl.lower()) if p.strip()]
+        if all(p in baixo for p in partes):
+            # o template mais LONGO que casa: "Follow me first." e "Follow me
+            # now." dividem prefixo, e o primeiro a casar nao e' o certo.
+            if melhor == "?" or len(tpl) > len(pool[int(melhor[1:]) - 1]):
+                melhor = "b%02d" % (i + 1)
+    return melhor
+
+
 def _rodada(n_por_pagina, rng, degrau, geometria, figurantes, m=None):
     """Uma passada completa por todas as paginas. Devolve (erros, avisos, n)."""
     erros = avisos = n = 0
@@ -3725,10 +4200,24 @@ def _rodada(n_por_pagina, rng, degrau, geometria, figurantes, m=None):
                 for chave, (eixo, campo) in EIXOS_STRING:
                     _contar(m, chave, spec[eixo][campo])
                 _contar(m, "copy:hook", _id_hook(spec["falas"][0], degrau))
-                for i in (2, 3):
+                # ⛔ ERA `for i in (2, 3)` — herdado do motor de 24s, e
+                # `falas[2]` nao existe na familia de DOIS takes: o --stats
+                # inteiro morria de IndexError na primeira rodada, ou seja o
+                # self-test de entropia deste motor nunca rodou uma vez.
+                # ⚠️ Com o CT4 as duas contagens sao a MESMA distribuicao de
+                # proposito (um apelido por video, repetido nos dois takes) —
+                # medir as duas e' o que prova que o CT4 esta' de pe'.
+                for i in (1, 2):
                     _contar(m, "copy:nucleo c%d" % i,
                             sc.orgao_de(sys.modules[__name__],
                                         spec["falas"][i - 1]))
+                for nome, pool, fala in (
+                        ("copy:falha", FALHAS, spec["falas"][0]),
+                        ("copy:mecanismo16", MECANISMOS16, spec["falas"][1]),
+                        ("copy:prova16", PROVAS16, spec["falas"][1]),
+                        ("copy:follow16", FOLLOWS16, spec["falas"][1]),
+                        ("copy:cta16", CTAS16, spec["falas"][1])):
+                    _contar(m, nome, _id_beat(pool, fala))
                 m["n"] += 1
             _anotar(ledger, spec)
             n += 1
@@ -3806,7 +4295,10 @@ def autoteste(n_por_pagina=80, seed=7):
 
     copy = {"HOOKS": len(HOOKS), "FECHOS": len(FECHOS), "FUNDIDAS": len(FUNDIDAS),
             "SELOS": len(SELOS), "PROVAS": len(PROVAS), "CTAS": len(CTAS),
-            "GATES": len(GATES), "BARREIRAS": len(BARREIRAS)}
+            "GATES": len(GATES), "BARREIRAS": len(BARREIRAS),
+            "FALHAS": len(FALHAS), "MECANISMOS16": len(MECANISMOS16),
+            "PROVAS16": len(PROVAS16), "FOLLOWS16": len(FOLLOWS16),
+            "CTAS16": len(CTAS16)}
     for nome, piso in sorted(MIN_COPY.items()):
         if copy[nome] < piso:
             falhas.append("pool de copy %s com %d entradas (minimo %d)"
@@ -3833,12 +4325,54 @@ def autoteste(n_por_pagina=80, seed=7):
         if sujos:
             falhas.append("ES19: %d entrada(s) de %s com vocativo — o vocativo "
                           "so' mora nos GATES" % (len(sujos), nome))
+    # ⭐ 2026-08-10 — a mesma regra de POOL, repontada para o beat que hoje
+    # carrega o vocativo. O GATE saiu do video (CT1) e o FOLLOW tomou o lugar
+    # dele: se a guarda ficasse so' nos GATES, o vicio de 'brother' que o
+    # operador mediu no TROCA (31-73% dos videos) voltaria pela porta nova.
+    n_voc16 = sum(1 for f in FOLLOWS16 if _achar(f, VOCATIVOS))
+    if n_voc16 > 3:
+        falhas.append("ES19: %d follows com vocativo (maximo 3)" % n_voc16)
+    for nome, pool in (("CTAS16", CTAS16), ("MECANISMOS16", MECANISMOS16),
+                       ("PROVAS16", PROVAS16), ("FALHAS", FALHAS)):
+        sujos = [x for x in pool if _achar(x, VOCATIVOS)]
+        if sujos:
+            falhas.append("ES19: %d entrada(s) de %s com vocativo — no take 2 o "
+                          "vocativo so' mora no FOLLOW" % (len(sujos), nome))
 
     # --- ES1, o pool de FECHOS nao pode mencionar o figurante ---------------
     sujos = [f for f in FECHOS if ES1_MENCAO.search(f)]
     if sujos:
         falhas.append("ES1: %d fecho(s) mencionam o figurante: %s"
                       % (len(sujos), sujos))
+    # ⛔⛔ E A MESMA CERCA NO POOL QUE HOJE OCUPA O SLOT. A FALHA fala do que o
+    # corpo faz de errado, e a tentacao de escrever "his {o} quits" e' enorme —
+    # so' que na cena 1 nao existe `he`: o figurante congelado encena o
+    # escandalo NO LUGAR do espectador, e mencionar o figurante o transforma em
+    # personagem comentado. E' o agente inteiro que se perde.
+    sujos = [f for f in FALHAS if ES1_MENCAO.search(f)]
+    if sujos:
+        falhas.append("ES1: %d falha(s) mencionam o figurante: %s"
+                      % (len(sujos), sujos))
+    # ⛔ CT2 — toda entrada de FALHAS tem de ENUNCIAR a falha. Pool que passa no
+    # linter porque UMA entrada carrega o token e as outras nao e' pool que
+    # reprova 17 videos em 18 sem ninguem ver: a lente olha o video sorteado, o
+    # self-test olha o repertorio (licao §19).
+    for i, f in enumerate(FALHAS, 1):
+        if "{o}" not in f:
+            falhas.append("CT4/cota: FALHAS[%d] sem `{o}` — no degrau 1 e' a "
+                          "unica frase da cena 1 que nomeia o orgao" % i)
+        prova = {"falas": [f.format(o="pecker"), ""]}
+        ct2 = []
+        sc.lint_copy16(sys.modules[__name__], prova, ct2, isca_absurda=False)
+        if any("CT2" in msg for _n, msg in ct2):
+            falhas.append("CT2: FALHAS[%d] nao enuncia falha nenhuma — %r" % (i, f))
+        if _afirma_no_corpo(f.format(o="Johnson")):
+            falhas.append("ES5: FALHAS[%d] afirma sobre o corpo do espectador "
+                          "('your <nucleo>' fora de condicional/pergunta)" % i)
+        if ES5_PRAZO.search(f):
+            falhas.append("ES5: FALHAS[%d] traz marcador de PRAZO — somado ao "
+                          "'your <nucleo>' dos hooks dos degraus 2 e 3 e' a "
+                          "composicao que derrubou o video do NECROSE" % i)
 
     # --- ES11, piso de idade -----------------------------------------------
     novas = [x["id"] for x in NARRADORAS if x["idade"] < IDADE_MINIMA_NARRADORA]
@@ -3855,45 +4389,102 @@ def autoteste(n_por_pagina=80, seed=7):
     # teto de nenhuma cena era alcancavel (o AVISO de teto virava codigo morto) e
     # que a cena 2 ficava abaixo do piso em 48% dos sorteios.
     extra_o = max(_palavras(o) for o in NUCLEO) - 1
-    extra_r = max(_palavras(r["fala"]) for r in RECEITAS) - 1
     for d in DEGRAUS:
         hk = [_palavras(h["txt"]) for h in HOOKS if h["degrau"] == d]
-        fe = [_palavras(f) for f in FECHOS]
-        ex = extra_o if d in (2, 3) else 0
-        if min(hk) + max(fe) < PISO_FALA[1]:
+        fa = [_palavras(f) for f in FALHAS]
+        # a FALHA sempre carrega {o}; o hook so' nos degraus 2 e 3
+        ex = extra_o * (2 if d in (2, 3) else 1)
+        if min(hk) + max(fa) < PISO_FALA[1]:
             falhas.append("ES16: cena 1 no degrau %d nao alcanca o piso (%d < %d)"
-                          % (d, min(hk) + max(fe), PISO_FALA[1]))
-        if max(hk) + min(fe) + ex > TETO_FALA[1]:
+                          % (d, min(hk) + max(fa), PISO_FALA[1]))
+        # ⚠️ `min(fa)` e nao `max(fa)`: a FALHA e' escolhida DENTRO do
+        # orcamento (`_escolher` com predicado de piso e teto), entao o que
+        # tem de caber e' a combinacao mais curta possivel com o hook mais
+        # longo. Cobrar `max + max` reprovaria um pool saudavel — e' a §16,
+        # lente que reprova o que esta' certo.
+        if max(hk) + min(fa) + ex > TETO_FALA[1]:
             falhas.append("ES16: cena 1 no degrau %d pode estourar (%d > %d)"
-                          % (d, max(hk) + min(fe) + ex, TETO_FALA[1]))
-    fu = [_palavras(f) for f in FUNDIDAS]
-    se = [_palavras(s) for s in SELOS]
-    if min(fu) + max(se) < PISO_FALA[2]:
-        falhas.append("ES16: cena 2 nao alcanca o piso (%d < %d)"
-                      % (min(fu) + max(se), PISO_FALA[2]))
-    if max(fu) + min(se) + extra_o + extra_r > TETO_FALA[2]:
-        falhas.append("ES16: cena 2 pode estourar (%d > %d)"
-                      % (max(fu) + min(se) + extra_o + extra_r, TETO_FALA[2]))
-    pr = [_palavras(p["txt"]) for p in PROVAS]
-    ct = [_palavras(c) for c in CTAS]
-    ga = [_palavras(g) for g in GATES]
-    if min(pr) + min(ct) + max(ga) < PISO_FALA[2]:
-        falhas.append("ES16: cena 3 nao alcanca o piso (%d < %d)"
-                      % (min(pr) + min(ct) + max(ga), PISO_FALA[2]))
-    if max(pr) + extra_o + max(ct) + min(ga) > TETO_FALA[2]:
-        falhas.append("ES16: cena 3 pode estourar (%d > %d)"
-                      % (max(pr) + extra_o + max(ct) + min(ga), TETO_FALA[2]))
+                          % (d, max(hk) + min(fa) + ex, TETO_FALA[1]))
 
-    # --- ES6/ES7, cobertura por ENUMERACAO do pool de fundidas -------------
-    for i, f in enumerate(FUNDIDAS, 1):
+    # ⭐⭐ O TAKE 2 EM QUATRO BEATS — o piso e o teto por ENUMERACAO.
+    # ⛔ A conta do contrato (8 mecanismo + 5 prova + 3 follow + 9 CTA = 25) e'
+    # o ALVO; o que se cobra aqui e' a ARITMETICA REAL do pool, porque foi
+    # exatamente uma conta de cabeca que deixou o motor de 24s com PISO 26
+    # declarado acima do proprio TETO de 25 — par impossivel em que todo
+    # sorteio viola um dos dois.
+    # ⚠️ `extra_o` uma vez so': o mecanismo carrega UM `{o}`, os outros tres
+    # beats nao carregam nenhum. O `{d}` custa 2 palavras nas tres formas
+    # (`my husband's` / `my partner's` / `my man's`), entao ele nao tem extra.
+    me = [_palavras(x.format(d="my husband's", o="Johnson"))
+          for x in MECANISMOS16]
+    p16 = [_palavras(x) for x in PROVAS16]
+    f16 = [_palavras(x) for x in FOLLOWS16]
+    c16 = [_palavras(x) for x in CTAS16]
+    if max(me) + max(p16) + max(f16) + max(c16) < PISO_FALA[2]:
+        falhas.append("ES16: cena 2 nao alcanca o piso (%d < %d)"
+                      % (max(me) + max(p16) + max(f16) + max(c16),
+                         PISO_FALA[2]))
+    # ⭐ O teto NAO e' "a soma dos maximos" — o solver escolhe dentro do
+    # orcamento. O que tem de caber e' a COMBINACAO MINIMA: se nem ela couber,
+    # nao existe video legal e o fallback do `_cabe16` estoura em silencio.
+    if min(me) + min(p16) + min(f16) + min(c16) > TETO_FALA[2]:
+        falhas.append("ES16: cena 2 nao cabe nem na combinacao mais curta "
+                      "(%d > %d) — o fallback do solver estoura o teto fisico"
+                      % (min(me) + min(p16) + min(f16) + min(c16),
+                         TETO_FALA[2]))
+
+    # --- CT3/CT5/ES6/ES7, cobertura por ENUMERACAO dos pools do take 2 ------
+    # ⛔⛔ A enumeracao saiu de FUNDIDAS (pool PARADO) e foi para MECANISMOS16,
+    # que e' quem chega ao video. Lente apontada para pool morto e' lente que
+    # imprime "OK" sobre o nada.
+    for i, f in enumerate(MECANISMOS16, 1):
         baixo = f.lower()
         if "gelatin trick" not in baixo:
-            falhas.append("ES6: FUNDIDAS[%d] sem o literal 'gelatin trick'" % i)
-        if "{o}" not in f or "{r}" not in f:
-            falhas.append("ES6: FUNDIDAS[%d] sem slot {o} ou {r}" % i)
+            falhas.append("ES6: MECANISMOS16[%d] sem o literal 'gelatin trick'" % i)
+        if "{o}" not in f or "{d}" not in f:
+            falhas.append("ES6: MECANISMOS16[%d] sem slot {o} ou {d}" % i)
         n_tec = sum(baixo.count(t) for t in ES7_TECNICAS)
         if n_tec != 1:
-            falhas.append("ES7: FUNDIDAS[%d] com %d palavras tecnicas" % (i, n_tec))
+            falhas.append("ES7: MECANISMOS16[%d] com %d palavras tecnicas"
+                          % (i, n_tec))
+        # CT3 pela lente compartilhada, entrada por entrada — verbo de efeito e
+        # ALVO na mesma sentenca do batismo. ⛔ Rotulo nu nao passa.
+        prova = {"falas": ["", f.format(d="my husband's", o="pecker")
+                           + " Comment gelatin, and the recipe goes to your "
+                             "messages."]}
+        ct3 = []
+        sc.lint_copy16(sys.modules[__name__], prova, ct3, isca_absurda=False)
+        for _n, msg in ct3:
+            if msg.startswith(("CT3", "CT5", "CT7")):
+                falhas.append("MECANISMOS16[%d]: %s" % (i, msg))
+    # ⛔⛔ ES6 — O MARCADOR DE NEGACAO MORA NO POOL DE PROVAS16, TODAS AS 18.
+    # No formato 16s a FALTA de verdade e' o CT2, do outro lado do corte; o
+    # marcador dentro do take fica na prova, colado no mecanismo, sem gastar
+    # palavra propria. Se alguem escrever uma prova sem negacao, a ES6 reprova
+    # o video inteiro — e reprovaria por sorteio, um em dezoito, que e' o pior
+    # jeito de descobrir.
+    for i, p in enumerate(PROVAS16, 1):
+        if not any(n in p.lower() for n in ES6_NEGACAO):
+            falhas.append("ES6: PROVAS16[%d] sem marcador de negacao (%r) — e' "
+                          "ela que sustenta a falta dentro do take" % (i, p))
+    # ⛔ CT5 e CT6 no pool inteiro de CTAs: ingrediente na boca e CTA sem
+    # endereco de entrega sao os dois defeitos que estavam em 100% do lote.
+    for i, c in enumerate(CTAS16, 1):
+        if sc.INGREDIENTES_16.search(c):
+            falhas.append("CT5: CTAS16[%d] nomeia ingrediente — %r" % (i, c))
+        if not sc.ENTREGA_16.search(c):
+            falhas.append("CT6: CTAS16[%d] nao diz ONDE a receita chega — %r"
+                          % (i, c))
+        if sc.CTA_LITERAL not in c:
+            falhas.append("ES12: CTAS16[%d] sem o literal %r"
+                          % (i, sc.CTA_LITERAL))
+    # ⛔ CT1 — o follow e' a penultima batida, nunca a ultima. Se uma entrada
+    # de FOLLOWS16 trouxer um segundo pedido, o video passa a ter duas
+    # chamadas e a ultima deixa de ser a que paga.
+    for i, f in enumerate(FOLLOWS16, 1):
+        if "comment gelatin" in f.lower():
+            falhas.append("CT1: FOLLOWS16[%d] carrega o CTA — o pedido e' a "
+                          "ULTIMA coisa do video, e mora so' no CTAS16" % i)
     for i, p in enumerate(PROVAS, 1):
         if "{o}" not in p["txt"]:
             falhas.append("ES16: PROVAS[%d] sem {o} — a prova ficaria sem "

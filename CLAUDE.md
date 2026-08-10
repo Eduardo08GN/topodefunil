@@ -75,17 +75,24 @@ não é erro de quem escreveu o pool, é ausência de contrato.
 | **CT2** | o take 1 enuncia a **falha dele**, com dano concreto |
 | **CT3** | `gelatin trick` carrega **verbo de efeito + alvo** na mesma sentença |
 | **CT4** | **um** apelido do órgão por vídeo, repetido nos dois takes |
+| **CT4b** | os apelidos sorteáveis são **`pecker` · `wiener` · `Johnson`** |
 | **CT5** | nenhum **ingrediente** nomeado na fala — a receita é a moeda |
 | **CT6** | o CTA diz **onde** a receita chega (`goes to your messages`) |
 | **CT7** | verbo de ereção **colado no órgão** é proibido |
+| **CT8** | **nenhum pedido de follow na fala** |
 
 ⛔ **O CT4 reverte a regra antiga** de "substantivos distintos por cena". Em 24s
 e cinco cenas o bordão é o risco; em 16s e duas cenas o corte zera a memória de
 trabalho, e trocar `soldier` por `Johnson` no segundo 9 obriga a remapear. A
-variação continua **entre** vídeos.
+variação continua **entre** vídeos, e é o **CT4b** que a cobra — sem ele, "um
+apelido por vídeo" vira o mesmo apelido no lote inteiro.
 
-⛔ **O `follow` nunca encosta na keyword**: a automação de DM casa palavra
-**exata**. Lente `T16-2` trava isso, e o CT1 manda o follow para antes do CTA.
+⛔⛔ **O CT8 reverte outra**, e por correção de FATO: *"a mensagem é enviada
+independente de seguirem ou não"* (operador, 2026-08-10). O gate de follow
+existia no repo inteiro por uma premissa errada sobre a automação de DM. Os
+pools `GATES`/`FOLLOWS16` ficaram no código **marcados como aposentados** —
+mexer neles não muda vídeo nenhum. A lente `T16-2` (o follow nunca encosta na
+keyword) fica como rede para o dia em que o beat voltar.
 ⚠️ A ferramenta do Flow ainda não existe — o prompt de criação da **AdBatch
 Vertical 2** está em
 [`adbatch-prompts-editor.md`](funil-organico/adbatch-prompts-editor.md)

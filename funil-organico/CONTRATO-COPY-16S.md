@@ -146,6 +146,51 @@ quanto melhor o diagnóstico em 2ª pessoa, **mais caro fica comentar**.
 Em 48 segundos de copy dos três vídeos revisados não havia **uma palavra**
 baixando esse custo. A cláusula é grátis (ver a conta acima) e não é opcional.
 
+### CT4b — os três apelidos, e só eles
+> Ordem do operador, 2026-08-10: *"quero que vc use weiner e john-son pra se
+> referir ao órgão tb, não apenas pec-ker"*
+
+```
+pecker  ·  wiener  ·  Johnson
+```
+
+⛔ O **CT4 sozinho é uma armadilha**: ele trava um apelido por vídeo, e um
+apelido por vídeo pode ser o **mesmo apelido no lote inteiro** — mode-collapse
+com cara de consistência. O CT4b é onde a variação **entre** vídeos é cobrada, e
+o `medir_copy16` tem uma coluna só para a repartição real.
+
+⚠️ `soldier` saiu: soa **filme de guerra** para ouvido americano (lente de ouvido
+nativo da revisão adversarial). `tool` saiu por ambiguidade em gíria dos EUA. Os
+dois **continuam no `NUCLEO`** de cada motor porque as lentes os usam para
+*detectar* o órgão — o que muda é que não são mais **sorteáveis**.
+
+### CT8 — nenhum pedido de follow na fala
+> Ordem do operador, 2026-08-10: *"eu tb não acho que deva ter que ter follow me
+> no cta, **a mensagem é enviada independente de seguirem ou não**"*
+
+⛔⛔ **Isto reverte doutrina antiga, e a reversão é de FATO, não de gosto.** O
+gate de follow existia no repo inteiro porque se acreditava que a automação de
+DM só alcançava seguidor. Quem opera a automação corrigiu a premissa.
+
+Toda a família `GATES` / `FOLLOWS16` / `GATES16` nasceu dessa premissa errada —
+são 6 a 14 entradas por motor, ocupando **2 a 5 palavras** num take de 25, de
+copy que nunca deveria ter existido.
+
+⭐ **E o CT1 nasceu justamente porque esse beat vivia depois do CTA.** Com o
+follow fora, o defeito mais caro do lote (100% dos sorteios em 6 de 7 motores)
+deixa de ter de onde vir. As palavras liberadas vão para o mecanismo e a prova.
+
+⚠️ Os pools ficaram no arquivo, **marcados como aposentados**, porque os
+autotestes ainda os validam e apagá-los exigiria duas cirurgias no mesmo commit
+em que a copy inteira mudou. Cada um leva no cabeçalho o aviso de que **melhorar
+suas entradas não muda um único vídeo**. Se o follow voltar, volta **antes** do
+CTA e por decisão do operador.
+
+⚠️ **Consequência medida:** o piso da cena 2 do TROCA 16 batia em 130 de 400
+sorteios depois da remoção. Piso calibrado com um beat que não existe mais é
+alarme que sempre dispara — e alarme que sempre dispara ensina a ignorar o
+linter inteiro. Recalibrado de 20 para 18.
+
 ### CT7 — verbo de ereção colado no órgão
 ```
 ✗ The gelatin trick gets your pecker hard.       ← reprova no gerador

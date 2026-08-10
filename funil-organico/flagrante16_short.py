@@ -304,52 +304,52 @@ OCASIOES = [
 # Ancora de escala obrigatoria nos dois estados (F12 / F15).
 # murcho: "no longer than his thumb" · ereto: "as long as her forearm"
 PROPS = [
-    {"id": "geoduck", "marisco": True,
+    {"id": "geoduck", "pt": "um geoduck", "marisco": True,
      "murcho": ("a small geoduck clam by its pale ridged shell, its siphon no "
                 "longer than his thumb, shriveled and wrinkled, completely "
                 "soft, folded over on itself"),
      "ereto": ("a geoduck clam upright by its shell at shoulder height, its "
                "siphon held stiff and straight, as long as her forearm and as "
                "thick as her wrist")},
-    {"id": "banana", "marisco": False,
+    {"id": "banana", "pt": "uma banana", "marisco": False,
      "murcho": ("a small banana, no longer than his thumb, shriveled and "
                 "wrinkled, skin dull and spotted, completely soft, folded "
                 "over on itself"),
      "ereto": ("a banana upright at shoulder height, held stiff and straight, "
                "as long as her forearm and as thick as her wrist")},
-    {"id": "okra", "marisco": False,
+    {"id": "okra", "pt": "um quiabo", "marisco": False,
      "murcho": ("a small wilted okra pod, no longer than his thumb, shriveled "
                 "and completely soft, drooping over his fingers"),
      "ereto": ("an okra pod upright at shoulder height, held stiff and "
                "straight, as long as her forearm")},
-    {"id": "pepino", "marisco": False,
+    {"id": "pepino", "pt": "um pepino", "marisco": False,
      "murcho": ("a small shrivelled cucumber, no longer than his thumb, "
                 "wrinkled and completely soft, folded over on itself"),
      "ereto": ("a cucumber upright at shoulder height, held stiff and "
                "straight, as long as her forearm and as thick as her wrist")},
-    {"id": "aspargo", "marisco": False,
+    {"id": "aspargo", "pt": "um aspargo", "marisco": False,
      "murcho": ("a small wilted asparagus stalk, no longer than his thumb, "
                 "limp and drooping over his fingers"),
      "ereto": ("an asparagus stalk upright at shoulder height, held stiff and "
                "straight, as long as her forearm")},
-    {"id": "daikon", "marisco": False,
+    {"id": "daikon", "pt": "um nabo daikon", "marisco": False,
      "murcho": ("a small shrivelled daikon radish, no longer than his thumb, "
                 "wrinkled and completely soft, drooping over his fingers"),
      "ereto": ("a daikon radish upright at shoulder height, held stiff and "
                "straight, as long as her forearm and as thick as her wrist")},
-    {"id": "linguica", "marisco": False,
+    {"id": "linguica", "pt": "uma linguiça", "marisco": False,
      "murcho": ("a small pale sausage, no longer than his thumb, shriveled "
                 "and completely soft, folded over on itself"),
      "ereto": ("a thick sausage upright at shoulder height, held stiff and "
                "straight, as long as her forearm")},
     # + 2026-08-01: o operador mediu vicio — sempre o mesmo prop na mao do
     # lote. Dois novos, com as duas ancoras de escala obrigatorias (F12/F15).
-    {"id": "cenoura", "marisco": False,
+    {"id": "cenoura", "pt": "uma cenoura", "marisco": False,
      "murcho": ("a small limp carrot, no longer than his thumb, shriveled and "
                 "wrinkled, completely soft, drooping over his fingers"),
      "ereto": ("a carrot upright at shoulder height, held stiff and straight, "
                "as long as her forearm")},
-    {"id": "alho_poro", "marisco": False,
+    {"id": "alho_poro", "pt": "um alho-poró", "marisco": False,
      "murcho": ("a small wilted leek, no longer than his thumb, shriveled and "
                 "completely soft, folded over on itself"),
      "ereto": ("a leek stalk upright at shoulder height, held stiff and "
@@ -610,7 +610,20 @@ MULHERES = [
 # POOLS DE COPY — o molde e' sorteado, a frase cha' vence sempre (arsenal)
 # ---------------------------------------------------------------------------
 
-NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
+# ⛔⛔ `soldier` SAIU — ordem do operador na reforma de copy 16s (2026-08-10).
+# Nos EUA `soldier` para o orgao soa a filme de guerra, nao a boca de homem de
+# 50-70 anos; e este e' o unico motor do parque que ainda o carregava.
+# ⭐ E O POOL NAO ENCOLHEU: saiu 1, entraram 3 (`manhood`, `equipment`,
+# `old boy` ficou de fora de proposito — sao duas palavras e estouravam o
+# orcamento de 14 do hook quando o `{evento}` vem com tres). 5 -> 6 entradas.
+# ⚠️ As duas novas foram escolhidas contra a lista `ORGAO` do
+# `medir_contexto_copy` (`manhood` e `equipment` ja' estao la'): apelido que
+# aquele regex nao conhece faz a frase que NOMEIA o orgao ser contada como
+# frase orfa, e o relatorio infla com falso positivo. `plumbing` foi testado e
+# descartado exatamente por isso.
+# ⚠️ `manhood` ja' tem grafia sonora no `nucleo_sonoro` (`man-hood`);
+# `equipment` e' palavra comum e nao precisa de nenhuma.
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "manhood", "equipment"]
 
 # ===========================================================================
 # ⭐⭐ A CENA 1 — FOFOCA + ANCORA + VIRADA (2026-08-09)
@@ -664,8 +677,8 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # emprestado da anterior. Foi o que matou `His droops like this.` (his O QUE?)
 # e `One trick later, nobody laughs at him.` (que truque?).
 #
-# ⭐ ORCAMENTO GARANTIDO POR CONSTRUCAO, nao por solver: 11-14 + 9-10 = no
-# maximo 24, que e' o teto. Nenhuma combinacao das 16 x 14 estoura, e por isso
+# ⭐ ORCAMENTO GARANTIDO POR CONSTRUCAO, nao por solver: 11-14 + 8-10 = no
+# maximo 24, que e' o teto. Nenhuma combinacao das 20 x 22 estoura, e por isso
 # NENHUMA entrada fica inalcancavel — o solver de `_hook16` vira rede de
 # seguranca, nao filtro. Foi assim que se matou o mode-collapse da versao
 # anterior (quatro entradas levavam 67% do lote).
@@ -673,27 +686,51 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # ⚠️ 11-14 palavras com `{evento}` de 3 (o pior caso). Uma sentenca ou duas.
 # ⛔ Toda entrada nomeia o `{o}` na PRIMEIRA sentenca — e' o referente que o
 # `medir_abertura` cobra, e e' o que diz ao espectador do que se trata.
+#
+# ⭐⭐ CT2 DO CONTRATO DE COPY 16s (2026-08-10) — *"o take 1 enuncia a FALHA
+# dele, com dano concreto e de preferencia um numero"*. Medido antes da
+# reforma: 17% dos videos do FLAGRANTE saiam SEM falha enunciada, e a causa
+# eram tres entradas — `was finished` (x2) e `was done`, que dizem que algo
+# acabou sem dizer o que o corpo dele faz de errado. As tres foram reescritas
+# com o verbo de falha explicito.
+# ⭐ E ONDE CABIA, ENTROU UM NUMERO. A melhor linha medida do parque inteiro e'
+# `He'd lose it ten minutes in.` — cinco palavras, um numero, um dano. Aqui o
+# equivalente e' `quit ten minutes in`, `died two years ago`, `gave out at
+# sixty`, `hasn't worked in three years`: o espectador nao ouve "ele piorou",
+# ouve QUANTO.
+# ⛔ Pool de 16 -> 20 entradas: a reforma nao encolhe repertorio.
 HUMILHACOES16 = [
-    "Everybody at {evento} heard his {o} quit on him.",
+    "Everybody at {evento} heard his {o} quit on him last spring.",
     # ⚠️ `told everyone at {evento}`, nunca `told {evento}`: a metonimia funciona
     # em `The whole church hall knew` mas trava em `told that boat`, e frase que
     # trava o ouvido no segundo 2 e' scroll perdido. Sao as tres entradas de
     # `told` do pool — e assim elas tambem passam pela correcao de preposicao.
-    "His wife told everyone at {evento} his {o} was dead, they laughed.",
-    "Every man at {evento} knew his {o} was finished, they mocked him.",
-    "Everyone at {evento} laughed because his {o} stopped working.",
-    "Word got around {evento} that his {o} was dead, and they laughed.",
-    "His own brother told everyone at {evento} his {o} was done.",
+    "His wife told everyone at {evento} his {o} died two years ago.",
+    # ⛔ era `his {o} was finished` — nao dizia o que o corpo faz de errado
+    "Everyone at {evento} knows his {o} hasn't worked in three years.",
+    "Everyone at {evento} laughed because his {o} quit ten minutes in.",
+    "Word got around {evento} that his {o} quit at fifty-eight.",
+    # ⛔ era `his {o} was done`
+    "His own brother told everyone at {evento} his {o} was dead.",
     "Half of {evento} heard his {o} quit, and they mocked him.",
-    "The women at {evento} heard his {o} stopped working, they whispered.",
-    "Nobody at {evento} was surprised his {o} quit years ago.",
-    "His crew at {evento} heard his {o} gave out, they laughed.",
-    "Every guy at {evento} knew his {o} quit on him.",
-    "The whole {evento} knew his {o} was finished, they said it out loud.",
+    "The women at {evento} heard his {o} stopped working last winter.",
+    "Nobody at {evento} was surprised his {o} quit two years back.",
+    "His crew at {evento} heard his {o} gave out at sixty.",
+    "Every guy at {evento} knew his {o} quit on him at fifty.",
+    # ⛔ era `his {o} was finished`
+    "The whole {evento} knew his {o} quit, they said it out loud.",
     "Cousins at {evento} heard his {o} shut down, they laughed at him.",
     "Neighbors at {evento} heard his {o} went soft, they mocked him.",
     "The men at {evento} laughed at him because his {o} quit.",
     "His partner told everyone at {evento} his {o} hasn't worked in years.",
+    # + 2026-08-10: quatro novas, todas com dano datado ou cronometrado.
+    "Everyone at {evento} heard his {o} quits five minutes in.",
+    "His wife laughed at {evento} and said his {o} stopped years ago.",
+    # ⚠️ era `...failed him on their anniversary.` — com `{evento}` =
+    # `that anniversary party` a frase saia com `anniversary` duas vezes em
+    # onze palavras. Medido no sorteio, nao lido no pool.
+    "The whole {evento} heard his {o} failed him in bed.",
+    "Men at {evento} still joke that his {o} quit on him.",
 ]
 
 # ⚠️ 9-10 palavras, TODAS nomeando `gelatin trick`.
@@ -716,8 +753,31 @@ VIRADAS16 = [
     "He found the gelatin trick, and the jokes stopped.",
     "The gelatin trick ended every one of those jokes.",
     "I showed him the gelatin trick that same night.",
-    "Nineteen days of the gelatin trick and she bragged instead.",
+    # ⛔ 2026-08-10, CONFERENCIA — era `...and she bragged instead.`, e o `she`
+    # nao tinha DONO. Medido no sorteio (nao lido no pool): em 12 de 400 videos
+    # a virada saia com `she` depois de um hook que nunca nomeia mulher nenhuma
+    # (`Half of that company meeting heard his Johnson quit, and they mocked
+    # him. Nineteen days of the gelatin trick and she bragged instead.`) — o
+    # espectador ouve `she` no segundo 7 e nao tem a quem atribuir. E' o modo de
+    # falha "pronome generico e' drifting": nao se escreve frase melhor, nomeia-se
+    # o referente. `instead` (instead de que?) saiu junto, e as 10 palavras
+    # continuam de pe'. ⚠️ O `medir_deiticos` nao pega isto: ele varre `this`,
+    # `that`, `here` — pronome pessoal orfao passa por baixo dele.
+    "Nineteen days of the gelatin trick and his wife bragged.",
     "He got the gelatin trick from me, everything changed.",
+    # + 2026-08-10, CONTRATO DE COPY 16s. As catorze acima sao do operador e
+    # ficam LITERAIS (string validada e' constante). O que faltava era uma
+    # FAMILIA em que a virada ja' diz o que a gelatina faz com o SANGUE — o
+    # mesmo CT3 que a cena 2 passou a cobrar. Oito novas, todas <= 10 palavras,
+    # e as mesmas quatro bocas de sempre (tempo · terceiro · ele · o narrador).
+    "Nineteen days of the gelatin trick fixed his blood flow.",
+    "A buddy gave him the gelatin trick for blood flow.",
+    "He found the gelatin trick, and his blood flow changed.",
+    "I gave him the gelatin trick that feeds blood flow.",
+    "The gelatin trick gave his blood flow back.",
+    "Two weeks of the gelatin trick changed his blood flow.",
+    "His brother gave him the gelatin trick for blood flow.",
+    "The gelatin trick started his blood flow again.",
 ]
 
 QUEM_CONTOU = [
@@ -950,6 +1010,14 @@ def _hook_fmt(hook, oc, o):
     return re.sub(r"\bat (that boat)\b", r"on \1", txt)
 
 
+# ⛔ APOSENTADA em 2026-08-10, e fica aqui em vez de sumir porque regra que some
+# sem explicacao e' divida. Ela servia ao `_fundir`: o beat do meio reservava a
+# MEDIANA do pool seguinte, para nao ser generoso demais nem apertado demais.
+# Com a reforma do CONTRATO DE COPY 16s os tres beats depois do MECANISMO
+# passaram a ter comprimento FIXO (TRUQUE 6, GATE 3, CTA 8) — reservar a mediana
+# de um pool onde minimo = maximo e' a mesma conta que reservar o minimo, com a
+# diferenca de mentir sobre o porque. O `_fundir` reserva o minimo e o orcamento
+# fecha por construcao (8+6+3+8 = 25).
 def _mediana(vals):
     v = sorted(vals)
     return v[len(v) // 2]
@@ -1051,7 +1119,19 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     mul = rng.choice(MULHERES)
 
     # 4 substantivos distintos do nucleo, um por cena 1-4 (cota 75%)
-    orgaos = rng.sample(NUCLEO, 4)
+    # ⚠️ ISTO E' DO ARCO DE CINCO CENAS e continua valendo la'. No 16s so'
+    # `orgaos[0]` chega ao video (MAPA_COPY = (1, None)); as cenas 2-4 sao
+    # descartadas pelo colapso, e a fundida repete `orgaos[0]` por ordem do CT4
+    # — um apelido por video, nos dois takes. Ver `_fundir`.
+    # ⛔⛔ CT4b (2026-08-10) — SO' TRES APELIDOS SAO SORTEAVEIS.
+    # Ordem do operador: *"quero que vc use weiner e john-son pra se referir ao
+    # orgao tb, nao apenas pec-ker"*. `soldier` soa filme de guerra para ouvido
+    # americano e `tool` e' ambiguo em giria dos EUA; os dois seguem no NUCLEO
+    # porque as LENTES os usam para DETECTAR o orgao — o que muda e' que nao
+    # sao mais sorteaveis. O CT4 trava UM apelido por video; sem isto aqui, um
+    # apelido por video vira o MESMO apelido no lote inteiro.
+    _o1 = rng.choice(sc.APELIDOS_16)
+    orgaos = [_o1] * 4
 
     falas = [
         _hook16(oc, orgaos[0], rng),
@@ -1197,6 +1277,14 @@ PT_OCASIAO = {
     "pescaria_firma": "Na pescaria da firma", "reuniao_firma": "Na reunião da firma",
     "churrasco": "Num churrasco de família", "jantar_amigos": "Num jantar de amigos",
     "aniversario": "Nas bodas de casamento", "clube_golfe": "No almoço do clube de golfe",
+    # ⛔ 2026-08-10, CONFERENCIA — SEIS DAS CATORZE OCASIOES NAO TINHAM LINHA
+    # AQUI, e o `resumo_pt` caia no fallback generico "No evento" em 43% dos
+    # sorteios (6/14, medido). O resumo e' onde o operador aprova ou re-sorteia
+    # antes de gastar credito: fallback e' o painel dizendo "algum lugar".
+    # As seis nasceram depois deste dicionario e ninguem voltou aqui.
+    "igreja_social": "No salão da igreja", "clube_veteranos": "No clube dos veteranos",
+    "boliche": "Na noite de boliche", "lanchonete": "Na lanchonete de estrada",
+    "reencontro": "No reencontro de turma", "feira_condado": "Na feira do condado",
 }
 
 
@@ -1372,7 +1460,22 @@ FUNDIDAS = [
 # ---------------------------------------------------------------------------
 # ⭐⭐ A FALA DA CENA FUNDIDA — EIXOS COMPOSTOS (2026-08-09)
 # ---------------------------------------------------------------------------
-#     {MECANISMO} {O TRUQUE} {CTA} {GATE}
+#     {MECANISMO} {O TRUQUE} {GATE} {CTA}       <- ordem de 2026-08-10
+#
+# ⛔⛔ A ORDEM MUDOU, E E' O CT1 DO CONTRATO DE COPY 16s. Ate' hoje o GATE vinha
+# DEPOIS do CTA — `...I'll send the recipe. Hit follow first.` — e isso saiu em
+# 100% dos 200 sorteios medidos. A ultima coisa no ouvido, colada no unico
+# pedido que gera receita, era um segundo CTA nu. A posicao final e' a que fica;
+# ela tem de ser o pedido. ⭐ O follow continua existindo — ele vai ANTES.
+#
+# ⭐ O ORCAMENTO FECHA POR CONSTRUCAO, nao por solver (a armadilha que ja' custou
+# caro duas vezes esta semana):
+#       MECANISMO  6-8   ·  TRUQUE  6 fixo  ·  GATE  3 fixo  ·  CTA  8 fixo
+#       pior caso  8 + 6 + 3 + 8 = 25 = TETO_FALA[2]
+# Nenhuma combinacao das 16 x 14 x 7 x 11 estoura, entao o `_cabe` do `_fundir`
+# nunca filtra e NENHUMA entrada fica inalcancavel. E as entradas de cada pool
+# tem tamanho PARECIDO de proposito: pool que vai de 6 a 14 palavras num teto de
+# 25 nao e' pool de 12, e' pool de 4 com oito enfeites.
 #
 # ⛔⛔ VERBO NEUTRO DE TRANSFORMACAO, e isso e' lição paga em campo HOJE. No
 # COLO 16 o operador mediu ~95% dos takes 1 reprovando no Veo e achou a causa
@@ -1387,8 +1490,17 @@ FUNDIDAS = [
 #   · nomear e' obrigatorio — nada de pronome sem dono
 #   · o CTA nomeia `recipe`, nunca `that exact one`
 
-# ⚠️ 7-9 palavras. O mecanismo do FLAGRANTE e' o FLUXO DE SANGUE, e o contraste
+# ⚠️ 6-8 palavras. O mecanismo do FLAGRANTE e' o FLUXO DE SANGUE, e o contraste
 # com a IDADE — e' o que a fonte diz e o que separa este angulo.
+# ⛔ 2026-08-10: TRES ENTRADAS CAIRAM POR ORCAMENTO, nao por gosto — `The blood
+# flow stopped reaching your {o}. Not age.` (9), `Blood flow to your {o} is the
+# whole thing.` (9) e `It's the blood flow to your {o}, nothing else.` (9). Com
+# o GATE mudando de lugar (CT1) o take 2 passou a ter quatro batidas e o teto
+# de 25 nao comporta 9 aqui. Entraram sete novas de 8, e o pool subiu de 8 para
+# 12: encurtar nunca pode virar encolher.
+# ⛔ E TODA ENTRADA NOMEIA `your {o}` NA MESMA FRASE DA CAUSA — §17. Frase que
+# diz `blood flow` e nao diz o que ela quebra vende circulacao ou coracao, que
+# e' outra categoria de produto.
 MECANISMOS16 = [
     # ⛔⛔ TODA ENTRADA CARREGA O LITERAL `blood flow`. A regra e' do repo, nao
     # minha: o MUP deste angulo e' a expressao exata, e o linter compartilhado
@@ -1396,52 +1508,154 @@ MECANISMOS16 = [
     # `circulation` e `the years` — 144 de 400 sorteios reprovados.
     "It's blood flow to your {o}, not age.",
     "It's blood flow reaching your {o}, not age.",
-    "The blood flow stopped reaching your {o}. Not age.",
-    "Blood flow to your {o} is the whole thing.",
-    "It's the blood flow to your {o}, nothing else.",
     "Your {o} runs on blood flow, not age.",
     "The blood flow to your {o} gave out.",
     "Blood flow to your {o}, not the years.",
+    # + 2026-08-10
+    "Your {o} lost its blood flow, not age.",
+    "Blood flow stopped reaching your {o} years ago.",
+    "Blood flow to your {o} got choked off.",
+    "Age didn't stop your {o}. Blood flow did.",
+    "Your {o} stopped getting blood flow, not age.",
+    "Blood flow quit reaching your {o} at fifty.",
+    "Your {o} needs blood flow, not another birthday.",
+    # ⛔ AS QUATRO ABAIXO SAO CURTAS DE PROPOSITO (6-7 palavras), e entraram
+    # depois de MEDIR o lote: com as doze de cima todas em 8 palavras, e os
+    # outros tres beats de comprimento fixo, o take 2 saia com EXATAMENTE 25
+    # palavras em 400 de 400 sorteios — encostado no teto fisico o video
+    # inteiro, sem um dedo de margem. O teto veio de render, e render nao e'
+    # deterministico. Agora o take 2 vive em 23-25.
+    "Blood flow stopped reaching your {o}.",
+    "Your {o} runs on blood flow.",
+    "The blood flow to your {o} died.",
+    "Blood flow, not age, feeds your {o}.",
 ]
 
-# ⚠️ 4-7 palavras. ⛔ O literal `gelatin trick` mora AQUI e e' obrigatorio.
+# ⚠️ 6 palavras EXATAS em todas — o beat de comprimento fixo que fecha o
+# orcamento do take 2. ⛔ O literal `gelatin trick` mora AQUI e e' obrigatorio.
 # ⛔⛔ E NADA DE QUALIFICADOR COLADO NELE: o `_adjetivo_do_mecanismo` do
 # `short_comum` e' ALLOWLIST — so' artigo, numeral, `secret` e `whole` podem
 # vir antes do literal. A minha primeira versao tinha `His cousin's gelatin
 # trick` e levou 56 reprovacoes em 400. O tempero vem DEPOIS.
-# ⭐ E o verbo e' NEUTRO — licao paga hoje no COLO 16: `changes` passa onde
-# `stands up` reprova.
+#
+# ⛔⛔ POOL INTEIRO REESCRITO — CT3 DO CONTRATO DE COPY 16s (2026-08-10).
+# Medido: 95% dos videos do FLAGRANTE saiam com o mecanismo como ROTULO NU.
+#     antes: "The gelatin trick turns that around."   <- turns O QUE around?
+#     antes: "The gelatin trick changes that."        <- muda o que, de que
+#                                                        para que?
+# Nome de mecanismo sem razao ao lado nao vira crenca, vira ruido de marca. A
+# sentenca agora carrega VERBO DE EFEITO + ALVO: o que a gelatina FAZ e COM O
+# QUE ela faz — o sangue, que e' o MUP deste angulo.
+# ⛔ E o verbo continua NEUTRO — licao paga no COLO 16: nada de `stands up`,
+# `works again`, `is back`. Verbo que descreve o orgao voltando a funcionar e'
+# lido como tumescencia e reprova no gerador (~95% dos takes 1).
+# ⚠️ Metade diz `blood flow` e metade diz so' `the blood`: com o MECANISMO
+# imediatamente antes, repetir a expressao inteira nas duas frases seguidas
+# martela o ouvido em vez de fixar.
 TRUQUES16 = [
-    "The gelatin trick changes that.",
-    "The gelatin trick turns that around.",
-    "The gelatin trick is what changed it.",
-    "The gelatin trick handles that.",
-    "The gelatin trick nobody sells changed that.",
-    "The gelatin trick did it in weeks.",
-    "The gelatin trick is the whole fix.",
-    "The gelatin trick turned it around fast.",
+    "The gelatin trick restores blood flow.",
+    "The gelatin trick opens blood flow.",
+    "The gelatin trick fixes blood flow.",
+    "The gelatin trick unblocks blood flow.",
+    "The gelatin trick clears blood flow.",
+    "The gelatin trick keeps blood flowing.",
+    # ⛔ 2026-08-10, CONFERENCIA — UMA ENTRADA CAIU E DUAS MUDARAM NA LEITURA EM
+    # VOZ ALTA, e nenhuma delas era pega por lente nenhuma: as tres passam no
+    # CT3 (tem verbo de efeito e tem alvo) e no teto. O que elas nao passam e' o
+    # ouvido de quem escuta UMA vez.
+    #   · `loosens blood flow` -> APAGADA. Solta-se o ENTUPIMENTO, nunca o
+    #     fluxo; em ingles "loosens blood flow" chega ao contrario (afrouxar o
+    #     fluxo = piorar). `opens`, `unblocks` e `clears` ja' dizem a mesma
+    #     coisa do jeito certo e ficaram — nao se perde ideia, so' a frase errada.
+    #   · `feeds the blood`    -> `feeds blood flow`. O sangue e' quem alimenta;
+    #     "feeds the blood" inverte o sentido e deixa o ouvinte sem objeto.
+    #   · `holds the blood`    -> `holds blood in`. Sem o `in` a frase pergunta
+    #     "segura o sangue ONDE?" — e a preposicao E' o mecanismo deste angulo
+    #     (o sangue que nao FICA). E' a formula do proprio CONTRATO, §CT3:
+    #     `puts back what holds the blood in`.
+    # ⚠️ 14 -> 13 entradas, e as 6 palavras exatas seguem de pe' nas treze.
+    "The gelatin trick feeds blood flow.",
+    "The gelatin trick moves the blood.",
+    "The gelatin trick holds blood in.",
+    "The gelatin trick pushes blood through.",
+    "The gelatin trick puts blood back.",
+    "The gelatin trick brings blood back.",
+    "The gelatin trick starts blood moving.",
 ]
 
-# ⚠️ 7-9 palavras, TODAS nomeando `recipe`.
+# ⚠️ 8 palavras EXATAS em todas, e TODAS nomeando `recipe`.
+# ⛔⛔ POOL INTEIRO REESCRITO — CT6 DO CONTRATO DE COPY 16s (2026-08-10).
+# Medido: 100% dos videos saiam com um CTA que nao dizia ONDE a receita chega.
+# O KPI deste funil e' uma CONFISSAO PUBLICA: o comentario leva nome e foto e
+# vai para o feed da esposa dele. Quanto melhor o diagnostico em 2a pessoa,
+# mais caro fica comentar — e em 48 segundos de copy revisada nao havia UMA
+# palavra baixando esse custo.
+# ⭐ A clausula e' DE GRACA:
+#       antes : "Comment gelatin, and I'll send the recipe."          (8)
+#       depois: "Comment gelatin, and the recipe goes to your messages."  (8)
+# Mesmo custo, e paga (a) o endereco da entrega, (b) a privacidade e (c) o fato
+# de que nao e' na tela publica.
+# ⛔ 8 -> 11 entradas.
+# ⚠️ 2026-08-10 — CONECTOR OBRIGATORIO DEPOIS DA KEYWORD. Medido: 81% dos
+# CTAs deste motor saiam como `Comment gelatin, your inbox gets...` — emenda
+# de virgula na unica frase do video que gera receita. Sem conector as duas
+# oracoes colidem no ouvido e o imperativo (`Comment gelatin`) deixa de soar
+# como comando. Custa UMA palavra e havia 3 de folga no teto.
 CTAS16 = [
-    "Comment gelatin, and I'll send the recipe.",
-    "Comment gelatin, and I'll send the recipe tonight.",
-    "Comment gelatin, and I'll send you the recipe.",
-    "Comment gelatin, and I'll send the whole recipe.",
-    "Comment gelatin, and I'll send the complete recipe.",
-    "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send you the full recipe.",
-    "Comment gelatin, and I'll send the recipe by morning.",
+    "Comment gelatin, and the recipe goes to your messages.",
+    "Comment gelatin, and the recipe hits your messages.",
+    "Comment gelatin, and the recipe lands in your messages.",
+    "Comment gelatin, and the recipe arrives in your messages.",
+    "Comment gelatin, and I'll send the recipe by message.",
+    # ⛔ 2026-08-10, CONFERENCIA — era `and nobody else sees the recipe.` Esta
+    # entrada passava no CT6 (o `ENTREGA_16` do short_comum tem `nobody (else )?
+    # sees` na allowlist) e falhava na FUNCAO: e' a UNICA das onze que nunca diz
+    # que a receita CHEGA a alguem. E o `recipe` aparece uma vez so' no video
+    # inteiro — nesta sentenca. O espectador ouvia, na ultima respiracao, uma
+    # receita que ele so' sabe que os OUTROS nao veem, e tinha de inferir que
+    # ele proprio ganha alguma coisa. Agora diz as duas coisas em 8 palavras:
+    # quem recebe (`your messages`) e a exclusividade (`only`).
+    "Comment gelatin, and only your messages get the recipe.",
+    "Comment gelatin, and the recipe comes to your inbox.",
+    # ⚠️ era `I send the recipe in private.` — presente simples nao promete nada
+    # em ingles americano ("I send" e' habito, "I'll send" e' promessa). Mesmas
+    # 8 palavras: `I'll` conta como um token no `_palavras`.
+    "Comment gelatin, and I'll send the recipe in private.",
+    "Comment gelatin, and the recipe reaches your inbox.",
+    # ⚠️ era `your messages get the recipe tonight.` — `your messages` como
+    # SUJEITO de `get` soa a maquina; `your inbox gets` e' o que a boca diz.
+    # Mesmas 8 palavras, mesma promessa, mesmo endereco.
+    "Comment gelatin, and your inbox gets the recipe tonight.",
+    "Comment gelatin, and the whole recipe hits your inbox.",
 ]
 
-# ⚠️ 3-5 palavras, FRASE SEPARADA — nunca colada no `Comment gelatin,`: a
+# ⚠️ 3 palavras EXATAS, FRASE SEPARADA — nunca colada no `Comment gelatin,`: a
 # automacao de DM casa palavra EXATA.
+# ⛔ 2026-08-10: `Followers only.` (2) e `Follow first, or it won't send.` (6)
+# sairam. A segunda por orcamento; a primeira porque, com o gate agora ANTES do
+# CTA (CT1), uma condicao nua no meio do folego lê como recusa antecipada.
+# ⛔ Regra de 2026-08-01 mantida: no maximo 2 entradas com o vocativo
+# `brother`, e a maioria sem vocativo nenhum. Aqui ha' uma. 5 -> 7 entradas.
+# ⛔⛔ POOL APOSENTADO EM 2026-08-10 — ELE NAO CHEGA MAIS AO VIDEO.
+# Ordem do operador: *"nao acho que deva ter follow me no cta, a mensagem e'
+# enviada independente de seguirem ou nao"* (CT8 do CONTRATO-COPY-16S).
+# O gate existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao de
+# DM, e quem opera a automacao corrigiu a premissa.
+# ⚠️ POR QUE NAO FOI APAGADO: o autoteste e os contratos deste motor ainda o
+# validam (contagem minima, vocativo, tamanho), e apagar exigiria mexer neles
+# no mesmo commit em que a copy inteira mudou — duas cirurgias de uma vez e'
+# como se perde o rastro do que quebrou o que.
+# ⛔ ENTAO FICA ESTE AVISO: melhorar as entradas abaixo NAO muda um unico
+# video. Se o follow voltar um dia, ele volta ANTES do CTA (CT1) e por decisao
+# do operador, nao por alguem reativar a variavel.
 GATES16 = [
     "Hit follow first.",
     "Follow, then comment.",
     "Follow me first.",
-    "Followers only.",
-    "Follow first, or it won't send.",
+    "Tap follow first.",
+    "Hit follow now.",
+    "Follow before commenting.",
+    "Follow me, brother.",
 ]
 
 
@@ -1460,10 +1674,22 @@ def _sem_eco(pool, fala1):
     dois lados. ⚠️ Radical, nao palavra: `changed` e `changes` sao o mesmo eco
     para o ouvido, e comparar a palavra inteira nao pegaria nenhum dos dois.
     ⚠️ Fallback e' o pool inteiro — filtro que zera nao pode zerar a escolha.
+
+    ⛔⛔ O MUP NAO CONTA COMO ECO — conserto de 2026-08-10, e sem ele esta lente
+    teria morrido calada. Com o CT3 a cena 2 passou a dizer `blood flow` ou
+    `the blood` depois do literal em 14 de 14 truques, e a cena 1 diz o mesmo em
+    8 das 22 viradas. Como `blood` e' radical de 5 letras, o filtro casava em
+    TODAS as entradas nessas combinacoes, zerava, caia no fallback — e o guarda
+    de eco do VERBO, que e' a razao de existir da funcao, deixava de existir sem
+    nenhum aviso. `blood`/`flow` sao a expressao que o motor e' OBRIGADO a
+    repetir; eco de MUP e' martelo, nao disco arranhado.
     """
+    isentas = {"blood", "flow", "flows", "flowing"}
+
     def _radicais(txt):
         d = txt.lower().split("gelatin trick", 1)[-1]
-        return {w[:5] for w in re.findall(r"[a-z]{5,}", d)}
+        return {w[:5] for w in re.findall(r"[a-z]{5,}", d)
+                if w not in isentas}
 
     gastos = _radicais(fala1)
     v = [x for x in pool if not (_radicais(x) & gastos)]
@@ -1477,11 +1703,29 @@ def _fundir(spec, rng):
     menor CTA 10, e 33 nao cabe em 25. Aqui sao quatro beats curtos.
     ⛔⛔ QUEM ESCOLHE PRIMEIRO RESERVA O MINIMO; QUEM ESCOLHE NO MEIO RESERVA A
     MEDIANA — regra medida no ESCANDALO 16, dos dois defeitos opostos.
+
+    ⭐⭐ 2026-08-10 — A MEDIANA SAIU E O ORCAMENTO PASSOU A FECHAR NA MAO. Com
+    TRUQUE, GATE e CTA de comprimento FIXO (6, 3 e 8) e o MECANISMO em 6-8, o
+    pior caso e' 8+6+3+8 = 25, que e' o teto. Reservar mediana so' faz sentido
+    quando o beat seguinte tem faixa larga — aqui ele nao tem, e reservar
+    mediana passaria a CORTAR entradas legitimas de vez em quando. O `_cabe`
+    continua no lugar como rede: se alguem ampliar um pool com entrada longa
+    demais no futuro, ele filtra em vez de deixar a fala ser cortada no render.
+
+    ⛔⛔ CT1: a ordem e' MECANISMO · TRUQUE · GATE · CTA. O video TERMINA no
+    pedido. O gate vinha depois em 100% dos sorteios ate' hoje.
+    ⛔⛔ CT4: o apelido do orgao sai da CENA 1, nao da cena 4 do arco longo.
+    Era `falas_base[3]` — a redencao, uma cena que o colapso 5->3 COME — e por
+    isso o apelido mudava no corte em 100% dos videos. Em 24s e cinco cenas o
+    bordao e' o risco; em 16s e duas cenas o risco e' o oposto: o corte zera a
+    memoria de trabalho, e trocar `pecker` por `Johnson` no segundo 9 obriga o
+    espectador a remapear justamente quando ele ja' esta' com um pe' fora.
+    ⚠️ Le de `spec["falas"][0]` e nao de `falas_base[0]` de proposito: as duas
+    apontam para a MESMA string durante o sorteio, mas quando o operador
+    re-sorteia so' a cena 1 pelo app e' `falas` que muda — e o apelido tem de
+    acompanhar, senao o botao do painel quebra o CT4 em silencio.
     """
-    o = sc.orgao_de(_LONGO, spec["falas_base"][3])
-    # ⚠️ `_rsv` local virou `_mediana` no topo do arquivo — mesma funcao, agora
-    # compartilhada com o solver da cena 1. Corpo identico, nada mais mudou.
-    _rsv = _mediana
+    o = sc.orgao_de(_LONGO, (spec.get("falas") or spec["falas_base"])[0])
 
     def _cabe(pool, reserva):
         def _n(x):
@@ -1497,14 +1741,24 @@ def _fundir(spec, rng):
     # o `sortear_curto` que a monta DEPOIS, com o resultado desta funcao dentro.
     truques = _sem_eco(TRUQUES16, spec["falas_base"][0])
 
-    mec = rng.choice(_cabe(MECANISMOS16, _mn_t + _mn_c + _mn_g)).format(o=o)
-    tru = rng.choice(_cabe(truques, _palavras(mec) + _mn_c
-                           + _rsv([_palavras(g) for g in GATES16])))
-    cta = rng.choice(_cabe(CTAS16, _palavras(mec) + _palavras(tru)
-                           + _rsv([_palavras(g) for g in GATES16])))
-    gat = rng.choice(_cabe(GATES16, _palavras(mec) + _palavras(tru)
-                           + _palavras(cta)))
-    return "%s %s %s %s" % (mec, tru, cta, gat)
+    # ⛔ ORDEM DE ESCOLHA (nao e' a ordem da frase): escolhe primeiro quem tem
+    # MENOS substitutos. O CTA carrega o literal `Comment gelatin,` e a
+    # cobertura de entrega — e' o beat que nao se pode encurtar — entao ele sai
+    # primeiro, reservando o minimo dos outros tres. O GATE, que e' o mais
+    # intercambiavel dos quatro, sai por ULTIMO e absorve a sobra.
+    cta = rng.choice(_cabe(CTAS16, _mn_t + _mn_g
+                           + min(_palavras(x.format(o=o))
+                                 for x in MECANISMOS16)))
+    mec = rng.choice(_cabe(MECANISMOS16,
+                           _palavras(cta) + _mn_t + _mn_g)).format(o=o)
+    tru = rng.choice(_cabe(truques, _palavras(mec) + _palavras(cta) + _mn_g))
+    # ⛔⛔ CT8 (2026-08-10) — O BEAT DO FOLLOW SAIU DA FALA.
+    # Ordem do operador: *"nao acho que deva ter follow me no cta, a
+    # mensagem e' enviada independente de seguirem ou nao"*. O gate
+    # existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao
+    # de DM, e quem opera a automacao corrigiu. As palavras liberadas
+    # vao para o mecanismo e a prova.
+    return "%s %s %s" % (mec, tru, cta)
 
 
 # ---------------------------------------------------------------------------
@@ -1593,11 +1847,47 @@ def _imobilidade(spec, blocos, achados):
             achados.append(("ERRO", "%s sem declaracao de imobilidade do prop" % nome))
 
 
+def _ct16(spec, blocos, achados):
+    """As sete travas do CONTRATO DE COPY 16s, cobradas de dentro do motor.
+
+    ⭐ `isca_absurda=False`: o FLAGRANTE nao promete nada no take 1 que ele
+    mesmo va' desmentir — a cena 1 e' humilhacao publica + virada, nao substancia
+    absurda. Por isso o CT7 (verbo de ereccao colado no orgao) vale nos DOIS
+    takes aqui, e nao so' no do CTA.
+    ⚠️ `sys.modules[__name__]` e nao `_LONGO`: a lente le' `base.NUCLEO`, e o
+    NUCLEO e' deste modulo. `_LONGO` tambem o carrega, mas passar o modulo
+    e' o contrato escrito no `short_comum` — um lugar so' de onde ler.
+    """
+    sc.lint_copy16(sys.modules[__name__], spec, achados, isca_absurda=False)
+
+
+# ⛔⛔ LENTE APOSENTADA, e a aposentadoria e' declarada aqui porque a regra mora
+# no `short_comum` (compartilhado — nao se mexe nele por um motor so').
+#
+#   `lint_curto` emite  AVISO "substantivo repetido no video: [...]"  quando o
+#   mesmo apelido do orgao aparece em mais de uma cena. Essa regra nasceu no
+#   arco de CINCO cenas, onde duas mencoes iguais em 24 segundos viram bordao.
+#
+#   O CT4 do CONTRATO DE COPY 16s REVERTE isso para a familia de dois takes, e a
+#   reversao esta' medida: com dois takes o apelido mudava no corte em 100% dos
+#   videos deste motor. Em 16 segundos o corte ZERA a memoria de trabalho — o
+#   espectador ouve `pecker` no segundo 7 e `Johnson` no segundo 9 e tem de
+#   remapear justamente quando ja' esta' com um pe' fora. A variacao continua
+#   existindo ENTRE videos, que e' onde ela nunca custou nada.
+#
+# Logo: o AVISO passou a acusar exatamente o que o contrato EXIGE. Ele e'
+# descartado abaixo — nao silenciado no `short_comum`, que serve os 19 motores
+# de tres cenas onde a regra antiga continua valendo.
+_APOSENTADA_CT4 = "substantivo repetido no video"
+
+
 def lint(spec, blocos):
-    return sc.lint_curto(
+    achados = sc.lint_curto(
         _LONGO, spec, blocos, MAPA, TETO_FALA,
         literais=("gelatin trick", "blood flow"),
-        extras=(_imobilidade,))
+        extras=(_imobilidade, _ct16))
+    return [(n, m) for n, m in achados
+            if not (n == "AVISO" and m.startswith(_APOSENTADA_CT4))]
 
 
 # ---------------------------------------------------------------------------
@@ -1605,9 +1895,20 @@ def lint(spec, blocos):
 # ---------------------------------------------------------------------------
 
 def resumo_pt(spec):
+    """⛔ 2026-08-10, CONFERENCIA — O RESUMO DESCREVIA TRES CENAS NUM MOTOR DE
+    DUAS, e ainda punha o CTA numa cena 3 que nao existe desde que este arquivo
+    nasceu. E' texto de painel, nao copy falada — mas e' o UNICO lugar onde o
+    operador le' o video ANTES de gastar credito gerando, e resumo errado faz
+    ele aprovar o que nao viu (licoes-de-construcao §30; o mesmo defeito ja'
+    foi consertado no TRIO 16 e no FALTA 16 com essa justificativa).
+    ⭐ Agora ele diz o que o AdBatch Vertical 2 vai receber: dois takes, a
+    virada com o `gelatin trick` ja' dentro do take 1, e o pedido por ultimo
+    (que e' o CT1 do CONTRATO DE COPY 16s).
+    """
     et = "branca" if "white" in ETNIA[spec["pagina"]] else "negra"
-    return ("%s, o colega segura %s no próprio colo enquanto o narrador aponta "
-            "e a mesa ri. Na cena 2 vem o truque e a virada com a esposa, e na "
-            "3 o CTA. Três cenas, elenco de pele %s."
+    return ("16s, DOIS takes. Take 1: %s, o colega segura %s no próprio colo "
+            "enquanto o narrador aponta e a mesa ri — e a virada com o gelatin "
+            "trick vem ainda aí. Take 2: a bancada com rosto — o sangue como "
+            "causa, o truque, o follow, e o CTA por último. Elenco de pele %s."
             % (PT_OCASIAO.get(spec["ocasiao"]["id"], "No evento"),
                spec["prop"].get("pt", "o prop"), et))

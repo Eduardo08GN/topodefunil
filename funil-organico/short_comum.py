@@ -668,6 +668,34 @@ ENTREGA_16 = re.compile(
     r"\b(your (messages?|inbox|dms?)|by message|in private|nobody (else )?sees)\b",
     re.I)
 
+# ⛔⛔ CT8 — NENHUM PEDIDO DE FOLLOW NA FALA. Ordem do operador, 2026-08-10:
+#     *"eu tb nao acho que deva ter que ter follow me no cta, a mensagem e'
+#      enviada independente de seguirem ou nao"*
+# ⚠️⚠️ ISTO REVERTE DOUTRINA ANTIGA, e a reversao e' de FATO, nao de gosto: o
+# gate de follow existia no repo inteiro porque se acreditava que a automacao
+# de DM so' alcancava seguidor. O operador, que e' quem opera a automacao,
+# corrigiu a premissa. Toda a familia de pools GATES/FOLLOWS/GATES16/FOLLOWS16
+# nasceu dessa premissa errada — sao 6 a 11 entradas por motor de copy que
+# nunca deveria ter existido, ocupando 2 a 5 palavras num take de 25.
+# ⭐ E o CT1 nasceu justamente porque esse beat vivia DEPOIS do CTA. Com o
+# follow fora, o defeito mais caro do lote (100% dos sorteios em 6 de 7
+# motores) deixa de ter de onde vir.
+# ⚠️ A lente T16-2 (o `follow` nunca encosta na keyword) fica onde esta': ela
+# passa a ser rede de seguranca para o dia em que alguem reintroduzir o beat.
+FOLLOW_16 = re.compile(
+    r"\b(follow(ers?|ing)?\b(?!\s*-?\s*up)|non-followers)\b", re.I)
+
+# ⛔⛔ CT4b — OS TRES APELIDOS. Ordem do operador, 2026-08-10: *"quero que vc
+# use weiner e john-son pra se referir ao orgao tb, nao apenas pec-ker"*.
+# ⚠️ O CT4 trava UM apelido POR VIDEO; sem o CT4b isso vira UM apelido para o
+# LOTE INTEIRO, que e' o mode-collapse com cara de consistencia. A variacao
+# tem de existir ENTRE videos, e e' aqui que ela e' cobrada.
+# ⛔ `soldier` saiu: soa filme de guerra para ouvido americano (revisao
+# adversarial, lente de ouvido nativo). `tool` saiu por ambiguidade em giria
+# dos EUA. Os dois continuam no `NUCLEO` de cada motor porque as lentes os
+# usam para DETECTAR o orgao — o que muda e' que nao sao mais SORTEAVEIS.
+APELIDOS_16 = ("pecker", "wiener", "Johnson")
+
 # ⛔ Verbo de ereccao na fala do CTA — ali e' claim NOSSO sobre o produto.
 # ⚠️ No take 1 da isca absurda ele e' permitido: la' a promessa e' justamente
 # a que vai ser desmentida meio segundo depois, e proibi-la mataria o angulo.
@@ -730,11 +758,18 @@ def lint_copy16(base, spec, achados, isca_absurda=True):
     # que o corpo dele faz de errado (`never changes` descreve nada). Sem
     # auto-reconhecimento nao ha' comentario: ele nao comenta porque a copy e'
     # boa, comenta porque se viu.
+    # ⚠️ LISTA PARA CRESCER, e ela ja' cresceu uma vez no dia em que nasceu: a
+    # primeira versao nao conhecia `killed` e reprovou `Same squeeze killed his
+    # pecker two years ago` — uma sentenca que enuncia a falha melhor do que
+    # metade da lista. Lente que reprova o que esta' certo e' o §16, e o
+    # conserto e' a lente aprender o verbo, nao a copy se dobrar ao regex.
     if not re.search(r"\b(quit|quits|quitting|soft|softens|stopped|stops|"
                      r"dead|died|gave out|gives out|lose it|lost it|loses it|"
                      r"never works|doesn't work|does not work|hasn't worked|"
                      r"can't finish|couldn't|won't|failed|fails|shut down|"
-                     r"went out|not working|no longer)\b", f1, re.I):
+                     r"went out|not working|no longer|killed|kills|wrecked|"
+                     r"ruined|finished|gone|useless|nothing happens)\b",
+                     f1, re.I):
         achados.append(("AVISO", "CT2: o take 1 nao enuncia FALHA nenhuma — "
                                  "sem dano concreto o espectador nao se "
                                  "reconhece e nao comenta"))
@@ -816,6 +851,28 @@ def lint_copy16(base, spec, achados, isca_absurda=True):
     if not isca_absurda:
         _erecao_no_orgao(f1, "o take 1 (e este angulo nao tem isca absurda "
                              "para desmentir)")
+
+    # --- CT8 — nenhum pedido de follow na fala ----------------------------
+    for i, f in enumerate(falas, 1):
+        m = FOLLOW_16.search(f)
+        if m:
+            achados.append(("ERRO", "CT8: o take %d pede follow (%r) — a DM sai "
+                                    "para seguidor e nao-seguidor igual (ordem "
+                                    "do operador 2026-08-10). O beat inteiro "
+                                    "sai, e as palavras vao para o mecanismo"
+                            % (i, m.group(0))))
+
+    # --- CT4b — o apelido sorteado e' um dos tres -------------------------
+    usados = n1 | n2
+    fora = [n for n in usados if n.lower() not in
+            [a.lower() for a in APELIDOS_16]]
+    if fora:
+        achados.append(("ERRO", "CT4b: o video usa %s — os apelidos sorteaveis "
+                                "sao %s. `soldier` soa filme de guerra para "
+                                "ouvido americano e `tool` e' ambiguo em giria "
+                                "dos EUA; os dois seguem no NUCLEO so' para as "
+                                "lentes DETECTAREM o orgao"
+                        % (sorted(fora), list(APELIDOS_16))))
 
 
 # ---------------------------------------------------------------------------

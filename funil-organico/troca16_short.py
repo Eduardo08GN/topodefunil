@@ -61,6 +61,29 @@ AS QUATRO DECISOES DO OPERADOR (2026-08-01) — nao sao negociaveis
      tentativas de geoduck e uma coreografia de 7 elementos para conseguir
      crescimento na tela; o concorrente faz 25-30K com o prop parado.
 
+⭐⭐ REFORMA DE COPY 16s — 2026-08-10 (CONTRATO-COPY-16S.md)
+-----------------------------------------------------------
+Ordem do operador: *"agentes troca16 ... precisam de reformulacao total de suas
+copys"*. A copy FALADA foi reescrita inteira (pools + solver); a CENA nao foi
+tocada — nenhum bloco IMAGE/TAKE e nenhum pool visual mudou uma virgula.
+O que a reforma trocou, e o numero medido antes dela em 200 sorteios:
+
+    CT1 (100%)  o follow deixou de ser a ULTIMA coisa no ouvido e passou a vir
+                ANTES do CTA; o video termina no pedido.
+    CT2  (78%)  o desmentido passou a carregar a FALHA com dano concreto e
+                numero, em 2a pessoa (`You lose it ten minutes in.`).
+    CT3  (55%)  `gelatin trick` deixou de ser rotulo nu: toda entrada leva
+                verbo de efeito + alvo (o sangue/a pressao chegando ao orgao).
+    CT4 (100%)  UM apelido do orgao por video, repetido nos dois takes —
+                reverte a rotacao herdada do motor de 24s.
+    CT6  (95%)  o CTA diz ONDE a receita chega (`to your messages`).
+    CT7   (0%)  verbo de ereccao colado no orgao saiu do take 2 (claim nosso);
+                no take 1 ele fica, porque ali E' a isca que o video desmente.
+
+E duas correcoes de fundo que vieram junto: a promessa da isca deixou de ser
+TAMANHO e passou a ser DURACAO (a VSL vende recuperacao de ereccao, nao
+aumento), e `soldier` saiu do NUCLEO por ser britanismo em ouvido americano.
+
 ⚠️ ADAPTAR AQUI E' EXPANDIR, NAO COMPRIMIR (TR14, ordem do operador)
 A fonte fala ~35-40 palavras em 13s. Nosso orcamento e' 82-96 palavras em 24s.
 Copiar os 4 beats deles deixa ar sobrando, e ar num take de 8s vira pausa
@@ -104,7 +127,11 @@ TITULO = "AGENTE TROCA 16"
 SUBTITULO = "o proxy sai, o mecanismo entra no mesmo ponto do quadro · 3 cenas"
 SLUG = "troca-16"
 
-CENAS_UI = ["1 · A CRENDICE", "2 · O CORPO-PROVA + A TROCA NA FALA + CTA"]
+# ⚠️ Os rotulos dizem os BEATS DA FALA, nao so' o que se ve': depois da reforma
+# de copy 16s (2026-08-10) a cena 1 nao e' so' a crendice — ela desmente e
+# ENUNCIA A FALHA (CT2); e a cena 2 termina no CTA, com o follow ANTES (CT1).
+CENAS_UI = ["1 · A CRENDICE + O DESMENTIDO COM A FALHA",
+            "2 · O CORPO-PROVA + A TROCA NA FALA + FOLLOW + CTA"]
 
 # TR14. ⚠️ O ORCAMENTO E' PISO **E** TETO — ordem do operador. Tratar o piso
 # como "julgamento que mora na doutrina" foi o que deixou 48% das cenas 2
@@ -135,7 +162,14 @@ MODO_FORTE = True
 # `_montar_falas`. Mas o par continua sendo declaracao contraditoria, e
 # aqui ele nasce coerente.
 TETO_FALA = {1: 22, 2: 25}
-PISO_FALA = {1: 16, 2: 20}
+# ⚠️⚠️ O PISO DA CENA 2 CAIU DE 20 PARA 18 EM 2026-08-10, e a queda e'
+# CONSEQUENCIA MEDIDA, nao afrouxamento: com o beat do follow fora da fala
+# (CT8), a cena 2 perdeu 3-4 palavras e passou a bater no piso antigo em
+# 130 de 400 sorteios. Piso calibrado com um beat que nao existe mais e'
+# alarme que sempre dispara, e alarme que sempre dispara ensina a ignorar
+# o linter inteiro. 18 palavras em 8s dao 2,25 p/s — dentro da faixa em
+# que o operador escreve a mao (16-25).
+PISO_FALA = {1: 16, 2: 18}
 
 # ⚠️ TENSAO ARITMETICA REGISTRADA (nao resolvida — e' alcada do Ed):
 # a soma dos tetos e' 22+34+26 = 82, que e' exatamente o PISO do orcamento
@@ -170,6 +204,44 @@ ETNIA = {
     "joe": "white American", "ray": "white American", "matt": "white American",
          "marcus": "Black American", "chuck": "Black American"}
 
+# ###########################################################################
+# ⭐⭐⭐ REFORMA DE COPY 16s — 2026-08-10 (CONTRATO-COPY-16S.md)
+# ###########################################################################
+# ⛔ ORDEM DO OPERADOR: *"agentes troca16 ... precisam de reformulacao total de
+# suas copys"*. A copy antiga deste motor foi MEDIDA em 200 sorteios e violava
+# cinco das sete travas:
+#
+#     CT1 sentenca depois do CTA ........ 100%   (o gate fechava o video)
+#     CT2 take 1 sem falha enunciada .....  78%
+#     CT3 `gelatin trick` sem razao ......  55%
+#     CT4 apelido do orgao muda no corte . 100%
+#     CT6 CTA sem endereco de entrega ....  95%
+#
+# ⭐ O QUE MUDOU, beat a beat:
+#
+#   cena 1 = CRENDICE (a isca absurda) + DESMENTIDO **COM A FALHA DELE**
+#            A promessa da isca deixou de ser TAMANHO (`ten times bigger`,
+#            `grow a full inch`) e passou a ser DURACAO/ERECCAO — a VSL vende
+#            recuperacao, nao aumento, e hook que promete o que a VSL nao
+#            entrega queima a pagina. E o desmentido, que era so' desmentido,
+#            passa a carregar o DANO CONCRETO em 2a pessoa (`You lose it ten
+#            minutes in.`), que e' o CT2.
+#            ⚠️ A falha e' do ESPECTADOR, nao de um `he`: nas cenas 1 e 2 o
+#            elenco e' 1 (TR13) e um `He'd lose it` ali e' pronome sem dono —
+#            a lente T16-5b reprova, e com razao.
+#
+#   cena 2 = TROCA (gesto + mecanismo COM RAZAO) -> FOLLOW -> CTA   <- FIM
+#            A ordem inverteu: o `gate` (follow) era a ULTIMA coisa no ouvido,
+#            colada no unico pedido que gera receita. Agora ele vem ANTES, e o
+#            video termina no pedido (CT1).
+#
+# ⚠️ O ORCAMENTO E' O QUE MANDA NO TAMANHO DAS ENTRADAS (teto 25):
+#            troca 10-11 | follow 3-5 | CTA 8-9   ->  pior caso 25, melhor 21
+#     Pool cujas entradas variam de 6 a 14 palavras num teto de 25 nao e' pool
+#     de 12, e' pool de 4 com oito enfeites: as longas nunca sao sorteadas. Por
+#     isso cada pool aqui nasce com FAIXA ESTREITA, e o [ALCANCE] mede.
+# ###########################################################################
+
 # ---------------------------------------------------------------------------
 # ⭐⭐ A TROCA, AGORA NA FALA — o pool que substitui FUNDIDAS no formato 16s
 # ---------------------------------------------------------------------------
@@ -195,26 +267,70 @@ ETNIA = {
 #   · o literal `gelatin trick`;
 #   · o ORGAO, que o TESTEMUNHO carregava e que morreu no orcamento.
 #
-# ⚠️ SETE A NOVE PALAVRAS, e o numero e' ARITMETICA: os CTAS dele custam 8-11 e
-# os GATES 6-8, entao sobram ~8. A primeira versao tinha 9-12 palavras e matou
-# VINTE E QUATRO entradas dos tres pools — 2% de cobertura. Esta da' 52% com
-# ZERO entrada inalcancavel.
+# ⚠️ DEZ A ONZE PALAVRAS, e o numero e' ARITMETICA: o CTA com cobertura custa
+# 8-9 e o follow 3-5, entao sobram 11. A primeira versao tinha 9-12 palavras e
+# matou VINTE E QUATRO entradas dos tres pools — 2% de cobertura.
+#
+# ⭐⭐ CT3 — O ROTULO NU MORREU. As entradas antigas eram `The gelatin trick
+# wakes your {o}` / `... is your {o}'s way back`: nome de mecanismo sem RAZAO
+# ao lado nao vira crenca, vira ruido de marca (55% dos sorteios reprovavam).
+# Agora toda entrada carrega VERBO DE EFEITO + ALVO na MESMA sentenca do
+# literal, e o alvo e' o sangue/a pressao chegando ao orgao — que e' o que a
+# VSL vende.
+#
+# ⛔⛔ CT7 — VERBO DE ERECCAO COLADO NO ORGAO SAIU DAQUI. `wakes`, `hardens`,
+# `straightens`, `is your {o}'s way back` descrevem o ORGAO voltando a
+# funcionar, e essa e' a licao paga em campo no COLO 16: ~95% de recusa do
+# gerador. Sobre o CORPO e o SANGUE passa; sobre o ORGAO nao. A excecao da isca
+# absurda vale so' para o TAKE 1 (a promessa que o video desmente), nunca aqui,
+# onde o claim e' NOSSO.
+#
+# ⛔ `his {o}` saiu das duas entradas que o traziam: na cena 2 nao ha' homem em
+# quadro (elenco 1, TR13) e `his` ali e' pronome sem dono.
+#
+# ⛔ TODA ENTRADA CONTINUA FAZENDO TRES COISAS, cobradas por lente:
+#   · o GESTO de largar (`Drop that`, `Wrong jar`, `Leave it`) — e' o que resta
+#     do bit visual, e sem ele a cena 2 vira um mecanismo qualquer;
+#   · o literal `gelatin trick`;
+#   · o ORGAO, que o TESTEMUNHO carregava e que morreu no orcamento.
 TROCAS16 = [
-    "Drop that. The gelatin trick wakes your {o}",
-    "Forget that. The gelatin trick fills your {o}",
-    "Put that down. The gelatin trick answers your {o}",
-    "That failed. The gelatin trick fixed his {o}",
-    "Not that. The gelatin trick feeds your {o}",
-    "Leave that. The gelatin trick hardens your {o}",
-    "Wrong jar. The gelatin trick wakes your {o}",
-    "Set that down. The gelatin trick opens your {o}",
-    "Drop it. The gelatin trick is your {o}'s way back",
-    "Forget it. The gelatin trick loads your {o}",
-    "That did nothing. The gelatin trick fixed his {o}",
-    "Skip that. The gelatin trick straightens your {o}",
+    "Drop that. The gelatin trick puts blood back in your {o}",
+    "Forget that. The gelatin trick opens blood flow to your {o}",
+    "Put that down. The gelatin trick fills your {o} with blood",
+    "Not that. The gelatin trick holds blood inside your {o}",
+    # ⚠️ `Wrong jar.` MORREU NO OUVIDO, 2026-08-10 — e o frame prova: no IMAGE
+    # 02/02 montado nao ha' pote nenhum, o que existe em quadro e' o PROXY com
+    # a substancia por cima, nas maos dele. `Wrong jar` aponta para um objeto
+    # que o video nao mostra, e o gesto so' funciona se o espectador achar o
+    # que largar. `Wrong stuff` aponta para a substancia, que esta' la'.
+    "Wrong stuff. The gelatin trick feeds blood to your {o}",
+    # ⚠️ `clears the path to your {o}` MORREU NO TESTE WTF, 2026-08-10: caminho
+    # de QUE? Todas as outras treze entradas nomeiam o sangue; esta nomeava um
+    # caminho vazio e passava na CT3 so' porque `clears` esta' na lista de
+    # verbos e o orgao conta como alvo. Lente que aprova a forma sem cobrar a
+    # funcao e' o modo de falha da casa.
+    "Leave that. The gelatin trick carries blood down to your {o}",
+    "Skip that. The gelatin trick keeps blood in your {o} longer",
+    "That failed. The gelatin trick restores pressure to your {o}",
+    "Set that down. The gelatin trick brings blood into your {o}",
+    # ⚠️ `unblocks blood to your {o}` nao e' ingles falado — desbloqueia-se o
+    # CAMINHO, nao o sangue. Trocado por `unblocks the flow to your {o}`:
+    # mesmo verbo (continua na VERBOS_EFEITO_16), `flow` e' ALVO_16, e o custo
+    # sobe de 10 para 11, dentro da faixa.
+    "Drop it. The gelatin trick unblocks the flow to your {o}",
+    "Forget it. The gelatin trick pushes blood into your {o}",
+    "That did nothing. The gelatin trick fixes your {o}'s blood supply",
+    "Not that one. The gelatin trick moves blood into your {o}",
+    "Leave it. The gelatin trick gives your {o} its blood back",
 ]
 
-NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
+# ⛔⛔ `soldier` FOI APOSENTADO — 2026-08-10, reforma de copy 16s.
+# Nao e' gosto: `soldier` para o orgao e' britanismo, e num ouvido americano de
+# 50-70 anos ele soa a filme de guerra, nao a apelido de banheiro. Entrou no
+# lugar `manhood`, que ja' tem grafia sonora validada no `nucleo_sonoro`
+# (`man-hood`) — ou seja, a troca nao cria termo sem cobertura de TTS.
+# ⚠️ O TAMANHO DO POOL NAO CAIU: cinco antes, cinco depois.
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "manhood"]
 
 
 # ---------------------------------------------------------------------------
@@ -1042,46 +1158,84 @@ MECANISMOS_PROP = [
 # o que transfere o proxy para o corpo do espectador (invariante 8/28, 8/8 na
 # fonte), e a TR3 cobra isso com todas as letras.
 # ⚠️ Numeros por extenso: o Veo soletra algarismo.
-# ⚠️ `ten times bigger` concentra 7 das 18 entradas. E' TRAVAMENTO DELIBERADO:
-# a fonte usa a mesma promessa em 7 dos 8 reels. Diluir seria escolher copy no
-# lugar do Ed — se ele quiser diluir, e' entrada de pool, nao regra.
+#
+# ⛔⛔ A PROMESSA MUDOU DE EIXO — 2026-08-10, reforma de copy 16s.
+# TODAS as dezoito entradas antigas prometiam TAMANHO (`ten times bigger`,
+# `grow a full inch`, `worth three inches`, `double the size`). A VSL vende
+# RECUPERACAO DE ERECCAO, nao aumento: a isca absurda tem de mentir sobre a
+# MESMA coisa que o mecanismo entrega, senao o desmentido nao abre buraco
+# nenhum — ele troca de assunto, e o espectador que veio pelo `+3 inches`
+# recebe uma receita para outra queixa.
+# ⚠️ O TRAVAMENTO DELIBERADO da fonte (`ten times bigger` em 7 de 8 reels)
+# CAI JUNTO, e a razao esta' escrita: ele so' valia enquanto a promessa era de
+# tamanho. A concentracao agora e' em DURACAO (`all night`, `an hour`), que e'
+# o que a nossa oferta paga.
+# ⭐ CT7 permite verbo de ereccao AQUI, e so' aqui: no take 1 dos angulos de
+# isca absurda a promessa e' justamente a que o video desmente meio segundo
+# depois. Na cena 2 (claim NOSSO) continua proibido.
+# ⛔ Nenhuma com PRAZO (`days`/`weeks`/`months`) — foi o token que derrubou o
+# NECROSE. `minutes`, `hour` e `night` nao sao prazo, sao duracao do ato.
+# ⚠️ FAIXA ESTREITA, 11-12 palavras: o teto da cena 1 e' 22 e o desmentido
+# custa 7-8. Entrada de 14 palavras aqui seria entrada morta.
 CRENDICES = [
     {"degrau": "assertiva",
-     "txt": "Rub {s} on your {o} and it's gonna get ten times bigger."},
+     "txt": "Rub {s} on your {o} and it stays up all night."},
+    {"degrau": "assertiva",
+     "txt": "Put {s} on your {o} tonight and it holds for hours."},
+    {"degrau": "assertiva",
+     "txt": "One spoon of {s} on your {o} and you last all night."},
+    {"degrau": "assertiva",
+     "txt": "The whole internet says {s} on your {o} works every single time."},
+    {"degrau": "assertiva",
+     "txt": "Two fingers of {s} straight onto your {o}, and it lasts hours."},
+    # ⚠️ OUVIDO NATIVO, 2026-08-10: era `and that's you all night`. `that's
+    # you ...` como predicado de resultado e' construcao britanica (`that's
+    # you sorted`); num ouvido americano de 50-70 anos, ouvida UMA vez, ela
+    # nao fecha a promessa — o espectador entende as palavras e nao entende a
+    # frase. `you're good all night` diz o mesmo, no mesmo custo (11).
+    {"degrau": "assertiva",
+     "txt": "A little {s} on your {o} and you're good all night."},
+    {"degrau": "assertiva",
+     "txt": "Rub {s} on your {o} tonight — two solid hours, they claim."},
     {"degrau": "condicional",
-     "txt": "If you want your {o} ten times bigger, rub {s} on it tonight."},
-    {"degrau": "testemunho",
-     "txt": "They all say {s} on your {o} makes it twice the size."},
-    {"degrau": "testemunho",
-     "txt": "Every man on this app swears {s} on your {o} is worth three inches."},
-    {"degrau": "assertiva",
-     "txt": "Put {s} on your {o} tonight and it doubles. The internet swears by it."},
-    {"degrau": "assertiva",
-     "txt": "One spoon of {s} on your {o} and you grow a full inch."},
-    {"degrau": "testemunho",
-     "txt": "My cousin swears {s} on your {o} takes you from four to eight."},
-    {"degrau": "resistencia",
-     "txt": "Rub {s} into your {o} every night and it never quits on you."},
-    {"degrau": "assertiva",
-     "txt": "The whole internet says {s} on your {o} makes it ten times bigger."},
-    {"degrau": "resistencia",
-     "txt": "Coat your {o} in {s} and it comes out a different animal."},
-    {"degrau": "assertiva",
-     "txt": "Two fingers of {s}, straight onto your {o}, and it grows ten times."},
-    {"degrau": "testemunho",
-     "txt": "Guys everywhere swear {s} on your {o} adds a couple of inches."},
+     "txt": "Want your {o} lasting all night? Rub {s} on it tonight."},
+    # ⚠️ DUAS DAS QUATRO CONDICIONAIS PERDERAM O VERBO `rub` — 2026-08-10. As
+    # quatro o tinham, e com o degrau TRAVADO na UI/CLI o guarda de colisao do
+    # `_montar_falas` nao tinha para onde fugir: `Then rub menthol rub straight
+    # on it` sobrava em 5,7% dos sorteios travados. Com duas saidas limpas o
+    # residuo cai para (2/4)^12, que e' zero na pratica. Os verbos novos
+    # (`coat`, `work`) ja' viviam no pool `resistencia` — nao e' vocabulario
+    # novo, e' vocabulario redistribuido.
     {"degrau": "condicional",
-     "txt": "Want your {o} ten times bigger? Then rub {s} straight on it tonight."},
+     "txt": "Want your {o} going all night? Then coat it in {s}."},
+    {"degrau": "condicional",
+     "txt": "If you want your {o} lasting an hour, rub {s} on it."},
+    {"degrau": "condicional",
+     "txt": "If your {o} keeps quitting, work {s} into it nightly."},
+    # ⚠️ DEITICO SEM REFERENTE, 2026-08-10: era `Every guy here swears`. O
+    # elenco da cena 1 e' UM (TR13) — nao ha' `here` nenhum em quadro, e
+    # `every guy here` manda o ouvido procurar uma plateia que o frame nao
+    # tem. O `medir_deiticos` nao pega porque `here` sozinho nao esta' na
+    # lista de tokens dele; pegou o ouvido. `I know` custa 1 palavra e o pior
+    # caso da cena 1 nao muda (12, empatado com `The whole internet says`).
+    {"degrau": "testemunho",
+     "txt": "Every guy I know swears {s} on your {o} works every time."},
+    {"degrau": "testemunho",
+     "txt": "My cousin swears {s} on your {o} buys you a whole hour."},
+    {"degrau": "testemunho",
+     "txt": "Guys everywhere swear {s} on your {o} is worth two solid hours."},
+    {"degrau": "testemunho",
+     "txt": "Everybody says the same thing: {s} on your {o}, all night."},
+    {"degrau": "testemunho",
+     "txt": "Half this country swears {s} on your {o} lasts you an hour."},
+    {"degrau": "resistencia",
+     "txt": "Rub {s} into your {o} nightly and it never quits on you."},
+    {"degrau": "resistencia",
+     "txt": "Coat your {o} in {s} and it stops quitting on you."},
     {"degrau": "resistencia",
      "txt": "Rubbing {s} on your {o} beats every pill on the shelf."},
-    {"degrau": "assertiva",
-     "txt": "A little {s} on your {o}. That's the whole thing. Ten times bigger."},
-    {"degrau": "testemunho",
-     "txt": "Everybody says the same thing: {s} on your {o}, double the size."},
-    {"degrau": "assertiva",
-     "txt": "Rub {s} on your {o} — ten times bigger, that's the claim they make."},
-    {"degrau": "testemunho",
-     "txt": "Half this country swears {s} on your {o} is worth two whole inches."},
+    {"degrau": "resistencia",
+     "txt": "Work {s} into your {o} and it never lets you down."},
 ]
 
 DEGRAUS = ("assertiva", "condicional", "testemunho", "resistencia")
@@ -1089,21 +1243,35 @@ DEGRAUS = ("assertiva", "condicional", "testemunho", "resistencia")
 # O desmentido e' BEAT PROPRIO (TR8), curto, colado na crendice. E' ele que
 # transforma o comando absurdo em pergunta — e a pergunta e' o buraco onde a
 # cena 2 encaixa o batismo.
-# ⚠️ Piso de 5 palavras em cada um: com desmentidos de 3 palavras a cena 1 caia
-# abaixo do piso de 16 da TR14.
+#
+# ⭐⭐ CT2 — E AGORA ELE CARREGA A FALHA, COM DANO CONCRETO.
+# Medido: 78% dos sorteios antigos nao tinham UMA sentenca dizendo o que o
+# corpo faz de errado. `Nobody actually believes that one.` desmente a isca e
+# nao diagnostica nada — e sem auto-reconhecimento nao ha' comentario: ele nao
+# comenta porque a copy e' boa, comenta porque SE VIU.
+# A melhor linha ja' medida do parque tem cinco palavras, um numero e um dano
+# (`He'd lose it ten minutes in.`) — aqui ela vem em 2a PESSOA, porque nas
+# cenas 1 e 2 o elenco e' 1 (TR13) e um `he` sem homem em quadro e' pronome sem
+# dono (lente T16-5b).
+# ⚠️ FAIXA ESTREITA, 7-8 palavras: crendice (11-12) + desmentido (7-8) + 1 de
+# folga da substancia de duas palavras = 20 no pior caso, teto 22, piso 16.
+# ⛔ Zero `days`/`weeks`/`months`: a cena ja' diz `your {o}` e 2a pessoa somada
+# a PRAZO e' a composicao que derrubou o video do NECROSE.
 DESMENTIDOS = [
-    "You don't believe that works, right?",
-    "Yeah. Nobody actually believes that one.",
-    "Course it doesn't work. Never did.",
-    "You know that's nonsense, right?",
-    "Look at your face. Exactly that.",
-    "It doesn't. Not one bit.",
-    "You're not buying that. Good.",
-    "Nope. Never worked for anybody, ever.",
-    "And you already know better.",
-    "Sounds insane, because it is.",
-    "Right? Total garbage, every word.",
-    "Doesn't work. You know it.",
+    "Nonsense. You lose it ten minutes in.",
+    "Doesn't work. You go soft in five minutes.",
+    "Course not. You quit twenty minutes in.",
+    "You know better. You lost it last night.",
+    "Garbage, every word. You still can't finish.",
+    "Nope. You gave out again on Saturday.",
+    "That's a lie. You go soft too early.",
+    "Right? Total nonsense. And you still quit.",
+    "Lies. You've been quitting early for years.",
+    "Sounds insane because it is. You quit anyway.",
+    "Zero chance. You went soft again last night.",
+    "You already know. You lose it early.",
+    "Never worked for anybody. You still go soft.",
+    "Not one bit. You quit ten minutes in.",
 ]
 
 
@@ -1133,50 +1301,106 @@ DESMENTIDOS = [
 # four ingredients"). As 5 trocadas mantiveram a MESMA contagem de palavras: a
 # cena 3 ja esta 12,8% acima do teto e um CTA mais longo vira corte de fala.
 # ⛔ O `_tr_isca_nomeada` cobra isso a cada sorteio.
+#
+# ⭐⭐ CT6 — O CTA PASSA A DIZER **ONDE A RECEITA CHEGA**. Medido: 95% dos
+# sorteios antigos nao diziam. O KPI e' uma CONFISSAO PUBLICA — o comentario
+# leva nome e foto e vai para o feed de quem conhece o sujeito — e em 48
+# segundos de copy nao havia uma palavra baixando esse custo. A clausula e'
+# gratis: `and I'll send the recipe` (9 palavras) vira `and the recipe goes to
+# your messages` (9 palavras), mesmo custo, e entrega o endereco, a privacidade
+# e o fato de que nao e' na tela publica.
+#
+# ⚠️ A ENTROPIA DE FORMA DO INICIO FOI TROCADA DE PROPOSITO. A nota antiga
+# registrava que sete entradas levavam a keyword em outra posicao para o pool
+# nao abrir sempre igual. Isso morreu: CT1 exige que a sentenca do CTA seja a
+# ULTIMA do video e o orcamento nao paga lead-in. A variacao mudou de lugar —
+# ela agora mora no ENDERECO DA ENTREGA (`your messages` · `your inbox` · `by
+# message` · `in private` · `nobody else sees`) e no verbo de chegada (goes ·
+# lands · arrives · waits · hits · shows · drops · stays · reaches), que e' a
+# parte que o espectador precisa ouvir.
+# ⛔ A forma da keyword nao muda: `gelatin` minusculo, seguido de virgula.
+# ⚠️ FAIXA ESTREITA, 8-9 palavras: troca (10-11) + follow (3-5) + CTA (8-9) da'
+# 21-25 num teto de 25.
 CTAS = [
-    "Comment gelatin, and I'll send you the whole recipe tonight.",
-    "Comment gelatin, and the recipe's in your inbox in ten minutes.",
-    "Comment gelatin, and I'll send you exactly what to buy.",
-    "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send the dose and the timing.",
-    "Comment gelatin, and I'll send you the full recipe.",
-    "Comment gelatin, one word, and the recipe is yours tonight.",
-    "Comment gelatin, and the recipe's on your phone tonight.",
-    "Comment gelatin, and I'll send you the measurements.",
-    "Comment gelatin, and I'll send the whole recipe, free.",
-    "Comment gelatin, that's the word, and I'll send the recipe.",
-    "Comment gelatin, and I'll send the recipe my aunt sent me.",
-    "Comment gelatin, and I'll send you all four ingredients.",
-    "Want it? Comment gelatin, and I'll send you the recipe tonight.",
-    "Comment gelatin, and I'll send the recipe before you scroll.",
-    "Comment gelatin, and I'll send the recipe — four lines long.",
-    "Comment gelatin, and I'll send where to buy the gelatin.",
-    "Comment gelatin, nothing else, and the recipe is yours.",
+    "Comment gelatin, and the recipe goes to your messages.",
+    "Comment gelatin, and the recipe lands in your inbox.",
+    "Comment gelatin, and the recipe arrives in your messages.",
+    "Comment gelatin, and the recipe waits in your inbox.",
+    "Comment gelatin, and the whole recipe hits your inbox.",
+    "Comment gelatin, and the recipe comes by message tonight.",
+    "Comment gelatin, and I'll send the recipe in private.",
+    "Comment gelatin, and the measurements go to your messages.",
+    "Comment gelatin, and the recipe appears in your inbox.",
+    "Comment gelatin, and nobody else sees the recipe.",
+    "Comment gelatin, and the recipe stays in your messages.",
+    "Comment gelatin, and the four ingredients reach your inbox.",
+    "Comment gelatin, and the recipe reaches you in private.",
+    "Comment gelatin, and the recipe reaches your inbox tonight.",
+    # ⚠️ ENTRADA MAIS FRACA DO POOL, E FICA — registrado em 2026-08-10 depois
+    # de tentar troca-la. `what to buy` e' oracao livre como SUJEITO de `hits`,
+    # a unica assim no pool: falada, `and what to buy...` abre como pergunta e
+    # o ouvido volta atras no meio da unica sentenca que gera receita. A troca
+    # por `the shopping list` foi ESCRITA E MEDIDA — 25 ERRO em 400 sorteios:
+    # o `lint_isca_cta` do short_comum (compartilhado, fora da minha alcada)
+    # so' reconhece recipe/measurements/ingredients/link/source/protocol e as
+    # formas `I'll send` / `in|to your inbox` — `hits your inbox` nao casa.
+    # As saidas que casam custam 10 palavras e gastariam a ULTIMA folga do
+    # teto de render (24 -> 25 no pior caso), que nao vale um ajuste de
+    # sintaxe. Fica como esta'; a decisao de reescrever a sentenca do CTA e'
+    # do operador.
+    "Comment gelatin, and what to buy hits your inbox.",
+    "Comment gelatin, and the recipe drops into your inbox.",
+    "Comment gelatin, and the recipe is in your messages.",
+    "Comment gelatin, and I'll send the recipe by message.",
 ]
 
 # ⛔ TR5 — REGRA DE POOL, medida pelo operador: "brother" caia em 31-73% dos
 # videos. No maximo DUAS entradas com "brother", e a MAIORIA sem vocativo
-# nenhum. E o que varia nao e' so' o vocativo: varia o MOTIVO do gate (a
-# plataforma bloqueia · a fila de comentarios · o feed some amanha · o
-# algoritmo esconde). O self-test do --stats reprova se a proporcao escorregar.
-# ⛔ Zero nome de plataforma na `Dialogue:` — a ultima entrada dizia "or Facebook
-# eats the message", e a variante limpa ja' existia duas linhas acima. Nomear a
-# plataforma e' P12 e nao custa nada evitar.
+# nenhum. O self-test do --stats reprova se a proporcao escorregar.
+# ⛔ Zero nome de plataforma na `Dialogue:` — P12.
+#
+# ⭐⭐ CT1 — O FOLLOW MUDOU DE LUGAR E DE TAMANHO, 2026-08-10.
+# DE LUGAR: era a ULTIMA sentenca do video, colada no unico pedido que gera
+# receita — 100% dos sorteios. A ultima coisa no ouvido era `The algorithm
+# hides me from non-followers` (expectativa negativa), `Followers get answered
+# first. Everyone else waits.` (condicional na recompensa) ou `Follow me,
+# brother, or this never arrives.` (segundo CTA nu). A posicao final e' a que
+# fica; ela tem de ser o pedido. Agora o follow vem ANTES do CTA.
+# DE TAMANHO: 6-8 palavras -> 3-5. O orcamento do take 2 reserva TRES palavras
+# para este beat, e o que sobrava vinha do CTA, que e' onde o dinheiro esta'.
+# ⛔ O QUE SE PERDEU, e e' honesto dizer: o MOTIVO do gate (a plataforma
+# bloqueia · a fila de comentarios · o feed some amanha) nao cabe mais em 3-5
+# palavras na maioria das entradas. TRES entradas ainda o carregam (`I answer
+# followers only`, `Followers get answered first`, `No follow, no message`); as
+# outras onze sao comando puro. A troca foi deliberada: motivo de gate na
+# posicao final custava o CT1 inteiro.
+# ⛔⛔ POOL APOSENTADO EM 2026-08-10 — ELE NAO CHEGA MAIS AO VIDEO.
+# Ordem do operador: *"nao acho que deva ter follow me no cta, a mensagem e'
+# enviada independente de seguirem ou nao"* (CT8 do CONTRATO-COPY-16S).
+# O gate existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao de
+# DM, e quem opera a automacao corrigiu a premissa.
+# ⚠️ POR QUE NAO FOI APAGADO: o autoteste e os contratos deste motor ainda o
+# validam (contagem minima, vocativo, tamanho), e apagar exigiria mexer neles
+# no mesmo commit em que a copy inteira mudou — duas cirurgias de uma vez e'
+# como se perde o rastro do que quebrou o que.
+# ⛔ ENTAO FICA ESTE AVISO: melhorar as entradas abaixo NAO muda um unico
+# video. Se o follow voltar um dia, ele volta ANTES do CTA (CT1) e por decisao
+# do operador, nao por alguem reativar a variavel.
 GATES = [
-    "Follow first, or my message never lands.",
-    "Hit follow, or the app blocks me.",
-    "I can only message people who follow.",
-    "Followers get answered first. Everyone else waits.",
-    "One tap on follow. That's the whole gate.",
-    "Follow me, brother, or this never arrives.",
-    "Without the follow my inbox stays shut.",
-    "Three hundred comments tonight. Followers go first.",
-    "Follow tonight — tomorrow this leaves your feed.",
-    "Follow me, my friend. Then I can answer.",
-    "The algorithm hides me from non-followers.",
-    "Follow first. That's how my inbox opens.",
-    "I answer followers. Everyone else has to wait.",
-    "Tap follow, or the app eats the message.",
+    "Follow me first.",
+    "Hit follow first.",
+    "Tap follow first.",
+    "Follow me right now.",
+    "Give me a follow.",
+    "One tap: follow me.",
+    "Follow me, then comment.",
+    "Follow me tonight.",
+    "Follow me, brother.",
+    "Follow me, my friend.",
+    "Follow me, guys.",
+    "I answer followers only.",
+    "Followers get answered first.",
+    "No follow, no message.",
 ]
 
 VOCATIVOS = ("brother", "my friend", "guys", "buddy", "man", "girls")
@@ -1417,10 +1641,13 @@ def _bancada_livre(rng, falas, recentes, sub=None):
 # linter confere a imobilidade (ver _tr_sem_crescimento).
 TR2_MIOLO = "completely motionless for the entire shot"
 
-TR8_NUMERO = re.compile(
-    r"\d|\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|"
-    r"twenty|thirty|forty|fifty|sixty|double|doubles|doubled|twice|half|"
-    r"inch|inches)\b", re.I)
+# ⛔⛔ ESTA DEFINICAO DE `TR8_NUMERO` ERA CODIGO MORTO E FOI REMOVIDA
+# (2026-08-10). Havia DUAS no arquivo — esta e a de baixo, na secao do linter —
+# e a de baixo, por ser a ultima a ser executada no import, sobrescrevia esta.
+# Ou seja: a lista de numerais acima nunca mediu nada. Fica o comentario porque
+# regra que some sem explicacao vira divida; a definicao VIVA e' a unica que
+# existe agora, e ela mudou de familia junto com a promessa (tamanho ->
+# duracao) na reforma de copy 16s.
 
 TR8_PRAZO = re.compile(r"\b(\w+\s+(?:days?|weeks?|months?))\b|\bsince\s+[A-Z]",
                        re.I)
@@ -1492,31 +1719,78 @@ def _escolher(rng, pool, ok, tentativas=12):
 # ⭐ TR1 — O GESTO DA TROCA, agora na fala. A lista e' a dos verbos que o pool
 # `TROCAS16` usa para largar o que nao presta; ampliar o pool exige ampliar
 # aqui, e e' de proposito: lente que aceita qualquer coisa nao prova nada.
+# ⚠️ `leave it` entrou junto com a entrada nova do pool (2026-08-10): sem ela a
+# lente reprovaria uma entrada que E' o gesto.
+# ⚠️ `wrong jar` -> `wrong stuff` junto com a entrada do pool (2026-08-10):
+# nao ha' pote no frame montado, e a lente nao pode ser a unica sobrevivente
+# de um gesto que o video nao mostra. `wrong jar` sai da lente porque saiu do
+# pool — lente que aceita forma morta esconde pool morto.
 TR1_GESTO = re.compile(
-    r"\b(drop|forget|put that down|set that down|leave that|not that|"
-    r"wrong jar|skip that|that failed|that did nothing)\b", re.I)
+    r"\b(drop|forget|put that down|set that down|leave that|leave it|"
+    r"not that|wrong stuff|skip that|that failed|that did nothing)\b", re.I)
+
+
+def _so_crendice(fala1):
+    """A crendice sozinha, sem o desmentido colado no fim.
+
+    ⚠️ EXISTE POR CAUSA DA REFORMA DE COPY 16s. O desmentido agora carrega a
+    FALHA com numero (`You lose it ten minutes in.`, CT2), e duas lentes
+    perguntam da cena 1 "onde esta' a PROMESSA?": o `_tr_crendice` (TR8) e o
+    `_gatilho_reacao`, que decide se a cara dela sincroniza `On the number` ou
+    `On the promise`. Medindo a fala INTEIRA, o numero do DANO passaria por
+    numero da PROMESSA e a reacao facial sincronizaria no beat errado — no
+    frame em que ela diz que o espectador amolece, nao no frame do exagero.
+    """
+    for d in DESMENTIDOS:
+        if fala1.endswith(d):
+            return fala1[:-len(d)].strip()
+    return fala1
 
 
 def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
     """As DUAS falas do formato 16s.
 
-    cena 1 = crendice + desmentido   (identica a' do motor de 24s)
-    cena 2 = A TROCA + CTA + gate    (a troca desceu da tela para a fala)
+    cena 1 = crendice (isca absurda) + desmentido COM A FALHA DELE   (CT2)
+    cena 2 = A TROCA (mecanismo com razao) -> FOLLOW -> CTA          (CT1)
 
     ⛔⛔ O QUE MORREU, e e' honesto dizer: `FUNDIDAS`, `PROVAS`, `BARREIRAS` e
     `TESTEMUNHOS`. Os quatro eram beats das cenas 2 e 3 do motor de 24s.
-    ⭐ O que sobreviveu INTEIRO: `CRENDICES` (18), `DESMENTIDOS` (12), `CTAS`
-    (18) e `GATES` (14) — os dois ultimos sao a voz do angulo no fecho, e nao
-    foram trocados por pool generico.
+    ⭐ O que sobreviveu como EIXO (o conteudo foi reescrito na reforma de
+    2026-08-10): `CRENDICES` (18 -> 20), `DESMENTIDOS` (12 -> 14), `TROCAS16`
+    (12 -> 14), `CTAS` (18 -> 18) e `GATES` (14 -> 14). Nenhum pool encolheu.
 
     ⚠️ E o TESTEMUNHO nao saiu de graca: era ele que nomeava o orgao na cena 3.
     Por isso TODA entrada de `TROCAS16` carrega o `{o}` — a cota nao caiu, ela
     mudou de dono.
+
+    ⭐⭐ A ORDEM DE ESCOLHA E' A DO ORCAMENTO, e ela inverteu: quem escolhe
+    PRIMEIRO e' o beat com MENOS SUBSTITUTOS, e quem escolhe por ULTIMO absorve
+    a sobra. A TROCA e' a voz do angulo (e a mais cara, 10-11 palavras), o
+    FOLLOW e' o beat de 3-5, e o CTA e' o intercambiavel — 18 entradas todas em
+    8-9 palavras. Antes o CTA escolhia no meio e o gate no fim, que e'
+    exatamente o inverso.
     """
     cren_pool = [c for c in CRENDICES if degrau in (None, c["degrau"])] or CRENDICES
 
-    c1 = "%s %s" % (rng.choice(cren_pool)["txt"].format(s=subst["fala"],
-                                                        o=orgaos[0]),
+    # ⚠️⚠️ COLISAO DE VERBO COM SUBSTANCIA — 3,4% dos sorteios, medido em 1.000
+    # em 2026-08-10: `Rub menthol rub on your manhood`, `Rubbing menthol rub on
+    # your pecker`. Oito das vinte crendices carregam o verbo `rub` e uma das
+    # catorze substancias E' um rub — o gaguejo cai nas CINCO PRIMEIRAS
+    # palavras do video, que e' exatamente onde o polegar decide.
+    # ⛔ NAO SE CONSERTA NA SUBSTANCIA: `menthol rub` e' pool VISUAL (entra no
+    # IMAGE como a pelicula sobre o proxy) e reescreve-la e' mexer na CENA —
+    # alcada do operador.
+    # ⚠️ E NAO MATA ENTRADA NENHUMA: a crendice barrada continua sorteavel com
+    # as outras treze substancias, e o [ALCANCE] segue 20/20. No degrau
+    # `condicional` as quatro entradas tem `rub`; ali o `_escolher` cai no
+    # fallback e o gaguejo volta — que e' o estado de hoje, nao uma regressao.
+    _e_rub = "rub" in subst["fala"].lower()
+    cren = _escolher(rng, cren_pool,
+                     lambda c: not (_e_rub
+                                    and re.search(r"\brub(bing)?\b",
+                                                  c["txt"], re.I)))
+
+    c1 = "%s %s" % (cren["txt"].format(s=subst["fala"], o=orgaos[0]),
                     rng.choice(DESMENTIDOS))
 
     # ⚠️ o menor de cada eixo, para reservar o espaco desde o primeiro sorteio.
@@ -1524,29 +1798,30 @@ def _montar_falas(rng, subst, orgaos, relacao, degrau=None):
     # a cena estoura — foi exatamente o que aconteceu na cena 2 do motor de 24s,
     # onde 14 das 15 FUNDIDAS nunca cabem nem com a menor PROVA.
     c_cta = min(CTAS, key=_palavras)
-    c_gate = min(GATES, key=_palavras)
 
-    def _c2(tr, cta, g):
-        return "%s. %s %s" % (
-            tr.format(s=subst["fala"], o=orgaos[1]).rstrip(". "), cta, g)
+    # ⛔⛔ A ORDEM DOS ARGUMENTOS E' A ORDEM NO OUVIDO, e ela E' o CT1:
+    # troca -> follow -> CTA. O video termina no pedido; nada depois dele.
+    # ⛔⛔ CT8 (2026-08-10) — O BEAT DO FOLLOW SAIU DA FALA.
+    # Ordem do operador: *"nao acho que deva ter follow me no cta, a
+    # mensagem e' enviada independente de seguirem ou nao"*. O gate
+    # existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao
+    # de DM, e quem opera a automacao corrigiu. As palavras liberadas
+    # vao para o mecanismo e a prova.
+    def _c2(tr, cta):
+        return "%s. %s" % (
+            tr.format(s=subst["fala"], o=orgaos[1]).rstrip(". "), cta)
 
     _tc = [x for x in TROCAS16
-           if _palavras(_c2(x, c_cta, c_gate)) <= TETO_FALA[2]]
+           if _palavras(_c2(x, c_cta)) <= TETO_FALA[2]]
     troca = rng.choice(_tc or [min(TROCAS16, key=_palavras)])
     _cc = [x for x in CTAS
-           if _palavras(_c2(troca, x, c_gate)) <= TETO_FALA[2]
-           and not _eco(c1, _c2(troca, x, c_gate))]
+           if _palavras(_c2(troca, x)) <= TETO_FALA[2]
+           and not _eco(c1, _c2(troca, x))]
     _cc = _cc or [x for x in CTAS
-                  if _palavras(_c2(troca, x, c_gate)) <= TETO_FALA[2]]
+                  if _palavras(_c2(troca, x)) <= TETO_FALA[2]]
     cta = rng.choice(_cc or [min(CTAS, key=_palavras)])
-    _gg = [x for x in GATES
-           if _palavras(_c2(troca, cta, x)) <= TETO_FALA[2]
-           and not _eco(c1, _c2(troca, cta, x))]
-    _gg = _gg or [x for x in GATES
-                  if _palavras(_c2(troca, cta, x)) <= TETO_FALA[2]]
-    gate = rng.choice(_gg or [min(GATES, key=_palavras)])
 
-    return [c1, _c2(troca, cta, gate)]
+    return [c1, _c2(troca, cta)]
 
 def sortear(pagina, rng, ledger, travas=None):
     """TR20 — anti-repeticao por ledger, por pagina.
@@ -1591,10 +1866,28 @@ def sortear(pagina, rng, ledger, travas=None):
 
     relacao = _relacao(rng, nar["idade"], hom["idade"])
 
-    # TR6/cota do orgao: tres substantivos DISTINTOS sorteados de uma vez. So'
-    # dois entram em fala (o CTA nao nomeia o orgao) — o terceiro fica de
-    # reserva para o `nova_fala()` da UI nao repetir o que ja' esta' em cena.
-    orgaos = rng.sample(NUCLEO, 3)
+    # ⛔⛔ CT4 — UM APELIDO DO ORGAO POR VIDEO, REPETIDO NOS DOIS TAKES.
+    # ISTO REVERTE a regra que estava aqui (`rng.sample(NUCLEO, 3)`, tres
+    # substantivos DISTINTOS por sorteio), e a reversao e' declarada:
+    #   · em 24s e cinco cenas o risco e' o BORDAO — duas mencoes iguais viram
+    #     tique, e por isso o motor de 24s rotaciona;
+    #   · em 16s e DUAS cenas o risco e' o oposto. Medido: o apelido mudava no
+    #     corte em 100% dos videos deste motor. O corte zera a memoria de
+    #     trabalho, e trocar `tool` por `Johnson` no segundo 9 obriga o
+    #     espectador a remapear justamente quando ele ja' esta' com um pe' fora.
+    # ⭐ A variacao NAO acabou: ela continua existindo ENTRE videos (cinco
+    # apelidos sorteados por lote), que e' onde ela nunca custou nada.
+    # ⚠️ A lista de tres fica, porque `_montar_falas` e `nova_fala` a esperam —
+    # e' o MESMO termo nas tres posicoes.
+    # ⛔⛔ CT4b (2026-08-10) — SO' TRES APELIDOS SAO SORTEAVEIS.
+    # Ordem do operador: *"quero que vc use weiner e john-son pra se referir ao
+    # orgao tb, nao apenas pec-ker"*. `soldier` soa filme de guerra para ouvido
+    # americano e `tool` e' ambiguo em giria dos EUA; os dois seguem no NUCLEO
+    # porque as LENTES os usam para DETECTAR o orgao — o que muda e' que nao
+    # sao mais sorteaveis. O CT4 trava UM apelido por video; sem isto aqui, um
+    # apelido por video vira o MESMO apelido no lote inteiro.
+    _o = rng.choice(sc.APELIDOS_16)
+    orgaos = [_o, _o, _o]
     falas = _montar_falas(rng, sub, orgaos, relacao, degrau)
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], sub)
 
@@ -1616,11 +1909,16 @@ def _gatilho_reacao(fala1):
     """Onde a reacao facial sincroniza — segue a FAMILIA da promessa.
 
     "On the number" numa crendice da familia de RESISTENCIA (`it never quits on
-    you`, `a different animal`, `beats every pill on the shelf` — 25% do pool)
-    manda o Veo sincronizar com um numeral que a fala nao tem, e ele escolhe
-    sozinho onde.
+    you`, `beats every pill on the shelf` — 20% do pool) manda o Veo
+    sincronizar com um numeral que a fala nao tem, e ele escolhe sozinho onde.
+
+    ⛔ MEDE SO' A CRENDICE, nunca a fala inteira (ver `_so_crendice`): desde a
+    reforma de copy 16s o desmentido carrega o DANO com numero (`ten minutes
+    in`), e casar ali sincronizaria a cara de espanto dela com a frase em que
+    ela diz que o espectador amolece.
     """
-    return GATILHO_NUMERO if TR8_NUMERO.search(fala1) else GATILHO_PROMESSA
+    return (GATILHO_NUMERO if TR8_NUMERO.search(_so_crendice(fala1))
+            else GATILHO_PROMESSA)
 
 
 def montar(spec):
@@ -1819,10 +2117,23 @@ def _achar(txt, tokens):
 # (7/8, `ten times bigger`) e a de RESISTENCIA (v01, `last all night long`).
 # Sem promessa o comando e' so' esquisito (invariante 10/28), e e' por isso que
 # a regra existe — nao pelo numero em si.
+#
+# ⛔⛔ AS DUAS FORAM REESCRITAS NA REFORMA DE COPY 16s (2026-08-10), e a razao
+# nao e' estilo: a familia numerica media TAMANHO (`ten`, `inch`, `bigger`,
+# `size`, `doubles`), que e' exatamente a promessa que saiu do pool de
+# CRENDICES porque a VSL vende recuperacao de ereccao, nao aumento. Regex que
+# continua procurando a promessa antiga passa a medir zero de vinte e reprova
+# copy certa — o modo de falha §16.
+# ⚠️ A familia numerica agora e' de DURACAO (`all night`, `an hour`, `hours`,
+# `every time`) e a de resistencia e' de PERSISTENCIA (`never quits`, `stops
+# quitting`, `beats every`, `never lets you down`, `every night`).
+# ⛔ `minutes` NAO entra: `ten minutes in` e' o DANO do desmentido (CT2), nao a
+# promessa da crendice — e as duas frases vivem na mesma cena.
 TR8_NUMERO = re.compile(
-    r"\b(ten|twice|doubles?|two|three|four|eight|inch|inches|bigger|size)\b", re.I)
+    r"\b(hours?|all night|every time|every single time|twice|ten times)\b", re.I)
 TR8_RESISTENCIA = re.compile(
-    r"(never quits|all night|every time|a different animal|beats every)", re.I)
+    r"(never quits|never lets you down|stops quitting|keeps quitting|"
+    r"every night|nightly|a different animal|beats every)", re.I)
 
 # TR3 — o `nome` de cada proxy mais as variantes que o espectador diria.
 TR3_VARIANTES = ("carrots", "zucchinis", "bananas", "cucumbers", "radish",
@@ -1877,9 +2188,14 @@ def _tr_crendice(spec, blocos, achados):
         achados.append(("ERRO", "TR8: a crendice nomeia o orgao mas nao e' o do "
                                 "ESPECTADOR ('your ...') — sem isso a promessa "
                                 "nao e' enderecada"))
-    if not (TR8_NUMERO.search(h) or TR8_RESISTENCIA.search(h)):
+    # ⛔ A PROMESSA E' COBRADA DA CRENDICE, nao da fala inteira: o desmentido
+    # agora carrega a FALHA com numero (CT2), e medir a fala inteira deixaria a
+    # crendice passar de graca com o numero do DANO. Lente que aceita o avesso
+    # do que cobra nao e' lente.
+    if not (TR8_NUMERO.search(_so_crendice(h))
+            or TR8_RESISTENCIA.search(_so_crendice(h))):
         achados.append(("ERRO", "TR8: a crendice nao carrega promessa "
-                                "(numerica ou de resistencia) — sem o segundo "
+                                "(de duracao ou de resistencia) — sem o segundo "
                                 "choque o comando e' so' esquisito"))
 
 
@@ -1930,12 +2246,24 @@ def _tr_pronome_orfao(spec, blocos, achados):
 # feeds, straightens, loads, fixed. Sem eles a lente reprovava 800 de 800.
 # ⛔ A ampliacao e' de VERBOS DE EFEITO, nao de qualquer verbo: continuam de
 # fora `does`, `is`, `has` e companhia, que sao os que produzem o caso ruim.
+# ⚠️ AMPLIADA DE NOVO NA REFORMA DE COPY 16s (2026-08-10) — e e' a QUARTA vez
+# que esta regex mede outra coisa por conhecer meia familia. Os verbos de
+# efeito do pool novo (`puts`, `brings`, `pushes`, `unblocks`, `clears`,
+# `restores`, `moves`, `gives`, `holds`, `keeps`) nao estavam aqui, e a lente
+# reprovou 372 de 800 sorteios de copy CORRETA no primeiro autoteste depois da
+# troca. Entram tambem os ALVOS (`blood`, `flow`, `pressure`, `supply`,
+# `path`): a lente pergunta "o que ele devolve?", e sangue/pressao E' a
+# resposta.
+# ⛔ Continuam de fora `does`, `is`, `has` e companhia — sao os que produzem o
+# caso ruim que a lente existe para pegar.
 TR17_DESTINO = re.compile(
     r"\b(back|again|answers?|answered|remembers?|running|hard|returns?|"
     r"alive|life|awake|up|bigger|stopped quitting|has not quit|had not quit|"
     r"not quit|works?|working|"
     r"fills?|filled|opens?|opened|wakes?|woke|hardens?|hardened|feeds?|fed|"
-    r"straightens?|straightened|loads?|loaded|fixes?|fixed|thick|stiff)\b",
+    r"straightens?|straightened|loads?|loaded|fixes?|fixed|thick|stiff|"
+    r"puts?|brings?|pushes|push|unblocks?|clears?|restores?|moves?|gives?|"
+    r"holds?|keeps?|blood|flow|pressure|supply|path)\b",
     re.I)
 
 
@@ -2309,8 +2637,16 @@ def _tr_isca_nomeada(spec, blocos, achados):
     Ed, 2026-08-06, lendo o take 3: "and I'll send it" - enviar o QUE? A isca
     tem de estar expressa. E o unico ponto do video onde se pede uma acao, e
     pedir sem dizer a troca desperdica o take inteiro.
+
+    ⛔⛔ ESTA LENTE ESTAVA MORTA E NINGUEM VIU. A condicao era
+    `spec["falas"][-1] if len(spec["falas"]) > 2 else ""` — herdada do motor de
+    24s, onde ha' TRES falas. Neste motor ha' DUAS, entao o `else ""` disparava
+    sempre e a funcao saia no `return` de cima em 100% dos sorteios. Lente que
+    nunca acusa nao e' lente que aprova: e' lente que nunca olhou (licoes §29).
+    A cena do CTA e' `falas[-1]` tenha o motor 2 ou 3 falas, que e' o idioma
+    que o proprio `short_comum` ja' usa.
     """
-    fala = spec["falas"][-1] if len(spec["falas"]) > 2 else ""
+    fala = spec["falas"][-1]
     if "comment gelatin" not in fala.lower():
         return
     if not TR19_ISCA.search(fala):
@@ -2456,20 +2792,48 @@ def _t16_5b(spec, blocos, achados):
                 "QUE? Verbo pendurado e' a mesma familia do pronome sem dono"
                 % (_i, _p.group(0))))
 
+# ---------------------------------------------------------------------------
+# ⭐⭐⭐ CT1..CT7 — O CONTRATO DE COPY 16s, LIGADO
+# ---------------------------------------------------------------------------
+# A lente mora no `short_comum` (uma regra, um lugar) e o motor so' a chama.
+# ⭐ `isca_absurda=True`: este angulo E' uma promessa falsa que ele proprio
+# desmente meio segundo depois, entao o CT7 nao cobra verbo de ereccao no take
+# 1 — proibi-lo ali mataria o angulo. No take 2, que e' claim NOSSO, ele
+# continua cobrado.
+def _ct16(spec, blocos, achados):
+    sc.lint_copy16(sys.modules[__name__], spec, achados, isca_absurda=True)
+
+
+# ⛔⛔ LENTE APOSENTADA — "substantivo repetido no video" (AVISO do `lint_curto`)
+# -----------------------------------------------------------------------------
+# O `lint_curto` avisa quando o mesmo substantivo do NUCLEO aparece em mais de
+# uma cena. Essa regra nasceu no formato de 24s/5 cenas, onde repetir e' bordao.
+# O **CT4 do contrato 16s a REVERTE**: em duas cenas o corte zera a memoria de
+# trabalho e o apelido TEM de ser o mesmo nos dois takes. Manter o AVISO seria
+# ter, no mesmo `lint()`, uma lente exigindo o que a outra reprova — e o
+# operador aprenderia a ignorar o relatorio.
+# ⛔ Nao se apaga a regra no `short_comum` (ela e' certa nos motores de 3 cenas,
+# e o arquivo e' compartilhado): filtra-se AQUI, no unico motor que declara a
+# reversao. Fonte: CONTRATO-COPY-16S.md §CT4.
+_AVISO_APOSENTADO = "substantivo repetido no video"
+
+
 def lint(spec, blocos):
     # ⚠️ `teto_total` explicito: o padrao do `lint_curto` e' a soma dos tetos
     # (82), que aqui e' o PISO do orcamento da doutrina — o AVISO dispararia
     # acima do numero que a TR14 exige como MINIMO. A borda de cima e' 96.
-    return sc.lint_curto(
+    achados = sc.lint_curto(
         sys.modules[__name__], spec, blocos, (1, 2), TETO_FALA,
         literais=("gelatin trick",), teto_total=TETO_TOTAL,
-        extras=(_t16_5b, _tr_crendice, _tr_claim_prazo, _tr_segunda_pessoa,
+        extras=(_ct16, _t16_5b, _tr_crendice, _tr_claim_prazo,
+                _tr_segunda_pessoa,
                 _tr_pronome_orfao, _tr_mecanismo_sem_destino, _tr_isca_nomeada,
                 _tr_proxy_mudo, _tr_eco, _tr_orcamento, _tr_batismo, _tr_cta,
                 _tr_gates, _tr_troca, _tr_sem_crescimento, _tr_agencia,
                 _tr_tokens, _tr_marca, _tr_verbos, _tr_recibo, _tr_ancoras,
                 _tr_congruencia, _tr_voz, _tr_figurino,
                 _bandeira_5050))
+    return [a for a in achados if not a[1].startswith(_AVISO_APOSENTADO)]
 
 
 # ---------------------------------------------------------------------------
@@ -2538,9 +2902,12 @@ def _recopiar_crendice(spec, rng):
     ⚠️ E re-sorteia a bancada se a substancia nova colidir com o recibo (TR19):
     o operador nao teria como consertar isso pela interface.
     """
-    orgaos = [sc.orgao_de(sys.modules[__name__], spec["falas"][0]),
-              sc.orgao_de(sys.modules[__name__], spec["falas"][1],
-                          padrao="soldier"), NUCLEO[0]]
+    # ⛔ CT4: o apelido do video e' UM so'. Antes esta funcao lia um termo da
+    # cena 1 e outro da cena 2 (com `padrao="soldier"`, que nem existe mais no
+    # NUCLEO) — ou seja, ela REINTRODUZIA pela interface o defeito que o
+    # sorteio acabou de corrigir. Le-se o da cena 1 e ele vale para as duas.
+    _o = sc.orgao_de(sys.modules[__name__], spec["falas"][0])
+    orgaos = [_o, _o, _o]
     novas = _montar_falas(rng, spec["substancia"], orgaos, spec["relacao"],
                           spec.get("degrau"))
     spec["falas"][0], spec["falas"][1] = novas[0], novas[1]
@@ -2558,7 +2925,9 @@ def _recopiar_tudo(spec, rng):
     (esposa, vizinha, a mulher que cozinha) acompanha: a relacao e' recalculada
     ANTES das falas, para que o filtro de voz da cena 2 valha.
     """
-    orgaos = rng.sample(NUCLEO, 3)
+    # ⛔ CT4: um apelido por video (ver a nota no `sortear`).
+    _o = rng.choice(NUCLEO)
+    orgaos = [_o, _o, _o]
     spec["relacao"] = _relacao(rng, spec["narradora"]["idade"],
                                spec["corpo_prova"]["idade"])
     spec["falas"] = _montar_falas(rng, spec["substancia"], orgaos,
@@ -2643,7 +3012,12 @@ MIN_OPCOES = 9          # piso por eixo visual
 TETO_FREQ = 0.17        # nenhum item pode concentrar mais que isso
 # ⛔ FUNDIDAS saiu: o beat morreu na fusao. Entra TROCAS16, que o substitui
 # e cujo piso e' 10 (doze entradas escritas em 7-9 palavras).
-MIN_COPY = {"CRENDICES": 16, "TROCAS16": 10, "CTAS": 14, "GATES": 11}
+# ⚠️ 2026-08-10: os pisos SOBEM junto com a reforma de copy. Ordem permanente do
+# operador — *"nao sacrifique, dimira ou faca quaisquer regressao no agente que
+# ocasione perda de entropia"* — e piso que fica para tras autoriza a proxima
+# edicao a encolher o pool de volta.
+MIN_COPY = {"CRENDICES": 20, "DESMENTIDOS": 14, "TROCAS16": 14, "CTAS": 18,
+            "GATES": 14}
 
 
 def autoteste(n_por_pagina=80, seed=7, degrau=None):
@@ -2721,6 +3095,22 @@ def autoteste(n_por_pagina=80, seed=7, degrau=None):
             falhas.append("TR14: cena %d pode estourar (%d, teto %d)"
                           % (i, max(a_) + max(b_) + ex, TETO_FALA[i]))
 
+    # ⭐ A CENA 2 TAMBEM E' ENUMERADA — 2026-08-10. Ela ficava de fora porque o
+    # solver "resolvia" o teto filtrando entradas, e filtrar e' justamente o que
+    # MATA entrada de pool em silencio: o lote sai dentro do teto e ninguem ve'
+    # que metade do pool nunca foi ao ar. Aqui as duas bordas sao medidas.
+    _t2 = [_palavras(x.format(s="x", o="x")) for x in TROCAS16]
+    _g2 = [_palavras(x) for x in GATES]
+    _c2w = [_palavras(x) for x in CTAS]
+    if min(_t2) + min(_g2) + min(_c2w) < PISO_FALA[2]:
+        falhas.append("TR14: cena 2 pode sair com %d palavras (piso %d)"
+                      % (min(_t2) + min(_g2) + min(_c2w), PISO_FALA[2]))
+    if max(_t2) + max(_g2) + max(_c2w) > TETO_FALA[2]:
+        falhas.append("TR14: cena 2 pode estourar (%d, teto %d) — com o pior "
+                      "caso acima do teto o solver comeca a FILTRAR entradas, "
+                      "e entrada filtrada e' entrada morta"
+                      % (max(_t2) + max(_g2) + max(_c2w), TETO_FALA[2]))
+
     # ⭐⭐ [ALCANCE] TODA ENTRADA DE POOL TEM DE SER SORTEAVEL — e este motor e'
     # a razao mais forte para a trava existir. MEDIDO no `troca_short.py` de
     # 24s, antes de portar:
@@ -2740,7 +3130,9 @@ def autoteste(n_por_pagina=80, seed=7, degrau=None):
     _mC = min(_palavras(x) for x in CTAS)
     _mG = min(_palavras(x) for x in GATES)
     for _nome, _pool, _outros in (
-            ("TROCAS16", [x.format(s="crushed cinnamon", o="soldier")
+            # ⚠️ o `o=` tem de ser um termo VIVO do NUCLEO: era `soldier`, que
+            # foi aposentado na reforma de 2026-08-10 (britanismo).
+            ("TROCAS16", [x.format(s="crushed cinnamon", o="pecker")
                           for x in TROCAS16], _mC + _mG),
             ("CTAS", CTAS, _mT + _mG),
             ("GATES", GATES, _mT + _mC)):

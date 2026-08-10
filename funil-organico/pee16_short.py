@@ -508,7 +508,20 @@ PROPS = [
 # POOLS DE COPY
 # ---------------------------------------------------------------------------
 
-NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
+# ⭐⭐ 2026-08-10 — CONTRATO DE COPY 16s, CT4. O apelido do orgao e' UM SO' por
+# video e volta nos DOIS takes; a variacao mora ENTRE videos, que e' onde ela
+# nunca custou nada. Duas consequencias nesta lista:
+#   · ⛔ `soldier` APOSENTADO. Em boca americana de 50-70 anos `soldier` para o
+#     orgao soa a filme de guerra — britanismo. Entraram no lugar `manhood` e
+#     `equipment`, que o ouvido do avatar reconhece e que o `medir_deiticos` /
+#     `medir_contexto_copy` ja' listam no regex ORGAO (apelido fora daquele
+#     regex viraria falso positivo de "cena orfa" nos dois medidores).
+#   · ⛔ TODA ENTRADA TEM UMA PALAVRA SO'. O take 2 fecha em 25 palavras com
+#     quatro batidas (9+5+3+8); um apelido de duas palavras (`old boy`)
+#     estouraria o teto e mataria por filtro as entradas mais longas de cada
+#     pool — a armadilha de orcamento do §4 do contrato.
+# Pool de 5 -> 6 entradas: nenhuma perda de entropia na troca.
+NUCLEO = ["Johnson", "pecker", "wiener", "tool", "manhood", "equipment"]
 
 # PE6 ⭐ — a regra mais importante do agente. O hook LIGA o mijo ao orgao NA
 # MESMA FALA. Hook so' de mijo REPROVA: o homem com ED nao se reconhece, acha
@@ -516,29 +529,77 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 #   fato do mijo + aparte + orgao nomeado + VINCULO afirmado
 VINCULOS = ["same thing", "same reason", "and that's why"]
 
+# ⭐⭐ POOL REESCRITO EM 2026-08-10 — CT2 do CONTRATO DE COPY 16s.
+# Medido antes: 31% dos sorteios nao tinham NENHUMA sentenca dizendo o que o
+# corpo dele faz de errado. `took his {o}`, `does nothing`, `stopped answering`
+# e `shut his {o} down` (com o objeto no meio) descrevem dano nenhum que o
+# espectador reconheca como o SEU — e sem auto-reconhecimento nao ha'
+# comentario: ele nao comenta porque a copy e' boa, comenta porque se viu.
+#
+# ⛔ O MOLDE, e agora ele e' o mesmo nas 22 entradas:
+#     <mijo em {evento}> · <dano social curto> · <VINCULO> · his {o} + FALHA + NUMERO
+# A melhor linha ja' medida do parque inteiro e' a entrada 1 deste pool,
+# `hasn't worked in two years` — cinco palavras, um numero, um dano.
+#
+# ⛔ AS DUAS ENTRADAS EM PRIMEIRA PESSOA FORAM APOSENTADAS (`That was me in
+# 2019`, `I did the same in 2019`) e substituidas por duas de terceira pessoa.
+# Motivo: o take 2 agora prova no HOMEM DA CENA 1 (`That man's {o} answered
+# her.`), e com um hook em primeira pessoa esse `that man` passava a apontar
+# para o proprio narrador — deitico com dois donos. Entropia preservada: o pool
+# saiu de 20 para 22 entradas.
+#
+# ⚠️ Tamanhos parelhos DE PROPOSITO (18-23 palavras, teto 24): entrada curta
+# demais num pool de teto apertado e' entrada que domina o lote (§4).
 HOOKS = [
-    "He peed himself in {evento} because he couldn't hold it in. Poor guy... same thing killed his {o} two years ago.",
-    "He wet his pants in {evento} and everybody saw. Poor guy... same reason his {o} quit on him.",
-    "He soaked right through in {evento}. Poor guy... same thing that made him leak is why his {o} doesn't work.",
-    "He lost it right there in {evento}. Poor guy... and that's why his {o} hasn't worked in two years.",
-    "He wet his pants in {evento}. His wife wasn't even surprised. Same reason his {o} stopped working two years back.",
-    "He peed his pants in {evento}. His brother in law still tells that story. Same thing shut his {o} down.",
-    "He soaked his pants in {evento}. His wife stopped reaching for him two years ago. Same reason his {o} plays dead.",
-    "She said it was fine when he peed in {evento}. She says that in bed too. Same reason his {o} quit.",
-    "He leaked down his leg in {evento}. Hasn't asked a woman out since the divorce. Same reason his {o} stays down.",
-    "He started leaking in {evento}. His wife already told her friends about it. Same reason his {o} does nothing.",
-    "He peed right there in {evento}. That was me in 2019. Same reason my {o} went out that year.",
-    "He peed in {evento} today. I did the same in 2019. Every man I know has. Same thing took our {o}.",
+    # ⛔ `He lost it right there` -> `He wet himself right there` (2026-08-10,
+    # conferencia da reforma). Mesma contagem de palavras, e nada mais mudou.
+    # Motivo: em boca americana `he lost it` significa PRIMEIRO perder a cabeca
+    # / desabar em choro, e a IMAGEM DESTE ANGULO RATIFICA JUSTAMENTE ESSA
+    # leitura errada — o CHORO_IMAGE obriga o homem a estar chorando muito,
+    # lagrimas nas duas bochechas, ombros tremendo. E' a colisao "ouvido B" que
+    # este mesmo arquivo ja' documenta no `_hook_sem_colisao`: nao e' um absurdo
+    # que o ouvido descarta em 200ms, e' uma SEGUNDA HISTORIA COMPLETA (o homem
+    # desabou chorando na loja). ⚠️ O `_pe6_hook` aceitava `lost it` como "o
+    # hook diz o mijo" — passe FALSO: o token esta' na lista, mas a sentenca
+    # nao diz mijo nenhum para quem ouve uma vez so'.
+    "He wet himself right there in {evento}. Poor guy... and that's why his {o} hasn't worked in two years.",
+    "He wet his pants in {evento} and everybody saw. Same reason his {o} quit on him two years ago.",
+    "He soaked right through in {evento}. Same thing that made him leak stopped his {o} cold two years back.",
+    "He peed himself in {evento} because he couldn't hold it. Same thing killed his {o} two years ago.",
+    "He wet his pants in {evento}. His wife wasn't surprised. Same reason his {o} stopped working two years back.",
+    "He peed his pants in {evento}. His brother in law still tells it. Same reason his {o} quit two years ago.",
+    "He soaked his pants in {evento}. His wife quit reaching for him. Same reason his {o} went out two years ago.",
+    # ⛔ `She said it was fine` -> `His wife called it fine` (2026-08-10). Mesma
+    # contagem de palavras (5 por 5), e a segunda frase (`She says that in bed
+    # too.`) fica intacta — ela e' a melhor linha do pool e agora tem dono.
+    # Motivo: esta era a UNICA entrada do pool que ABRIA o video inteiro num
+    # pronome sem referente. As outras 21 abrem em `He` / `A grown man` / `They`,
+    # e ali o referente esta' NO QUADRO — o homem de calca molhada. Uma mulher
+    # nao esta': o `MAPA` deste 16s e' `(1, 3)` e nenhum dos dois quadros tem
+    # mulher. `She said it was fine` era `she` sem dono nem em fala nem em
+    # imagem, na primeira meia-segunda do video (lei `pronome-generico-e-drifting`).
+    "His wife called it fine when he peed in {evento}. She says that in bed too. Same reason his {o} quit.",
+    "He leaked down his leg in {evento}. Hasn't asked anybody out since. Same reason his {o} gave out two years ago.",
+    "He started leaking in {evento}. His wife already told her friends. Same reason his {o} hasn't worked in two years.",
     # + 2026-08-01: o operador mediu vicio — os mesmos hooks voltando no lote.
     # Pool ampliado; todos mantem mijo + orgao + vinculo na mesma fala (PE6).
-    "Everybody laughed when he leaked through his pants in {evento}. Same reason his {o} quit.",
-    "A grown man peed himself in {evento} on a Tuesday. Same thing that took his {o}.",
-    "Know why a man peed himself in {evento}? Same reason his {o} hasn't worked since.",
-    "His wife walked him out of {evento} soaked. Same reason she stopped touching his {o}.",
-    "His doctor blamed the coffee when he peed in {evento}. Same thing had already taken his {o}.",
-    "They still talk about the man who soaked his pants in {evento}. Same reason his {o} stopped answering.",
-    "He lost it standing in {evento}, and that's why his {o} has been dead two years.",
-    "He won't be the last man to get soaked in {evento}. Same thing that shut his {o} down.",
+    "Everybody laughed when he leaked through his pants in {evento}. Same reason his {o} quit on him two years ago.",
+    "A grown man peed himself in {evento} on a Tuesday. Same reason his {o} stopped two years ago.",
+    "Know why a man peed himself in {evento}? Same reason his {o} hasn't worked in two years.",
+    "His wife walked him out of {evento} soaked. Same reason his {o} quit on her two years ago.",
+    "His doctor blamed the coffee when he peed in {evento}. Same thing had already stopped his {o} cold.",
+    "They still talk about the man who soaked his pants in {evento}. Same reason his {o} quit two years back.",
+    # ⛔ mesma troca de `lost it` da entrada 1 deste pool, mesmo motivo, mesma
+    # contagem. ⭐ Esta e' a unica entrada de SENTENCA UNICA do pool — e' ela
+    # que o registro do `medir_abertura` (mais abaixo) aponta como o caminho se
+    # o operador quiser abertura com referente nomeado.
+    "He wet himself standing in {evento}, and that's why his {o} has been dead two years.",
+    "He won't be the last man soaked in {evento}. Same thing that stopped his {o} two years ago.",
+    "He wet himself in {evento} in front of his grandson. Same reason his {o} gave out two years ago.",
+    "He soaked his pants in {evento} and walked out fast. Same reason his {o} quit on him years ago.",
+    # + 2026-08-10: as duas que entram no lugar das de primeira pessoa.
+    "Two women in {evento} laughed at his wet pants. Same reason his {o} quit two years ago.",
+    "He peed through his pants in {evento} at sixty three. Same reason his {o} gave out first.",
 ]
 
 # PE7 — a cena 2 EXPLICA o vinculo que o hook afirmou. Uma causa, dois sintomas.
@@ -656,7 +717,7 @@ CTAS = [
     "Comment gelatin, and I'll send you that exact one today. {gate}",
     "Comment gelatin, and I'll send you where to get the right one. {gate}",
     "Comment gelatin, and thank me Friday night. I'll send it over today. {gate}",
-    "Comment gelatin, tonight — somebody always reports this. I'll send the recipe before it goes down. {gate}",
+    "Comment gelatin, and tonight — somebody always reports this. I'll send the recipe before it goes down. {gate}",
     "One word. Comment gelatin, and it's in your inbox tonight. {gate}",
     "Comment gelatin, and I'll send you the source. I can't name it here. {gate}",
     "Comment gelatin, and I'll send the same one he used. {gate}",
@@ -732,6 +793,15 @@ def _evitando(rng, pool, recentes):
 #
 # ⛔ Corrigido no SORTEIO, nao no pool: os 3 hooks e os 7 substantivos sao copy
 # validada e nenhum foi redigitado. Resolve as tres entradas de uma vez.
+# ⛔ APOSENTADA NA PRATICA EM 2026-08-10, e a aposentadoria e' declarada. O
+# unico membro VIVO desta tupla era `soldier`, e ele saiu do NUCLEO na reforma
+# do CONTRATO DE COPY 16s (britanismo — ver a nota do NUCLEO). Com o pool atual
+# (`Johnson`, `pecker`, `wiener`, `tool`, `manhood`, `equipment`) nenhum
+# substantivo e' ANIMADO, entao a colisao "ouvido B" (o filho/o cachorro morreu)
+# nao tem mais como nascer e o guarda abaixo passa direto em todo sorteio.
+# ⚠️ A funcao NAO foi apagada: ela e' a rede do dia em que alguem devolver um
+# apelido animado ao pool (`old boy` e' o candidato obvio). Regra que some sem
+# explicacao o repo trata como divida.
 NUCLEO_ANIMADO = ("old boy", "soldier")
 _MORTE = ("killed", "dead", "plays dead")
 
@@ -766,7 +836,15 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     mul = (sc.ref_bela(MULHERES[0], rng) if _tv.get("bela")
            else rng.choice(MULHERES))
 
-    orgaos = rng.sample(NUCLEO, 4)
+    # ⛔⛔ CT4b (2026-08-10) — SO' TRES APELIDOS SAO SORTEAVEIS.
+    # Ordem do operador: *"quero que vc use weiner e john-son pra se referir ao
+    # orgao tb, nao apenas pec-ker"*. `soldier` soa filme de guerra para ouvido
+    # americano e `tool` e' ambiguo em giria dos EUA; os dois seguem no NUCLEO
+    # porque as LENTES os usam para DETECTAR o orgao — o que muda e' que nao
+    # sao mais sorteaveis. O CT4 trava UM apelido por video; sem isto aqui, um
+    # apelido por video vira o MESMO apelido no lote inteiro.
+    _o1 = rng.choice(sc.APELIDOS_16)
+    orgaos = [_o1] * 4
     hook = _hook_sem_colisao(rng, orgaos)
     falas = [
         hook.format(evento=local["plateia_evento"], o=orgaos[0]),
@@ -1033,6 +1111,16 @@ TETO_FALA = {1: TETO_FALA_LONGO[1], 2: 25}
 # ⛔ Teto da cena 2 = 34 palavras e nao subiu: onde o verbo de resultado ficou
 # mais longo que `opened it`, o corte saiu da MESMA entrada (a marcacao de
 # tempo virou o fragmento `Nineteen days.`, forma que ja' rodava aqui).
+#
+# ⛔⛔⛔ POOL MORTO — NAO E' LIDO POR NINGUEM DESDE 2026-08-09, quando o
+# `_fundir` passou a montar a cena 2 dos quatro eixos (`MECANISMOS16`,
+# `PROVAS16`, `GATES16`, `CTAS16`). Fica no arquivo como HISTORICO das licoes
+# que estao escritas nos comentarios acima (o verbo de resultado no lugar do
+# verbo de encanamento, o prazo que derrubou o video do NECROSE).
+# ⚠️ E FICA CONDENADO: nenhuma destas 14 entradas passa no CONTRATO DE COPY 16s
+# de 2026-08-10 — todas estouram o teto de 25, nenhuma tem CTA, e varias trazem
+# `hard`/`came back` colado no orgao (CT7) e prazo junto de `your {o}`.
+# ⛔ Religar este pool sem reescreve-lo devolve os cinco defeitos medidos.
 FUNDIDAS = [
     "It's the prostate pressing the line flat — the same squeeze that starves "
     "your {o}. His brother gave him the gelatin trick. Nineteen days later he "
@@ -1115,119 +1203,255 @@ FUNDIDAS = [
 
 
 # ---------------------------------------------------------------------------
-# ⭐⭐ A FALA DA CENA FUNDIDA — EIXOS COMPOSTOS (2026-08-09)
+# ⭐⭐ A FALA DA CENA FUNDIDA — EIXOS COMPOSTOS
+# ⭐⭐ REESCRITA TOTAL EM 2026-08-10 — CONTRATO DE COPY 16s
 # ---------------------------------------------------------------------------
-#     {MECANISMO} {PROVA no marido} {CTA} {GATE}
+#     {MECANISMO} {PROVA} {GATE} {CTA}          <- o CTA e' o FIM do video
 #
-# ⛔ Ordens do operador que governam estes pools:
-#   · *"nao use pronome, seja taxativo e claro"* — o homem e' NOMEADO. Ele nao
-#     tem nome proprio no angulo (a fonte fala em terceira pessoa sobre um
-#     casal), entao o que o nomeia e' o PAPEL: `the husband`. Confirmado por
-#     ele em 2026-08-09: *"marido, esposo"*.
+# ⛔⛔ A ORDEM MUDOU, e essa e' a correcao mais cara do lote (CT1). Antes o
+# gate vinha DEPOIS do `Comment gelatin,` e a ultima coisa no ouvido — colada
+# no unico pedido que gera receita — era `Follow, then comment.` / `Followers
+# only.`: um segundo CTA nu, ou uma condicional na recompensa. Medido: 26% dos
+# sorteios deste motor. A posicao final e' a que fica, e ela tem de ser o
+# pedido. ⭐ O follow continua existindo — ele so' passou para ANTES.
+#
+# ⛔ Ordens do operador que continuam governando estes pools:
+#   · *"nao use pronome, seja taxativo e claro"* — o homem da prova e' NOMEADO.
 #   · *"seja mais taxativo: I'll send recipe"* — toda entrada de CTAS16 nomeia
-#     `recipe`. Os CTAs de 24s prometem `that exact one` e `the same one he
-#     used` — de QUE, o espectador nao sabe.
+#     `recipe`. Os CTAs de 24s prometem `that exact one` — de QUE, o espectador
+#     nao sabe.
+#   · *"faltou gravitar pro centro, que e' o john-son dele voltar a
+#     funcionar"* — a prova e' o ORGAO, nunca o vazamento parando.
 #
-# ⚠️ 8-11 palavras. O mecanismo do PEE e' a PROSTATA apertando a linha — e' o
-# que separa este angulo dos outros nove, e some se a fala nao o disser.
+# ⭐⭐ O ORCAMENTO E' FECHADO E TODA ENTRADA TEM O MESMO TAMANHO:
+#         mecanismo 9  +  prova 5  +  gate 3  +  CTA 8  =  25  = TETO_FALA[2]
+# ⛔ POR QUE TAMANHO FIXO, e nao "8-11 palavras" como antes: com quatro batidas
+# somando num teto apertado, pool de tamanho variavel nao e' pool — e' um pool
+# pequeno com enfeites. O solver so' pode sortear o que CABE, entao a entrada
+# longa nunca sai e morre viva dentro do arquivo. Com os quatro tamanhos
+# travados, TODA combinacao cabe por construcao: 12 x 12 x 8 x 10 = 11.520
+# falas, e o [ALCANCE] medido e' 100% dos itens de todos os quatro pools.
+# ⚠️ Quem mexer nestes pools tem de respeitar a soma. O solver abaixo tem rede,
+# mas rede que dispara e' entrada morta.
+
+# ⚠️ 9 palavras exatas. O mecanismo do PEE e' a PROSTATA apertando a linha — e'
+# o que separa este angulo dos outros dezoito, e some se a fala nao o disser.
+# ⛔ CT3 — `gelatin trick` NUNCA aparece como rotulo nu. Cada entrada carrega,
+# na MESMA sentenca, um VERBO DE EFEITO e um ALVO (o orgao ou o sangue).
+# Medido antes: 84% dos sorteios traziam `The gelatin trick opens it.` ou
+# `...takes the prostate off your {o}.` — o primeiro sem alvo, o segundo com um
+# verbo que nao diz efeito nenhum. Nome de mecanismo sem razao ao lado nao vira
+# crenca: vira ruido de marca.
+# ⚠️ Os verbos saem da lista `short_comum.VERBOS_EFEITO_16`, que e' a mesma que
+# a lente cobra — `unpinches`, `frees`, `releases` e `takes` sairam por nao
+# estarem la' (e por nao dizerem, em boca americana, o que o negocio FAZ).
+# ⛔ `choked`, `blood flow` e `shut down` ficam FORA de proposito: sao os
+# tokens que o `medir_contexto_copy` conta como fisiologia solta.
+#
+# ⛔⛔ TODA ENTRADA NOMEIA O ORGAO, e isso e' decisao MEDIDA, nao gosto. A
+# primeira versao desta reforma tinha quatro entradas em que o alvo era so' o
+# sangue (`...pushes blood past that swollen prostate.`). Elas passavam no CT3
+# — `blood` e' alvo valido — e o `medir_abertura` as pegou: a PRIMEIRA sentenca
+# do take 2 nao dizia o que estava quebrado, e ela chega ao ouvido logo DEPOIS
+# DO CORTE. E' a mesma premissa do CT4: o corte zera a memoria de trabalho, e o
+# que o take 1 disse ha' oito segundos nao esta' mais na cabeca de quem ouve.
+# Medido: 40% das aberturas do take 2 orfas com as quatro entradas de sangue,
+# 0% depois de tira-las.
+# ⚠️ O molde e' unico de proposito — `<verbo de efeito> the prostate
+# <participio> your {o}` — porque em nove palavras cabem exatamente as quatro
+# coisas obrigatorias: o literal `gelatin trick`, o literal `prostate`, o verbo
+# de efeito e o orgao. A variacao mora no par verbo x participio (6 x 7), nao
+# na sintaxe. Pool de 8 -> 12 entradas.
 MECANISMOS16 = [
-    "The gelatin trick unpinches the prostate squeezing your {o}.",
     "The gelatin trick loosens the prostate choking your {o}.",
-    "The prostate is pinching the line. The gelatin trick opens it.",
-    "The gelatin trick gets under the prostate squeezing your {o}.",
-    "The gelatin trick frees the prostate clamping your {o}.",
-    "A pinched prostate shuts your {o} down. The gelatin trick opens it.",
-    "The gelatin trick takes the prostate off your {o}.",
-    "The gelatin trick releases the prostate pinching your {o}.",
+    "The gelatin trick loosens the prostate strangling your {o}.",
+    "The gelatin trick loosens the prostate crushing your {o}.",
+    "The gelatin trick stops the prostate starving your {o}.",
+    "The gelatin trick stops the prostate squeezing your {o}.",
+    "The gelatin trick stops the prostate pinching your {o}.",
+    "The gelatin trick fixes the prostate clamping your {o}.",
+    "The gelatin trick fixes the prostate choking your {o}.",
+    "The gelatin trick fixes the prostate starving your {o}.",
+    "The gelatin trick moves the prostate off your {o}.",
+    "The gelatin trick clears the prostate off your {o}.",
+    "The gelatin trick keeps the prostate off your {o}.",
 ]
 
-# ⚠️ 5-8 palavras. ⛔ `the husband`, nunca `he` solto — o homem nao tem nome
-# proprio no angulo (a fonte fala em terceira pessoa sobre um casal), entao
-# quem o nomeia e' o PAPEL. Confirmado pelo operador em 2026-08-09.
+# ⚠️ 5 palavras exatas.
 #
-# ⛔⛔ E A PROVA E' O ORGAO VOLTANDO, NAO O VAZAMENTO PARANDO. A primeira
-# versao destas entradas dizia `stopped leaking`, `dried up`, `walks dry` — e
-# o operador reprovou: *"faltou gravitar pro centro, que e' o john-son dele
-# voltar a funcionar"*.
-# ⭐ A mancha e' o HOOK; o que se vende e' a erecao. Cena que termina em
-# "parou de vazar" entrega meia promessa: o espectador chegou pela vergonha,
-# mas so' comenta pelo que ele quer de volta. E' o mesmo motivo pelo qual o
-# `{o}` e' obrigatorio aqui — sem ele a frase nao diz O QUE voltou.
+# ⛔⛔ `the husband` FOI APOSENTADO EM 2026-08-10. Ele nasceu de uma ordem certa
+# — *"nao use pronome"* — com uma execucao errada: artigo definido sem dono. No
+# angulo PEE nao ha' esposa nomeada em cena nenhuma, entao `the husband` chega
+# ao ouvido como marido DE QUEM, e ainda por cima empilhava o apelido do orgao
+# duas vezes na mesma respiracao (`That's how the husband's Johnson came back`).
+# ⭐ NO LUGAR, UM DEITICO COM REFERENTE EM QUADRO: `that man` / `that fella` /
+# `that guy`. O espectador acabou de passar oito segundos olhando exatamente um
+# homem — o da calca molhada. E' a designacao mais concreta que este video tem,
+# e ela nao depende de nenhuma sentenca anterior para se sustentar.
+#
+# ⛔ CT7 — NENHUM VERBO DE ERECCAO COLADO NO ORGAO. Medido antes: 54% dos
+# sorteios diziam `came back`, `works again` ou `got hard again` grudado no
+# apelido, e essa e' a licao paga em campo no COLO 16 (~95% de recusa do
+# gerador). O que voltou continua sendo dito — com `answered`, `never quits`,
+# `never fails`, `quit hiding`, que sao o idioma da casa e passam no render.
+# ⛔⛔ `answered her` FOI DERRUBADO EM 2026-08-10, na conferencia da reforma, e
+# a razao e' MEDIDA: 16,5% dos 400 sorteios entregavam `That fella's manhood
+# answered her.` sem UMA mulher no video inteiro. E nao e' descuido do pool —
+# e' estrutural deste 16s: o `MAPA` e' `(1, 3)`, e a cena do payoff (a mulher
+# no colo dele, cena 4 do arco longo) e' justamente a que o colapso temporal
+# come. Sobram dois quadros — a loja e a bancada — e em nenhum dos dois existe
+# uma mulher. Nos 400 sorteios, 66 nao tinham sequer a palavra `wife` no take 1:
+# o `her` chegava ao ouvido sem dono nem em fala nem em imagem.
+# ⭐ E' a lei `pronome-generico-e-drifting` do repo, na letra: *"`she`/`it` sem
+# dono nao compra; decompor em pool de designacoes concretas, NAO escrever
+# frase melhor"*. Por isso o conserto nao inventa uma mulher nomeada (isso
+# seria CENA nova, alcada do operador) — ele tira o pronome e devolve a prova
+# ao ORGAO, que e' onde a ordem do operador ja' mandava ela gravitar
+# (*"faltou gravitar pro centro, que e' o john-son dele voltar a funcionar"*).
+# ⚠️ `works nights` e nao `works again`: `works again` esta' dentro do
+# `ERECAO_16` e reprovaria no CT7 (a licao paga no COLO 16). A metafora de
+# turno de trabalho e' a mesma familia de `never quits` / `never fails`, que
+# sao as formulas que ja' passam no render.
+# ⚠️ 5 palavras exatas, e o pool continua com 12 entradas (3 designacoes x 4
+# predicados): nenhuma entropia perdida na troca.
 PROVAS16 = [
-    "So the husband's {o} came back.",
-    "So the husband's {o} works again.",
-    "That's how the husband's {o} came back.",
-    "Nineteen days: the husband's {o} answered.",
-    "So the husband's {o} got hard again.",
-    "That's what brought the husband's {o} back.",
-    "Nineteen days: the husband's {o} was back.",
-    "So the husband's {o} woke back up.",
+    "That man's {o} works nights.",
+    "That man's {o} never quits.",
+    "That man's {o} never fails.",
+    "That man's {o} quit hiding.",
+    "That fella's {o} works nights.",
+    "That fella's {o} never quits.",
+    "That fella's {o} never fails.",
+    "That fella's {o} quit hiding.",
+    "That guy's {o} works nights.",
+    "That guy's {o} never quits.",
+    "That guy's {o} never fails.",
+    "That guy's {o} quit hiding.",
 ]
 
-# ⚠️ 7-9 palavras, TODAS nomeando `recipe`.
-CTAS16 = [
-    "Comment gelatin, and I'll send the recipe.",
-    "Comment gelatin, and I'll send the recipe tonight.",
-    "Comment gelatin, and I'll send you the recipe.",
-    "Comment gelatin, and I'll send the whole recipe.",
-    "Comment gelatin, and I'll send the complete recipe.",
-    "Comment gelatin, and the recipe goes out tonight.",
-    "Comment gelatin, and I'll send you the full recipe.",
-    "Comment gelatin, and I'll send the recipe by morning.",
-]
-
-# ⚠️ 3-5 palavras, FRASE SEPARADA — nunca colada no `Comment gelatin,`.
+# ⚠️ 3 palavras exatas, FRASE SEPARADA — nunca colada no `Comment gelatin,`.
 # ⛔ A automacao de DM casa palavra EXATA: follow encostado na keyword faz o
 # comentario sair com duas palavras e a automacao nao dispara.
+# ⛔ CT1 — o gate agora entra ANTES do CTA. E por isso `Follow, then comment.`
+# saiu: encostado no `Comment gelatin,` que vem em seguida, ele mandava
+# comentar duas vezes.
+# ⚠️ No maximo 2 entradas com vocativo no pool inteiro (regra de 2026-08-01,
+# nascida do `brother` saindo em todo CTA do lote). Aqui sao 2: brother e buddy.
+# ⛔⛔ POOL APOSENTADO EM 2026-08-10 — ELE NAO CHEGA MAIS AO VIDEO.
+# Ordem do operador: *"nao acho que deva ter follow me no cta, a mensagem e'
+# enviada independente de seguirem ou nao"* (CT8 do CONTRATO-COPY-16S).
+# O gate existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao de
+# DM, e quem opera a automacao corrigiu a premissa.
+# ⚠️ POR QUE NAO FOI APAGADO: o autoteste e os contratos deste motor ainda o
+# validam (contagem minima, vocativo, tamanho), e apagar exigiria mexer neles
+# no mesmo commit em que a copy inteira mudou — duas cirurgias de uma vez e'
+# como se perde o rastro do que quebrou o que.
+# ⛔ ENTAO FICA ESTE AVISO: melhorar as entradas abaixo NAO muda um unico
+# video. Se o follow voltar um dia, ele volta ANTES do CTA (CT1) e por decisao
+# do operador, nao por alguem reativar a variavel.
 GATES16 = [
     "Tap follow first.",
-    "Follow, then comment.",
+    "Hit follow first.",
     "Follow me first.",
-    "Followers only.",
-    "Tap follow, then comment.",
-    "Follow or it gets buried.",
+    "Tap follow now.",
+    "Hit follow now.",
+    "Follow first, please.",
+    "Follow me, brother.",
+    "Follow me, buddy.",
+]
+
+# ⚠️ 8 palavras exatas, TODAS nomeando `recipe` e TODAS dizendo ONDE ela chega.
+# ⛔ CT6 — a clausula de entrega nao e' enfeite, e' o que paga a cobertura
+# social. O KPI deste funil e' uma CONFISSAO PUBLICA: o comentario leva nome e
+# foto e cai no feed da esposa. Medido antes: 100% dos sorteios pediam o
+# comentario sem uma palavra baixando esse custo.
+# ⭐ E a clausula e' DE GRACA: `and I'll send the recipe tonight` custa as
+# mesmas palavras que `and the recipe hits your messages`, e a segunda entrega
+# o endereco, a privacidade e o fato de que nao e' na tela publica.
+# ⛔ `Comment gelatin,` e' LITERAL (short_comum.CTA_LITERAL) e a virgula depois
+# da keyword nao e' opcional: sem a micro-pausa o Veo emenda e narra "gelatine".
+# ⚠️ 2026-08-10 — CONECTOR OBRIGATORIO DEPOIS DA KEYWORD. Medido: 81% dos
+# CTAs deste motor saiam como `Comment gelatin, your inbox gets...` — emenda
+# de virgula na unica frase do video que gera receita. Sem conector as duas
+# oracoes colidem no ouvido e o imperativo (`Comment gelatin`) deixa de soar
+# como comando. Custa UMA palavra e havia 3 de folga no teto.
+CTAS16 = [
+    "Comment gelatin, and the recipe hits your messages.",
+    "Comment gelatin, and the recipe hits your inbox.",
+    "Comment gelatin, and the recipe reaches your messages.",
+    "Comment gelatin, and the recipe reaches your inbox.",
+    "Comment gelatin, and your messages get the recipe.",
+    "Comment gelatin, and your inbox gets the recipe.",
+    "Comment gelatin, and the recipe goes to your messages.",
+    "Comment gelatin, and the recipe lands in your inbox.",
+    "Comment gelatin, and the recipe waits in your messages.",
+    "Comment gelatin, and nobody else sees the recipe.",
 ]
 
 
 def _fundir(spec, rng):
-    """`MECANISMO + PROVA + CTA [+ GATE]`, tudo dentro do teto da cena 2.
+    """`MECANISMO + PROVA + GATE + CTA`, tudo dentro do teto da cena 2.
 
     ⛔⛔ RELIGADO EM 2026-08-09. Esta funcao devolvia so' uma `FUNDIDAS` — o
     video inteiro saia SEM `Comment gelatin`, e o linter reprovava 400 de 400
     sorteios. E reprovava certo: video de funil sem CTA e' pior que video que
     nao gera, porque o defeito e' silencioso.
-    ⚠️ E NAO FALTAVA COPY. As quatro pools de 16s (`MECANISMOS16`, `PROVAS16`,
-    `CTAS16`, `GATES16`) ja' estavam escritas logo acima, com nota de
-    *"confirmado pelo operador em 2026-08-09"* — e nenhuma era lida por
-    ninguem. Faltava a solda, nao o material.
-    ⭐ 8 x 8 x 8 = 512 combinacoes antes do gate, contra as 14 `FUNDIDAS`
-    fixas de antes.
+    ⭐ 12 x 12 x 8 x 10 = 11.520 falas, contra as 14 `FUNDIDAS` fixas de antes.
+
+    ⛔⛔ O ORGAO VEM DO HOOK — CT4, 2026-08-10. Ate' hoje esta linha lia
+    `spec["falas_base"][3]`, que e' a fala da REDENCAO do arco longo e usa
+    `orgaos[3]`, um substantivo DIFERENTE do `orgaos[0]` do hook. Resultado
+    medido: o apelido do orgao mudava no corte em 98% dos videos. Em 24s e
+    cinco cenas o bordao e' o risco; em 16s e duas cenas o risco e' o oposto —
+    o corte zera a memoria de trabalho, e trocar `tool` por `Johnson` no
+    segundo 9 obriga o espectador a remapear justamente quando ele ja' esta'
+    com um pe' fora.
+    ⚠️ `spec["falas"][0]` e nao `falas_base[0]`: os dois sao o hook no sorteio,
+    mas quando o operador re-sorteia a cena 1 na janela (ou troca o LOCAL, que
+    reescreve o hook) so' o primeiro esta' atualizado. Ler o `falas_base` ali
+    devolveria o apelido velho e a fala 2 sairia falando de outro orgao.
 
     ⛔ A ORDEM DE MONTAGEM NAO E' ARBITRARIA — e' a mesma licao do CLEAN
-    16seg: sorteia-se entre os TRIOS QUE CABEM, nunca se sorteia solto para
-    testar depois. Sorteando solto, so' o trio mais curto de todos sobrevive
-    e o pool inteiro colapsa em duas ou tres falas.
+    16seg: sorteia-se entre os que CABEM, nunca solto para testar depois.
+    Sorteando solto, so' a combinacao mais curta sobrevive e o pool inteiro
+    colapsa em duas ou tres falas. Quem escolhe PRIMEIRO e' a batida com MENOS
+    SUBSTITUTOS (o mecanismo: ele carrega o literal `gelatin trick`, o literal
+    `prostate`, o verbo de efeito e o alvo, tudo na mesma sentenca); o CTA
+    escolhe por ULTIMO e absorve a sobra.
+    ⚠️ Hoje a rede nunca dispara: os quatro pools tem tamanho FIXO e somam 25
+    exatos, entao toda combinacao cabe. Ela fica de pe' para o dia em que
+    alguem acrescentar uma entrada fora da conta — sem ela, a entrada nova
+    sairia silenciosamente do sorteio (ou estouraria o teto no render, que e'
+    pior).
     """
-    o = sc.orgao_de(_LONGO, spec["falas_base"][3])
+    o = sc.orgao_de(_LONGO, spec["falas"][0])
+    fmt = lambda t: t.format(o=o)                              # noqa: E731
+    teto = TETO_FALA[2]
 
-    def cabe(t):
-        return _palavras(t) <= TETO_FALA[2]
+    def menor(pool):
+        return min(_palavras(fmt(t)) for t in pool)
 
-    trios = [(x, p, c) for x in MECANISMOS16 for p in PROVAS16 for c in CTAS16
-             if cabe("%s %s %s" % (x.format(o=o), p.format(o=o), c))]
-    if not trios:
-        # ⛔ rede sem invencao: o trio mais curto que existe. Nunca `or pool`
-        # cru, que e' o que estourava o teto antes.
-        trios = [min(((x, p, c) for x in MECANISMOS16 for p in PROVAS16
-                      for c in CTAS16),
-                     key=lambda t: _palavras("%s %s %s"
-                                             % (t[0].format(o=o),
-                                                t[1].format(o=o), t[2])))]
-    x, p, c = rng.choice(trios)
-    base = "%s %s %s" % (x.format(o=o), p.format(o=o), c)
-    # o gate e' o primeiro a cair quando o teto aperta (mesma ordem do CLEAN)
-    gates = [g for g in GATES16 if cabe("%s %s" % (base, g))]
-    return "%s %s" % (base, rng.choice(gates)) if gates else base
+    def escolher(pool, gasto, reserva):
+        cabem = [t for t in pool if gasto + _palavras(fmt(t)) + reserva <= teto]
+        if not cabem:
+            # ⛔ rede sem invencao: a entrada mais curta que existe no pool.
+            # Nunca `or pool` cru, que e' o que estourava o teto antes.
+            return min(pool, key=lambda t: _palavras(fmt(t)))
+        return rng.choice(cabem)
+
+    x = escolher(MECANISMOS16, 0,
+                 menor(PROVAS16) + menor(GATES16) + menor(CTAS16))
+    gasto = _palavras(fmt(x))
+    p = escolher(PROVAS16, gasto, menor(GATES16) + menor(CTAS16))
+    gasto += _palavras(fmt(p))
+    # ⛔⛔ CT8 (2026-08-10) — O BEAT DO FOLLOW SAIU DA FALA.
+    # Ordem do operador: *"nao acho que deva ter follow me no cta, a
+    # mensagem e' enviada independente de seguirem ou nao"*. O gate
+    # existia no repo inteiro por uma PREMISSA ERRADA sobre a automacao
+    # de DM, e quem opera a automacao corrigiu. As palavras liberadas
+    # vao para o mecanismo e a prova.
+    c = escolher(CTAS16, gasto, 0)
+    return "%s %s %s" % (fmt(x), fmt(p), c)
 
 
 # ---------------------------------------------------------------------------
@@ -1351,11 +1575,43 @@ def _blocos_travados(spec, blocos, achados):
                                 "do prop"))
 
 
+# ⭐⭐ A LENTE DO CONTRATO DE COPY 16s (short_comum.lint_copy16), ligada em
+# 2026-08-10. As sete travas moram la' e sao cobradas de fora pelo
+# `medir_copy16.py` — aqui elas passam a reprovar tambem no app, na hora, antes
+# de o roteiro ir para o AdBatch.
+# ⚠️ `isca_absurda=False`: o PEE nao tem promessa falsa no take 1. A mancha e' o
+# fato, nao a isca — entao o CT7 (verbo de ereccao colado no orgao) vale nos
+# DOIS takes, e nao so' no do CTA.
+def _ct16(spec, blocos, achados):
+    sc.lint_copy16(sys.modules[__name__], spec, achados, isca_absurda=False)
+
+
+# ⛔⛔ LENTE APOSENTADA — "substantivo repetido no video" (short_comum.lint_curto)
+# ---------------------------------------------------------------------------
+# Ela e' um AVISO generico do `lint_curto`: acusa quando o mesmo apelido do
+# orgao aparece em mais de uma cena. Nasceu para os motores de 3 e 5 cenas, onde
+# "duas mencoes iguais viram bordao" — e o CT4 do CONTRATO DE COPY 16s REVERTE
+# essa regra para a familia de dois takes, com a reversao declarada:
+#
+#     em 24s o risco e' o bordao; em 16s o risco e' o oposto — o corte zera a
+#     memoria de trabalho, e trocar o apelido no segundo 9 obriga o espectador
+#     a remapear justamente quando ele ja' esta' com um pe' fora.
+#
+# Medido: o apelido mudava no corte em 98% dos videos deste motor. Agora ele e'
+# UM SO' por video de proposito, entao o aviso acusaria 100% dos sorteios — e
+# lente que reprova o que esta' certo ensina o operador a ignorar o linter
+# (licoes-de-construcao §16). ⛔ Nao se apaga a regra no `short_comum`: ela
+# continua valendo para os dezenove motores de 3 cenas. Desliga-se AQUI, no
+# motor onde o contrato a substituiu, e com o motivo escrito.
+_APOSENTADA_CT4 = "substantivo repetido no video"
+
+
 def lint(spec, blocos):
-    return sc.lint_curto(
+    achados = sc.lint_curto(
         _LONGO, spec, blocos, MAPA, TETO_FALA,
         literais=("gelatin trick", "prostate"),
-        extras=(_pe6_hook, _pe1_roupa_clara, _blocos_travados))
+        extras=(_pe6_hook, _pe1_roupa_clara, _blocos_travados, _ct16))
+    return [a for a in achados if not a[1].startswith(_APOSENTADA_CT4)]
 
 
 # ---------------------------------------------------------------------------
@@ -1364,7 +1620,14 @@ def lint(spec, blocos):
 
 def resumo_pt(spec):
     et = "branca" if "white" in ETNIA[spec["pagina"]] else "negra"
-    return ("%s, a mancha escura na calça dele com a plateia em volta. Na cena "
-            "2 vem o truque e a virada, e na 3 o CTA. Três cenas, elenco de "
-            "pele %s."
+    # ⛔ CONSERTADO EM 2026-08-10. Este texto dizia *"Na cena 2 vem o truque e a
+    # virada, e na 3 o CTA. Três cenas"* — herdado do formato de 3 cenas e
+    # MENTIROSO num motor de 2 takes: o operador le' este resumo na janela do
+    # app, e ele descrevia uma cena 3 que nao existe e omitia que o CTA fecha o
+    # take 2. Nao e' copy falada nem cena (nao muda um caractere do prompt), e'
+    # rotulo de UI — e rotulo de UI que mente e' a mesma familia do botao que
+    # nao trava nada.
+    return ("%s, a mancha escura na calça dele com a plateia em volta. No take "
+            "2 vem o mecanismo da próstata, a prova e o CTA. Dois takes de 8s, "
+            "elenco de pele %s."
             % (PT_LOCAL.get(spec["local"]["id"], "No local"), et))

@@ -65,8 +65,13 @@ def medir(nome, n=N, exemplos=0):
     pags = sorted(getattr(M, "ETNIA", {"joe": None}))
     contas = collections.Counter()
     amostras = collections.defaultdict(list)
+    apelidos = collections.Counter()
     for i in range(n):
         spec = M.sortear(pags[i % len(pags)], random.Random(i), {})
+        corpo = " ".join(spec["falas"]).lower()
+        for ap in sc.APELIDOS_16:
+            if ap.lower() in corpo:
+                apelidos[ap] += 1
         achados = []
         sc.lint_copy16(M, spec, achados,
                        isca_absurda=(nome in ISCA_ABSURDA))
@@ -79,10 +84,10 @@ def medir(nome, n=N, exemplos=0):
             contas[ct] += 1
             if exemplos and len(amostras[ct]) < exemplos:
                 amostras[ct].append((nivel, msg, spec["falas"]))
-    return contas, amostras
+    return contas, amostras, apelidos
 
 
-CTS = ["CT1", "CT2", "CT3", "CT4", "CT5", "CT6", "CT7"]
+CTS = ["CT1", "CT2", "CT3", "CT4", "CT4b", "CT5", "CT6", "CT7", "CT8"]
 ROTULO = {
     "CT1": "sentenca depois do CTA",
     "CT2": "take 1 sem falha enunciada",
@@ -91,7 +96,13 @@ ROTULO = {
     "CT5": "ingrediente na fala",
     "CT6": "CTA sem endereco de entrega",
     "CT7": "verbo de ereccao no take do CTA",
+    "CT4b": "apelido fora de pecker/wiener/Johnson",
+    "CT8": "pede follow na fala (a DM sai igual)",
 }
+
+# ⚠️ O CT4 sozinho garante UM apelido por video — e um apelido por video pode
+# ser o MESMO apelido em todo o lote, que e' mode-collapse com cara de
+# consistencia. Esta coluna mostra a reparticao real entre os tres.
 
 
 def main():
@@ -108,21 +119,24 @@ def main():
     print("\nCONTRATO DE COPY 16s — %d sorteios por motor, %% de videos que "
           "violam" % a.n)
     print("-" * 88)
-    print("%-16s %s" % ("motor", "  ".join("%-5s" % c for c in CTS)))
+    print("%-16s %s   %s" % ("motor", "  ".join("%-5s" % c for c in CTS),
+                            "/".join(sc.APELIDOS_16)))
     print("-" * 88)
     sujos = []
     for nome in alvos:
         try:
-            contas, amostras = medir(nome, a.n, a.exemplos)
+            contas, amostras, apelidos = medir(nome, a.n, a.exemplos)
         except Exception as e:                              # noqa: BLE001
             print("%-16s ERRO: %s" % (nome, str(e)[:60]))
             sujos.append(nome)
             continue
         if any(contas[c] for c in CTS):
             sujos.append(nome)
-        print("%-16s %s"
+        rep = "/".join("%d" % (100 * apelidos[x] // a.n)
+                       for x in sc.APELIDOS_16)
+        print("%-16s %s   %s"
               % (nome, "  ".join("%4d%%" % (100 * contas[c] // a.n)
-                                 for c in CTS)))
+                                 for c in CTS), rep))
         if a.exemplos:
             for c in CTS:
                 for nivel, msg, falas in amostras.get(c, []):
