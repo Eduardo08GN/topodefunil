@@ -77,36 +77,42 @@ global linhas := []
 ; Ordem do operador, 2026-08-09: *"pode acelerar o script? ele ta' lento. Pode
 ; reduzir 2 segundos no tempo entre as interacoes."*
 ; ⚠️ Espalhar a aceleracao em quinze numeros magicos seria impossivel de afinar
-; depois. Aqui e' um fator: 1.00 e' o ritmo original, 0.10 e' o atual.
+; depois. Aqui e' um fator: 1.00 e' o ritmo original, 0.05 e' o atual.
 ; ⭐ MEDIDO, rodando as 13 esperas de uma aba isoladas:
 ;     RITMO 0.55  ->  ~2.480 ms   (o ajuste de 2026-08-09)
 ;     RITMO 0.20  ->   1.063 ms   (medido)
-;     RITMO 0.10  ->   ver abaixo (o ajuste de 2026-08-10, 2a rodada)
+;     RITMO 0.10  ->     515 ms   (medido)
+;     RITMO 0.05  ->     281 ms   (3a rodada, mesmo dia)
 ; A base sem fator soma 4.710 ms. O segundo corte tirou ~1,4 s por aba, que
 ; e' o que o operador pediu: *"o tempo entre as interacoes diminua 1 segundo
 ; e meio"*.
-; ⚠⚠ E O PISO TEVE DE DESCER JUNTO, senao o corte se paga com o tremor: a
-; 0.20 as pausas de base 120/140/180 caem para 24/28/36 ms e TODAS batiam no
-; piso de 40, virando constantes. Cinco das treze esperas perderiam a
-; aleatoriedade — justamente a que o operador pediu em 2026-08-08 para nao
-; levantar atividade suspeita. Piso agora em 25 ms, que ainda e' acima do que
-; o tkinter e o Chrome descartam como entrada sintetica rapida demais.
+; ⚠⚠ E O PISO DESCE JUNTO A CADA CORTE, senao o ganho se paga com o TREMOR:
+; quando base*RITMO cai abaixo do piso, a pausa vira CONSTANTE e a
+; aleatoriedade daquela espera morre. 40 -> 25 -> 15 -> 8 ms, acompanhando
+; 0.55 -> 0.20 -> 0.10 -> 0.05. A 0.05 restam 3 das 13 no piso.
+; ⛔⛔ E AQUI ACABA O QUE O RITMO CONSEGUE FAZER. O SetKeyDelay 40 e o
+; SetMouseDelay 50 (topo do arquivo) sao FIXOS por tecla e por clique, fora
+; do fator — num ciclo com ~8 teclas e 2 cliques eles ja' somam mais que as 13
+; pausas inteiras. Cortar o RITMO de novo vai render cada vez menos tempo
+; real, e mexer nos delays de entrada e' outro problema: abaixo deles o
+; tkinter e o Chrome DESCARTAM a entrada sintetica, e a tecla se perde em
+; silencio — que e' o pior modo de falha deste script.
 ; ⛔ O QUE O FATOR **NAO** TOCA, e nao e' esquecimento:
 ;   · o `Sleep 900 + Random(0,700)` depois do Ctrl+V — o app precisa reparsear
 ;     o roteiro antes de o Gerar valer, e essa espera e' funcao, nao cadencia;
 ;   · o `respirar()` — a pausa longa e rara e' justamente o que quebra o padrao
 ;     de maquina, e encolhe-la desfaria o pedido anterior do operador;
 ;   · o espalhamento `esp` de cada pausa — o tremor continua o mesmo em %.
-global RITMO := 0.10
+global RITMO := 0.05
 
 pausa(base, esp := 35) {
     global RITMO
     ; base em ms, `esp` = espalhamento em % para cada lado.
-    ; ⚠️ piso de 15ms: sorteio que devolve valor perto de zero volta a ser
+    ; ⚠️ piso de 8ms: sorteio que devolve valor perto de zero volta a ser
     ; ritmo de maquina, so' que rapido. Era 40 ate' o RITMO cair para 0.20 —
     ; ver a nota do RITMO acima.
     d := Round(base * RITMO) * (100 + Random(-esp, esp)) // 100
-    Sleep (d < 15 ? 15 : d)
+    Sleep (d < 8 ? 8 : d)
 }
 
 respirar() {
