@@ -544,6 +544,56 @@ teclasGravadas() {
     return r
 }
 
+; ⭐⭐ TODAS AS SESSOES QUE EXISTEM, e nao so' as que ja' rodaram o F3
+; (2026-08-11). Reparo pedido pelo operador: *"a tela de setup dos pares esta'
+; elencando so' a CTA 03, achei que haveria identificacao automatica de todas as
+; sessoes logadas e seriam ja' elencadas ali"*.
+;
+; ⛔ Ele estava certo, e o erro era de ordem: a tela de ATRIBUIR tecla so'
+; mostrava quem ja' tinha bancada — ou seja, exigia montar antes de poder
+; escolher a tecla, quando escolher a tecla e' justamente o passo anterior.
+;
+; ⚠️ QUATRO FONTES, nesta ordem de utilidade, sem repetir ninguem:
+;   1. perfis do Dolphin ABERTOS agora ...... o que ele ve' na tela
+;   2. sessoes esperadas, mesmo FECHADAS .... da' para atribuir a tecla antes de
+;                                             abrir o perfil
+;   3. quem tem bancada gravada ............. inclui alvo que nao e' Dolphin
+;   4. quem tem tecla gravada ............... nunca perder uma atribuicao
+;
+; ⛔ Janela do Chrome NAO entra pelo titulo: o titulo dela muda a cada aba, e uma
+; lista cujos nomes mudam sozinhos nao serve para amarrar tecla. Se ele montar
+; uma bancada no Chrome, ela entra pela fonte 3, com o nome que tinha na hora.
+sessoesConhecidas() {
+    global INI, SESSOES_ESPERADAS
+    ; ⚠️ enumera as janelas UMA vez. A primeira versao chamava `listarSessoes()`
+    ; dentro do laco, varrendo todas as janelas do sistema por sessao — barato
+    ; com seis, e a lista dele vai crescer por decisao dele mesmo.
+    abertas := Map()
+    for s in listarSessoes()
+        abertas[chaveDeBancada(s.titulo)] := s.tipo
+    vistos := Map()
+    r := []
+    juntar(chave) {
+        chave := Trim(chave)
+        if (chave = "" || vistos.Has(chave))
+            return
+        vistos[chave] := true
+        r.Push({chave: chave,
+                tecla: IniRead(INI, "teclas", chave, ""),
+                estado: (bancadaPorChave(chave) != 0) ? "bancada montada"
+                        : abertas.Has(chave) ? "aberta — rode o F3"
+                        : "fechada"})
+    }
+    for chave, tipo in abertas
+        if (tipo = "Dolphin")
+            juntar(chave)
+    for nome in StrSplit(IniRead(INI, "sessoes", "esperadas", SESSOES_ESPERADAS), ",")
+        juntar(chaveDeBancada(nome))
+    for e in teclasGravadas()
+        juntar(e.chave)
+    return r
+}
+
 teclaDaSessao(chave) {
     global INI
     return IniRead(INI, "teclas", chave, "")
@@ -659,30 +709,39 @@ levantarSessao(chave) {
 ; apareceria na hora de usar.
 configurarTeclas(*) {
     global LARG_UI, INI
-    lista := teclasGravadas()
+    lista := sessoesConhecidas()
     g := janelaUI("teclas das sessoes")
     secaoUI(g, "Qual tecla levanta cada sessao", true)
     if (lista.Length = 0) {
         g.AddText("w" LARG_UI " c" COR_FRACA,
-                  "Nenhuma sessao conhecida ainda. Rode o F3 numa sessao: "
-                  "ela entra nesta lista e ja' ganha uma tecla.")
+                  "Nenhuma sessao encontrada. Abra um perfil no Dolphin — "
+                  "ele aparece aqui sozinho, mesmo antes de rodar o F3.")
         g.AddButton("w110 h30 x" (18 + LARG_UI - 110) " y+16 Default", "Fechar")
          .OnEvent("Click", (*) => g.Destroy())
         g.Show()
         return
     }
     g.AddText("w" LARG_UI " c" COR_FRACA,
-              "Clique no campo e aperte a combinacao que quiser. "
-              "Use Ctrl, Alt ou Shift junto — tecla solta atrapalharia a digitacao.")
+              "Clique no campo e aperte a combinacao. Use Ctrl, Alt ou Shift "
+              "junto — tecla solta atrapalharia a digitacao.`n"
+              "`"None`" quer dizer sem tecla. A tecla so' levanta as janelas "
+              "depois que aquela sessao rodar o F3.")
     ; ⛔ O `x18` EXPLICITO EM CADA LINHA nao e' redundancia. Medido em
     ; 2026-08-11: com `y+10` sozinho, o AHK mantem o X do controle ANTERIOR — que
     ; e' o campo de tecla, la' na direita. A segunda linha nascia depois dele, a
     ; terceira depois dessa, e a janela saiu com 1252px de largura contra os 752
     ; das outras telas. Escada, nao formulario.
+    ; ⛔ O `x18` EXPLICITO EM CADA LINHA nao e' redundancia. Medido em
+    ; 2026-08-11: com `y+10` sozinho, o AHK mantem o X do controle ANTERIOR — que
+    ; e' o campo de tecla, la' na direita. A segunda linha nascia depois dele, a
+    ; terceira depois dessa, e a janela saiu com 1252px contra os 752 das outras
+    ; telas. Escada, nao formulario.
+    ; ⭐ O ESTADO VAI JUNTO DO NOME, e nao numa coluna: e' o que responde "por que
+    ; essa tecla nao fez nada?" no lugar onde a pergunta nasce.
     campos := []
     for e in lista {
         fonteUI(g, "s9")
-        g.AddText("x18 y+10 w" (LARG_UI - 210), e.chave)
+        g.AddText("x18 y+10 w" (LARG_UI - 210), e.chave "   (" e.estado ")")
         hk := g.AddHotkey("x+10 yp-3 w200", e.tecla)
         campos.Push({chave: e.chave, ctl: hk})
     }

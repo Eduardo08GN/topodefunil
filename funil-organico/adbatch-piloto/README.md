@@ -618,3 +618,41 @@ telas.
 la' na direita. A segunda linha nascia depois dele, a terceira depois dessa:
 escada, nao formulario. `x18` explicito em cada linha. So' apareceu porque a
 medicao compara a largura das telas entre si.
+
+
+### F2 lista TODAS as sessoes, nao so' as montadas (2026-08-11)
+
+O operador abriu o F2 e viu uma linha so': *"achei que haveria identificacao
+automatica de todas as sessoes logadas e seriam ja' elencadas ali"*. Depois ele
+mesmo dispensou o reparo — mas ele estava certo, e o erro era de ORDEM: a tela de
+ATRIBUIR tecla so' mostrava quem ja' tinha bancada, ou seja, exigia montar antes
+de poder escolher a tecla, quando escolher a tecla e' o passo anterior.
+
+Quatro fontes, sem repetir ninguem:
+
+| ordem | fonte | por que |
+|---|---|---|
+| 1 | perfis do Dolphin **abertos agora** | e' o que ele ve' na tela |
+| 2 | sessoes **esperadas**, mesmo fechadas | da' para atribuir a tecla antes de abrir o perfil |
+| 3 | quem tem **bancada** gravada | inclui alvo que nao e' Dolphin |
+| 4 | quem tem **tecla** gravada | nunca perder uma atribuicao |
+
+⛔ Janela do **Chrome nao entra pelo titulo**: o titulo muda a cada aba, e uma
+lista cujos nomes mudam sozinhos nao serve para amarrar tecla. Bancada montada no
+Chrome entra pela fonte 3, com o nome que tinha na hora.
+
+⭐ **O estado vai junto do nome** (`bancada montada` · `aberta — rode o F3` ·
+`fechada`), e nao numa coluna: e' o que responde *"por que essa tecla nao fez
+nada?"* no lugar onde a pergunta nasce.
+
+⚠️ E as janelas sao enumeradas **uma vez**. A primeira versao chamava
+`listarSessoes()` dentro do laco, varrendo todas as janelas do sistema por
+sessao — barato com seis, e a lista dele vai crescer por decisao dele mesmo.
+
+⛔ Nota de metodo: este proprio paragrafo foi escrito primeiro por um `python -c`
+dentro do bash, e as **crases viraram substituicao de comando** — o texto entrou
+no arquivo com tres buracos no lugar dos nomes de funcao. Texto com marcacao vai
+por ferramenta de arquivo, nunca por linha de comando.
+
+Medido: F2 lista as 4 sessoes do Dolphin + as bancadas, com estado em cada uma ·
+752px como as outras telas · 0 controles fora · 19 de 19 no F2 · 21 de 21 no F4.
