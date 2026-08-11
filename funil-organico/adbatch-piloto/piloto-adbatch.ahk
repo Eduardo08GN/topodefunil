@@ -1814,7 +1814,7 @@ ATALHOS := [
     ["F4",  "Levantar bancada",  "traz as duas janelas de volta, cada uma no seu monitor"],
     ["F8",  "Ensaio seco",       "roda o ciclo SEM colar e SEM gastar credito"],
     ["F9",  "Calibrar",          "aponta os 6 pontos da tela do AdBatch"],
-    ["F10", "RODAR",             "o gatilho da geracao — percorre as abas e gera"],
+    ["F10", "RODAR",             "o gatilho da geracao. Com o modo sequencial ligado, roda em varias bancadas"],
     ["F7",  "Sobras",            "estado do worker das sobras e o que esta' represado"],
     ["F12", "Log",               "o que o script fez nesta sessao"],
     ["Esc", "Abortar",           "so' funciona ENQUANTO o ciclo esta' rodando"],
@@ -1918,6 +1918,10 @@ ajuda(inicial := false) {
         . "`nbancadas montadas .. " bnc
         . "`nclique no icone .... " lig " (levanta a bancada ao clicar no icone da sessao)"
         . "`ninicia com Windows . " (iniciaComWindows() ? "sim" : "nao")
+        . "`nmodo sequencial .... "
+          . ((IniRead(INI, "config", "sequencial", "0") = "1")
+             ? "LIGADO — o F10 pergunta em quais bancadas rodar"
+             : "desligado — o F10 roda numa sessao so'")
         . "`narquivo ............ " INI))
 
     fonteUI(g)
@@ -1926,7 +1930,13 @@ ajuda(inicial := false) {
     ; ⭐ As duas caixas ficam JUNTAS e sempre visiveis, na abertura e no F1.
     ; Comportamento que age sozinho — subir com o Windows, levantar a bancada ao
     ; clicar — tem de poder ser desligado na mesma tela onde e' anunciado.
-    cbIni := g.AddCheckbox("w" LARG_UI " y+14",
+    cbSeq := g.AddCheckbox("w" LARG_UI " y+14",
+                           "modo sequencial: o F10 roda em VARIAS bancadas numa "
+                           "tacada (voce marca quais)")
+    cbSeq.Value := (IniRead(INI, "config", "sequencial", "0") = "1")
+    cbSeq.OnEvent("Click", (*) =>
+        IniWrite(cbSeq.Value ? "1" : "0", INI, "config", "sequencial"))
+    cbIni := g.AddCheckbox("w" LARG_UI " y+6",
                            "iniciar junto com o Windows (fica no system tray)")
     cbIni.Value := iniciaComWindows()
     cbIni.OnEvent("Click", (*) => ligarInicioComWindows(cbIni.Value))
@@ -2233,35 +2243,12 @@ rodar(seco) {
     }
 }
 
-rodarMiolo(seco) {
-    global abortar, linhas, INI
-    abortar := false
-    linhas := []
-
-    try {
-        abas := Integer(IniRead(INI, "config", "abas", "0"))
-        if (abas < 1)
-            throw Error("numero de abas nao configurado — rode F9")
-        tAgente := IniRead(INI, "config", "titulo_agente", "AGENTE")
-    } catch as e {
-        return MsgBox("Falta calibrar: " e.Message, APP, 16)
-    }
-
-    ; ⭐⭐ A SESSAO E' ESCOLHIDA AQUI, a cada F10/F8 — decisao do operador.
-    ; Ele ve' onde vai rodar ANTES de gastar credito, e o ensaio seco (F8)
-    ; passa pelo mesmo caminho de propria: um F8 que testasse outra janela
-    ; que nao a do F10 nao testaria nada.
-    hJanela := escolherSessao()
-    if (hJanela = 0)
-        return
-    try
-        prepararJanela(hJanela)
-    catch as e
-        return MsgBox(e.Message, APP, 16)
-    anotar("sessao: " WinGetTitle("ahk_id " hJanela))
-
-    anotar((seco ? "ENSAIO SECO" : "EXECUCAO") " — " abas " aba(s)")
-
+; ⛔ O LACO DAS ABAS, extraido do `rodarMiolo` para servir aos DOIS modos.
+; Nao e' copia: e' o mesmo codigo, chamado de dois lugares. Uma copia divergiria
+; no primeiro conserto que so' uma delas recebesse — e a que ficaria para tras
+; seria justamente a que gasta credito.
+percorrerAbas(hJanela, abas, seco, tAgente, prefixo := "") {
+    global abortar
     loop abas {
         i := A_Index
         if abortar
@@ -2319,12 +2306,56 @@ rodarMiolo(seco) {
         } catch as e {
             anotar("aba " i ": PAROU — " e.Message)
             ToolTip()
-            MsgBox("Parei na aba " i ".`n`n" e.Message
-                   "`n`nNada foi colado nesta aba.", APP, 16)
-            return
+            ; ⛔ LANCA em vez de voltar: no modo sequencial quem chama precisa
+            ; saber que ESTA bancada falhou para seguir para a proxima. Um
+            ; `return` mudo aqui abortaria as outras tres em silencio.
+            throw Error("aba " i ": " e.Message)
         }
     }
     ToolTip()
+}
+
+rodarMiolo(seco) {
+    global abortar, linhas, INI
+    abortar := false
+    linhas := []
+
+    try {
+        abas := Integer(IniRead(INI, "config", "abas", "0"))
+        if (abas < 1)
+            throw Error("numero de abas nao configurado — rode F9")
+        tAgente := IniRead(INI, "config", "titulo_agente", "AGENTE")
+    } catch as e {
+        return MsgBox("Falta calibrar: " e.Message, APP, 16)
+    }
+
+    ; ⭐⭐ MODO SEQUENCIAL (2026-08-11) — proposta do operador: *"um toggle que
+    ; quando ativado, a automacao de geracao das imagens acontece com todas as
+    ; bancadas montadas em sequencia e, quando desativado, percorre para cada
+    ; uma bancada selecionada"*.
+    ;
+    ; ⭐ O F3 e' o que tornou isto possivel: como ele poe a janela 1 de TODA
+    ; bancada maximizada no mesmo monitor, a calibracao vale para todas. Sem
+    ; isso, a partir da segunda bancada o piloto estaria clicando no escuro.
+    if (IniRead(INI, "config", "sequencial", "0") = "1")
+        return rodarVarias(seco, abas, tAgente)
+
+    hJanela := escolherSessao()
+    if (hJanela = 0)
+        return
+    try
+        prepararJanela(hJanela)
+    catch as e
+        return MsgBox(e.Message, APP, 16)
+    anotar("sessao: " WinGetTitle("ahk_id " hJanela))
+    anotar((seco ? "ENSAIO SECO" : "EXECUCAO") " — " abas " aba(s)")
+
+    try
+        percorrerAbas(hJanela, abas, seco, tAgente)
+    catch as e {
+        MsgBox("Parei: " e.Message "`n`nNada foi colado nesta aba.", APP, 16)
+        return
+    }
 
     if seco {
         anotar("ensaio seco terminou sem erro")
@@ -2333,11 +2364,137 @@ rodarMiolo(seco) {
                       "conferiu as cinco partes. So' nao colou nem gerou."
                       "`n`nF12 ve' o log. F10 roda de verdade.", APP)
     }
-    ; ⛔ A RONDA RECEBE A MESMA JANELA. Ela le' pixel e clica REGERAR nos
-    ; slots vazios — feita noutra sessao, ela leria a cor errada e clicaria
-    ; em REGERAR de um lote que nao e' este, jogando fora trabalho pronto e
-    ; gastando credito. Era o risco de deixar a busca por titulo aqui.
     ronda(hJanela)
+}
+
+; =============================================================================
+;  ⭐⭐ RODAR EM VARIAS BANCADAS
+; =============================================================================
+; ⛔⛔ DUAS FASES, E A ORDEM E' A RAZAO DE SER: primeiro as ABAS de todas as
+; bancadas, e so' depois as RONDAS de todas. Fazendo bancada a bancada
+; (abas->ronda, abas->ronda) a ronda da primeira aconteceria logo apos ela. Do
+; jeito que ficou, as imagens da bancada 1 ganham DE GRACA todo o tempo que as
+; bancadas 2, 3 e 4 levaram para preencher — e a ronda existe justamente para
+; pegar o slot que ainda nao chegou. O ganho e' de qualidade, nao de relogio.
+;
+; ⚠️ UMA BANCADA QUE FALHA NAO DERRUBA AS OUTRAS. Cada uma roda dentro do seu
+; try; o que der errado entra no relatorio do fim. Sem isso, uma janela fechada
+; na bancada 2 custaria as bancadas 3 e 4.
+;
+; ⚠️ O Esc aborta TUDO, nao so' a bancada da vez. Quem aperta Esc no meio de uma
+; automacao quer que ela pare, nao que pule para a proxima.
+rodarVarias(seco, abas, tAgente) {
+    global abortar
+    escolhidas := escolherBancadas(seco, abas)
+    if (escolhidas.Length = 0)
+        return
+
+    anotar((seco ? "ENSAIO SECO" : "EXECUCAO") " SEQUENCIAL — "
+           escolhidas.Length " bancada(s), " abas " aba(s) cada")
+
+    feitas := [], falhas := []
+    ; ── FASE 1: as abas de todas
+    for b in escolhidas {
+        if abortar
+            break
+        try {
+            if !WinExist("ahk_id " b.h1)
+                throw Error("a janela nao esta' mais aberta")
+            prepararJanela(b.h1)
+            anotar("== " b.chave " ==")
+            percorrerAbas(b.h1, abas, seco, tAgente, b.chave)
+            feitas.Push(b)
+        } catch as e {
+            anotar("== " b.chave ": FALHOU — " e.Message)
+            falhas.Push({chave: b.chave, erro: e.Message})
+        }
+    }
+
+    ; ── FASE 2: as rondas, na mesma ordem
+    if (!seco && !abortar) {
+        for b in feitas {
+            if abortar
+                break
+            try {
+                if !WinExist("ahk_id " b.h1)
+                    throw Error("a janela sumiu antes da ronda")
+                prepararJanela(b.h1)
+                anotar("== ronda de " b.chave " ==")
+                ronda(b.h1)
+            } catch as e {
+                anotar("== ronda de " b.chave ": FALHOU — " e.Message)
+                falhas.Push({chave: b.chave " (ronda)", erro: e.Message})
+            }
+        }
+    }
+
+    ToolTip()
+    txt := (seco ? "Ensaio seco sequencial" : "Execucao sequencial")
+         . (abortar ? " ABORTADA" : " terminada") ".`n`n"
+         . feitas.Length " de " escolhidas.Length " bancada(s) percorrida(s)"
+    if (falhas.Length) {
+        txt .= "`n`nNAO rodaram:"
+        for f in falhas
+            txt .= "`n   " f.chave " — " f.erro
+    }
+    anotar("sequencial: " feitas.Length "/" escolhidas.Length
+           " ok, " falhas.Length " falha(s)")
+    MsgBox(txt "`n`nF12 ve' o log.", APP)
+}
+
+; ⭐ A tela de marcar. Ordem do operador: *"eu marco quais, na hora"*.
+; ⛔ O TOTAL DE VIDEOS FICA NA TELA ANTES DO BOTAO. A diferenca entre 10 e 40
+; geracoes e' credito, e o numero tem de estar visivel antes do clique, nao
+; depois.
+escolherBancadas(seco, abas) {
+    global LARG_UI, COR_FRACA, COR_BOA
+    vivas := bancadasVivas()
+    if (vivas.Length = 0) {
+        MsgBox("Nenhuma bancada montada.`n`nRode o F3 nas sessoes que voce quer "
+               "percorrer — ou desligue o modo sequencial na tela do F1.",
+               APP, 48)
+        return []
+    }
+    g := janelaUI(seco ? "ensaio seco em varias bancadas"
+                       : "rodar em varias bancadas")
+    secaoUI(g, "Em quais bancadas rodar", true)
+    g.AddText("w" LARG_UI " c" COR_FRACA,
+              "Todas comecam marcadas. Desmarque a que voce quiser pular nesta "
+              "rodada.")
+    caixas := []
+    for b in vivas {
+        cb := g.AddCheckbox("x18 y+8 w" LARG_UI " Checked", b.chave)
+        caixas.Push({cb: cb, b: b})
+    }
+    total := g.AddText("x18 y+14 w" LARG_UI " c" COR_BOA, "")
+    atualizar(*) {
+        n := 0
+        for c in caixas
+            if c.cb.Value
+                n++
+        total.Value := n " bancada(s)  ·  " (n * abas) " video(s) no total"
+                     . (seco ? "   (ensaio seco: nao gasta credito)" : "")
+    }
+    for c in caixas
+        c.cb.OnEvent("Click", atualizar)
+    atualizar()
+
+    escolhido := []
+    ir(*) {
+        for c in caixas
+            if c.cb.Value
+                escolhido.Push(c.b)
+        if (escolhido.Length = 0)
+            return MsgBox("Marque pelo menos uma.", APP, 48)
+        g.Destroy()
+    }
+    g.AddButton("w170 h30 x" (18 + LARG_UI - 170) " y+14 Default",
+                seco ? "Ensaiar" : "Rodar agora").OnEvent("Click", ir)
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 290) " yp", "Cancelar")
+     .OnEvent("Click", (*) => g.Destroy())
+    g.Show()
+    WinWaitClose "ahk_id " g.Hwnd
+    return escolhido
 }
 
 irParaAba(n) {

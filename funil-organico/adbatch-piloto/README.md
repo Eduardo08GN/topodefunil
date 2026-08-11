@@ -684,3 +684,60 @@ so', e a resposta errada.
 Medido: 5 janelas de Chrome com titulos diferentes -> **1 chave so'** · os
 perfis do Dolphin mantiveram o nome · o Chrome aparece como `aberta — rode o F3`
 · 752px, 0 controles fora · 19/19 nas teclas, 8/8 no worker, 0 fora nas telas.
+
+## ⭐⭐ MODO SEQUENCIAL (2026-08-11) — o F10 roda em varias bancadas
+
+Proposta do operador: *"um toggle que quando ativado, a automacao de geracao das
+imagens acontece com todas as bancadas montadas em sequencia e, quando
+desativado, percorre para cada uma bancada selecionada"*.
+
+⭐ **O F3 e' o que tornou isto possivel**, e vale dizer por que: como ele poe a
+janela 1 de **toda** bancada maximizada no mesmo monitor, a calibracao dos 6
+pontos vale para todas. Sem isso, a partir da segunda bancada o piloto estaria
+clicando no escuro — e a trava de geometria abortaria, no melhor caso.
+
+**Como usar:** liga o toggle na tela do F1. O F10 (e o F8) passam a abrir uma
+tela com as bancadas montadas, **todas marcadas**; voce desmarca as que quiser
+pular e o total de videos aparece **antes** do botao.
+
+### Quatro decisoes, cada uma com o motivo
+
+⛔⛔ **Duas fases: as ABAS de todas primeiro, depois as RONDAS de todas.** Fazendo
+bancada a bancada (abas→ronda, abas→ronda), a ronda da primeira aconteceria logo
+apos ela. Do jeito que ficou, as imagens da bancada 1 ganham **de graca** todo o
+tempo que as bancadas 2, 3 e 4 levaram para preencher — e a ronda existe
+justamente para pegar o slot que ainda nao chegou. O ganho e' de **qualidade**,
+nao de relogio.
+
+⚠️ **Uma bancada que falha nao derruba as outras.** Cada uma roda no seu `try`;
+o que der errado entra no relatorio do fim, com o nome e o motivo. Sem isso, uma
+janela fechada na bancada 2 custaria as bancadas 3 e 4.
+
+⚠️ **Esc aborta tudo**, nao so' a bancada da vez. Quem aperta Esc no meio de uma
+automacao quer que ela pare, nao que pule para a proxima.
+
+⛔ **O total de videos fica na tela ANTES do botao.** A diferenca entre 10 e 40
+geracoes e' credito, e o numero tem de estar visivel antes do clique.
+
+### ⛔ O laco das abas foi EXTRAIDO, nao copiado
+
+`percorrerAbas()` serve aos dois modos. Uma copia divergiria no primeiro conserto
+que so' uma delas recebesse — e a que ficaria para tras seria justamente a que
+gasta credito. O teste cobra isso contando a ocorrencia de uma linha do laco no
+fonte: **tem de ser 1**.
+
+⚠️ E o `catch` do laco passou a **lancar** em vez de `return`: no modo sequencial
+quem chama precisa saber que **esta** bancada falhou para seguir para a proxima.
+Um `return` mudo abortaria as outras tres em silencio.
+
+### Medido
+
+Toggle liga/desliga · a tela lista as 3 bancadas de teste, **todas marcadas**, com
+`3 bancada(s) · 30 video(s) no total` · 752px, **0 controles fora** · fechar sem
+confirmar devolve zero · o laco existe **1 vez** no fonte · regressao: 0 fora nas
+telas, 6/6 no Chrome, 19/19 nas teclas, 8/8 no worker.
+
+⚠️ **O ciclo real nao foi executado** — isso gastaria credito do Flow e mexeria
+nas janelas dele. O caminho de verdade e' o **F8 (ensaio seco) com o toggle
+ligado**: percorre as bancadas de verdade, copia do agente, mas nao cola e nao
+gera. E' o primeiro teste, e e' gratuito.
