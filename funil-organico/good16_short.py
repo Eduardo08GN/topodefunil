@@ -691,25 +691,68 @@ AGUENTAM = [
 # (9) e o menor PRECO (3) uma entrada de 13 caberia so' na melhor combinacao e
 # nunca seria sorteada nas outras. Entrada que quase nunca cabe nao e' rara: e'
 # morta, e o [ALCANCE] a contaria como opcao viva (licao §36).
+#
+# ⛔⛔⛔ POOL REESCRITO EM 2026-08-10 — O ALVO PASSA A SER O ORGAO, NAO O CORPO.
+# ---------------------------------------------------------------------------
+# Ordem do operador, lendo o app: *"precisamos ser mais taxativos e claros e
+# dizer make your John-son harder. Dizer make your BODY harder pode ser
+# qualquer coisa — anabolizante por exemplo, que a pessoa toma e fica com a
+# musculatura mais dura. Entra dentro do WTF."*
+# E na sequencia: *"faca curadoria com o que parear sem fazer drifting WTF. Ha'
+# diversas maneiras taxativas e claras de dizer que o John-son esta'
+# performando bem."*
+#
+# ⭐ ELE ESTA' CERTO, E O DEFEITO ERA A REGRA GO1 GENERALIZADA DEMAIS. A licao
+# paga no COLO 16 (~95% de recusa) foi sobre o PAR `verbo de ereccao COLADO no
+# orgao` — nao sobre o orgao sozinho. O GO1 leu a licao como "nunca nomeie o
+# orgao", e o preco disso e' esta copy: `makes your body harder` descreve
+# igualmente bem um anabolizante.
+# ⚠️ E ha' PROVA DE CAMPO do lado oposto, do mesmo dia: o FIGHT 16 e o ALFA 16
+# dizem `blood back into your peck-er` e renderizaram sem recusa. Orgao com
+# verbo NEUTRO passa; orgao com verbo de ereccao e' que reprova.
+#
+# ⛔ ENTAO A CURADORIA E' ESTA, e ela e' a resposta ao "sem drifting WTF":
+#   · TODA entrada nomeia o orgao — o espectador nao pode achar que e' musculo;
+#   · NENHUMA usa verbo do `sc.ERECAO_16` (`hard`, `stands up`, `wakes up`,
+#     `works again`, `comes back`, `swells`, `erect`);
+#   · o "performando bem" e' dito pelo IDIOMA DA CASA, que ja' passa no render
+#     nos outros motores: `never quits`, `keeps ... from quitting`, `stops ...
+#     letting you down`, `performing`, `showing up`, `ready`, `answering`.
+# ⚠️ Duas familias de propósito: MECANISMO (o sangue chegando) e DESEMPENHO (o
+# orgao cumprindo). A primeira explica, a segunda promete — e o lote precisa
+# das duas.
+#
+# ⛔ CT3 continua cobrado: cada entrada tem VERBO DE EFEITO da lista
+# `sc.VERBOS_EFEITO_16` mais o ALVO na MESMA sentenca. `has` e `gets` NAO estao
+# na lista e por isso nao aparecem aqui — verbo fora dela reprova mesmo lendo
+# bem, e o autoteste pega.
+# ⚠️ 11 a 12 palavras, e o teto e' ARITMETICA: com o menor CTA (9) e o menor
+# PRECO (3), uma entrada de 13 caberia so' na melhor combinacao e nunca seria
+# sorteada nas outras — entrada que quase nunca cabe nao e' rara, e' morta.
 MISTURAS = [
-    "The gelatin trick in this bowl makes your body harder and stronger.",
-    "The gelatin trick in this bowl makes your body stronger every night.",
-    "The gelatin trick in this bowl puts blood back in your body.",
-    "The gelatin trick in this bowl brings your body back to strength.",
-    "The gelatin trick I mix in this bowl makes your body harder.",
-    "One bowl of the gelatin trick a night makes your body harder.",
-    "One bowl of the gelatin trick a night keeps your body strong.",
-    "One bowl of the gelatin trick nightly makes your body stronger.",
-    "This bowl is the gelatin trick, and it repairs your body.",
-    "This bowl holds the gelatin trick, and it makes your body stronger.",
-    "Every night this bowl of the gelatin trick feeds your whole body.",
-    "A bowl of the gelatin trick every night makes your body harder.",
-    "The gelatin trick in this bowl puts strength back into your body.",
-    "Nightly, this bowl of the gelatin trick makes your whole body harder.",
-    "The gelatin trick sits in this bowl and it feeds your body.",
-    "The gelatin trick in this bowl works your body harder every night.",
-    "The gelatin trick in this bowl sends blood back through your body.",
-    "This bowl of the gelatin trick makes your body harder every week.",
+    # --- MECANISMO: o sangue chegando onde ele precisa chegar -------------
+    "The gelatin trick in this bowl puts blood back in your {o}.",
+    "The gelatin trick in this bowl sends blood straight to your {o}.",
+    "The gelatin trick in this bowl brings blood back to your {o}.",
+    "The gelatin trick in this bowl drives blood into your {o} nightly.",
+    "The gelatin trick in this bowl pushes blood back into your {o}.",
+    "The gelatin trick in this bowl clears the blood path to your {o}.",
+    "The gelatin trick sits in this bowl and it feeds your {o}.",
+    "Every night this bowl of the gelatin trick feeds your {o}.",
+    "One bowl of the gelatin trick a night feeds your {o}.",
+    # --- DESEMPENHO: o orgao cumprindo, no idioma que passa no render -----
+    "The gelatin trick in this bowl keeps your {o} working all night.",
+    "The gelatin trick in this bowl stops your {o} quitting on you.",
+    "A bowl of the gelatin trick nightly keeps your {o} from quitting.",
+    "The gelatin trick in this bowl keeps your {o} answering every night.",
+    "The gelatin trick in this bowl keeps your {o} performing nightly.",
+    "A bowl of the gelatin trick every night makes your {o} perform.",
+    "One bowl of the gelatin trick a night keeps your {o} ready.",
+    # ⚠️ `in this bowl` nao e' enfeite: a GO9 exige que a fala amarre o
+    # `gelatin trick` ao RECIPIENTE na mesma sentenca. A primeira versao desta
+    # entrada dizia `I mix here` e o autoteste a reprovou — corretamente.
+    "The gelatin trick I mix in this bowl stops your {o} quitting.",
+    "This bowl holds the gelatin trick, and it keeps your {o} showing up.",
 ]
 
 # ⚠️ O beat mais dispensavel dos tres, e o unico que nao carrega promessa nem
@@ -839,14 +882,18 @@ def _por_id(pool, valor, chave="id"):
     return valor
 
 
-def _cabe(pool, reserva, cena):
+def _cabe(pool, reserva, cena, o=None):
     """As entradas que cabem depois de reservar `reserva` palavras.
 
     ⚠️ O fallback nao devolve o pool inteiro — isso e' estouro silencioso.
     Devolve a entrada mais CURTA, e quem reclama e' o linter.
+    ⛔ Mede a string FORMATADA desde 2026-08-10: as MISTURAS passaram a
+    carregar `{o}`, e contar o placeholder cru daria a conta certa por acaso.
     """
-    v = [x for x in pool if _palavras(x) + reserva <= TETO_FALA[cena]]
-    return v or [min(pool, key=_palavras)]
+    def _n(x):
+        return _palavras(x.format(o=o) if o is not None else x)
+    v = [x for x in pool if _n(x) + reserva <= TETO_FALA[cena]]
+    return v or [min(pool, key=_n)]
 
 
 def _rsv(vals):
@@ -854,8 +901,8 @@ def _rsv(vals):
     return v[len(v) // 2]
 
 
-def _mn(pool):
-    return min(_palavras(x) for x in pool)
+def _mn(pool, o=None):
+    return min(_palavras(x.format(o=o) if o is not None else x) for x in pool)
 
 
 # ===========================================================================
@@ -884,10 +931,12 @@ def _falas(spec, rng, quais=(0, 1)):
         # ⛔ O CTA escolhe PRIMEIRO: ele carrega o literal `Comment gelatin,` e o
         # endereco da entrega, e nao se encurta. O PRECO e' o beat mais
         # intercambiavel e vai por ULTIMO, absorvendo a sobra.
-        ct = rng.choice(_cabe(CTAS, _mn(MISTURAS) + _mn(PRECOS), 2))
+        o = spec["apelido"]
+        ct = rng.choice(_cabe(CTAS, _mn(MISTURAS, o) + _mn(PRECOS), 2))
         mi = rng.choice(_cabe(MISTURAS,
                               _palavras(ct)
-                              + _rsv([_palavras(x) for x in PRECOS]), 2))
+                              + _rsv([_palavras(x) for x in PRECOS]), 2,
+                              o)).format(o=o)
         pr = rng.choice(_cabe(PRECOS, _palavras(ct) + _palavras(mi), 2))
         f[1] = "%s %s %s" % (mi, pr, ct)
 
@@ -954,6 +1003,11 @@ def sortear(pagina, rng, ledger, travas=None):
         # idade: sortear um corpo do pool velho por cima do homem forte seria
         # colar um tronco de 58 anos num rosto de 34.
         "corpo_h": homem.get("corpo") or rng.choice(CORPOS_H),
+        # ⛔ CT4b — o apelido sai de `sc.APELIDOS_16` e de mais lugar nenhum.
+        # Entrou em 2026-08-10, quando a fala do take 2 passou a nomear o
+        # orgao (ver o cabecalho de MISTURAS). O take 1 continua sem nomea-lo,
+        # entao o CT4 (apelido igual nos dois takes) nao tem o que comparar.
+        "apelido": rng.choice(list(sc.APELIDOS_16)),
     }
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
     return spec
@@ -1114,21 +1168,38 @@ def montar(spec):
 def _go1_corpo_nao_orgao(spec, blocos, achados):
     """⭐⭐ GO1 — A FALA E' SOBRE O CORPO, NUNCA SOBRE O ORGAO.
 
-    ⛔ E' a defesa central deste angulo. O COLO 16 mediu ~95% de recusa no Veo
-    em 2026-08-09 porque a fala nomeava o orgao junto de um verbo de ereccao —
-    o classificador le' isso como tumescencia. A fonte deste angulo fala de
-    `your body harder and stronger`, e e' por isso que ela passa.
-    ⚠️ A lente existe para impedir que alguem "melhore" a copy no futuro
-    trazendo o orgao para ca.
+    ⛔⛔ ESTA LENTE FOI ESTREITADA EM 2026-08-10, e a correcao e' a licao.
+
+    A versao anterior proibia o orgao EM QUALQUER LUGAR da fala, e a
+    justificativa era a licao paga no COLO 16 (~95% de recusa). So' que a licao
+    do COLO nunca foi "nao nomeie o orgao": foi **verbo de ereccao COLADO no
+    orgao**, que o classificador le' como tumescencia. O GO1 generalizou.
+
+    ⛔ E o preco da generalizacao veio do campo, pela boca do operador lendo o
+    app: *"dizer make your BODY harder pode ser qualquer coisa — anabolizante
+    por exemplo. Entra dentro do WTF."* Ele tem razao: `your body harder`
+    descreve igualmente bem um ciclo de esteroide, e o espectador nao sabe do
+    que o video trata.
+
+    ⚠️ E ha' PROVA DO LADO OPOSTO, do mesmo dia: o FIGHT 16 e o ALFA 16 dizem
+    `blood back into your peck-er` e renderizaram sem recusa. Orgao com verbo
+    NEUTRO passa; orgao com verbo de ERECCAO e' que reprova.
+
+    ⭐ Entao a lente passa a cobrar o PAR, por SENTENCA — que e' exatamente o
+    CT7 do contrato de 16s, aplicado aqui com o nome deste motor.
     """
-    corpo = " ".join(spec["falas"]).lower()
-    for n in NUCLEO:
-        if n.lower() in corpo:
-            achados.append((
-                "ERRO",
-                "GO1: a fala nomeia o orgao (%r) — este angulo fala do CORPO "
-                "(`harder and stronger`), e e' isso que o faz passar na "
-                "moderacao onde os outros reprovam" % n))
+    for fala in spec["falas"]:
+        for s in re.split(r"(?<=[.!?])\s+", fala):
+            m = sc.ERECAO_16.search(s)
+            if not m:
+                continue
+            if any(n.lower() in s.lower() for n in NUCLEO):
+                achados.append((
+                    "ERRO",
+                    "GO1: %r aparece na MESMA sentenca do orgao (%r) — verbo de "
+                    "ereccao colado ao orgao e' lido como tumescencia e reprova "
+                    "no gerador (COLO 16, ~95%%). Sobre o orgao com verbo "
+                    "NEUTRO passa; e' o par que derruba." % (m.group(0), s)))
 
 
 def _go2_ela_muda(spec, blocos, achados):
@@ -1586,6 +1657,27 @@ def autoteste(n=400):
     if com_ing:
         falhas.append("CT5: %d entrada(s) da cena 2 nomeiam ingrediente: %s"
                       % (len(com_ing), com_ing[:1]))
+
+    # ⛔⛔ AS DUAS METADES DA ORDEM DE 2026-08-10, uma de cada lado.
+    # ---------------------------------------------------------------------
+    # (a) TODA MISTURA NOMEIA O ORGAO. Sem isso volta o `your body harder`, que
+    #     o operador reprovou por descrever igualmente bem um anabolizante —
+    #     *"entra dentro do WTF"*. E' o alvo que diz do que o video trata.
+    sem_orgao = [x for x in MISTURAS if "{o}" not in x]
+    if sem_orgao:
+        falhas.append("ALVO: %d entrada(s) de MISTURAS sem `{o}` — `your body "
+                      "harder` descreve um anabolizante igual de bem, e o "
+                      "espectador nao sabe do que se trata: %s"
+                      % (len(sem_orgao), sem_orgao[:1]))
+    # (b) E NENHUMA JUNTA VERBO DE ERECCAO AO ORGAO. E' a licao paga no COLO 16
+    #     (~95% de recusa), e a metade da GO1 que CONTINUA valendo. As duas
+    #     regras juntas sao a curadoria inteira: nomeie o orgao, mas nunca com
+    #     o verbo que o classificador le' como tumescencia.
+    com_erecao = [x for x in MISTURAS if sc.ERECAO_16.search(x)]
+    if com_erecao:
+        falhas.append("GO1: %d entrada(s) de MISTURAS juntam verbo de ereccao "
+                      "e orgao — e' o par que o COLO 16 pagou com ~95%% de "
+                      "recusa: %s" % (len(com_erecao), com_erecao[:1]))
 
     # ⛔⛔ CONTROLE POSITIVO DA GO9 — lente que nunca acusa e' forma sem funcao,
     # e "sem achado" nela significaria "ninguem olhou". A frase abaixo e' a copy

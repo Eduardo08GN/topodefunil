@@ -89,7 +89,11 @@ ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSU
          # entao ficou so' no repo.
          "PEE-16",
          # + 2026-08-10: o ALFA 16 nasce ja' na lista.
-         "ALFA-16"]
+         "ALFA-16",
+         # + 2026-08-10: o GOOD-16, ao entregar a copy que passa a nomear
+         # o orgao. Mesma historia do PEE-16: a pasta existe na area de
+         # trabalho e o .exe estava congelado no dia em que ela nasceu.
+         "GOOD-16"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)
