@@ -1,0 +1,4 @@
+Frames do gif do doomguy, usados pela tela do Video Terminator.
+Gerados por scratchpad/extrair_doomguy.py a partir de download.gif
+(640x480, 6 frames, 480ms cada).
+O AHK v2 nao anima GIF num controle Picture — por isso os PNGs.

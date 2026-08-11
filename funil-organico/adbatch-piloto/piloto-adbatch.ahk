@@ -181,12 +181,64 @@ janelaUI(titulo := "") {
     return g
 }
 
+; =============================================================================
+;  ⭐ O DOOMGUY (2026-08-11)
+; =============================================================================
+; Pedido do operador: *"coloque o gif do doomguy na interface do Video Terminator
+; by Eddie"*.
+;
+; ⛔ O AHK v2 mostra apenas o PRIMEIRO frame de um GIF num controle Picture — nao
+; anima. Por isso o gif foi quebrado em 6 PNGs na hora de empacotar
+; (`scratchpad/extrair_doomguy.py`) e a troca e' feita com um timer. O custo fica
+; na ferramenta de build, e nao no script que roda o dia inteiro.
+;
+; ⚠️⚠️ ENFEITE NUNCA DERRUBA A FERRAMENTA. Se a pasta `doomguy\` nao estiver ao
+; lado do executavel, esta funcao simplesmente nao desenha nada e a tela abre
+; igual. Uma cara faltando nao pode custar o acesso ao F10.
+;
+; ⚠️ O timer e' amarrado ao FECHAMENTO da janela. Sem isso ele continuaria
+; disparando contra um controle destruido — e o erro apareceria minutos depois,
+; longe da causa.
+DOOM_FRAMES := 6
+DOOM_MS := 480          ; a cadencia do gif original, medida nele
+
+doomguy(g) {
+    global DOOM_FRAMES, DOOM_MS, LARG_UI
+    pasta := A_ScriptDir "\doomguy"
+    if !FileExist(pasta "\f0.png")
+        return
+    pic := g.AddPicture("x" (18 + LARG_UI - 44) " y18 w44 h64", pasta "\f0.png")
+    quadro := 0
+    virar() {
+        if !WinExist("ahk_id " g.Hwnd) {
+            SetTimer , 0
+            return
+        }
+        quadro := Mod(quadro + 1, DOOM_FRAMES)
+        try pic.Value := pasta "\f" quadro ".png"
+    }
+    SetTimer virar, DOOM_MS
+    g.OnEvent("Close", (*) => SetTimer(virar, 0))
+}
+
 ; ⚠️ `primeira` existe porque a primeira secao nao leva o respiro de cima — sem
 ; isso a janela abre com um buraco antes do primeiro titulo.
+; ⛔⛔ O `x18` AQUI E' O CONSERTO DE UM DEFEITO QUE O OPERADOR VIU NA TELA:
+; *"ta sobrando muito espaco de um lado na interface, esta desequilibrado e
+; feio"*. A janela tinha saido com 1408px em vez de 752.
+;
+; A causa: o doomguy e' posicionado com X ABSOLUTO (canto direito). No AHK, o
+; controle seguinte que use so' `y+N` HERDA O X DO ANTERIOR — entao o titulo da
+; secao nascia la' na direita, com 700px de largura, e a janela crescia para
+; caber. Todo o conteudo ficava espremido de um lado e o resto era vazio.
+;
+; ⚠️ E' a TERCEIRA vez que este mesmo mecanismo morde neste arquivo (a tela do
+; F2, a linha do log, agora aqui). Por isso o conserto foi no `secaoUI`, que
+; TODA tela usa, e nao no ponto onde apareceu.
 secaoUI(g, texto, primeira := false) {
     global LARG_UI
     fonteUI(g, "s10 Bold")
-    g.AddText("w" LARG_UI (primeira ? "" : " y+18"), texto)
+    g.AddText("x18 w" LARG_UI (primeira ? "" : " y+18"), texto)
     fonteUI(g, "s9 Norm")
 }
 
@@ -1826,16 +1878,19 @@ ATALHOS := [
 ajuda(inicial := false) {
     global ATALHOS, INI, LARG_UI
     g := janelaUI(inicial ? "" : "ajuda")
-    if inicial {
-        fonteUI(g, "s16 Bold")
-        g.AddText("w" LARG_UI, APP)
-        fonteUI(g, "s10 Norm")
-        g.AddText("w" LARG_UI " y+2 c" COR_FRACA,
-                  "do agente ao AdBatch Vertical 2, em N abas — o script esta' no ar "
-                  "e ouvindo os atalhos abaixo.")
-        fonteUI(g)
-    }
-    secaoUI(g, "Atalhos", !inicial)
+
+    ; ⭐ O CABECALHO AGORA APARECE NOS DOIS CASOS. Antes so' a tela de abertura
+    ; tinha nome e subtitulo, e o F1 abria direto na tabela — duas telas com a
+    ; mesma funcao e caras diferentes. E' tambem o que da' lugar ao doomguy.
+    fonteUI(g, "s16 Bold")
+    g.AddText("w" (LARG_UI - 60), APP)
+    fonteUI(g, "s10 Norm")
+    g.AddText("w" (LARG_UI - 60) " y+2 c" COR_FRACA,
+              "do agente ao AdBatch Vertical 2, em N abas — o script esta' no ar "
+              "e ouvindo os atalhos abaixo.")
+    fonteUI(g)
+    doomguy(g)
+    secaoUI(g, "Atalhos")
     lv := escurecerUI(g.AddListView("w" LARG_UI " r11 -Multi +Grid NoSort" fundoUI(),
                                     ["Tecla", "O que faz", "Detalhe"]))
     for a in ATALHOS

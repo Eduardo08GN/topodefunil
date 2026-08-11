@@ -741,3 +741,50 @@ telas, 6/6 no Chrome, 19/19 nas teclas, 8/8 no worker.
 nas janelas dele. O caminho de verdade e' o **F8 (ensaio seco) com o toggle
 ligado**: percorre as bancadas de verdade, copia do agente, mas nao cola e nao
 gera. E' o primeiro teste, e e' gratuito.
+
+## ⭐ O DOOMGUY (2026-08-11)
+
+*"Coloque o gif do doomguy na interface do Video Terminator by Eddie."*
+
+⛔ **O AHK v2 mostra apenas o primeiro frame de um GIF** num controle Picture —
+nao anima. O gif foi quebrado em **6 PNGs** na hora de empacotar
+(`scratchpad/extrair_doomguy.py`) e a troca e' feita por timer, na cadencia
+medida no original (480ms). O custo fica na ferramenta de build, nao no script
+que roda o dia inteiro.
+
+⚠️ **Recorte por BRILHO, nao por `getbbox()`.** O `getbbox` corta o que for
+exatamente preto, e a tarja deste gif tem ruido de compressao: o resultado foi a
+caixa cheia, 640x480, com a cara minuscula no meio de uma moldura. Com limiar de
+brilho, a caixa util e' `(146, 9, 466, 468)` — 44x64 no fim.
+
+⚠️⚠️ **Enfeite nunca derruba a ferramenta.** Se a pasta `doomguy\` nao estiver ao
+lado do executavel, a funcao nao desenha nada e a tela abre igual. Uma cara
+faltando nao pode custar o acesso ao F10.
+
+⭐ E o **cabecalho passou a aparecer no F1 tambem** — antes so' a tela de abertura
+tinha nome e subtitulo, e o F1 abria direto na tabela: duas telas com a mesma
+funcao e caras diferentes.
+
+### ⛔⛔ E o defeito que ele viu: 1408px em vez de 752
+
+*"Ta sobrando muito espaco de um lado na interface, esta desequilibrado e feio."*
+
+O doomguy e' posicionado com **X absoluto** (canto direito). No AHK, o controle
+seguinte que use so' `y+N` **herda o X do anterior** — entao o titulo da secao
+nascia la' na direita, com 700px de largura, e a janela crescia para caber. Todo
+o conteudo espremido de um lado, o resto vazio.
+
+⚠️ **E' a terceira vez que este mesmo mecanismo morde neste arquivo** (a tela do
+F2, o caminho do log, agora o cabecalho). Por isso o conserto foi dentro do
+`secaoUI()`, que **toda** tela usa, e nao no ponto onde apareceu.
+
+### ⛔ Um teste meu destruiu o que veio testar
+
+A primeira versao do teste usava `FileMove` para "esconder" a pasta e provar o
+caminho sem frames. **`FileMove` nao move diretorio**: apagou os seis PNGs e
+deixou um arquivo solto chamado `doomguy_off`. Os frames foram regerados do gif
+original, e o teste passou a provar a guarda sem tocar na pasta de verdade.
+
+Medido depois: **752x823**, imagem em (674,18) 44x64, **0 controles fora**,
+sobreviveu a 2,5s de animacao (5 trocas) · regressao nas outras telas: 752 em
+todas, 0 fora · chrome 6/6 · teclas 19/19 · worker 8/8 · sequencial 8/8.
