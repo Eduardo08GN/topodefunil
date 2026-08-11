@@ -142,6 +142,15 @@ toggle não troca a pessoa, troca **o corpo dela**. ⛔ Elas **sorriem**, nunca
 gargalham — e a cláusula é **positiva**, sem `not laughing`, porque negação
 injeta o token.
 
+⏳ **Pendência aberta:**
+[`PENDENCIA-varredura-batidas.md`](funil-organico/PENDENCIA-varredura-batidas.md)
+— levar as duas lentes novas do `alfa16` (predicado vazio e coerência de
+pessoa) ao resto da família 16s. ⚠️ **A medição preliminar já está lá e
+encolheu a pendência**: predicado vazio deu zero caso real (os dois
+acusados eram copy verbatim do operador) e o zigue-zague de pessoa só
+aparece no `ressurreicao16`, em 12%. Ler antes de executar — a varredura
+produziu mais falso positivo que achado.
+
 ### ⛔⛔ CONTRA A CELEBRIDADE, SILÊNCIO — NUNCA `not a celebrity` (2026-08-10)
 
 Ordem do operador, com o lote na mão: *"não falar de celebridade nem usar a
