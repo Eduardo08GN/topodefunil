@@ -239,13 +239,12 @@ BO_TRIO = (
 # gelatina (DU2). Seis copias do mesmo texto divergiriam na primeira correcao.
 # ⛔ Ela vive FORA das entradas de proposito: o campo `aparato16` tem de ser
 # literal puro para o `lint_painel_honesto` conseguir prova-lo no bloco.
-BANCADA16_CAUDA = (", %(raro_img)s, two raw beetroots, two carrots and a "
-                   "shallow bowl of vivid purple gelatin cubes")
+BANCADA16_CAUDA = (", %(raro_img)s, two raw beetroots and two carrots")
 
 PREPAROS = [
     {"id": "dois_jarros",
      "bancada": "a tall clear glass, and beside it %(raro_img)s, two raw "
-                "beetroots, two carrots and a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
+                "beetroots, two carrots",
      # ⭐⭐ `bancada16` — A MESMA BANCADA, SEM O COPO DE DESTINO.
      # No TRIO a cena 2 e' o PREPARO (o copo esta' na bancada, sendo enchido) e
      # a cena 3 e' o COPO (na mao dela). Fundidas, o copo esta' NA MAO — e
@@ -265,8 +264,7 @@ PREPAROS = [
 
     {"id": "liquidificador",
      "bancada": "a blender jug on its base, filled with cut beetroot and "
-                "carrot, a tall clear glass beside it, %(raro_img)s and "
-                "a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
+                "carrot, a tall clear glass beside it, %(raro_img)s",
      "aparato16": "a blender jug back on its base with the lid on and deep red and "
                   "orange pulp still coating the inside",
      "acao": "Her right hand rests on the blender base and her left sets the "
@@ -278,8 +276,7 @@ PREPAROS = [
 
     {"id": "espremedor",
      "bancada": "a stainless juicer with a tall clear glass under its spout, "
-                "%(raro_img)s, a bowl of cut beetroot and carrot and "
-                "a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
+                "%(raro_img)s, a bowl of cut beetroot and carrot",
      "aparato16": "a stainless juicer with red-stained pulp still in its catcher and "
                   "the plunger resting in the chute",
      "acao": "Her right hand pushes a carrot down the juicer chute with the "
@@ -293,7 +290,7 @@ PREPAROS = [
     {"id": "camadas",
      "bancada": "a tall clear glass already filled in two layers — deep red "
                 "below and bright orange above — with %(raro_img)s beside it, "
-                "two raw beetroots, two carrots and a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
+                "two raw beetroots, two carrots",
      "aparato16": "a long wooden spoon lying across a wide jug streaked red and "
                   "orange inside",
      "acao": "Her right hand turns a long spoon slowly through the glass and "
@@ -307,7 +304,7 @@ PREPAROS = [
      "bancada": "a tall clear glass, a graduated glass measuring jug of deep "
                 "red juice in her hand, a second jug of bright orange juice "
                 "waiting beside it, %(raro_img)s, two raw beetroots, two "
-                "carrots and a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
+                "carrots",
      "aparato16": "a graduated glass measuring jug with deep red juice still in it "
                   "and a second jug of bright orange standing beside it",
      "acao": "Her right hand tips the measuring jug and a steady thread of deep "
@@ -320,8 +317,7 @@ PREPAROS = [
 
     {"id": "coador",
      "bancada": "a fine mesh sieve set over a tall clear glass, deep red pulp "
-                "in it, %(raro_img)s, two raw beetroots, two carrots and "
-                "a shallow bowl of vivid purple gelatin cubes sitting untouched at the edge",
+                "in it, %(raro_img)s, two raw beetroots, two carrots",
      "aparato16": "a fine mesh sieve resting over a wide jug with deep red pulp still "
                   "in the mesh and a spoon beside it",
      "acao": "Her right hand presses the back of a spoon into the pulp in the "
@@ -370,8 +366,18 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 # que trocou "paper straws" por "a single paper straw" e deixou o "two" da linha
 # de cima. Consertei no PLACA e nao aqui: correcao aplicada num motor e nao no
 # irmao e' o mesmo modo de falha que o §29 descreve, na direcao oposta.
-BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, a "
-           "single paper straw standing in it")
+# ⛔⛔ 2026-08-11 — O COPO SAIU, A TIGELA DE GELATINA ENTROU. Ordem do operador:
+# *"ela sempre estar segurando uma tigela de gelatina ao inves de um copo de
+# bebida, nao faz sentido o copo sendo que o CTA e' sobre gelatina"*.
+# ⭐ E ele esta' certo pela mecanica do funil, nao so' por estetica: a palavra
+# que o espectador tem de digitar e' GELATIN, e o objeto na mao dela no frame em
+# que a boca diz `gelatin,` era... um copo de bebida opaca. O objeto da keyword
+# nao mostrava a keyword. Agora mostra.
+# ⚠️ A gelatina SAIU DA BANCADA no mesmo movimento: ela estava `sitting
+# untouched at the edge` nas seis conformacoes. Deixar as duas poria DUAS
+# tigelas de gelatina no mesmo quadro — o defeito dos dois copos altos (T16-1)
+# repetido com outro objeto.
+BO_COPO = ("a shallow clear glass bowl filled with vivid purple gelatin cubes")
 # ⛔ UM canudo. Eram dois e o operador reprovou o render: *"dois canudos? quero
 # so' um"*. Dois canudos leem como bebida COMPARTILHADA — e este copo e' dele.
 
@@ -1477,39 +1483,31 @@ PARES = [
     # straight up` no lugar do `rises straight up` do NECROSE.
     {"id": "geoduck", "nome": "clam",
      "murcho": "a small shrivelled geoduck clam, its siphon limp and drawn back against the shell, barely the length of her palm",
-     "gigante": "an enormous geoduck clam, its thick siphon extending straight out well past the shell, longer than her forearm, held upright",
+     "gigante": "an enormous geoduck clam, its thick siphon standing straight up well past the pale ridged shell, as long as her forearm and as thick as her wrist, reaching from her fist up to the top of her chest, its surface taut and glossy, streaked with darker mottled lines running along its length, held upright",
      "gigante_c2": "an enormous geoduck clam, its thick siphon standing straight up out of the pale ridged shell, as long as his forearm and as thick as his wrist, reaching from his fist up to the top of his chest, its surface taut and glossy, streaked with darker mottled lines running along its length",
      "cauda_c2": "No bird, no goose, no duck, no swan, no snake, no feathers, no beak, no eyes, no head, nothing alive."},
+    # ⭐⭐ A LINGUICA — par novo em 2026-08-11, e o unico que nao e' vegetal.
+    # ⚠️ Sem `cauda_c2`: a clausula anti-bicho existe porque GEODUCK ERGUIDO le'
+    # como ganso. Linguica nao tem esse risco, e clausula que nomeia o que se
+    # teme injeta o token (licoes-producao-veo §Declaracao e' municao).
+    # ⭐ BANANA e PIMENTA voltaram em 2026-08-11, no mesmo dia em que sairam:
+    # *"a referencia da banana no take 1 pode manter tambem, esta' boa, assim
+    # como o da pimenta"*. Os dois murchos ja' liam como MOLE E PEQUENO — que
+    # e' o criterio dele — e por isso passam. Os outros sete (pepino, cenoura,
+    # abobrinha, berinjela, mandioca, nabo, milho) seguem fora: legume duro
+    # murcho ainda le' como legume, nao como moleza.
     {"id": "banana", "nome": "banana",
-     "murcho": "a small blackened banana, shrivelled and soft, barely the length of her palm",
-     "gigante": "an enormous bright yellow banana, longer than her forearm, held upright"},
-    {"id": "plantain", "nome": "plantain",
-     "murcho": "a small withered plantain gone dark and limp",
-     "gigante": "a huge green plantain, thick and straight, held upright in her fist"},
-    {"id": "pepino", "nome": "cucumber",
-     "murcho": "a shrunken cucumber, wrinkled along its whole length and bent over",
-     "gigante": "a giant firm cucumber, straight and thick, held upright"},
-    {"id": "cenoura", "nome": "carrot",
-     "murcho": "a thin shrivelled carrot, bent and dried out",
-     "gigante": "an enormous straight carrot, thick as her wrist, held upright"},
-    {"id": "abobrinha", "nome": "zucchini",
-     "murcho": "a small soft zucchini, collapsed in the middle",
-     "gigante": "a giant firm zucchini, long and straight, held upright"},
-    {"id": "berinjela", "nome": "eggplant",
-     "murcho": "a small wrinkled eggplant, dull and shrunken",
-     "gigante": "a huge glossy purple eggplant, long and firm, held upright"},
-    {"id": "mandioca", "nome": "cassava root",
-     "murcho": "a short dried cassava root, cracked and shrunken",
-     "gigante": "a very long thick cassava root, held upright in her hand"},
-    {"id": "nabo", "nome": "parsnip",
-     "murcho": "a thin limp parsnip, browned and bent",
-     "gigante": "an enormous pale parsnip, thick and straight, held upright"},
-    {"id": "milho", "nome": "corn cob",
-     "murcho": "a stunted corn cob with shrivelled kernels",
-     "gigante": "a giant corn cob, thick and full, held upright"},
+     "murcho": "a small blackened banana, shrivelled and soft, drooping over her fingers, barely the length of her palm",
+     "gigante": "an enormous bright yellow banana, longer than her forearm, held upright",
+     "gigante_c2": "an enormous bright yellow banana, standing straight up in his fist, as long as his forearm and as thick as his wrist, reaching from his fist up to the top of his chest"},
     {"id": "pimenta", "nome": "chilli",
-     "murcho": "a small dried chilli, blackened and curled",
-     "gigante": "an enormous smooth red chilli, long and straight, held upright"},
+     "murcho": "a small dried chilli, blackened and curled, limp between her fingers, barely the length of her palm",
+     "gigante": "an enormous smooth red chilli, long and straight, held upright",
+     "gigante_c2": "an enormous smooth red chilli, standing straight up in his fist, as long as his forearm and as thick as his wrist, reaching from his fist up to the top of his chest"},
+    {"id": "linguica", "nome": "sausage",
+     "murcho": "a short limp sausage link, soft and wrinkled, sagging over her fingers, barely the length of her palm",
+     "gigante": "an enormous thick sausage link, longer than her forearm, held upright",
+     "gigante_c2": "an enormous thick sausage link, standing straight up in his fist, as long as his forearm and as thick as his wrist, reaching from his fist up to the top of his chest, its casing taut and glossy"},
 ]
 PROPS = PARES   # o contrato do painel usa `PROPS`
 
@@ -1538,94 +1536,94 @@ PROPS = PARES   # o contrato do painel usa `PROPS`
 # diferente e mesmo porte leem como a mesma pessoa — foi essa a licao que
 # criou o `medir_personagens.py`.
 REFS = [
-    {"idade": 24, "corpo": "tall and long-legged with a very small waist",
+    {"idade": 20, "corpo": "tall and long-legged with a very small waist",
      "cabeca": "deep auburn hair falling in loose waves past her shoulders",
      "marca": "a light spray of freckles across her nose and green eyes"},
-    {"idade": 27, "corpo": "slim with an hourglass figure and long legs",
+    {"idade": 21, "corpo": "slim with an hourglass figure and long legs",
      "cabeca": "copper-red hair in a high glossy ponytail",
      "marca": "pale green eyes and a small beauty mark above her lip"},
-    {"idade": 23, "corpo": "willowy and fine-boned with a flat stomach",
+    {"idade": 20, "corpo": "willowy and fine-boned with a flat stomach",
      "cabeca": "bright ginger hair cut in long layers",
      "marca": "heavy freckling across her cheeks and hazel eyes"},
-    {"idade": 29, "corpo": "curvy with a narrow waist and full shoulders",
+    {"idade": 22, "corpo": "curvy with a narrow waist and full shoulders",
      "cabeca": "dark red hair swept over one shoulder",
      "marca": "a small gold hoop in her left nostril and clear skin"},
-    {"idade": 26, "corpo": "tall and statuesque with a long waist",
+    {"idade": 21, "corpo": "tall and statuesque with a long waist",
      "cabeca": "strawberry-blonde hair in a loose braid",
      "marca": "wide-set blue eyes and a faint scar through one eyebrow"},
-    {"idade": 25, "corpo": "slim and toned with a dancer's line",
+    {"idade": 21, "corpo": "slim and toned with a dancer's line",
      "cabeca": "jet-black hair in a sleek centre part",
      "marca": "sharp cheekbones and a small mole on her jaw"},
-    {"idade": 28, "corpo": "long-legged and slender with square shoulders",
+    {"idade": 21, "corpo": "long-legged and slender with square shoulders",
      "cabeca": "platinum blonde hair in a blunt shoulder-length cut",
      "marca": "ice-blue eyes and a dimple in one cheek"},
-    {"idade": 24, "corpo": "curvy and athletic with a small waist",
+    {"idade": 20, "corpo": "curvy and athletic with a small waist",
      "cabeca": "tight dark curls gathered high on her head",
      "marca": "glowing deep brown skin and a wide bright smile"},
-    {"idade": 30, "corpo": "tall and slim with an hourglass line",
+    {"idade": 22, "corpo": "tall and slim with an hourglass line",
      "cabeca": "chestnut hair in long beachy waves",
      "marca": "a gap between her front teeth and warm brown eyes"},
-    {"idade": 22, "corpo": "petite and curvy with a defined waist",
+    {"idade": 20, "corpo": "petite and curvy with a defined waist",
      "cabeca": "honey-blonde hair in a high messy bun",
      "marca": "a scatter of freckles and full lips"},
-    {"idade": 27, "corpo": "lean and toned with a flat stomach and long arms",
+    {"idade": 21, "corpo": "lean and toned with a flat stomach and long arms",
      "cabeca": "long jet-black hair worn straight to the waist",
      "marca": "almond eyes and a small stud in one nostril"},
-    {"idade": 26, "corpo": "shapely with toned arms and a narrow waist",
+    {"idade": 21, "corpo": "shapely with toned arms and a narrow waist",
      "cabeca": "caramel balayage falling past her shoulders",
      "marca": "a beauty mark at the corner of her right eye"},
-    {"idade": 23, "corpo": "slim-hipped and elegant with a long neck",
+    {"idade": 20, "corpo": "slim-hipped and elegant with a long neck",
      "cabeca": "sandy blonde hair in a fishtail braid",
      "marca": "a slight overbite that shows when she smiles"},
-    {"idade": 31, "corpo": "curvy and strong with a small waist",
+    {"idade": 22, "corpo": "curvy and strong with a small waist",
      "cabeca": "long box braids gathered over one shoulder",
      "marca": "high round cheekbones and a gold nose ring"},
-    {"idade": 25, "corpo": "tall and lean with swimmer's shoulders",
+    {"idade": 21, "corpo": "tall and lean with swimmer's shoulders",
      "cabeca": "auburn hair in a low glossy ponytail",
      "marca": "dark freckles across both cheeks and grey eyes"},
-    {"idade": 28, "corpo": "softly curvy with a full figure and a narrow waist",
+    {"idade": 21, "corpo": "softly curvy with a full figure and a narrow waist",
      "cabeca": "dark brown hair in heavy waves with a deep side part",
      "marca": "a small raised birthmark on her temple"},
-    {"idade": 24, "corpo": "slim and supple with a very straight back",
+    {"idade": 20, "corpo": "slim and supple with a very straight back",
      "cabeca": "copper hair cropped into a long bob",
      "marca": "pale skin, freckles and bright green eyes"},
-    {"idade": 29, "corpo": "long-limbed and shapely with a defined waist",
+    {"idade": 22, "corpo": "long-limbed and shapely with a defined waist",
      "cabeca": "black hair in a high sleek ponytail",
      "marca": "a thin scar along her jawline and full brows"},
-    {"idade": 26, "corpo": "trim and athletic with a flat stomach",
+    {"idade": 21, "corpo": "trim and athletic with a flat stomach",
      "cabeca": "golden blonde hair in loose waves",
      "marca": "a small dimple in one cheek only"},
-    {"idade": 22, "corpo": "tall and willowy with narrow hips",
+    {"idade": 20, "corpo": "tall and willowy with narrow hips",
      "cabeca": "dark auburn hair in a half-up twist",
      "marca": "wide hazel eyes and a light dusting of freckles"},
-    {"idade": 30, "corpo": "curvy with a small waist and long legs",
+    {"idade": 22, "corpo": "curvy with a small waist and long legs",
      "cabeca": "tight coils cropped close to the head",
      "marca": "sculpted cheekbones and a small gold stud"},
-    {"idade": 27, "corpo": "slim with a long waist and square shoulders",
+    {"idade": 21, "corpo": "slim with a long waist and square shoulders",
      "cabeca": "ash-brown hair in a sleek low bun",
      "marca": "grey-green eyes and a faint mark between her brows"},
-    {"idade": 25, "corpo": "shapely and toned with a narrow waist",
+    {"idade": 21, "corpo": "shapely and toned with a narrow waist",
      "cabeca": "ginger hair in loose curls past her shoulders",
      "marca": "heavy freckling and a small chin dimple"},
-    {"idade": 28, "corpo": "tall and slim with a graceful neck",
+    {"idade": 21, "corpo": "tall and slim with a graceful neck",
      "cabeca": "long dark hair in a high crown braid",
      "marca": "a beauty mark high on her left cheek"},
-    {"idade": 23, "corpo": "petite and shapely with a defined waist",
+    {"idade": 20, "corpo": "petite and shapely with a defined waist",
      "cabeca": "bleached blonde hair in a blunt chin-length bob",
      "marca": "wide dark eyes and a faint scar on her chin"},
-    {"idade": 31, "corpo": "athletic and curvy with strong shoulders",
+    {"idade": 22, "corpo": "athletic and curvy with strong shoulders",
      "cabeca": "long waves in a rich mahogany red",
      "marca": "clear skin and a small hoop in her right nostril"},
-    {"idade": 24, "corpo": "long-legged and lean with a flat stomach",
+    {"idade": 20, "corpo": "long-legged and lean with a flat stomach",
      "cabeca": "dark brown hair in a slicked-back ponytail",
      "marca": "sharp brows and a small mole under one eye"},
-    {"idade": 26, "corpo": "curvy and confident with a very narrow waist",
+    {"idade": 21, "corpo": "curvy and confident with a very narrow waist",
      "cabeca": "honey-red hair falling in soft waves",
      "marca": "a dense spray of freckles across her nose"},
-    {"idade": 29, "corpo": "slim and elegant with long arms",
+    {"idade": 22, "corpo": "slim and elegant with long arms",
      "cabeca": "black hair in a smooth shoulder-length cut",
      "marca": "a thin white streak at her temple and dark eyes"},
-    {"idade": 25, "corpo": "tall with a small waist and full shoulders",
+    {"idade": 21, "corpo": "tall with a small waist and full shoulders",
      "cabeca": "strawberry-blonde hair in a high loose bun",
      "marca": "green eyes and a small beauty spot on her cheekbone"},
 ]
@@ -1642,93 +1640,93 @@ REFS = [
 # ⚠️ Ele existe para encenar o espanto NO LUGAR do espectador, que e' a mecanica
 # da plateia congelada do ESCANDALO. Por isso ele olha o COPO, nunca a lente.
 HOMENS = [
-    {"id": "grisalho_barbudo", "idade": 58,
+    {"id": "grisalho_barbudo", "idade": 78,
      "marca": "a heavy-set build, thick silver hair and a short grey beard, "
               "weathered skin and a pale scar through one eyebrow",
      "roupa": "a plain navy work shirt"},
-    {"id": "careca_bigode", "idade": 63,
+    {"id": "careca_bigode", "idade": 81,
      "marca": "a stocky build, a bald crown with white hair at the sides and a "
               "thick moustache, ruddy skin and a large mole on his cheek",
      "roupa": "a heather-grey pocket tee"},
-    {"id": "cabelo_farto", "idade": 46,
-     "marca": "a tall lean frame, a full head of dark hair going grey at the "
+    {"id": "cabelo_farto", "idade": 73,
+     "marca": "a tall lean frame, a full head of thick white hair, thinning at the "
               "temples, clean-shaven, with a deep cleft in his chin",
      "roupa": "an olive canvas shirt with the sleeves rolled"},
-    {"id": "sardas_ruivo", "idade": 41,
-     "marca": "a wiry build, coppery hair and heavy freckling across the nose, "
+    {"id": "sardas_ruivo", "idade": 71,
+     "marca": "a wiry build, faded coppery hair and heavy freckling across the nose, "
               "with a gap between his front teeth",
      "roupa": "a faded red flannel shirt"},
-    {"id": "fade_grisalho", "idade": 55,
+    {"id": "fade_grisalho", "idade": 77,
      "marca": "a broad-shouldered build, a close grey fade and a neat chinstrap "
               "beard, smooth skin and a small gold stud in one ear",
      "roupa": "a slate-blue polo shirt"},
-    {"id": "locs_oculos", "idade": 49,
+    {"id": "locs_oculos", "idade": 75,
      "marca": "a solid build, salt-and-pepper locs gathered back, wire-rimmed "
               "glasses and a raised mole beside his right eye",
      "roupa": "a charcoal henley with the sleeves pushed up"},
-    {"id": "corte_militar", "idade": 52,
+    {"id": "corte_militar", "idade": 76,
      "marca": "a thickset build, an iron-grey brush cut, sun-weathered skin and "
               "a broad nose broken once",
      "roupa": "a mustard snap-button shirt"},
-    {"id": "cavanhaque", "idade": 60,
+    {"id": "cavanhaque", "idade": 79,
      "marca": "a barrel-chested build, a shaved head and a neat white goatee, "
               "with a white streak in one eyebrow",
      "roupa": "a cream short-sleeve camp shirt"},
-    {"id": "onda_longa", "idade": 44,
-     "marca": "a slim build, wavy dark hair worn a little long at the collar, "
+    {"id": "onda_longa", "idade": 72,
+     "marca": "a slim build, wavy iron-grey hair worn a little long at the collar, "
               "clean-shaven, with a deep dimple in his left cheek",
      "roupa": "a forest-green work shirt"},
-    {"id": "sobrancelha_oculos", "idade": 66,
+    {"id": "sobrancelha_oculos", "idade": 82,
      "marca": "a gaunt frame, white hair combed back, heavy black-framed "
               "glasses and deeply lined skin",
      "roupa": "a blue-and-white checked shirt"},
-    {"id": "queixo_fendido", "idade": 47,
-     "marca": "a compact build, sandy hair going grey at the sides, tanned skin "
+    {"id": "queixo_fendido", "idade": 74,
+     "marca": "a compact build, sandy hair gone white at the sides, tanned skin "
               "and a strong cleft chin",
      "roupa": "a rust-red pocket tee"},
-    {"id": "afro_curto", "idade": 54,
+    {"id": "afro_curto", "idade": 77,
      "marca": "a burly build, a short grey afro and a broad open face, with a "
               "small birthmark high on one cheek",
      "roupa": "a sand-coloured linen shirt"},
     # + 2026-08-05, mesma ordem do operador. Porte, cabeca e pelo facial variam
     # juntos: dois homens de cabelo diferente e mesmo porte leem como o mesmo.
-    {"id": "bigode_farto", "idade": 57,
-     "marca": "a lean upright frame, dark hair combed to one side and a thick "
+    {"id": "bigode_farto", "idade": 78,
+     "marca": "a lean upright frame, white hair combed to one side and a thick "
               "moustache, with deep laugh lines around the eyes",
      "roupa": "a striped short-sleeve shirt"},
-    {"id": "calvo_barba", "idade": 51,
+    {"id": "calvo_barba", "idade": 75,
      "marca": "a heavy build, a shaved head and a full salt-and-pepper beard, "
               "with a broad flat nose",
      "roupa": "a denim work shirt"},
-    {"id": "branco_liso", "idade": 62,
+    {"id": "branco_liso", "idade": 80,
      "marca": "a narrow build, straight white hair falling over the forehead, "
               "hollow cheeks and a cleft chin",
      "roupa": "a pale blue oxford shirt"},
-    {"id": "locs_curtas", "idade": 45,
+    {"id": "locs_curtas", "idade": 73,
      "marca": "a stocky athletic build, short twisted locs and a trimmed "
               "goatee, with a small scar on his temple",
      "roupa": "a burgundy polo shirt"},
-    {"id": "sobrancelha_farta", "idade": 59,
+    {"id": "sobrancelha_farta", "idade": 79,
      "marca": "a solid build, thinning grey hair and very heavy dark eyebrows, "
               "with a bulbous nose",
      "roupa": "a khaki utility shirt"},
-    {"id": "queimado_sol", "idade": 48,
-     "marca": "a rangy build, sun-bleached brown hair and a deep tan line "
+    {"id": "queimado_sol", "idade": 74,
+     "marca": "a rangy build, sun-bleached white hair and a deep tan line "
               "across the forehead, with a squint at the corners of both eyes",
      "roupa": "a faded teal work shirt"},
-    {"id": "cavanhaque_branco", "idade": 65,
+    {"id": "cavanhaque_branco", "idade": 82,
      "marca": "a spare frame, close-cropped white hair and a white goatee, "
               "with prominent ears",
      "roupa": "a grey chambray shirt"},
-    {"id": "cacheado_grisalho", "idade": 43,
-     "marca": "a broad build, dense curly hair going grey at the temples and a "
+    {"id": "cacheado_grisalho", "idade": 72,
+     "marca": "a broad build, dense curly hair gone grey all over, thin at the temples and a "
               "strong square jaw, with a chipped front tooth",
      "roupa": "a black crew-neck tee"},
-    {"id": "bochechudo", "idade": 56,
-     "marca": "a round-faced heavy build, dark hair receding at the temples "
+    {"id": "bochechudo", "idade": 78,
+     "marca": "a round-faced heavy build, grey hair receding at the temples "
               "and full cheeks, with a dimpled chin",
      "roupa": "a plaid flannel shirt"},
-    {"id": "magro_alto", "idade": 50,
+    {"id": "magro_alto", "idade": 75,
      "marca": "a very tall gaunt frame, iron-grey hair cropped short and a "
               "long straight nose, with deep-set eyes",
      "roupa": "a white undershirt beneath an open work shirt"},
@@ -3685,15 +3683,26 @@ def autoteste(n=600):
             falhas.append("%s: %d de %d nunca sorteados"
                           % (eixo, len(pool) - len(vistos[eixo]), len(pool)))
     # ⭐ o piso de 8 opcoes por eixo, com os pools DESTE angulo
-    for nome, pool in (("MUNDOS", MUNDOS), ("REFS", REFS), ("PROPS", PROPS),
+    # ⛔⛔ PROPS SAIU DO PISO DE 8 — 2026-08-11, decisao declarada do operador.
+    # *"quero que sempre a referencia de mole que a amiga esta' segurando ao
+    # lado esquerdo seja uma linguica pequena ou geoduck pequeno, algo que
+    # realmente remeta a moleza e pequeno"*.
+    # O pool caiu de ONZE pares para DOIS, e a perda de entropia e' real: o
+    # objeto da comparacao passa a alternar entre duas coisas so'. Ele sabe e
+    # escolheu — a leitura de MOLE E PEQUENO vale mais que a variedade de
+    # legume, porque e' ela que faz o espectador se reconhecer no lado errado.
+    # ⚠️ O piso NAO foi apagado: virou 2, e o eixo saiu da lista dos que
+    # respondem ao MIN_OPCOES. Guarda que some quando incomoda deixa o proximo
+    # encolhimento passar calado.
+    for nome, pool in (("MUNDOS", MUNDOS), ("REFS", REFS),
                        ("DIAGNOSTICOS", DIAGNOSTICOS), ("VIRADAS", VIRADAS),
                        ("FECHOS", FECHOS), ("EFEITOS", EFEITOS),
                        ("REACOES", REACOES), ("FOLLOWS", FOLLOWS)):
         if len(pool) < MIN_OPCOES:
             falhas.append("eixo %s com %d opcoes (minimo %d)"
                           % (nome, len(pool), MIN_OPCOES))
-    if len(PROPS) < 5:
-        falhas.append("PROPS abaixo do piso empirico de 5")
+    if len(PROPS) < 2:
+        falhas.append("PROPS abaixo do piso declarado de 2 (linguica e geoduck)")
     for f, q in fam.items():
         if q > n * 0.25:
             falhas.append("familia %s levou %.1f%% do lote (teto 25%%)"
