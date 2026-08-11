@@ -1445,6 +1445,45 @@ idade`) roda junto com o positivo.
 
 ---
 
+## 38. ⛔⛔ O CONTROLE NEGATIVO QUE PLANTAVA **METADE** DO DEFEITO — e ficou cego no dia em que o conteúdo mudou
+
+**Onde:** `dupla16_short.py` e `trio16_short.py`, controle `[T16-1]` (dois copos
+altos no mesmo quadro), 2026-08-11.
+
+A lente T16-1 conta `tall clear glass` na IMAGE 02/02 e acusa quando há **mais
+de um** — o objeto da keyword está na mão dela, e um segundo copo na bancada faz
+o Veo escolher o da bancada. O controle negativo injetava **um** copo no bloco e
+esperava a acusação. Funcionava, porque o outro copo vinha de graça: o `BO_COPO`
+**era** um `tall clear glass`.
+
+Aí o operador mandou trocar o copo pela **tigela de gelatina** (*"não faz
+sentido o copo sendo que o CTA é sobre gelatina"*). A metade emprestada sumiu, o
+total caiu para 1, e o controle deixou de exercitar a lente.
+
+⭐ **No DUPLA o autoteste gritou na hora** (`>> O AUTOTESTE ESTÁ CEGO`) — é para
+isso que os controles rodam a cada execução. **No TRIO, não**: a mesma troca
+tinha sido feita horas antes e eu medi a idade, o lint e a entrega, mas **não
+rodei o autoteste**. O irmão ficou com a lente morta até o autoteste do DUPLA
+denunciar o padrão.
+
+> **Controle negativo que empresta parte do defeito do conteúdo de produção
+> morre calado quando o conteúdo muda.** O controle tem de plantar o defeito
+> **inteiro**, sozinho, sem depender de nenhuma string que o operador possa
+> mandar trocar amanhã.
+
+⚠️ E o corolário operacional: **toda alteração de motor termina em
+`--autoteste`**, mesmo quando a medição própria já deu limpa. Medir o que eu
+mudei prova a mudança; o autoteste prova que **as lentes que eu não mudei
+continuam vendo**.
+
+⛔ Segundo achado do mesmo dia, no mesmo par: **comentário que descreve objeto
+que saiu é armadilha.** Debaixo da tigela ficou herdada a regra *"UM canudo —
+eram dois e o operador reprovou o render"*. Tigela não tem canudo. O próximo
+leitor devolve o canudo achando que corrige um esquecimento. Regra de objeto
+morto vira **história datada**, nunca ordem no presente.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1452,6 +1491,16 @@ idade`) roda junto com o positivo.
       não aparecem em nenhum medidor de copy porque nenhum medidor de copy olha
       para lá
 - [ ] **Lente nova? Reinjete o defeito que a motivou e veja-a gritar** (§33).
+- [ ] **`--autoteste` DEPOIS de qualquer alteração de motor**, mesmo com a
+      medição própria limpa (§38). Medir o que mudei prova a mudança; o
+      autoteste prova que as lentes que **não** mudei continuam vendo — foi
+      assim que apareceu um controle cego há horas no motor irmão
+- [ ] **O controle planta o defeito INTEIRO** (§38). Controle que injeta metade e
+      empresta a outra metade de uma string de produção morre calado no dia em
+      que o operador manda trocar essa string
+- [ ] **Trocou um objeto? Varra os comentários dele** (§38). Regra de objeto que
+      saiu (`UM canudo`, debaixo de uma tigela) é convite para o próximo leitor
+      devolver o objeto
 - [ ] **Escreveu `.py` por heredoc? Varra bytes de controle** (§37). `\b` e `\1`
       dentro de heredoc não-citado chegam ao arquivo como `\x08` e `\x01`. O
       Python compila, o editor não mostra nada, e o regex simplesmente **nunca

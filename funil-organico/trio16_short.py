@@ -378,8 +378,11 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 # tigelas de gelatina no mesmo quadro — o defeito dos dois copos altos (T16-1)
 # repetido com outro objeto.
 BO_COPO = ("a shallow clear glass bowl filled with vivid purple gelatin cubes")
-# ⛔ UM canudo. Eram dois e o operador reprovou o render: *"dois canudos? quero
-# so' um"*. Dois canudos leem como bebida COMPARTILHADA — e este copo e' dele.
+# ⚠️ AQUI FICAVA A REGRA DO CANUDO (*"dois canudos? quero so' um"*, render
+# reprovado pelo operador). Ela morreu com o copo — tigela nao tem canudo — e
+# esta' registrada so' como historia. Comentario que descreve um objeto que saiu
+# e' armadilha: o proximo leitor devolve o canudo achando que corrige um
+# esquecimento.
 
 # ⭐⭐ BO6 — O HOMEM MUDO. Ordem do operador: *"no take final, alem do ref
 # falando, havera um homem sempre atras, com cara de espanto e surpresa e
@@ -3558,6 +3561,20 @@ def lint(spec, blocos):
         ach.append(("ERRO", "DU2: a tigela de gelatina na cena 1 — entrega o "
                             "mecanismo antes da promessa"))
 
+    # --- T16-1b: ⭐⭐ UMA TIGELA DE GELATINA SO' -----------------------------
+    # ⛔ Desde 2026-08-11 a tigela esta' NA MAO dela (`BO_COPO`) e saiu da
+    # bancada no mesmo movimento. As duas juntas repetem o defeito dos dois
+    # copos altos (T16-1) com outro objeto: o Veo escolhe uma, normalmente a da
+    # bancada, e o objeto da KEYWORD sai da mao no frame em que a boca diz
+    # `gelatin,`.
+    # ⚠️ A lente nasceu no DUPLA 16, no mesmo dia, e vem para ca' junto — fix
+    # aplicado num motor e nao no irmao e' o §29, e este par ja' o pagou.
+    _tigelas = i2.lower().count("gelatin cubes")
+    if _tigelas > 1:
+        ach.append(("ERRO", "T16-1b: %d tigelas de gelatina na IMAGE 02/02 — a "
+                            "da bancada voltou e disputa com a da MAO dela, que "
+                            "e' o objeto da keyword" % _tigelas))
+
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
 
     # ⛔⛔ AS TRAVAS DE FORMA DO GEODUCK, que o EXTERIOR pagou em recusa (EX7).
@@ -3870,9 +3887,17 @@ def autoteste(n=600):
                     "e' o defeito de 200/200 do TRIO")
 
     # ⭐ [T16-1] os dois copos altos — a armadilha da fusao das cenas 2 e 3
+    # ⛔⛔ ESTE CONTROLE PLANTAVA MEIO DEFEITO: injetava UM copo alto e contava
+    # com o outro vindo do `BO_COPO`, que era um `tall clear glass`. Quando o
+    # operador trocou o copo pela TIGELA (2026-08-11), a metade emprestada sumiu
+    # e o controle ficou CEGO — a lente parou de ser exercitada e ninguem soube
+    # ate' o autoteste do irmao DUPLA 16 acusar a mesma coisa.
+    # ⭐ Agora ele planta o defeito INTEIRO. Licao: controle que empresta parte
+    # do defeito do conteudo de producao morre calado quando o conteudo muda.
     b16 = dict(b)
     b16["IMAGE 02/02"] = b16["IMAGE 02/02"].replace(
-        "On the", "On the surface stands a tall clear glass, and on the", 1)
+        "On the", "On the surface stand a tall clear glass and a second tall "
+                  "clear glass, and on the", 1)
     if not any("T16-1" in msg for _, msg in lint(s, b16)):
         ctrl.append("[T16-1] NAO acusa dois copos altos na cena 2 — o copo da "
                     "bancada volta a disputar com o da mao dela")
@@ -3919,6 +3944,13 @@ def autoteste(n=600):
         "vivid purple gelatin cubes", "sliced apples")
     if not any("DU2" in msg for _, msg in lint(s, b_du2)):
         ctrl.append("[DU2] NAO acusa a cena 2 sem a tigela de gelatina")
+
+    # ⭐ [T16-1b] a tigela de volta na bancada, disputando com a da mao
+    b_2t = dict(b)
+    b_2t["IMAGE 02/02"] += (" A shallow bowl of vivid purple gelatin cubes "
+                            "sits untouched at the edge.")
+    if not any("T16-1b" in msg for _, msg in lint(s, b_2t)):
+        ctrl.append("[T16-1b] NAO acusa DUAS tigelas de gelatina na cena 2")
 
     # ⭐ [BO16] o deitico orfao — a ordem do operador em um controle
     s16 = dict(s, falas=list(s["falas"]))

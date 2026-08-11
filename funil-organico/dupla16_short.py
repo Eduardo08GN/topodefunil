@@ -18,8 +18,8 @@ O ARCO — 2 cenas de 8s, destino AdBatch Vertical 2:
     cena 1  A ISCA    duas mulheres EM PE lado a lado na cozinha, cada uma com
                       um prop na altura do peito · o deitico duplo + o fecho
     cena 2  A PROVA   a mesma cozinha: a bancada da receita, ela com o PROP
-                      GIGANTE numa mao e o COPO na outra, a amiga atras ·
-                      o gelatin trick + a promessa + o CTA
+                      GIGANTE numa mao e a TIGELA DE GELATINA na outra, a
+                      amiga atras · o gelatin trick + a promessa + o CTA
 
 ⭐ COMO AS 3 VIRARAM 2. As tres cenas do DUPLA ja' acontecem na MESMA cozinha
 (a cena 3 abre com `same place, same background`), entao a bancada da cena 2 e
@@ -201,8 +201,14 @@ BO_DUPLA = (
 # sem placeholder, para o `lint_painel_honesto` conseguir prova-lo no bloco.
 # ⚠️ Custou 600 acusacoes no TRIO 16 descobrir isso: a lente procura o valor
 # VERBATIM, e campo com %(raro_img)s dentro nunca aparece cru no prompt.
-BANCADA16_CAUDA = (", %(raro_img)s, two raw beetroots, two carrots and a "
-                   "shallow bowl of vivid purple gelatin cubes")
+# ⛔⛔ 2026-08-11 — A TIGELA DE GELATINA SAIU DAQUI porque foi para A MAO DELA
+# (`BO_COPO`). Ela era a prova do mecanismo em cima da bancada; agora a prova
+# esta' no objeto da keyword, que e' onde o olho ja' estava. Manter as duas poe
+# DUAS tigelas de gelatina no mesmo frame, e o Veo escolhe uma — normalmente a da
+# bancada, tirando a keyword da mao. E' o defeito T16-1 com outro objeto.
+# ⚠️ A lente DU2 continua valendo e continua verde: ela cobra `gelatin cubes` na
+# cena 2, e o literal agora chega pelo `BO_COPO`.
+BANCADA16_CAUDA = (", %(raro_img)s, two raw beetroots and two carrots")
 
 PREPAROS = [
     {"id": "dois_jarros",
@@ -310,8 +316,9 @@ BO_AMIGA_FUNDO = (
 BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and "
                "nothing is added to it or taken away.")
 
-# ⭐ BO5 — O COPO DO PAYOFF, lido em 0:30: ela empurra o copo para a lente com a
-# mao, o liquido opaco e cremoso, dois canudos dentro.
+# ⭐ BO5 — O OBJETO DO PAYOFF NA MAO DELA. Era o copo do render lido em 0:30 (ela
+# empurrava para a lente um liquido opaco e cremoso); desde 2026-08-11 e' a
+# TIGELA DE GELATINA — ver o bloco logo acima da constante.
 # ⛔ Ele so' existe na CENA 3, e e' o objeto da keyword — esta' na mao no frame em
 # que a boca diz `gelatin,`. Mostra-lo antes entrega o payoff antes da promessa.
 # ⛔ Aqui estava `... a thick pale drink, two a single paper straw standing in
@@ -319,10 +326,21 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 # que trocou "paper straws" por "a single paper straw" e deixou o "two" da linha
 # de cima. Consertei no PLACA e nao aqui: correcao aplicada num motor e nao no
 # irmao e' o mesmo modo de falha que o §29 descreve, na direcao oposta.
-BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, a "
-           "single paper straw standing in it")
-# ⛔ UM canudo. Eram dois e o operador reprovou o render: *"dois canudos? quero
-# so' um"*. Dois canudos leem como bebida COMPARTILHADA — e este copo e' dele.
+# ⛔⛔ 2026-08-11 — O COPO SAIU, A TIGELA DE GELATINA ENTROU. Ordem do operador:
+# *"o agente dupla 16 short fica mostrando shake no take 2, nao faz sentido pois
+# o CTA e' gelatin, altere para sempre gerar ela segurando a tigela transparente
+# com gelatina dentro"*.
+# ⭐ E ele esta' certo pela MECANICA do funil, nao por estetica: a palavra que o
+# espectador tem de digitar e' GELATIN, e o objeto na mao dela no frame em que a
+# boca diz `gelatin,` era um copo de bebida opaca — um SHAKE. O objeto da
+# keyword nao mostrava a keyword.
+# ⚠️ Mesma cirurgia feita no TRIO 16 hoje. Correcao aplicada num motor e nao no
+# irmao e' o modo de falha do §29, e este arquivo ja' o pagou uma vez (o literal
+# quebrado do canudo, consertado no PLACA e nao aqui).
+# ⛔ A GELATINA SAIU DA BANCADA no mesmo movimento (`BANCADA16_CAUDA`): deixar as
+# duas poria DUAS tigelas de gelatina no mesmo quadro — o defeito dos dois copos
+# altos (T16-1) repetido com outro objeto, e o Veo escolhendo a da bancada.
+BO_COPO = ("a shallow clear glass bowl filled with vivid purple gelatin cubes")
 
 # ⭐⭐ BO6 — O HOMEM MUDO. Ordem do operador: *"no take final, alem do ref
 # falando, havera um homem sempre atras, com cara de espanto e surpresa e
@@ -2420,7 +2438,11 @@ def montar(spec):
         # [7] deste angulo.
         # ⛔ `nao_toca` continua: sem ele o Veo comeca a mexer em tudo o que
         # esta' na bancada e a continuidade morre dentro dos 8 segundos.
-        ("She holds the glass steady at chest height the whole time and never "
+        # ⛔ `the bowl`, nao `the glass` — a IMAGE 02/02 poe uma TIGELA na mao
+        # dela desde 2026-08-11. O TAKE que mandava segurar `the glass` era a
+        # contradicao IMAGE x TAKE de sempre, e o Veo a resolve trocando o
+        # objeto: a tigela vira copo no meio dos 8 segundos.
+        ("She holds the bowl steady at chest height the whole time and never "
          "sets it down. Her other hand keeps the piece upright and never lowers "
          "it. " + v["nao_toca"]),
     ]
@@ -2846,6 +2868,21 @@ def lint(spec, blocos):
                             "esta' usando a string do DUPLA (`bancada`) em vez "
                             "da `aparato16`" % _copos))
 
+    # --- T16-1b: ⭐⭐ UMA TIGELA DE GELATINA SO' -----------------------------
+    # ⛔ Desde 2026-08-11 a tigela de gelatina esta' NA MAO dela, e ela saiu da
+    # `BANCADA16_CAUDA` no mesmo commit. As duas juntas repetem o defeito dos
+    # dois copos altos com outro objeto: o Veo escolhe uma, normalmente a da
+    # bancada, e o objeto da KEYWORD sai da mao no frame em que a boca diz
+    # `gelatin,`.
+    # ⚠️ Esta lente existe porque a volta e' silenciosa: quem reescrever uma
+    # conformacao ou a cauda da bancada poe a tigela de volta sem perceber, e o
+    # defeito so' aparece no render.
+    _tigelas = i2.lower().count("gelatin cubes")
+    if _tigelas > 1:
+        ach.append(("ERRO", "T16-1b: %d tigelas de gelatina na IMAGE 02/02 — a "
+                            "da bancada voltou e disputa com a da MAO dela, que "
+                            "e' o objeto da keyword" % _tigelas))
+
     # --- BO6: ⭐⭐ AS DUAS MULHERES, e SO' elas ------------------------------
     # ⛔⛔ REESCRITO. As tres regras que estavam aqui vigiavam um HOMEM MUDO —
     # heranca literal do BOTICA, num angulo que o operador definiu como *"duas
@@ -2981,9 +3018,15 @@ def lint(spec, blocos):
     #    de FUNCAO: a fala diz `and a secret gelatin trick` e a bancada nao tinha
     #    gelatina nenhuma — o espectador ouve o mecanismo e nao ve' onde ele mora.
     # ⚠️ E ela SO' existe na cena 2: na 1 entregaria o mecanismo antes da
-    #    promessa, na 3 competiria com o copo, que e' o objeto da keyword.
+    #    promessa.
+    # ⛔⛔ 2026-08-11 — A TIGELA MUDOU DE LUGAR, A LENTE NAO. Ela saiu da bancada
+    #    e foi para A MAO dela (`BO_COPO`), por ordem do operador. O literal
+    #    `gelatin cubes` continua tendo de estar na cena 2 — e continua estando —
+    #    so' que agora no objeto da keyword em vez de no cenario. A lente cobra
+    #    a PRESENCA do mecanismo no quadro, que e' o que importa, e por isso
+    #    sobreviveu a' troca sem uma linha de codigo.
     if "gelatin cubes" not in i2:
-        ach.append(("ERRO", "DU2: a bancada da cena 2 sem a tigela de cubos de "
+        ach.append(("ERRO", "DU2: a cena 2 sem a tigela de cubos de "
                             "gelatina — a fala nomeia o mecanismo e o quadro "
                             "nao mostra onde ele mora"))
     if "gelatin cubes" in i1:
@@ -3085,7 +3128,8 @@ def resumo_pt(spec):
     return ("16s · duas mulheres %s de %d e %d anos, em %s (%s). Cena 1: lado a "
             "lado, uma com %s e a outra com %s, erguidos a altura do peito. "
             "Cena 2: a mesma cozinha — a bancada da receita (%s) com %s, ela "
-            "centrada com o prop grande numa mao e o copo na outra, e a amiga "
+            "centrada com o prop grande numa mao e a tigela de gelatina na "
+            "outra, e a amiga "
             "atras.%s"
             % (spec["etnia"], spec["ref"]["idade"], spec["amiga"]["idade"],
                m["id"].replace("_", " "), m["familia"],
@@ -3292,9 +3336,18 @@ def autoteste(n=600):
                     "que o operador reprovou em 2026-08-08")
 
     # ⭐ [T16-1] os dois copos altos — a armadilha da fusao
+    # ⛔⛔ ESTE CONTROLE PLANTAVA MEIO DEFEITO. Ele injetava UM copo alto e
+    # contava com o outro vindo do `BO_COPO`, que era um `tall clear glass`.
+    # Quando o operador trocou o copo pela TIGELA DE GELATINA (2026-08-11), a
+    # metade emprestada sumiu, o total caiu para 1 e o controle acusou cegueira
+    # — corretamente. Controle que depende do conteudo de producao para atingir
+    # o limiar fica cego EM SILENCIO no dia em que o conteudo muda; aqui ele
+    # gritou porque o autoteste roda os controles a cada execucao.
+    # ⭐ Agora ele planta o defeito INTEIRO: dois copos, sem emprestar nada.
     b161 = dict(b)
     b161["IMAGE 02/02"] = b161["IMAGE 02/02"].replace(
-        "On the", "On the surface stands a tall clear glass, and on the", 1)
+        "On the", "On the surface stand a tall clear glass and a second tall "
+                  "clear glass, and on the", 1)
     if not any("T16-1" in msg for _, msg in lint(s, b161)):
         ctrl.append("[T16-1] NAO acusa dois copos altos na cena 2")
 
@@ -3349,6 +3402,13 @@ def autoteste(n=600):
         "vivid purple gelatin cubes", "sliced apples")
     if not any("DU2" in msg for _, msg in lint(s, b_du2)):
         ctrl.append("[DU2] NAO acusa a cena 2 sem a tigela de gelatina")
+
+    # ⭐ [T16-1b] a tigela de volta na bancada, disputando com a da mao
+    b_2t = dict(b)
+    b_2t["IMAGE 02/02"] += (" A shallow bowl of vivid purple gelatin cubes "
+                            "sits untouched at the edge.")
+    if not any("T16-1b" in msg for _, msg in lint(s, b_2t)):
+        ctrl.append("[T16-1b] NAO acusa DUAS tigelas de gelatina na cena 2")
 
     # ⭐ [BO16] o deitico orfao — a ordem do operador em um controle
     s16 = dict(s, falas=list(s["falas"]))
