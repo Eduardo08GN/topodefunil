@@ -1,4 +1,4 @@
-#Requires AutoHotkey v2.0
+﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
 SendMode "Event"          ; ⚠️ Event, nao Input: tkinter e Chrome perdem
                           ;    entrada sintetica rapida demais.
@@ -143,6 +143,158 @@ respirar() {
         Sleep Random(1200, 3400)
 }
 
+; =============================================================================
+;  ⭐⭐ AS SESSOES — 2026-08-11
+; =============================================================================
+; ⛔ O PROBLEMA QUE ISTO RESOLVE, e a causa nao era o que parecia. O operador:
+; *"quando aperto F10 ele sempre abre minha sessao do Google Flow logada no meu
+; login principal; preciso que abra tb a janela dessas outras sessoes"*.
+;
+; ⚠️ NAO ERA PREFERENCIA DO AHK. O script procurava a janela pelo titulo
+; `Google Flow` (INI `config/titulo_chrome`), e as janelas do Dolphin NAO TEM
+; esse texto no titulo — elas se chamam pelo NOME DO PERFIL. Medido na maquina
+; do operador:
+;     chrome.exe .... "Google Flow - bladerunner2049v2 - Google Chrome"
+;     anty.exe ...... "CTA - O2 Ricardo"
+;     anty.exe ...... "CTA - 03 Neusa"
+; A busca so' casava com a primeira. Ele nunca "preferia" o principal: as
+; outras eram invisiveis para ele.
+;
+; ⭐ O DISCRIMINANTE E' O EXECUTAVEL, nao o titulo: o Dolphin roda `anty.exe`
+; (um processo por perfil aberto) e o Chrome roda `chrome.exe`. Titulo muda
+; quando se troca de aba; executavel nao.
+;
+; ⛔⛔ E POR ISSO O ALVO PASSOU A SER O HWND, e nao mais uma string. O
+; `irParaAba()` troca a aba, a aba MUDA O TITULO DA JANELA — um `WinActivate`
+; por titulo no meio do laco podia deixar de achar a mesma janela que ativou no
+; comeco. Com o handle isso nao tem como acontecer.
+;
+; ⚠️ SO' JANELAS JA' ABERTAS — decisao do operador. A API local do Dolphin
+; existe (localhost:3001 responde) e daria para dar START num perfil parado,
+; mas exigiria o token dele gravado em arquivo. Perfil fechado aparece na lista
+; como FECHADA, para ele saber que precisa abrir — some da lista e' pior, porque
+; parece que o script deixou de enxergar.
+
+SESSOES_ESPERADAS := "CTA - 01,CTA - O2 Ricardo,CTA - 03 Neusa,CTA - 04 Isis"
+
+; ⛔ Devolve [{hwnd, titulo, tipo}] de tudo que serve como alvo AGORA.
+listarSessoes() {
+    global INI
+    achadas := []
+    ; as do Dolphin: um processo `anty.exe` por perfil aberto
+    for hwnd in WinGetList("ahk_exe anty.exe") {
+        t := WinGetTitle(hwnd)
+        if (t != "")
+            achadas.Push({hwnd: hwnd, titulo: t, tipo: "Dolphin"})
+    }
+    ; a principal: Chrome com a AdBatch aberta
+    tC := IniRead(INI, "config", "titulo_chrome", "Google Flow")
+    for hwnd in WinGetList("ahk_exe chrome.exe") {
+        t := WinGetTitle(hwnd)
+        if (t != "" && InStr(t, tC))
+            achadas.Push({hwnd: hwnd, titulo: t, tipo: "Chrome"})
+    }
+    return achadas
+}
+
+; ⛔ O seletor. Devolve o HWND escolhido, ou 0 se o operador desistir.
+escolherSessao() {
+    global INI, SESSOES_ESPERADAS
+    lista := listarSessoes()
+    if (lista.Length = 0) {
+        MsgBox("Nenhuma sessao aberta.`n`nAbra o perfil no Dolphin (ou a aba "
+               "da AdBatch no Chrome) e rode de novo.", "Piloto AdBatch", 48)
+        return 0
+    }
+
+    txt := "Em qual sessao rodar?`n`n"
+    for i, s in lista
+        txt .= i ". [" s.tipo "] " s.titulo "`n"
+
+    ; ⚠️ o que esta' FECHADO tambem aparece — sumir da lista parece defeito do
+    ; script, e o operador ficaria procurando por que a sessao "desapareceu".
+    esperadas := StrSplit(IniRead(INI, "sessoes", "esperadas",
+                                  SESSOES_ESPERADAS), ",")
+    fechadas := []
+    for nome in esperadas {
+        nome := Trim(nome)
+        if (nome = "")
+            continue
+        aberta := false
+        for s in lista
+            if InStr(s.titulo, nome)
+                aberta := true
+        if !aberta
+            fechadas.Push(nome)
+    }
+    if (fechadas.Length > 0) {
+        txt .= "`nfechadas (abra no Dolphin para usar):`n"
+        for nome in fechadas
+            txt .= "   - " nome "`n"
+    }
+
+    r := InputBox(txt, "Piloto AdBatch — sessao", "w420 h" (190 + 18 * (lista.Length + fechadas.Length)), "1")
+    if (r.Result != "OK")
+        return 0
+    if !IsInteger(r.Value) || Integer(r.Value) < 1 || Integer(r.Value) > lista.Length {
+        MsgBox("Numero fora da lista.", "Piloto AdBatch", 48)
+        return 0
+    }
+    return lista[Integer(r.Value)].hwnd
+}
+
+; ⛔⛔ A GEOMETRIA — a trava que impede o pior desfecho deste script.
+; Os pontos calibrados sao coordenadas de TELA (`CoordMode "Mouse", "Screen"`).
+; Se a janela escolhida nao estiver do mesmo tamanho e no mesmo lugar da janela
+; em que o F9 calibrou, TODO clique cai fora do alvo — e o script segue rodando,
+; clicando em lugar nenhum e gastando credito, sem erro nenhum na tela.
+; ⭐ Duas defesas, nesta ordem: MAXIMIZA a janela (e' o que torna as geometrias
+; iguais na pratica) e depois COMPARA com a geometria gravada na calibracao. Se
+; diferir, ABORTA — clicar no escuro e' pior que nao rodar.
+prepararJanela(hwnd) {
+    global INI
+    if !WinExist("ahk_id " hwnd)
+        throw Error("a janela escolhida foi fechada")
+    if (WinGetMinMax("ahk_id " hwnd) != 1)
+        WinMaximize "ahk_id " hwnd
+    WinActivate "ahk_id " hwnd
+    if !WinWaitActive("ahk_id " hwnd, , 4)
+        throw Error("nao consegui ativar a janela escolhida")
+    Sleep 250
+
+    WinGetPos(&x, &y, &w, &h, "ahk_id " hwnd)
+    cw := IniRead(INI, "pontos", "calib_w", "")
+    ch := IniRead(INI, "pontos", "calib_h", "")
+    ; ⚠️ INI ANTERIOR A ESTA TRAVA nao tem a geometria gravada. Obrigar uma
+    ; recalibracao inteira dos seis pontos por causa disso seria punir o
+    ; operador por uma mudanca minha — e ele PODE ja' ter calibrado numa
+    ; janela do mesmo tamanho desta. Entao a decisao passa a ser dele, com a
+    ; informacao na tela: adotar esta geometria, ou recalibrar.
+    ; ⛔ O que NAO se faz e' adotar em silencio: se os pontos vieram de uma
+    ; janela de outro tamanho, todo clique cai fora e o credito vai embora
+    ; sem uma linha de erro.
+    if (cw = "" || ch = "") {
+        r := MsgBox("Esta calibracao e' anterior a trava de geometria e nao "
+                    "sabe em que tamanho de janela foi feita.`n`n"
+                    "A janela escolhida esta' " w "x" h ".`n`n"
+                    "SIM  = adotar este tamanho como o da calibracao`n"
+                    "       (so' clique SIM se os 6 pontos foram apontados "
+                    "numa janela deste mesmo tamanho)`n`n"
+                    "NAO  = cancelar e rodar o F9 aqui",
+                    "Piloto AdBatch — geometria", 4 + 48)
+        if (r != "Yes")
+            throw Error("cancelado — rode o F9 nesta janela")
+        IniWrite w, INI, "pontos", "calib_w"
+        IniWrite h, INI, "pontos", "calib_h"
+        IniWrite WinGetTitle("ahk_id " hwnd), INI, "pontos", "calib_janela"
+        return
+    }
+    if (Abs(w - Integer(cw)) > 8 || Abs(h - Integer(ch)) > 8)
+        throw Error("a janela esta' " w "x" h " e a calibracao foi feita em "
+                    cw "x" ch ". Os cliques cairiam fora do alvo. "
+                    "Maximize a janela nesta mesma tela, ou rode o F9 aqui.")
+}
+
 F9::  calibrar()
 F10:: rodar(false)
 F8::  rodar(true)
@@ -190,6 +342,19 @@ calibrarMiolo() {
     p := lerPonto("cr_slot1")
     cor := PixelGetColor(p.x, p.y)
     IniWrite cor, INI, "pontos", "cor_vazio"
+
+    ; ⛔⛔ GRAVA A GEOMETRIA DA JANELA CALIBRADA. Sem isto o `prepararJanela`
+    ; nao tem com o que comparar, e o script poderia rodar numa janela de
+    ; outro tamanho clicando fora de todos os alvos — em silencio, gastando
+    ; credito. E' o unico dado que faltava para a trava existir.
+    ; ⚠️ Grava a da janela que estiver ATIVA no fim da calibracao, que e'
+    ; onde o operador acabou de apontar os seis pontos.
+    try {
+        WinGetPos(&cx, &cy, &cw, &ch, "A")
+        IniWrite cw, INI, "pontos", "calib_w"
+        IniWrite ch, INI, "pontos", "calib_h"
+        IniWrite WinGetTitle("A"), INI, "pontos", "calib_janela"
+    }
 
     n := InputBox("Quantas abas do Chrome estao abertas com a AdBatch?",
                   "Piloto AdBatch", "w320 h130", "10")
@@ -330,10 +495,22 @@ rodarMiolo(seco) {
         if (abas < 1)
             throw Error("numero de abas nao configurado — rode F9")
         tAgente := IniRead(INI, "config", "titulo_agente", "AGENTE")
-        tChrome := IniRead(INI, "config", "titulo_chrome", "Google Flow")
     } catch as e {
         return MsgBox("Falta calibrar: " e.Message, "Piloto AdBatch", 16)
     }
+
+    ; ⭐⭐ A SESSAO E' ESCOLHIDA AQUI, a cada F10/F8 — decisao do operador.
+    ; Ele ve' onde vai rodar ANTES de gastar credito, e o ensaio seco (F8)
+    ; passa pelo mesmo caminho de propria: um F8 que testasse outra janela
+    ; que nao a do F10 nao testaria nada.
+    hJanela := escolherSessao()
+    if (hJanela = 0)
+        return
+    try
+        prepararJanela(hJanela)
+    catch as e
+        return MsgBox(e.Message, "Piloto AdBatch", 16)
+    anotar("sessao: " WinGetTitle("ahk_id " hJanela))
 
     anotar((seco ? "ENSAIO SECO" : "EXECUCAO") " — " abas " aba(s)")
 
@@ -352,10 +529,12 @@ rodarMiolo(seco) {
             anotar("aba " i ": roteiro OK, " StrLen(roteiro) " caracteres"
                    (seco ? " [seco: nao gravei]" : ", takes gravados"))
 
-            if !WinExist(tChrome)
-                throw Error("nao achei a janela do Chrome (" tChrome ")")
-            WinActivate tChrome
-            WinWaitActive tChrome, , 4
+            ; ⚠️ pelo HANDLE, nunca pelo titulo: o `irParaAba()` troca de aba
+            ; e a aba MUDA o titulo da janela.
+            if !WinExist("ahk_id " hJanela)
+                throw Error("a janela da sessao foi fechada no meio do ciclo")
+            WinActivate "ahk_id " hJanela
+            WinWaitActive "ahk_id " hJanela, , 4
             pausa(300)
             irParaAba(i)
 
@@ -406,7 +585,11 @@ rodarMiolo(seco) {
                       "conferiu as cinco partes. So' nao colou nem gerou."
                       "`n`nF12 ve' o log. F10 roda de verdade.", "Piloto AdBatch")
     }
-    ronda()
+    ; ⛔ A RONDA RECEBE A MESMA JANELA. Ela le' pixel e clica REGERAR nos
+    ; slots vazios — feita noutra sessao, ela leria a cor errada e clicaria
+    ; em REGERAR de um lote que nao e' este, jogando fora trabalho pronto e
+    ; gastando credito. Era o risco de deixar a busca por titulo aqui.
+    ronda(hJanela)
 }
 
 irParaAba(n) {
@@ -425,13 +608,12 @@ irParaAba(n) {
 }
 
 ; =============================================================================
-ronda() {
+ronda(hJanela) {
     global abortar, INI
     abas    := Integer(IniRead(INI, "config", "abas", "0"))
     corVaz  := IniRead(INI, "pontos", "cor_vazio", "")
     maxR    := Integer(IniRead(INI, "config", "rondas", "6"))
     espera  := Integer(IniRead(INI, "config", "espera_s", "15"))
-    tChrome := IniRead(INI, "config", "titulo_chrome", "Google Flow")
 
     if (corVaz = "") {
         anotar("ronda pulada: cor do slot vazio nao calibrada")
@@ -450,8 +632,12 @@ ronda() {
             break
 
         pendentes := 0
-        WinActivate tChrome
-        WinWaitActive tChrome, , 4
+        if !WinExist("ahk_id " hJanela) {
+            anotar("ronda parada: a janela da sessao foi fechada")
+            break
+        }
+        WinActivate "ahk_id " hJanela
+        WinWaitActive "ahk_id " hJanela, , 4
         loop abas {
             i := A_Index
             if abortar

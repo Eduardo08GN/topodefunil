@@ -116,3 +116,47 @@ isso.
 ⚠️ **Sintaxe validada; o ciclo nunca rodou contra as janelas de verdade.** Não
 dá para medir isso sem as duas telas abertas. O `F8` existe exatamente por
 isso: é o primeiro teste, e ele é gratuito.
+
+## ⭐⭐ AS SESSOES (2026-08-11) — o F10 pergunta ONDE rodar
+
+⛔ **O sintoma:** *"quando aperto F10 ele sempre abre a sessao do meu login
+principal"*. ⚠️ **A causa nao era preferencia do AHK** — o script procurava a
+janela pelo TITULO `Google Flow`, e as janelas do Dolphin **nao tem esse texto
+no titulo**: elas se chamam pelo NOME DO PERFIL. Medido:
+
+```
+chrome.exe .... "Google Flow - bladerunner2049v2 - Google Chrome"
+anty.exe ...... "CTA - O2 Ricardo"
+anty.exe ...... "CTA - 03 Neusa"
+```
+
+A busca so' casava com a primeira. As outras eram **invisiveis** para o script.
+
+⭐ **O discriminante e' o EXECUTAVEL:** o Dolphin roda `anty.exe` (um processo
+por perfil aberto), o Chrome roda `chrome.exe`. Titulo muda quando se troca de
+aba; executavel nao.
+
+**Como usar agora:** o F10 (e o F8) abrem uma lista das sessoes **abertas** e
+voce escolhe pelo numero. Os perfis que estao **fechados** aparecem marcados,
+para voce saber que precisa abri-los no Dolphin — sumir da lista pareceria
+defeito do script.
+
+⛔ **So' janelas ja' abertas.** A API local do Dolphin existe (`localhost:3001`
+responde) e daria para dar START num perfil parado, mas exigiria o token
+gravado em arquivo. Decisao do operador: abrir no Dolphin, como ja' faz.
+
+⛔⛔ **A TRAVA DE GEOMETRIA — leia antes do primeiro F10.** Os pontos
+calibrados sao coordenadas de **TELA**. Se a janela escolhida nao tiver o mesmo
+tamanho da janela em que o F9 calibrou, **todo clique cai fora do alvo e o
+script segue rodando**, gastando credito sem erro nenhum. Por isso o script
+agora MAXIMIZA a janela escolhida e COMPARA com a geometria gravada na
+calibracao; se diferir, ele ABORTA.
+
+⚠️ **INI antigo:** calibracoes anteriores a esta versao nao gravaram a
+geometria. No primeiro F10 o script pergunta se pode adotar o tamanho da janela
+atual — **so' responda SIM se os seis pontos foram apontados numa janela deste
+mesmo tamanho.** Na duvida, rode o F9 na janela em que voce vai trabalhar.
+
+⚠️ **A ronda usa a MESMA janela** que o ciclo usou. Ela le' pixel e clica
+REGERAR em slot vazio: feita noutra sessao, leria a cor errada e jogaria fora
+lote pronto.
