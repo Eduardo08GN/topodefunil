@@ -503,6 +503,75 @@ ES_KEYWORD_NA_MAO_TAKE = (
 )
 
 # ---------------------------------------------------------------------------
+# ⭐⭐ ES19 — A BANCADA DO PREPARO NO TAKE 2 (2026-08-10)
+# ---------------------------------------------------------------------------
+# ⛔ Ordem do operador, com o render do take 2 na mao: *"a cena take 2 tem que
+# ter uma bancada com a bowl com cubos de gelatina, caixa de baking soda e a
+# mulher fazendo stirring na bowl (coloque o homem ainda ao lado dela segurando
+# a prop). Motivo: estamos deixando a comunicacao visual valiosa de
+# contextualizacao de que se trata de um TRUQUE DE RECEITA passar."*
+#
+# ⭐ E o diagnostico dele e' o certo. O take 2 mostrava DOIS CORPOS e UM PAR DE
+# PROPS — cenoura, rosquinha, o homem — e nada que dissesse RECEITA. O CTA pede
+# `gelatin` e a unica gelatina em quadro era um sache de po na mao dela, do
+# tamanho de um dedo. O video vendia escandalo e nao vendia truque.
+#
+# ⛔⛔ E ISSO COLIDE COM UMA LICAO DOCUMENTADA — a do TRIO 16, escrita no
+# `montar` logo abaixo: *quadro entulhado o Veo resolve APAGANDO alguem, e
+# normalmente apaga o corpo-prova, que e' o payoff*. Empilhar bancada + tigela +
+# caixa + dois corpos + o par de props em 8 segundos e' exatamente a densidade
+# que derrubou aquele lote.
+# ⭐ POR ISSO A TROCA NAO E' ADITIVA: o SACHE SAI DA MAO DELA. Ele existia para
+# pagar a keyword em quadro (ES9), e a tigela de cubos de gelatina paga a mesma
+# coisa MELHOR — e' maior, e' colorida e le' como comida, nao como amostra
+# gratis. As maos dela deixam de segurar e passam a MEXER, que e' uma acao so'.
+# ⚠️ Saldo de objetos no quadro: -1 sache, +1 tigela, +1 caixa. E o que entra
+# fica na BANCADA, nao nas maos — plano de fundo nao disputa com rosto.
+# ⛔⛔ E A CAIXA ENTRA SEM A CLAUSULA DE ROTULO LEGIVEL. Os outros motores da
+# familia 16s (FIGHT, ALFA, BED) descrevem a caixa com `the label sharp and
+# readable`; aqui isso REPROVA, e a lente ES13 esta' certa — ela proibe TEXTO
+# LEGIVEL em quadro, porque o alibi de autoridade deste angulo se faz por FORMA
+# e porque texto legivel e' municao de moderacao (P12).
+# ⭐ Nao faz falta: uma caixa de PAPELAO LARANJA E AMARELA e' reconhecida como
+# bicarbonato nos EUA sem soletrar nada. Forma e cor pagam o que o texto pagaria.
+# ⚠️ Reprovou 200 de 200 na primeira versao — a lente pegou antes do render.
+# ⛔⛔ E O DEDO DELA SAI DO TAKE 2 — achado LENDO o bloco montado, nao por lente.
+# A primeira versao juntava o `ES_F12B_IMAGE` (que termina em *"points one
+# finger down at it without touching him"*) com a bancada nova (*"both of her
+# hands are on the bowl"*). O mesmo bloco pedia UM dedo apontando e AS DUAS maos
+# na tigela: tres maos para uma pessoa. E' a contradicao das DUAS COLHERES, e o
+# gerador nao escolhe — ele desenha a terceira mao.
+# ⭐ Quem sai e' o DEDO, e nao a tigela, porque o dedo ja' fez o trabalho dele no
+# take 1: o hook e' onde o escandalo do prop acontece. No take 2 o que tem de
+# ser lido e' a RECEITA — foi essa a queixa do operador.
+# ⚠️ Ele continua ao lado dela segurando a prop, que e' o que ele pediu
+# nominalmente. O que muda e' so' a MAO DELA.
+ES19_F12B_SEM_DEDO = (
+    "Centred against the front of his %s, in both his own fists one stacked "
+    "above the other, he holds %s — the base of it resting on the fabric, the "
+    "tip pointing straight up. Beside him stands %s, talking straight to camera."
+)
+
+ES19_F12B_TAKE_SEM_DEDO = (
+    "He keeps his eyes on the lens and never speaks; both his own fists stay "
+    "where they are. The %s in his own fists stays exactly as it appears in the "
+    "first frame — completely motionless for the entire shot."
+)
+
+ES19_BANCADA_IMAGE = (
+    "In front of her, on the %s, sit a clear glass bowl full of cut cubes of "
+    "set amber gelatin and an orange and yellow cardboard box of baking soda. "
+    "Both of her hands are on the bowl, one steadying its rim and the other "
+    "turning a spoon in it."
+)
+
+ES19_BANCADA_TAKE = (
+    "Her hands keep turning the spoon in the bowl in slow circles the whole "
+    "time, and that is the only movement in her hands. The bowl and the box "
+    "stay exactly where they are on the counter and are never picked up."
+)
+
+# ---------------------------------------------------------------------------
 # ES8 — A BANCADA-RECIBO (TROCA §TR7). ⚠️ SO' NO IMAGE 02/03.
 # ⛔ Fora do IMAGE 01 (que ja' carrega ela + o homem + os dois props) e fora do
 # IMAGE 03 (o bloco mais arriscado do lote): densidade e' superficie de bloqueio
@@ -1175,69 +1244,105 @@ def fisicas_de(receita):
 # ela metade do lote diria so' "in the same kitchen" nas cenas 2 e 3 e a
 # bandeira sumiria do quadro a partir da cena 2.
 CENARIOS = [
-    {"id": "escritorio_diplomas", "bancada": "desk", "curto": "office",
+    {"id": "escritorio_diplomas", "prep": False, "bancada": "desk", "curto": "office",
      "set": "a home office with a full wall of dark hardback spines with gold detailing, two framed documents in dark wood frames with gold foil seals and a US flag on a floor stand in the corner",
      "re_ancora": "the same home office, the wall of dark hardback spines and the two framed documents behind her and the US flag on its floor stand",
      "luz": "warm lamp light with soft daylight from a window frame-left."},
-    {"id": "escritorio_painel", "bancada": "desk", "curto": "study",
+    {"id": "escritorio_painel", "prep": False, "bancada": "desk", "curto": "study",
      "set": "a wood-panelled home study with a shelf of dark hardbacks, a green glass desk lamp and a small US flag on a short pole in a brass stand",
      "re_ancora": "the same wood-panelled study, the shelf of dark hardbacks behind her and the small US flag in its brass stand",
      "luz": "warm pooled lamp light with dim daylight from behind her."},
-    {"id": "sala_estante", "bancada": "side table", "curto": "den",
+    {"id": "sala_estante", "prep": False, "bancada": "side table", "curto": "den",
      "set": "a den with floor-to-ceiling shelves of dark hardback spines, a worn leather wing chair and a US flag on a floor stand beside the doorway",
      "re_ancora": "the same den, the floor-to-ceiling shelves of dark hardbacks behind her and the US flag on its floor stand by the doorway",
      "luz": "low warm lamp light and one shaft of daylight from frame-right."},
-    {"id": "cozinha_modesta", "bancada": "counter", "curto": "kitchen",
+    {"id": "cozinha_modesta", "prep": True, "bancada": "counter", "curto": "kitchen",
      "set": "a small older American kitchen with laminate counters and a window over the sink, a US flag magnet on the fridge door",
      "re_ancora": "the same small older kitchen, the US flag magnet still on the fridge door",
      "luz": "flat grey daylight from the window over the sink."},
-    {"id": "cozinha_ilha", "bancada": "island", "curto": "kitchen",
+    {"id": "cozinha_ilha", "prep": True, "bancada": "island", "curto": "kitchen",
      "set": "an open-plan American kitchen with a white marble island, a living room out of focus behind her and a small US flag on a stand at the end of the island",
      "re_ancora": "the same open-plan kitchen, the living room out of focus behind her and the small US flag on its stand",
      "luz": "warm even daylight from tall windows frame-left."},
-    {"id": "cozinha_fazenda", "bancada": "counter", "curto": "kitchen",
+    {"id": "cozinha_fazenda", "prep": True, "bancada": "counter", "curto": "kitchen",
      "set": "an old American farmhouse kitchen with a deep porcelain sink, open shelves and a US flag pinned above the doorway",
      "re_ancora": "the same farmhouse kitchen with the deep porcelain sink and open shelves, the US flag still pinned above the doorway",
      "luz": "soft morning light through the window over the sink."},
-    {"id": "cozinha_cabana", "bancada": "counter", "curto": "kitchen",
+    {"id": "cozinha_cabana", "prep": True, "bancada": "counter", "curto": "kitchen",
      "set": "a knotty pine cabin kitchen with a screen door, pine trees outside and a small US flag tacked to the door frame",
      "re_ancora": "the same knotty pine cabin kitchen, pine trees still visible through the screen door and the small US flag tacked to the frame",
      "luz": "green-tinged afternoon light coming through the screen door."},
-    {"id": "cozinha_retro", "bancada": "counter", "curto": "kitchen",
+    {"id": "cozinha_retro", "prep": True, "bancada": "counter", "curto": "kitchen",
      "set": "a nineteen-seventies American kitchen with wood-panelled walls, a round wall clock and a US flag decal on the cabinet door",
      "re_ancora": "the same wood-panelled seventies kitchen, the round wall clock and the US flag decal still on the cabinet door",
      "luz": "warm overhead bulb light with dim daylight from the side."},
-    {"id": "trailer", "bancada": "counter", "curto": "kitchen",
+    {"id": "trailer", "prep": True, "bancada": "counter", "curto": "kitchen",
      "set": "the narrow galley kitchen of an American mobile home, gingham curtains at a small window and a US flag pinned to the panelling",
      "re_ancora": "the same narrow mobile-home kitchen, gingham curtains at the small window and the US flag still pinned to the panelling",
      "luz": "hard daylight through the small window frame-right."},
-    {"id": "alpendre", "bancada": "table", "curto": "porch",
+    {"id": "alpendre", "prep": False, "bancada": "table", "curto": "porch",
      "set": "a screened American back porch with a wooden table, a ceiling fan and a US flag hanging from a bracket on the post",
      "re_ancora": "the same screened back porch, the ceiling fan overhead and the US flag still hanging from its bracket on the post",
      "luz": "bright shaded daylight coming through the screens."},
-    {"id": "garagem", "bancada": "workbench", "curto": "garage",
+    {"id": "garagem", "prep": False, "bancada": "workbench", "curto": "garage",
      "set": "a home garage workbench with a pegboard of tools behind, a rolling chest and a US flag hung flat on the pegboard",
      "re_ancora": "the same home garage, the pegboard of tools behind her and the US flag still hung flat on it",
      "luz": "cool fluorescent strip light overhead."},
-    {"id": "copa_igreja", "bancada": "counter", "curto": "hall",
+    {"id": "copa_igreja", "prep": True, "bancada": "counter", "curto": "hall",
      "set": "a plain community hall kitchen with a stainless counter, a stack of folding chairs behind and a small US flag on the pass-through window",
      "re_ancora": "the same community hall kitchen, the stack of folding chairs behind her and the small US flag still on the pass-through window",
      "luz": "even overhead fluorescent light."},
     # ⛔ `potted plants` saiu (2026-08-02): a ES14 bane planta por NOME — e'
     # superficie de bloqueio sem funcao de leitura —, e a entrada as carregava
     # no `set` E no `re_ancora`, ou seja, nas tres cenas.
-    {"id": "varanda_sol", "bancada": "wicker table", "curto": "sunroom",
+    {"id": "varanda_sol", "prep": False, "bancada": "wicker table", "curto": "sunroom",
      "set": "a bright sunroom with wicker furniture and a US flag on a short pole by the sliding door",
      "re_ancora": "the same bright sunroom, the wicker furniture and the US flag on its short pole by the sliding door",
      "luz": "flooding daylight from three glass walls."},
-    {"id": "rv", "bancada": "counter", "curto": "galley",
+    {"id": "rv", "prep": True, "bancada": "counter", "curto": "galley",
      "set": "the galley of a parked American RV, wood-veneer cabinets, a small sink and a US flag decal beside the window",
      "re_ancora": "the same RV galley, wood-veneer cabinets and the US flag decal still beside the window",
      "luz": "warm afternoon light through the RV window frame-right."},
-    {"id": "cozinha_moderna", "bancada": "island", "curto": "kitchen",
+    {"id": "cozinha_moderna", "prep": True, "bancada": "island", "curto": "kitchen",
      "set": "a modern American kitchen with matte black cabinets and a subway-tile wall, a small US flag in a pen cup beside the toaster",
      "re_ancora": "the same matte black kitchen with the subway-tile wall, the small US flag still in the pen cup beside the toaster",
      "luz": "cool even daylight from frame-right."},
+    # -----------------------------------------------------------------------
+    # + 2026-08-10 (ES19): CINCO ambientes novos, TODOS com bancada de preparo.
+    # ⛔ Pedido do operador junto da mudanca do take 2: *"quero tb um pool de
+    # variacoes de ambiente que tenha bancada pertinente"*. Desde que a cena 2
+    # poe a tigela, a caixa e ela mexendo sobre a bancada, o cenario deixou de
+    # ser pano de fundo — ele tem de oferecer superficie de preparo, e o pool
+    # que sobrava depois do filtro `prep` tinha nove entradas, seis delas
+    # cozinha de casa. Estas cinco abrem OUTROS lugares onde alguem prepara.
+    # ⚠️ Toda entrada carrega a BANDEIRA (o autoteste cobra `US flag` em todas)
+    # e uma `re_ancora`, que e' o que amarra o take 2 ao take 1.
+    # -----------------------------------------------------------------------
+    {"id": "cozinha_azulejo", "prep": True, "bancada": "counter", "curto": "kitchen",
+     "set": "an American kitchen with white square tile running up the wall behind the counter, a dish rack by the sink and a US flag decal on the window glass",
+     "re_ancora": "the same tiled kitchen, the dish rack by the sink and the US flag decal still on the window glass",
+     "luz": "bright flat daylight through the window over the counter."},
+    {"id": "bancada_acougue", "prep": True, "bancada": "butcher block", "curto": "kitchen",
+     # ⚠️ `a US flag`, nunca `a FOLDED US flag`: o recorte de remocao do
+     # `short_comum` aceita so' `a|an|the [small|large] US flag`, e com o
+     # adjetivo no meio a clausula NAO sai no sorteio "sem bandeira" — a lente
+     # ES21 pegou isso em 14 de 300. ⛔ Quem cede e' a entrada, nunca o regex:
+     # ele e' compartilhado por quatro motores e alarga-lo remove demais.
+     "set": "a country American kitchen built around a heavy butcher block table, cast iron pans hanging on the wall and a US flag in a glass case on the shelf",
+     "re_ancora": "the same butcher block kitchen, the cast iron pans on the wall and the US flag still in its case",
+     "luz": "warm low daylight from a single window frame-left."},
+    {"id": "cozinha_verao", "prep": True, "bancada": "prep counter", "curto": "cook porch",
+     "set": "a screened summer cook porch with a long prep counter, jars of preserves on an open shelf and a US flag hanging from a bracket by the screen door",
+     "re_ancora": "the same screened cook porch, the jars of preserves on the shelf and the US flag still on its bracket",
+     "luz": "soft shaded daylight coming through the screens."},
+    {"id": "porao_bar", "prep": True, "bancada": "bar top", "curto": "basement bar",
+     "set": "a finished American basement with a home bar, a row of stools and shelves of glasses, a US flag pinned flat on the panelled wall",
+     "re_ancora": "the same basement bar with the shelves of glasses, the US flag still pinned flat on the panelled wall",
+     "luz": "warm light from two hanging bulbs over the bar."},
+    {"id": "cozinha_apartamento", "prep": True, "bancada": "galley counter", "curto": "kitchen",
+     "set": "a narrow apartment galley kitchen with pale cabinets on both sides and a city window at the end, a US flag magnet on the fridge",
+     "re_ancora": "the same narrow galley kitchen with the city window at the end, the US flag magnet still on the fridge",
+     "luz": "flat daylight from the window at the end of the galley."},
 ]
 
 # ES8 — o RECIBO de 3-4 itens: a boca cita 1 (o {r} da RECEITA), a imagem mostra
@@ -2775,7 +2880,21 @@ def sortear(pagina, rng, ledger, travas=None, geometria=None,
     # duas caem na mesma travada do TAKE 02, e prompt que se contradiz o modelo
     # resolve como quiser.
     fis = _evitando(rng, fisicas_de(rec), hist.get("fisica", [])[-2:])
-    cen = _evitando(rng, CENARIOS, hist.get("cenario", [])[-2:])
+    # ⛔⛔ ES19 — SO' CENARIO COM BANCADA DE PREPARO (2026-08-10).
+    # Desde que o take 2 poe a tigela, a caixa e ela MEXENDO sobre a bancada, o
+    # cenario deixou de ser so' pano de fundo: ele tem de oferecer uma
+    # superficie onde alguem prepararia comida. Um `desk` de escritorio com
+    # diplomas na parede, uma `side table` de sala e uma `wicker table` de
+    # varanda NAO oferecem — e o operador pediu nominalmente *"um pool de
+    # variacoes de ambiente que tenha bancada pertinente"*.
+    # ⚠️ O filtro e' por CAMPO (`prep`), nao por lista de ids: lista de id
+    # envelhece calada quando alguem acrescenta um cenario novo, e o novo
+    # entraria no sorteio sem ninguem decidir nada.
+    # ⛔ Os cenarios de escritorio/sala NAO foram apagados: eles continuam
+    # validos para o motor de 24s, que tem uma cena de bancada PROPRIA e nao
+    # precisa que o cenario do hook sirva de cozinha.
+    _cen_prep = [c for c in CENARIOS if c.get("prep")]
+    cen = _evitando(rng, _cen_prep, hist.get("cenario", [])[-2:])
     # ⚠️ ES9/ES8: o mecanismo PLANTADO nao pode desenhar o mesmo objeto que a
     # imagem da receita ja' desenha no MESMO IMAGE 02 — com `copo_sache` o bloco
     # saia com dois copos altos (o morno da receita na tabua e o frio na
@@ -2827,6 +2946,11 @@ def sortear(pagina, rng, ledger, travas=None, geometria=None,
 # ---------------------------------------------------------------------------
 # Formato de entrega, sempre: BLOCO 0 (REF) -> os 3 IMAGE agrupados -> os 3
 # TAKE agrupados. ⛔ Nunca intercalar. Destino: AdBatch Vertical 3.
+
+def _cap(s):
+    """Primeira letra maiuscula — a relacao dela abre sentenca no take 2."""
+    return s[0].upper() + s[1:] if s else s
+
 
 def montar(spec):
     et = ETNIA[spec["pagina"]]
@@ -2931,16 +3055,20 @@ def montar(spec):
     # ⚠️ O de 24s continua com o defeito — conserta-lo mexe em CENA, e cena e'
     # alcada do operador.
     # ⭐ A receita sobrevive na FALA, que e a regra da familia 16s.
+    # ⭐⭐ ES19 — A BANCADA DO PREPARO entra aqui, e o SACHE NA MAO SAI. Ver o
+    # bloco do `ES19_BANCADA_IMAGE`: a troca nao e' aditiva de proposito, porque
+    # a densidade deste quadro e' o que derrubou o lote do TRIO 16.
     b["IMAGE 02/02"] = (
-        "IMAGE 02/02: Medium shot in %s, same light. %s, stands frame-left. The "
+        "IMAGE 02/02: Medium shot in %s, same light. %s, stands frame-left "
+        "behind the %s. The "
         "same %d-year-old %s man with %s, in %s and %s, stands beside her, "
         "upright, chin level, his eyes on the lens, saying nothing. %s %s "
         "They are the only two people in the frame. %s %s"
-        % (cen_anc, mesma, hom["idade"], et,
+        % (cen_anc, mesma, cen["bancada"], hom["idade"], et,
            hom["marca"], hom["roupa"], hom["calca"],
-           ES_F12B_IMAGE % (_peca(hom["calca"]), par["e_img_dele"],
-                            spec["relacao"]),
-           ES_KEYWORD_NA_MAO_IMAGE % mec["curto"], luz, CAUDA)
+           ES19_F12B_SEM_DEDO % (_peca(hom["calca"]), par["e_img_dele"],
+                                 spec["relacao"]),
+           ES19_BANCADA_IMAGE % cen["bancada"], luz, CAUDA)
     )
 
     # --- TAKE 01/03 -----------------------------------------------------------
@@ -2967,7 +3095,7 @@ def montar(spec):
         "very slight natural sway, no cuts, and the camera does not move. %s %s "
         "She speaks straight into the lens, calm and even, no rush. Only she "
         "speaks.\nDialogue: \"%s\"\nAudio: quiet room tone in the %s. No music."
-        % (ES_F12B_TAKE % par["e_nome"], ES_KEYWORD_NA_MAO_TAKE,
+        % (ES19_F12B_TAKE_SEM_DEDO % par["e_nome"], ES19_BANCADA_TAKE,
            # ⚠️ , a SEGUNDA e ULTIMA. Com duas cenas o indice 2
            # nao existe — e um IndexError aqui so aparece no lote.
            sonorizar(falas[1]), cen["curto"])
@@ -3301,12 +3429,19 @@ def _es4_agencia(spec, blocos, achados):
                            "empurrava o prop para o quadril"),
             (M_F12B_IMG_B, "as DUAS maos: uma mao so' deixa o Veo escolher o "
                            "lado e o prop sai do eixo do corpo"),
-            (M_F12B_IMG_C, "ela aponta SEM ENCOSTAR — e' o que separa do "
-                           "ELA_DIAGNOSTICA, onde o dedo crava no corpo dele")):
+            # ⛔⛔ O `M_F12B_IMG_C` (o DEDO dela) SAIU DESTA LISTA em
+            # 2026-08-10, com a ES19. Ele continua obrigatorio no take 1,
+            # que e' onde o escandalo do prop acontece; no take 2 as duas
+            # maos dela estao na TIGELA, e cobrar o dedo aqui seria a lente
+            # exigindo TRES MAOS. ⚠️ A regra que ele guardava — ela nunca
+            # ENCOSTA nele — continua de pe' por construcao: sem dedo nao ha'
+            # contato nenhum a policiar.
+            ):
         if lit not in img:
             achados.append(("ERRO", "ES4: IMAGE 03/03 sem o literal '%s' — %s"
                             % (lit.strip(), motivo)))
-    for lit in (M_F12B_TAKE_A, M_F12B_TAKE_B):
+    # ⚠️ idem no TAKE: o `M_F12B_TAKE_A` fala do dedo dela e saiu junto.
+    for lit in (M_F12B_TAKE_B,):
         if lit not in take:
             achados.append(("ERRO", "ES4: TAKE 03/03 sem o literal '%s' — a "
                                     "agencia tem de continuar no movimento" % lit))
@@ -3487,14 +3622,34 @@ def _es9_keyword(spec, blocos, achados):
     e sem realce de legenda. Nossa keyword e' `gelatin` e nosso objeto e' a
     gelatina — a coincidencia palavra<->objeto que eles tem de graca, nos tambem.
     """
+    # ⛔⛔ ESTA LENTE MUDOU DE OBJETO EM 2026-08-10 (ES19), e o CONTRATO E' O
+    # MESMO: a cena que diz `comment gelatin` tem de MOSTRAR gelatina. O que
+    # mudou e' QUAL gelatina — antes era o sache de po na mao dela, agora e' a
+    # TIGELA DE CUBOS na bancada. A tigela paga melhor: e' maior, e' colorida e
+    # le' como COMIDA, nao como amostra gratis.
+    # ⚠️ E a caixa de bicarbonato entra junto porque e' ela que diz RECEITA — o
+    # operador reprovou o take 2 exatamente por isso: *"estamos deixando a
+    # comunicacao visual de que se trata de um truque de receita passar"*.
     img3, take3 = blocos["IMAGE 02/02"], blocos["TAKE 02/02"]
-    if M_KEYWORD_IMG not in img3 or spec["mecanismo"]["curto"] not in img3:
-        achados.append(("ERRO", "ES9: IMAGE 03/03 sem o mecanismo na mao livre "
-                                "dela — a cena que diz 'comment gelatin' tem de "
-                                "mostrar gelatina"))
-    if ES_KEYWORD_NA_MAO_TAKE not in take3:
-        achados.append(("ERRO", "ES9: TAKE 03/03 sem a travada de imobilidade do "
-                                "objeto da keyword"))
+    for pedaco, rot in (("cut cubes of set amber gelatin", "a tigela de cubos"),
+                        ("cardboard box of baking soda", "a caixa"),
+                        ("turning a spoon in it", "ela MEXENDO")):
+        if pedaco not in img3:
+            achados.append(("ERRO", "ES9/ES19: a IMAGE 02/02 sem %s — a cena que "
+                                    "diz `comment gelatin` tem de mostrar a "
+                                    "receita sendo feita" % rot))
+    if ES19_BANCADA_TAKE not in take3:
+        achados.append(("ERRO", "ES9/ES19: o TAKE 02/02 sem a coreografia da "
+                                "colher e a trava da tigela e da caixa — objeto "
+                                "que pode ser pousado some no movimento"))
+    # ⛔ E O SACHE NAO PODE VOLTAR JUNTO. As maos dela tem UMA acao (mexer); se
+    # o sache voltar para a mao livre, o prompt pede segurar e mexer ao mesmo
+    # tempo — e' a contradicao das DUAS COLHERES, que o gerador resolve
+    # desenhando uma terceira mao.
+    if ES_KEYWORD_NA_MAO_IMAGE.split("%s")[0] in img3:
+        achados.append(("ERRO", "ES9/ES19: o sache voltou para a mao dela E ela "
+                                "esta' mexendo a tigela — duas acoes para as "
+                                "mesmas duas maos"))
     # ⛔ dois lugares para a mesma peca dentro do MESMO bloco e' contradicao, e
     # prompt que se contradiz o modelo resolve como quiser.
     if img3.count(spec["mecanismo"]["curto"]) > 1:
