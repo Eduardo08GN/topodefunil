@@ -495,6 +495,43 @@ EX_VARANDA_TRAVADA = (
 # 100% dos lotes (licoes-de-construcao §2: linter que reprova tudo nunca foi
 # testado).
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# ⭐⭐ [EX20] O GEODUCK DO TAKE 2 E' GRANDE — 2026-08-11
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"ajuste o agente exterior 16 para que sempre o take 2 seja
+# um geoduck grande igual ao do necrose"*.
+# Ate' hoje a cena 2 dizia so' `the same whole geoduck clam` — sem uma palavra
+# de tamanho. Sem ancora, o modelo devolve o molusco no tamanho que quiser, e o
+# payoff (que e' a cena inteira) fica do tamanho do problema.
+#
+# ⛔ A ESCALA E' POR CORPO, NUNCA POR ANATOMIA. Copiado do `GEODUCK_PAYOFF` do
+# NECROSE 16, que tem lote validado atras: `as long as his forearm and as thick
+# as his wrist`. A versao com `engorged` / `raised veins` / `a third thicker`
+# JA' FOI RECUSADA em producao (Chuck/colo v4) — nao reintroduzir.
+#
+# ⚠️ UMA ANCORA DO NECROSE NAO PODE VIR JUNTO: la' o siphon `reaching well above
+# the top of his head`, e AQUI O HOMEM E' CORTADO NO PEITO (EX5) — a cabeca dele
+# nao esta' em quadro. Ancora que aponta para fora do frame e' contradicao
+# dentro do prompt, e o Veo resolve contradicao inventando: ou sobe a camera
+# ate' o rosto (matando a EX5) ou encolhe o molusco. A altura passa a ser medida
+# contra o que ESTA' visivel — as maos dele.
+# ⛔⛔ E O VOCABULARIO E' ESTATICO, NAO DE CRESCIMENTO. A primeira versao desta
+# constante foi copiada AO PE DA LETRA do NECROSE — `rises straight up`, `held
+# stiff` — e o proprio linter deste motor a reprovou na hora (EX8). Estava
+# certo: `rises` e `stiff` estao no `CRESCIMENTO` do `short_comum`, e neste
+# agente NADA CRESCE, porque a promessa de inchaco e' do VILAO e a cena existe
+# para demoli-la. Prop que cresce aqui faz a REGRA contradizer a imagem.
+# ⭐ O pedido do operador e' de TAMANHO, nao de crescimento — e as duas coisas
+# se separam no verbo: o molusco JA' E' grande e esta' PARADO. `stands`, `runs`,
+# `firm`, `straight` descrevem estado; `rises`, `stiffens`, `swells` descrevem
+# processo. Mesma imagem, sem a batida proibida.
+EX_GEODUCK_GRANDE = (
+    "The clam is very large: its siphon stands straight up out of the shell, "
+    "firm and unbent, as long as his forearm and as thick as his wrist, "
+    "reaching well clear above both of his hands, its surface taut and glossy, "
+    "streaked with darker mottled lines running along its length."
+)
+
 EX_BLINDAGEM_FORMA = (
     "No bird, no goose, no duck, no swan, no snake, no worm, no tentacle, no "
     "feathers, no beak, no eyes, no head, nothing alive, nothing with a face."
@@ -2442,9 +2479,9 @@ def montar(spec):
         "chest so that no face is in the frame, is %s; both of his hands are "
         "closed around the shell of the same whole geoduck clam, one above the "
         "other, holding it upright with the siphon pointing straight up, and "
-        "the powder is gone from it now. %s They are the only two people in "
+        "the powder is gone from it now. %s %s They are the only two people in "
         "the frame. %s %s %s"
-        % (var["re_ancora"], mesma, mesmo,
+        % (var["re_ancora"], mesma, mesmo, EX_GEODUCK_GRANDE,
            EX_KEYWORD_NA_MAO_IMAGE % mec["curto"],
            EX_BLINDAGEM_FORMA, luz, CAUDA)
     )
