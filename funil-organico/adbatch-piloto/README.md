@@ -202,3 +202,61 @@ preenchido.
 
 ⚠️ **O preview do popup e' a defesa contra abrir 16 abas erradas**: ele mostra as
 urls DERIVADAS antes de qualquer clique.
+
+### F3 — os dois monitores (2026-08-11)
+
+Encomenda do operador com a bancada montada na frente dele: *"a janela 2 fica
+full screen no meu segundo monitor vertical, a janela 1 full screen no monitor 1
+horizontal"*.
+
+⛔ **Monitor nao e' escolhido por NUMERO.** A numeracao do Windows muda quando se
+troca um cabo de porta, e um numero trocado joga as dez abas do AdBatch no
+monitor de retrato — onde a calibracao do F10 nao vale. A escolha e' por
+propriedade:
+
+| janela | criterio | fallback |
+|---|---|---|
+| 1 (AdBatch) | o monitor cuja **area util casa com `calib_w` x `calib_h`** — e' literalmente a tela onde os 6 pontos foram apontados | o monitor em **paisagem**, depois o 1 |
+| 2 (dash + montador) | o monitor em **retrato** (altura > largura) | qualquer outro que nao o da janela 1 |
+
+Medido nesta maquina: monitor 1 = 1920x1080 paisagem (util 1920x1032, primario),
+monitor 2 = 1080x1920 retrato em (1920,-401). O `.ini` confirma a calibracao no
+horizontal: o ponto mais distante e' (1171, 772), que so' cabe no monitor 1.
+
+⚠️ Override, se a heuristica errar um dia: `[config] monitor_adbatch=1` e
+`monitor_dash=2` (0 = automatico).
+
+⛔ **Restaurar -> mover -> maximizar** e' a unica ordem que funciona: janela
+maximizada IGNORA o `WinMove` — ela pertence ao monitor em que foi maximizada.
+
+⭐ O popup ja' mostra em que monitor cada janela vai cair, e o aviso final
+compara a janela 1 com a calibracao — descobrir a divergencia agora custa um
+clique, descobrir no F10 custa a rodada.
+
+### ⛔⛔ O defeito do AUTOCOMPLETE (medido em campo, 2026-08-11)
+
+Primeiro teste real (sessao CTA-03 Neusa): a janela 2 abriu **5 abas do AdBatch**
+onde devia abrir o dashboard. A causa nao era a url — era o **autocomplete inline
+do Chrome**, e a forma das urls diz qual delas era vulneravel:
+
+```
+dash    = .../project/<pid>
+adbatch = .../project/<pid>/tool/d882542c-...
+```
+
+A do dashboard e' **prefixo estrito** da do AdBatch, e e' a **unica das tres** com
+essa propriedade — exatamente a unica que falhou. Digitado o prefixo, o Chrome
+pendura o resto como texto SELECIONADO (aquela url tinha acabado de ser visitada
+DEZ vezes) e o `Enter` navega para o completado.
+
+⭐ Conserto: `{Delete}` entre o texto e o `Enter`, em **todas** as navegacoes.
+Quando nao ha' nada pendurado o cursor esta' no fim e a tecla nao faz nada.
+
+⚠️ **E o preview nao mostrava a linha do dashboard** — a unica das tres que deu
+errado era a que a defesa nao exibia. Defesa que nao cobre todos os itens que ela
+defende da' a sensacao de conferencia sem a conferencia. Corrigido: as quatro
+linhas aparecem.
+
+⭐ A url do dashboard deixou de ser deducao: o operador colou as tres de sessoes
+diferentes e as tres sao `.../project/<pid>` puro, com "Todas as midias"
+selecionado.

@@ -362,6 +362,22 @@ urlsDaBancada(pid) {
 ; ⛔ Abre uma aba e navega. `Ctrl+L` antes de digitar: a aba nova ja' nasce com
 ; a barra de endereco focada, mas isso e' COMPORTAMENTO e nao contrato — e uma
 ; aba que receba o texto no lugar errado vira uma BUSCA, nao uma navegacao.
+;
+; ⛔⛔ O `{Delete}` ANTES DO `{Enter}` NAO E' PARANOIA — e' o conserto de um
+; defeito medido em campo (2026-08-11, sessao CTA-03 Neusa): a janela 2 abriu 5
+; abas do ADBATCH onde devia abrir o dashboard.
+;
+; A causa e' o AUTOCOMPLETE INLINE do Chrome, e a prova esta' na forma das urls:
+;   dash    = .../project/<pid>
+;   adbatch = .../project/<pid>/tool/d882542c-...
+; a url do dashboard e' PREFIXO ESTRITA da do AdBatch, e e' a UNICA das tres com
+; essa propriedade — exatamente a unica que falhou. Digitado o prefixo, o Chrome
+; pendura `/tool/d882542c-...` como texto SELECIONADO (aquela url tinha acabado
+; de ser visitada DEZ vezes, entao era o match campeao) e o `Enter` navega para o
+; COMPLETADO, nao para o digitado.
+;
+; `{Delete}` apaga a selecao pendurada. Se nao houver nada pendurado, o cursor
+; esta' no fim e a tecla nao faz nada — e' seguro em toda url.
 abrirAba(url, nova := true) {
     if nova {
         Send "^t"
@@ -370,9 +386,111 @@ abrirAba(url, nova := true) {
     Send "^l"
     pausa(260, 90)
     SendText url
-    pausa(220, 80)
+    pausa(320, 110)      ; ⚠️ tempo para o autocomplete APARECER — apagar antes
+                         ; de ele existir deixaria a armadilha de pe'
+    Send "{Delete}"
+    pausa(180, 70)
     Send "{Enter}"
     pausa(1400, 350)
+}
+
+; =============================================================================
+;  ⭐⭐ POSICIONAMENTO NOS DOIS MONITORES (2026-08-11)
+; =============================================================================
+; Encomenda do operador, com a bancada montada a mao na frente dele: *"a janela
+; 2 fica full screen no meu segundo monitor vertical, a janela 1 full screen no
+; monitor 1 horizontal"*.
+;
+; ⛔ NAO SE FIXA MONITOR POR NUMERO. A numeracao do Windows muda quando se troca
+; um cabo de porta, e um numero trocado joga as dez abas do AdBatch no monitor de
+; RETRATO — onde a calibracao do F10 nao vale e os cliques cairiam fora do alvo.
+; A escolha e' por PROPRIEDADE:
+;   janela 1 ... o monitor cuja area util casa com o TAMANHO DA CALIBRACAO
+;                (`calib_w` x `calib_h`). E' a definicao mais forte que existe:
+;                e' literalmente a tela onde os 6 pontos foram apontados. Sem
+;                calibracao gravada, cai para o monitor em PAISAGEM.
+;   janela 2 ... o monitor em RETRATO (altura > largura).
+;
+; Medido nesta maquina em 2026-08-11:
+;   monitor 1 ... 1920x1080 paisagem, util 1920x1032, primario
+;   monitor 2 ... 1080x1920 RETRATO em (1920,-401)
+; e o .ini confirma que a calibracao foi feita no horizontal: o ponto mais
+; distante e' (1171, 772), que so' cabe na area util do monitor 1.
+;
+; ⚠️ Da' para mandar na marra pelo INI, se um dia a heuristica errar:
+;   [config] monitor_adbatch=1 · monitor_dash=2   (0 = automatico)
+
+monitorPorTamanho(w, h) {
+    if (w = "" || h = "")
+        return 0
+    loop MonitorGetCount() {
+        MonitorGetWorkArea(A_Index, &l, &t, &r, &b)
+        if (Abs((r - l) - Integer(w)) <= 12 && Abs((b - t) - Integer(h)) <= 12)
+            return A_Index
+    }
+    return 0
+}
+
+monitorPorForma(retrato) {
+    loop MonitorGetCount() {
+        MonitorGetWorkArea(A_Index, &l, &t, &r, &b)
+        if (((b - t) > (r - l)) = retrato)
+            return A_Index
+    }
+    return 0
+}
+
+; ⛔⛔ RESTAURA ANTES DE MOVER. Uma janela MAXIMIZADA ignora o WinMove: ela
+; pertence ao monitor em que foi maximizada, e mover sem restaurar nao a tira de
+; la'. Restaurar -> mover -> maximizar de novo e' a unica ordem que funciona.
+mandarPara(hwnd, mon) {
+    if (mon = 0 || !WinExist("ahk_id " hwnd))
+        return false
+    MonitorGetWorkArea(mon, &l, &t, &r, &b)
+    WinRestore "ahk_id " hwnd
+    Sleep 260
+    ; ⚠️ a folga de 30px e' para a janela cair INTEIRA dentro do monitor alvo —
+    ; o WinMaximize maximiza no monitor onde esta' a MAIOR PARTE dela, entao uma
+    ; janela a cavalo entre as duas telas voltaria para a errada.
+    WinMove l + 30, t + 30, (r - l) - 60, (b - t) - 60, "ahk_id " hwnd
+    Sleep 260
+    WinMaximize "ahk_id " hwnd
+    Sleep 300
+    return true
+}
+
+; ⛔ Resolve os dois indices de uma vez, porque a regra "nao deixar as duas no
+; MESMO monitor" so' existe olhando o par — decidir uma de cada vez empilharia
+; as duas na mesma tela numa maquina de monitor unico sem ninguem perceber.
+monitoresDaBancada() {
+    global INI
+    m1 := Integer(IniRead(INI, "config", "monitor_adbatch", "0"))
+    m2 := Integer(IniRead(INI, "config", "monitor_dash", "0"))
+    if (m1 = 0) {
+        m1 := monitorPorTamanho(IniRead(INI, "pontos", "calib_w", ""),
+                                IniRead(INI, "pontos", "calib_h", ""))
+        if (m1 = 0)
+            m1 := monitorPorForma(false)
+        if (m1 = 0)
+            m1 := 1
+    }
+    if (m2 = 0)
+        m2 := monitorPorForma(true)
+    ; ⚠️ Monitor unico, ou os dois caindo no mesmo: pega qualquer outro. Se nao
+    ; houver outro, deixa as duas juntas — empilhado e' ruim, mas montar nao e'
+    ; pior do que nao montar.
+    if (m2 = 0 || m2 = m1) {
+        m2 := 0
+        loop MonitorGetCount() {
+            if (A_Index != m1) {
+                m2 := A_Index
+                break
+            }
+        }
+        if (m2 = 0)
+            m2 := m1
+    }
+    return [m1, m2]
 }
 
 montarBancada() {
@@ -401,14 +519,20 @@ montarBancadaMiolo() {
     g.SetFont("s9", "Consolas")
     eUrl := g.AddEdit("w540 r1")
     g.SetFont("s9", "Segoe UI")
-    g.AddText("w540 r4 cGray", "Vai montar DUAS janelas novas nesta sessao:`n   janela 1 — " nAd " abas no AdBatch Vertical 2`n   janela 2 — " nDash " abas no dashboard + 1 aba no Montador Vertical 2`nO F10 continua sendo o gatilho da geracao.")
-    prev := g.AddText("w540 r3 cSilver", "")
+    mPrev := monitoresDaBancada()
+    g.AddText("w540 r4 cGray", "Vai montar DUAS janelas novas nesta sessao:`n   janela 1 — " nAd " abas no AdBatch Vertical 2, full screen no monitor " mPrev[1] "`n   janela 2 — " nDash " abas no dashboard + 1 no Montador, full screen no monitor " mPrev[2] "`nO F10 continua sendo o gatilho da geracao.")
+    prev := g.AddText("w540 r4 cSilver", "")
     bOk := g.AddButton("w130 Default", "Montar")
     g.AddButton("x+10 w130", "Cancelar").OnEvent("Click", (*) => g.Destroy())
 
     ; ⭐ O PREVIEW E' A DEFESA CONTRA ABRIR 16 ABAS ERRADAS: ele mostra as urls
     ; DERIVADAS antes de qualquer clique. Url errada se ve' aqui, e nao depois
     ; de dezesseis abas abertas na sessao errada.
+    ;
+    ; ⛔ A LINHA DO DASHBOARD FALTAVA AQUI, e essa omissao teve custo: no teste
+    ; de campo de 2026-08-11 a UNICA das tres urls que deu errado foi justamente
+    ; a que o preview nao mostrava. Defesa que nao cobre todos os itens que ela
+    ; defende da' a sensacao de conferencia sem a conferencia.
     atualizar(*) {
         pid := idDoProjeto(eUrl.Value)
         if (pid = "") {
@@ -416,7 +540,7 @@ montarBancadaMiolo() {
             return
         }
         u := urlsDaBancada(pid)
-        prev.Value := "projeto: " pid "`nAdBatch:  " u.adbatch "`nMontador: " u.montador
+        prev.Value := "projeto: " pid "`nAdBatch:   " u.adbatch "`nDashboard: " u.dash "`nMontador:  " u.montador
     }
     eUrl.OnEvent("Change", atualizar)
 
@@ -444,9 +568,17 @@ montarBancadaMiolo() {
 
     anotar("montando bancada — projeto " pid " em " WinGetTitle("ahk_id " hBase))
 
+    mons := monitoresDaBancada()
+
     hJan1 := novaJanela(hBase)
     if (hJan1 = 0)
         return MsgBox("nao consegui abrir a janela 1", "Piloto AdBatch", 16)
+    ; ⭐ POSICIONA ANTES DE ABRIR AS ABAS, nao depois: assim o operador ve' a
+    ; bancada nascer no lugar certo, e nao dez abas surgirem na tela errada para
+    ; so' entao pularem de monitor.
+    mandarPara(hJan1, mons[1])
+    WinActivate "ahk_id " hJan1
+    WinWaitActive "ahk_id " hJan1, , 3
     abrirAba(u.adbatch, false)
     loop nAd - 1 {
         if abortar
@@ -460,6 +592,9 @@ montarBancadaMiolo() {
         hJan2 := novaJanela(hJan1)
         if (hJan2 = 0)
             return MsgBox("nao consegui abrir a janela 2", "Piloto AdBatch", 16)
+        mandarPara(hJan2, mons[2])
+        WinActivate "ahk_id " hJan2
+        WinWaitActive "ahk_id " hJan2, , 3
         abrirAba(u.dash, false)
         loop nDash - 1 {
             if abortar
@@ -471,7 +606,10 @@ montarBancadaMiolo() {
             ToolTip "janela 2 — montador"
             abrirAba(u.montador)
         }
-        WinMaximize "ahk_id " hJan2
+        ; ⚠️ REAFIRMA o lugar da janela 2. Abrir seis abas pode ter tirado o
+        ; foco dela; maximizar de novo custa nada e garante o full screen que o
+        ; operador pediu no monitor de retrato.
+        mandarPara(hJan2, mons[2])
     }
 
     ; ⛔ MAXIMIZA AS DUAS. A trava de geometria do F10 compara o tamanho da
@@ -485,8 +623,25 @@ montarBancadaMiolo() {
     ; TRES janelas com o MESMO titulo (o nome do perfil no Dolphin), e sem isto
     ; o operador teria de adivinhar qual escolher no F10.
     gBancada := hJan1
-    anotar("bancada montada: janela1=" hJan1 " (" nAd " abas AdBatch), janela2=" hJan2)
-    MsgBox("Bancada montada.`n`nJanela 1: " nAd " abas do AdBatch`nJanela 2: " nDash " abas do dashboard + 1 Montador`n`nNo F10 ela aparece marcada como montada pelo F3.", "Piloto AdBatch")
+
+    ; ⚠️ CONFERE A JANELA 1 CONTRA A CALIBRACAO E AVISA AQUI. O F10 ja' tem a
+    ; trava de geometria, mas ela dispara la' na frente, com o roteiro colado e a
+    ; geracao prestes a comecar. Descobrir agora, com a bancada recem montada,
+    ; custa um clique; descobrir depois custa a rodada.
+    aviso := ""
+    cw := IniRead(INI, "pontos", "calib_w", "")
+    ch := IniRead(INI, "pontos", "calib_h", "")
+    WinGetPos , , &w1, &h1, "ahk_id " hJan1
+    if (cw != "" && ch != "" && (Abs(w1 - Integer(cw)) > 8 || Abs(h1 - Integer(ch)) > 8))
+        aviso := "`n`nATENCAO: a janela 1 esta' " w1 "x" h1 " e a calibracao foi feita em "
+                 cw "x" ch ". O F10 vai abortar — rode o F9 nesta janela."
+
+    anotar("bancada montada: janela1=" hJan1 " (" nAd " abas AdBatch, monitor "
+           mons[1] ", " w1 "x" h1 "), janela2=" hJan2 " (monitor " mons[2] ")")
+    MsgBox("Bancada montada.`n`nJanela 1 — monitor " mons[1] ": " nAd " abas do AdBatch"
+           "`nJanela 2 — monitor " mons[2] ": " nDash " abas do dashboard + 1 Montador"
+           "`n`nNo F10 ela aparece marcada como montada pelo F3." aviso,
+           "Piloto AdBatch")
 }
 
 ; ⛔ Abre uma janela nova a partir de uma existente e devolve o HANDLE dela.
