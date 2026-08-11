@@ -572,3 +572,49 @@ bandeja (com marca de check).
 ⚠️ **Um dono por vez.** O `.exe` e o `.ahk` sao o mesmo programa e disputam os
 mesmos atalhos. A instancia antiga do `.ahk` foi encerrada nesta entrega, e o
 atalho de inicializacao aponta so' para o exe.
+
+## ⭐⭐ F2 — a tecla de cada sessao, escolhida por ele (2026-08-11)
+
+Duas ordens em sequencia: *"atribua uma tecla para cada sessao logada
+identificada"* e, logo depois, *"coloca um ui ux pertinente para eu setar qual
+tecla quero que seja trigger de cada par de janela"*.
+
+⛔ A primeira versao cravava `Ctrl+Alt+1..9` no codigo. Funcionava — e a escolha
+nao era minha. Quem decora atalho e' quem opera, e ele ja' tem atalhos na cabeca
+de outros programas. Tecla cravada por mim vira conflito que so' ele descobre e
+so' eu posso consertar.
+
+⭐ **F2** abre uma linha por sessao com um **controle Hotkey nativo**: ele clica e
+aperta a combinacao, e o proprio Windows escreve. Digitar o nome da tecla a mao
+seria erro que so' apareceria na hora de usar.
+
+**Isto conserta a fraqueza do F4**, que so' funcionava com a janela certa ja' em
+foco — ou seja, exigia achar a sessao antes de pedir para acha-la. Com tecla por
+sessao ele chama a bancada de onde estiver, inclusive de dentro de outra sessao.
+
+### Cinco decisoes que sao protecao, nao enfeite
+
+| | |
+|---|---|
+| chave do INI e' o **nome da sessao**, nao um numero de ordem | numero de ordem faria uma sessao nova **renumerar** as outras, e tecla que muda de dono sozinha e' pior que nao ter tecla |
+| **registro dinamico** (`Hotkey()`), nao `^!1::` no fonte | trocar a tecla desliga a antiga **antes** de ligar a nova; duas teclas para a mesma coisa e' o comeco de uma nao responder |
+| `chamadorDaSessao()` e' funcao **separada** | closure criada dentro do laco captura a variavel do laco, e **todas** as teclas acabariam chamando a ultima sessao |
+| duas sessoes na mesma tecla e' **recusado antes de gravar** | a segunda venceria em silencio e a primeira pareceria quebrada |
+| `migrarTeclasAntigas()` na partida | quem ja' tinha tecla no formato de slot a perderia em silencio na atualizacao, e acharia que o recurso quebrou |
+
+⚠️ Sugestao inicial continua sendo `Ctrl+Alt+<n>` livre — e **nao** `Ctrl+<n>`,
+porque o proprio piloto **envia** `^1`..`^8` para trocar de aba (`irParaAba`):
+registrar Ctrl+1 poria o script para disparar a si mesmo no meio de uma rodada.
+
+### Medido
+
+19 de 19 no F2 (migracao, nome legivel da tecla, atribuicao, **troca sem deixar a
+antiga viva**, levantar a sessao certa com o foco em outra, chamadores
+distintos) · 21 de 21 nas bancadas/F4 · `0 controles fora da janela` nas cinco
+telas.
+
+⛔ **E a tela do F2 nasceu com 1252px de largura contra os 752 das outras.** Com
+`y+10` sozinho o AHK mantem o X do controle ANTERIOR — que era o campo de tecla,
+la' na direita. A segunda linha nascia depois dele, a terceira depois dessa:
+escada, nao formulario. `x18` explicito em cada linha. So' apareceu porque a
+medicao compara a largura das telas entre si.

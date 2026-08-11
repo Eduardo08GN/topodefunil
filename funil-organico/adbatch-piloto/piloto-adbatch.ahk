@@ -462,6 +462,266 @@ parDaJanela(hwnd) {
     return 0
 }
 
+bancadaPorChave(chave) {
+    for b in bancadasVivas()
+        if (b.chave = chave)
+            return b
+    return 0
+}
+
+; =============================================================================
+;  ⭐⭐ UMA TECLA POR SESSAO, ESCOLHIDA POR ELE (2026-08-11)
+; =============================================================================
+; Duas ordens do operador, na sequencia:
+;   *"atribua uma tecla para cada sessao logada identificada"*
+;   *"coloca um ui ux pertinente para eu setar qual tecla quero que seja trigger
+;    de cada par de janela"*
+;
+; ⛔ A primeira versao cravava `Ctrl+Alt+1..9` no codigo. Funcionava, mas a
+; escolha da tecla e' DELE: quem decora atalho e' quem opera, e ele ja' tem
+; atalhos na cabeca de outros programas. Tecla cravada por mim vira conflito que
+; so' ele descobre — e so' eu posso consertar.
+;
+; ⭐ Agora a tecla e' CAPTURADA num controle Hotkey nativo (ele aperta a combinacao
+; e o Windows a escreve) e registrada em tempo de execucao com `Hotkey()`. Nada
+; de atalho fixo no fonte.
+;
+; ⚠️ FORMATO NO INI: `[teclas] <nome da sessao> = <tecla em sintaxe AHK>`, por
+; exemplo `CTA - 03 Neusa=^!1`. A chave e' o NOME DA SESSAO e nao um numero de
+; ordem: numero de ordem faria uma sessao nova RENUMERAR as outras, e tecla que
+; muda de dono sozinha e' pior que nao ter tecla.
+
+TECLAS_MAX := 9
+
+; ⛔ Converte a sintaxe do AHK para o que se le' numa tela. `^!1` nao e' nome de
+; tecla para ninguem fora do AutoHotkey.
+nomeDaTecla(t) {
+    if (t = "")
+        return "(nenhuma)"
+    n := ""
+    resto := t
+    for par in [["^", "Ctrl+"], ["!", "Alt+"], ["+", "Shift+"], ["#", "Win+"]] {
+        if InStr(SubStr(resto, 1, 4), par[1]) {
+            n .= par[2]
+            resto := StrReplace(resto, par[1], , , , 1)
+        }
+    }
+    return n StrUpper(SubStr(resto, 1, 1)) SubStr(resto, 2)
+}
+
+; [{chave, tecla}] de tudo que tem bancada gravada OU tecla gravada — as duas
+; fontes, porque uma sessao pode ter tecla e estar fechada, e vice-versa.
+teclasGravadas() {
+    global INI
+    vistos := Map()
+    r := []
+    bruto := ""
+    try bruto := IniRead(INI, "teclas")
+    for linha in StrSplit(bruto, "`n") {
+        p := InStr(linha, "=")
+        if (!p)
+            continue
+        c := Trim(SubStr(linha, 1, p - 1))
+        if (c = "" || vistos.Has(c))
+            continue
+        vistos[c] := true
+        r.Push({chave: c, tecla: Trim(SubStr(linha, p + 1))})
+    }
+    ; ⚠️ sessao com bancada e sem tecla TEM de aparecer na tela de configuracao,
+    ; senao ele nao tem por onde atribuir a primeira tecla dela.
+    bb := ""
+    try bb := IniRead(INI, "bancadas")
+    for linha in StrSplit(bb, "`n") {
+        p := InStr(linha, "=")
+        if (!p)
+            continue
+        c := Trim(SubStr(linha, 1, p - 1))
+        if (c = "" || vistos.Has(c))
+            continue
+        vistos[c] := true
+        r.Push({chave: c, tecla: ""})
+    }
+    return r
+}
+
+teclaDaSessao(chave) {
+    global INI
+    return IniRead(INI, "teclas", chave, "")
+}
+
+gravarTecla(chave, tecla) {
+    global INI
+    try {
+        if (tecla = "")
+            IniDelete INI, "teclas", chave
+        else
+            IniWrite tecla, INI, "teclas", chave
+    }
+    registrarTeclasDeSessao()
+}
+
+; ⚠️ Migra o formato antigo (`1=CTA - 03 Neusa`, numero de ordem) para o novo
+; (`CTA - 03 Neusa=^!1`). Sem isto, quem ja' tinha tecla atribuida a perderia em
+; silencio na primeira atualizacao — e ficaria achando que o recurso quebrou.
+migrarTeclasAntigas() {
+    global INI, TECLAS_MAX
+    loop TECLAS_MAX {
+        n := String(A_Index)
+        v := IniRead(INI, "teclas", n, "")
+        if (v = "")
+            continue
+        try IniDelete INI, "teclas", n
+        if (IniRead(INI, "teclas", v, "") = "")
+            try IniWrite "^!" n, INI, "teclas", v
+    }
+}
+
+; primeira tecla livre da familia Ctrl+Alt+1..9, so' como SUGESTAO inicial
+teclaLivre() {
+    global TECLAS_MAX
+    usadas := Map()
+    for e in teclasGravadas()
+        if (e.tecla != "")
+            usadas[e.tecla] := true
+    loop TECLAS_MAX {
+        t := "^!" A_Index
+        if !usadas.Has(t)
+            return t
+    }
+    return ""
+}
+
+garantirTecla(chave) {
+    t := teclaDaSessao(chave)
+    if (t != "")
+        return t
+    t := teclaLivre()
+    if (t != "")
+        gravarTecla(chave, t)
+    return t
+}
+
+; ⛔⛔ REGISTRO DINAMICO. Toda tecla ativa e' desligada antes de religar a lista
+; nova — sem isto, trocar a tecla de uma sessao deixaria a ANTIGA respondendo
+; tambem, e duas teclas para a mesma coisa e' o comeco de uma nao responder.
+global gTeclasAtivas := Map()
+
+registrarTeclasDeSessao() {
+    global gTeclasAtivas
+    for t, _ in gTeclasAtivas {
+        try Hotkey(t, "Off")
+    }
+    gTeclasAtivas := Map()
+    for e in teclasGravadas() {
+        if (e.tecla = "")
+            continue
+        try {
+            Hotkey(e.tecla, chamadorDaSessao(e.chave), "On")
+            gTeclasAtivas[e.tecla] := e.chave
+        } catch as err {
+            anotar("tecla ignorada (" e.tecla "): " err.Message)
+        }
+    }
+}
+
+; ⚠️ funcao separada de proposito: uma closure criada DENTRO do laco captura a
+; variavel do laco, e todas as teclas acabariam chamando a ultima sessao.
+chamadorDaSessao(chave) {
+    return (*) => levantarSessao(chave)
+}
+
+avisoRapido(txt) {
+    ToolTip txt
+    SetTimer () => ToolTip(), -2400
+}
+
+levantarSessao(chave) {
+    global rodando
+    if rodando
+        return
+    b := bancadaPorChave(chave)
+    if (b = 0)
+        return avisoRapido("a bancada de '" chave "' nao esta' aberta.`n"
+                           "Abra o perfil no Dolphin e rode o F3.")
+    ; ⭐ o foco vai para a janela do AdBatch: ele chamou a SESSAO, e e' nela que
+    ; o trabalho acontece. No F4 o foco fica na que ele clicou, que e' outro caso.
+    arrumarBancada(b, b.h1)
+}
+
+; =============================================================================
+;  ⭐ A TELA DE CONFIGURAR AS TECLAS (F2)
+; =============================================================================
+; ⛔ Um controle Hotkey por sessao, todos visiveis de uma vez: sao no maximo
+; nove linhas, e uma tela que exige SELECIONAR antes de EDITAR cobra dois passos
+; para o que cabe em um.
+; ⚠️ O controle e' o nativo do Windows — ele aperta a combinacao e o proprio
+; sistema escreve. Digitar o nome da tecla a mao seria fonte de erro que so'
+; apareceria na hora de usar.
+configurarTeclas(*) {
+    global LARG_UI, INI
+    lista := teclasGravadas()
+    g := janelaUI("teclas das sessoes")
+    secaoUI(g, "Qual tecla levanta cada sessao", true)
+    if (lista.Length = 0) {
+        g.AddText("w" LARG_UI " c" COR_FRACA,
+                  "Nenhuma sessao conhecida ainda. Rode o F3 numa sessao: "
+                  "ela entra nesta lista e ja' ganha uma tecla.")
+        g.AddButton("w110 h30 x" (18 + LARG_UI - 110) " y+16 Default", "Fechar")
+         .OnEvent("Click", (*) => g.Destroy())
+        g.Show()
+        return
+    }
+    g.AddText("w" LARG_UI " c" COR_FRACA,
+              "Clique no campo e aperte a combinacao que quiser. "
+              "Use Ctrl, Alt ou Shift junto — tecla solta atrapalharia a digitacao.")
+    ; ⛔ O `x18` EXPLICITO EM CADA LINHA nao e' redundancia. Medido em
+    ; 2026-08-11: com `y+10` sozinho, o AHK mantem o X do controle ANTERIOR — que
+    ; e' o campo de tecla, la' na direita. A segunda linha nascia depois dele, a
+    ; terceira depois dessa, e a janela saiu com 1252px de largura contra os 752
+    ; das outras telas. Escada, nao formulario.
+    campos := []
+    for e in lista {
+        fonteUI(g, "s9")
+        g.AddText("x18 y+10 w" (LARG_UI - 210), e.chave)
+        hk := g.AddHotkey("x+10 yp-3 w200", e.tecla)
+        campos.Push({chave: e.chave, ctl: hk})
+    }
+
+    ; ⚠️ o aviso fica ACIMA dos botoes e sempre visivel: mensagem de erro que
+    ; aparece depois do clique chega tarde.
+    aviso := g.AddText("x18 y+14 w" LARG_UI " c" COR_FRACA,
+                       "as teclas passam a valer assim que voce salvar")
+
+    salvar(*) {
+        global TECLA_NENHUMA
+        usadas := Map()
+        for c in campos {
+            t := c.ctl.Value
+            if (t = "")
+                continue
+            ; ⛔ duas sessoes na mesma tecla: a segunda venceria em silencio e a
+            ; primeira pareceria quebrada. Recusa antes de gravar qualquer coisa.
+            if usadas.Has(t) {
+                aviso.Opt("c" COR_MA)
+                aviso.Value := "a tecla " nomeDaTecla(t) " esta' em DUAS sessoes — "
+                             . "cada uma precisa da sua"
+                return
+            }
+            usadas[t] := c.chave
+        }
+        for c in campos
+            gravarTecla(c.chave, c.ctl.Value)
+        g.Destroy()
+        avisoRapido("teclas salvas")
+    }
+
+    g.AddButton("w150 h30 x" (18 + LARG_UI - 150) " y+12 Default", "Salvar")
+     .OnEvent("Click", salvar)
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 270) " yp", "Cancelar")
+     .OnEvent("Click", (*) => g.Destroy())
+    g.Show()
+}
+
 ; ⚠️ usado so' para MARCAR no seletor qual linha e' bancada
 bancadaGravada(lista) {
     for b in bancadasVivas()
@@ -1182,7 +1442,11 @@ montarBancadaMiolo() {
     ; versao nova. Foi assim que a marca sumiu do seletor no primeiro uso real.
     ; ⭐ Gravado com o TITULO DA SESSAO como chave, uma chave por sessao: e' o que
     ; faz o F4 e o clique no icone servirem para quantas contas ele abrir.
-    gravarBancada(WinGetTitle("ahk_id " hBase), hJan1, hJan2)
+    tituloSessao := WinGetTitle("ahk_id " hBase)
+    gravarBancada(tituloSessao, hJan1, hJan2)
+    ; ⭐ a tecla da sessao nasce JUNTO com a bancada, e e' anunciada no fim:
+    ; atalho que ninguem contou que existe nao existe.
+    tSessao := garantirTecla(chaveDeBancada(tituloSessao))
 
     ; ⚠️ CONFERE A JANELA 1 CONTRA A CALIBRACAO E AVISA AQUI. O F10 ja' tem a
     ; trava de geometria, mas ela dispara la' na frente, com o roteiro colado e a
@@ -1210,9 +1474,13 @@ montarBancadaMiolo() {
 
     anotar("bancada montada: janela1=" hJan1 " (" nAd " abas AdBatch, monitor "
            mons[1] ", " w1 "x" h1 "), janela2=" hJan2 " (monitor " mons[2] ")")
+    tecla := (tSessao != "")
+             ? ("`n`nTecla desta sessao: " nomeDaTecla(tSessao)
+                "  (levanta as duas janelas de onde voce estiver, e o F2 troca)")
+             : ""
     MsgBox("Bancada montada.`n`nJanela 1 — monitor " mons[1] ": " nAd " abas do AdBatch"
            "`nJanela 2 — monitor " mons[2] ": " nDash " abas do dashboard + 1 Montador"
-           "`n`nNo F10 ela aparece marcada como montada pelo F3." aviso,
+           "`n`nNo F10 ela aparece marcada como montada pelo F3." tecla aviso,
            APP)
 }
 
@@ -1272,6 +1540,7 @@ novaJanela(hOrigem) {
 
 ATALHOS := [
     ["F1",  "Ajuda",             "esta tela: os atalhos e como o script esta' agora"],
+    ["F2",  "Teclas das sessoes", "escolhe qual tecla levanta cada par de janelas"],
     ["F3",  "Montar bancada",    "cria as DUAS janelas da sessao e abre as abas nelas"],
     ["F4",  "Levantar bancada",  "traz as duas janelas de volta, cada uma no seu monitor"],
     ["F8",  "Ensaio seco",       "roda o ciclo SEM colar e SEM gastar credito"],
@@ -1297,10 +1566,20 @@ ajuda(inicial := false) {
         fonteUI(g)
     }
     secaoUI(g, "Atalhos", !inicial)
-    lv := escurecerUI(g.AddListView("w" LARG_UI " r8 -Multi +Grid NoSort" fundoUI(),
+    lv := escurecerUI(g.AddListView("w" LARG_UI " r11 -Multi +Grid NoSort" fundoUI(),
                                     ["Tecla", "O que faz", "Detalhe"]))
     for a in ATALHOS
         lv.Add("", a[1], a[2], a[3])
+    ; ⭐⭐ AS TECLAS DE SESSAO ENTRAM NA MESMA TABELA, nao num quadro a
+    ; parte: para quem opera, "Ctrl+Alt+1 levanta a CTA - 03 Neusa" e' um atalho
+    ; como qualquer outro. Sao as unicas linhas que mudam de maquina para
+    ; maquina, e por isso vem do INI em vez de escritas no codigo.
+    for t in teclasGravadas()
+        lv.Add("", nomeDaTecla(t.tecla), t.chave,
+               (t.tecla = "") ? "sem tecla — o F2 atribui uma"
+               : (bancadaPorChave(t.chave) != 0)
+                 ? "levanta as duas janelas desta sessao"
+                 : "as janelas nao estao abertas — rode o F3")
     lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, LARG_UI - 232)
 
     secaoUI(g, "Como esta' agora")
@@ -1440,6 +1719,7 @@ montarBandeja() {
     A_TrayMenu.Add()
     A_TrayMenu.Add("Montar bancada  (F3)",     (*) => montarBancada())
     A_TrayMenu.Add("Levantar bancada  (F4)",   (*) => levantarBancada())
+    A_TrayMenu.Add("Teclas das sessoes  (F2)", (*) => configurarTeclas())
     A_TrayMenu.Add()
     A_TrayMenu.Add("RODAR  (F10)",             (*) => rodar(false))
     A_TrayMenu.Add("Ensaio seco  (F8)",        (*) => rodar(true))
@@ -1457,6 +1737,10 @@ montarBandeja() {
 }
 
 montarBandeja()
+; ⚠️ a migracao vem ANTES do registro: as teclas do formato antigo tem de
+; existir no formato novo para serem ligadas nesta mesma partida.
+migrarTeclasAntigas()
+registrarTeclasDeSessao()
 gCliqueLigado := ligarCliqueNoIcone()
 
 ; ⚠️ O SCRIPT SUBIA MUDO. Sem nada na partida, nao havia como saber que ele
@@ -1473,6 +1757,8 @@ else
 F1::  ajuda()
 F3::  montarBancada()
 F4::  levantarBancada()
+
+F2::  configurarTeclas()
 F9::  calibrar()
 F10:: rodar(false)
 F8::  rodar(true)
