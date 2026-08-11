@@ -23,7 +23,7 @@ O ARCO — 2 cenas de 8s, destino AdBatch Vertical 2:
     cena 1  A ISCA     duas SENTADAS com os dois props no colo, a que fala EM PE
                        ATRAS apontando · diagnostico + virada + o vilao
     cena 2  A PROVA    a cozinha da mesma casa: a bancada da receita, ela com o
-                       COPO na lente e o CORPO-PROVA masculino sem rosto a
+                       COPO na lente e o CORPO-PROVA masculino SORRINDO a
                        frame-right · o gelatin trick + o CTA
 
 ⭐⭐ COMO AS 3 CENAS VIRARAM 2, e por que nao e' perda:
@@ -478,15 +478,29 @@ BO_HOMEM = (
 # e' a AMIGA, e ela e' o angulo inteiro: duas mulheres, uma com o prop murcho e
 # a outra com o grande. Mandar o Veo animar "o homem atras dela" numa imagem de
 # duas mulheres e' pedir que ele invente um terceiro corpo ou troque a amiga.
-# ⭐⭐ BO3 — O CORPO-PROVA SEM ROSTO, na geometria do EXTERIOR (referencia que
-# o operador mandou em print). Ela frame-left falando na lente com o copo; ele
-# frame-right CORTADO NO PEITO, sem rosto, com o prop GRANDE erguido na altura
-# da cintura.
-# ⛔ SEM ROSTO E' A DECISAO INTEIRA: e' "o corpo de qualquer homem", e o
-# espectador se ve' ali. Com rosto vira "o corpo daquele cara", e a prova deixa
-# de ser dele.
-# ⚠️ O corte no PEITO tambem e' o que mantem a cena gerável: rosto masculino
-# junto de prop falico na cintura e' a combinacao que a moderacao pega.
+# ⭐⭐ BO3 — O CORPO-PROVA, na geometria do EXTERIOR (referencia que o operador
+# mandou em print). Ela frame-left falando na lente com o copo; ele frame-right
+# com o prop GRANDE erguido na altura da cintura.
+#
+# ⛔⛔ ATE' 2026-08-10 ELE ERA SEM ROSTO, cortado no peito, por duas razoes:
+# era "o corpo de qualquer homem" (o espectador se via ali) e o corte mantinha
+# a cena gerável — rosto masculino junto de prop falico na cintura e' a
+# combinacao que a moderacao pega.
+# ⭐ O OPERADOR INVERTEU A REGRA, de propria voz. Ele leu um render, viu o
+# marido de cara fechada e mandou: *"ele deve estar feliz e sorrindo"*. Foram
+# apresentadas as tres saidas — sumir com o rosto, mostrar sorrindo, ou cortar
+# na boca — com o risco de recusa escrito em cada uma; ele escolheu a segunda:
+# *"pode fazer o que eu pedi, opcao 2, sempre o homem feliz e sorrindo"*.
+# ⚠️ O ROSTO AGORA APARECE E TEM DE SORRIR. A `BO6` foi INVERTIDA junto (nao
+# apagada) e cobra o sorriso na IMAGE e no TAKE.
+# ⚠️ RISCO ACEITO: se este agente comecar a acumular recusa do Veo, o primeiro
+# suspeito e' esta mudanca — rosto + prop falico na cintura no mesmo quadro.
+#
+# ⭐ E ISTO CONSERTOU UM DEFEITO DE VERDADE, que era a causa do que ele viu: o
+# molde dizia `no face is in the frame` e, na mesma sentenca, descrevia cabelo,
+# barba, sobrancelha e pinta — as 22 entradas do pool HOMENS descrevem rosto.
+# O gerador resolvia a contradicao MOSTRANDO o rosto, e um rosto sem expressao
+# escrita sai neutro. Era contradicao interna, nao teimosia do modelo.
 # ⭐ O ULTIMO `%s` E' A CAUDA DO PROP (`cauda_c2`), e o LUGAR dela e' este —
 # 2026-08-10. Nao e' preciosismo de pontuacao: a cauda anti-bicho fala do
 # MOLUSCO, e posta depois de *"Only his chest, his arms and his hands are in the
@@ -496,18 +510,19 @@ BO_HOMEM = (
 # ⚠️ O texto travado nao mudou uma letra — entrou um SLOT, que fica vazio para
 # todo par sem `cauda_c2`.
 BO_CORPO_PROVA = (
-    "Standing at frame-right, cropped at the chest so that no face is in the "
-    "frame, is a %d-year-old %s man, %s, wearing %s. His right hand is closed "
+    "Standing at frame-right, in frame from the waist up with his face fully "
+    "visible, is a %d-year-old %s man, %s, wearing %s. He is smiling broadly, "
+    "happy and relaxed, looking at the camera with an easy open grin. His "
+    "right hand is closed "
     "around %s, held upright at the height of his waist, well clear of his "
-    "body.%s Only his chest, his arms and his hands are in the picture."
+    "body.%s"
 )
 
 BO_CORPO_PROVA_TAKE = (
-    "He stays cropped at the chest for the whole shot: the camera never tilts "
-    "up to his face and he never leans down into frame. Only his chest, his "
-    "arms and his hands are in the picture, and his hand stays closed around "
-    "the piece exactly where it is. He never speaks. Only she speaks, straight "
-    "into the lens."
+    "He stays in frame the whole shot, face visible, and keeps smiling the "
+    "whole time — happy and relaxed, his expression never going flat or "
+    "serious. His hand stays closed around the piece exactly where it is. He "
+    "never speaks and makes no sound. Only she speaks, straight into the lens."
 )
 
 BO_AMIGA_TAKE = (
@@ -1445,7 +1460,8 @@ PARES = [
     #      tamanho aparecer na tela.
     # ⛔ COPIA LITERAL DA SPEC DO NECROSE (`GEODUCK_PAYOFF`), com UMA troca: a
     # ancora vertical de la' e' `reaching well above the top of his head`, e
-    # aqui NAO HA CABECA EM QUADRO (o corpo-prova e' cortado no peito, BO6).
+    # ⚠️ ate' 2026-08-10 nao havia cabeca em quadro aqui; hoje o corpo-prova
+    # aparece de rosto e sorrindo (BO6 invertida).
     # Ancora que aponta para fora do frame e' ancora nenhuma — entra a do
     # TORSO, que e' o que esta' visivel: do punho ao alto do peito.
     # ⛔ E a CLAUSULA ANTI-BICHO vem JUNTO, nao e' enfeite: e' nessa escala que
@@ -2818,7 +2834,7 @@ def montar(spec):
     #     receita foi feita, e o lugar onde o mecanismo mora (DU2);
     #   · ela frame-LEFT com o COPO na lente — o objeto da keyword, na mao no
     #     frame em que a boca diz `gelatin,`;
-    #   · ele frame-RIGHT cortado no peito, sem rosto, com o prop GRANDE na
+    #   · ele frame-RIGHT de rosto visivel e sorrindo, com o prop GRANDE na
     #     cintura — a geometria do EXTERIOR, que o operador mandou por print.
     #
     # ⛔⛔ `bancada16`, NAO `bancada`. A string do TRIO comeca com `a tall clear
@@ -3357,7 +3373,7 @@ def lint(spec, blocos):
     # tres cenas e proibiam homem em quadro. Aqui:
     #   cena 1 — TRES mulheres, so' a de pe fala;
     #   cena 2 — a REF + UMA delas (ordem do operador);
-    #   cena 3 — a REF + o CORPO-PROVA MASCULINO, sem rosto (a cena do
+    #   cena 3 — a REF + o CORPO-PROVA MASCULINO, sorrindo (a cena do
     #            EXTERIOR, que o operador mandou por print).
     # Proibir homem aqui reprovava 200 de 200 na cena que ele mesmo pediu.
     if "Neither seated woman speaks" not in i1:
@@ -3369,15 +3385,29 @@ def lint(spec, blocos):
     # 16 ela nao esta' nessa cena. Lente que vigia personagem ausente passa
     # sempre e vira sonda cega (§29). A mudez do segundo corpo da cena 2 e'
     # cobrada logo abaixo, no corpo-prova, que e' quem esta' la'.
-    # ⭐ O CORPO-PROVA E' SEM ROSTO, e isto e' a decisao inteira da cena 3: e' o
-    # corpo de QUALQUER homem, e o espectador se ve' ali. Com rosto vira o corpo
-    # daquele cara, e a prova deixa de ser dele.
-    # ⚠️ O corte no peito tambem e' o que mantem a cena gerável — rosto
-    # masculino junto de prop falico na cintura e' o que a moderacao pega.
-    if "cropped at the chest so that no face is in the frame" not in i2:
-        ach.append(("ERRO", "BO6: IMAGE 02/02 sem o corte no PEITO do "
-                            "corpo-prova — com rosto ele vira 'aquele cara' e a "
-                            "prova para de ser do espectador"))
+    # ⛔⛔ BO6 INVERTIDA EM 2026-08-10, POR DECISAO EXPLICITA DO OPERADOR.
+    # Ate' hoje esta lente cobrava o CORTE NO PEITO (`no face is in the frame`),
+    # por duas razoes escritas: o corpo de QUALQUER homem — o espectador se ve'
+    # ali — e a moderacao, que pega rosto masculino junto de prop falico na
+    # cintura.
+    # ⚠️ Ele leu um render, viu o marido serio e mandou: *"ele deve estar feliz
+    # e sorrindo"*. Apresentei as tres saidas e o risco de recusa; ele escolheu
+    # a segunda de propria voz: *"pode fazer o que eu pedi, opcao 2, sempre o
+    # homem feliz e sorrindo"*. Alcada dele, decisao registrada.
+    # ⭐ A LENTE NAO FOI APAGADA, FOI INVERTIDA — ela agora cobra o SORRISO. Um
+    # gate que some quando a regra muda deixa o proximo defeito passar calado; o
+    # que muda de lado continua vigiando. Se voltar a valer o corte sem rosto,
+    # e' aqui que se troca de volta.
+    # ⚠️ RISCO ACEITO E REGISTRADO: se comecar a haver recusa em serie neste
+    # agente, este e' o primeiro lugar a olhar.
+    if "his face fully visible" not in i2 or "smiling broadly" not in i2:
+        ach.append(("ERRO", "BO6: IMAGE 02/02 sem o corpo-prova de ROSTO "
+                            "VISIVEL e SORRINDO — ordem do operador de "
+                            "2026-08-10"))
+    if "keeps smiling the whole time" not in blocos["TAKE 02/02"]:
+        ach.append(("ERRO", "BO6: TAKE 02/02 sem a trava de sorriso do "
+                            "corpo-prova — a IMAGE so' fixa o primeiro frame, "
+                            "e sem isto a animacao relaxa o rosto dele"))
     if "never speaks" not in blocos["TAKE 02/02"]:
         ach.append(("ERRO", "BO6: TAKE 02/02 sem a trava de mudez do homem — "
                             "sem ela o segundo corpo dubla a fala dela"))
@@ -3940,11 +3970,12 @@ def autoteste(n=600):
     if not any("BO1" in msg for _, msg in lint(s, b1c)):
         ctrl.append("[BO1] NAO acusa a terceira sentada em vez de em pe")
 
-    # [BO6] o corpo-prova COM rosto — a decisao inteira da cena 3
+    # [BO6] o corpo-prova SEM o sorriso — invertido junto com a lente em
+    # 2026-08-10. Controle que injeta o defeito velho depois da regra virar
+    # passa sempre e vira sonda cega (§29).
     b6 = dict(b)
     b6["IMAGE 02/02"] = b6["IMAGE 02/02"].replace(
-        "cropped at the chest so that no face is in the frame",
-        "smiling at the camera")
+        "smiling broadly", "standing there")
     if not any("BO6" in msg for _, msg in lint(s, b6)):
         ctrl.append("[BO6] NAO acusa o corpo-prova COM rosto")
 
