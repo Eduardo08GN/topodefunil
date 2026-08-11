@@ -895,26 +895,41 @@ precisaArrumar(hwnd, mon) {
     return (monitorDaJanela(hwnd) != mon)
 }
 
-; ⭐ Levanta as duas janelas da bancada, cada uma no monitor dela, e devolve o
-; foco para `hFoco` — a janela que o operador clicou. Sem devolver o foco, o
-; clique dele acabaria com a OUTRA janela na frente.
+; ⛔⛔ REGRA CORRIGIDA EM CAMPO (2026-08-11): *"infelizmente o mecanismo de abrir
+; as duas janelas da sessao de uma vez so' nao funciona"*.
+;
+; A versao anterior so' agia se a irma estivesse MINIMIZADA ou FORA DE LUGAR, e
+; saia calada quando as duas estavam "no lugar". Medido no uso real: as janelas
+; dele NAO estao minimizadas — estao maximizadas, cada uma no seu monitor, apenas
+; ATRAS de outras. A regra concluia "esta' tudo certo" e nao fazia nada. Todos os
+; outros elos estavam bons (o par gravado, o hook registrado, 10 ativacoes
+; recebidas, o lParam batendo): o unico que reprovava era a minha guarda.
+;
+; ⭐ E o incomodo que aquela guarda evitava NAO EXISTE NESTE LAYOUT. As duas
+; janelas ficam em MONITORES DIFERENTES — trazer a irma para a frente nunca cobre
+; a que ele clicou. A guarda resolvia um problema que a geometria ja' resolvia.
+;
+; ⚠️ O que ficou da ideia original e' so' a ECONOMIA: janela ja' maximizada e no
+; monitor certo e' apenas ERGUIDA na ordem Z (`WinMoveTop`), sem restaurar, sem
+; mover e sem roubar o foco. O caminho caro (restaurar -> mover -> maximizar)
+; ficou para quem esta' minimizada ou fora de lugar.
 arrumarBancada(b, hFoco := 0) {
     global gArrumando, gUltimoArrumo
     if (b = 0)
         return false
     mons := monitoresDaBancada()
-    if (!precisaArrumar(b.h1, mons[1]) && !precisaArrumar(b.h2, mons[2]))
-        return false                    ; ja' esta' tudo no lugar: silencio
     gArrumando := true
     try {
-        if precisaArrumar(b.h1, mons[1])
-            mandarPara(b.h1, mons[1])
-        else
-            WinShow "ahk_id " b.h1
-        if precisaArrumar(b.h2, mons[2])
-            mandarPara(b.h2, mons[2])
-        else
-            WinShow "ahk_id " b.h2
+        for par in [[b.h1, mons[1]], [b.h2, mons[2]]] {
+            h := par[1], m := par[2]
+            if !WinExist("ahk_id " h)
+                continue
+            if precisaArrumar(h, m)
+                mandarPara(h, m)
+            else
+                try WinMoveTop "ahk_id " h      ; ergue sem tirar o foco de nada
+        }
+        ; ⭐ o foco termina na janela que ELE clicou, nunca na irma
         alvo := (hFoco && WinExist("ahk_id " hFoco)) ? hFoco : b.h1
         WinActivate "ahk_id " alvo
     } finally {
@@ -982,8 +997,7 @@ levantarBancada() {
             }
         }
     }
-    if !arrumarBancada(b, WinExist("A"))
-        ToolTip("a bancada ja' esta' no lugar"), SetTimer(() => ToolTip(), -1400)
+    arrumarBancada(b, WinExist("A"))
 }
 
 montarBancada() {

@@ -502,3 +502,38 @@ operador caça o botao Cancelar com o mouse.
 `0 controles fora da janela` nas quatro telas · abertura em 752x600 com o titulo
 `Video Terminator by Eddie` · botao Montar **travado** sem url e **liberado** com
 url valida · 16 de 16 nas bancadas/F4 · o exe rodando sozinho numa pasta vazia.
+
+### ⛔⛔ O F4 nao funcionava, e a culpada era a minha propria guarda (2026-08-11)
+
+Relato do operador: *"infelizmente o mecanismo de abrir as duas janelas da sessao
+de uma vez so' nao funciona"*.
+
+**Todos os elos da corrente estavam bons** — medidos um a um contra o INI real:
+o par gravado (`CTA - 03 Neusa=4070014,3866962`), as duas janelas vivas, o
+`RegisterShellHookWindow` retornando OK, a mensagem `SHELLHOOK` registrada
+(49193), **10 ativacoes recebidas** e o `lParam` batendo com as janelas.
+
+⛔ O unico elo que reprovava era esta regra, escrita por mim como protecao:
+
+> so' age se a irma estiver MINIMIZADA ou FORA DE LUGAR
+
+**As janelas dele nao estao minimizadas.** Estao maximizadas, cada uma no seu
+monitor, apenas **ATRAS** de outras. A guarda concluia "esta' tudo no lugar" e
+saia calada. Eu otimizei contra um incomodo de alt-tab e matei o caso principal.
+
+⭐ **E o incomodo que ela evitava nao existe neste layout**: as duas janelas ficam
+em **monitores diferentes**, entao erguer a irma nunca cobre a que ele clicou. A
+geometria ja' resolvia o que a guarda tentava resolver.
+
+⚠️ Do original ficou so' a **economia**: janela ja' maximizada e no monitor certo
+e' apenas **erguida na ordem Z** (`WinMoveTop`), sem restaurar, sem mover e sem
+roubar o foco. O caminho caro (restaurar -> mover -> maximizar) ficou para quem
+esta' minimizada ou fora de lugar.
+
+⛔⛔ **E o teste afirmava que o defeito era o certo.** Havia uma linha
+`ok("com tudo no lugar, NAO age de novo", ... = false)` passando feliz. Teste que
+codifica a suposicao errada nao protege de nada — passa exatamente quando o
+produto falha. Agora o teste **reproduz o cenario dele**: uma janela intrusa
+cobrindo a irma, e a conferencia e' a ORDEM Z medida antes e depois (irma 3 -> 2,
+intrusa 1 -> 3), mais o foco continuar na janela clicada e a irma nao sair do
+lugar. 20 de 20.
