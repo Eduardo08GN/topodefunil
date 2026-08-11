@@ -1,5 +1,15 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
+
+; ⭐ Metadados do executavel, lidos pelo Ahk2Exe na compilacao. Sem eles o .exe
+; sai com o nome e a versao do proprio AutoHotkey nas Propriedades do arquivo —
+; e um executavel que se apresenta como outro programa e' o tipo de coisa que
+; antivirus e operador estranham, cada um a seu modo.
+;@Ahk2Exe-SetName        Video Terminator
+;@Ahk2Exe-SetDescription Video Terminator by Eddie
+;@Ahk2Exe-SetProductName Video Terminator
+;@Ahk2Exe-SetCopyright   Eddie
+;@Ahk2Exe-SetVersion     1.0.0.0
 SendMode "Event"          ; ⚠️ Event, nao Input: tkinter e Chrome perdem
                           ;    entrada sintetica rapida demais.
 ; ⛔⛔ 2026-08-10, 4a rodada de aceleracao. O operador pediu mais velocidade
@@ -90,15 +100,84 @@ ALVOS := [
 ; ⭐ Daqui em diante toda janela nasce destas duas funcoes. Nao e' economia de
 ; linha: e' o que garante que o proximo dialogo tambem saia igual, em vez de
 ; depender de eu lembrar as medidas.
+; ⭐ O NOME DO PROGRAMA, batizado pelo operador em 2026-08-11:
+; *"nomeie o programa como Video Terminator by Eddie"*.
+; ⚠️ So' o nome VISIVEL mudou. Os arquivos seguem `piloto-adbatch.ini`,
+; `.log` e a pasta `roteiros\` — renomear o .ini apagaria a calibracao dos 6
+; pontos, e renomear a pasta esconderia os roteiros ja' gravados. Nome de
+; produto e nome de arquivo sao coisas diferentes, e so' o primeiro foi pedido.
+APP := "Video Terminator by Eddie"
+
 LARG_UI := 700
+
+; ⭐⭐ TEMA ESCURO, e nao por gosto: TODAS as telas do operador sao escuras — o
+; Windows, o Chrome, o Flow, o Dolphin. Uma janela branca no meio disso e' a
+; unica coisa que pisca na tela, e ele passa o dia olhando para elas. O tema e'
+; LIDO DO WINDOWS, nunca cravado: quem volta para o claro nao herda um dialogo
+; preto.
+temaEscuro() {
+    try return !RegRead("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes"
+                        "\Personalize", "AppsUseLightTheme")
+    return false
+}
+
+ESCURO   := temaEscuro()
+COR_FUNDO := ESCURO ? "202020" : ""
+COR_TEXTO := ESCURO ? "E8E8E8" : ""
+COR_CAMPO := ESCURO ? "2B2B2B" : ""
+COR_FRACA := ESCURO ? "9A9A9A" : "Gray"
+COR_BOA   := ESCURO ? "6FD08C" : "Green"
+COR_MA    := ESCURO ? "FF7B72" : "Red"
+
+; ⚠️ Ordinais NAO DOCUMENTADOS do uxtheme (135 = SetPreferredAppMode, 136 =
+; FlushMenuThemes). Sao o unico jeito de a barra de rolagem e a moldura dos
+; controles comuns virem escuras — mas justamente por nao serem documentados vao
+; dentro de `try`: numa build do Windows em que sumirem, a janela sai clara em
+; vez de o script morrer na partida.
+if ESCURO {
+    try {
+        DllCall("uxtheme\#135", "Int", 2)
+        DllCall("uxtheme\#136")
+    }
+}
+
+; ⭐ pinta o controle com o tema escuro dos controles comuns (rolagem, borda,
+; cabecalho de ListView). Sem isto o fundo fica escuro e a rolagem fica branca.
+escurecerUI(ctl) {
+    global ESCURO
+    if !ESCURO
+        return ctl
+    try DllCall("uxtheme\SetWindowTheme", "Ptr", ctl.Hwnd,
+                "Str", "DarkMode_Explorer", "Ptr", 0)
+    return ctl
+}
+
+fonteUI(g, opc := "s9", familia := "Segoe UI") {
+    global COR_TEXTO
+    g.SetFont(opc (COR_TEXTO = "" ? "" : " c" COR_TEXTO), familia)
+}
+
+; ⚠️ campo (Edit/ListView) nao herda o BackColor da janela — tem de ser dito um
+; a um, senao a janela fica escura com buracos brancos, que e' pior que tudo
+; claro.
+fundoUI() {
+    global COR_CAMPO
+    return (COR_CAMPO = "" ? "" : " Background" COR_CAMPO)
+}
 
 ; ⚠️ titulo vazio nao vira "Piloto AdBatch — " com o travessao solto: a tela de
 ; abertura nao e' "o Piloto AdBatch de alguma coisa", e' o Piloto AdBatch.
 janelaUI(titulo := "") {
+    global COR_FUNDO
     g := Gui("+AlwaysOnTop -MinimizeBox",
-             "Piloto AdBatch" (titulo = "" ? "" : " — " titulo))
+             APP (titulo = "" ? "" : " — " titulo))
     g.MarginX := 18, g.MarginY := 16
-    g.SetFont("s9", "Segoe UI")
+    if (COR_FUNDO != "")
+        g.BackColor := COR_FUNDO
+    fonteUI(g)
+    ; ⭐ Esc fecha. E' o reflexo de todo mundo diante de uma caixa de dialogo, e
+    ; sem isto o operador fica caçando o botao Cancelar com o mouse.
+    g.OnEvent("Escape", (*) => g.Destroy())
     return g
 }
 
@@ -106,9 +185,9 @@ janelaUI(titulo := "") {
 ; isso a janela abre com um buraco antes do primeiro titulo.
 secaoUI(g, texto, primeira := false) {
     global LARG_UI
-    g.SetFont("s10 Bold", "Segoe UI")
+    fonteUI(g, "s10 Bold")
     g.AddText("w" LARG_UI (primeira ? "" : " y+18"), texto)
-    g.SetFont("s9 Norm", "Segoe UI")
+    fonteUI(g, "s9 Norm")
 }
 
 global abortar := false
@@ -417,7 +496,7 @@ escolherSessao() {
     lista := listarSessoes()
     if (lista.Length = 0) {
         MsgBox("Nenhuma sessao aberta.`n`nAbra o perfil no Dolphin (ou a aba "
-               "da AdBatch no Chrome) e rode de novo.", "Piloto AdBatch", 48)
+               "da AdBatch no Chrome) e rode de novo.", APP, 48)
         return 0
     }
     if (gBancada = 0)
@@ -452,11 +531,11 @@ escolherSessao() {
 
     g := janelaUI("em qual janela rodar")
     secaoUI(g, "Escolha a janela do AdBatch", true)
-    g.AddText("w" LARG_UI " cGray",
+    g.AddText("w" LARG_UI " c" COR_FRACA,
               "Depois do F3 a sessao tem varias janelas com o MESMO nome. "
               "As colunas abaixo sao o que as separa — em duvida, use MOSTRAR JANELA.")
-    lv := g.AddListView("w" LARG_UI " r8 -Multi +Grid y+8",
-                        ["Sessao", "Tipo", "Onde", "Tamanho", "Serve para o F10?", "F3"])
+    lv := escurecerUI(g.AddListView("w" LARG_UI " r8 -Multi +Grid y+8" fundoUI(),
+                        ["Sessao", "Tipo", "Onde", "Tamanho", "Serve para o F10?", "F3"]))
     for s in ordem {
         lv.Add("", s.titulo, s.tipo,
                (s.onde ? "monitor " s.onde : "?"),
@@ -486,7 +565,7 @@ escolherSessao() {
         txtF := ""
         for nome in fechadas
             txtF .= (txtF = "" ? "" : "   ·   ") nome
-        g.AddText("w" LARG_UI " y+10 cGray",
+        g.AddText("w" LARG_UI " y+10 c" COR_FRACA,
                   "fechadas (abra no Dolphin para usar):   " txtF)
     }
 
@@ -504,7 +583,7 @@ escolherSessao() {
             return
         h := ordem[r].hwnd
         if !WinExist("ahk_id " h)
-            return MsgBox("essa janela ja' foi fechada", "Piloto AdBatch", 48)
+            return MsgBox("essa janela ja' foi fechada", APP, 48)
         WinActivate "ahk_id " h
         Sleep 1100
         WinActivate "ahk_id " g.Hwnd
@@ -512,9 +591,9 @@ escolherSessao() {
     rodar(*) {
         r := lv.GetNext()
         if (r = 0)
-            return MsgBox("Clique numa linha primeiro.", "Piloto AdBatch", 48)
+            return MsgBox("Clique numa linha primeiro.", APP, 48)
         if !WinExist("ahk_id " ordem[r].hwnd)
-            return MsgBox("essa janela ja' foi fechada", "Piloto AdBatch", 48)
+            return MsgBox("essa janela ja' foi fechada", APP, 48)
         escolhido := ordem[r].hwnd
         g.Destroy()
     }
@@ -565,7 +644,7 @@ prepararJanela(hwnd) {
                     "       (so' clique SIM se os 6 pontos foram apontados "
                     "numa janela deste mesmo tamanho)`n`n"
                     "NAO  = cancelar e rodar o F9 aqui",
-                    "Piloto AdBatch — geometria", 4 + 48)
+                    APP " — geometria", 4 + 48)
         if (r != "Yes")
             throw Error("cancelado — rode o F9 nesta janela")
         IniWrite w, INI, "pontos", "calib_w"
@@ -886,7 +965,7 @@ levantarBancada() {
         if (vivas.Length = 0) {
             MsgBox("Nenhuma bancada montada ainda.`n`nRode o F3 numa sessao "
                    "para montar as duas janelas — dai o F4 passa a levanta-las.",
-                   "Piloto AdBatch", 48)
+                   APP, 48)
             return
         }
         if (vivas.Length = 1) {
@@ -898,7 +977,7 @@ levantarBancada() {
             b := parDaJanela(h)
             if (b = 0) {
                 MsgBox("Essa janela nao faz parte de uma bancada do F3.",
-                       "Piloto AdBatch", 48)
+                       APP, 48)
                 return
             }
         }
@@ -949,24 +1028,24 @@ montarBancadaMiolo() {
     mPrev := monitoresDaBancada()
     g := janelaUI("montar bancada")
     secaoUI(g, "1 · a url do projeto desta sessao", true)
-    g.AddText("w" LARG_UI " cGray",
+    g.AddText("w" LARG_UI " c" COR_FRACA,
               "Serve QUALQUER uma: o dashboard, a AdBatch ou o Montador. "
               "So' o projeto e' lido — as tres urls sao reconstruidas daqui.")
-    g.SetFont("s10", "Consolas")
-    eUrl := g.AddEdit("w" LARG_UI " r1 y+6")
-    g.SetFont("s9", "Segoe UI")
-    aviso := g.AddText("w" LARG_UI " y+6 cRed", "cole uma url para liberar o botao")
+    fonteUI(g, "s10", "Consolas")
+    eUrl := escurecerUI(g.AddEdit("w" LARG_UI " r1 y+6" fundoUI()))
+    fonteUI(g)
+    aviso := g.AddText("w" LARG_UI " y+6 c" COR_MA, "cole uma url para liberar o botao")
 
     secaoUI(g, "2 · o que vai ser montado")
-    lv := g.AddListView("w" LARG_UI " r3 -Multi +Grid NoSort",
-                        ["Janela", "Onde", "Abas", "Ferramenta", "Url que vai abrir"])
+    lv := escurecerUI(g.AddListView("w" LARG_UI " r3 -Multi +Grid NoSort" fundoUI(),
+                        ["Janela", "Onde", "Abas", "Ferramenta", "Url que vai abrir"]))
     lv.Add("", "janela 1", "monitor " mPrev[1], nAd,    "AdBatch Vertical 2",  "—")
     lv.Add("", "janela 2", "monitor " mPrev[2], nDash,  "dashboard das midias", "—")
     lv.Add("", "janela 2", "monitor " mPrev[2], 1,      "Montador Vertical 2", "—")
     lv.ModifyCol(1, 66), lv.ModifyCol(2, 68), lv.ModifyCol(3, 42)
     lv.ModifyCol(4, 138), lv.ModifyCol(5, LARG_UI - 336)
 
-    g.AddText("w" LARG_UI " y+12 cGray",
+    g.AddText("w" LARG_UI " y+12 c" COR_FRACA,
               "As duas janelas nascem NOVAS e maximizadas. "
               "O F10 continua sendo o gatilho da geracao.")
 
@@ -986,7 +1065,7 @@ montarBancadaMiolo() {
         pid := idDoProjeto(eUrl.Value)
         if (pid = "") {
             vazio := (Trim(eUrl.Value) = "")
-            aviso.Opt("cRed")
+            aviso.Opt("c" COR_MA)
             aviso.Value := vazio ? "cole uma url para liberar o botao"
                                  : "nao achei um id de projeto nessa url — nao vou abrir nada"
             loop 3
@@ -995,7 +1074,7 @@ montarBancadaMiolo() {
             return
         }
         u := urlsDaBancada(pid)
-        aviso.Opt("cGreen")
+        aviso.Opt("c" COR_BOA)
         aviso.Value := "projeto " pid
         lv.Modify(1, "Col5", u.adbatch)
         lv.Modify(2, "Col5", u.dash)
@@ -1015,17 +1094,17 @@ montarBancadaMiolo() {
         return
     pid := idDoProjeto(escolhido)
     if (pid = "")
-        return MsgBox("Nao achei um id de projeto nessa url.", "Piloto AdBatch", 48)
+        return MsgBox("Nao achei um id de projeto nessa url.", APP, 48)
     u := urlsDaBancada(pid)
 
     hBase := escolherSessao()
     if (hBase = 0)
         return
     if !WinExist("ahk_id " hBase)
-        return MsgBox("a janela escolhida sumiu", "Piloto AdBatch", 16)
+        return MsgBox("a janela escolhida sumiu", APP, 16)
     WinActivate "ahk_id " hBase
     if !WinWaitActive("ahk_id " hBase, , 4)
-        return MsgBox("nao consegui ativar a sessao", "Piloto AdBatch", 16)
+        return MsgBox("nao consegui ativar a sessao", APP, 16)
 
     anotar("montando bancada — projeto " pid " em " WinGetTitle("ahk_id " hBase))
 
@@ -1033,7 +1112,7 @@ montarBancadaMiolo() {
 
     hJan1 := novaJanela(hBase)
     if (hJan1 = 0)
-        return MsgBox("nao consegui abrir a janela 1", "Piloto AdBatch", 16)
+        return MsgBox("nao consegui abrir a janela 1", APP, 16)
     ; ⭐ POSICIONA ANTES DE ABRIR AS ABAS, nao depois: assim o operador ve' a
     ; bancada nascer no lugar certo, e nao dez abas surgirem na tela errada para
     ; so' entao pularem de monitor.
@@ -1052,7 +1131,7 @@ montarBancadaMiolo() {
     if !abortar {
         hJan2 := novaJanela(hJan1)
         if (hJan2 = 0)
-            return MsgBox("nao consegui abrir a janela 2", "Piloto AdBatch", 16)
+            return MsgBox("nao consegui abrir a janela 2", APP, 16)
         mandarPara(hJan2, mons[2])
         WinActivate "ahk_id " hJan2
         WinWaitActive "ahk_id " hJan2, , 3
@@ -1120,7 +1199,7 @@ montarBancadaMiolo() {
     MsgBox("Bancada montada.`n`nJanela 1 — monitor " mons[1] ": " nAd " abas do AdBatch"
            "`nJanela 2 — monitor " mons[2] ": " nDash " abas do dashboard + 1 Montador"
            "`n`nNo F10 ela aparece marcada como montada pelo F3." aviso,
-           "Piloto AdBatch")
+           APP)
 }
 
 ; ⛔ Abre uma janela nova a partir de uma existente e devolve o HANDLE dela.
@@ -1195,22 +1274,23 @@ ajuda(inicial := false) {
     global ATALHOS, INI, LARG_UI
     g := janelaUI(inicial ? "" : "ajuda")
     if inicial {
-        g.SetFont("s16 Bold", "Segoe UI")
-        g.AddText("w" LARG_UI, "Piloto AdBatch")
-        g.SetFont("s10 Norm", "Segoe UI")
-        g.AddText("w" LARG_UI " y+2 cGray",
+        fonteUI(g, "s16 Bold")
+        g.AddText("w" LARG_UI, APP)
+        fonteUI(g, "s10 Norm")
+        g.AddText("w" LARG_UI " y+2 c" COR_FRACA,
                   "do agente ao AdBatch Vertical 2, em N abas — o script esta' no ar "
                   "e ouvindo os atalhos abaixo.")
-        g.SetFont("s9", "Segoe UI")
+        fonteUI(g)
     }
     secaoUI(g, "Atalhos", !inicial)
-    lv := g.AddListView("w" LARG_UI " r8 -Multi +Grid NoSort", ["Tecla", "O que faz", "Detalhe"])
+    lv := escurecerUI(g.AddListView("w" LARG_UI " r8 -Multi +Grid NoSort" fundoUI(),
+                                    ["Tecla", "O que faz", "Detalhe"]))
     for a in ATALHOS
         lv.Add("", a[1], a[2], a[3])
     lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, LARG_UI - 232)
 
     secaoUI(g, "Como esta' agora")
-    g.SetFont("s9", "Consolas")
+    fonteUI(g, "s9", "Consolas")
 
     ; ── monitores
     mons := ""
@@ -1238,16 +1318,16 @@ ajuda(inicial := false) {
 
     lig := (IniRead(INI, "config", "clique_no_icone", "1") = "0") ? "DESLIGADO" : "ligado"
 
-    est := g.AddEdit("w" LARG_UI " r7 ReadOnly -E0x200 -Wrap +HScroll",
+    est := escurecerUI(g.AddEdit("w" LARG_UI " r7 ReadOnly -E0x200 -Wrap +HScroll" fundoUI(),
              "monitores .......... " mons
         . "`nbancada vai para ... AdBatch no monitor " md[1] " · dashboard no monitor " md[2]
         . "`nabas por bancada ... " nAd " no AdBatch + " nDa " no dashboard + 1 Montador"
         . "`ncalibracao ......... " cal
         . "`nbancadas montadas .. " bnc
         . "`nclique no icone .... " lig " (levanta a bancada ao clicar no icone da sessao)"
-        . "`narquivo ............ " INI)
+        . "`narquivo ............ " INI))
 
-    g.SetFont("s9", "Segoe UI")
+    fonteUI(g)
     ; ⭐ na abertura, quem nao quiser a tela desliga aqui mesmo. Caixa de "nao
     ; mostrar de novo" que obriga a caçar a opcao noutro lugar nao e' escolha.
     if inicial {
@@ -1290,7 +1370,7 @@ montarBandeja() {
     A_TrayMenu.Add("Log  (F12)",               (*) => mostrarLog())
     A_TrayMenu.Add("Sair",                     (*) => ExitApp())
     A_TrayMenu.Default := "Ajuda  (F1)"
-    A_IconTip := "Piloto AdBatch — F1 abre a ajuda"
+    A_IconTip := APP " — F1 abre a ajuda"
 }
 
 montarBandeja()
@@ -1305,7 +1385,7 @@ if (IniRead(INI, "config", "tela_inicial", "1") != "0")
 else
     TrayTip("F1 abre a ajuda com todos os atalhos."
             . "`nclique no icone da sessao: " (gCliqueLigado ? "ligado" : "desligado"),
-            "Piloto AdBatch no ar")
+            APP " no ar")
 
 F1::  ajuda()
 F3::  montarBancada()
@@ -1340,7 +1420,7 @@ calibrarMiolo() {
            "Para cada um: leve o mouse ate' o alvo e aperte F9.`n"
            "O script nao clica em nada agora.`n`n"
            "⭐ Os botoes do AGENTE nao precisam de calibracao: o piloto usa os "
-           "atalhos de teclado (Ctrl+0, Ctrl+4, Ctrl+R).", "Piloto AdBatch")
+           "atalhos de teclado (Ctrl+0, Ctrl+4, Ctrl+R).", APP)
 
     for alvo in ALVOS {
         ToolTip "[CHROME] aponte para:`n" alvo[2] "`n`n(F9 confirma · Esc cancela)"
@@ -1372,13 +1452,13 @@ calibrarMiolo() {
     }
 
     n := InputBox("Quantas abas do Chrome estao abertas com a AdBatch?",
-                  "Piloto AdBatch", "w320 h130", "10")
+                  APP, "w320 h130", "10")
     if (n.Result = "OK" && IsInteger(n.Value))
         IniWrite n.Value, INI, "config", "abas"
 
     MsgBox("Calibrado.`n`nCor do slot vazio: " cor
            "`nAbas: " IniRead(INI, "config", "abas", "?")
-           "`n`nF8 = ensaio seco · F10 = rodar", "Piloto AdBatch")
+           "`n`nF8 = ensaio seco · F10 = rodar", APP)
 }
 
 esperarF9() {
@@ -1511,7 +1591,7 @@ rodarMiolo(seco) {
             throw Error("numero de abas nao configurado — rode F9")
         tAgente := IniRead(INI, "config", "titulo_agente", "AGENTE")
     } catch as e {
-        return MsgBox("Falta calibrar: " e.Message, "Piloto AdBatch", 16)
+        return MsgBox("Falta calibrar: " e.Message, APP, 16)
     }
 
     ; ⭐⭐ A SESSAO E' ESCOLHIDA AQUI, a cada F10/F8 — decisao do operador.
@@ -1524,7 +1604,7 @@ rodarMiolo(seco) {
     try
         prepararJanela(hJanela)
     catch as e
-        return MsgBox(e.Message, "Piloto AdBatch", 16)
+        return MsgBox(e.Message, APP, 16)
     anotar("sessao: " WinGetTitle("ahk_id " hJanela))
 
     anotar((seco ? "ENSAIO SECO" : "EXECUCAO") " — " abas " aba(s)")
@@ -1587,7 +1667,7 @@ rodarMiolo(seco) {
             anotar("aba " i ": PAROU — " e.Message)
             ToolTip()
             MsgBox("Parei na aba " i ".`n`n" e.Message
-                   "`n`nNada foi colado nesta aba.", "Piloto AdBatch", 16)
+                   "`n`nNada foi colado nesta aba.", APP, 16)
             return
         }
     }
@@ -1598,7 +1678,7 @@ rodarMiolo(seco) {
         return MsgBox("Ensaio seco OK — os " abas " ciclos rodariam.`n`n"
                       "⚠️ Ele COPIOU de verdade do agente (inofensivo) e "
                       "conferiu as cinco partes. So' nao colou nem gerou."
-                      "`n`nF12 ve' o log. F10 roda de verdade.", "Piloto AdBatch")
+                      "`n`nF12 ve' o log. F10 roda de verdade.", APP)
     }
     ; ⛔ A RONDA RECEBE A MESMA JANELA. Ela le' pixel e clica REGERAR nos
     ; slots vazios — feita noutra sessao, ela leria a cor errada e clicaria
@@ -1633,7 +1713,7 @@ ronda(hJanela) {
     if (corVaz = "") {
         anotar("ronda pulada: cor do slot vazio nao calibrada")
         return MsgBox("Lotes disparados. Ronda pulada (falta calibrar a cor).",
-                      "Piloto AdBatch")
+                      APP)
     }
 
     loop maxR {
@@ -1679,11 +1759,11 @@ ronda(hJanela) {
         if (pendentes = 0) {
             anotar("ronda " r ": tudo cheio")
             return MsgBox("Pronto — as " abas " abas com as duas imagens.",
-                          "Piloto AdBatch")
+                          APP)
         }
     }
     MsgBox("Fim das rondas, ainda ha' slot vazio. F12 ve' o log.",
-           "Piloto AdBatch", 48)
+           APP, 48)
 }
 
 dormir(ms) {
@@ -1713,25 +1793,25 @@ mostrarLog(*) {
     g := janelaUI("log")
     secaoUI(g, "O que o script fez nesta sessao", true)
     if !linhas.Length {
-        g.AddText("w" LARG_UI " cGray", "Nada rodou ainda desde que o script subiu.")
+        g.AddText("w" LARG_UI " c" COR_FRACA, "Nada rodou ainda desde que o script subiu.")
     } else {
         txt := ""
         ; ⚠️ mais NOVO em cima: numa lista longa, o que importa e' o fim
         loop linhas.Length
             txt .= linhas[linhas.Length - A_Index + 1] "`r`n"
-        g.SetFont("s9", "Consolas")
-        g.AddEdit("w" LARG_UI " r16 ReadOnly -Wrap +HScroll", txt)
-        g.SetFont("s9", "Segoe UI")
+        fonteUI(g, "s9", "Consolas")
+        escurecerUI(g.AddEdit("w" LARG_UI " r16 ReadOnly -Wrap +HScroll" fundoUI(), txt))
+        fonteUI(g)
     }
     ; ⛔ CAMINHO NAO VAI EM `AddText`. Medido em 2026-08-11: o caminho do log e'
     ; um token SEM ESPACOS, um Static nao consegue quebra-lo, e o AHK ALARGA o
     ; controle — a janela do log saiu 74px mais larga que as outras tres, que e'
     ; exatamente a inconsistencia que se estava consertando. Um Edit respeita a
     ; largura pedida, e de quebra o caminho fica selecionavel.
-    g.AddText("w" LARG_UI " y+10 cGray", "arquivo completo:")
-    g.SetFont("s9", "Consolas")
-    g.AddEdit("w" LARG_UI " r1 y+2 ReadOnly -E0x200 -Wrap +HScroll", ARQ_LOG)
-    g.SetFont("s9", "Segoe UI")
+    g.AddText("w" LARG_UI " y+10 c" COR_FRACA, "arquivo completo:")
+    fonteUI(g, "s9", "Consolas")
+    escurecerUI(g.AddEdit("w" LARG_UI " r1 y+2 ReadOnly -E0x200 -Wrap +HScroll" fundoUI(), ARQ_LOG))
+    fonteUI(g)
     g.AddButton("w150 h30 x" (18 + LARG_UI - 150) " y+12 Default", "Fechar")
      .OnEvent("Click", (*) => g.Destroy())
     g.AddButton("w170 h30 x18 yp", "Abrir a pasta do log")

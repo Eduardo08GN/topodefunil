@@ -451,3 +451,54 @@ efeito colateral.
 
 ⭐ Para ter `.exe` de verdade falta **instalar o Ahk2Exe** (componente opcional
 do proprio instalador do AutoHotkey). Decisao do operador — envolve baixar.
+
+## ⭐⭐ VIDEO TERMINATOR BY EDDIE — o .exe e o tema escuro (2026-08-11)
+
+Batismo do operador: *"nomeie o programa como Video Terminator by Eddie"*.
+⚠️ **So' o nome VISIVEL mudou.** Os arquivos seguem `piloto-adbatch.ini`, `.log` e
+a pasta `roteiros\` — renomear o `.ini` apagaria a calibracao dos 6 pontos e
+renomear a pasta esconderia os roteiros gravados. Nome de produto e nome de
+arquivo sao coisas diferentes, e so' o primeiro foi pedido.
+
+### O executavel saiu
+
+O **Ahk2Exe foi instalado** pelo instalador oficial que ja' vinha com o
+AutoHotkey (`UX\install-ahk2exe.ahk`, que baixa do repositorio oficial
+`AutoHotkey/Ahk2Exe`) — autorizado pelo operador. Compilado com o proprio
+`AutoHotkey64.exe` como base.
+
+⛔⛔ **E desta vez o exe foi provado SOZINHO NUMA PASTA VAZIA**, porque a
+armadilha ja' cobrou uma vez: um exe do AutoHotkey sem argumentos procura um
+`.ahk` **com o nome dele** na mesma pasta, entao um teste feito ao lado do fonte
+passa sem provar nada. Medido na pasta isolada: a tela de abertura abriu dentro
+do PID do exe, com os **8 atalhos** listados, e o processo ficou residente depois
+de fechar a tela.
+
+`Video Terminator.exe` · 1.310.208 bytes · ProductName `Video Terminator` ·
+FileDescription `Video Terminator by Eddie` · versao 1.0.0.0.
+
+⚠️ O exe le' o `piloto-adbatch.ini` e grava o `.log` **na pasta dele** — por isso
+ele mora na PILOTO-ADBATCH, junto do resto. E' o mesmo programa: rodar o `.exe` e
+o `.ahk` ao mesmo tempo poe **dois donos nos mesmos atalhos**. Um ou outro.
+
+### Tema escuro, lido do Windows
+
+⛔ Nao e' gosto: **todas** as telas do operador sao escuras — Windows, Chrome,
+Flow, Dolphin. Uma janela branca no meio disso e' a unica coisa que pisca, e ele
+passa o dia olhando para elas. Conferido na maquina: `AppsUseLightTheme = 0`.
+
+⚠️ O tema e' **lido do Windows**, nunca cravado — quem voltar para o claro nao
+herda um dialogo preto. Campos (`Edit`, `ListView`) **nao herdam** o `BackColor`
+da janela e sao pintados um a um: janela escura com buracos brancos e' pior que
+tudo claro. A barra de rolagem e as bordas vem do `uxtheme` por ordinais **nao
+documentados** (135/136), e por isso dentro de `try`: numa build do Windows em
+que sumirem, a janela sai clara em vez de o script morrer na partida.
+
+⭐ E `Esc` fecha qualquer dialogo. E' o reflexo de todo mundo, e sem isso o
+operador caça o botao Cancelar com o mouse.
+
+### Medido depois de tudo isso
+
+`0 controles fora da janela` nas quatro telas · abertura em 752x600 com o titulo
+`Video Terminator by Eddie` · botao Montar **travado** sem url e **liberado** com
+url valida · 16 de 16 nas bancadas/F4 · o exe rodando sozinho numa pasta vazia.
