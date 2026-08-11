@@ -494,26 +494,34 @@ MULHERES = [
 ]
 
 # ---------------------------------------------------------------------------
-# ⭐⭐ O ENVOLTORIO DELAS — eixo pedido pelo operador (2026-08-10)
+# ⭐⭐ O ENVOLTORIO DELAS — STRING TRAVADA, e nasceu EIXO
 # ---------------------------------------------------------------------------
-# *"Quero randomizacao de ora as mulheres que aparecem estao com a toalha
-#  amarrada pouco acima da altura do busto (tal como nos prints referencia) e
-#  ora elas estao com a toalha amarrada na altura da cintura e com biquini na
-#  parte superior."*
+# ⛔⛔ O BIQUINI SAIU EM 2026-08-10, POR REPROVACAO DE CAMPO. O operador rodou
+# o lote e mediu: *"acho que teremos que deixar apenas a opcao de toalha
+# amarrada ate' a altura acima do busto mesmo. Ta' dando muita reprovacao so' o
+# biquini na parte superior das mulheres."*
 #
-# ⛔ UM SORTEIO POR VIDEO, aplicado aos DOIS takes — nao um por take. As duas
-# mulheres sao AS MESMAS atravessando o corte; trocar o traje delas no segundo
-# 9 desfaz justamente a continuidade que o angulo comprou, e o espectador le'
-# "outro dia, outras mulheres" em vez de "a mesma noite".
-# ⚠️ E as DUAS usam o mesmo estado, pela mesma razao: uma de toalha alta e a
-# outra de biquini no mesmo quadro le' como duas cenas coladas.
-ENVOLTORIOS = [
-    {"id": "toalha_alta",
-     "traje": "a white bath towel wrapped and tucked just above the bust"},
-    {"id": "biquini_toalha",
-     "traje": "a bikini top with a white bath towel wrapped and tucked at the "
-              "waist"},
-]
+# O eixo tinha DOIS estados, pedidos por ele no mesmo dia:
+#     ✅ toalha enrolada e presa POUCO ACIMA DO BUSTO   (a do print)
+#     ⛔ biquini em cima + toalha na CINTURA            — REPROVADO no gerador
+#
+# ⭐ E a diferenca entre os dois nao e' de pudor, e' de CATEGORIA para o
+# classificador: `bath towel` e' roupao/banho, e o corpo aparece COBERTO por um
+# objeto de casa. `bikini top` nomeia ROUPA DE BANHO, e roupa de banho num
+# quarto de hotel com um homem de toalha e' outra categoria inteira — a mesma
+# familia da licao do `lap` -> `knee`, em que o token decide e nao a intencao.
+# ⚠️ E o print de referencia sempre foi o primeiro estado; o segundo era
+# ampliacao nossa. Quando a ampliacao briga com o gerador, quem sai e' a
+# ampliacao.
+#
+# ⛔ COM UM ESTADO SO', ISTO DEIXOU DE SER EIXO — virou string travada, e o
+# botao SAIU DO PAINEL. Botao com uma opcao e' botao que nao muda nada, e a lei
+# do operador sobre isso e' antiga: *botao que nao troca nada e' pior que botao
+# nenhum*. Manter o pool com um item so' seria a forma sem a funcao.
+# ⚠️ As DUAS usam o mesmo envoltorio, e isso continua valendo pelo motivo
+# original: elas sao AS MESMAS atravessando o corte, e traje diferente entre
+# elas — ou entre os takes — le' como duas cenas coladas.
+ENVOLTORIO_DELAS = "a white bath towel wrapped and tucked just above the bust"
 
 # ===========================================================================
 # COPY — TAKE 1: O AVISO
@@ -791,7 +799,7 @@ def _descreve_dupla(spec):
     blocos e' o fragmento espelhado que diverge na primeira manutencao — e o
     que diverge aqui e' exatamente a ancora que impede a troca de pessoa.
     """
-    tr = spec["envoltorio"]["traje"]
+    tr = ENVOLTORIO_DELAS
     partes = []
     for w in _dupla(spec):
         partes.append("a %d-year-old %s woman, %s, %s, wearing %s"
@@ -868,9 +876,6 @@ def sortear(pagina, rng, ledger, travas=None):
         "pagina": pagina, "etnia": etnia, "bela": bela, "forte": forte,
         "quarto": quarto, "ambiente": ambiente,
         "homem": homem, "mulher_a": mulher_a, "mulher_b": mulher_b,
-        "envoltorio": (_por_id(ENVOLTORIOS, travas["envoltorio"])
-                       if travas.get("envoltorio")
-                       else rng.choice(ENVOLTORIOS)),
         "corpo_h": corpo,
         "toalha": rng.choice(TOALHAS),
         # ⛔ CT4b — o apelido sai de `sc.APELIDOS_16` e de mais lugar nenhum.
@@ -1139,14 +1144,33 @@ def _fa8_etnia(spec, blocos, achados):
 
 
 def _fa9_toalha(spec, blocos, achados):
-    """FA9 — a toalha dele nos DOIS takes, e o envoltorio delas igual nos dois."""
+    """FA9 — a toalha dele e o envoltorio delas, nos DOIS takes."""
     for k in ("IMAGE 01/02", "IMAGE 02/02"):
         if spec["toalha"] not in blocos.get(k, ""):
             achados.append(("ERRO", "FA9: %s sem a toalha dele — e' o uniforme "
                                     "do angulo" % k))
-        if spec["envoltorio"]["traje"] not in blocos.get(k, ""):
-            achados.append(("ERRO", "FA9: %s sem o envoltorio sorteado delas"
-                            % k))
+        # ⛔ string TRAVADA desde 2026-08-10 (o biquini reprovava no gerador)
+        if ENVOLTORIO_DELAS not in blocos.get(k, ""):
+            achados.append(("ERRO", "FA9: %s sem o envoltorio delas" % k))
+        # ATENCAO: ESTA LINHA JA' NASCEU MORTA UMA VEZ. Ela foi escrita por
+        # heredoc, e a BORDA DE PALAVRA do regex (barra invertida + b) virou
+        # um BYTE DE CONTROLE 0x08 dentro do arquivo. O padrao passou a
+        # procurar um BACKSPACE literal antes de bikini e NUNCA casava:
+        # autoteste verde, lente sem efeito nenhum.
+        # E' o modo de falha que o proprio repo documentou no MESMO dia —
+        # heredoc que escreve .py deixa byte de controle, e o regex morre
+        # calado. Por isso aqui nao ha' borda de palavra nenhuma: sao
+        # palavras que nao aparecem por acaso, e substring basta. Menos
+        # escape, menos superficie.
+        # E FOI O CONTROLE NEGATIVO QUE ACHOU, nao a leitura: a lente parecia
+        # certa no `inspect.getsource`, porque o terminal ENGOLE o backspace
+        # ao imprimir. Lente sem controle negativo nunca foi testada — e esta
+        # esteve verde e morta ao mesmo tempo.
+        if re.search("bikini|swimsuit|swimwear|lingerie",
+                     blocos.get(k, ""), re.I):
+            achados.append(("ERRO", "FA9: %s traz roupa de banho — o biquini "
+                                    "foi REPROVADO no gerador em 2026-08-10 e "
+                                    "o envoltorio e' toalha, string travada" % k))
 
 
 def _fa10_duas_distintas(spec, blocos, achados):
@@ -1293,7 +1317,6 @@ EIXOS_UI = [
     ("homem", "QUEM FALA", "HOMENS", "id"),
     ("mulher_a", "MULHER 1", "MULHERES", "id"),
     ("mulher_b", "MULHER 2", "MULHERES", "id"),
-    ("envoltorio", "TOALHA DELAS", "ENVOLTORIOS", "id"),
 ]
 EIXOS_TRAVAVEIS = [e[0] for e in EIXOS_UI]
 TRAVAS_UI = []
@@ -1307,14 +1330,13 @@ def resumo_pt(spec):
     return (
         "16s, DOIS takes. Take 1 — O AVISO, em %s: ele de %d anos, DE PE' perto "
         "da lente, tronco nu e TOALHA na cintura, falando para a lente; as DUAS "
-        "mulheres atras, %s, SORRINDO. Take 2 — AS DUAS DO LADO, em %s: o MESMO "
+        "mulheres atras, de toalha acima do busto, SORRINDO. Take 2 — AS DUAS DO LADO, em %s: o MESMO "
         "homem e AS MESMAS DUAS, uma de cada lado, coladas, e ele com a TIGELA "
         "DE CUBOS numa mao e a CAIXA DE BICARBONATO na outra. ATENCAO: os dois "
         "lugares sao INDEPENDENTES — quem atravessa o corte sao as TRES "
         "pessoas, nao a casa. Elenco: homem %s de pele %s, duas mulheres de "
         "%d e %d anos%s%s."
         % (spec["quarto"]["nome"], spec["homem"]["idade"],
-           spec["envoltorio"]["id"].replace("_", " "),
            spec["ambiente"]["nome"], spec["etnia"], et,
            spec["mulher_a"]["idade"], spec["mulher_b"]["idade"],
            " (modo BELA LIGADO)" if spec["bela"] else "",
@@ -1561,17 +1583,41 @@ def autoteste(n=400):
     if len(AMBIENTES) != 10:
         falhas.append("AMBIENTES: sao %d e o operador ditou DEZ — a lista nao "
                       "e' nossa" % len(AMBIENTES))
-    if len(ENVOLTORIOS) != 2:
-        falhas.append("ENVOLTORIOS: o operador ditou DOIS estados (toalha acima "
-                      "do busto / biquini + toalha na cintura)")
+    # ⛔ O ENVOLTORIO E' TRAVADO, e o guarda impede que ele volte a ser pool:
+    # o biquini reprovava no gerador (relato de campo, 2026-08-10) e
+    # `bath towel` e `bikini top` sao CATEGORIAS diferentes para o
+    # classificador, nao graus da mesma coisa.
+    if re.search(r"bikini|swimsuit|swimwear|lingerie", ENVOLTORIO_DELAS, re.I):
+        falhas.append("ENVOLTORIO_DELAS voltou a nomear roupa de banho — foi "
+                      "REPROVADO no gerador")
 
     # -- CONTROLE: ids unicos ------------------------------------------------
     for rot, pool in (("QUARTOS", QUARTOS), ("AMBIENTES", AMBIENTES),
                       ("HOMENS", HOMENS), ("MULHERES", MULHERES),
-                      ("ENVOLTORIOS", ENVOLTORIOS)):
+                      ):
         ids = [x["id"] for x in pool]
         if len(set(ids)) != len(ids):
             falhas.append("%s: id repetido" % rot)
+
+    # -- CONTROLE NEGATIVO da FA9 (o biquini) --------------------------------
+    # ⛔⛔ ESTE CONTROLE NAO E' ENFEITE: sem ele a lente do biquini ficou VERDE
+    # E MORTA por um commit inteiro. A borda de palavra do regex tinha virado
+    # um byte de controle 0x08 no arquivo, o padrao procurava um BACKSPACE
+    # antes de `bikini`, e nada casava nunca. O `inspect.getsource` mostrava a
+    # linha CERTA — porque o terminal engole o backspace ao imprimir.
+    # ⚠️ Lente sem controle negativo nunca foi testada. Foi assim que o defeito
+    # apareceu: eu injetei o biquini a mao para mostrar a lente funcionando, e
+    # ela nao acusou.
+    s = sortear("joe", random.Random(2), {})
+    bl = montar(s)
+    bl["IMAGE 01/02"] = bl["IMAGE 01/02"].replace(
+        ENVOLTORIO_DELAS, "a bikini top with a white bath towel at the waist")
+    prova = []
+    _fa9_toalha(s, bl, prova)
+    if not any("roupa de banho" in a[1] for a in prova):
+        falhas.append("a FA9 NAO acusou o biquini reinjetado — a lente do "
+                      "envoltorio esta' morta (confira byte de controle no "
+                      "regex: heredoc que escreve .py deixa 0x08)")
 
     # -- CONTROLE NEGATIVO da FA13 -------------------------------------------
     # ⛔ Uma lente que nunca acusou nunca foi testada. Injeta o idioma do BED 16
@@ -1631,7 +1677,6 @@ def main():
     ap.add_argument("--seed", type=int)
     ap.add_argument("--quarto", choices=[q["id"] for q in QUARTOS])
     ap.add_argument("--ambiente", choices=[a["id"] for a in AMBIENTES])
-    ap.add_argument("--envoltorio", choices=[e["id"] for e in ENVOLTORIOS])
     ap.add_argument("--bela", action="store_true")
     ap.add_argument("--forte", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
@@ -1644,7 +1689,7 @@ def main():
     led = _carregar_ledger()
     rng = random.Random(a.seed)
     travas = {}
-    for k in ("quarto", "ambiente", "envoltorio"):
+    for k in ("quarto", "ambiente"):
         if getattr(a, k):
             travas[k] = getattr(a, k)
     if a.bela:
