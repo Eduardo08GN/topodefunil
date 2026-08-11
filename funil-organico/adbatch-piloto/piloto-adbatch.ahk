@@ -202,12 +202,17 @@ janelaUI(titulo := "") {
 DOOM_FRAMES := 6
 DOOM_MS := 480          ; a cadencia do gif original, medida nele
 
-doomguy(g) {
+; ⚠️ `altFaixa` centra a cara verticalmente na faixa preta. Passar a altura em
+; vez de cravar um `y` deixa a faixa e a imagem amarradas: mudar uma sem a outra
+; deixaria a cara flutuando fora do preto, que e' justamente o que a faixa veio
+; consertar.
+doomguy(g, altFaixa := 100) {
     global DOOM_FRAMES, DOOM_MS, LARG_UI
     pasta := A_ScriptDir "\doomguy"
     if !FileExist(pasta "\f0.png")
         return
-    pic := g.AddPicture("x" (18 + LARG_UI - 44) " y18 w44 h64", pasta "\f0.png")
+    pic := g.AddPicture("x" (18 + LARG_UI - 44) " y" ((altFaixa - 64) // 2)
+                        " w44 h64", pasta "\f0.png")
     quadro := 0
     virar() {
         if !WinExist("ahk_id " g.Hwnd) {
@@ -1879,18 +1884,55 @@ ajuda(inicial := false) {
     global ATALHOS, INI, LARG_UI
     g := janelaUI(inicial ? "" : "ajuda")
 
-    ; ⭐ O CABECALHO AGORA APARECE NOS DOIS CASOS. Antes so' a tela de abertura
-    ; tinha nome e subtitulo, e o F1 abria direto na tabela — duas telas com a
-    ; mesma funcao e caras diferentes. E' tambem o que da' lugar ao doomguy.
-    fonteUI(g, "s16 Bold")
-    g.AddText("w" (LARG_UI - 60), APP)
-    fonteUI(g, "s10 Norm")
-    g.AddText("w" (LARG_UI - 60) " y+2 c" COR_FRACA,
+    ; =========================================================================
+    ;  ⭐⭐ A FAIXA PRETA DO TOPO (2026-08-11)
+    ; =========================================================================
+    ; Pedido do operador: *"consegue deixar uma tira preta (tipo cabecalho de
+    ; fundo preto) no topo da interface pra harmonizar com o recorte do
+    ; background do gif do doom? (pode deixar o background cinza da interface,
+    ; achei bonito e confortavel visualmente pros meus olhos)"*.
+    ;
+    ; ⭐ E' a solucao certa para um problema que eu tinha deixado de lado: o
+    ; doomguy tem fundo PRETO e a janela e' CINZA, entao a cara aparecia num
+    ; retangulo escuro colado num fundo claro. Em vez de tentar recortar a tarja
+    ; do gif — que e' o proprio HUD do Doom e nao um defeito —, o fundo da FAIXA
+    ; passa a ser preto e o recorte deixa de existir aos olhos.
+    ;
+    ; ⛔ O CINZA DO RESTO FICA. Ele disse por que: e' confortavel para os olhos
+    ; dele, e ele passa o dia nesta tela. A faixa e' so' o topo.
+    ;
+    ; ⚠️ O AHK nao pinta regiao — pinta CONTROLE. A faixa e' um `Text` vazio com
+    ; `Background`, desenhado ANTES dos outros para ficar por baixo, e com a
+    ; largura da area util inteira (`18 + LARG_UI + 18`) para encostar nas duas
+    ; bordas. Meia faixa seria pior que faixa nenhuma.
+    ; ⛔⛔ A FAIXA NASCE ESTREITA E CRESCE DEPOIS DO `Show`, e isso nao e' manha:
+    ; o AHK dimensiona a janela pelo controle mais a' direita MAIS a margem. Uma
+    ; faixa larga o bastante para encostar na borda direita EMPURRARIA a janela
+    ; mais 18px, e sobraria justamente a tira cinza que ela veio eliminar.
+    ; Medido na captura: janela 754 de area util com a faixa parando em 736.
+    ; ⚠️ So' depois do `Show` existe largura final para copiar.
+    ALT_FAIXA := 100
+    faixa := g.AddText("x0 y0 w10 h" ALT_FAIXA " Background000000", "")
+
+    ; ⭐ O CABECALHO APARECE NOS DOIS CASOS. Antes so' a tela de abertura tinha
+    ; nome e subtitulo, e o F1 abria direto na tabela — duas telas com a mesma
+    ; funcao e caras diferentes.
+    ; ⚠️ os textos levam `Background000000` tambem: sem isso cada um carregaria
+    ; seu proprio retangulo cinza por cima da faixa, e o remendo apareceria.
+    g.SetFont("s16 Bold cFFFFFF", "Segoe UI")
+    g.AddText("x18 y16 w" (LARG_UI - 60) " Background000000", APP)
+    g.SetFont("s10 Norm cB9B9B9", "Segoe UI")
+    g.AddText("x18 y+2 w" (LARG_UI - 60) " Background000000",
               "do agente ao AdBatch Vertical 2, em N abas — o script esta' no ar "
               "e ouvindo os atalhos abaixo.")
     fonteUI(g)
-    doomguy(g)
-    secaoUI(g, "Atalhos")
+    doomguy(g, ALT_FAIXA)
+    ; ⚠️ a primeira secao e' ancorada ABAIXO da faixa por Y absoluto: se herdasse
+    ; o `y+18` do doomguy, uma mudanca na altura da imagem mexeria no layout
+    ; inteiro sem ninguem perceber.
+    fonteUI(g, "s10 Bold")
+    g.AddText("x18 y" (ALT_FAIXA + 16) " w" LARG_UI, "Atalhos")
+    fonteUI(g, "s9 Norm")
     lv := escurecerUI(g.AddListView("w" LARG_UI " r11 -Multi +Grid NoSort" fundoUI(),
                                     ["Tecla", "O que faz", "Detalhe"]))
     for a in ATALHOS
@@ -1905,7 +1947,10 @@ ajuda(inicial := false) {
                : (bancadaPorChave(t.chave) != 0)
                  ? "levanta as duas janelas desta sessao"
                  : "as janelas nao estao abertas — rode o F3")
-    lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, LARG_UI - 232)
+    ; ⚠️ a ultima coluna toma a sobra: na captura ficava uma coluna vazia
+    ; de ~20px na direita, que e' o espaco reservado a uma barra de rolagem
+    ; que esta tabela nao tem.
+    lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, LARG_UI - 212)
 
     ; ⭐⭐ O STATUS DO WORKER GANHA LINHA PROPRIA E COLORIDA, acima do bloco
     ; monoespacado: dentro daquele bloco cinza ele seria mais uma linha entre
@@ -2016,6 +2061,11 @@ ajuda(inicial := false) {
      .OnEvent("Click", (*) => mostrarLog())
     g.OnEvent("Close", (*) => g.Destroy())
     g.Show()
+    ; ⭐ agora que a janela existe, a faixa copia a largura util dela e encosta
+    ; nas duas bordas. Antes do Show esse numero nao existe.
+    cli := Buffer(16, 0)
+    DllCall("GetClientRect", "Ptr", g.Hwnd, "Ptr", cli)
+    faixa.Move(0, 0, NumGet(cli, 8, "Int"), ALT_FAIXA)
 }
 
 ; ⭐ O MENU DA BANDEJA repete os mesmos comandos. Atalho serve a quem ja' sabe;

@@ -788,3 +788,38 @@ original, e o teste passou a provar a guarda sem tocar na pasta de verdade.
 Medido depois: **752x823**, imagem em (674,18) 44x64, **0 controles fora**,
 sobreviveu a 2,5s de animacao (5 trocas) · regressao nas outras telas: 752 em
 todas, 0 fora · chrome 6/6 · teclas 19/19 · worker 8/8 · sequencial 8/8.
+
+### A faixa preta do topo (2026-08-11)
+
+*"Consegue deixar uma tira preta (tipo cabecalho de fundo preto) no topo da
+interface pra harmonizar com o recorte do background do gif do doom? Pode deixar
+o background cinza da interface, achei bonito e confortavel visualmente pros meus
+olhos."*
+
+⭐ E' a solucao certa para um problema que eu tinha deixado passar: o doomguy tem
+fundo **preto** e a janela e' **cinza**, entao a cara aparecia num retangulo
+escuro colado num fundo claro. Em vez de tentar recortar a tarja do gif — que e'
+o proprio HUD do Doom, nao um defeito — o fundo da **faixa** virou preto e o
+recorte deixou de existir aos olhos. ⛔ O cinza do resto fica: ele disse por que.
+
+⚠️ O AHK nao pinta regiao, pinta **controle**. A faixa e' um `Text` vazio com
+`Background000000`, desenhado antes dos outros para ficar por baixo, e os textos
+do cabecalho levam o mesmo fundo — sem isso cada um carregaria seu retangulo
+cinza por cima da faixa.
+
+⛔⛔ **A faixa nasce estreita e cresce depois do `Show`.** O AHK dimensiona a
+janela pelo controle mais a' direita **mais a margem**: uma faixa ja' larga o
+bastante para encostar na borda empurraria a janela +18px, e sobraria exatamente
+a tira cinza que ela veio eliminar. Foi o que a **captura de tela** mostrou —
+janela 770 com a faixa parando em 736.
+
+### ⭐⭐ E o metodo que achou isso: capturar a tela, nao so' medir coordenadas
+
+Todas as telas anteriores foram conferidas contando controles fora da janela.
+Isso prova que nada caiu fora — **e nao prova** que a faixa ficou por baixo dos
+textos, nem que a cara casou com o preto, nem que sobrou tira cinza na borda.
+
+O `scratchpad/ver_tela.ahk` abre a tela, captura a janela por GDI+ e grava um
+PNG. Medido nele, depois do conserto: faixa de **x=8 a x=743** (os 736 de area
+util, borda a borda), preto `(0,0,0)` dentro e cinza `(32,32,32)` fora, doomguy
+centrado (20px em cima, 18 embaixo).
