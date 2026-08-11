@@ -76,6 +76,41 @@ ALVOS := [
     ["cr_reger2",  "o botao REGERAR do SLOT 02"],
 ]
 
+; =============================================================================
+;  ⭐⭐ UMA CARA SO' PARA TODAS AS TELAS (2026-08-11)
+; =============================================================================
+; Ordem do operador: *"melhore o ui do script, esta confuso atualmente"* e, sobre
+; a janela do F3 especificamente: *"vc ainda deixou essa daqui crua, confusa"*.
+;
+; ⛔ O que fazia parecer confuso nao era cada tela isolada — era serem TRES
+; DIALETOS. Uma pedia numero digitado, outra era paragrafo cinza, outra um
+; MsgBox. Fonte, margem, largura e o lugar dos botoes mudavam de uma para outra,
+; e isso obriga a reaprender a tela a cada vez.
+;
+; ⭐ Daqui em diante toda janela nasce destas duas funcoes. Nao e' economia de
+; linha: e' o que garante que o proximo dialogo tambem saia igual, em vez de
+; depender de eu lembrar as medidas.
+LARG_UI := 700
+
+; ⚠️ titulo vazio nao vira "Piloto AdBatch — " com o travessao solto: a tela de
+; abertura nao e' "o Piloto AdBatch de alguma coisa", e' o Piloto AdBatch.
+janelaUI(titulo := "") {
+    g := Gui("+AlwaysOnTop -MinimizeBox",
+             "Piloto AdBatch" (titulo = "" ? "" : " — " titulo))
+    g.MarginX := 18, g.MarginY := 16
+    g.SetFont("s9", "Segoe UI")
+    return g
+}
+
+; ⚠️ `primeira` existe porque a primeira secao nao leva o respiro de cima — sem
+; isso a janela abre com um buraco antes do primeiro titulo.
+secaoUI(g, texto, primeira := false) {
+    global LARG_UI
+    g.SetFont("s10 Bold", "Segoe UI")
+    g.AddText("w" LARG_UI (primeira ? "" : " y+18"), texto)
+    g.SetFont("s9 Norm", "Segoe UI")
+}
+
 global abortar := false
 global rodando := false
 ; ⭐ o HANDLE da janela do AdBatch que o F3 montou. Depois da montagem a
@@ -415,19 +450,20 @@ escolherSessao() {
         }
     }
 
-    g := Gui("+AlwaysOnTop -MinimizeBox", "Piloto AdBatch — em qual janela rodar?")
-    g.SetFont("s10", "Segoe UI")
-    g.AddText("w720", "Clique na janela onde o piloto vai rodar. Em duvida, use MOSTRAR JANELA.")
-    g.SetFont("s9", "Segoe UI")
-    lv := g.AddListView("w720 r8 -Multi +Grid",
+    g := janelaUI("em qual janela rodar")
+    secaoUI(g, "Escolha a janela do AdBatch", true)
+    g.AddText("w" LARG_UI " cGray",
+              "Depois do F3 a sessao tem varias janelas com o MESMO nome. "
+              "As colunas abaixo sao o que as separa — em duvida, use MOSTRAR JANELA.")
+    lv := g.AddListView("w" LARG_UI " r8 -Multi +Grid y+8",
                         ["Sessao", "Tipo", "Onde", "Tamanho", "Serve para o F10?", "F3"])
     for s in ordem {
         lv.Add("", s.titulo, s.tipo,
                (s.onde ? "monitor " s.onde : "?"),
                s.tam, s.serve, (s.eF3 ? "bancada" : ""))
     }
-    lv.ModifyCol(1, 250), lv.ModifyCol(2, 62), lv.ModifyCol(3, 78)
-    lv.ModifyCol(4, 88),  lv.ModifyCol(5, 140), lv.ModifyCol(6, 70)
+    lv.ModifyCol(1, LARG_UI - 452), lv.ModifyCol(2, 62), lv.ModifyCol(3, 78)
+    lv.ModifyCol(4, 88),  lv.ModifyCol(5, 148), lv.ModifyCol(6, 62)
     lv.Modify(1, "Select Focus Vis")     ; ⭐ a primeira ja' e' a mais provavel
 
     ; ⚠️ o que esta' FECHADO tambem aparece — sumir da lista parece defeito do
@@ -449,15 +485,16 @@ escolherSessao() {
     if (fechadas.Length > 0) {
         txtF := ""
         for nome in fechadas
-            txtF .= (txtF = "" ? "" : "   ") nome
-        g.SetFont("s9", "Segoe UI")
-        g.AddText("w720 cGray", "fechadas (abra no Dolphin para usar):   " txtF)
+            txtF .= (txtF = "" ? "" : "   ·   ") nome
+        g.AddText("w" LARG_UI " y+10 cGray",
+                  "fechadas (abra no Dolphin para usar):   " txtF)
     }
 
     escolhido := 0
-    bMostrar := g.AddButton("w150", "Mostrar janela")
-    bRodar   := g.AddButton("x+10 w150 Default", "Rodar aqui")
-    g.AddButton("x+10 w110", "Cancelar").OnEvent("Click", (*) => g.Destroy())
+    ; ⭐ mesma gramatica da tela do F3: acoes a' direita, a principal por ultimo
+    bRodar   := g.AddButton("w150 h30 x" (18 + LARG_UI - 150) " y+14 Default", "Rodar aqui")
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 270) " yp", "Cancelar").OnEvent("Click", (*) => g.Destroy())
+    bMostrar := g.AddButton("w150 h30 x18 yp", "Mostrar janela")
 
     ; ⭐ PISCA A JANELA SELECIONADA. Com tres titulos iguais na tela, nenhuma
     ; descricao textual convence — ver a janela vir para a frente convence.
@@ -890,19 +927,54 @@ montarBancadaMiolo() {
     nAd   := Integer(IniRead(INI, "config", "abas", "10"))
     nDash := Integer(IniRead(INI, "config", "abas_dashboard", "5"))
 
-    g := Gui("+AlwaysOnTop -MinimizeBox", "Montar bancada da sessao")
-    g.SetFont("s10", "Segoe UI")
-    g.AddText("w540", "Cole QUALQUER url do Flow do projeto desta sessao (dashboard, AdBatch ou Montador).")
-    g.SetFont("s9", "Consolas")
-    eUrl := g.AddEdit("w540 r1")
-    g.SetFont("s9", "Segoe UI")
+    ; ⛔⛔ TELA REFEITA EM 2026-08-11, segunda ordem do operador sobre a MESMA
+    ; janela: *"eu te pedi pra melhorar a ui ux de TODAS as janelas interfaces do
+    ; script, vc ainda deixou essa daqui crua, confusa"*. Ele estava certo — eu
+    ; tinha refeito o seletor e a ajuda e deixado justamente a PRIMEIRA tela que
+    ; ele ve'.
+    ;
+    ; O que estava errado, e nao era enfeite:
+    ;   · o campo da url nao tinha rotulo nenhum, so' uma caixa fina
+    ;   · a explicacao era um paragrafo cinza — texto corrido nao se le' na hora
+    ;     de agir, se pula
+    ;   · o preview ficava VAZIO ate' colar alguma coisa, entao metade da janela
+    ;     era um retangulo branco sem funcao aparente
+    ;   · nada dizia o que faltava para o botao servir
+    ;
+    ; ⭐ Agora o plano da montagem e' uma TABELA que ja' nasce preenchida com o
+    ; que e' fixo (janela, monitor, quantas abas, qual ferramenta) e completa a
+    ; coluna da URL conforme ele cola. A tela ensina o que vai acontecer mesmo
+    ; com o campo vazio — e o preview deixou de ser um vazio a ser preenchido
+    ; para ser uma linha a ser conferida.
     mPrev := monitoresDaBancada()
-    g.AddText("w540 r4 cGray", "Vai montar DUAS janelas novas nesta sessao:`n   janela 1 — " nAd " abas no AdBatch Vertical 2, full screen no monitor " mPrev[1] "`n   janela 2 — " nDash " abas no dashboard + 1 no Montador, full screen no monitor " mPrev[2] "`nO F10 continua sendo o gatilho da geracao.")
-    prev := g.AddText("w540 r4 cSilver", "")
-    bOk := g.AddButton("w130 Default", "Montar")
-    g.AddButton("x+10 w130", "Cancelar").OnEvent("Click", (*) => g.Destroy())
+    g := janelaUI("montar bancada")
+    secaoUI(g, "1 · a url do projeto desta sessao", true)
+    g.AddText("w" LARG_UI " cGray",
+              "Serve QUALQUER uma: o dashboard, a AdBatch ou o Montador. "
+              "So' o projeto e' lido — as tres urls sao reconstruidas daqui.")
+    g.SetFont("s10", "Consolas")
+    eUrl := g.AddEdit("w" LARG_UI " r1 y+6")
+    g.SetFont("s9", "Segoe UI")
+    aviso := g.AddText("w" LARG_UI " y+6 cRed", "cole uma url para liberar o botao")
 
-    ; ⭐ O PREVIEW E' A DEFESA CONTRA ABRIR 16 ABAS ERRADAS: ele mostra as urls
+    secaoUI(g, "2 · o que vai ser montado")
+    lv := g.AddListView("w" LARG_UI " r3 -Multi +Grid NoSort",
+                        ["Janela", "Onde", "Abas", "Ferramenta", "Url que vai abrir"])
+    lv.Add("", "janela 1", "monitor " mPrev[1], nAd,    "AdBatch Vertical 2",  "—")
+    lv.Add("", "janela 2", "monitor " mPrev[2], nDash,  "dashboard das midias", "—")
+    lv.Add("", "janela 2", "monitor " mPrev[2], 1,      "Montador Vertical 2", "—")
+    lv.ModifyCol(1, 66), lv.ModifyCol(2, 68), lv.ModifyCol(3, 42)
+    lv.ModifyCol(4, 138), lv.ModifyCol(5, LARG_UI - 336)
+
+    g.AddText("w" LARG_UI " y+12 cGray",
+              "As duas janelas nascem NOVAS e maximizadas. "
+              "O F10 continua sendo o gatilho da geracao.")
+
+    ; ⭐ botoes a' direita, com a acao principal por ultimo — e' onde a mao vai
+    bOk := g.AddButton("w160 h30 x" (18 + LARG_UI - 160) " y+14 Default", "Montar bancada")
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 280) " yp", "Cancelar").OnEvent("Click", (*) => g.Destroy())
+
+    ; ⭐ O PREVIEW E' A DEFESA CONTRA ABRIR 16 ABAS ERRADAS: mostra as urls
     ; DERIVADAS antes de qualquer clique. Url errada se ve' aqui, e nao depois
     ; de dezesseis abas abertas na sessao errada.
     ;
@@ -913,13 +985,25 @@ montarBancadaMiolo() {
     atualizar(*) {
         pid := idDoProjeto(eUrl.Value)
         if (pid = "") {
-            prev.Value := (Trim(eUrl.Value) = "") ? "" : "url sem id de projeto — nao vou abrir nada"
+            vazio := (Trim(eUrl.Value) = "")
+            aviso.Opt("cRed")
+            aviso.Value := vazio ? "cole uma url para liberar o botao"
+                                 : "nao achei um id de projeto nessa url — nao vou abrir nada"
+            loop 3
+                lv.Modify(A_Index, "Col5", "—")
+            bOk.Enabled := false
             return
         }
         u := urlsDaBancada(pid)
-        prev.Value := "projeto: " pid "`nAdBatch:   " u.adbatch "`nDashboard: " u.dash "`nMontador:  " u.montador
+        aviso.Opt("cGreen")
+        aviso.Value := "projeto " pid
+        lv.Modify(1, "Col5", u.adbatch)
+        lv.Modify(2, "Col5", u.dash)
+        lv.Modify(3, "Col5", u.montador)
+        bOk.Enabled := true
     }
     eUrl.OnEvent("Change", atualizar)
+    bOk.Enabled := false        ; ⛔ nasce travado: sem url, montar nao faz sentido
 
     escolhido := ""
     bOk.OnEvent("Click", (*) => (escolhido := eUrl.Value, g.Destroy()))
@@ -1104,21 +1188,29 @@ ATALHOS := [
     ["Esc", "Abortar",           "so' funciona ENQUANTO o ciclo esta' rodando"],
 ]
 
-ajuda(*) {
-    global ATALHOS, INI
-    g := Gui("+AlwaysOnTop -MinimizeBox", "Piloto AdBatch — ajuda")
-    g.MarginX := 16, g.MarginY := 14
-    g.SetFont("s11 Bold", "Segoe UI")
-    g.AddText("w660", "Atalhos")
-    g.SetFont("s9 Norm", "Segoe UI")
-    lv := g.AddListView("w660 r8 -Multi +Grid", ["Tecla", "O que faz", "Detalhe"])
+; ⚠️ `inicial` transforma a MESMA tela na tela de abertura, em vez de existir uma
+; segunda parecida. Duas telas quase iguais divergem no primeiro conserto que so'
+; uma delas receber — e a que ficar para tras e' sempre a que o operador ve'.
+ajuda(inicial := false) {
+    global ATALHOS, INI, LARG_UI
+    g := janelaUI(inicial ? "" : "ajuda")
+    if inicial {
+        g.SetFont("s16 Bold", "Segoe UI")
+        g.AddText("w" LARG_UI, "Piloto AdBatch")
+        g.SetFont("s10 Norm", "Segoe UI")
+        g.AddText("w" LARG_UI " y+2 cGray",
+                  "do agente ao AdBatch Vertical 2, em N abas — o script esta' no ar "
+                  "e ouvindo os atalhos abaixo.")
+        g.SetFont("s9", "Segoe UI")
+    }
+    secaoUI(g, "Atalhos", !inicial)
+    lv := g.AddListView("w" LARG_UI " r8 -Multi +Grid NoSort", ["Tecla", "O que faz", "Detalhe"])
     for a in ATALHOS
         lv.Add("", a[1], a[2], a[3])
-    lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, 440)
+    lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, LARG_UI - 232)
 
-    g.SetFont("s11 Bold", "Segoe UI")
-    g.AddText("w660 y+14", "Como esta' agora")
-    g.SetFont("s9 Norm", "Consolas")
+    secaoUI(g, "Como esta' agora")
+    g.SetFont("s9", "Consolas")
 
     ; ── monitores
     mons := ""
@@ -1146,7 +1238,7 @@ ajuda(*) {
 
     lig := (IniRead(INI, "config", "clique_no_icone", "1") = "0") ? "DESLIGADO" : "ligado"
 
-    est := g.AddEdit("w660 r7 ReadOnly -E0x200",
+    est := g.AddEdit("w" LARG_UI " r7 ReadOnly -E0x200 -Wrap +HScroll",
              "monitores .......... " mons
         . "`nbancada vai para ... AdBatch no monitor " md[1] " · dashboard no monitor " md[2]
         . "`nabas por bancada ... " nAd " no AdBatch + " nDa " no dashboard + 1 Montador"
@@ -1156,10 +1248,27 @@ ajuda(*) {
         . "`narquivo ............ " INI)
 
     g.SetFont("s9", "Segoe UI")
-    g.AddButton("w150 y+14", "Montar bancada (F3)").OnEvent("Click", (*) => (g.Destroy(), montarBancada()))
-    g.AddButton("x+8 w160", "Levantar bancada (F4)").OnEvent("Click", (*) => (g.Destroy(), levantarBancada()))
-    g.AddButton("x+8 w110", "Ver o log").OnEvent("Click", (*) => mostrarLog())
-    g.AddButton("x+8 w110 Default", "Fechar").OnEvent("Click", (*) => g.Destroy())
+    ; ⭐ na abertura, quem nao quiser a tela desliga aqui mesmo. Caixa de "nao
+    ; mostrar de novo" que obriga a caçar a opcao noutro lugar nao e' escolha.
+    if inicial {
+        cb := g.AddCheckbox("w" LARG_UI " y+14",
+                            "nao mostrar esta tela quando o script iniciar "
+                            "(o F1 continua abrindo)")
+        cb.Value := (IniRead(INI, "config", "tela_inicial", "1") = "0")
+        cb.OnEvent("Click", (*) =>
+            IniWrite(cb.Value ? "0" : "1", INI, "config", "tela_inicial"))
+    }
+    ; ⭐ mesma gramatica das outras telas: a acao de sair a' direita, as acoes de
+    ; fazer alguma coisa a' esquerda
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 110) " y+16 Default",
+                inicial ? "Comecar" : "Fechar")
+     .OnEvent("Click", (*) => g.Destroy())
+    g.AddButton("w160 h30 x18 yp", "Montar bancada (F3)")
+     .OnEvent("Click", (*) => (g.Destroy(), montarBancada()))
+    g.AddButton("w170 h30 x+8 yp", "Levantar bancada (F4)")
+     .OnEvent("Click", (*) => (g.Destroy(), levantarBancada()))
+    g.AddButton("w110 h30 x+8 yp", "Ver o log")
+     .OnEvent("Click", (*) => mostrarLog())
     g.OnEvent("Close", (*) => g.Destroy())
     g.Show()
 }
@@ -1186,12 +1295,17 @@ montarBandeja() {
 
 montarBandeja()
 gCliqueLigado := ligarCliqueNoIcone()
-; ⚠️ O AVISO DE PARTIDA E' A UNICA COISA QUE APARECE SOZINHA. Sem ele, o script
-; sobe mudo e o operador nao tem como saber nem que ele esta' rodando, nem que
-; existe uma tela de ajuda.
-TrayTip("F1 abre a ajuda com todos os atalhos."
-        . "`nclique no icone da sessao: " (gCliqueLigado ? "ligado" : "desligado"),
-        "Piloto AdBatch no ar")
+
+; ⚠️ O SCRIPT SUBIA MUDO. Sem nada na partida, nao havia como saber que ele
+; estava rodando, quais teclas existiam, nem que agora ha' um comportamento que
+; age sozinho (o clique no icone). A tela de abertura e' a MESMA do F1, com
+; cabecalho e a caixa de desligar — nao uma segunda tela parecida.
+if (IniRead(INI, "config", "tela_inicial", "1") != "0")
+    ajuda(true)
+else
+    TrayTip("F1 abre a ajuda com todos os atalhos."
+            . "`nclique no icone da sessao: " (gCliqueLigado ? "ligado" : "desligado"),
+            "Piloto AdBatch no ar")
 
 F1::  ajuda()
 F3::  montarBancada()
@@ -1590,12 +1704,38 @@ anotar(txt) {
     try FileAppend linha "`n", ARQ_LOG, "UTF-8"
 }
 
-mostrarLog() {
-    global linhas
-    if !linhas.Length
-        return MsgBox("Nada rodou ainda.", "Piloto AdBatch")
-    txt := ""
-    for l in linhas
-        txt .= l "`n"
-    MsgBox(txt, "Piloto AdBatch — log")
+; ⛔ Era um MsgBox despejando o log inteiro: sem rolagem util, sem como copiar
+; uma linha, e crescendo ate' estourar a tela num dia de muitas rodadas. Numa
+; ferramenta em que o log e' a UNICA prova do que aconteceu, ele nao pode ser a
+; tela mais pobre do script.
+mostrarLog(*) {
+    global linhas, ARQ_LOG, LARG_UI
+    g := janelaUI("log")
+    secaoUI(g, "O que o script fez nesta sessao", true)
+    if !linhas.Length {
+        g.AddText("w" LARG_UI " cGray", "Nada rodou ainda desde que o script subiu.")
+    } else {
+        txt := ""
+        ; ⚠️ mais NOVO em cima: numa lista longa, o que importa e' o fim
+        loop linhas.Length
+            txt .= linhas[linhas.Length - A_Index + 1] "`r`n"
+        g.SetFont("s9", "Consolas")
+        g.AddEdit("w" LARG_UI " r16 ReadOnly -Wrap +HScroll", txt)
+        g.SetFont("s9", "Segoe UI")
+    }
+    ; ⛔ CAMINHO NAO VAI EM `AddText`. Medido em 2026-08-11: o caminho do log e'
+    ; um token SEM ESPACOS, um Static nao consegue quebra-lo, e o AHK ALARGA o
+    ; controle — a janela do log saiu 74px mais larga que as outras tres, que e'
+    ; exatamente a inconsistencia que se estava consertando. Um Edit respeita a
+    ; largura pedida, e de quebra o caminho fica selecionavel.
+    g.AddText("w" LARG_UI " y+10 cGray", "arquivo completo:")
+    g.SetFont("s9", "Consolas")
+    g.AddEdit("w" LARG_UI " r1 y+2 ReadOnly -E0x200 -Wrap +HScroll", ARQ_LOG)
+    g.SetFont("s9", "Segoe UI")
+    g.AddButton("w150 h30 x" (18 + LARG_UI - 150) " y+12 Default", "Fechar")
+     .OnEvent("Click", (*) => g.Destroy())
+    g.AddButton("w170 h30 x18 yp", "Abrir a pasta do log")
+     .OnEvent("Click", (*) => Run('explorer.exe /select,"' ARQ_LOG '"'))
+    g.OnEvent("Close", (*) => g.Destroy())
+    g.Show()
 }

@@ -369,3 +369,85 @@ a agir** · bancada morta some sozinha da lista.
 entrega um `Stop-Process` por nome, escrito para limpar o Notepad de um teste
 meu, fechou **dez Blocos de Notas do operador**, sete com alteracao nao salva — e
 o do teste ja' tinha fechado sozinho. Nao havia nada meu para limpar.
+
+### ⭐⭐ As quatro telas no mesmo dialeto (2026-08-11)
+
+Segunda ordem do operador sobre a MESMA janela: *"eu te pedi pra melhorar a ui ux
+de TODAS as janelas interfaces do script, vc ainda deixou essa daqui crua,
+confusa"*. Ele estava certo — eu tinha refeito o seletor e a ajuda e deixado
+justamente a **primeira tela que ele ve'**.
+
+⛔ O que fazia parecer confuso nao era cada tela isolada, era serem **tres
+dialetos**: uma pedia numero digitado, outra era paragrafo cinza, o log era um
+MsgBox despejando texto. Fonte, margem, largura e o lugar dos botoes mudavam de
+uma para outra — e isso obriga a reaprender a tela a cada vez.
+
+Toda janela agora nasce de `janelaUI()` + `secaoUI()`. Nao e' economia de linha:
+e' o que garante que o **proximo** dialogo tambem saia igual, em vez de depender
+de eu lembrar as medidas.
+
+**A tela do F3, item por item:**
+
+| estava | ficou |
+|---|---|
+| campo de url sem rotulo | secao `1 · a url do projeto desta sessao` |
+| paragrafo cinza corrido | secao `2 · o que vai ser montado`, em tabela |
+| preview VAZIO ate' colar | tabela ja' nasce com janela/monitor/abas/ferramenta; so' a coluna da url completa ao colar |
+| nada dizia o que faltava | linha de estado: vermelha sem url, verde com o id do projeto |
+| botao sempre clicavel | **nasce travado**, libera so' com url valida |
+
+⚠️ E o log deixou de ser MsgBox: agora tem rolagem, ordem **mais novo em cima**,
+o caminho selecionavel e um botao que abre a pasta. Numa ferramenta em que o log
+e' a unica prova do que aconteceu, ele nao pode ser a tela mais pobre do script.
+
+#### Medido abrindo as quatro e conferindo cada controle
+
+`0 controles fora da janela` nas quatro, e todas em **752px** — antes o log saia
+com 826. ⛔ A causa da unica divergencia vale a nota: **caminho de arquivo nao vai
+em `AddText`**. O caminho e' um token sem espacos, um Static nao consegue
+quebra-lo, e o AHK **alarga o controle e a janela junto** — a tela do log ficou
+74px mais larga que as outras tres, que era exatamente a inconsistencia que se
+estava consertando. Um `Edit` respeita a largura pedida.
+
+⭐ O teste tambem prova o comportamento, nao so' o desenho: o botao **Montar**
+comeca travado, libera com url valida, e as tres urls derivadas aparecem na
+tabela antes de qualquer clique.
+
+### ⭐ Tela de abertura (2026-08-11)
+
+O script subia mudo. Agora abre a **mesma tela do F1** com cabecalho e uma caixa
+de *nao mostrar ao iniciar* — nao uma segunda tela parecida. ⛔ Duas telas quase
+iguais divergem no primeiro conserto que so' uma delas receber, e a que fica para
+tras e' sempre a que o operador ve'. Desligavel na propria tela; `[config]
+tela_inicial=0`.
+
+### ⛔⛔ O .EXE NAO SAIU, e o motivo importa
+
+Pedido: *"consegue criar um executavel pro script e uma tela inicial bonitinha
+pra ele?"*. A tela saiu. O executavel **nao**, e a tentativa merece registro para
+ninguem repetir:
+
+O **Ahk2Exe nao esta' instalado** nesta maquina — so' o interpretador v2.0.19,
+sem compilador e sem base files. A saida tentada foi fazer o que ele faz num
+build sem compressao: copiar o `AutoHotkey64.exe` e embutir o script como recurso
+RCDATA `>AUTOHOTKEY SCRIPT<` via `BeginUpdateResource`/`UpdateResource`.
+
+⚠️ **O recurso entrou** (conferido com `FindResource`: 73086 bytes, nome e tipo
+certos) **e o interpretador ignorou.** O `AutoHotkey64.exe` avulso do v2.0 nao
+procura script embutido; quem faz isso e' o **base file** que vem com o Ahk2Exe.
+
+⛔⛔ **E o teste quase mentiu que funcionava.** O `mini.exe` de prova rodou o
+script — mas por coincidencia: um exe do AutoHotkey sem argumentos procura um
+`.ahk` com o **nome dele** na mesma pasta, e o `mini.ahk` estava do lado. O que
+denunciou foi `A_IsCompiled = 0` e o `A_ScriptFullPath` apontando para o `.ahk`,
+nao para o exe. A prova definitiva foi copiar o exe para uma pasta **sozinho**:
+la' nao rodou nada.
+
+⛔ Pelo mesmo motivo o `piloto-adbatch.exe` gerado foi **apagado**: naquela pasta
+ele "funcionava" so' porque o `.ahk` estava ao lado — e, pior, ao subir com
+`#SingleInstance Force` ele **matou a instancia que o operador tinha rodando**.
+Executavel que depende do arquivo que ele deveria substituir e' uma mentira com
+efeito colateral.
+
+⭐ Para ter `.exe` de verdade falta **instalar o Ahk2Exe** (componente opcional
+do proprio instalador do AutoHotkey). Decisao do operador — envolve baixar.
