@@ -1513,6 +1513,32 @@ PROPS = PARES   # o contrato do painel usa `PROPS`
 
 
 # ---------------------------------------------------------------------------
+# ⭐⭐ [T16-IDADE] A REGRA DOS 22 — um ano acima da maior maioridade dos EUA
+# ---------------------------------------------------------------------------
+# Ordem do operador, 2026-08-11, depois de recusa em serie por politica de
+# MENORES: *"crie uma regra para colocar a idade sempre 1 ano acima da maior
+# idade nos EUA"*.
+#
+# A maioridade nos EUA nao e' uma so': 18 na maioria dos estados, 19 em Alabama
+# e Nebraska, e 21 no Mississippi — que e' a MAIOR. Um ano acima da maior da'
+# 22, e e' esse o piso, para TODAS as mulheres deste motor.
+#
+# ⭐ E ele sobe a faixa em vez de baixar: antes eram 20-22, e a doutrina do repo
+# diz que a politica de menores so' cede quando a idade SOBE. A regra corrige,
+# na direcao certa, a decisao de horas antes.
+#
+# ⛔ IDADE E' NUMERO NO PROMPT, NUNCA DECLARACAO DE CONFORMIDADE. `they are
+# adults`, `age-appropriate` e irmas estao na lista de PROIBIDOS do repo (ES17):
+# declarar entrega ao classificador a categoria que ele policia. Numero de idade
+# nao e' declaracao — e' atributo descritivo, e e' exatamente o que a doutrina
+# manda fazer (*"fazer a idade RENDERIZAR"*).
+#
+# ⚠️ A idade entra na IMAGE **e** no TAKE dos DOIS blocos. Ordem dele: *"no take
+# 1 e 2 precisa estar especificando a idade das personagens"*. O classificador
+# le' os dois prompts; idade so' na IMAGE deixa metade do lote sem a informacao.
+IDADE_MULHER = 22
+
+# ---------------------------------------------------------------------------
 # ⭐ REFS — a boticaria
 # ---------------------------------------------------------------------------
 # ⛔⛔ LEI DO REF — ela e' sempre bonita. Ordem permanente do operador, ja' dada
@@ -1536,94 +1562,94 @@ PROPS = PARES   # o contrato do painel usa `PROPS`
 # diferente e mesmo porte leem como a mesma pessoa — foi essa a licao que
 # criou o `medir_personagens.py`.
 REFS = [
-    {"idade": 20, "corpo": "tall and long-legged with a very small waist",
+    {"idade": IDADE_MULHER, "corpo": "tall and long-legged with a very small waist",
      "cabeca": "deep auburn hair falling in loose waves past her shoulders",
      "marca": "a light spray of freckles across her nose and green eyes"},
-    {"idade": 21, "corpo": "slim with an hourglass figure and long legs",
+    {"idade": IDADE_MULHER, "corpo": "slim with an hourglass figure and long legs",
      "cabeca": "copper-red hair in a high glossy ponytail",
      "marca": "pale green eyes and a small beauty mark above her lip"},
-    {"idade": 20, "corpo": "willowy and fine-boned with a flat stomach",
+    {"idade": IDADE_MULHER, "corpo": "willowy and fine-boned with a flat stomach",
      "cabeca": "bright ginger hair cut in long layers",
      "marca": "heavy freckling across her cheeks and hazel eyes"},
-    {"idade": 22, "corpo": "curvy with a narrow waist and full shoulders",
+    {"idade": IDADE_MULHER, "corpo": "curvy with a narrow waist and full shoulders",
      "cabeca": "dark red hair swept over one shoulder",
      "marca": "a small gold hoop in her left nostril and clear skin"},
-    {"idade": 21, "corpo": "tall and statuesque with a long waist",
+    {"idade": IDADE_MULHER, "corpo": "tall and statuesque with a long waist",
      "cabeca": "strawberry-blonde hair in a loose braid",
      "marca": "wide-set blue eyes and a faint scar through one eyebrow"},
-    {"idade": 21, "corpo": "slim and toned with a dancer's line",
+    {"idade": IDADE_MULHER, "corpo": "slim and toned with a dancer's line",
      "cabeca": "jet-black hair in a sleek centre part",
      "marca": "sharp cheekbones and a small mole on her jaw"},
-    {"idade": 21, "corpo": "long-legged and slender with square shoulders",
+    {"idade": IDADE_MULHER, "corpo": "long-legged and slender with square shoulders",
      "cabeca": "platinum blonde hair in a blunt shoulder-length cut",
      "marca": "ice-blue eyes and a dimple in one cheek"},
-    {"idade": 20, "corpo": "curvy and athletic with a small waist",
+    {"idade": IDADE_MULHER, "corpo": "curvy and athletic with a small waist",
      "cabeca": "tight dark curls gathered high on her head",
      "marca": "glowing deep brown skin and a wide bright smile"},
-    {"idade": 22, "corpo": "tall and slim with an hourglass line",
+    {"idade": IDADE_MULHER, "corpo": "tall and slim with an hourglass line",
      "cabeca": "chestnut hair in long beachy waves",
      "marca": "a gap between her front teeth and warm brown eyes"},
-    {"idade": 20, "corpo": "petite and curvy with a defined waist",
+    {"idade": IDADE_MULHER, "corpo": "petite and curvy with a defined waist",
      "cabeca": "honey-blonde hair in a high messy bun",
      "marca": "a scatter of freckles and full lips"},
-    {"idade": 21, "corpo": "lean and toned with a flat stomach and long arms",
+    {"idade": IDADE_MULHER, "corpo": "lean and toned with a flat stomach and long arms",
      "cabeca": "long jet-black hair worn straight to the waist",
      "marca": "almond eyes and a small stud in one nostril"},
-    {"idade": 21, "corpo": "shapely with toned arms and a narrow waist",
+    {"idade": IDADE_MULHER, "corpo": "shapely with toned arms and a narrow waist",
      "cabeca": "caramel balayage falling past her shoulders",
      "marca": "a beauty mark at the corner of her right eye"},
-    {"idade": 20, "corpo": "slim-hipped and elegant with a long neck",
+    {"idade": IDADE_MULHER, "corpo": "slim-hipped and elegant with a long neck",
      "cabeca": "sandy blonde hair in a fishtail braid",
      "marca": "a slight overbite that shows when she smiles"},
-    {"idade": 22, "corpo": "curvy and strong with a small waist",
+    {"idade": IDADE_MULHER, "corpo": "curvy and strong with a small waist",
      "cabeca": "long box braids gathered over one shoulder",
      "marca": "high round cheekbones and a gold nose ring"},
-    {"idade": 21, "corpo": "tall and lean with swimmer's shoulders",
+    {"idade": IDADE_MULHER, "corpo": "tall and lean with swimmer's shoulders",
      "cabeca": "auburn hair in a low glossy ponytail",
      "marca": "dark freckles across both cheeks and grey eyes"},
-    {"idade": 21, "corpo": "softly curvy with a full figure and a narrow waist",
+    {"idade": IDADE_MULHER, "corpo": "softly curvy with a full figure and a narrow waist",
      "cabeca": "dark brown hair in heavy waves with a deep side part",
      "marca": "a small raised birthmark on her temple"},
-    {"idade": 20, "corpo": "slim and supple with a very straight back",
+    {"idade": IDADE_MULHER, "corpo": "slim and supple with a very straight back",
      "cabeca": "copper hair cropped into a long bob",
      "marca": "pale skin, freckles and bright green eyes"},
-    {"idade": 22, "corpo": "long-limbed and shapely with a defined waist",
+    {"idade": IDADE_MULHER, "corpo": "long-limbed and shapely with a defined waist",
      "cabeca": "black hair in a high sleek ponytail",
      "marca": "a thin scar along her jawline and full brows"},
-    {"idade": 21, "corpo": "trim and athletic with a flat stomach",
+    {"idade": IDADE_MULHER, "corpo": "trim and athletic with a flat stomach",
      "cabeca": "golden blonde hair in loose waves",
      "marca": "a small dimple in one cheek only"},
-    {"idade": 20, "corpo": "tall and willowy with narrow hips",
+    {"idade": IDADE_MULHER, "corpo": "tall and willowy with narrow hips",
      "cabeca": "dark auburn hair in a half-up twist",
      "marca": "wide hazel eyes and a light dusting of freckles"},
-    {"idade": 22, "corpo": "curvy with a small waist and long legs",
+    {"idade": IDADE_MULHER, "corpo": "curvy with a small waist and long legs",
      "cabeca": "tight coils cropped close to the head",
      "marca": "sculpted cheekbones and a small gold stud"},
-    {"idade": 21, "corpo": "slim with a long waist and square shoulders",
+    {"idade": IDADE_MULHER, "corpo": "slim with a long waist and square shoulders",
      "cabeca": "ash-brown hair in a sleek low bun",
      "marca": "grey-green eyes and a faint mark between her brows"},
-    {"idade": 21, "corpo": "shapely and toned with a narrow waist",
+    {"idade": IDADE_MULHER, "corpo": "shapely and toned with a narrow waist",
      "cabeca": "ginger hair in loose curls past her shoulders",
      "marca": "heavy freckling and a small chin dimple"},
-    {"idade": 21, "corpo": "tall and slim with a graceful neck",
+    {"idade": IDADE_MULHER, "corpo": "tall and slim with a graceful neck",
      "cabeca": "long dark hair in a high crown braid",
      "marca": "a beauty mark high on her left cheek"},
-    {"idade": 20, "corpo": "petite and shapely with a defined waist",
+    {"idade": IDADE_MULHER, "corpo": "petite and shapely with a defined waist",
      "cabeca": "bleached blonde hair in a blunt chin-length bob",
      "marca": "wide dark eyes and a faint scar on her chin"},
-    {"idade": 22, "corpo": "athletic and curvy with strong shoulders",
+    {"idade": IDADE_MULHER, "corpo": "athletic and curvy with strong shoulders",
      "cabeca": "long waves in a rich mahogany red",
      "marca": "clear skin and a small hoop in her right nostril"},
-    {"idade": 20, "corpo": "long-legged and lean with a flat stomach",
+    {"idade": IDADE_MULHER, "corpo": "long-legged and lean with a flat stomach",
      "cabeca": "dark brown hair in a slicked-back ponytail",
      "marca": "sharp brows and a small mole under one eye"},
-    {"idade": 21, "corpo": "curvy and confident with a very narrow waist",
+    {"idade": IDADE_MULHER, "corpo": "curvy and confident with a very narrow waist",
      "cabeca": "honey-red hair falling in soft waves",
      "marca": "a dense spray of freckles across her nose"},
-    {"idade": 22, "corpo": "slim and elegant with long arms",
+    {"idade": IDADE_MULHER, "corpo": "slim and elegant with long arms",
      "cabeca": "black hair in a smooth shoulder-length cut",
      "marca": "a thin white streak at her temple and dark eyes"},
-    {"idade": 21, "corpo": "tall with a small waist and full shoulders",
+    {"idade": IDADE_MULHER, "corpo": "tall with a small waist and full shoulders",
      "cabeca": "strawberry-blonde hair in a high loose bun",
      "marca": "green eyes and a small beauty spot on her cheekbone"},
 ]
@@ -2900,13 +2926,19 @@ def montar(spec):
         # ⛔ Sorriso, nunca risada — e ela continua MUDA. Verbo de riso na
         # direcao visual faz o Veo sintetizar som, e ai' o som contamina os
         # outros rostos (a licao do FLAGRANTE 16, mesmo dia).
-        ("The two seated women stay exactly as they are, each holding her own "
+        # ⚠️ A IDADE VOLTA A SER DITA AQUI (T16-IDADE): o classificador le' o
+        # TAKE tanto quanto a IMAGE, e idade so' na IMAGE deixa metade do
+        # prompt muda sobre o unico atributo que a politica de menores olha.
+        ("The two seated %(idade)d-year-old women stay exactly as they are, "
+         "each holding her own "
          "piece in her lap at the same height, same size, same shape, same "
-         "colour, and neither sets anything down. The woman on frame-right "
+         "colour, and neither sets anything down. The %(idade)d-year-old woman "
+         "on frame-right "
          "keeps smiling the whole time, happy and pleased, her expression "
-         "never going flat, and she makes no sound. The woman standing behind "
+         "never going flat, and she makes no sound. The %(idade)d-year-old "
+         "woman standing behind "
          "them keeps her arm reaching down between them and her index finger "
-         "pointing at the same piece for the whole shot."),
+         "pointing at the same piece for the whole shot.") % {"idade": IDADE_MULHER},
         # ⭐⭐ O TAKE 2 ANIMA UM QUADRO PARADO, e e' isso mesmo. Ela segura o
         # copo e fala; a bancada nao e' tocada.
         # ⛔ O `mov` da conformacao NAO entra aqui. Ele descreve as maos dela
@@ -2915,8 +2947,11 @@ def montar(spec):
         # etapa [7] deste angulo.
         # ⛔ `nao_toca` continua: sem ele o Veo comeca a mexer em tudo o que
         # esta' na bancada e a continuidade morre dentro dos 8 segundos.
-        ("She holds the glass steady at chest height the whole time and never "
-         "sets it down. " + v["nao_toca"]),
+        # ⚠️ idem no take 2 (T16-IDADE): a mulher e o homem entram com idade.
+        ("The %d-year-old woman holds the bowl steady at chest height the "
+         "whole time and never sets it down. The %d-year-old man beside her "
+         "stays where he is. " % (IDADE_MULHER, spec["homem"]["idade"])
+         + v["nao_toca"]),
     ]
     # ⛔ NENHUMA CENA DESTE ANGULO TEM PESSOA UNICA. Declarar `only person in
     # the shot` e' ordem contraditoria, e o Veo resolve APAGANDO a segunda
