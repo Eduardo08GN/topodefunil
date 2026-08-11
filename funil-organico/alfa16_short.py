@@ -307,6 +307,44 @@ AMBIENTES = [
 # um pool 100% prateado empobrece o lote inteiro.
 # ⚠️ ZERO mencao a etnia: quem injeta e' o `ETNIA[pagina]` (congruencia com o
 # avatar da pagina, que e' inviolavel neste funil).
+#
+# ⛔⛔ POOL REESCRITO E DOBRADO EM 2026-08-10 — "RETIRE ESSE REF FEIO"
+# ---------------------------------------------------------------------------
+# O operador viu o render e reprovou o narrador. Era o `franja_frente`:
+#
+#     "a heavy grey-brown MOP COMBED FORWARD over his forehead, a round face
+#      with a short blunt nose" + "thick EYEBROWS THAT MEET IN A SINGLE LINE"
+#
+# ⛔ E era violacao da doutrina do proprio repo — licoes-producao-veo §REF,
+# DISTINTIVO NUNCA DETERIORADO: a ancora tem de ser uma caracteristica
+# MEMORAVEL num rosto SAUDAVEL E CUIDADO, nunca uma avaria. Cabelo penteado
+# PARA A FRENTE le' como quem esconde entrada; sobrancelha unida le' como
+# desleixo. Nenhuma das duas e' marca — as duas sao descuido.
+#
+# ⚠️⚠️ E A AUDITORIA ACHOU MAIS OITO, todas do mesmo lado da tabela: `small
+# close-set eyes`, `full cheeks and a blunt nose`, `hollow cheeks`, `heavy
+# under-jaw`, `waves worn low across the forehead`, `hair standing high off a
+# DEEP HAIRLINE` (le' entrada), `round-jawed face with a short forehead`,
+# `heart-shaped face with a pointed chin`. Uma a uma passavam; JUNTAS elas
+# faziam um pool em que metade dos sorteios entregava um homem sem atrativo.
+#
+# ⭐⭐ E A BARRA DESTE ANGULO E' OUTRA, e e' isso que eu tinha errado. No PEE o
+# narrador vende CREDIBILIDADE — rosto vivido serve. Aqui ele esta' de toalha
+# com DUAS MULHERES do lado: se ele nao for plausivelmente atraente, a cena
+# nao fecha e o espectador nao inveja ninguem. A lei do REF feminino do repo
+# ("sempre bonita") tem um equivalente masculino NESTE angulo, e ele nao
+# estava escrito.
+# ⛔ Mas continua PROIBIDO dizer isso com adjetivo: `handsome`, `chiseled`,
+# `distinguished`, `strong jaw` empurram PARA a celebridade (espinha-fixa
+# §Construir o REF contra a celebridade). O atrativo tem de sair da GEOMETRIA
+# — mandibula definida, osso bom, cabelo farto e bem cortado —, nunca de um
+# adjetivo de aprovacao.
+# ⚠️ O autoteste ganhou a lista de VOCABULARIO DE DESLEIXO, e ela teria pegado
+# o `franja_frente` no dia em que ele nasceu.
+#
+# ⚠️ OITO das 26 NAO sao grisalhas: aos 50 muita gente ainda nao e', e um pool
+# 100% prateado empobrece o lote inteiro.
+# ⚠️ ZERO mencao a etnia: quem injeta e' o `ETNIA[pagina]`.
 HOMENS = [
     {"id": "risca_lateral", "idade": 52,
      "marca": "dark hair combed into a low side part with grey only at the "
@@ -319,65 +357,109 @@ HOMENS = [
               "narrow nose",
      "sinal": "a clean pale scar through his right eyebrow"},
     {"id": "corte_rente", "idade": 55,
-     "marca": "hair cropped close all over and grey at the sides, three days of "
-              "grey stubble, a wide flat-planed face with a broad nose bridge, "
-              "sun-weathered",
+     "marca": "hair cropped close all over and grey at the sides, three days "
+              "of grey stubble, a wide face with a firm jawline, sun-weathered",
      "sinal": "a small notch in the rim of his left ear"},
     {"id": "ondulado_escuro", "idade": 51,
-     "marca": "dense dark waves cut short at the sides, a round-jawed face "
-              "with a short forehead and wide-set eyes",
+     "marca": "dense dark waves cut short at the sides, a squared jaw and "
+              "wide-set eyes under level brows",
      "sinal": "a raised mole beside his left nostril"},
     {"id": "prata_curto", "idade": 61,
      "marca": "short silver hair with a hard part cut into one side, a thick "
-              "silver moustache, a heavy square jaw and a low hairline",
+              "silver moustache, a heavy square jaw and a level hairline",
      "sinal": "a coin-sized birthmark on the side of his jaw"},
     {"id": "castanho_alto", "idade": 50,
-     "marca": "thick chestnut hair worn long on top and short at the sides, a "
-              "heart-shaped face with a pointed chin",
+     "marca": "thick chestnut hair worn long on top and short at the sides, an "
+              "angular face with a defined chin, tanned",
      "sinal": "a deep dimple in his left cheek"},
     {"id": "sal_pimenta", "idade": 56,
-     "marca": "salt-and-pepper hair with a stubborn cowlick at the crown, a "
-              "salt-and-pepper goatee, a broad face with full cheeks and a "
-              "blunt nose",
+     "marca": "salt-and-pepper hair swept back off the forehead, a "
+              "salt-and-pepper goatee, a lean face with a firm jawline and a "
+              "straight nose",
      "sinal": "a dense spray of freckles across his nose"},
     {"id": "flat_top", "idade": 63,
      "marca": "a pewter flat-top cut squared off across the top, a long jaw "
-              "and hollow cheeks under sharp cheekbones",
+              "and high flat cheekbones",
      "sinal": "a pale scar under his lower lip"},
     {"id": "preto_denso", "idade": 53,
      "marca": "hair still mostly black and cut dense and short, a clean-shaven "
-              "face, grey only in front of the ears, a broad face with a heavy "
-              "under-jaw",
+              "face, grey only in front of the ears, a broad face with a wide "
+              "mouth",
      "sinal": "a small dark mole under his right eye"},
-    {"id": "testa_alta", "idade": 59,
-     "marca": "grey hair standing high off a deep hairline, a long face with a "
-              "narrow chin and a prominent bump in his nose bridge",
+    {"id": "onda_prata", "idade": 59,
+     "marca": "thick silver hair with a natural wave lifting off the forehead, "
+              "close silver stubble, a long face with a high bridge to his nose",
      "sinal": "laugh lines cut deep at the corners of his mouth"},
     {"id": "arruivado", "idade": 54,
      "marca": "rust-brown hair faded to sandy grey and combed to one side, a "
               "short reddish beard going grey, a ruddy square-chinned face",
      "sinal": "a deep dimple in each cheek"},
     {"id": "compacto", "idade": 66,
-     "marca": "fine white hair combed back off a high forehead, a neat white "
-              "moustache, a long narrow face with sharp cheekbones, deeply "
-              "lined",
+     "marca": "fine white hair combed back off the forehead, a neat white "
+              "moustache, a long face with sharp cheekbones, deeply lined",
      "sinal": "two small dark moles in a line on his right temple"},
-    {"id": "franja_frente", "idade": 57,
-     "marca": "a heavy grey-brown mop combed forward over his forehead, a "
-              "round face with a short blunt nose",
-     "sinal": "thick eyebrows that meet in a single line"},
     {"id": "mecha_branca", "idade": 60,
      "marca": "grey hair parted on the side with a bright white streak at one "
-              "temple, a soft oval face with a rounded chin",
-     "sinal": "a deep dimple in his chin"},
+              "temple, an oval face with a defined jaw",
+     "sinal": "a deep cleft in his chin"},
     {"id": "escovinha", "idade": 51,
-     "marca": "dark hair buzzed to an even short brush all over, a square "
-              "blocky face with a flat brow and small close-set eyes",
+     "marca": "dark hair buzzed to an even short brush all over, heavy "
+              "stubble, a square face with a wide jaw and level brows",
      "sinal": "a birthmark shaped like a comma on his left cheek"},
     {"id": "ondas_baixas", "idade": 64,
-     "marca": "heavy grey waves worn low across the forehead, a wide flat face "
-              "with a broad nose",
+     "marca": "heavy grey waves worn back off the forehead, a long face with a "
+              "straight strong nose",
      "sinal": "a pale patch of white skin the size of a coin on his jaw"},
+    {"id": "cachos_grisalhos", "idade": 57,
+     "marca": "tight grey curls cut close to the head, a close-cut grey beard, "
+              "a broad open face with high cheekbones",
+     "sinal": "a small gold hoop in his left ear"},
+    # ---------------------------------------------------------------------
+    # + 2026-08-10: as DEZ que dobram o pool, no mesmo padrao — geometria que
+    # le' bem, cabelo farto e bem cortado, e uma ancora memoravel.
+    # ---------------------------------------------------------------------
+    {"id": "platinado", "idade": 62,
+     "marca": "thick platinum-white hair with a deep side sweep, a lean "
+              "angular face and a straight nose",
+     "sinal": "one pale blue eye and one hazel eye"},
+    {"id": "no_na_nuca", "idade": 50,
+     "marca": "dark hair long enough to tie into a short knot at the nape, a "
+              "short dark beard, a narrow face with a defined jaw",
+     "sinal": "a small scar at the point of his chin"},
+    {"id": "militar", "idade": 55,
+     "marca": "a high and tight cut with grey at the temples, a clean-shaven "
+              "face, a wide square face and a level brow",
+     "sinal": "a shallow dimple in his chin"},
+    {"id": "mecha_frente", "idade": 53,
+     "marca": "thick dark hair falling loose over one side of the forehead, "
+              "light stubble, a long face with a fine straight nose",
+     "sinal": "freckles across his nose and cheekbones"},
+    {"id": "cabelo_farto", "idade": 65,
+     "marca": "a full head of white hair with a natural side wave, a neat "
+              "white beard cut close, a broad face with a wide firm mouth",
+     "sinal": "a dark mole high on one cheekbone"},
+    {"id": "taper_baixo", "idade": 52,
+     "marca": "dark hair in a low taper with a sharp line at the temples, a "
+              "thin moustache, an oval face with a defined jaw, lightly "
+              "freckled",
+     "sinal": "a beauty mark beside one eyebrow"},
+    {"id": "grisalho_medio", "idade": 58,
+     "marca": "mid-length grey hair tucked behind the ears, a clean-shaven "
+              "face, a long face with high flat cheekbones",
+     "sinal": "a thin pale scar along one jawline"},
+    {"id": "loiro_areia", "idade": 51,
+     "marca": "sandy blond hair going grey at the temples and cut short, light "
+              "stubble, a square face with a wide mouth, tanned with fine "
+              "lines at the eyes",
+     "sinal": "a small notch in one eyebrow"},
+    {"id": "topete", "idade": 60,
+     "marca": "thick grey hair swept up and back off the forehead, a close "
+              "silver beard, a strong-boned face with a straight nose",
+     "sinal": "a raised beauty mark on his right jaw"},
+    {"id": "cacho_solto", "idade": 54,
+     "marca": "loose dark curls with grey running through them, worn short, a "
+              "clean-shaven face, a broad face with a defined chin",
+     "sinal": "a clean pale scar across the back of one hand"},
 ]
 
 # ⭐⭐ O CORPO — e e' aqui que o MODO FORTE vive.
@@ -450,12 +532,12 @@ MULHERES = [
               "high on one cheekbone"},
     {"id": "coque_alto", "idade": 30, "etnia": "white American",
      "porte": "curvy with a narrow waist",
-     "marca": "dark hair pulled up into a high messy knot and a small chin "
-              "dimple"},
+     "marca": "dark hair pulled up into a high messy knot, lightly freckled "
+              "across the nose, and a small chin dimple"},
     {"id": "chanel_castanho", "idade": 34, "etnia": "white American",
      "porte": "average build with a long waist",
-     "marca": "chestnut hair cut to a sharp bob at the jaw and a beauty mark "
-              "above her lip"},
+     "marca": "chestnut hair cut to a sharp bob at the jaw, tanned from the sun, "
+              "and a beauty mark above her lip"},
     {"id": "afro_curto", "idade": 26, "etnia": "Black American",
      "porte": "petite and finely built",
      "marca": "a short natural afro and a small scar at the corner of one "
@@ -474,8 +556,8 @@ MULHERES = [
               "under her right eye"},
     {"id": "franja_reta", "idade": 27, "etnia": "white American",
      "porte": "compact and lightly built",
-     "marca": "dark hair with a straight blunt fringe over her eyebrows and a "
-              "narrow face"},
+     "marca": "dark hair with a straight blunt fringe over her eyebrows, fine "
+              "laugh lines at her eyes, and a narrow face"},
     {"id": "mel_longo", "idade": 29, "etnia": "white American",
      "porte": "athletic with clear definition in her arms",
      "marca": "long honey-blonde hair worn loose, freckled across the nose and "
@@ -487,9 +569,50 @@ MULHERES = [
      "porte": "solid through the shoulders and hips",
      "marca": "mid-brown hair to her shoulders with a heavy side part and a "
               "small mole on her jaw"},
+    # ---------------------------------------------------------------------
+    # + 2026-08-10: as OITO que dobram o pool ("aumente o pool de personagens
+    # tb"). Mesmo contrato das dezesseis acima — SEM tom de pele (a etnia e' a
+    # unica autoridade, licao FT14) e SEM sorriso (o sorriso e' CENA e entra
+    # uma vez so' na montagem).
+    # ⭐ E a etnia delas e' SOLTA — quem trava a congruencia com a pagina e' o
+    # HOMEM. Por isso entram tres etnias que o pool nao tinha: sao duas
+    # mulheres em quadro, e a variacao entre elas e' o que separa uma da outra.
+    # ---------------------------------------------------------------------
+    {"id": "morena_repartida", "idade": 30, "etnia": "Hispanic American",
+     "porte": "curvy with a small waist",
+     "marca": "long dark hair with a centre part and a beauty mark just below "
+              "one eye"},
+    {"id": "ondulada_mel", "idade": 32, "etnia": "Hispanic American",
+     "porte": "athletic with long legs",
+     "marca": "shoulder-length waves in a warm caramel tone and a fine scar "
+              "through one eyebrow"},
+    {"id": "liso_preto_curto", "idade": 28, "etnia": "Asian American",
+     "porte": "slim and finely built",
+     "marca": "straight black hair cut in a blunt bob at the jaw and a small "
+              "mole at the corner of her mouth"},
+    {"id": "rabo_alto_preto", "idade": 34, "etnia": "Asian American",
+     "porte": "toned with square shoulders",
+     "marca": "long black hair pulled into a high ponytail and high sharp "
+              "cheekbones"},
+    {"id": "loira_curta", "idade": 31, "etnia": "white American",
+     "porte": "lean with a long neck",
+     "marca": "a short blonde crop swept to one side and a thin silver hoop in "
+              "one ear"},
+    {"id": "ruiva_lisa", "idade": 26, "etnia": "white American",
+     "porte": "petite with a narrow waist",
+     "marca": "straight copper-red hair to her collarbone and freckles across "
+              "her nose and cheeks"},
+    {"id": "locs", "idade": 33, "etnia": "Black American",
+     "porte": "tall and athletic",
+     "marca": "shoulder-length locs gathered to one side and a small gold stud "
+              "in one nostril"},
+    {"id": "bob_castanho", "idade": 29, "etnia": "Black American",
+     "porte": "curvy with full hips",
+     "marca": "a chin-length brown bob with a deep side part and a dimple in "
+              "one cheek"},
     {"id": "cacheada_volumosa", "idade": 28, "etnia": "Black American",
      "porte": "athletic with a narrow waist",
-     "marca": "voluminous curls worn wide around her face, tanned from the sun, "
+     "marca": "voluminous curls worn wide around her face, tanned from the sun,"
               "and a wide bright gap-toothed mouth"},
 ]
 
@@ -773,6 +896,51 @@ _TOM_DE_PELE = re.compile(r"\bskin\b|\bcomplexion\b|\bcomplected\b", re.I)
 _SORRISO_ID = re.compile(r"\bsmile\b|\bsmiling\b|\bgrin\w*\b", re.I)
 
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ A PELE DELAS — 2026-08-10, e isto REVISA a decisao FT14 do FIGHT 16
+# ---------------------------------------------------------------------------
+# ⛔ RELATO DE CAMPO: *"pq o agente alfa16 ta gerando somente ref homem de pele
+# escura com mulheres brancas? coloque mulheres de pele escura tb"*.
+#
+# ⚠️ MEDIDO ANTES DE MEXER, e o motor NAO estava errado: 36% dos sorteios
+# traziam `Black American woman` no bloco montado. O gerador e' que estava
+# ignorando o rotulo.
+#
+# ⭐ E A CAUSA E' A MINHA PROPRIA CORRECAO ANTERIOR, levada longe demais. No
+# FIGHT 16 a etnia declarada brigava com o tom de pele que vinha do pool BELA
+# (`white American` + `clear deep brown skin`), e eu resolvi TIRANDO o tom de
+# pele — deixando a etnia como AUTORIDADE UNICA. Funcionou contra a
+# contradicao, mas criou outro problema: `Black American` vira UM adjetivo
+# solto no meio de vinte palavras de cabelo, porte, marca e traje, e o gerador
+# resolve pela media do treino — que, para "mulher bonita de toalha", e' branca.
+#
+# ⛔⛔ A LICAO CORRIGIDA: o problema nunca foi a pele estar na frase. Era ela
+# CONTRADIZER a etnia. Duas vozes que CONCORDAM nao sao contradicao, sao
+# reforco — e reforco e' exatamente o que um sinal fraco precisa.
+# ⭐ Entao a pele volta, DERIVADA DA ETNIA e nunca escrita a mao entrada por
+# entrada: assim ela nao tem como divergir num refactor. A variacao dentro de
+# cada etnia mora aqui.
+# ⚠️ E o `_marca_dela` continua tirando o tom de pele que vem do pool BELA —
+# senao voltariam DUAS declaracoes de pele na mesma frase, e a segunda seria a
+# que contradiz.
+PELES = {
+    # ⚠️ Toda entrada entra depois de `...woman WITH `, entao nenhuma pode
+    # comecar ou carregar outro `with` — a primeira versao trazia `pale skin
+    # with a light tan` e o bloco saia `with pale skin with a light tan`.
+    # Achado LENDO o bloco montado, nao por lente.
+    "white American": ["fair skin", "warm light skin", "lightly tanned skin"],
+    "Black American": ["deep brown skin", "rich dark brown skin",
+                       "warm medium-brown skin"],
+    "Hispanic American": ["warm olive skin", "light brown skin"],
+    "Asian American": ["light golden skin", "warm ivory skin"],
+}
+
+
+def _pele_dela(mulher, rng):
+    """O tom de pele que CONCORDA com a etnia declarada da entrada."""
+    return rng.choice(PELES.get(mulher["etnia"], PELES["white American"]))
+
+
 def _marca_dela(spec, mulher):
     marca = mulher["marca"]
     if not spec.get("bela"):
@@ -799,11 +967,16 @@ def _descreve_dupla(spec):
     blocos e' o fragmento espelhado que diverge na primeira manutencao — e o
     que diverge aqui e' exatamente a ancora que impede a troca de pessoa.
     """
+    # ⛔⛔ A ETNIA E O TOM DE PELE VEM COLADOS, e nesta ordem — ver o bloco do
+    # `PELES`. Sozinho, `Black American` e' um adjetivo perdido no meio de vinte
+    # palavras e o gerador resolve pela media do treino; com a pele ao lado, o
+    # sinal deixa de ser opinavel. As duas vozes CONCORDAM por construcao
+    # (a pele e' derivada da etnia), entao nao ha' contradicao a resolver.
     tr = ENVOLTORIO_DELAS
     partes = []
     for w in _dupla(spec):
-        partes.append("a %d-year-old %s woman, %s, %s, wearing %s"
-                      % (w["idade"], w["etnia"], w["porte"],
+        partes.append("a %d-year-old %s woman with %s, %s, %s, wearing %s"
+                      % (w["idade"], w["etnia"], w["pele"], w["porte"],
                          _marca_dela(spec, w), tr))
     return partes[0] + ", and " + partes[1]
 
@@ -845,10 +1018,11 @@ def sortear(pagina, rng, ledger, travas=None):
     # ⭐⭐ MODO BELA — contrato compartilhado, e ele move AS DUAS.
     # ⛔ O CADEADO DA TELA VENCE O MODO: mulher travada no painel e' mais
     # especifica que "uma bela qualquer".
-    # ⛔ E A ETNIA DELAS SOBREVIVE AO MODO, pelo motivo do cabecalho: a etnia
-    # e' a UNICA autoridade sobre a cor da pele, e o `ref_bela` devolveria a do
-    # MOLDE (`MULHERES[0]`), travando as duas em `white American` sem ninguem
-    # ver.
+    # ⛔⛔ E A ETNIA DELAS SOBREVIVE AO MODO — e agora a PELE tambem. O
+    # `ref_bela` devolveria a etnia do MOLDE (`MULHERES[0]`), travando as duas
+    # em `white American` sem ninguem ver; e o pool bela e' escrito em registro
+    # de pele clara. Sem estas linhas, ligar o MODO BELA embranqueceria o lote
+    # inteiro — que e' metade da queixa que o operador levantou.
     bela = bool(travas.get("bela"))
     if bela and not travas.get("mulher_a"):
         _e = mulher_a["etnia"]
@@ -868,6 +1042,13 @@ def sortear(pagina, rng, ledger, travas=None):
                 break
         mulher_b = _cand
         mulher_b["etnia"] = _e
+
+    # ⛔ A PELE E' DERIVADA DA ETNIA e gravada no spec, nos dois estados do
+    # MODO BELA. No spec, e nao na montagem, porque as duas mulheres sao AS
+    # MESMAS nos dois takes: derivar duas vezes com o mesmo `rng` daria peles
+    # diferentes entre os quadros, e o espectador veria outras duas mulheres.
+    for _w in (mulher_a, mulher_b):
+        _w["pele"] = _pele_dela(_w, rng)
 
     forte = bool(travas.get("forte"))
     corpo = rng.choice(CORPOS_FORTES if forte else CORPOS_H)
@@ -1209,21 +1390,46 @@ def _fa11_modos(spec, blocos, achados):
                                 "pool forte"))
 
 
-def _fa12_sem_contradicao(spec, blocos, achados):
-    """FA12 — a descricao delas nao briga consigo mesma (licao FT14/FIGHT 16).
+def _fa12_pele_concorda(spec, blocos, achados):
+    """FA12 — a etnia e o tom de pele DIZEM A MESMA COISA, nas duas.
 
-    ⛔ Etnia declarada + tom de pele na mesma frase sao DUAS autoridades para o
-    MESMO atributo, e o gerador resolve DIFERENTE em cada take. Aqui o risco e'
-    dobrado: sao duas mulheres.
+    ⛔⛔ ESTA LENTE FOI VIRADA DO AVESSO EM 2026-08-10, e a virada e' a licao.
+    A versao anterior PROIBIA tom de pele ao lado da etnia — era a correcao do
+    FIGHT 16, onde `white American` brigava com `clear deep brown skin`. Estava
+    certa contra a CONTRADICAO e errada contra o resultado: sem a pele, a etnia
+    vira um adjetivo perdido no meio de vinte palavras, e o operador mediu o
+    efeito em campo — *"pq esta' gerando somente mulheres brancas?"*, com o
+    motor pedindo 36% de mulheres negras.
+
+    ⭐ O que a lente cobra agora e' CONCORDANCIA, nao ausencia:
+      · a pele da entrada TEM de aparecer colada na etnia dela;
+      · e NENHUMA outra declaracao de pele pode aparecer na mesma frase — se
+        aparecer, e' o pool BELA reintroduzindo a contradicao original.
+    ⚠️ Duas vozes que concordam sao reforco; duas que discordam sao invencao.
+    A lente antiga so' sabia da segunda metade.
     """
     for k in ("IMAGE 01/02", "IMAGE 02/02"):
         bl = blocos.get(k, "")
         for w in _dupla(spec):
-            m = re.search(r"%d-year-old %s woman[^,]*(?:,[^,]*){0,3}"
-                          % (w["idade"], re.escape(w["etnia"])), bl)
-            if m and _TOM_DE_PELE.search(m.group(0)):
-                achados.append(("ERRO", "FA12: %s declara a etnia dela E um tom "
-                                        "de pele na mesma frase (%r)"
+            alvo = "%d-year-old %s woman with %s" % (w["idade"], w["etnia"],
+                                                     w["pele"])
+            if alvo not in bl:
+                achados.append(("ERRO", "FA12: %s nao traz a etnia COLADA no "
+                                        "tom de pele (%r) — sozinha, a etnia "
+                                        "perde para a media do treino"
+                                % (k, alvo[:70])))
+                continue
+            # ⛔ e nenhuma SEGUNDA declaracao de pele NO TRECHO DELA.
+            # ⚠️ O recorte para em `wearing`, que e' onde a clausula de cada
+            # mulher termina. A primeira versao ia ate' o `;` e passava por
+            # cima da OUTRA mulher — contava a pele da vizinha como duplicata e
+            # reprovou 802 sorteios. Lente com recorte errado nao mede o que
+            # diz medir.
+            m = re.search(re.escape(alvo) + r".*?wearing", bl)
+            if m and len(_TOM_DE_PELE.findall(m.group(0))) > 1:
+                achados.append(("ERRO", "FA12: %s declara pele DUAS vezes na "
+                                        "frase dela (%r) — a segunda vem do "
+                                        "pool BELA e contradiz a primeira"
                                 % (k, m.group(0)[:80])))
 
 
@@ -1301,7 +1507,7 @@ def lint(spec, blocos):
     for f in (_fa1_sorriso, _fa2_geometria, _fa3_ancora, _fa4_duas_maos,
               _fa5_sem_texto, _fa6_sem_prop, _fa7_orcamento, _fa8_etnia,
               _fa9_toalha, _fa10_duas_distintas, _fa11_modos,
-              _fa12_sem_contradicao, _fa13_lugares_independentes,
+              _fa12_pele_concorda, _fa13_lugares_independentes,
               _fa14_pontuacao, _ct16):
         f(spec, blocos, ach)
     return ach
@@ -1490,6 +1696,40 @@ def autoteste(n=400):
         if sujas:
             falhas.append("CT7: %s junta verbo de ereccao e orgao (%r)"
                           % (rot, sujas[0][:44]))
+
+    # -- CONTROLE: VOCABULARIO DE DESLEIXO ----------------------------------
+    # ⛔⛔ DISTINTIVO, NUNCA DETERIORADO — licoes-producao-veo §REF. A ancora e'
+    # uma caracteristica MEMORAVEL num rosto SAUDAVEL E CUIDADO; nunca uma
+    # avaria e nunca um descuido.
+    # ⚠️ Esta lista nasceu de um REF que o operador REPROVOU vendo o render:
+    # cabelo penteado PARA A FRENTE sobre a testa (le' como quem esconde
+    # entrada) e SOBRANCELHAS UNIDAS numa linha so'. Passou por todas as
+    # lentes: nao era palavra de mendigo, nao era adjetivo de celebridade, e o
+    # pool tinha 16 entradas distintas. O que faltava era esta lista.
+    # ⭐ E a barra deste angulo e' mais alta que a dos outros: ele aparece de
+    # toalha com DUAS mulheres do lado. Se ele nao for plausivelmente atraente,
+    # a cena nao fecha — e' o equivalente masculino da LEI DO REF.
+    _DESLEIXO = ("combed forward", "comb-over", "comb over",
+                 "meet in a single line", "unibrow", "close-set eyes",
+                 "jowl", "receding", "thinning", "balding", "deep hairline",
+                 "hollow cheeks", "sunken", "under-jaw", "double chin",
+                 "bulbous", "wispy", "yellowed", "stained", "unkempt",
+                 "worn low across the forehead")
+    # ⛔ nenhuma entrada de PELES pode trazer outro `with`: elas entram depois
+    # de `...woman WITH `, e o bloco sairia com `with ... with ...`.
+    for _et, _lst in PELES.items():
+        for _p in _lst:
+            if " with " in _p or _p.startswith("with "):
+                falhas.append("PELES[%s]: %r traz `with` — a montagem ja' poe o "
+                              "dela antes" % (_et, _p))
+    for e in HOMENS:
+        t = (e["marca"] + " " + e["sinal"]).lower()
+        for d in _DESLEIXO:
+            if d in t:
+                falhas.append("DESLEIXO: HOMENS %s traz %r — a ancora e' marca "
+                              "num rosto CUIDADO, nunca descuido. Neste angulo "
+                              "ele aparece de toalha com duas mulheres do lado."
+                              % (e["id"], d))
 
     # -- CONTROLE: A PESSOA DE CADA TAKE ------------------------------------
     # ⛔⛔ Take 1 e' DEPOIMENTO, take 2 e' OFERTA, e a pessoa gramatical e' o
