@@ -160,3 +160,45 @@ mesmo tamanho.** Na duvida, rode o F9 na janela em que voce vai trabalhar.
 ⚠️ **A ronda usa a MESMA janela** que o ciclo usou. Ela le' pixel e clica
 REGERAR em slot vazio: feita noutra sessao, leria a cor errada e jogaria fora
 lote pronto.
+
+## ⭐⭐ F3 (2026-08-11) — monta a bancada da sessao
+
+**O problema:** montar a mao, por sessao, 16 abas em 2 janelas com Ctrl+T /
+Ctrl+C / Ctrl+V.
+
+**Como usar:** F3 abre um popup, voce cola **qualquer** url do Flow daquele
+projeto (dashboard, AdBatch ou Montador), confere o preview e clica **Montar**.
+Depois escolhe a sessao, e o script monta:
+
+- **janela 1** — N abas no AdBatch Vertical 2 (N = o mesmo `config/abas` do F10)
+- **janela 2** — M abas no dashboard + 1 aba no Montador (`config/abas_dashboard`, default 5)
+
+O **F10 continua sendo o gatilho da geracao**, sem mudanca.
+
+### O que tornou a automacao possivel (medido nas urls do operador)
+
+| | valor | |
+|---|---|---|
+| tool AdBatch Vertical 2 | `d882542c-72bd-4f73-81e1-472aa705775f` | **constante** |
+| tool Montador Vertical 2 | `0a949867-f37f-4808-b178-4478edc7b5ad` | **constante** |
+| project | varia | **um por sessao**, de proposito |
+
+O projeto e' diferente por sessao por ordem do operador: *"pra nao sobrecarregar
+um projeto com muitas midias e atrapalhar o refresh"*.
+
+⛔ **O script NAO concatena o que foi colado.** As urls dele vinham com o
+segmento de idioma inconsistente (uma sem `/pt/`, o resto com). Ele **extrai o
+id do projeto** e reconstroi as tres urls de um molde unico. Testado contra as
+quatro urls reais + dashboard com query + lixo colado por engano: 7 de 7.
+
+⚠️ **As duas janelas nascem NOVAS** (`Ctrl+N`). O F10 faz `Ctrl+1` e conta a
+partir da primeira aba: abrir as abas numa janela que ja' existia deixaria a
+aba 1 sendo uma antiga, e o piloto varreria a bancada errada.
+
+⭐ **Depois do F3 a sessao tem tres janelas com o MESMO titulo** (o nome do
+perfil no Dolphin). Por isso o F3 guarda o handle da janela do AdBatch, e o
+seletor do F10 a marca com `<-- montada pelo F3` e ja' vem com o numero dela
+preenchido.
+
+⚠️ **O preview do popup e' a defesa contra abrir 16 abas erradas**: ele mostra as
+urls DERIVADAS antes de qualquer clique.

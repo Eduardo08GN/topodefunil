@@ -78,6 +78,10 @@ ALVOS := [
 
 global abortar := false
 global rodando := false
+; ⭐ o HANDLE da janela do AdBatch que o F3 montou. Depois da montagem a
+; sessao passa a ter TRES janelas com o MESMO titulo (o nome do perfil no
+; Dolphin); sem guardar isto, o operador teria de adivinhar qual escolher.
+global gBancada := 0
 global linhas := []
 
 ; =============================================================================
@@ -199,7 +203,7 @@ listarSessoes() {
 
 ; ⛔ O seletor. Devolve o HWND escolhido, ou 0 se o operador desistir.
 escolherSessao() {
-    global INI, SESSOES_ESPERADAS
+    global INI, SESSOES_ESPERADAS, gBancada
     lista := listarSessoes()
     if (lista.Length = 0) {
         MsgBox("Nenhuma sessao aberta.`n`nAbra o perfil no Dolphin (ou a aba "
@@ -208,8 +212,13 @@ escolherSessao() {
     }
 
     txt := "Em qual sessao rodar?`n`n"
-    for i, s in lista
-        txt .= i ". [" s.tipo "] " s.titulo "`n"
+    padrao := "1"
+    for i, s in lista {
+        marca := (s.hwnd = gBancada) ? "   <-- montada pelo F3" : ""
+        if (s.hwnd = gBancada)
+            padrao := String(i)
+        txt .= i ". [" s.tipo "] " s.titulo marca "`n"
+    }
 
     ; ⚠️ o que esta' FECHADO tambem aparece — sumir da lista parece defeito do
     ; script, e o operador ficaria procurando por que a sessao "desapareceu".
@@ -233,7 +242,11 @@ escolherSessao() {
             txt .= "   - " nome "`n"
     }
 
-    r := InputBox(txt, "Piloto AdBatch — sessao", "w420 h" (190 + 18 * (lista.Length + fechadas.Length)), "1")
+    ; ⚠️ o campo ja' vem preenchido com a janela que o F3 montou:
+    ; ela e' a que o operador quer em quase todo caso, e digitar o numero
+    ; errado aqui roda o piloto na BANCADA ERRADA — que e' o unico jeito de
+    ; este seletor causar dano.
+    r := InputBox(txt, "Piloto AdBatch — sessao", "w460 h" (190 + 18 * (lista.Length + fechadas.Length)), padrao)
     if (r.Result != "OK")
         return 0
     if !IsInteger(r.Value) || Integer(r.Value) < 1 || Integer(r.Value) > lista.Length {
@@ -295,6 +308,220 @@ prepararJanela(hwnd) {
                     "Maximize a janela nesta mesma tela, ou rode o F9 aqui.")
 }
 
+; =============================================================================
+;  ⭐⭐ F3 — MONTAR A BANCADA DA SESSAO (2026-08-11)
+; =============================================================================
+; ⛔ Encomenda do operador: *"pra poupar o trabalho de eu ficar montando essa
+; estrutura de telas e janelas pra cada sessao manualmente, via ctrl+c ctrl+v,
+; ctrl+t, haveria como implementar um trigger tipo F3 que abrisse um popup para
+; input de URL e montasse a estrutura automaticamente?"*
+;
+; A ESTRUTURA, ditada por ele:
+;   janela 1 ... N abas na ferramenta ADBATCH VERTICAL 2 do projeto X (N e' o
+;                mesmo `config/abas` que o F10 percorre — os dois numeros TEM de
+;                ser o mesmo, senao o F10 varre aba que nao existe)
+;   janela 2 ... M abas no DASHBOARD do projeto X  +  1 aba no MONTADOR
+;
+; ⭐⭐ O QUE FOI MEDIDO NAS URLS DELE, e e' isto que torna a automacao possivel:
+;   AdBatch  .... tool/d882542c-72bd-4f73-81e1-472aa705775f   CONSTANTE
+;   Montador .... tool/0a949867-f37f-4808-b178-4478edc7b5ad   CONSTANTE
+;   project  .... 91c8bb90-... / c82f5efd-...                 VARIA por sessao
+; O operador confirmou que o projeto e' diferente DE PROPOSITO em cada sessao:
+; *"pra nao sobrecarregar um projeto com muitas midias e atrapalhar o refresh"*.
+;
+; ⛔ E POR ISSO NAO SE CONCATENA O QUE FOI COLADO. As urls dele vieram com o
+; segmento de idioma INCONSISTENTE — o Montador da CTA-03 veio `/fx/tools/` e
+; todo o resto `/fx/pt/tools/`. O script EXTRAI o id do projeto e reconstroi as
+; tres urls de um molde unico; emendar texto colado propagaria a inconsistencia.
+;
+; ⚠️ AS DUAS JANELAS NASCEM NOVAS (Ctrl+N), e isso nao e' detalhe: o F10 faz
+; `Ctrl+1` para ir a' primeira aba e conta a partir dela. Se as abas fossem
+; abertas na janela que ja' estava aberta, a aba 1 seria uma antiga e o piloto
+; varreria a bancada errada. Janela nova nasce com UMA aba em branco, que vira a
+; primeira do lote.
+
+FLOW_BASE     := "https://labs.google/fx/pt/tools/flow/project/"
+TOOL_ADBATCH  := "d882542c-72bd-4f73-81e1-472aa705775f"
+TOOL_MONTADOR := "0a949867-f37f-4808-b178-4478edc7b5ad"
+
+; ⛔ Aceita QUALQUER url do Flow que carregue um id de projeto — dashboard,
+; AdBatch ou Montador. O operador nao deveria ter de saber qual delas colar.
+idDoProjeto(url) {
+    if RegExMatch(url, "i)project/([0-9a-fA-F\-]{30,40})", &m)
+        return m[1]
+    return ""
+}
+
+urlsDaBancada(pid) {
+    global FLOW_BASE, TOOL_ADBATCH, TOOL_MONTADOR
+    return {adbatch:  FLOW_BASE pid "/tool/" TOOL_ADBATCH,
+            dash:     FLOW_BASE pid,
+            montador: FLOW_BASE pid "/tool/" TOOL_MONTADOR}
+}
+
+; ⛔ Abre uma aba e navega. `Ctrl+L` antes de digitar: a aba nova ja' nasce com
+; a barra de endereco focada, mas isso e' COMPORTAMENTO e nao contrato — e uma
+; aba que receba o texto no lugar errado vira uma BUSCA, nao uma navegacao.
+abrirAba(url, nova := true) {
+    if nova {
+        Send "^t"
+        pausa(700, 180)
+    }
+    Send "^l"
+    pausa(260, 90)
+    SendText url
+    pausa(220, 80)
+    Send "{Enter}"
+    pausa(1400, 350)
+}
+
+montarBancada() {
+    global rodando, abortar
+    if rodando
+        return
+    rodando := true
+    abortar := false
+    try
+        montarBancadaMiolo()
+    finally {
+        rodando := false
+        ToolTip()
+    }
+}
+
+montarBancadaMiolo() {
+    global INI, abortar, gBancada
+
+    nAd   := Integer(IniRead(INI, "config", "abas", "10"))
+    nDash := Integer(IniRead(INI, "config", "abas_dashboard", "5"))
+
+    g := Gui("+AlwaysOnTop -MinimizeBox", "Montar bancada da sessao")
+    g.SetFont("s10", "Segoe UI")
+    g.AddText("w540", "Cole QUALQUER url do Flow do projeto desta sessao (dashboard, AdBatch ou Montador).")
+    g.SetFont("s9", "Consolas")
+    eUrl := g.AddEdit("w540 r1")
+    g.SetFont("s9", "Segoe UI")
+    g.AddText("w540 r4 cGray", "Vai montar DUAS janelas novas nesta sessao:`n   janela 1 — " nAd " abas no AdBatch Vertical 2`n   janela 2 — " nDash " abas no dashboard + 1 aba no Montador Vertical 2`nO F10 continua sendo o gatilho da geracao.")
+    prev := g.AddText("w540 r3 cSilver", "")
+    bOk := g.AddButton("w130 Default", "Montar")
+    g.AddButton("x+10 w130", "Cancelar").OnEvent("Click", (*) => g.Destroy())
+
+    ; ⭐ O PREVIEW E' A DEFESA CONTRA ABRIR 16 ABAS ERRADAS: ele mostra as urls
+    ; DERIVADAS antes de qualquer clique. Url errada se ve' aqui, e nao depois
+    ; de dezesseis abas abertas na sessao errada.
+    atualizar(*) {
+        pid := idDoProjeto(eUrl.Value)
+        if (pid = "") {
+            prev.Value := (Trim(eUrl.Value) = "") ? "" : "url sem id de projeto — nao vou abrir nada"
+            return
+        }
+        u := urlsDaBancada(pid)
+        prev.Value := "projeto: " pid "`nAdBatch:  " u.adbatch "`nMontador: " u.montador
+    }
+    eUrl.OnEvent("Change", atualizar)
+
+    escolhido := ""
+    bOk.OnEvent("Click", (*) => (escolhido := eUrl.Value, g.Destroy()))
+    g.OnEvent("Close", (*) => g.Destroy())
+    g.Show()
+    WinWaitClose "ahk_id " g.Hwnd
+
+    if (Trim(escolhido) = "")
+        return
+    pid := idDoProjeto(escolhido)
+    if (pid = "")
+        return MsgBox("Nao achei um id de projeto nessa url.", "Piloto AdBatch", 48)
+    u := urlsDaBancada(pid)
+
+    hBase := escolherSessao()
+    if (hBase = 0)
+        return
+    if !WinExist("ahk_id " hBase)
+        return MsgBox("a janela escolhida sumiu", "Piloto AdBatch", 16)
+    WinActivate "ahk_id " hBase
+    if !WinWaitActive("ahk_id " hBase, , 4)
+        return MsgBox("nao consegui ativar a sessao", "Piloto AdBatch", 16)
+
+    anotar("montando bancada — projeto " pid " em " WinGetTitle("ahk_id " hBase))
+
+    hJan1 := novaJanela(hBase)
+    if (hJan1 = 0)
+        return MsgBox("nao consegui abrir a janela 1", "Piloto AdBatch", 16)
+    abrirAba(u.adbatch, false)
+    loop nAd - 1 {
+        if abortar
+            break
+        ToolTip "janela 1 — aba " (A_Index + 1) "/" nAd
+        abrirAba(u.adbatch)
+    }
+
+    hJan2 := 0
+    if !abortar {
+        hJan2 := novaJanela(hJan1)
+        if (hJan2 = 0)
+            return MsgBox("nao consegui abrir a janela 2", "Piloto AdBatch", 16)
+        abrirAba(u.dash, false)
+        loop nDash - 1 {
+            if abortar
+                break
+            ToolTip "janela 2 — dashboard " (A_Index + 1) "/" nDash
+            abrirAba(u.dash)
+        }
+        if !abortar {
+            ToolTip "janela 2 — montador"
+            abrirAba(u.montador)
+        }
+        WinMaximize "ahk_id " hJan2
+    }
+
+    ; ⛔ MAXIMIZA AS DUAS. A trava de geometria do F10 compara o tamanho da
+    ; janela com o da calibracao; uma janela nova que nascesse restaurada faria
+    ; o F10 seguinte ABORTAR, e o operador acharia que a montagem quebrou algo.
+    WinMaximize "ahk_id " hJan1
+    WinActivate "ahk_id " hJan1
+    ToolTip()
+
+    ; ⭐ GUARDA QUAL JANELA E' A DO ADBATCH. Depois do F3 a sessao passa a ter
+    ; TRES janelas com o MESMO titulo (o nome do perfil no Dolphin), e sem isto
+    ; o operador teria de adivinhar qual escolher no F10.
+    gBancada := hJan1
+    anotar("bancada montada: janela1=" hJan1 " (" nAd " abas AdBatch), janela2=" hJan2)
+    MsgBox("Bancada montada.`n`nJanela 1: " nAd " abas do AdBatch`nJanela 2: " nDash " abas do dashboard + 1 Montador`n`nNo F10 ela aparece marcada como montada pelo F3.", "Piloto AdBatch")
+}
+
+; ⛔ Abre uma janela nova a partir de uma existente e devolve o HANDLE dela.
+; ⚠️ Compara a LISTA de janelas antes e depois em vez de confiar em `WinExist("A")`:
+; a janela nova pode demorar a receber o foco, e pegar a ativa cedo demais
+; devolveria a janela de ORIGEM — as dezesseis abas iriam para o lugar errado.
+novaJanela(hOrigem) {
+    antes := Map()
+    for h in WinGetList("ahk_exe anty.exe")
+        antes[h] := true
+    for h in WinGetList("ahk_exe chrome.exe")
+        antes[h] := true
+
+    WinActivate "ahk_id " hOrigem
+    WinWaitActive "ahk_id " hOrigem, , 4
+    Send "^n"
+
+    fim := A_TickCount + 8000
+    while (A_TickCount < fim) {
+        Sleep 200
+        for exe in ["ahk_exe anty.exe", "ahk_exe chrome.exe"] {
+            for h in WinGetList(exe) {
+                if !antes.Has(h) {
+                    WinActivate "ahk_id " h
+                    WinWaitActive "ahk_id " h, , 3
+                    Sleep 400
+                    return h
+                }
+            }
+        }
+    }
+    return 0
+}
+
+F3::  montarBancada()
 F9::  calibrar()
 F10:: rodar(false)
 F8::  rodar(true)
