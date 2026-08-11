@@ -420,12 +420,22 @@ abrirAba(url, nova := true) {
 ; ⚠️ Da' para mandar na marra pelo INI, se um dia a heuristica errar:
 ;   [config] monitor_adbatch=1 · monitor_dash=2   (0 = automatico)
 
+; ⛔⛔ A TOLERANCIA DE 24 NAO E' CHUTE — E' A BORDA DA JANELA MAXIMIZADA, MEDIDA.
+; O `calib_w`/`calib_h` vem do `WinGetPos` (ver a calibrar()), e uma janela
+; MAXIMIZADA reporta a area util MAIS a moldura invisivel de redimensionamento:
+;     MonitorGetWorkArea .... 1920 x 1032
+;     WinGetPos maximizada .. 1936 x 1048      (medido em 2026-08-11)
+; sao 16px em cada eixo. Com a tolerancia de 12 que estava aqui, o criterio
+; PRINCIPAL da janela 1 nunca casaria e cairia calado no fallback de paisagem —
+; nesta maquina daria o mesmo monitor, e o defeito so' apareceria em outra.
+; ⚠️ Comparacao larga nao confunde monitor: 1920x1032 e 1080x1920 estao a
+; centenas de pixels de distancia.
 monitorPorTamanho(w, h) {
     if (w = "" || h = "")
         return 0
     loop MonitorGetCount() {
         MonitorGetWorkArea(A_Index, &l, &t, &r, &b)
-        if (Abs((r - l) - Integer(w)) <= 12 && Abs((b - t) - Integer(h)) <= 12)
+        if (Abs((r - l) - Integer(w)) <= 24 && Abs((b - t) - Integer(h)) <= 24)
             return A_Index
     }
     return 0

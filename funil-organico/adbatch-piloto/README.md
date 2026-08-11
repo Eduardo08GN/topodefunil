@@ -260,3 +260,41 @@ linhas aparecem.
 ⭐ A url do dashboard deixou de ser deducao: o operador colou as tres de sessoes
 diferentes e as tres sao `.../project/<pid>` puro, com "Todas as midias"
 selecionado.
+
+### ⭐⭐ O F3 FOI EXECUTADO DE VERDADE (2026-08-11)
+
+AutoHotkey **v2.0.19 esta' instalado** (`C:\Program Files\AutoHotkey\v2\`) — o
+relatorio anterior dizia que nao, sem ter checado. Isso muda o que da' para
+provar, e o que se provou:
+
+| teste | como | resultado |
+|---|---|---|
+| sintaxe das 1083 linhas | o v2 parseia o script INTEIRO antes de executar a 1a linha, entao carregar e' validar | carregou residente, stdout/stderr vazios |
+| monitores | `MonitorGetWorkArea` real | m1 1920x1032 paisagem · m2 1080x1920 RETRATO em (1920,-401) |
+| `monitoresDaBancada()` | funcao REAL via `#Include`, com o .ini dele | janela1 -> m1 · janela2 -> m2 |
+| `idDoProjeto()` | as 3 urls de dashboard + tool sem `/pt/` + lixo | 5 de 5 |
+| **`mandarPara()`** | Notepad descartavel, comecando MAXIMIZADO no m1 | 1936x1048 em (-8,-8) -> **1096x1936 em (1912,-409)**; centro dentro do m2, retrato, saltou de tela, notepad fechado |
+
+⛔ O teste usa `#Include` do script real, **nao copias das funcoes**: uma copia
+poderia passar aqui e o original falhar la'.
+
+#### O defeito que so' a execucao mostrou: tolerancia de 12 contra borda de 16
+
+`calib_w`/`calib_h` vem do `WinGetPos` (ver `calibrar()`), e janela **maximizada**
+reporta a area util **mais a moldura invisivel**:
+
+```
+MonitorGetWorkArea .... 1920 x 1032
+WinGetPos maximizada .. 1936 x 1048     <- 16px em cada eixo
+```
+
+Com a tolerancia de **12** que estava no `monitorPorTamanho`, o criterio
+**principal** da janela 1 nunca casaria: cairia calado no fallback de paisagem.
+Nesta maquina o resultado seria o mesmo monitor, e o defeito so' apareceria em
+outra. Tolerancia agora e' **24**, com os numeros medidos no comentario, e o
+teste checa `monitorPorTamanho(1936,1048)` — o valor que a calibracao de fato
+grava, nao o que a area util reporta.
+
+⚠️ **O que ainda nao foi executado:** o F3 de ponta a ponta numa sessao real
+(Gui, `Ctrl+N`, o `{Delete}` na barra, as 16 abas). O que se provou foi cada peca
+isolada e o posicionamento de verdade.
