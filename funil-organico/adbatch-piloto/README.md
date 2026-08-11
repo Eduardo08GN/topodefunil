@@ -656,3 +656,31 @@ por ferramenta de arquivo, nunca por linha de comando.
 
 Medido: F2 lista as 4 sessoes do Dolphin + as bancadas, com estado em cada uma ·
 752px como as outras telas · 0 controles fora · 19 de 19 no F2 · 21 de 21 no F4.
+
+### A sessao principal do Chrome tambem e' uma sessao (2026-08-11)
+
+*"Achei que o script fosse pegar a minha sessao logada padrao do Chrome fora do
+Dolphin tambem..."*
+
+Ele estava certo, e a razao de eu ter excluido era um problema **meu**: o titulo
+da janela do Chrome muda a cada aba, e eu tinha usado o titulo como chave da
+sessao. Chave instavel nao serve para amarrar tecla — mas a resposta e' dar ao
+Chrome uma chave **estavel**, e nao deixar a sessao de fora.
+
+⭐ `chaveDaSessao(hwnd)` e' o **unico** lugar que decide o nome de uma sessao:
+Dolphin pelo nome do perfil (estavel), Chrome por um nome fixo. O F3 grava por
+ela e a tela de teclas lista por ela — as duas nao tem como divergir.
+
+⛔ E o **F3 passou a gravar por essa chave**, nao pelo titulo cru. Uma bancada
+montada no Chrome ficaria gravada sob o titulo da aba ativa, que muda no minuto
+seguinte: a tecla dela nunca mais acharia a sessao.
+
+⚠️ **E o Chrome aparecia como `fechada` com cinco janelas na tela.** O
+`listarSessoes()` so' aceita janela de Chrome com o Flow no titulo — regra certa
+para o seletor do F10, errada nesta tela, que responde *"esta sessao existe?"* e
+nao *"esta sessao esta' com o Flow aberto?"*. Duas perguntas parecidas, um filtro
+so', e a resposta errada.
+
+Medido: 5 janelas de Chrome com titulos diferentes -> **1 chave so'** · os
+perfis do Dolphin mantiveram o nome · o Chrome aparece como `aberta — rode o F3`
+· 752px, 0 controles fora · 19/19 nas teclas, 8/8 no worker, 0 fora nas telas.

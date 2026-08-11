@@ -423,6 +423,34 @@ chaveDeBancada(titulo) {
     return SubStr(t, 1, 80)
 }
 
+; ⭐⭐ O NOME DA SESSAO PRINCIPAL DO CHROME (2026-08-11)
+; Reparo pedido pelo operador: *"achei que o script fosse pegar a minha sessao
+; logada padrao do Chrome fora do Dolphin tambem"*.
+;
+; ⛔ Ele estava certo, e a minha razao para excluir era um problema MEU: o titulo
+; da janela do Chrome muda a cada aba, e eu tinha usado o titulo como chave da
+; sessao. Chave instavel nao serve para amarrar tecla — mas a resposta e' dar ao
+; Chrome uma chave ESTAVEL, e nao deixar a sessao de fora da lista.
+;
+; ⚠️ E' um nome FIXO, nao o titulo: fora do Dolphin ha' uma sessao logada so' — a
+; principal dele. Se um dia houver mais de uma, ela precisara' de um nome proprio,
+; e nao de um titulo que muda quando ele troca de aba.
+CHAVE_CHROME := "Chrome — sessao principal"
+
+; ⛔ A chave de QUALQUER janela: Dolphin pelo nome do perfil (que e' estavel),
+; Chrome pelo nome fixo. Esta funcao e' o unico lugar que decide isso — o F3
+; grava por ela e a tela de teclas lista por ela, entao as duas nao tem como
+; divergir.
+chaveDaSessao(hwnd) {
+    global CHAVE_CHROME
+    try {
+        exe := WinGetProcessName("ahk_id " hwnd)
+        if (exe = "chrome.exe")
+            return CHAVE_CHROME
+    }
+    return chaveDeBancada(WinGetTitle("ahk_id " hwnd))
+}
+
 gravarBancada(titulo, h1, h2) {
     global INI
     try IniWrite h1 "," h2, INI, "bancadas", chaveDeBancada(titulo)
@@ -564,13 +592,30 @@ teclasGravadas() {
 ; lista cujos nomes mudam sozinhos nao serve para amarrar tecla. Se ele montar
 ; uma bancada no Chrome, ela entra pela fonte 3, com o nome que tinha na hora.
 sessoesConhecidas() {
-    global INI, SESSOES_ESPERADAS
+    global INI, SESSOES_ESPERADAS, CHAVE_CHROME, JANELA_MIN_W, JANELA_MIN_H
     ; ⚠️ enumera as janelas UMA vez. A primeira versao chamava `listarSessoes()`
     ; dentro do laco, varrendo todas as janelas do sistema por sessao — barato
     ; com seis, e a lista dele vai crescer por decisao dele mesmo.
     abertas := Map()
     for s in listarSessoes()
-        abertas[chaveDeBancada(s.titulo)] := s.tipo
+        abertas[chaveDaSessao(s.hwnd)] := s.tipo
+    ; ⚠️ O `listarSessoes()` so' aceita janela de Chrome que tenha o Flow no
+    ; titulo — regra certa para o seletor do F10, e errada AQUI: esta tela
+    ; responde "esta sessao existe?", nao "esta sessao esta' com o Flow aberto".
+    ; Sem isto, o Chrome aparecia como FECHADA com cinco janelas na tela.
+    if !abertas.Has(CHAVE_CHROME) {
+        for h in WinGetList("ahk_exe chrome.exe") {
+            if (WinGetTitle(h) = "")
+                continue
+            try {
+                WinGetPos , , &w, &hh, "ahk_id " h
+                if (w >= JANELA_MIN_W && hh >= JANELA_MIN_H) {
+                    abertas[CHAVE_CHROME] := "Chrome"
+                    break
+                }
+            }
+        }
+    }
     vistos := Map()
     r := []
     juntar(chave) {
@@ -584,11 +629,16 @@ sessoesConhecidas() {
                         : abertas.Has(chave) ? "aberta — rode o F3"
                         : "fechada"})
     }
+    ; ⚠️ Dolphin e Chrome entram os DOIS. A versao anterior filtrava
+    ; `tipo = "Dolphin"` e deixava a sessao principal dele de fora da lista.
     for chave, tipo in abertas
-        if (tipo = "Dolphin")
-            juntar(chave)
+        juntar(chave)
     for nome in StrSplit(IniRead(INI, "sessoes", "esperadas", SESSOES_ESPERADAS), ",")
         juntar(chaveDeBancada(nome))
+    ; ⭐ a sessao principal do Chrome aparece SEMPRE, aberta ou nao: e' onde ele
+    ; tambem trabalha, e ele precisa poder escolher a tecla dela antes de montar
+    ; a bancada — que e' a ordem certa das duas coisas.
+    juntar(CHAVE_CHROME)
     for e in teclasGravadas()
         juntar(e.chave)
     return r
@@ -1501,11 +1551,15 @@ montarBancadaMiolo() {
     ; versao nova. Foi assim que a marca sumiu do seletor no primeiro uso real.
     ; ⭐ Gravado com o TITULO DA SESSAO como chave, uma chave por sessao: e' o que
     ; faz o F4 e o clique no icone servirem para quantas contas ele abrir.
-    tituloSessao := WinGetTitle("ahk_id " hBase)
+    ; ⛔ Grava pela `chaveDaSessao`, NAO pelo titulo cru. Numa bancada montada no
+    ; Chrome o titulo e' o da aba ativa e muda no minuto seguinte — a bancada
+    ; ficaria gravada sob um nome que nunca mais bate, e a tecla dela nunca
+    ; acharia a sessao.
+    tituloSessao := chaveDaSessao(hBase)
     gravarBancada(tituloSessao, hJan1, hJan2)
     ; ⭐ a tecla da sessao nasce JUNTO com a bancada, e e' anunciada no fim:
     ; atalho que ninguem contou que existe nao existe.
-    tSessao := garantirTecla(chaveDeBancada(tituloSessao))
+    tSessao := garantirTecla(tituloSessao)
 
     ; ⚠️ CONFERE A JANELA 1 CONTRA A CALIBRACAO E AVISA AQUI. O F10 ja' tem a
     ; trava de geometria, mas ela dispara la' na frente, com o roteiro colado e a
