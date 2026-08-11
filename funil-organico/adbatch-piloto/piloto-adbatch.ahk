@@ -182,26 +182,146 @@ respirar() {
 SESSOES_ESPERADAS := "CTA - 01,CTA - O2 Ricardo,CTA - 03 Neusa,CTA - 04 Isis"
 
 ; ⛔ Devolve [{hwnd, titulo, tipo}] de tudo que serve como alvo AGORA.
+; ⛔⛔ O PISO DE TAMANHO NAO E' CAPRICHO. Com o seletor novo mostrando a
+; geometria, apareceu na lista uma "sessao" chamada `Translate this page?` de
+; 355x61 — o popup de traducao do Chrome, que e' uma janela com titulo do mesmo
+; processo. Ela estava na lista ANTES tambem; so' era invisivel porque a versao
+; antiga mostrava apenas o titulo. Uma janela de navegador nao tem 355x61, e
+; escolher o popup por engano rodaria o piloto contra nada.
+JANELA_MIN_W := 600
+JANELA_MIN_H := 400
+
+; ⛔ Devolve [{hwnd, titulo, tipo}] de tudo que serve como alvo AGORA.
 listarSessoes() {
-    global INI
+    global INI, JANELA_MIN_W, JANELA_MIN_H
     achadas := []
+    grande(hwnd) {
+        global JANELA_MIN_W, JANELA_MIN_H
+        try {
+            WinGetPos , , &w, &h, "ahk_id " hwnd
+            return (w >= JANELA_MIN_W && h >= JANELA_MIN_H)
+        }
+        return false
+    }
     ; as do Dolphin: um processo `anty.exe` por perfil aberto
     for hwnd in WinGetList("ahk_exe anty.exe") {
         t := WinGetTitle(hwnd)
-        if (t != "")
+        if (t != "" && grande(hwnd))
             achadas.Push({hwnd: hwnd, titulo: t, tipo: "Dolphin"})
     }
     ; a principal: Chrome com a AdBatch aberta
     tC := IniRead(INI, "config", "titulo_chrome", "Google Flow")
     for hwnd in WinGetList("ahk_exe chrome.exe") {
         t := WinGetTitle(hwnd)
-        if (t != "" && InStr(t, tC))
+        if (t != "" && InStr(t, tC) && grande(hwnd))
             achadas.Push({hwnd: hwnd, titulo: t, tipo: "Chrome"})
     }
     return achadas
 }
 
-; ⛔ O seletor. Devolve o HWND escolhido, ou 0 se o operador desistir.
+; ⛔ Em que monitor a janela esta' — pelo CENTRO dela, nao pelo canto: janela a
+; cavalo entre duas telas tem canto numa e corpo na outra, e o canto mentiria.
+monitorDaJanela(hwnd) {
+    if !WinExist("ahk_id " hwnd)
+        return 0
+    WinGetPos &x, &y, &w, &h, "ahk_id " hwnd
+    cx := x + w / 2, cy := y + h / 2
+    loop MonitorGetCount() {
+        MonitorGetWorkArea(A_Index, &l, &t, &r, &b)
+        if (cx >= l && cx <= r && cy >= t && cy <= b)
+            return A_Index
+    }
+    return 0
+}
+
+; ⭐⭐ QUANTO UMA JANELA MAXIMIZADA TRANSBORDA A AREA UTIL. Medido em 2026-08-11:
+; area util 1920x1032, WinGetPos da mesma janela maximizada 1936x1048 — 16px. E'
+; a moldura invisivel de redimensionamento. Vem do sistema em vez de constante
+; cravada porque muda com o tema e a escala do Windows.
+molduraMaximizada() {
+    return 2 * (SysGet(32) + SysGet(92))    ; SM_CXSIZEFRAME + SM_CXPADDEDBORDER
+}
+
+; ⭐⭐ PREVE O VEREDITO DA prepararJanela() SEM TER DE RODAR NADA.
+; A trava de geometria do F10 maximiza a janela e compara com a calibracao. Como
+; maximizada = area util do monitor + moldura, da' para dizer AQUI, na lista, se
+; aquela janela vai servir — e o operador escolhe sabendo, em vez de descobrir la'
+; na frente com o roteiro ja' colado.
+serveParaOF10(hwnd) {
+    global INI, ALVOS
+    m := monitorDaJanela(hwnd)
+    if (m = 0)
+        return "?"
+    cw := IniRead(INI, "pontos", "calib_w", "")
+    ch := IniRead(INI, "pontos", "calib_h", "")
+    if (cw != "" && ch != "") {
+        MonitorGetWorkArea(m, &l, &t, &r, &b)
+        mo := molduraMaximizada()
+        if (Abs((r - l) + mo - Integer(cw)) <= 12 && Abs((b - t) + mo - Integer(ch)) <= 12)
+            return "SIM"
+        return "NAO — o F10 aborta"
+    }
+
+    ; ⭐⭐ SEM `calib_w`/`calib_h` (calibracao anterior a trava) AINDA DA' PARA
+    ; RESPONDER, e a resposta e' ate' mais direta: os SEIS PONTOS CALIBRADOS sao
+    ; coordenadas de TELA. Se um deles cai fora do retangulo da janela, aquele
+    ; clique vai bater em outro lugar — nao ha' o que discutir.
+    ; ⚠️ Sem isto a coluna mais util da tela vinha "calibracao antiga" em TODAS as
+    ; linhas, que e' o mesmo que nao existir. Medido no .ini dele: os pontos vao
+    ; ate' (1171, 772), entao a janela de retrato em x>=1920 e' reprovada de cara
+    ; e a de paisagem passa — exatamente o que ele precisa ver.
+    WinGetPos &wx, &wy, &ww, &wh, "ahk_id " hwnd
+    algum := false
+    for a in ALVOS {
+        px := IniRead(INI, "pontos", a[1] "_x", "")
+        py := IniRead(INI, "pontos", a[1] "_y", "")
+        if (px = "" || py = "")
+            continue
+        algum := true
+        if (Integer(px) < wx || Integer(px) > wx + ww
+            || Integer(py) < wy || Integer(py) > wy + wh)
+            return "NAO — pontos fora"
+    }
+    return algum ? "provavel" : "sem calibracao"
+}
+
+; ⚠️ O handle da bancada morre quando o script e' reiniciado, e reiniciar e'
+; justamente o que o operador faz depois de cada versao nova — foi assim que a
+; marca do F3 sumiu no primeiro uso real. Gravado no INI, sobrevive.
+bancadaGravada(lista) {
+    global INI
+    h := IniRead(INI, "estado", "bancada_hwnd", "")
+    if (h = "" || !IsInteger(h))
+        return 0
+    h := Integer(h)
+    ; ⛔ CONFERE QUE A JANELA AINDA E' AQUELA. Handle e' reciclado pelo Windows:
+    ; sem esta conferencia, uma janela qualquer poderia herdar a marca.
+    for s in lista
+        if (s.hwnd = h)
+            return h
+    return 0
+}
+
+; =============================================================================
+;  ⭐⭐ O SELETOR (reescrito em 2026-08-11)
+; =============================================================================
+; ⛔ A versao anterior era uma caixa de texto pedindo um NUMERO, e o operador
+; disse na cara: *"nao to entendendo esse ui ux, esta confuso"*. Ele tinha razao,
+; e o print mostra por que: depois do F3 a sessao tem TRES janelas com o MESMO
+; TITULO, entao a lista trazia "CTA - 03 Neusa" tres vezes, identicas, e nada no
+; texto dizia qual era qual. Pedir um numero sobre linhas indistinguiveis nao e'
+; escolha, e' sorteio — e o premio de errar e' rodar o piloto na bancada errada.
+;
+; ⭐ O CONSERTO NAO E' "DEIXAR MAIS BONITO", E' DAR AS COLUNAS QUE SEPARAM:
+;   Onde ....... em que monitor a janela esta' (o F3 poe a bancada e o dashboard
+;                em telas diferentes, entao esta coluna sozinha ja' desempata)
+;   Tamanho .... a geometria de verdade
+;   Serve? ..... o VEREDITO ANTECIPADO da trava do F10. E' a coluna mais util da
+;                tela: diz quais janelas o piloto aceita ANTES de tentar.
+;   F3 ......... qual foi montada pelo F3, agora sobrevivendo a reinicio
+;
+; ⭐ E clicar substitui digitar. O botao MOSTRAR JANELA pisca a selecionada — com
+; tres titulos iguais, ver e' a unica prova.
 escolherSessao() {
     global INI, SESSOES_ESPERADAS, gBancada
     lista := listarSessoes()
@@ -210,15 +330,50 @@ escolherSessao() {
                "da AdBatch no Chrome) e rode de novo.", "Piloto AdBatch", 48)
         return 0
     }
+    if (gBancada = 0)
+        gBancada := bancadaGravada(lista)
 
-    txt := "Em qual sessao rodar?`n`n"
-    padrao := "1"
-    for i, s in lista {
-        marca := (s.hwnd = gBancada) ? "   <-- montada pelo F3" : ""
-        if (s.hwnd = gBancada)
-            padrao := String(i)
-        txt .= i ". [" s.tipo "] " s.titulo marca "`n"
+    ; ⛔ ORDEM DA LISTA = ORDEM DE UTILIDADE, nao ordem de descoberta: a bancada
+    ; do F3 primeiro, depois as que servem, e por ultimo as que o F10 recusaria.
+    ordem := []
+    for s in lista {
+        s.onde   := monitorDaJanela(s.hwnd)
+        s.serve  := serveParaOF10(s.hwnd)
+        s.eF3    := (s.hwnd = gBancada)
+        ; ⚠️ ordena por VEREDITO, nao pela string exata: os rotulos ja' mudaram
+        ; uma vez, e uma comparacao literal viraria ordenacao morta em silencio.
+        s.peso   := s.eF3 ? 0
+                    : (SubStr(s.serve, 1, 3) = "NAO") ? 3
+                    : (s.serve = "SIM" || s.serve = "provavel") ? 1
+                    : 2
+        WinGetPos , , &sw, &sh, "ahk_id " s.hwnd
+        s.tam := sw "x" sh
+        ordem.Push(s)
     }
+    loop ordem.Length - 1 {          ; ordenacao simples: a lista tem ~6 itens
+        i := A_Index
+        loop ordem.Length - i {
+            j := A_Index
+            if (ordem[j].peso > ordem[j + 1].peso) {
+                tmp := ordem[j], ordem[j] := ordem[j + 1], ordem[j + 1] := tmp
+            }
+        }
+    }
+
+    g := Gui("+AlwaysOnTop -MinimizeBox", "Piloto AdBatch — em qual janela rodar?")
+    g.SetFont("s10", "Segoe UI")
+    g.AddText("w720", "Clique na janela onde o piloto vai rodar. Em duvida, use MOSTRAR JANELA.")
+    g.SetFont("s9", "Segoe UI")
+    lv := g.AddListView("w720 r8 -Multi +Grid",
+                        ["Sessao", "Tipo", "Onde", "Tamanho", "Serve para o F10?", "F3"])
+    for s in ordem {
+        lv.Add("", s.titulo, s.tipo,
+               (s.onde ? "monitor " s.onde : "?"),
+               s.tam, s.serve, (s.eF3 ? "bancada" : ""))
+    }
+    lv.ModifyCol(1, 250), lv.ModifyCol(2, 62), lv.ModifyCol(3, 78)
+    lv.ModifyCol(4, 88),  lv.ModifyCol(5, 140), lv.ModifyCol(6, 70)
+    lv.Modify(1, "Select Focus Vis")     ; ⭐ a primeira ja' e' a mais provavel
 
     ; ⚠️ o que esta' FECHADO tambem aparece — sumir da lista parece defeito do
     ; script, e o operador ficaria procurando por que a sessao "desapareceu".
@@ -237,23 +392,47 @@ escolherSessao() {
             fechadas.Push(nome)
     }
     if (fechadas.Length > 0) {
-        txt .= "`nfechadas (abra no Dolphin para usar):`n"
+        txtF := ""
         for nome in fechadas
-            txt .= "   - " nome "`n"
+            txtF .= (txtF = "" ? "" : "   ") nome
+        g.SetFont("s9", "Segoe UI")
+        g.AddText("w720 cGray", "fechadas (abra no Dolphin para usar):   " txtF)
     }
 
-    ; ⚠️ o campo ja' vem preenchido com a janela que o F3 montou:
-    ; ela e' a que o operador quer em quase todo caso, e digitar o numero
-    ; errado aqui roda o piloto na BANCADA ERRADA — que e' o unico jeito de
-    ; este seletor causar dano.
-    r := InputBox(txt, "Piloto AdBatch — sessao", "w460 h" (190 + 18 * (lista.Length + fechadas.Length)), padrao)
-    if (r.Result != "OK")
-        return 0
-    if !IsInteger(r.Value) || Integer(r.Value) < 1 || Integer(r.Value) > lista.Length {
-        MsgBox("Numero fora da lista.", "Piloto AdBatch", 48)
-        return 0
+    escolhido := 0
+    bMostrar := g.AddButton("w150", "Mostrar janela")
+    bRodar   := g.AddButton("x+10 w150 Default", "Rodar aqui")
+    g.AddButton("x+10 w110", "Cancelar").OnEvent("Click", (*) => g.Destroy())
+
+    ; ⭐ PISCA A JANELA SELECIONADA. Com tres titulos iguais na tela, nenhuma
+    ; descricao textual convence — ver a janela vir para a frente convence.
+    mostrar(*) {
+        r := lv.GetNext()
+        if (r = 0)
+            return
+        h := ordem[r].hwnd
+        if !WinExist("ahk_id " h)
+            return MsgBox("essa janela ja' foi fechada", "Piloto AdBatch", 48)
+        WinActivate "ahk_id " h
+        Sleep 1100
+        WinActivate "ahk_id " g.Hwnd
     }
-    return lista[Integer(r.Value)].hwnd
+    rodar(*) {
+        r := lv.GetNext()
+        if (r = 0)
+            return MsgBox("Clique numa linha primeiro.", "Piloto AdBatch", 48)
+        if !WinExist("ahk_id " ordem[r].hwnd)
+            return MsgBox("essa janela ja' foi fechada", "Piloto AdBatch", 48)
+        escolhido := ordem[r].hwnd
+        g.Destroy()
+    }
+    bMostrar.OnEvent("Click", mostrar)
+    bRodar.OnEvent("Click", rodar)
+    lv.OnEvent("DoubleClick", rodar)
+    g.OnEvent("Close", (*) => g.Destroy())
+    g.Show()
+    WinWaitClose "ahk_id " g.Hwnd
+    return escolhido
 }
 
 ; ⛔⛔ A GEOMETRIA — a trava que impede o pior desfecho deste script.
@@ -633,6 +812,10 @@ montarBancadaMiolo() {
     ; TRES janelas com o MESMO titulo (o nome do perfil no Dolphin), e sem isto
     ; o operador teria de adivinhar qual escolher no F10.
     gBancada := hJan1
+    ; ⚠️ TAMBEM NO DISCO: o handle em memoria morre quando o script e'
+    ; reiniciado — e reiniciar e' exatamente o que o operador faz depois de cada
+    ; versao nova. Foi assim que a marca sumiu do seletor no primeiro uso real.
+    try IniWrite hJan1, INI, "estado", "bancada_hwnd"
 
     ; ⚠️ CONFERE A JANELA 1 CONTRA A CALIBRACAO E AVISA AQUI. O F10 ja' tem a
     ; trava de geometria, mas ela dispara la' na frente, com o roteiro colado e a
@@ -642,9 +825,21 @@ montarBancadaMiolo() {
     cw := IniRead(INI, "pontos", "calib_w", "")
     ch := IniRead(INI, "pontos", "calib_h", "")
     WinGetPos , , &w1, &h1, "ahk_id " hJan1
-    if (cw != "" && ch != "" && (Abs(w1 - Integer(cw)) > 8 || Abs(h1 - Integer(ch)) > 8))
+    ; ⛔⛔ AS CHAVES E O PONTO SAO O CONSERTO DE UM ERRO QUE QUEBROU EM CAMPO
+    ; (2026-08-11, primeira montagem boa do F3). A versao anterior quebrava a
+    ; string em duas linhas SEM o operador `.` e SEM chaves, e isso produziu
+    ; DOIS defeitos de uma tacada so':
+    ;   1. o AHK v2 leu a segunda linha como CHAMADA DE FUNCAO — `cw("x" ch ...)`
+    ;      — e estourou "This value of type String has no method named Call";
+    ;   2. sem chaves, o `if` governava so' a primeira linha, entao a segunda
+    ;      rodava SEMPRE, houvesse calibracao ou nao.
+    ; ⚠️ E O TESTE DE CARGA NAO PEGOU: aquilo era sintaticamente VALIDO (chamar
+    ; funcao e' legitimo), so' quebrava na EXECUCAO. Carregar valida SINTAXE, nao
+    ; SEMANTICA — declarar "as 1083 linhas parseiam" nao e' declarar que rodam.
+    if (cw != "" && ch != "" && (Abs(w1 - Integer(cw)) > 8 || Abs(h1 - Integer(ch)) > 8)) {
         aviso := "`n`nATENCAO: a janela 1 esta' " w1 "x" h1 " e a calibracao foi feita em "
-                 cw "x" ch ". O F10 vai abortar — rode o F9 nesta janela."
+               . cw "x" ch ". O F10 vai abortar — rode o F9 nesta janela."
+    }
 
     anotar("bancada montada: janela1=" hJan1 " (" nAd " abas AdBatch, monitor "
            mons[1] ", " w1 "x" h1 "), janela2=" hJan2 " (monitor " mons[2] ")")
