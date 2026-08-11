@@ -550,13 +550,32 @@ AVISOS = [
 # ⛔ A razao do truque (verbo de efeito + alvo, CT3) mora no take 2, que e' onde
 # ela cabe — cobrar a razao nas duas mencoes seria redundancia paga em palavras
 # que o take nao tem.
+#
+# ⛔⛔ DUAS ENTRADAS FORAM DESCARTADAS EM 2026-08-10, POR VAGUEZA — o operador
+# leu o app e perguntou: *"o que significa `got hold of me` nesse caso? Nao ta'
+# meio vago nao?"*. Esta' — e a outra tinha o MESMO defeito:
+#
+#     ✗ "The gelatin trick got hold of me."      -> agarrou ele COMO? e' passivo,
+#                                                   e o truque vira o sujeito
+#     ✗ "The gelatin trick I found did something." -> fez o QUE? `did something`
+#                                                   e' vagueza pura
+#
+# ⭐ E A CAUSA E' DE PROJETO, nao de redacao: as duas tentavam dizer o EFEITO —
+# que e' trabalho do PARADOXO, a batida seguinte. Ao tentar fazer o trabalho do
+# vizinho em sete palavras, nao fizeram nem o proprio nem o dele.
+# ⛔ O trabalho desta batida e' A DESCOBERTA: QUEM contou ou QUANDO comecou.
+# Concreto e verificavel. O que aconteceu depois e' a proxima sentenca, e ela
+# chega meio segundo depois.
+# ⚠️ E' a lei permanente do operador (`teste-wtf-da-sentenca`): se o espectador
+# pode perguntar "do que ele esta' falando?", a copy e' descarte — e o
+# autoteste passou a cobrar isso com uma lista de predicados vazios.
 TRUQUES = [
-    "The gelatin trick I found did something.",
+    "I started the gelatin trick a month ago.",
     "I found the gelatin trick three weeks ago.",
     "A buddy handed me the gelatin trick.",
     "I discovered the gelatin trick last month.",
-    "Three weeks ago I found the gelatin trick.",
-    "The gelatin trick got hold of me.",
+    "My neighbor put me onto the gelatin trick.",
+    "I have been doing the gelatin trick nightly.",
 ]
 
 # ⚠️ 9-10 palavras exatas — a batida mais longa, porque e' a que vende.
@@ -1420,6 +1439,30 @@ def autoteste(n=400):
         if sujas:
             falhas.append("CT7: %s junta verbo de ereccao e orgao (%r)"
                           % (rot, sujas[0][:44]))
+
+    # -- CONTROLE: PREDICADO VAZIO — o teste WTF, em codigo -----------------
+    # ⛔⛔ Nasceu de uma pergunta do operador lendo o app: *"o que significa
+    # `got hold of me` nesse caso? Nao ta' meio vago nao?"*. Estava, e havia
+    # uma segunda com o mesmo defeito (`did something`). As duas tentavam dizer
+    # o EFEITO — trabalho do PARADOXO, a batida seguinte — e em sete palavras
+    # nao fizeram nem o proprio trabalho nem o dele.
+    # ⚠️ Vagueza nao se mede por regex em geral; mas os predicados vazios sao
+    # uma lista CURTA e conhecida, e e' exatamente por onde ela volta quando
+    # alguem acrescenta uma entrada com pressa. E' a lei `slot tem que cumprir
+    # funcao`: o linter checava FORMA, e forma nao pega frase que nao diz nada.
+    _VAZIOS = (r"did something", r"got hold of", r"changed things",
+               r"something happened", r"it worked", r"made a difference",
+               r"did the trick", r"took care of it", r"handled it",
+               r"was a game changer", r"blew my mind")
+    for rot, pool in (("AVISOS", AVISOS), ("TRUQUES", TRUQUES),
+                      ("PARADOXOS", PARADOXOS), ("MECANISMOS", MECANISMOS),
+                      ("COZINHAS", COZINHAS), ("CTAS", CTAS)):
+        for x in pool:
+            m = next((v for v in _VAZIOS if re.search(v, x, re.I)), None)
+            if m:
+                falhas.append("TESTE WTF: %s tem predicado VAZIO (%r em %r) — "
+                              "o espectador pode perguntar 'do que ele esta' "
+                              "falando?'" % (rot, m, x[:44]))
 
     # -- CONTROLE: o literal do funil ---------------------------------------
     for rot, pool in (("TRUQUES", TRUQUES), ("MECANISMOS", MECANISMOS)):
