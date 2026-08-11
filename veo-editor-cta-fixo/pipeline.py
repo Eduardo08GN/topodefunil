@@ -24,6 +24,16 @@ FFMPEG = shutil.which("ffmpeg") or "ffmpeg"
 FFPROBE = shutil.which("ffprobe") or "ffprobe"
 VIDEO_EXT = (".mp4", ".mov", ".mkv", ".webm", ".m4v", ".avi")
 
+# ⭐ ZOOM DE ENQUADRAMENTO — 2026-08-10, ordem do operador: *"quero que voce
+# programe para ele ajustar o zoom dos videos para 104%, atualmente o tamanho
+# natural chega como 100%"*, e *"e' o zoom no video INTEIRO"*.
+# 1.04 = 4% de aproximacao, em TODOS os frames. O quadro e' ampliado e recortado
+# no CENTRO de volta ao tamanho original, entao a resolucao de saida NAO muda —
+# o AdBatch e o Facebook continuam recebendo o mesmo 9:16 de sempre.
+# ⚠️ Um numero so', aqui. E' o unico lugar a mexer se ele pedir outro valor, e
+# vale para o app e para a esteira, que chamam o mesmo `processar_video`.
+ZOOM = 1.04
+
 
 def _auto_editor():
     """Prefere o auto-editor do proprio ambiente (venv) e so depois o do PATH.
@@ -193,6 +203,42 @@ def aplicar_velocidade(inp, out, fator):
     return out
 
 
+def aplicar_zoom(inp, out, zoom):
+    """Aproxima o quadro em `zoom` e recorta no centro de volta ao tamanho
+    original. Vale para o video INTEIRO, do primeiro ao ultimo frame.
+    1.04 = 4% mais perto; 1.0 nao faz nada.
+
+    ⛔ RODA ANTES DE QUEIMAR A LEGENDA, e isso e' o ponto inteiro. Se o zoom
+    viesse depois, ele ampliaria e cortaria o TEXTO junto — o pin do CTA fica a
+    10% do topo, exatamente na faixa que um recorte de 4% come primeiro. Aqui a
+    legenda e' desenhada sobre o quadro JA' aproximado, no tamanho certo e
+    inteira dentro da tela.
+
+    ⚠️ A saida tem a MESMA resolucao da entrada. Nao e' detalhe: o `gerar_ass`
+    dimensiona fonte e margem a partir de `dims()`, e mudar a resolucao aqui
+    mudaria o tamanho da legenda de tabela.
+    ⚠️ Largura e altura intermediarias sao arredondadas para PAR — libx264 com
+    yuv420p rejeita dimensao impar, e 1.04 sobre um lado impar cai nisso na
+    primeira vez que alguem trocar o valor.
+    ⚠️ O audio e' COPIADO (`-c:a copy`): zoom nao encosta no som, e reencodar
+    aqui so' somaria perda a mais numa cadeia que ja' reencoda tres vezes.
+    """
+    if zoom is None or abs(zoom - 1.0) < 0.001:
+        shutil.copy(inp, out)
+        return out
+    w, h = dims(inp)
+    w2 = int(round(w * zoom / 2)) * 2
+    h2 = int(round(h * zoom / 2)) * 2
+    # ⚠️ o recorte usa o tamanho ORIGINAL, nao uma divisao por `zoom`: dividir
+    # de volta reintroduz o erro do arredondamento e devolve 1079 no lugar de
+    # 1080 de vez em quando.
+    _run([FFMPEG, "-y", "-i", inp,
+          "-vf", f"scale={w2}:{h2},crop={w}:{h}",
+          "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+          "-c:a", "copy", out])
+    return out
+
+
 def queimar_legenda(inp, ass_path, out):
     # roda com cwd = pasta do .ass e passa o nome relativo, pra fugir do inferno
     # de escape de path do filtro ass no Windows (dois-pontos do drive).
@@ -242,7 +288,8 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         juntado = os.path.join(work, "01_juntado.mp4")
         cortado = os.path.join(work, "02_cortado.mp4")
         ritmado = os.path.join(work, "03_ritmado.mp4")
-        assf = os.path.join(work, "04_legenda.ass")
+        aproximado = os.path.join(work, "04_zoom.mp4")
+        assf = os.path.join(work, "05_legenda.ass")
 
         log(f"  juntando {len(takes)} take(s)...")
         concat(takes, juntado)
@@ -254,6 +301,13 @@ def processar_video(takes, out_final, model="base.en", lang="en",
             base = ritmado
         else:
             base = cortado
+        # ⭐ o zoom entra AQUI: depois da velocidade (que mexe no tempo) e ANTES
+        # da transcricao e da legenda (que mexem na imagem). Assim o pin do CTA
+        # nasce sobre o quadro final e nao corre risco de recorte.
+        if abs(ZOOM - 1.0) >= 0.001:
+            log(f"  aproximando o quadro: {ZOOM:.0%}...")
+            aplicar_zoom(base, aproximado, ZOOM)
+            base = aproximado
         w, h = dims(base)
         log(f"  transcrevendo (whisper {model})... {w}x{h}")
         palavras = transcrever(base, model, lang)
