@@ -57,7 +57,8 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # nesta lista. O motor existe desde 08-09 e este medidor nunca
            # olhou para ele: gate que nao ve o motor nao reprova o motor,
            # so produz um "passou" mentiroso (licoes §7).
-           "pee16"]
+           "pee16",
+           "alfa16"]
 
 N = 400
 # ⚠️ prefixo curto credita a entrada ERRADA quando duas comecam igual — foi

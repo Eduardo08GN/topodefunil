@@ -56,7 +56,13 @@ MOTORES = ["troca16", "ressurreicao16", "exterior16", "flagrante16",
            # ja' nasce sob o contrato, e motor fora da lista nao e' medido.
            "bed16", "necrose16", "wife16",
            # + 2026-08-10: o FIGHT 16, no commit em que nasce
-           "fight16"]
+           "fight16",
+           # + 2026-08-10: o ALFA 16 entra aqui no commit em que nasce.
+           # ⚠️ Ele DESLIGA o CT2 e o CT6 localmente (o angulo nao enuncia
+           # falha, e o operador tirou a clausula de entrega do CTA) —
+           # este relatorio continua MEDINDO os dois, e e' de proposito:
+           # o motor nao cobra, mas o numero fica visivel aqui.
+           "alfa16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.
@@ -110,6 +116,25 @@ ROTULO = {
 # consistencia. Esta coluna mostra a reparticao real entre os tres.
 
 
+# ⭐⭐ TRAVAS DESLIGADAS POR DOUTRINA — declaradas, nunca escondidas
+# ---------------------------------------------------------------------------
+# ⛔ Nem toda trava vale para todo angulo, e um relatorio que acusa uma DECISAO
+# como se fosse defeito treina o operador a ignorar o relatorio inteiro
+# (licoes §16). Mesma mecanica das `EXCECOES` do `medir_personagens.py`: o
+# numero CONTINUA sendo medido e impresso — o que muda e' que o motor nao entra
+# na lista de "violam", e a decisao aparece rotulada no rodape.
+# ⛔ So' entra aqui trava desligada TAMBEM NO MOTOR, com o motivo escrito la'.
+# Desligar so' aqui seria maquiar o relatorio.
+DESLIGADAS = {
+    ("alfa16", "CT2"):
+        "o angulo nao enuncia falha — ele AVISA e PROMETE, e o espectador se "
+        "reconhece pela ESPOSA. Desenho do operador.",
+    ("alfa16", "CT6"):
+        "ordem do operador: o CTA sai sem clausula de entrega. As palavras "
+        "liberadas foram para a objecao da cozinha.",
+}
+
+
 def main():
     ap = argparse.ArgumentParser(
         description="cobra o CONTRATO DE COPY 16s pelo sorteio real")
@@ -135,7 +160,9 @@ def main():
             print("%-16s ERRO: %s" % (nome, str(e)[:60]))
             sujos.append(nome)
             continue
-        if any(contas[c] for c in CTS):
+        # ⛔ trava desligada POR DOUTRINA nao conta como violacao (ver
+        # DESLIGADAS) — mas o numero continua impresso, na coluna de sempre.
+        if any(contas[c] for c in CTS if (nome, c) not in DESLIGADAS):
             sujos.append(nome)
         rep = "/".join("%d" % (100 * apelidos[x] // a.n)
                        for x in sc.APELIDOS_16)
@@ -151,6 +178,13 @@ def main():
     print("-" * 88)
     for c in CTS:
         print("  %-4s %s" % (c, ROTULO[c]))
+    decl = sorted((m, c) for (m, c) in DESLIGADAS if m in alvos)
+    if decl:
+        print("")
+        print("DESLIGADAS POR DOUTRINA (o numero acima e' real, a "
+              "decisao tambem):")
+        for m, c in decl:
+            print("  %-10s %-5s %s" % (m, c, DESLIGADAS[(m, c)]))
     print("\nmotores que violam o contrato: %d de %d — %s"
           % (len(sujos), len(alvos), ", ".join(sujos) or "nenhum"))
     return 1 if (a.gate and sujos) else 0

@@ -87,7 +87,9 @@ ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSU
          # `distribuir.py` NUNCA o recompilou. O .exe que ele rodava era o do
          # dia em que a pasta foi criada, e todo conserto feito no repo desde
          # entao ficou so' no repo.
-         "PEE-16"]
+         "PEE-16",
+         # + 2026-08-10: o ALFA 16 nasce ja' na lista.
+         "ALFA-16"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)

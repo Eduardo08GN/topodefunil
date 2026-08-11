@@ -403,6 +403,25 @@ EXCECOES = {
         "ancora 79%.",
     ("pee16_short.py", "REFS", "oculos"): "idem PE9/F4b — ver a linha acima",
 
+    # ⛔⛔ ALFA 16 (2026-08-10) — DUAS isencoes, e as duas sao CONTRATO DE CENA.
+    # ⚠️ Conferidas lendo os blocos montados, nao supostas por analogia. E o
+    # terceiro eixo que nasceu zerado — `pelo_facial` nos HOMENS — NAO entrou
+    # aqui: aquele era buraco de verdade (dezesseis homens de 50+ todos
+    # barbeados sao um homem so' repetido) e foi PREENCHIDO, nao isentado.
+    # E' a diferenca que este arquivo existe para manter.
+    ("alfa16_short.py", "HOMENS", "oculos"):
+        "CONTRATO DA CENA — ele passa os DOIS takes de tronco nu e toalha na "
+        "cintura, e sete dos dez ambientes do take 2 sao agua ou vapor "
+        "(piscina, jacuzzi, spa, praia, deck de borda infinita). Oculos ali "
+        "nao sobrevivem ao quadro; e como ele e' uma das TRES pessoas que "
+        "atravessam o corte, acessorio que aparece num take e some no outro "
+        "troca a pessoa — que e' o defeito que a lente FA3 existe para impedir.",
+    ("alfa16_short.py", "MULHERES", "oculos"):
+        "LEI DO REF + CENA — as duas estao enroladas em toalha (ou de biquini) "
+        "em piscina, jacuzzi e spa, e METADE dos sorteios as traz do pool BELA, "
+        "onde a lei do operador proibe oculos desde 2026-08-03. Um pool com "
+        "oculos entregaria a REF bela de oculos de leitura em 50% do lote.",
+
     # ⛔ CONTRATO DO MOTOR, o mesmo do falta_short: NENHUMA entrada do pool
     # masculino carrega adjetivo de etnia — conferido chave a chave, as seis
     # entradas de cada um so' tem `idade`, `cabeca`/`marca` e `sinal`. Quem

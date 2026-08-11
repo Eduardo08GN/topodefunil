@@ -61,7 +61,9 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # nesta lista. O motor existe desde 08-09 e este medidor nunca
            # olhou para ele: gate que nao ve o motor nao reprova o motor,
            # so produz um "passou" mentiroso (licoes §7).
-           "pee16"]
+           "pee16",
+           # + 2026-08-10: o ALFA 16 entra no commit em que nasce.
+           "alfa16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

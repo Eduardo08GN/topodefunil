@@ -50,12 +50,12 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **dezessete agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
+com **dezoito agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
 Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
-`pee16` · `good16` · `bed16` · `fight16` · (+ `clean_v1_16s`/`clean_v2_16s`, do
+`pee16` · `good16` · `bed16` · `fight16` · `alfa16` · (+ `clean_v1_16s`/`clean_v2_16s`, do
 outro autor)
 
 ⭐ **`bed16` (2026-08-10) — a cama fria e a tigela.** (Nasceu como `wife16` e
@@ -88,7 +88,8 @@ mãos**: a tigela de cubos de gelatina numa, a **caixa de bicarbonato** na outra
 ⭐ A copy é a da **fonte lida a 1 fps** (reel 1337455585246706), com a virada
 que o operador escreveu à mão: `Struggling to stay hard? I thought it was just
 age. But things changed when I discovered the gelatin trick.`
-⛔⛔ **É o único 16s com DOIS EIXOS DE CENA INDEPENDENTES**, e é isso que o
+⛔⛔ **Foi o primeiro 16s com DOIS EIXOS DE CENA INDEPENDENTES** (o `alfa16`
+herdou a arquitetura no mesmo dia), e é isso que o
 separa do irmão estrutural `bed16`: lá os dois ambientes são da **mesma casa** e
 vêm do mesmo eixo (a região arrasta quarto + água), aqui o operador ditou **duas
 listas separadas** — 8 quartos da briga e os **10 ambientes do casal**, palavra
@@ -113,6 +114,33 @@ contrário do que a VSL vende. É o modo de falha do pool combinatório: cada be
 lido sozinho estava certo, e o **par** estava errado. O guarda ficou na lista
 (negação em toda entrada), não no sorteio. Spec completa em
 [`SPEC-FIGHT-16.md`](funil-organico/SPEC-FIGHT-16.md).
+
+⭐ **`alfa16` (2026-08-10) — o aviso e as duas do lado.** Quarto motor com
+**narrador homem**, e o **único do parque que não abre numa falha**. Os outros
+dezoito abrem na mancha, no murcho, no *"struggling to stay hard"*; este abre
+num **alerta brincalhão** (`If you have a wife, watch out.`) e fecha numa
+**hipérbole paradoxal** — o truque funciona tão bem que **quem pede trégua é
+ela**. O espectador se reconhece pela **esposa**, não pelo órgão.
+⛔⛔ E isso tem consequência em código: **o `CT2` e o `CT6` são desligados neste
+motor**, cada um com o motivo escrito. O CT2 exige que o take 1 enuncie a falha
+— este ângulo, por desenho do operador, não enuncia nenhuma. O CT6 exige que o
+CTA diga onde a receita chega, e a ordem foi literal: *"vc não usará complemento
+tal como by message"*; as palavras liberadas foram para a **objeção da cozinha**
+(`All ingredients you have in your kitchen`), que derruba o "vou ter de comprar
+alguma coisa" — objeção que vem **antes** do custo social.
+⚠️ O `medir_copy16.py` ganhou um mecanismo de **`DESLIGADAS`**: os dois números
+continuam medidos e impressos, o motor sai da lista de "violam" e a decisão
+aparece rotulada no rodapé. Gate que acusa uma decisão declarada treina o
+operador a ignorar o gate.
+⭐ **Dois eixos de cena independentes** (10 quartos × 10 ambientes, os dez do
+take 2 ditados pelo operador), **as MESMAS duas mulheres** atravessando o corte
+— três pessoas para manter idênticas entre dois quadros gerados separadamente, o
+mais caro do parque — e ele com **a tigela numa mão e a caixa de bicarbonato na
+outra**, sempre. ⭐ **MODO FORTE com pool próprio 50+**: o compartilhado do repo
+tem 26-38 anos e não serve num ângulo cujo REF o operador travou em 50+; aqui o
+toggle não troca a pessoa, troca **o corpo dela**. ⛔ Elas **sorriem**, nunca
+gargalham — e a cláusula é **positiva**, sem `not laughing`, porque negação
+injeta o token.
 
 ### ⛔⛔ CONTRA A CELEBRIDADE, SILÊNCIO — NUNCA `not a celebrity` (2026-08-10)
 
