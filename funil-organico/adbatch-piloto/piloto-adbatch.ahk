@@ -1576,6 +1576,162 @@ novaJanela(hOrigem) {
 }
 
 ; =============================================================================
+;  ⭐⭐ O STATUS DO WORKER DAS SOBRAS (2026-08-11)
+; =============================================================================
+; Encomenda do operador: *"quero um feedback visual em ambas as interfaces, do
+; editor e do Video Terminator, do status do worker ativo live"* e, na mensagem
+; seguinte, o criterio: *"live e funcional"*. Depois: *"gerar ui ux pertinente
+; para visualizar backlog em caso de erro do worker, dele nao estar live"* e *"um
+; contador de quantos videos foram movidos e a quantidade atual de videos da
+; pasta estoque"*.
+;
+; ⛔ "LIVE" NAO E' "O ARQUIVO EXISTE". O worker publica um estado em
+; `%LOCALAPPDATA%\MoverSobras\estado.json` e bate PULSO a cada 45s, separado da
+; passada horaria. Se o unico sinal fosse a passada, um worker MORTO pareceria
+; vivo por quase uma hora — justamente o intervalo em que esta tela nao poderia
+; ser confiada. O corte e' 3 minutos: quatro pulsos perdidos.
+;
+; ⚠️ Nada aqui sabe ONDE o worker foi instalado. As duas interfaces moram em
+; pastas diferentes; o ponto de encontro e' o LOCALAPPDATA, e so'.
+
+ARQ_WORKER := EnvGet("LOCALAPPDATA") "\MoverSobras\estado.json"
+
+; ⚠️ leitura por regex em vez de um parser de JSON: sao seis campos planos e o
+; arquivo e' escrito por nos. Trazer um parser inteiro para isto seria pagar
+; caro por um problema que nao existe.
+estadoWorker() {
+    global ARQ_WORKER, COR_FRACA, COR_BOA, COR_MA
+    e := {vivo: false, rotulo: "worker das sobras: NAO INSTALADO",
+          cor: COR_FRACA, backlog: 0, backlogGb: 0.0, destino: 0,
+          movidos: 0, quando: "", dias: []}
+    if !FileExist(ARQ_WORKER)
+        return e
+    j := ""
+    try j := FileRead(ARQ_WORKER, "UTF-8")
+    if (j = "")
+        return e
+
+    num(c) {
+        return RegExMatch(j, '"' c '":\s*([-0-9.]+)', &m) ? m[1] : 0
+    }
+    txt(c) {
+        return RegExMatch(j, '"' c '":\s*"([^"]*)"', &m) ? m[1] : ""
+    }
+
+    e.backlog   := Integer(num("backlog_arquivos"))
+    e.backlogGb := num("backlog_gb")
+    e.destino   := Integer(num("no_destino"))
+    e.movidos   := Integer(num("movidos_total"))
+    bat         := txt("batimento")
+    e.quando    := bat != "" ? bat : txt("atualizado")
+    resultado   := txt("resultado")
+
+    ; ⛔ o backlog por dia — e' o que a tela de erro mostra
+    pos := 1
+    while RegExMatch(j, '\{\s*"dia":\s*"([^"]+)",\s*"n":\s*(\d+),\s*"gb":\s*([0-9.]+)',
+                     &m, pos) {
+        e.dias.Push({dia: m[1], n: Integer(m[2]), gb: m[3]})
+        pos := m.Pos + m.Len
+    }
+
+    ; ── idade do pulso
+    idade := 999999
+    if RegExMatch(e.quando, "^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$", &d) {
+        carimbo := d[1] d[2] d[3] d[4] d[5] d[6]
+        idade := DateDiff(A_Now, carimbo, "Seconds")
+    }
+    e.vivo := (idade < 180)
+
+    if !e.vivo {
+        e.cor := COR_MA
+        e.rotulo := "worker das sobras: PARADO"
+                  . (e.quando != "" ? "  (ultimo sinal " e.quando ")" : "")
+    } else if (resultado = "hd_desconectado") {
+        ; ⚠️ vivo e sem HD e' um TERCEIRO estado, nao um erro: ele levou o HD.
+        ; Chamar isso de falha treinaria o operador a ignorar o indicador.
+        e.cor := "FFB454"
+        e.rotulo := "worker das sobras: LIVE, esperando o HD"
+    } else {
+        e.cor := COR_BOA
+        e.rotulo := "worker das sobras: LIVE"
+    }
+    return e
+}
+
+; ⭐ A linha que resume tudo numa frase, para caber na tela de abertura.
+resumoWorker() {
+    e := estadoWorker()
+    return e.rotulo
+         . "   ·   " e.destino " no estoque"
+         . "   ·   " e.movidos " movidos ate' hoje"
+         . (e.backlog ? ("   ·   " e.backlog " esperando") : "   ·   em dia")
+}
+
+; =============================================================================
+;  ⭐ F7 — O PAINEL DAS SOBRAS
+; =============================================================================
+; ⛔ Existe para o dia em que o worker NAO estiver live: e' quando saber quanto
+; esta' represado, e desde quando, e' a unica informacao que importa. Por isso a
+; tela mostra o backlog POR DIA, e nao um total — um total nao diz se o problema
+; comecou hoje ou ha' uma semana.
+painelSobras(*) {
+    global LARG_UI, ARQ_WORKER
+    e := estadoWorker()
+    g := janelaUI("sobras — worker")
+
+    secaoUI(g, "Estado do worker", true)
+    fonteUI(g, "s11 Bold")
+    g.SetFont("s11 Bold c" e.cor, "Segoe UI")
+    g.AddText("w" LARG_UI, e.rotulo)
+    fonteUI(g)
+    g.AddText("w" LARG_UI " y+4 c" COR_FRACA,
+              "ultimo sinal: " (e.quando = "" ? "nunca" : e.quando)
+              . "     ele bate pulso a cada 45s e faz a passada de hora em hora")
+
+    secaoUI(g, "Contadores")
+    fonteUI(g, "s9", "Consolas")
+    escurecerUI(g.AddEdit("w" LARG_UI " r3 ReadOnly -E0x200 -Wrap" fundoUI(),
+          "no estoque (D:\estoque) .. " e.destino " video(s)"
+        . "`nmovidos ate' hoje ........ " e.movidos " video(s)"
+        . "`nesperando para ir ........ " e.backlog " video(s)  ("
+          . e.backlogGb " GB)"))
+    fonteUI(g)
+
+    secaoUI(g, e.backlog ? "O que esta' esperando, por dia" : "Backlog")
+    if (e.dias.Length = 0) {
+        g.AddText("w" LARG_UI " c" COR_BOA,
+                  "Nada represado — todas as sobras dos dias anteriores ja' "
+                  "estao no HD.")
+    } else {
+        lv := escurecerUI(g.AddListView("w" LARG_UI " r6 -Multi +Grid NoSort" fundoUI(),
+                                        ["Dia", "Sobras", "GB"]))
+        for d in e.dias
+            lv.Add("", d.dia, d.n, d.gb)
+        lv.ModifyCol(1, 160), lv.ModifyCol(2, 90), lv.ModifyCol(3, 90)
+    }
+
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 110) " y+16 Default", "Fechar")
+     .OnEvent("Click", (*) => g.Destroy())
+    g.AddButton("w150 h30 x18 yp", "Abrir o estoque")
+     .OnEvent("Click", (*) => Run("explorer.exe D:\estoque"))
+    g.AddButton("w170 h30 x+8 yp", "Ver o log do worker")
+     .OnEvent("Click", (*) => abrirLogWorker())
+    g.Show()
+}
+
+abrirLogWorker() {
+    global ARQ_WORKER
+    j := ""
+    try j := FileRead(ARQ_WORKER, "UTF-8")
+    if RegExMatch(j, '"log":\s*"([^"]*)"', &m) {
+        caminho := StrReplace(m[1], "\\", "\")
+        if FileExist(caminho)
+            return Run('notepad.exe "' caminho '"')
+    }
+    MsgBox("nao achei o log do worker", APP, 48)
+}
+
+; =============================================================================
 ;  ⭐⭐ A AJUDA (F1) — 2026-08-11
 ; =============================================================================
 ; Ordem do operador, duas mensagens seguidas: *"coloque um ui ux pertinente de
@@ -1605,6 +1761,7 @@ ATALHOS := [
     ["F8",  "Ensaio seco",       "roda o ciclo SEM colar e SEM gastar credito"],
     ["F9",  "Calibrar",          "aponta os 6 pontos da tela do AdBatch"],
     ["F10", "RODAR",             "o gatilho da geracao — percorre as abas e gera"],
+    ["F7",  "Sobras",            "estado do worker das sobras e o que esta' represado"],
     ["F12", "Log",               "o que o script fez nesta sessao"],
     ["Esc", "Abortar",           "so' funciona ENQUANTO o ciclo esta' rodando"],
 ]
@@ -1640,6 +1797,18 @@ ajuda(inicial := false) {
                  ? "levanta as duas janelas desta sessao"
                  : "as janelas nao estao abertas — rode o F3")
     lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, LARG_UI - 232)
+
+    ; ⭐⭐ O STATUS DO WORKER GANHA LINHA PROPRIA E COLORIDA, acima do bloco
+    ; monoespacado: dentro daquele bloco cinza ele seria mais uma linha entre
+    ; sete, e o unico item da tela que pode estar QUEBRADO agora precisa ser o
+    ; primeiro que o olho encontra.
+    secaoUI(g, "Worker das sobras")
+    _w := estadoWorker()
+    g.SetFont("s10 Bold c" _w.cor, "Segoe UI")
+    g.AddText("w" LARG_UI, resumoWorker())
+    fonteUI(g)
+    g.AddText("w" LARG_UI " y+2 c" COR_FRACA,
+              "F7 abre o painel com o backlog por dia")
 
     secaoUI(g, "Como esta' agora")
     fonteUI(g, "s9", "Consolas")
@@ -1784,6 +1953,7 @@ montarBandeja() {
     A_TrayMenu.Add("Ensaio seco  (F8)",        (*) => rodar(true))
     A_TrayMenu.Add("Calibrar  (F9)",           (*) => calibrar())
     A_TrayMenu.Add()
+    A_TrayMenu.Add("Sobras  (F7)",             (*) => painelSobras())
     A_TrayMenu.Add("Log  (F12)",               (*) => mostrarLog())
     A_TrayMenu.Add()
     A_TrayMenu.Add("Iniciar com o Windows",    (*) => (
@@ -1816,6 +1986,7 @@ else
 F1::  ajuda()
 F3::  montarBancada()
 F4::  levantarBancada()
+F7::  painelSobras()
 
 F2::  configurarTeclas()
 F9::  calibrar()
