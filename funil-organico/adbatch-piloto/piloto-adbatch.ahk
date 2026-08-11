@@ -285,20 +285,75 @@ serveParaOF10(hwnd) {
     return algum ? "provavel" : "sem calibracao"
 }
 
-; ⚠️ O handle da bancada morre quando o script e' reiniciado, e reiniciar e'
-; justamente o que o operador faz depois de cada versao nova — foi assim que a
-; marca do F3 sumiu no primeiro uso real. Gravado no INI, sobrevive.
-bancadaGravada(lista) {
+; =============================================================================
+;  ⭐⭐ AS BANCADAS GRAVADAS — UM PAR POR SESSAO, QUANTAS SESSOES EXISTIREM
+; =============================================================================
+; Ordem do operador (2026-08-11): *"funcione para as quatro sessoes, ou quantas
+; vierem no futuro, pois pretendo expandir a operacao e ter outras contas no
+; Dolphin"*.
+;
+; ⛔ E' POR ISSO QUE NAO HA' LISTA DE SESSOES NESTE CODIGO. Cada F3 grava o par
+; de janelas daquela sessao numa chave propria do INI, com o titulo dela como
+; nome da chave. Conta nova no Dolphin = chave nova no dia em que ela rodar o F3;
+; nada aqui precisa ser editado. A `SESSOES_ESPERADAS` continua existindo so'
+; para dizer o que esta' FECHADO, que e' outro assunto.
+;
+; ⚠️ O handle morre quando o script e' reiniciado — e reiniciar e' exatamente o
+; que ele faz depois de cada versao nova. Foi assim que a marca do F3 sumiu no
+; primeiro uso real. No disco, sobrevive.
+
+; ⛔ `=` e `;` quebrariam o arquivo INI, e o titulo vem do Windows: nao da' para
+; confiar que nao tem nenhum dos dois.
+chaveDeBancada(titulo) {
+    t := StrReplace(StrReplace(Trim(titulo), "=", "-"), ";", "-")
+    return SubStr(t, 1, 80)
+}
+
+gravarBancada(titulo, h1, h2) {
     global INI
-    h := IniRead(INI, "estado", "bancada_hwnd", "")
-    if (h = "" || !IsInteger(h))
-        return 0
-    h := Integer(h)
-    ; ⛔ CONFERE QUE A JANELA AINDA E' AQUELA. Handle e' reciclado pelo Windows:
-    ; sem esta conferencia, uma janela qualquer poderia herdar a marca.
-    for s in lista
-        if (s.hwnd = h)
-            return h
+    try IniWrite h1 "," h2, INI, "bancadas", chaveDeBancada(titulo)
+}
+
+; devolve [{chave, h1, h2}] apenas das bancadas cujas DUAS janelas ainda vivem
+bancadasVivas() {
+    global INI
+    vivas := []
+    bruto := ""
+    try bruto := IniRead(INI, "bancadas")      ; secao inteira, "chave=valor"
+    if (bruto = "")
+        return vivas
+    for linha in StrSplit(bruto, "`n") {
+        p := InStr(linha, "=")
+        if (!p)
+            continue
+        chave := SubStr(linha, 1, p - 1)
+        par := StrSplit(SubStr(linha, p + 1), ",")
+        if (par.Length < 2 || !IsInteger(Trim(par[1])) || !IsInteger(Trim(par[2])))
+            continue
+        h1 := Integer(Trim(par[1])), h2 := Integer(Trim(par[2]))
+        ; ⛔ O WINDOWS RECICLA HANDLE. Sem conferir que as duas ainda existem,
+        ; uma janela qualquer poderia herdar a bancada de outra sessao e o F4
+        ; arrastaria a janela errada para o monitor errado.
+        if (WinExist("ahk_id " h1) && WinExist("ahk_id " h2))
+            vivas.Push({chave: chave, h1: h1, h2: h2})
+    }
+    return vivas
+}
+
+; a bancada a que uma janela pertence, ou 0
+parDaJanela(hwnd) {
+    for b in bancadasVivas()
+        if (b.h1 = hwnd || b.h2 = hwnd)
+            return b
+    return 0
+}
+
+; ⚠️ usado so' para MARCAR no seletor qual linha e' bancada
+bancadaGravada(lista) {
+    for b in bancadasVivas()
+        for s in lista
+            if (s.hwnd = b.h1)
+                return b.h1
     return 0
 }
 
@@ -682,6 +737,139 @@ monitoresDaBancada() {
     return [m1, m2]
 }
 
+; =============================================================================
+;  ⭐⭐ F4 + CLIQUE NO ICONE — LEVANTAR A BANCADA INTEIRA (2026-08-11)
+; =============================================================================
+; Ordem do operador: *"quando o script estiver de standby, de uma acao de um
+; clique unico no icone do navegador de determinada sessao logada, fazer abrir
+; simultaneamente a janela 1 e 2 daquela sessao nos seus respectivos monitores"*
+; — e, na mesma mensagem: *"pode colocar as duas rotas, por clique no icone e por
+; apertar o F4"*.
+;
+; ⛔ NAO DA' PARA OUVIR O CLIQUE NO BOTAO DA BARRA DE TAREFAS: aquele botao e' do
+; Explorer, nao do navegador. O que da' — e produz o MESMO efeito — e' ouvir a
+; consequencia dele: clicar no icone ATIVA a janela, e o Windows avisa quem
+; estiver registrado como shell hook.
+;
+; ⛔⛔ E A REGRA QUE IMPEDE ISSO DE VIRAR PRAGA: so' age se a irma estiver
+; MINIMIZADA ou FORA DE LUGAR. Sem esta condicao, alternar entre as duas janelas
+; da bancada com alt-tab traria a outra para a frente toda vez, e o operador
+; perderia o controle de qual janela esta' vendo. Levantar a bancada e' o caso em
+; que as janelas estao guardadas; com tudo ja' no lugar, o certo e' nao fazer
+; nada.
+;
+; ⚠️ Tres guardas, cada uma por um motivo diferente:
+;   `rodando` ........ nunca durante um F10/F3. Ele pediu "em standby".
+;   `gArrumando` ..... reentrancia: arrumar ATIVA janela, ativar dispara o hook
+;                      de novo, e sem esta trava as duas ficariam se chamando.
+;   carencia ......... o Windows manda mais de um evento por clique.
+
+global gArrumando := false
+global gUltimoArrumo := 0
+global MSG_SHELL := 0
+
+; ⛔ Uma janela so' esta' "em ordem" se estiver MAXIMIZADA no monitor dela. O
+; minimizado (-1) e' o caso do clique no icone; o monitor errado e' o caso de
+; quem arrastou a janela sem querer.
+precisaArrumar(hwnd, mon) {
+    if !WinExist("ahk_id " hwnd)
+        return false
+    if (WinGetMinMax("ahk_id " hwnd) != 1)
+        return true
+    return (monitorDaJanela(hwnd) != mon)
+}
+
+; ⭐ Levanta as duas janelas da bancada, cada uma no monitor dela, e devolve o
+; foco para `hFoco` — a janela que o operador clicou. Sem devolver o foco, o
+; clique dele acabaria com a OUTRA janela na frente.
+arrumarBancada(b, hFoco := 0) {
+    global gArrumando, gUltimoArrumo
+    if (b = 0)
+        return false
+    mons := monitoresDaBancada()
+    if (!precisaArrumar(b.h1, mons[1]) && !precisaArrumar(b.h2, mons[2]))
+        return false                    ; ja' esta' tudo no lugar: silencio
+    gArrumando := true
+    try {
+        if precisaArrumar(b.h1, mons[1])
+            mandarPara(b.h1, mons[1])
+        else
+            WinShow "ahk_id " b.h1
+        if precisaArrumar(b.h2, mons[2])
+            mandarPara(b.h2, mons[2])
+        else
+            WinShow "ahk_id " b.h2
+        alvo := (hFoco && WinExist("ahk_id " hFoco)) ? hFoco : b.h1
+        WinActivate "ahk_id " alvo
+    } finally {
+        gArrumando := false
+        gUltimoArrumo := A_TickCount
+    }
+    return true
+}
+
+; ⚠️ HSHELL_WINDOWACTIVATED (4) e HSHELL_RUDEAPPACTIVATED (32772). O segundo e' o
+; que chega quando a janela vem de MINIMIZADA — que e' justamente o clique no
+; icone. Ouvir so' o primeiro deixaria o caso principal de fora.
+aoAtivarJanela(wParam, lParam, *) {
+    global rodando, gArrumando, gUltimoArrumo
+    if (wParam != 4 && wParam != 32772)
+        return
+    if (rodando || gArrumando)
+        return
+    if (A_TickCount - gUltimoArrumo < 1500)
+        return
+    b := parDaJanela(lParam)
+    if (b = 0)
+        return
+    arrumarBancada(b, lParam)
+}
+
+ligarCliqueNoIcone() {
+    global INI, MSG_SHELL
+    if (IniRead(INI, "config", "clique_no_icone", "1") = "0")
+        return false
+    ; ⚠️ registra a JANELA DO PROPRIO SCRIPT para receber os avisos do shell
+    if !DllCall("RegisterShellHookWindow", "Ptr", A_ScriptHwnd)
+        return false
+    MSG_SHELL := DllCall("RegisterWindowMessage", "Str", "SHELLHOOK", "UInt")
+    OnMessage(MSG_SHELL, aoAtivarJanela)
+    return true
+}
+
+; ⭐ A rota do teclado. Arruma a bancada da janela ATIVA; se a ativa nao for de
+; bancada nenhuma, oferece a lista em vez de errar calado.
+levantarBancada() {
+    global rodando
+    if rodando
+        return
+    b := parDaJanela(WinExist("A"))
+    if (b = 0) {
+        vivas := bancadasVivas()
+        if (vivas.Length = 0) {
+            MsgBox("Nenhuma bancada montada ainda.`n`nRode o F3 numa sessao "
+                   "para montar as duas janelas — dai o F4 passa a levanta-las.",
+                   "Piloto AdBatch", 48)
+            return
+        }
+        if (vivas.Length = 1) {
+            b := vivas[1]
+        } else {
+            h := escolherSessao()
+            if (h = 0)
+                return
+            b := parDaJanela(h)
+            if (b = 0) {
+                MsgBox("Essa janela nao faz parte de uma bancada do F3.",
+                       "Piloto AdBatch", 48)
+                return
+            }
+        }
+    }
+    if !arrumarBancada(b, WinExist("A"))
+        ToolTip("a bancada ja' esta' no lugar"), SetTimer(() => ToolTip(), -1400)
+}
+
 montarBancada() {
     global rodando, abortar
     if rodando
@@ -812,10 +1000,12 @@ montarBancadaMiolo() {
     ; TRES janelas com o MESMO titulo (o nome do perfil no Dolphin), e sem isto
     ; o operador teria de adivinhar qual escolher no F10.
     gBancada := hJan1
-    ; ⚠️ TAMBEM NO DISCO: o handle em memoria morre quando o script e'
+    ; ⚠️ TAMBEM NO DISCO, E COMO PAR: o handle em memoria morre quando o script e'
     ; reiniciado — e reiniciar e' exatamente o que o operador faz depois de cada
     ; versao nova. Foi assim que a marca sumiu do seletor no primeiro uso real.
-    try IniWrite hJan1, INI, "estado", "bancada_hwnd"
+    ; ⭐ Gravado com o TITULO DA SESSAO como chave, uma chave por sessao: e' o que
+    ; faz o F4 e o clique no icone servirem para quantas contas ele abrir.
+    gravarBancada(WinGetTitle("ahk_id " hBase), hJan1, hJan2)
 
     ; ⚠️ CONFERE A JANELA 1 CONTRA A CALIBRACAO E AVISA AQUI. O F10 ja' tem a
     ; trava de geometria, mas ela dispara la' na frente, com o roteiro colado e a
@@ -881,7 +1071,131 @@ novaJanela(hOrigem) {
     return 0
 }
 
+; =============================================================================
+;  ⭐⭐ A AJUDA (F1) — 2026-08-11
+; =============================================================================
+; Ordem do operador, duas mensagens seguidas: *"coloque um ui ux pertinente de
+; guia ajuda: mostra um sumario dos atalhos e suas funcoes"* e *"melhore o ui do
+; script, esta confuso atualmente"*.
+;
+; ⛔ O problema nao era falta de tela bonita, era o SCRIPT SER INVISIVEL: sete
+; teclas de funcao, nenhuma delas escrita em lugar nenhum, e um comportamento
+; novo (o clique no icone) que age sozinho. Ferramenta que so' responde a teclas
+; que o operador tem de lembrar de cor obriga a decorar — e o que se decora,
+; se esquece na semana seguinte.
+;
+; ⭐ Por isso a tela tem DUAS metades, e a segunda e' a que faltava em toda parte:
+; os atalhos, e O ESTADO ATUAL. Saber que o F9 calibra nao ajuda quem nao sabe se
+; ESTA calibrado; saber que o F3 monta nao ajuda quem nao sabe quais bancadas ja'
+; existem. Estado visivel e' o que dispensa a pergunta.
+;
+; ⚠️ E os mesmos comandos foram para o MENU DA BANDEJA. Atalho e' para quem ja'
+; sabe; menu e' para quem esta' descobrindo. Os dois apontam para as mesmas
+; funcoes — nunca para copias.
+
+ATALHOS := [
+    ["F1",  "Ajuda",             "esta tela: os atalhos e como o script esta' agora"],
+    ["F3",  "Montar bancada",    "cria as DUAS janelas da sessao e abre as abas nelas"],
+    ["F4",  "Levantar bancada",  "traz as duas janelas de volta, cada uma no seu monitor"],
+    ["F8",  "Ensaio seco",       "roda o ciclo SEM colar e SEM gastar credito"],
+    ["F9",  "Calibrar",          "aponta os 6 pontos da tela do AdBatch"],
+    ["F10", "RODAR",             "o gatilho da geracao — percorre as abas e gera"],
+    ["F12", "Log",               "o que o script fez nesta sessao"],
+    ["Esc", "Abortar",           "so' funciona ENQUANTO o ciclo esta' rodando"],
+]
+
+ajuda(*) {
+    global ATALHOS, INI
+    g := Gui("+AlwaysOnTop -MinimizeBox", "Piloto AdBatch — ajuda")
+    g.MarginX := 16, g.MarginY := 14
+    g.SetFont("s11 Bold", "Segoe UI")
+    g.AddText("w660", "Atalhos")
+    g.SetFont("s9 Norm", "Segoe UI")
+    lv := g.AddListView("w660 r8 -Multi +Grid", ["Tecla", "O que faz", "Detalhe"])
+    for a in ATALHOS
+        lv.Add("", a[1], a[2], a[3])
+    lv.ModifyCol(1, 58), lv.ModifyCol(2, 150), lv.ModifyCol(3, 440)
+
+    g.SetFont("s11 Bold", "Segoe UI")
+    g.AddText("w660 y+14", "Como esta' agora")
+    g.SetFont("s9 Norm", "Consolas")
+
+    ; ── monitores
+    mons := ""
+    loop MonitorGetCount() {
+        MonitorGetWorkArea(A_Index, &l, &t, &r, &b)
+        mons .= (mons = "" ? "" : "   ") . "m" A_Index " " (r - l) "x" (b - t)
+              . ((b - t) > (r - l) ? " retrato" : " paisagem")
+    }
+    md := monitoresDaBancada()
+    nAd := IniRead(INI, "config", "abas", "10")
+    nDa := IniRead(INI, "config", "abas_dashboard", "5")
+
+    ; ── calibracao
+    cw := IniRead(INI, "pontos", "calib_w", "")
+    ch := IniRead(INI, "pontos", "calib_h", "")
+    cal := (cw != "" && ch != "")
+           ? ("6 pontos, janela " cw "x" ch)
+           : "6 pontos, SEM tamanho gravado — o F10 vai perguntar uma vez"
+
+    ; ── bancadas
+    vv := bancadasVivas()
+    bnc := (vv.Length = 0) ? "nenhuma ainda (rode o F3)" : ""
+    for b in vv
+        bnc .= (bnc = "" ? "" : "   ") . b.chave
+
+    lig := (IniRead(INI, "config", "clique_no_icone", "1") = "0") ? "DESLIGADO" : "ligado"
+
+    est := g.AddEdit("w660 r7 ReadOnly -E0x200",
+             "monitores .......... " mons
+        . "`nbancada vai para ... AdBatch no monitor " md[1] " · dashboard no monitor " md[2]
+        . "`nabas por bancada ... " nAd " no AdBatch + " nDa " no dashboard + 1 Montador"
+        . "`ncalibracao ......... " cal
+        . "`nbancadas montadas .. " bnc
+        . "`nclique no icone .... " lig " (levanta a bancada ao clicar no icone da sessao)"
+        . "`narquivo ............ " INI)
+
+    g.SetFont("s9", "Segoe UI")
+    g.AddButton("w150 y+14", "Montar bancada (F3)").OnEvent("Click", (*) => (g.Destroy(), montarBancada()))
+    g.AddButton("x+8 w160", "Levantar bancada (F4)").OnEvent("Click", (*) => (g.Destroy(), levantarBancada()))
+    g.AddButton("x+8 w110", "Ver o log").OnEvent("Click", (*) => mostrarLog())
+    g.AddButton("x+8 w110 Default", "Fechar").OnEvent("Click", (*) => g.Destroy())
+    g.OnEvent("Close", (*) => g.Destroy())
+    g.Show()
+}
+
+; ⭐ O MENU DA BANDEJA repete os mesmos comandos. Atalho serve a quem ja' sabe;
+; menu serve a quem esta' descobrindo — e um dos dois some quando o operador
+; passa duas semanas longe do script.
+montarBandeja() {
+    A_TrayMenu.Delete()
+    A_TrayMenu.Add("Ajuda  (F1)",              (*) => ajuda())
+    A_TrayMenu.Add()
+    A_TrayMenu.Add("Montar bancada  (F3)",     (*) => montarBancada())
+    A_TrayMenu.Add("Levantar bancada  (F4)",   (*) => levantarBancada())
+    A_TrayMenu.Add()
+    A_TrayMenu.Add("RODAR  (F10)",             (*) => rodar(false))
+    A_TrayMenu.Add("Ensaio seco  (F8)",        (*) => rodar(true))
+    A_TrayMenu.Add("Calibrar  (F9)",           (*) => calibrar())
+    A_TrayMenu.Add()
+    A_TrayMenu.Add("Log  (F12)",               (*) => mostrarLog())
+    A_TrayMenu.Add("Sair",                     (*) => ExitApp())
+    A_TrayMenu.Default := "Ajuda  (F1)"
+    A_IconTip := "Piloto AdBatch — F1 abre a ajuda"
+}
+
+montarBandeja()
+gCliqueLigado := ligarCliqueNoIcone()
+; ⚠️ O AVISO DE PARTIDA E' A UNICA COISA QUE APARECE SOZINHA. Sem ele, o script
+; sobe mudo e o operador nao tem como saber nem que ele esta' rodando, nem que
+; existe uma tela de ajuda.
+TrayTip("F1 abre a ajuda com todos os atalhos."
+        . "`nclique no icone da sessao: " (gCliqueLigado ? "ligado" : "desligado"),
+        "Piloto AdBatch no ar")
+
+F1::  ajuda()
 F3::  montarBancada()
+F4::  levantarBancada()
 F9::  calibrar()
 F10:: rodar(false)
 F8::  rodar(true)

@@ -298,3 +298,74 @@ grava, nao o que a area util reporta.
 ⚠️ **O que ainda nao foi executado:** o F3 de ponta a ponta numa sessao real
 (Gui, `Ctrl+N`, o `{Delete}` na barra, as 16 abas). O que se provou foi cada peca
 isolada e o posicionamento de verdade.
+
+## ⭐⭐ F1 ajuda · F4 e o clique no icone (2026-08-11)
+
+### O mapa dos atalhos
+
+| tecla | o que faz |
+|---|---|
+| **F1** | ajuda: os atalhos **e o estado atual** do script |
+| **F3** | monta a bancada (2 janelas, 16 abas, uma em cada monitor) |
+| **F4** | levanta a bancada: traz as duas de volta, cada uma no seu monitor |
+| **F8** | ensaio seco — roda sem colar e sem gastar credito |
+| **F9** | calibrar os 6 pontos |
+| **F10** | RODAR — o gatilho da geracao |
+| **F12** | log |
+| **Esc** | abortar (so' enquanto roda) |
+
+Os mesmos comandos estao no **menu da bandeja**. Atalho serve a quem ja' sabe;
+menu serve a quem esta' descobrindo — e um dos dois some depois de duas semanas
+longe do script.
+
+⛔ A tela do F1 tem **duas metades**, e a segunda e' a que faltava em todo lugar:
+os atalhos, e **como o script esta' agora** (monitores, para onde vai cada
+janela, abas, calibracao, bancadas montadas, clique ligado ou nao). Saber que o
+F9 calibra nao ajuda quem nao sabe se *esta* calibrado.
+
+### O clique no icone da sessao
+
+Ordem do operador: *"de uma acao de um clique unico no icone do navegador de
+determinada sessao logada, fazer abrir simultaneamente a janela 1 e 2 daquela
+sessao nos seus respectivos monitores"* — e *"pode colocar as duas rotas, por
+clique no icone e por apertar o F4"*.
+
+⛔ **Nao da' para ouvir o botao da barra de tarefas** — ele e' do Explorer, nao do
+navegador. O que da', e produz o mesmo efeito, e' ouvir a **consequencia**: o
+clique ATIVA a janela, e o Windows avisa quem estiver registrado como shell hook
+(`HSHELL_WINDOWACTIVATED` e `HSHELL_RUDEAPPACTIVATED` — o segundo e' o que chega
+quando a janela vem de minimizada, que e' justamente o caso do clique).
+
+⛔⛔ **A regra que impede isso de virar praga: so' age se a irma estiver
+MINIMIZADA ou FORA DE LUGAR.** Sem ela, alternar entre as duas janelas com
+alt-tab traria a outra para a frente toda vez. Com tudo ja' no lugar, o certo e'
+nao fazer nada. Desligavel: `[config] clique_no_icone=0`.
+
+⚠️ Tres guardas, cada uma por um motivo diferente: `rodando` (nunca durante o
+F10/F3 — ele pediu "em standby"), `gArrumando` (reentrancia: arrumar ATIVA
+janela, ativar dispara o hook de novo) e uma carencia de 1,5s (o Windows manda
+mais de um evento por clique).
+
+### Uma bancada por sessao, sem lista no codigo
+
+*"funcione para as quatro sessoes, ou quantas vierem no futuro"*. Cada F3 grava o
+par de janelas na secao `[bancadas]` do INI, com o **titulo da sessao como
+chave**. Conta nova no Dolphin = chave nova no dia em que ela rodar o F3; nada no
+codigo precisa ser editado.
+
+⛔ O Windows **recicla handle**, entao toda leitura confere que as duas janelas
+ainda existem — sem isso, uma janela qualquer herdaria a bancada de outra sessao
+e o F4 arrastaria a janela errada.
+
+### Medido em execucao (nao em leitura)
+
+14 de 14, com **duas janelas criadas e destruidas pelo proprio teste**:
+ajuda abre e lista os 8 atalhos + as 7 linhas de estado · gravar/achar/validar
+bancada · levantar poe cada uma no seu monitor maximizada · **o foco volta para a
+janela clicada** · **com tudo no lugar nao age** · **com a irma minimizada volta
+a agir** · bancada morta some sozinha da lista.
+
+⛔⛔ **Cobaia se mata pelo HANDLE, nunca pelo nome do processo.** No dia desta
+entrega um `Stop-Process` por nome, escrito para limpar o Notepad de um teste
+meu, fechou **dez Blocos de Notas do operador**, sete com alteracao nao salva — e
+o do teste ja' tinha fechado sozinho. Nao havia nada meu para limpar.
