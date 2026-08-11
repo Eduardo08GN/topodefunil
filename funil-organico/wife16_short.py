@@ -127,6 +127,10 @@ SEXOS = ("homem",)
 # vezes. O mesmo vale para o MODO_FORTE: ele nao existe porque o corpo dele nao
 # e' o argumento aqui (o argumento e' ela voltando).
 MODO_BELA = False
+# ⭐ O TERCEIRO modo do repo, e o primeiro que mexe na CENA e nao na pessoa.
+# O `ui_agente` desenha o botao sem o prefixo `ref` e NAO o desliga quando o
+# operador trava a REF na tela — ver `MODOS_DE_CENA` la'.
+MODO_RECEITA = True
 MODO_FORTE = False
 
 # ⛔ A etnia sai da PAGINA (nao do mundo), entao o seletor clara/escura do
@@ -555,6 +559,50 @@ MULHERES = [
 # ⚠️ CADA ENTRADA TEM SILHUETA PROPRIA. Licao do BOTICA: metade de um pool era
 # de vidro e o gerador colapsou quatro entradas numa prensa francesa, que e' a
 # forma que ele conhece melhor. Aqui nao ha' dois corpos iguais.
+# ---------------------------------------------------------------------------
+# ⭐⭐ MODO RECEITA — a tigela na borda (2026-08-10)
+# ---------------------------------------------------------------------------
+# ⛔ Encomenda do operador: *"quero um toggle na interface que, quando ativada,
+# o take 2 gera a cena da piscina porem com um adendo: o casal (ainda dentro do
+# corpo dagua) esta com uma bowl de cubos de gelatina e uma caixa de baking
+# soda na BORDA da piscina, e o homem fazendo stirring com uma colher na bowl."*
+#
+# ⭐ POR QUE ISSO IMPORTA, e e' a mesma queixa que reformou o ESCANDALO 16 hoje:
+# desligado, o take 2 mostra um casal na agua com dois copos — e nada em quadro
+# diz RECEITA. O CTA pede `gelatin` e a prova visual e' uma bebida palida que
+# poderia ser qualquer coisa. Ligado, a tigela de CUBOS e a caixa dizem
+# "isto e' feito em casa" sem uma palavra.
+#
+# ⛔⛔ A CAIXA E' DE PAPELAO E ELES ESTAO DENTRO D'AGUA — e' por isso que ela
+# fica na BORDA, seca, e nao na mao. O operador ja' resolveu isso ao escrever o
+# pedido; o que o codigo acrescenta e' a TRAVA: a lente WF10 reprova se a caixa
+# ou a tigela forem descritas dentro da agua. E' a licao paga no FIGHT 16, onde
+# o primeiro render pos ele com a agua no peito segurando uma caixa de papelao.
+#
+# ⛔ E O COPO DELE SAI. Decisao do operador: *"so' a mulher com copo quando o
+# toggle estiver ativado; ela segura o drink e o corpo dela continua rente ao
+# dele"*. E' troca, nao soma — as duas maos dele passam a ter UMA agenda
+# (segurar a tigela e mexer), e mandar ele segurar copo E colher e' a
+# contradicao das DUAS COLHERES, que o gerador resolve desenhando a terceira
+# mao. ⚠️ A lente WF4, que exigia o copo nos DOIS, passou a exigir isso SO' no
+# modo desligado.
+WF_RECEITA_IMAGE = (
+    "On the ledge beside them, out of the water and dry, sit a clear glass "
+    "bowl full of cut cubes of set amber gelatin, an orange and yellow "
+    "cardboard box of baking soda with the label sharp and readable, and a "
+    "spoon standing in the bowl. He has both hands on the bowl at the ledge, "
+    "one steadying its rim and the other turning the spoon in it, and his arms "
+    "are clear of the water."
+)
+
+WF_RECEITA_TAKE = (
+    "His hands keep turning the spoon in the bowl in slow circles the whole "
+    "time, and that is the only movement in his hands. The bowl, the box and "
+    "the spoon stay on the ledge and are never lifted into the water. She "
+    "simply holds her own drink the whole time and never drinks from it or "
+    "lifts it to her mouth."
+)
+
 COPOS = [
     {"id": "copo_alto_gelo", "nome": "copo alto com gelo",
      "curto": "copo alto",
@@ -970,6 +1018,13 @@ def sortear(pagina, rng, ledger, travas=None):
     spec = {
         "pagina": pagina, "etnia": etnia,
         "mundo": mundo, "homem": homem, "mulher": mulher, "copo": copo,
+        # ⭐ MODO RECEITA (2026-08-10): vem do toggle do painel via
+        # `travas["receita"]`. Nao troca pessoa nenhuma — troca o que esta'
+        # nas maos deles no take 2 e poe a receita na borda da agua.
+        # ⚠️ Guardado no SPEC e nao lido do `travas` na montagem: o painel
+        # re-sorteia a fala sem re-sortear a cena, e a montagem precisa saber
+        # o estado mesmo quando o `travas` nao passa por ali.
+        "receita": bool((travas or {}).get("receita")),
         "corpo_h": rng.choice(CORPOS_H),
         # ⛔ CT4b — o apelido sai de `sc.APELIDOS_16` e de mais lugar nenhum.
         # `soldier` soa filme de guerra para ouvido americano e `tool` e'
@@ -998,6 +1053,34 @@ CAUDA = ("Shot on iPhone, natural grain. No on-screen text, no subtitles, no "
 # espera; o que se proibe e' escrever uma nova.
 ANTICELEB = ("An ordinary everyday relatable person with a plain unremarkable "
              "face, not a celebrity, not a model, not an actor.")
+
+
+def _maos_da_agua(spec):
+    """O que esta' nas maos deles no take 2 — DEPENDE DO MODO RECEITA.
+
+    Desligado: o quadro de sempre, os DOIS com copo. A bebida E' o gelatin
+    trick (decisao 2 do operador) e a prova e' o casal segurando.
+    Ligado: a receita vem para a borda, ELE MEXE, e so' ELA fica com o copo —
+    ordem do operador. Nao e' soma: as duas maos dele passam a ter UMA
+    agenda, e mandar segurar copo E colher e' a contradicao das duas colheres.
+    """
+    if spec.get("receita"):
+        # ⚠️ `In her own hand she is holding X`, e nao `She is holding X in
+        # her own hand`: varias entradas de COPOS terminam em `with a pale
+        # drink IN IT`, e a segunda forma saia com `in it in her own hand`.
+        # Achado LENDO o bloco montado.
+        return ("In her own hand she is holding %s. %s"
+                % (spec["copo"]["img"], WF_RECEITA_IMAGE))
+    return ("Each of them is holding %s, one in his hand and one in hers."
+            % spec["copo"]["img"])
+
+
+def _maos_da_agua_take(spec):
+    if spec.get("receita"):
+        return WF_RECEITA_TAKE
+    return ("Each of them simply holds their own drink the whole time and "
+            "neither one drinks from it or lifts it to their mouth, and "
+            "neither hands theirs to the other.")
 
 
 def montar(spec):
@@ -1058,25 +1141,23 @@ def montar(spec):
         "the camera. It is the same man, not a different person. Pressed "
         "against his side with her shoulder against his chest is the same "
         "%d-year-old %s woman, %s, wearing %s; she looks at him and says "
-        "nothing. Each of them is holding %s, one in his hand and one in "
-        "hers. They are the only two people in the "
+        "nothing. %s They are the only two people in the "
         "frame. %s. %s"
         % (m["a_cen"], h["idade"], et, h["marca"], h["sinal"], spec["corpo_h"],
            m["a_agua"], w["idade"], w["etnia"], w["marca"], m["dela_a"],
-           spec["copo"]["img"], _cap(m["a_luz"]), CAUDA))
+           _maos_da_agua(spec), _cap(m["a_luz"]), CAUDA))
 
     b["TAKE 02/02"] = (
         "TAKE 02/02: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts, and the camera does not move. He "
         "talks straight into the lens the whole time and it is the same man as "
         "in the first scene. She stays pressed against his side and never "
-        "moves away from him, and she never speaks. Only he speaks. Each of "
-        "them simply holds their own drink the whole time and neither one "
-        "drinks from it or lifts it to their mouth, and neither hands theirs "
-        "to the other. The water keeps moving the way "
+        "moves away from him, and she never speaks. Only he speaks. %s The "
+        "water keeps moving the way "
         "water moves and nothing else in the frame changes.\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
-        % (sonorizar(spec["falas"][1]), m["a_audio"]))
+        % (_maos_da_agua_take(spec), sonorizar(spec["falas"][1]),
+           m["a_audio"]))
 
     # ⛔ trava de texto queimado em todo TAKE — o watermark que o operador viu
     # vazando nos reels da concorrente (2026-08-01).
@@ -1171,7 +1252,15 @@ def _wf4_copo(spec, blocos, achados):
     DELE em vez do ritual DO CASAL, que e' o payoff deste angulo.
     """
     i2, t2 = blocos["IMAGE 02/02"], blocos["TAKE 02/02"]
-    if "Each of them is holding" not in i2:
+    # ⛔⛔ 2026-08-10 — ESTA METADE PASSOU A VALER SO' COM O MODO RECEITA
+    # DESLIGADO. Ordem do operador ao encomendar o toggle: *"so' a mulher com
+    # copo quando o toggle estiver ativado"*. Com o modo ligado as duas maos
+    # DELE estao na tigela, e cobrar o copo dele aqui seria a lente exigindo
+    # TRES MAOS — o mesmo defeito que a bancada do ESCANDALO 16 produziu hoje.
+    # ⚠️ E a regra que ela guarda continua inteira nos dois estados: o copo
+    # (a bebida E' o gelatin trick) NUNCA some do quadro; o que muda e' de
+    # quantas maos ele sai.
+    if not spec.get("receita") and "Each of them is holding" not in i2:
         achados.append(("ERRO", "WF4: a IMAGE 02 nao poe o copo nas maos dos "
                                 "DOIS — a bebida e' o gelatin trick e a prova "
                                 "e' o casal bebendo"))
@@ -1189,7 +1278,13 @@ def _wf4_copo(spec, blocos, achados):
         achados.append(("ERRO", "WF4: o copo sorteado (%r) nao chega a' IMAGE "
                                 "02 — eixo de painel que nao muda o video"
                         % spec["copo"]["id"]))
-    if "neither one drinks from it" not in t2:
+    # ⛔ A REGRA E' "O GOLE E' PROIBIDO EXPLICITAMENTE", e a REDACAO segue quantas
+    # pessoas seguram copo. Com o MODO RECEITA desligado sao dois (`neither
+    # one`); ligado, so' ELA (`never drinks from it`). Cobrar o literal de dois
+    # no estado de um seria a lente exigindo uma frase que mente — e ela
+    # reprovou 200 de 200 assim antes desta correcao.
+    if not any(x in t2 for x in ("neither one drinks from it",
+                                 "never drinks from it")):
         achados.append(("ERRO", "WF4: o TAKE 02 nao proibe o gole — sem a "
                                 "proibicao explicita o gerador poe o copo na "
                                 "boca no meio da fala"))
@@ -1313,6 +1408,56 @@ def _wf9_contrato16(spec, blocos, achados):
     sc.lint_copy16(sys.modules[__name__], spec, achados, isca_absurda=False)
 
 
+def _wf11_modo_receita(spec, blocos, achados):
+    """WF11 — o MODO RECEITA muda o quadro, e a caixa NUNCA molha.
+
+    ⛔ A lente cobra os DOIS estados, que e' o unico jeito de um toggle nao
+    virar forma sem funcao. Este repo ja' pagou o botao aceso com sorteio igual
+    tres vezes.
+
+    ⛔⛔ E o controle central e' o PAPELAO NA AGUA. Eles estao sentados com a
+    agua no peito; a caixa de bicarbonato e' de PAPELAO e a tigela tem cubos que
+    boiariam. Por isso as duas ficam na BORDA, secas, e os bracos dele saem da
+    agua. E' a licao paga no FIGHT 16, onde o primeiro render pos o homem com a
+    agua no peito segurando uma caixa de papelao — e nenhuma lente pegou,
+    porque nenhuma cruzava OBJETO com LUGAR.
+    """
+    i2, t2 = blocos["IMAGE 02/02"], blocos["TAKE 02/02"]
+    if not spec.get("receita"):
+        # ⛔ desligado, a receita NAO pode vazar para o quadro
+        for pedaco, rot in (("cubes of set amber gelatin", "a tigela"),
+                            ("box of baking soda", "a caixa"),
+                            ("turning the spoon", "ele mexendo")):
+            if pedaco in i2:
+                achados.append(("ERRO", "WF11: %s aparece com o MODO RECEITA "
+                                        "DESLIGADO — o toggle nao esta' "
+                                        "mudando nada" % rot))
+        return
+    for pedaco, rot in (("cubes of set amber gelatin", "a tigela de cubos"),
+                        ("box of baking soda", "a caixa de bicarbonato"),
+                        ("turning the spoon in it", "ele MEXENDO"),
+                        ("out of the water and dry", "a borda SECA"),
+                        ("arms are clear of the water", "os bracos fora d'agua")):
+        if pedaco not in i2:
+            achados.append(("ERRO", "WF11: a IMAGE 02 sem %s — o modo esta' "
+                                    "ligado e o quadro nao mostra a receita"
+                            % rot))
+    if WF_RECEITA_TAKE not in t2:
+        achados.append(("ERRO", "WF11: o TAKE 02 sem a coreografia da colher e "
+                                "a trava da borda — objeto que pode ser "
+                                "levantado entra na agua no movimento"))
+    # ⛔ ele nao pode segurar copo E colher: sao duas agendas para duas maos, e
+    # o gerador resolve desenhando a terceira.
+    if "Each of them is holding" in i2:
+        achados.append(("ERRO", "WF11: o modo esta' ligado e a IMAGE 02 ainda "
+                                "poe copo nas maos dos DOIS — ele esta' "
+                                "mexendo a tigela com as duas"))
+    # ⛔ e ELA continua com o copo: a bebida E' o gelatin trick e nao pode sumir
+    if spec["copo"]["img"] not in i2:
+        achados.append(("ERRO", "WF11: o copo sorteado sumiu do quadro — com o "
+                                "modo ligado ele fica NA MAO DELA"))
+
+
 def lint(spec, blocos):
     """⚠️ Lint PROPRIO, nao `sc.lint_curto`. Aquele e' da maquinaria de colapso
     5->3 e pede `base` e `mapa`, que este motor nao tem: ele nao deriva de motor
@@ -1326,7 +1471,8 @@ def lint(spec, blocos):
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_wf1_ela_muda, _wf2_inversao, _wf3_ancora, _wf4_copo,
               _wf5_sem_texto, _wf6_sem_prop, _wf7_orcamento, _wf8_etnia,
-              _wf9_contrato16, _wf10_deitico_orfao):
+              _wf9_contrato16, _wf10_deitico_orfao,
+              _wf11_modo_receita):
         f(spec, blocos, ach)
     return ach
 

@@ -140,7 +140,14 @@ class App(tk.Tk):
         # `MODO_FORTE` (homem musculoso). Ordem do operador, 2026-08-05.
         # ⛔ Guardados num dicionario e nao em dois atributos: um terceiro modo
         # amanha nao pode custar mais um par de `if` espalhado pela classe.
-        self.modos = [m for m in ("bela", "forte")
+        # ⭐ 2026-08-10: o TERCEIRO modo, e ele NAO e' de REF — e' de CENA.
+        # `MODO_RECEITA` (WIFE 16) poe a tigela de cubos e a caixa de
+        # bicarbonato na borda da agua e o homem MEXENDO. O comentario acima
+        # ja' previa isto: "um terceiro modo amanha nao pode custar mais um
+        # par de `if` espalhado pela classe" — e nao custou, so' entrou na
+        # tupla. ⚠️ ADITIVO: motor que nao declara a flag nao ganha botao, e
+        # por isso os outros 33 nao mudam de comportamento.
+        self.modos = [m for m in ("bela", "forte", "receita")
                       if getattr(motor, "MODO_%s" % m.upper(), False)]
         # ⭐ 5o contrato aditivo (2026-08-10): MODOS_DEFAULT — quais modos
         # nascem LIGADOS. Ordem do operador para o GOOD 16: *"toggle marcado
@@ -297,10 +304,14 @@ class App(tk.Tk):
             tk.Label(cx, text="narra", font=F_SMALL, bg=BG,
                      fg=MUTED).pack(side="right", padx=(0, 6))
 
-        # ⭐⭐ OS TOGGLES DE REF — so' os que o motor declara.
+        # ⭐⭐ OS TOGGLES — so' os que o motor declara.
+        # ⚠️ O texto NAO e' mais `ref <modo>` para todos: `bela` e `forte`
+        # trocam a PESSOA (sao modos de REF), mas `receita` troca a CENA. Um
+        # botao escrito "ref receita" prometeria trocar alguem.
         self.b_modo = {}
         for _m in reversed(self.modos):
-            b = tk.Button(cx, text="ref %s" % _m, font=F_SMALL, relief="flat",
+            _txt = _m if _m in self.MODOS_DE_CENA else "ref %s" % _m
+            b = tk.Button(cx, text=_txt, font=F_SMALL, relief="flat",
                           bd=0, cursor="hand2", padx=12, pady=5,
                           command=lambda k=_m: self.alternar_modo(k))
             b.pack(side="right", padx=(0, 4))
@@ -607,8 +618,14 @@ class App(tk.Tk):
             t["sexo"] = self.sexo_travado
         # ⚠️ Os modos entram por ULTIMO e NAO sobrescrevem o cadeado de `ref`:
         # REF travada na tela e' mais especifica que "uma bela qualquer".
+        # ⛔⛔ O CADEADO DE `ref` SO' DESLIGA OS MODOS DE PESSOA. `bela` e
+        # `forte` trocam quem aparece, entao uma REF travada na tela e' mais
+        # especifica que "uma bela qualquer" e vence. Um modo de CENA nao
+        # disputa com o cadeado: travar o homem e perder a tigela na borda
+        # seria o botao aceso com o video sem a receita — forma sem funcao,
+        # e silenciosa.
         for _m, _on in self.modo_on.items():
-            if _on and "ref" not in t:
+            if _on and ("ref" not in t or _m in self.MODOS_DE_CENA):
                 t[_m] = True
         return t
 
@@ -783,9 +800,16 @@ class App(tk.Tk):
                         activebackground=ACCENT_D if ativo else LINE,
                         activeforeground="#ffffff")
 
+    # ⛔ Modos que mexem na CENA, nao na pessoa. Dois efeitos: o botao nao
+    # diz `ref`, e o cadeado de REF NAO os desliga (ver `travas()`).
+    MODOS_DE_CENA = ("receita",)
+
     ROTULO_MODO = {
         "bela": "super model, corpo escultural, pouca roupa",
         "forte": "homem forte e musculoso",
+        # ⚠️ este descreve CENA, nao pessoa — e o rotulo diz isso, para o
+        # operador nao esperar que ele troque alguem.
+        "receita": "a receita na borda: tigela, caixa e ele mexendo",
     }
 
     def alternar_modo(self, chave):

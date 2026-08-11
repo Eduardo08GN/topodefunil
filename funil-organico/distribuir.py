@@ -96,7 +96,9 @@ ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSU
          "GOOD-16",
          # + 2026-08-10: o ESCANDALO-16, ao entregar a bancada do preparo
          # no take 2. Terceiro do dia que estava fora desta lista.
-         "ESCANDALO-16"]
+         "ESCANDALO-16",
+         # + 2026-08-10: o WIFE-16, ao entregar o MODO RECEITA.
+         "WIFE-16"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)
