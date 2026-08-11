@@ -188,7 +188,9 @@ BO_TRIO = (
     "knees up. On frame-left sits a %d-year-old %s woman, %s, %s, wearing %s; "
     "both her hands are closed around %s, held in her lap. On frame-right sits "
     "a %d-year-old %s woman, %s, %s, wearing %s; her right hand is closed "
-    "around %s, held upright in her lap. Both objects are fully in frame and "
+    "around %s, held upright in her lap. She is smiling, pleased and openly "
+    "happy, her whole face lit up as she looks down at what she is holding. "
+    "Both objects are fully in frame and "
     "neither touches either woman's body. Standing behind them and leaning "
     "forward between their shoulders is %s. Her right arm reaches down between "
     "them and her index finger points at the piece in the left woman's lap. "
@@ -2873,9 +2875,22 @@ def montar(spec):
         # ⛔ Tres pessoas, tres travas. A que fala e' a UNICA que se move, e o
         # que se move nela e' so' a boca: o braco estendido e o dedo ficam
         # exatamente onde estao. Se o dedo migrar, a comparacao troca de lado.
+        # ⭐⭐ 2026-08-10 — A DA DIREITA SORRI, e o sorriso e' obrigatorio.
+        # Ordem do operador lendo um render: *"a menina que esta' segurando o
+        # que representa o Johnson saudavel sempre deve estar sorrindo e
+        # feliz"*. Sem isso o Veo devolvia as duas com a mesma cara neutra, e a
+        # comparacao perdia metade da forca: o lado bom precisa PARECER o lado
+        # bom, senao sao so' dois objetos diferentes no colo de duas pessoas.
+        # ⚠️ Entra na IMAGE (BO_TRIO) E aqui: sem a repeticao no TAKE a
+        # animacao relaxa o rosto dela ao longo dos 8 segundos.
+        # ⛔ Sorriso, nunca risada — e ela continua MUDA. Verbo de riso na
+        # direcao visual faz o Veo sintetizar som, e ai' o som contamina os
+        # outros rostos (a licao do FLAGRANTE 16, mesmo dia).
         ("The two seated women stay exactly as they are, each holding her own "
          "piece in her lap at the same height, same size, same shape, same "
-         "colour, and neither sets anything down. The woman standing behind "
+         "colour, and neither sets anything down. The woman on frame-right "
+         "keeps smiling the whole time, happy and pleased, her expression "
+         "never going flat, and she makes no sound. The woman standing behind "
          "them keeps her arm reaching down between them and her index finger "
          "pointing at the same piece for the whole shot."),
         # ⭐⭐ O TAKE 2 ANIMA UM QUADRO PARADO, e e' isso mesmo. Ela segura o
