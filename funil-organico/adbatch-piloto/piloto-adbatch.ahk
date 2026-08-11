@@ -1332,20 +1332,45 @@ ajuda(inicial := false) {
 
     lig := (IniRead(INI, "config", "clique_no_icone", "1") = "0") ? "DESLIGADO" : "ligado"
 
-    est := escurecerUI(g.AddEdit("w" LARG_UI " r7 ReadOnly -E0x200 -Wrap +HScroll" fundoUI(),
-             "monitores .......... " mons
+    ; ⛔⛔ O CARIMBO DA BUILD, e ele nasceu de um custo real: em 2026-08-11 o
+    ; operador reportou tres vezes que um conserto "nao funcionava", e nas tres a
+    ; correcao SIMPLESMENTE NAO ESTAVA RODANDO — ele tinha uma instancia antiga
+    ; de pe'. Um programa residente, que ele reinicia varias vezes ao dia, tem de
+    ; conseguir responder sozinho "qual versao sou eu". Sem isto, cada relato de
+    ; falha custa uma investigacao inteira antes de descobrir que o codigo novo
+    ; nunca subiu.
+    ; ⚠️ A data vem do ARQUIVO EM EXECUCAO (`A_ScriptFullPath`), nao de uma
+    ; constante que eu teria de lembrar de atualizar — constante esquecida mente
+    ; com mais confianca do que nao ter carimbo nenhum.
+    carimbo := "?"
+    try {
+        cf := FileGetTime(A_ScriptFullPath, "M")
+        carimbo := FormatTime(cf, "dd/MM/yyyy HH:mm")
+    }
+    est := escurecerUI(g.AddEdit("w" LARG_UI " r8 ReadOnly -E0x200 -Wrap +HScroll" fundoUI(),
+          "esta build .......... " carimbo
+        . "  ·  " (A_IsCompiled ? "executavel" : "script .ahk")
+        . "`nmonitores .......... " mons
         . "`nbancada vai para ... AdBatch no monitor " md[1] " · dashboard no monitor " md[2]
         . "`nabas por bancada ... " nAd " no AdBatch + " nDa " no dashboard + 1 Montador"
         . "`ncalibracao ......... " cal
         . "`nbancadas montadas .. " bnc
         . "`nclique no icone .... " lig " (levanta a bancada ao clicar no icone da sessao)"
+        . "`ninicia com Windows . " (iniciaComWindows() ? "sim" : "nao")
         . "`narquivo ............ " INI))
 
     fonteUI(g)
     ; ⭐ na abertura, quem nao quiser a tela desliga aqui mesmo. Caixa de "nao
     ; mostrar de novo" que obriga a caçar a opcao noutro lugar nao e' escolha.
+    ; ⭐ As duas caixas ficam JUNTAS e sempre visiveis, na abertura e no F1.
+    ; Comportamento que age sozinho — subir com o Windows, levantar a bancada ao
+    ; clicar — tem de poder ser desligado na mesma tela onde e' anunciado.
+    cbIni := g.AddCheckbox("w" LARG_UI " y+14",
+                           "iniciar junto com o Windows (fica no system tray)")
+    cbIni.Value := iniciaComWindows()
+    cbIni.OnEvent("Click", (*) => ligarInicioComWindows(cbIni.Value))
     if inicial {
-        cb := g.AddCheckbox("w" LARG_UI " y+14",
+        cb := g.AddCheckbox("w" LARG_UI " y+6",
                             "nao mostrar esta tela quando o script iniciar "
                             "(o F1 continua abrindo)")
         cb.Value := (IniRead(INI, "config", "tela_inicial", "1") = "0")
@@ -1370,6 +1395,45 @@ ajuda(inicial := false) {
 ; ⭐ O MENU DA BANDEJA repete os mesmos comandos. Atalho serve a quem ja' sabe;
 ; menu serve a quem esta' descobrindo — e um dos dois some quando o operador
 ; passa duas semanas longe do script.
+; =============================================================================
+;  ⭐⭐ INICIAR COM O WINDOWS (2026-08-11)
+; =============================================================================
+; Ordem do operador: *"deixe sempre o terminator exe rodando de background no
+; system tray"*.
+;
+; ⛔ Atalho na pasta Inicializar, e NAO chave de registro em `Run`. Sao
+; equivalentes para o Windows, mas nao para o operador: a pasta ele ABRE, VE' e
+; APAGA sozinho quando quiser. Registro exige que ele me chame de volta — e
+; automacao que so' o autor sabe desligar e' automacao que assusta.
+;
+; ⚠️ O atalho aponta para o .EXE quando ele existe ao lado, mesmo que quem esteja
+; rodando agora seja o .ahk: o que ele pediu para ficar residente foi o
+; executavel, e o atalho descreve o FUTURO, nao o processo atual.
+atalhoDoInicio() {
+    return A_Startup "\Video Terminator.lnk"
+}
+
+alvoDoInicio() {
+    exe := A_ScriptDir "\Video Terminator.exe"
+    return FileExist(exe) ? exe : A_ScriptFullPath
+}
+
+iniciaComWindows() {
+    return FileExist(atalhoDoInicio()) ? true : false
+}
+
+ligarInicioComWindows(ligar) {
+    lnk := atalhoDoInicio()
+    if ligar {
+        try FileCreateShortcut(alvoDoInicio(), lnk, A_ScriptDir, ,
+                               "Video Terminator by Eddie")
+        catch as e
+            return MsgBox("nao consegui criar o atalho:`n" e.Message, APP, 16)
+    } else {
+        try FileDelete lnk
+    }
+}
+
 montarBandeja() {
     A_TrayMenu.Delete()
     A_TrayMenu.Add("Ajuda  (F1)",              (*) => ajuda())
@@ -1382,6 +1446,11 @@ montarBandeja() {
     A_TrayMenu.Add("Calibrar  (F9)",           (*) => calibrar())
     A_TrayMenu.Add()
     A_TrayMenu.Add("Log  (F12)",               (*) => mostrarLog())
+    A_TrayMenu.Add()
+    A_TrayMenu.Add("Iniciar com o Windows",    (*) => (
+        ligarInicioComWindows(!iniciaComWindows()), montarBandeja()))
+    if iniciaComWindows()
+        A_TrayMenu.Check("Iniciar com o Windows")
     A_TrayMenu.Add("Sair",                     (*) => ExitApp())
     A_TrayMenu.Default := "Ajuda  (F1)"
     A_IconTip := APP " — F1 abre a ajuda"

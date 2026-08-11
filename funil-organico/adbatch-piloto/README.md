@@ -537,3 +537,38 @@ produto falha. Agora o teste **reproduz o cenario dele**: uma janela intrusa
 cobrindo a irma, e a conferencia e' a ORDEM Z medida antes e depois (irma 3 -> 2,
 intrusa 1 -> 3), mais o foco continuar na janela clicada e a irma nao sair do
 lugar. 20 de 20.
+
+### ⛔⛔ O CARIMBO DA BUILD — o conserto que nao estava rodando (2026-08-11)
+
+Tres vezes no mesmo dia o operador reportou que um conserto *"nao funciona"*, e
+nas tres a correcao **simplesmente nao estava em execucao** — ele tinha uma
+instancia antiga de pe'. O ultimo caso, medido: o `.ahk` rodando desde **17:20**,
+a correcao gravada **17:40**, o clique dele **17:43**.
+
+⭐ Um programa residente, reiniciado varias vezes ao dia, tem de responder
+sozinho **"qual versao sou eu"**. A tela do F1 abre com:
+
+```
+esta build .......... 11/08/2026 17:48  ·  executavel
+```
+
+⚠️ A data vem do **arquivo em execucao** (`A_ScriptFullPath`), nao de uma
+constante que eu teria de lembrar de atualizar — constante esquecida mente com
+mais confianca do que nao ter carimbo nenhum.
+
+### ⭐ Sempre no system tray
+
+Ordem: *"deixe sempre o terminator exe rodando de background no system tray"*.
+
+⛔ **Atalho na pasta Inicializar, nao chave de registro em `Run`.** Sao
+equivalentes para o Windows e nao para o operador: a pasta ele abre, ve' e apaga
+sozinho. Automacao que so' o autor sabe desligar e' automacao que assusta.
+
+O atalho aponta para o **.exe** mesmo quando quem roda e' o `.ahk` — o que ele
+pediu para ficar residente foi o executavel, e o atalho descreve o futuro, nao o
+processo atual. Ligavel/desligavel na propria tela de abertura e no menu da
+bandeja (com marca de check).
+
+⚠️ **Um dono por vez.** O `.exe` e o `.ahk` sao o mesmo programa e disputam os
+mesmos atalhos. A instancia antiga do `.ahk` foi encerrada nesta entrega, e o
+atalho de inicializacao aponta so' para o exe.
