@@ -295,6 +295,9 @@ class App(tk.Tk):
         # fila
         sec_fila = Secao(corpo, "Fila")
         sec_fila.grid(row=0, column=0, sticky="nsew", padx=(0, 12))
+        # ⭐ guarda a secao: o titulo dela passa a carregar o CONTADOR, que e'
+        # o unico numero que responde "quanto falta" de longe.
+        self.sec_fila = sec_fila
         self.lst_fila = tk.Listbox(sec_fila, bg=SURFACE, fg=INK, relief="flat",
                                    font=FT, highlightthickness=0, bd=0,
                                    selectbackground=SURFACE2, activestyle="none")
@@ -483,7 +486,40 @@ class App(tk.Tk):
                           'Quem edita esses e o Veo Editor v1.2 —',
                           'abra ele. Qualquer OUTRO .zip que cair',
                           'no Downloads esta esteira pega sozinha.']
-        self._set_lista("fila", self.lst_fila, s["pendentes"], vazio_fila)
+        # ⭐⭐ A FILA PASSA A MOSTRAR O QUE ESTA CHEGANDO, e nao so' o que ja'
+        # entrou (2026-08-11). Ordem do operador: *"quero que essa interface
+        # indique que esta na fila pra eu ter pelo menos um feedback"*.
+        #
+        # ⛔ O defeito nao era falta de painel — era o painel mostrar a coisa
+        # ERRADA. A fila esvazia num instante (o worker pega assim que entra),
+        # entao `pendentes` fica quase sempre vazio MESMO COM TRABALHO
+        # CHEGANDO. O que enche a janela de espera dele e' o `chegando`: o zip
+        # baixando, esperando o tamanho estabilizar. Esse estado existia no
+        # ESTADO e nunca aparecia nesta lista.
+        # ⚠️ A ORDEM E' A CRONOLOGICA — o que esta' sendo editado, o que vem a
+        # seguir, e por ultimo o que nem entrou ainda. A primeira versao punha o
+        # que esta' BAIXANDO acima da fila, e o teste pegou: uma lista lida de
+        # cima para baixo tem de ser a ordem em que as coisas vao acontecer,
+        # senao o item "1." aparece embaixo de algo que sera' processado depois.
+        _cheg = s.get("chegando") or []
+        _pend = list(s["pendentes"])
+        _linhas = []
+        if s["atual"]:
+            _linhas.append(f"[editando]  {s['atual']['zip']}")
+        for _i, _p in enumerate(_pend, 1):
+            _linhas.append(f"{_i}.  {_p}")
+        for _c in _cheg:
+            _linhas.append(f"[baixando]  {_c}")
+
+        # ⚠️ o contador soma os TRES estados. Contar so' a fila diria "0" com
+        # cinco zips em pleno voo — que e' exatamente a tela que ele reclamou.
+        _falta = len(_cheg) + len(_pend) + (1 if s["atual"] else 0)
+        try:
+            self.sec_fila.titulo.configure(
+                text=("FILA" if not _falta else f"FILA  —  {_falta} NA ESTEIRA"))
+        except Exception:
+            pass
+        self._set_lista("fila", self.lst_fila, _linhas, vazio_fila)
 
         # ⭐ O mascote acende em TRES estados, nao so' no processamento: o zip
         # visto e estabilizando, o enfileirado e o em edicao. Sem os dois

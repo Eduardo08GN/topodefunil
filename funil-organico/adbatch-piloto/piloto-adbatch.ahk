@@ -1082,6 +1082,39 @@ prepararJanela(hwnd) {
         throw Error("a janela esta' " w "x" h " e a calibracao foi feita em "
                     cw "x" ch ". Os cliques cairiam fora do alvo. "
                     "Maximize a janela nesta mesma tela, ou rode o F9 aqui.")
+
+    ; ⛔⛔ TAMANHO IGUAL NAO E' TELA IGUAL. Medido em 2026-08-11, depois de
+    ; o operador ver o ponteiro errar numa janela e acertar noutra: as janelas do
+    ; Dolphin mostravam a BARRA DE FAVORITOS e a do Chrome principal nao, e isso
+    ; empurra a pagina inteira 34px para baixo. As duas janelas tinham EXATAMENTE
+    ; 1936x1048 — a trava de geometria passava, e todo clique caia 34px fora, em
+    ; silencio, gastando credito.
+    ;
+    ; ⭐ O ponto do `Gerar` distingue sozinho: e' um botao BRANCO na tela certa
+    ; e fundo de pagina na errada. Medido: (255,255,255) contra (14,14,14).
+    ; ⚠️ Tolerancia larga (80 por canal): o que se quer separar sao dois
+    ; extremos, e apertar isso transformaria um realce de foco em falso alarme.
+    cg := IniRead(INI, "pontos", "cor_gerar", "")
+    if (cg != "") {
+        try {
+            pg := lerPonto("cr_gerar")
+            atual := PixelGetColor(pg.x, pg.y)
+            d := 0
+            loop 3 {
+                i := (A_Index - 1) * 8
+                d := Max(d, Abs(((atual >> i) & 0xFF) - ((Integer(cg) >> i) & 0xFF)))
+            }
+            if (d > 80)
+                throw Error("a tela nao esta' igual a' da calibracao: no ponto do "
+                            "botao Gerar eu esperava a cor " Format("0x{:06X}", Integer(cg))
+                            " e encontrei " Format("0x{:06X}", atual) ".`n`n"
+                            "A causa mais comum e' a BARRA DE FAVORITOS: com ela "
+                            "a pagina desce ~34px, e a janela continua do mesmo "
+                            "tamanho — os cliques cairiam todos fora.`n`n"
+                            "Deixe as janelas iguais (barra em todas ou em "
+                            "nenhuma) e rode o F9.")
+        }
+    }
 }
 
 ; =============================================================================
@@ -2338,6 +2371,27 @@ calibrarMiolo() {
     p := lerPonto("cr_slot1")
     cor := PixelGetColor(p.x, p.y)
     IniWrite cor, INI, "pontos", "cor_vazio"
+
+    ; ⛔⛔ A COR DO PONTO DO **GERAR** — a trava que faltava, e que so'
+    ; existe porque o operador viu o ponteiro errar o alvo numa janela e acertar
+    ; noutra (2026-08-11). Medido nas capturas das janelas dele:
+    ;     Dolphin (onde ele calibrou) .... logo do AdBatch em y=151
+    ;     Chrome principal ............... logo do AdBatch em y=117
+    ; DIFERENCA DE 34px, porque as janelas do Dolphin mostram a BARRA DE
+    ; FAVORITOS e a do Chrome principal nao. A barra empurra a pagina inteira
+    ; para baixo.
+    ;
+    ; ⛔ E a trava de geometria NAO PEGA ISSO: as duas janelas tem exatamente
+    ; o mesmo tamanho (1936x1048). Tamanho igual, conteudo deslocado — e todo
+    ; clique cai 34px fora, em silencio, gastando credito.
+    ;
+    ; ⭐ O ponto do `Gerar` distingue os dois casos sozinho: e' um botao BRANCO
+    ; na janela certa e fundo de pagina na errada. Medido: (255,255,255) contra
+    ; (14,14,14).
+    try {
+        pg := lerPonto("cr_gerar")
+        IniWrite PixelGetColor(pg.x, pg.y), INI, "pontos", "cor_gerar"
+    }
 
     ; ⛔⛔ GRAVA A GEOMETRIA DA JANELA CALIBRADA. Sem isto o `prepararJanela`
     ; nao tem com o que comparar, e o script poderia rodar numa janela de

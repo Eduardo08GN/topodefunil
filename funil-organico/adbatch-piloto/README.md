@@ -888,3 +888,35 @@ janela 1 da Neusa estar empilhada no vertical com a irma.
 Medido: 10/10 no teste do monitor (com o INI quebrado dele reproduzido, o
 conserto, a idempotencia e o caso "os pontos no retrato") · 5/5 no aviso ·
 regressao: 0 controles fora, chrome 6/6, teclas 19/19, worker 8/8, sequencial 8/8.
+
+### ⛔⛔ Tamanho igual nao e' tela igual (2026-08-11)
+
+*"Investigar o porque que tem janela que ele esta errando o alvo e janela que
+esta acertando."*
+
+Medido nas capturas das janelas dele, pelo logo do AdBatch:
+
+| janela | logo em |
+|---|---|
+| Dolphin (as tres) | y = **151** |
+| Chrome principal | y = **117** |
+
+**34 pixels.** A causa: as janelas do Dolphin mostravam a **barra de favoritos** e
+a do Chrome principal nao. A barra empurra a pagina inteira para baixo. Como a
+calibracao foi feita numa janela do Dolphin, no Chrome o botao `Gerar` estava em
+769 e o piloto clicava em 803.
+
+⛔ **E a trava de geometria nao pegava**: as duas janelas tinham exatamente
+`1936x1048`. Tamanho igual, conteudo deslocado — o pior tipo de erro, porque
+passa por todas as conferencias e falha em silencio gastando credito.
+
+⭐ O ponto do botao `Gerar` separa os dois casos sozinho: medido, `(255,255,255)`
+— branco, o botao — na tela certa, e `(14,14,14)` — fundo de pagina — na errada.
+O F9 passou a gravar essa cor (`cor_gerar`) e o `prepararJanela` confere o pixel
+antes de rodar, abortando com o motivo provavel escrito na tela.
+
+⚠️ Tolerancia larga (80 por canal): o que se separa sao dois extremos, e apertar
+isso transformaria um realce de foco em falso alarme.
+
+⚠️ O operador resolveu a causa na raiz tirando a barra do Dolphin — todas as
+janelas ficaram iguais. A trava fica para o dia em que uma delas divergir de novo.
