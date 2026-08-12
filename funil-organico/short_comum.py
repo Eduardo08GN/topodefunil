@@ -868,7 +868,16 @@ INGREDIENTES_16 = re.compile(
     r"\b(pomegranate|collagen|cacao|cocoa|garlic|parsley|cayenne|beet(root)?|"
     r"turmeric|ginger|honey|cinnamon|watermelon|citrulline|arginine|"
     r"maca|ginseng|nettle|celery|spinach|olive oil|coconut oil|flaxseed|"
-    r"peanut butter|aloe|apple cider vinegar|baking soda)\b", re.I)
+    r"peanut butter|aloe|apple cider vinegar|baking soda|"
+    # + 2026-08-12: `lemon` e `lime` FALTAVAM, e o buraco so' apareceu ao
+    # construir o PRATO 16 — cujo angulo nomeia limao na fala. A lista conhecia
+    # `baking soda` e nao conhecia o ingrediente mais comum de receita de
+    # cozinha do repertorio inteiro (CHA, BOTICA e RECEITA todos o mostram em
+    # cena). Qualquer motor podia entrega-lo na fala do CTA e o CT5 aplaudia.
+    # ⚠️ MEDIDO ANTES DE ENTRAR: varredura de 60 sorteios em cada um dos 19
+    # motores de 16s — NENHUM diz `lemon`/`lime` na fala do CTA hoje. A trava
+    # fecha um buraco sem reprovar producao nenhuma que exista.
+    r"lemons?|limes?)\b", re.I)
 
 _RX_SENT = re.compile(r"(?<=[.!?])\s+")
 

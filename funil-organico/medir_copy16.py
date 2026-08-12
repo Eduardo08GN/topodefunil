@@ -62,7 +62,13 @@ MOTORES = ["troca16", "ressurreicao16", "exterior16", "flagrante16",
            # falha, e o operador tirou a clausula de entrega do CTA) —
            # este relatorio continua MEDINDO os dois, e e' de proposito:
            # o motor nao cobra, mas o numero fica visivel aqui.
-           "alfa16"]
+           "alfa16",
+           # + 2026-08-12: o PRATO 16, no commit em que nasce. ⚠️ Ele DESLIGA
+           # o CT2 e o CT5 localmente, os dois por decisao declarada do
+           # operador (ver `DESLIGADAS`) — e este relatorio continua MEDINDO os
+           # dois. E' o unico motor do parque que nomeia ingrediente na fala, e
+           # e' justamente por isso que o numero dele tem de ficar visivel.
+           "prato16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.
@@ -132,6 +138,16 @@ DESLIGADAS = {
     ("alfa16", "CT6"):
         "ordem do operador: o CTA sai sem clausula de entrega. As palavras "
         "liberadas foram para a objecao da cozinha.",
+    ("prato16", "CT2"):
+        "o take 1 e' TESTEMUNHO DE DESCOBERTA, nao enunciado de falha — mesma "
+        "familia do GOOD 16 e do ALFA 16. Desenho do operador.",
+    ("prato16", "CT5"):
+        "ordem do operador (2026-08-12), com as tres opcoes na mesa e o preco "
+        "escrito: a fala NOMEIA gelatina, limao e bicarbonato, como a fonte "
+        "que fez 1.6K comentarios. E' HIPOTESE testada em campo — a receita "
+        "dita torna o pedido crivel e o que a DM vende passa a ser o COMO. Se "
+        "o comentario cair neste angulo contra os outros, a causa candidata "
+        "numero um e' esta. O motor cobra o CONTRARIO na lente PR8.",
 }
 
 
