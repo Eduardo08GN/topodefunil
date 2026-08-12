@@ -20,6 +20,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
 import esteira
+import bandeja
 from pipeline import processar_pasta
 
 VERSAO = "2.0"
@@ -38,52 +39,6 @@ DIM = "#a6b8b6"
 MUT = "#657b7d"
 RED = "#e0524a"
 CONSOLE = "#05080c"
-
-# =============================================================================
-#  ⭐⭐ O WORKER DAS SOBRAS — indicador no cabecalho (2026-08-11)
-# =============================================================================
-# Encomenda do operador: *"quero um feedback visual em ambas as interfaces, do
-# editor e do Video Terminator, do status do worker ativo live"* — e o criterio
-# que ele deu na mensagem seguinte: *"live e funcional"*.
-#
-# ⛔ O editor NAO importa nada do worker e nao sabe onde ele foi instalado: le'
-# um arquivo de estado num ponto de encontro fixo. Acoplar as duas coisas faria
-# um erro no worker derrubar o editor, que e' a ferramenta de trabalho.
-#
-# ⚠️ "LIVE" e' o PULSO ter menos de 3 minutos, nunca "o arquivo existe". O worker
-# bate pulso a cada 45s; um morto pareceria vivo por uma hora se o sinal fosse a
-# passada horaria.
-ESTADO_WORKER = os.path.join(os.environ.get("LOCALAPPDATA", ""),
-                             "MoverSobras", "estado.json")
-
-
-def estado_worker():
-    """(texto, cor) do indicador. Nunca levanta: se qualquer coisa der errado a
-    tela mostra 'sem sinal' em vez de o editor quebrar por causa de um acessorio.
-    """
-    try:
-        import json
-        from datetime import datetime
-        with open(ESTADO_WORKER, encoding="utf-8") as f:
-            e = json.load(f)
-        quando = e.get("batimento") or e.get("atualizado") or ""
-        idade = 9e9
-        if quando:
-            idade = (datetime.now()
-                     - datetime.strptime(quando, "%Y-%m-%d %H:%M:%S")).total_seconds()
-        no_dest = e.get("no_destino") or 0
-        backlog = e.get("backlog_arquivos") or 0
-        if idade >= 180:
-            return ("sobras: worker PARADO  ·  %d esperando" % backlog, RED)
-        if e.get("resultado") == "hd_desconectado":
-            return ("sobras: live, esperando o HD  ·  %d esperando" % backlog, GOLD)
-        cauda = ("%d esperando" % backlog) if backlog else "em dia"
-        return ("sobras: live  ·  %d no estoque  ·  %s" % (no_dest, cauda), AQUA)
-    except FileNotFoundError:
-        return ("sobras: worker nao instalado", MUT)
-    except Exception:
-        return ("sobras: sem sinal", MUT)
-
 
 F = ("Segoe UI", 10)
 FB = ("Segoe UI", 10, "bold")
@@ -252,6 +207,30 @@ class App(tk.Tk):
         self._sync_cfg()
         self.after(300, self._refresh)
 
+        # ⭐⭐ O X VAI PARA A BANDEJA, NAO FECHA (2026-08-11). Encomenda do
+        # operador: *"quero que a interface do editor fique persistente na tela,
+        # ao menos que eu a feche no X, dai ela vai por system tray"*.
+        #
+        # ⚠️ A ESTEIRA CONTINUA RODANDO com a janela escondida — ela vive em
+        # threads proprias, nao no laco da interface. Esconder a janela nao para
+        # o trabalho, e e' por isso que ir para a bandeja faz sentido aqui em vez
+        # de simplesmente minimizar.
+        self._bandeja = None
+        try:
+            self._bandeja = bandeja.Bandeja(
+                f"Veo Editor 2.0 By EDDIE  v{VERSAO}",
+                icone=os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   "editor.ico"),
+                ao_abrir=self._voltar_da_bandeja,
+                ao_sair=self._sair_de_vez)
+        except Exception:
+            self._bandeja = None      # ⛔ bandeja e' conforto; sem ela o editor
+                                      #    continua inteiro. Nunca derruba o app.
+        self.protocol("WM_DELETE_WINDOW", self._para_bandeja)
+        # ⭐ "persistente na tela": fica acima das outras janelas. Se atrapalhar,
+        # e' esta linha que sai.
+        self.attributes("-topmost", True)
+
     # ---------------- layout ----------------
 
     def _montar(self):
@@ -275,14 +254,6 @@ class App(tk.Tk):
         self.lb_n.pack(side="left")
         tk.Label(cont, text=" pronto(s) hoje", bg=BG, fg=DIM, font=F).pack(side="left")
 
-        # ⭐ o indicador do worker fica ABAIXO do contador do dia, no mesmo
-        # canto: e' o segundo numero que ele olha, e nao disputa espaco com o
-        # primeiro. Cor e' o sinal — aqua em dia, dourado esperando o HD,
-        # vermelho parado.
-        self.lb_sobras = tk.Label(head, text="sobras: ...", bg=BG, fg=MUT,
-                                  font=("Consolas", 8), anchor="e")
-        self.lb_sobras.pack(side="right", anchor="ne", padx=(0, 0))
-
         # colunas
         corpo = tk.Frame(self, bg=BG)
         corpo.pack(fill="both", expand=True, padx=20, pady=(12, 0))
@@ -295,9 +266,6 @@ class App(tk.Tk):
         # fila
         sec_fila = Secao(corpo, "Fila")
         sec_fila.grid(row=0, column=0, sticky="nsew", padx=(0, 12))
-        # ⭐ guarda a secao: o titulo dela passa a carregar o CONTADOR, que e'
-        # o unico numero que responde "quanto falta" de longe.
-        self.sec_fila = sec_fila
         self.lst_fila = tk.Listbox(sec_fila, bg=SURFACE, fg=INK, relief="flat",
                                    font=FT, highlightthickness=0, bd=0,
                                    selectbackground=SURFACE2, activestyle="none")
@@ -421,6 +389,33 @@ class App(tk.Tk):
         if not esteira.definir_pasta_vigiada(os.path.normpath(p)):
             messagebox.showerror("Veo Editor 2.0", "Pasta invalida.", parent=self)
 
+    def _para_bandeja(self):
+        """O X esconde; quem fecha de verdade e' o menu da bandeja."""
+        if self._bandeja is None:
+            return self._sair_de_vez()      # sem bandeja, X fecha como antes
+        self._bandeja.mostrar()
+        self.withdraw()
+
+    def _voltar_da_bandeja(self):
+        self.deiconify()
+        self.state("normal")
+        self.lift()
+        self.attributes("-topmost", True)
+        try:
+            self._bandeja.esconder()
+        except Exception:
+            pass
+
+    def _sair_de_vez(self):
+        # ⚠️ tira o icone ANTES de morrer: icone fantasma na bandeja e' o
+        # defeito classico desta API, e vem de nao remover ao sair.
+        try:
+            if self._bandeja:
+                self._bandeja.esconder()
+        except Exception:
+            pass
+        self.destroy()
+
     def _ver(self):
         sel = self.tree.selection()
         if not sel:
@@ -463,14 +458,6 @@ class App(tk.Tk):
         s = esteira.status()
 
         self.lb_watch.configure(text="vigiando:  " + "\n           ".join(s["watch"]))
-        # ⚠️ o indicador entra no refresh QUE JA EXISTE (1,2s). Um laco proprio
-        # so' para ele seria mais um temporizador para manter vivo, e este
-        # arquivo ja' tem tres.
-        try:
-            _txt, _cor = estado_worker()
-            self.lb_sobras.configure(text=_txt, fg=_cor)
-        except Exception:
-            pass
         self.lb_n.configure(text=str(len(s["prontos"])))
 
         vazio_fila = "Nenhum zip aguardando. Baixe um lote no Flow."
@@ -486,40 +473,7 @@ class App(tk.Tk):
                           'Quem edita esses e o Veo Editor v1.2 —',
                           'abra ele. Qualquer OUTRO .zip que cair',
                           'no Downloads esta esteira pega sozinha.']
-        # ⭐⭐ A FILA PASSA A MOSTRAR O QUE ESTA CHEGANDO, e nao so' o que ja'
-        # entrou (2026-08-11). Ordem do operador: *"quero que essa interface
-        # indique que esta na fila pra eu ter pelo menos um feedback"*.
-        #
-        # ⛔ O defeito nao era falta de painel — era o painel mostrar a coisa
-        # ERRADA. A fila esvazia num instante (o worker pega assim que entra),
-        # entao `pendentes` fica quase sempre vazio MESMO COM TRABALHO
-        # CHEGANDO. O que enche a janela de espera dele e' o `chegando`: o zip
-        # baixando, esperando o tamanho estabilizar. Esse estado existia no
-        # ESTADO e nunca aparecia nesta lista.
-        # ⚠️ A ORDEM E' A CRONOLOGICA — o que esta' sendo editado, o que vem a
-        # seguir, e por ultimo o que nem entrou ainda. A primeira versao punha o
-        # que esta' BAIXANDO acima da fila, e o teste pegou: uma lista lida de
-        # cima para baixo tem de ser a ordem em que as coisas vao acontecer,
-        # senao o item "1." aparece embaixo de algo que sera' processado depois.
-        _cheg = s.get("chegando") or []
-        _pend = list(s["pendentes"])
-        _linhas = []
-        if s["atual"]:
-            _linhas.append(f"[editando]  {s['atual']['zip']}")
-        for _i, _p in enumerate(_pend, 1):
-            _linhas.append(f"{_i}.  {_p}")
-        for _c in _cheg:
-            _linhas.append(f"[baixando]  {_c}")
-
-        # ⚠️ o contador soma os TRES estados. Contar so' a fila diria "0" com
-        # cinco zips em pleno voo — que e' exatamente a tela que ele reclamou.
-        _falta = len(_cheg) + len(_pend) + (1 if s["atual"] else 0)
-        try:
-            self.sec_fila.titulo.configure(
-                text=("FILA" if not _falta else f"FILA  —  {_falta} NA ESTEIRA"))
-        except Exception:
-            pass
-        self._set_lista("fila", self.lst_fila, _linhas, vazio_fila)
+        self._set_lista("fila", self.lst_fila, s["pendentes"], vazio_fila)
 
         # ⭐ O mascote acende em TRES estados, nao so' no processamento: o zip
         # visto e estabilizando, o enfileirado e o em edicao. Sem os dois
