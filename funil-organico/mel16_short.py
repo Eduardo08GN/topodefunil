@@ -409,6 +409,165 @@ CORES = [
 
 
 # ===========================================================================
+# ⭐⭐ ACOES — O HOOK DEIXA DE SER FIXO E PASSA A SER SORTEADO (2026-08-12)
+# ===========================================================================
+# ⛔ Ordem do operador: *"uma pool bem generosa de ACOES, cada acao que
+# constituir o take 1 sera sorteada, cada take 1 recebera um hook visual
+# diferente"*. E a fonte do mapeamento foi ele quem definiu: LEITURA OTICA a
+# 1 fps do hook dos DEZENOVE reels da pagina `charlesmonroe60`, baixados um a
+# um. Nenhuma entrada abaixo e' invencao — cada uma foi vista em quadro.
+#
+# ⚠️⚠️ E ISTO DESFAZ O QUE ESTE MOTOR ERA DE MANHA. O `mel16` nasceu hoje com o
+# fio de mel TRAVADO como beat unico, com uma lente (`ME-MEL`) que reprovava
+# qualquer bloco sem ele, e o cabecalho dizia que era isso que o separava do
+# PRATO 16. O operador foi consultado exatamente sobre essa contradicao e
+# decidiu: o recurso entra AQUI e o mel vira UMA das acoes. Consequencia
+# declarada: o par de controle PRATO-vs-MEL deixa de existir — este motor passa
+# a ENGLOBAR o hook do irmao (`colher_ao_lado_do_rosto` e' o hook do PRATO 16).
+#
+# ⛔⛔ CADA ACAO CARREGA OS PROPRIOS PROPS (decisao 3 do operador). Por isso o
+# eixo PRATO saiu do painel: quem define o vasilhame e' a acao. Sortear os dois
+# a' parte entregaria `despeja o mel` com uma jarra na mao — par incoerente que
+# o linter teria de cobrir um a um, quando a fonte do defeito e' o desenho.
+#
+# O CONTRATO DE CADA ENTRADA:
+#   id      — chave do ledger e do painel
+#   curto   — o rotulo em PT que o operador le' antes de gastar credito
+#   img     — o gesto no IMAGE 01. Comeca em `In his ...` e fecha a frase.
+#             `{cor}` e' formatado com a cor sorteada.
+#   take    — a clausula do TAKE 01: o que CONTINUA acontecendo nos 8s. ⚠️ Ela e'
+#             obrigatoria e nunca vazia: num plano de 8 segundos o gerador fecha
+#             qualquer gesto sozinho, e o gesto que ele escolhe e' levar a' boca.
+#   reel    — de qual reel da fonte ela saiu (rastro da leitura otica)
+ACOES = [
+    {"id": "mel_squeeze", "curto": "o fio de mel do squeeze", "reel": "1527794201990448",
+     "img": "In his left hand, held up at chest height, is a wide "
+            "hand-painted ceramic platter piled with cut cubes of {cor} "
+            "gelatin, and his right hand holds a plastic honey squeeze bottle "
+            "upside down above the platter and squeezes it, with a thin "
+            "continuous stream of golden honey running down onto the cubes",
+     "take": "The thin stream of honey keeps running down onto the cubes for "
+             "the whole shot, the platter held up and the bottle squeezing "
+             "above it."},
+    {"id": "mel_colher", "curto": "o mel escorrendo da colher", "reel": "2132567547667680",
+     "img": "In his left hand, held up at chest height, is a wide clear glass "
+            "bowl full of set {cor} gelatin, and his right hand holds a metal "
+            "spoon tipped above it with a thick ribbon of golden honey pouring "
+            "off the spoon down into the bowl",
+     "take": "The ribbon of honey keeps pouring off the spoon into the bowl "
+             "for the whole shot, and both hands stay where they are."},
+    {"id": "honey_dipper", "curto": "o pauzinho de mel pingando", "reel": "1074412501814232",
+     "img": "In his left hand, held up at chest height, is a wide clear glass "
+            "bowl of {cor} gelatin cubes, and his right hand holds a wooden "
+            "honey dipper above it with honey dripping off the grooves in slow "
+            "heavy drops",
+     "take": "The honey keeps dripping off the dipper into the bowl for the "
+             "whole shot, and both hands stay where they are."},
+    {"id": "fatia_do_bloco", "curto": "a fatia cortada do bloco", "reel": "28547318638209693",
+     "img": "In his left hand, held up at chest height, is a wide white "
+            "ceramic plate holding one whole unbroken block of {cor} gelatin, "
+            "and his right hand holds a metal spoon with a thick wobbling "
+            "slice of the same gelatin cut from the block and lifted up beside "
+            "his face",
+     "take": "The slice of gelatin wobbles on the spoon and does not fall, the "
+             "plate held up and the spoon beside his face."},
+    {"id": "colher_no_bloco", "curto": "a colher cortando o bloco", "reel": "996600293373807",
+     "img": "In his left hand, held up at chest height, is a wide white "
+            "ceramic plate holding one whole unbroken block of {cor} gelatin, "
+            "and his right hand pushes the edge of a metal spoon down into the "
+            "side of the block, denting it",
+     "take": "The spoon stays pressed into the side of the block and the "
+             "gelatin trembles around it, and both hands stay where they are."},
+    {"id": "colher_do_pote", "curto": "a colherada tirada do pote", "reel": "1048983841206639",
+     "img": "In his left hand, held up at chest height, is a tall clear glass "
+            "mason jar full of set {cor} gelatin, and his right hand lifts a "
+            "metal spoon straight up out of the open mouth of the jar with a "
+            "wobbling spoonful of the gelatin on it",
+     "take": "The spoonful wobbles above the open jar and does not fall, and "
+             "both hands stay exactly where they are."},
+    {"id": "colher_entrando", "curto": "a colher descendo no pote", "reel": "2705522376512112",
+     "img": "In his left hand, held up at chest height, is a tall clear glass "
+            "mason jar full of set {cor} gelatin, and his right hand lowers an "
+            "empty metal spoon down towards the open mouth of the jar",
+     "take": "The spoon stays lowered at the mouth of the jar without going "
+             "in, and both hands stay exactly where they are."},
+    {"id": "pote_oferecido", "curto": "o pote aberto oferecido", "reel": "1074412501814232",
+     "img": "Held up in both hands at chest height, tilted towards the lens so "
+            "the camera looks down into it, is a tall clear glass mason jar "
+            "filled with {cor} gelatin, the surface catching the light",
+     "take": "He holds the jar tilted towards the lens the whole time and "
+             "never sets it down, and nothing inside it moves."},
+    {"id": "po_caindo", "curto": "o po caindo do sache", "reel": "2052708475444888",
+     "img": "In his right hand, held up above a wide clear glass mixing bowl "
+            "on the counter, is a torn foil gelatin sachet tipped over, with a "
+            "steady fall of fine {cor} gelatin powder pouring out of it down "
+            "into the empty bowl",
+     "take": "The powder keeps pouring out of the sachet down into the bowl "
+             "for the whole shot, and his hand stays exactly where it is."},
+    {"id": "colher_na_lente", "curto": "a colher empurrada na lente", "reel": "37743020455312961",
+     "img": "Pushed right up close to the lens, filling the lower third of the "
+            "picture and sharply in focus, is a metal spoon heaped with "
+            "chopped {cor} gelatin, held in his right hand, with his face "
+            "behind it further back and softer in focus",
+     "take": "He holds the heaped spoon up close to the lens the whole time "
+             "and never brings it to his mouth and never lowers it."},
+    {"id": "cubo_na_colher", "curto": "um cubo so' na colher", "reel": "27866142006375921",
+     "img": "Standing on the counter in front of him is a deep speckled "
+            "stoneware bowl heaped with cut cubes of {cor} gelatin, and his "
+            "right hand holds a metal spoon up beside his face with a single "
+            "{cor} cube resting on it",
+     "take": "The cube on the spoon does not fall and the spoon stays beside "
+             "his face, and the bowl is never picked up."},
+    {"id": "cubo_nos_dedos", "curto": "o cubo entre os dedos", "reel": "795325980305534",
+     "img": "Held up in his left hand at chest height is a wide clear glass "
+            "bowl heaped with cut cubes of {cor} gelatin, and his right hand "
+            "holds one single {cor} cube pinched between finger and thumb, "
+            "raised beside his face and catching the light",
+     "take": "He keeps the single cube pinched up beside his face for the "
+             "whole shot and never brings it to his mouth, and the bowl stays "
+             "held up."},
+    {"id": "cubo_mordido", "curto": "o cubo mordido", "reel": "1595552965442362",
+     "img": "Held up in his left hand at chest height is a wide blue ceramic "
+            "platter with cut cubes of {cor} gelatin laid out in rows, and his "
+            "right hand holds up one single cube of the same gelatin with a "
+            "clean bite taken out of one corner",
+     "take": "He keeps the bitten cube held up beside his face for the whole "
+             "shot and never brings it back to his mouth."},
+    {"id": "cubos_na_palma", "curto": "os cubos na palma da mao", "reel": "1035633969288751",
+     "img": "Held up in his bare left palm at chest height, with no dish under "
+            "them, is a small stack of cut cubes of {cor} gelatin, and his "
+            "right hand holds up a matte black foil sachet beside his face",
+     "take": "The stack of cubes stays balanced on his open palm and does not "
+             "fall, and both hands stay exactly where they are."},
+    {"id": "pote_e_caixa", "curto": "o pote e a caixa erguidos", "reel": "1616177593422219",
+     "img": "Held up beside his face in his left hand is a squat clear glass "
+            "jar of set {cor} gelatin, and held up level with it in his right "
+            "hand, turned to face the lens, is an orange and yellow cardboard "
+            "box of baking soda",
+     "take": "He keeps both the jar and the box held up level beside his face "
+             "for the whole shot and never lowers either one."},
+    # ⛔⛔ A DECIMA OITAVA ACAO EXISTE NA FONTE E FICOU DE FORA, e o tumulo
+    # fica escrito porque divida que some sem dizer por que volta sozinha.
+    # O reel 938604205937192 abre com O COPO PRONTO numa mao e a caixa de
+    # bicarbonato na outra — hook legitimo, e foi lido em quadro.
+    # ⚠️ Mas ele colide de frente com a `ME1`, que e' doutrina DESTE motor e do
+    # irmao: *o prato e' o hook, o copo e' o payoff*. Com o copo ja' em cena no
+    # take 1, o take 2 nao tem mudanca de estado nenhuma para mostrar — os dois
+    # quadros passam a dizer a mesma coisa, e o corte de 8s fica sem funcao.
+    # Medido antes de decidir: a entrada reprovava a ME1 em 32 de 400 sorteios.
+    # ⚠️ E' ALCADA DO OPERADOR reverter: se ele quiser o copo no hook, a ME1 e'
+    # que muda (e o take 2 precisa de outro payoff), nao a lente que se afrouxa
+    # para uma entrada.
+    {"id": "tigela_nas_duas_maos", "curto": "a tigela grande nas duas maos", "reel": "3049690402036783",
+     "img": "Held up in both hands at chest height, wide and close in the "
+            "front of the picture, is a large clear glass bowl heaped to the "
+            "rim with cut cubes of {cor} gelatin, tilted towards the lens",
+     "take": "He holds the bowl up tilted towards the lens the whole time, "
+             "never sets it down, and the cubes inside do not move."},
+]
+
+
+# ===========================================================================
 # OS PROPS FIXOS DA BANCADA
 # ===========================================================================
 # ⛔⛔ A CAIXA DE BICARBONATO E' INVARIANTE DESTE ANGULO, nao eixo 50/50 como no
@@ -426,35 +585,26 @@ CAIXA_BICARBONATO = ("an orange and yellow cardboard box of baking soda")
 # fracao na copy falada). O QUADRO mostra a metade; a boca diz `a lemon`.
 LIMAO = "a lemon cut in half with both halves face up"
 
-# ⭐⭐ O MEL — O BEAT VISUAL DESTE ANGULO, E POR ISSO ELE E' CONSTANTE E NAO EIXO.
-# ⛔ O que separa este motor do PRATO 16 nao e' a cor nem a louca: e' O FIO DE
-# MEL CAINDO sobre os cubos no hook. Sortear o gesto seria sortear o proprio
-# angulo — no PRATO 16 o hook e' a colher com um cubo, aqui e' o mel escorrendo,
-# e um motor com os dois seria dois motores mal feitos.
-# ⚠️ `squeeze bottle` e nao `jar`: o quadro precisa do FIO CONTINUO, e frasco
-# de tampa levantada nao derrama — derrama quem aperta.
-MEL_FRASCO = ("a plastic honey squeeze bottle with an amber-gold body")
-MEL_FIO = ("a thin continuous stream of golden honey running down from the "
-           "nozzle onto the cubes")
+# ⛔⛔ AQUI MORAVAM `MEL_FRASCO`, `MEL_FIO` E O POOL `PRATOS`, e os tres sairam
+# em 2026-08-12 quando o hook virou eixo (`ACOES`).
+#
+# ⭐ Pool orfao NAO FICA DE ENFEITE, e isto e' doutrina do repo, nao arrumacao:
+# o `[ALCANCE]` do autoteste contaria as seis entradas de `PRATOS` como opcao
+# viva, o painel poderia mostrar um eixo que nao chega ao quadro, e o proximo
+# leitor gastaria uma hora entendendo por que trocar o prato nao muda nada.
+#
+# Onde cada um foi parar:
+#   MEL_FRASCO / MEL_FIO — dentro das entradas `mel_squeeze`, `mel_colher` e
+#                          `honey_dipper` do pool `ACOES`. O mel nao sumiu:
+#                          deixou de ser O beat e virou TRES dos dezesseis.
+#   PRATOS ............... dentro de cada acao. Foi decisao do operador que a
+#                          acao carregue os proprios props — prato, tigela,
+#                          pote ou a palma da mao nua, conforme o gesto.
 # ⛔ E o POTE fica na bancada nos DOIS quadros: o mel e' ingrediente em cena, e
 # objeto que aparece so' no segundo quadro le' como coisa trazida durante o
 # corte — num corte de 8 segundos e' onde o espectador menos perdoa.
 POTE_MEL = "a glass jar of honey with a gold lid"
 
-PRATOS = [
-    {"id": "ceramica_creme", "curto": "ceramica creme",
-     "img": "a wide cream ceramic platter"},
-    {"id": "esmalte_azul", "curto": "esmalte azul",
-     "img": "a wide blue-glazed ceramic platter"},
-    {"id": "louca_branca", "curto": "louca branca",
-     "img": "a wide white ironstone platter"},
-    {"id": "gres_pontilhado", "curto": "gres pontilhado",
-     "img": "a wide speckled grey stoneware platter"},
-    {"id": "vidro_grosso", "curto": "vidro grosso",
-     "img": "a wide heavy clear glass platter"},
-    {"id": "esmaltado_borda", "curto": "esmaltado de borda",
-     "img": "a wide enamelled metal platter with a dark rim"},
-]
 
 # ⭐⭐ A TIGELA DO PAYOFF — e ela NAO e' o prato do hook.
 # ⛔ A fonte tem os dois: no hook os cubos estao num PRATO RASO erguido nas
@@ -953,7 +1103,7 @@ def _carregar_ledger():
         return {}
 
 
-EIXOS_LEDGER = ("mundo", "homem", "mulher", "cor", "prato")
+EIXOS_LEDGER = ("mundo", "homem", "mulher", "cor", "acao")
 
 
 def _anotar(ledger, spec):
@@ -1104,8 +1254,14 @@ def sortear(pagina, rng, ledger, travas=None):
 
     cor = (_por_id(CORES, travas["cor"]) if travas.get("cor")
            else _fresco(CORES, hist.get("cor", [])[-3:], rng))
-    prato = (_por_id(PRATOS, travas["prato"]) if travas.get("prato")
-             else _fresco(PRATOS, hist.get("prato", [])[-3:], rng))
+    # ⭐⭐ A ACAO E' O NOVO EIXO DO HOOK, e ela substituiu o PRATO: cada entrada
+    # ja' declara o proprio vasilhame (decisao 3 do operador), entao sortear os
+    # dois seria abrir a porta para `despeja o mel` com uma jarra na mao.
+    # ⚠️ Memoria de 5 no ledger, nao de 3: sao 17 entradas e o hook e' a coisa
+    # mais visivel do video — repetir o gesto em dois videos seguidos do mesmo
+    # lote e' o que o operador enxerga primeiro.
+    acao = (_por_id(ACOES, travas["acao"]) if travas.get("acao")
+            else _fresco(ACOES, hist.get("acao", [])[-5:], rng))
     tigela = (_por_id(TIGELAS, travas["tigela"]) if travas.get("tigela")
               else rng.choice(TIGELAS))
 
@@ -1116,7 +1272,7 @@ def sortear(pagina, rng, ledger, travas=None):
     spec = {
         "pagina": pagina, "etnia": etnia, "bela": bela, "forte": forte,
         "mundo": mundo, "homem": homem, "mulher": mulher,
-        "cor": cor, "prato": prato, "tigela": tigela,
+        "cor": cor, "acao": acao, "tigela": tigela,
         # ⭐ 50/50, e medido como eixo: metade do lote promete tamanho.
         "tamanho": rng.random() < 0.5,
         "regata": rng.choice(regatas),
@@ -1213,14 +1369,13 @@ def montar(spec):
         "IMAGE 01/02: Medium shot at %s. Standing behind %s and filmed from "
         "the waist up is a %d-year-old %s man, %s, %s, %s, wearing %s and a "
         "gold wedding band, talking straight to camera with his eyes wide and "
-        "his mouth open mid-word in delight. In his left hand, held up at "
-        "chest height, is %s piled with cut cubes of %s gelatin, and his right "
-        "hand holds %s upside down above the platter and squeezes it, with %s. "
+        "his mouth open mid-word in delight. %s. "
         "Along the near edge of %s, in front of him, sit %s. He "
         "is the only person in the frame. %s. %s"
         % (m["cen"], m["bancada"], h["idade"], et, h["cabeca"], h["marca"],
-           spec["corpo_h"], spec["regata"], spec["prato"]["img"], c["cubo"],
-           MEL_FRASCO, MEL_FIO, m["bancada"], _bancada(spec),
+           spec["corpo_h"], spec["regata"],
+           spec["acao"]["img"].format(cor=c["cubo"]),
+           m["bancada"], _bancada(spec),
            _cap(m["luz"]), CAUDA))
 
     # --- IMAGE 02 — O PREPARO + O COPO ESTENDIDO --------------------------
@@ -1262,14 +1417,12 @@ def montar(spec):
         # `the wet cedar counter BOARDS`. E' o mesmo defeito que o autoteste do
         # PLACA 16 pegou em 43 de 600 seeds, cometido de novo aqui e pego no
         # primeiro render lido a olho, nao por lente.
-        "talks straight into the lens the whole time and both hands stay "
-        "exactly where they are, the platter held up and the honey bottle "
-        "squeezing above it. The thin stream of honey keeps running down onto "
-        "the cubes for the whole shot and nothing on %s is "
+        "talks straight into the lens the whole time. %s Nothing on %s is "
         "touched, moved or lifted. He stays the only person in the frame "
         "and nothing else changes.\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
-        % (m["bancada"], sonorizar(spec["falas"][0]), m["audio"]))
+        % (spec["acao"]["take"], m["bancada"],
+           sonorizar(spec["falas"][0]), m["audio"]))
 
     # ⛔⛔ E O GOLE NAO ENTRA — decisao 6 do operador, escrita como PROIBICAO no
     # bloco e cobrada pela lente ME7. Sem a frase o Veo termina o gesto: mao
@@ -1306,13 +1459,13 @@ def _me1_prato_e_copo(spec, blocos, achados):
     if "tumbler" in i1 or "glass tumbler" in i1:
         achados.append(("ERRO", "ME1: o copo aparece na cena 1 — e' o payoff, e "
                                 "mostrado antes da promessa ele nao paga nada"))
-    if spec["prato"]["img"] in i2 or "platter" in i2:
+    if "platter" in i2:
         achados.append(("ERRO", "ME1: o prato volta na cena 2 — o prato e' o "
                                 "hook e o copo e' o payoff; os dois no mesmo "
                                 "video dizem que nada mudou no corte"))
-    if spec["prato"]["img"] not in i1:
-        achados.append(("ERRO", "ME1: a cena 1 nao tem o prato sorteado (%r)"
-                        % spec["prato"]["curto"]))
+    if spec["acao"]["img"].format(cor=spec["cor"]["cubo"]) not in i1:
+        achados.append(("ERRO", "ME1: a cena 1 nao tem a acao sorteada (%r)"
+                        % spec["acao"]["curto"]))
     if "tumbler" not in i2:
         achados.append(("ERRO", "ME1: a cena 2 nao tem o copo — e' o objeto "
                                 "que fecha o video"))
@@ -1531,33 +1684,31 @@ def _me9_modos(spec, blocos, achados):
                         % spec["corpo_h"][:40]))
 
 
-def _me_mel(spec, blocos, achados):
-    """⭐⭐ ME-MEL — O FIO DE MEL E' O ANGULO, E ELE SO' EXISTE NO HOOK.
+def _me_acao(spec, blocos, achados):
+    """⭐⭐ ME-ACAO — O HOOK SORTEADO TEM DE CHEGAR AO QUADRO **E** AO TAKE.
 
-    ⛔ Sem esta lente o motor vira um PRATO 16 de regata: o mel e' a UNICA coisa
-    que separa os dois irmaos, e um bloco que o perca continua passando em todas
-    as outras lentes — quadro correto, angulo errado, e ninguem reprova.
-    ⚠️ E ela cobra o FIO, nao so' o frasco: frasco na mao com a mao parada e' um
-    homem segurando uma embalagem. O que faz o frame e' o mel CAINDO.
-    ⛔ E cobra a AUSENCIA no quadro 2: mel escorrendo nos dois quadros diria que
-    nada aconteceu no corte — e' a mesma logica do prato que nao volta (ME1).
+    ⚠️ Esta lente SUBSTITUIU a `ME-MEL` em 2026-08-12, no mesmo dia em que a
+    ME-MEL nasceu. A ME-MEL cobrava UM gesto (o fio de mel); com o hook
+    sorteado, cobrar o mel reprovaria dezesseis das dezessete acoes. O que
+    sobrevive intacto e' a RAZAO dela: sem alguem cobrando o beat, um bloco que
+    o perca continua passando em todas as outras lentes — quadro correto,
+    angulo errado, e ninguem reprova.
+
+    ⛔⛔ E ELA COBRA AS DUAS METADES, porque falham separado:
+      · a IMAGE sem a acao — o hook virou um homem parado segurando algo;
+      · o TAKE sem a clausula — pior, e silencioso: a IMAGE fica certa, o
+        primeiro frame fica certo, e o gerador FECHA o gesto sozinho ao longo
+        dos 8 segundos. O gesto que ele escolhe e' levar a' boca.
     """
-    i1, i2, t1 = (blocos["IMAGE 01/02"], blocos["IMAGE 02/02"],
-                  blocos["TAKE 01/02"])
-    if MEL_FRASCO not in i1:
-        achados.append(("ERRO", "ME-MEL: a cena 1 nao tem o frasco de mel — e' "
-                                "o beat visual deste angulo"))
-    if MEL_FIO not in i1:
-        achados.append(("ERRO", "ME-MEL: a cena 1 tem o frasco mas nao o FIO "
-                                "caindo — frasco parado e' embalagem na mao"))
-    if "honey keeps running" not in t1:
-        achados.append(("ERRO", "ME-MEL: o TAKE 01 nao manda o fio CONTINUAR "
-                                "correndo — num plano de 8s o gerador fecha o "
-                                "gesto e o mel para no meio"))
-    if MEL_FRASCO in i2:
-        achados.append(("ERRO", "ME-MEL: o frasco de mel voltou na cena 2 — o "
-                                "mel e' do hook; repetido, diz que nada mudou "
-                                "no corte"))
+    i1, t1 = blocos["IMAGE 01/02"], blocos["TAKE 01/02"]
+    if spec["acao"]["img"].format(cor=spec["cor"]["cubo"]) not in i1:
+        achados.append(("ERRO", "ME-ACAO: a IMAGE 01 nao carrega a acao "
+                                "sorteada (%r)" % spec["acao"]["curto"]))
+    if spec["acao"]["take"] not in t1:
+        achados.append(("ERRO", "ME-ACAO: o TAKE 01 nao carrega a clausula da "
+                                "acao (%r) — num plano de 8s o gerador fecha o "
+                                "gesto sozinho, e o que ele escolhe e' levar a' "
+                                "boca" % spec["acao"]["curto"]))
 
 
 def _me_tamanho(spec, blocos, achados):
@@ -1641,7 +1792,7 @@ def lint(spec, blocos):
     for f in (_me1_prato_e_copo, _me2_ela_so_no_take2, _me3_continuidade,
               _me4_cor_unica, _me5_orcamento, _me6_etnia, _me7_sem_gole,
               _me_orgao, _me8_receita_na_fala, _me9_modos, _me11_bancada,
-              _me_mel, _me_tamanho, _me10_contrato16):
+              _me_acao, _me_tamanho, _me10_contrato16):
         f(spec, blocos, ach)
     return ach
 
@@ -1655,11 +1806,11 @@ EIXOS_UI = [
     ("homem", "QUEM FALA", "HOMENS", "id"),
     ("mulher", "A ESPOSA", "MULHERES", "id"),
     ("cor", "A COR", "CORES", "curto"),
-    ("prato", "O PRATO", "PRATOS", "curto"),
+    ("acao", "O HOOK", "ACOES", "curto"),
     ("tigela", "A TIGELA", "TIGELAS", "curto"),
 ]
 
-EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "cor", "prato", "tigela"]
+EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "cor", "acao", "tigela"]
 
 TRAVAS_UI = [("familia_mundo", "regiao", ["livre"] + FAMILIAS_MUNDO)]
 
@@ -1683,10 +1834,9 @@ def resumo_pt(spec):
     # operador parar de ler o resumo — e o resumo e' o unico lugar onde ele ve'
     # o video antes de gastar credito.
     return ("16s, DOIS takes, regiao: %s. Take 1 — O MEL: homem %s de %d "
-            "anos de regata (%s), SOZINHO atras da bancada da cozinha de fora, "
-            "segurando o prato de %s cheio de cubos de gelatina %s numa mao e "
-            "o SQUEEZE DE MEL na outra, com o FIO caindo sobre os cubos, olhos "
-            "arregalados; na bancada a caixa de gelatina, o bicarbonato, o "
+            "anos de regata (%s), SOZINHO atras da bancada da cozinha de fora. "
+            "O HOOK SORTEADO: %s, com a gelatina %s; olhos "
+            "arregalados. Na bancada a caixa de gelatina, o bicarbonato, o "
             "limao e o pote de mel. A fala abre na PERGUNTA e NOMEIA os tres "
             "ingredientes. Take 2 — O COPO: o MESMO homem com o copo de "
             "liquido %s na altura do peito e a tigela de %s com os cubos na "
@@ -1694,7 +1844,7 @@ def resumo_pt(spec):
             "olhando o copo. Fecha no CTA, e ele NAO bebe. "
             "Promessa de TAMANHO %s. Modo FORTE %s, modo BELA %s."
             % (m["regiao"], spec["etnia"], spec["homem"]["idade"],
-               spec["regata"], spec["prato"]["curto"], spec["cor"]["curto"],
+               spec["regata"], spec["acao"]["curto"], spec["cor"]["curto"],
                spec["cor"]["curto"], spec["tigela"]["curto"],
                spec["mulher"]["etnia"], spec["mulher"]["idade"],
                "LIGADA" if spec.get("tamanho") else "desligada",
@@ -1919,15 +2069,33 @@ def autoteste(n=400):
     # lente que ninguem sabe se funciona — e estas duas nasceram hoje.
     _s = sortear(pags[0], random.Random(7), {}, {})
     _b = montar(_s)
-    for rotulo, bloco, de, para, chave in (
-            ("o FIO de mel", "IMAGE 01/02", MEL_FIO, "nothing", "ME-MEL"),
-            ("o frasco", "IMAGE 01/02", MEL_FRASCO, "a spoon", "ME-MEL"),
-            ("o fio no TAKE", "TAKE 01/02", "honey keeps running",
-             "honey stops", "ME-MEL")):
+    for rotulo, bloco, de in (
+            ("a acao na IMAGE", "IMAGE 01/02",
+             _s["acao"]["img"].format(cor=_s["cor"]["cubo"])),
+            ("a clausula no TAKE", "TAKE 01/02", _s["acao"]["take"])):
         _bx = dict(_b)
-        _bx[bloco] = _bx[bloco].replace(de, para)
-        if not any(chave in msg for _, msg in lint(_s, _bx)):
-            falhas.append("[%s] a lente nao acusa a falta d%s" % (chave, rotulo))
+        _bx[bloco] = _bx[bloco].replace(de, "he stands there")
+        if not any("ME-ACAO" in msg for _, msg in lint(_s, _bx)):
+            falhas.append("[ME-ACAO] a lente nao acusa a falta d%s" % rotulo)
+
+    # ⛔⛔ E O EIXO TEM DE GIRAR DE VERDADE. Pool generoso que na pratica sorteia
+    # tres gestos e' o mesmo hook repetido com nomes diferentes — e o operador
+    # pediu este eixo exatamente para o contrario disso.
+    _vistas = collections.Counter()
+    for i in range(400):
+        _vistas[sortear(pags[i % len(pags)], random.Random(900 + i), {},
+                        {})["acao"]["id"]] += 1
+    if len(_vistas) < len(ACOES):
+        falhas.append("ACOES: so' %d de %d acoes aparecem em 400 sorteios"
+                      % (len(_vistas), len(ACOES)))
+    # ⚠️ Toda acao tem de trazer as DUAS metades: sem a clausula do TAKE a
+    # IMAGE fica certa e o gerador fecha o gesto sozinho ao longo dos 8s.
+    for _a in ACOES:
+        if not _a.get("take", "").strip():
+            falhas.append("ACOES: %r sem clausula de TAKE" % _a["id"])
+        if "{cor}" not in _a["img"]:
+            falhas.append("ACOES: %r nao usa a cor sorteada — o hook ficaria "
+                          "de uma cor e o copo do take 2 de outra" % _a["id"])
     _sx = dict(_s, tamanho=not _s["tamanho"])
     if not any("ME-TAMANHO" in msg for _, msg in lint(_sx, _b)):
         falhas.append("[ME-TAMANHO] a lente nao acusa a prova do pool errado")
