@@ -144,10 +144,30 @@ vez**; agora derruba **2**.
 | " | " | Carol Whitfield | `carol` | mulher branca |
 | `everydaydigest.site` | `goc65jdh6xw2po2ja3mk99sa` | Yvonne Bradley | `yvonne` | mulher negra |
 | " | " | Hank & Marlene | `hankmarlene` | casal branco |
+| " | " | **Sarah Brown** | `sarah` | mulher branca |
+| `dailyfactreport.site` | `uurhd13s9x1rei59f5gqm3jc` | **Lamont Boyd** | `lamont` | homem negro |
 
 ⚠️ **O pareamento não é aleatório:** cada domínio leva **uma página de avatar
 negro e uma de avatar branco**. Um domínio marcado não apaga um demográfico
 inteiro do funil.
+
+⭐ **Lote 3 — 2026-08-11: +2 páginas, uma em cada domínio.** Ordem do operador:
+*"escolha qualquer uma dos meus domínios, de forma que fique uma em cada
+domínio"*. Sarah foi para `everydaydigest.site` e Lamont para
+`dailyfactreport.site` — e a escolha **não foi sorteio**:
+
+  · ⛔ nenhum dos dois entrou num domínio que já tinha **o mesmo tipo de
+    avatar**. Mulher branca já existe em `dailyvitalreport` (Jennifer) e
+    `thedailyfinding` (Carol); homem negro solo, nos mesmos dois (Reggie,
+    Curtis). Os dois domínios ficaram de fora por isso;
+  · o pareamento negro/branco de cada domínio continua de pé — `everydaydigest`
+    fica 1 negro / 2 brancos e `dailyfactreport` 2 negros / 1 branco, em vez de
+    empilhar o mesmo demográfico num só.
+
+⚠️ As duas nasceram por **cópia literal** da irmã do próprio domínio (Yvonne e
+Denise), com **só o `subid` trocado** — 2 linhas de diferença, medidas. É o
+único jeito de não herdar `subid` alheio nem redesenhar o layout à mão. A
+conferência é do **`subid` renderizado**, nunca do 200.
 
 ⚠️ **Cada bridge tem marca própria** no `<title>` e nas páginas legais — Daily
 Fact Report, Plain Facts Daily, The Daily Finding, Everyday Digest. São cinco
