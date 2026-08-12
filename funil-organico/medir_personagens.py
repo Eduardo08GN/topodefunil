@@ -32,6 +32,7 @@ igual vale para o motor (licoes-de-construcao §linter contra template).
 """
 import argparse
 import ast
+import copy
 import io
 import os
 import re
@@ -140,7 +141,56 @@ def autoteste():
                 print("  AUTOTESTE FALHOU  %-12s nao podia casar %r (casou %r)"
                       % (eixo, frase, achado.group(0)))
                 falhas += 1
+    falhas += _autoteste_leitura()
     print("autoteste do medidor: %s" % ("%d falha(s)" % falhas if falhas else "ok"))
+    return falhas
+
+
+# ⛔⛔ O CONTROLE DA LEITURA, e nao so' dos regexes (2026-08-11). Os controles
+# acima provam que cada EIXO reconhece o que deve; nenhum provava que o pool
+# CHEGA ate' eles. E foi ai' que o medidor cegou: um `"idade": IDADE_MULHER`
+# dentro do `REFS` do trio16 derrubava o `literal_eval`, o `except: continue`
+# engolia o pool inteiro, e trinta mulheres sumiram do gate sem uma linha de
+# aviso. Eixo que nao e' lido nao reprova — e ausencia parece aprovacao.
+_FONTE_CONTROLE = u'''
+IDADE_X = 41
+REFS_X = [
+    {"idade": IDADE_X,
+     "cabeca": "long silver waves worn loose over her shoulders",
+     "marca": "a thin scar through her right eyebrow"},
+    {"idade": 38,
+     "cabeca": "a cropped platinum pixie cut",
+     "marca": "a wide gap between her front teeth"},
+]
+'''
+
+
+def _autoteste_leitura():
+    """Pool com CONSTANTE NOMEADA dentro tem de ser lido, nao descartado."""
+    import tempfile
+    falhas = 0
+    d = tempfile.mkdtemp()
+    cam = os.path.join(d, "_controle_leitura.py")
+    with io.open(cam, "w", encoding="utf-8") as f:
+        f.write(_FONTE_CONTROLE)
+    try:
+        achados = pools_do_arquivo(cam)
+        if "REFS_X" not in achados:
+            print("  AUTOTESTE FALHOU  leitura: pool com constante nomeada "
+                  "(`IDADE_X`) foi DESCARTADO — o gate para de ver o pool "
+                  "inteiro e isso nao aparece como reprovacao")
+            falhas += 1
+        elif len(achados["REFS_X"]) != 2 or \
+                achados["REFS_X"][0].get("idade") != 41:
+            print("  AUTOTESTE FALHOU  leitura: constante nomeada nao foi "
+                  "resolvida no valor certo (%r)" % (achados.get("REFS_X"),))
+            falhas += 1
+    finally:
+        try:
+            os.remove(cam)
+            os.rmdir(d)
+        except OSError:
+            pass
     return falhas
 
 # ⚠️ o sufixo opcional NAO e' enfeite. A v2 deste regex terminava em ")$" e por
@@ -510,10 +560,57 @@ def e_pool_de_gente(entradas):
     return sum(len(t) for t in textos) / float(len(textos)) >= 15
 
 
+def _constantes(arvore):
+    """{NOME: valor} das constantes de modulo que sao literal pura.
+
+    ⛔⛔ POR QUE ISTO EXISTE (2026-08-11). O `literal_eval` explode em QUALQUER
+    nome dentro do pool, e o `except: continue` fazia o pool INTEIRO sumir da
+    medicao — sem aviso, sem contagem, sem linha no relatorio. Ausencia nao e'
+    zero: o gate nao reprova o que ele nao ve'.
+    ⚠️ Achado no dia em que o `trio16_short.py` trocou os 30 `"idade": 22` por
+    `"idade": IDADE_MULHER` (a regra dos 22, ordem do operador). O pool `REFS`
+    dele — trinta mulheres, o eixo que a LEI DO REF vigia — evaporou do gate, e
+    o unico sintoma foi um aviso obliquo de "excecao declarada que nao esta'
+    mais zerada". Sem esse aviso, ninguem teria percebido.
+    """
+    consts = {}
+    for no in arvore.body:
+        if not isinstance(no, ast.Assign):
+            continue
+        for alvo in no.targets:
+            if isinstance(alvo, ast.Name):
+                try:
+                    consts[alvo.id] = ast.literal_eval(no.value)
+                except (ValueError, SyntaxError):
+                    pass
+    return consts
+
+
+def _com_constantes(no, consts):
+    """Avalia o no' trocando NOME por valor. Devolve None se sobrar coisa viva.
+
+    ⚠️ Substitui SO' nome de constante de modulo ja' resolvida — nao executa
+    chamada, nao concatena f-string, nao resolve atributo. O medidor le o
+    arquivo como ARVORE de proposito: importar o motor dispararia efeito.
+    """
+    class _Troca(ast.NodeTransformer):
+        def visit_Name(self, n):
+            if n.id in consts:
+                return ast.copy_location(ast.Constant(consts[n.id]), n)
+            return n
+    try:
+        novo = _Troca().visit(copy.deepcopy(no))
+        ast.fix_missing_locations(novo)
+        return ast.literal_eval(novo)
+    except (ValueError, SyntaxError, TypeError, RecursionError):
+        return None
+
+
 def pools_do_arquivo(caminho):
     """Le o .py como ARVORE, nao importa o modulo — nao dispara efeito nenhum."""
     with io.open(caminho, encoding="utf-8") as f:
         arvore = ast.parse(f.read())
+    consts = _constantes(arvore)
     achados = {}
     for no in arvore.body:
         if not isinstance(no, ast.Assign):
@@ -524,7 +621,7 @@ def pools_do_arquivo(caminho):
             try:
                 valor = ast.literal_eval(no.value)
             except (ValueError, SyntaxError):
-                continue
+                valor = _com_constantes(no.value, consts)
             if isinstance(valor, (list, tuple)) and valor and e_pool_de_gente(valor):
                 achados[alvo.id] = list(valor)
     return achados

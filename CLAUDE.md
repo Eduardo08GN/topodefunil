@@ -50,13 +50,20 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **dezoito agentes**, não mais um. **2 takes de 8s**, destino **AdBatch
-Vertical 2**, ledger próprio cada um:
+com **dezoito agentes nossos**, não mais um. **2 takes de 8s**, destino
+**AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
-`pee16` · `good16` · `bed16` · `fight16` · `alfa16` · (+ `clean_v1_16s`/`clean_v2_16s`, do
-outro autor)
+`pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
+(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 20 no total)
+
+⚠️ A lista dizia **dezoito** contando dezesseis nomes, e faltavam `necrose16` e
+`wife16`. O `wife16` some da conta por engano fácil: o `bed16` nasceu como cópia
+dele e o cabeçalho registra o *"renomeado"* — mas **os dois arquivos existem, os
+dois têm `.exe` e eles divergiram em 1.622 linhas**. São dois motores, não um
+renomeado. Contagem conferida por varredura de `funil-organico/*_short.py`
+(2026-08-11), não a olho.
 
 ⭐ **`bed16` (2026-08-10) — a cama fria e a tigela.** (Nasceu como `wife16` e
 foi renomeado no mesmo dia, por ordem do operador: o que nomeia o ângulo é a
@@ -411,7 +418,7 @@ Inventário atual de domínios e apps:
 - **Investigar uma recusa do Veo (método):** [`funil-organico/RUNBOOK-bisseccao-moderacao.md`](funil-organico/RUNBOOK-bisseccao-moderacao.md) — bissecção com variável única. ⚠️ **Regerar 2× antes de investigar**: a política de conteúdo nocivo tem variância.
 - **Lições de produção Veo (moderação + copy):** [`funil-organico/licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) — playbook das lições pagas em campo; ler antes de gerar lote.
 - ⛔⛔ **Contrato de copy da família 16s:** [`funil-organico/CONTRATO-COPY-16S.md`](funil-organico/CONTRATO-COPY-16S.md) — **ler antes de escrever ou alterar copy de qualquer `*16_short.py`.** Sete travas em `short_comum.lint_copy16`, cobradas por `python funil-organico/medir_copy16.py --gate`. Tem também os quatro achados da revisão adversarial que **não** viraram trava, com o motivo de cada um.
-- ⛔ **Lições de construção — os erros do assistente:** [`funil-organico/licoes-de-construcao.md`](funil-organico/licoes-de-construcao.md) — **ler antes de construir ou alterar agente.** 38 modos de falha já cometidos, com o que impede cada um, e o checklist de entrega. A causa raiz é uma só: *verificar a FORMA e declarar pronto sem verificar a FUNÇÃO*. Corolário: **aceite é MEDIÇÃO, nunca RELATO** — nem meu, nem de subagente. Dois gates: `python funil-organico/medir_personagens.py --gate` (eixo físico zerado = reprovação) e `python funil-organico/medir_contexto_copy.py --gate` (frase que nomeia causa sem dizer o que ela quebra = reprovação — §17, *"tá deixando o viewer sem entender do que se trata"*).
+- ⛔ **Lições de construção — os erros do assistente:** [`funil-organico/licoes-de-construcao.md`](funil-organico/licoes-de-construcao.md) — **ler antes de construir ou alterar agente.** 39 modos de falha já cometidos, com o que impede cada um, e o checklist de entrega. A causa raiz é uma só: *verificar a FORMA e declarar pronto sem verificar a FUNÇÃO*. Corolário: **aceite é MEDIÇÃO, nunca RELATO** — nem meu, nem de subagente. Dois gates: `python funil-organico/medir_personagens.py --gate` (eixo físico zerado = reprovação) e `python funil-organico/medir_contexto_copy.py --gate` (frase que nomeia causa sem dizer o que ela quebra = reprovação — §17, *"tá deixando o viewer sem entender do que se trata"*).
 - **Mapa visual da Tanisha (base do CONSULTORIO):** [`concorrentes/tanisha-mapa-visual.md`](concorrentes/tanisha-mapa-visual.md).
 - `funil-organico/` — doutrina de copy, criativos, arquitetura do funil, runbooks.
 - Bridge pages (código): repo `Eduardo08GN/projetosweb`, pasta `/bridge-pages/bp1`.

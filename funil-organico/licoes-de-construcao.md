@@ -1484,6 +1484,44 @@ morto vira **história datada**, nunca ordem no presente.
 
 ---
 
+## 39. ⛔⛔⛔ AUSÊNCIA NÃO É ZERO — uma constante nomeada apagou 30 mulheres do gate
+
+**Onde:** `medir_personagens.py`, `pools_do_arquivo`. Causado por mim, no mesmo
+dia, ao cumprir a regra dos 22 do `trio16_short.py`.
+
+A ordem do operador foi pôr a idade das personagens no prompt. Fiz o certo em
+código: uma constante, `IDADE_MULHER = 22`, e as 30 entradas do `REFS`
+apontando para ela em vez de repetir o número. Medi o que mudei — 3.200 blocos,
+idade em todos, lint limpo, conferido dentro do `.exe`.
+
+O que eu não medi foi o que **parou de ser medido**. O extrator do gate lê o
+motor como árvore e faz `ast.literal_eval` no pool. `literal_eval` estoura em
+qualquer NOME, e o `except: continue` **descartava o pool inteiro**. Trinta
+mulheres — o pool que a LEI DO REF existe para vigiar — saíram do relatório.
+
+⚠️ **O gate continuou verde.** Não havia linha vermelha, nem contagem menor, nem
+"pool não lido": simplesmente não havia linha. O único sintoma foi um aviso
+oblíquo, de outra lente, dizendo que uma *exceção declarada não estava mais
+zerada* — porque um eixo que não é lido também não é zero.
+
+> **Um gate só reprova o que ele enxerga.** Toda leitura que pode falhar em
+> silêncio (`except: continue`, `try/pass`, glob que não casa, parser que
+> descarta) tem de ter um controle que prove que a leitura ACONTECEU — não
+> apenas que o julgamento está certo depois de ler.
+
+⭐ Os controles do medidor provavam, um por um, que cada eixo reconhece o que
+deve reconhecer. Nenhum provava que o pool chega até o eixo. Ficou o
+`_autoteste_leitura()`: um arquivo sintético com constante nomeada dentro do
+pool, que **falha se o pool for descartado** — e ele foi verificado
+sabotando o extrator de volta ao comportamento antigo.
+
+⛔ E o conserto é no LEITOR, não no motor. A saída preguiçosa era voltar os 30
+literais `22` e perder a fonte única da regra. Medido no repo inteiro: **27
+pools** de lista hoje escapam do `literal_eval` por conterem nome — a maioria
+não é gente, mas a fragilidade valia para todos.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1498,6 +1536,10 @@ morto vira **história datada**, nunca ordem no presente.
 - [ ] **O controle planta o defeito INTEIRO** (§38). Controle que injeta metade e
       empresta a outra metade de uma string de produção morre calado no dia em
       que o operador manda trocar essa string
+- [ ] **Refatorou um pool (constante, comprehension, concatenação)? Rode o gate
+      e confira se o pool AINDA APARECE no relatório** (§39). Ausência não é
+      zero: `literal_eval` estoura em qualquer nome e o `except: continue`
+      apaga o pool inteiro sem uma linha vermelha
 - [ ] **Trocou um objeto? Varra os comentários dele** (§38). Regra de objeto que
       saiu (`UM canudo`, debaixo de uma tigela) é convite para o próximo leitor
       devolver o objeto
