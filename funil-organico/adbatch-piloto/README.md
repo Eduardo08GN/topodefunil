@@ -920,3 +920,26 @@ isso transformaria um realce de foco em falso alarme.
 
 ⚠️ O operador resolveu a causa na raiz tirando a barra do Dolphin — todas as
 janelas ficaram iguais. A trava fica para o dia em que uma delas divergir de novo.
+
+### ⛔⛔ O modal que matava a rota sequencial (2026-08-11)
+
+*"Quando uso F10 para percorrer todas as bancadas montadas, quando o script salta
+de uma bancada pra outra, ele ta me pedindo o clique manual no OK; esse step esta
+quebrando a finalidade da rota, que e' ser automatica."*
+
+A `ronda()` terminava com um `MsgBox` de sucesso. Numa bancada so' isso e' um
+aviso util; em **quatro em sequencia sao quatro paradas esperando um clique** — e
+uma automacao que precisa de babá no meio nao e' automacao.
+
+⭐ A `ronda()` ganhou `silencioso`, ligado so' pelo modo sequencial. O resultado
+de cada bancada vai para o **log** e para o **relatorio unico do fim**, que ja'
+existia. Aviso por bancada so' faz sentido quando a bancada e' o trabalho inteiro.
+
+⚠️ **Eram TRES modais, nao dois.** Na primeira leitura eu achei o de sucesso e o
+de "ainda ha' slot vazio". O terceiro — *"Lotes disparados. Ronda pulada (falta
+calibrar a cor)"* — so' apareceu quando a conferencia percorreu a funcao inteira
+por regex, em vez de eu listar os que lembrava. **Auditoria que conta o que o
+autor lembra nao e' auditoria.** Os tres estao guardados.
+
+⚠️ E o aviso de FALHA tambem e' calado no sequencial, de proposito: uma caixa de
+erro no meio da fila para a fila inteira. Ele entra no log e no relatorio final.

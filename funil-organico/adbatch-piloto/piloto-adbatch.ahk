@@ -2721,7 +2721,7 @@ rodarVarias(seco, abas, tAgente) {
                     throw Error("a janela sumiu antes da ronda")
                 prepararJanela(b.h1)
                 anotar("== ronda de " b.chave " ==")
-                ronda(b.h1)
+                ronda(b.h1, true)
             } catch as e {
                 anotar("== ronda de " b.chave ": FALHOU — " e.Message)
                 falhas.Push({chave: b.chave " (ronda)", erro: e.Message})
@@ -2814,7 +2814,20 @@ irParaAba(n) {
 }
 
 ; =============================================================================
-ronda(hJanela) {
+; ⛔⛔ O `silencioso` E' O CONSERTO DE UM DEFEITO QUE MATAVA A FINALIDADE DA
+; ROTA (2026-08-11). Relato do operador: *"quando uso F10 para percorrer todas
+; as bancadas montadas, quando o script salta de uma bancada pra outra, ele ta
+; me pedindo o clique manual no OK; esse step esta quebrando a finalidade da
+; rota, que e' ser automatica"*.
+;
+; A ronda terminava com um MsgBox de sucesso. Numa bancada so' isso e' um aviso
+; util; em QUATRO em sequencia sao quatro paradas esperando um clique — e uma
+; automacao que precisa de babá no meio nao e' automacao.
+;
+; ⭐ No modo sequencial o resultado de cada bancada vai para o LOG e para o
+; relatorio unico do fim, que ja' existe. Aviso por bancada so' faz sentido
+; quando a bancada e' o trabalho inteiro.
+ronda(hJanela, silencioso := false) {
     global abortar, INI
     abas    := Integer(IniRead(INI, "config", "abas", "0"))
     corVaz  := IniRead(INI, "pontos", "cor_vazio", "")
@@ -2823,6 +2836,12 @@ ronda(hJanela) {
 
     if (corVaz = "") {
         anotar("ronda pulada: cor do slot vazio nao calibrada")
+        ; ⚠️ TAMBEM CALADO no sequencial. Este era o terceiro MsgBox da ronda e
+        ; passou despercebido na primeira leitura: eu tinha achado dois. Uma
+        ; auditoria que conta "os MsgBox que eu lembro" nao e' auditoria — a que
+        ; achou este percorreu a funcao inteira por regex.
+        if silencioso
+            return
         return MsgBox("Lotes disparados. Ronda pulada (falta calibrar a cor).",
                       APP)
     }
@@ -2869,10 +2888,17 @@ ronda(hJanela) {
         ToolTip()
         if (pendentes = 0) {
             anotar("ronda " r ": tudo cheio")
+            if silencioso
+                return
             return MsgBox("Pronto — as " abas " abas com as duas imagens.",
                           APP)
         }
     }
+    ; ⚠️ mesmo o aviso de FALHA e' calado no sequencial: ele entra no log e no
+    ; relatorio do fim. Uma caixa de erro no meio da fila para a fila inteira.
+    anotar("fim das rondas com slot vazio")
+    if silencioso
+        return
     MsgBox("Fim das rondas, ainda ha' slot vazio. F12 ve' o log.",
            APP, 48)
 }
