@@ -1522,6 +1522,51 @@ não é gente, mas a fragilidade valia para todos.
 
 ---
 
+## 40. ⛔⛔ O MEDIDOR SÓ OLHAVA O ESTADO PADRÃO — e um modo inteiro ficou em inglês com o placar em 100%
+
+**Onde:** `checar.py` (camada de tradução, local), 2026-08-12, ao integrar o
+`modo copy leve` que o Ed subiu no `good16`.
+
+O toggle troca o pool inteiro da fala 2 (`MISTURAS` → `MISTURAS_LEVE`, 17
+entradas novas) e **nasce desligado**, por decisão declarada. O `checar.py`
+sorteava sempre assim:
+
+```python
+spec = m.sortear("ray", random.Random(s), m._carregar_ledger())
+```
+
+Sem travas. Nunca ligou um modo. Resultado: as 17 frases do modo leve **não
+existiam** para o medidor — não apareciam como faltantes, não entravam no
+denominador, não derrubavam o placar. O operador ligaria o toggle no app e
+veria dezessete falas em inglês num agente marcado 100%.
+
+⚠️ E o número que ele mostrava não era só otimista, era **errado nos dois
+lados**: acusava 19 faltantes quando havia 36. As 17 invisíveis mais 18 do pool
+normal que o Ed reescreveu no mesmo commit — o medidor só via o que o sorteio
+padrão calhava de tirar.
+
+> **Cobertura tem duas dimensões: o que o pool contém e em que ESTADO o
+> programa está.** Medir 3.000 sorteios num estado só é medir fundo um poço e
+> ignorar os outros quatro.
+
+⭐ O conserto copia a regra da INTERFACE, e isso é o essencial: o `ui_agente`
+descobre modo por `getattr(motor, "MODO_X")`, e agora o medidor faz igual e
+roda os sorteios uma vez por modo, um de cada vez. Espelhar a UI é o que
+garante que o medidor veja exatamente o que o operador consegue ligar — regra
+de descoberta própria voltaria a divergir no quinto modo.
+
+⛔ Um modo por vez, **não o produto cartesiano**: com 4 modos seriam 16 estados
+por motor e o `--fundo` nunca terminaria. Um de cada vez já alcança todo pool
+que um toggle sozinho destrava, que é o caso real.
+
+⚠️ Segundo cuidado, específico deste modo: o pool leve existe para **não**
+nomear o órgão nem a rigidez. Traduzir sem essa trava reabre pelo português a
+leitura que o operador reprovou (`your body harder`) — a porta dos fundos do
+modo. Ficou uma sonda que varre o PT do pool leve atrás de `duro`, `rígido`,
+`ereção`, `em pé` e dos cinco apelidos: **0 achados em 17**.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1536,6 +1581,10 @@ não é gente, mas a fragilidade valia para todos.
 - [ ] **O controle planta o defeito INTEIRO** (§38). Controle que injeta metade e
       empresta a outra metade de uma string de produção morre calado no dia em
       que o operador manda trocar essa string
+- [ ] **Motor tem TOGGLE? Meça com cada modo LIGADO, um a um** (§40). Copy
+      atrás de um modo que nasce desligado é invisível para qualquer medidor
+      que só sorteie no estado padrão — e o placar mostra 100% com um pool
+      inteiro em inglês
 - [ ] **Refatorou um pool (constante, comprehension, concatenação)? Rode o gate
       e confira se o pool AINDA APARECE no relatório** (§39). Ausência não é
       zero: `literal_eval` estoura em qualquer nome e o `except: continue`
