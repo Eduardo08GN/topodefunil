@@ -1077,7 +1077,17 @@ def sortear(pagina, rng, ledger, travas=None):
     # eixo se chama `homem`.
     forte = bool(travas.get("forte")) and not travas.get("homem")
     if forte:
-        homem = sc.ref_forte(MOLDE_H, rng, idade_min=FORTE_IDADE_MIN)
+        # ⭐⭐ `maduros=True` DESDE 2026-08-12 — ordem do operador lendo o
+        # painel: *"n quis manter os tiozao forte?"*. O narrador deste motor tem
+        # 58 anos com o toggle DESLIGADO; ligado, ele caia para 32-38, porque o
+        # `REFS_FORTES` compartilhado nao tinha um homem acima de 38. O toggle
+        # trocava o HOMEM quando devia trocar o CORPO dele.
+        # ⛔ O piso de 32 FICA: a fala e' de homem casado falando com homem
+        # casado, e um de 26 nao e' crivel dizendo a frase. O que abriu foi o
+        # TETO — o pool agora vai de 32 a 68, e o velho forte voltou a ser
+        # sorteavel sem tirar o jovem forte da mesa.
+        homem = sc.ref_forte(MOLDE_H, rng, idade_min=FORTE_IDADE_MIN,
+                             maduros=True)
 
     # ⭐⭐ MODO BELA — o espelho exato, do outro lado.
     # ⛔ E A ETNIA DELA SOBREVIVE AO MODO: o `ref_bela` mantem o campo que nao
@@ -1787,6 +1797,21 @@ def autoteste(n=400):
     if estados[(False, False)]["idade_dele"] == estados[(False, True)]["idade_dele"]:
         falhas.append("MODO FORTE: os dois estados sorteiam as MESMAS idades "
                       "para o homem — toggle que nao muda nada")
+    # ⛔⛔ E O FORTE TEM DE ABARCAR AS DUAS FAIXAS (ordem do operador,
+    # 2026-08-12). Sem esta lente, o defeito que ele pegou lendo o painel volta
+    # calado no dia em que alguem mexer no pool compartilhado: o toggle
+    # continuaria "movendo" (passa no controle acima) enquanto rejuvenesce o
+    # narrador 20 anos em 100% dos sorteios.
+    _fortes = estados[(False, True)]["idade_dele"] | estados[(True, True)]["idade_dele"]
+    if not [i for i in _fortes if i >= 48]:
+        falhas.append("MODO FORTE: nenhum homem de 48+ em %d sorteios (faixa "
+                      "%d..%d) — o `maduros=True` parou de chegar ao pool e o "
+                      "tiozao forte sumiu de novo"
+                      % (n, min(_fortes), max(_fortes)))
+    if not [i for i in _fortes if i <= 38]:
+        falhas.append("MODO FORTE: nenhum homem de ate' 38 em %d sorteios — o "
+                      "pedido foi INCLUIR o mais velho, nao trocar de faixa"
+                      % n)
     if estados[(False, False)]["traje"] == estados[(True, False)]["traje"]:
         falhas.append("MODO BELA: os dois estados sorteiam os MESMOS trajes — "
                       "toggle que nao muda nada")

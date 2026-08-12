@@ -1812,6 +1812,90 @@ REFS_FORTES = [
      "marca": "a deep vertical line between the brows"},
 ]
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ REFS_FORTES_MADUROS — O TIOZAO FORTE (2026-08-12)
+# ---------------------------------------------------------------------------
+# ⛔ Ordem do operador, lendo o painel do GOOD 16: *"eu vi aqui no good 16, que
+# quando seta a referencia forte a idade do homem cai pra 30 e poucos. e' isso
+# mesmo? n quis manter os tiozao forte?"* — e depois, para o agente novo:
+# *"modo forte deve abarcar refs homens mais velhos tb"*.
+#
+# ⚠️ ELE ESTAVA CERTO, E ISSO FOI MEDIDO ANTES DE UMA LINHA SER ESCRITA: o
+# `REFS_FORTES` inteiro tem 16 entradas de 26 a 38 anos. Nao havia UM homem
+# acima de 38 no pool do parque. Ligar o MODO FORTE num motor cujo narrador tem
+# 58 anos nao trocava o CORPO dele — trocava o HOMEM por um de 32. Nunca foi
+# decisao de ninguem: era a unica opcao que o pool tinha.
+#
+# ⛔⛔ POOL SEPARADO, E OPT-IN PELO PARAMETRO `maduros` — nao acrescentado ao
+# `REFS_FORTES`. Motor que hoje chama `ref_forte` sem faixa maxima passaria a
+# receber um homem de 66 anos sem ninguem pedir, e ha' motores em que o corpo
+# jovem E' o argumento. Aditivo: quem nao pede, nao recebe, e nenhum dos outros
+# motores muda de comportamento.
+#
+# ⭐ A REGRA DO POOL: FORTE **E** VELHO, nunca "velho que ja' foi forte". O
+# corpo tem de ler como treino ativo (peito, ombro, antebraco) num homem que a
+# cabeca e o rosto declaram ter 50, 60, 68 anos.
+# ⛔ E vale a doutrina de 2026-08-12 do PLACA 16: **DISTINTIVO, NUNCA
+# DETERIORADO**. Nenhuma entrada traz cicatriz, nariz quebrado, dente lascado
+# ou `weathered` — num homem de 60, dano renderiza como mendigo, nao como
+# marca. As ancoras sao saudaveis: covinha, queixo fendido, mecha prateada,
+# argola, sinal de nascenca, linhas de riso.
+# ⛔ E nenhuma palavra de aprovacao (`handsome`, `chiseled`, `strong jaw`):
+# elogio no prompt puxa o rosto para a media do banco de imagem, que e' o mesmo
+# mecanismo pelo qual `not a celebrity` invoca a celebridade.
+# ⚠️ NENHUMA descreve OLHOS: o `ref_forte` PREPENDA os olhos (`OLHOS_FORTES`) e
+# roda `_sem_olhos` em cima da `marca`. Olho escrito aqui seria apagado adiante
+# — eixo que o autor pensa ter escrito e o codigo remove em silencio.
+REFS_FORTES_MADUROS = [
+    {"idade": 48, "corpo": "thick through the chest and shoulders with heavy "
+                           "forearms and a flat waist",
+     "cabeca": "dark hair going grey at the temples, cut short",
+     "marca": "a deep cleft in the chin, clean-shaven"},
+    {"idade": 50, "corpo": "densely muscled through the arms and chest, broad "
+                           "across the back",
+     "cabeca": "a close-shaved scalp and a short salt-and-pepper beard",
+     "marca": "laugh lines and a smooth even complexion"},
+    {"idade": 52, "corpo": "heavy-shouldered and powerfully built, forearms "
+                           "corded",
+     "cabeca": "silver hair cut in a short crisp fade",
+     "marca": "a dimple that shows in one cheek"},
+    {"idade": 54, "corpo": "a barrel chest with thick arms and a heavy neck",
+     "cabeca": "grey hair worn short and pushed back, clean-shaven",
+     "marca": "a silver streak running through one eyebrow"},
+    {"idade": 55, "corpo": "wide through the shoulders with veined forearms "
+                           "and a hard stomach",
+     "cabeca": "close-cropped white hair and a trimmed white beard",
+     "marca": "a plain gold hoop in one ear"},
+    {"idade": 57, "corpo": "solid and thick through the chest, the arms still "
+                           "cut",
+     "cabeca": "a bald crown with grey at the sides and a full grey moustache",
+     "marca": "a beauty mark high on one cheekbone"},
+    {"idade": 58, "corpo": "heavily built with thick sloping shoulders and "
+                           "heavy wrists",
+     "cabeca": "silver hair combed back from a high forehead",
+     "marca": "a shallow cleft chin and smooth skin"},
+    {"idade": 60, "corpo": "broad-chested and strong through the arms, tanned "
+                           "across the shoulders",
+     "cabeca": "short grey curls and a close-trimmed beard",
+     "marca": "deep laugh lines at the corners of his mouth"},
+    {"idade": 62, "corpo": "a thickset powerful frame, heavy through the chest "
+                           "and upper arms",
+     "cabeca": "a cleanly shaved head and a short white goatee",
+     "marca": "a straight narrow nose and smooth skin"},
+    {"idade": 64, "corpo": "still heavily muscled through the shoulders and "
+                           "forearms",
+     "cabeca": "thick white hair cut neatly above the collar, clean-shaven",
+     "marca": "a dimple beside his mouth"},
+    {"idade": 66, "corpo": "big through the chest and shoulders with thick "
+                           "wrists",
+     "cabeca": "silver hair cropped very short and a full white beard kept "
+               "neatly shaped",
+     "marca": "a small pale birthmark near one temple"},
+    {"idade": 68, "corpo": "broad and solid, heavy arms and a deep chest",
+     "cabeca": "a bald head and a neat white moustache",
+     "marca": "a cleft chin and heavy level brows"},
+]
+
 # ⭐ OS OLHOS, mesmo eixo do BELA — *"coisa bem diferente fora do comum"*.
 OLHOS_FORTES = [
     "striking pale blue eyes",
@@ -1858,7 +1942,7 @@ ANTICELEB_FORTE = ("A rugged good-looking face, not a celebrity, not "
                    "resembling any famous person.")
 
 
-def ref_forte(molde, rng, idade_min=None, idade_max=None):
+def ref_forte(molde, rng, idade_min=None, idade_max=None, maduros=False):
     """Uma REF masculina do MODO FORTE no FORMATO DO MOTOR que pediu.
 
     Espelho exato do `ref_bela` — ver a docstring de la' para o porque de nao
@@ -1870,8 +1954,14 @@ def ref_forte(molde, rng, idade_min=None, idade_max=None):
     medido em 200 sorteios antes deste parametro existir.
     ⚠️ Quando NENHUMA entrada cabe na faixa, ela CEDE e a mais proxima entra:
     derrubar o sorteio por causa de um toggle seria o botao que quebra o app.
+
+    maduros — soma o `REFS_FORTES_MADUROS` (48-68 anos) ao pool. ⛔ OPT-IN, e a
+    razao esta' no cabecalho daquele pool: sem ele, ligar o MODO FORTE num motor
+    de narrador de 58 anos trocava o HOMEM por um de 32 em vez de trocar o CORPO
+    dele. Motor que nao pede continua recebendo so' o pool 26-38 — e por isso
+    nenhum dos outros muda de comportamento.
     """
-    _pool = REFS_FORTES
+    _pool = REFS_FORTES + REFS_FORTES_MADUROS if maduros else REFS_FORTES
     if idade_min is not None:
         _pool = [r for r in _pool if r["idade"] >= idade_min] or _pool
     if idade_max is not None:
