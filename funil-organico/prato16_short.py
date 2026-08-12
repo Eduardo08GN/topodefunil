@@ -149,12 +149,22 @@ PELE_TRAVAVEL = False
 # Ordem do operador de 2026-08-12: *"modo forte deve abarcar refs homens mais
 # velhos tb"*. O pool compartilhado `sc.REFS_FORTES` vai de 26 a 38 anos e nao
 # serve a este angulo: a fonte e' um senhor de uns 68, e o narrador do pool
-# proprio vai de 58 a 70. Com o piso em 48 e `maduros=True`, o toggle passa a
-# escolher dentro de `sc.REFS_FORTES_MADUROS` (48-68) e troca o CORPO dele em
-# vez de trocar o HOMEM por um de 32.
-# ⚠️ O `sc.ref_forte` CEDE se nada couber — botao que zera o sorteio e' botao
-# que quebra o app.
-FORTE_IDADE_MIN = 48
+# proprio vai de 58 a 70.
+#
+# ⛔⛔ O PISO SUBIU DE 48 PARA 61 no mesmo dia, e a ordem e' MAIS RECENTE e mais
+# especifica que a primeira: *"sempre que travar a referencia de forte mantenha
+# o homem acima de 60 anos no prompt"*. Ela chegou depois deste motor nascer
+# (veio pelo GOOD 16, commit `7ec3f38`), e o `sempre` e' o que a torna
+# aplicavel aqui — nao e' regra do GOOD, e' regra do toggle.
+# ⚠️ Com 48, o botao aceso ainda entregava um homem de 48 num angulo cujo
+# narrador desligado tem 58-70. O toggle prometia trocar o CORPO e continuava
+# podendo rejuvenescer dez anos.
+# ⚠️ E o `or _pool` do helper NAO dispara aqui: o `sc.REFS_FORTES_MADUROS` tem
+# DEZ entradas de 61 a 72 (ampliado de 12 para 18 pelo outro autor no mesmo
+# dia), entao a faixa casa de verdade. Pedir 61 num pool que vai ate' 38 seria
+# o helper cedendo em silencio — que e' o modo de falha que a lente do
+# autoteste cobre.
+FORTE_IDADE_MIN = 61
 
 
 # ===========================================================================
@@ -436,56 +446,152 @@ JARRAS = [
 
 
 # ===========================================================================
-# ⭐⭐ QUEM FALA — O SENHOR DA COZINHA DE FORA
+# ⭐⭐ QUEM FALA — UM ARQUETIPO NORTE-AMERICANO POR REGIAO
 # ===========================================================================
-# ⛔ A fonte tem uns 68 anos: calvo com laterais raspadas, BIGODE BRANCO FARTO
-# de morsa, oculos de aro fino. O pool vai de 58 a 70 — e' um angulo de senhor,
-# e um narrador de 45 desmonta a frase `the best discovery I ever made for my
-# marriage`.
-# ⛔ DISTINTIVO, NUNCA DETERIORADO (doutrina do PLACA 16, 2026-08-12): nenhuma
-# entrada traz cicatriz, nariz quebrado, dente lascado ou `weathered`. Num homem
-# de 68 dano renderiza como mendigo, e o operador ja' reprovou um pool inteiro
-# por isso.
-# ⛔ E nenhuma palavra de aprovacao (`handsome`, `strong jaw`): elogio no prompt
-# puxa o rosto para a media do banco de imagem — mesmo mecanismo pelo qual
+# ⛔⛔ POOL REESCRITO EM 2026-08-12, no mesmo dia em que nasceu. Ordem do
+# operador, lendo o painel: *"troque a pool do agente prato16 para arquetipos
+# tipicos de norte americanos por diferentes regioes dentro dos EUA"*.
+#
+# ⚠️ O QUE ESTAVA ERRADO: o pool anterior tinha dez senhores CORRETOS e
+# GENERICOS — prata penteado, careca de cavanhaque, barba branca. Nenhum deles
+# era de LUGAR NENHUM. O motor ja' arrastava o mundo inteiro por regiao
+# (cenario, bancada, luz, audio, traje dela) e punha no meio dele um homem que
+# poderia estar em qualquer um dos quinze. O eixo mais visivel do quadro — o
+# rosto que fala — era o unico que nao sabia onde estava.
+#
+# ⭐ AGORA CADA ENTRADA DECLARA `familias`, e o homem e' filtrado pelo mundo JA'
+# SORTEADO. E' a mesma mecanica de `mundos_da_etnia`, um degrau adiante: a
+# regiao arrasta o quintal E quem esta' nele.
+# ⚠️ Toda familia tem PELO MENOS DUAS opcoes — uma so' seria eixo morto: o
+# painel mostraria `trocar` e devolveria sempre o mesmo homem, que e' o botao
+# que mente. O autoteste cobra isso familia por familia.
+#
+# ⛔ NENHUMA ENTRADA DIZ COR DE PELE. A etnia vem da PAGINA e ja' entra na
+# frase (`a 66-year-old white American man`); descrever pele aqui criaria duas
+# vozes no mesmo sintagma — o defeito FT14 que trocou a mulher entre os takes do
+# FIGHT 16. O arquetipo e' CABELO, PELO FACIAL e ANCORA, nunca tom.
+# ⛔ DISTINTIVO, NUNCA DETERIORADO (doutrina do PLACA 16): zero cicatriz, nariz
+# quebrado, dente lascado ou `weathered`. Num homem de 68, dano renderiza como
+# mendigo — o operador ja' reprovou um pool inteiro por isso.
+# ⛔ E ZERO PALAVRA DE APROVACAO (`handsome`, `strong jaw`): elogio no prompt
+# puxa o rosto para a media do banco de imagem, o mesmo mecanismo pelo qual
 # `not a celebrity` invoca a celebridade.
-# ⚠️ Os OCULOS entram em 4 das 10: a fonte usa, e um pool sem eles perderia o
+# ⚠️ Os oculos entram em 6 das 21: a fonte usa, e um pool sem eles perde o
 # marcador etario mais barato que existe.
 HOMENS = [
-    {"id": "bigode_morsa", "idade": 68,
+    # --- APALACHES / NOROESTE: o homem de montanha, barba de verdade -------
+    {"id": "montanhes_barba", "idade": 67, "familias": ["apalache", "noroeste"],
+     "cabeca": "grey hair cut short under the ears and a full grey beard "
+               "grown out",
+     "marca": "heavy level brows and deep laugh lines"},
+    {"id": "apalache_careca", "idade": 63, "familias": ["apalache", "noroeste"],
+     "cabeca": "a bald crown with the sides clipped close and a thick "
+               "salt-and-pepper beard",
+     "marca": "a shallow cleft in his chin"},
+    {"id": "noroeste_longo", "idade": 61, "familias": ["noroeste", "apalache"],
+     "cabeca": "grey hair worn a little long over the ears and a short "
+               "trimmed beard",
+     "marca": "rimless glasses pushed up on his head"},
+
+    # --- SUL PROFUNDO / DELTA: o cavalheiro de bigode ----------------------
+    {"id": "sulista_bigode", "idade": 65, "familias": ["sulista", "delta"],
+     "cabeca": "silver hair combed back and a thick white moustache",
+     "marca": "a beauty mark high on one cheekbone"},
+    {"id": "delta_careca", "idade": 69, "familias": ["delta", "sulista"],
+     "cabeca": "a cleanly shaved head and a neat white moustache",
+     "marca": "gold half-moon glasses and a dimple beside his mouth"},
+    {"id": "sulista_branco", "idade": 62, "familias": ["sulista", "gullah"],
+     "cabeca": "short white hair in a clean taper and a close white beard",
+     "marca": "a silver streak running through one eyebrow"},
+
+    # --- TEXAS: o bigode largo, o cabelo curto -----------------------------
+    {"id": "texano_bigode", "idade": 64, "familias": ["texas", "americana"],
+     "cabeca": "close-cropped grey hair and a wide grey moustache that covers "
+               "his top lip",
+     "marca": "deep laugh lines and heavy brows"},
+    {"id": "texano_prata", "idade": 66, "familias": ["texas", "americana"],
+     "cabeca": "thick silver hair cut short at the sides, clean-shaven",
+     "marca": "a deep cleft in his chin"},
+
+    # --- MEIO-OESTE / GRANDES LAGOS: o pai de familia, sem firula ----------
+    {"id": "meio_oeste_oculos", "idade": 61,
+     "familias": ["meio_oeste", "grandes_lagos", "americana"],
+     "cabeca": "short grey hair in a clean taper, clean-shaven",
+     "marca": "thin wire-rimmed glasses and a dimple in one cheek"},
+    {"id": "lagos_escovinha", "idade": 59,
+     "familias": ["grandes_lagos", "meio_oeste"],
+     "cabeca": "a silver brush cut kept very short, clean-shaven",
+     "marca": "a straight narrow nose and laugh lines at the eyes"},
+    {"id": "meio_oeste_barba", "idade": 68,
+     "familias": ["meio_oeste", "grandes_lagos"],
+     "cabeca": "white hair thinning at the crown and a short white beard",
+     "marca": "heavy dark-rimmed glasses"},
+
+    # --- NOVA INGLATERRA / ITALO-AMERICANA: o cabelo farto penteado --------
+    {"id": "yankee_branco", "idade": 70,
+     "familias": ["nova_inglaterra", "italo_americana"],
+     "cabeca": "thick white hair cut neatly above the collar, clean-shaven",
+     "marca": "gold half-moon glasses and a shallow cleft chin"},
+    {"id": "italo_prata", "idade": 65,
+     "familias": ["italo_americana", "nova_inglaterra"],
+     "cabeca": "thick silver hair swept straight back, clean-shaven",
+     "marca": "heavy dark level brows and a beauty mark near his jaw"},
+    {"id": "yankee_cavanhaque", "idade": 62,
+     "familias": ["nova_inglaterra", "italo_americana", "grandes_lagos"],
+     "cabeca": "short grey hair with a sharp side part and a trimmed grey "
+               "goatee",
+     "marca": "a dimple that shows on one side"},
+
+    # --- HARLEM / ATLANTA / CREOLE / GULLAH -------------------------------
+    {"id": "harlem_careca", "idade": 63, "familias": ["harlem", "atlanta"],
+     "cabeca": "a cleanly shaved head and a short white goatee",
+     "marca": "a plain gold hoop in one ear"},
+    {"id": "atlanta_fade", "idade": 60,
+     "familias": ["atlanta", "harlem", "creole"],
+     "cabeca": "a short grey fade with a clean line at the temples and a "
+               "close-trimmed grey beard",
+     "marca": "a dimple in one cheek"},
+    {"id": "gullah_barba", "idade": 69, "familias": ["gullah", "delta"],
+     "cabeca": "short white natural hair and a full white beard kept neatly "
+               "shaped",
+     "marca": "deep laugh lines at the corners of his mouth"},
+    {"id": "creole_risca", "idade": 64,
+     "familias": ["creole", "gullah", "harlem"],
+     "cabeca": "salt-and-pepper hair with a clean side part and a thin "
+               "moustache",
+     "marca": "thin wire-rimmed glasses and a straight narrow nose"},
+    {"id": "harlem_prata", "idade": 66, "familias": ["harlem", "creole"],
+     "cabeca": "short silver hair kept close to the crown and a trimmed "
+               "silver moustache",
+     "marca": "a beauty mark high on one cheekbone"},
+
+    # --- FLORIDA: o aposentado, e e' o retrato da fonte --------------------
+    {"id": "florida_morsa", "idade": 68, "familias": ["florida", "americana"],
      "cabeca": "a bald crown with the sides clipped short and a full white "
                "walrus moustache",
      "marca": "thin wire-rimmed glasses and deep laugh lines"},
-    {"id": "prata_penteado", "idade": 62,
-     "cabeca": "thick silver hair combed back from a high forehead, "
-               "clean-shaven",
-     "marca": "a shallow cleft in his chin and smooth skin"},
-    {"id": "careca_cavanhaque", "idade": 65,
-     "cabeca": "a cleanly shaved head and a short white goatee",
-     "marca": "a beauty mark high on one cheekbone"},
-    {"id": "barba_branca", "idade": 70,
-     "cabeca": "thick white hair cut above the collar and a full white beard "
-               "kept neatly shaped",
-     "marca": "gold half-moon glasses and a dimple beside his mouth"},
-    {"id": "grisalho_curto", "idade": 58,
-     "cabeca": "short grey hair cut in a clean taper, clean-shaven",
-     "marca": "a silver streak running through one eyebrow"},
-    {"id": "bigode_grisalho", "idade": 64,
-     "cabeca": "close-cropped grey hair and a thick grey moustache",
-     "marca": "a dimple that shows in one cheek"},
-    {"id": "cachos_brancos", "idade": 61,
-     "cabeca": "short white curls kept close to the crown, clean-shaven",
-     "marca": "heavy dark glasses and a broad open face"},
-    {"id": "careca_liso", "idade": 66,
-     "cabeca": "a smoothly shaved crown with no beard at all",
-     "marca": "a plain gold hoop in one ear and smooth skin"},
-    {"id": "prata_lateral", "idade": 59,
-     "cabeca": "silver hair with a sharp side part and a short trimmed beard",
-     "marca": "a straight narrow nose and laugh lines at the eyes"},
-    {"id": "topete_branco", "idade": 63,
-     "cabeca": "white hair with volume swept up at the front, clean-shaven",
-     "marca": "rimless reading glasses pushed up and a cleft chin"},
+    {"id": "florida_branco", "idade": 66, "familias": ["florida", "sulista"],
+     "cabeca": "short white hair combed forward, clean-shaven",
+     "marca": "a small pale birthmark near one temple"},
+
+    # --- SUBURBIO AMERICANO -----------------------------------------------
+    {"id": "suburbano_taper", "idade": 58, "familias": ["americana", "texas"],
+     "cabeca": "grey hair in a clean classic taper, clean-shaven",
+     "marca": "a dimple beside his mouth"},
 ]
+
+FAMILIAS_HOMEM = sorted({f for h in HOMENS for f in h["familias"]})
+
+
+def homens_da_familia(familia):
+    """Os arquetipos que pertencem a' regiao sorteada.
+
+    ⚠️ CEDE para a lista inteira se nenhum casar: familia nova sem homem
+    declarado nao pode derrubar o sorteio — quem reclama e' o autoteste, que
+    cobra DUAS opcoes por familia.
+    """
+    return [h for h in HOMENS if familia in h["familias"]] or list(HOMENS)
+
 
 MOLDE_H = dict(HOMENS[0], corpo="")
 
@@ -835,18 +941,32 @@ def sortear(pagina, rng, ledger, travas=None):
     mundo = (_por_id(MUNDOS, travas["mundo"]) if travas.get("mundo")
              else _fresco(pool_m, hist.get("mundo", [])[-5:], rng))
 
+    # ⭐⭐ O HOMEM E' FILTRADO PELA REGIAO JA' SORTEADA (2026-08-12): o mundo
+    # escolhe primeiro, e o arquetipo sai de quem pertence aquela familia.
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
-             else _fresco(HOMENS, hist.get("homem", [])[-3:], rng))
+             else _fresco(homens_da_familia(mundo["familia"]),
+                          hist.get("homem", [])[-3:], rng))
     mulher = (_por_id(MULHERES, travas["mulher"]) if travas.get("mulher")
               else _fresco(MULHERES, hist.get("mulher", [])[-4:], rng))
 
-    # ⭐⭐ MODO FORTE — contrato compartilhado, com `maduros=True` (2026-08-12).
-    # ⛔ O CADEADO DA TELA VENCE O MODO: homem travado no painel e' mais
-    # especifico que "um forte qualquer".
+    # ⭐⭐ MODO FORTE — e AQUI ELE DIVERGE DO CONTRATO COMPARTILHADO, DE
+    # PROPOSITO E COM O MOTIVO ESCRITO.
+    # ⛔⛔ O `sc.ref_forte` devolve uma PESSOA INTEIRA (cabeca, marca, idade,
+    # corpo). Nos outros motores isso e' o certo. Aqui seria a destruicao do
+    # eixo que o operador acabou de pedir: o toggle NASCE LIGADO, entao o
+    # arquetipo regional so' apareceria com o botao desligado — o pool novo
+    # seria invisivel no estado padrao do app. Forma sem funcao, e silenciosa.
+    # ⭐ Entao o modo pega do helper SO' O QUE ELE VEIO MOVER: a IDADE e o
+    # CORPO. O ROSTO E O CABELO CONTINUAM SENDO OS DA REGIAO.
+    # ⚠️ E isso e' fiel a' ordem original do operador sobre o toggle
+    # (*"n quis manter os tiozao forte?"*): ele nunca pediu para TROCAR o homem,
+    # pediu para o homem ficar FORTE.
     forte = bool(travas.get("forte")) and not travas.get("homem")
     if forte:
-        homem = sc.ref_forte(MOLDE_H, rng, idade_min=FORTE_IDADE_MIN,
-                             maduros=True)
+        _f = sc.ref_forte(MOLDE_H, rng, idade_min=FORTE_IDADE_MIN,
+                          maduros=True)
+        homem = dict(homem, idade=_f["idade"], corpo=_f["corpo"],
+                     id="%s_forte" % homem["id"])
 
     # ⭐⭐ MODO BELA — o espelho, do outro lado.
     # ⛔ E A ETNIA DELA SOBREVIVE AO MODO (licao do GOOD 16).
@@ -1435,20 +1555,45 @@ def autoteste(n=400):
     if estados[(False, False)]["traje"] == estados[(True, False)]["traje"]:
         falhas.append("MODO BELA: os dois estados sorteiam os MESMOS trajes — "
                       "toggle que nao muda nada")
-    # ⛔⛔ E O FORTE TEM DE FICAR VELHO. Ordem do operador de 2026-08-12: o pool
-    # compartilhado e' 26-38 e este angulo e' de senhor. Sem esta lente, o
-    # toggle voltaria a rejuvenescer o narrador 25 anos no dia em que alguem
-    # mexesse no `maduros`, e o controle acima continuaria passando.
+    # ⛔⛔ E O FORTE TEM DE FICAR ACIMA DE 60. Ordem do operador de 2026-08-12,
+    # a segunda e mais especifica: *"sempre que travar a referencia de forte
+    # mantenha o homem acima de 60 anos no prompt"*.
+    # ⚠️ A lente existe porque o `sc.ref_forte` CEDE em silencio quando nada
+    # cabe na faixa (`or _pool`): pedir 61 num pool que nao os tenha devolveria
+    # um rapaz sem erro nenhum. Sem alguem cobrando a faixa DEPOIS do sorteio, o
+    # defeito volta calado — e essa razao vale qualquer que seja o numero.
     _fortes = estados[(False, True)]["idade_dele"] | estados[(True, True)]["idade_dele"]
-    if min(_fortes) < 48:
-        falhas.append("MODO FORTE: homem de %d anos num angulo de senhor — o "
-                      "`maduros=True` ou o piso de %d pararam de valer"
-                      % (min(_fortes), FORTE_IDADE_MIN))
+    if min(_fortes) <= 60:
+        falhas.append("MODO FORTE: homem de %d anos com o botao aceso — o piso "
+                      "de %d cedeu (o helper devolve o pool inteiro quando nada "
+                      "cabe na faixa)" % (min(_fortes), FORTE_IDADE_MIN))
 
     # ⛔ CONTROLE DE MUNDO E DE COR.
     for et in sorted(set(ETNIA.values())):
         if not [m for m in MUNDOS if et in m["etnias"]]:
             falhas.append("MUNDO: nenhum mundo comporta a etnia %r" % et)
+    # ⛔⛔ CADA REGIAO PRECISA DE DUAS OPCOES DE HOMEM. Uma so' e' eixo morto: o
+    # painel mostraria `trocar` em QUEM FALA e devolveria sempre o mesmo rosto
+    # naquela regiao, que e' o botao que mente — o defeito que este repo ja'
+    # pagou tres vezes.
+    for _m in MUNDOS:
+        _op = homens_da_familia(_m["familia"])
+        if len(_op) < 2:
+            falhas.append("HOMENS: a familia %r tem %d arquetipo(s) — o botao "
+                          "`trocar` de QUEM FALA nao muda nada la'"
+                          % (_m["familia"], len(_op)))
+    # ⛔⛔ E O ARQUETIPO REGIONAL TEM DE SOBREVIVER AO MODO FORTE. O toggle
+    # NASCE LIGADO: se ele trocasse a pessoa inteira, o pool que o operador
+    # pediu em 2026-08-12 seria invisivel no estado padrao do app.
+    _cabecas = {h["cabeca"] for h in HOMENS}
+    for i in range(80):
+        _s = sortear(pags[i % len(pags)], random.Random(1000 + i), {},
+                     {"forte": True})
+        if _s["homem"]["cabeca"] not in _cabecas:
+            falhas.append("MODO FORTE: o rosto deixou de ser o do arquetipo "
+                          "regional (%r) — o toggle voltou a trocar a PESSOA "
+                          "em vez do CORPO" % _s["homem"]["cabeca"][:40])
+            break
     for m in MUNDOS:
         if m["dela_bela"] == m["dela"]:
             falhas.append("MUNDO %s: o traje bela e' igual ao normal — o "
