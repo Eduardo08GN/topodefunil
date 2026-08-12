@@ -68,7 +68,7 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # operador (ver `DESLIGADAS`) — e este relatorio continua MEDINDO os
            # dois. E' o unico motor do parque que nomeia ingrediente na fala, e
            # e' justamente por isso que o numero dele tem de ficar visivel.
-           "prato16"]
+           "prato16", "mel16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.
@@ -153,6 +153,15 @@ DESLIGADAS = {
     ("prato16", "CT2"):
         "o take 1 e' TESTEMUNHO DE DESCOBERTA, nao enunciado de falha — mesma "
         "familia do GOOD 16 e do ALFA 16. Desenho do operador.",
+    # ⛔ O MEL 16 herda a decisao do irmao: a fala nomeia os tres
+    # ingredientes, como a fonte. ⚠️ O CT2 dele NAO entra aqui — a PERGUNTA de
+    # abertura enuncia a falha em toda entrada do pool, entao ele cumpre a
+    # regra em vez de pedir excecao.
+    ("mel16", "CT5"):
+        "ordem do operador (2026-08-12), a mesma do PRATO 16: a fala NOMEIA "
+        "gelatina, limao e bicarbonato, como a fonte. Os dois motores testam a "
+        "mesma hipotese de proposito — e' o par que o campo vai comparar "
+        "contra os outros dezessete.",
     ("prato16", "CT5"):
         "ordem do operador (2026-08-12), com as tres opcoes na mesa e o preco "
         "escrito: a fala NOMEIA gelatina, limao e bicarbonato, como a fonte "

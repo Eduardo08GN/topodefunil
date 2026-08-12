@@ -56,7 +56,7 @@ com **vinte agentes nossos**, não mais um. **2 takes de 8s**, destino
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
-`prato16` · `banho16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 22 no total)
+`prato16` · `banho16` · `mel16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 23 no total)
 
 ⚠️ A lista dizia **dezoito** contando dezesseis nomes, e faltavam `necrose16` e
 `wife16`. O `wife16` some da conta por engano fácil: o `bed16` nasceu como cópia
@@ -224,6 +224,25 @@ Se o comentário cair neste ângulo contra os outros, a causa candidata número 
 está escrita no motor e no `medir_copy16` (mecanismo `DESLIGADAS`). ⭐ A cor da
 gelatina é **eixo sorteável** e atravessa três objetos (cubo, líquido, caixa) —
 cubo verde virando bebida roxa é a incoerência que o espectador perdoa menos.
+
+⭐ **`mel16` (2026-08-12) — o fio de mel sobre os cubos.** Irmão estrutural do
+`prato16`: mesma cozinha de fora, mesmo casal, mesma arquitetura — e a
+diferença é **um beat visual só**, de propósito. Dois motores irmãos existem
+para isolar UMA variável; se tudo mudasse, o campo não saberia a que atribuir a
+diferença. ⭐⭐ **O hook é o MEL CAINDO**: prato de cerâmica decorada numa mão,
+squeeze de mel na outra, e um fio contínuo escorrendo sobre os cubos (a lente
+`ME-MEL` cobra o FIO, não o frasco — frasco parado é embalagem na mão). ⭐ **A
+regata preta** substitui a polo, e não é figurino: é o que põe braço e ombro em
+quadro e dá ao **MODO FORTE** onde aparecer — aqui o toggle troca o **corpo**
+(`CORPOS_FORTES`, super musculoso), nunca a pessoa, e o narrador é 61-72 nos
+dois estados. ⭐⭐ **A pergunta de qualificação** abrindo a fala (`Struggling
+with ED?`) é beat que nenhum 16s tinha, e ela **resolve o CT2 de graça**: o
+`prato16` precisa declarar a exceção, este cumpre a regra (0% no gate). ⭐ **O
+eixo TAMANHO, 50/50** — metade do lote promete tamanho como a fonte, metade
+fica só na função; o preço (incongruência com o que a VSL vende + peso na
+moderação) está declarado no motor. ⛔ Fura o **CT5** como o irmão, por ordem do
+operador — os dois testam a mesma hipótese, e é o par que o campo vai comparar
+contra os outros dezessete. Fonte: reel 1527794201990448, 21,1s, take único.
 
 ⭐ **Dois consertos no `good16` no mesmo dia:** (a) **MODO COPY LEVE**, o
 primeiro toggle de **copy** do parque — ligado, a fala do take 2 deixa de
