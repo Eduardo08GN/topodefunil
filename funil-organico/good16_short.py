@@ -46,6 +46,19 @@ O ARCO — 2 cenas de 8s, destino AdBatch Vertical 2:
     espectador leria dois videos colados. ⭐ De quebra o `this` dos AVISOS ganha
     referente EM QUADRO — ver a PENDENCIA de copy no fim deste cabecalho.
 
+⭐⭐ 2026-08-12 — O TERCEIRO TOGGLE: `modo copy leve`. Ordem do operador: *"quando
+    ativado, a alusao pecker, johnson, wiener ao falico some e da' lugar a copy
+    mais leve, tipo 'makes your body strong' ou 'improve your vitality'"*.
+    E' o PRIMEIRO MODO DE COPY do parque — `bela`/`forte` trocam QUEM aparece e
+    o `receita` (WIFE 16) troca O QUE aparece; este nao move um pixel do quadro,
+    troca o pool da fala 2 (`MISTURAS` -> `MISTURAS_LEVE`) e zera o `apelido`.
+    ⛔ Nasce DESLIGADO: o padrao segue sendo a copy taxativa de 2026-08-10.
+    ⚠️ E o preco esta' declarado no comentario do `MODO_LEVE` — ligado, a fala
+    volta a admitir a leitura "anabolizante" que o proprio operador reprovou.
+    E' compra consciente de leveza, nao esquecimento.
+    ⭐ Lente propria: `_go12_leve`, cobrando os DOIS estados (ligado sem orgao
+    nenhum; desligado COM orgao) e a procedencia da mistura no pool certo.
+
 ⛔ REGRAS QUE NASCEM COM O AGENTE
   · o CTA e' `gelatin`, nunca `recipe` (a fonte pede recipe; a automacao de DM
     casa palavra EXATA e o funil inteiro roda em gelatin)
@@ -87,6 +100,7 @@ O ARCO — 2 cenas de 8s, destino AdBatch Vertical 2:
    bowl.` (7 palavras contra 8 — nao custa orcamento).
 
     python funil-organico/good16_short.py --pagina joe --n 1
+    python funil-organico/good16_short.py --pagina joe --n 1 --leve
     python funil-organico/good16_short.py --autoteste
     python funil-organico/good16_short_app.py
 """
@@ -167,6 +181,30 @@ SEXOS = ("homem",)
 # MODO FORTE acrescenta e' o homem INTEIRO no registro forte.
 MODO_BELA = True
 MODO_FORTE = True
+
+# ⭐⭐ O TERCEIRO MODO — COPY LEVE (2026-08-12). Ordem do operador: *"quero um
+# toggle 'modo copy leve' no agente good 16: quando ativado, a alusao pecker,
+# johnson, wiener ao falico some e da' lugar a copy mais leve, tipo 'makes your
+# body strong' ou 'improve your vitality'"*.
+#
+# ⛔⛔ E' O PRIMEIRO MODO DE **COPY** DO PARQUE. Os outros dois trocam QUEM
+# aparece (`bela`, `forte`) e o do WIFE 16 troca O QUE aparece (`receita`) —
+# este troca O QUE E' DITO, e nenhum pixel do quadro muda. Por isso ele NAO
+# entra na `GO10` (que cobra elenco) e ganha lente propria, a `GO12`.
+#
+# ⛔ NASCE DESLIGADO, e a omissao em `MODOS_DEFAULT` e' deliberada: o padrao
+# deste motor continua sendo a copy taxativa de 2026-08-10, que e' a que o
+# operador mandou escrever e a que esta' em campo. Modo novo que nasce ligado
+# troca o lote inteiro de quem so' abriu o app.
+#
+# ⚠️⚠️ E O PRECO DO MODO ESTA' DECLARADO, porque ele desfaz uma ordem anterior
+# do MESMO operador. Em 2026-08-10, lendo o app, ele reprovou exatamente esta
+# familia de frase: *"dizer make your BODY harder pode ser qualquer coisa —
+# anabolizante por exemplo (...) entra dentro do WTF"*. A ambiguidade nao
+# sumiu — ela e' o CUSTO conhecido de nao nomear o orgao, e quem liga o botao
+# esta' comprando um video mais leve e menos taxativo. E' decisao dele, e o
+# codigo registra que foi decisao, nao esquecimento.
+MODO_LEVE = True
 
 # ⭐⭐ 5o CONTRATO ADITIVO DA UI (2026-08-10): quais modos nascem LIGADOS no
 # painel. Ordem do operador: *"toggle marcado como default"* para o FORTE.
@@ -755,6 +793,61 @@ MISTURAS = [
     "This bowl holds the gelatin trick, and it keeps your {o} showing up.",
 ]
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ MISTURAS_LEVE — O POOL DO MODO COPY LEVE (2026-08-12)
+# ---------------------------------------------------------------------------
+# ⛔ Ordem do operador: com o modo ligado, *"a alusao pecker, johnson, wiener ao
+# falico some e da' lugar a copy mais leve, tipo 'makes your body strong' ou
+# 'improve your vitality'"*. As duas frases dele sao EXEMPLO declarado (*"so'
+# exemplo ta'"*), entao o campo semantico e' dele e a curadoria e' minha —
+# copy fica na alcada dele, e qualquer entrada abaixo se troca a pedido.
+#
+# ⛔⛔ O QUE MUDA E' SO' O ALVO. Tudo o mais que o pool normal carrega continua
+# obrigatorio aqui, e nao por simetria: sao as travas que o motor ja' cobra de
+# fora, e uma entrada que as fura so' apareceria em 1/16 dos sorteios.
+#   · o literal `gelatin trick` COM `bowl` na mesma sentenca ...... GO9
+#   · VERBO de `sc.VERBOS_EFEITO_16` + ALVO de `sc.ALVOS_16` ...... CT3
+#   · nenhum ingrediente nomeado ................................. CT5
+#   · nenhuma sentenca abrindo em pronome nu ..................... GO9
+#   · 11 a 12 palavras (teto real 13: 25 - menor CTA 9 - menor PRECO 3)
+#
+# ⛔ E DUAS PROIBICOES QUE SO' EXISTEM NESTE POOL:
+#   · NENHUM `{o}` e nenhum termo do `NUCLEO` — e' literalmente o que o botao
+#     promete, e a `GO12` reprova a fala inteira se um escapar;
+#   · NENHUM token de `sc.ERECAO_16` (`hard`, `harder`, `stands up`...). O CT7
+#     so' proibiria o par verbo+orgao, e sem orgao `harder` passaria — mas
+#     `makes your body harder` e' a frase de anabolizante que o operador
+#     reprovou em 2026-08-10. Modo LEVE que devolve a copy condenada nao e'
+#     modo leve, e' regressao com botao.
+#
+# ⚠️ O ALVO E' `body`/`blood`/`flow` PORQUE O CT3 SO' CONHECE ESSES (mais
+# `pressure`). `vitality`, `stamina` e `strength` entram como QUALIDADE ao lado
+# do alvo, nunca no lugar dele — `improve your vitality` sozinho seria `gelatin
+# trick` sem razao, e a lente compartilhada reprovaria com toda a razao. Ampliar
+# `ALVOS_16` para aceitar `vitality` afrouxaria o CT3 nos 18 motores de 16s para
+# resolver um problema de um; a entrada e' que se dobra ao contrato.
+MISTURAS_LEVE = [
+    # --- MECANISMO: o sangue e o fluxo, sem nomear onde chegam ------------
+    "The gelatin trick in this bowl keeps your blood flowing right.",
+    "The gelatin trick in this bowl opens your blood flow again.",
+    "The gelatin trick in this bowl sends blood through your whole body.",
+    "The gelatin trick in this bowl clears the path for your blood.",
+    "The gelatin trick in this bowl feeds your body every single night.",
+    "One bowl of the gelatin trick a night feeds your whole body.",
+    "Every night this bowl of the gelatin trick feeds your tired body.",
+    # --- VITALIDADE: a promessa no registro do operador -------------------
+    "The gelatin trick in this bowl keeps your body strong at night.",
+    "The gelatin trick in this bowl makes your whole body feel younger.",
+    "The gelatin trick in this bowl gives your body real stamina.",
+    "The gelatin trick in this bowl puts real strength in your body.",
+    "The gelatin trick in this bowl carries strength through your whole body.",
+    "A bowl of the gelatin trick nightly keeps your body strong.",
+    "A bowl of the gelatin trick every night keeps your body young.",
+    "One bowl of the gelatin trick a night gives your body vitality.",
+    "The gelatin trick I mix in this bowl keeps your body strong.",
+    "This bowl holds the gelatin trick, and it keeps your body strong.",
+]
+
 # ⚠️ O beat mais dispensavel dos tres, e o unico que nao carrega promessa nem
 # comando — por isso e' ele que absorve a sobra do orcamento.
 # ⛔ SAIU `And it costs almost nothing.`: `it` sem dono e' exatamente o que a
@@ -928,15 +1021,24 @@ def _falas(spec, rng, quais=(0, 1)):
         f[0] = "%s %s %s" % (av, es, ag)
 
     if 1 in quais:
+        # ⭐⭐ MODO COPY LEVE: troca-se o POOL, nao a maquinaria. O orcamento, a
+        # ordem de escolha e as reservas continuam identicas — o modo e' um
+        # ponteiro de pool e um `o` que passa a valer `None`.
+        # ⛔ `o=None` nao e' detalhe: `_cabe` e `_mn` so' chamam `.format(o=...)`
+        # quando `o` nao e' None, e as entradas leves NAO tem placeholder.
+        # Formata-las estouraria a conta de palavras por um `KeyError` calado.
+        leve = bool(spec.get("leve"))
+        pool_mi = MISTURAS_LEVE if leve else MISTURAS
+        o = None if leve else spec["apelido"]
         # ⛔ O CTA escolhe PRIMEIRO: ele carrega o literal `Comment gelatin,` e o
         # endereco da entrega, e nao se encurta. O PRECO e' o beat mais
         # intercambiavel e vai por ULTIMO, absorvendo a sobra.
-        o = spec["apelido"]
-        ct = rng.choice(_cabe(CTAS, _mn(MISTURAS, o) + _mn(PRECOS), 2))
-        mi = rng.choice(_cabe(MISTURAS,
+        ct = rng.choice(_cabe(CTAS, _mn(pool_mi, o) + _mn(PRECOS), 2))
+        mi = rng.choice(_cabe(pool_mi,
                               _palavras(ct)
-                              + _rsv([_palavras(x) for x in PRECOS]), 2,
-                              o)).format(o=o)
+                              + _rsv([_palavras(x) for x in PRECOS]), 2, o))
+        if o is not None:
+            mi = mi.format(o=o)
         pr = rng.choice(_cabe(PRECOS, _palavras(ct) + _palavras(mi), 2))
         f[1] = "%s %s %s" % (mi, pr, ct)
 
@@ -989,6 +1091,12 @@ def sortear(pagina, rng, ledger, travas=None):
         mulher = sc.ref_bela(MULHERES[0], rng)
         mulher["etnia"] = _et_dela
 
+    # ⭐⭐ MODO COPY LEVE — o unico modo do parque que NAO disputa com cadeado
+    # nenhum da tela. `bela` e `forte` cedem a uma REF travada porque trocam a
+    # PESSOA; este nao troca ninguem: os quatro eixos do painel (mundo, homem,
+    # mulher, tigela) sobrevivem intactos, e o que muda e' o pool da fala 2.
+    leve = bool(travas.get("leve"))
+
     tigela = (_por_id(TIGELAS, travas["tigela"]) if travas.get("tigela")
               else _fresco(TIGELAS, hist.get("tigela", [])[-3:], rng))
     # ⭐ 50/50: metade dos videos com a caixa de bicarbonato ao lado da
@@ -997,6 +1105,7 @@ def sortear(pagina, rng, ledger, travas=None):
 
     spec = {
         "pagina": pagina, "etnia": etnia, "bela": bela, "forte": forte,
+        "leve": leve,
         "mundo": mundo, "homem": homem, "mulher": mulher, "tigela": tigela,
         "bicarb": bicarb,
         # ⭐ Com o MODO FORTE ligado o corpo vem DO HELPER, junto do rosto e da
@@ -1007,7 +1116,11 @@ def sortear(pagina, rng, ledger, travas=None):
         # Entrou em 2026-08-10, quando a fala do take 2 passou a nomear o
         # orgao (ver o cabecalho de MISTURAS). O take 1 continua sem nomea-lo,
         # entao o CT4 (apelido igual nos dois takes) nao tem o que comparar.
-        "apelido": rng.choice(list(sc.APELIDOS_16)),
+        # ⭐ E no MODO COPY LEVE ele e' `None`, nao um apelido nao usado: um
+        # apelido sorteado e engavetado apareceria no painel (a linha `no TAKE
+        # sai como: Johnson → John-son`) prometendo uma palavra que o video nao
+        # diz. Chave que existe e mente e' pior que chave vazia.
+        "apelido": None if leve else rng.choice(list(sc.APELIDOS_16)),
     }
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
     return spec
@@ -1454,6 +1567,55 @@ def _go11_contrato16(spec, blocos, achados):
                     if not msg.startswith("CT2:")])
 
 
+def _go12_leve(spec, blocos, achados):
+    """⭐⭐ GO12 — O MODO COPY LEVE, COBRADO NOS DOIS ESTADOS.
+
+    ⛔ Lente que so' olha o estado LIGADO deixa o desligado apodrecer sem
+    ninguem ver — e' a mesma doutrina da `GO-BICARB` e da `GO10`, e aqui ela
+    vale dobrado: os dois estados deste motor tem copy CONTRARIA, e o defeito
+    silencioso seria o toggle desligado passar a entregar a copy leve (ou
+    vice-versa) sem que nada reprovasse.
+
+    ⭐ E ela cobra as DUAS coisas que podem quebrar independentes:
+      · o TOKEN — nenhum termo do `NUCLEO` na fala do modo leve, que e'
+        literalmente o que o botao promete ao operador;
+      · o POOL — a fala 2 tem de ter nascido do pool do estado atual. Sem esta
+        metade, um `MISTURAS_LEVE` que um dia recebesse `{o}` passaria batido:
+        o token estaria ausente do pool e presente no video.
+    """
+    achou = sorted({n for n in NUCLEO for f in spec["falas"]
+                    if n.lower() in f.lower()})
+    leve = bool(spec.get("leve"))
+    pool = MISTURAS_LEVE if leve else MISTURAS
+    o = spec.get("apelido")
+    esperado = [x if o is None else x.format(o=o) for x in pool]
+
+    if leve:
+        if achou:
+            achados.append(("ERRO", "GO12: modo COPY LEVE ligado e a fala ainda "
+                                    "nomeia o orgao (%s) — o toggle promete "
+                                    "exatamente a ausencia disso, e botao que "
+                                    "nao cumpre o que escreve e' pior que botao "
+                                    "nenhum" % achou))
+        if spec.get("apelido") is not None:
+            achados.append(("ERRO", "GO12: modo COPY LEVE ligado e o spec ainda "
+                                    "carrega um apelido (%r) — o painel o "
+                                    "mostraria na linha do sonoro, prometendo "
+                                    "uma palavra que o video nao diz"
+                            % spec["apelido"]))
+    elif not achou:
+        achados.append(("ERRO", "GO12: modo COPY LEVE DESLIGADO e a fala nao "
+                                "nomeia o orgao — o padrao deste motor e' a "
+                                "copy TAXATIVA de 2026-08-10, e `your body "
+                                "strong` sozinho descreve um anabolizante "
+                                "igual de bem"))
+
+    if not any(spec["falas"][1].startswith(x) for x in esperado):
+        achados.append(("ERRO", "GO12: a mistura do take 2 nao veio do pool do "
+                                "estado atual (leve=%s) — o modo trocou de "
+                                "nome e nao trocou de pool" % leve))
+
+
 def _go_bicarb(spec, blocos, achados):
     """⭐ A caixa de bicarbonato: nos DOIS takes ou em NENHUM.
 
@@ -1488,7 +1650,7 @@ def lint(spec, blocos):
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_go1_corpo_nao_orgao, _go2_ela_muda, _go4_sache, _go5_orcamento,
               _go6_etnia, _go7_ancora, _go8_tigela, _go9_mistura,
-              _go10_modos, _go11_contrato16, _go_bicarb):
+              _go10_modos, _go11_contrato16, _go12_leve, _go_bicarb):
         f(spec, blocos, ach)
     return ach
 
@@ -1534,11 +1696,18 @@ def resumo_pt(spec):
             "na cintura, inclinado sobre a borda, MEXENDO a tigela com a "
             "colher e sorrindo; o sache GELATIN amassado ao lado dela; ela "
             "colada nele, olhando a tigela. A fala NOMEIA a mistura, diz o "
-            "preco e fecha no CTA. Elenco: homem %s de %d anos (modo FORTE "
+            "preco e fecha no CTA%s. Elenco: homem %s de %d anos (modo FORTE "
             "%s), mulher %s de %d anos (modo BELA %s). Ela e' MUDA nos dois "
             "takes."
             % (spec["mundo"]["regiao"], spec["etnia"], spec["homem"]["idade"],
                spec["mundo"]["agua"], spec["tigela"]["curto"],
+               # ⭐ O modo COPY LEVE entra AQUI, colado na descricao da fala, e
+               # nao na lista de modos do fim: e' o unico que nao mexe no
+               # elenco, e o operador le' esta linha para saber o que vai ouvir
+               # antes de gastar credito.
+               (" — modo COPY LEVE LIGADO: a fala NAO nomeia o orgao"
+                if spec.get("leve") else
+                " (a fala nomeia o orgao: %s)" % spec.get("apelido")),
                spec["etnia"], spec["homem"]["idade"],
                "LIGADO" if spec.get("forte") else "desligado",
                spec["mulher"]["etnia"], spec["mulher"]["idade"],
@@ -1563,6 +1732,12 @@ def autoteste(n=400):
     # que e' exatamente como seis botoes `trocar` ficaram quebrados em
     # 2026-07-31 sem ninguem ver.
     estados = collections.defaultdict(lambda: collections.defaultdict(set))
+    # ⭐⭐ O TERCEIRO TOGGLE ENTRA NUM ACUMULADOR PROPRIO, e nao na chave de
+    # `estados`. Os controles de elenco (idade, traje) medem PESSOAS, e o modo
+    # COPY LEVE nao troca ninguem: enfiar `leve` na chave dobraria a tabela
+    # impressa para dizer duas vezes a mesma coisa sobre o casting. O que ele
+    # move e' a FALA, e e' a fala que este dicionario guarda.
+    falas_leve = {False: set(), True: set()}
 
     for i in range(n):
         modo = {}
@@ -1570,7 +1745,10 @@ def autoteste(n=400):
             modo["bela"] = True
         if (i // 2) % 2:
             modo["forte"] = True
+        if (i // 4) % 2:
+            modo["leve"] = True
         s = sortear(pags[i % len(pags)], random.Random(i), {}, modo)
+        falas_leve[bool(s["leve"])].add(s["falas"][1])
         chave = (bool(s["bela"]), bool(s["forte"]))
         estados[chave]["idade_dela"].add(s["mulher"]["idade"])
         estados[chave]["idade_dele"].add(s["homem"]["idade"])
@@ -1585,7 +1763,8 @@ def autoteste(n=400):
             else:
                 avisos += 1
 
-    print("GOOD 16 — %d sorteios (os QUATRO estados de bela x forte)" % n)
+    print("GOOD 16 — %d sorteios (bela x forte x copy leve, os OITO estados)"
+          % n)
     for c in sorted(dist):
         v = sorted(tam[c])
         print("  cena %d: %d falas distintas · palavras min/med/max %d/%d/%d"
@@ -1598,6 +1777,8 @@ def autoteste(n=400):
                  min(e["idade_dela"]), max(e["idade_dela"]),
                  min(e["idade_dele"]), max(e["idade_dele"]),
                  len(e["traje"])))
+    print("  copy leve off: %d falas 2 distintas · ON: %d"
+          % (len(falas_leve[False]), len(falas_leve[True])))
     print("  linter: %d ERRO, %d AVISO" % (sum(erros.values()), avisos))
     for k, v in erros.most_common(5):
         print("     %3dx %s" % (v, k))
@@ -1630,6 +1811,7 @@ def autoteste(n=400):
             ("ESPOSAS", ESPOSAS, 1, [AVISOS, AGUENTAM]),
             ("AGUENTAM", AGUENTAM, 1, [AVISOS, ESPOSAS]),
             ("MISTURAS", MISTURAS, 2, [PRECOS, CTAS]),
+            ("MISTURAS_LEVE", MISTURAS_LEVE, 2, [PRECOS, CTAS]),
             ("PRECOS", PRECOS, 2, [MISTURAS, CTAS]),
             ("CTAS", CTAS, 2, [MISTURAS, PRECOS])):
         reserva = sum(_mn(p) for p in outros)
@@ -1679,6 +1861,85 @@ def autoteste(n=400):
                       "e orgao — e' o par que o COLO 16 pagou com ~95%% de "
                       "recusa: %s" % (len(com_erecao), com_erecao[:1]))
 
+    # ⛔⛔ OS CONTROLES DO MODO COPY LEVE (2026-08-12)
+    # ---------------------------------------------------------------------
+    # (a) HIGIENE DO POOL. As mesmas travas do pool normal, MENOS o alvo — e
+    #     mais as duas que so' existem aqui: nenhum `{o}`, nenhum termo do
+    #     NUCLEO e nenhum verbo de ereccao (sem orgao na sentenca o CT7 nao
+    #     acusaria `harder`, e `your body harder` e' a frase que o operador
+    #     reprovou em 2026-08-10 — o modo leve nao pode ser a porta dos fundos
+    #     dela).
+    for rotulo, teste, entradas in (
+            ("`{o}`", lambda x: "{o}" in x, MISTURAS_LEVE),
+            ("termo do NUCLEO",
+             lambda x: any(t.lower() in x.lower() for t in NUCLEO),
+             MISTURAS_LEVE),
+            ("verbo de ereccao", lambda x: bool(sc.ERECAO_16.search(x)),
+             MISTURAS_LEVE),
+            ("ingrediente", lambda x: bool(sc.INGREDIENTES_16.search(x)),
+             MISTURAS_LEVE),
+            ("pronome nu", lambda x: bool(_PRONOME_NU.search(x)),
+             MISTURAS_LEVE)):
+        ruins = [x for x in entradas if teste(x)]
+        if ruins:
+            falhas.append("LEVE: %d entrada(s) de MISTURAS_LEVE com %s: %s"
+                          % (len(ruins), rotulo, ruins[:1]))
+    for x in MISTURAS_LEVE:
+        if "gelatin trick" not in x or not _MISTURA_NOMEADA.search(x):
+            falhas.append("LEVE: %r sem o literal do funil ou sem o "
+                          "designador da mistura (GO9/CT3)" % x)
+        baixo = x.lower()
+        if not any(re.search(r"\b%s\b" % v, baixo)
+                   for v in sc.VERBOS_EFEITO_16):
+            falhas.append("LEVE: %r sem VERBO de efeito — o CT3 reprova "
+                          "`gelatin trick` sem razao ao lado" % x)
+        if not any(a in baixo for a in sc.ALVOS_16):
+            falhas.append("LEVE: %r sem ALVO de `sc.ALVOS_16` — `improve your "
+                          "vitality` sozinho nao passa no CT3, a qualidade "
+                          "entra AO LADO do alvo, nunca no lugar dele" % x)
+
+    # (b) O TOGGLE MOVE. Modo que nao muda a fala e' forma sem funcao — e aqui
+    #     a prova e' dupla: os dois estados nao podem compartilhar uma fala 2,
+    #     e o estado LIGADO nao pode conter um apelido sequer.
+    if falas_leve[True] & falas_leve[False]:
+        falhas.append("MODO LEVE: os dois estados produziram a MESMA fala 2 — "
+                      "toggle que nao muda nada")
+    vazou = [f for f in falas_leve[True]
+             if any(t.lower() in f.lower() for t in NUCLEO)]
+    if vazou:
+        falhas.append("MODO LEVE: %d fala(s) do estado LIGADO nomeiam o orgao: "
+                      "%s" % (len(vazou), sorted(vazou)[:1]))
+    faltou = [f for f in falas_leve[False]
+              if not any(t.lower() in f.lower() for t in NUCLEO)]
+    if faltou:
+        falhas.append("MODO LEVE: %d fala(s) do estado DESLIGADO nao nomeiam o "
+                      "orgao — o padrao e' a copy taxativa: %s"
+                      % (len(faltou), sorted(faltou)[:1]))
+
+    # (c) CONTROLE NEGATIVO DA GO12, nos DOIS estados. Lente que nunca acusa e'
+    #     lente que ninguem sabe se funciona — e esta nasceu hoje.
+    _leve_ok = MISTURAS_LEVE[0] + " " + PRECOS[0] + " " + CTAS[0]
+    _pesada = MISTURAS[0].format(o="pecker") + " " + PRECOS[0] + " " + CTAS[0]
+    for rotulo, spec_teste, deve_acusar in (
+            ("leve ON com orgao na fala",
+             {"leve": True, "apelido": None, "falas": ["", _pesada]}, True),
+            ("leve ON com apelido engavetado no spec",
+             {"leve": True, "apelido": "pecker", "falas": ["", _leve_ok]}, True),
+            ("leve OFF com a copy leve",
+             {"leve": False, "apelido": "pecker", "falas": ["", _leve_ok]},
+             True),
+            ("leve ON limpo",
+             {"leve": True, "apelido": None, "falas": ["", _leve_ok]}, False),
+            ("leve OFF limpo",
+             {"leve": False, "apelido": "pecker", "falas": ["", _pesada]},
+             False)):
+        prova = []
+        _go12_leve(spec_teste, {}, prova)
+        if bool(prova) != deve_acusar:
+            falhas.append("GO12: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "nao acusou",
+                             "acusar" if deve_acusar else "passar"))
+
     # ⛔⛔ CONTROLE POSITIVO DA GO9 — lente que nunca acusa e' forma sem funcao,
     # e "sem achado" nela significaria "ninguem olhou". A frase abaixo e' a copy
     # que este motor tinha ATE' 2026-08-10; se a lente parar de pega-la, ela
@@ -1725,6 +1986,8 @@ def main():
                     help="MODO BELA ligado (o padrao e' o pool proprio)")
     ap.add_argument("--sem-forte", action="store_true",
                     help="desliga o MODO FORTE, que vem LIGADO por padrao")
+    ap.add_argument("--leve", action="store_true",
+                    help="MODO COPY LEVE: a fala nao nomeia o orgao")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--autoteste", action="store_true")
     a = ap.parse_args()
@@ -1739,6 +2002,8 @@ def main():
         travas["bela"] = True
     if not a.sem_forte:
         travas["forte"] = True
+    if a.leve:
+        travas["leve"] = True
     for _ in range(a.n):
         s = sortear(a.pagina, rng, led, travas)
         b = montar(s)

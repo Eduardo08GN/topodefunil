@@ -129,7 +129,8 @@ SEXOS = ("homem",)
 MODO_BELA = False
 # ⭐ O TERCEIRO modo do repo, e o primeiro que mexe na CENA e nao na pessoa.
 # O `ui_agente` desenha o botao sem o prefixo `ref` e NAO o desliga quando o
-# operador trava a REF na tela — ver `MODOS_DE_CENA` la'.
+# operador trava a REF na tela — ver `MODOS_NAO_REF` la' (a tupla se chamava
+# `MODOS_DE_CENA` ate' 2026-08-12, quando entrou nela um modo de COPY).
 MODO_RECEITA = True
 MODO_FORTE = False
 

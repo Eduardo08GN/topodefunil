@@ -14,9 +14,13 @@ good16_short.py.
     o operador troca, ve' que nada mudou e para de confiar no painel inteiro.
     Por isso os quatro sao cobrados a cada sorteio pelo `lint_painel_honesto`.
   · Uma pre-selecao de REGIAO (`TRAVAS_UI`), que filtra o mundo sorteado.
-  · ⭐⭐ DOIS TOGGLES DE MODO, e o `ref forte` NASCE MARCADO — o motor declara
+  · ⭐⭐ TRES TOGGLES DE MODO, e o `ref forte` NASCE MARCADO — o motor declara
     `MODOS_DEFAULT = ("forte",)` e a `ui_agente` le' isso com `getattr`. Ordem
     do operador, 2026-08-10.
+  · ⭐⭐ E o terceiro, de 2026-08-12, e' o `copy leve` — o primeiro toggle do
+    parque que nao troca ninguem nem nada em cena: ligado, a fala do take 2
+    deixa de nomear o orgao e sai do pool `MISTURAS_LEVE`. Nasce DESLIGADO,
+    porque o padrao deste motor continua sendo a copy taxativa de 2026-08-10.
   · ⛔ SAIU O TOGGLE DE ENQUADRAMENTO (`casal na agua` / `so as maos`): o macro
     sem rosto foi aposentado por ordem do operador, e com um enquadramento so'
     o eixo deixou de existir. Ver o tumulo no cabecalho do `good16_short.py`.

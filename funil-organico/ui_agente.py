@@ -147,7 +147,12 @@ class App(tk.Tk):
         # par de `if` espalhado pela classe" — e nao custou, so' entrou na
         # tupla. ⚠️ ADITIVO: motor que nao declara a flag nao ganha botao, e
         # por isso os outros 33 nao mudam de comportamento.
-        self.modos = [m for m in ("bela", "forte", "receita")
+        # ⭐ 2026-08-12: o QUARTO modo, e o primeiro que nao e' de pessoa nem de
+        # cena — `MODO_LEVE` (GOOD 16) troca a COPY: com ele ligado a fala nao
+        # nomeia o orgao. O comentario de 2026-08-05 previa o custo de um modo
+        # novo ("nao pode custar mais um par de `if` espalhado pela classe") e
+        # de novo nao custou: entrou na tupla e na `MODOS_NAO_REF`.
+        self.modos = [m for m in ("bela", "forte", "receita", "leve")
                       if getattr(motor, "MODO_%s" % m.upper(), False)]
         # ⭐ 5o contrato aditivo (2026-08-10): MODOS_DEFAULT — quais modos
         # nascem LIGADOS. Ordem do operador para o GOOD 16: *"toggle marcado
@@ -310,7 +315,8 @@ class App(tk.Tk):
         # botao escrito "ref receita" prometeria trocar alguem.
         self.b_modo = {}
         for _m in reversed(self.modos):
-            _txt = _m if _m in self.MODOS_DE_CENA else "ref %s" % _m
+            _txt = self.TEXTO_MODO.get(
+                _m, _m if _m in self.MODOS_NAO_REF else "ref %s" % _m)
             b = tk.Button(cx, text=_txt, font=F_SMALL, relief="flat",
                           bd=0, cursor="hand2", padx=12, pady=5,
                           command=lambda k=_m: self.alternar_modo(k))
@@ -625,7 +631,7 @@ class App(tk.Tk):
         # seria o botao aceso com o video sem a receita — forma sem funcao,
         # e silenciosa.
         for _m, _on in self.modo_on.items():
-            if _on and ("ref" not in t or _m in self.MODOS_DE_CENA):
+            if _on and ("ref" not in t or _m in self.MODOS_NAO_REF):
                 t[_m] = True
         return t
 
@@ -800,9 +806,19 @@ class App(tk.Tk):
                         activebackground=ACCENT_D if ativo else LINE,
                         activeforeground="#ffffff")
 
-    # ⛔ Modos que mexem na CENA, nao na pessoa. Dois efeitos: o botao nao
-    # diz `ref`, e o cadeado de REF NAO os desliga (ver `travas()`).
-    MODOS_DE_CENA = ("receita",)
+    # ⛔ Modos que NAO trocam a pessoa. Dois efeitos: o botao nao diz `ref`, e
+    # o cadeado de REF NAO os desliga (ver `travas()`).
+    # ⭐ 2026-08-12 — RENOMEADO de `MODOS_DE_CENA`, porque o nome passou a
+    # mentir: entrou `leve` (GOOD 16), que nao mexe na cena nem na pessoa — mexe
+    # na COPY. O que os dois tem em comum, e e' isso que a tupla governa, e' nao
+    # serem modos de REF. Renomeado em vez de ampliado: tupla chamada "de cena"
+    # com um modo de copy dentro e' a armadilha que faz o proximo leitor tratar
+    # os dois como iguais.
+    MODOS_NAO_REF = ("receita", "leve")
+
+    # ⚠️ Texto do BOTAO quando o nome cru do modo nao se explica sozinho. `leve`
+    # aceso, sozinho na barra, nao diz leve O QUE.
+    TEXTO_MODO = {"leve": "copy leve"}
 
     ROTULO_MODO = {
         "bela": "super model, corpo escultural, pouca roupa",
@@ -810,6 +826,8 @@ class App(tk.Tk):
         # ⚠️ este descreve CENA, nao pessoa — e o rotulo diz isso, para o
         # operador nao esperar que ele troque alguem.
         "receita": "a receita na borda: tigela, caixa e ele mexendo",
+        # ⚠️ e este descreve COPY: nem pessoa, nem cena.
+        "leve": "a fala nao nomeia o orgao — registro mais leve",
     }
 
     def alternar_modo(self, chave):
@@ -822,7 +840,11 @@ class App(tk.Tk):
         self.modo_on[chave] = not self.modo_on[chave]
         self._pintar_modos()
         self.sortear()
-        self._toast("modo REF %s %s" % (
+        # ⚠️ `REF` so' entra para os modos que TROCAM ALGUEM. O toast dizia
+        # "modo REF RECEITA" desde 2026-08-10 — e com o `leve` diria "modo REF
+        # LEVE", que promete uma pessoa nova a cada clique.
+        self._toast("modo %s%s %s" % (
+            "" if chave in self.MODOS_NAO_REF else "REF ",
             chave.upper(),
             "LIGADO — " + self.ROTULO_MODO.get(chave, "")
             if self.modo_on[chave] else "desligado"))
