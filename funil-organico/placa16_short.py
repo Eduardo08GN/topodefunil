@@ -239,8 +239,34 @@ BO_NAO_TOCA = ("Nothing else on the %s is touched, moved, opened or lifted, and 
 # o render: *"dois canudos? quero so' um"* — dois leem como bebida de casal).
 # ⛔ Ele so' existe na CENA 3, e e' o objeto da keyword — esta' na mao no frame em
 # que a boca diz `gelatin,`. Mostra-lo antes entrega o payoff antes da promessa.
-BO_COPO = ("a tall clear glass filled to the top with a thick pale drink, a "
-           "single paper straw standing in it")
+# ⛔⛔ A TIGELA SUBSTITUIU O COPO EM 2026-08-12. Ordem do operador: *"quero
+# tb no take 2, no lugar do copo com shake, a mulher com uma bowl de cubos de
+# gelatina fazendo stirring com colher e uma caixa de baking soda ao lado"*.
+#
+# ⭐ E' a mesma correcao que o ESCANDALO 16 recebeu, pelo mesmo motivo: o copo
+# de shake nao diz RECEITA. Cubos de gelatina numa tigela e a caixa de
+# bicarbonato ao lado dizem — sem uma palavra de fala, e sem nomear ingrediente
+# nenhum (o CT5 proibe o ingrediente na boca; o lugar dele e' a imagem).
+#
+# ⛔⛔ A TIGELA FICA NA BANCADA, E ISSO NAO E' DETALHE: as duas maos dela ja'
+# estao ocupadas neste angulo — o prop gigante numa, e agora a colher na outra.
+# Pedir que ela SEGURE a tigela E mexa E segure o prop e' a terceira mao, o
+# defeito que o ESCANDALO 16 gerou quando o dedo apontado sobrou junto das duas
+# maos na tigela. Aqui a tigela repousa, uma mao mexe, a outra segura o prop.
+#
+# ⚠️ O bicarbonato e' descrito por FORMA e COR, nunca pelo rotulo: `ES13` do
+# irmao reprovou 200/200 quando a caixa vinha com `label sharp and readable` —
+# texto legivel em cena e' bloqueio na certa.
+# ⚠️ A SUPERFICIE E' SLOT, nao a palavra `counter`. Ha' mundos com ilha, com
+# tabua, com bancada — e o autoteste do proprio agente reprovou 43 de 600 seeds
+# quando eu cravei `on the counter` aqui: *"`counter` sobrou num mundo de island
+# (atlanta) — literal esquecido no refactor"*. O motor ja' tinha a lente; ela
+# pegou o meu erro na primeira execucao.
+BO_TIGELA = ("a clear glass bowl full of cut cubes of set amber gelatin with a "
+             "spoon standing in it, and beside it an orange and yellow "
+             "cardboard box of baking soda")
+BO_TIGELA_PARADA = ("The bowl and the box stay exactly where they are on the "
+                    "%s and are never picked up.")
 
 # ⭐⭐ BO6 — O HOMEM MUDO. Ordem do operador: *"no take final, alem do ref
 # falando, havera um homem sempre atras, com cara de espanto e surpresa e
@@ -302,10 +328,10 @@ REACOES_HOMEM = [
 BO_HOMEM = (
     "Standing behind her and slightly to frame-left, close enough to be in the "
     "same focus, is a %d-year-old %s man, %s, wearing %s. %s, and he is "
-    "looking directly at the glass in her hand — never at the camera."
+    "looking directly at the bowl in front of her — never at the camera."
 )
 BO_HOMEM_TAKE = (
-    "The man behind her %s, eyes fixed on the glass the whole time, and never "
+    "The man behind her %s, eyes fixed on the bowl the whole time, and never "
     "speaks. Only she speaks, straight into the lens."
 )
 
@@ -1132,97 +1158,143 @@ REFS = [
 # ⚠️ Ele existe para encenar o espanto NO LUGAR do espectador, que e' a mecanica
 # da plateia congelada do ESCANDALO. Por isso ele olha o COPO, nunca a lente.
 HOMENS = [
-    {"id": "grisalho_barbudo", "idade": 58,
-     "marca": "a heavy-set build, thick silver hair and a short grey beard, "
-              "weathered skin and a pale scar through one eyebrow",
-     "roupa": "a plain navy work shirt"},
-    {"id": "careca_bigode", "idade": 63,
-     "marca": "a stocky build, a bald crown with white hair at the sides and a "
-              "thick moustache, ruddy skin and a large mole on his cheek",
-     "roupa": "a heather-grey pocket tee"},
-    {"id": "cabelo_farto", "idade": 46,
-     "marca": "a tall lean frame, a full head of dark hair going grey at the "
-              "temples, clean-shaven, with a deep cleft in his chin",
-     "roupa": "an olive canvas shirt with the sleeves rolled"},
-    {"id": "sardas_ruivo", "idade": 41,
-     "marca": "a wiry build, coppery hair and heavy freckling across the nose, "
-              "with a gap between his front teeth",
-     "roupa": "a faded red flannel shirt"},
-    {"id": "fade_grisalho", "idade": 55,
-     "marca": "a broad-shouldered build, a close grey fade and a neat chinstrap "
-              "beard, smooth skin and a small gold stud in one ear",
-     "roupa": "a slate-blue polo shirt"},
-    {"id": "locs_oculos", "idade": 49,
-     "marca": "a solid build, salt-and-pepper locs gathered back, wire-rimmed "
-              "glasses and a raised mole beside his right eye",
-     "roupa": "a charcoal henley with the sleeves pushed up"},
-    {"id": "corte_militar", "idade": 52,
-     "marca": "a thickset build, an iron-grey brush cut, sun-weathered skin and "
-              "a broad nose broken once",
-     "roupa": "a mustard snap-button shirt"},
-    {"id": "cavanhaque", "idade": 60,
-     "marca": "a barrel-chested build, a shaved head and a neat white goatee, "
-              "with a white streak in one eyebrow",
-     "roupa": "a cream short-sleeve camp shirt"},
-    {"id": "onda_longa", "idade": 44,
-     "marca": "a slim build, wavy dark hair worn a little long at the collar, "
-              "clean-shaven, with a deep dimple in his left cheek",
-     "roupa": "a forest-green work shirt"},
-    {"id": "sobrancelha_oculos", "idade": 66,
-     "marca": "a gaunt frame, white hair combed back, heavy black-framed "
-              "glasses and deeply lined skin",
-     "roupa": "a blue-and-white checked shirt"},
-    {"id": "queixo_fendido", "idade": 47,
-     "marca": "a compact build, sandy hair going grey at the sides, tanned skin "
-              "and a strong cleft chin",
-     "roupa": "a rust-red pocket tee"},
-    {"id": "afro_curto", "idade": 54,
-     "marca": "a burly build, a short grey afro and a broad open face, with a "
-              "small birthmark high on one cheek",
-     "roupa": "a sand-coloured linen shirt"},
-    # + 2026-08-05, mesma ordem do operador. Porte, cabeca e pelo facial variam
-    # juntos: dois homens de cabelo diferente e mesmo porte leem como o mesmo.
-    {"id": "bigode_farto", "idade": 57,
-     "marca": "a lean upright frame, dark hair combed to one side and a thick "
-              "moustache, with deep laugh lines around the eyes",
-     "roupa": "a striped short-sleeve shirt"},
-    {"id": "calvo_barba", "idade": 51,
-     "marca": "a heavy build, a shaved head and a full salt-and-pepper beard, "
-              "with a broad flat nose",
-     "roupa": "a denim work shirt"},
-    {"id": "branco_liso", "idade": 62,
-     "marca": "a narrow build, straight white hair falling over the forehead, "
-              "hollow cheeks and a cleft chin",
-     "roupa": "a pale blue oxford shirt"},
-    {"id": "locs_curtas", "idade": 45,
-     "marca": "a stocky athletic build, short twisted locs and a trimmed "
-              "goatee, with a small scar on his temple",
-     "roupa": "a burgundy polo shirt"},
-    {"id": "sobrancelha_farta", "idade": 59,
-     "marca": "a solid build, thinning grey hair and very heavy dark eyebrows, "
-              "with a bulbous nose",
-     "roupa": "a khaki utility shirt"},
-    {"id": "queimado_sol", "idade": 48,
-     "marca": "a rangy build, sun-bleached brown hair and a deep tan line "
-              "across the forehead, with a squint at the corners of both eyes",
-     "roupa": "a faded teal work shirt"},
-    {"id": "cavanhaque_branco", "idade": 65,
-     "marca": "a spare frame, close-cropped white hair and a white goatee, "
-              "with prominent ears",
-     "roupa": "a grey chambray shirt"},
-    {"id": "cacheado_grisalho", "idade": 43,
-     "marca": "a broad build, dense curly hair going grey at the temples and a "
-              "strong square jaw, with a chipped front tooth",
-     "roupa": "a black crew-neck tee"},
-    {"id": "bochechudo", "idade": 56,
-     "marca": "a round-faced heavy build, dark hair receding at the temples "
-              "and full cheeks, with a dimpled chin",
-     "roupa": "a plaid flannel shirt"},
-    {"id": "magro_alto", "idade": 50,
-     "marca": "a very tall gaunt frame, iron-grey hair cropped short and a "
-              "long straight nose, with deep-set eyes",
-     "roupa": "a white undershirt beneath an open work shirt"},
+    # ⛔⛔ POOL REESCRITO EM 2026-08-12. Ordem do operador, com o lote na mao:
+    # *"quero um pool com homens 50+ com melhor aparencia no agente placa16;
+    # esses caras tao parecendo mendigo"*.
+    #
+    # ⚠️ O QUE ESTAVA ERRADO, MEDIDO no pool anterior (22 entradas):
+    #     8 de 22 tinham MENOS de 50 anos — ele pediu 50+
+    #     9 marcadores de dano: `weathered` (2), `ruddy`, `scar` (2),
+    #     `gap between his front teeth`, `freckling`, `mole` (2), `worn`
+    # Pele castigada, cicatriz, dente faltando e verruga nao sao "marca
+    # distintiva": sao DANO. Num homem de 60, dano renderiza exatamente como ele
+    # descreveu.
+    #
+    # ⭐ A REGRA E' A DO REPO: **DISTINTIVO, NUNCA DETERIORADO**. A ancora e' uma
+    # feicao MEMORAVEL num rosto SAUDAVEL.
+    #
+    # ⛔⛔ E A PRIMEIRA VERSAO DESTE POOL ZEROU DOIS EIXOS VIVOS — medido pelo
+    # `medir_personagens --gate`: `HOMENS/pele` e `HOMENS/ancora` passaram de
+    # cheios a ZERO. Eu tinha tirado as cicatrizes e as verrugas (certo) e nao
+    # tinha posto nada no lugar (errado), e escrevi `clear skin`/`smooth skin`,
+    # que nao estao no vocabulario do medidor.
+    # ⭐ A saida nao era desistir de nenhum dos dois: **cada eixo tem membros
+    # SAUDAVEIS**, e sao esses que ficam.
+    #     pele ...... `smooth-skinned`, `tanned`, `freckled`, `laugh lines`
+    #     ancora .... `cleft`, `dimple`, `silver streak`, `stud`, `hoop`,
+    #                 `beauty mark`, `crown`
+    # Nenhum deles e' avaria, e os dois eixos voltam a girar.
+    #
+    # ⛔⛔ E NENHUMA PALAVRA DE APROVACAO: nao ha' `handsome`, `chiseled`,
+    # `distinguished`, `strong jaw` nem `piercing eyes`, e a ausencia e'
+    # deliberada — elogio no prompt puxa o rosto para a media de banco de
+    # imagem, o mesmo mecanismo que faz `not a celebrity` invocar a celebridade.
+    #
+    # ⚠️ A ETNIA NAO ENTRA AQUI: vem do MUNDO (`spec["etnia"]`), igual a' dela.
+    # Descrever etnia na `marca` criaria duas vozes brigando no mesmo sintagma —
+    # o defeito que trocou a mulher entre os takes do `fight16`.
+    #
+    # ⚠️ OS OCULOS JA' ESTAVAM ZERADOS ANTES DE MIM (uma entrada em 22 mede 0%).
+    # Passaram a seis: eixo que existe no medidor e nunca gira e' rotacao morta.
+    {"id": "prata_curto", "idade": 56,
+     "marca": "a full head of silver hair cut short and combed back from a high "
+              "forehead, clean-shaven and smooth-skinned, with a shallow cleft "
+              "in his chin",
+     "roupa": "a charcoal quarter-zip merino sweater"},
+    {"id": "barba_aparada", "idade": 59,
+     "marca": "close-cropped grey hair and a short beard trimmed tight to the "
+              "jawline, lightly tanned, with a small silver stud in one ear",
+     "roupa": "a navy merino polo shirt"},
+    {"id": "risca_prata", "idade": 52,
+     "marca": "thick dark hair with a clean side part and a bright silver "
+              "streak at the front, clean-shaven and smooth-skinned",
+     "roupa": "a pressed white oxford shirt with the collar open"},
+    {"id": "careca_barba_branca", "idade": 63,
+     "marca": "a smoothly shaved crown and a neatly kept white beard, "
+              "smooth-skinned, with a dimple in one cheek",
+     "roupa": "a black crewneck sweater"},
+    {"id": "onda_grisalha_oculos", "idade": 55,
+     "marca": "grey hair worn a little long and brushed back in a soft wave, "
+              "clean-shaven and lightly tanned, wearing slim wire-rimmed "
+              "glasses",
+     "roupa": "a light grey linen shirt"},
+    {"id": "fade_limpo", "idade": 51,
+     "marca": "a crisp grey fade with a clean line at the temples, a closely "
+              "shaved face, smooth-skinned, with a deep cleft in his chin",
+     "roupa": "a deep green polo shirt"},
+    {"id": "bigode_branco", "idade": 61,
+     "marca": "silver hair cut neatly above the ears and a trimmed white "
+              "moustache, laugh lines at the eyes and a beauty mark high on "
+              "one cheekbone",
+     "roupa": "a soft blue button-down shirt"},
+    {"id": "cachos_grisalhos", "idade": 54,
+     "marca": "short grey curls kept close to the crown, clean-shaven and "
+              "smooth-skinned, with a dimple that shows on one side",
+     "roupa": "a burgundy fine-knit sweater"},
+    {"id": "escovinha_oculos", "idade": 58,
+     "marca": "a silver brush cut kept very short, clean-shaven and tanned, "
+              "wearing rimless reading glasses pushed up",
+     "roupa": "a slate quarter-zip pullover"},
+    {"id": "locs_prateados", "idade": 57,
+     "marca": "silver locs gathered neatly at the back, a short trimmed beard, "
+              "smooth-skinned, with a plain gold hoop in one ear",
+     "roupa": "a cream henley with the sleeves pushed up"},
+    {"id": "cavanhaque_curto", "idade": 60,
+     "marca": "grey hair cut short all over and a small trimmed goatee, "
+              "lightly tanned, with a white streak running through the goatee",
+     "roupa": "a navy blazer over a plain white tee"},
+    {"id": "risca_lateral", "idade": 53,
+     "marca": "dark hair silvering at the temples with a sharp side part, "
+              "clean-shaven and smooth-skinned, with a cleft chin",
+     "roupa": "a pale grey polo shirt"},
+    {"id": "careca_oculos", "idade": 62,
+     "marca": "a cleanly shaved crown with no beard at all, smooth-skinned, "
+              "wearing heavy dark-rimmed glasses",
+     "roupa": "a dark olive crewneck sweater"},
+    {"id": "barba_cheia_branca", "idade": 66,
+     "marca": "thick white hair combed back and a full beard kept neatly "
+              "shaped, laugh lines at the eyes and a small dimple beside his "
+              "mouth",
+     "roupa": "a soft charcoal cardigan over a white shirt"},
+    {"id": "corte_classico", "idade": 50,
+     "marca": "dark hair with grey coming in at the sides, cut in a clean "
+              "classic taper, clean-shaven and tanned, with a beauty mark near "
+              "his jaw",
+     "roupa": "a heather-blue long-sleeve polo"},
+    {"id": "sobrancelha_marcada", "idade": 64,
+     "marca": "short silver hair and dark level eyebrows that stand out "
+              "against it, clean-shaven and smooth-skinned, with a shallow "
+              "cleft in his chin",
+     "roupa": "a rust-coloured fine-knit sweater"},
+    {"id": "barba_curta_oculos", "idade": 55,
+     "marca": "grey hair cut short and a short even stubble kept deliberately "
+              "trimmed, lightly tanned, wearing slim half-rim glasses",
+     "roupa": "a dark navy overshirt"},
+    {"id": "topete_prata", "idade": 59,
+     "marca": "silver hair with volume at the front swept up and back, "
+              "clean-shaven and smooth-skinned, with a dimple in his left "
+              "cheek",
+     "roupa": "a soft camel crewneck"},
+    {"id": "mecha_branca", "idade": 61,
+     "marca": "neatly cut dark hair with a patch of white above one temple, "
+              "clean-shaven, freckled across the nose",
+     "roupa": "a pressed light blue shirt"},
+    {"id": "queixo_fundo", "idade": 57,
+     "marca": "short thick grey hair and a clean-shaven face with a deep cleft "
+              "in the chin, smooth-skinned",
+     "roupa": "a forest-green quarter-zip"},
+    {"id": "cabelo_farto_oculos", "idade": 65,
+     "marca": "a full head of white hair cut neatly above the collar, "
+              "clean-shaven with laugh lines at the eyes, wearing gold "
+              "half-moon glasses",
+     "roupa": "a stone-coloured linen shirt"},
+    {"id": "barba_curta_escura", "idade": 51,
+     "marca": "dark hair cut short with a silver streak at one sideburn and a "
+              "very short trimmed beard, smooth-skinned",
+     "roupa": "a black merino polo"},
 ]
+
+
 
 
 # ---------------------------------------------------------------------------
@@ -2381,7 +2453,7 @@ def montar(spec):
         "Ancora": _cap(_ancora(spec)),
         "vaso": met["vaso"], "vaso_curto": met["curto"], "acao": met["acao"],
         "comum_img": com["img"], "raro_img": raro["img"],
-        "copo": BO_COPO, "gigante": prop["gigante"], "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB), "cauda": CAUDA, "band": band,
+        "copo": BO_TIGELA, "gigante": prop["gigante"], "anti": (sc.ANTICELEB_BELA if spec.get("bela") else ANTICELEB), "cauda": CAUDA, "band": band,
     }
     v["nao_toca"] = BO_NAO_TOCA % m["sup"]
 
@@ -2428,10 +2500,16 @@ def montar(spec):
         "filmed straight on and framed from the waist up, with %(sup_a)s "
         "running across the bottom third of the picture. %(Ancora)s, standing "
         "centred behind it and turned towards the lens, holding %(gigante)s. "
-        "Her other hand holds %(copo)s. On the %(sup)s in front of her stand a "
+        "Resting on the %(sup)s directly in front of her is %(copo)s, and her "
+        "other hand is turning the spoon in the bowl. On the %(sup)s stand a "
         "wide-mouthed jar of pale powder, a jar of honey with a wooden dipper "
         "resting in it, two cut lemon halves and a clear glass mug of warm "
-        "water with a long spoon standing in it. She looks directly into the "
+        # ⛔⛔ A SEGUNDA COLHER SAIU (2026-08-12). A bancada-recibo tinha uma
+        # colher EM PE' na caneca; agora a mao dela gira uma colher NA TIGELA. Duas
+        # colheres no mesmo quadro e' o defeito das duas colheres que este repo ja'
+        # pagou: o gerador nao escolhe qual animar — ele desenha as duas mexendo,
+        # ou troca a que esta' na mao. A caneca fica; a colher dela e' que some.
+        "water. She looks directly into the "
         "camera, calm and certain, her mouth open mid-word as she speaks, her "
         "front teeth even and complete. %(homem)s %(anti)s %(cauda)s"
         # ⛔⛔ `_cap` NA REACAO. As entradas de REACOES_HOMEM comecam em
@@ -2457,9 +2535,16 @@ def montar(spec):
         # ⛔ O gesto da colher NAO entra. Ele descreve a mao dela mexendo em
         # circulos, e nao ha' mao livre — mandar animar os dois gestos e' a
         # contradicao IMAGE x TAKE que ja' custou lote neste repo.
-        ("She holds the glass steady at chest height the whole time and never "
-         "sets it down. Her other hand keeps the piece upright and never lowers "
-         "it. " + v["nao_toca"]),
+        # ⛔⛔ DUAS MAOS, DOIS GESTOS, E CADA UMA COM O SEU. Uma mao gira a
+        # colher; a outra segura o prop. A tigela NAO e' segurada — se fosse,
+        # seriam tres maos, que e' o defeito que o ESCANDALO 16 rendeu.
+        # ⚠️ E a tigela e a caixa NAO SAO PEGAS: ficam onde estao. Sem esta
+        # frase o gerador levanta a tigela no meio do plano, e ai' a mao do prop
+        # e' a que ele sacrifica.
+        ("She keeps turning the spoon in the bowl in slow circles the whole "
+         "time, and that is the only movement in that hand. Her other hand "
+         "keeps the piece upright and never lowers it. "
+         + (BO_TIGELA_PARADA % v["sup"]) + " " + v["nao_toca"]),
     ]
     # ⚠️ `Only she speaks` E' CORRETO NOS DOIS TAKES DESTE ANGULO, e foi
     # MEDIDO: a IMAGE poe ela `centred` e o TAKE nao nomeia lado nenhum. No
@@ -2817,22 +2902,30 @@ def lint(spec, blocos):
     # contradicao: ela troca o NOME do bloco e nao sabe que a FUNCAO dele
     # mudou. Renomear em massa e' seguro para chave de dicionario e perigoso
     # para regra — a diferenca so' aparece rodando.
-    if BO_COPO in i1:
+    if BO_TIGELA in i1:
         ach.append(("ERRO", "BO5: o copo pronto na cena 1 — entrega o payoff "
                             "antes da promessa"))
-    if BO_COPO not in i2:
+    if BO_TIGELA not in i2:
         ach.append(("ERRO", "BO5: a cena 2 tem de mostrar o copo na mao — e' o "
                             "objeto da keyword, e a boca diz `gelatin,` com ele "
                             "no frame"))
 
-    # --- T16-1: ⭐ UM COPO ALTO SO' NO QUADRO 2 -----------------------------
-    # ⛔ A fusao junta a BANCADA e o COPO no mesmo frame. Se um dia a bancada
-    # ganhar um copo alto, o Veo escolhe um dos dois — normalmente o da
-    # bancada, e o objeto da keyword sai da mao dela.
-    _copos = i2.lower().count("tall clear glass")
-    if _copos > 1:
-        ach.append(("ERRO", "T16-1: %d copos altos na IMAGE 02/02 — a bancada "
-                            "esta' competindo com o copo da mao dela" % _copos))
+    # --- T16-1: ⭐ UMA TIGELA SO' NO QUADRO 2 -------------------------------
+    # ⛔ A fusao junta a BANCADA e o objeto da keyword no mesmo frame. Se a
+    # bancada ganhar um segundo vasilhame igual, o Veo escolhe um dos dois —
+    # normalmente o da bancada, e o objeto da keyword sai de cena.
+    # ⚠️⚠️ ESTA LENTE CONTAVA `tall clear glass` ATE' 2026-08-13, e ficou CEGA no
+    # dia em que o copo de shake virou a tigela de cubos: nao ha' mais copo alto
+    # nenhum no quadro 2, entao a contagem dava sempre 0 ou 1 e a lente nunca
+    # mais podia acusar. O autoteste pegou (`[T16-1] NAO acusa`) — a lente
+    # sobreviveu ao objeto que ela vigiava, que e' o modo de falha §16 ao
+    # contrario: em vez de reprovar o certo, ela para de reprovar o errado.
+    # ⭐ Agora conta o vasilhame que ESTA' em cena.
+    _tigelas = i2.lower().count("glass bowl")
+    if _tigelas > 1:
+        ach.append(("ERRO", "T16-1: %d tigelas na IMAGE 02/02 — a bancada "
+                            "esta' competindo com a tigela da mao dela"
+                    % _tigelas))
 
     # --- BO6: ⭐ o homem e' MUDO e olha o COPO -------------------------------
     if "never at the camera" not in i2:
@@ -3007,8 +3100,9 @@ def resumo_pt(spec):
     m = spec["mundo"]
     return ("16s · %s em %s (%s). Cena 1: ela com %s na mao e a placa escrita a "
             "mao dizendo \"%s\", e o corpo dele em quadro. Cena 2: a mesma "
-            "cozinha — a bancada da receita, ela com %s numa mao e o copo na "
-            "outra, e um homem de %d anos mudo olhando o copo.%s"
+            "cozinha — a bancada da receita, ela com %s numa mao e a outra "
+            "mexendo a colher na tigela de cubos de gelatina, com a caixa de "
+            "bicarbonato ao lado, e um homem de %d anos mudo olhando a tigela.%s"
             % (spec["etnia"], m["id"].replace("_", " "), m["familia"],
                spec["prop"]["murcho"].split(",")[0], spec["placa"],
                spec["prop"]["gigante"].split(",")[0], spec["homem"]["idade"],
@@ -3171,8 +3265,11 @@ def autoteste(n=600):
 
     # ⭐ [T16-6] a minuscula depois do ponto — o defeito herdado de 300/300
     b166 = dict(b)
+    # ⚠️ A frase mutada aqui era `in her hand — never`, e ela sumiu quando o
+    # homem mudo passou a olhar a TIGELA em vez do copo na mao dela. O controle
+    # virou no-op e o autoteste acusou — por isso ele existe.
     b166["IMAGE 02/02"] = b166["IMAGE 02/02"].replace(
-        "in her hand — never", "in her hand. never", 1)
+        "in front of her — never", "in front of her. never", 1)
     if not any("T16-6" in m for _, m in lint(s, b166)):
         ctrl.append("[T16-6] NAO acusa sentenca do bloco abrindo em minuscula")
 
@@ -3199,9 +3296,10 @@ def autoteste(n=600):
     # ⭐ [T16-1] os dois copos altos — a armadilha da fusao
     b161 = dict(b)
     b161["IMAGE 02/02"] = b161["IMAGE 02/02"].replace(
-        "On the", "On the surface stands a tall clear glass, and on the", 1)
+        "Resting on the", "Standing on the surface is a clear glass bowl, and "
+        "resting on the", 1)
     if not any("T16-1" in m for _, m in lint(s, b161)):
-        ctrl.append("[T16-1] NAO acusa dois copos altos na cena 2")
+        ctrl.append("[T16-1] NAO acusa duas tigelas na cena 2")
 
     # ⭐ [BO6] o corpo-prova ausente do payoff
     b6 = dict(b)
@@ -3274,7 +3372,7 @@ def autoteste(n=600):
 
     # [BO5] copo adiantado
     b5 = dict(b)
-    b5["IMAGE 01/02"] += " " + BO_COPO
+    b5["IMAGE 01/02"] += " " + BO_TIGELA
     if not any("BO5" in msg for _, msg in lint(s, b5)):
         ctrl.append("[BO5] nao acusa o copo fora da cena 3")
 
