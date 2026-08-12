@@ -179,7 +179,18 @@ SEXOS = ("homem",)
 # liga-la. O corpo musculoso que ela prometia continua existindo sem toggle
 # nenhum, no pool `CORPOS_H` (bracos grossos, veias no antebraco) — o que o
 # MODO FORTE acrescenta e' o homem INTEIRO no registro forte.
-MODO_BELA = True
+# ⛔⛔⛔ MODO BELA DESLIGADO em 2026-08-12 — e a razao e' a ordem do proprio
+# operador, nao gosto meu. Ele travou a mulher deste motor em TRES coisas:
+# branca, 24 anos, extremamente linda. O `sc.ref_bela` compartilhado troca a
+# PESSOA por uma do pool bonito do repo — e MEDIDO em 80 sorteios ele devolve
+# idades de 21 a 33. Ou seja: com o botao ligado, 11 de 12 videos sairiam
+# violando os 24 anos que ele acabou de mandar travar.
+# ⭐ E nao ha' o que o botao acrescente: o pool base JA' e' o registro do TRIO
+# e do DUPLA (*"extremamente lindas"*). Ligado ele so' podia piorar a idade.
+# ⚠️ Botao que existe e nao muda nada e' a forma-sem-funcao que este repo ja'
+# pagou tres vezes; botao que existe e QUEBRA uma regra travada e' pior.
+# ⭐ Reversivel numa linha: se a regra dos 24 cair, isto volta a `True`.
+MODO_BELA = False
 MODO_FORTE = True
 
 # ⭐⭐ O TERCEIRO MODO — COPY LEVE (2026-08-12). Ordem do operador: *"quero um
@@ -225,7 +236,8 @@ PELE_TRAVAVEL = False
 # have a wife`). Um de 26 continuaria crivel como corpo, nao como quem diz a
 # frase. ⚠️ O `sc.ref_forte` CEDE se nada couber — botao que zera o sorteio e'
 # botao que quebra o app.
-FORTE_IDADE_MIN = 32
+# ⛔ `FORTE_IDADE_MIN` mudou de 32 para 61 e mudou de LUGAR: agora vive junto
+# do MOLDE_H, ao lado da chamada que a cumpre.
 
 
 # ===========================================================================
@@ -476,6 +488,23 @@ HOMENS = [
 # coisa que diverge quando alguem acrescenta um campo em HOMENS.
 MOLDE_H = dict(HOMENS[0], corpo="")
 
+# ⛔⛔ O PISO DO MODO FORTE — 61. Ordem do operador (2026-08-12): *"sempre que
+# travar a referencia de forte mantenha o homem acima de 60 anos no prompt"*.
+#
+# ⚠️ ESTA CONSTANTE JA' VALEU 32, e o 32 nao era descuido: com o
+# `REFS_FORTES` original (26-38) ela era o unico jeito de nao pegar um de 26.
+# O que mudou foi o POOL, nao a intencao.
+#
+# ⛔⛔ E EU QUASE ESCREVI UM POOL LOCAL AQUI. Cheguei a montar dez homens de
+# 61-72 dentro deste arquivo antes de ver que o Ed tinha resolvido o MESMO
+# defeito no compartilhado uma hora antes (`REFS_FORTES_MADUROS`, opt-in pelo
+# `maduros=`). Duas implementacoes da mesma coisa e' o que este repo proibe em
+# primeiro lugar — e o meu pool ainda trazia cicatriz, nariz quebrado e dente
+# lascado, que a doutrina do PLACA 16 proibe justamente num homem de 60
+# (dano renderiza como mendigo, nao como marca). O pool dele fica; o piso e' o
+# que este motor acrescenta.
+FORTE_IDADE_MIN = 61
+
 CORPOS_H = [
     "heavy through the shoulders, thick arms with the veins standing out on "
     "the forearms",
@@ -497,38 +526,70 @@ CORPOS_H = [
 # a mulher em quadro seria a mesma — a forma-sem-funcao que este repo ja' pagou
 # tres vezes.
 MULHERES = [
-    {"id": "loira_longa", "etnia": "white American", "idade": 29,
-     "porte": "tall with a narrow waist",
-     "cabeca": "long blonde hair, wet at the ends",
-     "marca": "a small beauty spot above her lip"},
-    {"id": "ruiva_ondulada", "etnia": "white American", "idade": 27,
-     "porte": "slim and long-limbed",
-     "cabeca": "wavy auburn hair pushed back wet",
-     "marca": "a dense spray of freckles"},
-    {"id": "morena_lisa", "etnia": "white American", "idade": 31,
-     "porte": "athletic with square shoulders",
+    # ⛔⛔ 2026-08-12 — TODAS BRANCAS, TODAS 24, TODAS EXTREMAMENTE LINDAS.
+    # Ordem do operador, em duas mensagens: *"quero que todas as mulheres
+    # mencionadas sempre sejam mulheres brancas com 24 anos, ruiva, loira,
+    # morena, mas todas brancas sempre"* e *"coloque as caracteristicas das
+    # mulheres desse agente para serem extremamente lindas, como os agentes
+    # dupla e trio"*.
+    # ⭐ A etnia dela NAO quebra a congruencia do funil: aqui quem fala e' o
+    # HOMEM, e e' a etnia DELE que a pagina governa. Ela e' a segunda pessoa.
+    # ⭐ O registro de beleza e' COPIADO do TRIO 16 (`corpo` + olhos/sarda/sinal
+    # na `marca`), nao inventado — dois registros para a mesma coisa e' como o
+    # parque acaba com duas verdades.
+    # ⛔ O CABELO CONTINUA MOLHADO em todas: a cena e' um casal DENTRO DA AGUA.
+    # Beleza que ignora a cena vira mulher de estudio colada numa piscina.
+    # ⛔ A ETNIA SUMIU DO SORTEIO, mas o CAMPO fica: o `montar` o consome e o
+    # `ref_bela` o preservava. Tirar o campo seria mexer em quatro strings de
+    # bloco para economizar uma palavra.
+    {"id": "ruiva_auburn", "etnia": "white American", "idade": 24,
+     "porte": "tall and long-legged with a very small waist",
+     "cabeca": "deep auburn hair falling wet past her shoulders",
+     "marca": "pale green eyes and a light spray of freckles across her nose"},
+    {"id": "ruiva_cobre", "etnia": "white American", "idade": 24,
+     "porte": "slim with an hourglass figure",
+     "cabeca": "copper-red hair pushed back wet from her face",
+     "marca": "hazel eyes and heavy freckling across her cheeks"},
+    {"id": "ruiva_gengibre", "etnia": "white American", "idade": 24,
+     "porte": "willowy and fine-boned with a flat stomach",
+     "cabeca": "bright ginger hair in long wet layers",
+     "marca": "clear skin and a small beauty mark above her lip"},
+    {"id": "ruiva_escura", "etnia": "white American", "idade": 24,
+     "porte": "curvy with a narrow waist and full shoulders",
+     "cabeca": "dark red hair swept wet over one shoulder",
+     "marca": "green eyes and a fine gold hoop in her left nostril"},
+    {"id": "loira_platinada", "etnia": "white American", "idade": 24,
+     "porte": "tall and statuesque with a long waist",
+     "cabeca": "long platinum blonde hair, wet at the ends",
+     "marca": "wide-set blue eyes and clear glowing skin"},
+    {"id": "loira_mel", "etnia": "white American", "idade": 24,
+     "porte": "lean and toned with long legs",
+     "cabeca": "honey-blonde hair slicked back wet",
+     "marca": "blue-grey eyes and a small beauty spot on her cheekbone"},
+    {"id": "loira_morango", "etnia": "white American", "idade": 24,
+     "porte": "softly curved with a small waist",
+     "cabeca": "strawberry-blonde hair in a wet loose braid",
+     "marca": "pale blue eyes and a light dusting of freckles"},
+    {"id": "loira_dourada", "etnia": "white American", "idade": 24,
+     "porte": "slender with square shoulders and long arms",
+     "cabeca": "golden blonde hair pushed wet behind her ears",
+     "marca": "green-blue eyes and a faint dimple in one cheek"},
+    {"id": "morena_lisa", "etnia": "white American", "idade": 24,
+     "porte": "athletic with a flat stomach and long legs",
      "cabeca": "dark brown hair slicked back wet",
-     "marca": "a small scar through one eyebrow"},
-    {"id": "tranca_lateral", "etnia": "Black American", "idade": 28,
-     "porte": "tall and softly curved",
-     "cabeca": "long box braids gathered over one shoulder",
-     "marca": "high cheekbones and a small mole on her cheek"},
-    {"id": "cacheada_curta", "etnia": "Black American", "idade": 26,
-     "porte": "strong-shouldered and lean",
-     "cabeca": "a short wet curly afro",
-     "marca": "a small gold nose stud"},
-    {"id": "tranca_longa", "etnia": "Black American", "idade": 30,
-     "porte": "curved with a small waist",
-     "cabeca": "waist-length braids wet to the ends",
-     "marca": "a beauty spot on her cheek"},
-    {"id": "latina_ondulada", "etnia": "Latina American", "idade": 27,
-     "porte": "petite with a narrow frame",
-     "cabeca": "long wavy black hair wet at the ends",
-     "marca": "a small mole by her eye"},
-    {"id": "asiatica_lisa", "etnia": "Asian American", "idade": 32,
-     "porte": "slim with rounded shoulders",
-     "cabeca": "straight black hair slicked back wet",
-     "marca": "a faint scar on her chin"},
+     "marca": "dark almond eyes and clear glowing skin"},
+    {"id": "morena_castanha", "etnia": "white American", "idade": 24,
+     "porte": "tall and slim with a very small waist",
+     "cabeca": "long chestnut hair falling wet down her back",
+     "marca": "light brown eyes and a small mole beside her mouth"},
+    {"id": "morena_quase_preta", "etnia": "white American", "idade": 24,
+     "porte": "hourglass-figured with narrow hips",
+     "cabeca": "near-black hair pushed back wet from her forehead",
+     "marca": "striking blue eyes and high sharp cheekbones"},
+    {"id": "morena_rabo", "etnia": "white American", "idade": 24,
+     "porte": "fine-boned and long-limbed with a narrow waist",
+     "cabeca": "warm brunette hair in a wet high ponytail",
+     "marca": "hazel eyes and a faint scar through one eyebrow"},
 ]
 
 
@@ -1086,6 +1147,15 @@ def sortear(pagina, rng, ledger, travas=None):
         # casado, e um de 26 nao e' crivel dizendo a frase. O que abriu foi o
         # TETO — o pool agora vai de 32 a 68, e o velho forte voltou a ser
         # sorteavel sem tirar o jovem forte da mesa.
+        # ⛔⛔ E `idade_min=61` — ordem do operador, 2026-08-12, DEPOIS do
+        # tiozao entrar: *"sempre que travar a referencia de forte mantenha o
+        # homem acima de 60 anos no prompt"*. O `maduros=True` sozinho abriu o
+        # teto para 68, mas o PISO continuava em 32: 32..68 ainda entrega um
+        # rapaz de 32 com o botao aceso, que e' o que ele mandou nao acontecer.
+        # ⚠️ Aqui o `or _pool` do helper NAO dispara, e isso foi medido: o
+        # `REFS_FORTES_MADUROS` tem homens acima de 60, entao a faixa casa e
+        # ele nao precisa ceder. E' a diferenca entre pedir 61 num pool que vai
+        # ate' 38 (cede, e mente) e num pool que vai ate' 72.
         homem = sc.ref_forte(MOLDE_H, rng, idade_min=FORTE_IDADE_MIN,
                              maduros=True)
 
@@ -1095,7 +1165,11 @@ def sortear(pagina, rng, ledger, travas=None):
     # entrada sorteada. Sem esta linha o modo travaria a mulher inteira em
     # `white American` e ninguem veria, porque a congruencia do funil olha o
     # HOMEM.
-    bela = bool(travas.get("bela")) and not travas.get("mulher")
+    # ⛔ `and MODO_BELA` — a trava vale tambem para quem chamar `sortear` por
+    # fora da UI (linha de comando, script). Sem isso o botao some da tela e a
+    # regra continua furada pela porta de tras.
+    bela = (bool(travas.get("bela")) and MODO_BELA
+            and not travas.get("mulher"))
     if bela:
         _et_dela = mulher["etnia"]
         mulher = sc.ref_bela(MULHERES[0], rng)
@@ -1646,6 +1720,64 @@ def _go_bicarb(spec, blocos, achados):
         achados.append(("ERRO", "GO-BICARB: eixo DESLIGADO e a caixa apareceu"))
 
 
+def _go13_forte_60(spec, blocos, achados):
+    """⭐⭐ GO13 — MODO FORTE = HOMEM ACIMA DE 60, no spec E no prompt.
+
+    Ordem do operador (2026-08-12): *"sempre que travar a referencia de forte
+    mantenha o homem acima de 60 anos no prompt"*.
+
+    ⛔ A lente existe porque o modo de falha e' SILENCIOSO. O
+    `sc.ref_forte` compartilhado nao tem ninguem acima de 60 e CEDE quando a
+    faixa nao casa: quem trocar o pool local de volta pelo helper volta a
+    entregar homem de 26 com o botao FORTE aceso, e nada acusa.
+    ⚠️ E ela cobra os DOIS lados — a idade no `spec` e a idade RENDERIZADA nos
+    blocos. Spec certo com bloco velho e' o defeito que a GO7 ja' pegou uma vez
+    neste motor.
+    """
+    if not spec.get("forte"):
+        return
+    idade = spec["homem"]["idade"]
+    if idade <= 60:
+        achados.append(("ERRO", "GO13: MODO FORTE ligado e o homem tem %d anos "
+                                "— a ordem e' acima de 60. O pool compartilhado "
+                                "cede em silencio quando a faixa nao casa — "
+                                "o `maduros=True` e' o que faz o 61 existir"
+                        % idade))
+    for nome in ("BLOCO 0 (REF)", "IMAGE 01/02", "IMAGE 02/02"):
+        if "%d-year-old" % idade not in blocos.get(nome, ""):
+            achados.append(("ERRO", "GO13: %s nao renderiza a idade %d do homem "
+                                    "forte" % (nome, idade)))
+
+
+def _go14_mulher(spec, blocos, achados):
+    """⭐⭐ GO14 — ELA E' SEMPRE BRANCA E SEMPRE TEM 24.
+
+    Ordem do operador (2026-08-12): *"todas as mulheres mencionadas sempre
+    sejam mulheres brancas com 24 anos, ruiva, loira, morena, mas todas brancas
+    sempre"*.
+
+    ⛔ A congruencia do funil NAO e' quebrada por isso, e vale escrever: neste
+    angulo quem fala e' o HOMEM, e a etnia que a pagina governa e' a dele. Ela
+    e' a segunda pessoa do quadro.
+    ⚠️ A lente cobra o POOL inteiro, nao so' a entrada sorteada: uma entrada
+    nova com outra etnia ficaria escondida ate' calhar de sair no sorteio.
+    """
+    fora = [w["id"] for w in MULHERES
+            if w["etnia"] != "white American" or w["idade"] != 24]
+    if fora:
+        achados.append(("ERRO", "GO14: entrada(s) do pool MULHERES fora da regra "
+                                "(branca, 24): %s" % ", ".join(fora)))
+    w = spec["mulher"]
+    if w["etnia"] != "white American" or w["idade"] != 24:
+        achados.append(("ERRO", "GO14: a mulher sorteada e' %s de %d anos"
+                        % (w["etnia"], w["idade"])))
+    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
+        t = blocos.get(nome, "")
+        if "24-year-old white American woman" not in t:
+            achados.append(("ERRO", "GO14: %s nao renderiza `24-year-old white "
+                                    "American woman`" % nome))
+
+
 def lint(spec, blocos):
     """⚠️ Lint PROPRIO, nao `sc.lint_curto`. Aquele e' da maquinaria de
     colapso 5->3 e pede `base` e `mapa`, que este motor nao tem: ele nao
@@ -1660,7 +1792,8 @@ def lint(spec, blocos):
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_go1_corpo_nao_orgao, _go2_ela_muda, _go4_sache, _go5_orcamento,
               _go6_etnia, _go7_ancora, _go8_tigela, _go9_mistura,
-              _go10_modos, _go11_contrato16, _go12_leve, _go_bicarb):
+              _go10_modos, _go11_contrato16, _go12_leve, _go_bicarb,
+              _go13_forte_60, _go14_mulher):
         f(spec, blocos, ach)
     return ach
 
@@ -1808,13 +1941,27 @@ def autoteste(n=400):
                       "%d..%d) — o `maduros=True` parou de chegar ao pool e o "
                       "tiozao forte sumiu de novo"
                       % (n, min(_fortes), max(_fortes)))
-    if not [i for i in _fortes if i <= 38]:
-        falhas.append("MODO FORTE: nenhum homem de ate' 38 em %d sorteios — o "
-                      "pedido foi INCLUIR o mais velho, nao trocar de faixa"
-                      % n)
-    if estados[(False, False)]["traje"] == estados[(True, False)]["traje"]:
-        falhas.append("MODO BELA: os dois estados sorteiam os MESMOS trajes — "
-                      "toggle que nao muda nada")
+    # ⛔⛔ ESTA METADE DA LENTE FOI INVERTIDA EM 2026-08-12, HORAS DEPOIS DE
+    # NASCER, e a inversao e' ordem do operador — nao discordancia minha.
+    #   · 14:50, lendo o painel: *"modo forte deve abarcar refs homens mais
+    #     velhos tb"* -> a lente cobrava as DUAS faixas (48+ e ate' 38).
+    #   · mais tarde, no mesmo dia: *"sempre que travar a referencia de forte
+    #     mantenha o homem acima de 60 anos no prompt"* -> nao e' mais
+    #     "abarcar", e' PISO. A ordem nova e' mais especifica e mais recente,
+    #     e ganha.
+    # ⚠️ O que sobrevive intacto e' a razao pela qual a lente existe: o pool
+    # compartilhado cede em silencio quando a faixa nao casa, e sem alguem
+    # cobrando a faixa o defeito volta calado. So' mudou QUAL faixa se cobra.
+    _jovens = [i for i in _fortes if i <= 60]
+    if _jovens:
+        falhas.append("MODO FORTE: %d sorteio(s) com homem de ate' 60 anos "
+                      "(faixa %d..%d) — a ordem e' PISO acima de 60, e o "
+                      "helper cede em silencio se o `maduros=True` sumir"
+                      % (len(_jovens), min(_fortes), max(_fortes)))
+    if len(_fortes) < 6:
+        falhas.append("MODO FORTE: so' %d idade(s) distinta(s) acima de 60 — "
+                      "pool magro repete o mesmo rosto no lote"
+                      % len(_fortes))
 
     # ⛔ CONTROLE DE MUNDO: cada etnia da tabela precisa de mundo compativel, e
     # cada mundo precisa do par de traje do modo BELA.
@@ -1940,6 +2087,47 @@ def autoteste(n=400):
         falhas.append("MODO LEVE: %d fala(s) do estado DESLIGADO nao nomeiam o "
                       "orgao — o padrao e' a copy taxativa: %s"
                       % (len(faltou), sorted(faltou)[:1]))
+
+    # (b2) ⭐⭐ CONTROLES NEGATIVOS DA GO13 E DA GO14, que nasceram hoje.
+    #      ⛔ A GO13 vigia um defeito que JA' EXISTIU: `sc.ref_forte` com
+    #      `idade_min=61` devolve 26-38 porque o helper cede quando a faixa nao
+    #      casa. O controle planta exatamente esse homem.
+    _blocos_ok = {n: "a 62-year-old man, and beside him a 24-year-old white "
+                     "American woman" for n in
+                  ("BLOCO 0 (REF)", "IMAGE 01/02", "IMAGE 02/02")}
+    for rotulo, spec_teste, blocos_teste, deve in (
+            ("forte ON com homem de 34 (o helper cedendo)",
+             {"forte": True, "homem": {"idade": 34}}, _blocos_ok, True),
+            ("forte ON com 62 mas bloco sem a idade",
+             {"forte": True, "homem": {"idade": 62}},
+             {n: "a man in the water" for n in _blocos_ok}, True),
+            ("forte ON limpo",
+             {"forte": True, "homem": {"idade": 62}}, _blocos_ok, False),
+            ("forte OFF com homem de 58",
+             {"forte": False, "homem": {"idade": 58}}, {}, False)):
+        prova = []
+        _go13_forte_60(spec_teste, blocos_teste, prova)
+        if bool(prova) != deve:
+            falhas.append("GO13: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
+
+    _b14 = {n: "a 24-year-old white American woman" for n in
+            ("IMAGE 01/02", "IMAGE 02/02")}
+    for rotulo, mulher, blocos_teste, deve in (
+            ("mulher de 29", {"etnia": "white American", "idade": 29}, _b14, True),
+            ("mulher nao branca", {"etnia": "Black American", "idade": 24},
+             _b14, True),
+            ("spec certo mas bloco sem renderizar",
+             {"etnia": "white American", "idade": 24},
+             {n: "a woman beside him" for n in _b14}, True),
+            ("tudo certo", {"etnia": "white American", "idade": 24}, _b14, False)):
+        prova = []
+        _go14_mulher({"mulher": mulher}, blocos_teste, prova)
+        if bool(prova) != deve:
+            falhas.append("GO14: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
 
     # (c) CONTROLE NEGATIVO DA GO12, nos DOIS estados. Lente que nunca acusa e'
     #     lente que ninguem sabe se funciona — e esta nasceu hoje.

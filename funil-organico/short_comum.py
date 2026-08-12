@@ -1894,6 +1894,42 @@ REFS_FORTES_MADUROS = [
     {"idade": 68, "corpo": "broad and solid, heavy arms and a deep chest",
      "cabeca": "a bald head and a neat white moustache",
      "marca": "a cleft chin and heavy level brows"},
+    # ⭐⭐ +6 ENTRADAS ACIMA DE 60 — 2026-08-12, poucas horas depois do pool
+    # nascer. Ordem do operador para o GOOD 16: *"sempre que travar a
+    # referencia de forte mantenha o homem acima de 60 anos no prompt"*.
+    # ⚠️ O pool tinha 12 entradas de 48 a 68 e SO' QUATRO acima de 60. Um motor
+    # que pede piso 61 ficava com quatro rostos — e quatro rostos num lote de
+    # trinta videos e' o mesmo homem repetido. A lente do proprio GOOD 16 e'
+    # que acusou (`so' 4 idade(s) distinta(s) acima de 60`).
+    # ⛔ Mesmas regras das doze de cima, sem excecao: FORTE **E** VELHO,
+    # DISTINTIVO E NUNCA DETERIORADO (nada de cicatriz, nariz quebrado, dente
+    # lascado ou `weathered`), e ZERO palavra de aprovacao.
+    # ⭐ ADITIVO: quem chama `ref_forte` sem `maduros=True` continua sem ver
+    # nenhuma delas — conferido por medicao, nao por leitura.
+    {"idade": 61, "corpo": "broad through the chest and shoulders, forearms "
+                           "thick and veined, waist still flat",
+     "cabeca": "thick steel-grey hair combed back, cut short at the sides",
+     "marca": "a birthmark below the left ear and an even complexion"},
+    {"idade": 63, "corpo": "heavily built across the back and arms, chest "
+                           "square",
+     "cabeca": "a clean-shaved head and a close white beard",
+     "marca": "a deep cleft chin and clear skin"},
+    {"idade": 65, "corpo": "densely muscled through the shoulders, forearms "
+                           "corded, upright posture",
+     "cabeca": "short white hair with a silver streak swept off the forehead",
+     "marca": "laugh lines at the corners of both eyes"},
+    {"idade": 67, "corpo": "thick-necked and heavy through the upper arms, "
+                           "chest full",
+     "cabeca": "close-cropped grey hair and a trimmed grey moustache",
+     "marca": "a small gold hoop in the left ear"},
+    {"idade": 70, "corpo": "solid through the chest with thick forearms and "
+                           "square shoulders",
+     "cabeca": "full silver hair worn a little long and a short silver beard",
+     "marca": "a dimple in one cheek and a smooth even complexion"},
+    {"idade": 72, "corpo": "lean and hard through the chest, arms still thick, "
+                           "shoulders straight",
+     "cabeca": "white hair in a flat crop and a clipped white beard",
+     "marca": "wide-set eyes and a raised mole on the right cheekbone"},
 ]
 
 # ⭐ OS OLHOS, mesmo eixo do BELA — *"coisa bem diferente fora do comum"*.

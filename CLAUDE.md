@@ -85,6 +85,29 @@ doutrina mora no cabeçalho do motor: a **leitura ótica da fonte está pendente
 (reel 1752010159557238, que também não baixa sem login), então os pools de fala
 são construção nossa sob o contrato, não verbatim.
 
+⭐ **`good16` (2026-08-12, ajustado) — o casal na água.** Primeiro motor com
+**narrador homem** e o único com **três** toggles. ⭐⭐ O `modo copy leve` é o
+**primeiro toggle do parque que troca a FALA**, não quem aparece: ligado, a
+fala 2 sai de `MISTURAS` para `MISTURAS_LEVE` e **não nomeia o órgão**. Nasce
+desligado — é compra consciente de leveza, e o preço (a leitura "anabolizante"
+que o operador reprovou) está declarado no código.
+⛔⛔ **O MODO FORTE tem POOL PRÓPRIO, `HOMENS_FORTES`, 61-72 anos.** Ordem do
+operador: *"sempre que travar a referência de forte mantenha o homem acima de
+60 anos"*. ⚠️ E não dava para usar o `sc.ref_forte` compartilhado: ele tem 16
+homens de **26 a 38**, nenhum acima de 60, e **cede quando a faixa não casa**
+(`[...] or _pool`) — medido, `idade_min=61` devolvia 26-38 com o botão FORTE
+aceso. Botão que promete 60+ e entrega 26 é pior que botão que não existe.
+Mesmo precedente do `alfa16`. Lente `GO13`, com controle negativo que planta
+exatamente esse homem de 34.
+⛔⛔ **A mulher é sempre BRANCA, sempre 24, sempre no registro de beleza do
+TRIO/DUPLA** — 12 entradas, 4 ruivas · 4 loiras · 4 morenas, cabelo **molhado**
+porque a cena é dentro d'água. Lente `GO14`, que cobra o **pool inteiro**, não
+só a entrada sorteada. ⭐ Isso **não** quebra a congruência do funil: aqui quem
+fala é o HOMEM, e a etnia que a página governa é a dele.
+⛔ **E por isso o `MODO_BELA` foi DESLIGADO neste motor** — não por gosto: o
+`sc.ref_bela` entrega idades **21-33** (medido em 80 sorteios), então o botão
+violaria os 24 anos em 11 de 12 vídeos. Reversível numa linha se a regra cair.
+
 ⭐ **`fight16` (2026-08-10) — a briga no quarto.** Terceiro motor do parque com
 **narrador homem** (os outros são `good16` e `bed16`). No take 1 ele está **de
 pé**, tronco nu, **toalha branca na cintura**, uma mão aberta se explicando
