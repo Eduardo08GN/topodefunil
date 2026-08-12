@@ -152,7 +152,14 @@ class App(tk.Tk):
         # nomeia o orgao. O comentario de 2026-08-05 previa o custo de um modo
         # novo ("nao pode custar mais um par de `if` espalhado pela classe") e
         # de novo nao custou: entrou na tupla e na `MODOS_NAO_REF`.
-        self.modos = [m for m in ("bela", "forte", "receita", "leve")
+        # ⭐ 2026-08-12 (2): o QUINTO modo — `MODO_PESSOA` (BANHO 16). Ele nao
+        # troca quem aparece nem o que aparece: ele decide se aparece ALGUEM.
+        # Desligado (o padrao), o take 1 tem so' as MAOS; ligado, um homem de
+        # costas no espelho. Entrou na tupla e na `MODOS_NAO_REF`, como os
+        # outros dois nao-REF — e de novo nao custou um `if` novo.
+        # ⚠️ ADITIVO: motor que nao declara `MODO_PESSOA` nao ganha botao, e os
+        # outros 38 nao mudam de comportamento.
+        self.modos = [m for m in ("bela", "forte", "receita", "leve", "pessoa")
                       if getattr(motor, "MODO_%s" % m.upper(), False)]
         # ⭐ 5o contrato aditivo (2026-08-10): MODOS_DEFAULT — quais modos
         # nascem LIGADOS. Ordem do operador para o GOOD 16: *"toggle marcado
@@ -814,7 +821,7 @@ class App(tk.Tk):
     # serem modos de REF. Renomeado em vez de ampliado: tupla chamada "de cena"
     # com um modo de copy dentro e' a armadilha que faz o proximo leitor tratar
     # os dois como iguais.
-    MODOS_NAO_REF = ("receita", "leve")
+    MODOS_NAO_REF = ("receita", "leve", "pessoa")
 
     # ⚠️ Texto do BOTAO quando o nome cru do modo nao se explica sozinho. `leve`
     # aceso, sozinho na barra, nao diz leve O QUE.

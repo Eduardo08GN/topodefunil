@@ -47,7 +47,7 @@ if AQUI not in sys.path:
 
 import short_comum as sc                                        # noqa: E402
 
-MOTORES = ["troca16", "ressurreicao16", "exterior16", "flagrante16",
+MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            "pee16", "escandalo16", "colo16",
            # os demais 16s: entram na medicao desde ja', mesmo antes da
            # reforma — numero que ninguem olha e' numero que envelhece
@@ -132,6 +132,18 @@ ROTULO = {
 # ⛔ So' entra aqui trava desligada TAMBEM NO MOTOR, com o motivo escrito la'.
 # Desligar so' aqui seria maquiar o relatorio.
 DESLIGADAS = {
+    ("banho16", "CT1"):
+        "os SETE videos da fonte terminam no follow, depois do CTA, e o "
+        "operador aprovou a ordem mecanismo -> CTA -> follow lendo a copy.",
+    ("banho16", "CT2"):
+        "o angulo nao abre em falha: abre num AVISO ou numa IDADE. Mesmo "
+        "desenho do ALFA 16.",
+    ("banho16", "CT4b"):
+        "ordem do operador: so' `Johnson` e `manhood`, nunca `pecker` nem "
+        "`wiener` — que sao justamente dois dos tres do pool compartilhado.",
+    ("banho16", "CT8"):
+        "follow liberado por ele. O que NAO caiu foi a razao do CT8: a DM sai "
+        "igual, entao o follow e' PEDIDO e nunca CONDICAO (lente BA7).",
     ("alfa16", "CT2"):
         "o angulo nao enuncia falha — ele AVISA e PROMETE, e o espectador se "
         "reconhece pela ESPOSA. Desenho do operador.",

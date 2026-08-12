@@ -50,13 +50,13 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **dezenove agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **vinte agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
-`prato16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 21 no total)
+`prato16` · `banho16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 22 no total)
 
 ⚠️ A lista dizia **dezoito** contando dezesseis nomes, e faltavam `necrose16` e
 `wife16`. O `wife16` some da conta por engano fácil: o `bed16` nasceu como cópia
@@ -84,6 +84,41 @@ modo move idade, porte e traje dela **dentro da região sorteada**. ⚠️ A
 doutrina mora no cabeçalho do motor: a **leitura ótica da fonte está pendente**
 (reel 1752010159557238, que também não baixa sem login), então os pools de fala
 são construção nossa sob o contrato, não verbatim.
+
+⭐⭐ **`banho16` (2026-08-12) — o banheiro, e o primeiro agente SEM PESSOA.**
+Modelado em **7 reels da página "Be yourself"**, lidos a 1 fps + transcrição,
+mais a grade de 21 miniaturas. ⭐ É o primeiro ângulo do parque que acontece num
+**banheiro** e o primeiro cuja câmera é **POV**: não há rosto, não há corpo, não
+há prop fálico — o narrador existe **só pelas mãos**, e é nelas que a idade e a
+etnia vivem. ⛔ Por isso o `BLOCO 0 (REF)` **é uma foto das mãos**: sem rosto,
+elas são a única âncora de continuidade entre os dois takes.
+⭐⭐ **A peça central é o INSTRUMENTO DE MEDIDA** — régua ou fita métrica —
+parado em quadro do primeiro ao último segundo e **nunca tocado**. É a promessa
+(`bigger`) virada objeto: a fala nunca diz **onde**, e quem fecha o sentido é a
+régua. Régua não é palavra, então o classificador não tem o que pegar. Presente
+em 6 dos 7 reels; lente `BA1`.
+⭐ **O rótulo `growth hack`** (placa de papelão, post-it, papel colado) é
+obrigatório e foi a única variável que separou os dois grupos da fonte: **média
+de 108,5k views com ele contra 67k sem**, mediana de comentários 2.300 contra
+374. Sete pontos é indício, não prova — mas custa nada e os dois melhores o têm.
+⛔ **Quatro travas do contrato de 16s nascem DESLIGADAS**, cada uma com a ordem
+do operador escrita no motor e declarada no `medir_copy16`: **CT1** (a fonte
+termina no follow em 7 de 7), **CT2** (o ângulo não abre em falha — abre num
+aviso ou numa idade, como o `alfa16`), **CT4b** (*"somente jonhson e manhood, e
+não pecker, wiener e outras"*) e **CT8** (follow liberado). ⚠️ O que **não**
+caiu do CT8 foi a razão: a DM sai igual, então o follow é **pedido e nunca
+condição** — quem cobra isso é a lente `BA7`.
+⭐ **`MODO PESSOA`, o quinto toggle da UI compartilhada, nasce DESLIGADO**: 1
+reel em 7 tem gente, e o padrão é a ausência. Ligado, o take 1 vira o homem de
+costas no espelho passando o creme na própria nuca — o único reel da fonte com
+alguém em quadro (101k views).
+⚠️ **A congruência com a VSL foi dispensada por escrito** (a receita alterna
+bebida e pomada 50/50): *"não importa a congruência com a VSL, é apenas para
+despertar o desejo de comentar e ir assistir a VSL"*. Registrado para ninguém
+"corrigir" isso depois. ⛔ E a marca **pode** aparecer aqui, exceção declarada
+ao P12 — a leitura ótica mostrou que os reels da fonte são **gerados por IA** e
+o texto dos rótulos sai embaralhado, então a forma é reconhecível e o texto não
+é legível: não se pede a marca ao gerador, ela vem sozinha.
 
 ⭐ **`good16` (2026-08-12, ajustado) — o casal na água.** Primeiro motor com
 **narrador homem** e o único com **três** toggles. ⭐⭐ O `modo copy leve` é o
