@@ -1217,6 +1217,59 @@ monitorPorTamanho(w, h) {
     return 0
 }
 
+; ⛔⛔ O MONITOR DOS PONTOS — a evidencia mais forte que existe, e a que
+; faltava (2026-08-11, depois de o operador reportar: *"deu um bug no script que
+; ele trocou a janela 2 pro monitor 1 e a janela 1 pro monitor 2 vertical"*).
+;
+; O `.ini` dele estava assim:
+;     cr_slot2_x=1054      <- os pontos no monitor 1 (0..1920)
+;     calib_w=1096  calib_h=1936   <- a geometria da janela VERTICAL
+; Os dois apontavam para monitores DIFERENTES, e quem decidia era o TAMANHO:
+; 1096x1936 casa com o monitor 2, entao o AdBatch foi para o vertical e o
+; dashboard para o horizontal. A troca exata que ele viu.
+;
+; ''' + E + ''' Os pontos calibrados sao coordenadas de TELA: o monitor que os contem E'
+; o monitor onde ele calibrou. Nao e' proxy, nao e' heuristica — e' o dado.
+; Por isso ele passa a ser o PRIMEIRO criterio, antes do tamanho da janela.
+monitorDosPontos() {
+    global INI, ALVOS
+    votos := Map()
+    for a in ALVOS {
+        px := IniRead(INI, "pontos", a[1] "_x", "")
+        py := IniRead(INI, "pontos", a[1] "_y", "")
+        if (px = "" || py = "")
+            continue
+        loop MonitorGetCount() {
+            MonitorGetWorkArea(A_Index, &l, &t, &r, &b)
+            if (px >= l && px <= r && py >= t && py <= b) {
+                votos[A_Index] := votos.Has(A_Index) ? votos[A_Index] + 1 : 1
+                break
+            }
+        }
+    }
+    ; ''' + A + ''' por MAIORIA, nao pelo primeiro: um ponto isolado fora da janela
+    ; (clique errado numa calibracao antiga) nao pode decidir sozinho.
+    melhor := 0, maior := 0
+    for m, n in votos {
+        if (n > maior) {
+            maior := n
+            melhor := m
+        }
+    }
+    return melhor
+}
+
+; ''' + X + ''' A janela que esta' SOB uma coordenada de tela. E' assim que a calibracao
+; passa a saber de qual janela gravar o tamanho, em vez de perguntar qual esta'
+; ativa — pergunta cuja resposta muda se o operador clicar em qualquer lugar
+; antes de terminar.
+janelaDoPonto(x, y) {
+    h := DllCall("WindowFromPoint", "Int64", (y << 32) | (x & 0xFFFFFFFF), "Ptr")
+    if !h
+        return 0
+    return DllCall("GetAncestor", "Ptr", h, "UInt", 2, "Ptr")   ; GA_ROOT
+}
+
 monitorPorForma(retrato) {
     loop MonitorGetCount() {
         MonitorGetWorkArea(A_Index, &l, &t, &r, &b)
@@ -1253,8 +1306,13 @@ monitoresDaBancada() {
     m1 := Integer(IniRead(INI, "config", "monitor_adbatch", "0"))
     m2 := Integer(IniRead(INI, "config", "monitor_dash", "0"))
     if (m1 = 0) {
-        m1 := monitorPorTamanho(IniRead(INI, "pontos", "calib_w", ""),
-                                IniRead(INI, "pontos", "calib_h", ""))
+        ; ⛔⛔ OS PONTOS PRIMEIRO. O tamanho da janela e' proxy; os pontos
+        ; sao o dado. Quando os dois discordam — e discordaram, no dia em que
+        ; isto foi escrito — quem manda e' onde os cliques vao cair.
+        m1 := monitorDosPontos()
+        if (m1 = 0)
+            m1 := monitorPorTamanho(IniRead(INI, "pontos", "calib_w", ""),
+                                    IniRead(INI, "pontos", "calib_h", ""))
         if (m1 = 0)
             m1 := monitorPorForma(false)
         if (m1 = 0)
@@ -1319,6 +1377,34 @@ precisaArrumar(hwnd, mon) {
     if (WinGetMinMax("ahk_id " hwnd) != 1)
         return true
     return (monitorDaJanela(hwnd) != mon)
+}
+
+; ⛔⛔ QUAIS BANCADAS ESTAO NO MONITOR ERRADO (2026-08-11).
+; Nasceu do relato dele: *"eu to clicando na parte superior da janela que ta na
+; vertical e ela ta se movendo sozinha pro monitor horizontal"*. Nao era bug
+; novo — era a correcao da calibracao agindo sobre uma bancada montada ANTES
+; dela, com a janela 1 no monitor errado. Comportamento certo, e assustador: ele
+; so' descobria clicando.
+;
+; ⚠️ MINIMIZADA NAO E' "FORA DO LUGAR". Janela minimizada reporta posicao
+; (-32000,-32000) e cairia em todo aviso, todo dia, ate' o aviso virar ruido —
+; e aviso que sempre acende nao avisa nada.
+foraDoLugar(h, m) {
+    if !WinExist("ahk_id " h)
+        return false
+    if (WinGetMinMax("ahk_id " h) = -1)
+        return false
+    md := monitorDaJanela(h)
+    return (md != 0 && md != m)
+}
+
+bancadasForaDoLugar() {
+    mons := monitoresDaBancada()
+    fora := []
+    for b in bancadasVivas()
+        if (foraDoLugar(b.h1, mons[1]) || foraDoLugar(b.h2, mons[2]))
+            fora.Push(b.chave)
+    return fora
 }
 
 ; ⛔⛔ REGRA CORRIGIDA EM CAMPO (2026-08-11): *"infelizmente o mecanismo de abrir
@@ -1956,6 +2042,24 @@ ajuda(inicial := false) {
     ; monoespacado: dentro daquele bloco cinza ele seria mais uma linha entre
     ; sete, e o unico item da tela que pode estar QUEBRADO agora precisa ser o
     ; primeiro que o olho encontra.
+    ; ⛔ O AVISO DE BANCADA FORA DO LUGAR fica ACIMA do worker, logo abaixo dos
+    ; atalhos: e' a unica linha da tela que pede uma acao AGORA. E ela so'
+    ; aparece quando ha' algo errado — linha que esta sempre la' deixa de ser
+    ; lida na segunda semana.
+    _fora := bancadasForaDoLugar()
+    if (_fora.Length) {
+        secaoUI(g, "Atencao")
+        _lista := ""
+        for _b in _fora
+            _lista .= (_lista = "" ? "" : "   ·   ") _b
+        g.SetFont("s10 Bold c" COR_MA, "Segoe UI")
+        g.AddText("x18 w" LARG_UI, "bancada no monitor errado:   " _lista)
+        fonteUI(g)
+        g.AddText("x18 w" LARG_UI " y+2 c" COR_FRACA,
+                  "aperte a tecla da sessao (F2 mostra qual) ou o F4 com ela em "
+                  "foco — as duas janelas voltam para o monitor certo.")
+    }
+
     secaoUI(g, "Worker das sobras")
     _w := estadoWorker()
     g.SetFont("s10 Bold c" _w.cor, "Segoe UI")
@@ -2134,7 +2238,36 @@ montarBandeja() {
     A_IconTip := APP " — F1 abre a ajuda"
 }
 
+; ⛔⛔ CONSERTA A CALIBRACAO CONTRADITORIA NA PARTIDA (2026-08-11).
+; O `.ini` do operador ficou com os pontos num monitor e o `calib_w/h` de outro,
+; e o resultado foi a bancada montada TROCADA. Corrigir so' o codigo nao bastava:
+; o dado errado continuaria no disco, e a trava de geometria do F10 abortaria
+; toda vez comparando a janela certa com o tamanho da errada.
+;
+; ⭐ Os PONTOS mandam. Se eles apontam para um monitor e o tamanho gravado casa
+; com outro, o tamanho e' recalculado da area util do monitor dos pontos mais a
+; moldura da janela maximizada — que e' exatamente o que o `WinGetPos` devolveria
+; ali. E fica no log: conserto silencioso vira mistério na proxima duvida.
+consertarCalibracao() {
+    global INI
+    cw := IniRead(INI, "pontos", "calib_w", "")
+    ch := IniRead(INI, "pontos", "calib_h", "")
+    mp := monitorDosPontos()
+    if (cw = "" || ch = "" || mp = 0)
+        return
+    if (monitorPorTamanho(cw, ch) = mp)
+        return                       ; concordam: nada a fazer
+    MonitorGetWorkArea(mp, &l, &t, &r, &b)
+    mo := molduraMaximizada()
+    nw := (r - l) + mo, nh := (b - t) + mo
+    IniWrite nw, INI, "pontos", "calib_w"
+    IniWrite nh, INI, "pontos", "calib_h"
+    anotar("calibracao corrigida: os pontos estao no monitor " mp
+           " mas o tamanho gravado era " cw "x" ch " — passou a " nw "x" nh)
+}
+
 montarBandeja()
+consertarCalibracao()
 ; ⚠️ a migracao vem ANTES do registro: as teclas do formato antigo tem de
 ; existir no formato novo para serem ligadas nesta mesma partida.
 migrarTeclasAntigas()
@@ -2210,13 +2343,22 @@ calibrarMiolo() {
     ; nao tem com o que comparar, e o script poderia rodar numa janela de
     ; outro tamanho clicando fora de todos os alvos — em silencio, gastando
     ; credito. E' o unico dado que faltava para a trava existir.
-    ; ⚠️ Grava a da janela que estiver ATIVA no fim da calibracao, que e'
-    ; onde o operador acabou de apontar os seis pontos.
+    ; ⛔⛔ A GEOMETRIA VEM DA JANELA SOB OS PONTOS, nao da janela ATIVA.
+    ; A versao anterior usava `WinGetPos("A")` com este comentario: *"grava a da
+    ; janela que estiver ATIVA no fim da calibracao, que e' onde o operador
+    ; acabou de apontar os seis pontos"*. A suposicao e' FALSA — basta ele
+    ; clicar noutra janela ao terminar. Foi o que aconteceu: os pontos ficaram no
+    ; monitor 1 e o tamanho gravado foi o da janela vertical, e o piloto passou a
+    ; montar a bancada trocada.
     try {
-        WinGetPos(&cx, &cy, &cw, &ch, "A")
-        IniWrite cw, INI, "pontos", "calib_w"
-        IniWrite ch, INI, "pontos", "calib_h"
-        IniWrite WinGetTitle("A"), INI, "pontos", "calib_janela"
+        pg := lerPonto("cr_gerar")
+        hCal := janelaDoPonto(pg.x, pg.y)
+        if (hCal && WinExist("ahk_id " hCal)) {
+            WinGetPos(, , &cw, &ch, "ahk_id " hCal)
+            IniWrite cw, INI, "pontos", "calib_w"
+            IniWrite ch, INI, "pontos", "calib_h"
+            IniWrite WinGetTitle("ahk_id " hCal), INI, "pontos", "calib_janela"
+        }
     }
 
     n := InputBox("Quantas abas do Chrome estao abertas com a AdBatch?",

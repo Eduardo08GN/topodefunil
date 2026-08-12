@@ -823,3 +823,68 @@ O `scratchpad/ver_tela.ahk` abre a tela, captura a janela por GDI+ e grava um
 PNG. Medido nele, depois do conserto: faixa de **x=8 a x=743** (os 736 de area
 util, borda a borda), preto `(0,0,0)` dentro e cinza `(32,32,32)` fora, doomguy
 centrado (20px em cima, 18 embaixo).
+
+## ⛔⛔ A BANCADA TROCADA DE MONITOR (2026-08-11) — a calibracao mentia
+
+*"Deu um bug no script que ele trocou a janela 2 pro monitor 1 e a janela 1 pro
+monitor 2 vertical."*
+
+O `.ini` dele estava assim:
+
+```
+cr_slot2_x=1054                 <- os pontos no monitor 1 (0..1920)
+calib_w=1096   calib_h=1936     <- a geometria da janela VERTICAL
+```
+
+**Os pontos e o tamanho gravado apontavam para monitores diferentes**, e quem
+decidia o destino da janela 1 era o **tamanho**: `1096x1936` casa com o monitor
+2, entao o AdBatch ia para o vertical e o dashboard para o horizontal.
+
+### A causa: uma suposicao minha, escrita no comentario e falsa
+
+A `calibrar()` gravava a geometria com `WinGetPos("A")` — a janela **ativa** no
+fim do F9 — sob este comentario: *"grava a da janela que estiver ATIVA no fim da
+calibracao, que e' onde o operador acabou de apontar os seis pontos"*. Basta ele
+clicar noutra janela ao terminar e a frase deixa de valer.
+
+### Tres consertos, e o primeiro e' o que importa
+
+⭐⭐ **O monitor passa a vir dos PONTOS.** Eles sao coordenadas de TELA: o monitor
+que os contem **e'** o monitor onde ele calibrou. Nao e' proxy nem heuristica —
+e' o dado. Virou o primeiro criterio, antes do tamanho da janela. ⚠️ Por
+**maioria** dos seis pontos: um ponto isolado fora da janela nao decide sozinho.
+
+⭐ **A calibracao grava a janela SOB os pontos** (`WindowFromPoint` + `GA_ROOT`),
+nao a que estiver ativa.
+
+⭐ **O `.ini` errado e' consertado na partida.** Corrigir so' o codigo nao
+bastaria: o dado errado continuaria no disco e a trava de geometria do F10
+abortaria comparando a janela certa com o tamanho da errada. Quando os pontos e o
+tamanho discordam, o tamanho e' recalculado da area util do monitor dos pontos
+mais a moldura — e **fica no log**:
+
+```
+21:41:55  calibracao corrigida: os pontos estao no monitor 1
+          mas o tamanho gravado era 1096x1936 — passou a 1936x1048
+```
+
+### E o efeito colateral: *"clico na janela vertical e ela se move sozinha"*
+
+Nao era bug novo — era a correcao agindo sobre uma bancada montada **antes** dela,
+com a janela 1 no monitor errado. Comportamento certo, e assustador: ele so'
+descobria clicando.
+
+⭐ O F1 passou a **avisar**, em vermelho, quais bancadas estao no monitor errado,
+e a dizer o que resolve (a tecla da sessao, ou o F4). ⚠️ **Minimizada nao conta**
+— janela minimizada reporta (-32000,-32000) e cairia no aviso todo dia, ate' o
+aviso virar ruido.
+
+⚠️ E o relato de *"a janela 2 esta num projeto diferente da janela 1"* nao se
+confirmou: medido, ele havia comparado a janela 2 da bancada **Neusa** (projeto
+cta03, no vertical) com a janela 1 da bancada **Chrome** (projeto main, no
+horizontal) — duas bancadas, nao uma furada. O que confundia era justamente a
+janela 1 da Neusa estar empilhada no vertical com a irma.
+
+Medido: 10/10 no teste do monitor (com o INI quebrado dele reproduzido, o
+conserto, a idempotencia e o caso "os pontos no retrato") · 5/5 no aviso ·
+regressao: 0 controles fora, chrome 6/6, teclas 19/19, worker 8/8, sequencial 8/8.
