@@ -50,13 +50,13 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **dezoito agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **dezenove agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
-(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 20 no total)
+`prato16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 21 no total)
 
 ⚠️ A lista dizia **dezoito** contando dezesseis nomes, e faltavam `necrose16` e
 `wife16`. O `wife16` some da conta por engano fácil: o `bed16` nasceu como cópia
@@ -171,6 +171,34 @@ tem 26-38 anos e não serve num ângulo cujo REF o operador travou em 50+; aqui 
 toggle não troca a pessoa, troca **o corpo dela**. ⛔ Elas **sorriem**, nunca
 gargalham — e a cláusula é **positiva**, sem `not laughing`, porque negação
 injeta o token.
+
+⭐ **`prato16` (2026-08-12) — o prato erguido e a cozinha de fora.** Quinto
+motor com **narrador homem** e o primeiro cujo hook é um homem **sozinho** —
+os outros quatro têm a esposa colada desde o primeiro frame. ⭐⭐ **A prova
+não é um corpo, nem um prop fálico: é a RECEITA ACONTECENDO.** Take 1, ele
+atrás da bancada erguendo um prato de cubos de gelatina com a colher e um cubo
+ao lado do rosto, olhos arregalados; take 2, o **copo estendido na lente**,
+braço esticado, e a **esposa aparecendo colada nele**, muda. ⛔ **O gole da
+fonte foi cortado** por ordem do operador — o último frame fica na prova, não
+na boca dele, e o TAKE proíbe o gole em texto (sem a cláusula o gerador o traz
+de volta). ⛔⛔ **É o ÚNICO motor do parque que fura o `CT5`**: a fala nomeia
+gelatina, limão e bicarbonato, como a fonte (reel 1709350110183701, 868
+reações / **1,6K comentários**). Isso é **hipótese declarada**, não descuido —
+a receita dita torna o pedido crível e o que a DM vende passa a ser o *como*.
+Se o comentário cair neste ângulo contra os outros, a causa candidata número um
+está escrita no motor e no `medir_copy16` (mecanismo `DESLIGADAS`). ⭐ A cor da
+gelatina é **eixo sorteável** e atravessa três objetos (cubo, líquido, caixa) —
+cubo verde virando bebida roxa é a incoerência que o espectador perdoa menos.
+
+⭐ **Dois consertos no `good16` no mesmo dia:** (a) **MODO COPY LEVE**, o
+primeiro toggle de **copy** do parque — ligado, a fala do take 2 deixa de
+nomear o órgão e sai de um pool próprio; nasce desligado, e o preço (a leitura
+"anabolizante" que o próprio operador reprovou em 10/08) está declarado no
+código. (b) **O TIOZÃO FORTE**: `sc.REFS_FORTES` inteiro ia de 26 a 38 anos, e
+por isso ligar "ref forte" num motor de narrador de 58 **trocava o homem por um
+de 32** em vez de trocar o corpo dele. Entrou `sc.REFS_FORTES_MADUROS` (48-68),
+**opt-in** por `ref_forte(..., maduros=True)` — nenhum dos outros 16 motores que
+usam o helper muda (medido bit a bit em 20.000 chamadas).
 
 ⏳ **Pendência aberta:**
 [`PENDENCIA-varredura-batidas.md`](funil-organico/PENDENCIA-varredura-batidas.md)
