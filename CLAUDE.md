@@ -50,13 +50,13 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **vinte e um agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **vinte e dois agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
-`prato16` · `banho16` · `mel16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 23 no total)
+`prato16` · `banho16` · `banho16_v2` · `mel16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 24 no total)
 
 ⚠️ A lista dizia **dezoito** contando dezesseis nomes, e faltavam `necrose16` e
 `wife16`. O `wife16` some da conta por engano fácil: o `bed16` nasceu como cópia
@@ -119,6 +119,22 @@ despertar o desejo de comentar e ir assistir a VSL"*. Registrado para ninguém
 ao P12 — a leitura ótica mostrou que os reels da fonte são **gerados por IA** e
 o texto dos rótulos sai embaralhado, então a forma é reconhecível e o texto não
 é legível: não se pede a marca ao gerador, ela vem sozinha.
+
+⭐⭐ **`banho16_v2` (2026-08-13, do Ed) — o mesmo banheiro, com o GESTO como
+eixo.** ⛔ **Não substitui o `banho16`** — os dois convivem, como o CLEAN v1/v2.
+A diferença é arquitetural: onde o v1 sorteia peças de fala, este lê **13 pares
+de gesto** nos mesmos 7 reels (rasga o sachê, abre a caixa, toca a caixa sob o
+chuveiro, segura o pote, ergue o dedo com o creme, entra com a colher…) e faz
+do **gesto** o que muda entre um vídeo e outro. ⭐ Os banheiros viraram **eixo
+de região** (15, classe média para alta) e a receita ganhou **bicarbonato e
+babosa**. ⭐⭐ **Três gestos carregam copy PRÓPRIA, verbatim da fonte** — o do
+rodeio (*"falling like a lame horse in the middle of a rodeo"*), o do
+`struggling`, e o do `hard` colado no órgão. ⛔⛔ **Esse último é uma exceção ao
+CT7 de UMA AÇÃO, não do motor**, e por ordem direta do operador
+(*"volte com o hard colado"*) contra o parecer da própria lente `BA6`: **o preço
+está medido — verbo de ereção colado no órgão rendeu ~95% de recusa no COLO
+16**. Se os renders desse gesto caírem, a causa candidata número um está escrita
+lá. As outras doze ações seguem no registro leve.
 
 ⭐ **`good16` (2026-08-12, ajustado) — o casal na água.** Primeiro motor com
 **narrador homem** e o único com **três** toggles. ⭐⭐ O `modo copy leve` é o
