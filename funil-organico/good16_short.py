@@ -119,9 +119,29 @@ if AQUI not in sys.path:
 import short_comum as sc                                        # noqa: E402
 from nucleo_sonoro import sonorizar                             # noqa: E402
 
-# ⛔ Os apelidos do orgao. Este agente NAO os usa na fala (ver GO1) — a lista
-# existe para a lente conseguir PROIBI-LOS.
-NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
+# ⛔⛔ OS DOIS UNICOS APELIDOS DESTE AGENTE. Ordem do operador (2026-08-13):
+# *"arrume tambem as copys para nunca citar nada alem de johnson ou manhood,
+# independente se esta' setado copy leve ou nao, esse agente deve citar somente
+# esses 2 como referencia ao orgao masculino"*.
+#
+# ⚠️ MEDIDO ANTES DA ORDEM, 400 sorteios com o copy leve DESLIGADO: `wiener`
+# 155, `Johnson` 125, `pecker` 120 — o motor sorteava de `sc.APELIDOS_16`, que
+# e' o pool compartilhado do CT4b. Dois em cada tres videos saiam com um
+# apelido que ele nao quer neste angulo.
+#
+# ⛔ ISSO DERRUBA O CT4b DO CONTRATO-COPY-16S neste motor, exatamente como no
+# BANHO 16, e pela mesma razao: o CT4b exige `pecker` · `wiener` · `Johnson`, e
+# a ordem do operador tira dois deles e poe um que o contrato nao lista. A
+# decisao esta' declarada aqui E no `medir_copy16.DESLIGADAS` — desligar so' no
+# relatorio seria maquiar o gate.
+# ⭐ E a lista SERVE AOS DOIS PAPEIS: e' de onde o sorteio tira, e e' contra ela
+# que a lente GO19 cobra. Uma lista, uma verdade.
+NUCLEO = ("Johnson", "manhood")
+
+# ⚠️ Os apelidos PROIBIDOS aqui — o pool compartilhado menos o que sobrou. A
+# lente precisa da lista explicita: `not in NUCLEO` acusaria tambem uma palavra
+# nova legitima, e o que queremos e' apontar o nome do intruso.
+BANIDOS = ("pecker", "wiener", "soldier", "tool", "member", "package", "buddy")
 
 LEDGER = os.path.join(AQUI, ".good-16-ledger.json")
 
@@ -241,6 +261,129 @@ PELE_TRAVAVEL = False
 
 
 # ===========================================================================
+# ⭐⭐ AS POSTURAS — onde o casal esta' em relacao a' agua
+# ===========================================================================
+# ⛔ Cada mundo aponta para uma destas. A postura traz as QUATRO clausulas de
+# corpo (ele/ela x take 1/take 2), com tres slots: `%(agua)s`, `%(borda)s` e
+# `%(dele)s`.
+#
+# ⛔⛔ AS DUAS INVARIANTES QUE NENHUMA POSTURA PODE QUEBRAR:
+#   1. O TORSO DELE E' O ARGUMENTO — ou ele esta' sem camisa, ou o roupao esta'
+#      ABERTO no peito. Homem coberto mata o angulo.
+#   2. A TIGELA FICA APOIADA NA `borda`, ao alcance da mao dele nos dois takes,
+#      e o take 2 e' ele MEXENDO. Postura que nao chega na tigela nao serve.
+#
+# ⭐ E a geometria do casal e' sempre a do DUPLA/TRIO — `shoulder to shoulder`,
+# lado a lado, nunca corpos colados. Foi o que tirou este motor da recusa por
+# conteudo sexual em 13/08, e vale em todas as posturas.
+POSTURAS = {
+    # a original: os dois dentro d'agua
+    "dentro_agua": {
+        # ⭐ o que da VIDA ao plano parado nesta postura
+        "vivo": "The water keeps moving the way water moves",
+        "ele1": ("Sitting in %(agua)s, submerged to his chest, his shoulders "
+                 "and arms bare above the waterline and no shirt on"),
+        "ele2": ("Standing in %(agua)s, submerged to his waist and leaning "
+                 "forward over %(borda)s, his shoulders and arms bare and no "
+                 "shirt on"),
+        "ela1": "Beside him, shoulder to shoulder and turned the same way",
+        "ela2": "Standing beside him, shoulder to shoulder",
+        "maos": "His hands are empty and rest on the edge in front of him",
+    },
+    # sentados na borda, pernas na agua
+    "borda_sentado": {
+        # ⭐ o que da VIDA ao plano parado nesta postura
+        "vivo": "The water keeps moving the way water moves",
+        "ele1": ("Sitting on %(borda)s with his legs in the water of %(agua)s, "
+                 "wearing %(dele)s and no shirt"),
+        "ele2": ("Sitting on the same edge and leaning forward over the bowl, "
+                 "wearing %(dele)s and no shirt"),
+        "ela1": "Sitting beside him on the same edge, shoulder to shoulder",
+        "ela2": "Sitting beside him on the same edge, shoulder to shoulder",
+        "maos": "His hands are empty and rest on the stone beside him",
+    },
+    # espreguicadeiras, os dois FORA da agua
+    "espreguicadeira": {
+        # ⭐ o que da VIDA ao plano parado nesta postura
+        "vivo": "The light and the leaves move a little in the breeze",
+        "ele1": ("Sitting forward on a teak sun lounger beside %(agua)s, "
+                 "forearms on his knees, wearing %(dele)s and no shirt"),
+        "ele2": ("Leaning forward from the same lounger over %(borda)s, "
+                 "wearing %(dele)s and no shirt"),
+        "ela1": ("On the next lounger, turned toward the camera, shoulder to "
+                 "shoulder with him"),
+        "ela2": ("On the next lounger, turned toward the bowl, shoulder to "
+                 "shoulder with him"),
+        "maos": "His hands are empty and rest on his knees",
+    },
+    # sauna: banco de cedro, os dois sentados
+    "sauna": {
+        # ⭐ o que da VIDA ao plano parado nesta postura
+        "vivo": "The warm air in the room shifts a little",
+        # ⚠️ NAO usa `%(agua)s` na abertura: o `agua` deste mundo E' o
+        # banco, e a frase saia `the cedar bench of the wide cedar bench of
+        # the sauna`. Achado LENDO o bloco — o linter cobra presenca, nao
+        # repeticao.
+        # ⛔ A clausula de torso e' OBRIGATORIA em toda postura (GO20).
+        # Eu a tinha tirado daqui ao consertar a duplicacao do banco, e a
+        # lente pegou na hora: 29 de 400. Toalha na cintura nao diz nada
+        # sobre o peito, e o gerador veste quem o prompt nao descreve.
+        "ele1": ("Sitting on the wide cedar bench of the sauna, beside "
+                 "%(agua)s, forearms on his knees, wearing %(dele)s, his "
+                 "chest and forearms showing"),
+        "ele2": ("Leaning forward over %(borda)s, wearing %(dele)s, his "
+                 "chest and forearms showing"),
+        "ela1": "Sitting beside him on the same bench, shoulder to shoulder",
+        "ela2": "Sitting beside him on the same bench, shoulder to shoulder",
+        "maos": "His hands are empty and rest on his knees",
+    },
+    # praia: ele na agua rasa, ela na areia
+    "praia": {
+        # ⭐ o que da VIDA ao plano parado nesta postura
+        "vivo": "The shallow water keeps moving the way water moves",
+        "ele1": ("Standing in the shallow water of %(agua)s, in to his waist, "
+                 "wearing %(dele)s and no shirt"),
+        "ele2": ("Crouching at the water's edge over %(borda)s, wearing "
+                 "%(dele)s and no shirt"),
+        "ela1": "Standing beside him in the shallow water, shoulder to shoulder",
+        "ela2": "Crouching beside him, shoulder to shoulder",
+        "maos": "His hands are empty and hang at his sides",
+    },
+    # roupao: os dois FORA da agua, vestidos, e o peito dele aberto
+    "roupao": {
+        # ⭐ o que da VIDA ao plano parado nesta postura
+        "vivo": "The water behind them keeps moving the way water moves",
+        # ⚠️ A VIRGULA DEPOIS DE `%(agua)s` NAO E' ENFEITE: sem ela a frase
+        # saia `the water clear and still in a thick white waffle robe`, que
+        # le' como se a AGUA estivesse de roupao. O `agua` de varios mundos
+        # termina em adjetivo, e adjetivo seguido de `in` gruda.
+        "ele1": ("Standing beside %(agua)s, in %(dele)s worn open at the "
+                 "chest, his chest and forearms showing"),
+        # ⚠️ SEM o slot aqui: `%(dele)s` ja' comeca com artigo (`a thick
+        # white waffle robe`) e a frase saia `in the same open A thick white
+        # waffle robe`. O take 2 se refere a' peca do take 1, entao basta
+        # apontar para ela.
+        "ele2": ("Leaning over %(borda)s in the same robe, still open at the "
+                 "chest, his chest and forearms showing"),
+        "ela1": "Standing beside him, shoulder to shoulder and turned the same way",
+        "ela2": "Standing beside him, shoulder to shoulder",
+        "maos": "His hands are empty and rest on the edge in front of him",
+    },
+}
+
+# ⭐⭐ O TRAJE DELE — eixo NOVO (13/08). Ate' hoje ele nao tinha traje nenhum
+# porque estava sempre submerso; fora d'agua, prompt que nao veste o homem faz
+# o gerador vestir por conta, e foi assim que apareceu a camiseta na piscina.
+# ⛔ Nenhuma entrada cobre o TORSO: o corpo dele e' o argumento do angulo.
+SUNGA = "navy swim briefs"
+SUNGA_PRETA = "black swim briefs"
+BERMUDA = "faded blue swim shorts"
+BERMUDA_VERDE = "dark green swim shorts"
+TOALHA = "a white towel wrapped at the waist"
+ROUPAO = "a thick white waffle robe"
+ROUPAO_CINZA = "a heavy grey towelling robe"
+
+# ===========================================================================
 # ⭐⭐ MUNDOS — 15 ARQUETIPOS AQUATICOS POR REGIAO DOS EUA
 # ===========================================================================
 # ⛔ Ordem do operador, 2026-08-09: *"sempre voltado pra piscina, jacuzzi, por
@@ -272,6 +415,7 @@ MUNDOS = [
      "luz": "late afternoon sun coming in low and warm through the pines",
      "audio": "cicadas, water moving in the pool, a chainsaw far off",
      "dela": "a white bikini top", "dela_bela": "a white halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "sulista", "familia": "sulista", "regiao": "Sul profundo",
@@ -282,6 +426,7 @@ MUNDOS = [
      "luz": "warm late afternoon light coming flat across the yard",
      "audio": "cicadas, water lapping the stone edge, a screen door",
      "dela": "a coral bikini top", "dela_bela": "a coral halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "texas", "familia": "texas", "regiao": "Texas",
@@ -292,6 +437,7 @@ MUNDOS = [
      "luz": "hard late sun, short shadows across the water",
      "audio": "a window unit humming, water lapping the tile, far traffic",
      "dela": "a black bikini top", "dela_bela": "a black halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "meio_oeste", "familia": "meio_oeste", "regiao": "Meio-Oeste",
@@ -303,6 +449,7 @@ MUNDOS = [
      "audio": "water moving in the pool, wind in the maple, a dog two "
               "yards over",
      "dela": "a navy bikini top", "dela_bela": "a navy halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "nova_inglaterra", "familia": "nova_inglaterra",
@@ -315,6 +462,7 @@ MUNDOS = [
      "audio": "water moving in the pool, gulls, wind through the hydrangeas",
      "dela": "a white halter bikini top",
      "dela_bela": "a white twist-front bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "harlem", "familia": "harlem", "regiao": "Harlem",
@@ -331,6 +479,7 @@ MUNDOS = [
      "audio": "faint traffic below, water moving in the pool, a radio "
               "somewhere",
      "dela": "a black bikini top", "dela_bela": "a black twist-front bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "atlanta", "familia": "atlanta", "regiao": "Atlanta",
@@ -340,6 +489,7 @@ MUNDOS = [
      "luz": "bright filtered daylight, the water throwing light upward",
      "audio": "the waterfall spilling, birds in the pines, a quiet yard",
      "dela": "a gold bikini top", "dela_bela": "a gold halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "delta", "familia": "delta", "regiao": "Delta do Mississippi",
@@ -351,6 +501,7 @@ MUNDOS = [
      "audio": "crickets, water moving in the pool, a truck far off",
      "dela": "a turquoise bikini top",
      "dela_bela": "a turquoise halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "gullah", "familia": "gullah", "regiao": "Lowcountry",
@@ -362,6 +513,7 @@ MUNDOS = [
      "audio": "water moving in the pool, marsh birds, wind",
      "dela": "a white bikini top",
      "dela_bela": "a white twist-front bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "noroeste", "familia": "noroeste", "regiao": "Noroeste do Pacifico",
@@ -376,6 +528,7 @@ MUNDOS = [
      "audio": "water moving in the pool, rain in the firs, water dripping",
      "dela": "a dark green bikini top",
      "dela_bela": "a dark green halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "grandes_lagos", "familia": "grandes_lagos",
@@ -387,6 +540,7 @@ MUNDOS = [
      "audio": "water moving in the pool, water against the dock posts, "
               "a loon far off",
      "dela": "a red bikini top", "dela_bela": "a red halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "creole", "familia": "creole", "regiao": "Nova Orleans",
@@ -401,6 +555,7 @@ MUNDOS = [
      "audio": "water moving, cicadas, a streetcar far off",
      "dela": "an emerald bikini top",
      "dela_bela": "an emerald halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "italo_americana", "familia": "italo_americana",
@@ -413,6 +568,7 @@ MUNDOS = [
      "audio": "water moving in the pool, a radio inside, cicadas",
      "dela": "a black halter bikini top",
      "dela_bela": "a black twist-front bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "florida", "familia": "florida", "regiao": "Florida",
@@ -423,6 +579,7 @@ MUNDOS = [
      "luz": "bright overcast, soft even light off the water",
      "audio": "water spilling over the edge, a mockingbird, a pool pump",
      "dela": "a lime bikini top", "dela_bela": "a lime halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American", "Black American"]},
 
     {"id": "americana", "familia": "americana", "regiao": "suburbio americano",
@@ -434,6 +591,28 @@ MUNDOS = [
      "audio": "water moving in the pool, a lawnmower two streets over",
      "dela": "a pale blue bikini top",
      "dela_bela": "a pale blue halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
+     "etnias": ["white American", "Black American"]},
+
+    # =======================================================================
+    # ⭐⭐ OS DOZE NOVOS — 2026-08-13, ordem do operador
+    # =======================================================================
+    # ⛔ Registro de LUXO em todos: e' o que separa a jacuzzi de acrilico
+    # embutida em deck de teca da banheira inflavel de quintal, que continua
+    # banida. Agua quente PODE; agua barata NAO.
+    # ⭐ E o casal aparece DENTRO e FORA da agua, com traje variando entre
+    # sunga, bermuda, toalha e roupao — pedido literal dele.
+
+    {"id": "jacuzzi_teca", "familia": "jacuzzi", "regiao": "jacuzzi de luxo",
+     "cen": "the teak deck of a modern hillside house, glass doors open behind "
+            "and a low garden wall past the rail",
+     "agua": "a wide acrylic jacuzzi set flush into the teak deck, the jets on "
+             "and the water turning",
+     "borda": "the wide teak rim of the jacuzzi",
+     "luz": "warm late afternoon light coming in low across the deck",
+     "audio": "the jets turning the water, birds in the garden, a quiet street",
+     "dela": "a white bikini top", "dela_bela": "a white halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American", "Black American"]},
 
     # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
@@ -456,6 +635,11 @@ MUNDOS = [
      "audio": "a pool pump running, a mockingbird, a car door two houses down",
      "dela": "a white bikini top",
      "dela_bela": "a white halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "arizona", "familia": "arizona", "regiao": "Arizona",
@@ -468,17 +652,27 @@ MUNDOS = [
               "cicadas",
      "dela": "a terracotta bikini top",
      "dela_bela": "a terracotta halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "carolinas", "familia": "carolinas", "regiao": "Carolinas",
      "cen": "the back yard of a Carolina brick ranch house, pines and a wire "
             "fence at the far edge",
-     "agua": "a round above-ground pool with a wooden step ladder",
+     "agua": "a rectangular in-ground pool with a wide stone deck",
      "borda": "the wet flat rail on top of the pool wall",
      "luz": "warm evening light coming flat across the grass",
      "audio": "crickets, water against the pool wall, a screen door",
      "dela": "a purple bikini top",
      "dela_bela": "a purple halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "detroit", "familia": "detroit", "regiao": "Detroit",
@@ -491,6 +685,11 @@ MUNDOS = [
      "audio": "the tub jets, a dog down the alley, far traffic",
      "dela": "a red bikini top",
      "dela_bela": "a red halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "rochosas", "familia": "rochosas", "regiao": "Montanhas Rochosas",
@@ -503,6 +702,11 @@ MUNDOS = [
      "audio": "the tub jets, wind in the pines, an elk far off",
      "dela": "a forest green bikini top",
      "dela_bela": "a forest green halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "golfo", "familia": "golfo", "regiao": "Costa do Golfo",
@@ -514,29 +718,44 @@ MUNDOS = [
      "audio": "frogs, water moving in the tub, a boat motor far off",
      "dela": "a seafoam bikini top",
      "dela_bela": "a seafoam halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American", "Black American"]},
 
     {"id": "chicago", "familia": "chicago", "regiao": "South Side de Chicago",
      "cen": "the back yard of a Chicago bungalow, a wooden fence and a garage "
             "out at the alley",
-     "agua": "a round above-ground pool with a metal rail around the top",
+     "agua": "a rectangular in-ground pool with a flush stone coping",
      "borda": "the wet metal rail of the pool wall",
      "luz": "flat late summer light across the yard",
      "audio": "water against the pool wall, an elevated train, kids two yards "
               "over",
      "dela": "a burgundy bikini top",
      "dela_bela": "a burgundy halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["Black American"]},
 
     {"id": "jersey", "familia": "jersey", "regiao": "Jersey Shore",
      "cen": "the back deck of a Jersey Shore cottage, a slat fence and beach "
             "grass behind it",
-     "agua": "a round above-ground pool with a wooden deck built to the rim",
+     "agua": "a rectangular in-ground pool with bluestone coping set into the rim",
      "borda": "the wet deck boards at the pool wall",
      "luz": "cool late afternoon light coming off the water",
      "audio": "gulls, water lapping the pool wall, a screen door",
      "dela": "a pale blue bikini top",
      "dela_bela": "a pale blue twist-front bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American"]},
 
     {"id": "piemonte", "familia": "piemonte", "regiao": "Piemonte da Virginia",
@@ -548,10 +767,197 @@ MUNDOS = [
      "audio": "crickets, water moving in the tub, a truck on the county road",
      "dela": "a rose bikini top",
      "dela_bela": "a rose halter bikini top",
+     # ⚠️ campos acrescentados no merge de 13/08: estas nove regioes
+     # nasceram antes da POSTURA existir. Todas sao piscina de quintal,
+     # entao a decisao e `dentro_agua` + bermuda — escrita, nao herdada
+     # de um default silencioso.
+     "postura": "dentro_agua", "dele": BERMUDA,
      "etnias": ["white American", "Black American"]},
-]
+    {"id": "hidro_pedra", "familia": "hidro", "regiao": "hidromassagem",
+     "cen": "the stone terrace of a large house, clipped hedges and a lit "
+            "garden running off behind",
+     "agua": "a round hydromassage tub cut into the stone terrace, the water "
+             "moving over the built-in jets",
+     "borda": "the wide stone rim of the tub",
+     "luz": "soft evening light with the garden lamps just coming on",
+     "audio": "water turning over the jets, crickets, a door closing inside",
+     "dela": "a black bikini top", "dela_bela": "a black halter bikini top",
+     "postura": "borda_sentado", "dele": SUNGA,
+     "etnias": ["Black American"]},
+
+    {"id": "banheira_marmore", "familia": "banheira_lux",
+     "regiao": "banheiro de luxo",
+     "cen": "a large marble bathroom, a tall window with the blind half drawn "
+            "and folded towels stacked on a bench",
+     "agua": "a deep freestanding soaking tub in white stone, the water still "
+             "and clear",
+     "borda": "the wide marble ledge running along the tub",
+     "luz": "soft daylight through the blind, even across the marble",
+     "audio": "water settling in the tub, a fan somewhere, a quiet house",
+     "dela": "a white bikini top", "dela_bela": "a white halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
+     "etnias": ["white American", "Black American"]},
+
+    {"id": "sauna_cedro", "familia": "sauna", "regiao": "sauna",
+     "cen": "the inside of a cedar sauna, tongue-and-groove walls and a small "
+            "window in the door",
+     "agua": "the sauna heater in the corner, its stones glowing low",
+     "borda": "the cedar bench beside him",
+     "luz": "low warm light off the cedar, soft and even",
+     "audio": "the heater ticking, a faint hiss off the stones, nothing else",
+     "dela": "a white towel wrapped at the chest",
+     "dela_bela": "a short white towel wrapped at the chest",
+     "postura": "sauna", "dele": TOALHA,
+     "etnias": ["white American", "Black American"]},
+
+    {"id": "praia_privada", "familia": "praia", "regiao": "praia privada",
+     "cen": "an empty stretch of private beach, sea grape and a low dune "
+            "behind, no one else on the sand",
+     "agua": "the clear flat sea at the shoreline",
+     "borda": "a flat driftwood log at the water's edge",
+     "luz": "bright late sun off the water, warm on the sand",
+     "audio": "small waves turning over, gulls, wind off the sea",
+     "dela": "a turquoise bikini top",
+     "dela_bela": "a turquoise halter bikini top",
+     "postura": "praia", "dele": BERMUDA_VERDE,
+     "etnias": ["Black American"]},
+
+    {"id": "espreguicadeira", "familia": "lounger",
+     "regiao": "espreguicadeira",
+     "cen": "the pool terrace of a large house, clipped hedge and a striped "
+            "awning over the loungers",
+     "agua": "a long rectangular in-ground pool with pale stone coping, the "
+             "water clear and still",
+     "borda": "a low teak table between the two loungers",
+     "luz": "bright filtered afternoon light under the awning",
+     "audio": "water lapping the coping, cicadas, a quiet terrace",
+     "dela": "a coral bikini top",
+     "dela_bela": "a coral halter bikini top",
+     "postura": "espreguicadeira", "dele": SUNGA,
+     "etnias": ["white American", "Black American"]},
+
+    {"id": "cabana_piscina", "familia": "cabana", "regiao": "cabana da piscina",
+     "cen": "the open front of a white poolside cabana, linen curtains tied "
+            "back and the pool just outside",
+     "agua": "a rectangular in-ground pool with dark tile, the water clear and "
+             "still",
+     "borda": "the low rattan table inside the cabana",
+     "luz": "warm shaded light inside the cabana, bright water outside",
+     "audio": "water lapping the tile, curtains moving in the breeze, birds",
+     "dela": "a thick white waffle robe worn open over a white bikini top",
+     "dela_bela": "a short white waffle robe worn open over a white bikini top",
+     "postura": "roupao", "dele": ROUPAO,
+     "etnias": ["Black American"]},
+
+    {"id": "cobertura_infinita", "familia": "cobertura",
+     "regiao": "cobertura urbana",
+     "cen": "the roof terrace of a city apartment building, planted boxes "
+            "along the rail and the skyline running off behind",
+     "agua": "a rectangular rooftop pool with an infinity edge on the far "
+             "side, the water clear and still",
+     "borda": "the wet stone coping at the near edge",
+     "luz": "warm low city light coming in across the roofs",
+     "audio": "water spilling over the far edge, faint traffic below, wind",
+     "dela": "a black bikini top",
+     "dela_bela": "a black twist-front bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
+     "etnias": ["Black American"]},
+
+    {"id": "spa_coberto", "familia": "spa_interno", "regiao": "spa coberto",
+     "cen": "an indoor spa room with a slatted wood ceiling and tall windows "
+            "onto a green garden",
+     "agua": "a small indoor plunge pool lined in dark stone, the water clear "
+             "and still",
+     "borda": "the wide stone surround of the plunge pool",
+     "luz": "soft daylight from the garden windows, even off the water",
+     "audio": "water settling, a low pump hum, rain on the glass",
+     "dela": "a navy one-piece swimsuit",
+     "dela_bela": "a navy cut-out one-piece swimsuit",
+     "postura": "borda_sentado", "dele": SUNGA_PRETA,
+     "etnias": ["white American"]},
+
+    {"id": "chale_montanha", "familia": "chale", "regiao": "chale na montanha",
+     "cen": "the deck of a timber mountain lodge, dark firs and a ridge line "
+            "running off behind the rail",
+     "agua": "a round cedar hot tub built into the deck, the water clear and "
+             "the surface just moving",
+     "borda": "the wide cedar rim of the tub",
+     "luz": "cold clear mountain light, low and bright off the water",
+     "audio": "water moving in the tub, wind through the firs, a bird far off",
+     "dela": "a red bikini top", "dela_bela": "a red halter bikini top",
+     "postura": "dentro_agua", "dele": BERMUDA,
+     "etnias": ["white American"]},
+
+    {"id": "solarium_vidro", "familia": "solarium", "regiao": "solario",
+     "cen": "a glassed sun room off the back of a house, potted palms in the "
+            "corners and the garden bright outside",
+     "agua": "a small tiled plunge pool set into the sun room floor, the water "
+             "clear and still",
+     "borda": "the tiled surround of the plunge pool",
+     "luz": "bright filtered light through the glass, warm on the tile",
+     "audio": "water settling, birds outside the glass, a quiet house",
+     "dela": "a heavy grey towelling robe worn open over a black bikini top",
+     "dela_bela": "a short grey robe worn open over a black bikini top",
+     "postura": "roupao", "dele": ROUPAO_CINZA,
+     "etnias": ["white American", "Black American"]},
+
+    {"id": "pier_lago", "familia": "pier", "regiao": "pier no lago",
+     "cen": "the end of a private dock on a quiet lake, pines along the far "
+            "shore and a moored boat off to one side",
+     "agua": "the open lake water at the end of the dock, clear and flat",
+     "borda": "the wide sun-bleached dock boards beside him",
+     "luz": "warm late light coming flat across the lake",
+     "audio": "water against the dock posts, a loon far off, wind in the pines",
+     "dela": "a white bikini top under an open linen shirt",
+     "dela_bela": "a white bikini top under a short open linen shirt",
+     "postura": "borda_sentado", "dele": BERMUDA,
+     "etnias": ["white American"]},
+
+    {"id": "praia_costa", "familia": "praia_norte", "regiao": "costa norte",
+     "cen": "an empty stretch of private shoreline below a shingled beach "
+            "house, dune grass on the bank and no one else on the sand",
+     "agua": "the clear flat water at the shoreline",
+     "borda": "a smooth grey boulder at the water's edge",
+     "luz": "bright afternoon light off the water, cool and clean",
+     "audio": "small waves turning over, gulls, wind off the water",
+     "dela": "a pale blue bikini top",
+     "dela_bela": "a pale blue halter bikini top",
+     "postura": "praia", "dele": BERMUDA,
+     "etnias": ["white American"]},]
+
+# ⭐ O NOME DO CENARIO EM PORTUGUES, para o painel. A chave e' a postura.
+# ⛔ Curto de proposito: ele le' isso de relance, com o .exe aberto, entre um
+# sorteio e o proximo.
+CENARIOS_PT = {
+    "dentro_agua":     "piscina",
+    "borda_sentado":   "na borda",
+    "espreguicadeira": "espreguicadeira",
+    "sauna":           "sauna",
+    "praia":           "praia",
+    "roupao":          "roupao",
+}
+
+# ⭐ E o rotulo que o eixo `A REGIAO` mostra: regiao + cenario, porque saber a
+# regiao sem saber se e' piscina ou sauna nao responde *"onde vai cair a
+# imagem"*.
+for _m in MUNDOS:
+    _m["curto"] = "%s · %s" % (_m["regiao"],
+                               CENARIOS_PT[_m.get("postura", "dentro_agua")])
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
+
+# ⭐ As posturas que EXISTEM no pool, na ordem em que aparecem — nao a lista
+# inteira do `POSTURAS`. Postura sem mundo nenhum viraria botao que zera o
+# sorteio, e botao que quebra o app e' pior que botao ausente.
+CENARIOS_DO_POOL = list(dict.fromkeys(
+    m.get("postura", "dentro_agua") for m in MUNDOS))
+
+
+# ⚠️ O painel manda o ROTULO (`sauna`, `na borda`); o mundo guarda a CHAVE
+# (`sauna`, `borda_sentado`). Sem este mapa a trava casaria por acaso nos que
+# tem nome igual e falharia em silencio nos outros — que e' o pior modo de
+# falha possivel num filtro.
+_POSTURA_POR_PT = {v: k for k, v in CENARIOS_PT.items()}
 
 
 def mundos_da_etnia(etnia):
@@ -751,6 +1157,35 @@ CORPOS_H = [
 # lente nao pode discordar do pool nem depois de dez manutencoes.
 IDADE_MULHER = 25
 
+# ⭐⭐ O SORRISO DELA — ordem do operador (13/08): *"sempre deve estar
+# sorrindo independente da cena, sempre feliz (...) apenas estar com um
+# lindo sorriso, dentes brancos e perfeitos"*.
+# ⛔ CLAUSULA POSITIVA, e isso e' doutrina do ALFA 16, nao gosto: la' as
+# duas mulheres *"sorriem, nunca gargalham"* e a clausula foi escrita sem
+# `not laughing`, porque negacao injeta o token — o mesmo mecanismo pelo
+# qual `not a celebrity` invoca a celebridade. A gargalhada e' excluida
+# dizendo o que ELA FAZ (segura o mesmo sorriso, nao emite som), nunca
+# dizendo o que ela nao faz.
+# ⚠️ `showing`, nao `with`: a frase da IMAGE ja' abre com `she looks at
+# the lens WITH %s`, e a versao anterior encadeava dois `with` no mesmo
+# sintagma (`with a warm open smile WITH even white teeth`). Achado lendo o
+# bloco montado — no fonte as duas metades pareciam certas.
+SORRISO = "a warm open smile showing even white teeth"
+
+# ⭐⭐ O ENQUADRAMENTO — o rosto nunca embaixo da legenda queimada.
+# ⛔ A legenda deste funil e' o karaoke NO TOPO, bloco de duas linhas de
+# 11% a ~21% da altura (calibrado no VeoEditor em 13/08). Medido no v006:
+# as cabecas comecavam em 20,7% — passava RASPANDO, e raspar quer dizer
+# que metade dos sorteios entra embaixo do texto.
+# ⭐ A clausula pede o QUARTO DE CIMA livre, o que da' 4 pontos de folga.
+# ⛔ E e' POSITIVA: diz o que OCUPA o topo (fundo), nunca o que nao pode
+# estar la'. `no faces at the top` plantaria rosto no topo, pelo mesmo
+# mecanismo do `not a celebrity`.
+ENQUADRAMENTO = ("The camera is a little above them and tilted slightly "
+                 "down, so the whole top quarter of the frame is "
+                 "background only and both their heads sit below it, "
+                 "with their faces in the middle of the frame.")
+
 MULHERES = [
     # ⛔⛔ TODAS BRANCAS, TODAS 25, TODAS EXTREMAMENTE LINDAS.
     # Ordem do operador, em duas mensagens: *"quero que todas as mulheres
@@ -770,23 +1205,23 @@ MULHERES = [
     # `ref_bela` o preservava. Tirar o campo seria mexer em quatro strings de
     # bloco para economizar uma palavra.
     {"id": "ruiva_auburn", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "tall and long-legged with a very small waist",
+     "porte": "tall and long-legged, a swimmer's build",
      "cabeca": "deep auburn hair falling wet past her shoulders",
      "marca": "pale green eyes and a light spray of freckles across her nose"},
     {"id": "ruiva_cobre", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "slim with an hourglass figure",
+     "porte": "slim and fit, easy relaxed posture",
      "cabeca": "copper-red hair pushed back wet from her face",
      "marca": "hazel eyes and heavy freckling across her cheeks"},
     {"id": "ruiva_gengibre", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "willowy and fine-boned with a flat stomach",
+     "porte": "willowy and fine-boned, light on her feet",
      "cabeca": "bright ginger hair in long wet layers",
      "marca": "clear skin and a small beauty mark above her lip"},
     {"id": "ruiva_escura", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "curvy with a narrow waist and full shoulders",
+     "porte": "athletic with strong shoulders and long arms",
      "cabeca": "dark red hair swept wet over one shoulder",
      "marca": "green eyes and a fine gold hoop in her left nostril"},
     {"id": "loira_platinada", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "tall and statuesque with a long waist",
+     "porte": "tall and statuesque, standing straight",
      "cabeca": "long platinum blonde hair, wet at the ends",
      "marca": "wide-set blue eyes and clear glowing skin"},
     {"id": "loira_mel", "etnia": "white American", "idade": IDADE_MULHER,
@@ -794,7 +1229,7 @@ MULHERES = [
      "cabeca": "honey-blonde hair slicked back wet",
      "marca": "blue-grey eyes and a small beauty spot on her cheekbone"},
     {"id": "loira_morango", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "softly curved with a small waist",
+     "porte": "slim and healthy-looking, easy in the water",
      "cabeca": "strawberry-blonde hair in a wet loose braid",
      "marca": "pale blue eyes and a light dusting of freckles"},
     {"id": "loira_dourada", "etnia": "white American", "idade": IDADE_MULHER,
@@ -802,19 +1237,19 @@ MULHERES = [
      "cabeca": "golden blonde hair pushed wet behind her ears",
      "marca": "green-blue eyes and a faint dimple in one cheek"},
     {"id": "morena_lisa", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "athletic with a flat stomach and long legs",
+     "porte": "athletic with long legs, plainly in good shape",
      "cabeca": "dark brown hair slicked back wet",
      "marca": "dark almond eyes and clear glowing skin"},
     {"id": "morena_castanha", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "tall and slim with a very small waist",
+     "porte": "tall and slim, a runner's build",
      "cabeca": "long chestnut hair falling wet down her back",
      "marca": "light brown eyes and a small mole beside her mouth"},
     {"id": "morena_quase_preta", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "hourglass-figured with narrow hips",
+     "porte": "fit and slim with square shoulders",
      "cabeca": "near-black hair pushed back wet from her forehead",
      "marca": "striking blue eyes and high sharp cheekbones"},
     {"id": "morena_rabo", "etnia": "white American", "idade": IDADE_MULHER,
-     "porte": "fine-boned and long-limbed with a narrow waist",
+     "porte": "fine-boned and long-limbed, graceful",
      "cabeca": "warm brunette hair in a wet high ponytail",
      "marca": "hazel eyes and a small beauty mark on her temple"},
     # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
@@ -828,52 +1263,52 @@ MULHERES = [
     # carregava `a faint scar through one eyebrow`, que e' ancora de DANO num
     # pool que existe para ser bonito. Sinal de beleza cumpre a mesma funcao de
     # continuidade sem contradizer o registro.
-    {"id": "ruiva_veneziana", "etnia": "white American", "idade": 24,
-     "porte": "long-limbed with a narrow waist",
+    {"id": "ruiva_veneziana", "etnia": "white American", "idade": IDADE_MULHER,
+     "porte": "long-limbed and slim, easy upright posture",
      "cabeca": "Venetian red hair falling wet down her back",
      "marca": "grey-green eyes and a fine dusting of freckles"},
-    {"id": "ruiva_acobreada", "etnia": "white American", "idade": 24,
+    {"id": "ruiva_acobreada", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "athletic with square shoulders and a flat stomach",
      "cabeca": "copper hair twisted wet into a loose knot",
      "marca": "amber eyes and a small beauty mark on her jaw"},
-    {"id": "ruiva_clara", "etnia": "white American", "idade": 24,
-     "porte": "petite and finely built with a small waist",
+    {"id": "ruiva_clara", "etnia": "white American", "idade": IDADE_MULHER,
+     "porte": "petite and finely built, light on her feet",
      "cabeca": "pale red hair pushed back wet from her forehead",
      "marca": "blue eyes and a light spray of freckles over her nose"},
-    {"id": "ruiva_onda_longa", "etnia": "white American", "idade": 24,
+    {"id": "ruiva_onda_longa", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "tall and slim with long legs",
      "cabeca": "auburn hair in wet loose waves over one shoulder",
      "marca": "green eyes and a dimple in one cheek"},
-    {"id": "loira_gelo", "etnia": "white American", "idade": 24,
-     "porte": "statuesque with a long neck and a narrow waist",
+    {"id": "loira_gelo", "etnia": "white American", "idade": IDADE_MULHER,
+     "porte": "statuesque with a long neck, standing straight",
      "cabeca": "ice-blonde hair slicked back wet",
      "marca": "smooth-skinned with pale grey eyes"},
-    {"id": "loira_areia", "etnia": "white American", "idade": 24,
+    {"id": "loira_areia", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "lean and toned with a flat stomach",
      "cabeca": "sandy blonde hair in a wet high bun",
      "marca": "light hazel eyes and a small mole beside her eye"},
-    {"id": "loira_ondulada", "etnia": "white American", "idade": 24,
-     "porte": "curvy with a very small waist",
+    {"id": "loira_ondulada", "etnia": "white American", "idade": IDADE_MULHER,
+     "porte": "fit and softly built, relaxed in the water",
      "cabeca": "long wavy blonde hair heavy with water",
      "marca": "blue eyes and a beauty mark above her lip"},
-    {"id": "loira_bob", "etnia": "white American", "idade": 24,
+    {"id": "loira_bob", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "fine-boned and long-limbed",
      "cabeca": "a wet blonde bob pushed behind her ears",
      "marca": "green eyes and light freckles across her nose"},
-    {"id": "morena_cacheada", "etnia": "white American", "idade": 24,
-     "porte": "hourglass-figured with full shoulders",
+    {"id": "morena_cacheada", "etnia": "white American", "idade": IDADE_MULHER,
+     "porte": "athletic with full shoulders and long arms",
      "cabeca": "dark curls gathered wet at the nape",
      "marca": "dark brown eyes and a dimple in each cheek"},
-    {"id": "morena_franja", "etnia": "white American", "idade": 24,
-     "porte": "slender with a narrow waist and long arms",
+    {"id": "morena_franja", "etnia": "white American", "idade": IDADE_MULHER,
+     "porte": "slender with long arms, a dancer's posture",
      "cabeca": "glossy dark hair, wet, with a heavy fringe",
      "marca": "smooth-skinned with clear grey eyes"},
-    {"id": "morena_mel", "etnia": "white American", "idade": 24,
+    {"id": "morena_mel", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "athletic and long-legged with a flat stomach",
      "cabeca": "warm brown hair falling wet past her shoulders",
      "marca": "honey-brown eyes and a small beauty spot on her cheek"},
-    {"id": "morena_trancada", "etnia": "white American", "idade": 24,
-     "porte": "tall and fine-boned with a small waist",
+    {"id": "morena_trancada", "etnia": "white American", "idade": IDADE_MULHER,
+     "porte": "tall and fine-boned, a swimmer's build",
      "cabeca": "dark hair in a wet braid over one shoulder",
      "marca": "dark eyes and a fine gold hoop in one nostril"},
 ]
@@ -910,25 +1345,40 @@ MULHERES = [
 CAIXA_BICARBONATO = ("an orange and yellow cardboard box of baking soda, the "
                      "label sharp and readable, standing on the same edge")
 
+# ⛔⛔ A ESCALA DA TIGELA, ancorada na MAO — 2026-08-13. Sem esta clausula
+# o gerador desenha a tigela na escala da MOLDURA, e a moldura e' um casal
+# inteiro: sai travessa de servir. A mao esta' na mesma imagem e e' a unica
+# regua que o quadro oferece de graca.
+# ⚠️ E os adjetivos de VOLUME sairam das seis entradas no mesmo passe
+# (`heavy`, `tall`, `wide`, `squat`): pedir forma grande e escala pequena na
+# mesma frase e' contradicao, e o gerador resolve contradicao para o lado
+# errado — a licao mais cara deste repo.
+ESCALA_TIGELA = ("a small everyday cereal bowl, small enough for one hand "
+                 "to hold, no wider than the span of his palm")
+
 TIGELAS = [
     {"id": "creme_lisa", "curto": "ceramica creme",
-     "img": "a heavy cream ceramic bowl of glossy amber gelatin mixture with a "
-            "metal spoon standing in it"},
+     "img": "a small cream ceramic bowl of glossy amber gelatin mixture, "
+            "%s, with a metal spoon standing in it" % ESCALA_TIGELA},
     {"id": "azul_esmalte", "curto": "ceramica azul",
-     "img": "a deep blue-glazed ceramic bowl of glossy amber gelatin mixture "
-            "with a metal spoon standing in it"},
+     "img": "a small blue-glazed ceramic bowl of glossy amber gelatin "
+            "mixture, %s, with a metal spoon standing in it"
+            % ESCALA_TIGELA},
     {"id": "barro_terracota", "curto": "terracota",
-     "img": "a squat terracotta bowl of glossy amber gelatin mixture with a "
-            "metal spoon standing in it"},
+     "img": "a small terracotta bowl of glossy amber gelatin mixture, "
+            "%s, with a metal spoon standing in it" % ESCALA_TIGELA},
     {"id": "gres_pontilhado", "curto": "gres pontilhado",
-     "img": "a speckled grey stoneware bowl of glossy amber gelatin mixture "
-            "with a metal spoon standing in it"},
+     "img": "a small speckled grey stoneware bowl of glossy amber "
+            "gelatin mixture, %s, with a metal spoon standing in it"
+            % ESCALA_TIGELA},
     {"id": "branca_alta", "curto": "louca branca",
-     "img": "a tall white ironstone bowl of glossy amber gelatin mixture with "
-            "a metal spoon standing in it"},
+     "img": "a small white ironstone bowl of glossy amber gelatin "
+            "mixture, %s, with a metal spoon standing in it"
+            % ESCALA_TIGELA},
     {"id": "areia_larga", "curto": "barro areia",
-     "img": "a wide sand-coloured earthenware bowl of glossy amber gelatin "
-            "mixture with a metal spoon standing in it"},
+     "img": "a small sand-coloured earthenware bowl of glossy amber "
+            "gelatin mixture, %s, with a metal spoon standing in it"
+            % ESCALA_TIGELA},
 ]
 
 # ⛔⛔ O ROTULO E' STRING TRAVADA E HERDADA — nao se redigita. Ordem do operador:
@@ -950,6 +1400,26 @@ SACHE_ROTULO = ("a small foil sachet with the word GELATIN printed across the "
 # lente que pega redundancia (o linter cobra presenca, nao ritmo).
 SACHE = ("%s, empty and crumpled, with the lettering face up and readable"
          % SACHE_ROTULO)
+
+# ⭐⭐ O SACHE FECHADO — ELE PASSA A ESTAR NAS DUAS CENAS (2026-08-13).
+# Ordem do operador, lendo o v001 do dia: *"perceba que nao ha' um saquinho de
+# gelatina na cena, o saquinho sempre deve estar presente nas cenas desses
+# agentes, so' como estetica visual"*.
+#
+# ⛔⛔ ISSO REVERTE O DESENHO DE 2026-08-10, e a reversao TEM COMO: o sache era
+# a unica mudanca de estado do plano, e por isso a GO4 o PROIBIA na cena 1. A
+# saida nao e' abrir mao da batida — e' mover o que muda. Agora o objeto esta'
+# nos dois quadros e o que muda e' o ESTADO dele:
+#
+#     cena 1 ... fechado, cheio, de pe' encostado na tigela
+#     cena 2 ... vazio, amassado, caido ao lado dela
+#
+# ⭐ E isso e' MELHOR que o desenho antigo, nao um preco: o mesmo objeto
+# atravessando o corte e' a mecanica da tigela (que ja' funciona) e a do
+# `bed16`. Objeto que APARECE no segundo quadro le' como coisa que alguem
+# trouxe no corte; objeto que MUDA le' como tempo passando.
+SACHE_FECHADO = ("%s, unopened and full, standing propped upright against the "
+                 "bowl" % SACHE_ROTULO)
 
 
 # ===========================================================================
@@ -1405,6 +1875,16 @@ def sortear(pagina, rng, ledger, travas=None):
     if travas.get("familia_mundo"):
         fam = [m for m in pool_m if m["familia"] == travas["familia_mundo"]]
         pool_m = fam or pool_m
+    # ⭐⭐ A PRE-SELECAO DE CENARIO (13/08). O operador escolhe a postura e o
+    # sorteio fica dentro dela.
+    # ⛔ `or pool_m` — cede em vez de zerar: uma pagina negra que peca um
+    # cenario sem mundo negro receberia lista vazia e o app morreria no
+    # `rng.choice`. Filtro que zera o sorteio e' filtro que quebra o app, e
+    # este repo ja' pagou isso uma vez.
+    if travas.get("cenario"):
+        alvo = _POSTURA_POR_PT.get(travas["cenario"], travas["cenario"])
+        cen = [m for m in pool_m if m.get("postura", "dentro_agua") == alvo]
+        pool_m = cen or pool_m
     mundo = (_por_id(MUNDOS, travas["mundo"]) if travas.get("mundo")
              else _fresco(pool_m, hist.get("mundo", [])[-5:], rng))
 
@@ -1490,7 +1970,7 @@ def sortear(pagina, rng, ledger, travas=None):
         # apelido sorteado e engavetado apareceria no painel (a linha `no TAKE
         # sai como: Johnson → John-son`) prometendo uma palavra que o video nao
         # diz. Chave que existe e mente e' pior que chave vazia.
-        "apelido": None if leve else rng.choice(list(sc.APELIDOS_16)),
+        "apelido": None if leve else rng.choice(list(NUCLEO)),
     }
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
     return spec
@@ -1503,6 +1983,12 @@ def nova_fala(spec, i, rng):
 # ===========================================================================
 # MONTAGEM
 # ===========================================================================
+
+# ⚠️ `everyday scene at home`, nao `backyard`: desde 13/08 ha
+# banheiro de marmore, sauna, cabana e solario no pool, e "quintal" num
+# banheiro e contradicao dentro do proprio prompt.
+ANCORA_DOMESTICA = ("An ordinary everyday scene at home on a summer "
+                    "afternoon. ")
 
 CAUDA = ("Shot on iPhone, natural grain. No on-screen text, no subtitles, no "
          "captions, no watermark.")
@@ -1568,19 +2054,32 @@ def montar(spec):
     # chest` repete `the water` nos que descrevem a agua se movendo. Esta
     # redacao nao usa nem `with` nem `water`, e por isso e' a unica que le'
     # limpo nos QUINZE — conferido um por um.
+    # ⭐⭐ A POSTURA VEM DO MUNDO (13/08). Antes a posicao dele estava CRAVADA
+    # na frase (`Sitting in <agua>, submerged to his chest`), e isso travava o
+    # motor em piscina: numa espreguicadeira, numa sauna ou de roupao a frase
+    # e' simplesmente falsa. Agora o mundo diz qual postura usar e a postura
+    # traz as quatro clausulas de corpo.
+    pos = POSTURAS[m.get("postura", "dentro_agua")]
+    _ctx = {"agua": m["agua"], "borda": m["borda"], "dele": m.get("dele", "")}
+
     b["IMAGE 01/02"] = (
-        "IMAGE 01/02: Medium shot at %s. Sitting in %s, submerged to his "
-        "chest, shoulders and arms out of the water, is a %d-year-old %s man, "
-        "bare-chested, %s, %s, %s, a gold wedding band on his hand, talking "
-        "straight to camera. His hands are empty and rest on the edge in front "
-        "of him, and on %s, in front of him and untouched, sits %s%s. Beside "
-        "him, leaning in against his shoulder with the water at her chest, is "
+        "IMAGE 01/02: Medium shot at %s. %s %s, is a %d-year-old %s "
+        "man, %s, %s, %s, a gold wedding band on his hand, talking "
+        "straight to camera. %s, and on %s, in front of him and untouched, "
+        "sits %s%s. Right "
+        "beside the bowl, on the same surface, stands %s. %s, is "
         "a %d-year-old %s woman, %s, %s, %s, wearing %s; she looks at the lens "
-        "and says nothing. They are the only two people in the frame. %s. %s"
-        % (m["cen"], m["agua"], h["idade"], et, h["cabeca"], h["marca"],
-           spec["corpo_h"], m["borda"], spec["tigela"]["img"], _bicarb(spec),
+        "with %s and says nothing. They are the only two people in the "
+        "frame. "
+        "%s%s. %s"
+        % (m["cen"], ENQUADRAMENTO, pos["ele1"] % _ctx, h["idade"], et,
+           h["cabeca"],
+           h["marca"], spec["corpo_h"], pos["maos"], m["borda"],
+           spec["tigela"]["img"], _bicarb(spec),
+           SACHE_FECHADO, pos["ela1"],
            w["idade"], w["etnia"], w["cabeca"], w["marca"], w["porte"],
-           _traje_dela(spec), _cap(m["luz"]), CAUDA))
+           _traje_dela(spec), SORRISO, ANCORA_DOMESTICA, _cap(m["luz"]),
+           CAUDA))
 
     # --- IMAGE 02 — O PREPARO ---------------------------------------------
     # ⛔⛔ A ANCORA DE CONTINUIDADE VEM EM CINCO PECAS: idade, etnia, cabeca,
@@ -1591,21 +2090,27 @@ def montar(spec):
     # borda, MEXENDO e SORRINDO. O rosto virado para a lente e' a resolucao da
     # PENDENCIA declarada no cabecalho — ele e' o narrador e precisa falar.
     b["IMAGE 02/02"] = (
-        "IMAGE 02/02: Medium shot at %s. Standing in %s, submerged to his "
-        "waist and leaning forward over %s, is the same %d-year-old %s man "
-        "from the first scene, bare-chested, %s, %s, %s, a gold wedding band "
+        "IMAGE 02/02: Medium shot at %s. %s %s, is the same %d-year-old "
+        "%s man "
+        "from the first scene, "
+        "%s, %s, %s, a gold wedding band "
         "on his hand, his face turned to the camera and smiling. It is the "
-        "same man, not a different person. On the edge in front of him sits "
-        "%s%s, and he is stirring it with the spoon. Right beside the bowl, on "
-        "the same edge, lies %s. Pressed against his side with her shoulder "
-        "against his arm is a %d-year-old %s woman, %s, %s, %s, wearing %s; "
-        "she is looking down at the bowl and says nothing. They are the only "
-        "two people in the frame. %s. %s"
-        % (m["cen"], m["agua"], m["borda"], h["idade"], et, h["cabeca"],
-           h["marca"], spec["corpo_h"], spec["tigela"]["img"], _bicarb(spec),
-           SACHE,
+        "same man, not a different person. On %s in front of him sits "
+        "the same bowl from the first scene, %s%s, and he is stirring it "
+        "with the spoon. Right beside the bowl, on "
+        "the same surface, lies %s. %s, "
+        "is a %d-year-old %s woman, %s, %s, %s, wearing %s; "
+        "she is looking down at the bowl with %s and says nothing. They "
+        "are the only "
+        "two people in the frame. %s%s. %s"
+        % (m["cen"], ENQUADRAMENTO, pos["ele2"] % _ctx, h["idade"], et,
+           h["cabeca"],
+           h["marca"], spec["corpo_h"], m["borda"],
+           spec["tigela"]["img"], _bicarb(spec),
+           SACHE, pos["ela2"],
            w["idade"], w["etnia"], w["cabeca"], w["marca"], w["porte"],
-           _traje_dela(spec), _cap(m["luz"]), CAUDA))
+           _traje_dela(spec), SORRISO, ANCORA_DOMESTICA, _cap(m["luz"]),
+           CAUDA))
 
     # --- OS TAKES ----------------------------------------------------------
     # ⛔ `Only he speaks` e `she never speaks` sao OBRIGATORIOS (lente GO2):
@@ -1615,12 +2120,16 @@ def montar(spec):
         "TAKE 01/02: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts, and the camera does not move. He "
         "talks straight into the lens the whole time and his hands stay where "
-        "they are. The bowl on the edge is not touched, moved or lifted. She "
-        "stays exactly where she is, leaning against his shoulder, and she "
-        "never speaks. Only he speaks. The water keeps moving the way water "
-        "moves and nothing else in the frame changes.\n"
+        "they are. The bowl on the edge is not touched, moved or lifted, and "
+        "the sachet beside it stays closed and upright with its lettering "
+        "readable. She "
+        "stays exactly where she is, shoulder to shoulder beside him, "
+        "holding the same warm smile for the whole shot and making no "
+        "sound. She "
+        "never speaks. Only he speaks. %s "
+        "and nothing else in the frame changes.\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
-        % (sonorizar(spec["falas"][0]), m["audio"]))
+        % (pos["vivo"], sonorizar(spec["falas"][0]), m["audio"]))
 
     b["TAKE 02/02"] = (
         "TAKE 02/02: Animate the provided image exactly. Handheld iPhone shot, "
@@ -1629,11 +2138,13 @@ def montar(spec):
         "in the first scene. He keeps stirring the bowl with the spoon for the "
         "whole shot, the bowl stays exactly where it is on the edge, and the "
         "lettering on the sachet beside it stays sharp and readable. She stays "
-        "pressed against his side looking down at the bowl, and she never "
-        "speaks. Only he speaks. The water keeps moving the way water moves "
-        "and nothing else in the frame changes.\n"
+        "shoulder to shoulder beside him looking down at the bowl, holding "
+        "the same warm smile for the whole shot and making no sound. She "
+        "never "
+        "speaks. Only he speaks. %s and nothing else in the frame "
+        "changes.\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
-        % (sonorizar(spec["falas"][1]), m["audio"]))
+        % (pos["vivo"], sonorizar(spec["falas"][1]), m["audio"]))
 
     return sc.selar_takes(b)
 
@@ -1686,32 +2197,62 @@ def _go1_corpo_nao_orgao(spec, blocos, achados):
 
 
 def _go2_ela_muda(spec, blocos, achados):
-    """GO2 — ela nunca fala, e os DOIS takes tem de DIZER isso."""
+    """GO2 — ela nunca fala, e os DOIS takes tem de DIZER isso.
+
+    ⚠️ `lower()` na segunda checagem, e o motivo e' o mesmo que a GO4 ja' tinha
+    escrito: em 13/08 a clausula do sorriso entrou ANTES desta frase, `she`
+    virou comeco de sentenca e a lente reprovou 800 vezes uma producao
+    perfeita. Lente que casa CAIXA e' lente que reprova o dia em que alguem
+    reordena a frase — e reordenar frase e' o trabalho normal aqui.
+    """
     for k in ("TAKE 01/02", "TAKE 02/02"):
         if "Only he speaks" not in blocos[k]:
             achados.append(("ERRO", "GO2: %s sem `Only he speaks` — sem isso "
                                     "o Veo mexe a boca dela tambem" % k))
-        if "she never speaks" not in blocos[k]:
+        if "she never speaks" not in blocos[k].lower():
             achados.append(("ERRO", "GO2: %s nao diz que ela e' muda — a mudez "
                                     "dela e' invariante do angulo" % k))
 
 
 def _go4_sache(spec, blocos, achados):
-    """GO4 — o sache com GELATIN legivel aparece na cena 2, nunca na 1.
+    """GO4 — o sache esta' nas DUAS cenas, e o que muda e' o ESTADO dele.
 
-    ⛔ Ele e' a mudanca de estado do plano: no take 1 a tigela esta' intocada na
-    borda; no take 2 ele ja' foi usado, amassado, e esta' caido AO LADO dela. Se
-    aparecer na cena 1, o video perde a batida que a fonte tem.
-    ⭐ E a lente cobra o LUGAR, nao so' a presenca: sache erguido na mao era a
-    cena antiga, e a mao agora segura a colher.
+    ⛔⛔ REESCRITA EM 2026-08-13. A versao anterior PROIBIA o sache na cena 1,
+    porque ele era a unica mudanca de estado do plano. O operador viu um video
+    pronto e mandou o contrario: *"o saquinho sempre deve estar presente nas
+    cenas desses agentes, so' como estetica visual"*.
+
+    ⭐ A batida NAO foi sacrificada — foi movida. O objeto agora atravessa o
+    corte e o que muda e' a condicao dele:
+
+        cena 1 ... `unopened and full`, de pe' encostado na tigela
+        cena 2 ... `empty and crumpled`, caido ao lado dela
+
+    ⚠️ E por isso a lente ficou MAIS exigente, nao menos: ela cobra a presenca
+    nas duas E o estado certo em cada uma. Sache fechado nas duas mata a
+    passagem de tempo; amassado nas duas diz que a mistura foi feita antes do
+    video comecar.
     """
-    if "GELATIN" in blocos["IMAGE 01/02"]:
-        achados.append(("ERRO", "GO4: o sache ja' aparece na cena 1 — ele e' a "
-                                "unica mudanca de estado do plano e entra na 2"))
+    i1 = blocos["IMAGE 01/02"]
+    if "GELATIN" not in i1:
+        achados.append(("ERRO", "GO4: a cena 1 nao tem o sache com GELATIN "
+                                "legivel — ordem do operador (13/08): ele fica "
+                                "em quadro nas duas cenas"))
+    if "unopened and full" not in i1:
+        achados.append(("ERRO", "GO4: o sache da cena 1 nao esta' FECHADO — "
+                                "sache amassado aqui diz que a mistura foi "
+                                "feita antes do video comecar"))
+    if "crumpled" in i1:
+        achados.append(("ERRO", "GO4: o sache da cena 1 esta' amassado — o "
+                                "amassado e' o estado da cena 2"))
     i2 = blocos["IMAGE 02/02"]
     if "GELATIN" not in i2:
         achados.append(("ERRO", "GO4: a cena 2 nao tem o sache com GELATIN "
                                 "legivel — ordem do operador, fiel a' fonte"))
+    if "unopened" in i2:
+        achados.append(("ERRO", "GO4: o sache da cena 2 esta' fechado — sache "
+                                "fechado nas duas cenas mata a passagem de "
+                                "tempo, que e' a batida do corte"))
     # ⚠️ `lower()`: a clausula abre a sentenca na montagem (`Right beside the
     # bowl, ...`), e lente que casa caixa alta e' lente que reprova a producao
     # certa no dia em que alguem reordena a frase.
@@ -1930,11 +2471,20 @@ def _go11_contrato16(spec, blocos, achados):
     ⚠️ O `medir_copy16`, que mede DE FORA, continua contando o CT2 em 100%
     neste motor. E' o comportamento certo: a excecao e' deste motor, nao do
     contrato.
+
+    ⛔⛔ E O CT4b ENTROU NA MESMA LISTA EM 2026-08-13, pelo mesmo mecanismo do
+    BANHO 16. O CT4b exige que o apelido saia de `pecker` · `wiener` ·
+    `Johnson`; a ordem do operador tirou dois deles e acrescentou `manhood`,
+    que o contrato compartilhado nao lista. A decisao esta' declarada no
+    `NUCLEO`, aqui, e no `medir_copy16.DESLIGADAS` — nos TRES, porque
+    desligar so' num deles e' maquiar um dos relatorios.
+    ⭐ E o que o CT4b protegia (variar o apelido ENTRE videos) continua vivo:
+    o `NUCLEO` tem dois, e o sorteio alterna. Quem cobra agora e' a GO19.
     """
     brutos = []
     sc.lint_copy16(sys.modules[__name__], spec, brutos, isca_absurda=False)
     achados.extend([(n, msg) for n, msg in brutos
-                    if not msg.startswith("CT2:")])
+                    if not msg.startswith(("CT2:", "CT4b:"))])
 
 
 def _go12_leve(spec, blocos, achados):
@@ -2088,9 +2638,32 @@ def _go15_forte_musculo(spec, blocos, achados):
 # jacuzzi foi pedida antes e proibida depois. Manda a segunda.
 # ⭐ `steam` e `jets` entram na lista porque sao a jacuzzi por outro nome — sao
 # o que o gerador usa para DESENHAR uma, mesmo quando a palavra nao aparece.
-AGUA_PROIBIDA = ("hot tub", "inflatable", "above-ground", "above ground",
-                 "plastic", "jacuzzi", "whirlpool", "spa", "jets", "steam",
-                 "liner", "vinyl", " tub")
+# ⚠️⚠️ ESTA LISTA ENCOLHEU EM 13/08, no fim do dia, e o registro das DUAS
+# ordens fica aqui inteiro porque elas se contradizem:
+#
+#   manha : *"nunca de plastico, ofuros, hidromassagem ou qualquer coisa do
+#            tipo, menos de plastico"*  -> baniu tudo, agua quente inclusive
+#   noite : *"acrescente cenarios diferentes entao: jacuzzi, hidromassagem,
+#            banheira em banheiro de luxo, sauna, praia privada..."*
+#
+# ⭐ O QUE AS DUAS TEM EM COMUM E' O QUE SOBREVIVE: nada de PLASTICO. Ele
+# repetiu isso duas vezes na mesma frase. O que cai e' o veto a AGUA QUENTE.
+# ⛔ E a jacuzzi so' volta no registro de LUXO — acrilico embutido em deck de
+# teca, hidro cortada em terraco de pedra, ofuro de cedro em chale. O que
+# continua fora e' a agua BARATA, que e' o que ele nunca quis: inflavel,
+# armavel, forro de vinil.
+AGUA_PROIBIDA = ("inflatable", "above-ground", "above ground", "plastic",
+                 "vinyl", "liner", "blow-up", "paddling pool")
+
+
+def _palavra(termo, texto):
+    """Casa `termo` como PALAVRA INTEIRA (aceita termos de varias palavras).
+
+    ⛔ Existe por causa de um falso positivo de 800 acusacoes: `spa` dentro de
+    `the span of his palm`. `in` e' o operador errado para vocabulario banido —
+    a lista tem palavras curtas, e palavra curta mora dentro de palavra longa.
+    """
+    return re.search(r"\b%s\b" % re.escape(termo), texto) is not None
 
 
 def _go16_piscina_chique(spec, blocos, achados):
@@ -2101,10 +2674,14 @@ def _go16_piscina_chique(spec, blocos, achados):
     armaveis (uma delas com `blue liner`, plastico pelo nome). Nenhum lint
     acusava, porque ate' aquele dia nao era defeito.
     """
+    # ⛔⛔ PALAVRA INTEIRA, NAO SUBSTRING — bug pago em 2026-08-13. `spa` casava
+    # dentro de `the SPAn of his palm`, que entrou na escala da tigela no mesmo
+    # dia: 800 acusacoes falsas num motor perfeito. Lente que grita em producao
+    # correta e' pior que lente nenhuma, porque ensina a ignorar o linter.
     ruins = []
     for w in MUNDOS:
         txt = " ".join([w["agua"], w["borda"], w["luz"], w["audio"]]).lower()
-        achou = [p for p in AGUA_PROIBIDA if p in txt]
+        achou = [p for p in AGUA_PROIBIDA if _palavra(p, txt)]
         if achou:
             ruins.append("%s (%s)" % (w["id"], ", ".join(achou)))
     if ruins:
@@ -2113,7 +2690,7 @@ def _go16_piscina_chique(spec, blocos, achados):
                         % "; ".join(ruins)))
     for nome in ("IMAGE 01/02", "IMAGE 02/02"):
         t = blocos.get(nome, "").lower()
-        achou = [p for p in AGUA_PROIBIDA if p in t]
+        achou = [p for p in AGUA_PROIBIDA if _palavra(p, t)]
         if achou:
             achados.append(("ERRO", "GO16: %s traz %s — a agua e' sempre piscina "
                                     "chique" % (nome, ", ".join(achou))))
@@ -2183,6 +2760,218 @@ def _go17_cta_sem_horario(spec, blocos, achados):
                         % ", ".join(marcou)))
 
 
+# ⛔⛔ OS TOKENS QUE A MODERACAO PEGA. Ordem do operador (2026-08-13): *"os
+# prompts das imagens do good 16 esta' dando muita violacao de conteudo sexual
+# (...) aproveite o mesmo angulo de dupla e trio 16, que tem mulheres
+# praticamente de biquini e nao da' violacao"*.
+#
+# ⭐⭐ A COMPARACAO QUE ACHOU A CAUSA — DUPLA/TRIO passam, este era barrado.
+#
+# ⚠️⚠️ E A PRIMEIRA HIPOTESE ESTAVA ERRADA, o que so' apareceu na MEDICAO: eu
+# ia escrever que o DUPLA/TRIO "nao nomeiam a peca". Eles NOMEIAM — `bikini`
+# aparece em 64 de 200 blocos do DUPLA e 56 de 200 do TRIO. A palavra sozinha
+# nao e' o gatilho, e se eu tivesse confiado na leitura teria consertado a
+# coisa errada com toda a confianca do mundo.
+#
+# ⭐ O QUE A MEDICAO MOSTROU DE VERDADE, tres diferencas estruturais:
+#
+#     DUPLA / TRIO                        GOOD 16 (antes)
+#     ---------------------------------   -------------------------------
+#     `a black bikini top UNDER AN         `a white bikini top` — camada
+#      OPEN LINEN SHIRT` — a peca           externa, nada por cima
+#      NUNCA e' a camada de fora
+#     nao ha' homem em quadro             `bare-chested` num homem colado
+#      nenhum, muito menos sem camisa       nela dentro d'agua
+#     `side by side, shoulder to          `Pressed against his side with her
+#      shoulder`, e a clausula              shoulder against his arm` +
+#      `neither touches`                    `with the water at her chest`
+#
+# ⛔ O ACUMULO E' O GATILHO, nao uma palavra: torso nu + peca de banho + corpos
+# se tocando + busto nomeado, tudo na mesma sentenca. O DUPLA/TRIO tem UM dos
+# quatro; este tinha os quatro.
+# ⭐ Por isso o conserto ataca os tres que sao FORMA (o traje vira `bikini top`,
+# o `bare-chested` sai, a geometria vira a do DUPLA/TRIO) e nao encosta no
+# quarto: o TORSO DELE em quadro e' o argumento do angulo — `⛔⛔ O CORPO E' O
+# ARGUMENTO` — e tira-lo seria mudar a cena, que e' alcada do operador.
+# ⚠️ A camada de fora (`under an open shirt`) e' a defesa que o DUPLA/TRIO usam
+# e que NAO foi copiada: poria uma peca de roupa nova na cena dela dentro da
+# piscina. Fica como a proxima carta, se a recusa continuar.
+# ⛔ A CENA NAO MUDOU: ele segue de tronco a mostra na piscina, ela segue colada
+# e muda. Mudou a FORMA DE DIZER — o protocolo do `prop-metaforas.md`
+# §Recusa do gerador: *quase nunca a cena esta' barrada, a frase esta'*.
+# ⛔⛔ `bikini` SAIU DESTA LISTA EM 13/08, POR ORDEM DO OPERADOR — e a
+# medicao do mesmo dia ja' dizia que ele nao pertencia aqui: DUPLA 16 diz
+# `bikini` em 64 de 200 blocos e TRIO 16 em 56 de 200, e os dois passam. O
+# gatilho e' o ACUMULO, nunca a palavra sozinha.
+# ⚠️ O que FICA e' o que nenhum motor aprovado usa: o composto
+# `bare-chested`, a geometria de corpos colados e o busto nomeado.
+TOKENS_MODERACAO = ("bare-chested", "bare chest", "topless", "nude",
+                    "naked", "pressed against his", "water at her chest",
+                    "her breasts", "cleavage", "lingerie", "thong")
+
+# ⛔ O formato do TRONCO dela. Cada um e' inocente sozinho; ao lado de `bikini`
+# e de um homem sem camisa, o conjunto e' o que le' como sexual.
+TORSO_PROIBIDO = ("hourglass", "curvy", "curved", "hips", "small waist",
+                  "narrow waist", "bust", "bosom")
+
+# ⭐ AS PECAS QUE ELA PODE VESTIR — banho ou spa, nunca roupa de rua.
+TRAJES_DELA_OK = ("bikini", "one-piece", "swimsuit", "robe", "towel",
+                  "kaftan", "cover-up")
+
+
+def _go18_vocabulario_seguro(spec, blocos, achados):
+    """⭐⭐ GO18 — o vocabulario que a moderacao pega nao volta.
+
+    ⚠️ Cobra os BLOCOS e o pool de trajes. O pool porque um mundo novo copiado
+    de um antigo traria `bikini` de volta sem ninguem notar — foi assim que as
+    trinta strings nasceram iguais.
+    ⛔ E cobra CASE-INSENSITIVE: `Bikini` no inicio de frase e' o mesmo token.
+
+    ⛔⛔ E COBRA OS TAKES TAMBEM, e isto foi APRENDIDO NA HORA: a primeira
+    versao desta lente olhava so' o REF e as duas IMAGEs, porque o operador
+    falou em *"prompts das imagens"*. A medicao dentro da entrega devolveu
+    `pressed against his` em 400 de 400 — o token seguia vivo no TAKE 02, que
+    tambem vai para o gerador. A lente dava LIMPO e o defeito estava a duas
+    linhas dali. E' a §38 de novo: superficie coberta pela metade acusa metade.
+    """
+    for nome in ("BLOCO 0 (REF)", "IMAGE 01/02", "IMAGE 02/02",
+                 "TAKE 01/02", "TAKE 02/02"):
+        t = blocos.get(nome, "").lower()
+        achou = [p for p in TOKENS_MODERACAO if p in t]
+        if achou:
+            achados.append(("ERRO", "GO18: %s traz token de moderacao (%s) — o "
+                                    "DUPLA/TRIO entregam a mesma imagem sem "
+                                    "nomear a peca" % (nome, ", ".join(achou))))
+    # ⭐⭐ O VOCABULARIO DE TORSO NAO VOLTA. Ordem do operador (13/08), junto
+    # com o biquini: *"nada que remeta a algo sexual, apenas descrevendo uma
+    # mulher linda de biquini na piscina, algo super normal"*.
+    # ⛔ Sozinha, `hourglass figure` e' inocente. Ao lado de `bikini`, numa
+    # piscina, colada num homem sem camisa, o conjunto vira descricao de corpo
+    # em traje de banho — que e' na pratica o que o classificador pega. A
+    # beleza dela mora na ALTURA, no PORTE e no rosto (`cabeca`/`marca`), nao
+    # no formato do tronco.
+    torso = [w["id"] for w in MULHERES
+             if any(t in w["porte"].lower() for t in TORSO_PROIBIDO)]
+    if torso:
+        achados.append(("ERRO", "GO18: porte com vocabulario de torso em %s — a "
+                                "beleza dela e' altura, porte e rosto"
+                        % ", ".join(torso)))
+    ruins = []
+    for w in MUNDOS:
+        for campo in ("dela", "dela_bela"):
+            t = w[campo].lower()
+            if [p for p in TOKENS_MODERACAO if _palavra(p, t)]:
+                ruins.append("%s.%s (token)" % (w["id"], campo))
+            # ⭐⭐ E COBRA O POSITIVO: a peca tem de estar na lista. Ordem do
+            # operador (13/08): *"ajuste isso para gera-las sempre de
+            # biquini"*, e depois, no mesmo dia: *"nao so' biquinis mas
+            # tambem usando roupoes"*. Sem esta metade a lente aceitaria
+            # `tank top` de volta em silencio — que e' exatamente o defeito
+            # que ele reportou (camiseta na piscina).
+            # ⛔ A lista e' de PECA DE BANHO OU DE SPA. Camiseta, blusa,
+            # vestido e regata continuam fora: numa piscina eles leem como
+            # "esqueceu de trocar de roupa".
+            if not any(p in t for p in TRAJES_DELA_OK):
+                ruins.append("%s.%s (peca fora da lista: %r)"
+                             % (w["id"], campo, w[campo]))
+    if ruins:
+        achados.append(("ERRO", "GO18: traje(s) do pool fora da regra: "
+                                "%s" % ", ".join(ruins)))
+
+
+def _go21_cenario_entrega(spec, blocos, achados):
+    """⭐⭐ GO21 — todo cenario do painel EXISTE nas duas etnias.
+
+    ⛔⛔ O DEFEITO QUE ELA VIGIA FOI MEDIDO, NAO IMAGINADO: no dia em que a
+    pre-selecao de cenario nasceu, travar `praia` numa pagina BRANCA devolvia
+    0 de 120 no alvo. Nao havia mundo de praia branco, o `or pool_m` cedia
+    (como tem de ceder, senao o app morre) e o painel entregava TODOS os
+    cenarios com o botao aceso em `praia`.
+
+    ⭐ E' o modo de falha mais caro que um painel tem: botao que promete uma
+    coisa e entrega outra EM SILENCIO. O operador troca, ve' que nada mudou, e
+    para de confiar no painel inteiro — foi assim que a doutrina do repo
+    ganhou a frase *"eixo no painel que nao muda o video e' pior que eixo
+    ausente"*.
+
+    ⚠️ Ela cobra o POOL, nao o sorteio: um cenario novo declarado so' para uma
+    etnia dispara aqui, na primeira vez que alguem rodar o autoteste, e nao em
+    campo quatro semanas depois.
+    """
+    for et in ("Black American", "white American"):
+        tem = {m.get("postura", "dentro_agua") for m in mundos_da_etnia(et)}
+        falta = [CENARIOS_PT[p] for p in CENARIOS_DO_POOL if p not in tem]
+        if falta:
+            achados.append(("ERRO", "GO21: a pagina %s nao tem mundo para o(s) "
+                                    "cenario(s) %s — travar no painel vai ceder "
+                                    "e entregar outra coisa em silencio"
+                            % (et, ", ".join(falta))))
+
+
+def _go19_so_nucleo(spec, blocos, achados):
+    """⭐⭐ GO19 — a fala so' pode nomear o orgao como `Johnson` ou `manhood`.
+
+    Ordem do operador (2026-08-13): *"nunca citar nada alem de johnson ou
+    manhood, independente se esta' setado copy leve ou nao"*.
+
+    ⚠️ Cobra a FALA e o POOL. E cobra nos DOIS estados do copy leve, porque a
+    ordem dele diz `independente` — no estado leve a fala nao nomeia nada, e
+    isso continua valendo (nao nomear satisfaz "so' esses dois").
+    ⛔ E cobra a forma SONORIZADA tambem: o `sonorizar` quebra `Johnson` em
+    `John-son` para o TTS, e uma lente que so' procura a forma crua daria
+    limpo num take que diz `pecker` porque leu o texto errado.
+    """
+    fl = spec["falas"]
+    fl = list(fl.values()) if isinstance(fl, dict) else list(fl)
+    texto = " ".join(fl).lower().replace("-", "")
+    achou = [p for p in BANIDOS if re.search(r"\b%s\b" % p, texto)]
+    if achou:
+        achados.append(("ERRO", "GO19: a fala nomeia o orgao fora do nucleo "
+                                "(%s) — este agente so' usa %s"
+                        % (", ".join(achou), " e ".join(NUCLEO))))
+    fora = [a for a in NUCLEO if a.lower() not in
+            ("johnson", "manhood")]
+    if fora:
+        achados.append(("ERRO", "GO19: o NUCLEO ganhou entrada fora da ordem "
+                                "do operador: %s" % ", ".join(fora)))
+    ap = spec.get("apelido")
+    if ap is not None and ap not in NUCLEO:
+        achados.append(("ERRO", "GO19: apelido sorteado fora do nucleo: %r"
+                        % ap))
+
+
+def _go20_sem_camisa(spec, blocos, achados):
+    """⭐⭐ GO20 — ele esta' sem camisa nas DUAS imagens.
+
+    ⛔⛔ ESTA LENTE NASCEU DE UM ESTRAGO MEU, e o registro fica: em 13/08 eu
+    tirei o `bare-chested` das duas IMAGEs para resolver a recusa por conteudo
+    sexual, e nao pus NADA no lugar. A frase passou a nao dizer o que ele
+    veste — e prompt que nao diz, o gerador preenche. O operador voltou com a
+    grade de renders: *"o homem esta' na piscina de camiseta"*.
+
+    ⭐ A licao e' de classe, nao de caso: TIRAR uma clausula que a moderacao
+    pega nao e' o mesmo que RESOLVER o que ela dizia. Toda remocao por
+    moderacao precisa de uma substituta que carregue a mesma informacao
+    visual com outras palavras — senao o defeito troca de forma e volta.
+    ⚠️ Aqui a substituta e' `his shoulders and arms bare (...) and no shirt
+    on`: diz o mesmo sem o composto `bare-chested`, que era o token.
+    """
+    # ⭐ 13/08 (fim do dia): com as posturas novas ele nem sempre esta' sem
+    # camisa — de roupao, o que vale e' o peito ABERTO. O que a lente cobra e'
+    # a INVARIANTE, nao a frase: o torso dele aparece, de um jeito ou de outro.
+    # ⛔ Continua sendo trava, e continua sendo a mesma licao: prompt que nao
+    # diz o que ele veste faz o gerador vestir.
+    ok = ("no shirt", "worn open at the chest", "his chest and forearms "
+          "showing")
+    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
+        t = blocos.get(nome, "")
+        if not any(p in t for p in ok):
+            achados.append(("ERRO", "GO20: %s nao poe o torso dele em quadro "
+                                    "(nem `no shirt`, nem roupao aberto) — o "
+                                    "gerador veste o homem quando o prompt "
+                                    "cala, e a agua nao basta" % nome))
+
+
 def lint(spec, blocos):
     """⚠️ Lint PROPRIO, nao `sc.lint_curto`. Aquele e' da maquinaria de
     colapso 5->3 e pede `base` e `mapa`, que este motor nao tem: ele nao
@@ -2199,7 +2988,9 @@ def lint(spec, blocos):
               _go6_etnia, _go7_ancora, _go8_tigela, _go9_mistura,
               _go10_modos, _go11_contrato16, _go12_leve, _go_bicarb,
               _go13_forte_60, _go14_mulher, _go15_forte_musculo,
-              _go16_piscina_chique, _go17_cta_sem_horario):
+              _go16_piscina_chique, _go17_cta_sem_horario,
+              _go18_vocabulario_seguro, _go19_so_nucleo, _go20_sem_camisa,
+              _go21_cenario_entrega):
         f(spec, blocos, ach)
     return ach
 
@@ -2209,7 +3000,7 @@ def lint(spec, blocos):
 # ===========================================================================
 
 EIXOS_UI = [
-    ("mundo", "A REGIAO", "MUNDOS", "regiao"),
+    ("mundo", "A REGIAO", "MUNDOS", "curto"),
     ("homem", "QUEM FALA", "HOMENS", "id"),
     ("mulher", "A MULHER", "MULHERES", "id"),
     ("tigela", "A TIGELA", "TIGELAS", "curto"),
@@ -2217,7 +3008,13 @@ EIXOS_UI = [
 
 EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "tigela"]
 
-TRAVAS_UI = [("familia_mundo", "regiao", ["livre"] + FAMILIAS_MUNDO)]
+TRAVAS_UI = [
+    ("familia_mundo", "regiao", ["livre"] + FAMILIAS_MUNDO),
+    # ⭐⭐ 13/08 — o operador pediu por nome: *"acrescente a opcao cenario, pra
+    # mim poder travar ou trocar e saber onde vai cair a imagem"*.
+    ("cenario", "cenario",
+     ["livre"] + [CENARIOS_PT[p] for p in CENARIOS_DO_POOL]),
+]
 
 # ⚠️ `mundo` entra na lista de ignorados do `lint_painel_honesto` porque o valor
 # do eixo e' um id interno; os outros tres chegam ao quadro pelo `cabeca`/
@@ -2568,14 +3365,24 @@ def autoteste(n=400):
     #      ⛔ E o da GO16 planta as TRES aguas proibidas que o pool tinha de
     #      verdade: a banheira de cedro, a inflavel de telhado e a armavel de
     #      `blue liner`.
+    # ⚠️ ESTES CONTROLES FORAM REESCRITOS NO FIM DE 13/08. Dois deles plantavam
+    # `hot tub` e `steam` como defeito — e a segunda ordem do operador no mesmo
+    # dia LIBEROU agua quente. Controle que planta como defeito uma coisa
+    # permitida reprova producao correta, que e' o mesmo mal do falso positivo.
+    # ⛔ O que continua sendo defeito e' AGUA BARATA, e e' isso que se planta.
     for rotulo, texto, deve in (
-            ("banheira de cedro", "a round cedar hot tub set into the porch "
-                                  "boards", True),
             ("piscina inflavel", "a round inflatable pool set up on the roof "
                                  "decking", True),
             ("armavel com liner", "a round above-ground pool with a blue "
                                   "liner", True),
-            ("vapor de hidro", "steam coming off the surface", True),
+            ("piscina de plastico", "a blue plastic paddling pool on the "
+                                    "grass", True),
+            ("jacuzzi de luxo (agora PERMITIDA)",
+             "a wide acrylic jacuzzi set flush into the teak deck, the jets "
+             "on and the water turning", False),
+            ("sauna de cedro (agora PERMITIDA)",
+             "the wide cedar bench of the sauna, the heater stones glowing "
+             "low in the corner", False),
             ("piscina de obra", "a rectangular in-ground pool with pale stone "
                                 "coping, the water clear and still", False)):
         prova = []
@@ -2606,22 +3413,93 @@ def autoteste(n=400):
                           % (rotulo, "acusou" if prova else "passou",
                              "acusar" if deve else "passar"))
 
+    # (b4) ⭐⭐ CONTROLE NEGATIVO DA GO18. ⛔ Planta as frases HISTORICAS, as que
+    #      o motor gerou ate' 13/08 e que o operador viu serem recusadas — nao
+    #      um defeito inventado (§38).
+    for rotulo, texto, deve in (
+            ("o `bare chest` antigo",
+             "a man with a bare chest talking to camera", True),
+            ("o `bare-chested` antigo",
+             "is a 62-year-old man, bare-chested, talking to camera", True),
+            ("a geometria antiga (`pressed against his side`)",
+             "pressed against his side with her shoulder against his arm",
+             True),
+            ("o busto dela nomeado",
+             "leaning in against his shoulder with the water at her chest",
+             True),
+            ("a redacao de agora (biquini + geometria do DUPLA/TRIO)",
+             "beside him, shoulder to shoulder and turned the same way, is a "
+             "25-year-old white American woman wearing a gold bikini top",
+             False)):
+        prova = []
+        _go18_vocabulario_seguro({}, {"IMAGE 01/02": texto,
+                                      "IMAGE 02/02": texto}, prova)
+        prova = [p for p in prova if "do pool" not in p[1]]
+        if bool(prova) != deve:
+            falhas.append("GO18: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
+
+    # (b5) ⭐⭐ CONTROLES DA GO19 E DA GO20. Os dois plantam o defeito REAL:
+    #      o `wiener` que saia em 155 de 400 sorteios, e o bloco sem clausula
+    #      de camisa que eu mesmo produzi ao remover o `bare-chested`.
+    for rotulo, falas, deve in (
+            ("fala com `wiener`",
+             {0: "aviso", 1: "the trick keeps your wiener working"}, True),
+            ("fala com `pecker`",
+             {0: "aviso", 1: "keeps your pecker performing nightly"}, True),
+            ("fala com `Johnson` sonorizado",
+             {0: "aviso", 1: "keeps your John-son performing"}, False),
+            ("fala com `manhood`",
+             {0: "aviso", 1: "keeps your manhood working"}, False),
+            ("copy leve, sem apelido nenhum",
+             {0: "aviso", 1: "keeps you performing nightly"}, False)):
+        prova = []
+        _go19_so_nucleo({"falas": falas, "apelido": None}, {}, prova)
+        if bool(prova) != deve:
+            falhas.append("GO19: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
+
+    for rotulo, bloco, deve in (
+            ("bloco sem clausula de camisa (o meu estrago de 13/08)",
+             "is a 62-year-old man, a shaved head, muscled chest", True),
+            ("bloco com a clausula",
+             "his shoulders and arms bare above the waterline and no shirt on, "
+             "is a 62-year-old man", False)):
+        prova = []
+        _go20_sem_camisa({}, {"IMAGE 01/02": bloco, "IMAGE 02/02": bloco},
+                         prova)
+        if bool(prova) != deve:
+            falhas.append("GO20: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
+
     # (c) CONTROLE NEGATIVO DA GO12, nos DOIS estados. Lente que nunca acusa e'
     #     lente que ninguem sabe se funciona — e esta nasceu hoje.
+    # ⚠️ O APELIDO DO CONTROLE MUDOU EM 2026-08-13, e o registro vale: ele
+    # plantava `pecker`, e o motor deixou de usar `pecker` na mesma tarde
+    # (ordem do operador: so' `Johnson` e `manhood`). A GO12 le' o `NUCLEO`,
+    # entao ela passou a NAO reconhecer `pecker` como nome do orgao — e
+    # reprovou o proprio controle. A lente estava certa; o controle e' que
+    # tinha envelhecido.
+    # ⛔ Licao: controle que planta um valor CONSTANTE apodrece quando a
+    # constante muda. Este agora sai do `NUCLEO`, entao acompanha sozinho.
+    _ape = NUCLEO[0]
     _leve_ok = MISTURAS_LEVE[0] + " " + PRECOS[0] + " " + CTAS[0]
-    _pesada = MISTURAS[0].format(o="pecker") + " " + PRECOS[0] + " " + CTAS[0]
+    _pesada = MISTURAS[0].format(o=_ape) + " " + PRECOS[0] + " " + CTAS[0]
     for rotulo, spec_teste, deve_acusar in (
             ("leve ON com orgao na fala",
              {"leve": True, "apelido": None, "falas": ["", _pesada]}, True),
             ("leve ON com apelido engavetado no spec",
-             {"leve": True, "apelido": "pecker", "falas": ["", _leve_ok]}, True),
+             {"leve": True, "apelido": _ape, "falas": ["", _leve_ok]}, True),
             ("leve OFF com a copy leve",
-             {"leve": False, "apelido": "pecker", "falas": ["", _leve_ok]},
+             {"leve": False, "apelido": _ape, "falas": ["", _leve_ok]},
              True),
             ("leve ON limpo",
              {"leve": True, "apelido": None, "falas": ["", _leve_ok]}, False),
             ("leve OFF limpo",
-             {"leve": False, "apelido": "pecker", "falas": ["", _pesada]},
+             {"leve": False, "apelido": _ape, "falas": ["", _pesada]},
              False)):
         prova = []
         _go12_leve(spec_teste, {}, prova)

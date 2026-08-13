@@ -132,6 +132,14 @@ ROTULO = {
 # ⛔ So' entra aqui trava desligada TAMBEM NO MOTOR, com o motivo escrito la'.
 # Desligar so' aqui seria maquiar o relatorio.
 DESLIGADAS = {
+    ("good16", "CT4b"):
+        "ordem do operador (2026-08-13), lendo o lote: *\"nunca citar nada alem "
+        "de johnson ou manhood, independente se esta' setado copy leve ou nao, "
+        "esse agente deve citar somente esses 2\"*. Medido antes da ordem, 400 "
+        "sorteios: `wiener` 155, `Johnson` 125, `pecker` 120 — dois em cada "
+        "tres videos saiam com um apelido que ele nao quer neste angulo. "
+        "⭐ O que o CT4b protege (variar o apelido ENTRE videos) segue vivo: o "
+        "`NUCLEO` tem dois e o sorteio alterna. Quem cobra e' a lente GO19.",
     ("banho16_v2", "CT7"):
         "ordem direta do operador (2026-08-13), depois de eu mostrar que o CT7 e "
         "a BA6 reprovavam: *\"volte com o hard colado\"*. E' a frase da fonte, "

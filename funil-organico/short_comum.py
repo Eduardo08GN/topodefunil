@@ -2139,54 +2139,63 @@ REFS_FORTES = [
 # roda `_sem_olhos` em cima da `marca`. Olho escrito aqui seria apagado adiante
 # — eixo que o autor pensa ter escrito e o codigo remove em silencio.
 REFS_FORTES_MADUROS = [
-    {"idade": 48, "corpo": "thick with muscle through the chest and "
-                           "shoulders, forearms heavy and veined, "
-                           "stomach flat",
+    {"idade": 48, "corpo": "the heavy trained build of an athlete, thick deltoids "
+                           "and a broad deep chest, forearms corded with standing "
+                           "veins, stomach flat",
      "cabeca": "dark hair going grey at the temples, cut short",
      "marca": "a deep cleft in the chin, clean-shaven"},
-    {"idade": 50, "corpo": "densely muscled through the arms and chest, "
-                           "broad across the back, waist trim",
+    {"idade": 50, "corpo": "the dense trained frame of a lifter, deep chest and "
+                           "thick round shoulders, arms heavy and veined to the "
+                           "wrist, waist trim",
      "cabeca": "a close-shaved scalp and a short salt-and-pepper beard",
      "marca": "laugh lines and a smooth even complexion"},
-    {"idade": 52, "corpo": "heavily muscled shoulders and corded "
-                           "forearms over a flat stomach",
+    {"idade": 52, "corpo": "a powerful athletic frame, wide square shoulders and "
+                           "heavy muscled arms, thick veins running down each "
+                           "forearm, stomach flat",
      "cabeca": "silver hair cut in a short crisp fade",
      "marca": "a dimple that shows in one cheek"},
-    {"idade": 54, "corpo": "a deep muscled chest and thick cut arms "
-                           "over a trim waist",
+    {"idade": 54, "corpo": "the built frame of a man who still trains hard, deep "
+                           "chest and thick arms, forearms roped with veins, waist "
+                           "trim",
      "cabeca": "grey hair worn short and pushed back, clean-shaven",
      "marca": "a silver streak running through one eyebrow"},
-    {"idade": 55, "corpo": "wide through the shoulders with veined "
-                           "forearms and a hard flat stomach",
+    {"idade": 55, "corpo": "a muscular athlete's build, thick neck and heavy "
+                           "traps, wide shoulders, veins raised along both "
+                           "forearms, stomach flat",
      "cabeca": "close-cropped white hair and a trimmed white beard",
      "marca": "a plain gold hoop in one ear"},
-    {"idade": 57, "corpo": "solid muscle through the chest, the arms "
-                           "still cut and the waist narrow",
+    {"idade": 57, "corpo": "the hard trained build of a lifter, real mass across "
+                           "the chest and shoulders, arms cut and veined, waist "
+                           "narrow",
      "cabeca": "a bald crown with grey at the sides and a full grey moustache",
      "marca": "a beauty mark high on one cheekbone"},
-    {"idade": 58, "corpo": "thickly muscled sloping shoulders and heavy "
-                           "wrists, stomach flat",
+    {"idade": 58, "corpo": "a powerful athletic build, thick sloping shoulders and "
+                           "heavy wrists, forearms corded with veins, stomach flat",
      "cabeca": "silver hair combed back from a high forehead",
      "marca": "a shallow cleft chin and smooth skin"},
-    {"idade": 60, "corpo": "broad-chested and strongly muscled through "
-                           "the arms, waist still trim",
+    {"idade": 60, "corpo": "the heavy muscled frame of an athlete, broad deep "
+                           "chest and thick arms, veins standing along the "
+                           "forearms, waist trim",
      "cabeca": "short grey curls and a close-trimmed beard",
      "marca": "deep laugh lines at the corners of his mouth"},
-    {"idade": 62, "corpo": "a powerfully muscled frame, chest and upper "
-                           "arms thick with muscle, stomach flat",
+    {"idade": 62, "corpo": "a powerfully muscled athlete's build, chest and upper "
+                           "arms thick with muscle, forearms corded and veined, "
+                           "stomach flat",
      "cabeca": "a cleanly shaved head and a short white goatee",
      "marca": "a straight narrow nose and smooth skin"},
-    {"idade": 64, "corpo": "still heavily muscled through the shoulders "
-                           "and forearms, waist narrow",
+    {"idade": 64, "corpo": "the dense trained frame of a lifter, still heavily "
+                           "muscled through the shoulders and forearms, veins "
+                           "raised, waist narrow",
      "cabeca": "thick white hair cut neatly above the collar, clean-shaven",
      "marca": "a dimple beside his mouth"},
-    {"idade": 66, "corpo": "muscle standing out across the chest and "
-                           "shoulders, thick wrists, stomach flat",
+    {"idade": 66, "corpo": "a muscular athletic build, muscle standing out across "
+                           "the chest and shoulders, thick veined wrists and "
+                           "forearms, stomach flat",
      "cabeca": "silver hair cropped very short and a full white beard kept "
                "neatly shaped",
      "marca": "a small pale birthmark near one temple"},
-    {"idade": 68, "corpo": "a deep muscled chest and heavy cut arms "
-                           "over a flat stomach",
+    {"idade": 68, "corpo": "the heavy trained build of an athlete, deep chest and "
+                           "thick cut arms, forearms roped with veins, waist trim",
      "cabeca": "a bald head and a neat white moustache",
      "marca": "a cleft chin and heavy level brows"},
     # ⭐⭐ +6 ENTRADAS ACIMA DE 60 — 2026-08-12, poucas horas depois do pool
@@ -2201,29 +2210,31 @@ REFS_FORTES_MADUROS = [
     # lascado ou `weathered`), e ZERO palavra de aprovacao.
     # ⭐ ADITIVO: quem chama `ref_forte` sem `maduros=True` continua sem ver
     # nenhuma delas — conferido por medicao, nao por leitura.
-    {"idade": 61, "corpo": "muscled through the chest and shoulders, "
-                           "forearms thick and veined, waist still "
-                           "flat",
+    {"idade": 61, "corpo": "a powerful athlete's frame, broad muscled chest and "
+                           "shoulders, forearms thick and veined, waist still flat",
      "cabeca": "thick steel-grey hair combed back, cut short at the sides",
      "marca": "a birthmark below the left ear and an even complexion"},
-    {"idade": 63, "corpo": "heavily muscled across the back and arms, "
-                           "chest square and hard, stomach flat",
+    {"idade": 63, "corpo": "the hard built frame of a lifter, heavily muscled "
+                           "across the back and arms, chest square and hard, "
+                           "stomach flat",
      "cabeca": "a clean-shaved head and a close white beard",
      "marca": "a deep cleft chin and clear skin"},
-    {"idade": 65, "corpo": "densely muscled shoulders, forearms corded, "
-                           "upright posture and a trim waist",
+    {"idade": 65, "corpo": "a densely muscled athletic build, shoulders full, "
+                           "forearms corded, upright posture and a trim waist",
      "cabeca": "short white hair with a silver streak swept off the forehead",
      "marca": "laugh lines at the corners of both eyes"},
-    {"idade": 67, "corpo": "thick muscle through the neck and upper "
-                           "arms, chest full and hard, waist narrow",
+    {"idade": 67, "corpo": "the heavy trained frame of a lifter, thick muscle "
+                           "through the neck and upper arms, chest full and hard, "
+                           "waist narrow",
      "cabeca": "close-cropped grey hair and a trimmed grey moustache",
      "marca": "a small gold hoop in the left ear"},
-    {"idade": 70, "corpo": "hard muscle through the chest with thick "
-                           "veined forearms and square shoulders",
+    {"idade": 70, "corpo": "a muscular athlete's build, hard chest and thick "
+                           "veined forearms, square shoulders, stomach flat",
      "cabeca": "full silver hair worn a little long and a short silver beard",
      "marca": "a dimple in one cheek and a smooth even complexion"},
-    {"idade": 72, "corpo": "lean and hard through the chest, arms still "
-                           "thick with muscle, stomach flat",
+    {"idade": 72, "corpo": "the trained frame of a lifelong athlete, lean and hard "
+                           "through the chest, arms still thick with muscle, "
+                           "stomach flat",
      "cabeca": "white hair in a flat crop and a clipped white beard",
      "marca": "wide-set eyes and a raised mole on the right cheekbone"},
 ]

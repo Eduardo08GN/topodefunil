@@ -166,7 +166,33 @@ telhado, quatro armáveis — uma com `blue liner`). Lente `GO16`, que bane tamb
 de 2026-08-13: *"nunca deve especificar horário, deve dizer que vai receber
 agora"*. Lente `GO17`. ⚠️ **A dívida é do parque**: a varredura achou `tonight`
 ou `today` em CTAs de **20 motores**, ~70 linhas — copy, alçada do operador,
-não varrida. ⭐ Isso **não** quebra a congruência do funil: aqui quem
+não varrida.
+
+⭐⭐ **E a tarde de 2026-08-13 reescreveu metade do motor**, tudo por lote do
+operador. ⛔ **A POSTURA virou eixo**: a posição dele estava cravada na frase
+(`Sitting in <água>, submerged to his chest`), o que travava o agente em
+piscina — numa espreguiçadeira ou numa sauna a frase é falsa. São **6 posturas**
+(`dentro_agua` · `borda_sentado` · `espreguicadeira` · `sauna` · `praia` ·
+`roupao`), cada uma com as quatro cláusulas de corpo, e o mundo diz qual usar.
+⭐ **28 mundos** (eram 15) — jacuzzi de teca, hidromassagem de pedra, banheira
+de mármore, sauna de cedro, praia privada, espreguiçadeira, cabana, cobertura,
+spa coberto, chalé, solário, píer. ⚠️ Isso **reverte** o veto a água quente da
+manhã do mesmo dia; o que sobrevive das duas ordens é **nada de plástico**.
+⭐ **Pré-seleção de CENÁRIO no painel** — e a lente `GO21` cobra que todo
+cenário exista nas **duas etnias**, porque travar `praia` numa página branca
+devolvia 0/120 e o filtro cedia em silêncio: *botão que promete e entrega outra
+coisa é pior que botão ausente*.
+⛔ **Ela sorri sempre** (`GO22` implícita na string travada), com a cláusula
+**positiva** do `alfa16` — nunca `not laughing`, porque negação injeta o token.
+⛔ **O quarto de cima do quadro fica livre**, para o rosto não cair sob a
+legenda queimada (medido no v006: as cabeças começavam em 20,7% e a legenda vai
+até 21% — passava raspando).
+⚠️ **E a recusa por conteúdo sexual foi resolvida por ACÚMULO, não por palavra**:
+`bikini` aparece em 64/200 blocos do DUPLA e 56/200 do TRIO, e os dois passam.
+O que saiu foi o composto `bare-chested`, a geometria de corpos colados
+(`pressed against his side` → `shoulder to shoulder`), o busto nomeado e o
+**vocabulário de formato de torso** dela (`hourglass`, `curvy`, `narrow hips`) —
+a beleza mudou de endereço para altura, porte e rosto. ⭐ Isso **não** quebra a congruência do funil: aqui quem
 fala é o HOMEM, e a etnia que a página governa é a dele.
 ⛔ **E por isso o `MODO_BELA` foi DESLIGADO neste motor** — não por gosto: o
 `sc.ref_bela` entrega idades **21-33** (medido em 80 sorteios), então o botão
