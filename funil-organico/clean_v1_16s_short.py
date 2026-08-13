@@ -43,6 +43,7 @@ Uso:
 """
 
 import argparse
+import collections
 import json
 import os
 import random
@@ -273,6 +274,35 @@ CENARIOS = [
     {"id": "consultorio_claro", "desc": "a bright consulting room, three framed certificates on the pale wall behind %s, a window with sheer curtains, a small green plant on the sill"},
     {"id": "sala_exame", "desc": "a bright examination room, two framed diplomas on the wall behind %s, a folded white examination couch out of focus at the side, a window with daylight"},
     {"id": "escritorio_livros", "desc": "a bright medical office, a low bookshelf of thick medical books behind %s, three framed diplomas above it, a window with an out-of-focus street"},
+    # ⭐⭐ + 2026-08-13 — DOZE CENARIOS NOVOS, ordem do operador: *"aumente o
+    # pool de opcoes substancialmente, tambem dos ambientes"*. 6 -> 18.
+    # ⛔ Mesmas DUAS chaves das seis de cima e mais nada — `id` e `desc` — e o
+    # `desc` carrega UM unico `%s`, que e' o pronome objeto da montagem
+    # ("behind her" / "behind him"). Dois `%s` numa entrada nova sai TypeError
+    # na mao do operador; zero `%s` apaga a pessoa do cenario.
+    # ⛔ Mesmo nivel de detalhe das seis antigas: tipo de sala + o que esta' na
+    # parede + a janela + UM objeto a mais. Entrada mais pobre que as vizinhas
+    # e' cenario que le' como fundo generico ao lado dos outros.
+    # ⛔ ZERO texto legivel em qualquer set — a CAUDA promete "No text" nas tres
+    # imagens. Por isso os frascos sao `unlabelled` e nao ha' quadro anatomico,
+    # placa nem etiqueta: parede com caractere escrito e' texto em cena.
+    # ⚠️ NENHUM ID NOVO REPETE MUNDO DO V2 e nenhum `desc` novo sai do registro
+    # clinico — a divisao de territorio de 2026-08-05 (*"nao quero que os
+    # cenarios/mundo do agente v1 se repitam no agente da v2"*) continua de pe',
+    # e o `CENARIOS_V1` congelado la' foi atualizado no MESMO commit. Copia
+    # congelada que nao acompanha o original deixa o controle [6] cego.
+    {"id": "consultorio_madeira", "desc": "a bright medical office, a wall of warm wood panelling behind %s, two framed diplomas in slim brass frames, a tall window with soft daylight and a low fern on a stand"},
+    {"id": "sala_ultrassom", "desc": "a bright clinic room, an ultrasound cart with a dark screen parked at the side behind %s, plain white shelving along the wall, a window with a pale blind half raised"},
+    {"id": "consultorio_azul", "desc": "a bright consulting room, a pale blue wall behind %s with four framed certificates in a neat row, a window onto a courtyard and a small watering can on the sill"},
+    {"id": "sala_espera", "desc": "a bright waiting room, a row of upholstered chairs and a low table out of focus behind %s, a wide window onto a green hedge and a tall potted palm at the corner"},
+    {"id": "laboratorio", "desc": "a bright laboratory room, a rack of clean glass flasks and a centrifuge out of focus behind %s, white cabinets below them and a long window with even daylight"},
+    {"id": "consultorio_tijolo", "desc": "a bright medical office, an exposed brick wall behind %s with three framed diplomas, a black-framed window onto an out-of-focus street and a tall dracaena in the corner"},
+    {"id": "sala_terapia", "desc": "a bright therapy room, a padded treatment table folded flat against the wall behind %s, a rack of rolled exercise mats at the side and a window with daylight"},
+    {"id": "consultorio_verde", "desc": "a bright consulting room, a deep green wall behind %s with two framed certificates, a wide window with sheer curtains and a monstera in a woven basket"},
+    {"id": "farmacia_balcao", "desc": "a bright clinic room, a long wall of unlabelled amber bottles and plain white tubs behind %s, a low glass display case at the side and a window with soft daylight"},
+    {"id": "sala_reuniao", "desc": "a bright medical office, a plain white wall behind %s with five framed diplomas in dark frames, a long window onto trees and a glass jug of water on a side table"},
+    {"id": "consultorio_cinza", "desc": "a bright examination room, a soft grey wall behind %s, a stainless steel trolley with folded white towels at the side and a window with a half-open blind"},
+    {"id": "consultorio_terraco", "desc": "a bright medical office, a broad desk with a closed laptop at the side, a pale sage wall behind %s with one large framed diploma and a window looking out on a rooftop garden"},
 ]
 
 SCRUBS = ["deep burgundy", "deep teal", "navy blue", "forest green",
@@ -308,7 +338,7 @@ REFS_M = [
     {"idade": 29, "cabeca": "her hair in neat glossy cornrows pulled back",
      "marca": "a small dark beauty mark above her left eyebrow"},
     {"idade": 32, "cabeca": "her hair in a sleek shining low bun",
-     "marca": "high cheekbones and a small scar at the corner of her jaw"},
+     "marca": "high cheekbones and a small dark beauty mark at the corner of her jaw"},
     {"idade": 27, "cabeca": "shoulder-length glossy straight hair tucked behind her ears",
      "marca": "a light spray of freckles high on her cheeks"},
     {"idade": 34, "cabeca": "short soft natural curls, glossy and well-defined",
@@ -359,44 +389,44 @@ REFS_M = [
      "marca": "a small heart-shaped birthmark below her right ear"},
 ]
 REFS_H = [
-    {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a small scar through his right eyebrow"},
-    {"idade": 52, "cabeca": "a clean-shaven head and a short grey beard", "marca": "deep lines across his forehead"},
+    {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a deep cleft in his chin"},
+    {"idade": 52, "cabeca": "a clean-shaven head and a short grey beard", "marca": "heavy level brows over wide-set eyes"},
     {"idade": 44, "cabeca": "short dark hair combed back, clean-shaven", "marca": "a small mole on his left cheek"},
-    {"idade": 55, "cabeca": "thinning grey hair and a full grey moustache", "marca": "heavy creases at the corners of his eyes"},
-    {"idade": 41, "cabeca": "short cropped hair and a neat goatee", "marca": "a faint scar on his chin"},
+    {"idade": 55, "cabeca": "thinning grey hair and a full grey moustache", "marca": "laugh lines at the corners of his eyes"},
+    {"idade": 41, "cabeca": "short cropped hair and a neat goatee", "marca": "a small gold stud in his left earlobe"},
     {"idade": 50, "cabeca": "salt-and-pepper hair cut short, clean-shaven", "marca": "a small notch in his right eyebrow"},
     # + 2026-08-03 — mesmo motivo do REFS_M acima: oculos e pele estavam em 0%.
     # ⛔ Nenhuma repete a ancora facial das seis de cima (cicatriz na
     # sobrancelha, linhas na testa, pinta na bochecha, vincos no olho, cicatriz
     # no queixo, entalhe na sobrancelha): ancora repetida remenda o morphing.
     {"idade": 57, "cabeca": "a bald crown with grey at the sides and a chevron moustache, thin gold-rimmed glasses",
-     "marca": "sun-weathered skin and a coin-sized birthmark on his left temple"},
+     "marca": "lightly tanned even skin and a coin-sized birthmark on his left temple"},
     {"idade": 43, "cabeca": "thick dark hair with a sharp widow's peak, clean-shaven, boxy clear-framed glasses",
      "marca": "freckled skin across the bridge of his nose"},
     {"idade": 61, "cabeca": "a full head of white hair and a bristly white beard, heavy black-framed bifocals",
-     "marca": "deeply lined skin and a pale scar along his right jaw"},
+     "marca": "smooth even skin and a wide easy smile"},
     # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
     # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
     # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
     # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
     {"idade": 52,
      "cabeca": "a shaved head and a full salt-and-pepper beard",
-     "marca": "a broad flattened nose that has been broken once"},
+     "marca": "a broad straight nose with a wide bridge"},
     {"idade": 45,
      "cabeca": "thick dark hair going grey at the temples, clean-shaven",
-     "marca": "a deep vertical crease between his eyebrows"},
+     "marca": "a patch of white hair above his left temple"},
     {"idade": 57,
      "cabeca": "close-cropped iron-grey hair and a neat pencil moustache",
-     "marca": "wire-rimmed glasses and a heavy square jaw"},
+     "marca": "wire-rimmed glasses and high wide cheekbones"},
     {"idade": 41,
      "cabeca": "dark curls kept short and dense, a two-day shadow",
      "marca": "a notch cut through his right eyebrow"},
     {"idade": 60,
      "cabeca": "a bald crown with white hair close at the sides",
-     "marca": "a thick white moustache and heavy hooded eyelids"},
+     "marca": "a thick white moustache and a small dark beauty mark below his right eye"},
     {"idade": 49,
      "cabeca": "wavy salt-and-pepper hair worn long at the collar",
-     "marca": "a pale crescent scar on his left cheekbone"},
+     "marca": "a light spray of freckles across the bridge of his nose"},
     {"idade": 54,
      "cabeca": "grey hair in a flat brush cut and a short greying beard",
      "marca": "very pale blue eyes under dark brows"},
@@ -407,6 +437,28 @@ REFS_H = [
      "marca": "a single deep dimple in his left cheek"},
 ]
 
+# ⭐⭐ 2026-08-13 — DOZE MARCAS FACIAIS REESCRITAS, ordem do operador:
+# *"melhore a aparencia e shape desses homens"*. Onze no REFS_H e uma no
+# REFS_M, e o motivo e' um so': elas descreviam DANO, nao feicao.
+#   · cicatriz (4x): `a small scar through his right eyebrow`, `a faint scar on
+#     his chin`, `a pale crescent scar on his left cheekbone`, `a pale scar
+#     along his right jaw` — e no feminino `a small scar at the corner of her
+#     jaw`, que ainda por cima contrariava o proprio bloco acima ("ancora
+#     DISTINTIVA e nunca DETERIORADA").
+#   · pele castigada (2x): `sun-weathered skin`, `deeply lined skin`.
+#   · vinco e ruga (3x): `deep lines across his forehead`, `heavy creases at the
+#     corners of his eyes`, `a deep vertical crease between his eyebrows`.
+#   · nariz quebrado: `a broad flattened nose that has been broken once`.
+#   · palpebra caida: `heavy hooded eyelids`.
+#   · e uma PALAVRA DE APROVACAO: `a heavy square jaw`. Elogio no prompt puxa o
+#     rosto para a media do banco de imagem — mesmo mecanismo pelo qual dizer
+#     "not a celebrity" invoca a celebridade. Descreve-se FEICAO, nunca juizo.
+# ⛔ CADA UMA MANTEVE O EIXO QUE CARREGAVA (oculos, pele, porte, careca) e
+# trocou so' a ancora, por uma do lado ✅: covinha, fenda no queixo, mecha
+# branca na tempora, sarda, malar alto, linhas de riso, argola, beleza-marca,
+# sobrancelha cheia e reta.
+# ⚠️ As doze estao IDENTICAS nos tres motores da familia CLEAN — o fragmento
+# nao pode envelhecer separado.
 # ⛔ CL25 — assert de carga: nenhuma marca facial volta a pedir defeito de
 # dente. O gap "saiu" uma vez SO' NA DOUTRINA e continuou no motor ate' a foto
 # de campo de 2026-08-04 — regra sem assert e' regra que volta.
@@ -466,6 +518,31 @@ CORPOS_H = [
     "a lean hard frame with a flat stomach and a visible line down the centre, shoulders square, skin clear",
     "the heavy-boned build of a wrestler, a thick neck and broad flat chest, arms full and solid, skin healthy",
     "a swimmer's build, long muscled arms and a wide back tapering to the waist, shoulders capped and round, skin clear",
+    # ⭐⭐ + 2026-08-13 — NOVE CORPOS NOVOS, ordem do operador: *"melhore a
+    # aparencia e shape desses homens"* / *"aumente o pool de opcoes
+    # substancialmente"*. 9 -> 18.
+    # ⛔ IDENTICO NOS TRES MOTORES DA FAMILIA CLEAN (clean_short,
+    # clean_v1_16s, clean_v2_16s). Eles nasceram por copia literal; pool que
+    # diverge entre irmaos deixa de ter fonte da verdade e envelhece separado.
+    # ⛔ O TETO DO CL24 CONTINUA: atleta, NAO fisiculturista. Zero musculo
+    # estourado, zero corpo oleado, zero veia de competicao, zero definicao de
+    # palco — o registro do CLEAN e' consultorio, e passar disso vira outro
+    # angulo. E o CL8 tambem: nunca tronco nu, o corpo aparece PELA roupa.
+    # ⚠️ Cada linha e' curta e ancorada em GEOMETRIA (ombro, costas, antebraco,
+    # veia) em vez de empilhar adjetivo — densidade de adjetivo de corpo e'
+    # superficie de bloqueio conhecida do gerador de imagem (2026-08-03). Se
+    # vier recusa, a primeira coisa a encurtar continua sendo esta.
+    # ⛔ Zero palavra de aprovacao (`handsome`, `chiseled`, `rugged`): elogio
+    # puxa o rosto para a media do banco de imagem. O que entra e' FORMA.
+    "the compact powerful build of a gymnast, thick shoulders and a deep chest, forearms tight and veined, skin clear and even",
+    "a boxer's frame, wide across the back and narrow at the waist, cords standing out in the forearms, good colour in his face",
+    "a heavy rower's build, thick through the upper back and shoulders, veins tracking down each forearm, skin healthy",
+    "the solid build of a man who trains every day, round shoulder caps and a thick chest, hands and forearms plainly worked",
+    "a tall powerful frame with long thick arms and a broad chest, veins raised along each forearm, clearly in good health",
+    "a stocky trained build, a short thick neck and heavy shoulders, forearms full and corded, skin clear",
+    "the athletic build of a climber, lean and dense through the shoulders and back, forearms closely veined, healthy colour",
+    "a broad athletic frame, thick traps rising to the neck, arms heavy and veined, skin clear and taut",
+    "the trained build of a former athlete, still thick through the chest and shoulders, forearms roped, skin even and healthy",
 ]
 # ---------------------------------------------------------------------------
 # ⭐⭐ CL26 — O CORPO FEMININO E' SENSUAL, NUNCA MUSCULOSO (2026-08-04)
@@ -1682,8 +1759,187 @@ EIXOS_QUE_MEXEM_NA_COPY = {}
 TETO_LEDGER = {"familia": len(FAMILIAS), "cenario": len(CENARIOS), "despejo": 8}
 
 
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ AUTOTESTE — o aceite deste motor deixa de ser RELATO e vira MEDICAO
+# ---------------------------------------------------------------------------
+# ⚠️ ESTE MOTOR NASCEU SEM `--autoteste` e ficou assim ate' 2026-08-13, quando os
+# CENARIOS foram de 6 para 18 e os CORPOS_H de 9 para 18 por ordem do operador
+# (*"melhore a aparencia e shape desses homens"* / *"aumente o pool de opcoes
+# substancialmente, tambem dos ambientes"*). Pool grande sem sonda e' pior que
+# pool pequeno: o vicio volta calado.
+# ⛔ `0 ERRO` num lote grande e' SUSPEITA, nao aprovacao: pode ser motor limpo ou
+# regra morta. Por isso cada trava tem um sabotador, e o sabotador tem de CHEGAR
+# onde a regra olha (licoes §16) — e' por isso que `_medir_pools` recebe as
+# listas por ARGUMENTO em vez de ler o global.
+_DETERIORACAO = (
+    "scar", "broken nose", "chipped tooth", "missing tooth", "gap between",
+    "sun damage", "sun-weathered", "weathered", "ruddy", "thin skin",
+    "loose skin", "age spot", "sunken", "gaunt", "bony", "hollow", "leathery",
+    "deeply lined", "deep lines", "crease between", "hooded eyelid",
+)
+# ⛔ Palavra de aprovacao SO' E' PROIBIDA NO POOL MASCULINO. No feminino ela e'
+# obrigatoria por contrato — o CL26 tem assert de carga exigindo `beautiful` em
+# toda linha do CORPOS_M, porque ali a beleza mora na FRASE e nao no cast. Uma
+# sonda que ignorasse essa assimetria reprovaria justamente a regra que o
+# operador mandou escrever.
+_APROVACAO_H = ("handsome", "chiseled", "rugged", "strong jaw", "square jaw",
+                "piercing eyes", "good-looking", "not a celebrity",
+                "not famous", "not a model")
+
+
+def _medir_pools(cenarios, refs_m, refs_h, corpos_h, corpos_m):
+    """As travas de POOL deste motor, medidas — nunca declaradas.
+
+    ⛔ As cinco listas entram por ARGUMENTO de proposito: e' o que deixa o
+    sabotador plantar uma entrada suja sem encostar no motor de verdade. Trava
+    que so' sabe olhar o global nao pode ser testada, e trava nao testada e'
+    decoracao.
+    """
+    achados = []
+    for nome, pool, piso in (("CENARIOS", cenarios, 18), ("REFS_M", refs_m, 17),
+                             ("REFS_H", refs_h, 17), ("CORPOS_H", corpos_h, 18),
+                             ("CORPOS_M", corpos_m, 5)):
+        if len(pool) < piso:
+            achados.append("pool %s com %d entradas (piso %d)"
+                           % (nome, len(pool), piso))
+        txt = [str(x) for x in pool]
+        for x in sorted({t for t in txt if txt.count(t) > 1}):
+            achados.append("pool %s tem entrada REPETIDA: %s" % (nome, x[:70]))
+
+    # ⛔ DETERIORACAO em qualquer pool de gente. E' a regra mais cara do repo:
+    # o operador reprovou um lote inteiro no PLACA 16 com *"esses caras tao
+    # parecendo mendigo"*, e este motor carregava onze marcas de dano ate'
+    # 2026-08-13 (cicatriz, pele castigada, vinco, nariz quebrado, palpebra).
+    for nome, pool in (("REFS_M", refs_m), ("REFS_H", refs_h),
+                       ("CORPOS_H", corpos_h), ("CORPOS_M", corpos_m)):
+        for x in pool:
+            baixo = str(x).lower()
+            for t in _DETERIORACAO:
+                if t in baixo:
+                    achados.append("pool %s: ancora DETERIORADA %r em %s"
+                                   % (nome, t, str(x)[:60]))
+    for nome, pool in (("REFS_H", refs_h), ("CORPOS_H", corpos_h)):
+        for x in pool:
+            baixo = str(x).lower()
+            for t in _APROVACAO_H:
+                if t in baixo:
+                    achados.append("pool %s: palavra de aprovacao/negacao %r em "
+                                   "%s" % (nome, t, str(x)[:60]))
+
+    # ⛔ CENARIOS: UM unico `%s` por entrada, que e' o pronome objeto da
+    # montagem. Dois viram TypeError na mao do operador; zero apaga a pessoa.
+    ids = [c["id"] for c in cenarios]
+    for c in cenarios:
+        if c["desc"].count("%s") != 1:
+            achados.append("CENARIO %s com %d `%%s` (tem de ser exatamente 1)"
+                           % (c["id"], c["desc"].count("%s")))
+        if ids.count(c["id"]) > 1:
+            achados.append("CENARIO com id repetido: %s" % c["id"])
+    return achados
+
+
+def autoteste(n=600):
+    """Os pools e as invariantes deste motor, medidos num lote de verdade."""
+    falhas = list(_medir_pools(CENARIOS, REFS_M, REFS_H, CORPOS_H, CORPOS_M))
+    vistos = collections.defaultdict(set)
+    sexos = collections.Counter()
+
+    for seed in range(n):
+        spec = sortear("joe", random.Random(seed), {}, {})
+        blocos = montar(spec)
+        for tipo, msg in lint(spec, blocos):
+            if tipo == "ERRO":
+                falhas.append("seed %d (%s): %s"
+                              % (seed, spec["cenario"]["id"], msg))
+        vistos["cenario"].add(spec["cenario"]["id"])
+        vistos["corpo"].add(spec["corpo"])
+        vistos["ref"].add(spec["ref"]["marca"])
+        sexos[spec["sexo"]] += 1
+
+    if len(vistos["cenario"]) != len(CENARIOS):
+        falhas.append("cenario: %d de %d nunca sorteados em %d videos"
+                      % (len(CENARIOS) - len(vistos["cenario"]),
+                         len(CENARIOS), n))
+    # ⚠️ CORPO e REF sao sorteados DEPOIS do sexo, entao a cobertura tem de
+    # somar os dois lados — cobrar so' um deles esconde metade do pool.
+    if len(vistos["corpo"]) != len(CORPOS_H) + len(CORPOS_M):
+        falhas.append("corpo: %d de %d nunca sorteados em %d videos"
+                      % (len(CORPOS_H) + len(CORPOS_M) - len(vistos["corpo"]),
+                         len(CORPOS_H) + len(CORPOS_M), n))
+    if len(vistos["ref"]) != len(REFS_M) + len(REFS_H):
+        falhas.append("ref: %d de %d nunca sorteados em %d videos"
+                      % (len(REFS_M) + len(REFS_H) - len(vistos["ref"]),
+                         len(REFS_M) + len(REFS_H), n))
+    for s, q in sexos.items():
+        if not 0.35 <= q / float(n) <= 0.65:
+            falhas.append("sexo %s em %.1f%% do lote (faixa 35-65%%)"
+                          % (s, 100.0 * q / n))
+
+    # ---- CONTROLES POSITIVOS: cada trava SABE reprovar? --------------------
+    ctrl = []
+    _sujo = dict(REFS_H[0])
+    _sujo["marca"] = "a pale crescent scar on his left cheekbone"
+    if not any("DETERIORADA" in m for m in
+               _medir_pools(CENARIOS, REFS_M, REFS_H + [_sujo], CORPOS_H, CORPOS_M)):
+        ctrl.append("a sonda de aparencia NAO acusa `scar` plantado no REFS_H")
+    _pele = dict(REFS_M[0])
+    _pele["marca"] = "sun-weathered skin and full lips"
+    if not any("DETERIORADA" in m for m in
+               _medir_pools(CENARIOS, REFS_M + [_pele], REFS_H, CORPOS_H, CORPOS_M)):
+        ctrl.append("a sonda de aparencia NAO alcanca o pool FEMININO")
+    _elogio = dict(REFS_H[0])
+    _elogio["marca"] = "a heavy square jaw and dark brows"
+    if not any("aprovacao" in m for m in
+               _medir_pools(CENARIOS, REFS_M, REFS_H + [_elogio], CORPOS_H, CORPOS_M)):
+        ctrl.append("a sonda NAO acusa palavra de aprovacao no pool masculino")
+    # ⛔ E o contrario, que e' metade do par: a sonda de aprovacao NAO pode
+    # encostar no CORPOS_M, onde `beautiful` e' exigido pelo assert do CL26.
+    if any("CORPOS_M" in m and "aprovacao" in m for m in
+           _medir_pools(CENARIOS, REFS_M, REFS_H, CORPOS_H, CORPOS_M)):
+        ctrl.append("a sonda de aprovacao esta' reprovando o CORPOS_M, onde a "
+                    "beleza facial e' CONTRATO (CL26)")
+    _cen = {"id": "sabotador", "desc": "a bright room behind %s with %s"}
+    if not any("`%s`" in m for m in
+               _medir_pools(CENARIOS + [_cen], REFS_M, REFS_H, CORPOS_H, CORPOS_M)):
+        ctrl.append("a sonda NAO acusa cenario com dois `%s`")
+    if not any("REPETIDA" in m for m in
+               _medir_pools(CENARIOS, REFS_M, REFS_H, CORPOS_H + [CORPOS_H[0]],
+                            CORPOS_M)):
+        ctrl.append("a sonda NAO acusa entrada REPETIDA no pool")
+    # ⚠️ O controle NEGATIVO, que fecha o par: o pool limpo nao pode ser
+    # acusado. Regra que reprova tudo nunca foi testada.
+    if _medir_pools(CENARIOS, REFS_M, REFS_H, CORPOS_H, CORPOS_M):
+        ctrl.append("o pool limpo esta' sendo reprovado pela propria sonda")
+
+    print("CENARIOS %d | REFS_M %d | REFS_H %d | CORPOS_H %d | CORPOS_M %d | "
+          "%d videos" % (len(CENARIOS), len(REFS_M), len(REFS_H),
+                         len(CORPOS_H), len(CORPOS_M), n))
+    print("vistos: cenarios %d/%d | corpos %d/%d | refs %d/%d"
+          % (len(vistos["cenario"]), len(CENARIOS),
+             len(vistos["corpo"]), len(CORPOS_H) + len(CORPOS_M),
+             len(vistos["ref"]), len(REFS_M) + len(REFS_H)))
+    print("sexo: homem %.1f%% | mulher %.1f%%"
+          % (100.0 * sexos["homem"] / n, 100.0 * sexos["mulher"] / n))
+
+    if ctrl:
+        # ⛔ ASCII de proposito: o console do Windows e' cp1252 e o `⛔` levanta
+        # UnicodeEncodeError — justamente na hora em que o relatorio importa.
+        print("\n>> O AUTOTESTE ESTA' CEGO:")
+        for c in ctrl:
+            print("   %s" % c)
+    if falhas:
+        print("\n>> %d FALHA(S):" % len(falhas))
+        for f in falhas[:20]:
+            print("   %s" % f)
+    if not falhas and not ctrl:
+        print("\nAUTOTESTE OK - e os controles reprovam quando devem.")
+    return 1 if (falhas or ctrl) else 0
+
 def main():
     ap = argparse.ArgumentParser(description="Randomizador do agente CLEAN")
+    ap.add_argument("--autoteste", action="store_true",
+                    help="mede os pools e as invariantes do motor (com controles)")
     ap.add_argument("--pagina", choices=sorted(ETNIA))
     ap.add_argument("--n", type=int, default=1)
     ap.add_argument("--seed", type=int)
@@ -1691,6 +1947,8 @@ def main():
     ap.add_argument("--familia", choices=["aponta", "preparo"])
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    if a.autoteste:
+        return autoteste()
     if not a.pagina:
         ap.error("--pagina obrigatorio")
 

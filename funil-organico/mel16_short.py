@@ -363,6 +363,123 @@ MUNDOS = [
      "dela": "a plain grey tee",
      "dela_bela": "a fitted white cropped tank",
      "etnias": ["white American"]},
+
+    # =======================================================================
+    # + 2026-08-13 — AS NOVE QUE LEVAM O EIXO DE 15 A 24
+    # =======================================================================
+    # ⛔ Ordem do operador: *"aumente o pool de opcoes substancialmente, tambem
+    # dos ambientes"*. Com 15 mundos e o filtro de etnia, a pagina BRANCA via 9
+    # quintais e a NEGRA via 6 — e com memoria de 5 no ledger a pagina negra
+    # repetia o quintal a cada seis videos. Pool pequeno com sorteio com memoria
+    # ainda repete: a memoria adia, ela nao evita.
+    #
+    # ⭐⭐ E NENHUMA DELAS INVENTA FAMILIA NOVA, de proposito. O homem e'
+    # filtrado pela `familia` do mundo, e o autoteste exige DOIS arquetipos por
+    # familia — familia nova sem dois homens novos e' um eixo que o painel
+    # mostra e que devolve sempre o mesmo rosto. Entao cada quintal novo e' uma
+    # SEGUNDA VARIANTE de uma regiao que ja' existe: o mesmo homem cabe nos
+    # dois, e quem varia e' o quintal.
+    # ⚠️ Cobertura conferida por etnia: branca vai de 9 para 14 quintais, negra
+    # de 6 para 10. Nenhuma etnia perdeu opcao.
+    # ⛔ Contrato igual ao das quinze de cima, campo por campo — `bancada` e'
+    # SLOT (nunca a palavra `counter` cravada no TAKE), e o traje dela vem nos
+    # DOIS registros, `dela` e `dela_bela`, da MESMA regiao.
+
+    {"id": "hill_country", "familia": "texas", "regiao": "Texas Hill Country",
+     "cen": "an outdoor kitchen on a caliche patio behind a Hill Country stone "
+            "house, live oaks and a windmill past the fence",
+     "bancada": "the honed limestone counter top",
+     "luz": "warm low sun coming in under the oaks",
+     "audio": "cicadas, a windmill turning, cattle far off",
+     "dela": "a plain khaki shirt with the sleeves rolled",
+     "dela_bela": "a fitted white knotted shirt",
+     "etnias": ["white American"]},
+
+    {"id": "fazenda_milho", "familia": "meio_oeste",
+     "regiao": "Meio-Oeste (fazenda)",
+     "cen": "an outdoor kitchen beside a pole barn on an Iowa farmyard, corn "
+            "standing tall past the gravel drive",
+     "bancada": "the galvanised steel work counter",
+     "luz": "flat bright daylight with the corn glowing behind",
+     "audio": "a grain dryer humming, swallows, gravel underfoot",
+     "dela": "a loose chambray work shirt",
+     "dela_bela": "a fitted denim sleeveless top",
+     "etnias": ["white American"]},
+
+    {"id": "cascatas_rio", "familia": "noroeste",
+     "regiao": "Cascades (cabana de rio)",
+     "cen": "an outdoor kitchen under a cedar shelter beside a river cabin in "
+            "the Cascades, wet ferns and moss on the rocks behind",
+     "bancada": "the split cedar counter slab",
+     "luz": "cool green light filtered through wet firs",
+     "audio": "the river running, a woodpecker, water off the eaves",
+     "dela": "a grey waffle-knit henley",
+     "dela_bela": "a fitted forest green tank top",
+     "etnias": ["white American"]},
+
+    {"id": "michigan_varanda", "familia": "grandes_lagos",
+     "regiao": "Grandes Lagos (chale)",
+     "cen": "an outdoor kitchen on the screened porch of a Michigan lake "
+            "cottage, cordwood stacked to the rail and birches beyond",
+     "bancada": "the varnished pine counter top",
+     "luz": "warm evening light coming in sideways through the screens",
+     "audio": "moths on the screen, water on the shore, a far outboard",
+     "dela": "a plain cream sweatshirt",
+     "dela_bela": "a fitted cream ribbed tank",
+     "etnias": ["white American"]},
+
+    {"id": "golfo_bangalo", "familia": "florida", "regiao": "Costa do Golfo",
+     "cen": "an outdoor kitchen on a paver patio beside a Gulf Coast bungalow, "
+            "sea grapes and a boat trailer past the drive",
+     "bancada": "the terrazzo counter slab",
+     "luz": "hot white midday light bouncing off the pavers",
+     "audio": "gulls, a trailer chain, wind off the water",
+     "dela": "a loose pale yellow blouse",
+     "dela_bela": "a fitted yellow halter top",
+     "etnias": ["white American"]},
+
+    {"id": "carolina_carport", "familia": "sulista", "regiao": "Carolinas",
+     "cen": "an outdoor kitchen under a carport behind a South Carolina brick "
+            "ranch house, crepe myrtle and a chain-link gate past it",
+     "bancada": "the poured concrete counter top",
+     "luz": "bright flat afternoon light under the carport roof",
+     "audio": "cicadas, a car door two houses down, a screen door",
+     "dela": "a loose lilac blouse",
+     "dela_bela": "a fitted lilac wrap top",
+     "etnias": ["Black American"]},
+
+    {"id": "bed_stuy_jardim", "familia": "harlem",
+     "regiao": "Brooklyn (quintal de brownstone)",
+     "cen": "an outdoor kitchen in the fenced back garden of a Bed-Stuy "
+            "brownstone, brick walls and a fire escape above",
+     "bancada": "the butcher-block top of the garden cart",
+     "luz": "warm late light coming over the brick wall",
+     "audio": "kids down the block, a siren far off, pigeons",
+     "dela": "a loose olive tee",
+     "dela_bela": "a fitted olive halter top",
+     "etnias": ["Black American"]},
+
+    {"id": "pecan_delta", "familia": "delta",
+     "regiao": "Delta (quintal da pecaneira)",
+     "cen": "an outdoor kitchen set up under a big pecan tree in a Delta back "
+            "yard, an oil-drum smoker and flat fields past the fence",
+     "bancada": "the plank counter of the smoker table",
+     "luz": "dappled light coming down through the pecan leaves",
+     "audio": "cicadas, the smoker ticking, a dog barking far off",
+     "dela": "a faded blue house dress",
+     "dela_bela": "a fitted navy sundress",
+     "etnias": ["Black American"]},
+
+    {"id": "bayou_alpendre", "familia": "creole",
+     "regiao": "Bayou da Luisiana",
+     "cen": "an outdoor kitchen under a tin lean-to on a bayou porch, cypress "
+            "knees and still brown water past the rail",
+     "bancada": "the painted plank counter top",
+     "luz": "warm heavy light coming low off the water",
+     "audio": "frogs, a boat motor far off, insects close by",
+     "dela": "a loose peach blouse",
+     "dela_bela": "a fitted peach off-shoulder top",
+     "etnias": ["Black American"]},
 ]
 
 FAMILIAS_MUNDO = sorted({m["familia"] for m in MUNDOS})
@@ -711,9 +828,13 @@ HOMENS = [
      "familias": ["grandes_lagos", "meio_oeste"],
      "cabeca": "a silver brush cut kept very short, clean-shaven",
      "marca": "a straight narrow nose and laugh lines at the eyes"},
+    # ⚠️ 2026-08-13: `white hair THINNING at the crown` saiu (*"melhore a
+    # aparencia e shape desses homens"*). Rarefacao nao e' ancora — e' avaria, e
+    # a ancora deste homem sempre foram os oculos pesados. O cabelo so' precisa
+    # ser branco e curto.
     {"id": "meio_oeste_barba", "idade": 68,
      "familias": ["meio_oeste", "grandes_lagos"],
-     "cabeca": "white hair thinning at the crown and a short white beard",
+     "cabeca": "a full head of white hair cut short and a short white beard",
      "marca": "heavy dark-rimmed glasses"},
 
     # --- NOVA INGLATERRA / ITALO-AMERICANA: o cabelo farto penteado --------
@@ -759,8 +880,11 @@ HOMENS = [
      "cabeca": "a bald crown with the sides clipped short and a full white "
                "walrus moustache",
      "marca": "thin wire-rimmed glasses and deep laugh lines"},
+    # ⚠️ 2026-08-13: `combed FORWARD` saiu pela mesma ordem. E' literalmente o
+    # REF que o operador reprovou vendo o render no ALFA 16 (*"retire esse ref
+    # feio"*): cabelo penteado para a frente le' como quem esconde entrada.
     {"id": "florida_branco", "idade": 66, "familias": ["florida", "sulista"],
-     "cabeca": "short white hair combed forward, clean-shaven",
+     "cabeca": "short white hair in a neat side part, clean-shaven",
      "marca": "a small pale birthmark near one temple"},
 
     # --- SUBURBIO AMERICANO -----------------------------------------------
@@ -798,6 +922,21 @@ CORPOS_H = [
     "a compact build with a deep chest and plain forearms",
     "a tall build with sloping shoulders and lean arms",
     "a stocky build with thick unremarkable forearms",
+    # + 2026-08-13 — ordem do operador: *"melhore a aparencia e shape desses
+    # homens"* / *"aumente o pool de opcoes substancialmente"*. ⚠️ Seis contra
+    # seis fazia o corpo repetir a cada seis videos NOS DOIS estados do toggle,
+    # e com a regata o corpo e' a segunda coisa que se ve' depois do rosto.
+    # ⛔ O registro deste pool e' PORTE COMUM, nunca musculo: a distancia entre
+    # os dois pools e' o que da' funcao ao MODO FORTE, e entrada ambigua aqui
+    # apaga o botao sem nada reprovar.
+    "a plain solid frame with ordinary shoulders and soft upper arms",
+    "a slight build with thin arms and narrow shoulders",
+    "a wide flat build with a soft chest and heavy forearms",
+    "an average frame carrying a little weight around the middle",
+    "a long lean build with plain unremarkable arms",
+    "a broad ordinary build with rounded shoulders",
+    "a thickset frame with short arms and a soft middle",
+    "an everyday build with straight shoulders and plain arms",
 ]
 
 # ⛔ SUPER MUSCULOSO E VELHO AO MESMO TEMPO — as duas coisas na mesma frase,
@@ -812,6 +951,15 @@ CORPOS_FORTES = [
     "big square shoulders and thick biceps with the veins standing on the "
     "forearms",
     "a barrel chest with heavy muscular arms and thick wrists",
+    # + 2026-08-13 — o outro lado do mesmo toggle, pela mesma ordem. ⚠️ E este
+    # pool pesa mais que o comum: o MODO FORTE NASCE LIGADO neste motor, entao
+    # e' ele que o operador ve' no estado padrao do app.
+    "thick slabs of muscle across the chest and heavy round shoulders",
+    "a heavily built back and arms that stretch the tank top",
+    "deep muscular pectorals with thick arms and heavy wrists",
+    "a broad muscular frame with cut shoulders and forearms full of veins",
+    "a hard muscular chest with wide lats and thick banded arms",
+    "heavy muscle across the shoulders with thick arms and a flat hard middle",
 ]
 
 # ⭐⭐ A REGATA — E ELA E' UMA DECISAO DE ENGENHARIA, NAO DE FIGURINO.
@@ -872,6 +1020,92 @@ MULHERES = [
      "porte": "slim with rounded shoulders",
      "cabeca": "straight black hair cut to the jaw",
      "marca": "fine laugh lines and a smooth complexion"},
+
+    # -----------------------------------------------------------------------
+    # + 2026-08-13 — AS QUATORZE QUE LEVAM A ESPOSA DE 8 A 22
+    # -----------------------------------------------------------------------
+    # ⛔ Ordem do operador: *"aumente o pool de opcoes substancialmente"*. Com
+    # OITO entradas e memoria de 4 no ledger, um lote de 10 videos trazia a
+    # mesma esposa duas ou tres vezes — e ela e' metade do quadro 2, que e' o
+    # quadro do CTA.
+    # ⛔ MESMO CONTRATO das oito acima: faixa de ESPOSA REAL de um senhor
+    # (46-58), ZERO cor de pele (a etnia declarada e' a unica autoridade, licao
+    # FT14 do FIGHT 16) e ancora SAUDAVEL — nada de cicatriz, dente falhado,
+    # pele castigada. Marca e' o que se LEMBRA entre dois quadros gerados
+    # separadamente, nao o que se lamenta.
+    # ⚠️ OCULOS EM 6 DAS 22 (27%): eram 1 em 8. E' o marcador etario mais barato
+    # que existe e o unico eixo que estava praticamente parado neste pool.
+    # ⭐ E as quatro etnias giram: 8 brancas, 8 negras, 3 latinas, 3 asiaticas —
+    # ela e' o eixo SOLTO deste angulo (quem a pagina governa e' o HOMEM, que e'
+    # quem fala), entao aqui a variacao e' de graca.
+    # ⚠️ CADA `marca` CARREGA UMA ANCORA QUE O MEDIDOR RECONHECE (pinta, sinal
+    # de nascenca, covinha, brinco, mecha, fenda) e METADE carrega tambem um
+    # marcador de PELE SAUDAVEL (sarda, laugh lines, smooth-skinned). Nao e'
+    # enfeite: `medir_personagens.py` mede os seis eixos, e a primeira versao
+    # destas quatorze usava `beauty SPOT` — que le' igual e que o medidor nao
+    # conhece. Pool grande com eixo parado e' pool grande de um personagem so'.
+    {"id": "ruiva_curta", "etnia": "white American", "idade": 52,
+     "porte": "of slim build",
+     "cabeca": "copper-red hair cut short and swept back",
+     "marca": "freckles across her nose and a beauty mark on one temple"},
+    {"id": "loira_coque", "etnia": "white American", "idade": 56,
+     "porte": "tall and broad-shouldered",
+     "cabeca": "ash-blonde hair gathered into a loose bun",
+     "marca": "tortoiseshell glasses pushed up on her head and a small mole "
+              "on her jaw"},
+    {"id": "castanho_ondulado", "etnia": "white American", "idade": 47,
+     "porte": "of medium build with a narrow waist",
+     "cabeca": "chestnut hair worn wavy to the shoulders",
+     "marca": "laugh lines at her eyes and a dimple in one cheek"},
+    {"id": "grisalha_lisa", "etnia": "white American", "idade": 58,
+     "porte": "small and lightly built",
+     "cabeca": "steel-grey hair cut blunt at the chin",
+     "marca": "thin gold-rimmed glasses and a shallow cleft in her chin"},
+    {"id": "morena_franja", "etnia": "white American", "idade": 48,
+     "porte": "of full build",
+     "cabeca": "dark brown hair with a soft fringe to the eyebrows",
+     "marca": "a beauty mark above her left eyebrow"},
+    {"id": "locs_gris", "etnia": "Black American", "idade": 53,
+     "porte": "of medium build with a long neck",
+     "cabeca": "shoulder-length locs with grey through them, gathered to one "
+               "side",
+     "marca": "gold studs in both ears, smooth-skinned"},
+    {"id": "twist_curto", "etnia": "Black American", "idade": 49,
+     "porte": "slim and long-limbed",
+     "cabeca": "hair in short defined twists with grey at the temples",
+     "marca": "a beauty mark high on one cheekbone"},
+    {"id": "bob_preto", "etnia": "Black American", "idade": 57,
+     "porte": "of full build",
+     "cabeca": "black hair pressed straight into a chin-length bob with grey "
+               "at the part",
+     "marca": "dark-rimmed reading glasses and a small mole beside her mouth"},
+    {"id": "coque_alto_gris", "etnia": "Black American", "idade": 55,
+     "porte": "tall and full-figured",
+     "cabeca": "silver-grey hair pulled up into a high bun",
+     "marca": "small pearl studs in both ears and fine laugh lines"},
+    {"id": "cacheada_prata", "etnia": "Black American", "idade": 51,
+     "porte": "of solid build",
+     "cabeca": "grey natural curls worn full around her face",
+     "marca": "a wide mouth with a deep cupid's bow and a mole on one "
+              "cheekbone"},
+    {"id": "latina_coque", "etnia": "Latina American", "idade": 53,
+     "porte": "of full build",
+     "cabeca": "dark hair with grey at the temples gathered into a low knot",
+     "marca": "thin wire-rimmed glasses and a mole beside one eyebrow"},
+    {"id": "latina_curto", "etnia": "Latina American", "idade": 48,
+     "porte": "of trim build",
+     "cabeca": "dark hair cut short and layered with silver coming in",
+     "marca": "freckles high on both cheekbones and a small gold stud in one "
+              "nostril"},
+    {"id": "asiatica_coque", "etnia": "Asian American", "idade": 56,
+     "porte": "small and finely built",
+     "cabeca": "black hair going grey, pinned up in a neat twist",
+     "marca": "smooth-skinned, with a beauty mark at the corner of one eye"},
+    {"id": "asiatica_gris", "etnia": "Asian American", "idade": 50,
+     "porte": "of medium build and upright",
+     "cabeca": "salt-and-pepper hair cut to a soft shoulder length",
+     "marca": "square glasses in a pale tortoiseshell frame and a dimple "
+              "beside her mouth"},
 ]
 
 

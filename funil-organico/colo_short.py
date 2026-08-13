@@ -858,6 +858,248 @@ MUNDOS = [
      "luz_c": "warm indoor lamplight",
      "audio": "furnace humming, a passing car",
      },
+    # ⭐⭐ 2026-08-13 — MAIS OITO MUNDOS (16 -> 24). Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔⛔ COBERTURA DE ETNIA CRESCE EM TODAS AS QUATRO, nunca so' na maior:
+    # `white American` 14 -> 20, `Black American` 6 -> 10, `Mexican American`
+    # 4 -> 6, `Cuban American` 1 -> 2. O `_comporta` filtra o MUNDO pela pele
+    # travada no painel e a etnia sorteia DENTRO do mundo ja' filtrado — uma
+    # etnia com um mundo so' significa que travar a pele escolhe a sala, e o
+    # lote inteiro sai no mesmo lugar. O Cuban American com UM mundo era
+    # exatamente isso.
+    # ⚠️ Entrada nova declara as MESMAS chaves das vizinhas — sala, sala_c,
+    # banc, sup_a, sup, cinco trajes com o par [template, curto], quatro
+    # cores, luz, luz_c e audio. Cenario e' o AMBIENTE INTEIRO: quem entrega
+    # so' o fundo deixa luz e ambiencia para o gerador escolher sozinho.
+    # ⛔ `sup` = "counter" em quase todas de proposito: a lente do motor
+    # proibe o literal `counter` sobrar num mundo de mesa ou de ilha, e a
+    # `memphis` (mesa) e a `filadelfia` (ilha) foram escritas sem a palavra.
+    # ---- harlem ----
+    {"id": "harlem", "selo": "N", "familia": "harlem",
+     "etnias": ["Black American"],
+     "sala": "the front room of a Harlem brownstone, a deep tufted sofa "
+             "against the exposed brick wall, a tall sash window at "
+             "frame-left with the black fire escape and the brownstone "
+             "across the street beyond, a record shelf and trailing plants "
+             "along the sill",
+     "sala_c": "the same Harlem front room",
+     "banc": "the narrow kitchen at the back of the same brownstone, a "
+             "pressed tin ceiling and open shelves of glass jars behind her, "
+             "the airshaft window throwing light down the wall",
+     "sup_a": "a marble slab counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped ribbed tank with high-waisted wide-leg trousers",
+          "ribbed tank"],
+         ["%s satin slip dress cut short on thin straps", "satin slip"],
+         ["%s cropped mesh long-sleeve top with a denim mini skirt",
+          "mesh crop"],
+         ["%s bandeau top with hip-slung cargo trousers", "bandeau top"],
+         ["%s fitted crop tee tucked into a leather mini skirt", "crop tee"],
+     ],
+     "cores": ["black", "cream", "deep plum", "burnt orange"],
+     "luz": "Warm afternoon light coming in high through the sash window, "
+            "the brick behind her going soft.",
+     "luz_c": "warm high window light",
+     "audio": "a radio on a stoop, distant traffic",
+     },
+    # ---- memphis ----
+    {"id": "memphis", "selo": "N", "familia": "memphis",
+     "etnias": ["Black American", "white American"],
+     "sala": "the living room of a Memphis shotgun house, a low corduroy "
+             "sofa under a wall of framed family photographs, a floor fan "
+             "turning in the corner and the front screen door standing open "
+             "onto the porch at frame-right",
+     "sala_c": "the same shotgun house living room",
+     "banc": "the kitchen at the far end of the same shotgun house, painted "
+             "cabinets and a window over the sink onto the side yard behind "
+             "her",
+     "sup_a": "a scrubbed pine table",
+     "sup": "table",
+     "trajes": [
+         ["%s knotted gingham blouse tied above the waist with denim shorts",
+          "knotted blouse"],
+         ["%s cropped tank top with a short cotton wrap skirt", "crop tank"],
+         ["%s sleeveless bodysuit with a scooped neck and cut-off shorts",
+          "scooped bodysuit"],
+         ["%s halter top with high-waisted flare jeans", "halter top"],
+         ["%s short cotton sundress on thin straps", "cotton sundress"],
+     ],
+     "cores": ["butter yellow", "faded red", "white", "soft teal"],
+     "luz": "Warm low afternoon light coming straight down the hall from the "
+            "open screen door.",
+     "luz_c": "warm hall light",
+     "audio": "cicadas, a fan turning",
+     },
+    # ---- baltimore ----
+    {"id": "baltimore", "selo": "N", "familia": "baltimore",
+     "etnias": ["Black American"],
+     "sala": "the front room of a Baltimore rowhouse, a velvet armchair "
+             "beside a painted formstone wall, tall narrow windows onto the "
+             "white marble stoop and the row of identical doors across the "
+             "street",
+     "sala_c": "the same rowhouse front room",
+     "banc": "the galley kitchen at the back of the same rowhouse, steel "
+             "cabinets and a window onto the back alley behind her",
+     "sup_a": "a stainless steel counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped hoodie cut above the navel with high-waisted leggings",
+          "cropped hoodie"],
+         ["%s fitted crop tank with hip-slung track pants", "fitted tank"],
+         ["%s bodycon knit mini dress with a bare back", "knit mini"],
+         ["%s off-the-shoulder cropped top with fitted jeans",
+          "off-shoulder top"],
+         ["%s zip-front velour crop jacket over bike shorts", "velour crop"],
+     ],
+     "cores": ["black", "royal purple", "bone white", "steel grey"],
+     "luz": "Flat daylight down the narrow room, almost no shadow on the "
+            "walls.",
+     "luz_c": "flat narrow-room light",
+     "audio": "a screen door, kids down the block",
+     },
+    # ---- filadelfia ----
+    {"id": "filadelfia", "selo": "N", "familia": "filadelfia",
+     "etnias": ["Black American", "white American"],
+     "sala": "the parlor of a Philadelphia rowhouse, a slipcovered sofa "
+             "under a plaster ceiling medallion, a marble mantel with a "
+             "mirror over it behind her and a bay window onto the street at "
+             "frame-left",
+     "sala_c": "the same rowhouse parlor",
+     "banc": "the kitchen at the back of the same rowhouse, painted cabinets "
+             "and a glazed door onto a small concrete yard behind her",
+     "sup_a": "a butcher block island",
+     "sup": "island",
+     "trajes": [
+         ["%s cropped sweatshirt cut raw at the hem with denim shorts",
+          "cut sweatshirt"],
+         ["%s strappy scoop-neck bodysuit with a pleated mini skirt",
+          "strappy bodysuit"],
+         ["%s cropped rugby-stripe top with high-waisted jeans", "rugby crop"],
+         ["%s slip dress on thin straps cut above the knee", "slip dress"],
+         ["%s ribbed turtleneck cropped at the ribs with a wrap mini skirt",
+          "cropped turtleneck"],
+     ],
+     "cores": ["cream", "deep green", "black", "dusty rose"],
+     "luz": "Cool even daylight from the bay window, the mirror bouncing a "
+            "little of it back into the room.",
+     "luz_c": "cool bay-window light",
+     "audio": "a bus braking, a quiet street",
+     },
+    # ---- san_antonio ----
+    {"id": "san_antonio", "selo": "N", "familia": "san_antonio",
+     "etnias": ["Mexican American", "white American"],
+     "sala": "the sala of a San Antonio bungalow, a carved wooden chair with "
+             "a woven blanket folded over the back, a plastered wall with a "
+             "shelf of painted ceramics behind her and a window onto a pecan "
+             "tree at frame-right",
+     "sala_c": "the same bungalow sala",
+     "banc": "the kitchen of the same bungalow, talavera tile behind the "
+             "stove and a screen door onto the back porch behind her",
+     "sup_a": "a tiled kitchen counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped peasant blouse off both shoulders with denim shorts",
+          "peasant crop"],
+         ["%s fitted tank top knotted at the hip over a short skirt",
+          "knotted tank"],
+         ["%s halter-neck mini dress tied at the neck", "halter dress"],
+         ["%s cropped button-up tied under the bust with high-waisted jeans",
+          "tied button-up"],
+         ["%s ribbed bodysuit with a scooped neck and cut-off shorts",
+          "ribbed bodysuit"],
+     ],
+     "cores": ["white", "terracotta", "turquoise", "marigold"],
+     "luz": "Hard bright afternoon sun broken into patches by the pecan "
+            "branches at the window.",
+     "luz_c": "hard broken sunlight",
+     "audio": "cicadas, a radio in the next room",
+     },
+    # ---- novo_mexico ----
+    {"id": "novo_mexico", "selo": "N", "familia": "novo_mexico",
+     "etnias": ["Mexican American", "white American"],
+     "sala": "the front room of a New Mexico adobe house, a low bench seat "
+             "built into the thick plastered wall with wool cushions on it, "
+             "a rounded corner fireplace and a deep window opening at "
+             "frame-left with dry hills beyond",
+     "sala_c": "the same adobe front room",
+     "banc": "the kitchen of the same adobe house, a string of dried chiles "
+             "by the door and open wooden shelves of pottery behind her",
+     "sup_a": "a thick plastered counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped tank with a tiered short cotton skirt", "cropped tank"],
+         ["%s bandeau top with high-waisted linen shorts", "bandeau top"],
+         ["%s short wrap dress tied at the waist", "wrap dress"],
+         ["%s cropped denim shirt tied at the ribs with a mini skirt",
+          "tied denim"],
+         ["%s thin-strap camisole with hip-slung wide-leg trousers",
+          "strap camisole"],
+     ],
+     "cores": ["sand", "deep indigo", "rust", "off-white"],
+     "luz": "Hard clean high-desert light coming through the deep window "
+            "opening, the plaster glowing where it lands.",
+     "luz_c": "hard high-desert light",
+     "audio": "dry wind, a wind chime",
+     },
+    # ---- tampa ----
+    {"id": "tampa", "selo": "N", "familia": "tampa",
+     "etnias": ["Cuban American", "white American"],
+     "sala": "the front room of a Tampa bungalow in Ybor, a rattan armchair "
+             "with a thick cushion under a slow ceiling fan, jalousie "
+             "windows at frame-right standing open onto banana leaves and a "
+             "low tiled porch",
+     "sala_c": "the same Ybor front room",
+     "banc": "the kitchen of the same bungalow, painted wooden cabinets and "
+             "a window over the sink onto the same banana leaves",
+     "sup_a": "a red tile counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped halter top with high-waisted linen shorts",
+          "halter crop"],
+         ["%s short off-the-shoulder ruffled dress", "ruffled dress"],
+         ["%s fitted crop tee with a short wrap skirt", "crop tee"],
+         ["%s thin-strap bodysuit with hip-slung wide-leg trousers",
+          "strap bodysuit"],
+         ["%s bandeau top with a slit mini skirt", "bandeau top"],
+     ],
+     "cores": ["white", "coral", "aqua", "pale lemon"],
+     "luz": "Bright humid daylight coming through the open jalousies in soft "
+            "horizontal bands.",
+     "luz_c": "bright humid daylight",
+     "audio": "a ceiling fan, birds outside",
+     },
+    # ---- seattle ----
+    {"id": "seattle", "selo": "N", "familia": "seattle",
+     "etnias": ["white American"],
+     "sala": "the living room of a Seattle craftsman house, a wool-covered "
+             "armchair beside a built-in bookcase with leaded glass doors, a "
+             "tall window at frame-left running with rain and wet cedars "
+             "beyond it",
+     "sala_c": "the same craftsman living room",
+     "banc": "the kitchen of the same craftsman house, painted cabinets "
+             "running to the ceiling and a window over the sink onto the "
+             "same wet cedars",
+     "sup_a": "a fir plank counter",
+     "sup": "counter",
+     "trajes": [
+         ["%s cropped waffle-knit thermal top with bike shorts",
+          "cropped thermal"],
+         ["%s fitted crop tank under an open flannel shirt with denim shorts",
+          "crop tank"],
+         ["%s ribbed long-sleeve top cropped at the ribs with leggings",
+          "ribbed crop"],
+         ["%s cable-knit crop sweater with a pleated mini skirt",
+          "crop sweater"],
+         ["%s scoop-neck bodysuit with high-waisted wide-leg jeans",
+          "scooped bodysuit"],
+     ],
+     "cores": ["heather grey", "forest green", "cream", "deep navy"],
+     "luz": "Cool grey daylight through the rain on the glass, soft and "
+            "even across the room.",
+     "luz_c": "cool grey rain light",
+     "audio": "rain on the window, a kettle cooling",
+     },
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -935,7 +1177,7 @@ NARRADORAS = [
      },
     {"idade": 26,
      "cabeca": "a deep side part with thick loose curls",
-     "marca": "a fine pale scar tracing the line of her jaw",
+     "marca": "a light spray of freckles high on both cheekbones",
      "corpo": "a pear-shaped build with a small waist, a rounded "
               "medium-full bust, a smooth flat midriff, very wide flaring "
               "hips and long heavy legs",
@@ -949,7 +1191,7 @@ NARRADORAS = [
      },
     {"idade": 23,
      "cabeca": "long choppy layers falling loose past her chest",
-     "marca": "a narrow gap between her two front teeth",
+     "marca": "a dark beauty mark just above the left corner of her mouth",
      "corpo": "a top-heavy build with sloping shoulders and a short "
               "cinched waist, a very full high bust, a taut flat stomach, "
               "a high round seat and smooth thick legs",
@@ -991,7 +1233,7 @@ NARRADORAS = [
      },
     {"idade": 29,
      "cabeca": "a soft brown mid-length cut with heavy curtain bangs",
-     "marca": "a fine pale scar cutting through her left eyebrow",
+     "marca": "a scatter of freckles over her nose and cheeks",
      "corpo": "an athletic build with a broad flaring pelvis, a firm high "
               "bust, a hard flat abdomen with a visible center line, a "
               "squared muscular seat and thick sprinter legs",
@@ -1019,8 +1261,7 @@ NARRADORAS = [
      },
     {"idade": 30,
      "cabeca": "a dark undercut with the top swept long",
-     "marca": "a narrow gap between her front teeth and a small mole below "
-              "one eye",
+     "marca": "a small mole below one eye and a shallow cleft in her chin",
      "corpo": "a curvy build cinched hard at the middle, a rounded medium "
               "bust, a firm flat stomach, a very deep round rear and short "
               "thick legs",
@@ -1082,15 +1323,15 @@ NARRADORAS = [
      },
     {"idade": 27,
      "cabeca": "dark brown hair in two neat space buns",
-     "marca": "a narrow pale scar just under her lower lip",
+     "marca": "a dimple low in her right cheek that shows when she talks",
      "corpo": "a top-heavy build with a narrow waist, a very full heavy "
               "bust, a small soft stomach, neat high glutes and straight "
               "strong legs",
      },
     {"idade": 25,
      "cabeca": "a red bandana tying back her thick curls",
-     "marca": "a narrow gap between her front teeth and a light spray of "
-              "freckles across her nose",
+     "marca": "a light spray of freckles across her nose and a tiny mole at "
+              "her temple",
      "corpo": "a deep pear-shaped build, a full soft bust, a soft flat "
               "stomach, very wide heavy glutes and thick smooth legs",
      },
@@ -1104,10 +1345,82 @@ NARRADORAS = [
      },
     {"idade": 28,
      "cabeca": "caramel hair twisted up into a claw clip",
-     "marca": "a fine pale scar splitting her right eyebrow",
+     "marca": "a small silver stud high in her right ear",
      "corpo": "a strong-hipped curvy build with a small waist, a firm "
               "round bust, a soft toned stomach, high lifted round glutes "
               "and heavy smooth legs",
+     },
+    # ⭐⭐ 2026-08-13 — DE 30 PARA 38, E SETE MARCAS REESCRITAS.
+    # Ordem do operador: *"aumente o pool de opcoes substancialmente"*.
+    # ⛔⛔ DISTINTIVO, NUNCA DETERIORADO. O cabecalho deste pool ja' dizia
+    # *"nunca dente lascado, palpebra caida, pele castigada"* e listava a
+    # falha entre os dentes como ancora aceita — ela SAIU em 2026-08-13,
+    # junto com as QUATRO cicatrizes (sobrancelha x2, maxilar, labio). Sete
+    # entradas de trinta pediam dano no rosto de quem vende beleza para
+    # homem: e' a mesma familia do lote que o operador reprovou no PLACA 16.
+    # ⭐ As ancoras que ficaram e as que entraram sao SINAL DE BELEZA: pinta,
+    # covinha, beauty mark, sarda, queixo partido, tarraxa, argola,
+    # heterocromia, marca de nascenca em crescente.
+    # ⚠️ O eixo PELE saiu de 10% para 34% sem uma linha de pele castigada: as
+    # oito novas dizem `smooth-skinned` DENTRO do corpo, que e' campo que
+    # chega ao prompt (o `_pessoa` monta corpo + cabeca + marca). Encher eixo
+    # com texto que o prompt nao le' e' otimizar o medidor, nao o video.
+    # ⛔ OCULOS continua ZERO por LEI DO REF (excecao declarada no medidor).
+    {"idade": 24,
+     "cabeca": "loose beach waves lightened at the ends",
+     "marca": "a small dark mole above her left eyebrow",
+     "corpo": "a smooth-skinned hourglass build with a very small waist, a "
+              "full round bust, a flat toned stomach, wide high glutes and "
+              "long shapely legs",
+     },
+    {"idade": 27,
+     "cabeca": "a sleek chin-length bob with a deep side part",
+     "marca": "a deep cleft in the centre of her chin",
+     "corpo": "a smooth-skinned athletic build with square shoulders, a firm "
+              "high bust, a hard flat midriff, a lifted round seat and long "
+              "lean legs",
+     },
+    {"idade": 30,
+     "cabeca": "thick box braids gathered into a high bun",
+     "marca": "a tiny gold hoop high in her left ear",
+     "corpo": "a smooth-skinned pear-shaped build with a narrow waist, a "
+              "rounded medium bust, a soft flat belly, very wide heavy "
+              "glutes and full strong legs",
+     },
+    {"idade": 22,
+     "cabeca": "a soft blowout with feathered layers framing her face",
+     "marca": "a beauty mark just below her right eye",
+     "corpo": "a smooth-skinned top-heavy build with a cinched waist, a very "
+              "full high bust, a small soft stomach, a high round rear and "
+              "smooth thick legs",
+     },
+    {"idade": 33,
+     "cabeca": "long dark hair pulled into two low braids",
+     "marca": "a dimple in each cheek",
+     "corpo": "a tall smooth-skinned frame with a long waist, a heavy full "
+              "bust, a gently curved stomach, deep round glutes and very "
+              "long legs",
+     },
+    {"idade": 25,
+     "cabeca": "a shoulder-length shag with a heavy fringe",
+     "marca": "a dark mole at the corner of her jaw",
+     "corpo": "a short smooth-skinned plush build with a low soft waist, a "
+              "large heavy bust, a rounded belly, broad wide-set glutes and "
+              "thick smooth legs",
+     },
+    {"idade": 28,
+     "cabeca": "silver-blonde hair cut into a long sleek lob",
+     "marca": "a fine dusting of freckles over her nose and shoulders",
+     "corpo": "a smooth-skinned long-limbed build with wide hips, a round "
+              "upturned bust, a smooth flat stomach, firm high glutes and "
+              "long straight legs",
+     },
+    {"idade": 31,
+     "cabeca": "tight coils cropped close at the sides and full on top",
+     "marca": "a small crescent birthmark high on her left cheekbone",
+     "corpo": "a smooth-skinned strong-hipped build with a nipped waist, a "
+              "full round bust, a firm toned midriff, very round high glutes "
+              "and heavy shapely legs",
      },
 ]
 
@@ -1148,22 +1461,22 @@ HOMENS = [
     {"id": "jeans_escuro", "selo": "N",
      "calca": "dark straight-leg jeans",
      "maos": "large, with heavy knuckles",
-     "marca": "a pale old scar across the back of his left hand"},
+     "marca": "a small dark mole at the base of his left thumb"},
     {"id": "moletom_cinza", "selo": "N",
      "calca": "grey sweatpants",
-     "maos": "thick-fingered, the skin dry across the knuckles",
+     "maos": "thick-fingered and smooth-skinned across the knuckles",
      "marca": "a wide steel watch loose on his left wrist"},
     {"id": "chino_bege", "selo": "N",
      "calca": "beige chino trousers",
-     "maos": "long and bony, with prominent veins",
+     "maos": "long-fingered and lean, the veins standing clear",
      "marca": "a faded green tattoo band around his left wrist"},
     {"id": "jeans_gasto", "selo": "N",
      "calca": "faded blue jeans worn white at the knee",
-     "maos": "work-hardened, with calloused palms",
-     "marca": "a thumbnail ridged and darkened from an old injury"},
+     "maos": "broad and firm, the palms squared",
+     "marca": "a scatter of light freckles across the back of his left hand"},
     {"id": "calca_lona", "selo": "N",
      "calca": "heavy brown canvas work trousers",
-     "maos": "big and weathered, with cracked skin at the joints",
+     "maos": "big and square, the fingers even and blunt",
      "marca": "a thick silver ring on his left index finger"},
     {"id": "moletom_marinho", "selo": "N",
      "calca": "navy jogging bottoms with a drawstring",
@@ -1175,12 +1488,12 @@ HOMENS = [
      "marca": "a leather-strapped watch sitting square on his left wrist"},
     {"id": "bermuda_comprida", "selo": "N",
      "calca": "long olive utility trousers with a side pocket",
-     "maos": "square, with sun-darkened backs",
-     "marca": "a white band of untanned skin where a ring used to be"},
+     "maos": "square and smooth-skinned, the nails cut short",
+     "marca": "a pale band of untouched skin where a ring used to be"},
     {"id": "jeans_preto", "selo": "N",
      "calca": "black jeans",
      "maos": "heavy, with thick wrists",
-     "marca": "a raised knuckle on his left middle finger, healed crooked"},
+     "marca": "a coin-sized birthmark on the back of his left hand"},
     # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
     # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
     # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
@@ -1195,20 +1508,69 @@ HOMENS = [
      "marca": "a black rubber sports watch on his left wrist"},
     {"id": "corduroy_ferrugem", "selo": "N",
      "calca": "rust corduroy trousers",
-     "maos": "square and heavy, the palms deeply lined",
+     "maos": "square and heavy, the palms broad and even",
      "marca": "a copper ring worn thin on his left middle finger"},
     {"id": "moletom_carvao", "selo": "N",
      "calca": "charcoal jogging bottoms with a drawstring",
-     "maos": "thick through the palm, the knuckles darkened",
-     "marca": "a faint white burn mark across the back of his left hand"},
+     "maos": "thick through the palm and smooth-skinned",
+     "marca": "a small oval birthmark on the inside of his left wrist"},
     {"id": "cargo_cinza", "selo": "N",
      "calca": "grey cargo trousers with a knee pocket",
-     "maos": "big and blunt, the fingertips flattened",
-     "marca": "a split thumbnail healed into two ridges"},
+     "maos": "big and blunt, the fingertips broad",
+     "marca": "a dark mole on the back of his right hand"},
     {"id": "linho_areia", "selo": "N",
      "calca": "sand-coloured linen trousers",
      "maos": "smooth and even, with neatly filed nails",
      "marca": "a slim silver band on his left ring finger"},
+    # ⭐⭐ 2026-08-13 — DE 16 PARA 24, E DEZ ENTRADAS REESCRITAS.
+    # Ordem do operador: *"melhore a aparencia e shape desses homens"* +
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔⛔ DISTINTIVO, NUNCA DETERIORADO — a regra que custou lote no PLACA 16
+    # (*"esses caras tao parecendo mendigo"*). Sairam: cicatriz no dorso da
+    # mao, pele seca e rachada nos nos dos dedos, maos ossudas, palmas
+    # caladas e MUITO marcadas, unha rachada e escurecida por lesao antiga,
+    # unha do polegar partida em duas cristas, no do dedo soldado torto,
+    # queimadura no dorso, dorso queimado de sol. Sao NOVE ancoras de mao
+    # feitas de dano — e a mao e' o unico rosto que este personagem tem.
+    # ⭐ No lugar: alianca, relogio, bracelete, anel de couro trancado,
+    # sardas no dorso, pele lisa, unha cuidada. Continuam DISTINTIVAS (a
+    # CO13 cobra a ancora em quadro) sem parecer mao de quem sofreu.
+    # ⛔ O corte na cintura FICA: nao ha' cabelo, barba nem oculos aqui, e as
+    # tres excecoes declaradas no `medir_personagens.py` seguem valendo —
+    # cobrar rosto de quem nao tem cabeca em quadro e' pedir para desenhar o
+    # que o enquadramento tirou.
+    {"id": "jeans_cru", "selo": "N",
+     "calca": "raw indigo jeans with a turned cuff",
+     "maos": "wide and even, the nails cut straight",
+     "marca": "a flat silver ring on his left middle finger"},
+    {"id": "moletom_bordo", "selo": "N",
+     "calca": "burgundy fleece jogging bottoms",
+     "maos": "long-fingered and smooth-skinned",
+     "marca": "a pale birthmark just below his left thumb knuckle"},
+    {"id": "chino_verde", "selo": "N",
+     "calca": "olive green chino trousers",
+     "maos": "square-backed and lightly freckled, with short even nails",
+     "marca": "a small mole below the knuckle of his left index finger"},
+    {"id": "calca_tactica", "selo": "N",
+     "calca": "black tactical trousers with a low pocket",
+     "maos": "heavy and wide, the knuckles smooth",
+     "marca": "a birthmark the size of a fingertip on his left wrist"},
+    {"id": "calca_flanela", "selo": "N",
+     "calca": "soft checked flannel lounge trousers",
+     "maos": "broad and relaxed, the nails neatly trimmed",
+     "marca": "a thin leather cord tied around his left wrist"},
+    {"id": "jeans_bootcut", "selo": "N",
+     "calca": "dark bootcut jeans with a wide leather belt",
+     "maos": "big-knuckled and smooth-skinned",
+     "marca": "a wide gold class ring on his right hand"},
+    {"id": "moletom_creme", "selo": "N",
+     "calca": "cream-coloured fleece trousers",
+     "maos": "narrow and long, the nails filed short",
+     "marca": "a slim titanium band on his left ring finger"},
+    {"id": "calca_listrada", "selo": "N",
+     "calca": "navy trousers with a thin white side stripe",
+     "maos": "solid and squared, the backs lightly freckled",
+     "marca": "a heavy steel diving watch on his left wrist"},
 ]
 
 # ⭐⭐ POOL VALIDADO PROMPT A PROMPT EM 2026-08-03. Cada entrada aqui custou uma

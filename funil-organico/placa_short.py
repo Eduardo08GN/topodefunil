@@ -726,6 +726,195 @@ MUNDOS = [
      "luz": "Hard desert light through the balcony door.",
      "luz_c": "hard balcony light",
      "audio": "distant traffic, an air-conditioner"},
+
+    # ⭐⭐ + 2026-08-13 — OITO REGIOES NOVAS, de 16 para 24. Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔ CADA UMA E' AMBIENTE INTEIRO, no mesmo nivel de detalhe das dezesseis de
+    # cima: cozinha, superficie, cinco trajes de SILHUETA diferente, seis cores,
+    # luz e audio. Fundo novo com o resto herdado nao e' mundo, e' papel de
+    # parede — e o quadro devolve a mesma cozinha com outro nome.
+    # ⚠️ A COBERTURA DE ETNIA SOBE nas duas que as paginas usam: `white American`
+    # entra em sete das oito e `Black American` em cinco. Nenhuma pele fica com
+    # menos cenario do que tinha, que e' o que derrubaria o sorteio da trava.
+    # ⭐ Sao ARQUETIPOS REGIONAIS, na mesma leitura de 2026-08-05: o cara da
+    # Filadelfia e o de Seattle sao os dois `white American` no papel e nao se
+    # parecem em nada. E' essa diferenca que faz o lote variar de verdade.
+    {"id": "filadelfia", "selo": "N", "familia": "filadelfia",
+     "etnias": ["white American", "Black American"],
+     "eua": True,
+     "coz": "a Philadelphia rowhouse kitchen with narrow white cabinets, a window onto a brick back alley, a pressed-tin splashback and tall glasses drying in a rack by the sink",
+     "coz_c": "narrow rowhouse kitchen",
+     "sup_a": "a scrubbed white laminate counter", "sup": "counter",
+     "trajes": [
+         ("%s fitted crop top with high-waisted jeans",
+          "fitted crop top"),
+         ("%s cropped zip hoodie over a bandeau, short shorts",
+          "cropped hoodie"),
+         ("%s thin-strapped slip dress",
+          "slip dress"),
+         ("%s low-cut ribbed tank with a short denim skirt",
+          "ribbed tank"),
+         ("%s knotted tee over a sports bra with track shorts",
+          "knotted tee"),
+     ],
+     "cores": ["black", "cream", "brick red", "royal blue", "silver", "olive"],
+     "luz": "Narrow daylight coming down the alley into the window.",
+     "luz_c": "narrow alley light",
+     "audio": "a bus braking, a screen door two houses down"},
+    {"id": "noroeste", "selo": "N", "familia": "noroeste",
+     "etnias": ["white American"],
+     "eua": True,
+     "coz": "a Pacific Northwest kitchen with fir-fronted cabinets, a wide window onto wet cedars and grey sky, a heavy kettle on the range and stacked pottery on an open shelf",
+     "coz_c": "fir-fronted Northwest kitchen",
+     "sup_a": "a thick fir butcher-block counter", "sup": "counter",
+     "trajes": [
+         ("%s cropped ribbed tank with rolled denim shorts",
+          "ribbed crop tank"),
+         ("%s low-cut bodysuit under an open flannel",
+          "open flannel"),
+         ("%s thin-strapped short slip dress",
+          "short slip dress"),
+         ("%s cut-off sweatshirt with running shorts",
+          "cut-off sweatshirt"),
+         ("%s tight scoop-neck tee knotted at the ribs, cut-offs",
+          "knotted scoop tee"),
+     ],
+     "cores": ["forest green", "cream", "rust", "charcoal", "white", "denim blue"],
+     "luz": "Soft grey rain light through the cedar-side window.",
+     "luz_c": "soft rain light",
+     "audio": "rain on the roof, a kettle ticking"},
+    {"id": "denver", "selo": "N", "familia": "denver",
+     "etnias": ["white American", "Mexican American"],
+     "eua": True,
+     "coz": "a Colorado front-range kitchen with pale pine cabinets, a wide window onto foothills and dry grass, a squat woodstove in the corner and enamel mugs on hooks",
+     "coz_c": "pale pine Colorado kitchen",
+     "sup_a": "a honed soapstone counter", "sup": "counter",
+     "trajes": [
+         ("%s cropped tank top with denim cut-offs",
+          "cropped tank"),
+         ("%s low-cut fitted tee with high-waisted shorts",
+          "fitted tee"),
+         ("%s bandeau under an open shirt-jacket, short shorts",
+          "open shirt-jacket"),
+         ("%s thin-strapped mini dress",
+          "mini dress"),
+         ("%s cropped fleece half-zip with running shorts",
+          "cropped half-zip"),
+     ],
+     "cores": ["rust", "cream", "denim blue", "black", "hunter green", "gold"],
+     "luz": "Thin bright mountain light through the wide window.",
+     "luz_c": "thin mountain light",
+     "audio": "wind off the foothills, a stove ticking"},
+    {"id": "carolina", "selo": "N", "familia": "carolina",
+     "etnias": ["Black American", "white American"],
+     "eua": True,
+     "coz": "a Charleston single-house kitchen with tall shuttered windows onto a side porch, plaster walls in soft blue, a marble pastry slab and glass jars in a row",
+     "coz_c": "shuttered Charleston kitchen",
+     "sup_a": "a cool marble counter", "sup": "counter",
+     "trajes": [
+         ("%s thin-strapped short sundress",
+          "short sundress"),
+         ("%s cropped linen top with high-waisted shorts",
+          "cropped linen top"),
+         ("%s low-cut wrap top and a short skirt",
+          "wrap top"),
+         ("%s bandeau under an open gauze shirt, cut-offs",
+          "open gauze shirt"),
+         ("%s fitted bodysuit with a short linen skirt",
+          "fitted bodysuit"),
+     ],
+     "cores": ["seafoam", "white", "coral", "navy", "butter yellow", "black"],
+     "luz": "Soft filtered light through the porch shutters.",
+     "luz_c": "filtered shutter light",
+     "audio": "a porch swing creaking, birds in the garden"},
+    {"id": "memphis", "selo": "N", "familia": "memphis",
+     "etnias": ["Black American"],
+     "eua": True,
+     "coz": "a Memphis shotgun-house kitchen with tongue-and-groove walls painted cream, a window fan turning in the frame, a chrome-edged dinette and cast-iron on the range",
+     "coz_c": "cream shotgun-house kitchen",
+     "sup_a": "a chrome-edged formica counter", "sup": "counter",
+     "trajes": [
+         ("%s fitted crop top with high-waisted shorts",
+          "fitted crop top"),
+         ("%s satin cami with a short wrap skirt",
+          "satin cami"),
+         ("%s low-cut bodycon mini dress",
+          "bodycon mini"),
+         ("%s cropped tank knotted at the ribs with cut-offs",
+          "knotted tank"),
+         ("%s bandeau under an open short-sleeve shirt",
+          "open short-sleeve shirt"),
+     ],
+     "cores": ["gold", "white", "wine", "teal", "black", "hot pink"],
+     "luz": "Warm low sun cutting through the window fan.",
+     "luz_c": "warm fan-cut light",
+     "audio": "a window fan turning, a radio through a wall"},
+    {"id": "minnesota", "selo": "N", "familia": "minnesota",
+     "etnias": ["white American", "Black American"],
+     "eua": True,
+     "coz": "a Twin Cities kitchen with birch cabinets, a window onto snow-lined roofs and bare branches, a percolator on the range and a wall of hooked mugs",
+     "coz_c": "birch Minnesota kitchen",
+     "sup_a": "a pale butcher-block counter", "sup": "counter",
+     "trajes": [
+         ("%s cropped ribbed sweater with short shorts",
+          "cropped sweater"),
+         ("%s thin-strapped bodysuit under an open cardigan",
+          "open cardigan"),
+         ("%s low-cut fitted tank with leggings",
+          "fitted tank"),
+         ("%s short knit dress with thin straps",
+          "short knit dress"),
+         ("%s cut-off sweatshirt with high-waisted shorts",
+          "cut-off sweatshirt"),
+     ],
+     "cores": ["ivory", "navy", "burgundy", "camel", "black", "sky blue"],
+     "luz": "Flat bright light bouncing off the snow outside.",
+     "luz_c": "flat snow light",
+     "audio": "a furnace kicking in, a plough far off"},
+    {"id": "oakland", "selo": "N", "familia": "oakland",
+     "etnias": ["Black American", "white American"],
+     "eua": True,
+     "coz": "an Oakland bungalow kitchen with green-painted cabinets, a wide window onto a lemon tree and a wooden fence, open shelves of glass jars and a chipped enamel range",
+     "coz_c": "green bungalow kitchen",
+     "sup_a": "a butcher-block island", "sup": "island",
+     "trajes": [
+         ("%s cropped tank top with wide-leg cut-offs",
+          "cropped tank"),
+         ("%s low-cut bodysuit with a short wrap skirt",
+          "wrap skirt"),
+         ("%s thin-strapped slip dress",
+          "slip dress"),
+         ("%s knotted crop tee with high-waisted shorts",
+          "knotted crop tee"),
+         ("%s bandeau under an open oversized shirt",
+          "open oversized shirt"),
+     ],
+     "cores": ["olive", "white", "terracotta", "black", "mustard", "teal"],
+     "luz": "Warm bright light through the lemon-tree window.",
+     "luz_c": "warm garden light",
+     "audio": "a wind chime, a dog two yards over"},
+    {"id": "pittsburgh", "selo": "N", "familia": "pittsburgh",
+     "etnias": ["white American", "Black American"],
+     "eua": True,
+     "coz": "a Pittsburgh hillside kitchen with cream-painted cabinets, a window onto a steep street of narrow houses, a heavy gas range and a plate rail of enamelware",
+     "coz_c": "cream hillside kitchen",
+     "sup_a": "an oiled oak counter", "sup": "counter",
+     "trajes": [
+         ("%s low-cut tank top with denim cut-offs",
+          "low-cut tank"),
+         ("%s cropped hoodie over a bandeau, track shorts",
+          "cropped hoodie"),
+         ("%s fitted mini dress with thin straps",
+          "fitted mini"),
+         ("%s off-shoulder top with high-waisted jeans",
+          "off-shoulder top"),
+         ("%s open flannel over a sports bra, short shorts",
+          "open flannel"),
+     ],
+     "cores": ["black", "gold", "cream", "steel grey", "scarlet", "forest green"],
+     "luz": "Cool daylight coming up off the hillside street.",
+     "luz_c": "cool hillside light",
+     "audio": "a car climbing the hill, wind through a screen"},
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -1044,7 +1233,7 @@ REFS = [
      "marca": "a small gold hoop in her left nostril and clear skin"},
     {"idade": 26, "corpo": "tall and statuesque with a long waist",
      "cabeca": "strawberry-blonde hair in a loose braid",
-     "marca": "wide-set blue eyes and a faint scar through one eyebrow"},
+     "marca": "wide-set blue eyes and a bright silver streak at one temple"},
     {"idade": 25, "corpo": "slim and toned with a dancer's line",
      "cabeca": "jet-black hair in a sleek centre part",
      "marca": "sharp cheekbones and a small mole on her jaw"},
@@ -1056,12 +1245,12 @@ REFS = [
      "marca": "glowing deep brown skin and a wide bright smile"},
     {"idade": 30, "corpo": "tall and slim with an hourglass line",
      "cabeca": "chestnut hair in long beachy waves",
-     "marca": "a gap between her front teeth and warm brown eyes"},
+     "marca": "a deep dimple in her right cheek and warm brown eyes"},
     {"idade": 22, "corpo": "petite and curvy with a defined waist",
      "cabeca": "honey-blonde hair in a high messy bun",
      "marca": "a scatter of freckles and full lips"},
     {"idade": 27, "corpo": "lean and toned with a flat stomach and long arms",
-     "cabeca": "long jet-black hair worn straight to the waist",
+     "cabeca": "long jet-black hair falling straight to the waist",
      "marca": "almond eyes and a small stud in one nostril"},
     {"idade": 26, "corpo": "shapely with toned arms and a narrow waist",
      "cabeca": "caramel balayage falling past her shoulders",
@@ -1083,7 +1272,7 @@ REFS = [
      "marca": "pale skin, freckles and bright green eyes"},
     {"idade": 29, "corpo": "long-limbed and shapely with a defined waist",
      "cabeca": "black hair in a high sleek ponytail",
-     "marca": "a thin scar along her jawline and full brows"},
+     "marca": "a small beauty mark on her jawline and full brows"},
     {"idade": 26, "corpo": "trim and athletic with a flat stomach",
      "cabeca": "golden blonde hair in loose waves",
      "marca": "a small dimple in one cheek only"},
@@ -1095,7 +1284,7 @@ REFS = [
      "marca": "sculpted cheekbones and a small gold stud"},
     {"idade": 27, "corpo": "slim with a long waist and square shoulders",
      "cabeca": "ash-brown hair in a sleek low bun",
-     "marca": "grey-green eyes and a faint mark between her brows"},
+     "marca": "grey-green eyes and a beauty mark just above her left brow"},
     {"idade": 25, "corpo": "shapely and toned with a narrow waist",
      "cabeca": "ginger hair in loose curls past her shoulders",
      "marca": "heavy freckling and a small chin dimple"},
@@ -1104,7 +1293,7 @@ REFS = [
      "marca": "a beauty mark high on her left cheek"},
     {"idade": 23, "corpo": "petite and shapely with a defined waist",
      "cabeca": "bleached blonde hair in a blunt chin-length bob",
-     "marca": "wide dark eyes and a faint scar on her chin"},
+     "marca": "wide dark eyes and a dimple in her chin"},
     {"idade": 31, "corpo": "athletic and curvy with strong shoulders",
      "cabeca": "long waves in a rich mahogany red",
      "marca": "clear skin and a small hoop in her right nostril"},
@@ -1120,6 +1309,40 @@ REFS = [
     {"idade": 25, "corpo": "tall with a small waist and full shoulders",
      "cabeca": "strawberry-blonde hair in a high loose bun",
      "marca": "green eyes and a small beauty spot on her cheekbone"},
+
+    # ⭐⭐ + 2026-08-13 — SEIS ENTRADAS NOVAS, de 30 para 36. Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔ Cada uma varia CORPO, CABECA e MARCA juntos, como as trinta de cima:
+    # duas mulheres de cabelo diferente e mesmo porte leem como a mesma pessoa.
+    # ⛔ Zero adjetivo de etnia — quem injeta e' a montagem, a partir do MUNDO.
+    #
+    # ⛔⛔ E CINCO ENTRADAS ANTIGAS FORAM REESCRITAS NO MESMO DIA, pela LEI DO
+    # REF (*"mulheres sempre super fit e lindas"*, e a ancora e' SINAL DE BELEZA,
+    # nunca deterioracao). O que saiu, medido: `faint scar through one eyebrow`,
+    # `gap between her front teeth`, `thin scar along her jawline`, `faint scar
+    # on her chin` e `faint mark between her brows` — este ultimo porque `mark
+    # between the brows` e' o que o gerador resolve como VINCO, nao como pinta.
+    # ⚠️ NADA foi apagado sem substituicao: cada uma ganhou uma ancora SAUDAVEL
+    # no lugar (`silver streak`, `dimple`, `beauty mark`), senao o eixo `ancora`
+    # do `medir_personagens.py` cai junto com a cicatriz.
+    {"idade": 26, "corpo": "tall and athletic with a long waist and narrow hips",
+     "cabeca": "cinnamon-red hair in a thick side braid",
+     "marca": "a light spray of freckles over her cheekbones and amber eyes"},
+    {"idade": 24, "corpo": "shapely and lithe with a very small waist",
+     "cabeca": "espresso-dark hair in a high twisted knot",
+     "marca": "a deep dimple in her right cheek and long dark lashes"},
+    {"idade": 28, "corpo": "long-legged and toned with square shoulders and a flat stomach",
+     "cabeca": "wheat-blonde hair swept into a low side wave",
+     "marca": "a small gold hoop in one ear and lightly tanned even skin"},
+    {"idade": 23, "corpo": "petite and curvy with full shoulders and a defined waist",
+     "cabeca": "fine cornrows finished in a low gathered bun",
+     "marca": "a beauty mark at the outer corner of her left eye"},
+    {"idade": 30, "corpo": "statuesque and strong with a narrow waist and long arms",
+     "cabeca": "burnt-copper hair falling in heavy waves to the ribs",
+     "marca": "wide green eyes and a dense scatter of freckles"},
+    {"idade": 27, "corpo": "slim and supple with a very long neck",
+     "cabeca": "blue-black hair in a blunt chin-length cut with a deep fringe",
+     "marca": "a silver streak at her right temple and dark almond eyes"},
 ]
 
 
@@ -1134,96 +1357,194 @@ REFS = [
 # ⚠️ Ele existe para encenar o espanto NO LUGAR do espectador, que e' a mecanica
 # da plateia congelada do ESCANDALO. Por isso ele olha o COPO, nunca a lente.
 HOMENS = [
-    {"id": "grisalho_barbudo", "idade": 58,
-     "marca": "a heavy-set build, thick silver hair and a short grey beard, "
-              "weathered skin and a pale scar through one eyebrow",
-     "roupa": "a plain navy work shirt"},
-    {"id": "careca_bigode", "idade": 63,
-     "marca": "a stocky build, a bald crown with white hair at the sides and a "
-              "thick moustache, ruddy skin and a large mole on his cheek",
-     "roupa": "a heather-grey pocket tee"},
-    {"id": "cabelo_farto", "idade": 46,
-     "marca": "a tall lean frame, a full head of dark hair going grey at the "
-              "temples, clean-shaven, with a deep cleft in his chin",
-     "roupa": "an olive canvas shirt with the sleeves rolled"},
-    {"id": "sardas_ruivo", "idade": 41,
-     "marca": "a wiry build, coppery hair and heavy freckling across the nose, "
-              "with a gap between his front teeth",
-     "roupa": "a faded red flannel shirt"},
-    {"id": "fade_grisalho", "idade": 55,
-     "marca": "a broad-shouldered build, a close grey fade and a neat chinstrap "
-              "beard, smooth skin and a small gold stud in one ear",
-     "roupa": "a slate-blue polo shirt"},
-    {"id": "locs_oculos", "idade": 49,
-     "marca": "a solid build, salt-and-pepper locs gathered back, wire-rimmed "
-              "glasses and a raised mole beside his right eye",
-     "roupa": "a charcoal henley with the sleeves pushed up"},
-    {"id": "corte_militar", "idade": 52,
-     "marca": "a thickset build, an iron-grey brush cut, sun-weathered skin and "
-              "a broad nose broken once",
-     "roupa": "a mustard snap-button shirt"},
-    {"id": "cavanhaque", "idade": 60,
-     "marca": "a barrel-chested build, a shaved head and a neat white goatee, "
-              "with a white streak in one eyebrow",
-     "roupa": "a cream short-sleeve camp shirt"},
-    {"id": "onda_longa", "idade": 44,
-     "marca": "a slim build, wavy dark hair worn a little long at the collar, "
-              "clean-shaven, with a deep dimple in his left cheek",
-     "roupa": "a forest-green work shirt"},
-    {"id": "sobrancelha_oculos", "idade": 66,
-     "marca": "a gaunt frame, white hair combed back, heavy black-framed "
-              "glasses and deeply lined skin",
-     "roupa": "a blue-and-white checked shirt"},
-    {"id": "queixo_fendido", "idade": 47,
-     "marca": "a compact build, sandy hair going grey at the sides, tanned skin "
-              "and a strong cleft chin",
-     "roupa": "a rust-red pocket tee"},
-    {"id": "afro_curto", "idade": 54,
-     "marca": "a burly build, a short grey afro and a broad open face, with a "
-              "small birthmark high on one cheek",
-     "roupa": "a sand-coloured linen shirt"},
-    # + 2026-08-05, mesma ordem do operador. Porte, cabeca e pelo facial variam
-    # juntos: dois homens de cabelo diferente e mesmo porte leem como o mesmo.
-    {"id": "bigode_farto", "idade": 57,
-     "marca": "a lean upright frame, dark hair combed to one side and a thick "
-              "moustache, with deep laugh lines around the eyes",
-     "roupa": "a striped short-sleeve shirt"},
-    {"id": "calvo_barba", "idade": 51,
-     "marca": "a heavy build, a shaved head and a full salt-and-pepper beard, "
-              "with a broad flat nose",
-     "roupa": "a denim work shirt"},
-    {"id": "branco_liso", "idade": 62,
-     "marca": "a narrow build, straight white hair falling over the forehead, "
-              "hollow cheeks and a cleft chin",
-     "roupa": "a pale blue oxford shirt"},
-    {"id": "locs_curtas", "idade": 45,
-     "marca": "a stocky athletic build, short twisted locs and a trimmed "
-              "goatee, with a small scar on his temple",
-     "roupa": "a burgundy polo shirt"},
-    {"id": "sobrancelha_farta", "idade": 59,
-     "marca": "a solid build, thinning grey hair and very heavy dark eyebrows, "
-              "with a bulbous nose",
-     "roupa": "a khaki utility shirt"},
-    {"id": "queimado_sol", "idade": 48,
-     "marca": "a rangy build, sun-bleached brown hair and a deep tan line "
-              "across the forehead, with a squint at the corners of both eyes",
-     "roupa": "a faded teal work shirt"},
-    {"id": "cavanhaque_branco", "idade": 65,
-     "marca": "a spare frame, close-cropped white hair and a white goatee, "
-              "with prominent ears",
-     "roupa": "a grey chambray shirt"},
-    {"id": "cacheado_grisalho", "idade": 43,
-     "marca": "a broad build, dense curly hair going grey at the temples and a "
-              "strong square jaw, with a chipped front tooth",
-     "roupa": "a black crew-neck tee"},
-    {"id": "bochechudo", "idade": 56,
-     "marca": "a round-faced heavy build, dark hair receding at the temples "
-              "and full cheeks, with a dimpled chin",
-     "roupa": "a plaid flannel shirt"},
-    {"id": "magro_alto", "idade": 50,
-     "marca": "a very tall gaunt frame, iron-grey hair cropped short and a "
-              "long straight nose, with deep-set eyes",
-     "roupa": "a white undershirt beneath an open work shirt"},
+    # ⛔⛔ POOL REESCRITO EM 2026-08-12. Ordem do operador, com o lote na mao:
+    # *"quero um pool com homens 50+ com melhor aparencia no agente placa16;
+    # esses caras tao parecendo mendigo"*.
+    #
+    # ⚠️ O QUE ESTAVA ERRADO, MEDIDO no pool anterior (22 entradas):
+    #     8 de 22 tinham MENOS de 50 anos — ele pediu 50+
+    #     9 marcadores de dano: `weathered` (2), `ruddy`, `scar` (2),
+    #     `gap between his front teeth`, `freckling`, `mole` (2), `worn`
+    # Pele castigada, cicatriz, dente faltando e verruga nao sao "marca
+    # distintiva": sao DANO. Num homem de 60, dano renderiza exatamente como ele
+    # descreveu.
+    #
+    # ⭐ A REGRA E' A DO REPO: **DISTINTIVO, NUNCA DETERIORADO**. A ancora e' uma
+    # feicao MEMORAVEL num rosto SAUDAVEL.
+    #
+    # ⛔⛔ E A PRIMEIRA VERSAO DESTE POOL ZEROU DOIS EIXOS VIVOS — medido pelo
+    # `medir_personagens --gate`: `HOMENS/pele` e `HOMENS/ancora` passaram de
+    # cheios a ZERO. Eu tinha tirado as cicatrizes e as verrugas (certo) e nao
+    # tinha posto nada no lugar (errado), e escrevi `clear skin`/`smooth skin`,
+    # que nao estao no vocabulario do medidor.
+    # ⭐ A saida nao era desistir de nenhum dos dois: **cada eixo tem membros
+    # SAUDAVEIS**, e sao esses que ficam.
+    #     pele ...... `smooth-skinned`, `tanned`, `freckled`, `laugh lines`
+    #     ancora .... `cleft`, `dimple`, `silver streak`, `stud`, `hoop`,
+    #                 `beauty mark`, `crown`
+    # Nenhum deles e' avaria, e os dois eixos voltam a girar.
+    #
+    # ⛔⛔ E NENHUMA PALAVRA DE APROVACAO: nao ha' `handsome`, `chiseled`,
+    # `distinguished`, `strong jaw` nem `piercing eyes`, e a ausencia e'
+    # deliberada — elogio no prompt puxa o rosto para a media de banco de
+    # imagem, o mesmo mecanismo que faz `not a celebrity` invocar a celebridade.
+    #
+    # ⚠️ A ETNIA NAO ENTRA AQUI: vem do MUNDO (`spec["etnia"]`), igual a' dela.
+    # Descrever etnia na `marca` criaria duas vozes brigando no mesmo sintagma —
+    # o defeito que trocou a mulher entre os takes do `fight16`.
+    #
+    # ⚠️ OS OCULOS JA' ESTAVAM ZERADOS ANTES DE MIM (uma entrada em 22 mede 0%).
+    # Passaram a seis: eixo que existe no medidor e nunca gira e' rotacao morta.
+    #
+    # ⛔⛔ 2026-08-13 — ESTE POOL PASSOU A VALER TAMBEM NO IRMAO `placa_short.py`.
+    # O conserto de 12/08 tinha sido feito so' no 16s, e o SHORT ficou dez meses
+    # de repertorio atras: ele ainda carregava as 22 antigas, com `weathered`,
+    # `ruddy`, cicatriz, dente faltando e oito homens abaixo de 50. Motores
+    # irmaos nasceram por copia literal — quando um so' e' consertado, ninguem
+    # sabe mais qual e' a fonte da verdade, e o lote errado sai pelo que ficou
+    # para tras. Os dois arquivos carregam agora o MESMO pool, byte a byte.
+    {"id": "prata_curto", "idade": 56,
+     "marca": "a full head of silver hair cut short and combed back from a high "
+              "forehead, clean-shaven and smooth-skinned, with a shallow cleft "
+              "in his chin",
+     "roupa": "a charcoal quarter-zip merino sweater"},
+    {"id": "barba_aparada", "idade": 59,
+     "marca": "close-cropped grey hair and a short beard trimmed tight to the "
+              "jawline, lightly tanned, with a small silver stud in one ear",
+     "roupa": "a navy merino polo shirt"},
+    {"id": "risca_prata", "idade": 52,
+     "marca": "thick dark hair with a clean side part and a bright silver "
+              "streak at the front, clean-shaven and smooth-skinned",
+     "roupa": "a pressed white oxford shirt with the collar open"},
+    {"id": "careca_barba_branca", "idade": 63,
+     "marca": "a smoothly shaved crown and a neatly kept white beard, "
+              "smooth-skinned, with a dimple in one cheek",
+     "roupa": "a black crewneck sweater"},
+    {"id": "onda_grisalha_oculos", "idade": 55,
+     "marca": "grey hair grown a little long and brushed back in a soft wave, "
+              "clean-shaven and lightly tanned, wearing slim wire-rimmed "
+              "glasses",
+     "roupa": "a light grey linen shirt"},
+    {"id": "fade_limpo", "idade": 51,
+     "marca": "a crisp grey fade with a clean line at the temples, a closely "
+              "shaved face, smooth-skinned, with a deep cleft in his chin",
+     "roupa": "a deep green polo shirt"},
+    {"id": "bigode_branco", "idade": 61,
+     "marca": "silver hair cut neatly above the ears and a trimmed white "
+              "moustache, laugh lines at the eyes and a beauty mark high on "
+              "one cheekbone",
+     "roupa": "a soft blue button-down shirt"},
+    {"id": "cachos_grisalhos", "idade": 54,
+     "marca": "short grey curls kept close to the crown, clean-shaven and "
+              "smooth-skinned, with a dimple that shows on one side",
+     "roupa": "a burgundy fine-knit sweater"},
+    {"id": "escovinha_oculos", "idade": 58,
+     "marca": "a silver brush cut kept very short, clean-shaven and tanned, "
+              "wearing rimless reading glasses pushed up",
+     "roupa": "a slate quarter-zip pullover"},
+    {"id": "locs_prateados", "idade": 57,
+     "marca": "silver locs gathered neatly at the back, a short trimmed beard, "
+              "smooth-skinned, with a plain gold hoop in one ear",
+     "roupa": "a cream henley with the sleeves pushed up"},
+    {"id": "cavanhaque_curto", "idade": 60,
+     "marca": "grey hair cut short all over and a small trimmed goatee, "
+              "lightly tanned, with a white streak running through the goatee",
+     "roupa": "a navy blazer over a plain white tee"},
+    {"id": "risca_lateral", "idade": 53,
+     "marca": "dark hair silvering at the temples with a sharp side part, "
+              "clean-shaven and smooth-skinned, with a cleft chin",
+     "roupa": "a pale grey polo shirt"},
+    {"id": "careca_oculos", "idade": 62,
+     "marca": "a cleanly shaved crown with no beard at all, smooth-skinned, "
+              "wearing heavy dark-rimmed glasses",
+     "roupa": "a dark olive crewneck sweater"},
+    {"id": "barba_cheia_branca", "idade": 66,
+     "marca": "thick white hair combed back and a full beard kept neatly "
+              "shaped, laugh lines at the eyes and a small dimple beside his "
+              "mouth",
+     "roupa": "a soft charcoal cardigan over a white shirt"},
+    {"id": "corte_classico", "idade": 50,
+     "marca": "dark hair with grey coming in at the sides, cut in a clean "
+              "classic taper, clean-shaven and tanned, with a beauty mark near "
+              "his jaw",
+     "roupa": "a heather-blue long-sleeve polo"},
+    {"id": "sobrancelha_marcada", "idade": 64,
+     "marca": "short silver hair and dark level eyebrows that stand out "
+              "against it, clean-shaven and smooth-skinned, with a shallow "
+              "cleft in his chin",
+     "roupa": "a rust-coloured fine-knit sweater"},
+    {"id": "barba_curta_oculos", "idade": 55,
+     "marca": "grey hair cut short and a short even stubble kept deliberately "
+              "trimmed, lightly tanned, wearing slim half-rim glasses",
+     "roupa": "a dark navy overshirt"},
+    {"id": "topete_prata", "idade": 59,
+     "marca": "silver hair with volume at the front swept up and back, "
+              "clean-shaven and smooth-skinned, with a dimple in his left "
+              "cheek",
+     "roupa": "a soft camel crewneck"},
+    {"id": "mecha_branca", "idade": 61,
+     "marca": "neatly cut dark hair with a patch of white above one temple, "
+              "clean-shaven, freckled across the nose",
+     "roupa": "a pressed light blue shirt"},
+    {"id": "queixo_fundo", "idade": 57,
+     "marca": "short thick grey hair and a clean-shaven face with a deep cleft "
+              "in the chin, smooth-skinned",
+     "roupa": "a forest-green quarter-zip"},
+    {"id": "cabelo_farto_oculos", "idade": 65,
+     "marca": "a full head of white hair cut neatly above the collar, "
+              "clean-shaven with laugh lines at the eyes, wearing gold "
+              "half-moon glasses",
+     "roupa": "a stone-coloured linen shirt"},
+    {"id": "barba_curta_escura", "idade": 51,
+     "marca": "dark hair cut short with a silver streak at one sideburn and a "
+              "very short trimmed beard, smooth-skinned",
+     "roupa": "a black merino polo"},
+
+    # ⭐⭐ + 2026-08-13 — SEIS ENTRADAS NOVAS, de 22 para 28. Ordem do operador:
+    # *"melhore a aparencia e shape desses homens"* / *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*.
+    # ⛔ ESCRITAS NO MESMO CONTRATO DO BLOCO DE 2026-08-12, sem uma excecao: 50+,
+    # ZERO marcador de dano (cicatriz, dente lascado, pele castigada, verruga),
+    # ZERO palavra de aprovacao (`handsome`, `chiseled`, `strong jaw`) e ZERO cor
+    # de pele — a etnia continua vindo do MUNDO. Reintroduzir avaria aqui seria
+    # desfazer o conserto de 12/08 pela porta dos fundos, num bloco que ninguem
+    # relê porque "e' so' ampliacao".
+    # ⭐ TODAS DECLARAM PORTE, que o bloco de 12/08 tinha deixado de fora: dois
+    # homens com o mesmo corpo e cabelo diferente leem como o mesmo homem — foi
+    # essa a licao que criou o `medir_personagens.py`.
+    # ⚠️ TRES DELAS TRAZEM OCULOS de proposito. Com 22 entradas o eixo media
+    # 22,7% e o alvo e' 25-30%; com estas seis ele fecha em 8 de 28. Eixo que
+    # existe no medidor e quase nunca gira e' rotacao morta.
+    {"id": "cachos_brancos_oculos", "idade": 60,
+     "marca": "a broad-shouldered build, thick white curls kept close at the "
+              "sides, clean-shaven and smooth-skinned, with a shallow cleft "
+              "chin, wearing thin gold wire-rimmed glasses",
+     "roupa": "a slate-blue linen shirt"},
+    {"id": "grisalho_longo", "idade": 54,
+     "marca": "a tall lean build, steel-grey hair grown long enough to tuck "
+              "behind the ears, clean-shaven and lightly tanned, with a beauty "
+              "mark below one eye",
+     "roupa": "a deep teal fine-knit sweater"},
+    {"id": "bigode_chevron", "idade": 62,
+     "marca": "a compact sturdy build, silver hair parted low and a full "
+              "chevron moustache kept trimmed, freckled across the cheeks, "
+              "with a dimple beside his mouth",
+     "roupa": "a warm grey flannel shirt"},
+    {"id": "twists_prata", "idade": 57,
+     "marca": "a lean upright build, short silver twists kept close and a "
+              "close-trimmed beard, smooth-skinned, with a small gold hoop in "
+              "one ear",
+     "roupa": "a stone-grey henley with the sleeves pushed up"},
+    {"id": "risca_central_oculos", "idade": 53,
+     "marca": "a broad solid build, dark hair silvering in a clean centre "
+              "part, clean-shaven and lightly tanned, with a cleft chin, "
+              "wearing slim tortoiseshell glasses",
+     "roupa": "a bottle-green overshirt"},
+    {"id": "barba_branca_oculos", "idade": 67,
+     "marca": "a tall square-shouldered build, thick white hair and a full "
+              "beard kept neatly shaped, laugh lines at the eyes and a cleft "
+              "in his chin, wearing plain steel-framed glasses",
+     "roupa": "a stone linen overshirt"},
 ]
 
 

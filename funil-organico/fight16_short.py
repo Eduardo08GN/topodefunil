@@ -298,6 +298,176 @@ QUARTOS = [
      "audio": "the low hum of the city, wind against the glass",
      "dela": "a charcoal robe tied closed",
      "dela_bela": "a short charcoal satin robe"},
+
+    # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*. De 8 para 24 quartos.
+    # ⛔ Cada entrada nova declara EXATAMENTE as mesmas sete chaves das
+    # vizinhas — `nome`, `cen`, `ela`, `luz`, `audio` e o par de trajes
+    # (`dela`/`dela_bela`), que o autoteste cobra um por um e exige DIFERENTES
+    # entre si.
+    # ⛔⛔ E CADA UMA DIZ ONDE ELA ESTA', que e' a razao de ser deste campo:
+    # `ela` vira o sujeito da frase montada (`Lying on her side ... is a
+    # 35-year-old woman`), entao entrada sem geometria propria devolve o
+    # gerador improvisando a posicao dela.
+    # ⚠️ O que NAO varia em nenhuma: os BRACOS CRUZADOS e o ENCARAR moram na
+    # MONTAGEM, nao aqui — a lente FT2 cobra os dois literais.
+    {"id": "casa_praia_manha", "nome": "quarto de casa de praia de manha",
+     "cen": "a beach house bedroom, whitewashed board walls and a window full "
+            "of pale morning sky",
+     "ela": "sitting up in bed several feet behind him with the sheet across "
+            "her legs",
+     "luz": "flat early daylight coming in through thin curtains",
+     "audio": "surf far off, gulls over the roof",
+     "dela": "a white cotton nightshirt",
+     "dela_bela": "a short white cotton nightshirt"},
+
+    {"id": "loft_industrial", "nome": "quarto de loft industrial",
+     "cen": "a converted loft bedroom, exposed brick and a tall factory window "
+            "with black frames",
+     "ela": "leaning against the brick wall several feet behind him with her "
+            "weight on one hip",
+     "luz": "one hanging bulb over the bed and grey light off the brick",
+     "audio": "a freight lift somewhere in the building, rain on the glass",
+     "dela": "a grey tank top and loose trousers",
+     "dela_bela": "a short grey satin slip"},
+
+    {"id": "fazenda", "nome": "quarto de casa de fazenda",
+     "cen": "a farmhouse bedroom, painted board walls and a tall wooden "
+            "wardrobe against the far wall",
+     "ela": "standing several feet behind him with one hand on the wardrobe "
+            "door",
+     "luz": "one warm lamp on the dresser and the window dark",
+     "audio": "cattle far off, an old house settling",
+     "dela": "a flannel shirt over a cotton tee",
+     "dela_bela": "a short plaid flannel shirt over a camisole"},
+
+    {"id": "hotel_manha", "nome": "quarto de hotel de manha",
+     "cen": "a hotel room in daylight, an open suitcase on a luggage rack and "
+            "curtains pulled wide",
+     "ela": "sitting on the arm of a chair several feet behind him, turned "
+            "toward him",
+     "luz": "bright flat daylight filling the room",
+     "audio": "a housekeeping cart in the corridor, faint traffic below",
+     "dela": "a navy hotel robe tied closed",
+     "dela_bela": "a short navy satin robe"},
+
+    {"id": "sauna_seca", "nome": "sauna seca da suite",
+     "cen": "a cedar sauna room off a suite, slatted benches and a stove of "
+            "hot stones in the corner",
+     "ela": "sitting on the upper bench several feet behind him with a towel "
+            "across her knees",
+     "luz": "low amber light from a lamp behind the slats",
+     "audio": "the stones ticking, a fan running behind the wall",
+     "dela": "a white towel wrapped and tucked at her chest",
+     "dela_bela": "a short white towel wrapped at her chest"},
+
+    {"id": "quarto_deserto", "nome": "quarto de casa no deserto",
+     "cen": "a desert house bedroom, thick plaster walls and a deep-set window "
+            "onto dark rock",
+     "ela": "sitting sideways on the end of the bed several feet behind him "
+            "with her feet on the floor",
+     "luz": "one lamp on the nightstand and cold moonlight in the window",
+     "audio": "dry wind against the glass, coyotes far off",
+     "dela": "a sand-coloured cotton nightdress",
+     "dela_bela": "a short sand-coloured satin slip"},
+
+    {"id": "barco", "nome": "cabine de barco",
+     "cen": "the cabin of a moored boat, varnished wood walls and a small "
+            "porthole over the berth",
+     "ela": "sitting on the berth several feet behind him with her back "
+            "against the hull",
+     "luz": "one warm reading light over the berth and dark water outside",
+     "audio": "water knocking against the hull, rigging tapping on deck",
+     "dela": "a navy striped top and shorts",
+     "dela_bela": "a short navy satin camisole and shorts"},
+
+    {"id": "chale_neve", "nome": "quarto de chale na neve",
+     "cen": "a ski chalet bedroom, timber walls and a wide window packed with "
+            "snow-covered pines",
+     "ela": "sitting on a bench at the foot of the bed several feet behind him",
+     "luz": "warm lamplight inside and cold blue snow light in the window",
+     "audio": "wind over the roof, a heater ticking",
+     "dela": "a cream thermal top and thick socks",
+     "dela_bela": "a cropped cream thermal top and thick socks"},
+
+    {"id": "casarao", "nome": "quarto de casarao antigo",
+     "cen": "a bedroom in an old townhouse, high ceilings, a marble fireplace "
+            "and tall shuttered windows",
+     "ela": "standing several feet behind him with one hand on the mantel",
+     "luz": "two lamps low and firelight from the grate",
+     "audio": "a clock ticking in the hall, rain on the shutters",
+     "dela": "a deep red dressing gown tied closed",
+     "dela_bela": "a short deep red satin dressing gown"},
+
+    {"id": "trailer_parque", "nome": "quarto de trailer de viagem",
+     "cen": "the sleeping end of a travel trailer, panelled walls and a narrow "
+            "window with the night outside",
+     "ela": "sitting on the built-in bunk several feet behind him with her "
+            "back against the panelling",
+     "luz": "one strip light over the bunk and the rest dark",
+     "audio": "a generator running outside, insects against the screen",
+     "dela": "a grey sweatshirt and cotton shorts",
+     "dela_bela": "a cropped grey sweatshirt and cotton shorts"},
+
+    {"id": "spa_piscina_interna", "nome": "sala de piscina coberta",
+     "cen": "an indoor pool room, a long lap pool under a glass roof and tiled "
+            "walls throwing echo",
+     "ela": "standing on the tiles several feet behind him at the edge of the "
+            "pool",
+     "luz": "cool daylight through the glass roof, the water throwing light "
+            "upward",
+     "audio": "water lapping the tiled gutter, echo off the walls",
+     "dela": "a black one-piece swimsuit with a towel over her arm",
+     "dela_bela": "a black halter bikini top with a towel over her arm"},
+
+    {"id": "quarto_lago", "nome": "quarto de casa de lago",
+     "cen": "a lake house bedroom, panelled walls and sliding doors onto a "
+            "deck over the water",
+     "ela": "sitting in a chair by the sliding doors several feet behind him",
+     "luz": "one lamp inside and last light coming off the lake",
+     "audio": "water against a dock, loons far off",
+     "dela": "a pale green cotton nightdress",
+     "dela_bela": "a short pale green satin slip"},
+
+    {"id": "banheiro_azulejo", "nome": "banheiro de azulejo antigo",
+     "cen": "an older tiled bathroom, small square wall tiles and a wide "
+            "mirror over a single basin",
+     "ela": "standing in the doorway several feet behind him with one shoulder "
+            "against the frame",
+     "luz": "a bare bulb over the mirror and steam still on the glass",
+     "audio": "a tap dripping, an extractor fan running",
+     "dela": "a pale grey waffle robe tied closed",
+     "dela_bela": "a short pale grey waffle robe"},
+
+    {"id": "suite_deserto_luxo", "nome": "suite de resort no deserto",
+     "cen": "a desert resort suite, a low platform bed and a wall of glass "
+            "onto a dark courtyard",
+     "ela": "sitting cross-legged on the far end of the platform bed several "
+            "feet behind him",
+     "luz": "warm floor lights inside and cold light from the courtyard",
+     "audio": "wind in the courtyard palms, a fountain running",
+     "dela": "a bronze satin slip dress",
+     "dela_bela": "a short bronze satin slip dress"},
+
+    {"id": "quarto_chuva_cidade", "nome": "quarto urbano na chuva",
+     "cen": "a city bedroom with the window streaming with rain and wet neon "
+            "smeared across the glass",
+     "ela": "sitting on the windowsill several feet behind him with her back "
+            "to the glass",
+     "luz": "one lamp inside and coloured light bleeding through the rain",
+     "audio": "heavy rain on the glass, tyres on a wet street",
+     "dela": "a black jersey tank top and cotton trousers",
+     "dela_bela": "a short black jersey slip"},
+
+    {"id": "quarto_montanha_vidro", "nome": "quarto de casa envidracada na "
+                                            "montanha",
+     "cen": "a glass-walled mountain house bedroom, a wall of glass onto a "
+            "dark valley and a low platform bed",
+     "ela": "standing at the glass several feet behind him, turned toward him",
+     "luz": "two low lamps inside and moonlight on the valley behind",
+     "audio": "wind across the glass, an owl somewhere below",
+     "dela": "a slate grey robe tied closed",
+     "dela_bela": "a short slate grey satin robe"},
 ]
 
 
@@ -431,6 +601,165 @@ AMBIENTES = [
      "dele": "bare-chested with a towel around his waist",
      "dela": "a coral swimsuit with a towel wrap at her hips",
      "dela_bela": "a coral halter swimsuit with a towel wrap at her hips"},
+
+    # ⭐⭐ + 2026-08-13 — E ESTA E' UMA ORDEM QUE REVOGA OUTRA, entao vale
+    # escrever qual. O cabecalho acima dizia LISTA FECHADA, ditada pelo
+    # operador uma a uma, e o autoteste cobrava `len(AMBIENTES) == 10`. A ordem
+    # nova e' dele e e' mais recente: *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*. De 10 para 24 — as DEZ dele
+    # ficam palavra por palavra, e o piso do autoteste virou 24.
+    # ⛔ Cada entrada nova declara as mesmas oito chaves das dez originais, e o
+    # `maos` continua sendo declarado SO' por quem precisa (o controle do
+    # autoteste cobra a clausula de todo ambiente cuja `pose` diga `water`,
+    # porque a caixa de bicarbonato e' de PAPELAO e ele a carrega na mao).
+    # ⛔ E NENHUMA diz `the same <lugar>`: os dois eixos de cena sao
+    # independentes e quem atravessa o corte e' o HOMEM (lente FT13).
+    {"id": "lago_amanhecer", "nome": "casa de lago ao amanhecer",
+     "cen": "a lake house bedroom at first light, sliding doors open onto a "
+            "deck over the water and clothes left over a chair",
+     "pose": "Sitting on the end of the bed is",
+     "luz": "pale early light coming in off the lake",
+     "audio": "water against a dock, birds starting outside",
+     "dele": "bare-chested with a blanket across his lap",
+     "dela": "a pale green cotton nightdress",
+     "dela_bela": "a short pale green satin slip"},
+
+    {"id": "sauna_cedro", "nome": "sauna de cedro da suite",
+     "cen": "a cedar sauna room off a suite, towels folded on the lower bench "
+            "and a stove of hot stones in the corner",
+     "pose": "Sitting on the lower bench is",
+     "luz": "low amber light coming through the slats",
+     "audio": "the stones ticking, a fan running behind the wall",
+     "dele": "bare-chested with a towel around his waist",
+     "dela": "a white towel wrapped and tucked at her chest",
+     "dela_bela": "a short white towel wrapped at her chest"},
+
+    {"id": "piscina_coberta", "nome": "piscina coberta",
+     "cen": "an indoor pool room under a glass roof, towels left along the "
+            "tiled edge and robes on a hook by the door",
+     "pose": "Standing in the shallow end with the water at his waist is",
+     "maos": "Both of his hands are raised clear of the water and stay dry.",
+     "luz": "cool daylight through the glass roof, the water throwing light "
+            "upward",
+     "audio": "water lapping the tiled gutter, echo off the walls",
+     "dele": "bare-chested",
+     "dela": "a black bikini top",
+     "dela_bela": "a black halter bikini top"},
+
+    {"id": "terraco_verao", "nome": "terraco de verao a' noite",
+     "cen": "a roof terrace on a summer night, string lights overhead and "
+            "towels thrown over the backs of two chairs",
+     "pose": "Sitting on a low bench is",
+     "luz": "warm string lights with the lit city behind",
+     "audio": "the low hum of the city, music from another roof",
+     "dele": "wearing an open linen shirt",
+     "dela": "a white slip dress",
+     "dela_bela": "a short white slip dress"},
+
+    {"id": "banheira_pe_leao", "nome": "banheiro antigo com banheira de pe' "
+                                       "de leao",
+     "cen": "an older tiled bathroom beside a deep claw-foot tub, towels over "
+            "the rim and mist on the mirror",
+     "pose": "Sitting on the wide rim of the claw-foot tub is",
+     "luz": "a bare bulb over the mirror with mist softening it",
+     "audio": "water dripping into the tub, an extractor fan running",
+     "dele": "bare-chested with a towel around his waist",
+     "dela": "a pale grey waffle robe tied closed",
+     "dela_bela": "a short pale grey waffle robe"},
+
+    {"id": "chale_neve", "nome": "chale na neve",
+     "cen": "a ski chalet bedroom with snow packed against the window, coats "
+            "left over a bench and a heater running",
+     "pose": "Sitting on the bench at the foot of the bed is",
+     "luz": "warm lamplight inside and cold blue snow light in the window",
+     "audio": "wind over the roof, a heater ticking",
+     "dele": "wearing a cream thermal top",
+     "dela": "a cream knit sweater and thick socks",
+     "dela_bela": "a cropped cream knit sweater and thick socks"},
+
+    {"id": "fazenda_manha", "nome": "casa de fazenda de manha",
+     "cen": "a farmhouse bedroom in the morning, boots by the door and a quilt "
+            "pushed down to the foot of the bed",
+     "pose": "Sitting on the edge of the bed is",
+     "luz": "strong morning daylight through a thin curtain",
+     "audio": "cattle far off, a screen door",
+     "dele": "wearing an open flannel shirt",
+     "dela": "a plaid flannel shirt over a camisole",
+     "dela_bela": "a short plaid flannel shirt over a camisole"},
+
+    {"id": "barco_deck", "nome": "convés de barco ao entardecer",
+     "cen": "the deck of a moored boat at dusk, towels over the rail and two "
+            "glasses on a low table",
+     "pose": "Sitting on the bench seat on deck is",
+     "luz": "last orange light coming in low over the water",
+     "audio": "water knocking against the hull, rigging tapping on deck",
+     "dele": "bare-chested with a towel over one shoulder",
+     "dela": "a navy bikini top with a wrap at her hips",
+     "dela_bela": "a navy halter bikini top with a wrap at her hips"},
+
+    {"id": "loft_chuva", "nome": "loft industrial na chuva",
+     "cen": "a converted loft bedroom with rain on the tall factory window, "
+            "clothes over a chair and one hanging bulb lit",
+     "pose": "Sitting back against the headboard is",
+     "luz": "one hanging bulb over the bed and grey light off the brick",
+     "audio": "heavy rain on the glass, a freight lift somewhere in the "
+              "building",
+     "dele": "wearing a plain grey t-shirt",
+     "dela": "a grey tank top",
+     "dela_bela": "a cropped grey tank top"},
+
+    {"id": "deserto_patio", "nome": "patio no deserto com plunge pool",
+     "cen": "the patio of a desert house at night, a plunge pool lit from "
+            "inside and towels over a low wall",
+     "pose": "Sitting on the edge of the plunge pool with his feet in the "
+             "water is",
+     "maos": "Both of his hands are well clear of the water and stay dry.",
+     "luz": "warm patio lights with the pool glowing behind",
+     "audio": "dry wind in the palms, water lapping the pool wall",
+     "dele": "bare-chested with a towel around his waist",
+     "dela": "a bronze bikini top",
+     "dela_bela": "a bronze halter bikini top"},
+
+    {"id": "quarto_neon_chuva", "nome": "quarto urbano na chuva",
+     "cen": "a city bedroom with rain streaming down the window and wet neon "
+            "smeared across the glass, clothes left on the floor",
+     "pose": "Sitting on the end of the bed is",
+     "luz": "one lamp inside and coloured light bleeding through the rain",
+     "audio": "heavy rain on the glass, tyres on a wet street",
+     "dele": "wearing an open dark shirt",
+     "dela": "a black jersey slip",
+     "dela_bela": "a short black jersey slip"},
+
+    {"id": "jacuzzi_montanha", "nome": "jacuzzi em deck de montanha",
+     "cen": "a hot tub on a mountain deck at night, robes hung on a hook and "
+            "steam rising off the water",
+     "pose": "Sitting in the hot tub with the water at his chest is",
+     "maos": "Both of his hands are raised clear of the water and stay dry.",
+     "luz": "low deck lights with the steam lit warm from below",
+     "audio": "the tub jets running, wind in the pines",
+     "dele": "bare-chested",
+     "dela": "a forest green bikini top",
+     "dela_bela": "a forest green halter bikini top"},
+
+    {"id": "suite_manha", "nome": "suite de resort de manha",
+     "cen": "a resort suite in the morning, the balcony curtain moving and a "
+            "breakfast tray left on a side table",
+     "pose": "Standing just inside the balcony door is",
+     "luz": "bright morning light through the moving curtain",
+     "audio": "birds outside, a fountain running below",
+     "dele": "wearing an open white linen shirt",
+     "dela": "a white cotton robe tied closed",
+     "dela_bela": "a short white cotton robe"},
+
+    {"id": "casarao_lareira", "nome": "casarao antigo com lareira acesa",
+     "cen": "a bedroom in an old townhouse with a fire in the marble grate, a "
+            "dressing gown over a chair and tall shutters closed",
+     "pose": "Sitting in an armchair by the fire is",
+     "luz": "firelight from the grate with two lamps low",
+     "audio": "the fire cracking, a clock ticking out in the hall",
+     "dele": "wearing a plain dark t-shirt",
+     "dela": "a deep red dressing gown tied closed",
+     "dela_bela": "a short deep red satin dressing gown"},
 ]
 
 
@@ -447,11 +776,30 @@ AMBIENTES = [
 # ⚠️ 45-55 anos, e o numero vem do print: o homem dele nao e' o senhor de 57 do
 # BED. E' um homem de meia-idade que ainda se cuida — cabelo escuro com grisalho
 # entrando, rosto firme. ⛔ E a idade NUNCA e' dita na fala (ver o cabecalho).
+# ⛔⛔ REESCRITO E AMPLIADO EM 2026-08-13 — ordem do operador com o print dos
+# renders na mao: *"melhore a aparencia e shape desses homens"* / *"aumente o
+# pool de opcoes substancialmente, tambem dos ambientes"*. De 8 para 24.
+# ⚠️ CINCO DAS OITO `sinal` ANTIGAS ERAM DANO — `a deep vertical crease between
+# his eyebrows`, `a pale scar through his left eyebrow`, `a broad flat nose
+# broken once and never set`, `heavy folds under both eyes`, `a white patch of
+# old sun damage on his left temple`. O `sinal` e' repetido LITERAL na IMAGE 02
+# (ancora da FT3), e aqui ele e' a UNICA coisa que atravessa o corte (os dois
+# eixos de cena sao independentes): a avaria ia inteira para os dois quadros. E'
+# a licao do PLACA 16 (*"esses caras tao parecendo mendigo"*).
+# ⭐ As tres que NAO eram dano ficaram intactas — pinta, covinha e argola de
+# prata ja' estavam certas.
+# ⛔ NENHUMA PALAVRA DE APROVACAO (handsome, rugged, strong jaw): elogio no
+# prompt puxa o rosto para a media do banco de imagem. ⛔ E NENHUMA COR DE PELE:
+# a etnia entra pela PAGINA, na frase montada.
+# ⚠️ SEM OCULOS, e isso e' isencao DECLARADA no `medir_personagens.py`
+# (*CONTRATO DA CENA*): ele sai do banho de toalha no take 1 e um dos ambientes
+# do take 2 o poe dentro d'agua. Nao e' eixo esquecido — e' eixo que a cena nao
+# comporta, e o lugar de mudar isso seria a isencao, nao o pool.
 HOMENS = [
     {"id": "escuro_curto", "idade": 45,
      "marca": "short dark brown hair with grey coming in at the temples and a "
               "clean-shaven jaw",
-     "sinal": "a deep vertical crease between his eyebrows"},
+     "sinal": "a strong cleft in his chin"},
     {"id": "barba_curta", "idade": 48,
      "marca": "dark hair cut short and three days of dark stubble going grey "
               "at the chin",
@@ -459,37 +807,104 @@ HOMENS = [
     {"id": "sal_pimenta", "idade": 50,
      "marca": "salt-and-pepper hair pushed back off the forehead and a close "
               "grey beard",
-     "sinal": "a pale scar through his left eyebrow"},
+     "sinal": "laugh lines at the corners of his eyes"},
     {"id": "careca_raspado", "idade": 47,
      "marca": "a closely shaved head and a short dark goatee",
-     "sinal": "a broad flat nose broken once and never set"},
+     "sinal": "heavy level brows over wide-set eyes"},
     {"id": "ondulado", "idade": 52,
-     "marca": "thick wavy grey hair worn a little long and a clean-shaven face",
-     "sinal": "heavy folds under both eyes"},
+     "marca": "thick wavy grey hair kept a little long and a clean-shaven face",
+     "sinal": "a small beauty mark below his right eye"},
     {"id": "recuado", "idade": 55,
-     "marca": "grey hair receding at the temples and a thick grey moustache",
-     "sinal": "a white patch of old sun damage on his left temple"},
+     "marca": "grey hair with a low widow's peak and a thick grey moustache",
+     "sinal": "a patch of white above his left temple"},
     {"id": "escuro_liso", "idade": 46,
      "marca": "straight dark hair combed to one side and a clean-shaven face",
      "sinal": "a shallow dimple in his chin"},
     {"id": "grisalho_barbudo", "idade": 53,
      "marca": "short grey hair and a full grey beard trimmed close",
      "sinal": "a small silver hoop in his left ear"},
+    {"id": "escuro_denso", "idade": 45,
+     "marca": "thick dark hair pushed back off the forehead and a close dark "
+              "beard",
+     "sinal": "a dimple in each cheek when he talks"},
+    {"id": "raspado_bigode", "idade": 49,
+     "marca": "a shaved head and a thick dark moustache",
+     "sinal": "a small mole on his left jaw"},
+    {"id": "mecha_branca", "idade": 51,
+     "marca": "a white streak running through short dark hair and a trimmed "
+               "dark beard",
+     "sinal": "a shallow cleft in his chin"},
+    {"id": "cachos_curtos", "idade": 46,
+     "marca": "short dark curls kept close and a clean-shaven face",
+     "sinal": "a small gold stud in his left ear"},
+    {"id": "sal_pimenta_liso", "idade": 54,
+     "marca": "straight salt-and-pepper hair parted on one side and a close "
+              "grey beard",
+     "sinal": "smooth-skinned with a wide square chin"},
+    {"id": "barba_quadrada", "idade": 50,
+     "marca": "short grey hair and a dark beard trimmed square at the jaw",
+     "sinal": "a small mole above his lip"},
+    {"id": "topete_escuro", "idade": 47,
+     "marca": "dark hair still full on top and combed high, with a "
+              "clean-shaven face",
+     "sinal": "a silver streak through one eyebrow"},
+    {"id": "cavanhaque_grisalho", "idade": 52,
+     "marca": "close-cropped dark hair going grey and a short grey goatee",
+     "sinal": "laugh lines at the corners of his mouth"},
+    {"id": "franja_escura", "idade": 45,
+     "marca": "dark hair kept a little long over the forehead and light "
+              "stubble",
+     "sinal": "freckles scattered across his nose"},
+    {"id": "risca_lateral", "idade": 55,
+     "marca": "grey hair combed to one side and a thin grey moustache",
+     "sinal": "a beauty mark high on his right cheek"},
+    {"id": "barba_longa_escura", "idade": 48,
+     "marca": "short dark hair and a long dark beard combed straight",
+     "sinal": "heavy level brows and a small mole at his temple"},
+    {"id": "aparado_militar", "idade": 44,
+     "marca": "a high and tight crew cut and a clean-shaven face",
+     "sinal": "smooth-skinned with a cleft chin"},
+    {"id": "ondas_grisalhas", "idade": 53,
+     "marca": "wavy grey hair pushed back and three days of grey stubble",
+     "sinal": "a small gold hoop in his right ear"},
+    {"id": "careca_lateral", "idade": 51,
+     "marca": "a bald crown with dark hair at the sides and a close dark "
+              "beard",
+     "sinal": "a shallow dimple in his left cheek"},
+    {"id": "castanho_medio", "idade": 46,
+     "marca": "mid-length brown hair tucked behind his ears and a clean-shaven "
+              "face",
+     "sinal": "laugh lines and a small mole beside his right eye"},
+    {"id": "grisalho_raspado", "idade": 54,
+     "marca": "grey hair clipped down to the scalp and a full grey beard",
+     "sinal": "smooth-skinned with heavy level brows"},
 ]
 
 # ⛔ Ele esta' de TRONCO NU e de TOALHA no take 1 (o print), e o corpo e' o do
 # print: um homem de meia-idade que ainda treina — peito definido, ombros
 # largos, sem ser fisiculturista. ⚠️ E' um sorteio SEM eixo de painel: ele chega
 # ao quadro, o operador nao precisa escolher.
+# ⭐ AMPLIADO EM 2026-08-13 (de 8 para 14), ordem do operador: *"melhore a
+# aparencia e shape desses homens"*. ⚠️ UMA ENTRADA ANTIGA SAIU por descrever
+# corpo mole — `medium build, fit through the shoulders and softening at the
+# waist`: o `corpo_h` entra nos DOIS blocos, e "softening at the waist" e'
+# exatamente o que o operador viu no render e reprovou. As outras sete ja'
+# estavam no registro certo e ficam palavra por palavra.
 CORPOS_H = [
     "lean and athletic with a defined chest",
     "broad-shouldered and solid with a flat stomach",
     "trim and wiry with visible collarbones",
     "thick through the chest and arms, still carrying muscle",
-    "medium build, fit through the shoulders and softening at the waist",
+    "medium build, firm through the shoulders and flat at the waist",
     "tall and rangy with long arms and a lean chest",
     "compact and muscular through the chest and shoulders",
     "broad through the back with a heavier chest and thick forearms",
+    "square through the shoulders with a hard flat stomach",
+    "deep-chested with thick upper arms and a trim waist",
+    "long-limbed and lean with defined shoulders",
+    "solid and even through the torso, the chest firm",
+    "heavy through the chest and shoulders with thick wrists",
+    "athletic through the back and arms with a narrow waist",
 ]
 
 # ⛔ A TOALHA E' DO PRINT e por isso EXISTE em quadro: homem de tronco nu num
@@ -537,16 +952,16 @@ MULHERES = [
               "beside her left eye"},
     {"id": "loira_lisa", "idade": 38, "etnia": "white American",
      "porte": "average build with a long waist",
-     "marca": "straight blonde hair cut blunt at the shoulders and a faint "
-              "scar through one eyebrow"},
+     "marca": "straight blonde hair cut blunt at the shoulders and a dimple "
+              "in one cheek"},
     {"id": "ruiva_ondulada", "idade": 43, "etnia": "white American",
      "porte": "small and lightly built",
      "marca": "wavy auburn hair falling past her shoulders and a dense spray "
               "of freckles"},
     {"id": "castanha_franja", "idade": 41, "etnia": "white American",
      "porte": "solid through the shoulders and hips",
-     "marca": "chestnut hair with a heavy fringe and deep lines at the corners "
-              "of her mouth"},
+     "marca": "chestnut hair with a heavy fringe and a beauty mark above her "
+              "lip"},
     {"id": "trancas_lateral", "idade": 36, "etnia": "Black American",
      "porte": "tall and broad-shouldered",
      "marca": "long box braids gathered over one shoulder and a small beauty "
@@ -560,8 +975,8 @@ MULHERES = [
               "her temple"},
     {"id": "alisado_longo", "idade": 34, "etnia": "Black American",
      "porte": "lean and long-limbed",
-     "marca": "long straightened black hair parted in the middle and a fine "
-              "scar on her chin"},
+     "marca": "long straightened black hair parted in the middle and a small "
+              "beauty spot on her chin"},
     {"id": "latina_ondulada", "idade": 37, "etnia": "Latina American",
      "porte": "short and softly built",
      "marca": "long wavy black hair pushed behind one ear and a small mole "
@@ -569,7 +984,74 @@ MULHERES = [
     {"id": "asiatica_lisa", "idade": 40, "etnia": "Asian American",
      "porte": "slim with rounded shoulders",
      "marca": "straight black hair to the shoulders cut with a heavy fringe "
-              "and a faint scar on her chin"},
+              "and a dimple in her chin"},
+    # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*. De 10 para 24.
+    # ⛔ QUATRO ENTRADAS ANTIGAS FORAM REESCRITAS na mesma passada, todas por
+    # ancora de DANO: `a faint scar through one eyebrow`, `deep lines at the
+    # corners of her mouth`, `a fine scar on her chin`, `a faint scar on her
+    # chin`. A `marca` dela e' repetida nos DOIS blocos (lente FT11) e o angulo
+    # a poe colada nele no take 2 — avaria no rosto dela contradiz o payoff.
+    # ⛔ O PISO DE 34 VALE PARA TODA ENTRADA NOVA: o pool bela do repo vai ate'
+    # 33, e sobreposicao de idade derruba o controle do toggle no autoteste.
+    # ⛔ Sem oculos (isencao declarada: LEI DO REF + CENA) e sem tom de pele —
+    # a `_marca_dela` corta tom de pele no MODO BELA, e escrever o que a
+    # montagem vai apagar e' escrever para o lixo.
+    {"id": "loira_ondulada", "idade": 36, "etnia": "white American",
+     "porte": "tall and long-limbed",
+     "marca": "wavy blonde hair falling past her shoulders and a small mole on "
+              "her jaw"},
+    {"id": "castanha_rabo", "idade": 39, "etnia": "white American",
+     "porte": "lean with square shoulders",
+     "marca": "dark chestnut hair in a low ponytail and freckles across her "
+              "cheeks"},
+    {"id": "ruiva_curta", "idade": 42, "etnia": "white American",
+     "porte": "compact and solidly built",
+     "marca": "a copper bob cut just below the jaw and a beauty mark on her "
+              "left cheek"},
+    {"id": "morena_coque", "idade": 34, "etnia": "white American",
+     "porte": "slim with narrow hips",
+     "marca": "dark hair twisted into a high bun and laugh lines at the "
+              "corners of her eyes"},
+    {"id": "loira_escura_franja", "idade": 43, "etnia": "white American",
+     "porte": "full-figured with soft shoulders",
+     "marca": "dark blonde hair with a soft fringe, smooth-skinned, with a "
+              "small mole beside her mouth"},
+    {"id": "grisalha_precoce", "idade": 40, "etnia": "white American",
+     "porte": "average build with narrow shoulders",
+     "marca": "shoulder-length brown hair with a silver streak at the front "
+              "and a dimple in one cheek"},
+    {"id": "trancas_finas", "idade": 35, "etnia": "Black American",
+     "porte": "lean and long-limbed",
+     "marca": "fine braids falling loose down her back and a small gold stud "
+              "in one ear"},
+    {"id": "twists_curtos", "idade": 41, "etnia": "Black American",
+     "porte": "solid through the shoulders and hips",
+     "marca": "short two-strand twists and a beauty spot high on her right "
+              "cheek"},
+    {"id": "coque_alto_preto", "idade": 38, "etnia": "Black American",
+     "porte": "tall and fine-boned",
+     "marca": "hair pulled into a high sleek bun and freckles across her nose"},
+    {"id": "afro_medio", "idade": 42, "etnia": "Black American",
+     "porte": "stout and heavy through the arms",
+     "marca": "a rounded afro kept medium-length, smooth-skinned, with a small "
+              "mole at her temple"},
+    {"id": "latina_coque", "idade": 36, "etnia": "Latina American",
+     "porte": "petite and lightly built",
+     "marca": "black hair in a low knot at her neck and a beauty mark under "
+              "her left eye"},
+    {"id": "latina_lisa", "idade": 42, "etnia": "Latina American",
+     "porte": "broad-shouldered and solidly built",
+     "marca": "long straight dark hair parted in the middle and laugh lines at "
+              "the corners of her mouth"},
+    {"id": "asiatica_curto", "idade": 37, "etnia": "Asian American",
+     "porte": "slim and small-framed",
+     "marca": "black hair cut short at the nape and a small mole on her "
+              "cheekbone"},
+    {"id": "asiatica_rabo", "idade": 43, "etnia": "Asian American",
+     "porte": "average build with a long waist",
+     "marca": "long black hair pulled back into a low ponytail and a dimple in "
+              "her chin"},
 ]
 
 
@@ -1987,11 +2469,21 @@ def autoteste(n=400):
             falhas.append("AMBIENTE %s: a pose poe ele na agua e nao ha' "
                           "clausula `maos` — ele carrega uma caixa de PAPELAO "
                           "nas duas cenas" % a["id"])
-    # ⛔ Os DEZ ambientes sao lista fechada, ditada pelo operador. Se alguem
-    # acrescentar ou tirar um, o autoteste diz — a lista nao e' nossa.
-    if len(AMBIENTES) != 10:
-        falhas.append("AMBIENTES: sao %d e o operador ditou DEZ — a lista e' "
-                      "fechada, nao se inventa nem se resume" % len(AMBIENTES))
+    # ⛔⛔ ESTE CONTROLE MUDOU EM 2026-08-13, E A MUDANCA E' ORDEM DO OPERADOR,
+    # nao discordancia minha. Ele cobrava `== 10` porque os dez ambientes eram
+    # LISTA FECHADA, ditada por ele um a um. A ordem nova e' dele e e' mais
+    # recente: *"aumente o pool de opcoes substancialmente, tambem dos
+    # ambientes"*. Entao o `==` virou PISO: os dez originais continuam no pool,
+    # palavra por palavra, e o gate agora reprova quem ENCOLHER a lista.
+    # ⚠️ O mesmo piso vale para os QUARTOS, que nasceram como 4 ditados + 4 de
+    # `etc` e nunca tiveram controle de tamanho nenhum.
+    if len(AMBIENTES) < 24:
+        falhas.append("AMBIENTES: sao %d e o piso e' 24 (2026-08-13) — os DEZ "
+                      "ditados pelo operador continuam na lista e ninguem os "
+                      "resume" % len(AMBIENTES))
+    if len(QUARTOS) < 24:
+        falhas.append("QUARTOS: sao %d e o piso e' 24 (2026-08-13)"
+                      % len(QUARTOS))
 
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))

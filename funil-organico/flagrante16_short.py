@@ -23,7 +23,9 @@ lugar a oracao de `blood flow` dentro da cena 2. Quem quiser o D1 usa a versao
 longa.
 """
 
+import collections
 import os
+import random
 import re
 import sys
 import types
@@ -401,6 +403,54 @@ AMBIENTES = [
     {"id": "estufa",
      "set": "a backyard greenhouse, potted plants on shelves behind him",
      "bancada": "potting bench", "curto": "greenhouse", "luz": "bright diffused daylight."},
+    # ⭐⭐ + 2026-08-13 — DOZE AMBIENTES NOVOS, ordem do operador: *"aumente o
+    # pool de opcoes substancialmente, tambem dos ambientes"*. 12 -> 24.
+    # ⛔ Cada entrada declara EXATAMENTE as mesmas quatro chaves das doze de
+    # cima, e nenhuma e' opcional: o `curto` volta na cena 5 como "in the same
+    # %s", a `bancada` volta no insert das maos e a `luz` entra duas vezes (uma
+    # capitalizada, outra no meio da frase) — por isso toda `luz` nova comeca em
+    # minuscula e termina em ponto, como as antigas.
+    # ⚠️ Nenhuma repete superficie E luz de outra ao mesmo tempo: doze cozinhas
+    # com nome diferente sao uma cozinha so', e era exatamente o vicio que o
+    # operador mediu em 2026-08-01 no bloco acima.
+    # ⛔ Escopo do D1 (P15) mantido nas doze: superficie de apoio em quadro e
+    # fundo que nao compete com o rosto.
+    {"id": "despensa",
+     "set": "a walk-in pantry, deep shelves of jars and tins behind him",
+     "bancada": "pantry shelf", "curto": "pantry", "luz": "cool strip light from above."},
+    {"id": "alpendre",
+     "set": "the front porch of a house, a white rail and a rocking chair behind him",
+     "bancada": "porch rail table", "curto": "front porch", "luz": "clear morning sun from frame-left."},
+    {"id": "sala_estar",
+     "set": "a living room, a sofa and framed family pictures on the wall behind him",
+     "bancada": "console table", "curto": "living room", "luz": "warm lamp light from frame-right."},
+    {"id": "deck",
+     "set": "a raised backyard deck, a wooden rail and mown lawn behind him",
+     "bancada": "deck bar", "curto": "backyard deck", "luz": "low golden light from frame-right."},
+    {"id": "cozinha_fazenda",
+     "set": "a farmhouse kitchen, open shelves and cast-iron pans hanging behind him",
+     "bancada": "butcher block", "curto": "farmhouse kitchen", "luz": "broad daylight from a wide window behind the camera."},
+    {"id": "marcenaria",
+     "set": "a woodworking shop, clamps on a rack and stacked lumber behind him",
+     "bancada": "assembly table", "curto": "wood shop", "luz": "flat light from a high skylight."},
+    {"id": "pergola",
+     "set": "a paved patio under a wooden pergola, a climbing vine overhead behind him",
+     "bancada": "patio table", "curto": "patio", "luz": "dappled midday light through the slats."},
+    {"id": "den",
+     "set": "a wood-panelled den, framed photographs and a mantel behind him",
+     "bancada": "sideboard cabinet", "curto": "den", "luz": "low warm light from a table lamp."},
+    {"id": "cozinha_apartamento",
+     "set": "a narrow galley kitchen in an apartment, tiled splashback and a fridge behind him",
+     "bancada": "narrow counter", "curto": "galley kitchen", "luz": "flat even light from a single window."},
+    {"id": "entrada",
+     "set": "an entry hall, coat hooks and a tall mirror on the wall behind him",
+     "bancada": "hall console", "curto": "entry hall", "luz": "soft daylight coming in through the open door."},
+    {"id": "cabana",
+     "set": "the main room of a lake cabin, log walls and a window onto open water behind him",
+     "bancada": "plank table", "curto": "lake cabin", "luz": "clear light reflected up off the water."},
+    {"id": "solarium",
+     "set": "a glassed-in sunroom, wicker chairs and a garden beyond the panes behind him",
+     "bancada": "wicker table", "curto": "sunroom", "luz": "bright diffused light through the glass."},
 ]
 
 # F4b — contraste estrutural: o REF SEMPRE tem cabeleira farta, e' barbeado e
@@ -413,7 +463,12 @@ REFS = [
     {"idade": 68, "marca": "thick white hair and a deep cleft in his chin",
      "cabelo": "white", "roupa": "Plain charcoal crew-neck tee shirt.",
      "roupa_curta": "charcoal tee shirt"},
-    {"idade": 64, "marca": "full gray hair and a clean pale scar through his left eyebrow",
+    # ⛔ REESCRITA 2026-08-13 (era `a clean pale scar through his left eyebrow`):
+    # ordem do operador *"melhore a aparencia e shape desses homens"*. Cicatriz
+    # esta' do lado ⛔ da tabela — o gerador a le' como desgaste e devolve o
+    # mendigo que ele reprovou no PLACA 16. A ancora vira uma mecha, que e'
+    # igualmente permanente e igualmente distintiva, sem custo de aparencia.
+    {"idade": 64, "marca": "full gray hair and a single silver streak running through his left eyebrow",
      "cabelo": "gray", "roupa": "Plain olive crew-neck tee shirt.",
      "roupa_curta": "olive tee shirt"},
     {"idade": 70, "marca": "thick silver hair and a prominent dark mole on his left cheekbone",
@@ -453,10 +508,17 @@ REFS = [
     #     escrito la' embaixo: ancora repetida remenda o morphing que o F4b
     #     evita, e os dois aparecem lado a lado no mesmo IMAGE.
     #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
-    {"idade": 74, "marca": "unusually broad square shoulders, thick steel gray hair parted low on one side and a raised white scar across the bridge of his nose",
+    # ⛔ AS DUAS DE BAIXO FORAM REESCRITAS EM 2026-08-13, mesma ordem do
+    # operador (*"melhore a aparencia e shape desses homens"*): traziam
+    # `a raised white scar across the bridge of his nose` e `a small silver scar
+    # splitting his upper lip`. O comentario de 2026-08-02 logo acima ja' dizia
+    # "cicatriz limpa" como se fosse do lado ✅ — nao e'. Cicatriz no rosto puxa
+    # o banco de imagem para o homem castigado; o PORTE (que era o ponto do
+    # bloco) fica intacto nas duas, so' a ancora troca.
+    {"idade": 74, "marca": "unusually broad square shoulders, thick steel gray hair parted low on one side and a small gold stud in his right earlobe",
      "cabelo": "steel gray", "roupa": "Plain mustard yellow crew-neck tee shirt.",
      "roupa_curta": "mustard yellow tee shirt"},
-    {"idade": 58, "marca": "a short compact frame, a full head of tight coppery-brown curls and a small silver scar splitting his upper lip",
+    {"idade": 58, "marca": "a short compact frame, a full head of tight coppery-brown curls and a beauty mark at the outer corner of his right eye",
      "cabelo": "curly", "roupa": "Plain sky blue crew-neck tee shirt.",
      "roupa_curta": "sky blue tee shirt"},
     {"idade": 62, "marca": "a square powerfully built frame, thick dark hair combed up into a high pompadour and one eyebrow gone completely white",
@@ -481,8 +543,12 @@ REFS = [
      "cabelo": "dark",
      "roupa": "Plain rust-red crew-neck tee shirt.",
      "roupa_curta": "rust-red tee shirt"},
+    # ⛔ REESCRITA 2026-08-13 (era `a broad flattened nose`): "achatado" e' a
+    # mesma imagem que `broken nose`, que esta' na lista proibida — o gerador
+    # nao le' a diferenca entre descrever e depreciar. A arquitetura facial fica
+    # (o nariz continua sendo o eixo), so' o adjetivo de dano sai.
     {"idade": 61,
-     "marca": "a thick grey afro worn low and a broad flattened nose",
+     "marca": "a thick grey afro worn low and a broad straight nose with a wide bridge",
      "cabelo": "grey",
      "roupa": "Plain slate-blue crew-neck tee shirt.",
      "roupa_curta": "slate-blue tee shirt"},
@@ -496,20 +562,82 @@ REFS = [
      "cabelo": "salt-and-pepper",
      "roupa": "Plain forest-green crew-neck tee shirt.",
      "roupa_curta": "forest-green tee shirt"},
+    # ⭐⭐ + 2026-08-13 — OITO NARRADORES NOVOS, ordem do operador: *"melhore a
+    # aparencia e shape desses homens"* / *"aumente o pool de opcoes
+    # substancialmente"*. 18 -> 26.
+    # ⛔ ZERO palavra de aprovacao (`handsome`, `rugged`, `chiseled`, `strong
+    # jaw`, `piercing eyes`): elogio no prompt puxa o rosto para a media do
+    # banco de imagem, que e' o mesmo mecanismo pelo qual dizer "not a
+    # celebrity" invoca a celebridade. O que entra e' FEICAO, nunca julgamento.
+    # ⛔ ZERO ancora deteriorada — nada de cicatriz, dente lascado, pele
+    # castigada, olho fundo ou vinco entre as sobrancelhas. As ancoras saudaveis
+    # daqui: sobrancelha cheia e reta, linhas de riso, mecha branca na tempora,
+    # sarda no malar, covinha de um lado so', beleza-marca abaixo da orelha,
+    # olhos claros bem separados, malar alto.
+    # ⛔ ZERO cor de pele e zero etnia: quem injeta e' `ETNIA[pagina]` antes da
+    # marca. O que entra e' TEXTURA (`smooth even skin`, `lightly tanned`,
+    # `light freckles`), que e' saudavel e nao briga com a etnia da pagina.
+    # ⚠️ EIXO `OCULOS` FICA EM 0% AQUI DE PROPOSITO, e a excecao e' o F4b: o
+    # narrador e' cabeleira + barbeado + SEM oculos, a vitima e' careca + bigode
+    # + COM oculos. Sao os tres eixos que sobrevivem ao plano medio e separam os
+    # dois no mesmo quadro. Quem carrega os oculos neste motor e' a VITIMA
+    # (100%) e a MULHER (~27%) — nao o narrador.
+    # ⚠️ Cada entrada aciona PORTE + CABELO + ANCORA (e cinco delas, PELE):
+    # contar entradas nao basta, o que conta e' quantos eixos elas mexem.
+    {"idade": 66,
+     "marca": "a tall broad-chested frame, a thick sandy-blond mane pushed straight back and heavy level brows",
+     "cabelo": "sandy-blond",
+     "roupa": "Plain indigo crew-neck tee shirt.",
+     "roupa_curta": "indigo tee shirt"},
+    {"idade": 57,
+     "marca": "a lean upright build, thick dark hair with a patch of white above his left temple and smooth even skin",
+     "cabelo": "dark",
+     "roupa": "Plain brick red crew-neck tee shirt.",
+     "roupa_curta": "brick red tee shirt"},
+    {"idade": 69,
+     "marca": "a heavy barrel-chested build, a full head of loose white waves and laugh lines that frame a wide easy smile",
+     "cabelo": "white",
+     "roupa": "Plain moss green crew-neck tee shirt.",
+     "roupa_curta": "moss green tee shirt"},
+    {"idade": 60,
+     "marca": "a broad-shouldered athletic frame, close-cropped silver hair over a low straight hairline and light freckles across both cheekbones",
+     "cabelo": "silver",
+     "roupa": "Plain denim blue crew-neck tee shirt.",
+     "roupa_curta": "denim blue tee shirt"},
+    {"idade": 72,
+     "marca": "a long-limbed rangy build, thick ash-gray hair combed to the right and a dimple in his right cheek only",
+     "cabelo": "ash-gray",
+     "roupa": "Plain plum crew-neck tee shirt.",
+     "roupa_curta": "plum tee shirt"},
+    {"idade": 56,
+     "marca": "a solid square-set build, dense light-brown hair with a deep side part, wide-set green eyes and lightly tanned even skin",
+     "cabelo": "light-brown",
+     "roupa": "Plain ochre crew-neck tee shirt.",
+     "roupa_curta": "ochre tee shirt"},
+    {"idade": 64,
+     "marca": "a trim upright frame, thick iron-grey hair in a short brush cut and a small dark beauty spot just below his left ear",
+     "cabelo": "iron-grey",
+     "roupa": "Plain terracotta crew-neck tee shirt.",
+     "roupa_curta": "terracotta tee shirt"},
+    {"idade": 70,
+     "marca": "a deep-chested build heavy through the shoulders, thick snow-white hair long enough to touch the collar, high wide cheekbones and amber-brown eyes",
+     "cabelo": "snow-white",
+     "roupa": "Plain steel blue crew-neck tee shirt.",
+     "roupa_curta": "steel blue tee shirt"},
 ]
 
 VITIMAS = [
-    {"idade": 63, "marca": "bald man with a thick gray mustache and black-framed glasses"},
+    {"idade": 63, "marca": "bald man with a thick gray mustache and black-framed glasses, smooth-skinned"},
     {"idade": 62, "marca": "bald man with a red mustache and wire-rimmed glasses"},
-    {"idade": 65, "marca": "bald man with a white mustache and thick square glasses"},
+    {"idade": 65, "marca": "bald man with a white mustache and thick square glasses, lightly tanned"},
     {"idade": 64, "marca": "bald man with a gray fringe above his ears, a bushy mustache and glasses"},
-    {"idade": 61, "marca": "bald man with a short gray mustache and round wire glasses"},
+    {"idade": 61, "marca": "bald man with a short gray mustache and round wire glasses, freckled across the nose"},
     # + 2026-08-01: o operador viu o mesmo rosto de vitima voltando no lote.
     # Cinco novas, todas carecas de bigode e oculos (F4b).
     {"idade": 66, "marca": "bald man with a horseshoe mustache and heavy tortoiseshell glasses"},
-    {"idade": 59, "marca": "bald man with a thin pencil mustache and gold aviator glasses"},
+    {"idade": 59, "marca": "bald man with a thin pencil mustache and gold aviator glasses, laugh lines at the eyes"},
     {"idade": 67, "marca": "bald man with a bushy salt-and-pepper mustache and half-rim glasses"},
-    {"idade": 68, "marca": "bald man with a drooping gray walrus mustache and rimless glasses"},
+    {"idade": 68, "marca": "bald man with a drooping gray walrus mustache and rimless glasses, smooth-skinned"},
     {"idade": 70, "marca": "bald man with a white handlebar mustache and small oval glasses"},
     # + 2026-08-02: o operador mediu o pool inteiro e viu a MESMA vitima
     # voltando — as 10 acima variam bigode e oculos e mais nada, entao o
@@ -528,11 +656,23 @@ VITIMAS = [
     #     rosto, coroa de ouro, sardas no nariz, argola na orelha. Ancora
     #     repetida entre narrador e vitima remenda o morphing que o F4b evita.
     #   · zero mencao a etnia/cor: o motor injeta ETNIA[pagina] antes da marca.
-    {"idade": 58, "marca": "bald man, heavy-set and round-faced, with a chevron mustache streaked white on the left side and thick-lensed glasses"},
-    {"idade": 72, "marca": "bald man, thin and deeply lined, with a dark mole beside his mouth, a sparse white mustache and half-moon glasses"},
-    {"idade": 60, "marca": "bald man, short and barrel-chested, with a coin-sized dark birthmark on his crown, a bristly steel-gray mustache and boxy clear-framed glasses"},
-    {"idade": 69, "marca": "bald man, tall and bony, with a clean scar across his scalp, a close-cropped charcoal mustache and narrow rectangular glasses on a beaded cord"},
-    {"idade": 57, "marca": "bald man, stocky and sun-weathered, with a clean scar along his right jawline, a wide brush mustache and heavy black-framed bifocal glasses"},
+    {"idade": 58, "marca": "bald man, heavy-set and round-faced, with a chevron mustache streaked white on the left side and thick-lensed glasses, lightly tanned"},
+    # ⛔⛔ AS TRES DE BAIXO FORAM REESCRITAS EM 2026-08-13. Ordem do operador:
+    # *"melhore a aparencia e shape desses homens"* — e a vitima e' homem em
+    # quadro tambem, no MESMO IMAGE que o narrador. Elas traziam `thin and
+    # deeply lined`, `tall and bony`, `a clean scar across his scalp`, `stocky
+    # and sun-weathered` e `a clean scar along his right jawline`: cinco itens
+    # do lado ⛔ da tabela, e juntos entregam o mendigo que o operador reprovou
+    # no PLACA 16. ⭐ O que a cena precisa da vitima e' HUMILHACAO (cabeca
+    # baixa, ombros caidos, boca fechada), e isso ja' esta' no TAKE — nao no
+    # rosto. Vitima castigada nao aumenta a dor: derruba a credibilidade do
+    # video inteiro, porque o espectador nao se ve' nela.
+    # ⚠️ O F4b fica intacto nas tres (careca + bigode + oculos) e o PORTE, que
+    # era o ponto do bloco de 2026-08-02, tambem — so' o dano sai.
+    {"idade": 72, "marca": "bald man, lean and long-faced, with a dark mole beside his mouth, a sparse white mustache and half-moon glasses"},
+    {"idade": 60, "marca": "bald man, short and barrel-chested, with a coin-sized dark birthmark on his crown, a bristly steel-gray mustache and boxy clear-framed glasses, freckled across the nose"},
+    {"idade": 69, "marca": "bald man, tall and narrow-shouldered, with a wide flat brow, a close-cropped charcoal mustache and narrow rectangular glasses on a beaded cord"},
+    {"idade": 57, "marca": "bald man, stocky and thick-necked, with a squared-off chin and a wide mouth, a wide brush mustache and heavy black-framed bifocal glasses, laugh lines at the eyes"},
     {"idade": 71, "marca": "bald man, broad-shouldered and heavy through the middle, with a dark birthmark at his left temple, a full silver mustache and clip-on shades over his glasses"},
 ]
 
@@ -577,11 +717,16 @@ MULHERES = [
     #     tres aparecem no mesmo quadro e ancora identica remenda o morphing
     #     que o F4b evita.
     #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
+    # ⛔ REESCRITA 2026-08-13 (era `a fine scar through her left eyebrow`, nos
+    # DOIS campos): mesma ordem do operador que reescreveu os homens acima.
+    # A ancora tinha de trocar nos dois campos ao mesmo tempo — `hook` e
+    # `payoff` sao a cena 1 e a cena 4 da MESMA mulher, e ancora que so' troca
+    # de um lado e' rosto que muda no meio do video.
     {"idade": 52,
      "hook": ("woman with dark hair in a high twisted knot, a tall "
-              "straight-backed frame and a fine scar through her left eyebrow"),
-     "payoff": ("with dark hair in a high twisted knot and a fine scar through "
-                "her left eyebrow, in a forest green dress")},
+              "straight-backed frame and heavy level brows over wide dark eyes"),
+     "payoff": ("with dark hair in a high twisted knot and heavy level brows "
+                "over wide dark eyes, in a forest green dress")},
     {"idade": 69,
      "hook": ("woman with white hair combed straight back, thick round glasses "
               "and a dark mole beside her nostril"),
@@ -592,11 +737,18 @@ MULHERES = [
               "glasses low on her nose and a deep dimple in her right cheek"),
      "payoff": ("with a thin white braid down her back, narrow reading glasses "
                 "and a deep dimple in her right cheek, in a mustard blouse")},
+    # ⛔⛔ REESCRITA 2026-08-13 (era `a gap between her front teeth`, nos dois
+    # campos): dente nunca e' ancora — e' a regiao que o gerador mais exagera, e
+    # o CLEAN ja' pagou essa licao com foto de campo (CL25: `gap` virou dente
+    # faltando). O eixo que a entrada trazia era o PORTE (ombros largos), e ele
+    # fica; a ancora vai para a boca, que o plano medio ainda le' e que
+    # nenhum REF nem VITIMA deste arquivo usa (ancora repetida entre as tres
+    # pessoas do mesmo quadro remenda justamente o morphing que o F4b evita).
     {"idade": 53,
      "hook": ("woman with a heavy gray-streaked ponytail, broad shoulders and "
-              "a gap between her front teeth"),
-     "payoff": ("with a heavy gray-streaked ponytail and a gap between her "
-                "front teeth, in a denim shirt dress")},
+              "a pronounced Cupid's bow and a full lower lip"),
+     "payoff": ("with a heavy gray-streaked ponytail, a pronounced Cupid's bow "
+                "and a full lower lip, in a denim shirt dress")},
     {"idade": 68,
      "hook": ("woman with wispy silver hair in a loose bun, gold-rimmed "
               "glasses on a beaded chain and sun freckles across her cheeks"),
@@ -607,11 +759,84 @@ MULHERES = [
               "birthmark high on her right cheek"),
      "payoff": ("with a tight iron-gray perm and a small birthmark high on her "
                 "right cheek, in a copper dress")},
+    # ⛔ REESCRITA 2026-08-13 (era `a sharply hooked nose`, nos dois campos):
+    # nariz adunco nao esta' na lista de proibidos ao pe' da letra, mas e' a
+    # mesma familia — o gerador o le' como caricatura de velhice e devolve
+    # exatamente o rosto que o operador reprovou. A arquitetura do nariz
+    # continua sendo a ancora; sai so' o adjetivo que deprecia.
     {"idade": 67,
      "hook": ("woman with a thick gray shag cut, a thin wiry build and a "
-              "sharply hooked nose"),
-     "payoff": ("with a thick gray shag cut, a thin wiry build and a sharply "
-                "hooked nose, in an ivory blouse")},
+              "long straight nose with a fine bridge"),
+     "payoff": ("with a thick gray shag cut, a thin wiry build and a long "
+                "straight nose with a fine bridge, in an ivory blouse")},
+    # ⭐⭐ + 2026-08-13 — NOVE MULHERES NOVAS, ordem do operador: *"aumente o
+    # pool de opcoes substancialmente"*. 17 -> 26.
+    # ⛔ A ANCORA E' A MESMA NOS DOIS CAMPOS, sempre: `hook` e' a cena 1 e
+    # `payoff` e' a cena 4 da MESMA mulher. Ancora que so' aparece de um lado e'
+    # rosto que troca no meio do video (P6).
+    # ⛔ Nenhuma ancora daqui repete ancora dos REFS nem das VITIMAS deste
+    # arquivo: os tres aparecem no MESMO quadro e ancora identica remenda o
+    # morphing que o F4b existe para evitar.
+    # ⛔ Zero deterioracao (sem cicatriz, sem dente, sem pele castigada, sem
+    # nariz adunco) e zero cor de pele — a etnia entra por `ETNIA[pagina]` antes
+    # da descricao. O que varia de textura e' saudavel: sardas, pele lisa,
+    # levemente bronzeada.
+    # ⚠️ TRES DAS NOVE USAM OCULOS, de proposito: com as quatro que ja' havia o
+    # eixo fecha em 7 de 26 (~27%), que e' a faixa pedida. E' aqui que o eixo
+    # `oculos` gira neste motor — no narrador ele e' 0% por causa do F4b.
+    # ⚠️ Cada entrada mexe em PORTE + CABELO + ANCORA; seis delas trazem porte
+    # explicito, que era o eixo mais raso do pool antigo.
+    {"idade": 55,
+     "hook": ("woman with a sleek dark chignon, a tall slender frame and high "
+              "arched brows"),
+     "payoff": ("with a sleek dark chignon and high arched brows, in a "
+                "sapphire blue dress")},
+    {"idade": 51,
+     "hook": ("woman with long honey-brown hair loose past her shoulders, a "
+              "full figure and a small gold stud in her left nostril"),
+     "payoff": ("with long honey-brown hair loose past her shoulders and a "
+                "small gold stud in her left nostril, in a terracotta wrap "
+                "dress")},
+    {"idade": 70,
+     "hook": ("woman with soft white hair set in short waves, burgundy cat-eye "
+              "glasses and a shallow cleft in her chin"),
+     "payoff": ("with soft white hair set in short waves, burgundy cat-eye "
+                "glasses and a shallow cleft in her chin, in a dove grey "
+                "dress")},
+    {"idade": 50,
+     "hook": ("woman with a thick dark bob and a blunt fringe, a petite frame, "
+              "smooth clear skin and almond-shaped hazel eyes"),
+     "payoff": ("with a thick dark bob and a blunt fringe and almond-shaped "
+                "hazel eyes, in an olive green dress")},
+    {"idade": 71,
+     "hook": ("woman with fine white hair pinned in a French twist, a small "
+              "round frame and a beauty mark below her right eye"),
+     "payoff": ("with fine white hair pinned in a French twist and a beauty "
+                "mark below her right eye, in a chocolate brown dress")},
+    {"idade": 72,
+     "hook": ("woman with silver hair in a short bob with a deep side part, "
+              "oversized amber-tinted glasses and laugh lines around a wide "
+              "open smile"),
+     "payoff": ("with silver hair in a short bob with a deep side part, "
+                "oversized amber-tinted glasses and laugh lines around a wide "
+                "open smile, in a wine-red blouse")},
+    {"idade": 58,
+     "hook": ("woman with long auburn hair pinned back on one side, a sturdy "
+              "broad-shouldered build, lightly tanned skin and a strong low "
+              "hairline over a broad forehead"),
+     "payoff": ("with long auburn hair pinned back on one side and a strong "
+                "low hairline over a broad forehead, in a turquoise dress")},
+    {"idade": 62,
+     "hook": ("woman with tight silver-white coils cut close to the head, "
+              "black cat-eye glasses and a dimple that shows only on the left"),
+     "payoff": ("with tight silver-white coils cut close to the head, black "
+                "cat-eye glasses and a dimple that shows only on the left, in "
+                "a cream linen dress")},
+    {"idade": 66,
+     "hook": ("woman with a thick chestnut braid coiled at the nape, a slim "
+              "upright frame and pale grey eyes under dark lashes"),
+     "payoff": ("with a thick chestnut braid coiled at the nape and pale grey "
+                "eyes under dark lashes, in a dusty pink dress")},
 ]
 
 # ---------------------------------------------------------------------------
@@ -1969,3 +2194,246 @@ def resumo_pt(spec):
             "causa, o truque, o follow, e o CTA por último. Elenco de pele %s."
             % (PT_OCASIAO.get(spec["ocasiao"]["id"], "No evento"),
                spec["prop"].get("pt", "o prop"), et))
+
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ AUTOTESTE — o aceite deste motor deixa de ser RELATO e vira MEDICAO
+# ---------------------------------------------------------------------------
+# ⚠️ ESTE MOTOR NASCEU SEM `--autoteste` e ficou assim ate' 2026-08-13, quando os
+# pools de gente e de ambiente foram ampliados por ordem do operador (*"melhore a
+# aparencia e shape desses homens"* / *"aumente o pool de opcoes
+# substancialmente, tambem dos ambientes"*). Pool grande sem sonda e' pior que
+# pool pequeno: o vicio volta calado e ninguem ve' — foi exatamente assim que a
+# mesma cara e o mesmo set voltaram no lote em 2026-08-01 e 2026-08-02.
+# ⛔ `0 ERRO` num lote grande e' SUSPEITA, nao aprovacao: pode ser motor limpo ou
+# regra morta. Por isso cada trava tem um sabotador logo abaixo, e o sabotador
+# tem de CHEGAR onde a regra olha (licoes §16) — e' por isso que `_medir_pools`
+# recebe as listas por ARGUMENTO em vez de ler o global.
+_PROIBIDO_APARENCIA = (
+    "scar", "broken nose", "chipped tooth", "missing tooth", "gap between",
+    "sun damage", "sun-weathered", "weathered", "ruddy", "thin skin",
+    "loose skin", "age spot", "sunken", "gaunt", "bony", "hollow",
+    "leathery", "deeply lined", "crease between",
+)
+# ⚠️ `worn` NAO entra na lista acima, e a ausencia e' deliberada: neste pool a
+# palavra e' PENTEADO (`a thick grey afro worn low`), nao desgaste. Token
+# polissemico numa sonda gera falso positivo, e sonda que grita a' toa ensina o
+# operador a ignorar o autoteste — que e' o custo que a §16 cobra.
+_APROVACAO = (
+    "handsome", "chiseled", "rugged", "strong jaw", "piercing eyes",
+    "good-looking", "attractive", "not a celebrity", "not famous",
+    "not a model",
+)
+
+
+def _medir_pools(ambientes, refs, vitimas, mulheres):
+    """As travas de POOL deste motor, medidas — nunca declaradas.
+
+    ⛔ As quatro listas entram por ARGUMENTO de proposito: e' o que deixa o
+    sabotador plantar uma entrada suja sem encostar no motor de verdade. Trava
+    que so' sabe olhar o global nao pode ser testada, e trava nao testada e'
+    decoracao.
+    """
+    achados = []
+    for nome, pool, piso in (("AMBIENTES", ambientes, 24), ("REFS", refs, 26),
+                             ("VITIMAS", vitimas, 16), ("MULHERES", mulheres, 26)):
+        if len(pool) < piso:
+            achados.append("pool %s com %d entradas (piso %d)"
+                           % (nome, len(pool), piso))
+        txt = [str(x) for x in pool]
+        for x in sorted({t for t in txt if txt.count(t) > 1}):
+            achados.append("pool %s tem entrada REPETIDA: %s" % (nome, x[:70]))
+        for x in txt:
+            baixo = x.lower()
+            for t in _PROIBIDO_APARENCIA:
+                if t in baixo:
+                    achados.append("pool %s: ancora DETERIORADA %r em %s"
+                                   % (nome, t, x[:60]))
+            for t in _APROVACAO:
+                if t in baixo:
+                    achados.append("pool %s: palavra de aprovacao/negacao %r em "
+                                   "%s" % (nome, t, x[:60]))
+
+    # ⛔ F4b, os tres eixos que sobrevivem ao plano medio: o narrador e'
+    # cabeleira + barbeado + SEM oculos, a vitima e' careca + bigode + COM
+    # oculos. Sem isto os dois viram o mesmo homem no mesmo quadro.
+    for r in refs:
+        marca = r["marca"].lower()
+        for t in ("bald", "glasses", "mustache", "moustache"):
+            if t in marca:
+                achados.append("REF com %r na marca — o F4b da' isso a' VITIMA, "
+                               "nunca ao narrador: %s" % (t, r["marca"][:60]))
+        # ⚠️ `cabelo` vira `The {cabelo}-haired man` dentro do AGENCIA_TAKE:
+        # virgula, ponto ou espaco sobrando ali sai narrado em voz alta.
+        cab = r["cabelo"]
+        if cab != cab.strip() or "," in cab or "." in cab:
+            achados.append("REF com `cabelo` que nao cola em `{}-haired`: %r"
+                           % cab)
+    for v in vitimas:
+        marca = v["marca"].lower()
+        for t in ("bald", "glasses"):
+            if t not in marca:
+                achados.append("VITIMA sem %r — o F4b exige careca + bigode + "
+                               "oculos: %s" % (t, v["marca"][:60]))
+        if "mustache" not in marca and "moustache" not in marca:
+            achados.append("VITIMA sem bigode — o F4b exige careca + bigode + "
+                           "oculos: %s" % v["marca"][:60])
+
+    # ⭐ O EIXO `OCULOS` GIRA NA MULHER, e so' nela: no narrador o F4b o zera e
+    # na vitima ele e' 100%. Se a faixa cair aqui, o motor inteiro fica sem esse
+    # eixo — que e' o defeito que o `medir_personagens.py` mede no repo todo.
+    if mulheres:
+        com = sum(1 for w in mulheres if "glasses" in w["hook"])
+        if not 0.20 <= com / float(len(mulheres)) <= 0.35:
+            achados.append("MULHERES com oculos em %.0f%% (faixa 20-35%%) — e' "
+                           "o unico pool deste motor onde o eixo pode girar"
+                           % (100.0 * com / len(mulheres)))
+    for w in mulheres:
+        # ⚠️ Forma da frase montada: `a 58-year-old white American WOMAN WITH
+        # ... laughs` na cena 1 e `A 58-year-old white American woman WITH ...
+        # sits` na cena 4. Entrada fora da forma sai agramatical no video.
+        if not w["hook"].startswith("woman with "):
+            achados.append("MULHER com `hook` fora da forma `woman with ...`: "
+                           "%s" % w["hook"][:50])
+        if not w["payoff"].startswith("with "):
+            achados.append("MULHER com `payoff` fora da forma `with ...`: %s"
+                           % w["payoff"][:50])
+
+    for a in ambientes:
+        for k in ("id", "set", "bancada", "curto", "luz"):
+            if not a.get(k):
+                achados.append("AMBIENTE %s sem a chave %r"
+                               % (a.get("id", "?"), k))
+        luz = a.get("luz", "")
+        # ⚠️ A `luz` entra DUAS vezes na montagem: capitalizada na IMAGE 02 e
+        # crua no meio da frase da IMAGE 03. Por isso o contrato e' minuscula no
+        # comeco e ponto no fim — quebrar isso sai como frase partida no prompt.
+        if luz and (not luz.endswith(".") or luz[0] != luz[0].lower()):
+            achados.append("AMBIENTE %s com `luz` fora do contrato (minuscula "
+                           "no inicio + ponto no fim): %r" % (a.get("id"), luz))
+    return achados
+
+
+def autoteste(n=600):
+    """Os pools e as invariantes deste motor, medidos num lote de verdade.
+
+    ⚠️ A cobertura e' a metade que importa depois de uma ampliacao: pool grande
+    com sorteio que nunca alcanca metade dele e' pool pequeno com nome grande.
+    """
+    falhas = list(_medir_pools(AMBIENTES, REFS, VITIMAS, MULHERES))
+    vistos = collections.defaultdict(set)
+
+    for seed in range(n):
+        spec = sortear("joe", random.Random(seed), {})
+        blocos = montar(spec)
+        for tipo, msg in lint(spec, blocos):
+            if tipo == "ERRO":
+                falhas.append("seed %d (%s): %s"
+                              % (seed, spec["ambiente"]["id"], msg))
+        vistos["ambiente"].add(spec["ambiente"]["id"])
+        vistos["ref"].add(spec["ref"]["marca"])
+        vistos["vitima"].add(spec["vitima"]["marca"])
+        vistos["mulher"].add(spec["mulher"]["hook"])
+
+    for eixo, pool in (("ambiente", AMBIENTES), ("ref", REFS),
+                       ("vitima", VITIMAS), ("mulher", MULHERES)):
+        if len(vistos[eixo]) != len(pool):
+            falhas.append("%s: %d de %d nunca sorteados em %d videos"
+                          % (eixo, len(pool) - len(vistos[eixo]), len(pool), n))
+
+    # ---- CONTROLES POSITIVOS: cada trava SABE reprovar? --------------------
+    ctrl = []
+    _sujo = dict(REFS[0])
+    _sujo["marca"] = "full silver hair and a clean pale scar through his left eyebrow"
+    if not any("DETERIORADA" in m
+               for m in _medir_pools(AMBIENTES, REFS + [_sujo], VITIMAS, MULHERES)):
+        ctrl.append("a sonda de aparencia NAO acusa `scar` plantado no REFS")
+    _elogio = dict(REFS[0])
+    _elogio["marca"] = "a handsome face under thick silver hair"
+    if not any("aprovacao" in m
+               for m in _medir_pools(AMBIENTES, REFS + [_elogio], VITIMAS, MULHERES)):
+        ctrl.append("a sonda NAO acusa palavra de aprovacao plantada no REFS")
+    _careca = dict(REFS[0])
+    _careca["marca"] = "bald man with a gray mustache and square glasses"
+    if not any("F4b" in m
+               for m in _medir_pools(AMBIENTES, REFS + [_careca], VITIMAS, MULHERES)):
+        ctrl.append("a sonda NAO acusa narrador careca/de oculos (F4b)")
+    _vit = dict(VITIMAS[0])
+    _vit["marca"] = "a man with a full head of hair"
+    if not any("VITIMA sem" in m
+               for m in _medir_pools(AMBIENTES, REFS, VITIMAS + [_vit], MULHERES)):
+        ctrl.append("a sonda NAO acusa vitima sem careca/bigode/oculos (F4b)")
+    _amb = dict(AMBIENTES[0])
+    _amb["id"], _amb["luz"] = "sabotador", "Warm lamp light"
+    if not any("fora do contrato" in m
+               for m in _medir_pools(AMBIENTES + [_amb], REFS, VITIMAS, MULHERES)):
+        ctrl.append("a sonda NAO acusa `luz` capitalizada e sem ponto final")
+    if not any("REPETIDA" in m
+               for m in _medir_pools(AMBIENTES, REFS + [REFS[0]], VITIMAS, MULHERES)):
+        ctrl.append("a sonda NAO acusa entrada REPETIDA no pool")
+    # ⚠️ E o controle NEGATIVO, que fecha o par: o pool limpo nao pode ser
+    # acusado. Regra que reprova tudo nunca foi testada.
+    if _medir_pools(AMBIENTES, REFS, VITIMAS, MULHERES):
+        ctrl.append("o pool limpo esta' sendo reprovado pela propria sonda")
+
+    print("AMBIENTES %d | REFS %d | VITIMAS %d | MULHERES %d | %d videos"
+          % (len(AMBIENTES), len(REFS), len(VITIMAS), len(MULHERES), n))
+    print("vistos: ambientes %d/%d | refs %d/%d | vitimas %d/%d | mulheres %d/%d"
+          % (len(vistos["ambiente"]), len(AMBIENTES),
+             len(vistos["ref"]), len(REFS),
+             len(vistos["vitima"]), len(VITIMAS),
+             len(vistos["mulher"]), len(MULHERES)))
+    print("oculos: narrador 0%% (F4b) | vitima 100%% (F4b) | mulher %.0f%%"
+          % (100.0 * sum(1 for w in MULHERES if "glasses" in w["hook"])
+             / len(MULHERES)))
+
+    if ctrl:
+        # ⛔ ASCII de proposito: o console do Windows e' cp1252 e o `⛔` levanta
+        # UnicodeEncodeError — justamente na hora em que o relatorio importa.
+        print("\n>> O AUTOTESTE ESTA' CEGO:")
+        for c in ctrl:
+            print("   %s" % c)
+    if falhas:
+        print("\n>> %d FALHA(S):" % len(falhas))
+        for f in falhas[:20]:
+            print("   %s" % f)
+    if not falhas and not ctrl:
+        print("\nAUTOTESTE OK - e os controles reprovam quando devem.")
+    return 1 if (falhas or ctrl) else 0
+
+
+def main():
+    import argparse
+    ap = argparse.ArgumentParser(description="Randomizador do agente FLAGRANTE 16")
+    ap.add_argument("--autoteste", action="store_true",
+                    help="mede os pools e as invariantes do motor (com controles)")
+    ap.add_argument("--pagina", choices=sorted(ETNIA))
+    ap.add_argument("--n", type=int, default=1)
+    ap.add_argument("--seed", type=int)
+    ap.add_argument("--dry-run", action="store_true")
+    a = ap.parse_args()
+    if a.autoteste:
+        return autoteste()
+    if not a.pagina:
+        ap.error("--pagina obrigatorio")
+
+    seed = a.seed if a.seed is not None else random.randrange(10 ** 6)
+    rng = random.Random(seed)
+    led = _carregar_ledger()
+    for _ in range(a.n):
+        spec = sortear(a.pagina, rng, led)
+        blocos = montar(spec)
+        print("=" * 72)
+        print(resumo_pt(spec))
+        # ⚠️ `sorted` agrupa BLOCO 0, depois todos os IMAGE, depois todos os
+        # TAKE — que e' o formato de entrega do repo. Intercalar quebra a
+        # colagem no AdBatch.
+        for k in sorted(blocos):
+            print("\n" + blocos[k])
+        if not a.dry_run:
+            _gravar_ledger(led, spec)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

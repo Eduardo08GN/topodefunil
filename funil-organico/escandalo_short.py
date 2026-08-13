@@ -551,8 +551,13 @@ NARRADORAS = [
     {"id": "loira_covinha", "idade": 33,
      "marca": "a trim athletic build with a defined waist, long honey-blonde hair and a deep dimple in her right cheek",
      "roupa": "a fitted black t-shirt tucked into high-waisted jeans"},
+    # ⚠️ 2026-08-13: a FALHA ENTRE OS DENTES saiu. O cabecalho acima a listava
+    # como ancora permitida desde 2026-08-04, e ela e' da mesma familia do
+    # dente lascado que fez o operador reprovar o lote do PLACA 16 (*"esses
+    # caras tao parecendo mendigo"*). A ancora continua — so' que do lado
+    # bonito, que e' o unico lado que a LEI DO REF aceita.
     {"id": "rabo_alto", "idade": 30,
-     "marca": "a lean dancer's build with long limbs, jet-black hair in a high slicked-back ponytail and a wide gap between her front teeth",
+     "marca": "a lean dancer's build with long limbs, jet-black hair in a high slicked-back ponytail and a small beauty mark at the outer corner of her left eye",
      "roupa": "a cropped grey sweatshirt cut off above the waist"},
     {"id": "tranca_caixa", "idade": 31,
      "marca": "a toned swimmer's build with square shoulders, waist-length box braids and full lips over a strong even smile",
@@ -603,6 +608,50 @@ NARRADORAS = [
     {"id": "cornrows_forte", "idade": 35,
      "marca": "a solidly athletic build with cut arms, cornrows running to the nape and smooth clear skin over high round cheekbones",
      "roupa": "a cropped scarlet knit top and a gold cuff"},
+    # -----------------------------------------------------------------------
+    # + 2026-08-13: OITO narradoras novas (20 -> 28). Ordem do operador:
+    # *"melhore a aparencia e shape desses homens"* e *"aumente o pool de
+    # opcoes substancialmente, tambem dos ambientes"*. ⚠️ Vinte entradas com
+    # um sorteio que so' evita as 3 ultimas devolvem a mesma cara a cada
+    # quatro videos, e quem ve o lote inteiro de uma vez e' o operador.
+    # ⛔ AS TRAVAS DO CABECALHO VALEM SEM EXCECAO nas oito: 28-35 anos, PORTE
+    # em 100%, ZERO oculos (a excecao do `medir_personagens` existe por
+    # ordem — oculos de leitura brigam frontalmente com a LEI DO REF), ZERO
+    # grisalho, ZERO pele castigada, ancora facial sempre SINAL DE BELEZA.
+    # ⛔ Zero `scar`, `gap between teeth`, `sun spots`, `weathered`, `sunken`:
+    # e' a lista que ja' custou lote no PLACA 16 e nao e' negociavel.
+    # ⛔ Zero cor de pele — a etnia vem da PAGINA e ja' entra na frase montada;
+    # escrever cor aqui poe duas vozes no mesmo sintagma e o gerador inventa.
+    # ⚠️ Os quatro eixos que o medidor le' giram nas oito: cabelo (mecha,
+    # pixie, ondas, bantu knots, trancado, blunt cut, coils, liso), porte
+    # (lean, compact, tall, firm, broad-shouldered, short powerful), pele
+    # (smooth-skinned, freckles, lightly tanned) e ancora (streak, dimple,
+    # hoop, beauty mark, mole, cleft).
+    # -----------------------------------------------------------------------
+    {"id": "mecha_platina", "idade": 30,
+     "marca": "a lean athletic build with cut shoulders, smooth-skinned and clear, long dark hair with one bleached-platinum streak swept back from her left temple",
+     "roupa": "a cropped ink-blue rib tank and a fine gold chain"},
+    {"id": "pixie_cobre", "idade": 29,
+     "marca": "a compact strong build with a narrow waist, a short copper pixie cut swept off the forehead, freckles over her cheekbones and a single dimple on the left",
+     "roupa": "a cropped stone-grey tank top and small gold studs"},
+    {"id": "ondas_castanhas", "idade": 32,
+     "marca": "a tall athletic frame with long legs, smooth-skinned, loose chestnut hair falling in soft waves parted low and a deep dimple in her left cheek",
+     "roupa": "a cropped forest-green wrap top and thin gold bangles"},
+    {"id": "bantu_knots", "idade": 31,
+     "marca": "a firm compact build with toned shoulders, lightly tanned, dark hair set in bantu knots in even rows and a small gold hoop through her left nostril",
+     "roupa": "a cropped ivory rib tank and a flat gold collar"},
+    {"id": "rabo_trancado", "idade": 28,
+     "marca": "a strong build with square shoulders, a long braided ponytail pulled high, lightly tanned, and a beauty mark just below her right eye",
+     "roupa": "a cropped plum knit top and gold drop earrings"},
+    {"id": "loira_manteiga", "idade": 35,
+     "marca": "a broad-shouldered athletic build with a flat midriff, freckled across the nose, butter-blonde hair cut blunt at the shoulder, a widow's peak and a small mole above her left brow",
+     "roupa": "a fitted white tee tucked into high-waisted jeans"},
+    {"id": "coils_puff", "idade": 33,
+     "marca": "a trim athletic build with a narrow waist, smooth-skinned, dark hair in tight coils gathered back into a low puff and a small cleft in her chin",
+     "roupa": "a cropped rust rib tank and a slim gold watch"},
+    {"id": "liso_colarinho", "idade": 34,
+     "marca": "a short powerful build with defined arms, glossy dark hair cut straight at the collarbone, lightly tanned and a small beauty mark at the corner of her mouth",
+     "roupa": "a cropped teal knit top and a gold cuff"},
 ]
 
 # ⭐ [D2]/[D4] O HOMEM — o que REAGE no hook e SEGURA A PROVA na cena 3. Dois
@@ -1193,6 +1242,65 @@ CENARIOS = [
      "set": "a modern American kitchen with matte black cabinets and a subway-tile wall, a small US flag in a pen cup beside the toaster",
      "re_ancora": "the same matte black kitchen with the subway-tile wall, the small US flag still in the pen cup beside the toaster",
      "luz": "cool even daylight from frame-right."},
+    # -----------------------------------------------------------------------
+    # + 2026-08-13: NOVE ambientes novos (15 -> 24), e os dois irmaos voltam a
+    # ter o MESMO conjunto de ids. Ordem do operador: *"aumente o pool de
+    # opcoes substancialmente, tambem dos ambientes"*.
+    # ⚠️⚠️ OS CINCO PRIMEIROS SAO OS DO `escandalo16_short` (o bloco ES19 de
+    # 2026-08-10, que nasceu so' la'): os irmaos tinham divergido em 20 x 15
+    # e ninguem sabia qual era a fonte da verdade. Igualados POR CIMA.
+    # ⛔ Eles entram SEM a chave `prep`: la' o take 2 filtra o cenario por ela
+    # (`[c for c in CENARIOS if c.get("prep")]`) e aqui esse filtro nao
+    # existe. Chave que o pool nao usa e' chave que a proxima edicao acha que
+    # e' regra — a entrada nova declara exatamente as chaves das vizinhas.
+    # ⚠️ CADA UMA TRAZ O AMBIENTE INTEIRO, no mesmo nivel das vizinhas: `set`
+    # com superficie + dois objetos de leitura + a BANDEIRA, `re_ancora` que
+    # amarra as cenas 2 e 3 a' 1 pelo traco mais reconhecivel + a bandeira, e
+    # `luz` propria.
+    # ⛔ ES13: a bandeira sai por `a|an|the [small|large] US flag` — nada de
+    # adjetivo no meio, senao a clausula NAO sai no sorteio sem bandeira.
+    # ⛔ ES14: zero planta, zero carpete, zero caixa triangular de bandeira —
+    # por isso `clay jugs` e nao `clay pots` no rancho: `pot` puxa `pot plant`.
+    # -----------------------------------------------------------------------
+    {"id": "cozinha_azulejo", "bancada": "counter", "curto": "kitchen",
+     "set": "an American kitchen with white square tile running up the wall behind the counter, a dish rack by the sink and a US flag decal on the window glass",
+     "re_ancora": "the same tiled kitchen, the dish rack by the sink and the US flag decal still on the window glass",
+     "luz": "bright flat daylight through the window over the counter."},
+    {"id": "bancada_acougue", "bancada": "butcher block", "curto": "kitchen",
+     # ⚠️ `a US flag`, nunca `a FOLDED US flag`: o recorte de remocao do
+     # `short_comum` aceita so' `a|an|the [small|large] US flag`, e com o
+     # adjetivo no meio a clausula NAO sai no sorteio "sem bandeira".
+     "set": "a country American kitchen built around a heavy butcher block table, cast iron pans hanging on the wall and a US flag in a glass case on the shelf",
+     "re_ancora": "the same butcher block kitchen, the cast iron pans on the wall and the US flag still in its case",
+     "luz": "warm low daylight from a single window frame-left."},
+    {"id": "cozinha_verao", "bancada": "prep counter", "curto": "cook porch",
+     "set": "a screened summer cook porch with a long prep counter, jars of preserves on an open shelf and a US flag hanging from a bracket by the screen door",
+     "re_ancora": "the same screened cook porch, the jars of preserves on the shelf and the US flag still on its bracket",
+     "luz": "soft shaded daylight coming through the screens."},
+    {"id": "porao_bar", "bancada": "bar top", "curto": "basement bar",
+     "set": "a finished American basement with a home bar, a row of stools and shelves of glasses, a US flag pinned flat on the panelled wall",
+     "re_ancora": "the same basement bar with the shelves of glasses, the US flag still pinned flat on the panelled wall",
+     "luz": "warm light from two hanging bulbs over the bar."},
+    {"id": "cozinha_apartamento", "bancada": "galley counter", "curto": "kitchen",
+     "set": "a narrow apartment galley kitchen with pale cabinets on both sides and a city window at the end, a US flag magnet on the fridge",
+     "re_ancora": "the same narrow galley kitchen with the city window at the end, the US flag magnet still on the fridge",
+     "luz": "flat daylight from the window at the end of the galley."},
+    {"id": "despensa", "bancada": "prep counter", "curto": "pantry",
+     "set": "a walk-in pantry off an American kitchen with deep open shelves of glass jars, a narrow prep counter down one side and a US flag pinned to the edge of a shelf",
+     "re_ancora": "the same pantry off the kitchen, the deep shelves of glass jars behind her and the US flag still pinned to the shelf edge",
+     "luz": "warm overhead light with daylight spilling in from the kitchen door."},
+    {"id": "cozinha_praia", "bancada": "counter", "curto": "kitchen",
+     "set": "a bright coastal American kitchen with white beadboard cabinets, a window onto a wooden deck and a US flag on a short pole by the door",
+     "re_ancora": "the same coastal kitchen, the wooden deck through the window and the US flag still on its short pole by the door",
+     "luz": "high clean daylight bouncing off the white cabinets."},
+    {"id": "sala_jantar", "bancada": "dining table", "curto": "dining room",
+     "set": "an American dining room with a long oak table, a sideboard of stacked plates against the wall and a US flag on a short pole in the corner",
+     "re_ancora": "the same dining room, the sideboard of stacked plates behind her and the US flag still on its short pole in the corner",
+     "luz": "warm daylight from a tall window frame-left."},
+    {"id": "cozinha_rancho", "bancada": "tiled counter", "curto": "kitchen",
+     "set": "a southwestern American ranch kitchen with a hand-painted tiled counter, a row of clay jugs on the shelf above and a US flag hung flat above the door",
+     "re_ancora": "the same ranch kitchen, the row of clay jugs on the shelf and the US flag still hung flat above the door",
+     "luz": "hot dry daylight through a deep-set window frame-right."},
 ]
 
 # ES8 — o RECIBO de 3-4 itens: a boca cita 1 (o {r} da RECEITA), a imagem mostra
@@ -1236,6 +1344,35 @@ BANCADAS = [
      "itens": "a plain tin of dark powder, a squat jar of thick amber syrup and a bone-handled spoon"},
     {"id": "pimenta_almofariz", "cabecas": ("cayenne", "pepper"),
      "itens": "a saucer of coarse orange grains, a small stone mortar and a stack of three unlabelled tins"},
+    # -----------------------------------------------------------------------
+    # + 2026-08-13: SETE recibos novos (15 -> 22). Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente"*.
+    # ⚠️ O pool efetivo NAO e' o tamanho da lista: o `_bancada_livre` corta
+    # tudo que colide com a fala, com as `cabecas` da receita e com a imagem
+    # dela, e so' entao evita as recentes. Com 15 entradas e 16 receitas
+    # sobravam poucas por sorteio e o mesmo recibo voltava — ampliar aqui e'
+    # ampliar o que sobra DEPOIS do filtro, que e' o numero que importa.
+    # ⛔ `cabecas` declara o que a imagem deixa NOMEAVEL, e existe para o
+    # sorteio evitar a colisao POR CONSTRUCAO: recibo que repete o {r} da boca
+    # mostra dois ingredientes, nao quatro.
+    # ⛔ Zero marca legivel: FORMA no lugar de rotulo, e a ausencia declarada
+    # pela AFIRMATIVA (`plain`), nunca por `with no label` — negacao injeta
+    # `label` num prompt cuja tese e' que nao ha' rotulo nenhum.
+    # -----------------------------------------------------------------------
+    {"id": "mel_favo", "cabecas": ("honey",),
+     "itens": "a squat jar of thick honey with a piece of comb in it, a wooden dipper and a folded linen cloth"},
+    {"id": "curcuma_ralador", "cabecas": ("turmeric",),
+     "itens": "a saucer of bright yellow powder, a fresh turmeric root on a wooden board and a small metal grater"},
+    {"id": "melancia_faca", "cabecas": ("watermelon",),
+     "itens": "a thick wedge of watermelon face-up on a board, a plain glass jar of pale grains and a bone-handled knife"},
+    {"id": "abobora_sementes", "cabecas": ("pumpkin", "seed"),
+     "itens": "a shallow dish of pumpkin seeds, a squat plain tin with the lid resting on it and a wooden scoop"},
+    {"id": "bordo_lata", "cabecas": ("maple", "syrup"),
+     "itens": "a plain tin jug of dark amber syrup, two stacked unlabelled tins and a long-handled spoon"},
+    {"id": "alecrim_almofariz", "cabecas": ("rosemary",),
+     "itens": "a bundle of fresh rosemary tied at the stems, a small stone mortar and a plain white saucer"},
+    {"id": "linhaca_pote", "cabecas": ("flax", "seed"),
+     "itens": "a wide-mouth jar of small brown seeds, a folded paper packet and a slotted wooden spoon"},
 ]
 
 # ⭐ ES9 — como a GELATINA aparece. `plantado` = na bancada da cena 2 desde o

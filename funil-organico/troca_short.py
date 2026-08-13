@@ -404,8 +404,12 @@ NARRADORAS = [
     {"id": "loira_raiz", "idade": 41,
      "marca": "long honey-blonde hair with grown-out roots and a deep dimple in her right cheek",
      "roupa": "a cropped black t-shirt and large gold hoop earrings"},
+    # ⚠️ 2026-08-13: a FALHA ENTRE OS DENTES saiu — mesma familia do dente
+    # lascado que fez o operador reprovar o lote do PLACA 16 (*"esses caras
+    # tao parecendo mendigo"*). A ancora facial continua obrigatoria, so' que
+    # do lado bonito.
     {"id": "rabo_alto", "idade": 30,
-     "marca": "jet-black hair in a high slicked-back ponytail and a wide gap between her front teeth",
+     "marca": "jet-black hair in a high slicked-back ponytail and a small beauty mark at the outer corner of her left eye",
      "roupa": "a cropped grey sweatshirt cut off above the waist"},
     {"id": "oculos_especialista", "idade": 37,
      "marca": "shoulder-length dark hair, thin gold-rimmed glasses and a narrow widow's peak",
@@ -458,21 +462,82 @@ NARRADORAS = [
     #   · [D3] `cropped` no inicio da roupa nas cinco, como manda o pool.
     #   · zero mencao a etnia: a narradora do TROCA e' solta e nao recebe
     #     injecao de etnia nenhuma — a variacao mora no cabelo.
+    # ⚠️⚠️ 2026-08-13, TRES REESCRITAS NESTE BLOCO. O comentario acima manda a
+    # ancora vir "sempre do lado ✅ DISTINTIVO, NUNCA DETERIORADO" e depois
+    # escreve `raised pale scar`, `sun-weathered skin`, `dark sun spots` e
+    # `short vertical scar` — a regra estava no comentario e o contrario no
+    # dado. E' exatamente o pool que o operador reprovou no PLACA 16 (*"esses
+    # caras tao parecendo mendigo"*).
+    # ⛔ Saem: cicatriz, pele castigada de sol e mancha de idade.
+    # ✅ Entram no lugar: pinta, sarda e bronzeado leve — os MESMOS eixos
+    # (`pele` e `ancora` do `medir_personagens`) continuam preenchidos, so'
+    # que sem deterioracao. Trocar a palavra sem trocar o eixo e' o ponto:
+    # zerar o eixo para "limpar" e' o outro modo de errar.
     {"id": "oculos_grossos_lenco", "idade": 47,
-     "marca": "a heavy-set build, a faded bandana folded back over thick greying hair, thick black-framed glasses and a raised pale scar through her left eyebrow",
+     "marca": "a heavy-set build, a faded bandana folded back over thick greying hair, thick black-framed glasses and a small dark mole at the outer end of her left eyebrow",
      "roupa": "a cropped rust-brown corduroy overshirt and one wide gold cuff on her right wrist"},
     {"id": "locs_alta_seca", "idade": 52,
-     "marca": "a tall lean frame with narrow sloping shoulders, shoulder-length locs pulled back off her face, sun-weathered skin and a deep cleft in her chin",
+     "marca": "a tall lean frame with narrow sloping shoulders, shoulder-length locs pulled back off her face, lightly tanned smooth skin and a deep cleft in her chin",
      "roupa": "a cropped sand-coloured linen shirt tied at the ribs and thin gold hoops"},
     {"id": "oculos_sol_baixinha", "idade": 35,
      "marca": "a short compact build, dark sunglasses pushed up into thick sun-bleached waves, a wide flat nose and a dark mole under her right eye",
      "roupa": "a cropped faded-red sleeveless top and a chunky gold curb chain"},
     {"id": "cornrows_cheia", "idade": 44,
-     "marca": "a full rounded build, tight cornrows gathered into a low bun, dark sun spots scattered across her cheekbones and a short vertical scar at the corner of her mouth",
+     "marca": "a full rounded build, tight cornrows gathered into a low bun, freckles scattered across her cheekbones and a small beauty mark at the corner of her mouth",
      "roupa": "a cropped teal wrap top and two gold studs in her left ear"},
     {"id": "raspado_lateral", "idade": 49,
      "marca": "a small wiry frame, dark hair worn long on one side and shaved close over the other ear, wide-set eyes and a dark mole low on her right jawline",
      "roupa": "a cropped oatmeal cable-knit sweater and thin gold rings on four fingers"},
+    # -----------------------------------------------------------------------
+    # + 2026-08-13: NOVE narradoras novas (19 -> 28). Ordem do operador:
+    # *"melhore a aparencia e shape desses homens"* e *"aumente o pool de
+    # opcoes substancialmente, tambem dos ambientes"*.
+    # ⚠️ Dezenove entradas com um sorteio que so' evita as 3 ultimas devolvem
+    # a mesma cara a cada quatro videos, e quem ve o lote inteiro de uma vez
+    # e' o operador.
+    # ⛔ DISTINTIVO, NUNCA DETERIORADO — zero `scar`, zero `gap between
+    # teeth`, zero `sun spots`, zero `weathered`, zero `sunken`. As ancoras
+    # sao pinta, covinha, mecha, argola, fenda no queixo, sarda.
+    # ⛔ Zero palavra de aprovacao (`handsome`, `chiseled`, `rugged`): elogio
+    # no prompt puxa o rosto para a media do banco de imagem, mesma mecanica
+    # de `not a celebrity` invocar a celebridade. Descreve-se FEICAO.
+    # ⛔ Zero cor de pele: a narradora do TROCA e' SOLTA na etnia [D2] e a
+    # variacao mora no cabelo — cor aqui poe duas vozes no mesmo sintagma.
+    # ⚠️ TRES DAS NOVE TEM OCULOS, de proposito. Este e' o unico dos tres
+    # motores do grupo cujo pool feminino NAO tem excecao declarada em
+    # `medir_personagens.EXCECOES`, entao o eixo `oculos` e' cobrado aqui: com
+    # 3 em 19 ele estava em 16%, e as tres novas o levam a 6 em 28. E' armacao
+    # de moda (clear-frame, cat-eye, espelhado no cabelo), nunca oculos de
+    # leitura de meia-lua — a diferenca entre estilo e envelhecimento.
+    # ⚠️ [D3] `cropped` no inicio da roupa, como manda o pool.
+    # -----------------------------------------------------------------------
+    {"id": "mecha_platina", "idade": 30,
+     "marca": "a lean athletic build with cut shoulders, smooth-skinned, long dark hair with one bleached-platinum streak swept back from her left temple",
+     "roupa": "a cropped ink-blue rib tank and a fine gold chain"},
+    {"id": "pixie_cobre", "idade": 29,
+     "marca": "a compact strong build with a narrow waist, a short copper pixie cut swept off the forehead and a light dusting of freckles over her cheekbones",
+     "roupa": "a cropped stone-grey tank top and small gold studs"},
+    {"id": "oculos_finos_bob", "idade": 34,
+     "marca": "a slim toned build, a blunt honey-blonde bob cut level at the jaw and thin clear-framed glasses over wide green eyes",
+     "roupa": "a cropped sand-coloured linen shirt tied at the ribs and thin gold hoops"},
+    {"id": "bantu_knots", "idade": 31,
+     "marca": "a firm compact build with toned shoulders, lightly tanned, dark hair set in bantu knots in even rows and a small gold hoop through her left nostril",
+     "roupa": "a cropped ivory rib tank and a flat gold collar"},
+    {"id": "oculos_gatinho", "idade": 37,
+     "marca": "a tall long-limbed frame, mid-length dark hair tucked behind one ear and tortoiseshell cat-eye glasses over a deep dimple in her right cheek",
+     "roupa": "a cropped rust rib tank and a slim gold watch"},
+    {"id": "rabo_trancado", "idade": 28,
+     "marca": "a strong build with square shoulders, a long braided ponytail pulled high and a beauty mark just below her right eye",
+     "roupa": "a cropped plum knit top and gold drop earrings"},
+    {"id": "oculos_sol_locs", "idade": 40,
+     "marca": "a full rounded build, smooth-skinned, long slim locs gathered back off her face and mirrored sunglasses pushed up on her head",
+     "roupa": "a cropped teal wrap top and stacked gold bangles"},
+    {"id": "loira_manteiga", "idade": 35,
+     "marca": "a broad-shouldered athletic build with a flat midriff, freckled across the nose, butter-blonde hair cut blunt at the shoulder, slim gold wire-frame glasses and a small mole above her left brow",
+     "roupa": "a cropped white ribbed tank top and high-waisted jeans"},
+    {"id": "coils_puff", "idade": 33,
+     "marca": "a short powerful build with defined arms, dark hair in tight coils gathered back into a low puff, square black-framed glasses and a small cleft in her chin",
+     "roupa": "a cropped scarlet knit top and a gold cuff"},
 ]
 
 # ⭐ [D2] O CORPO-PROVA E' TRAVADO pela etnia da pagina. Dois pools espelhados
@@ -881,6 +946,66 @@ CENARIOS = [
      "set": "a modern American kitchen with matte black cabinets and a subway-tile wall, a small US flag in a pen cup beside the toaster",
      "re_ancora": "the same matte black kitchen with the subway-tile wall, the small US flag still in the pen cup beside the toaster",
      "luz": "cool even daylight from frame-right."},
+    # -----------------------------------------------------------------------
+    # + 2026-08-13: DEZ ambientes novos (14 -> 24). Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⚠️ Com 14 entradas e um sorteio que evita as 2 ultimas, o cenario voltava
+    # a cada tres videos — e sete das catorze ja' diziam `kitchen` no `curto`,
+    # que e' o unico traco do cenario que entra no Audio dos tres TAKE.
+    # ⚠️ CLASSES DIFERENTES DE VERDADE, nao decoracao trocada: despensa, sala
+    # de jantar, bar de porao, cozinha de rancho, cozinha de praia, varanda de
+    # verao, bancada de acougueiro, galeria de apartamento, cozinha de
+    # azulejo, cozinha de avo. ⚠️ Cinco delas sao as MESMAS do
+    # `escandalo16_short` (bloco ES19), copiadas com as chaves DESTE pool.
+    # ⚠️ CADA UMA TRAZ O AMBIENTE INTEIRO no nivel das vizinhas: superficie +
+    # dois objetos de leitura + a BANDEIRA no `set`, `re_ancora` que
+    # reestabelece o cenario nas cenas 2 e 3 (sem ela metade do lote diz so'
+    # "in the same kitchen" e a bandeira some), e `luz` propria.
+    # ✅ Bandeira dos EUA em todas, em FORMA diferente cada vez — esta' no
+    # catalogo, nao e' marca.
+    # ⛔ `clay jugs` e nao `clay pots` no rancho: `pot` puxa `pot plant`, que e'
+    # superficie de bloqueio sem funcao de leitura.
+    # -----------------------------------------------------------------------
+    {"id": "cozinha_azulejo", "bancada": "counter", "curto": "kitchen",
+     "set": "an American kitchen with white square tile running up the wall behind the counter, a dish rack by the sink and a US flag decal on the window glass",
+     "re_ancora": "the same tiled kitchen, the dish rack by the sink and the US flag decal still on the window glass",
+     "luz": "bright flat daylight through the window over the counter."},
+    {"id": "bancada_acougue", "bancada": "butcher block", "curto": "kitchen",
+     "set": "a country American kitchen built around a heavy butcher block table, cast iron pans hanging on the wall and a US flag in a glass case on the shelf",
+     "re_ancora": "the same butcher block kitchen, the cast iron pans on the wall and the US flag still in its case",
+     "luz": "warm low daylight from a single window frame-left."},
+    {"id": "cozinha_verao", "bancada": "prep counter", "curto": "cook porch",
+     "set": "a screened summer cook porch with a long prep counter, jars of preserves on an open shelf and a US flag hanging from a bracket by the screen door",
+     "re_ancora": "the same screened cook porch, the jars of preserves on the shelf and the US flag still on its bracket",
+     "luz": "soft shaded daylight coming through the screens."},
+    {"id": "porao_bar", "bancada": "bar top", "curto": "basement bar",
+     "set": "a finished American basement with a home bar, a row of stools and shelves of glasses, a US flag pinned flat on the panelled wall",
+     "re_ancora": "the same basement bar with the shelves of glasses, the US flag still pinned flat on the panelled wall",
+     "luz": "warm light from two hanging bulbs over the bar."},
+    {"id": "cozinha_apartamento", "bancada": "galley counter", "curto": "kitchen",
+     "set": "a narrow apartment galley kitchen with pale cabinets on both sides and a city window at the end, a US flag magnet on the fridge",
+     "re_ancora": "the same narrow galley kitchen with the city window at the end, the US flag magnet still on the fridge",
+     "luz": "flat daylight from the window at the end of the galley."},
+    {"id": "despensa", "bancada": "prep counter", "curto": "pantry",
+     "set": "a walk-in pantry off an American kitchen with deep open shelves of glass jars, a narrow prep counter down one side and a US flag pinned to the edge of a shelf",
+     "re_ancora": "the same pantry off the kitchen, the deep shelves of glass jars behind her and the US flag still pinned to the shelf edge",
+     "luz": "warm overhead light with daylight spilling in from the kitchen door."},
+    {"id": "cozinha_praia", "bancada": "counter", "curto": "kitchen",
+     "set": "a bright coastal American kitchen with white beadboard cabinets, a window onto a wooden deck and a US flag on a short pole by the door",
+     "re_ancora": "the same coastal kitchen, the wooden deck through the window and the US flag still on its short pole by the door",
+     "luz": "high clean daylight bouncing off the white cabinets."},
+    {"id": "sala_jantar", "bancada": "dining table", "curto": "dining room",
+     "set": "an American dining room with a long oak table, a sideboard of stacked plates against the wall and a US flag on a short pole in the corner",
+     "re_ancora": "the same dining room, the sideboard of stacked plates behind her and the US flag still on its short pole in the corner",
+     "luz": "warm daylight from a tall window frame-left."},
+    {"id": "cozinha_rancho", "bancada": "tiled counter", "curto": "kitchen",
+     "set": "a southwestern American ranch kitchen with a hand-painted tiled counter, a row of clay jugs on the shelf above and a US flag hung flat above the door",
+     "re_ancora": "the same ranch kitchen, the row of clay jugs on the shelf and the US flag still hung flat above the door",
+     "luz": "hot dry daylight through a deep-set window frame-right."},
+    {"id": "cozinha_avo", "bancada": "enamel-top table", "curto": "kitchen",
+     "set": "an old-fashioned American kitchen built around an enamel-top table, a tall wooden pie safe against the wall and a US flag pinned above the doorway",
+     "re_ancora": "the same old-fashioned kitchen, the tall wooden pie safe behind her and the US flag still pinned above the doorway",
+     "luz": "soft late daylight through a lace-curtained window frame-left."},
 ]
 
 # TR7/TR16 — o RECIBO. Tres itens, nunca citados na fala: e' o que da' lastro ao
@@ -913,6 +1038,40 @@ BANCADAS = [
      "itens": "a shallow bowl of raw oats, a stick of cinnamon bark and a slotted metal spoon"},
     {"id": "raiz_graos", "cabecas": ("ginger",),
      "itens": "a whole ginger root, a jar of coarse dark grains with no label and a wooden butter knife"},
+    # -----------------------------------------------------------------------
+    # + 2026-08-13: DEZ recibos novos (12 -> 22). Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente"*.
+    # ⚠️ O pool efetivo NAO e' o tamanho da lista: o `_bancada_livre` corta
+    # tudo que colide com a fala e com o `pote` da substancia, e so' entao
+    # evita as recentes. Com doze entradas o que sobrava depois do filtro era
+    # meia duzia, e o mesmo recibo voltava — ampliar aqui e' ampliar o que
+    # sobra DEPOIS do filtro, que e' o numero que importa.
+    # ⛔ `cabecas` declara o que a imagem deixa NOMEAVEL: e' o campo que faz o
+    # sorteio evitar POR CONSTRUCAO que a boca cite o que a imagem tinha de
+    # esconder. Recibo que repete a boca mostra dois ingredientes, nao tres.
+    # ⛔ Zero marca legivel — FORMA no lugar de rotulo, e a ausencia declarada
+    # pela AFIRMATIVA (`plain`), nunca por `with no label`.
+    # -----------------------------------------------------------------------
+    {"id": "mel_favo", "cabecas": ("honey",),
+     "itens": "a squat jar of thick honey with a piece of comb in it, a wooden dipper and a folded linen cloth"},
+    {"id": "curcuma_ralador", "cabecas": ("turmeric",),
+     "itens": "a saucer of bright yellow powder, a fresh turmeric root on a wooden board and a small metal grater"},
+    {"id": "melancia_faca", "cabecas": ("watermelon",),
+     "itens": "a thick wedge of watermelon face-up on a board, a plain glass jar of pale grains and a bone-handled knife"},
+    {"id": "abobora_sementes", "cabecas": ("pumpkin", "seed"),
+     "itens": "a shallow dish of pumpkin seeds, a squat plain tin with the lid resting on it and a wooden scoop"},
+    {"id": "bordo_lata", "cabecas": ("maple", "syrup"),
+     "itens": "a plain tin jug of dark amber syrup, two stacked unlabelled tins and a long-handled spoon"},
+    {"id": "alecrim_almofariz", "cabecas": ("rosemary",),
+     "itens": "a bundle of fresh rosemary tied at the stems, a small stone mortar and a plain white saucer"},
+    {"id": "linhaca_pote", "cabecas": ("flax", "seed"),
+     "itens": "a wide-mouth jar of small brown seeds, a folded paper packet and a slotted wooden spoon"},
+    {"id": "cravo_pires", "cabecas": ("clove",),
+     "itens": "a saucer of dried cloves, a plain glass jar of coarse pale powder and a short wooden pestle"},
+    {"id": "hortela_caneca", "cabecas": ("mint",),
+     "itens": "a bunch of fresh mint standing in a glass of water, a plain tin of pale powder and a china teacup"},
+    {"id": "damasco_tabua", "cabecas": ("apricot",),
+     "itens": "a row of dried apricots on a wooden board, a plain amber jar of clear liquid and a wooden butter knife"},
 ]
 
 # ⭐ TR1 — a peca que SOBE na troca. Ela ja' estava plantada na bancada desde o

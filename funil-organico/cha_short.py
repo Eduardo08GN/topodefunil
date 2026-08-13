@@ -635,6 +635,229 @@ MUNDOS = [
      "luz_c": 'soft rain-flecked light',
      "audio": 'light rain on a roof, quiet room tone'},
 
+    # ⭐⭐ + 2026-08-13 — OITO CASAS NOVAS, ordem do operador: *"aumente o pool
+    # de opcoes substancialmente, tambem dos ambientes"*. 16 -> 24, e as
+    # familias vao de 13 para 21.
+    # ⛔ CADA ENTRADA DECLARA AS DEZOITO CHAVES DAS DEZESSEIS DE CIMA — `eua`,
+    # `selo`, `familia`, `etnias`, `var`, `var_c`, `coz`, `coz_c`, `sup_a`,
+    # `sup`, `trajes` (quatro), `cores` (seis), `luz_e`, `luz_e_c`, `luz`,
+    # `luz_c`, `audio`. Chave faltando aqui nao e' pool menor: e' KeyError na
+    # mao do operador, porque a montagem le' todas.
+    # ⛔⛔ E CADA UMA E' A CASA INTEIRA, nao um fundo: varanda E cozinha da MESMA
+    # casa, as duas luzes, as duas versoes curtas e a ambiencia. E' o unico
+    # angulo do parque com corte de ambiente dentro do video, e por isso varanda
+    # e cozinha sao UM eixo so'.
+    # ⭐ COBERTURA DE ETNIA — nenhuma encolheu, todas cresceram: `white
+    # American` 13 -> 20 casas, `Black American` 9 -> 13, `Hispanic American`
+    # 7 -> 10 e `Asian American`, que era a mais magra do pool com UMA casa so'
+    # (o pacifico), passa a ter TRES (havai e baia). Etnia com uma casa so' e'
+    # etnia que sempre sai no mesmo cenario.
+    # ⚠️ Zero etnia NOVA de proposito: o motor classifica pele por lista
+    # explicita (`PELE_ETNIAS`), e string nova entraria como neutra — visivel
+    # so' com a pele livre, invisivel nas duas travas do painel.
+    # ⭐ O TRAJE CONTINUA SENDO A BULLET DE RETENCAO (ordem do operador):
+    # decote, saia curta, pernas em quadro. As 32 pecas novas seguem o registro
+    # das 64 de cima, e nenhuma repete o nome curto de outra.
+    {"id": "kansas", "eua": True, "selo": "N", "familia": "planicies",
+     "etnias": ['white American', 'Black American'],
+     "var": 'the front porch of a plains farmhouse, a white-painted rail and a windbreak of cottonwoods behind, flat wheat country to the horizon',
+     "var_c": 'plains farmhouse porch',
+     "coz": 'a farm kitchen with painted cabinets and a deep enamel sink under a window onto open fields, jars of preserves on a shelf',
+     "coz_c": 'painted farm kitchen',
+     "sup_a": 'a wide oak worktop',
+     "sup": 'worktop',
+     "trajes": [
+         ('%s cropped chambray shirt knotted under the bust with very short denim cut-offs',
+          'knotted chambray shirt'),
+         ('%s deep-scoop bodysuit tucked into a short flared skirt',
+          'deep-scoop bodysuit'),
+         ('%s thin-strap sundress cut well above the knee',
+          'thin-strap sundress'),
+         ('%s low-cut ribbed tank with high-waisted short shorts',
+          'high-waisted tank'),
+     ],
+     "cores": ['wheat gold', 'white', 'denim blue', 'brick red', 'black', 'cream'],
+     "luz_e": 'Wide flat prairie daylight under the porch roof.',
+     "luz_e_c": 'flat prairie daylight',
+     "luz": 'Even daylight through a tall farm window.',
+     "luz_c": 'even farm-window light',
+     "audio": 'wind across open wheat, a grain truck far off, quiet room tone'},
+
+    {"id": "baltimore", "eua": True, "selo": "N", "familia": "meio_atlantico",
+     "etnias": ['Black American', 'white American'],
+     "var": 'the marble front steps of a Baltimore row house, painted brick and a screen door behind, a run of identical stoops down the block',
+     "var_c": 'marble row-house steps',
+     "coz": 'a narrow row-house kitchen with white cabinets and a checkerboard floor, a window onto a small back yard, a spice rack by the stove',
+     "coz_c": 'checkerboard row-house kitchen',
+     "sup_a": 'a laminate galley counter',
+     "sup": 'counter',
+     "trajes": [
+         ('%s fitted rib tank with a very low front, worn with a short wrap skirt',
+          'low-front rib tank'),
+         ('%s halter top knotted at the back with high-cut denim shorts',
+          'back-knot halter'),
+         ('%s cropped bomber worn open over a bralette, with a mini skirt',
+          'open cropped bomber'),
+         ('%s plunging jersey mini dress with thin straps',
+          'plunging jersey mini'),
+     ],
+     "cores": ['black', 'white', 'plum', 'gold', 'royal blue', 'scarlet'],
+     "luz_e": 'Bright flat daylight bouncing off the brick.',
+     "luz_e_c": 'flat brick daylight',
+     "luz": 'Warm daylight through a small back window.',
+     "luz_c": 'warm back-window light',
+     "audio": 'a bus braking two blocks away, quiet room tone'},
+
+    {"id": "havai", "eua": True, "selo": "N", "familia": "havai",
+     "etnias": ['Asian American', 'white American'],
+     "var": 'the lanai of a plantation-style island house, wide eaves and screened panels behind, plumeria and ti plants crowding the rail',
+     "var_c": 'plantation lanai',
+     "coz": 'an airy island kitchen with louvred cabinets, a wide window onto broad green leaves, glass jars in a row on the sill',
+     "coz_c": 'louvred island kitchen',
+     "sup_a": 'a koa wood counter',
+     "sup": 'counter',
+     "trajes": [
+         ('%s tied halter bikini top under an open shirt, with a very short sarong skirt',
+          'tied halter top'),
+         ('%s cropped tube top with a short wrap skirt',
+          'cropped tube top'),
+         ('%s deep-V romper cut short at the thigh',
+          'deep-V romper'),
+         ('%s single-shoulder knit top with high-cut shorts',
+          'single-shoulder knit'),
+     ],
+     "cores": ['white', 'hibiscus red', 'turquoise', 'sun yellow', 'black', 'cream'],
+     "luz_e": 'Soft trade-wind daylight under the deep eaves.',
+     "luz_e_c": 'soft lanai daylight',
+     "luz": 'Bright even daylight through a louvred window.',
+     "luz_c": 'bright louvred light',
+     "audio": 'wind in broad leaves, a rooster far off, quiet room tone'},
+
+    {"id": "baia", "eua": True, "selo": "N", "familia": "baia",
+     "etnias": ['Asian American', 'Hispanic American'],
+     "var": 'the front steps of a San Francisco Victorian, bay windows and painted trim above, a grey street falling away behind',
+     "var_c": 'painted Victorian steps',
+     "coz": 'a narrow flat kitchen with glass-front cabinets, a window onto a light well, herbs in tins along the sill',
+     "coz_c": 'glass-front flat kitchen',
+     "sup_a": 'a soapstone counter',
+     "sup": 'counter',
+     "trajes": [
+         ('%s ribbed knit crop with a wide boat neck pulled off one shoulder, with a mini skirt',
+          'boat-neck crop'),
+         ('%s slip camisole under a cropped blazer, with short shorts',
+          'slip camisole'),
+         ('%s low-back halter dress cut short above the knee',
+          'low-back halter dress'),
+         ('%s zip-front knit top worn half open with a short pleated skirt',
+          'half-open knit top'),
+     ],
+     "cores": ['charcoal', 'white', 'emerald', 'dusty rose', 'burgundy', 'pale grey'],
+     "luz_e": 'Cool even light through coastal fog.',
+     "luz_e_c": 'cool fog light',
+     "luz": 'Soft grey daylight from the light well.',
+     "luz_c": 'soft light-well daylight',
+     "audio": 'a cable car bell far off, quiet room tone'},
+
+    {"id": "colorado", "eua": True, "selo": "N", "familia": "montanhas",
+     "etnias": ['white American', 'Hispanic American'],
+     "var": 'the timber porch of a Colorado mountain house, log posts and a split-rail fence, snow-tipped peaks beyond the pines',
+     "var_c": 'timber mountain porch',
+     "coz": 'a lodge kitchen with pine cabinets and a stone chimney breast, a window onto tall firs, enamel mugs hanging on hooks',
+     "coz_c": 'pine lodge kitchen',
+     "sup_a": 'a thick slab counter',
+     "sup": 'counter',
+     "trajes": [
+         ('%s cropped puffer vest worn open over a low-cut tank, with short shorts',
+          'open puffer vest'),
+         ('%s ribbed long-sleeve crop with a deep V and a mini skirt',
+          'deep-V long-sleeve crop'),
+         ('%s wool wrap top tied at the waist with very short cut-offs',
+          'wool wrap top'),
+         ('%s thermal henley unbuttoned low, tucked into a short skirt',
+          'unbuttoned henley'),
+     ],
+     "cores": ['forest green', 'cream', 'rust red', 'denim blue', 'black', 'white'],
+     "luz_e": 'Thin bright mountain daylight in the porch shade.',
+     "luz_e_c": 'thin mountain daylight',
+     "luz": 'Clear high-altitude daylight from a tall window.',
+     "luz_c": 'clear high window light',
+     "audio": 'wind in pines, a raven far off, quiet room tone'},
+
+    {"id": "novo_mexico", "eua": True, "selo": "N", "familia": "novo_mexico",
+     "etnias": ['Hispanic American', 'white American'],
+     "var": 'the portal of an adobe house, carved wooden corbels overhead, strings of dried red chiles on the posts and mesa country beyond',
+     "var_c": 'adobe portal',
+     "coz": 'an adobe kitchen with a rounded corner fireplace, hand-painted tiles behind the stove and clay bowls stacked on open shelves',
+     "coz_c": 'adobe corner-fireplace kitchen',
+     "sup_a": 'a thick plastered ledge',
+     "sup": 'ledge',
+     "trajes": [
+         ('%s embroidered off-shoulder blouse pulled low, with a very short skirt',
+          'embroidered off-shoulder blouse'),
+         ('%s crossover crop top with high-waisted denim shorts',
+          'crossover crop top'),
+         ('%s tiered mini dress with a deep square neckline',
+          'square-neck mini dress'),
+         ('%s knit shawl worn open over a bralette, with short shorts',
+          'open knit shawl'),
+     ],
+     "cores": ['turquoise', 'terracotta', 'white', 'black', 'silver', 'scarlet'],
+     "luz_e": 'Warm light bounced off the adobe wall.',
+     "luz_e_c": 'warm adobe light',
+     "luz": 'Soft light from a deep window recess.',
+     "luz_c": 'soft recessed daylight',
+     "audio": 'dry wind, a magpie somewhere, quiet room tone'},
+
+    {"id": "alabama", "eua": True, "selo": "N", "familia": "sul_profundo",
+     "etnias": ['Black American', 'white American'],
+     "var": 'the swept front porch of an Alabama farmhouse, a porch swing on chains and pots of caladiums on the boards, open fields beyond the fence',
+     "var_c": 'swept farmhouse porch',
+     "coz": 'a country kitchen with yellow-painted cabinets, a screen door onto the yard and a row of mason jars along the window',
+     "coz_c": 'yellow country kitchen',
+     "sup_a": 'a scrubbed oak table',
+     "sup": 'table',
+     "trajes": [
+         ('%s gingham crop top tied in front with very short shorts',
+          'gingham crop top'),
+         ('%s smocked bandeau dress cut short at the thigh',
+          'smocked bandeau dress'),
+         ('%s sleeveless button-down opened to the waist over a bralette, with a mini skirt',
+          'opened button-down'),
+         ('%s eyelet cami with a low neckline and a short flared skirt',
+          'eyelet cami'),
+     ],
+     "cores": ['sunflower yellow', 'white', 'red', 'denim blue', 'black', 'sage green'],
+     "luz_e": 'Hot southern daylight softened by the porch roof.',
+     "luz_e_c": 'soft southern porch light',
+     "luz": 'Bright daylight through the screen door.',
+     "luz_c": 'bright screen-door light',
+     "audio": 'cicadas in the field, a dog on a chain far off, quiet room tone'},
+
+    {"id": "minnesota", "eua": True, "selo": "N", "familia": "lagos",
+     "etnias": ['white American', 'Black American'],
+     "var": 'the screened porch of a northern lake cabin, birch trunks and a wooden dock behind, flat water past the trees',
+     "var_c": 'screened lake porch',
+     "coz": 'a cabin kitchen with knotty-pine walls and a red enamel stove, a window onto the water and tin canisters on a shelf',
+     "coz_c": 'red-stove cabin kitchen',
+     "sup_a": 'a birch plank counter',
+     "sup": 'counter',
+     "trajes": [
+         ('%s cropped fleece pullover worn off one shoulder with very short shorts',
+          'off-shoulder fleece'),
+         ('%s lace-edge bralette top under an open flannel, with a mini skirt',
+          'lace-edge bralette top'),
+         ('%s scoop-back knit dress cut short above the knee',
+          'scoop-back knit dress'),
+         ('%s cropped waffle top with a deep neckline and short cut-offs',
+          'cropped waffle top'),
+     ],
+     "cores": ['pine green', 'white', 'red', 'slate blue', 'cream', 'black'],
+     "luz_e": 'Clean northern daylight bouncing off the lake.',
+     "luz_e_c": 'clean lake daylight',
+     "luz": 'Bright even light from a window over the water.',
+     "luz_c": 'bright lake-window light',
+     "audio": 'a loon far off, water at the dock, quiet room tone'},
+
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -1034,7 +1257,7 @@ REFS = [
      "marca": 'a small gold hoop in her left nostril and clear skin'},
     {"idade": 26, "corpo": 'tall and statuesque with a long waist',
      "cabeca": 'strawberry-blonde hair in a loose braid',
-     "marca": 'wide-set blue eyes and a faint scar through one eyebrow'},
+     "marca": 'wide-set blue eyes and a deep dimple in her right cheek'},
     {"idade": 25, "corpo": "slim and toned with a dancer's line",
      "cabeca": 'jet-black hair in a sleek centre part',
      "marca": 'sharp cheekbones and a small mole on her jaw'},
@@ -1043,10 +1266,10 @@ REFS = [
      "marca": 'ice-blue eyes and a dimple in one cheek'},
     {"idade": 24, "corpo": 'curvy and athletic with a small waist',
      "cabeca": 'tight dark curls gathered high on her head',
-     "marca": 'glowing deep brown skin and a wide bright smile'},
+     "marca": 'a wide bright smile and a small beauty mark on her left temple'},
     {"idade": 30, "corpo": 'tall and slim with an hourglass line',
      "cabeca": 'chestnut hair in long beachy waves',
-     "marca": 'a gap between her front teeth and warm brown eyes'},
+     "marca": "a pronounced Cupid's bow and warm brown eyes"},
     {"idade": 22, "corpo": 'petite and curvy with a defined waist',
      "cabeca": 'honey-blonde hair in a high messy bun',
      "marca": 'a scatter of freckles and full lips'},
@@ -1070,10 +1293,10 @@ REFS = [
      "marca": 'a small raised birthmark on her temple'},
     {"idade": 24, "corpo": 'slim and supple with a very straight back',
      "cabeca": 'copper hair cropped into a long bob',
-     "marca": 'pale skin, freckles and bright green eyes'},
+     "marca": 'heavy freckling over her nose and bright green eyes'},
     {"idade": 29, "corpo": 'long-limbed and shapely with a defined waist',
      "cabeca": 'black hair in a high sleek ponytail',
-     "marca": 'a thin scar along her jawline and full brows'},
+     "marca": 'a sharply defined jawline and full brows'},
     {"idade": 26, "corpo": 'trim and athletic with a flat stomach',
      "cabeca": 'golden blonde hair in loose waves',
      "marca": 'a small dimple in one cheek only'},
@@ -1085,7 +1308,7 @@ REFS = [
      "marca": 'sculpted cheekbones and a small gold stud'},
     {"idade": 27, "corpo": 'slim with a long waist and square shoulders',
      "cabeca": 'ash-brown hair in a sleek low bun',
-     "marca": 'grey-green eyes and a faint mark between her brows'},
+     "marca": 'grey-green eyes and a small beauty mark above her left brow'},
     {"idade": 25, "corpo": 'shapely and toned with a narrow waist',
      "cabeca": 'ginger hair in loose curls past her shoulders',
      "marca": 'heavy freckling and a small chin dimple'},
@@ -1094,7 +1317,7 @@ REFS = [
      "marca": 'a beauty mark high on her left cheek'},
     {"idade": 23, "corpo": 'petite and shapely with a defined waist',
      "cabeca": 'bleached blonde hair in a blunt chin-length bob',
-     "marca": 'wide dark eyes and a faint scar on her chin'},
+     "marca": 'wide dark eyes and a shallow cleft in her chin'},
     {"idade": 31, "corpo": 'athletic and curvy with strong shoulders',
      "cabeca": 'long waves in a rich mahogany red',
      "marca": 'clear skin and a small hoop in her right nostril'},
@@ -1110,6 +1333,50 @@ REFS = [
     {"idade": 25, "corpo": 'tall with a small waist and full shoulders',
      "cabeca": 'strawberry-blonde hair in a high loose bun',
      "marca": 'green eyes and a small beauty spot on her cheekbone'},
+    # ⭐⭐ + 2026-08-13 — OITO BOTICARIAS NOVAS, ordem do operador: *"melhore a
+    # aparencia e shape desses homens"* / *"aumente o pool de opcoes
+    # substancialmente"*. 30 -> 38.
+    # ⛔ SETE ENTRADAS ACIMA FORAM REESCRITAS NO MESMO DIA e o motivo fica
+    # escrito: quatro traziam CICATRIZ (`a faint scar through one eyebrow`, `a
+    # thin scar along her jawline`, `a faint scar on her chin`), uma trazia
+    # DENTE (`a gap between her front teeth` — a mesma armadilha que o CLEAN
+    # pagou com foto de campo no CL25), uma trazia VINCO (`a faint mark between
+    # her brows`, que o gerador desenha como ruga de testa franzida) e DUAS
+    # traziam COR DE PELE (`glowing deep brown skin`, `pale skin`). As duas
+    # ultimas violavam a regra do proprio bloco tres linhas acima — a etnia sai
+    # do MUNDO e e' injetada pela montagem; dizer a cor aqui poe duas vozes no
+    # mesmo sintagma e o gerador resolve inventando um rosto mestico.
+    # ⛔ Nas oito novas: zero oculos, zero grisalho, zero cor de pele, zero
+    # palavra de deterioracao e zero negacao de conformidade. A ancora e' sempre
+    # SINAL DE BELEZA e sempre permanente (covinha, sarda, malar, argola,
+    # beleza-marca, arco do labio, fenda no queixo) — sem ela o Veo troca de
+    # rosto entre a varanda e a cozinha, que sao dois blocos gerados separados.
+    # ⚠️ CORPO, CABECA e MARCA giram JUNTOS nas oito: duas mulheres de cabelo
+    # diferente e mesmo porte leem como a mesma pessoa (medir_personagens).
+    {"idade": 24, "corpo": 'tall and full-figured with a very small waist',
+     "cabeca": 'jet-black hair worn to the waist with blunt bangs',
+     "marca": 'a deep dimple in her left cheek only'},
+    {"idade": 28, "corpo": 'lean and long-necked with narrow shoulders and long legs',
+     "cabeca": 'warm brown hair gathered into a high top knot',
+     "marca": 'wide-set amber eyes and full arched brows'},
+    {"idade": 23, "corpo": 'hourglass-shaped with a full bust and a cinched waist',
+     "cabeca": 'cherry-red hair in a long shag with curtain bangs',
+     "marca": 'a small gold hoop high in her right ear'},
+    {"idade": 27, "corpo": 'slender and high-waisted with long straight legs',
+     "cabeca": 'icy blonde hair in a single braid down her back',
+     "marca": "a pronounced Cupid's bow and a wide even smile"},
+    {"idade": 30, "corpo": 'curvy through the hip with a flat stomach and a small waist',
+     "cabeca": 'long senegalese twists gathered high on her head',
+     "marca": 'a beauty mark at the centre of her right cheek'},
+    {"idade": 26, "corpo": 'tall and broad-shouldered with a long lean line',
+     "cabeca": 'bronde balayage swept over in a deep side part',
+     "marca": 'grey-blue eyes ringed darker at the edge'},
+    {"idade": 22, "corpo": 'petite and hourglass with a very narrow waist',
+     "cabeca": 'black hair in a wet-look chin-length bob',
+     "marca": 'a small silver stud in her left ear and a wide smile'},
+    {"idade": 29, "corpo": 'strong and graceful with a long straight back and full shoulders',
+     "cabeca": 'espresso-brown hair in a long low ponytail with a middle part',
+     "marca": "a widow's peak at her hairline and a heart-shaped face"},
 ]
 
 

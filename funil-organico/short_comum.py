@@ -1425,7 +1425,7 @@ REFS_BELAS = [
      "marca": "a faint dimple in one cheek and full lips"},
     {"idade": 31, "corpo": "tall and athletic with a flat stomach",
      "cabeca": "dark auburn hair gathered in a low knot",
-     "marca": "a small scar at the hairline and even skin"},
+     "marca": "a beauty mark at the hairline and even skin"},
     {"idade": 32, "corpo": "softly curvy and toned with a long waist",
      "cabeca": "ash-blonde hair in a blunt shoulder cut",
      "marca": "a beauty mark above the lip and a strong jaw"},
@@ -1446,7 +1446,7 @@ REFS_BELAS = [
      "marca": "a small gold hoop in her left nostril and clear skin"},
     {"idade": 25, "corpo": "tall and statuesque with a sculpted line",
      "cabeca": "strawberry-blonde hair in a loose braid",
-     "marca": "wide-set blue eyes and a faint scar through one eyebrow"},
+     "marca": "wide-set blue eyes and a small mole above one eyebrow"},
     {"idade": 24, "corpo": "slim and toned with a dancer's line",
      "cabeca": "jet-black hair in a sleek centre part",
      "marca": "sharp cheekbones and a small mole on her jaw"},
@@ -1455,10 +1455,11 @@ REFS_BELAS = [
      "marca": "ice-blue eyes and a dimple in one cheek"},
     {"idade": 23, "corpo": "curvy and athletic with a small waist",
      "cabeca": "tight dark curls gathered high on her head",
-     "marca": "clear deep brown skin and a wide bright smile"},
+     "marca": "smooth-skinned with high round cheekbones and a beauty mark on "
+              "one cheek"},
     {"idade": 22, "corpo": "tall and slim with an hourglass line",
      "cabeca": "chestnut hair in long beachy waves",
-     "marca": "a gap between her front teeth and warm brown eyes"},
+     "marca": "a full bow-shaped mouth and warm brown eyes"},
     {"idade": 21, "corpo": "petite and curvy with a defined waist",
      "cabeca": "honey-blonde hair in a high messy bun",
      "marca": "a scatter of freckles and full lips"},
@@ -1482,10 +1483,10 @@ REFS_BELAS = [
      "marca": "a small raised birthmark on her temple"},
     {"idade": 23, "corpo": "slim and supple with a very straight back",
      "cabeca": "copper hair cropped into a long bob",
-     "marca": "pale skin, freckles and bright green eyes"},
+     "marca": "smooth-skinned, freckled across the nose and cheeks"},
     {"idade": 21, "corpo": "long-limbed and shapely with a defined waist",
      "cabeca": "black hair in a high sleek ponytail",
-     "marca": "a thin scar along her jawline and full brows"},
+     "marca": "a small beauty mark along her jawline and full brows"},
     {"idade": 25, "corpo": "trim and athletic with a flat stomach",
      "cabeca": "golden blonde hair in loose waves",
      "marca": "a small dimple in one cheek only"},
@@ -1497,7 +1498,7 @@ REFS_BELAS = [
      "marca": "sculpted cheekbones and a small gold stud"},
     {"idade": 26, "corpo": "slim with a long waist and square shoulders",
      "cabeca": "ash-brown hair in a sleek low bun",
-     "marca": "grey-green eyes and a faint mark between her brows"},
+     "marca": "grey-green eyes and a small gold stud in one ear"},
     {"idade": 24, "corpo": "shapely and toned with a narrow waist",
      "cabeca": "ginger hair in loose curls past her shoulders",
      "marca": "heavy freckling and a small chin dimple"},
@@ -1506,7 +1507,7 @@ REFS_BELAS = [
      "marca": "a beauty mark high on her left cheek"},
     {"idade": 22, "corpo": "petite and shapely with a defined waist",
      "cabeca": "bleached blonde hair in a blunt chin-length bob",
-     "marca": "wide dark eyes and a faint scar on her chin"},
+     "marca": "wide dark eyes and a small dimple in her chin"},
     {"idade": 23, "corpo": "athletic and curvy with strong shoulders",
      "cabeca": "long waves in a rich mahogany red",
      "marca": "clear skin and a small hoop in her right nostril"},
@@ -1522,6 +1523,214 @@ REFS_BELAS = [
     {"idade": 24, "corpo": "tall with a small waist and full shoulders",
      "cabeca": "strawberry-blonde hair in a high loose bun",
      "marca": "green eyes and a small beauty spot on her cheekbone"},
+
+    # ⭐⭐ AMPLIACAO 2026-08-13 — ordem do operador: *"mulheres no modo bela
+    # devem ser sempre extremamente lindas e atraentes e com pool de opcoes bem
+    # grande para sorteio"* / *"aumente o pool de opcoes substancialmente"*.
+    # 38 -> 94 entradas. ⛔ NENHUMA delas escreve `beautiful`, `gorgeous` ou
+    # `stunning`: julgamento no prompt puxa o rosto para a MEDIA do banco de
+    # imagem, que e' o oposto de "extremamente linda". A beleza entra por FEICAO
+    # E FORMA — malar alto, cintura esculpida, onda pesada e brilhante — porque
+    # forma concreta o gerador desenha e elogio ele so' interpreta.
+    # ⛔ ZERO COR DE PELE e zero etnia: quem manda nisso e' o motor que chama
+    # (congruencia com o avatar da pagina), e duas vozes no mesmo sintagma o
+    # gerador resolve inventando. Sete entradas antigas foram REESCRITAS por
+    # isso e pela regra DISTINTIVO-NUNCA-DETERIORADO (quatro `scar`, um `gap
+    # between her front teeth`, `deep brown skin`, `pale skin` e `a faint mark
+    # between her brows`) — cicatriz e dente faltando viram mendigo, e mendigo
+    # ja' custou lote no PLACA 16.
+    # ⚠️ AS 28+ SAO 24 DAS 56 NOVAS E NENHUMA DIZ `curvy`. E' medicao, nao
+    # gosto: RESSURREICAO/TROCA/ESCANDALO pedem `idade_min=28` e o
+    # RESSURREICAO ainda passa `banidos=BANIDOS_DESEJO` (que contem `curvy`).
+    # Os dois filtros em serie deixavam CINCO entradas de pe' no pool de 38 —
+    # pool grande que, filtrado, entrega a mesma narradora.
+    # ⛔ E NENHUMA MARCA NOVA DIZ `eyes`: o olho vem do eixo proprio
+    # (OLHOS_BELAS) e o `_sem_olhos` so' limpa as tres formas que o pool velho
+    # usava. Marca com olho no FIM da frase escaparia da limpeza e o prompt
+    # sairia com duas cores para o mesmo par de olhos.
+
+    # --- 28 a 33 anos: o pool que sobra depois do piso de idade -------------
+    {"idade": 28, "corpo": "tall and long-limbed with square shoulders and a "
+                           "high waist",
+     "cabeca": "dark chocolate-brown hair in a deep side part past the "
+               "collarbone",
+     "marca": "high cheekbones and a small mole below one temple"},
+    {"idade": 28, "corpo": "statuesque and toned with a sculpted midriff",
+     "cabeca": "platinum blonde hair in a sharp blunt bob",
+     "marca": "heavy level brows and a cleft in her chin"},
+    {"idade": 28, "corpo": "slim and athletic with a dancer's line",
+     "cabeca": "russet-red hair in a thick French braid",
+     "marca": "smooth-skinned with a light spray of freckles over the nose"},
+    {"idade": 28, "corpo": "compact and athletic with a small frame",
+     "cabeca": "blue-black hair in a high glossy ponytail",
+     "marca": "smooth-skinned with wide-set brows and a dimple in each cheek"},
+    {"idade": 29, "corpo": "long-legged and lean with a narrow waist",
+     "cabeca": "jet-black hair in a glossy blunt fringe and long layers",
+     "marca": "a sharp jaw and a tiny gold hoop high in one ear"},
+    {"idade": 29, "corpo": "tall and sculptural with swimmer's shoulders",
+     "cabeca": "dark blonde hair in a low twisted chignon",
+     "marca": "a straight narrow nose and a dimple in her left cheek"},
+    {"idade": 29, "corpo": "shapely and strong with a sculpted back and a small "
+                           "waist",
+     "cabeca": "cinnamon-red hair in loose ringlets to the shoulder",
+     "marca": "dense freckling over the nose and a full bow-shaped mouth"},
+    {"idade": 29, "corpo": "tall and slim-hipped with a long waist",
+     "cabeca": "strawberry-blonde hair in a shaggy layered cut",
+     "marca": "freckled cheeks and a soft rounded jaw"},
+    {"idade": 30, "corpo": "petite and toned with a small frame and a narrow "
+                           "waist",
+     "cabeca": "espresso-dark hair in a high sleek bun",
+     "marca": "lightly freckled, with wide arched brows and a beauty mark at "
+              "the corner of the mouth"},
+    {"idade": 30, "corpo": "long-limbed and slim with a very straight back",
+     "cabeca": "honey-blonde hair in soft finger waves",
+     "marca": "a strong straight nose and a single dimple when she smiles"},
+    {"idade": 30, "corpo": "tall and lean with a long torso",
+     "cabeca": "tight dark coils shaped into a rounded crown",
+     "marca": "sculpted cheekbones and a small gold stud in one nostril"},
+    {"idade": 30, "corpo": "trim and athletic with defined arms",
+     "cabeca": "mahogany-red hair in a low glossy ponytail",
+     "marca": "a square jaw, smooth-skinned, with a beauty mark on one temple"},
+    {"idade": 30, "corpo": "shapely with a defined waist and long legs",
+     "cabeca": "sandy blonde hair in a claw-clipped twist",
+     "marca": "a wide mouth and a beauty mark on the left jaw"},
+    {"idade": 31, "corpo": "statuesque with a full figure and a narrow waist",
+     "cabeca": "ash-brown hair in long feathered layers",
+     "marca": "a wide full mouth and a small mole under the jaw"},
+    {"idade": 31, "corpo": "slim and sculptural with very straight posture",
+     "cabeca": "titian-red hair swept into a half-up twist",
+     "marca": "smooth-skinned with heavy freckling across both cheeks"},
+    {"idade": 31, "corpo": "tall and toned with square shoulders",
+     "cabeca": "long box braids gathered into a high crown",
+     "marca": "high round cheekbones and a small hoop in one nostril"},
+    {"idade": 31, "corpo": "lean and sculptural with a high waist",
+     "cabeca": "deep auburn hair in long loose waves",
+     "marca": "a straight nose and a small silver stud in one nostril"},
+    {"idade": 32, "corpo": "long-legged and slim with a sculpted waist",
+     "cabeca": "caramel-blonde hair in a deep centre part past the shoulders",
+     "marca": "an upturned nose and a faint dimple in one cheek"},
+    {"idade": 32, "corpo": "athletic and shapely with strong shoulders",
+     "cabeca": "dark auburn hair in a thick fishtail braid",
+     "marca": "smooth-skinned with a cleft chin and a level brow line"},
+    {"idade": 32, "corpo": "tall and lean with a long clean line",
+     "cabeca": "black hair cropped into a soft pixie",
+     "marca": "sharp cheekbones and a beauty mark above the lip"},
+    {"idade": 32, "corpo": "softly toned with a full figure and a small waist",
+     "cabeca": "chestnut hair in heavy glossy waves",
+     "marca": "a rounded jaw and a small birthmark behind one ear"},
+    {"idade": 33, "corpo": "tall and statuesque with a long line through the "
+                           "shoulders",
+     "cabeca": "copper hair in a blunt shoulder-length cut",
+     "marca": "a dusting of freckles and a level brow line"},
+    {"idade": 33, "corpo": "slim and strong with a narrow waist and long arms",
+     "cabeca": "dark brown hair in a slicked-back low ponytail",
+     "marca": "smooth-skinned with a defined cupid's bow and a mole on one "
+              "cheekbone"},
+    {"idade": 33, "corpo": "long-limbed and toned with a flat midriff",
+     "cabeca": "golden blonde hair in a loose braided crown",
+     "marca": "smooth-skinned with a small stud in the upper ear"},
+
+    # --- 21 a 27 anos: o registro `novinha` que o operador pediu em 08-05 ----
+    {"idade": 21, "corpo": "petite and shapely with a very narrow waist",
+     "cabeca": "butter-blonde hair in a high messy topknot",
+     "marca": "a rounded chin and a dimple in one cheek"},
+    {"idade": 21, "corpo": "tall and slim with long legs",
+     "cabeca": "raven-black hair in a blunt chin-length bob",
+     "marca": "heavy level brows and a beauty mark on the cheekbone"},
+    {"idade": 21, "corpo": "long-limbed and lean with a flat midriff",
+     "cabeca": "ginger hair in two loose braids",
+     "marca": "dense freckling from cheek to cheek"},
+    {"idade": 21, "corpo": "curvy and toned with a small waist",
+     "cabeca": "dark brown hair in a curtain fringe and long layers",
+     "marca": "a soft square jaw and a tiny gold hoop in one nostril"},
+    {"idade": 21, "corpo": "trim and athletic with a flat midriff",
+     "cabeca": "cherry-red dyed hair in a long straight cut",
+     "marca": "smooth-skinned with a small chin dimple"},
+    {"idade": 22, "corpo": "slim and athletic with square shoulders",
+     "cabeca": "bleached platinum hair in a cropped pixie",
+     "marca": "sculpted cheekbones and a cleft chin"},
+    {"idade": 22, "corpo": "tall and sculptural with a long torso",
+     "cabeca": "copper-red hair in a high sleek ponytail",
+     "marca": "smooth-skinned with a scatter of freckles over the nose"},
+    {"idade": 22, "corpo": "shapely with a full figure and a narrow waist",
+     "cabeca": "chestnut hair in a low loose bun",
+     "marca": "freckled over the nose, full lips and a small mole at the "
+              "jawline"},
+    {"idade": 22, "corpo": "trim and long-legged with a high waist",
+     "cabeca": "honey-blonde hair in a shoulder-length shag",
+     "marca": "an upturned nose and a dimple in one cheek only"},
+    {"idade": 22, "corpo": "curvy and toned with long legs",
+     "cabeca": "chocolate-brown hair in a high claw-clipped twist",
+     "marca": "a straight nose and a beauty mark high on one cheek"},
+    {"idade": 23, "corpo": "curvy and strong with a sculpted waist",
+     "cabeca": "tight coils gathered into a high puff",
+     "marca": "high round cheekbones and a small gold stud in one nostril"},
+    {"idade": 23, "corpo": "slim and supple with a straight back",
+     "cabeca": "dark red hair in a blunt long bob",
+     "marca": "smooth-skinned with a beauty mark below the right cheekbone"},
+    {"idade": 23, "corpo": "tall and lean with defined arms",
+     "cabeca": "black hair in a braided crown",
+     "marca": "a straight nose and a faint dimple in the chin"},
+    {"idade": 23, "corpo": "petite and toned with a small frame",
+     "cabeca": "caramel balayage in beachy waves",
+     "marca": "a wide full mouth and a mole above the lip"},
+    {"idade": 23, "corpo": "tall and slim with a high waist",
+     "cabeca": "ash-blonde hair in a blunt shoulder cut with a middle part",
+     "marca": "heavy level brows and a cleft chin"},
+    {"idade": 24, "corpo": "long-legged and slim with a narrow waist",
+     "cabeca": "ash-blonde hair in a sharp blunt bob",
+     "marca": "heavy arched brows and a small hoop in the upper ear"},
+    {"idade": 24, "corpo": "athletic and shapely with swimmer's shoulders",
+     "cabeca": "auburn hair in a thick rope braid",
+     "marca": "freckled cheeks and a strong straight nose"},
+    {"idade": 24, "corpo": "tall and statuesque with a long clean line",
+     "cabeca": "jet-black hair in a wet-look slick back",
+     "marca": "sharp cheekbones and a beauty mark on the jaw"},
+    {"idade": 24, "corpo": "curvy and compact with a defined waist",
+     "cabeca": "golden blonde hair in loose spiral curls",
+     "marca": "a rounded jaw and a dimple in each cheek"},
+    {"idade": 24, "corpo": "long-limbed and shapely with a narrow waist",
+     "cabeca": "deep burgundy-dyed hair in loose waves",
+     "marca": "smooth-skinned with a faint dusting of freckles"},
+    {"idade": 25, "corpo": "slim and sculptural with a flat midriff",
+     "cabeca": "dark chestnut hair in a middle part down to the waist",
+     "marca": "a narrow nose and a small birthmark on the temple"},
+    {"idade": 25, "corpo": "tall and toned with wide square shoulders and a "
+                           "narrow waist",
+     "cabeca": "ginger hair in a low twisted chignon",
+     "marca": "smooth-skinned with dense freckling over the nose"},
+    {"idade": 25, "corpo": "shapely and strong with a small waist",
+     "cabeca": "long micro braids gathered over one shoulder",
+     "marca": "sculpted cheekbones and a gold nose ring"},
+    {"idade": 25, "corpo": "long-limbed and lean with a high waist",
+     "cabeca": "platinum blonde hair in soft finger waves",
+     "marca": "a cleft chin and clear even skin"},
+    {"idade": 26, "corpo": "curvy and toned with a very narrow waist",
+     "cabeca": "mahogany-red hair in long layers",
+     "marca": "a full bow-shaped mouth and a mole on one cheek"},
+    {"idade": 26, "corpo": "tall and slim with a long torso",
+     "cabeca": "dark brown hair in a high crown braid",
+     "marca": "smooth-skinned with a soft rounded jaw and a small stud in one "
+              "nostril"},
+    {"idade": 26, "corpo": "athletic and lean with defined shoulders",
+     "cabeca": "light brown hair with blonde ends in a shoulder-length blunt "
+               "cut",
+     "marca": "smooth-skinned with a dimple in the left cheek"},
+    {"idade": 26, "corpo": "petite and shapely with a small frame",
+     "cabeca": "black hair in a sharp blunt fringe, straight to the waist",
+     "marca": "wide-set brows and a beauty mark above the lip"},
+    {"idade": 27, "corpo": "tall and long-limbed with a sculpted waist",
+     "cabeca": "strawberry-blonde hair in a loose fishtail braid",
+     "marca": "a light spray of freckles and a level brow line"},
+    {"idade": 27, "corpo": "slim and toned with a dancer's carriage",
+     "cabeca": "dark auburn hair in a sleek low bun",
+     "marca": "high cheekbones and a small mole beside the mouth"},
+    {"idade": 27, "corpo": "shapely with a full figure and a long waist",
+     "cabeca": "honey-brown hair in heavy waves",
+     "marca": "a wide mouth and a dimple in one cheek"},
+    {"idade": 27, "corpo": "lean and strong with square shoulders",
+     "cabeca": "tight dark curls cropped close at the sides and full on top",
+     "marca": "a sharp jaw and a row of small gold hoops in one ear"},
 ]
 
 # ⭐⭐ A ROUPA DO MODO. *"pouca roupa"*, e o eixo que o operador chamou de bullet
@@ -1557,6 +1766,49 @@ ROUPAS_BELAS = [
      "single-button cardigan"),
     ("%s lace-trimmed cami with a short flared skirt", "lace-trimmed cami"),
     ("%s wrapped halter fastened behind with very short shorts", "tied halter"),
+
+    # ⭐ AMPLIACAO 2026-08-13 — *"aumente o pool de opcoes substancialmente"*.
+    # 16 -> 34 silhuetas. ⛔ O EIXO E' O CORTE, NAO A COR: a cor ja' e' um pool
+    # separado (CORES_BELAS), entao acrescentar `%s` em vinte variacoes da mesma
+    # peca so' multiplicaria uniforme. Cada entrada abaixo muda a CONSTRUCAO —
+    # bandeau, bodysuit, romper, mesh por cima, camisa amarrada, macaquinho.
+    # ⛔ E CONTINUA SEM: `neckline` (contem `neck`, e o EX7 do DUPLA vigia
+    # `neck` ao lado do molusco), `low-rise` (contem `rise`, vocabulario de
+    # CRESCIMENTO do BO2), `thigh`/`lap` (tokens banidos da cena do COLO),
+    # `dungarees`/`overall` (a BO9 do BOTICA 16 reprova macacao aqui dentro) e
+    # roupa de banho (*"sem extremo de biquini"*, operador 2026-08-05).
+    ("%s bandeau top under an open cropped shirt, with a very short skirt",
+     "bandeau and shirt"),
+    ("%s scoop-front bodysuit worn with a very short denim skirt",
+     "scoop bodysuit"),
+    ("%s cropped halter with a tie front and short pleated shorts",
+     "tie-front halter"),
+    ("%s square-front crop top with a short button-through skirt",
+     "square-front crop"),
+    ("%s sleeveless mock polo cropped at the waist, with a tennis skirt",
+     "cropped polo"),
+    ("%s tube top under a small open denim jacket, with a mini skirt",
+     "tube top and jacket"),
+    ("%s deep V-front camisole with very short shorts", "V-front camisole"),
+    ("%s cropped mesh long-sleeve over a fitted crop top, with a mini skirt",
+     "mesh crop"),
+    ("%s asymmetric one-shoulder mini dress", "one-shoulder dress"),
+    ("%s ruched bodycon mini dress with thin straps", "ruched mini dress"),
+    ("%s cropped hoodie cut short above the waist, with running shorts",
+     "cropped hoodie"),
+    ("%s wrap top tied at the side, with a very short flared skirt",
+     "side-tied wrap top"),
+    ("%s linen shirt knotted at the waist over a crop top, with cut-off shorts",
+     "knotted linen shirt"),
+    ("%s strappy cami with a lace hem and a very short skirt", "strappy cami"),
+    ("%s racer-front tank cropped high, with tight short shorts",
+     "racer tank"),
+    ("%s velvet mini dress with long sleeves and a very short hem",
+     "velvet mini dress"),
+    ("%s button-front crop shirt left open at the top, with a denim mini skirt",
+     "open crop shirt"),
+    ("%s halter romper with a very short hem and an open back",
+     "halter romper"),
 ]
 
 # ⛔⛔ O POOL ACIMA NAO USA VOCABULARIO QUE AS LENTES DO REPO VIGIAM. Tres
@@ -1600,11 +1852,42 @@ OLHOS_BELAS = [
     "one blue eye and one green eye",
     "deep indigo-blue eyes",
     "pale gold-flecked green eyes",
+
+    # ⭐ AMPLIACAO 2026-08-13 — *"aumente o pool de opcoes substancialmente"*.
+    # 14 -> 30. ⛔ MESMA REGRA DA PRIMEIRA LEVA: cor e LUZ, nunca acessorio —
+    # `contact lenses` o gerador entrega como objeto e o artificio mata o
+    # "mulher de verdade na cozinha". Por isso a palavra `lenses` nao aparece
+    # aqui (ela ainda casaria com o eixo OCULOS do medir_personagens, e a Lei
+    # do REF e' zero oculos).
+    "clear sea-green eyes",
+    "pale aquamarine eyes",
+    "dark honey-gold eyes",
+    "storm-grey eyes",
+    "deep sapphire-blue eyes",
+    "bright copper-brown eyes",
+    "violet-grey eyes with a dark rim",
+    "clear jade-green eyes",
+    "silvery grey eyes that catch the light",
+    "light moss-green eyes",
+    "warm topaz eyes",
+    "dark eyes with a bright amber ring",
+    "pale lilac-blue eyes",
+    "vivid bottle-green eyes",
+    "burnished bronze eyes",
+    "one pale green eye and one warm brown eye",
 ]
 
+# ⭐ AMPLIACAO 2026-08-13 — 12 -> 26 cores. ⛔ A PALETA CONTINUA AMERICANA DE
+# RUA: nada de ochre, terracotta, sand, sage, rust ou burnt orange, que o
+# gerador le como traje etnico (*"norte americano costuma usar roupa de
+# tribo?"*, operador). E nada de `nude`, que num pool de roupa curta o gerador
+# resolve tirando a roupa.
 CORES_BELAS = ["black", "white", "scarlet", "cobalt", "hot pink", "emerald",
                "burgundy", "silver", "cream", "dusty rose", "gold",
-               "denim blue"]
+               "denim blue",
+               "navy", "royal blue", "lavender", "mint green", "cherry red",
+               "charcoal", "ivory", "blush pink", "electric blue", "plum",
+               "teal", "coral", "champagne", "wine red"]
 
 # ⛔ A CLAUSULA. Sem ela o gerador recebe "linda" no corpo e `ordinary relatable
 # face, not a model` no rosto NA MESMA FRASE — o CLEAN pagou essa contradicao em

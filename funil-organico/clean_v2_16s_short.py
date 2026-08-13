@@ -893,6 +893,114 @@ MUNDOS = [
      "luz": "Cool courtyard shade with hot sun on the far wall.",
      "luz_c": "cool courtyard shade",
      "audio": "birds, a fountain somewhere"},
+
+    # ⭐⭐ + 2026-08-13 — SEIS MUNDOS NOVOS EM TRES FAMILIAS NOVAS, ordem do
+    # operador: *"aumente o pool de opcoes substancialmente, tambem dos
+    # ambientes"*. 20 -> 26 mundos, 10 -> 13 familias.
+    # ⛔ CADA UM DECLARA AS TREZE CHAVES DOS VINTE DE CIMA — `id`, `selo`,
+    # `familia`, `etnias`, `desc`, `sup_a`, `sup`, `traje`, `curto`, `cores`,
+    # `luz`, `luz_c`, `audio`. Nada de herdar da CLINICA por setdefault: aquele
+    # dict e' a tabela de defaults do mundo clinico, que saiu daqui em
+    # 2026-08-05, e deixar um mundo novo cair nele devolve consultorio.
+    # ⛔ E CADA UM E' O NICHO VISUAL INTEIRO, nao um fundo trocado: cenario +
+    # etnias + traje + cores + luz + ambiencia juntos, que e' a forma do NE5.
+    # Trocar so' o rosto e' exatamente o que o operador reprovou na v1 do V2.
+    # ⭐ COBERTURA DE ETNIA — nenhuma encolheu. `white American` sobe de 2 para
+    # 4 mundos, `Black American` de 6 para 8, `Creole American` de 2 para 4 e
+    # `Hispanic`/`Mexican American` de 2 para 4 cada. ⚠️ Zero etnia NOVA de
+    # proposito: string inedita nao esta' em `PELE_VETO` nem em
+    # `SEM_PALAVRA_RACA`, entao ela entraria elegivel para as DUAS peles e sem
+    # regra de palavra — furo silencioso na trava que o operador mandou
+    # respeitar. Os pisos de pele (>=5 etnias e >=6 mundos) sobem nos dois lados.
+    # ⛔ ZERO texto legivel: os potes sao `unlabelled`, como as gavetas do
+    # ervanario. ⛔ ZERO objeto religioso, mesma regra dos vinte de cima.
+    # ⚠️ Nos quatro mundos de `table`/`worktop` a palavra `counter` nao aparece
+    # em lugar nenhum do `desc` — a invariante [2] do autoteste varre o bloco
+    # inteiro e acusa `counter` sobrando em mundo que nao tem balcao.
+
+    # ---- curandeirismo andino ----------------------------------------------
+    {"id": "andina_oficina", "selo": "N", "familia": "andina",
+     "etnias": ["Hispanic American", "Mexican American"],
+     "desc": "a small highland herb workshop, shelves of woven baskets holding "
+             "dried roots and bundled leaves ranged behind %s, striped "
+             "handwoven cloth folded on a bench and pale mountain light "
+             "falling in through the open doorway",
+     "sup_a": "a heavy timber worktop", "sup": "worktop",
+     "traje": "%s embroidered wool waistcoat over a plain shirt",
+     "curto": "wool waistcoat",
+     "cores": ["deep red", "natural cream", "burnt orange", "dark indigo"],
+     "luz": "Cool high-altitude daylight from the doorway, clean and even.",
+     "luz_c": "cool doorway daylight",
+     "audio": "wind outside, a dog barking far off"},
+    {"id": "andina_patio", "selo": "N", "familia": "andina",
+     "etnias": ["Hispanic American", "Mexican American"],
+     "desc": "a stone-walled courtyard high in the mountains, terracotta pots "
+             "of herbs stacked along a low ledge behind %s, strings of dried "
+             "corn hanging from a beam and terraced green slopes beyond the "
+             "wall",
+     "sup_a": "a rough granite table", "sup": "table",
+     "traje": "%s woven cotton shirt with a stand collar",
+     "curto": "stand-collar shirt",
+     "cores": ["off-white", "clay red", "deep green", "slate blue"],
+     "luz": "Bright thin mountain sunlight with hard shadows on the stone.",
+     "luz_c": "bright mountain sunlight",
+     "audio": "wind over the terraces, birds"},
+
+    # ---- ilhas do Lowcountry ------------------------------------------------
+    {"id": "gullah_varanda", "selo": "N", "familia": "gullah",
+     "etnias": ["Black American", "Creole American"],
+     "desc": "the porch of a sea-island cottage, sweetgrass baskets and "
+             "bundles of dried marsh herbs hanging from the rafters behind "
+             "%s, blue-painted trim on the posts and salt marsh running out "
+             "to open water",
+     "sup_a": "a scrubbed cypress table", "sup": "table",
+     "traje": "%s open-collar cotton shirt",
+     "curto": "open-collar shirt",
+     "cores": ["pale indigo", "white", "sun-faded green", "soft coral"],
+     "luz": "Bright coastal daylight in open shade, softly bounced off the "
+            "water.",
+     "luz_c": "bright coastal shade",
+     "audio": "marsh birds, wind in the grass"},
+    {"id": "gullah_cozinha", "selo": "N", "familia": "gullah",
+     "etnias": ["Black American", "Creole American"],
+     "desc": "a lowcountry kitchen with wide painted boards, a tall dresser of "
+             "unlabelled glass jars behind %s, dried okra and red peppers "
+             "strung above the stove and a window onto live oaks hung with "
+             "moss",
+     "sup_a": "a scrubbed pine counter", "sup": "counter",
+     "traje": "%s crisp cotton overshirt",
+     "curto": "cotton overshirt",
+     "cores": ["deep teal", "cream", "warm ochre", "faded red"],
+     "luz": "Warm daylight filtered through the oaks, soft and green-tinted.",
+     "luz_c": "warm filtered daylight",
+     "audio": "cicadas outside, a screen door"},
+
+    # ---- estilaria de fazenda das planicies --------------------------------
+    {"id": "pradaria_estilaria", "selo": "N", "familia": "pradaria",
+     "etnias": ["white American"],
+     "desc": "a farmhouse stillroom, a long wall of open pine shelves crowded "
+             "with unlabelled glass jars behind %s, bunches of dried yarrow "
+             "and mint hanging from a rail and a small square window onto "
+             "flat open fields",
+     "sup_a": "a wide pine worktop", "sup": "worktop",
+     "traje": "%s pressed chambray shirt with the sleeves rolled to the elbow",
+     "curto": "chambray shirt",
+     "cores": ["faded blue", "bone white", "dark olive", "barn red"],
+     "luz": "Even prairie daylight from the small window, low contrast.",
+     "luz_c": "even prairie daylight",
+     "audio": "wind across open ground, a windmill turning"},
+    {"id": "pradaria_alpendre", "selo": "N", "familia": "pradaria",
+     "etnias": ["white American"],
+     "desc": "the covered porch of a plains farmhouse, drying screens of herbs "
+             "stacked on a bench behind %s, a white-painted rail and a line of "
+             "cottonwoods standing against flat open country",
+     "sup_a": "a bare oak table", "sup": "table",
+     "traje": "%s denim work shirt open at the collar",
+     "curto": "denim work shirt",
+     "cores": ["washed indigo", "sand", "moss green", "charcoal"],
+     "luz": "Wide flat daylight under the porch roof, bright and shadowless.",
+     "luz_c": "wide flat daylight",
+     "audio": "wind in the cottonwoods, a tractor far off"},
 ]
 
 # ⛔ CONTRATO DO MUNDO CLINICO — copia literal do v2 anterior. Os 6 sets da
@@ -937,10 +1045,26 @@ FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
 # `--autoteste` confere contra o arquivo real quando ele existe ao lado.
 # ⛔ O `assinatura` pega o caso que o id sozinho nao pega: cenario clinico
 # reescrito com id novo continua sendo o territorio do V1.
+# ⭐⭐ ATUALIZADA EM 2026-08-13, NO MESMO COMMIT em que o V1 foi de 6 para 18
+# cenarios (ordem do operador: *"aumente o pool de opcoes substancialmente,
+# tambem dos ambientes"*). ⛔ ESTA LINHA NAO E' DECORACAO: o controle [6] do
+# `--autoteste` compara esta copia congelada com `clean_short.CENARIOS` e grita
+# `AUTOTESTE ESTA' CEGO` quando as duas divergem. Ampliar o V1 sem tocar aqui
+# transformaria o unico guarda de territorio num alarme permanente — e alarme
+# permanente e' alarme que o operador aprende a ignorar (licoes §16).
+# ⚠️ As 12 novas sao clinicas como as 6 antigas, entao as quatro assinaturas
+# abaixo continuam cobrindo o territorio inteiro do V1 e nenhum mundo do V2
+# precisou mudar (o assert de carga logo abaixo prova).
 CENARIOS_V1 = ("diplomas_cidade", "diplomas_jardim", "farmacia",
-               "consultorio_claro", "sala_exame", "escritorio_livros")
+               "consultorio_claro", "sala_exame", "escritorio_livros",
+               "consultorio_madeira", "sala_ultrassom", "consultorio_azul",
+               "sala_espera", "laboratorio", "consultorio_tijolo",
+               "sala_terapia", "consultorio_verde", "farmacia_balcao",
+               "sala_reuniao", "consultorio_cinza", "consultorio_terraco")
 _ASSINATURA_V1 = ("bright medical office", "bright clinic room",
-                  "bright consulting room", "bright examination room")
+                  "bright consulting room", "bright examination room",
+                  "bright waiting room", "bright laboratory room",
+                  "bright therapy room")
 for _m in MUNDOS:
     assert _m["id"] not in CENARIOS_V1, (
         "mundo %r e' cenario do V1 — o V2 nao repete o V1" % _m["id"])
@@ -993,7 +1117,7 @@ REFS_M = [
     {"idade": 29, "cabeca": "her hair in neat glossy cornrows pulled back",
      "marca": "a small dark beauty mark above her left eyebrow"},
     {"idade": 32, "cabeca": "her hair in a sleek shining low bun",
-     "marca": "high cheekbones and a small scar at the corner of her jaw"},
+     "marca": "high cheekbones and a small dark beauty mark at the corner of her jaw"},
     {"idade": 27, "cabeca": "shoulder-length glossy straight hair tucked behind her ears",
      "marca": "a light spray of freckles high on her cheeks"},
     {"idade": 34, "cabeca": "short soft natural curls, glossy and well-defined",
@@ -1039,44 +1163,44 @@ REFS_M = [
      "marca": "a small heart-shaped birthmark below her right ear"},
 ]
 REFS_H = [
-    {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a small scar through his right eyebrow"},
-    {"idade": 52, "cabeca": "a clean-shaven head and a short grey beard", "marca": "deep lines across his forehead"},
+    {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a deep cleft in his chin"},
+    {"idade": 52, "cabeca": "a clean-shaven head and a short grey beard", "marca": "heavy level brows over wide-set eyes"},
     {"idade": 44, "cabeca": "short dark hair combed back, clean-shaven", "marca": "a small mole on his left cheek"},
-    {"idade": 55, "cabeca": "thinning grey hair and a full grey moustache", "marca": "heavy creases at the corners of his eyes"},
-    {"idade": 41, "cabeca": "short cropped hair and a neat goatee", "marca": "a faint scar on his chin"},
+    {"idade": 55, "cabeca": "thinning grey hair and a full grey moustache", "marca": "laugh lines at the corners of his eyes"},
+    {"idade": 41, "cabeca": "short cropped hair and a neat goatee", "marca": "a small gold stud in his left earlobe"},
     {"idade": 50, "cabeca": "salt-and-pepper hair cut short, clean-shaven", "marca": "a small notch in his right eyebrow"},
     # + 2026-08-03 — mesmo motivo do REFS_M acima: oculos e pele estavam em 0%.
     # ⛔ Nenhuma repete a ancora facial das seis de cima (cicatriz na
     # sobrancelha, linhas na testa, pinta na bochecha, vincos no olho, cicatriz
     # no queixo, entalhe na sobrancelha): ancora repetida remenda o morphing.
     {"idade": 57, "cabeca": "a bald crown with grey at the sides and a chevron moustache, thin gold-rimmed glasses",
-     "marca": "sun-weathered skin and a coin-sized birthmark on his left temple"},
+     "marca": "lightly tanned even skin and a coin-sized birthmark on his left temple"},
     {"idade": 43, "cabeca": "thick dark hair with a sharp widow's peak, clean-shaven, boxy clear-framed glasses",
      "marca": "freckled skin across the bridge of his nose"},
     {"idade": 61, "cabeca": "a full head of white hair and a bristly white beard, heavy black-framed bifocals",
-     "marca": "deeply lined skin and a pale scar along his right jaw"},
+     "marca": "smooth even skin and a wide easy smile"},
     # + 2026-08-04: ampliacao por ordem do operador, espelhada do clean_short
     # no rebase. A ultima chegou com `a wide gap between his two front teeth`
     # de marca — o assert do CL25 barrou (dente vira banguelo no Veo) e ela
     # entra ja' corrigida, identica ao v1.
     {"idade": 52,
      "cabeca": "a shaved head and a full salt-and-pepper beard",
-     "marca": "a broad flattened nose that has been broken once"},
+     "marca": "a broad straight nose with a wide bridge"},
     {"idade": 45,
      "cabeca": "thick dark hair going grey at the temples, clean-shaven",
-     "marca": "a deep vertical crease between his eyebrows"},
+     "marca": "a patch of white hair above his left temple"},
     {"idade": 57,
      "cabeca": "close-cropped iron-grey hair and a neat pencil moustache",
-     "marca": "wire-rimmed glasses and a heavy square jaw"},
+     "marca": "wire-rimmed glasses and high wide cheekbones"},
     {"idade": 41,
      "cabeca": "dark curls kept short and dense, a two-day shadow",
      "marca": "a notch cut through his right eyebrow"},
     {"idade": 60,
      "cabeca": "a bald crown with white hair close at the sides",
-     "marca": "a thick white moustache and heavy hooded eyelids"},
+     "marca": "a thick white moustache and a small dark beauty mark below his right eye"},
     {"idade": 49,
      "cabeca": "wavy salt-and-pepper hair worn long at the collar",
-     "marca": "a pale crescent scar on his left cheekbone"},
+     "marca": "a light spray of freckles across the bridge of his nose"},
     {"idade": 54,
      "cabeca": "grey hair in a flat brush cut and a short greying beard",
      "marca": "very pale blue eyes under dark brows"},
@@ -1085,6 +1209,28 @@ REFS_H = [
      "marca": "a single deep dimple in his left cheek"},
 ]
 
+# ⭐⭐ 2026-08-13 — DOZE MARCAS FACIAIS REESCRITAS, ordem do operador:
+# *"melhore a aparencia e shape desses homens"*. Onze no REFS_H e uma no
+# REFS_M, e o motivo e' um so': elas descreviam DANO, nao feicao.
+#   · cicatriz (4x): `a small scar through his right eyebrow`, `a faint scar on
+#     his chin`, `a pale crescent scar on his left cheekbone`, `a pale scar
+#     along his right jaw` — e no feminino `a small scar at the corner of her
+#     jaw`, que ainda por cima contrariava o proprio bloco acima ("ancora
+#     DISTINTIVA e nunca DETERIORADA").
+#   · pele castigada (2x): `sun-weathered skin`, `deeply lined skin`.
+#   · vinco e ruga (3x): `deep lines across his forehead`, `heavy creases at the
+#     corners of his eyes`, `a deep vertical crease between his eyebrows`.
+#   · nariz quebrado: `a broad flattened nose that has been broken once`.
+#   · palpebra caida: `heavy hooded eyelids`.
+#   · e uma PALAVRA DE APROVACAO: `a heavy square jaw`. Elogio no prompt puxa o
+#     rosto para a media do banco de imagem — mesmo mecanismo pelo qual dizer
+#     "not a celebrity" invoca a celebridade. Descreve-se FEICAO, nunca juizo.
+# ⛔ CADA UMA MANTEVE O EIXO QUE CARREGAVA (oculos, pele, porte, careca) e
+# trocou so' a ancora, por uma do lado ✅: covinha, fenda no queixo, mecha
+# branca na tempora, sarda, malar alto, linhas de riso, argola, beleza-marca,
+# sobrancelha cheia e reta.
+# ⚠️ As doze estao IDENTICAS nos tres motores da familia CLEAN — o fragmento
+# nao pode envelhecer separado.
 # ⛔ CL25 — assert de carga: nenhuma marca facial volta a pedir defeito de
 # dente. O gap "saiu" uma vez SO' NA DOUTRINA e continuou no motor ate' a foto
 # de campo de 2026-08-04 — regra sem assert e' regra que volta.
@@ -1145,6 +1291,31 @@ CORPOS_H = [
     "a lean hard frame with a flat stomach and a visible line down the centre, shoulders square, skin clear",
     "the heavy-boned build of a wrestler, a thick neck and broad flat chest, arms full and solid, skin healthy",
     "a swimmer's build, long muscled arms and a wide back tapering to the waist, shoulders capped and round, skin clear",
+    # ⭐⭐ + 2026-08-13 — NOVE CORPOS NOVOS, ordem do operador: *"melhore a
+    # aparencia e shape desses homens"* / *"aumente o pool de opcoes
+    # substancialmente"*. 9 -> 18.
+    # ⛔ IDENTICO NOS TRES MOTORES DA FAMILIA CLEAN (clean_short,
+    # clean_v1_16s, clean_v2_16s). Eles nasceram por copia literal; pool que
+    # diverge entre irmaos deixa de ter fonte da verdade e envelhece separado.
+    # ⛔ O TETO DO CL24 CONTINUA: atleta, NAO fisiculturista. Zero musculo
+    # estourado, zero corpo oleado, zero veia de competicao, zero definicao de
+    # palco — o registro do CLEAN e' consultorio, e passar disso vira outro
+    # angulo. E o CL8 tambem: nunca tronco nu, o corpo aparece PELA roupa.
+    # ⚠️ Cada linha e' curta e ancorada em GEOMETRIA (ombro, costas, antebraco,
+    # veia) em vez de empilhar adjetivo — densidade de adjetivo de corpo e'
+    # superficie de bloqueio conhecida do gerador de imagem (2026-08-03). Se
+    # vier recusa, a primeira coisa a encurtar continua sendo esta.
+    # ⛔ Zero palavra de aprovacao (`handsome`, `chiseled`, `rugged`): elogio
+    # puxa o rosto para a media do banco de imagem. O que entra e' FORMA.
+    "the compact powerful build of a gymnast, thick shoulders and a deep chest, forearms tight and veined, skin clear and even",
+    "a boxer's frame, wide across the back and narrow at the waist, cords standing out in the forearms, good colour in his face",
+    "a heavy rower's build, thick through the upper back and shoulders, veins tracking down each forearm, skin healthy",
+    "the solid build of a man who trains every day, round shoulder caps and a thick chest, hands and forearms plainly worked",
+    "a tall powerful frame with long thick arms and a broad chest, veins raised along each forearm, clearly in good health",
+    "a stocky trained build, a short thick neck and heavy shoulders, forearms full and corded, skin clear",
+    "the athletic build of a climber, lean and dense through the shoulders and back, forearms closely veined, healthy colour",
+    "a broad athletic frame, thick traps rising to the neck, arms heavy and veined, skin clear and taut",
+    "the trained build of a former athlete, still thick through the chest and shoulders, forearms roped, skin even and healthy",
 ]
 # ---------------------------------------------------------------------------
 # ⭐⭐ CL26 — O CORPO FEMININO E' SENSUAL, NUNCA MUSCULOSO (2026-08-04)
@@ -2828,6 +2999,58 @@ TETO_LEDGER = {"familia": len(FAMILIAS), "mundo_familia": len(FAMILIAS_MUNDO),
                "despejo": 8}
 
 
+# ⭐⭐ + 2026-08-13 — A SONDA DE APARENCIA, que este motor nao tinha.
+# Ordem do operador: *"melhore a aparencia e shape desses homens"*. O
+# `--autoteste` daqui media o eixo MUNDO com rigor e NAO OLHAVA UMA LINHA dos
+# pools de gente — foi por isso que onze marcas de dano (cicatriz, pele
+# castigada, vinco, nariz quebrado, palpebra caida) sobreviveram no REFS_H ate'
+# hoje sem ninguem tropecar nelas.
+# ⛔ A lista de aprovacao vale SO' no pool masculino: no CORPOS_M `beautiful` e'
+# exigido por assert de carga (CL26), e sonda que ignora essa assimetria
+# reprovaria justamente a regra que o operador mandou escrever.
+_DETERIORACAO = (
+    "scar", "broken nose", "chipped tooth", "missing tooth", "gap between",
+    "sun damage", "sun-weathered", "weathered", "ruddy", "thin skin",
+    "loose skin", "age spot", "sunken", "gaunt", "bony", "hollow", "leathery",
+    "deeply lined", "deep lines", "crease between", "hooded eyelid",
+)
+_APROVACAO_H = ("handsome", "chiseled", "rugged", "strong jaw", "square jaw",
+                "piercing eyes", "good-looking", "not a celebrity",
+                "not famous", "not a model")
+
+
+def _medir_gente(refs_m, refs_h, corpos_h, corpos_m):
+    """Os pools de PESSOA, medidos — nunca declarados.
+
+    ⛔ Entram por ARGUMENTO para que o sabotador possa plantar uma entrada suja
+    sem encostar no motor de verdade. Trava que so' sabe olhar o global nao pode
+    ser testada, e trava nao testada e' decoracao.
+    """
+    achados = []
+    for nome, pool, piso in (("REFS_M", refs_m, 17), ("REFS_H", refs_h, 17),
+                             ("CORPOS_H", corpos_h, 18), ("CORPOS_M", corpos_m, 5)):
+        if len(pool) < piso:
+            achados.append("pool %s com %d entradas (piso %d)"
+                           % (nome, len(pool), piso))
+        txt = [str(x) for x in pool]
+        for x in sorted({t for t in txt if txt.count(t) > 1}):
+            achados.append("pool %s tem entrada REPETIDA: %s" % (nome, x[:70]))
+        for x in txt:
+            baixo = x.lower()
+            for t in _DETERIORACAO:
+                if t in baixo:
+                    achados.append("pool %s: ancora DETERIORADA %r em %s"
+                                   % (nome, t, x[:60]))
+    for nome, pool in (("REFS_H", refs_h), ("CORPOS_H", corpos_h)):
+        for x in pool:
+            baixo = str(x).lower()
+            for t in _APROVACAO_H:
+                if t in baixo:
+                    achados.append("pool %s: palavra de aprovacao/negacao %r em "
+                                   "%s" % (nome, t, str(x)[:60]))
+    return achados
+
+
 def autoteste(n=600):
     """As invariantes do eixo MUNDO, medidas — e com CONTROLE POSITIVO.
 
@@ -2836,7 +3059,7 @@ def autoteste(n=600):
     prova e' o motor rodando 600 vezes e um sabotador confirmando que cada
     checagem SABE reprovar.
     """
-    falhas = []
+    falhas = list(_medir_gente(REFS_M, REFS_H, CORPOS_H, CORPOS_M))
     vistos_mundo, vistos_etnia, vistos_fam = set(), set(), collections.Counter()
 
     for seed in range(n):
@@ -2900,6 +3123,39 @@ def autoteste(n=600):
         if not (_ids1 & set(CENARIOS_V1)) or set(CENARIOS_V1) != _ids1:
             ctrl.append("[6] a copia congelada CENARIOS_V1 divergiu do V1 real: "
                         "%s" % sorted(_ids1 ^ set(CENARIOS_V1)))
+        # ⭐⭐ [7] PARIDADE DE IRMAO, criada em 2026-08-13. O V1 e o V2 nao
+        # dividem territorio de CENARIO, mas dividem os pools de GENTE: eles
+        # nasceram por copia literal e o CL24/CL26 vale igual nos dois. Quando
+        # um dos lados cresce e o outro nao, ninguem descobre por leitura —
+        # descobre-se por render, meses depois, olhando dois lotes diferentes.
+        # ⚠️ Roda so' no repo; no .exe o V1 nao viaja junto e o par nao existe.
+        for _nome in ("CORPOS_H", "CORPOS_M", "REFS_M", "REFS_H"):
+            if getattr(_v1, _nome, None) != globals()[_nome]:
+                falhas.append("pool %s DIVERGIU do clean_short — motores irmaos "
+                              "andam juntos" % _nome)
+
+    # ⭐ Os sabotadores da sonda de aparencia (2026-08-13): ela SABE reprovar?
+    _sujo = dict(REFS_H[0])
+    _sujo["marca"] = "a pale crescent scar on his left cheekbone"
+    if not any("DETERIORADA" in m
+               for m in _medir_gente(REFS_M, REFS_H + [_sujo], CORPOS_H, CORPOS_M)):
+        ctrl.append("[gente] a sonda NAO acusa `scar` plantado no REFS_H")
+    _pele = dict(REFS_M[0])
+    _pele["marca"] = "sun-weathered skin and full lips"
+    if not any("DETERIORADA" in m
+               for m in _medir_gente(REFS_M + [_pele], REFS_H, CORPOS_H, CORPOS_M)):
+        ctrl.append("[gente] a sonda de aparencia NAO alcanca o pool FEMININO")
+    _elogio = dict(REFS_H[0])
+    _elogio["marca"] = "a heavy square jaw and dark brows"
+    if not any("aprovacao" in m
+               for m in _medir_gente(REFS_M, REFS_H + [_elogio], CORPOS_H, CORPOS_M)):
+        ctrl.append("[gente] a sonda NAO acusa aprovacao no pool masculino")
+    # ⛔ E a metade que fecha o par: ela NAO pode encostar no CORPOS_M, onde
+    # `beautiful` e' contrato (assert de carga do CL26).
+    if any("CORPOS_M" in m and "aprovacao" in m
+           for m in _medir_gente(REFS_M, REFS_H, CORPOS_H, CORPOS_M)):
+        ctrl.append("[gente] a sonda de aprovacao reprova o CORPOS_M, onde a "
+                    "beleza facial e' CONTRATO (CL26)")
 
     s = sortear("joe", random.Random(1), {}, {})
     s["etnia"] = "Martian"

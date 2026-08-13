@@ -479,12 +479,14 @@ EXCECOES = {
     # quebraria a congruencia de mundo.
     # ⚠️ O pool FEMININO destes dois motores TEM `etnia` dentro, e por isso
     # `pele` la' nao aparece zerado. A assimetria e' de proposito.
-    ("good16_short.py", "HOMENS", "pele"):
-        "CONTRATO DO MOTOR — identico ao falta_short.py: pool sem etnia, "
-        "quem injeta e' a trava de pagina.",
-    ("bed16_short.py", "HOMENS", "pele"):
-        "CONTRATO DO MOTOR — identico ao falta_short.py: pool sem etnia, "
-        "quem injeta e' a trava de pagina.",
+
+    # ⛔⛔ TRES EXCECOES DE `pele` SAIRAM EM 2026-08-13 (good16, bed16, fight16).
+    # Elas isentavam pools que NAO tinham marcador de pele nenhum; quando os
+    # pools foram ampliados e saneados, a pele saudavel entrou e a isencao virou
+    # LETRA MORTA. ⭐ E quem avisou foi o proprio gate, na secao "EXCECAO
+    # DECLARADA QUE NAO ESTA' MAIS ZERADA" — excecao que sobrevive ao motivo
+    # dela e' pior que excecao nenhuma: ela autoriza em silencio o defeito
+    # voltar.
 
     # ⛔ LEI DO REF nos pools femininos que NASCERAM em MODO BELA. A prova nao
     # e' o nome do pool, e' o conteudo dele: idades 24-34 e descritores de
@@ -506,9 +508,6 @@ EXCECOES = {
     # ⚠️ Conferidas UMA A UMA lendo os blocos montados, nao supostas por analogia
     # com o motor irmao. A analogia so' vale onde o contrato e' literalmente o
     # mesmo, e esta' dito em cada linha qual e'.
-    ("fight16_short.py", "HOMENS", "pele"):
-        "CONTRATO DO MOTOR — identico ao falta_short.py e ao bed16_short.py: "
-        "pool sem etnia, quem injeta e' a trava de pagina.",
     # ⛔ A CENA NAO COMPORTA OCULOS, e isso e' verificavel nos dois blocos: no
     # take 1 ele acabou de sair do banho (tronco nu, TOALHA na cintura) e num
     # dos dez ambientes do take 2 ele esta' DENTRO da agua, com a agua no peito.

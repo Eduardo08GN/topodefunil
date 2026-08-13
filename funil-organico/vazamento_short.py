@@ -202,6 +202,80 @@ COZINHAS = [
      "set": "a modest American kitchen, sage green cabinets, a hanging spider "
             "plant, a small American flag on a stand next to the cookie jar",
      "luz": "Warm overhead kitchen light, slight shadow under the chin."},
+
+    # ---- as doze novas de 2026-08-13 ---------------------------------------
+    # Ordem do operador: *"aumente o pool de opcoes substancialmente, tambem
+    # dos ambientes"*. Pool de 12 para 24.
+    # ⛔⛔ A CLAUSULA DA BANDEIRA TEM DE SER A ULTIMA E TEM DE SER REMOVIVEL.
+    # O eixo `bandeira` e' 50/50 (ordem do operador, 2026-08-04) e a remocao e'
+    # feita por `sc.tirar_bandeira`, cujo regex exige `, a|an|the [small ]
+    # American flag ...` SEM virgula dentro da clausula. Entrada nova que ponha
+    # a bandeira no meio da frase, ou com virgula dentro, deixa lixo de prosa
+    # (`, ,` / `and ,`) e o `lint_bandeira` reprova no texto MONTADO.
+    # ⚠️ REGISTRO SOCIOECONOMICO: nada de sinal de carencia (balde, esmalte
+    # lascado, armario vazio). E' a licao paga no RECEITA — *"nao quero
+    # ambiente tao humilde assim, nao passa muito credibilidade"* — e quem vende
+    # receita caseira precisa parecer que a casa dele funciona.
+    {"id": "cozinha_ilha",
+     "set": "a modest American kitchen, a small butcher-block island in the "
+            "middle, open shelves of white crockery, a small American flag on "
+            "a stand beside the kettle",
+     "luz": "Neutral overhead kitchen light, even and shadowless."},
+    {"id": "cozinha_ceramica",
+     "set": "a modest American kitchen, hand-painted ceramic tile behind the "
+            "stove, a cast-iron kettle on the burner, a small American flag on "
+            "a stand above the microwave",
+     "luz": "Warm overhead kitchen light, slight shadow under the chin."},
+    {"id": "cozinha_janelao",
+     "set": "a modest American kitchen, a wide window over the sink looking "
+            "onto the yard, a row of potted herbs on the sill, a small "
+            "American flag on a stand by the dish rack",
+     "luz": "Neutral daylight through the window over the sink, soft and even."},
+    {"id": "cozinha_cinza",
+     "set": "a modest American kitchen, slate gray cabinets with brushed steel "
+            "handles, a paper towel holder by the stove, a small American flag "
+            "on a stand next to the coffee maker",
+     "luz": "Cool white overhead kitchen light, flat and even."},
+    {"id": "cozinha_amarela",
+     "set": "a modest American kitchen, buttery yellow walls, a wall-mounted "
+            "telephone by the doorway, a small American flag on a stand on the "
+            "counter by the sink",
+     "luz": "Warm overhead kitchen light, slight shadow under the chin."},
+    {"id": "cozinha_porta_tela",
+     "set": "a modest American kitchen with a screen door standing open onto "
+            "the back steps, a chrome bread bin on the side, a small American "
+            "flag on a stand beside the door",
+     "luz": "Neutral daylight through the open screen door, soft and even."},
+    {"id": "cozinha_madeira_clara",
+     "set": "a modest American kitchen, light maple cabinets, a magnetic knife "
+            "strip over the stove, a small American flag on a stand at the end "
+            "of the run",
+     "luz": "Cool white overhead kitchen light, flat and even."},
+    {"id": "cozinha_azul_marinho",
+     "set": "a modest American kitchen, navy blue cabinets with a white subway "
+            "tile backsplash, a stand mixer on the worktop, a small American "
+            "flag on a stand by the fruit bowl",
+     "luz": "Warm light from a single fixture over the table, soft shadow under the chin."},
+    {"id": "cozinha_mesa_redonda",
+     "set": "a modest American kitchen with a round oak breakfast table by the "
+            "window, ladder-back chairs pushed in, a small American flag on a "
+            "stand on the table",
+     "luz": "Neutral daylight through the window over the sink, soft and even."},
+    {"id": "cozinha_geladeira",
+     "set": "a modest American kitchen, a tall stainless refrigerator covered "
+            "in magnets and school photographs, a wire fruit basket on the "
+            "side, a small American flag on a stand beside the toaster oven",
+     "luz": "Cool white overhead kitchen light, flat and even."},
+    {"id": "cozinha_forno_parede",
+     "set": "a modest American kitchen, a wall oven set into the cabinet run, "
+            "a copper kettle on the hob, a small American flag on a stand next "
+            "to the spice rack",
+     "luz": "Neutral overhead kitchen light, even and shadowless."},
+    {"id": "cozinha_varanda_envidracada",
+     "set": "a modest American kitchen opening onto a glassed-in porch, wicker "
+            "chairs visible through the doorway, a small American flag on a "
+            "stand by the doorway",
+     "luz": "Warm overhead kitchen light, slight shadow under the chin."},
 ]
 
 QUINTAIS = [
@@ -262,10 +336,33 @@ QUINTAIS = [
 # V3 ⭐ — o REF e' o corpo-prova: tronco NU, musculatura por GRUPO NOMEADO
 # (`muscular` sozinho nao renderiza). ⛔ sem barriga proeminente: aqui ele e' o
 # DEPOIS ambulante. Marca facial obrigatoria, num rosto saudavel (nunca avaria).
+# ⛔⛔ SANEAMENTO + AMPLIACAO, 2026-08-13 — ordem do operador: *"melhore a
+# aparencia e shape desses homens"* / *"aumente o pool de opcoes
+# substancialmente, tambem dos ambientes"*. Pool de 13 para 24.
+# ⚠️ OITO ENTRADAS FORAM REESCRITAS por DETERIORACAO, e o motivo tem nome: e' o
+# lote que o operador reprovou no PLACA 16 (*"esses caras tao parecendo
+# mendigo"*). O que caiu, campo por campo: `a clean pale scar through his left
+# eyebrow` · `a small notch missing from the top of his left ear` · `a small
+# crescent scar under his right eye` · `a thin pale scar along his jawline` · `a
+# thick white scar running down through his upper lip` · `a cluster of dark age
+# spots across his right temple` + `wide bony shoulders` · `a deep pitted scar
+# high on his right cheekbone` · `a wide pale scar across his forehead`.
+# ⛔ A ancora continua OBRIGATORIA — o que mudou e' o LADO dela: covinha, queixo
+# partido, mecha, pinta, marca de nascenca, argola, tarraxa. Cicatriz e orelha
+# faltando nao sao ancora, sao avaria, e num corpo-prova que vende o DEPOIS a
+# avaria desmente o proprio bit visual.
+# ⚠️ PELO FACIAL segue ZERADO de proposito (excecao declarada no
+# `medir_personagens.py`): o BLOCO 0 renderiza `clean-shaven` em string TRAVADA
+# e barba no pool poria o motor a se contradizer dentro do mesmo bloco.
+# ⭐ OCULOS de 2/13 para 7/24 (29%) — eles moram DENTRO do campo `marca`, este
+# pool nunca teve campo proprio.
+# ⛔ Zero cor de pele e zero mencao de etnia: o motor injeta `ETNIA[pagina]`
+# antes da marca, e cor no pool cria duas vozes no mesmo sintagma.
 REFS = [
     {"idade": 69, "musculo": "a lean hard-muscled build with visible definition in "
                              "the chest, shoulders and arms",
-     "marca": "short silver hair swept back and a clean pale scar through his left eyebrow",
+     "marca": "short silver hair swept back and a silver streak through his left "
+              "eyebrow",
      "roupa2": "a faded olive linen shirt unbuttoned halfway, sleeves rolled to the elbows"},
     {"idade": 71, "musculo": "a powerfully built muscular frame with a broad chest "
                              "and thick arms",
@@ -283,13 +380,13 @@ REFS = [
      "roupa2": "a rust-red short-sleeve snap-button shirt, open at the collar"},
     {"idade": 67, "musculo": "a lean hard-muscled build with visible definition in "
                              "the chest, shoulders and arms",
-     "marca": "full silver hair and a small notch missing from the top of his left ear",
+     "marca": "full silver hair and a small gold hoop in his left ear",
      "roupa2": "a faded denim shirt with the sleeves cut off"},
     # + 2026-08-01: o operador viu o mesmo rosto voltando no lote. Pool de 5 para 9.
     {"idade": 66, "musculo": "a wiry hard-muscled build with a deep chest and "
                              "corded forearms",
-     "marca": "a shaved head with a close fringe of white hair above the ears and "
-              "a small crescent scar under his right eye",
+     "marca": "a shaved head with a close fringe of white hair above the ears, "
+              "smooth-skinned, and a small dark mole under his right eye",
      "roupa2": "a charcoal-gray short-sleeve henley, sleeves pushed up"},
     {"idade": 72, "musculo": "a thick-set powerful build with heavy shoulders and "
                              "a broad chest",
@@ -303,21 +400,23 @@ REFS = [
      "roupa2": "a heather-gray short-sleeve pocket tee"},
     {"idade": 74, "musculo": "a long-limbed muscular build with a flat stomach and "
                              "strong shoulders",
-     "marca": "a bald crown with cropped gray hair at the sides and a thin pale "
-              "scar along his jawline",
+     "marca": "a bald crown with cropped gray hair at the sides, lightly tanned, "
+              "and a beauty mark high on his left cheekbone",
      "roupa2": "a navy blue short-sleeve camp shirt"},
     # + 2026-08-02: o operador mediu o pool inteiro e viu SEMPRE O MESMO ROSTO.
     # As nove acima descrevem a pessoa quase so' por CABELO — nove homens
     # descritos so' por cabelo sao o mesmo homem nove vezes, e o gerador
     # devolvia quase a mesma cara. As quatro novas entram cada uma por um eixo
     # que estava zerado ou raso aqui:
-    #   · 60 — PORTE de lutador (pescoco grosso, ombros pesados) e ancora de
-    #     cicatriz limpa no labio.
-    #   · 75 — PORTE seco e ossudo mais PELE de idade (manchas senis).
+    #   · 60 — PORTE de lutador (pescoco grosso, ombros pesados).
+    #   · 75 — PORTE seco e comprido mais PELE (sardas).
     #   · 73 — OCULOS, o eixo ZERADO deste pool (0/9), mais calvicie total.
-    #   · 65 — OCULOS de leitura mais entrada de cabelo em V, cabelo ralo.
+    #   · 65 — OCULOS de leitura mais entrada de cabelo em V.
     #   · a ancora e' sempre do lado ✅ de licoes-producao-veo §REF —
-    #     DISTINTIVO, NUNCA DETERIORADO (cicatriz limpa, mancha, mecha).
+    #     DISTINTIVO, NUNCA DETERIORADO. ⚠️ 2026-08-13: as quatro nasceram com
+    #     CICATRIZ e MANCHA SENIL como ancora, e as quatro foram reescritas —
+    #     cicatriz nao e' "distintivo limpo", e' avaria, e o operador reprovou
+    #     exatamente isso no PLACA 16.
     #   · PELO FACIAL continua fora de proposito: o BLOCO 0 deste motor ja'
     #     renderiza `clean-shaven` em string travada, e barba aqui poria o
     #     motor a se contradizer dentro do mesmo bloco.
@@ -325,25 +424,25 @@ REFS = [
     {"idade": 60, "musculo": "a broad thick-necked wrestler's build with heavy "
                              "shoulders, a deep chest and a hard flat stomach",
      "marca": "jet-black hair going gray only at the temples, cut in a short "
-              "flat-top, and a thick white scar running down through his upper lip",
+              "flat-top, and a deep dimple in his chin",
      "roupa2": "a white ribbed sleeveless undershirt"},
-    {"idade": 75, "musculo": "a rangy hard-muscled build with wide bony shoulders, "
-                             "stringy sinewy arms and a lean ridged stomach",
-     "marca": "a full head of snow-white hair long enough to touch his collar and "
-              "a cluster of dark age spots across his right temple",
+    {"idade": 75, "musculo": "a rangy hard-muscled build with wide square shoulders, "
+                             "long corded arms and a lean ridged stomach",
+     "marca": "a full head of snow-white hair long enough to touch his collar, "
+              "lightly freckled across the forehead, and a small dark mole at his "
+              "left temple",
      "roupa2": "a sand-colored short-sleeve safari shirt with buttoned epaulets"},
     {"idade": 73, "musculo": "a blocky powerlifter's build with a heavy chest, wide "
                              "back muscles and a thick hard midsection",
-     "marca": "a completely bald smooth scalp with no hair left at the sides, thin "
-              "gold wire-rimmed glasses, and a deep pitted scar high on his right "
-              "cheekbone",
+     "marca": "a smooth bald scalp with close silver hair at the sides, thin "
+              "gold wire-rimmed glasses, and a small gold stud in his left ear",
      "roupa2": "a teal short-sleeve bowling shirt with cream side panels"},
     {"idade": 65, "musculo": "a build that tapers hard from wide flaring back "
                              "muscles to a narrow waist, with square chest muscles "
                              "and thick round shoulders",
-     "marca": "a sharp widow's peak in thinning ash-gray hair, square silver-rimmed "
-              "reading glasses low on the tip of his nose, and a wide pale scar "
-              "across his forehead above the left eyebrow",
+     "marca": "a sharp widow's peak in thick ash-gray hair, square silver-rimmed "
+              "reading glasses low on the tip of his nose, and a dark beauty mark "
+              "just above his right eyebrow",
      # ⚠️ 2026-08-02: esta entrada nascia com "an oval name patch on the chest"
      # e foi corrigida no mesmo dia, antes de ir ao ar. Cracha/etiqueta com
      # nome PEDE TEXTO NA CENA, e a cauda travada do IMAGE deste motor fecha
@@ -351,6 +450,72 @@ REFS = [
      # so' o pedaco do cracha; a camisa de mecanico fica.
      "roupa2": "a khaki short-sleeve mechanic's shirt with a buttoned flap "
                "pocket on the chest"},
+
+    # ---- as onze novas de 2026-08-13 ---------------------------------------
+    # ⚠️ Cada uma difere das outras em >= 3 eixos, e nenhuma repete o par
+    # (corte de cabelo x ancora) de uma vizinha — treze homens com o mesmo par
+    # sao treze vezes o mesmo homem, que e' o defeito que gerou este pool em
+    # 2026-08-02.
+    # ⛔ `musculo` sempre por GRUPO NOMEADO (peito, ombros, dorsal, antebraco):
+    # `muscular` sozinho nao renderiza, e barriga proeminente contradiz o
+    # DEPOIS ambulante que este angulo vende.
+    {"idade": 62, "musculo": "a broad V-shaped build with square chest muscles, "
+                             "wide shoulders and a hard flat stomach",
+     "marca": "thick dark hair going silver at the temples, cut short, "
+              "smooth-skinned, and a deep dimple in his right cheek",
+     "roupa2": "a slate-blue short-sleeve chambray shirt, open at the collar"},
+    {"idade": 70, "musculo": "a tall lean-muscled build with a long back, wide "
+                             "shoulders and corded forearms",
+     "marca": "a full head of white hair brushed straight back, lightly tanned, "
+              "and a small dark mole on the bridge of his nose",
+     "roupa2": "a cream short-sleeve linen shirt with a chest pocket"},
+    {"idade": 68, "musculo": "a stocky hard-muscled build with a deep chest, thick "
+                             "neck and heavy arms",
+     "marca": "close-cropped steel-gray hair with a sharp widow's peak, "
+              "black-framed glasses, and a cleft chin",
+     "roupa2": "a forest-green short-sleeve twill shirt"},
+    {"idade": 63, "musculo": "a compact hard-muscled build with round shoulders, "
+                             "thick arms and a tight midsection",
+     "marca": "dark curly hair kept short and dense, silver at the sides, "
+              "freckled across the cheeks, and a small gold hoop in his right ear",
+     "roupa2": "a burnt-orange short-sleeve polo shirt"},
+    {"idade": 71, "musculo": "a wide-backed powerful build with heavy shoulders, "
+                             "square chest muscles and thick wrists",
+     "marca": "silver hair combed high off the forehead and a patch of white hair "
+              "above his left temple",
+     "roupa2": "a steel-gray short-sleeve utility shirt with two flap pockets"},
+    {"idade": 66, "musculo": "a hard-muscled swimmer's build with long flat chest "
+                             "muscles, wide shoulders and a lean waist",
+     "marca": "sandy hair going silver, cut in a short side part, lightly tanned, "
+              "square black reading glasses, and a deep dimple in each cheek",
+     "roupa2": "a pale-yellow short-sleeve oxford shirt, open at the collar"},
+    {"idade": 61, "musculo": "a dense hard-muscled build with a thick chest, broad "
+                             "shoulders and heavy forearms",
+     "marca": "black hair kept in a low buzz with gray coming in at the sides, "
+              "thin steel-rimmed glasses, and a dark beauty mark below his right "
+              "eye",
+     "roupa2": "a maroon short-sleeve knit polo"},
+    {"idade": 74, "musculo": "a long-boned muscular build with wide flaring back "
+                             "muscles, square shoulders and lean arms",
+     "marca": "fine white hair, thick at the sides and combed flat, laugh lines at "
+              "the corners of his eyes, and a silver streak running back from his "
+              "left temple",
+     "roupa2": "a sky-blue short-sleeve seersucker shirt"},
+    {"idade": 64, "musculo": "a squared-off powerful build with a broad chest, "
+                             "heavy shoulders and thick forearms",
+     "marca": "iron-gray hair in a flat brush cut, tortoiseshell glasses, and a "
+              "small dark mole at the corner of his mouth",
+     "roupa2": "a hunter-green short-sleeve fishing shirt with a mesh yoke"},
+    {"idade": 72, "musculo": "a tall thick-set build with wide shoulders, a heavy "
+                             "chest and strong straight arms",
+     "marca": "a high silver hairline with the hair worn long behind the ears, "
+              "gold half-moon glasses, and a cleft chin under heavy level brows",
+     "roupa2": "a tan short-sleeve safari shirt with a buttoned chest pocket"},
+    {"idade": 60, "musculo": "a hard-muscled build that tapers from wide shoulders "
+                             "to a narrow waist, with defined chest and arms",
+     "marca": "dark hair cut in a high flat-top with silver at the temples, "
+              "smooth-skinned, and a small silver stud in his left ear",
+     "roupa2": "a charcoal short-sleeve pocket tee"},
 ]
 
 # V12 ⭐ — a mulher de 30-35 na cena 4, SEMPRE. Linda, abracada em pe, muda, rindo.
@@ -372,10 +537,10 @@ MULHERES = [
                           "small mole at the corner of her mouth, a fitted olive green "
                           "sundress"},
     {"idade": 32, "desc": "long dark hair worn loose and straight with a center part, "
-                          "a thin pale scar through her right eyebrow, a fitted burgundy "
-                          "wrap dress"},
+                          "smooth-skinned, a small dark beauty mark on her right "
+                          "temple, a fitted burgundy wrap dress"},
     {"idade": 33, "desc": "long dark hair with sun-lightened ends falling past her "
-                          "shoulders, a small crescent scar on her left temple, a fitted "
+                          "shoulders, a deep dimple in her left cheek, a fitted "
                           "red sleeveless sundress"},
     # + 2026-08-02: mesma medicao que gerou o bloco dos REFS logo acima, so'
     # que do lado da mulher da cena 4 — o operador viu SEMPRE O MESMO ROSTO. E
@@ -390,10 +555,13 @@ MULHERES = [
     #     quadrados. Nenhuma das oito menciona compleicao.
     #   · PELE — sardas, marca de sol nos ombros.
     #   · a ancora facial (P6) continua obrigatoria em cada uma e sempre do
-    #     lado ✅ de licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO
-    #     (pinta, sarda, cicatriz limpa, dente separado). ⛔ dente lascado
-    #     ficou de fora: colide com o `strikingly beautiful` que o motor
-    #     concatena logo depois.
+    #     lado ✅ de licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO.
+    #     ⚠️ 2026-08-13: `cicatriz limpa` e `dente separado` sairam da lista de
+    #     ancoras aceitas e das SEIS entradas que os usavam. Cicatriz e vao
+    #     entre os dentes brigam com o `strikingly beautiful` que o motor
+    #     concatena logo depois — o mesmo motivo pelo qual dente lascado ja'
+    #     estava fora. Ficam pinta, covinha, marca de nascenca, mecha, argola,
+    #     tarraxa e sarda.
     #   · o literal `fitted` e a peca fechada estao nas seis: e' o que a V12
     #     cobra, e a idade dos dois vai escrita em toda mencao.
     #   · ⛔ nenhuma entrada de 30 anos: `IDADE_EXT[30]` e' ("thirty",
@@ -405,11 +573,11 @@ MULHERES = [
                           "mole on the point of her chin, a fitted denim shirtdress"},
     {"idade": 31, "desc": "wavy copper-red hair cropped just below her ears, broad "
                           "swimmer's shoulders, a heavy dusting of freckles across "
-                          "her nose and cheekbones, a narrow gap between her front "
-                          "teeth, a fitted white sundress"},
+                          "her nose and cheekbones, a small gold hoop in her left "
+                          "nostril, a fitted white sundress"},
     {"idade": 35, "desc": "dark hair in a low twist with one silver streak at the "
-                          "temple, solidly built, sun-freckled shoulders, a fine pale "
-                          "scar across the bridge of her nose, a fitted "
+                          "temple, solidly built, sun-freckled shoulders, a dark "
+                          "beauty mark just above her lip, a fitted "
                           "mustard-yellow tank dress"},
     {"idade": 32, "desc": "a cropped platinum pixie cut, thin gold wire-rimmed "
                           "glasses, high sharp cheekbones, a dark beauty mark at the "
@@ -417,12 +585,58 @@ MULHERES = [
                           "sundress"},
     {"idade": 34, "desc": "dark hair shaved close on one side, falling in waves on "
                           "the other, long-legged, a faint tan line across her "
-                          "shoulders, a thin white scar through her upper lip, a "
+                          "shoulders, a deep dimple in her chin, a "
                           "fitted olive tank top and khaki shorts"},
     {"idade": 33, "desc": "hair twisted up in a knot with sunglasses pushed up on "
                           "top of her head, tall with square shoulders, heavy dark "
-                          "eyebrows, a small raised scar under her right eye, a "
+                          "eyebrows, a small dark mole under her right eye, a "
                           "fitted rust-orange linen jumpsuit"},
+
+    # ---- as dez novas de 2026-08-13 ----------------------------------------
+    # Ordem do operador: *"aumente o pool de opcoes substancialmente"*. Pool de
+    # 14 para 24, e as dez novas entram cobrindo os dois eixos que a medicao
+    # acusava MAGROS aqui (`medir_personagens.py --arquivo vazamento_short.py`):
+    #   · PELE — era 2/14 (14%). Entra `smooth-skinned`, `freckles`, `lightly
+    #     tanned`, `laugh lines`. ⛔ Nunca `weathered`/`lined`/`sun-damaged`:
+    #     no homem a pele castigada le' como credibilidade, nela le' como o
+    #     oposto do que ela vende.
+    #   · OCULOS — era 3/14 (21%), agora 7/24 (29%). ⚠️ Aqui oculos e' DE SOL ou
+    #     armacao de moda, nunca de leitura: leitura envelhece e briga com a
+    #     faixa 31-35 que a V12 trava.
+    # ⛔ Nenhuma entrada de 30 anos, pelo bug `Thirty-thirty` documentado acima.
+    # ⛔ O literal `fitted` e a peca fechada estao nas dez, como a V12 cobra.
+    {"idade": 32, "desc": "a sharp jaw-length bob with a center part, "
+                          "smooth-skinned, a deep dimple in her right cheek, a "
+                          "fitted teal shirt dress"},
+    {"idade": 35, "desc": "long hair in a single thick braid over one shoulder, "
+                          "tall and long-limbed, a small gold stud in her left "
+                          "nostril, a fitted forest-green sundress"},
+    {"idade": 33, "desc": "a cropped pixie cut swept off her face, mirrored aviator "
+                          "sunglasses pushed up into her hair, laugh lines at the "
+                          "corners of her eyes, a fitted slate-blue tank dress"},
+    {"idade": 31, "desc": "shoulder-length hair worn in loose beach waves, lightly "
+                          "tanned, a small dark mole on her right cheekbone, a "
+                          "fitted cream linen jumpsuit"},
+    {"idade": 34, "desc": "hair pulled into a low glossy knot at the nape, narrow "
+                          "black sunglasses pushed up on her head, a beauty mark "
+                          "below her left eye, a fitted plum wrap dress"},
+    {"idade": 35, "desc": "short hair worn in tight springy curls, broad square "
+                          "shoulders, a wide bright smile and a small birthmark at "
+                          "her right jaw, a fitted ivory sundress"},
+    {"idade": 32, "desc": "waist-length hair worn straight and glossy, thin gold "
+                          "wire-rimmed sunglasses hooked at her collar, a fine "
+                          "silver hoop in each ear, a fitted charcoal tank top and "
+                          "white jeans"},
+    {"idade": 33, "desc": "long hair with a soft curtain fringe framing her face, "
+                          "a light dusting of freckles over her nose, a deep dimple "
+                          "in her chin, a fitted coral wrap dress"},
+    {"idade": 31, "desc": "a shoulder-skimming shag cut with a heavy fringe, lean "
+                          "and long-legged, a heart-shaped face and a beauty mark "
+                          "high on her left cheek, a fitted denim pinafore dress"},
+    {"idade": 34, "desc": "hair pinned up on one side and falling loose on the "
+                          "other, round tortoiseshell sunglasses pushed up on her "
+                          "forehead, smooth-skinned, a small dark mole at the "
+                          "corner of her right eye, a fitted sage-green sundress"},
 ]
 
 # Prop do payoff (cena 4) — F15: JA' ereto no IMAGE, dimensionado por escala

@@ -432,6 +432,79 @@ LOCAIS = [
      "eco": "the same gate area",
      "luz": "Flat terminal overhead light.",
      "audio": "terminal murmur, a boarding chime."},
+    # ======================================================================
+    # + 2026-08-13: TERCEIRA AMPLIACAO, 21 -> 27. Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⭐ MESMO CRITERIO DA SEGUNDA (2026-08-10), que e' o unico que funcionou:
+    # o que separa uma entrada da outra e' a GEOMETRIA DO QUADRO, nao a placa
+    # da porta. Entram um salao de espelhos (barbearia), um piso de peso livre
+    # (academia), uma arquibancada de madeira em anel voltada para baixo
+    # (leilao de gado), uma plataforma coberta com linha amarela no chao
+    # (estacao), um salao de mesas redondas com pista no meio (casamento) e um
+    # salao de mesas compridas de potluck (centro comunitario).
+    # ⛔ Todas continuam PUBLICAS e MOVIMENTADAS (PE5: sem plateia nao ha'
+    # flagrante) e SEM MARCA LEGIVEL (P12).
+    # ⛔ RISADA CONTINUA FORA DO `audio` — a vitima esta' chorando na IMAGE e o
+    # Veo sincroniza rosto com som (correcao de 2026-08-10). A plateia ri NA
+    # IMAGEM.
+    # ⚠️ `plateia_evento` comeca com `that ` (o `_aqui` troca por `this `) e foi
+    # LIDO dentro do hook antes de entrar: os HOOKS dizem `in {evento}` e
+    # `out of {evento}`, entao `that pier` (que sairia "in this pier") foi
+    # descartado na mesa em favor de lugares que leem com `in`.
+    # ⚠️ `plateia` e' substantivo plural NU, sem artigo — o TAKE monta
+    # `the blurred %s keep laughing`.
+    # ======================================================================
+    {"id": "barbearia", "selo": "N",
+     "cenario": "a busy barbershop",
+     "detalhe": "three chairs facing a mirrored wall behind them, a row of "
+                "waiting chairs beside him, no readable signs",
+     "plateia": "waiting customers", "plateia_evento": "that barbershop",
+     "eco": "the same barbershop",
+     "luz": "Warm even light bouncing off the mirrors.",
+     "audio": "clippers buzzing, room chatter."},
+    {"id": "academia", "selo": "N",
+     "cenario": "the free-weight area of a busy gym",
+     "detalhe": "racks of dumbbells and a mirrored wall behind them, a flat "
+                "bench beside him, no readable logos",
+     "plateia": "gym members", "plateia_evento": "that gym",
+     "eco": "the same gym floor",
+     "luz": "Bright even overhead gym light.",
+     "audio": "weights clanking, a treadmill running."},
+    {"id": "leilao", "selo": "N",
+     "cenario": "a packed livestock auction barn",
+     "detalhe": "tiered wooden benches around a sawdust ring, a raised "
+                "auctioneer's box behind it, a rolled paper program in his "
+                "hand, no readable signs",
+     "plateia": "bidders", "plateia_evento": "that auction barn",
+     "eco": "the same auction barn",
+     "luz": "Dusty overhead barn light with daylight from a side door.",
+     "audio": "the auctioneer's chant, cattle moving in the ring."},
+    {"id": "estacao", "selo": "N",
+     "cenario": "a crowded commuter train station",
+     "detalhe": "a yellow line painted along the platform edge and a steel "
+                "canopy overhead, a bench and a rolling bag beside him, no "
+                "readable signs",
+     "plateia": "commuters", "plateia_evento": "that train station",
+     "eco": "the same platform",
+     "luz": "Flat daylight under the platform canopy.",
+     "audio": "a train braking, platform announcements."},
+    {"id": "casamento", "selo": "N",
+     "cenario": "a wedding reception hall",
+     "detalhe": "round tables under white cloths and an empty dance floor "
+                "behind them, a chair pushed back beside him, no readable "
+                "banners",
+     "plateia": "guests", "plateia_evento": "that wedding hall",
+     "eco": "the same reception hall",
+     "luz": "Warm low light from strings of bulbs overhead.",
+     "audio": "a band playing, room chatter."},
+    {"id": "centro_comunitario", "selo": "N",
+     "cenario": "the main hall of a community center at a potluck",
+     "detalhe": "long tables of covered dishes and stacked folding chairs "
+                "behind them, a paper plate in his hand, no readable signs",
+     "plateia": "neighbors", "plateia_evento": "that community center",
+     "eco": "the same community hall",
+     "luz": "Flat warm light from ceiling panels.",
+     "audio": "hall chatter, a chair scraping the floor."},
 ]
 
 # PE1 — a mancha vive do CONTRASTE. Roupa de baixo sempre CLARA.
@@ -499,6 +572,73 @@ AMBIENTES = [
      "set": "a finished basement with a home bar and shelves of glasses behind him",
      "bancada": "bar top", "curto": "basement bar",
      "luz": "warm light from two hanging bulbs."},
+    # ======================================================================
+    # + 2026-08-13: 10 -> 20. Ordem do operador: *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*.
+    # ⛔ AS QUATRO CHAVES SAO OBRIGATORIAS E CADA UMA CAI NUM LUGAR DIFERENTE
+    # DO PROMPT — entrada nova que erre uma delas quebra a frase montada, nao o
+    # sorteio, e por isso o defeito so' apareceria no render:
+    #   · `set`     -> "Medium close-up in %s." — le' depois de `in `.
+    #   · `bancada` -> "stands behind the %s" — substantivo NU, sem artigo, e
+    #                  ele volta em "same %s" na IMAGE 03 (o insert das maos).
+    #                  Tem de ser uma superficie onde caiba preparar o sache.
+    #   · `curto`   -> "Close-up in the same %s" — o nome curto do lugar.
+    #   · `luz`     -> entra minusculo depois de virgula E capitalizado no
+    #                  comeco de frase; por isso comeca minusculo e termina em
+    #                  ponto. As dez antigas ja' seguiam isso.
+    # ⭐ E o criterio das dez novas e' o mesmo dos LOCAIS: muda a GEOMETRIA
+    # (bancada estreita de corredor, tampa de caminhonete ao ar livre, mesa de
+    # piquenique, bancada de vaso no quintal, escrivaninha), nao so' o rotulo
+    # do comodo. Cinco delas sao ao ar livre ou semiabertas, o que o pool tinha
+    # em 3 de 10.
+    # ⛔ PE8: a luz e' travada nas cenas 2-5 pelo motor, entao ela tem de ser
+    # uma so' frase que sirva a TRES quadros do mesmo lugar — nada de luz que
+    # so' exista num horario ("the last ten minutes of sunset").
+    # ======================================================================
+    {"id": "cozinha_rustica",
+     "set": "a farmhouse kitchen with open shelves and a deep enamel sink behind him",
+     "bancada": "wooden counter", "curto": "farmhouse kitchen",
+     "luz": "steady morning light from a window frame-right."},
+    {"id": "cozinha_corredor",
+     "set": "a narrow galley kitchen with white tile behind him and a window over the sink",
+     "bancada": "counter", "curto": "galley kitchen",
+     "luz": "cool daylight coming in over the sink."},
+    {"id": "deck",
+     "set": "a wooden deck off the back of the house, a plain railing and tall trees behind him",
+     "bancada": "deck table", "curto": "back deck",
+     "luz": "dappled afternoon light through the trees."},
+    {"id": "sala_estar",
+     "set": "a plain living room, a sofa and a framed picture on the wall behind him",
+     "bancada": "coffee table", "curto": "living room",
+     "luz": "warm lamp light with daylight from a window frame-left."},
+    {"id": "escritorio",
+     "set": "a small home office, a bookshelf and a closed window blind behind him",
+     "bancada": "desk", "curto": "home office",
+     "luz": "warm light from a desk lamp frame-right."},
+    {"id": "caminhonete",
+     "set": "the open tailgate of a pickup truck parked on a gravel drive, tall grass and a treeline behind him",
+     "bancada": "tailgate", "curto": "truck tailgate",
+     "luz": "bright open daylight, high and even."},
+    {"id": "acampamento",
+     "set": "a campsite picnic table beside a canvas tent, pine woods behind him",
+     "bancada": "picnic table", "curto": "campsite table",
+     "luz": "soft morning light filtered through the pines."},
+    {"id": "celeiro_bancada",
+     "set": "a work bench inside a small barn, hand tools hanging on the plank wall behind him",
+     "bancada": "bench top", "curto": "barn workshop",
+     "luz": "daylight through an open barn door frame-left."},
+    # ⚠️ `lavanderia_casa`, nao `lavanderia`: o pool LOCAIS ja' tem uma
+    # `lavanderia` (a publica, de maquinas de fila). Os dois ids vivem em
+    # eixos diferentes do ledger e nao colidem em codigo — colidem na cabeca de
+    # quem le' o painel, que e' onde o erro sai caro.
+    {"id": "lavanderia_casa",
+     "set": "a home laundry room, a washer and dryer and a shelf of bottles behind him",
+     "bancada": "folding counter", "curto": "laundry room",
+     "luz": "flat white light from a ceiling fixture."},
+    {"id": "horta",
+     "set": "a raised garden bed at the back of the yard, tomato cages and a wooden fence behind him",
+     "bancada": "potting bench", "curto": "garden bench",
+     "luz": "bright open afternoon light."},
 ]
 
 # PE9 — contraste ≥3 eixos garantido por CONSTRUCAO: o narrador sempre tem
@@ -561,11 +701,32 @@ AMBIENTES = [
 # ⚠️ Repetir nunca mais foi so' questao de pool: o `_sortear_longo` passou a
 # levar o `ref` no ledger (evita as 8 ultimas) — antes era `rng.choice` puro,
 # sem memoria nenhuma, e era isso que trazia a mesma cara duas vezes no lote.
+# ===========================================================================
+# ⛔⛔ ONZE ENTRADAS DESTE POOL FORAM SANEADAS EM 2026-08-13 — ordem do
+# operador: *"melhore a aparencia e shape desses homens"*.
+# ===========================================================================
+# ⭐ O pool foi reescrito em 10/08 contra a CELEBRIDADE e ganhou a arquitetura
+# facial que o separa. O que ele NAO tinha era o outro lado da tabela: das 24
+# entradas, ONZE descreviam o narrador por DETERIORACAO — cinco cicatrizes,
+# `hollow cheeks`, `a face tanned deep from years outdoors`, `a dark age spot`,
+# `sun-spotted skin`, `a ruddy face`, `skin deeply lined`, `a torn right
+# earlobe`. Some as onze marcas de dano; ficam as onze ARQUITETURAS, que sao o
+# que faz o trabalho contra o atrator.
+# ⚠️ E NENHUMA entrada perdeu ancora: cicatriz saiu e entrou pinta, covinha,
+# queixo partido, mancha clara, sarda, argola/pino. A ancora e' o que faz o
+# rosto VOLTAR IGUAL no segundo take (P6) — tirar sem repor seria trocar um
+# defeito por outro pior.
+# ⚠️ A PELE tambem continua acionada, so' que do lado saudavel: lightly
+# tanned, freckled, smooth-skinned, laugh lines. O eixo `pele` do
+# medir_personagens casa com os quatro.
+# ⛔ O narrador deste angulo e' a AUTORIDADE da cena — quem chora e se humilha
+# e' a vitima, ao lado dele, no mesmo quadro. Narrador com cara de castigo faz
+# o video virar desgraca alheia, e desgraca alheia nao vende receita nenhuma.
 REFS = [
     {"id": "risca_lateral", "idade": 62,
      "marca": "dark brown hair going gray only at the temples, combed into a "
               "low side part, a broad square face with a heavy flat brow and a "
-              "wide mouth, skin creased across the forehead, and a deep "
+              "wide mouth, lightly tanned skin, and a deep "
               "vertical cleft in his chin",
      "cabelo": "dark brown", "roupa": "Plain navy crew-neck tee shirt.",
      "roupa_curta": "navy tee shirt"},
@@ -578,8 +739,8 @@ REFS = [
     {"id": "bico_de_viuva", "idade": 59,
      "marca": "black hair shot through with gray, dropping to a low widow's "
               "peak at the center of his forehead, deep-set eyes under a heavy "
-              "brow ridge and a long chin, and a clean pale scar through his "
-              "right eyebrow",
+              "brow ridge and a long chin, and a raised dark mole in the "
+              "middle of his right cheek",
      "cabelo": "black and gray", "roupa": "Plain charcoal crew-neck tee shirt.",
      "roupa_curta": "charcoal tee shirt"},
     {"id": "corte_rente", "idade": 64,
@@ -591,20 +752,21 @@ REFS = [
      "roupa_curta": "slate blue tee shirt"},
     {"id": "cachos_colarinho", "idade": 61,
      "marca": "ash-gray hair worn long enough to curl over his collar, a narrow "
-              "face with a high forehead and a thin straight nose, deep lines "
-              "fanning from the corners of his eyes, and a torn right earlobe",
+              "face with a high forehead and a thin straight nose, laugh lines "
+              "fanning from the corners of his eyes, and a gold stud in his "
+              "right earlobe",
      "cabelo": "ash-gray", "roupa": "Plain faded red crew-neck tee shirt.",
      "roupa_curta": "faded red tee shirt"},
     {"id": "flat_top", "idade": 73,
      "marca": "a thick pewter flat-top cut squared off across the top, a long "
-              "jaw and hollow cheeks under sharp cheekbones, a face tanned deep "
-              "from years outdoors, and a pale scar splitting his upper lip",
+              "jaw and flat cheeks under high cheekbones, lightly tanned skin, "
+              "and a dark mole at the outer corner of his left eye",
      "cabelo": "pewter", "roupa": "Plain heather gray crew-neck tee shirt.",
      "roupa_curta": "heather gray tee shirt"},
     {"id": "juba_para_tras", "idade": 71,
      "marca": "a heavy snow-white mane brushed straight back over his ears, a "
-              "long narrow face on a tall rangy frame, and a dark age spot the "
-              "size of a nickel on his right temple",
+              "long narrow face on a tall rangy frame, and a small dark beauty "
+              "mark on his right temple",
      "cabelo": "snow-white", "roupa": "Plain tan crew-neck tee shirt.",
      "roupa_curta": "tan tee shirt"},
     {"id": "franja_frente", "idade": 69,
@@ -634,9 +796,9 @@ REFS = [
      "roupa_curta": "forest green tee shirt"},
     {"id": "cabeca_quadrada", "idade": 70,
      "marca": "white hair cut in a short even taper, a wide square face with a "
-              "low hairline and a jaw that squares off at the corners, skin "
-              "deeply lined across the forehead, and a pale scar the length of "
-              "a thumbnail along his left jaw",
+              "low hairline and a jaw that squares off at the corners, "
+              "smooth-skinned across the forehead, and a pale patch of white "
+              "skin the length of a thumbnail along his left jaw",
      "cabelo": "white", "roupa": "Plain brown crew-neck tee shirt.",
      "roupa_curta": "brown tee shirt"},
     {"id": "sardento", "idade": 63,
@@ -661,8 +823,8 @@ REFS = [
     {"id": "cabelo_alto", "idade": 68,
      "marca": "thick white hair standing high off a deep hairline, a long face "
               "with a narrow chin and a prominent bump in the bridge of his "
-              "nose, laugh lines cut deep at the corners of his mouth, and a "
-              "clean pale scar under his lower lip",
+              "nose, laugh lines at the corners of his mouth, and a dark "
+              "beauty mark just under his lower lip",
      "cabelo": "white", "roupa": "Plain denim blue crew-neck tee shirt.",
      "roupa_curta": "denim blue tee shirt"},
     {"id": "barril", "idade": 66,
@@ -679,21 +841,21 @@ REFS = [
      "roupa_curta": "plum tee shirt"},
     {"id": "ruivo_desbotado", "idade": 61,
      "marca": "rust-red hair faded to sandy gray, cut short and combed to one "
-              "side, a ruddy face with laugh lines bracketing his mouth and a "
-              "square chin, and a deep dimple in each cheek",
+              "side, a freckled face with laugh lines bracketing his mouth and "
+              "a square chin, and a deep dimple in each cheek",
      "cabelo": "rust-red and gray",
      "roupa": "Plain hunter green crew-neck tee shirt.",
      "roupa_curta": "hunter green tee shirt"},
     {"id": "cachos_escuros", "idade": 59,
      "marca": "dense dark curls cut close at the sides and gray at the temples, "
-              "a broad-shouldered build and a wide open face with a strong "
-              "brow, and a small crescent scar above his left eyebrow",
+              "a broad-shouldered build and a wide open face with a heavy "
+              "level brow, and a small dark mole above his left eyebrow",
      "cabelo": "dark", "roupa": "Plain cream crew-neck tee shirt.",
      "roupa_curta": "cream tee shirt"},
     {"id": "risca_no_meio", "idade": 72,
      "marca": "fine ash-white hair parted down the middle and tucked behind his "
-              "ears, a long jaw and a wide mouth, sun-spotted skin across the "
-              "forehead, and a notch in the rim of his right ear",
+              "ears, a long jaw and a wide mouth, lightly tanned skin across "
+              "the forehead, and a heavy silver ring in his right earlobe",
      "cabelo": "ash-white", "roupa": "Plain sky blue crew-neck tee shirt.",
      "roupa_curta": "sky blue tee shirt"},
     {"id": "escovinha", "idade": 63,
@@ -705,7 +867,7 @@ REFS = [
     {"id": "castanho_alto", "idade": 57,
      "marca": "thick chestnut hair, gray above the ears, worn long on top and "
               "short at the sides, a heart-shaped face with a pointed chin and "
-              "creased skin around the eyes, and a small dark beauty mark "
+              "laugh lines around the eyes, and a small dark beauty mark "
               "beside his left nostril",
      "cabelo": "chestnut", "roupa": "Plain slate crew-neck tee shirt.",
      "roupa_curta": "slate tee shirt"},
@@ -718,6 +880,19 @@ REFS = [
 ]
 
 VITIMAS = [
+    # ⛔⛔ SETE ENTRADAS SANEADAS EM 2026-08-13 — mesma passada dos REFS, mesma
+    # ordem do operador (*"melhore a aparencia e shape desses homens"*), e aqui
+    # o motivo e' ainda mais direto: a VITIMA e' quem o espectador tem de
+    # RECONHECER COMO ELE MESMO. Se ela chora, se humilha E AINDA parece
+    # castigada, o video vira desgraca alheia e o homem do outro lado da tela
+    # se distancia em vez de se reconhecer. Sairam `a deeply lined forehead`,
+    # `a sun-spotted scalp`, `a shallow scar`, `a ruddy face` (x2),
+    # `liver-spotted temples`, `skin creased deep` e `sun-spotted temples`.
+    # ⚠️ Nenhuma perdeu ancora nem perdeu o eixo `pele`: entrou sarda, pele
+    # lisa, pele levemente bronzeada e linhas de riso — que e' o mesmo eixo
+    # medido, do lado saudavel da tabela.
+    # ⛔ CARECA + BIGODE + OCULOS continua travado nas 20 (PE9/F4b) e o
+    # autoteste cobra os tres em cada entrada.
     # ⚠️ 2026-08-10 — as nove primeiras GANHARAM PELE E ANCORA FACIAL, e o
     # bigode/oculos/camisa de cada uma ficou INTACTO. Motivo medido: o pool
     # marcava `pele` em 3/20 e `ancora` em 2/20 — e a ancora e' justamente o
@@ -727,7 +902,7 @@ VITIMAS = [
     # marca nem o LUGAR dela): ancora igual entre narrador e vitima remenda o
     # morphing que o PE9 existe para impedir, e os dois dividem o IMAGE 01.
     {"id": "cinza_preto", "idade": 63,
-     "marca": "bald man with a thick gray mustache, a deeply lined forehead, "
+     "marca": "bald man with a thick gray mustache, a wide freckled forehead, "
               "black-framed glasses and a small dark mole in the middle of his "
               "forehead",
      "camisa": "a pale blue t-shirt"},
@@ -736,8 +911,8 @@ VITIMAS = [
               "birthmark shaped like a teardrop under his right ear",
      "camisa": "a white polo shirt"},
     {"id": "branco_quadrado", "idade": 65,
-     "marca": "bald man with a white mustache, a sun-spotted scalp, thick "
-              "square glasses and a shallow scar across the point of his chin",
+     "marca": "bald man with a white mustache, a smooth-skinned scalp, thick "
+              "square glasses and a deep cleft in the point of his chin",
      "camisa": "a light gray t-shirt"},
     {"id": "curto_redondo", "idade": 61,
      "marca": "bald man with a short gray mustache, round wire glasses and a "
@@ -746,7 +921,7 @@ VITIMAS = [
     # + 2026-08-01: o operador mediu vicio — a mesma vitima voltando no lote.
     # Pool ampliado; careca + bigode + oculos continua travado.
     {"id": "aviador", "idade": 64,
-     "marca": "bald man with a bushy salt-and-pepper mustache, a ruddy face and gold aviator glasses",
+     "marca": "bald man with a bushy salt-and-pepper mustache, a lightly tanned face and gold aviator glasses",
      "camisa": "a faded sage green t-shirt"},
     {"id": "sem_aro", "idade": 60,
      "marca": "bald man with a thin white mustache, rimless glasses and a "
@@ -785,7 +960,7 @@ VITIMAS = [
      "marca": "bald man with a heavy build and jowls, a full snow-white walrus mustache, small half-moon glasses low on his nose and a raised mole beside one nostril",
      "camisa": "a washed-out lavender bowling shirt"},
     {"id": "vermelho_grosso", "idade": 68,
-     "marca": "bald man with a soft middle and liver-spotted temples, a thin mustache dyed too dark for his age, chunky red plastic glasses and a deep dimple in his left cheek",
+     "marca": "bald man with a soft middle and smooth-skinned temples, a thin mustache dyed too dark for his age, chunky red plastic glasses and a deep dimple in his left cheek",
      "camisa": "a washed tan plaid flannel shirt"},
     {"id": "clipe_solar", "idade": 56,
      "marca": "bald man with a tall rangy frame and a prominent Adam's apple, a thick charcoal mustache gray only at the tips, plain metal glasses with clip-on sun lenses flipped up and a bump in the bridge of his nose",
@@ -818,12 +993,12 @@ VITIMAS = [
      "camisa": "a striped blue and white oxford shirt"},
     {"id": "domo_largo", "idade": 70,
      "marca": "bald man with a broad domed skull over a short thick body, a "
-              "ruddy scalp, a wide brush mustache gone entirely white and "
+              "lightly tanned scalp, a wide brush mustache gone entirely white and "
               "heavy black plastic glasses",
      "camisa": "a burgundy short-sleeve button-down"},
     {"id": "nuca_reta", "idade": 62,
-     "marca": "bald man with a long flat-backed skull, skin creased deep "
-              "across his forehead, a chevron mustache still dark under the "
+     "marca": "bald man with a long flat-backed skull, laugh lines at the "
+              "corners of his eyes, a chevron mustache still dark under the "
               "nose and thin gold wire glasses",
      "camisa": "a pale gray polo shirt"},
     {"id": "cabeca_redonda", "idade": 65,
@@ -837,7 +1012,7 @@ VITIMAS = [
               "mole on the tip of his chin",
      "camisa": "a heather gray henley"},
     {"id": "cranio_inclinado", "idade": 68,
-     "marca": "bald man with a narrow sloping skull and sun-spotted temples, "
+     "marca": "bald man with a narrow sloping skull and freckled temples, "
               "a thin silver mustache and oversized square tortoiseshell "
               "glasses",
      "camisa": "a faded olive polo shirt"},
@@ -883,25 +1058,39 @@ MULHERES = [
     #   · ⛔ zero `big`/`huge`: o payoff aterrissa na IMAGE 04/05 e o
     #     BANIDOS_IMAGE deste motor pega `big(?!-box)`.
     #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes do payoff.
+    # ⚠️ REESCRITA EM 2026-08-13: era `a deeply lined face`. A lente nova
+    # do autoteste pegou — pele castigada esta' na lista de PROIBIDO, e as
+    # linhas de riso dizem a mesma idade sem dizer o mesmo castigo.
     {"idade": 66,
-     "payoff": "with a small, slight frame and a deeply lined face, thin "
-               "white hair set in tight permed curls, reading glasses on a "
-               "beaded chain and a dark mole beside her right nostril, in a "
+     "payoff": "with a small, slight frame and laugh lines around her eyes, "
+               "thin white hair set in tight permed curls, reading glasses on "
+               "a beaded chain and a dark mole beside her right nostril, in a "
                "printed housedress under a soft blue cardigan"},
+    # ⚠️ REESCRITA EM 2026-08-13: eram DUAS violacoes na mesma entrada —
+    # `sun-weathered skin` e `a thin scar`. Entraram pele levemente bronzeada
+    # (mesmo eixo `pele`, lado saudavel) e a mecha branca na sobrancelha, que
+    # ancora o rosto igual e nao e' ferida.
     {"idade": 57,
-     "payoff": "with broad shoulders and sun-weathered skin, her hair in a "
-               "high messy topknot and a thin scar through her right "
-               "eyebrow, in a moss green shirt dress with the sleeves "
+     "payoff": "with broad shoulders and lightly tanned skin, her hair in a "
+               "high messy topknot and a bright white streak through her "
+               "right eyebrow, in a moss green shirt dress with the sleeves "
                "rolled up"},
     {"idade": 63,
      "payoff": "with a short, round frame, hair dyed flat dark brown under a "
                "blunt fringe, half-moon reading glasses low on her nose and "
                "a raised mole on her chin, in a camel knit twinset and a "
                "single strand of pearls"},
+    # ⚠️ REESCRITA EM 2026-08-13: a ancora era `a wide gap between her front
+    # teeth`. Falha entre os dentes esta' na lista de PROIBIDO do operador
+    # (*"melhore a aparencia e shape desses homens"* vale para o casal inteiro
+    # do payoff — e' o quadro do FINAL FELIZ, o unico do video em que alguem
+    # sorri). Entrou a covinha, que ancora igual e nao deteriora. ⛔ E ela era
+    # a UNICA entrada do pool que casava com o `_DENTE` — se um dia este pool
+    # entrar na varredura de dente do autoteste, ele ja' passa limpo.
     {"idade": 64,
      "payoff": "with a heavy-set frame, a shaggy shoulder-length "
                "gray-and-black cut, sunglasses pushed up on her head and a "
-               "wide gap between her front teeth, in an orange tunic top and "
+               "deep dimple in her right cheek, in an orange tunic top and "
                "white capri pants"},
     {"idade": 65,
      "payoff": "with a tall, narrow build, a long face and thick freckles "
@@ -911,9 +1100,67 @@ MULHERES = [
     {"idade": 53,
      "payoff": "with a wiry, broad-shouldered build and deep laugh lines "
                "around her mouth, short spiky ash-blond hair growing out at "
-               "the roots, thick red-framed glasses and a small scar at the "
+               "the roots, thick red-framed glasses and a beauty mark at the "
                "corner of her mouth, in a checked blue-and-white blouse and "
                "dark jeans"},
+    # ======================================================================
+    # + 2026-08-13: 16 -> 24. Ordem do operador: *"melhore a aparencia e shape
+    # desses homens"* / *"aumente o pool de opcoes substancialmente"*.
+    # ⭐ ESTA E' A MULHER DO PAYOFF — o unico quadro do video em que alguem
+    # esta' feliz. Por isso as oito novas empurram para o lado SAUDAVEL da
+    # tabela (§REF, DISTINTIVO NUNCA DETERIORADO): sarda, covinha, pinta,
+    # mecha branca, argola, pele lisa, linhas de riso. ⛔ Zero cicatriz, zero
+    # falha de dente, zero `sun-weathered`/`deeply lined`/`liver-spotted` —
+    # a mulher que ri no colo dele nao pode parecer castigada, senao o payoff
+    # vira consolo em vez de premio.
+    # ⭐ Os eixos que giram aqui, e cada nova aciona pelo menos tres: PORTE
+    # (`\w+ frame`/`\w+ build`), CABELO, OCULOS (3 das 8 — o pool fica em 7/24,
+    # ~29%), PELE saudavel (freckled, smooth-skinned, lightly tanned, laugh
+    # lines) e ANCORA facial permanente (P6), sempre em ponto diferente.
+    # ⛔ Zero `big`/`huge`: o payoff aterrissa na IMAGE 04 e o BANIDOS_IMAGE
+    # deste motor pega `big(?!-box)`.
+    # ⛔ Zero mencao a etnia: o motor injeta ETNIA[pagina] antes do payoff.
+    # ⚠️ O `payoff` entra em "A %d-year-old %s woman %s sits sideways on his
+    # knee" — comeca em `with ` e termina no traje, como as dezesseis acima.
+    # ======================================================================
+    {"idade": 54,
+     "payoff": "with a trim build and smooth-skinned cheeks, dark hair in a "
+               "blunt shoulder-length cut with a bright silver streak at the "
+               "left temple, and a small mole above her right eyebrow, in a "
+               "sleeveless navy shift dress"},
+    {"idade": 60,
+     "payoff": "with a soft round frame and a light spray of freckles across "
+               "her nose, copper hair set in loose curls, and gold hoop "
+               "earrings, in a butter yellow blouse and a long floral skirt"},
+    {"idade": 57,
+     "payoff": "with broad shoulders and a long neck, thick black hair "
+               "twisted up and pinned with a wooden clip, thin gold-rimmed "
+               "glasses and a beauty mark beside her left eye, in a teal wrap "
+               "dress"},
+    {"idade": 62,
+     "payoff": "with a small, slight build and laugh lines at the corners of "
+               "her eyes, fine silver hair cut in a soft pixie, and a pearl "
+               "stud in each earlobe, in a rose linen blouse and cream "
+               "trousers"},
+    {"idade": 55,
+     "payoff": "with a tall, narrow build and lightly tanned skin, "
+               "honey-brown hair falling loose to her shoulders, and a deep "
+               "dimple in her left cheek, in a sage green sundress"},
+    {"idade": 65,
+     "payoff": "with a stout frame and a wide open face, white hair in a "
+               "short permed set, oval reading glasses on a thin gold chain "
+               "and a raised mole on her right jaw, in a lilac cardigan over "
+               "a white blouse"},
+    {"idade": 58,
+     "payoff": "with a compact build and freckled forearms, auburn hair in a "
+               "low ponytail with gray coming in at the part, and a shallow "
+               "cleft in her chin, in a denim shirt dress and a leather belt"},
+    {"idade": 63,
+     "payoff": "with a full-figured frame and smooth-skinned hands, "
+               "salt-and-pepper hair in a chin-length bob, thick "
+               "tortoiseshell glasses pushed up on her head and a dark beauty "
+               "mark under her left eye, in a burgundy knit top and black "
+               "trousers"},
 ]
 
 # prop do payoff (cena 4) — F15: ja' ereto no IMAGE, dimensionado por escala
@@ -1502,6 +1749,10 @@ PT_LOCAL = {
     "viveiro": "No viveiro de plantas",
     "arquibancada": "Na arquibancada do campo",
     "aeroporto": "No portão do aeroporto",
+    # + 2026-08-13: os seis locais da terceira ampliacao.
+    "barbearia": "Na barbearia", "academia": "Na academia",
+    "leilao": "No leilão de gado", "estacao": "Na plataforma do trem",
+    "casamento": "No salão de festas", "centro_comunitario": "No centro comunitário",
 }
 
 
@@ -2294,9 +2545,33 @@ _CELEB = re.compile(r"\b(celebrity|celebrities|famous|movie star|"
 _APROVACAO = ("handsome", "chiseled", "distinguished", "piercing eyes",
               "strong jaw", "rugged good-looking")
 # ⛔ empurram para MENDIGO — matam a credibilidade do narrador
+# ⛔⛔ A LISTA DOBROU EM 2026-08-13, e nao por capricho: a versao curta
+# aprovava ONZE entradas dos REFS e SETE das VITIMAS que descreviam gente por
+# DANO (cicatriz, mancha senil, pele castigada de sol, face avermelhada, testa
+# vincada fundo, lobulo rasgado, falha entre os dentes). O gate media
+# `gaunt|bony|leathery` — palavras que ninguem escreve — e ficava verde
+# enquanto o pool inteiro envelhecia. ⚠️ Lente que so' pega o que ninguem faz
+# e' pior que lente nenhuma: ela CERTIFICA o defeito.
+# ⭐ A lista abaixo e' a ordem do operador de 2026-08-13, palavra por palavra
+# (*"melhore a aparencia e shape desses homens"*, com o pool na mao). Os termos
+# saudaveis que substituem cada um estao no cabecalho de REFS e de VITIMAS.
+# ⚠️ `notch`/`torn` ficam de FORA da lista: entalhe de orelha e' feicao, nao
+# ferida — e nenhum sobrou nos dois pools de qualquer forma.
 _MENDIGO = ("gaunt", "bony", "leathery", "weather-beaten", "chipped tooth",
             "drooping eyelid", "broken capillaries", "frayed", "patchy",
-            "toothless", "unkempt")
+            "toothless", "unkempt",
+            # + 2026-08-13
+            "scar", "sun damage", "sun-damaged", "weathered", "ruddy",
+            "thin skin", "loose skin", "age spot", "sun-spotted",
+            "liver-spotted", "sunken", "hollow cheek", "deeply lined",
+            "deep lines", "creased", "worn-out", "careworn", "torn ",
+            "missing tooth")
+# ⚠️ `worn` CRU FOI TESTADO E CAIU NA MESMA RODADA: reprovou tres entradas
+# CERTAS (`hair worn long enough to curl over his collar`, `worn long on top`,
+# `heavy gray waves worn low across the forehead`) — ali `worn` e' o verbo
+# VESTIR, nao o adjetivo de gasto. Quem cede e' a lente, nao o pool
+# (licoes §16). Ficaram `worn-out` e `careworn`, que so' existem no sentido
+# proibido.
 # ⛔ contradizem a string travada do BLOCO 0 (`front teeth even, white and
 # complete`) — CL25. Contradicao dentro do prompt e' onde o gerador inventa.
 _DENTE = ("crown on one", "gold crown", "gap between his front teeth",
@@ -2391,6 +2666,23 @@ def autoteste(n=400):
                 falhas.append("%s %s: etnia dentro do pool — quem injeta e' o "
                               "ETNIA[pagina] (congruencia com o avatar)"
                               % (nome, e["id"]))
+    # + 2026-08-13 — O POOL `MULHERES` ENTROU NA VARREDURA. Ele descreve GENTE
+    # (a mulher do payoff, o unico rosto FELIZ do video) e estava de fora desta
+    # lente desde sempre. ⚠️ So' se descobriu porque o irmao `pee_short` ganhou
+    # autoteste nesta data e pegou la' duas entradas com `deeply lined`,
+    # `sun-weathered` e `a thin scar` que ESTE gate deixava passar — as mesmas
+    # entradas, nos dois arquivos. Lente que cobre um pool e nao o vizinho e'
+    # como nao ter lente no vizinho.
+    # ⚠️ `MULHERES` nao tem `id` (o pool nasceu assim e renomear chave nao e'
+    # assunto desta passada), entao o rotulo e' o indice + a idade.
+    for i, e in enumerate(MULHERES):
+        rot = "#%d (%d anos)" % (i, e["idade"])
+        t = " ".join(str(x) for x in e.values()).lower()
+        for p in _MENDIGO + _APROVACAO + _DENTE:
+            if p in t:
+                falhas.append("MULHERES %s: %r — DISTINTIVO, NUNCA "
+                              "DETERIORADO / geometria, nunca aprovacao"
+                              % (rot, p))
 
     # -- 5. LOCAIS — CAMPOS, E OS DOIS QUE ENTRAM EM TEXTO MONTADO ---------
     for l in LOCAIS:

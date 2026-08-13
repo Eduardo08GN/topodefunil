@@ -435,6 +435,120 @@ MUNDOS = [
      "dela": "a pale blue bikini top",
      "dela_bela": "a pale blue halter bikini top",
      "etnias": ["white American", "Black American"]},
+
+    # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*. De 15 para 24 regioes.
+    # ⛔ Cada entrada nova declara EXATAMENTE as mesmas onze chaves das
+    # vizinhas — cenario, agua, BORDA, luz, audio, os dois trajes dela e as
+    # `etnias`. A `borda` nao e' enfeite: e' onde a tigela e o sache ficam
+    # apoiados nos dois takes, e mundo sem borda poria a tigela boiando.
+    # ⛔ E TODAS SAO PISCINA OU JACUZZI — ordem permanente do operador
+    # (*"sempre voltado pra piscina, jacuzzi, nicho de verao"*). Nenhuma
+    # banheira de banheiro entrou, mesmo onde o `bed16` tem uma.
+    # ⭐ COBERTURA DE ETNIA AUMENTADA: 9 -> 15 mundos que comportam `white
+    # American` e 8 -> 13 que comportam `Black American`.
+    {"id": "socal", "familia": "socal", "regiao": "Sul da California",
+     "cen": "the back yard of a Southern California stucco house, a low block "
+            "wall and a lemon tree in the corner",
+     "agua": "a rectangular plaster pool with a stone coping",
+     "borda": "the wet stone coping of the pool",
+     "luz": "warm low sun coming in over the block wall",
+     "audio": "a pool pump running, a mockingbird, a car door two houses down",
+     "dela": "a white bikini top",
+     "dela_bela": "a white halter bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "arizona", "familia": "arizona", "regiao": "Arizona",
+     "cen": "the back patio of an Arizona adobe house, saguaro and gravel past "
+            "a low wall",
+     "agua": "a small rectangular plunge pool set into the patio",
+     "borda": "the wet tiled edge of the plunge pool",
+     "luz": "late desert sun coming in low and orange",
+     "audio": "an evaporative cooler humming, water lapping the pool wall, "
+              "cicadas",
+     "dela": "a terracotta bikini top",
+     "dela_bela": "a terracotta halter bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "carolinas", "familia": "carolinas", "regiao": "Carolinas",
+     "cen": "the back yard of a Carolina brick ranch house, pines and a wire "
+            "fence at the far edge",
+     "agua": "a round above-ground pool with a wooden step ladder",
+     "borda": "the wet flat rail on top of the pool wall",
+     "luz": "warm evening light coming flat across the grass",
+     "audio": "crickets, water against the pool wall, a screen door",
+     "dela": "a purple bikini top",
+     "dela_bela": "a purple halter bikini top",
+     "etnias": ["Black American"]},
+
+    {"id": "detroit", "familia": "detroit", "regiao": "Detroit",
+     "cen": "the back yard of a Detroit brick house, a chain-link fence and a "
+            "garage out at the alley",
+     "agua": "a square hot tub on a concrete pad with steam coming off the "
+             "surface",
+     "borda": "the wet moulded rim of the tub",
+     "luz": "cool evening light with the steam catching it",
+     "audio": "the tub jets, a dog down the alley, far traffic",
+     "dela": "a red bikini top",
+     "dela_bela": "a red halter bikini top",
+     "etnias": ["Black American"]},
+
+    {"id": "rochosas", "familia": "rochosas", "regiao": "Montanhas Rochosas",
+     "cen": "the back deck of a Rocky Mountain log house, pines and a ridge "
+            "line behind",
+     "agua": "a round cedar hot tub set into the deck with steam rising off "
+             "the water",
+     "borda": "the wet cedar rim of the tub",
+     "luz": "cold blue evening light with the steam lit warm from below",
+     "audio": "the tub jets, wind in the pines, an elk far off",
+     "dela": "a forest green bikini top",
+     "dela_bela": "a forest green halter bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "golfo", "familia": "golfo", "regiao": "Costa do Golfo",
+     "cen": "the screened porch of a Gulf Coast raised house, marsh grass past "
+            "the rail",
+     "agua": "a round hot tub set into the porch boards",
+     "borda": "the wet porch boards at the rim of the tub",
+     "luz": "warm late light coming in through the screen",
+     "audio": "frogs, water moving in the tub, a boat motor far off",
+     "dela": "a seafoam bikini top",
+     "dela_bela": "a seafoam halter bikini top",
+     "etnias": ["white American", "Black American"]},
+
+    {"id": "chicago", "familia": "chicago", "regiao": "South Side de Chicago",
+     "cen": "the back yard of a Chicago bungalow, a wooden fence and a garage "
+            "out at the alley",
+     "agua": "a round above-ground pool with a metal rail around the top",
+     "borda": "the wet metal rail of the pool wall",
+     "luz": "flat late summer light across the yard",
+     "audio": "water against the pool wall, an elevated train, kids two yards "
+              "over",
+     "dela": "a burgundy bikini top",
+     "dela_bela": "a burgundy halter bikini top",
+     "etnias": ["Black American"]},
+
+    {"id": "jersey", "familia": "jersey", "regiao": "Jersey Shore",
+     "cen": "the back deck of a Jersey Shore cottage, a slat fence and beach "
+            "grass behind it",
+     "agua": "a round above-ground pool with a wooden deck built to the rim",
+     "borda": "the wet deck boards at the pool wall",
+     "luz": "cool late afternoon light coming off the water",
+     "audio": "gulls, water lapping the pool wall, a screen door",
+     "dela": "a pale blue bikini top",
+     "dela_bela": "a pale blue twist-front bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "piemonte", "familia": "piemonte", "regiao": "Piemonte da Virginia",
+     "cen": "the side yard of a Virginia Piedmont farmhouse, a split-rail "
+            "fence and low hills behind",
+     "agua": "a square cedar hot tub on a gravel pad",
+     "borda": "the wet cedar edge of the tub",
+     "luz": "soft evening light coming across the fields",
+     "audio": "crickets, water moving in the tub, a truck on the county road",
+     "dela": "a rose bikini top",
+     "dela_bela": "a rose halter bikini top",
+     "etnias": ["white American", "Black American"]},
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -463,25 +577,115 @@ def mundos_da_etnia(etnia):
 # ⛔ MARCA FACIAL OBRIGATORIA: ele aparece nos DOIS takes, com um corte no meio e
 # uma mudanca de postura inteira. Sem ancora distintiva o Veo devolve OUTRO
 # homem no take 2 — licao paga no VAZAMENTO.
+# ⛔⛔ REESCRITO E AMPLIADO EM 2026-08-13 — ordem do operador com o print dos
+# renders na mao: *"melhore a aparencia e shape desses homens"* / *"aumente o
+# pool de opcoes substancialmente, tambem dos ambientes"*. De 6 para 24.
+# ⚠️ CINCO DAS SEIS `marca` ANTIGAS ERAM DANO PURO — `a deep vertical crease
+# between his eyebrows`, `a pale scar through his left eyebrow`, `heavy folds
+# under both eyes`, `a broad flat nose broken once and never set`, `a white
+# patch of old sun damage on his left temple`. A `marca` e' repetida LITERAL nos
+# tres blocos (ancora de continuidade da GO10), entao cada video levava a mesma
+# avaria tres vezes — e num angulo cujo ARGUMENTO E' O CORPO, um rosto avariado
+# desmente o tronco. E' a licao do PLACA 16 (*"esses caras tao parecendo
+# mendigo"*): ancora DISTINTIVA, nunca DETERIORADA.
+# ⛔ NENHUMA PALAVRA DE APROVACAO no pool (handsome, rugged, strong jaw): elogio
+# no prompt puxa o rosto para a media do banco de imagem — mesmo mecanismo pelo
+# qual `not a celebrity` invoca a celebridade. ⛔ E NENHUMA COR DE PELE: a etnia
+# entra pela PAGINA, na frase montada.
+# ⭐ OCULOS EM 6 DAS 24 (25%) — o eixo estava ZERADO no `medir_personagens
+# --gate` (reprovacao). ⚠️ E aqui eles sao OCULOS DE SOL NA CABECA em 5 das 6:
+# a cena e' piscina/jacuzzi de verao e ele esta' com a agua no peito, entao
+# armacao de leitura no rosto brigaria com o quadro. O eixo gira sem contradizer
+# a cena.
 HOMENS = [
     {"id": "grisalho_curto", "idade": 58,
      "cabeca": "close-cropped grey hair and a full grey beard",
-     "marca": "a deep vertical crease between his eyebrows"},
+     "marca": "a strong cleft in his chin"},
     {"id": "careca_cavanhaque", "idade": 58,
      "cabeca": "a clean-shaven scalp and a short grey goatee",
      "marca": "a small dark mole high on his right cheek"},
     {"id": "grisalho_tempos", "idade": 58,
      "cabeca": "short salt-and-pepper hair and a trimmed grey beard",
-     "marca": "a pale scar through his left eyebrow"},
+     "marca": "laugh lines at the corners of his eyes"},
     {"id": "barba_cheia", "idade": 58,
-     "cabeca": "grey hair receding at the temples and a full white beard",
-     "marca": "heavy folds under both eyes"},
+     "cabeca": "grey hair with a low widow's peak and a full white beard",
+     "marca": "heavy level brows over wide-set eyes"},
     {"id": "bigode_grisalho", "idade": 58,
      "cabeca": "close-cropped grey hair and a thick grey moustache",
-     "marca": "a broad flat nose broken once and never set"},
+     "marca": "a shallow dimple in his left cheek and light freckling across "
+              "his nose"},
     {"id": "grisalho_ondulado", "idade": 58,
      "cabeca": "short wavy grey hair and a close grey beard",
-     "marca": "a white patch of old sun damage on his left temple"},
+     "marca": "a patch of white above his left temple"},
+    {"id": "oculos_sol_cabeca", "idade": 58,
+     "cabeca": "close-cropped grey hair, a short grey beard and dark "
+               "sunglasses pushed up on his head",
+     "marca": "a small mole beside his right eye"},
+    {"id": "barba_quadrada", "idade": 58,
+     "cabeca": "close-cropped white hair and a full white beard trimmed square "
+               "at the jaw",
+     "marca": "smooth-skinned with a cleft chin"},
+    {"id": "topete_prata", "idade": 58,
+     "cabeca": "silver hair still full on top and combed high, a clean-shaven "
+               "face and black sunglasses resting on top of his head",
+     "marca": "a beauty mark below his right eye"},
+    {"id": "raspado_cavanhaque", "idade": 58,
+     "cabeca": "a shaved head and a short white goatee",
+     "marca": "heavy level brows and a wide square chin"},
+    {"id": "oculos_espelhado", "idade": 58,
+     "cabeca": "short grey hair pushed back wet, a trimmed grey beard and "
+               "mirrored sunglasses pushed up onto his forehead",
+     "marca": "a shallow cleft in his chin"},
+    {"id": "cachos_grisalhos", "idade": 58,
+     "cabeca": "loose grey curls kept short and a close-trimmed grey beard",
+     "marca": "a small gold stud in his left ear"},
+    {"id": "bigode_chevron", "idade": 58,
+     "cabeca": "grey hair clipped short at the sides and a thick chevron "
+               "moustache",
+     "marca": "laugh lines at the corners of his mouth"},
+    {"id": "entradas_barba", "idade": 58,
+     "cabeca": "a high hairline with thick grey hair behind it and a full grey "
+               "beard",
+     "marca": "a small mole on his left jaw"},
+    {"id": "oculos_wrap", "idade": 58,
+     "cabeca": "short white hair, a clean-shaven face and wraparound "
+               "sunglasses pushed up on his head",
+     "marca": "a silver streak through one eyebrow"},
+    {"id": "lateral_prateada", "idade": 58,
+     "cabeca": "dark hair going silver at the sides, cut short, and a close "
+               "dark beard",
+     "marca": "a dimple in each cheek when he talks"},
+    {"id": "barba_curta_branca", "idade": 58,
+     "cabeca": "white hair kept very short and a short white beard",
+     "marca": "smooth-skinned with a broad square chin"},
+    {"id": "onda_para_tras", "idade": 58,
+     "cabeca": "wavy salt-and-pepper hair pushed back off the forehead and a "
+               "clean-shaven face",
+     "marca": "smooth-skinned with a small beauty mark on his left cheekbone"},
+    {"id": "oculos_aro_fino", "idade": 58,
+     "cabeca": "short dark grey hair, a close grey beard and thin wire-rimmed "
+               "glasses",
+     "marca": "a cleft chin under heavy level brows"},
+    {"id": "crista_branca", "idade": 58,
+     "cabeca": "a white streak running through short dark hair and a trimmed "
+               "dark beard",
+     "marca": "a small mole above his lip"},
+    {"id": "careca_bigode", "idade": 58,
+     "cabeca": "a bald crown with grey at the sides and a thick grey "
+               "moustache",
+     "marca": "a small gold hoop in his left ear"},
+    {"id": "barba_longa_grisalha", "idade": 58,
+     "cabeca": "grey hair combed back short and a long grey beard combed "
+               "straight",
+     "marca": "freckles scattered across his nose"},
+    {"id": "oculos_tartaruga", "idade": 58,
+     "cabeca": "close-cropped grey hair, a short grey beard and tortoiseshell "
+               "sunglasses pushed back on his head",
+     "marca": "a shallow dimple in his chin"},
+    {"id": "franja_grisalha", "idade": 58,
+     "cabeca": "straight grey hair kept a little long over the forehead and a "
+               "clean-shaven face",
+     "marca": "laugh lines and a small mole at the corner of his jaw"},
 ]
 
 # ⭐ O MOLDE do `sc.ref_forte`: ele so' devolve os campos que o molde PEDE.
@@ -506,6 +710,12 @@ MOLDE_H = dict(HOMENS[0], corpo="")
 # que este motor acrescenta.
 FORTE_IDADE_MIN = 61
 
+# ⭐ AMPLIADO EM 2026-08-13 (de 6 para 14), ordem do operador: *"melhore a
+# aparencia e shape desses homens"*. ⛔ AQUI O REGISTRO NAO MUDA — neste angulo
+# o CORPO E' O ARGUMENTO (invariante 2/2 na fonte), e o pool ja' nascia forte:
+# bracos grossos e veia no antebraco. O que faltava era TAMANHO, nao conserto.
+# ⚠️ Nenhuma entrada nova descreve corpo mole ou curvado, e nenhuma vira
+# fisiculturista de palco: o teto continua sendo homem grande de verdade.
 CORPOS_H = [
     "heavy through the shoulders, thick arms with the veins standing out on "
     "the forearms",
@@ -514,6 +724,14 @@ CORPOS_H = [
     "wide-shouldered with heavy upper arms and visible forearm veins",
     "thick through the neck and shoulders, heavy veined forearms",
     "densely built through the chest, the veins standing up on his arms",
+    "deep through the chest with thick wrists and corded forearms",
+    "square and heavy across the shoulders, the arms full and veined",
+    "big through the upper back and arms, veins running down the forearms",
+    "packed through the chest and shoulders with thick veined arms",
+    "wide across the collarbones with heavy arms and standing forearm veins",
+    "thickset through the chest, the shoulders round and the forearms roped",
+    "heavy-armed and full through the chest, the veins showing at his wrists",
+    "broad and dense through the shoulders, forearms thick and veined",
 ]
 
 # ===========================================================================
@@ -598,7 +816,66 @@ MULHERES = [
     {"id": "morena_rabo", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "fine-boned and long-limbed with a narrow waist",
      "cabeca": "warm brunette hair in a wet high ponytail",
-     "marca": "hazel eyes and a faint scar through one eyebrow"},
+     "marca": "hazel eyes and a small beauty mark on her temple"},
+    # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
+    # substancialmente"*. De 12 para 24, mantendo os TRES registros de cabelo em
+    # oito cada (ruiva, loira, morena) — a proporcao que o operador pediu.
+    # ⛔ TODAS BRANCAS E TODAS 24, sem excecao: a lente GO14 cobra o POOL
+    # inteiro, nao so' a entrada sorteada, e uma entrada fora da regra ficaria
+    # escondida ate' calhar de sair no sorteio.
+    # ⛔ E TODO CABELO CONTINUA MOLHADO — a cena e' um casal DENTRO da agua.
+    # ⚠️ UMA ENTRADA ANTIGA FOI REESCRITA na mesma passada: `morena_rabo`
+    # carregava `a faint scar through one eyebrow`, que e' ancora de DANO num
+    # pool que existe para ser bonito. Sinal de beleza cumpre a mesma funcao de
+    # continuidade sem contradizer o registro.
+    {"id": "ruiva_veneziana", "etnia": "white American", "idade": 24,
+     "porte": "long-limbed with a narrow waist",
+     "cabeca": "Venetian red hair falling wet down her back",
+     "marca": "grey-green eyes and a fine dusting of freckles"},
+    {"id": "ruiva_acobreada", "etnia": "white American", "idade": 24,
+     "porte": "athletic with square shoulders and a flat stomach",
+     "cabeca": "copper hair twisted wet into a loose knot",
+     "marca": "amber eyes and a small beauty mark on her jaw"},
+    {"id": "ruiva_clara", "etnia": "white American", "idade": 24,
+     "porte": "petite and finely built with a small waist",
+     "cabeca": "pale red hair pushed back wet from her forehead",
+     "marca": "blue eyes and a light spray of freckles over her nose"},
+    {"id": "ruiva_onda_longa", "etnia": "white American", "idade": 24,
+     "porte": "tall and slim with long legs",
+     "cabeca": "auburn hair in wet loose waves over one shoulder",
+     "marca": "green eyes and a dimple in one cheek"},
+    {"id": "loira_gelo", "etnia": "white American", "idade": 24,
+     "porte": "statuesque with a long neck and a narrow waist",
+     "cabeca": "ice-blonde hair slicked back wet",
+     "marca": "smooth-skinned with pale grey eyes"},
+    {"id": "loira_areia", "etnia": "white American", "idade": 24,
+     "porte": "lean and toned with a flat stomach",
+     "cabeca": "sandy blonde hair in a wet high bun",
+     "marca": "light hazel eyes and a small mole beside her eye"},
+    {"id": "loira_ondulada", "etnia": "white American", "idade": 24,
+     "porte": "curvy with a very small waist",
+     "cabeca": "long wavy blonde hair heavy with water",
+     "marca": "blue eyes and a beauty mark above her lip"},
+    {"id": "loira_bob", "etnia": "white American", "idade": 24,
+     "porte": "fine-boned and long-limbed",
+     "cabeca": "a wet blonde bob pushed behind her ears",
+     "marca": "green eyes and light freckles across her nose"},
+    {"id": "morena_cacheada", "etnia": "white American", "idade": 24,
+     "porte": "hourglass-figured with full shoulders",
+     "cabeca": "dark curls gathered wet at the nape",
+     "marca": "dark brown eyes and a dimple in each cheek"},
+    {"id": "morena_franja", "etnia": "white American", "idade": 24,
+     "porte": "slender with a narrow waist and long arms",
+     "cabeca": "glossy dark hair, wet, with a heavy fringe",
+     "marca": "smooth-skinned with clear grey eyes"},
+    {"id": "morena_mel", "etnia": "white American", "idade": 24,
+     "porte": "athletic and long-legged with a flat stomach",
+     "cabeca": "warm brown hair falling wet past her shoulders",
+     "marca": "honey-brown eyes and a small beauty spot on her cheek"},
+    {"id": "morena_trancada", "etnia": "white American", "idade": 24,
+     "porte": "tall and fine-boned with a small waist",
+     "cabeca": "dark hair in a wet braid over one shoulder",
+     "marca": "dark eyes and a fine gold hoop in one nostril"},
 ]
 
 

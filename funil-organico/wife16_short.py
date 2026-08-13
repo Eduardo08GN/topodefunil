@@ -383,6 +383,149 @@ MUNDOS = [
      "dela_q": "a black satin nightgown",
      "dela_a": "a white bikini top",
      "etnias": ["white American", "Black American"]},
+
+    # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*. De 15 para 24 regioes.
+    # ⛔ Cada entrada nova declara EXATAMENTE as mesmas treze chaves das
+    # vizinhas — quarto + luz + audio do take 1, casa + agua + luz + audio do
+    # take 2, os dois trajes dela e as `etnias`. Cenario aqui e' AMBIENTE
+    # INTEIRO, nao fundo.
+    # ⛔ E o `a_cen` continua dizendo `the same <casa>` (controle do autoteste):
+    # sem isso o corte le' como dois videos colados.
+    # ⭐ COBERTURA DE ETNIA AUMENTADA: 9 -> 15 mundos que comportam `white
+    # American` e 8 -> 13 que comportam `Black American`.
+    # ⚠️ Sao as MESMAS nove regioes do `bed16_short.py`, sem os dois trajes do
+    # MODO BELA, que este motor nao tem. Motores irmaos andam juntos.
+    {"id": "socal", "familia": "socal", "regiao": "Sul da California",
+     "q_cen": "a bedroom in a Southern California stucco house, white walls "
+              "and a wide window behind a slatted blind",
+     "q_luz": "one lamp on the far nightstand, the rest of the room dark",
+     "q_audio": "a pool pump running outside, a quiet street",
+     "a_cen": "the back yard of the same Southern California house, a low "
+              "block wall and a lemon tree in the corner",
+     "a_agua": "a rectangular plaster pool with a stone coping, the water "
+               "still",
+     "a_luz": "warm low sun coming in over the block wall",
+     "a_audio": "the pool pump, a mockingbird, a car door two houses down",
+     "dela_q": "a pale pink satin nightgown",
+     "dela_a": "a white bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "arizona", "familia": "arizona", "regiao": "Arizona",
+     "q_cen": "a bedroom in an Arizona adobe house, thick plaster walls and a "
+              "deep-set window",
+     "q_luz": "a single lamp on the nightstand, the corners of the room dark",
+     "q_audio": "an evaporative cooler humming, dry wind outside",
+     "a_cen": "the back patio of the same Arizona adobe house, saguaro and "
+              "gravel past a low wall",
+     "a_agua": "a small rectangular plunge pool set into the patio, the water "
+               "still",
+     "a_luz": "late desert sun coming in low and orange",
+     "a_audio": "the cooler humming, water lapping the pool wall, cicadas",
+     "dela_q": "a sand-coloured satin nightgown",
+     "dela_a": "a terracotta bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "carolinas", "familia": "carolinas", "regiao": "Carolinas",
+     "q_cen": "a bedroom in a Carolina brick ranch house, panelled walls and a "
+              "chest of drawers under the window",
+     "q_luz": "one bedside lamp on and the ceiling light off",
+     "q_audio": "crickets outside, a window unit cycling",
+     "a_cen": "the back yard of the same Carolina brick house, pines and a "
+              "wire fence at the far edge",
+     "a_agua": "a round above-ground pool with a wooden step ladder",
+     "a_luz": "warm evening light coming flat across the grass",
+     "a_audio": "crickets, water against the pool wall, a screen door",
+     "dela_q": "a deep purple satin nightgown",
+     "dela_a": "a purple bikini top",
+     "etnias": ["Black American"]},
+
+    {"id": "detroit", "familia": "detroit", "regiao": "Detroit",
+     "q_cen": "a bedroom in a Detroit brick house, painted plaster walls and a "
+              "tall radiator under the window",
+     "q_luz": "one lamp beside the bed, street light leaking past the blind",
+     "q_audio": "a radiator ticking, a bus braking two streets over",
+     "a_cen": "the back yard of the same Detroit brick house, a chain-link "
+              "fence and a garage out at the alley",
+     "a_agua": "a square hot tub on a concrete pad, steam coming off the "
+               "surface",
+     "a_luz": "cool evening light with the steam catching it",
+     "a_audio": "the tub jets, a dog down the alley, far traffic",
+     "dela_q": "a black satin nightgown",
+     "dela_a": "a red bikini top",
+     "etnias": ["Black American"]},
+
+    {"id": "rochosas", "familia": "rochosas", "regiao": "Montanhas Rochosas",
+     "q_cen": "a bedroom in a Rocky Mountain log house, log walls and a wool "
+              "blanket folded at the foot of the bed",
+     "q_luz": "one lamp on the nightstand and the window black behind it",
+     "q_audio": "wind against the log walls, a stove ticking",
+     "a_cen": "the back deck of the same Rocky Mountain log house, pines and a "
+              "ridge line behind",
+     "a_agua": "a round cedar hot tub set into the deck, steam rising off the "
+               "water",
+     "a_luz": "cold blue evening light with the steam lit warm from below",
+     "a_audio": "the tub jets, wind in the pines, an elk far off",
+     "dela_q": "a forest green satin nightgown",
+     "dela_a": "a forest green bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "golfo", "familia": "golfo", "regiao": "Costa do Golfo",
+     "q_cen": "a bedroom in a Gulf Coast raised house, beadboard walls and "
+              "shutters half closed",
+     "q_luz": "one lamp on the far nightstand, the rest of the room low",
+     "q_audio": "a ceiling fan turning, frogs outside",
+     "a_cen": "the screened porch of the same Gulf Coast house, marsh grass "
+              "past the rail",
+     "a_agua": "a round hot tub set into the porch boards, the water moving",
+     "a_luz": "warm late light coming in through the screen",
+     "a_audio": "frogs, water moving in the tub, a boat motor far off",
+     "dela_q": "a seafoam satin nightgown",
+     "dela_a": "a seafoam bikini top",
+     "etnias": ["white American", "Black American"]},
+
+    {"id": "chicago", "familia": "chicago", "regiao": "South Side de Chicago",
+     "q_cen": "a bedroom in a Chicago bungalow, papered walls and a wooden "
+              "dresser with a mirror",
+     "q_luz": "one bedside lamp on, the hallway dark behind the door",
+     "q_audio": "a radiator knocking, an elevated train far off",
+     "a_cen": "the back yard of the same Chicago bungalow, a wooden fence and "
+              "a garage out at the alley",
+     "a_agua": "a round above-ground pool with a metal rail around the top",
+     "a_luz": "flat late summer light across the yard",
+     "a_audio": "water against the pool wall, an elevated train, kids two "
+                "yards over",
+     "dela_q": "a burgundy satin nightgown",
+     "dela_a": "a burgundy bikini top",
+     "etnias": ["Black American"]},
+
+    {"id": "jersey", "familia": "jersey", "regiao": "Jersey Shore",
+     "q_cen": "a bedroom in a Jersey Shore cottage, white board walls and a "
+              "window facing the street",
+     "q_luz": "one lamp on the nightstand and the ceiling light off",
+     "q_audio": "gulls outside, a car on gravel",
+     "a_cen": "the back deck of the same Jersey Shore cottage, a slat fence "
+              "and beach grass behind it",
+     "a_agua": "a round above-ground pool with a wooden deck built to the rim",
+     "a_luz": "cool late afternoon light coming off the water",
+     "a_audio": "gulls, water lapping the pool wall, a screen door",
+     "dela_q": "a pale blue satin nightgown",
+     "dela_a": "a pale blue bikini top",
+     "etnias": ["white American"]},
+
+    {"id": "piemonte", "familia": "piemonte", "regiao": "Piemonte da Virginia",
+     "q_cen": "a bedroom in a Virginia Piedmont farmhouse, papered walls and a "
+              "quilt folded over a chair",
+     "q_luz": "a single lamp beside the bed, the rest of the room dark",
+     "q_audio": "crickets outside, an old house settling",
+     "a_cen": "the side yard of the same Virginia farmhouse, a split-rail "
+              "fence and low hills behind",
+     "a_agua": "a square cedar hot tub on a gravel pad, the water moving",
+     "a_luz": "soft evening light coming across the fields",
+     "a_audio": "crickets, water moving in the tub, a truck on the county road",
+     "dela_q": "a dusty rose satin nightgown",
+     "dela_a": "a rose bikini top",
+     "etnias": ["white American", "Black American"]},
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -406,82 +549,149 @@ def mundos_da_etnia(etnia):
 # de cenario, roupa e luz. Sem ancora distintiva o Veo devolve OUTRO homem no
 # take 2 — foi o que aconteceu no VAZAMENTO, e como o TAKE diz `Only he speaks`
 # o estranho falava a fala do REF.
-# ⚠️ 55-60 anos, conforme o frame da fonte. Cabelo e barba grisalhos.
+# ⚠️ 55-62 anos, conforme o frame da fonte. Cabelo e barba grisalhos.
+#
+# ⛔⛔ REESCRITO INTEIRO EM 2026-08-13 — ordem do operador com o print dos
+# renders na mao: *"melhore a aparencia e shape desses homens"* / *"aumente o
+# pool de opcoes substancialmente, tambem dos ambientes"*. De 15 para 24.
+# ⚠️ O conserto NAO e' de tamanho, e' de CONTEUDO: o pool antigo carregava DANO
+# no `sinal` — `a pale scar through his left eyebrow`, `a broad flat nose broken
+# once and never set` (duas vezes), `heavy folds under both eyes`, `a white
+# patch of old sun damage`, `a deep vertical crease between his eyebrows`, `a
+# weathered squint`, `a chipped front tooth that shows when he talks`, `a pale
+# old scar along his jaw`. O `sinal` e' repetido LITERAL na IMAGE 02 (ancora de
+# continuidade), entao cada video levava a mesma avaria duas vezes. E' a licao
+# do PLACA 16 (*"esses caras tao parecendo mendigo"*): ancora DISTINTIVA, nunca
+# DETERIORADA.
+# ⭐ E' o MESMO pool do `bed16_short.py`, entrada por entrada — os dois motores
+# nasceram por copia literal e divergir aqui e' criar duas verdades sobre o
+# mesmo homem.
+# ⛔ NENHUMA PALAVRA DE APROVACAO (handsome, rugged, strong jaw): elogio no
+# prompt puxa o rosto para a media do banco de imagem, mesmo mecanismo do `not
+# a celebrity`. ⛔ E NENHUMA COR DE PELE — a etnia entra pela PAGINA.
+# ⭐ OCULOS EM 6 DAS 24 (25%) — o eixo estava ZERADO no `medir_personagens
+# --gate` (reprovacao).
 HOMENS = [
     {"id": "grisalho_curto", "idade": 57,
      "marca": "close-cropped grey hair and a full grey beard going white at "
               "the chin",
-     "sinal": "a deep vertical crease between his eyebrows"},
+     "sinal": "a strong cleft in his chin"},
     {"id": "careca_cavanhaque", "idade": 59,
      "marca": "a clean-shaven scalp and a short grey goatee",
      "sinal": "a small dark mole high on his right cheek"},
     {"id": "sal_pimenta", "idade": 55,
      "marca": "short salt-and-pepper hair and three days of grey stubble",
-     "sinal": "a pale scar through his left eyebrow"},
+     "sinal": "laugh lines at the corners of his eyes"},
     {"id": "barba_cheia", "idade": 60,
-     "marca": "grey hair receding at the temples and a full white beard",
-     "sinal": "heavy folds under both eyes"},
+     "marca": "grey hair with a low widow's peak and a full white beard",
+     "sinal": "heavy level brows over wide-set eyes"},
     {"id": "bigode_grisalho", "idade": 58,
      "marca": "close-cropped grey hair and a thick grey moustache",
-     "sinal": "a broad flat nose broken once and never set"},
+     "sinal": "a shallow dimple in his left cheek and light freckling across "
+              "his nose"},
     {"id": "ondulado", "idade": 56,
      "marca": "short wavy grey hair and a close grey beard",
-     "sinal": "a white patch of old sun damage on his left temple"},
-    # + 2026-08-10, ordem do operador: *"alimente o pool de personagens com mais
-    # variacoes tb"*. De 6 para 15. ⛔ Todo homem daqui e' 55-62, casado ha'
-    # decadas e com a cara vivida — o corpo dele NAO e' o argumento neste angulo
-    # (a prova e' a postura dela), entao a variacao serve a RECONHECIMENTO: o
-    # espectador tem de ver um sujeito que podia ser ele.
-    # ⚠️ Cada entrada precisa de `marca` (cabeca/barba) E `sinal` (marca facial),
-    # porque as duas sao repetidas no take 2 como ancora de continuidade — sem
-    # elas o Veo desenha outra pessoa depois do corte.
-    {"id": "grisalho_risca", "idade": 56,
-     "marca": "grey hair combed to one side and a heavy grey moustache",
-     "sinal": "a small scar through his left eyebrow"},
-    {"id": "cabelo_branco_liso", "idade": 61,
-     "marca": "thick white hair and a clean-shaven face",
-     "sinal": "deep laugh lines around his eyes"},
-    {"id": "barba_curta_sal", "idade": 58,
-     "marca": "short salt-and-pepper hair and three days of grey stubble",
-     "sinal": "a broad flat nose broken once and never set"},
-    {"id": "entradas_bigode", "idade": 60,
-     "marca": "hair receding at the temples and a full grey moustache",
-     "sinal": "a mole below his right eye"},
-    {"id": "raspado_barba_cheia", "idade": 57,
-     "marca": "hair clipped down to the scalp and a full salt-and-pepper beard",
-     "sinal": "a heavy brow and a squared jaw"},
-    {"id": "onda_grisalha", "idade": 59,
-     "marca": "wavy grey hair pushed back and a trimmed grey beard",
-     "sinal": "a small cleft in his chin"},
-    {"id": "cavanhaque_branco", "idade": 62,
-     "marca": "close-cropped white hair and a short white goatee",
-     "sinal": "a weathered squint at the corners of his eyes"},
-    {"id": "topete_grisalho", "idade": 55,
-     "marca": "grey hair still full on top and a shadow of stubble",
-     "sinal": "a chipped front tooth that shows when he talks"},
+     "sinal": "a patch of white above his left temple"},
+    {"id": "oculos_fio", "idade": 61,
+     "marca": "thick silver hair swept straight back, a clean-shaven face and "
+              "thin wire-rimmed glasses",
+     "sinal": "a small mole beside his right eye"},
+    {"id": "barba_quadrada", "idade": 62,
+     "marca": "close-cropped white hair and a full white beard trimmed square "
+              "at the jaw",
+     "sinal": "smooth-skinned with a cleft chin"},
+    {"id": "topete_prata", "idade": 55,
+     "marca": "silver hair still full on top and combed high, a clean-shaven "
+              "face and thin steel-rimmed glasses",
+     "sinal": "a beauty mark below his right eye"},
+    {"id": "raspado_cavanhaque", "idade": 58,
+     "marca": "a shaved head and a short white goatee",
+     "sinal": "heavy level brows and a wide square chin"},
+    {"id": "oculos_retangular", "idade": 59,
+     "marca": "short grey hair parted on one side, a trimmed grey beard and "
+              "dark rectangular glasses",
+     "sinal": "a shallow cleft in his chin"},
+    {"id": "cachos_grisalhos", "idade": 56,
+     "marca": "loose grey curls kept short and a close-trimmed grey beard",
+     "sinal": "a small gold stud in his left ear"},
+    {"id": "bigode_chevron", "idade": 60,
+     "marca": "grey hair clipped short at the sides and a thick chevron "
+              "moustache",
+     "sinal": "laugh lines at the corners of his mouth"},
+    {"id": "entradas_barba", "idade": 57,
+     "marca": "a high hairline with thick grey hair behind it and a full grey "
+              "beard",
+     "sinal": "a small mole on his left jaw"},
+    {"id": "oculos_grossos", "idade": 62,
+     "marca": "short white hair, a clean-shaven face and heavy black-framed "
+              "glasses",
+     "sinal": "a silver streak through one eyebrow"},
+    {"id": "lateral_prateada", "idade": 55,
+     "marca": "dark hair going silver at the sides, cut short, and a close "
+              "dark beard",
+     "sinal": "a dimple in each cheek when he talks"},
+    {"id": "barba_curta_branca", "idade": 61,
+     "marca": "white hair kept very short and a short white beard",
+     "sinal": "smooth-skinned with a broad square chin"},
+    {"id": "onda_para_tras", "idade": 58,
+     "marca": "wavy salt-and-pepper hair pushed back off the forehead and a "
+              "clean-shaven face",
+     "sinal": "smooth-skinned with a small beauty mark on his left cheekbone"},
+    {"id": "oculos_aro_fino", "idade": 56,
+     "marca": "short dark grey hair, a close grey beard and rimless glasses",
+     "sinal": "a cleft chin under heavy level brows"},
+    {"id": "crista_branca", "idade": 59,
+     "marca": "a white streak running through short dark hair and a trimmed "
+              "dark beard",
+     "sinal": "a small mole above his lip"},
     {"id": "careca_bigode", "idade": 60,
      "marca": "a bald crown with grey at the sides and a thick grey moustache",
-     "sinal": "a pale old scar along his jaw"},
+     "sinal": "a small gold hoop in his left ear"},
+    {"id": "barba_longa_grisalha", "idade": 62,
+     "marca": "grey hair combed back short and a long grey beard combed "
+              "straight",
+     "sinal": "freckles scattered across his nose"},
+    {"id": "oculos_claro", "idade": 57,
+     "marca": "close-cropped grey hair, a short grey beard and clear-framed "
+              "glasses",
+     "sinal": "a shallow dimple in his chin"},
+    {"id": "franja_grisalha", "idade": 58,
+     "marca": "straight grey hair kept a little long over the forehead and a "
+              "clean-shaven face",
+     "sinal": "laugh lines and a small mole at the corner of his jaw"},
 ]
 
 # ⛔ Ele esta' de TRONCO NU no take 1 (frame da fonte) e com a agua no peito no
-# take 2. O corpo e' de homem de 55-60 que parou de se cuidar — NAO e' o corpo
-# musculoso do GOOD 16. Ali o corpo dele e' o argumento; aqui o argumento e'
-# ela voltando, e um tronco de academia contradiria a cena da cama.
+# take 2.
+#
+# ⛔⛔ REESCRITO INTEIRO EM 2026-08-13, ordem do operador com o print na mao:
+# *"melhore a aparencia e shape desses homens"*. Das 12 entradas antigas, DEZ
+# descreviam corpo mole ou curvado (`soft middle`, `gone soft at the waist`,
+# `lean and stooped, the shoulder blades showing`, `a low round belly`,
+# `softened with age`, `the chest gone slack`, `the belly resting on his lap`,
+# `narrow-shouldered with a soft chest and thin arms`...) — e o `corpo_h` entra
+# nos DOIS blocos, entao o render trazia o mesmo homem fora de forma duas vezes.
+# ⚠️ A metade certa da justificativa antiga FICA e esta' escrita no alvo: ⛔ NAO
+# e' fisiculturista. Este angulo nao tem MODO FORTE, e musculo de academia num
+# homem de 58 na cama quebra a leitura de marido comum que voltou a funcionar. O
+# alvo e' **em forma para a idade**: solido, ombro largo, peito firme, cintura
+# controlada. De 12 para 14, e identico ao do `bed16_short.py` (motores irmaos).
 CORPOS_H = [
-    "heavy through the chest and shoulders with a soft middle",
-    "broad-shouldered and thick-armed, gone soft at the waist",
-    "lean and stooped, the shoulder blades showing",
-    "solid through the chest with heavy upper arms",
-    "wide through the shoulders with a low round belly",
-    "thick through the neck and shoulders, softened with age",
-    # + 2026-08-10: de 6 para 12.
-    "lean and stooped with the shoulder blades showing",
-    "thick through the middle with heavy sloping shoulders",
-    "wiry and flat-chested with ropey forearms",
-    "square and solid, the chest gone slack",
-    "big-framed and heavy, the belly resting on his lap",
-    "narrow-shouldered with a soft chest and thin arms",
+    "solid through the chest and shoulders with the waist still trim",
+    "broad-shouldered with a firm flat chest and a straight back",
+    "squarely built and thick through the upper arms, the middle flat",
+    "wide and level through the shoulders with a firm chest",
+    "heavy in the shoulders and arms with a flat stomach",
+    "thick through the neck and shoulders, the chest full and the waistline "
+    "clean",
+    "a broad chest and a straight upright back, the stomach flat",
+    "deep through the chest with heavy forearms and a trim waist",
+    "big-framed and even, the shoulders square and the middle firm",
+    "compact and solid, the chest firm and the arms thick",
+    "long-backed and wide at the shoulders with a flat stomach",
+    "a full chest over round shoulders, the waist held in",
+    "sturdy through the ribs and shoulders, the arms still full",
+    "heavy through the chest with a flat stomach and thick wrists",
 ]
 
 
@@ -501,8 +711,8 @@ MULHERES = [
      "marca": "auburn waves pushed back off her face and a dense spray of "
               "freckles"},
     {"id": "morena_lisa", "idade": 34, "etnia": "white American",
-     "marca": "dark brown hair, straight and heavy, and a small scar through "
-              "one eyebrow"},
+     "marca": "dark brown hair, straight and heavy, and a dimple in one "
+              "cheek"},
     {"id": "bob_castanho", "idade": 26, "etnia": "white American",
      "marca": "a glossy chestnut bob and a dimple in one cheek"},
     {"id": "trancas_lateral", "idade": 30, "etnia": "Black American",
@@ -517,8 +727,8 @@ MULHERES = [
     {"id": "latina_ondulada", "idade": 32, "etnia": "Latina American",
      "marca": "long wavy black hair and a small mole beside her right eye"},
     {"id": "asiatica_lisa", "idade": 28, "etnia": "Asian American",
-     "marca": "straight black hair to the shoulders and a faint scar on her "
-              "chin"},
+     "marca": "straight black hair to the shoulders, smooth-skinned, with a "
+              "small beauty mark on her chin"},
     # + 2026-08-10: de 10 para 18. ⛔ LEI DO REF — 25-38, sempre bonita, marca
     # facial obrigatoria, zero oculos/grisalho/pele castigada. ⭐ A etnia dela e'
     # SOLTA (quem casa com a pagina e' ELE, que e' quem fala), e por isso o pool
@@ -534,11 +744,42 @@ MULHERES = [
     {"id": "loira_curta", "idade": 36, "etnia": "white American",
      "marca": "a blonde bob cut just below the jaw and pale freckles across her nose"},
     {"id": "trancas_coque", "idade": 32, "etnia": "Black American",
-     "marca": "braids gathered into a high bun and a small scar through one eyebrow"},
+     "marca": "braids gathered into a high bun and a silver streak at the "
+              "front of her hairline"},
     {"id": "ondulado_castanho", "idade": 34, "etnia": "Latina American",
      "marca": "loose brown waves past her shoulders and a beauty spot under her left eye"},
     {"id": "rabo_alto", "idade": 27, "etnia": "white American",
      "marca": "dark hair pulled into a high ponytail and a small silver hoop in one ear"},
+    # ⭐⭐ + 2026-08-13, ordem do operador: *"aumente o pool de opcoes
+    # substancialmente, tambem dos ambientes"*. De 18 para 24.
+    # ⛔ E as TRES entradas que carregavam `scar` foram REESCRITAS na mesma
+    # passada (`a small scar through one eyebrow` x2, `a faint scar on her
+    # chin`): a `marca` dela e' repetida no take 2 como ancora, e ancora de
+    # DANO num pool que a LEI DO REF manda ser bonito e' contradicao dentro da
+    # mesma frase. Ancora saudavel cumpre a mesma funcao — covinha, sinal de
+    # beleza, mecha, sardas — e volta igual depois do corte.
+    # ⛔ SEM OCULOS, e isso e' isencao declarada no `medir_personagens.py`
+    # (LEI DO REF, pool em registro de beleza) — nao e' buraco esquecido.
+    # ⭐ A etnia continua SOLTA: quem casa com a pagina e' ELE, que e' quem
+    # fala. As quatro familias do pool antigo seguem cobertas.
+    {"id": "cachos_soltos", "idade": 29, "etnia": "white American",
+     "marca": "loose chestnut curls past her shoulders and freckles across "
+              "her nose"},
+    {"id": "trancas_finas", "idade": 31, "etnia": "Black American",
+     "marca": "fine braids falling loose down her back and a small mole above "
+              "her lip"},
+    {"id": "coque_frouxo", "idade": 26, "etnia": "white American",
+     "marca": "honey blonde hair twisted into a loose knot and a dimple in "
+              "her chin"},
+    {"id": "liso_repartido", "idade": 33, "etnia": "Asian American",
+     "marca": "long black hair parted in the middle, smooth-skinned, with a "
+              "small mole on her cheekbone"},
+    {"id": "franja_cortina", "idade": 30, "etnia": "Latina American",
+     "marca": "dark brown hair with a curtain fringe and a beauty mark beside "
+              "her left eye"},
+    {"id": "twists_altos", "idade": 35, "etnia": "Black American",
+     "marca": "two-strand twists gathered high and a fine gold hoop in one "
+              "ear"},
 ]
 
 
@@ -1581,8 +1822,15 @@ def autoteste(n=400):
     # ⛔ CONTROLE DE CONTRATO: todo FALHAS tem de enunciar a falha (CT2). A
     # lente do `short_comum` so' olha a fala MONTADA — se um dia entrar uma
     # entrada sem verbo de falha, ela so' apareceria em ~1/14 dos sorteios.
+    # ⚠️ 2026-08-13 — TRES VERBOS DE FALHA FALTAVAM NA LENTE, nao no pool. O
+    # autoteste vinha REPROVADO acusando `My {o} did nothing for eight months`,
+    # `My {o} hadn't worked in a year` e `My {o} was finished by fifty eight`,
+    # que enunciam a falha tao bem quanto `quit`. ⛔ O conserto e' na REGEX e
+    # nunca na copy: copy e' alcada do operador, e gate que acusa copy certa
+    # ensina a ignorar o gate. Mesmo conserto no `bed16_short.py`.
     _CT2 = re.compile(r"\b(quit|soft|stopped|dead|failed|shut down|useless|"
-                      r"lose it|not working|gave out)\b", re.I)
+                      r"lose it|not working|gave out|did nothing|"
+                      r"hadn't worked|was finished)\b", re.I)
     sem_ct2 = [x for x in FALHAS if not _CT2.search(x)]
     if sem_ct2:
         falhas.append("CT2: %d entrada(s) de FALHAS sem verbo de falha: %s"

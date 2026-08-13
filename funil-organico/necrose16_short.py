@@ -443,6 +443,112 @@ ARQUETIPOS = [
      "animais": ["a full-grown bull elk", "a full-grown lynx"],
      "luz": "Cool blue light coming off still water, soft and even.",
      "audio": "water lapping on stones, a loon calling"},
+
+    # ======================================================================
+    # + 2026-08-13: TERCEIRA AMPLIACAO. Ordem do operador, com o lote na mao:
+    # *"melhore a aparencia e shape desses homens"* / *"aumente o pool de
+    # opcoes substancialmente, tambem dos ambientes"*. 18 -> 26.
+    #
+    # ⭐ AS OITO NOVAS MUDAM A GEOMETRIA DO QUADRO, nao a placa da porta — e' a
+    # mesma licao que o pool LOCAIS do PEE ja' pagou: dezoito entradas que
+    # repetem "homem em pe num descampado com montanha atras" sao tres
+    # imagens, nao dezoito. Entram um vao VERTICAL (passarela sobre a garganta),
+    # uma FONTE DE LUZ DENTRO DO QUADRO (a fogueira ao amanhecer), uma
+    # estrutura de tabua ATRAVESSANDO o quadro (o embarcadouro de gado), agua
+    # ate' o tornozelo (o vau do rio), horizonte LIMPO (a crista da duna), spray
+    # em suspensao (o patamar da cachoeira), chao de cascalho e metal (o patio
+    # da oficina) e o UNICO SET FECHADO do pool, de luz filtrada (a estufa).
+    #
+    # ⛔ NE5/NE4 valem igual nas oito:
+    #   · chapeu congruente com o cenario, e ZERO OCULOS nele — o `mesmo` das
+    #     cenas 2-5 so' reafirma "same hat, same beard, same <marca>", entao
+    #     oculos no chapeu sumiriam da cena 2 em diante (P6). Oculos, quando
+    #     entram, entram pelo `marca` do REF, que o `mesmo` carrega.
+    #   · animal de DOMINANCIA: nada deitado, nada de coleira, nada domestico.
+    #   · todo animal comeca em "a " — a IMAGE 04 faz .replace("a ", "", 1) e
+    #     um "an ..." sairia "the same an ...".
+    # ⛔ Zero `big` nos animais novos: `big` esta' no BANIDOS_IMAGE e quem
+    # salva os antigos e' o `_limpar_animal`. Nao se depende de faxina para
+    # nao sujar.
+    # ⚠️ Nenhuma familia nova: o `familia` cai no `resumo_pt` como
+    # "o %s de %d anos" e um rotulo novo teria de ler em PT ali. As cinco que
+    # existem ja' leem.
+    # ======================================================================
+    {"id": "montanhes_passarela", "selo": "N", "familia": "montanhes",
+     "set": "the near end of a plank-and-cable footbridge over a deep gorge, "
+            "the far side lost in haze, dark wet rock dropping away under the "
+            "planks",
+     "curto": "the same footbridge",
+     "chapeu": "a shearling-lined leather cap with the flaps tied up",
+     "animais": ["a full-grown grey wolf", "a full-grown bull elk"],
+     "luz": "Bright hazy light rising out of the gorge, low contrast.",
+     "audio": "wind pulling on the cables, water far below"},
+    {"id": "montanhes_fogueira", "selo": "N", "familia": "montanhes",
+     "set": "a camp on a bare rock shelf at first light, a low fire burning in "
+            "a ring of stones beside him, a rolled canvas tent behind it, "
+            "ridgelines stacked to the horizon",
+     "curto": "the same camp shelf",
+     "chapeu": "a wide fur-brimmed cap pushed back off his forehead",
+     "animais": ["a full-grown grey wolf", "a full-grown lynx"],
+     "luz": "First light over the ridge, warm on one side and cold on the "
+            "other, plus firelight from below.",
+     "audio": "the fire popping, thin wind over rock"},
+    {"id": "cowboy_embarcadouro", "selo": "N", "familia": "cowboy",
+     "set": "a cattle loading chute of gray planks running across the frame, a "
+            "stock trailer parked at the far end, flat pasture and a wire fence "
+            "beyond it",
+     "curto": "the same loading chute",
+     "chapeu": "a stiff felt cowboy hat with a wide flat brim",
+     "animais": ["a heavy longhorn bull", "a heavy roan mare"],
+     "luz": "Hard low morning light from frame-left, long shadows on the dirt.",
+     "audio": "hooves on plank, a gate chain rattling"},
+    {"id": "cowboy_vau", "selo": "N", "familia": "cowboy",
+     "set": "a shallow river crossing in open range, water running over pale "
+            "stones around his boots, cottonwoods on the far bank and open "
+            "grass beyond",
+     "curto": "the same river crossing",
+     "chapeu": "a pale gray cowboy hat with the brim rolled tight",
+     "animais": ["a heavy buckskin horse", "a heavy longhorn bull"],
+     "luz": "Bright midday sun with hard reflections coming off the water.",
+     "audio": "water over stones, a horse blowing"},
+    {"id": "nativo_dunas", "selo": "N", "familia": "nativo norte-americano",
+     "set": "the crest of a red sand dune, ripples running away in every "
+            "direction, a single bare juniper standing in the hollow below, "
+            "nothing else to the horizon",
+     "curto": "the same dune crest",
+     "chapeu": "a wide woven headband of dyed cord",
+     "animais": ["a lone coyote", "a golden eagle on a bleached branch"],
+     "luz": "Low late sun raking across the sand, long soft shadows.",
+     "audio": "sand moving over sand, thin wind"},
+    {"id": "nativo_cachoeira", "selo": "N", "familia": "nativo norte-americano",
+     "set": "a wide rock ledge beside a tall waterfall, wet black stone under "
+            "him and spray hanging in the air, dark forest closing in on both "
+            "sides",
+     "curto": "the same ledge by the falls",
+     "chapeu": "a headband of soft deerskin",
+     "animais": ["a full-grown black bear", "a full-grown bull elk"],
+     "luz": "Cool light through falling spray, soft and even.",
+     "audio": "falling water, wind in the trees"},
+    {"id": "redneck_oficina", "selo": "N", "familia": "redneck",
+     "set": "the gravel yard behind a metal shop building, a pickup up on jack "
+            "stands and a stack of tires behind him, tall weeds along the wire "
+            "fence",
+     "curto": "the same shop yard",
+     "chapeu": "a mesh-back cap pushed high on his head",
+     "animais": ["a full-grown wild boar at the fence line",
+                 "a heavy longhorn bull behind the fence"],
+     "luz": "Bright flat overcast light, almost no shadow.",
+     "audio": "wind over gravel, a distant engine"},
+    {"id": "curandeiro_estufa", "selo": "N", "familia": "curandeiro",
+     "set": "a glass greenhouse, potted herbs on wooden benches down both "
+            "sides and a row of corked jars along the sill behind him, green "
+            "light through the panes",
+     "curto": "the same greenhouse aisle",
+     "chapeu": "no hat, his gray hair tied back at the nape",
+     "animais": ["a great horned owl on the ridge beam",
+                 "a red-tailed hawk on the open door frame"],
+     "luz": "Green filtered daylight through glass, soft and even.",
+     "audio": "water dripping from the benches, a vent fan turning"},
 ]
 
 # NE4 - o animal e prop de STATUS (a alavanca do leao do Kofi), nao de
@@ -454,24 +560,44 @@ ARQUETIPOS = [
 # a primeira leva saiu magra). O CHAPEU NAO MORA AQUI: vem do arquetipo, senao
 # o sorteio cruza deserto do Texas com chapeu alpino.
 REFS = [
+    # ⛔⛔ NOVE ENTRADAS REESCRITAS EM 2026-08-13 — ordem do operador:
+    # *"melhore a aparencia e shape desses homens"*. O pool inteiro foi lido
+    # contra a tabela de licoes-producao-veo §REF (DISTINTIVO, NUNCA
+    # DETERIORADO) e nove entradas estavam do lado errado: CINCO cicatrizes,
+    # `weather lines around the eyes`, `a heavily muscled weathered frame`, uma
+    # orelha com pedaco faltando e uma falha entre os dentes da frente.
+    # ⭐ O QUE ENTROU NO LUGAR nao e' "menos marca", e' OUTRA marca: pinta,
+    # covinha, queixo partido, mecha branca, sarda, argola/pino de ouro, bico de
+    # viuva, sobrancelha reta e pesada, mancha clara acima da tempora. Todas
+    # ancoram o rosto entre as cenas (P6) do lado saudavel — cicatriz e dente
+    # faltando ancoram do lado mendigo, e mendigo nao tem autoridade nenhuma
+    # para apresentar dois orgaos e mandar o espectador comentar.
+    # ⭐ A PELE tambem virou saudavel e VARIADA (smooth-skinned, lightly
+    # tanned, freckled, laugh lines) em vez de `weather lines`: o eixo `pele` do
+    # medir_personagens continua acionado, so' que sem envelhecer o homem.
+    # ⛔ Nenhum adjetivo de APROVACAO entrou (handsome, chiseled, strong jaw):
+    # elogio empurra o rosto para a media do banco de imagem, que e' o mesmo
+    # mecanismo pelo qual `not a celebrity` invoca a celebridade. Descreve-se
+    # FEICAO, nunca julgamento.
+    # ⛔ Zero mencao a etnia aqui: quem injeta e' o `ETNIA[pagina]`.
     {"idade": 62,
      "corpo": "a heavily muscled build - a broad slab of chest, thick arms, "
               "and clearly cut abdominal muscles",
      "cabeca": "long gray hair and a thick gray beard reaching mid-chest",
-     "marca": "unusually pale ice-blue eyes and a small notch missing from the "
-              "top of his left ear"},
+     "marca": "unusually pale ice-blue eyes and a heavy silver stud in his "
+              "left earlobe"},
     {"idade": 65,
      "corpo": "a powerfully built heavily muscled frame - a barrel chest, "
               "thick corded forearms and a hard flat stomach",
      "cabeca": "gray hair tied back and a full white beard reaching mid-chest",
-     "marca": "a clean pale scar running through his right eyebrow"},
+     "marca": "a white streak running through his right eyebrow"},
     {"idade": 58,
      "corpo": "a tall heavily muscled build - wide shoulders, a thick neck, a "
               "broad slab of chest and visible abdominal muscles",
      "cabeca": "shoulder-length salt-and-pepper hair and a thick "
                "salt-and-pepper beard",
-     "marca": "a deep vertical cleft in his chin and heavy weather lines "
-              "around the eyes"},
+     "marca": "a deep vertical cleft in his chin and smooth-skinned cheeks "
+              "above the beard line"},
     {"idade": 68,
      "corpo": "a heavily muscled build - a broad chest, thick arms and "
               "shoulders and clearly cut abdominal muscles",
@@ -485,19 +611,21 @@ REFS = [
               "shoulders and a hard ridged stomach",
      "cabeca": "a thick dark brown mane pushed back off his forehead and a "
                "short square-cut brown beard",
-     "marca": "a pale crescent scar along the left side of his jaw"},
+     "marca": "a dark beauty mark on the left side of his jaw and a wide "
+              "square forehead"},
     {"idade": 57,
-     "corpo": "a heavily muscled weathered frame - a broad chest, thick "
+     "corpo": "a heavily muscled deep-chested frame - a broad chest, thick "
               "roped forearms and clearly cut abdominal muscles",
      "cabeca": "a long rust-red mane going gray at the temples and a full "
                "red beard split into two braids",
-     "marca": "a gold tooth that shows on the left side when he talks"},
+     "marca": "lightly tanned skin and a small gold hoop high in the rim of "
+              "his left ear"},
     {"idade": 60,
      "corpo": "a heavily muscled compact frame - a thick barrel chest, "
               "short powerful arms and clearly cut abdominal muscles",
      "cabeca": "wiry black hair going gray at the sides and a dense black "
                "beard streaked with white",
-     "marca": "a small raised scar splitting the middle of his lower lip"},
+     "marca": "a raised dark mole in the middle of his left cheekbone"},
     {"idade": 61,
      "corpo": "a lean heavily muscled frame - a broad slab of chest, thick "
               "arms and a hard ridged stomach",
@@ -510,7 +638,8 @@ REFS = [
               "and a hard stomach with clearly cut abdominal muscles",
      "cabeca": "thick sandy hair sun-bleached at the ends and a full "
                "copper-blond beard reaching his collarbone",
-     "marca": "a clean pale scar across the bridge of his nose"},
+     "marca": "a spray of freckles across the bridge of his nose and both "
+              "cheekbones"},
     {"idade": 64,
      "corpo": "a heavily muscled frame - a broad slab of chest, thick corded "
               "arms and clearly cut abdominal muscles",
@@ -522,17 +651,19 @@ REFS = [
               "thick shoulders and a hard stomach with cut abdominal muscles",
      "cabeca": "a white widow's peak swept straight back and a long forked "
                "white beard tied with two leather cords",
-     "marca": "a pale scar through his upper lip and a heavy silver hoop in "
-              "his left earlobe"},
+     "marca": "a deep dimple high on his left cheek and a heavy silver hoop "
+              "in his left earlobe"},
     # + 2026-08-02: o operador mediu o pool inteiro e viu SEMPRE O MESMO ROSTO.
     # As onze acima variam cabelo e barba e mais nada de estrutural, entao o
     # gerador recebia quase a mesma frase e devolvia quase o mesmo montanhes.
     # A nova abre o eixo ZERADO deste pool: OCULOS (0/11), que nenhuma das onze
     # menciona — e traz junto um PORTE novo (cintura grossa, nao seca).
-    #   · 68 — oculos de leitura na ponta do nariz mais falha entre os dentes
-    #     da frente; barba branca curta de um polegar, corte escovinha.
-    #   · a ancora e' do lado ✅ de licoes-producao-veo §REF — DISTINTIVO,
-    #     NUNCA DETERIORADO (falha entre os dentes, nao dente lascado).
+    #   · 68 — oculos de leitura na ponta do nariz; barba branca curta de um
+    #     polegar, corte escovinha.
+    #   · ⚠️ a ancora desta entrada ERA `a wide gap between his two front
+    #     teeth`, e ela caiu em 2026-08-13: falha entre os dentes esta' na
+    #     lista de PROIBIDO do operador junto com dente lascado e dente
+    #     faltando. Os oculos — que sao o motivo de a entrada existir — ficam.
     #   · o CHAPEU nao mora aqui (NE5): vem do arquetipo.
     #   · zero mencao a etnia: o motor injeta ETNIA[pagina] antes da marca.
     {"idade": 68,
@@ -541,9 +672,122 @@ REFS = [
               "abdominal muscles",
      "cabeca": "coarse iron-gray hair in a flat brush cut and a short "
                "bristly white beard no longer than a thumb",
-     "marca": "a wide gap between his two front teeth that shows whenever he "
-              "talks, and thin gold-rimmed reading glasses on the end of his "
-              "nose"},
+     "marca": "heavy level brows over wide-set eyes, and thin gold-rimmed "
+              "reading glasses on the end of his nose"},
+
+    # ======================================================================
+    # + 2026-08-13: DOZE ENTRADAS NOVAS — 12 -> 24. Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente"*.
+    #
+    # ⭐ O QUE ELAS ABREM, e nao e' "mais uma barba":
+    #   · OCULOS — eram 1/12 (8%). Agora sao 6/24 (25%), que e' a faixa que o
+    #     medir_personagens pede. ⚠️ Oculos so' vivem no `marca`, nunca no
+    #     chapeu do arquetipo: o `mesmo` das cenas 2-5 carrega `same <marca>` e
+    #     NAO carrega o chapeu inteiro, entao oculos postos no chapeu sumiriam
+    #     no corte e o Veo trocaria de pessoa (P6).
+    #   · PELE — o pool tinha UMA mencao de pele, e era `weather lines`. As
+    #     novas trazem smooth-skinned, lightly tanned, freckled e laugh lines:
+    #     eixo acionado, homem nao envelhecido.
+    #   · PORTE — o `corpo` de todas continua `heavily muscled` (NE3, ordem de
+    #     2026-07-30: *"todo REF deve ser super musculoso"*), mas a ARQUITETURA
+    #     por baixo muda: ombro largo x tronco curto, cintura grossa x seca,
+    #     pescoco de touro x armacao longa.
+    #   · ANCORA — nenhuma repete lugar com as doze antigas, porque ancora no
+    #     mesmo ponto do rosto le' como o mesmo homem.
+    # ⛔ ZERO cicatriz, zero dente faltando, zero `weathered`, zero `ruddy`,
+    # zero `age spot`, zero `sunken`/`gaunt`/`hollow` — a lista PROIBIDA de
+    # 2026-08-13 na integra.
+    # ⛔ ZERO adjetivo de aprovacao (handsome, chiseled, rugged, strong jaw,
+    # piercing eyes): elogio deriva o rosto para a media do banco de imagem.
+    # ⛔ ZERO negacao de conformidade (`not a celebrity` e irmas). Declaracao
+    # e' municao — a defesa e' descrever um rosto que nenhuma celebridade tem.
+    # ⛔ ZERO cor de pele: a etnia entra pelo ETNIA[pagina] na frase montada, e
+    # duas vozes no mesmo sintagma fazem o gerador inventar uma terceira.
+    # ======================================================================
+    {"idade": 54,
+     "corpo": "a heavily muscled square-framed build - wide flat shoulders, a "
+              "short thick torso and clearly cut abdominal muscles",
+     "cabeca": "dark chestnut hair cropped close at the sides and a dense "
+               "chestnut beard trimmed square at the jaw",
+     "marca": "a broad flat-bridged nose and a dark mole below the outer "
+              "corner of his right eye"},
+    {"idade": 56,
+     "corpo": "a heavily muscled long-limbed build - a deep chest, long thick "
+              "arms and a hard flat stomach",
+     "cabeca": "sandy hair falling to the jaw and a short close-trimmed sandy "
+               "beard",
+     "marca": "smooth-skinned high cheekbones and a pale patch of white skin "
+              "above his right temple"},
+    {"idade": 59,
+     "corpo": "a heavily muscled bull-necked build - a thick neck, heavy "
+              "sloping shoulders and clearly cut abdominal muscles",
+     "cabeca": "black hair shaved to a short even brush and a broad black "
+               "beard going white under the chin",
+     "marca": "a wide low forehead and thin steel-rimmed glasses sitting "
+              "square on his nose"},
+    {"idade": 61,
+     "corpo": "a heavily muscled tall build - wide shoulders, a long back and "
+              "a hard ridged stomach",
+     "cabeca": "a heavy iron-gray mane parted in the middle and a full "
+               "iron-gray beard reaching the collarbone",
+     "marca": "deep laugh lines at the corners of his mouth and a raised mole "
+              "at the outer edge of his left eyebrow"},
+    {"idade": 63,
+     "corpo": "a heavily muscled barrel-bodied build - a deep round chest, "
+              "short heavy arms and a hard stomach",
+     "cabeca": "coarse white hair standing high off a low hairline and a "
+               "short white beard cut level under the jaw",
+     "marca": "a heavy blunt jaw and a dark birthmark the size of a dime at "
+              "the base of his throat"},
+    {"idade": 64,
+     "corpo": "a heavily muscled narrow-waisted build - a broad slab of "
+              "chest, thick forearms and clearly cut abdominal muscles",
+     "cabeca": "a dark brown ponytail pulled back tight and a short "
+               "close-cropped brown beard",
+     "marca": "freckled skin across the nose, a shallow cleft at the tip of "
+              "his chin, and thin oval reading glasses low on his nose"},
+    {"idade": 66,
+     "corpo": "a heavily muscled heavy-shouldered build - a thick chest, "
+              "corded forearms and a hard stomach",
+     "cabeca": "a silver crew cut growing to a low widow's peak and a full "
+               "silver beard reaching mid-chest",
+     "marca": "heavy level brows over deep-set eyes and square gold-rimmed "
+              "glasses low on his nose"},
+    {"idade": 57,
+     "corpo": "a heavily muscled wide-backed build - a broad chest, thick "
+              "arms and a hard flat stomach",
+     "cabeca": "wavy dark hair tucked behind his ears and a dark beard with a "
+               "white streak running down the left side",
+     "marca": "lightly tanned skin and a small dark beauty mark beside his "
+              "right nostril"},
+    {"idade": 60,
+     "corpo": "a heavily muscled thick-waisted build - a heavy chest, heavy "
+              "shoulders and a hard stomach with cut abdominal muscles",
+     "cabeca": "a copper-blond mane pushed back off the forehead and a full "
+               "copper beard braided into a single tail",
+     "marca": "a long straight nose and thin round wire glasses pushed up "
+              "onto his forehead"},
+    {"idade": 67,
+     "corpo": "a heavily muscled rangy build - wide shoulders capped with "
+              "thick round deltoids, a deep chest and a hard flat stomach",
+     "cabeca": "long white hair worn loose past the shoulders and a long "
+               "white beard reaching mid-chest",
+     "marca": "a short upper lip and two small dark moles in a line on his "
+              "right temple"},
+    {"idade": 69,
+     "corpo": "a heavily muscled thickset build - a broad heavy chest, thick "
+              "arms and a hard stomach",
+     "cabeca": "an iron-gray flat brush cut and a short bristly gray beard "
+               "cut close to the jaw",
+     "marca": "a wide flat-planed face and heavy black-rimmed glasses that "
+              "sit level on his brow"},
+    {"idade": 70,
+     "corpo": "a heavily muscled compact build - a thick chest, short heavy "
+              "arms and clearly cut abdominal muscles",
+     "cabeca": "thin white hair combed straight back off a high forehead and "
+               "a wide white beard squared off at the bottom",
+     "marca": "smooth-skinned temples and a deep vertical dimple in each "
+              "cheek above the beard"},
 ]
 
 # ===========================================================================
@@ -586,9 +830,14 @@ MULHERES_BELA = [
     {"idade": 31, "corpo": "a slim figure with a full bust",
      "cabeca": "auburn waves pushed back off her face",
      "marca": "a small mole beside her right eye"},
+    # ⚠️ REESCRITA EM 2026-08-13: a marca era `a thin scar through one
+    # eyebrow`. Cicatriz esta' na lista de PROIBIDO do operador, e numa mulher
+    # que a LEI DO REF manda ser bonita ela e' pior ainda — a ancora tem de
+    # separar o rosto, nao machuca-lo. Entrou a sobrancelha reta e alta, que
+    # separa igual e nao fere.
     {"idade": 26, "corpo": "a toned build with long arms",
      "cabeca": "black hair in a smooth low ponytail",
-     "marca": "a thin scar through one eyebrow"},
+     "marca": "high level brows over dark eyes"},
     {"idade": 29, "corpo": "a slim toned frame",
      "cabeca": "chestnut hair cut just below the jaw",
      "marca": "pale green eyes under dark brows"},
@@ -601,6 +850,62 @@ MULHERES_BELA = [
     {"idade": 25, "corpo": "a slender toned build",
      "cabeca": "straight black hair past her shoulders",
      "marca": "a faint dimple in her left cheek"},
+
+    # ======================================================================
+    # + 2026-08-13: 8 -> 20. Ordem do operador: *"melhore a aparencia e shape
+    # desses homens"* / *"aumente o pool de opcoes substancialmente"*. Este
+    # pool e' o unico feminino do motor e estava com OITO entradas — oito
+    # mulheres num eixo que aparece em TODO take 1 com o MODO BELA ligado e' a
+    # mesma mulher toda semana.
+    # ⛔ A LEI DO REF continua inteira nas doze novas: 20-35 anos, sempre
+    # bonita, marca facial obrigatoria, ZERO oculos, ZERO grisalho, ZERO pele
+    # castigada. A isencao de `oculos` deste pool esta' declarada no
+    # medir_personagens e e' de contrato, nao buraco.
+    # ⛔ E as tres proibicoes gerais valem igual: nada de cicatriz/dente
+    # faltando (DISTINTIVO, NUNCA DETERIORADO), nada de adjetivo de aprovacao
+    # no lugar de feicao, e ZERO cor de pele — a etnia entra pelo
+    # ETNIA[pagina] na frase montada.
+    # ⭐ O que gira aqui: CABELO (comprimento, corte, textura, cor), PORTE
+    # (o `corpo`), PELE saudavel (freckled, smooth-skinned, lightly tanned) e
+    # a ANCORA, sempre em ponto diferente do rosto.
+    # ======================================================================
+    {"idade": 22, "corpo": "a slim build with narrow shoulders",
+     "cabeca": "long copper hair falling straight past her elbows",
+     "marca": "freckles scattered over both cheekbones"},
+    {"idade": 28, "corpo": "a toned build with a narrow waist",
+     "cabeca": "dark brown hair in a high sleek bun",
+     "marca": "a small dark mole at the corner of her jaw"},
+    {"idade": 30, "corpo": "a lean build with square shoulders",
+     "cabeca": "platinum blonde hair cut blunt at the collarbone",
+     "marca": "smooth-skinned cheeks and a shallow cleft in her chin"},
+    {"idade": 24, "corpo": "a slim toned build with long legs",
+     "cabeca": "loose caramel waves pushed over one shoulder",
+     "marca": "a beauty mark below her right eye"},
+    {"idade": 34, "corpo": "a fit build with a flat stomach",
+     "cabeca": "jet-black hair in a sharp chin-length bob",
+     "marca": "a wide full mouth and a small gold stud in one nostril"},
+    {"idade": 27, "corpo": "a slender build with fine wrists",
+     "cabeca": "light brown hair braided down her back",
+     "marca": "smooth-skinned cheeks and wide-set gray eyes"},
+    {"idade": 32, "corpo": "a toned athletic build",
+     "cabeca": "dark curls cut short and pushed off her face",
+     "marca": "lightly tanned skin and a dimple that shows only on the "
+              "right side"},
+    {"idade": 23, "corpo": "a slim figure with a full bust",
+     "cabeca": "honey-brown hair in a long side braid",
+     "marca": "a dark beauty spot high on her left cheekbone"},
+    {"idade": 29, "corpo": "a lean build with long arms",
+     "cabeca": "auburn hair in a low twisted knot",
+     "marca": "lightly tanned skin and a fine straight nose"},
+    {"idade": 26, "corpo": "a trim build with a narrow waist",
+     "cabeca": "ash-blonde hair cut to a soft shoulder-length shag",
+     "marca": "a small gold hoop in each earlobe and a pointed chin"},
+    {"idade": 31, "corpo": "a toned build with strong shoulders",
+     "cabeca": "black hair pulled into a long high ponytail",
+     "marca": "a narrow beauty mark just above her upper lip"},
+    {"idade": 25, "corpo": "a slim build with a straight back",
+     "cabeca": "chestnut hair in loose waves to mid-back",
+     "marca": "a light spray of freckles across the nose"},
 ]
 
 # NE6 - O RITUAL E O GELATIN TRICK (correcao do operador, 2026-07-30).
@@ -1236,6 +1541,25 @@ PT_ARQ = {
     "redneck_celeiro": "Na porta do celeiro vermelho",
     "curandeiro_apalache": "Na varanda da cabana de tora, nos Apalaches",
     "curandeiro_pantano": "No atracadouro do pântano de ciprestes",
+    # + 2026-08-13: os rotulos que FALTAVAM (as sete entradas de 08-01/08-02
+    # nunca ganharam um) mais os oito arquetipos novos desta data. ⚠️ O `.get`
+    # tem fallback ("No cenário"), entao rotulo faltando NAO quebra o app — so'
+    # faz o resumo da janela mentir em silencio, que e' pior.
+    "montanhes_rio": "Na barra de cascalho do rio da montanha",
+    "montanhes_passo": "No passo alto, na neve fechada",
+    "cowboy_moinho": "No cata-vento, no meio do pasto aberto",
+    "nativo_butte": "No topo da butte, ao primeiro sol",
+    "nativo_lago": "Na margem pedregosa do lago do norte",
+    "redneck_lago": "Na rampa de barco do açude",
+    "curandeiro_clareira": "No prado de flores, entre os varais de ervas",
+    "montanhes_passarela": "Na ponta da passarela sobre a garganta",
+    "montanhes_fogueira": "No acampamento da laje, ao amanhecer",
+    "cowboy_embarcadouro": "No embarcadouro de gado",
+    "cowboy_vau": "No vau do rio, em campo aberto",
+    "nativo_dunas": "Na crista da duna vermelha",
+    "nativo_cachoeira": "No patamar de rocha ao lado da cachoeira",
+    "redneck_oficina": "No pátio de cascalho atrás da oficina",
+    "curandeiro_estufa": "No corredor da estufa de vidro",
 }
 PT_REC = {
     "gelatina_agua": "a gelatina num copo de água gelada",
@@ -1783,3 +2107,307 @@ def resumo_pt(spec):
             % (PT_ARQ.get(spec["arquetipo"]["id"], "No cenário"),
                spec["arquetipo"]["familia"], spec["ref"]["idade"],
                PT_REC.get(spec["receita"]["id"], "o ritual"), et))
+
+
+# ---------------------------------------------------------------------------
+# AUTOTESTE — 2026-08-13
+# ---------------------------------------------------------------------------
+# ⛔⛔ NENHUM DOS DOIS NECROSE TINHA AUTOTESTE. Nem `__main__`, nem
+# `--autoteste`: os motores so' existiam por dentro do app. Consequencia
+# pratica — a ampliacao desta data (18 arquetipos -> 26, 12 narradores -> 24,
+# 8 mulheres -> 20 no 16s) NAO TERIA COMO SER MEDIDA, e aceite e' MEDICAO,
+# nunca relato (licoes-de-construcao, corolario do §1). Entrada nova com um
+# campo faltando so' apareceria no dia em que o sorteio a tirasse.
+#
+# ⚠️ ESTE BLOCO E' IDENTICO NOS DOIS ARQUIVOS, de proposito: eles nasceram
+# por copia literal e o unico jeito de nao divergirem de novo e' o teste ser o
+# mesmo. O que muda entre os dois (MULHERES_BELA e MODO_BELA existem so' no
+# 16s) e' descoberto em tempo de execucao, nao escrito duas vezes.
+#
+# ⭐ O QUE ELE COBRA, e cada item existe por um defeito ja' pago aqui:
+#   1. id unico por pool ................. o `_evitando` compara por id
+#   2. janela do ledger cabe no pool ..... janela >= pool zera a memoria em
+#                                          silencio: nada quebra, so' repete
+#   3. campos do ARQUETIPO ............... NE5: cenario + chapeu + animal sao
+#                                          UM eixo, e cada campo cai num ponto
+#                                          diferente da frase montada
+#   4. ZERO OCULOS no `chapeu` ........... o `mesmo` das cenas 2+ so' reafirma
+#                                          "same hat, same beard, same <marca>";
+#                                          oculos postos no chapeu sumiriam no
+#                                          corte e o Veo trocaria de pessoa (P6)
+#   5. animal comeca em "a " ............. a IMAGE do payoff faz
+#                                          .replace("a ", "", 1)
+#   6. rosto DISTINTIVO, NUNCA DETERIORADO  a lista de 2026-08-13 do operador
+#   7. NE3: todo REF `heavily muscled` ... ordem de 2026-07-30
+#   8. 400 sorteios: linter sem ERRO e teto de fala em toda cena
+#   9. anti-repeticao MEDIDA em 60 sorteios seguidos da mesma pagina
+#
+# ⚠️ O QUE ELE **NAO** COBRA, e esta' escrito para nao virar falso verde:
+#   · a clausula `not a celebrity` do `ANTICELEB` e o `tanned weathered skin`
+#     do BLOCO 0 continuam nos blocos montados deste motor. Sao STRINGS DE
+#     PROMPT, divida declarada do repo (CLAUDE.md: ~41 motores ainda carregam a
+#     negacao) e mexer nelas muda o prompt de todo video — alcada do operador.
+#     Por isso a varredura de celebridade e de deterioracao aqui olha os POOLS,
+#     que sao o que esta passada mexeu, e nao os blocos.
+#   · o `REFS` deste motor sai por `rng.choice` puro, sem ledger (o
+#     `ARQUETIPOS` tem). E' maquinaria de sorteio e ficou intacta; o numero de
+#     rostos distintos em 60 sorteios e' impresso no rodape mesmo assim,
+#     porque o que nao se mede volta.
+# ---------------------------------------------------------------------------
+
+_OCULOS = re.compile(r"\b(glasses|spectacles|bifocal\w*|readers|shades|lenses|"
+                     r"rimless|half-?rim|half-?moon|wire-?rimmed|wire-?frame\w*|"
+                     r"sunglasses|clip-?on)\b", re.I)
+# ⛔ empurram PARA a celebridade (adjetivo de aprovacao no lugar de geometria)
+_APROVACAO = ("handsome", "chiseled", "distinguished", "piercing eyes",
+              "strong jaw", "rugged good-looking", "ruggedly")
+# ⛔ negacao de conformidade DENTRO DO POOL — declaracao e' municao
+_CELEB_POOL = re.compile(r"\b(celebrity|celebrities|famous|movie star|"
+                         r"look-?alike)\b", re.I)
+# ⛔ DISTINTIVO, NUNCA DETERIORADO — lista do operador, 2026-08-13:
+# *"melhore a aparencia e shape desses homens"*. ⚠️ `worn` cru NAO entra: ali
+# ele e' o verbo VESTIR (`hair worn long on top`) e reprovaria entrada certa —
+# lente que reprova o que esta' certo ensina a ignorar a lente (licoes §16).
+_MENDIGO = ("gaunt", "bony", "leathery", "weather-beaten", "chipped tooth",
+            "drooping eyelid", "broken capillaries", "frayed", "patchy",
+            "toothless", "unkempt", "scar", "sun damage", "sun-damaged",
+            "weathered", "ruddy", "thin skin", "loose skin", "age spot",
+            "sun-spotted", "liver-spotted", "sunken", "hollow cheek",
+            "deeply lined", "deep lines", "creased", "worn-out", "careworn",
+            "torn ", "missing tooth", "gap between", "notch missing")
+
+
+def _anotar(ledger, spec):
+    """O `_gravar_ledger` sem tocar em disco — o autoteste nao suja o ledger."""
+    p = ledger.setdefault(spec["pagina"], {})
+    for eixo, val in (("arquetipo", spec["arquetipo"]["id"]),
+                      ("familia", spec["arquetipo"]["familia"]),
+                      ("receita", spec["receita"]["id"]),
+                      ("mesa", spec["mesa"]["id"])):
+        p.setdefault(eixo, []).append(val)
+        p[eixo] = p[eixo][-12:]
+
+
+def autoteste(n=400):
+    import collections
+    import random
+    falhas = []
+    g = globals()
+
+    # -- 1. IDENTIDADE DOS POOLS ------------------------------------------
+    for nome, pool in (("ARQUETIPOS", ARQUETIPOS),
+                       ("RECEITAS_PROP", RECEITAS_PROP), ("MESAS", MESAS)):
+        ids = [e.get("id") for e in pool]
+        if any(i is None for i in ids):
+            falhas.append("%s: entrada sem `id` — o `_evitando` compara por id, "
+                          "e entrada sem id nunca e' evitada" % nome)
+        if len(set(ids)) != len(ids):
+            dup = [i for i, c in collections.Counter(ids).items() if c > 1]
+            falhas.append("%s: id repetido %s" % (nome, dup))
+
+    # -- 2. A JANELA DO LEDGER TEM DE CABER NO POOL ------------------------
+    # ⚠️ numeros lidos do `_sortear_longo` deste arquivo (4/2/2). Copiar de
+    # outro motor faria a lente medir o teste, nao o codigo.
+    for nome, pool, janela in (("ARQUETIPOS", ARQUETIPOS, 4),
+                               ("RECEITAS_PROP", RECEITAS_PROP, 2),
+                               ("MESAS", MESAS, 2)):
+        if janela >= len(pool):
+            falhas.append("%s: janela %d >= pool %d — o `_evitando` cai no pool "
+                          "inteiro e a memoria nao serve para nada"
+                          % (nome, janela, len(pool)))
+
+    # -- 3. O ARQUETIPO E' UM EIXO SO' (NE5) -------------------------------
+    for a in ARQUETIPOS:
+        for k in ("selo", "familia", "set", "curto", "chapeu", "animais",
+                  "luz", "audio"):
+            if not a.get(k):
+                falhas.append("ARQUETIPOS %s: sem %r" % (a["id"], k))
+        if a["set"][:1].isupper():
+            falhas.append("ARQUETIPOS %s: `set` em maiuscula — a IMAGE monta "
+                          "`Medium shot at %%s`" % a["id"])
+        if not a["curto"].startswith("the same "):
+            falhas.append("ARQUETIPOS %s: `curto` tem de comecar com `the same "
+                          "` — e' o eco do lugar nas cenas seguintes" % a["id"])
+        # ⛔ NE5 — oculos no chapeu sumiriam da cena 2 em diante (P6)
+        if _OCULOS.search(a["chapeu"]):
+            falhas.append("ARQUETIPOS %s: oculos no `chapeu` — o `mesmo` das "
+                          "cenas seguintes reafirma so' hat/beard/marca, entao "
+                          "eles sumiriam no corte (P6)" % a["id"])
+        for an in a["animais"]:
+            if not an.startswith("a "):
+                falhas.append("ARQUETIPOS %s: animal %r nao comeca em `a ` — a "
+                              "IMAGE do payoff faz .replace(\'a \', \'\', 1) e "
+                              "sairia `the same an ...`" % (a["id"], an))
+            for proibido in BANIDOS_ANIMAL:
+                if proibido in an.lower():
+                    falhas.append("ARQUETIPOS %s: %r no animal — e' prop de "
+                                  "DOMINANCIA, nao bicho de estimacao (NE4)"
+                                  % (a["id"], proibido))
+        if a["id"] not in PT_ARQ:
+            falhas.append("ARQUETIPOS %s: sem rotulo em PT_ARQ — o resumo cai "
+                          "no fallback e mente em silencio" % a["id"])
+
+    # -- 4. OS POOLS DE GENTE ----------------------------------------------
+    pools_gente = [("REFS", REFS)]
+    if "MULHERES_BELA" in g:
+        pools_gente.append(("MULHERES_BELA", g["MULHERES_BELA"]))
+    for nome, pool in pools_gente:
+        for i, e in enumerate(pool):
+            rot = e.get("id", "#%d (%d anos)" % (i, e.get("idade", 0)))
+            t = " ".join(str(x) for x in e.values()).lower()
+            for p in _APROVACAO:
+                if p in t:
+                    falhas.append("%s %s: %r empurra PARA a celebridade — o "
+                                  "lugar dele e' geometria, nao aprovacao"
+                                  % (nome, rot, p))
+            for p in _MENDIGO:
+                if p in t:
+                    falhas.append("%s %s: %r vira mendigo e mata a "
+                                  "credibilidade (DISTINTIVO, NUNCA "
+                                  "DETERIORADO)" % (nome, rot, p))
+            if _CELEB_POOL.search(t):
+                falhas.append("%s %s: fala de celebridade dentro do pool — o "
+                              "silencio vence a negacao" % (nome, rot))
+            # ⚠️ `skin` FICOU DE FORA da alternancia, e foi MEDIDO: com ele a
+            # lente reprovava `a pale patch of white skin above his right
+            # temple`, que e' ANCORA APROVADA no contrato (mancha clara), nao
+            # etnia. Lente que reprova o que esta' certo ensina a ignorar a
+            # lente (licoes §16) — quem cede e' a lente, nao o pool.
+            if re.search(r"\b(white|black|hispanic|latino|asian) (american )?"
+                         r"(man|men|male|woman|women)\b", t):
+                falhas.append("%s %s: etnia dentro do pool — quem injeta e' o "
+                              "ETNIA[pagina] (congruencia com o avatar)"
+                              % (nome, rot))
+    # ⛔ NE3 — ordem do operador de 2026-07-30: *"todo REF deve ser super
+    # musculoso"*. A primeira leva saiu magra e foi reprovada em campo.
+    for i, r in enumerate(REFS):
+        if "heavily muscled" not in r["corpo"]:
+            falhas.append("REFS #%d: o `corpo` nao diz `heavily muscled` (NE3)"
+                          % i)
+        for k in ("idade", "corpo", "cabeca", "marca"):
+            if not r.get(k):
+                falhas.append("REFS #%d: sem %r" % (i, k))
+    # ⭐ LEI DO REF no pool feminino: 20-35 anos, e o motor le' a idade.
+    for i, w in enumerate(g.get("MULHERES_BELA", [])):
+        if not 20 <= w["idade"] <= 35:
+            falhas.append("MULHERES_BELA #%d: %d anos fora da faixa 20-35 da "
+                          "LEI DO REF" % (i, w["idade"]))
+        if _OCULOS.search(" ".join(str(x) for x in w.values())):
+            falhas.append("MULHERES_BELA #%d: oculos — a LEI DO REF proibe, e "
+                          "a isencao deste eixo esta' declarada no "
+                          "medir_personagens" % i)
+
+    # -- 5. OS SORTEIOS -----------------------------------------------------
+    rng = random.Random(20260813)
+    erros = collections.Counter()
+    estouros = []
+    for i in range(n):
+        pag = sorted(ETNIA)[i % len(ETNIA)]
+        travas = {}
+        if MODO_FORTE and i % 4 == 1:
+            travas["forte"] = True
+        if g.get("MODO_BELA") and i % 4 == 2:
+            travas["bela"] = True
+        spec = sortear(pag, rng, {}, travas)
+        blocos = montar(spec)
+        for nivel, msg in lint(spec, blocos):
+            if nivel == "ERRO":
+                erros[msg[:70]] += 1
+        for j, fala in enumerate(spec["falas"], 1):
+            if _palavras(fala) > TETO_FALA[j]:
+                estouros.append((j, _palavras(fala), fala))
+        # ⛔ NE4 — o animal de status tem de CHEGAR ao quadro. O linter ja'
+        # cobra isso, mas so' nas cenas que o MAPA traz; aqui a lente confere
+        # que o texto do animal sobreviveu ao `.replace` da IMAGE do payoff.
+        nucleo = spec["animal"].replace("a ", "", 1)
+        if nucleo.startswith("a ") or not nucleo:
+            falhas.append("animal %r ficou mal cortado pelo replace da IMAGE"
+                          % spec["animal"])
+    for msg, c in erros.most_common():
+        falhas.append("linter reprovou %d/%d sorteios: %s" % (c, n, msg))
+    for j, w, f in estouros[:3]:
+        falhas.append("cena %d com %d palavras (teto %d): %s"
+                      % (j, w, TETO_FALA[j], f[:70]))
+
+    # -- 6. A ANTI-REPETICAO, MEDIDA ----------------------------------------
+    # ⭐ E' este numero que responde "o pool aumentou?" — nao a contagem de
+    # entradas. 60 sorteios seguidos da mesma pagina, com o ledger ligado.
+    rng2 = random.Random(4242)
+    led = {}
+    vistos = {"arquetipo": [], "receita": [], "mesa": []}
+    janelas = {"arquetipo": 4, "receita": 2, "mesa": 2}
+    for _ in range(60):
+        s = sortear("joe", rng2, led)
+        for eixo in vistos:
+            novo = s[eixo]["id"]
+            if novo in vistos[eixo][-janelas[eixo]:]:
+                falhas.append("%s %r repetiu dentro da janela de %d — o ledger "
+                              "nao esta' protegendo o eixo"
+                              % (eixo, novo, janelas[eixo]))
+            vistos[eixo].append(novo)
+        _anotar(led, s)
+    for eixo, seq in sorted(vistos.items()):
+        print("  %-11s 60 sorteios, %d distintos, o mais frequente saiu %dx"
+              % (eixo, len(set(seq)),
+                 collections.Counter(seq).most_common(1)[0][1]))
+    # ⚠️ o REF entra SEM ledger neste motor (divida declarada, ver o
+    # cabecalho) — o numero sai mesmo assim.
+    rng3 = random.Random(99)
+    caras = [sortear("joe", rng3, {})["ref"]["idade"] for _ in range(60)]
+    print("  %-11s 60 sorteios, %d rostos distintos, o mais frequente saiu "
+          "%dx  (sem ledger — divida declarada)"
+          % ("ref", len(set(caras)),
+             collections.Counter(caras).most_common(1)[0][1]))
+
+    if falhas:
+        print("\nSELF-TEST REPROVADO (%d falha(s)):" % len(falhas))
+        for f in falhas:
+            print("   " + f)
+        return 1
+    print("\nAUTOTESTE OK — %d sorteios, %d arquetipos, %d narradores%s."
+          % (n, len(ARQUETIPOS), len(REFS),
+             ", %d mulheres" % len(g["MULHERES_BELA"])
+             if "MULHERES_BELA" in g else ""))
+    return 0
+
+
+def main():
+    import argparse
+    import random
+    ap = argparse.ArgumentParser(description=TITULO)
+    ap.add_argument("--pagina", choices=sorted(ETNIA), default="joe")
+    ap.add_argument("--n", type=int, default=1)
+    ap.add_argument("--seed", type=int)
+    ap.add_argument("--forte", action="store_true", help="MODO FORTE ligado")
+    ap.add_argument("--bela", action="store_true", help="MODO BELA ligado")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--autoteste", action="store_true")
+    a = ap.parse_args()
+
+    if a.autoteste:
+        return autoteste()
+
+    led = _carregar_ledger()
+    rng = random.Random(a.seed)
+    travas = {}
+    if a.forte:
+        travas["forte"] = True
+    if a.bela and globals().get("MODO_BELA"):
+        travas["bela"] = True
+    for _ in range(a.n):
+        spec = sortear(a.pagina, rng, led, travas)
+        blocos = montar(spec)
+        print("=" * 70)
+        print(resumo_pt(spec))
+        print("=" * 70)
+        for k in sorted(blocos, key=lambda x: (not x.startswith("BLOCO"), x)):
+            print("\n" + blocos[k])
+        for nivel, msg in lint(spec, blocos):
+            print("[%s] %s" % (nivel, msg))
+        if not a.dry_run:
+            _gravar_ledger(led, spec)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

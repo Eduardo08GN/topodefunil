@@ -186,6 +186,128 @@ BANHEIROS = [
      "agua": "the spout running steadily into the tub",
      "luz": "Even daylight, pale tiles.",
      "audio": "a tub filling, water on enamel"},
+    # ⭐⭐ DEZESSETE BANHEIROS NOVOS (2026-08-13). Ordem do operador: *"aumente
+    # o pool de opcoes substancialmente, tambem dos ambientes"*. Oito arranjos
+    # no eixo que a fonte trocou em 7 de 7 videos e' o mesmo banheiro voltando
+    # a cada oito lotes — e ele e' justamente o eixo que mais varia la'.
+    # ⛔⛔ O PREFIXO DO `id` E' CONTRATO, nao estilo: o `--cenario` (e o cadeado
+    # do painel) filtram por `id.split("_")[0]` contra FAMILIAS_BANHEIRO. Id que
+    # nao comece por `box`, `banheira` ou `pia` cai fora do filtro em silencio —
+    # e' o que ja' acontece com o `nicho_madeira`, que veio da primeira versao e
+    # nunca e' alcancado com a familia travada. Divida declarada, nao propagada.
+    # ⛔ AGUA CORRENDO em todos os dezessete, como nos oito antigos: sem ela o
+    # quadro e' uma bancada qualquer e o angulo evapora no mudo.
+    # ⛔ E cada um so' declara `sups` que existem de verdade em SUPERFICIES — a
+    # BA8 cobra isso por video e o autoteste cobra o pool inteiro.
+    {"id": "box_vidro", "sups": ("cesta_canto", "prateleira_vidro", "nicho"),
+     "cen": "a glass-walled shower stall in pale grey tile with a chrome rain "
+            "head running from the ceiling",
+     "agua": "the rain head falling straight down behind the glass",
+     "luz": "Cool even light through the clear panel.",
+     "audio": "a rain shower on tile"},
+    {"id": "box_metro", "sups": ("prateleira_arame", "cesta_pendurada", "nicho"),
+     "cen": "a shower stall lined to the ceiling in white subway tile with a "
+            "chrome fixed head running",
+     "agua": "the shower running steadily onto the tile",
+     "luz": "Flat overhead light on glossy tile.",
+     "audio": "a shower running on tile"},
+    {"id": "box_teca", "sups": ("banco_teca", "nicho", "cesta_canto"),
+     "cen": "a wide shower in warm sand-coloured tile with a teak bench along "
+            "the back wall and a rain head running",
+     "agua": "the rain head falling in a broad soft sheet",
+     "luz": "Warm diffused light, damp air.",
+     "audio": "a rain shower head, water on tile"},
+    {"id": "box_marmore", "sups": ("nicho", "prateleira_vidro"),
+     "cen": "a marble-lined shower in veined grey slabs with a polished nickel "
+            "rain head running",
+     "agua": "the water falling straight down against the marble",
+     "luz": "Bright light bouncing off the polished stone.",
+     "audio": "a rain shower on stone"},
+    {"id": "box_verde", "sups": ("cesta_canto", "cesta_pendurada"),
+     "cen": "a narrow shower stall in small mint green tile with a chrome "
+            "fixed head running",
+     "agua": "the shower running steadily behind everything",
+     "luz": "Soft daylight through a high frosted pane.",
+     "audio": "a shower running on tile"},
+    {"id": "box_bronze", "sups": ("nicho", "prateleira_arame"),
+     "cen": "a shower in large tumbled stone tile with an oil-rubbed bronze "
+            "head running",
+     "agua": "the water falling past the mouth of the niche",
+     "luz": "Warm low light, wet stone.",
+     "audio": "a heavy shower on stone"},
+    {"id": "box_concreto", "sups": ("nicho", "banco_teca"),
+     "cen": "a shower with smooth poured concrete walls and a square rain head "
+            "running from the ceiling",
+     "agua": "the water falling straight down in front of the wall",
+     "luz": "Dim, high contrast, wet concrete.",
+     "audio": "a heavy rain shower on stone"},
+    {"id": "box_azul",
+     "sups": ("cesta_canto", "cesta_pendurada", "prateleira_arame"),
+     "cen": "a small shower stall in pale blue square tile with a chrome "
+            "handset clipped high on its rail, running",
+     "agua": "the handset running steadily on its rail",
+     "luz": "Even daylight, pale tiles.",
+     "audio": "a shower running on tile"},
+    {"id": "banheira_teca",
+     "sups": ("tampo_madeira", "borda_banheira", "parapeito"),
+     "cen": "a deep white tub filling under a small window, the chrome spout "
+            "running hard into clear water",
+     "agua": "the spout pouring hard into the filling water",
+     "luz": "Soft daylight, steam on the glass.",
+     "audio": "a bathtub filling, water hitting water"},
+    {"id": "banheira_rosa",
+     "sups": ("borda_banheira", "banquinho", "bancada_pia"),
+     "cen": "a bathroom in pale pink fifties tile with a white tub filling and "
+            "a shower curtain pushed back",
+     "agua": "the tap running into the pale water",
+     "luz": "Soft warm light, steam on the tiles.",
+     "audio": "a bathtub filling, water hitting water"},
+    {"id": "banheira_embutida",
+     "sups": ("degrau_banheira", "borda_banheira", "parapeito"),
+     "cen": "a sunken tub set into a wide tiled step, filling from a low "
+            "chrome spout",
+     "agua": "the low spout running into the rising water",
+     "luz": "Warm even light, steam over the step.",
+     "audio": "a deep tub filling, water hitting water"},
+    {"id": "banheira_janela",
+     "sups": ("parapeito", "borda_banheira", "tampo_madeira"),
+     "cen": "a white tub filling beneath a wide window with the blind half "
+            "down, the tap running",
+     "agua": "the tap running into the rising water",
+     "luz": "Bright daylight through the half-closed blind.",
+     "audio": "a tap running into a deep tub"},
+    {"id": "banheira_ferro", "sups": ("borda_banheira", "banquinho"),
+     "cen": "a heavy cast iron tub filling in a plain bathroom with white "
+            "panelled walls",
+     "agua": "the tap pouring hard into the filling tub",
+     "luz": "Warm clean light, steam on the fresh paint.",
+     "audio": "a bathtub filling, water hitting water"},
+    {"id": "banheira_cortina",
+     "sups": ("borda_banheira", "prateleira_arame", "banquinho"),
+     "cen": "a tub alcove with the shower curtain pushed back on its rail and "
+            "the chrome spout running",
+     "agua": "the spout running steadily into the tub",
+     "luz": "Even daylight, pale tiles.",
+     "audio": "a tub filling, water on enamel"},
+    {"id": "pia_dupla", "sups": ("bancada_pia", "prateleira_vidro"),
+     "cen": "a wide double vanity in pale stone with two chrome faucets, the "
+            "near one running into its basin",
+     "agua": "the near faucet running thin into the basin",
+     "luz": "Bright even light over the mirrors.",
+     "audio": "a faucet running into a sink"},
+    {"id": "pia_coluna", "sups": ("borda_pia", "armario_espelho"),
+     "cen": "a white pedestal sink against a panelled wall, the chrome faucet "
+            "running into the deep porcelain bowl",
+     "agua": "the faucet running steadily into the bowl",
+     "luz": "Warm bathroom light, soft shadows.",
+     "audio": "a faucet running into a sink"},
+    {"id": "pia_armario",
+     "sups": ("armario_espelho", "bancada_pia", "prateleira_vidro"),
+     "cen": "a bathroom basin under a mirrored cabinet standing open, the "
+            "faucet running and a shower curtain behind",
+     "agua": "the faucet running thin into the basin",
+     "luz": "Cool even light off the mirror doors.",
+     "audio": "a faucet running into a sink"},
 ]
 FAMILIAS_BANHEIRO = ["box", "banheira", "pia"]
 
@@ -210,6 +332,35 @@ SUPERFICIES = [
      "curto": "bancada da pia"},
     {"id": "tampo_madeira", "sup": "a teak bath board laid across the tub",
      "curto": "tabua de banheira"},
+    # ⭐⭐ SETE SUPERFICIES NOVAS (2026-08-13). Ordem do operador: *"aumente o
+    # pool de opcoes substancialmente, tambem dos ambientes"*. As sete antigas
+    # cobriam os sete videos da fonte e nada alem deles — banheiro americano tem
+    # parapeito, banco de teca, armario de espelho e cesta pendurada, e nenhum
+    # dos quatro existia aqui.
+    # ⛔ Cada uma continua sendo COISA QUE SO' EXISTE NUM BANHEIRO: e' isso que
+    # amarra a receita ao banho. Mesa, bancada de cozinha e aparador ficam de
+    # fora por construcao — a fonte nunca usa nenhum dos tres.
+    # ⚠️ A frase que consome o pool e' `On %s sit ...`, entao toda entrada tem
+    # de ser sintagma nominal que aceite `On` na frente.
+    {"id": "borda_pia", "sup": "the wide porcelain lip of the pedestal sink",
+     "curto": "borda da pia de coluna"},
+    {"id": "prateleira_vidro",
+     "sup": "a glass shelf mounted on the wall under the mirror",
+     "curto": "prateleira de vidro"},
+    {"id": "armario_espelho",
+     "sup": "the open shelf of the mirrored cabinet above the basin",
+     "curto": "armario de espelho aberto"},
+    {"id": "banco_teca",
+     "sup": "a slatted teak bench standing inside the shower",
+     "curto": "banco de teca"},
+    {"id": "cesta_pendurada",
+     "sup": "a plastic caddy hanging from the shower arm",
+     "curto": "cesta pendurada no chuveiro"},
+    {"id": "degrau_banheira",
+     "sup": "the wide tiled step running around the sunken tub",
+     "curto": "degrau da banheira"},
+    {"id": "parapeito", "sup": "the tiled window ledge above the tub",
+     "curto": "parapeito da janela"},
 ]
 
 
@@ -344,8 +495,7 @@ COLHER = "a metal spoon holding a pool of thick amber honey"
 # AS MAOS — o narrador inteiro, quando o MODO PESSOA esta' desligado
 # ===========================================================================
 # ⛔⛔ E' AQUI QUE A IDADE E A ETNIA EXISTEM. A fala diz "tenho 72 anos" e nao
-# ha' rosto para confirmar: quem confirma sao as manchas de sol, as veias e a
-# pele fina. Mao generica derruba a fala inteira.
+# ha' rosto para confirmar. Mao generica derruba a fala inteira.
 # ⚠️ MEDIDO na fonte: o video campeao tem uma mao visivelmente MAIS JOVEM que a
 # idade falada, e mesmo assim foi o melhor. Entao isto e' cuidado, nao lei — e
 # esta' escrito aqui para ninguem transformar em trava sem medir.
@@ -356,13 +506,58 @@ COLHER = "a metal spoon holding a pool of thick amber honey"
 # — *"perceba que nao ficou muito negra, quero uma cor mais forte"*.
 # ⚠️ Etnia que so' existe na REF nao chega ao quadro: o IMAGE e' o que o
 # gerador le' para compor, e o que nao esta' escrito nele nao acontece.
+#
+#
+# ⛔⛔ POOL SANEADO E AMPLIADO (2026-08-13). Duas ordens do operador no mesmo
+# dia: *"nao quero mao feia parecendo nao-saudavel"* e *"aumente o pool de
+# opcoes substancialmente"*. O V2 ja' tinha sido saneado; este arquivo tinha
+# ficado para tras e ainda carregava o pool original inteiro.
+# ⚠️ O QUE ESTAVA ERRADO, e era SEIS DE SEIS: `heavily sun-spotted`,
+# `weathered`, `thin skin`, `dark age spots`, `loose skin over the tendons`,
+# `bony`, `pale scarred`. Todas descreviam DANO. Num angulo POV em que a mao e'
+# a UNICA parte do narrador em quadro, mao castigada nao e' detalhe — e' o
+# ROSTO do video.
+# ⭐ Mesma doutrina do PLACA 16 (*"esses caras tao parecendo mendigo"*),
+# aplicada onde ela pesa mais: DISTINTIVO, NUNCA DETERIORADO. A mao continua
+# sendo de um homem de 60 e poucos — o que sai e' a avaria, nao a idade: pele
+# cuidada, unhas curtas e limpas, veias discretas em vez de saltadas.
+# ⛔ E NENHUMA PALAVRA DE APROVACAO (`beautiful`, `elegant`): elogio no prompt
+# puxa para mao de banco de imagem, e mao de modelo de 25 num homem de 63 e' a
+# incoerencia que o espectador pega antes de qualquer outra.
+# ⛔ E NENHUMA COR DE PELE: a etnia entra pela PAGINA, na frase que costura o
+# REF. Duas vozes decidindo a mesma coisa e' o defeito FT14 do FIGHT 16.
+# ⚠️ A FORMA E' CONTRATO: `<adjetivo> hands with <detalhe> and <detalhe>`. As
+# tres frases que consomem o pool sao `A pair of %s enters...`, `The same %s
+# hold...` e o REF — entrada que nao comeca por adjetivo quebra as tres.
 MAOS = [
-    "heavily sun-spotted hands with prominent veins and thin skin",
-    "broad hands with thick knuckles and raised veins",
-    "lean hands with dark age spots across the backs",
-    "large hands with loose skin over the tendons and blunt clean nails",
-    "wide hands with heavy veins and a plain gold wedding band",
-    "bony hands with prominent knuckles and deep creases",
+    "clean broad hands with short trimmed nails and smooth skin",
+    "steady hands with light freckling and neatly kept nails",
+    "large well-kept hands with faint veins and clean square nails",
+    "solid hands with a plain gold wedding band and smooth even skin",
+    "wide clean hands with short nails and a light tan across the backs",
+    "firm hands with clear skin and neatly trimmed nails",
+    "square hands with wide flat knuckles and short clean nails",
+    "long-fingered hands with smooth skin and a smooth silver band on the ring "
+    "finger",
+    "broad hands with a light dusting of hair across the backs and blunt clean "
+    "nails",
+    "compact hands with thick wrists and short square nails",
+    "smooth hands with a scatter of small freckles over the knuckles and "
+    "clipped nails",
+    "steady wide hands with a plain steel watch on the left wrist and short "
+    "nails",
+    "smooth firm hands with a narrow gold signet ring and neatly filed nails",
+    "big clean hands with softly raised veins and short rounded nails",
+    "lean hands with smooth skin and short straight nails",
+    "sturdy hands with square fingertips and short nails cut straight across",
+    "trim hands with a faint pale band where a ring usually sits and short "
+    "clean nails",
+    "well-kept hands with an even summer tan and clean rounded nails",
+    "wide steady hands with smooth broad knuckles and short clean nails",
+    "square-palmed hands with a wide plain wedding band and short polished "
+    "nails",
+    "large smooth hands with neat half-moon nails and steady fingers",
+    "broad hands with a thin leather band on the wrist and short clean nails",
 ]
 
 # ⭐⭐ O TOM, e ele e' EXPLICITO. Ordem do operador depois do primeiro lote:
@@ -402,6 +597,91 @@ HOMENS = [
      "cabeca": "a shaved head and heavy grey stubble",
      "marca": "thick black-framed glasses and a small mole on the right "
               "cheekbone"},
+    # ⭐⭐ DEZOITO HOMENS NOVOS (2026-08-13). Ordem do operador: *"melhore a
+    # aparencia e shape desses homens"* e *"aumente o pool de opcoes
+    # substancialmente"*.
+    # ⭐ O `shape` ENTROU PELO CAMPO `marca`, e nao por chave nova: o motor monta
+    # `%(cabeca)s, %(marca)s, wearing %(traje)s` e nao existe slot de porte. Cada
+    # entrada nova carrega PORTE + PELE SAUDAVEL + ANCORA no mesmo campo, que
+    # sao tres dos seis eixos que o `medir_personagens --gate` conta — os seis
+    # antigos acionavam porte e pele em 2 de 6.
+    # ⛔ DISTINTIVO, NUNCA DETERIORADO: nada de cicatriz, dente lascado, pele
+    # castigada ou olhar fundo. As ancoras sao covinha, queixo partido, pinta,
+    # mecha prateada, sarda, argola/tarraxa — sinal permanente e saudavel.
+    # ⛔ E NENHUMA PALAVRA DE APROVACAO (`handsome`, `chiseled`, `strong jaw`):
+    # elogio no prompt puxa o rosto para a media do banco de imagem, que e' o
+    # mesmo mecanismo pelo qual `not a celebrity` invoca a celebridade.
+    # ⛔ NENHUMA COR DE PELE aqui: a etnia vem do dict ETNIA, pela pagina, e ja'
+    # entra na frase montada. Duas vozes no mesmo sintagma o Veo resolve
+    # inventando.
+    # ⚠️ OCULOS em 7 das 24 entradas (29%): eixo zerado e' o mesmo homem
+    # repetido, e eixo cheio demais e' um pool de bibliotecarios.
+    {"id": "barba_cheia", "idade": 63,
+     "cabeca": "thick grey hair combed to one side and a full trimmed beard",
+     "marca": "a broad-shouldered build, smooth-skinned, and a cleft chin"},
+    {"id": "topete_prata", "idade": 65,
+     "cabeca": "silver hair swept up off the forehead, clean-shaven",
+     "marca": "a compact build and a beauty mark high on the left cheek"},
+    {"id": "careca_bigode", "idade": 67,
+     "cabeca": "a bald crown with close-cropped grey at the sides and a neat "
+               "grey moustache",
+     "marca": "a solid build, lightly tanned, and a small mole beside the "
+              "nose"},
+    {"id": "crespo_curto", "idade": 59,
+     "cabeca": "short tight curls kept close and a neat goatee",
+     "marca": "a trim build, laugh lines at both eyes, and a gold stud in one "
+              "ear"},
+    {"id": "oculos_leitura", "idade": 70,
+     "cabeca": "full white hair parted low and a short white beard",
+     "marca": "half-moon reading glasses, a lean build, and a cleft chin"},
+    {"id": "rabo_grisalho", "idade": 62,
+     "cabeca": "grey hair pulled back into a short ponytail, clean-shaven",
+     "marca": "a broad build, freckled across the nose, and a silver streak "
+              "above one temple"},
+    {"id": "escovinha", "idade": 57,
+     "cabeca": "a grey buzz cut and heavy stubble",
+     "marca": "a stocky build, smooth-skinned, and a dimple in the chin"},
+    {"id": "entradas_altas", "idade": 68,
+     "cabeca": "a high hairline with thick grey hair behind it and a trimmed "
+               "white moustache",
+     "marca": "a tall narrow build and a patch of white above one temple"},
+    {"id": "bigode_chevron", "idade": 66,
+     "cabeca": "close-cropped silver hair and a full chevron moustache",
+     "marca": "wire-frame glasses, a husky build, and laugh lines at both "
+              "eyes"},
+    {"id": "barba_curta", "idade": 60,
+     "cabeca": "dark hair going grey at the temples and a short cropped beard",
+     "marca": "a broad-shouldered build, smooth-skinned, and a small mole at "
+              "the jawline"},
+    {"id": "locs_grisalhos", "idade": 64,
+     "cabeca": "short grey locs tied back and a neat chin-strap beard",
+     "marca": "a lean build, laugh lines at both eyes, and a gold hoop in the "
+              "left ear"},
+    {"id": "oculos_pretos", "idade": 71,
+     "cabeca": "fine white hair combed back, clean-shaven",
+     "marca": "thick black-framed glasses, a slight build, and a birthmark on "
+              "the right temple"},
+    {"id": "cabelo_ondulado", "idade": 63,
+     "cabeca": "wavy grey hair kept a little long and light stubble",
+     "marca": "a rangy build, lightly tanned, and a cleft chin"},
+    {"id": "careca_total", "idade": 61,
+     "cabeca": "a fully shaved head and a short white goatee",
+     "marca": "a barrel-chested build and a beauty mark below one eye"},
+    {"id": "oculos_aro", "idade": 69,
+     "cabeca": "silver hair in a side part and a trimmed silver beard",
+     "marca": "rimless glasses, a compact build, and a dimple in one cheek"},
+    {"id": "viuvo_pico", "idade": 58,
+     "cabeca": "a widow's peak in thick salt-and-pepper hair, clean-shaven",
+     "marca": "broad shoulders, smooth-skinned, and a small mole above the "
+              "lip"},
+    {"id": "grisalho_alto", "idade": 72,
+     "cabeca": "thick grey hair pushed straight back and a close-trimmed "
+               "beard",
+     "marca": "a tall solid build, laugh lines at both eyes, and a silver "
+              "streak in the beard"},
+    {"id": "oculos_dourados", "idade": 65,
+     "cabeca": "short silver hair and a neat white moustache",
+     "marca": "gold wire-rimmed glasses, a trim build, and a cleft chin"},
 ]
 
 TRAJES = [

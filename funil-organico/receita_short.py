@@ -327,9 +327,14 @@ MUNDOS = [
     # ---- caribenha ----------------------------------------------------------
     {"id": "cozinha_caribe", "selo": "N", "familia": "caribenha",
      "etnias": ["Caribbean American"],
+     # ⚠️ 2026-08-13: `chipped enamel bowls` saiu. E' o mesmo sinal de CARENCIA
+     # que o operador reprovou nas cozinhas africanas (*"nao quero ambiente tao
+     # humilde assim, nao passa muito credibilidade"*) — a etnia nao mudou,
+     # mudou a classe. Louca lascada num set le' como pobreza, e quem vende
+     # receita caseira precisa parecer que a casa dele funciona.
      "coz": "a Caribbean kitchen with mint-green painted walls and louvred "
             "jalousie windows standing open, broad green leaves visible "
-            "outside, chipped enamel bowls stacked by the sink",
+            "outside, matched enamel bowls stacked by the sink",
      "coz_c": "mint-green island kitchen",
      "sup_a": "a pale speckled stone counter", "sup": "counter",
      "traje": "%s loose linen shirt worn open at the collar",
@@ -443,6 +448,226 @@ MUNDOS = [
      "luz": "Warm daylight through the half-open shutters at frame-right.",
      "luz_c": "warm shuttered daylight",
      "audio": "a clock ticking, quiet room tone", "fam_lug": "*"},
+
+    # ======================================================================
+    # ⭐⭐ OS DOZE MUNDOS NOVOS — 2026-08-13
+    # ======================================================================
+    # Ordem do operador: *"aumente o pool de opcoes substancialmente, tambem
+    # dos ambientes"*. Pool de 12 para 24, e a ampliacao e' de AMBIENTE
+    # INTEIRO: cada entrada nova declara as MESMAS chaves das vizinhas
+    # (cozinha, superficie, traje, cores, luz, ambiencia, familias de lugar) —
+    # cenario pela metade e' cenario que o gerador completa sozinho.
+    #
+    # ⛔⛔ COBERTURA DE ETNIA — NENHUMA PERDEU CENARIO, TRES GANHARAM O PRIMEIRO.
+    # Este motor filtra o MUNDO pela pele travada no painel (`_comporta`), entao
+    # etnia sem mundo compativel e' botao que nao acende. Antes:
+    #   clara  = white American (3 mundos) · Cajun American (ZERO)
+    #   escura = Black American (1) · West African (1) · Caribbean American (1)
+    #            · Jamaican American (ZERO) · Creole American (ZERO)
+    # ⚠️ TRES ETNIAS DECLARADAS EM `PELE_ETNIAS` NAO TINHAM MUNDO NENHUM — o
+    # dicionario prometia e o sorteio nao entregava. Agora:
+    #   clara  = white American (6) + Cajun American (1) = 7
+    #   escura = Black American (2) + West African (2) + Caribbean American (1)
+    #            + Jamaican American (1) + Creole American (1) = 7
+    # E todas as demais etnias mantiveram ou dobraram o numero de mundos.
+    #
+    # ⚠️ `cozinha_nova_inglaterra` e' o SEGUNDO mundo do motor com `sup` que nao
+    # e' `counter` (o primeiro e' o da Africa Oriental). O linter cobra que a
+    # palavra `counter` nao sobre em bloco nenhum nesses mundos — por isso a
+    # descricao dela fala em `worktop` e em mais nada.
+    # ⭐ Selo `N` em todas: extrapolacao nossa, sem render. Quem valida em campo
+    # e' o operador.
+
+    # ---- americana (mais duas) ---------------------------------------------
+    {"id": "cozinha_texana", "selo": "N", "familia": "americana",
+     "etnias": ["white American"],
+     # ⚠️ `a big double range` foi a primeira redacao e o autoteste a derrubou
+     # em 2026-08-13: `double` esta' no `CRESCIMENTO` do `short_comum` e a RE17
+     # acusou 40 seeds. Cenario novo entra pelo mesmo funil do resto.
+     "coz": "a Texas ranch-house kitchen, wide plank cabinets stained dark, a "
+            "big twin-oven range under a copper hood, a row of cast-iron pans "
+            "on a rail and a window onto dry open country",
+     "coz_c": "dark plank ranch kitchen",
+     "sup_a": "a honed granite counter", "sup": "counter",
+     "traje": "%s pearl-snap western shirt",
+     "curto": "western shirt",
+     "cores": ["faded blue", "sand", "dark green", "rust red"],
+     "luz": "Hard bright daylight coming in from the window at frame-right.",
+     "luz_c": "hard bright window daylight",
+     "audio": "wind against the window, quiet room tone",
+     "fam_lug": ["garagem", "veiculo", "rural", "quintal"]},
+
+    {"id": "cozinha_meio_oeste", "selo": "N", "familia": "americana",
+     "etnias": ["white American"],
+     "coz": "a Midwestern American kitchen, painted white cabinets with "
+            "brushed steel handles, a chest of drawers with framed "
+            "photographs on top and a wide window onto a flat mowed yard",
+     "coz_c": "white Midwestern kitchen",
+     "sup_a": "a pale butcher-block counter", "sup": "counter",
+     "traje": "%s crew-neck sweatshirt",
+     "curto": "crew-neck sweatshirt",
+     "cores": ["heather grey", "navy", "forest green", "maroon"],
+     "luz": "Flat even daylight from the wide window behind the camera.",
+     "luz_c": "flat even daylight",
+     "audio": "a dishwasher humming, quiet room tone", "fam_lug": "*"},
+
+    # ---- nova inglaterra (familia nova) ------------------------------------
+    {"id": "cozinha_nova_inglaterra", "selo": "N", "familia": "nova_inglaterra",
+     "etnias": ["white American"],
+     "coz": "a New England coastal kitchen with white panelled walls, a wide "
+            "window over the sink looking onto grey water, blue-and-white "
+            "china on an open rack and a kettle on the hob",
+     "coz_c": "white panelled coastal kitchen",
+     "sup_a": "a scrubbed maple worktop", "sup": "worktop",
+     "traje": "%s heavy knit crew sweater",
+     "curto": "knit crew sweater",
+     "cores": ["oat", "navy", "slate grey", "dark green"],
+     "luz": "Cool grey daylight from the window over the sink.",
+     "luz_c": "cool grey daylight",
+     "audio": "gulls far off, wind at the window",
+     "fam_lug": ["agua", "quintal", "oficina", "rural"]},
+
+    # ---- sulista (mais um) --------------------------------------------------
+    {"id": "cozinha_sul_urbana", "selo": "N", "familia": "sulista",
+     "etnias": ["Black American"],
+     "coz": "a well-kept Southern American city kitchen, painted brick above "
+            "the range, glass-front cabinets of preserves and a tall window "
+            "looking onto a shaded street",
+     "coz_c": "painted brick kitchen",
+     "sup_a": "a polished dark quartz counter", "sup": "counter",
+     "traje": "%s short-sleeved knit polo",
+     "curto": "knit polo",
+     "cores": ["cream", "navy", "olive", "burgundy"],
+     "luz": "Even daylight coming through the tall window at frame-left.",
+     "luz_c": "even window daylight",
+     "audio": "a fan turning, quiet room tone", "fam_lug": "*"},
+
+    # ---- cajun (familia nova, e a primeira pele `clara` fora da branca) -----
+    {"id": "cozinha_cajun", "selo": "N", "familia": "cajun",
+     "etnias": ["Cajun American"],
+     "coz": "a Louisiana Cajun kitchen with beadboard walls painted deep "
+            "green, a heavy black gumbo pot on the hob, strings of dried "
+            "peppers on a hook and a screen door onto a cypress porch",
+     "coz_c": "deep green Cajun kitchen",
+     "sup_a": "a thick cypress-wood counter", "sup": "counter",
+     "traje": "%s short-sleeved fishing shirt",
+     "curto": "fishing shirt",
+     "cores": ["sand", "pale blue", "moss green", "brick red"],
+     "luz": "Warm soft daylight through the screen door at frame-right.",
+     "luz_c": "warm screen-door daylight",
+     "audio": "crickets outside, a ceiling fan turning",
+     "fam_lug": ["agua", "quintal", "rural", "garagem"]},
+
+    # ---- creole (familia nova) ----------------------------------------------
+    {"id": "cozinha_creole", "selo": "N", "familia": "creole",
+     "etnias": ["Creole American"],
+     "coz": "a New Orleans Creole kitchen with high plaster walls, a tall "
+            "shuttered window onto an iron balcony, copper pans hung in a row "
+            "and a cast-iron skillet on the hob",
+     "coz_c": "high plaster Creole kitchen",
+     "sup_a": "a veined white marble counter", "sup": "counter",
+     "traje": "%s linen shirt with the sleeves rolled",
+     "curto": "rolled linen shirt",
+     "cores": ["white", "pale yellow", "slate blue", "deep red"],
+     "luz": "Soft warm daylight through the shutters at frame-left.",
+     "luz_c": "warm balcony daylight",
+     "audio": "a streetcar far off, quiet room tone",
+     "fam_lug": ["quintal", "garagem", "veiculo"]},
+
+    # ---- caribenha (mais uma, e a primeira jamaicana) ----------------------
+    {"id": "cozinha_jamaicana", "selo": "N", "familia": "caribenha",
+     "etnias": ["Jamaican American"],
+     "coz": "a Jamaican American kitchen with sunny yellow painted walls, a "
+            "wide window onto a green yard, a row of glass spice jars on an "
+            "open shelf and a heavy dutch pot on the hob",
+     "coz_c": "sunny yellow kitchen",
+     "sup_a": "a pale terrazzo counter", "sup": "counter",
+     "traje": "%s short-sleeved cotton camp shirt",
+     "curto": "cotton camp shirt",
+     "cores": ["white", "pale green", "sand", "burnt orange"],
+     "luz": "Bright warm daylight through the wide window at frame-right.",
+     "luz_c": "bright warm daylight",
+     "audio": "birds outside, a radio playing faintly",
+     "fam_lug": ["quintal", "agua", "garagem"]},
+
+    # ---- mexicana (mais uma) ------------------------------------------------
+    {"id": "cozinha_mexicana_norte", "selo": "N", "familia": "mexicana",
+     "etnias": ["Mexican American"],
+     "coz": "a northern Mexican American kitchen with whitewashed adobe "
+            "walls, a deep arched doorway onto a shaded patio, a row of clay "
+            "bowls on a shelf and a heavy stone molcajete on the side",
+     "coz_c": "whitewashed adobe kitchen",
+     "sup_a": "a hand-poured concrete counter", "sup": "counter",
+     "traje": "%s snap-front denim work shirt",
+     "curto": "denim work shirt",
+     "cores": ["faded blue", "sand", "cream", "deep green"],
+     "luz": "Hard high sun coming through the arched doorway at frame-right.",
+     "luz_c": "hard high sun",
+     "audio": "a dog barking far off, quiet room tone",
+     "fam_lug": ["garagem", "quintal", "rural", "veiculo"]},
+
+    # ---- asiatica (mais uma) ------------------------------------------------
+    {"id": "cozinha_coreana", "selo": "N", "familia": "asiatica",
+     "etnias": ["East Asian American"],
+     "coz": "a Korean American kitchen with handleless white cabinets, a row "
+            "of glazed brown crocks along a low shelf, a wide gas hob with a "
+            "heavy stone bowl on it and a window onto a courtyard",
+     "coz_c": "handleless white kitchen",
+     "sup_a": "a matte black composite counter", "sup": "counter",
+     "traje": "%s soft-collared overshirt",
+     "curto": "soft-collared overshirt",
+     "cores": ["charcoal", "oat", "slate blue", "olive"],
+     "luz": "Cool even daylight from the courtyard window at frame-left.",
+     "luz_c": "cool courtyard daylight",
+     "audio": "an extractor fan turning low, quiet room tone", "fam_lug": "*"},
+
+    # ---- sul-asiatica (mais uma) --------------------------------------------
+    {"id": "cozinha_punjabi", "selo": "N", "familia": "sul_asiatica",
+     "etnias": ["South Asian American"],
+     "coz": "a Punjabi American kitchen with cream tiled walls, a tall steel "
+            "spice tin open on the side, a heavy iron tawa resting on the hob "
+            "and a window onto a small kitchen garden",
+     "coz_c": "cream tiled kitchen",
+     "sup_a": "a speckled grey granite counter", "sup": "counter",
+     "traje": "%s long-sleeved cotton shirt worn loose",
+     "curto": "loose cotton shirt",
+     "cores": ["off-white", "mustard", "sky blue", "deep green"],
+     "luz": "Warm bright daylight through the garden window at frame-right.",
+     "luz_c": "warm garden daylight",
+     "audio": "a kettle whistling far off, quiet room tone",
+     "fam_lug": ["quintal", "garagem", "rural"]},
+
+    # ---- africana (mais uma) ------------------------------------------------
+    {"id": "cozinha_nigeriana", "selo": "N", "familia": "africana",
+     "etnias": ["West African"],
+     "coz": "a Nigerian American kitchen with glossy cream tiled walls, a "
+            "tall standing fridge, a big aluminium pot on the hob and a "
+            "wooden spice tray set out on an open shelf",
+     "coz_c": "glossy cream tiled kitchen",
+     "sup_a": "a dark speckled stone counter", "sup": "counter",
+     "traje": "%s short-sleeved patterned cotton shirt",
+     "curto": "patterned cotton shirt",
+     "cores": ["white", "indigo", "gold", "deep green"],
+     "luz": "Strong even daylight through a wide window at frame-left.",
+     "luz_c": "strong window daylight",
+     "audio": "a fridge humming, voices far off outside",
+     "fam_lug": ["quintal", "garagem", "rural"]},
+
+    # ---- mediterranea (mais uma) --------------------------------------------
+    {"id": "cozinha_portuguesa", "selo": "N", "familia": "mediterranea",
+     "etnias": ["Southern European"],
+     "coz": "a Portuguese kitchen with blue and white azulejo tiles across "
+            "the wall, a heavy black range in the alcove, a hanging rack of "
+            "copper pans and a doorway onto a small walled yard",
+     "coz_c": "azulejo-tiled kitchen",
+     "sup_a": "a thick soapstone counter", "sup": "counter",
+     "traje": "%s buttoned cotton work shirt",
+     "curto": "cotton work shirt",
+     "cores": ["cream", "pale blue", "olive", "brick red"],
+     "luz": "Warm daylight through the yard doorway at frame-left.",
+     "luz_c": "warm doorway daylight",
+     "audio": "a bell far off, quiet room tone",
+     "fam_lug": ["agua", "quintal", "rural", "garagem"]},
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -591,114 +816,251 @@ FAMILIAS_LUGAR = list(dict.fromkeys(l["fam"] for l in LUGARES))
 #
 # ⛔ ZERO adjetivo de etnia dentro das entradas: quem injeta e' a montagem, a
 # partir do MUNDO. Mesmo contrato do COLO, do NECROSE e do EXTERIOR.
+# ⛔⛔ SANEAMENTO + AMPLIACAO, 2026-08-13 — ordem do operador: *"melhore a
+# aparencia e shape desses homens"* / *"aumente o pool de opcoes
+# substancialmente, tambem dos ambientes"*. Pool de 12 para 24, e as DOZE
+# ANTIGAS foram REESCRITAS, nao mantidas.
+# ⚠️ POR QUE AS DOZE CAIRAM: elas descreviam AVARIA, nao feicao. `weathered`,
+# `ruddy`, `thin papery skin`, `broken once`, `a wide gap between his two front
+# teeth`, `a heavy fold beneath each eye`, `swollen at the joints`, `pitted`,
+# `cracked` — e' o mesmo defeito que o operador reprovou no PLACA 16 com o lote
+# na mao (*"esses caras tao parecendo mendigo"*). O que faz o rosto VOLTAR igual
+# na cena seguinte e' a ancora DISTINTIVA (covinha, queixo partido, mecha
+# prateada, pinta, argola), nunca a deterioracao.
+# ⛔ E cinco das doze escreviam COR DE PELE dentro do campo de rosto (`smooth
+# dark skin`, `brown skin`, `olive skin`, `pale skin`): a etnia deste motor sai
+# do MUNDO e entra na frase montada, entao a cor no pool criava DUAS VOZES no
+# mesmo sintagma (`a 57-year-old white American man, ..., smooth dark skin`) e o
+# gerador resolvia inventando. A cor saiu de todos os 24.
+# ⚠️ OS SEIS EIXOS CONTINUAM GIRANDO (medir_personagens.py): cabelo 24/24 ·
+# pelo facial 24/24 · OCULOS 7/24 (29%, a banda pedida) · porte 24/24 · pele
+# 24/24 (so' saudavel: smooth-skinned · lightly tanned · freckled · laugh
+# lines) · ancora 24/24, repartida em covinha (4) · queixo partido (4) · marca
+# de nascenca (4) · pinta (4) · mecha prateada (3) · mecha branca na tempora
+# (2) · argola/tarraxa de ouro (2) · birthmark (1).
+# ⛔ Zero elogio (`handsome`, `rugged`, `strong jaw`, `piercing eyes`): elogio
+# no prompt puxa o rosto para a media do banco de imagem, o mesmo mecanismo pelo
+# qual `not a celebrity` invoca a celebridade.
 REFS = [
     {"idade": 62, "porte": "heavy through the shoulders and thick in the neck",
      "cabeca": "a full head of silver-grey hair combed back",
      "pelo": "several days of white stubble",
      "oculos": "",
-     "pele": "weathered skin, deeply lined across the forehead",
-     "marca": "a broad flattened nose that has been broken once",
-     "maos": "broad and squared, with short blunt nails and raised veins",
-     "marca_mao": "a plain worn gold wedding band on his left ring finger"},
+     "pele": "lightly tanned",
+     "marca": "a deep cleft in his chin under heavy level brows",
+     "maos": "broad and squared, with short clean nails",
+     "marca_mao": "a plain gold wedding band on his left ring finger"},
 
     {"idade": 58, "porte": "lean and wiry, with a flat stomach",
      "cabeca": "close-cropped grey hair thinning at the crown",
      "pelo": "clean-shaven",
      "oculos": "thin wire-framed glasses",
-     "pele": "pale skin with a scatter of sun spots on the temples",
-     "marca": "a deep vertical crease between his eyebrows",
-     "maos": "long and bony, the knuckles enlarged",
-     "marca_mao": "a faded blue-green tattoo of an anchor on his left forearm"},
+     "pele": "smooth-skinned",
+     "marca": "a small dark beauty mark high on his left cheekbone",
+     "maos": "long-fingered, with wide flat nails and steady knuckles",
+     "marca_mao": "a faded blue-green anchor tattoo on his left forearm"},
 
-    {"idade": 66, "porte": "broad and barrel-chested, with a heavy middle",
+    {"idade": 66, "porte": "broad and barrel-chested, with a full chest",
      "cabeca": "bald on top with grey hair kept short at the sides",
      "pelo": "a thick white moustache",
      "oculos": "",
-     "pele": "ruddy sun-darkened skin across the cheeks",
-     "marca": "a pale crescent scar on his left cheekbone",
-     "maos": "big and weathered, the skin cracked at the joints",
+     "pele": "freckled across the cheeks",
+     "marca": "a silver streak running through his left eyebrow",
+     "maos": "big and square, with thick fingers and broad clean nails",
      "marca_mao": "a heavy steel watch worn loose on his left wrist"},
 
     {"idade": 60, "porte": "tall and rangy, with narrow hips",
      "cabeca": "wavy salt-and-pepper hair worn a little long at the collar",
      "pelo": "a short greying beard kept close",
      "oculos": "",
-     "pele": "olive skin, weathered at the neck",
-     "marca": "a gold-flecked hazel eye and a heavy brow",
-     "maos": "wide palms with thick fingers and cracked nails",
+     "pele": "lightly tanned",
+     "marca": "a deep dimple in his right cheek under heavy level brows",
+     "maos": "wide palms with thick fingers and short even nails",
      "marca_mao": "a thick silver signet ring on his left little finger"},
 
-    {"idade": 69, "porte": "stooped and thin, with sloped shoulders",
-     "cabeca": "fine white hair, sparse and combed flat",
+    {"idade": 69, "porte": "lean and straight-backed, with a narrow build",
+     "cabeca": "fine white hair, thick at the sides and combed flat",
      "pelo": "clean-shaven",
      "oculos": "heavy black-framed reading glasses pushed up on his head",
-     "pele": "thin papery skin with prominent veins at the temple",
+     "pele": "laugh lines at the corners of his mouth",
      "marca": "a large dark mole beside his right nostril",
-     "maos": "thin, the tendons standing out on the backs",
+     "maos": "narrow, with long fingers and neat square nails",
      "marca_mao": "a leather-strapped watch sitting square on his left wrist"},
 
     {"idade": 57, "porte": "solid and square, built like a former lineman",
      "cabeca": "dark hair going grey at the temples, cut short",
      "pelo": "a neat chinstrap beard",
      "oculos": "",
-     "pele": "smooth dark skin with a shine across the cheekbones",
+     "pele": "smooth-skinned",
      "marca": "a deep dimple in his left cheek when he smiles",
-     "maos": "thick-fingered, the palms pale and calloused",
+     "maos": "thick-fingered, with broad palms and short clean nails",
      "marca_mao": "a wide plain steel band on his left ring finger"},
 
     {"idade": 64, "porte": "compact and stocky, with a short thick neck",
-     "cabeca": "grey hair shaved down to stubble all over",
+     "cabeca": "grey hair clipped down to a buzz all over",
      "pelo": "a full grey beard, trimmed square at the jaw",
      "oculos": "",
-     "pele": "dark skin with a raised keloid line at the jaw",
-     "marca": "a wide gap between his two front teeth",
-     "maos": "square and heavy, with darkened knuckles",
+     "pele": "lightly tanned",
+     "marca": "a small gold hoop in his left ear",
+     "maos": "square and heavy, with wide flat nails",
      "marca_mao": "a knotted leather cord tied around his left wrist"},
 
     {"idade": 61, "porte": "slight and narrow-framed",
      "cabeca": "straight black hair going grey, parted at the side",
      "pelo": "a thin moustache",
-     "oculos": "rimless glasses",
-     "pele": "smooth skin with deep lines at the corners of the eyes",
+     "oculos": "",
+     "pele": "smooth-skinned",
      "marca": "a small dark birthmark high on his right cheek",
      "maos": "small and neat, the nails cut short and square",
      "marca_mao": "a thin gold band worn on his left ring finger"},
 
-    {"idade": 67, "porte": "big-bellied and slow-moving, with heavy forearms",
-     "cabeca": "a receding hairline with grey hair worn long behind the ears",
+    {"idade": 67, "porte": "broad through the chest, with heavy forearms",
+     "cabeca": "a high hairline with grey hair worn long behind the ears",
      "pelo": "a heavy grey walrus moustache",
      "oculos": "",
-     "pele": "florid skin with broken capillaries across the nose",
-     "marca": "a drooping left eyelid",
-     "maos": "meaty and red, the fingers swollen at the joints",
-     "marca_mao": "a thumbnail ridged and darkened from an old injury"},
+     "pele": "lightly tanned",
+     "marca": "a patch of white hair above his left temple",
+     "maos": "broad and full, with thick fingers and clean blunt nails",
+     "marca_mao": "a wide copper cuff on his left wrist"},
 
     {"idade": 59, "porte": "trim and upright, still carrying muscle",
      "cabeca": "thick grey hair swept back off a high forehead",
      "pelo": "clean-shaven",
      "oculos": "",
-     "pele": "tanned skin with a pale band across the forehead",
-     "marca": "very pale blue eyes under dark brows",
-     "maos": "hard and dry, the backs freckled",
-     "marca_mao": "a thin white scar running across the back of his left hand"},
+     "pele": "tanned, with laugh lines fanning from his eyes",
+     "marca": "a small dark beauty mark at his left jawline",
+     "maos": "strong and square, the backs freckled",
+     "marca_mao": "a thin braided leather bracelet on his left wrist"},
 
-    {"idade": 65, "porte": "round-shouldered and soft through the middle",
+    {"idade": 65, "porte": "softer through the middle, with a broad chest",
      "cabeca": "curly grey hair kept short and dense",
      "pelo": "a short white goatee",
      "oculos": "square tortoiseshell glasses",
-     "pele": "brown skin, dry and ashy across the knuckles and cheeks",
-     "marca": "a heavy fold beneath each eye",
-     "maos": "wide and soft, with pale creased palms",
+     "pele": "smooth-skinned",
+     "marca": "a deep cleft in his chin",
+     "maos": "wide and full, with short even nails",
      "marca_mao": "a beaded bracelet worn loose on his left wrist"},
 
-    {"idade": 63, "porte": "tall and heavy-boned, with a long back",
+    {"idade": 63, "porte": "tall and thickset, with a long back",
      "cabeca": "iron-grey hair in a flat brush cut",
      "pelo": "a two-day shadow of grey stubble",
      "oculos": "",
-     "pele": "coarse skin, pitted across the cheeks",
-     "marca": "a notch cut through his right eyebrow",
-     "maos": "enormous, with thick wrists and blunt fingertips",
-     "marca_mao": "a white band of untanned skin where a ring used to be"},
+     "pele": "lightly tanned",
+     "marca": "a silver streak at his left temple",
+     "maos": "large, with thick wrists and blunt fingertips",
+     "marca_mao": "a wide flat wedding band worn high on his left ring finger"},
+
+    # ---- as doze novas de 2026-08-13 ---------------------------------------
+    # ⚠️ Cada uma difere das outras em >= 3 eixos, e a checagem nao e' a olho:
+    # o `medir_personagens.py --arquivo receita_short.py` conta os seis eixos.
+    {"idade": 55, "porte": "broad-shouldered and trim, with a straight back",
+     "cabeca": "dark hair with a sharp widow's peak, cut short and neat",
+     "pelo": "a close-trimmed dark beard with grey at the chin",
+     "oculos": "",
+     "pele": "smooth-skinned",
+     "marca": "a deep dimple in each cheek",
+     "maos": "square, with long fingers and short clean nails",
+     "marca_mao": "a black rubber training band on his left wrist"},
+
+    {"idade": 68, "porte": "lean and long-limbed, with square shoulders",
+     "cabeca": "a smooth bald head with a close silver fringe above the ears",
+     "pelo": "a neat white chevron moustache",
+     "oculos": "gold half-moon glasses low on his nose",
+     "pele": "freckled across the forehead",
+     "marca": "a small gold stud in his left ear",
+     "maos": "long and flat-backed, with wide clean nails",
+     "marca_mao": "a slim leather cuff on his left wrist"},
+
+    {"idade": 70, "porte": "compact and upright, with a full chest",
+     "cabeca": "thick white hair combed high off the forehead",
+     "pelo": "clean-shaven",
+     "oculos": "",
+     "pele": "lightly tanned",
+     "marca": "a cleft chin and a deep dimple on the left",
+     "maos": "broad, with heavy knuckles and short even nails",
+     "marca_mao": "a plain titanium band on his left ring finger"},
+
+    {"idade": 56, "porte": "husky through the chest and shoulders",
+     "cabeca": "sandy hair going silver, cut in a short side part",
+     "pelo": "heavy sideburns and a clean jaw",
+     "oculos": "",
+     "pele": "freckled across the nose and cheeks",
+     "marca": "a small dark mole at the outer corner of his left eye",
+     "maos": "wide and steady, with short square nails",
+     "marca_mao": "a woven paracord bracelet on his right wrist"},
+
+    {"idade": 71, "porte": "tall and rangy, with a straight back",
+     "cabeca": "a full head of white hair worn thick and brushed back",
+     "pelo": "a full white beard trimmed close at the jaw",
+     "oculos": "",
+     "pele": "smooth-skinned, with laugh lines at the eyes",
+     "marca": "a silver streak through his right eyebrow",
+     "maos": "big and open, with broad flat nails",
+     "marca_mao": "a heavy silver ring set with a plain dark stone on his "
+                  "right hand"},
+
+    {"idade": 59, "porte": "solid and square, thick through the chest",
+     "cabeca": "grey hair in a tight crew cut",
+     "pelo": "a short boxed beard, dark with grey through it",
+     "oculos": "black-framed glasses",
+     "pele": "lightly tanned",
+     "marca": "a deep vertical cleft in his chin",
+     "maos": "thick and square, with wide clean nails",
+     "marca_mao": "a steel diving watch on a mesh bracelet on his left wrist"},
+
+    {"idade": 66, "porte": "slim and straight-backed, with narrow shoulders",
+     "cabeca": "silver hair worn in a soft side-swept fringe",
+     "pelo": "clean-shaven",
+     "oculos": "",
+     "pele": "smooth-skinned",
+     "marca": "a small beauty mark below his right eye",
+     "maos": "narrow and long, with neat oval nails",
+     "marca_mao": "a thin silver chain bracelet on his left wrist"},
+
+    {"idade": 62, "porte": "broad and full-chested, with heavy arms",
+     "cabeca": "black hair kept in a low buzz with grey coming in at the sides",
+     "pelo": "a neat grey goatee",
+     "oculos": "",
+     "pele": "lightly tanned",
+     "marca": "a small dark mole on the bridge of his nose",
+     "maos": "big and blunt-fingered, with short clean nails",
+     "marca_mao": "a wide brown leather watch strap on his left wrist"},
+
+    {"idade": 72, "porte": "lean and upright, with a long neck",
+     "cabeca": "fine silver hair, thick at the sides and combed back",
+     "pelo": "a close white moustache",
+     "oculos": "round tortoiseshell reading glasses",
+     "pele": "laugh lines around the mouth",
+     "marca": "a patch of white hair above his right temple",
+     "maos": "slim and steady, with clean short nails",
+     "marca_mao": "a gold signet ring on his right little finger"},
+
+    {"idade": 57, "porte": "stocky and low-set, with a wide chest",
+     "cabeca": "dark curly hair kept short, silver at the temples",
+     "pelo": "a full dark beard with a white streak at the chin",
+     "oculos": "",
+     "pele": "smooth-skinned",
+     "marca": "a deep dimple in his chin",
+     "maos": "short and wide, with strong flat nails",
+     "marca_mao": "a plain leather band on his right wrist"},
+
+    {"idade": 64, "porte": "tall and broad, with a straight square frame",
+     "cabeca": "grey hair cut in a high flat-top",
+     "pelo": "clean-shaven",
+     "oculos": "",
+     "pele": "lightly tanned",
+     "marca": "a beauty mark just above his left eyebrow",
+     "maos": "large and flat, with wide even nails",
+     "marca_mao": "a braided steel bracelet on his left wrist"},
+
+    {"idade": 60, "porte": "trim and wiry, with square shoulders",
+     "cabeca": "close grey hair with a sharp widow's peak",
+     "pelo": "a short grey moustache over a clean jaw",
+     "oculos": "square black reading glasses pushed up on his head",
+     "pele": "freckled at the temples",
+     "marca": "a small dark mole on his left jaw",
+     "maos": "lean and long-fingered, with clean short nails",
+     "marca_mao": "a narrow silver band on his right ring finger"},
 ]
 
 
@@ -715,58 +1077,115 @@ REFS = [
 # dentro da lei e e' a menor distancia disponivel.
 # ⚠️ A IDADE DELA E' DECLARADA NO PROMPT em toda mencao (licao V12 do VAZAMENTO).
 # ⛔ Zero adjetivo de etnia: quem injeta e' a montagem, a partir do MUNDO.
-# ⚠️ O eixo PELE esta' em 12/12 e sempre como SINAL DE BELEZA — `smooth`,
-# `clear`, `glowing`, `sun-kissed`. E' o mesmo eixo que o `medir_personagens.py`
-# cobra nos pools masculinos, so' que aqui ele nao pode virar `weathered`,
-# `lined` ou `sun-damaged`: no homem a pele castigada le' como credibilidade, na
-# mulher le' como o oposto do que ela vende.
+# ⚠️ O eixo PELE esta' em TODAS e sempre como SINAL DE BELEZA. E' o mesmo eixo
+# que o `medir_personagens.py` cobra nos pools masculinos, so' que aqui ele nao
+# pode virar `weathered`, `lined` ou `sun-damaged`: no homem a pele castigada
+# le' como credibilidade, na mulher le' como o oposto do que ela vende.
+#
+# ⛔⛔ SANEAMENTO + AMPLIACAO, 2026-08-13 — ordem do operador: *"melhore a
+# aparencia e shape desses homens"* / *"aumente o pool de opcoes
+# substancialmente, tambem dos ambientes"*. Pool de 12 para 24.
+# ⚠️ DUAS entradas cairam por DETERIORACAO (a regra do PLACA 16, *"esses caras
+# tao parecendo mendigo"*, vale para ela tambem): `a small gap between her
+# front teeth` e `a fine pale scar through her right eyebrow`. Dente separado e
+# cicatriz sao ancora do lado errado num rosto que a lei do REF manda ser
+# bonito.
+# ⛔ E SEIS cairam por COR DE PELE dentro do campo `marca` (`fair clear skin`,
+# `glowing deep brown skin`, `poreless golden skin`, `pale clear skin`, `warm
+# olive skin`, `smooth fair skin`). A etnia dela sai do MUNDO e entra na frase
+# montada — `a 34-year-old West African woman, ..., smooth fair skin` sao duas
+# vozes no mesmo sintagma, e o gerador resolve inventando. A textura fica
+# (`smooth-skinned`, `freckles`, `lightly tanned`); a cor sai.
+# ⛔ OCULOS seguem em ZERO aqui, e e' doutrina declarada (LEI DO REF), nao
+# eixo esquecido — o `medir_personagens.py` ja' o lista como `zero por
+# doutrina`.
 MULHERES = [
     {"idade": 34, "corpo": "slim and toned",
      "cabeca": "long wavy honey-blonde hair falling past her shoulders",
-     "marca": "clear even skin and a small dark beauty mark just above her lip"},
+     "marca": "smooth-skinned, with a small dark beauty mark just above her "
+              "lip"},
     {"idade": 31, "corpo": "lean and athletic, with defined shoulders",
      "cabeca": "long dark hair pulled back into a high ponytail",
-     "marca": "striking pale green eyes and a light spray of freckles across "
-              "fair clear skin"},
+     "marca": "a light spray of freckles across her nose and striking pale "
+              "green eyes"},
     {"idade": 35, "corpo": "slim, with a long neck and fine collarbones",
      "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
-     "marca": "smooth luminous skin and a small gap between her front teeth "
-              "that shows when she smiles"},
+     "marca": "smooth-skinned, with a deep dimple in her right cheek"},
     {"idade": 32, "corpo": "compact and athletic, with toned arms",
      "cabeca": "tight natural curls kept short and close",
-     "marca": "glowing deep brown skin over high sharp cheekbones"},
+     "marca": "high sharp cheekbones and a small beauty mark at her left "
+              "temple"},
     {"idade": 33, "corpo": "slender and long-limbed",
      "cabeca": "straight black hair cut in a blunt glossy bob",
-     "marca": "poreless golden skin, full lips and a deep dimple in her left "
-              "cheek"},
+     "marca": "full lips and a deep dimple in her left cheek"},
     {"idade": 30, "corpo": "toned and broad-shouldered, like a swimmer",
      "cabeca": "long braids gathered over one shoulder",
-     "marca": "rich even skin, a small silver hoop in her left nostril and a "
-              "wide bright smile"},
+     "marca": "a small silver hoop in her left nostril and a wide bright "
+              "smile"},
     {"idade": 34, "corpo": "slim-hipped and wiry",
      "cabeca": "thick copper-red hair falling loose past her shoulders",
-     "marca": "pale clear skin under a dense spray of freckles, and pale blue "
-              "eyes"},
+     "marca": "a dense spray of freckles across her nose and cheekbones"},
     {"idade": 31, "corpo": "petite and tightly muscled",
      "cabeca": "dark hair in a high messy bun with loose strands at the temples",
-     "marca": "warm olive skin and a beauty mark at the left corner of her "
-              "mouth"},
+     "marca": "a beauty mark at the left corner of her mouth"},
     {"idade": 35, "corpo": "tall and lean, with square shoulders",
      "cabeca": "long dark hair with a sharp widow's peak",
-     "marca": "smooth fair skin and eyes of two different colours, one green "
+     "marca": "smooth-skinned, with eyes of two different colours, one green "
               "and one brown"},
     {"idade": 33, "corpo": "athletic, with a narrow waist",
      "cabeca": "chin-length wavy caramel hair pushed back off her forehead",
-     "marca": "sun-kissed skin and a small heart-shaped birthmark below her "
+     "marca": "lightly tanned, with a small heart-shaped birthmark below her "
               "right ear"},
     {"idade": 30, "corpo": "slim and long-limbed",
      "cabeca": "very long straight dark hair parted in the middle",
-     "marca": "clear glowing skin, arched brows and a small beauty mark high "
-              "on her left cheek"},
+     "marca": "arched brows and a small beauty mark high on her left cheek"},
     {"idade": 32, "corpo": "trim and athletic, with a defined waist",
      "cabeca": "thick dark hair in a low glossy ponytail",
-     "marca": "smooth clear skin and a fine pale scar through her right "
-              "eyebrow"},
+     "marca": "smooth-skinned, with a fine silver stud in her left nostril"},
+
+    # ---- as doze novas de 2026-08-13 ---------------------------------------
+    {"idade": 31, "corpo": "lean and long-legged, with a flat stomach",
+     "cabeca": "hair in a sleek high bun with a soft fringe left out",
+     "marca": "a deep dimple in her chin and a wide even smile"},
+    {"idade": 34, "corpo": "athletic and full-shouldered",
+     "cabeca": "shoulder-length hair worn in loose beach waves",
+     "marca": "freckles scattered across her shoulders and a small mole on "
+              "her right cheekbone"},
+    {"idade": 33, "corpo": "slim and fine-boned",
+     "cabeca": "a sharp jaw-length bob with a centre part",
+     "marca": "smooth-skinned, with a small gold stud in her left nostril"},
+    {"idade": 35, "corpo": "toned and narrow-waisted",
+     "cabeca": "long hair worn in a single thick braid over one shoulder",
+     "marca": "a beauty mark below her left eye and a full mouth"},
+    {"idade": 30, "corpo": "tall and long-limbed, with a straight back",
+     "cabeca": "a cropped pixie cut swept off her face",
+     "marca": "laugh lines at the corners of her eyes and a wide open smile"},
+    {"idade": 32, "corpo": "trim and strong through the legs",
+     "cabeca": "long hair with a soft curtain fringe framing her face",
+     "marca": "a small dark mole at the corner of her right eye"},
+    {"idade": 34, "corpo": "compact and toned, with round shoulders",
+     "cabeca": "hair twisted up into a low glossy knot",
+     "marca": "lightly tanned, with a deep dimple that only shows on the "
+              "right"},
+    {"idade": 31, "corpo": "slender, with a long neck",
+     "cabeca": "waist-length hair worn straight and glossy",
+     "marca": "a fine silver hoop in each ear and a small beauty mark on her "
+              "chin"},
+    {"idade": 35, "corpo": "athletic and square-shouldered",
+     "cabeca": "short hair worn in tight springy curls",
+     "marca": "smooth-skinned, with a wide bright smile and a small mole "
+              "above her left brow"},
+    {"idade": 33, "corpo": "slim and lightly muscled",
+     "cabeca": "hair in a half-up twist with the rest loose past her "
+               "shoulders",
+     "marca": "a light dusting of freckles over her nose and clear grey eyes"},
+    {"idade": 30, "corpo": "toned and lean, with defined arms",
+     "cabeca": "a shoulder-skimming shag cut with a heavy fringe",
+     "marca": "a heart-shaped face and a small birthmark at her right jaw"},
+    {"idade": 32, "corpo": "tall and athletic, with long legs",
+     "cabeca": "hair pinned up on one side and falling loose on the other",
+     "marca": "smooth-skinned, with a deep dimple in her left cheek and a "
+              "beauty mark just above it"},
 ]
 
 

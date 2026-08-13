@@ -213,6 +213,110 @@ QUARTOS = [
      "elas": "Sitting close together on a low bench behind him are",
      "luz": "last red daylight through the window and one lamp",
      "audio": "very quiet room tone, wind outside"},
+    # -----------------------------------------------------------------------
+    # + 2026-08-13 — AS QUATORZE QUE DOBRAM O EIXO. Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔ Com DEZ quartos e a janela de anti-repeticao em 4, o lote de 10 videos
+    # via o mesmo quarto duas vezes — e o QUARTO e' a primeira coisa que o olho
+    # registra no take 1, antes do rosto. Pool pequeno com sorteio com memoria
+    # ainda repete: a memoria adia, nao evita.
+    # ⚠️ Mesmo contrato das dez de cima, campo por campo: `elas` carrega a
+    # GEOMETRIA do lugar (onde as duas sentam), porque a beirada da cama do
+    # print nao transfere para um deck nem para uma antessala de sauna, e sem o
+    # campo o prompt pediria cama onde nao ha' cama.
+    # -----------------------------------------------------------------------
+    {"id": "loft_tijolo", "nome": "loft de tijolo aparente",
+     "cen": "a converted loft bedroom with bare brick walls and tall "
+            "steel-framed windows onto the street",
+     "elas": "Sitting side by side on the end of the low platform bed behind "
+             "him are",
+     "luz": "one warm floor lamp and street light through the tall windows",
+     "audio": "quiet room tone, a bus passing in the street below"},
+    {"id": "casa_lago", "nome": "quarto de casa no lago",
+     "cen": "a lake house bedroom with painted plank walls and a wide window "
+            "over dark still water",
+     "elas": "Sitting together on a padded window bench behind him are",
+     "luz": "low evening light off the water and one bedside lamp",
+     "audio": "water lapping under the dock, loons far off"},
+    {"id": "boutique_madeira", "nome": "quarto de hotel boutique de madeira "
+                                       "clara",
+     "cen": "a minimalist boutique hotel bedroom with pale wood screens and a "
+            "low platform bed",
+     "elas": "Sitting side by side on a long low wooden bench behind him are",
+     "luz": "soft warm light from a paper shade beside the bed",
+     "audio": "very quiet room tone, water running somewhere far off"},
+    {"id": "vinicola", "nome": "quarto da pousada da vinicola",
+     "cen": "a winery guesthouse bedroom with thick plaster walls and rows of "
+            "vines through the open window",
+     "elas": "Sitting close together on a wide window seat behind him are",
+     "luz": "late golden light coming flat through the open window",
+     "audio": "crickets outside, wind through the vines"},
+    {"id": "celeiro", "nome": "celeiro reformado",
+     "cen": "a converted barn bedroom with high timber beams and a big sliding "
+            "door open onto a field",
+     "elas": "Sitting together on a hay-coloured bench at the foot of the bed "
+             "behind him are",
+     "luz": "warm work lamps hung from the beams",
+     "audio": "wind through the open door, crickets in the field"},
+    {"id": "trailer_prata", "nome": "trailer de aluminio no deserto",
+     "cen": "a polished aluminium trailer bedroom with curved ribbed walls and "
+            "a strip of desert through the window",
+     "elas": "Sitting shoulder to shoulder on the built-in banquette behind "
+             "him are",
+     "luz": "one warm strip light along the curved ceiling",
+     "audio": "wind against the metal shell, very quiet inside"},
+    {"id": "casa_arvore", "nome": "casa na arvore de luxo",
+     "cen": "a luxury treehouse bedroom with plank walls and forest canopy "
+            "filling the tall window",
+     "elas": "Sitting side by side on a wide built-in daybed behind him are",
+     "luz": "green filtered daylight through the canopy and one lantern",
+     "audio": "leaves moving overhead, birds close by"},
+    {"id": "casa_duna", "nome": "casa de praia sobre a duna",
+     "cen": "a beach house bedroom with whitewashed boards and sea grass and "
+            "dunes through the open sliding door",
+     "elas": "Sitting together on a rattan bench at the end of the bed behind "
+             "him are",
+     "luz": "bright hazy afternoon light off the sand",
+     "audio": "surf beyond the dune, wind in the sea grass"},
+    {"id": "chale_neve", "nome": "chale de esqui com neve na janela",
+     "cen": "a ski chalet bedroom with a low sloped plank ceiling and snow "
+            "piled on the window ledge",
+     "elas": "Sitting close together on a bench under the sloped ceiling "
+             "behind him are",
+     "luz": "warm low lamplight with blue snow light in the window",
+     "audio": "wind against the glass, a beam settling"},
+    {"id": "antessala_sauna", "nome": "antessala da sauna do hotel",
+     "cen": "a hotel wellness room with cedar walls, a glass sauna door and "
+            "folded towels on a shelf",
+     "elas": "Sitting side by side on the long cedar bench behind him are",
+     "luz": "warm low light along the cedar slats",
+     "audio": "quiet room tone, hot stones ticking behind the glass"},
+    {"id": "piscina_coberta", "nome": "sala da piscina coberta",
+     "cen": "an indoor hotel pool room with still turquoise water and glass "
+            "walls onto a dark garden",
+     "elas": "Sitting together on a padded lounger at the water's edge behind "
+             "him are",
+     "luz": "underwater light throwing moving lines on the ceiling",
+     "audio": "water moving in the pool, a long soft echo"},
+    {"id": "cabana_cobertura", "nome": "cabana de dossel na cobertura",
+     "cen": "a rooftop hotel cabana with a canopy bed and the city skyline "
+            "past the open drapes",
+     "elas": "Sitting side by side on the end of the canopy bed behind him are",
+     "luz": "warm cabana lanterns with the city glow behind",
+     "audio": "wind in the drapes, the city humming far below"},
+    {"id": "villa_pedra", "nome": "villa de pedra com oliveiras",
+     "cen": "a hilltop villa bedroom with thick stone walls and wooden "
+            "shutters open onto olive trees",
+     "elas": "Sitting together on a stone bench under the window behind him "
+             "are",
+     "luz": "warm late sun coming through the open shutters",
+     "audio": "cicadas outside, a bell far down the valley"},
+    {"id": "solario", "nome": "solario envidracado da suite",
+     "cen": "a glass sun room off the main bedroom with plants along the "
+            "windows and a wide daybed",
+     "elas": "Sitting side by side on the wide daybed behind him are",
+     "luz": "soft bright daylight through the glass roof",
+     "audio": "rain on the glass roof, very quiet inside"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -293,6 +397,116 @@ AMBIENTES = [
              "camera is",
      "luz": "pale sunrise light with soft morning mist",
      "audio": "very still water, early birds"},
+    # -----------------------------------------------------------------------
+    # ⭐⭐ + 2026-08-13 — A LISTA DEIXOU DE SER FECHADA, POR ORDEM DO OPERADOR.
+    # -----------------------------------------------------------------------
+    # ⛔⛔ ATENCAO A QUEM LER O BLOCO ACIMA: ele diz que os DEZ sao do operador e
+    # que a lista e' FECHADA — e era, ate' hoje. A ordem nova e' dele e e' mais
+    # recente: *"aumente o pool de opcoes substancialmente, tambem dos
+    # ambientes"*. As DEZ dele continuam intactas, palavra por palavra, e sao as
+    # dez primeiras; as quatorze de baixo sao NOSSAS e seguem a mesma geometria.
+    # ⚠️ Por isso o autoteste deixou de exigir `== 10` e passou a exigir `>= 10`:
+    # o que ele protege e' que nenhuma das dez sumissa numa "limpeza", nao que o
+    # pool nunca cresca. Guarda que impede a ordem mais recente do operador e'
+    # guarda que sera' apagada na pressa — e ai' some tambem o que ele protegia.
+    #
+    # ⛔ O CONTRATO DE CADA UMA, igual ao das dez: um ASSENTO LARGO (ele senta e
+    # as duas colam, uma de cada lado), NENHUM gesto de mao (as duas maos dele
+    # estao ocupadas com a tigela e a caixa) e NENHUM `laughing` (ordem dele:
+    # sorrindo, nao gargalhando).
+    # ⚠️ E nenhuma pode dizer que e' o mesmo lugar do take 1: os dois eixos sao
+    # INDEPENDENTES, e quem cobra isso e' a lente FA13.
+    {"id": "banco_sauna", "nome": "banco de cedro em frente a' sauna",
+     "cen": "a hotel spa cedar room with a glass sauna door behind them and "
+            "folded white towels stacked on a shelf",
+     "pose": "Sitting on a long wide cedar bench closest to the camera is",
+     "luz": "warm low light along the cedar slats",
+     "audio": "hot stones ticking behind the glass, very quiet room"},
+    {"id": "piscina_coberta", "nome": "beira da piscina coberta",
+     "cen": "an indoor hotel pool room at night, still turquoise water behind "
+            "them and glass walls onto a dark garden",
+     "pose": "Sitting on a wide padded lounger at the water's edge closest to "
+             "the camera is",
+     "luz": "underwater light throwing moving lines across the ceiling",
+     "audio": "water moving in the pool, a long soft echo"},
+    {"id": "popa_barco", "nome": "banco da popa do barco",
+     "cen": "the open stern deck of a motor yacht at anchor, flat blue water "
+            "and a low green coast behind them",
+     "pose": "Sitting on the wide cushioned stern bench closest to the camera "
+             "is",
+     "luz": "bright open midday sun off the water",
+     "audio": "water slapping the hull, a gull, the boat creaking"},
+    {"id": "varanda_montanha", "nome": "varanda do lodge na montanha",
+     "cen": "a mountain lodge balcony early in the morning, pine ridges and "
+            "low mist behind them and a wool blanket over the rail",
+     "pose": "Sitting on a wide cedar bench along the rail closest to the "
+             "camera is",
+     "luz": "pale cold sunrise light coming across the ridges",
+     "audio": "very still air, one bird far off"},
+    {"id": "sala_vidro", "nome": "sala envidracada da villa",
+     "cen": "a villa living room with a whole wall of glass open onto green "
+            "tropical planting behind them and a low stone table in front",
+     "pose": "Sitting on a long low linen sofa closest to the camera is",
+     "luz": "bright even daylight coming through the open glass wall",
+     "audio": "birds in the planting, a light breeze through the room"},
+    {"id": "terraco_vinha", "nome": "terraco sobre as parreiras",
+     "cen": "a stone terrace above a vineyard at the end of the day, rows of "
+            "vines running downhill behind them and two glasses on the wall",
+     "pose": "Sitting on a long padded stone bench closest to the camera is",
+     "luz": "warm low golden light raking across the rows",
+     "audio": "cicadas, wind through the vines"},
+    {"id": "deck_duna", "nome": "deck da casa sobre a duna",
+     "cen": "a sun-bleached wooden deck on a beach house above the dunes, sea "
+            "grass and open ocean behind them",
+     "pose": "Sitting on a wide built-in deck bench closest to the camera is",
+     "luz": "hazy bright late afternoon light off the sand",
+     "audio": "surf below the dune, wind in the sea grass"},
+    {"id": "biblioteca_lounge", "nome": "lounge da biblioteca do hotel",
+     "cen": "a quiet hotel library lounge at night, dark wood shelves and a "
+            "small fire in a grate behind them",
+     "pose": "Sitting on a deep buttoned leather bench closest to the camera "
+             "is",
+     "luz": "warm lamplight with firelight low on the shelves",
+     "audio": "the fire ticking, a very quiet room"},
+    {"id": "hammam", "nome": "banco de marmore do hammam",
+     "cen": "a marble hammam room with pale stone walls, arched niches and "
+            "faint steam behind them",
+     "pose": "Sitting on the wide heated marble bench closest to the camera is",
+     "luz": "soft light falling from small round openings in the dome",
+     "audio": "water dripping into a basin, a long stone echo"},
+    {"id": "borda_banheira", "nome": "borda da banheira de marmore",
+     "cen": "a large hotel bathroom with a deep marble tub filled behind them, "
+            "a fogged mirror and rolled towels on the counter",
+     "pose": "Sitting on the wide flat edge of the tub closest to the camera "
+             "is",
+     "luz": "warm vanity light with the mirror still fogged",
+     "audio": "water dripping into the tub, quiet room tone"},
+    {"id": "pier_lago", "nome": "banco do pier no lago",
+     "cen": "a wooden dock over a still lake at dusk, dark water and a far "
+            "treeline behind them",
+     "pose": "Sitting on a wide plank dock bench closest to the camera is",
+     "luz": "last blue light after sunset with one lamp on the dock",
+     "audio": "water under the boards, frogs starting up"},
+    {"id": "cama_dossel", "nome": "cama de dossel da villa",
+     "cen": "a villa bedroom in the late morning with a tall four-poster bed, "
+            "white drapes moving at the open doors behind them",
+     "pose": "Sitting on the wide upholstered bench at the end of the bed "
+             "closest to the camera is",
+     "luz": "bright soft light through the moving drapes",
+     "audio": "wind in the drapes, birds outside"},
+    {"id": "fogueira_deserto", "nome": "fogueira do resort no deserto",
+     "cen": "a desert resort fire pit at night, low flames and red rock walls "
+            "behind them and blankets left on the seats",
+     "pose": "Sitting on a long low stone seat around the fire closest to the "
+             "camera is",
+     "luz": "firelight from below with deep blue night behind",
+     "audio": "the fire cracking, wind across open ground"},
+    {"id": "estufa_daybed", "nome": "daybed do solario envidracado",
+     "cen": "a glass sun room with plants crowding the windows behind them and "
+            "a low table with two cups on it",
+     "pose": "Sitting on a wide cushioned daybed closest to the camera is",
+     "luz": "soft bright daylight coming through the glass roof",
+     "audio": "rain on the glass roof, very quiet inside"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -355,11 +569,12 @@ HOMENS = [
      "marca": "thick steel-grey hair brushed straight back, a full grey beard "
               "kept short, a long face with high cheekbones and a straight "
               "narrow nose",
-     "sinal": "a clean pale scar through his right eyebrow"},
+     "sinal": "a patch of white hair above his right temple"},
     {"id": "corte_rente", "idade": 55,
      "marca": "hair cropped close all over and grey at the sides, three days "
-              "of grey stubble, a wide face with a firm jawline, sun-weathered",
-     "sinal": "a small notch in the rim of his left ear"},
+              "of grey stubble, a wide face with a firm jawline, lightly "
+              "tanned",
+     "sinal": "a small gold stud in his left ear"},
     {"id": "ondulado_escuro", "idade": 51,
      "marca": "dense dark waves cut short at the sides, a squared jaw and "
               "wide-set eyes under level brows",
@@ -380,7 +595,7 @@ HOMENS = [
     {"id": "flat_top", "idade": 63,
      "marca": "a pewter flat-top cut squared off across the top, a long jaw "
               "and high flat cheekbones",
-     "sinal": "a pale scar under his lower lip"},
+     "sinal": "a deep dimple below the right corner of his mouth"},
     {"id": "preto_denso", "idade": 53,
      "marca": "hair still mostly black and cut dense and short, a clean-shaven "
               "face, grey only in front of the ears, a broad face with a wide "
@@ -392,11 +607,13 @@ HOMENS = [
      "sinal": "laugh lines cut deep at the corners of his mouth"},
     {"id": "arruivado", "idade": 54,
      "marca": "rust-brown hair faded to sandy grey and combed to one side, a "
-              "short reddish beard going grey, a ruddy square-chinned face",
+              "short reddish beard going grey, a square-chinned face with "
+              "freckles high on the cheeks",
      "sinal": "a deep dimple in each cheek"},
     {"id": "compacto", "idade": 66,
      "marca": "fine white hair combed back off the forehead, a neat white "
-              "moustache, a long face with sharp cheekbones, deeply lined",
+              "moustache, a long face with sharp cheekbones and laugh lines "
+              "at the eyes",
      "sinal": "two small dark moles in a line on his right temple"},
     {"id": "mecha_branca", "idade": 60,
      "marca": "grey hair parted on the side with a bright white streak at one "
@@ -409,7 +626,7 @@ HOMENS = [
     {"id": "ondas_baixas", "idade": 64,
      "marca": "heavy grey waves worn back off the forehead, a long face with a "
               "straight strong nose",
-     "sinal": "a pale patch of white skin the size of a coin on his jaw"},
+     "sinal": "a sharp widow's peak in his hairline"},
     {"id": "cachos_grisalhos", "idade": 57,
      "marca": "tight grey curls cut close to the head, a close-cut grey beard, "
               "a broad open face with high cheekbones",
@@ -425,7 +642,7 @@ HOMENS = [
     {"id": "no_na_nuca", "idade": 50,
      "marca": "dark hair long enough to tie into a short knot at the nape, a "
               "short dark beard, a narrow face with a defined jaw",
-     "sinal": "a small scar at the point of his chin"},
+     "sinal": "a beauty mark at the point of his chin"},
     {"id": "militar", "idade": 55,
      "marca": "a high and tight cut with grey at the temples, a clean-shaven "
               "face, a wide square face and a level brow",
@@ -446,12 +663,12 @@ HOMENS = [
     {"id": "grisalho_medio", "idade": 58,
      "marca": "mid-length grey hair tucked behind the ears, a clean-shaven "
               "face, a long face with high flat cheekbones",
-     "sinal": "a thin pale scar along one jawline"},
+     "sinal": "a silver streak through his left eyebrow"},
     {"id": "loiro_areia", "idade": 51,
      "marca": "sandy blond hair going grey at the temples and cut short, light "
-              "stubble, a square face with a wide mouth, tanned with fine "
-              "lines at the eyes",
-     "sinal": "a small notch in one eyebrow"},
+              "stubble, a square face with a wide mouth, lightly tanned with "
+              "fine lines at the eyes",
+     "sinal": "heavy level brows over wide-set eyes"},
     {"id": "topete", "idade": 60,
      "marca": "thick grey hair swept up and back off the forehead, a close "
               "silver beard, a strong-boned face with a straight nose",
@@ -459,8 +676,22 @@ HOMENS = [
     {"id": "cacho_solto", "idade": 54,
      "marca": "loose dark curls with grey running through them, worn short, a "
               "clean-shaven face, a broad face with a defined chin",
-     "sinal": "a clean pale scar across the back of one hand"},
+     "sinal": "a small silver hoop in his right ear"},
 ]
+# ⛔⛔ DEZ ENTRADAS ACIMA FORAM REESCRITAS EM 2026-08-13 — ordem do operador:
+# *"melhore a aparencia e shape desses homens"*.
+# ⚠️ O que sairam foram AVARIAS disfarcadas de ancora: seis `scar` (sobrancelha,
+# labio, queixo, mandibula, dorso da mao), dois `notch` (orelha e sobrancelha),
+# `sun-weathered`, `ruddy` e `deeply lined`. Cada uma passava sozinha na leitura
+# — juntas faziam metade do pool entregar um homem machucado, que e' exatamente
+# a reprovacao do PLACA 16 (*"esses caras tao parecendo mendigo"*) chegando por
+# outra porta.
+# ⭐ Entraram ancoras SAUDAVEIS e igualmente memoraveis: mecha branca acima da
+# tempora, brinco, covinha, sinal de nascenca, pico de viuva, sobrancelha
+# prateada. A funcao da ancora e' ser LEMBRADA entre os dois takes, nao ser
+# dramatica — e uma covinha e' tao unica quanto uma cicatriz, sem o custo.
+# ⚠️ O guarda `_DESLEIXO` do autoteste nao pegava nenhuma delas: ele conhecia
+# `combed forward` e `unibrow` e nao conhecia `scar`. Foi ampliado no mesmo dia.
 
 # ⭐⭐ O CORPO — e e' aqui que o MODO FORTE vive.
 # ⛔ Os dois pools tem a MESMA faixa etaria (o narrador continua 50+ nos dois
@@ -474,6 +705,19 @@ CORPOS_H = [
     "a heavier build, broad through the chest and thick in the arms",
     "a compact build with a deep chest and short thick forearms",
     "a tall build with sloping shoulders and a long torso",
+    # + 2026-08-13 — ordem do operador: *"melhore a aparencia e shape desses
+    # homens"* / *"aumente o pool de opcoes substancialmente"*. ⚠️ O registro
+    # deste pool e' PORTE DE HOMEM QUE SE CUIDA, nunca musculo: a diferenca
+    # entre os dois pools e' o que da' funcao ao MODO FORTE, e entrada ambigua
+    # aqui apaga o toggle sem ninguem ver.
+    "a solid upright build with a wide back and a flat waist",
+    "a trim build with narrow hips and light shoulders",
+    "a broad build with a full chest and thick forearms",
+    "a stocky build with a short neck and a deep chest",
+    "a long-limbed build with a lean torso and wide shoulders",
+    "a medium build carrying a little weight through the middle",
+    "a squarely built frame with even shoulders and a straight back",
+    "a slim build with fine wrists and a narrow chest",
 ]
 CORPOS_FORTES = [
     "the dense build of a man who lifts, thick through the chest and shoulders "
@@ -486,6 +730,17 @@ CORPOS_FORTES = [
     "stomach",
     "a heavy muscular build with a barrel chest, thick neck-to-shoulder line "
     "and a flat hard stomach",
+    # + 2026-08-13 — mesma ordem, o outro lado do toggle. ⚠️ Cinco entradas
+    # ligadas contra seis desligadas fazia o botao aceso repetir corpo a cada
+    # cinco videos, e o corpo dele e' metade do quadro num angulo em que ele
+    # aparece de toalha.
+    "a thick muscular build with a broad back and heavy arms",
+    "a gym-built frame with a full chest, wide lats and a tight middle",
+    "a heavy slab of chest with thick shoulders and hard arms",
+    "a heavily built torso with deep muscle across the chest and cut arms",
+    "a broad muscular back with round shoulders and thick forearms",
+    "a densely built frame with a wide chest and clear muscle in the arms",
+    "a thick-armed build with a heavy chest and a hard flat middle",
 ]
 
 # a toalha DELE — sempre na cintura, nos dois takes (e' o uniforme do angulo)
@@ -517,7 +772,7 @@ MULHERES = [
     {"id": "loira_lisa", "idade": 31, "etnia": "white American",
      "porte": "athletic with a small waist",
      "marca": "straight blonde hair cut blunt at the shoulders, tanned from the "
-              "sun, and a faint scar through one eyebrow"},
+              "sun, and a small dark beauty mark at the corner of one eye"},
     {"id": "ruiva_cachos", "idade": 27, "etnia": "white American",
      "porte": "small and lightly built",
      "marca": "loose auburn curls past her shoulders and a dense spray of "
@@ -525,7 +780,7 @@ MULHERES = [
     {"id": "preto_liso", "idade": 33, "etnia": "Black American",
      "porte": "tall with long legs",
      "marca": "straight black hair worn long, fine laugh lines at the corners of "
-              "her eyes, and a wide gap between her front teeth"},
+              "her eyes, and a small gold hoop in each ear"},
     {"id": "trancas", "idade": 28, "etnia": "Black American",
      "porte": "athletic and broad-shouldered",
      "marca": "long thin braids gathered behind one shoulder and a beauty mark "
@@ -540,8 +795,7 @@ MULHERES = [
               "and a beauty mark above her lip"},
     {"id": "afro_curto", "idade": 26, "etnia": "Black American",
      "porte": "petite and finely built",
-     "marca": "a short natural afro and a small scar at the corner of one "
-              "eyebrow"},
+     "marca": "a short natural afro and a beauty mark high on one temple"},
     {"id": "rabo_de_cavalo", "idade": 32, "etnia": "white American",
      "porte": "toned with square shoulders",
      "marca": "dark hair pulled back into a long high ponytail and a thin "
@@ -561,7 +815,7 @@ MULHERES = [
     {"id": "mel_longo", "idade": 29, "etnia": "white American",
      "porte": "athletic with clear definition in her arms",
      "marca": "long honey-blonde hair worn loose, freckled across the nose and "
-              "shoulders, and a faint scar on her chin"},
+              "shoulders, and a small beauty mark below her lower lip"},
     {"id": "coque_baixo", "idade": 36, "etnia": "Black American",
      "porte": "tall and narrow through the hips",
      "marca": "hair gathered into a low sleek knot and high sharp cheekbones"},
@@ -584,8 +838,8 @@ MULHERES = [
               "one eye"},
     {"id": "ondulada_mel", "idade": 32, "etnia": "Hispanic American",
      "porte": "athletic with long legs",
-     "marca": "shoulder-length waves in a warm caramel tone and a fine scar "
-              "through one eyebrow"},
+     "marca": "shoulder-length waves in a warm caramel tone and a beauty mark "
+              "just below one cheekbone"},
     {"id": "liso_preto_curto", "idade": 28, "etnia": "Asian American",
      "porte": "slim and finely built",
      "marca": "straight black hair cut in a blunt bob at the jaw and a small "
@@ -612,9 +866,17 @@ MULHERES = [
               "one cheek"},
     {"id": "cacheada_volumosa", "idade": 28, "etnia": "Black American",
      "porte": "athletic with a narrow waist",
-     "marca": "voluminous curls worn wide around her face, tanned from the sun,"
-              "and a wide bright gap-toothed mouth"},
+     "marca": "voluminous curls worn wide around her face, tanned from the sun, "
+              "and a dimple that shows in one cheek"},
 ]
+# ⛔ SEIS ENTRADAS ACIMA FORAM REESCRITAS EM 2026-08-13, pelo mesmo motivo que as
+# dez do pool masculino: quatro `scar` (sobrancelha, queixo) e dois dentes
+# (`gap between her front teeth`, `gap-toothed mouth`). ⚠️ Aqui o custo e' MAIOR
+# que no pool dele — a lei do REF do repo e' que a mulher e' SEMPRE bonita, e o
+# angulo inteiro depende de o espectador invejar o quadro. Dente falhado num
+# rosto que existe para ser desejado nao e' marca, e' avaria.
+# ⭐ Entraram ancoras do mesmo peso visual e sem custo: sinal de nascenca,
+# argola, covinha, marca abaixo do labio.
 
 # ---------------------------------------------------------------------------
 # ⭐⭐ O ENVOLTORIO DELAS — STRING TRAVADA, e nasceu EIXO
@@ -796,6 +1058,30 @@ COZINHAS = [
     "Nothing you do not already own.",
     "It all sits in your kitchen already.",
     "Two things you already keep at home.",
+    # -----------------------------------------------------------------------
+    # + 2026-08-13 — ordem do operador: *"aumente o pool de opcoes
+    # substancialmente"*. ⛔ Este beat e' o UNICO do take 2 que o CT6 desligado
+    # deixou livre, e com seis entradas ele repetia a cada seis videos no meio
+    # da fala que carrega o CTA — a posicao do lote onde a repeticao mais se
+    # ouve, porque o espectador chega nela ja' tendo visto outro video da mesma
+    # pagina.
+    # ⛔ O CONTRATO DE CADA UMA: 6 a 8 palavras (acima disso ela nao cabe com o
+    # MECANISMO de 9 e o CTA de 8 — o `[ALCANCE]` do autoteste mata a entrada e
+    # ela vira pool morto), 2a pessoa (o take 2 e' a OFERTA, e `my`/`I` sao do
+    # take 1), e NENHUM ingrediente nomeado: `ingredients` e' a CATEGORIA, e o
+    # CT5 e' o que segura a moeda que o comentario compra.
+    # -----------------------------------------------------------------------
+    "Everything for it is in your kitchen.",
+    "You already have all of it at home.",
+    "Your kitchen already holds every single one.",
+    "No shopping, no pharmacy, no waiting around.",
+    "Nothing new to buy, nothing to order.",
+    "All of it is already in your cupboard.",
+    "Everything sits in your kitchen right now.",
+    "You keep all of it at home already.",
+    "Not one thing you have to buy.",
+    "Your own kitchen has every one of them.",
+    "Nothing from a pharmacy, nothing from a store.",
 ]
 
 # ⚠️ 7-8 palavras exatas. `Comment gelatin,` e' LITERAL
@@ -1709,12 +1995,23 @@ def autoteste(n=400):
     # ⭐ E a barra deste angulo e' mais alta que a dos outros: ele aparece de
     # toalha com DUAS mulheres do lado. Se ele nao for plausivelmente atraente,
     # a cena nao fecha — e' o equivalente masculino da LEI DO REF.
+    # ⚠️ + 2026-08-13: a lista conhecia `combed forward` e `unibrow` e NAO
+    # conhecia `scar`. Dez entradas do pool traziam cicatriz, entalhe na
+    # orelha, `sun-weathered`, `ruddy` ou `deeply lined`, e o guarda ficou
+    # verde o tempo todo — foi o operador que pegou, olhando o render
+    # (*"melhore a aparencia e shape desses homens"*). Guarda que nao conhece a
+    # familia inteira do defeito e' guarda que so' pega o caso que ja'
+    # aconteceu.
     _DESLEIXO = ("combed forward", "comb-over", "comb over",
                  "meet in a single line", "unibrow", "close-set eyes",
                  "jowl", "receding", "thinning", "balding", "deep hairline",
                  "hollow cheeks", "sunken", "under-jaw", "double chin",
                  "bulbous", "wispy", "yellowed", "stained", "unkempt",
-                 "worn low across the forehead")
+                 "worn low across the forehead",
+                 "scar", "notch", "weathered", "ruddy", "deeply lined",
+                 "broken nose", "chipped", "missing tooth", "gap between",
+                 "gap-toothed", "sun damage", "leathery", "gaunt",
+                 "age spots", "loose skin", "thin skin")
     # ⛔ nenhuma entrada de PELES pode trazer outro `with`: elas entram depois
     # de `...woman WITH `, e o bloco sairia com `with ... with ...`.
     for _et, _lst in PELES.items():
@@ -1819,10 +2116,17 @@ def autoteste(n=400):
         for k in ("nome", "cen", "pose", "luz", "audio"):
             if not a.get(k):
                 falhas.append("AMBIENTE %s: sem %r" % (a["id"], k))
-    # ⛔ Os DEZ ambientes sao lista FECHADA — o operador escreveu os dez.
-    if len(AMBIENTES) != 10:
-        falhas.append("AMBIENTES: sao %d e o operador ditou DEZ — a lista nao "
-                      "e' nossa" % len(AMBIENTES))
+    # ⛔ AS DEZ DO OPERADOR SAO PISO, NAO TETO — mudanca de 2026-08-13.
+    # ⚠️ Ate' hoje isto era `!= 10`: o operador tinha ditado os dez ambientes e o
+    # guarda existia para ninguem "resumir" a lista dele. A ordem nova e' dele e
+    # e' mais recente — *"aumente o pool de opcoes substancialmente, tambem dos
+    # ambientes"* —, entao o que sobra do guarda e' a metade que continua
+    # valendo: os dez nao podem SUMIR. Guarda que bloqueia a ordem mais recente
+    # do operador vira guarda apagado na pressa, e ai' some tambem o que ele
+    # protegia.
+    if len(AMBIENTES) < 10:
+        falhas.append("AMBIENTES: sao %d e o operador ditou DEZ — as dez dele "
+                      "sao piso, nunca teto" % len(AMBIENTES))
     # ⛔ O ENVOLTORIO E' TRAVADO, e o guarda impede que ele volte a ser pool:
     # o biquini reprovava no gerador (relato de campo, 2026-08-10) e
     # `bath towel` e `bikini top` sao CATEGORIAS diferentes para o

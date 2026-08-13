@@ -260,6 +260,100 @@ MUNDOS = [
      "luz": "flat kitchen ceiling light",
      "luz_c": "the same flat ceiling light",
      "etnias": ["white American", "Black American"]},
+    # ⭐⭐ 2026-08-13 — MAIS NOVE REGIOES (15 -> 24). Ordem do operador:
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔ COBERTURA DE ETNIA CRESCE DOS DOIS LADOS, nunca de um so': eram 9
+    # mundos que comportam `white American` e 7 que comportam `Black
+    # American`; passam a 15 e 12. Etnia sem cozinha compativel derruba o
+    # sorteio — o `mundos_da_pele` cede para a lista inteira e a trava de pele
+    # do painel deixa de significar alguma coisa.
+    # ⚠️ Cada entrada nova carrega o MESMO nivel das vizinhas: cozinha,
+    # superficie, luz, audio e etnias. Fundo sem luz nem ambiencia e' meia
+    # entrada, e o gerador preenche a metade que falta sozinho.
+    # ⛔ NENHUMA luz colorida — a licao do `noroeste` (*"tire esse ar de blade
+    # runner 2049"*) vale para quem chega depois.
+    {"id": "oakland", "familia": "oakland",
+     "audio": "a bus braking a block away, a quiet house",
+     "coz": "an Oakland Victorian kitchen with tall painted cabinets and a "
+            "bay window onto the back steps",
+     "coz_c": "the same Oakland kitchen",
+     "sup_a": "a green tile counter", "sup": "tile counter",
+     "luz": "soft bay-window light off the back yard",
+     "luz_c": "the same soft bay-window light",
+     "etnias": ["Black American"]},
+    {"id": "sul_chicago", "familia": "sul_chicago",
+     "audio": "an el train far off, a radiator ticking",
+     "coz": "a South Side Chicago two-flat kitchen with painted steel "
+            "cabinets and a glazed back door onto wooden stairs",
+     "coz_c": "the same two-flat kitchen",
+     "sup_a": "a worn enamel-topped table", "sup": "enamel table",
+     "luz": "cool north light off the brick wall next door",
+     "luz_c": "the same cool north light",
+     "etnias": ["Black American"]},
+    {"id": "detroit", "familia": "detroit",
+     "audio": "a furnace humming, a car going by",
+     "coz": "a Detroit brick bungalow kitchen with steel cabinets and a "
+            "swinging door through to the dining room",
+     "coz_c": "the same bungalow kitchen",
+     "sup_a": "a boomerang-pattern formica dinette",
+     "sup": "formica dinette",
+     "luz": "warm lamplight against a pale window",
+     "luz_c": "the same warm lamplight",
+     "etnias": ["Black American"]},
+    {"id": "baltimore", "familia": "baltimore",
+     "audio": "children out on the street, a screen door",
+     "coz": "a Baltimore rowhouse kitchen, a narrow galley run with a window "
+            "onto the back alley",
+     "coz_c": "the same rowhouse kitchen",
+     "sup_a": "a scrubbed steel counter", "sup": "steel counter",
+     "luz": "flat daylight down the narrow galley",
+     "luz_c": "the same flat daylight",
+     "etnias": ["Black American", "white American"]},
+    {"id": "ozarks", "familia": "ozarks",
+     "audio": "a dog barking off in the trees, cicadas",
+     "coz": "an Ozark hill kitchen with open shelves of canning jars and a "
+            "screened window over the sink",
+     "coz_c": "the same hill kitchen",
+     "sup_a": "a worn hickory counter", "sup": "hickory counter",
+     "luz": "soft daylight through the window screen",
+     "luz_c": "the same soft daylight",
+     "etnias": ["white American"]},
+    {"id": "montanha", "familia": "montanha",
+     "audio": "wind off the ridge, a quiet cabin",
+     "coz": "a Rocky Mountain cabin kitchen with log walls and a cast iron "
+            "stove in the corner",
+     "coz_c": "the same cabin kitchen",
+     "sup_a": "a thick spruce counter", "sup": "spruce counter",
+     "luz": "hard high-altitude daylight through a small window",
+     "luz_c": "the same hard daylight",
+     "etnias": ["white American"]},
+    {"id": "costa_maine", "familia": "costa_maine",
+     "audio": "gulls, a halyard tapping",
+     "coz": "a Maine harbour kitchen with white bead-board walls and a window "
+            "onto the working docks",
+     "coz_c": "the same harbour kitchen",
+     "sup_a": "a scrubbed maple counter", "sup": "maple counter",
+     "luz": "cool bright light coming off the water",
+     "luz_c": "the same cool bright light",
+     "etnias": ["white American"]},
+    {"id": "sudoeste", "familia": "sudoeste",
+     "audio": "dry wind, a wind chime",
+     "coz": "a New Mexico adobe kitchen with thick plastered walls and a row "
+            "of dried chiles hanging by the door",
+     "coz_c": "the same adobe kitchen",
+     "sup_a": "a saltillo-tiled counter", "sup": "tiled counter",
+     "luz": "hard clean desert light through a deep window opening",
+     "luz_c": "the same hard desert light",
+     "etnias": ["white American"]},
+    {"id": "siderurgica", "familia": "siderurgica",
+     "audio": "a freight train, a fridge humming",
+     "coz": "a steel-town kitchen with metal cabinets and a window onto a row "
+            "of identical back porches",
+     "coz_c": "the same steel-town kitchen",
+     "sup_a": "a steel-edged formica counter", "sup": "formica counter",
+     "luz": "flat grey light off an overcast sky",
+     "luz_c": "the same flat grey light",
+     "etnias": ["white American", "Black American"]},
 ]
 
 FAMILIAS_MUNDO = list(dict.fromkeys(m["familia"] for m in MUNDOS))
@@ -364,27 +458,166 @@ HOMENS = [
     # CREDIBILIDADE, o oposto do efeito na REF (a LEI DO REF os bane nela).
     # ⛔ ZERO adjetivo de etnia dentro das entradas — quem injeta e' a montagem,
     # a partir do mundo. Mesmo contrato do pool das mulheres.
-    {"id": "grisalho", "idade": 61, "corpo": "bare-chested, heavy build",
+    # ⭐⭐ 2026-08-13 — DE 6 PARA 24, E OS SEIS ANTIGOS REESCRITOS.
+    # Ordem do operador: *"melhore a aparencia e shape desses homens"* e
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔⛔ DISTINTIVO, NUNCA DETERIORADO. CINCO dos seis originais violavam a
+    # regra que ja' custou lote no PLACA 16 (*"esses caras tao parecendo
+    # mendigo"*): vinco fundo entre as sobrancelhas, cicatriz na sobrancelha,
+    # dobras sob os dois olhos, nariz quebrado e nunca alinhado, mancha de
+    # sol na tempora. Sairam TODOS, e o `shape` foi junto — barriga mole e
+    # tronco curvado viraram ombro quadrado, costas retas e corpo solido.
+    # ⭐ No lugar entraram ancoras SAUDAVEIS: covinha, queixo partido, mecha
+    # prateada, pinta, brinco de argola ou tarraxa, entrada em bico,
+    # sobrancelha cheia e reta, mecha branca acima da tempora.
+    # ⛔ ZERO palavra de aprovacao (handsome, rugged, strong jaw): elogio no
+    # prompt puxa o rosto para a MEDIA do banco de imagem — o mesmo mecanismo
+    # pelo qual escrever "not a celebrity" invoca a celebridade. Descreve-se
+    # FEICAO, nunca julgamento.
+    # ⚠️ OCULOS EM 7 DE 24 (29%), e a queda e' de proposito: eram 3 de 6 (50%)
+    # e o homem de oculos e' justamente o caso em que o `SEM_FITA` precisa de
+    # referente explicito para o pronome nao apontar para as lentes.
+    # ⛔ O eixo PELE segue ZERADO aqui por CONTRATO (excecao declarada no
+    # `medir_personagens.py`): nenhuma entrada carrega adjetivo de pele nem de
+    # etnia — quem injeta e' a montagem, a partir do MUNDO sorteado.
+    {"id": "grisalho", "idade": 61,
+     "corpo": "bare-chested, square-shouldered and solid through the chest",
      "cabeca": "grey stubble", "calca": "loose khaki shorts",
-     "marca": "a deep vertical crease between his eyebrows", "oculos": ""},
-    {"id": "careca", "idade": 66, "corpo": "bare-chested, a soft round belly",
-     "cabeca": "bald with a grey fringe", "calca": "faded denim shorts",
+     "marca": "a shallow cleft in the middle of his chin", "oculos": ""},
+    {"id": "careca", "idade": 66,
+     "corpo": "bare-chested, broad with a straight back",
+     "cabeca": "bald with a neat grey fringe", "calca": "faded denim shorts",
      "marca": "a small dark mole on his right cheek",
      "oculos": "thin wire-rimmed glasses"},
-    {"id": "bigode", "idade": 58, "corpo": "bare-chested, thick through the chest",
+    {"id": "bigode", "idade": 58,
+     "corpo": "bare-chested, thick through the chest",
      "cabeca": "a heavy grey moustache", "calca": "grey sweat shorts",
-     "marca": "a pale scar through his left eyebrow", "oculos": ""},
-    {"id": "barba_branca", "idade": 69, "corpo": "bare-chested, lean and stooped",
+     "marca": "a deep dimple in his left cheek", "oculos": ""},
+    {"id": "barba_branca", "idade": 69,
+     "corpo": "bare-chested, lean and upright",
      "cabeca": "a short white beard", "calca": "olive cargo shorts",
-     "marca": "heavy folds under both eyes",
+     "marca": "a silver streak running through his beard at the chin",
      "oculos": "square reading glasses pushed up on his forehead"},
-    {"id": "cabelo_ralo", "idade": 63, "corpo": "bare-chested, a wide soft middle",
+    {"id": "cabelo_ralo", "idade": 63,
+     "corpo": "bare-chested, a wide solid frame",
      "cabeca": "thin grey hair combed back", "calca": "navy gym shorts",
-     "marca": "a broad flat nose broken once and never set", "oculos": ""},
-    {"id": "queimado", "idade": 57, "corpo": "bare-chested, broad and sun-reddened",
-     "cabeca": "close-cropped salt-and-pepper hair", "calca": "tan work shorts",
-     "marca": "a white patch of old sun damage on his left temple",
+     "marca": "heavy level brows over a broad flat nose", "oculos": ""},
+    {"id": "queimado", "idade": 57,
+     "corpo": "bare-chested, broad-shouldered and compact",
+     "cabeca": "close-cropped salt-and-pepper hair",
+     "calca": "tan work shorts",
+     "marca": "a patch of white above his left temple",
      "oculos": "dark aviator glasses pushed up into his hair"},
+    # --- os 18 novos (2026-08-13) ------------------------------------------
+    {"id": "topete_prateado", "idade": 59,
+     "corpo": "bare-chested, broad-shouldered and flat through the middle",
+     # ⚠️ `clean-shaven` VEM NA FRENTE nas seis entradas que o trazem: a
+     # montagem escreve `%(cabeca)s and %(marca)s`, e com ele no fim saia
+     # *"...a widow's peak, clean-shaven and a shallow cleft chin"* — adjetivo
+     # e sintagma nominal ligados pelo mesmo `and`. Achado LENDO a string
+     # montada, nao pelo linter.
+     "cabeca": "clean-shaven, with thick silver hair swept back from a "
+               "widow's peak",
+     "calca": "charcoal running shorts",
+     "marca": "a shallow cleft chin", "oculos": ""},
+    {"id": "barba_curta", "idade": 62,
+     "corpo": "bare-chested, a compact square frame",
+     "cabeca": "a close-trimmed salt-and-pepper beard over short hair",
+     "calca": "faded red swim shorts",
+     "marca": "a small dark mole at the outer corner of his left eye",
+     "oculos": ""},
+    {"id": "cavanhaque", "idade": 57,
+     "corpo": "bare-chested, lean with clear definition across the shoulders",
+     "cabeca": "a neat grey goatee with short cropped hair",
+     "calca": "black athletic shorts",
+     "marca": "a small gold stud in his left ear",
+     "oculos": "thin steel-rimmed glasses"},
+    {"id": "raspado", "idade": 64,
+     "corpo": "bare-chested, solid and barrel-chested",
+     "cabeca": "clean-shaven, with a shaved head",
+     "calca": "olive board shorts",
+     "marca": "a coin-sized birthmark high on his right temple",
+     "oculos": ""},
+    {"id": "costeletas", "idade": 60,
+     "corpo": "bare-chested, sturdy with a straight back",
+     "cabeca": "short grey hair with thick sideburns",
+     "calca": "denim cut-off shorts",
+     "marca": "a deep dimple in his right cheek", "oculos": ""},
+    {"id": "rabo_preso", "idade": 56,
+     "corpo": "bare-chested, wiry and long-limbed",
+     "cabeca": "long iron-grey hair tied back at the nape",
+     "calca": "loose linen shorts",
+     "marca": "a small silver hoop in his left ear", "oculos": ""},
+    {"id": "chevron", "idade": 65,
+     "corpo": "bare-chested, heavy-set with wide shoulders",
+     "cabeca": "a full chevron moustache under short combed hair",
+     "calca": "brown work shorts",
+     "marca": "a dark beauty mark high on his left cheekbone",
+     "oculos": "square black-framed glasses"},
+    {"id": "barba_quadrada", "idade": 68,
+     "corpo": "bare-chested, tall and rangy",
+     "cabeca": "a full white beard trimmed square",
+     "calca": "khaki hiking shorts",
+     "marca": "a pronounced widow's peak at his hairline", "oculos": ""},
+    {"id": "careca_bigode", "idade": 58,
+     "corpo": "bare-chested, broad and solidly built",
+     "cabeca": "bald with a dark grey moustache",
+     "calca": "navy swim trunks",
+     "marca": "a small mole just below his right eye", "oculos": ""},
+    {"id": "franja_branca", "idade": 63,
+     "corpo": "bare-chested, square-shouldered and trim",
+     "cabeca": "clean-shaven, with short white hair combed forward",
+     "calca": "grey drawstring shorts",
+     "marca": "a small dark mole at his left temple",
+     "oculos": "rimless reading glasses low on his nose"},
+    {"id": "crew_cut", "idade": 55,
+     "corpo": "bare-chested, a solid swimmer's build",
+     "cabeca": "clean-shaven, with a thick white crew cut",
+     "calca": "red lifeguard shorts",
+     "marca": "a small mole at his left jaw",
+     "oculos": ""},
+    {"id": "entradas_altas", "idade": 66,
+     "corpo": "bare-chested, stocky with a deep chest",
+     "cabeca": "a receding hairline with the rest cropped short",
+     "calca": "olive cargo shorts",
+     "marca": "a dimple that shows in his left cheek when he talks",
+     "oculos": ""},
+    {"id": "ondulado", "idade": 61,
+     "corpo": "bare-chested, lean and upright",
+     "cabeca": "clean-shaven, with wavy iron-grey hair down to the collar",
+     "calca": "faded green swim shorts",
+     "marca": "a dark mole on his jawline below his right ear",
+     "oculos": ""},
+    {"id": "ferradura", "idade": 69,
+     "corpo": "bare-chested, heavy through the chest and shoulders",
+     "cabeca": "a bald crown with a close grey horseshoe fringe",
+     "calca": "sand-coloured work shorts",
+     "marca": "a shallow cleft chin under a trimmed white moustache",
+     "oculos": ""},
+    {"id": "bigode_ruivo", "idade": 57,
+     "corpo": "bare-chested, thickset and square",
+     "cabeca": "a rust-red moustache going grey at the edges",
+     "calca": "blue gym shorts",
+     "marca": "a small beauty mark at the corner of his mouth",
+     "oculos": ""},
+    {"id": "tempora_grisalha", "idade": 55,
+     "corpo": "bare-chested, broad-shouldered and trim",
+     "cabeca": "clean-shaven, with dark hair cropped short and grey at the "
+               "temples",
+     "calca": "navy running shorts",
+     "marca": "a deep cleft in his chin",
+     "oculos": ""},
+    {"id": "barba_de_tres_dias", "idade": 60,
+     "corpo": "bare-chested, solid with a flat stomach",
+     "cabeca": "close grey stubble over short dark hair",
+     "calca": "grey swim shorts",
+     "marca": "a silver streak in the stubble at his chin", "oculos": ""},
+    {"id": "oculos_leitura", "idade": 67,
+     "corpo": "bare-chested, tall with sloping shoulders",
+     "cabeca": "a trimmed white moustache under thin white hair combed back",
+     "calca": "olive linen shorts",
+     "marca": "a dark beauty mark on his right temple",
+     "oculos": "half-rim reading glasses"},
 ]
 
 
@@ -500,17 +733,30 @@ METODOS = [
 # ⛔ `Only she speaks` é obrigatório no TAKE — sem isso o segundo corpo dubla a
 # fala e a cena do casal do VAZAMENTO caiu exatamente por aí.
 REFS = [
+    # ⭐⭐ 2026-08-13 — DE 8 PARA 24, E TRES ANTIGAS REESCRITAS.
+    # Ordem do operador: *"aumente o pool de opcoes substancialmente, tambem
+    # dos ambientes"*. Sao DUAS mulheres em quadro por video (a REF e a
+    # amiga), entao um pool de oito e' o eixo mais estreito do motor: com 8
+    # entradas, 28 pares possiveis; com 24, 276.
+    # ⛔⛔ DISTINTIVO, NUNCA DETERIORADO — sairam a cicatriz na sobrancelha, a
+    # cicatriz na linha do cabelo e a falha entre os dentes. Marca de rosto
+    # continua OBRIGATORIA (sem ela o Veo devolve outro rosto no corte), so'
+    # que do lado do SINAL DE BELEZA: pinta, covinha, beauty mark, sarda,
+    # queixo partido, tarraxa, heterocromia.
+    # ⛔ ZERO adjetivo de etnia e ZERO oculos (LEI DO REF, excecao declarada no
+    # medidor). O eixo que separa as duas mulheres no MESMO frame e' o CABELO,
+    # e por isso nenhuma entrada repete penteado.
     {"id": "cachos_longos", "idade": 27,
      "cabeca": "long dark curls falling past the shoulders",
      "marca": "a small dark mole just under her left eye",
      "corpo": "tall with a narrow waist"},
     {"id": "liso_platinado", "idade": 24,
      "cabeca": "sleek platinum hair cut blunt at the jaw",
-     "marca": "a faint scar through one of her eyebrows",
+     "marca": "a small beauty mark just above her left eyebrow",
      "corpo": "slim and long-limbed"},
     {"id": "rabo_alto", "idade": 26,
      "cabeca": "black hair pulled into a high sleek ponytail",
-     "marca": "a small gap between her front teeth",
+     "marca": "a deep dimple in her left cheek",
      "corpo": "athletic with square shoulders"},
     {"id": "ondas_ruivas", "idade": 25,
      "cabeca": "deep auburn waves worn loose",
@@ -530,8 +776,75 @@ REFS = [
      "corpo": "strong-shouldered and lean"},
     {"id": "loiro_longo", "idade": 22,
      "cabeca": "long honey-blonde hair, straight and heavy",
-     "marca": "a thin scar at her hairline",
+     "marca": "a light spray of freckles across her nose and cheekbones",
      "corpo": "long-legged and slight"},
+    # --- as 16 novas (2026-08-13) ------------------------------------------
+    {"id": "tranca_lateral", "idade": 24,
+     "cabeca": "a long single braid falling over one shoulder",
+     "marca": "a small beauty mark above the right corner of her mouth",
+     "corpo": "slim with long legs"},
+    {"id": "coque_alto", "idade": 26,
+     "cabeca": "dark hair gathered into a high glossy bun",
+     "marca": "a light dusting of freckles across her nose",
+     "corpo": "athletic with a narrow waist"},
+    {"id": "franja_reta", "idade": 23,
+     "cabeca": "straight black hair with a blunt fringe at the brows",
+     "marca": "a deep dimple in her right cheek",
+     "corpo": "petite and slim"},
+    {"id": "cachos_curtos", "idade": 27,
+     "cabeca": "short springy curls pushed back from her face",
+     "marca": "a tiny gold stud in her left nostril",
+     "corpo": "curved with a small waist"},
+    {"id": "mel_ondulado", "idade": 25,
+     "cabeca": "honey-brown waves falling to the middle of her back",
+     "marca": "a small dark mole under her right eye",
+     "corpo": "long-limbed and slim"},
+    {"id": "loiro_bob", "idade": 22,
+     "cabeca": "a sharp platinum bob cut level at the jaw",
+     "marca": "a fine spray of freckles high on both cheeks",
+     "corpo": "slight and narrow-framed"},
+    {"id": "trancas_longas", "idade": 28,
+     "cabeca": "waist-length braids pulled over one shoulder",
+     "marca": "a small beauty mark at her left temple",
+     "corpo": "tall and softly curved"},
+    {"id": "ruivo_liso", "idade": 24,
+     "cabeca": "straight copper-red hair parted in the middle",
+     "marca": "freckles scattered across her nose and cheekbones",
+     "corpo": "slim with square shoulders"},
+    {"id": "preto_longo", "idade": 29,
+     "cabeca": "long jet-black hair worn loose and heavy",
+     "marca": "a fine dusting of freckles over her nose and a shallow cleft "
+              "in her chin",
+     "corpo": "tall with a narrow waist"},
+    {"id": "meio_preso", "idade": 26,
+     "cabeca": "chestnut hair half pulled up, the rest loose past her "
+               "shoulders",
+     "marca": "one green eye and one hazel eye",
+     "corpo": "curved and long-legged"},
+    {"id": "pixie", "idade": 23,
+     "cabeca": "a cropped dark pixie cut",
+     "marca": "a tiny mole at the outer corner of her right eye",
+     "corpo": "petite with a narrow frame"},
+    {"id": "ondas_castanhas", "idade": 25,
+     "cabeca": "loose chestnut waves parted deep on one side",
+     "marca": "a light spray of freckles over her nose",
+     "corpo": "slim with soft curves"},
+    {"id": "rabo_baixo", "idade": 28,
+     "cabeca": "dark hair pulled into a low sleek ponytail",
+     "marca": "a beauty mark high on her right cheekbone",
+     "corpo": "athletic and long-limbed"},
+    {"id": "loiro_escuro", "idade": 24,
+     "cabeca": "dark blonde hair in loose beach waves",
+     "marca": "a small mole on her jaw below her left ear",
+     "corpo": "tall and slender"},
+    {"id": "castanho_curto", "idade": 22,
+     "cabeca": "a chin-length chestnut cut tucked behind one ear",
+     "marca": "freckles across the bridge of her nose",
+     "corpo": "petite and trim"},
+    {"id": "ondas_pretas", "idade": 29,
+     "cabeca": "long black waves with a deep side part",
+     "marca": "a tiny silver stud in her right nostril",
+     "corpo": "full-figured with a small waist"},
 ]
 
 # ⚠️ A AMIGA é sorteada do mesmo pool, mas NUNCA a mesma entrada — duas

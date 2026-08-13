@@ -551,7 +551,10 @@ NARRADORAS = [
      "cabelo": "a bleached-platinum bob cut sharp at the jaw",
      "oculos": "",
      "porte": "a compact fitness figure, a full bust, a hard flat stomach, a narrow waist and firm glutes",
-     "rosto": "a faint scar through her right eyebrow and a straight nose",
+     # ⚠️ 2026-08-13: nascia com `a faint scar through her right eyebrow`. Saiu
+     # pela regra do PLACA 16 (*"esses caras tao parecendo mendigo"*, ordem do
+     # operador) aplicada a ela: a ancora e' DISTINTIVA, nunca AVARIA.
+     "rosto": "a small dark mole above her right eyebrow and a straight nose",
      "roupa": "a black cropped tee and high-waisted white shorts"},
     {"id": "volume_solto", "idade": 29,
      "cabelo": "thick hair worn big and loose, standing out wide around her "
@@ -608,8 +611,9 @@ NARRADORAS = [
      "cabelo": "hair pinned back on one side and left down on the other",
      "oculos": "tortoiseshell sunglasses hooked into the front of her top",
      "porte": "a petite hard-trained figure, a full bust, a flat stomach and firm round glutes",
-     "rosto": "a tiny freckle on her left eyelid and a faint pale scar on her "
-              "left cheekbone",
+     # ⚠️ 2026-08-13: idem — saiu `a faint pale scar on her left cheekbone`.
+     "rosto": "a tiny freckle on her left eyelid and a deep dimple in her "
+              "left cheek",
      "roupa": "a white cropped tee and high-waisted jeans"},
     {"id": "ondas_soltas", "idade": 29,
      "cabelo": "long hair worn in loose waves pushed back off her face",
@@ -624,6 +628,107 @@ NARRADORAS = [
      "porte": "a full hourglass gym figure, a generous bust, a flat trained stomach, wide hips and firm glutes",
      "rosto": "smooth-skinned, with a deep dimple that only shows on the left",
      "roupa": "a sage-green scoop top and dark jeans"},
+
+    # ======================================================================
+    # ⭐⭐ AS DOZE NOVAS — 2026-08-13, pool de 14 para 26
+    # ======================================================================
+    # Ordem do operador: *"melhore a aparencia e shape desses homens"* /
+    # *"aumente o pool de opcoes substancialmente, tambem dos ambientes"*.
+    # ⛔⛔ ZERO ETNIA, IGUAL AS QUATORZE DE CIMA (EX10) — e isso inclui o que
+    # entra POR DENTRO do cabelo, da pele e do olho. Nenhuma das doze escreve
+    # `blonde`, `auburn`, `copper-red`, `afro`, `box braids`, `twist-out`,
+    # `blue eyes`, `green eyes`, `pale skin` ou `pale forearms`: sao os tokens
+    # que o `_etnia_no_pool` acusa, e num pool unico uma entrada que carrega
+    # etnia deixa de servir as duas paginas e briga com a injecao.
+    # ⛔ OCULOS DE SOL, NUNCA DE LEITURA — leitura envelhece e briga de frente
+    # com a lei da REF (EX9, faixa 28-34). Quatro das doze trazem oculos, o que
+    # poe o eixo em 8/26 (31%).
+    # ⚠️ A IDADE MINIMA CONTINUA 28 DE PROPOSITO: o `_contrato_dos_pools` mede
+    # `max(HOMENS_SEM_ROSTO) - min(NARRADORAS)` contra o `TETO_DIF_IDADE` (30) e
+    # o homem mais velho do outro pool tem 58. Uma narradora de 27 estouraria o
+    # teto e viraria composicao de intimidade.
+    # ⛔ Zero `sexy`/`curvy`/`beautiful` (BANIDOS_DESEJO): a atratividade entra
+    # por descricao fisica concreta, como nas quatorze de cima.
+    {"id": "trancas_duplas", "idade": 30,
+     "cabelo": "hair worn in two thick braids falling in front of her shoulders",
+     "oculos": "",
+     "porte": "a strong athletic figure, a full bust, a flat trained stomach, a small waist, firm glutes and long lean legs",
+     "rosto": "a wide even smile and a small dark mole on her left jaw",
+     "roupa": "a sand-colored ribbed tank top and denim shorts"},
+    {"id": "coque_alto_liso", "idade": 28,
+     "cabelo": "hair scraped back into a high sleek bun",
+     "oculos": "square black sunglasses pushed up on her head",
+     "porte": "a tall gym-built figure, a full high bust, sharply defined abs, a narrow waist and firm glutes",
+     "rosto": "sharp cheekbones and a small gold hoop in her right ear",
+     "roupa": "an olive cropped tank top and white shorts"},
+    {"id": "cabelo_curto_lateral", "idade": 31,
+     "cabelo": "hair cut short and swept hard into a deep side part",
+     "oculos": "",
+     "porte": "a compact strong figure, a full bust, a hard flat stomach, wide firm hips and round glutes",
+     "rosto": "a broad open smile and a beauty mark below her right eye",
+     "roupa": "a coral wrap top and dark denim shorts"},
+    {"id": "medio_ondulado", "idade": 29,
+     "cabelo": "shoulder-length hair worn in soft loose waves",
+     "oculos": "",
+     "porte": "a lean fitness figure, a full bust, visible abs, a cinched waist and firm high glutes",
+     "rosto": "smooth-skinned, with a deep dimple in her right cheek",
+     "roupa": "a stone-gray cropped tee and khaki shorts"},
+    {"id": "rabo_baixo", "idade": 33,
+     "cabelo": "hair gathered into a low ponytail at the nape",
+     "oculos": "",
+     "porte": "a strong hourglass gym figure, a generous bust, a toned flat stomach, wide hips and firm glutes",
+     "rosto": "a full mouth and a small silver stud in her left nostril",
+     "roupa": "a navy ribbed tank top and light denim shorts"},
+    {"id": "trancado_coroa", "idade": 32,
+     "cabelo": "hair twisted up and pinned in a smooth crown around her head",
+     "oculos": "",
+     "porte": "a tall trained figure, a full bust, a flat sculpted stomach, a narrow waist and firm round glutes",
+     "rosto": "skin tanned from the sun and a small dark mole at her right temple",
+     "roupa": "a burnt-orange cropped knit top and white shorts"},
+    {"id": "franja_reta", "idade": 28,
+     "cabelo": "long hair with a blunt straight fringe cut just above her brows",
+     "oculos": "",
+     "porte": "a hard-trained figure, a full bust, a flat stomach, a narrow waist and firm glutes",
+     "rosto": "large dark eyes and a deep dimple in her chin",
+     "roupa": "a charcoal cropped tank top and high-waisted denim shorts"},
+    {"id": "cachos_curtos", "idade": 34,
+     "cabelo": "short hair worn in tight springy curls close to her head",
+     # ⚠️ 2026-08-13: esta entrada nasceu com oculos e eles sairam DEPOIS de
+     # medir — com eles o eixo ia a 9/26 (34,6%) e a banda pedida e' 25-30%.
+     # Sem eles fica 8/26 (30,8%). O numero e' o que decide, nao o gosto.
+     "oculos": "",
+     "porte": "a strongly built athletic figure with broad shoulders, a full bust, a toned midsection, firm glutes and powerful legs",
+     "rosto": "high cheekbones and a small dark birthmark at her left temple",
+     "roupa": "a teal scoop tank top and denim shorts"},
+    {"id": "longo_repartido", "idade": 30,
+     "cabelo": "very long hair parted in the middle and left loose down her back",
+     "oculos": "",
+     "porte": "a long-limbed gym figure, a full bust, visible abs, a small waist and firm lifted glutes",
+     "rosto": "freckles scattered across her nose and cheekbones and a beauty "
+              "mark on her left cheek",
+     "roupa": "a soft-white ribbed tank top and stone shorts"},
+    {"id": "meio_coque", "idade": 31,
+     "cabelo": "hair pulled into a half-up bun with the rest falling loose",
+     "oculos": "tortoiseshell sunglasses resting on the crown of her head",
+     "porte": "a petite gym-fit hourglass figure, a full bust, a flat toned stomach and firm round glutes",
+     "rosto": "a rounded jaw and a small dark mole at the corner of her mouth",
+     "roupa": "a brick-red ribbed crop top and light denim shorts"},
+    {"id": "liso_curto", "idade": 32,
+     "cabelo": "hair cut blunt and straight just below her ears",
+     "oculos": "",
+     "porte": "a tall lean fitness build, a full bust, a lean defined waist, firm glutes and long strong legs",
+     "rosto": "a strong straight brow and a beauty mark on her right jaw",
+     "roupa": "a slate-blue cropped tee and dark jeans"},
+    {"id": "volume_lateral", "idade": 29,
+     "cabelo": "thick hair swept over to one side and falling past her shoulder",
+     # ⛔ 2026-08-13: esta entrada nasceu com `a long neck` e `the neck of her
+     # top`, e a EX7 acusou 304 ERRO em 800 sorteios — `neck` e' proibido no
+     # motor inteiro porque a peca do geoduck e' o `siphon` e `neck` puxa
+     # pescoco de ave. Achado MEDINDO, nao lendo.
+     "oculos": "mirrored wraparound sunglasses hooked at her collar",
+     "porte": "a sculpted gym body, a generous bust, a hard flat stomach, a tiny waist, firm high glutes and long lean legs",
+     "rosto": "a fine jawline and a small beauty mark high on her right cheekbone",
+     "roupa": "a plum ribbed tank top and khaki shorts"},
 ]
 
 # ⭐ EX5 — O HOMEM DA CENA 1 E DA CENA 3, CORTADO NO PEITO, SEM ROSTO EM QUADRO.
