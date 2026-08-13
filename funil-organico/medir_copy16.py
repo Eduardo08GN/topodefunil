@@ -132,6 +132,13 @@ ROTULO = {
 # ⛔ So' entra aqui trava desligada TAMBEM NO MOTOR, com o motivo escrito la'.
 # Desligar so' aqui seria maquiar o relatorio.
 DESLIGADAS = {
+    ("banho16_v2", "CT7"):
+        "ordem direta do operador (2026-08-13), depois de eu mostrar que o CT7 e "
+        "a BA6 reprovavam: *\"volte com o hard colado\"*. E' a frase da fonte, "
+        "verbatim menos o apelido. ⚠️ COLIDE com o D8 dele (registro leve), que e' "
+        "a razao de existir da BA6 — a ordem nova venceu por ser mais recente. O "
+        "preco esta' medido: ~95% de recusa no COLO 16. ⭐ A excecao e' de UMA "
+        "acao (`rasga_sache`), nao do motor: as outras doze seguem cobradas.",
     ("banho16_v2", "CT1"):
         "os SETE videos da fonte terminam no follow, depois do CTA, e o "
         "operador aprovou a ordem mecanismo -> CTA -> follow lendo a copy.",
