@@ -165,8 +165,9 @@ BANHEIROS = [
      "audio": "a tap running into a deep tub"},
     {"id": "harlem", "regiao": "Harlem",
      "sups": ("borda_banheira", "prateleira_arame"),
-     "cen": "a narrow prewar bathroom with white subway tile to the ceiling "
-            "and a chrome spout running into a cast iron tub",
+     "cen": "a restored prewar bathroom with gleaming white subway tile to "
+            "the ceiling and a chrome spout running into a clean cast "
+            "iron tub",
      "agua": "the spout running steadily into the tub",
      "luz": "Flat overhead light on glossy tile.",
      "audio": "a tub filling, water on enamel"},
@@ -193,10 +194,10 @@ BANHEIROS = [
      "audio": "a shower running on tile"},
     {"id": "apalache", "regiao": "Apalaches",
      "sups": ("borda_banheira", "banquinho"),
-     "cen": "a plain bathroom with painted board walls and an old enamel tub "
-            "filling from a worn chrome tap",
+     "cen": "a well-kept bathroom with fresh white panelled walls and a "
+            "clean cast iron tub filling from a polished chrome tap",
      "agua": "the tap pouring hard into the filling tub",
-     "luz": "Dim warm light, steam on the boards.",
+     "luz": "Warm clean light, steam on the fresh paint.",
      "audio": "a bathtub filling, water hitting water"},
     {"id": "meio_oeste", "regiao": "Meio-Oeste",
      "sups": ("borda_banheira", "tampo_madeira", "bancada_pia"),
@@ -228,24 +229,24 @@ BANHEIROS = [
      "audio": "a heavy rain shower on stone"},
     {"id": "creole", "regiao": "Creole",
      "sups": ("borda_banheira", "banquinho", "bancada_pia"),
-     "cen": "an old high-ceilinged bathroom with patterned cement floor tile "
-            "and a deep tub filling from a brass tap",
+     "cen": "a high-ceilinged bathroom with polished patterned cement floor "
+            "tile and a deep clean tub filling from a brass tap",
      "agua": "the brass tap running into the deep tub",
      "luz": "Warm slatted light through wooden shutters.",
      "audio": "a tap running into a deep tub"},
     {"id": "gullah", "regiao": "Gullah",
      "sups": ("borda_banheira", "banquinho"),
-     "cen": "a simple whitewashed board bathroom with a plain white tub "
-            "filling and a screen window open to green light",
+     "cen": "a bright airy bathroom with crisp white panelling and a clean "
+            "white tub filling, a shuttered window open to green light",
      "agua": "the tap running into the shallow water",
      "luz": "Soft green daylight through the screen.",
      "audio": "a bathtub filling, water hitting water"},
     {"id": "grandes_lagos", "regiao": "Grandes Lagos",
      "sups": ("prateleira_arame", "borda_banheira", "bancada_pia"),
-     "cen": "a basement bathroom with plain white wall tile, a low ceiling "
-            "and a chrome shower head running over a steel tub",
+     "cen": "a tidy lower-level bathroom with spotless white wall tile and a "
+            "chrome shower head running over a clean enamel tub",
      "agua": "the shower running steadily onto the enamel",
-     "luz": "Flat overhead bulb light, damp air.",
+     "luz": "Even warm ceiling light, clean damp air.",
      "audio": "a shower running on enamel"},
     {"id": "italo_americana", "regiao": "Italo-americana",
      "sups": ("bancada_pia", "prateleira_arame"),
@@ -299,7 +300,7 @@ FAMILIAS_BANHEIRO = sorted({b["id"] for b in BANHEIROS})
 # entrega maos em seis de sete videos e' o botao que mente.
 ACOES = [
     # ---- MAOS (o padrao do angulo: 6 dos 7 videos) ----------------------
-    {"id": "maos_na_borda", "curto": "as maos pousadas ao lado dos props",
+    {"id": "maos_na_borda", "vasos": ("jar",), "curto": "as maos pousadas ao lado dos props",
      "reel": "v1", "pessoa": False,
      "t1_img": "A pair of %(maos)s enters from the bottom of the frame and "
                "rests flat on the edge beside the jar, palms down, lifting "
@@ -310,7 +311,7 @@ ACOES = [
                "inside it.",
      "t2_take": "The powder stays where it is on the cream and the hands only "
                 "tilt the jar a little further towards the lens."},
-    {"id": "rasga_sache", "curto": "as maos rasgando o sache",
+    {"id": "rasga_sache", "vasos": ("jar", "glass"), "curto": "as maos rasgando o sache",
      "reel": "v2", "pessoa": False, "ct7_liberado": True,
      "t1_img": "A pair of %(maos)s holds a small paper gelatin sachet up "
                "beside the jar and is tearing the top strip off it.",
@@ -341,7 +342,7 @@ ACOES = [
               # registro leve, e a BA6 segue cobrando todas elas.
               "The gelatin trick makes your Johnson big and as hard as a rock. "
               "Comment gelatin, and it lands in your inbox. Follow me.")},
-    {"id": "abre_a_caixa", "curto": "as duas maos abrindo a caixa",
+    {"id": "abre_a_caixa", "vasos": ("jar",), "curto": "as duas maos abrindo a caixa",
      "reel": "v1 / v3", "pessoa": False,
      "t1_img": "A pair of %(maos)s holds a small cardboard gelatin carton "
                "open at the top and is drawing a paper sachet up out of it.",
@@ -358,7 +359,7 @@ ACOES = [
               "This shower hack clears the blocked vessels feeding your "
               "manhood. Comment gelatin, and it lands in your inbox. Follow me "
               "so I can reach you.")},
-    {"id": "toca_a_caixa", "curto": "a mao tocando a caixa sob o chuveiro",
+    {"id": "toca_a_caixa", "vasos": ("jar",), "curto": "a mao tocando a caixa sob o chuveiro",
      "reel": "v4 / v6", "pessoa": False,
      "t1_img": "One of %(maos)s reaches in from the side and rests two "
                "fingertips on the gelatin carton, water running over the back "
@@ -368,7 +369,7 @@ ACOES = [
                "finger pressed into the white cream inside it.",
      "t2_take": "The finger stays pressed into the cream and the hands hold "
                 "the jar steady."},
-    {"id": "segura_o_pote", "curto": "as duas maos segurando o pote aberto",
+    {"id": "segura_o_pote", "vasos": ("jar",), "curto": "as duas maos segurando o pote aberto",
      "reel": "v7", "pessoa": False,
      "t1_img": "A pair of %(maos)s holds the open jar up in front of the "
                "running water with the lid resting on the surface beside it.",
@@ -377,7 +378,7 @@ ACOES = [
                "finger lifts a thick white string of the cream up out of it.",
      "t2_take": "The string of cream keeps stretching up off the finger and "
                 "does not break."},
-    {"id": "dedo_erguido", "curto": "o dedo erguido com o creme",
+    {"id": "dedo_erguido", "vasos": ("jar",), "curto": "o dedo erguido com o creme",
      "reel": "v5", "pessoa": False,
      "t1_img": "A pair of %(maos)s rests on the surface on either side of the "
                "jar, palms down, lifting nothing.",
@@ -398,7 +399,7 @@ ACOES = [
               "This morning trick flushes what is choking your manhood. "
               "Comment gelatin, and it lands in your inbox. Follow me so I can "
               "reach you.")},
-    {"id": "colher_por_cima", "curto": "a colher entrando por cima",
+    {"id": "colher_por_cima", "vasos": ("jar",), "curto": "a colher entrando por cima",
      "reel": "v6", "pessoa": False,
      "t1_img": "One of %(maos)s reaches in from the side and stands the spoon "
                "upright against the jar, then lets go.",
@@ -407,7 +408,7 @@ ACOES = [
                "above, the honey on it about to touch the white powder.",
      "t2_take": "The spoon keeps lowering towards the powder and the honey on "
                 "it does not drip off."},
-    {"id": "po_no_pote", "curto": "o po caindo dentro do pote",
+    {"id": "po_no_pote", "vasos": ("jar",), "curto": "o po caindo dentro do pote",
      "reel": "v1", "pessoa": False,
      "t1_img": "A pair of %(maos)s holds the closed jar up beside the gelatin "
                "carton, turning the label towards the lens.",
@@ -418,7 +419,7 @@ ACOES = [
                "cream inside it.",
      "t2_take": "The powder keeps falling into the jar and the heap keeps "
                 "growing."},
-    {"id": "mistura_espuma", "curto": "a mistura espumando no pote",
+    {"id": "mistura_espuma", "vasos": ("jar",), "curto": "a mistura espumando no pote",
      "reel": "v1", "pessoa": False,
      "t1_img": "A pair of %(maos)s rests on the surface beside the jar with "
                "the spoon lying between them, touching nothing.",
@@ -427,7 +428,7 @@ ACOES = [
                "pale mixture covered in fine white bubbles rising to the rim.",
      "t2_take": "The bubbles keep rising and spreading across the surface of "
                 "the mixture."},
-    {"id": "colher_no_copo", "curto": "a colher mexendo o copo",
+    {"id": "colher_no_copo", "vasos": ("glass",), "curto": "a colher mexendo o copo",
      "reel": "v2", "pessoa": False,
      "t1_img": "One of %(maos)s holds the spoon standing upright in the tall "
                "glass of amber liquid, not yet turning it.",
@@ -441,7 +442,7 @@ ACOES = [
     # ⚠️ So' UM dos sete videos tem gente (v3, 101k views). As outras duas
     # entradas sao NOSSAS, construidas sobre o mesmo gesto: sao precisas para o
     # modo ter mais de uma opcao — eixo com uma entrada so' e' eixo morto.
-    {"id": "creme_na_nuca", "curto": "o creme na propria nuca",
+    {"id": "creme_na_nuca", "vasos": ("jar",), "curto": "o creme na propria nuca",
      "reel": "v3", "pessoa": True,
      "t1_img": "A %(idade)d-year-old %(etnia)s man stands with his back half "
                "to the camera, %(cabeca)s, %(marca)s, wearing %(traje)s, "
@@ -455,7 +456,7 @@ ACOES = [
                "powder inside it.",
      "t2_take": "The honey keeps running off the spoon into the jar and he "
                 "does not turn around."},
-    {"id": "creme_no_ombro", "curto": "o creme no proprio ombro (nossa)",
+    {"id": "creme_no_ombro", "vasos": ("jar",), "curto": "o creme no proprio ombro (nossa)",
      "reel": "nossa, sobre o v3", "pessoa": True,
      "t1_img": "A %(idade)d-year-old %(etnia)s man stands with his back to the "
                "camera, %(cabeca)s, %(marca)s, wearing %(traje)s, working white "
@@ -468,7 +469,7 @@ ACOES = [
                "cream up out of it.",
      "t2_take": "The string of cream keeps stretching up off his finger and "
                 "does not break."},
-    {"id": "espelho_embacado", "curto": "de costas no espelho embacado (nossa)",
+    {"id": "espelho_embacado", "vasos": ("jar", "glass"), "curto": "de costas no espelho embacado (nossa)",
      "reel": "nossa, sobre o v3", "pessoa": True,
      "t1_img": "A %(idade)d-year-old %(etnia)s man stands with his back to the "
                "camera facing a fogged mirror, %(cabeca)s, %(marca)s, wearing "
@@ -578,7 +579,16 @@ ROTULOS = [
 # e' o que a fonte faz em 6 dos 7. A congruencia foi dispensada por escrito.
 # ⚠️ O que muda e' o RECIPIENTE e o gesto final; o resto do quadro e' o mesmo.
 RECEITAS = [
-    {"id": "bebida",
+    # ⛔⛔ `vaso_tipo` ENTROU EM 2026-08-13 E CONSERTA UM BURACO QUE EU DEIXEI
+    # ONTEM. As treze ACOES nomeiam o vasilhame no proprio texto ("the open
+    # jar", "the tall glass"), e a receita era sorteada A' PARTE: dez gestos
+    # falam de POTE e o `bebida` poe um COPO na bancada, entao um em cada tres
+    # videos mandava a mao mexer num pote que o quadro nao tinha. O
+    # `lint_take_vs_image` nao pegava porque o texto do gesto entra na IMAGE
+    # junto — os dois blocos concordavam entre si e discordavam da cena.
+    # ⭐ Agora a receita declara o TIPO de vasilhame e o gesto declara quais
+    # aceita; o sorteio so' cruza os compativeis.
+    {"id": "bebida", "vaso_tipo": "glass",
      "vaso": "a tall clear glass filled with amber liquid",
      "vaso_curto": "copo de liquido ambar",
      "final": "the powder sinking through the amber liquid in slow white "
@@ -590,7 +600,7 @@ RECEITAS = [
      # quem move e' a acao.
      "final2": "The amber liquid keeps going cloudy from the bottom up.",
      "curto": "bebida"},
-    {"id": "pomada",
+    {"id": "pomada", "vaso_tipo": "jar",
      "vaso": "an open blue jar of mentholated chest rub, the white cream "
              "smooth and untouched inside",
      "vaso_curto": "pote azul de pomada",
@@ -598,6 +608,30 @@ RECEITAS = [
               "the rim of the jar",
      "final2": "The white mixture keeps swelling slowly where it sits.",
      "curto": "pomada"},
+    # ⭐⭐ AS DUAS NOVAS (2026-08-13, ordem do operador: *"inclua baking soda,
+    # aloe vera na pool de recipe prep"*).
+    # ⛔ Cada uma entra numa das DUAS familias de vasilhame que os gestos ja'
+    # conhecem — o bicarbonato no COPO, a babosa no POTE. Inventar um terceiro
+    # vasilhame (uma tigela, por exemplo) criaria uma receita que gesto nenhum
+    # sabe manusear: treze acoes falam de `jar` ou `glass`, e nenhuma de `bowl`.
+    # ⚠️ E NENHUMA E' NOMEADA NA FALA. Os dois sao INGREDIENTE, e o CT5 vale:
+    # eles existem no quadro, nunca na boca. E' o mesmo que a fonte faz — os
+    # sete videos mostram a caixa laranja e nunca a citam.
+    {"id": "bicarbonato", "vaso_tipo": "glass",
+     "vaso": "a tall clear glass of water going milky, an orange and yellow "
+             "cardboard box of baking soda standing open beside it",
+     "vaso_curto": "copo com bicarbonato",
+     "final": "the white powder clouding down through the water in slow "
+              "streaks",
+     "final2": "The water keeps clouding from the bottom up.",
+     "curto": "bicarbonato"},
+    {"id": "babosa", "vaso_tipo": "jar",
+     "vaso": "an open glass jar of clear aloe vera gel, a cut aloe leaf lying "
+             "beside it with the gel showing at the cut",
+     "vaso_curto": "pote de babosa",
+     "final": "the clear gel folding over on itself where it was disturbed",
+     "final2": "The clear gel keeps settling slowly back into itself.",
+     "curto": "babosa"},
 ]
 
 # ⛔ O SEGUNDO INGREDIENTE, sempre visivel e nunca dito. A caixa de gelatina
@@ -618,13 +652,26 @@ COLHER = "a metal spoon holding a pool of thick amber honey"
 # ⚠️ MEDIDO na fonte: o video campeao tem uma mao visivelmente MAIS JOVEM que a
 # idade falada, e mesmo assim foi o melhor. Entao isto e' cuidado, nao lei — e
 # esta' escrito aqui para ninguem transformar em trava sem medir.
+# \u26d4\u26d4 POOL REESCRITO (2026-08-13). Ordem do operador: *"nao quero mao feia
+# parecendo nao-saudavel"*.
+# \u26a0\ufe0f O QUE ESTAVA ERRADO, e era o pool inteiro: `heavily sun-spotted`,
+# `weathered`, `thin skin`, `dark age spots`, `loose skin over the tendons`,
+# `bony`, `pale scarred`. Seis de seis descreviam DANO. Num angulo em que a mao
+# e' a UNICA parte do narrador em quadro, mao castigada e' o rosto do video.
+# \u2b50 E' a mesma doutrina do PLACA 16, aplicada onde ela pesa mais: DISTINTIVO,
+# NUNCA DETERIORADO. A mao continua sendo de um homem de 60 e poucos \u2014 o que
+# sai e' a avaria, nao a idade: pele cuidada, unhas curtas e limpas, veias
+# discretas em vez de saltadas.
+# \u26d4 E NENHUMA PALAVRA DE APROVACAO (`beautiful`, `elegant`): elogio no prompt
+# puxa para mao de banco de imagem, e mao de modelo de 25 num homem de 63 e' a
+# incoerencia que o espectador pega antes de qualquer outra.
 MAOS = [
-    "heavily sun-spotted hands with prominent veins and thin skin",
-    "broad weathered hands with thick knuckles and raised veins",
-    "lean hands with dark age spots across the backs",
-    "large hands with loose skin over the tendons and blunt clean nails",
-    "wide hands with heavy veins and a plain gold wedding band",
-    "bony hands with prominent knuckles and pale scarred skin",
+    "clean broad hands with short trimmed nails and smooth skin",
+    "steady hands with light freckling and neatly kept nails",
+    "large well-kept hands with faint veins and clean square nails",
+    "solid hands with a plain gold wedding band and smooth even skin",
+    "wide clean hands with short nails and a light tan across the backs",
+    "firm hands with clear skin and neatly trimmed nails",
 ]
 
 # ⭐ O HOMEM — so' existe com o MODO PESSOA ligado. Espelhado do unico video da
@@ -996,8 +1043,6 @@ def sortear(pagina, rng, led, travas=None):
               else _fresco(MEDIDAS, hist.get("medida", [])[-3:], rng))
     rotulo = (_por_id(ROTULOS, travas["rotulo"]) if travas.get("rotulo")
               else _fresco(ROTULOS, hist.get("rotulo", [])[-2:], rng))
-    receita = (_por_id(RECEITAS, travas["receita"]) if travas.get("receita")
-               else _fresco(RECEITAS, hist.get("receita", [])[-1:], rng))
 
     # ⭐ MODO PESSOA — nasce DESLIGADO (D4). O cadeado da tela vence o modo,
     # como em todos os motores: homem travado no painel e' mais especifico.
@@ -1011,6 +1056,13 @@ def sortear(pagina, rng, led, travas=None):
     _pool_ac = [a for a in ACOES if bool(a["pessoa"]) == pessoa]
     acao = (_por_id(ACOES, travas["acao"]) if travas.get("acao")
             else _fresco(_pool_ac or ACOES, hist.get("acao", [])[-4:], rng))
+
+    # ⛔ SO' AS RECEITAS QUE O GESTO SABE MANUSEAR. O cadeado da tela continua
+    # vencendo: receita travada e' escolha explicita do operador, e ele ve' o
+    # resultado antes de gerar.
+    _rec = [r for r in RECEITAS if r["vaso_tipo"] in acao["vasos"]]
+    receita = (_por_id(RECEITAS, travas["receita"]) if travas.get("receita")
+               else _fresco(_rec or RECEITAS, hist.get("receita", [])[-1:], rng))
     homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
              else _fresco(HOMENS, hist.get("homem", [])[-3:], rng))
 
@@ -1563,6 +1615,25 @@ def autoteste(n=400):
         fn(spec_t, blocos_t, p)
         return bool(p)
 
+    # ⛔⛔ O VASILHAME DO GESTO TEM DE CASAR COM O DA RECEITA. Sem este
+    # controle o defeito volta calado: a IMAGE e o TAKE concordam entre si (o
+    # texto do gesto entra nos dois) e discordam da CENA, entao o
+    # `lint_take_vs_image` passa e o video sai com a mao mexendo num pote que a
+    # bancada nao tem.
+    for _i in range(300):
+        _s = sortear(pags[_i % len(pags)], random.Random(400 + _i), {}, {})
+        if _s["receita"]["vaso_tipo"] not in _s["acao"]["vasos"]:
+            falhas.append("VASO: gesto %r (%s) sorteado com a receita %r (%s)"
+                          % (_s["acao"]["id"], "/".join(_s["acao"]["vasos"]),
+                             _s["receita"]["id"], _s["receita"]["vaso_tipo"]))
+            break
+    # ⚠️ e toda receita precisa de pelo menos um gesto que a saiba manusear —
+    # receita inalcancavel e' entrada morta que o painel conta como viva.
+    for _r in RECEITAS:
+        if not [a for a in ACOES if _r["vaso_tipo"] in a["vasos"]]:
+            falhas.append("VASO: a receita %r (%s) nao tem gesto compativel"
+                          % (_r["id"], _r["vaso_tipo"]))
+
     # ⛔⛔ OS CONTROLES DO EIXO NOVO (V2). Lente que nunca acusou e' lente que
     # ninguem sabe se funciona — e a BA-ACAO nasceu hoje.
     import collections as _c
@@ -1614,9 +1685,16 @@ def autoteste(n=400):
                          "The gelatin trick feeds blood back to your pecker."]),
          b0, True),
         ("BA5 limpo", _ba5_apelido, s0, b0, False),
+        # ⚠️ O `acao` E' FIXADO NUMA ENTRADA SEM `ct7_liberado`, e isso nao e'
+        # detalhe: desde 2026-08-13 a BA6 abre mao do par orgao+ereccao NA
+        # ACAO QUE O OPERADOR LIBEROU. Se o controle cair justo nela, a lente
+        # fica CERTA em nao acusar e o autoteste reprova o comportamento
+        # correto — foi o que aconteceu na primeira execucao depois da
+        # excecao. O controle tem de testar o caso que ainda e' proibido.
         ("BA6 orgao + ereccao na mesma sentenca", _ba6_leve,
-         dict(s0, falas=[s0["falas"][0],
-                         "It makes your Johnson hard again."]), b0, True),
+         dict(s0, acao=next(a for a in ACOES if not a.get("ct7_liberado")),
+              falas=[s0["falas"][0],
+                     "It makes your Johnson hard again."]), b0, True),
         ("BA6 limpo", _ba6_leve, s0, b0, False),
         ("BA7 follow como condicao", _ba7_follow,
          dict(s0, falas=[s0["falas"][0],
