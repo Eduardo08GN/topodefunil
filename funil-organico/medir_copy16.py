@@ -68,7 +68,7 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # operador (ver `DESLIGADAS`) — e este relatorio continua MEDINDO os
            # dois. E' o unico motor do parque que nomeia ingrediente na fala, e
            # e' justamente por isso que o numero dele tem de ficar visivel.
-           "prato16", "mel16"]
+           "prato16", "mel16", "banho16_v2"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.
@@ -132,15 +132,27 @@ ROTULO = {
 # ⛔ So' entra aqui trava desligada TAMBEM NO MOTOR, com o motivo escrito la'.
 # Desligar so' aqui seria maquiar o relatorio.
 DESLIGADAS = {
+    ("banho16_v2", "CT1"):
+        "os SETE videos da fonte terminam no follow, depois do CTA, e o "
+        "operador aprovou a ordem mecanismo -> CTA -> follow lendo a copy.",
     ("banho16", "CT1"):
         "os SETE videos da fonte terminam no follow, depois do CTA, e o "
         "operador aprovou a ordem mecanismo -> CTA -> follow lendo a copy.",
+    ("banho16_v2", "CT2"):
+        "o angulo nao abre em falha: abre num AVISO ou numa IDADE. Mesmo "
+        "desenho do ALFA 16.",
     ("banho16", "CT2"):
         "o angulo nao abre em falha: abre num AVISO ou numa IDADE. Mesmo "
         "desenho do ALFA 16.",
+    ("banho16_v2", "CT4b"):
+        "ordem do operador: so' `Johnson` e `manhood`, nunca `pecker` nem "
+        "`wiener` — que sao justamente dois dos tres do pool compartilhado.",
     ("banho16", "CT4b"):
         "ordem do operador: so' `Johnson` e `manhood`, nunca `pecker` nem "
         "`wiener` — que sao justamente dois dos tres do pool compartilhado.",
+    ("banho16_v2", "CT8"):
+        "follow liberado por ele. O que NAO caiu foi a razao do CT8: a DM sai "
+        "igual, entao o follow e' PEDIDO e nunca CONDICAO (lente BA7).",
     ("banho16", "CT8"):
         "follow liberado por ele. O que NAO caiu foi a razao do CT8: a DM sai "
         "igual, entao o follow e' PEDIDO e nunca CONDICAO (lente BA7).",
