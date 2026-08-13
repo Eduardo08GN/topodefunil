@@ -134,10 +134,23 @@ homens de **26 a 38**, nenhum acima de 60, e **cede quando a faixa não casa**
 aceso. Botão que promete 60+ e entrega 26 é pior que botão que não existe.
 Mesmo precedente do `alfa16`. Lente `GO13`, com controle negativo que planta
 exatamente esse homem de 34.
-⛔⛔ **A mulher é sempre BRANCA, sempre 24, sempre no registro de beleza do
-TRIO/DUPLA** — 12 entradas, 4 ruivas · 4 loiras · 4 morenas, cabelo **molhado**
-porque a cena é dentro d'água. Lente `GO14`, que cobra o **pool inteiro**, não
-só a entrada sorteada. ⭐ Isso **não** quebra a congruência do funil: aqui quem
+⛔⛔ **A mulher é sempre BRANCA, sempre 25** (era 24 até 2026-08-13), **sempre
+no registro de beleza do TRIO/DUPLA** — 12 entradas, 4 ruivas · 4 loiras · 4
+morenas, cabelo **molhado** porque a cena é dentro d'água. A idade é a constante
+`IDADE_MULHER`, que a lente `GO14` lê — lente e pool não podem discordar. A
+`GO14` cobra o **pool inteiro**, não só a entrada sorteada.
+⛔⛔ **E a água é sempre PISCINA CHIQUE, de obra** (ordem de 2026-08-13:
+*"nunca de plástico, ofuros, hidromassagem ou qualquer coisa do tipo"*). ⚠️ Isso
+**reverte** a ordem de 2026-08-09 (*"sempre voltado pra piscina, jacuzzi"*) —
+registrado para ninguém "consertar" de volta. Medido antes: **11 dos 15 mundos
+violavam** (seis banheiras de hidromassagem, uma piscina **inflável** de
+telhado, quatro armáveis — uma com `blue liner`). Lente `GO16`, que bane também
+`steam` e `jets`: são a jacuzzi desenhada sem a palavra.
+⛔ **E o CTA nunca marca horário** — `tonight` saiu, entrou `right now`. Ordem
+de 2026-08-13: *"nunca deve especificar horário, deve dizer que vai receber
+agora"*. Lente `GO17`. ⚠️ **A dívida é do parque**: a varredura achou `tonight`
+ou `today` em CTAs de **20 motores**, ~70 linhas — copy, alçada do operador,
+não varrida. ⭐ Isso **não** quebra a congruência do funil: aqui quem
 fala é o HOMEM, e a etnia que a página governa é a dele.
 ⛔ **E por isso o `MODO_BELA` foi DESLIGADO neste motor** — não por gosto: o
 `sc.ref_bela` entrega idades **21-33** (medido em 80 sorteios), então o botão
@@ -523,7 +536,7 @@ Inventário atual de domínios e apps:
 - **Investigar uma recusa do Veo (método):** [`funil-organico/RUNBOOK-bisseccao-moderacao.md`](funil-organico/RUNBOOK-bisseccao-moderacao.md) — bissecção com variável única. ⚠️ **Regerar 2× antes de investigar**: a política de conteúdo nocivo tem variância.
 - **Lições de produção Veo (moderação + copy):** [`funil-organico/licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) — playbook das lições pagas em campo; ler antes de gerar lote.
 - ⛔⛔ **Contrato de copy da família 16s:** [`funil-organico/CONTRATO-COPY-16S.md`](funil-organico/CONTRATO-COPY-16S.md) — **ler antes de escrever ou alterar copy de qualquer `*16_short.py`.** Sete travas em `short_comum.lint_copy16`, cobradas por `python funil-organico/medir_copy16.py --gate`. Tem também os quatro achados da revisão adversarial que **não** viraram trava, com o motivo de cada um.
-- ⛔ **Lições de construção — os erros do assistente:** [`funil-organico/licoes-de-construcao.md`](funil-organico/licoes-de-construcao.md) — **ler antes de construir ou alterar agente.** 40 modos de falha já cometidos, com o que impede cada um, e o checklist de entrega. A causa raiz é uma só: *verificar a FORMA e declarar pronto sem verificar a FUNÇÃO*. Corolário: **aceite é MEDIÇÃO, nunca RELATO** — nem meu, nem de subagente. Dois gates: `python funil-organico/medir_personagens.py --gate` (eixo físico zerado = reprovação) e `python funil-organico/medir_contexto_copy.py --gate` (frase que nomeia causa sem dizer o que ela quebra = reprovação — §17, *"tá deixando o viewer sem entender do que se trata"*).
+- ⛔ **Lições de construção — os erros do assistente:** [`funil-organico/licoes-de-construcao.md`](funil-organico/licoes-de-construcao.md) — **ler antes de construir ou alterar agente.** 41 modos de falha já cometidos, com o que impede cada um, e o checklist de entrega. ⭐ §41 é a mais recente e a mais cara de ver: *o toggle entregava MENOS do que o estado desligado* — o `MODO FORTE` do GOOD 16 tinha idade certa, lente própria e controle negativo, e mesmo assim 232 de 400 corpos saíam sem uma palavra de músculo (contra 0 de 400 com o botão desligado). **Quando um botão não entrega, meça o estado DESLIGADO também.** A causa raiz é uma só: *verificar a FORMA e declarar pronto sem verificar a FUNÇÃO*. Corolário: **aceite é MEDIÇÃO, nunca RELATO** — nem meu, nem de subagente. Dois gates: `python funil-organico/medir_personagens.py --gate` (eixo físico zerado = reprovação) e `python funil-organico/medir_contexto_copy.py --gate` (frase que nomeia causa sem dizer o que ela quebra = reprovação — §17, *"tá deixando o viewer sem entender do que se trata"*).
 - **Mapa visual da Tanisha (base do CONSULTORIO):** [`concorrentes/tanisha-mapa-visual.md`](concorrentes/tanisha-mapa-visual.md).
 - `funil-organico/` — doutrina de copy, criativos, arquitetura do funil, runbooks.
 - Bridge pages (código): repo `Eduardo08GN/projetosweb`, pasta `/bridge-pages/bp1`.

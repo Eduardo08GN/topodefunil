@@ -1567,6 +1567,63 @@ modo. Ficou uma sonda que varre o PT do pool leve atrás de `duro`, `rígido`,
 
 ---
 
+## 41. ⛔⛔⛔ O TOGGLE ENTREGAVA MENOS DO QUE O ESTADO DESLIGADO — e a lente olhava só a outra metade
+
+**O caso.** O operador, 2026-08-13: *"o good 16s não está gerando o personagem
+forte quando seta a ref forte."*
+
+O `MODO FORTE` do GOOD 16 tinha sido consertado no dia anterior, e o conserto
+estava **certo**: o botão trocava um homem de 58 por um de 61-72, medido, com
+lente própria (`GO13`) e controle negativo plantando exatamente o defeito
+histórico (o helper cedendo e devolvendo um rapaz de 34). A idade estava
+resolvida.
+
+O que ninguém mediu foi o **corpo**. Medido no dia da reclamação, 400 sorteios
+por estado:
+
+| estado | corpo descrito **sem nenhuma** palavra de músculo |
+|---|---|
+| FORTE **LIGADO** | **232 / 400** |
+| FORTE **desligado** | **0 / 400** |
+
+> **Ligar o botão entregava um corpo MENOS definido do que deixá-lo desligado.**
+
+A causa é banal e por isso passou: o pool `REFS_FORTES_MADUROS` descrevia os
+corpos com palavras de **volume** — `thickset`, `heavy through the chest`,
+`big through the chest and shoulders`, `broad and solid`, `a barrel chest with
+a heavy neck` — e o pool local do próprio motor (`CORPOS_H`, o do estado
+desligado) põe **veia** em todas as seis entradas. Num homem de 62 anos, de
+tronco nu, `thickset` + `heavy` sem uma palavra de músculo por perto renderiza
+**barriga**. Volume num corpo jovem lê treino; volume num corpo velho lê peso.
+
+⛔ **A lição que generaliza:** um toggle tem **duas** metades — o que ele muda e
+o que ele *promete*. A `GO13` cobrava a metade mensurável (a idade é um número,
+e número é fácil de cobrar) e declarava vitória. A metade que o operador
+realmente vê — o corpo — não tinha lente porque não tinha número.
+
+> **Quando um botão não entrega, meça o estado DESLIGADO também.** O defeito
+> aqui só é visível na comparação: 232 contra 0. Olhando só o estado ligado,
+> `a thickset powerful frame` parece perfeitamente razoável.
+
+⭐ **O conserto** foi no pool compartilhado (`short_comum.py`), onde a regra
+mora, e as 18 entradas passaram a carregar as duas coisas: **uma palavra de
+músculo** (`muscled` / `corded` / `cut`) e **uma âncora de magreza**
+(`stomach flat` / `waist trim`) — que é o que impede a leitura de barriga.
+⛔ E **zero negação**: `no gut` injeta `gut` pelo mesmo mecanismo do
+`not a celebrity`. A âncora é sempre positiva.
+
+⚠️ **A lente nova (`GO15`) cobra o POOL INTEIRO, não a entrada sorteada** — e o
+controle negativo dela planta *a string histórica de 62 anos, palavra por
+palavra*. Controle com defeito inventado prova que a lente roda; com o defeito
+**que já existiu** prova que ela teria pego (§38).
+
+⚠️ **E vale o registro do custo:** este defeito nasceu no mesmo dia em que o
+pool nasceu, sobreviveu a um conserto de idade, a um autoteste de 400 sorteios
+com 0 erro e a dois gates verdes. Nada disso é falso — os testes mediam o que
+sabiam medir. **O gate não é evidência sobre a dimensão que ele não olha.**
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no

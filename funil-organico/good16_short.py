@@ -181,15 +181,15 @@ SEXOS = ("homem",)
 # MODO FORTE acrescenta e' o homem INTEIRO no registro forte.
 # ⛔⛔⛔ MODO BELA DESLIGADO em 2026-08-12 — e a razao e' a ordem do proprio
 # operador, nao gosto meu. Ele travou a mulher deste motor em TRES coisas:
-# branca, 24 anos, extremamente linda. O `sc.ref_bela` compartilhado troca a
+# branca, 25 anos, extremamente linda. O `sc.ref_bela` compartilhado troca a
 # PESSOA por uma do pool bonito do repo — e MEDIDO em 80 sorteios ele devolve
 # idades de 21 a 33. Ou seja: com o botao ligado, 11 de 12 videos sairiam
-# violando os 24 anos que ele acabou de mandar travar.
+# violando os 25 anos que ele acabou de mandar travar.
 # ⭐ E nao ha' o que o botao acrescente: o pool base JA' e' o registro do TRIO
 # e do DUPLA (*"extremamente lindas"*). Ligado ele so' podia piorar a idade.
 # ⚠️ Botao que existe e nao muda nada e' a forma-sem-funcao que este repo ja'
 # pagou tres vezes; botao que existe e QUEBRA uma regra travada e' pior.
-# ⭐ Reversivel numa linha: se a regra dos 24 cair, isto volta a `True`.
+# ⭐ Reversivel numa linha: se a regra dos 25 cair, isto volta a `True`.
 MODO_BELA = False
 MODO_FORTE = True
 
@@ -267,27 +267,27 @@ MUNDOS = [
     {"id": "apalache", "familia": "apalache", "regiao": "Apalaches",
      "cen": "a cedar-plank porch behind an Appalachian farmhouse, tall pines "
             "crowding the edge of the yard",
-     "agua": "a round cedar hot tub set into the porch boards",
-     "borda": "the wet cedar rim of the tub",
+     "agua": "a long rectangular in-ground pool faced in cut fieldstone, the water clear and still",
+     "borda": "the wet stone coping at the pool edge",
      "luz": "late afternoon sun coming in low and warm through the pines",
-     "audio": "cicadas, water moving in the tub, a chainsaw far off",
+     "audio": "cicadas, water moving in the pool, a chainsaw far off",
      "dela": "a white bikini top", "dela_bela": "a white halter bikini top",
      "etnias": ["white American"]},
 
     {"id": "sulista", "familia": "sulista", "regiao": "Sul profundo",
      "cen": "the back yard of a Southern house, a plank fence and a magnolia "
             "over the far corner",
-     "agua": "a round above-ground pool with a wooden deck built around it",
-     "borda": "the wet deck boards at the pool wall",
+     "agua": "a rectangular in-ground pool with wide bluestone coping, the water clear and still",
+     "borda": "the wet bluestone coping at the pool edge",
      "luz": "warm late afternoon light coming flat across the yard",
-     "audio": "cicadas, water lapping the pool wall, a screen door",
+     "audio": "cicadas, water lapping the stone edge, a screen door",
      "dela": "a coral bikini top", "dela_bela": "a coral halter bikini top",
      "etnias": ["Black American"]},
 
     {"id": "texas", "familia": "texas", "regiao": "Texas",
      "cen": "the back yard of a Texas ranch house, a plank fence and dry "
             "St. Augustine grass",
-     "agua": "a rectangular concrete pool with a tiled lip",
+     "agua": "a long rectangular in-ground pool with a polished stone lip, the water clear and still",
      "borda": "the wet tiled lip of the pool",
      "luz": "hard late sun, short shadows across the water",
      "audio": "a window unit humming, water lapping the tile, far traffic",
@@ -297,11 +297,11 @@ MUNDOS = [
     {"id": "meio_oeste", "familia": "meio_oeste", "regiao": "Meio-Oeste",
      "cen": "the back deck of a Midwestern split-level, a chain-link fence and "
             "a maple behind it",
-     "agua": "a square hot tub set into the deck boards with steam coming "
-             "off the surface",
-     "borda": "the wet deck boards at the edge of the tub",
-     "luz": "cool overcast evening light with the steam catching it",
-     "audio": "the tub jets, wind in the maple, a dog two yards over",
+     "agua": "a rectangular in-ground pool with a flush stone coping, the water clear and still",
+     "borda": "the wet stone coping at the pool edge",
+     "luz": "cool overcast evening light lying flat on the water",
+     "audio": "water moving in the pool, wind in the maple, a dog two "
+              "yards over",
      "dela": "a navy bikini top", "dela_bela": "a navy halter bikini top",
      "etnias": ["white American"]},
 
@@ -309,45 +309,46 @@ MUNDOS = [
      "regiao": "Nova Inglaterra",
      "cen": "the side yard of a New England colonial, hydrangeas along a low "
             "stone wall",
-     "agua": "a cedar hot tub on a stone patio",
-     "borda": "the wet stone coping beside the tub",
+     "agua": "an in-ground pool with cut granite coping set in the stone patio, the water clear and still",
+     "borda": "the wet granite coping at the pool edge",
      "luz": "cool north light, soft and even off the water",
-     "audio": "steam and jets, gulls, wind through the hydrangeas",
+     "audio": "water moving in the pool, gulls, wind through the hydrangeas",
      "dela": "a white halter bikini top",
      "dela_bela": "a white twist-front bikini top",
      "etnias": ["white American"]},
 
     {"id": "harlem", "familia": "harlem", "regiao": "Harlem",
      # ⚠️ O BED 16 poe uma banheira de pe' de leao aqui, e la' faz sentido: o
-     # take 2 dele e' dentro de casa. Aqui NAO — banheira nao e' nicho de verao,
-     # e a ordem do operador e' piscina/jacuzzi. O telhado com piscina inflavel
-     # e' o verao do brownstone.
+     # take 2 dele e' dentro de casa. Aqui NAO — banheira nao e' nicho de verao.
+     # ⛔⛔ E a inflavel de telhado SAIU em 2026-08-13: era a unica piscina de
+     # PLASTICO do pool e o operador proibiu por nome. O terraco do brownstone
+     # continua, com a piscina de borda de pedra que um terraco reformado tem.
      "cen": "the tar roof of a Harlem brownstone, water tanks and rooftops "
             "running off behind",
-     "agua": "a round inflatable pool set up on the roof decking",
-     "borda": "the wet plywood decking at the pool wall",
+     "agua": "a rectangular rooftop plunge pool with a stone deck around it, the water clear and still",
+     "borda": "the wet stone deck at the pool edge",
      "luz": "warm late city light coming in low across the roofs",
-     "audio": "faint traffic below, water against the pool wall, a radio "
+     "audio": "faint traffic below, water moving in the pool, a radio "
               "somewhere",
      "dela": "a black bikini top", "dela_bela": "a black twist-front bikini top",
      "etnias": ["Black American"]},
 
     {"id": "atlanta", "familia": "atlanta", "regiao": "Atlanta",
      "cen": "the back patio of an Atlanta house, tall pines past the fence",
-     "agua": "a kidney-shaped pool with a raised spa spilling into it",
+     "agua": "a curved in-ground pool with a low stone waterfall spilling into it, the water clear",
      "borda": "the wet stone coping of the pool",
      "luz": "bright filtered daylight, the water throwing light upward",
-     "audio": "the spa spillover, birds in the pines, a quiet yard",
+     "audio": "the waterfall spilling, birds in the pines, a quiet yard",
      "dela": "a gold bikini top", "dela_bela": "a gold halter bikini top",
      "etnias": ["Black American"]},
 
     {"id": "delta", "familia": "delta", "regiao": "Delta do Mississippi",
      "cen": "the back yard of a Mississippi Delta house, flat fields past a "
             "wire fence",
-     "agua": "a round above-ground pool with a metal ladder on one side",
-     "borda": "the wet metal rail of the pool wall",
+     "agua": "a rectangular in-ground pool with a wide stone deck around it, the water clear and still",
+     "borda": "the wet stone deck at the pool edge",
      "luz": "flat evening light coming across the fields",
-     "audio": "crickets, water against the pool wall, a truck far off",
+     "audio": "crickets, water moving in the pool, a truck far off",
      "dela": "a turquoise bikini top",
      "dela_bela": "a turquoise halter bikini top",
      "etnias": ["Black American"]},
@@ -355,10 +356,10 @@ MUNDOS = [
     {"id": "gullah", "familia": "gullah", "regiao": "Lowcountry",
      "cen": "the back deck of a Lowcountry house, marsh grass and open water "
             "past the rail",
-     "agua": "a wooden hot tub sunk into the deck",
-     "borda": "the wet deck boards at the rim of the tub",
+     "agua": "an in-ground pool with a flush stone edge set beside the deck, the water clear and still",
+     "borda": "the wet stone edge at the pool rim",
      "luz": "soft coastal light coming off the water",
-     "audio": "water moving in the tub, marsh birds, wind",
+     "audio": "water moving in the pool, marsh birds, wind",
      "dela": "a white bikini top",
      "dela_bela": "a white twist-front bikini top",
      "etnias": ["Black American"]},
@@ -366,13 +367,13 @@ MUNDOS = [
     {"id": "noroeste", "familia": "noroeste", "regiao": "Noroeste do Pacifico",
      "cen": "the back deck of a Pacific Northwest house, wet firs crowding the "
             "rail",
-     "agua": "a cedar hot tub on the deck with steam rising off it",
-     "borda": "the wet cedar rim of the tub",
+     "agua": "a dark-tiled in-ground pool with a flush stone edge, the water clear and still",
+     "borda": "the wet stone edge at the pool rim",
      # ⛔ NADA DE LUZ COLORIDA: o operador viu um lote e disse *"tire esse ar de
      # blade runner 2049, esta em tom esverdeado villeneuve"*. Foi neste mundo,
      # no FALTA 16, e o defeito era do motor PEDINDO verde — nao do gerador.
      "luz": "cool grey daylight coming through the trees",
-     "audio": "steam and jets, rain in the firs, water dripping",
+     "audio": "water moving in the pool, rain in the firs, water dripping",
      "dela": "a dark green bikini top",
      "dela_bela": "a dark green halter bikini top",
      "etnias": ["white American"]},
@@ -380,11 +381,11 @@ MUNDOS = [
     {"id": "grandes_lagos", "familia": "grandes_lagos",
      "regiao": "Grandes Lagos",
      "cen": "the end of a Great Lakes dock, birch along the shore behind",
-     "agua": "a square hot tub set on the dock boards with heavy steam off "
-             "the surface",
-     "borda": "the wet dock boards at the edge of the tub",
-     "luz": "pale afternoon light off the lake, the steam catching it",
-     "audio": "the tub jets, water against the dock posts, a loon far off",
+     "agua": "a rectangular in-ground pool set in the stone terrace above the dock, the water clear and still",
+     "borda": "the wet stone coping at the pool edge",
+     "luz": "pale afternoon light off the lake, lying flat on the water",
+     "audio": "water moving in the pool, water against the dock posts, "
+              "a loon far off",
      "dela": "a red bikini top", "dela_bela": "a red halter bikini top",
      "etnias": ["white American"]},
 
@@ -406,10 +407,10 @@ MUNDOS = [
      "regiao": "italo-americana",
      "cen": "the back yard of an Italian-American house, a tomato bed along "
             "the fence and a grape arbour over the path",
-     "agua": "a round above-ground pool with a wooden deck at one end",
-     "borda": "the wet wooden rail at the pool wall",
+     "agua": "a rectangular in-ground pool with travertine coping, the water clear and still",
+     "borda": "the wet travertine coping at the pool edge",
      "luz": "warm evening light coming in under the arbour",
-     "audio": "water against the pool wall, a radio inside, cicadas",
+     "audio": "water moving in the pool, a radio inside, cicadas",
      "dela": "a black halter bikini top",
      "dela_bela": "a black twist-front bikini top",
      "etnias": ["white American"]},
@@ -417,7 +418,7 @@ MUNDOS = [
     {"id": "florida", "familia": "florida", "regiao": "Florida",
      "cen": "the screened lanai of a Florida house, palms standing behind the "
             "screen",
-     "agua": "a rectangular pool with water spilling over the near edge",
+     "agua": "a rectangular in-ground pool with an infinity edge spilling over the near side, the water clear",
      "borda": "the wet tiled edge of the pool",
      "luz": "bright overcast, soft even light off the water",
      "audio": "water spilling over the edge, a mockingbird, a pool pump",
@@ -427,10 +428,10 @@ MUNDOS = [
     {"id": "americana", "familia": "americana", "regiao": "suburbio americano",
      "cen": "the back yard of a plain suburban house, a wooden fence and a "
             "swing set still standing",
-     "agua": "a round above-ground pool with a blue liner",
-     "borda": "the wet flat rail on top of the pool wall",
+     "agua": "a rectangular in-ground pool with pale stone coping, the water clear and still",
+     "borda": "the wet stone coping at the pool edge",
      "luz": "flat late afternoon light across the yard",
-     "audio": "water against the pool wall, a lawnmower two streets over",
+     "audio": "water moving in the pool, a lawnmower two streets over",
      "dela": "a pale blue bikini top",
      "dela_bela": "a pale blue halter bikini top",
      "etnias": ["white American", "Black American"]},
@@ -525,10 +526,18 @@ CORPOS_H = [
 # MOVE (a terceira e' o traje, que mora no mundo). Sem eles o toggle acenderia e
 # a mulher em quadro seria a mesma — a forma-sem-funcao que este repo ja' pagou
 # tres vezes.
+# ⭐⭐ 25 ANOS, SEMPRE — ordem do operador (2026-08-13): *"faca ele gerar
+# todas as mulheres extramemente lindas com 25 anos sempre"*. Era 24 desde
+# 2026-08-12; o registro de beleza nao mudou, so' o numero.
+# ⛔ CONSTANTE, nao doze literais: a GO14 le' esta mesma linha, entao a
+# lente nao pode discordar do pool nem depois de dez manutencoes.
+IDADE_MULHER = 25
+
 MULHERES = [
-    # ⛔⛔ 2026-08-12 — TODAS BRANCAS, TODAS 24, TODAS EXTREMAMENTE LINDAS.
+    # ⛔⛔ TODAS BRANCAS, TODAS 25, TODAS EXTREMAMENTE LINDAS.
     # Ordem do operador, em duas mensagens: *"quero que todas as mulheres
     # mencionadas sempre sejam mulheres brancas com 24 anos, ruiva, loira,
+    # (a idade virou 25 em 2026-08-13, mesma ordem, numero novo), ruiva,
     # morena, mas todas brancas sempre"* e *"coloque as caracteristicas das
     # mulheres desse agente para serem extremamente lindas, como os agentes
     # dupla e trio"*.
@@ -542,51 +551,51 @@ MULHERES = [
     # ⛔ A ETNIA SUMIU DO SORTEIO, mas o CAMPO fica: o `montar` o consome e o
     # `ref_bela` o preservava. Tirar o campo seria mexer em quatro strings de
     # bloco para economizar uma palavra.
-    {"id": "ruiva_auburn", "etnia": "white American", "idade": 24,
+    {"id": "ruiva_auburn", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "tall and long-legged with a very small waist",
      "cabeca": "deep auburn hair falling wet past her shoulders",
      "marca": "pale green eyes and a light spray of freckles across her nose"},
-    {"id": "ruiva_cobre", "etnia": "white American", "idade": 24,
+    {"id": "ruiva_cobre", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "slim with an hourglass figure",
      "cabeca": "copper-red hair pushed back wet from her face",
      "marca": "hazel eyes and heavy freckling across her cheeks"},
-    {"id": "ruiva_gengibre", "etnia": "white American", "idade": 24,
+    {"id": "ruiva_gengibre", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "willowy and fine-boned with a flat stomach",
      "cabeca": "bright ginger hair in long wet layers",
      "marca": "clear skin and a small beauty mark above her lip"},
-    {"id": "ruiva_escura", "etnia": "white American", "idade": 24,
+    {"id": "ruiva_escura", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "curvy with a narrow waist and full shoulders",
      "cabeca": "dark red hair swept wet over one shoulder",
      "marca": "green eyes and a fine gold hoop in her left nostril"},
-    {"id": "loira_platinada", "etnia": "white American", "idade": 24,
+    {"id": "loira_platinada", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "tall and statuesque with a long waist",
      "cabeca": "long platinum blonde hair, wet at the ends",
      "marca": "wide-set blue eyes and clear glowing skin"},
-    {"id": "loira_mel", "etnia": "white American", "idade": 24,
+    {"id": "loira_mel", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "lean and toned with long legs",
      "cabeca": "honey-blonde hair slicked back wet",
      "marca": "blue-grey eyes and a small beauty spot on her cheekbone"},
-    {"id": "loira_morango", "etnia": "white American", "idade": 24,
+    {"id": "loira_morango", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "softly curved with a small waist",
      "cabeca": "strawberry-blonde hair in a wet loose braid",
      "marca": "pale blue eyes and a light dusting of freckles"},
-    {"id": "loira_dourada", "etnia": "white American", "idade": 24,
+    {"id": "loira_dourada", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "slender with square shoulders and long arms",
      "cabeca": "golden blonde hair pushed wet behind her ears",
      "marca": "green-blue eyes and a faint dimple in one cheek"},
-    {"id": "morena_lisa", "etnia": "white American", "idade": 24,
+    {"id": "morena_lisa", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "athletic with a flat stomach and long legs",
      "cabeca": "dark brown hair slicked back wet",
      "marca": "dark almond eyes and clear glowing skin"},
-    {"id": "morena_castanha", "etnia": "white American", "idade": 24,
+    {"id": "morena_castanha", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "tall and slim with a very small waist",
      "cabeca": "long chestnut hair falling wet down her back",
      "marca": "light brown eyes and a small mole beside her mouth"},
-    {"id": "morena_quase_preta", "etnia": "white American", "idade": 24,
+    {"id": "morena_quase_preta", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "hourglass-figured with narrow hips",
      "cabeca": "near-black hair pushed back wet from her forehead",
      "marca": "striking blue eyes and high sharp cheekbones"},
-    {"id": "morena_rabo", "etnia": "white American", "idade": 24,
+    {"id": "morena_rabo", "etnia": "white American", "idade": IDADE_MULHER,
      "porte": "fine-boned and long-limbed with a narrow waist",
      "cabeca": "warm brunette hair in a wet high ponytail",
      "marca": "hazel eyes and a faint scar through one eyebrow"},
@@ -940,12 +949,12 @@ PRECOS = [
 CTAS = [
     "%s and the recipe goes to your messages." % sc.CTA_LITERAL,
     "%s and the recipe lands in your messages." % sc.CTA_LITERAL,
-    "%s and the recipe hits your inbox tonight." % sc.CTA_LITERAL,
+    "%s and the recipe hits your inbox right now." % sc.CTA_LITERAL,
     "%s and I'll send the recipe by message." % sc.CTA_LITERAL,
     "%s and the recipe comes to your inbox." % sc.CTA_LITERAL,
     "%s and I'll send the recipe in private." % sc.CTA_LITERAL,
     "%s and only your messages get the recipe." % sc.CTA_LITERAL,
-    "%s and your inbox gets the recipe tonight." % sc.CTA_LITERAL,
+    "%s and your inbox gets the recipe right now." % sc.CTA_LITERAL,
     "%s and the whole recipe goes to your messages." % sc.CTA_LITERAL,
     "%s and I'll send the whole recipe by message." % sc.CTA_LITERAL,
 ]
@@ -1749,8 +1758,92 @@ def _go13_forte_60(spec, blocos, achados):
                                     "forte" % (nome, idade)))
 
 
+# ⭐ AS PALAVRAS QUE FAZEM O CORPO LER TREINO. Uma delas basta — o que a GO15
+# proibe e' a AUSENCIA das tres, nao a presenca de volume junto.
+MUSCULO = ("muscle", "muscled", "corded", "cut ", "veined", "veins")
+
+
+def _go15_forte_musculo(spec, blocos, achados):
+    """⭐⭐ GO15 — MODO FORTE = CORPO QUE LE MUSCULO, nao volume.
+
+    Ordem do operador (2026-08-13): *"o good 16s nao esta' gerando o personagem
+    forte quando seta a ref forte"*.
+
+    ⛔⛔ O DEFEITO QUE ELA VIGIA JA' EXISTIU, E FOI MEDIDO ANTES DO CONSERTO:
+    com o FORTE LIGADO, 232 de 400 sorteios traziam o corpo descrito SO' com
+    palavra de volume (`thickset`, `heavy`, `big through`, `broad and solid`) e
+    NENHUMA palavra de musculo; com o toggle DESLIGADO isso dava 0 em 400,
+    porque o `CORPOS_H` local poe veia em toda entrada.
+
+        Ligar o botao entregava um corpo MENOS definido que deixa-lo desligado.
+
+    A idade ja' estava certa — 61..72, medido. O que faltava era o CORPO: num
+    homem de 62 anos de tronco nu, `thickset` + `heavy` sem musculo por perto
+    renderiza barriga, e barriga e' o oposto exato do que o toggle promete.
+
+    ⚠️ Cobra o POOL INTEIRO, nao so' a entrada sorteada — mesma razao da GO14:
+    entrada ruim escondida so' aparece quando calha de sair, e ai' o defeito
+    chega em video, nao em teste.
+    """
+    if not spec.get("forte"):
+        return
+    fracos = [e["idade"] for e in sc.REFS_FORTES_MADUROS
+              if not any(p in e["corpo"] for p in MUSCULO)]
+    if fracos:
+        achados.append(("ERRO", "GO15: %d entrada(s) de REFS_FORTES_MADUROS sem "
+                                "uma palavra de musculo (idades %s) — volume "
+                                "sozinho renderiza barriga num homem de 60+"
+                        % (len(fracos), ", ".join(str(i) for i in fracos))))
+    corpo = spec.get("corpo_h", "")
+    if not any(p in corpo for p in MUSCULO):
+        achados.append(("ERRO", "GO15: MODO FORTE ligado e o corpo em quadro nao "
+                                "nomeia musculo: %r" % corpo))
+    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
+        if corpo and corpo not in blocos.get(nome, ""):
+            achados.append(("ERRO", "GO15: %s nao renderiza o corpo forte" % nome))
+
+
+# ⛔⛔ AS PALAVRAS BANIDAS DA AGUA. Ordem do operador (2026-08-13): *"para
+# ambientes na agua ou em piscinas, deve ser sempre piscinas chiques, nunca de
+# plastico, ofuros, hidromassagem ou qualquer coisa do tipo"*.
+# ⚠️ ISTO REVERTE A ORDEM DE 2026-08-09 (*"sempre voltado pra piscina, jacuzzi,
+# por favor"*), e o registro fica aqui para ninguem "consertar" de volta: a
+# jacuzzi foi pedida antes e proibida depois. Manda a segunda.
+# ⭐ `steam` e `jets` entram na lista porque sao a jacuzzi por outro nome — sao
+# o que o gerador usa para DESENHAR uma, mesmo quando a palavra nao aparece.
+AGUA_PROIBIDA = ("hot tub", "inflatable", "above-ground", "above ground",
+                 "plastic", "jacuzzi", "whirlpool", "spa", "jets", "steam",
+                 "liner", "vinyl", " tub")
+
+
+def _go16_piscina_chique(spec, blocos, achados):
+    """⭐⭐ GO16 — a agua e' sempre PISCINA CHIQUE, de obra.
+
+    ⛔ Medido no dia da ordem, antes de mexer: 11 dos 15 mundos violavam — seis
+    banheiras de hidromassagem, uma piscina INFLAVEL de telhado e quatro
+    armaveis (uma delas com `blue liner`, plastico pelo nome). Nenhum lint
+    acusava, porque ate' aquele dia nao era defeito.
+    """
+    ruins = []
+    for w in MUNDOS:
+        txt = " ".join([w["agua"], w["borda"], w["luz"], w["audio"]]).lower()
+        achou = [p for p in AGUA_PROIBIDA if p in txt]
+        if achou:
+            ruins.append("%s (%s)" % (w["id"], ", ".join(achou)))
+    if ruins:
+        achados.append(("ERRO", "GO16: mundo(s) com agua fora da regra "
+                                "(piscina chique, de obra): %s"
+                        % "; ".join(ruins)))
+    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
+        t = blocos.get(nome, "").lower()
+        achou = [p for p in AGUA_PROIBIDA if p in t]
+        if achou:
+            achados.append(("ERRO", "GO16: %s traz %s — a agua e' sempre piscina "
+                                    "chique" % (nome, ", ".join(achou))))
+
+
 def _go14_mulher(spec, blocos, achados):
-    """⭐⭐ GO14 — ELA E' SEMPRE BRANCA E SEMPRE TEM 24.
+    """⭐⭐ GO14 — ELA E' SEMPRE BRANCA E SEMPRE TEM `IDADE_MULHER`.
 
     Ordem do operador (2026-08-12): *"todas as mulheres mencionadas sempre
     sejam mulheres brancas com 24 anos, ruiva, loira, morena, mas todas brancas
@@ -1763,19 +1856,54 @@ def _go14_mulher(spec, blocos, achados):
     nova com outra etnia ficaria escondida ate' calhar de sair no sorteio.
     """
     fora = [w["id"] for w in MULHERES
-            if w["etnia"] != "white American" or w["idade"] != 24]
+            if w["etnia"] != "white American"
+            or w["idade"] != IDADE_MULHER]
     if fora:
         achados.append(("ERRO", "GO14: entrada(s) do pool MULHERES fora da regra "
-                                "(branca, 24): %s" % ", ".join(fora)))
+                                "(branca, %d): %s"
+                                % (IDADE_MULHER, ", ".join(fora))))
     w = spec["mulher"]
-    if w["etnia"] != "white American" or w["idade"] != 24:
+    if w["etnia"] != "white American" or w["idade"] != IDADE_MULHER:
         achados.append(("ERRO", "GO14: a mulher sorteada e' %s de %d anos"
                         % (w["etnia"], w["idade"])))
     for nome in ("IMAGE 01/02", "IMAGE 02/02"):
         t = blocos.get(nome, "")
-        if "24-year-old white American woman" not in t:
-            achados.append(("ERRO", "GO14: %s nao renderiza `24-year-old white "
-                                    "American woman`" % nome))
+        if "%d-year-old white American woman" % IDADE_MULHER not in t:
+            achados.append(("ERRO", "GO14: %s nao renderiza `%d-year-old white "
+                                    "American woman`" % (nome, IDADE_MULHER)))
+
+
+# ⛔⛔ O CTA NAO MARCA HORARIO. Ordem do operador (2026-08-13), lendo o painel:
+# *"percebi um erro na copy do cta desse agente tambem, dizendo para receber
+# hoje a noite, ja' fui especifico quanto a isso em outros agentes, nunca deve
+# especificar horario deve ser dizer que vai receber AGORA"*.
+# ⭐ A razao e' de FATO, nao de gosto: a automacao de DM responde na hora. Um
+# CTA que diz `tonight` promete pior do que o funil entrega e ainda da' ao
+# espectador uma desculpa para sair da pagina e voltar depois — e ele nao volta.
+TEMPO_CTA = ("tonight", "today", "tomorrow", "this morning", "this evening",
+             "by morning", "in the morning", "overnight", "before bed",
+             "in an hour", "this afternoon", "by tomorrow", "later")
+
+
+def _go17_cta_sem_horario(spec, blocos, achados):
+    """⭐⭐ GO17 — o CTA promete AGORA, nunca um horario.
+
+    ⚠️ Cobra o POOL inteiro e a fala sorteada. Medido no dia da ordem: o
+    `CTAS` tinha 2 entradas em 10 com `tonight`, e as duas passavam pelo
+    CONTRATO-COPY-16S inteiro — o CT6 exige que o CTA diga ONDE a receita
+    chega, e `your inbox tonight` diz onde. Onde estava certo; QUANDO nao
+    devia estar la'.
+    """
+    fora = [c for c in CTAS if any(t in c.lower() for t in TEMPO_CTA)]
+    if fora:
+        achados.append(("ERRO", "GO17: %d entrada(s) do pool CTAS marcam horario "
+                                "— o CTA diz AGORA: %s"
+                        % (len(fora), " | ".join(fora))))
+    fala = spec["falas"][1].lower()
+    marcou = [t for t in TEMPO_CTA if t in fala]
+    if marcou:
+        achados.append(("ERRO", "GO17: a fala do CTA marca horario (%s)"
+                        % ", ".join(marcou)))
 
 
 def lint(spec, blocos):
@@ -1793,7 +1921,8 @@ def lint(spec, blocos):
     for f in (_go1_corpo_nao_orgao, _go2_ela_muda, _go4_sache, _go5_orcamento,
               _go6_etnia, _go7_ancora, _go8_tigela, _go9_mistura,
               _go10_modos, _go11_contrato16, _go12_leve, _go_bicarb,
-              _go13_forte_60, _go14_mulher):
+              _go13_forte_60, _go14_mulher, _go15_forte_musculo,
+              _go16_piscina_chique, _go17_cta_sem_horario):
         f(spec, blocos, ach)
     return ach
 
@@ -2092,7 +2221,7 @@ def autoteste(n=400):
     #      ⛔ A GO13 vigia um defeito que JA' EXISTIU: `sc.ref_forte` com
     #      `idade_min=61` devolve 26-38 porque o helper cede quando a faixa nao
     #      casa. O controle planta exatamente esse homem.
-    _blocos_ok = {n: "a 62-year-old man, and beside him a 24-year-old white "
+    _blocos_ok = {n: "a 62-year-old man, and beside him a 25-year-old white "
                      "American woman" for n in
                   ("BLOCO 0 (REF)", "IMAGE 01/02", "IMAGE 02/02")}
     for rotulo, spec_teste, blocos_teste, deve in (
@@ -2112,20 +2241,91 @@ def autoteste(n=400):
                           % (rotulo, "acusou" if prova else "passou",
                              "acusar" if deve else "passar"))
 
-    _b14 = {n: "a 24-year-old white American woman" for n in
+    _b14 = {n: "a 25-year-old white American woman" for n in
             ("IMAGE 01/02", "IMAGE 02/02")}
     for rotulo, mulher, blocos_teste, deve in (
             ("mulher de 29", {"etnia": "white American", "idade": 29}, _b14, True),
-            ("mulher nao branca", {"etnia": "Black American", "idade": 24},
+            ("mulher nao branca", {"etnia": "Black American", "idade": 25},
              _b14, True),
             ("spec certo mas bloco sem renderizar",
-             {"etnia": "white American", "idade": 24},
+             {"etnia": "white American", "idade": 25},
              {n: "a woman beside him" for n in _b14}, True),
-            ("tudo certo", {"etnia": "white American", "idade": 24}, _b14, False)):
+            ("tudo certo", {"etnia": "white American", "idade": 25}, _b14, False)):
         prova = []
         _go14_mulher({"mulher": mulher}, blocos_teste, prova)
         if bool(prova) != deve:
             falhas.append("GO14: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
+
+    # (b3) ⭐⭐ CONTROLES NEGATIVOS DA GO15 E DA GO16, que nasceram em 13/08.
+    #      ⛔ O da GO15 planta O DEFEITO REAL, palavra por palavra: era esta a
+    #      entrada de 62 anos do pool compartilhado ate' hoje de manha, e ela
+    #      passava por dezoito lentes sem uma acusar. Controle com defeito
+    #      inventado prova que a lente roda; com o defeito HISTORICO prova que
+    #      ela teria pego (licao §38).
+    _b15 = {n: "" for n in ("IMAGE 01/02", "IMAGE 02/02")}
+    _corpo_bom = "densely muscled shoulders, forearms corded"
+    _b15_ok = {n: _corpo_bom for n in _b15}
+    for rotulo, spec_teste, blocos_teste, deve in (
+            ("forte ON com o corpo antigo (volume puro)",
+             {"forte": True,
+              "corpo_h": "a thickset powerful frame, heavy through the chest "
+                         "and upper arms"},
+             {n: "a thickset powerful frame, heavy through the chest and "
+                 "upper arms" for n in _b15}, True),
+            ("forte ON com corpo bom mas bloco sem renderizar",
+             {"forte": True, "corpo_h": _corpo_bom}, _b15, True),
+            ("forte ON limpo", {"forte": True, "corpo_h": _corpo_bom},
+             _b15_ok, False),
+            ("forte OFF com o corpo antigo",
+             {"forte": False, "corpo_h": "a thickset powerful frame"},
+             _b15, False)):
+        prova = []
+        _go15_forte_musculo(spec_teste, blocos_teste, prova)
+        if bool(prova) != deve:
+            falhas.append("GO15: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
+
+    #      ⛔ E o da GO16 planta as TRES aguas proibidas que o pool tinha de
+    #      verdade: a banheira de cedro, a inflavel de telhado e a armavel de
+    #      `blue liner`.
+    for rotulo, texto, deve in (
+            ("banheira de cedro", "a round cedar hot tub set into the porch "
+                                  "boards", True),
+            ("piscina inflavel", "a round inflatable pool set up on the roof "
+                                 "decking", True),
+            ("armavel com liner", "a round above-ground pool with a blue "
+                                  "liner", True),
+            ("vapor de hidro", "steam coming off the surface", True),
+            ("piscina de obra", "a rectangular in-ground pool with pale stone "
+                                "coping, the water clear and still", False)):
+        prova = []
+        _go16_piscina_chique({}, {"IMAGE 01/02": texto,
+                                  "IMAGE 02/02": texto}, prova)
+        if bool(prova) != deve:
+            falhas.append("GO16: %s — a lente %s (esperado: %s)"
+                          % (rotulo, "acusou" if prova else "passou",
+                             "acusar" if deve else "passar"))
+
+    #      ⛔ E o da GO17 planta as DUAS frases que estavam no pool ate' hoje.
+    for rotulo, fala, deve in (
+            ("CTA com `tonight`",
+             "Comment gelatin, and your inbox gets the recipe tonight.", True),
+            ("CTA com `today`",
+             "Comment gelatin, and I'll send the recipe today.", True),
+            ("CTA com `right now`",
+             "Comment gelatin, and your inbox gets the recipe right now.",
+             False),
+            ("CTA sem marcador",
+             "Comment gelatin, and the recipe goes to your messages.", False)):
+        prova = []
+        _go17_cta_sem_horario({"falas": {1: fala}}, {}, prova)
+        # ⚠️ o pool tambem e' cobrado; aqui so' interessa o veredito da FALA
+        prova = [p for p in prova if "pool CTAS" not in p[1]]
+        if bool(prova) != deve:
+            falhas.append("GO17: %s — a lente %s (esperado: %s)"
                           % (rotulo, "acusou" if prova else "passou",
                              "acusar" if deve else "passar"))
 

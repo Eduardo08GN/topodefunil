@@ -157,10 +157,10 @@ BANHEIROS = [
      "luz": "Cool daylight from a frosted window.",
      "audio": "a rain shower head, water on tile"},
     {"id": "nicho_madeira", "sups": ("nicho", "prateleira_arame"),
-     "cen": "a shower wall of dark reclaimed wood planks with a recessed "
-            "stone niche and a rain head running above it",
+     "cen": "a shower wall of light reclaimed wood planks with a wide "
+            "recessed niche and a rain head running above it",
      "agua": "the water falling past the mouth of the niche",
-     "luz": "Warm low light, wet wood.",
+     "luz": "Bright even daylight, wet wood.",
      "audio": "a rain shower, water on wood"},
     {"id": "banheira_branca", "sups": ("borda_banheira", "tampo_madeira", "banquinho"),
      "cen": "a white bathtub filling, the chrome spout running hard into pale "
@@ -180,12 +180,6 @@ BANHEIROS = [
      "agua": "the faucet running thin into the basin",
      "luz": "Warm bathroom light, soft shadows.",
      "audio": "a faucet running into a sink"},
-    {"id": "box_pedra", "sups": ("nicho", "cesta_canto", "prateleira_arame"),
-     "cen": "a dark slate shower with a square rain head running from the "
-            "ceiling",
-     "agua": "the water falling straight down in front of the wall",
-     "luz": "Dim, high contrast, wet stone.",
-     "audio": "a heavy rain shower on stone"},
     {"id": "banheira_azulejo", "sups": ("borda_banheira", "tampo_madeira", "banquinho"),
      "cen": "a tub alcove with small square wall tiles and a chrome spout "
             "running",
@@ -231,26 +225,33 @@ SUPERFICIES = [
 # ⚠️ O OBJETO varia (regua clara, escura, fita metrica); o que NAO varia e' a
 # presenca e a intocabilidade.
 MEDIDAS = [
-    {"id": "regua_clara_pe", "nome": "ruler",
-     "img": "a pale wooden ruler standing upright against the wall, its "
-            "numbers facing the camera",
-     "curto": "regua clara em pe"},
-    {"id": "regua_escura_pe", "nome": "ruler",
-     "img": "a dark wooden ruler standing upright against the tiles, marked in "
-            "both inches and centimetres",
-     "curto": "regua escura em pe"},
-    {"id": "regua_clara_deitada", "nome": "ruler",
-     "img": "a pale wooden ruler lying flat along the edge, numbers up",
-     "curto": "regua clara deitada"},
-    {"id": "regua_escura_deitada", "nome": "ruler",
-     "img": "a dark varnished ruler lying flat with its numbers facing up",
-     "curto": "regua escura deitada"},
+    # ⛔⛔ OBJETO PURO, SEM POSICAO. As entradas traziam a propria pose
+    # (`standing upright against the wall`, `lying flat along the edge`) e a
+    # frase que as costura acrescentava outra: saia "A ruler standing upright
+    # against the wall LEANS UPRIGHT AGAINST THE WALL at the left end". Duas
+    # ordens de pose para o mesmo objeto e' ordem ambigua — o gerador escolhe
+    # uma, e foi assim que a regua saiu FLUTUANDO e a placa saiu TAMPADA nos
+    # oito renders que o operador narrou em video.
+    # ⭐ Mesma licao que o TRIO 16 pagou com `held upright, held upright`.
+    {"id": "regua_clara", "nome": "ruler",
+     "img": "a pale wooden ruler, its numbers large and facing the camera",
+     "curto": "regua clara"},
+    {"id": "regua_escura", "nome": "ruler",
+     "img": "a dark varnished wooden ruler marked in both inches and "
+            "centimetres",
+     "curto": "regua escura"},
+    {"id": "regua_amarela", "nome": "ruler",
+     "img": "a yellow-varnished school ruler with black markings",
+     "curto": "regua amarela"},
     {"id": "fita_metrica", "nome": "tape measure",
-     "img": "a soft tailor's tape measure lying unrolled along the edge",
+     "img": "a soft tailor's tape measure, unrolled and straight",
      "curto": "fita metrica"},
     {"id": "regua_metal", "nome": "steel rule",
-     "img": "a thin steel rule propped against the wall, numbers facing out",
+     "img": "a thin steel rule with etched markings",
      "curto": "regua de metal"},
+    {"id": "regua_dobravel", "nome": "folding rule",
+     "img": "a wooden folding carpenter's rule, opened out straight",
+     "curto": "regua dobravel"},
 ]
 
 
@@ -263,21 +264,23 @@ MEDIDAS = [
 # OBRIGATORIO, e o que se sorteia e' o SUPORTE, nunca a ausencia.
 # ⛔ E' o unico texto permitido em quadro. A `CAUDA` proibe todo o resto.
 ROTULOS = [
+    # ⛔ OBJETO PURO tambem aqui, pela mesma razao. E o texto e' sempre GROWTH
+    # HACK em letra de mao — foi a unica variavel que separou os dois grupos da
+    # fonte (108,5k views de media com ele, 67k sem).
     {"id": "papelao",
-     "img": "a torn piece of cardboard propped against the wall with GROWTH "
-            "HACK written on it by hand in black marker",
+     "img": "a torn piece of cardboard with GROWTH HACK written on it by hand "
+            "in thick black marker",
      "curto": "placa de papelao"},
     {"id": "postit",
-     "img": "a yellow sticky note stuck flat on the surface with GROWTH HACK "
-            "written on it in blue pen",
+     "img": "a large yellow sticky note with GROWTH HACK written on it in blue "
+            "pen",
      "curto": "post-it amarelo"},
     {"id": "papel_fita",
-     "img": "a sheet of paper taped to the tiles with GROWTH HACK written "
-            "across it in thick black marker",
-     "curto": "papel colado no azulejo"},
+     "img": "a sheet of paper with GROWTH HACK written across it in thick "
+            "black marker",
+     "curto": "papel escrito a mao"},
     {"id": "tabua",
-     "img": "a small wooden board leaning against the wall with GROWTH HACK "
-            "burned into it",
+     "img": "a small wooden board with GROWTH HACK burned into it",
      "curto": "tabuinha de madeira"},
 ]
 
@@ -290,24 +293,47 @@ ROTULOS = [
 # e' o que a fonte faz em 6 dos 7. A congruencia foi dispensada por escrito.
 # ⚠️ O que muda e' o RECIPIENTE e o gesto final; o resto do quadro e' o mesmo.
 RECEITAS = [
-    {"id": "bebida",
+    {"id": "bebida", "vaso_nome": "glass",
      "vaso": "a tall clear glass filled with amber liquid",
      "vaso_curto": "copo de liquido ambar",
-     "final": "the powder sinking through the amber liquid in slow white "
-              "ribbons as the spoon turns",
+     "final": "the powder sinks through the amber liquid in slow white "
+              "ribbons",
      "curto": "bebida"},
-    {"id": "pomada",
-     "vaso": "an open blue jar of mentholated chest rub, the white cream "
+    {"id": "pomada", "vaso_nome": "jar",
+     # ⛔⛔ VICKS VAPORUB, PELO NOME E NO POTE DELE. Decisao final do operador
+     # em 2026-08-12, depois de tres mensagens no mesmo dia:
+     #   1. *"deixe claro o pote de vick vaporub, o nome real da marca"*
+     #   2. vendo o render: *"pode deixar o Mentolaited, mas o frasco dele
+     #      esta' errado, esta' no frasco do vick"*
+     #   3. *"na verdade, utilize o vick vaporub mesmo, vamos ficar com o
+     #      original que funcionou"*
+     # ⭐ O passo 2 apontava um defeito real de COERENCIA — nome generico
+     # (`Mentholated Chest Rub`) estampado no pote azul cobalto inconfundivel
+     # da Vicks. Havia duas saidas coerentes: generico em pote generico, ou
+     # marca em pote de marca. Ele escolheu a segunda, que e' tambem a da
+     # FONTE: os 7 reels usam o pote da Vicks de verdade.
+     # ⚠️ E nao ha' risco de texto legivel errado: a leitura otica mostrou que
+     # os reels da fonte sao gerados por IA e o rotulo sai embaralhado sozinho
+     # (`APPLE CIDER GLIAST`, `CHARFTINS`). Pedir a marca acerta FORMA e COR; o
+     # texto o gerador embaralha por conta. Excecao P12 declarada (D1).
+     "vaso": "an open jar of Vicks VapoRub, the classic cobalt blue tub with "
+             "its turquoise lid off and lying beside it, the white cream "
              "smooth and untouched inside",
      "vaso_curto": "pote azul de pomada",
-     "final": "the mixture rising into a thick white foam that swells over "
-              "the rim of the jar",
+     "final": "the cream turns into a fine white foam",
      "curto": "pomada"},
 ]
 
 # ⛔ O SEGUNDO INGREDIENTE, sempre visivel e nunca dito. A caixa de gelatina
 # aparece nos 7 videos.
-GELATINA = ("a box of unflavoured gelatin, its flap torn open and a small "
+# ⛔ A MARCA PELO NOME, nos dois. Ordem do operador: *"quero que deixe claro o
+# pote de vick vaporub na cena, o nome real da marca"*, e a mesma decisao D1
+# vale para a gelatina, que aparece como Knox nos 7 reels da fonte.
+# ⭐ E nao ha' risco de texto legivel errado: a leitura otica mostrou que os
+# reels da fonte sao gerados por IA e o rotulo sai embaralhado sozinho
+# (`APPLE CIDER GLIAST`, `CHARFTINS`). Pedir a marca acerta a FORMA e a COR; o
+# texto o gerador embaralha por conta.
+GELATINA = ("a box of Knox unflavoured gelatin, its flap torn open and a small "
             "paper sachet of white powder resting against it")
 
 # ⭐ O terceiro: a colher de mel. E' o gesto que fecha o preparo em 6 dos 7.
@@ -323,14 +349,29 @@ COLHER = "a metal spoon holding a pool of thick amber honey"
 # ⚠️ MEDIDO na fonte: o video campeao tem uma mao visivelmente MAIS JOVEM que a
 # idade falada, e mesmo assim foi o melhor. Entao isto e' cuidado, nao lei — e
 # esta' escrito aqui para ninguem transformar em trava sem medir.
+# ⛔⛔ AS ENTRADAS SAO NEUTRAS DE TOM — o tom vem do `TOM_PELE`, que vem da
+# ETNIA DA PAGINA. A primeira versao trazia `pale scarred skin` dentro do pool
+# e NENHUMA mencao de etnia no bloco IMAGE (so' a REF a tinha): numa pagina de
+# homem negro o primeiro lote saiu com mao clara, e o operador reprovou
+# — *"perceba que nao ficou muito negra, quero uma cor mais forte"*.
+# ⚠️ Etnia que so' existe na REF nao chega ao quadro: o IMAGE e' o que o
+# gerador le' para compor, e o que nao esta' escrito nele nao acontece.
 MAOS = [
     "heavily sun-spotted hands with prominent veins and thin skin",
-    "broad weathered hands with thick knuckles and raised veins",
+    "broad hands with thick knuckles and raised veins",
     "lean hands with dark age spots across the backs",
     "large hands with loose skin over the tendons and blunt clean nails",
     "wide hands with heavy veins and a plain gold wedding band",
-    "bony hands with prominent knuckles and pale scarred skin",
+    "bony hands with prominent knuckles and deep creases",
 ]
+
+# ⭐⭐ O TOM, e ele e' EXPLICITO. Ordem do operador depois do primeiro lote:
+# *"quero uma cor mais forte"*. `Black American` sozinho o gerador entrega em
+# tom medio; o que trava o tom e' a descricao do TOM, nao o gentilico.
+TOM_PELE = {
+    "Black American": "very deep dark brown skin, rich and unmistakably dark",
+    "white American": "fair weathered skin",
+}
 
 # ⭐ O HOMEM — so' existe com o MODO PESSOA ligado. Espelhado do unico video da
 # fonte que tem gente (101k views): ele de costas/perfil diante do espelho,
@@ -530,6 +571,26 @@ IDADE_MIN, IDADE_MAX = 62, 74
 # ===========================================================================
 # ⛔ O rotulo `growth hack` E' o unico texto permitido. Sem esta clausula o
 # gerador enche o azulejo de placas e o quadro vira anuncio.
+# ⭐⭐ O ENQUADRAMENTO, e ele e' a correcao mais importante do lote de video de
+# 2026-08-12. O operador abriu um reel da fonte ao lado do nosso render e disse:
+# *"olha a diferenca da camera, do posicionamento da camera para a mao. NAO
+# PRECISA TER ESPACO, nao precisa fazer sentido. A mao pode estar sendo filmada
+# de perto mesmo. Olha a qualidade da placa ali, da agua caindo ao fundo, dos
+# produtos aqui perto. E' isso que eu quero."*
+# ⛔ `Vertical medium shot` era a origem do defeito que ele nomeou tres vezes:
+# *"essa mao ta' vindo de muito longe"*, *"nao precisa estar tao longe da
+# camera"*, *"essas duas ficaram muito de lado"*. Plano medio pede espaco, e
+# espaco afasta a mao e a joga para a lateral.
+# ⚠️ E vale a observacao dele sobre a fonte: o enquadramento NAO precisa ser
+# espacialmente plausivel. A mao pode estar impossivelmente perto — e' assim
+# que os 7 reels sao.
+# ⚠️ SEM A TAG: quem a poe e' o `sc.selar_tags`. A primeira versao a trazia
+# embutida e o bloco saiu com `IMAGE 01/02: IMAGE 01/02:` — o AdBatch parseia
+# pelo cabecalho, e cabecalho duplicado e' bloco que entra no slot errado.
+ENQUADRAMENTO = ("Vertical close shot, camera right up at the shelf, shot "
+                 "straight on. The objects fill the frame and the hands come "
+                 "in close to the lens.")
+
 CAUDA = ("Shot on an iPhone, natural grain, slightly wet lens. "
          "No subtitles, no captions, no watermark.")
 
@@ -736,83 +797,119 @@ def trocar_fala(spec, rng, i):
 def montar(spec):
     b, r = spec["banheiro"], spec["receita"]
     sup, med, rot = spec["superficie"], spec["medida"], spec["rotulo"]
+    h = spec["homem"]
+    # ⛔⛔⛔ O LOTE COMENTADO EM VIDEO (2026-08-12). O operador gravou a tela
+    # narrando as OITO imagens, uma a uma, e o veredito dele fecha assim:
+    # *"voce tem todo o contexto de como deve ser o visual, eu ja' te dei o
+    # padrao desses videos, eu te dei sete videos, e' so' analisar eles e fazer
+    # uma cena SIMPLES aqui, nao precisa de muita coisa, e' uma cena simples"*.
+    #
+    # ⛔ Ele estava certo: o bloco tinha chegado a 329 PALAVRAS para uma cena
+    # de seis objetos. Cada correcao minha virava mais uma clausula, e clausula
+    # concorrente e' o que faz o gerador escolher mal.
+    #
+    # ⭐⭐ E O CONSERTO NAO E' SO' ENCURTAR, E' ATRIBUIR POSICAO. Todos os
+    # defeitos que ele nomeou sao de objeto SEM LUGAR definido:
+    #     "a placa esta' sendo tampada"          -> sem lugar
+    #     "regua flutuando"                      -> sem apoio
+    #     "a regua tampando o potinho da gelatina"-> sem lugar
+    #     "o saquinho da gelatina la' no fundo"  -> sem lugar
+    #     "os itens muito espalhados"            -> sem agrupamento
+    #     "a mao vindo pela lateral"             -> direcao fraca
+    # Objeto sem posicao o gerador empilha. Cada peca ganha uma: os tres potes
+    # AGRUPADOS no meio, a medida encostada a' ESQUERDA, a placa a' DIREITA, as
+    # maos entrando POR CIMA.
+    # ⚠️ Saiu o `Nearest to the camera and in sharp focus` (foi ele que fez a
+    # regua flutuar na frente) e saiu o `clear space around every object` (foi
+    # ele que espalhou os itens).
+    voz = ("Voice: one calm, unhurried American man in his %ds, plain "
+           "matter-of-fact delivery, slightly gravelly, speaking straight to "
+           "camera. The same voice in both takes." % ((spec["idade"] // 10) * 10))
 
-    # ⛔ A MEDIDA E O ROTULO ENTRAM NOS DOIS TAKES. A regua so' faz o trabalho
-    # dela se estiver la' quando a promessa e' dita E quando a receita e' feita
-    # — sumir no take 2 e' perder o unico lugar onde o `bigger` aterrissa.
-    # ⚠️ `img` e' sintagma nominal nos dois pools, entao os dois ganham verbo
-    # aqui: "A pale wooden ruler standing upright." e' fragmento e o gerador
-    # trata fragmento como enfeite; com verbo, e' instrucao.
-    # ⚠️ `There is` nos DOIS: a primeira versao usava "Against the wall is %s"
-    # para o rotulo, e as entradas de ROTULOS ja' trazem a propria posicao —
-    # saia "Against the wall is a board leaning against the wall". Quem
-    # posiciona e' o pool, nao a frase que o costura.
-    cenario = ("%s. On %s sit %s, %s and %s. There is %s. There is %s."
-               % (_cap(b["cen"]), sup["sup"], r["vaso"], GELATINA, COLHER,
-                  med["img"], rot["img"]))
+    # ⛔ A GEOMETRIA DA AGUA, dita e nao proibida.
+    # ⛔ AO FUNDO, e nao "afastada". O conserto anterior empurrou o jato para
+    # a parede lateral e em varios renders a agua sumiu do quadro — e o
+    # operador, mostrando a fonte, apontou justamente *"a agua caindo ao
+    # fundo"* como parte do que ele quer ver. Ela fica ATRAS, visivel, e nao
+    # encosta na prateleira.
+    agua = ("The shower runs in the background behind the shelf, the falling "
+            "water clearly visible the whole time, and none of it reaches the "
+            "shelf or anything on it.")
+
+    cena = ("%s, brightly and evenly lit. %s On %s, grouped close together in "
+            "the middle, stand %s, %s and %s. %s leans upright against the "
+            "wall at the left end of the shelf, whole and fully visible, "
+            "covering nothing. %s stands flat against the wall at the right "
+            "end, large and completely unobstructed."
+            % (_cap(b["cen"]), agua, sup["sup"], r["vaso"], GELATINA, COLHER,
+               _cap(med["img"]), _cap(rot["img"])))
+
+    # ⚠️ SEM ARTIGO: o IMAGE 02 diz "the same %s" e o artigo embutido gerava
+    # "come the same THE hands of a 62-year-old...". Artigo e' da frase, nao do
+    # dado — mesma classe do `held upright, held upright` do TRIO.
+    maos = ("hands of a %d-year-old %s man, %s, %s"
+            % (spec["idade"], spec["etnia"],
+               TOM_PELE.get(spec["etnia"], "weathered skin"), spec["maos"]))
 
     if spec["pessoa"]:
-        h = spec["homem"]
         quem1 = ("A %d-year-old %s man stands with his back half to the "
-                 "camera, %s, %s, wearing %s, scooping white cream from a blue "
-                 "jar with two fingers and rubbing it into the back of his own "
-                 "neck. His face is turned away, seen only in part."
+                 "camera, %s, %s, wearing %s, holding the spoon of honey over "
+                 "the %s."
                  % (h["idade"], spec["etnia"], h["cabeca"], h["marca"],
-                    spec["traje"]))
-        mov1 = ("He keeps working the cream into the back of his neck with the "
-                "same slow circles and does not turn around. "
-                + NAO_TOCA % med["nome"])
+                    spec["traje"], r["vaso_nome"]))
     else:
-        quem1 = ("A pair of %s enters from the bottom of the frame and rests "
-                 "on the edge beside the jar, palms down, lifting nothing."
-                 % spec["maos"])
-        # ⚠️ `agua` e' SINTAGMA NOMINAL ("the spout running into the tub"), e
-        # a versao anterior emendava "is falling the whole time" nele: saia
-        # "the spout running steadily into the tub is falling", que nao e'
-        # ingles. Aqui ele entra como SUJEITO de um verbo proprio.
-        mov1 = ("The hands stay flat on the edge and lift nothing. %s keeps "
-                "running the whole time. %s"
-                % (_cap(b["agua"]), NAO_TOCA % med["nome"]))
+        quem1 = ("Coming in close to the lens from the bottom of the frame, "
+                 "large in the picture, are the %s: one hand holds the %s "
+                 "steady, "
+                 "the other tips the spoon of honey over it."
+                 % (maos, r["vaso_nome"]))
 
-    b1 = ("IMAGE 01/02: Vertical medium shot. %s %s %s %s"
-          % (cenario, quem1, _cap(b["luz"]), CAUDA))
+    b1 = ("%s %s %s %s %s"
+          % (ENQUADRAMENTO, cena, quem1, _cap(b["luz"]), CAUDA))
 
     t1 = ("TAKE 01/02: Animate the provided image exactly. Handheld iPhone "
           "shot, very slight natural sway, no cuts, and the camera does not "
-          "move. %s Nothing else in the frame changes.\n"
-          'Dialogue: "%s"\nAudio: %s. No music.'
-          % (mov1, sonorizar(spec["falas"][0]), b["audio"]))
+          "move. The spoon tips and a slow thread of honey runs down into the %s, "
+          "and that is the only thing that happens. The gelatin box and its "
+          "sachet stay closed and untouched on the shelf. %s %s\n"
+          'Dialogue: "%s"\n%s\nAudio: %s. No music.'
+          % (r["vaso_nome"], NAO_TOCA % med["nome"], agua,
+             sonorizar(spec["falas"][0]), voz, b["audio"]))
 
-    # ⭐ TAKE 2 — o preparo. A camera chega mais perto, o quadro e' o mesmo
-    # lugar, e o gesto e' UM SO': a gelatina cai no recipiente e o mel entra.
-    b2 = ("IMAGE 02/02: Closer vertical shot in the same place, same "
-          "background, same light. The same %s hold the torn paper sachet over "
-          "%s and a fine stream of white powder is falling into it, while the "
-          "spoon of honey waits at the edge of the frame. %s stays exactly "
-          "where it was, untouched. %s is still in shot. %s %s"
-          % (spec["maos"], r["vaso"], _cap(med["img"]), _cap(rot["img"]),
-             _cap(b["luz"]), CAUDA))
+    # ⛔ O MESMO texto de cena, palavra por palavra — foi ele que segurou a
+    # continuidade quando o take 2 ia parar noutro comodo. So' muda o que muda:
+    # o mel ja' esta' dentro e a mao agora segura o sache.
+    b2 = ("%s Same place, same tiles, same light. %s The pool of honey is already inside the %s "
+          "and the spoon lies empty beside it. Coming in close to the lens "
+          "from the bottom of "
+          "the frame, large in the picture, come the same %s, holding the torn "
+          "paper sachet over the "
+          "%s, tipped, a fine stream of white powder falling in. %s %s"
+          % (ENQUADRAMENTO, cena, r["vaso_nome"], maos, r["vaso_nome"], _cap(b["luz"]),
+             CAUDA))
 
+    # ⭐ E UMA ACAO SO' NO TAKE 2: o po cai e a mistura reage. ⛔ A reacao e'
+    # CONTIDA: o primeiro lote devolveu uma escultura de espuma de trinta
+    # centimetros saindo do pote, porque eu escrevi `swells over the rim`.
     t2 = ("TAKE 02/02: Animate the provided image exactly. Handheld iPhone "
           "shot, very slight natural sway, no cuts. The powder keeps falling "
-          "at the same rate, then the spoon tips its honey in and the hands "
-          "stir once, %s. %s\n"
-          'Dialogue: "%s"\nAudio: %s. No music.'
-          % (r["final"], NAO_TOCA % med["nome"],
-             sonorizar(spec["falas"][1]), b["audio"]))
+          "from the sachet into the %s at the same steady rate, and %s. The foam "
+          "stays inside the %s and never rises more than a finger above the "
+          "rim. Nothing else enters the frame. %s %s\n"
+          'Dialogue: "%s"\n%s\nAudio: %s. No music.'
+          % (r["vaso_nome"], r["final"], r["vaso_nome"],
+             NAO_TOCA % med["nome"], agua,
+             sonorizar(spec["falas"][1]), voz, b["audio"]))
 
     # ⭐⭐ BLOCO 0 (REF) — E ELE E' AS MAOS.
     # ⛔ A falta dele quebrou o painel compartilhado (`KeyError 'BLOCO 0
     # (REF)'`), e a quebra apontou uma lacuna REAL: este angulo nao tinha
     # ancora nenhuma entre os dois takes. Todos os outros motores amarram a
     # continuidade num ROSTO; aqui nao ha' rosto — entao a ancora sao as MAOS,
-    # que e' o unico corpo que existe em quadro.
-    # ⚠️ E' o que impede o take 2 vir com outra mao, que num video POV e' a
-    # unica coisa que o espectador tem para se agarrar.
-    # ⭐ Com o MODO PESSOA ligado a REF vira o HOMEM, porque ai' existe rosto e
-    # e' ele que atravessa o corte.
+    # que e' o unico corpo em quadro.
+    # ⚠️ E foi o primeiro lote que provou o tamanho do problema: sem ancora
+    # forte, o take 2 saiu noutro comodo.
     if spec["pessoa"]:
-        h = spec["homem"]
         ref = ("REF 01: Photo of a real person, a %d-year-old %s man, chest "
                "up, facing the camera directly, calm steady expression. %s, "
                "%s. Hands out of frame, no objects. Plain neutral gray "
@@ -821,12 +918,15 @@ def montar(spec):
                "captions, no burned-in text, no watermark."
                % (h["idade"], spec["etnia"], _cap(h["cabeca"]), h["marca"]))
     else:
-        ref = ("REF 01: Photo of both hands of a %d-year-old %s man, palms "
-               "down on a plain surface, filled frame, nothing held. %s. Plain "
+        ref = ("REF 01: Photo of both hands of a %d-year-old %s man with %s, "
+               "palms down on a plain surface, filled frame, nothing held. %s. "
+               "Plain "
                "neutral gray background, soft even frontal light. Slight "
                "sensor grain, soft focus, raw iPhone photo. No subtitles, no "
                "captions, no burned-in text, no watermark."
-               % (spec["idade"], spec["etnia"], _cap(spec["maos"])))
+               % (spec["idade"], spec["etnia"],
+                  TOM_PELE.get(spec["etnia"], "weathered skin"),
+                  _cap(spec["maos"])))
 
     blocos = sc.selar_takes(sc.selar_tags({
         "BLOCO 0 (REF)": ref,
@@ -834,19 +934,11 @@ def montar(spec):
         "IMAGE 02/02": b2, "TAKE 02/02": t2,
     }))
     # ⚠️ A TENSAO ENTRE `No on-screen text` E A PLACA — declarada, nao
-    # consertada. O `selar_takes` compartilhado injeta essa trava em todo TAKE,
-    # e a placa `GROWTH HACK` E' texto em cena. Eu cheguei a trocar a frase
-    # aqui e a `sc.lint_sem_texto` reprovou 800 de 800 — a trava e' cobrada
-    # pelo literal exato.
-    # ⛔ E FICA COMO ESTA', por evidencia e nao por comodismo: o PLACA 16 roda
-    # em producao com exatamente esta combinacao (cartao escrito a mao no
-    # quadro + `No on-screen text` no TAKE) e nao perde a placa. O TAKE anima
-    # uma IMAGE que JA' contem o cartao, e a trava serve para impedir LEGENDA
-    # QUEIMADA, nao para apagar um prop que tem letra.
-    # ⚠️ O que importa e' que a CAUDA da IMAGE (onde a placa nasce) nunca diga
-    # `no text` — e ela nao diz: so' `no subtitles, no captions, no watermark`.
-    # Se um dia um lote voltar sem a placa, este comentario e' o primeiro lugar
-    # a olhar.
+    # consertada. A trava compartilhada e' cobrada pelo literal exato pela
+    # `sc.lint_sem_texto` (trocar a frase reprovou 800 de 800), e o PLACA 16
+    # roda em producao com esta mesma combinacao sem perder o cartao: o TAKE
+    # anima uma IMAGE que JA' contem a placa. O primeiro lote do BANHO
+    # confirmou — a placa `GROWTH HACK` apareceu nos QUATRO renders.
     return blocos
 
 
@@ -904,9 +996,16 @@ def _ba3_sem_pessoa(spec, blocos, ach):
         return
     for nome in ("IMAGE 01/02", "IMAGE 02/02", "TAKE 01/02", "TAKE 02/02"):
         t = blocos.get(nome, "")
-        for pista in (" man ", " man,", " he ", " his ", " woman"):
-            if pista in t:
-                ach.append(("ERRO", "BA3: %s tem pessoa em quadro (%r) com o "
+        # ⚠️ A LENTE ACUSAVA A PROPRIA CORRECAO. Desde que as maos passaram a
+        # dizer de QUEM sao (`the hands of a 71-year-old Black American man`),
+        # o literal ` man,` aparece em todo bloco — e isso NAO e' pessoa em
+        # quadro, e' posse. A lente agora procura CORPO: alguem de pe', um
+        # rosto, um torso. Lente que reprova o certo ensina a ignorar a lente.
+        t_limpo = re.sub(r"hands of an? [^,]+ (?:man|woman)", "HANDS", t)
+        for pista in ("man stands", "man is standing", " his face", " her face",
+                      " woman ", "his back", "torso"):
+            if pista in t_limpo:
+                ach.append(("ERRO", "BA3: %s tem CORPO em quadro (%r) com o "
                                     "MODO PESSOA desligado"
                             % (nome, pista.strip())))
                 break
@@ -1217,7 +1316,8 @@ def autoteste(n=400):
          dict(b0, **{"IMAGE 01/02": "a shower with a jar"}), True),
         ("BA2 limpo", _ba2_rotulo, s0, b0, False),
         ("BA3 com homem e modo desligado", _ba3_sem_pessoa, s0,
-         dict(b0, **{"IMAGE 01/02": b0["IMAGE 01/02"] + " A man stands there."}),
+         dict(b0, **{"IMAGE 01/02": b0["IMAGE 01/02"]
+                     + " A man stands beside the tub."}),
          True),
         ("BA3 limpo", _ba3_sem_pessoa, s0, b0, False),
         ("BA5 com pecker na fala", _ba5_apelido,
@@ -1263,8 +1363,14 @@ def autoteste(n=400):
     if sem == com:
         falhas.append("MODO PESSOA: ligado e desligado produzem a MESMA IMAGE")
 
-    for e, minimo in (("banheiro", 8), ("superficie", 7), ("medida", 6),
-                      ("rotulo", 4), ("receita", 2), ("abertura", 2)):
+    # ⚠️ O piso e' o TAMANHO DO POOL, lido do proprio pool — numero cravado a
+    # mao vira falso alarme no dia em que uma entrada sai (foi o que aconteceu
+    # quando o `box_pedra` foi removido: 8 virou 7 e o autoteste reprovou o
+    # certo).
+    for e, minimo in (("banheiro", len(BANHEIROS)),
+                      ("superficie", len(SUPERFICIES)), ("medida", len(MEDIDAS)),
+                      ("rotulo", len(ROTULOS)), ("receita", len(RECEITAS)),
+                      ("abertura", 2)):
         if len(eixos[e]) < minimo:
             falhas.append("EIXO %s: so' %d valores em %d sorteios (pool tem %d)"
                           % (e, len(eixos[e]), n, minimo))
