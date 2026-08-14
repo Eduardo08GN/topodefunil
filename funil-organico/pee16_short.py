@@ -724,6 +724,7 @@ AMBIENTES = [
 # o video virar desgraca alheia, e desgraca alheia nao vende receita nenhuma.
 REFS = [
     {"id": "risca_lateral", "idade": 62,
+     "rotulo": "62y · castanho com risca + queixo fendido",
      "marca": "dark brown hair going gray only at the temples, combed into a "
               "low side part, a broad square face with a heavy flat brow and a "
               "wide mouth, lightly tanned skin, and a deep "
@@ -731,12 +732,14 @@ REFS = [
      "cabelo": "dark brown", "roupa": "Plain navy crew-neck tee shirt.",
      "roupa_curta": "navy tee shirt"},
     {"id": "topete_ferro", "idade": 66,
+     "rotulo": "66y · topete de ferro + pinta no malar",
      "marca": "thick iron-gray hair standing up from a high square hairline, a "
               "short broad face with full cheeks and a blunt upturned nose, and "
               "a dark mole high on his left cheekbone",
      "cabelo": "iron-gray", "roupa": "Plain olive crew-neck tee shirt.",
      "roupa_curta": "olive tee shirt"},
     {"id": "bico_de_viuva", "idade": 59,
+     "rotulo": "59y · bico de viuva + olhos fundos",
      "marca": "black hair shot through with gray, dropping to a low widow's "
               "peak at the center of his forehead, deep-set eyes under a heavy "
               "brow ridge and a long chin, and a raised dark mole in the "
@@ -744,6 +747,7 @@ REFS = [
      "cabelo": "black and gray", "roupa": "Plain charcoal crew-neck tee shirt.",
      "roupa_curta": "charcoal tee shirt"},
     {"id": "corte_rente", "idade": 64,
+     "rotulo": "64y · corte rente + orelha entalhada",
      "marca": "hair cropped close to the scalp all over, gray at the sides and "
               "darker on top, a wide flat-planed face with high cheekbones and "
               "a broad flat-bridged nose, and a small notch missing from the "
@@ -751,6 +755,7 @@ REFS = [
      "cabelo": "gray", "roupa": "Plain slate blue crew-neck tee shirt.",
      "roupa_curta": "slate blue tee shirt"},
     {"id": "cachos_colarinho", "idade": 61,
+     "rotulo": "61y · cachos no colarinho + brinco de ouro",
      "marca": "ash-gray hair worn long enough to curl over his collar, a narrow "
               "face with a high forehead and a thin straight nose, laugh lines "
               "fanning from the corners of his eyes, and a gold stud in his "
@@ -758,18 +763,21 @@ REFS = [
      "cabelo": "ash-gray", "roupa": "Plain faded red crew-neck tee shirt.",
      "roupa_curta": "faded red tee shirt"},
     {"id": "flat_top", "idade": 73,
+     "rotulo": "73y · flat-top estanho + pinta no olho",
      "marca": "a thick pewter flat-top cut squared off across the top, a long "
               "jaw and flat cheeks under high cheekbones, lightly tanned skin, "
               "and a dark mole at the outer corner of his left eye",
      "cabelo": "pewter", "roupa": "Plain heather gray crew-neck tee shirt.",
      "roupa_curta": "heather gray tee shirt"},
     {"id": "juba_para_tras", "idade": 71,
+     "rotulo": "71y · juba branca + pinta na tempora",
      "marca": "a heavy snow-white mane brushed straight back over his ears, a "
               "long narrow face on a tall rangy frame, and a small dark beauty "
               "mark on his right temple",
      "cabelo": "snow-white", "roupa": "Plain tan crew-neck tee shirt.",
      "roupa_curta": "tan tee shirt"},
     {"id": "franja_frente", "idade": 69,
+     "rotulo": "69y · franja na testa + sobrancelha unica",
      "marca": "a heavy gray-brown mop combed forward over his forehead, a round "
               "face with full cheeks, a short blunt nose and thick eyebrows "
               "that meet in a single line, and a raised mole beside his left "
@@ -777,24 +785,28 @@ REFS = [
      "cabelo": "gray-brown", "roupa": "Plain dusty blue crew-neck tee shirt.",
      "roupa_curta": "dusty blue tee shirt"},
     {"id": "mecha_branca", "idade": 64,
+     "rotulo": "64y · mecha branca + covinha no queixo",
      "marca": "gray hair parted on the side with a bright white streak at his "
               "left temple, a soft oval face with a rounded chin and wide-set "
               "eyes, and a deep dimple in his chin",
      "cabelo": "gray", "roupa": "Plain teal crew-neck tee shirt.",
      "roupa_curta": "teal tee shirt"},
     {"id": "cabelo_grosso", "idade": 67,
+     "rotulo": "67y · prata grosso + mancha no maxilar",
      "marca": "thick coarse silver hair cut short at the sides, a heavy-set "
               "square frame and a broad face with a short forehead, and a "
               "coin-sized dark birthmark on the side of his jaw",
      "cabelo": "silver", "roupa": "Plain black crew-neck tee shirt.",
      "roupa_curta": "black tee shirt"},
     {"id": "cabelo_fino", "idade": 58,
+     "rotulo": "58y · fino louro grisalho + argola",
      "marca": "fine sandy hair gone gray at the crown and combed flat, a lean "
               "face with a sharp chin and a long straight nose, and a small "
               "silver hoop in his left ear",
      "cabelo": "sandy gray", "roupa": "Plain forest green crew-neck tee shirt.",
      "roupa_curta": "forest green tee shirt"},
     {"id": "cabeca_quadrada", "idade": 70,
+     "rotulo": "70y · branco rente + rosto quadrado",
      "marca": "white hair cut in a short even taper, a wide square face with a "
               "low hairline and a jaw that squares off at the corners, "
               "smooth-skinned across the forehead, and a pale patch of white "
@@ -802,6 +814,7 @@ REFS = [
      "cabelo": "white", "roupa": "Plain brown crew-neck tee shirt.",
      "roupa_curta": "brown tee shirt"},
     {"id": "sardento", "idade": 63,
+     "rotulo": "63y · sal-e-pimenta + sardas no rosto",
      "marca": "thick salt-and-pepper hair with a stubborn cowlick at the crown, "
               "a round face and a blunt nose, a spray of dark freckles across "
               "his nose and both cheekbones, and a deep dimple in his left cheek",
@@ -809,18 +822,21 @@ REFS = [
      "roupa": "Plain rust orange crew-neck tee shirt.",
      "roupa_curta": "rust orange tee shirt"},
     {"id": "olhos_diferentes", "idade": 65,
+     "rotulo": "65y · aco penteado + olhos de duas cores",
      "marca": "steel-gray hair combed straight back, one eye pale ice-blue and "
               "the other dark brown, a narrow face with a high-bridged nose and "
               "a short upper lip",
      "cabelo": "steel-gray", "roupa": "Plain burgundy crew-neck tee shirt.",
      "roupa_curta": "burgundy tee shirt"},
     {"id": "preto_denso", "idade": 60,
+     "rotulo": "60y · preto denso + pinta sob o olho",
      "marca": "hair still mostly black, cut short and dense, gray only in front "
               "of the ears, a broad face with a heavy jaw and a short forehead, "
               "and a raised mole under his right eye",
      "cabelo": "black", "roupa": "Plain stone gray crew-neck tee shirt.",
      "roupa_curta": "stone gray tee shirt"},
     {"id": "cabelo_alto", "idade": 68,
+     "rotulo": "68y · branco alto + nariz com saliencia",
      "marca": "thick white hair standing high off a deep hairline, a long face "
               "with a narrow chin and a prominent bump in the bridge of his "
               "nose, laugh lines at the corners of his mouth, and a dark "
@@ -828,18 +844,21 @@ REFS = [
      "cabelo": "white", "roupa": "Plain denim blue crew-neck tee shirt.",
      "roupa_curta": "denim blue tee shirt"},
     {"id": "barril", "idade": 66,
+     "rotulo": "66y · estanho com risca + peito de barril",
      "marca": "short pewter hair with a hard part cut into the left side, a "
               "barrel-chested build and a wide round face, and a dark birthmark "
               "the size of a dime above his right eyebrow",
      "cabelo": "pewter", "roupa": "Plain mustard crew-neck tee shirt.",
      "roupa_curta": "mustard tee shirt"},
     {"id": "compacto", "idade": 74,
+     "rotulo": "74y · branco ralo + duas pintas na tempora",
      "marca": "thin white hair combed back off a high forehead, a long narrow "
               "face with sharp cheekbones on a compact frame, and two small "
               "dark moles in a line on his right temple",
      "cabelo": "white", "roupa": "Plain plum crew-neck tee shirt.",
      "roupa_curta": "plum tee shirt"},
     {"id": "ruivo_desbotado", "idade": 61,
+     "rotulo": "61y · ruivo desbotado + duas covinhas",
      "marca": "rust-red hair faded to sandy gray, cut short and combed to one "
               "side, a freckled face with laugh lines bracketing his mouth and "
               "a square chin, and a deep dimple in each cheek",
@@ -847,24 +866,28 @@ REFS = [
      "roupa": "Plain hunter green crew-neck tee shirt.",
      "roupa_curta": "hunter green tee shirt"},
     {"id": "cachos_escuros", "idade": 59,
+     "rotulo": "59y · cachos escuros + ombros largos",
      "marca": "dense dark curls cut close at the sides and gray at the temples, "
               "a broad-shouldered build and a wide open face with a heavy "
               "level brow, and a small dark mole above his left eyebrow",
      "cabelo": "dark", "roupa": "Plain cream crew-neck tee shirt.",
      "roupa_curta": "cream tee shirt"},
     {"id": "risca_no_meio", "idade": 72,
+     "rotulo": "72y · risca no meio + argola de prata",
      "marca": "fine ash-white hair parted down the middle and tucked behind his "
               "ears, a long jaw and a wide mouth, lightly tanned skin across "
               "the forehead, and a heavy silver ring in his right earlobe",
      "cabelo": "ash-white", "roupa": "Plain sky blue crew-neck tee shirt.",
      "roupa_curta": "sky blue tee shirt"},
     {"id": "escovinha", "idade": 63,
+     "rotulo": "63y · escovinha de ferro + pinta virgula",
      "marca": "iron-gray hair buzzed to an even short brush all over, a square "
               "heavy-set frame with a flat brow and small close-set eyes, and a "
               "birthmark shaped like a comma on his left cheek",
      "cabelo": "iron-gray", "roupa": "Plain maroon crew-neck tee shirt.",
      "roupa_curta": "maroon tee shirt"},
     {"id": "castanho_alto", "idade": 57,
+     "rotulo": "57y · castanho alto + queixo pontudo",
      "marca": "thick chestnut hair, gray above the ears, worn long on top and "
               "short at the sides, a heart-shaped face with a pointed chin and "
               "laugh lines around the eyes, and a small dark beauty mark "
@@ -872,6 +895,7 @@ REFS = [
      "cabelo": "chestnut", "roupa": "Plain slate crew-neck tee shirt.",
      "roupa_curta": "slate tee shirt"},
     {"id": "ondas_baixas", "idade": 65,
+     "rotulo": "65y · ondas grisalhas + nariz largo",
      "marca": "heavy gray waves worn low across the forehead, a wide flat face "
               "with a broad nose and a heavy under-jaw, and a pale patch of "
               "white skin the size of a coin on his right jaw",
@@ -1460,6 +1484,23 @@ def _evitando(rng, pool, recentes):
     return rng.choice(livres if livres else pool)
 
 
+def _por_id(pool, ident):
+    """A entrada de `id` igual a `ident` — ou `None` quando ela nao existe.
+
+    ⭐⭐ 2026-08-13 — NASCEU COM O DROPDOWN DE NARRADOR (`DROPDOWNS_UI`). O
+    combobox devolve o `id` do REF escolhido, e sem esta funcao o motor nao
+    tinha COMO honrar essa escolha: o `_sortear_longo` so' conhecia `forte`,
+    `bela` e o sorteio livre.
+    ⛔ Devolve `None` de proposito, e quem chama decide o fallback. Cair no
+    `pool[0]` aqui seria o pior dos mundos: o operador escolheria o 18o REF do
+    menu, o motor entregaria o 1o, e a tela ainda diria que a trava funcionou —
+    a familia inteira do BOTAO QUE MENTE, so' que por id errado.
+    ⚠️ Ele nao consome `rng`: um id invalido nao pode deslocar a sequencia de
+    sorteio dos outros eixos.
+    """
+    return next((e for e in pool if e.get("id") == ident), None)
+
+
 # 3 dos 20 hooks matam o orgao com verbo literal (`killed his {o}`, `has been
 # dead two years`, `plays dead`). Dois dos 7 substantivos do NUCLEO sao ANIMADOS
 # (`old boy`, `soldier`) — e o cruzamento dos dois nao produz um absurdo que o
@@ -1532,8 +1573,37 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     # ⚠️ O MODO FORTE continua passando por fora — ele nao sai do `REFS`, entao
     # nao ha' historico a evitar. O `_gravar_ledger` grava o `id` que vier
     # (`forte_<idade>`), e ele nunca colide com um id do pool.
-    ref = (sc.ref_forte(REFS[0], rng) if _tv.get("forte")
+    # ⭐⭐ 2026-08-13 — O DROPDOWN DE NARRADOR ENTRA AQUI, E ANTES DO MODO
+    # FORTE. Ordem do operador: *"quando selecionado determinada opcao, o ref
+    # ficara' FIXO naquele selecionado para quaisquer sorteio"*.
+    # ⛔ A ORDEM NAO E' ESTILO. `sc.ref_forte` devolve uma PESSOA INTEIRA, de
+    # fora do pool; se ele viesse primeiro, escolher `74y · branco ralo + duas
+    # pintas na tempora` no menu entregaria outro homem sempre que o MODO FORTE
+    # estivesse aceso — o botao que mente, medido tres vezes neste repo.
+    # ⚠️ O `ui_agente` ja' desliga os modos de pessoa quando `ref` esta' na
+    # trava; esta linha e' a segunda rede, para quem chama o motor direto (o
+    # `--autoteste`, a linha de comando, um script de lote).
+    # ⚠️ E o `or` no fim e' o que impede a trava de matar o sorteio: id que nao
+    # existe mais no pool (ledger velho, menu de outra versao) cai no caminho
+    # normal em vez de estourar `None` la' na frente.
+    ref = (_por_id(REFS, _tv["ref"]) if _tv.get("ref") else None) or (
+           sc.ref_forte(REFS[0], rng) if _tv.get("forte")
            else _evitando(rng, REFS, hist.get("ref", [])[-8:]))
+    # ⛔⛔ O ROTULO NAO ATRAVESSA O MODO FORTE — e isso e' consequencia direta de
+    # ter criado a chave. O `sc.ref_forte` monta a saida com `for campo in
+    # molde`, e todo campo que ele nao conhece e' COPIADO do molde (aqui,
+    # `REFS[0]`). Medido em 2026-08-13: com o botao FORTE aceso saia um homem de
+    # 31 anos carregando `62y · castanho com risca + queixo fendido`. Nao chega
+    # ao prompt nem ao painel hoje, mas e' dado errado esperando um leitor — e o
+    # proximo leitor seria um dropdown lendo a spec em vez do pool.
+    # ⚠️ O `pop` so' acontece quando o dicionario veio DO HELPER (`_forte`): as
+    # entradas de `_por_id` e do `_evitando` sao o proprio objeto do pool, e
+    # apagar a chave ali mutilaria o pool para o resto do processo.
+    # ⛔ O conserto e' LOCAL, nao no `short_comum`: aquele helper serve 43
+    # motores e mexer nele para resolver um campo que so' dois motores tem seria
+    # trocar um dado errado por um risco de regressao em quarenta e um.
+    if ref.get("_forte"):
+        ref.pop("rotulo", None)
     vit = _evitando(rng, VITIMAS, hist.get("vitima", [])[-6:])
     mul = (sc.ref_bela(MULHERES[0], rng) if _tv.get("bela")
            else rng.choice(MULHERES))
@@ -1729,6 +1799,23 @@ EIXOS_UI = [
     ("vitima", "VÍTIMA", "VITIMAS", "id"),
     ("mulher", "MULHER", "MULHERES", "payoff"),
 ]
+
+# ⭐⭐ O DROPDOWN DE NARRADOR — 2026-08-13, ordem do operador (*"quero um
+# controlador ui ux com seletor dropdown menu, onde que, quando selecionado
+# determinada opcao, o ref ficara' FIXO naquele selecionado para quaisquer
+# sorteio"*). Contrato aditivo do `ui_agente`, o mesmo que o MEL 16 estreou.
+# ⛔ E' ELE que da' FUNCAO ao campo `rotulo` dos 24 REFs. Sem esta linha os 24
+# textos seriam comentario caro — escritos, medidos, travados, e invisiveis.
+# Forma sem funcao e' o defeito que este repo mais paga (licoes §41).
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado; com 24 narradores ela estoura a largura da janela.
+# ⚠️ O ROTULO DA TELA E' O MESMO DO `EIXOS_UI` (`NARRADOR`), de proposito: dois
+# nomes para o mesmo eixo fazem o operador procurar dois controles onde ha' um.
+# ⚠️ E o campo exibido e' `rotulo`, nao `id`: `62y · castanho com risca +
+# queixo fendido` diz o rosto; `risca_lateral` obriga a abrir o codigo. O
+# `EIXOS_UI` acima continua com `id` porque la' o painel ja' antepoe a idade —
+# `rotulo` sairia `62y · 62y · castanho...`.
+DROPDOWNS_UI = [("ref", "NARRADOR", "REFS", "rotulo")]
 
 PT_LOCAL = {
     "mercado": "No corredor do mercado", "farmacia": "No corredor da farmácia",
@@ -2578,6 +2665,75 @@ _DENTE = ("crown on one", "gold crown", "gap between his front teeth",
           "gap between her front teeth", "missing tooth")
 
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ O CONTRATO DO DROPDOWN — medido, nunca declarado
+# ---------------------------------------------------------------------------
+# 2026-08-13. O `DROPDOWNS_UI` e o campo `rotulo` nasceram juntos e so' valem
+# juntos: rotulo sem a linha e' comentario caro (24 textos que olho nenhum ve'),
+# e a linha sem rotulo desenha um menu de `id`s que so' o autor entende.
+# ⛔ AS QUATRO TRAVAS DE FORMA, e o preco de cada uma se cair:
+#   1. rotulo em TODA entrada — o `ui_agente` cai no `id` e o menu vira codigo.
+#   2. rotulo UNICO — o `_barra_dropdowns` monta o mapa com `if txt and txt not
+#      in mapa`: dois rotulos iguais fazem o SEGUNDO narrador SUMIR do menu, em
+#      silencio, sem erro e sem log. Pool de 24 que so' se alcanca em 23.
+#   3. rotulo <= 42 chars — o combobox e' `width=38`; o que passa disso sai
+#      cortado na tela, e rotulo cortado volta a ser ilegivel, que e' exatamente
+#      o problema que ele veio resolver.
+#   4. pool e campo EXISTENTES — o `ui_agente` resolve o pool com
+#      `getattr(motor, nome, [])`, que devolve lista vazia sem reclamar: nome
+#      errado desenha um menu com uma opcao so' (`livre`) e nada acontece.
+# ⛔⛔ E A QUINTA E' A QUE IMPORTA: A ESCOLHA TEM DE FIXAR DE VERDADE. As quatro
+# de cima medem a FORMA do menu; esta mede a FUNCAO — sorteia COM a trava e
+# confere que o eixo saiu o escolhido. E' a licao §41 em uma linha: verificar a
+# forma e declarar pronto foi como este repo ja' entregou botao que nao entrega.
+# ⚠️ Tudo entra por ARGUMENTO (§16): e' o que deixa o sabotador plantar rotulo
+# vazio, rotulo repetido, rotulo comprido, pool inexistente e ate' um `sortear`
+# que IGNORA a trava, sem encostar no motor de verdade.
+def _medir_dropdowns(dropdowns, pools, sortear_fn=None, paginas=()):
+    """As travas do `DROPDOWNS_UI` + do campo `rotulo`, medidas."""
+    achados = []
+    for chave, tela, nome_pool, campo in dropdowns:
+        if nome_pool not in pools:
+            achados.append("DROPDOWNS_UI %r aponta para o pool %r, que nao "
+                           "existe — o `getattr` devolve [] e o menu nasce "
+                           "vazio, sem erro nenhum" % (chave, nome_pool))
+            continue
+        pool = pools[nome_pool]
+        sem = [e.get("id", "?") for e in pool if not e.get(campo)]
+        if sem:
+            achados.append("DROPDOWNS_UI %r: %d entrada(s) de %s sem %r — o "
+                           "menu cai no `id` e o operador le' %r"
+                           % (chave, len(sem), nome_pool, campo, sem[0]))
+        rots = [e.get(campo) or "" for e in pool]
+        rep = sorted({r for r in rots if r and rots.count(r) > 1})
+        if rep:
+            achados.append("DROPDOWNS_UI %r: %d rotulo(s) repetido(s) (%r) — a "
+                           "segunda entrada some do menu sem erro nenhum"
+                           % (chave, len(rep), rep[0]))
+        longos = [r for r in rots if len(r) > 42]
+        if longos:
+            achados.append("DROPDOWNS_UI %r: %d rotulo(s) acima de 42 chars "
+                           "(%r, %d) — estoura a largura do combobox"
+                           % (chave, len(longos), longos[0], len(longos[0])))
+        # ⛔⛔ A TRAVA TEM DE FIXAR. Sem esta parte o menu poderia estar
+        # perfeito na tela e o motor continuar sorteando livre — que e' o
+        # estado em que este arquivo estava antes de 2026-08-13.
+        if sortear_fn and paginas:
+            for i, e in enumerate(pool):
+                alvo = e.get("id")
+                if not alvo:
+                    continue
+                s = sortear_fn(paginas[i % len(paginas)],
+                               random.Random(7000 + i), {}, {chave: alvo})
+                saiu = (s.get(chave) or {}).get("id")
+                if saiu != alvo:
+                    achados.append("DROPDOWNS_UI %r: escolher %r no menu %s "
+                                   "entregou %r — o botao que mente"
+                                   % (chave, alvo, tela, saiu))
+                    break
+    return achados
+
+
 def autoteste(n=400):
     falhas = []
 
@@ -2593,6 +2749,75 @@ def autoteste(n=400):
             dup = [i for i, c in collections.Counter(ids).items() if c > 1]
             falhas.append("%s: id repetido %s — o ledger passa a evitar duas "
                           "entradas de uma vez" % (nome, dup))
+
+    # -- 1b. O DROPDOWN E O ROTULO -----------------------------------------
+    _pags = sorted(ETNIA)
+    falhas.extend(_medir_dropdowns(DROPDOWNS_UI, {"REFS": REFS},
+                                   sortear, _pags))
+    # ⛔ Os rotulos do menu sao PORTUGUES e nao podem chegar ao prompt: um
+    # vazamento poria `62y · castanho com risca` dentro de um bloco IMAGE em
+    # ingles, e o Veo desenha texto. A lente e' de AUSENCIA — olha os blocos
+    # MONTADOS, nao a intencao de quem escreveu o `montar`.
+    # ⚠️ E ela varre o pool inteiro, um sorteio por REF: lente de vazamento que
+    # olha um bloco so' mede a sorte da seed, nao o motor.
+    _rots = [r.get("rotulo") or "" for r in REFS]
+    for _i, _r in enumerate(REFS):
+        _bj = " ".join(montar(sortear(_pags[_i % len(_pags)],
+                                      random.Random(8000 + _i), {},
+                                      {"ref": _r["id"]})).values())
+        _vaza = [x for x in _rots if x and x in _bj]
+        if _vaza:
+            falhas.append("ROTULO: o texto de painel %r vazou para um bloco do "
+                          "prompt — ele e' portugues e o Veo desenha texto"
+                          % _vaza[0])
+            break
+    # ⛔ OS CONTROLES DA LENTE DO DROPDOWN. `0 falha` num gate novo e' suspeita,
+    # nao aprovacao: pode ser motor limpo ou regra morta. Cada sabotador abaixo
+    # tem de CHEGAR onde a lente olha (licoes §16) — por isso os pools e ate' o
+    # `sortear` entram por argumento.
+    _ctrl = []
+    _vazio = dict(REFS[0]); _vazio["rotulo"] = ""
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": [_vazio] + REFS[1:]}):
+        _ctrl.append("a lente NAO acusa rotulo VAZIO")
+    _dup = dict(REFS[1]); _dup["rotulo"] = REFS[0]["rotulo"]
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": [REFS[0], _dup] + REFS[2:]}):
+        _ctrl.append("a lente NAO acusa rotulo REPETIDO")
+    _long = dict(REFS[0]); _long["rotulo"] = "x" * 43
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": [_long] + REFS[1:]}):
+        _ctrl.append("a lente NAO acusa rotulo com mais de 42 chars")
+    if not _medir_dropdowns([("ref", "NARRADOR", "REFS_QUE_NAO_EXISTEM",
+                             "rotulo")], {"REFS": REFS}):
+        _ctrl.append("a lente NAO acusa `DROPDOWNS_UI` apontando para pool "
+                     "inexistente")
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": REFS},
+                            lambda p, r, l, t=None: sortear(p, r, l), _pags):
+        _ctrl.append("a lente NAO acusa um `sortear` que IGNORA a trava — e' a "
+                     "unica das cinco que mede FUNCAO")
+    # ⛔ O ROTULO NAO PODE ATRAVESSAR O MODO FORTE. O `sc.ref_forte` copia do
+    # molde todo campo que ele nao conhece, e `rotulo` e' um deles: sem o `pop`
+    # do `_sortear_longo` o homem de 31 anos sai carregando o rotulo do senhor
+    # de 62. Nao vaza para o prompt, mas e' dado errado esperando um leitor.
+    for _s in range(40):
+        _rf = sortear("joe", random.Random(9000 + _s), {}, {"forte": True})
+        if _rf["ref"].get("rotulo"):
+            falhas.append("MODO FORTE: a REF saiu com o rotulo %r, que e' de "
+                          "outro homem — o `pop` do `_sortear_longo` caiu"
+                          % _rf["ref"]["rotulo"])
+            break
+    # ⚠️ E o controle: a saida CRUA do helper TEM o rotulo. Sem esta linha eu
+    # nao saberia se a lente acima esta' verde porque o `pop` funciona ou porque
+    # o helper nunca copiou nada — regra que nunca teve o que pegar e' regra
+    # morta pintada de verde.
+    if not sc.ref_forte(REFS[0], random.Random(7)).get("rotulo"):
+        _ctrl.append("o `sc.ref_forte` NAO copia mais o `rotulo` do molde — a "
+                     "lente do MODO FORTE virou regra morta, confira o helper")
+    # ⛔ E o pool nao pode ter sido mutilado pelo `pop`: se o `_forte` falhasse
+    # e a entrada do pool fosse a que perdeu a chave, o menu perderia a opcao.
+    if any(not r.get("rotulo") for r in REFS):
+        falhas.append("REFS: uma entrada do POOL perdeu o `rotulo` — o `pop` "
+                      "do MODO FORTE encostou no objeto do pool")
+    for _c in _ctrl:
+        falhas.append("CONTROLE NEGATIVO: %s" % _c)
 
     # -- 2. A JANELA DO LEDGER TEM DE CABER NO POOL ------------------------
     # ⛔ janela >= pool deixa `livres` vazio, o `_evitando` cai no pool inteiro

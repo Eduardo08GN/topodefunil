@@ -115,6 +115,7 @@ class App(tk.Tk):
         self.minsize(1180, 760)
 
         self.spec = None
+        self._toast_anulado = ()
         self.blocos = {}
         self.achados = []
         self.rng = random.Random()
@@ -926,12 +927,44 @@ class App(tk.Tk):
             if self.modo_on[chave] else "desligado"))
 
     def _pintar_modos(self):
+        """⭐⭐ TRES estados, nao dois: aceso, apagado e ANULADO.
+
+        ⛔⛔ O terceiro nasceu em 2026-08-13, junto com o seletor de REF, e a
+        razao esta' medida: escolher um REF no dropdown APAGA um modo de REF em
+        dez dos vinte e dois motores — em `good16` e `prato16` o modo apagado
+        era o FORTE, que nasce LIGADO. O operador escolhia o homem, o video
+        saia sem musculo, e o botao continuava laranja.
+
+        ⚠️ E as duas causas sao ANTERIORES ao dropdown: o `travas()` derruba
+        modo de REF quando ha' `t["ref"]` (regra escrita para o cadeado), e dois
+        motores fazem `forte = ... and not travas.get("homem")`. O que o
+        dropdown fez foi transformar um caminho raro no caminho comum.
+
+        ⭐ Em vez de adivinhar QUAL causa anulou, o botao compara o que ele
+        promete com o que o SPEC entregou. Assim ele fica honesto para as duas
+        causas e para a proxima, sem a UI precisar conhecer a regra do motor —
+        aceite e' MEDICAO, e aqui a medicao e' o proprio resultado.
+        """
+        mortos = []
         for chave, b in self.b_modo.items():
             on = self.modo_on[chave]
-            b.configure(bg=ACCENT if on else PANEL2,
-                        fg="#ffffff" if on else MUTED,
-                        activebackground=ACCENT_D if on else LINE,
-                        activeforeground="#ffffff")
+            anulado = bool(on and self.spec is not None
+                           and chave in self.spec and not self.spec.get(chave))
+            if anulado:
+                mortos.append(chave.upper())
+                b.configure(bg=AVISO, fg="#141414",
+                            activebackground=AVISO, activeforeground="#141414")
+            else:
+                b.configure(bg=ACCENT if on else PANEL2,
+                            fg="#ffffff" if on else MUTED,
+                            activebackground=ACCENT_D if on else LINE,
+                            activeforeground="#ffffff")
+        # ⚠️ A cor sozinha e' um codigo a decifrar, e o operador que nao decifra
+        # embarca o video achando que o modo entrou. O aviso diz a palavra.
+        if mortos and self._toast_anulado != tuple(mortos):
+            self._toast("modo %s ANULADO — o REF escolhido manda mais que ele; "
+                        "este video sai SEM o modo" % " e ".join(mortos))
+        self._toast_anulado = tuple(mortos)
 
     def _pintar_pele(self):
         # ⚠️ Motor com PELE_TRAVAVEL: aceso = TRAVADO, apagado = livre. Acender
@@ -1023,6 +1056,10 @@ class App(tk.Tk):
         self.lbl_resumo.configure(text=self.m.resumo_pt(self.spec))
         self._pintar_pele()
         self._pintar_sexo()
+        # ⚠️ O estado ANULADO so' existe DEPOIS do sorteio: e' o spec
+        # que revela se o modo chegou ao video.
+        if self.b_modo:
+            self._pintar_modos()
 
         usados = sorted({t for f in self.spec["falas"] for t in termos_reescritos(f)})
         self.lbl_sonoro.configure(

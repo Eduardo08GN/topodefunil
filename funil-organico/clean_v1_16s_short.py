@@ -335,24 +335,42 @@ SCRUBS = ["deep burgundy", "deep teal", "navy blue", "forest green",
 # RESSECADO, duro, sem hidratacao. Todo `cabeca` feminino carrega um token de
 # saude capilar (glossy/silky/sleek/sheen/smooth) — assert de carga abaixo.
 REFS_M = [
-    {"idade": 29, "cabeca": "her hair in neat glossy cornrows pulled back",
+    {"idade": 29,
+     "rotulo": "29y · cornrows + sinal na sobrancelha",
+     "cabeca": "her hair in neat glossy cornrows pulled back",
      "marca": "a small dark beauty mark above her left eyebrow"},
-    {"idade": 32, "cabeca": "her hair in a sleek shining low bun",
+    {"idade": 32,
+     "rotulo": "32y · coque baixo + malar alto",
+     "cabeca": "her hair in a sleek shining low bun",
      "marca": "high cheekbones and a small dark beauty mark at the corner of her jaw"},
-    {"idade": 27, "cabeca": "shoulder-length glossy straight hair tucked behind her ears",
+    {"idade": 27,
+     "rotulo": "27y · liso na altura do ombro + sardas",
+     "cabeca": "shoulder-length glossy straight hair tucked behind her ears",
      "marca": "a light spray of freckles high on her cheeks"},
-    {"idade": 34, "cabeca": "short soft natural curls, glossy and well-defined",
+    {"idade": 34,
+     "rotulo": "34y · cachos curtos + covinha funda",
+     "cabeca": "short soft natural curls, glossy and well-defined",
      "marca": "a deep dimple in her left cheek"},
-    {"idade": 30, "cabeca": "long silky hair pulled back into a smooth high ponytail",
+    {"idade": 30,
+     "rotulo": "30y · rabo de cavalo alto + olho verde",
+     "cabeca": "long silky hair pulled back into a smooth high ponytail",
      "marca": "striking pale green eyes"},
-    {"idade": 36, "cabeca": "long neat braids with a healthy sheen, gathered over one shoulder",
+    {"idade": 36,
+     "rotulo": "36y · trancas longas + sinal no queixo",
+     "cabeca": "long neat braids with a healthy sheen, gathered over one shoulder",
      "marca": "a small dark beauty mark on her chin"},
-    {"idade": 28, "cabeca": "a blunt glossy dark bob",
+    {"idade": 28,
+     "rotulo": "28y · chanel escuro + boca cheia",
+     "cabeca": "a blunt glossy dark bob",
      "marca": "full lips and a small dark beauty mark just below the outer "
               "corner of her left eye"},
-    {"idade": 38, "cabeca": "thick silky auburn hair, smooth and glossy, falling loose past her shoulders",
+    {"idade": 38,
+     "rotulo": "38y · ruivo solto + sardas no nariz",
+     "cabeca": "thick silky auburn hair, smooth and glossy, falling loose past her shoulders",
      "marca": "a dense spray of freckles across her nose"},
-    {"idade": 40, "cabeca": "smooth glossy dark hair with a sharp widow's peak, swept back",
+    {"idade": 40,
+     "rotulo": "40y · bico de viuva + olhos bicolores",
+     "cabeca": "smooth glossy dark hair with a sharp widow's peak, swept back",
      "marca": "eyes of two different colours, one green and one brown"},
     # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
     # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
@@ -364,73 +382,107 @@ REFS_M = [
     # esquerda (= idade 34) e heterocromia verde/marrom (= idade 40). Ancora
     # repetida remenda o morphing, regra do proprio pool.
     {"idade": 26,
+     "rotulo": "26y · tranca preta unica + malar redondo",
      "cabeca": "long silky jet-black hair in a single braid over one shoulder",
      "marca": "high round cheekbones and clear glowing skin"},
     {"idade": 31,
+     "rotulo": "31y · chanel platinado + argola no nariz",
      "cabeca": "a sleek bleached-platinum bob cut sharp at the jaw",
      "marca": "a small silver hoop through her left nostril"},
     {"idade": 24,
+     "rotulo": "24y · ruivo cobre + olho azul claro",
      "cabeca": "thick glossy copper-red hair falling loose past her shoulders",
      "marca": "a dense spray of freckles over both cheeks and pale blue eyes"},
     {"idade": 33,
+     "rotulo": "33y · cachos volumosos + covinha leve",
      "cabeca": "a big loose curl-out worn wide, soft and glossy",
      "marca": "full lips and a faint dimple in her right cheek"},
     {"idade": 28,
+     "rotulo": "28y · castanho ruivo + olho ambar",
      "cabeca": "shoulder-length glossy auburn hair tucked behind one ear",
      "marca": "striking light amber eyes"},
     {"idade": 35,
+     "rotulo": "35y · box braids ate a cintura + sorriso",
      "cabeca": "waist-length box braids with a healthy sheen, gathered over one shoulder",
      "marca": "smooth luminous skin and a wide bright smile"},
     {"idade": 27,
+     "rotulo": "27y · liso longo com risca ao meio",
      "cabeca": "very long silky straight dark hair parted in the middle",
      "marca": "arched brows and a small beauty mark high on her left cheek"},
     {"idade": 30,
+     "rotulo": "30y · caramelo ondulado + marca coracao",
      "cabeca": "chin-length smooth wavy caramel hair pushed back off her forehead",
      "marca": "a small heart-shaped birthmark below her right ear"},
 ]
 REFS_H = [
-    {"idade": 48, "cabeca": "short greying hair and a close-cropped beard", "marca": "a deep cleft in his chin"},
-    {"idade": 52, "cabeca": "a clean-shaven head and a short grey beard", "marca": "heavy level brows over wide-set eyes"},
-    {"idade": 44, "cabeca": "short dark hair combed back, clean-shaven", "marca": "a small mole on his left cheek"},
-    {"idade": 55, "cabeca": "thinning grey hair and a full grey moustache", "marca": "laugh lines at the corners of his eyes"},
-    {"idade": 41, "cabeca": "short cropped hair and a neat goatee", "marca": "a small gold stud in his left earlobe"},
-    {"idade": 50, "cabeca": "salt-and-pepper hair cut short, clean-shaven", "marca": "a small notch in his right eyebrow"},
+    {"idade": 48,
+     "rotulo": "48y · grisalho curto + fenda no queixo",
+     "cabeca": "short greying hair and a close-cropped beard", "marca": "a deep cleft in his chin"},
+    {"idade": 52,
+     "rotulo": "52y · careca + barba grisalha curta",
+     "cabeca": "a clean-shaven head and a short grey beard", "marca": "heavy level brows over wide-set eyes"},
+    {"idade": 44,
+     "rotulo": "44y · escuro penteado + pinta na bochecha",
+     "cabeca": "short dark hair combed back, clean-shaven", "marca": "a small mole on his left cheek"},
+    {"idade": 55,
+     "rotulo": "55y · ralo grisalho + bigode farto",
+     "cabeca": "thinning grey hair and a full grey moustache", "marca": "laugh lines at the corners of his eyes"},
+    {"idade": 41,
+     "rotulo": "41y · rente + cavanhaque + brinco de ouro",
+     "cabeca": "short cropped hair and a neat goatee", "marca": "a small gold stud in his left earlobe"},
+    {"idade": 50,
+     "rotulo": "50y · sal-e-pimenta + barbeado",
+     "cabeca": "salt-and-pepper hair cut short, clean-shaven", "marca": "a small notch in his right eyebrow"},
     # + 2026-08-03 — mesmo motivo do REFS_M acima: oculos e pele estavam em 0%.
     # ⛔ Nenhuma repete a ancora facial das seis de cima (cicatriz na
     # sobrancelha, linhas na testa, pinta na bochecha, vincos no olho, cicatriz
     # no queixo, entalhe na sobrancelha): ancora repetida remenda o morphing.
-    {"idade": 57, "cabeca": "a bald crown with grey at the sides and a chevron moustache, thin gold-rimmed glasses",
+    {"idade": 57,
+     "rotulo": "57y · careca + bigode + oculos dourados",
+     "cabeca": "a bald crown with grey at the sides and a chevron moustache, thin gold-rimmed glasses",
      "marca": "lightly tanned even skin and a coin-sized birthmark on his left temple"},
-    {"idade": 43, "cabeca": "thick dark hair with a sharp widow's peak, clean-shaven, boxy clear-framed glasses",
+    {"idade": 43,
+     "rotulo": "43y · bico de viuva + oculos claros",
+     "cabeca": "thick dark hair with a sharp widow's peak, clean-shaven, boxy clear-framed glasses",
      "marca": "freckled skin across the bridge of his nose"},
-    {"idade": 61, "cabeca": "a full head of white hair and a bristly white beard, heavy black-framed bifocals",
+    {"idade": 61,
+     "rotulo": "61y · branco farto + barba + bifocais",
+     "cabeca": "a full head of white hair and a bristly white beard, heavy black-framed bifocals",
      "marca": "smooth even skin and a wide easy smile"},
     # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
     # personagens... faca isso para pelo menos outros 5 agentes shorts"*.
     # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
     # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
     {"idade": 52,
+     "rotulo": "52y · careca + barba sal-e-pimenta cheia",
      "cabeca": "a shaved head and a full salt-and-pepper beard",
      "marca": "a broad straight nose with a wide bridge"},
     {"idade": 45,
+     "rotulo": "45y · escuro com tempora grisalha + mecha",
      "cabeca": "thick dark hair going grey at the temples, clean-shaven",
      "marca": "a patch of white hair above his left temple"},
     {"idade": 57,
+     "rotulo": "57y · rente + bigode fino + oculos de aro",
      "cabeca": "close-cropped iron-grey hair and a neat pencil moustache",
      "marca": "wire-rimmed glasses and high wide cheekbones"},
     {"idade": 41,
+     "rotulo": "41y · cachos escuros + barba por fazer",
      "cabeca": "dark curls kept short and dense, a two-day shadow",
      "marca": "a notch cut through his right eyebrow"},
     {"idade": 60,
+     "rotulo": "60y · careca + bigode branco grosso",
      "cabeca": "a bald crown with white hair close at the sides",
      "marca": "a thick white moustache and a small dark beauty mark below his right eye"},
     {"idade": 49,
+     "rotulo": "49y · ondulado sal-e-pimenta + sardas",
      "cabeca": "wavy salt-and-pepper hair worn long at the collar",
      "marca": "a light spray of freckles across the bridge of his nose"},
     {"idade": 54,
+     "rotulo": "54y · escovinha grisalha + olho azul",
      "cabeca": "grey hair in a flat brush cut and a short greying beard",
      "marca": "very pale blue eyes under dark brows"},
     {"idade": 44,
+     "rotulo": "44y · coils rente + covinha funda",
      "cabeca": "close-cropped coils with a sharp lined edge, clean-shaven",
      # ⛔ era `a wide gap between his two front teeth` — o assert do CL25
      # barrou no primeiro merge (dente nao e' marca; vira banguelo no Veo)
@@ -1911,6 +1963,101 @@ def autoteste(n=600):
     # acusado. Regra que reprova tudo nunca foi testada.
     if _medir_pools(CENARIOS, REFS_M, REFS_H, CORPOS_H, CORPOS_M):
         ctrl.append("o pool limpo esta' sendo reprovado pela propria sonda")
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — o texto que o menu suspenso do painel
+    # desenha (2026-08-13, ordem do operador: *"implemente esse mecanismo e
+    # menu drop down para todos os demais agentes 16"*).
+    # ⚠️ AQUI OS DOIS POOLS DIVIDEM UM MENU SO'. O eixo `ref` sai de REFS_H ou
+    # de REFS_M conforme o SEXO sorteado, entao o operador ve' as 34 pessoas na
+    # mesma lista — e a unicidade tem de valer no CONJUNTO, nao pool a pool.
+    # Duas mulheres com rotulos iguais seria colisao dentro do mesmo pool; uma
+    # mulher e um homem com o mesmo rotulo e' colisao entre pools, e o
+    # `ui_agente._barra_dropdowns` monta o mapa com `if txt not in mapa` — o
+    # SEGUNDO some do menu em silencio, sem erro e sem log.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` + folga): rotulo
+    # maior sai cortado, e rotulo cortado volta a ser ilegivel — que e'
+    # exatamente o problema que ele veio resolver.
+    _refs = REFS_M + REFS_H
+    _rot = [x.get("rotulo") or "" for x in _refs]
+    _sem = [x["cabeca"][:32] for x in _refs if not x.get("rotulo")]
+    if _sem:
+        falhas.append("ROTULO: %d REF(s) sem rotulo — o dropdown cai no `id` e "
+                      "o operador le' %r" % (len(_sem), _sem[0]))
+    _rep = sorted({r for r in _rot if _rot.count(r) > 1})
+    if _rep:
+        falhas.append("ROTULO: %d rotulo(s) repetido(s) (%r) — a segunda REF "
+                      "some do dropdown sem erro nenhum" % (len(_rep), _rep[0]))
+    _longos = [r for r in _rot if len(r) > 42]
+    if _longos:
+        falhas.append("ROTULO: %d rotulo(s) acima de 42 chars (%r, %d) — "
+                      "estoura a largura do menu"
+                      % (len(_longos), _longos[0], len(_longos[0])))
+    # ⛔ E o rotulo e' PORTUGUES: se vazar para um bloco, o Veo desenha o texto.
+    # A lente e' de AUSENCIA e varre o pool inteiro — um sorteio so' mediria a
+    # sorte da seed.
+    _junto = " ".join(" ".join(montar(sortear("joe", random.Random(700 + k),
+                                              {}, {})).values())
+                      for k in range(12))
+    _vaza = [r for r in _rot if r and r in _junto]
+    if _vaza:
+        falhas.append("ROTULO: o texto de painel %r vazou para um bloco do "
+                      "prompt — ele e' portugues e o Veo desenha texto"
+                      % _vaza[0])
+
+    # ⛔⛔ E A TRAVA QUE GUARDA O BURACO. `DROPDOWNS_UI` NAO E' DECLARADO neste
+    # motor, e o motivo esta' medido: o `ui_agente` monta o mapa do menu com
+    # `mapa[texto] = e.get("id")`, e NENHUMA entrada de REFS_M/REFS_H tem `id`
+    # — elas sao {idade, cabeca, marca}. Declarar hoje renderiza um menu de 17
+    # opcoes em que TODO valor vira `None`, o `travas()` descarta, e a REF
+    # continua sorteando: menu que promete e nao entrega, que e' pior do que
+    # menu ausente. (Medido em 2026-08-13: 8 sorteios com a opcao escolhida
+    # devolveram 6 rostos diferentes.)
+    # ⚠️ Entao esta lente fica ARMADA e DORMENTE: no dia em que alguem declarar
+    # o `DROPDOWNS_UI`, ela cobra as duas coisas que faltam — `id` em toda
+    # entrada e um `sortear` que FIXA por esse id. Sem ela, o buraco reabre
+    # calado e so' aparece no lote.
+    for _ch, _lbl, _pool_nome, _campo in list(globals().get("DROPDOWNS_UI") or []):
+        _p = globals().get(_pool_nome)
+        if not isinstance(_p, list) or not _p:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe no motor — o "
+                          "menu nasce vazio" % _pool_nome)
+            continue
+        _faltam = [x for x in _p if not str(x.get(_campo) or "")]
+        if _faltam:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem o campo %r"
+                          % (len(_faltam), _pool_nome, _campo))
+        _sem_id = [x for x in _p if not x.get("id")]
+        if _sem_id:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem `id` — o "
+                          "ui_agente mapeia o menu para None e o eixo continua "
+                          "sorteando" % (len(_sem_id), _pool_nome))
+            continue
+        _alvo = _p[0]["id"]
+        _v = {sortear("joe", random.Random(800 + k), {},
+                      {_ch: _alvo})[_ch].get("id") for k in range(8)}
+        if _v != {_alvo}:
+            falhas.append("DROPDOWNS_UI: travar %r em %r devolveu %r — o menu "
+                          "promete e o sorteio ignora" % (_ch, _alvo, sorted(_v)))
+
+    # ⭐⭐ CONTROLES NEGATIVOS DAS TRAVAS DE ROTULO. Lente que nunca acusou e'
+    # lente que ninguem sabe se funciona. ⚠️ Sabotagem em COPIA: mexer no pool
+    # global deixaria o motor sujo se o autoteste morresse no meio.
+    def _falhas_rot(pool):
+        r = [x.get("rotulo") or "" for x in pool]
+        return ([x for x in pool if not x.get("rotulo")]
+                or [t for t in r if r.count(t) > 1]
+                or [t for t in r if len(t) > 42])
+
+    for _nome, _sujo in (
+            ("rotulo vazio", [dict(_refs[0], rotulo="")] + _refs[1:]),
+            ("rotulo repetido entre os pools",
+             [dict(_refs[0], rotulo=REFS_H[0]["rotulo"])] + _refs[1:]),
+            ("rotulo de 43 chars", [dict(_refs[0], rotulo="x" * 43)] + _refs[1:])):
+        if not _falhas_rot(_sujo):
+            ctrl.append("a trava de rotulo NAO acusou o pool sabotado (%s)"
+                        % _nome)
+    if _falhas_rot(_refs):
+        ctrl.append("a trava de rotulo esta' acusando o pool de verdade")
 
     print("CENARIOS %d | REFS_M %d | REFS_H %d | CORPOS_H %d | CORPOS_M %d | "
           "%d videos" % (len(CENARIOS), len(REFS_M), len(REFS_H),

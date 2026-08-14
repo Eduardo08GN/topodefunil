@@ -797,85 +797,109 @@ AMBIENTES = [
 # comporta, e o lugar de mudar isso seria a isencao, nao o pool.
 HOMENS = [
     {"id": "escuro_curto", "idade": 45,
+     "rotulo": "45y · castanho curto grisalho + barbeado",
      "marca": "short dark brown hair with grey coming in at the temples and a "
               "clean-shaven jaw",
      "sinal": "a strong cleft in his chin"},
     {"id": "barba_curta", "idade": 48,
+     "rotulo": "48y · escuro curto + barba de tres dias",
      "marca": "dark hair cut short and three days of dark stubble going grey "
               "at the chin",
      "sinal": "a small dark mole high on his right cheek"},
     {"id": "sal_pimenta", "idade": 50,
+     "rotulo": "50y · sal-e-pimenta + barba grisalha",
      "marca": "salt-and-pepper hair pushed back off the forehead and a close "
               "grey beard",
      "sinal": "laugh lines at the corners of his eyes"},
     {"id": "careca_raspado", "idade": 47,
+     "rotulo": "47y · careca + cavanhaque escuro",
      "marca": "a closely shaved head and a short dark goatee",
      "sinal": "heavy level brows over wide-set eyes"},
     {"id": "ondulado", "idade": 52,
+     "rotulo": "52y · grisalho ondulado + barbeado",
      "marca": "thick wavy grey hair kept a little long and a clean-shaven face",
      "sinal": "a small beauty mark below his right eye"},
     {"id": "recuado", "idade": 55,
+     "rotulo": "55y · entradas altas + bigode grosso",
      "marca": "grey hair with a low widow's peak and a thick grey moustache",
      "sinal": "a patch of white above his left temple"},
     {"id": "escuro_liso", "idade": 46,
+     "rotulo": "46y · escuro liso com risca + barbeado",
      "marca": "straight dark hair combed to one side and a clean-shaven face",
      "sinal": "a shallow dimple in his chin"},
     {"id": "grisalho_barbudo", "idade": 53,
+     "rotulo": "53y · grisalho + barba cheia + argola",
      "marca": "short grey hair and a full grey beard trimmed close",
      "sinal": "a small silver hoop in his left ear"},
     {"id": "escuro_denso", "idade": 45,
+     "rotulo": "45y · escuro farto + barba escura",
      "marca": "thick dark hair pushed back off the forehead and a close dark "
               "beard",
      "sinal": "a dimple in each cheek when he talks"},
     {"id": "raspado_bigode", "idade": 49,
+     "rotulo": "49y · careca + bigode escuro grosso",
      "marca": "a shaved head and a thick dark moustache",
      "sinal": "a small mole on his left jaw"},
     {"id": "mecha_branca", "idade": 51,
+     "rotulo": "51y · mecha branca + barba aparada",
      "marca": "a white streak running through short dark hair and a trimmed "
                "dark beard",
      "sinal": "a shallow cleft in his chin"},
     {"id": "cachos_curtos", "idade": 46,
+     "rotulo": "46y · cachos curtos + barbeado + tarraxa",
      "marca": "short dark curls kept close and a clean-shaven face",
      "sinal": "a small gold stud in his left ear"},
     {"id": "sal_pimenta_liso", "idade": 54,
+     "rotulo": "54y · sal-e-pimenta liso + barba rente",
      "marca": "straight salt-and-pepper hair parted on one side and a close "
               "grey beard",
      "sinal": "smooth-skinned with a wide square chin"},
     {"id": "barba_quadrada", "idade": 50,
+     "rotulo": "50y · grisalho curto + barba quadrada",
      "marca": "short grey hair and a dark beard trimmed square at the jaw",
      "sinal": "a small mole above his lip"},
     {"id": "topete_escuro", "idade": 47,
+     "rotulo": "47y · topete escuro + sobrancelha prata",
      "marca": "dark hair still full on top and combed high, with a "
               "clean-shaven face",
      "sinal": "a silver streak through one eyebrow"},
     {"id": "cavanhaque_grisalho", "idade": 52,
+     "rotulo": "52y · rente grisalho + cavanhaque",
      "marca": "close-cropped dark hair going grey and a short grey goatee",
      "sinal": "laugh lines at the corners of his mouth"},
     {"id": "franja_escura", "idade": 45,
+     "rotulo": "45y · franja escura + sardas",
      "marca": "dark hair kept a little long over the forehead and light "
               "stubble",
      "sinal": "freckles scattered across his nose"},
     {"id": "risca_lateral", "idade": 55,
+     "rotulo": "55y · grisalho com risca + bigode fino",
      "marca": "grey hair combed to one side and a thin grey moustache",
      "sinal": "a beauty mark high on his right cheek"},
     {"id": "barba_longa_escura", "idade": 48,
+     "rotulo": "48y · escuro curto + barba longa escura",
      "marca": "short dark hair and a long dark beard combed straight",
      "sinal": "heavy level brows and a small mole at his temple"},
     {"id": "aparado_militar", "idade": 44,
+     "rotulo": "44y · corte militar + queixo com fenda",
      "marca": "a high and tight crew cut and a clean-shaven face",
      "sinal": "smooth-skinned with a cleft chin"},
     {"id": "ondas_grisalhas", "idade": 53,
+     "rotulo": "53y · ondas grisalhas + barba por fazer",
      "marca": "wavy grey hair pushed back and three days of grey stubble",
      "sinal": "a small gold hoop in his right ear"},
     {"id": "careca_lateral", "idade": 51,
+     "rotulo": "51y · calvo no topo + barba escura curta",
      "marca": "a bald crown with dark hair at the sides and a close dark "
               "beard",
      "sinal": "a shallow dimple in his left cheek"},
     {"id": "castanho_medio", "idade": 46,
+     "rotulo": "46y · castanho medio + barbeado + pinta",
      "marca": "mid-length brown hair tucked behind his ears and a clean-shaven "
               "face",
      "sinal": "laugh lines and a small mole beside his right eye"},
     {"id": "grisalho_raspado", "idade": 54,
+     "rotulo": "54y · grisalho raspado + barba cheia",
      "marca": "grey hair clipped down to the scalp and a full grey beard",
      "sinal": "smooth-skinned with heavy level brows"},
 ]
@@ -2171,6 +2195,25 @@ EIXOS_TRAVAVEIS = ["quarto", "ambiente", "homem", "mulher"]
 # e controle duplicado e' onde o operador para de confiar no painel.
 TRAVAS_UI = []
 
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# ⛔ Sem esta linha os 24 rotulos seriam comentario caro: escritos, medidos e
+# travados, e nenhum olho humano os veria. Forma sem funcao e' o defeito que
+# este repo mais paga (licoes-de-construcao §41), e label que nao aparece na
+# tela e' a versao mais barata dele.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado. Com 24 homens ela estoura a largura da janela e vira uma
+# parede ilegivel. Contrato aditivo do `ui_agente` (2026-08-13).
+# ⚠️ O ROTULO DA TELA E' O MESMO DO `EIXOS_UI` ("QUEM FALA") de proposito: sao o
+# mesmo eixo, e dois nomes para o mesmo eixo fazem o operador procurar um
+# controle que nao existe.
+# ⚠️ E o campo exibido e' `rotulo`, NAO `id`: o `ui_agente` monta o mapa
+# texto -> id, entao ele escolhe "44y · corte militar + queixo com fenda" e o
+# motor recebe `aparado_militar`. Um menu de ids obrigaria a abrir o codigo para
+# saber o que se escolheu. ⚠️ O `EIXOS_UI` acima continua com `id` porque la' o
+# `_texto_eixo` ja' prefixa a idade (`"%dy · %s"`) — trocar para `rotulo`
+# imprimiria "45y · 45y · castanho curto...". Dois lugares, dois campos.
+DROPDOWNS_UI = [("homem", "QUEM FALA", "HOMENS", "rotulo")]
+
 # ⚠️ Nenhum eixo entra em IGNORA_PAINEL: os quatro chegam ao quadro por algum
 # campo (o `cen` do quarto, o `cen` do ambiente, a `marca` dele e a dela), e o
 # `lint_painel_honesto` aceita QUALQUER campo do eixo como prova de presenca.
@@ -2484,6 +2527,90 @@ def autoteste(n=400):
     if len(QUARTOS) < 24:
         falhas.append("QUARTOS: sao %d e o piso e' 24 (2026-08-13)"
                       % len(QUARTOS))
+
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — as quatro coisas que o dropdown do painel
+    # exige, cobradas do DADO e nao da intencao de quem escreveu o pool.
+    # ⚠️ A UNICIDADE nao e' capricho: o `ui_agente._barra_dropdowns` monta o
+    # mapa com `if txt and txt not in mapa`, entao dois rotulos iguais fazem a
+    # SEGUNDA entrada sumir do menu — em silencio, sem erro, sem log. Pool que o
+    # operador so' consegue alcancar pela metade e' a familia do botao que
+    # mente, so' que por colisao de texto.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` + folga): rotulo
+    # maior fica cortado na tela, e rotulo cortado volta a ser ilegivel — que e'
+    # exatamente o problema que ele veio resolver.
+    # ⛔ E O `id` E' COBRADO DA ENTRADA porque a linha `mapa[txt] = e.get("id")`
+    # do `ui_agente` e' o que vira TRAVA. Entrada sem `id` mapeia para None, o
+    # `if alvo:` do `travas()` descarta a escolha e o menu vira ENFEITE: o
+    # operador escolhe uma pessoa e o sorteio devolve outra, sem uma linha de
+    # erro. Foi o estado real deste pool ate' 2026-08-13.
+    for _ch, _rt, _pn, _cp in DROPDOWNS_UI:
+        _pool = globals().get(_pn)
+        if not isinstance(_pool, list) or not _pool:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe ou esta' vazio — "
+                          "o `ui_agente` le' com getattr e desenha um menu "
+                          "VAZIO, sem erro nenhum" % _pn)
+            continue
+        if _ch not in EIXOS_TRAVAVEIS:
+            falhas.append("DROPDOWNS_UI: o eixo %r nao esta' em "
+                          "EIXOS_TRAVAVEIS — o menu oferece uma escolha que o "
+                          "sorteio nao aceita" % _ch)
+        if _rt not in [e[1] for e in EIXOS_UI if e[0] == _ch]:
+            falhas.append("DROPDOWNS_UI: o eixo %r se chama %r no menu e outra "
+                          "coisa (ou nada) no EIXOS_UI — dois nomes para o "
+                          "mesmo eixo confundem quem opera" % (_ch, _rt))
+        _txt = [str(e.get(_cp) or "") for e in _pool]
+        _sem = [i for i, t in enumerate(_txt) if not t]
+        if _sem:
+            falhas.append("ROTULO: %d entrada(s) de %s sem %r — o dropdown cai "
+                          "no `id` e o operador le' codigo em vez de gente "
+                          "(1a: indice %d)" % (len(_sem), _pn, _cp, _sem[0]))
+        _rep = sorted({t for t in _txt if t and _txt.count(t) > 1})
+        if _rep:
+            falhas.append("ROTULO: %d rotulo(s) repetido(s) em %s (%r) — a "
+                          "segunda entrada some do dropdown sem erro nenhum"
+                          % (len(_rep), _pn, _rep[0]))
+        _longos = [t for t in _txt if len(t) > 42]
+        if _longos:
+            falhas.append("ROTULO: %d rotulo(s) de %s acima de 42 chars (%r, "
+                          "%d) — estoura a largura do menu"
+                          % (len(_longos), _pn, _longos[0], len(_longos[0])))
+        _sem_id = [i for i, e in enumerate(_pool) if not e.get("id")]
+        if _sem_id:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem `id` — o "
+                          "`ui_agente` mapeia rotulo -> `e.get(\'id\')`, e "
+                          "None faz o `travas()` DESCARTAR a escolha: o menu "
+                          "vira enfeite" % (len(_sem_id), _pn))
+        # ⛔ E O ROTULO NUNCA CHEGA AO PROMPT. Ele e' portugues; um vazamento
+        # poria um texto de painel dentro de um bloco IMAGE em ingles, e o Veo
+        # DESENHA texto. A lente e' de AUSENCIA, e olha os blocos montados, nao
+        # a intencao do `montar`.
+        # ⚠️ E ela varre 40 SORTEIOS FORCANDO a entrada, nao um sorteio solto:
+        # lente de vazamento que olha um bloco so' mede a sorte da seed.
+        for _i in range(40):
+            _e = _pool[_i % len(_pool)]
+            _sr = sortear(pags[_i % len(pags)], random.Random(31000 + _i), {},
+                          {_ch: _e.get("id")})
+            _bj = " ".join(montar(_sr).values())
+            _vaza = [t for t in _txt if t and t in _bj]
+            if _vaza:
+                falhas.append("ROTULO: o texto de painel %r vazou para um "
+                              "bloco do prompt — ele e' portugues e o Veo "
+                              "desenha texto" % _vaza[0])
+                break
+        # ⛔⛔ E A ESCOLHA TEM DE FIXAR DE VERDADE. Esta e' a lente de FUNCAO, e
+        # e' a que faltou no MODO FORTE do GOOD 16 (licoes §41): la' o botao
+        # tinha idade certa, lente propria e controle negativo, e mesmo assim
+        # nao entregava. Aqui ela refaz o que o painel faz — manda o `id` como
+        # trava — e cobra que as 12 specs seguintes tragam a MESMA entrada.
+        _alvo = _pool[len(_pool) // 2]
+        _ids = {sortear(pags[_i % len(pags)], random.Random(41000 + _i), {},
+                        {_ch: _alvo.get("id")})[_ch].get("id")
+                for _i in range(12)}
+        if len(_ids) != 1:
+            falhas.append("DROPDOWNS_UI: escolher %r no menu de %s NAO fixa o "
+                          "eixo — 12 sorteios devolveram %d pessoas diferentes"
+                          % (_alvo.get(_cp), _pn, len(_ids)))
 
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))

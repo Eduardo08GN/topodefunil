@@ -1005,90 +1005,114 @@ def mundos_da_etnia(etnia):
 # a cena.
 HOMENS = [
     {"id": "grisalho_curto", "idade": 58,
+     "rotulo": "58y · grisalho rente + barba cheia",
      "cabeca": "close-cropped grey hair and a full grey beard",
      "marca": "a strong cleft in his chin"},
     {"id": "careca_cavanhaque", "idade": 58,
+     "rotulo": "58y · careca + cavanhaque grisalho",
      "cabeca": "a clean-shaven scalp and a short grey goatee",
      "marca": "a small dark mole high on his right cheek"},
     {"id": "grisalho_tempos", "idade": 58,
+     "rotulo": "58y · sal-e-pimenta + barba aparada",
      "cabeca": "short salt-and-pepper hair and a trimmed grey beard",
      "marca": "laugh lines at the corners of his eyes"},
     {"id": "barba_cheia", "idade": 58,
+     "rotulo": "58y · entrada em bico + barba branca",
      "cabeca": "grey hair with a low widow's peak and a full white beard",
      "marca": "heavy level brows over wide-set eyes"},
     {"id": "bigode_grisalho", "idade": 58,
+     "rotulo": "58y · grisalho rente + bigode grosso",
      "cabeca": "close-cropped grey hair and a thick grey moustache",
      "marca": "a shallow dimple in his left cheek and light freckling across "
               "his nose"},
     {"id": "grisalho_ondulado", "idade": 58,
+     "rotulo": "58y · grisalho ondulado + barba rente",
      "cabeca": "short wavy grey hair and a close grey beard",
      "marca": "a patch of white above his left temple"},
     {"id": "oculos_sol_cabeca", "idade": 58,
+     "rotulo": "58y · barba grisalha + oculos de sol",
      "cabeca": "close-cropped grey hair, a short grey beard and dark "
                "sunglasses pushed up on his head",
      "marca": "a small mole beside his right eye"},
     {"id": "barba_quadrada", "idade": 58,
+     "rotulo": "58y · branco rente + barba quadrada",
      "cabeca": "close-cropped white hair and a full white beard trimmed square "
                "at the jaw",
      "marca": "smooth-skinned with a cleft chin"},
     {"id": "topete_prata", "idade": 58,
+     "rotulo": "58y · topete prata + oculos de sol preto",
      "cabeca": "silver hair still full on top and combed high, a clean-shaven "
                "face and black sunglasses resting on top of his head",
      "marca": "a beauty mark below his right eye"},
     {"id": "raspado_cavanhaque", "idade": 58,
+     "rotulo": "58y · raspado + cavanhaque branco",
      "cabeca": "a shaved head and a short white goatee",
      "marca": "heavy level brows and a wide square chin"},
     {"id": "oculos_espelhado", "idade": 58,
+     "rotulo": "58y · grisalho molhado + oculos espelhado",
      "cabeca": "short grey hair pushed back wet, a trimmed grey beard and "
                "mirrored sunglasses pushed up onto his forehead",
      "marca": "a shallow cleft in his chin"},
     {"id": "cachos_grisalhos", "idade": 58,
+     "rotulo": "58y · cachos grisalhos + tarraxa dourada",
      "cabeca": "loose grey curls kept short and a close-trimmed grey beard",
      "marca": "a small gold stud in his left ear"},
     {"id": "bigode_chevron", "idade": 58,
+     "rotulo": "58y · lateral rente + bigode chevron",
      "cabeca": "grey hair clipped short at the sides and a thick chevron "
                "moustache",
      "marca": "laugh lines at the corners of his mouth"},
     {"id": "entradas_barba", "idade": 58,
+     "rotulo": "58y · entradas altas + barba cheia",
      "cabeca": "a high hairline with thick grey hair behind it and a full grey "
                "beard",
      "marca": "a small mole on his left jaw"},
     {"id": "oculos_wrap", "idade": 58,
+     "rotulo": "58y · branco curto + oculos envolvente",
      "cabeca": "short white hair, a clean-shaven face and wraparound "
                "sunglasses pushed up on his head",
      "marca": "a silver streak through one eyebrow"},
     {"id": "lateral_prateada", "idade": 58,
+     "rotulo": "58y · laterais prateadas + covinhas",
      "cabeca": "dark hair going silver at the sides, cut short, and a close "
                "dark beard",
      "marca": "a dimple in each cheek when he talks"},
     {"id": "barba_curta_branca", "idade": 58,
+     "rotulo": "58y · branco muito curto + barba branca",
      "cabeca": "white hair kept very short and a short white beard",
      "marca": "smooth-skinned with a broad square chin"},
     {"id": "onda_para_tras", "idade": 58,
+     "rotulo": "58y · onda sal-e-pimenta + barbeado",
      "cabeca": "wavy salt-and-pepper hair pushed back off the forehead and a "
                "clean-shaven face",
      "marca": "smooth-skinned with a small beauty mark on his left cheekbone"},
     {"id": "oculos_aro_fino", "idade": 58,
+     "rotulo": "58y · grisalho escuro + oculos de fio",
      "cabeca": "short dark grey hair, a close grey beard and thin wire-rimmed "
                "glasses",
      "marca": "a cleft chin under heavy level brows"},
     {"id": "crista_branca", "idade": 58,
+     "rotulo": "58y · mecha branca + barba escura",
      "cabeca": "a white streak running through short dark hair and a trimmed "
                "dark beard",
      "marca": "a small mole above his lip"},
     {"id": "careca_bigode", "idade": 58,
+     "rotulo": "58y · careca com laterais + bigode grosso",
      "cabeca": "a bald crown with grey at the sides and a thick grey "
                "moustache",
      "marca": "a small gold hoop in his left ear"},
     {"id": "barba_longa_grisalha", "idade": 58,
+     "rotulo": "58y · grisalho atras + barba longa",
      "cabeca": "grey hair combed back short and a long grey beard combed "
                "straight",
      "marca": "freckles scattered across his nose"},
     {"id": "oculos_tartaruga", "idade": 58,
+     "rotulo": "58y · grisalho rente + oculos tartaruga",
      "cabeca": "close-cropped grey hair, a short grey beard and tortoiseshell "
                "sunglasses pushed back on his head",
      "marca": "a shallow dimple in his chin"},
     {"id": "franja_grisalha", "idade": 58,
+     "rotulo": "58y · franja grisalha + barbeado",
      "cabeca": "straight grey hair kept a little long over the forehead and a "
                "clean-shaven face",
      "marca": "laugh lines and a small mole at the corner of his jaw"},
@@ -3016,6 +3040,32 @@ TRAVAS_UI = [
      ["livre"] + [CENARIOS_PT[p] for p in CENARIOS_DO_POOL]),
 ]
 
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# Ordem do operador (2026-08-13): *"implemente esse mecanismo e menu drop down
+# para todos os demais agentes 16"*, tendo o MEL 16 como modelo.
+# ⛔ Sem esta linha o `rotulo` seria comentario caro: 24 textos escritos,
+# medidos e travados, e nenhum olho humano os veria. Forma sem funcao e' o
+# defeito que este repo mais paga (licoes-de-construcao §41).
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra logo acima desenha UM BOTAO POR
+# OPCAO, lado a lado. Serve para as 15 regioes e para os cenarios; com 24 REFs
+# ela estoura a largura da janela e vira uma parede de botoes ilegivel.
+# ⚠️ AQUI A IDADE E' CONSTANTE (58 nas 24 entradas — e' a idade do narrador
+# deste angulo), entao o prefixo `58y ·` nao separa ninguem: quem separa e' o
+# cabelo e a ancora. O prefixo FICA assim mesmo porque o formato e' o mesmo do
+# parque inteiro, e um menu que muda de forma entre motores custa mais leitura
+# do que economiza.
+# ⚠️ O campo exibido e' `rotulo`, NAO `id`: o `ui_agente` monta o mapa
+# texto -> id, entao o operador escolhe "58y · grisalho molhado + oculos
+# espelhado" e o motor recebe `oculos_espelhado`.
+# ⚠️ E o `EIXOS_UI` acima continua com `id` de proposito: la' o `_texto_eixo`
+# ja' prefixa a idade, e trocar para `rotulo` imprimiria "58y · 58y · grisalho".
+# ⛔⛔ E ESCOLHER AQUI DESLIGA O MODO FORTE PARA AQUELE SORTEIO — por desenho,
+# nao por acidente: o `sortear` faz `forte = ... and not travas.get("homem")`,
+# porque neste motor o toggle FORTE troca a PESSOA (vem do `sc.ref_forte`, fora
+# do pool `HOMENS`). Rosto escolhido a dedo e' mais especifico que "um forte
+# qualquer", e a precedencia ja' estava escrita la' desde 2026-08-12.
+DROPDOWNS_UI = [("homem", "QUEM FALA", "HOMENS", "rotulo")]
+
 # ⚠️ `mundo` entra na lista de ignorados do `lint_painel_honesto` porque o valor
 # do eixo e' um id interno; os outros tres chegam ao quadro pelo `cabeca`/
 # `marca` deles e pelo `img` da tigela — e a lente cobra isso a cada sorteio.
@@ -3526,6 +3576,79 @@ def autoteste(n=400):
                             + CTAS[0]]}, {}, limpo)
     if limpo:
         falhas.append("GO9: a lente acusa copy limpa (%s)" % limpo[0][1][:60])
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — o que o dropdown QUEM FALA exige do pool.
+    # ⚠️ A UNICIDADE nao e' capricho: o `ui_agente._barra_dropdowns` monta o
+    # mapa texto -> id com `if txt and txt not in mapa`, entao dois rotulos
+    # iguais fazem o SEGUNDO homem DESAPARECER do menu — em silencio, sem erro
+    # e sem log. Pool de 24 que o operador so' alcanca em 23 e' a mesma familia
+    # do botao que mente, so' que por colisao de texto.
+    # ⚠️ E AQUI ELA CUSTA MAIS CARO: as 24 entradas tem a MESMA idade (58), e o
+    # prefixo `58y ·` nao separa nada — a unicidade inteira vive no cabelo e na
+    # ancora, entao um copiar-colar descuidado colide com facilidade.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` mais folga): rotulo
+    # maior sai cortado na tela, e rotulo cortado volta a ser ilegivel — que e'
+    # exatamente o problema que ele veio resolver.
+    _rt_sem = [h["id"] for h in HOMENS if not h.get("rotulo")]
+    if _rt_sem:
+        falhas.append("ROTULO: %d entrada(s) de HOMENS sem rotulo — o dropdown "
+                      "cai no `id` e o operador le' %r"
+                      % (len(_rt_sem), _rt_sem[0]))
+    _rt = [h.get("rotulo") or "" for h in HOMENS]
+    _rt_rep = sorted({r for r in _rt if _rt.count(r) > 1})
+    if _rt_rep:
+        falhas.append("ROTULO: %d rotulo(s) repetido(s) (%r) — o segundo homem "
+                      "some do dropdown sem erro nenhum"
+                      % (len(_rt_rep), _rt_rep[0]))
+    _rt_longo = [r for r in _rt if len(r) > 42]
+    if _rt_longo:
+        falhas.append("ROTULO: %d rotulo(s) acima de 42 chars (%r, %d) — "
+                      "estoura a largura do menu"
+                      % (len(_rt_longo), _rt_longo[0], len(_rt_longo[0])))
+
+    # ⛔ E O CONTRATO DO PAINEL TEM DE APONTAR PARA COISA QUE EXISTE. O
+    # `_barra_dropdowns` le' o pool com `getattr(motor, pool_nome, [])`: nome
+    # errado devolve LISTA VAZIA e desenha um menu com `livre` e mais nada — o
+    # seletor "funcionando" sem uma opcao dentro. Campo errado cai no
+    # `e.get("id")` e devolve justamente o menu de ids que o rotulo veio abolir.
+    # ⭐ E a ultima checagem e' de FUNCAO, nao de forma: escolher no menu tem de
+    # SAIR no spec. Forma verificada e funcao nao verificada e' o defeito §41.
+    # ⚠️ Ela roda com o MODO FORTE DESLIGADO de proposito — com ele ligado o
+    # `sortear` desliga o forte quando ha' `travas["homem"]`, e a lente mediria
+    # a precedencia em vez de medir o seletor.
+    for _dd_ch, _dd_tela, _dd_pool, _dd_campo in DROPDOWNS_UI:
+        _dd_p = globals().get(_dd_pool)
+        if not isinstance(_dd_p, list) or not _dd_p:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe ou esta' vazio — "
+                          "o menu %r sai so' com `livre`"
+                          % (_dd_pool, _dd_tela))
+            continue
+        _dd_falta = [e.get("id") for e in _dd_p if not e.get(_dd_campo)]
+        if _dd_falta:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem o campo %r — "
+                          "o menu cai no `id`"
+                          % (len(_dd_falta), _dd_pool, _dd_campo))
+        if _dd_ch not in EIXOS_TRAVAVEIS:
+            falhas.append("DROPDOWNS_UI: o eixo %r nao esta' em EIXOS_TRAVAVEIS "
+                          "— escolher no menu nao travaria nada" % _dd_ch)
+        for _dd_e in _dd_p[:2] + _dd_p[-2:]:
+            _dd_s = sortear(sorted(ETNIA)[0], random.Random(4242), {},
+                            {_dd_ch: _dd_e["id"]})
+            if _dd_s[_dd_ch]["id"] != _dd_e["id"]:
+                falhas.append("DROPDOWNS_UI: escolher %r no menu %r devolveu "
+                              "%r — o seletor nao fixa"
+                              % (_dd_e["id"], _dd_tela, _dd_s[_dd_ch]["id"]))
+                break
+        # ⛔⛔ E O CONTROLE DE PRECEDENCIA: com o MODO FORTE LIGADO, o rosto
+        # escolhido continua sendo o escolhido. Sem esta linha o operador
+        # veria o menu marcado num homem e o quadro com outro — o botao que
+        # mente, versao mais cara, porque a mentira so' aparece no render.
+        _dd_f = sortear(sorted(ETNIA)[0], random.Random(4243), {},
+                        {_dd_ch: _dd_p[0]["id"], "forte": True})
+        if _dd_f[_dd_ch]["id"] != _dd_p[0]["id"]:
+            falhas.append("DROPDOWNS_UI: com o MODO FORTE ligado o menu %r "
+                          "perdeu a escolha (%r -> %r)"
+                          % (_dd_tela, _dd_p[0]["id"], _dd_f[_dd_ch]["id"]))
 
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))
