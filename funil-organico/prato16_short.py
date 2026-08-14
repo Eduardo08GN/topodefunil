@@ -1214,17 +1214,32 @@ def sortear(pagina, rng, ledger, travas=None):
     # ⚠️ E isso e' fiel a' ordem original do operador sobre o toggle
     # (*"n quis manter os tiozao forte?"*): ele nunca pediu para TROCAR o homem,
     # pediu para o homem ficar FORTE.
-    # ⛔⛔ A GUARDA `and not travas.get("homem")` SAIU EM 2026-08-13, e a razao
-    # e' que ela ficou OBSOLETA sem ninguem perceber. Ela nasceu quando o MODO
-    # FORTE trocava a PESSOA inteira (`sc.ref_forte`); desde que ele passou a
-    # trocar so' o CORPO — mantendo o rosto do arquetipo regional — homem
-    # travado e corpo forte deixaram de ser incompativeis.
-    # ⚠️ E o seletor novo de REF transformou isso num defeito COMUM: o operador
-    # escolhia um homem no dropdown e o FORTE morria com o botao ACESO. Medido:
-    # spec["forte"] caia de True para False no sorteio seguinte a' escolha.
-    # ⭐ E' o §41 na forma canonica — botao aceso, funcao ausente — e o
-    # `mel16`, que nunca teve a guarda, e' a prova de que ela nao e' necessaria.
-    forte = bool(travas.get("forte"))
+    # ⛔⛔ A GUARDA AQUI OLHA O FORMATO DE `travas["homem"]`, E ISSO NAO E'
+    # DETALHE — E' A CORRECAO DE UM ERRO MEU DE 2026-08-13.
+    #
+    # A guarda antiga era `and not travas.get("homem")`: qualquer homem travado
+    # matava o FORTE. Eu a removi inteira, com a justificativa de que ela ficara
+    # obsoleta — o FORTE hoje troca so' o CORPO, mantendo o rosto da regiao,
+    # entao homem escolhido e corpo forte deixaram de ser incompativeis. Isso e'
+    # verdade para o DROPDOWN, e so' para ele.
+    #
+    # ⚠️ O que eu nao verifiquei: `travas["homem"]` tem DOIS formatos (esta' no
+    # docstring do `_por_id`, logo acima). O dropdown manda um ID (string) fresco
+    # do pool — reaplicar o FORTE nele e' idempotente. O CADEADO manda o
+    # DICIONARIO JA' RESOLVIDO do sorteio anterior, que JA' passou por aqui. Sem
+    # guarda nenhuma o FORTE se reaplica sobre si mesmo a cada SORTEAR, e as
+    # duas consequencias foram medidas:
+    #   (a) `sc.ref_forte` re-sorteia IDADE e CORPO toda vez — o cadeado, cujo
+    #       contrato e' congelar o que esta' na tela, parou de congelar
+    #       (idades 67, 70, 72, 68, 68, 72 em seis cliques seguidos);
+    #   (b) o `id` acumula o sufixo sem limite —
+    #       `texano_prata_forte_forte_forte_forte...` — e e' ESSA string que o
+    #       `_anotar` grava no ledger, onde ela nunca mais casa com o pool.
+    #
+    # ⭐ A licao vale mais que o conserto: eu medi o caminho novo (o menu),
+    # declarei a guarda obsoleta, e nao medi o OUTRO chamador da mesma chave.
+    # Verificar a funcao num caminho nao autoriza conclusao sobre o outro.
+    forte = bool(travas.get("forte")) and not isinstance(travas.get("homem"), dict)
     if forte:
         _f = sc.ref_forte(MOLDE_H, rng, idade_min=FORTE_IDADE_MIN,
                           maduros=True)

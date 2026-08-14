@@ -1529,7 +1529,25 @@ def _fresco(pool, usados, rng):
 
 
 def _por_id(pool, valor):
-    return next((x for x in pool if x["id"] == valor), None)
+    """A entrada do pool, aceitando ID (string) OU a ENTRADA JA' RESOLVIDA.
+
+    ⛔⛔ OS DOIS FORMATOS SAO OBRIGATORIOS, e o segundo e' o que o PAINEL manda:
+    o dropdown devolve um id, mas o CADEADO devolve `self.spec[chave]`, o
+    dicionario inteiro. A versao ingenua (`x["id"] == valor`) nunca casa com um
+    dicionario, devolvia `None`, e o `resumo_pt` estourava
+    `TypeError: 'NoneType' object is not subscriptable` DENTRO do callback do
+    tkinter — onde a excecao morre calada. No `.exe` (pythonw, sem console) o
+    efeito era o SORTEAR simplesmente nao fazer nada.
+    ⚠️ Atingia TODOS os eixos travaveis deste motor, e e' o mesmo defeito que o
+    `_por_id` do `prato16` ja' documentava desde que quebrou os quatro cadeados
+    do GOOD 16. Corrigido em 2026-08-13, achado por uma revisao adversarial que
+    EXERCITOU o painel em vez de so' abri-lo.
+    ⚠️ O fallback e' `pool[0]`, nunca `None`: id que sumiu do pool (ledger
+    velho, menu de outra versao) tem de cair no caminho normal, nao estourar.
+    """
+    if isinstance(valor, str):
+        return next((x for x in pool if x.get("id") == valor), pool[0])
+    return valor
 
 
 def _cabe(pool, reserva, cena, o=None):

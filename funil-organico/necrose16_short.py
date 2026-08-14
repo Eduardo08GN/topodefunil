@@ -1415,6 +1415,17 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
         _cta(rng),
     ]
     return {"pagina": pagina, "arquetipo": arq, "animal": animal,
+            # ⛔⛔ O QUE DE FATO ACONTECEU COM O MODO, gravado no spec.
+            # Sem esta chave o painel nao distingue "o modo entrou" de "o
+            # modo morreu", e o botao fica ACESO nos dois casos. O eixo
+            # escolhido no menu (ou no cadeado) vence o modo por desenho —
+            # o que nao pode e' o operador nao ficar sabendo.
+            # ⭐ A flag LE' O CARIMBO que `sc.ref_bela`/`sc.ref_forte` deixam
+            # (`_bela`/`_forte`), em vez de re-derivar a precedencia aqui. Regra
+            # copiada e' regra que envelhece sozinha: minha primeira versao
+            # inventou um `and not travas.get("homem")` que o ternario do
+            # `troca16` nem le', e teria acusado de morto um modo VIVO.
+            "forte": bool(ref.get("_forte")),
             "receita": rec, "mesa": mesa, "ref": ref, "falas": falas,
             "bela": bela, "modo_bela": modo_bela}
 

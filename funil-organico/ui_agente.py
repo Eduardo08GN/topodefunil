@@ -434,7 +434,28 @@ class App(tk.Tk):
 
     def _escolher_drop(self, chave):
         """⛔ Sorteia na hora: seletor que so' vale no proximo clique e' o
-        cadeado que nao trava, defeito que este repo ja' pagou tres vezes."""
+        cadeado que nao trava, defeito que este repo ja' pagou tres vezes.
+
+        ⛔⛔ E ABRE O CADEADO DO MESMO EIXO, porque os dois controles travam a
+        MESMA chave e o cadeado vem depois no `travas()` — ou seja, ele vencia.
+        Medido em 9 motores: com o cadeado fechado, escolher no menu nao mudava
+        nada, o combobox seguia exibindo a escolha e o video saia com a pessoa
+        anterior em TODO sorteio seguinte. Um painel contra o outro, sem aviso.
+
+        ⚠️ Nao inverti a precedencia do `travas()`: a regra de la' esta' certa e
+        e' velha (o cadeado e' o que esta' na TELA, mais especifico que uma
+        trava grossa). O que estava errado era deixar os dois fechados ao mesmo
+        tempo dizendo coisas diferentes. Escolher no menu e' o ato mais recente
+        e mais explicito do operador sobre aquele eixo, entao ele SOLTA o
+        cadeado — e o botao do cadeado abre na tela, para o gesto ser visivel.
+        """
+        var = self.var_cadeado.get(chave)
+        if var is not None and var.get():
+            var.set(False)
+            if chave in self.b_cadeado:
+                self._pintar_cadeado(chave)
+            self._toast("cadeado de %s ABERTO — a escolha do menu vale mais "
+                        "que o congelado da tela" % chave)
         self.sortear()
 
     def _escolher_trava(self, chave, opcao, grupo):
@@ -915,16 +936,40 @@ class App(tk.Tk):
         que nao trava — e o operador confia no que esta' aceso.
         """
         self.modo_on[chave] = not self.modo_on[chave]
-        self._pintar_modos()
+        # ⚠️ O `_pintar_modos` daqui SAIU: ele rodava com a spec VELHA, na qual o
+        # modo ainda esta' False porque acabou de ser ligado. Isso marcava o modo
+        # como anulado, disparava o aviso cedo e gravava `_toast_anulado`, o que
+        # depois SILENCIAVA o aviso verdadeiro. Quem pinta agora e' o `sortear`,
+        # com a spec do video que o operador vai levar.
         self.sortear()
         # ⚠️ `REF` so' entra para os modos que TROCAM ALGUEM. O toast dizia
         # "modo REF RECEITA" desde 2026-08-10 — e com o `leve` diria "modo REF
         # LEVE", que promete uma pessoa nova a cada clique.
+        # ⛔⛔ E ELE NAO FALA POR CIMA DO AVISO DE ANULADO. Este toast era o
+        # ULTIMO da sequencia, entao no caminho mais comum — fixar o REF no menu
+        # e SO' ENTAO acender o modo — a unica frase que sobrava na tela era
+        # `modo REF FORTE LIGADO — homem forte e musculoso`, com `spec["forte"]`
+        # em False. O botao ficava ambar e a legenda dizia o contrario dele.
+        if self.modo_on[chave] and self._modo_anulado(chave):
+            return
         self._toast("modo %s%s %s" % (
             "" if chave in self.MODOS_NAO_REF else "REF ",
             chave.upper(),
             "LIGADO — " + self.ROTULO_MODO.get(chave, "")
             if self.modo_on[chave] else "desligado"))
+
+    def _modo_anulado(self, chave):
+        """O modo esta' ACESO e mesmo assim NAO chegou ao video?
+
+        ⛔ Uma definicao so', usada pela COR e pelo AVISO. Quando cada um decidia
+        por conta propria, o botao ficava ambar e a legenda dizia
+        `modo REF FORTE LIGADO` no mesmo instante.
+        ⚠️ Exige `chave in self.spec`: motor que nao grava a chave nao permite
+        concluir nada, e chutar "anulado" ali seria a lente que reprova o que
+        esta' certo. Os motores que nao gravam estao listados na pendencia.
+        """
+        return bool(self.modo_on.get(chave) and self.spec is not None
+                    and chave in self.spec and not self.spec.get(chave))
 
     def _pintar_modos(self):
         """⭐⭐ TRES estados, nao dois: aceso, apagado e ANULADO.
@@ -948,8 +993,7 @@ class App(tk.Tk):
         mortos = []
         for chave, b in self.b_modo.items():
             on = self.modo_on[chave]
-            anulado = bool(on and self.spec is not None
-                           and chave in self.spec and not self.spec.get(chave))
+            anulado = self._modo_anulado(chave)
             if anulado:
                 mortos.append(chave.upper())
                 b.configure(bg=AVISO, fg="#141414",
