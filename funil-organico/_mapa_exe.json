@@ -1,237 +1,217 @@
 {
- "alfa16_short": {
-  "exe": "AGENTE-ALFA-16",
-  "fam": "AGENTES-16",
-  "sub": "ALFA-16"
- },
- "banho16_short": {
-  "exe": "AGENTE-BANHO-16",
-  "fam": "AGENTES-16",
-  "sub": "BANHO-16"
- },
- "banho16_v2_short": {
-  "exe": "AGENTE-BANHO-16-V2",
-  "fam": "AGENTES-16",
-  "sub": "BANHO-16-V2"
- },
- "bed16_short": {
-  "exe": "AGENTE-BED-16",
-  "fam": "AGENTES-16",
-  "sub": "BED-16"
- },
- "botica16_short": {
-  "exe": "AGENTE-BOTICA-16",
-  "fam": "AGENTES-16",
-  "sub": "BOTICA-16"
- },
- "botica_short": {
-  "exe": "AGENTE-BOTICA-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "BOTICA-SHORT"
- },
- "cha_short": {
-  "exe": "AGENTE-CHA-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "CHA-SHORT"
- },
- "clean_short": {
-  "exe": "AGENTE-CLEAN-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "CLEAN-SHORT"
- },
- "clean_short_v2": {
-  "exe": "AGENTE-CLEAN-SHORT-V2",
-  "fam": "AGENTES-SHORT",
-  "sub": "CLEAN-SHORT-V2"
- },
- "clean_v1_16s_short": {
-  "exe": "AGENTE-CLEAN-V1-16S",
-  "fam": "AGENTES-16",
-  "sub": "CLEAN-V1-16S"
- },
- "clean_v2_16s_short": {
-  "exe": "AGENTE-CLEAN-V2-16S",
-  "fam": "AGENTES-16",
-  "sub": "CLEAN-V2-16S"
- },
- "colo16_short": {
-  "exe": "AGENTE-COLO-16",
-  "fam": "AGENTES-16",
-  "sub": "COLO-16"
- },
- "colo_short": {
-  "exe": "AGENTE-COLO-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "COLO-SHORT"
- },
- "dupla16_short": {
-  "exe": "AGENTE-DUPLA-16",
-  "fam": "AGENTES-16",
-  "sub": "DUPLA-16"
- },
- "dupla_short": {
-  "exe": "AGENTE-DUPLA-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "DUPLA-SHORT"
- },
- "escandalo16_short": {
-  "exe": "AGENTE-ESCANDALO-16",
-  "fam": "AGENTES-16",
-  "sub": "ESCANDALO-16"
- },
- "escandalo_short": {
-  "exe": "AGENTE-ESCANDALO-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "ESCANDALO-SHORT"
- },
- "exterior16_short": {
-  "exe": "AGENTE-EXTERIOR-16",
-  "fam": "AGENTES-16",
-  "sub": "EXTERIOR-16"
- },
- "exterior_short": {
-  "exe": "AGENTE-EXTERIOR-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "EXTERIOR-SHORT"
- },
- "falta16_short": {
-  "exe": "AGENTE-FALTA-16",
-  "fam": "AGENTES-16",
-  "sub": "FALTA-16"
- },
- "falta_short": {
-  "exe": "AGENTE-FALTA-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "FALTA-SHORT"
- },
- "fight16_short": {
-  "exe": "AGENTE-FIGHT-16",
-  "fam": "AGENTES-16",
-  "sub": "FIGHT-16"
- },
- "flagrante16_short": {
-  "exe": "AGENTE-FLAGRANTE-16",
-  "fam": "AGENTES-16",
-  "sub": "FLAGRANTE-16"
- },
- "flagrante_lucas": {
-  "exe": "AGENTE-FLAGRANTE-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "FLAGRANTE-SHORT"
- },
- "flagrante_short": {
-  "exe": "AGENTE-FLAGRANTE-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "FLAGRANTE-SHORT"
- },
- "good16_short": {
-  "exe": "AGENTE-GOOD-16",
-  "fam": "AGENTES-16",
-  "sub": "GOOD-16"
- },
- "mel16_short": {
-  "exe": "AGENTE-MEL-16",
-  "fam": "AGENTES-16",
-  "sub": "MEL-16"
- },
- "necrose16_short": {
-  "exe": "AGENTE-NECROSE-16",
-  "fam": "AGENTES-16",
-  "sub": "NECROSE-16"
- },
- "necrose_lucas": {
-  "exe": "AGENTE-NECROSE-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "NECROSE-SHORT"
- },
- "necrose_short": {
-  "exe": "AGENTE-NECROSE-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "NECROSE-SHORT"
- },
- "organicwave_short": {
-  "exe": "AGENTE-ORGANICWAVE-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "ORGANICWAVE-SHORT"
- },
- "pee16_short": {
-  "exe": "AGENTE-PEE-16",
-  "fam": "AGENTES-16",
-  "sub": "PEE-16"
- },
- "pee_lucas": {
-  "exe": "AGENTE-PEE-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "PEE-SHORT"
- },
- "pee_short": {
-  "exe": "AGENTE-PEE-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "PEE-SHORT"
- },
- "placa16_short": {
-  "exe": "AGENTE-PLACA-16",
-  "fam": "AGENTES-16",
-  "sub": "PLACA-16"
- },
- "placa_short": {
-  "exe": "AGENTE-PLACA-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "PLACA-SHORT"
- },
- "prato16_short": {
-  "exe": "AGENTE-PRATO-16",
-  "fam": "AGENTES-16",
-  "sub": "PRATO-16"
- },
- "receita_short": {
-  "exe": "AGENTE-RECEITA-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "RECEITA-SHORT"
- },
- "ressurreicao16_short": {
-  "exe": "AGENTE-RESSURREICAO-16",
-  "fam": "AGENTES-16",
-  "sub": "RESSURREICAO-16"
- },
- "ressurreicao_short": {
-  "exe": "AGENTE-RESSURREICAO-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "RESSURREICAO-SHORT"
- },
- "trio16_short": {
-  "exe": "AGENTE-TRIO-16",
-  "fam": "AGENTES-16",
-  "sub": "TRIO-16"
- },
- "trio_short": {
-  "exe": "AGENTE-TRIO-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "TRIO-SHORT"
- },
- "troca16_short": {
-  "exe": "AGENTE-TROCA-16",
-  "fam": "AGENTES-16",
-  "sub": "TROCA-16"
- },
- "troca_short": {
-  "exe": "AGENTE-TROCA-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "TROCA-SHORT"
- },
- "vazamento_lucas": {
-  "exe": "AGENTE-VAZAMENTO-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "VAZAMENTO-SHORT"
- },
- "vazamento_short": {
-  "exe": "AGENTE-VAZAMENTO-SHORT",
-  "fam": "AGENTES-SHORT",
-  "sub": "VAZAMENTO-SHORT"
- },
- "wife16_short": {
-  "exe": "AGENTE-WIFE-16",
-  "fam": "AGENTES-16",
-  "sub": "WIFE-16"
- }
+  "alfa16_short": {
+    "exe": "AGENTE-ALFA-16",
+    "fam": "AGENTES-16",
+    "sub": "ALFA-16"
+  },
+  "banho16_short": {
+    "exe": "AGENTE-BANHO-16",
+    "fam": "AGENTES-16",
+    "sub": "BANHO-16"
+  },
+  "banho16_v2_short": {
+    "exe": "AGENTE-BANHO-16-V2",
+    "fam": "AGENTES-16",
+    "sub": "BANHO-16-V2"
+  },
+  "bed16_short": {
+    "exe": "AGENTE-BED-16",
+    "fam": "AGENTES-16",
+    "sub": "BED-16"
+  },
+  "botica16_short": {
+    "exe": "AGENTE-BOTICA-16",
+    "fam": "AGENTES-16",
+    "sub": "BOTICA-16"
+  },
+  "botica_short": {
+    "exe": "AGENTE-BOTICA-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "BOTICA-SHORT"
+  },
+  "cha_short": {
+    "exe": "AGENTE-CHA-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "CHA-SHORT"
+  },
+  "clean_short": {
+    "exe": "AGENTE-CLEAN-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "CLEAN-SHORT"
+  },
+  "clean_short_v2": {
+    "exe": "AGENTE-CLEAN-SHORT-V2",
+    "fam": "AGENTES-SHORT",
+    "sub": "CLEAN-SHORT-V2"
+  },
+  "clean_v1_16s_short": {
+    "exe": "AGENTE-CLEAN-V1-16S",
+    "fam": "AGENTES-16",
+    "sub": "CLEAN-V1-16S"
+  },
+  "clean_v2_16s_short": {
+    "exe": "AGENTE-CLEAN-V2-16S",
+    "fam": "AGENTES-16",
+    "sub": "CLEAN-V2-16S"
+  },
+  "colo16_short": {
+    "exe": "AGENTE-COLO-16",
+    "fam": "AGENTES-16",
+    "sub": "COLO-16"
+  },
+  "colo_short": {
+    "exe": "AGENTE-COLO-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "COLO-SHORT"
+  },
+  "dupla16_short": {
+    "exe": "AGENTE-DUPLA-16",
+    "fam": "AGENTES-16",
+    "sub": "DUPLA-16"
+  },
+  "dupla_short": {
+    "exe": "AGENTE-DUPLA-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "DUPLA-SHORT"
+  },
+  "escandalo16_short": {
+    "exe": "AGENTE-ESCANDALO-16",
+    "fam": "AGENTES-16",
+    "sub": "ESCANDALO-16"
+  },
+  "escandalo_short": {
+    "exe": "AGENTE-ESCANDALO-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "ESCANDALO-SHORT"
+  },
+  "exterior16_short": {
+    "exe": "AGENTE-EXTERIOR-16",
+    "fam": "AGENTES-16",
+    "sub": "EXTERIOR-16"
+  },
+  "exterior_short": {
+    "exe": "AGENTE-EXTERIOR-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "EXTERIOR-SHORT"
+  },
+  "falta16_short": {
+    "exe": "AGENTE-FALTA-16",
+    "fam": "AGENTES-16",
+    "sub": "FALTA-16"
+  },
+  "falta_short": {
+    "exe": "AGENTE-FALTA-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "FALTA-SHORT"
+  },
+  "fight16_short": {
+    "exe": "AGENTE-FIGHT-16",
+    "fam": "AGENTES-16",
+    "sub": "FIGHT-16"
+  },
+  "flagrante16_short": {
+    "exe": "AGENTE-FLAGRANTE-16",
+    "fam": "AGENTES-16",
+    "sub": "FLAGRANTE-16"
+  },
+  "flagrante_short": {
+    "exe": "AGENTE-FLAGRANTE-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "FLAGRANTE-SHORT"
+  },
+  "good16_short": {
+    "exe": "AGENTE-GOOD-16",
+    "fam": "AGENTES-16",
+    "sub": "GOOD-16"
+  },
+  "mel16_short": {
+    "exe": "AGENTE-MEL-16",
+    "fam": "AGENTES-16",
+    "sub": "MEL-16"
+  },
+  "necrose16_short": {
+    "exe": "AGENTE-NECROSE-16",
+    "fam": "AGENTES-16",
+    "sub": "NECROSE-16"
+  },
+  "necrose_short": {
+    "exe": "AGENTE-NECROSE-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "NECROSE-SHORT"
+  },
+  "organicwave_short": {
+    "exe": "AGENTE-ORGANICWAVE-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "ORGANICWAVE-SHORT"
+  },
+  "pee16_short": {
+    "exe": "AGENTE-PEE-16",
+    "fam": "AGENTES-16",
+    "sub": "PEE-16"
+  },
+  "pee_short": {
+    "exe": "AGENTE-PEE-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "PEE-SHORT"
+  },
+  "placa16_short": {
+    "exe": "AGENTE-PLACA-16",
+    "fam": "AGENTES-16",
+    "sub": "PLACA-16"
+  },
+  "placa_short": {
+    "exe": "AGENTE-PLACA-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "PLACA-SHORT"
+  },
+  "prato16_short": {
+    "exe": "AGENTE-PRATO-16",
+    "fam": "AGENTES-16",
+    "sub": "PRATO-16"
+  },
+  "receita_short": {
+    "exe": "AGENTE-RECEITA-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "RECEITA-SHORT"
+  },
+  "ressurreicao16_short": {
+    "exe": "AGENTE-RESSURREICAO-16",
+    "fam": "AGENTES-16",
+    "sub": "RESSURREICAO-16"
+  },
+  "ressurreicao_short": {
+    "exe": "AGENTE-RESSURREICAO-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "RESSURREICAO-SHORT"
+  },
+  "trio16_short": {
+    "exe": "AGENTE-TRIO-16",
+    "fam": "AGENTES-16",
+    "sub": "TRIO-16"
+  },
+  "trio_short": {
+    "exe": "AGENTE-TRIO-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "TRIO-SHORT"
+  },
+  "troca16_short": {
+    "exe": "AGENTE-TROCA-16",
+    "fam": "AGENTES-16",
+    "sub": "TROCA-16"
+  },
+  "troca_short": {
+    "exe": "AGENTE-TROCA-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "TROCA-SHORT"
+  },
+  "vazamento_short": {
+    "exe": "AGENTE-VAZAMENTO-SHORT",
+    "fam": "AGENTES-SHORT",
+    "sub": "VAZAMENTO-SHORT"
+  },
+  "wife16_short": {
+    "exe": "AGENTE-WIFE-16",
+    "fam": "AGENTES-16",
+    "sub": "WIFE-16"
+  }
 }

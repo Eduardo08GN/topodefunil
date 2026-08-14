@@ -21,6 +21,18 @@ import os
 import shutil
 import subprocess
 import sys
+
+# ⛔ REMENDO DE CONSOLE, o mesmo do `medir_personagens.py` (linha 51). O
+# console do Windows e' cp1252 e os marcadores deste arquivo nao cabem nele.
+# ⚠️ O padrao que faz o bug ser caro: os prints com marcador so' rodam QUANDO
+# HA' ALGO A REPORTAR, entao o crash acontece exatamente na hora em que a
+# mensagem importa, e nunca no caminho feliz.
+for _f in (sys.stdout, sys.stderr):
+    try:
+        _f.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 import time
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
