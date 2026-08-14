@@ -178,6 +178,20 @@ class App(tk.Tk):
         # quem monta os botoes e' o `_topo()`, que roda depois daqui.
         self.sexos, self.b_sexo, self.sexo_travado = [], {}, None
         self.var_trava = {}
+        # ⭐⭐ 6o CONTRATO ADITIVO (2026-08-13): DROPDOWNS_UI. Ordem do operador:
+        # *"quero um controlador ui ux com seletor dropdown menu, onde que,
+        # quando selecionado determinada opcao, o ref ficara' FIXO naquele
+        # selecionado para quaisquer sorteio"*.
+        # ⛔ POR QUE NAO REUSAR O `TRAVAS_UI`: aquela barra desenha um BOTAO por
+        # opcao, lado a lado. Serve para 15 regioes; com 44 REFs ela estoura a
+        # largura da janela e vira uma parede de botoes ilegivel. Dropdown e' o
+        # unico controle que aguenta pool grande sem crescer na tela.
+        # ⚠️ ADITIVO e lido com `getattr`: motor que nao declara nao ganha nada,
+        # e por isso os outros 42 nao mudam de comportamento.
+        # formato: [(chave_da_trava, rotulo_na_tela, "NOME_DO_POOL", "campo")]
+        self.dropdowns_ui = list(getattr(motor, "DROPDOWNS_UI", []) or [])
+        self.var_drop = {}
+        self._drop_id = {}
         self.var_cadeado = {}
         self.b_cadeado = {}
 
@@ -335,6 +349,7 @@ class App(tk.Tk):
             self._pintar_modos()
 
         self._barra_travas()
+        self._barra_dropdowns()
         tk.Frame(self, bg=LINE, height=1).pack(fill="x", padx=16, pady=(10, 0))
 
     def _barra_travas(self):
@@ -376,6 +391,50 @@ class App(tk.Tk):
                 b.pack(side="left", padx=(0, 2))
                 grupo.append((op, b))
             self._pintar_trava(chave, grupo)
+
+    def _barra_dropdowns(self):
+        """⭐⭐ O SELETOR FIXO DE REF — um combobox por eixo declarado.
+
+        ⛔ Escolher aqui TRAVA o eixo para TODO sorteio seguinte, que e' o que o
+        operador pediu. E' diferente do cadeado da coluna: o cadeado segura o
+        que ESTA' na tela, este segura o que ele ESCOLHEU, mesmo antes do
+        primeiro sorteio.
+        ⚠️ Nao desenha nada quando o motor nao declara `DROPDOWNS_UI`.
+        """
+        if not self.dropdowns_ui:
+            return
+        f = tk.Frame(self, bg=BG)
+        f.pack(fill="x", padx=16, pady=(8, 0))
+        for chave, rotulo, pool_nome, campo in self.dropdowns_ui:
+            pool = list(getattr(self.m, pool_nome, []) or [])
+            # ⚠️ rotulo -> id, porque o combobox devolve TEXTO e o motor espera
+            # o id (ou a entrada). Sem este mapa, escolher no menu mandaria a
+            # string do rotulo para o `_por_id`, que nao casaria com nada e
+            # cederia para `pool[0]` em silencio — o seletor "funcionando" e
+            # entregando sempre o primeiro da lista.
+            mapa = {}
+            for e in pool:
+                txt = str(e.get(campo) or e.get("id") or "")
+                if txt and txt not in mapa:
+                    mapa[txt] = e.get("id")
+            self._drop_id[chave] = mapa
+            var = tk.StringVar(value=LIVRE)
+            self.var_drop[chave] = var
+            tk.Label(f, text=rotulo, font=F_SMALL, bg=BG,
+                     fg=TXT).pack(side="left", padx=(0, 6))
+            cb = ttk.Combobox(f, textvariable=var, state="readonly",
+                              values=[LIVRE] + sorted(mapa), width=38,
+                              font=F_SMALL)
+            cb.pack(side="left", padx=(0, 14))
+            cb.bind("<<ComboboxSelected>>",
+                    lambda _e, c=chave: self._escolher_drop(c))
+        tk.Label(f, text="fixa o REF em todo sorteio", font=F_SMALL, bg=BG,
+                 fg=MUTED).pack(side="left")
+
+    def _escolher_drop(self, chave):
+        """⛔ Sorteia na hora: seletor que so' vale no proximo clique e' o
+        cadeado que nao trava, defeito que este repo ja' pagou tres vezes."""
+        self.sortear()
 
     def _escolher_trava(self, chave, opcao, grupo):
         self.var_trava[chave].set(opcao)
@@ -612,12 +671,22 @@ class App(tk.Tk):
         # ORGANICWAVE caía no ramo de tres argumentos e a trava de quem narra
         # nunca chegava ao motor — botao aceso, sorteio livre.
         if not (self.travas_ui or self.eixos_travaveis or self.pele_travavel
-                or self.modos or self.sexos):
+                or self.modos or self.sexos or self.dropdowns_ui):
             return None
         t = {}
         for chave, var in self.var_trava.items():
             if var.get() != LIVRE:
                 t[chave] = var.get()
+        # ⭐ O DROPDOWN entra ANTES do cadeado, de proposito: cadeado e' o que
+        # esta' na TELA e continua sendo mais especifico. Os dois travam o mesmo
+        # eixo, e sem ordem definida o comportamento dependeria da ordem do
+        # dicionario.
+        for chave, var in self.var_drop.items():
+            escolha = var.get()
+            if escolha and escolha != LIVRE:
+                alvo = self._drop_id.get(chave, {}).get(escolha)
+                if alvo:
+                    t[chave] = alvo
         for chave, var in self.var_cadeado.items():
             if var.get() and self.spec and chave in self.spec:
                 t[chave] = self.spec[chave]
