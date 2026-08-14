@@ -82,7 +82,15 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # operador (ver `DESLIGADAS`) — e este relatorio continua MEDINDO os
            # dois. E' o unico motor do parque que nomeia ingrediente na fala, e
            # e' justamente por isso que o numero dele tem de ficar visivel.
-           "prato16", "mel16", "banho16_v2"]
+           "prato16", "mel16", "banho16_v2",
+           # + 2026-08-14: o ORGANIC WAVE 16 entra AQUI no commit em que nasce.
+           # ⚠️ Ele NAO desliga trava nenhuma. O CT2 dele acusa ~52% dos
+           # sorteios e o numero fica visivel de proposito: metade dos hooks
+           # aprovados pelo operador em 2026-07-31 enuncia a falha pelo
+           # DEITICO mais o prop na mao (`this is what my {o} looked like`) em
+           # vez de por verbo de disfuncao, e o regex do CT2 le' verbo. Nao e'
+           # excecao declarada — e' pergunta aberta para o operador.
+           "organicwave16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.

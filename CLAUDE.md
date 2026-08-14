@@ -50,13 +50,14 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **vinte e dois agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **vinte e três agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
-`prato16` · `banho16` · `banho16_v2` · `mel16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 24 no total)
+`prato16` · `banho16` · `banho16_v2` · `mel16` · `organicwave16` ·
+(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 25 no total)
 
 ⚠️ A lista dizia **dezoito** contando dezesseis nomes, e faltavam `necrose16` e
 `wife16`. O `wife16` some da conta por engano fácil: o `bed16` nasceu como cópia
@@ -308,6 +309,34 @@ por isso ligar "ref forte" num motor de narrador de 58 **trocava o homem por um
 de 32** em vez de trocar o corpo dele. Entrou `sc.REFS_FORTES_MADUROS` (48-68),
 **opt-in** por `ref_forte(..., maduros=True)` — nenhum dos outros 16 motores que
 usam o helper muda (medido bit a bit em 20.000 chamadas).
+
+⭐⭐ **`organicwave16` (2026-08-14) — o primeiro agente da operação em 16s.**
+Nasceu por **cópia literal** do [`organicwave_short.py`](funil-organico/organicwave_short.py)
+(`Copy-Item`, não redigitação), com cirurgia só no eixo temporal — os dois
+convivem, formatos diferentes. ⭐ É o único 16s de **primeira pessoa** com
+**elenco de aspiração** (o oposto dos especialistas: aqui o rosto vende) e com
+**dois narradores possíveis** — no masculino o dono do problema fala de si, no
+feminino a esposa conta e resolve escondido. ⭐⭐ **O quadro fundido** junta as
+cenas 2 e 3 num só: a bancada com o copo, o sachê e a **isca** (o curiosity gap
+que a copy nunca nomeia), e **o parceiro colado no ombro**, mudo, com o prop
+ereto na mão livre. Sem isso o colapso comeria ou o mecanismo ou o payoff.
+⛔ **A copy da cena 2 é NOVA, e por medição**: as `FUNDIDAS`/`CTAS`/`GATES` do
+`_short` violam **cinco** das sete travas ao mesmo tempo (CT1 pelo `{gate}`
+depois do CTA, CT5 pelo `fresh lemon` da receita na fala, CT6 por nenhum CTA
+dizer onde a receita chega, CT7 pelo `gets your {o} hard again`, CT8 pelo pool
+de follow inteiro). Os cinco pools ficaram no arquivo **com lápide**, e
+melhorar qualquer entrada deles não muda um único vídeo. Os beats novos saem
+das sentenças que o operador já aprovou em 2026-07-31, cortando só o proibido.
+⚠️ **A receita saiu da fala e ficou no quadro** — e por isso `_recopiar_receita`
+morreu: trocar o ritual no painel muda a imagem e mais nada.
+⏳ **Pendência declarada, alçada do operador:** o **CT2 acusa 49%** dos
+sorteios. Não é excepção declarada — é que **13 dos 26 hooks aprovados**
+enunciam a falha pelo **dêictico + o prop na mão** (`this is what my {o} looked
+like`) em vez de por verbo de disfunção, e o regex do CT2 lê verbo. Três saídas:
+crescer a lente (precedente: ela já cresceu 5 vezes por reprovar copy certa),
+declarar exceção em `DESLIGADAS`, ou reformular os 13 hooks. **Medido: zero
+ERRO em 400 sorteios, todos os 8 pools 100% alcançáveis, 0% em CT1/CT3/CT4/
+CT4b/CT5/CT6/CT7/CT8, zero frase órfã.**
 
 ⏳ **Pendência aberta:**
 [`PENDENCIA-varredura-batidas.md`](funil-organico/PENDENCIA-varredura-batidas.md)

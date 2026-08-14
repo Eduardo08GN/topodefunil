@@ -75,7 +75,9 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # so produz um "passou" mentiroso (licoes §7).
            "pee16",
            # + 2026-08-10: o ALFA 16 entra no commit em que nasce.
-           "alfa16"]
+           "alfa16",
+           # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
+           "organicwave16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

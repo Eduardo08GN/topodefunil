@@ -81,7 +81,9 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # olhou para ele: gate que nao ve o motor nao reprova o motor,
            # so produz um "passou" mentiroso (licoes §7).
            "pee16",
-           "alfa16"]
+           "alfa16",
+           # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
+           "organicwave16"]
 
 # --------------------------------------------------------------------------
 # OS REFERENTES QUE CONTAM COMO "a frase disse do que se trata"
