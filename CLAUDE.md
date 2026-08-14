@@ -365,8 +365,45 @@ em 43 arquivos, injetando justamente o token que se temia.
 para 24 entradas com **arquitetura facial** — formato do rosto, testa/arcada,
 nariz, maxilar, malar — e 5 das 24 não grisalhas, porque um pool 100% prateado é
 um homem só) e em **`fight16`** (as três negações removidas, a metade positiva
-fica). ⚠️ **Os outros ~41 motores ainda carregam a negação** — dívida declarada,
-não corrigida.
+fica).
+
+#### ⭐⭐ DÍVIDA PAGA EM 2026-08-14 — *"tire not a celebrity do prompt"*
+
+Os outros motores foram varridos. ⛔ **Não por edição à mão:** a cláusula é um
+recorte **regular**, e as 54 entradas do `APELO_EUA` são copy validada —
+redigitar copy validada é o erro que o repo já pagou. O molde é o
+`tirar_bandeira`/`_BANDEIRA`: **substituição verificada, com a lente junto.**
+
+| | |
+|---|---|
+| Ferramenta | [`tirar_anticeleb.py`](funil-organico/tirar_anticeleb.py) — `--dry-run` (padrão) · `--aplicar` · `--lapide` |
+| Recorte + lente | `short_comum.tirar_anticeleb` / `lint_anticeleb` (+ `autoteste_anticeleb`) |
+| Cobrança | `lint_anticeleb` roda em **44 de 44** motores — pelo `lint_curto` e, nos que têm `lint()` próprio, por chamada explícita |
+| Aplicado | **30 arquivos, 112 strings** (111 na primeira passada + a do plural) |
+| Medido (seed `20260814`, N=60) | `celebrity` **100% → 0%** nos 30 motores sujos; **0%** nos 5 padrões em 44 de 44 |
+| Controle negativo | 264 plantios da cláusula, **264 acusados** — nenhum motor "limpo por ninguém estar olhando" |
+| Prosa | 0 acusação de vírgula dupla / espaço duplo em **5.280 sorteios** |
+
+⭐ **A metade positiva fica.** `"Ordinary relatable face, not a celebrity."` virou
+`"Ordinary relatable face."` — 18 das 20 formas tinham descrição sobrevivente. As
+duas do **FALTA** eram negação **pura**: viraram vazio, e por isso o slot passou
+a levar a própria pontuação (`sc.frase_anti`), senão sobrava ponto órfão.
+
+⛔ **As lápides ficam, todas as 105** — comentário, docstring, e os regex
+`_CELEB_POOL`/`ES17`/`RS12`/`TR16`, que são o **detector**, não o defeito.
+Apagá-los removeria a memória que impede a reincidência.
+
+⚠️ **Duas coisas que só a medição achou** — nenhuma estava no inventário:
+- O **VAZAMENTO** tinha a forma **plural sem artigo** (`not celebrities, not
+  models, not actors`), que o primeiro regex não pegava. Saía em **100%** dos
+  vídeos. Quem a achou foi a medição do **prompt gerado**, não o grep no fonte.
+- O **ESCANDALO** tem fala aprovada — *"The gelatin trick is not famous"* — onde
+  `not famous` significa "o truque não é famoso". Por isso a lente lê a
+  **direção de cena** e nunca a fala, e `not famous` cru ficou fora do recorte.
+
+⛔ E a âncora do controle negativo do **DUPLA** deixou de ser `ANTICELEB`: com a
+constante vazia, `str.replace("", X)` insere `X` entre cada caractere (91 chars
+viravam 5.059) e o controle seguia "passando" pelo motivo errado.
 
 ⛔ E o eixo de rosto do `pee16` ganhou o que faltava do outro lado: **narrador e
 vítima entraram no ledger**. Eram os dois únicos eixos do motor **sem memória

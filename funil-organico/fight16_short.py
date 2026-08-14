@@ -2182,6 +2182,13 @@ def lint(spec, blocos):
     falas = spec["falas"]
     sc.lint_tags(blocos, ach)
     sc.lint_take_vs_image(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor tem `lint()` PROPRIO e
+    # nao passa pelo `sc.lint_curto`, entao a lente entra aqui
+    # explicitamente — regra sem guarda volta no proximo agente nascido
+    # por copia, e foi exatamente assim que a clausula chegou aos 30
+    # motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[-1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[-1], ach, "a cena 2 (CTA)")
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)

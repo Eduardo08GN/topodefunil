@@ -107,7 +107,10 @@ NEGACAO_AVE = (
     "eyes, no head, nothing alive."
 )
 
-ANTICELEB = "Ordinary relatable face, not a celebrity."
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = "Ordinary relatable face."
 CAUDA = "iPhone shot, natural grain, no text, no watermark."
 
 # Agencia — a correcao validada em 2026-07-30. O proxy fica na mao da PROPRIA

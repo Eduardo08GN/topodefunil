@@ -350,8 +350,10 @@ BO_ANCORA = ("the same %d-year-old %s woman from the first scene, same %s, same 
 # nos — rosto sem graca em cima de um corpo encomendado bonito.
 # ⚠️ E' o mesmo conserto que o CLEAN ja' tinha feito (CL26): a protecao de
 # IDENTIDADE (nao-celebridade) fica; so' sai o "comum" e o "nao e' modelo".
-ANTICELEB = ("A strikingly beautiful face, not a celebrity, not resembling "
-             "any famous person.")
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = ("A strikingly beautiful face.")
 CAUDA = "Shot on iPhone, natural grain. No burned-in text, no watermark."
 
 
@@ -2471,13 +2473,16 @@ def _por_traje(mundo, curto):
 # ⛔ Continua tasteful de proposito: `figure`, `shapely`, `toned`. Termo
 # explicito nao converte melhor e ainda arrisca recusa do gerador, que custa
 # lote (ver RUNBOOK-bisseccao-moderacao).
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 APELO_EUA = [
-    "A strikingly attractive everyday woman, well groomed, with clear even skin, softly styled hair and a noticeably good figure, not a celebrity, not resembling any famous person.",
-    "A very good-looking everyday woman with glowing skin, light natural make-up and a shapely figure, not a celebrity, not resembling any famous person.",
-    "An unusually pretty everyday woman with fine features, healthy glossy hair and a trim shapely body, not a celebrity, not resembling any famous person.",
-    "A head-turning everyday woman, carefully groomed, with bright eyes, full lips and a striking figure, not a celebrity, not resembling any famous person.",
-    "A notably beautiful everyday woman with high cheekbones, smooth clear skin and a curvy figure, not a celebrity, not resembling any famous person.",
-    "A very attractive everyday woman with a toned shapely figure, shining hair and even skin, not a celebrity, not resembling any famous person.",
+    "A strikingly attractive everyday woman, well groomed, with clear even skin, softly styled hair and a noticeably good figure.",
+    "A very good-looking everyday woman with glowing skin, light natural make-up and a shapely figure.",
+    "An unusually pretty everyday woman with fine features, healthy glossy hair and a trim shapely body.",
+    "A head-turning everyday woman, carefully groomed, with bright eyes, full lips and a striking figure.",
+    "A notably beautiful everyday woman with high cheekbones, smooth clear skin and a curvy figure.",
+    "A very attractive everyday woman with a toned shapely figure, shining hair and even skin.",
 ]
 
 # ⛔ HOJE E' CODIGO MORTO: os 16 mundos deste motor sao todos `eua: True`,
@@ -2486,9 +2491,11 @@ APELO_EUA = [
 # face` num agente cuja REF o operador encomendou top model. Codigo morto
 # com a regra errada dentro e' bomba com pino: alguem acrescenta um mundo e
 # o vicio volta calado, sem lint, sem autoteste, sem aviso.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 APELO_PADRAO = (
-    "A strikingly beautiful everyday woman, not a celebrity, not resembling "
-    "any famous person.")
+    "A strikingly beautiful everyday woman.")
 
 
 def _apelo(spec):
@@ -3015,6 +3022,12 @@ def lint(spec, blocos):
 
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto`, entao a lente entra aqui explicitamente — regra sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente
+    # assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     # ⛔⛔ T16-2 — A KEYWORD NAO PODE TER PALAVRA COLADA NELA.

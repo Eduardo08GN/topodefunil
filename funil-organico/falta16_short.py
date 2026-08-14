@@ -934,7 +934,16 @@ REACOES_AMIGA = [
 ]
 
 # ⭐ A cláusula anti-celebridade, no registro de mulher.
-ANTICELEB = ("not resembling any famous person, not a celebrity")
+# ⛔⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do
+# operador (*"tire not a celebrity do prompt"*): declaracao INJETA o token
+# que ela nega. ⚠️ Aqui a clausula era `not resembling any famous person, not
+# a celebrity` — NEGACAO PURA, sem metade descritiva para sobreviver, o unico
+# caso assim nos 30 motores. Por isso a constante fica VAZIA e quem carrega a
+# pontuacao passou a ser o slot (`sc.frase_anti`), no `montar()`.
+# ⚠️ O aviso de MAIUSCULA acima morreu junto: nao ha' mais frase para comecar
+# em minuscula. Fica pela memoria de como o defeito se parecia.
+# Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = ("")
 
 CAUDA = ("Slight sensor grain, soft focus, raw iPhone front camera aesthetic. "
          "No subtitles, no captions, no burned-in text, no watermark.")
@@ -1548,12 +1557,18 @@ def montar(spec):
         "h_cabeca": hom["cabeca"], "h_calca": hom["calca"],
         "vaso": met["vaso"], "acao": met["acao"],
         "com_img": com["img"], "raro_img": raro["img"],
-        # ⚠️ `.rstrip(".")` — os blocos escrevem "%(anti)s." e o ANTICELEB_BELA
-        # (compartilhado) ja' termina em ponto: saia "famous person.." nos
-        # quatro. Normalizar aqui e' melhor que tirar o ponto do template, que
-        # os outros agentes usam sem ponto proprio.
-        "anti": (sc.ANTICELEB_BELA if spec.get("bela")
-                 else ANTICELEB).rstrip("."),
+        # ⛔⛔ O SLOT LEVA A PROPRIA PONTUACAO — 2026-08-14. Aqui a clausula
+        # anti-celebridade era NEGACAO PURA, sem metade descritiva, entao a
+        # remocao (ordem do operador, CLAUDE.md §CONTRA A CELEBRIDADE,
+        # SILENCIO) deixa o `ANTICELEB` VAZIO. Os blocos escreviam "%(anti)s. "
+        # e devolviam ponto orfao e espaco duplo — a sujeira que a lente foi
+        # escrita para pegar. `sc.frase_anti` normaliza o ponto e o espaco no
+        # SLOT, e some inteiro quando o texto e' vazio; os templates passaram a
+        # `%(anti_frase)s`, sem ponto proprio.
+        # ⚠️ Com o MODO BELA aceso o valor continua vindo do compartilhado e o
+        # texto sai identico ao de antes — medido bloco a bloco.
+        "anti_frase": sc.frase_anti(sc.ANTICELEB_BELA if spec.get("bela")
+                                    else ANTICELEB),
         "cauda": CAUDA, "band": band,
         "idade": ref["idade"], "etnia": spec["etnia"], "marca": ref["marca"],
         "cabeca": ref["cabeca"],
@@ -1574,7 +1589,7 @@ def montar(spec):
         "REF 01: Photo of a real person, a %(idade)d-year-old %(etnia)s woman, "
         "chest up, facing the camera directly, neutral steady expression with "
         "her mouth closed. %(cabeca)s and %(marca)s. Wearing %(traje)s. "
-        "%(anti)s. Hands out of frame, no objects. Plain neutral gray "
+        "%(anti_frase)sHands out of frame, no objects. Plain neutral gray "
         "background, soft even frontal light. %(cauda)s" % v)
 
     # --- CENA 1 — O CORPO-PROVA E A ACUSACAO --------------------------------
@@ -1625,7 +1640,7 @@ def montar(spec):
         "%(amiga)s, wearing %(traje_amiga)s, and her right arm reaches out "
         "with the index finger pointing at the %(prop_curto)s, without "
         "touching it or him. They are the only three people in the frame. "
-        "%(nao_toca)s%(band)s %(anti)s. %(cauda)s" % v)
+        "%(nao_toca)s%(band)s %(anti_frase)s%(cauda)s" % v)
 
     b["TAKE 01/02"] = (
         # ⛔ MESMAS ALAVANCAS NO TAKE, e a trava de geometria vem LOGO NO
@@ -1679,7 +1694,7 @@ def montar(spec):
         "pale drink, a single paper straw standing in it, and looks straight "
         "into the lens with her mouth open mid-word. On the surface in front "
         "of her stand %(vaso)s, %(com_img)s and %(raro_img)s. They are the "
-        "only two people in the frame. %(nao_toca)s%(band)s %(anti)s. "
+        "only two people in the frame. %(nao_toca)s%(band)s %(anti_frase)s"
         "%(cauda)s" % v)
 
     b["TAKE 02/02"] = (
@@ -2026,6 +2041,12 @@ def lint(spec, blocos):
 
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto`, entao a lente entra aqui explicitamente — regra sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente
+    # assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     # ⛔⛔ T16-2 — A KEYWORD NAO PODE TER PALAVRA COLADA NELA.

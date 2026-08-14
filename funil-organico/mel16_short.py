@@ -1812,8 +1812,11 @@ CAUDA = ("Shot on iPhone, natural grain. No on-screen text, no subtitles, no "
 # ⭐ Com o MODO FORTE ligado ela vira `sc.ANTICELEB_FORTE`: dizer "powerfully
 # built" no corpo e "plain unremarkable face" no rosto na mesma frase e' a
 # contradicao que o CLEAN ja' pagou.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 ANTICELEB = ("An ordinary everyday relatable person with a plain unremarkable "
-             "face, not a celebrity, not a model, not an actor.")
+             "face.")
 
 
 def _traje_dela(spec):
@@ -2287,6 +2290,13 @@ def lint(spec, blocos):
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_take_vs_image(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor tem `lint()` PROPRIO e
+    # nao passa pelo `sc.lint_curto`, entao a lente entra aqui
+    # explicitamente — regra sem guarda volta no proximo agente nascido
+    # por copia, e foi exatamente assim que a clausula chegou aos 30
+    # motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_me1_prato_e_copo, _me2_ela_so_no_take2, _me3_continuidade,
               _me4_cor_unica, _me5_orcamento, _me6_etnia, _me7_sem_gole,

@@ -2024,8 +2024,11 @@ CAUDA = ("Shot on iPhone, natural grain. No on-screen text, no subtitles, no "
 # built" no corpo e "plain unremarkable face" no rosto na mesma frase e' a
 # contradicao que o CLEAN ja' pagou — o gerador recebe as duas e resolve contra
 # nos.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 ANTICELEB = ("An ordinary everyday relatable person with a plain unremarkable "
-             "face, not a celebrity, not a model, not an actor.")
+             "face.")
 
 
 def _traje_dela(spec):
@@ -3007,6 +3010,13 @@ def lint(spec, blocos):
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_take_vs_image(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor tem `lint()` PROPRIO e
+    # nao passa pelo `sc.lint_curto`, entao a lente entra aqui
+    # explicitamente — regra sem guarda volta no proximo agente nascido
+    # por copia, e foi exatamente assim que a clausula chegou aos 30
+    # motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_go1_corpo_nao_orgao, _go2_ela_muda, _go4_sache, _go5_orcamento,
               _go6_etnia, _go7_ancora, _go8_tigela, _go9_mistura,

@@ -184,8 +184,10 @@ RE_TACA = ("a wide-bowled glass coupe heaped with firm vivid purple gelatin cube
 RE_ANCORA = ("the same %d-year-old %s man from the first scene, same %s, same "
              "%s, same %s")
 
-ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
-             "actor, not resembling any famous person.")
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = ("Ordinary relatable face.")
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 
@@ -2000,13 +2002,15 @@ def montar(spec):
     # Visual. Ele existe nos DOIS modos, porque o rosto aparece na cena 3 em
     # qualquer caso — e sem ele o payoff sai com um homem que ninguem escolheu.
     oc = (" " + _cap(ref["oculos"]) + ".") if ref["oculos"] else ""
+    # ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+    # (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+    # A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
     b["BLOCO 0 (REF)"] = (
         "REF 01: Photo of a real person, a %(idade)d-year-old %(etnia)s man, "
         "chest up, facing the camera directly, neutral steady expression with "
         "his mouth closed. %(pessoa_curta)s An ordinary everyday relatable "
-        "person with a plain unremarkable face, not a celebrity, not a model, "
-        "not an actor, not resembling any famous person. Hands out of frame, "
-        "no objects. Plain neutral gray background, soft even frontal light. "
+        "person with a plain unremarkable face. Hands out of frame, no "
+        "objects. Plain neutral gray background, soft even frontal light. "
         "Slight sensor grain, soft focus, raw iPhone front camera aesthetic. "
         "No subtitles, no captions, no burned-in text, no watermark."
         % dict(v, pessoa_curta="%s. %s.%s %s. Wearing %s."
@@ -2123,6 +2127,12 @@ def lint(spec, blocos):
 
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto`, entao a lente entra aqui explicitamente — regra sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente
+    # assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[2], ach, "a cena 3 (CTA)")
     sc.lint_cta_literal(falas[2], ach, "a cena 3 (CTA)")
 
