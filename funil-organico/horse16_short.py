@@ -565,80 +565,188 @@ RECEITAS = [
      "fala": "horse gelatin, honey and lemon",
      "itens": ("a jar of raw honey", "a cut lemon")},
 ]
-
-
 # ===========================================================================
-# AS MAOS — o narrador inteiro, e a unica ancora de continuidade
+# ELE — e AGORA ELE TEM ROSTO
 # ===========================================================================
-# ⛔⛔ SEM ROSTO EM QUADRO NENHUM (ordem do operador: *"so as maos"*). Por isso o
-# `BLOCO 0 (REF)` e' uma FOTO DAS MAOS: sem rosto, elas sao o unico jeito de o
-# take 2 ser do mesmo homem que o take 1.
-# ⚠️ A etnia vem da PAGINA e chega ao quadro AQUI. Duas vozes decidindo a mesma
-# coisa e' o defeito FT14 do FIGHT 16 — por isso o pool nao menciona etnia, e o
-# motor injeta `ETNIA[pagina]` na frase.
+# ⛔⛔ REVERSAO DECLARADA (2026-08-14, depois do primeiro render): *"rosto dele
+# aparece no take 1, vamos abandonar as maos cortadas no take 1"*. A ordem
+# anterior era *"so as maos"*, e o motor nasceu assim — a nova vence por ser
+# posterior e por vir de um lote na tela.
+#
+# ⚠️ E A CONSEQUENCIA NAO E' COSMETICA: com rosto em quadro, a ancora de
+# continuidade entre os dois takes deixa de ser a MAO e passa a ser o ROSTO. Por
+# isso o `BLOCO 0 (REF)` virou foto do rosto dele, e as `MAOS` deixaram de ser o
+# eixo de identidade para virar detalhe do corpo. Trocar a ancora e nao trocar o
+# BLOCO 0 seria entregar dois homens diferentes nos dois takes.
+HOMENS = [
+    {"id": "grisalho_barba", "idade": 63, "rotulo": "grisalho de barba curta",
+     "desc": "thick silver hair and a close-cropped grey beard, deep lines at "
+             "the eyes"},
+    {"id": "careca_bigode", "idade": 66, "rotulo": "careca de bigode",
+     "desc": "a shaved head and a heavy grey moustache, a wide flat nose"},
+    {"id": "cabelo_branco", "idade": 69, "rotulo": "cabelo branco cheio",
+     "desc": "a full head of white hair combed back and a square jaw"},
+    {"id": "bone", "idade": 61, "rotulo": "de bone gasto",
+     "desc": "a worn ball cap over grey hair, sun-creased cheeks and a "
+             "stubbled chin"},
+    {"id": "cavanhaque", "idade": 58, "rotulo": "de cavanhaque",
+     "desc": "salt-and-pepper hair and a trimmed goatee, heavy brows"},
+    {"id": "oculos", "idade": 71, "rotulo": "de oculos de leitura",
+     "desc": "thin white hair and wire reading glasses low on a long nose"},
+]
+
+# ⚠️ As MAOS continuam existindo porque elas fazem o gesto e aparecem em close
+# em varios angulos — mas nao sao mais quem carrega a identidade.
 MAOS = [
     {"id": "manchadas", "rotulo": "manchadas de sol",
-     "desc": "heavily sun-spotted hands with thick knuckles and short square "
-             "nails"},
+     "desc": "heavily sun-spotted hands with thick knuckles"},
     {"id": "veias", "rotulo": "veias marcadas",
-     "desc": "lean hands with prominent veins across the back and deep "
-             "creases at the knuckles"},
+     "desc": "lean hands with prominent veins across the back"},
     {"id": "grossas", "rotulo": "grossas de trabalho",
-     "desc": "broad work-thickened hands with callused palms and blunt "
-             "fingertips"},
+     "desc": "broad work-thickened hands with callused palms"},
     {"id": "aliança", "rotulo": "com alianca gasta",
-     "desc": "weathered hands with a worn gold wedding band on the left ring "
-             "finger"},
-    {"id": "cicatriz", "rotulo": "com cicatriz no polegar",
-     "desc": "rough hands with an old pale scar across the base of the right "
-             "thumb"},
-    {"id": "pelos", "rotulo": "com pelos grisalhos",
-     "desc": "large hands with grey hair on the backs and heavy flat "
-             "fingernails"},
+     "desc": "weathered hands with a worn gold wedding band"},
 ]
 
 
 # ===========================================================================
-# ELA — obrigatoria em toda cena, e o que o MODO BELA move
+# O ANGULO DO TAKE 1 — o eixo que o operador pediu GENEROSO e DIFERENTE
 # ===========================================================================
-# ⛔ Ordem do operador: *"sempre uma personagem mulher sorrindo olhando pro cara
-# preparando"*. Ela NAO e' excecao como no BANHO 16 — e' a regra. E o que ela faz
-# nunca muda: senta atras, no fundo que o balcao declara, e SORRI olhando as
-# maos dele trabalharem. Nao fala, nao encosta em nada, nao sai de foco.
+# ⛔⛔ ORDEM DO OPERADOR (2026-08-14): *"pool bem generoso de variacoes de angulo
+# no take 1"* e *"quero algo bem diferente de angulos ate agora"*.
 #
-# ⛔ O SORRISO E' CLAUSULA POSITIVA. Nunca `not laughing`, nunca `without
-# smiling`: negacao injeta o token, e a licao ja' esta' paga no ALFA 16 e no
-# GOOD 16.
+# ⚠️ O QUE O PARQUE JA' FAZ, e que este pool NAO pode repetir: `medium shot`,
+# `three-quarter view` e o insert de maos de cima. Sao tres enquadramentos em
+# dezenove motores — o `curto` de cada entrada aqui existe para o operador ver no
+# painel que ele NAO esta' pegando o de sempre.
 #
-# ⭐⭐ O MODO BELA move PORTE, IDADE e CABELO — nunca a pessoa e nunca o traje.
-# A toalha e' o figurino do angulo (ordem do operador), entao ela continua de
-# toalha nos dois estados. Botao que troca a roupa quando a roupa E' o angulo
-# seria botao que desmancha o ângulo.
+# ⛔ CADA ANGULO DECLARA `fundo_ok`: se ele deixa o fundo do balcao legivel. Nem
+# todo enquadramento consegue — um macro na tigela nao mostra parede nenhuma. A
+# lente HO6 so' cobra o fundo nos que prometem, senao seria lente reprovando o
+# angulo por ele ser o que e'.
+ANGULOS = [
+    {"id": "sobre_ombro", "curto": "por cima do ombro dele", "fundo_ok": True,
+     "img": "Shot from just behind his shoulder, the camera looking down past "
+            "his ear at his own hands working, his face turned in profile"},
+    {"id": "de_baixo_bancada", "curto": "de baixo, rente ao tampo",
+     "fundo_ok": True,
+     "img": "Camera resting on the counter itself, lens almost level with the "
+            "wood, looking up past the bowl at his face above it"},
+    {"id": "zenital_inclinado", "curto": "zenital inclinado",
+     "fundo_ok": False,
+     "img": "Straight down over the counter but tilted, the bowl and the box "
+            "filling the frame and his face entering at the top edge"},
+    {"id": "atraves_prateleira", "curto": "atraves da prateleira",
+     "fundo_ok": True,
+     "img": "Shot through the gap of a shelf, bottles blurred across the "
+            "foreground and him sharp between them"},
+    {"id": "reflexo_tv", "curto": "no reflexo da TV",
+     "fundo_ok": True,
+     "img": "Framed on the dark glass of the switched-off television, his "
+            "reflection working at the counter behind it"},
+    {"id": "atras_tigela", "curto": "atras da tigela, do outro lado",
+     "fundo_ok": True,
+     "img": "Camera on the far side of the counter facing him, the glass bowl "
+            "large in the foreground and his face distorted through it"},
+    {"id": "diagonal_dutch", "curto": "diagonal inclinada",
+     "fundo_ok": True,
+     "img": "The whole frame tilted several degrees off level, him and the "
+            "counter running diagonally across it"},
+    {"id": "porta_aberta", "curto": "da porta, de longe",
+     "fundo_ok": True,
+     "img": "Shot from a doorway across the room, the door frame darkening "
+            "both edges and him small and centred at the counter"},
+    {"id": "macro_maos", "curto": "macro nas maos",
+     "fundo_ok": False,
+     "img": "Extreme close on his hands and the bowl, so tight the rim of the "
+            "bowl leaves the frame, his face soft and out of focus behind"},
+    {"id": "contraluz_janela", "curto": "contraluz da janela",
+     "fundo_ok": True,
+     "img": "Shot into the window light so he reads as a near-silhouette with "
+            "a bright rim, the bowl catching the light in front of him"},
+    {"id": "canto_alto", "curto": "do alto do canto",
+     "fundo_ok": True,
+     "img": "From a high corner of the room looking down at an angle, the "
+            "counter and him small in the lower third"},
+    {"id": "por_baixo_vidro", "curto": "por baixo do vidro",
+     "fundo_ok": False,
+     "img": "Camera under a glass shelf looking up through it, the bowl "
+            "pressed on the glass above and his face beyond"},
+    {"id": "lateral_rasante", "curto": "lateral rasante",
+     "fundo_ok": True,
+     "img": "Hard side-on with the lens almost touching the counter, "
+            "everything on it in a receding line towards him"},
+    {"id": "espelho_lateral", "curto": "num espelho de parede",
+     "fundo_ok": True,
+     "img": "Framed in a small wall mirror to one side, showing him and the "
+            "counter from an angle the camera itself cannot see"},
+]
+
+
+# ===========================================================================
+# ELA — APENAS NO TAKE 2, e com o guarda-roupa como eixo
+# ===========================================================================
+# ⛔⛔ DUAS REVERSOES DECLARADAS (2026-08-14, depois do primeiro render):
+#   1. *"mulher aparece apenas no take 2"*. Ela nascia nos DOIS quadros, por
+#      ordem anterior (*"sempre uma personagem mulher sorrindo"*). A nova vence:
+#      o take 1 fica so' dele, e ela entra como PAYOFF.
+#      ⭐ E isso melhora o angulo: ela deixa de ser cenario e passa a ser a
+#      recompensa — o mesmo desenho do casal do FIGHT 16 e do BED 16.
+#   2. *"varie bastante as roupas das mulher"*. A toalha era o figurino travado
+#      do angulo; virou UMA entrada entre catorze.
+#
+# ⛔ O SORRISO CONTINUA EM CLAUSULA POSITIVA. Nunca `not laughing`: negacao
+# injeta o token, licao paga no ALFA 16 e no GOOD 16.
+ROUPAS = [
+    {"id": "toalha", "curto": "toalha branca",
+     "img": "wrapped in a white bath towel"},
+    {"id": "camisa_dele", "curto": "camisa dele, grande demais",
+     "img": "in his oversized flannel shirt, sleeves rolled past her wrists"},
+    {"id": "regata_branca", "curto": "regata branca",
+     "img": "in a plain white tank top"},
+    {"id": "vestido_verao", "curto": "vestido de verao",
+     "img": "in a fitted summer dress"},
+    {"id": "robe_seda", "curto": "robe de seda",
+     "img": "in a short silk robe tied at the waist"},
+    {"id": "sueter_ombro", "curto": "sueter caido no ombro",
+     "img": "in a loose knit sweater slipping off one shoulder"},
+    {"id": "jeans_top", "curto": "jeans e top",
+     "img": "in high-waisted jeans and a cropped top"},
+    {"id": "camisola", "curto": "camisola de alcinha",
+     "img": "in a slip nightdress with thin straps"},
+    {"id": "moletom", "curto": "moletom aberto",
+     "img": "in an unzipped hoodie over a tee"},
+    {"id": "biquini_saida", "curto": "biquini e saida de praia",
+     "img": "in a bikini top under an open beach cover-up"},
+    {"id": "xadrez_amarrada", "curto": "xadrez amarrada na cintura",
+     "img": "in a plaid shirt knotted at the waist"},
+    {"id": "vestido_malha", "curto": "vestido de malha",
+     "img": "in a close-fitting knit dress"},
+    {"id": "short_regata", "curto": "short e regata",
+     "img": "in denim shorts and a ribbed tank"},
+    {"id": "casaco_pele", "curto": "casaco felpudo",
+     "img": "in a fleece-lined coat left open"},
+]
+
 ELAS = [
     {"id": "realista_1", "bela": False, "idade": 41,
-     "desc": "shoulder-length brown hair damp at the ends, a soft everyday "
-             "build"},
+     "desc": "shoulder-length brown hair, a soft everyday build"},
     {"id": "realista_2", "bela": False, "idade": 46,
-     "desc": "dark hair pinned up loosely, a few strands stuck to her neck, an "
-             "ordinary build"},
+     "desc": "dark hair pinned up loosely, an ordinary build"},
     {"id": "realista_3", "bela": False, "idade": 38,
      "desc": "wavy blonde hair pushed back off her face, a soft round build"},
     {"id": "realista_4", "bela": False, "idade": 49,
-     "desc": "short greying hair still wet at the temples, a sturdy build"},
+     "desc": "short greying hair, a sturdy build"},
     {"id": "bela_1", "bela": True, "idade": 27,
-     "desc": "long dark hair twisted up in a loose knot, a slim toned build "
-             "and bare shoulders"},
+     "desc": "long dark hair twisted up in a loose knot, a slim toned build"},
     {"id": "bela_2", "bela": True, "idade": 24,
-     "desc": "long honey-blonde hair falling wet over one shoulder, a slim "
-             "build and a bright open smile"},
+     "desc": "long honey-blonde hair over one shoulder, a slim build and a "
+             "bright open smile"},
     {"id": "bela_3", "bela": True, "idade": 29,
-     "desc": "copper-red hair gathered up off her neck, freckled shoulders and "
-             "a slim build"},
+     "desc": "copper-red hair gathered up off her neck, freckled shoulders"},
     {"id": "bela_4", "bela": True, "idade": 26,
-     "desc": "black hair pulled back sleek and wet, high cheekbones and a slim "
-             "build"},
+     "desc": "black hair pulled back sleek, high cheekbones and a slim build"},
 ]
-
 
 # ===========================================================================
 # A COPY — cinco beats, dois takes
@@ -861,19 +969,13 @@ def sortear(pagina, rng, led, travas=None):
     usados = led or {}
     etnia = ETNIA.get(pagina, "white American")
 
-    # ── o mundo ────────────────────────────────────────────────────────────
     pool_b = BALCOES
     if travas.get("familia_balcao"):
-        recorte = [b for b in BALCOES if b["regiao"] == travas["familia_balcao"]]
-        # ⛔ SEM CESSAO SILENCIOSA: recorte vazio seria botao que promete uma
-        # regiao e entrega outra, que e' o defeito nº1 deste parque.
-        pool_b = recorte or pool_b
+        pool_b = [b for b in BALCOES
+                  if b["regiao"] == travas["familia_balcao"]] or BALCOES
     balcao = (_por_id(pool_b, travas["balcao"]) if travas.get("balcao")
               else _fresco(pool_b, usados.get("balcao", [])[-4:], rng))
 
-    # ⛔ A superficie sai das que EXISTEM naquele balcao (`sups`). Sorteio livre
-    # entrega duas peles do mesmo lugar no mesmo quadro, e o gerador resolve a
-    # contradicao inventando um terceiro ambiente.
     sups = [s for s in SUPERFICIES if s["id"] in balcao["sups"]] or SUPERFICIES
     superficie = (_por_id(sups, travas["superficie"]) if travas.get("superficie")
                   else _fresco(sups, usados.get("superficie", [])[-2:], rng))
@@ -887,11 +989,17 @@ def sortear(pagina, rng, led, travas=None):
     acao = (_por_id(ACOES, travas["acao"]) if travas.get("acao")
             else _fresco(ACOES, usados.get("acao", [])[-2:], rng))
     maos = (_por_id(MAOS, travas["maos"]) if travas.get("maos")
-            else _fresco(MAOS, usados.get("maos", [])[-3:], rng))
+            else _fresco(MAOS, usados.get("maos", [])[-2:], rng))
+    homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
+             else _fresco(HOMENS, usados.get("homem", [])[-3:], rng))
+    # ⭐ O eixo que o operador pediu generoso. Janela de memoria maior (6) porque
+    # o pool e' o maior do motor: com janela curta, catorze angulos repetem em
+    # lotes seguidos e o eixo perde a razao de existir.
+    angulo = (_por_id(ANGULOS, travas["angulo"]) if travas.get("angulo")
+              else _fresco(ANGULOS, usados.get("angulo", [])[-6:], rng))
+    roupa = (_por_id(ROUPAS, travas["roupa"]) if travas.get("roupa")
+             else _fresco(ROUPAS, usados.get("roupa", [])[-6:], rng))
 
-    # ── ela ────────────────────────────────────────────────────────────────
-    # ⭐ O MODO BELA recorta o pool; ele NAO troca a pessoa por outra funcao nem
-    # mexe no traje. A toalha e' o figurino do angulo e fica nos dois estados.
     bela = bool(travas.get("bela"))
     pool_e = [e for e in ELAS if e["bela"] == bela] or ELAS
     ela = (_por_id(pool_e, travas["ela"]) if travas.get("ela")
@@ -899,8 +1007,9 @@ def sortear(pagina, rng, led, travas=None):
 
     spec = {"pagina": pagina, "etnia": etnia, "balcao": balcao,
             "superficie": superficie, "caixa": caixa, "rotulo": rotulo,
-            "receita": receita, "acao": acao, "maos": maos, "ela": ela,
-            "bela": bela, "falas": ["", ""]}
+            "receita": receita, "acao": acao, "maos": maos, "homem": homem,
+            "angulo": angulo, "roupa": roupa, "ela": ela, "bela": bela,
+            "falas": ["", ""]}
     spec["falas"] = _falas(spec, rng)
     return spec
 
@@ -916,67 +1025,75 @@ def trocar_fala(spec, rng, i):
 def montar(spec):
     b, s = spec["balcao"], spec["superficie"]
     cx, rt, rc = spec["caixa"], spec["rotulo"], spec["receita"]
-    ac, mo, el = spec["acao"], spec["maos"], spec["ela"]
+    ac, mo, hm = spec["acao"], spec["maos"], spec["homem"]
+    an, ro, el = spec["angulo"], spec["roupa"], spec["ela"]
     et = spec["etnia"]
-    maos_txt = "%s %s" % (et, mo["desc"])
     itens = ", ".join(rc["itens"])
 
-    # ⛔ ELA E' A MESMA FRASE NOS DOIS QUADROS, inteira. Ancora curta ("the same
-    # woman") perde a pessoa entre os takes; repetir sai mais barato que
-    # consertar. E o sorriso e' clausula POSITIVA — nunca `not laughing`, porque
-    # negacao injeta o token (licao do ALFA 16 e do GOOD 16).
-    dela = ("A %d-year-old %s woman, %s, sits on a stool several feet behind "
-            "him, wrapped in a white bath towel, smiling as she watches his "
-            "hands work. She never speaks and never touches anything."
-            % (el["idade"], et, el["desc"]))
+    # ⛔ A descricao INTEIRA dele se repete nos dois quadros — ancora curta ("the
+    # same man") perde o rosto entre os takes, que e' a falha que derrubou a cena
+    # do casal do VAZAMENTO. Repetir sai mais barato que consertar.
+    ele = ("a %d-year-old %s man with %s, in a work shirt, %s"
+           % (hm["idade"], et, hm["desc"], mo["desc"]))
 
     bl = {}
 
-    # ⛔⛔ O BLOCO 0 E' UMA FOTO DAS MAOS, e nao de um rosto: este angulo nao tem
-    # rosto de homem em quadro nenhum (ordem do operador). Sem rosto, as maos sao
-    # a UNICA ancora de continuidade entre o take 1 e o take 2.
+    # ⛔⛔ O BLOCO 0 VIROU FOTO DO ROSTO (2026-08-14). Enquanto o angulo era so'
+    # as maos, a ancora de continuidade era a MAO e o REF era uma foto dela. Com
+    # o rosto em quadro, quem precisa ser o mesmo nos dois takes e' o ROSTO —
+    # trocar a ancora e nao trocar o REF entregaria dois homens diferentes.
     bl["BLOCO 0 (REF)"] = (
-        "REF 01: Photo of a real person's hands only, %s, resting on a plain "
-        "wooden surface, shot from above, no face and no body in frame. Plain "
-        "even light. No subtitles, no captions, no burned-in text, no watermark."
-        % maos_txt)
+        "REF 01: Photo of a real person, a %d-year-old %s man, chest up, "
+        "facing the camera directly, calm steady expression. %s. Plain neutral "
+        "gray background, soft even frontal light. No subtitles, no captions, "
+        "no burned-in text, no watermark."
+        % (hm["idade"], et, _cap(hm["desc"])))
 
-    # ⭐⭐ O ANGULO DE CAMERA E' ORDEM DO OPERADOR: *"take 1 tera angulo pegando a
-    # table do preparo com angulo de perspectiva de realce do fundo"*. Por isso a
-    # lente e' baixa e em tres quartos, e o `fundo` do balcao entra NOMEADO: e'
-    # ele que faz o quadro ser um bar de garagem e nao um insert de maos.
+    # ⭐⭐ O ANGULO E' EIXO SORTEADO (ordem do operador: pool generoso e
+    # diferente do que o parque ja' faz). ⛔ ELA NAO ESTA' AQUI: o take 1 e' so'
+    # dele, e ela entra no take 2 como payoff.
     bl["IMAGE 01/02"] = (
-        "IMAGE 01/02: Three-quarter view across %s in %s, the camera low and "
-        "angled so the room behind stays sharp and readable. On it: a clear "
-        "glass bowl, %s, %s, and %s. %s %s %s %s%s"
-        % (s["sup"], b["cen"], cx["img"], rt["img"], itens,
-           ac["t1_img"] % {"maos": maos_txt}, dela,
-           "Behind him: %s." % b["fundo"], b["luz"], " " + CAUDA))
+        "IMAGE 01/02: %s, in %s. On %s: a clear glass bowl, %s, %s, and %s. "
+        "%s He is the only person in the frame. %s%s %s%s"
+        % (an["img"], b["cen"], s["sup"], cx["img"], rt["img"], itens,
+           ac["t1_img"] % {"maos": "his " + mo["desc"]},
+           ("Behind him: %s. " % b["fundo"]) if an["fundo_ok"] else "",
+           b["luz"], "The man is " + ele + ".", " " + CAUDA))
 
     bl["TAKE 01/02"] = (
         "TAKE 01/02: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts, and the camera does not move. %s "
-        "She stays on the stool and keeps smiling, and only he speaks. %s\n"
+        "He speaks straight to the lens and is the only person in the shot. %s\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
         % (ac["t1_take"], NAO_TOCA % "box", sonorizar(spec["falas"][0]),
            b["audio"]))
 
-    # ⚠️ A COR DO LIQUIDO ATRAVESSA OS DOIS TAKES. A beterraba tinge igual a
-    # gelatina, e cubo de uma cor virando bebida de outra e' a incoerencia que o
-    # espectador menos perdoa — o PRATO 16 paga essa conta tratando a cor como
-    # eixo, e aqui ela sai da receita.
+    # ⭐ O PAYOFF: ela entra aqui, e so' aqui. ⚠️ A cor do liquido atravessa os
+    # dois takes — a beterraba tinge igual a gelatina, e cubo de uma cor virando
+    # bebida de outra e' a incoerencia que o espectador menos perdoa.
+    # ⛔⛔ A ACAO TEM DE ESTAR AQUI, e a licao foi paga na primeira versao deste
+    # quadro: eu reescrevi a IMAGE 02/02 como payoff e deixei o gesto de fora,
+    # enquanto o TAKE 02/02 continuava citando a colher e a jarra. A lente
+    # compartilhada `lint_take_vs_image` acusou 161 de 400 sorteios.
+    # ⚠️ E o motivo dela existir e' exatamente este: contradicao ENTRE o TAKE e a
+    # IMAGE e' pior que omissao — o gerador nao escolhe um dos dois, ele mexe no
+    # que estava certo. Mesma familia das DUAS COLHERES de 2026-08-10.
     bl["IMAGE 02/02"] = (
-        "IMAGE 02/02: The same three-quarter view across the same %s in the "
-        "same room, same light, the room behind still sharp. The bowl now holds "
-        "%s liquid. %s beside it, and %s. %s %s %s%s"
+        "IMAGE 02/02: Medium shot at the same %s in the same room, same light. "
+        "The bowl now holds %s liquid. %s beside it, and %s. The same "
+        "%d-year-old %s man with %s stands behind it. %s A %d-year-old %s "
+        "woman, %s, %s, stands beside him, smiling as she looks at what he "
+        "made. She says nothing. %s%s"
         % (s["sup"], rc["cor"], _cap(cx["img"]), rt["img"],
-           ac["t2_img"] % {"maos": maos_txt}, dela,
-           "Behind him: %s." % b["fundo"], " " + CAUDA))
+           hm["idade"], et, hm["desc"],
+           ac["t2_img"] % {"maos": "his " + mo["desc"]},
+           el["idade"], et, el["desc"], ro["img"],
+           b["luz"], " " + CAUDA))
 
     bl["TAKE 02/02"] = (
         "TAKE 02/02: Animate the provided image exactly. Handheld iPhone shot, "
         "very slight natural sway, no cuts, and the camera does not move. %s "
-        "She stays on the stool and keeps smiling, and only he speaks. %s\n"
+        "She keeps smiling and only he speaks. %s\n"
         "Dialogue: \"%s\"\nAudio: %s. No music."
         % (ac["t2_take"], NAO_TOCA % "box", sonorizar(spec["falas"][1]),
            b["audio"]))
@@ -989,116 +1106,114 @@ def montar(spec):
 # ===========================================================================
 
 def _ho1_caixa(spec, blocos, ach):
-    """A caixa da marca nos DOIS quadros.
-
-    ⛔ Ela e' o que sustenta o nome do angulo desde que o operador tirou o
-    cavalo: na fonte, o cavalo pastando atras do casal fechava o sentido de
-    `horse` sem uma palavra. Sem cavalo e sem caixa, sobra um preparo qualquer.
-    """
+    """A caixa da marca nos DOIS quadros — e' ela que carrega a palavra do
+    angulo desde que o operador tirou o cavalo."""
     for nome in ("IMAGE 01/02", "IMAGE 02/02"):
         if "HORSE GELATIN" not in blocos[nome]:
-            ach.append(("ERRO", "HO1: %s sem a caixa da marca — e' ela que "
-                                "carrega a palavra do angulo" % nome))
+            ach.append(("ERRO", "HO1: %s sem a caixa da marca" % nome))
 
 
 def _ho2_rotulo(spec, blocos, ach):
-    """O rotulo escrito a mao, em quadro nos dois."""
     alvo = spec["rotulo"]["img"]
     for nome in ("IMAGE 01/02", "IMAGE 02/02"):
         if alvo not in blocos[nome]:
             ach.append(("ERRO", "HO2: %s sem o rotulo escrito a mao" % nome))
 
 
-def _ho3_ela(spec, blocos, ach):
-    """Ela em quadro, sorrindo, muda — nos DOIS.
+def _ho3_ela_so_no_2(spec, blocos, ach):
+    """⛔⛔ ELA APARECE APENAS NO TAKE 2 (reversao de 2026-08-14).
 
-    ⛔ Ordem do operador: *"sempre uma personagem mulher sorrindo olhando pro
-    cara preparando"*. `sempre` e' a palavra dele.
+    A ordem anterior era `sempre uma personagem mulher sorrindo`, e o motor
+    nasceu com ela nos dois quadros. A nova vence, e a lente cobra os DOIS
+    lados: ausencia no 1 e presenca no 2. Cobrar so' a presenca deixaria o
+    defeito antigo passar calado.
     """
-    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
-        t = blocos[nome]
-        if "bath towel" not in t or "smiling" not in t:
-            ach.append(("ERRO", "HO3: %s sem ela de toalha sorrindo" % nome))
-    for nome in ("TAKE 01/02", "TAKE 02/02"):
-        if "only he speaks" not in blocos[nome]:
-            ach.append(("ERRO", "HO3: %s nao trava que so' ele fala" % nome))
+    t1 = blocos["IMAGE 01/02"]
+    if "woman" in t1.lower():
+        ach.append(("ERRO", "HO3: ha' mulher no take 1 — ela entra APENAS no "
+                            "take 2, como payoff"))
+    if "He is the only person in the frame" not in t1:
+        ach.append(("ERRO", "HO3: o take 1 nao declara que ele esta' sozinho"))
+    t2 = blocos["IMAGE 02/02"]
+    if "woman" not in t2.lower() or "smiling" not in t2:
+        ach.append(("ERRO", "HO3: o take 2 sem ela sorrindo"))
+    if spec["roupa"]["img"] not in t2:
+        ach.append(("ERRO", "HO3: a roupa dela nao chegou ao quadro"))
 
 
-def _ho4_sem_rosto(spec, blocos, ach):
-    """⛔ NENHUM ROSTO DE HOMEM. Ordem do operador: *"so as maos"*.
+def _ho4_rosto(spec, blocos, ach):
+    """⛔⛔ O ROSTO DELE APARECE (reversao de 2026-08-14: *"vamos abandonar as
+    maos cortadas no take 1"*).
 
-    ⚠️ A varredura e' so' na DIRECAO de cena, nunca na fala: `my wife` e `I` sao
-    primeira pessoa e nao poem rosto em quadro.
+    ⚠️ E a lente cobra o `BLOCO 0` junto: com rosto em quadro, a ancora de
+    continuidade e' o ROSTO. Um REF de maos com um take de rosto entrega dois
+    homens diferentes, e o defeito so' aparece no video montado.
     """
-    proibido = ("his face", "he looks into", "his eyes", "looks at the camera",
-                "chest up", "bare-chested")
-    for nome in sorted(blocos):
-        if nome.startswith("BLOCO"):
-            continue
-        direcao = blocos[nome].split("\nDialogue:")[0].lower()
-        for p in proibido:
-            if p in direcao:
-                ach.append(("ERRO", "HO4: %s poe rosto/corpo dele em quadro "
-                                    "(%r) — este angulo e' so' as maos"
-                            % (nome, p)))
+    if "hands only" in blocos["BLOCO 0 (REF)"].lower():
+        ach.append(("ERRO", "HO4: o BLOCO 0 ainda e' foto de maos — com rosto "
+                            "em quadro, a ancora de continuidade e' o rosto"))
+    if spec["homem"]["desc"] not in blocos["IMAGE 01/02"]:
+        ach.append(("ERRO", "HO4: o take 1 nao descreve o homem — ele deixou "
+                            "de ser so' as maos"))
 
 
 def _ho5_cor(spec, blocos, ach):
-    """A cor do liquido, a mesma nos dois takes."""
     if spec["receita"]["cor"] not in blocos["IMAGE 02/02"]:
-        ach.append(("ERRO", "HO5: a cor do liquido some do quadro 2 — cubo de "
-                            "uma cor virando bebida de outra e' a incoerencia "
-                            "que o espectador menos perdoa"))
+        ach.append(("ERRO", "HO5: a cor do liquido some do quadro 2"))
 
 
 def _ho6_fundo(spec, blocos, ach):
-    """O fundo do balcao em quadro nos dois.
+    """O fundo do balcao, SO' nos angulos que prometem mostra-lo.
 
-    ⛔ E' a razao de o angulo de camera existir (ordem do operador). Sem o fundo
-    legivel isto vira um insert de maos, e o bar de garagem evapora.
+    ⛔ Cobrar de todos seria lente reprovando o angulo por ele ser o que e': um
+    macro na tigela nao mostra parede nenhuma, e forcar o fundo ali obrigaria o
+    gerador a inventar um enquadramento que ninguem pediu.
     """
-    for nome in ("IMAGE 01/02", "IMAGE 02/02"):
-        if spec["balcao"]["fundo"] not in blocos[nome]:
-            ach.append(("ERRO", "HO6: %s sem o fundo do balcao — e' o que o "
-                                "angulo de camera existe para mostrar" % nome))
+    if not spec["angulo"]["fundo_ok"]:
+        return
+    if spec["balcao"]["fundo"] not in blocos["IMAGE 01/02"]:
+        ach.append(("ERRO", "HO6: o angulo %r promete fundo legivel e ele nao "
+                            "chegou ao quadro" % spec["angulo"]["id"]))
 
 
 def _ho7_receita(spec, blocos, ach):
-    """A receita dita na fala. ⛔ CT5 FURADO POR DECISAO, e a lente cobra o
-    CONTRARIO do contrato: aqui a ausencia da receita e' que e' defeito."""
     if spec["receita"]["fala"] not in spec["falas"][0]:
-        ach.append(("ERRO", "HO7: a fala nao nomeia a receita — este motor fura "
-                            "o CT5 de proposito (ordem do operador), e sem os "
-                            "ingredientes ditos o angulo perde o que o separa"))
+        ach.append(("ERRO", "HO7: a fala nao nomeia a receita — este motor a "
+                            "nomeia de proposito (ordem do operador)"))
+
+
+def _ho8_angulo(spec, blocos, ach):
+    """O angulo sorteado chega ao quadro.
+
+    ⛔ E' o eixo que o operador pediu generoso: eixo que aparece no painel e nao
+    muda o video e' pior que eixo ausente — ele treina o operador a nao confiar
+    no painel inteiro.
+    """
+    if spec["angulo"]["img"] not in blocos["IMAGE 01/02"]:
+        ach.append(("ERRO", "HO8: o angulo sorteado nao chegou ao quadro 1"))
 
 
 def _piso(spec, blocos, ach):
     for i, fala in enumerate(spec["falas"], 1):
         n = _palavras(fala)
         if n < PISO_FALA[i]:
-            ach.append(("ERRO", "a cena %d tem %d palavras (piso %d) — fala "
-                                "curta deixa o take mudo no fim" % (i, n,
-                                                                    PISO_FALA[i])))
+            ach.append(("ERRO", "a cena %d tem %d palavras (piso %d)"
+                        % (i, n, PISO_FALA[i])))
 
 
 def _ct16(spec, blocos, ach):
-    # ⛔ `isca_absurda=False`: este angulo nao promete nada falso no take 1 para
-    # desmentir depois. A dor e' verdadeira desde o primeiro frame.
     sc.lint_copy16(sys.modules[__name__], spec, ach, isca_absurda=False)
 
 
 def lint(spec, blocos):
-    # ⛔⛔ `cota_min=0`, e NAO e' calibragem esquecida: **a fonte nunca nomeia o
-    # orgao**. Ela diz `my performance`, `three times bigger` e `hard as iron` —
-    # a promessa inteira e' de TAMANHO e DUREZA, sem substantivo. Exigir a cota
-    # aqui seria a lente reprovando o angulo por ele ser o que e'.
-    # ⚠️ O `NUCLEO` fica declarado porque as outras lentes o usam para DETECTAR
-    # o orgao se ele aparecer.
+    # ⛔⛔ `cota_min=0`: a fonte nunca nomeia o orgao (`my performance`, `three
+    # times bigger`, `hard as iron`). Exigir a cota seria a lente reprovando o
+    # angulo por ele ser o que e'.
     return sc.lint_curto(
         sys.modules[__name__], spec, blocos, (1, 2), TETO_FALA,
         literais=("gelatin",), cota_min=0,
-        extras=(_ho1_caixa, _ho2_rotulo, _ho3_ela, _ho4_sem_rosto, _ho5_cor,
-                _ho6_fundo, _ho7_receita, _ct16, _piso))
+        extras=(_ho1_caixa, _ho2_rotulo, _ho3_ela_so_no_2, _ho4_rosto,
+                _ho5_cor, _ho6_fundo, _ho7_receita, _ho8_angulo, _ct16, _piso))
 
 
 # ===========================================================================
@@ -1106,46 +1221,45 @@ def lint(spec, blocos):
 # ===========================================================================
 
 EIXOS_UI = [
+    ("angulo", "O ANGULO (take 1)", "ANGULOS", "curto"),
     ("acao", "O GESTO", "ACOES", "curto"),
     ("balcao", "O BALCAO", "BALCOES", "regiao"),
     ("superficie", "A SUPERFICIE", "SUPERFICIES", "curto"),
     ("receita", "A RECEITA", "RECEITAS", "fala"),
     ("caixa", "A CAIXA", "CAIXAS", "curto"),
     ("rotulo", "O ROTULO", "ROTULOS", "curto"),
+    ("homem", "ELE", "HOMENS", "rotulo"),
     ("maos", "AS MAOS", "MAOS", "rotulo"),
-    ("ela", "ELA", "ELAS", "desc"),
+    ("roupa", "A ROUPA DELA", "ROUPAS", "curto"),
+    ("ela", "ELA (take 2)", "ELAS", "desc"),
 ]
 
-EIXOS_TRAVAVEIS = ["acao", "balcao", "superficie", "receita", "caixa",
-                   "rotulo", "maos", "ela"]
+EIXOS_TRAVAVEIS = ["angulo", "acao", "balcao", "superficie", "receita",
+                   "caixa", "rotulo", "homem", "maos", "roupa", "ela"]
 
 TRAVAS_UI = [("familia_balcao", "regiao", FAMILIAS_BALCAO)]
 
-DROPDOWNS_UI = [("acao", "O GESTO", "ACOES", "curto")]
+DROPDOWNS_UI = [("angulo", "O ANGULO (take 1)", "ANGULOS", "curto")]
 
-# ⚠️ `superficie` sai da varredura do painel honesto porque o valor que chega ao
-# quadro e' o campo `sup`, nao o `id`.
 IGNORA_PAINEL = ("superficie",)
 
-EIXOS_QUE_MEXEM_NA_COPY = {"receita": lambda spec, rng: spec["falas"].__setitem__(
-    0, _falas(spec, rng, quais=(0,))[0])}
+EIXOS_QUE_MEXEM_NA_COPY = {
+    "receita": lambda spec, rng: spec["falas"].__setitem__(
+        0, _falas(spec, rng, quais=(0,))[0])}
 
 
 def resumo_pt(spec):
-    return ("%s. Em quadro: %s, com %s de pe' ao lado e %s. Ela, de %d anos e "
-            "de toalha, sorri atras dele. Dois takes de 8s."
-            % (spec["balcao"]["regiao"], spec["acao"]["curto"],
-               spec["caixa"]["curto"], spec["rotulo"]["curto"],
-               spec["ela"]["idade"]))
+    return ("%s, %s. Take 1: ele de %d anos, %s, %s — sozinho em quadro. "
+            "Take 2: ela de %d anos, de %s, sorrindo ao lado. Dois takes de 8s."
+            % (spec["balcao"]["regiao"], spec["angulo"]["curto"],
+               spec["homem"]["idade"], spec["homem"]["rotulo"],
+               spec["acao"]["curto"], spec["ela"]["idade"],
+               spec["roupa"]["curto"]))
 
 
 # ===========================================================================
 # AUTOTESTE
 # ===========================================================================
-# ⛔ ACEITE E' MEDICAO, NUNCA RELATO. Ele mede o alcance de cada pool (entrada
-# que nunca sai esta' morta e o autoteste de contagem a conta como viva), o
-# minimo e o maximo de palavras por cena (o MINIMO decide o teto, nao o maximo)
-# e os dois estados do MODO BELA.
 
 def autoteste(n=400):
     pags = sorted(ETNIA)
@@ -1164,7 +1278,7 @@ def autoteste(n=400):
         for j, fala in enumerate(spec["falas"], 1):
             tam[j].append(_palavras(fala))
         for eixo in ("balcao", "superficie", "caixa", "rotulo", "receita",
-                     "acao", "maos", "ela"):
+                     "acao", "maos", "homem", "angulo", "roupa", "ela"):
             dist[eixo].add(spec[eixo]["id"])
         for nivel, msg in lint(spec, bl):
             if nivel == "ERRO":
@@ -1183,7 +1297,8 @@ def autoteste(n=400):
     for eixo, pool in (("balcao", BALCOES), ("superficie", SUPERFICIES),
                        ("caixa", CAIXAS), ("rotulo", ROTULOS),
                        ("receita", RECEITAS), ("acao", ACOES),
-                       ("maos", MAOS), ("ela", ELAS)):
+                       ("maos", MAOS), ("homem", HOMENS),
+                       ("angulo", ANGULOS), ("roupa", ROUPAS), ("ela", ELAS)):
         marca = "" if len(dist[eixo]) == len(pool) else "   <-- entrada morta"
         print("  %-11s %2d/%2d alcancadas%s"
               % (eixo, len(dist[eixo]), len(pool), marca))
