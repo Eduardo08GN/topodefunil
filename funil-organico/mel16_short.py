@@ -18,7 +18,7 @@ O QUE OS 21 FRAMES MOSTRAM (e o que virou o que):
              na mao esquerda na altura do peito, e a direita segurando um
              SQUEEZE DE MEL de cabeca para baixo, apertando: um fio continuo de
              mel dourado cai sobre os cubos. Boca aberta, olhos arregalados.
-             REGATA PRETA — bracos e ombros em quadro.
+             TORSO SEM MANGA — bracos e ombros em quadro (18 pecas).
              fala: a PERGUNTA + a descoberta + OS TRES INGREDIENTES
              --> vira o TAKE 1 inteiro
     t=06-13  o preparo no liquidificador Ninja: o bicarbonato inclinado com uma
@@ -37,8 +37,10 @@ O QUE OS 21 FRAMES MOSTRAM (e o que virou o que):
  1. ⭐⭐ O MEL. O hook do PRATO e' a colher com um cubo; aqui e' o fio de mel
     caindo. E' o beat visual da fonte e a razao deste motor existir — por isso
     ele e' CONSTANTE, nunca eixo (ver `MEL_FRASCO`).
- 2. ⭐ A REGATA no lugar da polo. Nao e' figurino: e' o que poe braco e ombro em
-    quadro e da' ao MODO FORTE onde aparecer (ver `REGATAS` e `CORPOS_FORTES`).
+ 2. ⭐ O TORSO SEM MANGA no lugar da polo. Nao e' figurino: e' o que poe braco
+    e ombro em quadro e da' ao MODO FORTE onde aparecer (ver `REGATAS` e
+    `CORPOS_FORTES`). ⛔ Sao 18 PECAS diferentes, nao 8 cores da mesma —
+    ordem do operador de 2026-08-15; o que se repete e' a funcao, nao a roupa.
  3. ⭐ A TIGELA no lugar da jarra no quadro 2, e o COPO NO PEITO em vez do
     braco esticado — os dois vem da fonte.
  4. ⭐⭐ A PERGUNTA DE QUALIFICACAO abrindo a fala (`Struggling with ED?`).
@@ -1119,7 +1121,7 @@ CORPOS_H = [
 # no sintagma (`a 68-year-old white American man`), e repeti-la aqui e' a
 # contradicao de duas vozes no mesmo lugar.
 CORPOS_FORTES = [
-    "heavily muscled shoulders and thick veined arms that fill the tank top",
+    "heavily muscled shoulders and thick veined arms that fill the sleeves",
     "a powerfully built chest with heavy round shoulders and corded forearms",
     "wide muscular shoulders, thick upper arms and forearms full of veins",
     "a dense muscular frame, deep chest and heavy arms cut with definition",
@@ -1130,7 +1132,7 @@ CORPOS_FORTES = [
     # pool pesa mais que o comum: o MODO FORTE NASCE LIGADO neste motor, entao
     # e' ele que o operador ve' no estado padrao do app.
     "thick slabs of muscle across the chest and heavy round shoulders",
-    "a heavily built back and arms that stretch the tank top",
+    "a heavily built back and thick arms that stretch the shoulder seams",
     "deep muscular pectorals with thick arms and heavy wrists",
     "a broad muscular frame with cut shoulders and forearms full of veins",
     "a hard muscular chest with wide lats and thick banded arms",
@@ -1148,18 +1150,90 @@ CORPOS_FORTES = [
     "a hard packed frame with heavy pectorals and thick veined biceps",
 ]
 
-# ⭐⭐ A REGATA — E ELA E' UMA DECISAO DE ENGENHARIA, NAO DE FIGURINO.
-# ⛔ A fonte usa REGATA PRETA, e e' isso que separa este angulo do PRATO 16
-# (polo). A regata poe OS BRACOS E OS OMBROS em quadro — e sem eles o MODO
-# FORTE seria um toggle que promete musculo e entrega manga. No PRATO 16 o
-# corpo e' PORTE justamente porque a polo cobre o braco; aqui e' MUSCULATURA
-# VISIVEL, e o botao tem onde aparecer.
-# ⚠️ Nenhuma cor daqui repete o `cubo` de `CORES` no mesmo video — a lente ME4b
-# cobra, porque homem de regata azul segurando cubo azul apaga o prop.
-REGATAS = ["a black ribbed tank top", "a charcoal grey tank top",
-           "a navy ribbed tank top", "a white ribbed tank top",
-           "a heather grey tank top", "an olive green tank top",
-           "a deep burgundy tank top", "a sand-coloured tank top"]
+# ⭐⭐ O TORSO — E ELE E' UMA DECISAO DE ENGENHARIA, NAO DE FIGURINO.
+# ⛔ A fonte usa REGATA PRETA, e o que separa este angulo do PRATO 16 (polo) nao
+# e' a regata: e' O BRACO E O OMBRO EM QUADRO. Sem eles o MODO FORTE seria um
+# toggle que promete musculo e entrega manga. No PRATO 16 o corpo e' PORTE
+# justamente porque a polo cobre o braco; aqui e' MUSCULATURA VISIVEL.
+#
+# ⛔⛔ ORDEM DO OPERADOR (2026-08-15), com o lote na tela: *"sempre quando for
+# aumentar a pool de opcoes dos refs e demais personagens, voce tem que ter uma
+# variancia alta tb nas roupas. Veja que no agente mel16 estao todos usando
+# basicamente o mesmo estilo de regata"*.
+#
+# ⚠️ MEDIDO ANTES DE MEXER: 8 entradas, **1 tipo de peca**. As oito eram
+# `a <cor> tank top` — variancia de COR e ZERO de PECA. Num angulo em que o
+# torso e' a segunda coisa que se ve' depois do rosto, isso e' o mesmo homem
+# oito vezes de camisa pintada. ⭐ E os pools DELA nao tinham o defeito
+# (24 entradas / 9 formas), o que mostra que o buraco era deste eixo, nao do
+# motor: quem cresce um pool de gente cresce o de COR e esquece o de PECA.
+#
+# ⛔ O QUE MUDA E O QUE FICA. Muda a PECA — regata, camiseta de manga cortada,
+# flanela sem manga, camisa de trabalho, moletom cortado, henley, jersey.
+# Fica a FUNCAO: TODA entrada deixa ombro e braco de fora. Peca que cobre o
+# braco nao entra aqui por mais bonita que seja, porque e' o MODO FORTE que
+# fica sem lugar para aparecer.
+# ⛔ E A POLO CONTINUA FORA: ela e' a identidade do PRATO 16, e os dois motores
+# existem para isolar UMA variavel.
+#
+# ⛔⛔ CADA ENTRADA DECLARA A FAMILIA DE COR, e isso conserta um buraco da lente
+# ME4b: ela comparava SUBSTRING, e `"blue" in "a navy ribbed tank top"` e'
+# FALSO — entao regata NAVY com cubo AZUL passava batido, que e' exatamente o
+# caso que a lente existe para pegar. Agora ela compara DADO.
+FAMILIAS_COR = {"bright blue": "azul", "deep red": "vermelho",
+                "bright green": "verde", "deep purple": "roxo",
+                "golden amber": "ambar", "bright orange": "laranja"}
+
+REGATAS = [
+    # — a peca da fonte, e as vizinhas dela —
+    {"id": "regata_preta", "curto": "regata preta canelada", "familia": "neutro",
+     "img": "a black ribbed tank top"},
+    {"id": "regata_branca", "curto": "regata branca canelada", "familia": "neutro",
+     "img": "a white ribbed tank top"},
+    {"id": "regata_grafite", "curto": "regata grafite", "familia": "neutro",
+     "img": "a charcoal grey tank top"},
+    {"id": "regata_areia", "curto": "regata cor de areia", "familia": "neutro",
+     "img": "a sand-coloured tank top"},
+    # — camiseta sem manga / manga cortada —
+    {"id": "camiseta_cortada", "curto": "camiseta de manga cortada", "familia": "neutro",
+     "img": "a heather grey cotton tee with the sleeves cut off at the shoulder"},
+    {"id": "camiseta_cortada_vinho", "curto": "camiseta cortada vinho", "familia": "vermelho",
+     "img": "a deep burgundy cotton tee with the sleeves cut away at the "
+            "shoulder"},
+    {"id": "camiseta_enrolada", "curto": "camiseta de manga enrolada no ombro",
+     "familia": "neutro",
+     "img": "a plain cream t-shirt with the short sleeves rolled up over the "
+            "shoulder"},
+    # — camisaria sem manga —
+    {"id": "flanela_sem_manga", "curto": "flanela xadrez sem manga", "familia": "neutro",
+     "img": "a black and grey plaid flannel shirt with the sleeves torn off, "
+            "worn open over a plain tee"},
+    {"id": "trabalho_sem_manga", "curto": "camisa de trabalho sem manga", "familia": "azul",
+     "img": "a navy sleeveless work shirt with two chest pockets, buttoned"},
+    {"id": "jeans_sem_manga", "curto": "camisa jeans sem manga", "familia": "azul",
+     "img": "a washed indigo denim shirt with the sleeves cut off, buttoned "
+            "to the chest"},
+    {"id": "pesca_sem_manga", "curto": "camisa de pesca sem manga", "familia": "verde",
+     "img": "an olive green sleeveless fishing shirt with a vented back and a "
+            "buttoned chest pocket"},
+    {"id": "camp_sem_manga", "curto": "camisa de acampamento sem manga", "familia": "ambar",
+     "img": "an ochre sleeveless camp shirt with a straight open collar"},
+    # — henley e malha —
+    {"id": "henley_sem_manga", "curto": "henley sem manga", "familia": "vermelho",
+     "img": "a brick red sleeveless henley with the top buttons open at the "
+            "throat"},
+    {"id": "henley_ameixa", "curto": "henley sem manga ameixa", "familia": "roxo",
+     "img": "a plum sleeveless henley buttoned to the collar"},
+    {"id": "malha_grossa", "curto": "regata de malha grossa", "familia": "neutro",
+     "img": "a slate grey heavy knit tank top with a wide shoulder strap"},
+    # — moletom e esportivo —
+    {"id": "moletom_cortado", "curto": "moletom de manga cortada", "familia": "neutro",
+     "img": "a faded black sweatshirt with the sleeves cut off at the shoulder"},
+    {"id": "jersey_esportivo", "curto": "jersey esportivo sem manga", "familia": "verde",
+     "img": "a forest green sleeveless athletic jersey with a round neck"},
+    {"id": "regata_performance", "curto": "regata esportiva", "familia": "laranja",
+     "img": "a rust orange performance tank top with flat shoulder seams"},
+]
 
 
 # ===========================================================================
@@ -1602,7 +1676,7 @@ def _carregar_ledger():
         return {}
 
 
-EIXOS_LEDGER = ("mundo", "homem", "mulher", "cor", "acao")
+EIXOS_LEDGER = ("mundo", "homem", "mulher", "cor", "acao", "regata")
 
 
 def _anotar(ledger, spec):
@@ -1751,8 +1825,24 @@ def sortear(pagina, rng, ledger, travas=None):
         mulher = sc.ref_bela(MULHERES[0], rng)
         mulher["etnia"] = _et_dela
 
+    trava_torso = _por_id(REGATAS, travas["regata"]) if travas.get("regata") else None
+
+    # ⛔⛔ QUANDO O TORSO ESTA' TRAVADO, QUEM CEDE E' A COR — nunca a trava.
+    # ⚠️ MEDIDO: sem isto, travar a peca ROXA no painel devolvia 35/40. Nos
+    # outros 5 o cubo saia roxo, o filtro de familia derrubava a peca travada e
+    # o sorteio entregava OUTRA em silencio. E' o defeito da lente GO21 do
+    # GOOD 16 outra vez: *botao que promete e entrega outra coisa e' pior que
+    # botao ausente*. A cor da gelatina nao foi escolhida por ninguem; a peca
+    # foi. Quem nao foi escolhido e' quem sai da frente.
+    # ⛔ E se as DUAS estiverem travadas e colidirem, nada cede: a lente ME4b
+    # acusa em voz alta. Duas ordens do operador em conflito nao se resolvem
+    # com um desempate meu — resolvem-se avisando.
+    cores = CORES
+    if trava_torso and not travas.get("cor"):
+        cores = [c for c in CORES
+                 if FAMILIAS_COR.get(c["cubo"]) != trava_torso["familia"]] or CORES
     cor = (_por_id(CORES, travas["cor"]) if travas.get("cor")
-           else _fresco(CORES, hist.get("cor", [])[-3:], rng))
+           else _fresco(cores, hist.get("cor", [])[-3:], rng))
     # ⭐⭐ A ACAO E' O NOVO EIXO DO HOOK, e ela substituiu o PRATO: cada entrada
     # ja' declara o proprio vasilhame (decisao 3 do operador), entao sortear os
     # dois seria abrir a porta para `despeja o mel` com uma jarra na mao.
@@ -1764,9 +1854,12 @@ def sortear(pagina, rng, ledger, travas=None):
     tigela = (_por_id(TIGELAS, travas["tigela"]) if travas.get("tigela")
               else rng.choice(TIGELAS))
 
-    # ⛔ A POLO NUNCA REPETE A COR DA GELATINA (lente ME4b): homem de polo azul
-    # segurando cubo azul apaga o prop, e o prop e' o video.
-    regatas = [p for p in REGATAS if cor["cubo"].split()[-1] not in p] or REGATAS
+    # ⛔ O TORSO NUNCA REPETE A COR DA GELATINA (lente ME4b): homem de regata
+    # azul segurando cubo azul apaga o prop, e o prop e' o video.
+    # ⚠️ Compara FAMILIA declarada, nao substring: `"blue" in "a navy ribbed
+    # tank top"` e' falso, e era assim que a regata navy passava com cubo azul.
+    fam_cubo = FAMILIAS_COR.get(cor["cubo"], "")
+    regatas = [p for p in REGATAS if p["familia"] != fam_cubo] or list(REGATAS)
 
     spec = {
         "pagina": pagina, "etnia": etnia, "bela": bela, "forte": forte,
@@ -1774,7 +1867,10 @@ def sortear(pagina, rng, ledger, travas=None):
         "cor": cor, "acao": acao, "tigela": tigela,
         # ⭐ 50/50, e medido como eixo: metade do lote promete tamanho.
         "tamanho": rng.random() < 0.5,
-        "regata": rng.choice(regatas),
+        # ⛔ Com memoria, e nao `rng.choice` cru: sao 18 pecas e o torso e' a
+        # segunda coisa que se ve' depois do rosto — repetir a peca em dois
+        # videos seguidos do mesmo lote e' o que o operador enxerga primeiro.
+        "regata": trava_torso or _fresco(regatas, hist.get("regata", [])[-6:], rng),
         # ⭐ Com o MODO FORTE ligado o corpo vem DO HELPER, junto do rosto e da
         # idade: sortear um corpo do pool velho por cima do homem forte seria
         # colar um tronco de um rosto noutro.
@@ -1855,7 +1951,7 @@ def montar(spec):
         "Slight sensor grain, soft focus, raw iPhone front camera aesthetic. "
         "No subtitles, no captions, no burned-in text, no watermark."
         % (h["idade"], et, _cap(h["cabeca"]), h["marca"], spec["corpo_h"],
-           spec["regata"],
+           spec["regata"]["img"],
            sc.ANTICELEB_FORTE if spec.get("forte") else ANTICELEB))
 
     # --- IMAGE 01 — O PRATO ERGUIDO ---------------------------------------
@@ -1875,7 +1971,7 @@ def montar(spec):
         "Along the near edge of %s, in front of him, sit %s. He "
         "is the only person in the frame. %s. %s"
         % (m["cen"], m["bancada"], h["idade"], et, h["cabeca"], h["marca"],
-           spec["corpo_h"], spec["regata"],
+           spec["corpo_h"], spec["regata"]["img"],
            spec["acao"]["img"].format(cor=c["cubo"]),
            m["bancada"], _bancada(spec),
            _cap(m["luz"]), CAUDA))
@@ -1902,7 +1998,7 @@ def montar(spec):
         "glass and says nothing. They are the only two people in the frame. "
         "%s. %s"
         % (m["cen"], m["bancada"], h["idade"], et, h["cabeca"], h["marca"],
-           spec["corpo_h"], spec["regata"], c["liquido"], m["bancada"],
+           spec["corpo_h"], spec["regata"]["img"], c["liquido"], m["bancada"],
            spec["tigela"]["img"], c["cubo"], m["bancada"], _bancada(spec),
            w["idade"], w["etnia"], w["cabeca"], w["marca"], w["porte"],
            _traje_dela(spec), _cap(m["luz"]), CAUDA))
@@ -2040,11 +2136,23 @@ def _me4_cor_unica(spec, blocos, achados):
         if c["caixa"] not in blocos[k]:
             achados.append(("ERRO", "ME4: %s sem a caixa de gelatina na cor "
                                     "sorteada" % k))
-    # ⛔ ME4b — a polo nunca repete a cor da gelatina.
-    if c["cubo"].split()[-1] in spec["regata"]:
-        achados.append(("ERRO", "ME4b: a polo (%r) e a gelatina (%s) sao da "
-                                "mesma cor — o prop desaparece contra o peito "
-                                "dele" % (spec["regata"], c["curto"])))
+    # ⛔ ME4b — o torso nunca repete a cor da gelatina.
+    # ⚠️ Por FAMILIA declarada. A versao de substring deixava passar `navy` com
+    # cubo `bright blue`, que e' o caso exato que ela existe para pegar.
+    if spec["regata"]["familia"] == FAMILIAS_COR.get(c["cubo"], "_"):
+        achados.append(("ERRO", "ME4b: o torso (%r) e a gelatina (%s) sao da "
+                                "mesma familia de cor — o prop desaparece "
+                                "contra o peito dele"
+                        % (spec["regata"]["curto"], c["curto"])))
+    # ⛔ ME4c — a peca SEMPRE deixa ombro e braco de fora. E' a razao de este
+    # eixo existir: sem braco em quadro o MODO FORTE promete musculo e entrega
+    # manga. Entrada nova que cubra o braco morre aqui, nao no render.
+    img = spec["regata"]["img"]
+    if not any(t in img for t in ("tank top", "sleeveless", "sleeves cut",
+                                  "sleeves torn", "sleeves rolled up over")):
+        achados.append(("ERRO", "ME4c: o torso (%r) nao declara ombro/braco de "
+                                "fora — o MODO FORTE fica sem onde aparecer"
+                        % spec["regata"]["curto"]))
 
 
 def _me5_orcamento(spec, blocos, achados):
@@ -2317,9 +2425,11 @@ EIXOS_UI = [
     ("cor", "A COR", "CORES", "curto"),
     ("acao", "O HOOK", "ACOES", "curto"),
     ("tigela", "A TIGELA", "TIGELAS", "curto"),
+    ("regata", "O TORSO", "REGATAS", "curto"),
 ]
 
-EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "cor", "acao", "tigela"]
+EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "cor", "acao", "tigela",
+                   "regata"]
 
 TRAVAS_UI = [("familia_mundo", "regiao", ["livre"] + FAMILIAS_MUNDO)]
 
@@ -2360,7 +2470,8 @@ def resumo_pt(spec):
     # operador parar de ler o resumo — e o resumo e' o unico lugar onde ele ve'
     # o video antes de gastar credito.
     return ("16s, DOIS takes, regiao: %s. Take 1 — O MEL: homem %s de %d "
-            "anos de regata (%s), SOZINHO atras da bancada da cozinha de fora. "
+            "anos, de %s (braco e ombro em quadro), SOZINHO atras da bancada "
+            "da cozinha de fora. "
             "O HOOK SORTEADO: %s, com a gelatina %s; olhos "
             "arregalados. Na bancada a caixa de gelatina, o bicarbonato, o "
             "limao e o pote de mel. A fala abre na PERGUNTA e NOMEIA os tres "
@@ -2370,7 +2481,8 @@ def resumo_pt(spec):
             "olhando o copo. Fecha no CTA, e ele NAO bebe. "
             "Promessa de TAMANHO %s. Modo FORTE %s, modo BELA %s."
             % (m["regiao"], spec["etnia"], spec["homem"]["idade"],
-               spec["regata"], spec["acao"]["curto"], spec["cor"]["curto"],
+               spec["regata"]["curto"], spec["acao"]["curto"],
+               spec["cor"]["curto"],
                spec["cor"]["curto"], spec["tigela"]["curto"],
                spec["mulher"]["etnia"], spec["mulher"]["idade"],
                "LIGADA" if spec.get("tamanho") else "desligada",
