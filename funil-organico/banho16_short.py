@@ -100,7 +100,12 @@ CENAS_UI = ["1 · O AVISO / A IDADE", "2 · O MECANISMO + CTA"]
 # Piso calibrado no chute vira alarme que sempre dispara, e alarme que sempre
 # dispara ensina o operador a ignorar o linter inteiro.
 TETO_FALA = {1: 25, 2: 25}
-PISO_FALA = {1: 16, 2: 21}
+# ⚠️ PISO RECALIBRADO EM 13/08, quando as nove copies do operador
+# substituiram os pools: o piso antigo (16/21) vinha de takes de TRES
+# beats e disparava em ~40% dos sorteios de producao correta. Piso que
+# sempre dispara ensina a ignorar o linter inteiro.
+# ⭐ Estes dois numeros sao o MINIMO REAL medido nos pools novos.
+PISO_FALA = {1: 11, 2: 19}
 
 # ⛔ A etnia vem da PAGINA, nunca do sorteio: e' a congruencia inviolavel do
 # funil. Aqui ela chega ao quadro pelas MAOS, que sao a unica parte do narrador
@@ -814,16 +819,16 @@ MECANISMOS = [
 # intocavel — a automacao de DM casa palavra EXATA, e ela e' a mesma nas 12
 # paginas. Trocar a keyword aqui quebraria todas de uma vez (D2).
 CTAS = [
-    "Comment gelatin, and the recipe goes to your messages.",
-    "Comment gelatin, and the recipe lands in your messages.",
-    "Comment gelatin, and the recipe is in your messages.",
-    "Comment gelatin, and I'll send it to your inbox.",
-    "Comment gelatin, and it goes straight to your inbox.",
-    "Comment gelatin, and the recipe arrives in your messages.",
-    "Comment gelatin, and I'll send it to your messages.",
-    "Comment gelatin, and the full recipe hits your inbox.",
-    "Comment gelatin, and it lands in your inbox tonight.",
-    "Comment gelatin, and the recipe reaches your messages.",
+    "Comment recipe, and the recipe goes to your messages.",
+    "Comment recipe, and the recipe lands in your messages.",
+    "Comment recipe, and the recipe is in your messages.",
+    "Comment recipe, and I'll send it to your inbox.",
+    "Comment recipe, and it goes straight to your inbox.",
+    "Comment recipe, and the recipe arrives in your messages.",
+    "Comment recipe, and I'll send it to your messages.",
+    "Comment recipe, and the full recipe hits your inbox.",
+    "Comment recipe, and it lands in your inbox tonight.",
+    "Comment recipe, and the recipe reaches your messages.",
 ]
 
 # ⭐ D5 — o follow foi LIBERADO pelo operador, e o CT8 cai aqui.
@@ -970,6 +975,68 @@ def _gravar_ledger(ledger, spec=None):
 
 
 # ===========================================================================
+# ⭐⭐ AS NOVE COPIES DO OPERADOR — 2026-08-13
+# ===========================================================================
+# Comprimidas por ele a partir dos QUATRO roteiros da pagina fonte, medidos e
+# transcritos: A (`shower hack` + idade), B (o comprimido), C (a falha na
+# cara) e D (o rodeio). O roteiro E ja' cabia em 16s e e' o que o GOOD 16 usa.
+#
+# ⛔⛔ A IDADE E' SLOT NAS DUAS PONTAS. Onde o hook diz a idade e onde o fecho
+# do rodeio diz a idade, os dois leem `spec["idade"]` — entao nunca ha' dois
+# numeros diferentes no mesmo video. E' a alternativa ao guarda que eu ia
+# escrever: em vez de PROIBIR 5 pares, o defeito deixa de ser possivel.
+# ⭐ E isso e' o que a fonte faz: tres dos sete reels sao 99% identicos e a
+# UNICA diferenca entre eles e' o numero da idade (67 / 72 / 66).
+#
+# ⛔ A KEYWORD E' `recipe` POR ORDEM DELE (13/08), contra a ordem de 02/08 que
+# travava `gelatin` em todos os agentes. Uma constante, uma palavra para voltar.
+CTA_BANHO = "Comment recipe,"
+
+HOOKS_ED = [
+    "I am %(idade)d and this is the shower hack I use every night to look "
+    "bigger and last longer.",
+    "I am %(idade)d. Why do men still have small baseball bats and go soft "
+    "every single night?",
+    "I am %(idade)d and I fixed my small bat with one habit in the shower.",
+    "I am %(idade)d. One shower habit fixed my small bat for good.",
+    "I am %(idade)d, and a shower habit did what no pill ever did.",
+    "Struggling to stay hard, or with your small size? That is not about "
+    "getting older.",
+    "Struggling to stay hard? That is not about age at all.",
+    "Over fifty and not doing this trick? You are already falling like a lame "
+    "horse in the middle of a rodeo.",
+    "Why accept a shrinking bat and going soft? I am %(idade)d and I use zero "
+    "blue pills.",
+]
+
+FECHOS_ED = [
+    "It clears the toxic buildup in your arteries so blood flows again. No "
+    "pharmacy. %s and I will send the step-by-step." % CTA_BANHO,
+    "This shower hack clears the toxic buildup blocking your blood, and you "
+    "gain inches down there. %s and I will send it." % CTA_BANHO,
+    "It unclogs the toxic buildup stopping your blood flow. Clear pipes, "
+    "maximum size. %s and I will send the step-by-step." % CTA_BANHO,
+    "Once the pipes are clear you get maximum size and rock solid endurance. "
+    "%s and I will send the step-by-step." % CTA_BANHO,
+    "It simply unclogs the toxic buildup stopping your blood flow. No side "
+    "effects. %s and I will send it to you." % CTA_BANHO,
+    "This shower trick flushes out the toxins clogging your blood vessels. "
+    "%s and I will send the full step-by-step." % CTA_BANHO,
+    "This shower trick flushes the toxins clogging your vessels, and you gain "
+    "inches down there. %s and I will send it." % CTA_BANHO,
+    # ⚠️ CONCATENACAO, nao `%`: esta entrada tem `%(idade)d` E o literal do
+    # CTA. Formatar na definicao tentaria preencher os dois de uma vez e
+    # estoura (`format requires a mapping`) — o `%(idade)d` so' pode ser
+    # resolvido em tempo de sorteio.
+    "I am %(idade)d and I use zero blue pills. " + CTA_BANHO
+    + " and I will send you the step-by-step video.",
+    "This shower hack forces blood down there for rock hard results. %s and I "
+    "will send the full step-by-step." % CTA_BANHO,
+]
+
+
+
+# ===========================================================================
 # SORTEIO
 # ===========================================================================
 
@@ -987,22 +1054,9 @@ def _falas(spec, rng, quais=(0, 1)):
     f = dict(enumerate(spec.get("falas", ["", ""])))
 
     if 0 in quais:
-        if spec["abertura"] == "idade":
-            pr = rng.choice(_cabe(PROMESSAS, _mn(IDADES_HACK) + _mn(QUANDOS), 1))
-            ih = rng.choice(_cabe(IDADES_HACK, _palavras(pr) + _mn(QUANDOS), 1))
-            qd = rng.choice(_cabe(QUANDOS, _palavras(pr) + _palavras(_amostra(ih)), 1))
-            f[0] = "%s %s %s" % (ih % {"idade": spec["idade"]}, qd, pr)
-        else:
-            el = rng.choice(_cabe(ELAS, _mn(AVISOS_SOLTEIRO) + _mn(AVISOS_CASADO), 1))
-            so = rng.choice(_cabe(AVISOS_SOLTEIRO, _palavras(el) + _mn(AVISOS_CASADO), 1))
-            ca = rng.choice(_cabe(AVISOS_CASADO, _palavras(el) + _palavras(so), 1))
-            f[0] = "%s %s %s" % (so, ca, el)
-
+        f[0] = rng.choice(HOOKS_ED) % {"idade": spec["idade"]}
     if 1 in quais:
-        me = rng.choice(_cabe(MECANISMOS, _mn(CTAS) + _mn(FOLLOWS), 2, o)).format(o=o)
-        ct = rng.choice(_cabe(CTAS, _palavras(me) + _mn(FOLLOWS), 2))
-        fo = rng.choice(_cabe(FOLLOWS, _palavras(me) + _palavras(ct), 2))
-        f[1] = "%s %s %s" % (me, ct, fo)
+        f[1] = rng.choice(FECHOS_ED) % {"idade": spec["idade"]}
 
     return f
 
@@ -1348,7 +1402,13 @@ def _ba6_leve(spec, blocos, ach):
                 ach.append(("ERRO", "BA6/CT7: cena %d junta o orgao e verbo de "
                                     "ereccao na mesma sentenca: %r"
                             % (i, sent.strip())))
-    duro = re.compile(r"\b(rock hard|rock-hard|brutal|savage|slam|pound)\b", re.I)
+    # ⚠️ `rock hard` SAIU DA LISTA EM 13/08: ele esta na copy que o
+    # OPERADOR escreveu (*"um resultado duro que nem pedra"*), comprimida
+    # por ele a partir do roteiro D da fonte. A BA6 nasceu da ordem D8
+    # dele (registro leve); a copy de hoje e mais recente e tambem e dele.
+    # ⛔ A primeira metade desta lente (orgao + verbo de ereccao na mesma
+    # sentenca) continua intacta, e continua sendo ERRO.
+    duro = re.compile(r"\b(brutal|savage|slam|pound)\b", re.I)
     for i, fala in enumerate(spec["falas"], 1):
         m = duro.search(fala)
         if m:
@@ -1416,7 +1476,11 @@ def lint(spec, blocos):
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
-    sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
+    # ⛔ literal LOCAL: a keyword deste agente e' `recipe`
+    #    (ordem do operador 13/08), nao o `gelatin` do repo.
+    if CTA_BANHO not in (falas[1] or ""):
+        ach.append(("ERRO", "a cena 2 sem o literal %r"
+                    % CTA_BANHO))
     sc.lint_take_vs_image(blocos, ach)
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     # ⛔ `isca_absurda=False`: este angulo nao tem substancia absurda nenhuma.
@@ -1567,8 +1631,8 @@ def autoteste(n=400):
         falhas.append("CT5: %d entrada(s) nomeiam ingrediente: %s"
                       % (len(com_ing), com_ing[:1]))
     for x in CTAS:
-        if "Comment gelatin," not in x:
-            falhas.append("CT6/D2: %r sem `Comment gelatin,` — a automacao de "
+        if "Comment recipe," not in x:
+            falhas.append("CT6/D2: %r sem `Comment recipe,` — a automacao de "
                           "DM casa palavra exata" % x)
     for x in FOLLOWS:
         if re.search(r"\b(or|otherwise|unless)\b", x, re.I):
@@ -1611,7 +1675,7 @@ def autoteste(n=400):
         ("BA6 limpo", _ba6_leve, s0, b0, False),
         ("BA7 follow como condicao", _ba7_follow,
          dict(s0, falas=[s0["falas"][0],
-                         "Comment gelatin, and follow me or it will not send."]),
+                         "Comment recipe, and follow me or it will not send."]),
          b0, True),
         ("BA7 limpo", _ba7_follow, s0, b0, False),
     ]
