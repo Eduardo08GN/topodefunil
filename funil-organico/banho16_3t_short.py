@@ -585,34 +585,84 @@ COLHER = "a metal spoon holding a pool of thick amber honey"
 # tres frases que consomem o pool sao `A pair of %s enters...`, `The same %s
 # hold...` e o REF — entrada que nao comeca por adjetivo quebra as tres.
 MAOS = [
-    "clean broad hands with short trimmed nails and smooth skin",
-    "steady hands with light freckling and neatly kept nails",
-    "large well-kept hands with faint veins and clean square nails",
-    "solid hands with a plain gold wedding band and smooth even skin",
-    "wide clean hands with short nails and a light tan across the backs",
-    "firm hands with clear skin and neatly trimmed nails",
-    "square hands with wide flat knuckles and short clean nails",
-    "long-fingered hands with smooth skin and a smooth silver band on the ring "
-    "finger",
-    "broad hands with a light dusting of hair across the backs and blunt clean "
-    "nails",
-    "compact hands with thick wrists and short square nails",
-    "smooth hands with a scatter of small freckles over the knuckles and "
-    "clipped nails",
-    "steady wide hands with a plain steel watch on the left wrist and short "
-    "nails",
-    "smooth firm hands with a narrow gold signet ring and neatly filed nails",
-    "big clean hands with softly raised veins and short rounded nails",
-    "lean hands with smooth skin and short straight nails",
-    "sturdy hands with square fingertips and short nails cut straight across",
-    "trim hands with a faint pale band where a ring usually sits and short "
-    "clean nails",
-    "well-kept hands with an even summer tan and clean rounded nails",
-    "wide steady hands with smooth broad knuckles and short clean nails",
-    "square-palmed hands with a wide plain wedding band and short polished "
-    "nails",
-    "large smooth hands with neat half-moon nails and steady fingers",
-    "broad hands with a thin leather band on the wrist and short clean nails",
+    {"id": "largas_limpas",
+     "rotulo": "maos largas + unhas curtas + pele lisa",
+     "desc": "clean broad hands with short trimmed nails and smooth skin"},
+    {"id": "sardas_leves",
+     "rotulo": "firmes + sardas leves + unhas cuidadas",
+     "desc": "steady hands with light freckling and neatly kept nails"},
+    {"id": "veias_discretas",
+     "rotulo": "grandes + veias discretas + unha quadrada",
+     "desc": "large well-kept hands with faint veins and clean square nails"},
+    {"id": "alianca_ouro",
+     "rotulo": "solidas + alianca de ouro lisa",
+     "desc": "solid hands with a plain gold wedding band and smooth even skin"},
+    {"id": "bronzeado_dorso",
+     "rotulo": "largas + dorso levemente bronzeado",
+     "desc": "wide clean hands with short nails and a light tan across the "
+             "backs"},
+    {"id": "pele_limpa",
+     "rotulo": "firmes + pele limpa + unhas aparadas",
+     "desc": "firm hands with clear skin and neatly trimmed nails"},
+    {"id": "nos_largos",
+     "rotulo": "quadradas + nos largos e chatos",
+     "desc": "square hands with wide flat knuckles and short clean nails"},
+    {"id": "anel_prata",
+     "rotulo": "dedos longos + anel de prata",
+     "desc": "long-fingered hands with smooth skin and a smooth silver band on "
+             "the ring finger"},
+    {"id": "pelos_no_dorso",
+     "rotulo": "largas + pelos no dorso + unha reta",
+     "desc": "broad hands with a light dusting of hair across the backs and "
+             "blunt clean nails"},
+    {"id": "punho_grosso",
+     "rotulo": "compactas + punho grosso",
+     "desc": "compact hands with thick wrists and short square nails"},
+    {"id": "sardas_nos_nos",
+     "rotulo": "lisas + sardas sobre os nos dos dedos",
+     "desc": "smooth hands with a scatter of small freckles over the knuckles "
+             "and clipped nails"},
+    {"id": "relogio_aco",
+     "rotulo": "largas + relogio de aco no pulso",
+     "desc": "steady wide hands with a plain steel watch on the left wrist and "
+             "short nails"},
+    {"id": "anel_brasao",
+     "rotulo": "lisas + anel de brasao dourado",
+     "desc": "smooth firm hands with a narrow gold signet ring and neatly "
+             "filed nails"},
+    {"id": "veias_suaves",
+     "rotulo": "grandes + veias suaves + unha redonda",
+     "desc": "big clean hands with softly raised veins and short rounded "
+             "nails"},
+    {"id": "enxutas_retas",
+     "rotulo": "enxutas + pele lisa + unha reta curta",
+     "desc": "lean hands with smooth skin and short straight nails"},
+    {"id": "ponta_quadrada",
+     "rotulo": "robustas + pontas dos dedos quadradas",
+     "desc": "sturdy hands with square fingertips and short nails cut straight "
+             "across"},
+    {"id": "marca_de_anel",
+     "rotulo": "enxutas + marca clara de anel",
+     "desc": "trim hands with a faint pale band where a ring usually sits and "
+             "short clean nails"},
+    {"id": "bronzeado_verao",
+     "rotulo": "cuidadas + bronzeado uniforme de verao",
+     "desc": "well-kept hands with an even summer tan and clean rounded nails"},
+    {"id": "nos_lisos",
+     "rotulo": "largas + nos lisos e amplos",
+     "desc": "wide steady hands with smooth broad knuckles and short clean "
+             "nails"},
+    {"id": "alianca_larga",
+     "rotulo": "palma quadrada + alianca larga",
+     "desc": "square-palmed hands with a wide plain wedding band and short "
+             "polished nails"},
+    {"id": "meia_lua",
+     "rotulo": "grandes + unhas em meia-lua",
+     "desc": "large smooth hands with neat half-moon nails and steady fingers"},
+    {"id": "bracelete_couro",
+     "rotulo": "largas + bracelete de couro fino",
+     "desc": "broad hands with a thin leather band on the wrist and short "
+             "clean nails"},
 ]
 
 # ⭐⭐ O TOM, e ele e' EXPLICITO. Ordem do operador depois do primeiro lote:
@@ -1089,6 +1139,7 @@ def _maos_partes(txt):
     texto inteiro como detalhe — degrada, nao quebra. A lente `B3-9` cobra o
     molde no pool inteiro, para o fallback nunca virar o caso normal.
     """
+    txt = txt["desc"] if isinstance(txt, dict) else txt
     if " hands with " in txt:
         a, d = txt.split(" hands with ", 1)
         return a.strip(), d.strip()
@@ -1357,7 +1408,14 @@ def sortear(pagina, rng, led, travas=None):
         "rotulo": rotulo, "receita": receita,
         "pessoa": pessoa, "homem": homem,
         "traje": rng.choice(TRAJES),
-        "maos": rng.choice(MAOS),
+        # ⛔ A MAO ENTROU NO LEDGER (2026-08-14, integrando o Eduardo). Ela
+        # era o unico eixo deste motor sorteado com `rng.choice` CRU, sem
+        # memoria nenhuma — e sem rosto, a mao E' a identidade do narrador.
+        # ⚠️ O repo ja' pagou exatamente isto no `pee16`: *pool grande com
+        # sorteio sem memoria repete igual*, e nenhuma ampliacao de pool
+        # conserta, porque o problema nunca foi o tamanho.
+        "maos": (_por_id(MAOS, travas["maos"]) if travas.get("maos")
+                 else _fresco(MAOS, hist.get("maos", [])[-6:], rng)),
         "habitado": _fresco_txt(HABITADOS, hist.get("habitado", [])[-2:], rng),
         # ⛔ TRES DERIVAS DISTINTAS no mesmo video. `rng.sample` garante que os
         # tres takes nunca repitam o mesmo movimento de camera — repetir seria
@@ -1469,7 +1527,7 @@ def montar(spec):
     # 69-year-old man"*. Quando UMA mao entra em quadro a frase e' outra —
     # artigo e numero sao da frase, nao do dado (mesma classe do `held
     # upright, held upright` do TRIO).
-    adj, det = _maos_partes(spec["maos"])
+    adj, det = _maos_partes(spec["maos"]["desc"])
     pele = TOM_PELE.get(spec["etnia"], "weathered skin")
     maos = ("the %s hands of a %d-year-old %s man, %s, with %s, %s"
             % (adj, spec["idade"], spec["etnia"], pele, det, ANCORA_MAO))
@@ -1612,7 +1670,7 @@ def montar(spec):
                "subtitles, no captions, no burned-in text, no watermark."
                % (spec["idade"], spec["etnia"],
                   TOM_PELE.get(spec["etnia"], "weathered skin"),
-                  ANCORA_MAO, spec["maos"], DEZ_DEDOS))
+                  ANCORA_MAO, spec["maos"]["desc"], DEZ_DEDOS))
 
     blocos = sc.selar_takes(sc.selar_tags({
         "BLOCO 0 (REF)": ref,
@@ -1947,6 +2005,15 @@ EIXOS_TRAVAVEIS = ["familia", "banheiro", "superficie", "medida", "rotulo",
 # tela e nao escondida no codigo: e' com ela que o operador roda 15 videos de
 # cada lado e o campo responde o que a fonte, com sete pontos e tres
 # diferencas simultaneas, nao respondeu.
+# ⭐⭐ O SELETOR FIXO DE REF, sexto contrato da UI, que o Eduardo criou em
+# 2026-08-14 e levou aos 22 motores 16s. ⛔ Este motor nasceu de uma copia
+# ANTERIOR a essa mudanca e ficaria de fora em silencio — botao ausente num
+# agente e' o defeito que o operador descobre tarde, achando que o agente e'
+# que nao suporta.
+# ⚠️ Aqui o REF **e' a mao**: nao ha' rosto neste angulo, entao o eixo
+# `maos` e' o unico que fixa quem narra.
+DROPDOWNS_UI = [("maos", "AS MAOS", "MAOS", "rotulo")]
+
 TRAVAS_UI = [("familia_banheiro", "cenario", ["livre"] + FAMILIAS_BANHEIRO),
              ("mecanismo", "explica?", ["livre", "com", "sem"])]
 
@@ -2008,6 +2075,7 @@ def autoteste(n=400):
         eixos["familia"].add(s["familia"]["id"])
         eixos["mecanismo"].add(s["familia"]["mec"])
         eixos["habitado"].add(s["habitado"])
+        eixos["maos"].add(s["maos"]["id"])
         eixos["idade"].add(s["idade"])
         for c, f in enumerate(s["falas"], 1):
             dist[c].add(f)
@@ -2025,7 +2093,7 @@ def autoteste(n=400):
               "(teto %d)"
               % (c, len(dist[c]), v[0], v[len(v) // 2], v[-1], TETO_FALA[c]))
     for e in ("banheiro", "superficie", "medida", "rotulo", "receita",
-              "familia", "mecanismo", "habitado", "idade"):
+              "familia", "mecanismo", "habitado", "maos", "idade"):
         print("  %-11s %d valores" % (e, len(eixos[e])))
     print("  linter: %d ERRO, %d AVISO" % (sum(erros.values()), avisos))
     for k, v in erros.most_common(5):
@@ -2212,7 +2280,7 @@ def autoteste(n=400):
                       ("superficie", len(SUPERFICIES)), ("medida", len(MEDIDAS)),
                       ("rotulo", len(ROTULOS)), ("receita", len(RECEITAS)),
                       ("familia", len(FAMILIAS)), ("mecanismo", 2),
-                      ("habitado", len(HABITADOS)),
+                      ("habitado", len(HABITADOS)), ("maos", len(MAOS)),
                       ("derivas", 0)):
         if minimo and len(eixos[e]) < minimo:
             falhas.append("EIXO %s: so' %d valores em %d sorteios (pool tem %d)"
@@ -2233,7 +2301,7 @@ def autoteste(n=400):
     # `_maos_partes` degrada em silencio se alguem acrescentar uma entrada
     # fora do molde, e o degradado ("steady" para todo mundo) apagaria o unico
     # eixo de variacao da mao. Silencio e' o que a lente existe para quebrar.
-    fora = [x for x in MAOS if " hands with " not in x]
+    fora = [x for x in MAOS if " hands with " not in x["desc"]]
     if fora:
         falhas.append("MAOS: %d entrada(s) fora do molde `<adj> hands with "
                       "<detalhe>`: %r" % (len(fora), fora[0]))
