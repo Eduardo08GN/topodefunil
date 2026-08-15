@@ -1191,6 +1191,22 @@ def sortear(pagina, rng, led, travas=None):
     return spec
 
 
+def nova_fala(spec, i, rng):
+    """⛐ O BANCO DE COPY POR CENA — e' esta funcao que a UI chama.
+
+    ⚠️ Ela NAO existia neste motor, e o botao `trocar` da tela estava MORTO
+    desde que o agente nasceu: a UI procura `nova_fala(spec, i, rng)` e o que
+    havia aqui era um `trocar_fala(spec, rng, i)` — outro nome, outra ordem de
+    argumentos — que ninguem nunca chamou. 41 dos 44 motores do parque tinham
+    a funcao certa; os tres do BANHO nao, porque o primeiro nasceu sem ela e os
+    outros dois nasceram por copia dele.
+    ⭐ Forma sem funcao ao contrario: a funcao existia e o nome e' que estava
+    errado, entao nem o import quebrava. So' o operador clicando descobre.
+    """
+    pool = HOOKS_ED if i == 0 else FECHOS_ED
+    return rng.choice(pool) % {"idade": spec["idade"]}
+
+
 def trocar_fala(spec, rng, i):
     return _falas(spec, rng, quais=(i,))[i]
 

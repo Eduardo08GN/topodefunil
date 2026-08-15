@@ -1434,6 +1434,28 @@ def sortear(pagina, rng, led, travas=None):
     return spec
 
 
+def nova_fala(spec, i, rng):
+    """⛐⛐ AQUI O BOTAO TROCA A FAMILIA INTEIRA, e devolve a cena `i`.
+
+    ⚠️ Ela NAO existia, e o botao `trocar` estava MORTO: a UI procura
+    `nova_fala(spec, i, rng)` e o que havia era `trocar_fala(spec, rng, i)` —
+    outro nome, outra ordem. Defeito herdado por copia do `banho16`.
+
+    ⛔ E NAO DA' PARA TROCAR UMA CENA SOZINHA neste motor, por desenho: as
+    doze familias foram aprovadas pelo operador COMO CONJUNTO, uma a uma, e
+    cada uma tem exatamente uma linha por cena. Trocar so' a cena 2 significaria
+    colar o mecanismo de uma familia no hook de outra — um par que ninguem
+    aprovou, e que a lente BA9 reprova na hora.
+    ⭐ Por isso a funcao re-sorteia a FAMILIA e a UI redesenha as tres caixas.
+    """
+    atual = spec["familia"]["id"]
+    nova = _fresco([x for x in FAMILIAS if x["id"] != atual], [], rng)
+    spec["familia"] = nova
+    spec["apelido"] = nova["id"]
+    spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
+    return spec["falas"][i]
+
+
 def trocar_fala(spec, rng, i):
     """⛔ Troca a FAMILIA inteira, nunca uma cena solta — ver `_falas`."""
     nova = _fresco([x for x in FAMILIAS if x["id"] != spec["familia"]["id"]],
@@ -1650,30 +1672,27 @@ def montar(spec):
     # que e' o unico corpo em quadro.
     # ⚠️ E foi o primeiro lote que provou o tamanho do problema: sem ancora
     # forte, o take 2 saiu noutro comodo.
-    if spec["pessoa"]:
-        ref = ("REF 01: Photo of a real person, a %d-year-old %s man, chest "
-               "up, facing the camera directly, calm steady expression. %s, "
-               "%s. Hands out of frame, no objects. Plain neutral gray "
-               "background, soft even frontal light. Slight sensor grain, soft "
-               "focus, raw iPhone front camera aesthetic. No subtitles, no "
-               "captions, no burned-in text, no watermark."
-               % (h["idade"], spec["etnia"], _cap(h["cabeca"]), h["marca"]))
-    else:
-        # ⚠️ A REF ganhou a ANCORA. Com dois takes ela ja' era o unico fio de
-        # continuidade; com TRES quadros gerados separadamente, uma REF
-        # generica ("maos largas, unhas curtas") deixa de identificar e o
-        # terceiro take volta com outra mao.
-        ref = ("REF 01: Photo of both hands of a %d-year-old %s man with %s, "
-               "%s, %s, palms down on a plain surface, filled frame, nothing "
-               "held. %s Plain neutral gray background, soft even frontal "
-               "light. Slight sensor grain, soft focus, raw iPhone photo. No "
-               "subtitles, no captions, no burned-in text, no watermark."
-               % (spec["idade"], spec["etnia"],
-                  TOM_PELE.get(spec["etnia"], "weathered skin"),
-                  ANCORA_MAO, spec["maos"]["desc"], DEZ_DEDOS))
-
+    # ⛔⛔ ESTE MOTOR NAO TEM `BLOCO 0 (REF)`, e e' o unico dos 44 assim.
+    # Ordem do operador (2026-08-14), testando o app: *"A imagem do bloco 0
+    # desse agente e' completamente irrelevante, posso anexar direto a imagem 1
+    # como referencia"*.
+    #
+    # ⭐ E ele esta' certo pela ESTRUTURA do angulo, nao so' por conveniencia.
+    # O BLOCO 0 existe para dar uma ancora de continuidade quando os quadros
+    # sao gerados separadamente — nos outros motores e' um ROSTO, que nao
+    # aparece em nenhuma cena e por isso precisa de foto propria. Aqui a ancora
+    # e' a MAO, e a mao ja' esta' na IMAGE 01, na mesma luz e no mesmo
+    # banheiro. Uma foto de maos sobre fundo cinza e' uma referencia PIOR que a
+    # propria cena: menos informacao, e nenhuma continuidade de iluminacao.
+    #
+    # ⚠️ O `banho16` V1/V2 CONTINUAM com o BLOCO 0 — a ordem nomeia *"desse
+    # agente"*, e eles tem dois takes, nao tres.
+    # ⚠️ E o cabecalho do `banho16` registra que tirar o BLOCO 0 ja' quebrou o
+    # painel compartilhado uma vez (`KeyError 'BLOCO 0 (REF)'`). Conferido
+    # antes de tirar: a UI hoje procura com `next(..., None)` e avisa em vez de
+    # estourar, e a lente que EXIGE o cabecalho REF vive no `sc.lint_curto`,
+    # que este motor nao chama. Medido, nao suposto.
     blocos = sc.selar_takes(sc.selar_tags({
-        "BLOCO 0 (REF)": ref,
         IMAGENS[0]: b1, TAKES[0]: t1,
         IMAGENS[1]: b2, TAKES[1]: t2,
         IMAGENS[2]: b3, TAKES[2]: t3,

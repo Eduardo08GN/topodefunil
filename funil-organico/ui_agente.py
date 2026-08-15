@@ -1028,16 +1028,37 @@ class App(tk.Tk):
         if not nova:
             self._toast("este agente ainda nao tem banco de copy por cena")
             return
+        # ⛔⛔ SNAPSHOT ANTES DO LACO (2026-08-14). O laco comparava a candidata
+        # com `self.spec["falas"][i]` DEPOIS da chamada — e ha' motores cujo
+        # `nova_fala` escreve no proprio spec (os que sorteiam a copy em
+        # FAMILIA, onde as tres cenas vem juntas). Nesses, a comparacao era
+        # sempre "igual a si mesma": o laco rodava as oito voltas e re-sorteava
+        # oito vezes. Comparar com o estado ANTERIOR e' o que a intencao do
+        # laco sempre foi.
+        antes = list(self.spec["falas"])
         for _ in range(8):                      # evita devolver a mesma linha
             candidata = nova(self.spec, i, self.rng)
-            if candidata != self.spec["falas"][i]:
+            if candidata != antes[i]:
                 break
         self.spec["falas"][i] = candidata
-        self.txt_fala[i].delete("1.0", "end")
-        self.txt_fala[i].insert("1.0", candidata)
+        # ⭐ REDESENHA TODA CAIXA QUE MUDOU, nao so' a clicada. Nos motores de
+        # copy por CENA nada mais muda e isto e' um laco de uma volta util; nos
+        # de copy por FAMILIA as tres mudam, e antes as caixas 1 e 3 ficavam
+        # com o texto velho enquanto o contador e os BLOCOS ja' mostravam o
+        # novo. Painel que mostra duas verdades ao mesmo tempo e' pior que
+        # painel que nao atualiza.
+        mudou = [j for j in range(len(self.txt_fala))
+                 if j == i or self.spec["falas"][j] != antes[j]]
+        for j in mudou:
+            self.txt_fala[j].delete("1.0", "end")
+            self.txt_fala[j].insert("1.0", self.spec["falas"][j])
         self._marcar_limpo()
         self._render()
-        self._toast("copy da cena %d re-sorteada" % (i + 1))
+        if len(mudou) > 1:
+            self._toast("copy re-sorteada — este agente troca as %d cenas "
+                        "juntas" % len(mudou))
+        else:
+            self._toast("copy da cena %d re-sorteada" % (i + 1))
 
     def aplicar_copy(self):
         for i, t in enumerate(self.txt_fala):
@@ -1137,7 +1158,17 @@ class App(tk.Tk):
                                     fg=ERRO if erros else AVISO)
 
     def _ordem(self):
-        return (["BLOCO 0 (REF)"]
+        # ⛔⛔ O BLOCO 0 SO' ENTRA SE EXISTIR (2026-08-14). Ele estava CRAVADO
+        # na lista, e o `mostrar_bloco` logo abaixo faz `self.blocos[nome]` —
+        # entao um motor sem BLOCO 0 abria o app e estourava `KeyError` no
+        # primeiro desenho. ⚠️ O cabecalho do `banho16` ja' registrava esse
+        # crash desde 12/08 como razao para o angulo TER um BLOCO 0; a lapide
+        # estava certa sobre o sintoma e errada sobre a cura — o defeito era
+        # aqui, e o angulo pagou por ele com uma foto de maos que o operador
+        # depois chamou de *"completamente irrelevante"*.
+        # ⭐ Para os 43 motores que tem BLOCO 0, nada muda.
+        ref = [k for k in self.blocos if k.startswith("BLOCO 0")]
+        return (sorted(ref)
                 + sorted(k for k in self.blocos if k.startswith("IMAGE"))
                 + sorted(k for k in self.blocos if k.startswith("TAKE")))
 
