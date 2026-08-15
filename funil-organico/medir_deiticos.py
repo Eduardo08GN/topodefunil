@@ -83,7 +83,9 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            "pee16",
            "alfa16",
            # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
-           "organicwave16"]
+           "organicwave16",
+           # + 2026-08-14: o HORSE 16, no commit em que nasce.
+           "horse16"]
 
 # --------------------------------------------------------------------------
 # OS REFERENTES QUE CONTAM COMO "a frase disse do que se trata"

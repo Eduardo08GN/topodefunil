@@ -98,7 +98,16 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # DEITICO mais o prop na mao (`this is what my {o} looked like`) em
            # vez de por verbo de disfuncao, e o regex do CT2 le' verbo. Nao e'
            # excecao declarada — e' pergunta aberta para o operador.
-           "organicwave16"]
+           "organicwave16",
+           # + 2026-08-14: o HORSE 16 entra AQUI no commit em que nasce.
+           # ⚠️⚠️ Ele NOMEIA a receita na fala (`horse gelatin, lemon and
+           # cinnamon`), por ordem do operador — e mesmo assim mede 0% no
+           # CT5. A razao vale para o parque inteiro: o CT5 le' a fala do
+           # CTA (`falas[-1]`), e aqui os ingredientes estao no TAKE 1.
+           # ⛔ Por isso ele NAO entra em `DESLIGADAS`: excecao que nao
+           # suprime nada e' ruido, e ruido ensina a desconfiar das que
+           # suprimem de verdade.
+           "horse16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.
