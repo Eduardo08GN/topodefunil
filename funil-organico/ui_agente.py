@@ -115,6 +115,7 @@ class App(tk.Tk):
         self.minsize(1180, 760)
 
         self.spec = None
+        self._toast_anulado = ()
         self.blocos = {}
         self.achados = []
         self.rng = random.Random()
@@ -178,6 +179,20 @@ class App(tk.Tk):
         # quem monta os botoes e' o `_topo()`, que roda depois daqui.
         self.sexos, self.b_sexo, self.sexo_travado = [], {}, None
         self.var_trava = {}
+        # ⭐⭐ 6o CONTRATO ADITIVO (2026-08-13): DROPDOWNS_UI. Ordem do operador:
+        # *"quero um controlador ui ux com seletor dropdown menu, onde que,
+        # quando selecionado determinada opcao, o ref ficara' FIXO naquele
+        # selecionado para quaisquer sorteio"*.
+        # ⛔ POR QUE NAO REUSAR O `TRAVAS_UI`: aquela barra desenha um BOTAO por
+        # opcao, lado a lado. Serve para 15 regioes; com 44 REFs ela estoura a
+        # largura da janela e vira uma parede de botoes ilegivel. Dropdown e' o
+        # unico controle que aguenta pool grande sem crescer na tela.
+        # ⚠️ ADITIVO e lido com `getattr`: motor que nao declara nao ganha nada,
+        # e por isso os outros 42 nao mudam de comportamento.
+        # formato: [(chave_da_trava, rotulo_na_tela, "NOME_DO_POOL", "campo")]
+        self.dropdowns_ui = list(getattr(motor, "DROPDOWNS_UI", []) or [])
+        self.var_drop = {}
+        self._drop_id = {}
         self.var_cadeado = {}
         self.b_cadeado = {}
 
@@ -335,6 +350,7 @@ class App(tk.Tk):
             self._pintar_modos()
 
         self._barra_travas()
+        self._barra_dropdowns()
         tk.Frame(self, bg=LINE, height=1).pack(fill="x", padx=16, pady=(10, 0))
 
     def _barra_travas(self):
@@ -376,6 +392,71 @@ class App(tk.Tk):
                 b.pack(side="left", padx=(0, 2))
                 grupo.append((op, b))
             self._pintar_trava(chave, grupo)
+
+    def _barra_dropdowns(self):
+        """⭐⭐ O SELETOR FIXO DE REF — um combobox por eixo declarado.
+
+        ⛔ Escolher aqui TRAVA o eixo para TODO sorteio seguinte, que e' o que o
+        operador pediu. E' diferente do cadeado da coluna: o cadeado segura o
+        que ESTA' na tela, este segura o que ele ESCOLHEU, mesmo antes do
+        primeiro sorteio.
+        ⚠️ Nao desenha nada quando o motor nao declara `DROPDOWNS_UI`.
+        """
+        if not self.dropdowns_ui:
+            return
+        f = tk.Frame(self, bg=BG)
+        f.pack(fill="x", padx=16, pady=(8, 0))
+        for chave, rotulo, pool_nome, campo in self.dropdowns_ui:
+            pool = list(getattr(self.m, pool_nome, []) or [])
+            # ⚠️ rotulo -> id, porque o combobox devolve TEXTO e o motor espera
+            # o id (ou a entrada). Sem este mapa, escolher no menu mandaria a
+            # string do rotulo para o `_por_id`, que nao casaria com nada e
+            # cederia para `pool[0]` em silencio — o seletor "funcionando" e
+            # entregando sempre o primeiro da lista.
+            mapa = {}
+            for e in pool:
+                txt = str(e.get(campo) or e.get("id") or "")
+                if txt and txt not in mapa:
+                    mapa[txt] = e.get("id")
+            self._drop_id[chave] = mapa
+            var = tk.StringVar(value=LIVRE)
+            self.var_drop[chave] = var
+            tk.Label(f, text=rotulo, font=F_SMALL, bg=BG,
+                     fg=TXT).pack(side="left", padx=(0, 6))
+            cb = ttk.Combobox(f, textvariable=var, state="readonly",
+                              values=[LIVRE] + sorted(mapa), width=38,
+                              font=F_SMALL)
+            cb.pack(side="left", padx=(0, 14))
+            cb.bind("<<ComboboxSelected>>",
+                    lambda _e, c=chave: self._escolher_drop(c))
+        tk.Label(f, text="fixa o REF em todo sorteio", font=F_SMALL, bg=BG,
+                 fg=MUTED).pack(side="left")
+
+    def _escolher_drop(self, chave):
+        """⛔ Sorteia na hora: seletor que so' vale no proximo clique e' o
+        cadeado que nao trava, defeito que este repo ja' pagou tres vezes.
+
+        ⛔⛔ E ABRE O CADEADO DO MESMO EIXO, porque os dois controles travam a
+        MESMA chave e o cadeado vem depois no `travas()` — ou seja, ele vencia.
+        Medido em 9 motores: com o cadeado fechado, escolher no menu nao mudava
+        nada, o combobox seguia exibindo a escolha e o video saia com a pessoa
+        anterior em TODO sorteio seguinte. Um painel contra o outro, sem aviso.
+
+        ⚠️ Nao inverti a precedencia do `travas()`: a regra de la' esta' certa e
+        e' velha (o cadeado e' o que esta' na TELA, mais especifico que uma
+        trava grossa). O que estava errado era deixar os dois fechados ao mesmo
+        tempo dizendo coisas diferentes. Escolher no menu e' o ato mais recente
+        e mais explicito do operador sobre aquele eixo, entao ele SOLTA o
+        cadeado — e o botao do cadeado abre na tela, para o gesto ser visivel.
+        """
+        var = self.var_cadeado.get(chave)
+        if var is not None and var.get():
+            var.set(False)
+            if chave in self.b_cadeado:
+                self._pintar_cadeado(chave)
+            self._toast("cadeado de %s ABERTO — a escolha do menu vale mais "
+                        "que o congelado da tela" % chave)
+        self.sortear()
 
     def _escolher_trava(self, chave, opcao, grupo):
         self.var_trava[chave].set(opcao)
@@ -612,12 +693,22 @@ class App(tk.Tk):
         # ORGANICWAVE caía no ramo de tres argumentos e a trava de quem narra
         # nunca chegava ao motor — botao aceso, sorteio livre.
         if not (self.travas_ui or self.eixos_travaveis or self.pele_travavel
-                or self.modos or self.sexos):
+                or self.modos or self.sexos or self.dropdowns_ui):
             return None
         t = {}
         for chave, var in self.var_trava.items():
             if var.get() != LIVRE:
                 t[chave] = var.get()
+        # ⭐ O DROPDOWN entra ANTES do cadeado, de proposito: cadeado e' o que
+        # esta' na TELA e continua sendo mais especifico. Os dois travam o mesmo
+        # eixo, e sem ordem definida o comportamento dependeria da ordem do
+        # dicionario.
+        for chave, var in self.var_drop.items():
+            escolha = var.get()
+            if escolha and escolha != LIVRE:
+                alvo = self._drop_id.get(chave, {}).get(escolha)
+                if alvo:
+                    t[chave] = alvo
         for chave, var in self.var_cadeado.items():
             if var.get() and self.spec and chave in self.spec:
                 t[chave] = self.spec[chave]
@@ -845,24 +936,79 @@ class App(tk.Tk):
         que nao trava — e o operador confia no que esta' aceso.
         """
         self.modo_on[chave] = not self.modo_on[chave]
-        self._pintar_modos()
+        # ⚠️ O `_pintar_modos` daqui SAIU: ele rodava com a spec VELHA, na qual o
+        # modo ainda esta' False porque acabou de ser ligado. Isso marcava o modo
+        # como anulado, disparava o aviso cedo e gravava `_toast_anulado`, o que
+        # depois SILENCIAVA o aviso verdadeiro. Quem pinta agora e' o `sortear`,
+        # com a spec do video que o operador vai levar.
         self.sortear()
         # ⚠️ `REF` so' entra para os modos que TROCAM ALGUEM. O toast dizia
         # "modo REF RECEITA" desde 2026-08-10 — e com o `leve` diria "modo REF
         # LEVE", que promete uma pessoa nova a cada clique.
+        # ⛔⛔ E ELE NAO FALA POR CIMA DO AVISO DE ANULADO. Este toast era o
+        # ULTIMO da sequencia, entao no caminho mais comum — fixar o REF no menu
+        # e SO' ENTAO acender o modo — a unica frase que sobrava na tela era
+        # `modo REF FORTE LIGADO — homem forte e musculoso`, com `spec["forte"]`
+        # em False. O botao ficava ambar e a legenda dizia o contrario dele.
+        if self.modo_on[chave] and self._modo_anulado(chave):
+            return
         self._toast("modo %s%s %s" % (
             "" if chave in self.MODOS_NAO_REF else "REF ",
             chave.upper(),
             "LIGADO — " + self.ROTULO_MODO.get(chave, "")
             if self.modo_on[chave] else "desligado"))
 
+    def _modo_anulado(self, chave):
+        """O modo esta' ACESO e mesmo assim NAO chegou ao video?
+
+        ⛔ Uma definicao so', usada pela COR e pelo AVISO. Quando cada um decidia
+        por conta propria, o botao ficava ambar e a legenda dizia
+        `modo REF FORTE LIGADO` no mesmo instante.
+        ⚠️ Exige `chave in self.spec`: motor que nao grava a chave nao permite
+        concluir nada, e chutar "anulado" ali seria a lente que reprova o que
+        esta' certo. Os motores que nao gravam estao listados na pendencia.
+        """
+        return bool(self.modo_on.get(chave) and self.spec is not None
+                    and chave in self.spec and not self.spec.get(chave))
+
     def _pintar_modos(self):
+        """⭐⭐ TRES estados, nao dois: aceso, apagado e ANULADO.
+
+        ⛔⛔ O terceiro nasceu em 2026-08-13, junto com o seletor de REF, e a
+        razao esta' medida: escolher um REF no dropdown APAGA um modo de REF em
+        dez dos vinte e dois motores — em `good16` e `prato16` o modo apagado
+        era o FORTE, que nasce LIGADO. O operador escolhia o homem, o video
+        saia sem musculo, e o botao continuava laranja.
+
+        ⚠️ E as duas causas sao ANTERIORES ao dropdown: o `travas()` derruba
+        modo de REF quando ha' `t["ref"]` (regra escrita para o cadeado), e dois
+        motores fazem `forte = ... and not travas.get("homem")`. O que o
+        dropdown fez foi transformar um caminho raro no caminho comum.
+
+        ⭐ Em vez de adivinhar QUAL causa anulou, o botao compara o que ele
+        promete com o que o SPEC entregou. Assim ele fica honesto para as duas
+        causas e para a proxima, sem a UI precisar conhecer a regra do motor —
+        aceite e' MEDICAO, e aqui a medicao e' o proprio resultado.
+        """
+        mortos = []
         for chave, b in self.b_modo.items():
             on = self.modo_on[chave]
-            b.configure(bg=ACCENT if on else PANEL2,
-                        fg="#ffffff" if on else MUTED,
-                        activebackground=ACCENT_D if on else LINE,
-                        activeforeground="#ffffff")
+            anulado = self._modo_anulado(chave)
+            if anulado:
+                mortos.append(chave.upper())
+                b.configure(bg=AVISO, fg="#141414",
+                            activebackground=AVISO, activeforeground="#141414")
+            else:
+                b.configure(bg=ACCENT if on else PANEL2,
+                            fg="#ffffff" if on else MUTED,
+                            activebackground=ACCENT_D if on else LINE,
+                            activeforeground="#ffffff")
+        # ⚠️ A cor sozinha e' um codigo a decifrar, e o operador que nao decifra
+        # embarca o video achando que o modo entrou. O aviso diz a palavra.
+        if mortos and self._toast_anulado != tuple(mortos):
+            self._toast("modo %s ANULADO — o REF escolhido manda mais que ele; "
+                        "este video sai SEM o modo" % " e ".join(mortos))
+        self._toast_anulado = tuple(mortos)
 
     def _pintar_pele(self):
         # ⚠️ Motor com PELE_TRAVAVEL: aceso = TRAVADO, apagado = livre. Acender
@@ -954,6 +1100,10 @@ class App(tk.Tk):
         self.lbl_resumo.configure(text=self.m.resumo_pt(self.spec))
         self._pintar_pele()
         self._pintar_sexo()
+        # ⚠️ O estado ANULADO so' existe DEPOIS do sorteio: e' o spec
+        # que revela se o modo chegou ao video.
+        if self.b_modo:
+            self._pintar_modos()
 
         usados = sorted({t for f in self.spec["falas"] for t in termos_reescritos(f)})
         self.lbl_sonoro.configure(

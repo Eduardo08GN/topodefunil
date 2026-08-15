@@ -130,7 +130,10 @@ IMOBILIDADE = ("same position, same angle, same shape — completely motionless 
                "for the entire shot.")
 NEGACAO_AVE = (" No bird, no goose, no duck, no swan, no snake, no feathers, "
                "no beak, no eyes, no head, nothing alive.")
-ANTICELEB = "Ordinary relatable face, not a celebrity."
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = "Ordinary relatable face."
 CAUDA = "iPhone shot, natural grain, no text, no watermark."
 
 # ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).

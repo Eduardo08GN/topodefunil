@@ -47,6 +47,20 @@ import random
 import re
 import sys
 
+# ⛔ MESMO REMENDO DO `medir_personagens.py` (linha 51), e pela mesma razao
+# medida em 2026-08-13: este gate MORREU no proprio rodape, com
+# UnicodeEncodeError, ao imprimir a lista de travas DESLIGADAS — o console
+# do Windows e' cp1252 e os marcadores nao cabem nele.
+# ⚠️ E o padrao caro se repetiu inteiro: o rodape so' roda QUANDO HA' ALGO
+# A REPORTAR, entao o gate quebrava exatamente na hora em que tinha algo a
+# dizer, e nunca no caminho feliz. Gate que morre calado na hora do recado
+# treina o operador a ignorar o gate.
+for _f in (sys.stdout, sys.stderr):
+    try:
+        _f.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 FO = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, FO)
 
@@ -97,7 +111,9 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # motor existe desde 08-09 e este medidor nunca olhou para ele.
            # Gate que nao ve o motor nao reprova o motor (licoes §7).
            "pee16_short",
-           "alfa16_short"]
+           "alfa16_short",
+           # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
+           "organicwave16_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

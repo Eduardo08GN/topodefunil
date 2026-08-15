@@ -573,89 +573,113 @@ def mundos_da_etnia(etnia):
 # --gate` (reprovacao).
 HOMENS = [
     {"id": "grisalho_curto", "idade": 57,
+     "rotulo": "57y · grisalho rente + barba cheia",
      "marca": "close-cropped grey hair and a full grey beard going white at "
               "the chin",
      "sinal": "a strong cleft in his chin"},
     {"id": "careca_cavanhaque", "idade": 59,
+     "rotulo": "59y · careca + cavanhaque grisalho",
      "marca": "a clean-shaven scalp and a short grey goatee",
      "sinal": "a small dark mole high on his right cheek"},
     {"id": "sal_pimenta", "idade": 55,
+     "rotulo": "55y · sal-e-pimenta + barba por fazer",
      "marca": "short salt-and-pepper hair and three days of grey stubble",
      "sinal": "laugh lines at the corners of his eyes"},
     {"id": "barba_cheia", "idade": 60,
+     "rotulo": "60y · entrada em bico + barba branca",
      "marca": "grey hair with a low widow's peak and a full white beard",
      "sinal": "heavy level brows over wide-set eyes"},
     {"id": "bigode_grisalho", "idade": 58,
+     "rotulo": "58y · grisalho rente + bigode grosso",
      "marca": "close-cropped grey hair and a thick grey moustache",
      "sinal": "a shallow dimple in his left cheek and light freckling across "
               "his nose"},
     {"id": "ondulado", "idade": 56,
+     "rotulo": "56y · grisalho ondulado + barba rente",
      "marca": "short wavy grey hair and a close grey beard",
      "sinal": "a patch of white above his left temple"},
     {"id": "oculos_fio", "idade": 61,
+     "rotulo": "61y · prata para tras + oculos de fio",
      "marca": "thick silver hair swept straight back, a clean-shaven face and "
               "thin wire-rimmed glasses",
      "sinal": "a small mole beside his right eye"},
     {"id": "barba_quadrada", "idade": 62,
+     "rotulo": "62y · branco rente + barba quadrada",
      "marca": "close-cropped white hair and a full white beard trimmed square "
               "at the jaw",
      "sinal": "smooth-skinned with a cleft chin"},
     {"id": "topete_prata", "idade": 55,
+     "rotulo": "55y · topete prata + oculos de aco",
      "marca": "silver hair still full on top and combed high, a clean-shaven "
               "face and thin steel-rimmed glasses",
      "sinal": "a beauty mark below his right eye"},
     {"id": "raspado_cavanhaque", "idade": 58,
+     "rotulo": "58y · raspado + cavanhaque branco",
      "marca": "a shaved head and a short white goatee",
      "sinal": "heavy level brows and a wide square chin"},
     {"id": "oculos_retangular", "idade": 59,
+     "rotulo": "59y · risca lateral + oculos retangular",
      "marca": "short grey hair parted on one side, a trimmed grey beard and "
               "dark rectangular glasses",
      "sinal": "a shallow cleft in his chin"},
     {"id": "cachos_grisalhos", "idade": 56,
+     "rotulo": "56y · cachos grisalhos + tarraxa dourada",
      "marca": "loose grey curls kept short and a close-trimmed grey beard",
      "sinal": "a small gold stud in his left ear"},
     {"id": "bigode_chevron", "idade": 60,
+     "rotulo": "60y · lateral rente + bigode chevron",
      "marca": "grey hair clipped short at the sides and a thick chevron "
               "moustache",
      "sinal": "laugh lines at the corners of his mouth"},
     {"id": "entradas_barba", "idade": 57,
+     "rotulo": "57y · entradas altas + barba cheia",
      "marca": "a high hairline with thick grey hair behind it and a full grey "
               "beard",
      "sinal": "a small mole on his left jaw"},
     {"id": "oculos_grossos", "idade": 62,
+     "rotulo": "62y · branco curto + oculos de aro grosso",
      "marca": "short white hair, a clean-shaven face and heavy black-framed "
               "glasses",
      "sinal": "a silver streak through one eyebrow"},
     {"id": "lateral_prateada", "idade": 55,
+     "rotulo": "55y · laterais prateadas + covinhas",
      "marca": "dark hair going silver at the sides, cut short, and a close "
               "dark beard",
      "sinal": "a dimple in each cheek when he talks"},
     {"id": "barba_curta_branca", "idade": 61,
+     "rotulo": "61y · branco muito curto + barba branca",
      "marca": "white hair kept very short and a short white beard",
      "sinal": "smooth-skinned with a broad square chin"},
     {"id": "onda_para_tras", "idade": 58,
+     "rotulo": "58y · onda sal-e-pimenta + barbeado",
      "marca": "wavy salt-and-pepper hair pushed back off the forehead and a "
               "clean-shaven face",
      "sinal": "smooth-skinned with a small beauty mark on his left cheekbone"},
     {"id": "oculos_aro_fino", "idade": 56,
+     "rotulo": "56y · grisalho escuro + oculos sem aro",
      "marca": "short dark grey hair, a close grey beard and rimless glasses",
      "sinal": "a cleft chin under heavy level brows"},
     {"id": "crista_branca", "idade": 59,
+     "rotulo": "59y · mecha branca + barba escura",
      "marca": "a white streak running through short dark hair and a trimmed "
               "dark beard",
      "sinal": "a small mole above his lip"},
     {"id": "careca_bigode", "idade": 60,
+     "rotulo": "60y · careca com laterais + bigode grosso",
      "marca": "a bald crown with grey at the sides and a thick grey moustache",
      "sinal": "a small gold hoop in his left ear"},
     {"id": "barba_longa_grisalha", "idade": 62,
+     "rotulo": "62y · grisalho atras + barba longa",
      "marca": "grey hair combed back short and a long grey beard combed "
               "straight",
      "sinal": "freckles scattered across his nose"},
     {"id": "oculos_claro", "idade": 57,
+     "rotulo": "57y · grisalho rente + oculos incolor",
      "marca": "close-cropped grey hair, a short grey beard and clear-framed "
               "glasses",
      "sinal": "a shallow dimple in his chin"},
     {"id": "franja_grisalha", "idade": 58,
+     "rotulo": "58y · franja grisalha + barbeado",
      "marca": "straight grey hair kept a little long over the forehead and a "
               "clean-shaven face",
      "sinal": "laugh lines and a small mole at the corner of his jaw"},
@@ -1175,7 +1199,25 @@ def _fresco(pool, usados, rng):
 
 
 def _por_id(pool, valor):
-    return next((x for x in pool if x["id"] == valor), None)
+    """A entrada do pool, aceitando ID (string) OU a ENTRADA JA' RESOLVIDA.
+
+    ⛔⛔ OS DOIS FORMATOS SAO OBRIGATORIOS, e o segundo e' o que o PAINEL manda:
+    o dropdown devolve um id, mas o CADEADO devolve `self.spec[chave]`, o
+    dicionario inteiro. A versao ingenua (`x["id"] == valor`) nunca casa com um
+    dicionario, devolvia `None`, e o `resumo_pt` estourava
+    `TypeError: 'NoneType' object is not subscriptable` DENTRO do callback do
+    tkinter — onde a excecao morre calada. No `.exe` (pythonw, sem console) o
+    efeito era o SORTEAR simplesmente nao fazer nada.
+    ⚠️ Atingia TODOS os eixos travaveis deste motor, e e' o mesmo defeito que o
+    `_por_id` do `prato16` ja' documentava desde que quebrou os quatro cadeados
+    do GOOD 16. Corrigido em 2026-08-13, achado por uma revisao adversarial que
+    EXERCITOU o painel em vez de so' abri-lo.
+    ⚠️ O fallback e' `pool[0]`, nunca `None`: id que sumiu do pool (ledger
+    velho, menu de outra versao) tem de cair no caminho normal, nao estourar.
+    """
+    if isinstance(valor, str):
+        return next((x for x in pool if x.get("id") == valor), pool[0])
+    return valor
 
 
 def _cabe(pool, reserva, cena, o=None):
@@ -1293,8 +1335,11 @@ CAUDA = ("Shot on iPhone, natural grain. No on-screen text, no subtitles, no "
 # "not underage" sao municao: nomeiam a categoria que o classificador policia).
 # ⚠️ Esta frase existe porque o BLOCO 0 do repo inteiro a carrega e o gerador a
 # espera; o que se proibe e' escrever uma nova.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 ANTICELEB = ("An ordinary everyday relatable person with a plain unremarkable "
-             "face, not a celebrity, not a model, not an actor.")
+             "face.")
 
 
 def _maos_da_agua(spec):
@@ -1708,6 +1753,13 @@ def lint(spec, blocos):
     falas = spec["falas"]
     sc.lint_tags(blocos, ach)
     sc.lint_take_vs_image(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor tem `lint()` PROPRIO e
+    # nao passa pelo `sc.lint_curto`, entao a lente entra aqui
+    # explicitamente — regra sem guarda volta no proximo agente nascido
+    # por copia, e foi exatamente assim que a clausula chegou aos 30
+    # motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[-1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[-1], ach, "a cena 2 (CTA)")
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
@@ -1733,6 +1785,27 @@ EIXOS_UI = [
 EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "copo"]
 
 TRAVAS_UI = [("familia_mundo", "regiao", ["livre"] + FAMILIAS_MUNDO)]
+
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# Ordem do operador (2026-08-13): *"implemente esse mecanismo e menu drop down
+# para todos os demais agentes 16"*, tendo o MEL 16 como modelo.
+# ⛔ Sem esta linha o `rotulo` seria comentario caro: 24 textos escritos,
+# medidos e travados, e nenhum olho humano os veria. Forma sem funcao e' o
+# defeito que este repo mais paga (licoes-de-construcao §41).
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado. Serve para as regioes; com 24 REFs ela estoura a largura
+# da janela e vira uma parede de botoes ilegivel.
+# ⚠️ O campo exibido e' `rotulo`, NAO `id`: o `ui_agente` monta o mapa
+# texto -> id, entao o operador escolhe "60y · careca com laterais + bigode
+# grosso" e o motor recebe `careca_bigode`. Menu de ids obriga a abrir o
+# codigo para saber o que se escolheu.
+# ⚠️ E o `EIXOS_UI` acima continua com `id` de proposito: la' o `_texto_eixo`
+# ja' prefixa a idade, e trocar para `rotulo` imprimiria "57y · 57y · grisalho".
+# ⛔ ESTE MOTOR E' O IRMAO DO `bed16_short.py` (o BED nasceu como copia deste) e
+# os dois pools de HOMENS sao identicos — os rotulos foram escritos iguais nos
+# dois DE PROPOSITO: o mesmo rosto tem de ler igual nos dois paineis. Divergir
+# aqui e' inventar diferenca onde o pool nao tem nenhuma.
+DROPDOWNS_UI = [("homem", "QUEM FALA", "HOMENS", "rotulo")]
 
 # ⚠️ `mundo` ja' entra na lista de ignorados do `lint_painel_honesto` (o valor
 # do eixo e' um id interno). Os outros tres chegam ao quadro pelo `marca`,
@@ -1872,6 +1945,63 @@ def autoteste(n=400):
         if "the same" not in m["a_cen"]:
             falhas.append("MUNDO %s: a agua nao diz `the same <casa>` — o "
                           "corte le' como dois videos colados" % m["id"])
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — o que o dropdown QUEM FALA exige do pool.
+    # ⚠️ A UNICIDADE nao e' capricho: o `ui_agente._barra_dropdowns` monta o
+    # mapa texto -> id com `if txt and txt not in mapa`, entao dois rotulos
+    # iguais fazem o SEGUNDO homem DESAPARECER do menu — em silencio, sem erro
+    # e sem log. Pool de 24 que o operador so' alcanca em 23 e' a mesma familia
+    # do botao que mente, so' que por colisao de texto.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` mais folga): rotulo
+    # maior sai cortado na tela, e rotulo cortado volta a ser ilegivel — que e'
+    # exatamente o problema que ele veio resolver.
+    _rt_sem = [h["id"] for h in HOMENS if not h.get("rotulo")]
+    if _rt_sem:
+        falhas.append("ROTULO: %d entrada(s) de HOMENS sem rotulo — o dropdown "
+                      "cai no `id` e o operador le' %r"
+                      % (len(_rt_sem), _rt_sem[0]))
+    _rt = [h.get("rotulo") or "" for h in HOMENS]
+    _rt_rep = sorted({r for r in _rt if _rt.count(r) > 1})
+    if _rt_rep:
+        falhas.append("ROTULO: %d rotulo(s) repetido(s) (%r) — o segundo homem "
+                      "some do dropdown sem erro nenhum"
+                      % (len(_rt_rep), _rt_rep[0]))
+    _rt_longo = [r for r in _rt if len(r) > 42]
+    if _rt_longo:
+        falhas.append("ROTULO: %d rotulo(s) acima de 42 chars (%r, %d) — "
+                      "estoura a largura do menu"
+                      % (len(_rt_longo), _rt_longo[0], len(_rt_longo[0])))
+
+    # ⛔ E O CONTRATO DO PAINEL TEM DE APONTAR PARA COISA QUE EXISTE. O
+    # `_barra_dropdowns` le' o pool com `getattr(motor, pool_nome, [])`: nome
+    # errado devolve LISTA VAZIA e desenha um menu com `livre` e mais nada — o
+    # seletor "funcionando" sem uma opcao dentro. Campo errado cai no
+    # `e.get("id")` e devolve justamente o menu de ids que o rotulo veio abolir.
+    # ⭐ E a ultima checagem e' de FUNCAO, nao de forma: escolher no menu tem de
+    # SAIR no spec. Forma verificada e funcao nao verificada e' o defeito §41.
+    for _dd_ch, _dd_tela, _dd_pool, _dd_campo in DROPDOWNS_UI:
+        _dd_p = globals().get(_dd_pool)
+        if not isinstance(_dd_p, list) or not _dd_p:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe ou esta' vazio — "
+                          "o menu %r sai so' com `livre`"
+                          % (_dd_pool, _dd_tela))
+            continue
+        _dd_falta = [e.get("id") for e in _dd_p if not e.get(_dd_campo)]
+        if _dd_falta:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem o campo %r — "
+                          "o menu cai no `id`"
+                          % (len(_dd_falta), _dd_pool, _dd_campo))
+        if _dd_ch not in EIXOS_TRAVAVEIS:
+            falhas.append("DROPDOWNS_UI: o eixo %r nao esta' em EIXOS_TRAVAVEIS "
+                          "— escolher no menu nao travaria nada" % _dd_ch)
+        for _dd_e in _dd_p[:2] + _dd_p[-2:]:
+            _dd_s = sortear(sorted(ETNIA)[0], random.Random(4242), {},
+                            {_dd_ch: _dd_e["id"]})
+            if _dd_s[_dd_ch]["id"] != _dd_e["id"]:
+                falhas.append("DROPDOWNS_UI: escolher %r no menu %r devolveu "
+                              "%r — o seletor nao fixa"
+                              % (_dd_e["id"], _dd_tela, _dd_s[_dd_ch]["id"]))
+                break
 
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))

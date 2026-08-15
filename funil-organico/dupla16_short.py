@@ -465,8 +465,10 @@ BO_ANCORA = ("the same %d-year-old %s woman from the first scene, same %s, same 
 # nos — rosto sem graca em cima de um corpo encomendado bonito.
 # ⚠️ E' o mesmo conserto que o CLEAN ja' tinha feito (CL26): a protecao de
 # IDENTIDADE (nao-celebridade) fica; so' sai o "comum" e o "nao e' modelo".
-ANTICELEB = ("A strikingly beautiful face, not a celebrity, not resembling "
-             "any famous person.")
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = ("A strikingly beautiful face.")
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 
@@ -1342,93 +1344,213 @@ PROPS = PARES   # o contrato do painel usa `PROPS`
 # criou o `medir_personagens.py`.
 REFS = [
     {"idade": 24, "corpo": "tall and long-legged with a very small waist",
+     "id": "auburn_ondas",
+     "rotulo": "24y · auburn ondas longas + sardas",
+     "id": "auburn_ondas",
+     "rotulo": "24y · auburn ondas longas + sardas",
      "cabeca": "deep auburn hair falling in loose waves past her shoulders",
      "marca": "a light spray of freckles across her nose and green eyes"},
     {"idade": 27, "corpo": "slim with an hourglass figure and long legs",
+     "id": "cobre_rabo",
+     "rotulo": "27y · rabo cobre + pinta no labio",
+     "id": "cobre_rabo",
+     "rotulo": "27y · rabo cobre + pinta no labio",
      "cabeca": "copper-red hair in a high glossy ponytail",
      "marca": "pale green eyes and a small beauty mark above her lip"},
     {"idade": 23, "corpo": "willowy and fine-boned with a flat stomach",
+     "id": "ginger_camadas",
+     "rotulo": "23y · ginger repicado + sardas fortes",
+     "id": "ginger_camadas",
+     "rotulo": "23y · ginger repicado + sardas fortes",
      "cabeca": "bright ginger hair cut in long layers",
      "marca": "heavy freckling across her cheeks and hazel eyes"},
     {"idade": 29, "corpo": "curvy with a narrow waist and full shoulders",
+     "id": "vermelho_escuro",
+     "rotulo": "29y · ruiva escura + argola na narina",
+     "id": "vermelho_escuro",
+     "rotulo": "29y · ruiva escura + argola na narina",
      "cabeca": "dark red hair swept over one shoulder",
      "marca": "a small gold hoop in her left nostril and clear skin"},
     {"idade": 26, "corpo": "tall and statuesque with a long waist",
+     "id": "morango_tranca",
+     "rotulo": "26y · tranca loira rosada + mecha prata",
+     "id": "morango_tranca",
+     "rotulo": "26y · tranca loira rosada + mecha prata",
      "cabeca": "strawberry-blonde hair in a loose braid",
      "marca": "wide-set blue eyes and a bright silver streak at one temple"},
     {"idade": 25, "corpo": "slim and toned with a dancer's line",
+     "id": "preto_risca_meio",
+     "rotulo": "25y · preto risca ao meio + malar forte",
+     "id": "preto_risca_meio",
+     "rotulo": "25y · preto risca ao meio + malar forte",
      "cabeca": "jet-black hair in a sleek centre part",
      "marca": "sharp cheekbones and a small mole on her jaw"},
     {"idade": 28, "corpo": "long-legged and slender with square shoulders",
+     "id": "platinado_chanel",
+     "rotulo": "28y · loira platinada + olhos gelo",
+     "id": "platinado_chanel",
+     "rotulo": "28y · loira platinada + olhos gelo",
      "cabeca": "platinum blonde hair in a blunt shoulder-length cut",
      "marca": "ice-blue eyes and a dimple in one cheek"},
     {"idade": 24, "corpo": "curvy and athletic with a small waist",
+     "id": "cachos_altos",
+     "rotulo": "24y · cachos presos no alto + sorriso",
+     "id": "cachos_altos",
+     "rotulo": "24y · cachos presos no alto + sorriso",
      "cabeca": "tight dark curls gathered high on her head",
      "marca": "glowing deep brown skin and a wide bright smile"},
     {"idade": 30, "corpo": "tall and slim with an hourglass line",
+     "id": "castanho_praia",
+     "rotulo": "30y · castanho ondas praia + covinha",
+     "id": "castanho_praia",
+     "rotulo": "30y · castanho ondas praia + covinha",
      "cabeca": "chestnut hair in long beachy waves",
      "marca": "a deep dimple in her right cheek and warm brown eyes"},
     {"idade": 22, "corpo": "petite and curvy with a defined waist",
+     "id": "mel_coque",
+     "rotulo": "22y · coque loiro mel + labios cheios",
+     "id": "mel_coque",
+     "rotulo": "22y · coque loiro mel + labios cheios",
      "cabeca": "honey-blonde hair in a high messy bun",
      "marca": "a scatter of freckles and full lips"},
     {"idade": 27, "corpo": "lean and toned with a flat stomach and long arms",
+     "id": "preto_cintura",
+     "rotulo": "27y · preto liso ate a cintura + tarraxa",
+     "id": "preto_cintura",
+     "rotulo": "27y · preto liso ate a cintura + tarraxa",
      "cabeca": "long jet-black hair falling straight to the waist",
      "marca": "almond eyes and a small stud in one nostril"},
     {"idade": 26, "corpo": "shapely with toned arms and a narrow waist",
+     "id": "balayage_caramelo",
+     "rotulo": "26y · balayage caramelo + pinta no olho",
+     "id": "balayage_caramelo",
+     "rotulo": "26y · balayage caramelo + pinta no olho",
      "cabeca": "caramel balayage falling past her shoulders",
      "marca": "a beauty mark at the corner of her right eye"},
     {"idade": 23, "corpo": "slim-hipped and elegant with a long neck",
+     "id": "areia_espinha",
+     "rotulo": "23y · loira areia + tranca espinha",
+     "id": "areia_espinha",
+     "rotulo": "23y · loira areia + tranca espinha",
      "cabeca": "sandy blonde hair in a fishtail braid",
      "marca": "a slight overbite that shows when she smiles"},
     {"idade": 31, "corpo": "curvy and strong with a small waist",
+     "id": "box_braids",
+     "rotulo": "31y · box braids + argola dourada",
+     "id": "box_braids",
+     "rotulo": "31y · box braids + argola dourada",
      "cabeca": "long box braids gathered over one shoulder",
      "marca": "high round cheekbones and a gold nose ring"},
     {"idade": 25, "corpo": "tall and lean with swimmer's shoulders",
+     "id": "auburn_rabo_baixo",
+     "rotulo": "25y · rabo auburn baixo + olhos cinza",
+     "id": "auburn_rabo_baixo",
+     "rotulo": "25y · rabo auburn baixo + olhos cinza",
      "cabeca": "auburn hair in a low glossy ponytail",
      "marca": "dark freckles across both cheeks and grey eyes"},
     {"idade": 28, "corpo": "softly curvy with a full figure and a narrow waist",
+     "id": "castanho_lateral",
+     "rotulo": "28y · castanho risca lateral + sinal",
+     "id": "castanho_lateral",
+     "rotulo": "28y · castanho risca lateral + sinal",
      "cabeca": "dark brown hair in heavy waves with a deep side part",
      "marca": "a small raised birthmark on her temple"},
     {"idade": 24, "corpo": "slim and supple with a very straight back",
+     "id": "cobre_bob",
+     "rotulo": "24y · chanel cobre + olhos verdes",
+     "id": "cobre_bob",
+     "rotulo": "24y · chanel cobre + olhos verdes",
      "cabeca": "copper hair cropped into a long bob",
      "marca": "pale skin, freckles and bright green eyes"},
     {"idade": 29, "corpo": "long-limbed and shapely with a defined waist",
+     "id": "preto_rabo_alto",
+     "rotulo": "29y · rabo preto alto + sobrancelha cheia",
+     "id": "preto_rabo_alto",
+     "rotulo": "29y · rabo preto alto + sobrancelha cheia",
      "cabeca": "black hair in a high sleek ponytail",
      "marca": "a small beauty mark on her jawline and full brows"},
     {"idade": 26, "corpo": "trim and athletic with a flat stomach",
+     "id": "loiro_dourado",
+     "rotulo": "26y · loira dourada + uma covinha so",
+     "id": "loiro_dourado",
+     "rotulo": "26y · loira dourada + uma covinha so",
      "cabeca": "golden blonde hair in loose waves",
      "marca": "a small dimple in one cheek only"},
     {"idade": 22, "corpo": "tall and willowy with narrow hips",
+     "id": "auburn_meio_preso",
+     "rotulo": "22y · auburn meio preso + olhos mel",
+     "id": "auburn_meio_preso",
+     "rotulo": "22y · auburn meio preso + olhos mel",
      "cabeca": "dark auburn hair in a half-up twist",
      "marca": "wide hazel eyes and a light dusting of freckles"},
     {"idade": 30, "corpo": "curvy with a small waist and long legs",
+     "id": "coils_rente",
+     "rotulo": "30y · coils rente + malar esculpido",
+     "id": "coils_rente",
+     "rotulo": "30y · coils rente + malar esculpido",
      "cabeca": "tight coils cropped close to the head",
      "marca": "sculpted cheekbones and a small gold stud"},
     {"idade": 27, "corpo": "slim with a long waist and square shoulders",
+     "id": "cinza_coque",
+     "rotulo": "27y · coque castanho cinza + pinta",
+     "id": "cinza_coque",
+     "rotulo": "27y · coque castanho cinza + pinta",
      "cabeca": "ash-brown hair in a sleek low bun",
      "marca": "grey-green eyes and a beauty mark just above her left brow"},
     {"idade": 25, "corpo": "shapely and toned with a narrow waist",
+     "id": "ginger_cachos",
+     "rotulo": "25y · cachos ginger + covinha no queixo",
+     "id": "ginger_cachos",
+     "rotulo": "25y · cachos ginger + covinha no queixo",
      "cabeca": "ginger hair in loose curls past her shoulders",
      "marca": "heavy freckling and a small chin dimple"},
     {"idade": 28, "corpo": "tall and slim with a graceful neck",
+     "id": "tranca_coroa",
+     "rotulo": "28y · tranca coroa escura + pinta alta",
+     "id": "tranca_coroa",
+     "rotulo": "28y · tranca coroa escura + pinta alta",
      "cabeca": "long dark hair in a high crown braid",
      "marca": "a beauty mark high on her left cheek"},
     {"idade": 23, "corpo": "petite and shapely with a defined waist",
+     "id": "loiro_oxigenado",
+     "rotulo": "23y · chanel loiro oxigenado + queixo",
+     "id": "loiro_oxigenado",
+     "rotulo": "23y · chanel loiro oxigenado + queixo",
      "cabeca": "bleached blonde hair in a blunt chin-length bob",
      "marca": "wide dark eyes and a dimple in her chin"},
     {"idade": 31, "corpo": "athletic and curvy with strong shoulders",
+     "id": "mogno_ondas",
+     "rotulo": "31y · ondas mogno + argola no nariz",
+     "id": "mogno_ondas",
+     "rotulo": "31y · ondas mogno + argola no nariz",
      "cabeca": "long waves in a rich mahogany red",
      "marca": "clear skin and a small hoop in her right nostril"},
     {"idade": 24, "corpo": "long-legged and lean with a flat stomach",
+     "id": "castanho_penteado",
+     "rotulo": "24y · rabo penteado para tras + sinal",
+     "id": "castanho_penteado",
+     "rotulo": "24y · rabo penteado para tras + sinal",
      "cabeca": "dark brown hair in a slicked-back ponytail",
      "marca": "sharp brows and a small mole under one eye"},
     {"idade": 26, "corpo": "curvy and confident with a very narrow waist",
+     "id": "ruivo_mel",
+     "rotulo": "26y · ruivo mel + sardas densas",
+     "id": "ruivo_mel",
+     "rotulo": "26y · ruivo mel + sardas densas",
      "cabeca": "honey-red hair falling in soft waves",
      "marca": "a dense spray of freckles across her nose"},
     {"idade": 29, "corpo": "slim and elegant with long arms",
+     "id": "preto_ombro",
+     "rotulo": "29y · preto no ombro + mecha branca",
+     "id": "preto_ombro",
+     "rotulo": "29y · preto no ombro + mecha branca",
      "cabeca": "black hair in a smooth shoulder-length cut",
      "marca": "a thin white streak at her temple and dark eyes"},
     {"idade": 25, "corpo": "tall with a small waist and full shoulders",
+     "id": "morango_coque",
+     "rotulo": "25y · coque loiro rosado + olhos verdes",
+     "id": "morango_coque",
+     "rotulo": "25y · coque loiro rosado + olhos verdes",
      "cabeca": "strawberry-blonde hair in a high loose bun",
      "marca": "green eyes and a small beauty spot on her cheekbone"},
 
@@ -1448,21 +1570,45 @@ REFS = [
     # no lugar (`silver streak`, `dimple`, `beauty mark`), senao o eixo `ancora`
     # do `medir_personagens.py` cai junto com a cicatriz.
     {"idade": 26, "corpo": "tall and athletic with a long waist and narrow hips",
+     "id": "canela_tranca",
+     "rotulo": "26y · tranca canela + olhos ambar",
+     "id": "canela_tranca",
+     "rotulo": "26y · tranca canela + olhos ambar",
      "cabeca": "cinnamon-red hair in a thick side braid",
      "marca": "a light spray of freckles over her cheekbones and amber eyes"},
     {"idade": 24, "corpo": "shapely and lithe with a very small waist",
+     "id": "espresso_no",
+     "rotulo": "24y · coque torcido espresso + cilios",
+     "id": "espresso_no",
+     "rotulo": "24y · coque torcido espresso + cilios",
      "cabeca": "espresso-dark hair in a high twisted knot",
      "marca": "a deep dimple in her right cheek and long dark lashes"},
     {"idade": 28, "corpo": "long-legged and toned with square shoulders and a flat stomach",
+     "id": "trigo_lateral",
+     "rotulo": "28y · loira trigo + argola na orelha",
+     "id": "trigo_lateral",
+     "rotulo": "28y · loira trigo + argola na orelha",
      "cabeca": "wheat-blonde hair swept into a low side wave",
      "marca": "a small gold hoop in one ear and lightly tanned even skin"},
     {"idade": 23, "corpo": "petite and curvy with full shoulders and a defined waist",
+     "id": "cornrows_coque",
+     "rotulo": "23y · cornrows finas + coque baixo",
+     "id": "cornrows_coque",
+     "rotulo": "23y · cornrows finas + coque baixo",
      "cabeca": "fine cornrows finished in a low gathered bun",
      "marca": "a beauty mark at the outer corner of her left eye"},
     {"idade": 30, "corpo": "statuesque and strong with a narrow waist and long arms",
+     "id": "cobre_queimado",
+     "rotulo": "30y · cobre queimado longo + sardas",
+     "id": "cobre_queimado",
+     "rotulo": "30y · cobre queimado longo + sardas",
      "cabeca": "burnt-copper hair falling in heavy waves to the ribs",
      "marca": "wide green eyes and a dense scatter of freckles"},
     {"idade": 27, "corpo": "slim and supple with a very long neck",
+     "id": "azul_preto_franja",
+     "rotulo": "27y · preto azulado franja + mecha prata",
+     "id": "azul_preto_franja",
+     "rotulo": "27y · preto azulado franja + mecha prata",
      "cabeca": "blue-black hair in a blunt chin-length cut with a deep fringe",
      "marca": "a silver streak at her right temple and dark almond eyes"},
 ]
@@ -2138,6 +2284,73 @@ EIXOS_UI = [
 
 CENAS_UI = ["1 · a isca + o vilao", "2 · a prova + CTA"]
 
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# ⛔ Sem esta linha o rotulo seria comentario caro: 36 textos escritos, medidos
+# e travados, e nenhum olho humano os veria. Forma sem funcao e' o defeito que
+# este repo mais paga (licoes-de-construcao §41), e um label que nao aparece na
+# tela e' a versao mais barata dele.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado. Serve para os nichos; com 36 REFs ela estoura a largura da
+# janela. Contrato aditivo do `ui_agente` (2026-08-13), modelo: MEL 16.
+# ⚠️ O campo exibido e' `rotulo`, NAO `cabeca`: o `ui_agente` monta o mapa
+# texto -> `id`, entao o operador escolhe "31y · box braids + argola dourada" e
+# o motor recebe `box_braids`. Um menu de `cabeca` seria um paragrafo em ingles
+# por linha — ilegivel num combobox de 38 colunas.
+# ⚠️ E aqui a IDADE no rotulo carrega informacao de verdade, ao contrario do
+# TRIO: este pool vai de 22 a 31 anos, entao o prefixo separa duas mulheres que
+# o cabelo sozinho nao separaria.
+# ⛔⛔ E FOI ESTA LINHA QUE OBRIGOU O POOL A GANHAR `id`. O `_barra_dropdowns`
+# resolve o texto escolhido para `e.get("id")`; sem `id` o mapa inteiro valia
+# `None`, o `sortear` do `ui_agente` pulava a trava (`if alvo:`) e o menu ficava
+# DESENHADO E MUDO. Ver `_por_ref` la' em cima: o resto do conserto mora la'.
+DROPDOWNS_UI = [("ref", "A QUE FALA", "REFS", "rotulo")]
+
+def _checa_drop(pool, campo):
+    """As quatro travas de FORMA do dropdown, sobre um pool qualquer.
+
+    ⚠️ E' FUNCAO, e no nivel do modulo, por dois motivos. O controle negativo
+    precisa rodar a MESMA lente sobre um pool sabotado — lente que so' existe
+    inline nao pode ser sabotada, e lente que nao pode ser sabotada e' relato,
+    nao medicao (licoes §41). E o `autoteste` precisa chama-la ANTES do lote.
+    """
+    ms = []
+    if [e for e in pool if not e.get(campo)]:
+        ms.append("entrada sem `%s`" % campo)
+    if [e for e in pool if not e.get("id")]:
+        ms.append("entrada sem `id` — o menu devolveria None")
+    r = [e.get(campo) or "" for e in pool]
+    rep = sorted({x for x in r if r.count(x) > 1})
+    if rep:
+        ms.append("rotulo repetido (%r) — a 2a entrada some do menu" % rep[0])
+    lg = [x for x in r if len(x) > 42]
+    if lg:
+        ms.append("rotulo de %d chars (%r) — estoura o combobox"
+                  % (len(lg[0]), lg[0]))
+    return ms
+
+
+def _contrato_dropdown():
+    """O contrato ESTATICO do menu: pool existe, campo existe, eixo e' travavel.
+
+    ⛔ Roda ANTES do lote do autoteste, de proposito e por medicao: uma entrada
+    sem `id` derruba o `sortear` de varios motores desta familia la' dentro, e
+    um traceback no meio do lote ESCONDE a causa real — quem le' ve'
+    `KeyError: 'id'` e vai cacar bug de sorteio, quando o que quebrou foi o
+    contrato do menu. Falha de contrato reporta e PARA.
+    """
+    ms = []
+    for ch, _tela, pn, campo in DROPDOWNS_UI:
+        pool = globals().get(pn)
+        if not isinstance(pool, list) or not pool:
+            ms.append("DROPDOWN: `DROPDOWNS_UI` aponta para o pool %r, que nao "
+                      "e' uma lista deste motor — o menu nasce vazio" % pn)
+            continue
+        if ch not in EIXOS_TRAVAVEIS:
+            ms.append("DROPDOWN: o eixo %r nao esta' em EIXOS_TRAVAVEIS — o "
+                      "operador escolhe no menu e o sortear ignora" % ch)
+        ms += ["DROPDOWN/%s: %s" % (pn, x) for x in _checa_drop(pool, campo)]
+    return ms
+
 
 # ---------------------------------------------------------------------------
 # MAQUINARIA
@@ -2172,6 +2385,28 @@ def _por_id(pool, valor, chave="id"):
     if isinstance(valor, str):
         return next((x for x in pool if x.get(chave) == valor), pool[0])
     return valor
+
+
+def _por_ref(pool, valor):
+    """Resolve a REF travada por `id` (o dropdown) OU por `cabeca` (o antigo).
+
+    ⛔⛔ ESTE HELPER EXISTE PORQUE O DROPDOWN MANDA `id`, E ESTE POOL RESOLVIA
+    POR `cabeca`. O `ui_agente._barra_dropdowns` monta o mapa
+    `rotulo -> e.get("id")`, entao e' o `id` que chega em `travas["ref"]`. Com a
+    resolucao antiga (`_por_id(REFS, ..., "cabeca")`) nenhum id casava e o
+    `next(...)` caia no `pool[0]` — o menu "funcionava", nao dava erro nenhum, e
+    entregava SEMPRE a primeira mulher da lista. E' o botao que mente na sua
+    forma mais cara: silencioso, e so' visivel para quem conferir 8 sorteios.
+    ⚠️ A `cabeca` continua aceita de proposito. Isto e' um SUPERSET da
+    resolucao antiga, nao uma troca: nenhum chamador existente muda de
+    comportamento, e por isso a mudanca nao precisa de re-medicao de lote.
+    ⚠️ E valor que NAO e' string (o cadeado da coluna manda o DICT inteiro)
+    volta intacto, exatamente como o `_por_id` ja' fazia.
+    """
+    if not isinstance(valor, str):
+        return valor
+    return next((x for x in pool
+                 if x.get("id") == valor or x.get("cabeca") == valor), pool[0])
 
 
 def _artigo(s):
@@ -2234,13 +2469,16 @@ def _por_traje(mundo, curto):
 # ⛔ Continua tasteful de proposito: `figure`, `shapely`, `toned`. Termo
 # explicito nao converte melhor e ainda arrisca recusa do gerador, que custa
 # lote (ver RUNBOOK-bisseccao-moderacao).
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 APELO_EUA = [
-    "A strikingly attractive everyday woman, well groomed, with clear even skin, softly styled hair and a noticeably good figure, not a celebrity, not resembling any famous person.",
-    "A very good-looking everyday woman with glowing skin, light natural make-up and a shapely figure, not a celebrity, not resembling any famous person.",
-    "An unusually pretty everyday woman with fine features, healthy glossy hair and a trim shapely body, not a celebrity, not resembling any famous person.",
-    "A head-turning everyday woman, carefully groomed, with bright eyes, full lips and a striking figure, not a celebrity, not resembling any famous person.",
-    "A notably beautiful everyday woman with high cheekbones, smooth clear skin and a curvy figure, not a celebrity, not resembling any famous person.",
-    "A very attractive everyday woman with a toned shapely figure, shining hair and even skin, not a celebrity, not resembling any famous person.",
+    "A strikingly attractive everyday woman, well groomed, with clear even skin, softly styled hair and a noticeably good figure.",
+    "A very good-looking everyday woman with glowing skin, light natural make-up and a shapely figure.",
+    "An unusually pretty everyday woman with fine features, healthy glossy hair and a trim shapely body.",
+    "A head-turning everyday woman, carefully groomed, with bright eyes, full lips and a striking figure.",
+    "A notably beautiful everyday woman with high cheekbones, smooth clear skin and a curvy figure.",
+    "A very attractive everyday woman with a toned shapely figure, shining hair and even skin.",
 ]
 
 # ⛔ HOJE E' CODIGO MORTO: os 16 mundos deste motor sao todos `eua: True`,
@@ -2249,9 +2487,11 @@ APELO_EUA = [
 # face` num agente cuja REF o operador encomendou top model. Codigo morto
 # com a regra errada dentro e' bomba com pino: alguem acrescenta um mundo e
 # o vicio volta calado, sem lint, sem autoteste, sem aviso.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 APELO_PADRAO = (
-    "A strikingly beautiful everyday woman, not a celebrity, not resembling "
-    "any famous person.")
+    "A strikingly beautiful everyday woman.")
 
 
 def _apelo(spec):
@@ -2500,7 +2740,7 @@ def sortear(pagina, rng, led, travas=None):
     traje = (_por_traje(mundo, travas["traje"]) if travas.get("traje")
              else sc.traje_bela(rng) if travas.get("bela")
              else _fresco_traje(mundo["trajes"], usados.get("traje", []), rng))
-    ref = (_por_id(REFS, travas["ref"], "cabeca") if travas.get("ref")
+    ref = (_por_ref(REFS, travas["ref"]) if travas.get("ref")
            else sc.ref_bela(REFS[0], rng) if travas.get("bela")
            else rng.choice(REFS))
     # ⭐ A AMIGA sai do MESMO pool da narradora e NUNCA e' a mesma pessoa: duas
@@ -2878,6 +3118,12 @@ def lint(spec, blocos):
 
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto`, entao a lente entra aqui explicitamente — regra sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente
+    # assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     # ⛔⛔ T16-2 — A KEYWORD NAO PODE TER PALAVRA COLADA NELA.
@@ -3498,6 +3744,17 @@ def autoteste(n=600):
     band = collections.Counter()
     larguras = {1: [], 2: []}
 
+    # ⛔⛔ O CONTRATO DO DROPDOWN VEM ANTES DO LOTE — ver `_contrato_dropdown`.
+    # Ele so' olha dado estatico (o pool e a declaracao), entao nao custa nada;
+    # e se ele estiver quebrado nao adianta medir o lote inteiro, porque o
+    # proprio `sortear` pode cair antes de chegar ao fim.
+    _drop = _contrato_dropdown()
+    if _drop:
+        print("\n>> %d FALHA(S) DE CONTRATO DO DROPDOWN:" % len(_drop))
+        for _d in _drop:
+            print("   %s" % _d)
+        return 1
+
     for seed in range(n):
         spec = sortear("joe", random.Random(seed), {}, {})
         blocos = montar(spec)
@@ -3728,9 +3985,15 @@ def autoteste(n=600):
         ctrl.append("[BO6] NAO acusa a segunda mulher sem a trava de mudez")
     # ⭐ o terceiro corpo — o defeito de verdade, plantado
     b6b = dict(b)
+    # ⛔⛔ A ANCORA E' O `CAUDA`, NAO O `ANTICELEB` — trocada em 2026-08-14.
+    # O plantio usava o ANTICELEB como ponto de insercao, e o ANTICELEB era
+    # justamente a clausula que a remocao anti-celebridade iria esvaziar em
+    # outros motores. ⚠️ `str.replace("", X)` INSERE X entre cada caractere:
+    # simulado antes da troca, um bloco de 91 caracteres virava 5.059 — e o
+    # controle continuava "passando", pelo motivo errado, sobre um texto que
+    # virou lixo. Ancora de controle negativo tem de ser literal ESTAVEL.
     b6b["IMAGE 02/02"] = b6b["IMAGE 02/02"].replace(
-        "%(anti)s" % {"anti": ANTICELEB},
-        "Behind them stands a 60-year-old man, his mouth open. " + ANTICELEB)
+        CAUDA, "Behind them stands a 60-year-old man, his mouth open. " + CAUDA)
     if not any("BO6" in msg for _, msg in lint(s, b6b)):
         ctrl.append("[BO6] NAO acusa um TERCEIRO CORPO na cena 3")
     # ⭐ a ancora da segunda mulher, sem a qual o Veo a troca entre os blocos
@@ -3819,6 +4082,76 @@ def autoteste(n=600):
         print("  cena %d: %d-%d palavras (media %.1f) | piso %d teto %d | %.2f p/s"
               % (i, min(L), max(L), sum(L) / float(len(L)), PISO_FALA[i],
                  TETO_FALA[i], sum(L) / float(len(L)) / 8))
+
+    # ⛔⛔ A TRAVA TEM DE FIXAR — a unica checagem do dropdown que mede FUNCAO.
+    # As de FORMA (rotulo unico, curto, presente, com `id`) rodaram la' no
+    # comeco, em `_contrato_dropdown`. O §41 do licoes-de-construcao existe
+    # exatamente porque forma verificada foi declarada pronta sem funcao
+    # medida — e neste motor a funcao ESTAVA quebrada: o pool nao tinha `id` e o `sortear` resolvia a
+    # trava por `cabeca`, entao o menu nasceria mudo.
+    for _ch, _tela, _pn, _campo in DROPDOWNS_UI:
+        _pool = globals().get(_pn)
+        if not isinstance(_pool, list) or not _pool:
+            continue
+        _alvo = _pool[len(_pool) // 2]["id"]
+        _ids, _naodict, _boom = set(), 0, None
+        for _i in range(8):
+            # ⛔⛔ O `sortear` PODE MORRER com a trava, e ai a lente tem de
+            # FALAR, nao de deixar o traceback subir. Medido no FALTA 16: a
+            # trava crua vira string e o sorteio da amiga estoura em
+            # `ref.get("id")` — o autoteste inteiro caia com AttributeError e
+            # esta checagem nunca chegava a rodar. Traceback diz ONDE
+            # estourou; a lente diz O QUE quebrou.
+            try:
+                _s = sortear("joe", random.Random(9100 + _i), {},
+                             {_ch: _alvo})
+            except Exception as _e:            # noqa: BLE001
+                _boom = "%s: %s" % (type(_e).__name__, _e)
+                break
+            _v = _s[_ch]
+            # ⛔⛔ TEM DE SER O DICT DA ENTRADA — nao basta o id BATER.
+            # Medido em 2026-08-13, e este foi um furo real desta lente: com o
+            # resolver devolvendo a trava CRUA, `spec["ref"]` virava a STRING
+            # do id, que e' IGUAL ao alvo. A lente comparava id com id, dava
+            # FIXOU, e o spec estourava no `montar` com `string indices must
+            # be integers`. Lente que aceita string mede o TEXTO que ela mesma
+            # mandou, nao o eixo que o motor resolveu.
+            if not isinstance(_v, dict):
+                _naodict += 1
+                continue
+            _ids.add(_v.get("id"))
+        if _boom:
+            falhas.append("DROPDOWN: escolher %r em %r DERRUBA o `sortear` "
+                          "(%s) — o menu nao fica so' mudo, ele quebra o app"
+                          % (_alvo, _tela, _boom))
+        elif _naodict:
+            falhas.append("DROPDOWN: o eixo %r voltou como %s em %d de 8 "
+                          "sorteios, e nao como a entrada do pool — o `montar` "
+                          "estoura no primeiro indice"
+                          % (_ch, type(_v).__name__, _naodict))
+        elif _ids != {_alvo}:
+            falhas.append("DROPDOWN: escolher %r em %r nao fixou o eixo — 8 "
+                          "sorteios devolveram %r"
+                          % (_alvo, _tela, sorted(_ids)))
+        # ⛔ CONTROLE NEGATIVO: um pool SINTETICO sabotado nas quatro formas.
+        # ⚠️ SINTETICO, e nao uma copia do pool real, por licao paga na hora de
+        # escrever isto: a primeira versao fazia `_sab[0][_campo]` sobre copias
+        # das entradas de verdade e ESTOUROU com `KeyError` quando o campo
+        # declarado no `DROPDOWNS_UI` nao existia — justamente o defeito que
+        # esta lente deveria REPORTAR. Controle negativo que derruba o autoteste
+        # em vez de acusar e' pior que controle nenhum: some a falha real no
+        # traceback. O pool de mentira nao depende de nada e sempre exercita as
+        # quatro pernas.
+        _sab = [{"id": "sab%d" % _k, _campo: "rotulo sabotado %d" % _k}
+                for _k in range(6)]
+        _sab[1][_campo] = _sab[0][_campo]
+        _sab[2][_campo] = "x" * 43
+        _sab[3].pop(_campo, None)
+        _sab[4].pop("id", None)
+        if len(_checa_drop(_sab, _campo)) != 4:
+            ctrl.append("[DROP] a lente do dropdown nao acusa as quatro "
+                        "sabotagens (repetido/longo/vazio/sem id) — ela mede a "
+                        "sorte do pool, nao o contrato")
 
     if ctrl:
         # ⛔ ASCII de proposito: o console do Windows e' cp1252.

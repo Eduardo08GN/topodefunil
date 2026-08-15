@@ -782,50 +782,123 @@ TIGELAS = [
 # ⛔ E ZERO PALAVRA DE APROVACAO (`handsome`, `strong jaw`): elogio no prompt
 # puxa o rosto para a media do banco de imagem, o mesmo mecanismo pelo qual
 # `not a celebrity` invoca a celebridade.
-# ⚠️ Os oculos entram em 6 das 21: a fonte usa, e um pool sem eles perde o
-# marcador etario mais barato que existe.
+# ⚠️ Os oculos entram em 14 das 44 (31,8%): a fonte usa, e um pool sem eles
+# perde o marcador etario mais barato que existe. Abaixo de 30% o
+# `medir_personagens.py` marca o eixo como MAGRO — eixo que existe e quase
+# nunca e' sorteado e' pool grande de um personagem so'.
+#
+# ⭐⭐ 2026-08-13 — O POOL DOBROU (22 -> 44) E CADA ENTRADA GANHOU `rotulo`.
+# Ordem do operador: *"expanda consideravelmente o pool de opcoes de
+# personagens e ref"* + *"de uma label conveniente que auto contextualize mais
+# ou menos os atributos fisicos daquele ref, mesmo que sucinta"*.
+# ⛔ O `rotulo` NAO E' COMENTARIO: ele e' o texto que o dropdown `QUEM FALA`
+# desenha (ver `DROPDOWNS_UI` la' embaixo). Com 44 REFs, um menu de `id`s
+# (`creole_risca`, `lagos_escovinha`) obriga o operador a abrir o codigo para
+# saber o que escolheu — e seletor que so' o autor entende e' seletor que nao
+# se usa. O formato e' `<idade>y · <cabelo> + <pelo facial> [+ oculos]`.
+# ⛔⛔ E ELE TEM DE SER UNICO. O `ui_agente._barra_dropdowns` monta o mapa
+# rotulo -> id com `if txt not in mapa`: DOIS ROTULOS IGUAIS FAZEM O SEGUNDO
+# HOMEM SUMIR DO MENU, em silencio. E' a mesma familia do botao que mente, so'
+# que por colisao de texto. O `--autoteste` cobra unicidade, tamanho (<= 42
+# chars, largura do combobox) e presenca em toda entrada.
+# ⚠️ O rotulo e' PORTUGUES e NUNCA chega ao prompt — o que vai para o Veo sao
+# `cabeca`, `marca` e `idade`, exatamente como antes. Ele mora no dict junto
+# com eles porque o painel le' a entrada inteira, nao um dicionario paralelo
+# que a proxima entrada nova esqueceria de atualizar.
+# ⚠️ E toda familia continua com PELO MENOS DUAS opcoes — hoje o piso e' CINCO
+# (florida, gullah, delta, noroeste, italo_americana), o teto e' NOVE
+# (americana). O autoteste cobra familia por familia.
 HOMENS = [
     # --- APALACHES / NOROESTE: o homem de montanha, barba de verdade -------
     {"id": "montanhes_barba", "idade": 67, "familias": ["apalache", "noroeste"],
+     "rotulo": "67y · grisalho curto + barba cheia",
      "cabeca": "grey hair cut short under the ears and a full grey beard "
                "grown out",
      "marca": "heavy level brows and deep laugh lines"},
     {"id": "apalache_careca", "idade": 63, "familias": ["apalache", "noroeste"],
+     "rotulo": "63y · careca + barba sal-e-pimenta",
      "cabeca": "a bald crown with the sides clipped close and a thick "
                "salt-and-pepper beard",
      "marca": "a shallow cleft in his chin"},
     {"id": "noroeste_longo", "idade": 61, "familias": ["noroeste", "apalache"],
+     "rotulo": "61y · grisalho longo + oculos na testa",
      "cabeca": "grey hair worn a little long over the ears and a short "
                "trimmed beard",
      "marca": "rimless glasses pushed up on his head"},
+    {"id": "apalache_ruivo", "idade": 64, "familias": ["apalache", "noroeste"],
+     "rotulo": "64y · ruivo grisalho + barba cheia",
+     "cabeca": "faded red hair going grey, cut short, and a full grey-red "
+               "beard",
+     "marca": "freckles across his nose and a dimple in one cheek"},
+    {"id": "noroeste_rabo", "idade": 66, "familias": ["noroeste", "apalache"],
+     "rotulo": "66y · rabo de cavalo prata + barba",
+     "cabeca": "steel-grey hair pulled back into a short ponytail at the nape "
+               "and a close-trimmed beard",
+     "marca": "a silver streak through his beard, smooth-skinned"},
+    {"id": "apalache_bigodudo", "idade": 70,
+     "familias": ["apalache", "meio_oeste"],
+     "rotulo": "70y · branco farto + bigode pesado",
+     "cabeca": "thick white hair parted low and a heavy white moustache with "
+               "no beard",
+     "marca": "a dimple in one cheek and deep laugh lines"},
 
     # --- SUL PROFUNDO / DELTA: o cavalheiro de bigode ----------------------
     {"id": "sulista_bigode", "idade": 65, "familias": ["sulista", "delta"],
+     "rotulo": "65y · prata penteado + bigode branco",
      "cabeca": "silver hair combed back and a thick white moustache",
      "marca": "a beauty mark high on one cheekbone"},
     {"id": "delta_careca", "idade": 69, "familias": ["delta", "sulista"],
+     "rotulo": "69y · careca + bigode branco + oculos",
      "cabeca": "a cleanly shaved head and a neat white moustache",
      "marca": "gold half-moon glasses and a dimple beside his mouth"},
     {"id": "sulista_branco", "idade": 62, "familias": ["sulista", "gullah"],
+     "rotulo": "62y · branco curto + barba aparada",
      "cabeca": "short white hair in a clean taper and a close white beard",
      "marca": "a silver streak running through one eyebrow"},
+    {"id": "sulista_locs", "idade": 63, "familias": ["sulista", "atlanta"],
+     "rotulo": "63y · locs grisalhos + barba rente",
+     "cabeca": "short grey locs kept close to the head and a close-trimmed "
+               "grey beard",
+     "marca": "a small mole beside one eyebrow"},
+    {"id": "sulista_costeleta", "idade": 69, "familias": ["sulista", "delta"],
+     "rotulo": "69y · branco curto + costeletas largas",
+     "cabeca": "white hair cut short with wide white sideburns down the jaw, "
+               "no beard",
+     "marca": "deep laugh lines and a mole on one cheek"},
+    {"id": "delta_bigode_fino", "idade": 67, "familias": ["delta", "gullah"],
+     "rotulo": "67y · careca + bigode fino + oculos",
+     "cabeca": "a bald crown with grey at the sides and a thin grey moustache",
+     "marca": "square black-framed glasses"},
 
     # --- TEXAS: o bigode largo, o cabelo curto -----------------------------
     {"id": "texano_bigode", "idade": 64, "familias": ["texas", "americana"],
+     "rotulo": "64y · grisalho raspado + bigode largo",
      "cabeca": "close-cropped grey hair and a wide grey moustache that covers "
                "his top lip",
      "marca": "deep laugh lines and heavy brows"},
     {"id": "texano_prata", "idade": 66, "familias": ["texas", "americana"],
+     "rotulo": "66y · prata farto + barbeado + fenda",
      "cabeca": "thick silver hair cut short at the sides, clean-shaven",
      "marca": "a deep cleft in his chin"},
+    {"id": "texano_barbudo", "idade": 70, "familias": ["texas", "americana"],
+     "rotulo": "70y · grisalho + barba longa quadrada",
+     "cabeca": "grey hair flattened where a hat sits and a long grey beard "
+               "squared off at the bottom",
+     "marca": "a deep cleft chin and heavy level brows"},
+    {"id": "texano_cavanhaque", "idade": 62, "familias": ["texas", "florida"],
+     "rotulo": "62y · fade prata + cavanhaque + oculos",
+     "cabeca": "short silver hair in a high fade and a trimmed silver goatee",
+     "marca": "tortoiseshell glasses and a beauty mark on one temple"},
 
     # --- MEIO-OESTE / GRANDES LAGOS: o pai de familia, sem firula ----------
     {"id": "meio_oeste_oculos", "idade": 61,
      "familias": ["meio_oeste", "grandes_lagos", "americana"],
+     "rotulo": "61y · grisalho curto + oculos finos",
      "cabeca": "short grey hair in a clean taper, clean-shaven",
      "marca": "thin wire-rimmed glasses and a dimple in one cheek"},
     {"id": "lagos_escovinha", "idade": 63,
      "familias": ["grandes_lagos", "meio_oeste"],
+     "rotulo": "63y · escovinha prata + barbeado",
      "cabeca": "a silver brush cut kept very short, clean-shaven",
      "marca": "a straight narrow nose and laugh lines at the eyes"},
     # ⚠️ 2026-08-13: `white hair THINNING at the crown` saiu (*"melhore a
@@ -834,49 +907,117 @@ HOMENS = [
     # ser branco e curto.
     {"id": "meio_oeste_barba", "idade": 68,
      "familias": ["meio_oeste", "grandes_lagos"],
+     "rotulo": "68y · branco curto + barba + oculos",
      "cabeca": "a full head of white hair cut short and a short white beard",
      "marca": "heavy dark-rimmed glasses"},
+    {"id": "meio_oeste_ruivo", "idade": 62,
+     "familias": ["meio_oeste", "grandes_lagos"],
+     "rotulo": "62y · louro grisalho + sardas",
+     "cabeca": "sandy hair gone mostly grey, cut short above the ears, "
+               "clean-shaven",
+     "marca": "freckles high on both cheeks and a dimple in one cheek"},
+    {"id": "lagos_barba_branca", "idade": 71,
+     "familias": ["grandes_lagos", "meio_oeste"],
+     "rotulo": "71y · branco + barba quadrada + oculos",
+     "cabeca": "white hair cut short and a full white beard trimmed square",
+     "marca": "round wire-frame glasses and laugh lines at the eyes"},
+    {"id": "lagos_careca_barba", "idade": 68,
+     "familias": ["grandes_lagos", "nova_inglaterra"],
+     "rotulo": "68y · careca + barba de contorno",
+     "cabeca": "a cleanly shaved head and a short white chin-strap beard",
+     "marca": "a silver streak in one eyebrow"},
 
     # --- NOVA INGLATERRA / ITALO-AMERICANA: o cabelo farto penteado --------
     {"id": "yankee_branco", "idade": 70,
      "familias": ["nova_inglaterra", "italo_americana"],
+     "rotulo": "70y · branco farto + oculos meia-lua",
      "cabeca": "thick white hair cut neatly above the collar, clean-shaven",
      "marca": "gold half-moon glasses and a shallow cleft chin"},
     {"id": "italo_prata", "idade": 65,
      "familias": ["italo_americana", "nova_inglaterra"],
+     "rotulo": "65y · prata para tras + sobrancelha forte",
      "cabeca": "thick silver hair swept straight back, clean-shaven",
      "marca": "heavy dark level brows and a beauty mark near his jaw"},
     {"id": "yankee_cavanhaque", "idade": 62,
      "familias": ["nova_inglaterra", "italo_americana", "grandes_lagos"],
+     "rotulo": "62y · grisalho com risca + cavanhaque",
      "cabeca": "short grey hair with a sharp side part and a trimmed grey "
                "goatee",
      "marca": "a dimple that shows on one side"},
+    {"id": "yankee_costeleta", "idade": 64,
+     "familias": ["nova_inglaterra", "grandes_lagos"],
+     "rotulo": "64y · grisalho + bigode + oculos baixos",
+     "cabeca": "grey hair cut above the ears with short sideburns and a "
+               "trimmed grey moustache",
+     "marca": "half-rim reading glasses low on his nose"},
+    {"id": "italo_barba", "idade": 67,
+     "familias": ["italo_americana", "nova_inglaterra"],
+     "rotulo": "67y · tempora prateada + barba curta",
+     "cabeca": "thick dark hair gone silver at the temples and a short "
+               "dark-and-grey beard",
+     "marca": "a beauty mark beside his mouth"},
+    {"id": "italo_careca", "idade": 72,
+     "familias": ["italo_americana", "americana"],
+     "rotulo": "72y · careca lateral farta + oculos",
+     "cabeca": "a bald crown with heavy grey hair at the sides, clean-shaven",
+     "marca": "heavy horn-rimmed glasses and laugh lines at the eyes"},
 
     # --- HARLEM / ATLANTA / CREOLE / GULLAH -------------------------------
     {"id": "harlem_careca", "idade": 63, "familias": ["harlem", "atlanta"],
+     "rotulo": "63y · careca + cavanhaque + argola",
      "cabeca": "a cleanly shaved head and a short white goatee",
      "marca": "a plain gold hoop in one ear"},
     {"id": "atlanta_fade", "idade": 64,
      "familias": ["atlanta", "harlem", "creole"],
+     "rotulo": "64y · fade grisalho + barba rente",
      "cabeca": "a short grey fade with a clean line at the temples and a "
                "close-trimmed grey beard",
      "marca": "a dimple in one cheek"},
     {"id": "gullah_barba", "idade": 69, "familias": ["gullah", "delta"],
+     "rotulo": "69y · branco natural + barba cheia",
      "cabeca": "short white natural hair and a full white beard kept neatly "
                "shaped",
      "marca": "deep laugh lines at the corners of his mouth"},
     {"id": "creole_risca", "idade": 64,
      "familias": ["creole", "gullah", "harlem"],
+     "rotulo": "64y · sal-e-pimenta + bigode fino + oculos",
      "cabeca": "salt-and-pepper hair with a clean side part and a thin "
                "moustache",
      "marca": "thin wire-rimmed glasses and a straight narrow nose"},
     {"id": "harlem_prata", "idade": 66, "familias": ["harlem", "creole"],
+     "rotulo": "66y · prata rente + bigode prateado",
      "cabeca": "short silver hair kept close to the crown and a trimmed "
                "silver moustache",
      "marca": "a beauty mark high on one cheekbone"},
+    {"id": "gullah_cavanhaque", "idade": 61, "familias": ["gullah", "creole"],
+     "rotulo": "61y · rente + cavanhaque comprido",
+     "cabeca": "close-shaved grey hair and a full grey goatee grown down past "
+               "the chin",
+     "marca": "a gold stud in one ear, smooth-skinned"},
+    {"id": "creole_afro", "idade": 65, "familias": ["creole", "harlem"],
+     "rotulo": "65y · afro grisalho + barba curta",
+     "cabeca": "a short grey afro brushed out and a close grey beard",
+     "marca": "a shallow cleft in his chin and fine laugh lines"},
+    {"id": "harlem_bigode_grosso", "idade": 62,
+     "familias": ["harlem", "atlanta"],
+     "rotulo": "62y · fade grisalho + bigode grosso",
+     "cabeca": "short grey hair faded at the sides and a thick grey moustache",
+     "marca": "a small gold hoop in one ear"},
+    {"id": "atlanta_branco_barba", "idade": 68,
+     "familias": ["atlanta", "harlem"],
+     "rotulo": "68y · branco rente + barba + oculos",
+     "cabeca": "white hair cropped very close and a full white beard shaped "
+               "clean at the line",
+     "marca": "thin steel-framed glasses, smooth-skinned"},
+    {"id": "atlanta_careca_limpo", "idade": 65,
+     "familias": ["atlanta", "creole"],
+     "rotulo": "65y · careca + barbeado + covinhas",
+     "cabeca": "a cleanly shaved head, clean-shaven",
+     "marca": "a dimple in each cheek and deep laugh lines"},
 
     # --- FLORIDA: o aposentado, e e' o retrato da fonte --------------------
     {"id": "florida_morsa", "idade": 68, "familias": ["florida", "americana"],
+     "rotulo": "68y · careca + bigode de morsa + oculos",
      "cabeca": "a bald crown with the sides clipped short and a full white "
                "walrus moustache",
      "marca": "thin wire-rimmed glasses and deep laugh lines"},
@@ -884,13 +1025,32 @@ HOMENS = [
     # REF que o operador reprovou vendo o render no ALFA 16 (*"retire esse ref
     # feio"*): cabelo penteado para a frente le' como quem esconde entrada.
     {"id": "florida_branco", "idade": 66, "familias": ["florida", "sulista"],
+     "rotulo": "66y · branco com risca + barbeado",
      "cabeca": "short white hair in a neat side part, clean-shaven",
      "marca": "a small pale birthmark near one temple"},
+    {"id": "florida_prata_longo", "idade": 63,
+     "familias": ["florida", "americana"],
+     "rotulo": "63y · prata ondulado + barba + oculos",
+     "cabeca": "silver hair worn long enough to curl at the collar and a "
+               "short silver beard",
+     "marca": "aviator-shaped clear glasses and a beauty mark high on one "
+              "cheekbone"},
+    {"id": "florida_cavanhaque", "idade": 71, "familias": ["florida", "texas"],
+     "rotulo": "71y · careca + cavanhaque branco",
+     "cabeca": "a bald crown with white at the sides and a white goatee kept "
+               "short",
+     "marca": "freckles on his forehead and a shallow cleft in his chin"},
 
     # --- SUBURBIO AMERICANO -----------------------------------------------
     {"id": "suburbano_taper", "idade": 62, "familias": ["americana", "texas"],
+     "rotulo": "62y · grisalho classico + covinha",
      "cabeca": "grey hair in a clean classic taper, clean-shaven",
      "marca": "a dimple beside his mouth"},
+    {"id": "suburbano_grisalho", "idade": 66,
+     "familias": ["americana", "meio_oeste"],
+     "rotulo": "66y · grisalho ao lado + barbeado",
+     "cabeca": "grey hair worn thick and combed to one side, clean-shaven",
+     "marca": "a small birthmark below one ear, smooth-skinned"},
 ]
 
 FAMILIAS_HOMEM = sorted({f for h in HOMENS for f in h["familias"]})
@@ -937,6 +1097,21 @@ CORPOS_H = [
     "a broad ordinary build with rounded shoulders",
     "a thickset frame with short arms and a soft middle",
     "an everyday build with straight shoulders and plain arms",
+    # + 2026-08-13 (tarde) — mais seis, pela ordem de expandir o pool. ⚠️ Com o
+    # MODO FORTE nascendo LIGADO, este e' o pool do estado que o operador VE'
+    # MENOS — e por isso e' o que apodrece primeiro se ninguem o alimentar
+    # (licao §41: quando um botao nao entrega, meca o estado DESLIGADO tambem).
+    "a soft ordinary build with a rounded middle and plain upper arms",
+    "a narrow frame with light shoulders and thin unremarkable arms",
+    "a squarish everyday build with a flat chest and plain forearms",
+    "a heavy-set frame with a full waist and soft round shoulders",
+    "a tall plain build with a straight back and ordinary thin arms",
+    # ⚠️ Esta entrada nasceu como `forearms WITHOUT definition` e foi reescrita
+    # antes do commit: negacao INJETA o token, e' a licao do `not laughing` do
+    # ALFA 16 e do `not a celebrity` do parque inteiro. Pedir ausencia de
+    # musculo nomeando musculo e' a forma mais barata de acender o eixo que o
+    # estado DESLIGADO existe para apagar.
+    "an ordinary middling frame with even shoulders and smooth forearms",
 ]
 
 # ⛔ SUPER MUSCULOSO E VELHO AO MESMO TEMPO — as duas coisas na mesma frase,
@@ -960,6 +1135,17 @@ CORPOS_FORTES = [
     "a broad muscular frame with cut shoulders and forearms full of veins",
     "a hard muscular chest with wide lats and thick banded arms",
     "heavy muscle across the shoulders with thick arms and a flat hard middle",
+    # + 2026-08-13 (tarde) — mais seis, pela mesma ordem. ⛔ E NENHUMA repete
+    # uma frase do `CORPOS_H`: o autoteste cobra intersecao VAZIA entre os dois
+    # conjuntos, porque e' a distancia entre eles que faz o MODO FORTE
+    # significar alguma coisa. Entrada ambigua aqui apaga o botao sem nada
+    # reprovar.
+    "heavy corded muscle in the arms with a thick chest and wide shoulders",
+    "a powerfully muscled blocky frame with dense arms and square shoulders",
+    "thick muscular arms with standing veins and a deep hard chest",
+    "a heavy muscular build with broad shoulders and forearms like cable",
+    "big rounded deltoids with thick arms and a solid muscular chest",
+    "a hard packed frame with heavy pectorals and thick veined biceps",
 ]
 
 # ⭐⭐ A REGATA — E ELA E' UMA DECISAO DE ENGENHARIA, NAO DE FIGURINO.
@@ -1106,6 +1292,85 @@ MULHERES = [
      "cabeca": "salt-and-pepper hair cut to a soft shoulder length",
      "marca": "square glasses in a pale tortoiseshell frame and a dimple "
               "beside her mouth"},
+
+    # -----------------------------------------------------------------------
+    # + 2026-08-13 (tarde) — AS QUATORZE QUE LEVAM A ESPOSA DE 22 A 36
+    # -----------------------------------------------------------------------
+    # ⛔ Mesma ordem do operador que dobrou o pool masculino: *"expanda
+    # consideravelmente o pool de opcoes de personagens e ref"*. E o motivo aqui
+    # e' aritmetico: o `_fresco` guarda memoria de 4 no ledger, entao com 22
+    # entradas um lote de 20 videos ainda traz a mesma esposa uma vez a cada
+    # cinco — e ela e' metade do quadro 2, que e' o quadro do CTA.
+    # ⛔ CONTRATO IDENTICO ao das 22 acima, campo por campo: faixa de ESPOSA
+    # REAL de um senhor (46-58), ZERO cor de pele (a etnia declarada e' a unica
+    # autoridade, licao FT14 do FIGHT 16) e ancora SAUDAVEL — nada de cicatriz,
+    # dente falhado, pele castigada.
+    # ⚠️ OCULOS EM 12 DAS 36 (33%): eram 6 em 22 (27%), que o medidor marcava
+    # como MAGRO. Aqui eles nao brigam com regra nenhuma — a LEI DO REF vale
+    # para a REF que vende, e esta e' a esposa de 54 anos do narrador.
+    # ⭐ AS QUATRO ETNIAS GIRAM: 12 brancas, 12 negras, 6 latinas, 6 asiaticas.
+    # Ela e' o eixo SOLTO deste angulo (quem a pagina governa e' o HOMEM, que e'
+    # quem fala), entao aqui a variacao e' de graca.
+    {"id": "ruiva_longa", "etnia": "white American", "idade": 50,
+     "porte": "of trim build",
+     "cabeca": "auburn hair worn long and loose past the shoulders",
+     "marca": "freckles across her cheekbones and a small mole on her jaw"},
+    {"id": "platinada_pixie", "etnia": "white American", "idade": 57,
+     "porte": "tall and lean",
+     "cabeca": "platinum-grey hair in a cropped pixie cut",
+     "marca": "rimless glasses, a beauty mark below one eye and fine laugh "
+              "lines"},
+    {"id": "loira_rabo", "etnia": "white American", "idade": 46,
+     "porte": "of medium build with square shoulders",
+     "cabeca": "honey-blonde hair pulled into a low ponytail",
+     "marca": "a shallow cleft in her chin"},
+    {"id": "grisalha_cacheada", "etnia": "white American", "idade": 55,
+     "porte": "of solid build",
+     "cabeca": "grey hair worn in loose natural curls to the jaw",
+     "marca": "half-moon reading glasses and a dimple in one cheek"},
+    {"id": "bantu_gris", "etnia": "Black American", "idade": 52,
+     "porte": "of medium build and upright",
+     "cabeca": "hair in flat twists pinned close with grey at the crown",
+     "marca": "small gold hoops in both ears, smooth-skinned"},
+    {"id": "trancado_longo", "etnia": "Black American", "idade": 47,
+     "porte": "tall and long-limbed",
+     "cabeca": "long box braids gathered over one shoulder",
+     "marca": "a beauty mark above her lip"},
+    {"id": "crop_prata", "etnia": "Black American", "idade": 58,
+     "porte": "of full build",
+     "cabeca": "hair cut down to a close silver crop",
+     "marca": "wire-rimmed glasses, a mole on one cheek and deep laugh lines"},
+    {"id": "afro_prata", "etnia": "Black American", "idade": 54,
+     "porte": "small and finely built",
+     "cabeca": "a full silver afro brushed out round",
+     "marca": "a small mole on one temple"},
+    {"id": "latina_trancas", "etnia": "Latina American", "idade": 51,
+     "porte": "of medium build",
+     "cabeca": "dark hair in a long braid with silver running through it",
+     "marca": "a dimple beside her mouth and freckles on her nose"},
+    {"id": "latina_bob", "etnia": "Latina American", "idade": 57,
+     "porte": "of full build with a long neck",
+     "cabeca": "chestnut hair cut into a chin-length bob with grey at the "
+               "temples",
+     "marca": "tortoiseshell glasses and a beauty mark on one cheek"},
+    {"id": "latina_colo", "etnia": "Latina American", "idade": 46,
+     "porte": "slim and narrow-shouldered",
+     "cabeca": "dark wavy hair worn to the collarbone",
+     "marca": "smooth-skinned, with a small mole beside one eye"},
+    {"id": "asiatica_franja", "etnia": "Asian American", "idade": 49,
+     "porte": "of trim build",
+     "cabeca": "straight black hair with a blunt fringe and grey coming in at "
+               "the part",
+     "marca": "a beauty mark at one temple"},
+    {"id": "asiatica_curto_gris", "etnia": "Asian American", "idade": 58,
+     "porte": "small and lightly built",
+     "cabeca": "steel-grey hair cut short and layered",
+     "marca": "thin gold-rimmed glasses, fine laugh lines and a dimple in one "
+              "cheek"},
+    {"id": "asiatica_no_baixo", "etnia": "Asian American", "idade": 53,
+     "porte": "tall and straight-backed",
+     "cabeca": "black hair going silver, pulled into a low knot",
+     "marca": "square dark-rimmed glasses and a dimple in one cheek"},
 ]
 
 
@@ -1547,8 +1812,11 @@ CAUDA = ("Shot on iPhone, natural grain. No on-screen text, no subtitles, no "
 # ⭐ Com o MODO FORTE ligado ela vira `sc.ANTICELEB_FORTE`: dizer "powerfully
 # built" no corpo e "plain unremarkable face" no rosto na mesma frase e' a
 # contradicao que o CLEAN ja' pagou.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 ANTICELEB = ("An ordinary everyday relatable person with a plain unremarkable "
-             "face, not a celebrity, not a model, not an actor.")
+             "face.")
 
 
 def _traje_dela(spec):
@@ -2022,6 +2290,13 @@ def lint(spec, blocos):
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_take_vs_image(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor tem `lint()` PROPRIO e
+    # nao passa pelo `sc.lint_curto`, entao a lente entra aqui
+    # explicitamente — regra sem guarda volta no proximo agente nascido
+    # por copia, e foi exatamente assim que a clausula chegou aos 30
+    # motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_me1_prato_e_copo, _me2_ela_so_no_take2, _me3_continuidade,
               _me4_cor_unica, _me5_orcamento, _me6_etnia, _me7_sem_gole,
@@ -2047,6 +2322,23 @@ EIXOS_UI = [
 EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "cor", "acao", "tigela"]
 
 TRAVAS_UI = [("familia_mundo", "regiao", ["livre"] + FAMILIAS_MUNDO)]
+
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# ⛔ Sem esta linha o rotulo seria comentario caro: 44 textos escritos, medidos
+# e travados, e nenhum olho humano os veria. Forma sem funcao e' o defeito que
+# este repo mais paga (licoes-de-construcao §41), e um label que nao aparece na
+# tela e' a versao mais barata dele.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado. Serve para as 15 regioes; com 44 REFs ela estoura a
+# largura da janela. Contrato aditivo do `ui_agente` (2026-08-13).
+# ⚠️ O campo exibido e' `rotulo`, NAO `id`: o `ui_agente` monta o mapa
+# texto -> id, entao o operador escolhe "68y · careca + bigode de morsa +
+# oculos" e o motor recebe `florida_morsa`. Um menu de ids obrigaria a abrir o
+# codigo para saber o que se escolheu.
+# ⚠️ E o `EIXOS_UI` acima continua com `id` de proposito: la' o `_texto_eixo`
+# ja' prefixa a idade (`"%dy · %s"`), e trocar para `rotulo` imprimiria
+# "67y · 67y · grisalho...". Dois lugares, dois campos, um motivo cada.
+DROPDOWNS_UI = [("homem", "QUEM FALA", "HOMENS", "rotulo")]
 
 # ⚠️ `mundo` entra na lista de ignorados do `lint_painel_honesto` porque o valor
 # do eixo e' um id interno; os outros chegam ao quadro pelo `img`/`cabeca`/
@@ -2193,6 +2485,48 @@ def autoteste(n=400):
             falhas.append("HOMENS: a familia %r tem %d arquetipo(s) — o botao "
                           "`trocar` de QUEM FALA nao muda nada la'"
                           % (_m["familia"], len(_op)))
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — as tres coisas que o dropdown exige.
+    # ⚠️ A UNICIDADE nao e' capricho: o `ui_agente._barra_dropdowns` monta o
+    # mapa com `if txt and txt not in mapa`, entao dois rotulos iguais fazem o
+    # SEGUNDO homem desaparecer do menu — em silencio, sem erro, sem log. Pool
+    # de 44 que o operador so' consegue alcancar em 43 e' a mesma familia do
+    # botao que mente, so' que por colisao de texto.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` + folga): rotulo
+    # maior fica cortado na tela, e rotulo cortado volta a ser ilegivel, que e'
+    # exatamente o problema que ele veio resolver.
+    _sem = [h["id"] for h in HOMENS if not h.get("rotulo")]
+    if _sem:
+        falhas.append("ROTULO: %d entrada(s) de HOMENS sem rotulo — o dropdown "
+                      "cai no `id` e o operador le' %r" % (len(_sem), _sem[0]))
+    _rot = [h.get("rotulo") or "" for h in HOMENS]
+    _rep = sorted({r for r in _rot if _rot.count(r) > 1})
+    if _rep:
+        falhas.append("ROTULO: %d rotulo(s) repetido(s) (%r) — o segundo homem "
+                      "some do dropdown sem erro nenhum" % (len(_rep), _rep[0]))
+    _longos = [r for r in _rot if len(r) > 42]
+    if _longos:
+        falhas.append("ROTULO: %d rotulo(s) acima de 42 chars (%r, %d) — "
+                      "estoura a largura do menu"
+                      % (len(_longos), _longos[0], len(_longos[0])))
+    # ⛔ E O ROTULO NUNCA CHEGA AO PROMPT. Ele e' portugues; um vazamento poria
+    # "67y · grisalho curto" dentro de um bloco IMAGE em ingles, e o Veo
+    # desenharia o texto. A lente e' de AUSENCIA, e por isso ela olha os blocos
+    # montados, nao a intencao de quem escreveu o `montar`.
+    # ⚠️ E ela varre 40 SORTEIOS, nao um. A primeira versao olhava um bloco so',
+    # e por isso deixou passar o controle negativo: o rotulo plantado era o de
+    # um homem que aquele unico sorteio nao trouxe. Lente de vazamento tem de
+    # ver o pool inteiro passar pelo quadro, senao ela mede a sorte da seed.
+    for _i in range(40):
+        _sr = sortear(pags[_i % len(pags)], random.Random(3000 + _i), {},
+                      {"homem": HOMENS[_i % len(HOMENS)]["id"]})
+        _bj = " ".join(montar(_sr).values())
+        _vaza = [r for r in _rot if r and r in _bj]
+        if _vaza:
+            falhas.append("ROTULO: o texto de painel %r vazou para um bloco do "
+                          "prompt — ele e' portugues e o Veo desenha texto"
+                          % _vaza[0])
+            break
     # ⛔⛔ E O ARQUETIPO REGIONAL TEM DE SOBREVIVER AO MODO FORTE. O toggle
     # NASCE LIGADO: se ele trocasse a pessoa inteira, o pool que o operador
     # pediu em 2026-08-12 seria invisivel no estado padrao do app.

@@ -671,30 +671,35 @@ NARRADORAS = [
     # ⛔ LEI DO REF (2026-08-03): linda, jovem, sex appeal alto.
     # A ancora facial (P6) continua obrigatoria, mas vem do lado bonito.
     {"id": "ruiva_sardas", "idade": 30,
+     "rotulo": "30y · ruiva longa + olhos verdes",
      "cabelo": "long copper-red hair falling loose past her shoulders",
      "oculos": "",
      "porte": "slim with a narrow waist",
      "rosto": "a light dusting of freckles across her nose and green eyes",
      "roupa": "a cropped dark-green ribbed tank top and black leggings"},
     {"id": "loira_ondas", "idade": 29,
+     "rotulo": "29y · loira em ondas + pinta no labio",
      "cabelo": "long honey-blonde waves pushed back off her face",
      "oculos": "",
      "porte": "tall and long-legged",
      "rosto": "a small dark beauty mark just above her lip",
      "roupa": "a cropped white ribbed tank top and high-waisted black leggings"},
     {"id": "afro_solto", "idade": 29,
+     "rotulo": "29y · afro solto + malar alto",
      "cabelo": "a full soft afro worn wide and loose",
      "oculos": "",
      "porte": "slim and lightly toned through the arms",
      "rosto": "high cheekbones and a small mole on her right cheekbone",
      "roupa": "a cropped mustard knit top and a thin gold chain"},
     {"id": "morena_rabo", "idade": 31,
+     "rotulo": "31y · morena rabo alto + covinha",
      "cabelo": "glossy dark-brown hair in a high sleek ponytail",
      "oculos": "",
      "porte": "slim through the waist with full hips",
      "rosto": "large dark eyes and a shallow dimple in her left cheek",
      "roupa": "a fitted black scoop-neck top and dark jeans"},
     {"id": "tranca_longa", "idade": 28,
+     "rotulo": "28y · box braids longas + boca cheia",
      "cabelo": "waist-length box braids gathered over one shoulder",
      "oculos": "",
      "porte": "tall and slim-hipped",
@@ -707,66 +712,77 @@ NARRADORAS = [
     # (pinta no fim da sobrancelha), o eixo `ancora` do medidor segue
     # preenchido, e nada de deterioracao entra no prompt.
     {"id": "platinada_bob", "idade": 28,
+     "rotulo": "28y · bob platinado + olhos cinza",
      "cabelo": "a bleached-platinum bob cut sharp at the jaw",
      "oculos": "",
      "porte": "petite and fine-boned",
      "rosto": "pale grey eyes and a small dark mole at the end of her right eyebrow",
      "roupa": "a cropped light-grey tank top and black leggings"},
     {"id": "castanha_franja", "idade": 28,
+     "rotulo": "28y · castanha franja cortina + pinta",
      "cabelo": "long chestnut hair with a soft curtain fringe",
      "oculos": "",
      "porte": "slim and softly built",
      "rosto": "a heart-shaped face and a small dark mole under her left eye",
      "roupa": "a fitted cream ribbed top and pale denim shorts"},
     {"id": "cachos_ruivos", "idade": 30,
+     "rotulo": "30y · cachos acaju + covinha esquerda",
      "cabelo": "loose auburn curls worn long and wide",
      "oculos": "",
      "porte": "slender with strong shoulders",
      "rosto": "freckled cheeks and one dimple that only shows on the left",
      "roupa": "a cropped olive tank top and black leggings"},
     {"id": "preta_lisa", "idade": 33,
+     "rotulo": "33y · preto liso + piercing no nariz",
      "cabelo": "long jet-black hair worn straight and glossy",
      "oculos": "",
      "porte": "tall and athletic through the legs",
      "rosto": "sharp cheekbones and a small gold stud in her left nostril",
      "roupa": "a fitted burgundy wrap top and dark jeans"},
     {"id": "coque_bagunca", "idade": 30,
+     "rotulo": "30y · coque desfeito + olhos azuis",
      "cabelo": "sandy-blonde hair twisted into a loose messy bun",
      "oculos": "",
      "porte": "slim with a flat stomach",
      "rosto": "blue eyes set wide apart and a light spray of freckles",
      "roupa": "a cropped pale-blue tank top and white shorts"},
     {"id": "cacheada_media", "idade": 32,
+     "rotulo": "32y · cachos medios + marca na testa",
      "cabelo": "shoulder-length dark curls with warm highlights",
      "oculos": "",
      "porte": "narrow-waisted and lightly toned",
      "rosto": "a full mouth and a small crescent birthmark at her right temple",
      "roupa": "a fitted rust-orange top with the sleeves pushed up"},
     {"id": "morena_solta", "idade": 29,
+     "rotulo": "29y · morena solta + olhos mel",
      "cabelo": "long dark-brown hair loose and slightly wavy",
      "oculos": "",
      "porte": "tall and slim through the waist",
      "rosto": "wide hazel eyes and a small dimple in her chin",
      "roupa": "a cropped charcoal ribbed tank top and black leggings"},
     {"id": "loira_trancinha", "idade": 31,
+     "rotulo": "31y · loira trancinha + olhos claros",
      "cabelo": "pale blonde hair in a single loose side braid",
      "oculos": "",
      "porte": "petite and lightly muscled",
      "rosto": "clear blue eyes and a tiny freckle on her left eyelid",
      "roupa": "a fitted white cropped tee and high-waisted jeans"},
     {"id": "crespa_alta", "idade": 34,
+     "rotulo": "34y · twist-out volumoso + sorriso largo",
      "cabelo": "a long twist-out worn big and off the face",
      "oculos": "",
      "porte": "tall and strong-shouldered",
      "rosto": "a wide bright smile and a small mole above her left brow",
      "roupa": "a cropped emerald knit top and thin gold hoops"},
     {"id": "ruiva_curta", "idade": 29,
+     "rotulo": "29y · ruiva curta + olhos verde-cinza",
      "cabelo": "a short tousled copper crop swept to one side",
      "oculos": "",
      "porte": "slim and narrow-shouldered",
      "rosto": "grey-green eyes and freckles scattered over her collarbones",
      "roupa": "a cropped black tank top and light denim shorts"},
     {"id": "castanha_alta", "idade": 31,
+     "rotulo": "31y · castanha clara + pinta na boca",
      "cabelo": "long light-brown hair with sun-lightened ends",
      "oculos": "",
      "porte": "tall and long-limbed",
@@ -796,72 +812,84 @@ NARRADORAS = [
     # proposito e o gate sabe disso.
     # -----------------------------------------------------------------------
     {"id": "mecha_prata", "idade": 32,
+     "rotulo": "32y · escura com mecha platinada",
      "cabelo": "long dark hair with one bleached-platinum streak at the front",
      "oculos": "",
      "porte": "lean and strong through the shoulders",
      "rosto": "smooth-skinned with a small mole at the corner of her right eye",
      "roupa": "a cropped ink-blue rib tank and black leggings"},
     {"id": "bantu_knots", "idade": 30,
+     "rotulo": "30y · bantu knots + argola no nariz",
      "cabelo": "dark hair set in bantu knots in even rows",
      "oculos": "",
      "porte": "compact and narrow-waisted",
      "rosto": "full lips and a small gold hoop through her left nostril",
      "roupa": "a cropped ivory rib tank and a flat gold collar"},
     {"id": "pixie_cobre", "idade": 29,
+     "rotulo": "29y · pixie cobre + sardas no nariz",
      "cabelo": "a short copper pixie cut swept off the forehead",
      "oculos": "",
      "porte": "petite and lightly muscled",
      "rosto": "freckles across her nose and a single dimple on the left",
      "roupa": "a cropped stone-grey tank top and small gold studs"},
     {"id": "ondas_mel", "idade": 31,
+     "rotulo": "31y · ondas mel + olhos verdes",
      "cabelo": "honey-brown hair falling in loose waves past her shoulders",
      "oculos": "",
      "porte": "tall and long-limbed",
      "rosto": "wide green eyes and a beauty mark under her left cheekbone",
      "roupa": "a fitted cream wrap top and dark jeans"},
     {"id": "rabo_trancado", "idade": 28,
+     "rotulo": "28y · rabo trancado + fenda no queixo",
      "cabelo": "a long braided ponytail pulled high off the neck",
      "oculos": "",
      "porte": "a strong build with square shoulders",
      "rosto": "lightly tanned with a small cleft in her chin",
      "roupa": "a cropped plum knit top and gold drop earrings"},
     {"id": "crespo_tapered", "idade": 33,
+     "rotulo": "33y · crespo tapered + pinta no labio",
      "cabelo": "a short tapered natural cut faded at the sides",
      "oculos": "",
      "porte": "slim with a long neck",
      "rosto": "high cheekbones and a small beauty mark above her lip",
      "roupa": "a cropped mustard knit top and thin gold hoops"},
     {"id": "bob_mel", "idade": 29,
+     "rotulo": "29y · bob mel + covinha no queixo",
      "cabelo": "a blunt honey-blonde bob cut level at the jaw",
      "oculos": "",
      "porte": "small-framed and lightly toned",
      "rosto": "clear blue eyes and a shallow dimple in her chin",
      "roupa": "a fitted white cropped tee and pale denim shorts"},
     {"id": "locs_longas", "idade": 34,
+     "rotulo": "34y · locs longas + sorriso largo",
      "cabelo": "long slim locs gathered back off her face",
      "oculos": "",
      "porte": "long-limbed and narrow through the waist",
      "rosto": "a wide bright smile and a small dark mole on her jawline",
      "roupa": "a cropped emerald rib tank and stacked gold bangles"},
     {"id": "castanha_meio", "idade": 32,
+     "rotulo": "32y · castanha media + brinco alto",
      "cabelo": "mid-length dark-brown hair tucked behind one ear",
      "oculos": "",
      "porte": "slim and broad-shouldered",
      "rosto": "a light spray of freckles and a small gold stud high in her right ear",
      "roupa": "a cropped charcoal tank top and high-waisted jeans"},
     {"id": "ruiva_longa", "idade": 30,
+     "rotulo": "30y · ruiva escura lisa + pinta na boca",
      "cabelo": "long dark-red hair worn straight and glossy",
      "oculos": "",
      "porte": "full-figured with a narrow waist",
      "rosto": "green eyes and a beauty mark at the corner of her mouth",
      "roupa": "a fitted burgundy scoop-neck top and dark leggings"},
     {"id": "trancas_finas", "idade": 31,
+     "rotulo": "31y · micro trancas + covinha esquerda",
      "cabelo": "waist-length micro braids swept over one shoulder",
      "oculos": "",
      "porte": "lean and long-legged",
      "rosto": "smooth-skinned with a small dimple in her left cheek",
      "roupa": "a cropped terracotta rib tank and gold hoop earrings"},
     {"id": "topete_alto", "idade": 35,
+     "rotulo": "35y · coque alto + bronzeada",
      "cabelo": "thick dark hair pulled up into a high topknot",
      "oculos": "",
      "porte": "compact and lightly muscled",
@@ -2593,6 +2621,26 @@ def _evitando(rng, pool, recentes):
     return rng.choice(livres if livres else pool)
 
 
+def _narradora_por_id(valor):
+    """A entrada de NARRADORAS que o dropdown `A NARRADORA` escolheu.
+
+    ⭐ O `ui_agente` desenha o `rotulo` e devolve o `id` — este helper e' a
+    ponta que converte um no outro.
+    ⛔ CEDE PARA O POOL INTEIRO SO' SE O ID NAO EXISTIR, e isso e' rede contra
+    ledger velho, nunca contra erro de digitacao vivo: o `--stats` cobra que
+    todo id do pool seja resolvivel, entao um `None` aqui em producao ja'
+    teria reprovado o self-test.
+    ⚠ Aceita o DICIONARIO tambem — o cadeado da coluna trava o eixo com a
+    entrada que esta' na tela, nao com o id dela.
+    """
+    if isinstance(valor, dict):
+        return valor
+    for n in NARRADORAS:
+        if n["id"] == valor:
+            return n
+    return NARRADORAS[0]
+
+
 def _cita(corpo, cabeca):
     """A palavra-cabeca de um item de bancada aparece na copy? (singular ou
     plural — 'fig' tem de pegar 'figs')."""
@@ -3112,9 +3160,19 @@ def sortear(pagina, rng, ledger, travas=None, degrau=None,
     # entradas que ja' a respeitam. A regra continua valendo e o modo entra
     # POR BAIXO dela — furar seria reintroduzir vocabulario que ja' custou
     # recusa em render.
-    nar = (sc.ref_bela(elegiveis[0], rng,
-                       idade_min=IDADE_MINIMA_NARRADORA,
-                       banidos=tuple(BANIDOS_DESEJO))
+    # ⭐⭐ E O DROPDOWN `A NARRADORA` VEM ANTES DOS DOIS. Sem esta linha ele
+    # seria um botao que mente: o `DROPDOWNS_UI` la' embaixo faz a `ui_agente`
+    # mandar `travas["narradora"]` a cada sorteio, e um `sortear` que nao le' a
+    # chave devolveria outra mulher com o menu apontando para ela.
+    # ⛔ A PRECEDENCIA SOBRE O `bela` E' DE PROPOSITO: escolha explicita e' mais
+    # especifica que modo grosso, a mesma ordem que a `ui_agente` ja' usa
+    # (dropdown antes do cadeado, pele por ultimo). Com o menu em `livre` nada
+    # disso roda e o sorteio e' bit a bit o de antes.
+    nar = (_narradora_por_id((travas or {})["narradora"])
+           if (travas or {}).get("narradora")
+           else sc.ref_bela(elegiveis[0], rng,
+                            idade_min=IDADE_MINIMA_NARRADORA,
+                            banidos=tuple(BANIDOS_DESEJO))
            if (travas or {}).get("bela")
            else _evitando(rng, elegiveis, hist.get("narradora", [])[-3:]))
     pares = [h for h in homens_de(pagina)
@@ -3165,6 +3223,17 @@ def sortear(pagina, rng, ledger, travas=None, degrau=None,
     ban = _bancada_livre(rng, falas, hist.get("bancada", [])[-2:], rec, sub)
 
     return {"pagina": pagina,
+            # ⛔⛔ O QUE DE FATO ACONTECEU COM O MODO, gravado no spec.
+            # Sem esta chave o painel nao distingue "o modo entrou" de "o
+            # modo morreu", e o botao fica ACESO nos dois casos. O eixo
+            # escolhido no menu (ou no cadeado) vence o modo por desenho —
+            # o que nao pode e' o operador nao ficar sabendo.
+            # ⭐ A flag LE' O CARIMBO que `sc.ref_bela`/`sc.ref_forte` deixam
+            # (`_bela`/`_forte`), em vez de re-derivar a precedencia aqui. Regra
+            # copiada e' regra que envelhece sozinha: minha primeira versao
+            # inventou um `and not travas.get("homem")` que o ternario do
+            # `troca16` nem le', e teria acusado de morto um modo VIVO.
+            "bela": bool(nar.get("_bela")),
             # 50/50, ordem do operador 2026-08-04
             "bandeira": rng.random() < 0.5, "narradora": nar, "corpo_prova": hom,
             "cenario": cen, "prop": prop, "substancia": sub, "despejo": desp,
@@ -3838,6 +3907,22 @@ EIXOS_UI = [
     ("bancada", "A BANCADA-RECIBO", "BANCADAS", "itens"),
 ]
 
+
+# ⭐⭐ O DROPDOWN DA NARRADORA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# ⛔ Sem esta linha o rotulo seria comentario caro: 28 textos escritos, medidos
+# e travados, e nenhum olho humano os veria. Forma sem funcao e' o defeito que
+# este repo mais paga (licoes-de-construcao §41), e um label que nao aparece na
+# tela e' a versao mais barata dele.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado. Com 28 REFs ela estoura a largura da janela. Contrato
+# aditivo da `ui_agente` (2026-08-13).
+# ⚠ O campo exibido e' `rotulo`, NAO `id`: a `ui_agente` monta o mapa
+# texto -> id, entao o operador escolhe '30y · ruiva longa + olhos verdes' e o motor recebe 'ruiva_sardas'. Um menu de ids
+# obrigaria a abrir o codigo para saber o que se escolheu.
+# ⚠ E o rotulo da tela e' o MESMO texto do `EIXOS_UI` acima (`A NARRADORA`):
+# dois nomes para o mesmo eixo confundem quem opera.
+DROPDOWNS_UI = [("narradora", "A NARRADORA", "NARRADORAS", "rotulo")]
+
 PT_CENARIO = {
     "escritorio_diplomas": "No escritório com estante e dois diplomas",
     "escritorio_painel": "No escritório de madeira, com abajur verde",
@@ -4260,6 +4345,68 @@ def autoteste(n_por_pagina=80, seed=7, credibilidade=None, degrau=None,
               analogia=None):
     falhas = []
     _contrato_dos_pools(falhas)
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — as quatro coisas que o dropdown exige.
+    # ⚠ A UNICIDADE nao e' capricho: a `ui_agente._barra_dropdowns` monta o
+    # mapa com `if txt and txt not in mapa`, entao dois rotulos iguais fazem a
+    # SEGUNDA narradora desaparecer do menu — em silencio, sem erro, sem log.
+    # Pool de 28 que o operador so' consegue alcancar em 27 e' a mesma
+    # familia do botao que mente, so' que por colisao de texto.
+    # ⚠ O TETO DE 42 e' a largura do combobox (`width=38` + folga): rotulo
+    # maior fica cortado na tela, e rotulo cortado volta a ser ilegivel, que e'
+    # exatamente o problema que ele veio resolver.
+    _sem = [x["id"] for x in NARRADORAS if not x.get("rotulo")]
+    if _sem:
+        falhas.append("ROTULO: %d entrada(s) de NARRADORAS sem rotulo — o "
+                      "dropdown cai no `id` e o operador le' %r"
+                      % (len(_sem), _sem[0]))
+    _rot = [x.get("rotulo") or "" for x in NARRADORAS]
+    _rep = sorted({r for r in _rot if _rot.count(r) > 1})
+    if _rep:
+        falhas.append("ROTULO: %d rotulo(s) repetido(s) (%r) — a segunda "
+                      "narradora some do dropdown sem erro nenhum"
+                      % (len(_rep), _rep[0]))
+    _longos = [r for r in _rot if len(r) > 42]
+    if _longos:
+        falhas.append("ROTULO: %d rotulo(s) acima de 42 chars (%r, %d) — "
+                      "estoura a largura do menu"
+                      % (len(_longos), _longos[0], len(_longos[0])))
+
+    # ⛔⛔ E O `DROPDOWNS_UI` TEM DE APONTAR PARA COISA QUE EXISTE. A
+    # `ui_agente` le' o pool por `getattr(motor, nome, [])` e o campo por
+    # `e.get(campo) or e.get("id")`: um nome de pool errado devolve lista vazia
+    # e desenha um menu VAZIO, e um campo errado cai no `id` — nos dois casos
+    # sem uma linha de erro. Falha silenciosa de UI e' a que chega ao operador.
+    for _ch, _tela, _pool_nome, _campo in DROPDOWNS_UI:
+        _pool = globals().get(_pool_nome)
+        if not _pool:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe (ou esta' vazio) "
+                          "— o menu %r sai vazio na tela"
+                          % (_pool_nome, _tela))
+            continue
+        _faltam = [e.get("id") for e in _pool if not e.get(_campo)]
+        if _faltam:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem o campo %r "
+                          "— o menu cai no `id` em %r"
+                          % (len(_faltam), _pool_nome, _campo, _faltam[0]))
+        if _tela not in [u[1] for u in EIXOS_UI if u[0] == _ch]:
+            falhas.append("DROPDOWNS_UI: o eixo %r se chama %r no dropdown e "
+                          "outra coisa no EIXOS_UI — dois nomes para o mesmo "
+                          "eixo confundem quem opera" % (_ch, _tela))
+
+    # ⛔⛔ E O MENU TEM DE FIXAR DE VERDADE (licoes-de-construcao §41:
+    # verificar a FORMA e declarar pronto sem verificar a FUNCAO). As tres
+    # lentes acima olham o TEXTO; esta olha o EFEITO. Sem ela, alguem mexe no
+    # `sortear`, o menu continua desenhado e bonito, e passa a devolver outra
+    # mulher — que e' exatamente o botao que mente.
+    _alvo = NARRADORAS[len(NARRADORAS) // 2]["id"]
+    _pag = sorted(ETNIA)[0]
+    _fix = {sortear(_pag, random.Random(9000 + i), {},
+                    {"narradora": _alvo})["narradora"]["id"] for i in range(8)}
+    if _fix != {_alvo}:
+        falhas.append("DROPDOWNS_UI: escolher %r no menu devolveu %r — o "
+                      "`sortear` nao le' `travas['narradora']` e o dropdown "
+                      "virou botao que mente" % (_alvo, sorted(_fix)))
 
     tamanhos = {"NARRADORAS": len(NARRADORAS),
                 "CORPOS_PROVA_CLARA": len(CORPOS_PROVA_CLARA),

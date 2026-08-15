@@ -50,14 +50,15 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **vinte e três agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **vinte e quatro agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
-`prato16` · `banho16` · `banho16_v2` · `mel16` · **`banho16_3t`** ·
-(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 25 no total)
+`prato16` · `banho16` · `banho16_v2` · `mel16` · `organicwave16` ·
+**`banho16_3t`** · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 26 no
+total)
 
 ⛔ **O `banho16_3t` está nessa lista por parentesco, não por formato.** Ele é o
 único que **não** tem 2 takes de 8s: são **3 takes de ~5s**, destino **AdBatch
@@ -379,6 +380,34 @@ de 32** em vez de trocar o corpo dele. Entrou `sc.REFS_FORTES_MADUROS` (48-68),
 **opt-in** por `ref_forte(..., maduros=True)` — nenhum dos outros 16 motores que
 usam o helper muda (medido bit a bit em 20.000 chamadas).
 
+⭐⭐ **`organicwave16` (2026-08-14) — o primeiro agente da operação em 16s.**
+Nasceu por **cópia literal** do [`organicwave_short.py`](funil-organico/organicwave_short.py)
+(`Copy-Item`, não redigitação), com cirurgia só no eixo temporal — os dois
+convivem, formatos diferentes. ⭐ É o único 16s de **primeira pessoa** com
+**elenco de aspiração** (o oposto dos especialistas: aqui o rosto vende) e com
+**dois narradores possíveis** — no masculino o dono do problema fala de si, no
+feminino a esposa conta e resolve escondido. ⭐⭐ **O quadro fundido** junta as
+cenas 2 e 3 num só: a bancada com o copo, o sachê e a **isca** (o curiosity gap
+que a copy nunca nomeia), e **o parceiro colado no ombro**, mudo, com o prop
+ereto na mão livre. Sem isso o colapso comeria ou o mecanismo ou o payoff.
+⛔ **A copy da cena 2 é NOVA, e por medição**: as `FUNDIDAS`/`CTAS`/`GATES` do
+`_short` violam **cinco** das sete travas ao mesmo tempo (CT1 pelo `{gate}`
+depois do CTA, CT5 pelo `fresh lemon` da receita na fala, CT6 por nenhum CTA
+dizer onde a receita chega, CT7 pelo `gets your {o} hard again`, CT8 pelo pool
+de follow inteiro). Os cinco pools ficaram no arquivo **com lápide**, e
+melhorar qualquer entrada deles não muda um único vídeo. Os beats novos saem
+das sentenças que o operador já aprovou em 2026-07-31, cortando só o proibido.
+⚠️ **A receita saiu da fala e ficou no quadro** — e por isso `_recopiar_receita`
+morreu: trocar o ritual no painel muda a imagem e mais nada.
+⏳ **Pendência declarada, alçada do operador:** o **CT2 acusa 49%** dos
+sorteios. Não é excepção declarada — é que **13 dos 26 hooks aprovados**
+enunciam a falha pelo **dêictico + o prop na mão** (`this is what my {o} looked
+like`) em vez de por verbo de disfunção, e o regex do CT2 lê verbo. Três saídas:
+crescer a lente (precedente: ela já cresceu 5 vezes por reprovar copy certa),
+declarar exceção em `DESLIGADAS`, ou reformular os 13 hooks. **Medido: zero
+ERRO em 400 sorteios, todos os 8 pools 100% alcançáveis, 0% em CT1/CT3/CT4/
+CT4b/CT5/CT6/CT7/CT8, zero frase órfã.**
+
 ⏳ **Pendência aberta:**
 [`PENDENCIA-varredura-batidas.md`](funil-organico/PENDENCIA-varredura-batidas.md)
 — levar as duas lentes novas do `alfa16` (predicado vazio e coerência de
@@ -406,8 +435,45 @@ em 43 arquivos, injetando justamente o token que se temia.
 para 24 entradas com **arquitetura facial** — formato do rosto, testa/arcada,
 nariz, maxilar, malar — e 5 das 24 não grisalhas, porque um pool 100% prateado é
 um homem só) e em **`fight16`** (as três negações removidas, a metade positiva
-fica). ⚠️ **Os outros ~41 motores ainda carregam a negação** — dívida declarada,
-não corrigida.
+fica).
+
+#### ⭐⭐ DÍVIDA PAGA EM 2026-08-14 — *"tire not a celebrity do prompt"*
+
+Os outros motores foram varridos. ⛔ **Não por edição à mão:** a cláusula é um
+recorte **regular**, e as 54 entradas do `APELO_EUA` são copy validada —
+redigitar copy validada é o erro que o repo já pagou. O molde é o
+`tirar_bandeira`/`_BANDEIRA`: **substituição verificada, com a lente junto.**
+
+| | |
+|---|---|
+| Ferramenta | [`tirar_anticeleb.py`](funil-organico/tirar_anticeleb.py) — `--dry-run` (padrão) · `--aplicar` · `--lapide` |
+| Recorte + lente | `short_comum.tirar_anticeleb` / `lint_anticeleb` (+ `autoteste_anticeleb`) |
+| Cobrança | `lint_anticeleb` roda em **44 de 44** motores — pelo `lint_curto` e, nos que têm `lint()` próprio, por chamada explícita |
+| Aplicado | **30 arquivos, 112 strings** (111 na primeira passada + a do plural) |
+| Medido (seed `20260814`, N=60) | `celebrity` **100% → 0%** nos 30 motores sujos; **0%** nos 5 padrões em 44 de 44 |
+| Controle negativo | 264 plantios da cláusula, **264 acusados** — nenhum motor "limpo por ninguém estar olhando" |
+| Prosa | 0 acusação de vírgula dupla / espaço duplo em **5.280 sorteios** |
+
+⭐ **A metade positiva fica.** `"Ordinary relatable face, not a celebrity."` virou
+`"Ordinary relatable face."` — 18 das 20 formas tinham descrição sobrevivente. As
+duas do **FALTA** eram negação **pura**: viraram vazio, e por isso o slot passou
+a levar a própria pontuação (`sc.frase_anti`), senão sobrava ponto órfão.
+
+⛔ **As lápides ficam, todas as 105** — comentário, docstring, e os regex
+`_CELEB_POOL`/`ES17`/`RS12`/`TR16`, que são o **detector**, não o defeito.
+Apagá-los removeria a memória que impede a reincidência.
+
+⚠️ **Duas coisas que só a medição achou** — nenhuma estava no inventário:
+- O **VAZAMENTO** tinha a forma **plural sem artigo** (`not celebrities, not
+  models, not actors`), que o primeiro regex não pegava. Saía em **100%** dos
+  vídeos. Quem a achou foi a medição do **prompt gerado**, não o grep no fonte.
+- O **ESCANDALO** tem fala aprovada — *"The gelatin trick is not famous"* — onde
+  `not famous` significa "o truque não é famoso". Por isso a lente lê a
+  **direção de cena** e nunca a fala, e `not famous` cru ficou fora do recorte.
+
+⛔ E a âncora do controle negativo do **DUPLA** deixou de ser `ANTICELEB`: com a
+constante vazia, `str.replace("", X)` insere `X` entre cada caractere (91 chars
+viravam 5.059) e o controle seguia "passando" pelo motivo errado.
 
 ⛔ E o eixo de rosto do `pee16` ganhou o que faltava do outro lado: **narrador e
 vítima entraram no ledger**. Eram os dois únicos eixos do motor **sem memória

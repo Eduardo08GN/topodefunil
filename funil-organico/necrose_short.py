@@ -201,7 +201,10 @@ IMOBILIDADE_UM = (
 LOBO = ("%s standing behind him on his right, head turned toward the camera, "
         "in focus")
 
-ANTICELEB = "Ordinary relatable face, not a celebrity."
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = "Ordinary relatable face."
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 # ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
@@ -1193,12 +1196,14 @@ def _montar_longo(spec):
     # E o que o parser do AdBatch usa para mandar este bloco para o painel
     # Consistencia Visual em vez de tentar encaixa-lo num slot da grade.
     # ⛔ Nao remover: sem ele a referencia e descartada em silencio.
+    # ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+    # (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+    # A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
     b["BLOCO 0 (REF)"] = (
-        "REF 01: Photo of a real person, a %d-year-old %s man, chest up, facing the "
-        "camera directly, neutral steady expression. Bare-chested, %s, tanned "
-        "weathered skin. %s. Wearing %s. %s. An ordinary everyday relatable "
-        "person with a plain unremarkable face, not a celebrity, not a model, "
-        "not an actor, not resembling any famous person. Plain neutral gray "
+        "REF 01: Photo of a real person, a %d-year-old %s man, chest up, "
+        "facing the camera directly, neutral steady expression. Bare-chested, "
+        "%s, tanned weathered skin. %s. Wearing %s. %s. An ordinary everyday "
+        "relatable person with a plain unremarkable face. Plain neutral gray "
         "background, soft even frontal light. No subtitles, no captions, no "
         "burned-in text, no watermark."
         % (ref["idade"], et, ref["corpo"],

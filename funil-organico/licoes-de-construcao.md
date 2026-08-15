@@ -1624,6 +1624,61 @@ sabiam medir. **O gate não é evidência sobre a dimensão que ele não olha.**
 
 ---
 
+## 42. ⛔⛔ A REESCRITA EM LOTE CASOU PELO **CONTEÚDO** — e enfiou 161 comentários em lugar errado
+
+2026-08-14, removendo a declaração anti-celebridade dos 30 motores sujos. O
+recorte das strings estava certo — 19 formas distintas, todas conferidas no
+`--dry-run`. O que quebrou foi a **lápide**: para saber onde escrever *"a
+negação saiu daqui"*, a ferramenta procurava, no arquivo já recortado, a linha
+cuja string fosse igual ao **texto depois do corte**.
+
+⛔ **Uma das formas, a do FALTA, era negação pura e virou `""`.** E `""` é igual
+a **toda string vazia do arquivo**. Resultado: 161 comentários enfiados em
+`return etnia, ""`, no meio de `re.sub(..., "x", s or "")`, dentro de corpos de
+função — 28 só no `short_comum`. Nenhum quebrou a sintaxe (comentário nunca
+quebra), então **nada acusou**: descobriu-se lendo o diff.
+
+> **Chave por conteúdo, em arquivo grande, sempre acha homônimo.** A chave certa
+> era a **posição**: o índice do statement em ordem de documento, que é estável
+> porque o recorte nunca acrescenta nem remove statement — só encurta literais.
+
+⭐ E quando a posição deixa de ser comparável, a ferramenta **recusa em vez de
+chutar**: ao repassar a lápide lendo o HEAD, ela conferiu a contagem de
+statements e se negou a tocar o `short_comum` (483 contra 547, porque eu o tinha
+editado à mão). Duas lápides colocadas à mão valem mais que 547 adivinhadas.
+
+### ⛔⛔ E o corolário caro: **substituir o vão do literal APAGA o comentário que mora dentro dele**
+
+O `IMAGE 04/05` do VAZAMENTO é uma concatenação implícita com um comentário
+**entre dois pedaços** — a lápide da falha de continuidade de 2026-07-31 (o Veo
+trocou o corpo-prova por um senhor de óculos e o estranho falava a fala do REF).
+A reescrita substitui o vão inteiro do nó `ast.Constant`, e o comentário mora
+nesse vão: **saiu junto, em silêncio.** Só apareceu porque eu li o diff.
+
+O conserto não foi ensinar a ferramenta a preservar comentário — foi fazê-la
+**recusar o nó que tem comentário no meio e reportar**, para o caso ser feito à
+mão sabendo o que está em jogo. *Recusar e avisar é melhor que reescrever certo
+por acidente.*
+
+### ⭐ O que salvou as duas: a medição no PROMPT GERADO, com controle negativo
+
+A varredura do fonte declarava 20 formas vivas. O **VAZAMENTO** tinha uma
+vigésima primeira — `not celebrities, not models, not actors`, plural e **sem
+artigo** — que o regex não pegava e que saía em **100% dos vídeos**. Grep no
+fonte não a viu; a medição do texto montado viu (§19).
+
+E o par disso: a primeira rodada da prova mostrou **6 motores com a lente
+cega**. Eles tinham `lint()` próprio e a única menção a `lint_curto` era uma
+docstring dizendo *"⚠️ Lint PRÓPRIO, não `sc.lint_curto`"* — o meu `grep`
+contou a docstring como se fosse a chamada. Sem o **plantio da cláusula e a
+exigência de que a lente acuse**, os seis apareceriam como "limpos", e limpo
+por ninguém estar olhando é o mesmo relatório que limpo de verdade.
+
+> **Medir que o defeito sumiu não é medir que a lente existe.** As duas contas
+> andam juntas: 0% no prompt **e** 264 de 264 plantios acusados.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1755,6 +1810,11 @@ sabiam medir. **O gate não é evidência sobre a dimensão que ele não olha.**
       importado não prova painel construído, e ramo por agente esconde o
       NameError dos agentes que não o executam (§34)
 - [ ] Se houve subagente: **estado do disco conferido**, não o relatório dele
+- [ ] **Reescrita em lote? A chave é POSIÇÃO, nunca conteúdo** (§42) — e o
+      `--dry-run` foi lido INTEIRO, incluindo o diff de contexto: substituir o
+      vão de um literal apaga o comentário que mora dentro dele
+- [ ] **Lente nova? PLANTEI o defeito em todos os motores e exigi a acusação** —
+      0% do defeito não prova que alguém está olhando (§42)
 
 ---
 

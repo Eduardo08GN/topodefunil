@@ -510,6 +510,12 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
     # ⛔ valem para TODO agente SHORT, sem excecao — inclusive os que ainda
     # vao nascer (ordem do operador, 2026-08-02)
     lint_sem_texto(blocos, achados)
+    # ⛔⛔ 2026-08-14: a negacao anti-celebridade nunca volta. Vale para TODO
+    # agente SHORT, inclusive os que ainda vao nascer — regra que some sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente assim
+    # que a clausula chegou aos 30 motores. Os motores que nao passam por aqui
+    # chamam `sc.lint_anticeleb` no proprio `lint()`.
+    lint_anticeleb(blocos, achados)
     # ⛔⛔ 2026-08-05: TAKE contra IMAGE. Vale para TODO agente SHORT, inclusive
     # os que ainda vao nascer. `objetos_ok` deixa o motor declarar as excecoes
     # que ele CONFERIU — e declarar excecao e' declarar que alguem olhou.
@@ -1211,6 +1217,248 @@ def autoteste_bandeira():
     return falhas
 
 
+# ---------------------------------------------------------------------------
+# ⛔⛔ CONTRA A CELEBRIDADE, SILENCIO — a negacao saiu do PROMPT (2026-08-14)
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"tire not a celebrity do prompt"*. A doutrina ja' existia
+# desde 2026-07-31 (`licoes-producao-veo.md` §*Declaracao e' municao*) e nunca
+# tinha sido aplicada aos motores — a clausula seguia viva em 30 dos 44, e em 29
+# deles em 100% dos videos.
+#
+# ⛔ A DECLARACAO NAO E' NEUTRA: escrever a negacao POE o token no campo, e o
+# classificador casa TOKEN, nao intencao. A defesa nao e' negar celebridade; e'
+# descrever um rosto que nenhuma celebridade tem — e isso e' COPY, alcada do
+# operador. Aqui so' se REMOVE.
+# ⛔ E NAO SE TROCA POR OUTRA NEGACAO: `not a model`, `not an actor`, `not
+# resembling any famous person` sao a MESMA municao com outra roupa.
+#
+# ⚠️ POR QUE RECORTE E NAO REESCRITA DOS POOLS: o mesmo motivo do
+# `tirar_bandeira` logo acima — as 54 entradas do APELO_EUA sao copy validada, e
+# redigitar copy validada e' o erro que o repo ja' pagou (o D1 comprimido na mao
+# virou esqueleto 3D). A clausula e' um recorte REGULAR (comeca numa virgula ou
+# num `yet`/`and`, encadeia negacoes, termina no ponto), e sai por substituicao
+# verificada — `tirar_anticeleb.py`, que reescreve o FONTE uma vez so'.
+#
+# ⛔ E A REMOCAO E' COBRADA, NAO CONFIADA: `lint_anticeleb` varre o TEXTO
+# MONTADO (§19) e reprova se a negacao voltou. Regex que erra em prosa erra em
+# silencio; por isso a lente vem junto e roda em todo motor, inclusive os que
+# ainda vao nascer.
+#
+# ⚠️ `not famous` CRU FICA DE FORA do recorte, e a ausencia e' medida: o
+# ESCANDALO tem fala aprovada — *"The gelatin trick is not famous"* — onde a
+# palavra significa "o truque nao e' famoso", nada de conformidade. Alcancavel
+# em 26/600 sorteios. Lente que reprova copy certa ensina o operador a ignorar a
+# lente inteira (licoes §16), entao a lente le' a DIRECAO e nunca a fala.
+# ⚠️ O ARTIGO E' OPCIONAL E O PLURAL ENTRA — medido, nao suposto. A primeira
+# versao exigia `not a|an` e deixou o VAZAMENTO intacto em 100% dos videos: la'
+# a frase fala de DUAS pessoas e sai sem artigo, *"not celebrities, not models,
+# not actors"*. O inventario que abriu esta tarefa listava 20 formas vivas e
+# tambem nao tinha essa — quem a achou foi a medicao do prompt gerado, nao o
+# grep no fonte (§19: a unica medicao que vale e' a do texto montado).
+_NEG_ANTICELEB = (
+    r"not\s+(?:an?\s+)?(?:celebrity|celebrities|models?|actors?|"
+    r"actress(?:es)?|public\s+figures?|famous\s+(?:person|people)|"
+    r"movie\s+stars?|look-?alikes?)"
+    r"|not\s+resembling\s+(?:any|anyone)[^,;.]*"
+)
+
+# a clausula inteira: um separador, uma negacao, e a cauda de negacoes irmas
+_ANTICELEB = re.compile(
+    r"(?:^[ \t]*|,\s*(?:yet\s+|but\s+|and\s+|though\s+)?"
+    r"|\s+(?:yet|but|and|though)\s+)"
+    r"(?:" + _NEG_ANTICELEB + r")"
+    r"(?:\s*,\s*(?:and\s+)?(?:" + _NEG_ANTICELEB + r"))*", re.I)
+
+# ⚠️ so' espaco horizontal: `\s` comeria a quebra de linha e emendaria o
+# `Dialogue:` na direcao de cena.
+_SUJEIRA_ANTI = ((r"[ \t]*,[ \t]*,", ","), (r"[ \t]+and[ \t]+,", ","),
+                 (r"[ \t]{2,}", " "), (r"[ \t]+([,.;])", r"\1"),
+                 (r",[ \t]*$", ""), (r"[ \t]+and[ \t]*$", ""))
+
+# o que NUNCA pode sobrar no texto montado. ⛔ `not famous` entra CRU aqui de
+# proposito — a lente le' so' a direcao, entao a fala do ESCANDALO fica fora do
+# alcance dela e o token continua proibido em cena.
+_TEM_ANTICELEB = re.compile(
+    r"celebrit(?:y|ies)"
+    r"|not\s+(?:an?\s+)?(?:models?|actors?|actress(?:es)?|public\s+figures?)"
+    r"|not\s+resembling"
+    r"|not\s+famous", re.I)
+
+
+def tirar_anticeleb(texto):
+    """Devolve o texto sem a clausula de anti-celebridade, prosa normalizada.
+
+    ⛔ Texto que nao tinha a clausula sai INTACTO — nem a normalizacao roda
+    nele. Sem essa guarda a funcao "consertaria" espacos de copy validada que
+    ninguem mandou tocar.
+    """
+    if not texto:
+        return texto
+    fora = _ANTICELEB.sub("", texto)
+    if fora == texto:
+        return texto
+    for padrao, troca in _SUJEIRA_ANTI:
+        fora = re.sub(padrao, troca, fora)
+    return fora
+
+
+def tem_anticeleb(texto):
+    return _TEM_ANTICELEB.search(texto or "")
+
+
+def frase_anti(texto):
+    """O slot `anti` ja' pontuado e com o espaco — vazio some INTEIRO.
+
+    ⛔ Existe por causa do FALTA: la' a clausula era negacao PURA (`not
+    resembling any famous person, not a celebrity`), sem metade descritiva, e o
+    template escreve `%(anti)s. `. Com o slot vazio sobrava ponto orfao e espaco
+    duplo — a sujeira que a lente foi escrita para pegar. Quem normaliza e' o
+    slot, nao o pool: assim a copy dos outros agentes nao e' tocada.
+    """
+    t = (texto or "").strip().rstrip(".").strip()
+    return (t + ". ") if t else ""
+
+
+def _sem_fala(texto):
+    """O bloco sem as linhas de `Dialogue:` — a lente le' CENA, nunca copy."""
+    return "\n".join(l for l in str(texto or "").splitlines()
+                     if not l.lstrip().startswith("Dialogue:"))
+
+
+def lint_anticeleb(blocos, achados, rotulo="anticeleb"):
+    """A negacao de conformidade nunca volta ao texto montado.
+
+    ⚠️ Varre o TEXTO MONTADO, nunca o pool (§19): a clausula e' montada dentro
+    de um bloco maior e `grep` no fonte nao ve frase quebrada entre literais
+    adjacentes.
+    """
+    for nome in sorted(blocos):
+        txt = _sem_fala(blocos[nome])
+        m = tem_anticeleb(txt)
+        if m:
+            achados.append(("ERRO", "%s: %s traz %r — declaracao de "
+                                    "conformidade INJETA o token que ela nega. "
+                                    "A defesa e' descrever o rosto, nunca "
+                                    "negar (CLAUDE.md §CONTRA A CELEBRIDADE, "
+                                    "SILENCIO)" % (rotulo, nome, m.group(0))))
+    # ⭐ a prosa vem JUNTO — a remocao so' esta' feita quando o texto que ficou
+    # ainda e' texto. Medido em 5.280 sorteios dos 44 motores, com os toggles em
+    # rodizio: ZERO acusacao. Se subir, e' recorte novo que estragou frase.
+    lint_prosa_anti(blocos, achados, rotulo)
+
+
+def lint_prosa_anti(blocos, achados, rotulo="anticeleb"):
+    """A prosa depois do recorte: sem virgula dupla, `and` orfao ou espaco duplo.
+
+    ⭐ Funcao separada, mas CHAMADA pela `lint_anticeleb` — quem cobra a
+    remocao cobra junto o estado da frase que sobrou. Fica separada para poder
+    ser medida sozinha, que foi como a regra do `and,` acabou apertada.
+    """
+    for nome in sorted(blocos):
+        txt = _sem_fala(blocos[nome])
+        # ⚠️ `and[ \t]+,` EXIGE espaco DOS DOIS LADOS, e o motivo foi medido: com
+        # `and[ \t]*,` a lente acusava 89 vezes em 5 motores, e o campeao era o
+        # EXTERIOR — que NUNCA teve a clausula. O texto era prosa legitima,
+        # *"white powder still settled over its top third, and, lying on its
+        # side beside it, a well-used ..."*: um aposto em ingles escreve `and,`
+        # colado. Lente que reprova o que esta' certo ensina a ignorar a lente
+        # inteira (licoes §16). A sujeira da REMOCAO tem espaco antes da virgula.
+        for padrao, msg in ((r",[ \t]*,", "virgula dupla"),
+                            (r"[ \t]+and[ \t]+,", "'and' orfao antes de virgula"),
+                            (r"[ \t]{2,}", "espaco duplo"),
+                            (r"[ \t]+[,.]", "espaco antes de pontuacao")):
+            if re.search(padrao, txt):
+                achados.append(("ERRO", "%s: %s com %s — a remocao da negacao "
+                                        "estragou a prosa" % (rotulo, nome, msg)))
+
+
+def autoteste_anticeleb():
+    """Controles com as clausulas REAIS dos 44 motores, e os negativos.
+
+    ⛔ Rodam ANTES de qualquer numero ser olhado (licoes §16). Os dois ultimos
+    negativos sao os que decidem o desenho da lente: a fala do ESCANDALO e o
+    texto que nunca teve clausula nenhuma.
+    """
+    casos = [
+        # a forma classica, 4 negacoes encadeadas (BOTICA, CLEAN, COLO, RECEITA)
+        ("Ordinary relatable face, not a celebrity, not a model, not an actor, "
+         "not resembling any famous person.",
+         "Ordinary relatable face."),
+        # a curta (FLAGRANTE, NECROSE, PEE, VAZAMENTO)
+        ("Ordinary relatable face, not a celebrity.", "Ordinary relatable face."),
+        # a do registro BELA (CHA, DUPLA, PLACA, TRIO, short_comum)
+        ("A strikingly beautiful face, not a celebrity, not resembling any "
+         "famous person.", "A strikingly beautiful face."),
+        # o retrato do APELO_EUA — copy validada, so' a cauda sai
+        ("A head-turning everyday woman, carefully groomed, with bright eyes, "
+         "full lips and a striking figure, not a celebrity, not resembling any "
+         "famous person.",
+         "A head-turning everyday woman, carefully groomed, with bright eyes, "
+         "full lips and a striking figure."),
+        # ⭐ o `yet` + `not an actress` do REF_ROSTO_M da familia CLEAN
+        ("A strikingly beautiful woman, her face flawless and photogenic, her "
+         "hair silky, smooth and healthy with a soft shine, yet not a "
+         "celebrity, not an actress, not resembling any famous person.",
+         "A strikingly beautiful woman, her face flawless and photogenic, her "
+         "hair silky, smooth and healthy with a soft shine."),
+        # ⛔ o FALTA: negacao PURA, sem metade descritiva — vira vazio
+        ("Not resembling any famous person, not a celebrity", ""),
+        ("not resembling any famous person, not a celebrity", ""),
+        # a clausula NO MEIO de um bloco REF inteiro (COLO, NECROSE, RECEITA)
+        ("REF 01: Photo of a real person. An ordinary everyday relatable person "
+         "with a plain unremarkable face, not a celebrity, not a model, not an "
+         "actor, not resembling any famous person. Hands out of frame.",
+         "REF 01: Photo of a real person. An ordinary everyday relatable person "
+         "with a plain unremarkable face. Hands out of frame."),
+        # a variante sem `not resembling` (BED, GOOD, MEL, PRATO, WIFE)
+        ("An ordinary everyday relatable person with a plain unremarkable face, "
+         "not a celebrity, not a model, not an actor.",
+         "An ordinary everyday relatable person with a plain unremarkable face."),
+        # ⭐ `and not a celebrity` — separador que nao e' virgula
+        ("A plain face and not a celebrity.", "A plain face."),
+        # ⛔⛔ O PLURAL SEM ARTIGO, do VAZAMENTO — a forma que a primeira versao
+        # do recorte deixou passar em 100% dos videos. Duas pessoas em quadro,
+        # entao a frase sai no plural e o `not a|an` nao casa.
+        ("Both are ordinary everyday relatable people with plain unremarkable "
+         "faces, not celebrities, not models, not actors. The scene is lit by "
+         "late afternoon sun.",
+         "Both are ordinary everyday relatable people with plain unremarkable "
+         "faces. The scene is lit by late afternoon sun."),
+    ]
+    falhas = []
+    for entrada, esperado in casos:
+        saida = tirar_anticeleb(entrada)
+        if saida != esperado:
+            falhas.append("recortou errado:\n   deu = %r\n   era = %r"
+                          % (saida, esperado))
+        if saida and tem_anticeleb(saida):
+            falhas.append("sobrou negacao em %r" % saida)
+        for padrao in (r",[ \t]*,", r"[ \t]{2,}", r"[ \t]+[,.]"):
+            if re.search(padrao, saida or ""):
+                falhas.append("prosa suja depois do recorte: %r" % saida)
+    # ⛔⛔ CONTROLE NEGATIVO 1 — a fala aprovada do ESCANDALO. `not famous` ali
+    # quer dizer "o truque nao e' famoso". Se o recorte a tocar, o motor perde
+    # copy do operador.
+    fala = ("The famous ones did nothing for his Johnson. The gelatin trick is "
+            "not famous, cheap collagen, and it got him standing again.")
+    if tirar_anticeleb(fala) != fala:
+        falhas.append("comeu a fala aprovada do ESCANDALO: %r"
+                      % tirar_anticeleb(fala))
+    # ⛔ CONTROLE NEGATIVO 2 — texto que nunca teve clausula sai intacto
+    limpo = "A 58-year-old man with a broad nose and a scar above his lip."
+    if tirar_anticeleb(limpo) != limpo:
+        falhas.append("mexeu em texto sem clausula: %r" % tirar_anticeleb(limpo))
+    # ⛔ CONTROLE NEGATIVO 3 — a lente TEM de acusar quando a negacao volta
+    provas = ("A face, not a celebrity.", "not resembling any famous person",
+              "an ordinary face, not a model", "not an actor")
+    for p in provas:
+        if not tem_anticeleb(p):
+            falhas.append("a lente NAO acusa %r" % p)
+    if tem_anticeleb(limpo):
+        falhas.append("a lente acusa texto limpo: %r" % limpo)
+    return falhas
+
+
 def lint_sem_texto(blocos, achados):
     """Guarda da trava — sem isto ela sai de novo no proximo refactor."""
     for chave in sorted(blocos):
@@ -1889,12 +2137,17 @@ CORES_BELAS = ["black", "white", "scarlet", "cobalt", "hot pink", "emerald",
                "charcoal", "ivory", "blush pink", "electric blue", "plum",
                "teal", "coral", "champagne", "wine red"]
 
-# ⛔ A CLAUSULA. Sem ela o gerador recebe "linda" no corpo e `ordinary relatable
-# face, not a model` no rosto NA MESMA FRASE — o CLEAN pagou essa contradicao em
-# 2026-08-04 (CL26) e resolveu do mesmo jeito. A protecao de IDENTIDADE fica
-# inteira; so' sai o "comum" e o "nao e' modelo".
-ANTICELEB_BELA = ("A strikingly beautiful face, not a celebrity, not "
-                  "resembling any famous person.")
+# ⛔ A CLAUSULA DE ROSTO NO REGISTRO BELA. Sem ela o gerador recebe "linda" no
+# corpo e `ordinary relatable face` no rosto NA MESMA FRASE — o CLEAN pagou essa
+# contradicao em 2026-08-04 (CL26) e resolveu do mesmo jeito: aqui so' sai o
+# "comum", e o que fica e' a descricao positiva.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# ⚠️ Esta constante e' lida por 13 motores dentro do `montar()`, pelo ramo
+# `spec.get("bela")` — limpar aqui conserta o ramo LIGADO dos 13 de uma vez, e
+# o ramo desligado saiu no `ANTICELEB` local de cada um.
+# Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB_BELA = ("A strikingly beautiful face.")
 
 
 
@@ -2279,10 +2532,13 @@ CORES_FORTES = ["black", "white", "charcoal", "navy", "olive", "burgundy",
                 "denim blue", "grey", "forest green", "rust red"]
 
 # ⛔ A clausula do rosto, no registro masculino. Mesma logica do CL26: se o corpo
-# diz "powerfully built" e o rosto diz "ordinary relatable face, not a model", o
-# gerador recebe as duas na mesma frase e resolve contra nos.
-ANTICELEB_FORTE = ("A rugged good-looking face, not a celebrity, not "
-                   "resembling any famous person.")
+# diz "powerfully built" e o rosto diz "ordinary relatable face", o gerador
+# recebe as duas na mesma frase e resolve contra nos.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# ⚠️ Lida por 3 motores (GOOD 16, MEL 16, PRATO 16) pelo ramo
+# `spec.get("forte")`. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB_FORTE = ("A rugged good-looking face.")
 
 
 def ref_forte(molde, rng, idade_min=None, idade_max=None, maduros=False):

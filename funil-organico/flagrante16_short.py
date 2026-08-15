@@ -107,7 +107,10 @@ NEGACAO_AVE = (
     "eyes, no head, nothing alive."
 )
 
-ANTICELEB = "Ordinary relatable face, not a celebrity."
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = "Ordinary relatable face."
 CAUDA = "iPhone shot, natural grain, no text, no watermark."
 
 # Agencia — a correcao validada em 2026-07-30. O proxy fica na mao da PROPRIA
@@ -458,9 +461,11 @@ AMBIENTES = [
 # 3 eixos visiveis a' distancia nascem garantidos, sem depender de frase extra.
 REFS = [
     {"idade": 66, "marca": "full silver hair and a notched left ear",
+     "id": "prata_orelha", "rotulo": "66y · prateado + orelha entalhada",
      "cabelo": "silver", "roupa": "Plain navy crew-neck tee shirt.",
      "roupa_curta": "navy tee shirt"},
     {"idade": 68, "marca": "thick white hair and a deep cleft in his chin",
+     "id": "branco_fenda", "rotulo": "68y · branco farto + fenda no queixo",
      "cabelo": "white", "roupa": "Plain charcoal crew-neck tee shirt.",
      "roupa_curta": "charcoal tee shirt"},
     # ⛔ REESCRITA 2026-08-13 (era `a clean pale scar through his left eyebrow`):
@@ -469,27 +474,34 @@ REFS = [
     # mendigo que ele reprovou no PLACA 16. A ancora vira uma mecha, que e'
     # igualmente permanente e igualmente distintiva, sem custo de aparencia.
     {"idade": 64, "marca": "full gray hair and a single silver streak running through his left eyebrow",
+     "id": "mecha_sobrancelha", "rotulo": "64y · grisalho + mecha na sobrancelha",
      "cabelo": "gray", "roupa": "Plain olive crew-neck tee shirt.",
      "roupa_curta": "olive tee shirt"},
     {"idade": 70, "marca": "thick silver hair and a prominent dark mole on his left cheekbone",
+     "id": "prata_pinta", "rotulo": "70y · prata farto + pinta no malar",
      "cabelo": "silver", "roupa": "Plain black crew-neck tee shirt.",
      "roupa_curta": "black tee shirt"},
     {"idade": 65, "marca": "full salt-and-pepper hair and a gold crown on one front tooth",
+     "id": "coroa_de_ouro", "rotulo": "65y · sal-e-pimenta + coroa de ouro",
      "cabelo": "salt-and-pepper",
      "roupa": "Plain slate blue crew-neck tee shirt.",
      "roupa_curta": "slate blue tee shirt"},
     {"idade": 67, "marca": "thick gray hair swept back and a small notch in his right ear",
+     "id": "penteado_entalhe", "rotulo": "67y · grisalho pra tras + orelha entalhada",
      "cabelo": "gray", "roupa": "Plain burgundy crew-neck tee shirt.",
      "roupa_curta": "burgundy tee shirt"},
     # + 2026-08-01: o operador viu o mesmo rosto de narrador voltando no lote.
     # Tres REFs novos, mesmo contraste estrutural do F4b (cabeleira, sem oculos).
     {"idade": 63, "marca": "a sharp widow's peak in thick white hair and a deep dimple in his left cheek",
+     "id": "bico_de_viuva", "rotulo": "63y · branco + bico de viuva + covinha",
      "cabelo": "white", "roupa": "Plain forest green crew-neck tee shirt.",
      "roupa_curta": "forest green tee shirt"},
     {"idade": 71, "marca": "iron gray hair cut in a flat-top and a cluster of dark freckles across his nose",
+     "id": "flat_top_sardas", "rotulo": "71y · flat-top ferro + sardas no nariz",
      "cabelo": "iron gray", "roupa": "Plain teal crew-neck tee shirt.",
      "roupa_curta": "teal tee shirt"},
     {"idade": 61, "marca": "full black hair streaked bright white at the front and a small gold hoop in his left ear",
+     "id": "mecha_frontal", "rotulo": "61y · preto com mecha branca + argola",
      "cabelo": "black", "roupa": "Plain cream crew-neck tee shirt.",
      "roupa_curta": "cream tee shirt"},
     # + 2026-08-02: mesma medicao que gerou o bloco das VITIMAS logo abaixo, so'
@@ -516,12 +528,15 @@ REFS = [
     # o banco de imagem para o homem castigado; o PORTE (que era o ponto do
     # bloco) fica intacto nas duas, so' a ancora troca.
     {"idade": 74, "marca": "unusually broad square shoulders, thick steel gray hair parted low on one side and a small gold stud in his right earlobe",
+     "id": "ombros_largos", "rotulo": "74y · aco com risca baixa + ombros largos",
      "cabelo": "steel gray", "roupa": "Plain mustard yellow crew-neck tee shirt.",
      "roupa_curta": "mustard yellow tee shirt"},
     {"idade": 58, "marca": "a short compact frame, a full head of tight coppery-brown curls and a beauty mark at the outer corner of his right eye",
+     "id": "compacto_cachos", "rotulo": "58y · cachos acobreados + porte compacto",
      "cabelo": "curly", "roupa": "Plain sky blue crew-neck tee shirt.",
      "roupa_curta": "sky blue tee shirt"},
     {"idade": 62, "marca": "a square powerfully built frame, thick dark hair combed up into a high pompadour and one eyebrow gone completely white",
+     "id": "topete_alto", "rotulo": "62y · topete alto + sobrancelha branca",
      "cabelo": "dark", "roupa": "Plain stone gray crew-neck tee shirt.",
      "roupa_curta": "stone gray tee shirt"},
     # + 2026-08-04: ampliacao por ordem do operador — *"aumente o pool de
@@ -529,16 +544,19 @@ REFS = [
     # ⛔ Cada entrada difere das outras em >= 3 eixos fisicos (licoes §15):
     # contar entradas nao basta, o que conta e' quantos eixos elas acionam.
     {"idade": 58,
+     "id": "castanho_mecha", "rotulo": "58y · castanho + mecha na tempora",
      "marca": "thick chestnut hair with a bright white streak at the left temple",
      "cabelo": "chestnut",
      "roupa": "Plain charcoal crew-neck tee shirt.",
      "roupa_curta": "charcoal tee shirt"},
     {"idade": 63,
+     "id": "ondas_aco", "rotulo": "63y · ondas de aco + queixo fendido",
      "marca": "a full head of wavy steel-grey hair and a cleft chin",
      "cabelo": "steel-grey",
      "roupa": "Plain olive crew-neck tee shirt.",
      "roupa_curta": "olive tee shirt"},
     {"idade": 55,
+     "id": "olhos_azuis", "rotulo": "55y · escuro pra tras + olhos azuis",
      "marca": "dense dark hair swept back and very pale blue eyes",
      "cabelo": "dark",
      "roupa": "Plain rust-red crew-neck tee shirt.",
@@ -548,16 +566,19 @@ REFS = [
     # nao le' a diferenca entre descrever e depreciar. A arquitetura facial fica
     # (o nariz continua sendo o eixo), so' o adjetivo de dano sai.
     {"idade": 61,
+     "id": "afro_grisalho", "rotulo": "61y · afro grisalho + nariz largo",
      "marca": "a thick grey afro worn low and a broad straight nose with a wide bridge",
      "cabelo": "grey",
      "roupa": "Plain slate-blue crew-neck tee shirt.",
      "roupa_curta": "slate-blue tee shirt"},
     {"idade": 68,
+     "id": "branco_lateral", "rotulo": "68y · branco de lado + rosto alongado",
      "marca": "a full head of white hair combed sideways and a long thin face",
      "cabelo": "white",
      "roupa": "Plain sand crew-neck tee shirt.",
      "roupa_curta": "sand tee shirt"},
     {"idade": 59,
+     "id": "locs_sal_pimenta", "rotulo": "59y · locs sal-e-pimenta + olhos fundos",
      "marca": "salt-and-pepper locs gathered back and deep-set dark eyes",
      "cabelo": "salt-and-pepper",
      "roupa": "Plain forest-green crew-neck tee shirt.",
@@ -585,41 +606,49 @@ REFS = [
     # ⚠️ Cada entrada aciona PORTE + CABELO + ANCORA (e cinco delas, PELE):
     # contar entradas nao basta, o que conta e' quantos eixos elas mexem.
     {"idade": 66,
+     "id": "juba_loira", "rotulo": "66y · juba loira + sobrancelhas fortes",
      "marca": "a tall broad-chested frame, a thick sandy-blond mane pushed straight back and heavy level brows",
      "cabelo": "sandy-blond",
      "roupa": "Plain indigo crew-neck tee shirt.",
      "roupa_curta": "indigo tee shirt"},
     {"idade": 57,
+     "id": "porte_ereto", "rotulo": "57y · escuro + mecha branca + porte ereto",
      "marca": "a lean upright build, thick dark hair with a patch of white above his left temple and smooth even skin",
      "cabelo": "dark",
      "roupa": "Plain brick red crew-neck tee shirt.",
      "roupa_curta": "brick red tee shirt"},
     {"idade": 69,
+     "id": "barril_branco", "rotulo": "69y · ondas brancas + peito de barril",
      "marca": "a heavy barrel-chested build, a full head of loose white waves and laugh lines that frame a wide easy smile",
      "cabelo": "white",
      "roupa": "Plain moss green crew-neck tee shirt.",
      "roupa_curta": "moss green tee shirt"},
     {"idade": 60,
+     "id": "atleta_prata", "rotulo": "60y · prata rente + sardas no malar",
      "marca": "a broad-shouldered athletic frame, close-cropped silver hair over a low straight hairline and light freckles across both cheekbones",
      "cabelo": "silver",
      "roupa": "Plain denim blue crew-neck tee shirt.",
      "roupa_curta": "denim blue tee shirt"},
     {"idade": 72,
+     "id": "esguio_cinza", "rotulo": "72y · cinza-claro + uma covinha so",
      "marca": "a long-limbed rangy build, thick ash-gray hair combed to the right and a dimple in his right cheek only",
      "cabelo": "ash-gray",
      "roupa": "Plain plum crew-neck tee shirt.",
      "roupa_curta": "plum tee shirt"},
     {"idade": 56,
+     "id": "olhos_verdes", "rotulo": "56y · castanho-claro + olhos verdes",
      "marca": "a solid square-set build, dense light-brown hair with a deep side part, wide-set green eyes and lightly tanned even skin",
      "cabelo": "light-brown",
      "roupa": "Plain ochre crew-neck tee shirt.",
      "roupa_curta": "ochre tee shirt"},
     {"idade": 64,
+     "id": "escovinha_ferro", "rotulo": "64y · escovinha de ferro + pinta na orelha",
      "marca": "a trim upright frame, thick iron-grey hair in a short brush cut and a small dark beauty spot just below his left ear",
      "cabelo": "iron-grey",
      "roupa": "Plain terracotta crew-neck tee shirt.",
      "roupa_curta": "terracotta tee shirt"},
     {"idade": 70,
+     "id": "neve_ambar", "rotulo": "70y · neve ate o colarinho + olhos ambar",
      "marca": "a deep-chested build heavy through the shoulders, thick snow-white hair long enough to touch the collar, high wide cheekbones and amber-brown eyes",
      "cabelo": "snow-white",
      "roupa": "Plain steel blue crew-neck tee shirt.",
@@ -1297,6 +1326,27 @@ def _sortear_evitando(rng, pool, recentes, chave="id"):
     return rng.choice(livres if livres else pool)
 
 
+def _por_id(pool, ident):
+    """A entrada de `id` igual a `ident` — ou `None` quando ela nao existe.
+
+    ⭐⭐ 2026-08-13 — NASCEU COM O DROPDOWN DE NARRADOR (`DROPDOWNS_UI`). O
+    combobox devolve o `id` do REF escolhido, e sem esta funcao o motor nao
+    tinha COMO honrar a escolha: a linha da REF era `rng.choice(REFS)` cru, sem
+    trava nenhuma.
+    ⚠️ E OS 26 REFs DESTE POOL NASCERAM SEM `id` — foram batizados nesta mesma
+    data, por isso. Sem chave, o `ui_agente._barra_dropdowns` monta o mapa
+    `rotulo -> None`, o `travas()` descarta o `None` no `if alvo:` e o menu fica
+    desenhado na tela sem mexer em nada: o botao que mente na sua forma mais
+    silenciosa.
+    ⛔ Devolve `None` de proposito, e quem chama decide o fallback. Cair no
+    `pool[0]` aqui seria o pior dos mundos: o operador escolheria o 18o REF do
+    menu, o motor entregaria o 1o, e a tela ainda diria que a trava funcionou.
+    ⚠️ Ele nao consome `rng`: um id invalido nao pode deslocar a sequencia de
+    sorteio dos outros eixos.
+    """
+    return next((e for e in pool if e.get("id") == ident), None)
+
+
 # ⚠️ era `nova_fala` no arquivo de origem — renomeada porque este arquivo tem a
 # sua propria `nova_fala`, de 3 cenas. Fora a linha do `def`, copia literal.
 def _cta_curto(rng):
@@ -1356,8 +1406,38 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     # ⭐ MODO BELA / MODO FORTE — contrato do short_comum.
     # ⚠️ A REF deste angulo e' o NARRADOR (homem), e a mulher e' a vitima do
     # flagrante. Por isso `forte` vale para a REF e `bela` para as MULHERES.
-    ref = (sc.ref_forte(REFS[0], rng) if (travas or {}).get("forte")
-           else rng.choice(REFS))
+    # ⭐⭐ 2026-08-13 — O DROPDOWN DE NARRADOR ENTRA AQUI, E ANTES DO MODO
+    # FORTE. Ordem do operador: *"quando selecionado determinada opcao, o ref
+    # ficara' FIXO naquele selecionado para quaisquer sorteio"*.
+    # ⛔ A ORDEM NAO E' ESTILO. `sc.ref_forte` devolve uma PESSOA INTEIRA, de
+    # fora do pool; se ele viesse primeiro, escolher `74y · aco com risca baixa
+    # + ombros largos` no menu entregaria outro homem sempre que o MODO FORTE
+    # estivesse aceso — e neste motor ele nasce ligado (`MODO_FORTE = True`),
+    # entao o menu mentiria no ESTADO PADRAO do app.
+    # ⚠️ O `ui_agente` ja' desliga os modos de pessoa quando `ref` esta' na
+    # trava; esta linha e' a segunda rede, para quem chama o motor direto (o
+    # `--autoteste`, a linha de comando, um script de lote).
+    # ⚠️ E o `or` no fim e' o que impede a trava de matar o sorteio: id que nao
+    # existe mais no pool (menu de outra versao) cai no caminho normal em vez de
+    # estourar `None` la' na frente.
+    ref = (_por_id(REFS, (travas or {}).get("ref")) or
+           (sc.ref_forte(REFS[0], rng) if (travas or {}).get("forte")
+            else rng.choice(REFS)))
+    # ⛔⛔ O ROTULO NAO ATRAVESSA O MODO FORTE — e isso e' consequencia direta de
+    # ter criado a chave. O `sc.ref_forte` monta a saida com `for campo in
+    # molde`, e todo campo que ele nao conhece e' COPIADO do molde (aqui,
+    # `REFS[0]`). Medido em 2026-08-13: com o botao FORTE aceso saia um homem de
+    # 26 anos carregando `66y · prateado + orelha entalhada`. Nao chega ao
+    # prompt nem ao painel hoje, mas e' dado errado esperando um leitor — e o
+    # proximo leitor seria um dropdown lendo a spec em vez do pool.
+    # ⚠️ O `pop` so' acontece quando o dicionario veio DO HELPER (`_forte`): as
+    # entradas de `_por_id` e de `rng.choice` sao o proprio objeto do pool, e
+    # apagar a chave ali mutilaria o pool para o resto do processo.
+    # ⛔ O conserto e' LOCAL, nao no `short_comum`: aquele helper serve 43
+    # motores e mexer nele para resolver um campo que so' dois motores tem seria
+    # trocar um dado errado por um risco de regressao em quarenta e um.
+    if ref.get("_forte"):
+        ref.pop("rotulo", None)
     vit = rng.choice(VITIMAS)
     mul = rng.choice(MULHERES)
 
@@ -1386,6 +1466,17 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
     ]
 
     return {
+            # ⛔⛔ O QUE DE FATO ACONTECEU COM O MODO, gravado no spec.
+            # Sem esta chave o painel nao distingue "o modo entrou" de "o
+            # modo morreu", e o botao fica ACESO nos dois casos. O eixo
+            # escolhido no menu (ou no cadeado) vence o modo por desenho —
+            # o que nao pode e' o operador nao ficar sabendo.
+            # ⭐ A flag LE' O CARIMBO que `sc.ref_bela`/`sc.ref_forte` deixam
+            # (`_bela`/`_forte`), em vez de re-derivar a precedencia aqui. Regra
+            # copiada e' regra que envelhece sozinha: minha primeira versao
+            # inventou um `and not travas.get("homem")` que o ternario do
+            # `troca16` nem le', e teria acusado de morto um modo VIVO.
+            "forte": bool(ref.get("_forte")),
         "pagina": pagina, "ocasiao": oc, "prop": prop, "ambiente": amb,
         "ref": ref, "vitima": vit, "mulher": mul, "falas": falas,
     }
@@ -1531,6 +1622,25 @@ EIXOS_UI = [
     ("vitima", "VÍTIMA", "VITIMAS", "marca"),
     ("mulher", "MULHER", "MULHERES", "hook"),
 ]
+
+# ⭐⭐ O DROPDOWN DE NARRADOR — 2026-08-13, ordem do operador (*"quero um
+# controlador ui ux com seletor dropdown menu, onde que, quando selecionado
+# determinada opcao, o ref ficara' FIXO naquele selecionado para quaisquer
+# sorteio"*). Contrato aditivo do `ui_agente`, o mesmo que o MEL 16 estreou.
+# ⛔ E' ELE que da' FUNCAO ao campo `rotulo` dos 26 REFs. Sem esta linha os 26
+# textos seriam comentario caro — escritos, medidos, travados, e invisiveis.
+# Forma sem funcao e' o defeito que este repo mais paga (licoes §41).
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado; com 26 narradores ela estoura a largura da janela.
+# ⚠️ O ROTULO DA TELA E' O MESMO DO `EIXOS_UI` (`NARRADOR`), de proposito: dois
+# nomes para o mesmo eixo fazem o operador procurar dois controles onde ha' um.
+# ⚠️ E o campo exibido e' `rotulo`, nao `marca`: a `marca` deste pool e' a
+# frase inglesa que vai para o prompt (`unusually broad square shoulders, thick
+# steel gray hair parted low on one side and a small gold stud in his right
+# earlobe`, 18 palavras) — num combobox de 38 colunas ela sai cortada na
+# terceira palavra. O `EIXOS_UI` acima continua com `marca` porque la' o painel
+# desenha a LINHA inteira do eixo, que aguenta o comprimento.
+DROPDOWNS_UI = [("ref", "NARRADOR", "REFS", "rotulo")]
 
 # ja' com a preposicao contraida — abrem a frase do resumo
 PT_OCASIAO = {
@@ -2314,6 +2424,83 @@ def _medir_pools(ambientes, refs, vitimas, mulheres):
     return achados
 
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ O CONTRATO DO DROPDOWN — medido, nunca declarado
+# ---------------------------------------------------------------------------
+# 2026-08-13. O `DROPDOWNS_UI` e o campo `rotulo` nasceram juntos e so' valem
+# juntos: rotulo sem a linha e' comentario caro (26 textos que olho nenhum ve'),
+# e a linha sem rotulo desenha um menu de `id`s que so' o autor entende.
+# ⛔ AS QUATRO TRAVAS DE FORMA, e o preco de cada uma se cair:
+#   1. rotulo em TODA entrada — o `ui_agente` cai no `id` e o menu vira codigo.
+#   2. rotulo UNICO — o `_barra_dropdowns` monta o mapa com `if txt and txt not
+#      in mapa`: dois rotulos iguais fazem o SEGUNDO narrador SUMIR do menu, em
+#      silencio, sem erro e sem log. Pool de 26 que so' se alcanca em 25.
+#   3. rotulo <= 42 chars — o combobox e' `width=38`; o que passa disso sai
+#      cortado na tela, e rotulo cortado volta a ser ilegivel, que e' exatamente
+#      o problema que ele veio resolver.
+#   4. pool e campo EXISTENTES — o `ui_agente` resolve o pool com
+#      `getattr(motor, nome, [])`, que devolve lista vazia sem reclamar: nome
+#      errado desenha um menu com uma opcao so' (`livre`) e nada acontece.
+# ⛔⛔ E A QUINTA E' A QUE IMPORTA: A ESCOLHA TEM DE FIXAR DE VERDADE. As quatro
+# de cima medem a FORMA do menu; esta mede a FUNCAO — sorteia COM a trava e
+# confere que o eixo saiu o escolhido. E' a licao §41 em uma linha: verificar a
+# forma e declarar pronto foi como este repo ja' entregou botao que nao entrega.
+# ⚠️ Neste motor a quinta e' a que MAIS importa: os 26 REFs nao tinham `id` ate'
+# hoje, e a linha da REF era `rng.choice(REFS)` cru. Com o menu desenhado e o
+# motor sem trava, as quatro de forma ficariam TODAS verdes e o seletor nao
+# mexeria em nada.
+# ⚠️ Tudo entra por ARGUMENTO (§16): e' o que deixa o sabotador plantar rotulo
+# vazio, rotulo repetido, rotulo comprido, pool inexistente e ate' um `sortear`
+# que IGNORA a trava, sem encostar no motor de verdade.
+def _medir_dropdowns(dropdowns, pools, sortear_fn=None, paginas=()):
+    """As travas do `DROPDOWNS_UI` + do campo `rotulo`, medidas."""
+    achados = []
+    for chave, tela, nome_pool, campo in dropdowns:
+        if nome_pool not in pools:
+            achados.append("DROPDOWNS_UI %r aponta para o pool %r, que nao "
+                           "existe — o `getattr` devolve [] e o menu nasce "
+                           "vazio, sem erro nenhum" % (chave, nome_pool))
+            continue
+        pool = pools[nome_pool]
+        sem = [e.get("id", "?") for e in pool if not e.get(campo)]
+        if sem:
+            achados.append("DROPDOWNS_UI %r: %d entrada(s) de %s sem %r — o "
+                           "menu cai no `id` e o operador le' %r"
+                           % (chave, len(sem), nome_pool, campo, sem[0]))
+        rots = [e.get(campo) or "" for e in pool]
+        rep = sorted({r for r in rots if r and rots.count(r) > 1})
+        if rep:
+            achados.append("DROPDOWNS_UI %r: %d rotulo(s) repetido(s) (%r) — a "
+                           "segunda entrada some do menu sem erro nenhum"
+                           % (chave, len(rep), rep[0]))
+        longos = [r for r in rots if len(r) > 42]
+        if longos:
+            achados.append("DROPDOWNS_UI %r: %d rotulo(s) acima de 42 chars "
+                           "(%r, %d) — estoura a largura do combobox"
+                           % (chave, len(longos), longos[0], len(longos[0])))
+        # ⛔⛔ A TRAVA TEM DE FIXAR. Sem esta parte o menu poderia estar
+        # perfeito na tela e o motor continuar sorteando livre — que e' o
+        # estado em que este arquivo estava antes de 2026-08-13.
+        if sortear_fn and paginas:
+            for i, e in enumerate(pool):
+                alvo = e.get("id")
+                if not alvo:
+                    achados.append("DROPDOWNS_UI %r: entrada sem `id` — o "
+                                   "`ui_agente` mapeia rotulo -> None e o "
+                                   "`travas()` descarta a escolha em silencio"
+                                   % chave)
+                    break
+                s = sortear_fn(paginas[i % len(paginas)],
+                               random.Random(7000 + i), {}, {chave: alvo})
+                saiu = (s.get(chave) or {}).get("id")
+                if saiu != alvo:
+                    achados.append("DROPDOWNS_UI %r: escolher %r no menu %s "
+                                   "entregou %r — o botao que mente"
+                                   % (chave, alvo, tela, saiu))
+                    break
+    return achados
+
+
 def autoteste(n=600):
     """Os pools e as invariantes deste motor, medidos num lote de verdade.
 
@@ -2322,6 +2509,28 @@ def autoteste(n=600):
     """
     falhas = list(_medir_pools(AMBIENTES, REFS, VITIMAS, MULHERES))
     vistos = collections.defaultdict(set)
+
+    # ---- O DROPDOWN E O ROTULO --------------------------------------------
+    _pags = sorted(ETNIA)
+    falhas.extend(_medir_dropdowns(DROPDOWNS_UI, {"REFS": REFS},
+                                   sortear, _pags))
+    # ⛔ Os rotulos do menu sao PORTUGUES e nao podem chegar ao prompt: um
+    # vazamento poria `66y · prateado + orelha entalhada` dentro de um bloco
+    # IMAGE em ingles, e o Veo desenha texto. A lente e' de AUSENCIA — olha os
+    # blocos MONTADOS, nao a intencao de quem escreveu o `montar`.
+    # ⚠️ E ela varre o pool inteiro, um sorteio por REF: lente de vazamento que
+    # olha um bloco so' mede a sorte da seed, nao o motor.
+    _rots = [r.get("rotulo") or "" for r in REFS]
+    for _i, _r in enumerate(REFS):
+        _bj = " ".join(montar(sortear(_pags[_i % len(_pags)],
+                                      random.Random(8000 + _i), {},
+                                      {"ref": _r["id"]})).values())
+        _vaza = [x for x in _rots if x and x in _bj]
+        if _vaza:
+            falhas.append("ROTULO: o texto de painel %r vazou para um bloco do "
+                          "prompt — ele e' portugues e o Veo desenha texto"
+                          % _vaza[0])
+            break
 
     for seed in range(n):
         spec = sortear("joe", random.Random(seed), {})
@@ -2375,6 +2584,62 @@ def autoteste(n=600):
     # acusado. Regra que reprova tudo nunca foi testada.
     if _medir_pools(AMBIENTES, REFS, VITIMAS, MULHERES):
         ctrl.append("o pool limpo esta' sendo reprovado pela propria sonda")
+
+    # ---- OS CINCO SABOTADORES DA LENTE DO DROPDOWN ------------------------
+    # ⛔ `0 falha` num gate novo e' suspeita, nao aprovacao: pode ser motor
+    # limpo ou regra morta. Cada sabotador abaixo tem de CHEGAR onde a lente
+    # olha (licoes §16) — por isso o pool e ate' o `sortear` entram por
+    # argumento.
+    _vazio = dict(REFS[0]); _vazio["rotulo"] = ""
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": [_vazio] + REFS[1:]}):
+        ctrl.append("a lente do dropdown NAO acusa rotulo VAZIO")
+    _dup = dict(REFS[1]); _dup["rotulo"] = REFS[0]["rotulo"]
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": [REFS[0], _dup] + REFS[2:]}):
+        ctrl.append("a lente do dropdown NAO acusa rotulo REPETIDO")
+    _long = dict(REFS[0]); _long["rotulo"] = "x" * 43
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": [_long] + REFS[1:]}):
+        ctrl.append("a lente do dropdown NAO acusa rotulo acima de 42 chars")
+    if not _medir_dropdowns([("ref", "NARRADOR", "REFS_QUE_NAO_EXISTEM",
+                             "rotulo")], {"REFS": REFS}):
+        ctrl.append("a lente do dropdown NAO acusa `DROPDOWNS_UI` apontando "
+                    "para pool inexistente")
+    # ⛔⛔ O sabotador que importa: um `sortear` que IGNORA a trava. E' o estado
+    # em que este motor estava ate' hoje de manha — e as quatro lentes de FORMA
+    # acima ficavam todas verdes nele.
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": REFS},
+                            lambda p, r, l, t=None: sortear(p, r, l), _pags):
+        ctrl.append("a lente do dropdown NAO acusa um `sortear` que IGNORA a "
+                    "trava — e' a unica das cinco que mede FUNCAO")
+    _sem_id = [dict(r) for r in REFS]
+    _sem_id[0].pop("id", None)
+    if not _medir_dropdowns(DROPDOWNS_UI, {"REFS": _sem_id}, sortear, _pags):
+        ctrl.append("a lente do dropdown NAO acusa entrada SEM `id` — era o "
+                    "estado nativo deste pool antes de 2026-08-13")
+
+    # ---- O ROTULO NAO PODE ATRAVESSAR O MODO FORTE ------------------------
+    # ⛔ O `sc.ref_forte` copia do molde todo campo que ele nao conhece, e
+    # `rotulo` e' um deles: sem o `pop` do `_sortear_longo` o homem de 26 anos
+    # sai carregando o rotulo do senhor de 66. Nao vaza para o prompt, mas e'
+    # dado errado esperando um leitor.
+    for _s in range(40):
+        _rf = sortear("joe", random.Random(9000 + _s), {}, {"forte": True})
+        if _rf["ref"].get("rotulo"):
+            falhas.append("MODO FORTE: a REF saiu com o rotulo %r, que e' de "
+                          "outro homem — o `pop` do `_sortear_longo` caiu"
+                          % _rf["ref"]["rotulo"])
+            break
+    # ⚠️ E o controle: a saida CRUA do helper TEM o rotulo. Sem esta linha eu
+    # nao saberia se a lente acima esta' verde porque o `pop` funciona ou porque
+    # o helper nunca copiou nada — regra que nunca teve o que pegar e' regra
+    # morta pintada de verde.
+    if not sc.ref_forte(REFS[0], random.Random(7)).get("rotulo"):
+        ctrl.append("o `sc.ref_forte` NAO copia mais o `rotulo` do molde — a "
+                    "lente do MODO FORTE virou regra morta, confira o helper")
+    # ⛔ E o pool nao pode ter sido mutilado pelo `pop`: se o `_forte` falhasse
+    # e a entrada do pool fosse a que perdeu a chave, o menu perderia a opcao.
+    if any(not r.get("rotulo") for r in REFS):
+        falhas.append("REFS: uma entrada do POOL perdeu o `rotulo` — o `pop` "
+                      "do MODO FORTE encostou no objeto do pool")
 
     print("AMBIENTES %d | REFS %d | VITIMAS %d | MULHERES %d | %d videos"
           % (len(AMBIENTES), len(REFS), len(VITIMAS), len(MULHERES), n))

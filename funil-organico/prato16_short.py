@@ -602,44 +602,54 @@ JARRAS = [
 HOMENS = [
     # --- APALACHES / NOROESTE: o homem de montanha, barba de verdade -------
     {"id": "montanhes_barba", "idade": 67, "familias": ["apalache", "noroeste"],
+     "rotulo": "67y · grisalho curto + barba cheia",
      "cabeca": "grey hair cut short under the ears and a full grey beard "
                "grown out",
      "marca": "heavy level brows and deep laugh lines"},
     {"id": "apalache_careca", "idade": 63, "familias": ["apalache", "noroeste"],
+     "rotulo": "63y · careca + barba sal-e-pimenta",
      "cabeca": "a bald crown with the sides clipped close and a thick "
                "salt-and-pepper beard",
      "marca": "a shallow cleft in his chin"},
     {"id": "noroeste_longo", "idade": 61, "familias": ["noroeste", "apalache"],
+     "rotulo": "61y · grisalho longo + oculos na testa",
      "cabeca": "grey hair worn a little long over the ears and a short "
                "trimmed beard",
      "marca": "rimless glasses pushed up on his head"},
 
     # --- SUL PROFUNDO / DELTA: o cavalheiro de bigode ----------------------
     {"id": "sulista_bigode", "idade": 65, "familias": ["sulista", "delta"],
+     "rotulo": "65y · prata penteado + bigode branco",
      "cabeca": "silver hair combed back and a thick white moustache",
      "marca": "a beauty mark high on one cheekbone"},
     {"id": "delta_careca", "idade": 69, "familias": ["delta", "sulista"],
+     "rotulo": "69y · careca + bigode branco + oculos",
      "cabeca": "a cleanly shaved head and a neat white moustache",
      "marca": "gold half-moon glasses and a dimple beside his mouth"},
     {"id": "sulista_branco", "idade": 62, "familias": ["sulista", "gullah"],
+     "rotulo": "62y · branco curto + barba aparada",
      "cabeca": "short white hair in a clean taper and a close white beard",
      "marca": "a silver streak running through one eyebrow"},
 
     # --- TEXAS: o bigode largo, o cabelo curto -----------------------------
     {"id": "texano_bigode", "idade": 64, "familias": ["texas", "americana"],
+     "rotulo": "64y · grisalho raspado + bigode largo",
      "cabeca": "close-cropped grey hair and a wide grey moustache that covers "
                "his top lip",
      "marca": "deep laugh lines and heavy brows"},
     {"id": "texano_prata", "idade": 66, "familias": ["texas", "americana"],
+     "rotulo": "66y · prata farto + barbeado + fenda",
      "cabeca": "thick silver hair cut short at the sides, clean-shaven",
      "marca": "a deep cleft in his chin"},
 
     # --- MEIO-OESTE / GRANDES LAGOS: o pai de familia, sem firula ----------
     {"id": "meio_oeste_oculos", "idade": 61,
+     "rotulo": "61y · grisalho curto + oculos finos",
      "familias": ["meio_oeste", "grandes_lagos", "americana"],
      "cabeca": "short grey hair in a clean taper, clean-shaven",
      "marca": "thin wire-rimmed glasses and a dimple in one cheek"},
     {"id": "lagos_escovinha", "idade": 59,
+     "rotulo": "59y · escovinha prata + barbeado",
      "familias": ["grandes_lagos", "meio_oeste"],
      "cabeca": "a silver brush cut kept very short, clean-shaven",
      "marca": "a straight narrow nose and laugh lines at the eyes"},
@@ -648,20 +658,24 @@ HOMENS = [
     # a ancora deste homem sempre foram os oculos pesados. O cabelo so' precisa
     # ser branco e curto.
     {"id": "meio_oeste_barba", "idade": 68,
+     "rotulo": "68y · branco curto + barba + oculos",
      "familias": ["meio_oeste", "grandes_lagos"],
      "cabeca": "a full head of white hair cut short and a short white beard",
      "marca": "heavy dark-rimmed glasses"},
 
     # --- NOVA INGLATERRA / ITALO-AMERICANA: o cabelo farto penteado --------
     {"id": "yankee_branco", "idade": 70,
+     "rotulo": "70y · branco farto + oculos meia-lua",
      "familias": ["nova_inglaterra", "italo_americana"],
      "cabeca": "thick white hair cut neatly above the collar, clean-shaven",
      "marca": "gold half-moon glasses and a shallow cleft chin"},
     {"id": "italo_prata", "idade": 65,
+     "rotulo": "65y · prata para tras + sobrancelha forte",
      "familias": ["italo_americana", "nova_inglaterra"],
      "cabeca": "thick silver hair swept straight back, clean-shaven",
      "marca": "heavy dark level brows and a beauty mark near his jaw"},
     {"id": "yankee_cavanhaque", "idade": 62,
+     "rotulo": "62y · grisalho com risca + cavanhaque",
      "familias": ["nova_inglaterra", "italo_americana", "grandes_lagos"],
      "cabeca": "short grey hair with a sharp side part and a trimmed grey "
                "goatee",
@@ -669,29 +683,35 @@ HOMENS = [
 
     # --- HARLEM / ATLANTA / CREOLE / GULLAH -------------------------------
     {"id": "harlem_careca", "idade": 63, "familias": ["harlem", "atlanta"],
+     "rotulo": "63y · careca + cavanhaque + argola",
      "cabeca": "a cleanly shaved head and a short white goatee",
      "marca": "a plain gold hoop in one ear"},
     {"id": "atlanta_fade", "idade": 60,
+     "rotulo": "60y · fade grisalho + barba rente",
      "familias": ["atlanta", "harlem", "creole"],
      "cabeca": "a short grey fade with a clean line at the temples and a "
                "close-trimmed grey beard",
      "marca": "a dimple in one cheek"},
     {"id": "gullah_barba", "idade": 69, "familias": ["gullah", "delta"],
+     "rotulo": "69y · branco natural + barba cheia",
      "cabeca": "short white natural hair and a full white beard kept neatly "
                "shaped",
      "marca": "deep laugh lines at the corners of his mouth"},
     {"id": "creole_risca", "idade": 64,
+     "rotulo": "64y · sal-e-pimenta + bigode + oculos",
      "familias": ["creole", "gullah", "harlem"],
      "cabeca": "salt-and-pepper hair with a clean side part and a thin "
                "moustache",
      "marca": "thin wire-rimmed glasses and a straight narrow nose"},
     {"id": "harlem_prata", "idade": 66, "familias": ["harlem", "creole"],
+     "rotulo": "66y · prata rente + bigode prateado",
      "cabeca": "short silver hair kept close to the crown and a trimmed "
                "silver moustache",
      "marca": "a beauty mark high on one cheekbone"},
 
     # --- FLORIDA: o aposentado, e e' o retrato da fonte --------------------
     {"id": "florida_morsa", "idade": 68, "familias": ["florida", "americana"],
+     "rotulo": "68y · careca + bigode de morsa + oculos",
      "cabeca": "a bald crown with the sides clipped short and a full white "
                "walrus moustache",
      "marca": "thin wire-rimmed glasses and deep laugh lines"},
@@ -699,11 +719,13 @@ HOMENS = [
     # REF que o operador reprovou vendo o render no ALFA 16 (*"retire esse ref
     # feio"*): cabelo penteado para a frente le' como quem esconde entrada.
     {"id": "florida_branco", "idade": 66, "familias": ["florida", "sulista"],
+     "rotulo": "66y · branco com risca + barbeado",
      "cabeca": "short white hair in a neat side part, clean-shaven",
      "marca": "a small pale birthmark near one temple"},
 
     # --- SUBURBIO AMERICANO -----------------------------------------------
     {"id": "suburbano_taper", "idade": 58, "familias": ["americana", "texas"],
+     "rotulo": "58y · grisalho classico + covinha",
      "cabeca": "grey hair in a clean classic taper, clean-shaven",
      "marca": "a dimple beside his mouth"},
 ]
@@ -1192,7 +1214,32 @@ def sortear(pagina, rng, ledger, travas=None):
     # ⚠️ E isso e' fiel a' ordem original do operador sobre o toggle
     # (*"n quis manter os tiozao forte?"*): ele nunca pediu para TROCAR o homem,
     # pediu para o homem ficar FORTE.
-    forte = bool(travas.get("forte")) and not travas.get("homem")
+    # ⛔⛔ A GUARDA AQUI OLHA O FORMATO DE `travas["homem"]`, E ISSO NAO E'
+    # DETALHE — E' A CORRECAO DE UM ERRO MEU DE 2026-08-13.
+    #
+    # A guarda antiga era `and not travas.get("homem")`: qualquer homem travado
+    # matava o FORTE. Eu a removi inteira, com a justificativa de que ela ficara
+    # obsoleta — o FORTE hoje troca so' o CORPO, mantendo o rosto da regiao,
+    # entao homem escolhido e corpo forte deixaram de ser incompativeis. Isso e'
+    # verdade para o DROPDOWN, e so' para ele.
+    #
+    # ⚠️ O que eu nao verifiquei: `travas["homem"]` tem DOIS formatos (esta' no
+    # docstring do `_por_id`, logo acima). O dropdown manda um ID (string) fresco
+    # do pool — reaplicar o FORTE nele e' idempotente. O CADEADO manda o
+    # DICIONARIO JA' RESOLVIDO do sorteio anterior, que JA' passou por aqui. Sem
+    # guarda nenhuma o FORTE se reaplica sobre si mesmo a cada SORTEAR, e as
+    # duas consequencias foram medidas:
+    #   (a) `sc.ref_forte` re-sorteia IDADE e CORPO toda vez — o cadeado, cujo
+    #       contrato e' congelar o que esta' na tela, parou de congelar
+    #       (idades 67, 70, 72, 68, 68, 72 em seis cliques seguidos);
+    #   (b) o `id` acumula o sufixo sem limite —
+    #       `texano_prata_forte_forte_forte_forte...` — e e' ESSA string que o
+    #       `_anotar` grava no ledger, onde ela nunca mais casa com o pool.
+    #
+    # ⭐ A licao vale mais que o conserto: eu medi o caminho novo (o menu),
+    # declarei a guarda obsoleta, e nao medi o OUTRO chamador da mesma chave.
+    # Verificar a funcao num caminho nao autoriza conclusao sobre o outro.
+    forte = bool(travas.get("forte")) and not isinstance(travas.get("homem"), dict)
     if forte:
         _f = sc.ref_forte(MOLDE_H, rng, idade_min=FORTE_IDADE_MIN,
                           maduros=True)
@@ -1249,8 +1296,11 @@ CAUDA = ("Shot on iPhone, natural grain. No on-screen text, no subtitles, no "
 # ⭐ Com o MODO FORTE ligado ela vira `sc.ANTICELEB_FORTE`: dizer "powerfully
 # built" no corpo e "plain unremarkable face" no rosto na mesma frase e' a
 # contradicao que o CLEAN ja' pagou.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 ANTICELEB = ("An ordinary everyday relatable person with a plain unremarkable "
-             "face, not a celebrity, not a model, not an actor.")
+             "face.")
 
 
 def _traje_dela(spec):
@@ -1659,6 +1709,13 @@ def lint(spec, blocos):
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_take_vs_image(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor tem `lint()` PROPRIO e
+    # nao passa pelo `sc.lint_curto`, entao a lente entra aqui
+    # explicitamente — regra sem guarda volta no proximo agente nascido
+    # por copia, e foi exatamente assim que a clausula chegou aos 30
+    # motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_painel_honesto(sys.modules[__name__], spec, blocos, ach)
     for f in (_pr1_prato_e_copo, _pr2_ela_so_no_take2, _pr3_continuidade,
               _pr4_cor_unica, _pr5_orcamento, _pr6_etnia, _pr7_sem_gole,
@@ -1684,6 +1741,29 @@ EIXOS_UI = [
 EIXOS_TRAVAVEIS = ["mundo", "homem", "mulher", "cor", "prato", "jarra"]
 
 TRAVAS_UI = [("familia_mundo", "regiao", ["livre"] + FAMILIAS_MUNDO)]
+
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# ⛔ Sem esta linha os 22 rotulos seriam comentario caro: escritos, medidos e
+# travados, e nenhum olho humano os veria. Forma sem funcao e' o defeito que
+# este repo mais paga (licoes-de-construcao §41), e label que nao aparece na
+# tela e' a versao mais barata dele.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado. Serve para as familias de regiao; com 22 homens ela
+# estoura a largura da janela. Contrato aditivo do `ui_agente` (2026-08-13).
+# ⚠️ O ROTULO DA TELA E' O MESMO DO `EIXOS_UI` ("QUEM FALA") de proposito: sao o
+# mesmo eixo, e dois nomes para o mesmo eixo fazem o operador procurar um
+# controle que nao existe.
+# ⚠️ E o campo exibido e' `rotulo`, NAO `id`: o `ui_agente` monta o mapa
+# texto -> id, entao ele escolhe "68y · careca + bigode de morsa + oculos" e o
+# motor recebe `florida_morsa`. Um menu de ids obrigaria a abrir o codigo para
+# saber o que se escolheu. ⚠️ O `EIXOS_UI` acima continua com `id` porque la' o
+# `_texto_eixo` ja' prefixa a idade (`"%dy · %s"`) — trocar para `rotulo`
+# imprimiria "67y · 67y · grisalho curto...". Dois lugares, dois campos.
+# ⛔ O DROPDOWN GANHA DA FAMILIA DO MUNDO. O `homens_da_familia` so' e'
+# consultado quando `travas["homem"]` esta' vazio; escolher aqui e' escolha
+# EXPLICITA, e escolha explicita vence filtro automatico — o mesmo precedente do
+# `or` que faz a familia travada ceder no `sortear`.
+DROPDOWNS_UI = [("homem", "QUEM FALA", "HOMENS", "rotulo")]
 
 # ⚠️ `mundo` entra na lista de ignorados do `lint_painel_honesto` porque o valor
 # do eixo e' um id interno; os outros chegam ao quadro pelo `img`/`cabeca`/
@@ -1918,6 +1998,90 @@ def autoteste(n=400):
         for c in controles:
             print("   " + c)
         falhas.extend(controles)
+
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — as quatro coisas que o dropdown do painel
+    # exige, cobradas do DADO e nao da intencao de quem escreveu o pool.
+    # ⚠️ A UNICIDADE nao e' capricho: o `ui_agente._barra_dropdowns` monta o
+    # mapa com `if txt and txt not in mapa`, entao dois rotulos iguais fazem a
+    # SEGUNDA entrada sumir do menu — em silencio, sem erro, sem log. Pool que o
+    # operador so' consegue alcancar pela metade e' a familia do botao que
+    # mente, so' que por colisao de texto.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` + folga): rotulo
+    # maior fica cortado na tela, e rotulo cortado volta a ser ilegivel — que e'
+    # exatamente o problema que ele veio resolver.
+    # ⛔ E O `id` E' COBRADO DA ENTRADA porque a linha `mapa[txt] = e.get("id")`
+    # do `ui_agente` e' o que vira TRAVA. Entrada sem `id` mapeia para None, o
+    # `if alvo:` do `travas()` descarta a escolha e o menu vira ENFEITE: o
+    # operador escolhe uma pessoa e o sorteio devolve outra, sem uma linha de
+    # erro. Foi o estado real deste pool ate' 2026-08-13.
+    for _ch, _rt, _pn, _cp in DROPDOWNS_UI:
+        _pool = globals().get(_pn)
+        if not isinstance(_pool, list) or not _pool:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe ou esta' vazio — "
+                          "o `ui_agente` le' com getattr e desenha um menu "
+                          "VAZIO, sem erro nenhum" % _pn)
+            continue
+        if _ch not in EIXOS_TRAVAVEIS:
+            falhas.append("DROPDOWNS_UI: o eixo %r nao esta' em "
+                          "EIXOS_TRAVAVEIS — o menu oferece uma escolha que o "
+                          "sorteio nao aceita" % _ch)
+        if _rt not in [e[1] for e in EIXOS_UI if e[0] == _ch]:
+            falhas.append("DROPDOWNS_UI: o eixo %r se chama %r no menu e outra "
+                          "coisa (ou nada) no EIXOS_UI — dois nomes para o "
+                          "mesmo eixo confundem quem opera" % (_ch, _rt))
+        _txt = [str(e.get(_cp) or "") for e in _pool]
+        _sem = [i for i, t in enumerate(_txt) if not t]
+        if _sem:
+            falhas.append("ROTULO: %d entrada(s) de %s sem %r — o dropdown cai "
+                          "no `id` e o operador le' codigo em vez de gente "
+                          "(1a: indice %d)" % (len(_sem), _pn, _cp, _sem[0]))
+        _rep = sorted({t for t in _txt if t and _txt.count(t) > 1})
+        if _rep:
+            falhas.append("ROTULO: %d rotulo(s) repetido(s) em %s (%r) — a "
+                          "segunda entrada some do dropdown sem erro nenhum"
+                          % (len(_rep), _pn, _rep[0]))
+        _longos = [t for t in _txt if len(t) > 42]
+        if _longos:
+            falhas.append("ROTULO: %d rotulo(s) de %s acima de 42 chars (%r, "
+                          "%d) — estoura a largura do menu"
+                          % (len(_longos), _pn, _longos[0], len(_longos[0])))
+        _sem_id = [i for i, e in enumerate(_pool) if not e.get("id")]
+        if _sem_id:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem `id` — o "
+                          "`ui_agente` mapeia rotulo -> `e.get(\'id\')`, e "
+                          "None faz o `travas()` DESCARTAR a escolha: o menu "
+                          "vira enfeite" % (len(_sem_id), _pn))
+        # ⛔ E O ROTULO NUNCA CHEGA AO PROMPT. Ele e' portugues; um vazamento
+        # poria um texto de painel dentro de um bloco IMAGE em ingles, e o Veo
+        # DESENHA texto. A lente e' de AUSENCIA, e olha os blocos montados, nao
+        # a intencao do `montar`.
+        # ⚠️ E ela varre 40 SORTEIOS FORCANDO a entrada, nao um sorteio solto:
+        # lente de vazamento que olha um bloco so' mede a sorte da seed.
+        for _i in range(40):
+            _e = _pool[_i % len(_pool)]
+            _sr = sortear(pags[_i % len(pags)], random.Random(31000 + _i), {},
+                          {_ch: _e.get("id")})
+            _bj = " ".join(montar(_sr).values())
+            _vaza = [t for t in _txt if t and t in _bj]
+            if _vaza:
+                falhas.append("ROTULO: o texto de painel %r vazou para um "
+                              "bloco do prompt — ele e' portugues e o Veo "
+                              "desenha texto" % _vaza[0])
+                break
+        # ⛔⛔ E A ESCOLHA TEM DE FIXAR DE VERDADE. Esta e' a lente de FUNCAO, e
+        # e' a que faltou no MODO FORTE do GOOD 16 (licoes §41): la' o botao
+        # tinha idade certa, lente propria e controle negativo, e mesmo assim
+        # nao entregava. Aqui ela refaz o que o painel faz — manda o `id` como
+        # trava — e cobra que as 12 specs seguintes tragam a MESMA entrada.
+        _alvo = _pool[len(_pool) // 2]
+        _ids = {sortear(pags[_i % len(pags)], random.Random(41000 + _i), {},
+                        {_ch: _alvo.get("id")})[_ch].get("id")
+                for _i in range(12)}
+        if len(_ids) != 1:
+            falhas.append("DROPDOWNS_UI: escolher %r no menu de %s NAO fixa o "
+                          "eixo — 12 sorteios devolveram %d pessoas diferentes"
+                          % (_alvo.get(_cp), _pn, len(_ids)))
 
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))

@@ -201,7 +201,10 @@ IMOBILIDADE_UM = (
 LOBO = ("%s standing behind him on his right, head turned toward the camera, "
         "in focus")
 
-ANTICELEB = "Ordinary relatable face, not a celebrity."
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = "Ordinary relatable face."
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 # ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
@@ -258,6 +261,7 @@ ETNIA = {
 ARQUETIPOS = [
     # ---- montanhes alpino (o arquetipo da fonte) ----
     {"id": "montanhes_cabana", "selo": "V", "familia": "montanhes",
+     "rotulo": "montanhes · pico nevado + cabana de pedra",
      "set": "a rocky alpine mountaintop, snow-capped peaks filling the "
             "background, a small stone cabin with a chimney at frame-left, "
             "lichen-covered rock in the foreground, clear blue sky",
@@ -267,6 +271,7 @@ ARQUETIPOS = [
      "luz": "Clear high-altitude daylight, cool and bright, soft shadows.",
      "audio": "high wind over rock, a distant bird"},
     {"id": "montanhes_lago", "selo": "N", "familia": "montanhes",
+     "rotulo": "montanhes · saliencia sobre lago glacial",
      "set": "a rocky ledge above a glacier lake, snow-capped peaks across the "
             "water, scattered boulders, no buildings anywhere",
      "curto": "the same ledge above the lake",
@@ -275,6 +280,7 @@ ARQUETIPOS = [
      "luz": "Clear high-altitude daylight, cool and bright, soft shadows.",
      "audio": "high wind, water lapping far below"},
     {"id": "montanhes_pinheiros", "selo": "N", "familia": "montanhes",
+     "rotulo": "montanhes · clareira entre pinheiros",
      "set": "a high clearing at the treeline, dark pine forest behind him and "
             "bare snow peaks rising above it, moss and lichen on the rocks",
      "curto": "the same clearing",
@@ -285,6 +291,7 @@ ARQUETIPOS = [
 
     # ---- cowboy ----
     {"id": "cowboy_curral", "selo": "N", "familia": "cowboy",
+     "rotulo": "cowboy · curral no fim da tarde",
      "set": "a ranch corral at golden hour, a weathered split-rail fence "
             "behind him, dry pasture and low hills beyond it, dust in the air",
      "curto": "the same corral",
@@ -293,6 +300,7 @@ ARQUETIPOS = [
      "luz": "Low golden hour sunlight from frame-left, long shadows.",
      "audio": "cattle lowing, wind over dry grass"},
     {"id": "cowboy_mesa", "selo": "N", "familia": "cowboy",
+     "rotulo": "cowboy · mesa de rocha vermelha",
      "set": "a red rock desert mesa, layered canyon walls behind him, dry "
             "brush and cracked ground, a wide empty sky",
      "curto": "the same mesa",
@@ -303,6 +311,7 @@ ARQUETIPOS = [
 
     # ---- nativo norte-americano ----
     {"id": "nativo_planicie", "selo": "N", "familia": "nativo norte-americano",
+     "rotulo": "nativo · planicie aberta sob ceu enorme",
      "set": "high open plains under an enormous sky, tall dry grass moving in "
             "the wind, a hide-covered lodge far behind him",
      "curto": "the same plain",
@@ -311,6 +320,7 @@ ARQUETIPOS = [
      "luz": "Wide prairie daylight, warm and even.",
      "audio": "wind across open grass"},
     {"id": "nativo_canyon", "selo": "N", "familia": "nativo norte-americano",
+     "rotulo": "nativo · boca do canion de arenito",
      "set": "the mouth of a sandstone canyon, red rock walls rising on both "
             "sides, a shallow river running over stones behind him",
      "curto": "the same canyon mouth",
@@ -321,6 +331,7 @@ ARQUETIPOS = [
 
     # ---- redneck ----
     {"id": "redneck_varanda", "selo": "N", "familia": "redneck",
+     "rotulo": "redneck · varanda da fazenda do Sul",
      "set": "the porch of a weathered wooden farmhouse in the rural South, an "
             "old pickup truck out of focus in the yard, tall trees behind it",
      "curto": "the same porch",
@@ -330,6 +341,7 @@ ARQUETIPOS = [
      "luz": "Warm late afternoon sunlight, soft shadows.",
      "audio": "cicadas, a screen door creaking"},
     {"id": "redneck_celeiro", "selo": "N", "familia": "redneck",
+     "rotulo": "redneck · porta do celeiro vermelho",
      "set": "the open door of a weathered red barn, stacked hay bales behind "
             "him, a dirt yard and tall grass beyond",
      "curto": "the same barn door",
@@ -340,6 +352,7 @@ ARQUETIPOS = [
 
     # ---- curandeiro / herbalista ----
     {"id": "curandeiro_apalache", "selo": "N", "familia": "curandeiro",
+     "rotulo": "curandeiro · varanda da cabana de tora",
      "set": "the porch of a log cabin deep in the Appalachian woods, bunches "
             "of dried herbs hanging from the beams and rows of glass jars on a "
             "shelf behind him, dense green forest beyond",
@@ -350,6 +363,7 @@ ARQUETIPOS = [
      "luz": "Soft green forest daylight, low contrast.",
      "audio": "insects, wind in the leaves"},
     {"id": "curandeiro_pantano", "selo": "N", "familia": "curandeiro",
+     "rotulo": "curandeiro · atracadouro no pantano",
      "set": "a wooden landing at the edge of a cypress swamp, moss hanging "
             "from the branches, a flat-bottomed boat tied up behind him, still "
             "dark water",
@@ -362,6 +376,7 @@ ARQUETIPOS = [
     # + 2026-08-01: o operador mediu vicio no lote - os mesmos cenarios
     # voltando. Um set novo por familia, com chapeu e animais congruentes.
     {"id": "montanhes_rio", "selo": "N", "familia": "montanhes",
+     "rotulo": "montanhes · banco de cascalho no rio",
      "set": "a gravel bar on a wide mountain river, fast grey water running "
             "past behind him, snow-dusted peaks upstream, bare cottonwoods "
             "on the far bank",
@@ -371,6 +386,7 @@ ARQUETIPOS = [
      "luz": "Flat cold river-valley daylight, silver and even.",
      "audio": "running water, wind over gravel"},
     {"id": "cowboy_moinho", "selo": "N", "familia": "cowboy",
+     "rotulo": "cowboy · moinho e bebedouro no pasto",
      "set": "a windmill and stock tank alone in open grazing land, the "
             "rusted steel vanes turning slowly behind him, a flat horizon in "
             "every direction",
@@ -380,6 +396,7 @@ ARQUETIPOS = [
      "luz": "High dry sunlight, hard and clean.",
      "audio": "the windmill creaking, wind over open ground"},
     {"id": "nativo_butte", "selo": "N", "familia": "nativo norte-americano",
+     "rotulo": "nativo · topo da butte ao amanhecer",
      "set": "the flat top of a butte at first light, the shadowed valley far "
             "below, a line of dark hills on the horizon, loose stone "
             "underfoot",
@@ -389,6 +406,7 @@ ARQUETIPOS = [
      "luz": "Low first light from frame-right, long cold shadows.",
      "audio": "thin wind, a distant coyote"},
     {"id": "redneck_lago", "selo": "N", "familia": "redneck",
+     "rotulo": "redneck · rampa de barco no acude",
      "set": "a gravel boat ramp at a farm pond, a flat aluminium boat pulled "
             "half out of the water behind him, cattails and low woods around "
             "the far bank",
@@ -398,6 +416,7 @@ ARQUETIPOS = [
      "luz": "Bright hazy midday light coming off the water.",
      "audio": "water slapping the boat, bullfrogs"},
     {"id": "curandeiro_clareira", "selo": "N", "familia": "curandeiro",
+     "rotulo": "curandeiro · prado de flores e ervas",
      "set": "a mountain meadow of tall wildflowers, drying racks of cut "
             "herbs on trestles behind him, wooded ridges rising on both "
             "sides",
@@ -426,6 +445,7 @@ ARQUETIPOS = [
     #   · o animal continua prop de DOMINANCIA (NE4), nunca bicho de
     #     estimacao: nada deitado, nada de coleira.
     {"id": "montanhes_passo", "selo": "N", "familia": "montanhes",
+     "rotulo": "montanhes · passo nevado no inverno",
      "set": "a windswept high pass in deep winter, a cairn of stacked flat "
             "stones beside him, an unbroken snowfield falling away behind "
             "and bare black rock above",
@@ -435,6 +455,7 @@ ARQUETIPOS = [
      "luz": "Flat cold blue winter light off the snow, almost shadowless.",
      "audio": "wind driving loose snow over stone"},
     {"id": "nativo_lago", "selo": "N", "familia": "nativo norte-americano",
+     "rotulo": "nativo · margem do lago com canoa",
      "set": "a stony northern lakeshore in the last hour of daylight, a "
             "birch-bark canoe pulled up on the stones behind him, dark "
             "spruce forest across flat water, low mist on the surface",
@@ -475,6 +496,7 @@ ARQUETIPOS = [
     # existem ja' leem.
     # ======================================================================
     {"id": "montanhes_passarela", "selo": "N", "familia": "montanhes",
+     "rotulo": "montanhes · ponte de tabuas na garganta",
      "set": "the near end of a plank-and-cable footbridge over a deep gorge, "
             "the far side lost in haze, dark wet rock dropping away under the "
             "planks",
@@ -484,6 +506,7 @@ ARQUETIPOS = [
      "luz": "Bright hazy light rising out of the gorge, low contrast.",
      "audio": "wind pulling on the cables, water far below"},
     {"id": "montanhes_fogueira", "selo": "N", "familia": "montanhes",
+     "rotulo": "montanhes · acampamento com fogueira",
      "set": "a camp on a bare rock shelf at first light, a low fire burning in "
             "a ring of stones beside him, a rolled canvas tent behind it, "
             "ridgelines stacked to the horizon",
@@ -494,6 +517,7 @@ ARQUETIPOS = [
             "other, plus firelight from below.",
      "audio": "the fire popping, thin wind over rock"},
     {"id": "cowboy_embarcadouro", "selo": "N", "familia": "cowboy",
+     "rotulo": "cowboy · rampa de embarque do gado",
      "set": "a cattle loading chute of gray planks running across the frame, a "
             "stock trailer parked at the far end, flat pasture and a wire fence "
             "beyond it",
@@ -503,6 +527,7 @@ ARQUETIPOS = [
      "luz": "Hard low morning light from frame-left, long shadows on the dirt.",
      "audio": "hooves on plank, a gate chain rattling"},
     {"id": "cowboy_vau", "selo": "N", "familia": "cowboy",
+     "rotulo": "cowboy · vau raso do rio no pasto",
      "set": "a shallow river crossing in open range, water running over pale "
             "stones around his boots, cottonwoods on the far bank and open "
             "grass beyond",
@@ -512,6 +537,7 @@ ARQUETIPOS = [
      "luz": "Bright midday sun with hard reflections coming off the water.",
      "audio": "water over stones, a horse blowing"},
     {"id": "nativo_dunas", "selo": "N", "familia": "nativo norte-americano",
+     "rotulo": "nativo · crista da duna vermelha",
      "set": "the crest of a red sand dune, ripples running away in every "
             "direction, a single bare juniper standing in the hollow below, "
             "nothing else to the horizon",
@@ -521,6 +547,7 @@ ARQUETIPOS = [
      "luz": "Low late sun raking across the sand, long soft shadows.",
      "audio": "sand moving over sand, thin wind"},
     {"id": "nativo_cachoeira", "selo": "N", "familia": "nativo norte-americano",
+     "rotulo": "nativo · saliencia junto a cachoeira",
      "set": "a wide rock ledge beside a tall waterfall, wet black stone under "
             "him and spray hanging in the air, dark forest closing in on both "
             "sides",
@@ -530,6 +557,7 @@ ARQUETIPOS = [
      "luz": "Cool light through falling spray, soft and even.",
      "audio": "falling water, wind in the trees"},
     {"id": "redneck_oficina", "selo": "N", "familia": "redneck",
+     "rotulo": "redneck · patio de cascalho da oficina",
      "set": "the gravel yard behind a metal shop building, a pickup up on jack "
             "stands and a stack of tires behind him, tall weeds along the wire "
             "fence",
@@ -540,6 +568,7 @@ ARQUETIPOS = [
      "luz": "Bright flat overcast light, almost no shadow.",
      "audio": "wind over gravel, a distant engine"},
     {"id": "curandeiro_estufa", "selo": "N", "familia": "curandeiro",
+     "rotulo": "curandeiro · corredor da estufa de vidro",
      "set": "a glass greenhouse, potted herbs on wooden benches down both "
             "sides and a row of corked jars along the sill behind him, green "
             "light through the panes",
@@ -1330,13 +1359,41 @@ def _evitando(rng, pool, recentes):
     return rng.choice(livres if livres else pool)
 
 
+def _por_id(pool, ident):
+    """A entrada de `id` igual a `ident` — ou `None` quando ela nao existe.
+
+    ⭐⭐ 2026-08-13 — NASCEU COM O DROPDOWN DE ARQUETIPO (`DROPDOWNS_UI`). O
+    combobox devolve o `id` do arquetipo escolhido, e sem esta funcao o motor
+    nao tinha COMO honrar a escolha: o `_sortear_longo` so' conhecia o
+    `_evitando`, que sorteia livre.
+    ⛔ Devolve `None` de proposito, e quem chama decide o fallback. Cair no
+    `pool[0]` aqui seria o pior dos mundos: o operador escolheria o 20o
+    arquetipo do menu, o motor entregaria o 1o, e a tela ainda diria que a
+    trava funcionou — a familia inteira do BOTAO QUE MENTE, so' que por id
+    errado.
+    ⚠️ Ele nao consome `rng`: um id invalido nao pode deslocar a sequencia de
+    sorteio dos outros eixos.
+    """
+    return next((e for e in pool if e.get("id") == ident), None)
+
+
 def _sortear_longo(pagina, rng, ledger, travas=None):
     # ⛔ A REF DESTE AGENTE SAI AQUI, no motor longo embutido — nao no
     # `sortear` de tres argumentos la' de baixo. Por isso a trava atravessa
     # `sc.sortear_curto` ate' aqui: sem isso o toggle acenderia e nao mudaria
     # nada, que e' o botao que mente.
     hist = ledger.get(pagina, {})
-    arq = _evitando(rng, ARQUETIPOS, hist.get("arquetipo", [])[-4:])
+    # ⭐⭐ 2026-08-13 — O DROPDOWN DE ARQUETIPO ENTRA AQUI. Ordem do operador:
+    # *"quando selecionado determinada opcao, o ref ficara' FIXO naquele
+    # selecionado para quaisquer sorteio"*.
+    # ⛔ O arquetipo e' o eixo mais caro deste motor: ele arrasta set, chapeu,
+    # ANIMAL, luz e audio de uma vez (NE5). Travar aqui e' travar o mundo
+    # inteiro do video, que e' exatamente o que o menu promete.
+    # ⚠️ E o `or` no fim e' o que impede a trava de matar o sorteio: id que nao
+    # existe mais no pool (ledger velho, menu de outra versao) cai no caminho
+    # normal em vez de estourar `None` no `arq["animais"]` logo abaixo.
+    arq = (_por_id(ARQUETIPOS, (travas or {}).get("arquetipo"))
+           or _evitando(rng, ARQUETIPOS, hist.get("arquetipo", [])[-4:]))
     rec = _evitando(rng, RECEITAS_PROP, hist.get("receita", [])[-2:])
     mesa = _evitando(rng, MESAS, hist.get("mesa", [])[-2:])
     # ⭐ MODO FORTE — a REF deste angulo e' o montanhes de tronco nu.
@@ -1361,6 +1418,17 @@ def _sortear_longo(pagina, rng, ledger, travas=None):
         _cta(rng),
     ]
     return {"pagina": pagina, "arquetipo": arq, "animal": animal,
+            # ⛔⛔ O QUE DE FATO ACONTECEU COM O MODO, gravado no spec.
+            # Sem esta chave o painel nao distingue "o modo entrou" de "o
+            # modo morreu", e o botao fica ACESO nos dois casos. O eixo
+            # escolhido no menu (ou no cadeado) vence o modo por desenho —
+            # o que nao pode e' o operador nao ficar sabendo.
+            # ⭐ A flag LE' O CARIMBO que `sc.ref_bela`/`sc.ref_forte` deixam
+            # (`_bela`/`_forte`), em vez de re-derivar a precedencia aqui. Regra
+            # copiada e' regra que envelhece sozinha: minha primeira versao
+            # inventou um `and not travas.get("homem")` que o ternario do
+            # `troca16` nem le', e teria acusado de morto um modo VIVO.
+            "forte": bool(ref.get("_forte")),
             "receita": rec, "mesa": mesa, "ref": ref, "falas": falas,
             "bela": bela, "modo_bela": modo_bela}
 
@@ -1395,12 +1463,14 @@ def _montar_longo(spec):
     # E o que o parser do AdBatch usa para mandar este bloco para o painel
     # Consistencia Visual em vez de tentar encaixa-lo num slot da grade.
     # ⛔ Nao remover: sem ele a referencia e descartada em silencio.
+    # ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+    # (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+    # A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
     b["BLOCO 0 (REF)"] = (
-        "REF 01: Photo of a real person, a %d-year-old %s man, chest up, facing the "
-        "camera directly, neutral steady expression. Bare-chested, %s, tanned "
-        "weathered skin. %s. Wearing %s. %s. An ordinary everyday relatable "
-        "person with a plain unremarkable face, not a celebrity, not a model, "
-        "not an actor, not resembling any famous person. Plain neutral gray "
+        "REF 01: Photo of a real person, a %d-year-old %s man, chest up, "
+        "facing the camera directly, neutral steady expression. Bare-chested, "
+        "%s, tanned weathered skin. %s. Wearing %s. %s. An ordinary everyday "
+        "relatable person with a plain unremarkable face. Plain neutral gray "
         "background, soft even frontal light. No subtitles, no captions, no "
         "burned-in text, no watermark."
         % (ref["idade"], et, ref["corpo"],
@@ -1528,6 +1598,28 @@ EIXOS_UI = [
     ("mesa", "BANCADA", "MESAS", "id"),
     ("ref", "O HOMEM", "REFS", "marca"),
 ]
+
+# ⭐⭐ O DROPDOWN DE ARQUETIPO — 2026-08-13, ordem do operador (*"quero um
+# controlador ui ux com seletor dropdown menu, onde que, quando selecionado
+# determinada opcao, o ref ficara' FIXO naquele selecionado para quaisquer
+# sorteio"*). Contrato aditivo do `ui_agente`, o mesmo que o MEL 16 estreou.
+# ⛔ E' ELE que da' FUNCAO ao campo `rotulo` dos 26 arquetipos. Sem esta linha
+# os 26 textos seriam comentario caro — escritos, medidos, travados, e
+# invisiveis. Forma sem funcao e' o defeito que este repo mais paga (§41).
+# ⛔ POR QUE O ARQUETIPO E NAO A REF: aqui o arquetipo e' o eixo GRANDE — ele
+# arrasta set, chapeu, animal, luz e audio de uma vez (NE5). Escolher `cowboy ·
+# curral no fim da tarde` escolhe o video inteiro; escolher um rosto so' muda a
+# cara dentro do mesmo mundo.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado; com 26 arquetipos ela estoura a largura da janela.
+# ⚠️ O ROTULO DA TELA E' O MESMO DO `EIXOS_UI` (`ARQUÉTIPO`), de proposito:
+# dois nomes para o mesmo eixo fazem o operador procurar dois controles onde ha'
+# um.
+# ⚠️ E o campo exibido e' `rotulo`, nao `id`: `montanhes · passo nevado no
+# inverno` diz o mundo; `montanhes_passo` obriga a abrir o codigo. O `EIXOS_UI`
+# acima continua com `id` porque la' quem traduz para o operador e' o `PT_ARQ`,
+# que ja' escreve a frase inteira no resumo.
+DROPDOWNS_UI = [("arquetipo", "ARQUÉTIPO", "ARQUETIPOS", "rotulo")]
 
 PT_ARQ = {
     "montanhes_cabana": "No topo da montanha, na cabana de pedra",
@@ -2188,6 +2280,76 @@ def _anotar(ledger, spec):
         p[eixo] = p[eixo][-12:]
 
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ O CONTRATO DO DROPDOWN — medido, nunca declarado
+# ---------------------------------------------------------------------------
+# 2026-08-13. O `DROPDOWNS_UI` e o campo `rotulo` nasceram juntos e so' valem
+# juntos: rotulo sem a linha e' comentario caro (26 textos que olho nenhum ve'),
+# e a linha sem rotulo desenha um menu de `id`s que so' o autor entende.
+# ⛔ AS QUATRO TRAVAS DE FORMA, e o preco de cada uma se cair:
+#   1. rotulo em TODA entrada — o `ui_agente` cai no `id` e o menu vira codigo.
+#   2. rotulo UNICO — o `_barra_dropdowns` monta o mapa com `if txt and txt not
+#      in mapa`: dois rotulos iguais fazem o SEGUNDO arquetipo SUMIR do menu, em
+#      silencio, sem erro e sem log. Pool de 26 que so' se alcanca em 25.
+#   3. rotulo <= 42 chars — o combobox e' `width=38`; o que passa disso sai
+#      cortado na tela, e rotulo cortado volta a ser ilegivel, que e' exatamente
+#      o problema que ele veio resolver.
+#   4. pool e campo EXISTENTES — o `ui_agente` resolve o pool com
+#      `getattr(motor, nome, [])`, que devolve lista vazia sem reclamar: nome
+#      errado desenha um menu com uma opcao so' (`livre`) e nada acontece.
+# ⛔⛔ E A QUINTA E' A QUE IMPORTA: A ESCOLHA TEM DE FIXAR DE VERDADE. As quatro
+# de cima medem a FORMA do menu; esta mede a FUNCAO — sorteia COM a trava e
+# confere que o eixo saiu o escolhido. E' a licao §41 em uma linha: verificar a
+# forma e declarar pronto foi como este repo ja' entregou botao que nao entrega.
+# ⚠️ Tudo entra por ARGUMENTO (§16): e' o que deixa o sabotador plantar rotulo
+# vazio, rotulo repetido, rotulo comprido, pool inexistente e ate' um `sortear`
+# que IGNORA a trava, sem encostar no motor de verdade.
+def _medir_dropdowns(dropdowns, pools, sortear_fn=None, paginas=()):
+    """As travas do `DROPDOWNS_UI` + do campo `rotulo`, medidas."""
+    import random
+    achados = []
+    for chave, tela, nome_pool, campo in dropdowns:
+        if nome_pool not in pools:
+            achados.append("DROPDOWNS_UI %r aponta para o pool %r, que nao "
+                           "existe — o `getattr` devolve [] e o menu nasce "
+                           "vazio, sem erro nenhum" % (chave, nome_pool))
+            continue
+        pool = pools[nome_pool]
+        sem = [e.get("id", "?") for e in pool if not e.get(campo)]
+        if sem:
+            achados.append("DROPDOWNS_UI %r: %d entrada(s) de %s sem %r — o "
+                           "menu cai no `id` e o operador le' %r"
+                           % (chave, len(sem), nome_pool, campo, sem[0]))
+        rots = [e.get(campo) or "" for e in pool]
+        rep = sorted({r for r in rots if r and rots.count(r) > 1})
+        if rep:
+            achados.append("DROPDOWNS_UI %r: %d rotulo(s) repetido(s) (%r) — a "
+                           "segunda entrada some do menu sem erro nenhum"
+                           % (chave, len(rep), rep[0]))
+        longos = [r for r in rots if len(r) > 42]
+        if longos:
+            achados.append("DROPDOWNS_UI %r: %d rotulo(s) acima de 42 chars "
+                           "(%r, %d) — estoura a largura do combobox"
+                           % (chave, len(longos), longos[0], len(longos[0])))
+        # ⛔⛔ A TRAVA TEM DE FIXAR. Sem esta parte o menu poderia estar
+        # perfeito na tela e o motor continuar sorteando livre — que e' o
+        # estado em que este arquivo estava antes de 2026-08-13.
+        if sortear_fn and paginas:
+            for i, e in enumerate(pool):
+                alvo = e.get("id")
+                if not alvo:
+                    continue
+                s = sortear_fn(paginas[i % len(paginas)],
+                               random.Random(7000 + i), {}, {chave: alvo})
+                saiu = (s.get(chave) or {}).get("id")
+                if saiu != alvo:
+                    achados.append("DROPDOWNS_UI %r: escolher %r no menu %s "
+                                   "entregou %r — o botao que mente"
+                                   % (chave, alvo, tela, saiu))
+                    break
+    return achados
+
+
 def autoteste(n=400):
     import collections
     import random
@@ -2204,6 +2366,56 @@ def autoteste(n=400):
         if len(set(ids)) != len(ids):
             dup = [i for i, c in collections.Counter(ids).items() if c > 1]
             falhas.append("%s: id repetido %s" % (nome, dup))
+
+    # -- 1b. O DROPDOWN E O ROTULO -----------------------------------------
+    _pags = sorted(ETNIA)
+    falhas.extend(_medir_dropdowns(DROPDOWNS_UI, {"ARQUETIPOS": ARQUETIPOS},
+                                   sortear, _pags))
+    # ⛔ Os rotulos do menu sao PORTUGUES e nao podem chegar ao prompt: um
+    # vazamento poria `montanhes · passo nevado no inverno` dentro de um bloco
+    # IMAGE em ingles, e o Veo desenha texto. A lente e' de AUSENCIA — olha os
+    # blocos MONTADOS, nao a intencao de quem escreveu o `montar`.
+    # ⚠️ E ela varre o pool inteiro, um sorteio por arquetipo: lente de
+    # vazamento que olha um bloco so' mede a sorte da seed, nao o motor.
+    _rots = [a.get("rotulo") or "" for a in ARQUETIPOS]
+    for _i, _a in enumerate(ARQUETIPOS):
+        _bj = " ".join(montar(sortear(_pags[_i % len(_pags)],
+                                      random.Random(8000 + _i), {},
+                                      {"arquetipo": _a["id"]})).values())
+        _vaza = [x for x in _rots if x and x in _bj]
+        if _vaza:
+            falhas.append("ROTULO: o texto de painel %r vazou para um bloco do "
+                          "prompt — ele e' portugues e o Veo desenha texto"
+                          % _vaza[0])
+            break
+    # ⛔ OS CONTROLES DA LENTE DO DROPDOWN. `0 falha` num gate novo e' suspeita,
+    # nao aprovacao: pode ser motor limpo ou regra morta. Cada sabotador abaixo
+    # tem de CHEGAR onde a lente olha (licoes §16) — por isso os pools e ate' o
+    # `sortear` entram por argumento.
+    _ctrl = []
+    _vazio = dict(ARQUETIPOS[0]); _vazio["rotulo"] = ""
+    if not _medir_dropdowns(DROPDOWNS_UI,
+                            {"ARQUETIPOS": [_vazio] + ARQUETIPOS[1:]}):
+        _ctrl.append("a lente NAO acusa rotulo VAZIO")
+    _dup = dict(ARQUETIPOS[1]); _dup["rotulo"] = ARQUETIPOS[0]["rotulo"]
+    if not _medir_dropdowns(DROPDOWNS_UI,
+                            {"ARQUETIPOS": [ARQUETIPOS[0], _dup]
+                             + ARQUETIPOS[2:]}):
+        _ctrl.append("a lente NAO acusa rotulo REPETIDO")
+    _long = dict(ARQUETIPOS[0]); _long["rotulo"] = "x" * 43
+    if not _medir_dropdowns(DROPDOWNS_UI,
+                            {"ARQUETIPOS": [_long] + ARQUETIPOS[1:]}):
+        _ctrl.append("a lente NAO acusa rotulo com mais de 42 chars")
+    if not _medir_dropdowns([("arquetipo", "ARQUÉTIPO", "NAO_EXISTE",
+                             "rotulo")], {"ARQUETIPOS": ARQUETIPOS}):
+        _ctrl.append("a lente NAO acusa `DROPDOWNS_UI` apontando para pool "
+                     "inexistente")
+    if not _medir_dropdowns(DROPDOWNS_UI, {"ARQUETIPOS": ARQUETIPOS},
+                            lambda p, r, l, t=None: sortear(p, r, l), _pags):
+        _ctrl.append("a lente NAO acusa um `sortear` que IGNORA a trava — e' a "
+                     "unica das cinco que mede FUNCAO")
+    for _c in _ctrl:
+        falhas.append("CONTROLE NEGATIVO: %s" % _c)
 
     # -- 2. A JANELA DO LEDGER TEM DE CABER NO POOL ------------------------
     # ⚠️ numeros lidos do `_sortear_longo` deste arquivo (4/2/2). Copiar de

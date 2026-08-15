@@ -105,7 +105,10 @@ VAZAMENTO_IMAGE = (
 )
 VAZAMENTO_TAKE = "The puddle on the table slowly widens; the clam itself never moves."
 
-ANTICELEB = "Ordinary relatable face, not a celebrity."
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = "Ordinary relatable face."
 CAUDA = "iPhone shot, natural grain, no text, no watermark."
 
 # ⭐ QUEM NARRA — o sexo de quem fala com a lente (2026-08-06).
@@ -1068,6 +1071,9 @@ def montar_longo(spec):
         % (ref["idade"], et, ref["marca"], roupa_s, ANTICELEB, luz_ext, CAUDA)
     )
 
+    # ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+    # (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+    # A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
     b["IMAGE 04/05"] = (
         "IMAGE 04/05: Medium shot, same backyard, same fence and flag. Two fully "
         # ⛔ "The SAME %d-year-old man, SAME %s" — a ancora de continuidade tem
@@ -1083,8 +1089,16 @@ def montar_longo(spec):
         "hand, held upright at shoulder height, he grips %s. A %d-year-old %s woman, "
         "strikingly beautiful, %s, visibly toned arms. She has both arms wrapped around "
         "his shoulders from the side, leaning her head against him, laughing openly. "
-        "Both are ordinary everyday relatable people with plain unremarkable faces, "
-        "not celebrities, not models, not actors. The scene is lit by %s %s"
+        # ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do
+        # operador: era `not celebrities, not models, not actors` — o PLURAL SEM
+        # ARTIGO, forma que o inventario nao tinha e que a primeira versao do
+        # recorte deixou passar. Quem a achou foi a medicao do prompt gerado.
+        # ⚠️ O recorte deste bloco foi feito A MAO: a ferramenta RECUSA literal
+        # com comentario no meio, porque reescrever o vao inteiro apagaria a
+        # lapide de continuidade logo acima. Ver CLAUDE.md §"CONTRA A
+        # CELEBRIDADE, SILENCIO".
+        "Both are ordinary everyday relatable people with plain unremarkable faces. "
+        "The scene is lit by %s %s"
         % (mul["idade"], ref["idade"], ref["idade"], et, ref["marca"], roupa_s,
            prop["desc"], mul["idade"], et, mul["desc"], luz_ext, CAUDA)
     )

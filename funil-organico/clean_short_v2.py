@@ -437,24 +437,35 @@ for _a in (SOTAQUE, VOZ):
     assert not re.search(r"\bno\s+\w+\s+accent|without .{0,20}accent", _a, re.I), (
         "CL31: ancora NEGATIVA — diz-se qual sotaque e', nunca qual nao e': %r" % _a)
 
-ANTICELEB = ("Ordinary relatable face, not a celebrity, not a model, not an "
-             "actor, not resembling any famous person.")
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = ("Ordinary relatable face.")
 # ⭐ CL26 — a clausula anti-celebridade tem SEXO (ordem do operador,
 # 2026-08-04: *"todas precisam ser absolutamente lindas"*). No homem, "cara
 # comum" e' credibilidade. Na mulher, o `plain unremarkable face` brigava DE
 # FRENTE com a ordem: o gerador recebia "linda" no corpo e "sem graca" no
-# rosto na mesma frase, e resolvia a contradicao contra nos. A protecao de
-# identidade (nao-celebridade) fica nas duas versoes; so' sai o "comum".
-ANTICELEB_M = ("A strikingly beautiful face, not a celebrity, not resembling "
-               "any famous person.")
+# rosto na mesma frase, e resolvia a contradicao contra nos. So' sai o
+# "comum" — a descricao positiva do rosto fica nas duas versoes.
+# ⚠️ A frase dizia "a protecao de identidade (nao-celebridade) fica nas duas
+# versoes". Deixou de valer em 2026-08-14: a negacao saiu por ordem do
+# operador, e o que protege identidade e' descrever o rosto, nunca nega-lo.
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB_M = ("A strikingly beautiful face.")
 # O par do REF 01 — mesma regra, na frase inteira de pessoa:
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 REF_ROSTO_H = ("An ordinary everyday relatable person with a plain "
-               "unremarkable face, not a celebrity, not a model, not an "
-               "actor, not resembling any famous person.")
+               "unremarkable face.")
+# ⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do operador
+# (*"tire not a celebrity do prompt"*): declaracao INJETA o token que ela nega.
+# A metade positiva ficou. Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
 REF_ROSTO_M = ("A strikingly beautiful woman, her face flawless and "
                "photogenic, her hair silky, smooth and healthy with a soft "
-               "shine, yet not a celebrity, not an actress, not resembling "
-               "any famous person.")
+               "shine.")
 CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 
 # ⛔⛔ OS DENTES SAO ANCORADOS (2026-08-03, falha em producao). A boca fica
@@ -2181,6 +2192,12 @@ def lint(spec, blocos):
     # ⛔ 2026-08-03: guarda do contrato de tag. O operador achou os seis blocos
     # sem `IMAGE 0x/03:` / `TAKE 0x/03:` no proprio app.
     sc.lint_tags(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto` nem pelo `sc.lint_sem_texto`, entao a lente entra aqui
+    # explicitamente — regra sem guarda volta no proximo agente nascido por
+    # copia, e foi exatamente assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
 
     for i, f in enumerate(falas, 1):
         n = _palavras(f)

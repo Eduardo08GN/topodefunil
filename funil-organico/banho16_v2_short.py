@@ -808,35 +808,102 @@ COLHER = "a metal spoon holding a pool of thick amber honey"
 # \u2b50 O que VARIA e' porte da mao, unhas, veias, sardas, bronzeado e o objeto do
 # pulso (alianca, anel, relogio, pulseira) \u2014 sinal permanente e saudavel, que
 # e' o que faz a mesma mao VOLTAR igual no take 2.
+#
+# ⭐⭐ 2026-08-13 — O POOL VIROU DICIONARIO, E O MOTIVO E' O DROPDOWN.
+# Ordem do operador: *"implemente esse mecanismo e menu drop down para todos os
+# demais agentes 16"*. O mecanismo e o `DROPDOWNS_UI` (ver la' embaixo), e ele
+# monta o menu lendo `e.get(campo)` de cada entrada — o que exige DICIONARIO.
+# ⛔ Lista de STRING nao serve: `"clean broad hands...".get` estoura
+# AttributeError DENTRO do callback do tkinter, ou seja, o painel morre calado.
+# Foi medido antes de converter, nao suposto.
+# ⚠️ O `desc` e' a string ANTIGA, caractere por caractere — o que vai para o
+# prompt nao mudou uma virgula (equivalencia conferida em 300 videos, hash dos
+# blocos identico antes e depois). O que nasceu foram `id` (chave do sorteio) e
+# `rotulo` (o texto do menu).
+# ⛔⛔ AQUI NAO HA' IDADE NO ROTULO, e nao e' esquecimento: a idade deste angulo
+# e' do eixo `idade`, sorteada a' parte, e a MESMA mao serve 18 idades. Prefixar
+# uma idade no rotulo seria o painel prometendo o que a entrada nao decide.
+# Entao o rotulo comeca pelo TRACO — porte da mao — que e' o que o operador
+# reconhece de relance.
 MAOS = [
-    "clean broad hands with short trimmed nails and smooth skin",
-    "steady hands with light freckling and neatly kept nails",
-    "large well-kept hands with faint veins and clean square nails",
-    "solid hands with a plain gold wedding band and smooth even skin",
-    "wide clean hands with short nails and a light tan across the backs",
-    "firm hands with clear skin and neatly trimmed nails",
-    "square hands with wide flat knuckles and short clean nails",
-    "long-fingered hands with smooth skin and a smooth silver band on the ring "
-    "finger",
-    "broad hands with a light dusting of hair across the backs and blunt clean "
-    "nails",
-    "compact hands with thick wrists and short square nails",
-    "smooth hands with a scatter of small freckles over the knuckles and "
-    "clipped nails",
-    "steady wide hands with a plain steel watch on the left wrist and short "
-    "nails",
-    "smooth firm hands with a narrow gold signet ring and neatly filed nails",
-    "big clean hands with softly raised veins and short rounded nails",
-    "lean hands with smooth skin and short straight nails",
-    "sturdy hands with square fingertips and short nails cut straight across",
-    "trim hands with a faint pale band where a ring usually sits and short "
-    "clean nails",
-    "well-kept hands with an even summer tan and clean rounded nails",
-    "wide steady hands with smooth broad knuckles and short clean nails",
-    "square-palmed hands with a wide plain wedding band and short polished "
-    "nails",
-    "large smooth hands with neat half-moon nails and steady fingers",
-    "broad hands with a thin leather band on the wrist and short clean nails",
+    {"id": "largas_limpas",
+     "rotulo": "maos largas + unhas curtas + pele lisa",
+     "desc": "clean broad hands with short trimmed nails and smooth skin"},
+    {"id": "sardas_leves",
+     "rotulo": "firmes + sardas leves + unhas cuidadas",
+     "desc": "steady hands with light freckling and neatly kept nails"},
+    {"id": "veias_discretas",
+     "rotulo": "grandes + veias discretas + unha quadrada",
+     "desc": "large well-kept hands with faint veins and clean square nails"},
+    {"id": "alianca_ouro",
+     "rotulo": "solidas + alianca de ouro lisa",
+     "desc": "solid hands with a plain gold wedding band and smooth even skin"},
+    {"id": "bronzeado_dorso",
+     "rotulo": "largas + dorso levemente bronzeado",
+     "desc": "wide clean hands with short nails and a light tan across the "
+             "backs"},
+    {"id": "pele_limpa",
+     "rotulo": "firmes + pele limpa + unhas aparadas",
+     "desc": "firm hands with clear skin and neatly trimmed nails"},
+    {"id": "nos_largos",
+     "rotulo": "quadradas + nos largos e chatos",
+     "desc": "square hands with wide flat knuckles and short clean nails"},
+    {"id": "anel_prata",
+     "rotulo": "dedos longos + anel de prata",
+     "desc": "long-fingered hands with smooth skin and a smooth silver band on "
+             "the ring finger"},
+    {"id": "pelos_no_dorso",
+     "rotulo": "largas + pelos no dorso + unha reta",
+     "desc": "broad hands with a light dusting of hair across the backs and "
+             "blunt clean nails"},
+    {"id": "punho_grosso",
+     "rotulo": "compactas + punho grosso",
+     "desc": "compact hands with thick wrists and short square nails"},
+    {"id": "sardas_nos_nos",
+     "rotulo": "lisas + sardas sobre os nos dos dedos",
+     "desc": "smooth hands with a scatter of small freckles over the knuckles "
+             "and clipped nails"},
+    {"id": "relogio_aco",
+     "rotulo": "largas + relogio de aco no pulso",
+     "desc": "steady wide hands with a plain steel watch on the left wrist and "
+             "short nails"},
+    {"id": "anel_brasao",
+     "rotulo": "lisas + anel de brasao dourado",
+     "desc": "smooth firm hands with a narrow gold signet ring and neatly "
+             "filed nails"},
+    {"id": "veias_suaves",
+     "rotulo": "grandes + veias suaves + unha redonda",
+     "desc": "big clean hands with softly raised veins and short rounded "
+             "nails"},
+    {"id": "enxutas_retas",
+     "rotulo": "enxutas + pele lisa + unha reta curta",
+     "desc": "lean hands with smooth skin and short straight nails"},
+    {"id": "ponta_quadrada",
+     "rotulo": "robustas + pontas dos dedos quadradas",
+     "desc": "sturdy hands with square fingertips and short nails cut straight "
+             "across"},
+    {"id": "marca_de_anel",
+     "rotulo": "enxutas + marca clara de anel",
+     "desc": "trim hands with a faint pale band where a ring usually sits and "
+             "short clean nails"},
+    {"id": "bronzeado_verao",
+     "rotulo": "cuidadas + bronzeado uniforme de verao",
+     "desc": "well-kept hands with an even summer tan and clean rounded nails"},
+    {"id": "nos_lisos",
+     "rotulo": "largas + nos lisos e amplos",
+     "desc": "wide steady hands with smooth broad knuckles and short clean "
+             "nails"},
+    {"id": "alianca_larga",
+     "rotulo": "palma quadrada + alianca larga",
+     "desc": "square-palmed hands with a wide plain wedding band and short "
+             "polished nails"},
+    {"id": "meia_lua",
+     "rotulo": "grandes + unhas em meia-lua",
+     "desc": "large smooth hands with neat half-moon nails and steady fingers"},
+    {"id": "bracelete_couro",
+     "rotulo": "largas + bracelete de couro fino",
+     "desc": "broad hands with a thin leather band on the wrist and short "
+             "clean nails"},
 ]
 
 # ⭐ O HOMEM — so' existe com o MODO PESSOA ligado. Espelhado do unico video da
@@ -1382,7 +1449,11 @@ def sortear(pagina, rng, led, travas=None):
         "rotulo": rotulo, "receita": receita,
         "pessoa": pessoa, "homem": homem,
         "traje": rng.choice(TRAJES),
-        "maos": rng.choice(MAOS),
+        # ⭐ O DROPDOWN `AS MAOS` entra POR AQUI. ⚠️ O `rng.choice` fica no
+        # ramo `else` de proposito: sem trava a chamada acontece no MESMO ponto
+        # da sequencia de sorteio de sempre, entao nenhum video existente muda.
+        "maos": (_por_id(MAOS, travas["maos"]) if travas.get("maos")
+                 else rng.choice(MAOS)),
         "idade": idade,
         "abertura": (travas.get("abertura")
                      or rng.choice(["idade", "idade", "idade", "aviso"])),
@@ -1436,7 +1507,8 @@ def montar(spec):
     # entra como SUJEITO de um verbo proprio, nunca emendado ("...running into
     # the tub is falling" nao e' ingles).
     h = spec["homem"]
-    _slots = {"maos": spec["maos"], "idade": h["idade"], "etnia": spec["etnia"],
+    _slots = {"maos": spec["maos"]["desc"],
+              "idade": h["idade"], "etnia": spec["etnia"],
               "cabeca": h["cabeca"], "marca": h["marca"],
               "traje": spec["traje"]}
     ac = spec["acao"]
@@ -1497,7 +1569,7 @@ def montar(spec):
                "neutral gray background, soft even frontal light. Slight "
                "sensor grain, soft focus, raw iPhone photo. No subtitles, no "
                "captions, no burned-in text, no watermark."
-               % (spec["idade"], spec["etnia"], _cap(spec["maos"])))
+               % (spec["idade"], spec["etnia"], _cap(spec["maos"]["desc"])))
 
     blocos = sc.selar_takes(sc.selar_tags({
         "BLOCO 0 (REF)": ref,
@@ -1722,7 +1794,8 @@ def _ba_acao(spec, blocos, achados):
     gente num angulo que o operador declarou sem gente (D4).
     """
     h = spec["homem"]
-    sl = {"maos": spec["maos"], "idade": h["idade"], "etnia": spec["etnia"],
+    sl = {"maos": spec["maos"]["desc"],
+          "idade": h["idade"], "etnia": spec["etnia"],
           "cabeca": h["cabeca"], "marca": h["marca"], "traje": spec["traje"]}
     ac = spec["acao"]
     for chave, bloco in (("t1_img", "IMAGE 01/02"), ("t1_take", "TAKE 01/02"),
@@ -1742,6 +1815,12 @@ def lint(spec, blocos):
     falas = spec["falas"]
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto`, entao a lente entra aqui explicitamente — regra sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente
+    # assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     # ⛔ literal LOCAL: a keyword deste agente e' `recipe`
     #    (ordem do operador 13/08), nao o `gelatin` do repo.
@@ -1786,9 +1865,28 @@ EIXOS_UI = [
     ("rotulo", "O ROTULO", "ROTULOS", "curto"),
     ("receita", "A RECEITA", "RECEITAS", "curto"),
 ]
-EIXOS_TRAVAVEIS = ["banheiro", "superficie", "medida", "rotulo", "receita"]
+EIXOS_TRAVAVEIS = ["banheiro", "superficie", "medida", "rotulo", "receita",
+                   "maos"]
 TRAVAS_UI = [("familia_banheiro", "cenario",
               ["livre"] + FAMILIAS_BANHEIRO)]
+
+# ⭐⭐ O DROPDOWN `AS MAOS` — e' ELE que da' FUNCAO ao campo `rotulo` do pool.
+# ⛔ Sem esta linha os 22 rotulos seriam comentario caro: escritos, medidos,
+# travados, e nenhum olho humano os veria. Forma sem funcao e' o defeito que
+# este repo mais paga (licoes-de-construcao §41).
+# ⛔⛔ E ELE E' O UNICO ACESSO DO OPERADOR A ESTE EIXO. Os seis eixos do
+# `EIXOS_UI` tem linha no painel (com `trocar` e cadeado); as MAOS nao tem,
+# porque neste angulo elas nao sao um adereco — sao O NARRADOR, e o narrador
+# nao aparecia no painel. Este menu e a primeira porta.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: aquela barra desenha UM BOTAO POR
+# OPCAO, lado a lado. Serve para as familias de banheiro; com 22 pares de maos
+# ela estoura a largura da janela.
+# ⚠️ O campo exibido e' `rotulo` e NAO `desc`: o `desc` e' ingles de prompt
+# ("clean broad hands with short trimmed nails and smooth skin", 57 chars) e
+# nao cabe no combobox. O `ui_agente` monta o mapa rotulo -> id, entao o
+# operador escolhe "largas + relogio de aco no pulso" e o motor recebe
+# `relogio_aco`.
+DROPDOWNS_UI = [("maos", "AS MAOS", "MAOS", "rotulo")]
 
 # ⚠️ `banheiro` e `receita` provam-se por outros literais que nao o campo do
 # painel (`cen` e `vaso`), entao ficam de fora da lente de honestidade.
@@ -1834,7 +1932,8 @@ def autoteste(n=400):
         modo = {"pessoa": True} if i % 4 == 0 else {}
         s = sortear(pags[i % len(pags)], random.Random(i), {}, modo)
         b = montar(s)
-        for e in ("banheiro", "superficie", "medida", "rotulo", "receita"):
+        for e in ("banheiro", "superficie", "medida", "rotulo", "receita",
+                  "maos"):
             eixos[e].add(s[e]["id"])
         eixos["abertura"].add(s["abertura"])
         eixos["apelido"].add(s["apelido"])
@@ -1853,7 +1952,7 @@ def autoteste(n=400):
         v = sorted(tam[c])
         print("  cena %d: %d falas distintas · palavras min/med/max %d/%d/%d"
               % (c, len(dist[c]), v[0], v[len(v) // 2], v[-1]))
-    for e in ("banheiro", "superficie", "medida", "rotulo", "receita",
+    for e in ("banheiro", "superficie", "medida", "rotulo", "receita", "maos",
               "abertura", "apelido", "idade"):
         print("  %-11s %d valores" % (e, len(eixos[e])))
     print("  linter: %d ERRO, %d AVISO" % (sum(erros.values()), avisos))
@@ -2041,10 +2140,99 @@ def autoteste(n=400):
         falhas.append("MODO PESSOA: ligado e desligado produzem a MESMA IMAGE")
 
     for e, minimo in (("banheiro", 8), ("superficie", 7), ("medida", 6),
-                      ("rotulo", 4), ("receita", 2), ("abertura", 2)):
+                      ("rotulo", 4), ("receita", 2), ("maos", len(MAOS)),
+                      ("abertura", 2)):
         if len(eixos[e]) < minimo:
             falhas.append("EIXO %s: so' %d valores em %d sorteios (pool tem %d)"
                           % (e, len(eixos[e]), n, minimo))
+    # ⛔⛔ O CONTRATO DO `rotulo` — as tres coisas que o dropdown exige, e a
+    # quarta que o `DROPDOWNS_UI` exige.
+    # ⚠️ A UNICIDADE nao e' capricho: o `ui_agente._barra_dropdowns` monta o
+    # mapa com `if txt and txt not in mapa`, entao dois rotulos iguais fazem o
+    # SEGUNDO par de maos DESAPARECER do menu — em silencio, sem erro, sem log.
+    # Pool de 22 que o operador so' alcanca em 21 e' a familia do botao que
+    # mente, por colisao de texto.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` + folga): rotulo
+    # maior fica cortado na tela, e rotulo cortado volta a ser ilegivel — que e'
+    # exatamente o problema que ele veio resolver.
+    _rot = [x.get("rotulo") or "" for x in MAOS]
+    _sem = [x["id"] for x in MAOS if not x.get("rotulo")]
+    if _sem:
+        falhas.append("ROTULO: %d entrada(s) de MAOS sem rotulo — o dropdown "
+                      "cai no `id` e o operador le' %r" % (len(_sem), _sem[0]))
+    _rep = sorted({r for r in _rot if _rot.count(r) > 1})
+    if _rep:
+        falhas.append("ROTULO: %d rotulo(s) repetido(s) (%r) — o segundo par "
+                      "some do dropdown sem erro nenhum" % (len(_rep), _rep[0]))
+    _longos = [r for r in _rot if len(r) > 42]
+    if _longos:
+        falhas.append("ROTULO: %d rotulo(s) acima de 42 chars (%r, %d) — "
+                      "estoura a largura do menu"
+                      % (len(_longos), _longos[0], len(_longos[0])))
+    # ⛔ E O `DROPDOWNS_UI` TEM DE APONTAR PARA COISA QUE EXISTE. O `ui_agente`
+    # le' o pool com `getattr(motor, nome, [])`: nome errado devolve LISTA VAZIA
+    # e o menu nasce so' com `livre` — seletor que existe e nao seleciona.
+    for _ch, _lbl, _pool_nome, _campo in DROPDOWNS_UI:
+        _p = globals().get(_pool_nome)
+        if not isinstance(_p, list) or not _p:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe no motor — o "
+                          "menu nasce vazio" % _pool_nome)
+            continue
+        if _ch not in EIXOS_TRAVAVEIS:
+            falhas.append("DROPDOWNS_UI: o eixo %r nao esta' em "
+                          "EIXOS_TRAVAVEIS" % _ch)
+        _faltam = [x for x in _p if not str(x.get(_campo) or "")]
+        if _faltam:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem o campo %r"
+                          % (len(_faltam), _pool_nome, _campo))
+
+    # ⛔⛔ E O DROPDOWN TEM DE FIXAR DE VERDADE. E' a lente de FUNCAO: as tres
+    # de cima olham a FORMA do rotulo, e forma sem funcao e' o defeito §41.
+    # ⚠️ Ela usa a mesma porta que o painel usa (`travas["maos"]` com o `id`
+    # que o mapa do combobox devolve), nao uma porta de teste.
+    for _alvo in (MAOS[0]["id"], MAOS[len(MAOS) // 2]["id"], MAOS[-1]["id"]):
+        _vistos = {sortear(pags[k % len(pags)], random.Random(500 + k), {},
+                           {"maos": _alvo})["maos"]["id"] for k in range(8)}
+        if _vistos != {_alvo}:
+            falhas.append("DROPDOWN: travar `maos` em %r devolveu %r — o menu "
+                          "promete e o sorteio ignora" % (_alvo, sorted(_vistos)))
+            break
+
+    # ⛔ E O ROTULO NUNCA CHEGA AO PROMPT. Ele e' portugues; um vazamento poria
+    # "largas + relogio de aco no pulso" dentro de um bloco IMAGE em ingles, e o
+    # Veo desenharia o texto. A lente e' de AUSENCIA, e por isso varre o POOL
+    # INTEIRO passando pelo quadro — um sorteio so' mediria a sorte da seed.
+    for _i, _m in enumerate(MAOS):
+        _bj = " ".join(montar(sortear(pags[_i % len(pags)],
+                                      random.Random(900 + _i), {},
+                                      {"maos": _m["id"]})).values())
+        if _m["rotulo"] in _bj:
+            falhas.append("ROTULO: o texto de painel %r vazou para um bloco do "
+                          "prompt — ele e' portugues e o Veo desenha texto"
+                          % _m["rotulo"])
+            break
+
+    # ⭐⭐ CONTROLES NEGATIVOS DAS TRAVAS DE ROTULO. Lente que nunca acusou e'
+    # lente que ninguem sabe se funciona. ⚠️ Sabotagem em COPIA do pool: mexer
+    # no global deixaria o motor sujo se o autoteste morresse no meio.
+    def _falhas_rot(pool):
+        r = [x.get("rotulo") or "" for x in pool]
+        return ([x for x in pool if not x.get("rotulo")]
+                or [t for t in r if r.count(t) > 1]
+                or [t for t in r if len(t) > 42])
+
+    for _nome, _sujo in (
+            ("rotulo vazio", [dict(MAOS[0], rotulo="")] + MAOS[1:]),
+            ("rotulo repetido",
+             [dict(MAOS[0], rotulo=MAOS[1]["rotulo"])] + MAOS[1:]),
+            ("rotulo de 43 chars", [dict(MAOS[0], rotulo="x" * 43)] + MAOS[1:])):
+        if not _falhas_rot(_sujo):
+            falhas.append("CONTROLE %s: a trava de rotulo NAO acusou o pool "
+                          "sabotado" % _nome)
+    if _falhas_rot(MAOS):
+        falhas.append("CONTROLE pool limpo: a trava de rotulo acusou o pool "
+                      "de verdade")
+
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))
     if falhas:

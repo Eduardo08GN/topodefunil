@@ -771,101 +771,149 @@ REFS = [
     # medidor). O eixo que separa as duas mulheres no MESMO frame e' o CABELO,
     # e por isso nenhuma entrada repete penteado.
     {"id": "cachos_longos", "idade": 27,
+     "rotulo": "27y · cachos escuros longos + sinal",
+     "rotulo": "27y · cachos escuros longos + sinal",
      "cabeca": "long dark curls falling past the shoulders",
      "marca": "a small dark mole just under her left eye",
      "corpo": "tall with a narrow waist"},
     {"id": "liso_platinado", "idade": 24,
+     "rotulo": "24y · platinado no queixo + pinta",
+     "rotulo": "24y · platinado no queixo + pinta",
      "cabeca": "sleek platinum hair cut blunt at the jaw",
      "marca": "a small beauty mark just above her left eyebrow",
      "corpo": "slim and long-limbed"},
     {"id": "rabo_alto", "idade": 26,
+     "rotulo": "26y · rabo preto alto + covinha",
+     "rotulo": "26y · rabo preto alto + covinha",
      "cabeca": "black hair pulled into a high sleek ponytail",
      "marca": "a deep dimple in her left cheek",
      "corpo": "athletic with square shoulders"},
     {"id": "ondas_ruivas", "idade": 25,
+     "rotulo": "25y · ondas auburn soltas + sardas",
+     "rotulo": "25y · ondas auburn soltas + sardas",
      "cabeca": "deep auburn waves worn loose",
      "marca": "freckles scattered across her nose",
      "corpo": "curved with a small waist"},
     {"id": "trancas", "idade": 28,
+     "rotulo": "28y · box braids no ombro + pinta",
+     "rotulo": "28y · box braids no ombro + pinta",
      "cabeca": "long box braids gathered over one shoulder",
      "marca": "a beauty mark high on her cheekbone",
      "corpo": "tall and softly curved"},
     {"id": "bob_castanho", "idade": 23,
+     "rotulo": "23y · bob castanho brilhante + covinha",
+     "rotulo": "23y · bob castanho brilhante + covinha",
      "cabeca": "a glossy chestnut bob",
      "marca": "a dimple in her cheek",
      "corpo": "petite with a narrow frame"},
     {"id": "afro_curto", "idade": 29,
+     "rotulo": "29y · afro curto + sinal na tempora",
+     "rotulo": "29y · afro curto + sinal na tempora",
      "cabeca": "a short rounded afro",
      "marca": "a small birthmark at her temple",
      "corpo": "strong-shouldered and lean"},
     {"id": "loiro_longo", "idade": 22,
+     "rotulo": "22y · loiro mel longo liso + sardas",
+     "rotulo": "22y · loiro mel longo liso + sardas",
      "cabeca": "long honey-blonde hair, straight and heavy",
      "marca": "a light spray of freckles across her nose and cheekbones",
      "corpo": "long-legged and slight"},
     # --- as 16 novas (2026-08-13) ------------------------------------------
     {"id": "tranca_lateral", "idade": 24,
+     "rotulo": "24y · tranca unica lateral + pinta",
+     "rotulo": "24y · tranca unica lateral + pinta",
      "cabeca": "a long single braid falling over one shoulder",
      "marca": "a small beauty mark above the right corner of her mouth",
      "corpo": "slim with long legs"},
     {"id": "coque_alto", "idade": 26,
+     "rotulo": "26y · coque escuro alto + sardas",
+     "rotulo": "26y · coque escuro alto + sardas",
      "cabeca": "dark hair gathered into a high glossy bun",
      "marca": "a light dusting of freckles across her nose",
      "corpo": "athletic with a narrow waist"},
     {"id": "franja_reta", "idade": 23,
+     "rotulo": "23y · preto franja reta + covinha",
+     "rotulo": "23y · preto franja reta + covinha",
      "cabeca": "straight black hair with a blunt fringe at the brows",
      "marca": "a deep dimple in her right cheek",
      "corpo": "petite and slim"},
     {"id": "cachos_curtos", "idade": 27,
+     "rotulo": "27y · cachos curtos + tarraxa dourada",
+     "rotulo": "27y · cachos curtos + tarraxa dourada",
      "cabeca": "short springy curls pushed back from her face",
      "marca": "a tiny gold stud in her left nostril",
      "corpo": "curved with a small waist"},
     {"id": "mel_ondulado", "idade": 25,
+     "rotulo": "25y · ondas mel castanho + sinal",
+     "rotulo": "25y · ondas mel castanho + sinal",
      "cabeca": "honey-brown waves falling to the middle of her back",
      "marca": "a small dark mole under her right eye",
      "corpo": "long-limbed and slim"},
     {"id": "loiro_bob", "idade": 22,
+     "rotulo": "22y · bob platinado reto + sardas",
+     "rotulo": "22y · bob platinado reto + sardas",
      "cabeca": "a sharp platinum bob cut level at the jaw",
      "marca": "a fine spray of freckles high on both cheeks",
      "corpo": "slight and narrow-framed"},
     {"id": "trancas_longas", "idade": 28,
+     "rotulo": "28y · trancas ate a cintura + pinta",
+     "rotulo": "28y · trancas ate a cintura + pinta",
      "cabeca": "waist-length braids pulled over one shoulder",
      "marca": "a small beauty mark at her left temple",
      "corpo": "tall and softly curved"},
     {"id": "ruivo_liso", "idade": 24,
+     "rotulo": "24y · ruivo cobre liso + sardas",
+     "rotulo": "24y · ruivo cobre liso + sardas",
      "cabeca": "straight copper-red hair parted in the middle",
      "marca": "freckles scattered across her nose and cheekbones",
      "corpo": "slim with square shoulders"},
     {"id": "preto_longo", "idade": 29,
+     "rotulo": "29y · preto longo solto + queixo partido",
+     "rotulo": "29y · preto longo solto + queixo partido",
      "cabeca": "long jet-black hair worn loose and heavy",
      "marca": "a fine dusting of freckles over her nose and a shallow cleft "
               "in her chin",
      "corpo": "tall with a narrow waist"},
     {"id": "meio_preso", "idade": 26,
+     "rotulo": "26y · castanho meio preso + olhos bicolor",
+     "rotulo": "26y · castanho meio preso + olhos bicolor",
      "cabeca": "chestnut hair half pulled up, the rest loose past her "
                "shoulders",
      "marca": "one green eye and one hazel eye",
      "corpo": "curved and long-legged"},
     {"id": "pixie", "idade": 23,
+     "rotulo": "23y · pixie escuro + sinal no olho",
+     "rotulo": "23y · pixie escuro + sinal no olho",
      "cabeca": "a cropped dark pixie cut",
      "marca": "a tiny mole at the outer corner of her right eye",
      "corpo": "petite with a narrow frame"},
     {"id": "ondas_castanhas", "idade": 25,
+     "rotulo": "25y · ondas castanhas + risca funda",
+     "rotulo": "25y · ondas castanhas + risca funda",
      "cabeca": "loose chestnut waves parted deep on one side",
      "marca": "a light spray of freckles over her nose",
      "corpo": "slim with soft curves"},
     {"id": "rabo_baixo", "idade": 28,
+     "rotulo": "28y · rabo escuro baixo + pinta alta",
+     "rotulo": "28y · rabo escuro baixo + pinta alta",
      "cabeca": "dark hair pulled into a low sleek ponytail",
      "marca": "a beauty mark high on her right cheekbone",
      "corpo": "athletic and long-limbed"},
     {"id": "loiro_escuro", "idade": 24,
+     "rotulo": "24y · loiro escuro ondulado + sinal",
+     "rotulo": "24y · loiro escuro ondulado + sinal",
      "cabeca": "dark blonde hair in loose beach waves",
      "marca": "a small mole on her jaw below her left ear",
      "corpo": "tall and slender"},
     {"id": "castanho_curto", "idade": 22,
+     "rotulo": "22y · castanho no queixo + sardas",
+     "rotulo": "22y · castanho no queixo + sardas",
      "cabeca": "a chin-length chestnut cut tucked behind one ear",
      "marca": "freckles across the bridge of her nose",
      "corpo": "petite and trim"},
     {"id": "ondas_pretas", "idade": 29,
+     "rotulo": "29y · ondas pretas longas + tarraxa",
+     "rotulo": "29y · ondas pretas longas + tarraxa",
      "cabeca": "long black waves with a deep side part",
      "marca": "a tiny silver stud in her right nostril",
      "corpo": "full-figured with a small waist"},
@@ -886,7 +934,16 @@ REACOES_AMIGA = [
 ]
 
 # ⭐ A cláusula anti-celebridade, no registro de mulher.
-ANTICELEB = ("not resembling any famous person, not a celebrity")
+# ⛔⛔ A negacao anti-celebridade saiu daqui em 2026-08-14, por ordem do
+# operador (*"tire not a celebrity do prompt"*): declaracao INJETA o token
+# que ela nega. ⚠️ Aqui a clausula era `not resembling any famous person, not
+# a celebrity` — NEGACAO PURA, sem metade descritiva para sobreviver, o unico
+# caso assim nos 30 motores. Por isso a constante fica VAZIA e quem carrega a
+# pontuacao passou a ser o slot (`sc.frase_anti`), no `montar()`.
+# ⚠️ O aviso de MAIUSCULA acima morreu junto: nao ha' mais frase para comecar
+# em minuscula. Fica pela memoria de como o defeito se parecia.
+# Ver CLAUDE.md §"CONTRA A CELEBRIDADE, SILENCIO".
+ANTICELEB = ("")
 
 CAUDA = ("Slight sensor grain, soft focus, raw iPhone front camera aesthetic. "
          "No subtitles, no captions, no burned-in text, no watermark.")
@@ -1104,6 +1161,69 @@ EIXOS_UI = [
 ]
 CENAS_UI = ["1 · o corpo-prova acusado", "2 · a prova + o buraco + CTA"]
 
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# ⛔ Sem esta linha o rotulo seria comentario caro: 24 textos escritos, medidos
+# e travados, e nenhum olho humano os veria. Forma sem funcao e' o defeito que
+# este repo mais paga (licoes-de-construcao §41), e um label que nao aparece na
+# tela e' a versao mais barata dele.
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado. Serve para as regioes; com 24 REFs ela estoura a largura
+# da janela. Contrato aditivo do `ui_agente` (2026-08-13), modelo: MEL 16.
+# ⚠️ O campo exibido e' `rotulo`, NAO `cabeca` nem `id`: `cabeca` e' um
+# paragrafo em ingles e `id` (`meio_preso`, `pixie`) so' diz alguma coisa para
+# quem escreveu o pool. O operador escolhe "23y · pixie escuro + sinal no olho".
+# ⛔⛔ ESTE POOL JA' TINHA `id` — o que faltava era o `sortear` RESPEITA-LO. A
+# linha antiga (`ref = travas.get("ref") or ...`) usava a trava CRUA, entao o id
+# vindo do menu virava `spec["ref"]` como STRING e a montagem quebrava no
+# primeiro `ref["cabeca"]`. Ver `_por_ref` la' em cima.
+DROPDOWNS_UI = [("ref", "QUEM FALA", "REFS", "rotulo")]
+
+def _checa_drop(pool, campo):
+    """As quatro travas de FORMA do dropdown, sobre um pool qualquer.
+
+    ⚠️ E' FUNCAO, e no nivel do modulo, por dois motivos. O controle negativo
+    precisa rodar a MESMA lente sobre um pool sabotado — lente que so' existe
+    inline nao pode ser sabotada, e lente que nao pode ser sabotada e' relato,
+    nao medicao (licoes §41). E o `autoteste` precisa chama-la ANTES do lote.
+    """
+    ms = []
+    if [e for e in pool if not e.get(campo)]:
+        ms.append("entrada sem `%s`" % campo)
+    if [e for e in pool if not e.get("id")]:
+        ms.append("entrada sem `id` — o menu devolveria None")
+    r = [e.get(campo) or "" for e in pool]
+    rep = sorted({x for x in r if r.count(x) > 1})
+    if rep:
+        ms.append("rotulo repetido (%r) — a 2a entrada some do menu" % rep[0])
+    lg = [x for x in r if len(x) > 42]
+    if lg:
+        ms.append("rotulo de %d chars (%r) — estoura o combobox"
+                  % (len(lg[0]), lg[0]))
+    return ms
+
+
+def _contrato_dropdown():
+    """O contrato ESTATICO do menu: pool existe, campo existe, eixo e' travavel.
+
+    ⛔ Roda ANTES do lote do autoteste, de proposito e por medicao: uma entrada
+    sem `id` derruba o `sortear` de varios motores desta familia la' dentro, e
+    um traceback no meio do lote ESCONDE a causa real — quem le' ve'
+    `KeyError: 'id'` e vai cacar bug de sorteio, quando o que quebrou foi o
+    contrato do menu. Falha de contrato reporta e PARA.
+    """
+    ms = []
+    for ch, _tela, pn, campo in DROPDOWNS_UI:
+        pool = globals().get(pn)
+        if not isinstance(pool, list) or not pool:
+            ms.append("DROPDOWN: `DROPDOWNS_UI` aponta para o pool %r, que nao "
+                      "e' uma lista deste motor — o menu nasce vazio" % pn)
+            continue
+        if ch not in EIXOS_TRAVAVEIS:
+            ms.append("DROPDOWN: o eixo %r nao esta' em EIXOS_TRAVAVEIS — o "
+                      "operador escolhe no menu e o sortear ignora" % ch)
+        ms += ["DROPDOWN/%s: %s" % (pn, x) for x in _checa_drop(pool, campo)]
+    return ms
+
 TETO_LEDGER = {"familia_mundo": len(FAMILIAS_MUNDO), "prop": len(PROPS),
                "homem": len(HOMENS), "metodo": len(METODOS),
                "comum": len(COMUNS), "raro": len(RAROS), "ref": len(REFS)}
@@ -1163,6 +1283,24 @@ def _por_id(pool, valor, chave="id"):
     if isinstance(valor, str):
         return next((x for x in pool if x.get(chave) == valor), pool[0])
     return valor
+
+
+def _por_ref(pool, valor):
+    """Resolve a REF travada por `id` (o dropdown) OU por `cabeca`.
+
+    ⛔⛔ ESTE HELPER EXISTE PORQUE O `travas["ref"]` ERA USADO CRU. A linha
+    antiga era `ref = travas.get("ref") or ...` — ela assumia que a trava era o
+    DICT da entrada, que e' o que o cadeado da coluna manda. So' que o
+    `ui_agente._barra_dropdowns` manda o `id`, uma STRING: com ela, `spec["ref"]`
+    virava a string `"cachos_longos"` e a montagem quebrava no primeiro
+    `ref["cabeca"]`. Nao e' o botao que mente — e' o botao que derruba o app.
+    ⚠️ Valor que NAO e' string volta intacto, entao o cadeado (dict) continua
+    exatamente como estava. Isto e' um SUPERSET do comportamento antigo.
+    """
+    if not isinstance(valor, str):
+        return valor
+    return next((x for x in pool
+                 if x.get("id") == valor or x.get("cabeca") == valor), pool[0])
 
 
 def _palavras(t):
@@ -1249,10 +1387,12 @@ def sortear(pagina, rng, ledger, travas=None):
 
     # ⭐ MODO BELA — a REF e a amiga saem do pool bela quando o toggle liga.
     if travas.get("bela"):
-        ref = travas.get("ref") or sc.ref_bela(REFS[0], rng)
+        ref = (_por_ref(REFS, travas["ref"]) if travas.get("ref")
+               else sc.ref_bela(REFS[0], rng))
         amiga = sc.ref_bela(REFS[0], rng, banidos=(ref.get("cabeca", ""),))
     else:
-        ref = travas.get("ref") or _fresco(REFS, usados.get("ref", []), rng, "id")
+        ref = (_por_ref(REFS, travas["ref"]) if travas.get("ref")
+               else _fresco(REFS, usados.get("ref", []), rng, "id"))
         # ⛔ A AMIGA NUNCA E' A MESMA ENTRADA DA REF. Duas mulheres de rosto
         # identico no mesmo quadro e' o defeito mais visivel que existe, e o
         # Veo faz isso sozinho se a descricao nao separar as duas.
@@ -1417,12 +1557,18 @@ def montar(spec):
         "h_cabeca": hom["cabeca"], "h_calca": hom["calca"],
         "vaso": met["vaso"], "acao": met["acao"],
         "com_img": com["img"], "raro_img": raro["img"],
-        # ⚠️ `.rstrip(".")` — os blocos escrevem "%(anti)s." e o ANTICELEB_BELA
-        # (compartilhado) ja' termina em ponto: saia "famous person.." nos
-        # quatro. Normalizar aqui e' melhor que tirar o ponto do template, que
-        # os outros agentes usam sem ponto proprio.
-        "anti": (sc.ANTICELEB_BELA if spec.get("bela")
-                 else ANTICELEB).rstrip("."),
+        # ⛔⛔ O SLOT LEVA A PROPRIA PONTUACAO — 2026-08-14. Aqui a clausula
+        # anti-celebridade era NEGACAO PURA, sem metade descritiva, entao a
+        # remocao (ordem do operador, CLAUDE.md §CONTRA A CELEBRIDADE,
+        # SILENCIO) deixa o `ANTICELEB` VAZIO. Os blocos escreviam "%(anti)s. "
+        # e devolviam ponto orfao e espaco duplo — a sujeira que a lente foi
+        # escrita para pegar. `sc.frase_anti` normaliza o ponto e o espaco no
+        # SLOT, e some inteiro quando o texto e' vazio; os templates passaram a
+        # `%(anti_frase)s`, sem ponto proprio.
+        # ⚠️ Com o MODO BELA aceso o valor continua vindo do compartilhado e o
+        # texto sai identico ao de antes — medido bloco a bloco.
+        "anti_frase": sc.frase_anti(sc.ANTICELEB_BELA if spec.get("bela")
+                                    else ANTICELEB),
         "cauda": CAUDA, "band": band,
         "idade": ref["idade"], "etnia": spec["etnia"], "marca": ref["marca"],
         "cabeca": ref["cabeca"],
@@ -1443,7 +1589,7 @@ def montar(spec):
         "REF 01: Photo of a real person, a %(idade)d-year-old %(etnia)s woman, "
         "chest up, facing the camera directly, neutral steady expression with "
         "her mouth closed. %(cabeca)s and %(marca)s. Wearing %(traje)s. "
-        "%(anti)s. Hands out of frame, no objects. Plain neutral gray "
+        "%(anti_frase)sHands out of frame, no objects. Plain neutral gray "
         "background, soft even frontal light. %(cauda)s" % v)
 
     # --- CENA 1 — O CORPO-PROVA E A ACUSACAO --------------------------------
@@ -1494,7 +1640,7 @@ def montar(spec):
         "%(amiga)s, wearing %(traje_amiga)s, and her right arm reaches out "
         "with the index finger pointing at the %(prop_curto)s, without "
         "touching it or him. They are the only three people in the frame. "
-        "%(nao_toca)s%(band)s %(anti)s. %(cauda)s" % v)
+        "%(nao_toca)s%(band)s %(anti_frase)s%(cauda)s" % v)
 
     b["TAKE 01/02"] = (
         # ⛔ MESMAS ALAVANCAS NO TAKE, e a trava de geometria vem LOGO NO
@@ -1548,7 +1694,7 @@ def montar(spec):
         "pale drink, a single paper straw standing in it, and looks straight "
         "into the lens with her mouth open mid-word. On the surface in front "
         "of her stand %(vaso)s, %(com_img)s and %(raro_img)s. They are the "
-        "only two people in the frame. %(nao_toca)s%(band)s %(anti)s. "
+        "only two people in the frame. %(nao_toca)s%(band)s %(anti_frase)s"
         "%(cauda)s" % v)
 
     b["TAKE 02/02"] = (
@@ -1895,6 +2041,12 @@ def lint(spec, blocos):
 
     sc.lint_tags(blocos, ach)
     sc.lint_sem_texto(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto`, entao a lente entra aqui explicitamente — regra sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente
+    # assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[1], ach, "a cena 2 (CTA)")
     # ⛔⛔ T16-2 — A KEYWORD NAO PODE TER PALAVRA COLADA NELA.
@@ -2045,6 +2197,17 @@ def autoteste(n=400):
     larguras = {1: [], 2: []}
     seam_igual = 0
 
+    # ⛔⛔ O CONTRATO DO DROPDOWN VEM ANTES DO LOTE — ver `_contrato_dropdown`.
+    # Ele so' olha dado estatico (o pool e a declaracao), entao nao custa nada;
+    # e se ele estiver quebrado nao adianta medir o lote inteiro, porque o
+    # proprio `sortear` pode cair antes de chegar ao fim.
+    _drop = _contrato_dropdown()
+    if _drop:
+        print("\n>> %d FALHA(S) DE CONTRATO DO DROPDOWN:" % len(_drop))
+        for _d in _drop:
+            print("   %s" % _d)
+        return 1
+
     for seed in range(n):
         spec = sortear("joe", random.Random(seed), {}, {})
         blocos = montar(spec)
@@ -2151,6 +2314,76 @@ def autoteste(n=400):
                  PISO_FALA[i], TETO_FALA[i]))
     print("  costura com substantivo REPETIDO: %d de %d (%.0f%%)"
           % (seam_igual, n, 100.0 * seam_igual / n))
+
+    # ⛔⛔ A TRAVA TEM DE FIXAR — a unica checagem do dropdown que mede FUNCAO.
+    # As de FORMA (rotulo unico, curto, presente, com `id`) rodaram la' no
+    # comeco, em `_contrato_dropdown`. O §41 do licoes-de-construcao existe
+    # exatamente porque forma verificada foi declarada pronta sem funcao
+    # medida — e neste motor a funcao ESTAVA quebrada: o pool ja' tinha `id`, mas o `sortear` usava a trava
+    # CRUA, entao o id do menu virava `spec["ref"]` como STRING.
+    for _ch, _tela, _pn, _campo in DROPDOWNS_UI:
+        _pool = globals().get(_pn)
+        if not isinstance(_pool, list) or not _pool:
+            continue
+        _alvo = _pool[len(_pool) // 2]["id"]
+        _ids, _naodict, _boom = set(), 0, None
+        for _i in range(8):
+            # ⛔⛔ O `sortear` PODE MORRER com a trava, e ai a lente tem de
+            # FALAR, nao de deixar o traceback subir. Medido no FALTA 16: a
+            # trava crua vira string e o sorteio da amiga estoura em
+            # `ref.get("id")` — o autoteste inteiro caia com AttributeError e
+            # esta checagem nunca chegava a rodar. Traceback diz ONDE
+            # estourou; a lente diz O QUE quebrou.
+            try:
+                _s = sortear("joe", random.Random(9100 + _i), {},
+                             {_ch: _alvo})
+            except Exception as _e:            # noqa: BLE001
+                _boom = "%s: %s" % (type(_e).__name__, _e)
+                break
+            _v = _s[_ch]
+            # ⛔⛔ TEM DE SER O DICT DA ENTRADA — nao basta o id BATER.
+            # Medido em 2026-08-13, e este foi um furo real desta lente: com o
+            # resolver devolvendo a trava CRUA, `spec["ref"]` virava a STRING
+            # do id, que e' IGUAL ao alvo. A lente comparava id com id, dava
+            # FIXOU, e o spec estourava no `montar` com `string indices must
+            # be integers`. Lente que aceita string mede o TEXTO que ela mesma
+            # mandou, nao o eixo que o motor resolveu.
+            if not isinstance(_v, dict):
+                _naodict += 1
+                continue
+            _ids.add(_v.get("id"))
+        if _boom:
+            falhas.append("DROPDOWN: escolher %r em %r DERRUBA o `sortear` "
+                          "(%s) — o menu nao fica so' mudo, ele quebra o app"
+                          % (_alvo, _tela, _boom))
+        elif _naodict:
+            falhas.append("DROPDOWN: o eixo %r voltou como %s em %d de 8 "
+                          "sorteios, e nao como a entrada do pool — o `montar` "
+                          "estoura no primeiro indice"
+                          % (_ch, type(_v).__name__, _naodict))
+        elif _ids != {_alvo}:
+            falhas.append("DROPDOWN: escolher %r em %r nao fixou o eixo — 8 "
+                          "sorteios devolveram %r"
+                          % (_alvo, _tela, sorted(_ids)))
+        # ⛔ CONTROLE NEGATIVO: um pool SINTETICO sabotado nas quatro formas.
+        # ⚠️ SINTETICO, e nao uma copia do pool real, por licao paga na hora de
+        # escrever isto: a primeira versao fazia `_sab[0][_campo]` sobre copias
+        # das entradas de verdade e ESTOUROU com `KeyError` quando o campo
+        # declarado no `DROPDOWNS_UI` nao existia — justamente o defeito que
+        # esta lente deveria REPORTAR. Controle negativo que derruba o autoteste
+        # em vez de acusar e' pior que controle nenhum: some a falha real no
+        # traceback. O pool de mentira nao depende de nada e sempre exercita as
+        # quatro pernas.
+        _sab = [{"id": "sab%d" % _k, _campo: "rotulo sabotado %d" % _k}
+                for _k in range(6)]
+        _sab[1][_campo] = _sab[0][_campo]
+        _sab[2][_campo] = "x" * 43
+        _sab[3].pop(_campo, None)
+        _sab[4].pop("id", None)
+        if len(_checa_drop(_sab, _campo)) != 4:
+            ctrl.append("[DROP] a lente do dropdown nao acusa as quatro "
+                        "sabotagens (repetido/longo/vazio/sem id) — ela mede a "
+                        "sorte do pool, nao o contrato")
 
     if ctrl:
         print("\n>> O AUTOTESTE ESTA' CEGO:")

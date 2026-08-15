@@ -561,73 +561,89 @@ AMBIENTES = [
 # ⚠️ ZERO mencao a etnia: quem injeta e' o `ETNIA[pagina]`.
 HOMENS = [
     {"id": "risca_lateral", "idade": 52,
+     "rotulo": "52y · risca lateral + barba escura curta",
      "marca": "dark hair combed into a low side part with grey only at the "
               "temples, a close-trimmed dark beard and a broad square face "
               "with a heavy flat brow",
      "sinal": "a shallow cleft in his chin"},
     {"id": "grisalho_tras", "idade": 58,
+     "rotulo": "58y · grisalho para tras + barba cheia",
      "marca": "thick steel-grey hair brushed straight back, a full grey beard "
               "kept short, a long face with high cheekbones and a straight "
               "narrow nose",
      "sinal": "a patch of white hair above his right temple"},
     {"id": "corte_rente", "idade": 55,
+     "rotulo": "55y · rente grisalho + barba por fazer",
      "marca": "hair cropped close all over and grey at the sides, three days "
               "of grey stubble, a wide face with a firm jawline, lightly "
               "tanned",
      "sinal": "a small gold stud in his left ear"},
     {"id": "ondulado_escuro", "idade": 51,
+     "rotulo": "51y · ondulado escuro + queixo quadrado",
      "marca": "dense dark waves cut short at the sides, a squared jaw and "
               "wide-set eyes under level brows",
      "sinal": "a raised mole beside his left nostril"},
     {"id": "prata_curto", "idade": 61,
+     "rotulo": "61y · prata curto + bigode prateado",
      "marca": "short silver hair with a hard part cut into one side, a thick "
               "silver moustache, a heavy square jaw and a level hairline",
      "sinal": "a coin-sized birthmark on the side of his jaw"},
     {"id": "castanho_alto", "idade": 50,
+     "rotulo": "50y · castanho alto + rosto anguloso",
      "marca": "thick chestnut hair worn long on top and short at the sides, an "
               "angular face with a defined chin, tanned",
      "sinal": "a deep dimple in his left cheek"},
     {"id": "sal_pimenta", "idade": 56,
+     "rotulo": "56y · sal-e-pimenta + cavanhaque",
      "marca": "salt-and-pepper hair swept back off the forehead, a "
               "salt-and-pepper goatee, a lean face with a firm jawline and a "
               "straight nose",
      "sinal": "a dense spray of freckles across his nose"},
     {"id": "flat_top", "idade": 63,
+     "rotulo": "63y · flat-top peltre + mandibula longa",
      "marca": "a pewter flat-top cut squared off across the top, a long jaw "
               "and high flat cheekbones",
      "sinal": "a deep dimple below the right corner of his mouth"},
     {"id": "preto_denso", "idade": 53,
+     "rotulo": "53y · preto denso + barbeado",
      "marca": "hair still mostly black and cut dense and short, a clean-shaven "
               "face, grey only in front of the ears, a broad face with a wide "
               "mouth",
      "sinal": "a small dark mole under his right eye"},
     {"id": "onda_prata", "idade": 59,
+     "rotulo": "59y · onda prateada + barba rente",
      "marca": "thick silver hair with a natural wave lifting off the forehead, "
               "close silver stubble, a long face with a high bridge to his nose",
      "sinal": "laugh lines cut deep at the corners of his mouth"},
     {"id": "arruivado", "idade": 54,
+     "rotulo": "54y · ruivo acinzentado + barba ruiva",
      "marca": "rust-brown hair faded to sandy grey and combed to one side, a "
               "short reddish beard going grey, a square-chinned face with "
               "freckles high on the cheeks",
      "sinal": "a deep dimple in each cheek"},
     {"id": "compacto", "idade": 66,
+     "rotulo": "66y · branco para tras + bigode branco",
      "marca": "fine white hair combed back off the forehead, a neat white "
               "moustache, a long face with sharp cheekbones and laugh lines "
               "at the eyes",
      "sinal": "two small dark moles in a line on his right temple"},
     {"id": "mecha_branca", "idade": 60,
+     "rotulo": "60y · mecha branca na tempora + fenda",
      "marca": "grey hair parted on the side with a bright white streak at one "
               "temple, an oval face with a defined jaw",
      "sinal": "a deep cleft in his chin"},
     {"id": "escovinha", "idade": 51,
+     "rotulo": "51y · escovinha escura + barba por fazer",
      "marca": "dark hair buzzed to an even short brush all over, heavy "
               "stubble, a square face with a wide jaw and level brows",
      "sinal": "a birthmark shaped like a comma on his left cheek"},
     {"id": "ondas_baixas", "idade": 64,
+     "rotulo": "64y · ondas grisalhas + entrada em bico",
      "marca": "heavy grey waves worn back off the forehead, a long face with a "
               "straight strong nose",
      "sinal": "a sharp widow's peak in his hairline"},
     {"id": "cachos_grisalhos", "idade": 57,
+     "rotulo": "57y · cachos grisalhos + argola",
      "marca": "tight grey curls cut close to the head, a close-cut grey beard, "
               "a broad open face with high cheekbones",
      "sinal": "a small gold hoop in his left ear"},
@@ -636,44 +652,54 @@ HOMENS = [
     # le' bem, cabelo farto e bem cortado, e uma ancora memoravel.
     # ---------------------------------------------------------------------
     {"id": "platinado", "idade": 62,
+     "rotulo": "62y · platinado + olhos de duas cores",
      "marca": "thick platinum-white hair with a deep side sweep, a lean "
               "angular face and a straight nose",
      "sinal": "one pale blue eye and one hazel eye"},
     {"id": "no_na_nuca", "idade": 50,
+     "rotulo": "50y · no na nuca + barba escura curta",
      "marca": "dark hair long enough to tie into a short knot at the nape, a "
               "short dark beard, a narrow face with a defined jaw",
      "sinal": "a beauty mark at the point of his chin"},
     {"id": "militar", "idade": 55,
+     "rotulo": "55y · corte militar + barbeado",
      "marca": "a high and tight cut with grey at the temples, a clean-shaven "
               "face, a wide square face and a level brow",
      "sinal": "a shallow dimple in his chin"},
     {"id": "mecha_frente", "idade": 53,
+     "rotulo": "53y · mecha na testa + sardas",
      "marca": "thick dark hair falling loose over one side of the forehead, "
               "light stubble, a long face with a fine straight nose",
      "sinal": "freckles across his nose and cheekbones"},
     {"id": "cabelo_farto", "idade": 65,
+     "rotulo": "65y · branco farto + barba branca",
      "marca": "a full head of white hair with a natural side wave, a neat "
               "white beard cut close, a broad face with a wide firm mouth",
      "sinal": "a dark mole high on one cheekbone"},
     {"id": "taper_baixo", "idade": 52,
+     "rotulo": "52y · taper baixo + bigode fino",
      "marca": "dark hair in a low taper with a sharp line at the temples, a "
               "thin moustache, an oval face with a defined jaw, lightly "
               "freckled",
      "sinal": "a beauty mark beside one eyebrow"},
     {"id": "grisalho_medio", "idade": 58,
+     "rotulo": "58y · grisalho medio + sobrancelha prata",
      "marca": "mid-length grey hair tucked behind the ears, a clean-shaven "
               "face, a long face with high flat cheekbones",
      "sinal": "a silver streak through his left eyebrow"},
     {"id": "loiro_areia", "idade": 51,
+     "rotulo": "51y · loiro areia + boca larga",
      "marca": "sandy blond hair going grey at the temples and cut short, light "
               "stubble, a square face with a wide mouth, lightly tanned with "
               "fine lines at the eyes",
      "sinal": "heavy level brows over wide-set eyes"},
     {"id": "topete", "idade": 60,
+     "rotulo": "60y · topete grisalho + barba prateada",
      "marca": "thick grey hair swept up and back off the forehead, a close "
               "silver beard, a strong-boned face with a straight nose",
      "sinal": "a raised beauty mark on his right jaw"},
     {"id": "cacho_solto", "idade": 54,
+     "rotulo": "54y · cachos soltos + barbeado + argola",
      "marca": "loose dark curls with grey running through them, worn short, a "
               "clean-shaven face, a broad face with a defined chin",
      "sinal": "a small silver hoop in his right ear"},
@@ -1116,7 +1142,25 @@ def _fresco(pool, usados, rng):
 
 
 def _por_id(pool, valor):
-    return next((x for x in pool if x["id"] == valor), None)
+    """A entrada do pool, aceitando ID (string) OU a ENTRADA JA' RESOLVIDA.
+
+    ⛔⛔ OS DOIS FORMATOS SAO OBRIGATORIOS, e o segundo e' o que o PAINEL manda:
+    o dropdown devolve um id, mas o CADEADO devolve `self.spec[chave]`, o
+    dicionario inteiro. A versao ingenua (`x["id"] == valor`) nunca casa com um
+    dicionario, devolvia `None`, e o `resumo_pt` estourava
+    `TypeError: 'NoneType' object is not subscriptable` DENTRO do callback do
+    tkinter — onde a excecao morre calada. No `.exe` (pythonw, sem console) o
+    efeito era o SORTEAR simplesmente nao fazer nada.
+    ⚠️ Atingia TODOS os eixos travaveis deste motor, e e' o mesmo defeito que o
+    `_por_id` do `prato16` ja' documentava desde que quebrou os quatro cadeados
+    do GOOD 16. Corrigido em 2026-08-13, achado por uma revisao adversarial que
+    EXERCITOU o painel em vez de so' abri-lo.
+    ⚠️ O fallback e' `pool[0]`, nunca `None`: id que sumiu do pool (ledger
+    velho, menu de outra versao) tem de cair no caminho normal, nao estourar.
+    """
+    if isinstance(valor, str):
+        return next((x for x in pool if x.get("id") == valor), pool[0])
+    return valor
 
 
 def _cabe(pool, reserva, cena, o=None):
@@ -1788,6 +1832,12 @@ def lint(spec, blocos):
     falas = spec["falas"]
     sc.lint_tags(blocos, ach)
     sc.lint_take_vs_image(blocos, ach)
+    # ⛔⛔ A negacao anti-celebridade nunca volta ao texto montado
+    # (2026-08-14, ordem do operador). Este motor nao passa pelo
+    # `sc.lint_curto`, entao a lente entra aqui explicitamente — regra sem
+    # guarda volta no proximo agente nascido por copia, e foi exatamente
+    # assim que a clausula chegou aos 30 motores.
+    sc.lint_anticeleb(blocos, ach)
     sc.lint_isca_cta(falas[-1], ach, "a cena 2 (CTA)")
     sc.lint_cta_literal(falas[-1], ach, "a cena 2 (CTA)")
     for f in (_fa1_sorriso, _fa2_geometria, _fa3_ancora, _fa4_duas_maos,
@@ -1812,6 +1862,27 @@ EIXOS_UI = [
 ]
 EIXOS_TRAVAVEIS = [e[0] for e in EIXOS_UI]
 TRAVAS_UI = []
+
+# ⭐⭐ O DROPDOWN DE QUEM FALA — e' ELE que da' FUNCAO ao campo `rotulo`.
+# Ordem do operador (2026-08-13): *"implemente esse mecanismo e menu drop down
+# para todos os demais agentes 16"*, tendo o MEL 16 como modelo.
+# ⛔ Sem esta linha o `rotulo` seria comentario caro: 26 textos escritos,
+# medidos e travados, e nenhum olho humano os veria. Forma sem funcao e' o
+# defeito que este repo mais paga (licoes-de-construcao §41).
+# ⛔ POR QUE DROPDOWN E NAO `TRAVAS_UI`: a barra de travas desenha UM BOTAO POR
+# OPCAO, lado a lado; com 26 REFs ela estoura a largura da janela. Dropdown e'
+# o unico controle que aguenta pool grande sem crescer na tela.
+# ⚠️ O campo exibido e' `rotulo`, NAO `id`: o `ui_agente` monta o mapa
+# texto -> id, entao o operador escolhe "62y · platinado + olhos de duas cores"
+# e o motor recebe `platinado`. Menu de ids obriga a abrir o codigo.
+# ⚠️ E o `EIXOS_UI` acima continua com `id` de proposito: la' o `_texto_eixo`
+# ja' prefixa a idade, e trocar para `rotulo` imprimiria "52y · 52y · risca...".
+# ⭐ E aqui o dropdown NAO briga com o MODO FORTE, ao contrario do GOOD 16: o
+# toggle deste motor troca `corpo_h` (CORPOS_H -> CORPOS_FORTES) e nunca a
+# PESSOA, entao escolher o rosto no menu e ligar o forte sao ordens ortogonais
+# — o homem fica, o porte muda.
+DROPDOWNS_UI = [("homem", "QUEM FALA", "HOMENS", "rotulo")]
+
 IGNORA_PAINEL = ()
 EIXOS_QUE_MEXEM_NA_COPY = {}
 EIXOS_LEDGER = ("quarto", "ambiente", "homem", "mulher_a", "mulher_b")
@@ -2202,6 +2273,63 @@ def autoteste(n=400):
         _anotar(led, s)
     for eixo in sorted(janelas):
         print("  %-9s 50 sorteios, %d distintos" % (eixo, len(set(vistos[eixo]))))
+
+    # ⛔⛔ O CONTRATO DO `rotulo` — o que o dropdown QUEM FALA exige do pool.
+    # ⚠️ A UNICIDADE nao e' capricho: o `ui_agente._barra_dropdowns` monta o
+    # mapa texto -> id com `if txt and txt not in mapa`, entao dois rotulos
+    # iguais fazem o SEGUNDO homem DESAPARECER do menu — em silencio, sem erro
+    # e sem log. Pool de 26 que o operador so' alcanca em 25 e' a mesma familia
+    # do botao que mente, so' que por colisao de texto.
+    # ⚠️ O TETO DE 42 e' a largura do combobox (`width=38` mais folga): rotulo
+    # maior sai cortado na tela, e rotulo cortado volta a ser ilegivel — que e'
+    # exatamente o problema que ele veio resolver.
+    _rt_sem = [h["id"] for h in HOMENS if not h.get("rotulo")]
+    if _rt_sem:
+        falhas.append("ROTULO: %d entrada(s) de HOMENS sem rotulo — o dropdown "
+                      "cai no `id` e o operador le' %r"
+                      % (len(_rt_sem), _rt_sem[0]))
+    _rt = [h.get("rotulo") or "" for h in HOMENS]
+    _rt_rep = sorted({r for r in _rt if _rt.count(r) > 1})
+    if _rt_rep:
+        falhas.append("ROTULO: %d rotulo(s) repetido(s) (%r) — o segundo homem "
+                      "some do dropdown sem erro nenhum"
+                      % (len(_rt_rep), _rt_rep[0]))
+    _rt_longo = [r for r in _rt if len(r) > 42]
+    if _rt_longo:
+        falhas.append("ROTULO: %d rotulo(s) acima de 42 chars (%r, %d) — "
+                      "estoura a largura do menu"
+                      % (len(_rt_longo), _rt_longo[0], len(_rt_longo[0])))
+
+    # ⛔ E O CONTRATO DO PAINEL TEM DE APONTAR PARA COISA QUE EXISTE. O
+    # `_barra_dropdowns` le' o pool com `getattr(motor, pool_nome, [])`: nome
+    # errado devolve LISTA VAZIA e desenha um menu com `livre` e mais nada — o
+    # seletor "funcionando" sem uma opcao dentro. Campo errado cai no
+    # `e.get("id")` e devolve justamente o menu de ids que o rotulo veio abolir.
+    # ⭐ E a ultima checagem e' de FUNCAO, nao de forma: escolher no menu tem de
+    # SAIR no spec. Forma verificada e funcao nao verificada e' o defeito §41.
+    for _dd_ch, _dd_tela, _dd_pool, _dd_campo in DROPDOWNS_UI:
+        _dd_p = globals().get(_dd_pool)
+        if not isinstance(_dd_p, list) or not _dd_p:
+            falhas.append("DROPDOWNS_UI: o pool %r nao existe ou esta' vazio — "
+                          "o menu %r sai so' com `livre`"
+                          % (_dd_pool, _dd_tela))
+            continue
+        _dd_falta = [e.get("id") for e in _dd_p if not e.get(_dd_campo)]
+        if _dd_falta:
+            falhas.append("DROPDOWNS_UI: %d entrada(s) de %s sem o campo %r — "
+                          "o menu cai no `id`"
+                          % (len(_dd_falta), _dd_pool, _dd_campo))
+        if _dd_ch not in EIXOS_TRAVAVEIS:
+            falhas.append("DROPDOWNS_UI: o eixo %r nao esta' em EIXOS_TRAVAVEIS "
+                          "— escolher no menu nao travaria nada" % _dd_ch)
+        for _dd_e in _dd_p[:2] + _dd_p[-2:]:
+            _dd_s = sortear(sorted(ETNIA)[0], random.Random(4242), {},
+                            {_dd_ch: _dd_e["id"]})
+            if _dd_s[_dd_ch]["id"] != _dd_e["id"]:
+                falhas.append("DROPDOWNS_UI: escolher %r no menu %r devolveu "
+                              "%r — o seletor nao fixa"
+                              % (_dd_e["id"], _dd_tela, _dd_s[_dd_ch]["id"]))
+                break
 
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))

@@ -43,6 +43,18 @@ import os
 import random
 import sys
 
+# ⛔ REMENDO DE CONSOLE, o mesmo do `medir_personagens.py` (linha 51). O
+# console do Windows e' cp1252 e os marcadores deste arquivo nao cabem nele.
+# ⚠️ O padrao que faz o bug ser caro: os prints com marcador so' rodam QUANDO
+# HA' ALGO A REPORTAR, entao o crash acontece exatamente na hora em que a
+# mensagem importa, e nunca no caminho feliz.
+for _f in (sys.stdout, sys.stderr):
+    try:
+        _f.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
+
 AQUI = os.path.dirname(os.path.abspath(__file__))
 if AQUI not in sys.path:
     sys.path.insert(0, AQUI)
@@ -63,7 +75,9 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # so produz um "passou" mentiroso (licoes §7).
            "pee16",
            # + 2026-08-10: o ALFA 16 entra no commit em que nasce.
-           "alfa16"]
+           "alfa16",
+           # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
+           "organicwave16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

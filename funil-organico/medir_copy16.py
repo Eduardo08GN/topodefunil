@@ -41,6 +41,20 @@ import os
 import random
 import sys
 
+# ⛔ MESMO REMENDO DO `medir_personagens.py` (linha 51), e pela mesma razao
+# medida em 2026-08-13: este gate MORREU no proprio rodape, com
+# UnicodeEncodeError, ao imprimir a lista de travas DESLIGADAS — o console
+# do Windows e' cp1252 e os marcadores nao cabem nele.
+# ⚠️ E o padrao caro se repetiu inteiro: o rodape so' roda QUANDO HA' ALGO
+# A REPORTAR, entao o gate quebrava exatamente na hora em que tinha algo a
+# dizer, e nunca no caminho feliz. Gate que morre calado na hora do recado
+# treina o operador a ignorar o gate.
+for _f in (sys.stdout, sys.stderr):
+    try:
+        _f.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 AQUI = os.path.dirname(os.path.abspath(__file__))
 if AQUI not in sys.path:
     sys.path.insert(0, AQUI)
@@ -76,7 +90,15 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # operador (ver `DESLIGADAS`) — e este relatorio continua MEDINDO os
            # dois. E' o unico motor do parque que nomeia ingrediente na fala, e
            # e' justamente por isso que o numero dele tem de ficar visivel.
-           "prato16", "mel16", "banho16_v2"]
+           "prato16", "mel16", "banho16_v2",
+           # + 2026-08-14: o ORGANIC WAVE 16 entra AQUI no commit em que nasce.
+           # ⚠️ Ele NAO desliga trava nenhuma. O CT2 dele acusa ~52% dos
+           # sorteios e o numero fica visivel de proposito: metade dos hooks
+           # aprovados pelo operador em 2026-07-31 enuncia a falha pelo
+           # DEITICO mais o prop na mao (`this is what my {o} looked like`) em
+           # vez de por verbo de disfuncao, e o regex do CT2 le' verbo. Nao e'
+           # excecao declarada — e' pergunta aberta para o operador.
+           "organicwave16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.
