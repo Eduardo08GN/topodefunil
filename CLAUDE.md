@@ -50,13 +50,18 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **vinte e dois agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **vinte e três agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
-`prato16` · `banho16` · `banho16_v2` · `mel16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 24 no total)
+`prato16` · `banho16` · `banho16_v2` · `mel16` · **`banho16_3t`** ·
+(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 25 no total)
+
+⛔ **O `banho16_3t` está nessa lista por parentesco, não por formato.** Ele é o
+único que **não** tem 2 takes de 8s: são **3 takes de ~5s**, destino **AdBatch
+Vertical 3**, teto de **14 palavras por cena** contra 25. Bloco próprio abaixo.
 
 ⚠️ A lista dizia **dezoito** contando dezesseis nomes, e faltavam `necrose16` e
 `wife16`. O `wife16` some da conta por engano fácil: o `bed16` nasceu como cópia
@@ -135,6 +140,71 @@ CT7 de UMA AÇÃO, não do motor**, e por ordem direta do operador
 está medido — verbo de ereção colado no órgão rendeu ~95% de recusa no COLO
 16**. Se os renders desse gesto caírem, a causa candidata número um está escrita
 lá. As outras doze ações seguem no registro leve.
+
+⭐⭐ **`banho16_3t` (2026-08-14) — o mesmo banheiro em TRÊS takes de ~5s, e a
+primeira família temporal nova desde o 16s.** ⛔ **Não substitui o `banho16`
+nem o `banho16_v2`** — os três convivem. Ordem do operador: *"Resolvi criar a
+partir de agora vídeos mais dinâmicos, com 3 takes de 5 segundos"*. O relógio
+arrasta tudo: **teto de 14 palavras por cena** (número **medido por ele em
+campo**, não estimado — *"posso gerar cada take com o limite de 6 segundos"*),
+**3 imagens**, destino **AdBatch Vertical 3**.
+
+⛔⛔ **Nasceu de uma hipótese do operador que a medição DESMENTIU.** Ele
+diagnosticou *"a variação das combinações é sempre muito parecida uma com a
+outra"*. Medido: os 9 hooks do `banho16` têm **12%** de sobreposição de
+vocabulário e 4 aberturas distintas em 9; os 7 da fonte que ele preferiu têm
+**14%** e 5 em 7 — e **duas das copies dele são idênticas palavra por palavra**.
+⭐⭐ **O que separa não é a variedade, é a FORMA do hook.** Comentários por mil
+views nos sete originais: **exclusão 20,5** · idade+hack 11,8/7,5/5,6 ·
+confissão 8,1 · rodeio 6,4 · pergunta 4,0. ⭐⭐ **E o campeão é o único SEM
+MECANISMO** — não explica nada, só avisa e promete. É o **CT5** (*a receita é a
+moeda*) confirmado por quem nunca leu o contrato.
+⚠️ **Mas n=7 e o campeão é único em três coisas ao mesmo tempo** (exclusão, sem
+mecanismo, o mais curto): não dá para separar. **Por isso `sem_mecanismo` virou
+EIXO PRÉ-SELECIONÁVEL no painel, não decisão** — 15 vídeos de cada lado e o
+campo responde o que a fonte não responde. *Variável confundida vira eixo,
+nunca palpite.*
+
+⭐ **A copy é organizada em 12 FAMÍLIAS ATÔMICAS**, não em pools de beat. As três
+cenas vêm juntas porque foram aprovadas juntas — o operador carimbou as doze uma
+a uma e reescreveu seis na mão. ⚠️ **12 combinações nominais contra as 81 do
+`banho16`, e mais diferença percebida**: lá 5 dos 9 hooks abriam com as mesmas
+três palavras (**55% dos sorteios**). *Combinação nominal nunca foi a métrica.*
+A lente **`BA9`** cobra que as três falas cheguem **verbatim** à linha
+`Dialogue:` — copy aprovada não se reescreve no caminho.
+
+⛔ **Decisões do operador que valem só aqui:** keyword **`RECIPE`** (a fonte
+inteira pede Recipe — reverte o D2 do `banho16`); **`bat` e `pipe` liberados**
+como apelido do órgão (decisão E3, tomada **ao aprovar a copy** — no `banho16`
+V1/V2 a ordem D7 *"só Johnson e manhood"* continua de pé); e o **follow é o beat
+compressível** do CTA (*"não é tão importante quanto o CTA, deve ser feita de
+modo que não atrapalhe a quantidade de palavras"*).
+⛔ O **`Segue primeiro`** que ele escreveu na família 6.2 **saiu por fato, não
+por gosto**: *"a mensagem é enviada independente de seguirem ou não"* (10/08).
+A lente `BA7` daqui é mais dura que a do irmão — pega `follow first`/`follow
+before`, não só `follow or`.
+
+⭐ **Sete melhorias de construção lidas na conversa que o operador teve com
+outro agente**, e que o `banho16` não tinha: (1) a **reação borbulhante** como
+payoff — mesmo prop, mesmo plano, muda o **verbo** (`afunda em fitas lentas` →
+`ERUPCIONA`), contida abaixo da borda por ordem dele; (2) **três gestos
+cronometrados** por take em vez de um; (3) **mãos ricas** com âncora fixa
+(veias, nós, manchas); (4) a trava dos **dez dedos**; (5) o **banheiro
+habitado** (barbeador, escovas, toalha amassada); (6) o **bloco de orientação em
+graus** — lição paga por ele: `looking straight down` devolveu **vista aérea**,
+e o que funcionou foi descrever a pessoa segurando o telefone; (7) **som e
+deriva de câmera** variando por take.
+⚠️ **E nem tudo dele veio junto**: os prompts do outro agente carregam
+`not a celebrity`, que a ordem de 10/08 baniu; ele vazou template de outro
+ângulo (um homem branco numa cozinha com mel no lugar do banheiro POV); vazou
+copy de uma cena que não existia; e só respeitou o teto de palavras nos dois
+últimos vídeos.
+
+⚠️ **Dívida declarada:** a IMAGE 01 sai com **mediana de 370 palavras** contra
+**239 da fonte**, e 12% das imagens passam do maior prompt dela (376). Cada
+palavra acima veio de uma cláusula que o próprio operador pediu — o bloco de
+orientação, os dez dedos, a âncora de mão, o banheiro habitado. Encurtar é
+decisão dele, não minha.
 
 ⭐ **`good16` (2026-08-12, ajustado) — o casal na água.** Primeiro motor com
 **narrador homem** e o único com **três** toggles. ⭐⭐ O `modo copy leve` é o

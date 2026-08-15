@@ -57,6 +57,14 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            "bed16", "necrose16", "wife16",
            # + 2026-08-10: o FIGHT 16, no commit em que nasce
            "fight16",
+           # + 2026-08-14: o BANHO 16 3TAKES, no commit em que nasce.
+           # ⭐ E' o primeiro motor de TRES cenas a entrar aqui, e nao foi
+           # preciso mexer em nada: o `sc.lint_copy16` le' `falas[-1]`, nao
+           # `falas[1]`, entao a cena do CTA e' achada por POSICAO RELATIVA e
+           # o contrato atravessou a mudanca de formato inteiro. Verificado,
+           # nao suposto — o CT6 deu 0% (achou o endereco de entrega), que e'
+           # impossivel se ele estivesse medindo a cena do PREPARO.
+           "banho16_3t",
            # + 2026-08-10: o ALFA 16 entra aqui no commit em que nasce.
            # ⚠️ Ele DESLIGA o CT2 e o CT6 localmente (o angulo nao enuncia
            # falha, e o operador tirou a clausula de entrega do CTA) —
@@ -132,6 +140,30 @@ ROTULO = {
 # ⛔ So' entra aqui trava desligada TAMBEM NO MOTOR, com o motivo escrito la'.
 # Desligar so' aqui seria maquiar o relatorio.
 DESLIGADAS = {
+    ("banho16_3t", "CT1"):
+        "os SETE videos da fonte terminam no follow, depois do CTA, e o "
+        "operador aprovou as doze copies uma a uma lendo essa ordem. "
+        "⭐ E aqui o CT1 perde ainda mais forca: com TRES cenas o CTA tem "
+        "cena PROPRIA, entao o follow nao divide espaco com o mecanismo — que "
+        "era o risco real que o CT1 protegia.",
+    ("banho16_3t", "CT2"):
+        "duas das doze familias (a forma de melhor comentario da fonte, 20,5 "
+        "por mil views) NAO enunciam falha nenhuma: avisam e prometem. "
+        "⚠️ E' o mesmo desenho do ALFA 16, e neste motor e' EIXO "
+        "declarado (`mecanismo`), nao descuido — o lote existe justamente para "
+        "medir se explicar menos rende mais comentario.",
+    ("banho16_3t", "CT4b"):
+        "decisao E3, tomada pelo operador ao APROVAR a copy: as familias 4 "
+        "(`bat`) e 7.2 (`pipe`, que ele mesmo escreveu) usam o vocabulario da "
+        "FONTE, nao o pool compartilhado `pecker/wiener/Johnson`. "
+        "⛔ Isso NAO vale para o `banho16` V1/V2, onde a ordem D7 (*so' "
+        "Johnson e manhood*) continua de pe'. Quem cobra aqui e' a lente BA5.",
+    ("banho16_3t", "CT8"):
+        "follow liberado (mesma razao do `banho16`: os 7 reels da fonte pedem "
+        "follow). ⚠️ O que NAO caiu foi a razao do CT8 — a DM sai "
+        "igual — e por isso a lente BA7 deste motor ficou MAIS dura que a do "
+        "irmao: alem de `follow or`, ela pega `follow first`/`follow before`, "
+        "que foi como o portao voltou a aparecer em 14/08.",
     ("good16", "CT4b"):
         "ordem do operador (2026-08-13), lendo o lote: *\"nunca citar nada alem "
         "de johnson ou manhood, independente se esta' setado copy leve ou nao, "
