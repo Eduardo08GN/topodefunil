@@ -2050,7 +2050,62 @@ IGNORA_PAINEL = ("banheiro", "receita", "familia")
 # ⛔ Nenhum eixo do painel mexe na copy: a fala nao cita o banheiro, a
 # superficie, a medida nem o recipiente. Declarar o dicionario vazio e'
 # declarar que alguem verificou, em vez de deixar o `getattr` decidir.
-EIXOS_QUE_MEXEM_NA_COPY = {}
+def _refazer_falas(spec, rng):
+    """⛔⛔ O eixo `A COPY` mexe na FALA, e a UI precisa ser avisada disso.
+
+    ⚠️ DEFEITO REAL, filmado pelo operador em 2026-08-14: ele clicava em
+    `trocar` na linha **A COPY** e o painel trocava o ROTULO da familia sem
+    trocar as tres falas. O resultado era um video que dizia ser da familia
+    `pilula_troca` com a copy da `noite_hack` — e a lente BA9 acusava, na
+    barra de baixo, a cada clique.
+    ⭐ A BA9 fez o trabalho dela: o defeito apareceu como ERRO na tela em vez
+    de sair no lote. Mas lente que acusa a cada clique legitimo treina o
+    operador a ignorar a barra — o conserto e' aqui, nao na lente.
+
+    ⛔ A CAUSA E' DE HERANCA: este motor nasceu por copia do `banho16`, onde
+    `EIXOS_QUE_MEXEM_NA_COPY` e' `{}` com razao — la' NENHUM eixo do painel
+    toca a copy (banheiro, superficie, medida, rotulo e receita sao todos de
+    CENA). Aqui eu acrescentei um eixo que E' a copy e trouxe o dicionario
+    vazio junto. Copiar um motor copia tambem as declaracoes que deixaram de
+    valer.
+    """
+    spec["apelido"] = spec["familia"]["id"]
+    spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
+
+
+def _coerir_cena(spec, rng):
+    """⛔⛔ REPARA A COERENCIA banheiro <-> superficie depois de uma troca de eixo.
+
+    ⚠️ DEFEITO MEDIDO em 2026-08-14, simulando o painel: clicar em `trocar`
+    na linha O BANHEIRO deixava **34 de 40 videos invalidos** — a BA8 acusando
+    *"superficie X nao existe no banheiro Y"*. Os dois eixos sao ACOPLADOS (cada
+    banheiro declara quais superficies existem nele) e o painel os tratava como
+    independentes, porque a UI compartilhada nao tem como saber do acoplamento.
+    ⭐ O autoteste passava em 400 sorteios e nunca via isto: SORTEAR e' so'
+    metade do que o operador faz. O que ele faz depois — trocar eixo, travar,
+    re-sortear cena — nao era exercitado por lente nenhuma.
+
+    ⚠️ E O NOME DO GANCHO E' MAIS ESTREITO QUE A FUNCAO DELE. A UI chama
+    isto de `EIXOS_QUE_MEXEM_NA_COPY`, mas o que ela executa e' *"deixe o motor
+    consertar o spec depois que este eixo mudou"* — e coerencia de cena e' um
+    conserto tao legitimo quanto reescrever fala. Registrado aqui para ninguem
+    "limpar" isto achando que e' uso errado.
+
+    ⚠️ 1 dos 24 banheiros tem uma superficie so'. Nele, clicar em `trocar`
+    na SUPERFICIE devolve a mesma — mudo, mas coerente. O contrario (mudar e
+    ficar incoerente) e' pior.
+    """
+    ok = [x for x in SUPERFICIES if x["id"] in spec["banheiro"]["sups"]]
+    if not ok:
+        return
+    if spec["superficie"]["id"] not in spec["banheiro"]["sups"]:
+        outras = [x for x in ok if x["id"] != spec["superficie"]["id"]] or ok
+        spec["superficie"] = rng.choice(outras)
+
+
+EIXOS_QUE_MEXEM_NA_COPY = {"familia": _refazer_falas,
+                           "banheiro": _coerir_cena,
+                           "superficie": _coerir_cena}
 
 
 def resumo_pt(spec):
@@ -2315,6 +2370,52 @@ def autoteste(n=400):
             falhas.append("DERIVAS: o video %d repete movimento de camera "
                           "entre takes" % i)
             break
+
+    # ⭐⭐ O PAINEL SIMULADO — cada eixo trocado como a UI troca, e o linter
+    # cobrado depois. ⚠️ Este bloco nasce de um defeito FILMADO: o operador
+    # clicava em `trocar` na linha A COPY e a BA9 acusava a cada clique, porque
+    # o eixo trocava o rotulo da familia sem refazer as tres falas. O autoteste
+    # media 400 sorteios e passava — ele nunca tocava no painel.
+    # ⛔ Sortear e' so' METADE do que o operador faz. O que ele faz depois —
+    # trocar eixo, trocar cena, travar — nao era medido por lente nenhuma.
+    for chave in [e[0] for e in EIXOS_UI]:
+        pool_nome = dict((e[0], e[2]) for e in EIXOS_UI)[chave]
+        for k in range(12):
+            sp = sortear(pags[k % len(pags)], random.Random(500 + k), {}, {})
+            opcoes = [x for x in globals()[pool_nome] if x != sp[chave]]
+            if not opcoes:
+                continue
+            sp[chave] = random.Random(k).choice(opcoes)
+            # ⭐ exatamente o que o `ui_agente.trocar_eixo` faz em seguida
+            reescreve = EIXOS_QUE_MEXEM_NA_COPY.get(chave)
+            if reescreve:
+                reescreve(sp, random.Random(k))
+            ruins = [m for n, m in lint(sp, montar(sp)) if n == "ERRO"]
+            if ruins:
+                falhas.append("[PAINEL] trocar o eixo %r deixa o video invalido: "
+                              "%s" % (chave, ruins[0][:80]))
+                break
+
+    # ⭐ E o botao `trocar` de CENA, que a UI chama por `nova_fala`.
+    if not callable(globals().get("nova_fala")):
+        falhas.append("[PAINEL] sem `nova_fala`: o botao `trocar` de cena fica "
+                      "MORTO e a tela diz que o agente nao tem banco de copy")
+    else:
+        for k in range(12):
+            sp = sortear(pags[k % len(pags)], random.Random(700 + k), {}, {})
+            antes = list(sp["falas"])
+            r = random.Random(k)
+            cand = nova_fala(sp, k % 3, r)
+            sp["falas"][k % 3] = cand
+            ruins = [m for n, m in lint(sp, montar(sp)) if n == "ERRO"]
+            if ruins:
+                falhas.append("[PAINEL] `nova_fala` na cena %d deixa o video "
+                              "invalido: %s" % (k % 3 + 1, ruins[0][:80]))
+                break
+            if sp["falas"] == antes:
+                falhas.append("[PAINEL] `nova_fala` devolveu a MESMA copy — "
+                              "botao que nao muda nada e' botao quebrado")
+                break
 
     # ⛔ O MOLDE DO POOL DE MAOS (`<adj> hands with <detalhe>`) — o
     # `_maos_partes` degrada em silencio se alguem acrescentar uma entrada

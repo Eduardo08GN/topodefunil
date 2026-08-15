@@ -1911,7 +1911,81 @@ IGNORA_PAINEL = ("banheiro", "receita")
 # ⛔ Nenhum eixo do painel mexe na copy: a fala nao cita o banheiro, a
 # superficie, a medida nem o recipiente. Declarar o dicionario vazio e'
 # declarar que alguem verificou, em vez de deixar o `getattr` decidir.
-EIXOS_QUE_MEXEM_NA_COPY = {}
+def _coerir_cena(spec, rng):
+    """⛔⛔ REPARA A COERENCIA banheiro <-> superficie depois de uma troca de eixo.
+
+    ⚠️ DEFEITO MEDIDO em 2026-08-14, simulando o painel: clicar em `trocar`
+    na linha O BANHEIRO deixava **34 de 40 videos invalidos** — a BA8 acusando
+    *"superficie X nao existe no banheiro Y"*. Os dois eixos sao ACOPLADOS (cada
+    banheiro declara quais superficies existem nele) e o painel os tratava como
+    independentes, porque a UI compartilhada nao tem como saber do acoplamento.
+    ⭐ O autoteste passava em 400 sorteios e nunca via isto: SORTEAR e' so'
+    metade do que o operador faz. O que ele faz depois — trocar eixo, travar,
+    re-sortear cena — nao era exercitado por lente nenhuma.
+
+    ⚠️ E O NOME DO GANCHO E' MAIS ESTREITO QUE A FUNCAO DELE. A UI chama
+    isto de `EIXOS_QUE_MEXEM_NA_COPY`, mas o que ela executa e' *"deixe o motor
+    consertar o spec depois que este eixo mudou"* — e coerencia de cena e' um
+    conserto tao legitimo quanto reescrever fala. Registrado aqui para ninguem
+    "limpar" isto achando que e' uso errado.
+
+    ⚠️ 1 dos 24 banheiros tem uma superficie so'. Nele, clicar em `trocar`
+    na SUPERFICIE devolve a mesma — mudo, mas coerente. O contrario (mudar e
+    ficar incoerente) e' pior.
+    """
+    ok = [x for x in SUPERFICIES if x["id"] in spec["banheiro"]["sups"]]
+    if not ok:
+        return
+    if spec["superficie"]["id"] not in spec["banheiro"]["sups"]:
+        outras = [x for x in ok if x["id"] != spec["superficie"]["id"]] or ok
+        spec["superficie"] = rng.choice(outras)
+
+
+def _coerir_acao(spec, rng):
+    """⛔⛔ O GESTO ARRASTA TRES COISAS, e o painel arrastava ZERO.
+
+    ⚠️ MEDIDO em 2026-08-14 simulando o painel: clicar em `trocar` na linha
+    O GESTO deixava **22 de 60 videos invalidos**. O gesto governa tres campos
+    e o `sortear` respeita os tres; a troca de eixo nao respeitava nenhum:
+
+      1. PESSOA — metade dos gestos so' existe com alguem em quadro. Trocar
+         para um deles com o MODO PESSOA desligado poe um homem na IMAGE e a
+         BA3 acusa.
+      2. RECEITA — cada gesto sabe manusear certos recipientes (`vasos`).
+      3. COPY — tres gestos carregam FALA PROPRIA (`acao["copy"]`), que vence
+         os scripts. Trocar o gesto sem refazer a fala deixa o video dizendo a
+         copy de um gesto que nao esta' mais em quadro.
+
+    ⭐ O (3) e' o mesmo defeito que o operador filmou no BANHO 16 3TAKES, no
+    eixo A COPY. Um defeito de classe, em dois motores irmaos: **eixo que
+    arrasta outro campo, num painel que trata todo eixo como independente**.
+    """
+    ok = [a for a in ACOES if bool(a["pessoa"]) == bool(spec["pessoa"])]
+    if ok and bool(spec["acao"]["pessoa"]) != bool(spec["pessoa"]):
+        outras = [a for a in ok if a["id"] != spec["acao"]["id"]] or ok
+        spec["acao"] = rng.choice(outras)
+    rec = [r for r in RECEITAS if r["vaso_tipo"] in spec["acao"]["vasos"]]
+    if rec and spec["receita"]["vaso_tipo"] not in spec["acao"]["vasos"]:
+        spec["receita"] = rng.choice(rec)
+    # ⛔ QUARTO CAMPO: o APELIDO. Mesma regra do `sortear` — quando a acao traz
+    # copy propria, quem manda no apelido e' a FALA, nao o sorteio a' parte.
+    # ⚠️ Sem esta parte o reparo ainda deixava 9 de 60 invalidos, com a BA5
+    # acusando *dois apelidos no mesmo video*: a fala nova dizia `manhood` e o
+    # campo do painel continuava em `Johnson`. O `sortear` ja' resolvia isto
+    # desde 13/08 (34 de 400 sorteios na epoca) — o reparo do painel e' que
+    # nascia sem a lembranca.
+    _cp = spec["acao"].get("copy")
+    if _cp:
+        for _n in NUCLEO:
+            if _n.lower() in _cp[1].lower():
+                spec["apelido"] = _n
+                break
+    spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
+
+
+EIXOS_QUE_MEXEM_NA_COPY = {"acao": _coerir_acao,
+                           "banheiro": _coerir_cena,
+                           "superficie": _coerir_cena}
 
 
 def resumo_pt(spec):

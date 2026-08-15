@@ -1637,7 +1637,38 @@ IGNORA_PAINEL = ("banheiro", "receita")
 # ⛔ Nenhum eixo do painel mexe na copy: a fala nao cita o banheiro, a
 # superficie, a medida nem o recipiente. Declarar o dicionario vazio e'
 # declarar que alguem verificou, em vez de deixar o `getattr` decidir.
-EIXOS_QUE_MEXEM_NA_COPY = {}
+def _coerir_cena(spec, rng):
+    """⛔⛔ REPARA A COERENCIA banheiro <-> superficie depois de uma troca de eixo.
+
+    ⚠️ DEFEITO MEDIDO em 2026-08-14, simulando o painel: clicar em `trocar`
+    na linha O BANHEIRO deixava **34 de 40 videos invalidos** — a BA8 acusando
+    *"superficie X nao existe no banheiro Y"*. Os dois eixos sao ACOPLADOS (cada
+    banheiro declara quais superficies existem nele) e o painel os tratava como
+    independentes, porque a UI compartilhada nao tem como saber do acoplamento.
+    ⭐ O autoteste passava em 400 sorteios e nunca via isto: SORTEAR e' so'
+    metade do que o operador faz. O que ele faz depois — trocar eixo, travar,
+    re-sortear cena — nao era exercitado por lente nenhuma.
+
+    ⚠️ E O NOME DO GANCHO E' MAIS ESTREITO QUE A FUNCAO DELE. A UI chama
+    isto de `EIXOS_QUE_MEXEM_NA_COPY`, mas o que ela executa e' *"deixe o motor
+    consertar o spec depois que este eixo mudou"* — e coerencia de cena e' um
+    conserto tao legitimo quanto reescrever fala. Registrado aqui para ninguem
+    "limpar" isto achando que e' uso errado.
+
+    ⚠️ 1 dos 24 banheiros tem uma superficie so'. Nele, clicar em `trocar`
+    na SUPERFICIE devolve a mesma — mudo, mas coerente. O contrario (mudar e
+    ficar incoerente) e' pior.
+    """
+    ok = [x for x in SUPERFICIES if x["id"] in spec["banheiro"]["sups"]]
+    if not ok:
+        return
+    if spec["superficie"]["id"] not in spec["banheiro"]["sups"]:
+        outras = [x for x in ok if x["id"] != spec["superficie"]["id"]] or ok
+        spec["superficie"] = rng.choice(outras)
+
+
+EIXOS_QUE_MEXEM_NA_COPY = {"banheiro": _coerir_cena,
+                           "superficie": _coerir_cena}
 
 
 def resumo_pt(spec):
