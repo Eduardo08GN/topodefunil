@@ -50,15 +50,53 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **vinte e quatro agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **vinte e cinco agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
 `prato16` · `banho16` · `banho16_v2` · `mel16` · `organicwave16` ·
-**`banho16_3t`** · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 26 no
-total)
+**`banho16_3t`** · `horse16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor
+— 27 no total)
+
+⭐⭐ **`horse16` (2026-08-14) — a bancada do bar de garagem, e a primeira fonte
+que já nasce em dois takes.** Nasceu por cópia literal do `banho16_v2`, que é o
+parente **estrutural**: câmera sem rosto (só as mãos), `BLOCO 0 (REF)` que é uma
+**foto das mãos**, marca em quadro por exceção ao P12, e o **gesto como eixo**.
+O mundo é outro: sai o banheiro, entra o balcão — e entra **ela**, de toalha,
+sentada atrás, sorrindo enquanto ele prepara (ordem do operador: *"sempre uma
+personagem mulher sorrindo olhando pro cara preparando"*).
+⭐ **O corte de take cai sozinho em ~8,5s** na fonte (reel 1038123865853645,
+"Healthy Men's Guide", 69K views), entre o fim do beat da receita e o começo da
+prova. Não houve colapso de cenas — houve tradução. Leitura ótica a **16 fps**,
+275 quadros; mapa em [`concorrentes/horse-mapa-visual.md`](concorrentes/horse-mapa-visual.md).
+⛔ **O CTA pede `gelatin`, não `horse`.** A fonte diz *"Comment horse"*, e a
+palavra cadastrada na automação de DM é `gelatin`: pedir outra faz o comentário
+entrar e a mensagem não sair. Mesmo motivo de `book` e `yes`.
+⛔ **Sem cavalo, por ordem — e o preço está medido:** na fonte, um cavalo
+pastando atrás do casal é o que fecha o sentido da palavra sem dizer nada. Sem
+ele, quem sustenta o nome é o **rótulo da caixa** em quadro, e por isso a exceção
+ao P12 aqui pesa **mais** que no `banho16`, onde o texto da marca sai embaralhado
+de propósito. Lente `HO1` cobra a caixa nos dois quadros.
+⭐ **A fala nomeia a receita** (`horse gelatin, lemon and cinnamon`) — e mesmo
+assim mede **0% no CT5**. A razão vale para o parque: o `lint_copy16` cobra o CT5
+na fala do **CTA**, e aqui os ingredientes estão no **take 1**. ⛔ Por isso ele
+**não** entra em `DESLIGADAS`: exceção que não suprime nada é ruído.
+⚠️ `half a lemon` da fonte virou `lemon` — a fala não paga o que o quadro mostra.
+⏳ **O pool de AÇÕES nasce com CINCO, não generoso**, e é dívida declarada: ele
+deveria sair de 13 reels da WellnessMSimple, cuja listagem é inalcançável
+(geo-bloqueio, depois checkpoint da Meta). Cada entrada carrega **gesto nos dois
+takes + os vasilhames + copy própria** (ordem: *"o pool de ações puxa copy tb e
+universo"*), e o campo de copy está vazio nas cinco porque a fonte tem um script
+para o vídeo inteiro. ⛔ Entrada nova sai de **leitura de vídeo**, nunca de
+invenção.
+⏳ **CT2 acusa 52%** — metade dos hooks é a falha **social** da fonte (*"my wife
+was about to leave me"*) e o regex lê **verbo** de disfunção. O pool tem as duas
+famílias de propósito, para a medição significar algo em vez de a copy se dobrar
+ao regex. Mesma pendência do `organicwave16`. **Medido: zero ERRO em 400
+sorteios, os 8 pools 100% alcançáveis, 0% em CT1/CT3/CT4/CT4b/CT5/CT6/CT7/CT8,
+zero frase órfã em 800, zero drifting em 1.000 falas.**
 
 ⛔ **O `banho16_3t` está nessa lista por parentesco, não por formato.** Ele é o
 único que **não** tem 2 takes de 8s: são **3 takes de ~5s**, destino **AdBatch
