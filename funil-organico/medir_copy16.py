@@ -78,6 +78,9 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # operador reprovar os renders (celular em quadro, massagem no
            # corpo ignorada). Entra na medicao no commit em que nasce.
            "vick2_16",
+           # + 2026-08-16: o gelaHORSE 16, da pagina Healthy
+           # Men's Guide — 13 reels lidos e transcritos.
+           "gelahorse16",
            # + 2026-08-10: o FIGHT 16, no commit em que nasce
            "fight16",
            # + 2026-08-14: o BANHO 16 3TAKES, no commit em que nasce.
@@ -183,6 +186,30 @@ DESLIGADAS = {
     # ------------------------------------------------------------------
     # VICK 16 — as tres, declaradas no commit em que o motor nasce
     # ------------------------------------------------------------------
+    ("gelahorse16", "CT2"):
+        "SETE dos dez hooks sao a familia SOCIAL da fonte (*\"my wife was about to "
+        "leave me\"*, *\"I was losing my marriage\"*) — a falha e' enunciada pela "
+        "PERDA, e o regex do CT2 le' VERBO de disfuncao. Os outros tres (v02, v09, "
+        "v13) trazem o verbo e passam. ⛔ Os dez sao VERBATIM dos treze reels, e as "
+        "duas familias convivem de proposito, para a medicao significar alguma coisa "
+        "em vez de a copy se dobrar ao regex (§16 das licoes). Mesma pendencia do "
+        "HORSE 16 (52%), do ORGANICWAVE 16 (49%) e dos dois VICK (59%) — o que muda "
+        "aqui e' so' a PROPORCAO da familia social no pool. Ou a lente cresce para "
+        "ler perda social como falha enunciada, ou fica assim.",
+    ("gelahorse16", "CT6"):
+        "dos tres CTAs da fonte, UM diz onde a receita chega (*\"straight to your "
+        "inbox\"*) e dois param no *\"I will send you\"*. Os tres sao verbatim, e a "
+        "pagina que os publica mede 19,7 comentarios por mil views no melhor reel. "
+        "⚠️ Fidelidade contra contrato, como nos dois VICK — e o conserto, se o campo "
+        "pedir, e' de TRES palavras num pool de tres entradas: alcada do operador, "
+        "nao minha.",
+    ("gelahorse16", "CT5"):
+        "a FONTE nomeia a receita na fala em 13 de 13 reels: `horse gelatin, "
+        "lemon and cinnamon` e' a copy da pagina de 96 mil views. E' o mesmo "
+        "par de hipotese que o PRATO 16 e o MEL 16 testam de proposito — a "
+        "receita dita torna o pedido crivel e o que a DM vende passa a ser o "
+        "COMO. Aqui ela nao e' escolha minha: e' o que a fonte faz, e ela "
+        "mede 19,7 comentarios por mil views no melhor reel.",
     ("vick2_16", "CT5"):
         "mesma razao do VICK 16: a moeda do comentario aqui e' o PASSO A "
         "PASSO, nao a receita — o video diz o QUE e a DM diz o COMO, e a "
