@@ -215,6 +215,22 @@ DESLIGADAS = {
         "PASSO, nao a receita — o video diz o QUE e a DM diz o COMO, e a "
         "fonte converte assim. Foi PROIBIR o concreto que produziu o "
         "drifting que o operador reprovou na primeira tentativa.",
+    ("vick16", "CT4b"):
+        "o CT4b so' aceita `pecker`/`wiener`/`Johnson`, e os quatro apelidos "
+        "deste motor sao os que a FONTE usa: `baseball bat`, `small bat`, "
+        "`shrinking bat` e `pipes`. ⛔ A excecao ja' estava escrita no motor "
+        "(o `_ct16` filtra CT4b desde que ele nasceu) e faltava aqui — gate que "
+        "acusa uma decisao ja' tomada treina o operador a ignorar o gate. "
+        "⚠️ O que o CT4b protege continua de pe' e e' medido pelo CT4: UM "
+        "apelido por video, o mesmo nos dois takes.",
+    ("vick2_16", "CT4b"):
+        "o CT4b so' aceita `pecker`/`wiener`/`Johnson`, e os quatro apelidos "
+        "deste motor sao os que a FONTE usa: `baseball bat`, `small bat`, "
+        "`shrinking bat` e `pipes`. ⛔ A excecao ja' estava escrita no motor "
+        "(o `_ct16` filtra CT4b desde que ele nasceu) e faltava aqui — gate que "
+        "acusa uma decisao ja' tomada treina o operador a ignorar o gate. "
+        "⚠️ O que o CT4b protege continua de pe' e e' medido pelo CT4: UM "
+        "apelido por video, o mesmo nos dois takes.",
     ("vick2_16", "CT2"):
         "metade dos hooks e' a familia HISTORIA, que enuncia a falha pela "
         "PERDA (*\"she said I wasn't enough for her anymore\"*) e nao por "

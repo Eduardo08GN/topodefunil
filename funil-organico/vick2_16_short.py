@@ -382,6 +382,52 @@ PROPS = ("an open cobalt-blue jar of vapour rub with its turquoise lid lying "
 PROPS_CURTO = ("the same blue jar, the torn sachet, the wooden ruler and the "
                "cardboard sign")
 
+# ===========================================================================
+# ⭐⭐ O EIXO NOVO (2026-08-16) — O INGREDIENTE AO LADO DO POTE
+# ===========================================================================
+# Ordem do operador, com o reel na tela: *"adicione pool de mais ingredientes
+# ao lado do vick (ora apple cider vinegar, ora uma caixa de gelatina com
+# etiqueta horse gelatin com o cavalo na box, ora aloe vera, ora baking soda
+# box)"*.
+#
+# ⛔ ELE E' O UNICO PROP QUE VARIA, e isso e' de proposito. A licao que matou a
+# v1 deste agente foi somar eixos visuais ate' o quadro perder o nexo; aqui o
+# pote azul, o sache, a regua e a placa continuam CONSTANTES e so' o vizinho
+# muda. Um objeto trocado num quadro estavel le' como *outra receita*; cinco
+# objetos trocados leem como outra pagina.
+#
+# ⭐ Cada entrada carrega TRES formas: a longa (IMAGE 01, onde o modelo
+# desenha), a curta (IMAGE 02, onde ele so' precisa reconhecer que o objeto
+# continua ali) e a PT do painel. As tres sao cobradas pela lente VK8.
+#
+# ⛔ NENHUMA MARCA, com UMA excecao declarada ao P12: a caixa de gelatina leva
+# `horse gelatin` escrito e um cavalo desenhado, porque foi isso que o operador
+# pediu — e e' a mesma logica do `horse16`, onde quem sustenta o nome do angulo
+# e' o rotulo da caixa. O cavalo DESENHADO tambem e' o seguro contra o texto
+# sair embaralhado: os geradores erram a letra e acertam a figura.
+# ⛔ O bicarbonato NAO e' laranja-e-branco: essa e' a identidade visual de uma
+# marca real, e aqui a caixa e' generica.
+ACOMPANHAMENTOS = [
+    {"id": "vinagre", "curto": "vinagre de maca",
+     "img": "a squat glass bottle of apple cider vinegar, cloudy amber liquid "
+            "inside and a plain paper label",
+     "curto_img": "the amber vinegar bottle"},
+    {"id": "gelatina_cavalo", "curto": "caixa de horse gelatin (cavalo no rotulo)",
+     "img": "a small cardboard box of gelatin standing on its end, the words "
+            "`horse gelatin` printed across the front under a simple drawing "
+            "of a horse",
+     "curto_img": "the horse gelatin box"},
+    {"id": "babosa", "curto": "folha de babosa cortada",
+     "img": "a thick cut aloe vera leaf, deep green with spiny edges, the cut "
+            "end wet and glistening",
+     "curto_img": "the cut aloe leaf"},
+    {"id": "bicarbonato", "curto": "caixa de bicarbonato",
+     "img": "a plain cardboard box of baking soda standing upright, the words "
+            "`baking soda` printed on the front",
+     "curto_img": "the baking soda box"},
+]
+
+
 HOMEM = ("a %d-year-old %s man with heavy weathered hands, thick knuckles and "
          "sun spots across the backs")
 
@@ -514,7 +560,7 @@ IDADES = (64, 65, 66, 67, 72, 74)
 # ===========================================================================
 # SORTEIO
 # ===========================================================================
-EIXOS_LEDGER = ("cena", "regiao", "hook", "referente", "mecanismo",
+EIXOS_LEDGER = ("cena", "regiao", "hook", "acomp", "referente", "mecanismo",
                 "prova", "cta")
 
 
@@ -674,6 +720,13 @@ def sortear(pagina, rng, ledger, travas=None):
                    else _fresco(REGIOES, hist.get("regiao", [])[-3:], rng)),
         "hook": (_por_id(HOOKS, travas["hook"], "v") if travas.get("hook")
                  else _fresco(HOOKS, hist.get("hook", [])[-5:], rng)),
+        # ⭐ O vizinho do pote. Memoria de 2 para nao repetir o mesmo
+        # ingrediente em videos seguidos num pool de 4 — com -3 sobraria
+        # UMA opcao viva e o eixo viraria um ciclo fixo.
+        "acomp": (_por_id(ACOMPANHAMENTOS, travas["acomp"])
+                  if travas.get("acomp")
+                  else _fresco(ACOMPANHAMENTOS,
+                               hist.get("acomp", [])[-2:], rng)),
         "mecanismo": _fresco(MECANISMOS, hist.get("mecanismo", [])[-3:], rng),
         "cta": _fresco(CTAS, hist.get("cta", [])[-2:], rng),
     }
@@ -708,16 +761,17 @@ def montar(spec):
     # ⛔ A ORDEM E' GRAMATICA: os props vem antes da superficie porque varias
     # superficies terminam numa oracao subordinada, e o verbo caia depois dela.
     b["IMAGE 01/02"] = (
-        "IMAGE 01/02: Inside %s. On %s stand %s. In frame is %s, and %s. %s. "
-        "%s. %s"
-        % (c["amb"], c["sup"], PROPS, h, _gesto(spec), _angulo(spec),
-           _cap(LUZ), CAUDA))
+        "IMAGE 01/02: Inside %s. On %s stand %s, and beside them %s. In "
+        "frame is %s, and %s. %s. %s. %s"
+        % (c["amb"], c["sup"], PROPS, spec["acomp"]["img"], h,
+           _gesto(spec), _angulo(spec), _cap(LUZ), CAUDA))
 
     b["IMAGE 02/02"] = (
         "IMAGE 02/02: Inside %s, the same place in the same framing. On %s, "
-        "%s. %s are still in frame. It is the same %d-year-old %s man "
-        "from the first scene, not a different person. %s. %s. %s"
+        "%s. %s, and %s, are still in frame. It is the same %d-year-old %s "
+        "man from the first scene, not a different person. %s. %s. %s"
         % (c["amb"], c["sup"], c["t2"], _cap(PROPS_CURTO),
+           spec["acomp"]["curto_img"],
            spec["idade"], spec["etnia"], _angulo(spec), _cap(LUZ), CAUDA))
 
     b["TAKE 01/02"] = (
@@ -783,6 +837,26 @@ def _vk3_props(spec, blocos, ach):
         ach.append(("ERRO", "VK3: a IMAGE 01 sem os props travados"))
     if _cap(PROPS_CURTO) not in blocos["IMAGE 02/02"]:
         ach.append(("ERRO", "VK3: a IMAGE 02 sem os props travados"))
+
+
+def _vk8_acompanhamento(spec, blocos, ach):
+    """⛔ O INGREDIENTE SORTEADO ENTRA NOS DOIS QUADROS, OU O EIXO MENTE.
+
+    Se ele so' chegasse a' IMAGE 01, o objeto apareceria no primeiro
+    segundo e sumiria no corte — que e' pior que nao ter eixo nenhum: o
+    espectador leria como continuidade quebrada, e o painel diria que o
+    video tem vinagre quando metade dele nao tem.
+    ⚠️ E' a mesma cobranca do VK3 sobre os props constantes; a diferenca e'
+    que aqui o texto muda por sorteio, entao a lente le' o SORTEADO, nunca
+    uma constante.
+    """
+    a = spec["acomp"]
+    if a["img"] not in blocos["IMAGE 01/02"]:
+        ach.append(("ERRO", "VK8: a IMAGE 01 sem o ingrediente sorteado "
+                            "(%s)" % a["id"]))
+    if a["curto_img"] not in blocos["IMAGE 02/02"]:
+        ach.append(("ERRO", "VK8: o ingrediente %s sai de quadro no corte"
+                    % a["id"]))
 
 
 def _vk4_copy_com_origem(spec, blocos, ach):
@@ -865,7 +939,8 @@ def lint(spec, blocos):
         sys.modules[__name__], spec, blocos, (1, 2), TETO_FALA,
         literais=("recipe",), cota_min=0,
         extras=(_ct16, _anticeleb, _painel, _vk1_sem_celular, _vk2_cena_inteira,
-                _vk3_props, _vk4_copy_com_origem, _vk7_sem_referente,
+                _vk3_props, _vk8_acompanhamento, _vk4_copy_com_origem,
+                _vk7_sem_referente,
                 _vk5_orcamento,
                 _vk6_fala_no_take))
 
@@ -890,15 +965,20 @@ def resumo_pt(spec):
                _gesto(spec)[:90], c["t2"][:90], spec["idade"], spec["etnia"],
                spec["hook"]["v"], spec["mecanismo"]["v"],
                spec["prova"]["v"] if spec.get("prova") else "—",
-               spec["cta"]["v"]))
+               spec["cta"]["v"])
+            # ⚠️ Concatenado, nao interpolado: acrescentar um %s numa
+            # string que ja' tem doze marcadores foi exatamente o erro que
+            # derrubou o app do `vick16` (12 marcadores, 10 argumentos).
+            + "  Ao lado do pote: %s." % spec["acomp"]["curto"])
 
 
 EIXOS_UI = [
     ("cena", "A CENA (o vídeo da fonte)", "CENAS", "curto"),
     ("regiao", "ONDE ELE PASSA", "REGIOES", "curto"),
+    ("acomp", "O INGREDIENTE AO LADO", "ACOMPANHAMENTOS", "curto"),
     ("hook", "O HOOK", "HOOKS", "v"),
 ]
-EIXOS_TRAVAVEIS = ["cena", "regiao", "hook"]
+EIXOS_TRAVAVEIS = ["cena", "regiao", "acomp", "hook"]
 DROPDOWNS_UI = [("cena", "A CENA", "CENAS", "curto")]
 IGNORA_PAINEL = ("hook", "regiao")
 
@@ -910,6 +990,7 @@ def _autoteste(n=400, seed=20260816):
     rng = random.Random(seed)
     led, erros = {}, collections.Counter()
     vistos = collections.Counter()
+    acomp = collections.Counter()
     falas = {1: set(), 2: set()}
     pal = {1: [], 2: []}
     sem_origem = corpo = com_prova = 0
@@ -921,6 +1002,7 @@ def _autoteste(n=400, seed=20260816):
             if nivel == "ERRO":
                 erros[txt.split(":")[0]] += 1
         vistos[sp["cena"]["id"]] += 1
+        acomp[sp["acomp"]["id"]] += 1
         corpo += bool(sp["cena"]["corpo"])
         com_prova += bool(sp.get("prova"))
         for i in (1, 2):
@@ -937,6 +1019,8 @@ def _autoteste(n=400, seed=20260816):
     print("%s — %d sorteios (seed %d)" % (APP, n, seed))
     print("  cenas da fonte: %d de %d alcancadas · min %dx · max %dx"
           % (len(vistos), len(CENAS), min(vistos.values()), max(vistos.values())))
+    print("  ingredientes ao lado do pote: %d de %d alcancados · min %dx"
+          % (len(acomp), len(ACOMPANHAMENTOS), min(acomp.values())))
     print("  a POMADA NO CORPO aparece em %d%% dos videos (%d das %d cenas "
           "tem o beat)" % (100 * corpo // n,
                            sum(1 for c in CENAS if c["corpo"]), len(CENAS)))
