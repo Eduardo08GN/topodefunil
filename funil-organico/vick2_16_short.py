@@ -427,6 +427,53 @@ HOOKS = [
      "bizarre nighttime habit restored my size."},
 ]
 
+# ===========================================================================
+# ⭐⭐ O REFERENTE — a sentenca que responde "MAIOR O QUE?"
+# ===========================================================================
+# Ordem do operador (2026-08-16), lendo um take renderizado:
+#     *"«..i wake up bigger than» — WTF: who or what is bigger? o pe de limao
+#     do fundo da casa dele que esta' maior?"*
+#
+# ⛔ MEDIDO: 9 dos 12 hooks da fonte NAO nomeiam o orgao. Eles dizem `look
+# bigger`, `feeling small`, `brings your size back` — e o espectador nao tem
+# como saber do que se trata. E' o teste WTF do repo reprovando copy que e'
+# verbatim: **a fonte tambem drifta**, e ser fiel a ela nao salva disso.
+#
+# ⭐ A TECNICA JA' EXISTE NO PARQUE e e' do FIGHT 16, da ordem do operador de
+# 2026-08-10 (*"«Struggling to stay firm every night?» — firm WHAT?? my
+# butt??"*): **o orgao entra na sentenca VIZINHA, nunca na mesma do verbo**.
+# O CT7 vale por sentenca, entao o verbo de ereccao fica numa e o nome fica na
+# outra — o ouvido junta, o classificador nao.
+#
+# ⚠️ ESTES SAO CONSTRUIDOS, e por isso saem marcados. Mas o vocabulario e' todo
+# da fonte: `baseball bat`, `small bat`, `shrinking bat`, `pipes` e o `down
+# there` que os videos usam (*"gain inches down there"*, *"restored my size
+# down there"*). Nao ha uma palavra nova.
+REFERENTES = [
+    {"id": "ref_bat", "fonte": "construido", "txt": "My baseball bat, I mean."},
+    {"id": "ref_down", "fonte": "construido", "txt": "Down there, I mean."},
+    {"id": "ref_pipes", "fonte": "construido", "txt": "My pipes, I mean."},
+    {"id": "ref_conta", "fonte": "construido",
+     "txt": "Down there, where it counts."},
+    {"id": "ref_falo", "fonte": "construido",
+     "txt": "I am talking about my baseball bat."},
+    {"id": "ref_small", "fonte": "construido",
+     "txt": "I had a small bat for years."},
+]
+
+# ⛔ Os tres hooks que JA' nomeiam o orgao nao recebem referente: repetir o
+# nome duas vezes na mesma fala de 25 palavras e' desperdicio de orcamento, e o
+# CT4 ainda cobraria coerencia entre as duas mencoes.
+# A familia HISTORIA: o hook fala de PERDA RELACIONAL, e ali o referente e' o
+# casamento, nao o corpo.
+_RX_HISTORIA = re.compile(r"\b(wife|marriage|she)\b", re.I)
+
+_RX_REFERENTE = re.compile(
+    r"\b(%s|down there)\b" % "|".join(re.escape(n) for n in
+                                      ("baseball bat", "small bat",
+                                       "shrinking bat", "pipes")), re.I)
+
+
 MECANISMOS = [
     {"v": "v06", "txt": "It simply unclogs the toxic build-up stopping your "
      "blood flow."},
@@ -467,7 +514,8 @@ IDADES = (64, 65, 66, 67, 72, 74)
 # ===========================================================================
 # SORTEIO
 # ===========================================================================
-EIXOS_LEDGER = ("cena", "regiao", "hook", "mecanismo", "prova", "cta")
+EIXOS_LEDGER = ("cena", "regiao", "hook", "referente", "mecanismo",
+                "prova", "cta")
 
 
 def _chave(x):
@@ -552,7 +600,24 @@ def _angulo(spec):
 def _falas(spec, rng, quais=(0, 1)):
     f = dict(enumerate(spec.get("falas", ["", ""])))
     if 0 in quais:
-        f[0] = spec["hook"]["txt"].replace("{idade}", str(spec["idade"]))
+        base = spec["hook"]["txt"].replace("{idade}", str(spec["idade"]))
+        # ⛔ O referente so' entra quando falta, e so' se couber no teto. Ele e'
+        # uma SENTENCA a parte de proposito: o CT7 vale por sentenca, entao o
+        # nome do orgao nunca divide frase com o verbo de ereccao.
+        # ⛔ A familia HISTORIA nao leva referente: la' a falha e' RELACIONAL
+        # (*"she said I wasn't enough for her anymore"*) e o referente e' o
+        # casamento, nao o corpo. Colar `Down there, I mean` ali troca uma copy
+        # clara por uma redundante — e a lente VK7 ja' isenta essa familia, mas
+        # ISENTAR NA LENTE E GERAR ASSIM MESMO seria o gerador contradizendo a
+        # propria regra.
+        if _RX_REFERENTE.search(base) or _RX_HISTORIA.search(base):
+            spec["referente"] = None
+            f[0] = base
+        else:
+            cabem = [r for r in REFERENTES
+                     if _palavras(base) + _palavras(r["txt"]) <= TETO_FALA[1]]
+            spec["referente"] = rng.choice(cabem) if cabem else None
+            f[0] = (base + " " + spec["referente"]["txt"]) if spec["referente"]                 else base
     if 1 in quais:
         # ⛔ O TRIO INTEIRO e' sorteado entre as combinacoes que cabem nos 25 —
         # e nao em cascata. Em cascata a PROVA (o beat concreto) so' cabia em
@@ -722,12 +787,43 @@ def _vk3_props(spec, blocos, ach):
 
 def _vk4_copy_com_origem(spec, blocos, ach):
     """⛔ Toda fala tem de ser verbatim da fonte — a guarda contra o drifting."""
+    # ⚠️ A fala 1 e' o hook VERBATIM, opcionalmente seguido de UM referente
+    # declarado. Qualquer outra coisa e' copy sem origem — que foi o que
+    # reprovou a primeira tentativa deste agente.
+    base = spec["falas"][0]
+    if spec.get("referente"):
+        suf = " " + spec["referente"]["txt"]
+        if not base.endswith(suf):
+            ach.append(("ERRO", "VK4: o referente sorteado nao chegou a fala 1"))
+        base = base[:-len(suf)]
     origem = {h["txt"].replace("{idade}", str(spec["idade"])) for h in HOOKS}
-    if spec["falas"][0] not in origem:
+    if base not in origem:
         ach.append(("ERRO", "VK4: a fala 1 nao e' verbatim de nenhum video"))
     for beat in (spec["mecanismo"], spec.get("prova"), spec["cta"]):
         if beat and beat["txt"] not in spec["falas"][1]:
             ach.append(("ERRO", "VK4: o beat %s nao chegou a fala 2" % beat["v"]))
+
+
+def _vk7_sem_referente(spec, blocos, ach):
+    """⛔⛔ O TESTE WTF DO OPERADOR, EM CODIGO.
+
+    *"«..i wake up bigger than» — WTF: who or what is bigger? o pe de limao do
+    fundo da casa dele que esta' maior?"* (2026-08-16)
+
+    A fala 1 tem de dizer DE QUE se trata. Sem isso o espectador nao se
+    reconhece e nao comenta — e' a regra de copy direta do repo, e ela vale
+    mesmo quando a frase e' verbatim: **a fonte tambem drifta**.
+    ⚠️ A familia HISTORIA e' isenta: la' a falha e' RELACIONAL (*"she said I
+    wasn't enough for her anymore"*) e o referente e' o casamento, nao o corpo.
+    Forcar o orgao ali trocaria uma copy clara por uma redundante.
+    """
+    f1 = spec["falas"][0]
+    if re.search(r"\b(wife|marriage|she)\b", f1, re.I):
+        return
+    if not _RX_REFERENTE.search(f1):
+        ach.append(("ERRO", "VK7: a fala 1 nao diz DE QUE se trata — `bigger`, "
+                            "`smaller` e `size` sem referente e' o drifting que "
+                            "o operador reprova no teste WTF"))
 
 
 def _vk5_orcamento(spec, blocos, ach):
@@ -769,7 +865,8 @@ def lint(spec, blocos):
         sys.modules[__name__], spec, blocos, (1, 2), TETO_FALA,
         literais=("recipe",), cota_min=0,
         extras=(_ct16, _anticeleb, _painel, _vk1_sem_celular, _vk2_cena_inteira,
-                _vk3_props, _vk4_copy_com_origem, _vk5_orcamento,
+                _vk3_props, _vk4_copy_com_origem, _vk7_sem_referente,
+                _vk5_orcamento,
                 _vk6_fala_no_take))
 
 
