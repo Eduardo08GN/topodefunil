@@ -212,9 +212,14 @@ PROPS_CURTO = ("the same blue jar, the torn sachet, the wooden ruler and the "
 MAOS = ("the weathered hands of an older man, thick knuckles and sun spots "
         "across the backs, no face and no body in frame")
 
-CAMERA = ("POV of a man standing over the surface with the phone in his free "
-          "hand, looking down at about forty-five degrees, slight handheld "
-          "drift")
+# ⛔⛔ A CAMERA DESCREVE O ANGULO E NUNCA O APARELHO. A versao anterior dizia
+# `with the phone in his free hand`, e o gerador de IMAGEM nao le' isso como
+# enquadramento — ele DESENHA o telefone. O operador gerou um lote inteiro
+# com uma mao segurando celular no meio da cena.
+# ⛔ E nao se escreve `no phone in frame`: negacao INJETA o token, licao do
+# `not a celebrity`. Silencio, nao negacao.
+CAMERA = ("Shot from above the surface at about forty-five degrees, "
+          "handheld with a slight drift")
 
 LUZ = "plain domestic bathroom light, no colour cast"
 
@@ -229,7 +234,7 @@ GESTO_TAKE = ("He presses one finger into the jar and stirs the powder into "
 PAYOFF_IMG = ("the mixture in the jar has risen into a pale foam of large "
               "bubbles that reaches the rim, untouched, with no hand near it")
 
-CAUDA = ("Shot on an iPhone held in one hand, slight natural sway, soft sensor "
+CAUDA = ("Everyday amateur snapshot look, slight natural sway, soft sensor "
          "grain. No on-screen text, no subtitles, no captions, no watermark.")
 
 
@@ -459,7 +464,7 @@ def montar(spec):
     b["BLOCO 0 (REF)"] = (
         "REF 01: Photo of a real person's hands, %s. Plain neutral gray "
         "background, soft even frontal light, no objects. Slight sensor grain, "
-        "raw iPhone photo aesthetic. No subtitles, no captions, no burned-in "
+        "raw amateur photo look. No subtitles, no captions, no burned-in "
         "text, no watermark." % MAOS)
 
     # ⚠️ A ORDEM DAS FRASES E' GRAMATICA, nao estilo. A primeira montagem
