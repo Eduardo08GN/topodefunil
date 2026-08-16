@@ -74,6 +74,10 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # ainda assim mede limpo — foi ele que expos o buraco do
            # `keyword_do_motor`, que os tres BANHO carregavam calado.
            "vick16",
+           # + 2026-08-16: o VICK 2 16, reconstrucao do anterior depois de o
+           # operador reprovar os renders (celular em quadro, massagem no
+           # corpo ignorada). Entra na medicao no commit em que nasce.
+           "vick2_16",
            # + 2026-08-10: o FIGHT 16, no commit em que nasce
            "fight16",
            # + 2026-08-14: o BANHO 16 3TAKES, no commit em que nasce.
@@ -179,16 +183,36 @@ DESLIGADAS = {
     # ------------------------------------------------------------------
     # VICK 16 — as tres, declaradas no commit em que o motor nasce
     # ------------------------------------------------------------------
-    ("vick16", "CT5"):
-        "o `gelatin` que o CT5 acusa NAO e' a receita entregue — e' o NOME DO "
-        "RITUAL. O operador mandou aumentar o pool de nomes (*\"gelatin hack, "
-        "rub hack, gelatin trick, rub trick, etc etc\"*), e a fonte faz igual "
-        "no v11 (*\"a buddy told me about the horse gelatin trick\"*). "
-        "⭐ E o CT5 so' passou a ver isso porque a keyword deste motor e' "
-        "`recipe`: com `gelatin` fora do posto de keyword, ela volta a contar "
-        "como ingrediente — regra que eu mesmo escrevi hoje e que aqui acusa "
-        "certo o objeto errado. A lente VI1 do motor cobra o que importa: "
-        "nenhuma fala nomeia Vicks, Knox, mel ou bicarbonato (0% medido).",
+    ("vick2_16", "CT5"):
+        "mesma razao do VICK 16: a moeda do comentario aqui e' o PASSO A "
+        "PASSO, nao a receita — o video diz o QUE e a DM diz o COMO, e a "
+        "fonte converte assim. Foi PROIBIR o concreto que produziu o "
+        "drifting que o operador reprovou na primeira tentativa.",
+    ("vick2_16", "CT2"):
+        "metade dos hooks e' a familia HISTORIA, que enuncia a falha pela "
+        "PERDA (*\"she said I wasn't enough for her anymore\"*) e nao por "
+        "verbo de disfuncao — e o regex do CT2 le' verbo. Mesma pendencia do "
+        "ORGANICWAVE 16 e do HORSE 16. ⛔ Nao reformulo os hooks para "
+        "satisfazer o regex: eles sao VERBATIM da fonte, e dobrar copy "
+        "validada ao gate e' a §16 das licoes.",
+    ("vick2_16", "CT6"):
+        "os QUATRO CTAs deste motor sao VERBATIM da fonte, e nenhum dos "
+        "15 videos diz ONDE a receita chega — eles dizem `I will send it "
+        "to you right now`, `for the step-by-step video`. ⚠️ E' fidelidade "
+        "contra contrato: o CT6 existe porque o comentario leva nome e "
+        "foto, e sem a cobertura o custo social de comentar fica maior "
+        "que a curiosidade. A fonte converte assim mesmo; se o campo "
+        "mostrar o contrario, o conserto e' UMA palavra em cada CTA e a "
+        "decisao e' do operador, nao minha.",
+    ("vick16", "CT6"):
+        "mesma razao do VICK 2 16: os CTAs sao verbatim da fonte e "
+        "nenhum dos 15 videos diz ONDE a receita chega. Fidelidade "
+        "contra contrato, e a decisao e' do operador. "
+        "⚠️ CORRECAO DE 2026-08-16: o commit que nasceu com este motor "
+        "registrou `CT7 em 100%, sem explicacao medida`. Nao havia "
+        "misterio — eu contei a coluna errada. A tabela tem NOVE "
+        "colunas (o CT4b entra entre o CT4 e o CT5) e eu li oito. "
+        "O CT7 deste motor e' 0%; o que esta em 100% e' o CT6.",
     ("vick16", "CT2"):
         "mesma pendencia do ORGANICWAVE 16 (49%) e do HORSE 16 (52%), e aqui "
         "ela e' maior porque METADE dos hooks e' a familia HISTORIA, que "
@@ -197,13 +221,6 @@ DESLIGADAS = {
         "⛔ Nao reformulo os hooks para satisfazer o regex: a familia HISTORIA "
         "e' eixo pedido pelo operador, e dobrar a copy ao gate e' o defeito "
         "que a §16 das licoes descreve. Ou a lente cresce, ou fica assim.",
-    ("vick16", "CT7"):
-        "os 15 videos da fonte dizem `makes you hard`, `rock hard results`, "
-        "`stay hard` — e o apelido do orgao esta' na sentenca VIZINHA, nao "
-        "colada. ⚠️ O regex do CT7 mede por sentenca e as duas caem na mesma "
-        "quando o hook e' curto. A lente VI7 do motor cobra o que tem preco "
-        "medido de verdade: o GESTO no orgao, que rendeu ~95% de recusa no "
-        "COLO 16 (0% aqui).",
     ("banho16_3t", "CT1"):
         "os SETE videos da fonte terminam no follow, depois do CTA, e o "
         "operador aprovou as doze copies uma a uma lendo essa ordem. "
