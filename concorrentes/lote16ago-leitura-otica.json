@@ -1,0 +1,1406 @@
+{
+ "fonte": "lote de 7 videos recebidos em 2026-08-16",
+ "videos": [
+  {
+   "v": "v07",
+   "resumo": "Um homem negro idoso despeja cápsulas azuis de um frasco de farmácia dentro de uma lata de lixo de garagem, prepara a mistura azul na bancada com VapoRub e Horse Gelatin, e reaparece de tronco nu segurando um geoduck gigante em pé para pedir o comentário GELATIN.",
+   "angulo": "o descarte dos comprimidos",
+   "assinatura": "A lata de lixo aberta ocupando o terço inferior do quadro enquanto as cápsulas azuis caem nela em jato contínuo — e a tigela de líquido azul esperando, no mesmo quadro, logo acima. O azul do comprimido descartado e o azul da receita convivem numa imagem só, e é esse par que volta no último take com o geoduck em pé ao lado da mesma tigela.",
+   "n_cenas": 3,
+   "corte_s": [
+    6.05,
+    12.23
+   ],
+   "prop_falico": true,
+   "cenas": [
+    {
+     "t0": 0,
+     "t1": 6.05,
+     "ambiente": "Cluttered home garage workshop at night. A thick reclaimed pine workbench runs left to right across the middle of frame, honey-toned, deeply gouged, streaked with black paint drips and burn marks. Behind it, on the left, a mustard-yellow pegboard wall hung with chrome open-end wrenches, pliers and a wooden block rack of orange- and yellow-handled screwdrivers; center-back a scuffed white top-freezer refrigerator with a small US flag decal on its door and grease specks over the enamel; a second US flag decal higher on the raw concrete wall above it; on the right a wooden window frame with black night glass. A dark green enameled swing-arm clamp lamp on the left arm reaches into frame and throws a hard warm pool onto the bench. Below and in front of the bench, filling the bottom third of frame, the open mouth of a galvanized steel trash can.",
+     "props": [
+      "amber orange plastic prescription pill bottle with a white pharmacy label, held tipped over in the right hand at mid-right of frame, mouth pointing down over the trash can",
+      "stream of pale sky-blue capsule pills falling from the bottle mouth down into the can, center-right",
+      "small clear glass mixing bowl holding a shallow finger of vivid blue liquid, sitting on a wet ring at the center of the bench",
+      "small white plastic bottle cap pinched between the left thumb and forefinger, hovering just above and left of the glass bowl",
+      "cobalt blue Vicks VapoRub jar standing upright at the left of the bench, white oval label",
+      "teal green screw cap lying open on its back at the far left bench edge, a smear of white-teal ointment inside",
+      "small flat foil sachet of Horse Gelatin lying face up on the bench in front of the Vicks jar, blue and white with a red band, print unreadable",
+      "red-handled screwdriver lying on the far side of the bench near the fridge",
+      "galvanized steel trash can, ribbed grey-green metal, filling the bottom third of frame",
+      "crumpled newsprint pages, silver metal swarf curls and a mound of pale blue capsules already lying in the bottom of the can"
+     ],
+     "gesto": "The right hand enters from the right holding the amber bottle, tips it fully over the open can at 0.2s and holds it there while a steady stream of blue capsules falls for about three seconds; the left hand hovers above the bench pinching the small white cap over the glass bowl and stays motionless the whole time; at about 3.6s the right hand rights the bottle and lifts it back up over the bench top; by 4.5s both hands are retreating and by 5.2s only a forearm remains at the top right edge.",
+     "pessoa": "Only the hands and forearms of an older Black man, roughly 65, deeply wrinkled dark brown skin, prominent tendons and raised veins across the backs of the hands, thick knuckles, pale pink fingernails, a plain gold wedding band on the ring finger of the right hand.",
+     "camera": "High three-quarter angle from about the chest height of a standing man, tilted down over the workbench so the bench top occupies the upper two thirds and the open mouth of the trash can fills the bottom third; vertical 9:16 framing, wide enough to hold both the bench and the can in one shot.",
+     "luz": "Single hard warm tungsten key from the clamp lamp at upper left, around 2700K, a bright pool on the bench and steep falloff to near-black in the corners; the trash can lit only by spill, its cool grey-green galvanized steel reading against the warm honey wood.",
+     "audio": "Dry rattle of capsules dropping onto paper and metal inside the can, faint garage room tone and a low electrical hum from the fridge; over it, a calm gravelled older American male voice.",
+     "superficie": "Thick reclaimed pine workbench top, honey-toned, scarred with gouges, black paint drips and burn marks.",
+     "traje": "none visible",
+     "texto_em_quadro": "I THREW THESE AWAY AT / 6 5. / THE GELATIN TRICK MADE"
+    },
+    {
+     "t0": 6.05,
+     "t1": 12.23,
+     "ambiente": "Same garage workshop, now shot from down at the bench surface looking along its length. The honey pine top fills the lower half of frame with its gouges and black stains reading huge; behind it the mustard pegboard wall with wrenches and the screwdriver rack on the left, a stainless steel tray on the back edge of the bench, the scuffed white refrigerator with its US flag decal center-back, and the dark night window on the right.",
+     "props": [
+      "cobalt blue Vicks VapoRub jar tipped nearly upside down in the right hand, upper center of frame, a thick milky pale-blue ribbon pouring from its mouth",
+      "large clear glass bowl of vivid blue liquid filled almost to the rim, centered in the lower middle of frame, a spreading white foam disc where the ribbon lands",
+      "teal green screw cap lying open at the lower left of the bench, white-teal ointment pooled inside",
+      "torn-open Horse Gelatin stand-up pouch, glossy blue and white with a silver interior and a rearing white horse mark, lying flat at the bottom left corner of the bench with its printed text rotated away from the lens",
+      "stainless steel tray or vise body on the far end of the bench behind the bowl",
+      "red-handled screwdriver lying beside it",
+      "wet blue splash marks on the pine around the base of the bowl"
+     ],
+     "gesto": "The right hand tips the blue jar over the bowl and holds the pour for about four seconds, the milky ribbon coiling and folding into the blue liquid; the left hand comes in from the right and cups the near rim of the bowl flat on the bench and stays there anchoring it; at about 9.6s the pouring hand lifts the jar straight up and out of the top right of frame, then the anchoring hand slides off to the right; the final second and a half holds on the bowl alone as the surface closes into a full white foam cap.",
+     "pessoa": "Only the hands and forearms of the same older Black man, deeply wrinkled dark brown skin, thick knuckles, raised veins, pale nails, plain gold wedding band on the ring finger of the steadying hand.",
+     "camera": "Low angle just above the bench surface, lens roughly level with the rim of the bowl, looking down the length of the bench toward the back wall so the bowl sits centered in the lower half and the tipped jar occupies the upper middle; vertical 9:16.",
+     "luz": "Same warm tungsten clamp lamp, now further back at upper left, bouncing off the pine so the wood glows amber; the blue liquid and the white ribbon read as the only cool notes in frame; corners fall to near-black.",
+     "audio": "Thick viscous glug of the pour, liquid folding into liquid, faint garage room tone; the same gravelled older male voice over.",
+     "superficie": "Honey pine workbench top seen almost at eye level, grain, gouges and black paint stains running toward the back of frame.",
+     "traje": "none visible",
+     "texto_em_quadro": "IT CLEARED THE OLD / BLOOD BLOCKING MY / FLOW. / NO PRESCRIPTION, NO / PHARMACY, NO BILL."
+    },
+    {
+     "t0": 12.23,
+     "t1": 17.63,
+     "ambiente": "The same garage read from the other side: pale plaster and concrete back wall, a low pitched ceiling of dark boards overhead, the mustard pegboard with chrome wrenches and a rack of wood-handled screwdrivers pushed to the far left edge, the green enameled clamp lamp glowing at mid-left, a dark grey metal cabinet and a window with black night glass at the right. The pine workbench cuts straight across the bottom of frame.",
+     "props": [
+      "very large geoduck clam held upright in the raised left hand at the right of frame, pale cream siphon standing straight up and running out the top of frame, ridged chalky white-grey shell cupped in the palm",
+      "large clear glass bowl of vivid blue liquid with a white foam disc floating at its center, sitting on the bench just right of frame center",
+      "cobalt blue Vicks VapoRub jar standing open on the bench at lower left, white oval label reading VapoRub, blue-green ointment visible at the rim",
+      "teal green screw cap lying open at the far lower left corner, white-teal ointment pooled inside",
+      "torn-open Horse Gelatin pouch, blue and white with a white rearing horse mark, lying angled at the bottom center of the bench with its printed text rotated away from the lens",
+      "black night window and dark metal cabinet behind his raised arm on the right",
+      "yellow-green pegboard and hanging wrenches at the far left edge"
+     ],
+     "gesto": "He raises the geoduck to shoulder height in his left hand and holds it there upright for the whole take, the shell gripped against his palm; his right arm is braced straight down with the palm flat on the bench top at lower left; he speaks straight into the lens, mouth opening wide on the first word at 12.3s, breaking into a broad grin by 13.0s, then settling into a level delivery through the end, with only small head movement.",
+     "pessoa": "Older Black man, roughly 65 to 70, dark brown skin, close-cropped receding salt-and-pepper hair, full grizzled grey and white beard and mustache, deep nasolabial folds and crow's feet, a dark raised mole on his right cheek beside the nose, lean and hard torso with defined pectorals, visible abdominal separation and sun-spotted sparse grey chest hair, veined forearms.",
+     "camera": "Frontal waist-up angle from just above bench height, lens a little below his chin so he looks marginally down into it, the bench edge cutting across the bottom of frame and his raised hand carrying the prop into the top right; vertical 9:16.",
+     "luz": "Warm tungsten clamp lamp from the left at chest height as the key, raking across his chest and picking out the muscle relief; soft cool ambient fill from the window on the right; the pale wall behind stays dim so he separates from it.",
+     "audio": "Quiet garage room tone, no handling noise; the same gravelled older American male voice, now on camera and slightly forward in the mix.",
+     "superficie": "Honey pine workbench top across the bottom of frame, gouged and black-stained.",
+     "traje": "Bare chested, plain black athletic shorts with a soft waistband visible at the bottom of the torso.",
+     "texto_em_quadro": "COMMENT GELATIN AND I / WILL SEND THE COMPLETE / STEP BY STEP TO YOUR / INBOX."
+    }
+   ],
+   "copy": {
+    "beats": [
+     {
+      "t0": 0,
+      "txt": "I threw these away at 6 5.",
+      "funcao": "hook"
+     },
+     {
+      "t0": 3.36,
+      "txt": "The gelatin trick made them useless.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 6.52,
+      "txt": "It cleared the old blood blocking my flow.",
+      "funcao": "falsa_causa"
+     },
+     {
+      "t0": 9.4,
+      "txt": "No prescription, no pharmacy, no bill.",
+      "funcao": "objecao"
+     },
+     {
+      "t0": 12.2,
+      "txt": "Comment GELATIN and I will send the complete step by step to your inbox.",
+      "funcao": "cta"
+     }
+    ],
+    "cta": "Comment GELATIN and I will send the complete step by step to your inbox.",
+    "palavra_cta": "gelatin",
+    "nomeia_orgao": false,
+    "apelido_orgao": "",
+    "nomeia_ingrediente": false
+   },
+   "problemas": [
+    "⛔ O hook sai quebrado no beat mais caro do vídeo: a legenda queimada escreve \"6 5.\" com espaço (card isolado em ~1,5s) e o Whisper leu `6'5\"`. A idade — que É o hook — chega ao espectador como \"seis cinco\" ou como altura em pés. Verbatim adotado: a legenda.",
+    "⛔ Contradição DENTRO do mesmo quadro no take 1: o zoom em 1,5s mostra o frasco âmbar cheio de esferas AMARELO-ESVERDEADAS, enquanto o que cai dele e o que já está na lata são CÁPSULAS AZUIS. O prop do hook desmente a si mesmo.",
+    "⛔ A pilha de cápsulas na lata não cresce: seis segundos de jato contínuo e o monte é pixel a pixel o mesmo de 0,3s a 5,9s. O despejo é decorativo, não acumula.",
+    "⛔ O sachê troca de embalagem no corte 1: no take 1 é um envelope FOIL ACHATADO pequeno, com o texto embaralhado e ilegível, ao lado do pote; nos takes 2 e 3 é um STAND-UP POUCH grande, aberto, com \"Horse Gelatin\" legível e o cavalo branco. É o prop que carrega o nome do ângulo trocando de identidade no meio do vídeo.",
+    "⛔ A tigela muda de escala três vezes: take 1 é uma tigelinha rasa com um dedo de líquido; take 2 uma tigela média cheia até a borda; take 3 uma tigela larga transbordando. O mesmo objeto deveria costurar os três takes e é ele que denuncia que são três gerações separadas.",
+    "⛔ Continuidade de espuma quebrada no corte 2: o take 2 TERMINA com a superfície 100% coberta de espuma branca e o azul lavado (11,9s); o take 3 ABRE com azul saturado e apenas um disco de espuma no centro (12,3s). A reação borbulhante regride.",
+    "⛔ A aliança muda de metal entre takes: OURO nas mãos dos takes 1 e 2 (zooms em 1,5s e 7,5s, banda amarela inequívoca) e PRATA/branca na mão que segura o geoduck no take 3 (zoom em 12,6s). É a única âncora de continuidade de pessoa que os três takes tinham e ela falha.",
+    "⛔ O polegar da mão que segura o geoduck (zoom em 12,6s e 14,5s) é uma massa lisa, sem articulação, sem unha e desproporcional — lê como uma segunda palma colada ao punho. As unhas dos outros dedos saem rosa-claras demais para a pele, como se fossem de outra mão.",
+    "⛔ Tom de pele incoerente dentro do take 1: o antebraço no topo do quadro (0,3s e 1,5s) é bronzeado claro/avermelhado, e as mãos, no MESMO quadro, são marrom muito escuro. Duas etnias no mesmo corpo.",
+    "⛔ O cenário troca sem justificativa no corte 2: somem a geladeira branca, as DUAS bandeiras dos EUA e o pegboard central; entram parede lisa clara e um armário metálico, e o pegboard migra para a borda esquerda. A fala trata como a mesma garagem, o quadro entrega outra.",
+    "⛔ Objeto que morfa dentro do take 2: a peça metálica no fundo da bancada é uma bandeja rasa aos 8,0s e vira um bloco tipo bigorna com base de cobre aos 10,0s e 11,0s.",
+    "⛔ O pote sendo derramado troca de forma no meio do take 2: aos 6,1-8,0s é o pote BAIXO do VapoRub; aos 10,0s, na mão já erguida, é um pote ALTO azul com faixa branca/cinza. O recipiente muda enquanto a mão continua a mesma.",
+    "⚠️ Física errada: VapoRub é pomada sólida e sai do pote como fita LÍQUIDA leitosa contínua por quatro segundos. Quem conhece o produto lê como falso.",
+    "⚠️ O texto do sachê \"Horse Gelatin\" está renderizado girado 180° nos takes 2 e 3 — a marca que sustenta o nome do ângulo nunca é apresentada de pé ao espectador. O rótulo vermelho do VapoRub e o texto do papel amassado dentro da lata são gibberish ilegível (assinatura de gerador).",
+    "⚠️ Marca facial inconsistente: aos 12,3s há UMA pinta, na bochecha direita ao lado do nariz; aos 15,0s há DUAS, com uma segunda sob o olho esquerdo; aos 17,4s a pinta subiu para logo abaixo do olho.",
+    "⚠️ Dentes brancos e perfeitamente alinhados num rosto castigado de 65-70 anos (zoom em 15,0s) — quebra o realismo do elenco justamente no take em que o rosto vende.",
+    "⚠️ Sincronia labial fraca no take 3: aos 14,5s a legenda diz \"WILL SEND THE COMPLETE\" com a boca fechada e parada.",
+    "⚠️ Dois buracos de legenda com áudio correndo: ~2,4s a ~3,4s e ~5,0s a ~6,4s ficam SEM legenda queimada nenhuma — quase 2,4s dos 17,6s sem texto no vídeo mudo.",
+    "⚠️ Prop morto ocupando mão: a tampa branca pinçada pela mão esquerda durante todo o take 1 nunca é usada, nunca é explicada e nunca sai de quadro.",
+    "⚠️ Composição do take 1 entrega o terço inferior inteiro à LATA DE LIXO por seis segundos, e joga a tigela + o sachê (a prova e a marca) pequenos ao fundo. O quadro mais assistido do vídeo é o do lixo.",
+    "⚠️ Não é a família 2×8s: são TRÊS takes de ~6,0s / ~6,2s / ~5,4s, 17,63s no total (529 frames a 30fps). Se o motor previa 2 takes, o render não obedeceu.",
+    "⚠️ A folha de contato está ~1,1s ADIANTADA em relação ao vídeo real — ela mostra o primeiro corte no rótulo 05.522 e o corte acontece em 6,05s (scene-detect confirma 6,167 e 12,233). Quem cronometrar pela folha erra os dois cortes."
+   ]
+  },
+  {
+   "v": "v06",
+   "resumo": "Um homem negro de ~65 anos, sempre de costas e sem rosto, apresenta dois modelos anatomicos penianos numa pia de banheiro (um marrom rachado, um rosa saudavel), passa gel azul na propria nuca e termina despejando pomada mentolada num bowl de liquido azul que vira espuma, pedindo o comentario \"gelatin\".",
+   "n_cenas": 3,
+   "corte_s": [
+    4.55,
+    10.1
+   ],
+   "prop_falico": true,
+   "angulo": "a pomada azul na nuca",
+   "assinatura": "Os DOIS modelos anatomicos penianos lado a lado, em pedestais de cromo, na pia de um banheiro de casa — um marrom rachado e veiudo, um rosa liso e saudavel — enquanto o narrador, de costas e sem rosto, besunta a PROPRIA NUCA com gel azul translucido. E o beat de fechamento: a pomada branca caindo do pote azul-marinho dentro do bowl de agua azul, que floresce em espuma sozinha no ultimo quadro.",
+   "cenas": [
+    {
+     "t0": 0,
+     "t1": 4.55,
+     "ambiente": "A residential bathroom vanity in warm daylight. Honed white Carrara marble countertop with soft grey veining; an oval undermount sink at the far left with a polished chrome widespread faucet; a sage-green painted wall behind; a large white-framed frosted-glass double-hung window on the right with a sheer white curtain hanging beside it; the edge of a wall mirror at the upper left; white shaker-style cabinet doors with dark oil-rubbed bronze knobs below the counter",
+     "props": [
+      "Two anatomical male reproductive-system models standing side by side at the centre of the counter on polished chrome rods with round weighted chrome bases: the left one moulded in dark reddish-brown resin with a cracked, veined, mottled surface; the right one in smooth pale pink plastic; each has a rounded bladder-shaped body at the top, two curved tubes arcing out like horns, a downward shaft and two hanging testicles on cords",
+      "A clear glass bowl filled with transparent royal-blue liquid, front left on the marble",
+      "A navy blue jar of mentholated chest ointment with a teal screw lid and a white label band, standing upright at front centre",
+      "A clear glass jar of golden honey with a long stainless steel spoon standing upright in it, front right",
+      "A red, white and blue striped cotton towel folded at the far right edge of the counter",
+      "A glossy dark-blue foil sachet printed 'Horse Gelatin' with a white horse silhouette, lying flat on the marble in the lower centre-right"
+     ],
+     "gesto": "For the first half second a hand withdraws from the lower left edge of the frame, passing beside the blue bowl and leaving the frame; from 0.6s onward nothing moves — the props sit untouched and the frame holds still for four seconds",
+     "pessoa": "Only a hand at the extreme lower left edge during the first half second; no face, no torso, no body otherwise",
+     "traje": "none visible",
+     "camera": "Chest-height eye level from the far side of the vanity, tilted down about 15 degrees, static frame, counter running from the sink at left to the window at right",
+     "luz": "Soft diffuse cool daylight flooding through the frosted window on the right, gentle falloff toward the left, no hard shadows, mild bloom on the marble and on the chrome faucet",
+     "superficie": "honed white Carrara marble countertop",
+     "audio": "Male voice-over, warm and calm, mid-sixties, confessional register; faint room tone, no music",
+     "texto_em_quadro": "AT 65, / I PROVED MY DOCTOR / WRONG WITH THE GELATIN / TRICK."
+    },
+    {
+     "t0": 4.55,
+     "t1": 10.1,
+     "ambiente": "The same residential bathroom, framed tight from just behind the man's left shoulder: the sage-green wall and the sheer white curtain fill the upper left, the frosted window and its white marble sill fill the upper right, and the white marble counter runs across the lower third of the frame",
+     "props": [
+      "The same two anatomical models, now standing further back against the window sill on their chrome rods — the dark reddish-brown one at the centre and the pale pink one at the right",
+      "A clear glass bowl of transparent royal-blue liquid sitting on the marble just below his chin, a glowing blue smear pooling on the marble around its base",
+      "A clear glass jar of golden honey with a long stainless steel spoon standing in it, at the right on the marble",
+      "A teal screw lid lying face-up on the marble at the right edge, pale cream ointment visible inside it",
+      "A navy blue jar with its lid removed, standing behind the glass bowl",
+      "A red, white and blue striped cotton towel at the far right edge"
+     ],
+     "gesto": "Over roughly five seconds: the right hand rises with two fingertips loaded with thick translucent blue gel and presses them onto the side of the neck just below the ear; the fingers drag downward and spread the gel into a wide glossy slab across the neck; the hand lowers to the glass bowl, the fingertips dip and scoop more gel, the hand rises again and works the neck in short circular strokes; the left forearm and hand lie flat on the marble across the lower third of the frame the entire time and never move",
+     "pessoa": "A dark-skinned Black man in his mid sixties seen from behind and slightly to the left — only the back of his head, his right ear, the edge of his jaw in profile, his bare neck, his bare shoulder and both forearms and hands are in frame; close-cropped grey-white hair, grey stubble down the nape, deeply creased skin with raised veins and dark age spots on the backs of both hands, a plain gold band on the ring finger",
+     "traje": "bare shoulders and bare upper back, no garment in frame",
+     "camera": "Over-the-left-shoulder angle at head height, about 30 degrees behind him, tilted a few degrees down, handheld micro-drift",
+     "luz": "Strong diffuse window daylight from the right rimming the ear, the stubble and the wet gel with bright specular highlights; the near side of the neck falls into soft shadow",
+     "superficie": "honed white Carrara marble countertop",
+     "audio": "Same male narrator; a faint wet slick sound of gel under the fingertips",
+     "texto_em_quadro": "IT WAS NEVER AGE. / IT WAS THE OLD BLOOD / BLOCKING THE FLOW DOWN / THERE."
+    },
+    {
+     "t0": 10.1,
+     "t1": 15.97,
+     "ambiente": "A bathroom vanity seen from above: a beige-white painted wall at the top, a white marble backsplash lip, a white-framed frosted window at the right, dark walnut cabinet doors with long brushed-metal bar pulls under the counter at the lower right, and the curved white lip of an undermount sink at the far left",
+     "props": [
+      "The same two anatomical models on chrome rods with round chrome bases at the upper left, seen from above and cropped by the top edge — the dark reddish-brown one at the left, the pale pink one beside it",
+      "A clear glass bowl of bright blue liquid held at the centre of the frame, its surface turning to pale blue foam with a white crater at the middle",
+      "A navy blue jar of mentholated ointment with a white label band, tipped over the bowl and pouring a thick white-blue stream into the liquid",
+      "Its teal screw lid lying face-up on the marble at the left, a smear of white ointment inside",
+      "A clear glass jar of golden honey with a long stainless steel spoon standing in it, at the upper right",
+      "A flat pale-blue sachet card printed HORSE GELATIN with a navy horse silhouette, lying flat on the marble at the left",
+      "A beige and blue striped woven towel at the right edge with a stainless steel spoon resting on it"
+     ],
+     "gesto": "The left hand cradles the glass bowl from below with the thumb hooked over the rim; the right hand brings the navy jar in from the right, tips it over the bowl and holds it there while a thick white stream falls into the blue liquid and blooms outward into foam; at about 14 seconds the right hand rights the jar, carries it out to the right and sets it down beside the towel; both hands then drop out of the bottom of the frame and the foaming bowl is left alone on the marble for the final second",
+     "pessoa": "Only the two hands and the lower right forearm of the same dark-skinned Black man in his sixties — deeply creased knuckles, raised veins, dark spots, a plain gold band on the left ring finger; no face, no torso",
+     "traje": "none visible",
+     "camera": "High three-quarter angle looking down at roughly 55 degrees onto the counter from just above and behind his hands, slight handheld drift",
+     "luz": "Bright diffuse daylight from the frosted window at the right, soft wide shadows under the bowl and the jar, specular highlights on the glass, the honey and the rising foam",
+     "superficie": "honed white marble countertop",
+     "audio": "Same male narrator; a soft wet glug as the ointment falls and a light fizz as the foam rises",
+     "texto_em_quadro": "COMMENT GELATIN AND I / WILL SEND THE COMPLETE / STEP BY STEP TO YOUR / INBOX."
+    }
+   ],
+   "copy": {
+    "beats": [
+     {
+      "t0": 0,
+      "txt": "At 65, I proved my doctor wrong with the gelatin trick.",
+      "funcao": "hook"
+     },
+     {
+      "t0": 4.76,
+      "txt": "It was never age.",
+      "funcao": "falsa_causa"
+     },
+     {
+      "t0": 6.32,
+      "txt": "It was the old blood blocking the flow down there.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 10.08,
+      "txt": "Comment gelatin and I will send the complete step by step to your inbox.",
+      "funcao": "cta"
+     }
+    ],
+    "cta": "Comment gelatin and I will send the complete step by step to your inbox.",
+    "palavra_cta": "gelatin",
+    "nomeia_orgao": false,
+    "apelido_orgao": "nenhum apelido — a fala usa o euforismo locativo \"down there\"",
+    "nomeia_ingrediente": true
+   },
+   "problemas": [
+    "TRANSCRICAO x LEGENDA: nao houve divergencia. Conferi as quatro sentencas do whisper contra a legenda queimada quadro a quadro (0.40 \"AT 65,\" / 1.97 \"WRONG WITH THE GELATIN\" / 4.92 \"IT WAS NEVER AGE.\" / 9.20 \"THERE.\" / 10.00 \"COMMENT GELATIN AND I\" / 13.80 \"INBOX.\") — batem palavra por palavra. A folha de contato SUGERE que falta a legenda final (os quadros 13.764 e 14.747 saem sem texto), mas e' so' amostragem: a legenda \"INBOX.\" existe e vive entre ~13.55s e ~14.2s.",
+    "⛔ ETNIA DAS MAOS QUEBRA NAS DUAS PONTAS. A mao que sai de quadro no primeiro meio segundo (0.0-0.6s) e' BRANCA, rosa-palida. As duas maos que entram por baixo no ultimo segundo (15.7-15.97s) tambem sao BRANCAS. O narrador do miolo inteiro (4.6s-15.4s) e' um homem negro de pele bem escura. O vídeo abre e fecha com as maos de outra pessoa — e num angulo POV cuja unica ancora de continuidade SAO as maos, esse e' o defeito mais caro do render.",
+    "⛔ AS MAOS FINAIS ESTAO DERRETIDAS. No ultimo quadro os dois \"punhos\" que sobem pela borda inferior nao tem polegar identificavel, os dedos se fundem em blocos rosados e a silhueta se mistura com o veio do marmore. Nao da' pra contar dedos.",
+    "⛔ OS MODELOS ANATOMICOS MUTAM TRES VEZES DENTRO DO VIDEO. (a) 0-4.5s: modelo completo — bexiga arredondada no topo, dois tubos curvos, haste para baixo, dois testiculos pendurados. (b) ~7.9s: brota no epididimo esquerdo do modelo MARROM uma peca vermelha/rosada franjada, tipo coral ou mao de anemona, que NAO existia aos 6.4s — e aparece um segundo pedestal (uma vareta bege listrada) sob o MESMO modelo, junto com a haste de cromo. (c) depois do corte aos 10.1s os DOIS modelos perdem a bexiga: o marrom vira uma cabeca de animal com dois chifres e focinho longo, o rosa vira uma haste sem topo. Aos 13.8-15.9s o modelo marrom ja' e' um objeto completamente diferente do que abriu o video.",
+    "⛔ O SACHE TROCA DE DESIGN NO CORTE. Na cena 1 e' um envelope de FOIL azul-escuro brilhante deitado a' direita do bowl, com o cavalo em branco. Na cena 3 e' um CARTAO fosco azul-claro, deitado a' esquerda, com layout outro (\"HORSE GELATIN\" em caixa alta no topo + tarja \"Horse Gelatin\" embaixo + cavalo azul-marinho). Mesmo objeto, duas embalagens.",
+    "⛔ O ROTULO DA POMADA SAI ESPELHADO. Em toda a cena 3 (10.3s ate' 14.2s) a palavra na tarja branca do pote azul-marinho esta' INVERTIDA horizontalmente — le-se da direita pra esquerda. Zoom a 13.2s confirma. O selo oval verde tambem esta' espelhado.",
+    "⛔ TEXTO MIUDO ILEGIVEL. No sache so' as duas linhas grandes sao legiveis; o texto de composicao e o peso liquido sao rabisco. No pote, a linha vermelha e o texto abaixo da marca sao ilegiveis.",
+    "⛔ HALO IMPOSSIVEL SOB O BOWL. Durante a cena 1 e a cena 2 inteiras o bowl de liquido azul projeta uma POCA CIANO LUMINOSA no marmore ao redor da base — luz atravessando uma bancada opaca. Nao e' sombra nem respingo: e' emissao. Some no corte para a cena 3.",
+    "⛔ FRONTEIRA DE TAKE VISIVEL EM ~8.0s SEM CORTE DE CAMERA. A cena 2 e' continua na camera, mas em 8.0s o modelo marrom ganha a peca vermelha franjada e o padrao do gel na nuca muda de bloco espesso para estrias finas com brilhos brancos — a emenda dos dois takes de 8s aparece na tela como mutacao de prop.",
+    "⛔ O GEL DA NUCA SOME SEM SER LIMPO. Aos 6.4s ha' uma placa azul espessa e escorrida no pescoco; aos 9.8s restam so' fiapos turquesa, e o gesto no intervalo foi ADICIONAR mais gel (ele mergulha os dedos no bowl aos 7.9s). Quantidade de material anda ao contrario do gesto.",
+    "⛔ DOIS QUARTOS DIFERENTES CHAMADOS DE MESMO BANHEIRO. Cena 1/2: parede verde-sage, armario SHAKER BRANCO sob a bancada, pia oval a' esquerda, toalha listrada VERMELHO/BRANCO/AZUL. Cena 3: parede bege, armario de NOGUEIRA ESCURA com puxadores de barra, toalha listrada BEGE/AZUL com uma colher em cima. O corte aos 10.1s troca de comodo.",
+    "⛔ ALIANCA INCONSISTENTE. Na cena 2 as DUAS maos usam aliança de ouro (a que massageia, aos 6.4s/9.5s, e a que descansa na bancada, aos 7.87s). Na cena 3 so' a mao que segura o bowl tem aliança — a mao que despeja o pote nao tem nenhuma.",
+    "⛔ UNHAS TURQUESA. Entre 9.2s e 10.0s as pontas dos dedos da mao que massageia estao cobertas de gel turquesa opaco exatamente sobre a lamina da unha, e leem como ESMALTE azul-piscina numa mao masculina de 65 anos.",
+    "⛔ O POLEGAR E' DE OUTRA PELE. Nos zooms de 6.4s e 9.5s o polegar da mao que massageia e' visivelmente mais claro (bege/caramelo) que os dedos e o dorso, e nao tem lamina de unha desenhada — parece um dedo emprestado de outra mao.",
+    "⚠️ CONTAGEM DE DEDOS DUVIDOSA aos 9.5s: sobre a nuca leem-se quatro pontas de dedo na parte de cima, mais um dedo inteiro atravessado no meio, mais um polegar embaixo — seis digitos plausiveis numa mao so'. Nao da' pra cravar por causa do desfoque, mas a geometria nao fecha (o polegar aparece ABAIXO do dedo anelar com a aliança, o que exige a mao torcida).",
+    "⚠️ DOIS PEDESTAIS PARA UM MODELO. Aos 7.9s, sob o modelo marrom, convivem a haste de cromo e uma vareta bege listrada que desce ate' a mesma base.",
+    "⚠️ O CORTE CAI NO MEIO DA SENTENCA DO CTA. A legenda \"COMMENT GELATIN AND I\" atravessa o corte dos 10.1s: a cena troca no meio da frase que carrega a palavra-chave, nao num limite de beat.",
+    "⛔⛔ NEXO: A RECEITA NUNCA ACONTECE. O sache de HORSE GELATIN — o unico ingrediente que a fala nomeia e a palavra que o CTA pede — fica LACRADO e parado na bancada nos 16 segundos inteiros, em dois designs diferentes. O que de fato entra no bowl e' pomada mentolada de peito. O mel nunca sai do pote. Os dois modelos anatomicos, que sao a assinatura visual do angulo, nunca sao tocados, apontados nem comparados — sao cenario. E a pomada e' aplicada na NUCA, que nao tem relacao nenhuma com a promessa do video. Cada elemento e' distinto e caro; o quadro inteiro nao conta uma historia. E' a licao do VICK 16 se repetindo: distincao medida nao e' nexo medido."
+   ]
+  },
+  {
+   "v": "v04",
+   "resumo": "Top-down numa mesa de piquenique de madeira, duas próteses anatômicas lado a lado — uma rosa grande e sã, uma marrom pequena e rachada — servem de autodiagnóstico (\"qual das duas é a sua?\"), o homem despeja o sachê de Horse Gelatin no copo, e o payoff é um corte seco onde a marrom simplesmente some e sobra só a rosa, deitada e maior, sob o CTA de comentar gelatin.",
+   "n_cenas": 3,
+   "corte_s": [
+    4.867,
+    10.433
+   ],
+   "prop_falico": true,
+   "angulo": "a escolha entre os dois",
+   "assinatura": "O par de próteses anatômicas deitadas lado a lado no tampo, filmadas de cima a prumo, com a pergunta de autodiagnóstico — o espectador é obrigado a apontar uma das duas para si mesmo antes de qualquer mecanismo ser dito. O beat que ninguém confunde é a mão de veias grossas escorregando o dedo da prótese rosa para a marrom rachada, e depois voltando para apertá-la.",
+   "cenas": [
+    {
+     "t0": 0,
+     "t1": 4.867,
+     "ambiente": "Weathered grey-brown pine picnic table outdoors on a mown lawn, shot from directly overhead; five vertical planks with knots, splits and dark water stains fill the frame; narrow strips of green grass run down the left and right edges and two bench slats cross the bottom of the frame; soft overcast late-afternoon daylight",
+     "props": [
+      "clear straight-sided drinking glass of plain transparent water with a stainless teaspoon leaning out over its left rim, top-left corner of the tabletop",
+      "flat white foil sachet printed in thin black serif type reading 'Horse Gelatin' with a small grey mountain graphic, lying at the top-center of the table",
+      "clear glass mason jar of amber honey with a long stainless spoon standing upright in it, top-right",
+      "small clear glass bowl of dark brown chia seeds, far right edge, half cropped out of frame",
+      "two chrome-and-glass mason-jar lids with wire bail clamps, stacked along the right edge of the table",
+      "large pale pink silicone anatomical model of male genitalia standing upright, pelvic block at the top with a dusty-pink card tag reading 'ANATOMY MODEL', glans pointing down, center-left of the table",
+      "smaller dark chocolate-brown anatomical model of male genitalia, surface deeply cracked and shrivelled like dried clay, its own dusty-pink 'ANATOMY MODEL' tag behind it, center-right, roughly half the length of the pink one"
+     ],
+     "gesto": "Both hands rest flat on the bare wood below the two models; at 0.0-1.0s the left hand lies fingers-spread beside the pink model while the right index finger extends and taps the base of the pink one; from 2.0 to 3.3s the right index finger slides across the gap and settles pointing at the cracked brown one; the left hand slips off the bottom edge at 3.6s and the right hand follows it out at 4.5s",
+     "pessoa": "Only two African-American male hands and bare forearms entering from the bottom edge; very dark brown skin, deeply creased knuckles, thick raised veins, prominent tendons and one small pale scar on the back of the left hand, reading 60 to 75 years old; plain gold wedding band on the left ring finger; no face, no torso, no shoulders",
+     "camera": "Locked top-down overhead angle, straight down at the tabletop from roughly three feet above it, table centered and squared to the frame, no tilt and no movement",
+     "luz": "Flat overcast daylight arriving from the upper left, weak soft-edged shadows falling to the lower right of every object, no hard specular highlights except a dull gleam on the chrome lids",
+     "audio": "Calm middle-aged American male voice-over, close and conversational, no music; quiet outdoor room tone with faint distant birdsong underneath",
+     "superficie": "weathered grey pine picnic tabletop of five wide planks",
+     "traje": "none visible",
+     "texto_em_quadro": "WHICH ONE IS YOURS? / BE HONEST, NOBODY CAN / SEE YOUR ANSWER."
+    },
+    {
+     "t0": 4.867,
+     "t1": 10.433,
+     "ambiente": "The same weathered pine picnic table on the same lawn, framing pushed in slightly tighter so the far edge of the table sits higher and the grass strips at the sides are narrower; the same overcast light and the same dark water stains on the planks",
+     "props": [
+      "clear drinking glass now full of vivid electric-blue liquid with pale blue gelatin cubes floating in it, stainless teaspoon still standing in the glass, top-left corner",
+      "white foil sachet held inverted above the mouth of the glass, its printed face turned upside down, a thick pale-cream slab of powder falling from its torn opening into the blue liquid",
+      "clear glass mason jar of amber honey with a stainless spoon standing in it, top-right",
+      "second glass jar of pale cream with a brass-rimmed lid behind the honey, partly cropped at the top right",
+      "small clear glass bowl of dark brown chia seeds, far right edge",
+      "chrome-and-glass mason-jar lids with wire bail clamps, one at the top-center of the table and two down the right edge",
+      "large pale pink silicone anatomical model of male genitalia standing upright with its 'ANATOMY MODEL' tag, center-left, unmoved",
+      "smaller cracked dark brown anatomical model of male genitalia with its own tag, center-right, unmoved"
+     ],
+     "gesto": "The right arm reaches in from the top-right corner holding the sachet inverted over the glass and tips it from 4.9 to 5.6s while the cream-coloured powder falls; the arm withdraws to the right at 7.3s and sets the sachet down flat on the wood at the lower right at 7.9s; the left hand lies flat, fingers spread and completely still on the plank below the models for the whole shot; at 9.0s the right hand comes back in from the right, closes around the cracked brown model and squeezes and rolls it between thumb and fingers until its surface smooths into a soft lump by 10.2s",
+     "pessoa": "The same two African-American male hands and bare forearms, 60 to 75 years old, deep creases and heavy veins, gold wedding band on the left ring finger; the pouring arm reads noticeably lighter and redder in tone than the resting left hand; no face and no torso at any point",
+     "camera": "Locked top-down overhead angle at the same height as the opening, framing marginally tighter, with a very slow downward drift across the shot",
+     "luz": "Flat overcast daylight from the upper left, soft shadows to the lower right; the blue liquid throws a cyan cast onto the plank immediately beside the glass",
+     "audio": "The same American male voice-over continuing; a dry granular pour sound underneath during the tipping; low outdoor room tone",
+     "superficie": "weathered grey pine picnic tabletop of five wide planks",
+     "traje": "none visible",
+     "texto_em_quadro": "ONE SPOONFUL OF THE / GELATIN TRICK AND THE / RIGHT ONE BECOMES THE / LEFT ONE."
+    },
+    {
+     "t0": 10.433,
+     "t1": 15.833,
+     "ambiente": "The same weathered pine picnic table on the same lawn, same overhead framing as the middle shot, but the tabletop is now nearly bare; a turquoise spill runs from the foot of the blue glass down across two planks toward the lower left",
+     "props": [
+      "clear glass of flat electric-blue liquid with no cubes in it, stainless teaspoon standing in the glass, top-left corner, with a turquoise spill stain on the plank beneath it",
+      "white foil sachet printed in thin black serif type reading 'Horse Gelatin', lying flat at the top-center of the table",
+      "clear glass mason jar of amber honey with a stainless spoon standing in it, top-right",
+      "pale cream jar with a brass-rimmed lid behind the honey, partly cropped at the top right",
+      "small clear glass bowl of dark brown chia seeds, far right edge",
+      "two chrome-and-glass mason-jar lids with wire bail clamps down the right edge",
+      "one large pale pink silicone anatomical model of male genitalia lying horizontally across the center of the table, pelvic block and sideways 'ANATOMY MODEL' tag at the left, shaft running right and glans pointing at the right edge of the table, roughly a third longer and thicker than the same model in the opening shot"
+     ],
+     "gesto": "At 10.9s both hands rise into the bottom edge of the frame from below, palms turned inward and fingers open, held vertically on either side of the horizontal model in a presenting gesture for about a second; at 11.9s both hands sink back out of frame; from 12.0s to the end nothing in the frame moves and the shot simply holds on the single model",
+     "pessoa": "The same two African-American male hands, seen edge-on and entering only at the very bottom edge of the frame, deep creases and heavy veins, 60 to 75 years old; no wedding band visible on either hand; no face, no forearm, no torso",
+     "camera": "Locked top-down overhead angle at the same height as the middle shot, straight down at the tabletop, entirely static from 12s onward",
+     "luz": "Flat overcast daylight from the upper left, one soft shadow under the model falling to its lower right, cyan bounce from the blue glass on the plank beside it",
+     "audio": "The same American male voice-over closing on the call to action; quiet outdoor room tone, no music and no sound effect",
+     "superficie": "weathered grey pine picnic tabletop of five wide planks",
+     "traje": "none visible",
+     "texto_em_quadro": "IN A FEW DAYS YOUR / SOLDIER IS NEW. / COMMENT GELATIN, / I SEND THE STEP BY / STEP."
+    }
+   ],
+   "copy": {
+    "beats": [
+     {
+      "t0": 0,
+      "txt": "Which one is yours?",
+      "funcao": "hook"
+     },
+     {
+      "t0": 1.15,
+      "txt": "Be honest, nobody can see your answer.",
+      "funcao": "objecao"
+     },
+     {
+      "t0": 4.87,
+      "txt": "One spoonful of the gelatin trick and the right one becomes the left one.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 10.3,
+      "txt": "In a few days your soldier is new.",
+      "funcao": "prova"
+     },
+     {
+      "t0": 12.6,
+      "txt": "Comment gelatin, I send the step by step.",
+      "funcao": "cta"
+     }
+    ],
+    "cta": "Comment gelatin, I send the step by step.",
+    "palavra_cta": "gelatin",
+    "nomeia_orgao": true,
+    "apelido_orgao": "soldier",
+    "nomeia_ingrediente": false
+   },
+   "problemas": [
+    "PAYOFF PAGO COM SUMICO, NAO COM TRANSFORMACAO. A fala promete 'the right one becomes the left one' e o que o corte de 10,433s entrega e' o modelo marrom DESAPARECENDO de quadro, sobrando so' o rosa. O morph que a copy vende nunca acontece na tela. E' o defeito estrutural numero um do video: o unico bit visual que justifica o hook e' justamente o que nao foi filmado.",
+    "CAUSA E EFEITO INVERTIDOS NO CORTE DE 4,867s. Extraidos os quadros de 4,70s e 4,85s: em 4,70 o copo tem AGUA TRANSPARENTE; em 4,85 (primeiro quadro do take 2) ele ja' esta' com liquido azul-eletrico E cubos azuis boiando — e so' DEPOIS a mao comeca a despejar o sache. O espectador ve o resultado antes da acao. Trava candidata: o estado do vasilhame tem que ser o MESMO nos dois lados do corte.",
+    "O QUE CAI DO SACHE NAO E' PO. No zoom de 4,90s o que sai da embalagem e' uma LASCA SOLIDA cor de creme/manteiga, larga como um terco da boca do copo, com aresta reta. Nao le como 'one spoonful of gelatin' — le como um tablete de manteiga caindo.",
+    "SACHE ESPELHADO E DE CABECA PARA BAIXO entre 4,87 e 7,3s: 'Horse Gelatin' aparece invertido 180 graus e ilegivel na mao dele, enquanto o MESMO sache deitado na mesa aparece legivel e em serifa fina. Objeto de marca em quadro com texto ilegivel e' exatamente o risco que a excecao ao P12 assume.",
+    "O SACHE TROCA DE IDENTIDADE GRAFICA ENTRE PLANOS. Na mesa: serifa fina preta, 'Horse Gelatin' em duas linhas centradas. Na mao em 8,25s: sans condensada PESADA, e o texto sai corrompido — le 'HORSE GELANN'/'GELATIV', com o T e o I fundidos e o N deformado. E' o mesmo objeto com duas embalagens diferentes dentro do mesmo video.",
+    "O TEXTO DO SACHE PISCA. Em 0,4s esta' nitido e legivel; em 2,4s some completamente (borrao branco); em 3,5s volta nitido. Mesma distancia, mesmo foco, nada passa na frente. Texto que aparece e desaparece sozinho.",
+    "MAO DIREITA COM DEDOS FUNDIDOS no take 1. No zoom de 0,4s so' o indicador da mao direita e' individualizado; do medio ao minimo nao ha' separacao, nem no's, nem unhas — e' um bloco liso de carne. A pele dessa mao tambem e' visivelmente mais lisa e mais clara que a da mao esquerda no MESMO quadro.",
+    "A ALIANCA SOME NA CENA 3. Banda de ouro lisa no anelar esquerdo em toda a cena 1 e toda a cena 2; no zoom de 11,35s o anelar esquerdo aparece inteiro e SEM alianca. Como nao ha' rosto em quadro, a mao e' a unica ancora de continuidade entre os takes — e ela quebra exatamente no take do payoff.",
+    "TOM DE PELE OSCILANDO. As maos em 0,4-2,4s sao marrom muito escuro; o antebraco que despeja em 5,4-7,2s e' visivelmente mais claro e avermelhado; os dedos que seguram o sache em 8,25s sao mais claros ainda. Sem rosto, a mao E' a pessoa, e as tres leituras nao fecham como o mesmo homem.",
+    "PROTESE RIGIDA SE COMPORTANDO COMO MASSA. Entre 10,0 e 10,2s a mao direita aperta o modelo marrom e ele PERDE as rachaduras, vira um bolo liso — e a plaquinha 'ANATOMY MODEL' atras dele entorta junto. Plastico rigido deformando sob os dedos.",
+    "TEXTO DA PLAQUINHA CORROMPIDO NA CENA 3. No zoom de 13,2s o cartao le 'ANATOMY MODEL' com o E malformado/invertido, saindo mais como 'MODEᒷL'. Nas cenas 1 e 2 o mesmo cartao esta' correto.",
+    "PROP QUE APARECE DO NADA: uma tampa de vidro/cromo com arco de arame surge no topo-centro da mesa a partir de ~7,7s. Nao existia ali em 0,4s (take 1) e some de novo no take 3. Nao ha' mao colocando-a.",
+    "A MANCHA TURQUESA DERRAMADA so' existe na cena 3. Ela nasce no corte de 10,433s, ao lado do copo, sem que nada derrame em quadro em momento nenhum.",
+    "OS CUBOS DE GELATINA SOMEM. Na cena 2 o copo tem liquido azul COM cubos azuis boiando; na cena 3 o mesmo copo tem liquido azul LISO, sem um cubo. O prop que materializa a receita evapora no meio do video.",
+    "ESCALA DO PAYOFF FRACA E UNIFORME. Medido contra a largura das ripas da mesa: o modelo rosa vai de ~2,9 ripas de comprimento na cena 1 para ~3,8 ripas na cena 3 — cerca de 30%. E ele cresce UNIFORMEMENTE (comprimento e grossura na mesma proporcao), que e' precisamente a escala que a doutrina do RESSURREICAO condena: escala uniforme le como INCHACO, nao como alongamento. E o rosa da cena 3 nem sequer e' 'o da esquerda' — ficou maior que ele.",
+    "CONGRUENCIA DE CASTING INVERTIDA. Quem narra e' um homem negro (as maos), e a prova visual poe o modelo DOENTE em marrom escuro e o SAUDAVEL em rosa claro. A codificacao de pele do par de props trabalha contra o avatar da pagina.",
+    "TERCO FINAL E' VIDEO MORTO. De 12,0s a 15,833s — 3,8s, quase um quarto do video — nada se move em quadro: so' a legenda troca. O CTA inteiro roda sobre um still. As maos entram e saem em 1 segundo (10,9-11,9s) e depois o quadro congela.",
+    "AUDIO COLADO NO TETO. max_volume -0,4 dB com 116 amostras em 0 dBFS (clipping) e mean_volume -17,6 dB. Voz seca, sem musica e sem cama — se o feed normalizar, o clipping fica audivel.",
+    "VAO DE 1,5s SEM LEGENDA EM CIMA DO CORTE. 'SEE YOUR ANSWER.' sai em ~3,3s e 'ONE SPOONFUL OF THE' so' entra em ~4,87s. Sao 1,5s de silencio E sem texto queimado, caindo exatamente no ponto de maior risco de scroll — a virada do hook para o mecanismo. Ha' um segundo vao menor em 12,0-12,6s.",
+    "COPY x CONTRATO 16s: o CTA NAO diz onde a receita chega ('I send the step by step', sem 'to your messages') — fura o CT6. O apelido do orgao ('soldier') aparece UMA vez so', na cena 3, e nao esta' na lista sancionada pecker/wiener/Johnson — fura o CT4 (repetido nos dois takes) e o CT4b. A cena 1 nunca enuncia a falha por verbo de disfuncao: quem enuncia e' o par de proteses — mesma pendencia de CT2 do organicwave16 e do horse16.",
+    "WHISPER x LEGENDA QUEIMADA: divergem em UM ponto so'. O Whisper transcreve 'step-by-step' (hifenizado) e a legenda queimada mostra 'I SEND THE STEP BY' / 'STEP.' — usei a LEGENDA, como manda a regra. Todo o resto bate palavra por palavra, inclusive 'soldier' e 'gelatin'. A quebra de legenda 'STEP BY' / 'STEP.' corta a expressao no meio, mas nao corta palavra.",
+    "OS TIMESTAMPS DA FOLHA DE CONTATO NAO BATEM COM O VIDEO NO TERCO FINAL. O quadro rotulado 00:00:10.725 na folha mostra 'SOLDIER IS NEW.', legenda que so' entra em ~11,4s por extracao direta (em 10,70s e em 11,20s a legenda ainda e' 'IN A FEW DAYS YOUR'). Deriva de ~0,7s. Os cortes REAIS, por deteccao de cena do ffmpeg, sao 4,867s e 10,433s — e sao esses que usei, nao os da folha."
+   ]
+  },
+  {
+   "v": "v01",
+   "resumo": "Um homem negro de 65 anos, tronco nu, no balcao de um bar de garagem apresenta um par de modelos anatomicos genitais (um marrom ressecado, um rosa saudavel) como prova visual, ergue um geoduck gigante ao lado da cabeca enquanto enuncia a receita (gelatina + agua gelada) e fecha erguendo o copo de liquido azul e pedindo o comentario GELATIN.",
+   "n_cenas": 3,
+   "corte_s": [
+    5.667,
+    11.5
+   ],
+   "prop_falico": true,
+   "angulo": "o par podre e sao lado a lado",
+   "assinatura": "O geoduck gigante erguido como trofeu na altura da orelha, sifao saindo pelo topo do quadro, com o par de modelos anatomicos podre-e-sao ancorando o balcao de garagem — a comparacao vira a promessa e o molusco vira o tamanho, sem nenhuma palavra dizer isso.",
+   "cenas": [
+    {
+     "t0": 0,
+     "t1": 5.667,
+     "ambiente": "Open home garage converted into a bar, late afternoon. A heavy weathered workbench runs across the foreground. Directly behind him a corrugated cream roll-up door is raised halfway, showing autumn trees and the grey shingle roof of a neighbouring house. Left wall: tan perforated pegboard hung with a row of pliers, screwdrivers and wrenches, lit warm by a strip light tucked under a shelf. Right: a cream top-freezer refrigerator with a small US flag sticker on the upper door, a milk carton and a cardboard box on top, and a black metal bar stool with a round wooden seat and a foot ring standing on bare grey concrete. Dark unpainted wood rafters and joists across the top of the frame.",
+     "props": [
+      "dark brown anatomical model of the male genitourinary system — bladder, prostate, shaft and testicles — dried and crazed like cracked mud, vessels rendered as twisted brown cords, standing on a slim chrome rod with a round mirror-polished steel base, left of centre on the bench",
+      "pale pink glossy PVC anatomical model of the same organ set, smooth and swollen, rounded bladder dome, two cream-white testicles, on an identical chrome rod and mirror-polished round base, right of centre on the bench",
+      "loose fine sawdust and old paint flecks across the bench top"
+     ],
+     "gesto": "0.0-2.4s he talks straight ahead, both forearms flat on the bench on either side of the two models, the left hand open on the wood beside the pink model's base. 2.6-3.9s the right arm rises between the two models and the index finger jabs twice toward the lens on the word about the pair. 4.0-5.6s the arm drops back below the bench line and he leans in, chin pushed slightly forward.",
+     "pessoa": "Black man in his mid-sixties, bare-chested, framed from the waist up. Short salt-and-pepper afro receding at the temples, full white-grey moustache and beard, deep horizontal forehead lines, heavy brow, one raised dark mole on his left cheek below the eye. Broad shoulders, thick upper arms, soft belly, many small dark skin tags scattered across chest and shoulders.",
+     "traje": "no shirt; dark navy denim waistband visible below the bench line",
+     "camera": "Straight-on frontal, lens at bench height and level with his chest, tight medium shot, subject centred, the upper quarter of the vertical frame left empty above his head.",
+     "luz": "Late-afternoon daylight from the half-open roll-up door directly behind him, blowing out the doorway and rimming the top of his hair; warm tungsten fill from the strip light under the pegboard on the left; soft bounce off the pale bench top onto his chest; the rafters overhead stay black.",
+     "audio": "Older US male voice, close, dry and conversational; no music bed — level drops below -40 dB in the sentence gap; faint outdoor room tone from the open bay.",
+     "superficie": "weathered pale pine workbench top, grey-white and deeply scratched, dusted with fine sawdust",
+     "texto_em_quadro": "AT 65, MY WIFE ASKED / WHAT CHANGED. / THESE TWO SHOW YOU / EXACTLY WHAT. — burned karaoke caption at the top of the frame, heavy condensed all-caps white with thick black outline, the word being spoken filled yellow"
+    },
+    {
+     "t0": 5.667,
+     "t1": 11.5,
+     "ambiente": "Same garage bar, wider view. Behind him the whole open bay is visible: bare grey concrete floor, a second wooden workbench along the left wall, the tan pegboard with hand tools and its warm strip light further left, the half-raised corrugated cream roll-up door behind his head, the cream refrigerator with the US flag sticker at right, the black bar stool on the concrete, dark wood rafters across the top.",
+     "props": [
+      "giant geoduck clam — pale cream ridged bivalve shell the size of two fists with a long tan leathery siphon rising vertically out of it, held up beside his head, siphon exiting the top of the frame",
+      "tall straight-sided clear tumbler of bright cobalt blue liquid with a stainless spoon standing in it, on the bench left of centre",
+      "open clear glass jar of amber honey with a stainless spoon standing in it, on the bench right of centre",
+      "flat landscape foil sachet lying face-up on the bench between glass and jar: blue bands top and bottom, white middle band with a dark blue trotting horse, condensed all-caps white lettering HORSE GELATIN",
+      "the two anatomical models pushed to the extreme left edge of the frame, brown one and pink one, cropped by the frame border"
+     ],
+     "gesto": "At the cut his right arm is already raised: the clam is held at head height beside his right ear, elbow bent and tucked, siphon straight up. 6.0-9.8s he holds it dead steady, shoulders squared, left hand flat on the bench beside the honey jar, talking straight to the lens. 10.0-11.4s his head tips down toward the counter and the clam lowers a few inches.",
+     "pessoa": "Same Black man in his mid-sixties, bare-chested, framed from the hips up. Salt-and-pepper afro, full white-grey beard and moustache, dark mole on the left cheek. Heavy forearm and bicep on the raised arm, soft belly, dark skin tags over chest and shoulders.",
+     "traje": "no shirt; dark navy denim jeans, waistband and fly visible above the bench line",
+     "camera": "Straight-on frontal, lens just below chest height, wider medium shot opening the whole bay, subject centred and set a touch right so the raised arm has room, the raised object exiting the top edge.",
+     "luz": "Flat warm daylight from the open bay wrapping his chest, the doorway behind him bright and blown out; hard specular highlight along the upper ridge of the clam shell; warm tungsten pool on the pegboard at far left; rafters black.",
+     "audio": "Same close dry male voice, level and unhurried; no music bed; a half-second of near silence sits over the cut.",
+     "superficie": "warm honey-brown planked bar top, worn smooth, with old scratches and a dark grain line running left to right",
+     "texto_em_quadro": "A SPOONFUL OF THE / GELATIN TRICK AND COLD / WATER OPENS THE BLOOD / FLOW YOUR SOLDIER / LOST. — same burned karaoke caption, top of frame, all-caps white with black outline and yellow active word; the word GELATIN rendered in red-orange"
+    },
+    {
+     "t0": 11.5,
+     "t1": 17.6,
+     "ambiente": "Same garage bar, tighter and closer. The bar top now fills the bottom third and the props sit right against the lens. Behind him the half-raised corrugated cream roll-up door and the bright doorway with autumn trees, the tan pegboard with pliers and screwdrivers at left under its warm strip light, the cream refrigerator with the US flag sticker at right, the black bar stool on grey concrete, dark rafters overhead.",
+     "props": [
+      "tall clear tumbler of bright cobalt blue liquid with a stainless spoon in it, lifted in his right hand at bottom left, pushed toward the lens",
+      "upright portrait stand-up pouch centred on the bar top: blue border frame, white silver field, dark blue serif lettering Horse Gelatin at the top and a dark blue standing horse below, small illegible print at the bottom",
+      "dark brown cracked anatomical genitourinary model standing directly in front of his chest, left of the pouch",
+      "pale pink glossy anatomical genitourinary model standing directly in front of his chest, right of the pouch",
+      "open clear glass jar of amber honey with a stainless spoon in it, bottom right of the bar top",
+      "large closed pale cream ridged clam shell lying flat on the bar top at bottom right",
+      "small white and pink spiral conch shell lying on the bar top at bottom left"
+     ],
+     "gesto": "11.5-12.4s the right hand closes around the tall glass on the bar top. 12.5-14.6s the glass lifts and pushes toward the lens at chest height, spoon standing in it, while he talks straight ahead. 14.7-16.2s the glass returns to the bar top. 16.3-17.6s both fists come up to chest height, forearms vertical, eyes opening wide, and hold there frozen through the last frame with no speech.",
+     "pessoa": "Same Black man, mid-sixties, bare-chested, framed from mid-chest up. Rounded halo of grey and white afro, full white-grey beard and moustache, deep forehead lines, dark mole under the left eye; eyes go wide with visible white all around the iris in the last second.",
+     "traje": "no shirt; nothing else in frame above the bar top",
+     "camera": "Straight-on frontal, lens at bar-top height, medium close-up from mid-chest up, subject centred, the near edge of the bar crossing the bottom third and the props stacked between him and the lens.",
+     "luz": "Warm late daylight from the open door behind and above, brighter on his face than in the earlier scenes; the blue drink glows with transmitted light and the honey jar reads backlit amber; the pale pink model catches a soft specular sheen; rafters black.",
+     "audio": "Same close dry male voice through 15.4s, then roughly two seconds with no speech under the held pose; no music bed; faint outdoor room tone.",
+     "superficie": "warm honey-brown planked bar top, worn and scratched, running edge-to-edge across the bottom of the frame",
+     "texto_em_quadro": "COMMENT GELATIN AND / FOLLOW ME TO RECEIVE / THE COMPLETE STEP BY / STEP. — burned karaoke caption at the top of the frame, all-caps white with black outline and yellow active word, GELATIN in red-orange; no caption at all after roughly 15.4s"
+    }
+   ],
+   "copy": {
+    "beats": [
+     {
+      "t0": 0,
+      "txt": "At 65, my wife asked what changed.",
+      "funcao": "hook"
+     },
+     {
+      "t0": 3.1,
+      "txt": "These two show you exactly what.",
+      "funcao": "prova"
+     },
+     {
+      "t0": 5.56,
+      "txt": "A spoonful of the gelatin trick and cold water opens the blood flow your soldier lost.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 11.17,
+      "txt": "Comment gelatin and",
+      "funcao": "cta"
+     },
+     {
+      "t0": 11.95,
+      "txt": "follow me to receive the complete step by step.",
+      "funcao": "follow"
+     }
+    ],
+    "cta": "Comment gelatin and follow me to receive the complete step by step.",
+    "palavra_cta": "gelatin",
+    "nomeia_orgao": true,
+    "apelido_orgao": "soldier",
+    "nomeia_ingrediente": true
+   },
+   "problemas": [
+    "EMBALAGEM TROCA DE DESIGN ENTRE CENAS. Na cena 2 o Horse Gelatin e um sache achatado, deitado, formato paisagem, com faixas azuis em cima e embaixo e letra condensada caixa-alta HORSE GELATIN sobre cavalo trotando. Na cena 3 e uma pouch em pe, formato retrato, moldura azul, campo branco/prateado, letra SERIFADA Horse Gelatin e cavalo parado. Mesmo produto nomeado, duas embalagens diferentes dentro de um video de 17s. Trava candidata: a embalagem e constante travada, descrita palavra por palavra igual nos tres blocos IMAGE.",
+    "O GEODUCK PERDE O SIFAO NA CENA 3. O prop-heroi da cena 2 (concha + sifao longo) reaparece na cena 3 como uma concha fechada comum, sem sifao, largada no canto inferior direito. O objeto que sustenta a promessa de tamanho vira marisco de decoracao no quadro do CTA.",
+    "O GEODUCK MUDA DE FORMA DENTRO DA PROPRIA CENA 2. Em 5.7s o sifao e longo, reto e afina ate uma ponta unica; em 9.6s ele esta mais curto, mais grosso e a ponta se abre em dois lobos, e os aneis de crescimento da concha se redesenham. Escala e silhueta do mesmo objeto mudam sem ninguem tocar nele.",
+    "O COPO MUDA DE FORMA DENTRO DA CENA 3. Em 11.55s e um tumbler reto de base grossa; em 12.6s e 14.0s vira um calice de boca aberta com pe estreito; em 16.5s volta a ser tumbler reto. Tres silhuetas para o mesmo copo em seis segundos.",
+    "O MODELO MARROM ENCOLHE E VOLTA A CRESCER DENTRO DA CENA 3. Em 12.6s ele sumiu quase inteiro atras da embalagem, sobrando um graveto marrom fino; em 16.5s e 17.5s ele reaparece maior, com um talo torcido comprido descendo ate a bancada. Mesma cena, mesmo enquadramento, prop com duas escalas.",
+    "MAO DEFORMADA NO GESTO DE APONTAR (3.3-3.6s). Os dedos fundem num bloco unico, ha um toco arredondado destacado que le como dedo extra, e nao existe dedo indicador identificavel. E exatamente o quadro em que a legenda diz THESE TWO SHOW YOU — o gesto que aponta a prova e o gesto quebrado.",
+    "AS DUAS MAOS SOMEM NA CENA 1 (4.9-5.6s). Os antebracos avancam sobre a bancada e terminam em cotos arredondados; nao ha mao em nenhuma das pontas e nao existe borda que justifique a oclusao. Em 0.3s a mao esquerda estava inteira e com cinco dedos sobre a madeira.",
+    "A PEGADA NO GEODUCK NAO E PEGADA. Quatro dedos aparecem deitados sobre a concha, sem polegar visivel, sem deformacao de pressao, e o punho se funde ao contorno do molusco. O objeto le como colado na mao, nao segurado.",
+    "OS MODELOS ANATOMICOS NAO ESTAO MONTADOS NO PEDESTAL. A haste cromada sobe e desaparece ATRAS do modelo em vez de entrar nele; no modelo rosa a haste passa visivelmente na FRENTE do corpo do prop. Os dois flutuam acima da base espelhada.",
+    "TESTICULO SOLTO NO MODELO ROSA (11.5-12.0s). O testiculo do lado direito e um ovo brilhante separado, com o cordao passando POR TRAS dele em vez de sustenta-lo.",
+    "OS PEDESTAIS CROMADOS SOMEM NA CENA 3. Em 11.55s os dois modelos estao de pe direto na bancada, sem haste e sem base; em 14.0s e 16.5s um pedestal cromado reaparece. Aparecem e desaparecem sem corte.",
+    "NAO E O MESMO HOMEM NAS TRES CENAS. Cena 1: afro baixo, grisalho, repartido de lado, barba aparada. Cena 3: halo de afro grande e arredondado, barba mais cheia e mais branca, rosto mais largo. A pinta muda de lugar: uma pinta sob o olho esquerdo em 0.3s, pintas sob OS DOIS olhos em 11.9s, uma pinta grande mais uma pequena em 14.0s.",
+    "CORPO DE 35 EM ROSTO DE 65. Ombros, bracos e peitoral saem lisos, cheios e sem flacidez, com o rosto de 65 anos por cima — le como cabeca colada em outro corpo, principalmente nos punhos erguidos em 16.5s.",
+    "CONCHA QUE APARECE DO NADA. O caramujo branco e rosa do canto inferior esquerdo nao existe em 11.55s e esta la em 12.6s, sem movimento nenhum que o traga. E ele carrega manchas vermelhas e rosa que leem como TEXTO IMPRESSO ilegivel na superficie de uma concha.",
+    "TODA A LETRA MIUDA DAS DUAS EMBALAGENS E RABISCO. O texto pequeno acima do cavalo (cena 2) e a linha NET WT abaixo do cavalo (cena 3) sao garatuja ilegivel de IA. So HORSE GELATIN e legivel — o que aqui ate serve, porque e a marca que sustenta a palavra do CTA, mas a legibilidade nao esta sob controle.",
+    "A BEBIDA E UMA FOTO DENTRO DE UM PLANO EM MOVIMENTO. Entre 5.9s e 9.6s o nivel do liquido azul, o angulo da colher e o brilho no vidro sao pixel a pixel iguais. Nada no copo se mexe, nem quando ele levanta o copo na cena 3.",
+    "A LEGENDA DO CTA COMECA NA CENA ERRADA. Em 11.40s ja se le COMMENT GELATIN AND sobre a imagem da cena 2 (geoduck erguido, cabeca baixa); a imagem so corta em 11.50s. Mesmo defeito no primeiro corte: o audio da cena 2 entra em 5.56s e a imagem so vira em 5.667s — ouve-se o comeco de A spoonful ainda vendo os dois modelos. Os cortes caem ~0.1s e ~0.33s DEPOIS da fala.",
+    "TIMESTAMP DA FOLHA DE CONTATO NAO BATE COM O CORTE REAL. A folha rotula 00:00:05.406 um quadro que ja e a cena 2, mas a deteccao de cena poe o corte em 5.667s (segundo corte em 11.500s). Os tempos da folha adiantam ~0.3s e nao servem para cravar corte.",
+    "DIVERGENCIA WHISPER x LEGENDA QUEIMADA, e a legenda venceu. O whisper transcreve the gelatin trick IN cold water; a legenda queimada le TRICK AND COLD. Adotei AND, conforme a regra. A forma da legenda (a spoonful of the gelatin trick AND cold water) e gramaticalmente pior que a do whisper — vale conferir contra o roteiro de origem antes de virar pool.",
+    "RABO MUDO DE 2,2 SEGUNDOS. A fala termina em ~15.4s e o video segue ate 17.6s sem legenda, sem fala e sem beat visual novo: ele so congela com os dois punhos erguidos. Um oitavo do video nao vende nada.",
+    "OLHO ARREGALADO DEMAIS NO ULTIMO QUADRO. Em 16.5-17.6s a esclera aparece em volta de toda a iris nos dois olhos. Le como susto ou surto, nao como comemoracao — e e a ultima imagem que fica.",
+    "A BANCADA MUDA DE TOM ENTRE OS TAKES. Cena 1: pinho palido, quase cinza-branco, com serragem. Cenas 2 e 3: prancha marrom-mel quente, sem serragem. Mesmo movel, dois acabamentos.",
+    "CT5 FURADO NA FALA. A copy nomeia gelatin trick e cold water — dois ingredientes ditos, nao mostrados. A receita e a moeda do CTA e esta sendo entregue de graca na cena 2.",
+    "CT1 FURADO NO CTA. O follow vem DEPOIS da palavra-chave, dentro da mesma sentenca (Comment gelatin AND follow me to receive...). O contrato pede o follow antes da sentenca do CTA."
+   ]
+  },
+  {
+   "v": "v02",
+   "resumo": "POV de bancada de garagem: as maos de um homem negro maduro despejam po azul de um sache \"Horse Gelatin\" num copo entre dois modelos anatomicos (um apodrecido e um sadio), pingam mel por cima, e no terceiro take a prova vira um geoduck erguido em pe ao lado do copo de gel azul, com CTA de comentar \"gelatin\".",
+   "angulo": "a comparacao lado a lado",
+   "assinatura": "A coluna de po AZUL caindo do sache e soltando fumaca azul entre os dois modelos anatomicos — o murcho marrom rachado a esquerda e o rosa inchado a direita — na bancada de um bar de garagem. Nenhum outro video do lote tem po colorido que fuma caindo entre duas pecas anatomicas em pedestal.",
+   "n_cenas": 3,
+   "corte_s": [
+    5.93,
+    11.3
+   ],
+   "prop_falico": true,
+   "cenas": [
+    {
+     "t0": 0,
+     "t1": 5.93,
+     "ambiente": "Cluttered home garage workshop at golden hour. Thick rough-sawn reclaimed wood workbench fills the foreground. Brown pegboard wall on the left hung with a graduated row of chrome open-end wrenches and a rack of wood-handled chisels and screwdrivers. Beige steel tool cabinet in the mid-ground with a small US flag decal on its door. Blue cast-iron bench vise bolted to the right end of the bench. Open roll-up garage door behind, showing a concrete driveway, a red brick suburban house and green trees in warm late-afternoon light.",
+     "props": [
+      "left anatomical model: dried, cracked, dark walnut-brown bladder-prostate-penis model, deep fissures across the shrivelled glans and the bladder dome, mounted on a slim chrome rod over a round polished chrome disc base, standing left of centre at chest height",
+      "right anatomical model: the same bladder-prostate-penis model in glossy healthy salmon-pink plastic, smooth swollen bladder dome and full shaft, on a chrome rod over a white square block base, standing right of centre",
+      "small foil sachet, deep royal blue with a white label panel carrying a navy galloping horse silhouette and the words Horse Gelatin, gripped between thumb and fingers of the right hand at frame right",
+      "short clear glass tumbler of plain clear water with a stainless teaspoon standing in it, centre of the bench in front of the models",
+      "glass mason jar half full of amber honey with a clear glass stirring rod inside, at bench left, its gold screw lid lying flat on the wood beside it",
+      "small clear glass dish of dark red-pink seed pellets on a pale wooden coaster, between the honey jar and the tumbler",
+      "bright blue gelatin powder falling from the tilted sachet in a thick column into the tumbler, throwing off a pale blue vapour plume that rises past the models"
+     ],
+     "gesto": "0.0-2.0s the right hand lifts the sachet up between the two models and turns its label to the lens; 2.0-3.0s it tips the sachet over the tumbler; 3.0-5.2s it pours the blue powder in a steady column into the water, the plume climbing; 5.2-5.9s the hand withdraws and both hands leave frame while the vapour drifts. The left hand lies flat, fingers spread, on the near edge of the bench throughout the first three seconds.",
+     "pessoa": "No face and no torso in frame. Only a mature Black man's hands and forearms, roughly 55-70 years old, deep brown skin, heavy raised veins across the back of the hands, thick knuckles, coarse grey-white hair on the forearms, short trimmed nails, a plain gold wedding band on the left ring finger.",
+     "camera": "First-person eye-level view from behind the bench, lens roughly 40 cm above the benchtop and slightly tilted down along the length of the bench toward the open garage door; the two models sit in the upper third of the vertical 9:16 frame, the glass dead centre.",
+     "luz": "Warm low-angle late-afternoon daylight coming in through the open garage door behind the subject, rim-lighting the models and backlighting the blue vapour; soft bounced fill on the benchtop; long soft shadows running toward the lens.",
+     "audio": "Voz masculina grave em off (f0 mediano ~140 Hz), ritmo de confidencia, sem musica; ruido ambiente leve de garagem aberta.",
+     "superficie": "Rough-sawn reclaimed wood benchtop, honey-brown, deeply scarred with saw kerfs and gouges, pale sawdust and old paint spatter across the grain.",
+     "traje": "none visible",
+     "texto_em_quadro": "THE LEFT ONE IS WHAT / AGE DOES. / THE RIGHT ONE IS THREE / INGREDIENTS LATER."
+    },
+    {
+     "t0": 5.93,
+     "t1": 11.3,
+     "ambiente": "Same garage workshop, camera pulled slightly back and lower so more of the benchtop reads. Same pegboard of wrenches and chisels at left, same beige tool cabinet with the US flag decal, same blue bench vise at right, same open roll-up door with the brick house and trees beyond in warm daylight.",
+     "props": [
+      "tall clear highball glass, now full to two thirds with opaque bright blue liquid, a stainless spoon standing inside it, centre of the bench",
+      "left anatomical model: dried cracked walnut-brown bladder-prostate-penis model on chrome rod and round chrome base, unchanged, upper left",
+      "right anatomical model: glossy salmon-pink bladder-prostate-penis model on chrome rod and white square base, unchanged, upper right",
+      "stainless tablespoon brimming with amber honey held in the right hand above the glass, a continuous thread of honey falling from its lip",
+      "the emptied blue Horse Gelatin sachet lying flat and creased on the bench to the right of the glass, its label animal now an antlered elk",
+      "small clear glass bowl of dark red seed pellets cradled in the left hand at lower left of frame",
+      "glass mason jar of amber honey with its gold lid on the wood, at bench left"
+     ],
+     "gesto": "6.0-6.4s the right hand brings the honey-loaded spoon in from the right and stops it above the glass; 6.4-10.5s it holds steady while an unbroken amber thread pours down into the blue liquid; the left hand cradles the bowl of red pellets low at frame left the whole time and drifts it toward the glass at 10.4s; 10.7-11.3s the left forearm sweeps across the lens right to left and wipes the frame.",
+     "pessoa": "Same man, still only hands and forearms: deep brown skin, mature, prominent veins and knuckles, grey-white forearm hair, gold wedding band on the left ring finger.",
+     "camera": "First-person eye-level from behind the bench, lens about 45 cm above the top, framing wider than the previous shot so both pedestals, the glass and the honey jar all sit inside the vertical frame; slight downward tilt.",
+     "luz": "Same warm backlight through the open door; the amber honey thread catches a specular highlight against the blue liquid; soft shadows toward the lens.",
+     "audio": "Mesma voz masculina grave em off, continua sem pausa por cima do corte; sem musica; leve ruido de garagem.",
+     "superficie": "Rough-sawn reclaimed wood benchtop, honey-brown, gouged and sawdust-flecked.",
+     "traje": "none visible",
+     "texto_em_quadro": "FUNNY. AND THE RED / ONE'S NOBODY EXPECTS, / TOGETHER WITH THE / GELATIN TRICK WORKING / ON YOUR BLOOD."
+    },
+    {
+     "t0": 11.3,
+     "t1": 17.07,
+     "ambiente": "Same garage workshop and same bench, but the bench is now cleared of the anatomical models: only an empty chrome pedestal disc still stands behind the glass. Same pegboard of wrenches and chisels at left, grey steel drawer unit behind, beige tool cabinet with the US flag decal, blue bench vise at right, open roll-up door with the brick house, driveway and trees in warm daylight.",
+     "props": [
+      "large geoduck clam held upright at frame right: thick pale tan wrinkled siphon standing vertical to nearly the top of the frame, heavy ribbed cream-white shell cupped in the hand at its base",
+      "tall clear highball glass of translucent bright blue set gel, a stainless spoon suspended inside it and small dark red beads scattered through and settled at the bottom, centre of the bench",
+      "two slender clear glass stirring rods standing upright in and just behind the glass",
+      "blue Horse Gelatin sachet lying flat and creased on the bench at lower left, white label panel with a navy galloping horse and the words Horse Gelatin facing the lens",
+      "glass mason jar of amber honey with a clear glass rod and a floating pale slab of honeycomb, at bench left, gold lid on the wood beside it",
+      "small glass dish of dark red seed pellets on its wooden coaster, behind and left of the glass",
+      "empty round polished chrome pedestal disc standing bare behind the glass"
+     ],
+     "gesto": "11.3-13.4s the right hand grips the clam shell from the right and holds the siphon straight up beside the glass while the left hand wraps the tall glass; 13.4-14.6s the left hand releases the glass and settles palm-down on the bench in the near foreground, fingers spread, gold band showing; 14.6-17.0s both hands hold still, only the siphon swaying a few degrees, the last second locked on the clam and the glass.",
+     "pessoa": "Same man, hands and forearms only: mature Black man, deep brown skin, heavy veins, thick knuckles, grey-white forearm hair, plain gold wedding band.",
+     "camera": "First-person eye-level from behind the bench, lens about 45 cm above the top, looking down the bench toward the open door; the clam siphon rises through the upper half of the vertical frame at right, the glass sits centre-left.",
+     "luz": "Warm late-afternoon backlight through the open garage door; the blue gel glows translucent against it; soft warm bounce on the benchtop and on the shell.",
+     "audio": "Mesma voz masculina grave em off entregando o CTA; sem musica; ruido ambiente leve.",
+     "superficie": "Rough-sawn reclaimed wood benchtop, honey-brown, gouged, sawdust and old paint spatter.",
+     "traje": "none visible",
+     "texto_em_quadro": "THIS IS HOW MINE IS / NOW. COMMENT GELATIN, / RECIPE. / FOLLOW FIRST."
+    }
+   ],
+   "copy": {
+    "beats": [
+     {
+      "t0": 0,
+      "txt": "THE LEFT ONE IS WHAT",
+      "funcao": "hook"
+     },
+     {
+      "t0": 1.13,
+      "txt": "AGE DOES.",
+      "funcao": "falsa_causa"
+     },
+     {
+      "t0": 2.9,
+      "txt": "THE RIGHT ONE IS THREE",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 4.4,
+      "txt": "INGREDIENTS LATER.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 5.2,
+      "txt": "FUNNY. AND THE RED",
+      "funcao": "receita"
+     },
+     {
+      "t0": 6.77,
+      "txt": "ONE'S NOBODY EXPECTS,",
+      "funcao": "receita"
+     },
+     {
+      "t0": 8.17,
+      "txt": "TOGETHER WITH THE",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 8.4,
+      "txt": "GELATIN TRICK WORKING",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 9.67,
+      "txt": "ON YOUR BLOOD.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 10.33,
+      "txt": "THIS IS HOW MINE IS",
+      "funcao": "prova"
+     },
+     {
+      "t0": 11.45,
+      "txt": "NOW. COMMENT GELATIN,",
+      "funcao": "cta"
+     },
+     {
+      "t0": 13.67,
+      "txt": "RECIPE.",
+      "funcao": "cta"
+     },
+     {
+      "t0": 14.6,
+      "txt": "FOLLOW FIRST.",
+      "funcao": "follow"
+     }
+    ],
+    "cta": "Comment gelatin, I will send the full recipe. Follow first.",
+    "palavra_cta": "gelatin",
+    "nomeia_orgao": false,
+    "apelido_orgao": "",
+    "nomeia_ingrediente": true
+   },
+   "problemas": [
+    "SACHE TROCA DE ANIMAL DENTRO DA MESMA CENA: em 0,0-1,5s o rotulo traz um CAVALO azul galopando; de ~2,0s a 5,2s vira um CERVO/ALCE com galhada enorme (zoom em 4,0s nao deixa duvida); na cena 3 volta a ser cavalo. O prop que sustenta o nome do angulo muda de bicho no meio do take.",
+    "TEXTO DO ROTULO ILEGIVEL E INSTAVEL: le-se 'Horse Gelatin' em 0,0s, 'Horse Gerbini'/'Horst Gcbini' em 4,0s e 'Horzu Gelatin' em 12,2s. As letras derretem quadro a quadro.",
+    "COPO TROCA DE FORMA NOS CORTES: cena 1 usa um tumbler BAIXO e largo; cena 2 usa um copo ALTO tipo highball; em 11,0s ele volta a parecer baixo; cena 3 e alto de novo. Mesmo liquido, tres vasilhames.",
+    "OS DOIS MODELOS ANATOMICOS SOMEM na cena 3 sem ninguem tira-los — mas o PEDESTAL de disco cromado continua de pe e vazio atras do copo, e a base branca quadrada do modelo rosa desaparece por inteiro. O objeto que e a prova do hook evapora antes do payoff.",
+    "SEGUNDA BANDEIRA DOS EUA MATERIALIZA E SOME: em 8,2s e 11,1s ha uma bandeirinha encostada na bancada perto do torno azul; ela nao existe em 6,6s, nem em 10,2s, nem na cena 3.",
+    "FISICA IMPOSSIVEL DO PO: gelatina em po seco cai soltando uma COLUNA DE FUMACA/VAPOR azul (3,5-5,5s) e o nivel do liquido no copo nao sobe um milimetro depois de todo o conteudo do sache entrar.",
+    "MEL INFINITO: o fio de mel escorre da colher SEM INTERRUPCAO de 6,3s a 10,5s (mais de 4 segundos), a colher nunca esvazia, e nem o volume nem a cor do liquido azul mudam com o mel entrando.",
+    "SEMENTES VERMELHAS NUNCA SAO DESPEJADAS EM QUADRO: a tigelinha some dentro do antebraco que varre a lente em 10,9s; na cena 3 as sementes ja estao boiando dentro do copo E a tigelinha reaparece cheia na bancada. O ingrediente esta em dois lugares ao mesmo tempo.",
+    "TIGELA DERRETE NA MAO: em 10,7s a tigela de vidro com as sementes perde contorno e vira um borrao vermelho dentro da mao esquerda.",
+    "BRILHO SEM FONTE: em 10,9-11,1s aparece uma mancha luminosa turquesa na madeira da bancada, abaixo do copo, sem nada que a emita.",
+    "DUAS MAOS DIREITAS NA CENA 3: a mao que segura a amejoa e direita (polegar a esquerda, dedos curvando por cima da concha), e a mao da alianca em 14,5-16,0s tem geometria de mao DIREITA tambem (polegar do lado distante, antebraco saindo pela direita) — enquanto na cena 1 a alianca esta claramente na mao ESQUERDA (polegar a direita, antebraco vindo de baixo).",
+    "COLHER VIRA GEL: na cena 3 a colher dentro do copo fica translucida e azul, como se fosse feita do proprio gel — o metal desaparece.",
+    "PROPS QUE NASCEM DO NADA NA CENA 3: duas hastes de vidro em pe dentro/atras do copo que nao existiam em nenhuma cena anterior; um bloco de FAVO DE MEL boiando dentro do pote (na cena 1 o pote so tinha mel e um bastao de vidro); e uma chave inglesa no chao perto do torno azul no ultimo segundo.",
+    "SIFAO DA AMEJOA MUDA DE TAMANHO: entre 11,3s e 16,8s o sifao encurta e engrossa visivelmente sem a mao mudar de pegada nem o objeto ser reposicionado.",
+    "FRASE PARTIDA PELO CORTE: 'THIS IS HOW MINE IS' cai na cena 2 (ainda com os dois modelos em quadro) e 'NOW.' so chega na cena 3, ja com a amejoa. O beat de PROVA estoura em cima do corte e o espectador ouve o payoff olhando para o quadro velho.",
+    "LEGENDA QUEIMADA APAGA DUAS VEZES no meio da fala, com audio correndo: ~1,9-2,9s e ~5,4-5,8s ficam sem legenda nenhuma.",
+    "LEGENDA PULA PALAVRAS FALADAS: o audio diz 'Comment gelatin, I will send the full recipe' e a legenda vai de 'GELATIN,' direto para 'RECIPE.' — 'I WILL SEND THE FULL' nunca aparece em quadro. O beat que promete ONDE a receita chega some da leitura.",
+    "DIVERGENCIA WHISPER x LEGENDA, e a LEGENDA e que esta errada: o whisper transcreve 'Honey and the red ones nobody expects' e a legenda queimada escreve 'FUNNY. AND THE RED ONE'S NOBODY EXPECTS,'. O quadro mostra MEL sendo despejado da colher exatamente nesse segundo — a palavra falada e 'honey'. Segui a regra e usei a legenda verbatim nos beats, mas registro que aqui ela e defeito visivel: o video escreve 'FUNNY' por cima de uma cena de mel.",
+    "GRAMATICA QUEBRADA NA LEGENDA: 'AND THE RED ONE'S NOBODY EXPECTS,' nao fecha como sentenca — quem le sem o audio nao monta a frase.",
+    "FURA O CT5: a fala nomeia ingredientes (honey, gelatin, 'three ingredients', 'the red one'). A receita deixa de ser a moeda da DM.",
+    "FURA O CT1 e o CT8: 'FOLLOW FIRST.' vem DEPOIS da sentenca do CTA, e ha pedido de follow na fala.",
+    "TESTE WTF: a fala nunca diz o que quebrou nem nomeia o orgao — 'the left one / the right one' so significa alguma coisa para quem esta olhando os dois modelos, e 'working on your blood' fica solto, mecanismo sem destino. No audio sozinho o video nao compra nada.",
+    "OS TRES CORTES NAO SUSTENTAM CONTINUIDADE: o corte de 5,93s troca enquadramento, copo e disposicao da bancada de uma vez so; o de 11,3s e uma varredura de antebraco que esconde a troca de mundo inteiro. Nada alem da bancada e do pote de mel atravessa os tres takes.",
+    "FORMATO: 17,07s em TRES takes (~5,93 + ~5,37 + ~5,77), nao dois de 8s. Se o destino era AdBatch Vertical 2, o lote saiu no molde errado."
+   ]
+  },
+  {
+   "v": "v03",
+   "resumo": "Em três takes de ~5,7s dentro de um banheiro com chuveiro ligado, uma mão madura negra despeja pó azul \"HORSE GELATIN\" num copo d'água, joga o copo por cima de um modelo anatômico pélvico envelhecido que se cobre de espuma branca e derrete, e corta para outra bancada onde um modelo de silicone rosa limpo está no pedestal — enquanto a fala promete a receita completa por comentário.",
+   "angulo": "a lavagem do modelo anatômico",
+   "assinatura": "O modelo anatômico pélvico cor de bronze oxidado se desfazendo em espuma branca sob o jato azul, e reaparecendo no corte como uma peça de silicone rosa lisa e intacta no pedestal de aço — o mesmo objeto contando o antes e o depois, sem que nenhuma palavra nomeie o órgão.",
+   "n_cenas": 3,
+   "corte_s": [
+    5.667,
+    11.333
+   ],
+   "prop_falico": true,
+   "cenas": [
+    {
+     "t0": 0,
+     "t1": 5.63,
+     "ambiente": "Steam-filled corner of a modern home bathroom shower enclosure; beige-taupe 30x60 porcelain wall tiles with thin pale grout lines; a chrome handheld shower head running on a flexible steel hose from a round wall bracket, fine water jets and warm steam drifting across the frame; a brushed-aluminium framed folding glass shower door on the right; a cream and taupe striped hand towel hanging on a chrome hook beyond the glass; a tiled half-wall ledge in the foreground capped with speckled grey stone",
+     "props": [
+      "aged medical cutaway model of the male pelvis in mid-sagittal section: coiled dark reddish-brown intestine on top, pale bone-coloured sacrum on the left, tan-orange bladder in the middle, a downward-curving penis in cross-section and one testicle below, whole piece finished in oxidised bronze-green and rust tones, mounted on a slim polished chrome rod with a round mirror-chrome base, standing at the far left of the ledge",
+      "tall clear tapered pint glass filled two-thirds with plain clear water, standing centre of the ledge",
+      "small clear glass honey jar half full of amber honey with a metal teaspoon standing upright in it, on the ledge to the right",
+      "gold screw-top jar lid lying face-up on the stone ledge beside the honey jar",
+      "white and cobalt-blue foil sachet printed HORSE GELATIN in white capitals with a small oval crest, torn open at the bottom corner, held above the glass"
+     ],
+     "gesto": "a single bare right hand enters from the upper right at 0.0s already holding the torn sachet; from 0.4s it tips the sachet forward and a thick bright blue stream falls into the glass; the clear water stains cobalt blue from the bottom up between 1.5s and 3.0s; from 3.5s the pour thins to a trickle; at 4.6s the hand lifts the sachet upright and withdraws to the right out of frame",
+     "pessoa": "only the right hand and forearm of a man in his sixties: very dark brown skin, prominent raised veins across the back of the hand and forearm, thick knuckles, short trimmed nails, a plain gold wedding band on the ring finger; no face, no torso, no second hand",
+     "camera": "eye-level three-quarter view from the right side, lens height roughly level with the top of the tiled ledge, static locked frame, vertical 9:16",
+     "luz": "soft diffused daylight from an off-frame window on the right, warm specular highlights on the chrome rod and shower head, cool grey fill in the tile shadows, visible steam haze softening the background",
+     "audio": "continuous running shower water with hollow tiled-room reverb; a calm, confessional mature male American voice close on the mic",
+     "superficie": "speckled grey stone ledge cap on a tiled half-wall inside the shower enclosure",
+     "traje": "none visible",
+     "texto_em_quadro": "THIS IS WHAT 65 DID / TO MINE. / WATCH WHAT ONE GLASS / DOES TO IT."
+    },
+    {
+     "t0": 5.667,
+     "t1": 11.3,
+     "ambiente": "the same steamy shower enclosure seen from lower and closer; the beige-taupe tiled back wall with the chrome shower hose and its round wall bracket now high in frame; the same brushed-aluminium glass door and cream striped towel on the right; the tiled half-wall ledge crosses the lower third of the frame and the near stone counter edge fills the bottom",
+     "props": [
+      "the same aged pelvic cutaway model, now sheeted in thick white foam that swells over the intestine coils and runs down the chrome rod into a pool on the ledge, bare pink flesh-toned areas emerging under the foam",
+      "the tapered pint glass now full of cobalt-blue liquid, tipped forward in the right hand, a thin blue stream falling from its rim",
+      "the spent white and blue foil sachet lying flat and crumpled on the stone ledge in the middle distance",
+      "gold screw-top jar lid lying on the ledge beside the sachet",
+      "clear glass honey jar with amber honey and a metal spoon, further right on the ledge"
+     ],
+     "gesto": "the take opens mid-action with foam already on the model; from 0.0s to 4.8s the right hand holds the tilted glass over the top of the model and pours a continuous thin blue stream while the foam builds and slides down the rod; the left hand stays flat, palm-down, fingers spread across the near counter edge for the whole take, never moving; at 5.1s the right hand lifts the glass upright and swings it out to the right with heavy motion blur",
+     "pessoa": "both hands and both forearms of the same dark-skinned man in his sixties; the left hand palm-down across the bottom of frame, heavily veined, thick knuckles, a gold band on its ring finger; the right hand and forearm entering from the upper right, equally veined, also with a gold band on its ring finger; no face, no torso",
+     "camera": "low three-quarter angle from just above the near counter edge, lens height at hand level, looking slightly up at the model, static locked frame",
+     "luz": "same soft diffused daylight from the right, bright specular rim on the wet blue glass, foam reading pure white against the grey-beige tile, steam haze behind",
+     "audio": "running shower water plus a wet pouring and light fizzing sound; the same mature male American voice, steady",
+     "superficie": "speckled grey stone ledge cap in the middle ground and a second stone counter edge across the bottom of frame",
+     "traje": "none visible",
+     "texto_em_quadro": "THE GELATIN TRICK / CLEARS THE OLD BLOOD, / BLOCKING YOUR FLOW, / AND THE WHOLE THING / WAKES UP."
+    },
+    {
+     "t0": 11.333,
+     "t1": 17.33,
+     "ambiente": "a different corner of a bathroom: a wide grey speckled granite countertop with a bullnose edge running diagonally across the foreground, large-format grey porcelain wall tiles behind, a chrome shower riser with a running rainfall head and a second handheld head, a frameless glass shower screen with a chrome bar handle on the right, a red white and blue striped bath towel hanging on a chrome rail beyond the glass, steam drifting across the back wall",
+     "props": [
+      "smooth flesh-pink silicone anatomical model of the male urinary and reproductive tract: a round pink bladder sphere at the top with two cream-coloured tubes looping over and around it, a thick pink shaft hanging down and to the right past a single pale testicle, mounted on a polished chrome rod set in a square brushed-steel base engraved along one edge, clear droplets forming and falling from the tip",
+      "tall straight clear drinking glass filled with bright blue liquid, a long stainless bar spoon standing in it",
+      "clear glass honey jar of amber honey with a long stainless spoon in it, at the far left of the counter",
+      "blue and silver foil sachet printed Horse Gelatin with a navy horse silhouette, lying flat on the counter in the foreground",
+      "small opened blue and silver stick sachet lying beside it",
+      "a scatter of pale blue flat shards on the granite counter to the right of the base"
+     ],
+     "gesto": "for the first 1.2s nothing moves except the falling water and the drips forming on the model; at 1.2s a man steps in from the right edge, reaches his right hand across toward the base of the model and pulls it back without gripping anything; by 2.5s he has stepped back out to the right and the counter is empty of people again; the last 3.5s hold on the still model while clear drops fall from its tip",
+     "pessoa": "an African-American man in his sixties: closely cropped grey hair receding at the temples, grey stubble beard and moustache, deep horizontal brow lines, heavy-lidded eyes looking down at the counter; only the left half of his face, one shoulder and one arm are inside the frame, and only for about a second and a half",
+     "camera": "slightly high three-quarter angle over the corner of the countertop, lens height around chest level, a very slow drift backwards that widens the frame across the take",
+     "luz": "cool diffused daylight from the left, soft specular sheen on the wet granite and the steel base, warm amber glow through the honey jar, steam haze flattening the back wall",
+     "audio": "continuous rainfall shower water on tile; the same mature male American voice delivering the call to action, then silence over the last half second",
+     "superficie": "grey speckled granite countertop with a bullnose front edge",
+     "traje": "plain white cotton crew-neck t-shirt",
+     "texto_em_quadro": "MINE LOOKS LIKE THIS / NOW. COMMENT, GELATIN, / I WILL SEND A FULL / RECIPE. / FOLLOW FIRST."
+    }
+   ],
+   "copy": {
+    "beats": [
+     {
+      "t0": 0,
+      "txt": "This is what 65 did to mine.",
+      "funcao": "hook"
+     },
+     {
+      "t0": 2.2,
+      "txt": "Watch what one glass does to it.",
+      "funcao": "prova"
+     },
+     {
+      "t0": 5.57,
+      "txt": "The gelatin trick clears the old blood, blocking your flow,",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 8.8,
+      "txt": "and the whole thing wakes up.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 11.23,
+      "txt": "Mine looks like this now.",
+      "funcao": "prova"
+     },
+     {
+      "t0": 12.3,
+      "txt": "Comment, gelatin, I will send a full recipe.",
+      "funcao": "cta"
+     },
+     {
+      "t0": 15.63,
+      "txt": "Follow first.",
+      "funcao": "follow"
+     }
+    ],
+    "cta": "Comment, gelatin, I will send a full recipe.",
+    "palavra_cta": "gelatin",
+    "nomeia_orgao": false,
+    "apelido_orgao": "nenhum — a fala nunca nomeia o órgão; usa \"mine\", \"it\", \"the whole thing\" e \"your flow\"",
+    "nomeia_ingrediente": false
+   },
+   "problemas": [
+    "⛔ O PROP DO ANTES E O PROP DO DEPOIS SÃO DOIS OBJETOS DIFERENTES. Take 1/2: modelo médico de corte sagital da pelve inteira (alças de intestino, sacro, bexiga, pênis em corte), acabamento bronze oxidado, pedestal de haste fina com base REDONDA espelhada. Take 3: peça de silicone rosa LISA, sem corte anatômico, sem intestino, sem sacro, com dois tubos creme, em base QUADRADA de aço escovado. Não é o mesmo objeto transformado — é outro objeto. A comparação antes/depois não se sustenta.",
+    "⛔ O PAYOFF ESTÁ MURCHO. A fala promete \"and the whole thing wakes up\", e o quadro do take 3 entrega o eixo peniano PENDENTE, apontando para baixo e para a direita, encostado no escroto, do frame 340 ao 519 — nunca ergue. O vídeo diz que acorda e mostra dormindo.",
+    "⛔ O TAKE 2 DESTRÓI O PROP EM VEZ DE CURÁ-LO. Entre 5,7s e 11,3s o modelo é engolido por espuma branca, escorre pela haste e vira uma poça no balcão; nos últimos frames do take é uma massa amorfa. A leitura visual é dissolução, não limpeza. Contradiz o beat de mecanismo que roda por cima.",
+    "⛔ DUAS ALIANÇAS. A mão direita (que despeja, take 1 e 2) usa aliança de ouro no anelar E a mão esquerda (apoiada no balcão o take 2 inteiro) também usa aliança de ouro no anelar. Verificado em zoom nos frames ~348 e ~351. Homem com duas alianças, uma em cada mão.",
+    "⛔ O TEXTO DO SACHÊ É INSTÁVEL. No frame 0 lê-se \"HORSE GELATIN\" em caixa alta, legível. Aos ~4,6s o texto sai girado 90° (de baixo para cima). Aos ~5,3s sai ESPELHADO. Aos ~5,4-5,5s vira borrão azul sem letra nenhuma. Quatro estados da mesma embalagem em cinco segundos.",
+    "⛔ A EMBALAGEM MUDA DE DESIGN ENTRE TAKES. Take 1: sachê branco e azul-cobalto, \"HORSE GELATIN\" em caixa alta sem logo de cavalo. Take 3: sachê prata e azul-marinho, \"Horse Gelatin\" em fonte serifada com SILHUETA DE CAVALO azul. Dois produtos diferentes para a mesma receita.",
+    "⛔ GRAVAÇÃO ILEGÍVEL NA BASE DO PEDESTAL (take 3). O baixo-relevo lê-se \"AllSTOИ⋅WЯELL\" — texto espelhado/embaralhado, provável \"ANATOMY MODEL\" corrompido. Fica em foco no primeiro plano os 6s do take.",
+    "⛔ O LÍQUIDO AZUL NÃO TEM FÍSICA. Entre ~10,4s e 11,1s o conteúdo do copo renderiza como bloco azul chapado com facetas retangulares de borda dura, a superfície permanece paralela ao fundo do copo mesmo com o copo inclinado ~60°, e o volume NÃO diminui durante todo o despejo de 5 segundos. Nos últimos frames o copo já está quase na vertical e ainda jorra.",
+    "⛔ O PÓ NÃO É PÓ. O que sai do sachê no take 1 é uma fita azul contínua e viscosa, cor de gel dental, caindo como líquido — não como gelatina em pó. E o líquido despejado é AZUL enquanto a espuma que ele produz é BRANCA.",
+    "⛔ O MODELO ANATÔMICO MUDA DE GEOMETRIA DE FRAME A FRAME NO TAKE 2. Aos 7,0s há uma massa rosa em gota que não existia aos 6,0s; aos ~11,0s as protuberâncias rosas estão em outra posição e outro formato, e apareceu um apêndice rosa comprido à esquerda. A peça não é rígida — ela morfa continuamente.",
+    "⛔ O CORTE 1 PULA A AÇÃO. O take 1 termina com o modelo SECO e cor de bronze (frame 169); o take 2 abre (frame 170) com o modelo JÁ coberto de espuma e o despejo JÁ em curso. O gesto que liga uma coisa à outra — virar o copo sobre o modelo — nunca acontece na tela.",
+    "⛔ O MUNDO INTEIRO TROCA NO CORTE 2, e a fala diz \"mine looks like this NOW\", implicando o mesmo lugar. Muda o azulejo (bege-taupe 30x60 → cinza formato grande), muda o chuveiro (manual em mangueira com suporte de parede → coluna com ducha de teto + manual), muda a toalha (listrada creme num gancho → listrada vermelho/branco/azul num trilho), muda o balcão (peitoril de meia-parede com capa de pedra → bancada de granito cinza com nariz boleado), muda o copo (caneco cônico → copo reto com colher) e muda o pote de mel (potinho com tampa dourada solta ao lado → pote alto sem tampa em quadro).",
+    "⛔ FIGURANTE SEM FUNÇÃO. Entre ~12,5s e ~13,8s um homem entra pela borda direita, estende a mão direita na direção da base do modelo, recolhe sem pegar em nada, e sai. Aparece por ~1,3s, com a face CORTADA AO MEIO pela borda do quadro, e a boca não acompanha a fala que está rodando (\"Comment gelatin\") — o único rosto do vídeo não é o dono da voz e não faz nada.",
+    "⛔ AS DUAS ÚLTIMAS LEGENDAS PISCAM. \"RECIPE.\" fica no ar ~0,35s (frames ~437-448) e \"FOLLOW FIRST.\" fica ~0,35s (frames 469-479), contra ~1,1s das legendas anteriores. Ilegíveis na velocidade de feed.",
+    "⛔ LEGENDA DESSINCRONIZADA E 1,4s DE VÍDEO SEM LEGENDA NENHUMA. \"FOLLOW FIRST.\" some no frame 480 (~16,0s), mas a medição de áudio mostra fala ativa até ~16,8s (-16,5 dB na janela 16,2-16,8s, contra -42,4 dB depois). A legenda sai antes de a frase acabar de ser dita, e o vídeo roda de 16,0s a 17,33s mudo de texto.",
+    "⛔ A FRASE É CORTADA NO MEIO PELO CARTÃO DE LEGENDA. \"Mine looks like this now.\" é quebrada em \"MINE LOOKS LIKE THIS\" | \"NOW. COMMENT, GELATIN,\" — o \"now\" é órfão, jogado no cartão seguinte e com ponto final depois dele, o que faz o CTA começar com a palavra errada.",
+    "⚠️ DIVERGÊNCIA WHISPER × LEGENDA QUEIMADA (a legenda venceu, conforme a regra). O whisper transcreve \"I will send THE full recipe\"; a legenda queimada diz \"I WILL SEND A FULL\" + \"RECIPE.\" — usei \"a full recipe\". O whisper também dá o beat do follow em 16,08-17,14s, mas a legenda o coloca em 15,63-15,97s; usei o tempo da legenda. E o whisper não transcreve a vírgula de \"CLEARS THE OLD BLOOD,\" que a legenda traz (vírgula espúria antes de \"BLOCKING\").",
+    "⚠️ CACOS AZUIS NÃO EXPLICADOS. No take 3 há um punhado de lascas planas azul-claras espalhadas no granito à direita da base, do frame 340 ao 519. Não há nada quebrado em quadro que as justifique — leem como plástico ou casca de ovo.",
+    "⚠️ O MEL É PROP MORTO. O pote de mel está em quadro nas TRÊS cenas, com colher dentro, e nunca é tocado nem mencionado na fala. Ocupa o canto esquerdo da bancada no take 3 sem pagar nada.",
+    "⚠️ \"ONE GLASS\" NÃO É BEBIDO. A copy diz \"watch what one glass does to it\" e o quadro despeja o copo POR CIMA de um modelo de plástico. Ninguém bebe. A ação que a VSL vende (tomar) nunca aparece.",
+    "⛔ VIOLAÇÃO DO CONTRATO DE 16s NA COPY (verbatim da legenda): CT8 e CT1 — existe pedido de follow na fala (\"Follow first.\") e ele vem DEPOIS da sentença do CTA, não antes. CT6 — o CTA não diz ONDE a receita chega (\"I will send a full recipe\", sem \"goes to your messages\"). CT4/CT4b — nenhum apelido do órgão é usado em vídeo nenhum; a falha e o payoff ficam em \"mine\" / \"it\" / \"the whole thing\", pronome genérico sem dono, que é drifting. CT2 — o take 1 enuncia a idade (\"what 65 did\") mas não enuncia o DANO concreto: nada quebra, nada falha, só \"isto\".",
+    "⚠️ Nenhuma mão aparece no take 3 operando nada: o gesto que a família POV usa como âncora de continuidade (as mãos) some no último terço, e o que atravessa o corte 2 não é pessoa nem lugar — é só o pedestal cromado, que também trocou de base."
+   ]
+  },
+  {
+   "v": "v05",
+   "resumo": "Comparação lado a lado de duas peças anatômicas penianas (dia 1 murcha e escura × dia 11 grande e rosada) montadas em suporte sobre a tampa de uma picape num campo seco ao pôr do sol, com o pó do sachê \"Horse Gelatin\" sendo despejado num copo que vira azul entre as duas — e um CTA que pede comentar GELATIN para receber o passo a passo.",
+   "angulo": "a comparação lado a lado",
+   "assinatura": "O jato contínuo de pó branco caindo de um sachê de cabeça para baixo direto num copo de água que floresce em azul, enquadrado entre as duas peças anatômicas expostas num suporte cromado — tudo sobre a tampa de alumínio riscado de uma picape, contra o campo seco em contraluz dourada. Nenhum outro vídeo do lote junta bancada-de-caminhonete, exposição museológica de duas peças e reação de cor no mesmo quadro.",
+   "n_cenas": 3,
+   "corte_s": [
+    5.95,
+    11.95
+   ],
+   "prop_falico": true,
+   "cenas": [
+    {
+     "t0": 0,
+     "t1": 5.95,
+     "ambiente": "Open tailgate of a weathered pickup truck parked in a dry harvested field at golden hour; the scratched bare-aluminium tailgate is the work surface, the black rusted truck bed and a dark-red vertical taillight sit behind, pale hazy sky and dry stubble grass on the horizon",
+     "props": [
+      "Dark brown shrivelled anatomical penile model, dried cracked surface with a knotted twisted shaft and a large fissured bulbous head, hooked on the left arm of a chrome T-stand, upper-left of frame",
+      "Pale pink smooth anatomical penile model, glossy plump rounded head and short thick shaft, draped over the right arm of the same chrome T-stand, upper-centre-right",
+      "Polished chrome T-shaped display stand with a single vertical rod and a round mirror-finish disc base, dead centre of frame",
+      "Clear drinking glass of still water with a stainless teaspoon standing upright in it, upper-left behind the stand",
+      "White and blue paper sachet printed 'Horse Gelatin', lying flat on the aluminium, left foreground",
+      "Tall hexagonal glass honey jar full of amber honey, gold screw lid closed, paper label and barcode, right of the stand",
+      "White ceramic plate heaped with reddish-brown seeds, far right edge, partly cropped",
+      "Small riveted US flag decal on the tailgate lip, bottom-left corner"
+     ],
+     "gesto": "Both hands rest on the tailgate from the first frame: the left hand lies flat, palm down, fingers spread beside the stand base, and stays there the whole beat; the right hand steadies the foot of the chrome stand until about 2.5s, then lifts, opens palm-up and presents the pale pink model with one slow flat sweep, holding the open-hand gesture until the cut",
+     "pessoa": "Only the hands and lower forearms of an older man, roughly 60-75 years old, deep brown weathered skin, heavy raised veins, thick knuckles and sun-cracked creases, wide brushed-silver wedding band on the left ring finger",
+     "camera": "Steep high angle looking down across the tailgate from just above and behind the resting hands, roughly chest height above the surface, shallow focus with the two models crisp and the field behind dissolved",
+     "luz": "Low warm sun from behind and to the right, strong golden rim light along the chrome rod and the pale pink model, deep warm shadows on the brown model, long soft shadows stretching toward the foreground, hazy backlit sky",
+     "audio": "Male voice-over in English, calm, low and conversational; quiet open-field ambience underneath, faint breeze, no music bed audible",
+     "superficie": "Scratched bare-aluminium pickup tailgate, dull mirror finish, scuffs, rust flecks and an old weld seam",
+     "traje": "none visible",
+     "texto_em_quadro": "DAY ONE ON THE LEFT. / DAY ELEVEN ON THE RIGHT. SAME MAN, SAME BODY."
+    },
+    {
+     "t0": 5.95,
+     "t1": 11.95,
+     "ambiente": "Same pickup tailgate in the same dry field at golden hour, restaged wider and lower: the chrome stand with both anatomical models is pushed to the left third, a tall clear glass now stands centre-front on the aluminium, the black truck bed and red taillight behind, dry grass and low sun at the right edge",
+     "props": [
+      "Chrome T-stand with the same dark brown cracked model and pale pink glossy model, now small and pushed to the left edge",
+      "Tall clear drinking glass centred in the foreground, water turning from clear to swirling blue to solid deep blue as the powder lands",
+      "White and blue 'Horse Gelatin' sachet held in the pouring hand, torn open at the bottom corner",
+      "Stainless teaspoon now lying flat on the aluminium to the right of the glass",
+      "Tall hexagonal glass honey jar with gold screw lid and paper label, right of the glass",
+      "White ceramic plate of reddish-brown seeds, far right edge",
+      "Small riveted US flag decal on the tailgate lip, bottom-left corner"
+     ],
+     "gesto": "The right hand comes in from the top right holding the sachet tipped mouth-down and pours a steady narrow stream of white powder into the glass from about 6.2s to 9.3s, the water blooming into blue curls that settle into flat blue; the sachet tips upright and lifts out of frame around 9.8s; the left hand stays flat palm-down on the tailgate below the glass the whole time, then slides back and leaves frame just before the cut",
+     "pessoa": "The same older man's hands only, deep brown weathered skin, heavy veins, wide brushed-silver wedding band on the left ring finger; no face, torso or shoulders at any point",
+     "camera": "Lower and wider than the opening beat, close to the height of the tailgate lip and looking slightly down across the surface, the models small at the left and the glass large in the near foreground",
+     "luz": "Low warm sun from the right and behind, golden highlights raking across the scratched aluminium, warm rim on the pouring forearm, the blue liquid reading cool against the whole warm frame",
+     "audio": "Male voice-over continuing in English; light granular hiss of dry powder hitting water, quiet field ambience",
+     "superficie": "Scratched bare-aluminium pickup tailgate, dull mirror finish, scuffs and rust flecks",
+     "traje": "none visible",
+     "texto_em_quadro": "ELEVEN MORNINGS OF THE GELATIN TRICK CLEARED WHAT WAS CHOKING MY FLOW."
+    },
+    {
+     "t0": 11.95,
+     "t1": 17.19,
+     "ambiente": "Tailgate of a pickup in the same dry field at sunset but completely restaged: a brushed silver-grey tailgate panel and inner bed wall at the left, a red vertical taillight centre-left, open stubble field and low sun filling the right half, the two anatomical models now standing tall against the open sky",
+     "props": [
+      "Two separate chrome display stands with flat rectangular bases and vertical rods, each model impaled on a horizontal pin near its top",
+      "Dark brown cracked anatomical penile model hanging from the left pin, long dried shaft, bulbous fissured head, pale tan cord-like tendrils draped down its length",
+      "Large pale pink glossy anatomical penile model hanging from the right pin, long smooth shaft, bulbous head catching the sun, two cream cord-like tendrils looping over it",
+      "Tall clear tumbler of bright blue liquid, centre foreground, a long metal spoon standing in it",
+      "Round squat glass honey jar, open with no lid, amber honey with a spoon submerged and a clear stirrer sticking out of the mouth, right side",
+      "Small clear glass bowl of dark red seeds, right edge below the honey jar",
+      "Two 'Horse Gelatin' sachets on the aluminium at bottom-left, one intact and legible, one torn open with white powder spilled beside it",
+      "Two overlapping paper US flag cards lying flat on the tailgate at the right",
+      "Flat white rectangular slab tucked under the right-hand stand"
+     ],
+     "gesto": "The arrangement is held nearly still; a hand enters at the right edge around 13.5s, fingers closing on the clear stirrer at the mouth of the honey jar, holds the grip for roughly two seconds and withdraws out of frame before the end; the blue liquid and the models stay motionless through the final beat",
+     "pessoa": "Only three or four fingers of one hand at the extreme right edge for about two seconds, pale tan skin, no ring visible, no wrist or forearm; no other body in frame",
+     "camera": "Low angle close to the tailgate surface, roughly at the height of the glass rim, tilted slightly upward so both models rise against the open sky and the horizon line sits low behind them",
+     "luz": "Low sun from the right putting a hot orange rim on the pink model and long warm streaks across the brushed metal, the truck panel at left in cool shadow, plus a strong cyan pool of light spreading from the blue drink onto the tailgate",
+     "audio": "Male voice-over delivering the call to action in English; sparse open-field ambience, no impact or sting on the final frame",
+     "superficie": "Brushed and scratched aluminium tailgate with a raised edge rail, warm reflections on the right, cyan cast on the left near the glass",
+     "traje": "none visible",
+     "texto_em_quadro": "YOU HAVE ELEVEN DAYS TOO. / COMMENT GELATIN. / I SEND THE STEP BY STEP."
+    }
+   ],
+   "copy": {
+    "beats": [
+     {
+      "t0": 0,
+      "txt": "Day one on the left.",
+      "funcao": "hook"
+     },
+     {
+      "t0": 2.2,
+      "txt": "Day eleven on the right. Same man, same body.",
+      "funcao": "prova"
+     },
+     {
+      "t0": 6.2,
+      "txt": "Eleven mornings of the gelatin trick cleared what was choking my flow.",
+      "funcao": "mecanismo"
+     },
+     {
+      "t0": 11.75,
+      "txt": "You have eleven days too.",
+      "funcao": "objecao"
+     },
+     {
+      "t0": 14.4,
+      "txt": "Comment GELATIN.",
+      "funcao": "cta"
+     },
+     {
+      "t0": 15.8,
+      "txt": "I send the step by step.",
+      "funcao": "cta"
+     }
+    ],
+    "cta": "Comment GELATIN. I send the step by step.",
+    "palavra_cta": "GELATIN",
+    "nomeia_orgao": false,
+    "apelido_orgao": "",
+    "nomeia_ingrediente": false
+   },
+   "problemas": [
+    "QUEBRA TOTAL DE MUNDO no corte de ~11,95s. Nao e' reenquadramento, e' outro set: o suporte unico em T com base redonda vira DOIS suportes separados de base retangular; as duas pecas mudam de escultura (nas cenas 1-2 a marrom e' um bulbo rachado com no' e haste torcida CURTA, na cena 3 e' uma haste LONGA pendurada); o pote de mel hexagonal com tampa dourada, rotulo e codigo de barras vira um pote redondo baixo SEM tampa com colher dentro; o prato branco de sementes vira tigelinha de vidro com sementes vermelho-escuras; o decalque unico de bandeira rebitado na borda vira DUAS bandeirinhas de papel soltas; o sache unico vira DOIS (um rasgado com po' derramado). E' exatamente o defeito que a ancora do IMAGE 02 existe para impedir.",
+    "HA TRES CENAS, NAO DUAS — corte nao declarado em ~5,95s. E nesse corte objetos se teletransportam dentro do mesmo mundo: o copo de agua pula de tras-a-esquerda do suporte para o centro-frente e a colher sai de DENTRO do copo e reaparece deitada no metal a' direita.",
+    "O rotulo 'Horse Gelatin' sai ESPELHADO VERTICALMENTE durante toda a despejada (~6,0s a 9,6s) — as letras aparecem refletidas no eixo horizontal, fisicamente impossivel. E' o beat heroi, e o MESMO sache aparece legivel e correto deitado na mesa na cena 1 e na cena 3. Num angulo em que quem sustenta o nome e' o rotulo, o rotulo ilegivel na hora certa e' o defeito mais caro do video.",
+    "A BEBIDA AZUL EMITE LUZ. Na cena 3 ha' uma poca de brilho ciano espalhada no aluminio ao redor e a' direita do copo, sem nenhuma fonte que a justifique — o sol esta' baixo, quente e vindo da direita. O copo esta' funcionando como lanterna. O mesmo brilho ja' aparece de leve na cena 2.",
+    "A colher da cena 3 tem CONCHA NAS DUAS PONTAS: uma concha arredondada acima da linha do liquido e outra concha grande no fundo do copo. Nao e' refracao — o desalinhamento e' grande demais e as duas formas sao conchas, nao cabo.",
+    "A bandeira dos EUA da cena 3 esta' INVERTIDA: o cantao (campo azul com estrelas) esta' embaixo a' esquerda, nao em cima, e as estrelas sao pontinhos irregulares. Sao dois cartoes de papel sobrepostos com recorte torto. Num criativo de mercado US isso e' bandeira errada em quadro aberto.",
+    "A MAO TROCA DE DONO. A mao que entra na borda direita da cena 3 (~13,5s) e' visivelmente mais CLARA que as maos marrom-escuras e castigadas das cenas 1-2, e nao mostra alianca. Ou e' outra pessoa, ou o narrador trocou de pele no ultimo terco — e as maos sao a unica ancora de continuidade que este video tem, porque nao ha' rosto.",
+    "Dedos fundidos na cena 1 (0,3-0,6s): perto da base do suporte aparece uma ponta de dedo COM UNHA sem no' nem junta que a ligue a' mao, e o contorno dos dedos de cima derrete no aluminio. Mao rica em veias mas com topologia errada.",
+    "Texto de embalagem ilegivel em toda parte: as letras miudas do sache, o rotulo do pote de mel das cenas 1-2 e o codigo de barras sao rabisco. So' as duas palavras grandes 'Horse Gelatin' se leem.",
+    "A PROMESSA VISUAL NAO FECHA. A legenda diz 'Day eleven on the right', mas na cena 1 a peca rosa esta' PENDURADA e murcha sobre o braco do suporte, com o mesmo comprimento da marrom — o 'depois' nao parece melhor que o 'antes'. Ela so' cresce na cena 3, e cresce por TROCA DE OBJETO, nao por transformacao. O eixo inteiro do angulo (comparacao) fica sem pagamento.",
+    "Objeto branco nao explicado sob o suporte direito da cena 3: uma laje/placa branca retangular que le como notebook fechado ou azulejo, e que nao pertence a nenhum mundo do video.",
+    "DIVERGENCIA TRANSCRICAO x LEGENDA QUEIMADA: o Whisper ouviu 'I send it step by step'; a legenda queimada diz 'I SEND THE STEP BY STEP' — agramatical. Vale a legenda, e a copy foi extraida dela. O Whisper tambem escreve '11' em algarismo onde a legenda escreve 'ELEVEN' por extenso, nos tres pontos.",
+    "O corte de ~11,95s cai DENTRO da sentenca 'You have eleven days too.' — a legenda 'YOU HAVE ELEVEN DAYS' entra a 11,75s no mundo antigo e o 'TOO.' termina no mundo novo. A troca de set acontece no meio da frase, que e' o pior lugar possivel para ela.",
+    "As pecas da cena 3 estao EMPALADAS em pinos horizontais que atravessam a haste de lado a lado. Leitura desagradavel e gratuita, e os pinos aparecem sem nenhuma explicacao de cena.",
+    "Fios/tentaculos claros pendurados nas duas pecas da cena 3, sem origem nem funcao — nao sao veias, nao sao a substancia despejada, nao fazem parte do suporte. Sao ruido visual colado no prop que carrega a prova.",
+    "Ninguem nunca toca nem bebe o copo azul: a receita e' preparada e abandonada. O ultimo quadro fica num copo parado, sem gole e sem prova de uso — o payoff da cena 3 e' estatico."
+   ]
+  }
+ ],
+ "propostas_dos_3_arquitetos": [
+  {
+   "agentes": [
+    {
+     "nome": "rotulo16",
+     "videos_fonte": [
+      "v05",
+      "v02",
+      "v01",
+      "v04",
+      "v03"
+     ],
+     "assinatura": "Os dois modelos anatômicos de pé lado a lado numa superfície de trabalho ao ar livre — tampa de picape, mesa de piquenique, bancada de garagem — IMÓVEIS e idênticos nos DOIS takes, enquanto a fala carimba cada lado com um rótulo e um NÚMERO: \"dia um à esquerda, dia onze à direita, mesmo homem, mesmo corpo\". O par deixa de ser um menu de diagnóstico e vira a linha do tempo do próprio narrador.",
+     "eixo_take1": "O RÓTULO DO PAR — a sentença que nomeia o lado esquerdo e o lado direito, e o número que os separa. Sorteado, e cada entrada carrega hook + o beat de prova do take 2 + o número (pareados, nunca sorteados soltos: é o modo de falha medido do fight16, em que cada beat estava certo sozinho e o PAR estava errado). Nasce com QUATRO entradas, todas de leitura ótica: (1) temporal/prazo — \"Day one on the left. Day eleven on the right. Same man, same body.\" (v05); (2) causal — \"The left one is what age does. The right one is three ingredients later.\" (v02); (3) social/testemunha — \"At 65, my wife asked what changed. These two show you exactly what.\" (v01); (4) possessivo — \"This is what 65 did to mine.\" (v03, sem o segundo beat dele). ⛔ Entrada nova sai de leitura ou de construção sob o CONTRATO-COPY-16S aprovada pelo operador — nunca de invenção. Segundo eixo: MUNDO, 4 entradas lidas (balcão do bar de garagem v01 · bancada de oficina POV v02 · mesa de piquenique top-down no gramado v04 · tampa de picape em campo seco no golden hour v05). 4 rótulos × 4 mundos = 16 combinações, zero inventada.",
+     "take2": "O ambiente vem do TAKE 1 (arquitetura (b) do gelahorse16 — se o take 2 trouxesse mundo próprio, o segundo quadro mudaria de lugar no meio do vídeo, que é o defeito que a âncora do IMAGE 02 existe para impedir; a fonte cometeu exatamente isso em 6 dos 7 vídeos). ⛔⛔ E o PAR FICA EM QUADRO no take 2, idêntico e imóvel — é aqui que este motor diverge do necrose16, onde o par sai e entra o geoduck. O lado direito É a prova, então ele não pode sair. A fala do take 2 é: PROVA POSSESSIVA presa ao rótulo sorteado (temporal → \"Eleven mornings of the gelatin trick cleared what was choking my flow. You have eleven days too.\"; causal/social → \"This is how mine is now.\") + MECANISMO CONSTANTE + CTA CONSTANTE. O número do take 1 tem de reaparecer no take 2 — rótulo sem eco é promessa sem cobrança.",
+     "pools": [
+      "ROTULOS — 4 entradas (as 4 lidas), cada uma com {hook, prova_take2, numero, familia}; dívida declarada, cresce por leitura",
+      "MUNDOS — 4 entradas lidas, cada uma arrastando ambiente + superfície + câmera + luz + áudio + regime de REF (foto das mãos nos 3 POV, foto do rosto no balcão frontal do v01)",
+      "APELIDOS — 3 (pecker · wiener · Johnson). ⛔ `soldier` da fonte (v01, v04) NÃO entra: o CT4b o baniu por soar filme de guerra a ouvido americano",
+      "IDADES — 6 a 8 entradas, 60-72; é o número do hook nas famílias social/possessivo",
+      "ADJETIVOS_PODRE — 8 a 10 (`this dead one`, `this ruined one`, `this wrecked one`); é onde mora o verbo de falha do CT2, exatamente como o necrose16 resolveu em 2026-08-10 sem afrouxar a trava",
+      "REFS_MAOS / REFS_ROSTO — o BLOCO 0 muda com o mundo: 3 mundos são POV (só mãos) e 1 é frontal (rosto de homem negro 65+)"
+     ],
+     "constantes": [
+      "MODELO_PODRE / MODELO_SAO / GEOMETRIA / SUPORTE — CÓPIA LITERAL das strings do necrose16_short.py. String validada é constante, nunca redigitada. O `identical` na abertura do MODELO_SAO é obrigatório, e a deterioração é nos cinco eixos (cor, superfície, volume, contorno, eixo) e NUNCA em tamanho",
+      "A descrição do par é a MESMA string nos dois blocos IMAGE — palavra por palavra. A fonte trocou prop entre cenas em 7 de 7 vídeos",
+      "O MECANISMO: `The gelatin trick cleared the old blood blocking my flow.` — é quase verbatim em 6 dos 7 vídeos-fonte, e já passa no CT3 (verbo de efeito `cleared` + alvo `blood/flow`) e no CT5 (nenhum ingrediente)",
+      "O CTA: `Comment gelatin, and the complete step by step goes to your inbox.` — v06/v07 trazem essa forma verbatim; cumpre CT6 (diz onde chega), CT1 (nada depois) e CT8 (sem follow). ⛔ A vírgula depois de `gelatin` é intocável: a automação de DM casa palavra exata",
+      "Keyword `gelatin`. A bebida é sempre AZUL (é assim nos 7)",
+      "Narrador: homem, 60-72, e a etnia travada pela página (congruência de casting)",
+      "Sem beat de follow em lugar nenhum (CT8)"
+     ],
+     "lentes": [
+      "RO1 — o take 1 aponta os DOIS lados com dêitico explícito (`this one`/`that one`/`the left one`/`on the right`). Sem isso o par vira cenário, que é exatamente o que o v06 entrega: os dois modelos nunca são tocados, apontados nem comparados",
+      "RO2 — ⛔⛔ PROIBIDO verbo de transformação na tela na fala dos dois takes: `becomes|turns into|watch what .* does to it|changes into|in a few days .* is new`. Medido na fonte: a transformação prometida NÃO foi paga em nenhum dos 4 renders que a prometeram (v03 o modelo derrete em espuma, v04 paga com o sumiço do marrom, v05 paga trocando o objeto, v01 perde o sifão do geoduck). Aqui a fala promete COMPARAÇÃO, nunca morph",
+      "RO3 — o número do rótulo do take 1 reaparece no take 2 (day eleven → eleven mornings → eleven days too)",
+      "RO4 — os dois blocos IMAGE carregam a MESMA constante de descrição do par (comparação de constante inteira, não regex de conteúdo — §2 das lições: linter que compara com constante que tem slot mente)",
+      "RO5 — CT5 limpo: banir na fala `honey|lemon|cinnamon|baking soda|three ingredients|cold water`. ⭐ Este motor NÃO entra em DESLIGADAS por CT5 — é o lane limpo de uma família de marca cujos outros quatro motores (horse16, gelahorse16, prato16, mel16) todos declararam exceção",
+      "RO6 — proibida a forma PERGUNTA de autodiagnóstico (`which one is yours|is it this one or that one`): foi ela que o operador matou no necrose16 em 2026-08-10",
+      "RO7 — nenhum `phone|camera|iPhone|filming` dentro de bloco IMAGE (lição paga do vick16: a câmera descreve o ÂNGULO, nunca o aparelho — e sem negação, porque negação injeta o token)",
+      "RO8 — a marca em quadro (exceção declarada ao P12) só passa se descrita IDÊNTICA nos dois blocos, e nunca se pede o texto miúdo do rótulo. A fonte trocou o design da embalagem entre cenas em 5 dos 7",
+      "RO9 — CT4/CT4b: um apelido só por vídeo, dos três sancionados, repetido nos dois takes. ⚠️ 4 dos 7 vídeos-fonte não nomeiam o órgão (`mine`, `it`, `the whole thing`, `down there`) — isso é drifting pela lei do repo e é CONSERTO, não cópia",
+      "RO10 — o motor entra na lista `MOTORES` do `medir_copy16.py` e nas listas de `medir_teto_fala`, `medir_deiticos`, `medir_contexto_copy`, `medir_abertura` e `medir_alcance` NO MESMO COMMIT em que nasce"
+     ],
+     "porque_nao_e_variante": "Porque o par muda de FUNÇÃO. No necrose16 os dois modelos são um menu de diagnóstico oferecido ao espectador (`If your wiener looks more like this one than that one`) e SAEM de quadro no take 2, onde entra o geoduck erguido — o payoff é promessa de tamanho. Aqui os dois modelos são a linha do tempo do narrador, com um número e uma afirmação de identidade (`same man, same body`), e FICAM nos dois takes porque o lado direito é a prova. Isso troca: as 24 entradas do pool de hooks (condicional 2ª pessoa → testemunho 1ª pessoa), as 8 do pool de fechos, a IMAGE 02 inteira, o mundo e o beat de payoff — e quebra o MODO BELA do necrose16, que existe porque o take 1 de lá é impessoal e cabe na boca de uma mulher. Fecho de pool, imagem, pessoa gramatical e mundo trocados não é flag: é motor, nascido por cópia literal do necrose16 como o horse16 nasceu do banho16_v2.",
+     "colide_com": "⛔ `necrose16` é a colisão de verdade, e ela é mais próxima do que parece: ele já é 2 takes, com `CENAS_UI = [\"1 · OS DOIS MODELOS\", \"2 · O GEODUCK + MECANISMO + CTA\"]` — que é literalmente o arco do v01. ⚠️ Por isso digo com todas as letras: o v01 SOZINHO não justificaria agente nenhum, é o necrose16 numa garagem. Quem justifica são o v05 e o v02 — o rótulo com NÚMERO e a afirmação de identidade, que transformam o menu em linha do tempo. Separação: necrose16 diagnostica o ESPECTADOR em 2ª pessoa condicional e tira o par do take 2; este testemunha o NARRADOR em 1ª pessoa com número e mantém o par nos dois. Colisão secundária com `horse16`/`gelahorse16` (mesma família de marca, mesma garagem, mesmo CTA): lá a receita é DITA na fala e os dois declaram exceção ao CT5; aqui nenhum ingrediente é nomeado e a receita continua sendo a moeda da DM. E com `ressurreicao16`, que é dono do morph — e por isso a lente RO2 proíbe o morph aqui.",
+     "risco": "⛔⛔ MODERAÇÃO, e o precedente é do próprio necrose16: `Your {o} looks like this right now. It can look like this by next month` foi RECUSADO pela política de conteúdo nocivo, com o IMAGE já aprovado — lido como diagnóstico do corpo + promessa de transformação com PRAZO ilustrada por tecido necrosado. A entrada `dia um / dia onze` é exatamente esse par, e nasce marcada: o prazo tem de ficar FORA da sentença que aponta o modelo, e a forma continua condicional/testemunhal, nunca afirmação sobre o corpo do espectador. ⚠️ CT2: rótulo temporal não enuncia falha por verbo — a falha mora no ADJETIVO do lado podre (o mesmo conserto que o necrose16 usou), e se ainda medir alto, é DESLIGADAS declarado, nunca lente afrouxada. ⚠️ Custo de render: dois modelos idênticos em dois quadros gerados separados é a continuidade mais cara do parque, e a fonte errou em 7 de 7 (pedestal que some, testículo solto, escala que muda dentro da mesma cena).",
+     "prioridade": 1
+    },
+    {
+     "nome": "descarte16",
+     "videos_fonte": [
+      "v07",
+      "v06"
+     ],
+     "assinatura": "O frasco âmbar de comprimidos virado sobre a boca aberta de uma lata de lixo de garagem, as cápsulas azuis caindo em jato — e, no MESMO quadro, logo acima, o copo azul da receita esperando. O azul que ele joga fora e o azul que ele vai beber convivem numa imagem só, e é esse par que volta no take 2. Nenhum outro motor do parque abre com o narrador destruindo o produto do concorrente.",
+     "eixo_take1": "A AUTORIDADE DESTITUÍDA — o que o truque tornou inútil, dito em 1ª pessoa com a idade como número. Sorteado, e cada entrada carrega hook + a PILHA DE OBJEÇÃO do take 2 pareada (nunca sorteadas soltas). Nasce com DUAS entradas lidas: (1) o comprimido — \"I threw away the pills I needed at sixty-five. The gelatin trick made them useless.\" + pilha `No prescription, no pharmacy, no bill.` (v07); (2) o veredito médico — \"At sixty-five I proved my doctor wrong.\" + pilha `It was never age.` (v06). ⛔ Duas é pouco e está declarado: o pool cresce por leitura de vídeo novo da mesma família ou por construção sob o CONTRATO-COPY-16S aprovada pelo operador — nunca por invenção de prop. ⭐ E é de propósito que a CENA seja quase constante: a fonte varia praticamente um eixo, e foi empilhar sete eixos que reprovou o vick16 no olho. Segundo eixo: MUNDO, 3 entradas lidas (garagem de oficina noturna com lâmpada de garra v07 · bancada POV diurna com pegboard v02 · balcão do bar de garagem v01).",
+     "take2": "O ambiente vem do take 1. O que atravessa o corte é o PAR AZUL — o frasco/lata do descarte e a tigela da receita têm de estar nos dois blocos IMAGE. A fala do take 2 é: MECANISMO CONSTANTE + a PILHA DE OBJEÇÃO pareada com a destituição sorteada + CTA CONSTANTE. ⛔ A objeção vem ANTES do CTA e nada vem depois dele (CT1). É a pilha que faz este motor existir: `No prescription, no pharmacy, no bill.` são três objeções em cinco palavras — custo, o balcão da farmácia (vergonha) e o porteiro médico — e é o empilhamento mais barato dos 7 vídeos.",
+     "pools": [
+      "DESTITUICOES — 2 entradas lidas, cada uma com {hook, pilha_objecao, prop_take1, gesto_descarte}; dívida declarada",
+      "MUNDOS — 3 entradas lidas (ambiente + superfície + câmera + luz + áudio)",
+      "APELIDOS — 3 (pecker · wiener · Johnson); a fonte não nomeia o órgão em nenhum dos dois, e isso é conserto",
+      "IDADES — 6 a 8 entradas, 60-72, sempre POR EXTENSO",
+      "REFS_MAOS — o BLOCO 0 é foto das mãos: os dois vídeos-fonte são POV no take 1, e sem rosto as mãos são a única âncora de continuidade (a fonte quebrou isso em ambos — aliança que troca de metal, tom de pele que troca de etnia dentro do mesmo quadro)"
+     ],
+     "constantes": [
+      "O MECANISMO: `The gelatin trick cleared the old blood blocking my flow.` — verbatim no v07, quase verbatim no v06",
+      "O CTA: `Comment gelatin, and the complete step by step goes to your inbox.` — os dois vídeos já dizem `to your inbox`, o que cumpre o CT6 de graça",
+      "O par azul em quadro nos dois takes: o objeto descartado e a tigela/copo da receita",
+      "Keyword `gelatin`. Narrador homem 60-72, etnia travada pela página",
+      "Um vilão por vídeo — o do hook sorteado, e ele não muda no take 2",
+      "Sem beat de follow (CT8), nada depois do CTA (CT1)"
+     ],
+     "lentes": [
+      "DE1 — ⛔ O hook nomeia o objeto descartado com SUBSTANTIVO CONCRETO. A fonte fura isso e é o teste WTF do repo reprovando a própria fonte: `I threw these away at 65` — these O QUÊ? No áudio sozinho o vídeo não compra nada",
+      "DE2 — a idade sai POR EXTENSO e nunca como dois numerais separados. Medido no v07: a legenda queimou `6 5.` e o Whisper leu `6'5\"` — o hook inteiro chegou ao espectador como altura em pés",
+      "DE3 — a PILHA DE OBJEÇÃO é a do hook sorteado (par travado). Objeção sorteada solta cruza com hook errado, que é o modo de falha medido do fight16",
+      "DE4 — CT5 limpo: nenhum ingrediente na fala (o v07 já não nomeia nenhum)",
+      "DE5 — o par azul (descarte × receita) tem de estar nos DOIS blocos IMAGE. Sem ele o take 1 é só um homem jogando remédio fora, e o vídeo perde o nexo — a lição do vick16",
+      "DE6 — nenhum `phone|camera|filming` em bloco IMAGE",
+      "DE7 — CT4/CT4b: um apelido dos três sancionados, nos dois takes",
+      "DE8 — CT3: `gelatin trick` sempre com verbo de efeito + alvo na mesma sentença",
+      "DE9 — entra nas listas do `medir_copy16` e dos cinco medidores no mesmo commit"
+     ],
+     "porque_nao_e_variante": "Porque a sequência de batidas tem uma função que nenhum motor de 16s tem: a OBJEÇÃO EMPILHADA depois do mecanismo e antes do CTA. Os 28 fecham o take 2 em mecanismo → prova → CTA; aqui é mecanismo → destituição do custo/vergonha/porteiro → CTA, e a prova não é corpo nem prop: é o concorrente no lixo, mostrado no primeiro segundo. Enfiar essa pilha dentro de outro motor custaria 5 das 25 palavras do take 2 e comeria o beat de prova dele — e obrigaria um vídeo só a carregar o par anatômico E a lata de lixo, que é o empilhamento sem nexo que reprovou o vick16.",
+     "colide_com": "`botica16` é quem chega perto: o vilão é a FARMÁCIA, nomeado já na fonte. Separação: lá quem fala é uma mulher de traje tradicional numa cozinha de ervas, o vilão é enunciado no take 1 como antagonista da botica, e a prova é o utensílio/o copo; aqui quem fala é o próprio homem de 65 anos na garagem dele, o vilão é DESTITUÍDO no take 2 como objeção de custo, e a prova é o produto do concorrente no lixo. Colisão secundária de MUNDO com `vick2_16` e `horse16` (bancada POV, só as mãos, marca em quadro) — mas POV é câmera, não copy: nenhum dos dois tem hook de descarte nem pilha de objeção.",
+     "risco": "⛔⛔ O MAIOR RISCO DE COMPLIANCE DO LOTE, e é alçada do operador, não minha: um homem de 65 anos jogando fora comprimidos de receita e dizendo que o truque os tornou inúteis é, lido pelo classificador e pela política de saúde, conselho para interromper medicação prescrita — a PRIMEIRA das quatro linhas da cerca do arsenal. ⭐ Saída barata se ele não quiser pagar isso: a entrada do COMPRIMIDO sai e fica a do VEREDITO MÉDICO (`It was never age`), que depõe a explicação e não o remédio — o motor continua de pé com o mesmo eixo, e o pool nasce com uma entrada em vez de duas. ⚠️ Riscos menores: o rótulo do frasco de farmácia sai como rabisco de IA (o texto miúdo nunca é pedido), e o v07 mostrou que o monte de cápsulas não acumula durante o despejo — o take não deve pedir acúmulo. ⚠️ CT2: nenhum dos dois hooks enuncia a falha por verbo de disfunção; o conserto é o hook dizer PARA QUE serviam os comprimidos, sem colar verbo de ereção no órgão (CT7).",
+     "prioridade": 2
+    }
+   ],
+   "descartados": [
+    "⛔ v03 como motor próprio (\"a lavagem\" — `This is what 65 did to mine. Watch what one glass does to it.`). O único beat que o separa é uma PROMESSA DE TRANSFORMAÇÃO NA TELA, e ela não foi paga em nenhum dos 7 renders: no v03 o modelo é engolido por espuma e vira massa amorfa (a leitura é dissolução, não cura) e o payoff aparece PENDENTE enquanto a fala diz `the whole thing wakes up`; no v04 o morph é pago com o sumiço do modelo marrom; no v05 é pago trocando o objeto por outra escultura. Além disso o morph já é do `ressurreicao16`, com escala DIFERENCIAL medida em pixels (altura 2,31× contra largura 1,44×) — construir um segundo dono do morph seria duplicar a doutrina mais cara do repo. O hook dele (`This is what 65 did to mine`) sobrevive como entrada de rótulo no `rotulo16`, sem o segundo beat.",
+    "⛔ v04 como motor próprio (a pergunta de autodiagnóstico — `Which one is yours? Be honest, nobody can see your answer.`). A forma PERGUNTA foi matada pelo operador no `necrose16` em 2026-08-10, com a razão escrita no motor: *\"a pergunta ainda devolvia ao espectador um trabalho que ele não tem por que fazer\"* — a comparação virou uma condicional só. Propor agente cujo eixo é essa pergunta seria ressuscitar uma forma reprovada. ⭐ A cobertura de vergonha (`nobody can see your answer`) é boa e não se perde: o CT6 já a entrega de graça dentro da sentença do CTA, que é onde o contrato a colocou.",
+    "⛔ Um motor \"a receita em quadro\" a partir do v02 (mel escorrendo + sementes vermelhas + `three ingredients later`). Já existem quatro donos disso — `horse16`, `gelahorse16`, `prato16`, `mel16` — e os quatro tiveram de declarar exceção ao CT5. O que faz estes 7 vídeos valerem é justamente o oposto: QUATRO deles (v03, v04, v05, v07) não nomeiam ingrediente nenhum na fala. Pagar o CT5 pela quinta vez sem hipótese nova é gasto sem medição possível.",
+    "⛔ Um motor por MUNDO (a garagem-bar · a mesa de piquenique top-down · a caçamba de picape no golden hour · o banheiro do v03). Mundo não é ângulo, é eixo — quatro motores com a MESMA sequência de funções seriam quatro nomes para um motor. E é exatamente o que o `vick16` provou caro: empilhar superfícies distintas sem nexo mede 0 ERRO e reprova no olho.",
+    "⛔ Um motor do \"geoduck erguido como troféu\" (v01, v02, v07). O `necrose16` já ergue o geoduck no take 2 (`NE11`, com as strings de prop validadas), e trocar o prop não muda uma única função da sequência de batidas. Prop novo é entrada de pool, nunca motor.",
+    "⛔ Um motor \"só as mãos / sem pessoa\" a partir dos quatro vídeos POV (v02, v03, v04, v05). POV é CÂMERA, não copy — e já é o desenho do `banho16`, do `horse16` e do `vick2_16`. Aqui ele entra como propriedade do MUNDO sorteado (que também decide se o BLOCO 0 é foto das mãos ou do rosto)."
+   ],
+   "raciocinio": "DOIS, e o número sai de uma medição da própria fonte, não de gosto. Pela lente da estrutura de copy, os 7 vídeos têm MECANISMO e CTA praticamente constantes: 6 dos 7 dizem alguma forma de `the gelatin trick cleared the old blood blocking my flow` (v01 `opens the blood flow`, v02 `working on your blood`, v03 `clears the old blood, blocking your flow`, v05 `cleared what was choking my flow`, v06 `it was the old blood blocking the flow down there`, v07 verbatim), e 5 dos 7 fecham em `comment gelatin` + `step by step` — dois deles (v06 e v07) com a forma `to your inbox`, que já cumpre o CT6. É a mesma máquina de repetição que a leitura da Healthy Men's Guide já tinha achado no `gelahorse16`. Se mecanismo e CTA não variam, a única coisa que se sorteia é o HOOK e o beat imediatamente seguinte — e é por aí que se conta agente. Agrupando os 7 pelo que o hook EXIGE em quadro, saem três máquinas: (A) o PAR ROTULADO, 4 vídeos, a fala carimba os dois lados e é ininteligível sem dois objetos; (B) a TRANSFORMAÇÃO AO VIVO, 1 vídeo, a fala manda assistir a uma mudança acontecer; (C) a DESTITUIÇÃO DA AUTORIDADE, 2 vídeos, a fala não precisa de par nem de morph — precisa de um antagonista (o comprimido, o médico). A (B) morre por evidência, não por elegância: o beat que a separa é uma promessa que NENHUM dos 7 renders pagou, e o morph já tem dono medido no `ressurreicao16`. Sobram duas, e cada uma tem um eixo que é copy E muda o quadro: o RÓTULO do par (com um número) e o OBJETO/AUTORIDADE que ele joga fora (com a pilha de objeção). Não são mais que dois porque tudo o mais que separa os 7 é troca de prop, de mundo ou de pessoa — isso é eixo, e empilhar eixos sem nexo é a lição de 7.153 linhas que o `vick16` pagou. Não são menos que dois porque juntar (C) dentro de (A) enfiaria a pilha de objeção (5 das 25 palavras) no take 2 que já carrega mecanismo + prova + CTA, e obrigaria um vídeo só a mostrar o par anatômico E a lata de lixo. ⭐ E há um argumento que vale pelos dois juntos: 4 dos 7 vídeos NÃO nomeiam ingrediente na fala. Estes dois motores são o lane limpo de CT5 de uma família de marca cujos quatro motores existentes (horse16, gelahorse16, prato16, mel16) todos tiveram de declarar exceção — a receita volta a ser a moeda que só a DM paga. ⚠️ Ressalva honesta que atravessa os dois: são 2 entradas de pool em um caso e 4 no outro, todas de leitura ótica. Nenhum dos dois nasce generoso, e isso é dívida declarada no cabeçalho, como no `horse16` — entrada nova sai de vídeo lido, nunca de invenção."
+  },
+  {
+   "agentes": [
+    {
+     "nome": "modelo16",
+     "videos_fonte": [
+      "v01",
+      "v02",
+      "v03 (só o mundo banheiro)",
+      "v04",
+      "v05",
+      "v06"
+     ],
+     "assinatura": "O par de modelos anatômicos em pedestal cromado — o marrom rachado à esquerda, o rosa liso à direita — e, entre os dois, a coluna de pó caindo do sachê de HORSE GELATIN para dentro do copo. A comparação e a receita no MESMO quadro, e nenhum rosto: do narrador existem só as mãos. O espectador vê dois objetos e é obrigado a apontar um deles para si antes de qualquer palavra de mecanismo.",
+     "eixo_take1": "A SUPERFÍCIE, e ela sozinha — 7 entradas, uma por vídeo lido, cada uma arrastando superfície + fundo + luz + áudio + ângulo de câmera de uma vez: (1) balcão de bar de garagem com a basculante meio aberta; (2) bancada de oficina com pegboard e geladeira, hora dourada; (3) peitoril de meia-parede dentro do box com o chuveiro correndo; (4) mesa de piquenique de pinho num gramado, câmera A PRUMO; (5) tampa de picape num campo colhido ao pôr do sol; (6) pia de mármore Carrara com janela fosca; (7) bancada de garagem à noite sob luminária de braço. ⛔ Um eixo VISUAL só. A forma do hook é pool de COPY separada (6 famílias verbatim), o que dá 42 combinações — todas lidas, nenhuma inventada. O par, a embalagem, o copo e as mãos NÃO são sorteados.",
+     "take2": "Preso por CÓPIA LITERAL, não por referência: a string do ambiente, a do par, a da embalagem, a do copo e a das mãos são coladas inteiras no IMAGE 02 (o gerador de imagem não tem memória — 'the same counter as before' é o defeito que trocou o banheiro inteiro no v03 e o mundo inteiro no v05). O delta é declarado e são dois: (a) o copo passa de água transparente a azul opaco; (b) o GESTO, sorteado numa pool própria de 5 entradas lidas. ⛔ INVENTÁRIO FECHADO: a lista de props do IMAGE 02 é a MESMA do IMAGE 01, palavra por palavra — nada nasce e nada some no corte.",
+     "pools": [
+      "SUPERFICIES — 7 (superfície + fundo + luz + áudio + câmera numa entrada só)",
+      "GESTOS_T2 — 5 (despeja o pó do sachê no copo · pinga o fio de mel da colher no azul · ergue o copo cheio empurrando na lente · o indicador desliza do rosa para o marrom · as duas mãos abertas ao lado do par, gesto de apresentar)",
+      "HOOKS — 6 famílias verbatim (a pergunta da esposa aos 65 · o da esquerda é o que a idade faz · isto é o que 65 fez com o meu · qual dos dois é o seu, ninguém vê a sua resposta · dia um à esquerda, dia onze à direita · aos 65 provei meu médico errado)",
+      "MECANISMOS — 4 verbatim e sem ingrediente (abre o fluxo que ele perdeu · limpou o sangue velho que bloqueava · o da direita é três ingredientes depois · onze manhãs limparam o que me sufocava)",
+      "CTAS — 3 verbatim (comente gelatin e o passo a passo vai para as suas mensagens / chega na sua caixa de entrada / eu mando o passo a passo para a sua caixa)",
+      "REFS_MAOS — 6 (mãos de homem negro 60-75: veias altas, nós grossos, manchas, uma cicatriz pálida, unhas curtas). É a foto do BLOCO 0 (REF), como no banho16 e no horse16.",
+      "IDADES — 60 a 75 (o número é o que a página varia entre dois vídeos do mesmo script, medido no banho16)"
+     ],
+     "constantes": [
+      "O PAR — uma string só, com `identical` na abertura do segundo modelo e a geometria escrita (bexiga arredondada + eixo longo e grosso + glândula na base), copiada do NE2/GEOMETRIA do necrose16, que já tem render validado. A MESMA string nos dois IMAGE.",
+      "A HASTE ENTRA NO MODELO — `a chrome rod that enters the underside of the model`, nunca `mounted on a stand`: em 4 dos 7 vídeos os modelos flutuavam acima da base espelhada e a haste passava na frente do corpo do prop.",
+      "A EMBALAGEM — uma forma só: pouch em pé, azul e branca, cavalo azul-marinho parado, HORSE GELATIN em caixa alta. Mesma string nos dois IMAGE. Trocou de design entre cenas em 5 dos 7 vídeos.",
+      "O COPO — tumbler reto de lados paralelos com colher de inox dentro. Uma silhueta só; mudou de forma dentro do mesmo vídeo em 4 dos 7.",
+      "AS MÃOS — homem negro de 60-75, e UMA aliança de ouro lisa no anelar ESQUERDO. O antebraço tem a mesma pele da mão (duas etnias no mesmo corpo apareceram em 3 dos 7).",
+      "O ESTADO DO VASILHAME É O MESMO DOS DOIS LADOS DO CORTE — no v04 o copo já estava azul no primeiro quadro do take 2 e só depois a mão começava a despejar: o espectador via o efeito antes da causa.",
+      "A KEYWORD é `gelatin`; o CTA diz onde a receita chega (CT6); nada depois dele (CT1); nenhum follow na fala (CT8); nenhum ingrediente na fala (CT5) — a fonte fura os três em 4 de 7.",
+      "NENHUM PROP MORTO — o pote de mel só entra no IMAGE se for tocado no take 2. Em 5 dos 7 ele ocupou canto de bancada sem pagar nada.",
+      "Sem cavalo vivo, sem celular, sem `not a celebrity`, sem homem de rosto em quadro nenhum."
+     ],
+     "lentes": [
+      "MO1: a substring do PAR tem de ser byte a byte igual nos dois blocos IMAGE — comparação literal, não regex.",
+      "MO2: `identical` ausente na abertura do segundo modelo → ERRO (sem ele o gerador desenha duas espécies e a comparação, que é o vídeo inteiro, some).",
+      "MO3: `\\b(sachet|foil packet|envelope|stick pack)\\b` → ERRO. Uma forma só de embalagem, e ela é `stand-up pouch`.",
+      "MO4: `HORSE GELATIN` obrigatório nos dois IMAGE, e a substring inteira da embalagem idêntica nos dois.",
+      "MO5: `\\bwedding band\\b` exatamente UMA vez por bloco, sempre seguida de `on his left ring finger`.",
+      "MO6: `\\b(phone|iPhone|filming|holding the camera|camera in his)\\b` em qualquer IMAGE → ERRO (lição paga no vick16: o gerador DESENHA o telefone).",
+      "MO7: `not a celebrit|not famous people|not celebrities` → ERRO (`lint_anticeleb`, já cobrado em 44 de 44 motores).",
+      "MO8: inventário fechado — todo substantivo-prop do IMAGE 02 tem de estar na lista de 9 do IMAGE 01; qualquer outro → ERRO.",
+      "MO9: `\\b(floating|hovering|above the base|resting on top of the stand)\\b` na vizinhança de `model` → ERRO; exige `rod that enters the underside`.",
+      "MO10: `\\b(honey|cold water|cinnamon|lemon|baking soda|gelatin powder)\\b` na linha `Dialogue:` → ERRO (CT5). `gelatin trick` fica: é o nome do mecanismo, não ingrediente.",
+      "MO11: `\\bfollow\\b` na linha `Dialogue:` → ERRO (CT8) — a fonte diz `Follow first` em 4 de 7 e sempre DEPOIS do CTA, furando CT1 junto.",
+      "MO12: `the same (counter|bench|room|place|bathroom)\\b.{0,20}(as before|from the first)` no IMAGE 02 → ERRO: o ambiente vai por extenso, nunca por anáfora.",
+      "MO13: `\\bno phone in frame\\b|\\bno celebrity\\b|\\bnot a famous\\b` → ERRO: negação injeta o token que ela nega.",
+      "MO14: prop listado no IMAGE que não aparece no verbo do TAKE nem na lista fechada → AVISO de prop morto."
+     ],
+     "porque_nao_e_variante": "Porque o que ele tira é a PESSOA, e pessoa é o preço. O necrose16 faz o mesmo par podre-e-são, mas com um montanhês de tronco nu, chapéu, barba e um LOBO em quadro — dois seres vivos que precisam sair idênticos de dois quadros gerados separadamente, mais um `BLOCO 0 (REF)` de rosto e um MODO BELA. Aqui não há rosto nenhum: o narrador é um par de mãos, e mãos são a âncora mais barata do parque (o molde do banho16/horse16/vick2_16). Transformar isso num toggle do necrose16 seria desligar o eixo principal dele — o arquétipo é CENÁRIO + CHAPÉU + ANIMAL, e um botão que apaga os três não é botão, é outro motor. E a arquitetura de cena também é outra: a cena 2 do necrose16 é a placa sagital EXPLICANDO; aqui é a receita ACONTECENDO entre os dois modelos, que é o que a fonte faz em 6 de 7.",
+     "colide_com": "necrose16 — o mais próximo, é literalmente o mesmo par em pedestal. Separam três coisas: (a) o necrose16 tem homem com ROSTO + chapéu + LOBO e REF facial; este não tem pessoa nenhuma; (b) a cena 2 lá é a placa D1 explicando, aqui é o pó caindo no copo entre os modelos; (c) o custo — lá são dois seres vivos idênticos entre dois quadros, aqui são zero. horse16 e gelahorse16 chegam perto pela bancada, pela marca em quadro e pelas mãos, mas os dois têm rosto (o gelahorse16 tem REF de pessoa, o horse16 tem ela de toalha sentada atrás) e nenhum dos dois tem peça anatômica. banho16_v2 chega perto pelo banheiro POV, mas lá a peça central é o INSTRUMENTO DE MEDIDA e não há prop anatômico.",
+     "prioridade": 1,
+     "risco": "(a) MODERAÇÃO: a peça anatômica peniana fica sozinha e grande no quadro, sem pessoa para diluí-la — o necrose16 já pagou essa passagem, mas com um homem em cena. Mitigação: usar a string validada `teaching model on a chrome stand, the kind that sits on a urology office desk` e nunca close isolado da peça. (b) RENDER: é o defeito dominante dos 7 vídeos, e ele é todo de CONSTÂNCIA — modelo mutando (5/7), embalagem trocando (5/7), copo trocando (4/7), pedestal sumindo (3/7), aliança/etnia/dedos quebrando (6/7). Por isso o motor nasce com um eixo e catorze lentes, e não o contrário. (c) TEXTO DA MARCA ilegível ou espelhado em 7 de 7: aceito como no banho16 — a forma e a cor sustentam a marca, o texto não precisa ser legível. O que a lente cobra é a FORMA não mudar entre os dois quadros, nunca a legibilidade. (d) A fonte fura CT1, CT5 e CT8 em 4 de 7 vídeos: a copy deste motor NÃO pode ser verbatim inteira — os beats de mecanismo e CTA entram cortados do proibido, e isso está escrito no cabeçalho para ninguém 'restaurar' depois."
+    },
+    {
+     "nome": "descarte16",
+     "videos_fonte": [
+      "v07 (o ângulo inteiro: o descarte, a copy, a lata, o frasco)",
+      "v01, v02, v05, v06 (só as superfícies, para o eixo de mundo)"
+     ],
+     "assinatura": "A lata de lixo galvanizada aberta ocupando o terço inferior do quadro e o frasco âmbar de receita virado de boca para baixo sobre ela, as cápsulas azuis caindo em jato — com o copo da receita esperando no MESMO quadro, logo acima. O vídeo joga fora a solução da farmácia antes de dizer qual é a dele. É o único destes sete cujo take 1 não tem peça anatômica nem prop fálico.",
+     "eixo_take1": "A SUPERFÍCIE onde o descarte acontece — 6 entradas, todas lidas nestes 7 vídeos (bancada de garagem à noite sob luminária de braço · balcão de bar de garagem de dia · bancada de oficina na hora dourada · pia de mármore de banheiro · mesa de piquenique num gramado · tampa de picape num campo). Cada entrada arrasta superfície + fundo + luz + áudio + de onde a lata entra no quadro. ⛔ O QUE É DESCARTADO é CONSTANTE, não pool: o frasco âmbar de receita com rótulo branco de farmácia e cápsulas azul-claras, verbatim do v07. A fonte entrega UM e inventar mais nove foi exatamente o que reprovou o VICK 16.",
+     "take2": "Mesma superfície, mesmas mãos, mesmo copo — a lata SAI de quadro, e esse é o único delta de inventário, declarado por extenso (`the trash can is no longer in the frame`). Entra a mistura pronta: o copo azul e a pouch de HORSE GELATIN aberta ao lado, na mesma posição em que estava no take 1. O GESTO vem de pool própria de 4 entradas lidas. ⛔ O take 2 nunca traz ambiente próprio: o ambiente é sempre o do take 1, colado por extenso.",
+     "pools": [
+      "SUPERFICIES — 6 (compartilhada com o modelo16 por cópia literal, menos a mesa a prumo)",
+      "GESTOS_T2 — 4 (mexe a mistura com a colher · ergue o copo empurrando na lente · as duas mãos abertas ao lado do copo · fecha a pouch e a assenta ao lado)",
+      "HOOKS — 1 forma lida (o descarte aos 65) × IDADE sorteada 60-75. É exatamente o que a página da fonte faz: o que varia entre dois vídeos do mesmo script é UM NÚMERO. ⏳ Dívida declarada — a forma só cresce com vídeo novo lido.",
+      "MECANISMOS — 4 verbatim colhidos nos 7 (o gelatin trick os tornou inúteis · limpou o sangue velho que bloqueava o fluxo · abre o fluxo que se perdeu · limpou o que me sufocava)",
+      "OBJECOES — 2 lidas (sem receita, sem farmácia, sem conta · seja honesto, ninguém vê a sua resposta)",
+      "CTAS — 3 verbatim (os mesmos do irmão)",
+      "REFS_MAOS — 6 (a mesma pool do modelo16, compartilhada)"
+     ],
+     "constantes": [
+      "O FRASCO — frasco âmbar de receita, tampa branca, rótulo BRANCO e genérico sem nome de laboratório, cápsulas azul-claras dentro. ⛔ A cor da cápsula dentro do frasco é a MESMA que cai: no v07 o frasco tinha esferas amarelo-esverdeadas e caíam cápsulas azuis, no mesmo quadro.",
+      "A LATA — lata de lixo galvanizada, sem tampa, boca aberta, ocupando o terço inferior do quadro.",
+      "A PILHA CRESCE — o monte de cápsulas no fundo é descrito crescendo; no v07 ficou pixel a pixel igual durante seis segundos de jato contínuo e o despejo virou decoração.",
+      "A IDADE vai como inteiro colado (`at 65`) na fala e no roteiro — o v07 saiu `6 5` na legenda e o hook chegou ao espectador como altura em pés.",
+      "AS MÃOS, A ALIANÇA, A EMBALAGEM e O COPO — as mesmas constantes do modelo16, palavra por palavra: é motor IRMÃO, e irmão que redigita constante validada é o erro que o repo já pagou.",
+      "SEM PEÇA ANATÔMICA E SEM PROP FÁLICO em quadro nenhum — é propriedade do ângulo, não esquecimento, e é o que zera o custo de moderação.",
+      "A fala nunca manda ninguém parar de tomar nada: ela conta o que ELE fez. Nada de imperativo médico.",
+      "KEYWORD `gelatin`; CTA diz onde a receita chega; nada depois dele; nenhum follow na fala."
+     ],
+     "lentes": [
+      "DE1: `\\btrash can\\b` obrigatório no IMAGE 01 e PROIBIDO no IMAGE 02 — é o único delta de inventário permitido, e ele é declarado.",
+      "DE2: `\\b(anatomy model|anatomical|geoduck|clam|siphon|penis|genital|pelvis)\\b` em qualquer IMAGE → ERRO. A ausência é a propriedade do ângulo.",
+      "DE3: a palavra de cor da cápsula aparece exatamente duas vezes no IMAGE 01 (dentro do frasco e no jato) e é a MESMA palavra.",
+      "DE4: `\\bat (\\d)\\s(\\d)\\b|\\b\\d'\\d\"` na fala ou no roteiro → ERRO; exige `\\bat (6[0-9]|7[0-5])\\b` casando com a idade da spec.",
+      "DE5: `\\b(prescription|pharmacy|bill|doctor)\\b` obrigatório em pelo menos uma sentença do take 2 — sem o vilão nomeado o descarte fica sem contra-quem, e o hook vira gesto solto.",
+      "DE6: `\\b(stop taking|throw away your|quit your)\\b` na linha `Dialogue:` → ERRO: imperativo médico não é o ângulo.",
+      "DE7: `\\bthe same pile\\b|\\bunchanged\\b` na vizinhança de `capsules` → ERRO; o TAKE tem de dizer que o monte cresce.",
+      "DE8: a substring inteira da embalagem idêntica nos dois IMAGE (trocou de forma no corte do v07).",
+      "DE9: herdadas por cópia literal do irmão — MO5 (uma aliança, anelar esquerdo), MO6 (sem celular), MO7 (sem negação anti-celebridade), MO10 (sem ingrediente na fala), MO11 (sem follow na fala), MO12 (sem anáfora de ambiente), MO13 (sem negação que injeta token)."
+     ],
+     "porque_nao_e_variante": "Porque o take 1 dele não tem uma única peça anatômica, e é isso que muda o PREÇO. No modelo16 o quadro carrega nove props, dois deles anatômicos, e a leitura dos 7 vídeos mostra esses dois mutando de geometria em 5 deles; aqui são três objetos — frasco, lata, copo — e nenhum é o que a moderação olha. Num regime de 30 vídeos por semana isso é a diferença entre regerar metade do lote e não regerar quase nada. E o vilão é outro: no modelo16 o inimigo é a IDADE (o modelo da esquerda), aqui é a FARMÁCIA, com copy própria inteira — a renúncia mais a objeção de custo — que não cabe na boca de um vídeo cuja cena 1 é uma comparação. Como toggle do irmão ele trocaria cena, props, hook, objeção e vilão de uma vez: isso não é botão, é motor.",
+     "colide_com": "botica16 — o único do parque cujo vilão nomeado é a farmácia. Separam: lá é uma MULHER de traje tradicional numa cozinha forrada de potes de ervas, com utensílio em movimento e pool de ingredientes raros, e o vilão existe só na FALA; aqui não há pessoa (só mãos), o vilão está EM QUADRO como objeto e o beat é o descarte físico dele. vick2_16 chega perto pela mão sobre bancada com um pote, mas lá o ângulo é a massagem com a pomada e o pote é USADO, não jogado fora. necrose16 e modelo16 ficam de fora por não terem descarte nenhum.",
+     "prioridade": 2,
+     "risco": "(a) REPERTÓRIO: o beat é lido em UM vídeo só. O hook nasce com uma forma variando por idade — que é o que a página faz — mas se o campo pedir variedade ele só cresce com leitura nova; entrada inventada é o que reprovou o VICK 16, e isso fica escrito no cabeçalho. (b) O frasco é marca implícita de farmácia: o rótulo tem de ser BRANCO e sem nome, porque nome de laboratório em quadro é problema que a exceção ao P12 (feita para a caixa de HORSE GELATIN) não cobre. (c) MODERAÇÃO: baixa, mas 'jogar fora o remédio' pode ler como conselho médico — a lente DE6 proíbe o imperativo e a fala fica em primeira pessoa no passado. (d) O quadro da fonte é escuro (garagem à noite) e o jato é rápido: se o gerador entregar a lata vazia, o hook morre — por isso a pilha no fundo é constante escrita, nunca implícita. (e) Ele repete mais rápido que o irmão: 6 mundos × 4 gestos = 24 combinações contra 42, e o hook é um só. Se o operador rodar os dois no mesmo lote, este é o que satura primeiro."
+    }
+   ],
+   "descartados": [
+    "lavagem16 (v03) — o modelo anatômico lavado pelo jato azul, que se cobre de espuma e volta limpo. Rejeitado por dois motivos somados: (a) colide com o ressurreicao16, cuja mecânica JÁ É a transformação do prop dentro do jato, com escala diferencial medida em pixels; (b) é o único render que temos do beat e ele falhou inteiro — o prop virou massa amorfa, o 'depois' era outro objeto (base redonda virou quadrada, corte sagital virou silicone liso) e o payoff saiu pendente enquanto a fala prometia 'wakes up'. Motor cuja assinatura é um beat com 0 de 1 render aproveitável é compra de risco. Vira, no máximo, uma entrada de GESTOS_T2 do modelo16, com aviso.",
+    "prumo16 (v04) — a câmera a prumo sobre a mesa de piquenique. Enquadramento não é ângulo: vira uma entrada de SUPERFICIES do modelo16, que já carrega a câmera dentro da entrada.",
+    "onze16 (v05) — 'dia um à esquerda, dia onze à direita, mesmo homem, mesmo corpo'. É FORMA DE HOOK, não motor: entra como uma das 6 famílias do modelo16. O mundo (tampa de picape num campo ao pôr do sol) entra como entrada de SUPERFICIES, e é a única entrada outdoor do pool.",
+    "diagnostico16 (v04) — 'qual dos dois é o seu? seja honesto, ninguém vê a sua resposta'. É a melhor sentença do lote inteiro e resolve o CT2 de graça (auto-reconhecimento sem verbo de disfunção, a mesma pendência aberta do organicwave16, do horse16 e do gelahorse16). Mas é uma sentença, não um motor: entra como família de hook do modelo16 e como objeção do descarte16.",
+    "nuca16 (v06) — a pomada azul na própria nuca com o par anatômico na pia. Já é o vick2_16, construído ontem com as 15 cenas da fonte lidas uma a uma. E o próprio v06 é o exemplo do defeito, não a fonte dele: o sachê fica LACRADO os 16 segundos em dois designs diferentes, o mel nunca sai do pote, os dois modelos nunca são tocados nem apontados, e a pomada vai para a NUCA, que não tem relação com a promessa. É o VICK 16 se repetindo — distinção medida sem nexo medido.",
+    "geoduck16 (v01 e o take 3 do v07) — homem de tronco nu erguendo o geoduck ao lado da cabeça. É o payoff do necrose16, que já tem lote validado atrás dele (GEODUCK_PAYOFF, com a spec dimensional obrigatória). E é o desenho MAIS CARO destes sete: exige um rosto idêntico entre dois quadros gerados separadamente, e nos dois vídeos que tentam isso o rosto muda entre as cenas — afro baixo vira halo grande, a barba engrossa, a pinta troca de bochecha e depois vira duas. Vira entrada de mundo do necrose16 (o bar de garagem), não motor.",
+    "mel16-bis — o fio de mel destes sete vídeos não vira nada. Em 5 de 7 o pote é PROP MORTO, intocado num canto da bancada; e onde ele é usado (v02) o fio escorre quatro segundos sem a colher esvaziar. Prop morto não vira eixo; vira LENTE — todo prop listado no IMAGE é tocado no TAKE ou sai da lista.",
+    "garagem16 / banheiro16 — separar por cenário. Rejeitado direto: cenário é o eixo do take 1 do modelo16, e fatiar um eixo em dois motores é o oposto do que a fonte pede. Sete mundos numa pool custa uma linha; sete motores custam sete .exe."
+   ],
+   "raciocinio": "DOIS, e o número sai da leitura, não do gosto. Os 7 vídeos são UMA página rodando UM script: em 7 de 7 estão o mesmo homem negro de ~65, só as mãos, uma superfície, a pouch de HORSE GELATIN, o líquido azul e o CTA `gelatin`. O que varia de verdade são três coisas — a superfície (7 mundos), o gesto (5) e a forma do hook (6). Três eixos numa fonte que varia três eixos é o desenho honesto, e é o oposto do VICK 16, onde sete eixos inventados renderam 0 ERRO em 600 sorteios e um vídeo reprovado no olho.\n\nSETE seria inflar: cinco dos sete são o MESMO quadro — o par anatômico numa superfície com o pó caindo entre eles — trocando o móvel de baixo. Móvel é entrada de pool, não motor.\n\nUM seria comprimir, e o motivo é de CUSTO, não de estética: o v07 é o único take 1 destes sete SEM peça anatômica e SEM prop fálico. Isso não é uma variação do par — é a ausência dele, e a ausência derruba o inventário do quadro de nove props para três e zera o item que a moderação olha. Enfiar isso como toggle do agente do par significaria um botão que troca cena, copy, objeção e vilão de uma vez; a §41 fala de botão que entrega MENOS, e este entregaria OUTRA COISA. Os dois nascem irmãos no molde do prato16/mel16: mesma câmera, mesmas mãos, mesmas constantes de marca e de copo, e UMA variável isolada — a prova é a COMPARAÇÃO ou é a RENÚNCIA. Se o campo mostrar diferença de comentário entre eles, ela é atribuível.\n\nPela minha lente, o achado mais valioso destes sete vídeos não é ângulo nenhum: é a lista de defeitos de render, e ela é quase toda de CONSTÂNCIA, não de repertório. A embalagem trocou de design em 5 de 7; o copo trocou de silhueta em 4; o modelo anatômico mutou em 5; a aliança, a etnia da mão ou a contagem de dedos quebrou em 6; props nasceram do nada no take do CTA em 5; o mundo inteiro trocou no corte em 3. Nenhum desses é problema de pool pequeno — todos são string não travada e inventário aberto. Por isso os dois motores nascem com POUCO eixo e MUITA constante, e a lente mais cara dos dois é a mesma nos dois arquivos: inventário fechado, nada nasce e nada some entre os dois IMAGE.\n\nCusto por vídeo, que é o que decide o rendimento por hora: os dois são 2 imagens (AdBatch Vertical 2) e ZERO rostos — o mais barato que o parque tem, empatado com banho16/horse16/vick2_16 e muito abaixo do necrose16 (homem + lobo), do alfa16 (três pessoas idênticas entre dois quadros) e do good16 (casal). O descarte16 é o mais barato dos dois de renderizar e o mais pobre de repertório lido; o modelo16 é o mais rico de repertório e o único que carrega risco de moderação. Por isso o modelo16 vai primeiro: é o ângulo que a fonte comprova em 6 de 7 e onde as 42 combinações já existem filmadas."
+  },
+  {
+   "agentes": [
+    {
+     "nome": "descarte16",
+     "videos_fonte": [
+      "v07"
+     ],
+     "assinatura": "O frasco âmbar de farmácia virado de boca para baixo sobre a lata de lixo aberta, as cápsulas caindo dentro em jato — e a tigela do preparo AZUL esperando no MESMO quadro, logo acima, na bancada. O que se joga fora e o que se prepara convivem numa imagem só. Nenhum outro vídeo do parque tem lixeira ocupando o terço inferior do quadro.",
+     "eixo_take1": "O MUNDO DO DESCARTE — o lugar e o recipiente onde os comprimidos caem, arrastando junto luz, áudio, superfície e o que está ao redor. Nasce com 3 entradas: 1 LIDA (garagem à noite, lata galvanizada no terço inferior, luminária de braço verde, pegboard de chaves, geladeira branca com decalque de bandeira) + 2 TRANSPOSTAS de mundos lidos nos outros seis vídeos (banheiro: lixeira sob a pia de mármore com janela fosca; picape: a lata na caçamba, campo seco ao pôr do sol). Cada entrada leva o campo `lido` marcado, como no gelahorse16 — pool cresce de vídeo lido, nunca de invenção.",
+     "take2": "Mesmo mundo, sempre (âncora do IMAGE 02 — o ambiente NUNCA vem do take 2). O que muda é o estado da bancada: a lata de lixo sai de quadro porque já pagou, e a tigela azul que estava no canto vem para o centro com o geoduck em pé ao lado. MODO PESSOA decide a geometria: desligado, só as mãos; ligado, ele aparece de tronco nu erguendo o molusco — o quadro final do v07.",
+     "pools": [
+      "MUNDOS_DESCARTE (3: garagem/lata galvanizada [lido] · banheiro/lixeira sob a pia · picape/lata na caçamba)",
+      "REFS_MAOS (18-24 mãos de homem negro 60-75, arquitetura de mão: veias, nós, manchas, unhas — molde do pool REFS do pee16)",
+      "HOOKS_DESCARTE (copy verbatim do v07: `I threw these away at 65.` + variações que o operador carimbar)",
+      "OBJECOES (1 verbatim: `No prescription, no pharmacy, no bill.` — a tríade que é o ângulo)",
+      "MECANISMOS (verbatim: `It cleared the old blood blocking my flow.`)",
+      "CTAS16 (3-4, normalizados: follow ANTES da sentença, `goes to your messages`)"
+     ],
+     "constantes": [
+      "FRASCO — `a plain amber prescription bottle with a blank white pharmacy label`: sem nome de remédio, sem texto pedido ao gerador",
+      "CAPSULA — uma única string de cor+forma, repetida idêntica nas três ocorrências (dentro do frasco, no jato, no fundo da lata). No v07 o frasco tinha esferas amarelo-esverdeadas e caíam cápsulas azuis: o prop do hook desmentia a si mesmo no mesmo quadro",
+      "LIXEIRA — recipiente aberto ocupando o terço inferior do quadro, com o conteúdo já dentro descrito (jornal amassado, aparas de metal)",
+      "TIGELA_AZUL — presente no IMAGE 01 junto com a lixeira; é o par que carrega o ângulo",
+      "SACHE — constante literal única de embalagem, palavra por palavra igual nos dois IMAGE (no v07 ela trocou de sachê achatado para pouch em pé no corte)",
+      "ALIANCA — `a plain gold wedding band` na MESMA mão nos dois takes (no v07 virou prata no último take)",
+      "Câmera descreve ÂNGULO, nunca aparelho — nenhuma ocorrência de `phone`/`filming` em bloco IMAGE"
+     ],
+     "lentes": [
+      "DS1 — a cápsula é UMA string: a mesma constante de cor+forma tem de casar nas 3 ocorrências (frasco, jato, fundo da lata); divergência reprova",
+      "DS2 — `re.search` obrigatório dos DOIS substantivos no IMAGE 01: o recipiente do descarte E a tigela azul. Um sem o outro não é este ângulo",
+      "DS3 — a idade nunca sai partida: reprova `\\b6\\s+5\\b` (o hook do v07 chegou ao espectador como `6 5.`)",
+      "DS4 — a embalagem é constante literal: contagem da string `SACHE` == 1 forma, presente nos dois IMAGE",
+      "DS5 — nenhum nome de medicamento e nenhum texto de rótulo pedido ao gerador: reprova `label reading|printed .* mg|\\b(viagra|cialis|sildenafil)\\b`",
+      "DS6 — reprova `\\b(phone|iPhone|camera|filming)\\b` dentro de bloco IMAGE (lição paga no vick16)",
+      "DS7 — âncora de pessoa: `gold wedding band` presente nos dois takes e reprova `silver|platinum|steel band`",
+      "DS8 — a tríade da objeção fica ANTES da sentença do CTA (CT1), e nenhum `follow` na fala (CT8)",
+      "DS9 — `lint_copy16` cheio (CT1/CT2/CT3/CT4/CT4b/CT6/CT7) + `lint_anticeleb` + `lint_cta_literal` em `Comment gelatin,`"
+     ],
+     "porque_nao_e_variante": "Porque o hook não é uma comparação nem uma preparação — é um DESCARTE, e ele carrega uma objeção que nenhum dos 28 ataca: o custo e a vergonha da receita médica. Os outros vídeos do lote abrem no par de peças; este abre num gesto de recusa, e o par nem aparece. Enfiar `jogar o remédio fora` como gesto dentro de um motor de comparação faria a lixeira aparecer num quadro que a fala não explica — o defeito exato do v06, onde o par vira cenário morto. E o eixo é próprio: o mundo do descarte (onde cai o comprimido) não existe como pool em motor nenhum.",
+     "colide_com": "botica16 — lá o vilão também é a farmácia, e é nomeado já na fonte. O que separa: no botica16 quem fala é uma MULHER de traje tradicional numa cozinha forrada de potes de ervas, com utensílio em movimento e pool de ingredientes raros, e a prova é o preparo; aqui é um homem de 65 numa garagem, não há ervas, não há utensílio, e a prova é o gesto físico de jogar o frasco fora — a farmácia é atacada por AÇÃO, não por fala. E o botica16 é 2 takes de cozinha; este nunca sai da bancada de trabalho masculina.",
+     "risco": "1) Pool de UM vídeo lido: nasce pequeno, como o horse16 nasceu com 5 ações — e as duas entradas transpostas têm de sair marcadas como não lidas. 2) Moderação: mostrar remédio sendo descartado encosta em conselho médico; a defesa é o frasco anônimo (sem nome, sem mg) e a fala nunca dizer para ninguém parar nada — a fala é sobre ELE, no passado. 3) O último take do v07 saiu com corpo de 35 no rosto de 65 e dentes perfeitos; com MODO PESSOA ligado isso volta, e por isso ele nasce DESLIGADO. 4) A fala do v07 não fura o CT5 (nenhum ingrediente nomeado) — é o único do lote assim, e isso é ativo, não sorte: não inventar ingrediente na copy.",
+     "prioridade": 1
+    },
+    {
+     "nome": "escolha16",
+     "videos_fonte": [
+      "v04"
+     ],
+     "assinatura": "As duas peças anatômicas DEITADAS lado a lado na madeira, vistas de cima a prumo, e o dedo de veias grossas escorregando da rosa para a marrom rachada e parando ali. O espectador é obrigado a apontar uma das duas para si mesmo antes de qualquer mecanismo ser dito — e a fala confirma que ninguém vê a resposta dele.",
+     "eixo_take1": "A SUPERFÍCIE VISTA A PRUMO — a madeira/metal debaixo do par, com a luz e o áudio que vêm com ela. Nasce com 4 entradas: 1 LIDA em top-down (mesa de piquenique de pinho cinzento no gramado, luz de céu encoberto, v04) + 3 TRANSPOSTAS de superfícies lidas nos outros vídeos (bancada de garagem com serragem; tampa de picape riscada em campo seco; bancada de mármore de banheiro). Só a câmera é transposta, nunca o mundo — e cada entrada leva `lido` marcado.",
+     "take2": "Mesma superfície, mesma prumada, mesma altura de lente (é a única coisa que costura dois quadros gerados separados quando não há rosto nem corpo). O que muda é quem sobrou em quadro: a mão empurra a peça rachada para fora e o copo pronto entra ao lado da que ficou. ⛔ NÃO há morph — o v04 prometeu `the right one becomes the left one` e pagou com a peça SUMINDO no corte; prometer transformação e não filmá-la é o defeito nº1 do vídeo. Como pagar a promessa é decisão do operador (alçada), e a lente cobra que a fala não prometa o que a IMAGE não descreve.",
+     "pools": [
+      "SUPERFICIES_TOPDOWN (4: mesa de piquenique [lida] · bancada de garagem · tampa de picape · bancada de banheiro)",
+      "PERGUNTAS (nasce com 1 verbatim: `Which one is yours?` + `Be honest, nobody can see your answer.` — cresce só por carimbo do operador)",
+      "REFS_MAOS (18-24 mãos, mesma arquitetura do descarte16 — sem rosto, a mão É a pessoa)",
+      "MECANISMOS (verbatim + os do lote, sem ingrediente nomeado)",
+      "CTAS16 (3-4, follow antes, `goes to your messages`)"
+     ],
+     "constantes": [
+      "CAMERA — `locked top-down overhead, straight down at the surface, squared to the frame, no tilt`: é a assinatura inteira",
+      "PAR_DEITADO — as duas peças `lying flat`, NUNCA em pedestal (é a geometria que impede este agente de convergir para o pedestal16, como TRIO e DUPLA se separam por geometria)",
+      "PAR — abertura `an identical ... except`, herdada do NECROSE: sem `identical` o gerador desenha duas espécies e a comparação morre",
+      "PLAQUINHAS SEM TEXTO — nenhuma etiqueta com palavra pedida ao gerador (no v04 a plaquinha saiu `MODEᒷL`)",
+      "ALIANCA + tom de pele em string única nos dois takes (no v04 a aliança sumiu justamente no take do payoff)",
+      "SACHE — constante literal única nos dois IMAGE (no v04 ele saiu espelhado e com duas tipografias diferentes)"
+     ],
+     "lentes": [
+      "EC1 — a câmera é a prumo: exige `directly overhead` + `straight down` e reprova `eye level|three-quarter|low angle|over-the-shoulder`",
+      "EC2 — as peças estão DEITADAS: exige `lying flat` e reprova `upright|standing|mounted on a slim chrome stand` — a trava que separa do pedestal16",
+      "EC3 — o take 1 carrega pergunta em 2ª pessoa: exige `\\byour\\b` e um `?` na fala do take 1",
+      "EC4 — a permissão mora na MESMA cena da pergunta (`nobody can see`), porque é ela que baixa o custo de comentar; sem ela o ângulo perde o que tem de melhor",
+      "EC5 — `identical` obrigatório na abertura da segunda peça",
+      "EC6 — nenhuma etiqueta com texto: reprova `tag reading|label reading|printed .* MODEL`",
+      "EC7 — escala: se houver diferença de tamanho declarada entre as peças, ela é em UM eixo só — reprova `longer` E `thicker` na mesma peça (escala uniforme lê como inchaço, lição paga no RESSURREICAO; no v04 a rosa cresceu 30% nos dois eixos)",
+      "EC8 — a fala do take 2 não promete transformação que a IMAGE 02 não descreve: reprova `becomes|turns into|transforms` sem cláusula de morph no bloco de imagem",
+      "EC9 — `gold wedding band` e a mesma descrição de pele nos DOIS takes (sem rosto, a mão é a única âncora)",
+      "EC10 — `lint_copy16` cheio + `lint_anticeleb`; CT2 medido e provavelmente em DESLIGADAS, porque quem enuncia a falha aqui é a PERGUNTA, não um verbo de disfunção — mesma pendência do organicwave16 e do horse16"
+     ],
+     "porque_nao_e_variante": "Porque a geometria é a assinatura, e o repo já decidiu que geometria separa agente: TRIO e DUPLA convivem só por causa de quem está em pé e quem está atrás. Aqui a câmera a prumo com as peças deitadas é uma imagem que NENHUM dos 28 tem — todos os motores do parque filmam à altura do peito ou em POV inclinado. E a função da copy também é outra: os outros comparam PARA o espectador; este obriga ele a escolher, o que resolve o CT2 em três palavras e ainda desarma a vergonha de comentar, que é o custo do KPI inteiro. Virar isso um eixo de câmera dentro de um motor de comparação seria empilhar eixo — o pecado do VICK 16.",
+     "colide_com": "necrose16 — é o mesmo par de peças, os mesmos pedestais de origem, o mesmo geoduck no repertório. O que separa: no necrose16 as peças estão SEMPRE de pé em suporte cromado, à altura do peito, nas mãos de um arquétipo (montanhês/cowboy) com chapéu e um animal vivo em quadro, e a comparação é apresentada por alguém; aqui não há pessoa, não há animal, não há suporte, a lente está a prumo e a comparação é uma PERGUNTA. Segundo mais próximo: dupla16 (o antes e o depois no mesmo quadro) — lá são duas mulheres em pé com dois props, aqui não há gente nenhuma.",
+     "risco": "1) Uma leitura ótica só (v04) e três superfícies transpostas: é o pool mais magro dos quatro, e a honestidade obriga marcar as três como não lidas. 2) A pergunta é COPY, e copy é alçada do operador — o pool nasce com as duas sentenças verbatim e não cresce por minha conta. 3) O payoff é o buraco do ângulo: a fonte não filmou a transformação. Se o operador não quiser morph, o take 2 fica sem beat de mudança e o vídeo pode terminar em still — no v04 os últimos 3,8s são vídeo morto. 4) Top-down é o enquadramento mais barato de manter coerente (sem rosto, sem corpo, objetos parados), então o risco de render é o MENOR do lote — é o que compensa o pool magro.",
+     "prioridade": 2
+    },
+    {
+     "nome": "pedestal16",
+     "videos_fonte": [
+      "v01",
+      "v02",
+      "v05"
+     ],
+     "assinatura": "O par em pedestal cromado DE PÉ na superfície de trabalho do homem — o marrom rachado e o rosa liso — e a receita acontecendo ENTRE os dois: a coluna de pó azul caindo no copo e soltando fumaça azul, o fio de mel descendo atrás, e no segundo quadro o geoduck erguido ao lado do copo pronto. Comparação e preparo no MESMO quadro.",
+     "eixo_take1": "A CENA / O MUNDO onde o par está de pé — a superfície de trabalho, que arrasta luz, áudio, fundo e o que mais está sobre ela. Nasce com 3 entradas, todas LIDAS quadro a quadro: bancada de garagem com pegboard, geladeira e bandeira dos EUA (v01, v02); tampa de picape riscada em campo seco ao pôr do sol (v05); bancada de mármore de banheiro com janela fosca (v06, onde o par aparece de pé mesmo sendo cenário lá). Nada mais é sorteado no take 1.",
+     "take2": "O ambiente vem SEMPRE do take 1 (decisão (b) do gelahorse16 — se o take 2 trouxesse mundo próprio, a bancada mudaria no meio do vídeo). O que o take 2 sorteia é o GESTO, em pool própria de 4 entradas lidas: a coluna de pó azul caindo entre os dois (v02) · o fio de mel da colher sobre o azul (v02) · o copo erguido e estendido à lente (v01) · o geoduck erguido à altura da orelha, sifão saindo pelo topo do quadro (v01, v07). 3 × 4 = 12 combinações, todas medíveis. MODO PESSOA decide se o gesto é de mãos POV (v02, padrão) ou de homem de tronco nu em quadro (v01).",
+     "pools": [
+      "CENAS_T1 (3, todas lidas: bancada de garagem · tampa de picape · bancada de banheiro)",
+      "GESTOS_T2 (4, todos lidos: pó azul · fio de mel · copo estendido · geoduck erguido)",
+      "REFS_MAOS (18-24, arquitetura de mão de homem negro 60-75)",
+      "HOOKS (3 famílias verbatim: `At 65, my wife asked what changed.` · `The left one is what age does.` · `Day one on the left. Day eleven on the right.`)",
+      "MECANISMOS (verbatim do lote, com a decisão de CT5 do operador)",
+      "CTAS16 (3-4 normalizados)"
+     ],
+     "constantes": [
+      "PAR — as duas peças com a mesma GEOMETRIA escrita (bexiga, eixo longo, glândula) e abertura `an identical ... except`, copiadas literalmente do necrose16: sem isso o gerador desenha dois objetos de espécies diferentes",
+      "MONTAGEM — a haste ENTRA na peça e a base é a mesma nos dois takes (no v01 a haste passava na FRENTE do modelo rosa e os dois flutuavam; no v01 os pedestais sumiram na cena do CTA)",
+      "VASILHAME — uma string de copo só, idêntica nos dois IMAGE (o v01 teve três silhuetas em seis segundos; o v02, três copos diferentes em três cenas)",
+      "ESTADO DO LÍQUIDO — água transparente no IMAGE 01, azul no IMAGE 02, e o nível SOBE depois do despejo (no v04 o copo já estava azul antes da mão despejar)",
+      "SACHE — constante literal única, palavra por palavra igual nos dois IMAGE (trocou de design em 5 dos 7 vídeos, e num deles o cavalo virou alce)",
+      "GEODUCK — a string do necrose16 com o sifão obrigatório em toda ocorrência, mais a cláusula de imobilidade (no v01 ele perdeu o sifão no quadro do CTA e virou concha de decoração)",
+      "SEM ANIMAL VIVO e sem chapéu — é o que separa do NECROSE em cada linha de prompt",
+      "ALIANCA e tom de pele em string única nos dois takes"
+     ],
+     "lentes": [
+      "PD1 — `identical` obrigatório na abertura da segunda peça (herdada do NECROSE)",
+      "PD2 — a haste ENTRA na peça: exige `set into` e reprova `behind the model|in front of the model`; a base é a mesma string nos dois IMAGE",
+      "PD3 — os DOIS pedestais existem nos DOIS blocos IMAGE: o par não pode evaporar antes do payoff (evaporou em v02 e v04, e no v02 sobrou o disco cromado vazio)",
+      "PD4 — um vasilhame só: reprova mais de uma forma de copo (`tumbler|highball|goblet`) no mesmo vídeo",
+      "PD5 — estado do líquido casa com o corte: reprova `blue` no IMAGE 01 e exige `blue` no IMAGE 02",
+      "PD6 — a embalagem é constante literal, contagem == 1 forma, presente nos dois IMAGE",
+      "PD7 — reprova `\\b(horse|wolf|bull|dog|goose|duck)\\b` em bloco IMAGE — sem animal vivo, ordem já paga no horse16 e o que separa do NECROSE",
+      "PD8 — toda ocorrência do molusco carrega `siphon` (o prop que sustenta a promessa de tamanho não pode virar concha fechada no CTA)",
+      "PD9 — `gold wedding band` na MESMA mão nos dois takes; reprova segunda aliança (o v02 tinha duas mãos direitas e o v03 duas alianças)",
+      "PD10 — reprova `\\b(phone|camera|filming)\\b` em bloco IMAGE",
+      "PD11 — `lint_copy16` cheio; CT5 medido e a decisão do operador registrada em DESLIGADAS se ele quiser a fala verbatim (a fonte nomeia `gelatin trick and cold water`, `honey`, `three ingredients`)",
+      "PD12 — `lint_anticeleb` + `lint_cta_literal` em `Comment gelatin,`"
+     ],
+     "porque_nao_e_variante": "O eixo próprio é o GESTO DA RECEITA ENTRE AS DUAS PEÇAS, e o necrose16 não tem gesto nenhum: a imagem da cena 2 dele é o payoff parado (o geoduck erguido), e a receita mora só na fala. Aqui a receita ACONTECE em quadro entre os dois modelos — o pó que fuma, o mel que desce, o copo que fica azul — e é isso que faz o vídeo funcionar no mudo. Somar essa pool de gestos ao necrose16 obrigaria a trocar a imagem de take 2 dele, que é a peça que faz o dêictico `like this` ter no que apontar; seria cirurgia num motor que funciona, não expansão.",
+     "colide_com": "necrose16, e a colisão é a mais séria das quatro: mesmas peças, mesmo suporte cromado, mesmo geoduck de payoff, e o pool MESAS dele já tem `the open tailgate of an old pickup truck` e `a workbench of rough sawn planks` — ou seja, dois dos meus três mundos. O que separa, linha a linha: no necrose16 há SEMPRE uma pessoa em quadro, com chapéu, arquétipo (montanhês/cowboy) e um ANIMAL VIVO ao lado, ao ar livre, e a cena 2 é uma imagem parada; aqui não há chapéu, não há animal, o padrão é POV de mãos dentro de casa e o take 2 é um gesto de preparo sorteado. Segundo mais próximo: horse16 (a bancada do bar de garagem, só as mãos, a receita acontecendo, a marca em quadro) — lá a prova é a mulher de toalha sentada atrás e a caixa; aqui não há mulher nenhuma e a prova é o par.",
+     "risco": "1) A colisão com o necrose16 é grande o bastante para o operador preferir a outra saída: uma família nova de ARQUETIPO lá dentro (`mãos, sem pessoa, dentro de casa`) mais uma imagem de take 2 nova. Se ele preferir isso, este motor não nasce — e a decisão é dele, não minha. 2) É o ângulo mais caro de renderizar do lote: o par foi o prop que mais quebrou nas leituras — pedestal que some, modelo que encolhe e volta, testículo solto, haste na frente da peça, escala mudando dentro da mesma cena. Cada uma dessas viraria lente, e lente não conserta gerador. 3) A fala da fonte fura o CT5 em v01 e v02; manter verbatim exige exceção declarada, como prato16/mel16/horse16 — e aí são cinco motores testando a mesma hipótese, o que dilui a comparação de campo que o operador quer fazer.",
+     "prioridade": 3
+    },
+    {
+     "nome": "lavagem16",
+     "videos_fonte": [
+      "v03"
+     ],
+     "assinatura": "A peça anatômica sendo LAVADA sob o chuveiro correndo: o copo azul despejado por cima dela e a espuma branca subindo pelo corpo da peça e escorrendo pela haste até o balcão. A promessa `clears the old blood` virando imagem, sem uma palavra nomear o órgão — e o vapor do banheiro no fundo, que nenhum outro vídeo do lote tem.",
+     "eixo_take1": "O CANTO DO BANHEIRO onde a peça está sob água corrente — cada entrada arrasta azulejo, chuveiro, toalha, bancada, luz e o eco do ladrilho. Nasce com 3 entradas LIDAS: box de azulejo bege-taupe com chuveiro de mão em mangueira e peitoril de meia-parede em pedra (v03 takes 1-2); bancada de granito cinza com coluna de ducha de teto e box sem caixilho (v03 take 3); vanity de mármore branco com janela fosca e parede verde-sálvia (v06).",
+     "take2": "Mesmo canto do banheiro, MESMA peça, MESMA base — as três são constantes literais e a lente cobra que apareçam idênticas nos dois blocos IMAGE. O que muda é só o estado da SUPERFÍCIE da peça: seca, escura e rachada no take 1; sob a espuma e lisa no take 2. ⛔ A peça do depois não pode ser outro objeto — no v03 o antes era um corte sagital de pelve em bronze sobre base redonda e o depois era uma peça de silicone rosa lisa sobre base quadrada, e a comparação inteira caiu por isso.",
+     "pools": [
+      "CANTOS_BANHEIRO (3, todos lidos: box com chuveiro de mão · granito com ducha de teto · vanity com janela fosca)",
+      "REFS_MAOS (18-24, mãos de homem negro 60-75)",
+      "HOOKS (verbatim: `This is what 65 did to mine.` + `Watch what one glass does to it.`)",
+      "MECANISMOS (verbatim: `The gelatin trick clears the old blood blocking your flow.`)",
+      "CTAS16 (3-4 normalizados, com o apelido sancionado do CT4b substituindo o pronome solto)"
+     ],
+     "constantes": [
+      "PECA — uma string de geometria só, idêntica nos dois IMAGE; é a única coisa que atravessa o corte neste ângulo",
+      "BASE — mesma haste e mesma base nos dois takes (redonda virou quadrada no v03)",
+      "AGUA CORRENTE — `running shower` obrigatório nos dois takes: é ela que dá o mundo e o áudio",
+      "ESPUMA COMO LIMPEZA, nunca dissolução — a peça não escorre, não vira poça, não perde contorno",
+      "SEM ROSTO EM QUADRO — o figurante de 1,3s do v03, que entra, estende a mão, não pega em nada e sai, é defeito e não beat",
+      "COPO — o mesmo copo nos dois takes, e ele ESVAZIA durante o despejo (no v03 o volume não baixava e o líquido renderizava como bloco chapado)",
+      "SACHE — constante literal única nos dois IMAGE"
+     ],
+     "lentes": [
+      "LV1 — é UMA peça, não um par: reprova `On the left ... On the right` — a geometria que separa do pedestal16 e do escolha16",
+      "LV2 — a MESMA peça atravessa o corte: a constante de geometria aparece idêntica nos dois IMAGE; divergência de uma palavra reprova",
+      "LV3 — a base/haste é a mesma string nos dois IMAGE",
+      "LV4 — o take 2 descreve LIMPEZA: reprova `dissolving|melting|running down into a pool|amorphous|losing its shape`",
+      "LV5 — `running shower` presente nos dois blocos IMAGE",
+      "LV6 — o azulejo, a toalha e a bancada dos dois takes saem da MESMA entrada de mundo (âncora do IMAGE 02); reprova segunda descrição de banheiro",
+      "LV7 — nenhum rosto: reprova `a man steps in|his face|looking down at the counter` em bloco IMAGE",
+      "LV8 — teste WTF: a fala não pode carregar a falha só em pronome — reprova take 1 sem o apelido sancionado do CT4b quando `mine|it|the whole thing` for o único sujeito (no v03 o órgão nunca é nomeado e a copy não compra nada no áudio sozinho)",
+      "LV9 — o copo esvazia: exige a cláusula de nível descendo no TAKE",
+      "LV10 — `lint_copy16` cheio + `lint_anticeleb`"
+     ],
+     "porque_nao_e_variante": "Porque a promessa é outra e o espectador não confunde: os outros três mostram DUAS coisas para comparar, ou um gesto de recusa; este mostra UMA coisa mudando na tela enquanto a água corre. É a única imagem do lote em que o mecanismo que a VSL vende — desentupir o fluxo — acontece literalmente em quadro, e é a única que tem vapor e ruído de chuveiro. Enfiar a lavagem como gesto de take 2 do pedestal16 exigiria lavar a peça na bancada seca da garagem, com o par ao lado: seria cena construída, não cena lida — exatamente o que reprovou o VICK 16.",
+     "colide_com": "ressurreicao16 — lá o despejo também transforma o prop na tela. O que separa: no ressurreicao16 a transformação é CRESCIMENTO, com escala diferencial medida em pixels (altura 2,31× contra largura 1,44×), o prop é fálico e o morph mora escondido dentro do jato de pó; aqui a transformação é LIMPEZA, o objeto é uma peça anatômica de ensino em pedestal, e o que muda é a superfície, não o tamanho. Segundo mais próximo: a família banho16 (banheiro, POV, água correndo, mãos) — nenhum dos três tem peça anatômica em quadro, e a peça central de lá é o instrumento de medida parado e intocado.",
+     "risco": "1) É o render mais arriscado do lote e a fonte prova: no v03 a peça derreteu em vez de limpar, o antes e o depois eram dois objetos diferentes, o mundo inteiro trocou no segundo corte e o payoff saiu com o eixo pendente enquanto a fala dizia `the whole thing wakes up`. Lente não conserta gerador — se a espuma continuar lendo como dissolução, o ângulo não fecha. 2) A família banho já tem TRÊS motores; um quarto banheiro no parque pesa na escolha do operador. 3) A copy da fonte nunca nomeia o órgão (`mine`, `it`, `the whole thing`) — é drifting pela lei do repo, e a reescrita é alçada do operador. 4) Pool de um vídeo lido e meio (v03 dá dois cantos, v06 dá o terceiro).",
+     "prioridade": 4
+    }
+   ],
+   "descartados": [
+    "v06 (a pomada azul passada na própria NUCA, com o par de modelos na bancada atrás) — NÃO vira agente: o vick2_16 já é exatamente isso, e por ordem do operador, que reconstruiu o VICK inteiro justamente porque a v1 tinha ignorado os quatro vídeos-fonte em que o homem passa a pomada na nuca e no peito. Somar `o par ao fundo` a ele não é ângulo novo — e no v06 o par nunca é tocado, nunca é apontado e nunca é comparado: é cenário morto, junto com o sachê que fica LACRADO os 16 segundos enquanto o que entra na tigela é pomada de peito. Esse vídeo é a lição do VICK 16 se repetindo na própria fonte: cada elemento distinto e caro, o quadro inteiro sem nexo. Ele entra como leitura de mundo (a bancada de banheiro) nos pools do pedestal16 e do lavagem16, e mais nada.",
+    "v05 como motor próprio (a tampa da picape em campo seco, `day one / day eleven`) — NÃO: no mudo a imagem é a mesma do v01/v02 (o par de pé em suporte cromado + o pó azul caindo no copo); o que muda é o MUNDO, e mundo sozinho nunca foi agente neste repo — é entrada de pool. Pior: o `MESAS` do necrose16 já tem `the open tailgate of an old pickup truck`. E o `day one / day eleven` é família de COPY (protocolo datado), que por definição da lente vira pool dentro do pedestal16.",
+    "v01 como motor próprio (o homem de tronco nu erguendo o geoduck na garagem) — NÃO: é o v02 com a pessoa em quadro. Pessoa em quadro é TOGGLE no parque desde o `MODO PESSOA` do banho16, e o precedente é medido (1 reel em 7 tinha gente e virou botão, não motor). Vira o estado ligado do MODO PESSOA do pedestal16.",
+    "UM motor único com as 7 cenas, no molde do vick2_16 e do gelahorse16 — foi a arquitetura que mais considerei, e ela cai no teste da assinatura: `jogar o remédio fora`, `qual das duas é a sua` e `veja o que um copo faz com ela` são TRÊS PROMESSAS diferentes, não três cenas da mesma promessa. O que segura o vick2_16 é uma constante forte (o pote de VapoRub em 13 dos 15 e a massagem no corpo); aqui a constante que sobra é `o par em algum lugar fazendo alguma coisa`, e um motor que sorteia promessa não tem assinatura. Assinatura é o que o espectador não confunde.",
+    "UM agente do GEODUCK ERGUIDO — o molusco aparece em 3 dos 7, mas SEMPRE como payoff do último quadro, nunca como hook. Payoff não é eixo: é o que o eixo paga. E o necrose16 já tem a string dele travada, com a cláusula de imobilidade e o `no bird, no goose, no duck`.",
+    "UM agente da COR AZUL (o preparo que floresce em azul, presente nos 7) — cor não é beat visual, é atributo. Vira eixo de cor dentro de cada motor, como a cor da gelatina já é no prato16 — e lá ela atravessa três objetos justamente porque cubo verde virando bebida roxa é a incoerência que o espectador perdoa menos.",
+    "UM agente da EMBALAGEM `HORSE GELATIN` — a marca está nos 7 e o horse16 + gelahorse16 já a sustentam, os dois com exceção declarada ao P12. Aqui ela é constante travada nos quatro motores propostos, não ângulo: em 5 dos 7 vídeos ela trocou de design DENTRO do vídeo, e o conserto é uma constante literal, não um motor."
+   ],
+   "raciocinio": "QUATRO — e o número saiu de uma conta, não de gosto. Os 7 vídeos são UMA máquina só: mesmo homem (negro, 65, aliança de ouro, quase sempre só as mãos), mesmo sachê Horse Gelatin, mesmo pote de mel, mesmo preparo azul, mesmo `old blood blocking my flow`, mesmo `comment gelatin`. O que essa máquina varia de vídeo para vídeo são DUAS coisas: o MUNDO (garagem ×3, banheiro ×2, mesa de piquenique ×1, tampa de picape ×1) e o BEAT-HERÓI (apresentar o par · despejar o pó entre os dois · apontar e escolher · lavar a peça · passar a pomada na nuca · jogar os comprimidos fora). Mundo é pool — nunca foi agente neste repo. Então o que decide o número é o beat-herói, e são seis. Passando os seis pela lente da assinatura: `passar a pomada na nuca` já tem dono (vick2_16, e no v06 o par de peças é cenário morto — a incoerência que reprovou o VICK 16, na própria fonte); `apresentar o par` e `despejar o pó` são o mesmo quadro com e sem pessoa, e pessoa em quadro é toggle desde o banho16. Sobram QUATRO beats que o espectador não confunde no mudo: o descarte na lata de lixo, a prumada com as peças deitadas e o dedo escolhendo, o par de pé com a receita acontecendo entre os dois, e a peça lavada sob o chuveiro. Não comprimi para três porque `duas peças de pé numa bancada` e `duas peças deitadas vistas de cima` é a mesma diferença que faz TRIO e DUPLA conviverem — geometria separa agente neste repo, e está medido. Não inflei para cinco ou seis porque a picape é mundo e o tronco nu é botão. ⚠️ E a honestidade custa dizer o resto: dos quatro, só o pedestal16 nasce com três vídeos lidos; os outros três nascem com um ou dois, e a dívida vai declarada em cada um — pool cresce de vídeo lido, nunca de invenção. ⛔ O pedestal16 é também o único cuja existência eu deixaria o operador vetar: a colisão com o necrose16 é grande (mesmas peças, mesmo suporte, mesmo geoduck, e o `MESAS` de lá já tem a bancada e a tampa da picape), e a saída alternativa — família nova de arquétipo lá dentro, mais uma imagem de take 2 — é defensável. O que o separa de verdade é UM eixo que o necrose16 não tem: o gesto da receita acontecendo entre as duas peças. Se esse eixo não sobreviver à leitura do operador, o motor não nasce. E vale para os quatro a mesma advertência que a leitura ótica gritou em 7 de 7 vídeos: o defeito dominante da fonte não é copy nem cena, é CONSTÂNCIA DE PROP — a embalagem trocou de design em 5 dos 7, o copo em 4, o par evaporou em 3, a aliança trocou de metal e de mão em 3. Por isso a maior parte das lentes que propus não mede variedade: mede que a MESMA string chegue igual aos dois blocos IMAGE."
+  }
+ ]
+}
