@@ -50,15 +50,52 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **vinte e cinco agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **vinte e oito agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
 `colo16` · `exterior16` · `escandalo16` · `ressurreicao16` · `flagrante16` ·
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
 `prato16` · `banho16` · `banho16_v2` · `mel16` · `organicwave16` ·
-**`banho16_3t`** · `horse16` · (+ `clean_v1_16s`/`clean_v2_16s`, do outro autor
-— 27 no total)
+**`banho16_3t`** · `horse16` · `vick16` · **`vick2_16`** · **`gelahorse16`** ·
+(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 30 no total)
+
+⭐⭐ **`gelahorse16` (2026-08-16) — os treze reels da Healthy Men's Guide, e a
+CENA e o GESTO como dois eixos separados.** ⛔ **Não substitui o `horse16`**:
+aquele saiu de **um** reel da mesma página (a bancada do bar de garagem), este
+lê os treze. ⭐ **O take 1 sorteia a CENA** — 6 entradas, uma por reel lido
+quadro a quadro — e **o take 2 sorteia o GESTO**, 4 entradas em pool própria:
+24 combinações, todas medidas. ⛔ **Mas o ambiente vem sempre do take 1.** Se o
+gesto arrastasse a cozinha dele junto, o segundo quadro mudaria de lugar no
+meio do vídeo — o defeito que a âncora do IMAGE 02 existe para impedir.
+⭐ **Toda fala é verbatim**, cada beat com o `v` do reel de origem.
+⛔ **Menos a palavra do CTA, e isso é conserto**: dos 13 CTAs da fonte, **sete
+pedem `yes` e três pedem `horse`** — as duas quebram a automação de DM. Nasce
+em `gelatin`, trocável no campo de keyword da UI. ⛔ **Sem cavalo**, por ordem
+— quem sustenta o nome é o rótulo da caixa, e a exceção ao P12 pesa por isso.
+⚠️ **Três exceções em `DESLIGADAS`, todas por FIDELIDADE:** CT5 (a fonte nomeia
+a receita em 13 de 13 — mesma hipótese do PRATO/MEL), **CT2 91%** (7 dos 10
+hooks são a família **social**, `my wife was about to leave me`, e o regex lê
+verbo de disfunção) e **CT6 75%** (1 dos 3 CTAs diz onde a receita chega).
+⏳ **Dívida declarada: 7 dos 13 reels ainda sem leitura ótica** — pool cresce de
+vídeo lido, nunca de invenção. **Medido: 0 ERRO em 400 sorteios, 24/24
+combinações alcançáveis, 34 falas distintas no take 1 e 19 no take 2.**
+
+⭐ **`vick16` / `vick2_16` (2026-08-15) — a pomada azul, e a lição mais cara da
+semana.** O `vick16` nasceu com 7.153 linhas, pools de 100 entradas por eixo e
+**0 ERRO em 600 sorteios** — e foi **reprovado olhando o vídeo**: *"as cenas
+ficaram com muito elemento visual sem nexo e as copys completamente em drifting
+copy"*. ⛔⛔ **Distinção medida não é nexo medido**: sete eixos empilhados, cada
+PAR passando numa lente e o QUADRO INTEIRO nunca verificado — cem elementos
+distintos viraram cem elementos **soltos**, enquanto a fonte varia praticamente
+**um** (a superfície). Reconstruído pequeno e fiel no mesmo dia. ⛔ O `vick2_16`
+é a segunda tentativa, com **cada cena dos 15 vídeos-fonte como pool do take 1**
+e a **massagem** (região do corpo como eixo) que a fonte tem e a v1 ignorou.
+⚠️ **E o `vick16` seguiu rodável e o operador gerou um lote inteiro com ele**:
+os prompts diziam `with the phone in his free hand` e o gerador **desenhou o
+telefone**. Consertado em 2026-08-16 — a câmera descreve o **ângulo**, nunca o
+aparelho, e **sem** `no phone in frame`, porque negação injeta o token.
+⛔ **Agente reprovado que continua executável é armadilha.**
 
 ⭐⭐ **`horse16` (2026-08-14) — a bancada do bar de garagem, e a primeira fonte
 que já nasce em dois takes.** Nasceu por cópia literal do `banho16_v2`, que é o
