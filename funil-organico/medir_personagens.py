@@ -89,9 +89,25 @@ EIXOS = {
     # cena seguinte. ⛔ so' do lado distintivo: cicatriz limpa, mecha, pinta.
     # dente lascado / palpebra caida viram mendigo e matam a credibilidade
     # (licoes-producao-veo §REF — DISTINTIVO, NUNCA DETERIORADO).
+    # ⭐ 2026-08-16: o eixo passou a falar tambem a lingua da MAO. Seis pools
+    # do parque nao tem rosto (os tres BANHO, o HORSE, o PAR 16 e o DESCARTE
+    # 16) e a ancora migrou para calo, queimadura, dedo torto, unha lascada e
+    # junta deformada. O medidor acusava `ancora 0/N` e o que faltava era
+    # vocabulario dele, nao marca no pool.
+    # ⛔ O teste continua o mesmo: DISTINTIVA E PERMANENTE, nunca deterioracao
+    # generica. `wrinkled`, `rough`, `dry` e `weathered` ficam de FORA — sao
+    # textura, e textura mora no eixo `pele`. Os controles negativos cobram.
     "ancora":  r"\b(scars?|birthmark\w*|moles?|streak\w*|notched|dimple\w*|"
                r"cleft|gap between|beauty mark|crown|stud|hoop|"
-               r"patch of white|white streak|silver streak)\b",
+               r"patch of white|white streak|silver streak|"
+               r"call?us(es)?|calloused|burn marks?|chipped nails?|"
+               r"cracked nails?|split nails?|missing nails?|"
+               r"crooked (left |right )?(index|middle|ring|little|"
+               r"fore)?fingers?|bent (index|middle|ring|little)?fingers?|"
+               r"old break|knuckles? (that )?sits? (high|low)|"
+               r"swollen (arthritic )?knuckles?|arthritic knuckles?|"
+               r"knobbed knuckles?|cracked dry creases|nicks?|"
+               r"ink stains?|tattoo\w*)\b",
 }
 
 # ⭐ CONTROLES DO PROPRIO MEDIDOR. Este arquivo ja' mentiu TRES vezes (ver
@@ -122,8 +138,19 @@ CONTROLES = {
                     [u"a heavy gray-brown mop combed forward"]),
     "ancora": ([u"a thin scar through her right eyebrow",
                 u"a coin-sized dark birthmark on his crown",
-                u"a wide gap between her front teeth"],
-               [u"a printed housedress"]),
+                u"a wide gap between her front teeth",
+                # ⭐ as cinco de MAO, uma por forma de ancora
+                u"a hard yellow callus along the right palm edge",
+                u"a shiny burn mark on the right thumb pad",
+                u"a crooked left little finger set from an old break",
+                u"one chipped nail on the left ring finger",
+                u"swollen arthritic knuckles on both middle fingers"],
+               [u"a printed housedress",
+                # ⛔ OS FALSOS POSITIVOS QUE ESTA AMPLIACAO PODIA CRIAR:
+                # textura de pele NAO e' ancora, e ja' tem eixo proprio.
+                u"deeply wrinkled weathered skin across the backs",
+                u"rough dry hands with high ropey veins",
+                u"short blunt nails and thick square knuckles"]),
 }
 
 
@@ -198,10 +225,20 @@ def _autoteste_leitura():
 # o elenco masculino do ESCANDALO, do TROCA e do ORGANICWAVE inteiro nunca foi
 # medido, e o organicwave_short.py nao aparecia UMA VEZ no relatorio. Gate que
 # nao ve o pool nao reprova o pool: ele so' produz um "passou" mentiroso.
+# ⛔⛔ `MAOS` ENTROU EM 2026-08-16, e o buraco era grande: os QUATRO motores sem
+# rosto do parque (`descarte16` e os tres BANHO) descrevem a pessoa inteira num
+# pool chamado MAOS, e este regex nao o conhecia. O `descarte16` nao aparecia em
+# UMA linha do relatorio — 93 blocos de motor, nenhum deles ele. ⚠️ Nos tres
+# BANHO o buraco era menor porque eles tambem tem `HOMENS`, que era medido; a
+# mao deles nunca foi.
+# ⛔ E o preco de ligar: quatro dos seis eixos (cabelo, pelo_facial, oculos,
+# pele) nao existem em mao nenhuma. Eles entram em EXCECOES abaixo, senao o gate
+# passa a berrar para sempre — e gate que berra para sempre e' gate que ninguem
+# le'. Os eixos que SOBRAM (porte e ancora) sao os que a mao de fato tem.
 NOMES_DE_POOL = re.compile(
     r"^(REFS?|REF|HOMENS|MULHERES|NARRADORAS?|NARRADORES?|VITIMAS?|"
     r"ARQUETIPOS?|PACIENTES?|FIGURANTES?|PLATEIA|TESTEMUNHAS?|CORPOS?_PROVA|"
-    r"MONTANHESES?|ESPECIALISTAS?)(_[A-Z_]+)?$")
+    r"MONTANHESES?|ESPECIALISTAS?|MAOS)(_[A-Z_]+)?$")
 
 # pools que se COMBINAM no sorteio — medir o produto, nao as partes
 COMBINAM = {"randomizador-prisma.py": ["REF_IDADES", "REF_FISICOS", "REF_MARCAS"]}
@@ -246,6 +283,27 @@ EXCECOES = {
         "idem EX5 do exterior_short — corte no peito, sem rosto em quadro",
     ("exterior16_short.py", "HOMENS_SEM_ROSTO", "pelo_facial"): "idem EX5",
     ("exterior16_short.py", "HOMENS_SEM_ROSTO", "oculos"): "idem EX5",
+    # ⭐⭐ PAR 16 (2026-08-16) — O CORTE MAIS ALTO DO PARQUE: nao ha' cabeca,
+    # nao ha' tronco, nao ha' braco acima do cotovelo. O `BLOCO 0 (REF)` E' UMA
+    # FOTO DAS MAOS, e a linha `Nothing above the elbows enters the shot.` esta'
+    # travada nos dois IMAGE. Cobrar barba ou oculos aqui e' pedir para desenhar
+    # exatamente o que a decisao de projeto tirou do enquadramento.
+    # ⚠️⚠️ E ATE' 2026-08-16 ESTE MOTOR NAO EXISTIA PARA O GATE. O pool chamava
+    # `MAOS`, que o `NOMES_DE_POOL` nao casava — o arquivo inteiro evaporava do
+    # relatorio e o gate saia 0 por nao ver nada, nao por estar limpo. E' o
+    # mesmo modo de falha ja' escrito neste arquivo (o `REFS` do trio16, o
+    # `pee16` que nunca estivera na lista): *ausencia nao e' zero*. O `MAOS`
+    # entrou no `NOMES_DE_POOL` — e com ele apareceram tambem os `MAOS` do
+    # `banho16` e do `banho16_3t`, que estavam invisiveis pelo mesmo motivo.
+    # ⛔ `cabelo` NAO entra aqui de proposito: ele mede 1/8, e o unico acerto e'
+    # `coarse grey-white hair over the forearms` — pelo de ANTEBRACO, que esta'
+    # em quadro de verdade. Excecao sobre eixo nao-zerado vira orfa e reprova o
+    # gate; e mais util ele ficar visivel como `magro`, que e' o que ele e'.
+    ("par16_short.py", "MAOS", "pelo_facial"):
+        "PAR16 — sem rosto em quadro: o BLOCO 0 e' uma FOTO DAS MAOS e os dois "
+        "IMAGE travam `Nothing above the elbows enters the shot.`",
+    ("par16_short.py", "MAOS", "oculos"):
+        "idem PAR16 — sem cabeca em quadro, nao ha' onde por oculos",
     # ⛔ COLO — o corte e' MAIS ALTO que o do EXTERIOR: la' e' no peito, aqui e'
     # na CINTURA. Nao ha' cabeca, nao ha' tronco, nao ha' rosto — so' pernas e
     # maos. Cobrar cabelo, barba, oculos ou pele DE ROSTO de um personagem que
@@ -264,6 +322,36 @@ EXCECOES = {
         "herdado do colo_short.py por copia literal.",
     ("colo16_short.py", "NARRADORAS", "oculos"):
         "herdado do colo_short.py por copia literal.",
+    # ⛔⛔ OS QUATRO MOTORES SEM ROSTO — a familia POV do parque. A pessoa
+    # inteira entra pelas MAOS: nao ha' cabeca em quadro, entao cabelo, pelo
+    # facial e oculos nao sao pobreza de pool, sao a geometria do angulo. E
+    # `pele` sai porque o regex dele e' de pele de ROSTO (`deeply lined`,
+    # `laugh lines`, `sun-spotted`): a pele da mao mora no eixo `ancora`, que
+    # continua cobrado e continua cheio (veia, no', calo, greta, cicatriz).
+    # ⚠️ Isto NAO e' anistia: o `descarte16_short.py` cobra os cinco eixos de
+    # mao (veia · no' · marca · unha · dedo) por conta propria, no `--autoteste`.
+    ("descarte16_short.py", "MAOS", "cabelo"):
+        "DE — angulo POV: nao ha' rosto em quadro, so' as maos e os antebracos. "
+        "O `BLOCO 0 (REF)` e' uma FOTO DAS MAOS pela mesma razao.",
+    ("descarte16_short.py", "MAOS", "pelo_facial"): "idem DE — sem rosto",
+    ("descarte16_short.py", "MAOS", "oculos"): "idem DE — sem rosto",
+    ("descarte16_short.py", "MAOS", "pele"):
+        "idem DE — o regex de `pele` e' de pele de ROSTO; a pele da mao mora "
+        "no eixo `ancora`, que e' cobrado e esta' cheio.",
+    ("banho16_short.py", "MAOS", "cabelo"):
+        "BA — mesmo desenho POV do descarte16: camera sem rosto, o narrador "
+        "existe so' pelas maos.",
+    ("banho16_short.py", "MAOS", "pelo_facial"): "idem BA — sem rosto",
+    ("banho16_short.py", "MAOS", "oculos"): "idem BA — sem rosto",
+    ("banho16_short.py", "MAOS", "pele"): "idem BA — pele de mao e' `ancora`",
+    ("banho16_v2_short.py", "MAOS", "cabelo"): "idem BA — herdado por copia",
+    ("banho16_v2_short.py", "MAOS", "pelo_facial"): "idem BA — sem rosto",
+    ("banho16_v2_short.py", "MAOS", "oculos"): "idem BA — sem rosto",
+    ("banho16_v2_short.py", "MAOS", "pele"): "idem BA — pele de mao e' `ancora`",
+    ("banho16_3t_short.py", "MAOS", "cabelo"): "idem BA — herdado por copia",
+    ("banho16_3t_short.py", "MAOS", "pelo_facial"): "idem BA — sem rosto",
+    ("banho16_3t_short.py", "MAOS", "oculos"): "idem BA — sem rosto",
+    ("banho16_3t_short.py", "MAOS", "pele"): "idem BA — pele de mao e' `ancora`",
     ("colo_short.py", "HOMENS", "cabelo"):
         "CO1/CO13 — o homem entra CORTADO NA CINTURA, sem cabeca e sem tronco "
         "em quadro. A identidade dele mora na mao e na calca, nao no rosto.",
