@@ -450,12 +450,17 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
     # ⚠️ PROVADO, nao afirmado: hash das acusacoes de lint() dos 23 motores em
     # 60 sorteios cada, antes e depois — identico em 23 de 23.
     cta = falas[-1]
-    if "gelatin" not in cta.lower():
-        achados.append(("ERRO", "CTA da cena 3 sem a keyword GELATIN"))
-    if "GELATIN" in cta:
+    # ⚠️ As tres travas abaixo saem da keyword ATUAL, nao do literal `gelatin`
+    # (2026-08-15). Cravadas, elas reprovariam em 100% qualquer motor de
+    # keyword trocada — e foi exatamente esse o modo de falha que apagou o CT1
+    # nos tres BANHO sem ninguem ver.
+    _kw = keyword_do_motor(base)
+    if _kw not in cta.lower():
+        achados.append(("ERRO", "CTA da cena 3 sem a keyword %s" % _kw.upper()))
+    if _kw.upper() in cta:
         achados.append(("ERRO", "keyword em CAIXA ALTA no Dialogue: — em ALL "
-                                "CAPS o Veo soletra; usar 'gelatin'"))
-    if "gelatin," not in cta and "gelatin." not in cta:
+                                "CAPS o Veo soletra; usar '%s'" % _kw))
+    if ("%s," % _kw) not in cta and ("%s." % _kw) not in cta:
         achados.append(("ERRO", "keyword sem virgula depois — sem a micro-pausa "
                                 "o Veo emenda e narra 'gelatine'"))
     for tok, motivo in base.BANIDOS_CTA.items():
@@ -522,7 +527,7 @@ def lint_curto(base, spec, blocos, mapa, teto_fala, literais=(),
     lint_take_vs_image(blocos, achados, objetos_ok)
     if falas:
         lint_isca_cta(falas[-1], achados, "a cena 3 (CTA)")
-        lint_cta_literal(falas[-1], achados, "a cena 3 (CTA)")
+        lint_cta_literal(falas[-1], achados, "a cena 3 (CTA)", base)
 
     for f in extras:
         f(spec, blocos, achados)
@@ -725,16 +730,151 @@ def lint_isca_cta(fala_cta, achados, rotulo="a cena do CTA"):
 # para o modelo parafrasear, e parafrasear a keyword e' exatamente a falha que
 # apareceu em campo. Um comando so', repetido em todo video, e' um token fixo
 # que o modelo reproduz em vez de reinterpretar.
+# ---------------------------------------------------------------------------
+# ⭐⭐ E A PALAVRA VIROU CAMPO — 2026-08-15
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"todos os agentes16 meus devem levar um ui ux input
+# pertinente para alterar a palavra chave X do cta (que atualmente esta
+# hardcoded em Gelatin)"*.
+#
+# ⛔⛔ O QUE MUDA E' A KEYWORD, NUNCA O MECANISMO. `gelatin` vive em TRES
+# camadas neste repo, e so' a primeira e' esta:
+#   1. a KEYWORD do CTA (`Comment gelatin,`) — o gatilho da automacao de DM;
+#   2. o MECANISMO (`gelatin trick`) — o que a VSL vende, ~1.010 das 2.003
+#      ocorrencias do parque. Trocar isto quebra a congruencia inviolavel;
+#   3. o ROTULO DA CAIXA em quadro (`HORSE GELATIN`) — cena, alcada do
+#      operador, e o `_ho1_caixa` do HORSE 16 EXIGE.
+# Por isso a troca acontece sobre `spec["falas"]` e com o recorte ancorado em
+# `Comment `: e' o que mantem as tres camadas separadas.
+#
+# ⚠️ E POR QUE NAO REPARAMETRIZAR OS POOLS: 22 motores interpolam a constante
+# (`"%s and ..." % sc.CTA_LITERAL`), mas ~23 cravam a string na copy — 432
+# linhas em 35 arquivos. Redigitar copy validada e' o erro que este repo ja'
+# pagou. A troca e' SUBSTITUICAO VERIFICADA sobre a fala pronta.
+KEYWORD_PADRAO = "gelatin"
+_KEYWORD = KEYWORD_PADRAO
+
+# ⛔ Palavras que NAO podem ser keyword, por fato medido em campo e nao por
+# gosto: a automacao de DM responde a palavra CADASTRADA, e estas tem dono.
+BANIDAS_KEYWORD = {
+    "book": "quebra a automacao de DM — o TRIO 16 herdou `book` da fonte e "
+            "teve de virar `gelatin`",
+    "yes": "quebra a automacao de DM (proibida junto com `book` desde o "
+           "WORKFLOW)",
+    "comment": "e' o proprio verbo do comando — `Comment comment,` nao existe",
+}
+
+
+_KEYWORD_EXPLICITA = False
+
+
+def keyword():
+    """A palavra que o espectador tem de comentar, agora."""
+    return _KEYWORD
+
+
+def keyword_do_motor(base):
+    """A keyword que VALE para ESTE motor.
+
+    ⛔⛔ BURACO ACHADO AO CONSTRUIR O VICK 16, e ele derrubaria os tres BANHO do
+    mesmo jeito: um motor cuja `KEYWORD_NATIVA` nao e' `gelatin` reprovava o
+    proprio CTA em 100% dos sorteios quando rodado FORA do painel — porque as
+    lentes liam a keyword do PROCESSO (`gelatin`, o padrao) e a fala carregava a
+    nativa. O linter acusava copy que esta' certa, que e' a §16 das licoes.
+    ⭐ A regra: se o operador trocou a palavra na tela, vale a dele; se ninguem
+    trocou, vale a que os POOLS deste motor carregam escrita.
+    """
+    if _KEYWORD_EXPLICITA:
+        return _KEYWORD
+    return (getattr(base, "KEYWORD_NATIVA", KEYWORD_PADRAO) or
+            KEYWORD_PADRAO).lower()
+
+
+def cta_literal():
+    """O comando completo, montado da keyword atual."""
+    return "Comment %s," % _KEYWORD
+
+
+def checar_keyword(palavra):
+    """Devolve "" quando a palavra serve, ou a razao de nao servir.
+
+    ⛔ Recusa em vez de avisar: keyword invalida nao produz video ruim — produz
+    video que pede um comentario que NAO ACIONA NADA, e isso so' aparece dias
+    depois, quando o operador estranha que ninguem recebeu a DM.
+    """
+    w = (palavra or "").strip()
+    if not w:
+        return "a keyword nao pode ficar vazia"
+    if not re.fullmatch(r"[A-Za-z]{3,20}", w):
+        return ("keyword tem de ser UMA palavra de 3 a 20 letras, sem espaco, "
+                "numero ou acento — o Whisper transcreve o audio e a automacao "
+                "casa a palavra exata")
+    if w.lower() in BANIDAS_KEYWORD:
+        return "`%s` esta' proibida: %s" % (w.lower(), BANIDAS_KEYWORD[w.lower()])
+    return ""
+
+
+def definir_keyword(palavra):
+    """Troca a keyword do processo. Levanta ValueError se ela nao servir."""
+    global _KEYWORD, CTA_LITERAL
+    motivo = checar_keyword(palavra)
+    if motivo:
+        raise ValueError(motivo)
+    global _KEYWORD_EXPLICITA
+    _KEYWORD = palavra.strip().lower()
+    _KEYWORD_EXPLICITA = True
+    # ⚠️ A constante continua existindo e continua sendo a fonte dos 22 motores
+    # que a interpolam. Ela e' REESCRITA aqui, e nao substituida por uma
+    # funcao, porque `lint_cta_literal` a le' no momento da chamada — e os
+    # pools que ja' a interpolaram no import sao consertados pelo
+    # `trocar_keyword` sobre a fala, que e' o outro lado deste par.
+    CTA_LITERAL = cta_literal()
+    return _KEYWORD
+
+
+# ⚠️ ANCORADO EM `Comment `, e essa ancora e' a feature inteira. Um
+# `replace("gelatin", nova)` cru atingiria `gelatin trick` (o mecanismo) e o
+# rotulo da caixa em quadro — 81% das ocorrencias sao justamente essas.
+# ⚠️ E casa as QUATRO formas medidas no parque: `Comment gelatin,` (39x),
+# `Comment gelatin` sem pontuacao (8x), `Comment gelatin.` (1x) e o
+# `Comment Recipe` de caixa alta e sem virgula do BANHO 16 3T. O grupo 1
+# preserva a capitalizacao original do verbo.
+def trocar_keyword(texto, de, para):
+    """Troca a palavra DO COMANDO do CTA, e nada mais."""
+    if not texto or not de or de.lower() == (para or "").lower():
+        return texto
+    return re.sub(r"\b(Comment\s+)%s\b" % re.escape(de), r"\g<1>" + para,
+                  texto, flags=re.I)
+
+
+def aplicar_keyword(falas, nativa=KEYWORD_PADRAO):
+    """As falas com a keyword ATUAL no lugar da NATIVA do motor.
+
+    ⛔ `nativa` existe porque a palavra ja' NAO era uniforme antes desta
+    feature: os tres BANHO usam `recipe` por ordem de 2026-08-13. Assumir
+    `gelatin` para todos reescreveria uma excecao declarada em silencio.
+    """
+    if _KEYWORD == (nativa or "").lower():
+        return list(falas)
+    return [trocar_keyword(f, nativa, _KEYWORD) for f in falas]
+
+
 CTA_LITERAL = "Comment gelatin,"
 
 
-def lint_cta_literal(fala_cta, achados, rotulo="a cena do CTA"):
-    """O comando tem de ser o literal, sem variacao de verbo."""
-    if CTA_LITERAL not in (fala_cta or ""):
+def lint_cta_literal(fala_cta, achados, rotulo="a cena do CTA", base=None):
+    """O comando tem de ser o literal, sem variacao de verbo.
+
+    ⚠️ `base` opcional: com o modulo do motor em maos a lente usa a keyword
+    NATIVA dele. Sem ele, cai no literal do processo — que e' o comportamento
+    de sempre para os 22 motores que nao declaram nada.
+    """
+    literal = ("Comment %s," % keyword_do_motor(base)) if base else CTA_LITERAL
+    if literal not in (fala_cta or ""):
         achados.append(("ERRO", "%s sem o literal %r — a legenda do video sai "
                                 "do audio, e comando variavel faz o modelo "
                                 "parafrasear a keyword (ordem do operador "
-                                "2026-08-02)" % (rotulo, CTA_LITERAL)))
+                                "2026-08-02)" % (rotulo, literal)))
 
 
 # ###########################################################################
@@ -885,6 +1025,39 @@ INGREDIENTES_16 = re.compile(
     # fecha um buraco sem reprovar producao nenhuma que exista.
     r"lemons?|limes?)\b", re.I)
 
+# ⛔⛔ A EXCLUSAO DA KEYWORD ERA POR AUSENCIA, e ausencia nao acompanha uma
+# palavra que virou campo (2026-08-15). O comentario acima diz *"`gelatin` NAO
+# entra: ela e' a keyword, tem de ser dita"* — verdade enquanto a keyword FOSSE
+# `gelatin`. Com o campo, duas coisas passam a ser possiveis e as duas quebram
+# em silencio:
+#   · a keyword nova ser um item DA LISTA (`honey` e `ginger` sao candidatas
+#     obvias — o repo tem angulo de mel e de cha) e o CT5 reprovar o proprio
+#     CTA em 100% dos sorteios;
+#   · `gelatin` deixar de ser keyword e continuar ISENTA, virando o unico
+#     ingrediente do parque que pode ser entregue de graca na fala.
+# Por isso a regra agora e' declarativa: a keyword ATUAL nunca conta como
+# ingrediente, e `gelatin` volta a contar assim que deixar de ser keyword.
+# ⚠️ `(?!\s+trick)` — e ele custou uma medicao. Sem a exclusao, `gelatin` era
+# contado dentro de `gelatin trick`, que e' o MECANISMO e nao ingrediente: o
+# CT5 reprovava o proprio CTA em 17 dos 25 motores assim que a keyword mudava.
+# O erro era meu, do mesmo tipo que esta feature existe para impedir — confundir
+# as duas camadas da palavra.
+_RX_GELATINA = re.compile(r"\bgelatin[ea]?\b(?!\s+trick)", re.I)
+
+
+def ingrediente_na_fala(txt):
+    """O primeiro ingrediente nomeado na fala, ou None."""
+    kw = keyword()
+    for m in INGREDIENTES_16.finditer(txt or ""):
+        if m.group(0).lower() != kw:
+            return m.group(0)
+    if kw != KEYWORD_PADRAO:
+        m = _RX_GELATINA.search(txt or "")
+        if m:
+            return m.group(0)
+    return None
+
+
 _RX_SENT = re.compile(r"(?<=[.!?])\s+")
 
 
@@ -913,12 +1086,29 @@ def lint_copy16(base, spec, achados, isca_absurda=True):
     # / `Followers get answered first` / `Follow me.` — expectativa negativa,
     # condicional na recompensa, ou um segundo CTA nu. A posicao final e' a
     # que fica; ela tem de ser o pedido.
+    #
+    # ⛔⛔ SAO DUAS PERGUNTAS, E ELAS ERAM UMA SO' — defeito ACHADO EM CAMPO,
+    # nao previsto (2026-08-15). A ancora era o substring cravado
+    # `"comment gelatin"`; os tres BANHO usam `recipe` desde 2026-08-13, entao
+    # `icta` era SEMPRE None neles, o `elif` NUNCA executava, e a funcao real
+    # do CT1 — *nada depois da sentenca do CTA* — estava DESLIGADA DE FATO nos
+    # tres havia dois dias. O CT6 morria junto (ele e' guardado por
+    # `icta is not None`). E o `DESLIGADAS` perdoava o CT1 do BANHO por um
+    # motivo DIFERENTE do que ele estava acusando, entao o gate imprimia
+    # `0 de 1 — nenhum`. Trava que deixa de medir sem dizer nada e' a §41 das
+    # licoes: forma verificada, funcao nao.
+    # ⭐ Agora: se a keyword nao casar, isso vira UMA acusacao — e a posicao
+    # continua sendo cobrada pela sentenca que tem `comment`, seja qual for a
+    # palavra depois dele.
+    kw = keyword_do_motor(base)
     icta = next((i for i, s in enumerate(sents)
-                 if "comment gelatin" in s.lower()), None)
+                 if ("comment %s" % kw) in s.lower()), None)
     if icta is None:
         achados.append(("ERRO", "CT1: a fala do CTA nao tem a sentenca "
-                                "`Comment gelatin,`"))
-    elif icta != len(sents) - 1:
+                                "`Comment %s,`" % kw))
+        icta = next((i for i, s in enumerate(sents)
+                     if "comment" in s.lower()), None)
+    if icta is not None and icta != len(sents) - 1:
         achados.append(("ERRO", "CT1: ha' %d sentenca(s) DEPOIS do CTA (%r) — "
                                 "o video tem de terminar no pedido, e o follow "
                                 "vem ANTES dele"
@@ -997,12 +1187,12 @@ def lint_copy16(base, spec, achados, isca_absurda=True):
                                 "takes" % (sorted(n1), sorted(n2))))
 
     # --- CT5 — nenhum ingrediente nomeado na fala do CTA ------------------
-    m = INGREDIENTES_16.search(f2)
+    m = ingrediente_na_fala(f2)
     if m:
-        achados.append(("ERRO", "CT5: a fala do CTA entrega o ingrediente %r — "
+        achados.append(("ERRO", "CT5: a fala do CTA entrega o ingrediente %r —"
                                 "a receita e' a UNICA moeda que o comentario "
                                 "compra, e entregue uma vez ela esta' gasta "
-                                "para todos os videos da pagina" % m.group(0)))
+                                "para todos os videos da pagina" % m))
 
     # --- CT6 — a sentenca do CTA diz ONDE a receita chega -----------------
     if icta is not None and not ENTREGA_16.search(sents[icta]):

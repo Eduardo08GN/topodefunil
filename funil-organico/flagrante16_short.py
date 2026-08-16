@@ -1614,6 +1614,19 @@ def _montar_longo(spec):
 # ⚠️ o `ui_agente` resolve estes nomes de pool ("OCASIOES", "PROPS"...) com
 # getattr NO MOTOR. Antes eles so' existiam no `_lucas` e a UI caia no fallback
 # `motor.base`; agora moram aqui e a busca acerta de primeira.
+# ⭐⭐ A PALAVRA DO CTA E' CAMPO NO PAINEL (2026-08-15). Ordem do operador:
+# *"todos os agentes16 meus devem levar um ui ux input pertinente para alterar
+# a palavra chave X do cta"*.
+# ⛔ `KEYWORD_NATIVA` e' a palavra que os POOLS deste motor ja' trazem escrita —
+# a ancora da substituicao, nao uma preferencia. Assumir `gelatin` para todos
+# reescreveria em silencio a excecao dos tres BANHO, que usam `recipe` por
+# ordem de 2026-08-13.
+# ⛔ A troca vale so' para a KEYWORD (`Comment <x>,`). O MECANISMO
+# (`gelatin trick`) e o rotulo da caixa em quadro NAO mudam: e' o que a VSL
+# vende, e a congruencia e' inviolavel.
+KEYWORD_UI = True
+KEYWORD_NATIVA = "gelatin"
+
 EIXOS_UI = [
     ("ocasiao", "OCASIÃO", "OCASIOES", "id"),
     ("prop", "PROP", "PROPS", "id"),

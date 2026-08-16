@@ -1,0 +1,199 @@
+{
+  "_leia_primeiro": {
+    "o_que_e": "PROPOSTA ILUSTRATIVA do VICK 16 — a FORMA de cada pool, com 2 exemplos reais cada. Nao e' o motor; e' o contrato que o motor vai cumprir.",
+    "fonte": "15 reels em C:/Users/edlut/Music/OKC-Likes-Viewer-master/vick — 300s, transcritos por whisper small.en e lidos a 2 quadros/s (566 quadros).",
+
+    "PROBLEMA_1_o_acoplamento": {
+      "sintoma": "Voce pediu POOL DE AMBIENTES >= 100 e TAMBEM um pool de CENAS do take 1 com variancia absurda. Se os dois existirem separados, o sorteio cruza qualquer ambiente com qualquer cena — e monta 'prateleira de canto do box' dentro de uma 'espreguicadeira de praia'.",
+      "precedente_no_repo": "E' o defeito que o commit dfb5d88 documenta: 'O PAINEL nao respeitava o acoplamento entre eixos'. E a licao GO21 do GOOD 16: travar `praia` numa pagina branca devolvia 0/120 e o filtro cedia em silencio.",
+      "proposta": "A CENA e' a unidade atomica. Ambiente + superficie + camera + enquadramento + luz + audio VIAJAM JUNTOS num objeto so, porque um deles falso derruba os outros cinco. O pool de CENAS **e'** o pool de ambientes — >= 100 entradas, cada uma completa.",
+      "o_que_fica_separado": "A ACAO (o gesto) e o VASILHAME sao eixo proprio, porque quase toda acao cabe em quase toda cena. A compatibilidade e' declarada por `aceita`, nao adivinhada."
+    },
+
+    "PROBLEMA_2_lido_versus_construido": {
+      "sintoma": "A fonte tem 15 videos. Voce pediu 100+ por pool. Logo ~85% de cada pool e' construcao minha — sauna, espreguicadeira, rocha e jacuzzi (seus exemplos) NAO estao na fonte.",
+      "regra_que_isso_contraria": "HORSE 16: 'Entrada nova sai de leitura de video, nunca de invencao.'",
+      "proposta": "Cada entrada carrega `fonte`: 'lido' (esta nos 15) ou 'construido' (extrapolado sob contrato). Assim o campo sabe a que atribuir resultado, e voce pode filtrar por `--so-lido` quando quiser rodar so' o que a fonte prova.",
+      "precisa_do_seu_ok": true
+    },
+
+    "PROBLEMA_3_quarto_motor_do_banheiro": {
+      "sintoma": "O v03 diz VERBATIM 'falling like a lame horse in the middle of a rodeo' — frase que ja' esta' no banho16_v2, da pagina 'Be yourself'. E o CTA e' `Comment recipe`, o mesmo do banho16. Esta fonte E' a fonte dos banho.",
+      "variavel_isolada": "O VICKS. Nenhum motor do parque usa. Voce confirmou: e' MECANISMO, nao prop.",
+      "proposta": "vick16 e' o QUARTO do banheiro e convive com os tres, como mel16 convive com prato16 — dois irmaos existem para isolar UMA variavel. Aqui a variavel e' a pomada.",
+      "precisa_do_seu_ok": true
+    }
+  },
+
+  "CENAS": {
+    "_contrato": "A unidade atomica do take 1. >= 100 entradas. Cada uma leva ambiente + superficie + camera + enquadramento + luz + audio + as tags do que aceita.",
+    "_alvo": 100,
+    "_exemplos": [
+      {
+        "id": "box_prateleira_inox",
+        "curto": "prateleira de canto de inox no box",
+        "fonte": "lido",
+        "familia": "chuveiro",
+        "ambiente": "Enclosed shower stall, two tiled walls meeting in a corner, water running the whole time",
+        "superficie": "a brushed stainless steel corner caddy wedged into the tiled corner",
+        "camera": "POV of a man standing inside the stall holding the phone in his free hand, chest height, angled down at the caddy",
+        "enquadramento": "vertical 9:16, medium-tight: the shower head crown enters the top edge, the caddy fills the lower third",
+        "luz": "flat bathroom ceiling light, steam softening the far tiles",
+        "audio": "running water on tile, no music",
+        "aceita": ["po", "cubos", "pote", "sache", "creme"],
+        "regua_cabe": true,
+        "molhado": true
+      },
+      {
+        "id": "banheira_borda_alcova",
+        "curto": "parapeito da banheira embutida",
+        "fonte": "lido",
+        "familia": "banheira",
+        "ambiente": "Domestic bathroom with a white built-in bathtub set into an alcove, tap dripping",
+        "superficie": "the flat white bathtub ledge, wide enough for three objects in a row",
+        "camera": "POV of a man standing beside the tub, phone in one hand, looking down at the ledge at a shallow angle",
+        "enquadramento": "vertical 9:16, opens medium-wide with the tap in the upper left, closes tight on the ledge",
+        "luz": "warm sconce above the mirror, one hard shadow to the right",
+        "audio": "a slow tap drip and the room tone of tile, no music",
+        "aceita": ["po", "cubos", "pote", "sache", "creme", "liquido"],
+        "regua_cabe": true,
+        "molhado": false
+      },
+      {
+        "id": "sauna_banco_cedro",
+        "curto": "banco de cedro da sauna",
+        "fonte": "construido",
+        "familia": "sauna",
+        "ambiente": "Cedar sauna, horizontal slat walls, heat haze off the stove stones",
+        "superficie": "the lower cedar bench slat, grain running left to right",
+        "camera": "POV of a man sitting on the upper bench, phone low, looking down past his own knee at the bench below",
+        "enquadramento": "vertical 9:16, the bench runs diagonally across the frame, stove stones blurred at the top edge",
+        "luz": "low amber from a single shielded lamp, everything warm",
+        "audio": "stones ticking as they cool, a long exhale, no music",
+        "aceita": ["pote", "creme", "sache"],
+        "regua_cabe": false,
+        "molhado": false,
+        "_nota": "regua_cabe:false — regua de madeira numa sauna de madeira some no fundo. E' o tipo de incoerencia que so' aparece no render."
+      }
+    ]
+  },
+
+  "ACOES": {
+    "_contrato": "O gesto do take 1, independente da cena. >= 100 entradas. Cada uma declara em que familia de cena cabe e o que a mao faz do primeiro ao ultimo quadro.",
+    "_alvo": 100,
+    "_exemplos": [
+      {
+        "id": "po_derramado_na_palma",
+        "curto": "derrama o po da gelatina na palma",
+        "fonte": "lido",
+        "cabe_em": ["chuveiro", "banheira", "pia"],
+        "vasilhame": "an open Knox gelatin box held in the left hand",
+        "t1_img": "his right hand tips the open gelatin box and a small heap of pale powder falls into his cupped left palm",
+        "t1_take": "He tips the box once, the powder lands in his palm, and he does not close his hand",
+        "substancia": "pale straw-coloured powder, fine",
+        "usa_vicks": false
+      },
+      {
+        "id": "dedo_na_pomada",
+        "curto": "afunda o dedo na pomada azul",
+        "fonte": "lido",
+        "cabe_em": ["chuveiro", "banheira", "pia", "sauna"],
+        "vasilhame": "a squat blue ointment jar with the lid off, sitting on the surface",
+        "t1_img": "his index finger presses into the surface of the blue ointment and lifts a small ridge of it clear of the rim",
+        "t1_take": "He presses one finger into the jar and lifts it, the ridge of ointment holding its shape",
+        "substancia": "translucent blue-white ointment, thick",
+        "usa_vicks": true
+      },
+      {
+        "id": "cubos_na_mao_aberta",
+        "curto": "segura os cubos na mao aberta",
+        "fonte": "construido",
+        "cabe_em": ["chuveiro", "banheira", "pia", "jacuzzi", "praia"],
+        "vasilhame": "a shallow glass bowl of set gelatin cubes",
+        "t1_img": "he lifts three trembling cubes out of the bowl and holds them flat on his open palm, water still beading on them",
+        "t1_take": "The cubes wobble once as his palm settles and he does not close his fingers",
+        "substancia": "amber set gelatin, cut in cubes",
+        "usa_vicks": false
+      }
+    ]
+  },
+
+  "HOMENS": {
+    "_contrato": ">= 100 entradas. Voce disse SORTEAVEL: o motor decide se aparece so' a mao, a mao e o antebraco, o tronco, ou o homem inteiro.",
+    "_alvo": 100,
+    "_exemplos": [
+      {
+        "id": "maos_velhas_manchadas",
+        "curto": "so as maos, muito velhas",
+        "fonte": "lido",
+        "presenca": "maos",
+        "idade": 74,
+        "etnia": "white American",
+        "desc": "thin heavily wrinkled hands with prominent knuckles and sun spots across the backs",
+        "roupa": null
+      },
+      {
+        "id": "grisalho_camisa_azul",
+        "curto": "grisalho de camisa azul, de costas",
+        "fonte": "lido",
+        "presenca": "tronco",
+        "idade": 67,
+        "etnia": "white American",
+        "desc": "thick grey hair cut short, a lined neck, filmed from behind one shoulder",
+        "roupa": "a faded blue cotton work shirt"
+      },
+      {
+        "id": "negro_tronco_nu",
+        "curto": "homem negro, tronco nu",
+        "fonte": "lido",
+        "presenca": "tronco",
+        "idade": 65,
+        "etnia": "Black American",
+        "desc": "a shaved head and a close white beard, solid build, filmed from the chest up",
+        "roupa": "a white towel at the waist"
+      }
+    ]
+  },
+
+  "COPY": {
+    "_contrato": ">= 100 entradas por beat. Estrutura lida nos 15: HOOK -> MECANISMO -> NEGACAO -> CTA -> FOLLOW.",
+    "_alvo": 100,
+    "_ct1": "APLICADO por ordem sua: o follow vem ANTES do CTA. ⚠️ A fonte faz o contrario nos 15 — esta e' uma divergencia deliberada da fonte, nao um descuido.",
+    "MECANISMOS": {
+      "_nota": "Voce pediu para aumentar: os 5 lidos + as combinacoes de gelatin/rub x hack/trick/habit/ritual.",
+      "lidos": ["shower hack", "kitchen hack", "morning trick", "bizarre nighttime trick", "bizarre nighttime habit"],
+      "construidos": ["gelatin hack", "rub hack", "gelatin trick", "rub trick", "gelatin habit", "rub habit", "shower ritual", "bathroom trick", "bedtime rub", "two-minute rub", "cold shower hack", "jar trick"]
+    },
+    "HOOKS": {
+      "_eixo_duplo": "Voce mandou o v11 virar um SEGUNDO eixo. Sao duas familias que nao se misturam no mesmo video.",
+      "familia_mecanismo": [
+        {"id": "idade_shower", "fonte": "lido", "txt": "I am {idade} and this is the {mecanismo} I use every night to look bigger and last longer."},
+        {"id": "condicao_solteiro", "fonte": "lido", "txt": "If you are single, do not try this. If you are married, try it in moderation."},
+        {"id": "rodeio", "fonte": "lido", "txt": "If you are over 50 and not doing this yet, you are already falling like a lame horse in the middle of a rodeo.", "_alerta": "JA' EXISTE no banho16_v2, verbatim. Repetir a mesma frase em dois motores e' o lote parecendo um so'."}
+      ],
+      "familia_historia": [
+        {"id": "esposa_quase_traiu", "fonte": "lido", "txt": "My wife almost cheated on me. She said to my face I wasn't enough anymore. Then a buddy told me about the {mecanismo}.", "payoff": "21 days later she's the one asking me to stop."}
+      ]
+    },
+    "ORGAOS": {
+      "lidos": ["baseball bat", "small bat", "shrinking bat", "shrinking baton", "buddy", "pipes"],
+      "_ct4b": "⚠️ O contrato 16s manda `pecker`/`wiener`/`Johnson`. A fonte usa OUTROS SEIS. Preciso da sua decisao: sigo a fonte (e declaro excecao ao CT4b) ou sigo o contrato?"
+    }
+  },
+
+  "TRAVADO": {
+    "_o_que_e": "Constante nos 15 — vira string travada, nunca pool.",
+    "formato": "2 takes de 8s = 16s, AdBatch Vertical 2",
+    "keyword_cta": "recipe",
+    "placa": "o rotulo `growth hack` em papelao/post-it aparece na maioria",
+    "sem_texto": "nenhum texto queimado alem da placa fisica em quadro",
+    "vertical": "720x1280 9:16"
+  },
+
+  "PENDENTE_DE_VOCE": [
+    "1. vick16 e' o QUARTO do banheiro, convivendo com os tres? (eu assumi que sim)",
+    "2. Extrapolacao liberada, com cada entrada marcada `lido` vs `construido`? (eu assumi que sim)",
+    "3. Os apelidos do orgao: a fonte (`baseball bat`, `pipes`...) ou o CT4b (`pecker`, `wiener`, `Johnson`)?",
+    "4. A frase do rodeio ja' esta' no banho16_v2 — repito aqui ou deixo exclusiva de la'?"
+  ]
+}

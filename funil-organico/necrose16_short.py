@@ -1592,6 +1592,19 @@ def _nova_fala_longo(spec, i, rng):
 # getattr no modulo. Antes caia no fallback `motor.base`; agora os pools moram
 # aqui e o getattr direto acerta.
 
+# ⭐⭐ A PALAVRA DO CTA E' CAMPO NO PAINEL (2026-08-15). Ordem do operador:
+# *"todos os agentes16 meus devem levar um ui ux input pertinente para alterar
+# a palavra chave X do cta"*.
+# ⛔ `KEYWORD_NATIVA` e' a palavra que os POOLS deste motor ja' trazem escrita —
+# a ancora da substituicao, nao uma preferencia. Assumir `gelatin` para todos
+# reescreveria em silencio a excecao dos tres BANHO, que usam `recipe` por
+# ordem de 2026-08-13.
+# ⛔ A troca vale so' para a KEYWORD (`Comment <x>,`). O MECANISMO
+# (`gelatin trick`) e o rotulo da caixa em quadro NAO mudam: e' o que a VSL
+# vende, e a congruencia e' inviolavel.
+KEYWORD_UI = True
+KEYWORD_NATIVA = "gelatin"
+
 EIXOS_UI = [
     ("arquetipo", "ARQUÉTIPO", "ARQUETIPOS", "id"),
     ("receita", "RITUAL", "RECEITAS_PROP", "id"),

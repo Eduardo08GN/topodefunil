@@ -51,6 +51,13 @@ import tkinter as tk
 from tkinter import filedialog, ttk
 
 from nucleo_sonoro import termos_reescritos, ATIVA
+# ⚠️ o painel precisa da keyword do CTA, que mora no short_comum e e' unica
+# para o processo. Import tolerante: os agentes LONGOS nao dependem dele, e um
+# ImportError aqui derrubaria o painel inteiro por causa de um campo.
+try:
+    import short_comum as sc
+except ImportError:
+    sc = None
 
 
 def paginas_por_pele(motor):
@@ -351,7 +358,72 @@ class App(tk.Tk):
 
         self._barra_travas()
         self._barra_dropdowns()
+        self._barra_keyword()
         tk.Frame(self, bg=LINE, height=1).pack(fill="x", padx=16, pady=(10, 0))
+
+    def _barra_keyword(self):
+        """⭐⭐ A PALAVRA DO CTA — 2026-08-15.
+
+        ⛔ So' aparece nos motores que declaram `KEYWORD_UI = True`: a familia
+        16s. Motor que nao declara nao ve' nada, como todo contrato aditivo
+        deste painel.
+        ⛔ O aviso ao lado NAO e' decoracao. A automacao de DM responde a
+        palavra CADASTRADA nela; trocar aqui sem trocar la' produz video que
+        pede um comentario que nao aciona nada — e isso so' aparece dias
+        depois. E' o preco que o HORSE 16 (`horse` x `gelatin`) e o TRIO 16
+        (`book`) ja' pagaram, e esta' escrito nos dois motores.
+        """
+        if not (sc and getattr(self.m, "KEYWORD_UI", False)):
+            return
+        f = tk.Frame(self, bg=BG)
+        f.pack(fill="x", padx=16, pady=(8, 0))
+        tk.Label(f, text="palavra do CTA", font=F_SMALL, bg=BG,
+                 fg=MUTED).pack(side="left", padx=(0, 8))
+        self.var_kw = tk.StringVar(value=sc.keyword())
+        e = tk.Entry(f, textvariable=self.var_kw, width=14, font=F_MONO,
+                     bg=PANEL2, fg=TXT, insertbackground=TXT, relief="flat")
+        e.pack(side="left", ipady=3)
+        e.bind("<Return>", lambda _e: self._trocar_keyword())
+        e.bind("<FocusOut>", lambda _e: self._trocar_keyword())
+        self.lbl_kw = tk.Label(f, text="", font=F_SMALL, bg=BG, fg=MUTED)
+        self.lbl_kw.pack(side="left", padx=(10, 0))
+        self._pintar_keyword()
+
+    def _pintar_keyword(self):
+        if not getattr(self, "lbl_kw", None):
+            return
+        atual = sc.keyword()
+        nativa = self._keyword_nativa()
+        if atual == nativa:
+            self.lbl_kw.configure(
+                text="a do agente — o que a automacao de DM ja' escuta",
+                fg=MUTED)
+        else:
+            self.lbl_kw.configure(
+                text="⚠ cadastre `%s` na automacao de DM antes de postar — "
+                     "senao o comentario entra e a mensagem nao sai" % atual,
+                fg=AVISO)
+
+    def _trocar_keyword(self):
+        if not (sc and getattr(self, "var_kw", None)):
+            return
+        nova = self.var_kw.get().strip().lower()
+        if nova == sc.keyword():
+            return
+        try:
+            sc.definir_keyword(nova)
+        except ValueError as e:
+            # ⛔ Volta o campo para o valor que VALE. Campo que fica mostrando
+            # a palavra recusada faz o operador acreditar que ela entrou.
+            self.var_kw.set(sc.keyword())
+            self._pintar_keyword()
+            return self._toast(str(e))
+        self.var_kw.set(sc.keyword())
+        self._pintar_keyword()
+        if self.spec:
+            self._render()
+            self._preencher_copy()
+        self._toast("palavra do CTA agora e' `%s`" % sc.keyword())
 
     def _barra_travas(self):
         """A pre-selecao do TRAVAS_UI — `livre | opcao | opcao` por eixo.
@@ -749,9 +821,13 @@ class App(tk.Tk):
         args = (self.var_pag.get(), self.rng, self.m._carregar_ledger())
         self.spec = (self.m.sortear(*args) if travas is None
                      else self.m.sortear(*args, travas))
+        # ⚠️ ORDEM: o `_render` aplica a keyword do CTA nas falas, e as caixas
+        # de copy tem de mostrar o que o video vai FALAR. Preenchidas antes,
+        # elas exibiriam a palavra nativa e o operador leria `gelatin` numa
+        # tela cujo TAKE ja' diz outra coisa.
+        self._render()
         self._preencher_copy()
         self._marcar_limpo()
-        self._render()
 
     def _preencher_copy(self):
         for i, t in enumerate(self.txt_fala):
@@ -1040,7 +1116,7 @@ class App(tk.Tk):
             candidata = nova(self.spec, i, self.rng)
             if candidata != antes[i]:
                 break
-        self.spec["falas"][i] = candidata
+        self._gravar_fala(i, candidata)
         # ⭐ REDESENHA TODA CAIXA QUE MUDOU, nao so' a clicada. Nos motores de
         # copy por CENA nada mais muda e isto e' um laco de uma volta util; nos
         # de copy por FAMILIA as tres mudam, e antes as caixas 1 e 3 ficavam
@@ -1062,7 +1138,7 @@ class App(tk.Tk):
 
     def aplicar_copy(self):
         for i, t in enumerate(self.txt_fala):
-            self.spec["falas"][i] = " ".join(t.get("1.0", "end").split())
+            self._gravar_fala(i, " ".join(t.get("1.0", "end").split()))
         self._marcar_limpo()
         self._render()
         self._toast("copy aplicada")
@@ -1101,7 +1177,48 @@ class App(tk.Tk):
             return v.get(campo, "?")
         return str(v)
 
+    # =====================================================================
+    #  ⭐⭐ A KEYWORD DO CTA — 2026-08-15
+    # =====================================================================
+    # Ordem do operador: *"todos os agentes16 meus devem levar um ui ux input
+    # pertinente para alterar a palavra chave X do cta"*.
+    #
+    # ⛔⛔ SEMPRE RECALCULADA DA FALA PURA, nunca mutada em cima da trocada.
+    # Se mutasse, voltar a keyword para `gelatin` nao teria de onde tirar a
+    # palavra original — a ancora `Comment gelatin` ja' teria sumido — e o
+    # painel ficaria preso na ultima escolha, entregando video com a palavra
+    # que o operador acabou de abandonar.
+    # ⚠️ A troca e' ancorada em `Comment ` dentro do `short_comum`: ela nao
+    # encosta no `gelatin trick` (o mecanismo, que a VSL vende) nem no rotulo
+    # da caixa em quadro. Aqui so' se decide QUANDO aplicar.
+    def _keyword_nativa(self):
+        return getattr(self.m, "KEYWORD_NATIVA",
+                       sc.KEYWORD_PADRAO if sc else "gelatin")
+
+    def _aplicar_keyword(self):
+        if not (sc and self.spec):
+            return
+        puras = self.spec.get("_falas_puras")
+        if puras is None or len(puras) != len(self.spec["falas"]):
+            puras = self.spec["_falas_puras"] = list(self.spec["falas"])
+        self.spec["falas"] = sc.aplicar_keyword(puras, self._keyword_nativa())
+
+    def _gravar_fala(self, i, texto):
+        """Grava a fala editada/re-sorteada, e guarda a versao PURA junto.
+
+        ⛔ A fala volta para a keyword NATIVA antes de virar `_falas_puras`:
+        sem isso, uma copy editada com a keyword nova congelaria essa palavra
+        na fala pura e o campo deixaria de funcionar para aquela cena — botao
+        que para de responder depois da primeira edicao.
+        """
+        self.spec["falas"][i] = texto
+        puras = self.spec.get("_falas_puras")
+        if puras is not None and i < len(puras) and sc:
+            puras[i] = sc.trocar_keyword(texto, sc.keyword(),
+                                         self._keyword_nativa())
+
     def _render(self):
+        self._aplicar_keyword()
         for chave, _r, _p, campo in self.m.EIXOS_UI:
             txt = self._texto_eixo(self.spec[chave], campo)
             # ⚠️ pool com placeholder: o ITEM_B do CLEAN carrega `{o}` e o

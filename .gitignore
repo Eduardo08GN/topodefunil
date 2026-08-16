@@ -25,3 +25,6 @@ __pycache__/
 # motores fantasma.
 _*.py
 *_tmp_*.py
+
+# token do Apify (garimpo) — credencial, nunca versionada
+.apify-token
