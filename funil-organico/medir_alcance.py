@@ -74,7 +74,25 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
            "organicwave16",
            # + 2026-08-14: o HORSE 16, no commit em que nasce.
-           "horse16"]
+           "horse16",
+           # ⛔⛔ O PAR 16 SAIU DAQUI EM 2026-08-16, e o motivo fica escrito.
+           # Ele entrou no dia em que nasceu e NUNCA mediu uma linha: o
+           # relatorio dizia `par16  (sem pool de copy reconhecivel)` em 400
+           # sorteios, e ninguem leu essa linha como o que ela era. A causa e' o
+           # `pools_de` abaixo, que so' reconhece `list[str]`; os quatro pools do
+           # PAR 16 (MUNDOS, FAMILIAS, ACOES_T2, MAOS) sao `list[dict]`, entao
+           # `pools` sai vazio e `medir()` devolve None.
+           # ⚠️ Ensinar o `pools_de` a descer nos dicts foi MEDIDO e descartado
+           # nesta entrega: revelaria pool novo em 41 de 41 motores (o horse16
+           # ganharia 15, o ressurreicao16 ganharia 29) e moveria em silencio o
+           # numero do parque inteiro. E' mudanca de contrato do medidor, com
+           # controle proprio, e nao cabe num conserto de um motor.
+           # ⭐ O que o PAR 16 tem no lugar e' MAIS FORTE que os 400 sorteios
+           # daqui: o `--autoteste` dele VARRE AS 128 COMBINACOES uma a uma
+           # (mundo x familia x gesto) e roda o lint em todas. Registro mudo e'
+           # o pior dos tres caminhos — este e o registro que sobra.
+           # + 2026-08-16: o DESCARTE 16, no commit em que nasce.
+           "descarte16"]
 
 N = 400
 # ⚠️ prefixo curto credita a entrada ERRADA quando duas comecam igual — foi

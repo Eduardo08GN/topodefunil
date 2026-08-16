@@ -81,6 +81,10 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # + 2026-08-16: o gelaHORSE 16, da pagina Healthy
            # Men's Guide — 13 reels lidos e transcritos.
            "gelahorse16",
+           # + 2026-08-16: o DESCARTE 16 — o frasco de receita virado sobre a
+           # lata de lixo (v07 do lote de 16/08). Entra AQUI no commit em que
+           # nasce, e nao desliga trava nenhuma: as sete travas valem inteiras.
+           "descarte16",
            # + 2026-08-10: o FIGHT 16, no commit em que nasce
            "fight16",
            # + 2026-08-14: o BANHO 16 3TAKES, no commit em que nasce.
@@ -119,7 +123,9 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # ⛔ Por isso ele NAO entra em `DESLIGADAS`: excecao que nao
            # suprime nada e' ruido, e ruido ensina a desconfiar das que
            # suprimem de verdade.
-           "horse16"]
+           "horse16",
+           # + 2026-08-16: o PAR 16, no commit em que nasce.
+           "par16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.

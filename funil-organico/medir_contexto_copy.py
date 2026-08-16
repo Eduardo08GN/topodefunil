@@ -115,7 +115,11 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
            "organicwave16_short",
            # + 2026-08-14: o HORSE 16, no commit em que nasce.
-           "horse16_short"]
+           "horse16_short",
+           # + 2026-08-16: o PAR 16, no commit em que nasce.
+           "par16_short",
+           # + 2026-08-16: o DESCARTE 16, no commit em que nasce.
+           "descarte16_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 

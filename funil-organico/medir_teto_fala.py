@@ -79,7 +79,11 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # + 2026-08-14: o ORGANIC WAVE 16, no commit em que nasce.
            "organicwave16",
            # + 2026-08-14: o HORSE 16, no commit em que nasce.
-           "horse16"]
+           "horse16",
+           # + 2026-08-16: o PAR 16, no commit em que nasce.
+           "par16",
+           # + 2026-08-16: o DESCARTE 16, no commit em que nasce.
+           "descarte16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

@@ -932,6 +932,17 @@ VERBOS_EFEITO_16 = (
     "repair", "frees", "free",
     "fixed", "fixes", "turned", "turns", "ended", "ends", "stops", "stopped",
     "starts", "started", "gave", "gives", "made", "makes", "worked", "works",
+    # + 2026-08-16, ao construir o DESCARTE 16: a lista tinha `clears`/`clear`
+    # e NAO tinha o PASSADO `cleared` — que e' o verbo verbatim de tres dos
+    # sete videos da fonte (*"It cleared the old blood blocking my flow"*,
+    # v07/v06/v05). Um angulo que conta no PASSADO reprovava em 310 de 400
+    # sorteios em cima de copy que esta' certa. Sexta vez que esta lista cresce
+    # pelo mesmo motivo, e o conserto e' sempre o mesmo: a lente aprende o
+    # verbo, a copy nao se dobra ao regex.
+    # ⚠️ MEDIDO ANTES DE ENTRAR: `medir_copy16.py --gate` antes e depois. Somar
+    # verbo aqui so' pode TIRAR acusacao do CT3, nunca criar — e o gate saiu
+    # identico nos motores que ja' passavam.
+    "cleared", "opened", "filled", "restored", "unblocked", "freed",
 )
 
 # ⛔ O ALVO: o mecanismo tem de dizer sobre O QUE ele age. Sem alvo, `blood
