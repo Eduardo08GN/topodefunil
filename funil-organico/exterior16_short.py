@@ -727,7 +727,8 @@ NARRADORAS = [
      "rotulo": "25y · longo solto + sardas no nariz",
      "cabelo": "long hair worn loose and falling well past her shoulders",
      "oculos": "",
-     "porte": "a gym-fit hourglass figure, a full bust, a flat toned stomach, firm round glutes and long lean legs",
+     "porte": "a tall gym-built frame, trained and athletic, standing very "
+               "straight",
      "rosto": "an oval face with a high smooth forehead, wide-set eyes and "
                "a short straight nose, a light spray of freckles across her "
                "nose and a small dark mole at her jawline",
@@ -736,7 +737,8 @@ NARRADORAS = [
      "rotulo": "25y · rabo alto + covinha esquerda",
      "cabelo": "hair pulled back into a high sleek ponytail",
      "oculos": "",
-     "porte": "a tall athletic build, a full high bust, a tight defined midsection, firm glutes and long toned legs",
+     "porte": "a tall conditioned build with strong shoulders and an "
+               "upright carriage",
      "rosto": "a long face with a narrow jaw and a defined chin, large dark "
                "eyes under arched brows and a straight narrow nose, and a "
                "shallow dimple in her left cheek",
@@ -746,7 +748,7 @@ NARRADORAS = [
      "cabelo": "very long hair gathered over one shoulder in a single thick "
                "braid",
      "oculos": "",
-     "porte": "a sculpted gym body, a full bust, visible abs, a small waist and firm rounded glutes",
+     "porte": "a lean gym-built frame, clearly trained, with long limbs",
      "rosto": "a heart-shaped face with a broad forehead and a pointed "
                "chin, a full mouth and a slightly upturned nose, a beauty "
                "mark at the corner of her right eye and gold hoop earrings",
@@ -755,7 +757,7 @@ NARRADORAS = [
      "rotulo": "25y · bob platinado + pinta na sobrancelha",
      "cabelo": "a bleached-platinum bob cut sharp at the jaw",
      "oculos": "",
-     "porte": "a compact fitness figure, a full bust, a hard flat stomach, a narrow waist and firm glutes",
+     "porte": "a compact athletic build, trained and light on her feet",
      # ⚠️ 2026-08-13: nascia com `a faint scar through her right eyebrow`. Saiu
      # pela regra do PLACA 16 (*"esses caras tao parecendo mendigo"*, ordem do
      # operador) aplicada a ela: a ancora e' DISTINTIVA, nunca AVARIA.
@@ -768,7 +770,8 @@ NARRADORAS = [
      "cabelo": "thick hair worn big and loose, standing out wide around her "
                "face",
      "oculos": "",
-     "porte": "an athletic figure with a deep waist-to-hip line, a generous bust, a toned flat stomach, firm glutes and strong smooth legs",
+     "porte": "an athletic build with squared shoulders and an easy upright "
+               "stance",
      "rosto": "a round face that narrows to a soft chin, high wide "
                "cheekbones and a short nose with a rounded tip, and a small "
                "mole on her right cheekbone",
@@ -777,7 +780,7 @@ NARRADORAS = [
      "rotulo": "25y · coque desfeito + sardas + oculos",
      "cabelo": "hair twisted up into a loose messy bun",
      "oculos": "mirrored aviator sunglasses pushed up into her hair",
-     "porte": "a lean gym-built figure, a full bust, sharply defined abs, a tiny waist and firm high glutes",
+     "porte": "a long-limbed trained frame, lean and athletic",
      "rosto": "a broad oval face with a low straight hairline, wide-set "
                "eyes under level brows, a light spray of freckles and a "
                "shallow dimple in her chin",
@@ -786,7 +789,8 @@ NARRADORAS = [
      "rotulo": "25y · cachos medios + marca na testa",
      "cabelo": "shoulder-length hair worn in loose curls",
      "oculos": "",
-     "porte": "a full-figured fitness body, a full bust, a toned stomach, wide firm hips and round glutes",
+     "porte": "a strong athletic build that carries itself square and "
+               "straight",
      "rosto": "a soft square face with a rounded jaw, deep-set eyes, a full "
                "mouth and a small crescent birthmark at her right temple",
      "roupa": "a rust-orange top with the sleeves pushed up"},
@@ -800,7 +804,7 @@ NARRADORAS = [
      "rotulo": "25y · crop curto + argolas + oculos",
      "cabelo": "a short tousled crop of hair swept hard to one side",
      "oculos": "round sunglasses pushed up on her forehead",
-     "porte": "a trained slender figure, a full bust, a flat sculpted stomach, a narrow waist and firm glutes",
+     "porte": "a tall trained frame, conditioned and light-footed",
      "rosto": "a fine-boned oval face with a fine tapered jaw and a small pointed "
                "chin, a slim straight nose and thin arched brows, freckles "
                "scattered over her collarbones and a small silver hoop in "
@@ -810,7 +814,8 @@ NARRADORAS = [
      "rotulo": "25y · volume no alto + sorriso largo",
      "cabelo": "hair worn big and swept up off her face",
      "oculos": "",
-     "porte": "a tall strong fitness build, a full bust, a toned midsection, firm glutes and powerful smooth legs",
+     "porte": "a gym-built frame, compact and strong, with an upright "
+               "stance",
      "rosto": "a wide face with full cheeks and a rounded jaw, a broad "
                "flat-bridged nose, a wide bright smile and a small mole "
                "above her left brow",
@@ -819,7 +824,8 @@ NARRADORAS = [
      "rotulo": "25y · franja cortina + pinta + oculos",
      "cabelo": "long hair with a soft curtain fringe framing her face",
      "oculos": "narrow black sunglasses pushed up on her head",
-     "porte": "a strongly shaped athletic figure, a full round bust, a flat toned belly, a small waist and firm glutes",
+     "porte": "a lean conditioned build with long arms and straight "
+               "shoulders",
      "rosto": "a heart-shaped face with a wide forehead and a narrow "
                "pointed chin, almond eyes under a low brow and a small "
                "straight nose, and a dark mole under her left eye",
@@ -828,7 +834,7 @@ NARRADORAS = [
      "rotulo": "25y · preto liso + piercing no nariz",
      "cabelo": "long jet-black hair worn straight and glossy",
      "oculos": "",
-     "porte": "a long-limbed gym figure, a full bust, visible abs, a cinched waist and firm lifted glutes",
+     "porte": "a tall athletic frame, trained, standing tall and relaxed",
      "rosto": "a long angular face with sharp cheekbones and a squared jaw, "
                "a high straight nose bridge and a thin upper lip, and a "
                "small gold stud in her left nostril",
@@ -837,7 +843,7 @@ NARRADORAS = [
      "rotulo": "25y · meio preso + covinha + oculos",
      "cabelo": "hair pinned back on one side and left down on the other",
      "oculos": "tortoiseshell sunglasses hooked into the front of her top",
-     "porte": "a petite hard-trained figure, a full bust, a flat stomach and firm round glutes",
+     "porte": "a strong gym-built build with broad straight shoulders",
      # ⚠️ 2026-08-13: idem — saiu `a faint pale scar on her left cheekbone`.
      "rosto": "a small oval face with a rounded forehead and a short chin, "
                "round eyes under soft brows, a tiny freckle on her left "
@@ -847,7 +853,8 @@ NARRADORAS = [
      "rotulo": "25y · ondas soltas + bronzeada + oculos",
      "cabelo": "long hair worn in loose waves pushed back off her face",
      "oculos": "folding sunglasses hooked at her collar",
-     "porte": "a tall toned figure, a full bust, a lean defined waist, firm glutes and long tanned legs",
+     "porte": "an athletic frame, trained and supple, with a dancer's "
+               "carriage",
      "rosto": "a broad face with a strong squared jaw and a wide mouth, a "
                "slightly convex nose, skin tanned from the sun and a small "
                "dark beauty mark just above her lip",
@@ -856,7 +863,7 @@ NARRADORAS = [
      "rotulo": "25y · coque baixo na nuca + covinha",
      "cabelo": "hair pulled into a low twisted knot at the nape",
      "oculos": "",
-     "porte": "a full hourglass gym figure, a generous bust, a flat trained stomach, wide hips and firm glutes",
+     "porte": "a lean trained build, wiry and quick, standing straight",
      "rosto": "a narrow face with a high forehead and a fine tapered jaw, "
                "hooded eyes and a long straight nose, smooth-skinned, with a "
                "deep dimple that only shows on the left",
@@ -890,7 +897,7 @@ NARRADORAS = [
      "rotulo": "25y · duas trancas + sorriso largo",
      "cabelo": "hair worn in two thick braids falling in front of her shoulders",
      "oculos": "",
-     "porte": "a strong athletic figure, a full bust, a flat trained stomach, a small waist, firm glutes and long lean legs",
+     "porte": "a tall gym-conditioned frame with an open square stance",
      "rosto": "a full round face with wide cheekbones and a soft chin, a "
                "short broad nose, a wide even smile and a small dark mole on "
                "her left jaw",
@@ -899,7 +906,7 @@ NARRADORAS = [
      "rotulo": "25y · coque alto liso + argola + oculos",
      "cabelo": "hair scraped back into a high sleek bun",
      "oculos": "square black sunglasses pushed up on her head",
-     "porte": "a tall gym-built figure, a full high bust, sharply defined abs, a narrow waist and firm glutes",
+     "porte": "a compact gym-built frame, strong and trained",
      "rosto": "an angular face with a squared hairline and a strong "
                "straight brow, sharp cheekbones and a narrow nose with a "
                "defined tip, and a small gold hoop in her right ear",
@@ -908,7 +915,8 @@ NARRADORAS = [
      "rotulo": "25y · curto com risca lateral + pinta",
      "cabelo": "hair cut short and swept hard into a deep side part",
      "oculos": "",
-     "porte": "a compact strong figure, a full bust, a hard flat stomach, wide firm hips and round glutes",
+     "porte": "a long-limbed athletic build, trained, carried loose and "
+               "easy",
      "rosto": "a wide oval face with a low forehead and full cheeks, a "
                "small rounded nose, a broad open smile and a beauty mark "
                "below her right eye",
@@ -917,7 +925,8 @@ NARRADORAS = [
      "rotulo": "25y · medio ondulado + covinha direita",
      "cabelo": "shoulder-length hair worn in soft loose waves",
      "oculos": "",
-     "porte": "a lean fitness figure, a full bust, visible abs, a cinched waist and firm high glutes",
+     "porte": "a trained athletic frame with squared shoulders and a "
+               "straight back",
      "rosto": "a soft heart-shaped face with a rounded jaw and a short "
                "chin, large round eyes and a small button nose, "
                "smooth-skinned, with a deep dimple in her right cheek",
@@ -926,7 +935,7 @@ NARRADORAS = [
      "rotulo": "25y · rabo baixo + piercing no nariz",
      "cabelo": "hair gathered into a low ponytail at the nape",
      "oculos": "",
-     "porte": "a strong hourglass gym figure, a generous bust, a toned flat stomach, wide hips and firm glutes",
+     "porte": "a tall lean gym-built frame, conditioned and upright",
      "rosto": "a long oval face with a high forehead and a narrow jaw, "
                "straight level brows, a full mouth and a small silver stud "
                "in her left nostril",
@@ -935,7 +944,7 @@ NARRADORAS = [
      "rotulo": "25y · trancado em coroa + bronzeada",
      "cabelo": "hair twisted up and pinned in a smooth crown around her head",
      "oculos": "",
-     "porte": "a tall trained figure, a full bust, a flat sculpted stomach, a narrow waist and firm round glutes",
+     "porte": "a strong trained build, athletic, standing solidly balanced",
      "rosto": "a broad face with high flat cheekbones and a wide-set jaw, a "
                "short nose with a low bridge, skin tanned from the sun and a "
                "small dark mole at her right temple",
@@ -944,7 +953,7 @@ NARRADORAS = [
      "rotulo": "25y · franja reta + covinha no queixo",
      "cabelo": "long hair with a blunt straight fringe cut just above her brows",
      "oculos": "",
-     "porte": "a hard-trained figure, a full bust, a flat stomach, a narrow waist and firm glutes",
+     "porte": "an athletic gym-built frame, lean and straight-backed",
      "rosto": "a square face with a straight low hairline and a firm wide "
                "jaw, large dark eyes under heavy lashes, and a deep dimple "
                "in her chin",
@@ -956,7 +965,7 @@ NARRADORAS = [
      # medir — com eles o eixo ia a 9/26 (34,6%) e a banda pedida e' 25-30%.
      # Sem eles fica 8/26 (30,8%). O numero e' o que decide, nao o gosto.
      "oculos": "",
-     "porte": "a strongly built athletic figure with broad shoulders, a full bust, a toned midsection, firm glutes and powerful legs",
+     "porte": "a tall conditioned frame, trained, with an upright carriage",
      "rosto": "an oval face that tapers to a small chin, high cheekbones "
                "and a slim straight nose, and a small dark birthmark at her "
                "left temple",
@@ -965,7 +974,8 @@ NARRADORAS = [
      "rotulo": "25y · longo repartido ao meio + sardas",
      "cabelo": "very long hair parted in the middle and left loose down her back",
      "oculos": "",
-     "porte": "a long-limbed gym figure, a full bust, visible abs, a small waist and firm lifted glutes",
+     "porte": "a lean athletic build, trained, light and "
+               "straight-shouldered",
      "rosto": "a narrow face with a long straight nose and a fine jawline, "
                "pale eyes under thin brows, freckles scattered across her "
                "nose and cheekbones and a beauty mark on her left cheek",
@@ -974,7 +984,7 @@ NARRADORAS = [
      "rotulo": "25y · meio coque + pinta na boca + oculos",
      "cabelo": "hair pulled into a half-up bun with the rest falling loose",
      "oculos": "tortoiseshell sunglasses resting on the crown of her head",
-     "porte": "a petite gym-fit hourglass figure, a full bust, a flat toned stomach and firm round glutes",
+     "porte": "a gym-built athletic frame, strong and evenly balanced",
      "rosto": "a round face with a rounded jaw and a low soft hairline, "
                "wide dark eyes and a short nose, and a small dark mole at "
                "the corner of her mouth",
@@ -983,7 +993,7 @@ NARRADORAS = [
      "rotulo": "25y · liso curto + sobrancelha marcada",
      "cabelo": "hair cut blunt and straight just below her ears",
      "oculos": "",
-     "porte": "a tall lean fitness build, a full bust, a lean defined waist, firm glutes and long strong legs",
+     "porte": "a tall trained build with an open relaxed stance",
      "rosto": "a squared face with a strong straight brow and a broad "
                "forehead, deep-set eyes and a straight nose, and a beauty "
                "mark on her right jaw",
@@ -996,7 +1006,7 @@ NARRADORAS = [
      # `neck` puxa pescoco de ave. Achado MEDINDO, nao lendo.
      "cabelo": "thick hair swept over to one side and falling past her shoulder",
      "oculos": "mirrored wraparound sunglasses hooked at her collar",
-     "porte": "a sculpted gym body, a generous bust, a hard flat stomach, a tiny waist, firm high glutes and long lean legs",
+     "porte": "a compact conditioned frame, athletic and squarely set",
      "rosto": "a long face with a fine jawline and a tapered chin, high "
                "narrow cheekbones and a slim nose, and a small beauty mark "
                "high on her right cheekbone",
@@ -1611,6 +1621,22 @@ MECANISMOS = [
                  "to the rim",
      "curto": "the stemless glass of bright blue liquid",
      "pousado": "uncovered, a spoon resting against its rim"},
+    # ⚠️ AS DUAS ULTIMAS REPOEM O PISO, e nao foi o piso que cedeu. O corte de
+    # 12 para 8 furou o `MIN_OPCOES = 9` do proprio motor, e este arquivo ja'
+    # enfrentou isso uma vez (ver o pool de CAIXAS): *baixar o piso seria
+    # resolver a ordem dele afrouxando a regra que segura TODOS os eixos*.
+    # ⭐ Entao a entropia volta DENTRO das duas familias que ele pediu — mais
+    # uma tigela e mais um copo —, nunca reabrindo a familia do po'.
+    {"id": "tigela_esmalte",
+     "plantado": "an enamel bowl of firm vivid blue gelatin cubes, glossy and "
+                 "set",
+     "curto": "the enamel bowl of vivid blue gelatin cubes",
+     "pousado": "uncovered, a spoon lying on the board beside it"},
+    {"id": "copo_conserva",
+     "plantado": "a wide-mouthed mason glass of bright blue liquid, filled to "
+                 "the shoulder",
+     "curto": "the mason glass of bright blue liquid",
+     "pousado": "with a paper straw standing in it"},
 ]
 
 
@@ -2861,8 +2887,13 @@ _FORA_DO_PEITO = ("stomach", "abs", "belly", "waist", "midsection",
 
 def _porte_ref(porte):
     """O porte SEM o que o `chest up` nao mostra. Silhueta e busto ficam."""
-    return ", ".join(c for c in porte.split(", ")
-                     if not any(t in c.lower() for t in _FORA_DO_PEITO))
+    sobra = ", ".join(c for c in porte.split(", ")
+                      if not any(t in c.lower() for t in _FORA_DO_PEITO))
+    # ⛔ REDE: se TODA clausula falar do que o `chest up` nao mostra, o
+    # filtro devolvia string VAZIA e o BLOCO 0 saia com espaco antes do
+    # ponto — 5 ERRO em 200, e quem os achou foi a lente do anticeleb, que
+    # olha pontuacao. Melhor o porte inteiro do que um vao.
+    return sobra or porte
 
 
 def _descricao_dela(p, so_peito=False):
