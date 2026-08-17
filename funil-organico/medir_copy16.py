@@ -302,6 +302,20 @@ DESLIGADAS = {
         "tres videos saiam com um apelido que ele nao quer neste angulo. "
         "⭐ O que o CT4b protege (variar o apelido ENTRE videos) segue vivo: o "
         "`NUCLEO` tem dois e o sorteio alterna. Quem cobra e' a lente GO19.",
+    ("trio16", "CT4b"):
+        "ordem do operador (2026-08-16), com as recusas na mao: *\"esta' dando "
+        "sempre violacao de conteudo nocivo. Ajuste o agente python para gerar "
+        "sempre falas que fazem referencia ao penis somente como Johnson ou "
+        "Manhood, retire qualquer outro termo\"*. E' a MESMA ordem que o GOOD 16 "
+        "recebeu em 13/08, pelo mesmo motivo, e a medicao bate: 300 sorteios "
+        "davam `Johnson` 215, `wiener` 193, `pecker` 192 — dois em cada tres "
+        "videos com um apelido que ele nao quer. "
+        "⚠️ E aqui o conserto NAO foi trocar o `NUCLEO`: ele e' lido pelas "
+        "LENTES, nao pelo sorteio, que caia no `sc.orgaos_sorteaveis` do parque "
+        "inteiro. Com o pool novo e o sorteio velho a fala seguia saindo "
+        "`wiener` e a propria BO14 passava a reprovar o motor (484 ERRO). "
+        "⭐ O que o CT4b protege continua vivo pelo CT4: UM apelido por cena, "
+        "dois por video, e a variacao ENTRE videos segue no sorteio dos dois.",
     ("banho16_v2", "CT7"):
         "ordem direta do operador (2026-08-13), depois de eu mostrar que o CT7 e "
         "a BA6 reprovavam: *\"volte com o hard colado\"*. E' a frase da fonte, "

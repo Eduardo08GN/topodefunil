@@ -1355,14 +1355,25 @@ SUBSTANCIAS = [
 # ---------------------------------------------------------------------------
 # ⭐ PROPS — reuso do pool VALIDADO PROMPT A PROMPT no COLO (2026-08-03)
 # ---------------------------------------------------------------------------
-# ⛔ ORDEM DO OPERADOR: *"use o pool"*. Sao CINCO e isso e' de proposito.
+# ⛔ ORDEM DO OPERADOR: *"use o pool"*. Eram CINCO e isso era de proposito.
 #   PASSA  quem quebra a leitura de cilindro — casca dobrada (banana,
-#          banana-da-terra), afunilamento conico (cenoura, pastinaca) ou cabo
-#          no topo (berinjela)
+#          banana-da-terra) ou afunilamento conico (cenoura, pastinaca)
 #   CAI    cilindro de DIAMETRO CONSTANTE terminando em PONTA ROMBA — pepino
 #          (2 recusas), abobrinha (1), daikon (1)
 # ⛔ Nao completar o pool com entradas nao testadas para "bater o piso": foi
 # exatamente esse o erro que o COLO documenta. Pool e' o que passou.
+#
+# ⛔⛔ A BERINJELA SAIU EM 2026-08-16, POR ORDEM DIRETA DO OPERADOR:
+# *"remova tambem o item beringela desse das combinacoes desse agente"*.
+# ⚠️ Ela nao caiu por recusa do gerador — passava. Saiu por decisao dele, e o
+# registro fica porque a razao tecnica que a colocou aqui (o cabo no topo
+# quebra a leitura de cilindro) continua valida e alguem vai querer devolve-la.
+# ⛔ O pool cai de CINCO para QUATRO e nada entra no lugar: por a quinta de
+# volta com outro legume seria exatamente o erro que o COLO documenta duas
+# linhas acima — pool e' o que passou no gerador, nao o que fecha o numero.
+# ⚠️ A lapide `berinjela` sobrevive nos comentarios de linha ~1794 e no
+# `_ct16`: la' ela e' o DEFEITO historico ("o espectador ouvia falar sobre UMA
+# BERINJELA"), e apagar isso removeria a memoria que impede a reincidencia.
 PROPS = [
     {"id": "banana_da_terra", "selo": "V", "nome": "plantain",
      "img": "a large green plantain, peeled halfway with the thick peel folded "
@@ -1370,9 +1381,6 @@ PROPS = [
     {"id": "banana", "selo": "V", "nome": "banana",
      "img": "a ripe yellow banana, peeled halfway down with the peel folded "
             "back in strips around its base"},
-    {"id": "berinjela", "selo": "V", "nome": "eggplant",
-     "img": "a long slim purple eggplant with its green cap still on, the lower "
-            "end squared off flat"},
     {"id": "cenoura", "selo": "V", "nome": "carrot",
      "img": "a thick orange carrot with the greens cut off and the wide end "
             "squared flat"},
@@ -1562,6 +1570,125 @@ REFS = [
      "marca": "a small crescent beauty mark beside her right eye"},
 ]
 
+# ---------------------------------------------------------------------------
+# ⭐⭐ CORPOS_FIT — o corpo de academia (2026-08-16)
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"que sejam todas lindas como ja' esta' gerando mas que
+# tenham corpo fitness de academia"*.
+#
+# ⛔ POR QUE UM POOL LOCAL E NAO UMA TROCA NO `short_comum`. Este motor roda
+# SEMPRE em MODO BELA (o `travas` e' forcado no `sortear`), entao o corpo vinha
+# do `sc.ref_bela` — que e' compartilhado por dezesseis motores. MEDIDO, oito
+# sorteios: `petite and shapely with a very narrow waist`, `tall and slim with
+# an hourglass line`, `willowy and sculpted with a flat stomach`. Metade e'
+# magreza, nao treino, e nenhuma delas diz academia. Mexer la' dentro para
+# atender uma ordem do BOTICA mudaria os quinze outros em silencio — o mesmo
+# precedente do `HOMENS_FORTES` do GOOD 16.
+#
+# ⭐ AQUI O CORPO E' DE QUEM TREINA, e a diferenca esta' no MUSCULO NOMEADO:
+# ombro, coxa, panturrilha, costas, braco. `slim` descreve ausencia de gordura;
+# `defined shoulders` descreve presenca de musculo, e e' isso que o gerador
+# desenha diferente.
+# ⛔ E NENHUMA PALAVRA DE APROVACAO (`stunning`, `perfect`, `gorgeous`): elogio
+# no prompt puxa o rosto e o corpo para a media do banco de imagem, o mesmo
+# mecanismo pelo qual `not a celebrity` invoca a celebridade. A beleza continua
+# entrando pela ANCORA FACIAL do `sc.ref_bela`, que nao se toca.
+# ⚠️ `hourglass` e `narrow hips` FICAM DE FORA de proposito: sao vocabulario de
+# FORMATO DE TORSO, e foi ele que o GOOD 16 teve de remover por recusa em
+# 13/08. Aqui a beleza mora na altura, no porte e no rosto; o eixo novo e' o
+# TREINO.
+CORPOS_FIT = [
+    "gym-built and lean, with defined shoulders and a flat trained stomach",
+    "athletic and strong, with visible muscle in the arms and long legs",
+    "trained and toned, with sculpted shoulders and firm thighs",
+    "lean and muscular, with a strong back and defined arms",
+    "fit and powerful, with squat-built legs and a straight posture",
+    "athletic and long-limbed, with swimmer's shoulders and a flat stomach",
+    "hard-trained and compact, with defined abs and strong calves",
+    "toned all over, with lifted glutes and clearly worked shoulders",
+    "gym-fit and tall, with long muscular legs and defined arms",
+    "strong and sculpted, with a firm trained midsection and full shoulders",
+    "athletic and supple, with dancer's legs and a straight strong back",
+    "muscular and trim, with visible tone in the thighs and shoulders",
+]
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ TRAJES_SEXY — o que ela veste (2026-08-16)
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"gerar somente mulheres com roupas sexys, como decotes,
+# vestidos curtos e colados, biquinis, toalhas de banho enroladas"*.
+#
+# ⛔ O `sc.traje_bela` compartilhado JA' entrega curto e colado (crop top, mini
+# dress, cut-off shorts) — MEDIDO em 12 sorteios. O que ele NAO tem sao as duas
+# familias que ele nomeou: **biquini** e **toalha de banho enrolada**. E o
+# `decote` aparece uma vez so' (`deep scoop`). Por isso o pool e' local: as
+# quatro familias que ele pediu, em proporcao, sem mexer nos dezesseis motores
+# que compartilham o helper.
+#
+# ⭐ AS QUATRO FAMILIAS SAO EIXO, NAO DECORACAO — o pool tem entrada de cada uma
+# e a lente BO10 cobra que o sorteio alcance as quatro. Pool com quatro rotulos
+# e uma familia so' e' o defeito que o `medir_personagens` chama de eixo zerado.
+# ⛔ E' o mesmo formato do `sc.traje_bela`: `("%s <descricao>", "<nome curto>")`,
+# onde `%s` recebe a COR. Mudar o formato quebraria `_traje_com_cor`.
+#
+# ⚠️ DECLARADO, PORQUE ALGUEM VAI PERGUNTAR: biquini e toalha de banho numa
+# cozinha de ervas nao tem explicacao dentro da cena — a botica e' uma cozinha,
+# nao uma piscina. A ordem e' dele e vale; o registro fica para ninguem
+# "consertar" isso de volta achando que foi descuido.
+# ⚠️ E o preco de moderacao esta' medido no repo: `bikini` aparece em 64/200
+# blocos do DUPLA e 56/200 do TRIO, e os dois passam. O que derruba render nao
+# e' a peca — e' o ACUMULO (torso nu + corpos colados + busto nomeado), e nada
+# disso entra aqui.
+#
+# ⛔⛔ O NOME CURTO E' EM INGLES, E ISSO NAO E' ESTILO. Ele nao e' rotulo de
+# painel: e' a ANCORA que o `_ancora()` injeta na IMAGE 02 (`same <curto>`),
+# dentro de um prompt inteiro em ingles. Escrevi as dezesseis em portugues na
+# primeira versao e a lente do proprio motor acusou em 7 de 120 sorteios —
+# `artigo errado: 'a ombro'`, de `a ombro a ombro decotado`. Quem le' o nome
+# curto e' o gerador, nao o operador.
+TRAJES_SEXY = [
+    # --- decote ---
+    ("%s deep V-neck wrap top tied at the waist", "deep-V wrap top"),
+    ("%s low-cut halter top with a deep neckline", "low-cut halter"),
+    ("%s scoop-neck bodysuit cut low at the front", "scoop-neck bodysuit"),
+    ("%s off-shoulder top with a plunging front", "off-shoulder top"),
+    # --- vestido curto e colado ---
+    ("%s bodycon mini dress that fits close all the way down",
+     "bodycon mini dress"),
+    ("%s ribbed knit mini dress with a short hem and a fitted waist",
+     "ribbed mini dress"),
+    ("%s satin slip dress cut short and cut low at the front",
+     "satin slip dress"),
+    ("%s one-shoulder bandage dress ending well above the knee",
+     "one-shoulder dress"),
+    ("%s halter mini dress that ties behind the neck",
+     "halter mini dress"),
+    # --- biquini ---
+    ("%s triangle bikini top with matching high-cut bottoms",
+     "triangle bikini"),
+    ("%s bandeau bikini top with tie-side bottoms",
+     "bandeau bikini"),
+    ("%s halter bikini top under an open sheer beach shirt",
+     "bikini and beach shirt"),
+    ("%s bikini top with a sarong knotted low on the hips",
+     "bikini and sarong"),
+    # --- toalha de banho enrolada ---
+    ("%s bath towel wrapped and tucked above the chest, her shoulders bare",
+     "wrapped bath towel"),
+    ("%s bath towel wrapped high and knotted at the side, hair still damp",
+     "knotted bath towel"),
+    ("%s short bath towel wrapped and held closed at the front",
+     "short bath towel"),
+]
+
+# ⭐ A familia de cada traje, para a lente BO10 cobrar as quatro. ⛔ Deriva do
+# INDICE, nao de palavra na string: `bikini top under an open sheer beach
+# shirt` tem `shirt` dentro e cairia na familia errada por regex.
+FAMILIAS_TRAJE = ({t[1]: "decote" for t in TRAJES_SEXY[:4]})
+FAMILIAS_TRAJE.update({t[1]: "vestido" for t in TRAJES_SEXY[4:9]})
+FAMILIAS_TRAJE.update({t[1]: "biquini" for t in TRAJES_SEXY[9:13]})
+FAMILIAS_TRAJE.update({t[1]: "toalha" for t in TRAJES_SEXY[13:]})
+
 # ⛔⛔ O `id` DA REF E' A `cabeca`, e isso NAO e' preguica de nomear.
 # ⚠️ Este pool nasceu sem `id`: quem identifica uma REF aqui e' a `cabeca`, e o
 # `sortear` a usa literalmente — `_por_id(REFS, travas["ref"], "cabeca")`. O
@@ -1637,101 +1764,101 @@ for _r in REFS:
 # ⚠️ AS IDADES E AS PESSOAS NAO MUDARAM nas 22 herdadas — mexeu-se so' no que
 # era avaria. Quem trocar o numero aqui esta' mexendo noutra decisao.
 HOMENS = [
-    {"id": "grisalho_barbudo", "idade": 62,
-     "marca": "a heavy-set build, thick silver hair and a short grey beard, "
+    {"id": "grisalho_barbudo", "idade": 76,
+     "marca": "a heavy-set build, thick silver hair and a short white beard, "
               "smooth-skinned, with a silver streak through one eyebrow",
      "roupa": "a plain navy work shirt"},
-    {"id": "careca_bigode", "idade": 63,
+    {"id": "careca_bigode", "idade": 78,
      "marca": "a stocky build, a bald crown with white hair at the sides and a "
               "thick moustache, lightly tanned, with a beauty mark high on one "
               "cheek",
      "roupa": "a heather-grey pocket tee"},
-    {"id": "cabelo_farto", "idade": 64,
-     "marca": "a tall lean frame, a full head of thick grey hair, "
+    {"id": "cabelo_farto", "idade": 75,
+     "marca": "a tall lean frame, a full head of thick white hair, "
               "clean-shaven, with a deep cleft in his chin",
      "roupa": "an olive canvas shirt with the sleeves rolled"},
-    {"id": "sardas_ruivo", "idade": 61,
-     "marca": "a wiry build, faded coppery hair gone white at the temples and "
+    {"id": "sardas_ruivo", "idade": 77,
+     "marca": "a wiry build, coppery hair gone almost entirely white and "
               "heavy freckling across the nose, "
               "with a small gold hoop in one ear",
      "roupa": "a faded red flannel shirt"},
-    {"id": "fade_grisalho", "idade": 66,
-     "marca": "a broad-shouldered build, a close grey fade and a neat chinstrap "
+    {"id": "fade_grisalho", "idade": 79,
+     "marca": "a broad-shouldered build, a close white fade and a neat chinstrap "
               "beard, smooth-skinned, with a small gold stud in one ear",
      "roupa": "a slate-blue polo shirt"},
-    {"id": "locs_oculos", "idade": 67,
-     "marca": "a solid build, salt-and-pepper locs gathered back, wire-rimmed "
+    {"id": "locs_oculos", "idade": 80,
+     "marca": "a solid build, white locs gathered back, wire-rimmed "
               "glasses and a beauty mark beside his right eye",
      "roupa": "a charcoal henley with the sleeves pushed up"},
-    {"id": "corte_militar", "idade": 68,
-     "marca": "a thickset build, an iron-grey brush cut, lightly tanned, with "
+    {"id": "corte_militar", "idade": 81,
+     "marca": "a thickset build, a white brush cut, lightly tanned, with "
               "heavy level brows and a cleft in his chin, wearing plain "
               "steel-framed glasses",
      "roupa": "a mustard snap-button shirt"},
-    {"id": "cavanhaque", "idade": 60,
+    {"id": "cavanhaque", "idade": 75,
      "marca": "a barrel-chested build, a shaved head and a neat white goatee, "
               "with a white streak in one eyebrow",
      "roupa": "a cream short-sleeve camp shirt"},
-    {"id": "onda_longa", "idade": 63,
-     "marca": "a slim build, wavy grey hair grown a little long at the collar, "
+    {"id": "onda_longa", "idade": 76,
+     "marca": "a slim build, wavy white hair grown a little long at the collar, "
               "clean-shaven, with a deep dimple in his left cheek",
      "roupa": "a forest-green work shirt"},
-    {"id": "sobrancelha_oculos", "idade": 66,
+    {"id": "sobrancelha_oculos", "idade": 82,
      "marca": "a slender upright build, white hair combed back, heavy "
               "black-framed glasses, smooth-skinned, with a beauty mark at his "
               "left temple",
      "roupa": "a blue-and-white checked shirt"},
-    {"id": "queixo_fendido", "idade": 61,
-     "marca": "a compact build, sandy hair gone grey at the sides, tanned, "
+    {"id": "queixo_fendido", "idade": 75,
+     "marca": "a compact build, sandy hair gone white at the sides, tanned, "
               "with a deep cleft chin",
      "roupa": "a rust-red pocket tee"},
-    {"id": "afro_curto", "idade": 69,
-     "marca": "a burly build, a short grey afro and a broad open face, with a "
+    {"id": "afro_curto", "idade": 83,
+     "marca": "a burly build, a short white afro and a broad open face, with a "
               "small birthmark high on one cheek",
      "roupa": "a sand-coloured linen shirt"},
     # + 2026-08-05, mesma ordem do operador. Porte, cabeca e pelo facial variam
     # juntos: dois homens de cabelo diferente e mesmo porte leem como o mesmo.
-    {"id": "bigode_farto", "idade": 64,
-     "marca": "a lean upright frame, steel-grey hair combed to one side and a "
+    {"id": "bigode_farto", "idade": 77,
+     "marca": "a lean upright frame, white hair combed to one side and a "
               "thick "
               "moustache, with deep laugh lines around the eyes",
      "roupa": "a striped short-sleeve shirt"},
-    {"id": "calvo_barba", "idade": 70,
+    {"id": "calvo_barba", "idade": 84,
      "marca": "a heavy build, a shaved head and a full white beard, "
               "smooth-skinned, with a broad flat nose",
      "roupa": "a denim work shirt"},
-    {"id": "branco_liso", "idade": 62,
+    {"id": "branco_liso", "idade": 76,
      "marca": "a narrow build, straight white hair falling over the forehead, "
               "smooth-skinned, with a cleft chin",
      "roupa": "a pale blue oxford shirt"},
-    {"id": "locs_curtas", "idade": 60,
-     "marca": "a stocky athletic build, short twisted grey locs and a trimmed "
+    {"id": "locs_curtas", "idade": 75,
+     "marca": "a stocky athletic build, short twisted white locs and a trimmed "
               "white goatee, with a patch of white above one temple",
      "roupa": "a burgundy polo shirt"},
-    {"id": "sobrancelha_farta", "idade": 65,
-     "marca": "a solid build, thinning grey hair and very heavy level "
+    {"id": "sobrancelha_farta", "idade": 78,
+     "marca": "a solid build, thinning white hair and very heavy level "
               "eyebrows, freckled across the nose, with a beauty mark near his "
               "jaw",
      "roupa": "a khaki utility shirt"},
-    {"id": "queimado_sol", "idade": 62,
-     "marca": "a rangy build, sun-bleached grey hair, lightly tanned, with "
+    {"id": "queimado_sol", "idade": 76,
+     "marca": "a rangy build, sun-bleached white hair, lightly tanned, with "
               "laugh lines at the eyes and a dimple in one cheek",
      "roupa": "a faded teal work shirt"},
-    {"id": "cavanhaque_branco", "idade": 71,
+    {"id": "cavanhaque_branco", "idade": 85,
      "marca": "a spare frame, close-cropped white hair and a white goatee, "
               "smooth-skinned, with prominent ears",
      "roupa": "a grey chambray shirt"},
-    {"id": "cacheado_grisalho", "idade": 63,
-     "marca": "a broad build, dense curly grey hair, "
+    {"id": "cacheado_grisalho", "idade": 77,
+     "marca": "a broad build, dense curly white hair, "
               "clean-shaven and smooth-skinned, with a deep dimple in one "
               "cheek",
      "roupa": "a black crew-neck tee"},
-    {"id": "bochechudo", "idade": 67,
-     "marca": "a round-faced heavy build, grey hair receding at the temples "
+    {"id": "bochechudo", "idade": 80,
+     "marca": "a round-faced heavy build, white hair receding at the temples "
               "and full cheeks, with a dimpled chin",
      "roupa": "a plaid flannel shirt"},
-    {"id": "magro_alto", "idade": 72,
-     "marca": "a very tall lean frame, iron-grey hair cropped short and a long "
+    {"id": "magro_alto", "idade": 86,
+     "marca": "a very tall lean frame, white hair cropped short and a long "
               "straight nose, lightly tanned, with a cleft chin",
      "roupa": "a white undershirt beneath an open work shirt"},
 
@@ -1744,36 +1871,105 @@ HOMENS = [
     # oculos que voltaram ao `corte_militar` ele fecha em 7 de 28.
     # ⭐ Cada uma varia PORTE, CABECA e MARCA juntas — duas entradas de cabelo
     # diferente e mesmo corpo leem como o mesmo homem.
-    {"id": "prata_penteado_oculos", "idade": 61,
+    {"id": "prata_penteado_oculos", "idade": 75,
      "marca": "a broad solid build, a full head of silver hair combed straight "
               "back, clean-shaven and smooth-skinned, wearing thin gold "
               "wire-rimmed glasses, with a shallow cleft chin",
      "roupa": "a slate-blue linen shirt"},
-    {"id": "barba_branca_cheia", "idade": 63,
+    {"id": "barba_branca_cheia", "idade": 78,
      "marca": "a tall broad-shouldered build, thick white hair and a full beard "
               "kept neatly shaped, with laugh lines at the eyes and a dimple "
               "beside his mouth",
      "roupa": "a charcoal cardigan over a plain white tee"},
-    {"id": "twists_prata_oculos", "idade": 65,
+    {"id": "twists_prata_oculos", "idade": 79,
      "marca": "a lean upright build, short silver twists kept close and a "
               "close-trimmed beard, smooth-skinned, with a beauty mark below "
               "one eye, wearing slim half-rim glasses",
      "roupa": "a stone-grey henley with the sleeves pushed up"},
-    {"id": "bigode_chevron", "idade": 67,
-     "marca": "a compact sturdy build, steel-grey hair parted low and a full "
+    {"id": "bigode_chevron", "idade": 81,
+     "marca": "a compact sturdy build, white hair parted low and a full "
               "chevron moustache kept trimmed, freckled across the cheeks, "
               "with a cleft in his chin",
      "roupa": "a warm grey flannel shirt"},
-    {"id": "careca_oculos_pesados", "idade": 69,
+    {"id": "careca_oculos_pesados", "idade": 82,
      "marca": "a heavy square build, a cleanly shaved crown and no beard at "
               "all, lightly tanned, wearing heavy dark-rimmed glasses, with a "
               "beauty mark high on one cheekbone",
      "roupa": "a dark olive crewneck sweater"},
-    {"id": "mecha_branca_lateral", "idade": 62,
-     "marca": "a tall trim build, dark hair silvering at the sides with a "
+    {"id": "mecha_branca_lateral", "idade": 75,
+     "marca": "a tall trim build, silver hair gone white at the sides with a "
               "patch of white above one temple, clean-shaven and "
               "smooth-skinned, wearing rimless reading glasses",
      "roupa": "a pressed light blue shirt"},
+]
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ HOMENS_FORTES — o pool PROPRIO do MODO FORTE (2026-08-16)
+# ---------------------------------------------------------------------------
+# ⛔⛔ O BOTAO FORTE ESTAVA QUEBRADO, E O `.exe` ESTAVA NA MAO DO OPERADOR
+# ASSIM. Este motor tem `MODO_FORTE = True` e caia no `sc.ref_forte`
+# compartilhado, que so' tem homens de 26 a 38. MEDIDO antes do conserto, com o
+# botao aceso: **marido de 26 a 38 anos em 60 de 60 sorteios, e 60 ERRO de BO9**
+# — num angulo cujo piso era 60 e agora e' 75.
+# ⚠️ Nem o `sc.REFS_FORTES_MADUROS` (48-68) resolve: ele tambem nao alcanca 75,
+# e o helper CEDE em silencio quando a faixa nao casa (`[...] or _pool`). Botao
+# que promete 75+ e entrega 30 e' pior que botao que nao existe — e' o mesmo
+# precedente do GOOD 16 (lente GO13) e do ALFA 16.
+#
+# ⭐ AQUI O TOGGLE TROCA O CORPO, NAO A PESSOA: cada entrada e' um homem de
+# 75-86 com porte de quem treina — ombro, antebraco, peito, postura. A marca
+# facial e a mesma familia de ancora do pool normal (`cleft`, `beauty mark`,
+# `silver streak`), porque quem o angulo vende continua sendo o marido velho.
+# ⛔ Nenhuma palavra de aprovacao (`handsome`, `chiseled`, `rugged`) e nenhuma
+# de dano: musculo em homem de 80 e' `thick forearms` e `a straight back`, nao
+# `ripped` nem `gaunt`.
+HOMENS_FORTES = [
+    {"id": "forte_barba_branca", "idade": 76,
+     "marca": "a powerfully built frame with wide shoulders and thick "
+              "forearms, thick white hair and a full white beard kept neatly "
+              "shaped, smooth-skinned, with a deep cleft in his chin",
+     "roupa": "a fitted charcoal henley with the sleeves pushed up"},
+    {"id": "forte_careca", "idade": 79,
+     "marca": "a heavy muscular build with a deep chest and a straight back, "
+              "a cleanly shaved crown and a trimmed white goatee, lightly "
+              "tanned, with a small gold stud in one ear",
+     "roupa": "a plain black crewneck that sits close on the shoulders"},
+    # ⚠️ ESTE E O `forte_bigode` LEVAM OCULOS por medicao, nao por gosto: o
+    # `medir_personagens --gate` REPROVOU o pool com `oculos 0/8 ZERO`, e eixo
+    # fisico zerado e' reprovacao declarada. O pool base tem 25% (7 de 28), e
+    # 2 de 8 poe este na mesma proporcao.
+    {"id": "forte_locs", "idade": 81,
+     "marca": "a broad athletic build with corded forearms, short white locs "
+              "gathered back and a close-trimmed beard, smooth-skinned, "
+              "wearing wire-rimmed glasses, with a beauty mark beside his "
+              "right eye",
+     "roupa": "a slate polo shirt"},
+    {"id": "forte_militar", "idade": 77,
+     "marca": "a thick-necked square build with heavy shoulders, a white "
+              "brush cut, clean-shaven and lightly tanned, with heavy level "
+              "brows and a cleft chin",
+     "roupa": "an olive work shirt with the sleeves rolled to the elbow"},
+    {"id": "forte_alto_prata", "idade": 84,
+     "marca": "a very tall build that still carries weight in the shoulders, "
+              "a full head of silver hair combed straight back, clean-shaven "
+              "and smooth-skinned, with a silver streak through one eyebrow",
+     "roupa": "a pressed white shirt with the collar open"},
+    {"id": "forte_bigode", "idade": 80,
+     "marca": "a compact powerful build with thick arms, white hair parted "
+              "low and a full chevron moustache kept trimmed, freckled across "
+              "the cheeks, wearing slim half-rim glasses, with a deep dimple "
+              "in one cheek",
+     "roupa": "a navy pocket tee that sits close on the chest"},
+    {"id": "forte_afro", "idade": 78,
+     "marca": "a burly build with a broad chest and thick wrists, a short "
+              "white afro and a broad open face, smooth-skinned, with a small "
+              "birthmark high on one cheek",
+     "roupa": "a heather-grey long-sleeve tee pushed up the forearms"},
+    {"id": "forte_magro_rijo", "idade": 82,
+     "marca": "a lean hard-trained frame with defined shoulders and a "
+              "straight back, white hair cropped short, clean-shaven, with "
+              "laugh lines at the eyes and prominent ears",
+     "roupa": "a dark green athletic tee"},
 ]
 
 
@@ -2148,7 +2344,16 @@ MODO_FORTE = True
 # (BO9). Antes deste dia o motor entregava narradora de 24 a 38 e marido de 41
 # a 66 — a leitura de "a jovem e o marido velho" so' saia por sorte.
 REF_IDADE_MAX = 25
-HOMEM_IDADE_MIN = 60
+# ⭐⭐ O PISO DO MARIDO SOBE PARA 75 em 2026-08-16. Ordem do operador:
+# *"que todos os homens sejam com 75 anos ou mais"*. O pool inteiro foi
+# relocado de 60-72 para 75-86 pelo `id`, e onde o numero passou a mentir a COR
+# DO CABELO subiu junto (18 das 28) — `coppery hair` num homem de 77 e
+# `dark hair` num de 75 sao contradicao, e o gerador a resolve contra nos:
+# escolhe o cabelo e devolve um homem de 50.
+# ⛔ Nenhuma palavra de DANO entrou junto com o numero. A ordem de 13/08
+# (*"melhore a aparencia e shape desses homens"*) continua valendo: 75 anos e'
+# o numero, nao licenca para `frail`, `gaunt` ou `deeply lined`.
+HOMEM_IDADE_MIN = 75
 
 # ⭐ DUAS CENAS. O teto vem da fisica (8s x 3,1 p/s).
 TETO_FALA = {1: 25, 2: 25}
@@ -2180,9 +2385,21 @@ etnias_do_mundo.recebe_spec = True
 
 
 def trajes_do_mundo(spec):
-    """O pool de TRAJE depende do MUNDO — kurta em cozinha amish e' a mesma
-    incongruencia que a etnia errada. A UI lista os nomes curtos."""
-    return [x[1] for x in spec["mundo"]["trajes"]]
+    """O pool de TRAJE que a UI lista — os nomes curtos do `TRAJES_SEXY`.
+
+    ⛔⛔ O NOME DA FUNCAO MENTE DESDE 2026-08-16 E FICA ASSIM DE PROPOSITO. Ela
+    e' o contrato que o `EIXOS_UI` referencia por STRING (`"trajes_do_mundo"`),
+    e o painel compartilhado resolve o nome em tempo de execucao: renomear aqui
+    sem renomear la' deixa o eixo TRAJE sem pool nenhum na tela, em silencio.
+    ⭐ O que mudou e' de onde ela le'. Ate' 15/08 o traje era acoplado ao MUNDO
+    — kurta em cozinha amish era a mesma incongruencia que a etnia errada. A
+    ordem do operador de 16/08 (*"somente mulheres com roupas sexys"*) desfaz
+    esse acoplamento: o traje passa a ser global e o mundo continua mandando so'
+    na ETNIA, no cenario, na luz e no audio.
+    ⚠️ O `spec` continua na assinatura porque `recebe_spec = True` e' o contrato
+    do painel — ele SEMPRE chama com o spec.
+    """
+    return [x[1] for x in TRAJES_SEXY]
 
 
 trajes_do_mundo.recebe_spec = True
@@ -2298,11 +2515,31 @@ def _por_traje(mundo, curto):
     ⚠️ Devolve o primeiro do mundo quando o curto nao pertence a ele — o
     operador pode ter travado um traje e depois trocado de mundo, e travar
     `kurta` num mundo amish nao pode derrubar o sorteio.
+
+    ⛔ APOSENTADA EM 2026-08-16, junto com os 130 trajes dos MUNDOS. O traje
+    deixou de vir do mundo e passa a sair do `TRAJES_SEXY` — ver
+    `_por_traje_sexy`. Fica no arquivo porque os `trajes` dos MUNDOS tambem
+    ficam: eles sao a memoria de que o traje JA' FOI um eixo acoplado ao mundo,
+    e e' isso que explica por que `etnias_do_mundo` continua acoplada.
     """
     for x in mundo["trajes"]:
         if x[1] == curto:
             return x
     return mundo["trajes"][0]
+
+
+def _por_traje_sexy(curto):
+    """Acha o traje pelo nome curto que a trava da UI guarda.
+
+    ⚠️ Cai no primeiro quando o nome nao existe mais — o operador pode ter
+    travado um traje antes de 16/08 e o ledger dele guarda o nome antigo
+    (`black bib apron`). Travar um nome morto nao pode derrubar o sorteio, e a
+    lente BO10 acusa se o traje sair de fora do pool.
+    """
+    for x in TRAJES_SEXY:
+        if x[1] == curto:
+            return x
+    return TRAJES_SEXY[0]
 
 
 # ⭐⭐ O APELO DA REF — ordem do operador, 2026-08-05: *"As mulheres tem que ter
@@ -2548,21 +2785,43 @@ def sortear(pagina, rng, led, travas=None):
     # ⛔ NO MODO BELA A ROUPA TAMBEM MUDA. O operador nomeou TRES coisas —
     # *"super models com corpao e pouca roupa"* — e trocar so' o rosto e o corpo
     # deixaria a REF de biquini de tricô amish. Aqui o traje vem do MUNDO, entao
-    # o modo o substitui pelo pool proprio do `short_comum`.
-    traje = (_por_traje(mundo, travas["traje"]) if travas.get("traje")
-             else sc.traje_bela(rng) if travas.get("bela")
-             else _fresco_traje(mundo["trajes"], usados.get("traje", []), rng))
+    # o modo o substitui.
+    # ⭐⭐ E DESDE 2026-08-16 O POOL E' LOCAL (`TRAJES_SEXY`), nao o
+    # `sc.traje_bela`. O compartilhado ja' entregava curto e colado, mas nao
+    # tem BIQUINI nem TOALHA DE BANHO — as duas familias que o operador nomeou
+    # nesta ordem. Trocar la' dentro atenderia o BOTICA e mexeria nos outros
+    # quinze motores em silencio.
+    traje = (_por_traje_sexy(travas["traje"]) if travas.get("traje")
+             else _fresco_traje(TRAJES_SEXY, usados.get("traje", []), rng))
     # ⭐ A FAIXA 20-25 e' do operador e entra como TETO no helper compartilhado
     # (`idade_max`, criado hoje). Sem ele o pool bela ia ate' 33.
     # ⚠️ O piso real do pool e' 21, dentro da faixa pedida — nao ha' entrada de
     # 20, e inventar uma seria acrescentar personagem nao testada a um pool
     # compartilhado por 16 motores para "bater o numero".
+    # ⭐⭐ O ROSTO CONTINUA VINDO DO `sc.ref_bela` — e' a beleza, e ela nao
+    # mudou. O que muda e' o CORPO: o helper devolve metade `slim`/`willowy`
+    # (magreza), e a ordem de 16/08 e' *"corpo fitness de academia"*. O campo
+    # `corpo` e' sobrescrito pelo pool local `CORPOS_FIT`, que nomeia MUSCULO
+    # em vez de ausencia de gordura.
     ref = (_por_id(REFS, travas["ref"], "cabeca") if travas.get("ref")
            else sc.ref_bela(REFS[0], rng, idade_max=REF_IDADE_MAX)
            if travas.get("bela")
            else rng.choice(REFS))
-    homem = (_por_id(HOMENS, travas["homem"]) if travas.get("homem")
-             else sc.ref_forte(HOMENS[0], rng) if travas.get("forte")
+    # ⛔ `rng.choice` cru e nao `_fresco_traje`: aquele indexa `x[1]` como chave
+    # de frescor, e em pool de STRING `x[1]` e' o SEGUNDO CARACTERE. Funcionaria
+    # por acidente (o ledger nao guarda `corpo`, entao `usados` vem vazio e o
+    # filtro nunca roda) — e acidente que funciona e' o que quebra no dia em que
+    # alguem acrescenta o eixo ao ledger.
+    ref = dict(ref, corpo=rng.choice(CORPOS_FIT))
+    # ⛔⛔ O MODO FORTE TEM POOL PROPRIO desde 2026-08-16. O `sc.ref_forte`
+    # compartilhado so' tem homens de 26 a 38 e o `REFS_FORTES_MADUROS` para em
+    # 68 — nenhum dos dois alcanca o piso de 75 deste angulo, e o helper CEDE
+    # em silencio quando a faixa nao casa. MEDIDO com o botao aceso, antes do
+    # conserto: marido de 26 a 38 em 60 de 60 sorteios, 60 ERRO de BO9.
+    homem = (_por_id(HOMENS + HOMENS_FORTES, travas["homem"])
+             if travas.get("homem")
+             else _fresco(HOMENS_FORTES, usados.get("homem", []), rng, "id")
+             if travas.get("forte")
              else _fresco(HOMENS, usados.get("homem", []), rng, "id"))
     prop = (_por_id(PROPS, travas["prop"]) if travas.get("prop")
             else _fresco(PROPS, usados.get("prop", []), rng, "id"))
@@ -2669,10 +2928,25 @@ def montar(spec):
     # --- CENA 1 — A ISCA NA LENTE + O VILAO ---------------------------------
     # ⛔ O despejo JA' ESTA' acontecendo no frame 0: nao ha' frame de "antes".
     # Mesma economia do EXTERIOR e do TROCA — 8 segundos nao pagam preparacao.
+    # ⛔⛔ O CORPO DELA ENTRA AQUI, E ATE' 2026-08-16 ELE NAO ENTRAVA EM LUGAR
+    # NENHUM. O `_pessoa()` monta a frase com `corpo` e o resultado ia para
+    # `v["pessoa"]` — que NENHUM template usa. MEDIDO: `%(pessoa)s` aparece
+    # ZERO vez neste arquivo, e zero no colo16, trio16, dupla16 e exterior16.
+    # O campo `corpo` das 36 REFS era decorativo, e a ordem de hoje (*"corpo
+    # fitness de academia"*) morreria no spec sem isto.
+    # ⚠️ E entra na IMAGE 01, nao no BLOCO 0: o bloco de referencia e' `chest
+    # up`, e `long muscular legs` num retrato de peito para cima e' contradicao
+    # — o gerador a resolve contra nos. Quem mostra o corpo e' o plano medio.
+    # ⚠️ `Her build is`, NAO `She is` — achado LENDO O BLOCO EM VOZ ALTA, que e'
+    # a §33. Com `She is` a IMAGE 01 encadeava TRES sentencas comecando igual
+    # (`She is looking straight into the lens...` / `She is athletic and
+    # strong...` / `She is the only person in the frame.`). Nenhum medidor deste
+    # repo olha para cadencia de prosa, e o gerador le' repeticao como enfase.
     b["IMAGE 01/02"] = (
-        "Medium shot in %(coz)s.%(band)s %(isca)s She is the only person in the "
-        "frame. %(anti)s %(luz)s %(cauda)s"
-        % dict(v, isca=BO_ISCA % (prop["img"], sub["dish"], sub["queda"])))
+        "Medium shot in %(coz)s.%(band)s %(isca)s Her build is %(corpo)s. She "
+        "is the only person in the frame. %(anti)s %(luz)s %(cauda)s"
+        % dict(v, corpo=ref["corpo"],
+               isca=BO_ISCA % (prop["img"], sub["dish"], sub["queda"])))
 
     # --- CENA 2 — A BANCADA, O COPO E O HOMEM MUDO -------------------------
     # ⭐⭐ E' A FUSAO DAS CENAS 2 E 3, e ela nao inventa cenario: a cena 3 ja'
@@ -3148,6 +3422,67 @@ def lint(spec, blocos):
                             "e' toggle, e' o estado: sem ele o traje volta a "
                             "sair do mundo e o macacao amish volta com ele"))
 
+    # --- BO10: ⭐⭐ O TRAJE SAI DO POOL SEXY, E CHEGA NO PROMPT --------------
+    # Ordem do operador, 2026-08-16: *"somente mulheres com roupas sexys, como
+    # decotes, vestidos curtos e colados, biquinis, toalhas de banho
+    # enroladas"*.
+    # ⛔ A lente cobra os DOIS lados. O `spec` certo com o bloco velho e' o
+    # modo de falha que este motor ja' teve uma vez (BO7), e um pool novo que
+    # o `montar()` nao le' e' a §41 — o pool existe, a lente do pool passa, e o
+    # video sai com o avental amish.
+    if spec["traje"][1] not in FAMILIAS_TRAJE:
+        ach.append(("ERRO", "BO10: traje `%s` fora do TRAJES_SEXY — o pool do "
+                            "MUNDO esta' aposentado desde 16/08"
+                    % spec["traje"][1]))
+    # ⚠️ E OS DOIS LADOS MORAM EM BLOCOS DIFERENTES — descoberto medindo, nao
+    # lendo: a DESCRICAO LONGA (com a cor) sai no `BLOCO 0 (REF)`, que e' a
+    # foto de referencia, e o NOME CURTO sai na ancora da `IMAGE 02/02`. A
+    # primeira versao desta lente cobrava os dois na IMAGE 01 e acusou 150 de
+    # 150 videos corretos — lente que reprova tudo esta' errada, e a taxa de
+    # acusacao e' o que denuncia isso (§36).
+    _longo = spec["traje"][0][3:]
+    if _longo not in blocos["BLOCO 0 (REF)"]:
+        ach.append(("ERRO", "BO10: BLOCO 0 (REF) nao traz o traje `%s` — pool "
+                            "trocado e prompt velho e' pool morto" % _longo[:40]))
+    if spec["traje"][1] not in blocos["IMAGE 02/02"]:
+        ach.append(("ERRO", "BO10: a ancora da IMAGE 02/02 nao traz `%s` — e' "
+                            "ela que segura a roupa entre os dois quadros"
+                    % spec["traje"][1]))
+
+    # --- BO11: ⭐ O CORPO E' DE ACADEMIA, NAO DE MAGREZA ---------------------
+    # Ordem do mesmo dia: *"que sejam todas lindas como ja' esta' gerando mas
+    # que tenham corpo fitness de academia"*.
+    # ⛔ O teste NAO e' "tem palavra de treino": e' SAIU DO POOL LOCAL. O
+    # `sc.ref_bela` compartilhado devolve `trim and athletic with a flat
+    # midriff`, que tem `athletic` dentro e passaria num regex — e e' exatamente
+    # o corpo que a ordem manda trocar. Cobrar a origem e nao a palavra e' o
+    # que impede a lente de aprovar o estado anterior.
+    if spec["ref"]["corpo"] not in CORPOS_FIT:
+        ach.append(("ERRO", "BO11: corpo `%s` fora de CORPOS_FIT — o helper "
+                            "compartilhado voltou a mandar aqui"
+                    % spec["ref"]["corpo"][:44]))
+    # ⛔⛔ E O SEGUNDO LADO E' O QUE PEGOU O DEFEITO REAL. O pool certo, o spec
+    # certo e a lente de origem verde conviviam com o corpo NAO CHEGANDO A
+    # BLOCO NENHUM — 60 de 60 videos, porque o `%(pessoa)s` que carregava o
+    # campo nao e' usado por template nenhum. E' a §41 inteira: forma
+    # verificada, funcao nao. Sem esta linha a ordem morre no spec.
+    if spec["ref"]["corpo"] not in blocos["IMAGE 01/02"]:
+        ach.append(("ERRO", "BO11: a IMAGE 01/02 nao traz o corpo `%s` — pool "
+                            "que nao chega ao prompt e' pool morto"
+                    % spec["ref"]["corpo"][:44]))
+
+    # --- BO12: ⭐⭐ O MODO FORTE TEM DE ENTREGAR 75+ ------------------------
+    # ⛔ A lente existe porque o modo de falha era SILENCIOSO e estava ATIVO:
+    # ate' 16/08 este motor caia no `sc.ref_forte` compartilhado (26-38 anos) e
+    # entregava marido de 30 com o botao aceso. MEDIDO: 60 de 60 sorteios.
+    # ⚠️ Quem trocar o pool local de volta pelo helper volta a entregar isso, e
+    # so' a BO9 acusaria — depois de o video estar pronto.
+    if spec.get("forte") and spec["homem"] not in HOMENS_FORTES:
+        ach.append(("ERRO", "BO12: MODO FORTE com marido de fora de "
+                            "HOMENS_FORTES (`%s`, %dy) — o botao promete corpo "
+                            "treinado 75+"
+                    % (spec["homem"]["id"], spec["homem"]["idade"])))
+
     # --- BO7: a ancora de continuidade nas cenas 2 e 3 ----------------------
     for nome in ("IMAGE 02/02", "IMAGE 02/02"):
         if ("the same %d-year-old" % spec["ref"]["idade"]
@@ -3325,8 +3660,15 @@ def autoteste(n=600):
         if len(pool) < MIN_OPCOES:
             falhas.append("eixo %s com %d opcoes (minimo %d)"
                           % (nome, len(pool), MIN_OPCOES))
-    if len(PROPS) < 5:
-        falhas.append("PROPS abaixo do piso empirico de 5")
+    # ⭐ O PISO CAIU DE 5 PARA 4 EM 2026-08-16, junto com a saida da berinjela
+    # por ordem do operador. ⛔ O numero acompanha a DECISAO, nao o contrario:
+    # deixar o piso em 5 obrigaria a inventar um quinto legume nao testado para
+    # o autoteste passar — e' o erro que o COLO documenta e que o comentario do
+    # proprio PROPS proibe seis centenas de linhas acima.
+    # ⚠️ E o piso continua existindo: com tres o pool repete o mesmo prop a
+    # cada tres videos, e o prop e' a assinatura visual da cena 1.
+    if len(PROPS) < 4:
+        falhas.append("PROPS abaixo do piso empirico de 4")
     for f, q in fam.items():
         if q > n * 0.25:
             falhas.append("familia %s levou %.1f%% do lote (teto 25%%)"
@@ -3386,6 +3728,49 @@ def autoteste(n=600):
         if "dungarees" in _r[0].lower() or "overall" in _r[0].lower():
             ctrl.append("[BO9] macacao dentro de ROUPAS_BELAS (%r) — o pool "
                         "bela e' justamente o que tira o macacao de cena" % _r[1])
+
+    # ⭐⭐ [BO10/BO11/BO12] OS TRES POOLS DE 2026-08-16, COM O DEFEITO PLANTADO.
+    # ⛔ Medir que o defeito sumiu nao e' medir que a lente existe — §42. Cada
+    # bloco abaixo planta EXATAMENTE o estado anterior e exige a acusacao.
+    _spec_t = dict(s, traje=("%s plain caped dress with a white organdy apron "
+                             "over it", "organdy apron"))
+    if not any(a[0] == "ERRO" and "BO10" in a[1]
+               for a in lint(_spec_t, montar(_spec_t))):
+        ctrl.append("[BO10] NAO acusa o avental amish plantado no traje — a "
+                    "lente do pool sexy nao esta' olhando")
+    _spec_c = dict(s, ref=dict(s["ref"],
+                               corpo="trim and athletic with a flat midriff"))
+    # ⚠️ O corpo plantado e' o do `sc.ref_bela` de verdade, e ele TEM a palavra
+    # `athletic` dentro. Se a BO11 fosse um regex de "palavra de treino", ela
+    # aprovaria justamente o estado que a ordem de 16/08 manda trocar.
+    if not any(a[0] == "ERRO" and "BO11" in a[1]
+               for a in lint(_spec_c, montar(_spec_c))):
+        ctrl.append("[BO11] NAO acusa o corpo do helper compartilhado — a "
+                    "lente virou regex de palavra em vez de origem de pool")
+    _spec_f = dict(s, forte=True, homem=dict(HOMENS[0], idade=34))
+    _ach_f = [a[1] for a in lint(_spec_f, montar(_spec_f)) if a[0] == "ERRO"]
+    if not any("BO12" in x for x in _ach_f):
+        ctrl.append("[BO12] NAO acusa marido de 34 anos com o MODO FORTE "
+                    "aceso — e' o estado exato que o motor entregava ate' "
+                    "16/08, em 60 de 60 sorteios")
+    # ⛔ E o pool proprio tem de existir E respeitar o piso: um `HOMENS_FORTES`
+    # vazio faria o `_fresco` estourar, e um com entrada de 60 passaria pela
+    # BO12 (a origem esta' certa) e reprovaria na BO9 depois do video pronto.
+    _novos = [h["id"] for h in HOMENS_FORTES if h["idade"] < HOMEM_IDADE_MIN]
+    if _novos:
+        ctrl.append("[BO12] HOMENS_FORTES abaixo de %d anos: %s"
+                    % (HOMEM_IDADE_MIN, _novos))
+    if len(FAMILIAS_TRAJE) != len(TRAJES_SEXY):
+        ctrl.append("[BO10] FAMILIAS_TRAJE nao cobre o TRAJES_SEXY inteiro "
+                    "(%d de %d) — traje sem familia sai do sorteio sem "
+                    "ninguem contar" % (len(FAMILIAS_TRAJE), len(TRAJES_SEXY)))
+    if set(FAMILIAS_TRAJE.values()) != {"decote", "vestido", "biquini",
+                                        "toalha"}:
+        ctrl.append("[BO10] as QUATRO familias que o operador nomeou nao estao "
+                    "todas no pool: %s" % sorted(set(FAMILIAS_TRAJE.values())))
+    if any(p["id"] == "berinjela" for p in PROPS):
+        ctrl.append("[PROPS] a berinjela voltou ao pool — ela saiu por ordem "
+                    "do operador em 2026-08-16, nao por recusa do gerador")
 
     # ⭐⭐ [BO8] O POTE DE GELATINA — mesma razao. A string e' constante e a
     # lente do `lint()` a compara com ela mesma: se alguem apagar a constante,

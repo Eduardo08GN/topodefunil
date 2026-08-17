@@ -184,19 +184,23 @@ def _pele_de(etnia):
 BO_TRIO = (
     # ⛔ Sem repetir o sofa: ele ja' esta' na descricao da SALA, e nomear
     # duas vezes faz o Veo desenhar dois assentos.
-    "Two women sit side by side on the couch, filmed straight on from the "
-    "knees up. On frame-left sits a %d-year-old %s woman, %s, %s, wearing %s; "
-    "both her hands are closed around %s, held in her lap. On frame-right sits "
+    "Two women sit side by side on the couch, filmed straight on, with the "
+    "couch seat and both their hands inside the frame. On frame-left sits a %d-year-old %s woman, %s, %s, wearing %s; "
+    "both her hands are closed around %s, resting on her knees. On frame-right "
+    "sits "
     "a %d-year-old %s woman, %s, %s, wearing %s; her right hand is closed "
-    "around %s, held upright in her lap. She is smiling, pleased and openly "
+    "around %s, standing upright on her knees. She is smiling with her lips "
+    "closed, pleased and openly "
     "happy, her whole face lit up as she looks down at what she is holding. "
     "Both objects are fully in frame and "
-    "neither touches either woman's body. Standing behind them and leaning "
-    "forward between their shoulders is %s. Her right arm reaches down between "
-    "them and her index finger points at the piece in the left woman's lap. "
+    "both are held clear of the women's bodies. Standing behind them and "
+    "leaning "
+    "forward between their shoulders is %s. Her right arm reaches down past "
+    "the left woman's shoulder and her index finger points at the piece the "
+    "left woman is holding. "
     "She looks straight into the lens with her mouth open mid-word as she "
-    "speaks. Neither seated woman speaks and both keep their eyes on what they "
-    "are holding."
+    "speaks. Both seated women keep their lips closed and their eyes down on "
+    "what they are holding."
 )
 
 # ⛔ BO2 — no TAKE da cena 1 o prop NAO muda de estado. Este agente nao tem
@@ -1680,6 +1684,26 @@ PARES = [
     # aparece de rosto e sorrindo (BO6 invertida).
     # Ancora que aponta para fora do frame e' ancora nenhuma — entra a do
     # TORSO, que e' o que esta' visivel: do punho ao alto do peito.
+    #
+    # ⭐⭐ 2026-08-16 — ELE PEDIU O TAMANHO DO NECROSE OUTRA VEZ: *"sempre que o
+    # homem estiver segurando o geoduck no take e image 2, deve ser um geoduck
+    # grande e grosso, igual ao do agente necrose"*.
+    # ⛔⛔ E A MEDICAO DESMENTE A PREMISSA DE QUE FALTAVA SPEC: as duas eram
+    # IDENTICAS — `as long as his forearm and as thick as his wrist`, nos dois
+    # motores, palavra por palavra. O que faz o do NECROSE parecer maior nao e'
+    # o prop, e' a MAO: la' ele ergue `raised above his shoulder against the
+    # sky` e aqui a frase que posiciona diz `held upright at the height of his
+    # waist`. Do punho na cintura, um sifao do tamanho do antebraco morre no
+    # peito — que e' exatamente o que a ancora antiga descrevia, e ela estava
+    # certa sobre o que o quadro mostrava.
+    # ⭐ Como o que ele nomeou foi o OBJETO (*"um geoduck grande e grosso"*), e
+    # a altura da mao e' cena, quem cresce aqui e' o prop: o sifao passa a ter
+    # DUAS VEZES o antebraco, e ai' a ancora do NECROSE (`past the top of his
+    # head`) volta a fechar a conta a partir da cintura. Uma so' escala, sem
+    # contradicao — dois comprimentos diferentes na mesma frase e' ordem
+    # ambigua, e o Veo resolve ambiguidade contra nos.
+    # ⚠️ A ALTURA DA MAO segue sendo a diferenca restante, e e' decisao do
+    # operador: erguer acima do ombro daria o enquadramento do NECROSE inteiro.
     # ⛔ E a CLAUSULA ANTI-BICHO vem JUNTO, nao e' enfeite: e' nessa escala que
     # o geoduck erguido passa a ler como ganso, e foi por isso que o NECROSE a
     # escreveu. Subir o tamanho sem ela e' reintroduzir o defeito que ele pagou.
@@ -1694,7 +1718,7 @@ PARES = [
     {"id": "geoduck", "nome": "clam",
      "murcho": "a small shrivelled geoduck clam, its siphon limp and drawn back against the shell, barely the length of her palm",
      "gigante": "an enormous geoduck clam, its thick siphon standing straight up well past the pale ridged shell, as long as her forearm and as thick as her wrist, reaching from her fist up to the top of her chest, its surface taut and glossy, streaked with darker mottled lines running along its length, held upright",
-     "gigante_c2": "an enormous geoduck clam, its thick siphon standing straight up out of the pale ridged shell, as long as his forearm and as thick as his wrist, reaching from his fist up to the top of his chest, its surface taut and glossy, streaked with darker mottled lines running along its length",
+     "gigante_c2": "an enormous geoduck clam, its very thick siphon standing straight up out of the shell, as thick as his wrist and twice the length of his forearm, reaching from his fist up past the top of his head, its surface taut and glossy, streaked with darker mottled lines running along its length",
      "cauda_c2": "No bird, no goose, no duck, no swan, no snake, no feathers, no beak, no eyes, no head, nothing alive."},
     # ⭐⭐ A LINGUICA — par novo em 2026-08-11, e o unico que nao e' vegetal.
     # ⚠️ Sem `cauda_c2`: a clausula anti-bicho existe porque GEODUCK ERGUIDO le'
@@ -1746,7 +1770,27 @@ PROPS = PARES   # o contrato do painel usa `PROPS`
 # ⚠️ A idade entra na IMAGE **e** no TAKE dos DOIS blocos. Ordem dele: *"no take
 # 1 e 2 precisa estar especificando a idade das personagens"*. O classificador
 # le' os dois prompts; idade so' na IMAGE deixa metade do lote sem a informacao.
-IDADE_MULHER = 22
+#
+# ⭐⭐ SOBE PARA 25 EM 2026-08-16, DE NOVO POR RECUSA EM CAMPO. Ordem do
+# operador, com o lote na mao: *"o take 1 do agente trio 16 esta' tomando muita
+# violacao de politicas. Aumente a idade das meninas da cena para 25 anos"*.
+#
+# ⛔ E' A MESMA DIRECAO DE 11/08, PELO MESMO MOTIVO — a politica de menores so'
+# cede quando a idade SOBE. Os 22 eram o minimo defensavel (um ano acima do
+# Mississippi); 25 poe folga, e folga e' o que o classificador le' quando a
+# cena tem duas mulheres sentadas com prop falico no colo. O numero de 11/08
+# resolveu a recusa daquele dia e nao resolveu esta: numero minimo suficiente
+# na mesa nao e' numero suficiente em quadro.
+#
+# ⭐ UMA CONSTANTE MANDA EM TUDO, e e' por isso que este conserto e' uma linha:
+# as 36 entradas de `REFS` recebem `IDADE_MULHER`, e a idade renderiza nos
+# CINCO blocos (BLOCO 0, IMAGE 01, IMAGE 02, TAKE 01, TAKE 02). MEDIDO depois
+# da troca, com `\d+-year-old` extraido dos blocos gerados: nenhum `22` sobra
+# em lugar nenhum.
+# ⚠️ NAO ha' lente cravada no 22 — conferido antes de mexer. Se alguem crava
+# uma, ela tem de ler `IDADE_MULHER`, nunca o literal: lente que repete o
+# numero e' a segunda verdade que envelhece sozinha.
+IDADE_MULHER = 25
 
 # ---------------------------------------------------------------------------
 # ⭐ REFS — a boticaria
@@ -2636,7 +2680,27 @@ VILOES_APOSENTADO = [
 
 
 # ⛔ As palavras do orgao. Rotacionam DENTRO do video (nunca a mesma duas vezes).
-NUCLEO = ["Johnson", "pecker", "wiener", "soldier", "tool"]
+#
+# ⭐⭐ SO' `Johnson` E `manhood` DESDE 2026-08-16. Ordem do operador, com as
+# recusas na mao: *"esta' dando sempre violacao de conteudo nocivo. Ajuste o
+# agente python para gerar sempre falas que fazem referencia ao penis somente
+# como Johnson ou Manhood, retire qualquer outro termo"*.
+#
+# ⭐ MEDIDO ANTES DA TROCA, 300 videos: `Johnson` 215, `wiener` 193,
+# `pecker` 192. Dois em cada tres videos saiam com uma palavra que ele nao quer
+# — e' a mesma proporcao que o GOOD 16 media quando recebeu esta mesma ordem em
+# 13/08, e la' o conserto foi este.
+# ⚠️ E `soldier` e `tool` estavam no pool e NUNCA renderizavam: 0 em 300. Eram
+# pool morto antes desta ordem, e saem sem custo nenhum.
+#
+# ⛔⛔ ISSO FURA O CT4b DO CONTRATO DE 16s, que so' aceita
+# `pecker`/`wiener`/`Johnson`. A excecao entra em `DESLIGADAS` no
+# `medir_copy16` com a ordem escrita, como no GOOD 16 — gate que acusa uma
+# decisao declarada treina o operador a ignorar o gate.
+# ⭐ E o que o CT4b protege continua vivo: quem cobra UM apelido por video,
+# repetido nos dois takes, e' o CT4, e ele nao mudou. O pool tem dois e o
+# sorteio alterna, entao a variacao ENTRE videos tambem fica.
+NUCLEO = ["Johnson", "manhood"]
 
 # ⚠️ MEDIDOS CONTRA A CAPACIDADE REAL de 8s de narracao (~3,4-4,0 p/s = 27-32
 # palavras). ⛔ Teto folgado nao e' seguranca: e' frase morta esperando nascer
@@ -3274,7 +3338,25 @@ def sortear(pagina, rng, led, travas=None):
     # operador, parque inteiro). `soldier` e `tool` seguem no NUCLEO porque
     # as LENTES os usam para DETECTAR o orgao; o que muda e' que nao saem
     # mais na fala. Ver `short_comum.orgaos_sorteaveis`.
-    orgaos = sc.orgaos_sorteaveis(rng, 2)
+    #
+    # ⭐⭐ E DESDE 2026-08-16 O SORTEIO E' LOCAL, `NUCLEO`, NAO O HELPER.
+    # Ordem do operador para ESTE motor, por recusa de conteudo nocivo em
+    # serie: *"falas que fazem referencia ao penis somente como Johnson ou
+    # Manhood, retire qualquer outro termo"*.
+    # ⛔⛔ O `sc.orgaos_sorteaveis` NAO PODE MUDAR: ele carrega a ordem de
+    # 10/08 (*"wiener, john-son, peck-er somente"*) para o PARQUE INTEIRO, e
+    # trocar la' dentro para atender o TRIO reescreveria os outros trinta em
+    # silencio. Mesmo precedente do `HOMENS_FORTES` do GOOD 16 e do BOTICA 16.
+    # ⚠️ MEDIDO: trocar so' o `NUCLEO` NAO bastava — ele e' lido pelas LENTES
+    # (BO9, BO14), nao pelo sorteio. Com o pool novo e o helper velho a fala
+    # continuava saindo `wiener` em 193 de 300 videos e a BO14 passava a
+    # REPROVAR o proprio motor, 484 ERRO. Pool trocado sem o sorteio trocado
+    # e' pool morto que ainda por cima quebra a lente.
+    # ⭐ Os DOIS orgaos do video sao agora exatamente os dois do NUCLEO, em
+    # ordem sorteada — a exigencia de `len(set(orgaos)) >= 2` da BO14 continua
+    # satisfeita por construcao.
+    orgaos = list(NUCLEO)
+    rng.shuffle(orgaos)
 
     # ⭐ A FLAG VIAJA NO SPEC. O `montar()` nao recebe `travas`, e sem
 
@@ -3501,13 +3583,15 @@ def montar(spec):
         # prompt muda sobre o unico atributo que a politica de menores olha.
         ("The two seated %(idade)d-year-old women stay exactly as they are, "
          "each holding her own "
-         "piece in her lap at the same height, same size, same shape, same "
+         "piece on her knees at the same height, same size, same shape, same "
          "colour, and neither sets anything down. The %(idade)d-year-old woman "
          "on frame-right "
-         "keeps smiling the whole time, happy and pleased, her expression "
-         "never going flat, and she makes no sound. The %(idade)d-year-old "
+         "keeps smiling with her lips closed the whole time, happy and pleased, "
+         "her expression steady and warm, and she stays silent. "
+         "The %(idade)d-year-old "
          "woman standing behind "
-         "them keeps her arm reaching down between them and her index finger "
+         "them keeps her arm reaching down past the left woman's shoulder and her "
+         "index finger "
          "pointing at the same piece for the whole shot.") % {"idade": IDADE_MULHER},
         # ⭐⭐ O TAKE 2 ANIMA UM QUADRO PARADO, e e' isso mesmo. Ela segura o
         # copo e fala; a bancada nao e' tocada.
@@ -3537,8 +3621,8 @@ def montar(spec):
         # contradicao ele resolve mexendo no que estava certo, e aqui o que
         # estava certo e a boca que fala.
         "Only the woman standing behind them speaks, straight into the lens. "
-        "Neither seated woman speaks and both keep their eyes on what they "
-        "are holding.",
+        "Both seated women keep their lips closed and their eyes down on what "
+        "they are holding for the whole shot.",
         BO_CORPO_PROVA_TAKE,
     ]
     # ⛔ O audio da conformacao (`a blender motor starting up`) NAO entra: o
@@ -3843,7 +3927,7 @@ def lint(spec, blocos):
     # 200 de 200.
     # ⭐ O que faz a comparacao ler aqui e' outra coisa: os dois props no MESMO
     # quadro, cada um num colo, e o DEDO da que fala descendo sobre um deles.
-    if "held in her lap" not in i1 or "held upright" not in i1:
+    if "resting on her knees" not in i1 or "standing upright" not in i1:
         ach.append(("ERRO", "BO1: IMAGE 01/02 sem os dois props NO COLO — e' a "
                             "escala deste angulo, e sem ela o par vira dois "
                             "objetos soltos no quadro"))
@@ -3891,12 +3975,28 @@ def lint(spec, blocos):
     # `held upright` dentro do campo `gigante`, e as strings que posicionam o
     # objeto acrescentam a sua. Duas ordens de pose para o mesmo objeto e' ordem
     # ambigua, e o Veo escolhe uma.
+    # ⚠️ A LENTE PRECISOU CRESCER EM 2026-08-16, e foi o controle negativo que
+    # avisou. A frase que posiciona deixou de dizer `held upright in her lap` e
+    # passou a dizer `standing upright on her knees` (saida do token `lap`, ver
+    # o bloco T16-LAP). Com a redacao nova, a duplicacao passaria a ser
+    # `standing upright, standing upright` — que o regex antigo nao via. O
+    # defeito e' o MESMO (duas ordens de pose para o mesmo objeto); so' mudou a
+    # palavra, e lente cravada na palavra velha e' lente que nao olha mais.
+    # ⭐ Por isso agora ela varre a POSE, nao a frase: qualquer das duas formas
+    # repetida em sequencia.
+    # ⛔ O TESTE E' "QUANTAS ORDENS DE POSE", nao "qual palavra repetiu".
+    # O defeito real, quando o `_sem_pose()` falha, e' o prop chegar com a
+    # SUA pose (`held upright`, dentro do campo `gigante`) e a frase que
+    # posiciona acrescentar a DELA (`standing upright on her knees`) — duas
+    # formas DIFERENTES, que nenhum teste de repeticao literal ve.
     for _n, _t in blocos.items():
-        if "held upright, held upright" in _t or "held upright held upright" in _t:
-            ach.append(("ERRO", "T16-3: pose duplicada em %s (`held upright, "
-                                "held upright`) — a pose mora na frase que "
-                                "POSICIONA, nunca dentro do prop; use "
-                                "`_sem_pose()`" % _n))
+        _b = _t.lower()
+        _n_pose = _b.count("held upright") + _b.count("standing upright")
+        if _n_pose > 1:
+            ach.append(("ERRO", "T16-3: %d ordens de pose em %s — a pose "
+                                "mora na frase que POSICIONA, nunca dentro "
+                                "do prop; use `_sem_pose()`"
+                        % (_n_pose, _n)))
 
     # --- T16-4: ⭐⭐ QUEM FALA NO TAKE E' QUEM FALA NA IMAGE ------------------
     # ⛔⛔ Herdada do DUPLA e medida em 200 de 200 sorteios do TRIO: o TAKE 01
@@ -3907,7 +4007,8 @@ def lint(spec, blocos):
     # todo o linter do TRIO sem uma unica acusacao: nenhuma lente comparava o
     # elenco do TAKE com o da IMAGE.
     _tk1 = blocos["TAKE 01/02"]
-    if "Neither seated woman speaks" in i1 and "frame-left speaks" in _tk1:
+    if ("Both seated women keep their lips closed" in i1
+            and "frame-left speaks" in _tk1):
         ach.append(("ERRO", "T16-4: a IMAGE 01/02 diz que nenhuma das SENTADAS "
                             "fala e o TAKE 01/02 manda falar a de `frame-left`, "
                             "que e' uma delas — quem fala e' a que esta' EM PE "
@@ -3963,13 +4064,22 @@ def lint(spec, blocos):
                                 "cena 2 caiu de volta no campo `gigante`, que e' "
                                 "dimensionado para a MAO DELA na cena 1"
                         % spec["prop"]["id"]))
-        for _dim in ("as long as his forearm", "as thick as his wrist"):
-            if _dim not in i2:
-                ach.append(("ERRO", "T16-5: IMAGE 02/02 sem a ancora %r — o "
-                                    "NECROSE dimensiona o geoduck pelas DUAS "
-                                    "(comprimento E grossura), e so' o "
-                                    "comprimento devolve peca longa e fina"
-                            % _dim))
+        # ⛔⛔ AS DUAS DIMENSOES CONTINUAM OBRIGATORIAS — o que deixou de
+        # ser obrigatorio e' a REDACAO de cada uma. A lente cravava o literal
+        # `as long as his forearm`, e em 2026-08-16 o operador mandou o geoduck
+        # crescer (`twice the length of his forearm`): a lente passou a
+        # reprovar a copy CERTA, que e' a §16 das licoes. Agora ela cobra o
+        # PAR — uma ancora de COMPRIMENTO e uma de GROSSURA, escritas como
+        # forem —, porque o defeito que ela existe para pegar e' peca longa e
+        # fina, nao uma frase especifica.
+        for _rot, _formas in (
+                ("comprimento", ("length of his forearm", "long as his forearm")),
+                ("grossura", ("thick as his wrist", "thick as his forearm"))):
+            if not any(_f in i2 for _f in _formas):
+                ach.append(("ERRO", "T16-5: IMAGE 02/02 sem ancora de %s — o "
+                                    "NECROSE dimensiona o geoduck pelas DUAS, "
+                                    "e so' o comprimento devolve peca longa e "
+                                    "fina" % _rot))
         _cd2 = spec["prop"].get("cauda_c2")
         if _cd2 and _cd2 not in i2:
             ach.append(("ERRO", "T16-5: IMAGE 02/02 sem a cauda anti-bicho do "
@@ -3985,7 +4095,7 @@ def lint(spec, blocos):
     #   cena 3 — a REF + o CORPO-PROVA MASCULINO, sorrindo (a cena do
     #            EXTERIOR, que o operador mandou por print).
     # Proibir homem aqui reprovava 200 de 200 na cena que ele mesmo pediu.
-    if "Neither seated woman speaks" not in i1:
+    if "Both seated women keep their lips closed" not in i1:
         ach.append(("ERRO", "BO6: IMAGE 01/02 sem a trava de mudez das duas "
                             "sentadas — sem ela o Veo dubla a fala em tres "
                             "bocas"))
@@ -4374,7 +4484,7 @@ def autoteste(n=600):
             ctrl.append("[T16-5] o par geoduck perdeu o campo %r — a cena 2 "
                         "cai de volta na escala da cena 1 (`her forearm`) e o "
                         "prop volta ao tamanho natural do molusco" % _campo)
-    for _dim in ("as long as his forearm", "as thick as his wrist"):
+    for _dim in ("length of his forearm", "as thick as his wrist"):
         if _dim not in _geo.get("gigante_c2", ""):
             ctrl.append("[T16-5] `gigante_c2` do geoduck sem a ancora %r — o "
                         "NECROSE (NE11) dimensiona pelas DUAS, e so' o "
@@ -4457,7 +4567,8 @@ def autoteste(n=600):
     # ⭐ [T16-3] a pose duplicada — o defeito herdado, achado LENDO o prompt
     b163 = dict(b)
     b163["IMAGE 01/02"] = b163["IMAGE 01/02"].replace(
-        "held upright in her lap", "held upright, held upright in her lap", 1)
+        "standing upright on her knees",
+        "held upright, standing upright on her knees", 1)
     if not any("T16-3" in msg for _, msg in lint(s, b163)):
         ctrl.append("[T16-3] NAO acusa a pose duplicada do prop")
 
@@ -4612,9 +4723,33 @@ def autoteste(n=600):
     #
     # [BO1] os props fora do colo — a escala deste angulo
     b1 = dict(b)
-    b1["IMAGE 01/02"] = b1["IMAGE 01/02"].replace("held in her lap", "on a table")
+    b1["IMAGE 01/02"] = b1["IMAGE 01/02"].replace("resting on her knees",
+                                                    "on a table")
     if not any("BO1" in msg for _, msg in lint(s, b1)):
         ctrl.append("[BO1] NAO acusa o prop fora do colo")
+
+    # ⭐⭐ [T16-ORGAO] SO' `Johnson` E `manhood` — a ordem de 2026-08-16.
+    # ⛔ Aqui a sonda olha o POOL, nao o sorteio, e e' de proposito: o defeito
+    # que ela previne nao e' um sorteio azarado, e' alguem devolver a palavra a'
+    # lista. Sorteio limpo em 600 videos nao prova nada sobre a lista de amanha.
+    _proibidos = {"pecker", "wiener", "soldier", "tool", "dick", "cock",
+                  "member", "shaft", "penis"}
+    _sujo = sorted(_proibidos & {x.lower() for x in NUCLEO})
+    if _sujo:
+        ctrl.append("[T16-ORGAO] termo proibido de volta no NUCLEO: %s — a "
+                    "ordem de 16/08 e' `Johnson` e `manhood` e mais nada"
+                    % _sujo)
+    if {x.lower() for x in NUCLEO} != {"johnson", "manhood"}:
+        ctrl.append("[T16-ORGAO] o NUCLEO deixou de ser exatamente "
+                    "{Johnson, manhood}: %s" % sorted(NUCLEO))
+    # ⛔ E o SORTEIO tem de sair do NUCLEO, nao do helper do parque. Foi
+    # justamente essa desconexao que deixou o motor entregando `wiener` com o
+    # pool ja' trocado — pool novo, sorteio velho.
+    _s_org = dict(s)
+    if set(_s_org["orgaos"]) - {x for x in NUCLEO}:
+        ctrl.append("[T16-ORGAO] o sorteio devolveu orgao de fora do NUCLEO "
+                    "(%s) — o `sc.orgaos_sorteaveis` voltou a mandar aqui"
+                    % _s_org["orgaos"])
 
     # [BO1] o dedo que nao aponta — sem ele a fala nao tem a qual prop se referir
     b1b = dict(b)
@@ -4644,6 +4779,32 @@ def autoteste(n=600):
     b6b["IMAGE 02/02"] += " Two women sit behind her."
     if not any("BO6" in msg for _, msg in lint(s, b6b)):
         ctrl.append("[BO6] NAO acusa as sentadas de volta na cena 3")
+
+    # ⭐⭐ [BO6] A BOCA FECHADA DAS SENTADAS — 2026-08-16, com o render na mao.
+    # ⛔ O operador mandou o video: *"a menina da direita sempre falando
+    # junto"*. Conferido nos quadros a 1,5 fps — boca aberta, dentes a' mostra,
+    # mid-word. E a causa estava escrita no proprio prompt: a trava era a
+    # NEGACAO `Neither seated woman speaks`, colada num rosto descrito so' como
+    # `smiling, her whole face lit up` — sem estado de boca nenhum. Negacao
+    # injeta o token (licoes-producao-veo §*Declaracao e' municao*), e o frame 0
+    # manda: sorriso aberto sem `lips closed` renderiza boca que se mexe.
+    # ⭐ A trava virou POSITIVA (`keep their lips closed`), e este controle
+    # planta a volta da forma negativa — que e' como o defeito reapareceria.
+    b6c = dict(b)
+    b6c["IMAGE 01/02"] = b6c["IMAGE 01/02"].replace(
+        "Both seated women keep their lips closed and their eyes down on "
+        "what they are holding.",
+        "Neither seated woman speaks and both keep their eyes on what they "
+        "are holding.")
+    if not any("BO6" in msg for _, msg in lint(s, b6c)):
+        ctrl.append("[BO6] NAO acusa a volta da trava NEGATIVA de mudez — foi "
+                    "ela que fez a sentada da direita falar junto")
+    # ⛔ E a clausula de boca fechada tem de estar nos DOIS blocos do take 1: o
+    # frame 0 decide a boca, e o TAKE decide se ela se mexe nos 8 segundos.
+    for _n in ("IMAGE 01/02", "TAKE 01/02"):
+        if "lips closed" not in b[_n]:
+            ctrl.append("[BO6] %s sem `lips closed` — a mudez das sentadas "
+                        "voltou a ser negacao ou sumiu" % _n)
 
     # [HIER] o gelatin trick como item da lista (§31)
     sh = dict(s, falas=list(s["falas"]))
