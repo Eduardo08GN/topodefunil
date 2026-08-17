@@ -1679,6 +1679,71 @@ por ninguém estar olhando é o mesmo relatório que limpo de verdade.
 
 ---
 
+## 43. ⛔⛔⛔ O MEDIDOR SÓ CONHECIA UMA SINTAXE DE SLOT — e declarou 100% sobre a família que usa a outra
+
+2026-08-16, integrando os cinco motores do lote do Ed mais o `horse16`. O
+verificador de tradução respondeu **0 templates sem PT** nos seis. Gerei vídeo
+de verdade, cliquei em traduzir: **12 falas saíram inteiras em inglês**.
+
+⛔ **A causa está numa linha só.** O verificador só acusa um template se a
+regex DELE casar algum pedaço de fala gerada:
+
+```python
+if any(rx.match(p) or rx.match(p.rstrip(" .!?")) for p in pedacos):
+    falta[mod].add(texto)
+```
+
+E o compilador de template só reconhece slot na forma `{nome}`. O DESCARTE e o
+HORSE gravam os pools em **printf** — `"I threw these away at %s."`,
+`"...mixture: %(receita)s."`. A regex desses **nunca** casa a fala renderizada,
+então eles não entram na lista de faltantes: são classificados como *"não é
+copy"* em vez de *"sem tradução"*.
+
+> **O medidor não mentiu sobre o que mede. Ele simplesmente não enxerga uma das
+> duas famílias de sintaxe — e o silêncio dele é idêntico ao silêncio do
+> aprovado.**
+
+⚠️ **E não é caso isolado:** 20 motores têm mais de 140 strings em printf
+(botica, trio16, dupla16, placa16, colo16, good16, escandalo16…). Todos estavam
+no mesmo ponto cego.
+
+⭐ **O conserto não foi remendar o verificador de pool: foi medir a SAÍDA.**
+`faltas_runtime.py` gera N vídeos por motor, manda traduzir e coleta o que
+voltou em inglês, usando a mesma unidade que o `traduzir()` usa por dentro (o
+pedaço guloso de sentenças) — então o que sai dele é **colável como chave**,
+não um fragmento que nunca vai casar.
+
+| | `checar.py` (pool) | runtime (fala gerada) |
+|---|---|---|
+| os 6 motores novos | 0 faltando | **77 pedaços em inglês** |
+| o parque inteiro | 100% | **3 motores sujos** |
+
+### ⛔⛔ E o achado maior veio de graça: um TERMO de três palavras derruba TRÊS sentenças
+
+A varredura de runtime nos 51 motores acusou `pee_short` (22 pedaços),
+`pee16_short` (15) e `alfa16_short` (11). Nos dois PEE **não faltava template
+nenhum** — os dez de `{evento}` existem e estão traduzidos desde sempre.
+
+O que derrubava era o guarda de *slot que engoliu oração*, que rejeita o
+casamento quando um slot tem **três palavras ou mais e nada nele traduz**.
+`that wedding hall` tem três palavras e não estava no glossário. O guarda
+concluiu — corretamente, pela regra dele — que o slot tinha engolido oração, e
+a fala inteira caiu para o caminho frase-a-frase, onde nenhuma metade casa
+sozinha.
+
+⭐ **21 dos 27 locais já estavam no glossário. Faltavam SEIS** — os que entraram
+quando o pool cresceu de 9 para 21 e depois para 27.
+
+> **Pool que cresce sem o glossário crescer junto quebra em silêncio, e a conta
+> não é linear: 6 termos faltando viraram 37 pedaços em inglês.**
+
+⚠️ E a mesma classe de furo aparecia na IDADE: `{idade}` é preenchido com
+`seventy-five`, não com `75`, e o slot devolvia o valor intacto — o PT saía
+`Aos sixty-nine minha mulher perguntou o que tinha mudado`. Já acontecia antes
+desta rodada e vale para todo motor que escreve idade por extenso.
+
+---
+
 ## O CHECKLIST, para colar antes de entregar agente ou alteração de motor
 
 - [ ] **Gerar UM lote e LER o bloco inteiro**, como o operador vai colar no
@@ -1815,6 +1880,12 @@ por ninguém estar olhando é o mesmo relatório que limpo de verdade.
       vão de um literal apaga o comentário que mora dentro dele
 - [ ] **Lente nova? PLANTEI o defeito em todos os motores e exigi a acusação** —
       0% do defeito não prova que alguém está olhando (§42)
+- [ ] ⛔ **Medidor disse 100%? GEREI a saída e OLHEI** (§43). Medidor de pool
+      só enxerga a sintaxe de slot que ele sabe compilar — a família printf
+      passa como "não é copy", e o silêncio dele é idêntico ao do aprovado
+- [ ] **Cresci um pool de valores? O glossário cresceu junto?** (§43) Termo de
+      3+ palavras sem tradução aciona o guarda de slot e derruba a **fala
+      inteira**, não só o slot
 
 ---
 

@@ -50,7 +50,7 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **vinte e oito agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **trinta agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
@@ -58,7 +58,25 @@ com **vinte e oito agentes nossos**, não mais um. **2 takes de 8s**, destino
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
 `prato16` · `banho16` · `banho16_v2` · `mel16` · `organicwave16` ·
 **`banho16_3t`** · `horse16` · `vick16` · **`vick2_16`** · **`gelahorse16`** ·
-(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 30 no total)
+**`par16`** · **`descarte16`** ·
+(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 32 no total)
+
+⭐ **`par16` e `descarte16` (2026-08-16) — DOIS agentes tirados de sete
+vídeos, não sete.** Os 7 reels do lote de 16/08 são uma página rodando **um
+script só**: o mesmo homem, a mesma embalagem, o mesmo líquido azul, o mesmo
+`old blood blocking my flow`, o mesmo `comment gelatin`. ⛔ Quando mecanismo e
+CTA não variam, o que separa um agente do outro é o **hook e o beat que ele
+exige em quadro** — e por esse teste os sete colapsam em dois. O `par16` fica
+com cinco (as duas peças anatômicas em pedestal cromado, o pó caindo **entre**
+elas, e do narrador só as mãos); o `descarte16` sai inteiro do **v07** (o
+frasco âmbar virado de boca para baixo sobre a lata de lixo, com a tigela da
+receita esperando no mesmo quadro) e ⛔ **não tem prop fálico em quadro
+nenhum**, o que é propriedade do ângulo e zera o custo de moderação dele.
+⭐⭐ **A lente mais cara desse par não mede variedade, mede CONSTÂNCIA:** o
+defeito dominante da fonte não é copy nem cena — a embalagem trocou de design
+entre cenas em **5 de 7**, o copo mudou de silhueta em **4 de 7** e o par
+evaporou ou mutou em **4 de 7**. Leitura ótica e decisão em
+[`PROPOSTA-lote-16ago.md`](funil-organico/PROPOSTA-lote-16ago.md).
 
 ⭐⭐ **`gelahorse16` (2026-08-16) — os treze reels da Healthy Men's Guide, e a
 CENA e o GESTO como dois eixos separados.** ⛔ **Não substitui o `horse16`**:
@@ -789,7 +807,7 @@ Inventário atual de domínios e apps:
 - **Investigar uma recusa do Veo (método):** [`funil-organico/RUNBOOK-bisseccao-moderacao.md`](funil-organico/RUNBOOK-bisseccao-moderacao.md) — bissecção com variável única. ⚠️ **Regerar 2× antes de investigar**: a política de conteúdo nocivo tem variância.
 - **Lições de produção Veo (moderação + copy):** [`funil-organico/licoes-producao-veo.md`](funil-organico/licoes-producao-veo.md) — playbook das lições pagas em campo; ler antes de gerar lote.
 - ⛔⛔ **Contrato de copy da família 16s:** [`funil-organico/CONTRATO-COPY-16S.md`](funil-organico/CONTRATO-COPY-16S.md) — **ler antes de escrever ou alterar copy de qualquer `*16_short.py`.** Sete travas em `short_comum.lint_copy16`, cobradas por `python funil-organico/medir_copy16.py --gate`. Tem também os quatro achados da revisão adversarial que **não** viraram trava, com o motivo de cada um.
-- ⛔ **Lições de construção — os erros do assistente:** [`funil-organico/licoes-de-construcao.md`](funil-organico/licoes-de-construcao.md) — **ler antes de construir ou alterar agente.** 41 modos de falha já cometidos, com o que impede cada um, e o checklist de entrega. ⭐ §41 é a mais recente e a mais cara de ver: *o toggle entregava MENOS do que o estado desligado* — o `MODO FORTE` do GOOD 16 tinha idade certa, lente própria e controle negativo, e mesmo assim 232 de 400 corpos saíam sem uma palavra de músculo (contra 0 de 400 com o botão desligado). **Quando um botão não entrega, meça o estado DESLIGADO também.** A causa raiz é uma só: *verificar a FORMA e declarar pronto sem verificar a FUNÇÃO*. Corolário: **aceite é MEDIÇÃO, nunca RELATO** — nem meu, nem de subagente. Dois gates: `python funil-organico/medir_personagens.py --gate` (eixo físico zerado = reprovação) e `python funil-organico/medir_contexto_copy.py --gate` (frase que nomeia causa sem dizer o que ela quebra = reprovação — §17, *"tá deixando o viewer sem entender do que se trata"*).
+- ⛔ **Lições de construção — os erros do assistente:** [`funil-organico/licoes-de-construcao.md`](funil-organico/licoes-de-construcao.md) — **ler antes de construir ou alterar agente.** 43 modos de falha já cometidos, com o que impede cada um, e o checklist de entrega. ⭐⭐ §43 é a mais recente: *o medidor só conhecia UMA sintaxe de slot* — o verificador de tradução cravou **0 faltando** nos seis motores novos enquanto 12 falas saíam inteiras em inglês, porque ele só compila slot `{nome}` e a família **printf** (`%s`, `%(receita)s`) nunca casa a fala renderizada: ela passa como *"não é copy"*, e esse silêncio é idêntico ao do aprovado. **Medidor de pool não mede função — gere a saída e olhe.** Corolário achado na mesma varredura: *termo de 3+ palavras sem tradução aciona o guarda de slot e derruba a FALA INTEIRA* — 6 locais faltando no glossário do PEE viraram 37 pedaços em inglês. ⭐ §41 continua a mais cara de ver: *o toggle entregava MENOS do que o estado desligado* — o `MODO FORTE` do GOOD 16 tinha idade certa, lente própria e controle negativo, e mesmo assim 232 de 400 corpos saíam sem uma palavra de músculo (contra 0 de 400 com o botão desligado). **Quando um botão não entrega, meça o estado DESLIGADO também.** A causa raiz é uma só: *verificar a FORMA e declarar pronto sem verificar a FUNÇÃO*. Corolário: **aceite é MEDIÇÃO, nunca RELATO** — nem meu, nem de subagente. Dois gates: `python funil-organico/medir_personagens.py --gate` (eixo físico zerado = reprovação) e `python funil-organico/medir_contexto_copy.py --gate` (frase que nomeia causa sem dizer o que ela quebra = reprovação — §17, *"tá deixando o viewer sem entender do que se trata"*).
 - **Mapa visual da Tanisha (base do CONSULTORIO):** [`concorrentes/tanisha-mapa-visual.md`](concorrentes/tanisha-mapa-visual.md).
 - `funil-organico/` — doutrina de copy, criativos, arquitetura do funil, runbooks.
 - Bridge pages (código): repo `Eduardo08GN/projetosweb`, pasta `/bridge-pages/bp1`.
