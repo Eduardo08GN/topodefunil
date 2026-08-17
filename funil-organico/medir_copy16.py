@@ -302,6 +302,16 @@ DESLIGADAS = {
         "tres videos saiam com um apelido que ele nao quer neste angulo. "
         "⭐ O que o CT4b protege (variar o apelido ENTRE videos) segue vivo: o "
         "`NUCLEO` tem dois e o sorteio alterna. Quem cobra e' a lente GO19.",
+    ("exterior16", "CT4b"):
+        "ordem do operador (2026-08-17), depois de recusa de conteudo sexual em "
+        "serie: *\"deixe as palavras que representam o penis somente como "
+        "manhood e johnson, remova as outras\"*. ⛔⛔ REVERTE a ordem de "
+        "2026-08-03 dele mesmo, que pedia o contrario (*\"palavras alusivas "
+        "mais diretas ao penis, tal como wiener, peck-er, john-son, do que "
+        "manhood\"*) — a de hoje vence por ser mais recente e por ter campo "
+        "atras. MEDIDO antes: `pecker` 126 e `wiener` 126 em 200 videos, os "
+        "dois em mais de 60% do lote. ⭐ Mesmo par do TRIO 16, mesma ordem, "
+        "mesmo dia.",
     ("trio16", "CT4b"):
         "ordem do operador (2026-08-16), com as recusas na mao: *\"esta' dando "
         "sempre violacao de conteudo nocivo. Ajuste o agente python para gerar "

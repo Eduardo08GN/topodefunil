@@ -387,7 +387,10 @@ ETNIA = {
          "marcus": "Black American", "chuck": "Black American"}
 
 # EX14 — o nucleo deste repo desde 2026-08-03.
-NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
+# ⚠️ `manhood` ENTRA NO LEXICO em 2026-08-17: ele passou a ser sorteavel
+# (ver `NUCLEO_DIRETO`), e lexico que nao conhece a palavra emitida cega as
+# lentes que contam a cota do orgao.
+NUCLEO = ["Johnson", "manhood", "pecker", "wiener", "tool", "soldier"]
 # ⚠️ `soldier` FICA NA TABELA E NAO CHEGA MAIS AO VIDEO — desde a reforma de
 # 2026-08-10 so' o `NUCLEO_DIRETO` alimenta a fala, e o terceiro substantivo
 # (o unico lugar por onde `tool`/`soldier` entravam) nao e' mais emitido. E'
@@ -406,7 +409,20 @@ NUCLEO = ["Johnson", "pecker", "wiener", "tool", "soldier"]
 # dois entre os cinco deixaria `tool`/`soldier` nas duas cenas centrais em 30% dos
 # videos. O terceiro substantivo (cena 3, so' quando a fundida traz `{o}`) sai do
 # resto — e' onde os afetivos entram.
-NUCLEO_DIRETO = ["Johnson", "pecker", "wiener"]
+# ⭐⭐ SO' `Johnson` E `manhood` DESDE 2026-08-17, por recusa de conteudo
+# sexual em serie. Ordem do operador: *"esse agente ta dando muita violacao
+# de conteudo sexual. Deixe as palavras que representam o penis somente
+# como manhood e johnson, remova as outras"*.
+# ⛔⛔ ISSO REVERTE A ORDEM DE 2026-08-03, que esta' citada seis linhas
+# acima e dizia o CONTRARIO — *"use palavras alusivas mais diretas ao penis,
+# tal como wiener, peck-er, john-son, do que manhood"*. As duas sao dele; a
+# de hoje vence por ser mais recente E por ter campo atras: aquela otimizava
+# clareza, esta paga recusa. O registro fica para ninguem "consertar" de
+# volta lendo so' o comentario antigo.
+# ⚠️ MEDIDO antes: `pecker` 126 e `wiener` 126 em 200 videos — os dois
+# saiam em mais de 60% do lote.
+# ⭐ E o mesmo par do TRIO 16, que recebeu a mesma ordem no mesmo dia.
+NUCLEO_DIRETO = ["Johnson", "manhood"]
 
 # ---------------------------------------------------------------------------
 # EX9 — A LEI DA REF: LINDA E JOVEM, POR DESCRICAO FISICA CONCRETA
@@ -415,15 +431,27 @@ NUCLEO_DIRETO = ["Johnson", "pecker", "wiener"]
 # motivo escrito: "ja' pagamos para descobrir que idade em cena com conteudo de
 # ED e' zona sensivel". ⛔ Nao baixar sem ordem dele.
 # ⚠️ E teto de 34, que e' a outra metade da lei: 28-34, nao "adulta".
-IDADE_MINIMA_NARRADORA = 28
-IDADE_MAXIMA_NARRADORA = 34
+# ⭐⭐ 2026-08-17 — A NARRADORA PASSA A TER 25, SEMPRE. Ordem do operador:
+# *"ajuste o agente exterior 16 para que sempre gere mulheres lindas, mesmo
+# padrao do trio16 ou dupla. 25 anos sempre"*.
+# ⛔ O piso de 28 vinha do `organicwave_short` com a ressalva escrita —
+# *"nao baixar sem ordem dele"* — e a ordem chegou. Piso e teto viram o MESMO
+# numero: `sempre` nao e' uma faixa estreita, e' uma constante, e faixa de um
+# elemento so' e' o jeito de a lente continuar existindo sem mentir.
+# ⚠️ E os motores irmaos que ele nomeou ja' rodam assim: o TRIO 16 tem as 36
+# entradas em 25 desde hoje de manha.
+IDADE_MINIMA_NARRADORA = 25
+IDADE_MAXIMA_NARRADORA = 25
 
 # ⛔ SEM filtro de diferenca de idade, e o registro existe para ninguem
-# "consertar" achando que faltou a ES11. Os homens ficam em 40-58 contra
-# narradoras de 28-34: gap maximo 30, exatamente o TETO_DIF_IDADE dos outros
-# motores, ou seja ja' dentro da guarda. E a geometria NAO e' de intimidade —
+# "consertar" achando que faltou a ES11. E a geometria NAO e' de intimidade —
 # ela despeja, ele segura um molusco, ela nao encosta nele e ele nao tem rosto.
-TETO_DIF_IDADE = 30
+# ⚠️ O TETO SOBE DE 30 PARA 33 JUNTO COM A IDADE, e isto nao e' afrouxar a
+# guarda: os 30 nunca foram um limite escolhido, eram a SUBTRACAO das duas
+# faixas de entao (58 - 28). Baixando a narradora para 25 o mesmo par da' 33.
+# ⭐ E o numero segue folgado contra os irmaos: o TRIO roda 25 contra homens de
+# 71-82 (gap 57) e o BOTICA 25 contra 75-86 (gap 61), os dois em producao.
+TETO_DIF_IDADE = 33
 
 
 # ---------------------------------------------------------------------------
@@ -543,11 +571,24 @@ EX_BLINDAGEM_FORMA = (
 # segundo 3, que e' exatamente o rosto que nao queremos ter de manter identico
 # entre blocos. Sem slot.
 # ---------------------------------------------------------------------------
+# ⭐⭐ AS DUAS IDADES ENTRAM NO TAKE — 2026-08-17, ordem do operador: *"ambos
+# os takes desse agente nao especificam a idade de 25 da narradora"*.
+# ⛔ MEDIDO antes: os dois TAKEs traziam ZERO idade, e as duas IMAGEs traziam
+# `25` e `55`. E' a mesma regra do TRIO 16, com o motivo ja' escrito la': o
+# classificador le' os DOIS prompts, e idade so' na IMAGE deixa METADE do lote
+# sem o unico atributo que a politica de menores olha.
+# ⚠️ Idade e' NUMERO DESCRITIVO, nunca declaracao de conformidade: `they are
+# adults` e irmas estao na lista de proibidos do repo (ES17).
+# ⛔ A constante deixou de ser texto puro e passou a ter DOIS `%d` — o homem e
+# ela, nesta ordem. Os dois call sites formatam antes de injetar, e a EX11
+# passou a cobrar a forma nova, senao ela procuraria uma frase que nao existe
+# mais e aprovaria o silencio (§43).
 EX_SEM_ROSTO_TAKE = (
-    "He stays cropped at the chest for the whole shot: the camera never tilts "
-    "up to his face and he never leans down into frame. Only his chest, his "
-    "arms and his hands are in the picture, and both of his hands stay closed "
-    "around the shell where they are. Only she speaks."
+    "The %d-year-old man stays cropped at the chest for the whole shot: the "
+    "camera never tilts up to his face and he never leans down into frame. "
+    "Only his chest, his arms and his hands are in the picture, and both of "
+    "his hands stay closed around the shell where they are. Only the "
+    "%d-year-old woman speaks."
 )
 
 # ---------------------------------------------------------------------------
@@ -619,9 +660,22 @@ EX_KEYWORD_NA_MAO_IMAGE = (
 # esse literal esta' PROIBIDO aqui (EX7). Reescrito para dizer a MESMA coisa pela
 # posicao, que e' o que o Veo obedece, sem declarar estado de movimento.
 # ⚠️ Divergencia de UMA oracao, declarada: o resto e' o mesmo contrato.
+# ⭐⭐ O OBJETO E' NOMEADO NO TAKE desde 2026-08-17, e nao era. Ordem do
+# operador: *"a imagem 2 E O TAKE 2 [...] nao esta' mais apresentando a tigela
+# de gelatina"*.
+# ⛔ O texto antigo dizia `What she holds in her own free left hand` — um
+# DEITICO, sem substantivo. A IMAGE nomeava a tigela e o TAKE falava de "o que
+# ela segura": se o gerador ja' tinha perdido o objeto no primeiro frame, nada
+# no prompt de movimento o trazia de volta, porque nada no prompt de movimento
+# dizia o que era.
+# ⭐ E' a mesma lei que o BOTICA 16 escreve na trava dele: *o objeto que a fala
+# nomeia e' o ultimo que pode sumir* — por isso a gelatina entra NOMEADA na
+# trava do take, nao so' no `nothing else is touched`.
+# ⚠️ Ganhou um `%s`, que recebe o `mecanismo["curto"]` — o MESMO campo que a
+# IMAGE usa. Duas fontes para o mesmo objeto divergiriam no primeiro ajuste.
 EX_KEYWORD_NA_MAO_TAKE = (
-    "What she holds in her own free left hand stays at that same height in "
-    "front of her for the entire shot."
+    "%s stays in her own free left hand at that same height in front of her "
+    "for the entire shot, in full view and unchanged."
 )
 
 # ---------------------------------------------------------------------------
@@ -669,62 +723,72 @@ CAUDA = "Shot on iPhone, natural grain. No on-screen text, no watermark."
 # DISPOSITIVO, nunca a APARENCIA (ED12). Por isso ⛔ nada de blazer de autoridade:
 # o operador trocou o registro de proposito.
 NARRADORAS = [
-    {"id": "solto_longo", "idade": 30,
-     "rotulo": "30y · longo solto + sardas no nariz",
+    {"id": "solto_longo", "idade": 25,
+     "rotulo": "25y · longo solto + sardas no nariz",
      "cabelo": "long hair worn loose and falling well past her shoulders",
      "oculos": "",
      "porte": "a gym-fit hourglass figure, a full bust, a flat toned stomach, firm round glutes and long lean legs",
-     "rosto": "a light spray of freckles across her nose and a small dark mole "
-              "at her jawline",
+     "rosto": "an oval face with a high smooth forehead, wide-set eyes and "
+               "a short straight nose, a light spray of freckles across her "
+               "nose and a small dark mole at her jawline",
      "roupa": "a fitted white tank top and denim cut-offs"},
-    {"id": "rabo_alto", "idade": 29,
-     "rotulo": "29y · rabo alto + covinha esquerda",
+    {"id": "rabo_alto", "idade": 25,
+     "rotulo": "25y · rabo alto + covinha esquerda",
      "cabelo": "hair pulled back into a high sleek ponytail",
      "oculos": "",
      "porte": "a tall athletic build, a full high bust, a tight defined midsection, firm glutes and long toned legs",
-     "rosto": "large dark eyes and a shallow dimple in her left cheek",
+     "rosto": "a long face with a narrow jaw and a defined chin, large dark "
+               "eyes under arched brows and a straight narrow nose, and a "
+               "shallow dimple in her left cheek",
      "roupa": "a pale-blue button-front shirt tied at the waist"},
-    {"id": "tranca_unica", "idade": 28,
-     "rotulo": "28y · tranca unica + argolas de ouro",
+    {"id": "tranca_unica", "idade": 25,
+     "rotulo": "25y · tranca unica + argolas de ouro",
      "cabelo": "very long hair gathered over one shoulder in a single thick "
                "braid",
      "oculos": "",
      "porte": "a sculpted gym body, a full bust, visible abs, a small waist and firm rounded glutes",
-     "rosto": "a full mouth, a beauty mark at the corner of her right eye and "
-              "gold hoop earrings",
+     "rosto": "a heart-shaped face with a broad forehead and a pointed "
+               "chin, a full mouth and a slightly upturned nose, a beauty "
+               "mark at the corner of her right eye and gold hoop earrings",
      "roupa": "a rust ribbed tank top"},
-    {"id": "bob_platina", "idade": 31,
-     "rotulo": "31y · bob platinado + pinta na sobrancelha",
+    {"id": "bob_platina", "idade": 25,
+     "rotulo": "25y · bob platinado + pinta na sobrancelha",
      "cabelo": "a bleached-platinum bob cut sharp at the jaw",
      "oculos": "",
      "porte": "a compact fitness figure, a full bust, a hard flat stomach, a narrow waist and firm glutes",
      # ⚠️ 2026-08-13: nascia com `a faint scar through her right eyebrow`. Saiu
      # pela regra do PLACA 16 (*"esses caras tao parecendo mendigo"*, ordem do
      # operador) aplicada a ela: a ancora e' DISTINTIVA, nunca AVARIA.
-     "rosto": "a small dark mole above her right eyebrow and a straight nose",
+     "rosto": "a square face with a strong flat brow and a wide jaw, "
+               "deep-set eyes and a straight nose, and a small dark mole "
+               "above her right eyebrow",
      "roupa": "a black cropped tee and high-waisted white shorts"},
-    {"id": "volume_solto", "idade": 29,
-     "rotulo": "29y · volume solto + malar alto",
+    {"id": "volume_solto", "idade": 25,
+     "rotulo": "25y · volume solto + malar alto",
      "cabelo": "thick hair worn big and loose, standing out wide around her "
                "face",
      "oculos": "",
      "porte": "an athletic figure with a deep waist-to-hip line, a generous bust, a toned flat stomach, firm glutes and strong smooth legs",
-     "rosto": "high cheekbones and a small mole on her right cheekbone",
+     "rosto": "a round face that narrows to a soft chin, high wide "
+               "cheekbones and a short nose with a rounded tip, and a small "
+               "mole on her right cheekbone",
      "roupa": "a mustard knit tank top and a thin gold chain"},
-    {"id": "coque_bagunca", "idade": 32,
-     "rotulo": "32y · coque desfeito + sardas + oculos",
+    {"id": "coque_bagunca", "idade": 25,
+     "rotulo": "25y · coque desfeito + sardas + oculos",
      "cabelo": "hair twisted up into a loose messy bun",
      "oculos": "mirrored aviator sunglasses pushed up into her hair",
      "porte": "a lean gym-built figure, a full bust, sharply defined abs, a tiny waist and firm high glutes",
-     "rosto": "wide-set eyes, a light spray of freckles and a shallow dimple "
-              "in her chin",
+     "rosto": "a broad oval face with a low straight hairline, wide-set "
+               "eyes under level brows, a light spray of freckles and a "
+               "shallow dimple in her chin",
      "roupa": "a pale-blue tank top and white shorts"},
-    {"id": "cachos_medios", "idade": 30,
-     "rotulo": "30y · cachos medios + marca na testa",
+    {"id": "cachos_medios", "idade": 25,
+     "rotulo": "25y · cachos medios + marca na testa",
      "cabelo": "shoulder-length hair worn in loose curls",
      "oculos": "",
      "porte": "a full-figured fitness body, a full bust, a toned stomach, wide firm hips and round glutes",
-     "rosto": "a full mouth and a small crescent birthmark at her right temple",
+     "rosto": "a soft square face with a rounded jaw, deep-set eyes, a full "
+               "mouth and a small crescent birthmark at her right temple",
      "roupa": "a rust-orange top with the sleeves pushed up"},
     # ⚠️ `crop of hair` e `a small silver hoop in each ear` NAO sao enfeite: a
     # versao anterior dizia `a short tousled crop` e `small silver hoops`, e
@@ -732,58 +796,70 @@ NARRADORAS = [
     # `medir_personagens.py` — `crop` nao esta' no regex de cabelo e `\bhoop\b`
     # nao casa o plural `hoops`. Descricao que o medidor nao ve' e' descricao
     # que ninguem audita.
-    {"id": "crop_curto", "idade": 29,
-     "rotulo": "29y · crop curto + argolas + oculos",
+    {"id": "crop_curto", "idade": 25,
+     "rotulo": "25y · crop curto + argolas + oculos",
      "cabelo": "a short tousled crop of hair swept hard to one side",
      "oculos": "round sunglasses pushed up on her forehead",
      "porte": "a trained slender figure, a full bust, a flat sculpted stomach, a narrow waist and firm glutes",
-     "rosto": "freckles scattered over her collarbones and a small silver hoop "
-              "in each ear",
+     "rosto": "a fine-boned oval face with a fine tapered jaw and a small pointed "
+               "chin, a slim straight nose and thin arched brows, freckles "
+               "scattered over her collarbones and a small silver hoop in "
+               "each ear",
      "roupa": "a black cropped tank top and light denim shorts"},
-    {"id": "volume_alto", "idade": 34,
-     "rotulo": "34y · volume no alto + sorriso largo",
+    {"id": "volume_alto", "idade": 25,
+     "rotulo": "25y · volume no alto + sorriso largo",
      "cabelo": "hair worn big and swept up off her face",
      "oculos": "",
      "porte": "a tall strong fitness build, a full bust, a toned midsection, firm glutes and powerful smooth legs",
-     "rosto": "a wide bright smile and a small mole above her left brow",
+     "rosto": "a wide face with full cheeks and a rounded jaw, a broad "
+               "flat-bridged nose, a wide bright smile and a small mole "
+               "above her left brow",
      "roupa": "an emerald cropped knit top and thin gold hoops"},
-    {"id": "franja_cortina", "idade": 28,
-     "rotulo": "28y · franja cortina + pinta + oculos",
+    {"id": "franja_cortina", "idade": 25,
+     "rotulo": "25y · franja cortina + pinta + oculos",
      "cabelo": "long hair with a soft curtain fringe framing her face",
      "oculos": "narrow black sunglasses pushed up on her head",
      "porte": "a strongly shaped athletic figure, a full round bust, a flat toned belly, a small waist and firm glutes",
-     "rosto": "a heart-shaped face and a dark mole under her left eye",
+     "rosto": "a heart-shaped face with a wide forehead and a narrow "
+               "pointed chin, almond eyes under a low brow and a small "
+               "straight nose, and a dark mole under her left eye",
      "roupa": "a cream ribbed top and pale denim shorts"},
-    {"id": "liso_glossy", "idade": 33,
-     "rotulo": "33y · preto liso + piercing no nariz",
+    {"id": "liso_glossy", "idade": 25,
+     "rotulo": "25y · preto liso + piercing no nariz",
      "cabelo": "long jet-black hair worn straight and glossy",
      "oculos": "",
      "porte": "a long-limbed gym figure, a full bust, visible abs, a cinched waist and firm lifted glutes",
-     "rosto": "sharp cheekbones and a small gold stud in her left nostril",
+     "rosto": "a long angular face with sharp cheekbones and a squared jaw, "
+               "a high straight nose bridge and a thin upper lip, and a "
+               "small gold stud in her left nostril",
      "roupa": "a burgundy wrap top and dark jeans"},
-    {"id": "meio_preso", "idade": 31,
-     "rotulo": "31y · meio preso + covinha + oculos",
+    {"id": "meio_preso", "idade": 25,
+     "rotulo": "25y · meio preso + covinha + oculos",
      "cabelo": "hair pinned back on one side and left down on the other",
      "oculos": "tortoiseshell sunglasses hooked into the front of her top",
      "porte": "a petite hard-trained figure, a full bust, a flat stomach and firm round glutes",
      # ⚠️ 2026-08-13: idem — saiu `a faint pale scar on her left cheekbone`.
-     "rosto": "a tiny freckle on her left eyelid and a deep dimple in her "
-              "left cheek",
+     "rosto": "a small oval face with a rounded forehead and a short chin, "
+               "round eyes under soft brows, a tiny freckle on her left "
+               "eyelid and a deep dimple in her left cheek",
      "roupa": "a white cropped tee and high-waisted jeans"},
-    {"id": "ondas_soltas", "idade": 29,
-     "rotulo": "29y · ondas soltas + bronzeada + oculos",
+    {"id": "ondas_soltas", "idade": 25,
+     "rotulo": "25y · ondas soltas + bronzeada + oculos",
      "cabelo": "long hair worn in loose waves pushed back off her face",
      "oculos": "folding sunglasses hooked at her collar",
      "porte": "a tall toned figure, a full bust, a lean defined waist, firm glutes and long tanned legs",
-     "rosto": "skin tanned from the sun and a small dark beauty mark just "
-              "above her lip",
+     "rosto": "a broad face with a strong squared jaw and a wide mouth, a "
+               "slightly convex nose, skin tanned from the sun and a small "
+               "dark beauty mark just above her lip",
      "roupa": "a white ribbed tank top and khaki shorts"},
-    {"id": "coque_baixo", "idade": 32,
-     "rotulo": "32y · coque baixo na nuca + covinha",
+    {"id": "coque_baixo", "idade": 25,
+     "rotulo": "25y · coque baixo na nuca + covinha",
      "cabelo": "hair pulled into a low twisted knot at the nape",
      "oculos": "",
      "porte": "a full hourglass gym figure, a generous bust, a flat trained stomach, wide hips and firm glutes",
-     "rosto": "smooth-skinned, with a deep dimple that only shows on the left",
+     "rosto": "a narrow face with a high forehead and a fine tapered jaw, "
+               "hooded eyes and a long straight nose, smooth-skinned, with a "
+               "deep dimple that only shows on the left",
      "roupa": "a sage-green scoop top and dark jeans"},
 
     # ======================================================================
@@ -810,89 +886,110 @@ NARRADORAS = [
     # teto e viraria composicao de intimidade.
     # ⛔ Zero `sexy`/`curvy`/`beautiful` (BANIDOS_DESEJO): a atratividade entra
     # por descricao fisica concreta, como nas quatorze de cima.
-    {"id": "trancas_duplas", "idade": 30,
-     "rotulo": "30y · duas trancas + sorriso largo",
+    {"id": "trancas_duplas", "idade": 25,
+     "rotulo": "25y · duas trancas + sorriso largo",
      "cabelo": "hair worn in two thick braids falling in front of her shoulders",
      "oculos": "",
      "porte": "a strong athletic figure, a full bust, a flat trained stomach, a small waist, firm glutes and long lean legs",
-     "rosto": "a wide even smile and a small dark mole on her left jaw",
+     "rosto": "a full round face with wide cheekbones and a soft chin, a "
+               "short broad nose, a wide even smile and a small dark mole on "
+               "her left jaw",
      "roupa": "a sand-colored ribbed tank top and denim shorts"},
-    {"id": "coque_alto_liso", "idade": 28,
-     "rotulo": "28y · coque alto liso + argola + oculos",
+    {"id": "coque_alto_liso", "idade": 25,
+     "rotulo": "25y · coque alto liso + argola + oculos",
      "cabelo": "hair scraped back into a high sleek bun",
      "oculos": "square black sunglasses pushed up on her head",
      "porte": "a tall gym-built figure, a full high bust, sharply defined abs, a narrow waist and firm glutes",
-     "rosto": "sharp cheekbones and a small gold hoop in her right ear",
+     "rosto": "an angular face with a squared hairline and a strong "
+               "straight brow, sharp cheekbones and a narrow nose with a "
+               "defined tip, and a small gold hoop in her right ear",
      "roupa": "an olive cropped tank top and white shorts"},
-    {"id": "cabelo_curto_lateral", "idade": 31,
-     "rotulo": "31y · curto com risca lateral + pinta",
+    {"id": "cabelo_curto_lateral", "idade": 25,
+     "rotulo": "25y · curto com risca lateral + pinta",
      "cabelo": "hair cut short and swept hard into a deep side part",
      "oculos": "",
      "porte": "a compact strong figure, a full bust, a hard flat stomach, wide firm hips and round glutes",
-     "rosto": "a broad open smile and a beauty mark below her right eye",
+     "rosto": "a wide oval face with a low forehead and full cheeks, a "
+               "small rounded nose, a broad open smile and a beauty mark "
+               "below her right eye",
      "roupa": "a coral wrap top and dark denim shorts"},
-    {"id": "medio_ondulado", "idade": 29,
-     "rotulo": "29y · medio ondulado + covinha direita",
+    {"id": "medio_ondulado", "idade": 25,
+     "rotulo": "25y · medio ondulado + covinha direita",
      "cabelo": "shoulder-length hair worn in soft loose waves",
      "oculos": "",
      "porte": "a lean fitness figure, a full bust, visible abs, a cinched waist and firm high glutes",
-     "rosto": "smooth-skinned, with a deep dimple in her right cheek",
+     "rosto": "a soft heart-shaped face with a rounded jaw and a short "
+               "chin, large round eyes and a small button nose, "
+               "smooth-skinned, with a deep dimple in her right cheek",
      "roupa": "a stone-gray cropped tee and khaki shorts"},
-    {"id": "rabo_baixo", "idade": 33,
-     "rotulo": "33y · rabo baixo + piercing no nariz",
+    {"id": "rabo_baixo", "idade": 25,
+     "rotulo": "25y · rabo baixo + piercing no nariz",
      "cabelo": "hair gathered into a low ponytail at the nape",
      "oculos": "",
      "porte": "a strong hourglass gym figure, a generous bust, a toned flat stomach, wide hips and firm glutes",
-     "rosto": "a full mouth and a small silver stud in her left nostril",
+     "rosto": "a long oval face with a high forehead and a narrow jaw, "
+               "straight level brows, a full mouth and a small silver stud "
+               "in her left nostril",
      "roupa": "a navy ribbed tank top and light denim shorts"},
-    {"id": "trancado_coroa", "idade": 32,
-     "rotulo": "32y · trancado em coroa + bronzeada",
+    {"id": "trancado_coroa", "idade": 25,
+     "rotulo": "25y · trancado em coroa + bronzeada",
      "cabelo": "hair twisted up and pinned in a smooth crown around her head",
      "oculos": "",
      "porte": "a tall trained figure, a full bust, a flat sculpted stomach, a narrow waist and firm round glutes",
-     "rosto": "skin tanned from the sun and a small dark mole at her right temple",
+     "rosto": "a broad face with high flat cheekbones and a wide-set jaw, a "
+               "short nose with a low bridge, skin tanned from the sun and a "
+               "small dark mole at her right temple",
      "roupa": "a burnt-orange cropped knit top and white shorts"},
-    {"id": "franja_reta", "idade": 28,
-     "rotulo": "28y · franja reta + covinha no queixo",
+    {"id": "franja_reta", "idade": 25,
+     "rotulo": "25y · franja reta + covinha no queixo",
      "cabelo": "long hair with a blunt straight fringe cut just above her brows",
      "oculos": "",
      "porte": "a hard-trained figure, a full bust, a flat stomach, a narrow waist and firm glutes",
-     "rosto": "large dark eyes and a deep dimple in her chin",
+     "rosto": "a square face with a straight low hairline and a firm wide "
+               "jaw, large dark eyes under heavy lashes, and a deep dimple "
+               "in her chin",
      "roupa": "a charcoal cropped tank top and high-waisted denim shorts"},
-    {"id": "cachos_curtos", "idade": 34,
-     "rotulo": "34y · cachos curtos + ombros largos",
+    {"id": "cachos_curtos", "idade": 25,
+     "rotulo": "25y · cachos curtos + ombros largos",
      "cabelo": "short hair worn in tight springy curls close to her head",
      # ⚠️ 2026-08-13: esta entrada nasceu com oculos e eles sairam DEPOIS de
      # medir — com eles o eixo ia a 9/26 (34,6%) e a banda pedida e' 25-30%.
      # Sem eles fica 8/26 (30,8%). O numero e' o que decide, nao o gosto.
      "oculos": "",
      "porte": "a strongly built athletic figure with broad shoulders, a full bust, a toned midsection, firm glutes and powerful legs",
-     "rosto": "high cheekbones and a small dark birthmark at her left temple",
+     "rosto": "an oval face that tapers to a small chin, high cheekbones "
+               "and a slim straight nose, and a small dark birthmark at her "
+               "left temple",
      "roupa": "a teal scoop tank top and denim shorts"},
-    {"id": "longo_repartido", "idade": 30,
-     "rotulo": "30y · longo repartido ao meio + sardas",
+    {"id": "longo_repartido", "idade": 25,
+     "rotulo": "25y · longo repartido ao meio + sardas",
      "cabelo": "very long hair parted in the middle and left loose down her back",
      "oculos": "",
      "porte": "a long-limbed gym figure, a full bust, visible abs, a small waist and firm lifted glutes",
-     "rosto": "freckles scattered across her nose and cheekbones and a beauty "
-              "mark on her left cheek",
+     "rosto": "a narrow face with a long straight nose and a fine jawline, "
+               "pale eyes under thin brows, freckles scattered across her "
+               "nose and cheekbones and a beauty mark on her left cheek",
      "roupa": "a soft-white ribbed tank top and stone shorts"},
-    {"id": "meio_coque", "idade": 31,
-     "rotulo": "31y · meio coque + pinta na boca + oculos",
+    {"id": "meio_coque", "idade": 25,
+     "rotulo": "25y · meio coque + pinta na boca + oculos",
      "cabelo": "hair pulled into a half-up bun with the rest falling loose",
      "oculos": "tortoiseshell sunglasses resting on the crown of her head",
      "porte": "a petite gym-fit hourglass figure, a full bust, a flat toned stomach and firm round glutes",
-     "rosto": "a rounded jaw and a small dark mole at the corner of her mouth",
+     "rosto": "a round face with a rounded jaw and a low soft hairline, "
+               "wide dark eyes and a short nose, and a small dark mole at "
+               "the corner of her mouth",
      "roupa": "a brick-red ribbed crop top and light denim shorts"},
-    {"id": "liso_curto", "idade": 32,
-     "rotulo": "32y · liso curto + sobrancelha marcada",
+    {"id": "liso_curto", "idade": 25,
+     "rotulo": "25y · liso curto + sobrancelha marcada",
      "cabelo": "hair cut blunt and straight just below her ears",
      "oculos": "",
      "porte": "a tall lean fitness build, a full bust, a lean defined waist, firm glutes and long strong legs",
-     "rosto": "a strong straight brow and a beauty mark on her right jaw",
+     "rosto": "a squared face with a strong straight brow and a broad "
+               "forehead, deep-set eyes and a straight nose, and a beauty "
+               "mark on her right jaw",
      "roupa": "a slate-blue cropped tee and dark jeans"},
-    {"id": "volume_lateral", "idade": 29,
-     "rotulo": "29y · volume lateral + malar + oculos",
+    {"id": "volume_lateral", "idade": 25,
+     "rotulo": "25y · volume lateral + malar + oculos",
      # ⛔ 2026-08-13: esta entrada nasceu com `a long neck` e `the neck of her
      # top`, e a EX7 acusou 304 ERRO em 800 sorteios no irmao — `neck` e'
      # proibido no motor inteiro porque a peca do geoduck e' o `siphon` e
@@ -900,7 +997,9 @@ NARRADORAS = [
      "cabelo": "thick hair swept over to one side and falling past her shoulder",
      "oculos": "mirrored wraparound sunglasses hooked at her collar",
      "porte": "a sculpted gym body, a generous bust, a hard flat stomach, a tiny waist, firm high glutes and long lean legs",
-     "rosto": "a fine jawline and a small beauty mark high on her right cheekbone",
+     "rosto": "a long face with a fine jawline and a tapered chin, high "
+               "narrow cheekbones and a slim nose, and a small beauty mark "
+               "high on her right cheekbone",
      "roupa": "a plum ribbed tank top and khaki shorts"},
 ]
 
@@ -1026,6 +1125,101 @@ HOMENS_SEM_ROSTO = [
 # esse e' um dos dois unicos elementos visuais dela que nao copiamos (divergencia
 # 3 da docstring). Talking-head solo e' pobreza de bit visual, e cenario unico
 # da' continuidade de graca entre tres blocos gerados separadamente.
+# ---------------------------------------------------------------------------
+# ⭐⭐ AMBIENTES POR FAMILIA DE TRAJE (2026-08-17)
+# ---------------------------------------------------------------------------
+# Ordem do operador, depois de recusa por conteudo sexual: *"se for mulher de
+# biquini deve estar em cenario de piscina ao fundo, hidromassagem. Se for
+# roupao deve estar no banheiro. Roupa curta deve estar dia quente ensolarado.
+# Ajuste os prompts para ficar mais leve de acordo com o ambiente e nao parecer
+# algo forcado"*.
+#
+# ⭐⭐ E ESSE E' O CONSERTO CERTO PARA A RECUSA, nao um capricho de arte. Uma
+# mulher de biquini numa varanda de fazenda nao tem por que estar de biquini —
+# e o classificador le' roupa-sem-motivo como intencao. Biquini na beira da
+# piscina e' banal. A peca nao mudou; mudou o que a explica.
+#
+# ⛔ O TRAJE PASSA A ARRASTAR O AMBIENTE, e o ledger continua evitando repetir.
+# E' o mesmo acoplamento que o BOTICA faz com `etnia -> mundo` e que este motor
+# ja' faz com `traje -> oculos`: eixo que depende de outro nao pode ser
+# sorteado como se fosse independente.
+#
+# ⚠️ `roupao` E `toalha` sao a MESMA familia aqui — o pool tem toalha de banho
+# enrolada, que foi o que ele pediu na ordem anterior, e o banheiro serve as
+# duas leituras.
+# ⚠️ E o EXTERIOR deixa de ser so' varanda em 3 das 5 familias. E' consequencia
+# direta da ordem; registrado porque o nome do agente passa a descrever so' uma
+# parte do que ele gera.
+AMBIENTES = {
+    "biquini": [
+        {"id": "piscina_borda", "curto": "the poolside",
+         "set": "the tiled edge of a backyard swimming pool, still blue water "
+                "and a folded towel on a lounger just behind her",
+         "re_ancora": "the same poolside", "luz": "high bright midday sun"},
+        {"id": "hidro_deck", "curto": "the hot tub deck",
+         "set": "a cedar deck around a sunken hot tub, steam lifting off the "
+                "water behind her and rolled towels stacked on the rail",
+         "re_ancora": "the same hot tub deck", "luz": "warm late afternoon sun"},
+        {"id": "piscina_infinita", "curto": "the pool terrace",
+         "set": "a stone terrace along a long lap pool, clear water and a row "
+                "of loungers under a pergola behind her",
+         "re_ancora": "the same pool terrace", "luz": "bright open daylight"},
+        {"id": "piscina_quintal", "curto": "the pool deck",
+         "set": "a wooden deck beside a round above-ground pool in a fenced "
+                "backyard, a ladder and a coiled hose behind her",
+         "re_ancora": "the same pool deck", "luz": "strong clear summer sun"},
+    ],
+    "toalha": [
+        {"id": "banheiro_claro", "curto": "the bathroom",
+         "set": "a bright tiled bathroom, a wide mirror fogged at the edges "
+                "behind her and a glass shower door standing open",
+         "re_ancora": "the same bathroom", "luz": "soft daylight from a frosted window"},
+        {"id": "banheiro_marmore", "curto": "the bathroom",
+         "set": "a marble bathroom with a long counter, folded white towels "
+                "stacked behind her and a walk-in shower still beaded with water",
+         "re_ancora": "the same marble bathroom", "luz": "even warm vanity light"},
+        {"id": "banheiro_madeira", "curto": "the bathroom",
+         "set": "a wood-panelled bathroom with a freestanding tub behind her, "
+                "a towel rail on the wall and a small window over the tub",
+         "re_ancora": "the same wood-panelled bathroom",
+         "luz": "soft light from a small high window"},
+    ],
+    "lingerie": [
+        {"id": "quarto_manha", "curto": "the bedroom",
+         "set": "a bright bedroom with an unmade bed behind her, white linen "
+                "and a wide window with the curtain pushed back",
+         "re_ancora": "the same bedroom", "luz": "soft morning light through the window"},
+        {"id": "quarto_penteadeira", "curto": "the bedroom",
+         "set": "a bedroom corner with a dressing table and a tall mirror "
+                "behind her, a chair with clothes folded over its back",
+         "re_ancora": "the same bedroom corner", "luz": "warm lamp light with daylight behind"},
+        {"id": "quarto_janela", "curto": "the bedroom",
+         "set": "a quiet bedroom with a made bed and a bench at its foot "
+                "behind her, tall shuttered windows along one wall",
+         "re_ancora": "the same bedroom", "luz": "flat even daylight through the shutters"},
+    ],
+    "pijama": [
+        {"id": "quarto_cafe", "curto": "the bedroom",
+         "set": "a bedroom with a rumpled bed behind her and a mug on the "
+                "nightstand, curtains half open onto a bright morning",
+         "re_ancora": "the same bedroom", "luz": "soft early morning light"},
+        {"id": "cozinha_manha", "curto": "the kitchen",
+         "set": "a sunlit kitchen early in the morning, a kettle on the stove "
+                "behind her and a mug standing on the counter",
+         "re_ancora": "the same morning kitchen", "luz": "low warm morning sun"},
+        {"id": "sala_manha", "curto": "the living room",
+         "set": "a living room just after waking, a folded blanket on the sofa "
+                "behind her and the curtains pulled open onto the yard",
+         "re_ancora": "the same living room", "luz": "bright soft morning light"},
+    ],
+}
+
+# ⭐ A SAIA CURTA fica nas VARANDAS de sempre — sao 14 e sao a identidade do
+# angulo. ⛔ O que muda e' a LUZ: ordem dele, *"roupa curta deve estar dia
+# quente ensolarado"*. A luz original de cada varanda e' substituida, nao
+# apagada: e' o mesmo lugar, noutra hora do dia.
+LUZ_QUENTE = "high hot summer sun with hard shadows"
+
 VARANDAS = [
     {"id": "fazenda_meio_oeste",
      "set": "a deep wraparound porch on an old Midwest farmhouse, white "
@@ -1347,67 +1541,76 @@ REACOES = [
 # — string validada e' constante, nunca redigitada. ⛔ O detalhe do `pousado` e'
 # POR MECANISMO: mandar desenhar "its lid lying face-up" numa TIGELA e'
 # contradicao dentro do proprio IMAGE.
+# ⭐⭐ REESCRITO EM 2026-08-17, com o render na mao. Ordem do operador: *"a
+# imagem 2 e o take 2 do agente exterior nao esta' mais apresentando a tigela de
+# gelatina, arrume para apresentar a tigela de gelatina azul ou copo com liquido
+# azul"*.
+#
+# ⛔⛔ E NAO FOI REGRESSAO — conferido contra o HEAD, a clausula da gelatina esta'
+# identica: `the glass jar of set vivid purple gelatin`. O que ele viu e' o
+# POOL: das doze entradas antigas, CINCO eram PO' (`sache_aberto`, `mason_po`,
+# `granulos`, `copo_sache`) e uma era jarra de po'. Nessas nao havia gelatina em
+# quadro nenhuma — havia um sache. MEDIDO: 300 sorteios davam ~94 videos com
+# po' na mao dela, ou seja praticamente um em cada tres.
+# ⭐ Agora sao DUAS FAMILIAS e so' elas, as duas que ele nomeou: TIGELA de
+# gelatina azul e COPO de liquido azul. Nao ha' mais forma que nao mostre o
+# produto pronto.
+#
+# ⚠️⚠️ A COR AZUL CONTRARIA A REGRA DO PARQUE, e o registro fica: a doutrina do
+# repo e' `vivid purple` em TODOS os agentes do gelatin trick — foi uma
+# unificacao feita justamente porque havia tres cores diferentes rodando. Este
+# motor passa a ser o unico em azul, por ordem direta dele. Se o objetivo era
+# alinhar com os videos-fonte de 16/08 (que sao azuis), a decisao de estender
+# ou reverter e' do operador, nao minha.
+#
+# ⛔ `plantado` e `pousado` SAO CAMPOS MORTOS e seguem preenchidos de proposito.
+# MEDIDO: os dois aparecem uma vez cada no arquivo, e essa vez e' um COMENTARIO
+# — o `EX_PLANTADO_IMAGE` que os consumiria tambem nunca e' chamado. So' o
+# `curto` renderiza. Ficam coerentes com o azul para que uma revivescencia
+# futura nao ressuscite o roxo junto.
 MECANISMOS = [
-    {"id": "tigela_cubos",
-     "plantado": "a shallow white bowl of firm vivid purple gelatin cut into cubes, "
-                 "each cube wobbling slightly",
-     "curto": "the shallow white bowl of vivid purple gelatin cubes",
+    # --- TIGELA de gelatina azul ---
+    {"id": "tigela_branca",
+     "plantado": "a shallow white bowl of firm vivid blue gelatin cut into "
+                 "cubes, each cube wobbling slightly",
+     "curto": "the shallow white bowl of vivid blue gelatin cubes",
      "pousado": "uncovered, its serving spoon lying on the board beside it"},
-    {"id": "pote_firme",
-     "plantado": "a clear glass jar of gelatin already set firm and vivid purple",
-     "curto": "the glass jar of set vivid purple gelatin",
-     "pousado": "already open, its lid lying face-up on the board beside it"},
-    {"id": "sache_aberto",
-     "plantado": "a plain white sachet of pale gelatin powder torn open at the "
-                 "top, standing upright",
-     "curto": "the torn-open white sachet of pale gelatin powder",
-     "pousado": "already torn, its foil top lying flat on the board beside it"},
-    {"id": "mason_po",
-     "plantado": "a wide-mouth mason jar half full of pale gelatin powder",
-     "curto": "the mason jar of pale gelatin powder",
-     "pousado": "already open, its lid lying face-up on the board beside it"},
-    {"id": "copo_mexido",
-     "plantado": "a glass tumbler of cold water with the gelatin already "
-                 "stirred through it, still turning",
-     "curto": "the glass tumbler of cold water with the gelatin stirred "
-              "through it",
-     "pousado": "already stirred, the wet spoon lying on the board beside it"},
-    {"id": "panela_morna",
-     "plantado": "a small enamel saucepan of warm vivid purple gelatin with a spoon "
-                 "standing in it",
-     "curto": "the enamel saucepan of warm vivid purple gelatin",
-     "pousado": "already open, its lid lying face-up on the board beside it"},
-    {"id": "pires_cubos",
-     "plantado": "three firm vivid purple gelatin cubes stacked on a small white "
-                 "saucer",
-     "curto": "the saucer of stacked vivid purple gelatin cubes",
-     "pousado": "uncovered, the emptied mould lying on the board beside it"},
-    {"id": "tigela_lisa",
-     "plantado": "a plain glass bowl of gelatin set firm, the surface catching "
-                 "the light in one flat sheet",
-     "curto": "the glass bowl of firm-set gelatin",
-     "pousado": "uncovered, the mixing spoon lying on the board beside it"},
-    {"id": "granulos",
-     "plantado": "a squat unlabelled jar of pale gelatin granules with a "
-                 "wooden scoop lying beside it",
-     "curto": "the unlabelled jar of pale gelatin granules",
-     "pousado": "already open, its lid lying face-up on the board beside it"},
-    {"id": "copo_sache",
-     "plantado": "a torn white sachet of gelatin powder lying flat beside a "
-                 "tumbler of cold water",
-     "curto": "the torn white sachet of gelatin powder",
-     "pousado": "already poured, the wet spoon lying on the board beside it"},
-    {"id": "forma_cubos",
-     "plantado": "a shallow metal tray of set vivid purple gelatin scored right "
-                 "through into squares",
-     "curto": "the metal tray of vivid purple gelatin squares",
-     "pousado": "uncovered, the scoring knife lying on the board beside it"},
+    {"id": "tigela_vidro",
+     "plantado": "a clear glass bowl of firm vivid blue gelatin cubes, glossy "
+                 "and set",
+     "curto": "the clear glass bowl of vivid blue gelatin cubes",
+     "pousado": "uncovered, a spoon resting against its rim"},
     {"id": "tigela_madeira",
-     "plantado": "a turned wooden bowl of firm vivid purple gelatin cubes piled above "
-                 "the rim",
-     "curto": "the wooden bowl of vivid purple gelatin cubes",
-     "pousado": "uncovered, the emptied glass measure standing on the board "
-                "beside it"},
+     "plantado": "a wide wooden bowl of firm vivid blue gelatin cubes, glossy "
+                 "and set",
+     "curto": "the wooden bowl of vivid blue gelatin cubes",
+     "pousado": "uncovered, its wooden spoon lying on the board beside it"},
+    {"id": "tigela_ceramica",
+     "plantado": "a deep ceramic bowl of firm vivid blue gelatin cubes, "
+                 "stacked and glossy",
+     "curto": "the ceramic bowl of vivid blue gelatin cubes",
+     "pousado": "uncovered, a spoon standing upright in it"},
+    # --- COPO de liquido azul ---
+    {"id": "copo_alto",
+     "plantado": "a tall clear drinking glass filled to the top with a bright "
+                 "blue drink",
+     "curto": "the tall glass of bright blue drink",
+     "pousado": "with a paper straw standing in it"},
+    {"id": "copo_canelado",
+     "plantado": "a ribbed drinking glass filled to the top with a bright blue "
+                 "drink",
+     "curto": "the ribbed glass of bright blue drink",
+     "pousado": "with a paper straw standing in it"},
+    {"id": "copo_baixo",
+     "plantado": "a heavy short glass tumbler of bright blue liquid, cold and "
+                 "beaded with condensation",
+     "curto": "the glass tumbler of bright blue liquid",
+     "pousado": "uncovered, a spoon lying on the board beside it"},
+    {"id": "copo_sem_pe",
+     "plantado": "a clear stemless glass of bright blue liquid, filled almost "
+                 "to the rim",
+     "curto": "the stemless glass of bright blue liquid",
+     "pousado": "uncovered, a spoon resting against its rim"},
 ]
 
 
@@ -1879,12 +2082,129 @@ BANIDOS_CTA = {
 
 # ⛔ EX9 — o guardrail de figurino: zero vocabulario de desejo. A roupa entra como
 # PECA descrita, nunca como adjetivo de desejo.
+# ---------------------------------------------------------------------------
+# ⭐⭐ APELO — a clausula de beleza do TRIO/DUPLA (2026-08-17)
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"sempre gere mulheres lindas, mesmo padrao do trio16 ou
+# dupla"*.
+#
+# ⭐ O QUE SEPARAVA OS MOTORES ERA UMA SENTENCA, e foi preciso gerar os dois
+# BLOCO 0 lado a lado para ver: o TRIO fecha a descricao dela com *"A strikingly
+# attractive everyday woman, well groomed, with clear even skin, softly styled
+# hair and a noticeably good figure."* e o EXTERIOR nao fechava com nada. O
+# corpo daqui ja' era de academia (o campo `porte` diz `gym-fit`, `sculpted gym
+# body`, `visible abs` nas 26 entradas) — o que faltava era a linha que nomeia
+# a BELEZA, e ela e' o padrao que ele mandou copiar.
+#
+# ⛔⛔ E ELA COLIDIA COM O PROPRIO MOTOR: `attractive` e `beautiful` estavam em
+# `BANIDOS_DESEJO`, entao a clausula do TRIO seria reprovada pela lente daqui.
+# As duas SAIRAM da lista de banidos, e so' elas: `sexy`, `curvy`, `seductive`,
+# `cleavage`, `lingerie` e as outras continuam banidas, porque o que aquela
+# lista protege e' o vocabulario de DESEJO, nao o de aparencia.
+# ⚠️ A distincao e' a mesma que o TRIO ja' faz na pratica: ele diz `attractive`
+# e nunca `sexy`, e passa em producao ha' semanas.
+#
+# ⛔ COPIA LITERAL DO POOL DO TRIO — nao redigitado. String validada e' constante
+# (P9): reescrever as seis na mao criaria uma segunda versao que envelhece
+# sozinha na primeira vez que ele ajustar uma delas.
+# ⛔⛔ AS SEIS ENTRAM SEM A CAUDA, e isso foi MEDIDO, nao preferido. As do TRIO
+# terminam descrevendo CORPO e CABELO (`a noticeably good figure`, `softly
+# styled hair`) — e la' isso nao colide, porque o BLOCO 0 dele so' traz cabelo,
+# marca de rosto e roupa. AQUI o `porte` ja' esta' na mesma frase, logo acima:
+# `A tall gym-built figure, a full high bust, with hair scraped back...`.
+# ⚠️ MEDIDO com as seis inteiras: 32 de 60 blocos diziam `figure` DUAS VEZES,
+# uma no porte e outra no apelo — duas descricoes do mesmo atributo sao ordem
+# ambigua, que e' o defeito que a T16-3 do TRIO existe para pegar em outro
+# campo. Fica a CABECA de cada frase, que e' onde mora o que o operador pediu:
+# a declaracao de beleza. O corpo continua dito, e dito melhor, pelo `porte`.
+APELO_EUA = [
+    "A strikingly attractive everyday woman, well groomed, with clear even "
+    "skin.",
+    "A very good-looking everyday woman with bright clear skin and light "
+    "natural make-up.",
+    "An unusually pretty everyday woman with fine features.",
+    "A head-turning everyday woman, carefully groomed.",
+    "A notably beautiful everyday woman with smooth clear skin.",
+    "A very attractive everyday woman with even skin.",
+]
+
+# ---------------------------------------------------------------------------
+# ⭐⭐ TRAJES_SEXY — o padrao BOTICA 16 (2026-08-17)
+# ---------------------------------------------------------------------------
+# Ordem do operador: *"quero mulheres mais bonitas e mais sexys no exterior 16,
+# roupas mais sexys, lingeri, pijama, so' de toalha de banho enrolada, biquini,
+# saia curta, padrao botica 16"*.
+#
+# ⭐ CINCO FAMILIAS, as cinco que ele nomeou, tres pecas em cada. E' o mesmo
+# desenho do BOTICA 16: pool proprio sorteado por video, com as familias
+# declaradas e uma lente cobrando que o sorteio ALCANCE todas — pool com cinco
+# rotulos e uma familia so' e' eixo zerado com outro nome.
+#
+# ⛔ AS 26 `roupa` DAS NARRADORAS FICAM NO ARQUIVO e param de sair no video: o
+# campo e' sobrescrito no `sortear`. Elas sao a memoria de que a roupa JA' foi
+# atributo da pessoa — e e' isso que explica por que ainda ha' um campo `roupa`
+# em cada entrada. Apagar as 26 obrigaria a reescrever as 26 entradas para
+# tirar uma chave, e o diff esconderia o que mudou de verdade.
+#
+# ⛔ A PECA E' DESCRITA, O DESEJO NAO E' NOMEADO — e essa e' a propria regra que
+# o `BANIDOS_DESEJO` escreve na entrada de `sexy`: *"vocabulario de desejo — a
+# roupa entra como PECA descrita"*. Por isso nao ha' um `sexy`, um `seductive`
+# nem um `revealing` em nenhuma das quinze: ha' renda, cetim, toalha, biquini e
+# saia. Os adjetivos seguem banidos; a unica palavra que saiu da lista foi
+# `lingerie`, porque virou PECA nomeada por ordem dele.
+#
+# ⚠️ A CENA E' UMA VARANDA, ao ar livre. Toalha de banho e lingerie numa varanda
+# nao tem explicacao dentro da cena — a ordem e' dele e vale, e o registro fica
+# para ninguem "consertar" isto depois achando que foi descuido.
+# ⚠️ E o preco de moderacao esta' medido no repo: `bikini` sai em 64/200 blocos
+# do DUPLA e 56/200 do TRIO, e os dois passam. LINGERIE nao tem lote atras
+# dela. Se as recusas subirem neste agente, a familia `lingerie` e' a primeira
+# suspeita — e sair dela custa tres entradas.
+TRAJES_SEXY = [
+    # --- lingerie ---
+    "a black lace lingerie set with thin straps",
+    "a champagne satin slip with lace trim",
+    "an ivory lace bralette and matching high-cut briefs",
+    # --- pijama ---
+    "a short pink satin pyjama set with piped edges",
+    "a white cropped pyjama top and matching short bottoms",
+    "a powder-blue silk pyjama camisole and shorts",
+    # --- toalha de banho enrolada ---
+    "a white bath towel wrapped and tucked above the chest, her shoulders "
+    "bare and her hair still damp",
+    "a cream bath towel wrapped high and knotted at the side",
+    "a short white bath towel wrapped and held closed at the front",
+    # --- biquini ---
+    "a red triangle bikini top with matching high-cut bottoms",
+    "a black bandeau bikini top with tie-side bottoms",
+    "a white halter bikini top under an open sheer beach shirt",
+    # --- saia curta ---
+    "a fitted black top and a very short denim skirt",
+    "a white knotted shirt and a short pleated skirt",
+    "a tan ribbed tank top and a short wrap skirt",
+]
+
+# ⭐ A familia de cada peca, para a lente cobrar as cinco. ⛔ Deriva do INDICE,
+# nunca de palavra na string: `bikini top under an open sheer beach shirt` tem
+# `shirt` dentro e cairia em `saia curta` por regex.
+FAMILIAS_TRAJE = {}
+for _i, _t in enumerate(TRAJES_SEXY):
+    FAMILIAS_TRAJE[_t] = ("lingerie", "pijama", "toalha", "biquini",
+                          "saia_curta")[_i // 3]
+
 BANIDOS_DESEJO = {
     "sexy": "vocabulario de desejo — a roupa entra como PECA descrita",
     "seductive": "idem", "sultry": "idem", "curvy": "idem",
-    "revealing": "idem", "cleavage": "idem", "lingerie": "idem",
+    "revealing": "idem", "cleavage": "idem",
+    # ⛔ `lingerie` SAIU em 2026-08-17: virou PECA nomeada por ordem do
+    # operador, e a regra desta lista (escrita na entrada de `sexy`) e'
+    # justamente que a roupa entra como peca descrita. Os ADJETIVOS de
+    # desejo ficam todos.
     "provocative": "idem", "alluring": "idem", "flirty": "idem",
-    "attractive": "idem", "beautiful": "idem",
+    # ⛔ `attractive` e `beautiful` SAIRAM em 2026-08-17: sao o
+    # vocabulario do `APELO_EUA`, que e' o padrao do TRIO/DUPLA que o
+    # operador mandou aplicar aqui. O que a lista protege e' DESEJO
+    # (`sexy`, `curvy`, `seductive`), nao APARENCIA.
     "baby tee": "o token `baby` entra de graca num video de conteudo adulto",
 }
 
@@ -2443,7 +2763,27 @@ def sortear(pagina, rng, ledger, travas=None):
     nar = (_narradora_por_id(travas["narradora"]) if travas.get("narradora")
            else _evitando(rng, elegiveis, hist.get("narradora", [])[-3:]))
     hom = _evitando(rng, HOMENS_SEM_ROSTO, hist.get("homem", [])[-3:])
-    var = _evitando(rng, VARANDAS, hist.get("varanda", [])[-2:])
+    # ⭐⭐ O AMBIENTE VEM DA FAMILIA DO TRAJE (2026-08-17). Biquini na beira da
+    # piscina, toalha no banheiro, pijama/lingerie no quarto, saia curta na
+    # varanda de sempre com sol de verao. ⛔ Sorteado DEPOIS do traje de
+    # proposito: quem manda e' a roupa, e inverter a ordem devolveria o
+    # acoplamento ao acaso.
+    # ⚠️ O ledger continua evitando os dois ultimos DENTRO da familia — a
+    # memoria anti-repeticao nao pode atravessar familias, senao um lote de
+    # biquini "gastaria" os banheiros que ninguem viu.
+    # ⛔ O TRAJE E' SORTEADO AQUI, ANTES DO AMBIENTE — ele e' quem manda.
+    # Estava vinte linhas abaixo, e ali so' servia enquanto os dois eixos
+    # eram independentes; com o acoplamento a ordem passa a ser regra.
+    _roupa = rng.choice(TRAJES_SEXY)
+    _fam = FAMILIAS_TRAJE[_roupa]
+    if _fam in AMBIENTES:
+        var = _evitando(rng, AMBIENTES[_fam], hist.get("varanda", [])[-2:])
+    else:
+        # ⛔ `dict(...)` e nao mutacao: a entrada de VARANDAS e' compartilhada
+        # entre sorteios, e trocar `luz` no proprio dict vazaria o sol de verao
+        # para o proximo video que caisse nela.
+        var = dict(_evitando(rng, VARANDAS, hist.get("varanda", [])[-2:]),
+                   luz=LUZ_QUENTE)
     cx = _evitando(rng, CAIXAS, hist.get("caixa", [])[-2:])
     desp = _evitando(rng, DESPEJOS, hist.get("despejo", [])[-2:])
     rea = _evitando(rng, REACOES, hist.get("reacao", [])[-2:])
@@ -2453,8 +2793,35 @@ def sortear(pagina, rng, ledger, travas=None):
     orgaos = _orgaos(rng)
     falas = _montar_falas(rng, orgaos)
 
+    # ⭐ O APELO E' SORTEADO POR VIDEO, como no TRIO — seis formas da mesma
+    # promessa. Uma so' repetida em trinta videos seria a mesma frase no lote
+    # inteiro, e frase repetida no BLOCO 0 e' rosto repetido no lote.
+    # ⛔ Fora do ledger de proposito: ele guarda os eixos VISUAIS (narradora,
+    # homem, varanda, mesa, caixa, despejo), e o apelo nao muda quem aparece —
+    # muda como ela e' apresentada. Por o apelo no ledger encolheria a memoria
+    # anti-repeticao dos eixos que importam.
+    # ⭐⭐ A ROUPA SOBRESCREVE A DA NARRADORA (2026-08-17). O campo `roupa` de
+    # cada entrada descrevia regata e shorts nas 26; a ordem do operador e' o
+    # pool proprio, e ele manda aqui. Sem esta linha o `TRAJES_SEXY` seria pool
+    # bonito e morto — o defeito que o BOTICA 16 acabou de pagar com o campo
+    # `corpo`, que existia, era sorteado e nao chegava a bloco nenhum.
+    # ⛔⛔ E O OCULOS CAI COM TRES DAS CINCO FAMILIAS. Achado LENDO o bloco, nao
+    # por lente: o pool de traje novo trouxe TOALHA DE BANHO, LINGERIE e PIJAMA
+    # para uma narradora que carrega OCULOS DE SOL no campo `oculos` — e
+    # `round sunglasses pushed up on her forehead` numa mulher enrolada na
+    # toalha, cabelo ainda molhado, e' contradicao de cena. MEDIDO antes: 53 de
+    # 300 videos saiam assim.
+    # ⭐ O oculos FICA no biquini e na saia curta, que sao roupa de sol como a
+    # varanda pede. E' o eixo do traje arrastando o acessorio — o acoplamento
+    # que o painel deste repo ja' errou tres vezes por tratar cada eixo como
+    # independente.
+    if FAMILIAS_TRAJE[_roupa] in ("toalha", "lingerie", "pijama"):
+        nar = dict(nar, roupa=_roupa, oculos="")
+    else:
+        nar = dict(nar, roupa=_roupa)
     return {"pagina": pagina, "narradora": nar, "homem": hom, "varanda": var,
             "mesa": mesa, "caixa": cx, "despejo": desp, "reacao": rea,
+            "apelo": rng.choice(APELO_EUA),
             "mecanismo": mec, "orgaos": orgaos, "falas": falas}
 
 
@@ -2569,13 +2936,18 @@ def montar(spec):
     # --- BLOCO 0 (REF) ------------------------------------------------------
     # ⭐ UMA foto so', a dela. Ele nao tem rosto, logo nao tem REF — e' a economia
     # inteira do angulo virando uma linha de prompt A MENOS (EX5).
+    # ⭐⭐ O APELO FECHA A DESCRICAO DELA, exatamente onde o TRIO o poe: depois
+    # da roupa e antes do fundo. Ordem do operador (2026-08-17), *"mesmo padrao
+    # do trio16 ou dupla"* — e o padrao e' esta sentenca, que era a unica coisa
+    # que separava os dois BLOCO 0 quando gerados lado a lado.
     b["BLOCO 0 (REF)"] = (
         "REF 01: Photo of a real person, a %d-year-old %s woman, chest up, "
         "facing the camera directly, calm steady expression. %s. Wearing %s. "
+        "%s "
         "Plain neutral gray background, soft even frontal light. No subtitles, "
         "no captions, no burned-in text, no watermark."
         % (nar["idade"], et, _maiuscula(_descricao_dela(nar, so_peito=True)),
-           nar["roupa"])
+           nar["roupa"], spec["apelo"])
     )
 
     # --- IMAGE 01/03 — ⭐⭐ A GEOMETRIA TRAVADA (EX4) ------------------------
@@ -2673,7 +3045,9 @@ def montar(spec):
         # ⚠️ `recipiente` e nao "box": a caixa pode ser lata, saco ou pouch, e
         # mandar despejar "da boca da caixa" numa imagem que tem uma lata e'
         # contradicao dentro do proprio bloco.
-        % (rec, desp_take, EX_SEM_ROSTO_TAKE, rea["desc"],
+        % (rec, desp_take,
+           EX_SEM_ROSTO_TAKE % (hom["idade"], nar["idade"]),
+           rea["desc"],
            EX_BLINDAGEM_FORMA, marca, sonorizar(falas[0]),
            var["curto"])
     )
@@ -2694,7 +3068,9 @@ def montar(spec):
         "music."
         # ⚠️ `falas[1]`, a SEGUNDA e ultima. Com duas cenas o indice 2 nao
         # existe mais — e um IndexError aqui so' apareceria no lote.
-        % (EX_SEM_ROSTO_TAKE, EX_KEYWORD_NA_MAO_TAKE, EX_BLINDAGEM_FORMA,
+        % (EX_SEM_ROSTO_TAKE % (hom["idade"], nar["idade"]),
+           EX_KEYWORD_NA_MAO_TAKE % _maiuscula(mec["curto"]),
+           EX_BLINDAGEM_FORMA,
            sonorizar(falas[1]), var["curto"])
     )
 
@@ -3144,9 +3520,9 @@ def _ex11_elenco(spec, blocos, achados):
                                 "gente — a cena fundida e' ela e o corpo-prova, "
                                 "e um terceiro corpo em quadro rouba o "
                                 "argumento"))
-    if "Only she speaks." not in blocos["TAKE 01/02"] or \
-            "Only she speaks." not in blocos["TAKE 02/02"]:
-        achados.append(("ERRO", "EX11: falta `Only she speaks.` num dos takes "
+    if "woman speaks" not in blocos["TAKE 01/02"] or \
+            "woman speaks" not in blocos["TAKE 02/02"]:
+        achados.append(("ERRO", "EX11: falta `Only the N-year-old woman speaks` num dos takes "
                                 "com dois em quadro — sem isso o homem dubla a "
                                 "fala dela e o dialogo do Veo sai torto"))
     re_ancora = spec["varanda"]["re_ancora"]
@@ -3281,7 +3657,17 @@ def _ct16(spec, blocos, achados):
     claim nosso, e proibi-lo mataria o angulo. ⛔ No take 2 ele continua
     proibido colado no orgao — a licao paga no COLO 16, ~95% de recusa.
     """
-    sc.lint_copy16(sys.modules[__name__], spec, achados, isca_absurda=True)
+    # ⛔⛔ CT4b DESLIGADO em 2026-08-17. O contrato dos 16s so' aceita
+    # `pecker`/`wiener`/`Johnson`, e a ordem do operador de hoje e' `Johnson` e
+    # `manhood` — por recusa de conteudo sexual em serie. Gate que acusa uma
+    # decisao declarada treina o operador a ignorar o gate.
+    # ⭐ O que o CT4b protege continua vivo pelo CT4: UM apelido por cena, e a
+    # variacao ENTRE videos segue no sorteio dos dois.
+    # ⚠️ A excecao entra tambem no `DESLIGADAS` do `medir_copy16`, que e' quem
+    # a reporta de fora — as duas pontas, senao o gate do repo segue acusando.
+    fora = []
+    sc.lint_copy16(sys.modules[__name__], spec, fora, isca_absurda=True)
+    achados.extend(x for x in fora if not x[1].startswith("CT4b:"))
 
 
 # ⛔⛔ O AVISO QUE O CT4 TORNOU FALSO — e por que ele e' filtrado AQUI.
@@ -3301,6 +3687,61 @@ def _ct16(spec, blocos, achados):
 _AVISO_REVOGADO_CT4 = "substantivo repetido no video"
 
 
+def _ex19_ambiente(spec, blocos, ach):
+    """⭐⭐ EX19 — O AMBIENTE CASA COM O TRAJE (2026-08-17).
+
+    Ordem do operador, depois de recusa por conteudo sexual: biquini na
+    piscina, roupao no banheiro, roupa curta em dia quente.
+    ⛔ O que a lente protege nao e' estetica: e' o MOTIVO. Roupa sem motivo em
+    quadro le' como intencao, e foi isso que produziu a recusa. Biquini na
+    beira da piscina e' banal; biquini numa varanda de fazenda nao e'.
+    """
+    fam = FAMILIAS_TRAJE.get(spec["narradora"]["roupa"])
+    if fam is None:
+        return
+    esperado = AMBIENTES.get(fam)
+    if esperado is not None:
+        if spec["varanda"]["id"] not in [x["id"] for x in esperado]:
+            ach.append(("ERRO", "EX19: traje de `%s` no cenario `%s` — o "
+                                "ambiente tem de sair da familia do traje"
+                        % (fam, spec["varanda"]["id"])))
+    elif spec["varanda"].get("luz") != LUZ_QUENTE:
+        # ⛔ a saia curta fica nas varandas, mas a LUZ e' a ordem dele
+        ach.append(("ERRO", "EX19: saia curta sem o sol de verao (`%s`) — "
+                            "*roupa curta deve estar dia quente ensolarado*"
+                    % spec["varanda"].get("luz")))
+
+
+def _ex18_traje(spec, blocos, ach):
+    """⭐⭐ EX18 — A ROUPA SAI DO `TRAJES_SEXY` E CHEGA AO QUADRO (2026-08-17).
+
+    Ordem do operador: *"roupas mais sexys, lingeri, pijama, so' de toalha de
+    banho enrolada, biquini, saia curta, padrao botica 16"*.
+
+    ⛔ COBRA OS DOIS LADOS, e o segundo e' o que importa. O `TRAJES_SEXY` podia
+    existir, ser sorteado, entrar no spec — e nao chegar a bloco nenhum, que e'
+    exatamente o que o BOTICA 16 acabou de pagar com o campo `corpo` (pool
+    certo, spec certo, lente de origem verde, e 60 de 60 videos sem a palavra).
+    ⚠️ E o teste de ORIGEM nao pode ser regex de palavra: as 26 `roupa` velhas
+    tem `cropped` e `tank top`, que tambem aparecem no pool novo. Cobra-se a
+    pertinencia a' lista, que e' a unica coisa que separa as duas geracoes.
+    """
+    r = spec["narradora"]["roupa"]
+    if r not in FAMILIAS_TRAJE:
+        ach.append(("ERRO", "EX18: a roupa `%s` nao saiu do TRAJES_SEXY — o "
+                            "campo da narradora voltou a mandar" % r[:46]))
+    for nome in ("BLOCO 0 (REF)", "IMAGE 01/02", "IMAGE 02/02"):
+        if nome in blocos and r not in blocos[nome]:
+            ach.append(("ERRO", "EX18: %s nao traz a roupa sorteada — pool que "
+                                "nao chega ao prompt e' pool morto" % nome))
+    # ⛔ O ACOPLAMENTO TRAJE -> OCULOS, cobrado onde ele aparece: no prompt.
+    if (FAMILIAS_TRAJE.get(r) in ("toalha", "lingerie", "pijama")
+            and "sunglasses" in blocos.get("BLOCO 0 (REF)", "")):
+        ach.append(("ERRO", "EX18: oculos de sol com traje de `%s` — banho e "
+                            "dormir nao usam oculos, e o eixo do traje manda "
+                            "no acessorio" % FAMILIAS_TRAJE[r]))
+
+
 def lint(spec, blocos):
     # ⭐ EX13 (CTA e gate literais da fonte com a nossa keyword na frente) NAO tem
     # funcao propria aqui de proposito: ela e' cobrada pelo `lint_cta_literal` e
@@ -3318,6 +3759,7 @@ def lint(spec, blocos):
                 _ex6_marca, _ex7_blindagem, _ex7_movimento, _ex7_lexico,
                 _ex8_nada_cresce, _ex9_ref, _ex10_etnia, _ex11_elenco,
                 _ex11_plantado, _ex12_piso, _ex14_orgao, _ex17_cauda,
+                _ex18_traje, _ex19_ambiente,
                 # ⭐⭐ o CONTRATO DE COPY 16s, ligado em 2026-08-10
                 _ct16))
     return [a for a in achados
@@ -3340,10 +3782,30 @@ def lint(spec, blocos):
 KEYWORD_UI = True
 KEYWORD_NATIVA = "gelatin"
 
+def ambientes_do_traje(spec):
+    """O pool de AMBIENTE que a UI lista — depende da FAMILIA DO TRAJE.
+
+    ⛔⛔ SEM ISTO O PAINEL MENTE. O eixo listava as 14 `VARANDAS` fixas, e desde
+    2026-08-17 tres das cinco familias de traje nao usam varanda nenhuma —
+    biquini vai para a piscina, toalha para o banheiro, pijama e lingerie para
+    o quarto. Travar `varanda_telada` num video de biquini devolveria um
+    ambiente que aquele traje nunca gera, e o filtro cederia em silencio.
+    ⭐ Mesmo contrato do `trajes_do_mundo` do BOTICA: `recebe_spec = True`, e o
+    painel resolve o nome em tempo de execucao.
+    """
+    fam = FAMILIAS_TRAJE.get(spec["narradora"]["roupa"])
+    return [x["id"] for x in AMBIENTES.get(fam, VARANDAS)]
+
+
+ambientes_do_traje.recebe_spec = True
+
+
 EIXOS_UI = [
     ("narradora", "A NARRADORA", "NARRADORAS", "rosto"),
     ("homem", "O HOMEM SEM ROSTO", "HOMENS_SEM_ROSTO", "roupa"),
-    ("varanda", "A VARANDA (as 3 cenas)", "VARANDAS", "id"),
+    # ⚠️ O ROTULO diz CENARIO, nao VARANDA: em tres das cinco familias de
+    # traje ele nao e' varanda nenhuma desde 17/08.
+    ("varanda", "O CENARIO (as 2 cenas)", "ambientes_do_traje", None),
     ("mesa", "A MESA DA VARANDA", "MESAS", "curto"),
     ("caixa", "A CAIXA DE BICARBONATO", "CAIXAS", "id"),
     ("despejo", "O GESTO DO DESPEJO", "DESPEJOS", "id"),
@@ -3507,6 +3969,26 @@ MIN_COPY = {"ISCAS": 10, "DESMENTIDOS": 10, "FALHAS16": 12, "REGRAS": 9,
 
 
 def _contrato_dos_pools(falhas):
+    # ⭐ AS CINCO FAMILIAS DE TRAJE TEM DE EXISTIR — ordem do operador de
+    # 2026-08-17. ⛔ Pool com cinco rotulos e uma familia so' e' eixo zerado com
+    # outro nome, e o `medir_personagens` nao ve' este eixo porque ele nao e'
+    # um dos seis fisicos.
+    # ⭐ TODA familia de traje tem de ter ambiente, menos a que usa as
+    # VARANDAS. ⛔ Familia sem pool cai no `AMBIENTES.get(fam, VARANDAS)` e
+    # volta a por biquini na fazenda, em silencio.
+    for _f in set(FAMILIAS_TRAJE.values()) - {"saia_curta"}:
+        if _f not in AMBIENTES or not AMBIENTES[_f]:
+            falhas.append("a familia de traje `%s` nao tem AMBIENTE proprio — "
+                          "ela cai nas VARANDAS e a roupa fica sem motivo" % _f)
+    _fam = set(FAMILIAS_TRAJE.values())
+    _quer = {"lingerie", "pijama", "toalha", "biquini", "saia_curta"}
+    if _fam != _quer:
+        falhas.append("TRAJES_SEXY nao cobre as cinco familias pedidas: "
+                      "falta %s" % sorted(_quer - _fam))
+    if len(FAMILIAS_TRAJE) != len(TRAJES_SEXY):
+        falhas.append("FAMILIAS_TRAJE nao cobre o TRAJES_SEXY inteiro (%d de "
+                      "%d)" % (len(FAMILIAS_TRAJE), len(TRAJES_SEXY)))
+
     """⛔ Os pools tem contratos que o motor DERIVA — e derivacao muda que nao e'
     cobrada e' derivacao que quebra calada.
 
