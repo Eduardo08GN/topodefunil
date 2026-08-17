@@ -512,6 +512,29 @@ EX_VARANDA_TRAVADA = (
     "and the deck under them is bare wood."
 )
 
+# ⛔⛔ E ELA DEIXOU DE SER INCONDICIONAL EM 2026-08-17, porque virou MENTIRA em
+# quatro dos cinco cenarios. Com o acoplamento traje->ambiente de hoje, a
+# IMAGE 01 de um video de lingerie dizia, na mesma respiracao:
+#     `Medium shot on a bedroom corner with a dressing table...`
+#     `White rocking chairs stand on the boards behind them, the porch rail
+#      is painted white... and the deck under them is bare wood.`
+# Quarto E varanda no mesmo quadro. O operador mandou o prompt e foi ele que
+# viu; nenhuma lente olhava, porque a EX4 cobra a PRESENCA da clausula e nunca
+# perguntou se ela cabia no lugar.
+# ⭐ Agora cada familia tem a sua ancora de fundo, e a da varanda continua
+# sendo a original, palavra por palavra — ela e' o frame 0 do angulo.
+MOBILIA = {
+    "biquini": "Two loungers with folded towels stand behind them, the water "
+               "is still and clear, and the deck under them is dry tile.",
+    "toalha": "Folded white towels are stacked on the counter behind them, "
+              "the mirror is fogged at one edge, and the floor is pale tile.",
+    "lingerie": "The bed is made up behind them with white linen, a chair "
+                "stands against the wall, and the floor is bare board.",
+    "pijama": "The curtains are pushed back behind them onto a bright "
+              "morning, a mug stands within reach, and the floor is bare "
+              "board.",
+}
+
 # ---------------------------------------------------------------------------
 # [EX7] ⛔ A BLINDAGEM DE FORMA DO GEODUCK.
 # ⚠️ ISTO NAO E' MODERACAO: e' o modo de falha documentado do geoduck, que vira
@@ -1373,37 +1396,37 @@ MESAS = [
 # cilindro. A geometria vai ESCRITA, em EX_CAIXA_FORMA.
 CAIXAS = [
     {"id": "ah_classica", "recipiente": "box",
-     "caixa": "the classic one-pound orange Arm & Hammer baking soda box, the "
-              "brand name large and sharp across the front"},
+     "caixa": "a classic one-pound orange cardboard baking soda box, the "
+              "printed front panel large and square to the lens"},
     {"id": "ah_familia", "recipiente": "box",
-     "caixa": "a large family-size Arm & Hammer baking soda box, the orange "
+     "caixa": "a large family-size orange baking soda box, the printed "
               "front panel square to the lens"},
     {"id": "ah_rasgada", "recipiente": "box",
-     "caixa": "an Arm & Hammer baking soda box with the top corner torn open "
+     "caixa": "an orange baking soda box with the top corner torn open "
               "along the perforation"},
     {"id": "great_value", "recipiente": "box",
-     "caixa": "a Great Value baking soda box from Walmart"},
+     "caixa": "a plain white-and-blue store-brand baking soda box"},
     {"id": "kroger", "recipiente": "box",
-     "caixa": "a Kroger-brand baking soda box"},
+     "caixa": "a plain red-and-white store-brand baking soda box"},
     {"id": "whole_foods", "recipiente": "box",
-     "caixa": "a 365 by Whole Foods Market baking soda box"},
+     "caixa": "a plain cream-coloured store-brand baking soda box"},
     # ⚠️ O corte para 6 furava o piso do proprio motor (`MIN_OPCOES = 9` por
     # eixo visual, cobrado no autoteste). ⛔ Baixar o piso seria resolver a
     # ordem dele afrouxando a regra que segura TODOS os eixos — as quatro
     # abaixo repoem a entropia DENTRO da caixa classica, variando TAMANHO e
     # ESTADO da embalagem, que e' o que a fonte mostra. Nenhuma forma nova.
     {"id": "ah_bico", "recipiente": "box",
-     "caixa": "an Arm & Hammer baking soda box with the pour spout tab folded "
+     "caixa": "an orange baking soda box with the pour spout tab folded "
               "open at the top corner"},
     {"id": "ah_pequena", "recipiente": "box",
-     "caixa": "a small eight-ounce Arm & Hammer baking soda box, the orange "
+     "caixa": "a small eight-ounce orange baking soda box, the printed "
               "front panel facing the lens"},
     {"id": "ah_amassada", "recipiente": "box",
-     "caixa": "a well-used Arm & Hammer baking soda box, one bottom corner "
-              "dented from the cupboard, the orange front still square to the "
-              "lens"},
+     "caixa": "a well-used orange baking soda box, one bottom corner "
+              "dented from the cupboard, the printed front still square "
+              "to the lens"},
     {"id": "signature", "recipiente": "box",
-     "caixa": "a Signature Select baking soda box"},
+     "caixa": "a plain green-and-white store-brand baking soda box"},
 ]
 
 # ⛔⛔ A BLINDAGEM DE FORMA DA CAIXA — irma da EX_BLINDAGEM_FORMA do geoduck.
@@ -2962,6 +2985,11 @@ def montar(spec):
     mesmo = ("the same %d-year-old %s man, %s"
              % (hom["idade"], et, _descricao_dele(hom)))
 
+    # ⭐ A FAMILIA DO TRAJE decide a ancora de fundo (`MOBILIA`). Derivada
+    # aqui e nao passada no spec: o `montar` recebe so' o spec, e derivar do
+    # campo que ja' esta' nele evita uma segunda fonte para o mesmo fato.
+    _fam_traje = FAMILIAS_TRAJE.get(nar["roupa"])
+
     b = {}
 
     # --- BLOCO 0 (REF) ------------------------------------------------------
@@ -2997,7 +3025,8 @@ def montar(spec):
         % (var["set"],
            EX_GEOMETRIA_IMAGE % (ela, cx["caixa"], desp_img, ele),
            EX_CAIXA_FORMA,
-           EX_VARANDA_TRAVADA, EX_BLINDAGEM_FORMA, marca,
+           MOBILIA.get(_fam_traje, EX_VARANDA_TRAVADA),
+           EX_BLINDAGEM_FORMA, marca,
            luz, CAUDA)
     )
 
@@ -3327,8 +3356,16 @@ def _ex4_geometria(spec, blocos, achados):
     if falta:
         achados.append(("ERRO", "EX4: IMAGE 01/03 sem elemento(s) travado(s) da "
                                 "geometria do frame 0: %s" % falta))
-    if M_VARANDA not in blocos["IMAGE 01/02"]:
-        achados.append(("ERRO", "EX4: IMAGE 01/03 sem a varanda travada — "
+    # ⛔ A ANCORA DE FUNDO E' A DA FAMILIA DO TRAJE desde 2026-08-17. A lente
+    # antiga exigia a da VARANDA em todo video, e era ela que mantinha cadeira
+    # de balanco dentro de um quarto: cobrava PRESENCA e nunca CABIMENTO.
+    _fam = FAMILIAS_TRAJE.get(spec["narradora"]["roupa"])
+    _esperado = MOBILIA.get(_fam, EX_VARANDA_TRAVADA)
+    if _esperado not in blocos["IMAGE 01/02"]:
+        achados.append(("ERRO", "EX4: IMAGE 01/02 sem a ancora de fundo de "
+                                "`%s` — o frame 0 fica sem lugar" % _fam))
+    if _fam not in MOBILIA and M_VARANDA not in blocos["IMAGE 01/02"]:
+        achados.append(("ERRO", "EX4: IMAGE 01/02 sem a varanda travada — "
                                 "cadeiras de balanco, guarda-corpo branco, "
                                 "bandeira dos EUA e deck de madeira"))
 
