@@ -662,6 +662,21 @@ RAROS = [
     {"id": "beet", "nome": "beet root",
      "img": "a small dish of dark beet root powder",
      "fala": "beet root, the plain red root nobody respects"},
+    # ⭐ 2026-08-20 — os tres que o operador acrescentou, na forma DESTE
+    # motor (o aposto vive dentro de `fala`, nao num campo separado).
+    # ⛔ As outras entradas daqui NAO foram uniformizadas com as do
+    # BOTICA: elas carregam apostos proprios, tambem validados por ele
+    # (`tribulus, the little spiked pod farmers know`), e reescrever copy
+    # validada para "padronizar" e' erro que este repo ja' pagou.
+    {"id": "ginseng", "nome": "panax ginseng",
+     "img": "a small dish of pale twisted ginseng root",
+     "fala": "panax ginseng, the famous Korean root"},
+    {"id": "acafrao", "nome": "saffron",
+     "img": "a small dish of deep red saffron threads",
+     "fala": "saffron, the rare red spice from the crocus flower"},
+    {"id": "catuaba", "nome": "catuaba",
+     "img": "a small dish of reddish bark shavings",
+     "fala": "catuaba, the bark traditionally used in Brazil"},
 ]
 
 # ---------------------------------------------------------------------------

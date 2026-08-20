@@ -1152,6 +1152,36 @@ RAROS = [
     {"id": "epimedium", "nome": "epimedium", "interno": "Epimedium spp.",
      "aposto": "the herb they call horny goat weed",
      "img": "a small dish of dried heart-shaped leaves"},
+    # ⭐ CINCO ENTRADAS NOVAS (2026-08-20), apostos VERBATIM do operador.
+    # ⚠️ `horny goat weed` e a MESMA planta do `epimedium` acima. Os dois
+    # convivem porque o que este pool varia e' a PALAVRA FALADA, e os dois
+    # nomes soam completamente diferentes; a imagem e' identica de
+    # proposito. Como se sorteia UM raro por video, nunca caem juntos.
+    # ⭐ E o aposto dele nao foi inventado: e' o que o operador ja' tinha
+    # validado no FALTA (`the herb goat farmers stumbled onto`).
+    {"id": "horny_goat", "nome": "horny goat weed",
+     "interno": "Epimedium spp.",
+     "aposto": "the herb goat farmers stumbled onto",
+     "img": "a small dish of dried heart-shaped leaves"},
+    {"id": "ginseng", "nome": "panax ginseng", "interno": "Panax ginseng",
+     "aposto": "the famous Korean root",
+     "img": "a small dish of pale twisted ginseng root"},
+    {"id": "acafrao", "nome": "saffron", "interno": "Crocus sativus",
+     "aposto": "the rare red spice from the crocus flower",
+     "img": "a small dish of deep red saffron threads"},
+    # ⚠️ `geralmente Trichilia catigua`: o nome cientifico da catuaba varia
+    # conforme a fonte botanica, e o operador escreveu o "geralmente" de
+    # proposito. Fica registrado aqui — o campo `interno` NUNCA entra no
+    # prompt, entao a incerteza nao chega ao video.
+    {"id": "catuaba", "nome": "catuaba",
+     "interno": "Trichilia catigua (geralmente)",
+     "aposto": "the bark traditionally used in Brazil",
+     "img": "a small dish of reddish bark shavings"},
+    {"id": "ashwagandha", "nome": "ashwagandha",
+     "interno": "Withania somnifera",
+     "aposto": "that ancient root used in Indian medicine",
+     "img": "a small dish of beige ashwagandha root and light brown "
+            "powder"},
     {"id": "fenogrego", "nome": "fenugreek", "interno": "Trigonella foenum-graecum",
      "aposto": "the golden seed of the Mediterranean",
      "img": "a small dish of hard golden-brown seeds"},
