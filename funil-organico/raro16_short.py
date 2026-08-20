@@ -133,35 +133,35 @@ IDADES = (54, 58, 61, 63, 66, 68, 71)
 RAROS = [
     {"id": "maca", "nome": "maca root", "interno": "Lepidium meyenii",
      "aposto": "that Andean root from Peru",
-     "tribo": "the Andean men who drank it for generations",
+     "tribo": "the Andean men",
      "certo": ['leite_quente'],
      "falso": ['agua_fria'],
      "inteiro": "two whole dried maca roots, pale and knobbed",
      "img": "a small dish of pale yellow maca powder"},
     {"id": "tongkat", "nome": "tongkat ali", "interno": "Eurycoma longifolia",
      "aposto": "a root from the forests of Southeast Asia",
-     "tribo": "the forest villages of Southeast Asia",
+     "tribo": "the forest villages of Borneo",
      "certo": ['decoccao_longa'],
      "falso": ['agua_fria', 'batida_crua'],
      "inteiro": "a few long pieces of whole tongkat ali root",
      "img": "a small dish of coarse light-brown root shavings"},
     {"id": "tribulus", "nome": "tribulus", "interno": "Tribulus terrestris",
      "aposto": "that spiny fruit that grows along the ground",
-     "tribo": "the old households of India",
+     "tribo": "old India",
      "certo": ['decoccao'],
      "falso": ['infusao'],
      "inteiro": "a small heap of whole dried tribulus pods",
      "img": "a small dish of dried spiny seed pods"},
     {"id": "epimedium", "nome": "epimedium", "interno": "Epimedium spp.",
      "aposto": "the herb they call horny goat weed",
-     "tribo": "the mountain herders of old China",
+     "tribo": "China's mountain herders",
      "certo": ['decoccao_curta', 'vinho'],
      "falso": ['fervura_longa'],
      "inteiro": "a loose bundle of whole dried epimedium leaves",
      "img": "a small dish of dried heart-shaped leaves"},
     {"id": "horny_goat", "nome": "horny goat weed", "interno": "Epimedium spp.",
      "aposto": "the herb goat farmers stumbled onto",
-     "tribo": "the mountain herders of old China",
+     "tribo": "China's mountain herders",
      "certo": ['decoccao_curta', 'vinho'],
      "falso": ['fervura_longa'],
      "inteiro": "a loose bundle of whole dried horny goat weed leaves",
@@ -169,7 +169,7 @@ RAROS = [
     {"id": "fenogrego", "nome": "fenugreek",
      "interno": "Trigonella foenum-graecum",
      "aposto": "the golden seed of the Mediterranean",
-     "tribo": "the old Mediterranean households",
+     "tribo": "the old Mediterranean",
      "certo": ['molho_frio', 'torra_moagem'],
      "falso": [],
      "inteiro": "a handful of whole golden fenugreek seeds",
@@ -177,42 +177,42 @@ RAROS = [
     {"id": "muirapuama", "nome": "muira puama",
      "interno": "Ptychopetalum olacoides",
      "aposto": "an Amazon root known for generations",
-     "tribo": "the river peoples of the Amazon",
+     "tribo": "the Amazon river men",
      "certo": ['leite_integral', 'decoccao_longa'],
      "falso": ['infusao', 'agua_fria'],
      "inteiro": "two long strips of whole muira puama bark",
      "img": "a small dish of chipped pale bark and root"},
     {"id": "ginkgo", "nome": "ginkgo", "interno": "Ginkgo biloba",
      "aposto": "the leaf off that ancient Chinese tree",
-     "tribo": "the temple keepers of old China",
+     "tribo": "China's temple keepers",
      "certo": ['infusao'],
      "falso": ['decoccao_longa'],
      "inteiro": "a spread of whole dried ginkgo leaves",
      "img": "a small dish of dried fan-shaped leaves"},
     {"id": "mucuna", "nome": "mucuna", "interno": "Mucuna pruriens",
      "aposto": "the famous velvet bean of the tropics",
-     "tribo": "the village healers of old India",
+     "tribo": "the villages of old India",
      "certo": ['torra_moagem'],
      "falso": ['agua_fria'],
      "inteiro": "a handful of whole dark mucuna beans",
      "img": "a small dish of dark glossy beans"},
     {"id": "salsaparrilha", "nome": "sarsaparilla", "interno": "Smilax spp.",
      "aposto": "a vine root native to the Americas",
-     "tribo": "the native peoples of the Americas",
+     "tribo": "the native Americas",
      "certo": ['decoccao'],
      "falso": ['infusao'],
      "inteiro": "a bundle of whole twisted sarsaparilla root",
      "img": "a small dish of dried twisted root pieces"},
     {"id": "ginseng", "nome": "panax ginseng", "interno": "Panax ginseng",
      "aposto": "the famous Korean root",
-     "tribo": "the mountain villages of old Korea",
+     "tribo": "Korea's mountain villages",
      "certo": ['decoccao_longa', 'sopa'],
      "falso": ['infusao'],
      "inteiro": "one whole pale ginseng root with its long legs",
      "img": "a small dish of pale twisted ginseng root"},
     {"id": "acafrao", "nome": "saffron", "interno": "Crocus sativus",
      "aposto": "the rare red spice from the crocus flower",
-     "tribo": "the old spice roads of Persia",
+     "tribo": "the Persian spice roads",
      "certo": ['bloom_morno'],
      "falso": ['fervura_longa', 'gordura_pura'],
      "inteiro": "a pinch of whole dark red saffron threads",
@@ -220,14 +220,14 @@ RAROS = [
     {"id": "catuaba", "nome": "catuaba",
      "interno": "Trichilia catigua (geralmente)",
      "aposto": "the bark traditionally used in Brazil",
-     "tribo": "the Tupi peoples of Brazil",
+     "tribo": "the Tupi of Brazil",
      "certo": ['decoccao_curta', 'vinho'],
      "falso": ['agua_fria'],
      "inteiro": "several curled strips of whole catuaba bark",
      "img": "a small dish of reddish bark shavings"},
     {"id": "ashwagandha", "nome": "ashwagandha", "interno": "Withania somnifera",
      "aposto": "that ancient root used in Indian medicine",
-     "tribo": "the old households of India",
+     "tribo": "old India",
      "certo": ['leite_fervido'],
      "falso": ['fervura_longa'],
      "inteiro": "two whole beige ashwagandha roots",
@@ -552,37 +552,162 @@ CTA_LITERAL = "Comment recipe"
 # ⭐ A FALHA. Ela e' o que o CT2 cobra e e' o que faz o espectador se
 # reconhecer. ⛔ Sem apelido de orgao: este angulo nao mostra corpo nenhum, e
 # nomear o orgao sobre uma mesa de cozinha e' o drifting invertido.
+# ⭐⭐ A FALHA — SEIS FORMAS, nao uma forma com N sinonimos.
+# ⛔ O campo `forma` existe para o autoteste MEDIR diversidade de forma, e nao
+# so' contar entradas. Contar entradas foi exatamente como este pool nasceu
+# errado: oito falas, uma forma.
+# ⚠️ A `pergunta` fica no pool com peso igual, mesmo tendo medido pior na
+# fonte (4,0 contra 20,5 da exclusao): o lote existe para o campo responder, e
+# tirar a forma pior antes de medir seria decidir no lugar do campo.
 FALHAS = [
-    {"id": "f1", "txt": "Tired of going soft when it matters?"},
-    {"id": "f2", "txt": "Going soft every single night?"},
-    {"id": "f3", "txt": "Over fifty and going soft on her?"},
-    {"id": "f4", "txt": "Tired of going soft halfway through?"},
-    {"id": "f5", "txt": "Going soft and blaming your age for it?"},
-    {"id": "f6", "txt": "Went soft again last night?"},
-    {"id": "f7", "txt": "Going soft and apologizing again after?"},
-    {"id": "f8", "txt": "Going soft and out of ideas?"},
+    # -- PERGUNTA (mediu 4,0 na fonte) -----------------------------------
+    {"id": "pg1", "forma": "pergunta",
+     "txt": "Tired of going soft when it matters?"},
+    {"id": "pg2", "forma": "pergunta",
+     "txt": "Went soft again last night?"},
+    {"id": "pg3", "forma": "pergunta",
+     "txt": "Going soft halfway through, every time?"},
+    {"id": "pg4", "forma": "pergunta",
+     "txt": "How many nights has it gone soft on you?"},
+    # -- EXCLUSAO (mediu 20,5 — a melhor da fonte) -----------------------
+    {"id": "ex1", "forma": "exclusao",
+     "txt": "If you are single, do not go looking for this one."},
+    {"id": "ex2", "forma": "exclusao",
+     "txt": "If you never go soft, this is not for you."},
+    {"id": "ex3", "forma": "exclusao",
+     "txt": "Married men only, and even then, go easy."},
+    {"id": "ex4", "forma": "exclusao",
+     "txt": "Under forty? Close this. You do not need it yet."},
+    # -- CONFISSAO (8,1) -------------------------------------------------
+    {"id": "cf1", "forma": "confissao",
+     "txt": "I went soft for two straight years and said nothing."},
+    {"id": "cf2", "forma": "confissao",
+     "txt": "I stopped reaching for her because I knew how it would end."},
+    {"id": "cf3", "forma": "confissao",
+     "txt": "I blamed my age for going soft. I was wrong."},
+    {"id": "cf4", "forma": "confissao",
+     "txt": "I faked being tired for years so she would not see me go soft."},
+    # -- IDADE (11,8 / 7,5 / 5,6) ----------------------------------------
+    {"id": "id1", "forma": "idade",
+     "txt": "At sixty-three I stopped going soft, and not with pills."},
+    {"id": "id2", "forma": "idade",
+     "txt": "Sixty-eight, and my wife stopped asking what is wrong."},
+    {"id": "id3", "forma": "idade",
+     "txt": "Fifty-nine was the year it started. Sixty was the year it stopped."},
+    # -- ACUSACAO --------------------------------------------------------
+    {"id": "ac1", "forma": "acusacao",
+     "txt": "Over fifty and still doing nothing about going soft?"},
+    {"id": "ac2", "forma": "acusacao",
+     "txt": "You went soft again and you are still blaming the week you had."},
+    {"id": "ac3", "forma": "acusacao",
+     "txt": "Every man your age goes soft and nobody says it out loud."},
+    # -- CONSTATACAO / AVISO ---------------------------------------------
+    {"id": "cn1", "forma": "constatacao",
+     "txt": "Going soft is not what age does to you. It is what you drink."},
+    {"id": "cn2", "forma": "constatacao",
+     "txt": "There is a reason your grandfather never went soft."},
+    {"id": "cn3", "forma": "constatacao",
+     "txt": "Men go soft in this country and nowhere else does it this fast."},
+    {"id": "cn4", "forma": "constatacao",
+     "txt": "Watch this before you go soft on her again."},
 ]
 
-# ⭐ A FARMACIA. E' o vilao, e ele e' nomeado — sem ele o "metodo bizarro" fica
-# sem contra-quem. ⚠️ Nenhuma delas diz que a farmacia ESCONDE: dizem que ela
-# nao gosta, que perde com isso, que nao vai contar. A diferenca importa para o
-# classificador e para a verdade.
-FARMACIAS = [
-    {"id": "p1", "txt": "The pharmacy will never bring this one up."},
-    {"id": "p2", "txt": "No pharmacy makes a cent when you do this."},
-    {"id": "p3", "txt": "This is the one they leave off the shelf."},
-    {"id": "p4", "txt": "The drug counter would rather you never heard it."},
-    {"id": "p5", "txt": "Nobody selling pills wants this getting around."},
+# ⭐ O QUALIFICADOR VIRA POOL. Era a palavra `bizarre` CRAVADA na frase, entao
+# os quatorze raros, os dezesseis preparos e os quatorze ambientes produziam
+# videos que diziam todos a mesma palavra no mesmo lugar.
+ADJETIVOS = [
+    "bizarre", "strange", "backwards", "old", "forgotten", "ugly",
+    "unglamorous", "crude", "stubborn", "cheap", "quiet", "unlikely",
+    "primitive", "odd",
 ]
 
-# ⭐ O RESULTADO do take 2, antes do CTA. Sem numero, sem prazo e sem promessa
-# de cura — o que sobra e' o que o proprio veiculo entrega.
+# ⭐ A PONTE ate' a tribo. `%s` e' o adjetivo, `%s` e' a tribo.
+PONTES = [
+    # ⛔ AS CURTAS EXISTEM PARA AS FORMAS LONGAS DE HOOK CABEREM. Medido: com
+    # so' as pontes de 10 palavras, `pergunta` ficava em 98% dos videos porque
+    # era a unica forma curta o bastante — as outras cinco estavam no pool e
+    # mortas. Ponte curta nao e' economia de estilo, e' o que mantem o eixo
+    # vivo.
+    {"id": "b0", "txt": "A %s trick from %s."},
+    {"id": "b0b", "txt": "%s did this. %s as it sounds.", "inv": True},
+    {"id": "b0c", "txt": "%s knew it. %s, but it works.", "inv": True},
+    {"id": "b1", "txt": "This %s method comes from %s."},
+    # ⚠️ `X is where` quebrava concordancia com tribo PLURAL (`the villages of
+    # old India IS where`). Com o ponto no meio, a tribo vira sujeito de uma
+    # frase propria e o verbo some.
+    {"id": "b2", "txt": "%s. That is where this %s trick comes from.",
+     "inv": True},
+    {"id": "b3", "txt": "It is a %s habit borrowed from %s."},
+    {"id": "b4", "txt": "%s did this for centuries, %s as it looks.",
+     "inv": True},
+    {"id": "b5", "txt": "This %s routine is older than your country: %s."},
+    # ⚠️ `in %s` pedia um LUGAR e recebia um POVO (`Nothing primitive about it
+    # in China's temple keepers`). `where it comes from:` aceita os dois.
+    {"id": "b6", "txt": "Nothing %s about it where it comes from: %s."},
+]
+
+# ⭐⭐ O TERCEIRO BEAT tem DUAS FUNCOES, e essa era a que faltava. O operador:
+# *"por que vc nao alternou «the pharmacy will never bring this one up» por
+# «your wife won't be able to keep up»?"*
+#  · VILAO        — quem perde com voce saber (a farmacia, o balcao, o medico)
+#  · CONSEQUENCIA — o que acontece com voce depois (ela nao acompanha)
+# ⛔ Sao promessas OPOSTAS: o vilao explica por que voce nunca ouviu falar; a
+# consequencia vende o depois. Um pool so' de vilao entrega metade do arco.
+FECHOS = [
+    # -- VILAO -----------------------------------------------------------
+    {"id": "v0", "fam": "vilao", "txt": "No pharmacy sells it."},
+    {"id": "v0b", "fam": "vilao", "txt": "There is no pill version."},
+    {"id": "v1", "fam": "vilao",
+     "txt": "The pharmacy will never bring this one up."},
+    {"id": "v2", "fam": "vilao",
+     "txt": "No pharmacy makes a cent when you do this."},
+    {"id": "v3", "fam": "vilao",
+     "txt": "This is the one they leave off the shelf."},
+    {"id": "v4", "fam": "vilao",
+     "txt": "The drug counter would rather you never heard it."},
+    {"id": "v5", "fam": "vilao",
+     "txt": "Nobody selling pills wants this getting around."},
+    {"id": "v6", "fam": "vilao",
+     "txt": "Your doctor has ten minutes and none of them for this."},
+    {"id": "v7", "fam": "vilao",
+     "txt": "There is no patent on it, so nobody advertises it."},
+    {"id": "v8", "fam": "vilao",
+     "txt": "It costs almost nothing, which is exactly the problem."},
+    # -- CONSEQUENCIA ----------------------------------------------------
+    {"id": "q0", "fam": "consequencia", "txt": "She will notice."},
+    {"id": "q0b", "fam": "consequencia", "txt": "Go easy on her."},
+    {"id": "q1", "fam": "consequencia",
+     "txt": "Your wife will not be able to keep up."},
+    {"id": "q2", "fam": "consequencia",
+     "txt": "She is going to ask you what changed."},
+    {"id": "q3", "fam": "consequencia",
+     "txt": "Do not start this on a weeknight."},
+    {"id": "q4", "fam": "consequencia",
+     "txt": "She will notice before you say a word."},
+    {"id": "q5", "fam": "consequencia",
+     "txt": "You will stop planning your nights around it."},
+    {"id": "q6", "fam": "consequencia",
+     "txt": "She will be the one asking to slow down."},
+    {"id": "q7", "fam": "consequencia",
+     "txt": "You will be the one turning the lamp off last."},
+    {"id": "q8", "fam": "consequencia",
+     "txt": "Nobody has to know why you sleep so well now."},
+]
+
+# ⭐ A PROVA do take 2, antes do CTA. Sem numero, sem prazo e sem promessa de
+# cura: o que sobra e' o custo, a facilidade e a ausencia de receita medica.
+# ⛔ Ela e' OPCIONAL por orcamento — ver o comentario em `_falas`.
 PROVAS = [
-    {"id": "r1", "txt": "Every morning, and you feel it by the end of the week."},
+    {"id": "r1", "txt": "Every morning, nothing else."},
     {"id": "r2", "txt": "One glass a day is the whole thing."},
-    {"id": "r3", "txt": "It takes two minutes and costs almost nothing."},
+    {"id": "r3", "txt": "Two minutes, and it costs almost nothing."},
     {"id": "r4", "txt": "You already have most of it at home."},
     {"id": "r5", "txt": "No prescription, no pharmacy, no bill."},
+    {"id": "r6", "txt": "Cheaper than a coffee."},
+    {"id": "r7", "txt": "Nobody has to know you are doing it."},
+    {"id": "r8", "txt": "It keeps a week in the fridge."},
+    {"id": "r9", "txt": "Takes longer to read than to make."},
+    {"id": "r10", "txt": "One pot, one spoon, that is it."},
 ]
 
 CTAS = [
@@ -593,13 +718,15 @@ CTAS = [
     # portao nunca existiu, e follow na fala so' gasta palavra do teto.
     {"id": "c0", "txt": "%s, and it goes to your messages."},
     {"id": "c0b", "txt": "%s, and I send it to your messages."},
-    # ⚠️ `the recipe` sairia do CTA com a keyword `recipe` e a palavra
-    # apareceria duas vezes na mesma frase.
+    # ⚠️ `the recipe` sairia com a keyword `recipe` e a palavra apareceria duas
+    # vezes na mesma frase.
     {"id": "c0c", "txt": "%s, and the whole thing goes to your messages."},
     {"id": "c1", "txt": "%s, and the full step by step goes to your messages."},
     {"id": "c2", "txt": "%s, and I send the exact measures to your messages."},
+    {"id": "c3", "txt": "%s, and the measures land in your messages."},
+    {"id": "c4", "txt": "%s, and I will send it over to your messages."},
+    {"id": "c5", "txt": "%s, and check your messages."},
 ]
-
 
 EIXOS_LEDGER = ("ambiente", "camera", "acao", "raro", "preparo", "maos",
                 "falha", "farmacia", "prova", "cta")
@@ -655,6 +782,12 @@ def _palavras(s):
     return len(re.findall(r"[A-Za-z']+", s or ""))
 
 
+def _frases(t):
+    """Maiuscula no inicio e depois de cada ponto."""
+    return re.sub(r"(^|[.!?] )([a-z])",
+                  lambda m: m.group(1) + m.group(2).upper(), t)
+
+
 def _cap(s):
     return s[0].upper() + s[1:] if s else s
 
@@ -683,13 +816,41 @@ def _falas(spec, rng, quais=(0, 1)):
     if 0 in quais:
         # ⭐ A TRIBO SAI DO RARO SORTEADO, nunca de um pool proprio: sortear
         # povo por fora poria "as tribos andinas" num video de acafrao persa.
-        tribo = "This bizarre method comes from %s." % raro["tribo"]
-        pares = [(x, p) for x in FALHAS for p in FARMACIAS
-                 if _palavras(x["txt"]) + _palavras(tribo)
-                 + _palavras(p["txt"]) <= TETO_FALA[1]]
-        x, p = rng.choice(pares)
-        spec["falha"], spec["farmacia"], spec["tribo_txt"] = x, p, tribo
-        f[0] = "%s %s %s" % (x["txt"], tribo, p["txt"])
+        # ⭐⭐ E o ADJETIVO e a PONTE tambem sao sorteados — antes a frase era
+        # `This bizarre method comes from X`, cravada, e os quatorze raros
+        # diziam todos a mesma palavra no mesmo lugar.
+        adj = rng.choice(ADJETIVOS)
+        # ⛔ A CAPITALIZACAO E' APLICADA DEPOIS DE MONTAR, e nao escrita nas
+        # entradas: nas pontes `inv` quem abre a frase e' a TRIBO (minuscula
+        # no pool) e quem abre a segunda e' o ADJETIVO. Medido na leitura do
+        # texto montado: `did this. cheap as it sounds.` e `the villages of
+        # old India is where...`. Uma regra so' resolve os dois, e continua
+        # valendo para molde novo que alguem escreva depois.
+        pontes = [(b, _frases(b["txt"] % ((raro["tribo"], adj) if b.get("inv")
+                                          else (adj, raro["tribo"]))))
+                  for b in PONTES]
+        # ⛔ O trio inteiro e' sorteado entre os viaveis, nunca em cascata: o
+        # VICK 16 escolheu o primeiro beat e depois procurou um que coubesse, e
+        # o take 2 saiu com UMA fala em 400 videos.
+        trios = [(x, b, t, fe) for x in FALHAS for (b, t) in pontes
+                 for fe in FECHOS
+                 if _palavras(x["txt"]) + _palavras(t)
+                 + _palavras(fe["txt"]) <= TETO_FALA[1]]
+        # ⛔⛔ SORTEIA-SE A FORMA, DEPOIS O TRIO — e isso e' conserto de um
+        # vies que so' a medicao mostrou. Sorteando o trio direto, `pergunta`
+        # ficava com 48% dos videos com apenas 4 das 22 entradas: as perguntas
+        # sao as falas mais CURTAS, entao cabem com mais combinacoes de ponte
+        # e fecho, e o comprimento vira PESO sem ninguem ter pedido.
+        # ⭐ A licao generaliza: num sorteio filtrado por orcamento, entrada
+        # curta e' entrada favorecida. Se o eixo que importa e' a FORMA, e' a
+        # forma que tem de ser sorteada — nunca o resultado.
+        por_forma = {}
+        for t3 in trios:
+            por_forma.setdefault(t3[0]["forma"], []).append(t3)
+        x, b, t, fe = rng.choice(por_forma[rng.choice(sorted(por_forma))])
+        spec["falha"], spec["ponte"], spec["fecho"] = x, b, fe
+        spec["adjetivo"], spec["tribo_txt"] = adj, t
+        f[0] = "%s %s %s" % (x["txt"], t, fe["txt"])
     if 1 in quais:
         v = spec["preparo"]
         # ⭐ A receita nomeia as TRES coisas: o raro, o aposto e o METODO.
@@ -918,7 +1079,9 @@ def _ra5_copy_amarrada(spec, blocos, ach):
     o motor poderia dizer `the Andean men` e servir acafrao persa — que e' o
     drifting que o operador reprova no teste WTF.
     """
-    if spec["raro"]["tribo"] not in spec["falas"][0]:
+    # ⚠️ minusculas dos dois lados: as pontes `inv` CAPITALIZAM a tribo
+    # (ela abre a frase), e a comparacao crua reprovava 104 videos certos.
+    if spec["raro"]["tribo"].lower() not in spec["falas"][0].lower():
         ach.append(("ERRO", "RA5: a tribo da fala 1 nao e' a do raro sorteado"))
     # ⚠️ minusculas dos dois lados: a fala CAPITALIZA a primeira palavra
     # (`Maca root, ...`) e a comparacao crua reprovava 400 de 400 videos
@@ -1039,7 +1202,7 @@ def _autoteste(n=400, seed=20260820):
             ("raro", "preparo", "ambiente", "camera", "acao", "maos")}
     falas = {1: set(), 2: set()}
     pal = {1: [], 2: []}
-    pares = set()
+    pares, specs = set(), []
     for _ in range(n):
         sp = sortear("joe", rng, led)
         _anotar(led, sp)
@@ -1050,6 +1213,7 @@ def _autoteste(n=400, seed=20260820):
         for e in cont:
             cont[e][sp[e]["id"]] += 1
         pares.add((sp["raro"]["id"], sp["preparo"]["id"]))
+        specs.append(sp)
         for i in (1, 2):
             falas[i].add(sp["falas"][i - 1])
             pal[i].append(_palavras(sp["falas"][i - 1]))
@@ -1066,6 +1230,28 @@ def _autoteste(n=400, seed=20260820):
     possiveis = sum(len(preparos_para(r)) for r in RAROS)
     print("  pares raro x metodo vistos: %d de %d que EXTRAEM"
           % (len(pares), possiveis))
+    # ⭐⭐ A MEDICAO QUE TERIA PEGO O DEFEITO ORIGINAL. O pool nasceu com oito
+    # falhas e as OITO eram pergunta — contar entradas dizia "8 opcoes", e o
+    # operador viu na tela que era uma frase repintada. Contar FORMA e' o que
+    # mede variacao percebida.
+    # ⚠️ E a distribuicao importa mais que a existencia: uma forma em 60% dos
+    # videos e' quase o pool antigo com enfeite.
+    formas = collections.Counter(sp["falha"]["forma"] for sp in specs)
+    print("  FORMA do hook (o que o espectador percebe, nao o numero de "
+          "entradas):")
+    for k, v in formas.most_common():
+        print("     %-12s %3d  %2d%%" % (k, v, 100 * v // len(specs)))
+    dom = formas.most_common(1)[0]
+    if 100 * dom[1] // len(specs) > 45:
+        print("     ⛔ `%s` domina %d%% — pool de forma unica com enfeite"
+              % (dom[0], 100 * dom[1] // len(specs)))
+    fam = collections.Counter(sp["fecho"]["fam"] for sp in specs)
+    print("  FECHO: %s" % " · ".join("%s %d%%" % (k, 100 * v // len(specs))
+                                     for k, v in fam.most_common()))
+    print("  adjetivos usados: %d de %d"
+          % (len(set(sp["adjetivo"] for sp in specs)), len(ADJETIVOS)))
+    print("  pontes usadas: %d de %d"
+          % (len(set(sp["ponte"]["id"] for sp in specs)), len(PONTES)))
     for i in (1, 2):
         print("  cena %d: %3d falas distintas · palavras %d/%d/%d (teto %d)"
               % (i, len(falas[i]), min(pal[i]), sum(pal[i]) // len(pal[i]),

@@ -201,6 +201,15 @@ DESLIGADAS = {
         "excecao nao e' hipotese como no PRATO/MEL: e' a razao de existir do "
         "angulo, que o operador desenhou em volta do raro + o aposto + o "
         "metodo de preparo.",
+    ("raro16", "CT2"):
+        "os 13% que sobram sao a familia EXCLUSAO, que por CONSTRUCAO nao "
+        "enuncia a falha: ela AVISA quem nao deve fazer (*\"if you are single, "
+        "do not go looking for this one\"*). ⭐ E ela e' a forma que MEDIU "
+        "MELHOR na fonte dos sete reels do BANHO 3T: 20,5 comentarios por mil "
+        "views contra 4,0 da pergunta. Forcar `going soft` dentro de um hook de "
+        "exclusao destroi a forma para satisfazer o regex — e' a §16 das "
+        "licoes. ⚠️ Os outros seis hooks que o CT2 acusava foram CONSERTADOS, "
+        "nao declarados: tres davam para nomear a falha sem perder a forma.",
     ("raro16", "CT4"):
         "este angulo nao mostra corpo nenhum e nao nomeia orgao: a falha entra "
         "pelo VERBO (`going soft`), que e' o que o CT2 cobra. Cota de apelido "
