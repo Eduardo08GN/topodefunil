@@ -36,6 +36,7 @@ O QUE ESTA ETAPA FAZ, tudo deterministico:
  6. escreve o `PEDIDO.md`, ja' pronto para colar no chat
 """
 import argparse
+import hashlib
 import io
 import json
 import os
@@ -49,9 +50,29 @@ FONTE_TTF = "C\\:/Windows/Fonts/arialbd.ttf"
 
 
 def _slug(caminho):
+    """⛔⛔ O NOME DO ARQUIVO NAO IDENTIFICA O VIDEO, e isso nao e' teoria:
+    o corpus do operador tem SETE colisoes — `lote-16ago/v01.mp4` e
+    `marcus/v01.mp4` caiam os dois em `saida/v01`.
+
+    O estrago medido: o `dossie.json` era sobrescrito e o `mapa.json` do
+    OUTRO video SOBREVIVIA. Como a guarda do `gerar.py` so' comparava a
+    CONTAGEM de takes e os dois tinham tres, saia prompt Frankenstein sem
+    uma linha de erro: a CENA de um video com a FALA do outro.
+    ⚠️ E havia duas portas piores: `remux.mkv` e `remux.mov` colidiam
+    (a extensao era jogada fora), e todo nome 100% nao-ASCII virava o
+    slug `video` — dois videos japoneses se sobrescreviam.
+
+    ⭐ Agora o slug leva um hash curto do caminho ABSOLUTO + o tamanho:
+    dois arquivos so' colidem se forem o mesmo arquivo.
+    """
     n = os.path.splitext(os.path.basename(caminho))[0].lower()
-    n = re.sub(r"[^a-z0-9]+", "-", n).strip("-")
-    return n[:60] or "video"
+    n = re.sub(r"[^a-z0-9]+", "-", n).strip("-")[:40] or "video"
+    try:
+        tam = os.path.getsize(caminho)
+    except OSError:
+        tam = 0
+    marca = "%s|%d" % (os.path.abspath(caminho), tam)
+    return "%s-%s" % (n, hashlib.sha1(marca.encode("utf-8")).hexdigest()[:6])
 
 
 def duracao(p):

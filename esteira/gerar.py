@@ -97,8 +97,27 @@ def montar(mapa, dossie, modo, alvo_takes):
     if alvo_takes != "fonte":
         n = int(alvo_takes)
         if len(tks) > n:
-            tks = tks[:n - 1] + [tks[n - 1]]
-            falas = falas[:n - 1] + [" ".join(falas[n - 1:]).strip()]
+            # ⛔⛔ ISTO AQUI FUNDIA NO PAPEL E DESCARTAVA NA PRATICA.
+            # Era `tks[:n-1] + [tks[n-1]]`, que e' IDENTICO a `tks[:n]`:
+            # o ultimo take da FONTE — onde mora o payoff — simplesmente
+            # sumia, enquanto a FALA dele era empilhada num quadro que nao
+            # mostra nada do que ela promete. Medido no v01 com --takes 2:
+            # sete props do take 3 perdidos e a fala indo de 25 para 43
+            # palavras. O comentario dizia o contrario do codigo.
+            # ⭐ Agora funde de verdade: o quadro final e' o ULTIMO da
+            # fonte (o payoff), e os props do meio sao herdados sem
+            # repetir.
+            cauda = tks[n - 1:]
+            ult = dict(cauda[-1])
+            props = []
+            for t in cauda:
+                for p in (t.get("props") or []):
+                    if p not in props:
+                        props.append(p)
+            ult["props"] = props
+            tks = tks[:n - 1] + [ult]
+            falas = falas[:n - 1] + [
+                " ".join(x for x in falas[n - 1:] if x).strip()]
 
     blocos, avisos = {}, []
     n = len(tks)
@@ -126,7 +145,18 @@ def montar(mapa, dossie, modo, alvo_takes):
             partes.append("Wearing %s" % t["traje"])
         if t.get("gesto"):
             partes.append(t["gesto"])
-        partes += [t.get("camera", ""), t.get("luz", ""), CAUDA]
+        # ⛔⛔ A CAMERA E O AUDIO SAO LIMPOS ANTES, e nao so' dentro do
+        # bloco IMAGE. O `limpar()` rodava so' na IMAGE e no REF, entao
+        # `phone in his free hand` vindo no campo `camera` chegava INTACTO
+        # ao bloco TAKE — que e' justamente o prompt que ANIMA a imagem —
+        # e o aviso dizia "IMAGE 01: aparelho SEGURADO", passando ao
+        # operador a impressao de que estava resolvido. E' o defeito que
+        # este modulo existe para impedir, escapando pela porta de tras.
+        cam, ach_c = limpar(t.get("camera", "") or "")
+        aud, ach_a = limpar(t.get("audio", "") or "")
+        avisos += ["TAKE %02d (camera): %s" % (i, a) for a in ach_c]
+        avisos += ["TAKE %02d (audio): %s" % (i, a) for a in ach_a]
+        partes += [cam, t.get("luz", ""), CAUDA]
         txt, ach = limpar(". ".join(x.strip(" .") for x in partes if x) + ".")
         avisos += ["IMAGE %02d: %s" % (i, a) for a in ach]
 
@@ -146,8 +176,8 @@ def montar(mapa, dossie, modo, alvo_takes):
         ktake = "TAKE %02d/%02d" % (i, n)
         corpo = ("TAKE %02d/%02d: Animate the provided image exactly. %s and "
                  "there are no cuts. Audio: %s."
-                 % (i, n, t.get("camera", "The camera holds still"),
-                    t.get("audio", "quiet room tone, no music")))
+                 % (i, n, cam or "The camera holds still",
+                    aud or "quiet room tone, no music"))
         if fala:
             corpo += '\nDialogue: "%s"' % fala
         blocos[ktake] = corpo
@@ -172,6 +202,13 @@ def main():
         raise SystemExit("falta o mapa.json em %s\n"
                          "Cole o PEDIDO.md + folha.jpg no chat e salve a "
                          "resposta ali." % d)
+    # ⛔ Mapa mais VELHO que o dossie e' mapa de outra leitura. Com o slug
+    # antigo isso virava prompt Frankenstein; com o slug novo so' acontece
+    # se o operador reler o mesmo video com outro limiar — e ai' o numero
+    # de takes pode ate' bater por acaso. A data nao mente.
+    if os.path.getmtime(fm) < os.path.getmtime(fd):
+        raise SystemExit("o mapa.json e' de uma leitura ANTERIOR a este "
+                         "dossie. Refaca a etapa 2 com a folha nova.")
     mapa = json.load(io.open(fm, encoding="utf-8"))
     dossie = json.load(io.open(fd, encoding="utf-8"))
     if len(mapa.get("takes", [])) != len(dossie["takes"]):

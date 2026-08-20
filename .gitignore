@@ -28,3 +28,6 @@ _*.py
 
 # token do Apify (garimpo) — credencial, nunca versionada
 .apify-token
+
+# saida da esteira: dossie, folha e prompts sao artefato local
+esteira/saida/
