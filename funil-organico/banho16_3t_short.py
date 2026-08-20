@@ -74,7 +74,7 @@ mais recente e nomeia este motor. Se voltar para GELATIN, e' trocar
 2026-08-10). Follow como condicao promete um portao que a automacao de DM nao
 tem. A lente `B3-7` cobra isso.
 
-O ARCO — 3 takes de ~5s (limite duro de 6s), destino AdBatch Vertical 3:
+O ARCO — 3 takes de 6s (18s no total), destino AdBatch Vertical 3:
 
     take 1  O HOOK        o banheiro, os props parados na superficie, a medida
                           intocada, o rotulo `growth hack`; a mao ALCANCA
@@ -104,7 +104,7 @@ from nucleo_sonoro import sonorizar                             # noqa: E402
 
 TITULO = "AGENTE BANHO 16 3TAKES"
 SLUG = "banho-16-3t"
-SUBTITULO = ("3 takes de ~5s = 16 segundos · o banheiro · as maos preparam a "
+SUBTITULO = ("3 takes de 6s = 18 segundos · o banheiro · as maos preparam a "
              "receita, a medida fica intocada e a mistura reage no fim")
 
 LEDGER = os.path.join(AQUI, ".banho-16-3t-ledger.json")
@@ -128,7 +128,31 @@ TAKES = ("TAKE 01/03", "TAKE 02/03", "TAKE 03/03")
 # ⚠️ E' MUITO mais duro que o do `banho16` (25 por take, medido em render de
 # 8s). Cena que estoura 14 aqui nao "fica apertada": ela CORTA, e o que corta
 # no fim de um take de 5s e' justamente o CTA.
-TETO_FALA = {1: 14, 2: 14, 3: 14}
+# ⭐⭐ 2026-08-20 — O TETO PASSOU A SER DERIVADO, NAO DECLARADO.
+# Medido em 30 segmentos de video GERADO no nosso formato contra 469
+# segmentos de 60 reels reais da fonte: a voz gerada fala 2,62 palavras
+# por segundo e a voz real fala 3,49 — 33% mais devagar. Em 6 segundos
+# eles cabem 21 palavras e nos cabemos 15.
+# ⛔ Por isso o teto e' `SEGUNDOS_TAKE x TAXA_MEDIA`, e nao um numero
+# escrito na mao: quando o relogio mudar, o teto muda junto. O 14 antigo
+# nao estava errado — estava sem origem, e numero sem origem nao
+# sobrevive a proxima cirurgia temporal.
+SEGUNDOS_TAKE = 6.0
+TAXA_MEDIA = 2.62   # palavras/segundo, mediana dos renders medidos
+TAXA_LENTA = 1.97   # p10 — o decimo mais lento. E' ele que corta.
+TETO = int(SEGUNDOS_TAKE * TAXA_MEDIA)          # 15
+TETO_FALA = {1: TETO, 2: TETO, 3: TETO}
+
+
+def segundos_de(fala, taxa=TAXA_MEDIA):
+    """Quanto tempo esta fala ocupa, na taxa pedida.
+
+    ⚠️ Existe porque o `medir_teto_fala` conta PALAVRA contra o teto
+    declarado, nunca palavra contra o RELOGIO — entao um motor podia
+    passar no gate e cortar a fala no render. Aqui o tempo e' medido e
+    impresso, e a aposta de encher o take fica visivel.
+    """
+    return len([p for p in str(fala).split() if p]) / float(taxa)
 # ⭐ PISO = o MINIMO REAL medido nos pools deste motor, nunca chutado. Piso
 # calibrado no chute vira alarme que sempre dispara, e alarme que sempre
 # dispara ensina o operador a ignorar o linter inteiro. Recalibrar sempre que
@@ -1218,45 +1242,61 @@ FAMILIAS = [
     # avisa quem nao deve fazer, promete a consequencia, e pede.
     {"id": "excl_a", "curto": "solteiro/casado · nao encosta", "mec": False,
      "cenas": [
-         "If you are single, do not touch this. If you are married, go easy.",
-         "These two items mixed right, and she will not keep up with you.",
-         "%s and follow me so I can send the step by step." % CTA_LITERAL,
+         "If you are single, do not touch this. If you are married, go "
+         "real easy.",
+         "These two items, mixed right, and she will not be able to keep "
+         "up.",
+         "%s and follow me so I can send you the full step by step."
+         % CTA_LITERAL,
      ]},
     {"id": "excl_b", "curto": "solteiro/casado · passa direto", "mec": False,
      "cenas": [
-         "If you are single, keep scrolling. If you have a wife, go easy.",
-         "Mixed right, these two will make her ask you to slow down.",
-         "%s, I send the step by step. Follow me so it lands." % CTA_LITERAL,
+         "If you are single, keep scrolling. If you have a wife at home, "
+         "go easy.",
+         "Mixed right, these two will have her asking you to slow down "
+         "and rest.",
+         "%s, I send the full step by step. Follow me so it lands."
+         % CTA_LITERAL,
      ]},
 
     # -- FAMILIA 3 — a acusacao na cara ------------------------------------
     {"id": "acus_gelatina", "curto": "mole igual gelatina", "mec": True,
      "cenas": [
-         "Over 50 and not doing this trick? You are already soft like gelatin.",
-         "This recipe forces blood flow down there. Rock hard, no blue pills.",
-         "%s and follow me for the full step by step." % CTA_LITERAL,
+         "Over fifty and not doing this trick? You are already soft like "
+         "old gelatin.",
+         "This recipe forces the blood flow down there. Rock hard, and no "
+         "blue pills.",
+         "%s and follow me right now for the complete step by step "
+         "guide." % CTA_LITERAL,
      ]},
     {"id": "acus_cavalo", "curto": "cavalo manco no rodeio", "mec": True,
      "cenas": [
-         "Over fifty and not doing this? You are falling like a lame horse.",
-         "This shower habit unclogs the pipes. Maximum size, rock solid "
-         "endurance.",
-         "%s and follow me so I can send the step by step." % CTA_LITERAL,
+         "Over fifty and not doing this? You are already falling like a "
+         "lame horse.",
+         "This shower habit unclogs the pipes for good. Maximum size, rock "
+         "solid endurance again.",
+         "%s and follow me so I can send you the step by step."
+         % CTA_LITERAL,
      ]},
 
     # -- FAMILIA 4 — o bastao e os canos -----------------------------------
     {"id": "bat_trinca", "curto": "o bastao pequeno e mole", "mec": True,
      "cenas": [
-         "I am %(idade)d and my bat was small and soft until this trick.",
-         "It unclogged the toxic buildup killing my blood flow. Maximum size "
-         "now.",
-         "%s and follow me for the full step by step." % CTA_LITERAL,
+         "I am %(idade)d and my bat was small and soft until I found this "
+         "trick.",
+         "It unclogged the toxic buildup that was killing my blood flow. "
+         "Maximum size now.",
+         "No pharmacy needed. %s and follow me for the complete step by "
+         "step." % CTA_LITERAL,
      ]},
     {"id": "bat_canos", "curto": "o bastao · canos limpos", "mec": True,
      "cenas": [
-         "I am %(idade)d. My bat was soft every night until this shower habit.",
-         "Once the pipes are clear you get maximum size, rock solid.",
-         "%s, no pills, and follow me so it reaches you." % CTA_LITERAL,
+         "I am %(idade)d. My bat was soft every single night until this "
+         "shower habit.",
+         "Once the pipes are finally clear you get maximum size, rock "
+         "solid, every time.",
+         "%s, no pills and no pharmacy, and follow me so it reaches you."
+         % CTA_LITERAL,
      ]},
 
     # -- FAMILIA 5 — a noite toda, no presente -----------------------------
@@ -1265,25 +1305,31 @@ FAMILIAS = [
     {"id": "noite_hack", "curto": "ainda duro a noite toda", "mec": True,
      "cenas": [
          "I am %(idade)d and I still last all night. This shower hack did it.",
-         "It flushes the toxic buildup choking your blood flow. No more going "
-         "soft.",
-         "No pharmacy. %s and follow me for the step by step." % CTA_LITERAL,
+         "It flushes out the toxic buildup choking your blood flow. No "
+         "more going soft.",
+         "No pharmacy at all. %s and follow me for the full step by step."
+         % CTA_LITERAL,
      ]},
     {"id": "noite_prateleira", "curto": "a noite toda · duas coisas",
      "mec": True,
      "cenas": [
-         "I am %(idade)d and I last all night. Two things off this shelf.",
-         "They flush the toxic buildup that is choking your blood flow.",
-         "%s and follow me so I can send the step by step." % CTA_LITERAL,
+         "I am %(idade)d and I last all night. Just two things off this "
+         "shelf.",
+         "They flush out the toxic buildup that is choking your blood flow "
+         "down there.",
+         "%s and follow me so I can send you the full step by step."
+         % CTA_LITERAL,
      ]},
 
     # -- FAMILIA 6 — nega a causa falsa antes de vender a verdadeira -------
     {"id": "idade_causa", "curto": "nao e' idade · tem causa", "mec": True,
      "cenas": [
-         "I am %(idade)d. Going soft is not about age. It has a cause.",
-         "This shower hack flushes the toxic buildup and forces blood down "
-         "there.",
-         "%s and follow me right now so I can send everything." % CTA_LITERAL,
+         "I am %(idade)d. Going soft is not about age at all. It has a "
+         "cause.",
+         "This shower hack flushes out the toxic buildup and forces the "
+         "blood down there.",
+         "%s and follow me right now so I can send you every step."
+         % CTA_LITERAL,
      ]},
     # ⚠️ EDITADA POR ELE. E o `Segue primeiro` que ele escreveu SAIU, por fato:
     # *"a mensagem e' enviada independente de seguirem ou nao"* (10/08). Follow
@@ -1291,9 +1337,12 @@ FAMILIAS = [
     # (*"tanto faz, a parte de seguir nao e' tao importante"*).
     {"id": "idade_nunca", "curto": "nunca foi por idade", "mec": True,
      "cenas": [
-         "I am %(idade)d, and I never went soft because of my age.",
-         "This shower trick forces the blood down there. Hard as a rock.",
-         "%s to get the step by step. And follow me." % CTA_LITERAL,
+         "I am %(idade)d, and I never once went soft because of my age "
+         "alone.",
+         "This shower trick forces the blood back down there. Hard as a "
+         "rock again.",
+         "%s to get the full step by step. And follow me as well."
+         % CTA_LITERAL,
      ]},
 
     # -- FAMILIA 7 — as pilulas abandonadas --------------------------------
@@ -1302,20 +1351,24 @@ FAMILIAS = [
     # perdido no meio — aqui ele vira o hook.
     {"id": "pilula_fora", "curto": "joguei fora os azuis", "mec": True,
      "cenas": [
-         "I am %(idade)d and I threw out the blue pills eight months ago.",
-         "This mixture clears what is choking your blood flow. No pharmacy "
-         "needed.",
-         "%s and follow me right now, the step by step goes out." % CTA_LITERAL,
+         "I am %(idade)d and I threw out the blue pills about eight months "
+         "ago.",
+         "This mixture clears out what is choking your blood flow. No "
+         "pharmacy needed here.",
+         "%s and follow me right now, and the step by step goes out."
+         % CTA_LITERAL,
      ]},
     # ⚠️ EDITADA POR ELE — e e' aqui que entra `pipe`, que junto com `bat` da
     # familia 4 decide o E3: o vocabulario do orgao neste motor e' o da FONTE,
     # nao o `so' Johnson/manhood` do `banho16`.
     {"id": "pilula_troca", "curto": "troquei os azuis pelos itens", "mec": True,
      "cenas": [
-         "I am %(idade)d and I swapped the blue pills for these two items.",
+         "I am %(idade)d and I swapped the blue pills for these two simple "
+         "items.",
          "They clear the toxic buildup choking the blood in your pipe. No side "
          "effects.",
-         "%s and follow me so I can send the step by step." % CTA_LITERAL,
+         "%s and follow me so I can send you the step by step."
+         % CTA_LITERAL,
      ]},
 ]
 
@@ -2176,9 +2229,21 @@ def autoteste(n=400):
     print("BANHO 16 3TAKES — %d sorteios (modo pessoa ligado em 1 de 4)" % n)
     for c in sorted(dist):
         v = sorted(tam[c])
-        print("  cena %d: %d falas distintas · palavras min/med/max %d/%d/%d "
-              "(teto %d)"
-              % (c, len(dist[c]), v[0], v[len(v) // 2], v[-1], TETO_FALA[c]))
+        # ⭐ O TEMPO, NAO SO' A PALAVRA. O `medir_teto_fala` do repo conta
+        # palavra contra o teto declarado e nunca palavra contra o
+        # RELOGIO — entao um motor passa no gate e corta a fala no
+        # render. Aqui os dois tempos saem impressos: na voz MEDIANA
+        # (2,62 p/s) e na voz LENTA (1,97 p/s, o decimo mais lento dos
+        # renders medidos). ⚠️ A coluna da voz lenta ESTOURA os 6s de
+        # proposito: e' o preco declarado de encher o take, ordem do
+        # operador em 2026-08-20. Fica medido, nao implicito.
+        pior = v[-1]
+        print("  cena %d: %d falas distintas · palavras min/med/max "
+              "%d/%d/%d (teto %d) · no pior caso %.1fs na voz media e "
+              "%.1fs na lenta (take de %.0fs)"
+              % (c, len(dist[c]), v[0], v[len(v) // 2], v[-1],
+                 TETO_FALA[c], pior / TAXA_MEDIA, pior / TAXA_LENTA,
+                 SEGUNDOS_TAKE))
     for e in ("banheiro", "superficie", "medida", "rotulo", "receita",
               "familia", "mecanismo", "habitado", "maos", "idade"):
         print("  %-11s %d valores" % (e, len(eixos[e])))
