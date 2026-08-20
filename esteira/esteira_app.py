@@ -63,12 +63,42 @@ class App(tk.Tk):
                       cursor="hand2", pady=6, bd=0)
         return b
 
+    def _doomguy(self, pai):
+        """⚠️ ENFEITE NUNCA DERRUBA A FERRAMENTA — a regra e' copiada do AHK do
+        Video Terminator, onde ela ja' esta' escrita. Se o Tk desta maquina nao
+        souber ler PNG, `carregar()` devolve lista vazia, o `if` abaixo nao faz
+        nada e o app abre igual. Nenhum caminho de erro passa por aqui.
+        """
+        try:
+            import doomguy
+            qs = doomguy.carregar(tk)
+            if not qs:
+                return
+            lb = tk.Label(pai, bg=BG, bd=0)
+            lb.pack(side="right", padx=(0, 22))
+            self._dg = qs                       # segura a referencia
+            self._dg_i = 0
+
+            def passo():
+                self._dg_i = (self._dg_i + 1) % len(self._dg)
+                lb.config(image=self._dg[self._dg_i])
+                lb.after(doomguy.MS, passo)
+            lb.config(image=qs[0])
+            lb.after(doomguy.MS, passo)
+        except Exception:  # noqa: BLE001
+            pass
+
     def _ui(self):
-        tk.Label(self, text="ESTEIRA", bg=BG, fg=ACC, font=F_TIT).pack(
-            anchor="w", padx=18, pady=(14, 0))
-        tk.Label(self, text="um video-fonte entra · os prompts do Veo saem · "
-                            "a unica etapa com modelo acontece no seu chat",
-                 bg=BG, fg=MUTED, font=F_UI).pack(anchor="w", padx=18)
+        topo = tk.Frame(self, bg=BG)
+        topo.pack(fill="x", pady=(14, 0))
+        self._doomguy(topo)
+        esq_t = tk.Frame(topo, bg=BG)
+        esq_t.pack(side="left", anchor="w", padx=18)
+        tk.Label(esq_t, text="ESTEIRA", bg=BG, fg=ACC, font=F_TIT).pack(
+            anchor="w")
+        tk.Label(esq_t, text="um video-fonte entra · os prompts do Veo saem · "
+                             "a unica etapa com modelo acontece no seu chat",
+                 bg=BG, fg=MUTED, font=F_UI).pack(anchor="w")
 
         corpo = tk.Frame(self, bg=BG)
         corpo.pack(fill="both", expand=True, padx=18, pady=8)
@@ -80,14 +110,48 @@ class App(tk.Tk):
 
         # ---- 1 -------------------------------------------------------
         self._sec(esq, "1", "O VIDEO-FONTE")
+        # ⭐ A URL vem PRIMEIRO porque e' o caminho que o operador mais usa:
+        # ele acha o reel no navegador, copia o link e quer o pipeline andando.
+        # Escolher arquivo continua ali para o que ja' esta' em disco.
+        self.ent_url = tk.Entry(esq, bg=PANEL, fg=FG, font=F_UI, relief="flat",
+                                insertbackground=FG)
+        self.ent_url.pack(fill="x", ipady=6)
+        self.ent_url.insert(0, "cole a URL do video aqui…")
+        self.ent_url.bind("<FocusIn>", self._limpar_url)
+        self.ent_url.bind("<Return>", lambda e: self.baixar())
+
+        # ⛔⛔ COOKIE NUNCA E' COLADO. Ou o yt-dlp le' a sessao do navegador no
+        # disco do operador, ou ele aponta um cookies.txt que ele mesmo
+        # exportou. O valor nao passa por aqui, nao vai para log e nao entra em
+        # commit. Em 2026-08-16 ele colou cookie de sessao numa conversa — este
+        # campo existe para que o caminho FACIL seja tambem o seguro.
+        lc = tk.Frame(esq, bg=BG)
+        lc.pack(fill="x", pady=(6, 0))
+        tk.Label(lc, text="cookies:", bg=BG, fg=MUTED, font=F_UI).pack(
+            side="left")
+        self.cb_cook = ttk.Combobox(
+            lc, width=16, state="readonly",
+            values=["não precisa", "do Chrome", "do Edge", "do Firefox",
+                    "arquivo cookies.txt…"])
+        self.cb_cook.set("não precisa")
+        self.cb_cook.pack(side="left", padx=6)
+        self.cb_cook.bind("<<ComboboxSelected>>", self._cookie_escolhido)
+        self.lb_cook = tk.Label(lc, text="", bg=BG, fg=MUTED, font=F_UI)
+        self.lb_cook.pack(side="left")
+        self.cookie_arq = ""
+
+        self._bt(esq, "BAIXAR E LER", self.baixar, True, 28).pack(
+            anchor="w", pady=6)
+
         self.lb_video = tk.Label(esq, text="nenhum video escolhido", bg=PANEL,
                                  fg=MUTED, font=F_UI, anchor="w", padx=10,
                                  pady=8, wraplength=400, justify="left")
         self.lb_video.pack(fill="x")
         lin = tk.Frame(esq, bg=BG)
         lin.pack(fill="x", pady=6)
-        self._bt(lin, "escolher video…", self.escolher).pack(side="left")
-        self._bt(lin, "LER  (local, sem token)", self.ler, True).pack(
+        self._bt(lin, "escolher arquivo…", self.escolher, w=18).pack(
+            side="left")
+        self._bt(lin, "LER  (local, sem token)", self.ler, True, 22).pack(
             side="left", padx=6)
 
         self.lb_takes = tk.Label(esq, text="", bg=BG, fg=FG, font=F_MONO,
@@ -159,6 +223,52 @@ class App(tk.Tk):
     def _st(self, txt, cor=MUTED):
         self.lb_status.config(text=txt, fg=cor)
         self.update_idletasks()
+
+    def _limpar_url(self, *_):
+        if self.ent_url.get().startswith("cole a URL"):
+            self.ent_url.delete(0, "end")
+
+    def _cookie_escolhido(self, *_):
+        if self.cb_cook.get().startswith("arquivo"):
+            p = filedialog.askopenfilename(
+                title="o cookies.txt que VOCE exportou",
+                filetypes=[("cookies", "*.txt"), ("todos", "*.*")])
+            self.cookie_arq = p or ""
+            self.lb_cook.config(
+                text=("  " + os.path.basename(p)) if p else "  (nenhum)")
+        else:
+            self.cookie_arq = ""
+            self.lb_cook.config(text="")
+
+    def _modo_cookie(self):
+        v = self.cb_cook.get()
+        if v.startswith("arquivo"):
+            return "arquivo", self.cookie_arq
+        if v.startswith("do "):
+            return "navegador", v.split()[-1]
+        return "nao", ""
+
+    def baixar(self):
+        url = self.ent_url.get().strip()
+        if not url or url.startswith("cole a URL"):
+            return self._st("cole uma URL primeiro", ERRO)
+        self._st("baixando…")
+        threading.Thread(target=self._baixar_worker, args=(url,),
+                         daemon=True).start()
+
+    def _baixar_worker(self, url):
+        try:
+            import baixar as B
+            modo, val = self._modo_cookie()
+            dest = os.path.join(L.SAIDA, B.PASTA)
+            p = B.baixar(url, dest, modo, val, progresso=lambda m: self._st(m))
+            self.video = p
+            self.lb_video.config(text=p, fg=FG)
+            self._st("baixado. Lendo…", OK)
+            # ⭐ emenda direta na etapa 1: o operador pediu UM clique, nao dois.
+            self._ler_worker()
+        except Exception as e:  # noqa: BLE001
+            self._st("nao baixou: %s" % e, ERRO)
 
     def escolher(self):
         p = filedialog.askopenfilename(
