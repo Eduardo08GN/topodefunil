@@ -800,6 +800,38 @@ passo (criar app → domínio → deploy → validar → DNS). Não reinvente �
 Inventário atual de domínios e apps:
 [`funil-organico/bridge-pages-deploy.md`](funil-organico/bridge-pages-deploy.md)
 
+## ⭐⭐ A ESTEIRA — o segundo pipeline (2026-08-20)
+
+[`esteira/`](esteira/README.md) — **um vídeo-fonte entra, os prompts do Veo
+saem.** ⛔ **Não substitui os agentes e não é uma versão pobre deles:** motor
+gera **lote** variado de um ângulo validado (pool, ledger, lente, autoteste);
+a esteira gera **um vídeo parecido com um vídeo**. Escala repertório, não
+volume. As duas convivem.
+
+⭐ **A arquitetura é desenhada em volta do CUSTO DE TOKEN**, por ordem do
+operador (*"mês que vem vou pegar o plano básico"*):
+
+| etapa | onde roda | token |
+|---|---|---|
+| 1 · `ler.py` | o PC dele | **zero** |
+| 2 · a leitura | **no chat do navegador** | ~4-5k por vídeo |
+| 3 · `gerar.py` | o PC dele | **zero** |
+
+⛔⛔ **E o prompt final não é escrito por modelo nenhum.** Se fosse, cada vídeo
+custaria 4-5× mais e traria de volta, um por um, os defeitos já pagos em campo:
+aparelho na mão do personagem, `not a celebrity`, bloco estourando os 4.000 da
+AdBatch, fala maior que o take. Cada um virou uma linha do `gerar.py` — **o
+modelo descreve o que vê; a montagem é código**, e código não regride.
+
+⭐ **O limiar de corte é MEDIDO**, contra os 14 cortes que a leitura ótica de
+16/08 achou nos 7 vídeos: `0.30` acha 8 de 14, `0.12` acha **14 de 14** com 2
+falsos, `0.05` acha tudo com 30 falsos. ⚠️ **Perder corte é pior que inventar
+um** — o take vira dois planos colados num prompt só. Medido em **67 vídeos:
+zero falha, mediana de 4 takes, 0,5s de detecção por vídeo**.
+
+App tkinter + `.exe` em `Desktop\agentes_py\ESTEIRA\` (508 MB porque leva o
+`faster-whisper` dentro, que é o preço de transcrever offline).
+
 ## Onde as coisas ficam
 
 - **App offline dos agentes (motor + tkinter + .exe):** [`funil-organico/RUNBOOK-app-offline.md`](funil-organico/RUNBOOK-app-offline.md).
