@@ -1,0 +1,310 @@
+# -*- coding: utf-8 -*-
+"""ESTEIRA — o app offline. Video-fonte entra, prompts do Veo saem.
+
+⛔ A UNICA etapa que precisa de modelo e' a 2, e ela acontece NO SEU CHAT: o
+app te da' o pedido pronto e a folha de contato, voce cola la', e traz o JSON
+de volta. O app nao fala com nenhuma API — nao ha' chave, nao ha' rede, nao ha'
+token gasto aqui dentro.
+
+⚠️ Isto NAO substitui os agentes. Motor gera LOTE de um angulo validado; esta
+esteira gera UM video parecido com UM video. Escala repertorio, nao volume.
+"""
+import io
+import json
+import os
+import subprocess
+import sys
+import threading
+import tkinter as tk
+from tkinter import filedialog, ttk
+
+if getattr(sys, "frozen", False):
+    AQUI = os.path.dirname(sys.executable)
+else:
+    AQUI = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, AQUI)
+
+import gerar as G   # noqa: E402
+import ler as L     # noqa: E402
+
+BG, PANEL, LINE = "#15171a", "#1c1f24", "#2b3038"
+FG, MUTED, ACC = "#e6e8eb", "#8b929c", "#ff6a2b"
+OK, ERRO = "#4ec86f", "#ff5c5c"
+F_TIT = ("Segoe UI", 17, "bold")
+F_UI = ("Segoe UI", 10)
+F_MONO = ("Consolas", 9)
+
+
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("ESTEIRA by Eddie  ·  video-fonte -> prompts do Veo")
+        self.configure(bg=BG)
+        self.geometry("1180x820")
+        self.video = None
+        self.slug = None
+        self._ui()
+
+    # ------------------------------------------------------------------
+    def _sec(self, pai, n, txt):
+        f = tk.Frame(pai, bg=BG)
+        f.pack(fill="x", pady=(14, 6))
+        tk.Label(f, text=" %s " % n, bg=ACC, fg="#fff",
+                 font=("Segoe UI", 10, "bold")).pack(side="left")
+        tk.Label(f, text="  " + txt, bg=BG, fg=FG,
+                 font=("Segoe UI", 11, "bold")).pack(side="left")
+        return f
+
+    def _bt(self, pai, txt, cmd, destaque=False, w=22):
+        b = tk.Button(pai, text=txt, command=cmd, width=w, relief="flat",
+                      bg=ACC if destaque else PANEL,
+                      fg="#fff" if destaque else FG, font=F_UI,
+                      activebackground=ACC, activeforeground="#fff",
+                      cursor="hand2", pady=6, bd=0)
+        return b
+
+    def _ui(self):
+        tk.Label(self, text="ESTEIRA", bg=BG, fg=ACC, font=F_TIT).pack(
+            anchor="w", padx=18, pady=(14, 0))
+        tk.Label(self, text="um video-fonte entra · os prompts do Veo saem · "
+                            "a unica etapa com modelo acontece no seu chat",
+                 bg=BG, fg=MUTED, font=F_UI).pack(anchor="w", padx=18)
+
+        corpo = tk.Frame(self, bg=BG)
+        corpo.pack(fill="both", expand=True, padx=18, pady=8)
+        esq = tk.Frame(corpo, bg=BG, width=430)
+        esq.pack(side="left", fill="y")
+        esq.pack_propagate(False)
+        dir_ = tk.Frame(corpo, bg=BG)
+        dir_.pack(side="left", fill="both", expand=True, padx=(14, 0))
+
+        # ---- 1 -------------------------------------------------------
+        self._sec(esq, "1", "O VIDEO-FONTE")
+        self.lb_video = tk.Label(esq, text="nenhum video escolhido", bg=PANEL,
+                                 fg=MUTED, font=F_UI, anchor="w", padx=10,
+                                 pady=8, wraplength=400, justify="left")
+        self.lb_video.pack(fill="x")
+        lin = tk.Frame(esq, bg=BG)
+        lin.pack(fill="x", pady=6)
+        self._bt(lin, "escolher video…", self.escolher).pack(side="left")
+        self._bt(lin, "LER  (local, sem token)", self.ler, True).pack(
+            side="left", padx=6)
+
+        self.lb_takes = tk.Label(esq, text="", bg=BG, fg=FG, font=F_MONO,
+                                 anchor="w", justify="left")
+        self.lb_takes.pack(fill="x")
+
+        # ---- 2 -------------------------------------------------------
+        self._sec(esq, "2", "A LEITURA — no seu chat")
+        tk.Label(esq, text="Cole o pedido + a folha no chat. Traga o JSON de "
+                           "volta e cole abaixo.",
+                 bg=BG, fg=MUTED, font=F_UI, anchor="w",
+                 wraplength=410, justify="left").pack(fill="x")
+        lin2 = tk.Frame(esq, bg=BG)
+        lin2.pack(fill="x", pady=6)
+        self._bt(lin2, "copiar PEDIDO", self.copiar_pedido).pack(side="left")
+        self._bt(lin2, "abrir a folha", self.abrir_folha).pack(
+            side="left", padx=6)
+
+        self.tx_mapa = tk.Text(esq, height=9, bg=PANEL, fg=FG, font=F_MONO,
+                               insertbackground=FG, relief="flat", padx=8,
+                               pady=6, wrap="word")
+        self.tx_mapa.pack(fill="x")
+        self._bt(esq, "salvar o mapa e conferir", self.salvar_mapa).pack(
+            anchor="w", pady=6)
+
+        # ---- 3 -------------------------------------------------------
+        self._sec(esq, "3", "OS PROMPTS")
+        lin3 = tk.Frame(esq, bg=BG)
+        lin3.pack(fill="x")
+        tk.Label(lin3, text="takes:", bg=BG, fg=MUTED, font=F_UI).pack(
+            side="left")
+        self.cb_takes = ttk.Combobox(lin3, values=["fonte", "2", "3"],
+                                     width=7, state="readonly")
+        self.cb_takes.set("fonte")
+        self.cb_takes.pack(side="left", padx=6)
+        self.v_modo = tk.StringVar(value="nosso")
+        for t, v in (("nosso CTA", "nosso"), ("fiel a fonte", "fiel")):
+            tk.Radiobutton(lin3, text=t, value=v, variable=self.v_modo, bg=BG,
+                           fg=FG, selectcolor=PANEL, font=F_UI,
+                           activebackground=BG, activeforeground=ACC).pack(
+                side="left")
+        self._bt(esq, "GERAR OS PROMPTS", self.gerar, True).pack(
+            anchor="w", pady=8)
+
+        self.lb_status = tk.Label(esq, text="", bg=BG, fg=MUTED, font=F_UI,
+                                  anchor="w", wraplength=410, justify="left")
+        self.lb_status.pack(fill="x")
+
+        # ---- saida ---------------------------------------------------
+        tk.Label(dir_, text="BLOCOS PARA A ADBATCH / VEO", bg=BG, fg=FG,
+                 font=("Segoe UI", 11, "bold")).pack(anchor="w", pady=(14, 6))
+        self.lst = tk.Listbox(dir_, bg=PANEL, fg=FG, font=F_MONO, height=8,
+                              relief="flat", selectbackground=ACC,
+                              highlightthickness=0)
+        self.lst.pack(fill="x")
+        self.lst.bind("<<ListboxSelect>>", self.mostrar)
+        b = tk.Frame(dir_, bg=BG)
+        b.pack(fill="x", pady=6)
+        self._bt(b, "COPIAR ESTE BLOCO", self.copiar_bloco, True).pack(
+            side="left")
+        self._bt(b, "copiar TUDO", self.copiar_tudo).pack(side="left", padx=6)
+        self.tx_out = tk.Text(dir_, bg=PANEL, fg=FG, font=F_MONO, relief="flat",
+                              padx=10, pady=8, wrap="word",
+                              insertbackground=FG)
+        self.tx_out.pack(fill="both", expand=True)
+        self.blocos = {}
+
+    # ------------------------------------------------------------------
+    def _st(self, txt, cor=MUTED):
+        self.lb_status.config(text=txt, fg=cor)
+        self.update_idletasks()
+
+    def escolher(self):
+        p = filedialog.askopenfilename(
+            title="o video-fonte",
+            filetypes=[("video", "*.mp4 *.mov *.webm *.mkv"), ("todos", "*.*")])
+        if p:
+            self.video = p
+            self.lb_video.config(text=p, fg=FG)
+
+    def ler(self):
+        if not self.video:
+            return self._st("escolha um video primeiro", ERRO)
+        self._st("lendo… (corte de cena, folha e transcricao — pode levar "
+                 "um minuto)")
+        threading.Thread(target=self._ler_worker, daemon=True).start()
+
+    def _ler_worker(self):
+        try:
+            r = subprocess.run(
+                [sys.executable, os.path.join(AQUI, "ler.py"), self.video]
+                if not getattr(sys, "frozen", False) else None,
+                capture_output=True, text=True) if False else None
+            # ⛔ chamada DIRETA, sem subprocesso: congelado no `.exe` nao ha'
+            # `python.exe` para chamar, e um subprocesso invisivel seria um
+            # modo de falha que so' aparece na maquina do operador.
+            slug = L._slug(self.video)
+            dest = os.path.join(L.SAIDA, slug)
+            os.makedirs(dest, exist_ok=True)
+            dur = L.duracao(self.video)
+            cs = L.cortes(self.video)
+            tks = L.takes(dur, cs)
+            L.folha(self.video, tks, dest)
+            segs = L.transcrever(self.video)
+            falas = L.alinhar(tks, segs)
+            io.open(os.path.join(dest, "dossie.json"), "w",
+                    encoding="utf-8").write(json.dumps(
+                        {"slug": slug, "arquivo": self.video,
+                         "duracao": round(dur, 2), "cortes": cs,
+                         "takes": [{"i": i + 1, "t0": round(x, 2),
+                                    "t1": round(y, 2), "fala": falas[i]}
+                                   for i, (x, y) in enumerate(tks)],
+                         "transcricao": segs}, indent=1, ensure_ascii=False))
+            tabela = ("| take | de/ate | duracao |\n|---|---|---|\n"
+                      + "\n".join("| take %d | %.1fs a %.1fs | %.1fs |"
+                                  % (i + 1, x, y, y - x)
+                                  for i, (x, y) in enumerate(tks)))
+            blocos = "\n".join("**take %d** (%.1fs a %.1fs): %s"
+                               % (i + 1, tks[i][0], tks[i][1],
+                                  falas[i] or "_(sem fala)_")
+                               for i in range(len(tks)))
+            io.open(os.path.join(dest, "PEDIDO.md"), "w",
+                    encoding="utf-8").write(L.PEDIDO.format(
+                        slug=slug, n=len(tks), tabela=tabela,
+                        q=len(tks) * 4, por=4, falas=blocos))
+            self.slug = slug
+            self.lb_takes.config(text="\n".join(
+                "take %d   %5.1fs -> %5.1fs   %s"
+                % (i + 1, x, y, (falas[i][:44] + "…") if len(falas[i]) > 44
+                   else falas[i]) for i, (x, y) in enumerate(tks)))
+            self._st("lido: %d take(s). Agora a etapa 2." % len(tks), OK)
+        except Exception as e:  # noqa: BLE001
+            self._st("falhou: %s" % e, ERRO)
+
+    def _pasta(self):
+        return os.path.join(L.SAIDA, self.slug) if self.slug else None
+
+    def copiar_pedido(self):
+        d = self._pasta()
+        if not d:
+            return self._st("leia um video antes", ERRO)
+        self.clipboard_clear()
+        self.clipboard_append(io.open(os.path.join(d, "PEDIDO.md"),
+                                      encoding="utf-8").read())
+        self._st("pedido copiado — cole no chat JUNTO com a folha.jpg", OK)
+
+    def abrir_folha(self):
+        d = self._pasta()
+        if d:
+            os.startfile(os.path.join(d, "folha.jpg"))  # noqa: S606
+
+    def salvar_mapa(self):
+        d = self._pasta()
+        if not d:
+            return self._st("leia um video antes", ERRO)
+        bruto = self.tx_mapa.get("1.0", "end").strip()
+        # ⭐ o chat costuma devolver o JSON dentro de uma cerca ```json
+        bruto = bruto.replace("```json", "").replace("```", "").strip()
+        try:
+            m = json.loads(bruto)
+        except Exception as e:  # noqa: BLE001
+            return self._st("nao e' JSON valido: %s" % e, ERRO)
+        n = len(json.load(io.open(os.path.join(d, "dossie.json"),
+                                  encoding="utf-8"))["takes"])
+        if len(m.get("takes", [])) != n:
+            return self._st("o mapa tem %d take(s) e o video tem %d"
+                            % (len(m.get("takes", [])), n), ERRO)
+        io.open(os.path.join(d, "mapa.json"), "w", encoding="utf-8").write(
+            json.dumps(m, indent=1, ensure_ascii=False))
+        self._st("mapa salvo, %d take(s) conferidos" % n, OK)
+
+    def gerar(self):
+        d = self._pasta()
+        if not d or not os.path.exists(os.path.join(d, "mapa.json")):
+            return self._st("falta o mapa.json — etapa 2", ERRO)
+        mapa = json.load(io.open(os.path.join(d, "mapa.json"), encoding="utf-8"))
+        dossie = json.load(io.open(os.path.join(d, "dossie.json"),
+                                   encoding="utf-8"))
+        self.blocos, avisos = G.montar(mapa, dossie, self.v_modo.get(),
+                                       self.cb_takes.get())
+        io.open(os.path.join(d, "prompts.txt"), "w", encoding="utf-8").write(
+            "\n\n".join(self.blocos.values()))
+        self.lst.delete(0, "end")
+        for k, v in self.blocos.items():
+            self.lst.insert("end", "%-16s %5d chars%s"
+                            % (k, len(v), "  ESTOURA" if len(v) > G.TETO_BLOCO
+                               else ""))
+        self.lst.selection_set(0)
+        self.mostrar()
+        self._st(("%d bloco(s) gerados" % len(self.blocos)) +
+                 ((" · %d aviso(s): %s" % (len(avisos), " | ".join(avisos)))
+                  if avisos else " · sem avisos"),
+                 ERRO if avisos else OK)
+
+    def mostrar(self, *_):
+        s = self.lst.curselection()
+        if not s:
+            return
+        k = list(self.blocos)[s[0]]
+        self.tx_out.delete("1.0", "end")
+        self.tx_out.insert("1.0", self.blocos[k])
+
+    def copiar_bloco(self):
+        s = self.lst.curselection()
+        if not s:
+            return
+        self.clipboard_clear()
+        self.clipboard_append(list(self.blocos.values())[s[0]])
+        self._st("bloco copiado", OK)
+
+    def copiar_tudo(self):
+        if not self.blocos:
+            return
+        self.clipboard_clear()
+        self.clipboard_append("\n\n".join(self.blocos.values()))
+        self._st("todos os blocos copiados", OK)
+
+
+if __name__ == "__main__":
+    App().mainloop()
