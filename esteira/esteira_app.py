@@ -359,7 +359,13 @@ class App(tk.Tk):
             self._passo("2/4 · procurando os cortes de cena…", 12)
             cs = L.cortes(self.video)
             tks = L.takes(dur, cs)
-            self._passo("3/4 · montando a folha (%d take(s))…" % len(tks), 25)
+            # ⛔ COLAPSA ANTES da folha e do pedido: o modelo so' descreve
+            # o que vai virar prompt. Ver `ler.colapsar`.
+            bruto = len(tks)
+            tks = L.colapsar(tks, self.cb_takes.get())
+            extra = ("  (%d cortes da fonte -> %d take(s))"
+                     % (bruto, len(tks))) if bruto != len(tks) else ""
+            self._passo("3/4 · montando a folha%s…" % extra, 25)
             L.folha(self.video, tks, dest)
             self._passo("4/4 · transcrevendo a fala…", 40)
             segs = L.transcrever(

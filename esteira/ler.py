@@ -155,6 +155,43 @@ def takes(dur, cs, minimo=1.2):
             if bordas[i + 1] - bordas[i] >= minimo]
 
 
+def colapsar(tks, alvo):
+    """Junta os cortes da fonte no numero de takes que se vai GERAR.
+
+    ⛔⛔ ISTO ACONTECE ANTES DA FOLHA E DO PEDIDO, e essa ordem e' o conserto
+    de um desperdicio medido em 2026-08-20. Um reel de 38s deu TREZE cortes; a
+    folha saia com 52 quadros e o pedido mandava descrever treze cenas — mas
+    quem gera usa DUAS ou TRES. O ambiente, o gesto, a camera e a luz dos
+    outros dez eram descritos e jogados fora.
+    ⭐ Colapsando antes, o modelo descreve so' o que vai virar prompt: 52
+    quadros viram 12.
+
+    ⛔⛔ E A DIVISAO E' POR TEMPO, NAO POR INDICE DE CORTE. Pegar os N-1
+    primeiros cortes parecia obvio e produzia lixo naquele mesmo reel:
+    `0-1.6s`, `1.6-6.1s` e `6.1-38.7s` — dois takes minusculos e um de trinta
+    e dois segundos, porque a fonte abre com micro-cortes. Aqui o video e'
+    dividido em N tempos iguais e cada fronteira ENCOSTA no corte real mais
+    proximo, entao os takes saem parelhos E as bordas continuam caindo em
+    corte de verdade, nunca no meio de um plano.
+    """
+    if alvo in (None, "fonte"):
+        return tks
+    n = int(alvo)
+    if len(tks) <= n:
+        return tks
+    fim = tks[-1][1]
+    bordas = [b for _, b in tks[:-1]]          # os cortes disponiveis
+    escolhidas = []
+    for k in range(1, n):
+        alvo_t = fim * k / n
+        perto = min(bordas, key=lambda b: abs(b - alvo_t))
+        if perto not in escolhidas:
+            escolhidas.append(perto)
+    escolhidas.sort()
+    pontos = [0.0] + escolhidas + [fim]
+    return [(pontos[i], pontos[i + 1]) for i in range(len(pontos) - 1)]
+
+
 def folha(p, tks, dest, por_take=4):
     """A folha de contato: quadros AMARRADOS aos takes, nao espalhados no tempo.
 
