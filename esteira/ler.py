@@ -38,13 +38,31 @@ O QUE ESTA ETAPA FAZ, tudo deterministico:
 import argparse
 import hashlib
 import io
+
+# ⛔ ANTES DE QUALQUER SUBPROCESSO: num build --windowed cada filho
+# abre a propria janela de console no Windows. Inclusive os que o
+# yt-dlp dispara, que ele nao esconde.
+try:
+    import sem_janela
+    sem_janela.aplicar()
+except Exception:  # noqa: BLE001
+    pass
 import json
 import os
 import re
 import subprocess
 import sys
 
-AQUI = os.path.dirname(os.path.abspath(__file__))
+# ⛔⛔ CONGELADO, `__file__` APONTA PARA A PASTA TEMPORARIA DO PYINSTALLER
+# (`...\Temp\_MEIxxxxx`), QUE E' APAGADA AO FECHAR O APP. Sem esta
+# ancora, dossie, folha, PEDIDO, mapa e prompts iam todos para um lugar
+# que evapora — o operador viu o caminho `_MEI154002` no painel em
+# 2026-08-20. E' o mesmo gotcha que o RUNBOOK-app-offline ja' registra
+# para o ledger dos agentes, e que eu nao apliquei aqui.
+if getattr(sys, "frozen", False):
+    AQUI = os.path.dirname(sys.executable)
+else:
+    AQUI = os.path.dirname(os.path.abspath(__file__))
 SAIDA = os.path.join(AQUI, "saida")
 FONTE_TTF = "C\\:/Windows/Fonts/arialbd.ttf"
 
@@ -174,12 +192,25 @@ def folha(p, tks, dest, por_take=4):
     return alvo, tempos
 
 
-def transcrever(p):
+def transcrever(p, progresso=None, dur=0.0):
+    """⭐ O `progresso` existe porque esta e' a etapa LONGA (dezenas de
+    segundos). O `faster_whisper` devolve um GERADOR, entao da' para
+    reportar a cada segmento — e o segmento traz o tempo dele, o que
+    permite uma porcentagem REAL contra a duracao, e nao uma barra que
+    finge andar.
+    """
     from faster_whisper import WhisperModel
     m = WhisperModel("small.en", device="cpu", compute_type="int8")
-    segs, _ = m.transcribe(p, language="en", beam_size=5, vad_filter=True)
-    return [{"t0": round(s.start, 2), "t1": round(s.end, 2),
-             "txt": s.text.strip()} for s in segs]
+    segs, info = m.transcribe(p, language="en", beam_size=5,
+                              vad_filter=True)
+    total = dur or getattr(info, "duration", 0.0) or 0.0
+    saida = []
+    for x in segs:
+        saida.append({"t0": round(x.start, 2), "t1": round(x.end, 2),
+                      "txt": x.text.strip()})
+        if progresso and total:
+            progresso(min(99, int(100 * x.end / total)))
+    return saida
 
 
 def alinhar(tks, segs):

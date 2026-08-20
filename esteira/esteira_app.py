@@ -12,6 +12,15 @@ esteira gera UM video parecido com UM video. Escala repertorio, nao volume.
 import io
 import json
 import os
+
+# ⛔ ANTES DE QUALQUER SUBPROCESSO: num build --windowed cada filho
+# abre a propria janela de console no Windows. Inclusive os que o
+# yt-dlp dispara, que ele nao esconde.
+try:
+    import sem_janela
+    sem_janela.aplicar()
+except Exception:  # noqa: BLE001
+    pass
 import subprocess
 import sys
 import threading
@@ -28,6 +37,14 @@ import gerar as G   # noqa: E402
 import ler as L     # noqa: E402
 
 BG, PANEL, LINE = "#15171a", "#1c1f24", "#2b3038"
+# ⛔ A FAIXA DO CABECALHO E' A COR EXATA DO CANTO DO PNG DO DOOMGUY.
+# Medido no proprio arquivo (`f0.png`, pixel 0,0): #0C0C0A. Sobre o `BG`
+# do app (#15171A) aquele preto virava um RECORTE visivel em volta da
+# carinha — foi o que o operador apontou. ⚠️ Recolorir o PNG nao servia:
+# o desenho tem preto proprio no contorno e na sombra, entao trocar preto
+# por BG comeria o traco. Mais barato e mais honesto e' o fundo ir ate'
+# a imagem, e nao a imagem ate' o fundo.
+CABEC = "#0c0c0a"
 FG, MUTED, ACC = "#e6e8eb", "#8b929c", "#ff6a2b"
 OK, ERRO = "#4ec86f", "#ff5c5c"
 F_TIT = ("Segoe UI", 17, "bold")
@@ -74,8 +91,8 @@ class App(tk.Tk):
             qs = doomguy.carregar(tk)
             if not qs:
                 return
-            lb = tk.Label(pai, bg=BG, bd=0)
-            lb.pack(side="right", padx=(0, 22))
+            lb = tk.Label(pai, bg=CABEC, bd=0)
+            lb.pack(side="right", padx=(0, 22), pady=6)
             self._dg = qs                       # segura a referencia
             self._dg_i = 0
 
@@ -89,16 +106,18 @@ class App(tk.Tk):
             pass
 
     def _ui(self):
-        topo = tk.Frame(self, bg=BG)
-        topo.pack(fill="x", pady=(14, 0))
+        # ⭐ A faixa atravessa a janela inteira: meio-preto so' atras da
+        # figura leria como remendo. Banda inteira le' como cabecalho.
+        topo = tk.Frame(self, bg=CABEC)
+        topo.pack(fill="x")
         self._doomguy(topo)
-        esq_t = tk.Frame(topo, bg=BG)
-        esq_t.pack(side="left", anchor="w", padx=18)
-        tk.Label(esq_t, text="ESTEIRA", bg=BG, fg=ACC, font=F_TIT).pack(
-            anchor="w")
+        esq_t = tk.Frame(topo, bg=CABEC)
+        esq_t.pack(side="left", anchor="w", padx=18, pady=10)
+        tk.Label(esq_t, text="ESTEIRA", bg=CABEC, fg=ACC,
+                 font=F_TIT).pack(anchor="w")
         tk.Label(esq_t, text="um video-fonte entra · os prompts do Veo saem · "
                              "a unica etapa com modelo acontece no seu chat",
-                 bg=BG, fg=MUTED, font=F_UI).pack(anchor="w")
+                 bg=CABEC, fg=MUTED, font=F_UI).pack(anchor="w")
 
         corpo = tk.Frame(self, bg=BG)
         corpo.pack(fill="both", expand=True, padx=18, pady=8)
@@ -143,6 +162,17 @@ class App(tk.Tk):
         self._bt(esq, "BAIXAR E LER", self.baixar, True, 28).pack(
             anchor="w", pady=6)
 
+        # ⭐ A BARRA E O PASSO. As etapas locais levam dezenas de segundos
+        # (a transcricao e' a longa) e ate' agora o operador so' via uma
+        # linha de texto mudando — sem nocao de quanto falta nem de qual
+        # das quatro sub-etapas esta' rodando. A barra e' DETERMINADA em
+        # todas: nenhuma delas finge andar.
+        self.pb = ttk.Progressbar(esq, mode="determinate", maximum=100)
+        self.pb.pack(fill="x")
+        self.lb_passo = tk.Label(esq, text="", bg=BG, fg=MUTED, font=F_UI,
+                                 anchor="w")
+        self.lb_passo.pack(fill="x")
+
         self.lb_video = tk.Label(esq, text="nenhum video escolhido", bg=PANEL,
                                  fg=MUTED, font=F_UI, anchor="w", padx=10,
                                  pady=8, wraplength=400, justify="left")
@@ -183,9 +213,14 @@ class App(tk.Tk):
         lin3.pack(fill="x")
         tk.Label(lin3, text="takes:", bg=BG, fg=MUTED, font=F_UI).pack(
             side="left")
-        self.cb_takes = ttk.Combobox(lin3, values=["fonte", "2", "3"],
+        self.cb_takes = ttk.Combobox(lin3, values=["3", "2", "fonte"],
                                      width=7, state="readonly")
-        self.cb_takes.set("fonte")
+        # ⭐ O PADRAO E' 3, NAO `fonte`, e isso saiu da primeira rodada
+        # real (2026-08-20): um reel de 38s da fonte devolveu DOZE takes,
+        # o que com `fonte` viraria 12 IMAGE + 12 TAKE — vinte e quatro
+        # prompts para UM video. O nosso funil so' tem dois formatos (2 e
+        # 3 takes), entao `fonte` e' a opcao de ESTUDO e nao a de uso.
+        self.cb_takes.set("3")
         self.cb_takes.pack(side="left", padx=6)
         self.v_modo = tk.StringVar(value="nosso")
         for t, v in (("nosso CTA", "nosso"), ("fiel a fonte", "fiel")):
@@ -220,6 +255,20 @@ class App(tk.Tk):
         self.blocos = {}
 
     # ------------------------------------------------------------------
+    def _passo(self, txt, pct=None):
+        """Um lugar so' para mexer barra e rotulo — chamado das threads.
+
+        ⚠️ `pct=None` deixa a barra como esta': serve para trocar so' o
+        texto do passo sem a barra dar um pulo para tras.
+        """
+        try:
+            if pct is not None:
+                self.pb["value"] = max(0, min(100, pct))
+            self.lb_passo.config(text=txt)
+            self.update_idletasks()
+        except Exception:  # noqa: BLE001
+            pass
+
     def _st(self, txt, cor=MUTED):
         self.lb_status.config(text=txt, fg=cor)
         self.update_idletasks()
@@ -261,7 +310,15 @@ class App(tk.Tk):
             import baixar as B
             modo, val = self._modo_cookie()
             dest = os.path.join(L.SAIDA, B.PASTA)
-            p = B.baixar(url, dest, modo, val, progresso=lambda m: self._st(m))
+            def _prog(m):
+                self._st(m)
+                # ⭐ o texto do yt-dlp ja' traz a porcentagem: aproveita
+                # em vez de inventar uma barra paralela.
+                import re as _re
+                g = _re.search(r"(\d+)%", m)
+                self._passo("0/4 · baixando…",
+                            int(g.group(1)) if g else None)
+            p = B.baixar(url, dest, modo, val, progresso=_prog)
             self.video = p
             self.lb_video.config(text=p, fg=FG)
             self._st("baixado. Lendo…", OK)
@@ -297,12 +354,22 @@ class App(tk.Tk):
             slug = L._slug(self.video)
             dest = os.path.join(L.SAIDA, slug)
             os.makedirs(dest, exist_ok=True)
+            self._passo("1/4 · medindo o video…", 4)
             dur = L.duracao(self.video)
+            self._passo("2/4 · procurando os cortes de cena…", 12)
             cs = L.cortes(self.video)
             tks = L.takes(dur, cs)
+            self._passo("3/4 · montando a folha (%d take(s))…" % len(tks), 25)
             L.folha(self.video, tks, dest)
-            segs = L.transcrever(self.video)
+            self._passo("4/4 · transcrevendo a fala…", 40)
+            segs = L.transcrever(
+                self.video, dur=dur,
+                # ⭐ a transcricao ocupa a faixa de 40 a 98 da barra: e' a
+                # etapa mais longa, entao e' a que merece mais regua.
+                progresso=lambda p: self._passo(
+                    "4/4 · transcrevendo a fala… %d%%" % p, 40 + p * 58 // 100))
             falas = L.alinhar(tks, segs)
+            self._passo("pronto", 100)
             io.open(os.path.join(dest, "dossie.json"), "w",
                     encoding="utf-8").write(json.dumps(
                         {"slug": slug, "arquivo": self.video,
@@ -345,9 +412,22 @@ class App(tk.Tk):
         self._st("pedido copiado — cole no chat JUNTO com a folha.jpg", OK)
 
     def abrir_folha(self):
+        """⛔ Botao que nao faz nada E nao diz nada e' o pior dos dois.
+        Antes: sem video lido, `_pasta()` devolvia None e o clique morria
+        em silencio; e se o `startfile` falhasse, o erro ia para um stderr
+        que num build --windowed nao existe.
+        """
         d = self._pasta()
-        if d:
-            os.startfile(os.path.join(d, "folha.jpg"))  # noqa: S606
+        if not d:
+            return self._st("leia um video antes — etapa 1", ERRO)
+        f = os.path.join(d, "folha.jpg")
+        if not os.path.exists(f):
+            return self._st("a folha nao esta' em %s" % d, ERRO)
+        try:
+            os.startfile(f)  # noqa: S606
+            self._st("folha aberta no visualizador de imagens", OK)
+        except Exception as e:  # noqa: BLE001
+            self._st("nao consegui abrir: %s" % e, ERRO)
 
     def salvar_mapa(self):
         d = self._pasta()
@@ -387,6 +467,7 @@ class App(tk.Tk):
                                else ""))
         self.lst.selection_set(0)
         self.mostrar()
+        self._passo("prompts gerados", 100)
         self._st(("%d bloco(s) gerados" % len(self.blocos)) +
                  ((" · %d aviso(s): %s" % (len(avisos), " | ".join(avisos)))
                   if avisos else " · sem avisos"),

@@ -26,7 +26,16 @@ import os
 import re
 import sys
 
-AQUI = os.path.dirname(os.path.abspath(__file__))
+# ⛔⛔ CONGELADO, `__file__` APONTA PARA A PASTA TEMPORARIA DO PYINSTALLER
+# (`...\Temp\_MEIxxxxx`), QUE E' APAGADA AO FECHAR O APP. Sem esta
+# ancora, dossie, folha, PEDIDO, mapa e prompts iam todos para um lugar
+# que evapora — o operador viu o caminho `_MEI154002` no painel em
+# 2026-08-20. E' o mesmo gotcha que o RUNBOOK-app-offline ja' registra
+# para o ledger dos agentes, e que eu nao apliquei aqui.
+if getattr(sys, "frozen", False):
+    AQUI = os.path.dirname(sys.executable)
+else:
+    AQUI = os.path.dirname(os.path.abspath(__file__))
 SAIDA = os.path.join(AQUI, "saida")
 
 # ⛔ O teto de caractere e' o da ferramenta, nao gosto meu: o codigo da AdBatch

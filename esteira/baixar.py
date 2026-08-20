@@ -17,6 +17,15 @@ ele viaja dentro do nosso executavel e o operador nao precisa instalar nada.
 import os
 import re
 
+# ⛔ ANTES DE QUALQUER SUBPROCESSO: num build --windowed cada filho
+# abre a propria janela de console no Windows. Inclusive os que o
+# yt-dlp dispara, que ele nao esconde.
+try:
+    import sem_janela
+    sem_janela.aplicar()
+except Exception:  # noqa: BLE001
+    pass
+
 PASTA = "_baixados"
 
 
