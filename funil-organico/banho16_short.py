@@ -1243,9 +1243,14 @@ def montar(spec):
     # ⚠️ Saiu o `Nearest to the camera and in sharp focus` (foi ele que fez a
     # regua flutuar na frente) e saiu o `clear space around every object` (foi
     # ele que espalhou os itens).
-    voz = ("Voice: one calm, unhurried American man in his %ds, plain "
+    # ⛔ `unhurried` SAIU em 2026-08-20 — mesma ordem do operador e mesma
+    # razao do `banho16_3t`: pedir voz sem pressa e' pedir menos palavra
+    # dentro do mesmo take. `calm` e `matter-of-fact` ficam: eles descrevem
+    # o REGISTRO, nao a VELOCIDADE.
+    voz = ("Voice: one calm American man in his %ds, plain "
            "matter-of-fact delivery, slightly gravelly, speaking straight to "
-           "camera. The same voice in both takes." % ((spec["idade"] // 10) * 10))
+           "camera at the ordinary pace of everyday American speech, never stretching or slowing the words to fill the take. "
+           "The same voice in both takes." % ((spec["idade"] // 10) * 10))
 
     # ⛔ A GEOMETRIA DA AGUA, dita e nao proibida.
     # ⛔ AO FUNDO, e nao "afastada". O conserto anterior empurrou o jato para

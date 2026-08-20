@@ -1558,10 +1558,21 @@ def montar(spec):
     # homens diferentes lendo o mesmo texto.
     # ⭐ A idade entra na voz (nao so' a decada) porque e' o que amarra a voz
     # as' MAOS — os dois leem o mesmo `spec["idade"]`.
-    voz = ("Voice: one %d-year-old %s man, low baritone register, slow "
-           "deliberate cadence, slightly gravelly and quietly confident, "
-           "speaking straight to camera. Exactly the same voice in all three "
-           "takes." % (spec["idade"], spec["etnia"]))
+    # ⛔⛔ `slow deliberate cadence` SAIU em 2026-08-20, por ordem do
+    # operador: *"fala lenta = menos espaco de tempo pra copy = jogando
+    # tempo de copy falada que vale ouro fora no lixo"*.
+    # ⚠️ Medido: a voz dos nossos renders sai a 2,62 palavras/segundo
+    # contra 3,49 dos reels reais da fonte. A diferenca NAO era limite do
+    # gerador — era esta linha pedindo lentidao. Num take de 8s isso e'
+    # a diferenca entre 21 e 15 palavras faladas.
+    # ⛔ E a clausula que entra e' POSITIVA primeiro (ritmo normal) e so'
+    # depois nega o arrastar. E' copia da constante `RITMO` do
+    # `clean_v1_16s`, que e' string ja' validada em campo.
+    voz = ("Voice: one %d-year-old %s man, low baritone register, "
+           "slightly gravelly and quietly confident, speaking straight to "
+           "camera at the ordinary pace of everyday American speech, never stretching or slowing the words to fill the take. "
+           "Exactly the same voice in all three takes."
+           % (spec["idade"], spec["etnia"]))
 
     # ⛔ A GEOMETRIA DA AGUA, dita e nao proibida.
     # ⛔ AO FUNDO, e nao "afastada". O conserto anterior empurrou o jato para
