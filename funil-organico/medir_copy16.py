@@ -81,6 +81,9 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # + 2026-08-16: o gelaHORSE 16, da pagina Healthy
            # Men's Guide — 13 reels lidos e transcritos.
            "gelahorse16",
+           # + 2026-08-20: o RARO 16, a rota do ingrediente
+           # raro. ⛔ Ele NAO usa gelatina e fecha em `recipe`.
+           "raro16",
            # + 2026-08-16: o DESCARTE 16 — o frasco de receita virado sobre a
            # lata de lixo (v07 do lote de 16/08). Entra AQUI no commit em que
            # nasce, e nao desliga trava nenhuma: as sete travas valem inteiras.
@@ -192,6 +195,17 @@ DESLIGADAS = {
     # ------------------------------------------------------------------
     # VICK 16 — as tres, declaradas no commit em que o motor nasce
     # ------------------------------------------------------------------
+    ("raro16", "CT5"):
+        "o video E' a receita nomeada — sem o ingrediente na fala nao ha' "
+        "curiosidade nem autoridade, e sobra \"um po' qualquer\". ⛔ Aqui a "
+        "excecao nao e' hipotese como no PRATO/MEL: e' a razao de existir do "
+        "angulo, que o operador desenhou em volta do raro + o aposto + o "
+        "metodo de preparo.",
+    ("raro16", "CT4"):
+        "este angulo nao mostra corpo nenhum e nao nomeia orgao: a falha entra "
+        "pelo VERBO (`going soft`), que e' o que o CT2 cobra. Cota de apelido "
+        "num video de mesa de cozinha seria drifting invertido.",
+    ("raro16", "CT4b"): "idem CT4 — nao ha' apelido porque nao ha' orgao.",
     ("gelahorse16", "CT2"):
         "SETE dos dez hooks sao a familia SOCIAL da fonte (*\"my wife was about to "
         "leave me\"*, *\"I was losing my marriage\"*) — a falha e' enunciada pela "

@@ -344,6 +344,13 @@ EXCECOES = {
     ("banho16_short.py", "MAOS", "pelo_facial"): "idem BA — sem rosto",
     ("banho16_short.py", "MAOS", "oculos"): "idem BA — sem rosto",
     ("banho16_short.py", "MAOS", "pele"): "idem BA — pele de mao e' `ancora`",
+    # ⭐ RARO 16 (2026-08-20): pool de MAOS, pelo mesmo motivo dos BANHO —
+    # este angulo nao tem rosto nenhum em quadro, so' maos e antebracos.
+    # Barba e oculos nao existem por CONSTRUCAO, e a pele da mao mora no
+    # eixo `ancora`, que esta' em 60%.
+    ("raro16_short.py", "MAOS", "pelo_facial"): "so' maos em quadro",
+    ("raro16_short.py", "MAOS", "oculos"): "so' maos em quadro",
+    ("raro16_short.py", "MAOS", "pele"): "pele de mao e' `ancora`",
     ("banho16_v2_short.py", "MAOS", "cabelo"): "idem BA — herdado por copia",
     ("banho16_v2_short.py", "MAOS", "pelo_facial"): "idem BA — sem rosto",
     ("banho16_v2_short.py", "MAOS", "oculos"): "idem BA — sem rosto",
