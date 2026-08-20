@@ -829,7 +829,7 @@ falsos, `0.05` acha tudo com 30 falsos. ⚠️ **Perder corte é pior que invent
 um** — o take vira dois planos colados num prompt só. Medido em **67 vídeos:
 zero falha, mediana de 4 takes, 0,5s de detecção por vídeo**.
 
-App tkinter + `.exe` em `Desktop\agentes_py\ESTEIRA\` (508 MB porque leva o
+App tkinter + `.exe` em `Desktop\agentes_py\ESTEIRA\` (517 MB porque leva o
 `faster-whisper` dentro, que é o preço de transcrever offline).
 
 ## Onde as coisas ficam

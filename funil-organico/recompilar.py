@@ -48,14 +48,23 @@ def _chave(txt):
 
 
 def motores():
+    """⛔ NAO basta varrer `*_short_app.py`: o `clean_short_v2_app.py` nao
+    segue esse molde, e por isso o `CLEAN-SHORT-V2` saia como "sem motor
+    casado" — um `.exe` que a ferramenta NAO ENXERGA, que e' exatamente a
+    armadilha que ela existe para fechar. Aqui todo `*_app.py` entra, e o
+    motor e' procurado nas duas formas de nome.
+    """
     m = {}
     for f in os.listdir(AQUI):
-        if not f.endswith("_short_app.py"):
+        if not f.endswith("_app.py"):
             continue
-        nome = f[:-len("_short_app.py")]
-        motor = os.path.join(AQUI, nome + "_short.py")
-        if os.path.exists(motor):
-            m[_chave(nome)] = (nome, motor, os.path.join(AQUI, f))
+        base = f[:-len("_app.py")]
+        for cand in (base + ".py", base + "_short.py"):
+            motor = os.path.join(AQUI, cand)
+            if os.path.exists(motor):
+                nome = cand[:-3]
+                m[_chave(base)] = (nome, motor, os.path.join(AQUI, f))
+                break
     return m
 
 
@@ -97,7 +106,7 @@ def compilar(it):
     r = subprocess.run(
         [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean",
          "--onefile", "--windowed", "--name", alvo, "--paths", AQUI,
-         "--hidden-import", it["nome"] + "_short",
+         "--hidden-import", it["nome"],
          "--hidden-import", "short_comum", "--hidden-import", "ui_agente",
          "--distpath", os.path.join(tmp, "dist"),
          "--workpath", os.path.join(tmp, "build"),

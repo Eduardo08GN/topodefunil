@@ -77,14 +77,129 @@ ARQ_LOG := A_ScriptDir "\piloto-adbatch.log"
 ; O take tem de ser guardado no momento em que passa pela mao do piloto.
 DIR_ROT := A_ScriptDir "\roteiros"
 
-ALVOS := [
-    ["cr_roteiro", "a caixa 'Cole o roteiro inteiro...' (Roteiro Master)"],
-    ["cr_gerar",   "o botao 'Gerar Lote com Referencia'"],
-    ["cr_slot1",   "o MEIO do quadro cinza do SLOT 01"],
-    ["cr_slot2",   "o MEIO do quadro cinza do SLOT 02"],
-    ["cr_reger1",  "o botao REGERAR do SLOT 01"],
-    ["cr_reger2",  "o botao REGERAR do SLOT 02"],
-]
+;  ⭐⭐ O FORMATO DA BANCADA — Vertical 2 ou Vertical 3 (2026-08-20)
+; =============================================================================
+; Ordem do operador: *"selecionar se a montagem da bancada sera para abrir no
+; adbatch vertical 3, pra adaptar para a nova rota de 3 takes de 6 segundos"*.
+;
+; ⛔ NAO ERA SO' TROCAR A URL. Sete coisas dependiam do numero de takes, e a
+; que bloqueava de verdade era a CONFERENCIA DAS PARTES: ela procurava
+; `IMAGE 01/02` com o sufixo cravado, entao um roteiro do `banho16_3t` (que
+; emite `IMAGE 01/03`) era recusado antes de o piloto colar qualquer coisa.
+;
+; ⛔⛔ E A CALIBRACAO E' POR FORMATO, nunca compartilhada. O Vertical 3 tem
+; TRES colunas de slot onde o 2 tem duas: os pontos do `slot1` e do `reger1`
+; caem em lugares diferentes nos dois layouts. Uma secao so' no .ini faria
+; calibrar o V3 APAGAR a calibracao do V2 — e o operador so' descobriria com o
+; ponteiro clicando no vazio, com o credito ja' gasto.
+;   2 takes -> secao [pontos]   (a que ja' existe; a calibracao dele sobrevive)
+;   3 takes -> secao [pontos3]
+;
+; ⚠️ O id do Vertical 2 foi MEDIDO constante entre sessoes. O do Vertical 3 tem
+; UMA observacao. Os dois moram no .ini com estes valores como padrao: se o id
+; do V3 variar por projeto, o conserto e' uma linha no arquivo.
+
+TOOL_ADBATCH_V2 := "d882542c-72bd-4f73-81e1-472aa705775f"
+TOOL_ADBATCH_V3 := "89820f1d-1ec5-4fea-a1b1-1e5709a7634b"
+
+nTakes() {
+    global INI
+    n := IniRead(INI, "config", "takes", "2")
+    return (n = "3") ? 3 : 2
+}
+
+; ⛔ O sufixo dos blocos: `01/02` ou `01/03`. E' o que o agente escreve e o que
+; a conferencia procura — os dois TEM de sair da mesma funcao.
+sufTake() {
+    return (nTakes() = 3) ? "/03" : "/02"
+}
+
+; ⛔ A secao do .ini onde os pontos daquele formato moram.
+secPontos() {
+    return (nTakes() = 3) ? "pontos3" : "pontos"
+}
+
+nomeFormato() {
+    return (nTakes() = 3) ? "AdBatch Vertical 3" : "AdBatch Vertical 2"
+}
+
+toolAdbatch() {
+    global INI, TOOL_ADBATCH_V2, TOOL_ADBATCH_V3
+    if (nTakes() = 3)
+        return IniRead(INI, "ferramentas", "adbatch3", TOOL_ADBATCH_V3)
+    return IniRead(INI, "ferramentas", "adbatch2", TOOL_ADBATCH_V2)
+}
+
+; ⭐ `ALVOS` continua GLOBAL e continua sendo uma lista — todos os `for a in
+; ALVOS` do arquivo seguem funcionando sem tocar em nenhum deles. O que muda e'
+; que ela e' RECONSTRUIDA quando o formato troca.
+ALVOS := []
+
+montarAlvos() {
+    global ALVOS
+    ALVOS := [
+        ["cr_roteiro", "a caixa 'Cole o roteiro inteiro...' (Roteiro Master)"],
+        ["cr_gerar",   "o botao 'Gerar Lote com Referencia'"],
+    ]
+    loop nTakes() {
+        i := A_Index
+        ALVOS.Push(["cr_slot" i,  "o MEIO do quadro cinza do SLOT 0" i])
+    }
+    loop nTakes() {
+        i := A_Index
+        ALVOS.Push(["cr_reger" i, "o botao REGERAR do SLOT 0" i])
+    }
+}
+montarAlvos()
+
+; ⛔⛔ TROCAR DE FORMATO NAO APAGA A CALIBRACAO DO OUTRO — mas o formato
+; novo pode nunca ter sido calibrado, e rodar sem calibrar clica no vazio
+; GASTANDO CREDITO em silencio. Melhor dizer na hora da troca do que o
+; operador descobrir no render.
+trocarFormato(n) {
+    global INI, ALVOS
+    IniWrite((n = 3) ? "3" : "2", INI, "config", "takes")
+    montarAlvos()
+    if (IniRead(INI, secPontos(), "cr_gerar_x", "") != "")
+        return
+    msg := "Formato trocado para " nomeFormato() "."
+        . "`n`nEste formato AINDA NAO FOI CALIBRADO."
+        . "`nAperte F9 com o " nomeFormato() " aberto no Chrome antes de"
+        . " rodar — sao " ALVOS.Length " pontos."
+        . "`n`nA calibracao do outro formato continua guardada."
+    MsgBox(msg, "Video Terminator", "Icon!")
+}
+
+; ⭐ Os pares (slot, regerar) que a ronda percorre. Mesma fonte da verdade.
+paresDaRonda() {
+    pares := []
+    loop nTakes() {
+        i := A_Index
+        pares.Push(["cr_slot" i, "cr_reger" i])
+    }
+    return pares
+}
+
+; ⭐ As partes que o roteiro copiado TEM de ter. Cinco no V2, sete no V3.
+partesDoRoteiro() {
+    ; ⛔⛔ O `REF 01:` SO' E' COBRADO NO VERTICAL 2, e isso nao e' folga:
+    ; o `banho16_3t` e' o UNICO dos 44 motores sem `BLOCO 0 (REF)`, por
+    ; ordem do operador em 2026-08-14 testando o app: *"A imagem do bloco 0
+    ; desse agente e' completamente irrelevante, posso anexar direto a
+    ; imagem 1 como referencia"*. E ele esta' certo pela estrutura: a ancora
+    ; daquele angulo e' a MAO, que ja' aparece na IMAGE 01, na mesma luz.
+    ; Exigir REF aqui recusaria TODO roteiro de tres takes.
+    ; ⚠️ A guarda contra copia truncada continua inteira: sao as TRES IMAGE
+    ; e os TRES TAKE, conferidos um a um logo abaixo.
+    p := (nTakes() = 3) ? [] : ["REF 01:"]
+    loop nTakes() {
+        p.Push(Format("IMAGE 0{1}{2}", A_Index, sufTake()))
+    }
+    loop nTakes() {
+        p.Push(Format("TAKE 0{1}{2}", A_Index, sufTake()))
+    }
+    return p
+}
 
 ; =============================================================================
 ;  ⭐⭐ UMA CARA SO' PARA TODAS AS TELAS (2026-08-11)
@@ -298,24 +413,89 @@ global linhas := []
 ;   · o `respirar()` — a pausa longa e rara e' justamente o que quebra o padrao
 ;     de maquina, e encolhe-la desfaria o pedido anterior do operador;
 ;   · o espalhamento `esp` de cada pausa — o tremor continua o mesmo em %.
+; ⭐⭐ E DESDE 2026-08-15 NENHUM DESTES NUMEROS E' CRAVADO. Ordem do operador:
+; *"quero um ui ux pertinente onde consigo setar quais valores quero pro script
+; que copia e cola os prompts no adbatch vertical — tempo entre as bancadas,
+; tempo de interacao entre os eventos etc"*.
+;
+; ⛔ OS VALORES ABAIXO SAO O PADRAO, nao a verdade: o `aplicarTempos()` le' a
+; secao `[tempos]` do INI por cima deles na partida E no comeco de cada F10.
+; Quem edita e' a tela do atalho `Tempos` — e os padroes daqui sao exatamente
+; os numeros que o script tinha antes de a tela existir, entao INI vazio =
+; comportamento identico ao de sempre.
 global RITMO := 0.05
+global PISO_PAUSA := 8
+global VEL_MOUSE_MIN := 4
+global VEL_MOUSE_MAX := 11
+global PARSE_MS := 900
+global PARSE_EXTRA := 700
+global RESPIRO_PCT := 22
+global RESPIRO_MIN := 1200
+global RESPIRO_MAX := 3400
+global ENTRE_BANCADAS_S := 0
+
+; ⚠️ Numero do INI e' entrada HOSTIL como qualquer outra: campo vazio, texto,
+; virgula decimal ou 500 no `ritmo` chegariam ao ffmpeg do dia a dia como uma
+; espera de dez minutos por clique. Fora da faixa e' GRAMPEADO, nunca recusado
+; — erro de digitacao numa caixa nao pode impedir o operador de rodar o lote.
+tempoNum(chave, padrao, lo, hi) {
+    global INI
+    v := Trim(IniRead(INI, "tempos", chave, ""))
+    v := StrReplace(v, ",", ".")
+    if !IsNumber(v)
+        return padrao
+    n := Number(v)
+    return (n < lo) ? lo : (n > hi) ? hi : n
+}
+
+; ⛔⛔ CHAMADO NA PARTIDA **E** NO COMECO DE CADA F10/F8/F9, e isso nao e'
+; redundancia: `SetKeyDelay`/`SetMouseDelay` sao POR THREAD no AHK v2. Chamados
+; so' na partida eles viram o padrao das threads novas — mas um valor salvo na
+; tela DEPOIS da partida nunca alcancaria a thread que ja' esta' rodando. Sem
+; esta segunda chamada, a tela salvaria e o operador juraria que nao mudou nada.
+aplicarTempos() {
+    global RITMO, PISO_PAUSA, VEL_MOUSE_MIN, VEL_MOUSE_MAX, PARSE_MS
+    global PARSE_EXTRA, RESPIRO_PCT, RESPIRO_MIN, RESPIRO_MAX, ENTRE_BANCADAS_S
+    RITMO            := tempoNum("ritmo",            0.05, 0.01, 2)
+    PISO_PAUSA       := tempoNum("piso_ms",          8,    1,    2000)
+    VEL_MOUSE_MIN    := tempoNum("mouse_vel_min",    4,    0,    50)
+    VEL_MOUSE_MAX    := tempoNum("mouse_vel_max",    11,   0,    50)
+    PARSE_MS         := tempoNum("parse_ms",         900,  0,    20000)
+    PARSE_EXTRA      := tempoNum("parse_extra_ms",   700,  0,    20000)
+    RESPIRO_PCT      := tempoNum("respiro_pct",      22,   0,    100)
+    RESPIRO_MIN      := tempoNum("respiro_min_ms",   1200, 0,    30000)
+    RESPIRO_MAX      := tempoNum("respiro_max_ms",   3400, 0,    30000)
+    ENTRE_BANCADAS_S := tempoNum("entre_bancadas_s", 0,    0,    900)
+    ; ⚠️ par invertido nao e' erro de quem digitou, e' ordem de digitacao: quem
+    ; poe 20 no minimo antes de subir o maximo passa por um instante invalido.
+    ; `Random(20, 11)` levantaria excecao no meio do ciclo — colapsa em vez.
+    if (VEL_MOUSE_MAX < VEL_MOUSE_MIN)
+        VEL_MOUSE_MAX := VEL_MOUSE_MIN
+    if (RESPIRO_MAX < RESPIRO_MIN)
+        RESPIRO_MAX := RESPIRO_MIN
+    kd := Round(tempoNum("key_delay_ms", 22, 1, 400))
+    SetKeyDelay kd, kd
+    SetMouseDelay Round(tempoNum("mouse_delay_ms", 28, 1, 400))
+}
 
 pausa(base, esp := 35) {
-    global RITMO
+    global RITMO, PISO_PAUSA
     ; base em ms, `esp` = espalhamento em % para cada lado.
-    ; ⚠️ piso de 8ms: sorteio que devolve valor perto de zero volta a ser
-    ; ritmo de maquina, so' que rapido. Era 40 ate' o RITMO cair para 0.20 —
-    ; ver a nota do RITMO acima.
+    ; ⚠️ piso: sorteio que devolve valor perto de zero volta a ser ritmo de
+    ; maquina, so' que rapido. Era 40 ate' o RITMO cair para 0.20 — ver a nota
+    ; do RITMO acima. Hoje ele DESCE JUNTO pela tela, e e' por isso que a tela
+    ; mostra os dois lado a lado.
     d := Round(base * RITMO) * (100 + Random(-esp, esp)) // 100
-    Sleep (d < 8 ? 8 : d)
+    Sleep (d < PISO_PAUSA ? PISO_PAUSA : d)
 }
 
 respirar() {
+    global RESPIRO_PCT, RESPIRO_MIN, RESPIRO_MAX
     ; ⭐ A pausa longa e RARA — a pessoa que para para olhar a tela. Um ritmo
     ; uniforme, mesmo com ruido, ainda e' uniforme: o que quebra o padrao e' a
     ; excecao ocasional, nao o tremor constante.
-    if (Random(1, 100) <= 22)
-        Sleep Random(1200, 3400)
+    if (RESPIRO_PCT > 0 && Random(1, 100) <= RESPIRO_PCT)
+        Sleep Random(RESPIRO_MIN, RESPIRO_MAX)
 }
 
 ; =============================================================================
@@ -423,8 +603,8 @@ serveParaOF10(hwnd) {
     m := monitorDaJanela(hwnd)
     if (m = 0)
         return "?"
-    cw := IniRead(INI, "pontos", "calib_w", "")
-    ch := IniRead(INI, "pontos", "calib_h", "")
+    cw := IniRead(INI, secPontos(), "calib_w", "")
+    ch := IniRead(INI, secPontos(), "calib_h", "")
     if (cw != "" && ch != "") {
         MonitorGetWorkArea(m, &l, &t, &r, &b)
         mo := molduraMaximizada()
@@ -444,8 +624,8 @@ serveParaOF10(hwnd) {
     WinGetPos &wx, &wy, &ww, &wh, "ahk_id " hwnd
     algum := false
     for a in ALVOS {
-        px := IniRead(INI, "pontos", a[1] "_x", "")
-        py := IniRead(INI, "pontos", a[1] "_y", "")
+        px := IniRead(INI, secPontos(), a[1] "_x", "")
+        py := IniRead(INI, secPontos(), a[1] "_y", "")
         if (px = "" || py = "")
             continue
         algum := true
@@ -1052,8 +1232,8 @@ prepararJanela(hwnd) {
     Sleep 250
 
     WinGetPos(&x, &y, &w, &h, "ahk_id " hwnd)
-    cw := IniRead(INI, "pontos", "calib_w", "")
-    ch := IniRead(INI, "pontos", "calib_h", "")
+    cw := IniRead(INI, secPontos(), "calib_w", "")
+    ch := IniRead(INI, secPontos(), "calib_h", "")
     ; ⚠️ INI ANTERIOR A ESTA TRAVA nao tem a geometria gravada. Obrigar uma
     ; recalibracao inteira dos seis pontos por causa disso seria punir o
     ; operador por uma mudanca minha — e ele PODE ja' ter calibrado numa
@@ -1073,9 +1253,9 @@ prepararJanela(hwnd) {
                     APP " — geometria", 4 + 48)
         if (r != "Yes")
             throw Error("cancelado — rode o F9 nesta janela")
-        IniWrite w, INI, "pontos", "calib_w"
-        IniWrite h, INI, "pontos", "calib_h"
-        IniWrite WinGetTitle("ahk_id " hwnd), INI, "pontos", "calib_janela"
+        IniWrite w, INI, secPontos(), "calib_w"
+        IniWrite h, INI, secPontos(), "calib_h"
+        IniWrite WinGetTitle("ahk_id " hwnd), INI, secPontos(), "calib_janela"
         return
     }
     if (Abs(w - Integer(cw)) > 8 || Abs(h - Integer(ch)) > 8)
@@ -1094,7 +1274,7 @@ prepararJanela(hwnd) {
     ; e fundo de pagina na errada. Medido: (255,255,255) contra (14,14,14).
     ; ⚠️ Tolerancia larga (80 por canal): o que se quer separar sao dois
     ; extremos, e apertar isso transformaria um realce de foco em falso alarme.
-    cg := IniRead(INI, "pontos", "cor_gerar", "")
+    cg := IniRead(INI, secPontos(), "cor_gerar", "")
     if (cg != "") {
         try {
             pg := lerPonto("cr_gerar")
@@ -1150,7 +1330,8 @@ prepararJanela(hwnd) {
 ; primeira do lote.
 
 FLOW_BASE     := "https://labs.google/fx/pt/tools/flow/project/"
-TOOL_ADBATCH  := "d882542c-72bd-4f73-81e1-472aa705775f"
+; ⛔ O id do AdBatch saiu daqui e virou `toolAdbatch()`, que escolhe pelo
+; formato. O do Montador continua unico ate' medicao em contrario.
 TOOL_MONTADOR := "0a949867-f37f-4808-b178-4478edc7b5ad"
 
 ; ⛔ Aceita QUALQUER url do Flow que carregue um id de projeto — dashboard,
@@ -1162,8 +1343,8 @@ idDoProjeto(url) {
 }
 
 urlsDaBancada(pid) {
-    global FLOW_BASE, TOOL_ADBATCH, TOOL_MONTADOR
-    return {adbatch:  FLOW_BASE pid "/tool/" TOOL_ADBATCH,
+    global FLOW_BASE, TOOL_MONTADOR
+    return {adbatch:  FLOW_BASE pid "/tool/" toolAdbatch(),
             dash:     FLOW_BASE pid,
             montador: FLOW_BASE pid "/tool/" TOOL_MONTADOR}
 }
@@ -1268,8 +1449,8 @@ monitorDosPontos() {
     global INI, ALVOS
     votos := Map()
     for a in ALVOS {
-        px := IniRead(INI, "pontos", a[1] "_x", "")
-        py := IniRead(INI, "pontos", a[1] "_y", "")
+        px := IniRead(INI, secPontos(), a[1] "_x", "")
+        py := IniRead(INI, secPontos(), a[1] "_y", "")
         if (px = "" || py = "")
             continue
         loop MonitorGetCount() {
@@ -1344,8 +1525,8 @@ monitoresDaBancada() {
         ; isto foi escrito — quem manda e' onde os cliques vao cair.
         m1 := monitorDosPontos()
         if (m1 = 0)
-            m1 := monitorPorTamanho(IniRead(INI, "pontos", "calib_w", ""),
-                                    IniRead(INI, "pontos", "calib_h", ""))
+            m1 := monitorPorTamanho(IniRead(INI, secPontos(), "calib_w", ""),
+                                    IniRead(INI, secPontos(), "calib_h", ""))
         if (m1 = 0)
             m1 := monitorPorForma(false)
         if (m1 = 0)
@@ -1598,7 +1779,7 @@ montarBancadaMiolo() {
     secaoUI(g, "2 · o que vai ser montado")
     lv := escurecerUI(g.AddListView("w" LARG_UI " r3 -Multi +Grid NoSort" fundoUI(),
                         ["Janela", "Onde", "Abas", "Ferramenta", "Url que vai abrir"]))
-    lv.Add("", "janela 1", "monitor " mPrev[1], nAd,    "AdBatch Vertical 2",  "—")
+    lv.Add("", "janela 1", "monitor " mPrev[1], nAd,    nomeFormato(),  "—")
     lv.Add("", "janela 2", "monitor " mPrev[2], nDash,  "dashboard das midias", "—")
     lv.Add("", "janela 2", "monitor " mPrev[2], 1,      "Montador Vertical 2", "—")
     lv.ModifyCol(1, 66), lv.ModifyCol(2, 68), lv.ModifyCol(3, 42)
@@ -1742,8 +1923,8 @@ montarBancadaMiolo() {
     ; geracao prestes a comecar. Descobrir agora, com a bancada recem montada,
     ; custa um clique; descobrir depois custa a rodada.
     aviso := ""
-    cw := IniRead(INI, "pontos", "calib_w", "")
-    ch := IniRead(INI, "pontos", "calib_h", "")
+    cw := IniRead(INI, secPontos(), "calib_w", "")
+    ch := IniRead(INI, secPontos(), "calib_h", "")
     WinGetPos , , &w1, &h1, "ahk_id " hJan1
     ; ⛔⛔ AS CHAVES E O PONTO SAO O CONSERTO DE UM ERRO QUE QUEBROU EM CAMPO
     ; (2026-08-11, primeira montagem boa do F3). A versao anterior quebrava a
@@ -1983,24 +2164,159 @@ abrirLogWorker() {
 ; sabe; menu e' para quem esta' descobrindo. Os dois apontam para as mesmas
 ; funcoes — nunca para copias.
 
-ATALHOS := [
-    ["F1",  "Ajuda",             "esta tela: os atalhos e como o script esta' agora"],
-    ["F2",  "Teclas das sessoes", "escolhe qual tecla levanta cada par de janelas"],
-    ["F3",  "Montar bancada",    "cria as DUAS janelas da sessao e abre as abas nelas"],
-    ["F4",  "Levantar bancada",  "traz as duas janelas de volta, cada uma no seu monitor"],
-    ["F8",  "Ensaio seco",       "roda o ciclo SEM colar e SEM gastar credito"],
-    ["F9",  "Calibrar",          "aponta os 6 pontos da tela do AdBatch"],
-    ["F10", "RODAR",             "o gatilho da geracao. Com o modo sequencial ligado, roda em varias bancadas"],
-    ["F7",  "Sobras",            "estado do worker das sobras e o que esta' represado"],
-    ["F12", "Log",               "o que o script fez nesta sessao"],
-    ["Esc", "Abortar",           "so' funciona ENQUANTO o ciclo esta' rodando"],
+; ⭐⭐ OS COMANDOS — E A TECLA DE CADA UM VIROU CONFIGURAVEL (2026-08-15)
+; Ordem do operador: *"quero um ui ux pertinente que consiga setar as teclas de
+; atalho pra outros valores se eu quiser, tipo se atualmente quiser mudar o F2
+; para outra tecla, nao consigo"*.
+;
+; ⛔ ELE ESTAVA CERTO E O MOTIVO ERA ESTRUTURAL: as teclas de SESSAO ja' eram
+; configuraveis desde 2026-08-11 (registro dinamico com `Hotkey()`), e as dos
+; COMANDOS eram `F2::` cravado no fim do arquivo — sintaxe de LOAD TIME, que
+; nao se remapeia sem editar codigo. Havia dois sistemas de tecla no mesmo
+; script, um configuravel e outro nao, e nada anunciava a diferenca.
+;
+; ⛔⛔ E A TABELA DA AJUDA PASSA A SAIR DAQUI. Antes ela era uma SEGUNDA lista
+; escrita a mao, e uma tela de ajuda que anuncia `F10` depois de o operador
+; remapear para `Ctrl+F10` e' pior do que nao ter ajuda: ela mente com
+; autoridade. Uma fonte, um lugar.
+;
+; ⚠️ `ctx: true` = so' vale ENQUANTO o ciclo roda (e' o caso do abortar). Sem
+; isso o script sequestraria o Esc do Windows inteiro, que foi exatamente o
+; motivo do `#HotIf` na versao anterior.
+global COMANDOS := [
+    {id: "ajuda",    padrao: "F1",  rotulo: "Ajuda",
+     detalhe: "esta tela: os atalhos e como o script esta' agora",
+     fn: (*) => ajuda()},
+    {id: "teclas",   padrao: "F2",  rotulo: "Teclas das sessoes",
+     detalhe: "escolhe qual tecla levanta cada par de janelas",
+     fn: (*) => configurarTeclas()},
+    {id: "montar",   padrao: "F3",  rotulo: "Montar bancada",
+     detalhe: "cria as DUAS janelas da sessao e abre as abas nelas",
+     fn: (*) => montarBancada()},
+    {id: "levantar", padrao: "F4",  rotulo: "Levantar bancada",
+     detalhe: "traz as duas janelas de volta, cada uma no seu monitor",
+     fn: (*) => levantarBancada()},
+    {id: "tempos",   padrao: "F6",  rotulo: "Tempos",
+     detalhe: "ritmo das pausas, espera da ronda e pausa entre bancadas",
+     fn: (*) => telaTempos()},
+    {id: "sobras",   padrao: "F7",  rotulo: "Sobras",
+     detalhe: "estado do worker das sobras e o que esta' represado",
+     fn: (*) => painelSobras()},
+    {id: "seco",     padrao: "F8",  rotulo: "Ensaio seco",
+     detalhe: "roda o ciclo SEM colar e SEM gastar credito",
+     fn: (*) => rodar(true)},
+    {id: "calibrar", padrao: "F9",  rotulo: "Calibrar",
+     detalhe: "aponta os 6 pontos da tela do AdBatch",
+     fn: (*) => calibrar()},
+    {id: "rodar",    padrao: "F10", rotulo: "RODAR",
+     detalhe: "o gatilho da geracao. Com o modo sequencial ligado, roda em varias bancadas",
+     fn: (*) => rodar(false)},
+    {id: "atalhos",  padrao: "F11", rotulo: "Atalhos",
+     detalhe: "troca a tecla de qualquer comando desta lista",
+     fn: (*) => configurarAtalhos()},
+    {id: "log",      padrao: "F12", rotulo: "Log",
+     detalhe: "o que o script fez nesta sessao",
+     fn: (*) => mostrarLog()},
+    {id: "abortar",  padrao: "Esc", rotulo: "Abortar", ctx: true,
+     detalhe: "so' funciona ENQUANTO o ciclo esta' rodando",
+     fn: (*) => abortarAgora()},
 ]
+
+teclaDoComando(id) {
+    global INI, COMANDOS
+    for c in COMANDOS
+        if (c.id = id)
+            return IniRead(INI, "teclas_comandos", id, c.padrao)
+    return ""
+}
+
+; ⛔⛔ A GUARDA DA TECLA SOLTA. Um comando em `a` deixaria a maquina inutilizavel
+; — toda letra digitada dispararia o F10 — e o operador nao teria como abrir a
+; tela para desfazer, porque digitar tambem estaria sequestrado. Teclas de
+; funcao e do bloco numerico passam soltas (ninguem digita texto com elas); o
+; resto exige Ctrl, Alt ou Shift.
+; ⭐ A saida de emergencia existe de qualquer jeito: o MENU DA BANDEJA abre as
+; duas telas sem depender de tecla nenhuma.
+teclaPerigosa(t) {
+    if (t = "")
+        return ""
+    if RegExMatch(t, "[\^!+#]")
+        return ""
+    if RegExMatch(t, "i)^(F\d{1,2}|Numpad[A-Za-z0-9]+|Esc|Escape|Pause|Break"
+                   . "|Insert|Home|End|PgUp|PgDn|ScrollLock|NumLock|AppsKey"
+                   . "|Browser_[A-Za-z]+|Media_[A-Za-z]+|Volume_[A-Za-z]+"
+                   . "|Launch_[A-Za-z]+)$")
+        return ""
+    return "a tecla " nomeDaTecla(t) " esta' solta — ela sequestraria a "
+         . "digitacao no Windows inteiro. Use Ctrl, Alt ou Shift junto."
+}
+
+; ⛔⛔ REGISTRO DINAMICO, o mesmo molde de `registrarTeclasDeSessao()`: TUDO que
+; esta' ligado e' desligado antes de religar a lista nova. Sem isso, trocar a
+; tecla de um comando deixaria a ANTIGA respondendo tambem — e duas teclas para
+; a mesma coisa e' o comeco de uma delas nao responder.
+global gTeclasComando := Map()
+
+; ⛔⛔ UM UNICO OBJETO DE CONTEXTO, guardado num global — e isto NAO e' estilo.
+; O AHK casa a variante de uma hotkey pela IDENTIDADE do callback do `HotIf`.
+; Criando `(*) => rodando` na hora de registrar e outro na hora de desligar,
+; o `Hotkey t, "Off"` procuraria uma variante que nao existe: o Esc antigo
+; continuaria ligado e o novo entraria por cima. Duas teclas para a mesma coisa
+; e' o comeco de uma delas nao responder — e' a mesma nota do `gTeclasAtivas`.
+global gCtxRodando := (*) => rodando
+
+registrarTeclasDeComando() {
+    global gTeclasComando, COMANDOS, gCtxRodando
+    for t, ctx in gTeclasComando {
+        try {
+            HotIf(ctx ? gCtxRodando : "")
+            Hotkey t, "Off"
+        }
+    }
+    HotIf()
+    gTeclasComando := Map()
+    for c in COMANDOS {
+        t := teclaDoComando(c.id)
+        if (t = "" || t = "None")
+            continue
+        ctx := c.HasOwnProp("ctx")
+        try {
+            ; ⛔ com `ctx`, so' vale ENQUANTO o ciclo roda — senao o script
+            ; sequestra o Esc do Windows inteiro, que foi o motivo do `#HotIf`
+            ; da versao anterior.
+            HotIf(ctx ? gCtxRodando : "")
+            Hotkey t, c.fn, "On"
+            gTeclasComando[t] := ctx
+        } catch as err {
+            anotar("tecla de comando ignorada (" c.id " = " t "): " err.Message)
+        }
+    }
+    HotIf()
+}
+
+abortarAgora() {
+    global abortar
+    abortar := true
+    ToolTip "ABORTANDO..."
+    SetTimer () => ToolTip(), -1200
+}
+
+; ⭐ A tabela da ajuda, montada da fonte unica. `ATALHOS` continua existindo com
+; o mesmo nome e o mesmo formato para o resto da tela nao precisar saber de
+; nada disso.
+atalhosAtuais() {
+    global COMANDOS
+    r := []
+    for c in COMANDOS
+        r.Push([nomeDaTecla(teclaDoComando(c.id)), c.rotulo, c.detalhe])
+    return r
+}
 
 ; ⚠️ `inicial` transforma a MESMA tela na tela de abertura, em vez de existir uma
 ; segunda parecida. Duas telas quase iguais divergem no primeiro conserto que so'
 ; uma delas receber — e a que ficar para tras e' sempre a que o operador ve'.
 ajuda(inicial := false) {
-    global ATALHOS, INI, LARG_UI
+    global INI, LARG_UI
     g := janelaUI(inicial ? "" : "ajuda")
 
     ; =========================================================================
@@ -2052,9 +2368,9 @@ ajuda(inicial := false) {
     fonteUI(g, "s10 Bold")
     g.AddText("x18 y" (ALT_FAIXA + 16) " w" LARG_UI, "Atalhos")
     fonteUI(g, "s9 Norm")
-    lv := escurecerUI(g.AddListView("w" LARG_UI " r11 -Multi +Grid NoSort" fundoUI(),
+    lv := escurecerUI(g.AddListView("w" LARG_UI " r13 -Multi +Grid NoSort" fundoUI(),
                                     ["Tecla", "O que faz", "Detalhe"]))
-    for a in ATALHOS
+    for a in atalhosAtuais()
         lv.Add("", a[1], a[2], a[3])
     ; ⭐⭐ AS TECLAS DE SESSAO ENTRAM NA MESMA TABELA, nao num quadro a
     ; parte: para quem opera, "Ctrl+Alt+1 levanta a CTA - 03 Neusa" e' um atalho
@@ -2116,8 +2432,8 @@ ajuda(inicial := false) {
     nDa := IniRead(INI, "config", "abas_dashboard", "5")
 
     ; ── calibracao
-    cw := IniRead(INI, "pontos", "calib_w", "")
-    ch := IniRead(INI, "pontos", "calib_h", "")
+    cw := IniRead(INI, secPontos(), "calib_w", "")
+    ch := IniRead(INI, secPontos(), "calib_h", "")
     cal := (cw != "" && ch != "")
            ? ("6 pontos, janela " cw "x" ch)
            : "6 pontos, SEM tamanho gravado — o F10 vai perguntar uma vez"
@@ -2151,6 +2467,8 @@ ajuda(inicial := false) {
         . "`nmonitores .......... " mons
         . "`nbancada vai para ... AdBatch no monitor " md[1] " · dashboard no monitor " md[2]
         . "`nabas por bancada ... " nAd " no AdBatch + " nDa " no dashboard + 1 Montador"
+        . "`nformato ............ " nomeFormato() " · " nTakes()
+          . " takes · o roteiro tem de dizer 0N" sufTake()
         . "`ncalibracao ......... " cal
         . "`nbancadas montadas .. " bnc
         . "`nclique no icone .... " lig " (levanta a bancada ao clicar no icone da sessao)"
@@ -2167,7 +2485,23 @@ ajuda(inicial := false) {
     ; ⭐ As duas caixas ficam JUNTAS e sempre visiveis, na abertura e no F1.
     ; Comportamento que age sozinho — subir com o Windows, levantar a bancada ao
     ; clicar — tem de poder ser desligado na mesma tela onde e' anunciado.
-    cbSeq := g.AddCheckbox("w" LARG_UI " y+14",
+    ; ⭐⭐ O FORMATO DA BANCADA (2026-08-20). Fica JUNTO das outras caixas
+    ; pelo mesmo motivo delas: comportamento que muda o que o F3 ABRE e o
+    ; que o F10 CONFERE tem de poder ser trocado na tela onde e' anunciado.
+    secaoUI(g, "Formato da bancada")
+    ; ⛔ O `R3` NAO E' ESTETICA: sem numero de linhas o AHK abre a parte
+    ; suspensa com altura ~zero e o clique nao mostra nada. Os dois itens
+    ; sempre estiveram la' (provado por `dd.Value := 2` num Gui de teste);
+    ; o que nao havia era ONDE eles aparecerem.
+    ddFmt := g.AddDropDownList("w" LARG_UI " R3 y+6 Choose"
+                               ((nTakes() = 3) ? 2 : 1),
+                               ["AdBatch Vertical 2 — 2 takes de 8s"
+                                " (o roteiro diz IMAGE 01/02)",
+                                "AdBatch Vertical 3 — 3 takes de 6s"
+                                " (o roteiro diz IMAGE 01/03)"])
+    ddFmt.OnEvent("Change", (*) => trocarFormato((ddFmt.Value = 2) ? 3 : 2))
+
+    cbSeq := g.AddCheckbox("w" LARG_UI " y+10",
                            "modo sequencial: o F10 roda em VARIAS bancadas numa "
                            "tacada (voce marca quais)")
     cbSeq.Value := (IniRead(INI, "config", "sequencial", "0") = "1")
@@ -2190,12 +2524,21 @@ ajuda(inicial := false) {
     g.AddButton("w110 h30 x" (18 + LARG_UI - 110) " y+16 Default",
                 inicial ? "Comecar" : "Fechar")
      .OnEvent("Click", (*) => g.Destroy())
-    g.AddButton("w160 h30 x18 yp", "Montar bancada (F3)")
+    g.AddButton("w160 h30 x18 yp",
+                "Montar bancada (" nomeDaTecla(teclaDoComando("montar")) ")")
      .OnEvent("Click", (*) => (g.Destroy(), montarBancada()))
-    g.AddButton("w170 h30 x+8 yp", "Levantar bancada (F4)")
+    g.AddButton("w170 h30 x+8 yp",
+                "Levantar bancada (" nomeDaTecla(teclaDoComando("levantar")) ")")
      .OnEvent("Click", (*) => (g.Destroy(), levantarBancada()))
     g.AddButton("w110 h30 x+8 yp", "Ver o log")
      .OnEvent("Click", (*) => mostrarLog())
+    ; ⚠️ SEGUNDA LINHA. A primeira ja' tem 456px de botao mais o Fechar a'
+    ; direita; os dois novos ali dentro alargariam a janela e desalinhariam
+    ; tudo — e' o mesmo mecanismo do `x18` que a nota do `secaoUI` descreve.
+    g.AddButton("w160 h30 x18 y+8", "Tempos e ritmo")
+     .OnEvent("Click", (*) => (g.Destroy(), telaTempos()))
+    g.AddButton("w170 h30 x+8 yp", "Atalhos do teclado")
+     .OnEvent("Click", (*) => (g.Destroy(), configurarAtalhos()))
     g.OnEvent("Close", (*) => g.Destroy())
     g.Show()
     ; ⭐ agora que a janela existe, a faixa copia a largura util dela e encosta
@@ -2203,6 +2546,289 @@ ajuda(inicial := false) {
     cli := Buffer(16, 0)
     DllCall("GetClientRect", "Ptr", g.Hwnd, "Ptr", cli)
     faixa.Move(0, 0, NumGet(cli, 8, "Int"), ALT_FAIXA)
+}
+
+
+; =============================================================================
+;  ⭐⭐ A TELA DOS TEMPOS (2026-08-15)
+; =============================================================================
+; ⛔ CADA CAMPO DIZ O QUE CUSTA, nao so' o que faz. O operador ja' pediu tres
+; rodadas de aceleracao neste script, e a quarta foi a que ele mesmo marcou como
+; "risco de falha silenciosa" — uma tela que so' listasse numeros o convidaria a
+; baixar justamente os dois que quebram o clipboard em silencio.
+; ⚠️ Por isso os dois de RISCO estao no fim, numa secao com o aviso junto, e nao
+; misturados no meio dos inofensivos.
+;
+; ⭐ A ESTIMATIVA fica ACIMA do botao Salvar. E' o unico jeito de o operador ver
+; a consequencia dos doze numeros sem rodar um lote de credito para descobrir.
+TEMPOS_UI := [
+    ["ritmo",            "Ritmo das pausas",        "x",  "1.00 e' o ritmo original; 0.05 e' o de hoje. Governa as 13 esperas ajustaveis de cada aba."],
+    ["piso_ms",          "Piso de cada pausa",      "ms", "nenhuma pausa fica menor que isto. Se subir o piso acima do ritmo, o tremor morre e a cadencia vira de maquina."],
+    ["parse_ms",         "Espera do Ctrl+V",        "ms", "o tempo que o AdBatch leva para reparsear o roteiro colado. ⛔ NAO e' cadencia: se encurtar demais, o Gerar clica num roteiro pela metade."],
+    ["parse_extra_ms",   "Sorteio somado ao Ctrl+V","ms", "sorteado de 0 ate' este valor e SOMADO a espera acima — nunca tirado dela."],
+    ["respiro_pct",      "Chance do respiro longo", "%",  "de vez em quando o piloto para de olhar a tela, como gente. 0 desliga."],
+    ["respiro_min_ms",   "Respiro longo, minimo",   "ms", ""],
+    ["respiro_max_ms",   "Respiro longo, maximo",   "ms", ""],
+    ["mouse_vel_min",    "Mouse, mais rapido",      "",   "0 e' teleporte, e teleporte nao existe em maozinha nenhuma. Quanto MAIOR o numero, mais devagar o ponteiro anda."],
+    ["mouse_vel_max",    "Mouse, mais devagar",     "",   ""],
+    ["entre_bancadas_s", "Pausa ENTRE bancadas",    "s",  "so' vale no modo sequencial. 0 emenda uma bancada na outra, que e' como o script sempre rodou."],
+]
+
+; ⚠️ Estes dois moram em `[config]`, nao em `[tempos]`: ja' estavam la' antes
+; desta tela existir, e mudar de secao apagaria em silencio o valor que o
+; operador tem hoje. Secao errada e' preco de arrumacao; valor perdido e' preco
+; de lote.
+RONDA_UI := [
+    ["espera_s", "Espera de cada ronda", "s", "quanto o piloto espera antes de conferir de novo se os slots ficaram prontos. ±18% sorteado."],
+    ["rondas",   "Quantas rondas",       "",  "quantas vezes ele volta para conferir e regerar slot vazio. A partir da SEGUNDA e' que ele regera."],
+]
+
+RISCO_UI := [
+    ["key_delay_ms",   "Atraso por tecla",  "ms", ""],
+    ["mouse_delay_ms", "Atraso por clique", "ms", ""],
+]
+
+lerTempoUI(chave, padrao) {
+    global INI
+    v := Trim(IniRead(INI, "tempos", chave, ""))
+    return (v = "") ? padrao : v
+}
+
+; ⭐ O padrao de cada campo sai do MESMO lugar que o motor usa (`aplicarTempos`
+; le' estes numeros como fallback). Uma segunda lista de padroes divergiria no
+; primeiro ajuste, e a tela passaria a mostrar um numero que o script nao usa.
+PADROES_TEMPO := Map(
+    "ritmo", "0.05", "piso_ms", "8", "parse_ms", "900", "parse_extra_ms", "700",
+    "respiro_pct", "22", "respiro_min_ms", "1200", "respiro_max_ms", "3400",
+    "mouse_vel_min", "4", "mouse_vel_max", "11", "entre_bancadas_s", "0",
+    "key_delay_ms", "22", "mouse_delay_ms", "28",
+    "espera_s", "15", "rondas", "6")
+; ⚠️ `espera_s` e `rondas` vivem em `[config]`, mas o padrao mora no mapa acima
+; junto com os outros: uma segunda tabela de padroes divergiria da primeira no
+; primeiro ajuste, e a tela passaria a mostrar numero que o motor nao usa.
+
+; ⭐ TRES PRESETS. Doze numeros e' mais do que cabe na cabeca de quem so' quer
+; "mais devagar hoje"; o preset da' o passo inteiro e a tela continua aberta
+; para ele afinar em cima.
+PRESETS_TEMPO := Map(
+    "Original (lento)", Map("ritmo", "1.00", "piso_ms", "40",
+                            "key_delay_ms", "40", "mouse_delay_ms", "50"),
+    "Rapido (o de hoje)", Map("ritmo", "0.05", "piso_ms", "8",
+                              "key_delay_ms", "22", "mouse_delay_ms", "28"),
+    "Cauteloso", Map("ritmo", "0.35", "piso_ms", "25",
+                     "key_delay_ms", "35", "mouse_delay_ms", "45"))
+
+telaTempos(*) {
+    global LARG_UI, INI, COR_FRACA, COR_MA, TEMPOS_UI, RONDA_UI, RISCO_UI
+    global PADROES_TEMPO, PRESETS_TEMPO
+    g := janelaUI("tempos")
+    campos := Map()
+
+    linha(chave, rotulo, unidade, dica, secao) {
+        fonteUI(g, "s9")
+        g.AddText("x18 y+10 w" (LARG_UI - 250), rotulo)
+        val := (secao = "config")
+               ? IniRead(INI, "config", chave, PADROES_TEMPO.Has(chave) ? PADROES_TEMPO[chave] : "")
+               : lerTempoUI(chave, PADROES_TEMPO.Has(chave) ? PADROES_TEMPO[chave] : "")
+        e := escurecerUI(g.AddEdit("x+10 yp-3 w90 Right" fundoUI(), val))
+        g.AddText("x+6 yp+3 w40 c" COR_FRACA, unidade)
+        campos[chave] := {ctl: e, secao: secao}
+        if (dica != "")
+            g.AddText("x18 y+2 w" (LARG_UI - 60) " c" COR_FRACA, dica)
+    }
+
+    secaoUI(g, "O ritmo das interacoes", true)
+    for t in TEMPOS_UI
+        linha(t[1], t[2], t[3], t[4], "tempos")
+
+    secaoUI(g, "As rondas (a conferencia dos slots)")
+    for t in RONDA_UI
+        linha(t[1], t[2], t[3], t[4], "config")
+
+    ; ⛔⛔ A SECAO DE RISCO E' SEPARADA E VEM COM O AVISO EM CIMA. Estes dois sao
+    ; os unicos numeros deste script cuja reducao falha EM SILENCIO: abaixo de um
+    ; limiar o Chrome descarta a entrada sintetica, o clipboard fica com o
+    ; roteiro ANTERIOR e o lote sai com a REF de um video e as cenas de outro —
+    ; aparecendo so' no render, com o credito ja' gasto.
+    secaoUI(g, "Entrada sintetica — mexa por ultimo")
+    fonteUI(g, "s9")
+    g.AddText("x18 w" (LARG_UI - 60) " c" COR_MA,
+              "Baixar estes dois pode fazer a tecla NAO CHEGAR no Chrome, e a "
+              "falha e' MUDA: o lote sai com a REF de um video e as cenas de "
+              "outro. Depois de mexer, rode o Ensaio seco UMA vez — ele confere "
+              "as cinco partes de graca.")
+    for t in RISCO_UI
+        linha(t[1], t[2], t[3], t[4], "tempos")
+
+    ; --- a estimativa -----------------------------------------------------
+    ; ⚠️ ESTIMATIVA GROSSEIRA, e a tela diz isso. A base de 4.710 ms das 13
+    ; pausas de uma aba esta' medida no cabecalho do RITMO; o resto (ffmpeg do
+    ; Chrome, o app respondendo) nao da' para prever daqui.
+    est := g.AddText("x18 y+16 w" (LARG_UI - 60) " c" COR_FRACA, "")
+
+    estimar(*) {
+        n := (v, p) => IsNumber(StrReplace(Trim(v), ",", ".")) ? Number(StrReplace(Trim(v), ",", ".")) : p
+        r  := n(campos["ritmo"].ctl.Value, 0.05)
+        pv := n(campos["parse_ms"].ctl.Value, 900) + n(campos["parse_extra_ms"].ctl.Value, 700) / 2
+        kd := n(campos["key_delay_ms"].ctl.Value, 22)
+        md := n(campos["mouse_delay_ms"].ctl.Value, 28)
+        rp := n(campos["respiro_pct"].ctl.Value, 22) / 100
+        rm := (n(campos["respiro_min_ms"].ctl.Value, 1200)
+               + n(campos["respiro_max_ms"].ctl.Value, 3400)) / 2
+        abas := Integer(IniRead(INI, "config", "abas", "10"))
+        eb := n(campos["entre_bancadas_s"].ctl.Value, 0)
+        ; 4.710 ms de base nas 13 pausas + ~8 teclas + ~2 cliques + 2 respiros
+        porAba := 4710 * r + kd * 8 * 2 + md * 2 + pv + rp * rm * 2
+        est.Value := Format("estimativa grosseira: ~{1:.1f}s por aba  ·  "
+                          . "~{2:.1f} min por bancada de {3} abas"
+                          . (eb > 0 ? "  ·  +{4}s entre bancadas" : ""),
+                            porAba / 1000, porAba * abas / 60000, abas, eb)
+    }
+    for _, c in campos
+        c.ctl.OnEvent("Change", estimar)
+    estimar()
+
+    aviso := g.AddText("x18 y+8 w" (LARG_UI - 60) " c" COR_FRACA,
+                       "vale no proximo ciclo — nao interrompe um que ja' esteja rodando")
+
+    aplicar(*) {
+        for chave, c in campos {
+            v := Trim(c.ctl.Value)
+            if (v = "")
+                v := PADROES_TEMPO.Has(chave) ? PADROES_TEMPO[chave] : "0"
+            IniWrite StrReplace(v, ",", "."), INI, c.secao, chave
+        }
+        aplicarTempos()
+    }
+
+    ; ⚠️ `nome` chega por `.Bind()`, nao por closure. Closure criada DENTRO do
+    ; laco dos botoes captura a VARIAVEL do laco, e os tres botoes acabariam
+    ; carregando o ultimo preset — a mesma armadilha que o `chamadorDaSessao`
+    ; documenta la' em cima, e que ja' mordeu este arquivo uma vez.
+    presetar(nome, *) {
+        for chave, val in PRESETS_TEMPO[nome]
+            if campos.Has(chave)
+                campos[chave].ctl.Value := val
+        estimar()
+        aviso.Value := "preset '" nome "' carregado — clique em Salvar para valer"
+    }
+
+    padroes(*) {
+        for chave, c in campos
+            if PADROES_TEMPO.Has(chave)
+                c.ctl.Value := PADROES_TEMPO[chave]
+        estimar()
+        aviso.Value := "padroes de fabrica carregados — clique em Salvar para valer"
+    }
+
+    ; ⭐ mesma gramatica das outras telas: sair a' direita, fazer a' esquerda
+    g.AddButton("w150 h30 x" (18 + LARG_UI - 150) " y+14 Default", "Salvar")
+     .OnEvent("Click", (*) => (aplicar(), g.Destroy(), avisoRapido("tempos salvos")))
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 270) " yp", "Cancelar")
+     .OnEvent("Click", (*) => g.Destroy())
+    ; ⚠️ Os presets vao numa SEGUNDA linha: quatro botoes de 130px mais os dois
+    ; da direita nao cabem nos 700px da janela, e o AHK nao quebra linha — ele
+    ; ALARGA a janela e o layout inteiro sai torto.
+    x := 18
+    for nome, _ in PRESETS_TEMPO {
+        g.AddButton("w150 h30 " (x = 18 ? "x18 y+10" : "x+8 yp"), nome)
+         .OnEvent("Click", presetar.Bind(nome))
+        x += 158
+    }
+    g.AddButton("w110 h30 x+8 yp", "Padroes").OnEvent("Click", padroes)
+    g.Show()
+}
+
+
+; =============================================================================
+;  ⭐⭐ A TELA DOS ATALHOS (2026-08-15)
+; =============================================================================
+; ⛔ E' a IRMA da tela do F2, de proposito: mesmo controle nativo `Hotkey`, mesma
+; deteccao de colisao, mesmo aviso acima dos botoes. Duas telas com a mesma
+; funcao e caras diferentes divergem no primeiro conserto que so' uma receber.
+; ⛔⛔ E A COLISAO E' CONFERIDA CONTRA AS DUAS FAMILIAS — comandos E sessoes.
+; Elas vivem em secoes diferentes do INI e sao registradas por funcoes
+; diferentes, entao nada impediria o operador de pedir `Ctrl+Alt+1` para o
+; RODAR quando esse par ja' levanta a "CTA - 03 Neusa". A segunda venceria em
+; silencio e a primeira pareceria quebrada.
+configurarAtalhos(*) {
+    global LARG_UI, INI, COMANDOS, COR_FRACA, COR_MA
+    g := janelaUI("atalhos dos comandos")
+    secaoUI(g, "Qual tecla dispara cada comando", true)
+    g.AddText("x18 w" (LARG_UI - 60) " c" COR_FRACA,
+              "Clique no campo e aperte a tecla. Teclas de funcao (F1..F12) e do "
+              "bloco numerico valem sozinhas; qualquer outra precisa de Ctrl, "
+              "Alt ou Shift junto.`n"
+              "Campo vazio DESLIGA o comando — ele continua no menu da bandeja, "
+              "que e' a saida quando nao sobra tecla nenhuma.")
+
+    campos := []
+    for c in COMANDOS {
+        fonteUI(g, "s9")
+        g.AddText("x18 y+10 w" (LARG_UI - 240), c.rotulo
+                  . (c.HasOwnProp("ctx") ? "   (so' durante o ciclo)" : ""))
+        hk := g.AddHotkey("x+10 yp-3 w200", teclaDoComando(c.id))
+        campos.Push({id: c.id, rotulo: c.rotulo, ctl: hk})
+    }
+
+    aviso := g.AddText("x18 y+14 w" (LARG_UI - 60) " c" COR_FRACA,
+                       "as teclas passam a valer assim que voce salvar")
+
+    salvar(*) {
+        usadas := Map()
+        ; ⛔ as teclas de SESSAO entram na conta ANTES: elas ja' estao ligadas, e
+        ; quem chega depois e' que tem de ceder.
+        for e in teclasGravadas()
+            if (e.tecla != "")
+                usadas[e.tecla] := "a sessao '" e.chave "'"
+        for c in campos {
+            t := c.ctl.Value
+            if (t = "")
+                continue
+            if (msg := teclaPerigosa(t)) {
+                aviso.Opt("c" COR_MA)
+                aviso.Value := msg
+                return
+            }
+            if usadas.Has(t) {
+                aviso.Opt("c" COR_MA)
+                aviso.Value := nomeDaTecla(t) " ja' e' de " usadas[t]
+                             . " — cada comando precisa da sua"
+                return
+            }
+            usadas[t] := "o comando '" c.rotulo "'"
+        }
+        ; ⛔⛔ AS CHAVES SAO OBRIGATORIAS AQUI, e custaram uma partida quebrada
+        ; na maquina do operador. Sem elas, `if (...) try X` seguido de `else`
+        ; NAO COMPILA: no v2 o `Try` tem um `Else` proprio (Try/Catch/Else),
+        ; entao o parser le' aquele `else` como o do `Try` — sem `Catch` no
+        ; meio — e derruba o SCRIPT INTEIRO na partida com "Unexpected Else".
+        for c in campos {
+            if (c.ctl.Value = "") {
+                try IniDelete INI, "teclas_comandos", c.id
+            } else {
+                IniWrite c.ctl.Value, INI, "teclas_comandos", c.id
+            }
+        }
+        registrarTeclasDeComando()
+        montarBandeja()
+        g.Destroy()
+        avisoRapido("atalhos salvos")
+    }
+
+    padroes(*) {
+        for i, c in campos
+            campos[i].ctl.Value := COMANDOS[i].padrao
+        aviso.Opt("c" COR_FRACA)
+        aviso.Value := "padroes carregados — clique em Salvar para valer"
+    }
+
+    g.AddButton("w150 h30 x" (18 + LARG_UI - 150) " y+12 Default", "Salvar")
+     .OnEvent("Click", salvar)
+    g.AddButton("w110 h30 x" (18 + LARG_UI - 270) " yp", "Cancelar")
+     .OnEvent("Click", (*) => g.Destroy())
+    g.AddButton("w110 h30 x18 yp", "Padroes").OnEvent("Click", padroes)
+    g.Show()
 }
 
 ; ⭐ O MENU DA BANDEJA repete os mesmos comandos. Atalho serve a quem ja' sabe;
@@ -2247,28 +2873,51 @@ ligarInicioComWindows(ligar) {
     }
 }
 
+; ⛔⛔ E O MENU E' A SAIDA DE EMERGENCIA desde que as teclas viraram
+; configuraveis: se o operador desligar a tecla de TODOS os comandos, e' por
+; aqui que ele reabre a tela de atalhos. Por isso o rotulo de cada item passa a
+; sair de `teclaDoComando()` — menu que anuncia F10 depois do remapeamento
+; mente igual a' tela de ajuda que mentia.
+itemBandeja(id) {
+    global COMANDOS
+    for c in COMANDOS
+        if (c.id = id) {
+            t := teclaDoComando(c.id)
+            A_TrayMenu.Add(c.rotulo (t = "" ? "  (sem tecla)"
+                                            : "  (" nomeDaTecla(t) ")"), c.fn)
+            return
+        }
+}
+
 montarBandeja() {
     A_TrayMenu.Delete()
-    A_TrayMenu.Add("Ajuda  (F1)",              (*) => ajuda())
+    itemBandeja("ajuda")
     A_TrayMenu.Add()
-    A_TrayMenu.Add("Montar bancada  (F3)",     (*) => montarBancada())
-    A_TrayMenu.Add("Levantar bancada  (F4)",   (*) => levantarBancada())
-    A_TrayMenu.Add("Teclas das sessoes  (F2)", (*) => configurarTeclas())
+    itemBandeja("montar")
+    itemBandeja("levantar")
+    itemBandeja("teclas")
+    itemBandeja("atalhos")
+    itemBandeja("tempos")
     A_TrayMenu.Add()
-    A_TrayMenu.Add("RODAR  (F10)",             (*) => rodar(false))
-    A_TrayMenu.Add("Ensaio seco  (F8)",        (*) => rodar(true))
-    A_TrayMenu.Add("Calibrar  (F9)",           (*) => calibrar())
+    itemBandeja("rodar")
+    itemBandeja("seco")
+    itemBandeja("calibrar")
     A_TrayMenu.Add()
-    A_TrayMenu.Add("Sobras  (F7)",             (*) => painelSobras())
-    A_TrayMenu.Add("Log  (F12)",               (*) => mostrarLog())
+    itemBandeja("sobras")
+    itemBandeja("log")
     A_TrayMenu.Add()
     A_TrayMenu.Add("Iniciar com o Windows",    (*) => (
         ligarInicioComWindows(!iniciaComWindows()), montarBandeja()))
     if iniciaComWindows()
         A_TrayMenu.Check("Iniciar com o Windows")
     A_TrayMenu.Add("Sair",                     (*) => ExitApp())
-    A_TrayMenu.Default := "Ajuda  (F1)"
-    A_IconTip := APP " — F1 abre a ajuda"
+    ; ⚠️ o padrao do duplo-clique aponta para o rotulo MONTADO, nao para um
+    ; literal: com a tecla remapeada o literal deixaria de casar e o AHK
+    ; levantaria erro na partida.
+    _t := teclaDoComando("ajuda")
+    try A_TrayMenu.Default := "Ajuda" (_t = "" ? "  (sem tecla)"
+                                              : "  (" nomeDaTecla(_t) ")")
+    A_IconTip := APP (_t = "" ? "" : " — " nomeDaTecla(_t) " abre a ajuda")
 }
 
 ; ⛔⛔ CONSERTA A CALIBRACAO CONTRADITORIA NA PARTIDA (2026-08-11).
@@ -2283,8 +2932,8 @@ montarBandeja() {
 ; ali. E fica no log: conserto silencioso vira mistério na proxima duvida.
 consertarCalibracao() {
     global INI
-    cw := IniRead(INI, "pontos", "calib_w", "")
-    ch := IniRead(INI, "pontos", "calib_h", "")
+    cw := IniRead(INI, secPontos(), "calib_w", "")
+    ch := IniRead(INI, secPontos(), "calib_h", "")
     mp := monitorDosPontos()
     if (cw = "" || ch = "" || mp = 0)
         return
@@ -2293,8 +2942,8 @@ consertarCalibracao() {
     MonitorGetWorkArea(mp, &l, &t, &r, &b)
     mo := molduraMaximizada()
     nw := (r - l) + mo, nh := (b - t) + mo
-    IniWrite nw, INI, "pontos", "calib_w"
-    IniWrite nh, INI, "pontos", "calib_h"
+    IniWrite nw, INI, secPontos(), "calib_w"
+    IniWrite nh, INI, secPontos(), "calib_h"
     anotar("calibracao corrigida: os pontos estao no monitor " mp
            " mas o tamanho gravado era " cw "x" ch " — passou a " nw "x" nh)
 }
@@ -2305,6 +2954,10 @@ consertarCalibracao()
 ; existir no formato novo para serem ligadas nesta mesma partida.
 migrarTeclasAntigas()
 registrarTeclasDeSessao()
+registrarTeclasDeComando()
+; ⚠️ na partida isto define o padrao das threads novas (SetKeyDelay/SetMouseDelay
+; sao por thread); o `rodar()` e o `calibrar()` chamam de novo na thread deles.
+aplicarTempos()
 gCliqueLigado := ligarCliqueNoIcone()
 
 ; ⚠️ O SCRIPT SUBIA MUDO. Sem nada na partida, nao havia como saber que ele
@@ -2318,29 +2971,24 @@ else
             . "`nclique no icone da sessao: " (gCliqueLigado ? "ligado" : "desligado"),
             APP " no ar")
 
-F1::  ajuda()
-F3::  montarBancada()
-F4::  levantarBancada()
-F7::  painelSobras()
-
-F2::  configurarTeclas()
-F9::  calibrar()
-F10:: rodar(false)
-F8::  rodar(true)
-F12:: mostrarLog()
-
-#HotIf rodando          ; ⛔ o Esc so' existe ENQUANTO o ciclo roda, senao o
-Esc:: {                 ;    script sequestra o Esc do Windows inteiro
-    global abortar
-    abortar := true
-    ToolTip "ABORTANDO..."
-    SetTimer () => ToolTip(), -1200
-}
-#HotIf
+; ⛔⛔ AQUI HAVIA ONZE HOTKEYS CRAVADAS (`F1::`, `F2::`, ... `Esc::`). Elas
+; sairam porque essa sintaxe e' de LOAD TIME e nao se remapeia — ver a nota do
+; `COMANDOS`. Quem as liga agora e' `registrarTeclasDeComando()`, la' em cima.
+;
+; ⛔⛔ E O `Persistent` NAO E' ENFEITE: sem uma unica hotkey ESTATICA no arquivo,
+; o AHK v2 encerra o script ao chegar no fim da secao de auto-execucao. As
+; hotkeys dinamicas segurariam o processo de pe' — ate' o dia em que o operador
+; desligar a tecla de todos os comandos na tela nova, e ai' o script morreria na
+; partida sem dizer por que. O custo de declarar e' zero; o de descobrir isso em
+; campo seria uma manha.
+; ⚠️ COM PARENTESES: `Persistent` sozinho numa linha e' uma EXPRESSAO SEM EFEITO
+; no v2, nao uma chamada — o script sairia igual e nada acusaria.
+Persistent()
 
 ; =============================================================================
 calibrar() {
     global rodando
+    aplicarTempos()
     rodando := true
     try
         calibrarMiolo()
@@ -2361,8 +3009,8 @@ calibrarMiolo() {
         if !esperarF9()
             return ToolTip()
         MouseGetPos(&x, &y)
-        IniWrite x, INI, "pontos", alvo[1] "_x"
-        IniWrite y, INI, "pontos", alvo[1] "_y"
+        IniWrite x, INI, secPontos(), alvo[1] "_x"
+        IniWrite y, INI, secPontos(), alvo[1] "_y"
         ToolTip "gravado: " alvo[1] " = " x "," y
         Sleep 350
     }
@@ -2370,7 +3018,7 @@ calibrarMiolo() {
 
     p := lerPonto("cr_slot1")
     cor := PixelGetColor(p.x, p.y)
-    IniWrite cor, INI, "pontos", "cor_vazio"
+    IniWrite cor, INI, secPontos(), "cor_vazio"
 
     ; ⛔⛔ A COR DO PONTO DO **GERAR** — a trava que faltava, e que so'
     ; existe porque o operador viu o ponteiro errar o alvo numa janela e acertar
@@ -2390,7 +3038,7 @@ calibrarMiolo() {
     ; (14,14,14).
     try {
         pg := lerPonto("cr_gerar")
-        IniWrite PixelGetColor(pg.x, pg.y), INI, "pontos", "cor_gerar"
+        IniWrite PixelGetColor(pg.x, pg.y), INI, secPontos(), "cor_gerar"
     }
 
     ; ⛔⛔ GRAVA A GEOMETRIA DA JANELA CALIBRADA. Sem isto o `prepararJanela`
@@ -2409,9 +3057,9 @@ calibrarMiolo() {
         hCal := janelaDoPonto(pg.x, pg.y)
         if (hCal && WinExist("ahk_id " hCal)) {
             WinGetPos(, , &cw, &ch, "ahk_id " hCal)
-            IniWrite cw, INI, "pontos", "calib_w"
-            IniWrite ch, INI, "pontos", "calib_h"
-            IniWrite WinGetTitle("ahk_id " hCal), INI, "pontos", "calib_janela"
+            IniWrite cw, INI, secPontos(), "calib_w"
+            IniWrite ch, INI, secPontos(), "calib_h"
+            IniWrite WinGetTitle("ahk_id " hCal), INI, secPontos(), "calib_janela"
         }
     }
 
@@ -2440,8 +3088,8 @@ esperarF9() {
 
 lerPonto(chave) {
     global INI
-    x := IniRead(INI, "pontos", chave "_x", "")
-    y := IniRead(INI, "pontos", chave "_y", "")
+    x := IniRead(INI, secPontos(), chave "_x", "")
+    y := IniRead(INI, secPontos(), chave "_y", "")
     if (x = "" || y = "")
         throw Error("ponto nao calibrado: " chave " — rode F9")
     return {x: Integer(x), y: Integer(y)}
@@ -2454,15 +3102,16 @@ clicar(chave, seco := false) {
     ; suficiente para a sequencia de cliques nao ser identica.
     x := p.x + Random(-6, 6)
     y := p.y + Random(-6, 6)
+    global VEL_MOUSE_MIN, VEL_MOUSE_MAX
     if seco {
-        MouseMove x, y, Random(4, 11)
+        MouseMove x, y, Random(VEL_MOUSE_MIN, VEL_MOUSE_MAX)
         ToolTip "[seco] clicaria em " chave
         pausa(280)
         return
     }
-    ; ⚠️ o mouse ANDA (velocidade 8-22; quanto maior, mais devagar) e so'
-    ; depois clica — com um respiro curto no meio, como quem mira.
-    MouseMove x, y, Random(4, 11)
+    ; ⚠️ o mouse ANDA (quanto MAIOR o numero, mais devagar; 0 e' teleporte) e
+    ; so' depois clica — com um respiro curto no meio, como quem mira.
+    MouseMove x, y, Random(VEL_MOUSE_MIN, VEL_MOUSE_MAX)
     pausa(120, 50)
     Click
     pausa(180)
@@ -2491,13 +3140,19 @@ gravarRoteiro(aba, roteiro) {
     global DIR_ROT
     if !DirExist(DIR_ROT)
         DirCreate DIR_ROT
-    t1 := recortarTake(roteiro, "TAKE 01/02")
-    t2 := recortarTake(roteiro, "TAKE 02/02")
-    if (t1 = "" || t2 = "")
-        throw Error("nao consegui recortar os dois TAKE do roteiro da aba " aba)
+    ; ⭐ N takes, nunca dois cravados: o V3 grava tres arquivos.
+    takes := []
+    loop nTakes() {
+        i := A_Index
+        t := recortarTake(roteiro, Format("TAKE 0{1}{2}", i, sufTake()))
+        if (t = "")
+            throw Error("nao consegui recortar o TAKE 0" i sufTake()
+                        " do roteiro da aba " aba)
+        takes.Push([i, t])
+    }
     ; ⚠️ um arquivo por take, com o numero da aba no nome: e' assim que a Fase 2
     ; sabe qual take pertence a qual imagem sem depender de ordem de nada.
-    for par in [[1, t1], [2, t2]] {
+    for par in takes {
         arq := Format("{1}\\aba{2:02}-take{3}.txt", DIR_ROT, aba, par[1])
         if FileExist(arq)
             FileDelete arq
@@ -2521,10 +3176,13 @@ pegarRoteiro(tAgente) {
                     "nas versoes novas.")
     txt := A_Clipboard
 
-    ; ⛔ AS CINCO PARTES, uma a uma. Procurar so' por `IMAGE` nao basta: se
+    ; ⛔ AS PARTES, uma a uma — CINCO no Vertical 2 e SETE no Vertical 3.
+    ; ⚠️ O sufixo (`/02` ou `/03`) vem de `sufTake()`, nunca escrito na mao:
+    ; cravado, ele recusava todo roteiro de tres takes ANTES de colar nada.
+    ; Procurar so' por `IMAGE` nao basta: se
     ; vier apenas o 01/02, o lote sai pela metade e o slot 2 fica vazio para
     ; sempre — e o video so' seria descoberto quebrado depois do render.
-    for parte in ["REF 01:", "IMAGE 01/02", "IMAGE 02/02", "TAKE 01/02", "TAKE 02/02"] {
+    for parte in partesDoRoteiro() {
         if !InStr(txt, parte)
             throw Error("o roteiro copiado nao tem " parte "`n`n"
                         "primeiros 150 caracteres:`n" SubStr(txt, 1, 150))
@@ -2535,6 +3193,10 @@ pegarRoteiro(tAgente) {
 ; =============================================================================
 rodar(seco) {
     global rodando
+    ; ⛔ NA THREAD DO CICLO, nao so' na partida: `SetKeyDelay`/`SetMouseDelay`
+    ; sao por thread, e sem esta linha um valor salvo na tela depois de o script
+    ; subir nunca chegaria ao lote que esta' rodando.
+    aplicarTempos()
     rodando := true
     try
         rodarMiolo(seco)
@@ -2549,7 +3211,11 @@ rodar(seco) {
 ; no primeiro conserto que so' uma delas recebesse — e a que ficaria para tras
 ; seria justamente a que gasta credito.
 percorrerAbas(hJanela, abas, seco, tAgente, prefixo := "") {
-    global abortar
+    ; ⚠️ `PARSE_MS`/`PARSE_EXTRA` DECLARADOS, mesmo so' sendo lidos: no v2 um
+    ; nome nao declarado dentro de uma funcao e' LOCAL, e um local em branco
+    ; viraria `Sleep 0` — o `Gerar` clicado contra um roteiro pela metade, em
+    ; silencio. E' a mesma razao de `pausa()` declarar o RITMO que so' le'.
+    global abortar, PARSE_MS, PARSE_EXTRA
     loop abas {
         i := A_Index
         if abortar
@@ -2589,7 +3255,11 @@ percorrerAbas(hJanela, abas, seco, tAgente, prefixo := "") {
                 ; ⚠️ ESTA e' a unica espera que NAO deve encolher: o app
                 ; precisa reparsear o roteiro colado antes de o Gerar valer.
                 ; Aqui o sorteio so' ADICIONA tempo, nunca tira.
-                Sleep 900 + Random(0, 700)
+                ; ⛔ FORA DO `RITMO` de proposito — e continua fora mesmo agora
+                ; que virou campo. Ela e' FUNCAO (o app tem de terminar de
+                ; reparsear), nao cadencia; quem a encurtar clica em `Gerar`
+                ; contra um roteiro pela metade e gasta credito no lixo.
+                Sleep PARSE_MS + Random(0, PARSE_EXTRA)
                 respirar()
                 clicar("cr_gerar")
                 pausa(1000)
@@ -2684,6 +3354,31 @@ rodarMiolo(seco) {
 ;
 ; ⚠️ O Esc aborta TUDO, nao so' a bancada da vez. Quem aperta Esc no meio de uma
 ; automacao quer que ela pare, nao que pule para a proxima.
+; ⭐ A PAUSA ENTRE UMA BANCADA E A PROXIMA (2026-08-15) — pedido do operador:
+; *"tempo entre as bandas"*. Ela NAO existia: a fase 1 emendava uma sessao na
+; outra sem respiro nenhum, o que e' justamente o padrao de maquina que o resto
+; deste arquivo passa o dia inteiro tentando quebrar.
+; ⛔ PADRAO ZERO, e de proposito: com o INI vazio o script se comporta como
+; antes desta funcao existir. Numero inventado por mim mudaria o lote dele sem
+; ninguem ter pedido.
+; ⚠️ NAO PAUSA DEPOIS DA ULTIMA — esperar dois minutos para nao fazer mais nada
+; e' a versao mais barata de um script que parece travado.
+; ⚠️ E usa `dormir()`, nao `Sleep`: durante a pausa o Esc tem de continuar
+; abortando, senao a unica saida seria matar o processo.
+pausaEntreBancadas(atual, lista) {
+    global ENTRE_BANCADAS_S, abortar
+    if (ENTRE_BANCADAS_S <= 0 || abortar)
+        return
+    if (lista.Length && lista[lista.Length].chave = atual.chave)
+        return
+    ; ±12% como toda espera longa deste script: alarme cravado e' relogio.
+    ms := ENTRE_BANCADAS_S * 1000 * (100 + Random(-12, 12)) // 100
+    anotar("pausa entre bancadas: " Round(ms / 1000) "s")
+    ToolTip "pausa entre bancadas — " Round(ms / 1000) "s   (Esc aborta)"
+    dormir(ms)
+    ToolTip()
+}
+
 rodarVarias(seco, abas, tAgente) {
     global abortar
     escolhidas := escolherBancadas(seco, abas)
@@ -2705,6 +3400,7 @@ rodarVarias(seco, abas, tAgente) {
             anotar("== " b.chave " ==")
             percorrerAbas(b.h1, abas, seco, tAgente, b.chave)
             feitas.Push(b)
+            pausaEntreBancadas(b, escolhidas)
         } catch as e {
             anotar("== " b.chave ": FALHOU — " e.Message)
             falhas.Push({chave: b.chave, erro: e.Message})
@@ -2722,6 +3418,7 @@ rodarVarias(seco, abas, tAgente) {
                 prepararJanela(b.h1)
                 anotar("== ronda de " b.chave " ==")
                 ronda(b.h1, true)
+                pausaEntreBancadas(b, feitas)
             } catch as e {
                 anotar("== ronda de " b.chave ": FALHOU — " e.Message)
                 falhas.Push({chave: b.chave " (ronda)", erro: e.Message})
@@ -2830,7 +3527,7 @@ irParaAba(n) {
 ronda(hJanela, silencioso := false) {
     global abortar, INI
     abas    := Integer(IniRead(INI, "config", "abas", "0"))
-    corVaz  := IniRead(INI, "pontos", "cor_vazio", "")
+    corVaz  := IniRead(INI, secPontos(), "cor_vazio", "")
     maxR    := Integer(IniRead(INI, "config", "rondas", "6"))
     espera  := Integer(IniRead(INI, "config", "espera_s", "15"))
 
@@ -2870,7 +3567,7 @@ ronda(hJanela, silencioso := false) {
             irParaAba(i)
             pausa(400, 45)
             vazios := 0
-            for par in [["cr_slot1", "cr_reger1"], ["cr_slot2", "cr_reger2"]] {
+            for par in paresDaRonda() {
                 p := lerPonto(par[1])
                 if (PixelGetColor(p.x, p.y) = corVaz) {
                     vazios++
