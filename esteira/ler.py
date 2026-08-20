@@ -326,6 +326,11 @@ def main():
     ap.add_argument("video")
     ap.add_argument("--limiar", type=float, default=LIMIAR)
     ap.add_argument("--por-take", type=int, default=4)
+    # ⚠️ O app ja' colapsava e a linha de comando nao — duas portas para a
+    # mesma esteira com comportamento diferente e' o proximo relatorio de
+    # "mas aqui deu outra coisa".
+    ap.add_argument("--takes", default="3",
+                    help="2, 3 ou 'fonte' (respeita todos os cortes)")
     ap.add_argument("--sem-fala", action="store_true",
                     help="pula a transcricao (video mudo ou so' visual)")
     a = ap.parse_args()
@@ -340,8 +345,11 @@ def main():
     dur = duracao(a.video)
     cs = cortes(a.video, a.limiar)
     tks = takes(dur, cs)
-    print("%s · %.1fs · %d corte(s) -> %d take(s)"
-          % (slug, dur, len(cs), len(tks)))
+    bruto = len(tks)
+    tks = colapsar(tks, a.takes)
+    print("%s · %.1fs · %d corte(s) -> %d take(s)%s"
+          % (slug, dur, len(cs), len(tks),
+             ("  (colapsado de %d)" % bruto) if bruto != len(tks) else ""))
     for i, (x, y) in enumerate(tks, 1):
         print("   take %d: %5.1fs -> %5.1fs  (%.1fs)" % (i, x, y, y - x))
 
