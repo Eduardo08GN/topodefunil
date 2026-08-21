@@ -132,6 +132,74 @@ PAGINA (congruencia inviolavel), e duas vozes decidindo o mesmo sintagma o Veo
 resolve inventando — defeito FT14 do FIGHT 16.
 
 ===============================================================================
+ ⭐⭐ A VARREDURA ADVERSARIAL DE 2026-08-21 — o que ela achou e o que ela custou
+===============================================================================
+Tres verificadores mediram este motor com lentes diferentes um dia depois de ele
+nascer. **Vinte e um achados, todos reproduzidos rodando o comando da
+evidencia** — e o que eles tem em comum vale mais que qualquer um deles:
+
+  ⛔⛔ **NENHUM defeito apareceu como ERRO de lente.** O `--autoteste` imprimia
+  `0 ERRO, 0 AVISO` sobre 400 videos em que 100% dos blocos nomeavam o corpo
+  duas a quatro vezes, 46% tinham a direcao de cena no genero errado, 32%
+  pediam `both figures` num quadro de tres pessoas e 21% punham o casal em dois
+  lugares ao mesmo tempo. ⭐ **Treze lentes, e o que elas cobravam era a
+  PRESENCA das pecas certas — nunca a CONSISTENCIA do bloco montado.**
+
+O que entrou por causa disso:
+
+  · **Cinco lentes novas** — `RU14` (um corpo, um sintagma), `RU15` (geometria
+    do casal), `RU16` (silencio na fala exige silencio no quadro), `RU17` (a
+    direcao de cena concorda com o elenco) e `RU18` (o CT5 nas TRES falas).
+  · **`RU3`, `RU4` e `RU5` cresceram**: peca fantasma, rosto no `porte` com a
+    camera de costas, e o bloco INTEIRO em vez de dois tercos dele.
+  · **O sorteio mudou de regra** (`_sortear_plano`): a entrada e' sorteada
+    ANTES do orcamento, e o prazo virou exclusivo por fala.
+  · **O painel virou medicao**: cadeado e botao `trocar` contados eixo por eixo
+    no autoteste, mais uma varredura sob as travas de `sexo` e `rosto_ato1`.
+  · **O motor entrou nos medidores** de que estava fora (quatro dos sete).
+  · **`main()` nao imprime mais video reprovado**: re-sorteia ate' 12 vezes.
+
+⏳⏳ **O QUE FICOU ABERTO — ALCADA DO OPERADOR, com o numero medido ao lado.**
+Nada disto e' esquecimento: sao decisoes de COPY e de CENA, e a regra do repo e'
+sugerir, nunca trocar.
+
+  A. ⏳ **O ATO 3 NAO TEM RECEITA EM QUADRO.** Medido: o IMAGE 03 difere do
+     IMAGE 02 em UMA sentenca — a palma erguida e a cabeca virada. Nenhuma
+     tigela, caneca, jarro ou papel na mao de ninguem, em 300 de 300 sorteios.
+     O `D3` chama o ato 3 de *"A RECEITA + CTA"* e visualmente ele e' o ato 2
+     com um gesto novo. ⭐ Um objeto so' — o copo pronto na mao da Ruth, o
+     papel dobrado — separaria os dois quadros, e e' o unico beat que o CT5
+     permite MOSTRAR sem nomear ingrediente.
+  B. ⏳ **A RUTH NAO TEM ARQUITETURA FACIAL NEM ETNIA ESCRITA.** Medido: a
+     constante `RUTH` tem UM traco de rosto (`a deeply lined face`) contra os
+     cinco de cada entrada de `ROSTOS` (olho, sobrancelha, nariz, orelha,
+     sinal). O cabecalho diz *"ela aparece identica nos 15 reels"* e *"sortear
+     a Ruth seria trocar a marca"* — hoje quem sorteia a Ruth e' o gerador, a
+     cada video. ⛔ Nao inventei o rosto dela: inventar a marca e' exatamente o
+     que a frase acima proibe. A `RU2` cobra tres pecas de ROUPA e passa a
+     cobrar os tracos no dia em que eles existirem.
+  C. ⏳ **AS ENTRADAS LONGAS DE COPY CABEM EM POUCOS DESASTRES.** O conserto do
+     sorteio nivelou o que dava para nivelar (a `vi7` foi de 6 para 31 em 400,
+     a `im2` de 4 para 10), e o que sobra e' aritmetica: com um beat de
+     desastre de 13 palavras, o orcamento de abertura+testemunha e' **10**, e a
+     menor abertura (4) com a menor testemunha (5) ja' gasta 9. A entrada de 7
+     ou 8 palavras **nao cabe em desastre nenhum desses**, e nenhum sorteio
+     conserta isso. ⭐ Saidas, as duas de copy: encurtar as entradas longas, ou
+     encurtar os beats de desastre longos. O autoteste agora IMPRIME a razao
+     max/min por entrada, para a divida ter numero.
+  D. ⏳ **4 DAS 14 PESSOAS SAO ANONIMAS E ABREM EM PRONOME** (122 de 400
+     videos): *"This was her before"*, *"Nothing was simple for them"*. E'
+     desenho declarado e verbatim do v28 — e e' tambem o unico lugar do motor
+     onde o take 1 nao tem referente proprio. Vale a pena o operador olhar um
+     desses videos na tela antes de o lote sair.
+
+⚠️ E **o que a varredura NAO conseguiu me fazer consertar sozinho** esta' escrito
+onde acontece: a `cctv_calcada` e a `rampa_medico` prometiam na FALA coisas que
+o quadro nao pagava (uma crianca, as pernas cedendo). ⭐ Consertei pelo lado da
+CENA, nao da copy — a crianca entrou no carrinho, as pernas entraram no `acao` —
+porque a fala e' o que converte e a imagem e' o que se ajusta a ela.
+
+===============================================================================
  ⚠️ RISCOS DITOS UMA VEZ
 ===============================================================================
 **Moderacao.** Isto e' humilhacao explicita de pessoa obesa, com terceiros
@@ -268,6 +336,22 @@ RUTH_PROVAS = ("prayer cap", "pinafore apron", "wire-rimmed glasses")
 # CONJUGADO (o evento e' o sujeito, ou o verbo e' modal/passado): o mesmo pool
 # serve `she`, `he` e `they` sem quebrar concordancia. `acao` segue a mesma
 # regra, e por isso nenhuma das nove precisa de variante de numero.
+# ⛔⛔ A CENA MUDA (`test_q` / `mov_q` / `audio_q`) — DEFEITO MEDIDO EM
+# 2026-08-21, e ele desmentia o cabecalho deste proprio pool.
+# O beat `silencio` (*"and nobody said a word"*, *"and the people there watched
+# in total silence"*) so' existe em DOIS desastres — `cadeira_salao` e
+# `reabilitacao` — e os DOIS tem riso escrito no `test`, no `mov` e, num deles,
+# no `audio`. Medido em 400 sorteios: **21 de 21** videos com a forma
+# `silencio` saiam sobre uma imagem que RI. Fala que desmente o proprio quadro
+# e' exatamente o defeito que a leitura otica achou em seis dos quinze reels da
+# fonte, invertido — e o comentario acima ja' declarava esse conserto feito.
+# ⭐ A saida NAO foi matar a forma (`silencio` e' verbatim do v46/v50 e o
+# autoteste reprovaria o pool com uma forma que nunca sai): foi dar aos dois
+# desastres uma variante MUDA do mesmo quadro. Mesmo lugar, mesmo elenco,
+# mesma contagem de pessoas — muda o GESTO (a mao sobre a boca no lugar do
+# riso) e o audio. ⚠️ Quando os campos `_q` faltam, a lente `RU16` reprova a
+# combinacao antes de ela chegar ao operador.
+#
 # ⚠️ `formas` declara quais formas de TESTEMUNHA cabem naquele quadro —
 # `plateia` (todo mundo virou a cabeca) so' existe onde ha' sala cheia, e
 # `dedo` so' onde ha' vizinho. Par que nao existe no mundo nao e' variedade,
@@ -317,7 +401,7 @@ DESASTRES = [
             "grey daylight, and a polished steel shop hoist with an orange "
             "hydraulic ram standing in the middle of the floor",
      "acao": "black nylon lifting straps run under the arms and hips of the "
-             "very heavy body hanging upright in the sling a few inches above "
+             "body hanging upright in the sling a few inches above "
              "the rug, both hands gripping the straps, while two firefighters "
              "in tan bunker gear steady the mast",
      "test": "crowded into the doorway behind the hoist stand four neighbours "
@@ -349,12 +433,12 @@ DESASTRES = [
             "basins and rolled white towels",
      "acao": "the carved wooden armrest of the front pedicure throne has split "
              "and torn loose and the leather seat has dropped off its "
-             "pedestal, so the very heavy customer is down on the tile beside "
-             "it with both bare feet still wet and the foot basin tipped over",
+             "pedestal, so she is down on the tile beside it with both bare "
+             "feet still wet and the foot basin tipped over",
      "test": "the six women seated along the pedicure row have all twisted "
              "round in their chairs to look, two of them laughing behind their "
              "hands, and two nail technicians in black work polos and white "
-             "latex gloves stand over the fallen customer without moving",
+             "latex gloves stand over her without moving",
      "mov": "As the line begins the last two heads in the row turn round. "
             "Halfway through the line two of the seated women laugh behind "
             "their hands and one leans over to say something. As the line ends "
@@ -365,7 +449,18 @@ DESASTRES = [
      "luz": "Flat cool white fluorescent ceiling light, almost shadowless, a "
             "faint green bounce off the walls.",
      "audio": "the sharp crack of splitting wood, a collective gasp, a chair "
-              "caster rolling and then a room gone quiet"},
+              "caster rolling and then a room gone quiet",
+     # ⛔⛔ A VARIANTE MUDA (ver o bloco `A CENA MUDA` abaixo): o mesmo quadro
+     # sem o riso, para o beat `silencio` nao desmentir a propria imagem.
+     "test_q": "the six women seated along the pedicure row have all twisted "
+               "round in their chairs to look, two of them with a flat hand "
+               "over the mouth and nobody saying anything, and two nail "
+               "technicians in black work polos and white latex gloves stand "
+               "over her without moving",
+     "mov_q": "As the line begins the last two heads in the row turn round. "
+              "Halfway through the line two of the seated women put a hand "
+              "over the mouth and not one of them speaks. As the line ends "
+              "the whole room is still watching and nobody moves"},
 
     {"id": "rampa_medico", "curto": "a rampa do medico",
      "v": "v09/v15/v51", "sexos": ("casal",),
@@ -381,9 +476,9 @@ DESASTRES = [
             "both sides of the ramp, a black planter with a clipped shrub and "
             "a parked SUV at street level behind the railing",
      "acao": "halfway up the ramp the wheelchair has tipped onto its side and "
-             "dumped its occupant onto the concrete, and the very heavy person "
-             "who was pushing it is down flat on the slope beside it, one "
-             "slip-on shoe thrown clear a few feet away",
+             "dumped one of them onto the concrete, and the other is down "
+             "flat on the slope beside it with the legs folded under the "
+             "weight, one slip-on shoe thrown clear a few feet away",
      "test": "six people who were waiting outside the entrance have stopped on "
              "the steps to watch: two of them laughing with their heads "
              "together, a young man in a delivery uniform standing still with "
@@ -413,7 +508,7 @@ DESASTRES = [
             "driveway, green shrubs and an empty folding wheelchair parked at "
             "the foot of the steps",
      "acao": "one wooden tread has split clean through halfway up the flight "
-             "and both very heavy bodies are down, one sitting back on the "
+             "and both of them are down, one sitting back on the "
              "broken step with both hands still on the rail and the other flat "
              "on the driveway below, pale wood splinters scattered across the "
              "gravel",
@@ -445,8 +540,8 @@ DESASTRES = [
             "kerb line along the far edge and a mowed lawn beyond",
      "acao": "a foot has slipped coming down out of the open sliding door, the "
              "takeaway coffee has flown out of the hand and soaked the whole "
-             "front of the shirt, and the very heavy body is down on the brick "
-             "pavers with both arms braced and a brown puddle spreading across "
+             "front of the clothing, and the body is down on the brick pavers "
+             "with both arms braced and a brown puddle spreading across "
              "the stones",
      "test": "three neighbours are on the sidewalk right at the end of the "
              "driveway, close enough to read: two teenagers openly laughing "
@@ -478,10 +573,11 @@ DESASTRES = [
             "lawns, a young maple in a mulch bed, a clean asphalt street, a "
             "dark navy SUV parked at one side and a black coach lantern on the "
             "garage wall",
-     "acao": "both very heavy adults are face down on their own driveway, "
-             "tangled together and pointing in opposite directions, arms out "
-             "and unable to push themselves up, while a black three-wheel "
-             "stroller rolls away from them down the slope toward the street",
+     "acao": "both of them are face down on their own driveway, tangled "
+             "together and pointing in opposite directions, arms out and "
+             "unable to push themselves up, while a black three-wheel "
+             "stroller with a small child strapped into it rolls away from "
+             "them down the slope toward the street",
      "test": "four neighbours have closed into a ring around them on the "
              "concrete: a bearded man in a ball cap with his arms crossed "
              "laughing, a blonde woman beside him laughing too, a heavy man in "
@@ -492,8 +588,8 @@ DESASTRES = [
             "blonde woman laugh out loud and the stroller rolls another few "
             "feet. As the line ends nobody in the ring has bent down to help",
      "cam": "The shot is taken from under the garage eave about three metres "
-            "up, looking down the driveway at roughly thirty degrees, a wide "
-            "still frame that holds both bodies, the rolling stroller and the "
+            "up, looking down the driveway at roughly thirty degrees, wide "
+            "enough to hold both bodies, the rolling stroller and the "
             "whole ring of neighbours",
      "luz": "Flat bright overcast midday daylight, no hard shadows, slightly "
             "desaturated and low contrast.",
@@ -528,7 +624,19 @@ DESASTRES = [
      "luz": "Flat cool overhead fluorescent light, no shadow direction, a "
             "faint greenish institutional cast.",
      "audio": "rubber crutch tips knocking on wood, laboured breathing, a low "
-              "clinic hum and two people laughing quietly"},
+              "clinic hum and two people laughing quietly",
+     # ⛔⛔ A VARIANTE MUDA — mesmo quadro, mesmo elenco, sem o riso.
+     "test_q": "six other patients waiting on the bench along the far wall "
+               "have all stopped to watch: two of them leaning together and "
+               "watching without a word, one young man openly staring, and an "
+               "older woman who looks away and then back again",
+     "mov_q": "As the line begins one crutch tip skids on the tread and the "
+              "whole bench of patients looks up. Halfway through the line two "
+              "of them lean together and neither says anything. As the line "
+              "ends the climb stalls one step from the top and the room stays "
+              "silent",
+     "audio_q": "rubber crutch tips knocking on wood, laboured breathing and "
+                "a low clinic hum in a room with no voices in it"},
 
     {"id": "sofa_bombeiros", "curto": "os bombeiros erguem do sofa'",
      "v": "v59", "sexos": ("mulher", "homem"),
@@ -539,8 +647,8 @@ DESASTRES = [
             "rectangular glass-top coffee table on a thin dark metal frame in "
             "the foreground and a grey geometric-pattern area rug beneath it",
      "acao": "two firefighters in tan bunker gear with yellow reflective "
-             "stripes have taken a forearm each and are hauling the very heavy "
-             "body up out of the sagging sofa cushions, the head tipped back "
+             "stripes have taken a forearm each and are hauling the body up "
+             "out of the sagging sofa cushions, the head tipped back "
              "and the shoulders sagging under the grip",
      "test": "the front door stands open behind the sofa and five neighbours "
              "have crowded into the doorway to watch: three of them laughing "
@@ -591,50 +699,70 @@ DESASTRES = [
 # masculinos (v40 e v45) dizem `him`. Pool cresce de VIDEO LIDO, com o `v`
 # carimbado; nome masculino entra no dia em que um reel disser um. Inventar
 # quatro nomes aqui daria numero de pool e nao daria repertorio (§15).
+#
+# ⛔⛔ O CONTRATO DO `porte`, e as TRES clausulas nasceram de defeito MEDIDO no
+# bloco montado (2026-08-21), nao de gosto:
+#   1. ⛔ NAO REPETE O PESO. A primeira sintagma do IMAGE 01 ja' diz *"a very
+#      heavy 46-year-old woman"*; o `porte` dizia `very heavy,` outra vez na
+#      frase seguinte. Medido: 100% dos blocos tinham DUAS ou mais ocorrencias
+#      de `very heavy`, 76% tinham tres e 32% tinham QUATRO — quatro corpos
+#      nomeados para duas pessoas. Sujeito reintroduzido com sintagma novo e'
+#      licenca para o gerador desenhar mais um. Lente `RU14`.
+#   2. ⛔ NAO CITA ROSTO — nem `face`, nem `mouth`, nem `eyes`, nem expressao.
+#      Com `rosto_oculto` a camera esta' ATRAS da pessoa, e a frase seguinte
+#      dizia *"flushed deep red across the face"*. Medido: 108 dos 593
+#      ocultos, 9% de TODOS os videos. Contradicao o gerador resolve virando o
+#      rosto para a lente — que e' matar o modo inteiro. Lente `RU4`.
+#   3. ⛔ NAO NOMEIA PECA DE ROUPA. A peca e' do eixo `ROUPAS` e de mais
+#      ninguem: `the dress` sobre quem veste camiseta, `the shirt` sobre quem
+#      veste vestido. Medido em 400 sorteios: 27 videos com `the dress`
+#      fantasma e 63 com `the shirt`. Lente `RU3`.
+# ⚠️ As tres sao cobradas TAMBEM no contrato de pool do autoteste, entrada por
+# entrada, porque um pool novo entra sem passar por sorteio nenhum.
 PESSOAS = [
     # -- MULHER SOZINHA ---------------------------------------------------
     {"id": "janet", "curto": "Janet · 50 · sozinha", "v": "v24",
      "nome": "Janet", "sexo": "mulher", "idade": 50,
      "ref": "Janet", "suj": "Janet", "obj": "Janet", "poss": "her",
      "poss_nome": "Janet's", "vida": "life",
-     "porte": "very heavy, well past three hundred pounds, moving slowly and "
-              "carrying the weight low"},
+     "porte": "well past three hundred pounds, moving slowly and carrying "
+              "the weight low"},
     {"id": "helen", "curto": "Helen · 57 · sozinha", "v": "v39",
      "nome": "Helen", "sexo": "mulher", "idade": 57,
      "ref": "Helen", "suj": "Helen", "obj": "Helen", "poss": "her",
      "poss_nome": "Helen's", "vida": "life",
-     "porte": "very heavy, around three hundred pounds, short of breath and "
-              "flushed deep red across the face and neck"},
+     "porte": "around three hundred pounds, short of breath and flushed "
+              "deep red across the neck and forearms"},
     {"id": "betsy", "curto": "Betsy · 48 · sozinha", "v": "v46",
      "nome": "Betsy", "sexo": "mulher", "idade": 48,
      "ref": "Betsy", "suj": "Betsy", "obj": "Betsy", "poss": "her",
      "poss_nome": "Betsy's", "vida": "life",
-     "porte": "very heavy, wide through the shoulders and hips, filling the "
-              "whole width of the seat"},
+     "porte": "wide through the shoulders and hips, filling the whole width "
+              "of the seat"},
     {"id": "margaret", "curto": "Margaret · 41 · sozinha", "v": "v47",
      "nome": "Margaret", "sexo": "mulher", "idade": 41,
      "ref": "Margaret", "suj": "Margaret", "obj": "Margaret", "poss": "her",
      "poss_nome": "Margaret's", "vida": "life",
-     "porte": "very heavy, close to four hundred pounds, barefoot and unable "
-              "to take her own weight"},
+     "porte": "close to four hundred pounds, barefoot and unable to take "
+              "her own weight"},
     {"id": "betty", "curto": "Betty · 45 · sozinha", "v": "v50",
      "nome": "Betty", "sexo": "mulher", "idade": 45,
      "ref": "Betty", "suj": "Betty", "obj": "Betty", "poss": "her",
      "poss_nome": "Betty's", "vida": "life",
-     "porte": "very heavy, thick through the arms and middle, the clothes "
-              "pulled tight everywhere they touch"},
+     "porte": "thick through the arms and middle, and heaviest low across "
+              "the hips"},
     {"id": "linda", "curto": "Linda · 53 · sozinha", "v": "v59",
      "nome": "Linda", "sexo": "mulher", "idade": 53,
      "ref": "Linda", "suj": "Linda", "obj": "Linda", "poss": "her",
      "poss_nome": "Linda's", "vida": "life",
-     "porte": "very heavy, sunk deep into whatever she sits on and unable to "
-              "rise out of it alone"},
+     "porte": "sunk deep into whatever she sits on and unable to rise out "
+              "of it alone"},
     {"id": "marjorie_sala", "curto": "Marjorie · 38 · sozinha", "v": "v27",
      "nome": "Marjorie", "sexo": "mulher", "idade": 38,
      "ref": "Marjorie", "suj": "Marjorie", "obj": "Marjorie", "poss": "her",
      "poss_nome": "Marjorie's", "vida": "life",
-     "porte": "very heavy, roughly four hundred pounds, young in the face and "
-              "already unable to stand unaided"},
+     "porte": "roughly four hundred pounds, and already unable to stand "
+              "unaided at that age"},
     # ⭐ A VARIANTE ANONIMA E' DA FONTE, nao economia minha: o v28 diz `This
     # was her before` do primeiro ao ultimo segundo e nunca da' um nome. Ela
     # existe no pool porque muda o registro do video — sem nome, o espectador
@@ -643,45 +771,45 @@ PESSOAS = [
      "nome": None, "sexo": "mulher", "idade": 40,
      "ref": "her", "suj": "she", "obj": "her", "poss": "her",
      "poss_nome": "her", "vida": "life",
-     "porte": "very heavy, broad through the back and upper arms, the dress "
-              "stretched tight across her"},
+     "porte": "broad through the back and upper arms, and wide across the "
+              "shoulder blades"},
     # -- HOMEM (⏳ os dois anonimos — ver a divida declarada acima) --------
     {"id": "anon_homem_v40", "curto": "sem nome · 35 · sozinho", "v": "v40",
      "nome": None, "sexo": "homem", "idade": 35,
      "ref": "him", "suj": "he", "obj": "him", "poss": "his",
      "poss_nome": "his", "vida": "life",
-     "porte": "extremely heavy, well over six hundred pounds, barefoot and "
-              "unable to carry his own weight a single step"},
+     "porte": "well over six hundred pounds, barefoot and unable to carry "
+              "his own weight a single step"},
     {"id": "anon_homem_v45", "curto": "sem nome · 37 · sozinho", "v": "v45",
      "nome": None, "sexo": "homem", "idade": 37,
      "ref": "him", "suj": "he", "obj": "him", "poss": "his",
      "poss_nome": "his", "vida": "life",
-     "porte": "extremely heavy, the shirt rucked up over the belly, breathing "
-              "hard with the mouth open"},
+     "porte": "carrying it all low and forward at the middle, breathing hard "
+              "and audibly"},
     # -- CASAL (o nome e' o DELA; o marido nunca e' nomeado na fonte) -----
     {"id": "marjorie", "curto": "Marjorie · 44 · casal", "v": "v09/v15",
      "nome": "Marjorie", "sexo": "casal", "idade": 44,
      "ref": "Marjorie", "suj": "Marjorie and her husband", "obj": "them",
      "poss": "their", "poss_nome": "Marjorie's", "vida": "lives",
-     "porte": "both very heavy, both past three hundred pounds, both moving "
-              "at the same slow pace"},
+     "porte": "both past three hundred pounds, both moving at the same slow "
+              "pace"},
     {"id": "marilyn", "curto": "Marilyn · 46 · casal", "v": "v51",
      "nome": "Marilyn", "sexo": "casal", "idade": 46,
      "ref": "Marilyn", "suj": "Marilyn and her husband", "obj": "them",
      "poss": "their", "poss_nome": "Marilyn's", "vida": "lives",
-     "porte": "both very heavy, wide through the shoulders and hips, leaning "
-              "on each other to move"},
+     "porte": "both wide through the shoulders and hips, leaning on each "
+              "other to move"},
     {"id": "mary", "curto": "Mary · 52 · casal", "v": "v49",
      "nome": "Mary", "sexo": "casal", "idade": 52,
      "ref": "Mary", "suj": "Mary and her husband", "obj": "them",
      "poss": "their", "poss_nome": "Mary's", "vida": "lives",
-     "porte": "both very heavy, grey at the temples and slow on their feet"},
+     "porte": "both grey at the temples and slow on their feet"},
     {"id": "anon_casal", "curto": "sem nome · 39 · casal", "v": "v38",
      "nome": None, "sexo": "casal", "idade": 39,
      "ref": "them", "suj": "they", "obj": "them", "poss": "their",
      "poss_nome": "their", "vida": "lives",
-     "porte": "both very heavy, both wide through the middle, neither able to "
-              "push up off the ground"},
+     "porte": "both wide through the middle, neither able to push up off "
+              "the ground"},
 ]
 
 # ⚠️ `corpo` e' DERIVADO e nao escrito entrada por entrada: e' pura
@@ -691,10 +819,18 @@ PESSOAS = [
 # o nome. Existe porque duas frases precisam do pronome mesmo quando ha' nome:
 # a do remedio (a virada ao lado ja' nomeou) e a das roupas folgadas (o
 # possessivo ja' esta' em pronome).
+# ⚠️ `e_sao` e' a COPULA em numero, e ela existe por defeito MEDIDO: a `vi3`
+# dizia `And here is %(obj)s now,` e devolvia *"And here is THEM now"* e
+# *"And here is HIM now"* — ingles quebrado em 34 de 400 videos (8,5%). O
+# guarda `_RX_ANTES_REF` do autoteste nao pegava porque ele so' varre `%(ref)s`
+# em posicao de sujeito, e `here is` + `%(obj)s` cai fora dele. Com a copula em
+# slot a mesma entrada serve *"And here Janet is now"*, *"And here he is now"*
+# e *"And here they are now"*.
 for _p_ in PESSOAS:
     _p_["corpo"] = "bodies" if _p_["sexo"] == "casal" else "body"
     _p_["obj_pron"] = {"mulher": "her", "homem": "him",
                        "casal": "them"}[_p_["sexo"]]
+    _p_["e_sao"] = "are" if _p_["sexo"] == "casal" else "is"
 
 SEXOS = ("mulher", "homem", "casal")
 
@@ -1207,6 +1343,18 @@ FORMAS_ABERTURA = ("apresentacao", "rotina", "causa", "dia", "tarefa")
 # ⭐ Nenhum truque de sorteio conserta faixa larga: quando uma entrada custa o
 # dobro da vizinha, o orcamento decide por ela. O sorteio nivela; o pool tem de
 # caber.
+#
+# ⏳⏳ E ISSO CONTINUA VERDADE DEPOIS DO CONSERTO DE 2026-08-21, com o numero
+# na mao. O `_sortear_plano` tirou o orcamento do papel de PESO e o deixou so'
+# no papel de VIABILIDADE, e onde havia folga isso resolveu (a `vi7`, de dez
+# palavras, foi de 6 sorteios em 400 para 31). Onde nao ha' folga nada resolve:
+#     beat de desastre 13 + fecho 2 = 15  ->  sobram 10 para abertura+testemunha
+#     menor abertura 4 + menor testemunha 5 = 9  ->  sobra UMA palavra
+# A entrada de 7 palavras nao entra nessa conta em desastre nenhum desses, e
+# por isso `ap1`+`ap3` (as duas de 4) ainda levam mais de um terco do lote.
+# ⛔ O conserto que falta e' de COPY e e' alcada do operador: ou as entradas
+# longas encurtam, ou os beats de desastre longos encurtam. O autoteste imprime
+# a razao max/min por entrada para a divida ter numero em vez de impressao.
 
 
 # ---------------------------------------------------------------------------
@@ -1291,10 +1439,21 @@ BEATS_TESTEMUNHA = [
     {"id": "im3", "forma": "impotencia", "curto": "ficaram parados olhando",
      "txt": "and everyone just stood there watching."},
     # -- DEDO — v38 -------------------------------------------------------
+    # ⚠️ AS DUAS PERDERAM O `it` EM 2026-08-21, e isso e' o cabecalho deste
+    # pool sendo cumprido pela primeira vez. Ele ja' declarava *"NENHUMA
+    # ENTRADA USA PRONOME SEM DONO"* e dizia que cada uma passou a nomear o
+    # grupo — o GRUPO foi nomeado e o OBJETO do verbo ficou pendurado:
+    # *"a neighbour shouted IT at him"* (gritou o QUE?), *"the neighbours
+    # pointed and said IT"*. Medido: 43 de 400 videos (10,8%). Pronome sem
+    # dono e' drifting, e o teste WTF descarta a sentenca.
     {"id": "de1", "forma": "dedo", "curto": "vizinho apontando e gritando",
-     "txt": "and a neighbour shouted it at %(obj_pron)s."},
+     # ⚠️ E AS DUAS MANTIVERAM O COMPRIMENTO ORIGINAL (7 e 6 palavras) de
+     # proposito: `de1` na forma longa (`shouted at her from the kerb`, 9
+     # palavras) caiu de 17 para 2 sorteios em 400 — conserto de copy que
+     # mata a propria entrada nao e' conserto.
+     "txt": "and a neighbour was shouting at %(obj_pron)s."},
     {"id": "de2", "forma": "dedo", "curto": "apontaram o dedo",
-     "txt": "and the neighbours pointed and said it."},
+     "txt": "and the neighbours pointed at %(obj_pron)s."},
     # ⚠️ ENCURTADA POR MEDICAO DE ALCANCE: com o `it` ela nunca saiu em 400
     # sorteios. Entrada que nao cabe com os minimos dos outros eixos esta'
     # morta, e o autoteste a contava como viva (§35).
@@ -1328,7 +1487,13 @@ FORMAS_TESTEMUNHA = ("riso", "plateia", "silencio", "impotencia", "dedo",
 VIRADAS = [
     {"id": "vi1", "curto": "e esta e' X agora", "txt": "And this is %(obj)s now,"},
     {"id": "vi2", "curto": "esta e' X hoje", "txt": "This is %(obj)s today,"},
-    {"id": "vi3", "curto": "e aqui esta' X agora", "txt": "And here is %(obj)s now,"},
+    # ⚠️ REESCRITA POR MEDICAO (2026-08-21): era `And here is %(obj)s now,` e
+    # devolvia *"And here is THEM now"* e *"And here is HIM now"* — ingles
+    # quebrado em 34 de 400 videos. O slot `%(obj)s` e' OBJETO, e `here is X`
+    # e' posicao de SUJEITO invertido. Com a copula em slot (`e_sao`) a mesma
+    # entrada serve os tres numeros e continua carregando o nome.
+    {"id": "vi3", "curto": "e aqui esta' X agora",
+     "txt": "And here %(suj)s %(e_sao)s now,"},
     {"id": "vi4", "curto": "e esta e' X depois da mudanca",
      "txt": "And this is %(obj)s after the change,"},
     {"id": "vi5", "curto": "olhe para X agora", "txt": "Now look at %(obj)s,"},
@@ -1510,9 +1675,17 @@ CAUDA = ("Everyday amateur snapshot look, soft sensor grain. No on-screen "
 # ⭐ A camera dos dois quadros do reencontro e' a MESMA, e travada: na fonte os
 # dois beats sao um plano continuo em 12 dos 15 reels. Mudar de angulo entre o
 # take 2 e o take 3 leria como corte para outra casa.
+# ⛔⛔ E A CLAUSULA NAO CONTA GENTE. Ela dizia `holding both figures full
+# length` e o quadro do CASAL tem TRES pessoas (ela, o marido e a Ruth) —
+# medido em 126 de 400 videos (32%). Instrucao de enquadramento que conta
+# menos gente do que o bloco descreve e' convite para o gerador cortar alguem,
+# e quem sai e' o marido ou a Ruth. ⚠️ Derivar o numero (`both`/`all three`)
+# resolveria o casal e quebraria no dia em que o elenco mudasse outra vez: a
+# forma NEUTRA nao tem esse prazo de validade. O autoteste cobra que nenhuma
+# palavra de contagem volte para ca'.
 CAM_REENCONTRO = ("The shot is taken from a few paces back at chest height, "
-                  "level and straight on, holding both figures full length "
-                  "from the ground up")
+                  "level and straight on, holding everyone in frame full "
+                  "length from the ground up")
 
 # ⛔ A TRAVA ANTI-ARTEFATO. Cena de queda com varias pessoas e' onde o gerador
 # mais inventa membro: um braco a mais, uma perna sem dono, dedos fundidos. A
@@ -1588,7 +1761,7 @@ def _dic(spec):
             "obj": p["obj"], "Obj": _cap(p["obj"]),
             "poss": p["poss"], "Poss": _cap(p["poss"]),
             "poss_nome": p["poss_nome"], "Poss_nome": _cap(p["poss_nome"]),
-            "obj_pron": p["obj_pron"],
+            "obj_pron": p["obj_pron"], "e_sao": p["e_sao"],
             "vida": p["vida"], "corpo": p["corpo"],
             "cta": _cta_literal()}
 
@@ -1632,6 +1805,110 @@ def _gravar_ledger(ledger, spec=None):
 # SORTEIO DA COPY
 # ===========================================================================
 
+def _tem_relogio(txt):
+    """A frase carrega uma EXPRESSAO DE PRAZO? (`a year on`, `eight months`)
+
+    ⚠️ Frequencia (`every morning`, `every single day`) NAO conta — sao coisas
+    diferentes e convivem na mesma respiracao sem contradicao. Mesmo criterio
+    da lente `RU13`, e de proposito: o filtro do sorteio e a lente que o cobra
+    tem de ler a MESMA coisa, senao um dos dois mente.
+    """
+    return bool(_RX_DURACAO.search(txt or ""))
+
+
+def _uniforme_por_forma(itens, rng):
+    """FORMA uniforme, e so' entao ENTRADA uniforme dentro dela.
+
+    `itens` sao tuplas `(entrada, n_palavras, tem_relogio)`.
+    """
+    grupos = {}
+    for it in itens:
+        grupos.setdefault(it[0].get("forma", "-"), []).append(it)
+    return rng.choice(grupos[rng.choice(sorted(grupos))])
+
+
+def _sortear_plano(pools, teto, rng):
+    """Sorteia uma combinacao com o ORCAMENTO entrando como VIABILIDADE, nunca
+    como peso.
+
+    `pools` e' uma lista de listas de `(entrada, n_palavras, tem_relogio)`.
+
+    ⛔⛔ ESTA FUNCAO SUBSTITUI O `_sortear_por_forma`, E O MOTIVO E' MEDIDO
+    (2026-08-21). Ele nivelava forma e entrada — mas nivelava **dentro do
+    conjunto que ja' tinha sobrevivido ao filtro de orcamento**, e a entrada
+    longa nao esta' nesse conjunto na maioria dos desastres. O resultado, em
+    400 sorteios:
+
+        apresentacao   ap1=78 (4 palavras) · ap3=74 (4) | ap2=5 (7) · ap4=9 (6)
+        tarefa         ta4=65 (5)                       | ta1=3 (8) · ta3=3 (8)
+        impotencia     im1=56 (6) · im3=60 (6)          | im2=4 (8)
+        silencio       si1=11 (5)                       | si2=2 (8)
+
+    Com a pre-selecao `sexo=homem` — que e' o modo real de lote — `ap1`+`ap3`
+    levavam **180 de 400 videos (45%)** e `de3` saia **zero** vezes. O proprio
+    docstring do antecessor dizia ter consertado isso ("`im2` nunca sorteou uma
+    unica vez"); medido depois, `im2` tinha saido de 0 para 4 em 400. De morta
+    para quase-morta.
+
+    ⭐ A REGRA NOVA E' UMA SO': **sorteia-se a entrada ANTES de olhar o
+    orcamento, e o orcamento so' decide QUEM AINDA CABE DEPOIS DELA.** Os eixos
+    sao percorridos em ordem ALEATORIA por video, cada um plano por forma e
+    depois por entrada, restrito ao que ainda deixa completacao viavel (a soma
+    do que ja' foi gasto mais o MINIMO de cada eixo que falta). Assim a entrada
+    de 8 palavras nao compete com a irma de 4: ela e' escolhida primeiro e o
+    orcamento passa a valer para as OUTRAS.
+    ⚠️ A ordem e' sorteada, e nao fixa, porque quem vai primeiro e' quem fica
+    perfeitamente plano — fixar a ordem seria escolher qual eixo tem o
+    privilegio, e os dois eixos deste motor tem entradas de tamanho desigual.
+
+    ⛔ E O PRAZO E' EXCLUSIVO POR FALA. Escolhida uma entrada que carrega
+    duracao, os eixos que faltam perdem as suas — e' a lente `RU13` movida para
+    DENTRO do sorteio. Medida antes: `vi7` x `vd2` produzia *"looked like a
+    year on [...] Eight months, and her whole life changed"* em 11 dos 810
+    trios, e o autoteste de 400 seeds FIXAS nunca via (1 em 3.000 sorteios
+    livres, 6 em 1.440 sob as travas do painel). Defeito que so' aparece na
+    tela do operador e' defeito que o gate nao pega.
+    """
+    n = len(pools)
+    restante = {k: list(pools[k]) for k in range(n)}
+    ordem = list(range(n))
+    rng.shuffle(ordem)
+    escolha, gasto = {}, 0
+    for k in ordem:
+        resto = sum(min(it[1] for it in restante[j])
+                    for j in range(n) if j != k and j not in escolha)
+        cand = restante[k]
+        cabem = [it for it in cand if gasto + it[1] + resto <= teto]
+        # ⚠️ Fallback: a entrada mais CURTA do eixo. Ele existe para o dia em
+        # que um beat de desastre novo estourar o orcamento sozinho — e o
+        # autoteste ja' cobra esse teto entrada por entrada, entao aqui ele
+        # nunca deveria disparar.
+        cabem = cabem or sorted(cand, key=lambda it: it[1])[:1]
+        it = _uniforme_por_forma(cabem, rng)
+        escolha[k], gasto = it[0], gasto + it[1]
+        if it[2]:
+            for j in range(n):
+                if j not in escolha:
+                    restante[j] = ([x for x in restante[j] if not x[2]]
+                                   or restante[j])
+    return tuple(escolha[i] for i in range(n))
+
+
+def _medir(pool, d):
+    """O pool com o comprimento e o relogio de cada entrada JA' RENDERIZADOS.
+
+    ⛔ Medir a entrada com os slots preenchidos e nao com `%(suj)s` cru nao e'
+    detalhe: `suj` vale `Marjorie and her husband` no casal e `she` no
+    singular, e a mesma entrada custa quatro palavras a mais num video e nao no
+    outro. Orcamento medido no molde e' orcamento medido errado.
+    """
+    saida = []
+    for x in pool:
+        t = _r(x["txt"], d)
+        saida.append((x, _palavras(t), _tem_relogio(t)))
+    return saida
+
+
 def _falas(spec, rng, quais=(0, 1, 2)):
     """As tres falas, cada uma sorteada entre as combinacoes que CABEM.
 
@@ -1639,11 +1916,10 @@ def _falas(spec, rng, quais=(0, 1, 2)):
     caiba): isso colapsa a variancia — medido no VICK 16, onde o take 2 saiu
     com UMA fala em 400 videos.
 
-    ⛔⛔ E SORTEIA-SE A **FORMA** ANTES DO RESULTADO. Num sorteio filtrado por
-    orcamento, entrada CURTA e' entrada favorecida: sorteando o par direto, a
-    forma mais curta fica com metade dos videos sem ninguem ter pedido. Se o
-    eixo que importa e' a FORMA, e' a forma que se sorteia — licao do RARO 16,
-    onde `pergunta` levava 48% dos videos com 4 das 22 entradas.
+    ⛔⛔ E SORTEIA-SE A **ENTRADA** ANTES DO ORCAMENTO, nao depois. Ver o
+    docstring de `_sortear_plano`: num sorteio filtrado por orcamento a entrada
+    CURTA nao ganha peso, ela ganha o LOTE, porque a longa simplesmente nao
+    esta' no conjunto que sobrou.
     """
     d = _dic(spec)
     des = spec["desastre"]
@@ -1653,14 +1929,32 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         beat = _r(des["fala"], d)
         # ⛔ A testemunha e' filtrada pelo campo `formas` do desastre: plateia
         # so' onde ha' sala cheia, dedo so' onde ha' vizinho.
-        pares = [(a, t) for a in ABERTURAS
-                 for t in BEATS_TESTEMUNHA if t["forma"] in des["formas"]
-                 if (_palavras(_r(a["txt"], d)) + _palavras(beat)
-                     + _palavras(_r(t["txt"], d))
-                     + _palavras(FECHO_ATO1)) <= TETO_FALA[1]]
-        pares = pares or [(a, t) for a in ABERTURAS for t in BEATS_TESTEMUNHA
-                          if t["forma"] in des["formas"]]
-        a, t = _sortear_por_forma(pares, rng, (1, 0))
+        # ⛔⛔ E PELO CADEADO DO PAINEL, que ate' 2026-08-21 nao existia aqui.
+        # `travas["testemunha"]` era declarada em `EIXOS_TRAVAVEIS` e NUNCA
+        # lida: o cadeado era honrado em 23 de 200 sorteios — 11%, que e' o
+        # acaso de 1 em 13 formas cabiveis — e o botao `trocar` do painel via
+        # a escolha do operador sobreviver 4 vezes em 120. Botao que promete e
+        # nao entrega e' pior que botao ausente (GO21), e a unica lente que
+        # pegaria isso estava desligada de proposito em `IGNORA_PAINEL`.
+        pool_t = [t for t in BEATS_TESTEMUNHA if t["forma"] in des["formas"]]
+        fixo = _palavras(beat) + _palavras(FECHO_ATO1)
+        travada = spec.get("trava_testemunha")
+        if travada:
+            so_ela = [t for t in pool_t if t["id"] == _chave(travada)]
+            # ⚠️ E O CADEADO CEDE QUANDO A ENTRADA NAO CABE, em vez de estourar
+            # o teto: medido, `de3` (9 palavras) travada sobre um beat de
+            # desastre de 13 devolvia uma cena 1 de 28 palavras — tres
+            # segundos de fala cortados, que e' o CTA inteiro no take 3 e o
+            # `Pure shame.` aqui. Cadeado que entrega fala cortada e' pior que
+            # cadeado que cede: o primeiro mente sobre o VIDEO, o segundo so'
+            # sobre o botao, e a lente RU12 nao perdoa nenhum dos dois.
+            menor_ab = min(_palavras(_r(a["txt"], d)) for a in ABERTURAS)
+            if so_ela and (fixo + menor_ab
+                           + _palavras(_r(so_ela[0]["txt"], d))
+                           <= TETO_FALA[1]):
+                pool_t = so_ela
+        a, t = _sortear_plano([_medir(ABERTURAS, d), _medir(pool_t, d)],
+                              TETO_FALA[1] - fixo, rng)
         spec["abertura"], spec["testemunha"] = a, t
         # ⚠️ A VIRGULA ANTES DA TESTEMUNHA nao e' estilo: todas as entradas
         # de `BEATS_TESTEMUNHA` abrem em `and`, e sem ela o take saia *"because of
@@ -1671,12 +1965,8 @@ def _falas(spec, rng, quais=(0, 1, 2)):
                                  FECHO_ATO1)
 
     if 1 in quais:
-        trios = [(v, m, p) for v in VIRADAS for m in REMEDIOS for p in PROVAS
-                 if (_palavras(_r(v["txt"], d)) + _palavras(_r(m["txt"], d))
-                     + _palavras(_r(p["txt"], d))) <= TETO_FALA[2]]
-        trios = trios or [(v, m, p) for v in VIRADAS for m in REMEDIOS
-                          for p in PROVAS]
-        v, m, p = _sortear_por_forma(trios, rng, (2,))
+        v, m, p = _sortear_plano([_medir(VIRADAS, d), _medir(REMEDIOS, d),
+                                  _medir(PROVAS, d)], TETO_FALA[2], rng)
         spec["virada"], spec["remedio"], spec["prova"] = v, m, p
         f[1] = "%s %s %s" % (_r(v["txt"], d), _r(m["txt"], d), _r(p["txt"], d))
 
@@ -1684,62 +1974,12 @@ def _falas(spec, rng, quais=(0, 1, 2)):
         # ⭐ O SELO E' OPCIONAL E O POOL VAZIO COMPETE DE IGUAL, como a PROVA
         # do RARO 16: forcar o selo estouraria os 25 nos CTAs longos, e o que
         # corta no fim de um take de 8s e' justamente o pedido.
-        pares = [(s, c) for s in SELOS for c in CTAS
-                 if (_palavras(_r(s["txt"], d))
-                     + _palavras(_r(c["txt"], d))) <= TETO_FALA[3]]
-        pares = pares or [(SELOS[0], c) for c in CTAS]
-        s, c = rng.choice(pares)
+        s, c = _sortear_plano([_medir(SELOS, d), _medir(CTAS, d)],
+                              TETO_FALA[3], rng)
         spec["selo"], spec["cta"] = s, c
         f[2] = " ".join(x for x in (_r(s["txt"], d), _r(c["txt"], d)) if x)
 
     return f
-
-
-def _sortear_por_forma(combos, rng, idx_forma):
-    """Sorteia a FORMA (uniforme) e so' depois a combinacao dentro dela.
-
-    `idx_forma` sao as posicoes da tupla cujo campo `forma` deve ficar plano.
-    ⚠️ Duas posicoes = duas rodadas de nivelamento: primeiro a forma da
-    abertura, depois a da testemunha DENTRO dela. Sem a segunda rodada a
-    testemunha curta voltaria a levar o lote.
-
-    ⛔⛔ E O NIVELAMENTO E' EM DOIS DEGRAUS — forma, DEPOIS entrada — porque
-    nivelar so' a forma nao salva a entrada longa. Medido em 400 sorteios com
-    um degrau so': as formas saiam planas e DUAS entradas (`pl2` e `im2`, as
-    duas mais longas dos seus grupos) nunca sortearam uma unica vez. Entrada
-    que nao sai esta' MORTA e o autoteste a conta como viva (§35), e o
-    mecanismo e' o mesmo do RARO 16 uma camada abaixo: num sorteio filtrado
-    por orcamento, dentro do grupo a entrada CURTA aparece em mais combinacoes
-    e leva o grupo inteiro.
-    """
-    atual = list(combos)
-    # ⛔ A FORMA E' NIVELADA EM SEQUENCIA, e a ORDEM importa: quem e' nivelado
-    # por ULTIMO herda a restricao de todas as escolhas anteriores. Por isso a
-    # TESTEMUNHA vem primeiro — e' o eixo mais constrangido (cada desastre so'
-    # comporta quatro das seis formas) e o que carrega o beat da vergonha.
-    for i in idx_forma:
-        grupos = {}
-        for c in atual:
-            grupos.setdefault(c[i].get("forma", "-"), []).append(c)
-        atual = grupos[rng.choice(sorted(grupos))]
-    # ⛔⛔ E A ENTRADA E' NIVELADA NA ORDEM INVERSA DA FORMA. Isto e' conserto
-    # de um vies MEDIDO em 2.000 sorteios, nao teoria:
-    #   · em cascata (testemunha e depois abertura) a abertura CURTA levava
-    #     tudo — `ta4` saiu 426 vezes contra 5, 3 e 3 das outras tres da mesma
-    #     forma, porque com o par ja' fixado so' ela ainda cabia;
-    #   · nivelando o PAR (id_abertura, id_testemunha) a distorcao caiu mas nao
-    #     sumiu (412 contra 11, 10 e 4), porque a entrada curta participa de
-    #     MAIS pares e ganha por contagem de pares.
-    # ⭐ A regra que sobrou e' simples e generaliza: **nivela-se por ultimo o
-    # eixo cujas entradas tem comprimento parecido, e primeiro o eixo cujas
-    # entradas variam de tamanho** — quem e' escolhido por ultimo e' escolhido
-    # pelo orcamento, nao pelo sorteio.
-    for i in reversed(idx_forma):
-        grupos = {}
-        for c in atual:
-            grupos.setdefault(c[i]["id"], []).append(c)
-        atual = grupos[rng.choice(sorted(grupos))]
-    return rng.choice(atual)
 
 
 # ===========================================================================
@@ -1768,6 +2008,22 @@ def sortear(pagina, rng, led, travas=None):
         if cabem:
             desastre = _fresco(cabem, hist.get("desastre", [])[-4:], rng)
 
+    # ⛔ O CADEADO DA TESTEMUNHA FAZ O DESASTRE CEDER, como o da pessoa — e
+    # ele nao existia: `travas["testemunha"]` era declarada em
+    # `EIXOS_TRAVAVEIS`, desenhada no painel e NUNCA lida. Medido em 200
+    # sorteios por eixo, o cadeado era honrado 23 vezes (11%, o acaso de 1 em
+    # 13 formas cabiveis) contra 200 de 200 nos eixos que o codigo lia.
+    # ⚠️ O `desastre` travado vence: e' ele que arrasta o mundo inteiro.
+    t_trav = travas.get("testemunha")
+    if t_trav and not travas.get("desastre"):
+        alvo_t = _por_id(BEATS_TESTEMUNHA, t_trav)
+        if alvo_t and alvo_t["forma"] not in desastre["formas"]:
+            cabem = [x for x in DESASTRES
+                     if alvo_t["forma"] in x["formas"]
+                     and (not sexo or sexo == "livre" or sexo in x["sexos"])]
+            if cabem:
+                desastre = _fresco(cabem, hist.get("desastre", [])[-4:], rng)
+
     pool_p = [p for p in PESSOAS if p["sexo"] in desastre["sexos"]]
     if sexo and sexo != "livre":
         pool_p = [p for p in pool_p if p["sexo"] == sexo] or pool_p
@@ -1777,6 +2033,33 @@ def sortear(pagina, rng, led, travas=None):
     if pessoa["sexo"] not in desastre["sexos"]:
         cabem = [x for x in DESASTRES if pessoa["sexo"] in x["sexos"]]
         desastre = rng.choice(cabem) if cabem else desastre
+
+    # ⛔⛔ O CADEADO DE `rosto` E DE `roupa` VENCE A PESSOA, e isto e' conserto
+    # de defeito MEDIDO (2026-08-21): o cadeado do painel era honrado em 152 de
+    # 200 sorteios no rosto e em 188 de 200 na roupa, porque a pessoa era
+    # sorteada ANTES e o acoplamento fazia o valor travado ceder EM SILENCIO.
+    # ⭐ A ordem certa e' a mesma do `desastre`: quem cede e' o eixo LIVRE.
+    # Cadeado que cede em silencio e' pior que cadeado ausente (GO21).
+    # ⚠️ Quando `pessoa` TAMBEM esta' travada, ela vence — e' ela que carrega
+    # nome, pronomes e idade, e trocar a pessoa trocaria a fala inteira.
+    if travas.get("rosto") and not travas.get("pessoa"):
+        alvo = _por_id(ROSTOS, travas["rosto"])
+        preciso = "homem" if alvo and alvo["sexo"] == "homem" else "mulher"
+        if (pessoa["sexo"] == "homem") != (preciso == "homem"):
+            cabem = [x for x in pool_p
+                     if (x["sexo"] == "homem") == (preciso == "homem")]
+            if cabem:
+                pessoa = _fresco(cabem, hist.get("pessoa", [])[-6:], rng)
+    if travas.get("roupa") and not travas.get("pessoa"):
+        alvo = _por_id(ROUPAS, travas["roupa"])
+        if alvo and pessoa["sexo"] not in alvo["sexos"]:
+            cabem = [x for x in pool_p if x["sexo"] in alvo["sexos"]]
+            if cabem:
+                pessoa = _fresco(cabem, hist.get("pessoa", [])[-6:], rng)
+                if pessoa["sexo"] not in desastre["sexos"]:
+                    outros = [x for x in DESASTRES
+                              if pessoa["sexo"] in x["sexos"]]
+                    desastre = rng.choice(outros) if outros else desastre
 
     # ⛔ O rosto casa com o SEXO da pessoa. No casal, o rosto e' o DELA — e' ela
     # que o video nomeia e e' ela que a REF ancora; o marido nunca e' nomeado
@@ -1821,6 +2104,14 @@ def sortear(pagina, rng, led, travas=None):
         # tres takes nunca repitam o movimento de camera, que e' o que denuncia
         # geracao em cortes seguidos.
         "derivas": rng.sample(DERIVAS, 3),
+        # ⛔⛔ O CADEADO DA TESTEMUNHA VIVE NO SPEC, e nao numa assinatura nova
+        # de `_falas`. Razao: quem re-sorteia a copy sao TRES caminhos
+        # diferentes — `sortear`, `nova_fala` (o botao `trocar` de cena) e
+        # `_coerir_cena` (a troca de eixo no painel) —, e um parametro extra
+        # so' seria passado pelo primeiro. Foi assim que o cadeado morreu na
+        # primeira versao: o eixo estava em `EIXOS_TRAVAVEIS`, o painel o
+        # desenhava, e `travas["testemunha"]` nunca era lida em lugar nenhum.
+        "trava_testemunha": travas.get("testemunha"),
     }
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
     return spec
@@ -1846,6 +2137,23 @@ def trocar_fala(spec, rng, i):
 
 def _genero(pessoa):
     return {"mulher": "woman", "homem": "man", "casal": "couple"}[pessoa["sexo"]]
+
+
+def _cena_testemunha(spec):
+    """`test`, `mov` e `audio` do desastre — na variante MUDA quando o beat
+    sorteado e' `silencio`.
+
+    ⛔⛔ Ver o bloco `A CENA MUDA` em `DESASTRES`: os dois unicos desastres que
+    comportam a forma `silencio` tem riso escrito no quadro, e a fala saia
+    dizendo *"and nobody said a word"* sobre gente rindo em 21 de 21 sorteios
+    dessa forma. ⚠️ O `audio_q` e' opcional porque um dos dois ja' nasceu com
+    audio sem riso — campo escrito sem necessidade e' campo que apodrece.
+    """
+    d = spec["desastre"]
+    if spec.get("testemunha", {}).get("forma") == "silencio":
+        return (d.get("test_q", d["test"]), d.get("mov_q", d["mov"]),
+                d.get("audio_q", d["audio"]))
+    return d["test"], d["mov"], d["audio"]
 
 
 def montar(spec):
@@ -1925,8 +2233,17 @@ def montar(spec):
                 % (ancora, roupa["antes"]))
 
     if p["sexo"] == "casal":
+        # ⛔⛔ `and beside her` SAIU, e e' conserto de defeito MEDIDO em 253 de
+        # 1.200 videos (21,1%): a frase punha os dois COLADOS e tres palavras
+        # depois o `acao` os punha em lugares diferentes (*"one sitting back on
+        # the broken step [...] and the other flat on the driveway below"*,
+        # *"tangled together and pointing in opposite directions"*). Duas
+        # geometrias incompativeis no mesmo bloco, e o gerador escolhe uma.
+        # ⭐ Quem coloca os dois no espaco tem de ser o `acao`, que e' o unico
+        # que sabe onde eles cairam — `with her` os declara juntos na CENA sem
+        # fixar posicao relativa. Lente `RU15`.
         corpo1 = ("At the centre of the frame are a very heavy %d-year-old %s "
-                  "woman, %s, and beside her %s. They are %s."
+                  "woman, %s, and with her %s. They are %s."
                   % (idade, et, quem, par["antes"], p["porte"]))
     else:
         # ⚠️ PRONOME, NUNCA O NOME, na direcao de cena: o gerador nao sabe
@@ -1938,16 +2255,21 @@ def montar(spec):
                      quem, "He" if p["sexo"] == "homem" else "She",
                      p["porte"]))
 
+    # ⛔ A CENA MUDA quando o beat da fala e' `silencio` — ver o bloco de
+    # doutrina em `DESASTRES`. O quadro e' o mesmo; o que muda e' o gesto das
+    # testemunhas e o audio.
+    test_d, mov_d, audio_d = _cena_testemunha(spec)
+
     b1 = ("%s %s. %s %s. %s. %s %s %s %s"
           % (ORIENTACAO, _cap(des["cen"]), corpo1, _cap(des["acao"]),
-             _cap(des["test"]), des["cam"] + ".", ANATOMIA, des["luz"], CAUDA))
+             _cap(test_d), des["cam"] + ".", ANATOMIA, des["luz"], CAUDA))
 
     t1 = ("TAKE 01/03: Animate the provided image exactly. Handheld shot, very "
           "slight natural sway, no cuts. %s. Everyone stays where the image "
           "puts them and nobody new walks into the shot. %s %s\n"
           'Dialogue: "%s"\n%s\nAudio: %s. No music.'
-          % (des["mov"], ANATOMIA, spec["derivas"][0],
-             sonorizar(spec["falas"][0]), voz, des["audio"]))
+          % (mov_d, ANATOMIA, spec["derivas"][0],
+             sonorizar(spec["falas"][0]), voz, audio_d))
 
     # -- IMAGE 02/03 — O REENCONTRO ----------------------------------------
     # ⭐ O ANTES E O DEPOIS NA MESMA PECA. A roupa que estava esticada no
@@ -1964,6 +2286,29 @@ def montar(spec):
                   % (idade, et, "man" if p["sexo"] == "homem" else "woman",
                      ancora, roupa["depois"]))
 
+    # ⛔⛔ QUEM ESTA' AO LADO DA RUTH TEM DE CONCORDAR COM O ELENCO, e este e' o
+    # defeito mais silencioso que a varredura de 2026-08-21 achou: as tres
+    # frases de direcao de cena diziam `the person beside her` e `has turned
+    # HER head` — literais cravados no FEMININO SINGULAR — em 400 de 400
+    # blocos. Nos 57 videos de HOMEM o mesmo bloco dizia `man` e `her head`;
+    # nos 126 de CASAL havia DUAS pessoas ao lado da Ruth e a direcao dirigia
+    # UMA, sem dizer qual, deixando o marido sem instrucao nenhuma. 183 de 400
+    # videos (46%) com o bloco contradizendo a si mesmo, e nenhuma das treze
+    # lentes olhava para isso.
+    # ⭐ O motor JA' tinha `poss`/`obj_pron`/`suj` em `PESSOAS` exatamente para
+    # isto; a direcao de cena e' que nao os consumia. Lente `RU17`.
+    if p["sexo"] == "casal":
+        vizinho_img = ("the two beside her have turned their heads toward the "
+                       "Amish woman and are laughing")
+        vizinho_t2 = "the two beside her keep the smile"
+        vizinho_t3 = "the two beside her turn back to the lens and hold the smile"
+    else:
+        vizinho_img = ("the person beside her has turned %s head toward the "
+                       "Amish woman and is laughing" % p["poss"])
+        vizinho_t2 = "the person beside her keeps the smile"
+        vizinho_t3 = ("the person beside her turns back to the lens and holds "
+                      "the smile")
+
     # ⚠️ `on one side of %s` com o PRONOME e nao com `them` cravado: no
     # singular a frase saia *"a slim 37-year-old man [...] and on one side of
     # THEM an Amish woman"* — plural para uma pessoa so'. No casal o pronome
@@ -1979,12 +2324,11 @@ def montar(spec):
           "slight natural sway, no cuts. As the line begins the Amish woman "
           "turns her face to the lens and starts talking. Halfway through the "
           "line she lifts her open hand a little higher from her waist. As the "
-          "line ends the hand settles back and the person beside her keeps the "
-          "smile. Everyone holds the same position and nobody new walks into "
-          "the shot. %s %s\n"
+          "line ends the hand settles back and %s. Everyone holds the same "
+          "position and nobody new walks into the shot. %s %s\n"
           'Dialogue: "%s"\n%s\nAudio: %s. No music.'
-          % (ANATOMIA, spec["derivas"][1], sonorizar(spec["falas"][1]), voz,
-             rc["audio"]))
+          % (vizinho_t2, ANATOMIA, spec["derivas"][1],
+             sonorizar(spec["falas"][1]), voz, rc["audio"]))
 
     # -- IMAGE 03/03 — A RECEITA + CTA -------------------------------------
     # ⛔ MESMO LUGAR E MESMO ENQUADRAMENTO do quadro anterior: na fonte os dois
@@ -2005,20 +2349,18 @@ def montar(spec):
     b3 = ("%s The same place and the same framing as the previous scene: %s. "
           "Standing shoulder to shoulder are %s, and on one side of %s %s. "
           "The Amish woman now has her right palm raised open toward the lens "
-          "at chest height, and the person beside her has turned her head "
-          "toward the Amish woman and is laughing. %s. %s %s %s"
-          % (ORIENTACAO, rc["amb"], depois, p["obj_pron"], RUTH,
+          "at chest height, and %s. %s. %s %s %s"
+          % (ORIENTACAO, rc["amb"], depois, p["obj_pron"], RUTH, vizinho_img,
              CAM_REENCONTRO, ANATOMIA, rc["luz"], CAUDA))
 
     t3 = ("TAKE 03/03: Animate the provided image exactly. Handheld shot, very "
           "slight natural sway, no cuts. As the line begins the Amish woman "
           "holds the raised palm toward the lens. Halfway through the line the "
-          "palm drops slowly back to her waist. As the line ends the person "
-          "beside her turns back to the lens and holds the smile. Everyone "
+          "palm drops slowly back to her waist. As the line ends %s. Everyone "
           "holds the same position and nobody new walks into the shot. %s %s\n"
           'Dialogue: "%s"\n%s\nAudio: %s. No music.'
-          % (ANATOMIA, spec["derivas"][2], sonorizar(spec["falas"][2]), voz,
-             rc["audio"]))
+          % (vizinho_t3, ANATOMIA, spec["derivas"][2],
+             sonorizar(spec["falas"][2]), voz, rc["audio"]))
 
     return sc.selar_takes(sc.selar_tags({
         "BLOCO 0 (REF)": ref,
@@ -2064,9 +2406,40 @@ _RX_DURACAO = re.compile(
     r"\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|"
     r"a few|several|forty|a)\s+(?:days?|weeks?|months?|years?)\b", re.I)
 
+# ⛔⛔ A PECA FANTASMA (lente RU3). ⚠️ O ARTIGO DEFINIDO E' O RECORTE INTEIRO:
+# `a heavy man in a polo` e `two nail technicians in black work polos` sao
+# roupa de OUTRA pessoa e sao legitimos; `the dress` e `the shirt` co-referem
+# com quem o bloco ja' vestiu, e e' ai' que a contradicao mora. Sem essa
+# restricao a lente acusaria as testemunhas de todos os nove desastres.
+# ⚠️ E `the clothing` fica de FORA de proposito: e' generico e serve qualquer
+# peca do eixo `ROUPAS` — o que se proibe e' nomear OUTRA peca, nao falar de
+# roupa.
+_RX_PECA_FANTASMA = re.compile(
+    r"\bthe (shirt|t-shirt|dress|blouse|tunic|polo|tank top|sweater|"
+    r"cardigan|skirt)\b", re.I)
 
-def _sem_dialogo(txt):
-    return re.sub(r"Dialogue:.*", "", txt or "", flags=re.S)
+# ⛔ O ROSTO NUM QUADRO FILMADO DE COSTAS (lente RU4).
+_RX_ROSTO_NO_PORTE = re.compile(
+    r"\b(face|faces|mouth|eyes|eyelids?|expression|cheeks?|jaw)\b", re.I)
+
+# ⛔ A CONTAGEM NA CLAUSULA DE CAMERA (contrato de `CAM_REENCONTRO`).
+_RX_CONTAGEM = re.compile(
+    r"\b(both|two|three|all three|the pair|the couple)\b", re.I)
+
+# ⛔ A CAMERA PARADA DENTRO DE UM BLOCO CUJO TAKE E' HANDHELD (contrato de
+# `cam`). ⚠️ `level`, `straight on` e `at chest height` NAO entram: sao ANGULO
+# e ALTURA, que e' exatamente o que o campo deve dizer.
+_RX_CAM_PARADA = re.compile(r"\b(still|locked[- ]off|static|tripod)\b", re.I)
+
+
+# ⛔⛔ LAPIDE — `_sem_dialogo(txt)` MORREU EM 2026-08-21 E FICA ESCRITO AQUI.
+# Ela era `re.sub(r"Dialogue:.*", "", txt, flags=re.S)` e servia a RU5. O
+# `re.S` faz o `.` casar `\n`, entao ela nao tirava a LINHA do dialogo: tirava
+# tudo do primeiro `Dialogue:` ate' o fim do bloco — a fala, o `Voice:` e o
+# `Audio:`. A lente lia dois tercos do TAKE e o controle negativo plantava o
+# defeito justamente no terco que ela lia. ⭐ A licao generaliza: *corte por
+# regex com `re.S` nao remove uma linha, remove uma cauda* — e cauda removida
+# em silencio e' lente que passa por estar cega.
 
 
 def _ru1_testemunha(spec, blocos, ach):
@@ -2083,7 +2456,10 @@ def _ru1_testemunha(spec, blocos, ach):
     fonte confunde os dois.
     """
     img = blocos.get(IMAGENS[0], "")
-    if spec["desastre"]["test"].lower() not in img.lower():
+    # ⚠️ A lente le' a cena EFETIVA, nao o campo `test` cru: com o beat
+    # `silencio` o quadro sai na variante MUDA (`test_q`), e uma lente colada
+    # no campo cru reprovaria 100% dos videos certos dessa forma.
+    if _cena_testemunha(spec)[0].lower() not in img.lower():
         ach.append(("ERRO", "RU1: %s sem as testemunhas em quadro — sem "
                             "terceiro olhando a humilhacao vira acidente "
                             "privado" % IMAGENS[0]))
@@ -2137,6 +2513,24 @@ def _ru3_peca_ancora(spec, blocos, ach):
             ach.append(("ERRO", "RU3: %s sem a MESMA peca caindo solta — sem "
                                 "ela o video promete a mesma pessoa e mostra "
                                 "outra" % nome))
+    # ⛔⛔ E A PECA FANTASMA, que e' o mecanismo central do angulo quebrando
+    # por dentro. Defeito MEDIDO em 2026-08-21: o `porte` da pessoa e o `acao`
+    # do desastre nomeavam OUTRA peca com artigo definido — *"wearing a heather
+    # grey t-shirt [...] the DRESS stretched tight across her"*, *"soaked the
+    # whole front of the SHIRT"* — e em alguns sorteios havia TRES pecas na
+    # mesma pessoa dentro do mesmo bloco. 27 videos em 400 com `the dress`
+    # fantasma e 63 com `the shirt`; LINT vazio em todos.
+    # ⭐ A ancora e' de UMA peca so': duas pecas na mesma pessoa e' a mesma
+    # classe de defeito que a fonte comete no v45 (a roupa muda tres vezes
+    # dentro do ato 1), e e' justamente o que este eixo existe para impedir.
+    resto = blocos.get(IMAGENS[0], "").replace(spec["roupa"]["antes"], "")
+    if spec["pessoa"]["sexo"] == "casal":
+        resto = resto.replace(spec["parceiro"]["antes"], "")
+    m_ = _RX_PECA_FANTASMA.search(resto)
+    if m_:
+        ach.append(("ERRO", "RU3: %s nomeia %r fora do eixo ROUPAS — a peca "
+                            "ancora e' UMA, e a segunda contradiz a primeira"
+                    % (IMAGENS[0], m_.group(0))))
 
 
 def _ru4_ancora_rosto(spec, blocos, ach):
@@ -2171,6 +2565,23 @@ def _ru4_ancora_rosto(spec, blocos, ach):
                                 "quadro filmado de costas com ancora facial e' "
                                 "contradicao, e o gerador vira o rosto"
                         % IMAGENS[0]))
+        # ⛔⛔ E A ANCORA NAO ERA O UNICO LUGAR ONDE O ROSTO APARECIA. Defeito
+        # MEDIDO em 2026-08-21: a lente varria SO' `spec['rosto']['desc']` e o
+        # `porte` da pessoa passava por baixo — *"turned away from the lens so
+        # that only the back of the head is visible [...] She is flushed deep
+        # red across the FACE and neck"*, *"breathing hard with the MOUTH
+        # open"*, *"young in the FACE"*. 108 dos 593 videos de rosto oculto,
+        # 9% de TODOS. O proprio docstring desta lente ja' dizia que a
+        # contradicao mata o modo; ela e' que nao olhava para ela.
+        # ⚠️ A varredura e' na SENTENCA DO PORTE e nao no bloco inteiro, e isso
+        # e' desenho: as testemunhas dos nove desastres tem rosto em quadro de
+        # proposito (*"a flat hand over her mouth"*, *"his mouth open"*), e
+        # varrer o bloco reprovaria os nove.
+        m_ = _RX_ROSTO_NO_PORTE.search(spec["pessoa"]["porte"])
+        if m_:
+            ach.append(("ERRO", "RU4: rosto OCULTO e o porte da pessoa cita "
+                                "%r — a frase seguinte descreve o rosto que a "
+                                "camera esta' de costas para" % m_.group(0)))
     elif spec["rosto"]["desc"] not in img1:
         ach.append(("ERRO", "RU4: rosto VISIVEL e a %s sem a ancora facial"
                     % IMAGENS[0]))
@@ -2185,9 +2596,23 @@ def _ru5_sem_aparelho(spec, blocos, ach):
     em seis dos quinze reels. A saida NAO e' por celular em quadro — e' pelas
     testemunhas fazendo o que a imagem paga (olhar, virar a cabeca, apontar,
     rir), e a palavra `filmed` ficou fora do pool.
+
+    ⛔⛔ ELA VARRE O BLOCO INTEIRO DESDE 2026-08-21, E ANTES NAO VARRIA. O corte
+    era `re.sub(r"Dialogue:.*", "", txt, flags=re.S)`, e o `re.S` apagava do
+    primeiro `Dialogue:` ATE' O FIM DO BLOCO — a FALA, a linha `Voice:` e a
+    linha `Audio:` ficavam todas fora da lente. Medido plantando o mesmo
+    aparelho em tres lugares do mesmo TAKE: antes do `Dialogue:` ACUSOU, na
+    linha `Audio:` PASSOU, dentro da fala PASSOU. ⭐ E a fala e' justamente
+    onde a palavra `filmed` da FONTE tentaria voltar — o cabecalho deste motor
+    diz que ela *"SAI da copy"*, e a unica parte do bloco que a lente nunca
+    lia era a copy. ⚠️ O controle negativo do autoteste tambem so' plantava
+    antes do `Dialogue:`: ele provava metade da lente e imprimia OK.
+    ⚠️ Medido antes de ligar: ZERO ocorrencia em 400 videos na cauda que estava
+    cega — era buraco LATENTE, nao defeito vivo. Lente que ninguem sabe se
+    funciona e' o mesmo risco.
     """
     for k, v in blocos.items():
-        m = _RX_APARELHO.search(_sem_dialogo(v))
+        m = _RX_APARELHO.search(v or "")
         if m:
             ach.append(("ERRO", "RU5: %s nomeia %r — aparelho escrito vira "
                                 "aparelho desenhado" % (k, m.group(0))))
@@ -2351,6 +2776,130 @@ def _ru13_um_relogio(spec, blocos, ach):
                         % (i, ", ".join(sorted(achados)))))
 
 
+def _ru14_um_corpo_so(spec, blocos, ach):
+    """⛔⛔ RU14 — UMA PESSOA, UM SINTAGMA. O sujeito nao se reintroduz.
+
+    ⚠️ DEFEITO MEDIDO em 1.200 sorteios (2026-08-21), e ele estava em 100% dos
+    videos: o IMAGE 01 nomeava o corpo obeso DUAS a QUATRO vezes, cada vez com
+    um sintagma definido novo — *"a very heavy 46-year-old woman [...] a very
+    heavy grey-haired husband [...] they are both very heavy [...] the very
+    heavy person who was pushing it"*. Quatro corpos nomeados para duas
+    pessoas, e o campo `acao` ainda punha um QUINTO papel (`its occupant`, `the
+    very heavy customer`) que e' gente diferente na leitura de quem gera.
+    ⭐ Um bloco que nomeia N corpos e' licenca para desenhar N corpos, e isto
+    e' uma cena de queda com plateia — o pior lugar do parque para dar essa
+    licenca (a propria clausula `ANATOMIA` existe porque o gerador inventa
+    membro aqui).
+    ⚠️ O teto e' 1 no singular e 2 no casal (ela + o marido), e nao um numero
+    escrito a mao: e' quantas PESSOAS o video declara. O `porte` e o `acao`
+    passaram a falar por PRONOME.
+    """
+    n = len(re.findall(r"(?:very|extremely) heavy",
+                       blocos.get(IMAGENS[0], ""), re.I))
+    teto = 2 if spec["pessoa"]["sexo"] == "casal" else 1
+    if n > teto:
+        ach.append(("ERRO", "RU14: %s nomeia o corpo %d vezes (teto %d) — "
+                            "sujeito reintroduzido com sintagma novo e' "
+                            "licenca para desenhar mais um"
+                    % (IMAGENS[0], n, teto)))
+
+
+def _ru15_geometria_casal(spec, blocos, ach):
+    """⛔⛔ RU15 — NO CASAL, QUEM COLOCA OS DOIS NO ESPACO E' O `acao`.
+
+    ⚠️ DEFEITO MEDIDO em 253 de 1.200 videos (21,1%): a frase de elenco dizia
+    `and beside her a very heavy husband` e tres palavras depois o `acao` os
+    punha em lugares diferentes — *"one sitting back on the broken step [...]
+    and the other flat on the driveway below"*, *"tangled together and pointing
+    in opposite directions"*. Duas geometrias incompativeis no mesmo bloco, e
+    contradicao o gerador resolve escolhendo uma, que nao e' a nossa.
+    ⭐ `with her` declara que estao JUNTOS na cena sem fixar posicao relativa;
+    quem sabe onde eles cairam e' o unico campo que descreve a queda.
+    """
+    if spec["pessoa"]["sexo"] != "casal":
+        return
+    if "and beside her" in blocos.get(IMAGENS[0], ""):
+        ach.append(("ERRO", "RU15: %s fixa a posicao do casal antes de o "
+                            "`acao` os colocar — duas geometrias no mesmo "
+                            "bloco" % IMAGENS[0]))
+
+
+def _ru16_silencio_no_quadro(spec, blocos, ach):
+    """⛔⛔ RU16 — `silencio` NA FALA EXIGE SILENCIO NO QUADRO.
+
+    ⚠️ DEFEITO MEDIDO: a forma `silencio` so' existe em dois desastres e os
+    DOIS tinham riso escrito no `test`, no `mov` e num deles no `audio`. Em 400
+    sorteios, **21 de 21** videos dessa forma saiam com a fala dizendo *"and
+    nobody said a word"* sobre gente rindo em quadro e sobre um audio de
+    risada. Fala que desmente o proprio quadro e' o defeito que a leitura otica
+    achou em seis dos quinze reels da fonte, invertido — e este motor nasceu
+    para nao te-lo.
+    ⭐ O conserto e' a variante MUDA do quadro (`test_q`/`mov_q`/`audio_q`), e
+    esta lente e' quem cobra que ela exista e chegue ao bloco.
+    """
+    if spec.get("testemunha", {}).get("forma") != "silencio":
+        return
+    for nome in (IMAGENS[0], TAKES[0]):
+        if re.search(r"\blaugh(s|ing|ed)?\b", blocos.get(nome, ""), re.I):
+            ach.append(("ERRO", "RU16: a fala diz SILENCIO e o %s tem gente "
+                                "rindo — o quadro desmente a fala" % nome))
+
+
+def _ru17_pronome_do_vizinho(spec, blocos, ach):
+    """⛔⛔ RU17 — A DIRECAO DE CENA CONCORDA COM O ELENCO.
+
+    ⚠️ DEFEITO MEDIDO em 400 sorteios (2026-08-21): `the person beside her has
+    turned HER head` estava CRAVADO no feminino singular e saia em 400 de 400
+    blocos — nos 57 videos de HOMEM o mesmo bloco dizia `man` e `her head`, e
+    nos 126 de CASAL havia DUAS pessoas ao lado da Ruth e a frase dirigia UMA,
+    deixando o marido sem instrucao nenhuma. 183 de 400 (46%) com o bloco
+    contradizendo a si mesmo, LINT vazio em todos.
+    ⭐ O motor ja' tinha `poss`/`obj_pron`/`suj` em `PESSOAS` para isso; a
+    direcao de cena e' que nao os consumia. A lente cobra o EFEITO: nenhum
+    pronome que o ramo de sexo desminta sobrevive ao bloco.
+    """
+    p = spec["pessoa"]
+    for nome in (IMAGENS[2], TAKES[1], TAKES[2]):
+        txt = blocos.get(nome, "")
+        if p["sexo"] == "casal":
+            if "the person beside her" in txt:
+                ach.append(("ERRO", "RU17: %s fala de UMA pessoa ao lado da "
+                                    "Ruth e o quadro tem duas" % nome))
+        else:
+            if "the two beside her" in txt:
+                ach.append(("ERRO", "RU17: %s fala de DUAS pessoas ao lado da "
+                                    "Ruth num video de uma so'" % nome))
+            errado = "his" if p["poss"] == "her" else "her"
+            if "has turned %s head" % errado in txt:
+                ach.append(("ERRO", "RU17: %s diz `turned %s head` num video "
+                                    "de %r" % (nome, errado, p["sexo"])))
+
+
+def _ru18_ingrediente_nas_tres(spec, blocos, ach):
+    """⛔⛔ RU18 — O CT5 VALE PARA AS TRES FALAS, E O CONTRATO SO' LE' DUAS.
+
+    ⚠️ DEFEITO DE ARQUITETURA, medido em 2026-08-21: `short_comum.lint_copy16`
+    faz `f1, f2 = falas[0], falas[-1]`. Com TRES falas, `falas[1]` NUNCA e'
+    lida por CT1/CT3/CT5/CT6/CT7 — e a cena 2 e' exatamente onde mora o beat do
+    REMEDIO, que e' o unico lugar do motor onde alguem escreveria um
+    ingrediente. Prova: a MESMA sentenca (*"after one spoon of apple cider
+    vinegar and lemon every morning"*) plantada na cena 3 acusa CT5 e plantada
+    na cena 2 passa.
+    ⭐ Os pools estao limpos e o autoteste ja' os varre entrada por entrada; o
+    buraco e' na lente POR VIDEO — que e' a que o operador ve' quando edita a
+    copy a' mao no painel ou aperta `trocar`. Pool limpo nao protege copy
+    editada na tela.
+    ⛔ E a receita e' a UNICA moeda que o comentario compra: entregue uma vez,
+    esta' gasta para todos os videos da pagina.
+    """
+    for i, fala in enumerate(spec["falas"], 1):
+        alvo = sc.ingrediente_na_fala(fala)
+        if alvo:
+            ach.append(("ERRO", "RU18: a fala %d entrega o ingrediente %r — a "
+                                "receita e' a moeda, e ela so' se paga uma vez"
+                        % (i, alvo)))
+
+
 # ⛔⛔ UMA TRAVA DO CONTRATO DE 16s DESLIGADA, COM A ORDEM E O MOTIVO ESCRITOS.
 # Regra que nasce desligada sem razao escrita e' regra que alguem religa amanha
 # sem saber o que quebra.
@@ -2390,7 +2939,9 @@ def lint(spec, blocos):
     for f in (_ru1_testemunha, _ru2_ruth, _ru3_peca_ancora, _ru4_ancora_rosto,
               _ru5_sem_aparelho, _ru6_coerencia, _ru7_nome, _ru8_cta,
               _ru9_fala_no_take, _ru10_sem_gelatina, _ru11_pure_shame,
-              _ru12_orcamento, _ru13_um_relogio):
+              _ru12_orcamento, _ru13_um_relogio, _ru14_um_corpo_so,
+              _ru15_geometria_casal, _ru16_silencio_no_quadro,
+              _ru17_pronome_do_vizinho, _ru18_ingrediente_nas_tres):
         f(spec, blocos, ach)
     return ach
 
@@ -2425,6 +2976,18 @@ DROPDOWNS_UI = [("rosto", "O ROSTO (REF)", "ROSTOS", "curto"),
 # bloco nenhum — a lente acusaria 400 de 400 videos certos. Quem a cobra e' a
 # RU1, e ela cobra MAIS: o beat renderizado dentro da fala E as testemunhas
 # dentro da IMAGE.
+#
+# ⛔⛔ E ESTA EXCECAO CERTA ESCONDEU UM EIXO MORTO POR UM DIA INTEIRO, o que e'
+# a licao mais cara da varredura de 2026-08-21. A razao acima esta' certa — a
+# lente de painel HONESTAMENTE nao serve para um eixo cujo valor e' molde. Mas
+# desligar a unica lente que olhava para o eixo deixou passar que
+# `travas["testemunha"]` NUNCA era lida em `sortear`: o cadeado era honrado em
+# 23 de 200 sorteios (11%, o acaso de 1 em 13 formas cabiveis) e a escolha do
+# operador no botao `trocar` sobrevivia em 4 de 120 cliques (3%).
+# ⭐ A REGRA QUE FICA: **excecao certa que deixa um buraco pede lente NOVA, nao
+# lente removida.** Aqui a lente nova e' a medicao de cadeado e de `trocar` no
+# autoteste, eixo por eixo, contra um piso — ela nao pergunta se o rotulo
+# aparece no prompt, pergunta se o VALOR ESCOLHIDO sobrevive.
 IGNORA_PAINEL = ("testemunha",)
 
 
@@ -2442,7 +3005,7 @@ def _refazer_falas(spec, rng):
     spec["falas"] = [v for _, v in sorted(_falas(spec, rng).items())]
 
 
-def _coerir_cena(spec, rng):
+def _coerir_cena(spec, rng, tocado=None):
     """⛔⛔ REPARA OS ACOPLAMENTOS depois de uma troca de eixo no painel.
 
     ⚠️ DEFEITO MEDIDO no BANHO 16 3T, simulando o painel: clicar em `trocar` no
@@ -2452,7 +3015,76 @@ def _coerir_cena(spec, rng):
     do que o operador faz. O que ele faz depois — trocar eixo, travar,
     re-sortear cena — nao era exercitado por lente nenhuma.
     """
-    p, d = spec["pessoa"], spec["desastre"]
+    # ⛔⛔ QUEM CEDE E' O MUNDO EM VOLTA, NUNCA O EIXO QUE O OPERADOR ACABOU DE
+    # TROCAR — e ate' 2026-08-21 nao era assim: `_coerir_cena` reparava sempre
+    # na MESMA ordem e o eixo clicado era justamente o primeiro a ceder.
+    # Medido em 120 cliques por eixo: a escolha do operador sobrevivia em 3%
+    # na testemunha e em 56% na pessoa. Botao que devolve outra coisa e' pior
+    # que botao ausente.
+    # ⭐ `tocado` chega por CLOSURE em `EIXOS_QUE_MEXEM_NA_COPY`, sem mexer na
+    # assinatura que a UI compartilhada chama (`fn(spec, rng)`) — mudar o
+    # contrato da UI por causa de um motor e' o caminho para quebrar os outros
+    # quarenta e tres.
+    p = spec["pessoa"]
+    if tocado == "rosto":
+        alvo_r = "homem" if spec["rosto"]["sexo"] == "homem" else "mulher"
+        if (p["sexo"] == "homem") != (alvo_r == "homem"):
+            cabem = [x for x in PESSOAS
+                     if (x["sexo"] == "homem") == (alvo_r == "homem")]
+            if cabem:
+                spec["pessoa"] = p = rng.choice(cabem)
+                spec["idade"] = p["idade"]
+    if tocado == "roupa" and p["sexo"] not in spec["roupa"]["sexos"]:
+        cabem = [x for x in PESSOAS if x["sexo"] in spec["roupa"]["sexos"]]
+        if cabem:
+            spec["pessoa"] = p = rng.choice(cabem)
+            spec["idade"] = p["idade"]
+
+    d = spec["desastre"]
+    if tocado != "desastre":
+        if p["sexo"] not in d["sexos"]:
+            cabem = [x for x in DESASTRES if p["sexo"] in x["sexos"]]
+            if cabem:
+                spec["desastre"] = d = rng.choice(cabem)
+        t_ = spec.get("testemunha")
+        # ⚠️ Aqui o desastre cede por DUAS razoes, e a segunda e' orcamento:
+        # uma testemunha de 9 palavras nao cabe ao lado de um beat de desastre
+        # de 13 nem com a menor abertura do pool, e insistir devolvia uma cena
+        # 1 de 28 palavras — fala cortada, que e' o defeito que o teto existe
+        # para impedir.
+        if tocado == "testemunha" and t_:
+            d0 = _dic(spec)
+            n_t = _palavras(_r(t_["txt"], d0))
+            menor_ab = min(_palavras(_r(a["txt"], d0)) for a in ABERTURAS)
+
+            def _serve(x, sexo_):
+                return (t_["forma"] in x["formas"]
+                        and sexo_ in x["sexos"]
+                        and (_palavras(_r(x["fala"], d0)) + n_t + menor_ab
+                             + _palavras(FECHO_ATO1)) <= TETO_FALA[1])
+
+            if not _serve(d, p["sexo"]):
+                cabem = [x for x in DESASTRES if _serve(x, p["sexo"])]
+                if cabem:
+                    spec["desastre"] = d = rng.choice(cabem)
+                else:
+                    # ⚠️ E A PESSOA CEDE JUNTO. Medido: em 28 de 120 cliques a
+                    # forma escolhida nao existia em desastre NENHUM que
+                    # comportasse o sexo da pessoa atual (a `plateia` so' mora
+                    # em ambiente fechado, e nenhum dos tres aceita casal).
+                    # Manter a pessoa ali era devolver ao operador uma
+                    # testemunha que ele nao escolheu — e o eixo tocado e' o
+                    # que manda.
+                    outros = [(x, s_) for x in DESASTRES for s_ in x["sexos"]
+                              if _serve(x, s_)
+                              and [y for y in PESSOAS if y["sexo"] == s_]]
+                    if outros:
+                        x, s_ = rng.choice(outros)
+                        spec["desastre"] = d = x
+                        spec["pessoa"] = p = rng.choice(
+                            [y for y in PESSOAS if y["sexo"] == s_])
+                        spec["idade"] = p["idade"]
+
     if p["sexo"] not in d["sexos"]:
         cabem = [x for x in PESSOAS if x["sexo"] in d["sexos"]]
         if cabem:
@@ -2465,18 +3097,38 @@ def _coerir_cena(spec, rng):
     alvo = "homem" if p["sexo"] == "homem" else "mulher"
     if spec["rosto"]["sexo"] != alvo:
         spec["rosto"] = rng.choice([x for x in ROSTOS if x["sexo"] == alvo])
-    if spec["testemunha"]["forma"] not in d["formas"]:
+    # ⛔⛔ A TESTEMUNHA ESCOLHIDA NO PAINEL SOBREVIVE AO RE-SORTEIO DA COPY, e
+    # ate' 2026-08-21 nao sobrevivia: `_refazer_falas` chama `_falas`, que
+    # re-sorteava a testemunha do zero e jogava fora a que o operador tinha
+    # acabado de escolher. Medido simulando `ui_agente.trocar_eixo`: o valor
+    # escolhido sobrevivia em 4 de 120 cliques (3%, que e' o acaso). ⭐ O
+    # conserto e' o CADEADO, nao a lente: `trava_testemunha` entra no spec e o
+    # sorteio da copy a respeita.
+    # ⚠️ Quando a forma dela nao cabe no desastre novo, ela CEDE e o cadeado
+    # cede junto — acoplamento e' fato do mundo, e a lente RU6 o cobra.
+    if spec.get("testemunha", {}).get("forma") not in d["formas"]:
         cabem = [x for x in BEATS_TESTEMUNHA if x["forma"] in d["formas"]]
         if cabem:
             spec["testemunha"] = rng.choice(cabem)
+    # ⚠️ O cadeado e' RESTAURADO depois: pinar para sempre transformaria uma
+    # troca de `desastre` num cadeado permanente que o operador nunca pediu, e
+    # o botao `trocar` da CENA 1 passaria a devolver sempre a mesma testemunha.
+    antes = spec.get("trava_testemunha")
+    spec["trava_testemunha"] = spec.get("testemunha")
     _refazer_falas(spec, rng)
+    spec["trava_testemunha"] = antes
 
 
-EIXOS_QUE_MEXEM_NA_COPY = {"desastre": _coerir_cena,
-                           "pessoa": _coerir_cena,
-                           "roupa": _coerir_cena,
-                           "rosto": _coerir_cena,
-                           "testemunha": _coerir_cena}
+def _coerir(eixo):
+    """Fecha o nome do eixo tocado dentro da assinatura que a UI chama."""
+    return lambda spec, rng: _coerir_cena(spec, rng, eixo)
+
+
+EIXOS_QUE_MEXEM_NA_COPY = {"desastre": _coerir("desastre"),
+                           "pessoa": _coerir("pessoa"),
+                           "roupa": _coerir("roupa"),
+                           "rosto": _coerir("rosto"),
+                           "testemunha": _coerir("testemunha")}
 
 
 def resumo_pt(spec):
@@ -2709,6 +3361,61 @@ def autoteste(n=400):
         if not c["txt"].rstrip().endswith("."):
             falhas.append("[CT1] CTA %s nao termina no pedido" % c["id"])
 
+    # ⛔⛔ O CONTRATO DO `porte`, ENTRADA POR ENTRADA. As tres clausulas vivem
+    # aqui e nao so' na lente por video, porque pool novo entra no arquivo sem
+    # passar por sorteio nenhum e o defeito so' apareceria no lote do operador.
+    for p_ in PESSOAS:
+        n_ = len(re.findall(r"(?:very|extremely) heavy", p_["porte"], re.I))
+        if n_:
+            falhas.append("[PORTE] %s repete o peso (%d x) — a primeira "
+                          "sintagma do IMAGE 01 ja' o diz, e sujeito "
+                          "reintroduzido vira corpo a mais (RU14)"
+                          % (p_["id"], n_))
+        m_ = _RX_ROSTO_NO_PORTE.search(p_["porte"])
+        if m_:
+            falhas.append("[PORTE] %s cita %r — com o rosto OCULTO a camera "
+                          "esta' de costas e a frase descreve o que nao esta' "
+                          "em quadro (RU4)" % (p_["id"], m_.group(0)))
+        m_ = _RX_PECA_FANTASMA.search("the " + p_["porte"]) or \
+            _RX_PECA_FANTASMA.search(p_["porte"])
+        if m_:
+            falhas.append("[PORTE] %s nomeia %r — a peca e' do eixo ROUPAS e "
+                          "de mais ninguem (RU3)" % (p_["id"], m_.group(0)))
+
+    # ⛔ E O MESMO PARA `acao` e `test` DOS DESASTRES: peca fantasma e camera
+    # parada num bloco cujo TAKE e' handheld.
+    for d_ in DESASTRES:
+        for campo in ("acao", "test"):
+            m_ = _RX_PECA_FANTASMA.search(d_[campo])
+            if m_:
+                falhas.append("[DESASTRE] %s.%s nomeia %r — a peca ancora e' "
+                              "UMA (RU3)" % (d_["id"], campo, m_.group(0)))
+        m_ = _RX_CAM_PARADA.search(d_["cam"])
+        if m_:
+            falhas.append("[DESASTRE] %s.cam diz %r e os TAKES sao TODOS "
+                          "handheld com deriva sorteada — duas cameras no "
+                          "mesmo bloco e o gerador escolhe uma"
+                          % (d_["id"], m_.group(0)))
+        # ⛔⛔ E QUEM DECLARA `silencio` TEM DE TER A CENA MUDA. Sem isso a
+        # fala diz *"nobody said a word"* sobre gente rindo em quadro — 21 de
+        # 21 sorteios dessa forma, medido em 2026-08-21.
+        if "silencio" in d_["formas"]:
+            for campo, alt in (("test", "test_q"), ("mov", "mov_q"),
+                               ("audio", "audio_q")):
+                base = d_.get(alt, d_[campo])
+                if re.search(r"\blaugh(s|ing|ed)?\b", base, re.I):
+                    falhas.append("[SILENCIO] %s comporta a forma `silencio` e "
+                                  "o %s ainda ri — falta a variante muda `%s`"
+                                  % (d_["id"], campo, alt))
+
+    # ⛔ A CLAUSULA DE CAMERA DO REENCONTRO NAO CONTA GENTE (32% dos videos
+    # tinham TRES pessoas sob um `both figures`).
+    m_ = _RX_CONTAGEM.search(CAM_REENCONTRO)
+    if m_:
+        falhas.append("[CAM] CAM_REENCONTRO diz %r — o elenco do reencontro "
+                      "muda com o sexo (2 ou 3 pessoas) e a clausula nao "
+                      "pode contar" % m_.group(0))
+
     # =======================================================================
     # ⭐⭐ CONTROLES NEGATIVOS — cada lente prova que ACUSA o defeito plantado
     # =======================================================================
@@ -2744,6 +3451,30 @@ def autoteste(n=400):
         ("RU3 sem a peca no take 2", _ru3_peca_ancora, s0,
          dict(b0, **{IMAGENS[1]: "A slim woman in a denim jacket."}), True),
         ("RU3 limpo", _ru3_peca_ancora, s0, b0, False),
+        # ⭐ A PECA FANTASMA — o defeito exato que a varredura mediu: o `porte`
+        # dizia `the dress` sobre quem veste camiseta.
+        ("RU3 com peca fantasma no IMAGE 01", _ru3_peca_ancora, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]]
+                     + " The dress is stretched tight across her."}), True),
+        # ⚠️ CONTROLE NEGATIVO: a roupa das TESTEMUNHAS e' legitima e sai com
+        # artigo indefinido — a lente nao pode acusar `a heavy man in a polo`.
+        ("RU3 nao acusa roupa de figurante", _ru3_peca_ancora, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]]
+                     + " Two of them wear a polo and a plain shirt."}), False),
+        ("RU16 silencio sobre gente rindo", _ru16_silencio_no_quadro,
+         dict(s0, testemunha=_por_id(BEATS_TESTEMUNHA, "si1")),
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]]
+                     + " Two of them are laughing."}), True),
+        ("RU16 limpo com silencio", _ru16_silencio_no_quadro,
+         dict(s0, testemunha=_por_id(BEATS_TESTEMUNHA, "si1")),
+         dict(b0, **{IMAGENS[0]: "A quiet room. Nobody moves.",
+                     TAKES[0]: "Nobody speaks."}), False),
+        # ⚠️ E ela SO' vale para a forma `silencio`: rir em quadro e' o padrao
+        # dos outros cinco beats, e uma lente que acusasse `laughing` sempre
+        # reprovaria 400 de 400 videos certos.
+        ("RU16 nao acusa fora do silencio", _ru16_silencio_no_quadro, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]] + " Two of them are laughing."}),
+         False),
         ("RU4 sem a ancora de rosto", _ru4_ancora_rosto, s0,
          dict(b0, **{IMAGENS[1]: "A slim woman on a porch."}), True),
         ("RU4 limpo", _ru4_ancora_rosto, s0, b0, False),
@@ -2807,6 +3538,55 @@ def autoteste(n=400):
                          "simple remedy every single morning.",
                          s0["falas"][2]]), b0, False),
         ("RU13 limpo", _ru13_um_relogio, s0, b0, False),
+        # ⭐⭐ OS CONTROLES DAS CINCO LENTES NOVAS (2026-08-21). Cada um planta
+        # o defeito EXATO que a varredura mediu no motor, e nao um parente.
+        ("RU14 corpo reintroduzido", _ru14_um_corpo_so, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]]
+                     + " The very heavy customer is down on the tile."}), True),
+        ("RU14 limpo", _ru14_um_corpo_so, s0, b0, False),
+        ("RU14 limpo no casal (ela + o marido)", _ru14_um_corpo_so,
+         s_casal, b_casal, False),
+        ("RU15 casal colado e depois separado", _ru15_geometria_casal, s_casal,
+         dict(b_casal, **{IMAGENS[0]: b_casal[IMAGENS[0]].replace(
+             "and with her", "and beside her")}), True),
+        ("RU15 limpo", _ru15_geometria_casal, s_casal, b_casal, False),
+        # ⚠️ CONTROLE NEGATIVO DE VERDADE: no singular a lente nao pode
+        # acusar, porque `beside her` la' se refere a' RUTH.
+        ("RU15 nao acusa fora do casal", _ru15_geometria_casal, s0, b0, False),
+        ("RU17 `her head` num video de homem", _ru17_pronome_do_vizinho,
+         dict(s0, pessoa=_por_id(PESSOAS, "anon_homem_v40")),
+         dict(b0, **{IMAGENS[2]: b0[IMAGENS[2]]
+                     + " and the person beside her has turned her head."}),
+         True),
+        ("RU17 uma pessoa ao lado num casal", _ru17_pronome_do_vizinho,
+         s_casal, dict(b_casal, **{IMAGENS[2]: b_casal[IMAGENS[2]]
+                                   + " the person beside her smiles."}), True),
+        ("RU17 duas pessoas ao lado num singular", _ru17_pronome_do_vizinho,
+         s0, dict(b0, **{TAKES[2]: b0[TAKES[2]]
+                         + " the two beside her smile."}), True),
+        ("RU17 limpo", _ru17_pronome_do_vizinho, s0, b0, False),
+        ("RU17 limpo no casal", _ru17_pronome_do_vizinho, s_casal, b_casal,
+         False),
+        ("RU18 ingrediente na CENA 2 (o buraco do CT5)",
+         _ru18_ingrediente_nas_tres,
+         dict(s0, falas=[s0["falas"][0],
+                         "Look at her now, after one spoon of apple cider "
+                         "vinegar and lemon every morning.", s0["falas"][2]]),
+         b0, True),
+        ("RU18 ingrediente na CENA 3", _ru18_ingrediente_nas_tres,
+         dict(s0, falas=[s0["falas"][0], s0["falas"][1],
+                         "Comment recipe, and I will send the apple cider "
+                         "vinegar to your messages."]), b0, True),
+        ("RU18 limpo", _ru18_ingrediente_nas_tres, s0, b0, False),
+        # ⛔ RU5: o controle antigo plantava SO' antes do `Dialogue:` — que era
+        # o unico pedaco que a lente lia. Os dois de baixo sao a metade que ela
+        # nunca provou.
+        ("RU5 com aparelho na linha Audio:", _ru5_sem_aparelho, s0,
+         dict(b0, **{TAKES[0]: b0[TAKES[0]].replace(
+             "Audio: ", "Audio: a phone ringing, ")}), True),
+        ("RU5 com `filmed` dentro da FALA", _ru5_sem_aparelho, s0,
+         dict(b0, **{TAKES[0]: b0[TAKES[0]].replace(
+             "Pure shame.", "getting filmed by everyone. Pure shame.")}), True),
     ]
     for rotulo, fn, spec_t, blocos_t, deve in controles:
         obtido = _prova(fn, spec_t, blocos_t)
@@ -2869,17 +3649,168 @@ def autoteste(n=400):
     else:
         for k in range(12):
             sp = sortear(pags[k % len(pags)], random.Random(700 + k), {})
-            antes = list(sp["falas"])
             sp["falas"][k % 3] = nova_fala(sp, k % 3, random.Random(k))
             ruins = [m for nv, m in lint(sp, montar(sp)) if nv == "ERRO"]
             if ruins:
                 falhas.append("[PAINEL] `nova_fala` na cena %d deixa o video "
                               "invalido: %s" % (k % 3 + 1, ruins[0][:80]))
                 break
-            if sp["falas"] == antes and k > 6:
-                falhas.append("[PAINEL] `nova_fala` devolveu a MESMA copy — "
-                              "botao que nao muda nada e' botao quebrado")
-                break
+        # ⛔⛔ E A PROVA DE QUE O BOTAO MUDA ALGUMA COISA E' POR CONTAGEM, NAO
+        # POR UM CLIQUE. ⚠️ FALSO POSITIVO MEDIDO em 2026-08-21: a versao
+        # anterior reprovava o motor quando UM clique devolvia a mesma copy —
+        # e devolver a mesma e' o que o acaso faz de vez em quando (a cena 3
+        # tem 9 selos x 9 CTAs filtrados pelo orcamento, e uma colisao em doze
+        # cliques e' esperada). Lente que reprova o que esta' certo treina o
+        # operador a ignorar a barra inteira (§16). O que prova a FUNCAO do
+        # botao e' ele devolver copy DIFERENTE ao longo de varios cliques.
+        for cena in (0, 1, 2):
+            sp = sortear("joe", random.Random(777), {})
+            vistas = {nova_fala(sp, cena, random.Random(900 + j))
+                      for j in range(20)}
+            if len(vistas) < 3:
+                falhas.append("[PAINEL] `nova_fala` na cena %d devolveu %d "
+                              "copy(s) distinta(s) em 20 cliques — botao que "
+                              "nao muda nada e' botao quebrado"
+                              % (cena + 1, len(vistas)))
+
+    # =======================================================================
+    # ⭐⭐ O ALCANCE POR ENTRADA — e ele nao e' o mesmo que "18 de 18"
+    # =======================================================================
+    # ⛔⛔ MEDICAO QUE FALTAVA, e ela desmentia a linha de cima. O autoteste
+    # imprimia `abertura 18 de 18 alcancados` e a tabela de FORMA, e as duas
+    # passavam enquanto DUAS entradas de quatro palavras levavam 45% do lote:
+    #     ap1=78 ap3=74 (4 palavras) contra ap2=5 ap4=9 (7 e 6)
+    #     ta4=65 (5) contra ta1=3 e ta3=3 (8)
+    #     im1=56 im3=60 (6) contra im2=4 (8)
+    # ⭐ "Alcancada" e' um teto baixissimo: uma entrada que sai TRES vezes em
+    # 400 aparece em 14% dos lotes de vinte videos, e o operador que roda dois
+    # lotes nunca a ve'. Contar existencia diz `18 de 18`; contar DISTRIBUICAO
+    # diz que o pool tem seis entradas vivas.
+    # ⏳ DIVIDA DECLARADA E MEDIDA (alcada do operador, e' copy): o que sobra
+    # depois do conserto do sorteio e' de COMPRIMENTO. Com um beat de desastre
+    # de 13 palavras o orcamento da abertura+testemunha e' de 10, e a menor
+    # abertura (4) com a menor testemunha (5) ja' gasta 9 — a entrada de 7
+    # palavras NAO CABE em desastre nenhum desses, e nenhum sorteio conserta
+    # isso. Ou as entradas longas encurtam, ou os beats longos encurtam.
+    print("  ALCANCE POR ENTRADA (existir nao e' sair):")
+    for eixo, pool in (("abertura", ABERTURAS),
+                       ("testemunha", BEATS_TESTEMUNHA),
+                       ("virada", VIRADAS), ("prova", PROVAS)):
+        cont = collections.Counter(sp[eixo]["id"] for sp in specs)
+        v = sorted((cont.get(x["id"], 0), x["id"]) for x in pool)
+        print("     %-11s min %s=%d · max %s=%d · razao %.0fx"
+              % (eixo, v[0][1], v[0][0], v[-1][1], v[-1][0],
+                 float(v[-1][0]) / max(v[0][0], 1)))
+        mortas = [i for n_, i in v if n_ == 0]
+        if mortas:
+            falhas.append("[ALCANCE] %s: %s nao sai NENHUMA vez em %d "
+                          "sorteios — entrada morta que o contador de "
+                          "existencia conta como viva (§35)"
+                          % (eixo, mortas, len(specs)))
+
+    # =======================================================================
+    # ⭐⭐ O AUTOTESTE SOB AS TRAVAS DO PAINEL — e ele so' rodava LIVRE
+    # =======================================================================
+    # ⛔ `sortear` livre nao e' o modo em que o operador roda lote: ele
+    # pre-seleciona `sexo` e `rosto_ato1` no painel. Medido, a pre-selecao MUDA
+    # a distribuicao (com `sexo=homem` a forma `apresentacao` ia a 48% e `de3`
+    # saia ZERO vezes), e nenhuma das lentes tinha visto um unico video desse
+    # modo.
+    for sexo_ in ("livre", "mulher", "homem", "casal"):
+        for rosto_ in ("livre", "oculto", "visivel"):
+            ruins = 0
+            for k in range(30):
+                sp = sortear(pags[k % len(pags)], random.Random(3000 + k), {},
+                             {"sexo": sexo_, "rosto_ato1": rosto_})
+                ruins += len([1 for nv, _ in lint(sp, montar(sp))
+                              if nv == "ERRO"])
+            if ruins:
+                falhas.append("[TRAVAS] sexo=%s rosto=%s: %d ERRO em 30 "
+                              "videos — o painel roda travado e o autoteste "
+                              "so' rodava livre" % (sexo_, rosto_, ruins))
+
+    # =======================================================================
+    # ⭐⭐ RU13 POR FORCA BRUTA — a classe inteira, nao o par que ja' apareceu
+    # =======================================================================
+    # ⛔⛔ O autoteste usa 400 seeds FIXAS, o que faz dele REGRESSAO e nao
+    # amostra: o par `vi7` x `vd2` (`a year on` + `Eight months`) saia 1 vez em
+    # 3.000 sorteios livres e 6 vezes em 1.440 videos sob as travas do painel,
+    # e nas seeds 0..399 ele NUNCA aparece — o autoteste imprimia `0 ERRO`
+    # para sempre sobre um defeito vivo. A varredura abaixo custa
+    # milissegundos e fecha a CLASSE: nenhum trio de VIRADA x REMEDIO x PROVA,
+    # para nenhuma das catorze pessoas, pode trazer dois prazos.
+    dois = []
+    for p_ in PESSOAS:
+        d_ = _dic({"pessoa": p_})
+        for v_ in VIRADAS:
+            for r_ in REMEDIOS:
+                for x_ in PROVAS:
+                    fala = "%s %s %s" % (_r(v_["txt"], d_), _r(r_["txt"], d_),
+                                         _r(x_["txt"], d_))
+                    if len({z.group(0).lower()
+                            for z in _RX_DURACAO.finditer(fala)}) > 1:
+                        dois.append((p_["id"], v_["id"], r_["id"], x_["id"]))
+    print("  RU13 forca bruta: %d trios de %d com DOIS prazos · o sorteio "
+          "bloqueia %s" % (len(dois), len(PESSOAS) * len(VIRADAS)
+                           * len(REMEDIOS) * len(PROVAS),
+                           "todos" if dois else "-"))
+    # ⚠️ A varredura acusa o POOL (os pares existem no papel); quem os impede
+    # e' `_sortear_plano`. A prova de que ele impede e' a contagem abaixo, e e'
+    # ela que reprova o motor.
+    vivos = 0
+    for i in range(600):
+        sp = sortear(pags[i % len(pags)], random.Random(70000 + i), {})
+        vivos += len([1 for nv, msg in lint(sp, montar(sp))
+                      if nv == "ERRO" and "RU13" in msg])
+    if vivos:
+        falhas.append("[RU13] %d de 600 sorteios em seeds NOVAS trazem dois "
+                      "prazos — o filtro do sorteio nao esta' pegando" % vivos)
+
+    # =======================================================================
+    # ⭐⭐ O CADEADO E O BOTAO `trocar`, MEDIDOS EIXO POR EIXO
+    # =======================================================================
+    # ⛔⛔ A MEDICAO QUE FALTAVA E QUE ACHOU O EIXO MORTO. `testemunha` estava
+    # em `EIXOS_UI` e em `EIXOS_TRAVAVEIS`, o painel desenhava o cadeado e o
+    # botao — e `travas["testemunha"]` nunca era lida em `sortear`. Medido: o
+    # cadeado era honrado em 23 de 200 sorteios (11%, o acaso de 1 em 13
+    # formas cabiveis) e a escolha do operador no botao `trocar` sobrevivia em
+    # 4 de 120 cliques (3%). ⚠️ E a unica lente que pegaria isso — a de painel
+    # honesto — estava desligada de proposito para este eixo em
+    # `IGNORA_PAINEL`, por uma razao CERTA (o valor e' um molde com slot, e a
+    # lente acusaria 400 de 400 videos corretos). Excecao certa que deixa um
+    # buraco pede lente NOVA, nao lente removida.
+    # ⚠️ O piso e' 85% e nao 100% porque os acoplamentos sao reais: uma
+    # testemunha travada cede quando a forma nao cabe no desastre travado, e
+    # uma peca cede quando o sexo da pessoa travada nao a comporta. O que o
+    # piso separa e' "cede as vezes, por acoplamento" de "nunca foi lido".
+    print("  CADEADO e BOTAO `trocar` (o painel, simulado):")
+    for chave, nome_pool in ((e[0], e[2]) for e in EIXOS_UI):
+        pool = globals()[nome_pool]
+        honra = 0
+        for i in range(120):
+            base = sortear(pags[i % len(pags)], random.Random(4000 + i), {})
+            s2 = sortear(pags[i % len(pags)], random.Random(5000 + i), {},
+                         {chave: base[chave]["id"]})
+            honra += (s2[chave]["id"] == base[chave]["id"])
+        sobrevive = 0
+        for k in range(120):
+            sp = sortear(pags[k % len(pags)], random.Random(6000 + k), {})
+            opcoes = [x for x in pool if x != sp[chave]]
+            escolhido = random.Random(k).choice(opcoes)
+            sp[chave] = escolhido
+            if chave == "pessoa":
+                sp["idade"] = sp["pessoa"]["idade"]
+            fn_ = EIXOS_QUE_MEXEM_NA_COPY.get(chave)
+            if fn_:
+                fn_(sp, random.Random(k))
+            sobrevive += (sp[chave]["id"] == escolhido["id"])
+        print("     %-11s cadeado %3d/120 · `trocar` sobrevive %3d/120"
+              % (chave, honra, sobrevive))
+        for rot, n_ in (("cadeado", honra), ("`trocar`", sobrevive)):
+            if n_ < 102:
+                falhas.append("[PAINEL] eixo %r: %s honrado em %d de 120 — "
+                              "botao que promete e entrega outra coisa e' pior "
+                              "que botao ausente (GO21)" % (chave, rot, n_))
 
     if sum(erros.values()):
         falhas.append("%d ERRO de linter" % sum(erros.values()))
@@ -2927,15 +3858,44 @@ def main():
         travas["rosto_ato1"] = a.rosto
     if a.desastre:
         travas["desastre"] = a.desastre
+    # ⛔⛔ VIDEO COM ERRO NAO CHEGA A SER IMPRESSO, e ate' 2026-08-21 chegava.
+    # A ordem era: imprimir os sete blocos, DEPOIS rodar o linter, DEPOIS
+    # imprimir os ERROS. Quando um disparava, o operador ja' tinha o roteiro
+    # inteiro na tela para copiar — e o unico sinal era uma linha depois do
+    # ultimo bloco, abaixo da rolagem. E' o padrao *"agente reprovado
+    # rodavel"* dentro do proprio motor: quem gera o lote nao le' o rodape.
+    # ⭐ O conserto e' re-sortear com teto de tentativas e imprimir so' o que
+    # passou. ⚠️ O teto existe porque um pool novo pode nascer com um defeito
+    # em 100% dos sorteios, e ai' o motor tem de DIZER isso em vez de girar
+    # para sempre — nesse caso ele imprime o video E o diagnostico, com o
+    # aviso na frente, que e' o unico caso em que ver o bloco defeituoso
+    # ajuda.
+    TENTATIVAS = 12
     for _ in range(a.n):
-        s = sortear(a.pagina, rng, led, travas)
-        b = montar(s)
+        for tentativa in range(TENTATIVAS):
+            s = sortear(a.pagina, rng, led, travas)
+            b = montar(s)
+            ach = lint(s, b)
+            ruins = [x for x in ach if x[0] == "ERRO"]
+            if not ruins:
+                break
+        if ruins:
+            print("=" * 70)
+            print("[ABORTADO] %d sorteios seguidos com ERRO de lente — o "
+                  "defeito nao e' de sorteio, e' de POOL. O video abaixo e' o "
+                  "ultimo, impresso so' para diagnostico:" % TENTATIVAS)
+            for nivel, msg in ruins:
+                print("   [%s] %s" % (nivel, msg))
+            print("=" * 70)
         print("=" * 70)
         print(resumo_pt(s))
+        if tentativa:
+            print("(%d re-sorteio(s) ate' um video passar nas lentes)"
+                  % tentativa)
         print("=" * 70)
         for k in ("BLOCO 0 (REF)",) + IMAGENS + TAKES:
             print("\n%s\n" % b[k])
-        for nivel, msg in lint(s, b):
+        for nivel, msg in ach:
             print("[%s] %s" % (nivel, msg))
         if not a.dry_run:
             _gravar_ledger(led, s)

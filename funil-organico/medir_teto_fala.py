@@ -83,7 +83,12 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # + 2026-08-16: o PAR 16, no commit em que nasce.
            "par16",
            # + 2026-08-16: o DESCARTE 16, no commit em que nasce.
-           "descarte16"]
+           "descarte16",
+           # + 2026-08-21: o RUTH 16. ⚠️ Ele nasceu em 2026-08-20 FORA de
+           # cinco dos sete medidores, e os quatro que sabem medi-lo passavam
+           # verde sem nunca ter olhado para ele. Gate que nao ve o motor nao
+           # reprova o motor: produz um "passou" mentiroso (licoes §7).
+           "ruth16"]
 
 # ⭐⭐ O NUMERO QUE MANDA, e ele foi corrigido DUAS VEZES por render cortado.
 #

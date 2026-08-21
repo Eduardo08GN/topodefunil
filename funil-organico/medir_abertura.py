@@ -125,6 +125,24 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # + 2026-08-16: o DESCARTE 16, no commit em que nasce.
            "descarte16_short"]
 
+# ⛔⛔ O `ruth16_short` FICA DE FORA DESTA LISTA DE PROPOSITO, e a razao e'
+# MEDIDA (2026-08-21). Ele foi acrescentado junto com os outros quatro
+# medidores, mediu **97,8% de aberturas orfas** (352 de 360) — e as 352 estao
+# CERTAS na tela. O motivo e' estrutural: `tem_referente` procura o pool
+# `NUCLEO` do motor OU um possessivo do tipo `my husband`, e o RUTH 16 nao tem
+# nenhum dos dois por CONSTRUCAO — `NUCLEO` e' vazio (o angulo e' de PESO, nao
+# de orgao) e quem o video apresenta e' um NOME PROPRIO (*"This was Marjorie
+# before, the porch steps broke apart under her weight"*).
+# ⭐ E' o caso ESCANDALO do cabecalho acima na forma mais limpa: a lente reprova
+# o que esta' certo, e lente que reprova o certo treina o operador a ignorar a
+# barra inteira (licoes §16). Um numero de 97,8% ao lado de 50% dos vizinhos
+# nao informa nada — so' ensina a pular a linha.
+# ⚠️ Quem cobra a abertura DELE e' a lente `RU7` dentro do proprio motor: o nome
+# tem de chegar ao take 1 e atravessar o video.
+# ⏳ O dia em que `tem_referente` aceitar substantivo proprio em posicao de
+# sujeito, este motor entra aqui — e essa mudanca mexe nos 42 outros, entao e'
+# decisao de quem cuida deste medidor, nao efeito colateral de um motor novo.
+
 # ⭐ O QUE CONTA COMO REFERENTE, e a lista e' deliberadamente CURTA:
 #   · o orgao (o pool NUCLEO do proprio motor), ou
 #   · a pessoa dona do problema, nomeada com posse (`my husband`, `his wife`).

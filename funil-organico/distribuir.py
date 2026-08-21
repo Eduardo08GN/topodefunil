@@ -110,7 +110,25 @@ ORDEM = ["COLO-SHORT", "EXTERIOR-SHORT", "CLEAN-SHORT-V2", "CLEAN-SHORT", "RESSU
          # no take 2. Terceiro do dia que estava fora desta lista.
          "ESCANDALO-16",
          # + 2026-08-10: o WIFE-16, ao entregar o MODO RECEITA.
-         "WIFE-16"]
+         "WIFE-16",
+         # ⛔⛔ + 2026-08-21: o RUTH-16, e ele e' a REINCIDENCIA EXATA do
+         # paragrafo do PEE-16 vinte linhas acima. A pasta
+         # `AGENTES-16/RUTH-16` existe na area de trabalho desde 2026-08-20 com
+         # um `.exe` dentro, o operador tem esse `.exe` na mao — e o nome nunca
+         # esteve nesta lista, entao `distribuir.py --so RUTH-16` respondia
+         # *"NENHUM agente encontrado"* e nenhuma das correcoes da varredura
+         # adversarial teria chegado ao que ele roda.
+         # ⚠️ E A VARREDURA DE 2026-08-21 ACHOU QUE ISTO NAO E' UM CASO: sao
+         # **trinta e uma pastas** com `.exe` na area de trabalho e fora do
+         # ORDEM (BANHO-16, BED-16, HORSE-16, VICK-16, PRATO-16, MEL-16,
+         # PAR-16, DESCARTE-16, RARO-16, GELAHORSE-16, os SHORT novos...).
+         # Todas com o `.exe` congelado no dia em que a pasta nasceu.
+         # ⏳ Consertar o resto e' trabalho de quem cuida deste arquivo, e a
+         # forma certa provavelmente nao e' uma lista escrita a mao: e'
+         # DESCOBRIR as pastas que tem `_app.py` e um motor do repo. Lista
+         # manual de trinta e cinco nomes envelhece a cada agente novo, e o
+         # sintoma dela e' silencioso — o `.exe` velho continua abrindo.
+         "RUTH-16"]
 
 # a maquinaria que TODO agente carrega — a interface e' compartilhada, so' o
 # motor muda (CLAUDE.md §Agente maduro vira ferramenta)

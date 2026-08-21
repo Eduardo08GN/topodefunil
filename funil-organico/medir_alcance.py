@@ -92,7 +92,12 @@ MOTORES = ["clean", "clean_short_v2", "escandalo", "troca", "organicwave",
            # (mundo x familia x gesto) e roda o lint em todas. Registro mudo e'
            # o pior dos tres caminhos — este e o registro que sobra.
            # + 2026-08-16: o DESCARTE 16, no commit em que nasce.
-           "descarte16"]
+           "descarte16",
+           # + 2026-08-21: o RUTH 16. ⚠️ Ele nasceu em 2026-08-20 FORA de
+           # cinco dos sete medidores, e os quatro que sabem medi-lo passavam
+           # verde sem nunca ter olhado para ele. Gate que nao ve o motor nao
+           # reprova o motor: produz um "passou" mentiroso (licoes §7).
+           "ruth16"]
 
 N = 400
 # ⚠️ prefixo curto credita a entrada ERRADA quando duas comecam igual — foi

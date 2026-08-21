@@ -119,7 +119,12 @@ MOTORES = ["clean_short", "clean_short_v2", "escandalo_short", "troca_short",
            # + 2026-08-16: o PAR 16, no commit em que nasce.
            "par16_short",
            # + 2026-08-16: o DESCARTE 16, no commit em que nasce.
-           "descarte16_short"]
+           "descarte16_short",
+           # + 2026-08-21: o RUTH 16. ⚠️ Ele nasceu em 2026-08-20 FORA de
+           # cinco dos sete medidores, e os quatro que sabem medi-lo passavam
+           # verde sem nunca ter olhado para ele. Gate que nao ve o motor nao
+           # reprova o motor: produz um "passou" mentiroso (licoes §7).
+           "ruth16_short"]
 PAGINAS = ["joe", "marcus", "ray", "chuck", "matt"]
 N = 200
 
