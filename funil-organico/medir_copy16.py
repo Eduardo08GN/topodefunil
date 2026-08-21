@@ -128,7 +128,15 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # suprimem de verdade.
            "horse16",
            # + 2026-08-16: o PAR 16, no commit em que nasce.
-           "par16"]
+           "par16",
+           # + 2026-08-21: o RUTH 16, no commit em que nasce. ⛔ Rota de
+           # EMAGRECIMENTO: nao usa gelatina e fecha em `recipe`, como o
+           # RARO 16. ⚠️ E' o SEGUNDO motor de TRES cenas a entrar aqui (o
+           # primeiro foi o BANHO 16 3T) e, como la', nao foi preciso mexer em
+           # nada: o `sc.lint_copy16` le' `falas[-1]`, entao a cena do CTA e'
+           # achada por POSICAO RELATIVA. ⚠️ Ele desliga o CT2 e nada mais —
+           # ver `DESLIGADAS`.
+           "ruth16"]
 
 # ⛔ Angulos cuja cena 1 E' uma promessa falsa que o proprio video desmente.
 # So' muda o CT7: la' o verbo de ereccao e' a isca, nao o claim.
@@ -192,6 +200,20 @@ ROTULO = {
 # ⛔ So' entra aqui trava desligada TAMBEM NO MOTOR, com o motivo escrito la'.
 # Desligar so' aqui seria maquiar o relatorio.
 DESLIGADAS = {
+    ("ruth16", "CT2"):
+        "este angulo nao e' de disfuncao eretil: e' EMAGRECIMENTO, e a falha "
+        "nao e' um verbo, e' um CORPO — a cadeira do salao que racha, a rampa "
+        "que vence o marido, o guindaste dentro da sala. O regex do CT2 "
+        "procura `soft`, `stopped`, `quit`, `never works`, que sao verbos de "
+        "disfuncao MASCULINA, e ele acusaria a maioria dos sorteios em cima de "
+        "copy que enuncia a falha melhor do que qualquer entrada da lista. "
+        "⭐ O que o CT2 protege — o espectador se reconhecer — e' cobrado no "
+        "motor pelas lentes RU1 (a testemunha existe em quadro E na fala) e "
+        "RU11 (`Pure shame.` fecha o take 1, e fecha em 11 dos 15 reels da "
+        "fonte). ⚠️ As outras seis travas valem INTEIRAS, inclusive o CT8: os "
+        "quinze reels pedem follow e este motor nao pede, porque a DM sai "
+        "igual. E o CT4/CT4b nao se aplicam por CONSTRUCAO e nao por excecao "
+        "(`NUCLEO` vazio — nao ha' orgao nomeado num angulo de peso).",
     # ------------------------------------------------------------------
     # VICK 16 — as tres, declaradas no commit em que o motor nasce
     # ------------------------------------------------------------------

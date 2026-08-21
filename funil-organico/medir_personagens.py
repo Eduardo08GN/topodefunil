@@ -235,10 +235,17 @@ def _autoteste_leitura():
 # pele) nao existem em mao nenhuma. Eles entram em EXCECOES abaixo, senao o gate
 # passa a berrar para sempre — e gate que berra para sempre e' gate que ninguem
 # le'. Os eixos que SOBRAM (porte e ancora) sao os que a mao de fato tem.
+# ⛔⛔ `PESSOAS` E `ROSTOS` ENTRARAM EM 2026-08-21, com o RUTH 16. Sem eles o
+# gate imprimia `EIXOS ZERADOS: 0` para um motor cujos DOIS pools de gente
+# nunca foram medidos — que e' a §39 das licoes na letra: AUSENCIA NAO E' ZERO,
+# e um relatorio limpo por nao ter olhado e' identico a um relatorio limpo.
+# ⚠️ MEDIDO ANTES DE ENTRAR: `ruth16_short.py` e' o UNICO arquivo do parque com
+# pool chamado `PESSOAS` ou `ROSTOS` (varredura em 93 arquivos), e o relatorio
+# dos outros saiu identico linha por linha antes e depois.
 NOMES_DE_POOL = re.compile(
     r"^(REFS?|REF|HOMENS|MULHERES|NARRADORAS?|NARRADORES?|VITIMAS?|"
     r"ARQUETIPOS?|PACIENTES?|FIGURANTES?|PLATEIA|TESTEMUNHAS?|CORPOS?_PROVA|"
-    r"MONTANHESES?|ESPECIALISTAS?|MAOS)(_[A-Z_]+)?$")
+    r"MONTANHESES?|ESPECIALISTAS?|MAOS|PESSOAS|ROSTOS)(_[A-Z_]+)?$")
 
 # pools que se COMBINAM no sorteio — medir o produto, nao as partes
 COMBINAM = {"randomizador-prisma.py": ["REF_IDADES", "REF_FISICOS", "REF_MARCAS"]}
@@ -252,6 +259,23 @@ COMBINAM = {"randomizador-prisma.py": ["REF_IDADES", "REF_FISICOS", "REF_MARCAS"
 # ate' o desacoplamento; agora vivem nos `_short`, que sao a fonte da verdade.
 # A regra que cada excecao sustenta nao mudou uma virgula — so' o endereco.
 EXCECOES = {
+    # ⛔⛔ RUTH 16 — o angulo separa a IDENTIDADE do ROSTO em DOIS pools, e a
+    # separacao e' o desenho, nao descuido. `PESSOAS` carrega nome + sexo +
+    # idade + porte, porque o NOME e' o eixo mais barato do motor (a fonte
+    # troca so' ele e republica o mesmo roteiro: Betsy/Betty na mesma cadeira
+    # de salao, Marjorie/Marilyn na mesma rampa). O rosto vive em `ROSTOS`, que
+    # este mesmo gate mede e onde os seis eixos existem.
+    # ⚠️ Juntar os dois amarraria cada nome a um rosto fixo e mataria o eixo
+    # mais barato que o motor tem.
+    ("ruth16_short.py", "PESSOAS", "cabelo"):
+        "RU4 — o cabelo e o rosto inteiro vivem no pool `ROSTOS`, que este "
+        "gate mede a seguir. `PESSOAS` e' nome + sexo + idade + porte.",
+    ("ruth16_short.py", "PESSOAS", "oculos"): "idem RU4 — o rosto e' `ROSTOS`",
+    ("ruth16_short.py", "PESSOAS", "pele"):
+        "idem RU4 — e aqui ha' uma segunda razao: a etnia vem da PAGINA "
+        "(congruencia inviolavel), entao NENHUM pool deste motor pode declarar "
+        "cor de pele sem criar duas vozes no mesmo sintagma.",
+    ("ruth16_short.py", "PESSOAS", "ancora"): "idem RU4 — a ancora e' `ROSTOS`",
     ("flagrante_short.py", "REFS", "pelo_facial"):
         "F4b — o REF e' barbeado e sem oculos DE PROPOSITO: careca+bigode+"
         "oculos e' o que marca a VITIMA. Encher aqui apaga o contraste que "
