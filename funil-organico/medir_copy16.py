@@ -98,6 +98,7 @@ MOTORES = ["banho16", "troca16", "ressurreicao16", "exterior16", "flagrante16",
            # nao suposto — o CT6 deu 0% (achou o endereco de entrega), que e'
            # impossivel se ele estivesse medindo a cena do PREPARO.
            "banho16_3t",
+           "amish16",
            # + 2026-08-10: o ALFA 16 entra aqui no commit em que nasce.
            # ⚠️ Ele DESLIGA o CT2 e o CT6 localmente (o angulo nao enuncia
            # falha, e o operador tirou a clausula de entrega do CTA) —
@@ -214,6 +215,28 @@ DESLIGADAS = {
         "quinze reels pedem follow e este motor nao pede, porque a DM sai "
         "igual. E o CT4/CT4b nao se aplicam por CONSTRUCAO e nao por excecao "
         "(`NUCLEO` vazio — nao ha' orgao nomeado num angulo de peso).",
+    # ------------------------------------------------------------------
+    # AMISH 16S — primeiro motor FORA do nicho ED (emagrecimento), e as
+    # quatro copies sao VERBATIM da fonte (Martha.Knows, 18 reels 50k+
+    # lidos em 21/08). Ordem do operador: "o resto deve permanecer igual".
+    # Copy de fonte nao se dobra ao regex — e' a §16 das licoes.
+    # ------------------------------------------------------------------
+    ("amish16", "CT1"):
+        "26% medido = a COPY 1, verbatim da campea (8/18 usos, 331k): o "
+        "`But follow me and share this video` vem DEPOIS da sentenca do "
+        "CTA na fonte, e e' a forma que mais deu view na pagina inteira.",
+    ("amish16", "CT2"):
+        "100% por DESENHO: os takes 1-2 sao MUDOS (a fonte nao fala sobre "
+        "o antes/depois) — a falha e' enunciada pelo QUADRO: o obeso, a "
+        "colherada e o caption DAY 1 escrito pelo Veo.",
+    ("amish16", "CT6"):
+        "74% = as copies 1-3, verbatim: `I will send it to you` sem "
+        "endereco. So' a COPY 4 diz onde chega (`straight to your inbox`), "
+        "como na fonte.",
+    ("amish16", "CT8"):
+        "26% = a COPY 1 pede follow NA FALA porque a fonte pede — e' a "
+        "unica das quatro, e e' a campea. A regra do funil ED (a DM sai "
+        "igual) nem se aplica: outra pagina, outra automacao, outro nicho.",
     # ------------------------------------------------------------------
     # VICK 16 — as tres, declaradas no commit em que o motor nasce
     # ------------------------------------------------------------------
