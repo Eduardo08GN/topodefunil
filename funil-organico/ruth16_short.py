@@ -551,8 +551,8 @@ DESASTRES = [
             "ball cap swings his pointing arm further out",
      "cam": "The shot is taken from the lawn at hip height, angled about "
             "thirty degrees upward along the wall so the torn opening, the "
-            "crane arm and the body on the grass all sit in the same vertical "
-            "frame",
+            "crane arm and the grass under the webbing all sit in the same "
+            "vertical frame",
      "luz": "Hard high summer sun from the upper left, crisp shadows thrown "
             "flat across the pale siding, cloudless sky.",
      "audio": "an idling diesel engine, a hydraulic whine, boots on grass and "
@@ -586,9 +586,10 @@ DESASTRES = [
             "the line ends the two men in quilted flannel jackets laugh out "
             "loud and the teenager in the grey hoodie leans further into the "
             "doorway",
-     "cam": "The shot is taken from across the living room at waist height, "
-            "straight on and level, wide enough to hold the whole hoist, the "
-            "hanging body and the crowded doorway behind it",
+     "cam": "The shot is taken from across the living room at waist "
+            "height, straight on and level, wide enough to hold the whole "
+            "hoist, the taut straps under the mast and the crowded doorway "
+            "behind it",
      "luz": "Flat cold overcast daylight pushing in from the lace-curtained "
             "window, a weak warm bulb overhead, grey shadowless fill.",
      "audio": "nylon straps creaking, a steel chain clinking, low radio "
@@ -620,9 +621,10 @@ DESASTRES = [
             "against the tipped basin. As the line ends the two women in "
             "white salon robes laugh behind their hands and the technicians "
             "in black polos step back from the tipped basin",
-     "cam": "The shot is taken from the salon aisle at waist height, angled "
-            "slightly down, wide enough to hold the broken throne, the body on "
-            "the tile and the whole receding row of chairs behind it",
+     "cam": "The shot is taken from the salon aisle at waist height, "
+            "angled slightly down, wide enough to hold the broken throne, "
+            "the tile under the tipped basin and the whole receding row of "
+            "chairs behind it",
      "luz": "Flat cool white fluorescent ceiling light, almost shadowless, a "
             "faint green bounce off the walls.",
      "audio": "the sharp crack of splitting wood, a collective gasp, a chair "
@@ -671,9 +673,10 @@ DESASTRES = [
             "further. As the line ends the two women in navy windbreakers on "
             "the steps laugh into each other and the young man in the brown "
             "delivery uniform turns to watch them",
-     "cam": "The shot is taken from a few feet behind the group at hip height, "
-            "tilted up along the slope of the ramp so the fallen bodies sit low "
-            "in the frame and the entrance sits high in it",
+     "cam": "The shot is taken from a few feet behind the group at hip "
+            "height, tilted up along the slope of the ramp so the concrete "
+            "under both of them sits low in the frame and the entrance "
+            "sits high in it",
      "luz": "Flat overcast midday daylight, soft shadowless light on pale "
             "concrete, cool neutral white balance.",
      "audio": "shoes scuffing concrete, a palm slapping the steel handrail, "
@@ -708,9 +711,9 @@ DESASTRES = [
             "the man in the blue polo on the sidewalk laughs and says "
             "something and the neighbour in the red ball cap swings a "
             "pointing arm out at the steps",
-     "cam": "The shot is taken from driveway height a few paces back, angled "
-            "up the flight so both fallen bodies and the neighbours on the "
-            "sidewalk sit in the same vertical frame",
+     "cam": "The shot is taken from driveway height a few paces back, "
+            "angled up the flight so the broken flight, both of them and "
+            "the neighbours on the sidewalk sit in the same vertical frame",
      "luz": "Hard midday summer sun from the left, bleached wood, deep shadow "
             "under the porch roof, bright sky.",
      "audio": "a loud splintering crack, wood shards skittering on gravel, a "
@@ -744,9 +747,9 @@ DESASTRES = [
             "out loud and the woman in the yellow raincoat lifts her free "
             "hand to her mouth",
      "cam": "The shot is taken from beside the open sliding door at chest "
-            "height, angled down about thirty degrees onto the pavers, wide "
-            "enough to hold the fallen body, the spilled coffee and the group "
-            "on the sidewalk",
+            "height, angled down about thirty degrees onto the pavers, "
+            "wide enough to hold the pavers below the door sill, the "
+            "spilled coffee and the group on the sidewalk",
      "luz": "Hard low late-afternoon sun from the right, strong warm key, long "
             "dark shadows raked across the brick pavers, high contrast.",
      "audio": "a plastic lid clattering on brick, a hand slapping flat on "
@@ -783,10 +786,10 @@ DESASTRES = [
             "the slope. As the line ends the man in the yellow polo jabs his "
             "finger down at them and shouts and the bearded man in the ball "
             "cap laughs into the shoulder of the woman in the pink hoodie",
-     "cam": "The shot is taken from under the garage eave about three metres "
-            "up, looking down the driveway at roughly thirty degrees, wide "
-            "enough to hold both bodies, the rolling stroller and the "
-            "whole ring of neighbours",
+     "cam": "The shot is taken from under the garage eave about three "
+            "metres up, looking down the driveway at roughly thirty "
+            "degrees, wide enough to hold both of them, the rolling "
+            "stroller and the whole ring of neighbours",
      "luz": "Flat bright overcast midday daylight, no hard shadows, slightly "
             "desaturated and low contrast.",
      "audio": "one man shouting, two people laughing, stroller wheels on "
@@ -910,9 +913,9 @@ DESASTRES = [
             "grey suit lifts his hymnbook against his chest and the rows "
             "nearest the aisle draw back into their pews",
      "cam": "The shot is taken from the centre aisle at seated shoulder "
-            "height, angled slightly down along the pews, wide enough to hold "
-            "the broken bench, the body on the runner and four rows of turned "
-            "faces behind it",
+            "height, angled slightly down along the pews, wide enough to "
+            "hold the broken bench, the runner under the tipping seat and "
+            "four rows of turned faces behind it",
      "luz": "Warm morning sun coming through the tall arched windows in long "
             "bars across the pews, soft shadows on the whitewashed walls.",
      "audio": "a sharp crack of splitting wood, hymnals slapping the floor, "
@@ -949,9 +952,9 @@ DESASTRES = [
             "the counter holds the coffee pot up mid-pour and the man in the "
             "window booth stabs his pointing arm out across the counter",
      "cam": "The shot is taken from the far end of the counter at seated "
-            "chest height, angled slightly down along the row of stools, wide "
-            "enough to hold the sheared pedestal, the body on the tile and "
-            "the whole counter of watching faces",
+            "chest height, angled slightly down along the row of stools, "
+            "wide enough to hold the sheared pedestal, the checkerboard "
+            "tile under the stool and the whole counter of watching faces",
      "luz": "Flat white fluorescent light from the ceiling panels with hard "
             "warm daylight coming in from the window wall at one side.",
      "audio": "a metallic bang, a plate breaking on tile, a stool top "
@@ -986,10 +989,10 @@ DESASTRES = [
             "circle laugh out loud with their beers still up, the woman in "
             "the apron heaves under one arm and gets nowhere and the second "
             "woman lets go of the other wrist and steps back",
-     "cam": "The shot is taken from inside the circle of chairs at seated hip "
-            "height, angled slightly down across the grass, wide enough to "
-            "hold the split chair, the body inside it and the whole ring of "
-            "guests around it",
+     "cam": "The shot is taken from inside the circle of chairs at seated "
+            "hip height, angled slightly down across the grass, wide "
+            "enough to hold the split chair, the cut grass inside the "
+            "frame of it and the whole ring of guests around it",
      "luz": "Hard afternoon summer sun through the blue canopy, warm bounce "
             "off the grass, sharp shadows under the table.",
      "audio": "plastic cracking and skidding on grass, foil trays rattling, "
@@ -1025,10 +1028,10 @@ DESASTRES = [
             "break into open laughter, the two teenagers beside them grin "
             "and lean in over the boards and the woman in the league "
             "sweatshirt rises halfway out of her seat two rows up",
-     "cam": "The shot is taken from the court floor at standing head height, "
-            "angled about thirty degrees upward into the bleachers, wide "
-            "enough to hold the broken plank, the trapped body and six rows "
-            "of turned faces above it",
+     "cam": "The shot is taken from the court floor at standing head "
+            "height, angled about thirty degrees upward into the "
+            "bleachers, wide enough to hold the broken plank, the gap in "
+            "the third row and six rows of turned faces above it",
      "luz": "Hard white gymnasium high-bay light straight down, hot "
             "highlights on the varnished floor, short shadows under the "
             "bleachers.",
@@ -1066,10 +1069,10 @@ DESASTRES = [
             "woman in the corsage across the room presses both palms to her "
             "cheeks and the man in the green sweater at the buffet points "
             "his serving spoon at the floor",
-     "cam": "The shot is taken from beside the buffet table at standing chest "
-            "height, angled down about thirty degrees across the room, wide "
-            "enough to hold the folded chair, the body on the vinyl and four "
-            "full tables behind it",
+     "cam": "The shot is taken from beside the buffet table at standing "
+            "chest height, angled down about thirty degrees across the "
+            "room, wide enough to hold the folded chair, the vinyl floor "
+            "inside the steel frame and four full tables behind it",
      "luz": "Flat cool fluorescent ceiling light across the whole room, a "
             "weak warm bounce off the gold centrepieces, no shadow direction.",
      "audio": "steel folding legs snapping shut, a glass rolling on vinyl, "
@@ -1106,9 +1109,9 @@ DESASTRES = [
             "staring and the clerk behind the screen leans over the counter "
             "on both palms",
      "cam": "The shot is taken from beside the service window at standing "
-            "chest height, angled about twenty degrees down, wide enough to "
-            "hold the dropped chair, the body on the carpet tiles and the "
-            "full rows of seated people facing it",
+            "chest height, angled about twenty degrees down, wide enough "
+            "to hold the chair at the window, the carpet tiles under it "
+            "and the full rows of seated people facing it",
      "luz": "Flat cool fluorescent ceiling light across the whole floor, a "
             "faint green cast on the carpet tiles, almost no shadow.",
      "audio": "a sharp pneumatic bang, castors clattering over carpet, "
@@ -1186,8 +1189,8 @@ DESASTRES = [
             "rain slicker pulls twice at the other arm and steps back",
      "cam": "The shot is taken from further down the pier at hip height, "
             "straight along the walkway and level, wide enough to hold the "
-            "broken plank, both bodies on the decking and the whole line of "
-            "people at the rail",
+            "broken plank, the decking under both of them and the whole "
+            "line of people at the rail",
      "luz": "Hard morning sun low across the water, bright glints on the "
             "lake, warm light along the grey planking.",
      "audio": "a hard wooden snap, water slapping the pilings, a rod "
@@ -1225,9 +1228,9 @@ DESASTRES = [
             "out and the two teenagers on bicycles put a foot down on the "
             "gravel road",
      "cam": "The shot is taken from the gravel road at hip height, angled "
-            "about twenty degrees up toward the trailer door, wide enough to "
-            "hold the torn step, the body on the gravel and the watching "
-            "neighbours at their sites",
+            "about twenty degrees up toward the trailer door, wide enough "
+            "to hold the torn step, the gravel under the doorway and the "
+            "watching neighbours at their sites",
      "luz": "Cool early morning sun raking through the pines, long soft "
             "shadows across the gravel, pale sky above the trees.",
      "audio": "metal tearing and clanging on gravel, a mug rolling, a camp "
@@ -1264,9 +1267,9 @@ DESASTRES = [
             "over her mouth and the man in the work vest on the sidewalk "
             "jabs his pointing arm up at the empty bolt hole",
      "cam": "The shot is taken from the sidewalk at chest height, angled "
-            "about twenty degrees up onto the porch, wide enough to hold the "
-            "fallen swing, both bodies on the boards and the group standing "
-            "in the foreground",
+            "about twenty degrees up onto the porch, wide enough to hold "
+            "the tilted swing, the boards under both of them and the group "
+            "standing in the foreground",
      "luz": "Warm low late-afternoon sun from the side, long shadows across "
             "the porch boards, deep shade under the roof.",
      "audio": "a bolt tearing out of wood, chain links hitting the boards, "
@@ -1306,8 +1309,8 @@ DESASTRES = [
             "foot of the stairs with her books",
      "cam": "The shot is taken from the foot of the staircase at standing "
             "chest height, angled about thirty degrees up along the steps, "
-            "wide enough to hold the torn rail, the body on the terrazzo and "
-            "the faces at the mezzanine glass above",
+            "wide enough to hold the torn rail, the terrazzo steps under "
+            "it and the faces at the mezzanine glass above",
      "luz": "Cool even daylight from a high clerestory window with a weak "
             "warm fill from the table lamps, soft shadows on the plaster.",
      "audio": "steel brackets tearing out of plaster, a handrail ringing "
@@ -1345,10 +1348,10 @@ DESASTRES = [
             "the tray on one hand turns in the aisle and the man in the "
             "plaid shirt at the service station stabs his arm out across the "
             "room",
-     "cam": "The shot is taken from the aisle at seated chest height, angled "
-            "slightly down into the booth, wide enough to hold the torn "
-            "bench, the body wedged at the table and the full row of watching "
-            "tables behind it",
+     "cam": "The shot is taken from the aisle at seated chest height, "
+            "angled slightly down into the booth, wide enough to hold the "
+            "torn bench, the gap between the bench and the table and the "
+            "full row of watching tables behind it",
      "luz": "Warm low tungsten light from the brass wall lamps over the "
             "booths, deep shadow in the corners, cool blue window light at "
             "the edge.",
@@ -1401,10 +1404,10 @@ DESASTRES = [
             "harder behind their carts and the man in the green store apron "
             "takes both hands off his cart handle and steps back from the "
             "kerb",
-     "cam": "The shot is taken from the parking row at chest height, angled "
-            "down about twenty degrees across the crossing, wide enough to "
-            "hold the fallen body, the spread of groceries and the shoppers "
-            "standing behind their carts",
+     "cam": "The shot is taken from the parking row at chest height, "
+            "angled down about twenty degrees across the crossing, wide "
+            "enough to hold the white stripes of the crossing, the spread "
+            "of groceries and the shoppers standing behind their carts",
      "luz": "Hard low late-afternoon sun from the left, long shadows raked "
             "across the white stripes, warm high-contrast key.",
      "audio": "cans rolling on asphalt, a paper sack tearing open, cart "
@@ -1439,10 +1442,10 @@ DESASTRES = [
             "at the shelter laugh out loud and the older man in the brown "
             "work jacket takes a forearm in both hands, hauls once and opens "
             "his hands again",
-     "cam": "The shot is taken from the kerb a few paces back at hip height, "
-            "angled about twenty degrees up toward the open bus door so the "
-            "fallen body, the spilled laundry and the whole waiting queue sit "
-            "in one frame",
+     "cam": "The shot is taken from the kerb a few paces back at hip "
+            "height, angled about twenty degrees up toward the open bus "
+            "door so the pavement under the door, the spilled laundry and "
+            "the whole waiting queue sit in one frame",
      "luz": "Flat bright overcast morning light, soft shadowless fill on wet "
             "concrete, cool neutral white balance.",
      "audio": "an idling bus engine, air brakes hissing, wet fabric "
@@ -1478,9 +1481,10 @@ DESASTRES = [
             "arm he is holding and opens his hands again, and the two women "
             "in long winter coats on the step above raise a flat hand to the "
             "mouth",
-     "cam": "The shot is taken from the kerb at knee height, angled slightly "
-            "up along the concrete slabs so the body lies low and wide in the "
-            "frame with the post office step and the watching group behind it",
+     "cam": "The shot is taken from the kerb at knee height, angled "
+            "slightly up along the concrete slabs so the slabs fill the "
+            "lower frame wide with the post office step and the watching "
+            "group behind them",
      "luz": "Flat cold winter overcast, blue-grey light with no shadow "
             "direction, a pale glare coming off the bare concrete slabs.",
      "audio": "a stack of parcels going down on concrete, cardboard scraping "
@@ -1518,9 +1522,9 @@ DESASTRES = [
             "food-court polo props both hands on her mop handle and looks "
             "away toward the counters",
      "cam": "The shot is taken from the aisle at chest height, angled down "
-            "about twenty-five degrees onto the tile, wide enough to hold the "
-            "fallen body, the scattered food and the emptied tables standing "
-            "behind it",
+            "about twenty-five degrees onto the tile, wide enough to hold "
+            "the tile of the aisle, the scattered food and the emptied "
+            "tables standing behind it",
      "luz": "Bright flat mall lighting from overhead downlights with cool "
             "skylight fill, almost shadowless, faintly green on the tile.",
      "audio": "a tray clattering on tile, ice cubes skidding away, chairs "
@@ -1556,10 +1560,10 @@ DESASTRES = [
             "the fuel nozzle still up in his hand, the driver in the orange "
             "work shirt doubles over grinning, and the woman in the straw "
             "hat at the next island pushes her pointing arm further out",
-     "cam": "The shot is taken from under the canopy at chest height, angled "
-            "down about thirty degrees along the pump island so the fallen "
-            "body, the rolling cans and both watching drivers sit in the same "
-            "frame",
+     "cam": "The shot is taken from under the canopy at chest height, "
+            "angled down about thirty degrees along the pump island so the "
+            "concrete at the pump base, the rolling cans and both watching "
+            "drivers sit in the same frame",
      "luz": "Hard midday sun outside the canopy with deep flat shade "
             "underneath, blown bright highlights on the concrete apron "
             "beyond.",
@@ -1598,9 +1602,9 @@ DESASTRES = [
             "together and the woman in the tan raincoat hauls twice on the "
             "elbow she is holding and opens her hands",
      "cam": "The shot is taken from the sales floor at hip height, angled "
-            "about twenty degrees up toward the comb plate so both bodies, "
-            "the spilled boxes and the stacked shoppers on the steps read in "
-            "one frame",
+            "about twenty degrees up toward the comb plate so both of "
+            "them, the spilled boxes and the stacked shoppers on the steps "
+            "read in one frame",
      "luz": "Bright even retail lighting from overhead spots, cool white with "
             "soft speculars on the steel panels.",
      "audio": "the escalator drive humming, cardboard boxes sliding on "
@@ -1642,12 +1646,12 @@ DESASTRES = [
             "shoulder they have hold of through the open wing and let go, "
             "and the woman in the camel coat at the reception counter "
             "presses a flat hand over her mouth",
-     "cam": "The shot is taken from inside the lobby at chest height, about "
-            "thirty degrees off the axis of the brass drum and square to the "
-            "open wing so the line of sight goes through the opening instead "
-            "of through the curved glass, wide enough to hold the wedged "
-            "body, the spreading coffee and the held-up people on both sides "
-            "of it",
+     "cam": "The shot is taken from inside the lobby at chest height, "
+            "about thirty degrees off the axis of the brass drum and "
+            "square to the open wing so the line of sight goes through the "
+            "opening instead of through the curved glass, wide enough to "
+            "hold the inside of the drum, the spreading coffee and the "
+            "held-up people on both sides of it",
      "luz": "Cool morning daylight flooding through the glass wall with soft "
             "overhead fill, low contrast and slightly blue on the marble.",
      "audio": "a revolving door mechanism grinding to a stop, a paper cup "
@@ -1683,10 +1687,10 @@ DESASTRES = [
             "sweatshirts lean further over the walkway rail laughing and the "
             "man in the orange work vest pushes his pointing arm out over "
             "the rail and calls something down",
-     "cam": "The shot is taken from the lot at the foot of the stair at chest "
-            "height, angled about thirty degrees up so the body on the steps, "
-            "the split bag and the neighbours along the walkway all sit in "
-            "one vertical frame",
+     "cam": "The shot is taken from the lot at the foot of the stair at "
+            "chest height, angled about thirty degrees up so the four "
+            "steps below the nosing, the split bag and the neighbours "
+            "along the walkway all sit in one vertical frame",
      "luz": "Flat bright overcast morning light, soft shadowless fill on grey "
             "concrete, cool neutral balance.",
      "audio": "a plastic bag tearing, tins and bottles rolling down "
@@ -1723,9 +1727,9 @@ DESASTRES = [
             "hanging open and the woman in the tan work jacket hauls twice "
             "on the wrist and opens her hands again",
      "cam": "The shot is taken from the foot of the ramp at knee height, "
-            "angled about twenty-five degrees up the slope so both bodies, "
-            "the running paint and the drivers at the top sit in the same "
-            "vertical frame",
+            "angled about twenty-five degrees up the slope so both of "
+            "them, the running paint and the drivers at the top sit in the "
+            "same vertical frame",
      "luz": "Hard fluorescent strip light overhead against a blown-out "
             "doorway of daylight at the bottom, high contrast on the wet "
             "concrete.",
@@ -1763,9 +1767,9 @@ DESASTRES = [
             "out, and the couple in matching red aprons take an arm each, "
             "pull twice and let go",
      "cam": "The shot is taken from the middle of the closed street at hip "
-            "height, angled down about twenty degrees toward the kerb so the "
-            "fallen body, the thrown food and the whole ring of neighbours "
-            "sit in one frame",
+            "height, angled down about twenty degrees toward the kerb so "
+            "the kerb line of lawn and tarmac, the thrown food and the "
+            "whole ring of neighbours sit in one frame",
      "luz": "Warm low late-afternoon sun down the length of the street, long "
             "shadows across the tarmac, high contrast on the paper cloths.",
      "audio": "an aluminium tray clanging on tarmac, plastic forks "
@@ -1808,9 +1812,9 @@ DESASTRES = [
             "pulls twice on the wrist she is holding and opens her hands "
             "again",
      "cam": "The shot is taken from the roadway at knee height a couple of "
-            "paces off the kerb, angled about twenty degrees up so the body "
-            "down against the kerb stone, the burst crate and the standing "
-            "queue behind it sit in one frame",
+            "paces off the kerb, angled about twenty degrees up so the "
+            "foot of the granite kerb stone, the burst crate and the "
+            "standing queue behind it sit in one frame",
      "luz": "Bright clear morning sun from the left, hard shadows under the "
             "canopies and blown highlights on the white cloth.",
      "audio": "a wooden crate cracking on stone, fruit rolling over asphalt, "
@@ -1855,10 +1859,10 @@ DESASTRES = [
             "shirt two seats along turns right round with both hands flat on "
             "his cards, the woman in the lilac cardigan half stands to see "
             "over the row, and not one of them says anything",
-     "cam": "The shot is taken from the end of the row at chest height, level "
-            "and straight on down the gap between the tables, close enough to "
-            "hold the body on the tiles and wide enough to keep the rows of "
-            "turned faces behind it",
+     "cam": "The shot is taken from the end of the row at chest height, "
+            "level and straight on down the gap between the tables, close "
+            "enough to hold the tiles in the gap between the two tables "
+            "and wide enough to keep the rows of turned faces behind it",
      "luz": "Flat cool strip lighting overhead with a faint green cast on the "
             "tiles and almost no shadow direction.",
      "audio": "a plastic chair skidding back over tile, a paper cup emptying "
@@ -1998,11 +2002,11 @@ DESASTRES = [
             "As the line ends the two young men in team jerseys on the kerb "
             "laugh out loud and the man in the grey hoodie in the doorway "
             "points higher",
-     "cam": "The shot is taken from the open third-floor balcony doorway at "
-            "chest height, looking down along the aluminium ladder track so "
-            "the loaded platform and the body on it fill the near frame, with "
-            "the truck, the strip of grass and the people on the sidewalk "
-            "reading small below",
+     "cam": "The shot is taken from the open third-floor balcony doorway "
+            "at chest height, looking down along the aluminium ladder "
+            "track so the loaded platform and its orange webbing fill the "
+            "near frame, with the truck, the strip of grass and the people "
+            "on the sidewalk reading small below",
      "luz": "Hard mid-morning sun from the left, sharp shadows across the "
             "brick, clear blue sky.",
      "audio": "an electric winch motor grinding, aluminium rails rattling, "
@@ -2116,11 +2120,11 @@ DESASTRES = [
             "back down the slope. As the line ends the two drivers in ball "
             "caps on the shoulder laugh out loud and the man in the hi-vis "
             "vest folds his arms",
-     "cam": "The shot is taken from the road shoulder about three metres up, "
-            "looking down the grass slope at roughly forty degrees over the "
-            "heads of the line of drivers, so the yellow recovery strap and "
-            "the body on the wet grass read clear and low in the frame with "
-            "the standing drivers ranged across the top of it",
+     "cam": "The shot is taken from the road shoulder about three metres "
+            "up, looking down the grass slope at roughly forty degrees "
+            "over the heads of the line of drivers, so the yellow recovery "
+            "strap and the wet grass under it read clear and low in the "
+            "frame with the standing drivers ranged across the top of it",
      "luz": "Low golden evening sun raking across the field from the right, "
             "long shadows down the ditch, warm sky.",
      "audio": "a winch drum ratcheting, cable creaking under load, an "
@@ -2161,10 +2165,11 @@ DESASTRES = [
             "the line ends the two young men in feed-store caps laugh out "
             "loud and the woman in the sun dress lowers her hand and says "
             "something across to them",
-     "cam": "The shot is taken from the fairway at chest height a few paces "
-            "in front of the bucket, angled about twenty-five degrees upward "
-            "so the raised bucket and the body in it fill the middle of the "
-            "frame with the stopped fairway behind",
+     "cam": "The shot is taken from the fairway at chest height a few "
+            "paces in front of the bucket, angled about twenty-five "
+            "degrees upward so the raised bucket and the folded blanket in "
+            "it fill the middle of the frame with the stopped fairway "
+            "behind",
      "luz": "Hard high afternoon sun almost straight overhead, short black "
             "shadows on the trampled grass, bleached bright sky.",
      "audio": "a diesel tractor idling, hydraulics whining under the bucket, "
@@ -2252,10 +2257,11 @@ DESASTRES = [
             "women in denim jackets at the patio tables laugh into their "
             "cups and the man in the fleece lets go of the arm he was "
             "holding and shakes his head",
-     "cam": "The shot is taken from the kerb at knee height a couple of paces "
-            "away, angled about fifteen degrees down along the paving so the "
-            "inflating bags and the body sit low and close in the frame with "
-            "the patio rail and the watching tables behind",
+     "cam": "The shot is taken from the kerb at knee height a couple of "
+            "paces away, angled about fifteen degrees down along the "
+            "paving so the inflating bags and the paving under them sit "
+            "low and close in the frame with the patio rail and the "
+            "watching tables behind",
      "luz": "Hard low morning sun coming down the street from the left, long "
             "shadows across the paving, bright glare off the shopfront glass.",
      "audio": "compressed air hissing into the bladders, plastic creaking as "
@@ -2318,9 +2324,9 @@ DESASTRES = [
             "the folded pamphlet and the man in work boots on the waiting "
             "row leans further in over his knees",
      "cam": "The shot is taken from the far side of the waiting room at "
-            "seated chest height, level and straight on, wide enough to hold "
-            "the scale, the body on the platform and the whole row of waiting "
-            "chairs behind it",
+            "seated chest height, level and straight on, wide enough to "
+            "hold the scale, the steel plate under both feet and the whole "
+            "row of waiting chairs behind it",
      "luz": "Flat cool fluorescent ceiling light with a faint green cast, "
             "almost shadowless, a weak window bounce from the left.",
      "audio": "the platform creaking under the soles, a printer chattering "
@@ -2473,10 +2479,10 @@ DESASTRES = [
             "line ends the two women in street clothes on the bench laugh "
             "into their hands and the man in the matching paper gown on the "
             "corridor chairs grins down at the floor",
-     "cam": "The shot is taken from the corridor end of the alcove at chest "
-            "height, angled slightly down, wide enough to hold the open "
-            "cubicle curtain, the gown held up in one fist and the people "
-            "watching from the bench",
+     "cam": "The shot is taken from the corridor end of the alcove at "
+            "chest height, angled slightly down, wide enough to hold the "
+            "open cubicle curtain, the two gown ties drawn across the "
+            "front and the people watching from the bench",
      "luz": "Soft cool overhead light with one warm bulb over the mirror, "
             "gentle shadows across the beige walls.",
      "audio": "paper rustling in one fist, shoes on vinyl, a curtain ring "
@@ -2513,9 +2519,9 @@ DESASTRES = [
             "on the far exam table laughs out loud behind a hand and his "
             "mother in the companion chair beside him laughs with him",
      "cam": "The shot is taken from the sink side of the bay at standing "
-            "chest height, angled about twenty degrees down onto the dropped "
-            "table, wide enough to hold the torn paper and the occupied far "
-            "table behind it",
+            "chest height, angled about twenty degrees down onto the near "
+            "exam table, wide enough to hold the torn paper and the "
+            "occupied far table behind it",
      "luz": "Flat cool fluorescent ceiling light, almost shadowless, with a "
             "faint green institutional cast on the cream vinyl.",
      "audio": "a table base buckling under the weight, paper tearing in one "
@@ -2550,12 +2556,12 @@ DESASTRES = [
             "corridor chairs watches through the open doorway and the woman "
             "with the coat folded on her knees beside him looks down at her "
             "lap and up again",
-     "cam": "The shot is taken from inside the scanner room at seated chest "
-            "height, a little to the side of the narrow table so the body on "
-            "the edge of it and the shoulders standing a hand wider than the "
-            "mattress on each side fill the near frame, with the technologist "
-            "in the doorway and the corridor of waiting patients reading "
-            "through the open door behind",
+     "cam": "The shot is taken from inside the scanner room at seated "
+            "chest height, a little to the side of the narrow table so the "
+            "edge of the mattress and the shoulders standing a hand wider "
+            "than it on each side fill the near frame, with the "
+            "technologist in the doorway and the corridor of waiting "
+            "patients reading through the open door behind",
      "luz": "Cool even fluorescent corridor light against a brighter clinical "
             "white spilling out of the scanner room.",
      "audio": "a low mechanical hum from the scanner room, a step stool "
@@ -2638,9 +2644,9 @@ DESASTRES = [
             "with the orange in the visitor chair stops peeling and holds it "
             "in both hands",
      "cam": "The shot is taken from the door of the ward at chest height, "
-            "level and straight on down the middle of the floor, close enough "
-            "to hold the waiting body and the incoming bed together with the "
-            "three occupied beds ranked behind them",
+            "level and straight on down the middle of the floor, close "
+            "enough to hold the edge of the ordinary bed and the incoming "
+            "bed together with the three occupied beds ranked behind them",
      "luz": "Flat cool ceiling fluorescent light with a hard band of daylight "
             "coming through the blinds at the far end.",
      "audio": "bed castors rumbling over vinyl, a bag handle creaking in two "
@@ -2683,10 +2689,11 @@ DESASTRES = [
             "the next bay with the paper bib still clipped at his neck "
             "laughs out loud and the woman in the work jacket in the waiting "
             "area lowers her magazine and stares in",
-     "cam": "The shot is taken from the foot of the treatment chair at seated "
-            "chest height, angled about fifteen degrees down onto the dropped "
-            "chair, close enough to hold the body in it and wide enough to "
-            "keep the next bay and the open door in the same frame",
+     "cam": "The shot is taken from the foot of the treatment chair at "
+            "seated chest height, angled about fifteen degrees down onto "
+            "the dropped chair, close enough to hold the stalled backrest "
+            "and wide enough to keep the next bay and the open door in the "
+            "same frame",
      "luz": "Cold white overhead panels with the treatment lamp arm throwing "
             "a small hard pool of light across the chair.",
      "audio": "a hydraulic post sighing down under the chair, an instrument "
@@ -2738,10 +2745,10 @@ DESASTRES = [
             "in the work coat at the head of the queue stares straight ahead "
             "and the two women with shopping bags behind him turn fully "
             "sideways to look",
-     "cam": "The shot is taken from the platform side of the gates at chest "
-            "height, level and straight on, wide enough to hold the open "
-            "barrier panels, the stopped body, the attendant and the whole "
-            "queue behind",
+     "cam": "The shot is taken from the platform side of the gates at "
+            "chest height, level and straight on, wide enough to hold the "
+            "open barrier panels, the gap between the stainless posts, the "
+            "attendant and the whole queue behind",
      "luz": "Flat cool fluorescent light from overhead panels, almost no "
             "shadow direction, a faint green cast on the white tile.",
      "audio": "a fare gate chime repeating, shoes shifting on terrazzo, a "
@@ -2939,10 +2946,10 @@ DESASTRES = [
             "sill and the door hinge creaks wider. As the line ends the two "
             "men in work shirts at the truck bed in the next row laugh and "
             "turn right round toward the open door",
-     "cam": "The shot is taken from the lane between the rows at hip height a "
-            "few paces off the open door, angled about ten degrees up so the "
-            "open door, the body wedged at the sill and the two watching men "
-            "beyond the truck bed sit in one frame",
+     "cam": "The shot is taken from the lane between the rows at hip "
+            "height a few paces off the open door, angled about ten "
+            "degrees up so the open door, the door sill and the two "
+            "watching men beyond the truck bed sit in one frame",
      "luz": "Hard clear morning sun from the right, sharp shadows under the "
             "parked cars, strong glare off the windscreens.",
      "audio": "a car door hinge creaking under load, a key fob chirping once, "
@@ -2984,10 +2991,10 @@ DESASTRES = [
             "men in straw hats up in their saddles laugh across at each "
             "other over the block and the young woman on the near horse "
             "covers her mouth with the hand holding the rein",
-     "cam": "The shot is taken from the yard at chest height a few paces from "
-            "the block, angled about ten degrees up so the empty stirrup, the "
-            "body on the top step and the mounted riders behind all sit in "
-            "one frame",
+     "cam": "The shot is taken from the yard at chest height a few paces "
+            "from the block, angled about ten degrees up so the empty "
+            "stirrup, the top step of the mounting block and the mounted "
+            "riders behind all sit in one frame",
      "luz": "Clear low morning sun from the side, long shadows raked across "
             "the dirt, pale blue sky over the barn roof.",
      "audio": "hooves shifting on packed dirt, a stirrup leather creaking, "
@@ -3029,10 +3036,11 @@ DESASTRES = [
             "man in the fleece vest two steps down keeps his hand on the "
             "rail and looks straight up, and the woman in the windbreaker "
             "behind him turns her head sideways to see past him",
-     "cam": "The shot is taken from four treads below at chest height, angled "
-            "about thirty degrees upward around the curve of the stair so the "
-            "narrowing shaft, the body wedged between the rail and the wall "
-            "and the heads of the group underneath sit in one frame",
+     "cam": "The shot is taken from four treads below at chest height, "
+            "angled about thirty degrees upward around the curve of the "
+            "stair so the narrowing shaft, the gap between the rail and "
+            "the wall and the heads of the group underneath sit in one "
+            "frame",
      "luz": "One shaft of hard daylight from the arched window crossing the "
             "whitewash, deep shade above it and below it.",
      "audio": "shoe soles scuffing on iron treads, a handrail ringing under a "
@@ -3117,9 +3125,9 @@ DESASTRES = [
             "line ends the man with the coffee tray in the lobby stares at "
             "the crowded car and the two women in office coats by the bench "
             "look at each other and say nothing",
-     "cam": "The shot is taken from the middle of the lobby at chest height, "
-            "level and straight on, wide enough to hold the open lift doors, "
-            "the crowded car, the body against its back wall and the waiting "
+     "cam": "The shot is taken from the middle of the lobby at chest "
+            "height, level and straight on, wide enough to hold the open "
+            "lift doors, the crowded car, its back wall and the waiting "
             "office workers",
      "luz": "Soft warm downlights on marble mixed with cool daylight from the "
             "glass entrance wall, gentle reflections on the polished floor.",
