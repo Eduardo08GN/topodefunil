@@ -71,7 +71,87 @@ VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
 # watch_dir vazio = usa o Downloads do Windows; keywords = palavras-gatilho do
 # CTA destacadas na legenda (cor propria + fonte maior)
 CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": "",
-       "keywords": "HONEY,GELATIN,VICK,VICKS,RECIPE"}
+       # ⭐ YES entrou em 2026-08-21 com o AMISH 16S, cuja keyword de
+       # automacao e' `YES` por ordem dele (*"o cta desse agente deve ser
+       # sempre a palavra yes"*). Sem ela o CTA saia sem destaque nenhum —
+       # medido no v001 de hoje, o unico video do lote em que a palavra que
+       # o espectador precisa digitar era a UNICA sem cor.
+       # ⚠️ Preco declarado: um `yes` conversacional na fala de outro agente
+       # tambem sai colorido. Tirar e' apagar uma palavra desta linha.
+       "keywords": "HONEY,GELATIN,VICK,VICKS,RECIPE,YES",
+       # ⭐ MUSICA nos takes mudos (2026-08-21, pedido para o AMISH 16S).
+       # `musica` = nome do arquivo dentro de MUSICAS_DIR ("" = sem musica).
+       # `musica_travada` = "1" mantem a escolha entre sessoes; vazio = a
+       # escolha vale so' ate' fechar o app (os takes 1-2 do AMISH sao mudos,
+       # entao ele trava uma vez e esquece).
+       "musica": "", "musica_travada": "",
+       # ⭐⭐ LEGENDA DE DIA nos takes MUDOS (2026-08-21). Ordem: *"precisa
+       # ter um botao ali de fixar ou nao as legendas de dia no take 1 e
+       # take 2"*, e ela e' GERAL — *"vai ser utilizado pra mais agentes
+       # tambem"*. `dia_ligado` = "1" liga; `dia_num` = "" sorteia entre
+       # DIA_MIN e DIA_MAX, ou um numero fixo; `dia_corte` = segundos a que
+       # o take mudo e' cortado ("" = nao corta).
+       "dia_ligado": "", "dia_num": "", "dia_estilo": "vermelho",
+       "dia_corte": "3",
+       # ⭐⭐ QUANTOS TAKES DO INICIO SAO MUDOS — 2026-08-21, junto com o
+       # quarto slot. "auto" mede pelo volume (LIMIAR_MUDO); um numero
+       # DECLARA, e declaracao ganha de medicao. O AMISH 16S e' "2".
+       # ⛔ Existe porque o medidor ja' errou: com o limiar antigo os quatro
+       # takes reais do lote passaram por falados e as duas funcoes novas
+       # (legenda DAY e musica) nao rodaram uma vez.
+       "mudos": "auto"}
+
+# a faixa que o AMISH 16S sorteia — o operador pediu poder travar dentro dela
+DIA_MIN, DIA_MAX = 45, 57
+
+# a pasta que o operador pediu: dentro da "Agentes Python" da area de trabalho
+MUSICAS_DIR = os.path.join(os.path.expanduser("~"), "Desktop",
+                           "Agentes Python", "Musicas")
+AUDIO_EXT = (".mp3", ".wav", ".m4a", ".aac", ".ogg", ".flac")
+
+
+def listar_musicas():
+    """Nomes dos audios em MUSICAS_DIR, ordenados. Pasta ausente = lista vazia."""
+    try:
+        return sorted(a for a in os.listdir(MUSICAS_DIR)
+                      if a.lower().endswith(AUDIO_EXT))
+    except OSError:
+        return []
+
+
+def dias_atual():
+    """O contrato que o `pipeline.processar_video` espera. SEMPRE um dict.
+
+    ⛔ O sorteio do dia acontece AQUI, uma vez por video — nao no pipeline.
+    Assim o numero fica no log e no historico, e dois videos do mesmo lote
+    nao saem com o mesmo dia so' porque o processo nao reiniciou.
+
+    ⚠️ Deixou de devolver None com a legenda desligada (2026-08-21): o
+    `mudos` e o `corte` valem mesmo sem legenda nenhuma — quem decide se o
+    take passa pelo auto-editor e ate' onde a musica vai e' a MUDEZ, nao a
+    legenda. Amarrar as duas coisas fazia desligar a legenda apagar a
+    musica junto, em silencio.
+    """
+    fixo = (CFG.get("dia_num") or "").strip()
+    if fixo.isdigit():
+        n = max(DIA_MIN, min(DIA_MAX, int(fixo)))
+    else:
+        n = random.randint(DIA_MIN, DIA_MAX)
+    corte = (CFG.get("dia_corte") or "").strip()
+    md = (CFG.get("mudos") or "auto").strip()
+    return {"ligado": CFG.get("dia_ligado") == "1", "dia2": n,
+            "estilo": CFG.get("dia_estilo") or "vermelho",
+            "corte": float(corte) if corte else 0,
+            "mudos": int(md) if md.isdigit() else None}
+
+
+def musica_atual():
+    """Caminho completo da musica escolhida, ou None se nao houver/sumiu."""
+    nome = (CFG.get("musica") or "").strip()
+    if not nome:
+        return None
+    p = os.path.join(MUSICAS_DIR, nome)
+    return p if os.path.isfile(p) else None
 
 _lock = threading.RLock()
 _fila = queue.Queue()
@@ -106,14 +186,23 @@ def pasta_downloads():
 
 
 def _carregar_cfg():
+    # ⛔ `utf-8-sig`, nao `utf-8` (2026-08-21): qualquer editor do Windows —
+    # o PowerShell inclusive — grava JSON com BOM, e com `utf-8` o
+    # `json.load` levanta ValueError na primeira coluna. O `except` abaixo
+    # engole, e o app volta com TODOS os ajustes no padrao sem uma linha de
+    # log. Foi assim que a escolha de DAY 47/amarelo sumiu num teste de hoje.
     try:
-        with open(CONFIG, encoding="utf-8") as f:
+        with open(CONFIG, encoding="utf-8-sig") as f:
             dados = json.load(f)
         for k in CFG:
             if isinstance(dados.get(k), str):
                 CFG[k] = dados[k]
     except (OSError, ValueError):
         pass
+    # ⛔ musica NAO travada morre com a sessao: se o config diz que nao esta'
+    # travada, a escolha gravada e' resto da sessao anterior e sai daqui.
+    if CFG.get("musica_travada") != "1":
+        CFG["musica"] = ""
 
 
 def salvar_cfg():
@@ -363,8 +452,19 @@ def _processar_zip(nome):
         out = os.path.join(pasta_dia, arquivo)
 
         kws = [k for k in CFG["keywords"].split(",") if k.strip()]
+        mus = musica_atual()
+        if CFG.get("musica") and not mus:
+            _log_atual("aviso: musica %r sumiu da pasta — seguindo sem"
+                       % CFG["musica"])
+        dias = dias_atual()
+        if dias.get("ligado"):
+            _log_atual("legenda de dia LIGADA: DAY 1 / DAY %d (estilo %s)"
+                       % (dias["dia2"], dias["estilo"]))
+        if dias.get("mudos") is not None:
+            _log_atual("takes mudos declarados: %d" % dias["mudos"])
         processar_video(takes, out, model=CFG["model"], margem=CFG["margem"],
-                        fator=fator, keywords=kws, log=_log_atual)
+                        fator=fator, keywords=kws, musica=mus, dias=dias,
+                        log=_log_atual)
 
         dur = duracao(out)
         shutil.move(zpath, _nome_unico(D_ARQUIVO, nome))
@@ -412,7 +512,9 @@ def _worker():
 def enfileirar_manual(caminhos):
     """⭐ MODO MANUAL (2026-08-03): o operador escolhe os takes na mao.
 
-    Recebe os caminhos JA' NA ORDEM (take 1, 2, 3) e devolve o nome do job.
+    Recebe os caminhos JA' NA ORDEM (take 1, 2, 3, 4...) e devolve o nome do
+    job. Quantos slots o painel oferece e' decisao dele (`app.N_MANUAL`);
+    aqui a quantidade e' livre.
 
     ⚠️ NAO existe um segundo caminho de edicao aqui. Esta funcao so' MONTA UM
     ZIP em 01_entrada e deixa o watcher/worker que ja' rodam fazerem o resto.

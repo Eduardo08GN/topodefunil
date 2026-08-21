@@ -251,7 +251,7 @@ def queimar_legenda(inp, ass_path, out):
     return out
 
 
-def _inicio_take2(takes, dur_final, log=print):
+def _inicio_take2(durs, dur_final, log=print):
     """Em que segundo do video PRONTO comeca o segundo take.
 
     ⛔ Nao da' para usar a duracao do take 1 direto. Entre juntar e legendar, o
@@ -268,9 +268,9 @@ def _inicio_take2(takes, dur_final, log=print):
 
     Com um take so', devolve None: nao existe segundo take para marcar.
     """
-    if len(takes) < 2:
+    if len(durs) < 2:
         return None
-    duracoes = [duracao(t) for t in takes]
+    duracoes = list(durs)
     if not all(duracoes) or not dur_final:
         return None
     alvo = (duracoes[0] / sum(duracoes)) * dur_final
@@ -279,8 +279,255 @@ def _inicio_take2(takes, dur_final, log=print):
     return alvo
 
 
+# ===========================================================================
+# ⭐⭐ A LEGENDA DAY — QUEIMADA AQUI, NAO PEDIDA AO GERADOR (2026-08-21)
+# ===========================================================================
+# Ordem do operador, depois de filmar oito geracoes: *"remova completamente
+# esse dia 1 e dia 50 e poucos do prompt [...] e coloque pro editor conseguir
+# fazer essa legenda queimada, deixar ela fixa dia 1 no take 1 e fixa o dia
+# que tem que ser no take 2 [...] porque ele tem dificuldade em fixar essa
+# legenda. E' mais facil fazer ela sair a partir do editor"*.
+# ⛔ MEDIDO por ele: em 8 de 8 takes a legenda DESAPARECIA no meio, e dois
+# lotes de imagem vieram com TARJA PRETA atras do texto. O ffmpeg desenha o
+# mesmo pixel em todo frame — o gerador nao tem como fazer isso.
+# ⭐ E' um botao GERAL, nao do AMISH: *"vai ser utilizado pra mais agentes
+# tambem, entao precisa ter um botao ali de fixar ou nao"*.
+FONTE_DIA = r"C:\Windows\Fonts\ariblk.ttf"      # Arial Black
+
+# os cinco estilos que a pagina-fonte usa, lidos dos 18 reels
+ESTILOS_DIA = {
+    "vermelho": dict(cor="red", borda="white", larg=6, caixa=None),
+    "amarelo":  dict(cor="yellow", borda="black", larg=5, caixa=None),
+    "branco":   dict(cor="white", borda="black", larg=6, caixa=None),
+    "rosa":     dict(cor="white", borda="black", larg=3, caixa="#E8117F"),
+    "roxo":     dict(cor="white", borda="#7B2FBE", larg=6, caixa=None),
+}
+
+
+def _esc_ff(p):
+    """Caminho de fonte para dentro de um filtro do ffmpeg no Windows."""
+    return p.replace("\\", "/").replace(":", "\\:")
+
+
+def queimar_dia(inp, texto, out, estilo="vermelho"):
+    """Queima `texto` (ex.: "DAY 1") FIXO, do primeiro ao ultimo frame.
+
+    ⛔ A altura e' 8% do topo e o tamanho 11% da altura — a mesma faixa que a
+    fonte usa. Fica ACIMA do recorte de 4% do `aplicar_zoom`? Nao: o zoom
+    roda DEPOIS e comeria a borda. Por isso o texto e' centralizado e nasce
+    a 8%, nunca colado no topo.
+    ⚠️ `borderw` desenha contorno, nao tarja. A tarja (`box`) so' entra no
+    estilo `rosa`, que e' o unico da fonte que a tem — a tarja PRETA que
+    apareceu nos lotes dele era invencao do gerador, e e' o que este
+    caminho elimina.
+    """
+    e = ESTILOS_DIA.get(estilo) or ESTILOS_DIA["vermelho"]
+    w, h = dims(inp)
+    fs = max(28, int(h * 0.11))
+    partes = ["fontfile='%s'" % _esc_ff(FONTE_DIA),
+              "text='%s'" % texto.replace("'", ""),
+              "fontcolor=%s" % e["cor"],
+              "fontsize=%d" % fs,
+              "bordercolor=%s" % e["borda"],
+              "borderw=%d" % e["larg"],
+              "x=(w-text_w)/2", "y=h*0.08"]
+    if e["caixa"]:
+        partes += ["box=1", "boxcolor=%s" % e["caixa"], "boxborderw=%d" % (fs // 6)]
+    _run([FFMPEG, "-y", "-i", os.path.abspath(inp),
+          "-vf", "drawtext=" + ":".join(partes),
+          "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+          "-c:a", "copy", os.path.abspath(out)])
+    return out
+
+
+def volume_medio(path):
+    """RMS medio em dB. Devolve -99 quando nao ha' audio nenhum."""
+    p = _run([FFMPEG, "-i", path, "-af", "volumedetect", "-f", "null", "-"])
+    for l in (p.stderr or "").splitlines():
+        if "mean_volume:" in l:
+            try:
+                return float(l.split("mean_volume:")[1].split("dB")[0])
+            except (IndexError, ValueError):
+                pass
+    return -99.0
+
+
+# ⛔⛔ O LIMIAR DE MUDEZ — MEDIDO, NAO ESTIMADO (2026-08-21)
+# ===========================================================================
+# Nasceu -55 dB, que e' silencio DIGITAL. Ao rodar o primeiro lote real de 4
+# takes do AMISH o valor foi desmentido: o Veo NAO entrega silencio digital
+# nem quando o prompt manda: ele entrega ruido de sala. Medido nos 6 takes
+# gerados por ele em 21/08 (mean_volume):
+#
+#   takes que o prompt pediu MUDOS  ->  -41.6 · -40.3 · -37.2 · -31.2 dB
+#   takes COM FALA                  ->  -19.1 · -18.3 dB
+#
+# ⚠️ Com -55 dB nenhum dos quatro era reconhecido: os dois takes de card
+# passavam pelo auto-editor, NAO recebiam a legenda DAY, NAO eram cortados a
+# 3s e a musica era pulada com um log que dizia *"video de 1 take so'"*. As
+# duas funcoes construidas ontem a pedido dele nao rodavam uma vez sequer, e
+# nada no log denunciava. E' o mesmo modo de falha do §41: forma pronta,
+# funcao morta.
+# ⭐ -26 dB fica no meio dos 12 dB de folga entre os dois grupos (5 dB de
+# margem para o take mudo mais barulhento, 7 para a fala mais baixa).
+# ⛔ E o operador nao depende deste numero: o seletor `takes mudos` do rodape
+# DECLARA quantos sao, e declaracao ganha de medicao sempre que existe.
+LIMIAR_MUDO = -26.0
+
+
+def e_mudo(path, limiar=LIMIAR_MUDO):
+    """⛔⛔ O take e' MUDO? Pergunta que o editor precisa fazer desde 21/08.
+
+    O AMISH 16S gera os takes 1-2 sem fala por ordem (a musica entra aqui).
+    E o `auto-editor` corta o que estiver abaixo do threshold de audio — num
+    take sem fala isso significa cortar O TAKE INTEIRO.
+    ⚠️ Sem esta pergunta, o primeiro lote do AMISH sairia com dois takes
+    faltando e nada no log dizendo por que.
+    """
+    return volume_medio(path) <= limiar
+
+
+def mudez_dos_takes(takes, declarado=None, log=print):
+    """Quais takes seguem pelo caminho MUDO (sem auto-editor, com legenda DAY,
+    cobertos pela musica). Devolve uma lista de bool do tamanho de `takes`.
+
+    `declarado`: quantos takes do INICIO sao mudos, dito pelo operador no
+    rodape. None = detectar pelo volume. 0 = nenhum (desliga o caminho).
+
+    ⭐ A DECLARACAO GANHA DA MEDICAO. O operador sabe que o AMISH tem dois
+    cards mudos na frente; o medidor so' sabe que dois arquivos estao baixos.
+    Quando os dois discordam, quem erra e' o medidor — e o log diz que
+    discordaram, para o limiar poder ser corrigido com evidencia.
+    """
+    if declarado is not None:
+        n = max(0, min(int(declarado), len(takes)))
+        decl = [i < n for i in range(len(takes))]
+        auto = [e_mudo(t) for t in takes]
+        if auto != decl:
+            log("  mudez: declarada %d (o medidor teria dito %d) — vale a "
+                "declaracao" % (n, sum(auto)))
+        return decl
+    return [e_mudo(t) for t in takes]
+
+
+def zerar_audio(inp, out):
+    """Zera o audio do take, preservando a faixa (o `concat` mapeia `[i:a:0]`
+    e um take sem stream de audio quebraria o filtro inteiro).
+
+    ⛔ POR QUE ZERAR: o take mudo e' aquele cujo som e' SUBSTITUIDO pela
+    musica — foi essa a ordem (*"takes 1 e 2 completamente mudos, sem nenhum
+    tipo de som ou barulho, pois sera' colocada musica neles"*). O gerador
+    nao cumpre: o take 2 do lote de 21/08 chegou com um pico de -3,7 dB
+    (uma batida de colher) que, por baixo da musica, sai como estalo.
+    ⚠️ O video e' COPIADO — zerar som nao encosta em quadro nenhum.
+    """
+    _run([FFMPEG, "-y", "-i", os.path.abspath(inp), "-af", "volume=0",
+          "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", os.path.abspath(out)])
+    return out
+
+
+def _fim_takes_mudos(durs, mudos, dur_final):
+    """Em que segundo do video PRONTO termina o ultimo take MUDO.
+
+    ⭐ 2026-08-21: deixou de ser "todos menos o ultimo" (palpite) e passou a
+    usar a DETECCAO de audio real (`e_mudo`) — a musica cobre exatamente os
+    takes que nasceram mudos, seja qual for a quantidade deles.
+    ⚠️ Continua proporcional porque a velocidade e o zoom reescalam o video
+    inteiro DEPOIS; mas a base agora e' a duracao ja' tratada, nao a bruta.
+    """
+    if not any(mudos) or not dur_final or not sum(durs):
+        return None
+    # ultimo indice mudo (contiguo do inicio e' o caso normal, mas nao exigimos)
+    ult = max(i for i, m in enumerate(mudos) if m)
+    return (sum(durs[:ult + 1]) / sum(durs)) * dur_final
+
+
+def mixar_musica(inp, musica, fim, out):
+    """Mistura a musica por cima do audio de 0 ate `fim` segundos, com fade-out
+    de 0,5s para nao estalar no corte.
+
+    ⛔ Roda DEPOIS da legenda queimada e o video e' COPIADO (`-c:v copy`):
+    musica nao encosta em quadro nenhum, e reencodar aqui so' somaria perda
+    numa cadeia que ja' reencoda tres vezes.
+    ⭐ Se a musica for mais curta que o trecho, ela simplesmente acaba (o
+    atrim nao estica); se for mais longa, o atrim corta no `fim` exato — que
+    e' o "cortada automaticamente caso os takes fiquem mais curtos" da ordem.
+    ⚠️ `normalize=0` no amix: sem ele o filtro derruba o volume dos dois lados
+    pela metade e a fala do take final sai baixa.
+    """
+    fade_ini = max(0.0, fim - 0.5)
+    fc = (f"[1:a]atrim=0:{fim:.3f},asetpts=PTS-STARTPTS,"
+          f"afade=t=out:st={fade_ini:.3f}:d=0.5[m];"
+          f"[0:a][m]amix=inputs=2:duration=first:"
+          f"dropout_transition=0:normalize=0[a]")
+    _run([FFMPEG, "-y", "-i", os.path.abspath(inp), "-i", os.path.abspath(musica),
+          "-filter_complex", fc, "-map", "0:v", "-map", "[a]",
+          "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", os.path.abspath(out)])
+    return out
+
+
+def preparar_takes(takes, work, margem, dias=None, log=print):
+    """⭐⭐ TRATA CADA TAKE ANTES DE JUNTAR — mudanca de 2026-08-21.
+
+    ⛔ POR QUE O DESILENCIAR MUDOU DE LUGAR: ate' aqui ele rodava no video
+    JUNTADO. Com o AMISH 16S os takes 1-2 passaram a nascer em SILENCIO
+    TOTAL por ordem do operador (a musica entra depois) — e o `auto-editor`
+    corta tudo que esta' abaixo do threshold de audio. Num take 100% mudo
+    isso e' cortar O TAKE INTEIRO: o video sairia so' com o CTA, e nada no
+    log diria por que.
+    ⭐ Rodando por take, o mudo e' PRESERVADO e so' quem tem fala passa pelo
+    corte. Efeito colateral bom: as duracoes finais ficam CONHECIDAS aqui, e
+    o pin do CTA e o fim da musica deixam de ser estimativa proporcional.
+
+    Devolve [(caminho_tratado, era_mudo)] na ordem.
+    """
+    dias = dias or {}
+    ligado = bool(dias.get("ligado"))
+    estilo = dias.get("estilo", "vermelho")
+    corte = float(dias.get("corte") or 0)
+    mudez = mudez_dos_takes(takes, dias.get("mudos"), log)
+    saida, i_mudo = [], 0
+    for i, tk in enumerate(takes):
+        mudo = mudez[i]
+        cur = tk
+        if mudo:
+            i_mudo += 1
+            # ⛔ O TAKE MUDO NAO PASSA PELO auto-editor — ver acima.
+            if corte and duracao(cur) > corte + 0.05:
+                # ⚠️ o Veo nao gera abaixo de 4s (medido pelo operador); o
+                # take de 3s que o agente pede nasce do corte AQUI.
+                novo_c = os.path.join(work, "t%02d_corte.mp4" % i)
+                _run([FFMPEG, "-y", "-i", cur, "-t", "%.3f" % corte,
+                      "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+                      "-c:a", "aac", "-b:a", "192k", novo_c])
+                log("  take %d: mudo, cortado a %.1fs" % (i + 1, corte))
+                cur = novo_c
+            else:
+                log("  take %d: mudo, preservado inteiro" % (i + 1))
+            # o som do take mudo e' o que a musica substitui — ver `zerar_audio`
+            novo_z = os.path.join(work, "t%02d_zero.mp4" % i)
+            zerar_audio(cur, novo_z)
+            cur = novo_z
+            if ligado:
+                texto = "DAY 1" if i_mudo == 1 else "DAY %s" % dias.get("dia2", 51)
+                novo_d = os.path.join(work, "t%02d_dia.mp4" % i)
+                queimar_dia(cur, texto, novo_d, estilo)
+                log("  take %d: legenda %s queimada (estilo %s)"
+                    % (i + 1, texto, estilo))
+                cur = novo_d
+        else:
+            novo_s = os.path.join(work, "t%02d_sil.mp4" % i)
+            desilenciar(cur, novo_s, margem)
+            log("  take %d: fala, silencio cortado (%.1fs -> %.1fs)"
+                % (i + 1, duracao(cur), duracao(novo_s)))
+            cur = novo_s
+        saida.append((cur, mudo))
+    return saida
+
+
 def processar_video(takes, out_final, model="base.en", lang="en",
-                    margem="0.2s", fator=None, keywords=None, log=print):
+                    margem="0.2s", fator=None, keywords=None, musica=None,
+                    dias=None, log=print):
     if not takes:
         raise RuntimeError("nenhum take encontrado")
     work = tempfile.mkdtemp(prefix="owedit_")
@@ -291,10 +538,15 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         aproximado = os.path.join(work, "04_zoom.mp4")
         assf = os.path.join(work, "05_legenda.ass")
 
-        log(f"  juntando {len(takes)} take(s)...")
-        concat(takes, juntado)
-        log("  tirando silencio (auto-editor)...")
-        desilenciar(juntado, cortado, margem)
+        log(f"  preparando {len(takes)} take(s)...")
+        prontos = preparar_takes(takes, work, margem, dias, log)
+        tratados = [p for p, _m in prontos]
+        # as duracoes ja' tratadas: o pin e a musica deixam de ser estimativa
+        durs = [duracao(p) for p in tratados]
+        mudos = [m for _p, m in prontos]
+        log("  juntando...")
+        concat(tratados, juntado)
+        shutil.copy(juntado, cortado)
         if fator is not None and abs(fator - 1.0) >= 0.001:
             log(f"  variando velocidade: {fator:.3f}x...")
             aplicar_velocidade(cortado, ritmado, fator)
@@ -315,10 +567,27 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         dur_final = duracao(base)
         gerar_ass(palavras, w, h, assf, keywords=keywords,
                   duracao_video=dur_final,
-                  pin_em=_inicio_take2(takes, dur_final, log))
+                  pin_em=_inicio_take2(durs, dur_final, log))
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
         queimar_legenda(base, assf, out_final)
+        # ⭐ MUSICA nos takes mudos (2026-08-21, pedido para o AMISH 16S):
+        # entra por cima do audio do inicio ate o fim do penultimo take,
+        # cortada no tamanho exato do trecho ja' editado.
+        if musica and os.path.isfile(musica):
+            fim = _fim_takes_mudos(durs, mudos, dur_final)
+            if fim and fim > 0.6:
+                log(f"  musica: {os.path.basename(musica)} ate {fim:.1f}s "
+                    f"(cobre {sum(mudos)} take mudo(s))...")
+                com_musica = os.path.join(work, "06_musica.mp4")
+                mixar_musica(out_final, musica, fim, com_musica)
+                shutil.move(com_musica, out_final)
+            else:
+                # ⚠️ a mensagem antiga dizia *"video de 1 take so'"* e mentia:
+                # o lote real tinha 4 takes e nenhum reconhecido como mudo.
+                # Log que da' o diagnostico errado custa mais que log nenhum.
+                log("  musica: nenhum take mudo reconhecido — nada a cobrir, "
+                    "pulando (seletor `takes mudos` no rodape resolve)")
         log(f"  OK -> {out_final}")
         return out_final
     finally:
@@ -330,7 +599,8 @@ def _tem_video_solto(pasta):
               if os.path.isfile(os.path.join(pasta, a)))
 
 
-def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s", log=print):
+def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s",
+                    musica=None, dias=None, log=print):
     """Processa a pasta de entrada (subpastas=1 video cada, ou arquivos soltos=1 video).
     Retorna lista de arquivos gerados."""
     os.makedirs(saida, exist_ok=True)
@@ -349,7 +619,7 @@ def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s", l
         nome = os.path.basename(os.path.normpath(entrada)) or "video"
         out = os.path.join(saida, f"{nome}_final.mp4")
         log(f"[1 video] {nome}")
-        gerados.append(processar_video(coletar_takes(entrada), out, model, lang, margem, log))
+        gerados.append(processar_video(coletar_takes(entrada), out, model, lang, margem, musica=musica, dias=dias, log=log))
     elif subpastas:
         for i, d in enumerate(subpastas, 1):
             takes = coletar_takes(os.path.join(entrada, d))
@@ -358,7 +628,7 @@ def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s", l
                 continue
             out = os.path.join(saida, f"{d}_final.mp4")
             log(f"[{i}/{len(subpastas)}] {d}")
-            gerados.append(processar_video(takes, out, model, lang, margem, log))
+            gerados.append(processar_video(takes, out, model, lang, margem, musica=musica, dias=dias, log=log))
     else:
         raise RuntimeError("pasta de entrada nao tem videos nem subpastas com videos")
     return gerados

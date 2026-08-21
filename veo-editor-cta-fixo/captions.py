@@ -56,8 +56,33 @@ def gerar_ass(
     largura,
     altura,
     out_path,
-    por_linha=4,
-    max_chars=15,
+    # ⭐⭐ UMA PALAVRA POR VEZ — 2026-08-14, ordem do operador: *"o problema e'
+    # que eu uso o editor para varios videos, e nao da' pra controlar toda hora
+    # onde a legenda nao ira' cobrir, entao diminua o tamanho e deixe uma
+    # palavra por vez"*.
+    #
+    # ⭐ O ARGUMENTO DELE E' DE ESCALA, e vence o meu: eu media UM video e
+    # ajustava a cena; ele processa dezenas, de agentes diferentes, e nao tem
+    # como saber onde a cabeca vai cair em cada um. Legenda que ocupa a menor
+    # area possivel e a unica que serve a todos sem inspecao.
+    #
+    # ⛔⛔ E O MODO DE UMA PALAVRA DUROU UM LOTE. Ele rodou o v003 e voltou:
+    # *"uma por uma realmente ficou muito rapido, deixe como estava porem
+    # mantenha o mesmo tamanho de legenda que esta' atualmente"*.
+    # ⚠️ E o numero ja' dizia: 45 palavras em 15s = 3,0 palavras/s, 332 ms por
+    # palavra. Eu MEDI isso antes de implementar e escrevi que era piscada — e
+    # implementei mesmo assim, porque o argumento dele (o editor serve dezenas
+    # de videos, nao da' pra inspecionar cena a cena) valia o teste. Valia: hoje
+    # a decisao esta' tomada com os dois na tela, nao com dois palpites.
+    #
+    # ⭐ O QUE SOBREVIVEU DO EXPERIMENTO, e e' o que resolve o problema dele:
+    #   · a FONTE MENOR (0.045, era 0.052) — duas linhas a 57 ocupam ~82px
+    #     contra ~95px a 66, e o bloco passa a terminar em 17,3% da altura, com
+    #     a cabeca dele comecando em 19,9% no pior frame medido. Antes encostava;
+    #   · o ESTICA-ATE-A-PROXIMA logo abaixo, que nasceu para o modo de uma
+    #     palavra e serve igual aqui — buraco entre blocos e' buraco.
+    por_linha=5,
+    max_chars=22,
     gap_quebra=0.6,
     maiuscula=True,
     cor_ativa="&H0000FFFF",    # amarelo (ABGR) — palavra ja falada/acesa
@@ -65,20 +90,72 @@ def gerar_ass(
     keywords=None,             # None = KEYWORDS_PADRAO
     cor_keyword="&H000049FF",  # vermelho-laranja vivo (ABGR de #FF4900)
     escala_keyword=1.4,        # fonte da keyword vs fonte normal
-    pin_cta=True,              # fixa "COMMENT <KEYWORD>" no topo apos o CTA falado
+    # ⛔⛔ DESLIGADO EM 2026-08-13, ordem do operador: *"remova o comentario
+    # fixado do veo editor cta fixo de comment gelatin"*. O video passa a sair
+    # SO' com o karaoke da fala.
+    # ⭐ E fica DESLIGADO, nao apagado: a maquinaria inteira do pin continua
+    # aqui embaixo (estilo PIN, a busca da palavra depois de `Comment`, o
+    # `pin_em`), porque ela custou uma licao cara — a versao antiga travava na
+    # PRIMEIRA keyword falada, e as keywords tambem sao ingredientes da copy,
+    # entao metade dos videos do CLEAN mandava comentar `honey` em vez de
+    # `gelatin` e quebrava a automacao Comentario->DM. Apagar o codigo seria
+    # jogar fora esse conserto junto.
+    # ⚠️ Voltar e' UMA palavra: `pin_cta=True`.
+    pin_cta=False,             # fixa "COMMENT <KEYWORD>" no topo apos o CTA falado
     duracao_video=None,        # fim do pin (segundos). None = fim da ultima palavra
     pin_em=None,               # ⭐ CTA FIXO: segundo em que o pin ENTRA
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
     max_chars) e quebra tambem quando ha silencio > gap_quebra entre palavras.
     WrapStyle 0 garante que nada estoure a borda (quebra em 2 linhas se preciso)."""
-    fonte_sz = max(24, int(altura * 0.058))
+    # ⭐⭐ AS DUAS LEGENDAS TROCARAM DE LUGAR EM 2026-08-13. Ordem do operador,
+    # com o v001 do dia na mao: *"a legenda onde esta' fica tampando o item
+    # principal, isso acontece com frequencia. Iremos resolver isso trocando de
+    # lugar a legenda que fica no posicionamento de Comment gelatin no topo com
+    # a legenda falada"*.
+    #
+    # ⛔ A RAZAO E' DE COMPOSICAO, e vale escrever: o objeto que prova o video
+    # (a tigela, o copo, o prop) vive no TERCO INFERIOR do quadro em quase todo
+    # agente do parque — e' onde as maos trabalham. O karaoke morava justamente
+    # ali, a 20% do rodape, e tampava a prova em cima da hora. O pin do CTA e'
+    # UMA linha curta e fixa; o karaoke sao duas linhas que mudam o tempo todo.
+    # Quem tem de ceder o terco inferior e' o karaoke.
+    #
+    # ⭐ AGORA:  karaoke em CIMA (alignment 8, a 10% do topo)
+    #            pin do CTA EMBAIXO (alignment 2, a 20% do rodape)
+    # ⚠️ As margens trocaram JUNTO com os alignments — no ASS o MarginV e'
+    # medido a partir da borda que o alignment escolhe. Trocar so' o alignment
+    # poria o karaoke a 20% do TOPO, no meio do rosto.
+    #
+    # ⭐⭐ SEGUNDA PASSADA, no mesmo dia: o operador mandou um video de
+    # referencia (`exemplo.mp4`) e disse *"quero que deixe como o do exemplo"*,
+    # mais *"na hora de fixar o CTA comment gelatin a legenda fique mais no
+    # centro da tela, em torno de 40% de altura (...) ou em algum lugar que
+    # voce ache que ficara' um padrao bom para todos os videos"*.
+    #
+    # ⭐ O EXEMPLO FOI MEDIDO EM PIXEL, nao olhado: frame extraido a 720x1280,
+    # bloco de texto de y=148 a y=265 (11,6% a 20,7%), DUAS linhas, altura de
+    # caixa alta de 48px. Arial Black tem caixa alta ~0,716 em -> fonte 67px,
+    # que da' 0.052 da altura. Dai' saem os tres numeros abaixo.
+    #
+    # ⛔⛔ E O PIN NAO FOI PARA OS 40%: os 40% foram TESTADOS, queimando o
+    # texto nos frames reais do v002 em 23%, 29% e 40%. Aos 40% o pin cai em
+    # cima do ROSTO nos dois frames — aos 3s e aos 12s. A faixa limpa nos dois
+    # e' 22%-30%, porque a cabeca comeca por volta de 30% e a prova (a tigela)
+    # vive no terco inferior.
+    # ⭐ 29% e' o melhor ponto medido: livre do rosto, livre da tigela, e com
+    # folga do karaoke (que termina por volta de 21%). O operador delegou a
+    # escolha; esta e' a escolha, com a medicao junto.
+    # ⭐ 14/08 — *"diminua o tamanho"*. Era 0.052 (o corpo do exemplo que ele
+    # aprovou, medido em pixel no frame). Com UMA palavra por vez o bloco ja'
+    # encolheu pela metade na altura; a fonte menor termina o servico.
+    fonte_sz = max(24, int(altura * 0.045))
+    fonte_pin = max(22, int(altura * 0.048))
     outline = max(3, int(round(altura * 0.007)))
     sombra = max(1, int(round(altura * 0.002)))
-    margin_v = int(altura * 0.20)  # sobe a legenda pro terco inferior/centro-baixo
     margin_lr = int(largura * 0.11)
-    fonte_pin = max(22, int(altura * 0.048))   # pin do topo: um pouco menor que o karaoke
-    margin_pin = int(altura * 0.10)            # distancia do topo (fora da zona de UI do FB)
+    margin_topo = int(altura * 0.11)   # karaoke: onde o exemplo poe o bloco
+    margin_pin = int(altura * 0.29)    # pin: a faixa limpa medida nos frames
 
     # tira tokens que sao SO pontuacao (o whisper emite "," sozinho as vezes) —
     # eram eles que apareciam como virgula solta no comeco da linha.
@@ -109,7 +186,7 @@ YCbCr Matrix: TV.709
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: CC,Arial Black,{fonte_sz},{cor_ativa},{cor_espera},&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{sombra},2,{margin_lr},{margin_lr},{margin_v},1
+Style: CC,Arial Black,{fonte_sz},{cor_ativa},{cor_espera},&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{sombra},8,{margin_lr},{margin_lr},{margin_topo},1
 Style: PIN,Arial Black,{fonte_pin},&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{sombra},8,{margin_lr},{margin_lr},{margin_pin},1
 
 [Events]
@@ -119,10 +196,25 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     kw = {k.strip().upper() for k in (keywords or KEYWORDS_PADRAO) if k.strip()}
     fs_kw = int(fonte_sz * escala_keyword)
 
+    # ⭐⭐ ESTICA ATE' A PROXIMA — 2026-08-14, junto com o modo de UMA PALAVRA.
+    # ⛔ Sem isto a tela PISCA: a palavra some no fim do audio dela e a proxima
+    # so' entra quando comeca a ser falada. Com blocos de 4-5 palavras o buraco
+    # era imperceptivel (um por frase); com uma palavra por vez sao 45 buracos
+    # em 15 segundos. Medido no v002 de 14/08: mediana de 259 ms entre inicios
+    # de palavra, e a palavra em si dura menos que isso.
+    # ⚠️ E' ESTICAR, nao adiantar: o inicio continua no audio. O que muda e' o
+    # FIM, que vai ate' a proxima palavra entrar — a legenda deixa de ter
+    # buraco sem nunca aparecer antes do som.
+    # ⛔ E o `gap_quebra` continua mandando: silencio longo (fim de frase, corte
+    # entre takes) NAO e' esticado — la' a tela limpa de proposito.
     eventos = []
-    for grupo in linhas:
+    for _i, grupo in enumerate(linhas):
         ini = grupo[0]["start"]
         fim = grupo[-1]["end"]
+        if _i + 1 < len(linhas):
+            _prox = linhas[_i + 1][0]["start"]
+            if _prox - fim <= gap_quebra:
+                fim = _prox
         partes = []
         for j, w in enumerate(grupo):
             texto = _limpa(w["text"], maiuscula)
@@ -151,7 +243,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     # --- pin do CTA: "COMMENT <KEYWORD>" fixo no topo ate o fim do video ---
     # o texto fica queimado na porcao superior dali em diante, com a keyword
     # na cor de destaque. Layer 1 = desenha por cima do karaoke sem colidir
-    # (alignments diferentes: karaoke embaixo, pin no topo).
+    # (alignments diferentes: karaoke NO TOPO, pin NO RODAPE — trocados em
+    # 2026-08-13, ver o bloco das margens la' em cima).
     #
     # ⛔⛔ O PIN SEGUE A PALAVRA DEPOIS DE "COMMENT", NAO A PRIMEIRA KEYWORD DO
     # VIDEO (2026-08-03). A versao antiga parava na primeira palavra-gatilho

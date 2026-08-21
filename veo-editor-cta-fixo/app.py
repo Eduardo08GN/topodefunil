@@ -22,6 +22,18 @@ VERSAO = "1.2-CTA"
 GIF_TRABALHANDO = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                "trabalhando.gif")
 
+# ⭐⭐ QUANTOS SLOTS DE TAKE MANUAL — 2026-08-21, ordem do operador: *"ajuste o
+# editor para que ele seja capaz de editar 4 takes"*. O AMISH 16S nasceu com
+# TAKE 01/04..04/04 (o take 1 nao cabia em 8s e virou dois), e o painel travava
+# em tres: o quarto video nao tinha onde entrar.
+# ⛔ Este numero e' o UNICO teto do editor. Todo o resto da cadeia ja' e'
+# generico em quantidade de take — `preparar_takes` percorre a lista inteira,
+# `concat` junta N, `_fim_takes_mudos` acha o ultimo mudo por DETECCAO de audio
+# e `_inicio_take2` trabalha em proporcao. Medido em 21/08 com um lote sintetico
+# de 4 takes (2 mudos + 2 com som): os quatro chegam ao arquivo final.
+# ⚠️ Subir de novo (5, 6...) e' trocar este numero e mais nada.
+N_MANUAL = 4
+
 # design system (mesmo do painel antigo)
 BG = "#080b10"
 SURFACE = "#101a22"
@@ -163,6 +175,8 @@ class ManualDialog(tk.Toplevel):
             try:
                 processar_pasta(entrada, saida, model=esteira.CFG["model"],
                                 margem=esteira.CFG["margem"],
+                                musica=esteira.musica_atual(),
+                                dias=esteira.dias_atual(),
                                 log=self._fila_log.put)
                 self._fila_log.put("CONCLUIDO.")
             except Exception as e:  # noqa: BLE001
@@ -194,8 +208,17 @@ class App(tk.Tk):
         super().__init__()
         self.title(f"Veo Editor By EDDIE  v{VERSAO}")
         self.configure(bg=BG)
-        self.geometry("1080x680")
-        self.minsize(900, 560)
+        # ⛔⛔ 680 NAO CABIA A SEGUNDA LINHA DO RODAPE (medido em 21/08).
+        # A linha da `legenda DAY` foi empacotada ontem depois do rodape; com
+        # a janela em 680 o `pack` nao sobrou altura nenhuma para ela e ela
+        # saiu com ALTURA 1 — os quatro controles existiam, respondiam, eram
+        # salvos no config e NUNCA apareceram na tela. Construir o botao e
+        # nao olhar a janela e' a mesma falha de sempre: forma pronta, funcao
+        # invisivel.
+        # ⚠️ O numero e' verificado por medicao (`winfo_rooty` + altura da
+        # linha), nao a olho — ver o teste no fim desta sessao.
+        self.geometry("1080x790")
+        self.minsize(900, 700)
         self._cache = {}
         self._montar()
         esteira.iniciar()
@@ -242,16 +265,17 @@ class App(tk.Tk):
                                    selectbackground=SURFACE2, activestyle="none")
         self.lst_fila.pack(fill="both", expand=True, padx=12, pady=(0, 8))
 
-        # ⭐ TAKES MANUAIS (2026-08-03) — subir os 3 videos na mao, sem zip.
+        # ⭐ TAKES MANUAIS (2026-08-03) — subir os videos na mao, sem zip.
         # Mora aqui embaixo da fila de proposito: e' a mesma esteira, so' que
         # alimentada pela mao em vez do watcher.
+        # ⭐ 2026-08-21: sao N_MANUAL slots (4), nao mais tres fixos.
         tk.Frame(sec_fila, bg=LINE, height=1).pack(fill="x", padx=12)
         tk.Label(sec_fila, text="TAKES MANUAIS", bg=SURFACE, fg=MUT,
                  font=("Segoe UI", 8, "bold"), anchor="w").pack(fill="x", padx=12,
                                                                 pady=(8, 4))
-        self.manual = [None, None, None]
+        self.manual = [None] * N_MANUAL
         self.lb_manual = []
-        for i in range(3):
+        for i in range(N_MANUAL):
             lin = tk.Frame(sec_fila, bg=SURFACE)
             lin.pack(fill="x", padx=12, pady=1)
             tk.Label(lin, text="%d" % (i + 1), bg=SURFACE2, fg=GOLD, font=FT,
@@ -358,8 +382,78 @@ class App(tk.Tk):
         self.cb_margem.current(1)
         self.cb_margem.pack(side="left", padx=(8, 20))
         self.cb_margem.bind("<<ComboboxSelected>>", self._cfg)
+        # ⭐ MUSICA dos takes mudos (2026-08-21, pedido para o AMISH 16S):
+        # toca do inicio ate' o fim do penultimo take, cortada no tamanho do
+        # trecho ja' editado. `travar` mantem a escolha entre sessoes.
+        tk.Label(rodape, text="Musica", bg=BG, fg=DIM, font=FT).pack(side="left")
+        self.cb_musica = ttk.Combobox(rodape, style="Eddie.TCombobox", width=22,
+                                      state="readonly", font=FT,
+                                      postcommand=self._musicas_refresh)
+        self._musicas_refresh()
+        self.cb_musica.pack(side="left", padx=(8, 6))
+        self.cb_musica.bind("<<ComboboxSelected>>", self._cfg_musica)
+        self.bt_travar = tk.Button(rodape, text="travar", font=FT, relief="flat",
+                                   bd=0, cursor="hand2", padx=10, pady=4,
+                                   command=self._alternar_trava_musica)
+        self.bt_travar.pack(side="left", padx=(0, 20))
+        self._pintar_trava_musica()
+
         botao(rodape, "Pasta avulsa...", lambda: ManualDialog(self)).pack(side="right")
         botao(rodape, "Pasta vigiada...", self._pasta_vigiada).pack(side="right", padx=(0, 8))
+
+        # ⭐⭐ LEGENDA DE DIA nos takes MUDOS — 2026-08-21. O Veo nao consegue
+        # fixar a legenda (some no meio em 8 de 8 takes medidos pelo
+        # operador); aqui ela e' desenhada no mesmo pixel de todo frame.
+        # ⛔ E' um botao GERAL: *"vai ser utilizado pra mais agentes tambem"*.
+        linha2 = tk.Frame(self, bg=BG)
+        linha2.pack(fill="x", padx=20, pady=(0, 12))
+        self.bt_dia = tk.Button(linha2, text="legenda DAY", font=FT,
+                                relief="flat", bd=0, cursor="hand2",
+                                padx=12, pady=4, command=self._alternar_dia)
+        self.bt_dia.pack(side="left", padx=(0, 10))
+        tk.Label(linha2, text="dia do take 2", bg=BG, fg=DIM,
+                 font=FT).pack(side="left")
+        self.cb_dia = ttk.Combobox(
+            linha2, style="Eddie.TCombobox", width=10, state="readonly",
+            font=FT,
+            values=["sorteio"] + [str(d) for d in
+                                  range(esteira.DIA_MIN, esteira.DIA_MAX + 1)])
+        self.cb_dia.pack(side="left", padx=(8, 16))
+        self.cb_dia.bind("<<ComboboxSelected>>", self._cfg_dia)
+        tk.Label(linha2, text="estilo", bg=BG, fg=DIM,
+                 font=FT).pack(side="left")
+        self.cb_dia_estilo = ttk.Combobox(
+            linha2, style="Eddie.TCombobox", width=12, state="readonly",
+            font=FT, values=["vermelho", "amarelo", "branco", "rosa", "roxo"])
+        self.cb_dia_estilo.pack(side="left", padx=(8, 16))
+        self.cb_dia_estilo.bind("<<ComboboxSelected>>", self._cfg_dia)
+        tk.Label(linha2, text="cortar take mudo a", bg=BG, fg=DIM,
+                 font=FT).pack(side="left")
+        self.cb_dia_corte = ttk.Combobox(
+            linha2, style="Eddie.TCombobox", width=12, state="readonly",
+            font=FT, values=["nao cortar", "3s", "3.5s", "4s"])
+        self.cb_dia_corte.pack(side="left", padx=(8, 16))
+        self.cb_dia_corte.bind("<<ComboboxSelected>>", self._cfg_dia)
+        # ⭐⭐ QUANTOS TAKES SAO MUDOS — 2026-08-21. `auto` mede pelo volume;
+        # um numero DECLARA, e a declaracao ganha. Existe porque a medicao
+        # ja' errou o lote inteiro: ver LIMIAR_MUDO no pipeline.
+        tk.Label(linha2, text="takes mudos", bg=BG, fg=DIM,
+                 font=FT).pack(side="left")
+        self.cb_mudos = ttk.Combobox(
+            linha2, style="Eddie.TCombobox", width=10, state="readonly",
+            font=FT,
+            values=["auto"] + [str(n) for n in range(0, N_MANUAL + 1)])
+        self.cb_mudos.pack(side="left", padx=(8, 0))
+        self.cb_mudos.bind("<<ComboboxSelected>>", self._cfg_dia)
+        # [LOCAL LUCAS] a roda do mouse TROCA o valor de um combobox readonly
+        # e o operador ja' perdeu uma trava assim no painel do agente
+        # (21/08). Roda inerte em todos os seletores deste rodape.
+        for _cb in (self.cb_model, self.cb_margem, self.cb_musica,
+                    self.cb_dia, self.cb_dia_estilo, self.cb_dia_corte,
+                    self.cb_mudos):
+            for _ev in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
+                _cb.bind(_ev, lambda _e: "break")
+        self._sync_dia()
 
         self.opt = self.tk.call("tk", "windowingsystem")  # noqa: F841
 
@@ -370,6 +464,81 @@ class App(tk.Tk):
         esteira.CFG["margem"] = self.cb_margem.get().split(" ")[0]
         esteira.salvar_cfg()
 
+    SEM_MUSICA = "(sem musica)"
+
+    def _musicas_refresh(self):
+        """Rele a pasta a cada abertura do dropdown — musica nova entra sem
+        reiniciar o app."""
+        atual = getattr(self, "cb_musica", None) and self.cb_musica.get()
+        vals = [self.SEM_MUSICA] + esteira.listar_musicas()
+        self.cb_musica["values"] = vals
+        alvo = esteira.CFG.get("musica") or self.SEM_MUSICA
+        if atual != alvo and alvo in vals:
+            self.cb_musica.set(alvo)
+        elif not self.cb_musica.get():
+            self.cb_musica.set(self.SEM_MUSICA)
+
+    def _cfg_musica(self, _=None):
+        v = self.cb_musica.get()
+        esteira.CFG["musica"] = "" if v == self.SEM_MUSICA else v
+        esteira.salvar_cfg()
+
+    def _alternar_trava_musica(self):
+        ligado = esteira.CFG.get("musica_travada") == "1"
+        esteira.CFG["musica_travada"] = "" if ligado else "1"
+        esteira.salvar_cfg()
+        self._pintar_trava_musica()
+
+    def _pintar_trava_musica(self):
+        ligado = esteira.CFG.get("musica_travada") == "1"
+        self.bt_travar.configure(
+            bg=AQUA if ligado else SURFACE2,
+            fg="#04231f" if ligado else DIM,
+            activebackground=AQUA if ligado else SURFACE2,
+            activeforeground="#04231f" if ligado else INK,
+            text="travada" if ligado else "travar")
+
+    _CORTES = {"nao cortar": "", "3s": "3", "3.5s": "3.5", "4s": "4"}
+
+    def _alternar_dia(self):
+        lig = esteira.CFG.get("dia_ligado") == "1"
+        esteira.CFG["dia_ligado"] = "" if lig else "1"
+        esteira.salvar_cfg()
+        self._pintar_dia()
+
+    def _cfg_dia(self, _=None):
+        v = self.cb_dia.get()
+        esteira.CFG["dia_num"] = "" if v == "sorteio" else v
+        esteira.CFG["dia_estilo"] = self.cb_dia_estilo.get() or "vermelho"
+        esteira.CFG["dia_corte"] = self._CORTES.get(self.cb_dia_corte.get(), "3")
+        esteira.CFG["mudos"] = self.cb_mudos.get() or "auto"
+        esteira.salvar_cfg()
+
+    def _pintar_dia(self):
+        lig = esteira.CFG.get("dia_ligado") == "1"
+        self.bt_dia.configure(
+            bg=AQUA if lig else SURFACE2,
+            fg="#04231f" if lig else DIM,
+            activebackground=AQUA if lig else SURFACE2,
+            activeforeground="#04231f" if lig else INK,
+            text="legenda DAY ligada" if lig else "legenda DAY")
+        # ⛔ So' o DIA e o ESTILO seguem o botao. O corte do take mudo e o
+        # seletor `takes mudos` NAO: eles governam a musica e o desvio do
+        # auto-editor, que valem com a legenda desligada. Amarrados ao botao,
+        # desligar a legenda apagava a musica junto, sem dizer nada.
+        est = "readonly" if lig else "disabled"
+        for cb in (self.cb_dia, self.cb_dia_estilo):
+            cb.configure(state=est)
+
+    def _sync_dia(self):
+        self.cb_dia.set(esteira.CFG.get("dia_num") or "sorteio")
+        self.cb_dia_estilo.set(esteira.CFG.get("dia_estilo") or "vermelho")
+        atual = esteira.CFG.get("dia_corte") or ""
+        rev = dict((v, k) for k, v in self._CORTES.items())
+        self.cb_dia_corte.set(rev.get(atual, "3s"))
+        self.cb_mudos.set(esteira.CFG.get("mudos") or "auto")
+        self._pintar_dia()
+
     def _sync_cfg(self):
         """Reflete o config.json carregado pela esteira nos combos."""
         for i, v in enumerate(self.cb_model["values"]):
@@ -378,6 +547,16 @@ class App(tk.Tk):
         for i, v in enumerate(self.cb_margem["values"]):
             if v.split(" ")[0] == esteira.CFG["margem"]:
                 self.cb_margem.current(i)
+        self._musicas_refresh()
+        self._pintar_trava_musica()
+        # ⛔ A LINHA DO `DAY` SO' PODE SER PREENCHIDA AQUI (2026-08-21).
+        # `_montar()` roda ANTES de `esteira.iniciar()`, que e' quem le o
+        # config.json — o `_sync_dia()` de la' pintava os defaults de memoria
+        # e nao o que estava salvo. Efeito medido: `dia_ligado=1, dia=47,
+        # estilo=amarelo` voltavam como DESLIGADO/sorteio/vermelho, e bastava
+        # o operador encostar num combo para o `_cfg_dia` gravar por cima e
+        # apagar a escolha dele de vez.
+        self._sync_dia()
 
     def _pasta_vigiada(self):
         p = filedialog.askdirectory(
@@ -391,8 +570,13 @@ class App(tk.Tk):
     # ---------------- takes manuais ----------------
 
     def _pick(self, i):
-        """Escolhe o video do slot i. Aceita multipla selecao: quem marca os
-        tres de uma vez preenche os tres slots dali pra baixo, em ordem."""
+        """Escolhe o video do slot i. Aceita multipla selecao: quem marca
+        todos de uma vez preenche os slots dali pra baixo, em ordem.
+
+        ⚠️ A ordem da selecao multipla e' a ORDEM DE NOME do dialogo, e os
+        takes do Veo saem `..._1`, `..._2`: escolher os quatro de uma vez cai
+        na ordem certa. O que passar do ultimo slot e' descartado em silencio
+        de proposito — o alternativo seria empurrar take fora de ordem."""
         paths = filedialog.askopenfilenames(
             parent=self, title="Take %d" % (i + 1),
             filetypes=[("Videos", "*.mp4 *.mov *.mkv *.webm *.m4v *.avi"),
@@ -400,12 +584,12 @@ class App(tk.Tk):
         if not paths:
             return
         for k, p in enumerate(paths):
-            if i + k < 3:
+            if i + k < N_MANUAL:
                 self.manual[i + k] = os.path.normpath(p)
         self._pintar_manual()
 
     def _limpar_manual(self):
-        self.manual = [None, None, None]
+        self.manual = [None] * N_MANUAL
         self._pintar_manual()
 
     def _pintar_manual(self):
