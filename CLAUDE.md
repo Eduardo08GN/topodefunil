@@ -153,6 +153,64 @@ ao regex. Mesma pendência do `organicwave16`. **Medido: zero ERRO em 400
 sorteios, os 8 pools 100% alcançáveis, 0% em CT1/CT3/CT4/CT4b/CT5/CT6/CT7/CT8,
 zero frase órfã em 800, zero drifting em 1.000 falas.**
 
+⭐⭐ **`ruth16` (2026-08-21) — a humilhação pública no EMAGRECIMENTO, e a
+TERCEIRA família temporal: 3 takes de 8s (24s).** ⛔ **Não é 16s e não é o
+formato do `banho16_3t`** — lá são 3 takes de ~5s com teto de 14 palavras;
+aqui são **3 takes de 8s com teto de 25**, o mesmo teto do 16s três vezes.
+Destino **AdBatch Vertical 3**. O formato é ordem do operador com o motivo
+escrito: *"2 takes fica muito suprimido as copys"* — o terceiro take existe
+para **caber copy**, não para variar imagem.
+⛔⛔ **É a primeira rota fora da gelatina depois do `raro16`**, e a única de
+**emagrecimento**: CTA `recipe`, keyword editável no painel, e uma lente
+própria bane a palavra `gelatin` do motor inteiro — o parque fala gelatina em
+32 motores e a próxima copy colada traria a palavra junto.
+⭐ Fonte: **"Ruth Yoder"** (`61589307140516`), 59 reels baixados e 58
+transcritos. ⛔ **Só 15 entraram**, por ordem do operador (*"os vídeos que não
+são de humilhação pública serão descartados como vídeo-fonte"*); a assinatura é
+a **abertura** (`This was <NOME> before…`), não a presença da palavra —
+⚠️ um regex largo pegava 15 vídeos de receita por falarem em `gym`/`doctor`/
+`chair`. **A mediana da página é 48,5 comentários por mil views**; o melhor
+reel que este repo já modelou fez 20,5, e era o topo.
+⭐⭐ **A ÂNCORA DE CONTINUIDADE É A PEÇA DE ROUPA, não o rosto** — e é o achado
+do v46. A mesma blusa **esticada e abrindo entre os botões** no corpo obeso e
+**caindo solta e vazia** no corpo magro é âncora *e* prova de emagrecimento no
+mesmo objeto, sem uma palavra de fala. Onde a fonte não tem essa âncora, ela
+troca de pessoa escancaradamente (v27, v28, v38, v45).
+⛔⛔ **E a âncora de ROSTO só cita traço que o peso não move**: olhos,
+sobrancelha, ponte do nariz, orelha, sinal, cabelo, óculos. Maxilar, bochecha,
+papada e queixo ficam **de fora** — citados, obrigam o gerador a escolher entre
+a âncora e a magreza do take 2, e ele escolhe contra nós. O autoteste varre o
+pool atrás dos termos proibidos.
+⭐ **`rosto_ato1` é eixo 50/50 pré-selecionável, não palpite**: a fonte esconde
+o rosto em 6 de 15 e mostra nos outros 9, e o único reel com testemunha em foco
+é um dos que **mostram**. Quinze pontos não separam continuidade de
+identificação; quinze vídeos de cada lado separam. Mesma mecânica do
+`sem_mecanismo` do BANHO 16 3T.
+⛔⛔ **A TESTEMUNHA é obrigatória em quadro**, e em 7 dos 9 desastres isso é
+**correção** da fonte, não cópia dela: a leitura ótica achou **7 dos 15 reels
+sem um terceiro em quadro**, seis deles prometendo `laughed at by the people
+around her` na fala. Sem terceiro olhando, humilhação vira acidente. Bombeiro e
+socorrista são testemunha de **autoridade**, nunca de **vergonha**.
+⛔ **A palavra `filmed` saiu da copy**: ninguém filma em nenhum dos quinze e não
+há aparelho em quadro em lote nenhum — escrever o aparelho faz o gerador
+**desenhar** o aparelho, lição paga com um lote inteiro no VICK 16.
+⚠️ **CT2 desligado, declarado**: este ângulo é de **peso**, não de disfunção —
+a falha não é um verbo, é um **corpo** (a cadeira que racha, a rampa que vence
+o marido), e o regex do CT2 lê verbo de disfunção masculina. CT4/CT4b não se
+aplicam por **construção** (`NUCLEO` vazio), não por exceção.
+⏳ **Duas dívidas declaradas, as duas de CENA e portanto do operador:** (a) o
+**ato 3 é o ato 2 com outro gesto de mão** — mesmo lugar, mesmo enquadramento,
+16s de varanda parada; um objeto só (o copo pronto, o papel dobrado) separaria
+os dois, e é o único beat que o CT5 permite mostrar. (b) a **Ruth não tem
+arquitetura facial** — 1 traço contra 5 de cada rosto sorteável, então a marca
+da página vai derivar de vídeo para vídeo; inventá-la é trocar a marca.
+**Medido: 0 ERRO em 400 sorteios, 13 pools 100% alcançáveis, 367/361/264 falas
+distintas por cena, 25/25/25 palavras no teto, 0 déitico sujo em 1.718
+sentenças, 0 frase órfã em 1.365, e os treze defeitos da varredura adversarial
+zerados na saída montada.** Proposta e leitura em
+[`PROPOSTA-ruth16.md`](funil-organico/PROPOSTA-ruth16.md) — ⚠️ escrita para
+**2** takes, antes de o operador mudar o formato; o motor é a fonte da verdade.
+
 ⛔ **O `banho16_3t` está nessa lista por parentesco, não por formato.** Ele é o
 único que **não** tem 2 takes de 8s: são **3 takes de ~5s**, destino **AdBatch
 Vertical 3**, teto de **14 palavras por cena** contra 25. Bloco próprio abaixo.

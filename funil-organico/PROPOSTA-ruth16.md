@@ -4,6 +4,12 @@
 > 60 posts garimpados, 59 baixados, 58 transcritos, folhas de contato de todos.
 > Bruto em [`concorrentes/fb-61589307140516-garimpo.md`](../concorrentes/fb-61589307140516-garimpo.md).
 
+> ⛔⛔ **ESTA PROPOSTA FOI ESCRITA PARA 2 TAKES E O FORMATO MUDOU.** O operador
+> leu e decidiu **3 takes de 8 segundos** (2026-08-21): *"2 takes fica muito
+> suprimido as copys"*. O que sobrevive daqui é a leitura da fonte e o corte
+> dos 15; o formato, os eixos e as decisões finais moram em
+> [`ruth16_short.py`](ruth16_short.py), que é a fonte da verdade.
+
 ## Por que esta página vale um agente
 
 **A mediana da página inteira é 48,5 comentários por mil views.** O melhor
