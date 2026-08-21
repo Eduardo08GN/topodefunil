@@ -150,6 +150,8 @@ O que entrou por causa disso:
   · **Cinco lentes novas** — `RU14` (um corpo, um sintagma), `RU15` (geometria
     do casal), `RU16` (silencio na fala exige silencio no quadro), `RU17` (a
     direcao de cena concorda com o elenco) e `RU18` (o CT5 nas TRES falas).
+    ⭐ E uma sexta em 21/08, da varredura de moderacao: `RU19` (a peca-ancora
+    e' a UNICA no corpo de quem o video apresenta).
   · **`RU3`, `RU4` e `RU5` cresceram**: peca fantasma, rosto no `porte` com a
     camera de costas, e o bloco INTEIRO em vez de dois tercos dele.
   · **O sorteio mudou de regra** (`_sortear_plano`): a entrada e' sorteada
@@ -158,6 +160,83 @@ O que entrou por causa disso:
     no autoteste, mais uma varredura sob as travas de `sexo` e `rosto_ato1`.
   · **O motor entrou nos medidores** de que estava fora (quatro dos sete).
   · **`main()` nao imprime mais video reprovado**: re-sorteia ate' 12 vezes.
+
+===============================================================================
+ ⭐⭐ A VARREDURA DE MODERACAO DE 2026-08-21 — o pool `DESASTRES`, com 3 lentes
+===============================================================================
+Tres lentes (classificador de conteudo · gerabilidade no Veo · verdade da cena)
+sobre as 59 entradas. **Sete cortadas** (cada uma com lapide no lugar) e **25
+achados TIER 1 aplicados** sobre as 52 que ficaram — e, no mesmo dia, **dez
+entradas de reposicao**, que levam o pool a **62** (bloco proprio mais abaixo).
+
+  ⛔⛔ **A ANCORA DE ROUPA QUEBRAVA EM UMA ENTRADA, E ERA A PECA MAIS CARA DO
+  MOTOR.** A `avental_costas` punha a pessoa de avental de papel, e o MESMO
+  paragrafo ja' dizia `wearing a cream blouse [...] stretched tight across the
+  back`. O gerador escolhe UMA; se escolhe o avental, o take 2 (`the same cream
+  blouse, now hanging loose`) fica sem referente e a continuidade do angulo
+  morre naquele video. ⭐ Entrou a lente **`RU19`** — e o caro nela nao e'
+  acusar, e' SEPARAR TRES DONOS: roupa no corpo dela (ERRO), roupa em terceiro
+  (`six patients in paper gowns`, `tomografo_estreito`) e roupa em movel (`a
+  chrome return rack hung with dresses and jeans`, `provador_loja`). ⚠️ As duas
+  ultimas foram ACUSADAS por um revisor humano e as duas estao CERTAS: sao os
+  controles positivos da lente. Medido: 55 pares (desastre x peca) no bloco
+  montado, 1 defeito, 52 de 52 desastres varridos e 0 acusados — e **62 de 62**
+  depois das dez entradas de reposicao, tambem com 0 acusados.
+
+  ⛔ **O CLUSTER B CULPAVA UM VILAO EXTERNO em 8 das 11 entradas** (gelo, oleo,
+  piso molhado, azulejo, faixa pintada, pente da escada rolante). Quem cai no
+  gelo e' qualquer um — o video deixava de ser *This was <NOME> before* e virava
+  acidente com reu. Nas nove LIDAS nenhuma nomeia perigo. ⚠️ E o vilao saiu do
+  `cen`, do `cam`, da `luz` e do `audio` junto: bloco que tira a causa e mantem
+  o gelo na trilha e' o defeito do VICK 16.
+
+  ⛔ **O CLUSTER E TINHA UM DEFEITO DE LOTE:** 11 de 11 entradas abriam o `mov`
+  no mesmo gesto — um uniformizado de braco ou palma estendidos. Onze videos com
+  o mesmo movimento no mesmo segundo nao sao onze videos. O funcionario fica em
+  quadro; o primeiro beat e' do PUBLICO.
+
+  ⚠️ **TIER 2 (11 colapsos de par) NAO foi aplicado**: e' curadoria de pool, nao
+  defeito de video, e a decisao e' do operador.
+
+⭐⭐ **AS DEZ ENTRADAS DE REPOSICAO (2026-08-21, no mesmo dia).** As sete
+cortadas voltaram como **dez**, e o pool foi de 52 a **62**: B 10->12, C 6->9,
+D 8->10, E 7->10 (o A fica em 12 e as nove LIDAS em 9). ⛔ Nenhuma repete o
+defeito de classe que derrubou as sete: a causa e' sempre o CORPO (nao ha' gelo,
+oleo nem piso molhado em `acao` nenhum), o `mov` abre sempre num CIVIL e a
+maquina, quando existe, tem operador identificado nos comandos.
+
+  ⛔⛔ **UMA REGRA DE CLUSTER MUDOU, e esta escrita no lugar onde a proxima
+  entrada vai nascer.** O cluster C proibia `impotencia` no bloco inteiro, com
+  razao: *and nobody there could lift them* sobre um guincho erguendo em quadro
+  e' a fala desmentindo o quadro. ⭐ Mas ela NAO desmente quando o `test` mostra
+  os civis que **tentaram primeiro e desistiram** (os quatro homens de mangas
+  arregacadas do `carregadeira_feira`, o homem de fleece do `bolsa_ar_calcada`):
+  ai' a maquina e' a CONSEQUENCIA da impotencia. ⛔ Sem esse beat de tentativa
+  fracassada no `test`, a forma continua proibida no cluster.
+
+  ⚠️ **E UMA LENTE ENCOLHEU DE PROPOSITO, por FALSO POSITIVO MEDIDO.** O
+  contador de existencia por eixo rodava nas 400 seeds fixas. Com 62 desastres a
+  media por entrada e' 6,5 e a chance de UMA das 62 nao sair por puro acaso e'
+  ~9%: o autoteste acusou `balanco_varanda` de estar MORTA (§35) sobre uma
+  entrada que sai **22 vezes em 2.000 sorteios**. So' o eixo `desastre` passou a
+  ser medido nos 2.000 — os mesmos que o ALCANCE POR DESASTRE ja' fazia, entao o
+  custo e' zero. As 400 seeds continuam sendo a regressao de todo o resto.
+
+  ⏳⏳ **E O NUMERO QUE A EXPANSAO NAO CONSERTOU, dito em vez de escondido.**
+  Medido em 2.000 sorteios (amostra com poder, nao as 400): o alcance MINIMO de
+  `BEATS_TESTEMUNHA` era **de3=25 (0,24x da media)** no commit 5a76d76, caiu a
+  **21 (0,20x)** com os sete cortes e voltou a **25 (0,24x)** com as dez novas.
+  ⛔ As dez **repuseram** o que os cortes tiraram e **nao melhoraram** o piso. A
+  causa e' ACOPLAMENTO e esta' medida: `de3` e' a forma `dedo`, que exige
+  VIZINHO em quadro (os tres beats dizem `neighbour` / `across the street`), e
+  so' UMA das dez — a `talha_garagem`, numa garagem de suburbio com nove
+  vizinhos na calcada — comporta a forma. `dedo` foi de 11/59 para **12/62** do
+  pool, que e' o mesmo 19%. ⛔ Nao forcei `dedo` nas outras nove: parque de
+  exposicoes, calcada de centro, feira e enfermaria nao tem vizinho, e rotulo
+  que o quadro nao paga e' o que a RU6 existe para impedir. **Subir esse piso
+  pede CENA DE VIZINHANCA nova, e cena e' alcada do operador.**
+  ⭐ O que subiu: a razao max/min da abertura foi de 2,5x para **2,1x** e a da
+  testemunha de 11,4x (pos-corte) para **9,4x**.
 
 ⏳⏳ **O QUE FICOU ABERTO — ALCADA DO OPERADOR, com o numero medido ao lado.**
 Nada disto e' esquecimento: sao decisoes de COPY e de CENA, e a regra do repo e'
@@ -339,12 +418,12 @@ RUTH_PROVAS = ("prayer cap", "pinafore apron", "wire-rimmed glasses")
 
 
 # ===========================================================================
-# ⭐⭐ OS CINQUENTA E NOVE DESASTRES — o eixo principal
+# ⭐⭐ OS SESSENTA E DOIS DESASTRES — o eixo principal
 # ===========================================================================
 # ⛔⛔ DUAS PROCEDENCIAS, E ELAS NAO SE MISTURAM. As NOVE PRIMEIRAS saem de
 # LEITURA OTICA dos 15 reels de humilhacao publica da "Ruth Yoder" e carregam
-# o `v` do reel de origem (`v28/v40/v45`, `v46/v50`, ...). As CINQUENTA
-# seguintes, agrupadas por cluster logo abaixo, saem do GRAFO CONCEITUAL que o
+# o `v` do reel de origem (`v28/v40/v45`, `v46/v50`, ...). As CINQUENTA E
+# TRES seguintes, agrupadas por cluster logo abaixo, saem do GRAFO CONCEITUAL que o
 # operador desenhou em 2026-08-21 — cinco nos (falencia estrutural ·
 # vulnerabilidade fisica · espetacularizacao da ajuda · rota medica ·
 # nao-encaixe) ligados por tres arestas (gravidade · olhar do outro ·
@@ -839,26 +918,27 @@ DESASTRES = [
      "sexos": ("mulher", "homem"),
      "formas": ("riso", "plateia", "juizo"),
      "interior": True,
-     "cen": "the gymnasium of an American middle school during an evening "
-            "game, a glossy varnished maple court with a painted blue key and "
-            "centre circle, pale cinderblock walls painted cream, a black "
-            "scoreboard high on the end wall, a folded blue wrestling mat "
-            "against the wall, and a bank of pull-out wooden bleachers along "
-            "one side packed with people",
+     "cen": "the gymnasium of a small-town American community centre during "
+            "an evening adult league game, a glossy varnished maple court "
+            "with a painted blue key and centre circle, pale cinderblock "
+            "walls painted cream, a black scoreboard high on the end wall, a "
+            "folded blue wrestling mat against the wall, and a bank of "
+            "pull-out wooden bleachers along one side packed with people",
      "acao": "one wooden bleacher plank has cracked through in the middle of "
              "the third row and dropped a foot, so the body has gone down "
              "between the boards with one leg through the gap and a purse and "
              "a bag of popcorn spilled across the rows below",
      "test": "the rows around the gap have all turned inward and stayed "
-             "there: four teenagers on the row above laughing with their "
-             "heads together, a woman in a school sweatshirt frozen halfway "
-             "out of her seat, and a man two rows down twisted round with his "
-             "mouth open, staring straight up at the broken plank",
+             "there: four adults on the row above laughing with their heads "
+             "together, two teenagers beside them grinning, a woman in a "
+             "league sweatshirt frozen halfway out of her seat, and a man two "
+             "rows down twisted round with his mouth open, staring straight "
+             "up at the broken plank",
      "mov": "As the line begins the whole bleacher bank turns inward and the "
-            "game noise drops away. Halfway through the line the four "
-            "teenagers above break into open laughter and one of them repeats "
-            "it to the row behind. As the line ends the cracked plank sags "
-            "another inch and every face in the bank is still turned in",
+            "game noise drops away. Halfway through the line the four adults "
+            "above break into open laughter and one of them repeats it to the "
+            "row behind. As the line ends the cracked plank sags another inch "
+            "and every face in the bank is still turned in",
      "cam": "The shot is taken from the court floor at standing head height, "
             "angled about thirty degrees upward into the bleachers, wide "
             "enough to hold the broken plank, the trapped body and six rows "
@@ -867,7 +947,7 @@ DESASTRES = [
             "highlights on the varnished floor, short shadows under the "
             "bleachers.",
      "audio": "a loud wooden crack, popcorn scattering over the boards, a "
-              "whistle stopping short and a row of teenagers laughing"},
+              "whistle stopping short and a row of people laughing"},
 
     {"id": "cadeira_dobravel_festa", "curto": "a cadeira dobravel na festa",
      "v": "grafo-A", "cluster": "A",
@@ -928,9 +1008,9 @@ DESASTRES = [
      "mov": "As the line begins every head on the waiting floor turns toward "
             "the window and the room noise stops. Halfway through the line "
             "the two women in the front row raise a hand to the mouth and "
-            "neither of them speaks. As the line ends the number display "
-            "clicks over to the next ticket and the whole floor is still "
-            "watching",
+            "neither of them speaks. As the line ends the five-castor base "
+            "lies turned up beside the body, the clerk stays half risen with "
+            "both palms on the counter and the whole floor keeps watching",
      "cam": "The shot is taken from beside the service window at standing "
             "chest height, angled about twenty degrees down, wide enough to "
             "hold the dropped chair, the body on the carpet tiles and the "
@@ -1156,7 +1236,17 @@ DESASTRES = [
     # ⭐ CLUSTER B — VULNERABILIDADE FISICA: o chao vence o corpo e o que
     #    ele carregava se espalha em quadro. A aresta e' GRAVIDADE: a queda
     #    so' abre o quadro, quem humilha e' quem escolheu parar e olhar em
-    #    vez de ajudar. (11 entradas)
+    #    vez de ajudar. (12 entradas)
+    # ⛔⛔ E A CAUSA E' SEMPRE O CORPO OU O DEGRAU, NUNCA UM VILAO EXTERNO
+    #    NOMEADO — conserto de 2026-08-21. Oito entradas punham a culpa fora
+    #    (gelo, oleo, piso molhado, azulejo solto, faixa pintada, pente da
+    #    escada rolante): quem cai no gelo e' qualquer um, e o video deixa de
+    #    ser *This was <NOME> before* para virar acidente com reu. Nas nove
+    #    LIDAS nenhuma nomeia perigo — o v24 escorrega DESCENDO da van e o v38
+    #    fecha em `unable to push themselves up`. ⚠️ Quando o vilao saiu do
+    #    `acao` ele teve de sair junto do `cen`, do `cam`, da `luz` e do
+    #    `audio`: bloco que remove a causa e mantem o gelo na trilha sonora e'
+    #    o defeito do VICK 16 — cada campo passa e o quadro inteiro mente.
     # -----------------------------------------------------------------------
     {"id": "mercado_faixa", "curto": "as compras espalhadas no estacionamento",
      "v": "grafo-B", "cluster": "B",
@@ -1169,10 +1259,11 @@ DESASTRES = [
             "strip and clipped shrubs, a long glass storefront with automatic "
             "doors behind it, a nested train of steel shopping carts against "
             "the wall and rows of parked cars filling the background",
-     "acao": "a heel has skidded on the wet painted stripe and the paper "
-             "grocery sack has burst open on the asphalt, so the body is down "
-             "on one hip with both arms braced while oranges, a split carton "
-             "of eggs and loose cans spread out across the crossing",
+     "acao": "the leading knee has given way stepping down off the kerb onto "
+             "the crossing and the paper grocery sack has burst open on the "
+             "asphalt, so the body is down on one hip in the middle of the "
+             "white stripes with both arms braced while oranges, a split "
+             "carton of eggs and loose cans spread out across the crossing",
      "test": "three shoppers have stopped their carts a few steps away and "
              "stay where they are: two of them laughing with their heads "
              "tipped together, a man in a green store apron holding a cart "
@@ -1233,15 +1324,15 @@ DESASTRES = [
      "interior": False,
      "cen": "the sidewalk outside a small-town post office on a grey winter "
             "morning, a squat brick building with a wide stone step and a "
-            "glazed door set in a deep frame, a sheet of clear ice glazing "
-            "the concrete slabs, a black cast-iron mailbox stand at the kerb, "
-            "a snow bank pushed up against a bare hedge and parked cars "
-            "ridged with old snow along the street",
-     "acao": "both feet have gone out on the ice at the foot of the stone "
-             "step and the stack of parcels has gone with them, so the body "
-             "is down flat on the frozen slabs with one arm still hooked "
-             "around a torn cardboard box while padded envelopes slide away "
-             "across the ice",
+            "glazed door set in a deep frame, plain concrete slabs running to "
+            "the kerb, a black cast-iron mailbox stand at the kerb, a snow "
+            "bank pushed up against a bare hedge and parked cars ridged with "
+            "old snow along the street",
+     "acao": "the one wide stone step up to the post office door has stopped "
+             "the leading knee halfway and the whole weight has gone back off "
+             "it, so the body is down on the concrete slabs at the foot of "
+             "the step with one arm still hooked around a torn cardboard box "
+             "and padded envelopes sliding away across the pavement",
      "test": "four people waiting to get in are stopped on the step above and "
              "stay there: two of them with a flat hand over the mouth saying "
              "nothing, a man in a wool cap who crouches, gets a grip under "
@@ -1253,12 +1344,13 @@ DESASTRES = [
             "the line ends an envelope slides the last foot across the ice "
             "and not one of them speaks",
      "cam": "The shot is taken from the kerb at knee height, angled slightly "
-            "up along the icy slabs so the body lies low and wide in the "
+            "up along the concrete slabs so the body lies low and wide in the "
             "frame with the post office step and the watching group behind it",
      "luz": "Flat cold winter overcast, blue-grey light with no shadow "
-            "direction, pale glare coming off the ice.",
-     "audio": "boot soles skidding on ice, cardboard scraping the slabs, "
-              "laboured breathing and a street with no voices on it"},
+            "direction, a pale glare coming off the bare concrete slabs.",
+     "audio": "a stack of parcels going down on concrete, cardboard scraping "
+              "the slabs, laboured breathing and a street with no voices on "
+              "it"},
 
     {"id": "praca_bandeja", "curto": "a bandeja voa na praca de alimentacao",
      "v": "grafo-B", "cluster": "B",
@@ -1269,12 +1361,14 @@ DESASTRES = [
             "high white coffered ceiling with round downlights, a glass "
             "barrel skylight over the middle, a grid of fixed laminate tables "
             "with attached seats, tiled counters and back-lit menu boards "
-            "along the far wall, a bank of steel bins with tray shelves and a "
-            "yellow folding wet-floor sign standing on the polished tile",
-     "acao": "a shoe has gone out on the wet tile beside the bin station and "
-             "the loaded tray has flown out of both hands, so the body is "
-             "down in the middle of the aisle with burgers, a bucket of fries "
-             "and a burst soda cup fanned out across the tiles",
+            "along the far wall, and a bank of steel bins with tray shelves "
+            "on the polished tile",
+     "acao": "the body has been working its way out from between a fixed "
+             "laminate table and its attached seat, the seat post holding "
+             "hard against the hips, and the loaded tray has gone out of both "
+             "hands on the last push, so the body is down in the middle of "
+             "the aisle with burgers, a bucket of fries and a burst soda cup "
+             "fanned out across the tiles",
      "test": "the two nearest tables have emptied and eight people are "
              "standing around the aisle: three teenagers laughing out loud "
              "with a fourth grinning behind them, a woman in a food-court "
@@ -1305,11 +1399,11 @@ DESASTRES = [
             "apron, a rack of windshield squeegee buckets, a glass-fronted "
             "service shop with an ice chest outside the door and a flat scrub "
             "field beyond the entrance",
-     "acao": "a foot has slid on the oil slick beside the pump island and the "
-             "plastic carrier has torn open on the way down, so the body is "
-             "down against the pump base with both hands flat on the concrete "
-             "while a dozen soda cans roll out under the parked cars, two of "
-             "them split and foaming",
+     "acao": "the plastic carrier has torn open under its own weight halfway "
+             "back to the car and the knees have gone with it against the "
+             "pump island, so the body is down against the pump base with "
+             "both hands flat on the concrete while a dozen soda cans roll "
+             "out under the parked cars, two of them split and foaming",
      "test": "two drivers have left their own pumps and stand a few steps "
              "off, one laughing with the fuel nozzle still in his hand and "
              "the other doubled over grinning, a woman at the next island has "
@@ -1341,21 +1435,25 @@ DESASTRES = [
             "flooring, a glass balustrade along the upper landing, chrome "
             "clothing racks and lit display counters spreading out across the "
             "sales floor behind",
-     "acao": "one of them has caught a heel in the comb plate stepping off "
-             "and taken the other down as well, so both are on the stone at "
-             "the foot of the moving staircase with shoe boxes, folded shirts "
-             "and a burst paper shopping bag spread around them and the steps "
-             "still running behind",
-     "test": "the shoppers carried down behind them are stacked three deep on "
-             "the moving steps and step over instead of stopping: two women "
-             "laughing with their heads together, a man in a suit who takes "
-             "hold of an elbow, pulls twice and gives up, and a boy at the "
-             "balustrade leaning over to see the spilled boxes",
-     "mov": "As the line begins the stack of shoppers on the steps closes up "
-            "behind them and heads turn across the sales floor. Halfway "
-            "through the line two of the women laugh with their heads "
-            "together and the man in the suit pulls at an elbow twice. As the "
-            "line ends the boy leans further over the balustrade and the "
+     "acao": "the last moving step has run out from under the leading foot at "
+             "the landing and the balance has gone backwards, taking the "
+             "other one down as well, so both are on the stone at the foot of "
+             "the moving staircase with shoe boxes, folded shirts and a burst "
+             "paper shopping bag spread around them and the steps still "
+             "running behind",
+     "test": "the shoppers carried down behind them are backing up two deep "
+             "on the moving steps: two women near the front laughing with "
+             "their heads together, a man in a suit who steps over an "
+             "outstretched leg onto the stone without stopping, a woman "
+             "behind him who takes hold of an elbow, pulls twice and gives "
+             "up, and a boy at the balustrade above leaning over to see the "
+             "spilled boxes",
+     "mov": "As the line begins the shoppers on the steps back up behind them "
+            "and heads turn across the sales floor. Halfway through the line "
+            "the man in the suit steps over an outstretched leg onto the "
+            "stone without stopping and two of the women laugh with their "
+            "heads together. As the line ends the woman behind him lets go of "
+            "the elbow, the boy leans further over the balustrade and the "
             "steps keep running",
      "cam": "The shot is taken from the sales floor at hip height, angled "
             "about twenty degrees up toward the comb plate so both bodies, "
@@ -1366,40 +1464,11 @@ DESASTRES = [
      "audio": "the escalator drive humming, cardboard boxes sliding on "
               "stone, hangers rattling and two women laughing on the steps"},
 
-    {"id": "lavanderia_cesto", "curto": "o cesto no chao da lavanderia",
-     "v": "grafo-B", "cluster": "B",
-     "sexos": ("mulher", "homem"),
-     "formas": ("riso", "plateia", "juizo", "impotencia"),
-     "interior": True,
-     "cen": "the inside of a coin laundromat on a weekday afternoon, a long "
-            "row of white front-load washers under a wall of tumbling dryers, "
-            "cream tile floor with one lifted corner tile near the folding "
-            "counter, a long stainless folding table down the middle, moulded "
-            "plastic chairs in orange and blue along the window, a coin "
-            "changer on the wall and a bare fluorescent ceiling",
-     "acao": "a toe has caught the lifted tile with the full basket held in "
-             "both arms and the basket has gone out ahead, so the body is "
-             "down on the wet floor between the machines with soaked sheets, "
-             "towels and underwear spread over the tile and a puddle running "
-             "out from under them",
-     "test": "seven customers at the folding table and the window chairs have "
-             "all stopped and turned round: two women laughing behind their "
-             "hands, a young man in a hoodie who bends down, gets both hands "
-             "under an arm and cannot shift it, and an older woman who says "
-             "something to the person beside her and keeps looking",
-     "mov": "As the line begins every head at the folding table turns round "
-            "at once. Halfway through the line two of the women laugh behind "
-            "their hands and the young man gets both hands under an arm and "
-            "cannot shift it. As the line ends the puddle reaches the next "
-            "machine and the whole room is still watching",
-     "cam": "The shot is taken from the far end of the machine row at waist "
-            "height, straight on and level, wide enough to hold the fallen "
-            "body, the spilled washing and the whole line of seated customers "
-            "behind",
-     "luz": "Flat cool fluorescent ceiling light with a weak daylight wash "
-            "from the street window, shadowless and slightly green.",
-     "audio": "a plastic basket clattering on tile, wet fabric slapping the "
-              "floor, dryers tumbling and two women laughing"},
+    # ⛔ LAPIDE 2026-08-21 — `lavanderia_cesto` CORTADO: colapsa com
+    #    `onibus_degrau`, que ja' e' dono de "roupa suja espalhada em publico" e cuja
+    #    causa ja' e' do corpo (o primeiro degrau alto do onibus). Aqui a causa era o
+    #    azulejo levantado — vilao externo, o defeito do cluster B.
+
 
     {"id": "porta_giratoria", "curto": "a porta giratoria do saguao",
      "v": "grafo-B", "cluster": "B",
@@ -1428,10 +1497,12 @@ DESASTRES = [
             "workers in lanyards get their hands on a shoulder and cannot "
             "move it. As the line ends the spilled coffee reaches the rope "
             "line and not one person speaks",
-     "cam": "The shot is taken from inside the lobby at chest height, level "
-            "and straight on to the glass drum, wide enough to hold the "
-            "wedged body, the spreading coffee and the held-up crowd on both "
-            "sides of it",
+     "cam": "The shot is taken from inside the lobby at chest height, about "
+            "thirty degrees off the axis of the brass drum and square to the "
+            "open wing so the line of sight goes through the opening instead "
+            "of through the curved glass, wide enough to hold the wedged "
+            "body, the spreading coffee and the held-up people on both sides "
+            "of it",
      "luz": "Cool morning daylight flooding through the glass wall with soft "
             "overhead fill, low contrast and slightly blue on the marble.",
      "audio": "a revolving door mechanism grinding to a stop, a paper cup "
@@ -1484,11 +1555,11 @@ DESASTRES = [
             "pipe railings along the low side, square columns with numbered "
             "bays behind them, a fluorescent strip fitting overhead and a "
             "bright doorway of daylight at the bottom of the slope",
-     "acao": "an oil patch on the slope has taken both of them down together "
-             "on the way to the car, one sitting back against the railing and "
-             "the other flat out on the ramp, and the paint can has burst and "
-             "sent a wide white flood running down the concrete past a "
-             "stopped car",
+     "acao": "the slope of the ramp has taken the knees on the way down to "
+             "the car and both of them have gone with it together, one "
+             "sitting back against the railing and the other flat out on the "
+             "concrete, and the paint can has burst and sent a wide white "
+             "flood running down past a stopped car",
      "test": "three drivers have got out of the stopped cars behind them and "
              "stand at the top of the slope: two of them laughing with their "
              "doors still hanging open, and a woman in a work jacket who "
@@ -1545,13 +1616,118 @@ DESASTRES = [
               "skittering, a grill hissing and several people laughing at "
               "once"},
 
+    # ⛔ A CAUSA E' O CORPO: o joelho dobra ao SUBIR o meio-fio. Nao ha'
+    # gelo, oleo nem piso molhado — o que voa da mao (o caixote, os
+    # pessegos) e' CONSEQUENCIA, nunca reu. A vergonha sao os dois homens
+    # da fila do cafe, que nao largam o copo e riem de pe' em cima dela; a
+    # feirante de sessenta puxa o pulso duas vezes, desiste e volta para
+    # tras da mesa (a `impotencia`). ⚠️ O avental esta' NA FEIRANTE (RU19).
+    {"id": "feira_caixote", "curto": "o joelho cede no meio-fio da feira",
+     "v": "grafo-B", "cluster": "B",
+     "sexos": ("mulher", "homem"),
+     "formas": ("riso", "juizo", "impotencia"),
+     "interior": False,
+     "cen": "a small-town farmers market on a closed main street on a "
+            "Saturday morning, white pop-up canopies down both sides, trestle "
+            "tables under them heaped with produce in wooden crates, a high "
+            "granite kerb between the stalls and the roadway, a bucket of cut "
+            "sunflowers on the ground, a coffee stand with a queue at it, and "
+            "brick storefronts behind the canopies",
+     "acao": "the knee has folded coming up off the roadway onto the high "
+             "kerb and the crate carried in both arms has gone with it, so "
+             "the body is down on one hip against the kerb stone with peaches "
+             "and tomatoes rolling out under the trestle tables",
+     "test": "the queue at the coffee stand has broken up and stands over it: "
+             "two men in their forties laughing with cups still in their "
+             "hands, a woman of about sixty in a stall apron who came out "
+             "from behind her table, took a wrist in both hands, pulled twice "
+             "and let go, and a teenager who stops with a bag on his shoulder "
+             "and stares",
+     "mov": "As the line begins the two men from the coffee queue break out "
+            "laughing with their cups still in their hands. Halfway through "
+            "the line the woman in the stall apron comes out from her table, "
+            "takes a wrist in both hands and pulls twice. As the line ends a "
+            "peach rolls the last few feet under a trestle and she lets go "
+            "again",
+     "cam": "The shot is taken from the roadway at knee height a couple of "
+            "paces off the kerb, angled about twenty degrees up so the body "
+            "down against the kerb stone, the burst crate and the standing "
+            "queue behind it sit in one frame",
+     "luz": "Bright clear morning sun from the left, hard shadows under the "
+            "canopies and blown highlights on the white cloth.",
+     "audio": "a wooden crate cracking on stone, fruit rolling over asphalt, "
+              "a coffee grinder running under a canopy and two men laughing "
+              "close by"},
+
+    # ⛔ A CAUSA E' O CORPO: as pernas cedem AO LEVANTAR da cadeira; o cafe
+    # derramado e as cartelas sao consequencia. A vergonha e' o velho de
+    # oitenta duas cadeiras adiante, que poe as duas maos em cima das
+    # cartelas e vira o corpo inteiro para olhar, e a mulher de sessenta
+    # que se levanta pela metade para enxergar por cima da fila. ⭐ Sessenta
+    # pessoas SENTADAS num salao fechado e ninguem diz nada: e' por isso que
+    # `plateia` e `silencio` cabem juntas aqui, com zero riso nos tres
+    # campos — e as duas sao as formas mais escassas do pool.
+    {"id": "bingo_salao", "curto": "as pernas cedem no bingo do salao",
+     "v": "grafo-B", "cluster": "B",
+     "sexos": ("mulher", "homem"),
+     "formas": ("plateia", "silencio", "juizo"),
+     "interior": True,
+     "cen": "the hall of a volunteer fire company rented out for bingo night, "
+            "a low acoustic tile ceiling with strip lights, long folding "
+            "tables in rows filling the floor, moulded plastic chairs pushed "
+            "in tight at them, paper cards and daubers spread over the "
+            "tables, a raised platform with a wire ball cage at one end, and "
+            "a serving hatch through to a kitchen at the back",
+     "acao": "the legs have given out standing up from the chair halfway down "
+             "a row, so the body is down on the floor between two tables with "
+             "one arm still hooked over a table edge, a paper cup on its side "
+             "and cards and daubers scattered across the tiles",
+     "test": "sixty players sit at the tables and every one of them has "
+             "turned round without a word: a man of about eighty two seats "
+             "along with both hands flat on his cards, a woman in her sixties "
+             "who half stands to see over the row, a couple at the next table "
+             "who look at each other and back, and the caller on the platform "
+             "who has stopped",
+     "mov": "As the line begins the man two seats along puts both hands flat "
+            "on his cards and turns round. Halfway through the line the woman "
+            "in her sixties half stands to see over the row and not one "
+            "person speaks. As the line ends the spill from the paper cup "
+            "reaches the next table leg and the whole hall is watching",
+     "cam": "The shot is taken from the end of the row at chest height, level "
+            "and straight on down the gap between the tables, close enough to "
+            "hold the body on the tiles and wide enough to keep the rows of "
+            "turned faces behind it",
+     "luz": "Flat cool strip lighting overhead with a faint green cast on the "
+            "tiles and almost no shadow direction.",
+     "audio": "a plastic chair skidding back over tile, a paper cup emptying "
+              "under a table, a ball cage turning once on the platform and a "
+              "hall that has gone quiet"},
+
     # -----------------------------------------------------------------------
     # ⭐ CLUSTER C — ESPETACULARIZACAO DA AJUDA: a maquina de CARGA resolve
     #    o corpo. A aresta e' DESUMANIZACAO — palete, guincho, elevador de
-    #    mudanca, carrinho de geladeira, balanca de frete: o resgate acontece
-    #    e e' ele que humilha, na frente de civis. ⛔ Por isso NENHUMA declara
-    #    `impotencia`: o beat diz que ninguem conseguiu erguer, e a maquina
-    #    esta' erguendo em quadro. (9 entradas)
+    #    mudanca, balanca de frete: o resgate acontece e e' ele que humilha, na
+    #    frente de civis. ⛔⛔ `impotencia` SO' CABE AQUI QUANDO O BEAT E'
+    #    ANTERIOR A' MAQUINA — regra reescrita em 2026-08-21, quando as tres
+    #    entradas de reposicao entraram. A versao antiga proibia a forma no
+    #    cluster inteiro, e o motivo era certo: *and nobody there could lift
+    #    them* sobre um guincho erguendo em quadro e' a fala desmentindo o
+    #    quadro. ⭐ Mas ela nao desmente quando o `test` mostra os CIVIS QUE
+    #    TENTARAM PRIMEIRO e desistiram (quatro homens de mangas arregacadas,
+    #    o homem de fleece que soltou o braco): ai' a maquina e' a
+    #    CONSEQUENCIA da impotencia, nao a contradicao dela. ⛔ Sem esse beat
+    #    de tentativa fracassada escrito no `test`, a forma continua proibida
+    #    — as seis entradas antigas nao a declaram e nao devem passar a
+    #    declarar. ⚠️ E ela custa alcance: `impotencia` era a terceira forma
+    #    mais escassa do pool.
+    #    (9 entradas)
+    # ⛔⛔ MAQUINA QUE ERGUE GENTE TEM OPERADOR OU SERVICO NO MESMO QUADRO —
+    #    conserto de 2026-08-21. Sem ninguem nos comandos o gerador ou INVENTA
+    #    um motorista (e o elenco muda sozinho entre a IMAGE e o TAKE) ou deixa
+    #    a maquina parada e o beat de abertura morre; e maquina erguendo pessoa
+    #    sem servico identificado le' como trote, nao como resgate. O carro de
+    #    bombeiros do `guindaste_parede` (v28/v40/v45, LIDO e renderizado) e' a
+    #    forma validada disso.
     # -----------------------------------------------------------------------
     {"id": "empilhadeira_galpao",
      "curto": "a empilhadeira e o palete no galpao",
@@ -1566,18 +1742,21 @@ DESASTRES = [
             "shutter rolled all the way up onto a paved yard with a white box "
             "truck backed in, and a battered orange forklift with tall black "
             "mast rails",
-     "acao": "a wooden shipping pallet has been set on the forks and lifted a "
-             "foot clear of the concrete with the body sitting on it, both "
-             "hands gripping the edge of the boards, one shoe hanging off and "
-             "a cargo strap trailing loose across the slats",
+     "acao": "a wooden shipping pallet is up on the forks of the orange "
+             "forklift, held a foot clear of the concrete with the mast set, "
+             "and the body sits on it with both hands gripping the edge of "
+             "the boards, one shoe hanging off and a cargo strap trailing "
+             "loose across the slats, while a warehouse worker in a hi-vis "
+             "vest sits in the forklift cab with both hands on the control "
+             "levers",
      "test": "at the open shutter stand four people who have no work here: "
              "two delivery drivers in polos laughing with their heads tipped "
              "together, a woman from the front counter with a flat hand over "
              "her mouth, and an older man in a windbreaker who came in off "
              "the yard and simply stares",
-     "mov": "As the line begins the forks rise another few inches and the two "
-            "drivers at the shutter start laughing. Halfway through the line "
-            "the older man in the windbreaker steps in closer and says "
+     "mov": "As the line begins the pallet rocks once on the forks and the "
+            "two drivers at the shutter start laughing. Halfway through the "
+            "line the older man in the windbreaker steps in closer and says "
             "nothing to anyone. As the line ends the pallet settles on the "
             "forks and not one of them moves to help",
      "cam": "The shot is taken from the dock floor at knee height a few paces "
@@ -1615,10 +1794,12 @@ DESASTRES = [
             "the two men in work jackets laugh out loud and the woman with "
             "the mug pushes her pointing arm further out. As the line ends "
             "the board clears the stoop and the crowd closes in behind it",
-     "cam": "The shot is taken from the lawn at chest height, angled about "
-            "twenty degrees up toward the stoop so the empty doorway, the "
-            "leaning door and the strapped board sit in one frame with the "
-            "neighbours in the near foreground",
+     "cam": "The shot is taken from above the lawn about three metres up, "
+            "looking toward the stoop at roughly twenty-five degrees down, "
+            "wide enough to hold the empty doorway, the door and frame "
+            "leaning against the siding, the strapped board coming out over "
+            "the stoop and the whole crowd of neighbours on the grass below "
+            "it",
      "luz": "Flat cool overcast morning light with no shadow direction, a "
             "pale grey wash over the siding.",
      "audio": "ratchet straps clicking, boots on concrete, a radio squelch "
@@ -1636,9 +1817,11 @@ DESASTRES = [
             "an aluminium ladder hoist that runs at a steep angle from the "
             "truck bed up to an open third-floor balcony door",
      "acao": "the flat steel carrying platform of the ladder hoist is halfway "
-             "up the rails and tilted a few degrees, with the body sitting on "
-             "it inside a webbing cage and both hands hooked through the "
-             "mesh, a folded walker lashed to the rail beside it",
+             "up the aluminium ladder track and tilted a few degrees, with "
+             "the body sitting on it behind a low barrier of orange webbing "
+             "strung between four corner posts, both hands on the webbing, "
+             "and a folded walker lashed to the side rail, while a mover in a "
+             "company polo works the hoist controls down at the truck bed",
      "test": "the whole sidewalk has stopped to look up: two young men on "
              "bicycles laughing with their feet down on the kerb, a woman "
              "with grocery bags standing still with her mouth open, a man in "
@@ -1649,10 +1832,11 @@ DESASTRES = [
             "in the doorway pushes his pointing arm higher and calls up to "
             "the balcony. As the line ends the platform stops short of the "
             "door and the sidewalk stays exactly where it is",
-     "cam": "The shot is taken from the sidewalk at chest height, angled "
-            "about forty degrees upward along the ladder rails so the loaded "
-            "platform sits high in the frame and the heads of the people on "
-            "the sidewalk sit low in it",
+     "cam": "The shot is taken from the open third-floor balcony doorway at "
+            "chest height, looking down along the aluminium ladder track so "
+            "the loaded platform and the body on it fill the near frame, with "
+            "the truck, the strip of grass and the people on the sidewalk "
+            "reading small below",
      "luz": "Hard mid-morning sun from the left, sharp shadows across the "
             "brick, clear blue sky.",
      "audio": "an electric winch motor grinding, aluminium rails rattling, "
@@ -1672,26 +1856,30 @@ DESASTRES = [
             "round white dial on a post",
      "acao": "the body is standing alone on the steel deck of the freight "
              "scale with both arms held awkwardly out from the sides and the "
-             "head bent down toward the dial, while the long needle swings "
-             "past the numbers and settles",
+             "head bent down toward the dial, while the long black pointer on "
+             "the big white dial face swings wide and settles hard over on "
+             "one side of it",
      "test": "the six customers waiting at the counter have all turned round "
              "to watch: a young woman with a flat hand over her mouth, two "
              "men in caps who look at each other and then away, an older "
              "woman gripping her purse and staring, and a clerk in a canvas "
              "apron standing still behind the counter",
-     "mov": "As the line begins the needle swings round the dial and every "
-            "head at the counter turns. Halfway through the line the young "
-            "woman lifts a hand over her mouth and not one person speaks. As "
-            "the line ends the needle settles on a number and the whole store "
-            "is still watching",
+     "mov": "As the line begins the black pointer swings wide across the "
+            "white dial face and every head at the counter turns. Halfway "
+            "through the line the young woman lifts a hand over her mouth and "
+            "not one person speaks. As the line ends the pointer has settled "
+            "hard over on one side of the dial and the whole store keeps "
+            "watching",
      "cam": "The shot is taken from the aisle beside the scale at chest "
-            "height, level and straight on, wide enough to hold the steel "
-            "deck, the big dial on its post and the whole line of customers "
-            "at the counter behind it",
+            "height, level and straight on, with the big white dial on its "
+            "post close in the near frame so the black pointer reads large, "
+            "and wide enough behind it to hold the steel deck and the whole "
+            "line of customers at the counter",
      "luz": "Warm caged bulbs overhead mixed with cold daylight from the open "
             "barn door, soft directional light, dust in the air.",
-     "audio": "the steel deck creaking under load, the dial needle ticking, "
-              "a ceiling fan turning and a store with no voices in it"},
+     "audio": "the steel deck creaking under load, a dial pointer knocking "
+              "against its stop, a ceiling fan turning and a store with no "
+              "voices in it"},
 
     {"id": "guincho_piscina", "curto": "o guincho da piscina publica",
      "v": "grafo-C", "cluster": "C",
@@ -1753,131 +1941,169 @@ DESASTRES = [
             "of them laugh out loud and the man in the vest pulls his hand "
             "back. As the line ends the strap slips a few inches and the line "
             "of drivers has not moved",
-     "cam": "The shot is taken from the road shoulder at hip height behind "
-            "the line of drivers, angled about thirty degrees down into the "
-            "ditch so the strap and the body sit low in the frame and the "
-            "standing drivers frame the top of it",
+     "cam": "The shot is taken from the road shoulder about three metres up, "
+            "looking down the grass slope at roughly forty degrees over the "
+            "heads of the line of drivers, so the yellow recovery strap and "
+            "the body on the wet grass read clear and low in the frame with "
+            "the standing drivers ranged across the top of it",
      "luz": "Low golden evening sun raking across the field from the right, "
             "long shadows down the ditch, warm sky.",
      "audio": "a winch drum ratcheting, cable creaking under load, an "
               "idling diesel engine and two men laughing at the roadside"},
 
-    {"id": "elevador_aeroporto",
-     "curto": "o elevador de carga na porta do aviao",
+    # ⭐ A VERGONHA E' A MULHER DE UNS CINQUENTA de vestido de verao: ela
+    # baixa a mao da boca e comenta com os dois rapazes que riem. A
+    # `impotencia` aqui e' LEGITIMA e vem ANTES da maquina — os quatro
+    # homens de mangas arregacadas tentaram carregar e desistiram na frente
+    # de todo mundo, e a concha e' a consequencia disso, nao a contradicao.
+    # Quem dirige o trator e' bombeiro voluntario: SERVICO identificado.
+    {"id": "carregadeira_feira",
+     "curto": "a concha da carregadeira no parque de exposicoes",
      "v": "grafo-C", "cluster": "C",
      "sexos": ("mulher", "homem"),
      "formas": ("riso", "juizo", "impotencia"),
      "interior": False,
-     "cen": "an airport apron on a bright morning, a white narrow-body "
-            "airliner parked at a remote stand with its forward door open, a "
-            "set of wheeled airstairs pushed up beside it, yellow guide lines "
-            "painted on the concrete, orange cones around the nose gear, a "
-            "train of open baggage carts alongside, and a boxy white "
-            "scissor-lift vehicle raised on its rams with a steel cabin level "
-            "with the aircraft door",
-     "acao": "the steel cabin of the scissor lift has stopped level with the "
-             "aircraft doorway and the body is inside it, strapped to a "
-             "narrow transfer chair with a webbing belt across the chest and "
-             "both hands on the rails, framed in the open side of the cabin",
-     "test": "thirty passengers are still queued at the foot of the airstairs "
-             "with their bags and every one of them is looking up: four "
-             "laughing together near the front, a man in a suit stopped with "
-             "his boarding pass halfway to his mouth, and two ground handlers "
-             "who tried to carry the chair up the stairs first and gave up",
-     "mov": "As the line begins the scissor lift settles against the doorway "
-            "and the whole queue on the concrete tips its heads back. Halfway "
-            "through the line four of the passengers laugh together and the "
-            "man in the suit lowers his boarding pass. As the line ends the "
-            "cabin door slides open and the queue is still standing there "
-            "watching",
-     "cam": "The shot is taken from the apron at chest height behind the "
-            "queue, angled about thirty-five degrees upward so the raised "
-            "cabin and the aircraft doorway sit high in the frame and the "
-            "heads of the passengers sit low in it",
-     "luz": "Hard clear morning sun from the side, sharp shadows on the "
-            "concrete, strong glare off the white fuselage.",
-     "audio": "a hydraulic ram hissing, an auxiliary engine whining, "
-              "rolling bag wheels on concrete and four people laughing in "
-              "the queue"},
+     "cen": "the main fairway of a county fairground on a hot afternoon, "
+            "trampled dry grass between rows of white livestock tents, a red "
+            "and white striped concession trailer with its awning propped up, "
+            "hay bales stacked as seating along the lane, a wooden judging "
+            "ring with pipe rails beyond, and a green farm tractor with a "
+            "wide steel front loader bucket stopped across the lane",
+     "acao": "the steel loader bucket has been lined with a folded grey "
+             "blanket and raised two feet clear of the grass with the body "
+             "sitting in it, both hands gripping the front lip, one leg "
+             "hanging over the edge and a straw hat down in the grass below, "
+             "while a volunteer firefighter in a tan turnout coat sits in the "
+             "tractor seat with both hands on the hydraulic levers",
+     "test": "the fairway has stopped moving: two young men in feed-store "
+             "caps laughing with their heads tipped together, a woman of "
+             "about fifty in a sun dress with a flat hand over her mouth, and "
+             "four older men in shirtsleeves who took an arm each a minute "
+             "ago, pulled twice and let go",
+     "mov": "As the line begins the two young men in feed-store caps break "
+            "out laughing. Halfway through the line the woman in the sun "
+            "dress lowers her hand and says something across to them. As the "
+            "line ends the bucket rises another few inches and the four older "
+            "men stay where they are",
+     "cam": "The shot is taken from the fairway at chest height a few paces "
+            "in front of the bucket, angled about twenty-five degrees upward "
+            "so the raised bucket and the body in it fill the middle of the "
+            "frame with the stopped fairway behind",
+     "luz": "Hard high afternoon sun almost straight overhead, short black "
+            "shadows on the trampled grass, bleached bright sky.",
+     "audio": "a diesel tractor idling, hydraulics whining under the bucket, "
+              "a livestock announcer echoing off the tents and two young men "
+              "laughing close by"},
 
-    {"id": "tabua_igreja", "curto": "a tabua nos degraus da igreja",
-     "v": "grafo-C", "cluster": "C",
-     "sexos": ("mulher", "homem"),
-     "formas": ("silencio", "juizo"),
-     "interior": False,
-     "cen": "the front steps of a white clapboard country church on a Sunday "
-            "morning, a tall steeple with a black bell louvre, double "
-            "red-painted doors standing open, a run of eight wide wooden "
-            "steps with a plain iron rail, a gravel parking lot with parked "
-            "sedans behind, bare maples and a hand-lettered notice board at "
-            "the foot of the steps",
-     "acao": "a long unfinished plank with a folded quilt laid over it is "
-             "being carried up the steps at shoulder height by six men in "
-             "Sunday suits, the body lying on it with both hands gripping the "
-             "edges and the plank bowing visibly in the middle",
-     "test": "the whole congregation has come out and lines both sides of the "
-             "steps: two older women with a flat hand over the mouth, a man "
-             "holding his hat against his chest who turns his face away, a "
-             "row of teenagers standing rigid at the rail, and an usher at "
-             "the doors who watches without saying anything",
-     "mov": "As the line begins the six men shift their grip and the plank "
-            "bows in the middle. Halfway through the line one of the women on "
-            "the steps puts a hand over her mouth and not one person speaks. "
-            "As the line ends the plank stalls two steps below the doors and "
-            "the congregation stays exactly where it is",
-     "cam": "The shot is taken from the gravel lot at waist height at the "
-            "foot of the steps, angled about twenty-five degrees upward so "
-            "the plank and the six carriers sit high in the frame with the "
-            "lines of the congregation down both sides",
-     "luz": "Clear cold morning sun from the side, hard shadows across the "
-            "white boards, pale sky.",
-     "audio": "boots grinding on wooden steps, the plank creaking, laboured "
-              "breathing from the carriers and a churchyard with no voices "
-              "in it"},
-
-    {"id": "carrinho_carga", "curto": "o carrinho de carga no saguao",
+    # ⭐ A VERGONHA E' A VIZINHA DE UNS SESSENTA de cardiga: braco esticado
+    # apontando para dentro da garagem e a voz chamando os dois rapazes que
+    # riem sobre o capo. Sao VIZINHOS de verdade em quadro, que e' o que os
+    # tres beats de `dedo` exigem (`neighbour`, `across the street`) — e
+    # essa forma e' a mais escassa do pool. A talha e' operada por dois
+    # bombeiros voluntarios; o adolescente so' espia, nao propaga a piada.
+    {"id": "talha_garagem", "curto": "a talha de corrente na viga da garagem",
      "v": "grafo-C", "cluster": "C",
      "sexos": ("mulher", "homem"),
      "formas": ("riso", "dedo", "juizo"),
-     "interior": True,
-     "cen": "the ground-floor lobby of an older apartment building in the "
-            "afternoon, a bank of small brass mailboxes along one wall, a "
-            "scuffed beige tile floor, a worn rubber runner leading to the "
-            "glass street doors, two vinyl armchairs against the wall, a "
-            "potted plant, a radiator under the window and a red steel "
-            "appliance hand truck with wide cargo straps parked on the runner",
-     "acao": "the body is strapped upright to the red appliance hand truck "
-             "with two wide cargo straps across the chest and the knees and "
-             "both hands folded on the top strap, while two men in work "
-             "gloves tilt the hand truck back and wheel it over the tile "
-             "toward the glass doors",
-     "test": "seven residents have come out into the lobby and stand along "
-             "the mailboxes: two of them laughing with their heads together, "
-             "an older man in slippers pointing at the straps, a woman with a "
-             "laundry basket on her hip who has stopped dead, and three more "
-             "sitting forward in the vinyl armchairs",
-     "mov": "As the line begins the hand truck tilts back and every head "
-            "along the mailboxes turns. Halfway through the line two of the "
-            "residents laugh out loud and the older man in slippers pushes "
-            "his pointing arm further out. As the line ends the wheels bump "
-            "over the runner and nobody goes ahead to open the door",
-     "cam": "The shot is taken from beside the glass street doors at chest "
-            "height, level and straight on down the lobby, wide enough to "
-            "hold the tilted hand truck, the strapped body and the whole row "
-            "of residents at the mailboxes",
-     "luz": "Warm afternoon daylight coming in low through the street doors "
-            "from behind, a weak yellow ceiling fixture, soft shadows on the "
-            "tile.",
-     "audio": "ratchet straps clicking tight, hard rubber wheels bumping "
-              "over tile, a mailbox door snapping shut and two people "
-              "laughing"},
+     "interior": False,
+     "cen": "an attached suburban garage with the sectional door rolled all "
+            "the way up onto a concrete driveway, an exposed timber ceiling "
+            "beam, pegboard walls hung with tools, a chest freezer and "
+            "stacked paint tins along one side, an oil-stained slab floor, a "
+            "lawn tractor pushed back into the corner, and a red chain hoist "
+            "shackled to the beam over the middle of the floor",
+     "acao": "a wide webbing sling has been passed under the arms and clipped "
+             "to the hook of the chain hoist, and the body is a foot up off "
+             "the slab with the toes dragging on it, while two volunteer "
+             "firefighters in tan turnout coats work the chain hand over hand",
+     "test": "out on the driveway nine neighbours have come across and not "
+             "one of them leaves: two men in their thirties laughing over the "
+             "hood of a parked car, a woman of about sixty in a cardigan with "
+             "one arm out pointing straight into the garage, and a teenager "
+             "leaning in past the door track to see the sling",
+     "mov": "As the line begins the two men on the driveway start laughing "
+            "over the hood of the car. Halfway through the line the woman in "
+            "the cardigan pushes her pointing arm further into the garage and "
+            "calls something across to them. As the line ends the chain takes "
+            "another link and the neighbours only crowd closer to the open "
+            "door",
+     "cam": "The shot is taken from the driveway at hip height just outside "
+            "the door track, angled about twenty degrees upward into the "
+            "garage so the sling, the taut chain and the beam sit in one "
+            "vertical frame with the neighbours in the near foreground",
+     "luz": "Flat overcast daylight flooding in through the open door against "
+            "the dim interior, weak shadows on the oil-stained slab.",
+     "audio": "a chain hoist clicking link by link, webbing creaking under "
+              "load, a car door left open chiming and two men laughing on the "
+              "driveway"},
+
+    # ⭐ A VERGONHA E' O HOMEM DE UNS QUARENTA de fleece: ele solta o braco
+    # que segurava, se levanta e BALANCA A CABECA para a mesa atras dele —
+    # desistir na frente de uma plateia sentada. A `impotencia` de novo vem
+    # ANTES da maquina, e por isso a forma cabe num cluster onde o resgate
+    # acontece em quadro. A equipe de resgate esta' uniformizada e so'
+    # trabalha.
+    {"id": "bolsa_ar_calcada",
+     "curto": "as bolsas de ar erguendo na calcada do cafe",
+     "v": "grafo-C", "cluster": "C",
+     "sexos": ("mulher", "homem"),
+     "formas": ("riso", "juizo", "impotencia"),
+     "interior": False,
+     "cen": "a downtown sidewalk outside a corner coffee house on a bright "
+            "weekday morning, wide grey paving slabs, a low iron rail penning "
+            "in a patio of small round tables under a green awning, a bicycle "
+            "rack and a parking meter at the kerb, a shopfront window full of "
+            "hanging plants, and a white fire department response truck "
+            "stopped at the kerb with its rear doors open",
+     "acao": "a stack of orange rescue lifting bladders has been worked in "
+             "underneath and is inflating in stages, so the body is coming up "
+             "off the paving a hand's width at a time, both arms braced out "
+             "on the slabs and one shoe left behind at the kerb, while two "
+             "firefighters in tan turnout coats crouch at the air control "
+             "panel",
+     "test": "the whole patio has turned its chairs round and stays in them: "
+             "two women in their twenties laughing into their cups, a man of "
+             "about forty in a fleece who got down and took an arm before the "
+             "crew came, pulled twice and stood back up, and four more at the "
+             "rail leaning out over their tables to watch the bags fill",
+     "mov": "As the line begins the two women at the patio tables laugh into "
+            "their cups. Halfway through the line the man in the fleece lets "
+            "go of the arm he was holding and shakes his head at the table "
+            "behind him. As the line ends the bladders take another breath "
+            "and the whole patio leans further over the rail",
+     "cam": "The shot is taken from the kerb at knee height a couple of paces "
+            "away, angled about fifteen degrees down along the paving so the "
+            "inflating bags and the body sit low and close in the frame with "
+            "the patio rail and the watching tables behind",
+     "luz": "Hard low morning sun coming down the street from the left, long "
+            "shadows across the paving, bright glare off the shopfront glass.",
+     "audio": "compressed air hissing into the bladders, plastic creaking as "
+              "they fill, a cup set down hard on a metal table and two women "
+              "laughing behind the rail"},
+
+    # ⛔ LAPIDE 2026-08-21 — `elevador_aeroporto` CORTADO: o ambilift e' SERVICO
+    #    PADRAO de aeroporto (nao ha' vergonha num procedimento, ha' servico), e a
+    #    camera punha o rosto a trinta passageiros de distancia. O `cinto_aviao` ja'
+    #    e' dono do aviao e a vergonha dele e' real.
+
+
+    # ⛔ LAPIDE 2026-08-21 — `tabua_igreja` CORTADO: colapsa com `banco_igreja`
+    #    (a mesma igreja branca de tabua, a mesma congregacao muda em duas alas) e o
+    #    prior treinado devolve CAIXAO — seis homens de terno carregando uma tabua a
+    #    altura do ombro com um corpo deitado em cima.
+
+
+    # ⛔ LAPIDE 2026-08-21 — `carrinho_carga` CORTADO: o julgamento cai nos DOIS
+    #    HOMENS que empurram, nao no corpo — e ninguem transporta gente de pe' num
+    #    carrinho de geladeira. A forma verdadeira dessa cena ja' e' o `maca_transferencia`.
+
 
     # -----------------------------------------------------------------------
     # ⭐ CLUSTER D — ROTA MEDICA: o equipamento de saude nao serve, nao
     #    fecha ou pede reforco. A aresta e' o OLHAR DO OUTRO num lugar onde a
     #    cortina aberta, o corredor ou a fila poem publico civil dentro de um
     #    exame — o funcionario e' AUTORIDADE e nao paga a vergonha sozinho.
-    #    (8 entradas)
+    #    (10 entradas)
     # -----------------------------------------------------------------------
     {"id": "balanca_recepcao", "curto": "a balanca da recepcao trava",
      "v": "grafo-D", "cluster": "D",
@@ -1893,8 +2119,9 @@ DESASTRES = [
             "the open beside the counter",
      "acao": "the body stands squarely on the steel platform with both hands "
              "clamped on the upright column and the heels hanging off the "
-             "back edge of the plate, while the readout on the column holds "
-             "three flat dashes and the platform creaks under the soles",
+             "back edge of the plate, while the small display window set into "
+             "the chrome column stays dark and blank with nothing lit on it "
+             "at all, and the platform creaks under the soles",
      "test": "the receptionist leans out of the sliding window and calls "
              "something across the room, and the eight patients waiting in "
              "the row of chairs all look up: two young women laughing behind "
@@ -1904,7 +2131,8 @@ DESASTRES = [
             "sliding window and the whole row of chairs looks up. Halfway "
             "through the line the two young women laugh behind the folded "
             "pamphlet and one leans over to whisper. As the line ends the "
-            "readout still holds three flat dashes and the row keeps staring",
+            "display window in the column is dark and blank and the row keeps "
+            "staring",
      "cam": "The shot is taken from the far side of the waiting room at "
             "seated chest height, level and straight on, wide enough to hold "
             "the scale, the body on the platform and the whole row of waiting "
@@ -1928,20 +2156,20 @@ DESASTRES = [
             "waiting bench of moulded plastic chairs visible past the open "
             "curtain",
      "acao": "the upper arm rests flat on the padded board with the grey cuff "
-             "stretched round it and the two ends of the fastening still a "
-             "hand apart, and the nurse peels the whole thing off again and "
-             "steps out of the bay holding it up",
+             "stretched round it and the two ends of the fastening a good "
+             "hand apart, and the nurse's fingers are still on the loose end, "
+             "holding it out from the arm",
      "test": "past the open curtain, five patients on the waiting bench have "
              "all stopped to look: a man in a windbreaker holding a folded "
              "coat and staring straight in, a woman who glances up from her "
              "lap and back down and up again, and two others leaning sideways "
              "to see round the curtain, the bay quiet enough to hear the hose "
              "swing",
-     "mov": "As the line begins the fastening rasps apart and the nurse steps "
-            "out of the bay holding the cuff up. Halfway through the line the "
+     "mov": "As the line begins the fastening rasps apart and the nurse holds "
+            "the loose end out from the arm. Halfway through the line the "
             "five on the waiting bench are all watching through the open "
-            "curtain and the bay goes quiet. As the line ends the arm stays "
-            "flat on the padded board and the curtain sways once",
+            "curtain and the bay goes quiet. As the line ends the two ends "
+            "are still a hand apart across the arm and the curtain sways once",
      "cam": "The shot is taken from the foot of the vitals chair at chest "
             "height, angled about twenty degrees so the arm on the board sits "
             "low in the frame and the open curtain with the waiting bench "
@@ -1966,20 +2194,19 @@ DESASTRES = [
             "lifts with brushed steel doors",
      "acao": "one of them is lowered into a standard hospital wheelchair and "
              "stops halfway down with the hips caught hard between the two "
-             "padded armrests and the frame lifting off its back wheels, "
-             "while the other stands behind the push handles hauling on them "
-             "with both hands",
+             "padded armrests, while the other stands behind hauling back on "
+             "the push handles with both hands until the two small front "
+             "castors lift clear of the terrazzo",
      "test": "the queue at the reception desk has broken up to watch: a man "
              "in a suit with a document wallet under his arm laughing openly, "
              "a woman beside him laughing too, an elderly couple who take a "
              "step forward and stop with their hands half raised, and a "
              "teenager up on the lift landing to see over the heads",
-     "mov": "As the line begins the frame tips forward off its back wheels "
-            "and the queue at the desk turns round. Halfway through the line "
-            "the man in the suit laughs out loud and says something to the "
-            "woman next to him. As the line ends the hips are still caught "
-            "between the armrests and the elderly couple lower their hands "
-            "again",
+     "mov": "As the line begins the front castors lift clear of the floor and "
+            "the queue at the desk turns round. Halfway through the line the "
+            "man in the suit laughs out loud and says something to the woman "
+            "next to him. As the line ends the hips are caught between the "
+            "armrests and the elderly couple lower their hands again",
      "cam": "The shot is taken from beside the reception desk at hip height, "
             "angled about twenty degrees down onto the wheelchair, wide "
             "enough to hold both of them, the tipping frame and the broken "
@@ -2001,11 +2228,13 @@ DESASTRES = [
             "plastic chairs under a window at the far end, and a chrome "
             "transfer trolley with a thin blue mattress standing sideways in "
             "the corridor",
-     "acao": "the body lies half on the trolley and half on the slide board, "
-             "stalled in the middle of the move, with two orderlies in navy "
-             "scrubs hauling on the draw sheet at the shoulders and two more "
-             "braced at the hips, the trolley legs splayed and its wheels "
-             "locked",
+     "acao": "the body lies half on the chrome trolley and half on a bright "
+             "blue plastic slide board whose free end sticks out over the "
+             "mattress, stopped in the middle of the move, with two orderlies "
+             "in navy scrubs on the far side of the trolley hauling the draw "
+             "sheet up tight at the shoulders and two more on the near side "
+             "braced against the hips, the trolley legs splayed and its "
+             "wheels locked",
      "test": "the row of chairs at the far end of the corridor is full and "
              "every one of them has turned to look: a man with a walking "
              "stick between his knees leaning forward, a mother holding a "
@@ -2036,65 +2265,67 @@ DESASTRES = [
             "long wooden bench, a mirror in a chipped frame, pale beige "
             "walls, grey speckled flooring, and a corridor of waiting chairs "
             "opening straight off the alcove",
-     "acao": "the body has come out of the cubicle in a pale blue paper gown "
-             "with the two back ties hanging loose and the open panels "
-             "gripped shut in one fist at the small of the back, moving along "
-             "the alcove in short steps with the free hand out toward the "
-             "bench",
+     "acao": "the body has stepped out of the cubicle still in its own street "
+             "clothes and stopped in the middle of the alcove, holding a pale "
+             "blue paper gown up in one fist by its shoulder seam with the "
+             "two back ties hanging down loose and their ends a hand apart, "
+             "the gown hanging flat and plainly a hand too narrow at both "
+             "sides, the other hand out toward the bench",
      "test": "four people waiting on the bench and in the corridor chairs are "
              "all looking: two women in street clothes laughing quietly with "
              "their heads together, a man in a matching paper gown who grins "
              "and drops his eyes to the floor, and an older woman who watches "
-             "the whole walk without blinking",
-     "mov": "As the line begins the paper gown pulls open a hand's width at "
-            "the back and the bench looks up. Halfway through the line the "
-            "two women laugh into their hands and the man in the matching "
-            "gown grins at the floor. As the line ends the walk has covered "
-            "three short steps and every head is still turned",
+             "the whole thing without blinking",
+     "mov": "As the line begins the loose ties swing out from the held-up "
+            "gown and the bench looks up. Halfway through the line the two "
+            "women laugh into their hands and the man in the matching gown "
+            "grins at the floor. As the line ends the gown is still hanging "
+            "from the one fist and every head is still turned",
      "cam": "The shot is taken from the corridor end of the alcove at chest "
-            "height, angled slightly down, wide enough to hold the whole walk "
-            "from the cubicle curtain to the bench and the people watching "
-            "from it",
+            "height, angled slightly down, wide enough to hold the open "
+            "cubicle curtain, the gown held up in one fist and the people "
+            "watching from the bench",
      "luz": "Soft cool overhead light with one warm bulb over the mirror, "
             "gentle shadows across the beige walls.",
-     "audio": "paper rustling with every step, bare soles on vinyl, a "
-              "curtain ring sliding on its track and two women laughing "
-              "quietly"},
+     "audio": "paper rustling in one fist, shoes on vinyl, a curtain ring "
+              "sliding on its track and two women laughing quietly"},
 
     {"id": "mesa_exame_papel", "curto": "a mesa de exame cede",
      "v": "grafo-D", "cluster": "D",
      "sexos": ("mulher", "homem"),
      "formas": ("riso", "juizo"),
      "interior": True,
-     "cen": "a shared examination bay in an American clinic with the dividing "
-            "curtain pushed fully back, two identical exam tables in cream "
-            "vinyl with white paper rolls at the head end, a wall chart of "
-            "the human skeleton, a stainless sink with a paper-towel "
-            "dispenser, a rolling stool, cream painted walls, a white drop "
-            "ceiling with fluorescent panels, and two companion chairs at the "
-            "foot of each table",
-     "acao": "the body sits back onto the near exam table and the gas "
-             "cylinder under it gives way, dropping the whole top a hand's "
-             "width with a hiss while the white paper roll tears open across "
-             "the vinyl in one long ragged split",
+     "cen": "the open fast-track treatment area of an American urgent care "
+            "clinic, four bays down one wall divided by half-drawn curtains "
+            "on ceiling tracks with a nurses' station on castors in the "
+            "middle of the floor, cream vinyl exam tables with white paper "
+            "rolls at the head end in each bay, a wall chart of the human "
+            "skeleton, a stainless sink with a paper-towel dispenser, a "
+            "rolling stool, cream painted walls, a white drop ceiling with "
+            "fluorescent panels, and a companion chair at the foot of every "
+            "table",
+     "acao": "the body sits back onto the near exam table and the base gives "
+             "way under one end, so the whole cream vinyl top drops at that "
+             "end and stands at a clear slant while the white paper roll "
+             "tears open across it in one long ragged split",
      "test": "the far exam table and the companion chairs are occupied and "
              "everyone in the bay has turned: a teenager on the far table "
              "laughing out loud with a hand over his eyes, his mother beside "
              "him laughing as well, and an older man on a companion chair "
              "leaning round the pushed-back curtain to see",
-     "mov": "As the line begins the table top drops a hand's width and the "
-            "paper roll tears open. Halfway through the line the teenager on "
-            "the far table laughs out loud and his mother laughs with him. As "
-            "the line ends the torn paper hangs off the edge and the whole "
-            "bay is still looking",
+     "mov": "As the line begins the table top drops at one end into a clear "
+            "slant and the paper roll tears open. Halfway through the line "
+            "the teenager on the far table laughs out loud and his mother "
+            "laughs with him. As the line ends the torn paper hangs off the "
+            "low end of the table and the whole bay keeps looking",
      "cam": "The shot is taken from the sink side of the bay at standing "
             "chest height, angled about twenty degrees down onto the dropped "
             "table, wide enough to hold the torn paper and the occupied far "
             "table behind it",
      "luz": "Flat cool fluorescent ceiling light, almost shadowless, with a "
             "faint green institutional cast on the cream vinyl.",
-     "audio": "a pneumatic hiss under the table, paper tearing in one long "
-              "rip, a stool caster rolling and a boy laughing"},
+     "audio": "a table base buckling under the weight, paper tearing in one "
+              "long rip, a stool caster rolling and a boy laughing"},
 
     {"id": "tomografo_estreito", "curto": "o tomografo nao aceita",
      "v": "grafo-D", "cluster": "D",
@@ -2122,10 +2353,12 @@ DESASTRES = [
             "on the corridor chairs all look through the open door and the "
             "corridor goes quiet. As the line ends both feet are still on the "
             "step stool and every one of them is still watching",
-     "cam": "The shot is taken from the corridor at seated chest height, "
-            "angled slightly through the open doorway so the waiting chairs "
-            "sit in the foreground and the scanner table sits in the bright "
-            "room beyond",
+     "cam": "The shot is taken from inside the scanner room at seated chest "
+            "height, a little to the side of the narrow table so the body on "
+            "the edge of it and the shoulders standing a hand wider than the "
+            "mattress on each side fill the near frame, with the technologist "
+            "in the doorway and the corridor of waiting patients reading "
+            "through the open door behind",
      "luz": "Cool even fluorescent corridor light against a brighter clinical "
             "white spilling out of the scanner room.",
      "audio": "a low mechanical hum from the scanner room, a step stool "
@@ -2169,12 +2402,107 @@ DESASTRES = [
               "rattling, several people laughing and a pick-up bell ringing "
               "once"},
 
+    # ⭐ A VERGONHA E' A MULHER DE UNS QUARENTA que para no meio de
+    # descascar a laranja e fica com ela nas duas maos, sem desviar o
+    # olhar. A prova e' POSICAO e nunca numero: duas camas no mesmo chao,
+    # uma visivelmente mais larga. ⛔ Ela fica DE PE', com a propria roupa e
+    # uma bolsa de lona — nada de avental no corpo dela (RU19). Zero riso
+    # em `test`/`mov`/`audio`, entao `silencio` nao desmente o quadro.
+    {"id": "cama_ala",
+     "curto": "a cama da enfermaria trocada por uma mais larga",
+     "v": "grafo-D", "cluster": "D",
+     "sexos": ("mulher", "homem"),
+     "formas": ("silencio", "juizo"),
+     "interior": True,
+     "cen": "a four-bed ward in a small American hospital in the middle of "
+            "the day, pale blue curtains bunched on ceiling tracks between "
+            "the bays, a speckled vinyl floor, a window with horizontal "
+            "blinds at the far end, a wheeled overbed table and a vinyl "
+            "visitor chair beside each bed, a sanitiser dispenser by the "
+            "door, and one bay standing empty with its bed pushed out into "
+            "the middle of the floor",
+     "acao": "the body stands at the foot of the empty bay with a canvas bag "
+             "held in both hands, waiting, while two porters in navy tunics "
+             "roll the ordinary bed out through the door and push a much "
+             "broader one into place over the same marks on the floor",
+     "test": "the other three beds have visitors and every one of them "
+             "watches without a word: a man of about seventy sitting up "
+             "against his pillows who folds his newspaper down onto his lap, "
+             "a woman in her forties who stops halfway through peeling an "
+             "orange, and a young couple in the far bay who look at each "
+             "other and then back",
+     "mov": "As the line begins the man with the newspaper folds it down onto "
+            "his lap and looks over. Halfway through the line the woman in "
+            "her forties stops peeling the orange and holds it in both hands. "
+            "As the line ends the broader bed comes to rest on the floor "
+            "marks and nobody in the ward says anything",
+     "cam": "The shot is taken from the door of the ward at chest height, "
+            "level and straight on down the middle of the floor, close enough "
+            "to hold the waiting body and the incoming bed together with the "
+            "three occupied beds ranked behind them",
+     "luz": "Flat cool ceiling fluorescent light with a hard band of daylight "
+            "coming through the blinds at the far end.",
+     "audio": "bed castors rumbling over vinyl, a bag handle creaking in two "
+              "hands, a monitor beeping somewhere down the corridor and a "
+              "ward with no voices in it"},
+
+    # ⭐ A VERGONHA E' O HOMEM DE UNS TRINTA na cadeira ao lado, que RI ALTO
+    # com o babador de papel ainda preso no pescoco — PACIENTE igual a ela,
+    # nao funcionario. A auxiliar so' afasta a bandeja: ela nao abre o `mov`
+    # e nao e' a vergonha. O menino de dez ri atras do braco da mae e nao
+    # propaga nada. A prova e' POSICAO (o encosto parado no meio do curso, a
+    # base no fim do batente), nunca um mostrador.
+    {"id": "cadeira_dentista",
+     "curto": "a cadeira do dentista para no meio do curso",
+     "v": "grafo-D", "cluster": "D",
+     "sexos": ("mulher", "homem"),
+     "formas": ("riso", "juizo"),
+     "interior": True,
+     "cen": "an open-plan dental surgery in an American strip-mall clinic, "
+            "three treatment bays side by side with no doors between them, "
+            "mint green walls, a white drop ceiling, an articulated lamp arm "
+            "swung over each chair, rolling stools and instrument trays on "
+            "swing arms, a corner sink with a paper towel dispenser, and a "
+            "glass door standing open onto a waiting area of moulded chairs",
+     "acao": "the treatment chair has stopped halfway through its recline and "
+             "dropped to the bottom of its post with the body sitting back "
+             "into it, both hands flat on the armrests and both feet down on "
+             "the floor, while the assistant swings the instrument tray away "
+             "and steps back",
+     "test": "everyone in the next bay and the open waiting area is watching: "
+             "a man of about thirty in the next chair laughing out loud with "
+             "the paper bib still clipped at his neck, a boy of about ten "
+             "laughing behind his mother's arm, and a woman in a work jacket "
+             "who lowers her magazine and stares in through the open door",
+     "mov": "As the line begins the man in the next bay laughs out loud with "
+            "the bib still clipped at his neck. Halfway through the line the "
+            "woman in the work jacket lowers her magazine and stares straight "
+            "in through the open door. As the line ends the chair drops the "
+            "last inch on its post and neither of them looks away",
+     "cam": "The shot is taken from the foot of the treatment chair at seated "
+            "chest height, angled about fifteen degrees down onto the dropped "
+            "chair, close enough to hold the body in it and wide enough to "
+            "keep the next bay and the open door in the same frame",
+     "luz": "Cold white overhead panels with the treatment lamp arm throwing "
+            "a small hard pool of light across the chair.",
+     "audio": "a hydraulic post sighing down under the chair, an instrument "
+              "tray swinging on its arm, a suction line running dry and a man "
+              "laughing one bay over"},
+
     # -----------------------------------------------------------------------
     # ⭐ CLUSTER E — NAO-ENCAIXE: o vao padrao recusa o corpo e nada
     #    quebra. A aresta e' DESUMANIZACAO pela MEDIDA: catraca, trava de
-    #    seguranca, cinto, poltrona, provador — o mundo diz nao com um
-    #    funcionario de braco estendido e uma fila parada atras. (10
-    #    entradas)
+    #    seguranca, cinto, poltrona, provador — o mundo diz nao e uma fila
+    #    parada atras assiste. (10 entradas)
+    # ⛔⛔ O FUNCIONARIO PODE FICAR EM QUADRO; O PRIMEIRO BEAT DO `mov` NUNCA E'
+    #    ELE, E A VERGONHA NUNCA E' ELE — conserto de 2026-08-21, e era o maior
+    #    defeito de LOTE da varredura. Onze de onze entradas deste cluster
+    #    tinham um uniformizado com o braco ou a palma estendidos no mesmo
+    #    lugar do quadro, e ONZE DE ONZE abriam o `mov` nesse gesto: onze
+    #    videos com o mesmo movimento no mesmo segundo nao sao onze videos.
+    #    ⭐ Nas nove LIDAS quem humilha e' sempre CIVIL — o bombeiro e a
+    #    manicure aparecem trabalhando, nunca julgando. O `mov` abre no
+    #    PUBLICO; o funcionario, quando age, age no meio ou no fim.
     # -----------------------------------------------------------------------
     {"id": "catraca_metro", "curto": "a catraca do metro nao passa",
      "v": "grafo-E", "cluster": "E",
@@ -2187,20 +2515,24 @@ DESASTRES = [
             "barrier panels, a lit glass attendant booth to one side, steel "
             "columns painted dark green and a staircase down to the platform "
             "behind",
-     "acao": "the glass barrier panels have retracted fully open and the lane "
-             "is still too narrow, so the body is stopped halfway through it, "
-             "one hand flat on each stainless steel post and the hips pressed "
-             "against both sides of the lane",
+     "acao": "the clear glass barrier panels are folded right back into the "
+             "stainless housings with their edges showing and the lane "
+             "standing open and empty ahead, and the lane is still too "
+             "narrow, so the body is stopped halfway through it with one hand "
+             "flat on each stainless steel post and the hips pressed against "
+             "both sides of the lane",
      "test": "a station attendant in a navy uniform vest has stepped out of "
              "the booth and stands back with one flat palm raised, talking "
              "with the free hand down at his side, and the queue behind the "
              "gates has stopped: a man in a work coat staring ahead, two "
              "women turned fully sideways to look, and a teenager who looks "
              "down and back up",
-     "mov": "As the line begins the attendant raises the flat palm and starts "
-            "talking. Halfway through the line the whole queue behind the "
-            "gates goes still and not one of them says anything. As the line "
-            "ends the glass panels stay wide open and nobody moves through",
+     "mov": "As the line begins the whole queue behind the gates goes still "
+            "and every head comes round to the open lane. Halfway through the "
+            "line the man in the work coat stares straight ahead and not one "
+            "of them says anything. As the line ends the station attendant "
+            "raises a flat palm from where he stands, the glass panels are "
+            "still folded right back and nobody moves through",
      "cam": "The shot is taken from the platform side of the gates at chest "
             "height, level and straight on, wide enough to hold the open "
             "barrier panels, the stopped body, the attendant and the whole "
@@ -2230,11 +2562,13 @@ DESASTRES = [
              "two teenage girls laughing behind their hands, a father with a "
              "small boy on his shoulders staring, and an older man leaning on "
              "the rail",
-     "mov": "As the line begins the operator lifts both hands off the harness "
-            "and shakes his head. Halfway through the line the two girls at "
-            "the rail break out laughing and one of them says something. As "
-            "the line ends the harness still stands open above the seat and "
-            "the queue at the rail has not moved",
+     "mov": "As the line begins the two teenage girls at the rail break out "
+            "laughing behind their hands and one of them says something. "
+            "Halfway through the line the father with the small boy on his "
+            "shoulders stares and the older man leans further over the rail. "
+            "As the line ends the ride operator lifts both hands off the "
+            "harness, the harness still stands open above the seat and the "
+            "queue has not moved",
      "cam": "The shot is taken from the platform beside the car at seated "
             "chest height, angled about twenty degrees down onto the open "
             "harness, wide enough to hold the car, the operator and the queue "
@@ -2265,14 +2599,17 @@ DESASTRES = [
              "a bag on his shoulder looking down the row, two women in the "
              "opposite seats turned fully around, and a teenager who stares "
              "and then looks away",
-     "mov": "As the line begins the attendant holds the extender strap out "
-            "and speaks. Halfway through the line the queue in the aisle "
-            "stops moving and nobody in the rows says a word. As the line "
-            "ends the two belt ends are still lying open across the lap",
-     "cam": "The shot is taken from the aisle two rows forward at seated head "
-            "height, angled slightly down across the seat backs, wide enough "
-            "to hold the open belt, the attendant and the stalled queue "
-            "behind",
+     "mov": "As the line begins the boarding queue in the aisle stops moving "
+            "and the two women in the opposite seats turn fully around. "
+            "Halfway through the line the man with the bag on his shoulder "
+            "looks down the row and nobody in the rows says a word. As the "
+            "line ends the flight attendant holds the extender strap out and "
+            "the two belt ends are still lying open across the lap",
+     "cam": "The shot is taken from the aisle right beside the row at seated "
+            "chest height, turned in toward the seats so the two open belt "
+            "ends across the lap and the grey extender strap in the "
+            "attendant's hand read large in the near frame, with the stalled "
+            "boarding queue running back down the aisle behind",
      "luz": "Cold overhead cabin light with hard white apron daylight "
             "flooding in through the oval windows, high contrast on the seat "
             "backs.",
@@ -2291,23 +2628,27 @@ DESASTRES = [
             "lights, plain grey acoustic wall panels, a blank white screen "
             "behind a bunched black curtain and a projection window high on "
             "the rear wall",
-     "acao": "one of them stands in the row with a hand on the fixed wooden "
-             "armrest of a seat folded fully down and still empty, the hips "
-             "wider than the gap between the armrests, while the other is "
-             "already seated one place along holding both tickets",
+     "acao": "one of them stands in the row over a seat folded fully down and "
+             "still empty, a hand gripping each fixed dark wooden armrest and "
+             "the hips touching both armrests at the same time, while the "
+             "other is already seated one place along holding both tickets",
      "test": "an usher in a maroon waistcoat stands at the end of the row "
              "with one flat palm raised, speaking across the seats from the "
              "aisle end, and the whole audience has turned round to look: a "
              "couple two rows back staring over the seat backs, a woman with "
              "a paper cup frozen at her mouth, and a man who looks and then "
              "looks at the floor",
-     "mov": "As the line begins the usher raises the flat palm at the end of "
-            "the row. Halfway through the line every head in the auditorium "
-            "turns and the room stays quiet. As the line ends the folded seat "
-            "is still empty between the two of them",
-     "cam": "The shot is taken from the aisle at seated head height, angled "
-            "slightly up along the row so the empty folded seat, the fixed "
-            "armrests and the turned faces behind all sit in the same frame",
+     "mov": "As the line begins every head in the auditorium turns round "
+            "toward the row and the room goes quiet. Halfway through the line "
+            "the couple two rows back stare over the seat backs and the woman "
+            "with the paper cup holds it frozen at her mouth. As the line "
+            "ends the usher raises a flat palm from the aisle end and the "
+            "folded seat is still empty between the two of them",
+     "cam": "The shot is taken from the row in front at seated head height, "
+            "turned back along the row so the empty folded seat, both fixed "
+            "wooden armrests and the hands on them read large in the near "
+            "frame, with the usher at the aisle end and the turned faces of "
+            "the audience behind",
      "luz": "Warm house lights up at half strength, soft pools from the "
             "ceiling fittings, deep shadow under the seats.",
      "audio": "seat springs creaking, a paper cup set down on an armrest, "
@@ -2325,97 +2666,174 @@ DESASTRES = [
             "warm ceiling spots and the bright shop floor with round clothing "
             "racks beyond",
      "acao": "the grey curtain of the front cubicle has been dragged across "
-             "and stops a foot short of the frame, leaving the whole gap "
-             "standing open onto the corridor, and the body is inside it with "
-             "one hand still on the curtain edge and a dress in the other",
-     "test": "a sales associate in a black polo stands at the corridor mouth "
-             "with an arm out flat, talking from where he stands, and the "
-             "customers waiting in line with clothes on their arms have all "
-             "stopped: two young women laughing behind a folded jacket, an "
-             "older woman staring into the open gap, and a man at the rack "
-             "who turns to look",
-     "mov": "As the line begins the associate puts the flat arm out at the "
-            "corridor mouth. Halfway through the line the two young women in "
-            "the line laugh behind the folded jacket and one leans over to "
-            "say something. As the line ends the curtain is still a foot "
-            "short of the frame and the line has not moved",
+             "and stops a foot short of the frame, so the cubicle stands open "
+             "to the corridor, and the body is inside it still in its own "
+             "street clothes, one hand on the curtain edge and a dress on its "
+             "hanger held up against the front with the other",
+     "test": "the customers waiting in line with clothes on their arms have "
+             "all stopped where they stand: two young women laughing behind a "
+             "folded jacket, an older woman staring straight into the open "
+             "gap, and a man at the return rack who turns round, looks, and "
+             "turns back to the rack",
+     "mov": "As the line begins the whole waiting line stops where it stands "
+            "and every head turns toward the open gap. Halfway through the "
+            "line the two young women laugh behind the folded jacket and one "
+            "leans over to say something. As the line ends the curtain is "
+            "still a foot short of the frame and the line has not moved",
      "cam": "The shot is taken from the far end of the fitting room corridor "
             "at chest height, level and straight on, wide enough to hold the "
-            "open gap in the curtain, the associate and the whole waiting "
-            "line",
+            "open gap in the curtain and the whole waiting line",
      "luz": "Warm ceiling spots down the corridor with cooler flat light off "
             "the shop floor behind, soft shadows on the carpet.",
      "audio": "hangers scraping on a chrome rail, a curtain ring dragging, "
               "two women laughing and shop floor chatter behind"},
 
-    {"id": "mesa_restaurante", "curto": "a mesa presa ao banco do restaurante",
+    # ⭐ A VERGONHA SAO OS DOIS HOMENS DE UNS QUARENTA na caminhonete da
+    # fila ao lado: eles giram o corpo inteiro para a porta aberta e riem
+    # um para o outro. O vendedor da' a volta no carro e fica girando a
+    # chave — ele NAO abre o `mov` e nao e' a humilhacao, so' o cenario
+    # dela. ⛔ Entrada de CASAL: quem coloca os dois no espaco e' o `acao`
+    # (um preso na soleira, o outro no para-lama), nunca a frase de elenco.
+    # ⚠️ A fala e' `neither of them` e nao `%(suj)s`: com o slot ela saia
+    # *"This was Marjorie before, Marjorie and her husband could not..."* —
+    # o nome duas vezes na mesma respiracao e quatro palavras de orcamento
+    # gastas para repeti-lo.
+    {"id": "carro_concessionaria",
+     "curto": "o banco do carro na concessionaria",
      "v": "grafo-E", "cluster": "E",
      "sexos": ("casal",),
-     "formas": ("plateia", "silencio", "juizo"),
-     "interior": True,
-     "cen": "the dining room of a busy family restaurant at lunchtime, a long "
-            "line of high-backed vinyl booths in dark red, laminate tabletops "
-            "on single steel pedestals bolted through the tiled floor, "
-            "brick-pattern wallpaper with framed photographs, brass wall "
-            "lamps, a service pass with steel shelves at the back and full "
-            "tables down the far side",
-     "acao": "one of them stands at the open end of the booth with a hand "
-             "flat on the laminate top and the bench behind still empty, the "
-             "bolted pedestal holding the table hard against the bench, while "
-             "the other waits in the aisle holding two folded coats",
-     "test": "the host stands at the end of the table with a menu down at his "
-             "side and one palm open toward the aisle, speaking quietly with "
-             "the free hand at his side, and the diners at the four nearest "
-             "tables have all stopped eating to look: a man with his fork "
-             "halfway up, two women turned right round in their seats, and a "
-             "child pulled back",
-     "mov": "As the line begins the host opens a palm toward the aisle and "
-            "speaks quietly. Halfway through the line the four nearest tables "
-            "stop eating and the whole room goes quiet. As the line ends the "
-            "bench is still empty and neither of them has sat down",
-     "cam": "The shot is taken from the aisle at seated chest height, level "
-            "and straight on, wide enough to hold the bolted table, the empty "
-            "bench, the host and the tables watching behind",
-     "luz": "Warm brass wall lamps with flat daylight from the windows "
-            "behind, low contrast, a warm amber cast across the vinyl.",
-     "audio": "cutlery set down on plates, a chair leg dragging on tile, a "
-              "kitchen bell in the back and a dining room that has gone "
-              "quiet"},
-
-    {"id": "bote_passeio", "curto": "o colete do bote nao afivela",
-     "v": "grafo-E", "cluster": "E",
-     "sexos": ("mulher", "homem"),
      "formas": ("riso", "juizo"),
      "interior": False,
-     "cen": "a wooden lake tour dock on a bright morning, weathered grey "
-            "planks with black rubber edging, a white open tour boat with a "
-            "blue canvas canopy tied alongside on thick ropes, orange life "
-            "vests hanging in a row on a rail, a wooden gangway with a rope "
-            "handrail, moored small craft further out and a dark treeline "
-            "across flat water",
-     "acao": "an orange life vest is on over the shoulders with both front "
-             "straps hanging loose and the two buckle halves held apart a "
-             "good six inches, and the hands have let go of them and dropped "
-             "down to the sides",
-     "test": "a deckhand in a navy windbreaker stands on the planks holding a "
-             "bigger vest out in front of him, talking with his free hand at "
-             "his side, and the tour queue on the dock has stopped where it "
-             "stands: two young men openly laughing with their heads "
-             "together, a woman in a sun hat staring, and a couple who look "
-             "at each other and back",
-     "mov": "As the line begins the deckhand holds the bigger vest out in "
-            "front of him. Halfway through the line the two young men on the "
-            "dock laugh out loud and the buckle halves stay apart. As the "
-            "line ends the loose straps swing once and the queue on the "
-            "planks has not moved",
-     "cam": "The shot is taken from the dock a few paces back at chest "
-            "height, angled slightly down onto the open buckle, wide enough "
-            "to hold the loose vest straps, the deckhand and the whole "
-            "waiting queue",
-     "luz": "Hard low morning sun from the right, bright bounce off the "
-            "water, strong glare on the white hull.",
-     "audio": "water slapping the hull, rope creaking on a cleat, gulls "
-              "overhead and two men laughing on the planks"},
+     "cen": "the front row of a small used car lot on a bright weekday "
+            "morning, rows of sedans and pickups parked nose out on fresh "
+            "black asphalt, triangular pennant lines strung on wires "
+            "overhead, a low glass sales office with a clipped shrub either "
+            "side of the door, a flagpole at the kerb, and one compact silver "
+            "sedan pulled out of the row with its driver's door standing wide "
+            "open",
+     "acao": "the driver's door stands fully open and one of them is stopped "
+             "half in it, one foot up on the sill and the hips wedged between "
+             "the seat bolster and the wheel, while the other waits out at "
+             "the front wing with both hands flat on the roof",
+     "test": "the salesman has walked round to the far side of the car and "
+             "stands there turning a key fob over, and the customers out on "
+             "the lot have stopped where they are: two men in their forties "
+             "looking over a truck bed laughing at each other, and a woman of "
+             "about thirty holding a toddler by the hand who watches and does "
+             "not move on",
+     "mov": "As the line begins the two men at the truck bed laugh and turn "
+            "right round toward the open door. Halfway through the line the "
+            "woman with the toddler stops walking and watches from the next "
+            "row without saying anything. As the line ends the hips are "
+            "wedged at the sill exactly where they were and the salesman "
+            "looks off across the lot",
+     "cam": "The shot is taken from the lane between the rows at hip height a "
+            "few paces off the open door, angled about ten degrees up so the "
+            "open door, the body wedged at the sill and the two watching men "
+            "beyond the truck bed sit in one frame",
+     "luz": "Hard clear morning sun from the right, sharp shadows under the "
+            "parked cars, strong glare off the windscreens.",
+     "audio": "a car door hinge creaking under load, a key fob chirping once, "
+              "pennant lines snapping in the wind and two men laughing across "
+              "the lot"},
+
+    # ⭐ A VERGONHA SAO OS DOIS HOMENS DE CHAPEU DE PALHA, cinquentoes, JA'
+    # MONTADOS: eles riem um para o outro POR CIMA da cabeca dela, de cima
+    # para baixo, que e' a geometria da humilhacao inteira. Os outros dois
+    # desceram, tentaram empurrar pela bota e voltaram para a sela sem
+    # dizer nada — e' o que sustenta `impotencia` sem maquina nenhuma. O
+    # tratador so' leva o animal: funcionario trabalhando, nunca a vergonha.
+    {"id": "cavalo_trilha", "curto": "o cavalo da trilha levado embora",
+     "v": "grafo-E", "cluster": "E",
+     "sexos": ("mulher", "homem"),
+     "formas": ("riso", "juizo", "impotencia"),
+     "interior": False,
+     "cen": "the yard of a trail riding stable on a clear morning, a red "
+            "timber barn with its sliding door pushed back, a dirt turning "
+            "circle churned up by hooves, a paddock fence of split rails with "
+            "saddles laid over the top rail, a wooden mounting block of three "
+            "steps set out in the open, a water trough on a stand, and six "
+            "saddled horses held in a loose line by their reins",
+     "acao": "the body stands on the top step of the mounting block with both "
+             "hands on the saddle and one boot lifted toward a stirrup that "
+             "hangs level with the waist, while the wrangler has taken the "
+             "reins and is already walking the horse away from the block",
+     "test": "the five riders already up in their saddles have turned their "
+             "horses to watch: two men in their fifties in straw hats "
+             "laughing across at each other, a woman of about twenty-five who "
+             "covers her mouth with the hand holding the rein, and two more "
+             "who got down a minute ago, took a boot each to push and climbed "
+             "back up without a word",
+     "mov": "As the line begins the two men in straw hats laugh across at "
+            "each other from their saddles. Halfway through the line the "
+            "young woman covers her mouth with the hand holding the rein and "
+            "looks down at the block. As the line ends the wrangler leads the "
+            "horse a few steps clear and the lifted boot comes back down onto "
+            "the step",
+     "cam": "The shot is taken from the yard at chest height a few paces from "
+            "the block, angled about ten degrees up so the empty stirrup, the "
+            "body on the top step and the mounted riders behind all sit in "
+            "one frame",
+     "luz": "Clear low morning sun from the side, long shadows raked across "
+            "the dirt, pale blue sky over the barn roof.",
+     "audio": "hooves shifting on packed dirt, a stirrup leather creaking, "
+              "bits and reins jingling and two men laughing from the saddle"},
+
+    # ⭐ A VERGONHA E' O HOMEM DE UNS SESSENTA dois degraus abaixo: mao no
+    # corrimao, cabeca erguida, olhando para cima sem desviar um segundo —
+    # e a mulher de corta-vento que estica o pescoco de lado para ver por
+    # cima dele. Doze pessoas presas atras dela numa escada onde ninguem
+    # passa e ninguem fala: e' a forma `silencio` com o quadro pagando o
+    # que a fala promete (zero riso em `test`/`mov`/`audio`).
+    {"id": "escada_farol",
+     "curto": "a escada em caracol do farol estreita demais",
+     "v": "grafo-E", "cluster": "E",
+     "sexos": ("mulher", "homem"),
+     "formas": ("silencio", "juizo"),
+     "interior": True,
+     "cen": "the inside of a coastal lighthouse tower open to visitors, a "
+            "whitewashed brick shaft curving away overhead, a black cast-iron "
+            "spiral stair bolted to the wall and winding up out of the frame, "
+            "worn treads in a pierced pattern, a thin iron handrail on the "
+            "outer edge, a small arched window letting in one shaft of "
+            "daylight, and a rope barrier at the foot of the stair",
+     "acao": "the body has stopped six treads up where the shaft narrows, "
+             "both hands on the thin iron handrail and one shoulder pressed "
+             "to the whitewashed brick, the hips filling the whole width "
+             "between the rail and the wall, with a water bottle set down on "
+             "the tread below",
+     "test": "the tour group is backed up on the treads underneath and nobody "
+             "speaks: a man of about sixty two steps down with his hand on "
+             "the rail looking straight up, a woman in a windbreaker who "
+             "turns her head sideways to see past him, a girl of about twelve "
+             "who says nothing, and four more waiting at the rope barrier "
+             "below",
+     "mov": "As the line begins the man two steps down puts his hand on the "
+            "rail and looks straight up. Halfway through the line the woman "
+            "in the windbreaker turns her head sideways to see past him and "
+            "says nothing to anyone. As the line ends the shoulder is pressed "
+            "against the brick and the whole group underneath stays where it "
+            "stands",
+     "cam": "The shot is taken from four treads below at chest height, angled "
+            "about thirty degrees upward around the curve of the stair so the "
+            "narrowing shaft, the body wedged between the rail and the wall "
+            "and the heads of the group underneath sit in one frame",
+     "luz": "One shaft of hard daylight from the arched window crossing the "
+            "whitewash, deep shade above it and below it.",
+     "audio": "shoe soles scuffing on iron treads, a handrail ringing under a "
+              "grip, wind moaning down the shaft and a stairwell with no "
+              "voices in it"},
+
+    # ⛔ LAPIDE 2026-08-21 — `mesa_restaurante` CORTADO: terceiro salao identico
+    #    do lote (com `banco_restaurante` e `festa_rua`) e o mais vazio dos tres — mesmo
+    #    com o conserto do achado 33 continua sendo "um casal esperando mesa".
+    #    O `banco_restaurante` fica: o banco que solta e' imagem propria.
+
+
+    # ⛔ LAPIDE 2026-08-21 — `bote_passeio` CORTADO: quarta tira que nao fecha do
+    #    lote (com `cinto_aviao`, `manguito_pressao` e o que ja' saiu) e o cenario de
+    #    menor aposta dos quatro — ninguem e' obrigado a fazer passeio de barco.
+
 
     {"id": "bicicleta_academia", "curto": "a bicicleta da academia nao serve",
      "v": "grafo-E", "cluster": "E",
@@ -2428,21 +2846,24 @@ DESASTRES = [
             "mirrored wall panels down one side, a rack of coloured dumbbells "
             "behind, black exposed ceiling ductwork and tall windows with "
             "flat daylight",
-     "acao": "one foot rests in a black toe cage with the nylon strap "
-             "unbuckled and hanging loose against the pedal, the thin saddle "
-             "is still empty above it, and both hands grip the handlebars "
-             "while the knees stop short of clearing the frame",
+     "acao": "one foot is up on the near pedal in its black toe cage with the "
+             "loose nylon strap hanging down against it, both hands grip the "
+             "handlebars, and the raised knee has come up hard against the "
+             "underside of the handlebar stem and stopped there, the thin "
+             "saddle behind it still empty",
      "test": "a trainer in a grey staff shirt stands beside the bike with one "
              "hand on the saddle rail and the other open, talking across the "
              "bike, and the members waiting for the machines have stopped: "
              "two men with towels round their necks laughing, a woman on the "
              "next bike who stops pedalling to stare, and one more watching "
              "in the mirror",
-     "mov": "As the line begins the trainer opens a hand in the air beside "
-            "the saddle. Halfway through the line the two men with towels "
+     "mov": "As the line begins the two men with towels round their necks "
             "laugh out loud and the woman on the next bike stops pedalling. "
-            "As the line ends the toe cage strap is still hanging loose and "
-            "the saddle is still empty",
+            "Halfway through the line the third member keeps watching from "
+            "the mirrored wall panels and neither of the two looks away. "
+            "As the line ends the trainer opens a hand beside the saddle, the "
+            "raised knee is still stopped against the handlebar stem and the "
+            "saddle is still empty",
      "cam": "The shot is taken from the cardio floor beside the bike at "
             "seated chest height, angled slightly down, wide enough to hold "
             "the loose toe strap, the empty saddle, the trainer and the "
@@ -2453,7 +2874,7 @@ DESASTRES = [
      "audio": "a flywheel spinning down, a dumbbell set on a rack, "
               "treadmill belts running and two men laughing nearby"},
 
-    {"id": "elevador_lobby", "curto": "o alarme de carga do elevador",
+    {"id": "elevador_lobby", "curto": "as portas do elevador que nao fecham",
      "v": "grafo-E", "cluster": "E",
      "sexos": ("mulher", "homem"),
      "formas": ("silencio", "juizo"),
@@ -2464,62 +2885,38 @@ DESASTRES = [
             "long padded bench, a brass call panel between the doors, a glass "
             "entrance wall with the street beyond and a small potted fig in "
             "the corner",
-     "acao": "one lift stands with its steel doors held wide open and the "
-             "black rubber safety edge pushed right back, the car alarm "
-             "buzzing on and on, and the body waits just inside against the "
-             "back wall with both hands down while nobody else steps in",
-     "test": "a building attendant in a grey blazer stands at the doorway "
-             "with one flat hand raised toward the car, speaking across the "
-             "threshold, and the office workers waiting in the lobby have all "
-             "stopped: a man with a coffee tray staring, two women who look "
-             "and say nothing to each other, and one more who steps back "
-             "against the bench",
-     "mov": "As the line begins the alarm in the car sounds again and the "
-            "attendant raises a flat hand. Halfway through the line every one "
-            "of the office workers in the lobby stops and nobody speaks. As "
-            "the line ends the steel doors are still held wide open and the "
-            "car has not moved",
+     "acao": "one lift stands with its steel doors held wide open on a car "
+             "already carrying seven office workers, and the body has stepped "
+             "in last against the back wall with both hands down, while the "
+             "steel doors drive halfway shut and bounce wide open again off "
+             "the black rubber safety edge, over and over, and not one of the "
+             "seven inside moves",
+     "test": "the office workers waiting in the lobby have all stopped and "
+             "none of them steps toward the car: a man with a coffee tray "
+             "staring at the seven already inside, two women who look and say "
+             "nothing to each other, and one more who steps back against the "
+             "bench, while a building attendant in a grey blazer stays well "
+             "back at the doorway with both hands down",
+     "mov": "As the line begins the steel doors drive halfway shut and bounce "
+            "wide open again off the rubber edge. Halfway through the line "
+            "every one of the office workers in the lobby stops and nobody "
+            "speaks, and the seven in the car stay exactly where they are. As "
+            "the line ends the doors bounce open one more time and the car "
+            "has not moved",
      "cam": "The shot is taken from the middle of the lobby at chest height, "
             "level and straight on, wide enough to hold the open lift doors, "
-            "the body inside the car, the attendant and the waiting office "
-            "workers",
+            "the crowded car, the body against its back wall and the waiting "
+            "office workers",
      "luz": "Soft warm downlights on marble mixed with cool daylight from the "
             "glass entrance wall, gentle reflections on the polished floor.",
-     "audio": "an overload alarm buzzing in the car, a door edge bumping "
-              "and retracting, shoes on stone and a lobby with no voices"},
+     "audio": "steel lift doors driving shut and bouncing open off a rubber "
+              "edge over and over, shoes on stone and a lobby with no voices"},
 
-    {"id": "teleferico_colete", "curto": "a barra do teleferico nao desce",
-     "v": "grafo-E", "cluster": "E",
-     "sexos": ("mulher", "homem"),
-     "formas": ("riso", "juizo"),
-     "interior": False,
-     "cen": "the base loading corral of a mountain chairlift on a grey winter "
-            "afternoon, packed dirty snow underfoot, steel maze rails wrapped "
-            "in orange padding, a four-seat chair stopped at the loading line "
-            "on a thick cable, a small wooden operator hut with a plexiglass "
-            "window, and dark evergreens climbing the slope behind",
-     "acao": "the padded safety bar has been pulled down and swung back up "
-             "and now stands fully raised above the chair, and the body sits "
-             "on the outer seat with both gloved hands on the frame while the "
-             "bar will not come down past the knees",
-     "test": "the lift operator, in a red shell jacket, stands beside the "
-             "stopped chair with one arm out flat and the other off the bar, "
-             "calling something over, and the queue in the maze rails has "
-             "stopped: two snowboarders laughing with their boards up on end, "
-             "a father holding a child by the hand and staring, and a man in "
-             "goggles turned round",
-     "mov": "As the line begins the operator puts one arm out flat and calls "
-            "something over. Halfway through the line the two snowboarders in "
-            "the maze rails laugh out loud and one nudges the other. As the "
-            "line ends the safety bar is still standing fully raised and the "
-            "chair has not moved on",
-     "cam": "The shot is taken from the loading line at seated chest height, "
-            "level and straight on, wide enough to hold the raised safety "
-            "bar, the chair, the operator and the queue in the maze rails",
-     "luz": "Flat grey overcast winter light off the snow, shadowless and "
-            "cold, a slight blue cast on the packed track.",
-     "audio": "a lift cable humming, a bar mechanism clunking twice, boards "
-              "knocking on packed snow and snowboarders laughing"},
+    # ⛔ LAPIDE 2026-08-21 — `teleferico_colete` CORTADO: colapso quase verbatim
+    #    com `trava_brinquedo` (trava que nao fecha + operador negando de braco estendido
+    #    + fila nos corrimaos rindo, e os dois `mov` abrindo igual), e esquiar esta' fora
+    #    do avatar do nicho enquanto o parque de diversoes e' universal.
+
 ]
 
 
@@ -3061,7 +3458,7 @@ for _r_ in ROSTOS:
 # injetado nas entradas de `DESASTRES` logo abaixo em vez de ser escrito dentro
 # delas, e isso e' escolha: cena e fala sao dois registros, e misturar os dois
 # num dicionario so' foi como o BANHO 16 acabou com direcao de cena dentro de
-# pool de fala. O autoteste cobra que os CINQUENTA E NOVE tenham beat.
+# pool de fala. O autoteste cobra que os SESSENTA E DOIS tenham beat.
 #
 # ⚠️ TODA a copy esta' no PASSADO ou em modal. Nao e' estilo: e' o que permite
 # o MESMO pool servir `she`, `he` e `they` sem uma unica variante de numero. O
@@ -3110,7 +3507,7 @@ DESASTRES_FALA = {
     "cadeira_churrasco":
         "the plastic chair buckled at the block cookout",
     "arquibancada_escola":
-        "the bleacher plank broke through at the school game",
+        "the bleacher plank broke through at the game",
     "cadeira_dobravel_festa":
         "the folding chair gave out at the party",
     "cadeira_guiche":
@@ -3133,15 +3530,13 @@ DESASTRES_FALA = {
     "onibus_degrau":
         "off the bus step, laundry everywhere",
     "gelo_correios":
-        "down on the ice, parcels everywhere",
+        "down at the post office, parcels everywhere",
     "praca_bandeja":
         "the tray went flying across the food court",
     "posto_latas":
         "down at the gas pump, cans rolling everywhere",
     "escada_rolante":
         "off the escalator, shopping spilled everywhere",
-    "lavanderia_cesto":
-        "down in the laundromat, wet clothes everywhere",
     "porta_giratoria":
         "stuck in the revolving door, coffee everywhere",
     "corredor_lixo":
@@ -3150,6 +3545,10 @@ DESASTRES_FALA = {
         "down on the garage ramp, paint everywhere",
     "festa_rua":
         "down at the block party, food everywhere",
+    "feira_caixote":
+        "%(poss)s knee folded at the market kerb",
+    "bingo_salao":
+        "%(poss)s legs gave out at bingo night",
     # -- CLUSTER C -----------------------------------------------------------
     "empilhadeira_galpao":
         "sitting on a pallet on a forklift",
@@ -3163,12 +3562,12 @@ DESASTRES_FALA = {
         "hoisted out of the pool in a sling",
     "guincho_reboque":
         "pulled from a ditch by a tow winch",
-    "elevador_aeroporto":
-        "loaded onto the plane on a cargo lift",
-    "tabua_igreja":
-        "carried up the church steps on a plank",
-    "carrinho_carga":
-        "strapped to a freight dolly and wheeled out",
+    "carregadeira_feira":
+        "carried across the fairground in a loader bucket",
+    "talha_garagem":
+        "raised off the garage floor by a hoist",
+    "bolsa_ar_calcada":
+        "lifted off the sidewalk on air bags",
     # -- CLUSTER D -----------------------------------------------------------
     "balanca_recepcao":
         "the clinic scale gave up on %(obj_pron)s",
@@ -3179,16 +3578,20 @@ DESASTRES_FALA = {
     "maca_transferencia":
         "it took four people to move %(obj_pron)s",
     "avental_costas":
-        "the paper gown would not tie shut",
+        "the paper gown would not go on",
     "mesa_exame_papel":
         "the exam table dropped and the paper tore",
     "tomografo_estreito":
         "the hospital scanner would not take %(obj_pron)s",
     "andador_farmacia":
         "%(poss)s walker folded up in the pharmacy line",
+    "cama_ala":
+        "a wider hospital bed was wheeled in",
+    "cadeira_dentista":
+        "the dental chair stopped halfway down",
     # -- CLUSTER E -----------------------------------------------------------
     "catraca_metro":
-        "the subway gate would not open wide enough",
+        "the subway lane was too narrow",
     "trava_brinquedo":
         "the ride harness never closed over %(poss)s lap",
     "cinto_aviao":
@@ -3197,16 +3600,16 @@ DESASTRES_FALA = {
         "the cinema seat would not take %(obj)s",
     "provador_loja":
         "the fitting room curtain would not close",
-    "mesa_restaurante":
-        "the restaurant booth left no room to sit",
-    "bote_passeio":
-        "the life vest would not buckle shut",
     "bicicleta_academia":
         "%(poss)s knees would not clear the gym bike",
     "elevador_lobby":
         "the elevator would not close with %(obj_pron)s inside",
-    "teleferico_colete":
-        "the chairlift bar would not come down",
+    "carro_concessionaria":
+        "neither of them could get behind the wheel",
+    "cavalo_trilha":
+        "the trail horse was led away instead",
+    "escada_farol":
+        "the lighthouse stair was too narrow",
 }
 for _d in DESASTRES:
     _d["fala"] = DESASTRES_FALA[_d["id"]]
@@ -4423,6 +4826,71 @@ _RX_CONTAGEM = re.compile(
 # e ALTURA, que e' exatamente o que o campo deve dizer.
 _RX_CAM_PARADA = re.compile(r"\b(still|locked[- ]off|static|tripod)\b", re.I)
 
+# ⛔⛔ A SEGUNDA PECA NO CORPO DE QUEM O VIDEO APRESENTA (lente RU19).
+# ⭐ O NOME DA PECA, sem artigo nenhum — ao contrario do `_RX_PECA_FANTASMA`,
+# que so' pega o artigo DEFINIDO. Aqui quem faz o recorte nao e' o artigo, e'
+# a CONSTRUCAO: o que se proibe e' vestir, nao e' mencionar.
+# ⚠️ `clothes`, `clothing` e `garment` ficam de FORA de proposito: sao
+# genericos e apontam de volta para a propria peca do eixo `ROUPAS` — dizer
+# *"still in its own street clothes"* e' o jeito certo de nao despir alguem
+# sem declarar conformidade (`fully clothed` e' municao, licao de 2026-07-31).
+_PECAS = (r"gowns?|robes?|smocks?|coats?|jackets?|blazers?|windbreakers?|"
+          r"hoodies?|shirts?|t-shirts?|blouses?|tunics?|polos?|tank tops?|"
+          r"sweaters?|sweatshirts?|cardigans?|vests?|waistcoats?|aprons?|"
+          r"overalls?|scrubs|uniforms?|suits?|dress|dresses|skirts?|jeans|"
+          r"trousers|slacks|shorts|leggings|pyjamas|pajamas|bunker gear")
+_RX_PECA_NO_CORPO = re.compile(r"\b(%s)\b" % _PECAS, re.I)
+
+# ⭐ AS DESIGNACOES DA PROTAGONISTA no bloco montado. Sao FECHADAS porque quem
+# as escreve e' o motor: o `acao` de todo desastre chama quem cai de `the
+# body`, `one of them`, `the other` ou `both`, e o `corpo1` do `montar` abre em
+# `a very heavy NN-year-old`. Testemunha nenhuma usa nenhuma delas.
+_ALVO = (r"the bod(?:y|ies)|one of them|the other|both of them|both are|"
+         r"very heavy")
+
+# ⛔⛔ A PASSAGEM DE DONO. Estes tokens dizem que a frase trocou de sujeito e
+# que a roupa dali em diante e' de OUTRO: `, while a warehouse worker in a
+# hi-vis vest`, `with two orderlies in navy scrubs`, `holding a folded coat`,
+# `hung with dresses and jeans`. Sem eles a lente reprovaria a empilhadeira, a
+# maca e o provador — que estao CERTOS. ⚠️ Ser generoso aqui so' pode DEIXAR
+# PASSAR defeito, nunca criar falso positivo; e' a direcao certa de errar numa
+# lente cujo custo de falso positivo e' reescrever cena que ja' funciona.
+_PASSAGEM = (r"while|with|and|beside|behind|as|holding|held|hold|hung|"
+             r"hanging|hangs|carried|carrying|carries|spread|standing|"
+             r"stands|sits|sitting|steady|steadies|wheels|works|worn by")
+
+# ⛔⛔ E OS DOIS PONTOS SAO FRONTEIRA DURA, junto com o ponto final — conserto
+# de um FALSO POSITIVO MEDIDO (1 em 1.200 sorteios, `porta_arrancada`). Todo
+# campo `test` deste pool abre a lista de testemunhas com dois pontos, e a
+# frase antes deles termina em `and not ONE OF THEM is leaving:` — que casa a
+# designacao da protagonista e emenda em `two men in work jackets`. Sem essa
+# fronteira a lente reprovava um bloco CERTO, que e' o unico jeito de uma
+# lente destas nascer morta.
+_LIMITE = r"[^.:;]"
+
+# ⛔⛔ A CONSTRUCAO INTEIRA — ALVO + verbo de vestir + peca, sem troca de dono
+# no meio e sem sair da frase. E' isto que a `avental_costas` fazia:
+# *"the body has come out of the cubicle IN A PALE BLUE PAPER GOWN"*, e o
+# mesmo paragrafo ja' dizia *"wearing a cream blouse [...] stretched tight
+# across the back"*. O gerador escolhe UMA das duas, e se escolher o avental o
+# take 2 (`the same cream blouse, now hanging loose`) fica sem referente: a
+# ancora de continuidade do angulo morre naquele video.
+_RX_VESTIR_NO_ALVO = re.compile(
+    r"\b(?:%s)\b"
+    r"(?:(?!\b(?:%s)\b)%s)*?"
+    r"\b(?:wearing|dressed in|changed into|into|in)\s+"
+    r"(?:[a-z][a-z-]*\s+){0,5}"
+    r"\b(?P<peca>%s)\b" % (_ALVO, _PASSAGEM, _LIMITE, _PECAS), re.I)
+
+# ⛔ E A FORMA SEM PREPOSICAO, que o `bote_passeio` usava antes de sair
+# (*"an orange life vest IS ON OVER THE SHOULDERS"*): a peca e' o sujeito e o
+# corpo e' o complemento. Nenhum ALVO aparece na frase, entao a lente de cima
+# nunca a veria.
+_RX_VESTIDO_SOBRE = re.compile(
+    r"\b(?P<peca>%s)\b[^.]{0,60}?"
+    r"\b(?:is on over|are on over|pulled on over|worn over|put on over|"
+    r"is on the shoulders|goes on over)\b" % _PECAS, re.I)
+
 
 # ⛔⛔ LAPIDE — `_sem_dialogo(txt)` MORREU EM 2026-08-21 E FICA ESCRITO AQUI.
 # Ela era `re.sub(r"Dialogue:.*", "", txt, flags=re.S)` e servia a RU5. O
@@ -4892,6 +5360,59 @@ def _ru18_ingrediente_nas_tres(spec, blocos, ach):
                         % (i, alvo)))
 
 
+def _ru19_so_a_ancora_no_corpo(spec, blocos, ach):
+    """⭐⭐ RU19 — NENHUMA SEGUNDA PECA NO CORPO DE QUEM O VIDEO APRESENTA.
+
+    ⛔⛔ DEFEITO MEDIDO NO BLOCO MONTADO (2026-08-21), e ele matava o mecanismo
+    central do angulo. A IMAGE 01 da `avental_costas` dizia, no MESMO
+    paragrafo:
+        *"... wearing a cream blouse printed with large flowers, stretched
+          tight across the back ..."*   <- a peca-ancora, injetada pelo motor
+        *"The body has come out of the cubicle in a pale blue paper gown ..."*
+                                        <- o `acao` da entrada
+    O gerador escolhe UMA. Se escolher o avental, o take 2 (*"the same cream
+    blouse, now hanging loose"*) fica sem referente e a continuidade do angulo
+    morre naquele video — e a continuidade AQUI e' a peca de roupa, nao o
+    rosto (achado do v46). ⚠️ A `RU3` nao pegava: ela cobra a peca-ancora
+    PRESENTE e a peca fantasma com artigo DEFINIDO (`the dress`); um avental
+    com artigo indefinido passava pelas duas.
+
+    ⛔⛔ E ELA DISTINGUE TRES DONOS, porque lente que reprova o certo e' lente
+    quebrada. A varredura mediu 55 pares (desastre x peca) no IMAGE 01 montado
+    e SO' UM era defeito:
+      · NO CORPO DELA .. `the body ... in a pale blue paper gown`  -> ERRO
+      · EM TERCEIRO ... `six patients in paper gowns` (tomografo_estreito),
+        `a warehouse worker in a hi-vis vest`, `two orderlies in navy scrubs`
+        -> passa, porque a passagem de dono (`while`, `with`, o proprio
+        substantivo de pessoa antes do `in`) corta a frase antes da peca
+      · EM MOVEL ..... `a chrome return rack hung with dresses and jeans`
+        (provador_loja), `a dress on its hanger held up against the front`,
+        `folded shirts spread around them` -> passa, pelo mesmo corte
+    ⚠️ `tomografo_estreito` e `provador_loja` sao os dois controles POSITIVOS
+    desta lente: os dois foram acusados por um revisor humano e os dois estao
+    CERTOS. Se algum dia ela reprovar um deles, o defeito e' dela.
+    ⛔ E `clothes`/`clothing` nao entram na lista: *"still in its own street
+    clothes"* e' justamente o jeito de nao despir alguem sem escrever a
+    declaracao de conformidade que o repo baniu em 2026-07-31.
+    """
+    txt = blocos.get(IMAGENS[0], "").replace(spec["roupa"]["antes"], " ")
+    if spec["pessoa"]["sexo"] == "casal":
+        # ⚠️ O PARCEIRO E' UM SEGUNDO CORPO LEGITIMO e tem peca propria do
+        # mesmo eixo `ROUPAS` — sem tira-la daqui a lente acusaria todo casal.
+        txt = txt.replace(spec["parceiro"]["antes"], " ")
+    for frase in txt.split(". "):
+        for m_ in _RX_VESTIR_NO_ALVO.finditer(frase):
+            ach.append(("ERRO", "RU19: %s veste %r em quem o video apresenta — "
+                                "a peca-ancora e' a UNICA no corpo dela, e com "
+                                "duas o gerador escolhe uma e o take 2 fica "
+                                "sem referente"
+                        % (IMAGENS[0], m_.group("peca"))))
+        for m_ in _RX_VESTIDO_SOBRE.finditer(frase):
+            ach.append(("ERRO", "RU19: %s poe %r SOBRE o corpo (a peca e' o "
+                                "sujeito da frase) — a peca-ancora e' a UNICA"
+                        % (IMAGENS[0], m_.group("peca"))))
+
+
 # ⛔⛔ UMA TRAVA DO CONTRATO DE 16s DESLIGADA, COM A ORDEM E O MOTIVO ESCRITOS.
 # Regra que nasce desligada sem razao escrita e' regra que alguem religa amanha
 # sem saber o que quebra.
@@ -4933,7 +5454,8 @@ def lint(spec, blocos):
               _ru9_fala_no_take, _ru10_sem_gelatina, _ru11_pure_shame,
               _ru12_orcamento, _ru13_um_relogio, _ru14_um_corpo_so,
               _ru15_geometria_casal, _ru16_silencio_no_quadro,
-              _ru17_pronome_do_vizinho, _ru18_ingrediente_nas_tres):
+              _ru17_pronome_do_vizinho, _ru18_ingrediente_nas_tres,
+              _ru19_so_a_ancora_no_corpo):
         f(spec, blocos, ach)
     return ach
 
@@ -5178,6 +5700,27 @@ def autoteste(n=400):
               "%d/%d/%d (teto %d) · no pior caso %.1fs num take de %.0fs"
               % (c, len(dist[c]), v[0], v[len(v) // 2], v[-1], TETO_FALA[c],
                  pior / TAXA_MEDIA, SEGUNDOS_TAKE))
+    # ⛔⛔ O EIXO `desastre` E' MEDIDO EM 2.000 SORTEIOS, NAO NAS 400 SEEDS —
+    # e isto e' conserto de um FALSO POSITIVO MEDIDO em 2026-08-21, no dia em
+    # que o pool passou de 52 para 62 entradas. Com 400 seeds a media por
+    # entrada e' 6,5, e a chance de UMA das 62 nao aparecer por puro acaso e'
+    # ~9%: o autoteste acusava `balanco_varanda` de estar MORTA (§35) sobre uma
+    # entrada que sai 22 vezes em 2.000 sorteios. ⚠️ Lente que reprova o que
+    # esta' certo treina o operador a ignorar a barra inteira (§16), e o preco
+    # de aumentar a amostra e' zero: os mesmos 2.000 sorteios ja' eram feitos
+    # mais abaixo, para o ALCANCE POR DESASTRE. ⭐ As 400 seeds continuam sendo
+    # a REGRESSAO de todo o resto — o que mudou de amostra foi so' a pergunta
+    # *"esta entrada existe no sorteio?"*, que e' a unica cujo poder
+    # estatistico depende do TAMANHO do pool.
+    N_ALC = 2000
+    cont_d = collections.Counter()
+    cont_cl = collections.Counter()
+    for i in range(N_ALC):
+        sp_alc = sortear(pags[i % len(pags)], random.Random(80000 + i), {})
+        cont_d[sp_alc["desastre"]["id"]] += 1
+        cont_cl[sp_alc["desastre"].get("cluster", "LIDO (leitura otica)")] += 1
+        eixos["desastre"].add(sp_alc["desastre"]["id"])
+
     for e, pool in (("desastre", DESASTRES), ("pessoa", PESSOAS),
                     ("reencontro", REENCONTROS), ("roupa", ROUPAS),
                     ("rosto", ROSTOS), ("parceiro", PARCEIROS),
@@ -5368,11 +5911,17 @@ def autoteste(n=400):
             falhas.append("[PORTE] %s cita %r — com o rosto OCULTO a camera "
                           "esta' de costas e a frase descreve o que nao esta' "
                           "em quadro (RU4)" % (p_["id"], m_.group(0)))
-        m_ = _RX_PECA_FANTASMA.search("the " + p_["porte"]) or \
-            _RX_PECA_FANTASMA.search(p_["porte"])
+        # ⭐ A LISTA LARGA, NAO A DO ARTIGO DEFINIDO (2026-08-21). O `porte`
+        # descreve o CORPO e nunca a roupa, entao aqui nao ha' forma legitima
+        # de nomear peca nenhuma — nem `the dress` nem `a paper gown`. E' o
+        # unico lugar do motor onde a lista larga pode ser cobrada crua, e ela
+        # fecha o buraco que a `RU19` nao alcanca: a construcao de vestir do
+        # `corpo1` traz `and`/`with` no meio e corta o casamento.
+        m_ = _RX_PECA_NO_CORPO.search(p_["porte"])
         if m_:
             falhas.append("[PORTE] %s nomeia %r — a peca e' do eixo ROUPAS e "
-                          "de mais ninguem (RU3)" % (p_["id"], m_.group(0)))
+                          "de mais ninguem (RU3/RU19)"
+                          % (p_["id"], m_.group(0)))
 
     # ⛔ E O MESMO PARA `acao` e `test` DOS DESASTRES: peca fantasma e camera
     # parada num bloco cujo TAKE e' handheld.
@@ -5579,6 +6128,38 @@ def autoteste(n=400):
         ("RU5 com `filmed` dentro da FALA", _ru5_sem_aparelho, s0,
          dict(b0, **{TAKES[0]: b0[TAKES[0]].replace(
              "Pure shame.", "getting filmed by everyone. Pure shame.")}), True),
+        # ⭐⭐ OS CONTROLES DA RU19, E ELES SAO PAREADOS DE PROPOSITO: o
+        # plantio e' o defeito EXATO que a `avental_costas` tinha, e os tres
+        # limpos sao os tres DONOS que a lente precisa saber separar. Os dois
+        # ultimos (terceiro e movel) sao copia literal de campos que um revisor
+        # humano acusou e que estao CERTOS — `tomografo_estreito` e
+        # `provador_loja`. Lente que reprova o certo e' lente quebrada.
+        ("RU19 avental VESTIDO no corpo dela", _ru19_so_a_ancora_no_corpo, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]] + " The body has come out of "
+                     "the cubicle in a pale blue paper gown with the two back "
+                     "ties hanging loose."}), True),
+        ("RU19 limpo", _ru19_so_a_ancora_no_corpo, s0, b0, False),
+        ("RU19 limpo no casal (ela + a peca do marido)",
+         _ru19_so_a_ancora_no_corpo, s_casal, b_casal, False),
+        ("RU19 nao acusa avental em TERCEIRO", _ru19_so_a_ancora_no_corpo, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]] + " Six patients in paper "
+                     "gowns are waiting on the corridor chairs."}), False),
+        ("RU19 nao acusa vestido em MOVEL", _ru19_so_a_ancora_no_corpo, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]] + " A chrome return rack hung "
+                     "with dresses and jeans stands down the middle."}),
+         False),
+        # ⚠️ E O CONTROLE QUE PROTEGE A SAIDA CERTA: *"still in its own street
+        # clothes"* e' como se diz que ninguem esta' se despindo sem escrever
+        # a declaracao de conformidade que o repo baniu. Se a lente acusar
+        # isso, ela empurra a copy de volta para `fully clothed`.
+        ("RU19 nao acusa `street clothes`", _ru19_so_a_ancora_no_corpo, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]] + " The body is inside the "
+                     "cubicle still in its own street clothes."}), False),
+        ("RU19 peca SOBRE os ombros (a peca como sujeito)",
+         _ru19_so_a_ancora_no_corpo, s0,
+         dict(b0, **{IMAGENS[0]: b0[IMAGENS[0]] + " An orange life vest is on "
+                     "over the shoulders with both front straps hanging."}),
+         True),
     ]
     for rotulo, fn, spec_t, blocos_t, deve in controles:
         obtido = _prova(fn, spec_t, blocos_t)
@@ -5586,6 +6167,34 @@ def autoteste(n=400):
             falhas.append("CONTROLE %s: a lente %s (esperado: %s)"
                           % (rotulo, "acusou" if obtido else "passou",
                              "acusar" if deve else "passar"))
+
+    # =======================================================================
+    # ⭐⭐ RU19 SOBRE OS DESASTRES, UM A UM — nao sobre uma amostra
+    # =======================================================================
+    # ⛔ Controle negativo prova que a lente ACUSA; so' a varredura prova que
+    # ela nao acusa NINGUEM que esta' certo, e e' esse o lado caro: um falso
+    # positivo aqui manda reescrever cena que ja' funciona, e cena e' alcada do
+    # operador. A varredura sorteia ate' ver TODOS eles no bloco MONTADO —
+    # campo passa em lente e quadro inteiro nao passa e' o defeito do VICK 16.
+    ru19_vistos, ru19_maus = set(), {}
+    for k in range(6000):
+        if len(ru19_vistos) == len(DESASTRES):
+            break
+        sp_ = sortear(pags[k % len(pags)], random.Random(90000 + k), {})
+        ru19_vistos.add(sp_["desastre"]["id"])
+        a_ = []
+        _ru19_so_a_ancora_no_corpo(sp_, montar(sp_), a_)
+        if a_:
+            ru19_maus.setdefault(sp_["desastre"]["id"], a_[0][1])
+    print("  RU19 (a peca-ancora e' a UNICA no corpo dela): %d de %d "
+          "desastres vistos no bloco montado · %d acusados"
+          % (len(ru19_vistos), len(DESASTRES), len(ru19_maus)))
+    if len(ru19_vistos) != len(DESASTRES):
+        falhas.append("[RU19] so' %d dos %d desastres apareceram na varredura "
+                      "— lente medida sobre amostra nao e' lente medida"
+                      % (len(ru19_vistos), len(DESASTRES)))
+    for id_, msg in sorted(ru19_maus.items()):
+        falhas.append("[RU19] %s: %s" % (id_, msg))
 
     # ⛔ O EIXO `rosto_ato1` TEM DE MOVER O QUADRO. Botao que promete e nao
     # entrega e' pior que botao ausente — e o repo ja' pagou isso tres vezes.
@@ -5704,9 +6313,9 @@ def autoteste(n=400):
     # ⭐⭐ O ALCANCE POR DESASTRE, E A DISTRIBUICAO POR CLUSTER (2026-08-21)
     # =======================================================================
     # ⛔⛔ MEDICAO NOVA, e ela existe porque o pool MULTIPLICOU POR SETE (9 ->
-    # 59) num dia so'. Com nove entradas, "9 de 9 alcancados" era quase o
-    # mesmo que distribuicao; com cinquenta e nove, a media por entrada cai a
-    # um setimo e uma entrada rara passa a caber inteira dentro do ruido. O
+    # 59 -> 52 -> 62) num dia so'. Com nove entradas, "9 de 9 alcancados" era
+    # quase o mesmo que distribuicao; com sessenta e dois, a media por entrada
+    # cai a um setimo e uma entrada rara passa a caber inteira dentro do ruido. O
     # contador de EXISTENCIA continua acima e continua certo — ele so' nao
     # responde a pergunta que importa agora, que e' *"o operador ve' esta cena
     # num lote de trinta?"*.
@@ -5715,13 +6324,9 @@ def autoteste(n=400):
     # `mulher` so' em 8 — a entrada de casal sai naturalmente menos e isso e'
     # desenho. O que 0,4x separa e' "sai menos por acoplamento" de "esta'
     # morta e o autoteste a conta como viva" (§35).
-    N_ALC = 2000
-    cont_d = collections.Counter()
-    cont_cl = collections.Counter()
-    for i in range(N_ALC):
-        sp = sortear(pags[i % len(pags)], random.Random(80000 + i), {})
-        cont_d[sp["desastre"]["id"]] += 1
-        cont_cl[sp["desastre"].get("cluster", "LIDO (leitura otica)")] += 1
+    # ⚠️ `cont_d`, `cont_cl` e `N_ALC` sao computados LA' EM CIMA, junto do
+    # contador de existencia por eixo — os mesmos 2.000 sorteios servem as duas
+    # medicoes e rodar o laco duas vezes so' custaria tempo.
     media = float(N_ALC) / len(DESASTRES)
     v_d = sorted((cont_d.get(d["id"], 0), d["id"]) for d in DESASTRES)
     print("  ALCANCE POR DESASTRE em %d sorteios (media %.1f · piso 0,4x = "
