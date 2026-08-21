@@ -142,7 +142,35 @@ páginas futuras"*. As dez pastas saíram no commit `5214a71` do `projetosweb`.
 |---|---|---|---|---|
 | `dailyfactreport.site` | `uurhd13s9x1rei59f5gqm3jc` | **Lamont Boyd** | `lamont` | homem negro |
 | `plainfactsdaily.site` | `vx3q4f59noi9u5cr7fx6jzj3` | **Sam Pickett** | `sam` | homem negro |
-| `everydaydigest.site` | `goc65jdh6xw2po2ja3mk99sa` | **Sarah Brown** | `sarah` | mulher branca |
+
+### ⛔⛔ De três sobraram DUAS — a bridge é só de ED (2026-08-21)
+
+Ordem do operador: *"a página da Sara como é weight loss não terá uma landing,
+a landing será somente para páginas ED [...] irei mandar o link de afiliado
+direto"*.
+
+A **Sarah Brown** virou página de **emagrecimento** (roda o `AMISH 16S`) e saiu
+de `everydaydigest.site/sarah`. A pasta e a linha `COPY` saíram juntas —
+commit `e1d876f` do `projetosweb` —, o deploy do app `goc65jdh6xw2po2ja3mk99sa`
+foi disparado e **medido na URL real**: `/sarah` devolve **404**, a raiz e o
+`privacy.html` seguem em **200**, e `dailyfactreport.site/lamont` continua
+**200** (nada colateral).
+
+⭐ **O domínio e o app ficam de prontidão**, como nas dez de 20/08: o
+`everydaydigest.site` segue servindo a matéria da raiz, com DNS e SSL intactos.
+Página nova volta a existir criando a pasta e a linha do `COPY`.
+
+⚠️ **A regra que isto cria:** bridge page é dispositivo do funil de **ED**. Uma
+página de emagrecimento manda o tráfego direto para o link de afiliado, sem
+página intermediária — e por isso ela não consome domínio nenhum.
+
+⏳ **Pendência declarada:** o link de afiliado de emagrecimento **ainda não
+existe** (*"ainda não tenho o link mas irei passar quando conseguir"*). Até ele
+chegar, a `bio.txt` da Sarah e os 25 slots da lista de postagem dela continuam
+apontando para o `/sarah` que agora dá 404 — de propósito, porque trocar por um
+placeholder poria um link morto **diferente** no lugar de um link morto
+**conhecido**. Quando o link chegar, a troca é num lugar só: a `bio.txt` da
+pasta dela, que é de onde o `legendas.py` lê a URL de todos os posts.
 
 ⛔ **NENHUM APP E NENHUM DOMÍNIO FOI TOCADO**, e é decisão explícita dele. Os
 cinco continuam no ar servindo a matéria da raiz, com DNS e SSL intactos —
