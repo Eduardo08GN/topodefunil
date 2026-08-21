@@ -132,6 +132,34 @@ domínios e pediu a divisão: *"dessa forma as páginas ficarão mais seguras ca
 um link seja marcado"*. Antes, um domínio marcado derrubava **as 10 URLs de uma
 vez**; agora derruba **2**.
 
+⛔⛔ **2026-08-20 — DAS TREZE SOBRARAM TRÊS.** Dez páginas de Facebook caíram.
+Ordem do operador: *"deixe só para as 3 páginas mesmo para não sujar os
+domínios [...] é só o que está após a barra que será apagado, os domínios
+continuarão do mesmo jeito de prontidão para serem usados de novo em novas
+páginas futuras"*. As dez pastas saíram no commit `5214a71` do `projetosweb`.
+
+| Domínio | App Coolify (UUID) | Página | `subid` | Avatar |
+|---|---|---|---|---|
+| `dailyfactreport.site` | `uurhd13s9x1rei59f5gqm3jc` | **Lamont Boyd** | `lamont` | homem negro |
+| `plainfactsdaily.site` | `vx3q4f59noi9u5cr7fx6jzj3` | **Sam Pickett** | `sam` | homem negro |
+| `everydaydigest.site` | `goc65jdh6xw2po2ja3mk99sa` | **Sarah Brown** | `sarah` | mulher branca |
+
+⛔ **NENHUM APP E NENHUM DOMÍNIO FOI TOCADO**, e é decisão explícita dele. Os
+cinco continuam no ar servindo a matéria da raiz, com DNS e SSL intactos —
+página nova volta a existir criando a pasta e commitando. Apagar app no Coolify
+obrigaria a refazer app, domínio e certificado do zero.
+
+⚠️ **`dailyvitalreport.store` e `thedailyfinding.site` ficaram sem pasta de
+página nenhuma.** É o estado desejado, não esquecimento — os dois estão de
+prontidão para a próxima página.
+
+⚠️ As dez URLs (`jennifer`, `reggie`, `denise`, `wayne`, `dale`, `otisgloria`,
+`carol`, `curtis`, `hankmarlene`, `yvonne`) passam a dar **404**, e isso é o
+objetivo: manter URL viva de página morta é manter o alvo grande. As bios do
+Facebook não precisaram de conserto porque as páginas já tinham caído.
+
+<details><summary>O mapa das 13, antes do corte de 20/08 — histórico</summary>
+
 | Domínio | App Coolify (UUID) | Página | `subid` | Avatar |
 |---|---|---|---|---|
 | `dailyvitalreport.store` | `kw5fu21f7rad8fnklgf1iiqn` | Reggie Harris | `reggie` | homem negro |
@@ -146,6 +174,8 @@ vez**; agora derruba **2**.
 | " | " | Hank & Marlene | `hankmarlene` | casal branco |
 | " | " | **Sarah Brown** | `sarah` | mulher branca |
 | `dailyfactreport.site` | `uurhd13s9x1rei59f5gqm3jc` | **Lamont Boyd** | `lamont` | homem negro |
+
+</details>
 
 ⚠️ **O pareamento não é aleatório:** cada domínio leva **uma página de avatar
 negro e uma de avatar branco**. Um domínio marcado não apaga um demográfico
