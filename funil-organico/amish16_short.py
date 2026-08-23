@@ -1811,7 +1811,15 @@ def compor_sujeito(pele, sexo, rng, hist=None):
     # ("WITH a soft lining at the cuffs"). Emendadas por `and`, viram uma
     # frase que se le; grudadas, viram lista.
     _det = detalhe["en"]
-    _base = "a %s %s%s" % (cor["en"], _pad, peca["en"])
+    # ⚠️ O ARTIGO CONCORDA COM O SOM. Medido em 400 sorteios: 19 saiam com
+    # `a oatmeal`, `a ecru`, `a ivory`, `a ash`, `a olive` — 5% dos videos com
+    # erro de gramatica na primeira linha do prompt. Nasce do compositor, que
+    # colava `"a " + cor` sem olhar a cor.
+    # ⚠️ Sem excecao de `u`: medido, nenhuma das 88 cores comeca com essa
+    # letra, entao a armadilha do `a European` nao existe aqui. Se alguem
+    # acrescentar uma, o autoteste acusa.
+    _art = "an" if cor["en"][:1].lower() in "aeio" else "a"
+    _base = "%s %s %s%s" % (_art, cor["en"], _pad, peca["en"])
     if _det:
         # ⚠️ "with X and with Y" fica truncado; vira "with X and Y".
         if " with " in _base and _det.startswith("with "):
@@ -3922,6 +3930,18 @@ def autoteste(n=400):
         _sx2 = sortear("clara", _rng2, {})
         _vistos2.add(_sx2["sujeito"]["id"])
     cegas += 0 if len(_vistos2) >= 198 else 1
+    # ⛔ e a PROSA da roupa: `a oatmeal` saia em 5% dos sorteios
+    _art_ruim = 0
+    _rng3 = random.Random(78)
+    for _i in range(300):
+        _sx3 = sortear("clara", _rng3, {})
+        if re.search(r"a [aeiou]", _sx3["sujeito"]["roupa"], re.I):
+            _art_ruim += 1
+    cegas += 0 if _art_ruim == 0 else 1
+    # controle negativo: uma cor de vogal tem de sair com `an`
+    _cv = [x for x in CORES_E_PADROES
+           if x.get("tipo") == "cor" and x["en"][:1].lower() in "aeio"]
+    cegas += 0 if _cv else 1
     # ⛔⛔ QUEM NARRA NA IMAGE 03 (23/08) — o gerador devolvia o SUJEITO
     # SENTADO em 3 de 4. As tres ancoras positivas tem de estar la, e a
     # negacao antiga NAO pode voltar.
