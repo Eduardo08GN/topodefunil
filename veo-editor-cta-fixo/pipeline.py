@@ -525,6 +525,52 @@ def preparar_takes(takes, work, margem, dias=None, log=print):
     return saida
 
 
+def transcrever_takes(prontos, durs, model, lang, fator=None, log=print):
+    """Transcreve TAKE A TAKE e reposiciona cada palavra no tempo do video
+    final. Devolve a mesma lista de {text, start, end} que o `transcrever`.
+
+    ⛔⛔ POR QUE NAO SE TRANSCREVE O VIDEO JUNTADO. Foi assim ate' 25/08, e o
+    operador filmou o resultado: um video de SEIS takes saiu com legenda so' no
+    take 1. Medido no lote dele, com o mesmo modelo e as mesmas opcoes:
+
+        take a take .......... 52 palavras, cobrindo os 6 takes
+        video juntado ........  8 palavras, parando em 2,16s
+
+    ⛔ O audio do juntado esta' INTEIRO — 21,08s de stream, som entre -17 e
+    -21 dB em todas as janelas. Nao e' o `concat`, nao e' o container (o WAV
+    extraido da o mesmo resultado) e nao e' o `condition_on_previous_text`.
+    E' o `vad_filter`: no arquivo juntado ele decide que a fala acabou depois
+    da primeira frase e o decoder encerra. Com `vad_filter=False` a mesma
+    chamada devolve 44 palavras em vez de 8 — mas ainda perde o ultimo take,
+    porque o take MUDO no meio (3s de silencio real) faz o decoder parar de
+    novo.
+    ⭐ Take a take o problema nao existe: cada arquivo e' uma peca curta com
+    fala continua, que e' o caso em que o whisper e' confiavel. E o take mudo
+    nem chega a ser transcrito — e' pulado, nao "transcrito e descartado".
+
+    ⚠️ O DESLOCAMENTO E' EXATO, nao estimado: `durs` sao as duracoes dos
+    takes JA' tratados (pos auto-editor, pos corte do mudo), que e' a mesma
+    lista que o `_inicio_take2` e o `_fim_takes_mudos` usam. O unico ajuste e'
+    a VELOCIDADE, que entra depois do concat: `setpts=PTS/fator` divide o
+    tempo, entao a palavra tambem.
+    """
+    from captions import transcrever as _t
+    palavras, base = [], 0.0
+    f = fator if (fator and abs(fator - 1.0) >= 0.001) else 1.0
+    for i, ((caminho, mudo), d) in enumerate(zip(prontos, durs), 1):
+        if mudo:
+            log("  take %d: mudo, sem transcrever" % i)
+        else:
+            n0 = len(palavras)
+            for w in _t(caminho, model, lang):
+                palavras.append({"text": w["text"],
+                                 "start": (base + w["start"]) / f,
+                                 "end": (base + w["end"]) / f})
+            log("  take %d: %d palavra(s)" % (i, len(palavras) - n0))
+        base += d
+    return palavras
+
+
 def processar_video(takes, out_final, model="base.en", lang="en",
                     margem="0.2s", fator=None, keywords=None, musica=None,
                     dias=None, log=print):
@@ -562,7 +608,10 @@ def processar_video(takes, out_final, model="base.en", lang="en",
             base = aproximado
         w, h = dims(base)
         log(f"  transcrevendo (whisper {model})... {w}x{h}")
-        palavras = transcrever(base, model, lang)
+        # \u26d4\u26d4 TAKE A TAKE, nao no juntado \u2014 ver `transcrever_takes`. No
+        # juntado o whisper parava na primeira frase e o video de 6 takes saia
+        # com legenda so' no take 1 (medido: 8 palavras contra 52).
+        palavras = transcrever_takes(prontos, durs, model, lang, fator, log)
         log(f"  {len(palavras)} palavras -> legenda")
         dur_final = duracao(base)
         gerar_ass(palavras, w, h, assf, keywords=keywords,

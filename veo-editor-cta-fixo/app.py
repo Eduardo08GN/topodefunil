@@ -31,8 +31,16 @@ GIF_TRABALHANDO = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 # `concat` junta N, `_fim_takes_mudos` acha o ultimo mudo por DETECCAO de audio
 # e `_inicio_take2` trabalha em proporcao. Medido em 21/08 com um lote sintetico
 # de 4 takes (2 mudos + 2 com som): os quatro chegam ao arquivo final.
-# ⚠️ Subir de novo (5, 6...) e' trocar este numero e mais nada.
-N_MANUAL = 4
+# ⚠️ Subir de novo (5, 6...) e' trocar este numero e mais nada NO PIPELINE.
+# ⛔⛔ MAS O LAYOUT NAO E' GENERICO, e essa distincao custou um bug em 21/08:
+# cada slot e' uma LINHA na coluna da esquerda, e as linhas empurram o que
+# esta' embaixo. O rodape do painel ja' sumiu uma vez assim (as travas do DAY
+# ficaram com altura 1 e invisiveis). Quem absorve a diferenca e' a lista da
+# fila, que tem `expand=True` — por isso 8 cabe em 1080x790. Medido, nao
+# suposto: com 8 slots o rodape continua na tela e a lista encolhe.
+# ⭐ 2026-08-25: 4 -> 8, ordem do operador (*"ajuste o editor para caber ate 8
+# takes"*).
+N_MANUAL = 8
 
 # design system (mesmo do painel antigo)
 BG = "#080b10"
