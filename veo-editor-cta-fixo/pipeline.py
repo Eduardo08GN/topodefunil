@@ -279,6 +279,34 @@ def _inicio_take2(durs, dur_final, log=print):
     return alvo
 
 
+def _inicio_ultimo_take(durs, dur_final, log=print):
+    """Em que segundo do video PRONTO comeca o ULTIMO take.
+
+    ⭐ 2026-08-26 — o pin do CTA passou a mirar o ultimo take em vez do
+    segundo. Ordem do operador: *"fixe a palavra Comment Yes no topo do
+    video no ultimo take de todo video"*.
+
+    ⛔ Mesma conta PROPORCIONAL do `_inicio_take2`, e pela mesma razao: o
+    auto-editor tira silencio e o fator de velocidade reescala tudo, entao
+    somar as duracoes cruas dos takes anteriores da' um numero que nao
+    existe mais no arquivo final. A fracao, sim, se preserva.
+
+    ⚠️ E e' so' um FALLBACK: quando o audio tem `comment <palavra>`, quem
+    manda no tempo e' a fala, nao esta conta (ver `captions.gerar_ass`).
+
+    Com um take so', devolve None.
+    """
+    if len(durs) < 2:
+        return None
+    duracoes = list(durs)
+    if not all(duracoes) or not dur_final:
+        return None
+    alvo = (sum(duracoes[:-1]) / sum(duracoes)) * dur_final
+    log("  CTA fixo: ultimo take comeca em ~%.1fs de %.1fs (%d takes)"
+        % (alvo, dur_final, len(duracoes)))
+    return alvo
+
+
 # ===========================================================================
 # ⭐⭐ A LEGENDA DAY — QUEIMADA AQUI, NAO PEDIDA AO GERADOR (2026-08-21)
 # ===========================================================================
@@ -485,15 +513,34 @@ def preparar_takes(takes, work, margem, dias=None, log=print):
     ligado = bool(dias.get("ligado"))
     estilo = dias.get("estilo", "vermelho")
     corte = float(dias.get("corte") or 0)
+    # ⭐⭐ CHAVINHA POR TAKE — 2026-08-26, ordem do operador: *"quando ela
+    # estiver desligada o take em questao nao seja cortado, pois atualmente se eu
+    # configuro a ferramenta para cortar em 4s, 3,5 ou 3s ela corta todos os
+    # takes, e as vezes tem algum que eu nao quero cortar"*.
+    # ⛔ `sem_corte` e' um conjunto de INDICES 0-based na lista JA COMPACTADA de
+    # takes (slot vazio no painel nao gera indice). Vem no `_semcorte.json` dentro
+    # do zip, e nao de uma config global: a fila pode ter varios jobs esperando, e
+    # um flag global seria aplicado ao job errado.
+    # ⭐ DESLIGADA = o take passa INTEIRO: sem corte duro E sem `desilenciar`.
+    # E' a leitura literal de *"nao seja cortado"* — e a util: o corte duro so'
+    # pega take MUDO, entao numa cena com fala a chavinha nao faria nada e ele
+    # veria o take encurtar mesmo com ela desligada.
+    # ⚠️ O que a chavinha NAO desliga: `zerar_audio` e a legenda DAY. Zerar o
+    # audio nao encurta nada — e' o que a musica cobre.
+    sem_corte = {int(i) for i in (dias.get("sem_corte") or ())}
     mudez = mudez_dos_takes(takes, dias.get("mudos"), log)
     saida, i_mudo = [], 0
     for i, tk in enumerate(takes):
         mudo = mudez[i]
+        intocado = i in sem_corte
         cur = tk
         if mudo:
             i_mudo += 1
             # ⛔ O TAKE MUDO NAO PASSA PELO auto-editor — ver acima.
-            if corte and duracao(cur) > corte + 0.05:
+            if intocado:
+                log("  take %d: chavinha DESLIGADA — mudo, preservado inteiro (%.1fs)"
+                    % (i + 1, duracao(cur)))
+            elif corte and duracao(cur) > corte + 0.05:
                 # ⚠️ o Veo nao gera abaixo de 4s (medido pelo operador); o
                 # take de 3s que o agente pede nasce do corte AQUI.
                 novo_c = os.path.join(work, "t%02d_corte.mp4" % i)
@@ -515,6 +562,9 @@ def preparar_takes(takes, work, margem, dias=None, log=print):
                 log("  take %d: legenda %s queimada (estilo %s)"
                     % (i + 1, texto, estilo))
                 cur = novo_d
+        elif intocado:
+            log("  take %d: chavinha DESLIGADA — fala preservada inteira, sem "
+                "dessilenciar (%.1fs)" % (i + 1, duracao(cur)))
         else:
             novo_s = os.path.join(work, "t%02d_sil.mp4" % i)
             desilenciar(cur, novo_s, margem)
@@ -614,9 +664,30 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         palavras = transcrever_takes(prontos, durs, model, lang, fator, log)
         log(f"  {len(palavras)} palavras -> legenda")
         dur_final = duracao(base)
+        # ⭐ CTA FIXO NO TOPO (religado em 2026-08-26): `cta` traz
+        # {"ligado": bool, "palavra": str}. Desligado = so' o karaoke da fala,
+        # que e' como o editor rodou de 13/08 ate' aqui.
+        _cta = (dias or {}).get("cta") or {}
+        _lig = bool(_cta.get("ligado"))
+        _pal = (_cta.get("palavra") or "").strip()
+        if _lig:
+            log("  CTA fixo LIGADO: palavra %r" % (_pal.upper() or "auto"))
+        _leg = (dias or {}).get("legenda") or {}
+        _leg_lig = _leg.get("ligada", True)
+        _leg_pos = float(_leg.get("pos", 0.60))
+        if not _leg_lig:
+            log("  legenda karaoke DESLIGADA \u2014 sai so' o pin do CTA")
+        else:
+            log("  legenda karaoke a %.0f%% da altura" % (_leg_pos * 100))
+        _cta_pos = float(_cta.get("pos", 0.47))
+        if _lig:
+            log("  CTA fixo a %.0f%% da altura" % (_cta_pos * 100))
         gerar_ass(palavras, w, h, assf, keywords=keywords,
                   duracao_video=dur_final,
-                  pin_em=_inicio_take2(durs, dur_final, log))
+                  pin_cta=_lig, cta_palavra=_pal,
+                  pos_legenda=_leg_pos, so_pin=not _leg_lig,
+                  pos_cta=_cta_pos,
+                  pin_em=_inicio_ultimo_take(durs, dur_final, log))
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
         queimar_legenda(base, assf, out_final)

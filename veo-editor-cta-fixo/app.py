@@ -225,7 +225,17 @@ class App(tk.Tk):
         # invisivel.
         # ⚠️ O numero e' verificado por medicao (`winfo_rooty` + altura da
         # linha), nao a olho — ver o teste no fim desta sessao.
-        self.geometry("1080x790")
+        # ⭐⭐ 900, era 790 — 2026-08-26, quando o seletor 9:16 da legenda
+        # entrou na coluna da direita. MEDIDO antes de escolher o numero:
+        # com 790 o rodape inteiro (`legenda DAY`, `Pasta vigiada`,
+        # `Pasta avulsa`) era empurrado para fora com altura 1, e o proprio
+        # canvas saia espremido — 176px onde pedia 185, proporcao 0,60 no
+        # lugar de 9:16. Mesmo defeito de 21/08 com as travas do DAY, e a
+        # mesma licao: LAYOUT NAO E GENERICO, cada linha empurra o que esta
+        # embaixo.
+        # ⚠️ A tela dele mede 1920x1080; 900 deixa folga para a barra de
+        # tarefas e para a barra de titulo.
+        self.geometry("1080x900")
         self.minsize(900, 700)
         self._cache = {}
         self._montar()
@@ -278,16 +288,36 @@ class App(tk.Tk):
         # alimentada pela mao em vez do watcher.
         # ⭐ 2026-08-21: sao N_MANUAL slots (4), nao mais tres fixos.
         tk.Frame(sec_fila, bg=LINE, height=1).pack(fill="x", padx=12)
-        tk.Label(sec_fila, text="TAKES MANUAIS", bg=SURFACE, fg=MUT,
-                 font=("Segoe UI", 8, "bold"), anchor="w").pack(fill="x", padx=12,
-                                                                pady=(8, 4))
+        cab_m = tk.Frame(sec_fila, bg=SURFACE)
+        cab_m.pack(fill="x", padx=12, pady=(8, 4))
+        tk.Label(cab_m, text="TAKES MANUAIS", bg=SURFACE, fg=MUT,
+                 font=("Segoe UI", 8, "bold"), anchor="w").pack(side="left")
+        tk.Label(cab_m, text="CORTAR", bg=SURFACE, fg=MUT,
+                 font=("Segoe UI", 8, "bold"), anchor="e").pack(side="right")
         self.manual = [None] * N_MANUAL
+        # ⭐⭐ CHAVINHA POR TAKE (2026-08-26) — ordem do operador: *"1 pequena
+        # chavinha liga e desliga ao lado de cada take, para quando ela estiver
+        # desligada o take em questao nao seja cortado"*.
+        # ⛔ NASCE LIGADA: ligada = o comportamento de sempre. Chavinha que muda
+        # o padrao faria todo lote antigo sair diferente sem ninguem pedir.
+        self.corta = [True] * N_MANUAL
         self.lb_manual = []
+        self.sw_manual = []
         for i in range(N_MANUAL):
             lin = tk.Frame(sec_fila, bg=SURFACE)
             lin.pack(fill="x", padx=12, pady=1)
             tk.Label(lin, text="%d" % (i + 1), bg=SURFACE2, fg=GOLD, font=FT,
                      width=2).pack(side="left", ipady=2)
+            # ⚠️ a chavinha e' empacotada ANTES do botao de escolher, com
+            # side="right": o botao vem depois com expand=True e ocupa o meio.
+            # Invertendo a ordem o botao come a largura toda e a chavinha some.
+            sw = tk.Button(lin, text="ON", command=lambda k=i: self._toggle_corte(k),
+                           font=("Segoe UI", 8, "bold"), relief="flat", bd=0,
+                           cursor="hand2", width=4, padx=0, pady=0,
+                           bg=AQUA, fg="#04231f",
+                           activebackground="#2adcc7", activeforeground="#04231f")
+            sw.pack(side="right", padx=(6, 0), ipady=1)
+            self.sw_manual.append(sw)
             b = tk.Button(lin, text="escolher...", command=lambda k=i: self._pick(k),
                           font=FT, bg=SURFACE, fg=DIM, relief="flat", bd=0,
                           cursor="hand2", anchor="w", padx=8,
@@ -345,6 +375,58 @@ class App(tk.Tk):
         bts.pack(fill="x", padx=12, pady=(0, 12))
         botao(bts, "Ver", self._ver, primario=True).pack(side="left", padx=(0, 8))
         botao(bts, "Abrir pasta", self._abrir_pasta).pack(side="left")
+
+        # ===================================================================
+        # ⭐⭐ O SELETOR 9:16 DA ALTURA DA LEGENDA — 2026-08-26
+        # ===================================================================
+        # Ordem do operador: *"crie um seletor com o tamanho 9:16 com uma regua
+        # para mim selecionar a altura em que a legenda ira ficar (...) pois
+        # cada video a legenda tem que ficar em uma altura diferente, e eu
+        # preciso ajustar isso manualmente"*.
+        #
+        # ⛔ POR QUE UM RETANGULO 9:16 E NAO UM CAMPO DE NUMERO. O que ele
+        # decide e' ESPACIAL — onde a legenda cai em relacao a cabeca e a
+        # prova. Digitar `55` exige traduzir de cabeca porcentagem em posicao,
+        # e e' onde o erro nasce. Arrastando uma linha dentro do quadro na
+        # proporcao real, o que ele ve' e' o que sai.
+        # ⭐ As DUAS marcas de referencia sao desenhadas junto e existem por
+        # medicao, nao por enfeite: a faixa que a fonte usa (58%-63%, medida no
+        # 2.mp4) e a linha do PIN do CTA (47%, medida nos frames do v001).
+        # Sem elas ele arrastaria a legenda para cima do proprio CTA.
+        sec_leg = tk.Frame(sec_pr, bg=SURFACE)
+        sec_leg.pack(fill="x", padx=12, pady=(0, 12))
+        tk.Frame(sec_leg, bg=LINE, height=1).pack(fill="x", pady=(0, 8))
+        tk.Label(sec_leg, text="ALTURAS — ARRASTE AS LINHAS", bg=SURFACE, fg=MUT,
+                 font=("Segoe UI", 8, "bold"), anchor="w").pack(fill="x")
+
+        cx = tk.Frame(sec_leg, bg=SURFACE)
+        cx.pack(fill="x", pady=(6, 0))
+        # ⚠️ 104x185 e' 9:16 EXATO (185 * 9/16 = 104,06). Proporcao errada
+        # aqui mentiria sobre onde a legenda cai no video de verdade.
+        self.LEG_W, self.LEG_H = 104, 185
+        self.cv_leg = tk.Canvas(cx, width=self.LEG_W, height=self.LEG_H,
+                                bg="#05080c", highlightthickness=1,
+                                highlightbackground=LINE, cursor="sb_v_double_arrow")
+        self.cv_leg.pack(side="left")
+        self.cv_leg.bind("<Button-1>", self._leg_pegar)
+        self.cv_leg.bind("<B1-Motion>", self._leg_arrastar)
+        self.cv_leg.bind("<ButtonRelease-1>", self._leg_soltar)
+
+        lado = tk.Frame(cx, bg=SURFACE)
+        lado.pack(side="left", fill="both", expand=True, padx=(10, 0))
+        # \u2b50 DOIS numeros, um por linha, cada um na cor da sua linha no
+        # quadro. Sem a cor, dois numeros empilhados nao dizem qual e' qual.
+        self.lb_leg_pct = tk.Label(lado, text="legenda 60%", bg=SURFACE,
+                                   fg=AQUA, font=("Segoe UI", 11, "bold"),
+                                   anchor="w")
+        self.lb_leg_pct.pack(fill="x")
+        self.lb_cta_pct = tk.Label(lado, text="CTA 47%", bg=SURFACE,
+                                   fg=GOLD, font=("Segoe UI", 11, "bold"),
+                                   anchor="w")
+        self.lb_cta_pct.pack(fill="x")
+        self.bt_leg = botao(lado, "legenda", self._leg_alternar)
+        self.bt_leg.pack(fill="x", pady=(8, 0))
+
 
         # erros
         sec_err = Secao(corpo, "Erros")
@@ -453,6 +535,31 @@ class App(tk.Tk):
             values=["auto"] + [str(n) for n in range(0, N_MANUAL + 1)])
         self.cb_mudos.pack(side="left", padx=(8, 0))
         self.cb_mudos.bind("<<ComboboxSelected>>", self._cfg_dia)
+        # ⭐⭐ CTA FIXO NO TOPO — religado em 2026-08-26. Ordem do operador:
+        # *"fixe a palavra Comment Yes no topo do video no ultimo take de todo
+        # video. Deixe um campo para mim conseguir escrever a palavra que quero
+        # ficar no ultimo take para nao ter que ficar pedindo alteracao toda
+        # hora"*.
+        # ⛔ O pin existia desde sempre e foi DESLIGADO em 13/08 (`pin_cta`), nao
+        # apagado — por isso religar foi um botao, e nao um recurso novo.
+        # ⭐ A ENTRADA prefere o CTA FALADO: `captions.gerar_ass` procura
+        # `comment <palavra>` no audio e so' cai para o comeco do ultimo take
+        # quando nao acha. Foi a segunda metade do pedido dele (*"ou ao inves de
+        # fixar no ultimo take inteiro, faca reconhecer o momento do CTA"*).
+        # ⚠️ Campo VAZIO nao desliga nada: significa "usa a keyword que o audio
+        # falou". Quem desliga e' o botao.
+        self.bt_cta = tk.Button(linha2, text="CTA fixo", font=FT, relief="flat",
+                                bd=0, cursor="hand2", padx=10, pady=4,
+                                command=self._alternar_cta)
+        self.bt_cta.pack(side="left", padx=(24, 6))
+        tk.Label(linha2, text="palavra", bg=BG, fg=DIM, font=FT).pack(side="left")
+        self.ent_cta = tk.Entry(linha2, width=10, font=FT, bg=SURFACE2, fg=INK,
+                                relief="flat", bd=0, insertbackground=INK,
+                                justify="center", disabledbackground=SURFACE,
+                                disabledforeground=MUT)
+        self.ent_cta.pack(side="left", padx=(8, 0), ipady=3)
+        self.ent_cta.bind("<KeyRelease>", self._cfg_cta)
+        self.ent_cta.bind("<FocusOut>", self._cfg_cta)
         # [LOCAL LUCAS] a roda do mouse TROCA o valor de um combobox readonly
         # e o operador ja' perdeu uma trava assim no painel do agente
         # (21/08). Roda inerte em todos os seletores deste rodape.
@@ -508,11 +615,152 @@ class App(tk.Tk):
 
     _CORTES = {"nao cortar": "", "3s": "3", "3.5s": "3.5", "4s": "4"}
 
+    # ===================================================================
+    # ⭐⭐ O SELETOR DA ALTURA DA LEGENDA — 2026-08-26
+    # ===================================================================
+    _LEG_MIN, _LEG_MAX = 0.05, 0.90
+
+    def _leg_pos(self):
+        """A altura guardada, como fracao. Mesmo clamp do `esteira`."""
+        t = (esteira.CFG.get("legenda_pos") or "60").strip().replace("%", "")
+        try:
+            v = float(t) / 100.0
+        except ValueError:
+            v = 0.60
+        return max(self._LEG_MIN, min(self._LEG_MAX, v))
+
+    def _cta_pos(self):
+        """A altura do CTA, como fracao. Mesmo clamp da legenda."""
+        t = (esteira.CFG.get("cta_pos") or "47").strip().replace("%", "")
+        try:
+            v = float(t) / 100.0
+        except ValueError:
+            v = 0.47
+        return max(self._LEG_MIN, min(self._LEG_MAX, v))
+
+    def _leg_pegar(self, e):
+        """Qual das duas linhas o clique agarrou: a mais PROXIMA.
+
+        \u26d4 Escolhe no BUTTON-1 e guarda ate' soltar. Decidir a cada
+        `<B1-Motion>` faria a alca pular para a outra linha no instante em
+        que as duas se cruzassem \u2014 e cruzar e' exatamente o que ele faz
+        quando quer inverter a ordem delas.
+        """
+        v = e.y / float(self.LEG_H)
+        self._leg_alvo = ("legenda_pos"
+                          if abs(v - self._leg_pos()) <= abs(v - self._cta_pos())
+                          else "cta_pos")
+        self._leg_arrastar(e)
+
+    def _leg_arrastar(self, e):
+        """Arrasta a linha agarrada dentro do quadro 9:16."""
+        v = e.y / float(self.LEG_H)
+        v = max(self._LEG_MIN, min(self._LEG_MAX, v))
+        esteira.CFG[getattr(self, "_leg_alvo", "legenda_pos")] = "%d" % round(v * 100)
+        self._leg_pintar()
+
+    def _leg_soltar(self, _e=None):
+        # \u26a0\ufe0f grava no SOLTAR, nao a cada pixel do arrasto: salvar no
+        # `<B1-Motion>` escreveria o config.json dezenas de vezes por segundo.
+        esteira.salvar_cfg()
+
+    def _leg_alternar(self):
+        lig = esteira.CFG.get("legenda_ligada") == "1"
+        esteira.CFG["legenda_ligada"] = "" if lig else "1"
+        esteira.salvar_cfg()
+        self._leg_pintar()
+
+    def _leg_pintar(self):
+        """Redesenha o quadro 9:16, as marcas de referencia e a linha."""
+        c = self.cv_leg
+        c.delete("all")
+        W, H = self.LEG_W, self.LEG_H
+        lig = esteira.CFG.get("legenda_ligada") == "1"
+        v = self._leg_pos()
+
+        # \u2b50 a faixa que a FONTE usa (58%-63%), medida no 2.mp4
+        c.create_rectangle(1, H * 0.58, W - 1, H * 0.63,
+                           fill="#0d1b16", outline="")
+        # \u2b50\u2b50 A LINHA DO CTA VIROU ARRASTAVEL \u2014 2026-08-26, segunda ordem
+        # dele: *"tambem quero poder controlar a altura do CTA"*. Ela ja'
+        # estava desenhada como referencia; agora e' um controle.
+        # \u26d4 AS DUAS NO MESMO QUADRO, e isso e' o ponto: a razao de existir a
+        # marca do CTA era ele nao arrastar a legenda para cima dela. Num
+        # segundo quadro, separado, a colisao voltaria a ser invisivel.
+        vc = self._cta_pos()
+        yc = H * vc
+        cta_lig = esteira.CFG.get("cta_ligado") == "1"
+        cor_cta = GOLD if cta_lig else "#5a4a2a"
+        c.create_line(0, yc, W, yc, fill=cor_cta, width=2)
+        alt_cta = max(5, int(H * 0.045))
+        c.create_rectangle(6, yc, W - 6, yc + alt_cta, outline=cor_cta,
+                           fill="#2b2412" if cta_lig else "")
+        c.create_text(W - 4, yc - 6, text="CTA", anchor="e",
+                      fill=cor_cta, font=("Segoe UI", 6, "bold"))
+
+        y = H * v
+        cor = AQUA if lig else "#3d4a52"
+        c.create_line(0, y, W, y, fill=cor, width=2)
+        # o bloco da legenda: uma linha a 0.045 da altura, como no `gerar_ass`
+        alt = max(6, int(H * 0.055))
+        c.create_rectangle(6, y, W - 6, y + alt, outline=cor,
+                           fill="" if not lig else "#0b2b28")
+        if not lig:
+            c.create_text(W / 2, H / 2, text="DESLIGADA", fill="#5a6b73",
+                          font=("Segoe UI", 8, "bold"))
+        # \u26a0\ufe0f AVISA QUANDO AS DUAS SE ENCOSTAM. O bloco da legenda ocupa
+        # ~5,5%% da altura e o do CTA ~4,5%%; abaixo de 8 pontos de distancia
+        # eles se sobrepoem no video, e no quadro pequeno isso passa
+        # despercebido.
+        perto = abs(v - vc) < 0.08 and lig and cta_lig
+        if perto:
+            c.create_text(W / 2, H - 10, text="SOBREPOSTAS", fill=RED,
+                          font=("Segoe UI", 7, "bold"))
+        self.lb_leg_pct.configure(text="legenda %d%%" % round(v * 100),
+                                  fg=RED if perto else (AQUA if lig else MUT))
+        self.lb_cta_pct.configure(text="CTA %d%%" % round(vc * 100),
+                                  fg=RED if perto else
+                                  (GOLD if cta_lig else MUT))
+        self.bt_leg.configure(
+            bg=AQUA if lig else SURFACE2,
+            fg="#04231f" if lig else DIM,
+            activebackground=AQUA if lig else SURFACE2,
+            activeforeground="#04231f" if lig else INK,
+            text="legenda ligada" if lig else "legenda desligada")
+
     def _alternar_dia(self):
         lig = esteira.CFG.get("dia_ligado") == "1"
         esteira.CFG["dia_ligado"] = "" if lig else "1"
         esteira.salvar_cfg()
         self._pintar_dia()
+
+    def _alternar_cta(self):
+        lig = esteira.CFG.get("cta_ligado") == "1"
+        esteira.CFG["cta_ligado"] = "" if lig else "1"
+        esteira.salvar_cfg()
+        self._pintar_cta()
+
+    def _cfg_cta(self, _=None):
+        # ⚠️ so' letras e numeros: a palavra vira texto QUEIMADO no video e
+        # tambem e' procurada no audio. Espaco ou pontuacao nunca casaria com o
+        # token do whisper, e o pin cairia calado no fallback.
+        bruto = self.ent_cta.get().strip()
+        limpo = "".join(c for c in bruto if c.isalnum())
+        if limpo != bruto:
+            self.ent_cta.delete(0, "end")
+            self.ent_cta.insert(0, limpo)
+        esteira.CFG["cta_palavra"] = limpo
+        esteira.salvar_cfg()
+
+    def _pintar_cta(self):
+        lig = esteira.CFG.get("cta_ligado") == "1"
+        self.bt_cta.configure(
+            bg=AQUA if lig else SURFACE2,
+            fg="#04231f" if lig else DIM,
+            activebackground=AQUA if lig else SURFACE2,
+            activeforeground="#04231f" if lig else INK,
+            text="CTA fixo ligado" if lig else "CTA fixo")
+        self.ent_cta.configure(state="normal" if lig else "disabled")
 
     def _cfg_dia(self, _=None):
         v = self.cb_dia.get()
@@ -545,7 +793,14 @@ class App(tk.Tk):
         rev = dict((v, k) for k, v in self._CORTES.items())
         self.cb_dia_corte.set(rev.get(atual, "3s"))
         self.cb_mudos.set(esteira.CFG.get("mudos") or "auto")
+        self.ent_cta.delete(0, "end")
+        self.ent_cta.insert(0, esteira.CFG.get("cta_palavra") or "")
         self._pintar_dia()
+        self._pintar_cta()
+        # ⭐ sem esta chamada o quadro 9:16 nasce VAZIO: o canvas so' e'
+        # desenhado no `_leg_pintar`, e ate' o primeiro arrasto nao havia
+        # nada na tela para arrastar.
+        self._leg_pintar()
 
     def _sync_cfg(self):
         """Reflete o config.json carregado pela esteira nos combos."""
@@ -596,8 +851,14 @@ class App(tk.Tk):
                 self.manual[i + k] = os.path.normpath(p)
         self._pintar_manual()
 
+    def _toggle_corte(self, i):
+        """Liga/desliga o corte do slot i. DESLIGADA = o take passa inteiro."""
+        self.corta[i] = not self.corta[i]
+        self._pintar_manual()
+
     def _limpar_manual(self):
         self.manual = [None] * N_MANUAL
+        self.corta = [True] * N_MANUAL
         self._pintar_manual()
 
     def _pintar_manual(self):
@@ -607,6 +868,17 @@ class App(tk.Tk):
             if len(nome) > 26:
                 nome = nome[:12] + "..." + nome[-11:]
             b.configure(text=nome, fg=INK if p else DIM)
+            liga = self.corta[i]
+            sw = self.sw_manual[i]
+            # slot vazio: chavinha apagada visualmente, mas ainda clicavel — da'
+            # para pre-ajustar antes de escolher o video.
+            if liga:
+                sw.configure(text="ON", bg=AQUA if p else LINE,
+                             fg="#04231f" if p else MUT,
+                             activebackground="#2adcc7", activeforeground="#04231f")
+            else:
+                sw.configure(text="OFF", bg=SURFACE2, fg=RED if p else MUT,
+                             activebackground=LINE, activeforeground=RED)
         # ⚠️ habilita com UM take, nao com tres: lote de 2 cenas existe, e
         # travar o botao obrigaria o operador a inventar um terceiro video.
         n = sum(1 for p in self.manual if p)
@@ -615,11 +887,21 @@ class App(tk.Tk):
                                  else "Editar agora (%d takes)" % n)
 
     def _editar_manual(self):
-        escolhidos = [p for p in self.manual if p]
+        # ⛔ O INDICE DA CHAVINHA E' O DA LISTA COMPACTA, nao o do slot: se o
+        # slot 1 esta' vazio e o 2 tem video com a chavinha desligada, o take e'
+        # o de indice 0 para o pipeline. Mandar o numero do slot desligaria o
+        # corte do take errado — em silencio.
+        escolhidos, sem_corte = [], []
+        for i, p in enumerate(self.manual):
+            if not p:
+                continue
+            if not self.corta[i]:
+                sem_corte.append(len(escolhidos))
+            escolhidos.append(p)
         if not escolhidos:
             return
         try:
-            nome = esteira.enfileirar_manual(escolhidos)
+            nome = esteira.enfileirar_manual(escolhidos, sem_corte=sem_corte)
         except Exception as e:  # noqa: BLE001
             messagebox.showerror("Veo Editor", str(e), parent=self)
             return

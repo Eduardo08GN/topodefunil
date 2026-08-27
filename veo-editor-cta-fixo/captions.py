@@ -81,8 +81,23 @@ def gerar_ass(
     #     a cabeca dele comecando em 19,9% no pior frame medido. Antes encostava;
     #   · o ESTICA-ATE-A-PROXIMA logo abaixo, que nasceu para o modo de uma
     #     palavra e serve igual aqui — buraco entre blocos e' buraco.
-    por_linha=5,
-    max_chars=22,
+    # ⭐⭐ TRES PALAVRAS POR CARTAO — 2026-08-26, ordem do operador com o 2.mp4
+    # na mao: *"ajusta a legenda do editor para ficar na mesma posicao que a dele,
+    # e aparecer a mesma quantidade de palavras de forma que nao esta cobrindo
+    # muito a tela"*.
+    # ⭐ A FONTE FOI MEDIDA, nao olhada: frames a 720x1280, legenda em UMA linha,
+    # sempre 3 palavras (`BEST DISCOVERY I`, `HORSE GELATIN HALF`, `HMM COMMENT
+    # GELATIN`), 16 a 19 caracteres. O nosso saia com 4-5 palavras em DUAS linhas.
+    # ⚠️ `max_chars=20` saiu de MEDICAO no render, nao de conta no papel: queimei
+    # a legenda num frame 720x1280 e `BEST DISCOVERY I` (16 chars) ocupou 418px,
+    # ou seja 26px por caixa alta. A caixa util com margin_lr 0.06 e' 634px -> 24
+    # caracteres por linha. 20 deixa folga de 4 e cobre a faixa que a fonte usa
+    # (16 a 19). Trinca mais longa que 20 vira cartao de 2 palavras, que e' o que
+    # a fonte tambem faz (`MY MARRIAGE`).
+    # ⛔ Nao subir de 22 sem re-medir: acima disso a linha quebra em duas e o
+    # bloco dobra de altura, que e' exatamente o que este ajuste veio resolver.
+    por_linha=3,
+    max_chars=20,
     gap_quebra=0.6,
     maiuscula=True,
     cor_ativa="&H0000FFFF",    # amarelo (ABGR) — palavra ja falada/acesa
@@ -102,8 +117,45 @@ def gerar_ass(
     # jogar fora esse conserto junto.
     # ⚠️ Voltar e' UMA palavra: `pin_cta=True`.
     pin_cta=False,             # fixa "COMMENT <KEYWORD>" no topo apos o CTA falado
+    # ⭐⭐ PALAVRA DO CTA ESCOLHIDA NO PAINEL (2026-08-26) — ordem do
+    # operador: *"deixe um campo para mim conseguir escrever a palavra que
+    # quero ficar no ultimo take para nao ter que ficar pedindo alteracao
+    # toda hora"*. Vazio = usa a keyword detectada no audio (comportamento
+    # antigo). Preenchido = e' ELA que aparece queimada, sempre.
+    # ⛔ A palavra digitada TAMBEM entra na deteccao: o pin procura
+    # `COMMENT <ela>` no audio, senao um `COMMENT yes` nunca seria achado
+    # por quem so' conhece a lista fixa de keywords.
+    cta_palavra=None,
     duracao_video=None,        # fim do pin (segundos). None = fim da ultima palavra
     pin_em=None,               # ⭐ CTA FIXO: segundo em que o pin ENTRA
+    # ⭐⭐ A ALTURA DA LEGENDA VIRA PARAMETRO — 2026-08-26, ordem do
+    # operador: *"crie um seletor com o tamanho 9:16 com uma regua para mim
+    # selecionar a altura em que a legenda ira ficar (...) pois cada video a
+    # legenda tem que ficar em uma altura diferente"*.
+    # ⛔ Ate' aqui era a constante `0.60`, e o argumento dele desmonta a
+    # ideia de constante: o numero certo depende de ONDE a cabeca e a prova
+    # caem em CADA video, e isso muda de agente para agente. Valor fixo so'
+    # pode estar certo para um lote.
+    # ⚠️ Fracao da ALTURA, medida do TOPO (o alignment do karaoke e' 8).
+    # 0.60 continua o padrao — e' a faixa medida na fonte do 2.mp4 (58%-63%).
+    pos_legenda=0.60,
+    # ⭐⭐ A CHAVE DA LEGENDA — mesma ordem: *"quero que haja uma chave para
+    # quando eu quiser que seja possivel desligar a legenda, e fique somente
+    # o CTA"*.
+    # ⛔ NAO E' `palavras=[]`: a transcricao CONTINUA rodando, porque e' ela
+    # que descobre QUANDO o CTA e' falado (`pin_em`). Desligar a transcricao
+    # junto tiraria o pin de lugar — parecem a mesma coisa e nao sao.
+    so_pin=False,
+    # ⭐⭐ A ALTURA DO CTA, pelo mesmo motivo da legenda — 2026-08-26,
+    # ordem do operador logo depois de aprovar o seletor: *"tambem quero
+    # poder controlar a altura do CTA"*.
+    # ⛔ Era a constante `0.47`, escolhida MEDINDO os frames do v001 do
+    # Lamont — aos 40%% o pin caia em cima do rosto, e a faixa limpa era
+    # 22%%-30%% naquele video. O numero estava certo PARA AQUELE lote, que
+    # e' exatamente o argumento que derrubou a constante da legenda.
+    # ⚠️ Fracao da ALTURA medida do TOPO, como a `pos_legenda`: o
+    # alignment do PIN tambem e' 8.
+    pos_cta=0.47,
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
     max_chars) e quebra tambem quando ha silencio > gap_quebra entre palavras.
@@ -153,9 +205,41 @@ def gerar_ass(
     fonte_pin = max(22, int(altura * 0.048))
     outline = max(3, int(round(altura * 0.007)))
     sombra = max(1, int(round(altura * 0.002)))
-    margin_lr = int(largura * 0.11)
-    margin_topo = int(altura * 0.11)   # karaoke: onde o exemplo poe o bloco
-    margin_pin = int(altura * 0.29)    # pin: a faixa limpa medida nos frames
+    # ⭐⭐ O KARAOKE DESCEU PARA 60% — 2026-08-26. Ordem do operador: a legenda
+    # deve ficar *"na mesma posicao que a dele (...) na verdade a legenda pode
+    # ficar ate um pouco mais pra baixo"*.
+    # ⭐ MEDIDO na fonte (2.mp4, frames a 720x1280 com grade percentual queimada):
+    # o bloco de legenda ocupa de 58% a 63% da altura. 0.60 poe o topo do nosso
+    # bloco logo abaixo disso — o "um pouco mais pra baixo" que ele pediu.
+    # ⚠️⚠️ ISTO REVERTE A TROCA DE 2026-08-13, e a razao daquela troca continua
+    # de pe': a prova do video (tigela, copo, prop) vive no terco inferior, e foi
+    # por tampar a prova que o karaoke subiu para o topo. O que mudou e' o
+    # TAMANHO do bloco: com 3 palavras em UMA linha a 0.045 ele ocupa ~5,5% da
+    # altura (60%-65,5%), contra ~10% das duas linhas de antes. Cabe na faixa que
+    # a fonte usa sem cobrir a prova.
+    # ⚠️ Se voltar a tampar, o numero a mexer e' este e so' este.
+    # ⚠️ margin_lr caiu de 0.11 para 0.06 para a trinca caber em UMA linha — ver
+    # a conta em max_chars.
+    margin_lr = int(largura * 0.06)
+    # \u2b50 o 0.60 virou o PADRAO do parametro, nao mais um numero cravado aqui
+    margin_topo = int(altura * pos_legenda)
+    # ⭐⭐ O PIN DESCEU PARA 47% — 2026-08-26. Ordem do operador com o v001 do
+    # Lamont na mao e um circulo vermelho desenhado no frame: *"ajuste a
+    # legenda fixa do editor para ficar mais na parte central do video, para
+    # nao tampar o rosto dos personagens"*.
+    # ⭐ MEDIDO no frame que ele mandou, usando as duas legendas ja' na tela
+    # como regua: o pin estava com o centro em 32% e o karaoke em 63%; o
+    # circulo dele fica de 46% a 55%, centro em 50%. Com o bloco do pin
+    # medindo 6,2% da altura (fonte 0.048 + contorno), o topo em 0.47 poe o
+    # centro exatamente em 50%.
+    # ⚠️ E a folga para o karaoke foi conferida, nao suposta: pin termina em
+    # 53,1% e o karaoke comeca em 60% — 88px de respiro a 1280. Se algum dos
+    # dois mudar de altura, e' esta conta que precisa ser refeita.
+    # ⛔ Os 29% antigos vieram de outra medicao valida (a faixa limpa entre o
+    # rosto e a tigela, testada em 23%, 29% e 40% em 13/08) — mas era com o
+    # karaoke NO TOPO. Com o karaoke a 60%, a faixa livre mudou de lugar.
+    # ⭐ o 0.47 virou o PADRAO do parametro, nao mais um numero cravado
+    margin_pin = int(altura * pos_cta)
 
     # tira tokens que sao SO pontuacao (o whisper emite "," sozinho as vezes) —
     # eram eles que apareciam como virgula solta no comeco da linha.
@@ -236,9 +320,13 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             else:
                 partes.append(f"{{\\kf{dur}}}{texto} ")
         txt = "".join(partes).strip()
-        eventos.append(
-            f"Dialogue: 0,{_ass_time(ini)},{_ass_time(fim)},CC,,0,0,0,,{txt}"
-        )
+        # \u26d4 COM A CHAVE DESLIGADA O KARAOKE NAO E' EMITIDO, e so' ele: o pin
+        # do CTA la' embaixo continua saindo normalmente. E' o que ele pediu \u2014
+        # *"fique somente o CTA mesmo no 3 take"*.
+        if not so_pin:
+            eventos.append(
+                f"Dialogue: 0,{_ass_time(ini)},{_ass_time(fim)},CC,,0,0,0,,{txt}"
+            )
 
     # --- pin do CTA: "COMMENT <KEYWORD>" fixo no topo ate o fim do video ---
     # o texto fica queimado na porcao superior dali em diante, com a keyword
@@ -259,22 +347,34 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if pin_cta and palavras:
         kw_falada = None
         t_pin = None
+        escolhida = (cta_palavra or "").strip().upper()
+        alvos = set(kw) | ({escolhida} if escolhida else set())
         toks = [(_limpa(w["text"], True).strip(".,!?;:").upper(), w)
                 for w in palavras]
         # 1) o caso certo: a keyword vem logo depois de "comment"
         for i, (tok, _w) in enumerate(toks):
-            if tok == "COMMENT" and i + 1 < len(toks) and toks[i + 1][0] in kw:
+            if tok == "COMMENT" and i + 1 < len(toks) and toks[i + 1][0] in alvos:
                 kw_falada = toks[i + 1][0]
                 t_pin = toks[i + 1][1]["end"]
                 break
         # 2) sem "comment <keyword>" no audio: cai para a ULTIMA keyword falada.
         #    ⚠️ ULTIMA, nao primeira — o CTA mora no fim do video, e ingrediente
         #    citado no meio da receita nunca e' o que o espectador deve comentar.
+        #
+        # ⛔⛔ ESTE FALLBACK SO' ESCOLHE A PALAVRA, NUNCA O TEMPO (2026-08-26).
+        # Ele cravava `t_pin` tambem, e isso quebrou os tres casos medidos no dia
+        # em que o pin foi religado: com o campo em `recipe` e o audio dizendo
+        # `comment yes`, a busca do passo 1 falha, este passo acha o `gelatin`
+        # da CENA 2 e o pin entrava aos 3,7s — no meio da receita, seis segundos
+        # antes do CTA. Pior: com `t_pin` preenchido, a queda para o comeco do
+        # ultimo take nunca acontecia.
+        # ⭐ Palavra e tempo sao decisoes SEPARADAS: o tempo so' pode vir do
+        # `comment` falado ou do `pin_em`; um ingrediente no meio da receita nao
+        # tem opiniao sobre quando o CTA comeca.
         if kw_falada is None:
             for tok, w in reversed(toks):
                 if tok in kw:
                     kw_falada = tok
-                    t_pin = w["end"]
                     break
         # ⭐⭐ CTA FIXO (2026-08-08) — o pin ENTRA NO COMECO DO TAKE 2 e fica
         # ate' o fim, em vez de esperar o CTA ser falado.
@@ -290,18 +390,28 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         # ⚠️ E o alvo e' ENCAIXADO na primeira palavra que comeca dali em
         # diante: entrar no meio de uma palavra do take 1 poria o CTA na tela
         # antes de a cena virar. Sem palavra depois do alvo, usa-se o alvo.
-        if pin_em is not None:
+        # ⭐⭐ 2026-08-26 — A ENTRADA INVERTEU DE PRIORIDADE. Ordem do operador:
+        # *"ou ao inves de fixar no ultimo take inteiro, faca reconhecer o
+        # momento do CTA se for possivel"*.
+        # ⭐ Agora: se o audio TEM `comment <palavra>`, o pin entra ali — e' o
+        # frame exato, medido na fala. So' quando nao ha' `comment` no audio e'
+        # que ele cai para `pin_em`, o comeco do ULTIMO take, que e' a
+        # aproximacao proporcional que o pipeline calcula.
+        # ⚠️ Antes era o contrario (o `pin_em` mandava sempre), porque o modo
+        # existia para o pin entrar ANTES do CTA. Hoje o pedido e' o oposto.
+        if t_pin is None and pin_em is not None:
             t_pin = pin_em
             for w in palavras:
                 if w["start"] >= pin_em:
                     t_pin = w["start"]
                     break
-            # ⛔ o pin fixo NAO depende de a keyword ter sido falada ainda —
-            # ele entra antes do CTA de proposito. Sem keyword detectada, usa
-            # a da automacao.
-            if kw_falada is None:
-                kw_falada = "GELATIN"
-        if kw_falada is not None:
+        # ⛔ A palavra QUEIMADA e' sempre a escolhida no painel quando existe.
+        # A deteccao acima serve para o TEMPO; ela nao decide o texto, senao um
+        # ingrediente falado no meio da receita voltaria a mandar comentar a
+        # palavra errada e quebrar a automacao Comentario->DM.
+        palavra_pin = escolhida or kw_falada or "GELATIN"
+        if t_pin is not None:
+            kw_falada = palavra_pin
             fim_video = duracao_video if duracao_video else palavras[-1]["end"] + 0.5
             if fim_video > t_pin:
                 txt_pin = (

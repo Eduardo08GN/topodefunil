@@ -92,6 +92,19 @@ CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": "",
        # DIA_MIN e DIA_MAX, ou um numero fixo; `dia_corte` = segundos a que
        # o take mudo e' cortado ("" = nao corta).
        "dia_ligado": "", "dia_num": "", "dia_estilo": "vermelho",
+       # ⭐ CTA FIXO NO TOPO (2026-08-26): `cta_ligado` "1"/"" e a palavra
+       # que fica queimada. Vazia = usa a keyword detectada no audio.
+       "cta_ligado": "",
+       "cta_palavra": "YES",
+       # ⭐ a altura do PIN do CTA, em porcentagem da tela (2026-08-26)
+       "cta_pos": "47",
+       # \u2b50\u2b50 A LEGENDA KARAOKE: chave e ALTURA (2026-08-26).
+       # `legenda_ligada` "1"/"" \u2014 desligada, sai so' o pin do CTA.
+       # `legenda_pos` e' a altura em PORCENTAGEM da tela, medida do topo.
+       # \u26a0\ufe0f Guardado como texto porque todo o CFG e' texto (o JSON do
+       # config.json e' lido cru); quem converte e' o `dias_atual`.
+       "legenda_ligada": "1",
+       "legenda_pos": "60",
        "dia_corte": "3",
        # ⭐⭐ QUANTOS TAKES DO INICIO SAO MUDOS — 2026-08-21, junto com o
        # quarto slot. "auto" mede pelo volume (LIMIAR_MUDO); um numero
@@ -142,7 +155,34 @@ def dias_atual():
     return {"ligado": CFG.get("dia_ligado") == "1", "dia2": n,
             "estilo": CFG.get("dia_estilo") or "vermelho",
             "corte": float(corte) if corte else 0,
-            "mudos": int(md) if md.isdigit() else None}
+            "mudos": int(md) if md.isdigit() else None,
+            # ⭐ o CTA fixo viaja no mesmo dicionario que ja' desce ate' o
+            # `processar_video`; nao vale abrir um segundo canal so' para ele.
+            "cta": {"ligado": CFG.get("cta_ligado") == "1",
+                    "palavra": (CFG.get("cta_palavra") or "").strip(),
+                    "pos": _pos_pct("cta_pos", 47)},
+            # \u2b50 a legenda viaja no MESMO dicionario que o CTA, pela mesma
+            # razao escrita ali em cima: nao vale abrir um segundo canal.
+            "legenda": {"ligada": CFG.get("legenda_ligada") == "1",
+                        "pos": _pos_pct("legenda_pos", 60)}}
+
+
+def _pos_pct(chave, padrao):
+    """Uma altura do painel (porcentagem) como FRACAO entre 0.05 e 0.90.
+
+    \u26d4 O clamp existe porque o valor vem de um seletor que o operador
+    arrasta: fora dessa faixa o bloco sai pela borda e o `ass` desenha meio
+    texto cortado, sem erro nenhum \u2014 falha silenciosa.
+    \u2b50 UM helper para as DUAS alturas (legenda e CTA): elas tem a mesma
+    unidade, o mesmo clamp e o mesmo modo de falhar. Duas copias divergiriam
+    na primeira vez que alguem mexesse numa so.
+    """
+    t = (CFG.get(chave) or str(padrao)).strip().replace("%", "")
+    try:
+        v = float(t) / 100.0
+    except ValueError:
+        v = padrao / 100.0
+    return max(0.05, min(0.90, v))
 
 
 def musica_atual():
@@ -322,18 +362,43 @@ def _proximo_nome(pasta_dia):
     return f"v{maior + 1:03d}_final.mp4"
 
 
+# ⭐ SIDECAR DA CHAVINHA POR TAKE (2026-08-26). Viaja DENTRO do zip, junto com
+# os videos, e nao numa config global: a fila pode ter varios jobs esperando e o
+# flag e' de UM job. Nome com underline na frente para nunca colidir com take.
+SEMCORTE_JSON = "_semcorte.json"
+
+
 def _extrair_zip(zpath, destino):
-    """Extrai so os videos, achatando a estrutura interna do zip."""
+    """Extrai os videos (achatando a estrutura interna do zip) e, se houver, o
+    sidecar `_semcorte.json` com os indices dos takes que nao devem ser cortados."""
     os.makedirs(destino, exist_ok=True)
     with zipfile.ZipFile(zpath) as zf:
         for membro in zf.infolist():
             if membro.is_dir():
                 continue
             nome = os.path.basename(membro.filename)
-            if not nome or not nome.lower().endswith(VIDEO_EXT):
+            if not nome:
+                continue
+            if not (nome.lower().endswith(VIDEO_EXT) or nome == SEMCORTE_JSON):
                 continue
             with zf.open(membro) as src, open(os.path.join(destino, nome), "wb") as dst:
                 shutil.copyfileobj(src, dst)
+
+
+def _ler_sem_corte(pasta):
+    """Le o sidecar da chavinha. Devolve lista de indices 0-based (vazia se nao
+    houver). ⚠️ Nunca levanta: sidecar corrompido vira lote normal, com aviso —
+    perder um lote inteiro por causa de um json quebrado seria pior."""
+    p = os.path.join(pasta, SEMCORTE_JSON)
+    if not os.path.isfile(p):
+        return []
+    try:
+        with open(p, encoding="utf-8") as f:
+            dados = json.load(f)
+        idx = dados.get("sem_corte") if isinstance(dados, dict) else dados
+        return sorted({int(i) for i in (idx or [])})
+    except Exception:  # noqa: BLE001
+        return []
 
 
 def _enfileirar(origem_path):
@@ -457,6 +522,12 @@ def _processar_zip(nome):
             _log_atual("aviso: musica %r sumiu da pasta — seguindo sem"
                        % CFG["musica"])
         dias = dias_atual()
+        sem_corte = _ler_sem_corte(extra)
+        if sem_corte:
+            dias["sem_corte"] = sem_corte
+            _log_atual("chavinha DESLIGADA no(s) take(s): "
+                       + ", ".join(str(i + 1) for i in sem_corte)
+                       + " — preservado(s) inteiro(s)")
         if dias.get("ligado"):
             _log_atual("legenda de dia LIGADA: DAY 1 / DAY %d (estilo %s)"
                        % (dias["dia2"], dias["estilo"]))
@@ -509,7 +580,7 @@ def _worker():
 
 # ---------------- API usada pelo app ----------------
 
-def enfileirar_manual(caminhos):
+def enfileirar_manual(caminhos, sem_corte=None):
     """⭐ MODO MANUAL (2026-08-03): o operador escolhe os takes na mao.
 
     Recebe os caminhos JA' NA ORDEM (take 1, 2, 3, 4...) e devolve o nome do
@@ -543,9 +614,12 @@ def enfileirar_manual(caminhos):
     # poll por tamanho estavel, e um zip crescendo na pasta vigiada ja' foi
     # capturado pela metade em producao.
     tmp = destino + ".parcial"
+    idx = sorted({int(i) for i in (sem_corte or []) if 0 <= int(i) < len(caminhos)})
     with zipfile.ZipFile(tmp, "w", zipfile.ZIP_STORED) as z:
         for i, c in enumerate(caminhos, 1):
             z.write(c, "%02d_%s" % (i, os.path.basename(c)))
+        if idx:
+            z.writestr(SEMCORTE_JSON, json.dumps({"sem_corte": idx}))
     os.replace(tmp, destino)
     return os.path.basename(destino)
 
