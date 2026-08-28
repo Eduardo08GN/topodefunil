@@ -143,6 +143,40 @@ páginas futuras"*. As dez pastas saíram no commit `5214a71` do `projetosweb`.
 | `dailyfactreport.site` | `uurhd13s9x1rei59f5gqm3jc` | **Lamont Boyd** | `lamont` | homem negro |
 | `plainfactsdaily.site` | `vx3q4f59noi9u5cr7fx6jzj3` | **Sam Pickett** | `sam` | homem negro |
 
+#### ⭐⭐ 2026-08-28 — AS DUAS SAEM DO HORSEWOOD
+
+Ordem do operador: *"Altere os links nas páginas do Sam e do Lammont, dos
+botões e tudo para esse: https://bg.alphaforgeplus.com/2607-15ar/?aff_id=25518"*.
+
+| | antes | agora |
+|---|---|---|
+| oferta | `horsewood.us/VHGTH-L3/` | **`bg.alphaforgeplus.com/2607-15ar/`** |
+| `aff_id` | **44878** | **25518** |
+| `subid` | `lamont` / `sam` | **inalterado** |
+
+⛔ **SÓ as duas pastas de página.** As **cinco raízes** dos domínios dele
+(`dailyfactreport`, `plainfactsdaily`, `dailyvitalreport`, `everydaydigest`,
+`thedailyfinding`) seguem no `horsewood.us/VHGTH-L3/?aff_id=44878` — medido: 3
+ocorrências em cada uma, intactas.
+
+⭐ **O `&subid=` foi preservado de propósito.** O link que ele passou vem sem
+ele; sem `subid` a venda entra **sem atribuição** e não dá para saber qual das
+duas páginas vendeu. Como o parâmetro `aff_id` é o mesmo nome que a BuyGoods
+usa nas outras duas ofertas, `subid` deve valer aqui também — mas isso é
+**inferência**, não medição: quem confirma é a primeira venda com atribuição.
+
+⚠️ **O cofre não cobre estas duas.** O `_cofre.py` sela o mapa
+domínio → oferta + aff que sai da tabela `PAGINAS` do `_build.py`, e as páginas
+do Lucas estão fora do `_build.py` de propósito. `--verificar` segue em
+✅ 20 páginas, e **isso não é aval da troca** — é silêncio sobre ela.
+
+⛔⛔ **A COPY DA BRIDGE NÃO FOI TOCADA, e ela promete outra coisa.** O
+`<title>` e a manchete das duas dizem *Gelatin Horse Trick* e
+*Add Up To 1.9 Inches Without Pills* — escritas para a VSL do horsewood. Se a
+oferta nova vender outro mecanismo, a cadeia
+reel → DM → bridge → VSL quebra no último elo. Copy é alçada do operador
+([`CLAUDE.md`](../CLAUDE.md) §REGRA DE ALÇADA): fica registrado, não corrigido.
+
 ### ⛔⛔ De três sobraram DUAS — a bridge é só de ED (2026-08-21)
 
 Ordem do operador: *"a página da Sara como é weight loss não terá uma landing,
