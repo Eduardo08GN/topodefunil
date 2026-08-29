@@ -1,0 +1,77 @@
+﻿MECANISMOS — ED
+====================================================================
+Os mecanismos que substituem a GELATINA DE CAVALO.
+Definidos pelo operador em 29.08.2026.
+Mercado US — o nome que vai ao ar e' o INGLES; o portugues e' referencia.
+====================================================================
+
+
+--------------------------------------------------------------------
+CHA
+--------------------------------------------------------------------
+1.  Cha de Ferro                    ->  Iron Tea
+2.  Cha Cabo do Martelo             ->  Hammer Handle Tea
+
+
+--------------------------------------------------------------------
+SUCO
+--------------------------------------------------------------------
+3.  Suco de Lenha Dura              ->  Hardwood Juice
+4.  Suco Soldado de Pedra           ->  Stone Soldier Juice
+
+
+--------------------------------------------------------------------
+MEL
+--------------------------------------------------------------------
+5.  Mel de Touro                    ->  Bull Honey
+6.  Mel Barra de Ferro              ->  Iron Bar Honey
+
+
+--------------------------------------------------------------------
+XAROPE
+--------------------------------------------------------------------
+7.  Xarope de Raiz-de-Pedra         ->  Stoneroot Syrup
+8.  Xarope Taco Firme               ->  Solid Cue Syrup
+
+
+====================================================================
+O REGISTRO DOS NOMES
+====================================================================
+Duas familias, e todo nome novo sai de uma delas:
+
+  CABO / HASTE ....... cabo do martelo, cabo do machado, colher de pau,
+                       pilao, taco, barra de ferro, pe de cabra
+  QUEM FICA EM PE .... soldado, sentinela, guarda real, estatua,
+                       farol, torre, poste
+
+As palavras que um americano entende na hora, sem nada sujo escrito:
+  wood ..... "morning wood", a giria de todo dia
+  rock ..... "rock hard", a frase que a propria copy ja' usa
+  horse .... "hung like a horse" (foi o que fez a gelatina de cavalo pegar)
+  iron ..... duro, e ainda e' nutriente de verdade
+  bull, steel, stone, hammer
+
+REGRA: o nome tem de fazer sentido COM O FORMATO.
+  casca / raiz / folha ....... cha e xarope
+  fruta / legume ............. suco
+  arvore / lugar / utensilio . mel
+"Agua de lenha dura" caiu por isso: agua nao e' receita.
+
+
+====================================================================
+RESOLVIDO EM 29.08
+====================================================================
+- "Xarope Taco Firme" fechou em "Solid Cue Syrup" (taco de SINUCA).
+  Descartado "Firm Bat Syrup": em ingles "bat" tambem e' morcego.
+
+
+====================================================================
+PENDENCIAS
+====================================================================
+- "Suco de Lenha Dura": ninguem espreme madeira; em ingles
+  "Hardwood Juice" nao fecha como receita. Fica registrado; o operador
+  manteve assim de proposito.
+- Falta definir a RECEITA de 3 ingredientes de cada mecanismo.
+- 14 dos 19 motores medidos falam "gelatin" na copy gerada, e 34
+  arquivos carregam a palavra no fonte. A troca no parque ainda nao
+  foi feita.

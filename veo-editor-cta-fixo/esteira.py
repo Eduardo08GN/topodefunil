@@ -98,13 +98,38 @@ CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": "",
        "cta_palavra": "YES",
        # ⭐ a altura do PIN do CTA, em porcentagem da tela (2026-08-26)
        "cta_pos": "47",
-       # \u2b50\u2b50 A LEGENDA KARAOKE: chave e ALTURA (2026-08-26).
-       # `legenda_ligada` "1"/"" \u2014 desligada, sai so' o pin do CTA.
+       # ⭐⭐ A LEGENDA KARAOKE: chave e ALTURA (2026-08-26).
+       # `legenda_ligada` "1"/"" — desligada, sai so' o pin do CTA.
        # `legenda_pos` e' a altura em PORCENTAGEM da tela, medida do topo.
-       # \u26a0\ufe0f Guardado como texto porque todo o CFG e' texto (o JSON do
+       # ⚠️ Guardado como texto porque todo o CFG e' texto (o JSON do
        # config.json e' lido cru); quem converte e' o `dias_atual`.
        "legenda_ligada": "1",
        "legenda_pos": "60",
+       # ⭐⭐ O EFEITO CIRCULADO + "HERE" (2026-08-28).
+       # `aqui_ligado` "1"/"" — desligado, o video sai como sempre saiu.
+       # `aqui_x` / `aqui_y` sao o CENTRO DO CIRCULO, em porcentagem da
+       # largura e da altura. ⛔ Sao DOIS eixos porque isto e' um ALVO,
+       # nao uma faixa de texto: circula um objeto que pode estar em
+       # qualquer canto do quadro. O padrao e' onde ele cai no reel de
+       # referencia, medido em pixel.
+       "aqui_ligado": "",
+       # ⭐ quantos takes o efeito dura. Vazio = o video inteiro.
+       "aqui_takes": "",
+       # ⭐⭐ A LEGENDA FIXA — a caixa amarela do take (2026-08-29).
+       # `fixo_texto` vazio = desligada. Nao ha' chave: texto em branco
+       # ja' quer dizer "nao quero", e um botao a mais nao cabia no painel.
+       # `fixo_take` vazio = o video inteiro; "1".."8" = so' aquele take.
+       "fixo_texto": "",
+       "fixo_x": "50",
+       "fixo_y": "15",
+       "fixo_take": "",
+       # ⭐ as duas cores, em #RRGGBB. O padrao e' o do reel: texto preto
+       # sobre caixa amarela. Quem converte para o BGR do ASS e' o
+       # `captions._ass_cor` — aqui fica o formato que o seletor devolve.
+       "fixo_cor": "#000000",
+       "fixo_fundo": "#F0D000",
+       "aqui_x": "81",
+       "aqui_y": "68",
        "dia_corte": "3",
        # ⭐⭐ QUANTOS TAKES DO INICIO SAO MUDOS — 2026-08-21, junto com o
        # quarto slot. "auto" mede pelo volume (LIMIAR_MUDO); um numero
@@ -161,19 +186,43 @@ def dias_atual():
             "cta": {"ligado": CFG.get("cta_ligado") == "1",
                     "palavra": (CFG.get("cta_palavra") or "").strip(),
                     "pos": _pos_pct("cta_pos", 47)},
-            # \u2b50 a legenda viaja no MESMO dicionario que o CTA, pela mesma
+            # ⭐ a legenda viaja no MESMO dicionario que o CTA, pela mesma
             # razao escrita ali em cima: nao vale abrir um segundo canal.
             "legenda": {"ligada": CFG.get("legenda_ligada") == "1",
-                        "pos": _pos_pct("legenda_pos", 60)}}
+                        "pos": _pos_pct("legenda_pos", 60)},
+            # ⭐ o efeito viaja no MESMO dicionario, pela razao ja'
+            # escrita acima: nao vale abrir um terceiro canal.
+            "aqui": {"ligado": CFG.get("aqui_ligado") == "1",
+                     "x": _pos_pct("aqui_x", 81, 0.19, 0.85),
+                     "y": _pos_pct("aqui_y", 68, 0.13, 0.93),
+                     # ⚠️ None = todos os takes; o painel guarda "" para isso
+                     "takes": _inteiro("aqui_takes")},
+            "fixo": {"texto": (CFG.get("fixo_texto") or "").strip(),
+                     "x": _pos_pct("fixo_x", 50, 0.10, 0.90),
+                     "y": _pos_pct("fixo_y", 15, 0.06, 0.94),
+                     "take": _inteiro("fixo_take"),
+                     "cor": (CFG.get("fixo_cor") or "#000000").strip(),
+                     "fundo": (CFG.get("fixo_fundo") or "#F0D000").strip()}}
 
 
-def _pos_pct(chave, padrao):
-    """Uma altura do painel (porcentagem) como FRACAO entre 0.05 e 0.90.
+def _inteiro(chave):
+    """Um contador do painel, ou None quando o campo esta' vazio.
 
-    \u26d4 O clamp existe porque o valor vem de um seletor que o operador
+    ⛔ VAZIO E ZERO NAO SAO A MESMA COISA aqui: vazio quer dizer "todos os
+    takes" e zero quer dizer "nenhum". Devolver 0 para os dois faria o
+    efeito sumir do video inteiro quando o operador so' nao escolheu nada.
+    """
+    t = (CFG.get(chave) or "").strip()
+    return int(t) if t.isdigit() and int(t) > 0 else None
+
+
+def _pos_pct(chave, padrao, lo=0.05, hi=0.90):
+    """Uma medida do painel (porcentagem) como FRACAO entre `lo` e `hi`.
+
+    ⛔ O clamp existe porque o valor vem de um seletor que o operador
     arrasta: fora dessa faixa o bloco sai pela borda e o `ass` desenha meio
-    texto cortado, sem erro nenhum \u2014 falha silenciosa.
-    \u2b50 UM helper para as DUAS alturas (legenda e CTA): elas tem a mesma
+    texto cortado, sem erro nenhum — falha silenciosa.
+    ⭐ UM helper para as DUAS alturas (legenda e CTA): elas tem a mesma
     unidade, o mesmo clamp e o mesmo modo de falhar. Duas copias divergiriam
     na primeira vez que alguem mexesse numa so.
     """
@@ -182,7 +231,12 @@ def _pos_pct(chave, padrao):
         v = float(t) / 100.0
     except ValueError:
         v = padrao / 100.0
-    return max(0.05, min(0.90, v))
+    # ⚠️ Os limites viraram PARAMETRO em 2026-08-28: o alvo do circulado
+    # tem penduricalhos (o "here" acima, a seta a esquerda) e a faixa util dele
+    # nao e' a das faixas de texto. Ver `_AQ_X_MIN` e companhia no `app.py` —
+    # os dois lados tem de concordar, senao o painel promete uma posicao e o
+    # video entrega outra.
+    return max(lo, min(hi, v))
 
 
 def musica_atual():

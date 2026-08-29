@@ -279,6 +279,52 @@ def _inicio_take2(durs, dur_final, log=print):
     return alvo
 
 
+def _janela_do_take(durs, dur_final, n, log=print):
+    """(inicio, fim) do take `n` no video PRONTO, em segundos.
+
+    ⛔ MESMA CONTA PROPORCIONAL do `_fim_de_takes`, e pela mesma razao: o
+    auto-editor tira silencio e o fator de velocidade reescala tudo depois
+    da juncao. Somar as duracoes cruas devolve um par de segundos que
+    nao existe mais no arquivo final.
+
+    ⚠️ `n` fora da faixa devolve (None, None) = o VIDEO INTEIRO. E' o que
+    faz "pedi o take 5 num video de 3" degradar para algo util em vez de
+    sumir com a legenda.
+    """
+    if not n or not dur_final or not durs:
+        return None, None
+    ds = list(durs)
+    if not all(ds) or n > len(ds):
+        return None, None
+    tot = float(sum(ds))
+    ini = (sum(ds[:n - 1]) / tot) * dur_final
+    fim = (sum(ds[:n]) / tot) * dur_final
+    log("  legenda fixa: take %d vai de %.1fs a %.1fs" % (n, ini, fim))
+    return ini, fim
+
+
+def _fim_de_takes(durs, dur_final, n, log=print):
+    """Em que segundo do video PRONTO termina o take `n`.
+
+    ⛔ MESMA CONTA PROPORCIONAL do `_inicio_ultimo_take`, e pela mesma
+    razao: o auto-editor tira silencio e o fator de velocidade reescala
+    tudo depois da juncao, entao somar as duracoes cruas dos takes da' um
+    segundo que nao existe mais no arquivo final. A FRACAO, sim, sobrevive.
+
+    ⚠️ Devolve None quando `n` cobre todos os takes — ai' o efeito vale o
+    video inteiro e quem manda e' a duracao final, sem conta nenhuma.
+    """
+    if not n or not dur_final or not durs:
+        return None
+    duracoes = list(durs)
+    if not all(duracoes) or n >= len(duracoes):
+        return None
+    alvo = (sum(duracoes[:n]) / float(sum(duracoes))) * dur_final
+    log("  circulado: acaba em ~%.1fs de %.1fs (%d de %d takes)"
+        % (alvo, dur_final, n, len(duracoes)))
+    return alvo
+
+
 def _inicio_ultimo_take(durs, dur_final, log=print):
     """Em que segundo do video PRONTO comeca o ULTIMO take.
 
@@ -658,7 +704,7 @@ def processar_video(takes, out_final, model="base.en", lang="en",
             base = aproximado
         w, h = dims(base)
         log(f"  transcrevendo (whisper {model})... {w}x{h}")
-        # \u26d4\u26d4 TAKE A TAKE, nao no juntado \u2014 ver `transcrever_takes`. No
+        # ⛔⛔ TAKE A TAKE, nao no juntado — ver `transcrever_takes`. No
         # juntado o whisper parava na primeira frase e o video de 6 takes saia
         # com legenda so' no take 1 (medido: 8 palavras contra 52).
         palavras = transcrever_takes(prontos, durs, model, lang, fator, log)
@@ -676,17 +722,50 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         _leg_lig = _leg.get("ligada", True)
         _leg_pos = float(_leg.get("pos", 0.60))
         if not _leg_lig:
-            log("  legenda karaoke DESLIGADA \u2014 sai so' o pin do CTA")
+            log("  legenda karaoke DESLIGADA — sai so' o pin do CTA")
         else:
             log("  legenda karaoke a %.0f%% da altura" % (_leg_pos * 100))
         _cta_pos = float(_cta.get("pos", 0.47))
         if _lig:
             log("  CTA fixo a %.0f%% da altura" % (_cta_pos * 100))
+        # ⭐⭐ O CIRCULADO + "HERE" (2026-08-28). Vale para o video
+        # INTEIRO, nao por take — ordem do operador: *"a chave deve
+        # ativar em todos os takes"*.
+        _aq = (dias or {}).get("aqui") or {}
+        _aq_lig = bool(_aq.get("ligado"))
+        _aq_x = float(_aq.get("x", 0.806))
+        _aq_y = float(_aq.get("y", 0.682))
+        _aq_n = _aq.get("takes")
+        _aq_fim = None
+        if _aq_lig:
+            log("  circulado HERE em %.0f%% x %.0f%% da tela"
+                % (_aq_x * 100, _aq_y * 100))
+            _aq_fim = _fim_de_takes(durs, dur_final, _aq_n, log)
+            if _aq_n and _aq_fim is None:
+                log("  circulado: %d take(s) cobre o video inteiro" % _aq_n)
+        _fx = (dias or {}).get("fixo") or {}
+        _fx_txt = (_fx.get("texto") or "").strip()
+        _fx_ini = _fx_fim = None
+        if _fx_txt:
+            _fx_ini, _fx_fim = _janela_do_take(
+                durs, dur_final, _fx.get("take"), log)
+            log("  legenda fixa: %r em %.0f%% x %.0f%% (%s)"
+                % (_fx_txt[:40], float(_fx.get("x", 0.5)) * 100,
+                   float(_fx.get("y", 0.15)) * 100,
+                   "take %s" % _fx.get("take") if _fx_ini is not None
+                   else "video inteiro"))
         gerar_ass(palavras, w, h, assf, keywords=keywords,
                   duracao_video=dur_final,
                   pin_cta=_lig, cta_palavra=_pal,
                   pos_legenda=_leg_pos, so_pin=not _leg_lig,
                   pos_cta=_cta_pos,
+                  aqui_ligado=_aq_lig, aqui_x=_aq_x, aqui_y=_aq_y,
+                  aqui_fim=_aq_fim,
+                  fixo_texto=_fx_txt, fixo_x=float(_fx.get("x", 0.50)),
+                  fixo_y=float(_fx.get("y", 0.15)),
+                  fixo_ini=_fx_ini, fixo_fim=_fx_fim,
+                  fixo_cor=_fx.get("cor") or "#000000",
+                  fixo_fundo=_fx.get("fundo") or "#F0D000",
                   pin_em=_inicio_ultimo_take(durs, dur_final, log))
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)

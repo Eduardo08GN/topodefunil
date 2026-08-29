@@ -1,0 +1,128 @@
+﻿CAPA DO EBOOK — 150 RECIPES FOR MEN
+====================================================================
+A CAPA:     capa-livro-150.jpeg            (896 x 1200)
+
+Gerada e aprovada pelo operador em 29.08.2026. Houve uma v1, com a
+caixa de bicarbonato SEM O LOGO; ele apagou depois de aprovar esta.
+
+⛔ ESTE E' O LIVRO. Nao gerar outro. O gerador nao repete a mesma capa
+duas vezes, e se o livro mudar de rosto, de cor ou de titulo entre um
+video e outro o espectador percebe. E' o mesmo principio da REF do
+personagem: gera uma vez, reusa sempre.
+====================================================================
+
+
+====================================================================
+1. O PROMPT QUE GEROU A CAPA
+====================================================================
+Product photograph of a hardcover recipe book standing upright, front
+cover facing the camera, centered on a plain white seamless
+background. Soft even studio light on the book, subtle contact shadow
+beneath it, sharp focus, straight-on angle.
+
+The cover is a photograph: a shirtless muscular Black man in his
+fifties, bare-chested, athletic and solid through the chest and
+shoulders, standing behind a warm wooden kitchen counter, arms relaxed
+at his sides, looking straight into the camera with a confident
+closed-mouth smile. His skin catches the morning window light coming
+from the left, warm and soft. Fitness magazine lighting on the body.
+
+Spread across the counter in front of him: an orange cardboard box of
+baking soda with the arm and hammer emblem on the front, an open glass
+jar of honey with a wooden dipper resting across the rim and a thread
+of honey running down, two halved lemons, a knob of fresh ginger root,
+a bulb of garlic, three cinnamon sticks, a small white bowl of oats, a
+wedge of watermelon, and three tall glasses of juice, one deep red,
+one bright pink, one warm amber.
+
+Cover text: the numerals 150 very large across the top in bold white,
+and RECIPES FOR MEN underneath in smaller white capitals. Clean modern
+cover layout, high contrast, commercial cookbook design.
+
+⚠️ A unica diferenca em relacao ao prompt da v1 e' "with the arm and
+hammer emblem on the front" na caixa de bicarbonato.
+
+
+====================================================================
+2. COMO POR O LIVRO NA CENA DO CTA
+====================================================================
+⭐ O JEITO CERTO E' MANDAR A IMAGEM. Se o gerador aceitar imagem de
+referencia, anexe `capa-livro-150.jpeg` — e' o unico jeito de sair
+identico. O texto abaixo e' complemento, nao substituto.
+
+⭐ Onde por: em pe' sobre a mesa, no PRIMEIRO PLANO, encostado num
+objeto ou levemente inclinado, sempre num canto livre do quadro — o
+livro nao pode tapar a prova nem a mao que prepara.
+
+
+--------------------------------------------------------------------
+BLOCO CURTO — quando o prompt da cena ja' esta' cheio  [~48 palavras]
+--------------------------------------------------------------------
+Standing upright on the table in the foreground, a hardcover recipe
+book: the huge white numerals 150 across the top with RECIPES FOR MEN
+in white capitals below, and under that a photo of a shirtless
+muscular Black man behind a kitchen counter covered in lemons, honey,
+an orange box of baking soda and glasses of juice.
+
+
+--------------------------------------------------------------------
+BLOCO COMPLETO — quando ha' espaco  [~100 palavras]
+--------------------------------------------------------------------
+Standing upright on the table in the foreground, propped at a slight
+angle, a thick hardcover recipe book in portrait format. Across the
+top of the cover the numerals 150 printed very large in bold white,
+and RECIPES FOR MEN underneath in smaller white capitals. Below the
+title, a photograph: a shirtless muscular Black man in his fifties
+standing behind a light wood kitchen counter, and spread on that
+counter an orange box of baking soda with the arm and hammer emblem, a
+jar of honey with a wooden dipper, halved lemons, fresh ginger, a bulb
+of garlic, cinnamon sticks, a white bowl of oats, three tall glasses
+of juice in deep red, pink and amber, and a wedge of watermelon.
+
+
+====================================================================
+3. O QUE NAO ESCREVER
+====================================================================
+⛔ NAO escrever "no Vicks", "no Vaseline" nem nenhuma outra negacao de
+   produto. NEGACAO INJETA O TOKEN — pedir para nao ter vaselina
+   aumenta a chance de aparecer um pote de vaselina. Basta nao citar.
+
+⛔ NAO reescrever o texto da capa. Sao quatro tokens curtos ("150" +
+   "RECIPES FOR MEN") justamente porque o gerador embaralha texto longo
+   em embalagem. Titulo maior sai com letra trocada.
+
+⛔ NAO mandar gerar o livro "parecido" com o da imagem. Ou vai a imagem
+   de referencia, ou vai o bloco de texto acima palavra por palavra.
+
+
+====================================================================
+4. SE A GERACAO FOR RECUSADA POR "SEM CAMISA"
+====================================================================
+Nao mude a cena — mude a forma de dizer, nesta ordem:
+  1a.  "shirtless, bare-chested"
+       -> "with his shirt off, holding it over one shoulder"
+  2a.  -> "fresh from a workout, towel around his neck, no shirt"
+  3a.  -> "wearing an open unbuttoned denim shirt"   (ultimo recurso,
+          ja' nao esta' sem camisa)
+
+⚠️ "bare-chested" NAO esta' banido no parque: roda hoje no alfa16, no
+bed16 e no falta16. O que saiu do GOOD 16 foi o ACUMULO (tronco nu +
+corpos colados + busto nomeado + vocabulario de formato de torso), nao
+a palavra sozinha.
+
+
+====================================================================
+5. O QUE ESTA' IMPERFEITO NA v2 — decisao do operador
+====================================================================
+- O TEXTO DA MARCA NA CAIXA SAIU EMBARALHADO ("Eors Baking Soda", e a
+  linha de cima ilegivel). O EMBLEMA do braco com o martelo saiu certo,
+  que era o que faltava na v1. No tamanho em que o livro aparece dentro
+  do video so' se le' "Baking Soda" e o emblema, e os dois estao certos.
+
+- O TITULO FICOU PARTIDO PELA CABECA DELE: na v1 "RECIPES FOR MEN" saia
+  inteiro acima da cabeca; na v2 a cabeca entra no meio e o olho le'
+  "RECIPES ... FOR MEN". O "150" continua limpo.
+
+Se algum dos dois incomodar, e' REGERAR a capa — nunca remendar por
+cima. Regra do repo: embalagem embaralhada e' excesso de letra, e o
+conserto e' outra imagem.

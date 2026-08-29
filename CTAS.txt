@@ -1,0 +1,137 @@
+﻿CTAS — LIVRO DE 150 RECEITAS
+====================================================================
+Os CTAs que fecham a copy dos videos. Definidos pelo operador em
+29.08.2026, para o ebook + landing page de 150 receitas de
+performance masculina (10 dolares).
+
+O QUE VAI AO AR E' O INGLES. O portugues e' referencia.
+A palavra da automacao e' YES e nao muda.
+====================================================================
+
+
+--------------------------------------------------------------------
+FAIXA 1 — PRECO NA CARA
+--------------------------------------------------------------------
+01. Esse metodo e mais 149 por apenas 10 dolares, comenta yes que te
+    mando o link.
+    EN: This method and 149 more for just ten dollars. Comment yes and
+        I'll send you the link.                                 [17 pal.]
+    USOS: 1   (29.08 - video da receita de chia, Bull Honey)
+
+02. Essa receita e mais 149 por dez dolares. Comenta yes que eu mando
+    o link.
+    EN: This recipe and 149 more for ten dollars. Comment yes and I'll
+        send the link.                                          [15 pal.]
+    USOS: 0
+
+03. Dez dolares pelo livro inteiro. 150 receitas. Comenta yes pra
+    receber o link.
+    EN: Ten dollars for the whole book. 150 recipes. Comment yes to get
+        the link.                                               [14 pal.]
+    USOS: 0
+
+04. Menos que um cafe. Dez dolares, 150 receitas. Comenta yes que te
+    mando o link.
+    EN: Less than a coffee. Ten dollars, 150 recipes. Comment yes and
+        I'll send you the link.                                 [16 pal.]
+    USOS: 0
+
+05. Dez dolares, uma vez so', sem mensalidade. Comenta yes pra receber
+    o livro.
+    EN: Ten dollars, one time, no subscription. Comment yes to get the
+        book.                                                   [12 pal.]
+    USOS: 0
+
+06. Mais barato que uma pilula azul. Dez dolares por 150 receitas.
+    Comenta yes que te mando.
+    EN: Cheaper than one blue pill. Ten dollars for 150 recipes.
+        Comment yes and I'll send it.                           [16 pal.]
+    USOS: 0
+    ATENCAO: compara com remedio de receita. E' a classe de claim que o
+    Meta derruba. Os videos-fonte dele ja' fazem isso; decisao do
+    operador. Nao deixar ser a unica do lote.
+
+
+--------------------------------------------------------------------
+FAIXA 2 — COMPRA CLARA, SEM PRECO CRAVADO
+--------------------------------------------------------------------
+07. Receba o livro completo com a receita e varias outras, comenta yes
+    que te mando.
+    EN: Get the complete book with this recipe and many others. Comment
+        yes and I'll send it.                                   [16 pal.]
+    USOS: 0
+
+08. Compre o livro completo com essa receita e mais 149, comenta yes e
+    receba o link da sua caixa de entrada.
+    EN: Buy the complete book with this recipe and 149 more. Comment yes
+        and get the link in your inbox.                         [19 pal.]
+    USOS: 0
+
+09. O livro completo tem essa e mais 149 receitas por menos que custa
+    um cafe. Comenta yes que te mando pra comprar.
+    EN: The full book has this one and 149 more for less than a coffee.
+        Comment yes and I'll send you where to buy.             [23 pal.]
+    USOS: 0
+    ATENCAO: a mais longa do arquivo. Num take de 16s ela ocupa a cena
+    quase inteira.
+
+10. Compre o livro de receitas completo, e' baratinho. Comenta yes que
+    o link vai pras suas mensagens.
+    EN: Buy the complete recipe book, it's only a few bucks. Comment yes
+        and the link goes to your messages.                     [19 pal.]
+    USOS: 0
+
+11. Botei todas as receitas num livro baratinho. Comenta yes pra
+    comprar.
+    EN: I put every recipe in one book that's only a few bucks. Comment
+        yes to buy it.                                          [17 pal.]
+    USOS: 0
+
+12. Quer todas as receitas baratinho? O livro tem 150. Comenta yes que
+    te mando pra comprar.
+    EN: Want all the recipes for a few bucks? The book has 150. Comment
+        yes and I'll send you where to buy.                     [21 pal.]
+    USOS: 0
+
+13. O livro com 150 receitas saiu. Comenta yes que eu te mando onde
+    comprar baratinho.
+    EN: The book with 150 recipes is out. Comment yes and I'll send you
+        where to buy it dirt cheap.                             [19 pal.]
+    USOS: 0
+
+14. Essa foi so' uma receita, coloquei 150 no livro e e' muito barato.
+    Comenta yes que te mando o link.
+    EN: That was just one recipe. I put 150 in the book and it's dirt
+        cheap. Comment yes and I'll send the link.              [22 pal.]
+    USOS: 0
+    ATENCAO: 22 palavras. Mesma observacao da 09.
+
+
+====================================================================
+REGRAS DESTE ARQUIVO
+====================================================================
+- A palavra e' sempre YES. E' a cadastrada na automacao Comentario->DM.
+  Qualquer outra faz o comentario entrar e a mensagem nao sair.
+
+- NADA DEPOIS DO "comment yes". O que vem depois rouba a acao.
+
+- NADA E' DE GRACA. Ordem do operador em 29.08: mandar a receita de
+  graca seria mentira e quebraria a congruencia do funil novo. Toda
+  variacao vende.
+
+- "BARATINHO" NAO VIRA "CHEAP". Em ingles "cheap" quer dizer porcaria,
+  nao barato de preco — venderia contra o produto. Nas 10, 11 e 12
+  virou "only a few bucks"; nas 13 e 14 virou "dirt cheap", que como
+  giria significa mesmo baratissimo.
+
+- ORCAMENTO DE PALAVRAS: no formato de 16s o teto e' 25 palavras por
+  cena, e o CTA divide a ultima cena com o resto da fala. Acima de 16
+  palavras comeca a apertar. Nos videos de 24s cabem todas.
+
+- A CONTA: a receita do video + 149 do livro = 150. Quando o texto diz
+  "150 receitas" ele conta a do video junto.
+
+- CONTADOR DE USO: cada CTA carrega uma linha USOS. Toda vez que um
+  video sai com aquele CTA, o numero sobe e a data e o video ficam
+  anotados entre parenteses. Serve para ele ver a distribuicao do
+  teste sem abrir video nenhum.

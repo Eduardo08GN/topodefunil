@@ -11,11 +11,13 @@ import socket
 import sys
 import threading
 import subprocess
+import tempfile
 
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog, messagebox, colorchooser
 
 import esteira
+import pipeline
 from pipeline import processar_pasta
 
 VERSAO = "1.2-CTA"
@@ -235,7 +237,24 @@ class App(tk.Tk):
         # embaixo.
         # ⚠️ A tela dele mede 1920x1080; 900 deixa folga para a barra de
         # tarefas e para a barra de titulo.
-        self.geometry("1080x900")
+        # 930, era 900 -- 2026-08-28, quando o combo de DURACAO EM TAKES
+        # entrou na coluna do seletor. MEDIDO em A/B, com e sem o combo:
+        # a ultima linha do rodape (legenda DAY, estilo, takes mudos, CTA
+        # fixo, palavra) caiu de h=21 para h=8 -- esmagada, ilegivel, e sem
+        # erro nenhum. Terceira vez que este layout cobra o mesmo pedagio
+        # (21/08 nas travas do DAY, 26/08 no seletor, hoje aqui).
+        # A LICAO QUE FALTAVA NO MEU TESTE: ele so' olhava o INICIO do
+        # widget (y < 0 ou y > altura) e por isso deu 'zero problemas' com o
+        # rodape a 8 px de altura. Widget esmagado comeca dentro da janela.
+        # Quem acusa e' medir onde ele TERMINA, e a altura contra a de antes.
+        # 946, era 930 -- 2026-08-29, quando a linha da LEGENDA FIXA entrou
+        # embaixo do quadro 9:16. MEDIDO em A/B: com 930 os dois botoes do
+        # rodape (legenda DAY e CTA fixo) caiam de h=28 para h=22 -- nao
+        # sumiam, so' perdiam o respiro. Com 946 voltam aos 28.
+        # TETO REAL DA TELA DELE: 1920x1080 com area util de 1017 px, menos
+        # ~31 da barra de titulo = 986. Estamos a 40 px do limite; a proxima
+        # linha que entrar aqui vai ter de PAGAR o espaco tirando outra.
+        self.geometry("1080x946")
         self.minsize(900, 700)
         self._cache = {}
         self._montar()
@@ -396,11 +415,19 @@ class App(tk.Tk):
         sec_leg = tk.Frame(sec_pr, bg=SURFACE)
         sec_leg.pack(fill="x", padx=12, pady=(0, 12))
         tk.Frame(sec_leg, bg=LINE, height=1).pack(fill="x", pady=(0, 8))
-        tk.Label(sec_leg, text="ALTURAS — ARRASTE AS LINHAS", bg=SURFACE, fg=MUT,
+        tk.Label(sec_leg, text="ALTURAS E ALVO — ARRASTE NO QUADRO", bg=SURFACE, fg=MUT,
                  font=("Segoe UI", 8, "bold"), anchor="w").pack(fill="x")
 
         cx = tk.Frame(sec_leg, bg=SURFACE)
         cx.pack(fill="x", pady=(6, 0))
+        # ⭐⭐ A LEGENDA FIXA — 2026-08-29. Tudo numa LINHA SO' (texto, as duas
+        # cores e o take), e isso e' restricao medida, nao gosto: a tela dele
+        # tem 1017 px uteis, a janela ja' esta' em 930 e as tres colunas do
+        # corpo terminam 12 px acima da secao de ERROS. Duas linhas novas
+        # empurrariam o rodape para fora — o defeito de 28/08.
+        # ⚠️ Os tres numeros acima cairam de 11 para 9 para pagar esta linha.
+        self._fixo_linha = tk.Frame(sec_leg, bg=SURFACE)
+        self._fixo_linha.pack(fill="x", pady=(6, 0))
         # ⚠️ 104x185 e' 9:16 EXATO (185 * 9/16 = 104,06). Proporcao errada
         # aqui mentiria sobre onde a legenda cai no video de verdade.
         self.LEG_W, self.LEG_H = 104, 185
@@ -414,18 +441,88 @@ class App(tk.Tk):
 
         lado = tk.Frame(cx, bg=SURFACE)
         lado.pack(side="left", fill="both", expand=True, padx=(10, 0))
-        # \u2b50 DOIS numeros, um por linha, cada um na cor da sua linha no
+        # ⭐ DOIS numeros, um por linha, cada um na cor da sua linha no
         # quadro. Sem a cor, dois numeros empilhados nao dizem qual e' qual.
         self.lb_leg_pct = tk.Label(lado, text="legenda 60%", bg=SURFACE,
-                                   fg=AQUA, font=("Segoe UI", 11, "bold"),
+                                   fg=AQUA, font=("Segoe UI", 9, "bold"),
                                    anchor="w")
         self.lb_leg_pct.pack(fill="x")
         self.lb_cta_pct = tk.Label(lado, text="CTA 47%", bg=SURFACE,
-                                   fg=GOLD, font=("Segoe UI", 11, "bold"),
+                                   fg=GOLD, font=("Segoe UI", 9, "bold"),
                                    anchor="w")
         self.lb_cta_pct.pack(fill="x")
+        # ⭐ o terceiro numero traz DOIS eixos (x/y), porque o circulado
+        # e' um ALVO e nao uma faixa de texto.
+        self.lb_aqui_pct = tk.Label(lado, text="here 81/68%", bg=SURFACE,
+                                    fg=RED, font=("Segoe UI", 9, "bold"),
+                                    anchor="w")
+        self.lb_aqui_pct.pack(fill="x")
+        # ⭐⭐ A PREVIA DO TAKE COMO FUNDO — 2026-08-28, ordem do
+        # operador: *"onde esta preto na tela da alturas e alvo, deve ser
+        # possivel eu selecionar um take para ficar como imagem de fundo
+        # para mim saber a altura que devo medir certo"*.
+        # ⛔ O combo mora AQUI, na coluna de numeros, e nao embaixo do
+        # quadro. MEDIDO: as tres colunas do corpo tem 609 px e a secao de
+        # ERROS comeca 12 px abaixo delas — qualquer widget novo em pe
+        # sobre o quadro empurraria o rodape para fora, que e' o defeito
+        # de 26/08. Aqui ele cabe na altura que o quadro ja' ocupa.
+        self.cb_fundo = ttk.Combobox(lado, style="Eddie.TCombobox",
+                                     width=16, state="readonly", font=FT,
+                                     values=[self._FUNDO_NENHUM])
+        self.cb_fundo.set(self._FUNDO_NENHUM)
+        self.cb_fundo.pack(fill="x", pady=(6, 0))
+        self.cb_fundo.bind("<<ComboboxSelected>>", self._fundo_escolhido)
         self.bt_leg = botao(lado, "legenda", self._leg_alternar)
         self.bt_leg.pack(fill="x", pady=(8, 0))
+        self.bt_aqui = botao(lado, "circulado", self._aqui_alternar)
+        self.bt_aqui.pack(fill="x", pady=(4, 0))
+        # ⭐ POR QUANTOS TAKES o efeito dura — 2026-08-28. Fica colado no
+        # botao que ele modifica, e nao no rodape das opcoes gerais: quem
+        # liga o circulado decide na mesma passada por quanto tempo.
+        self.cb_aqui_takes = ttk.Combobox(
+            lado, style="Eddie.TCombobox", width=16, state="readonly",
+            font=FT, values=self._AQUI_TAKES_VALS)
+        # ARRANCA COM O QUE ESTA GRAVADO, nao com o primeiro da lista:
+        # combo que mostra "todos" enquanto o CFG diz "2" e o pior tipo de
+        # painel -- ele mente sobre o que o proximo video vai fazer.
+        self.cb_aqui_takes.set(self._aqui_takes_rotulo())
+        self.cb_aqui_takes.pack(fill="x", pady=(4, 0))
+        self.cb_aqui_takes.bind("<<ComboboxSelected>>",
+                                self._aqui_takes_escolhido)
+
+        # ---- a linha da LEGENDA FIXA (a caixa colorida do take) ----
+        # ⛔ NAO TEM CHAVE LIGA/DESLIGA, de proposito: texto em branco ja' quer
+        # dizer "nao quero", e um botao a mais nao cabia na altura da tela.
+        lf = self._fixo_linha
+        self.ent_fixo = tk.Entry(lf, bg=SURFACE2, fg=INK, relief="flat", bd=0,
+                                 font=FT, insertbackground=INK,
+                                 highlightthickness=1, highlightbackground=LINE,
+                                 highlightcolor=AQUA)
+        self.ent_fixo.pack(side="left", fill="x", expand=True, ipady=3)
+        self.ent_fixo.insert(0, esteira.CFG.get("fixo_texto") or "")
+        # ⚠️ grava no SOLTAR DA TECLA e ao sair do campo, nunca a cada
+        # caractere com salvar_cfg — seria escrever o config.json a cada letra.
+        self.ent_fixo.bind("<KeyRelease>", self._fixo_digitou)
+        self.ent_fixo.bind("<FocusOut>", self._fixo_soltou)
+        self.ent_fixo.bind("<Return>", self._fixo_soltou)
+
+        self.bt_cor_txt = tk.Button(
+            lf, text="A", command=lambda: self._fixo_cor("fixo_cor"),
+            font=("Segoe UI", 8, "bold"), relief="flat", bd=0, cursor="hand2",
+            width=2, padx=0, pady=0)
+        self.bt_cor_txt.pack(side="left", padx=(4, 0), ipady=2)
+        self.bt_cor_fundo = tk.Button(
+            lf, text="█", command=lambda: self._fixo_cor("fixo_fundo"),
+            font=("Segoe UI", 8, "bold"), relief="flat", bd=0, cursor="hand2",
+            width=2, padx=0, pady=0)
+        self.bt_cor_fundo.pack(side="left", padx=(2, 0), ipady=2)
+
+        self.cb_fixo_take = ttk.Combobox(
+            lf, style="Eddie.TCombobox", width=9, state="readonly", font=FT,
+            values=self._FIXO_TAKES_VALS)
+        self.cb_fixo_take.set(self._fixo_take_rotulo())
+        self.cb_fixo_take.pack(side="left", padx=(4, 0))
+        self.cb_fixo_take.bind("<<ComboboxSelected>>", self._fixo_take_escolhido)
 
 
         # erros
@@ -638,29 +735,295 @@ class App(tk.Tk):
             v = 0.47
         return max(self._LEG_MIN, min(self._LEG_MAX, v))
 
-    def _leg_pegar(self, e):
-        """Qual das duas linhas o clique agarrou: a mais PROXIMA.
+    # ⭐⭐ OS LIMITES DO ALVO NAO SAO OS DA LEGENDA, e nao podem ser.
+    # ⛔ A legenda e o CTA sao faixas de texto centradas: basta nao encostar na
+    # borda. O circulado tem PENDURICALHOS — o "here" fica 50px a direita e
+    # 134px acima do centro, e a seta 137px a esquerda (medido em 720x1280).
+    # Deixar o centro chegar a 90% poria o "here" FORA DO QUADRO, e o ASS corta
+    # em silencio: sairia meia palavra e nenhum erro.
+    # ⚠️ As contas: cx + 50 + 60 <= 720 -> x <= 0.85; cx - 137 >= 0 -> x >= 0.19;
+    # cy - 134 - 21 >= 0 -> y >= 0.13; cy + 78 <= 1280 -> y <= 0.93.
+    _AQ_X_MIN, _AQ_X_MAX = 0.19, 0.85
+    _AQ_Y_MIN, _AQ_Y_MAX = 0.13, 0.93
 
-        \u26d4 Escolhe no BUTTON-1 e guarda ate' soltar. Decidir a cada
+    def _aqui_pos(self):
+        """O centro do circulado como (x, y) em fracao. Mesmo clamp do esteira."""
+        def _f(chave, padrao, lo, hi):
+            t = (esteira.CFG.get(chave) or str(padrao)).strip().replace("%", "")
+            try:
+                v = float(t) / 100.0
+            except ValueError:
+                v = padrao / 100.0
+            return max(lo, min(hi, v))
+        return (_f("aqui_x", 81, self._AQ_X_MIN, self._AQ_X_MAX),
+                _f("aqui_y", 68, self._AQ_Y_MIN, self._AQ_Y_MAX))
+
+    # ===================================================================
+    # ⭐⭐ A PREVIA DO TAKE NO SELETOR — 2026-08-28
+    # ===================================================================
+    _FUNDO_NENHUM = "sem fundo"
+    _FUNDO_ARQUIVO = "escolher arquivo..."
+
+    def _fundo_valores(self):
+        """A lista do combo: os slots que TEM video, mais as duas opcoes."""
+        vals = [self._FUNDO_NENHUM]
+        for i, p in enumerate(self.manual):
+            if p:
+                n = os.path.basename(p)
+                if len(n) > 13:
+                    n = n[:11] + ".."
+                vals.append("%d · %s" % (i + 1, n))
+        vals.append(self._FUNDO_ARQUIVO)
+        return vals
+
+    def _fundo_lista(self):
+        """Refaz a lista quando os takes mudam.
+
+        ⚠️ Se o item escolhido sumiu (ele limpou os slots), o fundo cai para
+        `sem fundo` em vez de continuar mostrando um quadro de video que nao
+        esta' mais na fila — previa de video errado e' pior que previa nenhuma.
+        """
+        vals = self._fundo_valores()
+        self.cb_fundo.configure(values=vals)
+        if self.cb_fundo.get() not in vals:
+            self.cb_fundo.set(self._FUNDO_NENHUM)
+            self._leg_fundo = None
+            self._leg_img = None
+            self._leg_pintar()
+
+    def _fundo_escolhido(self, _e=None):
+        v = self.cb_fundo.get()
+        if v == self._FUNDO_NENHUM:
+            self._leg_fundo = None
+        elif v == self._FUNDO_ARQUIVO:
+            # ⭐ existe para o fluxo do ZIP, onde os takes nao passam pelos
+            # slots manuais: ele aponta o arquivo direto.
+            p = filedialog.askopenfilename(
+                parent=self, title="Video de fundo do seletor",
+                filetypes=[("Videos", "*.mp4 *.mov *.mkv *.webm *.m4v *.avi"),
+                           ("Todos", "*.*")])
+            if not p:
+                self.cb_fundo.set(self._FUNDO_NENHUM)
+                self._leg_fundo = None
+            else:
+                self._leg_fundo = os.path.normpath(p)
+                nome = os.path.basename(p)
+                self.cb_fundo.configure(
+                    values=self._fundo_valores() + [nome])
+                self.cb_fundo.set(nome)
+        else:
+            try:
+                i = int(v.split(" ")[0]) - 1
+            except ValueError:
+                i = -1
+            self._leg_fundo = self.manual[i] if 0 <= i < N_MANUAL else None
+        self._fundo_carregar()
+        self._leg_pintar()
+
+    def _fundo_carregar(self):
+        """Puxa UM quadro do video escolhido e guarda como fundo do quadro.
+
+        ⛔ PPM, nao PNG: o `tk.PhotoImage` do tkinter puro le' GIF/PGM/PPM e
+        mais nada. PNG obrigaria a Pillow, que nao esta' no venv — instalar
+        uma dependencia inteira para desenhar uma miniatura seria caro demais.
+        ⚠️ A REFERENCIA FICA EM `self._leg_img`: PhotoImage sem referencia viva
+        e' coletado pelo Python e o canvas mostra vazio, SEM ERRO NENHUM. E' o
+        modo de falha classico do tkinter e o mais dificil de diagnosticar.
+        ⭐ O quadro sai do MEIO do take: o comeco costuma ser transicao e o fim
+        costuma ser a mao saindo. O meio e' onde a cena esta' montada.
+        """
+        self._leg_img = None
+        p = getattr(self, "_leg_fundo", None)
+        if not p or not os.path.isfile(p):
+            return
+        try:
+            t = max(0.1, pipeline.duracao(p) / 2.0)
+        except Exception:
+            t = 1.0
+        dest = os.path.join(tempfile.gettempdir(), "veoedit_fundo.ppm")
+        try:
+            r = subprocess.run(
+                [pipeline.FFMPEG, "-y", "-v", "error", "-ss", "%.2f" % t,
+                 "-i", p, "-frames:v", "1",
+                 "-vf", "scale=%d:%d" % (self.LEG_W, self.LEG_H),
+                 "-f", "image2", "-c:v", "ppm", dest],
+                capture_output=True, creationflags=pipeline.SEM_JANELA)
+            if r.returncode == 0 and os.path.isfile(dest):
+                self._leg_img = tk.PhotoImage(file=dest)
+        except Exception:
+            # ⚠️ previa e' conforto, nao funcao: se o ffmpeg falhar o seletor
+            # volta ao fundo preto e o editor segue trabalhando.
+            self._leg_img = None
+
+    # ⭐ "todos os takes" e' o PRIMEIRO da lista porque e' o padrao pedido
+    # na primeira ordem (*"a chave deve ativar em todos os takes"*); os
+    # numeros vieram depois, como recorte.
+    _AQUI_TAKES_VALS = ["todos os takes"] + [
+        "%d take%s" % (n, "" if n == 1 else "s")
+        for n in range(1, N_MANUAL + 1)]
+
+    def _aqui_takes_rotulo(self):
+        t = (esteira.CFG.get("aqui_takes") or "").strip()
+        if t.isdigit() and 1 <= int(t) <= N_MANUAL:
+            n = int(t)
+            return "%d take%s" % (n, "" if n == 1 else "s")
+        return self._AQUI_TAKES_VALS[0]
+
+    def _aqui_takes_escolhido(self, _e=None):
+        v = self.cb_aqui_takes.get()
+        # ⚠️ "" no CFG quer dizer TODOS, nao zero — ver `_inteiro` no
+        # `esteira.py`. Gravar "0" apagaria o efeito do video inteiro.
+        esteira.CFG["aqui_takes"] = ("" if v == self._AQUI_TAKES_VALS[0]
+                                     else v.split(" ")[0])
+        esteira.salvar_cfg()
+
+    # ===================================================================
+    # ⭐⭐ A LEGENDA FIXA — a caixa colorida do take (2026-08-29)
+    # ===================================================================
+    # Ordem do operador com o reel `1 (1).mp4` na mao: *"existe uma legenda
+    # fixa no take 1 (...) quero escrever algo e posicionar onde ira ficar (...)
+    # e selecionar se sera aplicada no take 1, 2, 3, 4... ou em todos"*, e logo
+    # depois *"tambem quero poder controlar a cor da legenda e do fundo dela"*.
+    _FIXO_TAKES_VALS = ["todos"] + ["take %d" % n for n in range(1, N_MANUAL + 1)]
+    # ⚠️ a caixa e' larga: com 24 caracteres ela ocupa 88% da largura. Por
+    # isso o X anda menos do que parece — o libass encaixa a caixa dentro do
+    # quadro, e texto largo so' consegue ficar no meio. O Y anda inteiro.
+    _FX_X_MIN, _FX_X_MAX = 0.10, 0.90
+    _FX_Y_MIN, _FX_Y_MAX = 0.06, 0.94
+
+    def _fixo_pos(self):
+        def _f(chave, padrao, lo, hi):
+            t = (esteira.CFG.get(chave) or str(padrao)).strip().replace("%", "")
+            try:
+                v = float(t) / 100.0
+            except ValueError:
+                v = padrao / 100.0
+            return max(lo, min(hi, v))
+        return (_f("fixo_x", 50, self._FX_X_MIN, self._FX_X_MAX),
+                _f("fixo_y", 15, self._FX_Y_MIN, self._FX_Y_MAX))
+
+    def _fixo_txt(self):
+        return (esteira.CFG.get("fixo_texto") or "").strip()
+
+    def _fixo_take_rotulo(self):
+        t = (esteira.CFG.get("fixo_take") or "").strip()
+        if t.isdigit() and 1 <= int(t) <= N_MANUAL:
+            return "take %d" % int(t)
+        return self._FIXO_TAKES_VALS[0]
+
+    def _fixo_take_escolhido(self, _e=None):
+        v = self.cb_fixo_take.get()
+        esteira.CFG["fixo_take"] = ("" if v == self._FIXO_TAKES_VALS[0]
+                                    else v.split(" ")[1])
+        esteira.salvar_cfg()
+
+    def _fixo_digitou(self, _e=None):
+        """A cada tecla so' o DESENHO muda; gravar fica para o soltar."""
+        esteira.CFG["fixo_texto"] = self.ent_fixo.get()
+        self._leg_pintar()
+
+    def _fixo_soltou(self, _e=None):
+        esteira.CFG["fixo_texto"] = self.ent_fixo.get()
+        esteira.salvar_cfg()
+        self._leg_pintar()
+
+    def _fixo_cor(self, chave):
+        """Abre o seletor de cor do sistema e guarda em #RRGGBB.
+
+        ⚠️ #RRGGBB e' o que o tkinter devolve; quem inverte para o BGR do ASS
+        e' o `captions._ass_cor`. Guardar aqui ja' invertido faria o painel
+        mostrar uma cor e o video sair com outra.
+        """
+        atual = esteira.CFG.get(chave) or ("#000000" if chave == "fixo_cor"
+                                           else "#F0D000")
+        _rgb, hexa = colorchooser.askcolor(color=atual, parent=self,
+                                           title="Cor")
+        if not hexa:
+            return
+        esteira.CFG[chave] = hexa.upper()
+        esteira.salvar_cfg()
+        self._leg_pintar()
+
+    def _aqui_alternar(self):
+        lig = esteira.CFG.get("aqui_ligado") == "1"
+        esteira.CFG["aqui_ligado"] = "" if lig else "1"
+        esteira.salvar_cfg()
+        self._leg_pintar()
+
+    def _leg_pegar(self, e):
+        """O que o clique agarrou: o ALVO do "here", ou a linha mais PROXIMA.
+
+        ⛔ O alvo so' e' agarravel com a CHAVE LIGADA. Desligada, o seletor se
+        comporta exatamente como antes deste efeito existir — quem nunca usa o
+        circulado nao pode perder o controle das duas alturas por causa dele.
+
+        ⛔ E o teste do alvo e' de CAIXA, nao de proximidade: as linhas ocupam a
+        largura inteira, entao "a mais proxima" venceria sempre e o alvo nunca
+        seria pego. Caixa pequena tambem devolve as linhas assim que o clique
+        sai de cima do circulo — e o circulo ocupa 36 dos 104 px de largura,
+        entao sobra quadro de sobra para agarrar as linhas ao lado dele.
+
+        ⛔ Escolhe no BUTTON-1 e guarda ate' soltar. Decidir a cada
         `<B1-Motion>` faria a alca pular para a outra linha no instante em
-        que as duas se cruzassem \u2014 e cruzar e' exatamente o que ele faz
+        que as duas se cruzassem — e cruzar e' exatamente o que ele faz
         quando quer inverter a ordem delas.
         """
         v = e.y / float(self.LEG_H)
+        # ⛔ A CAIXA FIXA E' O PRIMEIRO ALVO quando ha' texto: ela e' a maior
+        # coisa do quadro e o operador acabou de digitar nela. As linhas
+        # continuam alcancaveis por fora dela.
+        fx_txt = self._fixo_txt()
+        if fx_txt:
+            fx, fy = self._fixo_pos()
+            larg = min(0.88, max(0.16, len(fx_txt) / 24.0 * 0.88))
+            n_lin = max(1, (len(fx_txt) + 23) // 24)
+            if (abs(e.x - fx * self.LEG_W) <= larg * self.LEG_W / 2
+                    and abs(e.y - fy * self.LEG_H)
+                    <= max(7, 0.048 * n_lin * self.LEG_H / 2)):
+                self._leg_alvo = "fixo"
+                self._leg_arrastar(e)
+                return
+        if esteira.CFG.get("aqui_ligado") == "1":
+            ax, ay = self._aqui_pos()
+            if (abs(e.x - ax * self.LEG_W) <= 22
+                    and abs(e.y - ay * self.LEG_H) <= 16):
+                self._leg_alvo = "aqui"
+                self._leg_arrastar(e)
+                return
         self._leg_alvo = ("legenda_pos"
                           if abs(v - self._leg_pos()) <= abs(v - self._cta_pos())
                           else "cta_pos")
         self._leg_arrastar(e)
 
     def _leg_arrastar(self, e):
-        """Arrasta a linha agarrada dentro do quadro 9:16."""
-        v = e.y / float(self.LEG_H)
-        v = max(self._LEG_MIN, min(self._LEG_MAX, v))
-        esteira.CFG[getattr(self, "_leg_alvo", "legenda_pos")] = "%d" % round(v * 100)
+        """Arrasta o que o `_leg_pegar` agarrou dentro do quadro 9:16."""
+        alvo = getattr(self, "_leg_alvo", "legenda_pos")
+        if alvo == "fixo":
+            x = e.x / float(self.LEG_W)
+            y = e.y / float(self.LEG_H)
+            esteira.CFG["fixo_x"] = "%d" % round(
+                max(self._FX_X_MIN, min(self._FX_X_MAX, x)) * 100)
+            esteira.CFG["fixo_y"] = "%d" % round(
+                max(self._FX_Y_MIN, min(self._FX_Y_MAX, y)) * 100)
+            self._leg_pintar()
+            return
+        if alvo == "aqui":
+            # ⭐ DOIS eixos de uma vez: o circulado e' um alvo, e alvo se move
+            # nas duas direcoes. As duas linhas continuam so' na vertical.
+            x = e.x / float(self.LEG_W)
+            y = e.y / float(self.LEG_H)
+            esteira.CFG["aqui_x"] = "%d" % round(
+                max(self._AQ_X_MIN, min(self._AQ_X_MAX, x)) * 100)
+            esteira.CFG["aqui_y"] = "%d" % round(
+                max(self._AQ_Y_MIN, min(self._AQ_Y_MAX, y)) * 100)
+        else:
+            v = e.y / float(self.LEG_H)
+            v = max(self._LEG_MIN, min(self._LEG_MAX, v))
+            esteira.CFG[alvo] = "%d" % round(v * 100)
         self._leg_pintar()
 
     def _leg_soltar(self, _e=None):
-        # \u26a0\ufe0f grava no SOLTAR, nao a cada pixel do arrasto: salvar no
+        # ⚠️ grava no SOLTAR, nao a cada pixel do arrasto: salvar no
         # `<B1-Motion>` escreveria o config.json dezenas de vezes por segundo.
         esteira.salvar_cfg()
 
@@ -678,13 +1041,26 @@ class App(tk.Tk):
         lig = esteira.CFG.get("legenda_ligada") == "1"
         v = self._leg_pos()
 
-        # \u2b50 a faixa que a FONTE usa (58%-63%), medida no 2.mp4
-        c.create_rectangle(1, H * 0.58, W - 1, H * 0.63,
-                           fill="#0d1b16", outline="")
-        # \u2b50\u2b50 A LINHA DO CTA VIROU ARRASTAVEL \u2014 2026-08-26, segunda ordem
+        # ⭐⭐ O QUADRO DO TAKE ENTRA PRIMEIRO, embaixo de tudo — e' o ponto
+        # do pedido: sem ele as tres reguas flutuam sobre preto e a altura
+        # "certa" e' chute. Com o quadro, ele ve' onde cai a cabeca.
+        img = getattr(self, "_leg_img", None)
+        if img is not None:
+            c.create_image(0, 0, anchor="nw", image=img)
+
+        # ⭐ a faixa que a FONTE usa (58%-63%), medida no 2.mp4
+        # ⚠️ com o quadro atras ela vira CONTORNO: preenchida, tapava
+        # justamente a parte do take que ele quer enxergar.
+        if img is None:
+            c.create_rectangle(1, H * 0.58, W - 1, H * 0.63,
+                               fill="#0d1b16", outline="")
+        else:
+            c.create_rectangle(1, H * 0.58, W - 1, H * 0.63,
+                               outline="#1d5c4e", dash=(2, 2))
+        # ⭐⭐ A LINHA DO CTA VIROU ARRASTAVEL — 2026-08-26, segunda ordem
         # dele: *"tambem quero poder controlar a altura do CTA"*. Ela ja'
         # estava desenhada como referencia; agora e' um controle.
-        # \u26d4 AS DUAS NO MESMO QUADRO, e isso e' o ponto: a razao de existir a
+        # ⛔ AS DUAS NO MESMO QUADRO, e isso e' o ponto: a razao de existir a
         # marca do CTA era ele nao arrastar a legenda para cima dela. Num
         # segundo quadro, separado, a colisao voltaria a ser invisivel.
         vc = self._cta_pos()
@@ -708,7 +1084,33 @@ class App(tk.Tk):
         if not lig:
             c.create_text(W / 2, H / 2, text="DESLIGADA", fill="#5a6b73",
                           font=("Segoe UI", 8, "bold"))
-        # \u26a0\ufe0f AVISA QUANDO AS DUAS SE ENCOSTAM. O bloco da legenda ocupa
+
+        # ⭐⭐ O ALVO DO CIRCULADO + "HERE" — 2026-08-28, ordem do operador:
+        # *"o local que aparece o circulado e o here deve ser selecionavel ali
+        # no seletor das legendas"*. Mesmo quadro das duas alturas, e e' o
+        # ponto: e' aqui que se ve' se o circulo vai cair em cima da legenda.
+        # ⭐ As proporcoes sao as MEDIDAS do reel, nao aproximacao de desenho:
+        # raio 0,169 da largura e 0,059 da altura; o "here" a +0,070 da largura
+        # e -0,105 da altura do centro. O que ele arrasta aqui e' o que sai la'.
+        # ⚠️ DESENHADO MESMO DESLIGADO, em cor apagada: sem isso ele teria de
+        # ligar a chave as cegas para descobrir onde o efeito ia cair.
+        aq_lig = esteira.CFG.get("aqui_ligado") == "1"
+        ax, ay = self._aqui_pos()
+        acx, acy = ax * W, ay * H
+        # ⚠️ 118/720 e 72,5/1280 — os MESMOS raios do `captions.py`, no
+        # estado de repouso (o pulso so' sobe). Numero solto aqui faria o
+        # painel prometer um tamanho e o video entregar outro.
+        arx, ary = W * 0.164, H * 0.0566
+        cor_aq = RED if aq_lig else "#5a3330"
+        c.create_line(acx - W * 0.182, acy - H * 0.146,
+                      acx - W * 0.087, acy - H * 0.074,
+                      fill=cor_aq, width=2, arrow="last",
+                      arrowshape=(6, 7, 3))
+        c.create_oval(acx - arx, acy - ary, acx + arx, acy + ary,
+                      outline=cor_aq, width=2)
+        c.create_text(acx + W * 0.070, acy - H * 0.105, text="here",
+                      fill=cor_aq, font=("Segoe UI", 7, "bold"))
+        # ⚠️ AVISA QUANDO AS DUAS SE ENCOSTAM. O bloco da legenda ocupa
         # ~5,5%% da altura e o do CTA ~4,5%%; abaixo de 8 pontos de distancia
         # eles se sobrepoem no video, e no quadro pequeno isso passa
         # despercebido.
@@ -721,6 +1123,37 @@ class App(tk.Tk):
         self.lb_cta_pct.configure(text="CTA %d%%" % round(vc * 100),
                                   fg=RED if perto else
                                   (GOLD if cta_lig else MUT))
+        # ⭐⭐ A CAIXA DA LEGENDA FIXA, desenhada nas cores de verdade — e' o
+        # unico jeito de ele ver ANTES de renderizar se o texto preto vai sumir
+        # num fundo escuro. A largura acompanha o tamanho do texto: 24
+        # caracteres ocupam 88% da largura, medido no render.
+        fx_txt = self._fixo_txt()
+        if fx_txt:
+            fx, fy = self._fixo_pos()
+            n_lin = max(1, (len(fx_txt) + 23) // 24)
+            larg = min(0.88, max(0.16, len(fx_txt) / 24.0 * 0.88))
+            fw, fh = W * larg, H * 0.048 * n_lin
+            cor_fx = esteira.CFG.get("fixo_cor") or "#000000"
+            cor_bg = esteira.CFG.get("fixo_fundo") or "#F0D000"
+            c.create_rectangle(fx * W - fw / 2, fy * H - fh / 2,
+                               fx * W + fw / 2, fy * H + fh / 2,
+                               fill=cor_bg, outline=cor_bg)
+            c.create_text(fx * W, fy * H, text=fx_txt[:10], fill=cor_fx,
+                          font=("Segoe UI", 6, "bold"))
+        for _b, _k, _p in ((self.bt_cor_txt, "fixo_cor", "#000000"),
+                           (self.bt_cor_fundo, "fixo_fundo", "#F0D000")):
+            _c = esteira.CFG.get(_k) or _p
+            _b.configure(bg=_c, activebackground=_c,
+                         fg="#FFFFFF" if _k == "fixo_fundo" else "#FFFFFF")
+        self.lb_aqui_pct.configure(
+            text="here %d/%d%%" % (round(ax * 100), round(ay * 100)),
+            fg=RED if aq_lig else MUT)
+        self.bt_aqui.configure(
+            bg=RED if aq_lig else SURFACE2,
+            fg="#2a0b08" if aq_lig else DIM,
+            activebackground=RED if aq_lig else SURFACE2,
+            activeforeground="#2a0b08" if aq_lig else INK,
+            text="circulado ligado" if aq_lig else "circulado desligado")
         self.bt_leg.configure(
             bg=AQUA if lig else SURFACE2,
             fg="#04231f" if lig else DIM,
@@ -862,6 +1295,10 @@ class App(tk.Tk):
         self._pintar_manual()
 
     def _pintar_manual(self):
+        # ⭐ a lista do fundo acompanha os slots: escolher ou limpar take
+        # atualiza o combo na mesma acao, sem o operador ter de mexer nele.
+        if hasattr(self, "cb_fundo"):
+            self._fundo_lista()
         for i, b in enumerate(self.lb_manual):
             p = self.manual[i]
             nome = os.path.basename(p) if p else "escolher..."
