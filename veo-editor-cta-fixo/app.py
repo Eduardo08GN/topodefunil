@@ -1002,8 +1002,12 @@ class App(tk.Tk):
     # ⚠️ O sorteio fica PRIMEIRO de proposito: e' o padrao e o que o
     # operador deve escolher na duvida. Uma lista que abre num numero
     # convida a travar o lote sem querer.
-    _VEL_VALS = ("sorteio", "0.90x", "0.95x", "1.00x", "1.05x",
-                 "1.10x", "1.15x", "1.20x")
+    # ⚠️ O teto e' 1.50x por pedido do operador. O `atempo` do ffmpeg aceita
+    # de 0.5 a 100 nas versoes atuais, entao 1.5 nao encosta em limite algum
+    # — quem manda no teto util e' o ouvido, nao o filtro.
+    _VEL_VALS = ("sorteio", "0.90x", "0.95x", "1.00x", "1.05x", "1.10x",
+                 "1.15x", "1.20x", "1.25x", "1.30x", "1.35x", "1.40x",
+                 "1.45x", "1.50x")
 
     def _vel_rotulo(self):
         v = (esteira.CFG.get("velocidade") or "sorteio").strip().lower()
