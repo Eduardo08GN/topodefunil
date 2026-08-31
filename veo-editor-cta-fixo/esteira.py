@@ -70,7 +70,12 @@ VEL_MIN, VEL_MAX = 0.95, 1.03  # -5% a +3%, sorteado por video
 
 # watch_dir vazio = usa o Downloads do Windows; keywords = palavras-gatilho do
 # CTA destacadas na legenda (cor propria + fonte maior)
-CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": "",
+CFG = {"model": "base", "margem": "0.2s", "watch_dir": "",
+       # ⭐⭐ IDIOMA DO AUDIO (2026-08-30) — "en", "de" ou "fr". Ele manda no
+       # modelo do whisper (`captions.modelo_para`) e na palavra do circulado.
+       # ⛔ Guardado SEM o sufixo `.en` no "model": quem poe e tira o sufixo e'
+       # o `modelo_para`, para nao existir a combinacao `small.en` + alemao.
+       "lang": "en",
        # ⭐ YES entrou em 2026-08-21 com o AMISH 16S, cuja keyword de
        # automacao e' `YES` por ordem dele (*"o cta desse agente deve ser
        # sempre a palavra yes"*). Sem ela o CTA saia sem destaque nenhum —
@@ -293,10 +298,19 @@ def _carregar_cfg():
                 CFG[k] = dados[k]
     except (OSError, ValueError):
         pass
+    _migrar_model()
     # ⛔ musica NAO travada morre com a sessao: se o config diz que nao esta'
     # travada, a escolha gravada e' resto da sessao anterior e sai daqui.
     if CFG.get("musica_travada") != "1":
         CFG["musica"] = ""
+
+
+def _migrar_model():
+    """Config gravado antes de 30/08 guarda "base.en". O sufixo agora e'
+    derivado do idioma, entao ele sai do disco na primeira leitura."""
+    m = CFG.get("model") or ""
+    if m.endswith(".en"):
+        CFG["model"] = m[:-3]
 
 
 def salvar_cfg():
@@ -587,7 +601,12 @@ def _processar_zip(nome):
                        % (dias["dia2"], dias["estilo"]))
         if dias.get("mudos") is not None:
             _log_atual("takes mudos declarados: %d" % dias["mudos"])
-        processar_video(takes, out, model=CFG["model"], margem=CFG["margem"],
+        # ⛔⛔ O IDIOMA TAMBEM AQUI (2026-08-30). Este e' o caminho
+        # AUTOMATICO (o zip que cai no Downloads), e e' o que o operador mais
+        # usa. Sem esta linha o seletor do painel funcionaria so' na "Pasta
+        # avulsa" e a fila continuaria em ingles, sem erro nenhum na tela.
+        processar_video(takes, out, model=CFG["model"],
+                        lang=CFG.get("lang", "en"), margem=CFG["margem"],
                         fator=fator, keywords=kws, musica=mus, dias=dias,
                         log=_log_atual)
 

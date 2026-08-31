@@ -184,6 +184,7 @@ class ManualDialog(tk.Toplevel):
         def rodar():
             try:
                 processar_pasta(entrada, saida, model=esteira.CFG["model"],
+                                lang=esteira.CFG.get("lang", "en"),
                                 margem=esteira.CFG["margem"],
                                 musica=esteira.musica_atual(),
                                 dias=esteira.dias_atual(),
@@ -555,13 +556,28 @@ class App(tk.Tk):
         self.option_add("*TCombobox*Listbox.selectBackground", AQUA)
         self.option_add("*TCombobox*Listbox.selectForeground", "#04231f")
         self.option_add("*TCombobox*Listbox.font", FT)
-        self.cb_model = ttk.Combobox(rodape, style="Eddie.TCombobox", width=22,
+        self.cb_model = ttk.Combobox(rodape, style="Eddie.TCombobox", width=20,
                                      state="readonly", font=FT,
-                                     values=["base.en (rapido)", "small.en (equilibrado)",
-                                             "medium.en (preciso, lento)"])
+                                     values=["base (rapido)", "small (equilibrado)",
+                                             "medium (preciso, lento)"])
         self.cb_model.current(0)
-        self.cb_model.pack(side="left", padx=(8, 20))
+        self.cb_model.pack(side="left", padx=(8, 16))
         self.cb_model.bind("<<ComboboxSelected>>", self._cfg)
+        # ⭐⭐ IDIOMA DO AUDIO (2026-08-30). Ate' hoje o editor so' entendia
+        # ingles: os tres modelos do menu eram `.en` e o `lang` nunca saia de
+        # "en". Audio alemao ou frances nao dava erro — saia transcrito
+        # foneticamente como ingles, com cara de legenda pronta.
+        # ⛔ O SUFIXO `.en` SUMIU DOS ROTULOS de proposito: quem o poe e tira
+        # e' o `captions.modelo_para`, a partir DESTE combo. Escolher modelo
+        # e idioma em separado permitia a combinacao quebrada.
+        tk.Label(rodape, text="Idioma", bg=BG, fg=DIM, font=FT).pack(side="left")
+        self._IDIOMAS = [("en", "Ingles"), ("de", "Alemao"), ("fr", "Frances")]
+        self.cb_lang = ttk.Combobox(rodape, style="Eddie.TCombobox", width=10,
+                                    state="readonly", font=FT,
+                                    values=[r for _c, r in self._IDIOMAS])
+        self.cb_lang.current(0)
+        self.cb_lang.pack(side="left", padx=(8, 20))
+        self.cb_lang.bind("<<ComboboxSelected>>", self._cfg)
         tk.Label(rodape, text="Silencio", bg=BG, fg=DIM, font=FT).pack(side="left")
         self.cb_margem = ttk.Combobox(rodape, style="Eddie.TCombobox", width=16,
                                       state="readonly", font=FT,
@@ -674,6 +690,11 @@ class App(tk.Tk):
     def _cfg(self, _=None):
         esteira.CFG["model"] = self.cb_model.get().split(" ")[0]
         esteira.CFG["margem"] = self.cb_margem.get().split(" ")[0]
+        rot = self.cb_lang.get()
+        for cod, r in self._IDIOMAS:
+            if r == rot:
+                esteira.CFG["lang"] = cod
+                break
         esteira.salvar_cfg()
 
     SEM_MUSICA = "(sem musica)"
@@ -1243,6 +1264,9 @@ class App(tk.Tk):
         for i, v in enumerate(self.cb_margem["values"]):
             if v.split(" ")[0] == esteira.CFG["margem"]:
                 self.cb_margem.current(i)
+        for i, (cod, rot) in enumerate(self._IDIOMAS):
+            if cod == esteira.CFG.get("lang", "en"):
+                self.cb_lang.current(i)
         self._musicas_refresh()
         self._pintar_trava_musica()
         # ⛔ A LINHA DO `DAY` SO' PODE SER PREENCHIDA AQUI (2026-08-21).

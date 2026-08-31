@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>150 Receitas da Boa Forma | Vida mais Leve</title>
+<meta name="description" content="150 receitas simples para uma vida mais leve. Sucos, chas, sopas e refeicoes do dia a dia, mais quatro bonus gratis. Entrega imediata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   150 FITNESS RECIPES / landing page
+   Paleta e tipografia: fitreceitaspro.lovable.app
+   Estrutura: 500atividadesbncc.pedido-seguro.shop
+   REGRAS: zero travessao no texto, zero emoji, icones de linha SVG
+   ================================================================ */
+:root{
+  --cream:#F2EFE9;
+  --surface:#FFFFFF;
+  --surface-2:#F8F6F1;
+  --ink:#1A1A1A;
+  --ink-soft:#54524E;
+  --green:#196B45;
+  --green-dark:#125234;
+  --green-tint:#E8F7EB;
+  --check:#4CAF50;
+  --gold:#D9A441;
+  --gold-tint:#FBF3E2;
+  --red:#C4362F;
+  --line:#DCD7CE;
+  --r:10px;
+  --r-lg:16px;
+  --shadow:0 1px 2px rgba(26,26,26,.04),0 8px 24px rgba(26,26,26,.06);
+  --shadow-lg:0 2px 4px rgba(26,26,26,.05),0 16px 48px rgba(26,26,26,.10);
+  --max:1120px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.02em;font-weight:900}
+p{margin:0}
+a{color:inherit}
+
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 20px}
+.sec{padding:56px 0}
+.sec-tight{padding:40px 0}
+.sec-white{background:var(--surface)}
+.sec-green{background:var(--green);color:#fff}
+.center{text-align:center}
+
+/* ---------- icones ---------- */
+.i{width:1em;height:1em;flex:0 0 auto;stroke:currentColor;fill:none;
+   stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+.eyebrow{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--green);background:var(--green-tint);
+  padding:7px 14px;border-radius:999px;margin-bottom:18px;
+}
+.sec-green .eyebrow{color:#fff;background:rgba(255,255,255,.16)}
+h1{font-size:clamp(31px,7vw,54px)}
+h2{font-size:clamp(26px,4.6vw,40px)}
+h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.lede{font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);margin-top:16px}
+.sec-green .lede{color:rgba(255,255,255,.86)}
+.kicker{max-width:660px;margin-left:auto;margin-right:auto}
+
+/* ---------- botao ---------- */
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:19px 26px;background:var(--green);color:#fff;
+  font-size:18px;font-weight:700;font-family:inherit;letter-spacing:-.01em;
+  border:0;border-radius:var(--r);text-decoration:none;cursor:pointer;
+  box-shadow:0 4px 14px rgba(25,107,69,.28);
+  transition:transform .12s ease,background .18s ease,box-shadow .18s ease;
+}
+.btn .i{width:19px;height:19px;stroke-width:2.4}
+.btn:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(25,107,69,.34)}
+.btn:active{transform:translateY(0)}
+.btn-gold{background:var(--gold);color:#1A1A1A;box-shadow:0 4px 14px rgba(217,164,65,.34)}
+.btn-gold:hover{background:#C8942F;box-shadow:0 6px 20px rgba(217,164,65,.42)}
+.btn-sm{width:auto;padding:12px 22px;font-size:15px}
+.btn-note{font-size:13.5px;color:var(--ink-soft);margin-top:12px;text-align:center}
+.sec-green .btn-note{color:rgba(255,255,255,.75)}
+
+/* ---------- topo ---------- */
+.topbar{
+  position:sticky;top:0;z-index:60;background:rgba(242,239,233,.92);
+  backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);
+}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:900;letter-spacing:-.02em;font-size:17px}
+.brand-mark{
+  width:28px;height:28px;border-radius:7px;background:var(--green);color:#fff;
+  display:grid;place-items:center;font-size:11px;font-weight:900;letter-spacing:0;
+}
+.topbar .btn-sm{display:none}
+
+/* ---------- hero ---------- */
+.hero{padding:44px 0 56px}
+/* Ordem empilhada (celular e tablet): texto, IMAGEM, preco. A caixa de preco
+   e' irma do texto e nao filha dele justamente para poder cair abaixo da capa.
+   No desktop a grade devolve as duas para a coluna da esquerda. */
+.hero-grid{display:grid;gap:30px;align-items:center}
+.pricebox{margin-top:0}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:8px 15px;
+  font-size:13.5px;font-weight:500;
+}
+.badge .i{width:16px;height:16px;color:var(--green)}
+.badge b{font-weight:700}
+.hero-art{position:relative;display:grid;place-items:center}
+.hero-art::before{
+  content:"";position:absolute;inset:14% 16%;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,26,26,.09),transparent 70%);
+  filter:blur(34px);
+}
+.book{
+  position:relative;width:min(340px,84%);border-radius:6px;
+  transform:rotate(-1.6deg);
+  /* Sombra em CAMADAS. A capa e' clara e o fundo e' creme, entao uma sombra so'
+     de queda (para baixo) deixava as bordas de cima e dos lados se dissolverem
+     no fundo. As quatro camadas: fio de contorno, ambiente curta, ambiente
+     media e a sombra de chao. As tres primeiras e' que recortam a imagem. */
+  /* Sombra no CINZA ESCURO da pagina (26,26,26 = a cor do texto), nas
+     opacidades altas que a tentativa verde usou. A primeira versao cinza era
+     fraca (.10/.14/.16/.30) e a verde tingia demais: fica o tom neutro com a
+     forca da segunda. Cinza rende menos que cor saturada na mesma alfa, entao
+     os valores sobem mais um degrau. */
+  box-shadow:
+    0 0 0 1px rgba(26,26,26,.22),
+    0 2px 6px rgba(26,26,26,.24),
+    0 14px 30px rgba(26,26,26,.30),
+    0 44px 84px rgba(26,26,26,.48);
+}
+.ph-book{
+  aspect-ratio:896/1200;background:var(--surface-2);
+  border:2px dashed var(--line);border-radius:6px;display:grid;place-items:center;
+  padding:20px;text-align:center;color:var(--ink-soft);font-size:13.5px;line-height:1.5;
+}
+
+/* ---------- preco ---------- */
+.pricebox{
+  margin-top:26px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:22px;box-shadow:var(--shadow);
+}
+.pricehead{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:2px;
+            font-size:16px;color:var(--ink-soft)}
+.pricehead s{text-decoration:line-through}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap}
+.was{font-size:17px;color:var(--ink-soft);text-decoration:line-through}
+/* O cifrao NAO e' sobrescrito. Como <sup> com top:-.62em ele flutuava acima
+   dos digitos e a peca lia torta. Agora e' inline-flex com align-items:center:
+   o cifrao fica GRANDE e centralizado na vertical do numero, e so' os centavos
+   sobem. E' a composicao classica de preco. */
+.now{display:inline-flex;align-items:center;justify-content:center;
+     font-size:clamp(44px,9vw,62px);font-weight:900;letter-spacing:-.035em;
+     line-height:1;color:var(--green)}
+.now .cur{font-size:.60em;font-weight:900;margin-right:.05em;letter-spacing:0}
+.now .cents{font-size:.38em;font-weight:800;letter-spacing:0;
+            align-self:flex-start;margin-top:.30em;margin-left:.02em}
+.save{
+  display:inline-block;background:var(--red);color:#fff;font-size:12.5px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;padding:5px 11px;border-radius:999px;
+}
+.once{font-size:14px;color:var(--ink-soft);text-align:center;margin-top:8px}
+.pricebox .btn{margin-top:18px}
+.pay{display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;
+     margin-top:14px;font-size:12.5px;color:var(--ink-soft)}
+.pay span{display:inline-flex;align-items:center;gap:6px}
+.pay .i{width:14px;height:14px;color:var(--green)}
+
+/* ---------- grids ---------- */
+.grid{display:grid;gap:16px}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:26px;box-shadow:var(--shadow);
+}
+.card .ico{
+  width:50px;height:50px;border-radius:14px;background:var(--green-tint);color:var(--green);
+  display:grid;place-items:center;margin-bottom:16px;
+}
+.card .ico .i{width:25px;height:25px}
+.card p{color:var(--ink-soft);font-size:15.5px;margin-top:9px}
+
+/* ---------- problema ---------- */
+.problem{background:var(--ink);color:#fff}
+.problem h2{color:#fff}
+.problem .body{max-width:640px;margin:22px auto 0;font-size:clamp(16px,2.2vw,18.5px);
+               color:rgba(255,255,255,.80)}
+.problem .body p+p{margin-top:16px}
+.problem .punch{
+  display:block;margin-top:26px;font-size:clamp(19px,3.4vw,26px);font-weight:900;
+  color:var(--gold);letter-spacing:-.02em;line-height:1.28;
+}
+
+/* ---------- carrossel ---------- */
+.rail{
+  display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:14px;
+  overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;
+  margin:0 -20px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;
+}
+.rail>*{scroll-snap-align:center}
+.rail::-webkit-scrollbar{height:7px}
+.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.slot{
+  background:var(--surface);border:2px dashed var(--line);border-radius:var(--r-lg);
+  aspect-ratio:4/5;display:grid;place-items:center;padding:22px;text-align:center;
+}
+.slot .n{
+  width:34px;height:34px;border-radius:50%;background:var(--green-tint);color:var(--green);
+  display:grid;place-items:center;font-weight:900;font-size:14px;margin:0 auto 12px;
+}
+.slot .t{font-weight:700;font-size:15.5px}
+.slot .s{font-size:13px;color:var(--ink-soft);margin-top:6px;line-height:1.45}
+.slot-video{aspect-ratio:9/16}
+.rail-hint{display:flex;align-items:center;justify-content:center;gap:7px;
+           font-size:13px;color:var(--ink-soft);margin-top:2px}
+.rail-hint .i{width:15px;height:15px}
+
+/* ---------- conteudo ---------- */
+.contentcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+             padding:28px;box-shadow:var(--shadow)}
+.contentcard .head{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.contentcard .head .ico{
+  width:44px;height:44px;border-radius:12px;background:var(--green-tint);color:var(--green);
+  display:grid;place-items:center;flex:0 0 auto;
+}
+.contentcard .head .ico .i{width:23px;height:23px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+/* O <li> NAO pode ser flex. Com display:flex o <b> e o texto que vem depois
+   dele viram DOIS itens de flex e a frase quebra em blocos lado a lado em vez
+   de fluir como uma linha so'. Vira bloco com recuo, e o marcador sai do fluxo
+   por position:absolute. */
+.ticks li{position:relative;padding-left:32px;font-size:16px}
+.ticks li::before{
+  content:"";position:absolute;left:0;top:3px;width:21px;height:21px;border-radius:50%;
+  background:var(--check) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/13px no-repeat;
+}
+.ticks li b{font-weight:700}
+
+/* ---------- category badges ---------- */
+.cat-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cat-badge{background:var(--surface-2);border-radius:var(--r);padding:18px 10px;text-align:center}
+.cat-num{display:block;font-size:clamp(26px,4vw,36px);font-weight:900;color:var(--green);letter-spacing:-.03em;line-height:1}
+.cat-label{display:block;font-size:13px;color:var(--ink-soft);margin-top:5px;line-height:1.3}
+/* ---------- features row ---------- */
+.features-row{display:grid;gap:24px;align-items:center}
+.features-img{border-radius:var(--r-lg);overflow:hidden}
+.features-img img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.ph-features{aspect-ratio:3/4;background:var(--surface-2);border:2px dashed var(--line);
+             border-radius:var(--r-lg);display:grid;place-items:center;padding:20px;
+             text-align:center;color:var(--ink-soft);font-size:13.5px;line-height:1.5}
+.features-grid{display:grid;gap:10px}
+.feature-card{background:var(--surface-2);border-radius:var(--r);padding:16px 18px;
+              display:flex;gap:12px;align-items:flex-start}
+.feature-card .i{width:20px;height:20px;color:var(--green);flex:0 0 auto;margin-top:1px}
+.feature-card b{display:block;font-size:15px;font-weight:700;line-height:1.3}
+.feature-card span{display:block;font-size:13.5px;color:var(--ink-soft);margin-top:3px;line-height:1.4}
+
+/* ---------- bonus ---------- */
+.bonus{position:relative;border-color:var(--gold);background:var(--gold-tint)}
+.bonus-tag{
+  position:absolute;top:-11px;left:22px;background:var(--gold);color:#1A1A1A;
+  font-size:11.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 11px;border-radius:999px;
+}
+.bonus .ico{background:#fff}
+.bonus .val{margin-top:14px;font-size:14px;font-weight:700;color:var(--green)}
+.bonus .val s{color:var(--ink-soft);font-weight:500}
+
+/* ---------- passos ---------- */
+.step{text-align:center}
+.step .n{
+  width:52px;height:52px;border-radius:50%;background:var(--green);color:#fff;
+  display:grid;place-items:center;font-size:21px;font-weight:900;margin:0 auto 15px;
+}
+.step p{color:var(--ink-soft);font-size:15.5px;margin-top:9px}
+
+/* ---------- oferta ---------- */
+.offer{max-width:560px;margin:0 auto;background:var(--surface);color:var(--ink);
+       border-radius:20px;padding:30px 26px;box-shadow:var(--shadow-lg)}
+.offer h3{font-size:21px;text-align:center;margin-bottom:20px}
+.offer .ticks{margin-bottom:22px}
+.offer .rule{height:1px;background:var(--line);margin:22px 0}
+.stars{display:flex;justify-content:center;gap:4px;color:var(--gold)}
+.stars .i{width:21px;height:21px;fill:currentColor;stroke:none}
+
+/* ---------- faixa de confianca ---------- */
+.trust{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+       padding:30px 26px;box-shadow:var(--shadow);text-align:center}
+.trust .logo{display:grid;place-items:center;margin-bottom:18px}
+.trust .wordmark{
+  display:inline-flex;align-items:center;gap:11px;font-size:27px;font-weight:800;
+  letter-spacing:-.03em;color:#F04E23;
+}
+.trust .wordmark .flame{height:1.2em;width:auto;display:block}
+.trust h2{font-size:clamp(21px,3.2vw,29px)}
+.trust p{color:var(--ink-soft);margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto}
+.trust-items{display:grid;gap:14px;margin-top:26px}
+.trust-item{display:flex;gap:12px;align-items:flex-start;text-align:left;
+            background:var(--surface-2);border-radius:var(--r);padding:16px 18px}
+.trust-item>div{min-width:0}
+.trust-item .i{width:22px;height:22px;color:var(--green);margin-top:2px}
+.trust-item b{display:block;font-size:15.5px}
+.trust-item span{font-size:14px;color:var(--ink-soft);line-height:1.5}
+
+.urg{margin-top:20px;background:var(--red);color:#FFD62E;border-radius:var(--r);
+     padding:11px 16px;text-align:center;font-size:14.5px;font-weight:800;
+     letter-spacing:.04em;text-transform:uppercase}
+/* ---------- garantia ---------- */
+.guarantee{display:grid;gap:22px;align-items:center;background:var(--surface);
+           border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+           box-shadow:var(--shadow);text-align:center}
+.seal{
+  width:104px;height:104px;border-radius:50%;margin:0 auto;
+  background:var(--green-tint);border:3px solid var(--green);color:var(--green);
+  display:grid;place-items:center;align-content:center;line-height:1;
+}
+.seal b{font-size:34px;font-weight:900;display:block}
+.seal span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+           margin-top:3px;display:block}
+
+/* ---------- faq ---------- */
+.faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+        padding:0 20px;box-shadow:var(--shadow)}
+summary{list-style:none;cursor:pointer;padding:18px 34px 18px 0;position:relative;
+        font-weight:700;font-size:16.5px}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"";position:absolute;right:2px;top:50%;width:11px;height:11px;
+  border-right:2.4px solid var(--green);border-bottom:2.4px solid var(--green);
+  transform:translateY(-70%) rotate(45deg);transition:transform .2s ease;
+}
+details[open] summary::after{transform:translateY(-25%) rotate(-135deg)}
+details .a{padding:0 0 20px;color:var(--ink-soft);font-size:15.5px;margin-top:-4px}
+
+/* ---------- rodape ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.62);padding:44px 0 38px;
+       font-size:13.5px;text-align:center}
+footer .brand{color:#fff;margin-bottom:14px;justify-content:center}
+footer p+p{margin-top:10px}
+footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
+             max-width:720px;margin-left:auto;margin-right:auto}
+
+/* ================= TABLET ================= */
+@media(min-width:700px){
+  .sec{padding:76px 0}
+  .topbar .btn-sm{display:flex}
+  .hero{padding:56px 0 72px}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .cat-badges{grid-template-columns:repeat(6,1fr)}
+  .features-row{grid-template-columns:5fr 7fr}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .rail{grid-auto-columns:42%}
+  .rail-video{grid-auto-columns:30%}
+  .guarantee{grid-template-columns:auto 1fr;text-align:left}
+  .trust-items{grid-template-columns:repeat(3,1fr)}
+  .seal{margin:0}
+}
+
+/* ================= DESKTOP ================= */
+@media(min-width:1000px){
+  body{font-size:18px}
+  .sec{padding:92px 0}
+  .hero{padding:68px 0 88px}
+  .hero-grid{grid-template-columns:1.05fr .95fr;grid-template-rows:auto auto;
+             gap:30px 56px;align-items:center}
+  .hero-copy {grid-column:1;grid-row:1;align-self:end}
+  .hero-price{grid-column:1;grid-row:2;align-self:start}
+  .hero-art  {grid-column:2;grid-row:1 / 3;align-self:center}
+  .hero-copy{text-align:left}
+  .book{width:min(400px,100%)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  .rail{grid-auto-columns:270px;justify-content:start}
+  .rail-video{grid-auto-columns:230px}
+  .problem .body{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== SPRITE DE ICONES (linha, estilo Lucide) ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="ic-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="ic-utensils" viewBox="0 0 24 24"><path d="M3 2v7a3 3 0 0 0 3 3 3 3 0 0 0 3-3V2"/><path d="M6 12v10"/><path d="M18 2c-1.7 1-3 3-3 6v5h3"/><path d="M18 13v9"/></symbol>
+  <symbol id="ic-basket" viewBox="0 0 24 24"><path d="M4 10h16l-1.4 9.1a2 2 0 0 1-2 1.9H7.4a2 2 0 0 1-2-1.9z"/><path d="M9 10 7.5 3"/><path d="m15 10 1.5-7"/><path d="M9.5 14.5v3M14.5 14.5v3"/></symbol>
+  <symbol id="ic-glass" viewBox="0 0 24 24"><path d="M5 3h14l-1.4 16.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8z"/><path d="M6 9h12"/></symbol>
+  <symbol id="ic-bowl" viewBox="0 0 24 24"><path d="M3 11h18"/><path d="M4 11a8 8 0 0 0 16 0"/><path d="M12 3v2"/><path d="M8.5 5.5 9.5 7M15.5 5.5 14.5 7"/></symbol>
+  <symbol id="ic-cake" viewBox="0 0 24 24"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16.5c1.5 0 1.5 1.5 3 1.5s1.5-1.5 3-1.5 1.5 1.5 3 1.5 1.5-1.5 3-1.5 1.5 1.5 3 1.5"/><path d="M2 21h20"/><path d="M8 8V6M12 8V5M16 8V6"/></symbol>
+  <symbol id="ic-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/></symbol>
+  <symbol id="ic-pulse" viewBox="0 0 24 24"><path d="M22 12h-3.5l-2.5 7-6-16-2.5 9H2"/></symbol>
+  <symbol id="ic-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/><path d="m9 16 2 2 4-4"/></symbol>
+  <symbol id="ic-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 6 12 8c0-2 2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="ic-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></symbol>
+  <symbol id="ic-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-9 5.7a2 2 0 0 1-2 0L2 7"/></symbol>
+  <symbol id="ic-return" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.8 9.8 0 0 0-6.7 2.7L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="ic-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="ic-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="ic-swipe" viewBox="0 0 24 24"><path d="M3 12h18M8 7l-5 5 5 5M16 7l5 5-5 5"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="ic-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 6 3.5-6 3.5z"/></symbol>
+ </defs>
+</svg>
+
+<!-- ====== TOPO ====== -->
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <div class="brand"><span class="brand-mark">150</span> Receitas da Boa Forma</div>
+    <a href="#offer" class="btn btn-sm">Quero agora</a>
+  </div>
+</header>
+
+<!-- ====== 1+2. TITULO, SUBTITULO, FOTO, PRECO, BOTAO ====== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">150 Receitas · 4 Bônus Grátis · Acesso Imediato</span>
+      <h1>Você veio por uma receita.<br>Aqui estão 150.</h1>
+      <p class="lede">Os sucos, chás, sopas e refeições do dia a dia que fazem a balança baixar mais de 20 quilos em poucos meses, escritos de forma tão simples que você começa hoje mesmo, com o que já tem na cozinha.</p>
+
+      <div class="badges">
+        <span class="badge"><svg class="i"><use href="#ic-glass"/></svg><b>150</b> receitas</span>
+        <span class="badge"><svg class="i"><use href="#ic-gift"/></svg><b>4</b> bônus grátis</span>
+        <span class="badge"><svg class="i"><use href="#ic-bolt"/></svg>Entrega imediata</span>
+      </div>
+
+    </div>
+
+    <div class="hero-art">
+      <img class="book" src="capa-150-EN-hotmart.jpg" alt="150 Receitas da Boa Forma, Vida mais Leve"
+           onerror="this.outerHTML='&lt;div class=&quot;ph-book book&quot;&gt;&lt;div&gt;capa-150-EN-hotmart.jpg&lt;br&gt;&lt;small&gt;coloque o arquivo nesta pasta&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;'">
+    </div>
+
+    <div class="hero-price">
+      <div class="pricebox">
+        <div class="pricehead">
+          <span>De <s>$47</s></span>
+          <span class="save">Economize 79%</span>
+        </div>
+        <div class="price-row">
+          <span class="now"><span class="cur">$</span>10<span class="cents">.00</span></span>
+        </div>
+        <p class="once">Pagamento único. Seu para sempre. Sem assinatura.</p>
+        <a href="#offer" class="btn">Quero acesso imediato <svg class="i"><use href="#ic-arrow"/></svg></a>
+        <div class="pay">
+          <span><svg class="i"><use href="#ic-lock"/></svg>Checkout seguro Hotmart</span>
+          <span><svg class="i"><use href="#ic-mail"/></svg>Enviado por e-mail</span>
+          <span><svg class="i"><use href="#ic-return"/></svg>Garantia de 7 dias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 3. TRES BENEFICIOS ====== -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="center kicker">
+      <span class="eyebrow">Por Que Isso Funciona</span>
+      <h2>Três motivos para você conseguir deixar de ser uma pessoa gorda</h2>
+    </div>
+    <div class="grid grid-3" style="margin-top:38px">
+      <div class="card">
+        <div class="ico"><svg class="i"><use href="#ic-book"/></svg></div>
+        <h3>Você nunca mais pergunta o que comer</h3>
+        <p>150 receitas separadas por suco, chá, sopa e refeição. Abre, escolhe uma,
+           cozinha. A decisão que comia sua noite inteira agora leva onze segundos.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg class="i"><use href="#ic-utensils"/></svg></div>
+        <h3>Não tem gosto de dieta</h3>
+        <p>Sabor de verdade, porção de verdade, comida de verdade. Ninguém larga uma
+           refeição que espera com vontade. Larga é frango grelhado com brócolis no
+           vapor pela décima primeira noite seguida.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg class="i"><use href="#ic-basket"/></svg></div>
+        <h3>Feito com o que já tem na sua cozinha</h3>
+        <p>Ingrediente de supermercado, com nome que você sabe pronunciar. Sem pó, sem
+           superalimento importado, sem uma compra cara antes de poder começar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 6. SOLUCAO DE PROBLEMA ====== -->
+<section class="sec problem">
+  <div class="wrap center">
+    <span class="eyebrow">O Problema de Verdade</span>
+    <h2>Nunca foi falta de força de vontade.</h2>
+    <div class="body">
+      <p>Você recomeçou numa segunda-feira mais vezes do que consegue contar. Aguentou
+         quatro dias. Talvez seis. Aí a comida ficou sem graça, as receitas acabaram, e na
+         quinta à noite você comia o que tinha na geladeira às nove da noite, em pé, sem
+         nem estar com fome.</p>
+      <p>E aí disse a si mesma que não tem disciplina.</p>
+      <p>Você tem de sobra. Segurou um emprego, criou gente, carregou coisa que ninguém
+         nunca agradeceu. O que você nunca teve foi <b>uma lista de comida boa longa o
+         bastante para durar mais que o tédio.</b></p>
+      <strong class="punch">Dieta não falha porque você é fraca.<br>
+        Falha porque acabam as coisas que você tem vontade de comer.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 7. EXEMPLOS ====== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="center kicker">
+      <span class="eyebrow">Por Dentro do Livro</span>
+      <h2>Páginas de verdade do livro</h2>
+      <p class="lede">Cada receita numa página só. Ingredientes, modo de fazer, e onde ela entra no seu dia.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail" style="margin-top:32px">
+      <div class="slot"><div><div class="n">1</div><div class="t">Página de receita</div>
+        <div class="s">ex. Suco Verde da Manhã</div></div></div>
+      <div class="slot"><div><div class="n">2</div><div class="t">Página de receita</div>
+        <div class="s">ex. Chá de Gengibre com Limão</div></div></div>
+      <div class="slot"><div><div class="n">3</div><div class="t">Página de receita</div>
+        <div class="s">ex. Sopa Leve de Legumes</div></div></div>
+      <div class="slot"><div><div class="n">4</div><div class="t">Página de receita</div>
+        <div class="s">ex. Jantar de 15 Minutos</div></div></div>
+      <div class="slot"><div><div class="n">5</div><div class="t">Página de receita</div>
+        <div class="s">ex. Vitamina Proteica de Frutas</div></div></div>
+    </div>
+    <p class="rail-hint"><svg class="i"><use href="#ic-swipe"/></svg>arraste para ver mais</p>
+  </div>
+</section>
+
+<!-- ====== 8. CONTEUDO + 4 BONUS ====== -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="center kicker">
+      <span class="eyebrow">Tudo Que Tem Dentro</span>
+      <h2>150 receitas, e nunca mais uma noite sem saber o que fazer</h2>
+    </div>
+
+    <div class="cat-badges" style="margin-top:38px">
+      <div class="cat-badge"><span class="cat-num">150+</span><span class="cat-label">Receitas fit</span></div>
+      <div class="cat-badge"><span class="cat-num">30</span><span class="cat-label">Cafés da manhã</span></div>
+      <div class="cat-badge"><span class="cat-num">35</span><span class="cat-label">Almoços</span></div>
+      <div class="cat-badge"><span class="cat-num">35</span><span class="cat-label">Jantares</span></div>
+      <div class="cat-badge"><span class="cat-num">20</span><span class="cat-label">Sobremesas</span></div>
+      <div class="cat-badge"><span class="cat-num">30</span><span class="cat-label">Vitaminas</span></div>
+    </div>
+
+    <div class="features-row" style="margin-top:40px">
+      <div class="features-img">
+        <img src="bolo-de-chocolate.jpg" alt="Bolo de chocolate fitness com calda"
+             onerror="this.outerHTML='&lt;div class=&quot;ph-features&quot;&gt;&lt;div&gt;bolo-de-chocolate.jpg&lt;br&gt;&lt;small&gt;coloque a imagem aqui&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;'">
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg class="i"><use href="#ic-glass"/></svg>
+          <div><b>30 sucos e vitaminas detox</b><span>Ingredientes simples que ajudam a queimar gordura e perder peso</span></div>
+        </div>
+        <div class="feature-card">
+          <svg class="i"><use href="#ic-bowl"/></svg>
+          <div><b>30 cafés da manhã</b><span>Leves e nutritivos para começar o dia queimando gordura</span></div>
+        </div>
+        <div class="feature-card">
+          <svg class="i"><use href="#ic-utensils"/></svg>
+          <div><b>35 almoços e 35 jantares</b><span>Todas em menos de 30 minutos, pensadas exclusivamente para você perder mais de 5 quilos por semana</span></div>
+        </div>
+        <div class="feature-card">
+          <svg class="i"><use href="#ic-cake"/></svg>
+          <div><b>20 sobremesas fit</b><span>Para matar a vontade de doce sem sair do plano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:56px">
+      <span class="eyebrow">Grátis Hoje</span>
+      <h2>Mais 4 bônus exclusivos</h2>
+      <p class="lede kicker">Valem $90 separados. Todos seus, sem custo nenhum, junto com o livro.</p>
+    </div>
+
+    <div class="grid grid-4" style="margin-top:38px">
+      <div class="card bonus">
+        <span class="bonus-tag">Bônus 1</span>
+        <div class="ico"><svg class="i"><use href="#ic-cake"/></svg></div>
+        <h3>Doces Fitness</h3>
+        <p>O doce que você pode. Chocolate, sorvete e bolo sem açúcar, para a sobremesa
+           parar de ser o que derruba a sua semana.</p>
+        <p class="val">Grátis hoje <s>$19</s></p>
+      </div>
+      <div class="card bonus">
+        <span class="bonus-tag">Bônus 2</span>
+        <div class="ico"><svg class="i"><use href="#ic-leaf"/></svg></div>
+        <h3>Dieta Vegetariana</h3>
+        <p>Totalmente sem carne, planejada do começo ao fim. Proteína suficiente, sabor
+           suficiente, e uma lista de compras que qualquer pessoa consegue comprar.</p>
+        <p class="val">Grátis hoje <s>$19</s></p>
+      </div>
+      <div class="card bonus">
+        <span class="bonus-tag">Bônus 3</span>
+        <div class="ico"><svg class="i"><use href="#ic-pulse"/></svg></div>
+        <h3>Pilates Seca Barriga em Casa</h3>
+        <p>Um treinamento completo para fazer no chão da sala. Sem tapete, sem aula para
+           marcar, sem ninguém te olhando. Vinte minutos, e é o que acelera tudo o que a
+           comida já começou em até 4 vezes mais.</p>
+        <p class="val">Grátis hoje <s>$23</s></p>
+      </div>
+      <div class="card bonus">
+        <span class="bonus-tag">Bônus 4</span>
+        <div class="ico"><svg class="i"><use href="#ic-calendar"/></svg></div>
+        <h3>50 Hábitos e Exercícios</h3>
+        <p>Treinos em casa ou na academia, rotina de sono, hora certa da água e os pequenos
+           ajustes diários que fazem você queimar mais gordura com muito menos esforço.</p>
+        <p class="val">Grátis hoje <s>$29</s></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 9. COMO FUNCIONA ====== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="center kicker">
+      <span class="eyebrow">Como Funciona</span>
+      <h2>Você pode estar cozinhando uma receita do livro hoje à noite</h2>
+    </div>
+    <div class="grid grid-3" style="margin-top:40px">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Clica e paga</h3>
+        <p>Pagamento seguro com a Hotmart, com a forma de pagamento que você já usa. Leva mais ou menos um minuto.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Olha seu e-mail</h3>
+        <p>O link de download chega na hora, com o livro e os quatro bônus juntos.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Abre e cozinha</h3>
+        <p>Celular, tablet, computador, ou impresso e colado na geladeira. Escolha a receita de hoje e comece.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 10. REVIEWS ====== -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="center kicker">
+      <span class="eyebrow">Resultados Reais</span>
+      <h2>Elas também começaram com essas receitas</h2>
+      <p class="lede" style="margin-top:10px;margin-bottom:0"><b>Mais de 4.782 avaliações positivas</b></p>
+      <div class="stars" style="margin-top:8px">
+        <svg class="i"><use href="#ic-star"/></svg><svg class="i"><use href="#ic-star"/></svg>
+        <svg class="i"><use href="#ic-star"/></svg><svg class="i"><use href="#ic-star"/></svg>
+        <svg class="i"><use href="#ic-star"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail rail-video" style="margin-top:30px">
+      <div class="slot slot-video"><div><div class="n">1</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">2</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">3</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">4</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">5</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+    </div>
+    <p class="rail-hint"><svg class="i"><use href="#ic-swipe"/></svg>arraste para ver mais</p>
+  </div>
+</section>
+
+<!-- ====== 11. OFERTA ====== -->
+<section class="sec sec-green" id="offer">
+  <div class="wrap">
+    <div class="center kicker" style="margin-bottom:32px">
+      <span class="eyebrow">A Oferta</span>
+      <h2>Tudo isso, por menos que um delivery</h2>
+      <p class="lede">Pagamento único. Entrega imediata. Seu para sempre.</p>
+    </div>
+
+    <div class="offer">
+      <h3>O que chega no seu e-mail</h3>
+      <ul class="ticks">
+        <li><b>150 Receitas da Boa Forma</b>, o livro completo</li>
+        <li>30 sucos e vitaminas detox, 30 cafés da manhã, 35 almoços, 35 jantares e 20 sobremesas fit</li>
+        <li><b>Bônus 1:</b> Doces Fitness</li>
+        <li><b>Bônus 2:</b> Dieta Vegetariana</li>
+        <li><b>Bônus 3:</b> Pilates Seca Barriga em Casa</li>
+        <li><b>Bônus 4:</b> 50 Hábitos e Exercícios</li>
+        <li>Café, almoço, lanche e jantar planejados, com a porção certa para você emagrecer sem passar fome</li>
+        <li>Formato para imprimir, ou ler no celular, computador ou no tablet</li>
+        <li>Acesso vitalício, incluindo as atualizações futuras</li>
+      </ul>
+
+      <div class="rule"></div>
+
+      <div class="pricehead">
+        <span>De <s>$47</s></span>
+        <span class="save">Economize 79%</span>
+      </div>
+      <div class="price-row">
+        <span class="now"><span class="cur">$</span>10<span class="cents">.00</span></span>
+      </div>
+      <p class="once">Pagamento único. Sem assinatura. Sem renovação.</p>
+      <div class="urg">ÚLTIMAS 5 UNIDADES DISPONÍVEIS.</div>
+      <a href="#" class="btn btn-gold" style="margin-top:12px">Sim, quero o livro
+        <svg class="i"><use href="#ic-arrow"/></svg></a>
+      <p class="btn-note">Checkout seguro Hotmart. Entregue por e-mail em minutos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 11b. PAGAMENTO SEGURO / HOTMART ====== -->
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="trust">
+      <div class="logo">
+        <span class="wordmark">
+          <img class="flame" src="hotmart-flame.png" alt="">Hotmart
+        </span>
+      </div>
+      <h2>Seu pagamento é completamente seguro</h2>
+      <p>O checkout é feito pela Hotmart, uma das maiores plataformas de produto digital do
+         mundo, usada por milhões de compradores todo mês. Os dados do seu cartão são
+         processados nos servidores seguros dela e não passam por esta página.</p>
+
+      <div class="trust-items">
+        <div class="trust-item">
+          <svg class="i"><use href="#ic-shield"/></svg>
+          <div><b>Criptografia de banco</b><span>Toda transação é criptografada de ponta a
+            ponta e monitorada contra fraude.</span></div>
+        </div>
+        <div class="trust-item">
+          <svg class="i"><use href="#ic-card"/></svg>
+          <div><b>Pague como preferir</b><span>Cartão, transferência instantânea ou o método
+            local que você já usa, tudo dentro da Hotmart.</span></div>
+        </div>
+        <div class="trust-item">
+          <svg class="i"><use href="#ic-return"/></svg>
+          <div><b>Reembolso resolvido por eles</b><span>A Hotmart processa o reembolso de 7
+            dias direto, sem você ter que discutir.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 12. GARANTIA ====== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="seal"><div><b>7</b><span>Dias</span></div></div>
+      <div>
+        <h2 style="font-size:clamp(22px,3.4vw,30px)">Teste absolutamente tudo por uma semana. Por nossa conta.</h2>
+        <p style="color:var(--ink-soft);margin-top:12px">
+          Compre, abra, e cozinhe o que quiser por sete dias. Se não valer o que você
+          pagou, devolvemos seu dinheiro todo sem fazer perguntas. Sem formulário, sem
+          interrogatório, sem ter que se explicar. Confiamos tanto no nosso trabalho que,
+          se você não gostar, o livro e os quatro bônus ficam com você de graça.</p>
+        <p style="color:var(--ink-soft);margin-top:12px;font-weight:700">
+          O único jeito de sair perdendo aqui é não aproveitar uma das 5 últimas unidades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 13. FAQ ====== -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="center kicker" style="margin-bottom:32px">
+      <span class="eyebrow">Perguntas</span>
+      <h2>Antes de decidir</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Como recebo depois de pagar?</summary>
+        <div class="a">Instantaneamente, por e-mail. Você recebe um link de download com o
+          livro e os quatro bônus. Confira também a caixa de spam.</div>
+      </details>
+      <details>
+        <summary>É um livro impresso?</summary>
+        <div class="a">É digital, por isso chega na hora e custa uma fração de um impresso.
+          Ele foi feito para ser impresso em casa se você prefere papel. Muita gente imprime
+          as receitas da semana e cola na geladeira.</div>
+      </details>
+      <details>
+        <summary>Os ingredientes são difíceis de achar?</summary>
+        <div class="a">Não. Tudo vem de supermercado normal. Não tem superalimento importado
+          e não tem suplemento para comprar à parte.</div>
+      </details>
+      <details>
+        <summary>Eu não cozinho. É complicado demais pra mim?</summary>
+        <div class="a">Os sucos e chás levam menos de cinco minutos. A maioria das refeições
+          leva menos de trinta, com passos curtos e nenhuma técnica que você precise
+          pesquisar. Se você sabe ferver água e usar uma faca, está resolvido.</div>
+      </details>
+      <details>
+        <summary>Sou obrigada a fazer os exercícios?</summary>
+        <div class="a">Não. A comida funciona sozinha. Os treinos e hábitos vêm como bônus
+          grátis, para quando você quiser ir além, e funcionam no chão da sala ou na
+          academia, como você preferir.</div>
+      </details>
+      <details>
+        <summary>E se eu não gostar?</summary>
+        <div class="a">Você tem sete dias para pedir o reembolso total, e fica com
+          absolutamente tudo.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FECHAMENTO ====== -->
+<section class="sec-tight sec-green center">
+  <div class="wrap">
+    <h2>Hoje à noite você vai comer alguma coisa.<br>Que seja uma destas.</h2>
+    <div style="max-width:420px;margin:26px auto 0">
+      <a href="#offer" class="btn btn-gold">Quero acesso imediato por $10
+        <svg class="i"><use href="#ic-arrow"/></svg></a>
+      <p class="btn-note">Garantia de 7 dias com dinheiro de volta</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="brand-mark">150</span> Receitas da Boa Forma</div>
+    <p>© 2026. Todos os direitos reservados.</p>
+    <p class="fine" style="margin-top:16px">
+      Este livro é informativo e não substitui orientação médica. Os resultados variam
+      de pessoa para pessoa e dependem dos hábitos de cada uma.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

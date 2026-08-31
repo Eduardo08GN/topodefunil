@@ -455,6 +455,46 @@ Nicho: ED (disfunção erétil). Mercado US.
 
     NOTA: ⚠️ fala em TERCEIRA PESSOA sobre o órgão ("made HIM 3 times bigger"), e por isso soa como NARRADORA — é a única com essa marca de pessoa.
 
+--------------------------------------------------------------------
+13 - RECEITA DE CHIA / montagem de mesa, so maos
+     5 takes (3,2 / 3,6 / 4,0 / 5,5 / 4,9s) - sem rosto, sem prop falico
+     >> PRIMEIRO LOTE DO FUNIL PAGO (livro de 150 receitas, US$10)
+     >> MECANISMOS testados neste video: Bull Honey, Hammer Handle Tea
+     >> CTA usado: CTAS.txt n. 01
+--------------------------------------------------------------------
+[1] Did you know what happens if you add one spoonful
+    PT: Sabia o que acontece se voce poe uma colherada
+
+[2] of <MECANISMO> to a cup of water
+    PT: de <MECANISMO> numa xicara de agua
+    >> Bull Honey ......... "to a cup of water"
+    >> Hammer Handle Tea .. "to a cup of hot water"
+
+[3] with one tablespoon of chia seeds, and let it steep for seven to
+    ten minutes?
+    PT: com uma colher de sopa de chia e deixa descansar de sete a dez
+    minutos?
+
+[4] It will make your wife smile every night because of your energy and
+    performance in bed.
+    PT: Vai fazer sua esposa sorrir toda noite, pela sua energia e pelo
+    seu desempenho na cama.
+
+[5] This method and 149 more for just ten dollars. Comment yes and I'll
+    send you the link.
+    PT: Esse metodo e mais 149 por apenas dez dolares. Comenta yes que
+    eu te mando o link.
+
+    NOTA: a fonte diz "one packet of gelatin" e fecha em "Want to know
+    this method? Comment, gelatin." As duas trocas sao do funil novo.
+    NOTA: "sache" virou "colherada" porque mel e cha nao vem em sache -
+    regra do MECANISMOS.txt (o nome tem de casar com o formato).
+    NOTA: 149 e nao 150 - a receita do video + 149 = 150 (CTAS.txt).
+    NOTA: nenhuma boca em quadro. Melhor gerar os takes e por a narracao
+    como um bloco so na montagem; falas repartidas ficam com entonacao
+    de fim de frase em cada corte.
+
+
 ====================================================================
 O QUE FALTA NESTE ARQUIVO
 ====================================================================

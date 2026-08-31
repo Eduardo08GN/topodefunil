@@ -18,7 +18,7 @@ import zipfile
 import tempfile
 import subprocess
 
-from captions import transcrever, gerar_ass
+from captions import transcrever, gerar_ass, aqui_texto_para
 
 FFMPEG = shutil.which("ffmpeg") or "ffmpeg"
 FFPROBE = shutil.which("ffprobe") or "ffprobe"
@@ -667,7 +667,7 @@ def transcrever_takes(prontos, durs, model, lang, fator=None, log=print):
     return palavras
 
 
-def processar_video(takes, out_final, model="base.en", lang="en",
+def processar_video(takes, out_final, model="base", lang="en",
                     margem="0.2s", fator=None, keywords=None, musica=None,
                     dias=None, log=print):
     if not takes:
@@ -738,8 +738,8 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         _aq_n = _aq.get("takes")
         _aq_fim = None
         if _aq_lig:
-            log("  circulado HERE em %.0f%% x %.0f%% da tela"
-                % (_aq_x * 100, _aq_y * 100))
+            log("  circulado %r em %.0f%% x %.0f%% da tela"
+                % (aqui_texto_para(lang), _aq_x * 100, _aq_y * 100))
             _aq_fim = _fim_de_takes(durs, dur_final, _aq_n, log)
             if _aq_n and _aq_fim is None:
                 log("  circulado: %d take(s) cobre o video inteiro" % _aq_n)
@@ -760,7 +760,7 @@ def processar_video(takes, out_final, model="base.en", lang="en",
                   pos_legenda=_leg_pos, so_pin=not _leg_lig,
                   pos_cta=_cta_pos,
                   aqui_ligado=_aq_lig, aqui_x=_aq_x, aqui_y=_aq_y,
-                  aqui_fim=_aq_fim,
+                  aqui_fim=_aq_fim, aqui_texto=aqui_texto_para(lang),
                   fixo_texto=_fx_txt, fixo_x=float(_fx.get("x", 0.50)),
                   fixo_y=float(_fx.get("y", 0.15)),
                   fixo_ini=_fx_ini, fixo_fim=_fx_fim,
@@ -798,7 +798,7 @@ def _tem_video_solto(pasta):
               if os.path.isfile(os.path.join(pasta, a)))
 
 
-def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s",
+def processar_pasta(entrada, saida, model="base", lang="en", margem="0.2s",
                     musica=None, dias=None, log=print):
     """Processa a pasta de entrada (subpastas=1 video cada, ou arquivos soltos=1 video).
     Retorna lista de arquivos gerados."""
@@ -838,8 +838,10 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Editor CapCut offline (junta+desilencia+legenda)")
     ap.add_argument("--input", "-i", required=True, help="pasta de entrada (takes do Veo)")
     ap.add_argument("--output", "-o", required=True, help="pasta de saida")
-    ap.add_argument("--model", default="base.en", help="modelo whisper (base.en, small.en, medium.en)")
-    ap.add_argument("--lang", default="en")
+    ap.add_argument("--model", default="base",
+                    help="porte do whisper: base, small ou medium (o sufixo "
+                         ".en e' colocado sozinho quando --lang=en)")
+    ap.add_argument("--lang", default="en", choices=["en", "de", "fr"])
     ap.add_argument("--margin", default="0.2s", help="margem de silencio a manter (ex: 0.2s)")
     a = ap.parse_args()
     feitos = processar_pasta(a.input, a.output, a.model, a.lang, a.margin)

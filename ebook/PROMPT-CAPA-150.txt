@@ -1,0 +1,308 @@
+﻿CAPA DO EBOOK - 150 FITNESS RECIPES
+====================================================================
+PRODUTO:  ebook de 150 receitas/metodos de emagrecimento
+MERCADOS: EN (base) . DE . FR - tres capas, um produto
+DESTINO:  Hotmart (venda) + dentro do criativo (livro na bancada)
+DATA:     30.08.2026 - nome, paleta e as tres capas aprovados
+
+  capa-150-EN.jpeg
+  capa-150-DE.jpeg
+  capa-150-FR.jpeg
+
+  alternativa-the-light-kitchen-vestido.jpeg
+      A versao anterior: casal VESTIDO e titulo THE LIGHT KITCHEN.
+      Guardada como plano B - se a capa com corpo trouxer atrito de
+      moderacao, esta ja existe e nao precisa ser gerada de novo.
+
+/!\ capa-livro-150.jpeg e PROMPT-CAPA.txt sao do produto MORTO
+("150 RECIPES FOR MEN", nicho ED). Ficam como historico. Apagar e
+decisao do operador.
+====================================================================
+
+
+====================================================================
+1. O NOME, NOS QUATRO IDIOMAS
+====================================================================
+              TITULO                  RODAPE
+EN  150 FITNESS RECIPES         A Lighter Life
+DE  150 FITNESS-REZEPTE         Ein leichteres Leben
+FR  150 RECETTES MINCEUR        Une vie plus légère
+PT  150 Receitas da Boa Forma   Vida mais Leve
+
+*** O RODAPE COSTURA O FUNIL. O titulo e de academia, mas as paginas
+sao de cozinha leve ("Leichte Kueche", "cuisine legere"). "Vida mais
+Leve" devolve esse registro na capa - pagina e produto voltam a
+prometer a mesma coisa.
+
+*** O FRANCES NAO E TRADUCAO. "Recettes minceur" e categoria real e
+consagrada na Franca, mesmo lugar cultural que "Boa Forma" no Brasil.
+"Fitness-Rezepte" idem no alemao, que usa "Fitness" como palavra
+propria.
+
+/!\ O UNICO TEXTO ACENTUADO DO PRODUTO E O RODAPE FRANCES: "légère",
+acento agudo no primeiro e, grave no segundo. Escrito "legere" e erro
+de ortografia e e a primeira coisa que a compradora francesa ve.
+
+
+====================================================================
+2. CONFERENCIA DE TEXTO DAS TRES CAPAS  (30.08, letra por letra)
+====================================================================
+EN  150 . FITNESS RECIPES . A Lighter Life          OK
+DE  150 . FITNESS-REZEPTE . Ein leichteres Leben    OK  (hifen saiu)
+FR  150 . RECETTES MINCEUR . Une vie plus légère    OK  (acentos sairam)
+
+*** AS TRES SAIRAM PERFEITAS, inclusive o hifen alemao e os dois
+acentos franceses - que eram os dois pontos de risco previstos.
+
+
+====================================================================
+3. A PALETA - TRAVADA, ordem do operador
+====================================================================
+*** "Gostei desse padrao de cores, preserve". Toda capa futura, em
+qualquer idioma, sai com esta paleta. Colar no prompt:
+
+COLOUR PALETTE (keep exactly): warm honey oak wood as the dominant tone
+across cabinetry and counter, soft cream and white walls, pure white
+cover text. The only saturated colours in frame are the three juices -
+deep magenta beetroot, vivid green, warm orange - with small accents of
+green herbs, yellow lemon and red berries. Warm natural daylight
+throughout, no cool tones.
+
+TEXT PLACEMENT: the title sits over the plain wood cabinet area and the
+bottom line over the plain wood counter surface, both on uncluttered
+ground with nothing busy behind them.
+
+
+====================================================================
+4. POR QUE O TEXTO SAI LEGIVEL  (a licao, e uma correcao)
+====================================================================
+*** O TEXTO CAI SOBRE MADEIRA LISA. Area uniforme, nada atras. Gerador
+acerta letra sobre superficie limpa e erra sobre regiao ocupada. A
+linha TEXT PLACEMENT da secao 3 nao e enfeite - e ela que faz isso
+acontecer, e vale para CADA bloco de texto, nao so para o titulo.
+
+/!\ CORRECAO DE UMA CONCLUSAO ERRADA DO REPO: eu havia registrado que
+a capa antiga ("Eors Baking Soda") embaralhou por EXCESSO DE TEXTO. Nao
+era. Aquele texto caia sobre uma EMBALAGEM cheia de detalhe - o defeito
+era o FUNDO OCUPADO. A prova: aqui um rodape de sete palavras saiu
+perfeito sobre madeira lisa, e depois um de tres tambem.
+
+*** Consequencia pratica: subtitulo e viavel neste gerador. Titulo
+curto e escolha de GOSTO do operador, nao limitacao tecnica. Nao
+"consertar" isso depois achando que era restricao.
+
+*** GERAR 3 OU 4 E ESCOLHER. O gerador nao repete texto igual duas
+vezes: e sorteio, nao erro. Se sair torto, REGERAR - nunca remendar.
+
+/!\ PLANO B do alemao, se o hifen um dia sair torto: FITNESSREZEPTE
+(palavra composta junta e alemao igualmente correto, e some com o
+problema do hifen).
+
+
+====================================================================
+5. OS TRES PROMPTS VENCEDORES
+====================================================================
+As tres capas sao o MESMO livro: mesma cozinha, mesma paleta, mesma
+composicao. So o CASAL e o TEXTO mudam. E isso que faz as tres lerem
+como uma linha de produto e nao como tres livros parecidos.
+
+/!\ NACIONALIDADE NAO E ATRIBUTO VISUAL. "American"/"German"/"French"
+sozinhos nao renderizam nada confiavel. Quem entrega o rosto e a
+ARQUITETURA FACIAL - pele, cabelo, nariz, maxilar, malar, olhos. Por
+isso cada casal tem cinco tracos descritos. Mesma defesa que impede o
+gerador de derivar para a media do treino, que tem nome e rosto.
+
+/!\ A IDADE SOME PRIMEIRO. "Corpo definido" puxa o gerador para os 35.
+Por isso "sixty-five years old, with the skin, lines and hands of that
+age" aparece DUAS vezes em cada prompt, colado na descricao do corpo.
+Se vier um casal de trinta, e essa linha que se reforca.
+
+
+--------------------------------------------------------------------
+5.1  EN - casal americano, ele negro, ela branca
+--------------------------------------------------------------------
+Product photograph of a hardcover cookbook standing upright, front
+cover facing the camera, centered on a plain white seamless background.
+Soft even studio light, subtle contact shadow beneath the book, sharp
+focus, straight-on angle.
+
+COVER TEXT: across the upper third, the numerals 150 in very large bold
+white, and FITNESS RECIPES in white capitals directly beneath. Along
+the bottom edge, A Lighter Life in small white letters. These are the
+only texts on the cover. The title sits over the plain wood cabinet
+area and the bottom line over the plain wood counter surface, both on
+uncluttered ground.
+
+COVER PHOTOGRAPH: an American couple, both sixty-five years old,
+standing close together behind a warm honey oak kitchen counter, framed
+from the waist up, his arm around her shoulders and her hand resting on
+his chest, both turned slightly toward each other and smiling openly at
+the camera.
+
+HIM: a Black American man, deep brown skin, close-cropped silver white
+hair and a short white beard, broad nose bridge, strong square jaw,
+warm dark eyes. Shirtless, with a lean, defined, natural physique - the
+chest, shoulders and arms of a man who has stayed active for decades,
+flat through the midsection. Sixty-five years old, with the skin, lines
+and hands of that age.
+
+HER: a white American woman, sixty-five, fair skin with sun freckles
+across the nose, shoulder-length silver blonde hair pulled back,
+blue-grey eyes, oval face with soft cheekbones. Slim and athletic,
+wearing a fitted sage green sleeveless athletic top, toned arms and
+shoulders. Warm open smile, the face and skin of her age.
+
+ON THE COUNTER: three tall glasses of fresh juice in deep magenta
+beetroot, vivid green and warm orange, a clear glass teapot with mint
+leaves in pale golden tea, a white bowl of leafy greens, halved lemons,
+a small bowl of blueberries and raspberries, sprigs of fresh mint,
+sliced cucumber and radish on a wooden board.
+
+COLOUR PALETTE: warm honey oak and cream dominate. The three juices are
+the only saturated colours. Warm natural daylight from the left, no
+cool tones.
+
+Clean modern commercial cookbook design, bright and airy.
+
+
+--------------------------------------------------------------------
+5.2  DE - casal alemao
+--------------------------------------------------------------------
+[identico ao 5.1, com estas tres trocas]
+
+COVER TEXT: ... and FITNESS-REZEPTE in white capitals directly beneath.
+Along the bottom edge, Ein leichteres Leben in small white letters. ...
+
+COVER PHOTOGRAPH: a German couple, both sixty-five years old, ...
+
+HIM: fair skin, thick silver grey hair swept back, a neatly trimmed
+grey beard, straight nose bridge, square jaw, grey-blue eyes.
+Shirtless, with a lean, defined, natural physique - the chest,
+shoulders and arms of a man who has stayed active for decades, flat
+through the midsection. Sixty-five years old, with the skin, lines and
+hands of that age.
+
+HER: sixty-five, fair skin, ash blonde hair going silver, cut to the
+shoulder and pulled back, blue eyes, high broad cheekbones, a small
+straight nose. Slim and athletic, wearing a fitted sage green
+sleeveless athletic top, toned arms and shoulders. Warm open smile, the
+face and skin of her age.
+
+
+--------------------------------------------------------------------
+5.3  FR - casal frances
+--------------------------------------------------------------------
+[identico ao 5.1, com estas tres trocas]
+
+COVER TEXT: ... and RECETTES MINCEUR in white capitals directly
+beneath. Along the bottom edge, Une vie plus légère in small white
+letters, with the accents spelled exactly as written. ...
+
+COVER PHOTOGRAPH: a French couple, both sixty-five years old, ...
+
+HIM: olive-fair skin, silver grey hair swept back from a high forehead,
+a short salt and pepper beard, an aquiline nose, dark brown eyes,
+narrow face. Shirtless, with a lean, defined, natural physique - the
+chest, shoulders and arms of a man who has stayed active for decades,
+flat through the midsection. Sixty-five years old, with the skin, lines
+and hands of that age.
+
+HER: sixty-five, fair olive skin, silver grey hair in a short
+chin-length bob, dark brown eyes, fine features with a narrow nose and
+defined cheekbones. Slim and athletic, wearing a fitted sage green
+sleeveless athletic top, toned arms and shoulders. Warm open smile, the
+face and skin of her age.
+
+
+====================================================================
+6. O QUE AS TRES CAPAS GERADAS TEM DE DIFERENTE ENTRE SI
+====================================================================
+/!\ Achado na conferencia. Nao invalida nenhuma - e informacao para o
+operador decidir se quer uniformizar.
+
+TRAJE DELA
+  EN  top curto de academia, barriga a mostra
+  DE  top curto de academia, barriga a mostra
+  FR  regata cobrindo o tronco    <- a unica fiel ao prompt
+
+  O prompt pedia "sleeveless athletic top" nas tres. O gerador
+  entregou top curto em duas. A FR e a de menor exposicao de corpo, e
+  portanto a de menor atrito de moderacao das tres.
+
+OLHAR
+  EN  os dois se olham
+  DE  os dois olham a lente
+  FR  os dois olham a lente
+
+IDADE APARENTE DELA
+  EN  ~60      DE  ~50      FR  ~60
+  A alema saiu mais nova que os 65 pedidos. Se incomodar, e regerar
+  reforcando a linha de idade (secao 5).
+
+
+====================================================================
+7. COMO POR O LIVRO NA CENA DO CTA
+====================================================================
+*** ANEXAR A IMAGEM DO IDIOMA CERTO. Pagina em ingles leva a capa-EN,
+alema a capa-DE, francesa a capa-FR. Livro em idioma trocado dentro do
+video quebra a congruencia na hora exata da conversao.
+
+*** Onde por: em pe sobre a bancada, no PRIMEIRO PLANO, levemente
+inclinado, num canto livre. O livro nao tapa o preparo nem a mao que
+cozinha.
+
+
+BLOCO CURTO - quando o prompt da cena ja esta cheio    [~45 palavras]
+--------------------------------------------------------------------
+Standing upright on the counter in the foreground, a hardcover
+cookbook: the numerals 150 very large across the top of the cover with
+FITNESS RECIPES in white capitals below, and beneath that a photo of a
+fit couple in their sixties behind a kitchen counter with three glasses
+of red, green and orange juice.
+
+
+BLOCO COMPLETO - quando ha espaco                      [~90 palavras]
+--------------------------------------------------------------------
+Standing upright on the counter in the foreground, propped at a slight
+angle, a thick hardcover cookbook in portrait format. Across the top of
+the cover the numerals 150 printed very large in white, with FITNESS
+RECIPES in white capitals beneath. Below the title, a photograph of a
+lean, athletic couple in their sixties standing together behind a honey
+oak kitchen counter, and on that counter three tall glasses of juice in
+deep magenta, vivid green and warm orange, a glass teapot, a white bowl
+of leafy greens, lemons and berries.
+
+
+====================================================================
+8. O QUE NAO ESCREVER
+====================================================================
+XX NAO negar produto ("no supplements", "not a diet pill"). NEGACAO
+   INJETA O TOKEN - pedir para nao ter potinho aumenta a chance de
+   aparecer um potinho. Basta nao citar.
+
+XX NAO por na capa: balanca, fita metrica, antes/depois, capsula, pote
+   de suplemento, numero de peso, prazo.
+
+XX NAO mandar gerar o livro "parecido" com o da imagem. Ou vai a
+   imagem de referencia, ou vai o bloco da secao 7 palavra por palavra.
+
+XX NAO regerar a capa a cada video. Gera uma vez, reusa sempre - mesmo
+   principio da REF de personagem.
+
+
+====================================================================
+9. SE A GERACAO FOR RECUSADA POR "SEM CAMISA"
+====================================================================
+Nao mude a cena - mude a forma de dizer, nesta ordem:
+  1a. "shirtless, with a lean defined physique"
+  2a. -> "with his shirt off, resting over one shoulder"
+  3a. -> "fresh from a workout, a towel around his neck, no shirt"
+  4a. -> "wearing an open unbuttoned linen shirt"   (ultimo recurso,
+         ja nao esta sem camisa)
+
+/!\ REGERAR 2x ANTES DE INVESTIGAR. A politica tem variancia: a mesma
+imagem passa numa tentativa e cai na outra. So vira investigacao se
+falhar em renders diferentes.
+
+/!\ E existe o plano B pronto: a alternativa-the-light-kitchen-
+vestido.jpeg, com o casal vestido, ja gerada e aprovada.

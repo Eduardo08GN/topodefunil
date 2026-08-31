@@ -9,8 +9,34 @@ from faster_whisper import WhisperModel
 _MODELO = {}  # cache por tamanho, pra nao recarregar a cada video
 
 
+# ⭐⭐ IDIOMA (2026-08-30). Ordem: *"O Veo editor esta' preparado para
+# reconhecer audios e gerar legendas em alemao e frances?"*. Nao estava: os
+# tres modelos do menu eram `.en` e o `lang` nunca saia de "en".
+IDIOMAS = {"en": "Ingles", "de": "Alemao", "fr": "Frances"}
+
+
+def modelo_para(model_size, language):
+    """O modelo TEM de casar com o idioma, e por isso a escolha e' derivada.
+
+    ⛔⛔ `small.en` com audio alemao NAO DA ERRO. O modelo so'-ingles
+    transcreve o alemao foneticamente como se fosse ingles, e a legenda sai
+    lixo com aparencia de legenda: o operador nao ve' falha nenhuma, ve' um
+    video pronto com palavra errada. Silencio identico ao do acerto.
+
+    ⭐ Por isso o app nao deixa escolher modelo e idioma separados: o idioma
+    manda, e o sufixo `.en` e' colocado ou tirado aqui. Combinacao quebrada
+    deixa de ser possivel por construcao.
+
+    ⚠️ E o `.en` fica no ingles de proposito: para audio ingles o modelo
+    so'-ingles e' mais preciso e mais rapido que o multilingue do mesmo porte.
+    """
+    base = (model_size or "base").replace(".en", "")
+    return base + ".en" if (language or "en") == "en" else base
+
+
 def transcrever(audio_path, model_size="base.en", language="en"):
     """Retorna lista de {text, start, end} por palavra."""
+    model_size = modelo_para(model_size, language)
     if model_size not in _MODELO:
         _MODELO[model_size] = WhisperModel(model_size, device="cpu", compute_type="int8")
     model = _MODELO[model_size]
@@ -100,7 +126,14 @@ KEYWORDS_PADRAO = ("HONEY", "GELATIN", "VICK", "VICKS", "RECIPE")
 # 9:16 em todo o parque, entao largura e altura escalam juntas; usar as duas
 # escalas separadas distorceria o desenho num video fora dessa proporcao, e
 # distorcer e' pior que ficar pequeno.
-AQUI_TEXTO = "here"
+# ⭐ A palavra do circulado muda com o idioma (2026-08-30). Um "here" num
+# video alemao denuncia que o criativo foi feito em outra lingua.
+AQUI_POR_IDIOMA = {"en": "here", "de": "hier", "fr": "ici"}
+AQUI_TEXTO = AQUI_POR_IDIOMA["en"]
+
+
+def aqui_texto_para(language):
+    return AQUI_POR_IDIOMA.get((language or "en"), AQUI_POR_IDIOMA["en"])
 _AQ_REF_W = 720.0                    # a largura em que tudo foi medido
 # ⚠️ 118/72,5 e' o ESTADO PEQUENO da fonte (caixa 243x151), nao o
 # tamanho medio: o pulso so' sobe, entao o repouso tem de ser o menor dos

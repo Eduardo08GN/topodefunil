@@ -7,6 +7,12 @@
       "runtimeArgs": ["run", "dev"],
       "cwd": "C:\\Users\\edlut\\projetosweb\\automaweb",
       "port": 3000
+    },
+    {
+      "name": "landing-150",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8131", "--directory", "landing-150"],
+      "port": 8131
     }
   ]
 }
