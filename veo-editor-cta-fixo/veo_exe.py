@@ -117,6 +117,29 @@ def main():
     import multiprocessing
     multiprocessing.freeze_support()
 
+    # ⛔ O CONSOLE PRETO QUE APARECIA NO MEIO DA EDICAO.
+    # O `auto_editor.__main__` nao faz o trabalho em Python: ele re-executa
+    # um `auto-editor.exe` PROPRIO de 37 MB que vem dentro do pacote
+    # (`subprocess.run([binary_path] + argv)`, sem creationflags). Rodar o
+    # main "no mesmo processo" so' chegava ate' o Python dele — o binario
+    # ainda nascia com console.
+    # ⭐ Como o editor nao controla essa chamada, a flag e' imposta no
+    # `subprocess.Popen` INTEIRO: todo processo filho deste .exe nasce sem
+    # janela. `subprocess.run` tambem passa por aqui, entao cobre os dois.
+    # ⚠️ So' quando CONGELADO. Pelo .bat com venv o console e' util para ver
+    # erro, e nada disto roda.
+    if os.name == "nt":
+        import subprocess as _sp
+        _CNW = getattr(_sp, "CREATE_NO_WINDOW", 0x08000000)
+        _PopenOriginal = _sp.Popen
+
+        class _PopenSemJanela(_PopenOriginal):
+            def __init__(self, *a, **kw):
+                kw["creationflags"] = kw.get("creationflags", 0) | _CNW
+                _PopenOriginal.__init__(self, *a, **kw)
+
+        _sp.Popen = _PopenSemJanela
+
     base = os.path.dirname(os.path.abspath(sys.executable))
     os.environ.setdefault("VEO_EDITOR_BASE", base)          # (1)
     _limpar_ponte_velha(base)

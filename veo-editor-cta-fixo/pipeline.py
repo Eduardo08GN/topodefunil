@@ -148,6 +148,32 @@ def concat(takes, out, cortes=None):
     for t in takes:
         inputs += ["-i", t]
 
+    # ⛔⛔ NORMALIZACAO DE RESOLUCAO — sem isso o concat MORRE, e a docstring
+    # acima ("aguenta params diferentes do Veo") era so' sobre CODEC.
+    # O erro real, com takes de 1080x1920 e 720x1280 no mesmo lote:
+    #   Input link in0:v0 parameters (size 1080x1920, SAR 0:1) do not match
+    #   the corresponding output link in0:v0 parameters (720x1280, SAR 0:1)
+    # O filtro concat exige que TODAS as entradas tenham o mesmo tamanho; o
+    # re-encode acontece depois dele e nao salva nada.
+    # ⭐ O alvo e' o MAIOR take, nao o primeiro: escalar para cima o pequeno
+    # perde menos que espremer todos no menor do lote. Quando um zip vem todo
+    # na mesma resolucao (o caso comum) o scale vira no-op.
+    # ⚠️ pad + force_original_aspect_ratio cobre o caso de proporcao diferente
+    # sem distorcer: sobra tarja em vez de esticar o quadro.
+    _alvo_w = _alvo_h = 0
+    for t in takes:
+        try:
+            _w, _h = dims(t)
+        except Exception:                                    # noqa: BLE001
+            continue
+        if _w * _h > _alvo_w * _alvo_h:
+            _alvo_w, _alvo_h = _w, _h
+    _norm = ""
+    if _alvo_w and _alvo_h:
+        _norm = (",scale=%d:%d:force_original_aspect_ratio=decrease"
+                 ",pad=%d:%d:(ow-iw)/2:(oh-ih)/2,setsar=1"
+                 % (_alvo_w, _alvo_h, _alvo_w, _alvo_h))
+
     partes, rotulos = [], ""
     for i, t in enumerate(takes):
         corte = cortes.get(t)
@@ -156,10 +182,10 @@ def concat(takes, out, cortes=None):
             fim = float(corte[1]) if len(corte) > 1 and corte[1] else None
             tv = f"trim=start={ini:.3f}" + (f":end={fim:.3f}" if fim else "")
             ta = f"atrim=start={ini:.3f}" + (f":end={fim:.3f}" if fim else "")
-            partes.append(f"[{i}:v:0]{tv},setpts=PTS-STARTPTS[v{i}]")
+            partes.append(f"[{i}:v:0]{tv},setpts=PTS-STARTPTS{_norm}[v{i}]")
             partes.append(f"[{i}:a:0]{ta},asetpts=PTS-STARTPTS[a{i}]")
         else:
-            partes.append(f"[{i}:v:0]null[v{i}]")
+            partes.append(f"[{i}:v:0]null{_norm}[v{i}]")
             partes.append(f"[{i}:a:0]anull[a{i}]")
         rotulos += f"[v{i}][a{i}]"
 
