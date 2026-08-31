@@ -133,6 +133,8 @@ CFG = {"model": "base", "margem": "0.2s", "watch_dir": "",
        # `captions._ass_cor` — aqui fica o formato que o seletor devolve.
        "fixo_cor": "#000000",
        "fixo_fundo": "#F0D000",
+       # ⭐ transparencia da caixa: 0 opaco, 100 invisivel. Nasce em 0.
+       "fixo_alfa": "0",
        "aqui_x": "81",
        "aqui_y": "68",
        "dia_corte": "3",
@@ -207,7 +209,8 @@ def dias_atual():
                      "y": _pos_pct("fixo_y", 15, 0.06, 0.94),
                      "take": _inteiro("fixo_take"),
                      "cor": (CFG.get("fixo_cor") or "#000000").strip(),
-                     "fundo": (CFG.get("fixo_fundo") or "#F0D000").strip()}}
+                     "fundo": (CFG.get("fixo_fundo") or "#F0D000").strip(),
+                     "alfa": (CFG.get("fixo_alfa") or "0").strip()}}
 
 
 def _inteiro(chave):

@@ -518,6 +518,27 @@ class App(tk.Tk):
             width=2, padx=0, pady=0)
         self.bt_cor_fundo.pack(side="left", padx=(2, 0), ipady=2)
 
+        # ⭐ TRANSPARENCIA DA CAIXA. O `_ass_cor` cravava &H00 no alfa,
+        # entao a caixa era sempre solida e nao havia como mudar isso.
+        # ⚠️ Os rotulos sao em "quanto se ve", nao em alfa cru: no ASS o
+        # alfa e' invertido (00 opaco, FF invisivel) e expor isso na UI
+        # so' geraria escolha errada.
+        self.cb_fixo_alfa = ttk.Combobox(
+            lf, style="Eddie.TCombobox", width=10, state="readonly",
+            font=FT, values=list(self._ALFA_VALS))
+        self.cb_fixo_alfa.set(self._alfa_rotulo())
+        self.cb_fixo_alfa.pack(side="left", padx=(4, 0))
+        self.cb_fixo_alfa.bind("<<ComboboxSelected>>", self._fixo_alfa_escolhido)
+        for _ev in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
+            self.cb_fixo_alfa.bind(_ev, lambda _e: "break")
+
+        self.bt_emoji = tk.Button(
+            lf, text="emoji", command=self._abrir_emoji,
+            font=FT, relief="flat", bd=0, cursor="hand2",
+            bg=SURFACE2, fg=INK, activebackground=AQUA,
+            padx=8, pady=0)
+        self.bt_emoji.pack(side="left", padx=(4, 0), ipady=2)
+
         self.cb_fixo_take = ttk.Combobox(
             lf, style="Eddie.TCombobox", width=9, state="readonly", font=FT,
             values=self._FIXO_TAKES_VALS)
@@ -948,6 +969,77 @@ class App(tk.Tk):
         esteira.salvar_cfg()
         self._leg_pintar()
 
+    # ===================================================================
+    # ⭐ TRANSPARENCIA DA CAIXA + EMOJI — 2026-08-31
+    # ===================================================================
+    # No ASS o alfa e' INVERTIDO: 00 opaco, FF invisivel. Medido em render
+    # sobre fundo verde: 0 solida, 50 metade, 100 sumiu e sobrou so' o texto.
+    _ALFA_VALS = ("caixa solida", "caixa 25%", "caixa 50%",
+                  "caixa 75%", "sem caixa")
+    _ALFA_PCT = {"caixa solida": 0, "caixa 25%": 25, "caixa 50%": 50,
+                 "caixa 75%": 75, "sem caixa": 100}
+
+    def _alfa_rotulo(self):
+        try:
+            v = int(float(esteira.CFG.get("fixo_alfa") or 0))
+        except (TypeError, ValueError):
+            v = 0
+        for rot, pct in self._ALFA_PCT.items():
+            if pct == v:
+                return rot
+        return self._ALFA_VALS[0]
+
+    def _fixo_alfa_escolhido(self, _=None):
+        pct = self._ALFA_PCT.get(self.cb_fixo_alfa.get(), 0)
+        esteira.CFG["fixo_alfa"] = str(pct)
+        esteira.salvar_cfg()
+        self._leg_pintar()
+
+    # ⛔ EMOJI SAI SEMPRE MONOCROMATICO, e isso e' do libass, nao escolha
+    # nossa: o ffmpeg queima legenda por ele, e ele le so' a camada de
+    # CONTORNO das fontes de emoji coloridas (a Segoe UI Emoji tem as duas).
+    # Medido em render: coracao, fogo, mao e bebe sairam como linha branca.
+    # ⭐ Em compensacao NAO precisa de tag de fonte nenhuma: o libass troca
+    # de fonte sozinho ao achar um caractere que a Arial Black nao tem.
+    # Medido no mesmo render, com o emoji cru no meio do texto.
+    _EMOJIS = [
+        "🤷", "🤦", "🙄", "😭",
+        "😂", "😍", "😱", "😳",
+        "👶", "👉", "👇", "👏",
+        "❤", "⭐", "🔥", "✨",
+        "🛒", "🎁", "💸", "✅",
+    ]
+
+    def _abrir_emoji(self):
+        """Paleta pequena. Insere no cursor do campo da legenda fixa."""
+        top = tk.Toplevel(self)
+        top.title("Emoji")
+        top.configure(bg=BG)
+        top.resizable(False, False)
+        top.transient(self)
+        tk.Label(top, bg=BG, fg=DIM, font=FT, justify="left",
+                 text="Sai em contorno branco, sem cor.\n"
+                      "E' o libass do ffmpeg, nao da' para mudar aqui.",
+                 ).grid(row=0, column=0, columnspan=5, padx=10, pady=(10, 6))
+
+        def por(e):
+            try:
+                self.ent_fixo.insert(self.ent_fixo.index("insert"), e)
+            except tk.TclError:
+                self.ent_fixo.insert("end", e)
+            self._fixo_digitou()
+            top.destroy()
+
+        for i, e in enumerate(self._EMOJIS):
+            tk.Button(top, text=e, command=lambda x=e: por(x),
+                      font=("Segoe UI Emoji", 16), relief="flat", bd=0,
+                      bg=SURFACE2, fg=INK, activebackground=AQUA,
+                      width=2, cursor="hand2"
+                      ).grid(row=1 + i // 5, column=i % 5, padx=3, pady=3)
+        top.update_idletasks()
+        top.geometry("+%d+%d" % (self.winfo_rootx() + 220,
+                                 self.winfo_rooty() + 220))
+
     def _fixo_cor(self, chave):
         """Abre o seletor de cor do sistema e guarda em #RRGGBB.
 
@@ -1156,9 +1248,17 @@ class App(tk.Tk):
             fw, fh = W * larg, H * 0.048 * n_lin
             cor_fx = esteira.CFG.get("fixo_cor") or "#000000"
             cor_bg = esteira.CFG.get("fixo_fundo") or "#F0D000"
-            c.create_rectangle(fx * W - fw / 2, fy * H - fh / 2,
-                               fx * W + fw / 2, fy * H + fh / 2,
-                               fill=cor_bg, outline=cor_bg)
+            # ⚠️ o Canvas do tkinter nao tem alfa: com "sem caixa" a
+            # previa DESENHA a caixa e o video final nao teria nenhuma.
+            # Previa que mente e' pior que previa pobre — entao ela some.
+            try:
+                _alf = int(float(esteira.CFG.get("fixo_alfa") or 0))
+            except (TypeError, ValueError):
+                _alf = 0
+            if _alf < 100:
+                c.create_rectangle(fx * W - fw / 2, fy * H - fh / 2,
+                                   fx * W + fw / 2, fy * H + fh / 2,
+                                   fill=cor_bg, outline=cor_bg)
             c.create_text(fx * W, fy * H, text=fx_txt[:10], fill=cor_fx,
                           font=("Segoe UI", 6, "bold"))
         for _b, _k, _p in ((self.bt_cor_txt, "fixo_cor", "#000000"),

@@ -81,6 +81,26 @@ def _ass_cor(hexa, padrao="&H00000000"):
     return "&H00%02X%02X%02X" % (b, g, r)
 
 
+def _ass_cor_alfa(hexa, alfa_pct, padrao="&H00000000"):
+    """Como `_ass_cor`, mas com TRANSPARENCIA. alfa_pct: 0 opaco, 100 invisivel.
+
+    ⛔ O `_ass_cor` crava `&H00` no comeco, e aquele `00` e' o canal ALFA do
+    ASS — por isso a caixa da legenda fixa sempre saiu solida, sem que
+    existisse opcao nenhuma de mudar isso.
+
+    ⚠️ No ASS o alfa e' INVERTIDO em relacao ao que a pessoa espera: 00 e'
+    totalmente OPACO e FF e' totalmente INVISIVEL. Medido em render, com
+    caixa sobre fundo verde: 00 solida, 80 metade, FF sumiu e sobrou so' o
+    texto.
+    """
+    base = _ass_cor(hexa, padrao)
+    try:
+        a = int(round(max(0.0, min(100.0, float(alfa_pct))) * 255.0 / 100.0))
+    except (TypeError, ValueError):
+        a = 0
+    return "&H%02X%s" % (a, base[4:]) if len(base) == 10 else base
+
+
 def _limpa(texto, maiuscula):
     # tira pontuacao/virgula solta no comeco (whisper as vezes destaca ela);
     # mantem a do fim. Neutraliza chaves que quebrariam o ASS.
@@ -495,6 +515,9 @@ def gerar_ass(
     # O padrao e' o do reel: texto preto sobre caixa amarela #F0D000.
     fixo_cor="#000000",
     fixo_fundo="#F0D000",
+    # ⭐ TRANSPARENCIA DA CAIXA — 0 opaco (como sempre foi), 100 invisivel.
+    # Nasce em 0 para nenhum video existente mudar de aparencia.
+    fixo_alfa=0,
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
     max_chars) e quebra tambem quando ha silencio > gap_quebra entre palavras.
@@ -593,7 +616,7 @@ def gerar_ass(
     # o Outline no BorderStyle 3 e' o PADDING da caixa, nao um contorno
     pad_fixo = max(3, int(round(altura * 0.006)))
     cor_fixo_txt = _ass_cor(fixo_cor, "&H00000000")
-    cor_fixo_box = _ass_cor(fixo_fundo, "&H0000D0F0")
+    cor_fixo_box = _ass_cor_alfa(fixo_fundo, fixo_alfa, "&H0000D0F0")
     _aq_u = largura / _AQ_REF_W
     fonte_aqui = max(10, int(round(_AQ_TX_FONTE * _aq_u)))
     bord_aqui = max(2, int(round(5.0 * _aq_u)))

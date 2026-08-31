@@ -766,6 +766,7 @@ def processar_video(takes, out_final, model="base", lang="en",
                   fixo_ini=_fx_ini, fixo_fim=_fx_fim,
                   fixo_cor=_fx.get("cor") or "#000000",
                   fixo_fundo=_fx.get("fundo") or "#F0D000",
+                  fixo_alfa=_fx.get("alfa") or 0,
                   pin_em=_inicio_ultimo_take(durs, dur_final, log))
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
