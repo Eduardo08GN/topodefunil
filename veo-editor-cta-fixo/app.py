@@ -615,6 +615,26 @@ class App(tk.Tk):
                                       postcommand=self._musicas_refresh)
         self._musicas_refresh()
         self.cb_musica.pack(side="left", padx=(8, 6))
+
+        # ⭐ VELOCIDADE — 2026-08-31, pedido do operador.
+        # ⛔ Ate' aqui o fator era SEMPRE sorteado entre 0.95 e 1.03 e nao
+        # havia como travar. "sorteio" mantem o anti-lote (cada video sai com
+        # duracao um pouco diferente, para 50 videos nao terem o mesmo
+        # tamanho); qualquer outro valor trava o lote inteiro.
+        # ⚠️ A MUSICA NAO ENTRA NA ACELERACAO, e isso ja' era verdade antes:
+        # ela e' mixada DEPOIS da legenda queimada (pipeline, mixar_musica),
+        # e a velocidade roda bem antes (aplicar_velocidade). Travar o fator
+        # nao muda essa ordem.
+        tk.Label(rodape, text="Velocidade", bg=BG, fg=DIM,
+                 font=FT).pack(side="left", padx=(12, 0))
+        self.cb_vel = ttk.Combobox(
+            rodape, style="Eddie.TCombobox", width=9, state="readonly",
+            font=FT, values=list(self._VEL_VALS))
+        self.cb_vel.set(self._vel_rotulo())
+        self.cb_vel.pack(side="left", padx=(8, 6))
+        self.cb_vel.bind("<<ComboboxSelected>>", self._vel_escolhida)
+        for _ev in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
+            self.cb_vel.bind(_ev, lambda _e: "break")
         self.cb_musica.bind("<<ComboboxSelected>>", self._cfg_musica)
         self.bt_travar = tk.Button(rodape, text="travar", font=FT, relief="flat",
                                    bd=0, cursor="hand2", padx=10, pady=4,
@@ -975,9 +995,28 @@ class App(tk.Tk):
     # No ASS o alfa e' INVERTIDO: 00 opaco, FF invisivel. Medido em render
     # sobre fundo verde: 0 solida, 50 metade, 100 sumiu e sobrou so' o texto.
     _ALFA_VALS = ("caixa solida", "caixa 25%", "caixa 50%",
-                  "caixa 75%", "sem caixa")
+                  "caixa 75%", "so contorno")
     _ALFA_PCT = {"caixa solida": 0, "caixa 25%": 25, "caixa 50%": 50,
-                 "caixa 75%": 75, "sem caixa": 100}
+                 "caixa 75%": 75, "so contorno": 100}
+
+    # ⚠️ O sorteio fica PRIMEIRO de proposito: e' o padrao e o que o
+    # operador deve escolher na duvida. Uma lista que abre num numero
+    # convida a travar o lote sem querer.
+    _VEL_VALS = ("sorteio", "0.90x", "0.95x", "1.00x", "1.05x",
+                 "1.10x", "1.15x", "1.20x")
+
+    def _vel_rotulo(self):
+        v = (esteira.CFG.get("velocidade") or "sorteio").strip().lower()
+        if v in ("", "sorteio"):
+            return "sorteio"
+        try:
+            return "%.2fx" % float(v.rstrip("x").replace(",", "."))
+        except ValueError:
+            return "sorteio"
+
+    def _vel_escolhida(self, _=None):
+        esteira.CFG["velocidade"] = self.cb_vel.get()
+        esteira.salvar_cfg()
 
     def _alfa_rotulo(self):
         try:
@@ -992,6 +1031,14 @@ class App(tk.Tk):
     def _fixo_alfa_escolhido(self, _=None):
         pct = self._ALFA_PCT.get(self.cb_fixo_alfa.get(), 0)
         esteira.CFG["fixo_alfa"] = str(pct)
+        # ⛔ ACOPLAMENTO DELIBERADO, nao magica: em "so contorno" o
+        # `captions` troca para BorderStyle 1 e o contorno e' SEMPRE preto.
+        # O padrao do texto e' PRETO — preto sobre contorno preto e'
+        # invisivel. Quem escolhe esse modo quer o visual da fonte (branco
+        # com contorno preto), entao o texto vai para branco junto.
+        # ⭐ Nao e' irreversivel: o botao "A" continua mandando depois.
+        if pct >= 100 and (esteira.CFG.get("fixo_cor") or "#000000").lower()                 in ("#000000", "000000"):
+            esteira.CFG["fixo_cor"] = "#FFFFFF"
         esteira.salvar_cfg()
         self._leg_pintar()
 

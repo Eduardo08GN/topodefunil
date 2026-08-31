@@ -135,6 +135,11 @@ CFG = {"model": "base", "margem": "0.2s", "watch_dir": "",
        "fixo_fundo": "#F0D000",
        # ⭐ transparencia da caixa: 0 opaco, 100 invisivel. Nasce em 0.
        "fixo_alfa": "0",
+       # ⭐ VELOCIDADE — "sorteio" mantem o anti-lote (fator aleatorio por
+       # video); um numero trava o lote inteiro naquele fator.
+       # ⚠️ A MUSICA NAO E' AFETADA, e isso ja' era assim: ela e' mixada
+       # depois da legenda queimada, e a velocidade roda antes de tudo.
+       "velocidade": "sorteio",
        "aqui_x": "81",
        "aqui_y": "68",
        "dia_corte": "3",
@@ -581,7 +586,15 @@ def _processar_zip(nome):
         _log_atual(f"{len(takes)} take(s) em ordem: "
                    + ", ".join(os.path.basename(t) for t in takes))
 
-        fator = round(random.uniform(VEL_MIN, VEL_MAX), 4)
+        # ⭐ o operador pode TRAVAR o fator; "sorteio" e' o padrao antigo.
+        _vel = (CFG.get("velocidade") or "sorteio").strip().lower()
+        if _vel in ("", "sorteio"):
+            fator = round(random.uniform(VEL_MIN, VEL_MAX), 4)
+        else:
+            try:
+                fator = round(float(_vel.rstrip("x").replace(",", ".")), 4)
+            except ValueError:
+                fator = round(random.uniform(VEL_MIN, VEL_MAX), 4)
         data_str = date.today().isoformat()
         pasta_dia = os.path.join(D_PRONTOS, data_str)
         arquivo = _proximo_nome(pasta_dia)

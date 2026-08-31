@@ -617,6 +617,27 @@ def gerar_ass(
     pad_fixo = max(3, int(round(altura * 0.006)))
     cor_fixo_txt = _ass_cor(fixo_cor, "&H00000000")
     cor_fixo_box = _ass_cor_alfa(fixo_fundo, fixo_alfa, "&H0000D0F0")
+
+    # ⭐⭐ SEM CAIXA VIRA CONTORNO, NAO "CAIXA INVISIVEL" — 2026-08-31.
+    # ⛔ O defeito: BorderStyle 3 so' sabe desenhar CAIXA. Zerando so' o alfa,
+    # o texto ficava sem caixa E SEM CONTORNO — ilegivel sobre video claro,
+    # que foi exatamente o que o operador viu no primeiro render.
+    # A fonte que ele quer copiar nao tem caixa nenhuma: e' texto com
+    # contorno, o BorderStyle 1. Entao a opcao extrema troca de modo em vez
+    # de so' apagar a caixa.
+    # ⚠️ O contorno e' SEMPRE preto e opaco: e' ele que faz o texto sobreviver
+    # a qualquer fundo. Herdar a cor da caixa aqui daria contorno amarelo.
+    try:
+        _alfa_n = float(fixo_alfa)
+    except (TypeError, ValueError):
+        _alfa_n = 0.0
+    if _alfa_n >= 100:
+        borda_fixo = 1                       # contorno + sombra
+        esp_fixo = max(3, int(round(altura * 0.004)))
+        cor_fixo_box = "&H00000000"          # preto opaco
+    else:
+        borda_fixo = 3                       # caixa opaca (o de sempre)
+        esp_fixo = pad_fixo
     _aq_u = largura / _AQ_REF_W
     fonte_aqui = max(10, int(round(_AQ_TX_FONTE * _aq_u)))
     bord_aqui = max(2, int(round(5.0 * _aq_u)))
@@ -653,7 +674,7 @@ Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour,
 Style: CC,Arial Black,{fonte_sz},{cor_ativa},{cor_espera},&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{sombra},8,{margin_lr},{margin_lr},{margin_topo},1
 Style: PIN,Arial Black,{fonte_pin},&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{sombra},8,{margin_lr},{margin_lr},{margin_pin},1
 Style: AQUI,Arial Black,{fonte_aqui},&H001414FF,&H001414FF,&H00FFFFFF,&H00000000,-1,0,0,0,100,100,0,0,1,{bord_aqui},0,5,0,0,0,1
-Style: FIXO,Arial Black,{fonte_fixo},{cor_fixo_txt},{cor_fixo_txt},{cor_fixo_box},{cor_fixo_box},-1,0,0,0,100,100,0,0,3,{pad_fixo},0,5,0,0,0,1
+Style: FIXO,Arial Black,{fonte_fixo},{cor_fixo_txt},{cor_fixo_txt},{cor_fixo_box},{cor_fixo_box},-1,0,0,0,100,100,0,0,{borda_fixo},{esp_fixo},0,5,0,0,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
