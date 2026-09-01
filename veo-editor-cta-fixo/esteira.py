@@ -477,6 +477,28 @@ def _ler_sem_corte(pasta):
         return []
 
 
+def _ler_cortes(pasta):
+    """Le os cortes do sidecar: {"0": [ini, fim], ...} em SEGUNDOS do
+    arquivo ORIGINAL. ⚠️ Nunca levanta, pelo mesmo motivo do irmao acima:
+    json quebrado vira lote normal, nao lote perdido."""
+    p = os.path.join(pasta, SEMCORTE_JSON)
+    if not os.path.isfile(p):
+        return {}
+    try:
+        with open(p, encoding="utf-8") as f:
+            dados = json.load(f)
+        if not isinstance(dados, dict):
+            return {}
+        saida = {}
+        for k, v in (dados.get("cortes") or {}).items():
+            ini, fim = int(v[0] or 0), int(v[1] or 0)
+            if ini or fim:
+                saida[int(k)] = [ini, fim]
+        return saida
+    except Exception:  # noqa: BLE001
+        return {}
+
+
 def _enfileirar(origem_path):
     """Move o zip para 02_processando e poe na fila."""
     destino = _nome_unico(D_PROC, os.path.basename(origem_path))
@@ -606,6 +628,12 @@ def _processar_zip(nome):
             _log_atual("aviso: musica %r sumiu da pasta — seguindo sem"
                        % CFG["musica"])
         dias = dias_atual()
+        _cortes = _ler_cortes(extra)
+        if _cortes:
+            dias["cortes"] = _cortes
+            log("  cortes por take: "
+                + ", ".join("%d(%ds-%ds)" % (k + 1, v[0], v[1])
+                            for k, v in sorted(_cortes.items())))
         sem_corte = _ler_sem_corte(extra)
         if sem_corte:
             dias["sem_corte"] = sem_corte
@@ -669,7 +697,7 @@ def _worker():
 
 # ---------------- API usada pelo app ----------------
 
-def enfileirar_manual(caminhos, sem_corte=None):
+def enfileirar_manual(caminhos, sem_corte=None, cortes=None):
     """⭐ MODO MANUAL (2026-08-03): o operador escolhe os takes na mao.
 
     Recebe os caminhos JA' NA ORDEM (take 1, 2, 3, 4...) e devolve o nome do
@@ -707,8 +735,15 @@ def enfileirar_manual(caminhos, sem_corte=None):
     with zipfile.ZipFile(tmp, "w", zipfile.ZIP_STORED) as z:
         for i, c in enumerate(caminhos, 1):
             z.write(c, "%02d_%s" % (i, os.path.basename(c)))
-        if idx:
-            z.writestr(SEMCORTE_JSON, json.dumps({"sem_corte": idx}))
+        # ⭐ o sidecar passa a levar TAMBEM os cortes por take (2026-09-01).
+        # Mesmo arquivo de proposito: e o canal que ja existe para dado
+        # por take, e um segundo sidecar seria outra coisa para esquecer
+        # de ler quando o formato mudar.
+        _ct = {str(k): [int(v[0] or 0), int(v[1] or 0)]
+               for k, v in (cortes or {}).items()}
+        if idx or _ct:
+            z.writestr(SEMCORTE_JSON,
+                       json.dumps({"sem_corte": idx, "cortes": _ct}))
     os.replace(tmp, destino)
     return os.path.basename(destino)
 

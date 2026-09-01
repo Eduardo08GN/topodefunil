@@ -320,6 +320,11 @@ class App(tk.Tk):
                  font=("Segoe UI", 8, "bold"), anchor="w").pack(side="left")
         tk.Label(cab_m, text="CORTAR", bg=SURFACE, fg=MUT,
                  font=("Segoe UI", 8, "bold"), anchor="e").pack(side="right")
+        # ⭐ IN/OUT por take — 2026-09-01. Segundos INTEIROS na linha do
+        # tempo do ARQUIVO ORIGINAL, nao do video ja tratado.
+        tk.Label(cab_m, text="IN OUT", bg=SURFACE, fg=MUT,
+                 font=("Segoe UI", 8, "bold"), anchor="e"
+                 ).pack(side="right", padx=(0, 14))
         self.manual = [None] * N_MANUAL
         # ⭐⭐ CHAVINHA POR TAKE (2026-08-26) — ordem do operador: *"1 pequena
         # chavinha liga e desliga ao lado de cada take, para quando ela estiver
@@ -327,6 +332,9 @@ class App(tk.Tk):
         # ⛔ NASCE LIGADA: ligada = o comportamento de sempre. Chavinha que muda
         # o padrao faria todo lote antigo sair diferente sem ninguem pedir.
         self.corta = [True] * N_MANUAL
+        # ⭐ campos de corte por take. Vazio = sem corte, que e o padrao:
+        # nenhum lote antigo muda de comportamento por eles existirem.
+        self.ent_ini, self.ent_fim = [], []
         self.lb_manual = []
         self.sw_manual = []
         for i in range(N_MANUAL):
@@ -344,6 +352,20 @@ class App(tk.Tk):
                            activebackground="#2adcc7", activeforeground="#04231f")
             sw.pack(side="right", padx=(6, 0), ipady=1)
             self.sw_manual.append(sw)
+            # ⚠️ Empacotados DEPOIS da chavinha e tambem com side="right":
+            # o primeiro a entrar fica mais a direita. A ordem visual sai
+            # IN, OUT, ON, e o botao de escolher (expand=True) ainda come
+            # o meio. Invertendo, o botao engole os campos.
+            e_fim = tk.Entry(lin, width=3, font=FT, bg=SURFACE2, fg=INK,
+                             relief="flat", bd=0, justify="center",
+                             insertbackground=INK)
+            e_fim.pack(side="right", padx=(2, 0), ipady=2)
+            e_ini = tk.Entry(lin, width=3, font=FT, bg=SURFACE2, fg=INK,
+                             relief="flat", bd=0, justify="center",
+                             insertbackground=INK)
+            e_ini.pack(side="right", padx=(6, 2), ipady=2)
+            self.ent_ini.append(e_ini)
+            self.ent_fim.append(e_fim)
             b = tk.Button(lin, text="escolher...", command=lambda k=i: self._pick(k),
                           font=FT, bg=SURFACE, fg=DIM, relief="flat", bd=0,
                           cursor="hand2", anchor="w", padx=8,
@@ -1465,6 +1487,16 @@ class App(tk.Tk):
                 self.manual[i + k] = os.path.normpath(p)
         self._pintar_manual()
 
+    @staticmethod
+    def _inteiro_campo(ent):
+        """Le um campo de corte. Vazio ou lixo viram 0, nunca excecao:
+        perder o lote por uma letra digitada seria pior que ignora-la."""
+        try:
+            return max(0, int(float((ent.get() or "0").strip()
+                                    .replace(",", "."))))
+        except (ValueError, AttributeError):
+            return 0
+
     def _toggle_corte(self, i):
         """Liga/desliga o corte do slot i. DESLIGADA = o take passa inteiro."""
         self.corta[i] = not self.corta[i]
@@ -1473,6 +1505,10 @@ class App(tk.Tk):
     def _limpar_manual(self):
         self.manual = [None] * N_MANUAL
         self.corta = [True] * N_MANUAL
+        # ⛔ os campos TAMBEM sao limpos. Sem isto o corte de um lote
+        # vazaria para o proximo, que sai encurtado sem ninguem pedir.
+        for _e in self.ent_ini + self.ent_fim:
+            _e.delete(0, "end")
         self._pintar_manual()
 
     def _pintar_manual(self):
@@ -1509,17 +1545,25 @@ class App(tk.Tk):
         # slot 1 esta' vazio e o 2 tem video com a chavinha desligada, o take e'
         # o de indice 0 para o pipeline. Mandar o numero do slot desligaria o
         # corte do take errado — em silencio.
-        escolhidos, sem_corte = [], []
+        escolhidos, sem_corte, cortes = [], [], {}
         for i, p in enumerate(self.manual):
             if not p:
                 continue
             if not self.corta[i]:
                 sem_corte.append(len(escolhidos))
+            # ⛔ a chave e a posicao entre os ESCOLHIDOS, igual ao
+            # sem_corte: mandar o numero do slot cortaria o take errado,
+            # e em silencio.
+            _ini = self._inteiro_campo(self.ent_ini[i])
+            _fim = self._inteiro_campo(self.ent_fim[i])
+            if _ini or _fim:
+                cortes[str(len(escolhidos))] = [_ini, _fim]
             escolhidos.append(p)
         if not escolhidos:
             return
         try:
-            nome = esteira.enfileirar_manual(escolhidos, sem_corte=sem_corte)
+            nome = esteira.enfileirar_manual(escolhidos, sem_corte=sem_corte,
+                                             cortes=cortes)
         except Exception as e:  # noqa: BLE001
             messagebox.showerror("Veo Editor", str(e), parent=self)
             return

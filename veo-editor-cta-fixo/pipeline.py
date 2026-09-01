@@ -602,10 +602,38 @@ def preparar_takes(takes, work, margem, dias=None, log=print):
     sem_corte = {int(i) for i in (dias.get("sem_corte") or ())}
     mudez = mudez_dos_takes(takes, dias.get("mudos"), log)
     saida, i_mudo = [], 0
+    _cortes = (dias or {}).get("cortes") or {}
     for i, tk in enumerate(takes):
         mudo = mudez[i]
         intocado = i in sem_corte
         cur = tk
+        # ⭐⭐ CORTE IN/OUT POR TAKE — 2026-09-01, pedido do operador.
+        # ⛔ ACONTECE PRIMEIRO, antes de desilenciar e antes da legenda DAY.
+        # Os segundos que ele digita sao os do ARQUIVO que ele assistiu; se
+        # o corte viesse depois do `desilenciar`, o mesmo "3" apontaria para
+        # outro instante, porque o silencio ja teria encurtado o take.
+        # ⚠️ -ss e -to vao DEPOIS do -i: antes dele o seek e rapido e erra o
+        # frame. Aqui reencoda, entao o corte cai no ponto exato.
+        _ct = _cortes.get(i) or _cortes.get(str(i))
+        if _ct:
+            _ini, _fim = int(_ct[0] or 0), int(_ct[1] or 0)
+            if _fim and _fim <= _ini:
+                log("  take %d: corte ignorado (fim %ds <= inicio %ds)"
+                    % (i + 1, _fim, _ini))
+            elif _ini or _fim:
+                _novo = os.path.join(work, "t%02d_inout.mp4" % i)
+                _cmd = [FFMPEG, "-y", "-i", cur]
+                if _ini:
+                    _cmd += ["-ss", str(_ini)]
+                if _fim:
+                    _cmd += ["-to", str(_fim)]
+                _cmd += ["-c:v", "libx264", "-preset", "veryfast",
+                         "-crf", "18", "-c:a", "aac", "-b:a", "192k", _novo]
+                _run(_cmd)
+                log("  take %d: cortado %ds ate %s (%.1fs)"
+                    % (i + 1, _ini, ("%ds" % _fim) if _fim else "o fim",
+                       duracao(_novo)))
+                cur = _novo
         if mudo:
             i_mudo += 1
             # ⛔ O TAKE MUDO NAO PASSA PELO auto-editor — ver acima.
