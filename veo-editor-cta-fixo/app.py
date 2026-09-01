@@ -42,7 +42,13 @@ GIF_TRABALHANDO = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 # suposto: com 8 slots o rodape continua na tela e a lista encolhe.
 # ⭐ 2026-08-25: 4 -> 8, ordem do operador (*"ajuste o editor para caber ate 8
 # takes"*).
-N_MANUAL = 8
+# ⭐ ATE' 12 TAKES (2026-08-31, ordem do operador). Era 8; foi para 12 sem a
+# janela crescer, porque a Listbox da FILA usa expand=True e cede 108px para os
+# 4 slots novos (medido: fila 308->200px, janela fica nos 946, teto e' 986).
+# ⛔ TODA a UI de take e' derivada desta constante — `takes mudos`, `dia do
+# take`, `fixo_take` e o guarda do `_pick` foram a 12 sozinhos. Mexer aqui e'
+# o unico ponto.
+N_MANUAL = 12
 
 # design system (mesmo do painel antigo)
 BG = "#080b10"
@@ -306,7 +312,7 @@ class App(tk.Tk):
         # ⭐ TAKES MANUAIS (2026-08-03) — subir os videos na mao, sem zip.
         # Mora aqui embaixo da fila de proposito: e' a mesma esteira, so' que
         # alimentada pela mao em vez do watcher.
-        # ⭐ 2026-08-21: sao N_MANUAL slots (4), nao mais tres fixos.
+        # ⭐ sao N_MANUAL slots (hoje 12), nao mais tres fixos.
         tk.Frame(sec_fila, bg=LINE, height=1).pack(fill="x", padx=12)
         cab_m = tk.Frame(sec_fila, bg=SURFACE)
         cab_m.pack(fill="x", padx=12, pady=(8, 4))
