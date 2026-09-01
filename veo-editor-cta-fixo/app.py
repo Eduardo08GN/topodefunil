@@ -587,10 +587,18 @@ class App(tk.Tk):
         self.lst_err.pack(side="left", fill="both", expand=True, padx=(0, 10))
         botao(linha_err, "Tentar de novo", self._retry).pack(side="right", anchor="n")
 
+        # ⭐ SEPARADOR DE GRUPO — 2026-09-01. Uma linha de 1px entre
+        # decisoes que nao se conversam. Sem ela o rodape e' uma parede de
+        # 14 controles de peso identico e o agrupamento so' existe na
+        # cabeca de quem ja' sabe.
+        def _sep(pai, antes=14, depois=14):
+            tk.Frame(pai, bg=SURFACE2, width=1).pack(
+                side="left", fill="y", padx=(antes, depois), pady=2)
+
         # rodape: opcoes + status
         rodape = tk.Frame(self, bg=BG)
         rodape.pack(fill="x", padx=20, pady=(10, 14))
-        tk.Label(rodape, text="Precisao", bg=BG, fg=DIM, font=FT).pack(side="left")
+        tk.Label(rodape, text="precisao", bg=BG, fg=DIM, font=FT).pack(side="left")
         st.configure("Eddie.TCombobox", fieldbackground=SURFACE2, background=SURFACE2,
                      foreground=INK, arrowcolor=DIM, borderwidth=0,
                      selectbackground=SURFACE2, selectforeground=INK)
@@ -619,25 +627,27 @@ class App(tk.Tk):
         # ⛔ O SUFIXO `.en` SUMIU DOS ROTULOS de proposito: quem o poe e tira
         # e' o `captions.modelo_para`, a partir DESTE combo. Escolher modelo
         # e idioma em separado permitia a combinacao quebrada.
-        tk.Label(rodape, text="Idioma", bg=BG, fg=DIM, font=FT).pack(side="left")
+        tk.Label(rodape, text="idioma", bg=BG, fg=DIM, font=FT).pack(side="left")
         self._IDIOMAS = [("en", "Ingles"), ("de", "Alemao"), ("fr", "Frances")]
         self.cb_lang = ttk.Combobox(rodape, style="Eddie.TCombobox", width=10,
                                     state="readonly", font=FT,
                                     values=[r for _c, r in self._IDIOMAS])
         self.cb_lang.current(0)
-        self.cb_lang.pack(side="left", padx=(8, 20))
+        self.cb_lang.pack(side="left", padx=(8, 4))
         self.cb_lang.bind("<<ComboboxSelected>>", self._cfg)
-        tk.Label(rodape, text="Silencio", bg=BG, fg=DIM, font=FT).pack(side="left")
+        _sep(rodape)                       # fim de TRANSCRICAO
+        tk.Label(rodape, text="silencio", bg=BG, fg=DIM, font=FT).pack(side="left")
         self.cb_margem = ttk.Combobox(rodape, style="Eddie.TCombobox", width=16,
                                       state="readonly", font=FT,
                                       values=["0.15s (seco)", "0.2s (padrao)", "0.35s (respiro)"])
         self.cb_margem.current(1)
-        self.cb_margem.pack(side="left", padx=(8, 20))
+        self.cb_margem.pack(side="left", padx=(8, 4))
         self.cb_margem.bind("<<ComboboxSelected>>", self._cfg)
+        _sep(rodape)                       # fim de CORTE
         # ⭐ MUSICA dos takes mudos (2026-08-21, pedido para o AMISH 16S):
         # toca do inicio ate' o fim do penultimo take, cortada no tamanho do
         # trecho ja' editado. `travar` mantem a escolha entre sessoes.
-        tk.Label(rodape, text="Musica", bg=BG, fg=DIM, font=FT).pack(side="left")
+        tk.Label(rodape, text="musica", bg=BG, fg=DIM, font=FT).pack(side="left")
         self.cb_musica = ttk.Combobox(rodape, style="Eddie.TCombobox", width=22,
                                       state="readonly", font=FT,
                                       postcommand=self._musicas_refresh)
@@ -653,7 +663,7 @@ class App(tk.Tk):
         # ela e' mixada DEPOIS da legenda queimada (pipeline, mixar_musica),
         # e a velocidade roda bem antes (aplicar_velocidade). Travar o fator
         # nao muda essa ordem.
-        tk.Label(rodape, text="Velocidade", bg=BG, fg=DIM,
+        tk.Label(rodape, text="velocidade", bg=BG, fg=DIM,
                  font=FT).pack(side="left", padx=(12, 0))
         self.cb_vel = ttk.Combobox(
             rodape, style="Eddie.TCombobox", width=9, state="readonly",
@@ -699,6 +709,7 @@ class App(tk.Tk):
             font=FT, values=["vermelho", "amarelo", "branco", "rosa", "roxo"])
         self.cb_dia_estilo.pack(side="left", padx=(8, 16))
         self.cb_dia_estilo.bind("<<ComboboxSelected>>", self._cfg_dia)
+        _sep(linha2)                       # fim de LEGENDA DAY
         tk.Label(linha2, text="cortar take mudo a", bg=BG, fg=DIM,
                  font=FT).pack(side="left")
         self.cb_dia_corte = ttk.Combobox(
@@ -730,6 +741,7 @@ class App(tk.Tk):
         # fixar no ultimo take inteiro, faca reconhecer o momento do CTA"*).
         # ⚠️ Campo VAZIO nao desliga nada: significa "usa a keyword que o audio
         # falou". Quem desliga e' o botao.
+        _sep(linha2)                       # fim de MUDEZ
         self.bt_cta = tk.Button(linha2, text="CTA fixo", font=FT, relief="flat",
                                 bd=0, cursor="hand2", padx=10, pady=4,
                                 command=self._alternar_cta)
