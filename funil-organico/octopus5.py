@@ -516,48 +516,61 @@ def montar(rng, led):
     return {"cenas": cenas, "legenda": leg + emo, "cta": cta}
 
 
+def _uma_linha(*partes):
+    """Junta em UMA linha corrida. ⛔ O formato da casa nao quebra prompt: o
+    operador cola um de cada vez na AdBatch, e quebra de linha no meio o faz
+    caçar onde a entrada termina."""
+    return " ".join(" ".join(p.split()) for p in partes if p)
+
+
 def _bloco_image(i, c):
-    linhas = [c["cenario"], "", c["luz"], "", ESTILO]
-    if c["maos"]:
-        linhas.append("Anatomically correct hands, clean finger separation.")
-    linhas.append(ANTI_TEXTO)
-    return "IMAGE %02d — %s\n%s" % (i + 1, c["id"], "\n".join(linhas))
+    extra = ("Anatomically correct hands, clean finger separation."
+             if c["maos"] else "")
+    return "IMAGE %02d/%02d: %s" % (
+        i + 1, N_TAKES,
+        _uma_linha(c["cenario"], c["luz"], ESTILO, extra, ANTI_TEXTO))
 
 
 def _bloco_take(i, c):
     # ⛔ NO I2V O TAKE NAO REDESCREVE NADA. A imagem E' o primeiro quadro;
     # redescrever convida o modelo a REGERAR o rosto e a cor, que e' a causa
     # real do morphing entre cenas. Doutrina Veo 3.1, secao 5.
-    linhas = ["Maintain the subject from the first frame.", "",
-              "Camera: locked off, no movement.", "",
-              c["movimento"], "",
-              "Light unchanged: %s" % c["luz"].rstrip("."), "",
-              "Audio: %s" % c["audio"], ""]
-    if c["maos"]:
-        linhas.append(DEDOS)
-    linhas.append(ANTI_TEXTO_TAKE)
-    return "TAKE %02d — %s\n%s" % (i + 1, c["id"], "\n".join(linhas))
+    extra = DEDOS if c["maos"] else ""
+    corpo = _uma_linha(
+        "Animate the provided image exactly. Maintain the subject from the "
+        "first frame. The camera does not move, no cuts.",
+        c["movimento"],
+        "Light unchanged: %s" % c["luz"],
+        extra, ANTI_TEXTO_TAKE)
+    # ⚠️ sem linha `Dialogue:` — este agente nao tem fala, e linha vazia seria
+    # pior que linha ausente: o operador leria como copy esquecida.
+    return "TAKE %02d/%02d: %s\nAudio: %s" % (i + 1, N_TAKES, corpo, c["audio"])
 
 
 def render(v, n):
-    """⚠️ FORMATO DE ENTREGA: bloco IMAGE INTEIRO, depois bloco TAKE INTEIRO.
-    Nunca intercalado — e' como o operador cola na AdBatch, e intercalar o
-    obriga a reordenar cinco pares na mao."""
-    out = ["=" * 70,
-           "VIDEO %02d   |   %d takes de %ds   |   AdBatch Vertical %d"
-           % (n, N_TAKES, SEG_POR_TAKE, N_TAKES),
-           "=" * 70, "",
-           "LEGENDA FIXA (segurada nos %ds inteiros, campo CTA fixo do editor):"
-           % (N_TAKES * SEG_POR_TAKE),
-           "  " + v["legenda"].replace("\n", "\n  "), "",
-           "CTA da descricao do post:", "  " + v["cta"], "",
-           "-" * 70, "BLOCO IMAGE", "-" * 70, ""]
+    """Formato da casa: uma linha de spec entre reguas, depois um prompt por
+    entrada, em linha corrida, separados por linha em branco."""
+    spec = _uma_linha(
+        "%ds, CINCO takes de %ds, SEM FALA (musica e legenda queimada)." % (
+            N_TAKES * SEG_POR_TAKE, SEG_POR_TAKE),
+        "Cenas: " + " / ".join("%d %s" % (i + 1, c["id"])
+                               for i, c in enumerate(v["cenas"])) + ".",
+        "LEGENDA FIXA, segurada nos %ds inteiros, no campo CTA fixo do editor:"
+        % (N_TAKES * SEG_POR_TAKE),
+        # ⚠️ o repr() mostrava o `\n` LITERAL na linha de spec. A legenda tem
+        # duas linhas de propósito (a proibicao e o `Me:`), entao aqui ela vira
+        # uma barra — no editor ela e' colada com a quebra de verdade.
+        v["legenda"].replace("\n", " / "),
+        "CTA da descricao do post: " + v["cta"] + ".",
+        "Destino: AdBatch Vertical %d." % N_TAKES)
+    out = ["=" * 70, "VIDEO %02d  |  %s" % (n, spec), "=" * 70, ""]
     for i, c in enumerate(v["cenas"]):
         out.append(_bloco_image(i, c))
         out.append("")
-    out += ["-" * 70, "BLOCO TAKE", "-" * 70, ""]
+        out.append("")
     for i, c in enumerate(v["cenas"]):
         out.append(_bloco_take(i, c))
+        out.append("")
         out.append("")
     return "\n".join(out)
 
@@ -701,6 +714,16 @@ def autoteste(n=400):
 
 
 def main():
+    # ⛔ O CONSOLE DO WINDOWS MATA O EMOJI. O terminal nasce em cp1252 e o
+    # `print` levanta UnicodeEncodeError na legenda — o motor gera certo e
+    # morre na saida. O app tkinter nunca viu isto, entao o defeito so'
+    # existia no caminho CLI, que e' justamente o que o operador roda para
+    # conferir antes de gerar lote.
+    for fluxo in (sys.stdout, sys.stderr):
+        try:
+            fluxo.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
     ap = argparse.ArgumentParser(description=TITULO)
     ap.add_argument("--n", type=int, default=1, help="quantos videos")
     ap.add_argument("--seed", type=int, default=None)
