@@ -840,11 +840,21 @@ def definir_keyword(palavra):
 # `Comment Recipe` de caixa alta e sem virgula do BANHO 16 3T. O grupo 1
 # preserva a capitalizacao original do verbo.
 def trocar_keyword(texto, de, para):
-    """Troca a palavra DO COMANDO do CTA, e nada mais."""
+    """Troca a palavra DO COMANDO do CTA, e nada mais.
+
+    ⭐ 2026-09-01 — O GRUPO ACEITA OS COMANDOS ALEMAES (`Kommentiere`,
+    `Schreib`). O ATEM 16 e' o primeiro motor do parque com copy em
+    alemao, e com o grupo so' em `Comment` o campo de keyword da UI
+    ficava MUDO nele: o operador digitava a palavra nova, a tela nao
+    mudava nada, e a descoberta vinha do comentario que nao virou DM.
+    ⛔ A mudanca e' ADITIVA: `Comment` continua na alternancia, entao
+    nenhum dos motores ingleses muda um caractere. Medido bit a bit em
+    5 motores x 200 videos antes do commit — nao lido, medido.
+    """
     if not texto or not de or de.lower() == (para or "").lower():
         return texto
-    return re.sub(r"\b(Comment\s+)%s\b" % re.escape(de), r"\g<1>" + para,
-                  texto, flags=re.I)
+    return re.sub(r"\b((?:Comment|Kommentiere|Schreib)\s+)%s\b"
+                  % re.escape(de), r"\g<1>" + para, texto, flags=re.I)
 
 
 def aplicar_keyword(falas, nativa=KEYWORD_PADRAO):
@@ -854,6 +864,17 @@ def aplicar_keyword(falas, nativa=KEYWORD_PADRAO):
     feature: os tres BANHO usam `recipe` por ordem de 2026-08-13. Assumir
     `gelatin` para todos reescreveria uma excecao declarada em silencio.
     """
+    # ⛔⛔ 2026-09-01 — SEM ESTA LINHA A FUNCAO CONTRADIZIA A PROPRIA
+    # DOCSTRING. `_KEYWORD` nasce em `gelatin` e `_KEYWORD_EXPLICITA` em False;
+    # nesse estado (app recem-aberto, ninguem encostou no campo) os tres BANHO
+    # tinham `Comment recipe` reescrito para `Comment gelatin` a cada abertura,
+    # revertendo em silencio a ordem do operador de 2026-08-13. A flag ja'
+    # existia — nasceu no `keyword_do_motor`, para o mesmo buraco, achado no
+    # VICK 16 — e so' o OUTRO lado do par tinha sido ligado.
+    # ⭐ A regra, agora nos dois lados: ninguem tocou no campo, vale a palavra
+    # que os POOLS carregam escrita; o operador digitou, vale a dele.
+    if not _KEYWORD_EXPLICITA:
+        return list(falas)
     if _KEYWORD == (nativa or "").lower():
         return list(falas)
     return [trocar_keyword(f, nativa, _KEYWORD) for f in falas]

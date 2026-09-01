@@ -50,7 +50,7 @@ Três cenas de 8s, destino AdBatch Vertical 3.
 regra entra no `_short`.
 
 ⭐⭐ **E existe uma segunda família temporal desde 2026-08-08: o 16s** — hoje
-com **trinta agentes nossos**, não mais um. **2 takes de 8s**, destino
+com **trinta e um agentes nossos**, não mais um. **2 takes de 8s**, destino
 **AdBatch Vertical 2**, ledger próprio cada um:
 
 `trio16` · `dupla16` · `falta16` · `placa16` · `troca16` · `botica16` ·
@@ -58,8 +58,8 @@ com **trinta agentes nossos**, não mais um. **2 takes de 8s**, destino
 `pee16` · `necrose16` · `good16` · `bed16` · `wife16` · `fight16` · `alfa16` ·
 `prato16` · `banho16` · `banho16_v2` · `mel16` · `organicwave16` ·
 **`banho16_3t`** · `horse16` · `vick16` · **`vick2_16`** · **`gelahorse16`** ·
-**`par16`** · **`descarte16`** ·
-(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 32 no total)
+**`par16`** · **`descarte16`** · **`atem16`** ·
+(+ `clean_v1_16s`/`clean_v2_16s`, do outro autor — 33 no total)
 
 ⭐ **`par16` e `descarte16` (2026-08-16) — DOIS agentes tirados de sete
 vídeos, não sete.** Os 7 reels do lote de 16/08 são uma página rodando **um
@@ -152,6 +152,85 @@ famílias de propósito, para a medição significar algo em vez de a copy se do
 ao regex. Mesma pendência do `organicwave16`. **Medido: zero ERRO em 400
 sorteios, os 8 pools 100% alcançáveis, 0% em CT1/CT3/CT4/CT4b/CT5/CT6/CT7/CT8,
 zero frase órfã em 800, zero drifting em 1.000 falas.**
+
+⭐⭐ **`atem16` (2026-09-01) — a mancha pública em ALEMÃO, e o primeiro agente
+que vende INFOPRODUTO.** ⛔ **Não é gelatina e não é ED**: a oferta é
+`Begin To Breathe`, curso de breathwork de Corrina Holzner (Beamdream
+Breathworks), 147 EUR, e o mecanismo único é **`Freemor Breathing®`** —
+respiração consciente somada a **tremor neurogênico**, que a própria página
+crava ser *"die einzige Atemtechnik dieser Art im deutschsprachigen Raum"*.
+⭐ É o `gelatin trick` deste funil: nome próprio, proprietário, que a FAQ da
+fonte diz não existir no YouTube. Lente `AT5` cobra o literal no take 3.
+⭐ **A gramática de cena é a do PEE 16**, por ordem do operador — a mancha em
+roupa clara, a plateia rindo E apontando, a vítima chorando e muda, e o dedo da
+narradora na **mancha do tecido**, sem encostar (a construção que passou na
+moderação depois das 4 recusas por agência). ⛔ **Elenco inteiro feminino**:
+`SEXOS = ("mulher",)`, e o REF é uma coach **original** no arquétipo da
+produtora — ordem dele: *"não é pra vc usar ela, mas sim alguém parecida"*.
+
+⛔⛔ **A CAUSA DA MANCHA NÃO É ATAQUE DE PÂNICO, E ISSO É DECISÃO DECLARADA.**
+O briefing pedia ataque de ansiedade; a página de vendas do produto **exclui
+essa pessoa por escrito** em dois lugares (*"akuten psychischen Krise"* e
+`Panikattacken` na lista de "fale com seu médico antes"). Vender contra a
+contraindicação do produtor custa refund, o afiliado, e a Alemanha é o mercado
+mais duro do mundo em alegação de saúde. ⭐ **A cena não perdeu uma vírgula** —
+mudou a moldura para **sistema nervoso preso em alarme** e a promessa para
+**regulação em minutos**, as duas copy da própria página. Lente `AT9` bane
+diagnóstico e cura. ⚠️ Reversível em um pool, e a decisão é do operador.
+
+⭐⭐ **O TETO DE FALA É EM SÍLABAS, E ESTE É O PRIMEIRO MOTOR DO PARQUE ASSIM.**
+Os outros contam PALAVRAS porque em inglês as duas medidas andam juntas (~1,4
+sílabas por palavra). Alemão tem ~1,7, e composto é pior — `Nervensystem` é
+UMA palavra e QUATRO sílabas. ⛔ Um teto de 25 palavras em alemão autoriza fala
+que não cabe em 8s, e fala que não cabe **sai cortada no render sem ninguém
+ver** (§27). A unidade física é a sílaba: **35 em 8s**; palavra fica como rede
+secundária (24). ⚠️ **E ele pegou o defeito na primeira rodada**: o take 3
+saía com **59 sílabas** porque eu havia empilhado método + CTA + barreira num
+take só. A barreira mudou para o fim do take 2, onde há folga.
+
+⛔ **Três takes de 8s (24s), destino AdBatch Vertical 3** — mesmo formato do
+`ruth16` e pela razão registrada por ele (*"2 takes fica muito suprimido as
+copys"*), que aqui pesa mais: alemão gasta mais sílaba por ideia e esta copy
+ainda precisa **apresentar um mecanismo com nome próprio**.
+⛔ **A direção de cena continua em INGLÊS; só a linha `Dialogue:` é alemã**, e
+o bloco `Voice:` declara alemã NATIVA — sem isso o TTS lê alemão com fonemas
+ingleses. ⚠️ No Veo Editor, selecionar **`Idioma: Alemão`** no rodapé: a
+legenda queimada nasce do Whisper sobre o áudio.
+⛔ **Keyword `ATEM`**, editável no painel. ⏳ **Ela precisa ser cadastrada na
+automação de DM antes do primeiro lote** — é o preço já pago com `book`, `yes`
+e `horse`. ⏳ **E as cinco páginas do `ETNIA` são provisórias**: o operador
+ainda não passou as páginas deste funil.
+
+⚠️ **O que só apareceu LENDO O VÍDEO GERADO, com o autoteste já cravando
+"0 ERRO em 400 sorteios":** quatro frases quebradas (`She is head bowed` sem
+verbo, `crouched on one knee` duplicado, dois pontos faltando) e uma **frase
+órfã em 100% dos vídeos** — a garantia de 14 dias caindo no take 2, antes de
+existir oferta. **Medidor de pool não mede função.** Viraram as lentes `AT14`
+(barreira de compra fora do take 2) e `AT15` (o hook carrega o elo com o
+alarme, e nenhuma fala menciona filmagem). ⭐ A `AT15` existia só como
+comentário acima do pool, e **uma das doze entradas já a violava** — molde que
+não vira código é onde o vício mora.
+**Medido: 0 ERRO em 400 sorteios, 12/12 pools alcançáveis, 31/30/30 sílabas de
+teto 35, 9 controles negativos acusando 40/40, e a janela gerando as três falas
+em alemão.**
+
+⛔⛔ **E ELE ACHOU UM DEFEITO VIVO NOS AGENTES DO OPERADOR.**
+`short_comum.aplicar_keyword` **contradizia a própria docstring**: ela diz
+*"assumir `gelatin` para todos reescreveria uma exceção declarada em
+silêncio"*, e o código nunca consultava a flag `_KEYWORD_EXPLICITA` que existe
+exatamente para isso. Resultado medido, com o app recém-aberto e ninguém
+tocando no campo: **os três BANHO tinham `Comment recipe` reescrito para
+`Comment gelatin` a cada abertura**, revertendo em silêncio a ordem de
+2026-08-13. ⚠️ Nos BANHO o sintoma é discreto (`Comment gelatin` é frase
+plausível) e por isso durou; no ATEM era grosseiro (`Kommentiere gelatin`) e
+apareceu na primeira sonda de janela. **Sete motores afetados**
+(`banho16`, `banho16_v2`, `banho16_3t`, `raro16`, `ruth16`, `vick16`,
+`vick2_16`) — consertados e **os sete `.exe` reconstruídos**, porque o exe leva
+o `short_comum` assado dentro e conserto na fonte não chega a quem roda o exe.
+⭐ E `trocar_keyword` passou a aceitar os comandos alemães (`Kommentiere`,
+`Schreib`): sem isso o campo de keyword ficaria **mudo** neste motor.
+**Medido bit a bit: 53 de 54 motores idênticos em 1.092 linhas de CTA — o único
+que muda é o próprio ATEM, e muda de "não trocava" para "troca".**
 
 ⭐⭐ **`ruth16` (2026-08-21) — a humilhação pública no EMAGRECIMENTO, e a
 TERCEIRA família temporal: 3 takes de 8s (24s).** ⛔ **Não é 16s e não é o
