@@ -786,15 +786,46 @@ class App(tk.Tk):
 
     # ---------------- acoes ----------------
 
+    # ⛔⛔ MEDIDO no audio alemao do operador (2026-09-01): com `base`, o
+    # Whisper devolve `Hohe SKORTISOL` no lugar de `Hohes Cortisol` e `Wenn EIN
+    # Herz` no lugar de `dein Herz` — erra o NOME DO MECANISMO e mata o
+    # vocativo. Com `small` sai correto. Em ingles `base` e' um rapido honesto;
+    # fora do ingles ele e' um gerador de ruido com cara de legenda pronta, e
+    # legenda queimada nao tem revisao depois.
+    MODELO_MINIMO_FORA_DO_INGLES = "small"
+
     def _cfg(self, _=None):
         esteira.CFG["model"] = self.cb_model.get().split(" ")[0]
         esteira.CFG["margem"] = self.cb_margem.get().split(" ")[0]
         rot = self.cb_lang.get()
+        lang_antes = esteira.CFG.get("lang", "en")
         for cod, r in self._IDIOMAS:
             if r == rot:
                 esteira.CFG["lang"] = cod
                 break
+        # ⚠️ So' quando o IDIOMA MUDA. Depois disso, escolher `base` com alemao
+        # selecionado e' decisao do operador e fica valendo — botao que desfaz
+        # a escolha do dono a cada clique e' pior que botao nenhum.
+        if (esteira.CFG.get("lang") != lang_antes
+                and esteira.CFG.get("lang") != "en"
+                and esteira.CFG.get("model") == "base"):
+            self._subir_modelo()
         esteira.salvar_cfg()
+
+    def _subir_modelo(self):
+        """Sobe `base` para `small` ao sair do ingles, e DIZ por que."""
+        for i, v in enumerate(self.cb_model.cget("values")):
+            if v.startswith(self.MODELO_MINIMO_FORA_DO_INGLES):
+                self.cb_model.current(i)
+                esteira.CFG["model"] = self.MODELO_MINIMO_FORA_DO_INGLES
+                break
+        try:
+            self.lst_err.insert(
+                0, "precisao subiu para `small`: fora do ingles o `base` "
+                   "escreve o mecanismo errado (medido: Skortisol por "
+                   "Cortisol). Pode voltar para base se quiser.")
+        except Exception:                                   # noqa: BLE001
+            pass
 
     SEM_MUSICA = "(sem musica)"
 
