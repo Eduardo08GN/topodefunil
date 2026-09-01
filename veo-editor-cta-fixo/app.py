@@ -1456,6 +1456,19 @@ class App(tk.Tk):
         # o operador encostar num combo para o `_cfg_dia` gravar por cima e
         # apagar a escolha dele de vez.
         self._sync_dia()
+        # ⭐⭐ OS DOIS COMBOS DE TAKE, PELA MESMA RAZAO — 2026-09-01.
+        # Eles ficaram de fora desta sincronia e repetiram o defeito que o
+        # comentario acima descreve para o DAY. Efeito MEDIDO em producao:
+        # o config tinha `fixo_take=1`, o painel exibia "todos", e a legenda
+        # fixa cobriu 2,4s de um video de 12s — a fracao exata de um take
+        # entre cinco. O operador leu "todos" na tela e recebeu o take 1.
+        # ⛔ E NAO adianta gravar o que o combo EXIBE na abertura: tentei, e
+        # como ele nasce antes do config existir, a gravacao carimbava vazio
+        # por cima da escolha real. Medido: `fixo_take=3` plantado voltava
+        # como "" depois de abrir e fechar. O combo tem de SEGUIR o disco,
+        # nunca o contrario.
+        self.cb_aqui_takes.set(self._aqui_takes_rotulo())
+        self.cb_fixo_take.set(self._fixo_take_rotulo())
 
     def _pasta_vigiada(self):
         p = filedialog.askdirectory(

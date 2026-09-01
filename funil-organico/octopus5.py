@@ -84,8 +84,23 @@ ANTI_TEXTO_TAKE = ("No subtitles, no captions, no burned-in text, "
 DEDOS = ("Exactly ten fingers total visible, no extra hands, no extra limbs, "
          "only two arms visible.")
 
+# ⛔⛔ SILENCIO EXPLICITO, E NAO A AUSENCIA DA LINHA. A doutrina do Veo diz
+# que sem rotulo `Audio:` o modelo INVENTA a trilha; omitir devolveria a
+# decisao para ele. O formato e' so' musica, entao todo take nasce mudo.
+# ⚠️ Custo medido de nao fazer isto: no lote de 01/09 o take 4 saiu a
+# -17,6 dB, contra o limiar de -26 dB do editor, e o audio dele tocou
+# junto com a musica no video pronto. Os outros quatro so' escaparam
+# porque o ambiente que eu pedi saiu baixo — sorte, nao construcao.
+SILENCIO = "Audio: complete silence. No speech, no ambient sound, no music."
+
 
 def _cena(ident, cenario, luz, movimento, audio, maos=False):
+    """⚠️ O campo `audio` esta' APOSENTADO desde 01/09 e continua aqui de
+    proposito: ele guarda o ambiente que a cena teria, caso um dia este
+    angulo ganhe uma versao com som. Nenhum prompt o usa — quem manda no
+    audio agora e' a constante SILENCIO, igual nos cinco takes.
+    ⛔ Mexer nele nao muda um unico video. Se um dia voltar a valer, a
+    lente OC10 tem de sair junto, nao antes."""
     return {"id": ident, "cenario": cenario.strip(), "luz": luz.strip(),
             "movimento": movimento.strip(), "audio": audio.strip(),
             "maos": maos}
@@ -544,7 +559,7 @@ def _bloco_take(i, c):
         extra, ANTI_TEXTO_TAKE)
     # ⚠️ sem linha `Dialogue:` — este agente nao tem fala, e linha vazia seria
     # pior que linha ausente: o operador leria como copy esquecida.
-    return "TAKE %02d/%02d: %s\nAudio: %s" % (i + 1, N_TAKES, corpo, c["audio"])
+    return "TAKE %02d/%02d: %s\n%s" % (i + 1, N_TAKES, corpo, SILENCIO)
 
 
 def render(v, n):
@@ -583,6 +598,13 @@ def render(v, n):
 _RE_APARELHO = re.compile(r"\b(holding|with) (a |the )?(phone|smartphone|"
                           r"camera|iphone)\b", re.I)
 _RE_TRANSFORMA = re.compile(r"PRODUTO\.(capitalize|title|upper|lower)\(")
+# ⛔ A PRIMEIRA VERSAO DESTA LENTE VARRIA VOCABULARIO DE SOM na prosa do
+# movimento e reprovou 400 de 400. Ali `breathes`, `laugh` e `rustle` sao
+# INSTRUCAO VISUAL — "the chest rising and falling", "the toddler runs" —
+# e bani-las destruiria a descricao de movimento, que e' o que o I2V
+# precisa. O recorte certo nao e' vocabulario, e' a CONTAGEM de rotulos
+# `Audio:`: deve haver exatamente um, e ele deve ser o do silencio.
+_RE_ROTULO_AUDIO = re.compile(r"^Audio:", re.M)
 _RE_CELEB = re.compile(r"not (a )?(celebrity|famous|celebrities)", re.I)
 _RE_MARCA = re.compile(r"\b(octocuddles|nestling ?picks|amazon)\b", re.I)
 
@@ -661,6 +683,18 @@ def lint(v):
     ids = [c["id"] for c in v["cenas"]]
     if len(set(ids)) != N_TAKES:
         p.append("OC8 cena repetida no mesmo video: %s" % ", ".join(ids))
+
+    # OC10 — nenhum take pode PEDIR som. Este angulo e' so' musica, e o
+    # editor so' zera o audio do take que estiver abaixo de -26 dB: um
+    # ambiente alto sobrevive e toca junto com a trilha. O sintoma so'
+    # aparece no video pronto, entao a lente e' a unica chance de pegar.
+    for i, c in enumerate(v["cenas"]):
+        bloco = _bloco_take(i, c)
+        if SILENCIO not in bloco:
+            p.append("OC10 take %d nao pede silencio" % (i + 1))
+        if len(_RE_ROTULO_AUDIO.findall(bloco)) != 1:
+            p.append("OC10 take %d tem %d rotulos Audio (esperado 1)"
+                     % (i + 1, len(_RE_ROTULO_AUDIO.findall(bloco))))
 
     # OC9 — o TAKE nao pode redescrever o cenario (morphing no I2V)
     for i, c in enumerate(v["cenas"]):
