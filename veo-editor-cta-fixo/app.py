@@ -299,7 +299,11 @@ class App(tk.Tk):
         corpo.columnconfigure(1, weight=4, uniform="c")
         corpo.columnconfigure(2, weight=3, uniform="c")
         corpo.rowconfigure(0, weight=3)
-        corpo.rowconfigure(1, weight=1)
+        # ⭐ weight=0: a faixa de ERROS mede o que o conteudo pede, e nao
+        # 25% da janela. Com weight=1 ela reivindicava um quarto da altura
+        # para escrever "Nenhum erro" — espaco tirado da FILA e da lista
+        # de takes, que sao onde o operador de fato trabalha.
+        corpo.rowconfigure(1, weight=0)
 
         # fila
         sec_fila = Secao(corpo, "Fila")
@@ -339,9 +343,13 @@ class App(tk.Tk):
         self.sw_manual = []
         for i in range(N_MANUAL):
             lin = tk.Frame(sec_fila, bg=SURFACE)
-            lin.pack(fill="x", padx=12, pady=1)
+            # ⭐ pady=0 e o numero sem ipady: doze linhas devolvem ~24px de
+            # respiro morto para a FILA, que fica em branco acima. Nao da'
+            # para reduzir a QUANTIDADE — N_MANUAL e' contrato do painel e o
+            # operador enche os doze num lote grande.
+            lin.pack(fill="x", padx=12, pady=0)
             tk.Label(lin, text="%d" % (i + 1), bg=SURFACE2, fg=GOLD, font=FT,
-                     width=2).pack(side="left", ipady=2)
+                     width=2).pack(side="left")
             # ⚠️ a chavinha e' empacotada ANTES do botao de escolher, com
             # side="right": o botao vem depois com expand=True e ocupa o meio.
             # Invertendo a ordem o botao come a largura toda e a chavinha some.
@@ -455,8 +463,14 @@ class App(tk.Tk):
         # corpo terminam 12 px acima da secao de ERROS. Duas linhas novas
         # empurrariam o rodape para fora — o defeito de 28/08.
         # ⚠️ Os tres numeros acima cairam de 11 para 9 para pagar esta linha.
+        # ⭐ DUAS LINHAS — 2026-09-01. Antes eram seis controles espremidos
+        # numa so', e o campo de TEXTO, que e' o que mais precisa de
+        # largura, era o mais sufocado. Em cima o texto sozinho; embaixo os
+        # cinco controles que o modificam.
         self._fixo_linha = tk.Frame(sec_leg, bg=SURFACE)
         self._fixo_linha.pack(fill="x", pady=(6, 0))
+        self._fixo_linha2 = tk.Frame(sec_leg, bg=SURFACE)
+        self._fixo_linha2.pack(fill="x", pady=(4, 0))
         # ⚠️ 104x185 e' 9:16 EXATO (185 * 9/16 = 104,06). Proporcao errada
         # aqui mentiria sobre onde a legenda cai no video de verdade.
         self.LEG_W, self.LEG_H = 104, 185
@@ -523,6 +537,7 @@ class App(tk.Tk):
         # ⛔ NAO TEM CHAVE LIGA/DESLIGA, de proposito: texto em branco ja' quer
         # dizer "nao quero", e um botao a mais nao cabia na altura da tela.
         lf = self._fixo_linha
+        lf2 = self._fixo_linha2          # a segunda linha, dos controles
         self.ent_fixo = tk.Entry(lf, bg=SURFACE2, fg=INK, relief="flat", bd=0,
                                  font=FT, insertbackground=INK,
                                  highlightthickness=1, highlightbackground=LINE,
@@ -536,12 +551,12 @@ class App(tk.Tk):
         self.ent_fixo.bind("<Return>", self._fixo_soltou)
 
         self.bt_cor_txt = tk.Button(
-            lf, text="A", command=lambda: self._fixo_cor("fixo_cor"),
+            lf2, text="A", command=lambda: self._fixo_cor("fixo_cor"),
             font=("Segoe UI", 8, "bold"), relief="flat", bd=0, cursor="hand2",
             width=2, padx=0, pady=0)
-        self.bt_cor_txt.pack(side="left", padx=(4, 0), ipady=2)
+        self.bt_cor_txt.pack(side="left", padx=(0, 0), ipady=2)
         self.bt_cor_fundo = tk.Button(
-            lf, text="█", command=lambda: self._fixo_cor("fixo_fundo"),
+            lf2, text="█", command=lambda: self._fixo_cor("fixo_fundo"),
             font=("Segoe UI", 8, "bold"), relief="flat", bd=0, cursor="hand2",
             width=2, padx=0, pady=0)
         self.bt_cor_fundo.pack(side="left", padx=(2, 0), ipady=2)
@@ -552,7 +567,7 @@ class App(tk.Tk):
         # alfa e' invertido (00 opaco, FF invisivel) e expor isso na UI
         # so' geraria escolha errada.
         self.cb_fixo_alfa = ttk.Combobox(
-            lf, style="Eddie.TCombobox", width=10, state="readonly",
+            lf2, style="Eddie.TCombobox", width=10, state="readonly",
             font=FT, values=list(self._ALFA_VALS))
         self.cb_fixo_alfa.set(self._alfa_rotulo())
         self.cb_fixo_alfa.pack(side="left", padx=(4, 0))
@@ -561,14 +576,14 @@ class App(tk.Tk):
             self.cb_fixo_alfa.bind(_ev, lambda _e: "break")
 
         self.bt_emoji = tk.Button(
-            lf, text="emoji", command=self._abrir_emoji,
+            lf2, text="emoji", command=self._abrir_emoji,
             font=FT, relief="flat", bd=0, cursor="hand2",
             bg=SURFACE2, fg=INK, activebackground=AQUA,
             padx=8, pady=0)
         self.bt_emoji.pack(side="left", padx=(4, 0), ipady=2)
 
         self.cb_fixo_take = ttk.Combobox(
-            lf, style="Eddie.TCombobox", width=9, state="readonly", font=FT,
+            lf2, style="Eddie.TCombobox", width=9, state="readonly", font=FT,
             values=self._FIXO_TAKES_VALS)
         self.cb_fixo_take.set(self._fixo_take_rotulo())
         self.cb_fixo_take.pack(side="left", padx=(4, 0))
@@ -578,13 +593,16 @@ class App(tk.Tk):
         # erros
         sec_err = Secao(corpo, "Erros")
         sec_err.titulo.configure(fg=RED)
-        sec_err.grid(row=1, column=0, columnspan=3, sticky="nsew", pady=(12, 0))
+        sec_err.grid(row=1, column=0, columnspan=3, sticky="ew", pady=(10, 0))
         linha_err = tk.Frame(sec_err, bg=SURFACE)
-        linha_err.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        linha_err.pack(fill="x", padx=12, pady=(0, 10))
+        # ⚠️ height=2, nao 1: com uma linha so' o segundo erro de um lote
+        # ficaria invisivel sem scroll, e erro que nao aparece e' erro que
+        # nao existe para quem opera.
         self.lst_err = tk.Listbox(linha_err, bg=SURFACE, fg=RED, relief="flat",
-                                  font=FT, highlightthickness=0, bd=0, height=3,
+                                  font=FT, highlightthickness=0, bd=0, height=2,
                                   selectbackground=SURFACE2, activestyle="none")
-        self.lst_err.pack(side="left", fill="both", expand=True, padx=(0, 10))
+        self.lst_err.pack(side="left", fill="x", expand=True, padx=(0, 10))
         botao(linha_err, "Tentar de novo", self._retry).pack(side="right", anchor="n")
 
         # ⭐ SEPARADOR DE GRUPO — 2026-09-01. Uma linha de 1px entre
