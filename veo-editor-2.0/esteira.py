@@ -132,8 +132,13 @@ TAKES_ESPERADOS = 3
 
 # watch_dir vazio = usa o Downloads do Windows; keywords = palavras-gatilho do
 # CTA destacadas na legenda (cor propria + fonte maior)
-CFG = {"model": "base.en", "margem": "0.2s", "watch_dir": "",
-       "keywords": "HONEY,GELATIN,VICK,VICKS,RECIPE"}
+# ⭐ `lang` (2026-09-01, porte do CTA FIXO). E o `model` perde o `.en`:
+# quem o poe e tira e' o `captions.modelo_para`, a partir do idioma.
+CFG = {"model": "base", "lang": "en", "margem": "0.2s", "watch_dir": "",
+       "keywords": "HONEY,GELATIN,VICK,VICKS,RECIPE",
+       # ⭐ o CTA fixo no topo do video. `pin_cta` e' BOOLEANO de proposito —
+       # e' o tipo que o `_carregar_cfg` antigo descartava em silencio.
+       "pin_cta": True, "palavra_cta": "GELATIN"}
 
 _lock = threading.RLock()
 _fila = queue.Queue()
@@ -171,9 +176,15 @@ def _carregar_cfg():
     try:
         with open(CONFIG, encoding="utf-8") as f:
             dados = json.load(f)
-        for k in CFG:
-            if isinstance(dados.get(k), str):
-                CFG[k] = dados[k]
+        # ⛔⛔ ANTES: `for k in CFG: if isinstance(dados.get(k), str)`.
+        # Duas perdas silenciosas a cada abertura do app, porque o
+        # `salvar_cfg` grava o CFG INTEIRO por cima do arquivo:
+        #   · chave que nao estivesse no CFG padrao sumia do config.json;
+        #   · valor que nao fosse string sumia junto — e `pin_cta` e' BOOLEANO.
+        # Foi assim que `palavra_cta` e `pin_cta` desapareceram do arquivo do
+        # operador. O app le' o que nao entende e devolve intacto.
+        for k, v in dados.items():
+            CFG[k] = v
     except (OSError, ValueError):
         pass
 
@@ -430,7 +441,10 @@ def _processar_zip(nome):
         out = os.path.join(pasta_dia, arquivo)
 
         kws = [k for k in CFG["keywords"].split(",") if k.strip()]
-        processar_video(takes, out, model=CFG["model"], margem=CFG["margem"],
+        processar_video(takes, out, model=CFG["model"],
+                        lang=CFG.get("lang", "en"), margem=CFG["margem"],
+                        pin_cta=bool(CFG.get("pin_cta", True)),
+                        palavra_cta=CFG.get("palavra_cta") or None,
                         fator=fator, keywords=kws, log=_log_atual)
 
         dur = duracao(out)

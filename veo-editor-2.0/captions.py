@@ -9,8 +9,34 @@ from faster_whisper import WhisperModel
 _MODELO = {}  # cache por tamanho, pra nao recarregar a cada video
 
 
+# ⭐⭐ IDIOMA (2026-08-30). Ordem: *"O Veo editor esta' preparado para
+# reconhecer audios e gerar legendas em alemao e frances?"*. Nao estava: os
+# tres modelos do menu eram `.en` e o `lang` nunca saia de "en".
+IDIOMAS = {"en": "Ingles", "de": "Alemao", "fr": "Frances"}
+
+
+def modelo_para(model_size, language):
+    """O modelo TEM de casar com o idioma, e por isso a escolha e' derivada.
+
+    ⛔⛔ `small.en` com audio alemao NAO DA ERRO. O modelo so'-ingles
+    transcreve o alemao foneticamente como se fosse ingles, e a legenda sai
+    lixo com aparencia de legenda: o operador nao ve' falha nenhuma, ve' um
+    video pronto com palavra errada. Silencio identico ao do acerto.
+
+    ⭐ Por isso o app nao deixa escolher modelo e idioma separados: o idioma
+    manda, e o sufixo `.en` e' colocado ou tirado aqui. Combinacao quebrada
+    deixa de ser possivel por construcao.
+
+    ⚠️ E o `.en` fica no ingles de proposito: para audio ingles o modelo
+    so'-ingles e' mais preciso e mais rapido que o multilingue do mesmo porte.
+    """
+    base = (model_size or "base").replace(".en", "")
+    return base + ".en" if (language or "en") == "en" else base
+
+
 def transcrever(audio_path, model_size="base.en", language="en"):
     """Retorna lista de {text, start, end} por palavra."""
+    model_size = modelo_para(model_size, language)
     if model_size not in _MODELO:
         _MODELO[model_size] = WhisperModel(model_size, device="cpu", compute_type="int8")
     model = _MODELO[model_size]
@@ -66,6 +92,7 @@ def gerar_ass(
     cor_keyword="&H000049FF",  # vermelho-laranja vivo (ABGR de #FF4900)
     escala_keyword=1.4,        # fonte da keyword vs fonte normal
     pin_cta=True,              # fixa "COMMENT <KEYWORD>" no topo apos o CTA falado
+    palavra_cta=None,          # FORCA a palavra do pin; None = usa a que foi falada
     duracao_video=None,        # fim do pin (segundos). None = fim da ultima palavra
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
@@ -165,6 +192,17 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if pin_cta and palavras:
         kw_falada = None
         t_pin = None
+        # ⭐⭐ `palavra_cta` FORCA a palavra do pin. Ela existe por causa do
+        # defeito documentado logo acima: as keywords tambem sao INGREDIENTES
+        # da copy, e o pin travava na primeira que o Whisper ouvisse — medido,
+        # metade dos videos do CLEAN mandava comentar `honey` em vez de
+        # `gelatin`, quebrando a automacao Comentario->DM.
+        # ⛔ E ela e' o que faz o pin existir FORA DO INGLES: em alemao o audio
+        # diz `Kommentiere RUHE`, e a deteccao abaixo procura o literal
+        # `COMMENT`. Sem forcar a palavra, o pin nao sai.
+        forcada = (palavra_cta or "").strip().upper() or None
+        if forcada:
+            kw = set(kw) | {forcada}
         toks = [(_limpa(w["text"], True).strip(".,!?;:").upper(), w)
                 for w in palavras]
         # 1) o caso certo: a keyword vem logo depois de "comment"
@@ -182,6 +220,17 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                     kw_falada = tok
                     t_pin = w["end"]
                     break
+        # ⚠️ A palavra EXIBIDA e' a forcada; o INSTANTE continua vindo da
+        # deteccao, que e' quem sabe onde o CTA falado comeca. Forcar tambem o
+        # tempo seria inventar um lugar no video.
+        if forcada and kw_falada is not None:
+            kw_falada = forcada
+        # ⛔ Ultimo recurso: `palavra_cta` ligada e NADA detectado (o caso
+        # alemao). Ancora no comeco da ULTIMA palavra falada — e' o instante em
+        # que o CTA certamente ja' terminou, e sem ancora nao ha' pin nenhum.
+        elif forcada and kw_falada is None:
+            kw_falada = forcada
+            t_pin = palavras[-1]["start"]
         if kw_falada is not None:
             fim_video = duracao_video if duracao_video else palavras[-1]["end"] + 0.5
             if fim_video > t_pin:

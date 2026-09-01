@@ -166,6 +166,9 @@ class ManualDialog(tk.Toplevel):
         def rodar():
             try:
                 processar_pasta(entrada, saida, model=esteira.CFG["model"],
+                                lang=esteira.CFG.get("lang", "en"),
+                                pin_cta=bool(esteira.CFG.get("pin_cta", True)),
+                                palavra_cta=esteira.CFG.get("palavra_cta") or None,
                                 margem=esteira.CFG["margem"],
                                 log=self._fila_log.put)
                 self._fila_log.put("CONCLUIDO.")
@@ -303,6 +306,31 @@ class App(tk.Tk):
         botao(linha_err, "Tentar de novo", self._retry).pack(side="right", anchor="n")
 
         # rodape: opcoes + status
+        # ⭐⭐ A LINHA DO CTA FIXO — reconstruida em 2026-09-01. O checkbox e o
+        # campo `Palavra` decidem a palavra que fica queimada no topo do video
+        # depois do CTA falado. ⛔ Ela e' FORCADA, nao detectada: as keywords
+        # tambem sao ingredientes da copy, e o pin travava na primeira que o
+        # Whisper ouvisse (medido: metade dos videos do CLEAN mandava comentar
+        # `honey` em vez de `gelatin`). E fora do ingles a deteccao nao acha
+        # nada, porque ela procura o literal `COMMENT`.
+        linha_cta = tk.Frame(self, bg=BG)
+        linha_cta.pack(fill="x", padx=20, pady=(10, 0))
+        self.var_pin = tk.BooleanVar(value=True)
+        self.chk_pin = tk.Checkbutton(
+            linha_cta, variable=self.var_pin, command=self._cfg,
+            bg=BG, fg=INK, selectcolor=SURFACE2, activebackground=BG,
+            activeforeground=INK, font=FT, bd=0, highlightthickness=0,
+            text='Escrever "COMMENT GELATIN" no topo do video')
+        self.chk_pin.pack(side="left")
+        tk.Label(linha_cta, text="Palavra", bg=BG, fg=DIM,
+                 font=FT).pack(side="left", padx=(20, 6))
+        self.ent_cta = tk.Entry(linha_cta, bg=SURFACE2, fg=INK, font=FT,
+                                relief="flat", width=14,
+                                insertbackground=INK)
+        self.ent_cta.pack(side="left", ipady=3)
+        self.ent_cta.bind("<KeyRelease>", self._cfg)
+        self.ent_cta.bind("<FocusOut>", self._cfg)
+
         rodape = tk.Frame(self, bg=BG)
         rodape.pack(fill="x", padx=20, pady=(10, 14))
         tk.Label(rodape, text="Precisao", bg=BG, fg=DIM, font=FT).pack(side="left")
@@ -322,11 +350,28 @@ class App(tk.Tk):
         self.option_add("*TCombobox*Listbox.font", FT)
         self.cb_model = ttk.Combobox(rodape, style="Eddie.TCombobox", width=22,
                                      state="readonly", font=FT,
-                                     values=["base.en (rapido)", "small.en (equilibrado)",
-                                             "medium.en (preciso, lento)"])
+                                     values=["base (rapido)", "small (equilibrado)",
+                                             "medium (preciso, lento)"])
         self.cb_model.current(0)
         self.cb_model.pack(side="left", padx=(8, 20))
         self.cb_model.bind("<<ComboboxSelected>>", self._cfg)
+        # ⭐⭐ IDIOMA DO AUDIO — porte do Veo Editor CTA FIXO, 2026-09-01.
+        # Ate' hoje este editor so' entendia ingles: os tres modelos do menu
+        # eram `.en` e o `lang` nunca saia de "en". Audio alemao ou frances nao
+        # dava erro — saia transcrito foneticamente como ingles, com cara de
+        # legenda pronta. Foi assim que um video alemao do operador saiu
+        # legendado com "I was born in the middle of the school".
+        # ⛔ O SUFIXO `.en` SUMIU DOS ROTULOS de proposito: quem o poe e tira e'
+        # o `captions.modelo_para`, a partir DESTE combo. Escolher modelo e
+        # idioma em separado permitia a combinacao quebrada.
+        tk.Label(rodape, text="Idioma", bg=BG, fg=DIM, font=FT).pack(side="left")
+        self._IDIOMAS = [("en", "Ingles"), ("de", "Alemao"), ("fr", "Frances")]
+        self.cb_lang = ttk.Combobox(rodape, style="Eddie.TCombobox", width=10,
+                                    state="readonly", font=FT,
+                                    values=[r for _c, r in self._IDIOMAS])
+        self.cb_lang.current(0)
+        self.cb_lang.pack(side="left", padx=(8, 20))
+        self.cb_lang.bind("<<ComboboxSelected>>", self._cfg)
         tk.Label(rodape, text="Silencio", bg=BG, fg=DIM, font=FT).pack(side="left")
         self.cb_margem = ttk.Combobox(rodape, style="Eddie.TCombobox", width=16,
                                       state="readonly", font=FT,
@@ -341,16 +386,73 @@ class App(tk.Tk):
 
     # ---------------- acoes ----------------
 
+    # ⛔⛔ MEDIDO no audio alemao do operador (2026-09-01): com `base`, o
+    # Whisper devolve `Hohe SKORTISOL` no lugar de `Hohes Cortisol` e `Wenn EIN
+    # Herz` no lugar de `dein Herz` — erra o NOME DO MECANISMO e mata o
+    # vocativo. Com `small` sai correto. Em ingles `base` e' um rapido honesto;
+    # fora do ingles ele e' um gerador de ruido com cara de legenda pronta, e
+    # legenda queimada nao tem revisao depois.
+    MODELO_MINIMO_FORA_DO_INGLES = "small"
+
+    def _rotulo_pin(self):
+        """O rotulo do checkbox mostra a palavra REAL — texto que mente sobre
+        o proprio controle e' pior que rotulo generico."""
+        p = (self.ent_cta.get() or "").strip().upper() or "..."
+        self.chk_pin.configure(text='Escrever "COMMENT %s" no topo do video' % p)
+
     def _cfg(self, _=None):
+        esteira.CFG["pin_cta"] = bool(self.var_pin.get())
+        esteira.CFG["palavra_cta"] = (self.ent_cta.get() or "").strip().upper()
+        self._rotulo_pin()
         esteira.CFG["model"] = self.cb_model.get().split(" ")[0]
         esteira.CFG["margem"] = self.cb_margem.get().split(" ")[0]
+        rot = self.cb_lang.get()
+        lang_antes = esteira.CFG.get("lang", "en")
+        for cod, r in self._IDIOMAS:
+            if r == rot:
+                esteira.CFG["lang"] = cod
+                break
+        # ⚠️ So' quando o IDIOMA MUDA. Depois disso, escolher `base` com alemao
+        # selecionado e' decisao do operador e fica valendo — botao que desfaz
+        # a escolha do dono a cada clique e' pior que botao nenhum.
+        if (esteira.CFG.get("lang") != lang_antes
+                and esteira.CFG.get("lang") != "en"
+                and esteira.CFG.get("model") == "base"):
+            self._subir_modelo()
         esteira.salvar_cfg()
+
+    def _subir_modelo(self):
+        """Sobe `base` para `small` ao sair do ingles, e DIZ por que."""
+        for i, v in enumerate(self.cb_model.cget("values")):
+            if v.startswith(self.MODELO_MINIMO_FORA_DO_INGLES):
+                self.cb_model.current(i)
+                esteira.CFG["model"] = self.MODELO_MINIMO_FORA_DO_INGLES
+                break
+        try:
+            self.lst_err.insert(
+                0, "precisao subiu para `small`: fora do ingles o `base` "
+                   "escreve o mecanismo errado (medido: Skortisol por "
+                   "Cortisol). Pode voltar para base se quiser.")
+        except Exception:                                   # noqa: BLE001
+            pass
 
     def _sync_cfg(self):
         """Reflete o config.json carregado pela esteira nos combos."""
+        # ⚠️ `.replace(".en","")`: o `config.json` que ja' esta' na maquina do
+        # operador guarda `base.en`, do tempo em que o sufixo morava no rotulo.
+        # Sem isto o combo nao casaria com nada, ficaria no indice 0 em
+        # silencio, e a tela mentiria sobre o que esta' selecionado.
+        salvo = (esteira.CFG.get("model") or "base").replace(".en", "")
         for i, v in enumerate(self.cb_model["values"]):
-            if v.split(" ")[0] == esteira.CFG["model"]:
+            if v.split(" ")[0] == salvo:
                 self.cb_model.current(i)
+        for i, (cod, _rot) in enumerate(self._IDIOMAS):
+            if cod == esteira.CFG.get("lang", "en"):
+                self.cb_lang.current(i)
+        self.var_pin.set(bool(esteira.CFG.get("pin_cta", True)))
+        self.ent_cta.delete(0, "end")
+        self.ent_cta.insert(0, esteira.CFG.get("palavra_cta") or "GELATIN")
+        self._rotulo_pin()
         for i, v in enumerate(self.cb_margem["values"]):
             if v.split(" ")[0] == esteira.CFG["margem"]:
                 self.cb_margem.current(i)
