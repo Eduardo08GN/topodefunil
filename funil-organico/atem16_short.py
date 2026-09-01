@@ -130,6 +130,18 @@ KEYWORD = "ATEM"
 # chaves abaixo sao PROVISORIAS e existem para a UI ter o que desenhar — trocar
 # pelos nomes reais quando as paginas nascerem.
 ETNIA = {
+    # ⭐ A PRIMEIRA PAGINA REAL deste funil (2026-09-01):
+    #   facebook.com/profile.php?id=100091860330551
+    # ⚠️ Ela nasceu com outro nome e outro assunto ("Kim Giang", capa de loja
+    # de roupa, categoria Cidade) e esta' sendo reaproveitada. A chave e' `kim`
+    # ate' o operador conseguir renomea-la; trocar a chave depois e' uma linha,
+    # e o ledger nao depende dela.
+    # ⛔ `white German` porque a CONGRUENCIA do repo e' etnia do REF = etnia do
+    # AVATAR da pagina, e todos os 12 REFs deste motor sao alemas brancas. Se o
+    # avatar mudar de etnia, esta linha muda junto — nunca uma sem a outra.
+    "kim": "white German",
+    # ⏳ provisorias, para a UI ter mais de uma opcao enquanto as outras paginas
+    # nao nascem.
     "anna": "white German", "lena": "white German", "sofie": "white German",
     "derya": "Turkish German", "esra": "Turkish German",
 }
