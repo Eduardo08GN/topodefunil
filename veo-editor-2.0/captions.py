@@ -15,6 +15,28 @@ _MODELO = {}  # cache por tamanho, pra nao recarregar a cada video
 IDIOMAS = {"en": "Ingles", "de": "Alemao", "fr": "Frances"}
 
 
+# ⭐⭐ O VERBO DO PIN SEGUE O IDIOMA (2026-09-01). Ver a docstring do
+# `verbo_cta`. Imperativo de segunda pessoa nas tres linguas — e' o que a
+# pessoa le' e digita no campo de comentario.
+VERBOS_CTA = {"en": "COMMENT", "de": "KOMMENTIERE", "fr": "COMMENTE"}
+
+
+def verbo_cta(language):
+    """O verbo do pin, derivado da lingua — nunca escolhido em separado.
+
+    ⛔ Ele NAO e' um controle proprio, pelo mesmo motivo que o sufixo `.en` do
+    modelo nao e': dois controles que precisam concordar entre si sao dois
+    controles que um dia discordam. A lingua manda nos dois.
+
+    ⚠️ E ele entra tambem na DETECCAO. Antes a busca procurava o literal
+    `COMMENT` na transcricao; com audio alemao esse token nunca aparece
+    (a narradora diz `Kommentiere`), entao o pin so' saia se a palavra fosse
+    forcada no painel. Com o verbo certo na busca, ele volta a funcionar
+    sozinho.
+    """
+    return VERBOS_CTA.get((language or "en").lower(), VERBOS_CTA["en"])
+
+
 def modelo_para(model_size, language):
     """O modelo TEM de casar com o idioma, e por isso a escolha e' derivada.
 
@@ -93,6 +115,7 @@ def gerar_ass(
     escala_keyword=1.4,        # fonte da keyword vs fonte normal
     pin_cta=True,              # fixa "COMMENT <KEYWORD>" no topo apos o CTA falado
     palavra_cta=None,          # FORCA a palavra do pin; None = usa a que foi falada
+    idioma="en",               # decide o VERBO do pin (COMMENT/KOMMENTIERE/COMMENTE)
     duracao_video=None,        # fim do pin (segundos). None = fim da ultima palavra
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
@@ -200,6 +223,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         # ⛔ E ela e' o que faz o pin existir FORA DO INGLES: em alemao o audio
         # diz `Kommentiere RUHE`, e a deteccao abaixo procura o literal
         # `COMMENT`. Sem forcar a palavra, o pin nao sai.
+        verbo = verbo_cta(idioma)
         forcada = (palavra_cta or "").strip().upper() or None
         if forcada:
             kw = set(kw) | {forcada}
@@ -207,7 +231,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 for w in palavras]
         # 1) o caso certo: a keyword vem logo depois de "comment"
         for i, (tok, _w) in enumerate(toks):
-            if tok == "COMMENT" and i + 1 < len(toks) and toks[i + 1][0] in kw:
+            if tok == verbo and i + 1 < len(toks) and toks[i + 1][0] in kw:
                 kw_falada = toks[i + 1][0]
                 t_pin = toks[i + 1][1]["end"]
                 break
@@ -235,7 +259,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             fim_video = duracao_video if duracao_video else palavras[-1]["end"] + 0.5
             if fim_video > t_pin:
                 txt_pin = (
-                    f"COMMENT {{\\1c{cor_keyword}}}{kw_falada}{{\\1c&H00FFFFFF&}}"
+                    f"{verbo} {{\\1c{cor_keyword}}}{kw_falada}"
+                    f"{{\\1c&H00FFFFFF&}}"
                 )
                 eventos.append(
                     f"Dialogue: 1,{_ass_time(t_pin)},{_ass_time(fim_video)},"

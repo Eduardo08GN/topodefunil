@@ -234,7 +234,8 @@ def queimar_legenda(inp, ass_path, out):
 
 
 def processar_video(takes, out_final, model="base.en", lang="en",
-                    margem="0.2s", fator=None, keywords=None, log=print):
+                    margem="0.2s", fator=None, keywords=None, pin_cta=True,
+                    palavra_cta=None, log=print):
     if not takes:
         raise RuntimeError("nenhum take encontrado")
     work = tempfile.mkdtemp(prefix="owedit_")
@@ -258,9 +259,13 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         log(f"  transcrevendo (whisper {model})... {w}x{h}")
         palavras = transcrever(base, model, lang)
         log(f"  {len(palavras)} palavras -> legenda")
-        gerar_ass(palavras, w, h, assf, keywords=keywords,
+        # ⭐ `idioma=lang`: o verbo do pin segue a lingua do audio. Sem isto o
+        # video sai com a fala em alemao e o pin em ingles.
+        gerar_ass(palavras, w, h, assf, keywords=keywords, pin_cta=pin_cta,
+                  palavra_cta=palavra_cta, idioma=lang,
                   duracao_video=duracao(base))
-        log("  queimando legenda...")
+        log("  queimando legenda..." if pin_cta
+            else "  queimando legenda (sem o CTA fixo no topo)...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
         queimar_legenda(base, assf, out_final)
         log(f"  OK -> {out_final}")
@@ -274,7 +279,8 @@ def _tem_video_solto(pasta):
               if os.path.isfile(os.path.join(pasta, a)))
 
 
-def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s", log=print):
+def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s",
+                    keywords=None, pin_cta=True, palavra_cta=None, log=print):
     """Processa a pasta de entrada (subpastas=1 video cada, ou arquivos soltos=1 video).
     Retorna lista de arquivos gerados."""
     os.makedirs(saida, exist_ok=True)
@@ -293,7 +299,9 @@ def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s", l
         nome = os.path.basename(os.path.normpath(entrada)) or "video"
         out = os.path.join(saida, f"{nome}_final.mp4")
         log(f"[1 video] {nome}")
-        gerados.append(processar_video(coletar_takes(entrada), out, model, lang, margem, log))
+        gerados.append(processar_video(
+            coletar_takes(entrada), out, model, lang, margem, keywords=keywords,
+            pin_cta=pin_cta, palavra_cta=palavra_cta, log=log))
     elif subpastas:
         for i, d in enumerate(subpastas, 1):
             takes = coletar_takes(os.path.join(entrada, d))
@@ -302,7 +310,9 @@ def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s", l
                 continue
             out = os.path.join(saida, f"{d}_final.mp4")
             log(f"[{i}/{len(subpastas)}] {d}")
-            gerados.append(processar_video(takes, out, model, lang, margem, log))
+            gerados.append(processar_video(
+                takes, out, model, lang, margem, keywords=keywords,
+                pin_cta=pin_cta, palavra_cta=palavra_cta, log=log))
     else:
         raise RuntimeError("pasta de entrada nao tem videos nem subpastas com videos")
     return gerados
@@ -316,8 +326,13 @@ if __name__ == "__main__":
     ap.add_argument("--model", default="base.en", help="modelo whisper (base.en, small.en, medium.en)")
     ap.add_argument("--lang", default="en")
     ap.add_argument("--margin", default="0.2s", help="margem de silencio a manter (ex: 0.2s)")
+    ap.add_argument("--cta", default=None,
+                    help="palavra do CTA fixo no topo (ex: gelatin)")
+    ap.add_argument("--sem-cta", action="store_true",
+                    help="nao escreve o 'COMMENT <palavra>' fixo no topo")
     a = ap.parse_args()
-    feitos = processar_pasta(a.input, a.output, a.model, a.lang, a.margin)
+    feitos = processar_pasta(a.input, a.output, a.model, a.lang, a.margin,
+                             pin_cta=not a.sem_cta, palavra_cta=a.cta)
     print(f"\nPronto. {len(feitos)} video(s) gerado(s):")
     for f in feitos:
         print("  -", f)

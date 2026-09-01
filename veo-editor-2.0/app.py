@@ -395,12 +395,39 @@ class App(tk.Tk):
     MODELO_MINIMO_FORA_DO_INGLES = "small"
 
     def _rotulo_pin(self):
-        """O rotulo do checkbox mostra a palavra REAL — texto que mente sobre
-        o proprio controle e' pior que rotulo generico."""
+        """O rotulo do checkbox mostra o que VAI SER QUEIMADO, verbo incluso.
+
+        ⛔ Ele acompanha o combo de Idioma: com Alemao selecionado a etiqueta
+        vira `Escrever "KOMMENTIERE RUHE" no topo do video`. Rotulo que mente
+        sobre o proprio controle e' pior que rotulo generico — e aqui mentiria
+        justamente sobre a unica frase do video que existe para ser obedecida.
+        """
+        import captions
+        cod = "en"
+        rot = self.cb_lang.get()
+        for c, r in self._IDIOMAS:
+            if r == rot:
+                cod = c
+                break
         p = (self.ent_cta.get() or "").strip().upper() or "..."
-        self.chk_pin.configure(text='Escrever "COMMENT %s" no topo do video' % p)
+        self.chk_pin.configure(
+            text='Escrever "%s %s" no topo do video'
+                 % (captions.verbo_cta(cod), p))
+
+    # ⛔⛔ A JANELA SO' GRAVA DEPOIS DE TER LIDO — 2026-09-01.
+    # Sem esta trava o app REVERTIA a configuracao a cada abertura: o
+    # `<FocusOut>` do campo Palavra e o `command` do checkbox disparam `_cfg`
+    # entre o `_montar` (widgets nos PADROES: Ingles, base, campo vazio) e o
+    # `_sync_cfg` (que reflete o arquivo), e o `_cfg` gravava esses padroes por
+    # cima. Medido: config em `de/small/RUHE` voltava para `en/base/GELATIN` no
+    # primeiro reinicio, em silencio.
+    # ⚠️ E' o mesmo defeito de ordem que ja' apagou a configuracao do operador
+    # uma vez neste editor. A regra: enquanto a janela nao leu, ela nao escreve.
+    _pronto = False
 
     def _cfg(self, _=None):
+        if not self._pronto:
+            return
         esteira.CFG["pin_cta"] = bool(self.var_pin.get())
         esteira.CFG["palavra_cta"] = (self.ent_cta.get() or "").strip().upper()
         self._rotulo_pin()
@@ -453,6 +480,8 @@ class App(tk.Tk):
         self.ent_cta.delete(0, "end")
         self.ent_cta.insert(0, esteira.CFG.get("palavra_cta") or "GELATIN")
         self._rotulo_pin()
+        # ⭐ A partir daqui a janela reflete o arquivo, entao pode gravar.
+        self._pronto = True
         for i, v in enumerate(self.cb_margem["values"]):
             if v.split(" ")[0] == esteira.CFG["margem"]:
                 self.cb_margem.current(i)
