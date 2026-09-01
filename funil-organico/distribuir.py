@@ -59,6 +59,13 @@ DEST = os.path.join(os.path.expanduser("~"), "Desktop", "agentes_py")
 def familia(nome):
     if re.search(r"-16S?$", nome):
         return "AGENTES-16"
+    # ⭐ QUARTA FAMILIA — 2026-09-01, com o OCTOPUS 5. Cinco takes de 4s,
+    # AdBatch Vertical 5, e o primeiro agente do parque SEM FALA.
+    # ⛔ Sem esta linha ele cairia em `AGENTES-NORMAIS`, que e' o arco LONGO —
+    # e' o modo de falha que o comentario acima descreve: o script entregaria
+    # verde, na pasta errada, e ninguem notaria ate' procurar o .exe.
+    if re.search(r"-5$", nome):
+        return "AGENTES-5"
     if "-SHORT" in nome:
         return "AGENTES-SHORT"
     return "AGENTES-NORMAIS"
