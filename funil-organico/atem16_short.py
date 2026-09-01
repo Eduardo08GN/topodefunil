@@ -748,7 +748,20 @@ def _carregar_ledger():
         return {}
 
 
-def _gravar_ledger(led, spec):
+def _gravar_ledger(led, spec, em_disco=True):
+    """Anota o sorteio na memoria e, se pedido, grava em disco.
+
+    ⛔⛔ `em_disco` NASCEU DE UM LOTE LIDO (2026-09-01). O `--dry-run` pulava
+    esta funcao INTEIRA, entao a memoria anti-repeticao ficava inerte DENTRO da
+    propria rodada: os cinco videos de um lote de revisao viam o mesmo
+    historico vazio e 3 de 5 sairam com o mesmo hook, de um pool de 12.
+    ⚠️ O estrago nao e' o lote — e' a CONCLUSAO que ele induz. Quem le' um lote
+    assim acha que os pools sao pobres e vai "consertar" o que nao esta'
+    quebrado.
+    ⭐ A separacao certa: a memoria SEMPRE anota (ela e' o que faz o lote
+    variar); o disco so' e' tocado quando o operador quer de fato consumir o
+    historico.
+    """
     for eixo, n in MEMORIA.items():
         v = spec.get("_id_%s" % eixo)
         if v is None:
@@ -756,6 +769,8 @@ def _gravar_ledger(led, spec):
         hist = led.setdefault(eixo, [])
         hist.append(v)
         del hist[:-n]
+    if not em_disco:
+        return
     try:
         with io.open(LEDGER, "w", encoding="utf-8") as f:
             f.write(json.dumps(led, ensure_ascii=False, indent=1))
@@ -1256,7 +1271,11 @@ def autoteste(n=400):
             max_sil[i] = max(max_sil[i], silabas_frase(s["falas"][i]))
             falas[i].add(s["falas"][i])
         tam_bloco = max(tam_bloco, max(len(v) for v in b.values()))
-        _gravar_ledger(led, s)
+        # ⛔ `em_disco=False`: o autoteste sorteia 400 videos SINTETICOS e nao
+        # pode enterrar a memoria real do operador debaixo deles. Ele usa um
+        # `led` proprio ({}) justamente para nao ler o dele — gravar seria
+        # desfazer metade do isolamento.
+        _gravar_ledger(led, s, em_disco=False)
 
     print("\n1. LENTES")
     print("   ERRO  : %d" % len(erros))
@@ -1412,8 +1431,9 @@ def main():
             print("\n%s\n" % b[k])
         for nivel, msg in ach:
             print("[%s] %s" % (nivel, msg))
-        if not a.dry_run:
-            _gravar_ledger(led, s)
+        # ⛔ A memoria anota SEMPRE — e' ela que faz os videos do lote diferirem
+        # entre si. O `--dry-run` so' impede tocar no arquivo.
+        _gravar_ledger(led, s, em_disco=not a.dry_run)
     return 0
 
 
