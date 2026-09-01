@@ -561,36 +561,41 @@ TRAJES = [
 # rola o feed. E' a regra PE6 do PEE 16 traduzida para este angulo.
 
 HOOKS = [
-    "Sie hat sich {evento} nass gemacht. Alle haben gelacht. Derselbe Alarm "
-    "hält sie seit Jahren wach.",
-    "Mitten {evento} lief es ihr das Bein runter. Kein Unfall. Ihr Körper "
-    "stand seit Monaten unter Strom.",
-    "{Evento} hat ihr Körper einfach losgelassen. Vor allen. Genau der Alarm "
-    "raubt ihr auch den Schlaf.",
-    # ⛔ REESCRITA. A versao original era "Ihre Kollegin filmt es nicht, aber
-    # alle sahen es." — dois defeitos numa entrada so'. (a) fala em FILMAR, e
-    # ninguem filma em cena nenhuma deste motor; o RUTH 16 tirou a palavra da
-    # copy pelo mesmo motivo. (b) era a UNICA das doze SEM O ELO com o alarme,
-    # que e' a regra do molde escrita no comentario acima — e que ate' agora
-    # so' existia como comentario. Agora a lente `AT15` a cobra.
-    "Sie stand {evento} und konnte es nicht halten. Ihr System stand seit "
-    "Monaten unter Alarm.",
-    "Eine erwachsene Frau hat sich {evento} eingenässt. Der gleiche Dauerstress "
-    "sitzt ihr seit Jahren im Nacken.",
-    "{Evento} ist es passiert, vor dreißig Leuten. Ihr Nervensystem war längst "
-    "im Ausnahmezustand.",
-    "Sie hat sich {evento} nass gemacht und ist rausgerannt. Derselbe Druck "
-    "lässt sie nachts nicht schlafen.",
-    "Alle haben geschaut, als sie {evento} nass wurde. Ihr Körper stand seit "
-    "Monaten unter Dauerstrom.",
-    "Sie war {evento}, als es einfach passierte. Ihr System hatte schon lange "
-    "keine Pause mehr.",
-    "{Evento} hat ihr Körper vor allen aufgegeben. Es lag nicht an der Blase. "
-    "Es lag am Alarm.",
-    "Sie hat es {evento} nicht mehr geschafft. Ihre Tochter war dabei. "
-    "Derselbe Alarm sitzt seit Jahren fest.",
-    "Man lachte, als sie {evento} nass wurde. Niemand fragte, warum ihr Körper "
-    "so unter Strom stand.",
+    # ⛔⛔ O MOLDER E' DO OPERADOR (2026-09-01), e ele nao e' negociavel:
+    #     <ela TEM a coisa que voce tem> · <desta vez escalou> · <a catastrofe>
+    # A condicao vem ANTES da consequencia. Uma abertura que descreve o
+    # acidente sem nomear a ansiedade faz a espectadora achar que o assunto e'
+    # bexiga — e mulher com bexiga fraca nao compra curso de respiracao.
+    # ⛔ NENHUMA entrada usa termo abstrato inventado (`der Alarm`, `unter
+    # Strom`, `das System`). A lente `AT15` cobra o par ansiedade+catastrofe.
+    "Sie dachte, sie hat ihre Angst im Griff. {Evento} machte sie sich vor "
+    "allen nass.",
+    "Sie hat seit Jahren Angstattacken. {Evento} war eine so stark, dass "
+    "sie sich nass machte.",
+    "Angst sitzt nicht nur im Kopf. {Evento} wurde sie so stark, dass sie "
+    "sich nass machte.",
+    "Sie ist nicht inkontinent. Sie hatte {evento} eine Angstattacke, und der "
+    "Körper ließ los.",
+    # ⛔ A versao anterior parava em "beruhig dich einfach": PRESSUPUNHA a
+    # ansiedade sem a nomear. Quem chega no scroll nao sabe do que se trata.
+    "Ihre Freundin sagt immer: beruhig dich einfach. {Evento} kam die "
+    "Angst, und sie machte sich nass.",
+    # ⛔ A versao anterior nomeava a condicao e nunca dizia o que aconteceu.
+    "Sie nimmt seit Jahren Tropfen gegen die Angst. {Evento} machte sie "
+    "sich trotzdem nass.",
+    "Kennst du Angstattacken? {Evento} wurde sie so stark, dass sie es nicht "
+    "halten konnte.",
+    "Sie hatte {evento} eine Angstattacke. So stark, dass sie sich vor "
+    "dreißig Leuten nass machte.",
+    "Bei starker Angst lässt der Körper los. {Evento} ist ihr genau das "
+    "passiert, vor allen.",
+    "Sie hat es {evento} nicht mehr geschafft. Nicht die Blase — eine "
+    "Angstattacke, vor allen.",
+    # ⛔ A versao anterior fechava em "sahen es alle" — viram O QUE?
+    "Zehn Jahre Angst, und niemand merkte etwas. {Evento} machte sie sich "
+    "vor allen nass.",
+    "Sie funktioniert für alle. {Evento} kam die Angst so stark, dass sie "
+    "sich nass machte.",
 ]
 
 # ⭐ O MECANISMO — take 2. Uma causa, dois sintomas, exatamente como o PE7 do
@@ -598,17 +603,35 @@ HOOKS = [
 # ⛔ NENHUMA ENTRADA DIZ `Panikattacke`, `Angststörung`, `Diagnose` ou `heilen`.
 # Ver a docstring e a lente `AT9`.
 MECANISMOS = [
-    "Dein Nervensystem steht auf Alarm. Im Alarm gibt der Beckenboden nach.",
-    "Der Körper hält Alarm für Gefahr. Er lässt los, was Kraft kostet.",
-    "Es liegt nicht an der Blase. Dein System kommt aus dem Alarm nicht raus.",
-    "Im Dauerstress schaltet der Körper ab, was Kraft kostet. Kontrolle zuerst.",
-    "Ein System im Alarm hält nichts mehr. Nicht den Schlaf, nicht die Blase.",
-    "Kein Arzt findet daran etwas. Der Alarm sitzt im Nervensystem.",
-    "Dein Atem meldet Gefahr. Dein Körper spannt an und lässt unten los.",
-    "Jahre unter Strom, und der Körper stellt ab. Erst der Schlaf, dann die "
-    "Kontrolle.",
-    "Das ist kein Blasenproblem. Das ist ein Körper ohne Pause.",
-    "Solange der Alarm läuft, trainierst du gegen dein eigenes System.",
+    # ⛔⛔ MECANISMO UNICO DO PROBLEMA (Georgi) + "NAO E' SUA CULPA" (Benson).
+    # Toda entrada faz DUAS coisas, e a segunda e' a que faltava por inteiro na
+    # copy reprovada:
+    #   1. nomeia UMA solucao que ela ja' tentou e que falhou;
+    #   2. diz POR QUE falhou — aquilo mexe na CABECA, e a tensao esta' no CORPO.
+    # Sem (1) a espectadora e' um cetico que ja' tentou de tudo e ouve mais uma
+    # promessa; com (1) ela ouve a explicacao que ninguem deu a ela.
+    # ⛔ Nada de `der Alarm`, `unter Strom`, `das System` — abstracao inventada
+    # nao e' mecanismo, e a lente `AT17` bane a familia.
+    "Angst ist keine Kopfsache. Der Körper schaltet um, und der "
+    "Beckenboden lässt einfach los.",
+    "Beruhig dich hilft deshalb nicht. Die Anspannung sitzt im Körper, nicht "
+    "im Kopf.",
+    "Atemübungen aus dem Internet erreichen den Kopf. Die Anspannung sitzt "
+    "tiefer.",
+    "Es ist nicht deine Schuld. Dein Körper hat gelernt, bei Angst alles "
+    "loszulassen.",
+    "Kein Arzt findet etwas, weil nichts kaputt ist. Es ist gespeicherte "
+    "Anspannung.",
+    "Beckenbodentraining bringt hier nichts. Du trainierst einen Muskel, der "
+    "auf Angst reagiert.",
+    "Reden hat ihr nicht geholfen. Die Angst steckte im Körper fest, nicht in "
+    "ihrem Kopf.",
+    "Jahre Angst stauen sich im Gewebe. Der Körper hält sie fest, bis er "
+    "nicht mehr kann.",
+    "Du machst nichts falsch. Dein Körper hält die alte Angst, und niemand "
+    "hat sie je gelöst.",
+    "Tabletten dämpfen den Kopf. Die Anspannung im Körper bleibt genau da, "
+    "wo sie war.",
 ]
 
 # ⭐⭐ O METODO — take 3, e o literal `Freemor Breathing` e' OBRIGATORIO em
@@ -616,14 +639,22 @@ MECANISMOS = [
 # sem o nome proprio a espectadora acha que ja' sabe e nao comenta.
 # ⛔ Nenhuma entrada ensina o padrao. Diz o que ele FAZ, nunca COMO se faz.
 METODOS = [
-    "Freemor Breathing holt dich da raus.",
-    "Sie hat Freemor Breathing gelernt.",
-    "Freemor Breathing löst genau diese Spannung.",
-    "Freemor Breathing gibt es nirgendwo sonst.",
-    "Mit Freemor Breathing fährt dein System runter.",
-    "Freemor Breathing löst, was jahrelang festsaß.",
-    "Freemor Breathing bringt dich in Minuten runter.",
-    "Dafür gibt es Freemor Breathing.",
+    # ⛔⛔ MECANISMO UNICO DA SOLUCAO. A copy reprovada dizia *"bringt dich in
+    # Minuten runter"* — desce de QUE? Agora toda entrada carrega o TREMOR
+    # NEUROGENICO, que e' o que o `Freemor Breathing` tem e o YouTube nao:
+    # o corpo DESCARREGA fisicamente a tensao guardada, em vez de a cabeca
+    # tentar se acalmar. E' a resposta a "por que isto funciona onde o resto
+    # falhou", e e' copy da propria pagina do produto.
+    # ⚠️ NENHUMA entrada promete desaparecimento de sintoma. O que o metodo FAZ
+    # e' mecanico e verificavel; o que ele CURA seria alegacao sob a HWG.
+    "Freemor Breathing löst sie über neurogenes Zittern.",
+    "Beim Freemor Breathing zittert der Körper sie raus.",
+    "Freemor Breathing schüttelt die alte Angst aus dem Gewebe.",
+    "Dafür gibt es Freemor Breathing: Atem plus Zittern.",
+    "Freemor Breathing arbeitet im Körper, nicht im Kopf.",
+    "Sie hat Freemor Breathing gelernt und zittern gelassen.",
+    "Freemor Breathing holt die Anspannung raus, wo sie sitzt.",
+    "Freemor Breathing gibt es nur bei ihr: Atem plus Zittern.",
 ]
 
 # ⭐ A BARREIRA — derruba a objecao antes de ela nascer. Curta, sempre.
@@ -635,9 +666,9 @@ METODOS = [
 BARREIRAS = [
     "Niemand muss davon wissen.",
     "Kein Arzt, keine Praxis.",
-    "Du machst das zu Hause, in deinem Tempo.",
-    "Du brauchst nichts außer einem ruhigen Platz.",
-    "Keine Termine, keine Wartezeit.",
+    "Zu Hause, in deinem Tempo.",
+    "Du brauchst nur einen ruhigen Platz.",
+    "Keine Termine, kein Warten.",
 ]
 
 # ⛔⛔ O CTA DIZ ONDE A COISA CHEGA. E' o CT6 do contrato de 16s, e ele vale
@@ -647,16 +678,16 @@ BARREIRAS = [
 # reescrever pool nenhum.
 CTAS = [
     "Kommentiere {kw}, ich schicke es dir in die Nachrichten.",
-    "Schreib {kw} in die Kommentare, es kommt in deine Nachrichten.",
+    "Schreib {kw}, es kommt in deine Nachrichten.",
     # ⛔ REESCRITA. Era "Ein Wort: {kw}." — a keyword SEM verbo de comando
     # na frente. Nessa forma o `trocar_keyword` nao casa, e um lote com a
     # palavra trocada no painel sairia com DUAS keywords diferentes: a nova
     # nas seis entradas e a velha nesta. Keyword parcialmente trocada e'
     # pior que keyword nao trocada. Lente `AT16`.
-    "Ein Wort. Kommentiere {kw}, dann liegt es in deinen Nachrichten.",
+    "Kommentiere {kw}, dann liegt es in deinen Nachrichten.",
     "Kommentiere {kw} und schau in deine Nachrichten.",
     "Kommentiere {kw}. Es kommt heute in deine Nachrichten.",
-    "Wenn du das kennst: kommentiere {kw}. Es kommt in deine Nachrichten.",
+    "Kennst du das? Dann kommentiere {kw}. Es kommt in deine Nachrichten.",
     "Kommentiere {kw}, und es ist heute in deinen Nachrichten.",
 ]
 
@@ -992,9 +1023,17 @@ _ENSINA = re.compile(
 
 # ⛔ A moldura. Ver a docstring — estas palavras vendem contra a
 # contraindicacao declarada do proprio produtor.
+# ⛔ A MOLDURA, ESTREITADA EM 2026-09-01 POR ORDEM DO OPERADOR.
+# Antes ela barrava tambem o vocabulario de ansiedade, porque a pagina do
+# produto exclui por escrito quem tem `Panikattacken`. O operador reescreveu a
+# copy nomeando ansiedade — e copy e' alcada dele.
+# ⭐ O que fica barrado e' o que de fato cria risco sob a HWG alema: alegacao
+# de CURA e de TRATAMENTO. Descrever a pessoa nao e' alegacao medica; prometer
+# curar e'. `Angst` e `Angstattacke` passam; `heilen` e `Therapie` nao.
 _MOLDURA = re.compile(
-    r"\bpanikattacke\w*\b|\bangststörung\w*\b|\bpanikstörung\w*\b"
-    r"|\bdiagnose\w*\b|\bheil(?:en|ung|t)\b|\btherapie\b|\bkrankheit\b",
+    r"\bangststörung\w*\b|\bpanikstörung\w*\b|\bdiagnose\w*\b"
+    r"|\bheil(?:en|ung|t)\b|\btherapie\b|\bkrankheit\b"
+    r"|\bgeheilt\b|\bbehandl\w*\b",
     re.I)
 
 # ⛔ A palavra da gelatina nao entra aqui. O parque fala gelatina em 32
@@ -1017,9 +1056,18 @@ _APARELHO = re.compile(r"\b(?:phone|smartphone|iphone\s+in|camera\s+in\s+her|"
 # PEE 16 (mijo + orgao + vinculo) traduzida para este angulo.
 # ⛔ Ela existia so' como comentario acima do pool ate' 2026-09-01, e uma das
 # doze entradas ja' a violava. Molde que nao vira codigo e' onde o vicio mora.
-_ELO = re.compile(r"\balarm\w*\b|\bstrom\b|\bdauerstrom\b|\bdauerstress\b"
-                  r"|\bnervensystem\b|\bsystem\b|\bdruck\b|\bpause\b"
-                  r"|\banspannung\b|\bausnahmezustand\b", re.I)
+# ⭐⭐ O ELO — REESCRITO EM 2026-09-01, E A VERSAO ANTIGA COBRAVA O DEFEITO.
+# Ela exigia `alarm|strom|system|druck|pause` na fala 1: ou seja, OBRIGAVA o
+# vocabulario abstrato que o operador reprovou por drifting. Regra que codifica
+# o vicio e' pior que regra ausente — ela impede o conserto.
+# ⛔ O elo verdadeiro e' um PAR, e os dois lados sao concretos:
+#     <a condicao que a espectadora TEM>  +  <a catastrofe que ela VE>
+# Sem o primeiro ela acha que o assunto e' bexiga; sem o segundo nao ha' hook.
+_ANSIEDADE = re.compile(
+    r"\bangst\w*\b|\bpanik\w*\b", re.I)
+_CATASTROFE = re.compile(
+    r"\bnass\b|\beingenässt\b|\bblase\b|\blos\b"
+    r"|\bhalten\b|\bgeschafft\b|\binkontinent\b|\bließ\b", re.I)
 
 # ⛔ APARELHO NA FALA. O AT8 varre a DIRECAO (onde o token faz o gerador
 # desenhar o telefone, licao do VICK 16); esta varre a FALA, onde o defeito e'
@@ -1027,6 +1075,20 @@ _ELO = re.compile(r"\balarm\w*\b|\bstrom\b|\bdauerstrom\b|\bdauerstress\b"
 # levanta uma pergunta que o video nunca responde.
 _APARELHO_FALA = re.compile(r"\bfilm\w*\b|\bhandy\b|\bkamera\b|\bvideo\b"
                             r"|\baufnahme\w*\b", re.I)
+
+# ⛔⛔ AS ABSTRACOES QUE O OPERADOR REPROVOU, 2026-09-01. Cada uma foi um
+# termo que EU inventei e usei na fala como se a espectadora ja' o conhecesse:
+# `der Alarm` (que alarme?), `unter Strom` (idiomatico e vago), `das System`,
+# `ohne Pause`. Teste WTF: se ela pode perguntar "do que ela esta' falando?",
+# a copy e' DESCARTE. A lista existe para elas nao voltarem numa ampliacao.
+# ⚠️ `Nervensystem` NAO entra: e' termo que a pagina do produto usa e que o
+# publico alemao de wellness reconhece. O defeito era `das System` sozinho.
+_ABSTRACAO = re.compile(
+    r"\bder Alarm\b|\bam Alarm\b|\bim Alarm\b|\bAlarm\s+(?:sitzt|hält|läuft|raubt)"
+    r"|\bunter (?:Strom|Dauerstrom)\b"
+    r"|\bIhr System\b|\bDein System\b|\bohne Pause\b"
+    r"|\bAusnahmezustand\b|\baufgegeben\b",
+    re.I)
 
 _RISADA_AUDIO = re.compile(r"audio:[^\n]*\blaugh", re.I)
 
@@ -1117,7 +1179,10 @@ def lint(spec, blocos):
     # AT7 — o CTA diz a keyword E onde a coisa chega
     if KEYWORD not in f[2]:
         ach.append(("ERRO", "AT7: a keyword `%s` nao esta' no CTA." % KEYWORD))
-    if not re.search(r"\bnachrichten\b", f[2], re.I):
+    # ⚠️ `nachricht\w*`: singular e plural dizem a mesma coisa, e cobrar so'
+    # o plural seria a lente medindo GRAMATICA em vez de FUNCAO. Ela quer
+    # saber se o CTA diz ONDE a receita chega.
+    if not re.search(r"\bnachricht\w*\b", f[2], re.I):
         ach.append(("ERRO", "AT7: o CTA nao diz ONDE a coisa chega — ela "
                             "comenta e depois nao sabe onde procurar."))
 
@@ -1138,6 +1203,16 @@ def lint(spec, blocos):
                                 "escrito na propria pagina — ver a docstring."
                         % (i + 1)))
 
+    # AT17 — nenhuma abstracao inventada volta para a fala
+    for i in (0, 1, 2):
+        m = _ABSTRACAO.search(f[i])
+        if m:
+            ach.append(("ERRO", "AT17: a fala %d usa `%s` — abstracao que o "
+                                "operador reprovou por drifting. A espectadora "
+                                "nunca ouviu esse termo, entao ele nao compra "
+                                "nada. Descarte, nao conserto."
+                        % (i + 1, m.group(0))))
+
     # AT16 — a keyword tem de ser TROCAVEL de verdade
     # ⛔ Nao basta a palavra estar no CTA (AT7). O campo do painel so' compra
     # alguma coisa se a troca MUDAR o texto — e' a licao "slot tem que cumprir
@@ -1150,10 +1225,14 @@ def lint(spec, blocos):
                                 "com a palavra velha."))
 
     # AT15 — o hook carrega o ELO, e nenhuma fala fala em filmar
-    if not _ELO.search(f[0]):
-        ach.append(("ERRO", "AT15: o hook nao liga a mancha ao alarme na mesma "
-                            "fala — sem o elo a espectadora acha que o assunto "
-                            "e' bexiga e rola o feed."))
+    if not _ANSIEDADE.search(f[0]):
+        ach.append(("ERRO", "AT15: o hook nao NOMEIA a ansiedade — sem isso a "
+                            "espectadora acha que o assunto e' bexiga, e "
+                            "mulher com bexiga fraca nao compra curso de "
+                            "respiracao."))
+    if not _CATASTROFE.search(f[0]):
+        ach.append(("ERRO", "AT15: o hook nao diz a catastrofe concreta. "
+                            "Condicao sem consequencia visivel nao e' hook."))
     for i in (0, 1, 2):
         if _APARELHO_FALA.search(f[i]):
             ach.append(("ERRO", "AT15: a fala %d fala em filmagem ou aparelho. "
@@ -1330,7 +1409,9 @@ def autoteste(n=400):
         ("AT14", lambda sp, bl: sp["falas"].__setitem__(
             1, sp["falas"][1] + " Vierzehn Tage Geld zurück.")),
         ("AT15", lambda sp, bl: sp["falas"].__setitem__(
-            0, "Sie hat sich nass gemacht und alle haben gelacht.")),
+            0, "Ihr Körper hat vor allen versagt, mitten am Tag.")),
+        ("AT17", lambda sp, bl: sp["falas"].__setitem__(
+            1, sp["falas"][1] + " Der Alarm sitzt seit Jahren fest.")),
         ("AT4", lambda sp, bl: sp["falas"].__setitem__(
             0, "Atme vier Sekunden ein und sechs Sekunden aus.")),
         ("AT12", lambda sp, bl: bl.__setitem__(
