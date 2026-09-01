@@ -116,6 +116,7 @@ def gerar_ass(
     pin_cta=True,              # fixa "COMMENT <KEYWORD>" no topo apos o CTA falado
     palavra_cta=None,          # FORCA a palavra do pin; None = usa a que foi falada
     idioma="en",               # decide o VERBO do pin (COMMENT/KOMMENTIERE/COMMENTE)
+    pin_antes=0,               # segundos ANTES DO FIM em que o pin aparece; 0 = automatico
     duracao_video=None,        # fim do pin (segundos). None = fim da ultima palavra
 ):
     """Gera um .ass karaoke. Agrupa palavras em linhas curtas (por_linha OU
@@ -257,6 +258,21 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             t_pin = palavras[-1]["start"]
         if kw_falada is not None:
             fim_video = duracao_video if duracao_video else palavras[-1]["end"] + 0.5
+            # ⭐⭐ A ANCORA DE TEMPO. Antes o instante do pin era um acidente da
+            # locucao: ele nascia no fim da keyword falada, entao a narradora
+            # dizer a palavra cedo ou tarde decidia sozinha se a instrucao
+            # ficava meio video na tela ou piscava no ultimo segundo.
+            # ⛔ Ela move o INSTANTE, nunca a PALAVRA — quem decide o QUE
+            # aparece continua sendo a deteccao ou o campo `Palavra`. Pin que
+            # inventasse a palavra quebraria a automacao de DM.
+            # ⚠️ `0` = automatico, e e' o padrao: campo cujo valor neutro muda
+            # o comportamento em silencio e' pior que campo nenhum.
+            try:
+                antes = float(pin_antes or 0)
+            except (TypeError, ValueError):
+                antes = 0.0
+            if antes > 0:
+                t_pin = max(0.0, fim_video - antes)
             if fim_video > t_pin:
                 txt_pin = (
                     f"{verbo} {{\\1c{cor_keyword}}}{kw_falada}"

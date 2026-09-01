@@ -235,7 +235,7 @@ def queimar_legenda(inp, ass_path, out):
 
 def processar_video(takes, out_final, model="base.en", lang="en",
                     margem="0.2s", fator=None, keywords=None, pin_cta=True,
-                    palavra_cta=None, log=print):
+                    palavra_cta=None, pin_antes=0, log=print):
     if not takes:
         raise RuntimeError("nenhum take encontrado")
     work = tempfile.mkdtemp(prefix="owedit_")
@@ -262,7 +262,7 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         # ⭐ `idioma=lang`: o verbo do pin segue a lingua do audio. Sem isto o
         # video sai com a fala em alemao e o pin em ingles.
         gerar_ass(palavras, w, h, assf, keywords=keywords, pin_cta=pin_cta,
-                  palavra_cta=palavra_cta, idioma=lang,
+                  palavra_cta=palavra_cta, idioma=lang, pin_antes=pin_antes,
                   duracao_video=duracao(base))
         log("  queimando legenda..." if pin_cta
             else "  queimando legenda (sem o CTA fixo no topo)...")
@@ -280,7 +280,8 @@ def _tem_video_solto(pasta):
 
 
 def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s",
-                    keywords=None, pin_cta=True, palavra_cta=None, log=print):
+                    keywords=None, pin_cta=True, palavra_cta=None, pin_antes=0,
+                    log=print):
     """Processa a pasta de entrada (subpastas=1 video cada, ou arquivos soltos=1 video).
     Retorna lista de arquivos gerados."""
     os.makedirs(saida, exist_ok=True)
@@ -301,7 +302,8 @@ def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s",
         log(f"[1 video] {nome}")
         gerados.append(processar_video(
             coletar_takes(entrada), out, model, lang, margem, keywords=keywords,
-            pin_cta=pin_cta, palavra_cta=palavra_cta, log=log))
+            pin_cta=pin_cta, palavra_cta=palavra_cta,
+            pin_antes=pin_antes, log=log))
     elif subpastas:
         for i, d in enumerate(subpastas, 1):
             takes = coletar_takes(os.path.join(entrada, d))
@@ -312,7 +314,8 @@ def processar_pasta(entrada, saida, model="base.en", lang="en", margem="0.2s",
             log(f"[{i}/{len(subpastas)}] {d}")
             gerados.append(processar_video(
                 takes, out, model, lang, margem, keywords=keywords,
-                pin_cta=pin_cta, palavra_cta=palavra_cta, log=log))
+                pin_cta=pin_cta, palavra_cta=palavra_cta,
+            pin_antes=pin_antes, log=log))
     else:
         raise RuntimeError("pasta de entrada nao tem videos nem subpastas com videos")
     return gerados

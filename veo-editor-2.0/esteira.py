@@ -138,7 +138,10 @@ CFG = {"model": "base", "lang": "en", "margem": "0.2s", "watch_dir": "",
        "keywords": "HONEY,GELATIN,VICK,VICKS,RECIPE",
        # ⭐ o CTA fixo no topo do video. `pin_cta` e' BOOLEANO de proposito —
        # e' o tipo que o `_carregar_cfg` antigo descartava em silencio.
-       "pin_cta": True, "palavra_cta": "GELATIN"}
+       "pin_cta": True, "palavra_cta": "GELATIN",
+       # ⭐ segundos antes do fim em que o pin aparece. 0 = automatico (o
+       # instante em que a keyword e' falada), que e' o comportamento de sempre.
+       "pin_antes": "0"}
 
 _lock = threading.RLock()
 _fila = queue.Queue()
@@ -445,6 +448,7 @@ def _processar_zip(nome):
                         lang=CFG.get("lang", "en"), margem=CFG["margem"],
                         pin_cta=bool(CFG.get("pin_cta", True)),
                         palavra_cta=CFG.get("palavra_cta") or None,
+                        pin_antes=CFG.get("pin_antes") or 0,
                         fator=fator, keywords=kws, log=_log_atual)
 
         dur = duracao(out)

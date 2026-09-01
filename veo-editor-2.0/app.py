@@ -169,6 +169,7 @@ class ManualDialog(tk.Toplevel):
                                 lang=esteira.CFG.get("lang", "en"),
                                 pin_cta=bool(esteira.CFG.get("pin_cta", True)),
                                 palavra_cta=esteira.CFG.get("palavra_cta") or None,
+                                pin_antes=esteira.CFG.get("pin_antes") or 0,
                                 margem=esteira.CFG["margem"],
                                 log=self._fila_log.put)
                 self._fila_log.put("CONCLUIDO.")
@@ -330,6 +331,20 @@ class App(tk.Tk):
         self.ent_cta.pack(side="left", ipady=3)
         self.ent_cta.bind("<KeyRelease>", self._cfg)
         self.ent_cta.bind("<FocusOut>", self._cfg)
+        # ⭐⭐ A ANCORA DE TEMPO DO PIN. Numero inteiro de segundos ANTES DO FIM
+        # do video; `0` devolve o automatico (o instante em que a keyword e'
+        # falada), que e' o que o editor sempre fez.
+        tk.Label(linha_cta, text="aparece", bg=BG, fg=DIM,
+                 font=FT).pack(side="left", padx=(20, 6))
+        self.ent_antes = tk.Entry(linha_cta, bg=SURFACE2, fg=INK, font=FT,
+                                  relief="flat", width=4,
+                                  insertbackground=INK, justify="center")
+        self.ent_antes.pack(side="left", ipady=3)
+        self.ent_antes.bind("<KeyRelease>", self._cfg)
+        self.ent_antes.bind("<FocusOut>", self._cfg)
+        tk.Label(linha_cta, text="s antes do fim   (0 = quando a palavra e' "
+                                 "falada)", bg=BG, fg=DIM,
+                 font=FT).pack(side="left", padx=(6, 0))
 
         rodape = tk.Frame(self, bg=BG)
         rodape.pack(fill="x", padx=20, pady=(10, 14))
@@ -430,6 +445,15 @@ class App(tk.Tk):
             return
         esteira.CFG["pin_cta"] = bool(self.var_pin.get())
         esteira.CFG["palavra_cta"] = (self.ent_cta.get() or "").strip().upper()
+        # ⛔ So' digito entra. Campo livre num valor que vira tempo de tela e'
+        # um `ValueError` esperando o lote grande — e o erro apareceria no
+        # meio do processamento, nao aqui.
+        bruto = (self.ent_antes.get() or "").strip()
+        limpo = "".join(ch for ch in bruto if ch.isdigit())[:2]
+        if limpo != bruto:
+            self.ent_antes.delete(0, "end")
+            self.ent_antes.insert(0, limpo)
+        esteira.CFG["pin_antes"] = limpo or "0"
         self._rotulo_pin()
         esteira.CFG["model"] = self.cb_model.get().split(" ")[0]
         esteira.CFG["margem"] = self.cb_margem.get().split(" ")[0]
@@ -479,6 +503,8 @@ class App(tk.Tk):
         self.var_pin.set(bool(esteira.CFG.get("pin_cta", True)))
         self.ent_cta.delete(0, "end")
         self.ent_cta.insert(0, esteira.CFG.get("palavra_cta") or "GELATIN")
+        self.ent_antes.delete(0, "end")
+        self.ent_antes.insert(0, str(esteira.CFG.get("pin_antes") or "0"))
         self._rotulo_pin()
         # ⭐ A partir daqui a janela reflete o arquivo, entao pode gravar.
         self._pronto = True
