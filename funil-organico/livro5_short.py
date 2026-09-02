@@ -230,8 +230,8 @@ VIDAS = [
     {"id": "espelho", "idade": 49, "sexo": "mulher",
      "quem": "I stopped going to family parties",
      "dor": "I hid in the back of every photo for six years",
-     "virada": "I'm in the front of my daughter's wedding photo, and I "
-               "asked to be",
+     "virada": "I'm in the front of her wedding photo, and I asked to be "
+               "there",
      "rotulo": "49a · a foto"},
 ]
 
@@ -259,7 +259,7 @@ PORTAS = [
 # e sempre de graca ou quase. E' a barreira caindo por POSSE.
 FONTES_LIVRO = [
     "My daughter sent me this recipe book",
-    "A buddy from church showed me this book on his phone",
+    "Someone at church showed me this book on their phone",
     "I don't even remember who told me about this book",
     "My sister left it on my counter and said nothing",
     "A woman at work wrote the name on a napkin for me",
@@ -316,30 +316,51 @@ COZINHAS = [
     "a small kitchen corner with laminate counters and a cluttered "
     "countertop",
 ]
-SALAS = [
-    "a bright living room with a pale sofa and a tall window letting in "
-    "daylight",
-    "a light open living room with white curtains and a wide bare wall",
-    "a sunlit front room with a low sofa and a plant by the window",
-    "a plain bright room with a window on the left and nothing on the walls",
-]
+# ⛔⛔ O POOL DE SALAS MORREU EM 2026-09-02, e a lapide fica.
+# Ele existia porque a FONTE troca de lugar entre o antes e o depois (medido:
+# cozinha -> sala, cozinha -> playground, mesa -> varanda). O operador mandou o
+# contrario, e com razao: no MESMO quadro o espectador nao precisa acreditar
+# que sao a mesma pessoa, ele ve'. Trocar de lugar era o que ESCONDIA o salto.
+# ⚠️ A lapide fica para ninguem "consertar" isto de volta lendo a fonte.
+
 
 # ⭐ O corpo do ANTES. Descrito por FORMA e AREA DE QUADRO, nunca por
 # adjetivo — a licao do RUTH 16: o gerador nao desenha adjetivo, desenha
 # forma. Sem isto ele devolve uma pessoa comum.
+# ⛔⛔ OS DOIS CORPOS SAO A UNICA COISA QUE MUDA ENTRE OS QUADROS 1 E 2.
+# Cenario, enquadramento, roupa, pose, luz e copo sao identicos — e' o que
+# transforma o par em COMPARACAO em vez de em duas fotos soltas.
+# ⭐ A descricao e' por FORMA, AREA DE QUADRO e o que a ROUPA faz, nunca por
+# adjetivo: o gerador nao desenha "gorda", desenha volume e tecido esticado.
+# E' a licao do RUTH 16, onde adjetivo devolvia pessoa comum.
 CORPO_ANTES = (
-    "She is very heavy. Her body fills most of the width of the frame, her "
-    "stomach stands out well past her chest and is the nearest thing to the "
-    "lens, her upper arms are thick and fill the sleeves of her t-shirt, and "
-    "her chin and jaw are soft and rounded. Her clothes are plain and loose: "
-    "a stretched t-shirt and dark trousers."
+    "She is very heavy. Her body fills most of the width of the frame and her "
+    "stomach stands out well past her chest, pushing the %s tight across the "
+    "front so the fabric strains between the seams. Her upper arms fill the "
+    "sleeves completely, and her chin and jaw are soft and rounded."
 )
+# ⚠️ A MESMA PECA, e e' ela que carrega a prova: esticada no primeiro quadro,
+# sobrando no segundo. Ancora e prova no mesmo objeto — RUTH 16.
 CORPO_DEPOIS = (
-    "She is slim and stands straight. Her t-shirt hangs loose at the waist "
-    "and her jeans are gathered by a belt, her arms are thin and her "
-    "collarbones show at the neckline, and her jaw and cheekbones are clearly "
-    "defined."
+    "She is slim and stands straight. The same %s now hangs loose and empty "
+    "on her, falling straight from her shoulders with room to spare at the "
+    "waist. Her arms are thin inside the sleeves, her collarbones show at the "
+    "neckline, and her jaw and cheekbones are clearly defined."
 )
+
+# ⭐ A PECA. Uma so' por video, e a mesma nos dois quadros.
+ROUPAS = [
+    {"id": "camiseta_cinza", "peca": "plain grey t-shirt",
+     "baixo": "dark jeans"},
+    {"id": "moletom_azul", "peca": "faded blue sweatshirt",
+     "baixo": "black leggings"},
+    {"id": "polo_bege", "peca": "beige knit polo shirt",
+     "baixo": "dark trousers"},
+    {"id": "camisa_xadrez", "peca": "green plaid button shirt",
+     "baixo": "khaki trousers"},
+    {"id": "blusa_bordo", "peca": "burgundy long sleeved top",
+     "baixo": "black trousers"},
+]
 
 # ===========================================================================
 # POOLS DE COPY — ALEMAO
@@ -417,7 +438,7 @@ IMAGENS = ("IMAGE 01/05", "IMAGE 02/05", "IMAGE 03/05", "IMAGE 04/05",
 TAKES = ("TAKE 01/05", "TAKE 02/05", "TAKE 03/05", "TAKE 04/05", "TAKE 05/05")
 
 MEMORIA = {"vida": 3, "porta": 2, "fonte": 2, "preco": 2, "semana": 2,
-           "numero": 2, "testemunha": 2, "cozinha": 2, "sala": 2}
+           "numero": 2, "testemunha": 2, "cozinha": 2, "roupa": 2}
 
 
 def _carregar_ledger():
@@ -472,7 +493,7 @@ def sortear(pagina, rng, led, travas=None):
     numero = _evitando(rng, NUMEROS, led.get("numero", []))
     test = _evitando(rng, TESTEMUNHAS, led.get("testemunha", []))
     coz = _evitando(rng, COZINHAS, led.get("cozinha", []))
-    sala = _evitando(rng, SALAS, led.get("sala", []))
+    roupa = _pega("roupa", ROUPAS, "id")
 
     # ⛔⛔ AS CINCO FALAS. A 1 e' VAZIA por construcao — o take 1 e' mudo, e
     # medido: os cinco videos da fonte abrem sem uma palavra por 6,6 a 8,1
@@ -480,9 +501,20 @@ def sortear(pagina, rng, led, travas=None):
     # olha o ANTES sem nada competindo.
     # ⭐ E a fala 5 fecha com `vida["virada"]`, que e' a MESMA IMAGEM da fala
     # 2 invertida. As duas vem do mesmo registro por isso.
+    def _M(t):
+        """Maiuscula na primeira letra.
+
+        ⛔ Os campos `dor` e `virada` nascem em minuscula no pool porque
+        alguns sao oracoes que continuam a frase anterior. Aqui `dor` abre
+        sentenca propria, e sem isto o video saia com `I'm 70 years old. my
+        own grandchildren...`. Achado LENDO O LOTE — a lente `LV9` varria so'
+        os blocos de IMAGE e nao as falas, e passou a varrer as duas.
+        """
+        return t[:1].upper() + t[1:] if t else t
+
     falas = [
         "",
-        "%s. %s." % (vida["quem"], vida["dor"]),
+        "%s. %s." % (vida["quem"], _M(vida["dor"])),
         "%s. %s." % (fonte, preco),
         "%s. %s." % (porta["primeira"], semana),
         "%s. And %s." % (numero, vida["virada"]),
@@ -490,12 +522,13 @@ def sortear(pagina, rng, led, travas=None):
 
     return {
         "pagina": pagina, "etnia": et,
-        "vida": vida, "porta": porta, "cozinha": coz, "sala": sala,
+        "vida": vida, "porta": porta, "cozinha": coz, "roupa": roupa,
         "testemunha": test, "lista": porta["lista"],
         "falas": falas,
         "_id_vida": vida["id"], "_id_porta": porta["id"], "_id_fonte": fonte,
         "_id_preco": preco, "_id_semana": semana, "_id_numero": numero,
-        "_id_testemunha": test, "_id_cozinha": coz, "_id_sala": sala,
+        "_id_testemunha": test, "_id_cozinha": coz,
+        "_id_roupa": roupa["id"],
     }
 
 # ===========================================================================
@@ -544,24 +577,52 @@ def montar(spec):
         "on-screen text, no subtitles, no captions, no watermark."
         % (vida["idade"], et, subst))
 
-    # ⛔ IMAGE 01 — O ANTES. Cozinha escura, corpo pesado, copo na mao, olhos
-    # baixos. ⚠️ O rotulo `MONTH 1` NAO e' pedido ao gerador: ele e' queimado
-    # no Veo Editor. Pedir texto devolve `MOUNTH`, e a fonte prova.
+    # ⛔⛔ OS CINCO QUADROS SAO O MESMO LUGAR, O MESMO ENQUADRAMENTO, A MESMA
+    # ROUPA E A MESMA LUZ. So' o CORPO muda entre o quadro 1 e os outros
+    # quatro. Ordem do operador, e ela e' melhor que a fonte: com o mesmo
+    # quadro o espectador nao precisa ACREDITAR que sao a mesma pessoa, ele
+    # VE. Trocar de lugar, como a fonte faz, e' o que ESCONDE o salto.
+    # ⚠️ O preco: no mesmo quadro qualquer diferenca de rosto ou de luz vira
+    # mentira obvia. Por isso o `lugar`, a `roupa` e a `luz` sao montados UMA
+    # vez e reusados nos cinco — a lente `LV10` cobra que sejam identicos.
+    lugar = spec["cozinha"].capitalize() + "."
+    peca = spec["roupa"]["peca"]
+    baixo = spec["roupa"]["baixo"]
+    luz = ("Flat even daylight from a window on the left, the same light in "
+           "every shot.")
+
+    # ⚠️ O rotulo `MONTH 1` NAO e' pedido ao gerador: ele e' queimado no Veo
+    # Editor. Pedir texto devolve `MOUNTH`, e a fonte prova.
     b["IMAGE 01/05"] = (
         "IMAGE 01/05: %s %s A %d-year-old %s %s stands in the middle of the "
-        "frame, framed from the knees up. %s %s %s"
-        % (ORIENTACAO, spec["cozinha"].capitalize() + ".", vida["idade"], et,
-           subst, _p(CORPO_ANTES),
-           _M(_p(POSE_ANTES % porta["liquido"])) + ".", CAUDA_LV))
+        "frame facing the camera, framed from the knees up, wearing a %s and "
+        "%s. %s %s %s %s"
+        % (ORIENTACAO, lugar, vida["idade"], et, subst, peca, baixo,
+           _p(CORPO_ANTES % peca),
+           _M(_p(POSE_ANTES % porta["liquido"])) + ".", luz, CAUDA_LV))
 
-    # ⭐ AS QUATRO IMAGENS DO DEPOIS sao o MESMO quadro. O angulo nao troca de
-    # lugar no meio de um depoimento — quem fala fica onde esta'.
-    for k in IMAGENS[1:]:
-        b[k] = ("%s: %s %s A %d-year-old %s %s, the same person as the "
-                "reference photo. %s %s %s"
-                % (k, ORIENTACAO, spec["sala"].capitalize() + ".",
-                   vida["idade"], et, subst, _p(CORPO_DEPOIS),
-                   _M(_p(POSE_DEPOIS)) + ".", CAUDA_LV))
+    # ⭐⭐ IMAGE 02 — O ESPELHO. A MESMA pose do quadro 1, o MESMO copo, a
+    # MESMA roupa, o MESMO lugar. So' o corpo mudou. E' este par que faz o
+    # antes/depois: o olho nao compara duas poses diferentes, compara duas
+    # versoes da MESMA pose.
+    # ⚠️ Ele nao gasta um take: a AdBatch usa a IMAGE como PRIMEIRO QUADRO, e
+    # o `TAKE 02` anima ela baixando o copo e comecando a falar.
+    b["IMAGE 02/05"] = (
+        "IMAGE 02/05: %s %s The same %d-year-old %s %s stands in exactly the "
+        "same spot, in the same framing from the knees up, wearing the same "
+        "%s and %s. %s %s %s %s"
+        % (ORIENTACAO, lugar, vida["idade"], et, subst, peca, baixo,
+           _p(CORPO_DEPOIS % peca),
+           _M(_p(POSE_ANTES % porta["liquido"])) + ".", luz, CAUDA_LV))
+
+    # ⭐ Os tres ultimos quadros: mesma pessoa, mesmo lugar, ja' falando.
+    for k in IMAGENS[2:]:
+        b[k] = ("%s: %s %s The same %d-year-old %s %s stands in exactly the "
+                "same spot, in the same framing from the knees up, wearing "
+                "the same %s and %s. %s %s %s %s"
+                % (k, ORIENTACAO, lugar, vida["idade"], et, subst, peca,
+                   baixo, _p(CORPO_DEPOIS % peca),
+                   _M(_p(POSE_DEPOIS)) + ".", luz, CAUDA_LV))
 
     # ⛔ TAKE 01 — MUDO. Sem `Dialogue:`, sem voz.
     b["TAKE 01/05"] = (
@@ -572,7 +633,20 @@ def montar(spec):
         "else in the frame moves.\n%s"
         % (ela.capitalize(), dela, ela.capitalize(), SILENCIO))
 
-    for i, k in enumerate(TAKES[1:], 1):
+    # ⭐ TAKE 02 — a virada acontece DENTRO do take: ela abaixa o copo,
+    # levanta os olhos e comeca a falar. O primeiro quadro ainda e' o espelho
+    # do 01; no ultimo ela ja' esta' olhando a lente.
+    b["TAKE 02/05"] = (
+        "TAKE 02/05: Animate the image exactly. Locked-off tripod shot, no "
+        "camera movement and no cuts. %s starts in the same position as the "
+        "previous shot, then lowers the glass to %s side, lifts %s eyes to "
+        "the lens and begins to speak. %s does not walk or turn and stays in "
+        "the same spot. Nothing else in the frame moves.\n"
+        'Dialogue: "%s"\n%s\n'
+        "Audio: quiet room tone only. No music."
+        % (ela.capitalize(), dela, dela, ela.capitalize(), f[1], voz))
+
+    for i, k in enumerate(TAKES[2:], 2):
         b[k] = ("%s: Animate the image exactly. Locked-off tripod shot, no "
                 "camera movement and no cuts. %s talks straight to the lens "
                 "with small natural hand movements and does not walk or turn. "
@@ -621,6 +695,11 @@ def _direcao(txt):
     return txt.split("\nDialogue:")[0]
 
 
+def _M(t):
+    """Maiuscula na primeira letra — usada pela montagem e pelo lint."""
+    return t[:1].upper() + t[1:] if t else t
+
+
 def lint(spec, blocos):
     ach = []
     f = spec["falas"]
@@ -647,7 +726,10 @@ def lint(spec, blocos):
     # que a fala 2 abriu. Se as duas viessem de registros diferentes, o video
     # abriria numa humilhacao e fecharia noutra, e o formato perde o que o faz
     # funcionar sem CTA nenhum.
-    if vida["dor"] not in f[1]:
+    # ⚠️ `[1:]`: a montagem capitaliza a `dor` para ela abrir sentenca, entao
+    # a string crua do pool nunca casa inteira. Mesmo falso positivo da `LV4`,
+    # e a segunda vez que ele aparece neste arquivo.
+    if vida["dor"][1:] not in f[1]:
         ach.append(("ERRO", "LV1: a fala 2 nao carrega a humilhacao do "
                             "registro sorteado."))
     if vida["virada"] not in f[4]:
@@ -678,16 +760,36 @@ def lint(spec, blocos):
                         % (i + 1, n)))
 
     # ⛔ LV4 — o antes e o depois nao trocam de lugar
+    # ⛔⛔ LV4 / LV10 — O MESMO QUADRO NOS CINCO. Lugar, roupa e luz sao a
+    # ancora do par antes/depois: se qualquer um mudar, o par deixa de ser
+    # comparacao e vira duas fotos soltas.
     # ⚠️ A comparacao ignora o PRIMEIRO caractere: a montagem aplica
-    # `.capitalize()` no lugar para ele abrir a frase, entao a string do pool
-    # nunca casa inteira. Comparar o texto cru aqui acusava 100% dos videos —
-    # lente reprovando o que esta' certo e' a §16 das licoes.
-    if spec["cozinha"][1:] not in blocos["IMAGE 01/05"]:
-        ach.append(("ERRO", "LV4: a IMAGE 01 nao esta' na cozinha do ANTES."))
-    for k in IMAGENS[1:]:
-        if spec["sala"][1:] not in blocos[k]:
-            ach.append(("ERRO", "LV4: %s nao esta' na sala do DEPOIS — o "
-                                "depoimento nao troca de lugar no meio." % k))
+    # `.capitalize()` no lugar. Comparar o texto cru acusava 100% dos videos.
+    for k in IMAGENS:
+        if spec["cozinha"][1:] not in blocos[k]:
+            ach.append(("ERRO", "LV4: %s nao esta' no MESMO lugar dos outros "
+                                "— o par antes/depois so' e' comparacao se o "
+                                "quadro nao mudar." % k))
+        if k in ("IMAGE 01/05", "IMAGE 02/05"):
+            # ⛔⛔ LV11 — O PAR ESPELHO. Os dois quadros tem de carregar a
+            # MESMA pose do copo, caractere por caractere. Se divergirem, o
+            # par deixa de ser antes/depois e vira duas fotos soltas.
+            # ⚠️ Compara o trecho SEM genero: a montagem troca `her`->`his`
+            # quando o elenco e' masculino, entao a string crua nunca casa.
+            # Terceiro falso positivo do mesmo tipo neste arquivo — o padrao
+            # e' sempre comparar a string do pool contra o texto ja'
+            # transformado pela montagem.
+            copo = ("holding a tall glass of %s at chest height in one hand"
+                    % spec["porta"]["liquido"])
+            if copo not in blocos[k]:
+                ach.append(("ERRO", "LV11: %s nao tem a pose do copo. O "
+                                    "quadro 1 e o 2 sao a MESMA pose com "
+                                    "corpos diferentes — e' isso que faz o "
+                                    "antes/depois." % k))
+        if spec["roupa"]["peca"] not in blocos[k]:
+            ach.append(("ERRO", "LV10: %s nao usa a MESMA peca de roupa. Ela "
+                                "e' a ancora E a prova: esticada no primeiro "
+                                "quadro, sobrando nos outros." % k))
 
     for i in (1, 2, 3, 4):
         if _CTA.search(f[i]):
@@ -698,6 +800,10 @@ def lint(spec, blocos):
             ach.append(("ERRO", "LV5: a fala %d faz alegacao de saude. A "
                                 "fonte fala de PESO e de ROUPA, nunca de "
                                 "cura." % (i + 1)))
+    for i in (1, 2, 3, 4):
+        if re.search(r"\.\s+[a-z]", f[i]):
+            ach.append(("ERRO", "LV9: a fala %d tem frase comecando em "
+                                "MINUSCULA depois de ponto." % (i + 1)))
     if _MOUNTH.search(todos):
         ach.append(("ERRO", "LV7: grafia errada do rotulo do mes. A fonte saiu "
                             "com `MOUNTH 1` queimado em varias pecas."))
@@ -715,6 +821,7 @@ def lint(spec, blocos):
 EIXOS_UI = [
     ("vida", "A VIDA (dor + virada)", "VIDAS", "id"),
     ("porta", "A PORTA DE ENTRADA", "PORTAS", "id"),
+    ("roupa", "A PECA (a mesma nos 2)", "ROUPAS", "id"),
 ]
 
 DROPDOWNS_UI = [("vida", "A VIDA", "VIDAS", "rotulo")]
@@ -786,7 +893,7 @@ def autoteste(n=400):
            "fonte": len(FONTES_LIVRO), "preco": len(PRECOS),
            "semana": len(PRIMEIRA_SEMANA), "numero": len(NUMEROS),
            "testemunha": len(TESTEMUNHAS), "cozinha": len(COZINHAS),
-           "sala": len(SALAS)}
+           "roupa": len(ROUPAS)}
     mortos = 0
     for e in sorted(tam):
         viv = len(vistos[e])
@@ -815,7 +922,13 @@ def autoteste(n=400):
             1, " ".join(["word"] * 40))),
         ("LV4", lambda sp, bl: bl.__setitem__(
             "IMAGE 03/05",
-            bl["IMAGE 03/05"].replace(sp["sala"][1:], " garage"))),
+            bl["IMAGE 03/05"].replace(sp["cozinha"][1:], " garage"))),
+        ("LV11", lambda sp, bl: bl.__setitem__(
+            "IMAGE 02/05",
+            bl["IMAGE 02/05"].replace("Standing still and facing", "Sitting"))),
+        ("LV10", lambda sp, bl: bl.__setitem__(
+            "IMAGE 02/05",
+            bl["IMAGE 02/05"].replace(sp["roupa"]["peca"], "a dress"))),
         ("LV5", lambda sp, bl: sp["falas"].__setitem__(
             2, "It cured my diabetes in three weeks.")),
         ("LV6", lambda sp, bl: sp["falas"].__setitem__(
