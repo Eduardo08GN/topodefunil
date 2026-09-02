@@ -632,6 +632,11 @@ class App(tk.Tk):
         cc = tk.Frame(col, bg=PANEL)
         cc.pack(fill="both", expand=True)
         self.txt_fala = []
+        # ⭐ Contrato aditivo: motor que nao declara `COPY_PAREADA` nem cria os
+        # rotulos, e o painel dele fica identico ao de antes.
+        self._pareada = bool(getattr(self.m, "COPY_PAREADA", False)) and \
+            callable(getattr(self.m, "traduzir", None))
+        self.lbl_pt = []
         for i, nome in enumerate(self.m.CENAS_UI):
             cab = tk.Frame(cc, bg=PANEL)
             cab.pack(fill="x", padx=13, pady=(9 if i == 0 else 6, 2))
@@ -650,8 +655,18 @@ class App(tk.Tk):
                         highlightcolor=ACCENT)
             t.pack(fill="x", padx=13)
             t.contador = cont
-            t.bind("<KeyRelease>", lambda _e: self._marcar_sujo())
+            t.bind("<KeyRelease>",
+                   lambda _e, k=i: (self._marcar_sujo(), self._pintar_pt(k)))
             self.txt_fala.append(t)
+            # ⭐ A LINHA EM PORTUGUES — so' para motores de copy pareada.
+            # ⚠️ Ela fica ABAIXO da caixa e nao dentro dela: o que vai para o
+            # prompt e' o texto da caixa, e um campo editavel em portugues
+            # convidaria a editar o que nao e' entregue.
+            if self._pareada:
+                p = tk.Label(cc, text="", font=F_SMALL, bg=PANEL, fg=MUTED,
+                             anchor="w", justify="left", wraplength=430)
+                p.pack(fill="x", padx=13, pady=(2, 0))
+                self.lbl_pt.append(p)
 
         acao = tk.Frame(cc, bg=PANEL)
         acao.pack(fill="x", padx=13, pady=12)
@@ -833,6 +848,7 @@ class App(tk.Tk):
         for i, t in enumerate(self.txt_fala):
             t.delete("1.0", "end")
             t.insert("1.0", self.spec["falas"][i])
+            self._pintar_pt(i)
 
     def trocar_eixo(self, chave):
         if not self.spec:
@@ -1146,6 +1162,27 @@ class App(tk.Tk):
     def marcar_usado(self):
         self.m._gravar_ledger(self.m._carregar_ledger(), self.spec)
         self._toast("registrado no ledger — não repete tão cedo")
+
+    def _pintar_pt(self, i):
+        """Escreve o portugues da fala `i`, ou avisa que ela nao tem par.
+
+        ⛔ Sem par o rotulo fica VERMELHO e diz `sem par em PT`. Inventar
+        traducao aqui, ou ficar calado, deixaria o operador aprovar em
+        portugues uma frase que ele nunca leu.
+        """
+        if not self._pareada or i >= len(self.lbl_pt):
+            return
+        try:
+            fala = self.txt_fala[i].get("1.0", "end").strip()
+        except Exception:                                   # noqa: BLE001
+            return
+        pt = self.m.traduzir(fala)
+        if pt:
+            self.lbl_pt[i].configure(text="PT   " + pt, fg=MUTED)
+        else:
+            self.lbl_pt[i].configure(
+                text="PT   sem par cadastrado — esta fala foi editada e "
+                     "ninguem leu o alemao dela", fg=ERRO)
 
     def _marcar_sujo(self):
         self.lbl_sujo.configure(text="copy editada — clique em aplicar")

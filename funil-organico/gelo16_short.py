@@ -375,6 +375,116 @@ CTAS = [
 ]
 
 # ===========================================================================
+# ⭐⭐ A COPY PAREADA — alemao canonico, portugues para o operador LER
+# ===========================================================================
+# ⛔ O ALEMAO E' O CANONICO. E' ele que vai para a linha `Dialogue:`; o
+# portugues existe para o operador entender o que esta' aprovando.
+# ⚠️ Toda entrada dos tres pools TEM de estar aqui. O autoteste cobra: pool
+# sem par e' fala que o operador aprova sem ler.
+PT = {
+    # --- o hook ---------------------------------------------------------
+    "Ich sitze hier nicht, weil ich hart bin. Ich sitze hier, weil ich anders "
+    "atme.":
+        "Não estou sentada aqui porque sou durona. Estou aqui porque respiro "
+        "diferente.",
+    "Das hier ist kein Mut. Das ist Atmung, und du hast sie auch.":
+        "Isto aqui não é coragem. É respiração, e você também tem.",
+    "Jeder denkt, das geht nur mit Willenskraft. Es geht mit Atmung.":
+        "Todo mundo acha que isso só vai com força de vontade. Vai com "
+        "respiração.",
+    "Mein Körper friert genauso wie deiner. Meine Atmung macht den "
+    "Unterschied.":
+        "Meu corpo sente frio igual ao seu. Minha respiração é que faz a "
+        "diferença.",
+    "Vor drei Jahren hätte ich hier keine zehn Sekunden gesessen. Heute atme "
+    "ich anders.":
+        "Três anos atrás eu não aguentaria dez segundos aqui. Hoje eu respiro "
+        "diferente.",
+    "Das Eis ist nicht das Schwere daran. Das Schwere ist, ruhig zu bleiben.":
+        "O gelo não é a parte difícil. O difícil é continuar calma.",
+    "Ich bin nicht besonders. Ich weiß nur, wie ich atmen muss.":
+        "Eu não sou especial. Eu só sei como preciso respirar.",
+    "Wer das sieht, denkt an Kälte. Es geht die ganze Zeit um Atmung.":
+        "Quem vê isso pensa em frio. O assunto o tempo todo é respiração.",
+
+    # --- por que falhou -------------------------------------------------
+    "Tabletten beruhigen den Kopf. Diese Atmung beruhigt den Nerv, der die "
+    "Angst auslöst.":
+        "Comprimidos acalmam a cabeça. Essa respiração acalma o nervo que "
+        "dispara a ansiedade.",
+    "Reden hilft dem Kopf. Deinem Körper hat nie jemand beigebracht, wie er "
+    "runterkommt.":
+        "Falar ajuda a cabeça. Ninguém nunca ensinou seu corpo a desacelerar.",
+    "Deine Ärztin behandelt die Angst. Niemand zeigt dir, was dein Atem damit "
+    "macht.":
+        "Sua médica trata a ansiedade. Ninguém te mostra o que a sua "
+        "respiração faz com ela.",
+    "Apps zählen dir Sekunden vor. Sie erreichen den Nerv nicht, um den es "
+    "geht.":
+        "Aplicativos contam os segundos para você. Eles não alcançam o nervo "
+        "que importa.",
+    "Du kannst dich nicht ruhig denken. Ruhe entsteht über den Atem, nicht "
+    "über den Kopf.":
+        "Você não consegue pensar até ficar calma. A calma vem pela "
+        "respiração, não pela cabeça.",
+    "Jahre Therapie, und der Körper ist immer noch angespannt. Da kommt kein "
+    "Gespräch hin.":
+        "Anos de terapia, e o corpo continua tenso. Conversa nenhuma chega "
+        "lá.",
+    "Kein Arzt findet daran etwas, weil nichts kaputt ist. Dein Atem läuft "
+    "nur falsch.":
+        "Nenhum médico acha nada, porque não há nada quebrado. A sua "
+        "respiração é que está errada.",
+
+    # --- a barreira + CTA -----------------------------------------------
+    # ⚠️ Com `{kw}` ja' resolvido para a keyword do painel — o operador ve' a
+    # palavra que vai sair no video, nao um slot.
+    "Dafür brauchst du kein Eis. Nur zwei Minuten. Kommentiere %(k)s für die "
+    "Methode.":
+        "Para isso você não precisa de gelo. Só dois minutos. Comente %(k)s "
+        "para receber o método.",
+    "Du brauchst keine Kälte und keine Ausrüstung. Kommentiere %(k)s für die "
+    "Methode.":
+        "Você não precisa de frio nem de equipamento. Comente %(k)s para "
+        "receber o método.",
+    "Das geht bei dir zu Hause, ohne Eis. Kommentiere %(k)s und schau in "
+    "deine Nachrichten.":
+        "Isso funciona na sua casa, sem gelo. Comente %(k)s e olhe nas suas "
+        "mensagens.",
+    "Kein Eis, kein Studio, keine Termine. Kommentiere %(k)s für die "
+    "Methode.":
+        "Sem gelo, sem estúdio, sem consulta. Comente %(k)s para receber o "
+        "método.",
+    "Die Methode funktioniert auch im Warmen. Kommentiere %(k)s, sie kommt in "
+    "deine Nachrichten.":
+        "O método funciona no calor também. Comente %(k)s, ele chega nas suas "
+        "mensagens.",
+    "Du musst dafür nirgendwo hin. Kommentiere %(k)s, dann liegt sie in "
+    "deinen Nachrichten.":
+        "Você não precisa ir a lugar nenhum. Comente %(k)s, e ele fica nas "
+        "suas mensagens.",
+}
+
+
+def traduzir(fala):
+    """O portugues de uma fala alema, ou None se ela nao tem par.
+
+    ⛔ Devolve None de proposito quando nao conhece. O painel mostra isso em
+    vermelho; inventar traducao aqui seria deixar o operador aprovar uma fala
+    que ele nao leu.
+    """
+    for de, pt in PT.items():
+        if de % {"k": KEYWORD} == fala:
+            return pt % {"k": KEYWORD}
+    return None
+
+
+# ⭐ A flag que o `ui_agente` le' por `getattr`. Motor que nao a declara nao
+# ve' diferenca nenhuma — o acrescimo no painel e' ADITIVO.
+COPY_PAREADA = True
+
+
+# ===========================================================================
 # MEDIDA DE FALA — SILABAS
 # ===========================================================================
 
@@ -875,7 +985,22 @@ def autoteste(n=400):
         print("   %s %-5s plantado 40x, acusado %d/40"
               % ("ok " if pegou == 40 else "FALHA", nome, pegou))
 
-    print("\n6. SILABAS — o contador contra casos conhecidos")
+    print("\n6. TRADUCAO — toda entrada dos tres pools tem par em PT?")
+    faltam = []
+    for pool, rot in ((HOOKS, "hook"), (MECANISMOS, "mecanismo"),
+                      (CTAS, "cta")):
+        for e in pool:
+            if traduzir(e.replace("{kw}", KEYWORD)) is None:
+                faltam.append("%s: %s" % (rot, e[:52]))
+    print("   entradas sem par: %d de %d"
+          % (len(faltam), len(HOOKS) + len(MECANISMOS) + len(CTAS)))
+    for x in faltam[:6]:
+        print("      - %s" % x)
+    if faltam:
+        erros.append("TRADUCAO: %d entradas sem par em PT — o operador "
+                     "aprovaria fala que nao leu." % len(faltam))
+
+    print("\n7. SILABAS — o contador contra casos conhecidos")
     for palavra, esperado in (("Eis", 1), ("Atmung", 2), ("Kälte", 2),
                               ("Nachrichten", 3), ("Methode", 3),
                               ("Willenskraft", 3)):
