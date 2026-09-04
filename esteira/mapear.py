@@ -356,13 +356,16 @@ def main():
            '  "persona": {"prompt_img": "<retrato do narrador: idade, etnia, cabelo, barba, roupa, cenario fixo, luz — em ingles, 9:16>"},',
            '  "takes": {']
     for tk in dos["takes"]:
-        ped.append(f'    "{tk["i"]}": {{"cena": "<o que esta em quadro, em ingles>", "acao": "<o que a pessoa FAZ neste take, em ingles>"}},')
+        ped.append(f'    "{tk["i"]}": {{"cena": "<o que esta em quadro, em ingles>", "acao": "<o que a pessoa FAZ neste take, em ingles>", '
+                   f'"quem_fala": "<narrador | narrador_off (narrador NAO esta em quadro: voz off) | outra (quem esta em quadro fala)>"}},')
     ped[-1] = ped[-1].rstrip(",")
     ped.append("  },")
     ped.append('  "labels_texto": [' + ", ".join(f'"<texto da label em {l["t0"]}-{l["t1"]}s>"' for l in labs) + "],")
     ped.append('  "pilulas_texto": [' + ", ".join(
         f'"<texto da pilula que aparece de {q["t0"]}s a {q["t1"]}s, com os emojis>"' for q in pil) + ']')
     ped += ["}", "```", "", "Regras: descreva o que VE, nao invente; roupa e cenario iguais em todos os takes se forem iguais na folha;",
+            "`quem_fala`: se o narrador NAO aparece no take (close de outra pessoa, de um objeto), e' `narrador_off` — senao o gerador",
+            "da' a fala dele para quem estiver em quadro;",
             "nao cite marca nem pessoa famosa; nada de aparelho na mao do personagem."]
     open(os.path.join(pasta, "PEDIDO-CLONE.md"), "w", encoding="utf-8").write("\n".join(ped))
     print("pronto:", os.path.join(pasta, "mapa_fidelidade.json"))
