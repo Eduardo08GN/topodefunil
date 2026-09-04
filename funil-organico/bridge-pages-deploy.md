@@ -166,6 +166,43 @@ comprar um domínio novo, usar subdomínio de um que já é dele (`automaweb.pro
 `organicwave.site`) ou aceitar um dos 20 de nome ED. ⛔ Não se resolve isso
 por conta própria: escolher domínio é alçada do operador.
 
+### ⭐⭐ AS TRÊS LANDINGS DO **ED** — em subdomínio `book.`, sobre domínios de ED (2026-09-04)
+
+⛔ **Não confundir com as três do Lucas acima.** Ordem do operador: usar três
+domínios **dele** — e ele nomeou os três, sabendo que têm nome de ED.
+
+| Idioma | URL final | App Coolify (UUID) | `base_directory` |
+|---|---|---|---|
+| **EN** | `https://book.vitalresetlab.site` | `qb6hvvenyzt08pf5ououlj1v` | `/bridge-pages/bp-book-vitalresetlab` |
+| **DE** | `https://book.primalvitalityhub.site` | `wvvtfrik9r6qdr638tg5hvq3` | `/bridge-pages/bp-book-primalvitalityhub` |
+| **FR** | `https://book.steadystrengthhub.site` | `k19ztb1n138owc1mo3l9k1ea` | `/bridge-pages/bp-book-steadystrengthhub` |
+
+⛔⛔ **SUBDOMÍNIO, NUNCA O APEX — e a razão está medida.** Os três domínios são
+bridges **vivas** do funil de ED: `vitalresetlab` = **Marcus**,
+`primalvitalityhub` = **Ray**, `steadystrengthhub` = **Matt** — três das cinco
+páginas core. Antes de criar qualquer app, medido: os três apex e os três
+`/bp1/` respondiam **200**. Publicar a landing na raiz derrubaria as três, e
+isso não foi pedido. Depois do deploy, remedido: **apex 200 e `/bp1/` 200 nos
+três**, e a bridge do Marcus segue com 12.315 bytes, título *Private video* e
+`horsewood` no HTML (o `aff_id` é montado em JS, por isso não aparece no HTML
+cru — não é defeito).
+
+✅ **Medido nos fallbacks `sslip.io`** (o `book.` ainda não tem DNS): HTTP **200**
+nas três · `<html lang>` e `<title>` no idioma certo · **capa própria por
+idioma** · **13 de 13 assets em 200** em cada uma, conferidos um a um com HEAD.
+As três do Lucas seguem em 200 — nada colateral.
+
+⏳ **FALTA O DNS, e é do dono.** Nenhum `book.<domínio>` resolve ainda. Para as
+URLs finais subirem com SSL, criar **3 registros A** no registrador:
+`book.vitalresetlab.site`, `book.primalvitalityhub.site` e
+`book.steadystrengthhub.site` → **`159.195.12.135`**. Enquanto isso as três já
+estão no ar e validáveis pelo `sslip.io`.
+
+⛔⛔ **E ELAS AINDA NÃO VENDEM.** Herdaram o defeito das do Lucas: os **4 botões**
+de cada página apontam para `#offer` ou `#`, e **não existe uma URL externa** em
+nenhuma das três. Falta o link de produto da Hotmart **do Ed** (um por idioma).
+É o único elo que falta e é alçada do operador — link de checkout não se inventa.
+
 ## Domínios & Apps
 
 > ⛔⛔ **CORREÇÃO 2026-09-04 — `wholelifenutri.shop` NÃO É DO ED.** Este quadro
