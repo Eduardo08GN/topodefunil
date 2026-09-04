@@ -233,10 +233,35 @@ def mapear_camera(video, takes):
 
 
 # ── DIVISAO dos takes acima do teto ─────────────────────────────────────────
+GRUDE, PAUSA_FRASE = 0.15, 0.30
+
+
+def _lado(w, ant, prox, t0, t1):
+    """A palavra pertence ao clipe [t0,t1) onde cai o MEIO dela — nunca o inicio.
+    ⛔ Pago no PAPA (2026-09-04): o whisper poe o inicio de `Take` em 24,04 e o corte medido
+    esta' em 24,07; por inicio, `Take` ficou pendurado no fim do clipe anterior
+    (`...for few hours. Take`) e o Veo completou a frase sozinho: "Take care".
+    E palavra GRUDADA na vizinha de um lado (<0,15s) e separada por PAUSA do outro (>=0,30s)
+    segue a vizinha: ela e' o comeco (ou o fim) de uma frase, e frase nao se parte na borda."""
+    mid = (w["t0"] + w["t1"]) / 2
+    g_ant = (w["t0"] - ant["t1"]) if ant else None
+    g_prox = (prox["t0"] - w["t1"]) if prox else None
+    if g_prox is not None and g_prox < GRUDE and (g_ant is None or g_ant >= PAUSA_FRASE):
+        mid = (prox["t0"] + prox["t1"]) / 2
+    elif g_ant is not None and g_ant < GRUDE and (g_prox is None or g_prox >= PAUSA_FRASE):
+        mid = (ant["t0"] + ant["t1"]) / 2
+    return t0 <= mid < t1
+
+
+def palavras_no_clipe(pals, t0, t1):
+    return [w for i, w in enumerate(pals)
+            if _lado(w, pals[i - 1] if i else None, pals[i + 1] if i + 1 < len(pals) else None, t0, t1)]
+
+
 def dividir(takes, pals):
     out = []
     for tk in takes:
-        ws = [w for w in pals if tk["t0"] <= w["t0"] < tk["t1"]]
+        ws = palavras_no_clipe(pals, tk["t0"], tk["t1"])
         dur = tk["t1"] - tk["t0"]
         if dur <= TETO_VEO or len(ws) < 4:
             out.append({"take": tk["i"], "parte": 1, "t0": tk["t0"], "t1": tk["t1"], "dur": round(dur, 2),
@@ -251,15 +276,43 @@ def dividir(takes, pals):
                 if melhor is None or gap > melhor[0]: melhor = (gap, a["t1"], b["t0"])
         corte = (melhor[1] + melhor[2]) / 2 if melhor else tk["t0"] + dur / 2
         for k, (t0, t1) in enumerate(((tk["t0"], corte), (corte, tk["t1"])), 1):
-            sub = [w for w in ws if t0 <= w["t0"] < t1]
+            sub = palavras_no_clipe(ws, t0, t1)
             out.append({"take": tk["i"], "parte": k, "t0": round(t0, 2), "t1": round(t1, 2), "dur": round(t1 - t0, 2),
                         "fala": " ".join(w["w"] for w in sub), "dividido_em": round(corte, 2)})
+    # invariante: nenhuma palavra sai pendurada — ultima palavra de um clipe que veio depois de
+    # uma pausa e esta' grudada na primeira do clipe seguinte e' exatamente o `Take` do PAPA
+    idx = {id(w): i for i, w in enumerate(pals)}
+    for a, b in zip(out, out[1:]):
+        ua, pb = a["fala"].split()[-1:] , b["fala"].split()[:1]
+        if not ua or not pb: continue
+        wa = next((w for w in pals if w["w"] == ua[0] and a["t0"] <= (w["t0"] + w["t1"]) / 2 <= b["t1"]), None)
+        if wa is None: continue
+        i = idx[id(wa)]; ant = pals[i - 1] if i else None; prox = pals[i + 1] if i + 1 < len(pals) else None
+        if prox and prox["t0"] - wa["t1"] < GRUDE and (not ant or wa["t0"] - ant["t1"] >= PAUSA_FRASE):
+            print(f"  AVISO palavra pendurada: '{ua[0]}' fecha o clipe {a['take']}.{a['parte']} e abre frase do seguinte")
     return out
+
+
+def autoteste_dividir():
+    # o caso real do PAPA: corte em 24,07 entre `hours.` (23,04-23,48) e `Take` (24,04-24,28)
+    pals = [{"w": "few", "t0": 22.76, "t1": 23.04}, {"w": "hours.", "t0": 23.04, "t1": 23.48},
+            {"w": "Take", "t0": 24.04, "t1": 24.28}, {"w": "one", "t0": 24.28, "t1": 24.64}, {"w": "or", "t0": 24.64, "t1": 24.8}]
+    takes = [{"i": 4, "t0": 17.36, "t1": 24.07}, {"i": 5, "t0": 24.07, "t1": 29.0}]
+    out = dividir(takes, pals)
+    assert out[0]["fala"] == "few hours." and out[1]["fala"] == "Take one or", out
+    # e a palavra que comeca ANTES do corte por mais de metade, grudada nos dois lados, fica por meio
+    pals2 = [{"w": "leave", "t0": 23.5, "t1": 23.9}, {"w": "it", "t0": 23.9, "t1": 24.1}, {"w": "in", "t0": 24.1, "t1": 24.3},
+             {"w": "refrigerator", "t0": 24.3, "t1": 24.9}]
+    out2 = dividir(takes, pals2)
+    assert out2[0]["fala"] == "leave it" and out2[1]["fala"] == "in refrigerator", out2
+    print("autoteste_dividir OK")
 
 
 def main():
     ap = argparse.ArgumentParser(description="Etapa 2 da esteira — mapa de fidelidade")
-    ap.add_argument("slug"); a = ap.parse_args()
+    ap.add_argument("slug", nargs="?"); ap.add_argument("--autoteste", action="store_true"); a = ap.parse_args()
+    if a.autoteste: autoteste_dividir(); return
+    if not a.slug: ap.error("slug")
     pasta = os.path.join(SAIDA, a.slug)
     dos = json.load(open(os.path.join(pasta, "dossie.json"), encoding="utf-8"))
     video = dos["arquivo"]; dur = float(dos["duracao"])
