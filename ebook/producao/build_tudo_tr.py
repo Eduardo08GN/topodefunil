@@ -44,7 +44,7 @@ def um_idioma(lang):
             for l in saida.strip().splitlines()[-12:]:
                 print("      " + l)
 
-    saida_dir = os.path.join(AQUI, "Entregavel em %s" % lang.upper())
+    saida_dir = os.path.join(AQUI, "..", "Entregavel em %s" % lang.upper())
     if os.path.isdir(saida_dir):
         pdfs = sorted(f for f in os.listdir(saida_dir) if f.lower().endswith(".pdf"))
         total = sum(os.path.getsize(os.path.join(saida_dir, f)) for f in pdfs) / 1e6

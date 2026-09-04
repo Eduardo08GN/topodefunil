@@ -95,7 +95,7 @@ def medir(lang):
     termos = [t for t in PT_NO_PDF if t not in isentos]
     rx = [re.compile(r"(?<![" + _L + r"])" + re.escape(t) + r"(?![" + _L + r"])")
           for t in termos]
-    DE = os.path.join(AQUI, "Entregavel em %s" % lang.upper())
+    DE = os.path.join(AQUI, "..", "Entregavel em %s" % lang.upper())
 
     print("%-52s %7s %7s  %s" % ("arquivo", "PT pg", "pg", "orfas"))
     tp = td = 0

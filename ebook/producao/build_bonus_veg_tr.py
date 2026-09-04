@@ -244,7 +244,7 @@ def build(lang):
                motor.ESTILO, motor.I18N[lang]["css"], INTRO_CSS, corpo))
 
     html_path = os.path.join(AQUI, "_tmp_bonus1_%s.html" % lang)
-    saida = os.path.join(AQUI, "Entregavel em %s" % lang.upper())
+    saida = os.path.join(AQUI, "..", "Entregavel em %s" % lang.upper())
     os.makedirs(saida, exist_ok=True)
     pdf_path = os.path.join(saida, T["arquivo"])
     with open(html_path, "w", encoding="utf-8") as f:

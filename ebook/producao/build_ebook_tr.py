@@ -82,7 +82,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 
 
 def pasta_saida(lang):
-    return os.path.join(AQUI, "Entregavel em %s" % lang.upper())
+    return os.path.join(AQUI, "..", "Entregavel em %s" % lang.upper())
 
 
 def _tag_bebida(nome, lang):
