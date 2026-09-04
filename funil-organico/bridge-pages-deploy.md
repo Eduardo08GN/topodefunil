@@ -528,3 +528,61 @@ populacional. Dado de plataforma (Meta Ads, Buy Goods) ganha desta inferencia.
 ⭐ A ETNIA DA PAGINA TRAVA A ETNIA DO REF DO CRIATIVO (congruencia inviolavel).
 Ao acrescentar estas paginas ao `ETNIA` dos motores: Roy/Dean/Earl como
 `white American`, Jason/Philippe como `Black American`.
+
+---
+
+## ⭐⭐ OS TRÊS PRODUTOS DO ED NA HOTMART (2026-09-04) — o elo que faltava
+
+Até hoje as três landings do Ed tinham **quatro botões de compra e nenhum
+levava a lugar nenhum** (três em `#offer`, um em `#`). Os produtos agora
+existem **na conta dele** (`atm.eduardo@gmail.com`) e os quatro CTAs de cada
+página apontam para o checkout do idioma certo.
+
+⛔ **Os produtos do Lucas NÃO servem para o Ed.** Medido pelo navegador na
+conta dele: nove produtos, nenhum era o ebook. Os links que o Lucas pôs nas
+landings dele (`U107390341F`, `Y107390474L`, `I107390541D`) são da conta do
+Lucas — venda ali cai na conta do Lucas.
+
+| | EN | DE | FR |
+|---|---|---|---|
+| ID do produto | 8458340 | 8458435 | 8458452 |
+| Nome | 150 Fitness Recipes — A Lighter Life | 150 Fitness-Rezepte — Ein leichteres Leben | 150 Recettes Fitness — Une vie plus légère |
+| Checkout | `pay.hotmart.com/T107474501A` | `pay.hotmart.com/K107474696C` | `pay.hotmart.com/A107474735Q` |
+| Landing | `book.vitalresetlab.site` | `book.primalvitalityhub.site` | `book.steadystrengthhub.site` |
+| Preço | US$ 10,00 | € 10,00 | € 10,00 |
+| País principal | Estados Unidos | Alemanha | França |
+| Status | Vendas ativas | Vendas ativas | Vendas ativas |
+| Nome na fatura | `150 FIT RECIPES` | `150 FIT REZEPTE` | `150 RECETTES FIT` |
+
+Comum aos três: formato **eBook**, categoria **Saúde e Esportes**, garantia
+**7 dias**, pagamento **à vista**, capa 600×600 própria por idioma, e o
+entregável como **UM zip** com os 9 PDFs (~19 MB) — ordem do operador,
+*"nao quero os pdfs soltos"*.
+
+⛔ **O `maxlength` do nome na fatura é 16, não 22** — a dica da própria tela
+diz 22. `150 FITNESS RECIPES` entrava truncado como `150 FITNESS RECI`, que é
+pior que não pôr nada (nome cortado na fatura é o que gera chargeback). Os três
+foram encurtados para caber inteiros.
+
+⛔ **Boleto desligado** nos três (`offerBillet` e `offerBilletMobile`), Google
+Pay ligado, e-mail de suporte `atm.eduardo@gmail.com`. O idioma do checkout
+ficou em **DEFAULT_BUYER_LANGUAGE**: adapta ao comprador, melhor que travar.
+
+### ⛔⛔ O SSL DAS TRÊS ESTAVA QUEBRADO E NINGUÉM TINHA VISTO
+
+As landings responderam 200 desde o primeiro dia **só com `curl -k`**. Servindo
+`CN=TRAEFIK DEFAULT CERT`, autoassinado: qualquer comprador real veria aviso de
+site inseguro, e a Hotmart recusa validar página externa assim. A causa é de
+ordem: os apps subiram **antes** do DNS existir, o desafio HTTP-01 do Let's
+Encrypt falhou e o Traefik nunca tentou de novo. Um redeploy pela API resolveu
+em minutos — hoje as três têm certificado Let's Encrypt válido.
+
+⚠️ **Regra que fica: `curl` sem `-k` faz parte do aceite de bridge page.** Com
+`-k` os três davam 200 e pareciam prontas.
+
+### Os registros DNS
+
+Criados pela **API da Hostinger** (`PUT /api/dns/v1/zones/<dominio>` com
+`overwrite:false`, para não tocar no resto da zona):
+`book.<dominio> A 159.195.12.135 TTL 300` nos três. O apex de cada um continua
+servindo a bridge de ED — inalterado, conferido.
