@@ -29,6 +29,115 @@ FAIXAS_H = ["70–85 kg", "86–100 kg", "101–120 kg", "120 kg +"]
 ROTULO_CAT = {"cafe": "Café da manhã", "almoco": "Almoço", "jantar": "Jantar",
               "sobremesa": "Sobremesa", "suco": "Suco detox"}
 
+# ── i18n ──────────────────────────────────────────────────────────────────
+# Toda string fixa do template mora aqui. 'pt' e' o produto ja' validado e
+# NAO se mexe; idioma novo entra como chave nova. As faixas de peso (kg) e as
+# metas (kcal) sao METRICAS e valem igual em todos os idiomas.
+# ⛔ DE trata o leitor por "du" (decisao do operador, 2026-09-04): o alemao e'
+# o unico idioma do produto onde essa escolha muda TODA frase.
+I18N = {
+    "pt": {
+        "html_lang": "pt-BR",
+        # ⛔ VAZIO de proposito: qualquer regra aqui muda o PT, e o PT e' o
+        # produto ja' entregue. A prova de que ele nao mudou e' `snapshot_pt.py`
+        # (hash do HTML das 5 categorias, identico antes e depois do i18n).
+        "css": "",
+        "cat": ROTULO_CAT,
+        "receita": "Receita ",
+        "foto_ph": ("<b>FOTO %s</b><small>espaço quadrado reservado<br>"
+                    "(gerar pelo prompt e nomear \"%s\")</small>"),
+        "st_tempo": "Preparo", "st_rende": "Rende", "st_kcal": "Kcal base",
+        "h_ings": "Ingredientes (porção base)",
+        "h_passos": "Modo de preparo",
+        "h_dica": "Por que ajuda a emagrecer",
+        "adj_head": "Ajuste a sua porção",
+        "adj_sub": "escolha a sua linha e siga essas quantidades",
+        "th_perfil": "Perfil", "th_meta": "Meta desta refeição", "th_porcao": "Sua porção",
+        "mulheres": "Mulheres", "homens": "Homens",
+        "adj_note": ("Encontre a sua linha por <b>sexo e peso</b> e siga essas quantidades. "
+                     "<b>Vegetais, verduras, café e chá sem açúcar são livres, à vontade — "
+                     "não precisa contar.</b>"),
+        "livre": ("<b>Bebida livre.</b> Sem açúcar, é pertinho de zero caloria — pode tomar "
+                  "à vontade ao longo do dia, sem precisar medir a porção. É ótima para "
+                  "substituir refrigerante e suco de caixinha, ajudando na hidratação e no "
+                  "emagrecimento."),
+        # ⚠️ As quebras de linha e a indentacao SAO PARTE DA STRING: o template
+        # original trazia este paragrafo quebrado dentro do HTML. Mantidas
+        # verbatim para o PT sair byte a byte igual ao produto ja' entregue.
+        "foot": ("Valores aproximados, calculados por tabela nutricional padrão — servem como guia,\n"
+                 "    não como prescrição médica. As metas por perfil consideram atividade leve; quem se exercita mais\n"
+                 "    gasta mais e pode ajustar para cima."),
+    },
+    "de": {
+        "html_lang": "de",
+        # ⛔⛔ O alemao e' mais longo que o portugues e empurra o rodape para a
+        # pagina seguinte: nos SUCOS isso produziu 4 paginas com DUAS PALAVRAS
+        # ("oben anpassen."), medidas contra 0 no PT. A ordem do operador e'
+        # "nao espremer nada para caber" — entao o conserto NAO encolhe fonte:
+        # ele mantem o rodape colado ao bloco anterior e inteiro.
+        "css": ("\n.foot{break-inside:avoid;page-break-inside:avoid;"
+                "break-before:avoid;page-break-before:avoid}"
+                "\n.tip{break-after:avoid;page-break-after:avoid}"),
+        "cat": {"cafe": "Frühstück", "almoco": "Mittagessen", "jantar": "Abendessen",
+                "sobremesa": "Dessert", "suco": "Detox-Saft"},
+        "receita": "Rezept ",
+        "foto_ph": ("<b>FOTO %s</b><small>quadratischer Platz reserviert<br>"
+                    "(mit dem Prompt erzeugen und \"%s\" nennen)</small>"),
+        "st_tempo": "Zeit", "st_rende": "Ergibt", "st_kcal": "Kcal Basis",
+        "h_ings": "Zutaten (Grundportion)",
+        "h_passos": "So geht's",
+        "h_dica": "Warum das beim Abnehmen hilft",
+        "adj_head": "Passe deine Portion an",
+        "adj_sub": "suche deine Zeile und halte dich an diese Mengen",
+        "th_perfil": "Profil", "th_meta": "Ziel dieser Mahlzeit", "th_porcao": "Deine Portion",
+        "mulheres": "Frauen", "homens": "Männer",
+        "adj_note": ("Suche deine Zeile nach <b>Geschlecht und Gewicht</b> und halte dich an diese "
+                     "Mengen. <b>Gemüse, Blattsalat, Kaffee und Tee ohne Zucker sind frei, so viel "
+                     "du magst — das musst du nicht mitzählen.</b>"),
+        "livre": ("<b>Freies Getränk.</b> Ohne Zucker hat es fast keine Kalorien — du kannst es "
+                  "über den ganzen Tag trinken, so viel du magst, ohne die Menge abzumessen. Es "
+                  "ist super, um Limonade und Saft aus der Packung zu ersetzen, und hilft beim "
+                  "Trinken und beim Abnehmen."),
+        "foot": ("Ungefähre Werte, berechnet nach einer Standard-Nährwerttabelle — sie sind ein "
+                 "Anhaltspunkt, keine ärztliche Vorgabe. Die Ziele pro Profil gehen von leichter "
+                 "Bewegung aus; wer sich mehr bewegt, verbraucht mehr und darf nach oben anpassen."),
+    },
+    "fr": {
+        "html_lang": "fr",
+        # ⛔ Mesma razao do alemao: o frances tambem e' mais longo que o
+        # portugues e empurra o rodape para a pagina seguinte. A ordem e' "nao
+        # espremer" — entao o rodape fica inteiro e colado ao bloco anterior,
+        # e a regra vive AQUI, nunca no ESTILO compartilhado com o PT.
+        "css": ("\n.foot{break-inside:avoid;page-break-inside:avoid;"
+                "break-before:avoid;page-break-before:avoid}"
+                "\n.tip{break-after:avoid;page-break-after:avoid}"),
+        "cat": {"cafe": "Petit-déjeuner", "almoco": "Déjeuner", "jantar": "Dîner",
+                "sobremesa": "Dessert", "suco": "Jus détox"},
+        "receita": "Recette ",
+        "foto_ph": ("<b>PHOTO %s</b><small>emplacement carré réservé<br>"
+                    "(à générer avec le prompt et à nommer \"%s\")</small>"),
+        "st_tempo": "Temps", "st_rende": "Donne", "st_kcal": "Kcal de base",
+        "h_ings": "Ingrédients (portion de base)",
+        "h_passos": "Préparation",
+        "h_dica": "Pourquoi ça aide à maigrir",
+        "adj_head": "Ajuste ta portion",
+        "adj_sub": "trouve ta ligne et suis ces quantités",
+        "th_perfil": "Profil", "th_meta": "Objectif de ce repas", "th_porcao": "Ta portion",
+        "mulheres": "Femmes", "homens": "Hommes",
+        "adj_note": ("Trouve ta ligne selon le <b>sexe et le poids</b> et suis ces quantités. "
+                     "<b>Les légumes, la salade, le café et le thé sans sucre sont libres, "
+                     "à volonté — tu n'as pas besoin de les compter.</b>"),
+        "livre": ("<b>Boisson libre.</b> Sans sucre, elle n'a presque aucune calorie — tu peux "
+                  "en boire tout au long de la journée, autant que tu veux, sans mesurer la "
+                  "quantité. Elle est parfaite pour remplacer les sodas et les jus en brique, "
+                  "et elle aide à bien t'hydrater et à maigrir."),
+        "foot": ("Valeurs approximatives, calculées d'après une table nutritionnelle standard — "
+                 "elles servent de repère, pas de prescription médicale. Les objectifs par profil "
+                 "supposent une activité légère ; qui bouge plus dépense plus et peut ajuster "
+                 "vers le haut."),
+    },
+}
+
 ESTILO = """
 :root{--green:#196B45;--green-tint:#E8F7EB;--gold:#D9A441;--gold-tint:#FBF3E2;
 --ink:#1A1A1A;--soft:#54524E;--line:#E2DED6;--cream:#F7F5F0;}
@@ -90,14 +199,14 @@ def _linha(faixa, meta, porcao):
                                   meta, html.escape(porcao)))
 
 
-def render_receita(r, tipo, num, img_dir=None):
+def render_receita(r, tipo, num, img_dir=None, lang="pt"):
     """r: dict com nome, hook, tempo, porcoes(base kcal), rende, ings[], passos[],
     porcoes8[8], dica. num: 1..N. tipo: cafe/almoco/..."""
+    T = I18N[lang]
     metas = METAS[tipo]
     n3 = "%03d" % num
     # foto: se existir o arquivo, embute; senao placeholder com o numero
-    foto_html = ('<b>FOTO %s</b><small>espaço quadrado reservado<br>'
-                 '(gerar pelo prompt e nomear "%s")</small>' % (n3, n3))
+    foto_html = T["foto_ph"] % (n3, n3)
     if img_dir:
         for ext in (".jpg", ".jpeg", ".png", ".webp"):
             cam = os.path.join(img_dir, n3 + ext)
@@ -110,28 +219,25 @@ def render_receita(r, tipo, num, img_dir=None):
 
     # bloco de ajuste: bebida livre (chá/água ~0 kcal) OU tabela por perfil
     if r.get("livre"):
-        ajuste = ('<div class="livre"><b>Bebida livre.</b> Sem açúcar, é pertinho de '
-                  'zero caloria — pode tomar à vontade ao longo do dia, sem precisar '
-                  'medir a porção. É ótima para substituir refrigerante e suco de '
-                  'caixinha, ajudando na hidratação e no emagrecimento.</div>')
+        ajuste = '<div class="livre">%s</div>' % T["livre"]
     else:
         p = r["porcoes8"]
         linhas = (
-            '<tr class="sex"><td colspan="3">Mulheres</td></tr>'
+            '<tr class="sex"><td colspan="3">%s</td></tr>' % T["mulheres"]
             + "".join(_linha(FAIXAS_M[i], metas[i], p[i]) for i in range(4))
-            + '<tr class="sex"><td colspan="3">Homens</td></tr>'
+            + '<tr class="sex"><td colspan="3">%s</td></tr>' % T["homens"]
             + "".join(_linha(FAIXAS_H[i], metas[4 + i], p[4 + i]) for i in range(4)))
         ajuste = (
             '<div class="adj">'
-            '<div class="adj-head">Ajuste a sua porção <span>escolha a sua linha e siga essas quantidades</span></div>'
-            '<table><tr><th style="width:150px">Perfil</th><th style="width:120px">Meta desta refeição</th><th>Sua porção</th></tr>'
+            '<div class="adj-head">%s <span>%s</span></div>'
+            '<table><tr><th style="width:150px">%s</th><th style="width:120px">%s</th><th>%s</th></tr>'
+            % (T["adj_head"], T["adj_sub"], T["th_perfil"], T["th_meta"], T["th_porcao"])
             + linhas + '</table>'
-            '<div class="adj-note">Encontre a sua linha por <b>sexo e peso</b> e siga essas quantidades. '
-            '<b>Vegetais, verduras, café e chá sem açúcar são livres, à vontade — não precisa contar.</b></div>'
-            '</div>')
+            '<div class="adj-note">%s</div>' % T["adj_note"]
+            + '</div>')
 
-    rotulo = r.get("tag", ROTULO_CAT[tipo])
-    num_label = r.get("num_label", "Receita " + n3)
+    rotulo = r.get("tag", T["cat"][tipo])
+    num_label = r.get("num_label", T["receita"] + n3)
 
     return """<div class="recipe">
   <div class="top"><span class="tag">%s</span><span class="num">%s</span></div>
@@ -141,33 +247,36 @@ def render_receita(r, tipo, num, img_dir=None):
     <div class="photo">%s</div>
     <div>
       <div class="stats">
-        <div class="stat"><div class="v">%s</div><div class="l">Preparo</div></div>
-        <div class="stat"><div class="v">%s</div><div class="l">Rende</div></div>
-        <div class="stat"><div class="v">~%d</div><div class="l">Kcal base</div></div>
+        <div class="stat"><div class="v">%s</div><div class="l">%s</div></div>
+        <div class="stat"><div class="v">%s</div><div class="l">%s</div></div>
+        <div class="stat"><div class="v">~%d</div><div class="l">%s</div></div>
       </div>
-      <h2>Ingredientes (porção base)</h2>
+      <h2>%s</h2>
       <ul class="ings">%s</ul>
     </div>
   </div>
-  <div class="steps"><h2>Modo de preparo</h2><ol>%s</ol></div>
+  <div class="steps"><h2>%s</h2><ol>%s</ol></div>
   %s
-  <div class="tip"><b>Por que ajuda a emagrecer</b><p>%s</p></div>
-  <div class="foot">Valores aproximados, calculados por tabela nutricional padrão — servem como guia,
-    não como prescrição médica. As metas por perfil consideram atividade leve; quem se exercita mais
-    gasta mais e pode ajustar para cima.</div>
+  <div class="tip"><b>%s</b><p>%s</p></div>
+  <div class="foot">%s</div>
 </div>""" % (html.escape(rotulo), html.escape(num_label), html.escape(r["nome"]),
-            html.escape(r["hook"]), foto_html, html.escape(r["tempo"]),
-            html.escape(r["rende"]), r["kcal_base"], ings, passos, ajuste,
-            html.escape(r["dica"]))
+            html.escape(r["hook"]), foto_html,
+            html.escape(r["tempo"]), T["st_tempo"],
+            html.escape(r["rende"]), T["st_rende"],
+            r["kcal_base"], T["st_kcal"],
+            T["h_ings"], ings, T["h_passos"], passos, ajuste,
+            T["h_dica"], html.escape(r["dica"]), T["foot"])
 
 
-def montar_html(receitas, tipo, titulo, num0=1, img_dir=None):
-    corpo = "\n".join(render_receita(r, tipo, num0 + i, img_dir)
+def montar_html(receitas, tipo, titulo, num0=1, img_dir=None, lang="pt"):
+    corpo = "\n".join(render_receita(r, tipo, num0 + i, img_dir, lang=lang)
                       for i, r in enumerate(receitas))
-    return """<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+    return """<!DOCTYPE html><html lang="%s"><head><meta charset="utf-8">
 <title>%s</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<style>%s</style></head><body>%s</body></html>""" % (html.escape(titulo), ESTILO, corpo)
+<style>%s%s</style></head><body>%s</body></html>""" % (
+        I18N[lang]["html_lang"], html.escape(titulo),
+        ESTILO, I18N[lang]["css"], corpo)
 
 
 def gerar_pdf(html_path, pdf_path, porta=8132):

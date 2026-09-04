@@ -1,0 +1,178 @@
+# -*- coding: utf-8 -*-
+"""BÔNUS 2 — PILATES VENTRE PLAT À LA MAISON. 12 exercícios. FRANCÊS.
+
+Tradução literal de `exercicios_pilates.py`. Convenções em GLOSSARIO-TRADUCAO.md.
+⛔ O campo `prompt` não é replicado: a foto é a mesma do PT (fotos/159-170).
+Linguagem simples; sempre com variação mais fácil para iniciantes/idosos.
+"""
+
+EXERCICIOS = [
+{
+ "nome": "La respiration du Pilates (activer le ventre)",
+ "foco": "Apprendre à contracter les muscles profonds du ventre — la base de tous les exercices.",
+ "nivel": "Débutant", "series": "5 respirations", "tempo": "2 min",
+ "hook": "Avant tout, apprends à activer ton ventre de l'intérieur — c'est ce qui fait fonctionner le Pilates et rend le ventre plus ferme.",
+ "passos": [
+   "Allonge-toi sur le dos, les genoux pliés et les pieds posés au sol, à la largeur des hanches. Laisse les bras le long du corps.",
+   "Pose les mains sur ton ventre. Inspire par le nez en gonflant le ventre comme un ballon.",
+   "Expire lentement par la bouche et, en même temps, rentre le nombril vers l'intérieur, en direction de la colonne, comme si tu fermais la fermeture éclair d'un pantalon serré.",
+   "Tiens cette contraction 3 secondes, en sentant le ventre bien ferme, et relâche.",
+   "Répète 5 fois, en expirant toujours et en rentrant le nombril vers l'intérieur."],
+ "respiracao": "Inspire par le nez en gonflant le ventre ; expire par la bouche en le vidant et en contractant les abdominaux. Ne bloque jamais ta respiration.",
+ "dica": "Ce « rentrer le nombril vers l'intérieur » est le secret du Pilates. Tu vas utiliser cette même contraction dans tous les autres exercices — c'est elle qui travaille le muscle le plus profond du ventre, celui qui maintient tout en place et affine la taille.",
+},
+{
+ "nome": "Bascule du bassin",
+ "foco": "Réchauffer la colonne et activer le bas du ventre.",
+ "nivel": "Débutant", "series": "2 séries de 10", "tempo": "3 min",
+ "hook": "Un petit mouvement tout doux qui détend le bas du dos et réveille le bas du ventre.",
+ "passos": [
+   "Reste allongé sur le dos, les genoux pliés et les pieds au sol.",
+   "Expire et rentre le nombril vers l'intérieur, en basculant légèrement le bassin vers l'arrière, de façon que le bas du dos touche complètement le sol.",
+   "Inspire et reviens doucement, en laissant un petit espace entre le bas du dos et le sol.",
+   "Fais le mouvement très lentement, comme si tu dessinais avec les hanches, sans forcer.",
+   "Répète 10 fois, repose-toi et fais une deuxième série de 10."],
+ "respiracao": "Expire quand le bas du dos touche le sol ; inspire en revenant. Le mouvement suit la respiration.",
+ "dica": "C'est un échauffement parfait pour qui a le bas du dos sensible. Le mouvement est volontairement court — c'est la contraction du ventre qui commande, pas la force du dos.",
+},
+{
+ "nome": "Le Cent (The Hundred)",
+ "foco": "L'exercice de Pilates le plus célèbre pour tout le ventre.",
+ "nivel": "Intermédiaire", "series": "1 série (compter jusqu'à 100)", "tempo": "3 min",
+ "hook": "Le classique qui réchauffe tout le corps et fait brûler le ventre — doucement, mais ça brûle.",
+ "passos": [
+   "Allonge-toi sur le dos, plie les genoux et lève les jambes jusqu'à ce qu'elles forment un angle droit (les tibias parallèles au sol), comme si tu étais assis sur une chaise à l'envers.",
+   "Expire, rentre le nombril vers l'intérieur et décolle légèrement la tête et les épaules du sol, le regard vers le ventre. Tends les bras bien droits le long du corps, à une paume au-dessus du sol.",
+   "Commence à battre les bras de haut en bas, par mouvements courts et fermes, comme si tu frappais l'eau.",
+   "Compte cinq battements en inspirant et cinq en expirant.",
+   "Continue jusqu'à atteindre 100 battements (ou arrête-toi avant si tu fatigues). Repose ensuite la tête et les jambes et détends-toi."],
+ "respiracao": "Inspire sur 5 battements et expire sur 5 battements, sans arrêter de battre des bras.",
+ "dica": "Variante plus facile : garde les pieds posés au sol et ne lève que la tête et les épaules. Commence par 30 ou 50 battements et augmente avec le temps jusqu'à arriver à 100.",
+},
+{
+ "nome": "Levé de jambes alterné",
+ "foco": "Le bas du ventre et le contrôle du mouvement.",
+ "nivel": "Débutant", "series": "2 séries de 12", "tempo": "3 min",
+ "hook": "Un mouvement contrôlé qui travaille exactement cette zone basse du ventre, la plus tenace de toutes.",
+ "passos": [
+   "Allonge-toi sur le dos, les genoux pliés et les pieds posés au sol. Garde le bas du dos collé au sol tout le temps.",
+   "Expire, rentre le nombril vers l'intérieur et décolle un pied du sol, en amenant le genou vers le ventre, jusqu'à ce que la cuisse soit à la verticale (angle droit).",
+   "Inspire et redescends le pied lentement jusqu'à toucher le sol, avec contrôle.",
+   "Alterne : lève maintenant l'autre jambe de la même façon.",
+   "Fais 12 fois avec chaque jambe, en gardant le ventre toujours contracté. Repose-toi et répète la série."],
+ "respiracao": "Expire quand la jambe monte ; inspire quand elle descend. Le ventre reste ferme tout le temps.",
+ "dica": "Ce qui compte, ce n'est pas la vitesse, c'est le contrôle : plus tu descends la jambe lentement, plus le ventre travaille. Si tu sens le bas du dos se creuser et décoller du sol, lève moins haut la jambe.",
+},
+{
+ "nome": "Petit crunch (relever le buste)",
+ "foco": "Le haut et le milieu du ventre.",
+ "nivel": "Débutant", "series": "3 séries de 12", "tempo": "4 min",
+ "hook": "Le crunch habituel, mais fait avec le contrôle du Pilates — il monte peu et travaille beaucoup.",
+ "passos": [
+   "Allonge-toi sur le dos, les genoux pliés et les pieds au sol. Croise les bras sur la poitrine ou pose les mains derrière la tête, sans tirer sur la nuque.",
+   "Expire, rentre le nombril vers l'intérieur et enroule le buste vers le haut, en décollant la tête et les épaules du sol, comme si tu voulais rapprocher les côtes des hanches.",
+   "Ne monte que jusqu'à ce que les pointes des omoplates décollent du sol (tu n'as pas besoin de t'asseoir). Tiens 1 seconde en haut.",
+   "Inspire et redescends lentement, en déroulant la colonne jusqu'au sol, vertèbre par vertèbre.",
+   "Répète 12 fois, repose-toi et fais 3 séries au total."],
+ "respiracao": "Expire en montant (c'est là que le ventre se contracte le plus) ; inspire en descendant.",
+ "dica": "Ne tire pas sur la nuque avec les mains — le regard va vers le ventre et le menton reste éloigné de la poitrine, avec la place d'une orange. C'est le ventre qui soulève le corps, pas la nuque.",
+},
+{
+ "nome": "Planche sur les avant-bras",
+ "foco": "Tout le ventre, le bas du dos et la posture — l'exercice le plus complet pour le centre du corps.",
+ "nivel": "Intermédiaire", "series": "3 fois en tenant 20 à 40 s", "tempo": "4 min",
+ "hook": "Immobile, mais puissante : tenir la planche renforce tout le ventre et le dos d'un seul coup.",
+ "passos": [
+   "Mets-toi sur le ventre et pose les avant-bras au sol, les coudes sous les épaules. Les mains sont devant.",
+   "Tends les jambes vers l'arrière et pose les pointes des pieds au sol.",
+   "Expire, rentre le nombril vers l'intérieur et soulève le corps, en le gardant droit comme une planche, des talons jusqu'à la tête.",
+   "Garde les hanches dans l'alignement du corps — ni relevées comme une colline, ni tombantes vers le sol. Regarde le sol pour ne pas forcer sur la nuque.",
+   "Tiens 20 à 40 secondes, en respirant normalement. Redescends, repose-toi et répète 3 fois."],
+ "respiracao": "Continue de respirer normalement et lentement pendant toute la planche. Ne bloque pas ta respiration.",
+ "dica": "Variante plus facile : pose les genoux au sol (planche sur les genoux). Commence par tenir 15 secondes et augmente petit à petit. Si le bas du dos fait mal, c'est que les hanches sont tombées — relève-les un peu.",
+},
+{
+ "nome": "Planche latérale",
+ "foco": "Les muscles latéraux du ventre — ils affinent la taille.",
+ "nivel": "Intermédiaire", "series": "2 fois de chaque côté, 15 à 30 s", "tempo": "4 min",
+ "hook": "C'est l'exercice qui dessine le côté du ventre et marque la taille.",
+ "passos": [
+   "Allonge-toi sur le côté, le corps bien droit. Pose l'avant-bras du dessous au sol, le coude sous l'épaule.",
+   "Empile une jambe sur l'autre (un pied sur l'autre).",
+   "Expire, rentre le nombril vers l'intérieur et soulève les hanches du sol, en gardant le corps droit et en appui uniquement sur l'avant-bras et le côté du pied.",
+   "Tends le bras du dessus vers le plafond ou pose la main sur la taille. Tiens 15 à 30 secondes.",
+   "Redescends avec contrôle, tourne de l'autre côté et répète. Fais 2 fois de chaque côté."],
+ "respiracao": "Respire normalement et lentement pendant que tu tiens la position.",
+ "dica": "Variante plus facile : plie les genoux et pose le bas des jambes au sol, en ne soulevant que les hanches. C'est la taille qui travaille le plus ici — tiens-la bien ferme.",
+},
+{
+ "nome": "Pont fessier",
+ "foco": "Fessiers, arrière des cuisses et ventre — et ça soulage le bas du dos.",
+ "nivel": "Débutant", "series": "3 séries de 12", "tempo": "3 min",
+ "hook": "Il remonte les fesses, renforce le ventre par l'arrière et rend en plus la posture plus belle.",
+ "passos": [
+   "Allonge-toi sur le dos, les genoux pliés et les pieds posés au sol, à la largeur des hanches. Les bras le long du corps.",
+   "Expire, rentre le nombril vers l'intérieur et soulève les hanches du sol, en serrant les fessiers, jusqu'à ce que le corps forme une ligne droite des genoux aux épaules.",
+   "Tiens 2 secondes en haut, en gardant les fessiers et le ventre bien fermes.",
+   "Inspire et redescends les hanches lentement, en déroulant la colonne jusqu'au sol, vertèbre par vertèbre.",
+   "Répète 12 fois et fais 3 séries."],
+ "respiracao": "Expire en montant les hanches ; inspire en descendant.",
+ "dica": "Monte en serrant bien les fessiers, pas en poussant avec le bas du dos. C'est l'un des rares exercices qui renforce le ventre et soulage en plus les douleurs de dos — excellent pour qui passe la journée assis.",
+},
+{
+ "nome": "Déroulé de la colonne (roll-up)",
+ "foco": "Tout le ventre et la souplesse de la colonne.",
+ "nivel": "Intermédiaire", "series": "2 séries de 8", "tempo": "4 min",
+ "hook": "S'asseoir et se rallonger en déroulant lentement la colonne — ça a l'air simple, mais c'est le ventre qui fait tout le travail.",
+ "passos": [
+   "Allonge-toi sur le dos, les jambes tendues et les bras étirés vers l'arrière, au-dessus de la tête.",
+   "Inspire et ramène les bras vers l'avant, pointés vers le plafond.",
+   "Expire, rentre le nombril vers l'intérieur et commence à t'asseoir très lentement, en enroulant la colonne : d'abord la tête, puis les épaules, puis le dos, jusqu'à être assis et à atteindre tes pieds avec les mains.",
+   "Inspire en haut et, en expirant, redescends de la même façon, tout doucement, en déroulant la colonne jusqu'au sol, vertèbre par vertèbre.",
+   "Répète 8 fois, avec le maximum de contrôle. Fais 2 séries."],
+ "respiracao": "Expire pendant que tu montes et pendant que tu descends (c'est là que le ventre travaille) ; inspire dans les pauses.",
+ "dica": "Variante plus facile : plie un peu les genoux et, si besoin, donne-toi une petite impulsion avec les bras. L'important est de monter et de descendre lentement — c'est le ventre qui fait l'effort, pas la nuque ni les bras.",
+},
+{
+ "nome": "Crunch bicyclette",
+ "foco": "Les muscles latéraux du ventre et tout l'abdomen.",
+ "nivel": "Intermédiaire", "series": "3 séries de 20 (10 de chaque côté)", "tempo": "4 min",
+ "hook": "Le mouvement de pédalage qui dessine les côtés du ventre et fait monter un peu le rythme cardiaque.",
+ "passos": [
+   "Allonge-toi sur le dos, les mains derrière la tête (sans tirer sur la nuque). Lève les jambes, genoux pliés à angle droit.",
+   "Expire, rentre le nombril vers l'intérieur et décolle la tête et les épaules du sol.",
+   "Tourne le buste en amenant le coude droit vers le genou gauche, tout en tendant la jambe droite vers l'avant.",
+   "Reviens au centre et fais de l'autre côté : coude gauche vers le genou droit, en tendant la jambe gauche.",
+   "Continue d'alterner, comme si tu pédalais lentement. Fais 20 au total (10 de chaque côté), 3 séries."],
+ "respiracao": "Expire à chaque rotation du buste ; inspire en passant par le centre.",
+ "dica": "Fais-le lentement et avec contrôle, sans précipitation — c'est la rotation du buste qui travaille le côté du ventre. Plus tu tends la jambe loin, plus c'est difficile et efficace.",
+},
+{
+ "nome": "Superman (extension du dos)",
+ "foco": "Le dos et la posture — ça équilibre le corps et rend le ventre plus plat debout.",
+ "nivel": "Débutant", "series": "3 séries de 10", "tempo": "3 min",
+ "hook": "Après tant d'abdominaux, celui-ci renforce le dos et améliore la posture — et ça seul rend déjà le ventre plus plat.",
+ "passos": [
+   "Allonge-toi sur le ventre, les bras tendus vers l'avant et les jambes tendues vers l'arrière.",
+   "Expire, rentre légèrement le nombril vers l'intérieur et soulève en même temps les bras, la poitrine et les jambes de quelques centimètres, comme Superman en vol.",
+   "Tiens 2 secondes en haut, le regard vers le sol pour ne pas forcer sur la nuque.",
+   "Inspire et redescends lentement, en te relâchant.",
+   "Répète 10 fois et fais 3 séries."],
+ "respiracao": "Expire en soulevant ; inspire en descendant. Mouvement doux, sans à-coups.",
+ "dica": "Tu n'as pas besoin de monter haut — quelques centimètres travaillent déjà le dos. Renforcer le dos est essentiel : un dos fort te tient droit, et une bonne posture suffit à elle seule à faire paraître le ventre plus petit.",
+},
+{
+ "nome": "Étirement final",
+ "foco": "Détendre la colonne et le ventre après la séance.",
+ "nivel": "Tous", "series": "Tenir 30 s chacun", "tempo": "3 min",
+ "hook": "Pour finir, un étirement agréable qui détend le ventre et le dos que tu viens de travailler.",
+ "passos": [
+   "Mets-toi à quatre pattes (mains et genoux au sol). Assieds-toi sur tes talons et tends les bras vers l'avant, en posant le buste sur les cuisses (posture de l'enfant). Pose le front au sol et respire profondément pendant 30 secondes.",
+   "Rallonge-toi sur le dos. Attrape un genou à la fois et ramène-le vers la poitrine, en tenant 30 secondes de chaque côté — cela détend le bas du dos.",
+   "Pour finir, allongé sur le dos les bras écartés, laisse les deux genoux tomber lentement d'un côté puis de l'autre, en faisant doucement tourner la colonne, 30 secondes de chaque côté.",
+   "Respire profondément pendant tout l'étirement, sans te presser.",
+   "Relève-toi lentement quand tu as terminé."],
+ "respiracao": "Respire profondément et lentement, en expirant à chaque étirement et en laissant le corps se relâcher un peu plus.",
+ "dica": "Ne saute jamais l'étirement : il détend les muscles qui ont travaillé, évite les douleurs le lendemain et améliore la souplesse. C'est le moment de sentir ton corps et de clore la séance en paix.",
+},
+]

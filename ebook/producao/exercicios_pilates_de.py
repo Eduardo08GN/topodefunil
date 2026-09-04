@@ -1,0 +1,178 @@
+# -*- coding: utf-8 -*-
+"""BÔNUS 2 — PILATES FÜR EINEN FLACHEN BAUCH ZU HAUSE. 12 exercícios. ALEMÃO.
+
+Tradução literal de `exercicios_pilates.py`. Convenções em GLOSSARIO-TRADUCAO.md.
+⛔ O campo `prompt` não é replicado: a foto é a mesma do PT (fotos/159-170).
+Linguagem simples; sempre com variação mais fácil para iniciantes/idosos.
+"""
+
+EXERCICIOS = [
+{
+ "nome": "Die Pilates-Atmung (den Bauch aktivieren)",
+ "foco": "Lernen, die tiefe Bauchmuskulatur anzuspannen — die Grundlage aller Übungen.",
+ "nivel": "Anfänger", "series": "5 Atemzüge", "tempo": "2 Min.",
+ "hook": "Lerne zuerst, den Bauch von innen einzuschalten — genau das lässt Pilates wirken und macht den Bauch fester.",
+ "passos": [
+   "Lege dich auf den Rücken, die Knie angewinkelt und die Füße hüftbreit auf dem Boden. Lass die Arme neben dem Körper liegen.",
+   "Lege die Hände auf den Bauch. Atme durch die Nase ein und fülle den Bauch wie einen Ballon.",
+   "Atme langsam durch den Mund aus und ziehe dabei den Bauchnabel nach innen, in Richtung Wirbelsäule, als würdest du den Reißverschluss einer engen Hose schließen.",
+   "Halte diese Spannung 3 Sekunden, spüre den festen Bauch und entspanne wieder.",
+   "Wiederhole das 5 Mal und ziehe beim Ausatmen immer den Bauchnabel nach innen."],
+ "respiracao": "Atme durch die Nase ein und fülle den Bauch; atme durch den Mund aus, leere ihn und spanne die Bauchmuskeln an. Halte niemals die Luft an.",
+ "dica": "Dieses „Bauchnabel nach innen ziehen“ ist das Geheimnis von Pilates. Du wirst dieselbe Spannung in allen anderen Übungen brauchen — sie trainiert den tiefsten Bauchmuskel, der alles an seinem Platz hält und die Taille schmaler macht.",
+},
+{
+ "nome": "Beckenkippen",
+ "foco": "Die Wirbelsäule aufwärmen und den unteren Bauch aktivieren.",
+ "nivel": "Anfänger", "series": "2 Sätze à 10", "tempo": "3 Min.",
+ "hook": "Eine kleine, sanfte Bewegung, die den unteren Rücken löst und den unteren Bauch weckt.",
+ "passos": [
+   "Bleib auf dem Rücken liegen, die Knie angewinkelt und die Füße auf dem Boden.",
+   "Atme aus und ziehe den Bauchnabel nach innen, während du das Becken leicht nach hinten kippst, sodass der untere Rücken vollständig den Boden berührt.",
+   "Atme ein und komm langsam zurück, sodass ein kleiner Spalt zwischen dem unteren Rücken und dem Boden bleibt.",
+   "Führe die Bewegung sehr langsam aus, als würdest du mit der Hüfte zeichnen, ohne zu forcieren.",
+   "Wiederhole das 10 Mal, mach eine Pause und dann noch einen Satz mit 10."],
+ "respiracao": "Atme aus, während der untere Rücken den Boden berührt; atme ein beim Zurückkommen. Die Bewegung folgt der Atmung.",
+ "dica": "Das ist ein perfektes Aufwärmen für alle mit empfindlichem unteren Rücken. Die Bewegung ist absichtlich klein — hier führt die Bauchspannung, nicht die Kraft des Rückens.",
+},
+{
+ "nome": "Der Hundert (The Hundred)",
+ "foco": "Die berühmteste Pilates-Übung für den gesamten Bauch.",
+ "nivel": "Fortgeschritten", "series": "1 Satz (bis 100 zählen)", "tempo": "3 Min.",
+ "hook": "Der Klassiker, der den ganzen Körper aufwärmt und den Bauch brennen lässt — sanft, aber es brennt.",
+ "passos": [
+   "Lege dich auf den Rücken, winkle die Knie an und hebe die Beine, bis sie im rechten Winkel stehen (Unterschenkel parallel zum Boden), als würdest du kopfüber auf einem Stuhl sitzen.",
+   "Atme aus, zieh den Bauchnabel nach innen und hebe Kopf und Schultern leicht vom Boden, den Blick zum Bauch. Strecke die Arme gerade neben dem Körper aus, eine Handbreit über dem Boden.",
+   "Beginne, die Arme mit kurzen, festen Bewegungen auf und ab zu bewegen, als würdest du auf Wasser klopfen.",
+   "Zähle fünf Bewegungen, während du einatmest, und fünf, während du ausatmest.",
+   "Mach weiter, bis du 100 Bewegungen erreicht hast (oder hör früher auf, wenn du müde wirst). Lege danach Kopf und Beine ab und ruhe dich aus."],
+ "respiracao": "Atme über 5 Bewegungen ein und über 5 Bewegungen aus, ohne mit den Armen aufzuhören.",
+ "dica": "Leichtere Variante: Lass die Füße auf dem Boden stehen und hebe nur Kopf und Schultern. Fang mit 30 oder 50 Bewegungen an und steigere dich mit der Zeit bis auf 100.",
+},
+{
+ "nome": "Abwechselndes Beinheben",
+ "foco": "Unterer Bauch und Kontrolle über die Bewegung.",
+ "nivel": "Anfänger", "series": "2 Sätze à 12", "tempo": "3 Min.",
+ "hook": "Eine kontrollierte Bewegung, die genau den unteren Bauchbereich trifft, den hartnäckigsten von allen.",
+ "passos": [
+   "Lege dich auf den Rücken, die Knie angewinkelt und die Füße auf dem Boden. Halte den unteren Rücken die ganze Zeit am Boden.",
+   "Atme aus, zieh den Bauchnabel nach innen und hebe einen Fuß vom Boden, das Knie in Richtung Bauch, bis der Oberschenkel senkrecht steht (rechter Winkel).",
+   "Atme ein und senke den Fuß langsam und kontrolliert wieder bis zum Boden.",
+   "Wechsle: Hebe jetzt das andere Bein auf dieselbe Weise.",
+   "Mach das 12 Mal mit jedem Bein und halte den Bauch dabei immer angespannt. Mach eine Pause und wiederhole den Satz."],
+ "respiracao": "Atme aus, wenn das Bein hochgeht; atme ein, wenn es heruntergeht. Der Bauch bleibt die ganze Zeit fest.",
+ "dica": "Wichtig ist nicht die Geschwindigkeit, sondern die Kontrolle: Je langsamer du das Bein absenkst, desto mehr arbeitet der Bauch. Wenn du merkst, dass der untere Rücken sich hebt und vom Boden abhebt, hebe das Bein weniger hoch.",
+},
+{
+ "nome": "Kurzer Crunch (Oberkörper heben)",
+ "foco": "Oberer und mittlerer Bauch.",
+ "nivel": "Anfänger", "series": "3 Sätze à 12", "tempo": "4 Min.",
+ "hook": "Der gewohnte Crunch, aber mit der Kontrolle von Pilates ausgeführt — er geht wenig hoch und arbeitet viel.",
+ "passos": [
+   "Lege dich auf den Rücken, die Knie angewinkelt und die Füße auf dem Boden. Kreuze die Arme vor der Brust oder lege die Hände hinter den Kopf, ohne am Nacken zu ziehen.",
+   "Atme aus, zieh den Bauchnabel nach innen und rolle den Oberkörper nach oben, hebe Kopf und Schultern vom Boden, als wolltest du die Rippen der Hüfte annähern.",
+   "Geh nur so weit hoch, bis die Spitzen der Schulterblätter den Boden verlassen (du musst dich nicht aufsetzen). Halte oben 1 Sekunde.",
+   "Atme ein und senke dich langsam ab, rolle die Wirbelsäule Wirbel für Wirbel zurück auf den Boden.",
+   "Wiederhole das 12 Mal, mach eine Pause und insgesamt 3 Sätze."],
+ "respiracao": "Atme aus beim Hochkommen (da spannt sich der Bauch am stärksten an); atme ein beim Absenken.",
+ "dica": "Zieh nicht mit den Händen am Nacken — der Blick geht zum Bauch, und das Kinn bleibt von der Brust entfernt, mit Platz für eine Orange. Wer den Körper hebt, ist der Bauch, nicht der Nacken.",
+},
+{
+ "nome": "Unterarmstütz (Plank)",
+ "foco": "Der ganze Bauch, der untere Rücken und die Haltung — die vollständigste Übung für die Körpermitte.",
+ "nivel": "Fortgeschritten", "series": "3 Mal 20–40 Sek. halten", "tempo": "4 Min.",
+ "hook": "Still, aber kraftvoll: Den Plank zu halten kräftigt den ganzen Bauch und den Rücken auf einmal.",
+ "passos": [
+   "Lege dich auf den Bauch und stütze die Unterarme auf dem Boden ab, die Ellenbogen unter den Schultern. Die Hände zeigen nach vorn.",
+   "Strecke die Beine nach hinten aus und stütze dich auf den Fußballen ab.",
+   "Atme aus, zieh den Bauchnabel nach innen und hebe den Körper an, sodass er gerade wird wie ein Brett, von den Fersen bis zum Kopf.",
+   "Halte die Hüfte auf einer Linie mit dem Körper — weder hochgestreckt wie ein Hügel noch zum Boden durchhängend. Schau zum Boden, damit der Nacken entlastet bleibt.",
+   "Halte 20 bis 40 Sekunden und atme dabei normal. Komm herunter, ruhe dich aus und wiederhole das 3 Mal."],
+ "respiracao": "Atme während des ganzen Planks normal und ruhig weiter. Halte die Luft nicht an.",
+ "dica": "Leichtere Variante: Stütze die Knie auf dem Boden ab (Plank auf den Knien). Fang mit 15 Sekunden an und steigere dich langsam. Wenn der untere Rücken schmerzt, ist die Hüfte durchgehängt — hebe sie etwas an.",
+},
+{
+ "nome": "Seitstütz",
+ "foco": "Die seitlichen Bauchmuskeln — sie machen die Taille schmaler.",
+ "nivel": "Fortgeschritten", "series": "2 Mal je Seite, 15–30 Sek.", "tempo": "4 Min.",
+ "hook": "Das ist die Übung, die die Seite des Bauches formt und die Taille betont.",
+ "passos": [
+   "Lege dich auf die Seite, den Körper gerade. Stütze den unteren Unterarm auf dem Boden ab, den Ellenbogen unter der Schulter.",
+   "Lege ein Bein auf das andere (ein Fuß auf dem anderen).",
+   "Atme aus, zieh den Bauchnabel nach innen und hebe die Hüfte vom Boden, sodass der Körper gerade ist und nur auf dem Unterarm und der Fußkante ruht.",
+   "Strecke den oberen Arm zur Decke oder lege die Hand in die Taille. Halte 15 bis 30 Sekunden.",
+   "Komm kontrolliert herunter, drehe dich auf die andere Seite und wiederhole. Mach das 2 Mal je Seite."],
+ "respiracao": "Atme normal und ruhig weiter, während du die Position hältst.",
+ "dica": "Leichtere Variante: Winkle die Knie an und stütze die Unterschenkel auf dem Boden ab, hebe nur die Hüfte. Hier arbeitet vor allem die Taille — halte sie fest.",
+},
+{
+ "nome": "Beckenheben (Glute Bridge)",
+ "foco": "Po, Beinrückseite und Bauch — und es entlastet den unteren Rücken.",
+ "nivel": "Anfänger", "series": "3 Sätze à 12", "tempo": "3 Min.",
+ "hook": "Hebt den Po, kräftigt den Bauch von hinten und macht dazu die Haltung schöner.",
+ "passos": [
+   "Lege dich auf den Rücken, die Knie angewinkelt und die Füße hüftbreit auf dem Boden. Die Arme liegen neben dem Körper.",
+   "Atme aus, zieh den Bauchnabel nach innen und hebe die Hüfte vom Boden, spanne dabei den Po an, bis der Körper von den Knien bis zu den Schultern eine gerade Linie bildet.",
+   "Halte oben 2 Sekunden und lass Po und Bauch fest.",
+   "Atme ein und senke die Hüfte langsam ab, rolle die Wirbelsäule Wirbel für Wirbel zurück auf den Boden.",
+   "Wiederhole das 12 Mal und mach 3 Sätze."],
+ "respiracao": "Atme aus beim Heben der Hüfte; atme ein beim Absenken.",
+ "dica": "Komm hoch, indem du den Po fest anspannst, nicht indem du den unteren Rücken durchdrückst. Es ist eine der wenigen Übungen, die den Bauch kräftigt und dabei Rückenschmerzen lindert — hervorragend für alle, die den Tag sitzend verbringen.",
+},
+{
+ "nome": "Wirbelsäule abrollen (Roll-up)",
+ "foco": "Der ganze Bauch und die Beweglichkeit der Wirbelsäule.",
+ "nivel": "Fortgeschritten", "series": "2 Sätze à 8", "tempo": "4 Min.",
+ "hook": "Sich langsam aufrollend hinsetzen und wieder ablegen — sieht einfach aus, aber der Bauch macht die ganze Arbeit.",
+ "passos": [
+   "Lege dich auf den Rücken, die Beine ausgestreckt und die Arme nach hinten über den Kopf gestreckt.",
+   "Atme ein und bring die Arme nach vorn, sodass sie zur Decke zeigen.",
+   "Atme aus, zieh den Bauchnabel nach innen und beginne, dich ganz langsam aufzusetzen, indem du die Wirbelsäule aufrollst: zuerst den Kopf, dann die Schultern, dann den Rücken, bis du sitzt und mit den Händen die Füße erreichst.",
+   "Atme oben ein und lass dich beim Ausatmen genauso langsam wieder ab, rolle die Wirbelsäule Wirbel für Wirbel zurück auf den Boden.",
+   "Wiederhole das 8 Mal, mit größtmöglicher Kontrolle. Mach 2 Sätze."],
+ "respiracao": "Atme aus, während du hochkommst, und während du dich absenkst (da arbeitet der Bauch); atme in den Pausen ein.",
+ "dica": "Leichtere Variante: Winkle die Knie etwas an und gib dir, wenn nötig, einen kleinen Schwung mit den Armen. Wichtig ist, langsam hoch- und runterzugehen — die Kraft kommt aus dem Bauch, nicht aus dem Nacken oder den Armen.",
+},
+{
+ "nome": "Fahrrad-Crunch",
+ "foco": "Die seitlichen Bauchmuskeln und der gesamte Bauch.",
+ "nivel": "Fortgeschritten", "series": "3 Sätze à 20 (10 je Seite)", "tempo": "4 Min.",
+ "hook": "Die Tretbewegung, die die Seiten des Bauches formt und den Puls leicht hochtreibt.",
+ "passos": [
+   "Lege dich auf den Rücken, die Hände hinter dem Kopf (ohne am Nacken zu ziehen). Hebe die Beine mit im rechten Winkel angewinkelten Knien.",
+   "Atme aus, zieh den Bauchnabel nach innen und hebe Kopf und Schultern vom Boden.",
+   "Drehe den Oberkörper und führe den rechten Ellenbogen in Richtung des linken Knies, während du das rechte Bein nach vorn ausstreckst.",
+   "Komm zur Mitte zurück und mach es zur anderen Seite: linker Ellenbogen in Richtung des rechten Knies, das linke Bein ausgestreckt.",
+   "Wechsle weiter ab, als würdest du langsam Fahrrad fahren. Mach insgesamt 20 (10 je Seite), 3 Sätze."],
+ "respiracao": "Atme bei jeder Drehung des Oberkörpers aus; atme ein, wenn du durch die Mitte gehst.",
+ "dica": "Mach es langsam und kontrolliert, nicht in Eile — die Drehung des Oberkörpers ist das, was die Seite des Bauches trainiert. Je weiter du das Bein wegstreckst, desto schwerer und wirksamer wird es.",
+},
+{
+ "nome": "Superman (Rückenstrecken)",
+ "foco": "Rücken und Haltung — bringt den Körper ins Gleichgewicht und lässt den Bauch im Stehen flacher wirken.",
+ "nivel": "Anfänger", "series": "3 Sätze à 10", "tempo": "3 Min.",
+ "hook": "Nach so vielen Bauchübungen kräftigt diese den Rücken und verbessert die Haltung — und das allein lässt den Bauch flacher wirken.",
+ "passos": [
+   "Lege dich auf den Bauch, die Arme nach vorn ausgestreckt und die Beine nach hinten gestreckt.",
+   "Atme aus, zieh den Bauchnabel leicht nach innen und hebe gleichzeitig Arme, Brust und Beine einige Zentimeter vom Boden, wie Superman im Flug.",
+   "Halte oben 2 Sekunden und schau zum Boden, damit der Nacken entlastet bleibt.",
+   "Atme ein und senke dich langsam ab, entspanne dabei.",
+   "Wiederhole das 10 Mal und mach 3 Sätze."],
+ "respiracao": "Atme aus beim Heben; atme ein beim Absenken. Sanfte Bewegung, ohne Ruckeln.",
+ "dica": "Du musst nicht hoch hinauf — wenige Zentimeter trainieren den Rücken schon. Den Rücken zu kräftigen ist wichtig: Ein starker Rücken hält dich aufrecht, und eine gute Haltung allein lässt den Bauch kleiner wirken.",
+},
+{
+ "nome": "Abschluss-Dehnung",
+ "foco": "Die Wirbelsäule und den Bauch nach dem Training entspannen.",
+ "nivel": "Alle", "series": "Je 30 Sek. halten", "tempo": "3 Min.",
+ "hook": "Zum Abschluss eine wohltuende Dehnung, die den Bauch und den Rücken entspannt, die du gerade trainiert hast.",
+ "passos": [
+   "Geh in den Vierfüßlerstand (Hände und Knie auf dem Boden). Setze den Po auf die Fersen und strecke die Arme nach vorn, sodass der Oberkörper auf den Oberschenkeln liegt (Kindhaltung). Lege die Stirn auf den Boden und atme 30 Sekunden tief.",
+   "Lege dich wieder auf den Rücken. Umarme jeweils ein Knie und ziehe es in Richtung Brust, halte je Seite 30 Sekunden — das entspannt den unteren Rücken.",
+   "Zum Schluss lässt du, auf dem Rücken liegend mit ausgebreiteten Armen, beide Knie langsam zu einer Seite und dann zur anderen fallen und drehst so leicht die Wirbelsäule, je 30 Sekunden pro Seite.",
+   "Atme während der ganzen Dehnung tief, ohne Eile.",
+   "Steh langsam auf, wenn du fertig bist."],
+ "respiracao": "Atme tief und langsam, atme bei jeder Dehnung aus und lass den Körper noch ein Stück mehr los.",
+ "dica": "Lass die Dehnung niemals aus: Sie entspannt die Muskeln, die gearbeitet haben, verhindert Schmerzen am nächsten Tag und verbessert die Beweglichkeit. Es ist der Moment, den Körper zu spüren und das Training in Ruhe abzuschließen.",
+},
+]
