@@ -82,9 +82,20 @@ def mapear_karaoke(video):
         nl, lab, st, ce = cv2.connectedComponentsWithStats(am)
         blobs = [s for s in st[1:] if s[4] > 40 and H * 0.012 < s[3] < H * 0.09 and s[2] > s[3] * 0.6]
         if blobs:
-            # a palavra amarela: junta os blobs (letras) numa caixa
-            x0 = min(b[0] for b in blobs); x1 = max(b[0] + b[2] for b in blobs)
-            y0 = min(b[1] for b in blobs); y1 = max(b[1] + b[3] for b in blobs)
+            # ⛔⛔ A PALAVRA E' UMA LINHA DE LETRAS, nao "tudo que e' amarelo no quadro".
+            # Juntar todos os blobs numa caixa so' funcionou ate' aparecer uma fonte com
+            # AMARELO EM CENA: no PAPA OVO a tigela de ovos coberta de curcuma entrou na
+            # conta e a caixa foi de 0,384 a 0,778 — altura 0,39 em vez de 0,032. A spec
+            # levou isso e a legenda saiu ocupando meia tela, cortada nas bordas.
+            # Letras de uma palavra partilham a MESMA linha e a MESMA altura: agrupar por
+            # (topo, altura) e ficar com o grupo mais numeroso separa o texto do cenario.
+            grupos = {}
+            for b in blobs:
+                grupos.setdefault((round(b[1] / H, 2), round(b[3] / H, 3)), []).append(b)
+            linha = max(grupos.values(), key=len)
+            if len(linha) < 2: continue          # letra solta nao e' palavra: e' respingo
+            x0 = min(b[0] for b in linha); x1 = max(b[0] + b[2] for b in linha)
+            y0 = min(b[1] for b in linha); y1 = max(b[1] + b[3] for b in linha)
             pts.append((t, (x0 + x1) / 2 / W, (y0 + y1) / 2 / H, (y1 - y0) / H))
     if len(pts) < 0.05 * len(amostras): return None
     ts = [p[0] for p in pts]
