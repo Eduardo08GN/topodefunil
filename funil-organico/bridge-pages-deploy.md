@@ -107,12 +107,87 @@ separação total, `everydaydigest.site` e `dailyvitalreport.store` também est�
 sem página de ED e de prontidão — **é escolha dele, não se move página no ar por
 julgamento próprio.**
 
+## ⭐⭐ MAPA DE PROPRIEDADE DOS DOMÍNIOS (medido 2026-09-04)
+
+⛔ **Levantamento feito contra as TRÊS fontes ao mesmo tempo**, não de memória:
+a tabela `PAGINAS` do `projetosweb/bridge-pages/_build.py`, o
+`parceira-bridges/PROPRIEDADE-E-ISOLAMENTO.md` e os **49 domínios reais** lidos
+do `fqdn` dos 38 apps da API do Coolify. Onde os três discordavam, vale o que
+está **no ar** — foi assim que caiu a linha do `wholelifenutri.shop`.
+
+### Do ED — funil de ED (20)
+
+`allmensnatural.site` · `dailyvitalitymethod.site` · `manresethub.pro` ·
+`menresethub.site` · `menritualhub.site` · `mensrenewalhub.site` ·
+`mensresetclub.online` · `mensvitalhub.site` · `mensvitalityroutine.site` ·
+`mensvitalityway.site` · `menswellnesscorner.site` · `menvitalityhub.site` ·
+`morningritualmen.site` · `primalvitalityhub.site` · `secondwindformen.site` ·
+`steadystrengthhub.site` · `strengthandflow.site` · `stridebackmen.site` ·
+`thefitmenhub.site` · `vitalresetlab.site`
+
+⛔⛔ **OS VINTE TÊM NOME DE ED.** Todos carregam `men`, `man`, `vitality`,
+`strength`, `reset` ou `natural`. **O Ed não tem hoje NENHUM domínio próprio de
+nome genérico** — é o achado que importa para qualquer produto que não seja ED.
+
+### Do ED — fora do funil (em uso)
+
+| domínio | app | para quê |
+|---|---|---|
+| `automaweb.pro` | `marmoraria-demo` | agência |
+| `organicwave.site` | `automaweb` | agência |
+| `appkash.com.br` (+ `app.` `docs.` `membros.` `parceiro.` `pay.` `wa.`) | `appkash-app` | produto próprio |
+| `barbearia.appkash.com.br` | `suabarbeariaapp` | produto próprio |
+| `nestlingpicks.shop` | `nestlingpicks` | site de afiliado Amazon |
+
+### Do LUCAS (5 apex + as 3 landings do ebook)
+
+`dailyfactreport.site` · `plainfactsdaily.site` · `dailyvitalreport.store` ·
+`everydaydigest.site` · `thedailyfinding.site`
+
+⭐ São os de **nome mais genérico** do VPS inteiro (estilo jornal) — e é por
+isso que as três landings do ebook 150 foram para os subdomínios `book.` deles.
+⛔ **Não são do Ed.** As páginas de Facebook que recebem essa oferta são as do
+Lucas.
+
+### Da PARCEIRA (10, todos `.shop`)
+
+`vitafyhub` · `nuvitro` · `vitanovo` · `vitarix` · **`wholelifenutri`** ·
+`nutrifix` · `nutrifacthub` · `rootednutrition` · `thenutrijournal` ·
+`thewellnessplate`
+
+⛔ Todos num app só (`parceira-bridges-4dom`), `aff_id` **52138**. Ver
+[`PROPRIEDADE-E-ISOLAMENTO.md`](../../projetosweb/parceira-bridges/PROPRIEDADE-E-ISOLAMENTO.md).
+
+### ⏳ Consequência para o produto de emagrecimento
+
+Para o Ed subir **as landings dele, nos domínios dele**, falta o insumo:
+**ele não tem domínio genérico livre.** As três saídas são dele decidir —
+comprar um domínio novo, usar subdomínio de um que já é dele (`automaweb.pro`,
+`organicwave.site`) ou aceitar um dos 20 de nome ED. ⛔ Não se resolve isso
+por conta própria: escolher domínio é alçada do operador.
+
 ## Domínios & Apps
+
+> ⛔⛔ **CORREÇÃO 2026-09-04 — `wholelifenutri.shop` NÃO É DO ED.** Este quadro
+> listava o domínio como dele e "pendente (parking)" desde sempre. **Medido:**
+> o A record aponta para `159.195.12.135` (não para o parking `2.57.91.91`), a
+> URL responde **HTTPS 200** e o domínio está no `fqdn` do app
+> **`parceira-bridges-4dom`** (`y5yq946rj1b3szu037l77nfq`) — é o **nº 5 dos 10
+> da PARCEIRA**, comprado na Hostinger dela
+> ([`PROPRIEDADE-E-ISOLAMENTO.md`](../../projetosweb/parceira-bridges/PROPRIEDADE-E-ISOLAMENTO.md)).
+> O app `wholelifenutri-bp1` do Ed existe mas está **órfão, sem domínio**.
+>
+> ⛔ **O erro era perigoso na direção exata que o doc de isolamento descreve:**
+> quem lesse "é do Ed e falta apontar o A record" apontaria o domínio dela para
+> conteúdo dele — e a comissão dela (`aff_id 52138`) cairia na conta dele
+> (`45158`). **Nenhum domínio `.shop` desta lista é do Ed.**
+
+
 
 | # | Domínio | App Coolify (UUID) | URL de teste (sslip.io) | Status |
 |---|---------|--------------------|-----------------------|------------|
 | 1 | `manresethub.pro` | `v5t2rojizir3dc37al4zkb4p` | `http://v5t2rojizir3dc37al4zkb4p.159.195.12.135.sslip.io/bp1/` | ✅ **no ar** (HTTPS) |
-| 2 | `wholelifenutri.shop` | `cwanszytythvm4myf8yye46k` | `http://cwanszytythvm4myf8yye46k.159.195.12.135.sslip.io/bp1/` | ⚠️ pendente (parking) |
+| 2 | ~~`wholelifenutri.shop`~~ ⛔ **É DA PARCEIRA, não do Ed** | app órfão `cwanszytythvm4myf8yye46k` (`wholelifenutri-bp1`, **sem domínio nenhum**) | — | ⛔ **linha corrigida em 2026-09-04** — ver aviso abaixo |
 | 3 | `vitalresetlab.site` | `bv4uhh6hpq6tkotyn42nagg3` | `http://bv4uhh6hpq6tkotyn42nagg3.159.195.12.135.sslip.io/bp1/` | ✅ **no ar** (HTTPS) |
 | 4 | `primalvitalityhub.site` | `srd3jdzrvc0n7ri3yetjjmuq` | `http://srd3jdzrvc0n7ri3yetjjmuq.159.195.12.135.sslip.io/bp1/` | ✅ **no ar** (HTTPS) |
 | 5 | `allmensnatural.site` | `iuge7sircaf0myor1jdl77jv` | `http://iuge7sircaf0myor1jdl77jv.159.195.12.135.sslip.io/bp1/` | ✅ **no ar** (HTTPS) |
@@ -358,7 +433,7 @@ Todos os 6 apps: deploy **finished**, servindo HTTP 200 (`index.html` 5.1 KB + `
 `https://<domínio>/bp1/` responde **200 com cert Let's Encrypt válido** e redirect
 HTTP→HTTPS nos 5 domínios apontados (manresethub.pro, vitalresetlab.site,
 primalvitalityhub.site, allmensnatural.site, steadystrengthhub.site). Falta só o
-`wholelifenutri.shop`, ainda no parking (`2.57.91.91`) — apontar o A record.
+~~`wholelifenutri.shop`, ainda no parking~~ — ⛔ **obsoleto:** o domínio é da PARCEIRA e já está no ar (medido 2026-09-04). Ver a correção no topo de *Domínios & Apps*.
 
 **Gotcha do cert (resolvido):** os apps foram criados ANTES do DNS apontar, então
 o Traefik tentou o ACME, falhou (domínio não resolvia pra VPS) e entrou em

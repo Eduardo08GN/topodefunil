@@ -362,7 +362,7 @@ Ver também [`funil-organico/PENDENCIAS.md`](funil-organico/PENDENCIAS.md).
 | 4 | Subir o AdBatch atualizado pro Flow (código pronto em `projetosweb`, falta colar no builder) | 🟡 |
 | 5 | Persistência do `vendas.jsonl` (volume no Coolify) | 🟡 |
 | 6 | Postback de reembolso BuyGoods | 🟢 |
-| 7 | `wholelifenutri.shop` ainda em parking | 🟢 |
+| 7 | ~~`wholelifenutri.shop` ainda em parking~~ — ⛔ **não era pendência: o domínio é da PARCEIRA e está no ar** (medido 2026-09-04, A record no VPS e HTTPS 200 no app dela). O app órfão `wholelifenutri-bp1` do Ed segue sem domínio | ✅ resolvido por correção de fato |
 
 ---
 
