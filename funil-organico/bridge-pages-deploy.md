@@ -68,6 +68,45 @@ https://<vsl-da-pagina>/?aff_id=<aff-da-pagina>&subid=<pagina>
 > ✅ **Verificado em produção em 2026-07-28** (`curl` nos 3 domínios): o split e o
 > `&subid=` estão corretos no ar. O erro era **deste documento**, não do deploy.
 
+## ⭐⭐ AS TRÊS LANDINGS DO EBOOK 150 — não são bridges de ED (2026-09-03)
+
+⛔ **Estas três não pertencem ao funil de ED e não seguem a regra das bridges.**
+Elas vendem o infoproduto *150 Receitas* (Hotmart) e vivem em **subdomínio
+`book.`**, cada uma num app próprio do Coolify, servindo de
+`/bridge-pages/bp-fit-<lang>` no `projetosweb` (commit `eb65b20`, do Lucas).
+
+| Idioma | URL | App Coolify (UUID) | `base_directory` |
+|---|---|---|---|
+| **EN** | `https://book.dailyfactreport.site` | `r2cgw8c5j25cq0e89i7lrj7n` | `/bridge-pages/bp-fit-en` |
+| **DE** | `https://book.plainfactsdaily.site` | `qg2mxau3et2gp85kv6mrwdqo` | `/bridge-pages/bp-fit-de` |
+| **FR** | `https://book.thedailyfinding.site` | `v2524bw7z6ho7v22d6xadyz2` | `/bridge-pages/bp-fit-fr` |
+
+⭐ **Os três domínios são os de nome mais genérico do inventário** (estilo
+jornal, nada que remeta a ED), que é o critério do operador para este produto.
+
+✅ **Medido no ar em 2026-09-04**, nas URLs reais e não no código de status:
+HTTPS **200** nas três · `<html lang>` e `<title>` no idioma certo em cada uma ·
+**capa própria por idioma** (`capa-150-{EN,DE,FR}-hotmart.jpg`) e pasta
+`receitas/<lang>/` própria — não é a mesma página com o nome trocado ·
+**13 de 13 assets em 200** em cada domínio (capa, 5 vídeos de review, 5 fotos de
+receita, selo Hotmart), medidos um a um com HEAD.
+
+⛔⛔ **AS TRÊS ESTÃO NO AR E NENHUMA VENDE.** Medido no HTML servido: os **4
+botões** de cada página apontam para `#offer` (âncora interna) ou `#`, e **não
+existe UMA URL externa** nas três — nenhum link de checkout da Hotmart. A página
+tem a seção de pagamento inteira montada e diz *"Secure Hotmart checkout"*, mas
+o botão não leva a lugar nenhum. **É o único elo que falta**, e é decisão do
+operador: o link do produto na Hotmart (um por idioma) não se inventa.
+
+⚠️ **Duas das três dividem o apex com uma bridge de ED viva** — medido:
+`dailyfactreport.site/lamont` e `plainfactsdaily.site/sam` respondem **200**.
+Subdomínio é app e contêiner separados, mas o **domínio registrável é o mesmo**:
+um problema no apex (registrador, Cloudflare, marcação) leva o `book.` junto.
+`thedailyfinding.site` é a única das três com o apex limpo. Se o operador quiser
+separação total, `everydaydigest.site` e `dailyvitalreport.store` também estão
+sem página de ED e de prontidão — **é escolha dele, não se move página no ar por
+julgamento próprio.**
+
 ## Domínios & Apps
 
 | # | Domínio | App Coolify (UUID) | URL de teste (sslip.io) | Status |
