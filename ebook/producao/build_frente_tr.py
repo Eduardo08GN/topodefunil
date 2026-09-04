@@ -170,6 +170,78 @@ TEXTOS = {
  "dia": "Jour",
  "rotulos": ("Petit-déjeuner", "Déjeuner", "Dîner", "Dessert", "Boisson"),
 },
+"en": {
+ "arquivo": "Step 1 - Start Here.pdf",
+ "titulo": "Start Here",
+ "badge": "Start Here",
+ "cover_h1": "Welcome!",
+ "cover_lead": """It is great to have you here. You have just taken the first step
+    to lose weight while eating well — without going hungry and without crazy diets. This
+    material is a <b>complete program</b>: 150 weight-loss recipes, a 30-day plan
+    and three bonuses with exercises and habits. Before you start cooking,
+    read these first pages calmly — they will save you time and
+    frustration. Let's go, together!""",
+ "passo": "Step",
+ "como_h2": "How this material works",
+ "como_sub": """To keep everything well organized, the material comes in separate files,
+    numbered like <b>steps</b>. Follow the order — each step is a part of
+    your day.""",
+ "como_pe": """Inside each file, the recipes have a <b>number</b>
+    (for example <b>Recipe 003</b>). It is by that number that the 30-day plan, further
+    on, tells you what to eat each day.""",
+ "passos": [
+  ("Start here", "This file. The instructions, the warnings and the 30-day plan."),
+  ("Breakfasts", "30 recipes to start your day with energy and a full belly."),
+  ("Lunches", "35 complete and light dishes for the middle of your day."),
+  ("Dinners", "35 lighter options for the evening."),
+  ("Desserts", "20 sugar-free treats that calm the craving with no guilt."),
+  ("Smoothies, juices and detox teas", "30 drinks to hydrate you, reduce bloating and give you a lift."),
+  ("Bonus 1 — Vegetarian Diet", "20 meat-free options, evenly spread out."),
+  ("Bonus 2 — Flat Belly Pilates", "12 belly exercises, with no equipment at all."),
+  ("Bonus 3 — 50 Habits and Exercises", "The exercises and habits that speed up your result."),
+ ],
+ "avisos_h2": "The truth, honestly",
+ "avisos_sub": """Before any recipe, four truths that nobody usually tells you —
+    and that make all the difference to your success.""",
+ "avisos": [
+  ("Food does not work miracles", "There is no magic formula. What there is, is consistency. Following the menu during the week and going overboard with sweets and fried food on the weekend cancels out all the effort. The result comes to those who keep the habit most of the time."),
+  ("The result takes a few months", "You are not going to change overnight — and thankfully so, because what comes fast also goes fast. Give your body a few months of consistency and the change will be solid and lasting."),
+  ("Exercise is part of the game", "Food is the biggest part, but your body really changes when you also move. Bonuses 2 and 3 offer exercises for every level, at home and outdoors. Use them."),
+  ("No false promises", "We are not promising you will lose 20 pounds in a week, because that would be a lie. We are giving you a complete and honest program that, followed with consistency, can bring real and lasting results."),
+ ],
+ "dicas_h2": "Tips to get the most out of it",
+ "dicas_sub": "Small tricks that make your journey easier.",
+ "dicas": [
+  ("Not sure about a recipe? Use YouTube",
+   """If you do not know how to do a step, just search on YouTube for the
+      <b>name of the recipe + \"how to make\"</b> and videos will come up to
+      show you step by step. It is a great help, especially at the start."""),
+  ("Take notes and print what you use",
+   """Mark the recipes you liked most and take <b>notes</b> of what
+      you are going to buy and make during the week. If you prefer, <b>print</b> the
+      pages of the dishes, habits and exercises that interest you and leave them
+      in plain sight, in the kitchen or on the fridge. What is within reach
+      is what gets done."""),
+  ("About the calories and the portions",
+   """The calories in each recipe are <b>approximate values</b>, calculated
+      from standard nutrition tables — they are a guide, not an exact
+      laboratory measurement. Each recipe brings an <b>adjustment table
+      by sex and weight</b>: find your row and follow those amounts. Vegetables,
+      salad greens, coffee and tea without sugar are free, as much as you want — you do
+      not need to count them."""),
+ ],
+ "plano_h2": "30-day meal plan",
+ "plano_sub": """A whole month put together for you — all you have to do is follow it. Each day
+    brings a different breakfast, lunch, dinner, dessert and drink,
+    with no repeated dishes through the month.""",
+ "plano_note": """The number in front of each recipe tells you where to find it in the file
+    for its category (for example, <b>Recipe 031</b> is in the
+    <b>Lunches</b> file). The desserts, being only 20, start over from day 21.
+    Feel free to swap any dish for another one from the same category
+    that you like better.""",
+ "dia": "Day",
+ "rotulos": ("Breakfast", "Lunch", "Dinner", "Dessert", "Drink"),
+},
 }
 
 EXTRA_CSS = """

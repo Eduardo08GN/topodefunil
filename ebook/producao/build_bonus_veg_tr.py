@@ -106,6 +106,42 @@ TEXTOS = {
     protéines viennent des légumineuses, du tofu, des œufs et des fromages. Chacune
     apporte le tableau d'ajustement par profil, comme les recettes du livre.""",
 },
+"en": {
+ "arquivo": "Step 7 - Bonus 1 - Vegetarian Diet.pdf",
+ "titulo": "Bonus 1 — Vegetarian Diet",
+ "badge": "Bonus 1", "h1": "Vegetarian Diet",
+ "rezept": "Recipe",
+ "cats": ["Breakfasts", "Desserts", "Smoothies and juices"],
+ "lead": """Cutting out meat does not mean giving up protein, flavor
+    or feeling full. A well-built vegetarian diet is light, cheap and full of
+    fiber — and it can speed up your weight loss, as long as you make sure you
+    have a good protein source at every meal.
+    Here you have <b>20 options</b>, spread evenly between breakfast,
+    lunch, dinner, dessert and drinks.""",
+ "box_h2": "Where the protein comes from",
+ "box_itens": ["<b>Eggs</b> — a complete protein that is very filling.",
+               "<b>Dairy</b> — plain yogurt, white cheese, ricotta, cottage cheese.",
+               "<b>Legumes</b> — beans, lentils, chickpeas and peas.",
+               "<b>Tofu</b> — made from soy, full of protein and low in fat.",
+               "<b>Nuts and seeds</b> — walnuts, almonds and peanut butter (in moderation)."],
+ "box_compl": """A golden tip: pair a <b>legume</b> with a
+      <b>grain</b> in the same meal (rice with beans, chickpeas with rice)
+      and you get a protein as complete as the one from meat.""",
+ "how": """<b>How to use this:</b> build your day by picking from this
+    list 1 breakfast, 1 lunch, 1 dinner, 1 dessert and 1 drink. The
+    breakfast, dessert and drink options are already in your book —
+    just look for the recipe number. The vegetarian lunches and dinners
+    are the <b>4 + 4 new recipes</b> that come right
+    after.""",
+ "reuse_h2": "From the book itself",
+ "reuse_sub": """These recipes you already have are naturally vegetarian —
+      use them as much as you want within this diet.""",
+ "kicker": "Bonus 1 · Vegetarian Diet",
+ "head_h2": "Vegetarian lunches and dinners",
+ "head_p": """The recipes that follow are new and made with no meat and no fish — the
+    protein comes from legumes, tofu, eggs and cheese. Each one
+    brings the adjustment table by profile, like the recipes in the book.""",
+},
 }
 
 INTRO_CSS = """

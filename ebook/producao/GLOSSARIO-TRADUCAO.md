@@ -175,3 +175,110 @@ diferentes de propósito:
 escreve **`Séries`** exatamente como o português. O `medir_traducao.py` isenta
 esse termo **só no francês** (`ISENTOS`) — cobrar isso seria a lente reprovando
 copy certa, e lente que acusa o certo treina o operador a ignorá-la.
+
+---
+
+## 6. ⛔⛔ O INGLÊS (2026-09-04) — o quarto idioma, e o único que NÃO é métrico
+
+O EN é o **idioma-base do produto** segundo o BRIEFING (*"Idiomas: EN (base) ·
+DE · FR"*) e mesmo assim era o único que **não existia** — o que havia era o
+master de revisão em PT. Ele nasceu depois do DE e do FR, pela mesma esteira.
+
+⛔⛔ **A diferença que separa o EN dos outros dois: o mercado US não é métrico.**
+No DE e no FR a xícara virou PESO (não existe "Tasse" como medida de cozinha
+alemã). No EN o caminho é o **inverso e mais curto** — `xícara` volta a ser
+`cup`, `colher de sopa` vira `tbsp` e `colher de chá` vira `tsp`, porque é
+exatamente assim que o americano cozinha.
+
+| PT | EN (US) | observação |
+|---|---|---|
+| xícara | `cup` | 1:1, sem conversão de peso |
+| colher de sopa / chá | `tbsp` / `tsp` | |
+| 40 g de aveia | `1/2 cup` | ⛔ a escada das 8 faixas é preservada com `1/2 cup + 1 tbsp`, nunca arredondando duas faixas para o mesmo valor |
+| 170 g de iogurte | `6 oz` | iogurte e queijo em OZ — é como a embalagem americana vem |
+| 150 g de frango/peixe | `5 oz` | carne e peixe em OZ |
+| 200 ml / 250 ml | `3/4 cup` / `1 cup` | bebida em copo; volume de copo em OZ (`1 glass (7 oz)`) |
+| 1 litro | `4 cups` | |
+| 180 °C / 200 °C | `350 °F` / `400 °F` | |
+| **55–70 kg** | **`120–155 lb`** | ⛔⛔ ver abaixo |
+| 2 km · 5 km | `1.2 miles` · `3 miles` | Bônus 3 |
+| 2 litros de água | `2 quarts` | Bônus 3 |
+| 10 quilos (promessa negada) | `20 pounds` | frente do livro |
+
+### ⛔⛔ A FAIXA DE PESO SAIU DO MOTOR E VIROU CAMPO DE IDIOMA
+
+`FAIXAS_M` / `FAIXAS_H` eram **constantes globais em kg**, lidas direto pelo
+`render_receita`. `55–70 kg` não diz nada para o leitor americano, e a ordem do
+operador é adequar a unidade ao país. Viraram `I18N[lang]["faixas_m"]` /
+`["faixas_h"]`: **pt, de e fr apontam para as mesmas constantes** (nada muda
+para eles) e o `en` traz as faixas em libras.
+
+### ⛔ `Brigadeiro` e `pudim` não atravessam
+
+O leitor americano não reconhece o nome, e nome que ele não reconhece é receita
+que ele não faz. Viraram **descrição do que a coisa é**: `Fit Cocoa Fudge
+Balls`, `Fit Milk Flan`. Transliterar seria manter a palavra e perder o prato.
+
+---
+
+## 7. ⛔⛔ OS DOIS DEFEITOS QUE ESTA ENTREGA ACHOU — os dois de SUBSTRING
+
+Os dois estavam **vivos** e os dois são a mesma lição do `gleiten`/`leite` que
+já está na seção 1: **`in` não é fronteira de palavra.**
+
+### (a) `lint_traducao.py` — o filtro que aprovava tudo em silêncio
+
+O filtro casava por **igualdade**: `python lint_traducao.py en cafe` comparava
+`"cafe"` com `"receitas_cafe_en"`, não casava, **pulava todos os módulos** e
+imprimia `TOTAL: 0 erro(s)`. ⛔ O silêncio era **idêntico ao do aprovado** —
+foi assim que o primeiro controle negativo do EN "passou" com 3 defeitos
+plantados. Consertado: casa por substring **e reprova com exit 1** quando o
+filtro não casa nenhum módulo.
+
+### (b) `_tag_bebida` — o suco de melancia rotulado como água detox
+
+`if palavra in nome.lower()` fazia `Wassermelonensaft` casar com `wasser` e
+`Watermelon Juice` casar com `water`: os dois **sucos** saíam rotulados como
+**água detox**. ⛔ O defeito estava no **PDF alemão já entregue** (receita 125);
+o francês escapou por acaso, porque `pastèque` não contém `eau`.
+
+⛔⛔ **E a primeira correção foi PIOR que o defeito.** Fronteira dos dois lados
+(`(?<!\w)…(?!\w)`) derrubou **seis** rótulos alemães certos: o alemão compõe
+palavra, e `Fencheltee`, `Hibiskustee`, `Kamillentee`, `Minztee` e
+`Kokoswasser` **são** chá e água. O que separa os casos é só a fronteira **à
+direita** — sufixo: `Wasser|melonensaft` não casa, `Kokos|wasser` casa.
+Medido: **0 incoerência rótulo-vs-flag `livre` nos três idiomas**, e o
+`Schritt 6` alemão foi **regerado**.
+
+---
+
+## 8. BASELINE DO `snapshot_pt.py` — os hashes que provam o PT
+
+⚠️ Estes números **não estavam registrados em lugar nenhum**, então a
+ferramenta de prova não tinha contra o que comparar: era preciso extrair o
+motor do git a cada verificação. Ficam aqui.
+
+| categoria | hash | chars |
+|---|---|---|
+| cafe | `f9a62e95ba28a804` | 112.371 |
+| almoco | `90b6ae2025d89ac0` | 138.744 |
+| jantar | `db76d39d24bc24bc` | 135.849 |
+| sobremesa | `bb913cc5545ca18a` | 76.684 |
+| suco | `8db4343055d8aabd` | 87.035 |
+
+**Medido depois do EN entrar (2026-09-04): 5/5 idênticos.**
+
+### Medido nesta entrega do EN
+
+| gate | resultado |
+|---|---|
+| `snapshot_pt.py` | **5/5 hashes idênticos ao HEAD** — o PT não mudou um byte |
+| `lint_traducao.py` (de·fr·en) | **0 erro**, 6 avisos (comprimento, pré-existentes do FR) |
+| controle negativo (4 plantios em EN) | **4/4 acusados** |
+| `medir_traducao.py en` | **APROVADO** — 9 arquivos, **0 página órfã**, 0 português vazado |
+| páginas EN vs PT | 362 vs 360 — só o Pilates cresceu (22 vs 20) |
+| regressão DE / FR | **APROVADO** nos dois (367 e 364 páginas) |
+
+⚠️ O Pilates em inglês ficou **2 páginas mais longo** que o português. Isso é
+**cumprimento da ordem**, não defeito: *"não reduzir o tamanho das fontes nem
+espremer nada para caber, caso precise aumente o número de páginas"*.

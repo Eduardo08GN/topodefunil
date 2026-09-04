@@ -38,6 +38,7 @@ ROTULO_CAT = {"cafe": "Café da manhã", "almoco": "Almoço", "jantar": "Jantar"
 I18N = {
     "pt": {
         "html_lang": "pt-BR",
+        "faixas_m": FAIXAS_M, "faixas_h": FAIXAS_H,
         # ⛔ VAZIO de proposito: qualquer regra aqui muda o PT, e o PT e' o
         # produto ja' entregue. A prova de que ele nao mudou e' `snapshot_pt.py`
         # (hash do HTML das 5 categorias, identico antes e depois do i18n).
@@ -70,6 +71,7 @@ I18N = {
     },
     "de": {
         "html_lang": "de",
+        "faixas_m": FAIXAS_M, "faixas_h": FAIXAS_H,
         # ⛔⛔ O alemao e' mais longo que o portugues e empurra o rodape para a
         # pagina seguinte: nos SUCOS isso produziu 4 paginas com DUAS PALAVRAS
         # ("oben anpassen."), medidas contra 0 no PT. A ordem do operador e'
@@ -104,6 +106,7 @@ I18N = {
     },
     "fr": {
         "html_lang": "fr",
+        "faixas_m": FAIXAS_M, "faixas_h": FAIXAS_H,
         # ⛔ Mesma razao do alemao: o frances tambem e' mais longo que o
         # portugues e empurra o rodape para a pagina seguinte. A ordem e' "nao
         # espremer" — entao o rodape fica inteiro e colado ao bloco anterior,
@@ -135,6 +138,39 @@ I18N = {
                  "elles servent de repère, pas de prescription médicale. Les objectifs par profil "
                  "supposent une activité légère ; qui bouge plus dépense plus et peut ajuster "
                  "vers le haut."),
+    },
+    "en": {
+        "html_lang": "en",
+        "faixas_m": ["120–155 lb", "156–185 lb", "186–220 lb", "220 lb +"],
+        "faixas_h": ["155–185 lb", "186–220 lb", "221–265 lb", "265 lb +"],
+        # ⛔ Mesma razao do alemao e do frances: a regra de quebra vive AQUI,
+        # nunca no ESTILO, que e' compartilhado com o PT.
+        "css": ("\n.foot{break-inside:avoid;page-break-inside:avoid;"
+                "break-before:avoid;page-break-before:avoid}"
+                "\n.tip{break-after:avoid;page-break-after:avoid}"),
+        "cat": {"cafe": "Breakfast", "almoco": "Lunch", "jantar": "Dinner",
+                "sobremesa": "Dessert", "suco": "Detox Drink"},
+        "receita": "Recipe ",
+        "foto_ph": ("<b>PHOTO %s</b><small>square space reserved<br>"
+                    "(generate with the prompt and name it \"%s\")</small>"),
+        "st_tempo": "Time", "st_rende": "Makes", "st_kcal": "Base kcal",
+        "h_ings": "Ingredients (base serving)",
+        "h_passos": "How to make it",
+        "h_dica": "Why this helps you lose weight",
+        "adj_head": "Adjust your serving",
+        "adj_sub": "find your row and follow these amounts",
+        "th_perfil": "Profile", "th_meta": "Target for this meal", "th_porcao": "Your serving",
+        "mulheres": "Women", "homens": "Men",
+        "adj_note": ("Find your row by <b>sex and weight</b> and follow these amounts. "
+                     "<b>Vegetables, salad greens, coffee and tea without sugar are free, "
+                     "as much as you want — you don't need to count them.</b>"),
+        "livre": ("<b>Free drink.</b> With no sugar it has almost no calories — you can "
+                  "drink it all day long, as much as you want, without measuring the amount. "
+                  "It is great for replacing soda and boxed juice, and it helps you drink "
+                  "more and lose weight."),
+        "foot": ("Approximate values, calculated from a standard nutrition table — they are "
+                 "a guide, not a medical prescription. The targets per profile assume light "
+                 "activity; anyone who moves more burns more and can adjust upward."),
     },
 }
 
@@ -224,9 +260,9 @@ def render_receita(r, tipo, num, img_dir=None, lang="pt"):
         p = r["porcoes8"]
         linhas = (
             '<tr class="sex"><td colspan="3">%s</td></tr>' % T["mulheres"]
-            + "".join(_linha(FAIXAS_M[i], metas[i], p[i]) for i in range(4))
+            + "".join(_linha(T["faixas_m"][i], metas[i], p[i]) for i in range(4))
             + '<tr class="sex"><td colspan="3">%s</td></tr>' % T["homens"]
-            + "".join(_linha(FAIXAS_H[i], metas[4 + i], p[4 + i]) for i in range(4)))
+            + "".join(_linha(T["faixas_h"][i], metas[4 + i], p[4 + i]) for i in range(4)))
         ajuste = (
             '<div class="adj">'
             '<div class="adj-head">%s <span>%s</span></div>'

@@ -26,7 +26,7 @@ import pypdfium2 as pdfium
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PT = os.path.join(AQUI, "..", "Entregavel em PT")
 LIMIAR_ORFA = 120     # chars
-IDIOMAS = ("de", "fr")
+IDIOMAS = ("de", "fr", "en")
 
 PT_ARQUIVOS = [
  "Passo 1 - Comece Por Aqui.pdf",
@@ -59,6 +59,15 @@ TR_ARQUIVOS = {
         "Etape 7 - Bonus 1 - Alimentation vegetarienne.pdf",
         "Etape 8 - Bonus 2 - Pilates ventre plat.pdf",
         "Etape 9 - Bonus 3 - 50 habitudes et exercices.pdf"],
+ "en": ["Step 1 - Start Here.pdf",
+        "Step 2 - Breakfasts.pdf",
+        "Step 3 - Lunches.pdf",
+        "Step 4 - Dinners.pdf",
+        "Step 5 - Desserts.pdf",
+        "Step 6 - Smoothies, Juices and Detox Teas.pdf",
+        "Step 7 - Bonus 1 - Vegetarian Diet.pdf",
+        "Step 8 - Bonus 2 - Flat Belly Pilates at Home.pdf",
+        "Step 9 - Bonus 3 - 50 Habits and Exercises.pdf"],
 }
 
 PT_NO_PDF = ["Receita", "Porção", "Ingredientes", "Modo de preparo", "Mulheres",
@@ -70,7 +79,7 @@ PT_NO_PDF = ["Receita", "Porção", "Ingredientes", "Modo de preparo", "Mulheres
 # língua de destino usa DE VERDADE não pode ser acusado como português solto.
 # O francês escreve "Séries" exatamente como o português — cobrar isso seria a
 # lente reprovando copy certa, e lente que acusa o certo treina a ser ignorada.
-ISENTOS = {"fr": {"Séries"}, "de": set()}
+ISENTOS = {"fr": {"Séries"}, "de": set(), "en": set()}
 
 _L = r"A-Za-zÀ-ÖØ-öø-ÿ0-9_"
 

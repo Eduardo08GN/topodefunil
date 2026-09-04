@@ -112,6 +112,50 @@ TEXTOS = {
  "foto_ph": ('<b>PHOTO %s</b><small>emplacement carré réservé<br>'
              '(à générer avec le prompt et à nommer "%s")</small>'),
 },
+"en": {
+ "arquivo": "Step 8 - Bonus 2 - Flat Belly Pilates at Home.pdf",
+ "titulo": "Bonus 2 — Flat Belly Pilates at Home",
+ "badge": "Bonus 2", "h1": "Flat Belly Pilates at Home",
+ "tag": "Pilates", "num": "Bonus · Pilates",
+ "st_nivel": "Level", "st_series": "Sets", "st_tempo": "Time",
+ "h_foco": "Focus", "h_passos": "How to do it",
+ "h_resp": "Breathing", "h_dica": "Tip",
+ "lead": """Pilates is a form of exercise with slow, controlled movements that
+    mainly strengthens the <b>center of your body</b> — the belly and back area.
+    With no equipment, no impact and without leaving home, it is perfect to go
+    with your eating plan and speed up your results. All you need is a mat or a
+    towel on the floor.""",
+ "box_h2": "Why this helps to slim your belly",
+ "box_itens": ["It strengthens the <b>deep belly muscle</b>, which works like a natural corset and holds your belly in.",
+               "It improves your <b>posture</b> — and standing taller already makes your belly look visibly flatter.",
+               "It shapes your <b>waist</b> by working the side muscles.",
+               "It is <b>gentle on your joints</b>: ideal at any age."],
+ "honest_label": "An important truth",
+ "honest": """No exercise burns fat only on your belly — that does not exist.
+      Fat comes off your whole body, and what drives that loss is your
+      <b>food</b>. Pilates strengthens, shapes and improves your posture;
+      together with the recipes in this book, it is the combination that really
+      slims your belly. Consistency is everything.""",
+ "how": """<b>How to use this:</b> do it <b>3 to 4 times a week</b>, for 15 to
+    20 minutes. Wear comfortable clothes, train on an empty stomach or at least
+    1 hour after eating, and <b>keep breathing</b> (never hold your breath).
+    Start with the easier variations given for each exercise and build up over
+    time. If you feel a sharp pain, stop.""",
+ "kicker": "Bonus 2 · Flat Belly Pilates",
+ "head_h2": "The 12 exercises",
+ "head_p": """Do them in order, respecting the breathing and your own limit.
+    Each exercise gives the focus, the number of reps, the step by step and,
+    when there is one, an easier variation.""",
+ "plan_h2": "The weekly plan",
+ "plan_p": """Pick 3 to 4 days (for example <b>Monday, Wednesday and Friday</b>) and do
+      the full sequence of the 12 exercises in the order they appear.""",
+ "plan_seq": """The order is deliberate: it starts with the <b>warm-up</b> (1 and 2),
+      goes through the <b>belly</b> exercises (3 to 10), strengthens the <b>back</b> (11)
+      and finishes with the <b>stretch</b> (12). Never skip the warm-up or
+      the stretch.""",
+ "foto_ph": ('<b>PHOTO %s</b><small>square space reserved<br>'
+             '(generate with the prompt and name it "%s")</small>'),
+},
 }
 
 EXTRA_CSS = """

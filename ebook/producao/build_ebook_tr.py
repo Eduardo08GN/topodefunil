@@ -9,6 +9,7 @@ o mesmo motivo que fez a lente virar `lint_traducao.py`. Idioma novo entra em
 """
 import sys
 import os
+import re
 import subprocess
 import time
 import http.server
@@ -40,6 +41,9 @@ TITULOS = {
     "fr": {"cafe": "Petits-déjeuners minceur", "almoco": "Déjeuners minceur",
            "jantar": "Dîners minceur", "sobremesa": "Desserts minceur",
            "suco": "Smoothies et jus détox"},
+    "en": {"cafe": "Fitness Breakfasts", "almoco": "Fitness Lunches",
+           "jantar": "Fitness Dinners", "sobremesa": "Fitness Desserts",
+           "suco": "Smoothies and Detox Juices"},
 }
 
 # ⛔ nome de ARQUIVO sem acento, sem trema e sem ß: acento em nome de arquivo
@@ -55,6 +59,11 @@ PDF_NAME = {
            "jantar": "Etape 4 - Diners.pdf",
            "sobremesa": "Etape 5 - Desserts.pdf",
            "suco": "Etape 6 - Smoothies, jus et thes detox.pdf"},
+    "en": {"cafe": "Step 2 - Breakfasts.pdf",
+           "almoco": "Step 3 - Lunches.pdf",
+           "jantar": "Step 4 - Dinners.pdf",
+           "sobremesa": "Step 5 - Desserts.pdf",
+           "suco": "Step 6 - Smoothies, Juices and Detox Teas.pdf"},
 }
 
 # rotulo da bebida, que muda por receita dentro da categoria `suco`.
@@ -64,6 +73,8 @@ TAG_BEBIDA = {
             ("wasser", "Detox-Wasser"), ("smoothie", "Smoothie")], "Detox-Saft"),
     "fr": ([("thé", "Thé détox"), ("tisane", "Thé détox"), ("infusion", "Thé détox"),
             ("eau", "Eau détox"), ("smoothie", "Smoothie")], "Jus détox"),
+    "en": ([("tea", "Detox Tea"), ("infusion", "Detox Tea"),
+            ("water", "Detox Water"), ("smoothie", "Smoothie")], "Detox Juice"),
 }
 
 PORTA = 8132
@@ -75,10 +86,20 @@ def pasta_saida(lang):
 
 
 def _tag_bebida(nome, lang):
-    regras, padrao = TAG_BEBIDA[lang]
+    """⛔ A palavra tem de TERMINAR em fronteira (sufixo), nunca `in` cru.
+    `Wassermelonensaft` contem "wasser" e `Watermelon Juice` contem "water":
+    com `in`, os dois SUCOS saiam rotulados como AGUA DETOX. O defeito estava
+    vivo no PDF alemao ja entregue (receita 125).
+    ⛔⛔ E a fronteira A ESQUERDA seria PIOR: o alemao compoe palavra, e
+    `Fencheltee`/`Kokoswasser` SAO cha e agua — a esquerda derrubava os seis.
+    So a fronteira a direita separa `Wasser|melonensaft` de `Kokos|wasser`.
+    vivo no PDF alemao ja' entregue (receita 125). O frances escapou por
+    acaso: `pasteque` nao contem `eau`.
+    """
     n = nome.lower()
+    regras, padrao = TAG_BEBIDA[lang]
     for palavra, rotulo in regras:
-        if palavra in n:
+        if re.search(re.escape(palavra) + r"(?!\w)", n):
             return rotulo
     return padrao
 

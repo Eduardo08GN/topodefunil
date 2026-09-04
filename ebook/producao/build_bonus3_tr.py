@@ -62,6 +62,24 @@ TEXTOS = {
     maison) pour accélérer le métabolisme. Adopte les habitudes petit à petit — c'est
     la somme de tout qui affine vraiment.""",
 },
+"en": {
+ "arquivo": "Step 9 - Bonus 3 - 50 Habits and Exercises.pdf",
+ "titulo": "Bonus 3 — 50 Habits and Exercises",
+ "badge": "Bonus 3", "h1": "50 Habits and Exercises",
+ "pill_ex": "Exercises", "pill_hab": "Habits",
+ "lbl_plano": "Progression:", "lbl_dica": "Tip:",
+ "foto_ph": "square space<br>reserved",
+ "lead": """Food does the biggest part of the work, but it is exercise that
+    <b>speeds up the burn</b>, shapes your body and makes the result last. Here you
+    will find <b>30 exercises</b> that really help you lose weight — on the street,
+    on the treadmill, at the gym or at home, each one with a <b>plan to build up</b> —
+    and <b>20 habits</b> that, added together, make the difference.""",
+ "how": """<b>How to use this:</b> pick one <b>cardio</b> exercise (walking, cycling,
+    swimming…) and do it <b>3 to 5 times a week</b>, following the progression plan.
+    Add <b>2 days of strength training</b> (at the gym or at home) to fire up your
+    metabolism. Take on the habits little by little — it is the sum of everything
+    that really slims you down.""",
+},
 }
 
 EXTRA_CSS = """

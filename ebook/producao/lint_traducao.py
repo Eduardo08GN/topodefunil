@@ -31,7 +31,7 @@ try:
 except Exception:
     pass
 
-IDIOMAS = ("de", "fr")
+IDIOMAS = ("de", "fr", "en")
 
 # modulos de RECEITA: (pt, sufixo) -> o nome do modulo traduzido e' pt + "_" + lang
 MODULOS = ["receitas_cafe", "receitas_almoco", "receitas_jantar",
@@ -219,20 +219,31 @@ def checar_ex(pt_nome, tr_nome, attr):
     return erros, []
 
 
+def _casa(filtro, tr_nome, pt_nome):
+    """⛔ Substring, nao igualdade: `cafe` tem de achar `receitas_cafe_en`.
+    A versao por igualdade fazia `lint en cafe` pular TODOS os modulos e
+    imprimir "0 erro" — filtro que nao casa nada aprovava tudo em silencio,
+    e o silencio era identico ao do aprovado (licao §43).
+    """
+    return any(f in tr_nome or f in pt_nome for f in filtro)
+
+
 def main():
     args = [a for a in sys.argv[1:]]
     langs = [a for a in args if a in IDIOMAS] or list(IDIOMAS)
     filtro = [a for a in args if a not in IDIOMAS]
 
     total_e = total_a = 0
+    vistos = []
     for lang in langs:
         print("=" * 24 + "  " + lang.upper() + "  " + "=" * 24)
         alvos = ([(p, "%s_%s" % (p, lang)) for p in MODULOS],
                  [(p, "%s_%s" % (p, lang), attr) for p, attr in MODULOS_EX])
 
         for pt_nome, tr_nome in alvos[0]:
-            if filtro and tr_nome not in filtro and pt_nome not in filtro:
+            if filtro and not _casa(filtro, tr_nome, pt_nome):
                 continue
+            vistos.append(tr_nome)
             r = checar(pt_nome, tr_nome)
             if r == (None, None):
                 print("%-26s  [--] ainda nao traduzido" % tr_nome)
@@ -249,8 +260,9 @@ def main():
                 print("    [aviso] " + a)
 
         for pt_nome, tr_nome, attr in alvos[1]:
-            if filtro and tr_nome not in filtro and pt_nome not in filtro:
+            if filtro and not _casa(filtro, tr_nome, pt_nome):
                 continue
+            vistos.append(tr_nome)
             r = checar_ex(pt_nome, tr_nome, attr)
             if r == (None, None):
                 print("%-26s  [--] ainda nao traduzido" % tr_nome)
@@ -263,6 +275,10 @@ def main():
         print()
 
     print("TOTAL: %d erro(s), %d aviso(s)" % (total_e, total_a))
+    # ⛔ Filtro que nao casa modulo nenhum e' ERRO, nunca aprovacao.
+    if filtro and not vistos:
+        print("[ERRO]  o filtro %r nao casou NENHUM modulo — nada foi verificado." % filtro)
+        return 1
     return 1 if total_e else 0
 
 
