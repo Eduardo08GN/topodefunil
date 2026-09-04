@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""BÔNUS 3 — 50 HÁBITOS E EXERCÍCIOS. TRADUZIDO.
-Uso: python build_bonus3_tr.py <de|fr>
+"""Builds BONUS 3 — 50 HABITS AND EXERCISES (English).
+30 EXERCISES as INDIVIDUAL CARDS with PHOTO (171-200), grouped by theme;
+20 HABITS in 3 sections with a theme photo (201-203). Continuous numbering 1..50.
+Usage: python build_bonus3_en.py
 """
 import os
-import sys
 import time
 import http.server
 import socketserver
@@ -13,62 +14,18 @@ import html as _html
 import subprocess
 
 import motor_receitas as motor
+import exercicios_habitos_en as eh
 
-try:
-    sys.stdout.reconfigure(encoding="utf-8")
-except Exception:
-    pass
-
-PORTA = 8132
+PORTA = 8136
 AQUI = os.path.dirname(os.path.abspath(__file__))
 IMG = os.path.join(AQUI, "fotos")
-
-TEXTOS = {
-"de": {
- "arquivo": "Schritt 9 - Bonus 3 - 50 Gewohnheiten und Uebungen.pdf",
- "titulo": "Bonus 3 — 50 Gewohnheiten und Übungen",
- "badge": "Bonus 3", "h1": "50 Gewohnheiten und Übungen",
- "pill_ex": "Übungen", "pill_hab": "Gewohnheiten",
- "lbl_plano": "Steigerung:", "lbl_dica": "Tipp:",
- "foto_ph": "quadratischer Platz<br>reserviert",
- "lead": """Die Ernährung macht den größten Teil der Arbeit, aber es ist die
-    Bewegung, die <b>das Verbrennen beschleunigt</b>, den Körper formt und das Ergebnis
-    halten lässt. Hier findest du <b>30 Übungen</b>, die wirklich beim Abnehmen helfen —
-    auf der Straße, auf dem Laufband, im Fitnessstudio oder zu Hause, jede mit einem
-    <b>Plan zum Steigern</b> — und <b>20 Gewohnheiten</b>, die zusammen den Unterschied
-    machen.""",
- "how": """<b>So nutzt du das:</b> Wähle eine <b>Ausdauerübung</b> (Gehen, Rad, Schwimmen…)
-    und mach sie <b>3- bis 5-mal pro Woche</b>, dem Steigerungsplan folgend. Nimm
-    <b>2 Tage Krafttraining</b> dazu (im Studio oder zu Hause), um den Stoffwechsel
-    anzuregen. Übernimm die Gewohnheiten nach und nach — es ist die Summe aus allem,
-    die wirklich schlanker macht.""",
-},
-"fr": {
- "arquivo": "Etape 9 - Bonus 3 - 50 habitudes et exercices.pdf",
- "titulo": "Bonus 3 — 50 habitudes et exercices",
- "badge": "Bonus 3", "h1": "50 habitudes et exercices",
- "pill_ex": "Exercices", "pill_hab": "Habitudes",
- "lbl_plano": "Progression :", "lbl_dica": "Astuce :",
- "foto_ph": "emplacement carré<br>réservé",
- "lead": """L'alimentation fait la plus grande partie du travail, mais c'est
-    l'exercice qui <b>accélère le brûlage</b>, dessine le corps et fait durer le
-    résultat. Tu trouveras ici <b>30 exercices</b> qui font vraiment maigrir —
-    dans la rue, sur le tapis, en salle ou à la maison, chacun avec un
-    <b>plan de progression</b> — et <b>20 habitudes</b> qui, additionnées, font
-    la différence.""",
- "how": """<b>Comment l'utiliser :</b> choisis un exercice de <b>cardio</b> (marche,
-    vélo, natation…) et fais-le <b>3 à 5 fois par semaine</b>, en suivant la
-    progression. Ajoute <b>2 jours de renforcement</b> (musculation ou séance à la
-    maison) pour accélérer le métabolisme. Adopte les habitudes petit à petit — c'est
-    la somme de tout qui affine vraiment.""",
-},
-}
+SAIDA = os.path.join(AQUI, "..", "Entregavel em ENG")
 
 EXTRA_CSS = """
 .b3cover{page-break-after:always;padding-top:24px}
 .veg-badge{display:inline-block;background:var(--green);color:#fff;font-size:16px;font-weight:900;
 letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px}
-.b3cover h1{font-size:52px;font-weight:900;letter-spacing:-.03em;margin:18px 0 18px;line-height:1.04;color:var(--green)}
+.b3cover h1{font-size:56px;font-weight:900;letter-spacing:-.03em;margin:18px 0 18px;line-height:1.0;color:var(--green)}
 .b3cover .veg-rule{width:70px;height:5px;background:var(--gold);border-radius:3px;margin:0 0 20px}
 .b3cover .lead{font-size:16px;color:var(--soft);line-height:1.6;max-width:97%}
 .b3cover .how{margin-top:20px;font-size:15px;line-height:1.65}
@@ -115,28 +72,37 @@ break-inside:avoid;page-break-inside:avoid;align-items:start}
 """
 
 
-def _img_html(T, num, cls):
+def _img_html(num, cls):
     n3 = "%03d" % num
     for ext in (".jpg", ".jpeg", ".png", ".webp"):
         if os.path.isfile(os.path.join(IMG, n3 + ext)):
             return '<div class="%s"><img src="fotos/%s" alt=""></div>' % (cls, n3 + ext)
-    return ('<div class="%s"><b>FOTO %s</b><small>%s</small></div>'
-            % (cls, n3, T["foto_ph"]))
+    return ('<div class="%s"><b>PHOTO %s</b><small>square space<br>reserved</small></div>'
+            % (cls, n3))
 
 
-def cover_html(T):
+def cover_html():
     return """
 <div class="b3cover">
-  <span class="veg-badge">%s</span>
-  <h1>%s</h1>
+  <span class="veg-badge">Bonus 3</span>
+  <h1>50 Habits and Exercises</h1>
   <div class="veg-rule"></div>
-  <p class="lead">%s</p>
-  <div class="how">%s</div>
+  <p class="lead">The diet does most of the work, but it is exercise that
+    <b>speeds up the burn</b>, shapes the body and makes the results last. Here are
+    <b>30 exercises</b> that truly help you slim down — on the street, on the treadmill,
+    at the gym or at home, each with a <b>progression plan</b> — and <b>20 habits</b>
+    that, added together, make the difference.</p>
+  <div class="how">
+    <b>How to use it:</b> choose a <b>cardio</b> exercise (walking, bike, swimming…) and
+    do it <b>3 to 5 times a week</b>, following the progression. Add <b>2 days of
+    strength</b> (gym or home training) to speed up the metabolism. Adopt the habits
+    little by little — it is the sum of everything that truly slims you down.
+  </div>
 </div>
-""" % (_html.escape(T["badge"]), _html.escape(T["h1"]), T["lead"], T["how"])
+"""
 
 
-def exsec_html(T, t, contador):
+def exsec_html(t, contador):
     cards = ""
     for e in t["itens"]:
         contador[0] += 1
@@ -145,22 +111,20 @@ def exsec_html(T, t, contador):
   <div>
     <div class="exhead"><div class="exnum">%d</div><h3>%s</h3></div>
     <div class="meta">%s<span class="g">%s</span></div>
-    <div class="plano"><span class="lbl">%s</span> %s</div>
-    <div class="dica"><span class="lbl">%s</span> %s</div>
+    <div class="plano"><span class="lbl">Progression:</span> %s</div>
+    <div class="dica"><span class="lbl">Tip:</span> %s</div>
   </div>
-</div>""" % (_img_html(T, e["img"], "excard-img"), contador[0], _html.escape(e["nome"]),
+</div>""" % (_img_html(e["img"], "excard-img"), contador[0], _html.escape(e["nome"]),
             _html.escape(e["onde"]), _html.escape(e["gasto"]),
-            _html.escape(T["lbl_plano"]), _html.escape(e["plano"]),
-            _html.escape(T["lbl_dica"]), _html.escape(e["dica"])))
+            _html.escape(e["plano"]), _html.escape(e["dica"])))
     return ("""<div class="exsec">
-  <div class="exsec-head"><span class="exsec-pill">%s</span><h2>%s</h2>
+  <div class="exsec-head"><span class="exsec-pill">Exercises</span><h2>%s</h2>
     <p class="tintro">%s</p></div>
   %s
-</div>""" % (_html.escape(T["pill_ex"]), _html.escape(t["tema"]),
-            _html.escape(t["intro"]), cards))
+</div>""" % (_html.escape(t["tema"]), _html.escape(t["intro"]), cards))
 
 
-def hsec_html(T, t, contador):
+def hsec_html(t, contador):
     itens = ""
     for h in t["itens"]:
         contador[0] += 1
@@ -169,36 +133,33 @@ def hsec_html(T, t, contador):
                   % (contador[0], _html.escape(h["titulo"]), _html.escape(h["desc"])))
     return ("""<div class="hsec">
   <div class="hsec-head">%s
-    <div><span class="hsec-pill">%s</span><h2>%s</h2>
+    <div><span class="hsec-pill">Habits</span><h2>%s</h2>
       <p class="tintro">%s</p></div>
   </div>
   %s
-</div>""" % (_img_html(T, t["img"], "hsec-img"), _html.escape(T["pill_hab"]),
-            _html.escape(t["tema"]), _html.escape(t["intro"]), itens))
+</div>""" % (_img_html(t["img"], "hsec-img"), _html.escape(t["tema"]),
+            _html.escape(t["intro"]), itens))
 
 
-def build(lang):
-    T = TEXTOS[lang]
-    eh = importlib.import_module("exercicios_habitos_%s" % lang)
+def build():
     importlib.reload(eh)
     contador = [0]
-    corpo = cover_html(T)
+    corpo = cover_html()
     for t in eh.TEMAS:
-        corpo += (exsec_html(T, t, contador) if t["tipo"] == "exercicio"
-                  else hsec_html(T, t, contador))
+        if t["tipo"] == "exercicio":
+            corpo += exsec_html(t, contador)
+        else:
+            corpo += hsec_html(t, contador)
 
-    doc = ("""<!DOCTYPE html><html lang="%s"><head><meta charset="utf-8">
-<title>%s</title>
+    doc = ("""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Bonus 3 — 50 Habits and Exercises</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<style>%s%s
-%s</style></head><body>%s</body></html>"""
-           % (motor.I18N[lang]["html_lang"], _html.escape(T["titulo"]),
-              motor.ESTILO, motor.I18N[lang]["css"], EXTRA_CSS, corpo))
+<style>%s
+%s</style></head><body>%s</body></html>""" % (motor.ESTILO, EXTRA_CSS, corpo))
 
-    html_path = os.path.join(AQUI, "_tmp_bonus3_%s.html" % lang)
-    saida = os.path.join(AQUI, "..", "Entregavel em %s" % lang.upper())
-    os.makedirs(saida, exist_ok=True)
-    pdf_path = os.path.join(saida, T["arquivo"])
+    html_path = os.path.join(AQUI, "_tmp_bonus3_en.html")
+    os.makedirs(SAIDA, exist_ok=True)
+    pdf_path = os.path.join(SAIDA, "Step 9 - Bonus 3 - 50 Habits and Exercises.pdf")
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(doc)
 
@@ -213,11 +174,11 @@ def build(lang):
     subprocess.run([motor.CHROME, "--headless=new", "--disable-gpu",
                     "--no-pdf-header-footer", "--virtual-time-budget=20000",
                     "--print-to-pdf=" + pdf_path,
-                    "http://127.0.0.1:%d/_tmp_bonus3_%s.html" % (PORTA, lang)],
+                    "http://127.0.0.1:%d/%s" % (PORTA, "_tmp_bonus3_en.html")],
                    capture_output=True)
     ok = os.path.exists(pdf_path)
-    print("Total de itens numerados:", contador[0])
-    print("PDF:", pdf_path, "OK" if ok else "FALHOU",
+    print("Total numbered items:", contador[0])
+    print("PDF:", pdf_path, "OK" if ok else "FAILED",
           "(%.1f MB)" % (os.path.getsize(pdf_path) / 1e6) if ok else "")
     if ok and os.path.exists(html_path):
         os.remove(html_path)
@@ -225,4 +186,4 @@ def build(lang):
 
 
 if __name__ == "__main__":
-    sys.exit(0 if build(sys.argv[1] if len(sys.argv) > 1 else "de") else 1)
+    build()
