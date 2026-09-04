@@ -156,20 +156,38 @@ def mapear_pilula(video):
     for t, fr in quadros(video):
         H, W = fr.shape[:2]
         hsv = cv2.cvtColor(fr, cv2.COLOR_BGR2HSV)
-        wm = cv2.inRange(hsv, (0, 0, 225), (180, 25, 255)); wm[:int(H * 0.35)] = 0; wm[int(H * 0.80):] = 0
+        # ⚠️ a faixa ia so' ate' 0,80 da altura, medida no PAPA BETERRABA, onde a pilula fica no
+        # meio. No PAPA JOELHO ela mora em 0,906 e o mapa saiu "pilula: nao" com ela em 171
+        # quadros. Limite medido num video vira teto do mundo: agora a faixa vai ate' 0,97 e o
+        # topo fica de fora (la' moram teto, janela e bancada branca, que sao falso positivo).
+        # ⛔⛔ BRANCO PURO, nao "claro". Com V>=225 a pilula FUNDE com roupa branca no mesmo
+        # componente: no PAPA JOELHO a camisa de linho engoliu as duas (solidez caiu a 0,25 e
+        # 0,47, e nenhuma passou). A pilula e' grafico chapado — V>=248 e S<=8 a separam da
+        # roupa, que tem vinco e sombra. Medido nesse quadro: 0,805 e 0,809 de solidez.
+        wm = cv2.inRange(hsv, (0, 0, 248), (180, 8, 255)); wm[:int(H * 0.30)] = 0; wm[int(H * 0.97):] = 0
         nl, lab, st, ce = cv2.connectedComponentsWithStats(wm)
         for s in st[1:]:
             x, y, w, h, a = s
             if w < W * 0.30 or not (H * 0.03 < h < H * 0.09) or w / h < 4: continue
-            if a / float(w * h) < 0.80: continue           # solido = e' uma caixa, nao texto
+            if a / float(w * h) < 0.75: continue           # solido = e' uma caixa, nao texto
             obs.append((t, x / W, y / H, (x + w) / W, (y + h) / H))
     if not obs: return None
-    ts = [o[0] for o in obs]
-    if max(ts) - min(ts) < 0.8: return None
-    b = np.median(np.array([o[1:] for o in obs]), axis=0)
-    return {"t0": round(min(ts), 2), "t1": round(max(ts), 2), "bbox_pct": [round(float(v), 4) for v in b],
-            "texto": None,   # <- vem do chat
-            "estilo": "retangulo branco arredondado, texto escuro regular, emoji reais"}
+    # ⛔ agrupar por ALTURA antes da mediana: com a faixa larga podem casar duas caixas em
+    # linhas diferentes, e a mediana das duas devolve uma pilula que nao existe em lugar nenhum.
+    # ⛔ e' uma LISTA, nao uma pilula. O PAPA JOELHO tem DUAS ao mesmo tempo: `KNEE REMEDY` o
+    # video inteiro, embaixo, e `HEALTH !! FOLLOW` so' no take do CTA, mais acima. Devolver so'
+    # a mais persistente perdia a segunda — e a segunda e' a que carrega a palavra do CTA.
+    grupos = {}
+    for o in obs: grupos.setdefault(round(o[2], 2), []).append(o)
+    fora = []
+    for g in sorted(grupos.values(), key=len, reverse=True):
+        ts = [o[0] for o in g]
+        if len(g) < 3 or max(ts) - min(ts) < 0.8: continue
+        b = np.median(np.array([o[1:] for o in g]), axis=0)
+        fora.append({"t0": round(min(ts), 2), "t1": round(max(ts), 2), "bbox_pct": [round(float(v), 4) for v in b],
+                     "texto": None,   # <- vem do chat
+                     "estilo": "retangulo branco arredondado, texto escuro regular, emoji reais"})
+    return fora or None
 
 
 # ── MUSICA (graves nas pausas da fala) ──────────────────────────────────────
@@ -322,13 +340,13 @@ def main():
     partes = dividir(dos["takes"], pals); print("  takes:", len(dos["takes"]), "-> clipes:", len(partes))
     kar = mapear_karaoke(video); print("  karaoke:", "sim" if kar else "nao", kar and kar["centro_pct"])
     labs = mapear_labels(video); print("  labels com glow:", len(labs))
-    pil = mapear_pilula(video); print("  pilula:", "sim" if pil else "nao")
+    pil = mapear_pilula(video) or []; print("  pilulas:", len(pil))
     mus, _ = mapear_musica(video, pals, dur, os.path.join(pasta, "musica_fonte.wav")); print("  musica:", mus.get("presente"))
     cam = mapear_camera(video, dos["takes"]); print("  camera:", [c["pushin"] for c in cam])
 
     mapa = {"fonte": {"arquivo": video, "duracao_s": dur, "slug": a.slug},
             "takes": dos["takes"], "cortes": dos["cortes"], "clipes": partes, "palavras": pals,
-            "legenda_karaoke": kar, "labels": labs, "pilula": pil, "trilha": mus, "camera": cam,
+            "legenda_karaoke": kar, "labels": labs, "pilulas": pil, "trilha": mus, "camera": cam,
             "teto_veo_s": TETO_VEO}
     json.dump(mapa, open(os.path.join(pasta, "mapa_fidelidade.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
@@ -342,7 +360,8 @@ def main():
     ped[-1] = ped[-1].rstrip(",")
     ped.append("  },")
     ped.append('  "labels_texto": [' + ", ".join(f'"<texto da label em {l["t0"]}-{l["t1"]}s>"' for l in labs) + "],")
-    ped.append('  "pilula_texto": ' + ('"<texto da pilula, com os emojis>"' if pil else 'null'))
+    ped.append('  "pilulas_texto": [' + ", ".join(
+        f'"<texto da pilula que aparece de {q["t0"]}s a {q["t1"]}s, com os emojis>"' for q in pil) + ']')
     ped += ["}", "```", "", "Regras: descreva o que VE, nao invente; roupa e cenario iguais em todos os takes se forem iguais na folha;",
             "nao cite marca nem pessoa famosa; nada de aparelho na mao do personagem."]
     open(os.path.join(pasta, "PEDIDO-CLONE.md"), "w", encoding="utf-8").write("\n".join(ped))
