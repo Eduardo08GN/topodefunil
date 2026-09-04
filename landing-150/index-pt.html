@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>150 Receitas da Boa Forma | Vida mais Leve</title>
-<meta name="description" content="150 receitas simples para uma vida mais leve. Sucos, chas, sopas e refeicoes do dia a dia, mais quatro bonus gratis. Entrega imediata.">
+<meta name="description" content="150 receitas simples para uma vida mais leve. Sucos, chas, sopas, sobremesas e refeicoes do dia a dia, mais quatro bonus gratis. Entrega imediata.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900&display=swap" rel="stylesheet">
@@ -221,10 +221,15 @@ h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
 }
 .slot .t{font-weight:700;font-size:15.5px}
 .slot .s{font-size:13px;color:var(--ink-soft);margin-top:6px;line-height:1.45}
+.rcard{background:var(--surface);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);scroll-snap-align:center;display:flex;flex-direction:column}
+.rcard img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.rcard p{font-size:15.5px;color:var(--ink-soft);line-height:1.55;padding:15px 18px 19px;margin:0}
 .slot-video{aspect-ratio:9/16}
-.rail-hint{display:flex;align-items:center;justify-content:center;gap:7px;
-           font-size:13px;color:var(--ink-soft);margin-top:2px}
-.rail-hint .i{width:15px;height:15px}
+.rail-hint{display:flex;width:fit-content;align-items:center;gap:9px;
+           font-size:15px;font-weight:800;color:var(--green);background:var(--green-tint);
+           padding:10px 20px;border-radius:999px;margin:12px auto 0}
+.rail-hint .i{width:20px;height:20px;animation:swipeHint 1.4s ease-in-out infinite}
+@keyframes swipeHint{0%,100%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
 
 /* ---------- conteudo ---------- */
 .contentcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
@@ -387,8 +392,15 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
   .rail-video{grid-auto-columns:230px}
   .problem .body{font-size:19px}
 }
+
+/* ---- mobile: centraliza os cards de ícone (features e bônus) ---- */
+@media(max-width:699px){
+  .card{text-align:center}
+  .card .ico{margin-left:auto;margin-right:auto}
+  .bonus-tag{left:50%;transform:translateX(-50%)}
+}
 @media(prefers-reduced-motion:reduce){
-  *{transition:none!important;scroll-behavior:auto!important}
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
@@ -434,7 +446,7 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
     <div class="hero-copy">
       <span class="eyebrow">150 Receitas · 4 Bônus Grátis · Acesso Imediato</span>
       <h1>Você veio por uma receita.<br>Aqui estão 150.</h1>
-      <p class="lede">Os sucos, chás, sopas e refeições do dia a dia que fazem a balança baixar mais de 20 quilos em poucos meses, escritos de forma tão simples que você começa hoje mesmo, com o que já tem na cozinha.</p>
+      <p class="lede">Os sucos, chás, sopas, sobremesas e refeições do dia a dia que fazem a balança baixar mais de 20 quilos em poucos meses, escritos de forma tão simples que você começa hoje mesmo, com o que já tem na cozinha.</p>
 
       <div class="badges">
         <span class="badge"><svg class="i"><use href="#ic-glass"/></svg><b>150</b> receitas</span>
@@ -470,8 +482,39 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
   </div>
 </section>
 
-<!-- ====== 3. TRES BENEFICIOS ====== -->
+<!-- ====== 10. REVIEWS ====== -->
 <section class="sec sec-white">
+  <div class="wrap">
+    <div class="center kicker">
+      <span class="eyebrow">Resultados Reais</span>
+      <h2>Elas também começaram com essas receitas</h2>
+      <p class="lede" style="margin-top:10px;margin-bottom:0"><b>Mais de 4.782 avaliações positivas</b></p>
+      <div class="stars" style="margin-top:8px">
+        <svg class="i"><use href="#ic-star"/></svg><svg class="i"><use href="#ic-star"/></svg>
+        <svg class="i"><use href="#ic-star"/></svg><svg class="i"><use href="#ic-star"/></svg>
+        <svg class="i"><use href="#ic-star"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail rail-video" style="margin-top:30px">
+      <div class="slot slot-video"><div><div class="n">1</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">2</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">3</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">4</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+      <div class="slot slot-video"><div><div class="n">5</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
+        <div class="s">antes e depois</div></div></div>
+    </div>
+    <p class="rail-hint"><svg class="i"><use href="#ic-swipe"/></svg>arraste para ver mais</p>
+  </div>
+</section>
+
+<!-- ====== 3. TRES BENEFICIOS ====== -->
+<section class="sec">
   <div class="wrap">
     <div class="center kicker">
       <span class="eyebrow">Por Que Isso Funciona</span>
@@ -527,32 +570,32 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
     <div class="center kicker">
       <span class="eyebrow">Por Dentro do Livro</span>
       <h2>Páginas de verdade do livro</h2>
-      <p class="lede">Cada receita numa página só. Ingredientes, modo de fazer, e onde ela entra no seu dia.</p>
+      <p class="lede">Cada receita numa página só, com foto, ingredientes e modo de fazer. Abaixo, <b style="color:var(--green)">5 exemplos das 150 receitas</b> que você recebe.</p>
     </div>
   </div>
   <div class="wrap">
     <div class="rail" style="margin-top:32px">
-      <div class="slot"><div><div class="n">1</div><div class="t">Página de receita</div>
-        <div class="s">ex. Suco Verde da Manhã</div></div></div>
-      <div class="slot"><div><div class="n">2</div><div class="t">Página de receita</div>
-        <div class="s">ex. Chá de Gengibre com Limão</div></div></div>
-      <div class="slot"><div><div class="n">3</div><div class="t">Página de receita</div>
-        <div class="s">ex. Sopa Leve de Legumes</div></div></div>
-      <div class="slot"><div><div class="n">4</div><div class="t">Página de receita</div>
-        <div class="s">ex. Jantar de 15 Minutos</div></div></div>
-      <div class="slot"><div><div class="n">5</div><div class="t">Página de receita</div>
-        <div class="s">ex. Vitamina Proteica de Frutas</div></div></div>
+      <div class="rcard"><img src="receitas/pt/panqueca.jpg" alt="Panqueca de Banana e Aveia">
+        <p>Aveia que dá fibra e segura a fome por horas, mais a proteína do ovo. Um café da manhã doce que não sabota a dieta.</p></div>
+      <div class="rcard"><img src="receitas/pt/salmao.jpg" alt="Salmão Assado com Legumes">
+        <p>Assado com quase nada de óleo. O salmão traz proteína e gordura boa que saciam, e os legumes enchem o prato com pouca caloria.</p></div>
+      <div class="rcard"><img src="receitas/pt/bolo-chocolate.jpg" alt="Bolo de Chocolate sem Açúcar">
+        <p>Sim, bolo na dieta! Cacau puro e sem açúcar matam a vontade de doce com uma fração das calorias de um bolo comum.</p></div>
+      <div class="rcard"><img src="receitas/pt/cheesecake.jpg" alt="Cheesecake de Frutas Vermelhas">
+        <p>Sem forno, com base de aveia e creme de ricota. Fibra e proteína no lugar do açúcar — uma sobremesa leve de verdade.</p></div>
+      <div class="rcard"><img src="receitas/pt/suco-verde.jpg" alt="Suco Verde Detox">
+        <p>Folhas e maçã que ajudam a desinchar e hidratar. Pouquíssimas calorias para cortar a fome ou começar bem o dia.</p></div>
     </div>
     <p class="rail-hint"><svg class="i"><use href="#ic-swipe"/></svg>arraste para ver mais</p>
   </div>
 </section>
 
-<!-- ====== 8. CONTEUDO + 4 BONUS ====== -->
+<!-- ====== 8. CONTEUDO + 3 BONUS ====== -->
 <section class="sec sec-white">
   <div class="wrap">
     <div class="center kicker">
       <span class="eyebrow">Tudo Que Tem Dentro</span>
-      <h2>150 receitas, e nunca mais uma noite sem saber o que fazer</h2>
+      <h2>150 receitas, e nunca mais um dia sem saber o que fazer</h2>
     </div>
 
     <div class="cat-badges" style="margin-top:38px">
@@ -592,20 +635,12 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
     <div class="center" style="margin-top:56px">
       <span class="eyebrow">Grátis Hoje</span>
       <h2>Mais 4 bônus exclusivos</h2>
-      <p class="lede kicker">Valem $90 separados. Todos seus, sem custo nenhum, junto com o livro.</p>
+      <p class="lede kicker">Valem $88 separados. Todos seus, sem custo nenhum, junto com o livro.</p>
     </div>
 
     <div class="grid grid-4" style="margin-top:38px">
       <div class="card bonus">
         <span class="bonus-tag">Bônus 1</span>
-        <div class="ico"><svg class="i"><use href="#ic-cake"/></svg></div>
-        <h3>Doces Fitness</h3>
-        <p>O doce que você pode. Chocolate, sorvete e bolo sem açúcar, para a sobremesa
-           parar de ser o que derruba a sua semana.</p>
-        <p class="val">Grátis hoje <s>$19</s></p>
-      </div>
-      <div class="card bonus">
-        <span class="bonus-tag">Bônus 2</span>
         <div class="ico"><svg class="i"><use href="#ic-leaf"/></svg></div>
         <h3>Dieta Vegetariana</h3>
         <p>Totalmente sem carne, planejada do começo ao fim. Proteína suficiente, sabor
@@ -613,7 +648,7 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
         <p class="val">Grátis hoje <s>$19</s></p>
       </div>
       <div class="card bonus">
-        <span class="bonus-tag">Bônus 3</span>
+        <span class="bonus-tag">Bônus 2</span>
         <div class="ico"><svg class="i"><use href="#ic-pulse"/></svg></div>
         <h3>Pilates Seca Barriga em Casa</h3>
         <p>Um treinamento completo para fazer no chão da sala. Sem tapete, sem aula para
@@ -622,12 +657,20 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
         <p class="val">Grátis hoje <s>$23</s></p>
       </div>
       <div class="card bonus">
-        <span class="bonus-tag">Bônus 4</span>
-        <div class="ico"><svg class="i"><use href="#ic-calendar"/></svg></div>
+        <span class="bonus-tag">Bônus 3</span>
+        <div class="ico"><svg class="i"><use href="#ic-bolt"/></svg></div>
         <h3>50 Hábitos e Exercícios</h3>
         <p>Treinos em casa ou na academia, rotina de sono, hora certa da água e os pequenos
            ajustes diários que fazem você queimar mais gordura com muito menos esforço.</p>
         <p class="val">Grátis hoje <s>$29</s></p>
+      </div>
+      <div class="card bonus">
+        <span class="bonus-tag">Bônus 4</span>
+        <div class="ico"><svg class="i"><use href="#ic-calendar"/></svg></div>
+        <h3>Plano Alimentar de 30 Dias</h3>
+        <p>Um mês inteiro montado para você, dia a dia: café, almoço, jantar, sobremesa e
+           suco, sem repetir os pratos. É só seguir, sem precisar pensar no que comer.</p>
+        <p class="val">Grátis hoje <s>$17</s></p>
       </div>
     </div>
   </div>
@@ -660,37 +703,6 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
   </div>
 </section>
 
-<!-- ====== 10. REVIEWS ====== -->
-<section class="sec sec-white">
-  <div class="wrap">
-    <div class="center kicker">
-      <span class="eyebrow">Resultados Reais</span>
-      <h2>Elas também começaram com essas receitas</h2>
-      <p class="lede" style="margin-top:10px;margin-bottom:0"><b>Mais de 4.782 avaliações positivas</b></p>
-      <div class="stars" style="margin-top:8px">
-        <svg class="i"><use href="#ic-star"/></svg><svg class="i"><use href="#ic-star"/></svg>
-        <svg class="i"><use href="#ic-star"/></svg><svg class="i"><use href="#ic-star"/></svg>
-        <svg class="i"><use href="#ic-star"/></svg>
-      </div>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="rail rail-video" style="margin-top:30px">
-      <div class="slot slot-video"><div><div class="n">1</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
-        <div class="s">antes e depois</div></div></div>
-      <div class="slot slot-video"><div><div class="n">2</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
-        <div class="s">antes e depois</div></div></div>
-      <div class="slot slot-video"><div><div class="n">3</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
-        <div class="s">antes e depois</div></div></div>
-      <div class="slot slot-video"><div><div class="n">4</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
-        <div class="s">antes e depois</div></div></div>
-      <div class="slot slot-video"><div><div class="n">5</div><div class="t"><svg class="i" style="width:26px;height:26px;color:var(--green);display:block;margin:0 auto 8px"><use href="#ic-play"/></svg>Depoimento em vídeo</div>
-        <div class="s">antes e depois</div></div></div>
-    </div>
-    <p class="rail-hint"><svg class="i"><use href="#ic-swipe"/></svg>arraste para ver mais</p>
-  </div>
-</section>
-
 <!-- ====== 11. OFERTA ====== -->
 <section class="sec sec-green" id="offer">
   <div class="wrap">
@@ -705,10 +717,10 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
       <ul class="ticks">
         <li><b>150 Receitas da Boa Forma</b>, o livro completo</li>
         <li>30 sucos e vitaminas detox, 30 cafés da manhã, 35 almoços, 35 jantares e 20 sobremesas fit</li>
-        <li><b>Bônus 1:</b> Doces Fitness</li>
-        <li><b>Bônus 2:</b> Dieta Vegetariana</li>
-        <li><b>Bônus 3:</b> Pilates Seca Barriga em Casa</li>
-        <li><b>Bônus 4:</b> 50 Hábitos e Exercícios</li>
+        <li><b>Bônus 1:</b> Dieta Vegetariana</li>
+        <li><b>Bônus 2:</b> Pilates Seca Barriga em Casa</li>
+        <li><b>Bônus 3:</b> 50 Hábitos e Exercícios</li>
+        <li><b>Bônus 4:</b> Plano Alimentar de 30 Dias</li>
         <li>Café, almoço, lanche e jantar planejados, com a porção certa para você emagrecer sem passar fome</li>
         <li>Formato para imprimir, ou ler no celular, computador ou no tablet</li>
         <li>Acesso vitalício, incluindo as atualizações futuras</li>
@@ -796,8 +808,8 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
     <div class="faq">
       <details open>
         <summary>Como recebo depois de pagar?</summary>
-        <div class="a">Instantaneamente, por e-mail. Você recebe um link de download com o
-          livro e os quatro bônus. Confira também a caixa de spam.</div>
+        <div class="a">Instantaneamente, por e-mail. Você recebe um link de download com todos
+          os arquivos separados, passo a passo, do livro e dos bônus. Confira também a caixa de spam.</div>
       </details>
       <details>
         <summary>É um livro impresso?</summary>

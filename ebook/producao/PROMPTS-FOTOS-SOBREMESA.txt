@@ -1,0 +1,65 @@
+PROMPTS DE FOTO - SOBREMESAS (101-120)
+================================================================
+Regra: foto QUADRADA (1:1), ultrarrealista, comida pronta, SEM texto.
+Gere cada imagem, salve com o NUMERO (ex.: 101.jpg) e jogue todas numa pasta.
+================================================================
+
+### 101 - Bolo de Chocolate Fit sem Açúcar
+Square ultra-realistic overhead food photograph of a slice of moist dark chocolate cake on a white plate, topped with a few fresh raspberries, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 102 - Mousse de Chocolate com Abacate
+Square ultra-realistic overhead food photograph of a creamy dark chocolate avocado mousse in a small glass, topped with chocolate shavings and a mint leaf, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 103 - Brigadeiro Fit de Cacau
+Square ultra-realistic overhead food photograph of several dark chocolate energy balls rolled in cocoa powder on a small white plate, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 104 - Bolo de Caneca de Chocolate
+Square ultra-realistic overhead food photograph of a warm chocolate mug cake in a ceramic mug, topped with a few raspberries, a spoon beside it, on a light wooden table, soft natural light, cozy and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 105 - Mousse de Morango com Iogurte
+Square ultra-realistic overhead food photograph of a pink strawberry yogurt mousse in a glass, topped with fresh chopped strawberries and a mint leaf, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 106 - Sorvete Cremoso de Banana
+Square ultra-realistic overhead food photograph of a scoop of creamy banana nice cream in a bowl, dusted with cinnamon, a few banana slices beside it, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 107 - Pudim de Leite Fit
+Square ultra-realistic overhead food photograph of a slice of creamy milk flan (pudim) with a light golden caramel on top, on a white plate, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 108 - Cookies de Aveia e Banana
+Square ultra-realistic overhead food photograph of several soft oatmeal banana cookies on a wooden board, with a few oats and raisins scattered around, soft natural light, homemade and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 109 - Maçã Assada com Canela e Nozes
+Square ultra-realistic overhead food photograph of a baked apple filled with oats and chopped walnuts, dusted with cinnamon, on a small plate with a spoon, on a light wooden table, soft natural light, cozy and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 110 - Gelatina de Frutas Caseira
+Square ultra-realistic overhead food photograph of colorful homemade fruit jelly in a glass with pieces of strawberry, kiwi and grapes suspended inside, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 111 - Barrinha de Aveia com Frutas Secas
+Square ultra-realistic overhead food photograph of homemade oat and dried fruit granola bars stacked on a wooden board, with oats, raisins and nuts scattered around, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 112 - Iogurte Gelado com Frutas Vermelhas
+Square ultra-realistic overhead food photograph of frozen yogurt bark broken into pieces, topped with berries, chopped nuts and dark chocolate shavings, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 113 - Trufa de Chocolate Fit
+Square ultra-realistic overhead food photograph of dark chocolate truffles rolled in cocoa powder on a small dark plate, one cut in half showing the smooth center, on a light wooden table, soft natural light, elegant and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 114 - Bolo de Cenoura Fit com Cobertura de Cacau
+Square ultra-realistic overhead food photograph of a slice of carrot cake with a dark chocolate glaze on a white plate, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 115 - Mousse de Limão
+Square ultra-realistic overhead food photograph of a creamy lemon mousse in a glass, topped with lemon zest and a thin lemon slice, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 116 - Cheesecake Fit de Frutas Vermelhas (sem forno)
+Square ultra-realistic overhead food photograph of a slice of no-bake cheesecake with an oat base and a glossy red berry topping, on a white plate, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 117 - Picolé de Frutas Caseiro
+Square ultra-realistic overhead food photograph of homemade fruit popsicles with visible pieces of strawberry, mango and kiwi, on a plate with ice, on a light wooden table, soft natural light, fresh and vibrant, shallow depth of field, no text, no writing, 1:1 square.
+
+### 118 - Muffin de Maçã e Canela
+Square ultra-realistic overhead food photograph of homemade apple cinnamon muffins in paper liners on a wooden board, one broken open showing apple pieces, dusted with cinnamon, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 119 - Crumble de Maçã e Aveia
+Square ultra-realistic overhead food photograph of a warm apple oat crumble in a small dish, golden crunchy topping over soft baked apples, a spoon lifting a portion, on a light wooden table, soft natural light, cozy and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 120 - Pera Assada com Especiarias
+Square ultra-realistic overhead food photograph of baked pear halves with cinnamon, cloves and chopped nuts, on a small plate, on a light wooden table, soft natural light, elegant and cozy, shallow depth of field, no text, no writing, 1:1 square.

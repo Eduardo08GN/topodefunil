@@ -1,0 +1,111 @@
+PROMPTS DE FOTO - ALMOCOS (031-065)
+================================================================
+Regra: foto QUADRADA (1:1), ultrarrealista, comida pronta, SEM texto.
+Gere cada imagem, salve com o NUMERO (ex.: 031.jpg) e jogue todas
+numa pasta. Depois me manda que eu distribuo nas paginas certas.
+================================================================
+
+### 031 - Frango Grelhado com Arroz Integral e Brócolis
+Square ultra-realistic overhead food photograph of a grilled chicken breast sliced on a white plate, next to a portion of brown rice and steamed green broccoli, a wedge of lemon on the side, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 032 - Filé de Tilápia com Purê de Batata-Doce
+Square ultra-realistic overhead food photograph of a pan-seared white fish fillet on a bed of orange sweet potato mash, with a side of green salad and a wedge of lemon, on a light plate, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 033 - Posta de Atum Grelhada com Legumes e Batata
+Square ultra-realistic overhead food photograph of a grilled fresh tuna steak, seared outside and pink inside, with roasted potato slices, green beans and carrot, a lemon wedge, on a white plate, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 034 - Wrap Integral de Frango Desfiado
+Square ultra-realistic overhead food photograph of a wholegrain wrap cut in half, filled with shredded chicken, lettuce, tomato and grated carrot, on a wooden board, a few fresh vegetables beside it, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 035 - Salmão Assado com Legumes no Forno
+Square ultra-realistic overhead food photograph of a baked salmon fillet on a roasting tray surrounded by roasted potato slices, zucchini, red pepper and cherry tomatoes, sprig of rosemary and a lemon wedge, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 036 - Escondidinho de Batata-Doce com Carne Moída Magra
+Square ultra-realistic overhead food photograph of a sweet potato and ground beef shepherd's pie in a white baking dish, golden top, a spoon lifting a portion, a small green salad beside it, on a light wooden table, soft natural light, comforting and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 037 - Salada Completa de Atum, Grão-de-Bico e Ovo
+Square ultra-realistic overhead food photograph of a big fresh salad bowl with canned tuna, chickpeas, halved boiled eggs, mixed green leaves, cherry tomato, cucumber and red onion, drizzle of olive oil and lemon, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 038 - Strogonoff de Frango Leve com Arroz
+Square ultra-realistic overhead food photograph of a creamy chicken stroganoff with mushrooms served over white rice on a white plate, garnished with parsley, on a light wooden table, soft natural light, comforting and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 039 - Peito de Peru com Cuscuz de Legumes
+Square ultra-realistic overhead food photograph of fluffy couscous mixed with diced zucchini, pepper and tomato, topped with sliced grilled turkey breast, fresh mint, on a white plate, light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 040 - Chili de Carne com Feijão Preto
+Square ultra-realistic overhead food photograph of a hearty beef and black bean chili in a rustic bowl, topped with chopped coriander, a spoon resting in it, on a light wooden table, soft natural light, warm and comforting, shallow depth of field, no text, no writing, 1:1 square.
+
+### 041 - Macarrão Integral ao Sugo com Almôndegas de Peru
+Square ultra-realistic overhead food photograph of wholewheat spaghetti with fresh tomato sauce and turkey meatballs, sprinkled with fresh basil, in a white bowl, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 042 - Omelete Recheado com Legumes
+Square ultra-realistic overhead food photograph of a folded omelette filled with tomato, pepper, spinach and white cheese on a white plate, chives on top, a slice of wholegrain toast beside it, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 043 - Bife de Patinho com Arroz, Feijão e Couve
+Square ultra-realistic overhead food photograph of a plate with a grilled lean beef steak, white rice, brown beans and sautéed collard greens in thin strips, on a light wooden table, soft natural light, homestyle and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 044 - Bife Acebolado com Purê de Batata e Salada
+Square ultra-realistic overhead food photograph of a grilled lean beef steak topped with golden caramelized onions, served with creamy mashed potato and a fresh green salad with tomato, on a white plate, light wooden table, soft natural light, comforting and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 045 - Camarão Salteado com Legumes e Arroz
+Square ultra-realistic overhead food photograph of sautéed shrimp with zucchini and red pepper over brown rice, garnished with parsley and a lemon wedge, on a white plate, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 046 - Frango Xadrez Leve com Arroz Integral
+Square ultra-realistic overhead food photograph of a light chicken stir-fry with diced pepper, onion and celery in a glossy sauce, served over brown rice, in a bowl, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 047 - Bowl Mexicano de Carne, Feijão Preto e Milho
+Square ultra-realistic overhead food photograph of a Mexican burrito bowl with seasoned ground beef, black beans, corn, rice, tomato, avocado slices and green leaves, lime wedge, in a bowl, on a light wooden table, soft natural light, vibrant and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 048 - Salada de Frango Grelhado com Manga
+Square ultra-realistic overhead food photograph of a fresh salad with grilled chicken strips, mango cubes, cucumber, red onion and mixed green leaves, mint on top, lemon dressing, in a bowl, on a light wooden table, soft natural light, fresh and vibrant, shallow depth of field, no text, no writing, 1:1 square.
+
+### 049 - Filé de Frango ao Curry Leve com Arroz
+Square ultra-realistic overhead food photograph of a light chicken curry in a golden sauce served over white rice in a bowl, garnished with coriander, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 050 - Sardinha Assada com Batata e Salada
+Square ultra-realistic overhead food photograph of oven-baked sardines with sliced roasted potatoes, a fresh green salad with tomato and a lemon wedge, on a light plate, wooden table, soft natural light, rustic and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 051 - Berinjela Recheada com Carne Moída
+Square ultra-realistic overhead food photograph of two baked stuffed eggplant halves filled with seasoned ground beef and melted cheese, sprinkled with parsley, on a white plate, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 052 - Salada Caesar Fit com Frango Grelhado
+Square ultra-realistic overhead food photograph of a Caesar salad with grilled chicken strips, romaine lettuce, wholegrain croutons and a creamy dressing, grated cheese on top, in a bowl, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 053 - Tiras de Carne com Pimentão e Arroz
+Square ultra-realistic overhead food photograph of sautéed beef strips with colorful red and yellow pepper strips and onion, served over white rice, garnished with coriander, in a bowl, on a light wooden table, soft natural light, vibrant and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 054 - Hambúrguer Caseiro de Carne Magra com Salada
+Square ultra-realistic overhead food photograph of a homemade lean beef burger in a wholegrain bun with lettuce, tomato and onion, a fresh side salad, on a wooden board, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 055 - Peixe Branco com Legumes e Cuscuz
+Square ultra-realistic overhead food photograph of a pan-seared white fish fillet over couscous mixed with green beans, carrot and peas, a lemon wedge and parsley, on a white plate, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 056 - Espetinho de Frango e Legumes com Arroz
+Square ultra-realistic overhead food photograph of grilled chicken and vegetable skewers with pepper, onion, zucchini and cherry tomato, served over rice on a plate, on a light wooden table, soft natural light, colorful and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 057 - Salada de Batata Fit com Ovo e Atum
+Square ultra-realistic overhead food photograph of a healthy potato salad with tuna, chopped boiled egg, red onion and herbs in a creamy yogurt dressing, in a white bowl, on a light wooden table, soft natural light, fresh and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 058 - Frango Assado no Forno com Legumes de Raiz
+Square ultra-realistic overhead food photograph of oven-roasted chicken thighs with root vegetables, potato, carrot, pumpkin and onion on a roasting tray, sprig of rosemary, golden and juicy, soft natural light, rustic and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 059 - Frango à Parmegiana Fit Assado com Salada
+Square ultra-realistic overhead food photograph of an oven-baked chicken parmigiana with tomato sauce and melted cheese, crispy golden coating, a fresh green salad beside it, on a white plate, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 060 - Bowl de Arroz, Edamame e Salmão
+Square ultra-realistic overhead food photograph of a poke-style bowl with salmon cubes, rice, edamame, cucumber, grated carrot and avocado slices, sesame seeds on top, in a bowl, on a light wooden table, soft natural light, fresh and vibrant, shallow depth of field, no text, no writing, 1:1 square.
+
+### 061 - Sopa Substanciosa de Legumes com Frango Desfiado
+Square ultra-realistic overhead food photograph of a hearty chicken and vegetable soup with shredded chicken, potato, carrot, zucchini and corn in a broth, in a rustic bowl, parsley on top, on a light wooden table, soft natural light, warm and comforting, shallow depth of field, no text, no writing, 1:1 square.
+
+### 062 - Panqueca Salgada de Aveia Recheada com Frango
+Square ultra-realistic overhead food photograph of a savory oat pancake filled with shredded chicken in tomato sauce, folded on a plate, a small salad beside it, on a light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 063 - Camarão ao Alho com Legumes e Arroz
+Square ultra-realistic overhead food photograph of garlic shrimp sautéed golden, served with steamed broccoli, green beans and white rice, parsley and a lemon wedge, on a white plate, light wooden table, soft natural light, appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 064 - Almôndegas de Carne ao Molho com Purê de Batata
+Square ultra-realistic overhead food photograph of tender beef meatballs in tomato sauce served over creamy mashed potato, garnished with basil, on a white plate, light wooden table, soft natural light, comforting and appetizing, shallow depth of field, no text, no writing, 1:1 square.
+
+### 065 - Risoto Leve de Frango e Legumes
+Square ultra-realistic overhead food photograph of a creamy chicken and vegetable risotto with carrot and peas, garnished with parsley and a little grated cheese, in a shallow bowl, on a light wooden table, soft natural light, comforting and appetizing, shallow depth of field, no text, no writing, 1:1 square.

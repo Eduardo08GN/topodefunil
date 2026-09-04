@@ -1,0 +1,45 @@
+Vamos criar um NOVO produto no padrão VIP que já construímos: um EBOOK (PDF) + uma
+LANDING PAGE de venda. Pode ser no mesmo nicho ou em outro.
+
+⛔ ANTES DE QUALQUER COISA, leia estes 3 arquivos na íntegra para carregar a
+inteligência e o padrão exato (não comece nada antes de ler):
+1. C:\Users\lucas\Desktop\Topo de Funil\ebook\producao\PLAYBOOK-EBOOK.md
+   (motor do ebook: arquitetura dados→motor→PDF, template travado da receita/item,
+   tabela de ajuste por perfil, design, workflow de fotos, entrega em "Passo N",
+   frente do livro, plano de 30 dias, regras de conteúdo e lições pagas)
+2. C:\Users\lucas\Desktop\Topo de Funil\landing-150\PLAYBOOK-LANDING.md
+   (motor da landing: ordem das seções, tokens de design, responsivo mobile-first,
+   bilinguismo, copy/conversão)
+3. C:\Users\lucas\Desktop\Topo de Funil\ebook\producao\BRIEFING-EBOOK.md
+   (exemplo do 1º projeto — o nível de qualidade a igualar ou superar)
+
+Também considere a memória já carregada (MEMORY.md) e a memória
+reference-playbooks-ebook-landing.
+
+PADRÕES INVIOLÁVEIS que valem para qualquer produto novo:
+- Fonte GRANDE e legível (público costuma ter idosos) — nunca espremer.
+- Escrever em PORTUGUÊS primeiro → validar comigo → traduzir 1 por 1 (convertendo
+  TODAS as unidades por idioma).
+- Vocabulário extremamente simples, sem jargão.
+- Eu escrevo os PROMPTS de foto; EU (operador) gero as imagens e te mando; você
+  mapeia, recorta e distribui. Copy e cena são minhas (sugerir sim, trocar não).
+- Entrega em ARQUIVOS SEPARADOS numerados "Passo N - Nome", na pasta
+  "Entregavel em <IDIOMA>".
+- Landing: 1 HTML por idioma; TODA mudança é varrida em todas as versões; conferir
+  sempre em mobile e desktop; copy honesta, sem promessa falsa.
+- Reutilizar os motores existentes (motor_receitas.py, build_*.py, o HTML da landing)
+  como base — não reinventar.
+
+DEPOIS de ler, NÃO comece a produzir ainda. Primeiro me ENTREVISTE, de forma
+objetiva, para definir o projeto:
+1. Nicho e mercado (país/idioma-alvo).
+2. A ideia do produto: o que é o ebook, que problema resolve, o que promete.
+3. O que vamos vender/entregar: estrutura (categorias e quantidades de itens) e os bônus.
+4. Público-alvo (idade/perfil — define fonte, tom, ingredientes).
+5. Nome do produto + a grande promessa.
+6. Idiomas finais (PT base + quais traduções).
+7. Preço, oferta e os valores dos bônus.
+8. Landing: manter a mesma identidade visual (verde/dourado/creme) ou nova paleta?
+
+Faça as perguntas, espere minhas respostas, monte um BRIEFING novo do projeto (nos
+moldes do BRIEFING-EBOOK.md) e só então comece a produzir, seguindo os playbooks.
