@@ -427,6 +427,8 @@ def gerar_ass(
     cta_palavra=None,
     duracao_video=None,        # fim do pin (segundos). None = fim da ultima palavra
     pin_em=None,               # ⭐ CTA FIXO: segundo em que o pin ENTRA
+    pin_forcado=False,         # ⭐ True = `pin_em` MANDA (take escolhido no painel),
+                               #   ignora o `comment` falado. False = so' fallback.
     # ⭐⭐ A ALTURA DA LEGENDA VIRA PARAMETRO — 2026-08-26, ordem do
     # operador: *"crie um seletor com o tamanho 9:16 com uma regua para mim
     # selecionar a altura em que a legenda ira ficar (...) pois cada video a
@@ -849,7 +851,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         # aproximacao proporcional que o pipeline calcula.
         # ⚠️ Antes era o contrario (o `pin_em` mandava sempre), porque o modo
         # existia para o pin entrar ANTES do CTA. Hoje o pedido e' o oposto.
-        if t_pin is None and pin_em is not None:
+        # ⭐ take escolhido no painel (`pin_forcado`) MANDA no tempo, mesmo que o
+        # audio tenha `comment <palavra>`. Sem take escolhido, `pin_em` e' so'
+        # o fallback do comeco do ultimo take (quando o CTA nao foi falado).
+        if pin_em is not None and (pin_forcado or t_pin is None):
             t_pin = pin_em
             for w in palavras:
                 if w["start"] >= pin_em:

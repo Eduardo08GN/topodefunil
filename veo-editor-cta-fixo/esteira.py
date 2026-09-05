@@ -189,6 +189,7 @@ def dias_atual():
         n = random.randint(DIA_MIN, DIA_MAX)
     corte = (CFG.get("dia_corte") or "").strip()
     md = (CFG.get("mudos") or "auto").strip()
+    cta_take = (CFG.get("cta_take") or "").strip()  # "" = último (auto)
     return {"ligado": CFG.get("dia_ligado") == "1", "dia2": n,
             "estilo": CFG.get("dia_estilo") or "vermelho",
             "corte": float(corte) if corte else 0,
@@ -197,6 +198,8 @@ def dias_atual():
             # `processar_video`; nao vale abrir um segundo canal so' para ele.
             "cta": {"ligado": CFG.get("cta_ligado") == "1",
                     "palavra": (CFG.get("cta_palavra") or "").strip(),
+                    # None = último take (auto); um int forca o inicio no take
+                    "take": int(cta_take) if cta_take.isdigit() else None,
                     "pos": _pos_pct("cta_pos", 47)},
             # ⭐ a legenda viaja no MESMO dicionario que o CTA, pela mesma
             # razao escrita ali em cima: nao vale abrir um segundo canal.

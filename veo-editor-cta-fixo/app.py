@@ -772,12 +772,25 @@ class App(tk.Tk):
         self.ent_cta.pack(side="left", padx=(8, 0), ipady=3)
         self.ent_cta.bind("<KeyRelease>", self._cfg_cta)
         self.ent_cta.bind("<FocusOut>", self._cfg_cta)
+        # ⭐ CTA A PARTIR DO TAKE (2026-09-05). Em que take o pin ENTRA — e fica
+        # fixo ate' o fim do ultimo take. "último" = comportamento atual (se o
+        # audio diz `comment <palavra>` o pin entra ali; senao cai no comeco do
+        # ultimo take). Um NUMERO forca a entrada no inicio daquele take,
+        # independentemente da fala. Take fora da faixa (pediu 5 num video de 3)
+        # cai no ultimo take, em vez de sumir.
+        tk.Label(linha2, text="a partir do take", bg=BG, fg=DIM,
+                 font=FT).pack(side="left", padx=(12, 0))
+        self.cb_cta_take = ttk.Combobox(
+            linha2, style="Eddie.TCombobox", width=8, state="readonly",
+            font=FT, values=["último"] + [str(n) for n in range(1, N_MANUAL + 1)])
+        self.cb_cta_take.pack(side="left", padx=(8, 0))
+        self.cb_cta_take.bind("<<ComboboxSelected>>", self._cfg_cta_take)
         # [LOCAL LUCAS] a roda do mouse TROCA o valor de um combobox readonly
         # e o operador ja' perdeu uma trava assim no painel do agente
         # (21/08). Roda inerte em todos os seletores deste rodape.
         for _cb in (self.cb_model, self.cb_margem, self.cb_musica,
                     self.cb_dia, self.cb_dia_estilo, self.cb_dia_corte,
-                    self.cb_mudos):
+                    self.cb_mudos, self.cb_cta_take):
             for _ev in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
                 _cb.bind(_ev, lambda _e: "break")
         self._sync_dia()
@@ -1446,6 +1459,12 @@ class App(tk.Tk):
         esteira.CFG["cta_palavra"] = limpo
         esteira.salvar_cfg()
 
+    def _cfg_cta_take(self, _=None):
+        # "" (= "último") mantem o comportamento atual; um numero forca o take.
+        v = self.cb_cta_take.get()
+        esteira.CFG["cta_take"] = "" if v in ("", "último") else v
+        esteira.salvar_cfg()
+
     def _pintar_cta(self):
         lig = esteira.CFG.get("cta_ligado") == "1"
         self.bt_cta.configure(
@@ -1455,6 +1474,7 @@ class App(tk.Tk):
             activeforeground="#04231f" if lig else INK,
             text="CTA fixo ligado" if lig else "CTA fixo")
         self.ent_cta.configure(state="normal" if lig else "disabled")
+        self.cb_cta_take.configure(state="readonly" if lig else "disabled")
 
     def _cfg_dia(self, _=None):
         v = self.cb_dia.get()
@@ -1489,6 +1509,7 @@ class App(tk.Tk):
         self.cb_mudos.set(esteira.CFG.get("mudos") or "auto")
         self.ent_cta.delete(0, "end")
         self.ent_cta.insert(0, esteira.CFG.get("cta_palavra") or "")
+        self.cb_cta_take.set(esteira.CFG.get("cta_take") or "último")
         self._pintar_dia()
         self._pintar_cta()
         # ⭐ sem esta chamada o quadro 9:16 nasce VAZIO: o canvas so' e'

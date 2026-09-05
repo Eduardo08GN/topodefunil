@@ -798,6 +798,22 @@ def processar_video(takes, out_final, model="base", lang="en",
         _cta_pos = float(_cta.get("pos", 0.47))
         if _lig:
             log("  CTA fixo a %.0f%% da altura" % (_cta_pos * 100))
+        # ⭐ CTA A PARTIR DO TAKE (2026-09-05): `take` no dict FORCA a entrada do
+        # pin no comeco daquele take (e ele fica ate' o fim do ultimo take).
+        # None = comportamento antigo (o `comment` falado manda; sem ele, o pin
+        # cai no comeco do ULTIMO take). Take fora da faixa degrada para o ultimo.
+        _cta_take = _cta.get("take")
+        _pin_forcado = False
+        if _lig and _cta_take:
+            _pin_em, _ = _janela_do_take(durs, dur_final, int(_cta_take), log)
+            if _pin_em is not None:
+                _pin_forcado = True
+                log("  CTA fixo: FORCADO no inicio do take %s (~%.1fs)"
+                    % (_cta_take, _pin_em))
+            else:
+                _pin_em = _inicio_ultimo_take(durs, dur_final, log)
+        else:
+            _pin_em = _inicio_ultimo_take(durs, dur_final, log)
         # ⭐⭐ O CIRCULADO + "HERE" (2026-08-28). Vale para o video
         # INTEIRO, nao por take — ordem do operador: *"a chave deve
         # ativar em todos os takes"*.
@@ -837,7 +853,7 @@ def processar_video(takes, out_final, model="base", lang="en",
                   fixo_cor=_fx.get("cor") or "#000000",
                   fixo_fundo=_fx.get("fundo") or "#F0D000",
                   fixo_alfa=_fx.get("alfa") or 0,
-                  pin_em=_inicio_ultimo_take(durs, dur_final, log))
+                  pin_em=_pin_em, pin_forcado=_pin_forcado)
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
         queimar_legenda(base, assf, out_final)
