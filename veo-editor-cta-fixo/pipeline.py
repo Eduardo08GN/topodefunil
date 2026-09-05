@@ -542,6 +542,22 @@ def _fim_takes_mudos(durs, mudos, dur_final):
     return (sum(durs[:ult + 1]) / sum(durs)) * dur_final
 
 
+def limpar_metadados(video):
+    """Remove TODOS os metadados do container MP4 — globais, de stream e atoms
+    desconhecidos (C2PA, XMP, SynthID manifest). Stream copy, sem re-encode."""
+    tmp = video + ".clean.mp4"
+    _run([FFMPEG, "-y", "-i", video,
+          "-map", "0:v", "-map", "0:a",
+          "-c", "copy",
+          "-map_metadata", "-1",
+          "-fflags", "+bitexact",
+          "-flags:v", "+bitexact",
+          "-flags:a", "+bitexact",
+          tmp])
+    os.replace(tmp, video)
+    return video
+
+
 def mixar_musica(inp, musica, fim, out):
     """Mistura a musica por cima do audio de 0 ate `fim` segundos, com fade-out
     de 0,5s para nao estalar no corte.
@@ -842,6 +858,8 @@ def processar_video(takes, out_final, model="base", lang="en",
                 # Log que da' o diagnostico errado custa mais que log nenhum.
                 log("  musica: nenhum take mudo reconhecido — nada a cobrir, "
                     "pulando (seletor `takes mudos` no rodape resolve)")
+        log("  limpando metadados Veo3...")
+        limpar_metadados(out_final)
         log(f"  OK -> {out_final}")
         return out_final
     finally:

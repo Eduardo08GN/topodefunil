@@ -233,6 +233,22 @@ def queimar_legenda(inp, ass_path, out):
     return out
 
 
+def limpar_metadados(video):
+    """Remove TODOS os metadados do container MP4 — globais, de stream e atoms
+    desconhecidos (C2PA, XMP, SynthID manifest). Stream copy, sem re-encode."""
+    tmp = video + ".clean.mp4"
+    _run([FFMPEG, "-y", "-i", video,
+          "-map", "0:v", "-map", "0:a",
+          "-c", "copy",
+          "-map_metadata", "-1",
+          "-fflags", "+bitexact",
+          "-flags:v", "+bitexact",
+          "-flags:a", "+bitexact",
+          tmp])
+    os.replace(tmp, video)
+    return video
+
+
 def processar_video(takes, out_final, model="base.en", lang="en",
                     margem="0.2s", fator=None, keywords=None, log=print):
     if not takes:
@@ -263,6 +279,8 @@ def processar_video(takes, out_final, model="base.en", lang="en",
         log("  queimando legenda...")
         os.makedirs(os.path.dirname(os.path.abspath(out_final)), exist_ok=True)
         queimar_legenda(base, assf, out_final)
+        log("  limpando metadados Veo3...")
+        limpar_metadados(out_final)
         log(f"  OK -> {out_final}")
         return out_final
     finally:
