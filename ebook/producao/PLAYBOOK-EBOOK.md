@@ -35,6 +35,17 @@ fotos/NNN.jpg             (1 foto por item, quadrada 1000x1000, nomeada pelo nú
   nome final "bonito" (com espaços/acentos). Isso evita ter que URL-encodar.
 
 ### Verificação (SEMPRE)
+- ⭐⭐ **PÁGINA ÓRFÃ SE MEDE PELO QUANTO O CONTEÚDO DESCE, nunca por tinta.**
+  O primeiro medidor contava pixel escuro e acusou 21 páginas — quase todas
+  falso positivo, porque página com foto grande e diagrama claro tem pouca
+  tinta e está cheia. O medidor certo acha a última linha com pixel não-branco
+  e compara com a altura: abaixo de ~34% é órfã. *Medidor de tinta não mede
+  órfã.*
+- ⭐ **Onde a órfã nasce:** um card que passa de 1,0 página joga só a cauda
+  (a caixa de aviso, os 2 últimos passos) na seguinte. Antes de apertar fonte,
+  procurar **espaço morto**: no `motor_atem` a coluna ao lado da foto tinha
+  120px vazios do tamanho exato da caixa que estava vazando. 15 órfãs → 0 sem
+  violar o mínimo de 16px.
 - `pip install pypdfium2 pillow`; renderiza páginas para PNG e **olha** (Read).
 - Não existe poppler/weasyprint/wkhtmltopdf no ambiente — usar pypdfium2.
 - ⛔ **Aceite é MEDIÇÃO, não relato.** Renderizar e conferir com o olho.
@@ -76,7 +87,20 @@ por perfil** · dica ("por que ajuda") · rodapé de valores aproximados.
 
 ## 4. FOTOS (workflow travado)
 
-- **Eu escrevo o PROMPT, o operador GERA, eu distribuo.** Não tenho gerador de foto.
+- ⭐⭐ **ISSO MUDOU EM 2026-09-05: eu tenho gerador.** `gerar_fotos_flow.py`
+  dirige o **Google Flow** pelo browser-harness na sessão logada do operador,
+  gera 1024×1024 e baixa para a pasta. Recebe `{slug: prompt}` em JSON e a pasta
+  de saída; não sabe nada do nicho, serve a qualquer ebook.
+  - ⛔ **Modelo `Nano Banana 2` — 0 crédito.** O `Pro` cobra (12 créditos em 13
+    fotos). No mosaico as duas famílias não se distinguem.
+  - ⛔ **Idempotente:** slug que já tem arquivo é pulado. Crédito é finito e
+    rodar de novo não pode custar de novo.
+  - ⚠️ O `stdin` do harness não garante UTF-8 — rodar por loader ascii que faz
+    `io.open(..., encoding='utf-8')`, senão o docstring com `⛔` quebra tudo.
+  - ⛔ **O TEXTO NUNCA SAI DO GERADOR.** Capa e rótulo se compõem em HTML e se
+    rasterizam no Chrome (`build_capa.py`): o modelo erra trema, e capa alemã
+    com trema errado parece produto falsificado.
+- *(histórico, quando não havia gerador)* Eu escrevia o PROMPT, o operador GERAVA.
 - Prompt de comida: quadrado, ultrarrealista, comida pronta, termina em
   **`no text, no writing, 1:1 square`**.
 - O operador joga as imagens numa pasta (nomes descritivos do gerador). Eu **mapeio

@@ -31,3 +31,11 @@ _*.py
 
 # saida da esteira: dossie, folha e prompts sao artefato local
 esteira/saida/
+
+# Artefatos de VERIFICACAO do ebook/landing: mosaico de fotos, contact sheet de
+# paginas, recorte de orfa, screenshot de formulario. Sao a MEDICAO, nao o
+# produto — regerar custa um comando e commitar custa megabytes por rodada.
+_*.png
+ebook/producao/atem/_css_ref.css
+ebook/producao/atem/_icons.svg
+landing-atem/_desc_de.txt

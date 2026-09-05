@@ -86,6 +86,43 @@
 
 ## 7. LIÇÕES PAGAS (não repetir)
 
+- ⭐⭐ **TEXTO BRANCO SOBRE CARD BRANCO — estava vivo nas 4 landings.** A regra
+  `.sec-green .btn-note{color:rgba(255,255,255,.75)}` acerta a nota que fica
+  DIRETO sobre o verde, e erra a que fica dentro do `.offer`, que é um card
+  `--surface` (branco). Resultado: a frase de segurança logo abaixo do botão de
+  compra (`Checkout seguro Hotmart. Entregue por e-mail`) era invisível em PT,
+  EN, DE e FR — justamente a linha que tira o medo no instante do clique.
+  Conserto: `.sec-green .offer .btn-note{color:var(--ink-soft)}`.
+  ⛔ **A lente que achou isso é automática e deve ser rodada em toda landing
+  nova:** varrer os nós de texto, resolver a cor de fundo efetiva e reprovar
+  contraste abaixo de ~3:1. Olho não pega branco-sobre-branco em screenshot.
+- ⛔ **Bloco escuro não herda as correções do bloco verde.** `.problem` (fundo
+  `--ink`) não tem regra para `.lede` nem para `.eyebrow`, então eles caem no
+  cinza-escuro padrão: medido `rgb(84,82,78)` sobre `rgb(26,26,26)`. Se puser
+  `.lede` dentro de `.problem`, clareie explicitamente.
+- ⛔⛔ **O QUE NÃO SE COPIA DA LANDING DE REFERÊNCIA.** Ela traz duas coisas que
+  não podem entrar em página nova:
+  · `NUR NOCH 5 EXEMPLARE VERFÜGBAR` / "últimos 5 exemplares" — **escassez
+    falsa** num PDF, que não tem exemplar. A própria §5 manda copy honesta, e na
+    Alemanha (UWG) isso é publicidade enganosa.
+  · contagem de avaliações e depoimentos — **prova fabricada** para um produto
+    que ainda não vendeu uma unidade. No `landing-atem` o bloco virou
+    `Was dieses Paket nicht verspricht`, que é honesto **e** converte, porque
+    quem está ansiosa já foi prometida demais.
+- ⭐ **Tratamento (`du` vs `Sie`) é congruência, não estilo.** A landing do 150
+  usa `Sie`; a do Atemanker usa `du` porque o pool inteiro do `gelo16` fala `du`.
+  Página que troca de pessoa no meio do funil perde quem veio do vídeo.
+- ⭐ **CSS e ícones não se copiam à mão para a landing nova.** O `landing-atem`
+  monta o `index.html` lendo o `<style>` e os `<defs>` do `landing-150` — o
+  arquivo gerado continua autossuficiente, e o conserto de contraste acima
+  chegou nele de graça, sem ninguém lembrar de propagar.
+- ⚠️ **Peso das imagens:** foto de ebook tem 1024px e ~650 KB. Numa landing isso
+  vira 4,6 MB para cards que aparecem com 3:4. Redimensionar na cópia (620px,
+  q82) levou o `landing-atem` inteiro a **548 KB**.
+- ⏳ **Página comercial alemã precisa de Impressum e Datenschutzerklärung**
+  (TMG/DSGVO). Falta é `Abmahnung`, não é detalhe estético.
+
+
 - **Fonte pequena/apagada afasta** — hints e descrições precisam de tamanho e cor
   fortes (público idoso). "Swipe" cinza 13px foi reprovado → selo verde 15px animado.
 - **Centralizar no mobile só o que é bloco curto** (ícone-cards, selo de bônus).
