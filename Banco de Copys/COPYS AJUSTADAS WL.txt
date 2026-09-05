@@ -1,0 +1,115 @@
+====================================================================
+BANCO DE COPYS AJUSTADAS — WEIGHT LOSS
+====================================================================
+As copys NOSSAS, ja ajustadas para produzir o video modelado: com
+as substituicoes de ingrediente, o CTA em "book", os cortes de take
+e a traducao PT por sentido. A copy original (verbatim) de cada uma
+fica em: COPYS ORIGINAIS WL.txt (mesmo ID).
+
+Regras fixas aplicadas em toda copy ajustada:
+  - CTA sempre "comment, book" (virgula antes de book, narracao limpa).
+  - Substituicao de ingrediente (regra do operador):
+      Baking soda        -> Sal de frutas   (fruit salt)
+      Gelatina           -> Amido de milho   (cornstarch)
+      Vinagre de maca    -> Limao espremido  (fresh lemon)
+      Mel                -> MEL (nao substitui)
+  - Teto de palavras por take: 4s = 7 · 6s = 24 · 8s = 32.
+  - Ultimo take leva a CAPA DO EBOOK em pe na bancada, entre os
+    ingredientes (EN: "capa 150 Eng Hotmart").
+  - Pessoa trocada pela REF definida; cenario mantido identico.
+====================================================================
+
+
+--------------------------------------------------------------------
+WL-001 · ORGANIC WAVE · "cornstarch trick"
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Modela ......... WL-001 (ver COPYS ORIGINAIS WL.txt)
+Ajustado em .... 04.09.2026
+Duracao ........ 22s · 4 takes (6 + 6 + 6 + 4) — igual ao original
+Keyword CTA .... "book"
+
+DECISOES DESTE VIDEO:
+  - Opcao C: substitui TUDO (sal de frutas + amido de milho) e
+    adiciona um FRASCO DE CORANTE rosa/vermelho bem visivel na cena
+    (nao precisa ser usado) para sustentar a cor, ja que amido de
+    milho e sal de frutas sao incolores.
+  - Mecanismo: "gelatin trick" -> "cornstarch trick" (so falado).
+  - "warm water" e' apenas FALADA; nenhuma agua cai na mistura (a
+    espuma vem da reacao do sal de frutas).
+  - Pessoa: REF mulher 58 anos, norte-europeia (retrato definido na
+    conversa). Cenario: cozinha de frente pro mar, mantido identico.
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 6s — 19 palavras
+  EN: "I dropped two dress sizes in a few weeks with this cornstarch
+       trick and it barely costs a thing."
+  PT: "Eu cai dois numeros de manequim em poucas semanas com esse
+       truque do amido de milho, e custa quase nada."
+
+  TAKE 2 — RECEITA — 6s — 17 palavras
+  EN: "Half a teaspoon of fruit salt, cornstarch, squeeze a fresh
+       lemon, warm water every morning before coffee."
+  PT: "Meia colher de cha de sal de frutas, amido de milho, um limao
+       fresco espremido, agua morna toda manha antes do cafe."
+
+  TAKE 3 — CTA — 6s — 18 palavras
+  EN: "If you'd like the full recipe, comment, book and I'll send you
+       the complete recipe plus a bonus."
+  PT: "Se voce quer a receita completa, comente 'book' que eu te
+       envio a receita completa mais um bonus."
+
+  TAKE 4 — FECHO — 4s — 9 palavras
+  EN: "I hope it helps you just as it helped me."
+  PT: "Espero que ajude voce, assim como ajudou a mim."
+  (No quadro: capa "150 FITNESS RECIPES / A Lighter Life" em pe na
+   bancada, entre os ingredientes.)
+
+VERSOES DE IDIOMA:
+  EN .... feito (acima).
+  DE .... pendente (reajustar contagem de palavras por take).
+  FR .... pendente (reajustar contagem de palavras por take).
+
+
+--------------------------------------------------------------------
+WL-001 · VARIACAO 2 · ORGANIC WAVE · "oatmeal trick"
+--------------------------------------------------------------------
+Base ........... WL-001 (mesma pessoa, cenario e estrutura)
+Ingredientes ... Gelatina v2 = aveia (oats) · Baking soda v2 =
+                 vitamina C efervescente · Vinagre v2 = toranja
+Cor ............ vem da vitamina C (laranja/rosa) — SEM frasco de corante
+Duracao ........ 22s · 4 takes (6 + 6 + 6 + 4)
+Keyword CTA .... "book"
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 6s — 19 palavras
+  EN: "I dropped two dress sizes in a few weeks with this oatmeal
+       trick and it barely costs a thing."
+  PT: "Eu cai dois numeros de manequim em poucas semanas com esse
+       truque da aveia, e custa quase nada."
+
+  TAKE 2 — RECEITA — 6s — 17 palavras
+  EN: "Half a teaspoon of vitamin C, oats, squeeze a fresh
+       grapefruit, warm water every morning before coffee."
+  PT: "Meia colher de cha de vitamina C, aveia, uma toranja fresca
+       espremida, agua morna toda manha antes do cafe."
+
+  TAKE 3 — CTA — 6s — 18 palavras (igual v1)
+  EN: "If you'd like the full recipe, comment, book and I'll send you
+       the complete recipe plus a bonus."
+  PT: "Se voce quer a receita completa, comente 'book' que eu te
+       envio a receita completa mais um bonus."
+
+  TAKE 4 — FECHO — 4s — 9 palavras (igual v1)
+  EN: "I hope it helps you just as it helped me."
+  PT: "Espero que ajude voce, assim como ajudou a mim."
+  (No quadro: capa "150 FITNESS RECIPES / A Lighter Life" em pe na
+   bancada, entre os ingredientes.)
+
+VERSOES DE IDIOMA:
+  EN .... feito (acima).
+  DE .... pendente.
+  FR .... pendente.

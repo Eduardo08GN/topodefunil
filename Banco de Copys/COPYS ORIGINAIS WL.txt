@@ -1,0 +1,46 @@
+====================================================================
+BANCO DE COPYS ORIGINAIS — WEIGHT LOSS
+====================================================================
+As copys ORIGINAIS (verbatim, em ingles) dos videos concorrentes que
+analisamos e vamos modelar. Nada e' alterado aqui — este arquivo e' a
+FONTE DA VERDADE do que a pessoa realmente falou no video que bombou.
+As versoes ajustadas (nossas) ficam em: COPYS AJUSTADAS WL.txt
+
+Formato de cada entrada:
+  ID · agente · fonte · duracao · nº de takes
+  Copy verbatim por take, com o timestamp do original
+  O que aparecia em quadro (pessoa, bancada, ingredientes, keyword)
+====================================================================
+
+
+--------------------------------------------------------------------
+WL-001 · ORGANIC WAVE · "gelatin trick" (pink)
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Fonte .......... arquivo local AQOvAaGArf3M-...OqNs4WH27Jw.mp4
+Analisado em ... 04.09.2026
+Duracao ........ 22s · 4 takes (~6 + 6 + 6 + 4)
+Keyword CTA .... "yes"
+
+COPY VERBATIM (EN):
+  [00:00] "I dropped two dress sizes in a few weeks with this gelatin
+          trick and it barely costs a thing."
+  [00:07] "Half a teaspoon of baking soda, gelatin, squeeze a fresh
+          lemon, warm water every morning before coffee."
+  [00:13] "If you'd like the full recipe, comment yes and I'll send
+          you the complete recipe plus a bonus."
+  [00:19] "I hope it helps you just as it helped me."
+
+EM QUADRO (leitura otica):
+  Pessoa ....... mulher loira magra ~55-58, camisa de linho branca.
+  Cenario ...... cozinha de apartamento de frente pro mar, janelao
+                 com oceano/praia e palmeiras, quadro de praia na
+                 parede, bancada de madeira.
+  Cena A (0-12s) despeja BAKING SODA (Arm & Hammer) numa tigela de
+                 gelatina rosa -> espuma rosa transborda pela bancada.
+                 Bancada: caixa de JELL-O de morango, meio limao,
+                 colheres com especiaria (noz-moscada).
+  Cena B (13-22) corte mais fechado, caneca de vidro com liquido
+                 vermelho estendida pra camera; CTA + fecho.
+  Ingredientes . baking soda + gelatina (Jell-O) + limao. Sem ACV.
