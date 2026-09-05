@@ -66,6 +66,13 @@ iguais, muda só a substância), sempre por item que **toda americana reconhece*
 - O **nome do mecanismo no hook** acompanha o ingrediente-herói ("cornstarch
   trick", "oatmeal trick", etc.).
 
+**⛔ Marca do ingrediente por país (vídeos não-US):** o ingrediente que aparece
+em quadro vira a **marca mais comum daquele país**, com o rótulo escrito **no
+idioma local** — nunca Jell-O / Arm & Hammer em inglês num vídeo alemão/francês.
+Ex.: amido de milho → DE Mondamin (Speisestärke), FR Maïzena · bicarbonato → DE
+Kaiser Natron, FR La Baleine · gelatina → DE Dr. Oetker, FR Vahiné. É a mesma
+família da regra "o texto da capa do ebook acompanha o idioma do vídeo".
+
 ---
 
 ## 3. As 15 regras de produção do operador (o núcleo)

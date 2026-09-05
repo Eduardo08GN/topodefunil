@@ -15,8 +15,19 @@ Regras fixas aplicadas em toda copy ajustada:
       Mel                -> MEL (nao substitui)
   - Teto de palavras por take: 4s = 7 · 6s = 24 · 8s = 32.
   - Ultimo take leva a CAPA DO EBOOK em pe na bancada, entre os
-    ingredientes (EN: "capa 150 Eng Hotmart").
+    ingredientes. O TEXTO da capa acompanha o IDIOMA do video:
+      EN  capa 150 Eng Hotmart -> "150 FITNESS RECIPES / A Lighter Life"
+      DE  capa 150 DE Hotmart  -> "150 FITNESS-REZEPTE / Ein leichteres Leben"
+      FR  capa 150 FR Hotmart  -> (texto FR — ler o arquivo ao produzir)
+    Ajustar o texto escrito no prompt da IMAGE/TAKE do ultimo take.
   - Pessoa trocada pela REF definida; cenario mantido identico.
+  - MARCA DO INGREDIENTE POR PAIS: em video nao-US, o ingrediente em
+    quadro vira a MARCA MAIS COMUM DAQUELE PAIS, com o rotulo no idioma
+    local. Nunca Jell-O / Arm & Hammer em ingles num video DE/FR.
+      amido de milho: DE Mondamin (Speisestaerke) · FR Maizena
+      bicarbonato:    DE Kaiser Natron          · FR La Baleine
+      gelatina:       DE Dr. Oetker Gelatine     · FR Vahine
+    (confirmar a marca com o operador em duvida.)
 ====================================================================
 
 
@@ -69,8 +80,8 @@ COPY AJUSTADA (EN) + TRADUCAO (PT):
 
 VERSOES DE IDIOMA:
   EN .... feito (acima).
-  DE .... pendente (reajustar contagem de palavras por take).
-  FR .... pendente (reajustar contagem de palavras por take).
+  DE .... feito (ver WL-001 · VARIACAO 1 · ALEMAO no fim do arquivo).
+  FR .... pendente.
 
 
 --------------------------------------------------------------------
@@ -111,5 +122,90 @@ COPY AJUSTADA (EN) + TRADUCAO (PT):
 
 VERSOES DE IDIOMA:
   EN .... feito (acima).
-  DE .... pendente.
+  DE .... pendente (esta v2 ainda nao foi traduzida).
   FR .... pendente.
+
+
+--------------------------------------------------------------------
+WL-001 · ALEMAO (DE) · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Base ........... WL-001 (mesma pessoa REF, cenario, estrutura)
+Ingredientes ... ORIGINAIS, sem substituicao: gelatina rosa (Jell-O)
+                 + Natron (baking soda) + limao. Sem corante.
+Keyword CTA .... "Buch" (book em alemao) -- deve estar cadastrada na
+                 automacao de DM da pagina DE (senao o comentario
+                 entra e a DM nao sai; licao de book/yes/horse).
+Duracao ........ 28s · 4 takes (8 + 8 + 8 + 4)
+                 -- alemao gasta mais silaba por ideia; 6s nao cabe
+                 nas tres primeiras falas (medido ~7/7.5/6.5s), por
+                 isso 8s. Fecho cabe em 4s (~2s).
+Direcao ........ IMAGE/TAKE em ingles; so a fala e' alema; voz NATIVA
+                 alema declarada. No Veo Editor: Idioma = Alemao.
+
+COPY (DE) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 8s
+  DE: "Ich habe in wenigen Wochen zwei Kleidergroessen verloren, mit
+       diesem Gelatine-Trick, und er kostet fast nichts."
+  PT: "Eu perdi dois numeros de manequim em poucas semanas com esse
+       truque da gelatina, e custa quase nada."
+
+  TAKE 2 — RECEITA — 8s
+  DE: "Ein halber Teeloeffel Natron, Gelatine, eine frische Zitrone
+       auspressen, warmes Wasser, jeden Morgen vor dem Kaffee."
+  PT: "Meia colher de cha de bicarbonato, gelatina, espremer um limao
+       fresco, agua morna, toda manha antes do cafe."
+
+  TAKE 3 — CTA — 8s
+  DE: "Wenn du das ganze Rezept moechtest, kommentiere, Buch, und ich
+       schicke dir das komplette Rezept plus einen Bonus."
+  PT: "Se voce quer a receita completa, comente 'Buch' que eu te
+       envio a receita completa mais um bonus."
+
+  TAKE 4 — FECHO — 4s
+  DE: "Ich hoffe, es hilft dir so wie mir."
+  PT: "Espero que ajude voce, assim como ajudou a mim."
+  (No quadro: capa ALEMA "150 FITNESS-REZEPTE / Ein leichteres Leben"
+   em pe na bancada, entre os ingredientes.)
+
+
+--------------------------------------------------------------------
+WL-001 · VARIACAO 1 · ALEMAO (DE) · "Speisestaerke-Trick"
+--------------------------------------------------------------------
+Base ........... WL-001 Variacao 1 (EN) traduzida; mesma pessoa REF,
+                 cenario e estrutura.
+Ingredientes ... substituidos (v1): Brausepulver (efervescente /
+                 fruit salt) + Speisestaerke (amido de milho) +
+                 Zitrone (limao) + frasco de Lebensmittelfarbe
+                 (corante) rosa/vermelho visivel para dar a cor.
+Termos DE ...... os mais comuns na Alemanha: Speisestaerke (nome do
+                 rotulo) e Brausepulver (po que borbulha).
+Keyword CTA .... "Buch" (cadastrar na automacao DM da pagina DE).
+Duracao ........ 28s · 4 takes (8 + 8 + 8 + 4). Voz NATIVA alema.
+                 No Veo Editor: Idioma = Alemao. Capa DE.
+
+COPY (DE) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 8s
+  DE: "Ich habe in wenigen Wochen zwei Kleidergroessen verloren, mit
+       diesem Speisestaerke-Trick, und er kostet fast nichts."
+  PT: "Eu perdi dois numeros de manequim em poucas semanas com esse
+       truque do amido de milho, e custa quase nada."
+
+  TAKE 2 — RECEITA — 8s
+  DE: "Ein halber Teeloeffel Brausepulver, Speisestaerke, eine frische
+       Zitrone auspressen, warmes Wasser, jeden Morgen vor dem Kaffee."
+  PT: "Meia colher de cha de sal de frutas (efervescente), amido de
+       milho, espremer um limao fresco, agua morna, toda manha antes
+       do cafe."
+
+  TAKE 3 — CTA — 8s
+  DE: "Wenn du das ganze Rezept moechtest, kommentiere, Buch, und ich
+       schicke dir das komplette Rezept plus einen Bonus."
+  PT: "Se voce quer a receita completa, comente 'Buch' que eu te
+       envio a receita completa mais um bonus."
+
+  TAKE 4 — FECHO — 4s
+  DE: "Ich hoffe, es hilft dir so wie mir."
+  PT: "Espero que ajude voce, assim como ajudou a mim."
+  (No quadro: capa ALEMA "150 FITNESS-REZEPTE / Ein leichteres Leben".)
