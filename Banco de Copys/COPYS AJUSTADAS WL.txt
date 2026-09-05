@@ -21,6 +21,9 @@ Regras fixas aplicadas em toda copy ajustada:
       FR  capa 150 FR Hotmart  -> (texto FR — ler o arquivo ao produzir)
     Ajustar o texto escrito no prompt da IMAGE/TAKE do ultimo take.
   - Pessoa trocada pela REF definida; cenario mantido identico.
+  - IDIOMAS x VARIACOES: as versoes DE e FR usam SO a copy da versao
+    ORIGINAL em ingles (com ajustes leves) + a VARIACAO 1. A VARIACAO 2
+    e' exclusiva do INGLES (nao se traduz).
   - MARCA DO INGREDIENTE POR PAIS: em video nao-US, o ingrediente em
     quadro vira a MARCA MAIS COMUM DAQUELE PAIS, com o rotulo no idioma
     local. Nunca Jell-O / Arm & Hammer em ingles num video DE/FR.
@@ -209,3 +212,79 @@ COPY (DE) + TRADUCAO (PT):
   DE: "Ich hoffe, es hilft dir so wie mir."
   PT: "Espero que ajude voce, assim como ajudou a mim."
   (No quadro: capa ALEMA "150 FITNESS-REZEPTE / Ein leichteres Leben".)
+
+
+--------------------------------------------------------------------
+WL-001 · FRANCES (FR) · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Base ........... WL-001 (mesma pessoa REF, cenario, estrutura)
+Ingredientes ... ORIGINAIS: gelatina rosa + bicarbonato + limao.
+                 Marcas FR em quadro: gelatina Vahine, bicarbonate
+                 La Baleine, citron. Sem corante.
+Tom ............ "tu" (informal). Keyword "livre" (cadastrar na
+                 automacao DM da pagina FR).
+Duracao ........ 28s · 4 takes (8 + 8 + 8 + 4). Voz NATIVA francesa.
+                 No Veo Editor: Idioma = Frances. Capa FR.
+
+COPY (FR) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 8s
+  FR: "J'ai perdu deux tailles en quelques semaines grace a cette
+       astuce a la gelatine, et ca ne coute presque rien."
+  PT: "Eu perdi dois numeros de manequim em poucas semanas gracas a
+       esse truque da gelatina, e custa quase nada."
+
+  TAKE 2 — RECEITA — 8s
+  FR: "Une demi-cuillere de bicarbonate, de la gelatine, presse un
+       citron frais, de l'eau tiede chaque matin avant le cafe."
+  PT: "Meia colher de bicarbonato, gelatina, espremer um limao fresco,
+       agua morna toda manha antes do cafe."
+
+  TAKE 3 — CTA — 8s
+  FR: "Si tu veux la recette complete, commente, livre, et je
+       t'envoie la recette complete plus un bonus."
+  PT: "Se voce quer a receita completa, comente 'livre' que eu te
+       envio a receita completa mais um bonus."
+
+  TAKE 4 — FECHO — 4s
+  FR: "J'espere que ca t'aidera autant que moi."
+  PT: "Espero que ajude voce, assim como ajudou a mim."
+  (No quadro: capa FR "150 RECETTES MINCEUR / Une vie plus legere".)
+
+
+--------------------------------------------------------------------
+WL-001 · VARIACAO 1 · FRANCES (FR) · "astuce a la Maizena"
+--------------------------------------------------------------------
+Base ........... WL-001 Variacao 1; mesma pessoa REF, cenario, estrutura.
+Ingredientes ... Maizena (amido de milho) + vitamine C effervescente
+                 (o efervescente/fizz — comprimidos em tubo, everyday
+                 na Franca; NAO existe "fruit salt" na Franca) + citron.
+Cor ............ vem da vitamine C (laranja/rosa) — SEM corante.
+Tom ............ "tu". Keyword "livre" (cadastrar na automacao DM FR).
+Duracao ........ 28s · 4 takes (8 + 8 + 8 + 4). Voz NATIVA francesa.
+                 No Veo Editor: Idioma = Frances. Capa FR.
+
+COPY (FR) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 8s
+  FR: "J'ai perdu deux tailles en quelques semaines grace a cette
+       astuce a la Maizena, et ca ne coute presque rien."
+  PT: "Eu perdi dois numeros de manequim em poucas semanas gracas a
+       esse truque da Maizena (amido de milho), e custa quase nada."
+
+  TAKE 2 — RECEITA — 8s
+  FR: "Une demi-cuillere de vitamine C, de la Maizena, presse un
+       citron frais, de l'eau tiede chaque matin avant le cafe."
+  PT: "Meia colher de vitamina C, amido de milho (Maizena), espremer
+       um limao fresco, agua morna toda manha antes do cafe."
+
+  TAKE 3 — CTA — 8s
+  FR: "Si tu veux la recette complete, commente, livre, et je
+       t'envoie la recette complete plus un bonus."
+  PT: "Se voce quer a receita completa, comente 'livre' que eu te
+       envio a receita completa mais um bonus."
+
+  TAKE 4 — FECHO — 4s
+  FR: "J'espere que ca t'aidera autant que moi."
+  PT: "Espero que ajude voce, assim como ajudou a mim."
+  (No quadro: capa FR "150 RECETTES MINCEUR / Une vie plus legere".)
