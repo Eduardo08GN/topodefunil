@@ -287,32 +287,63 @@ def palavras_no_clipe(pals, t0, t1):
             if _lado(w, pals[i - 1] if i else None, pals[i + 1] if i + 1 < len(pals) else None, t0, t1)]
 
 
+def _corte_no_miolo(t0, t1, ws):
+    """Onde partir. ⭐ FIM DE FRASE primeiro, maior pausa depois.
+    ⛔ Partir no meio de uma frase entrega ao gerador um fragmento que comeca sem sujeito —
+    e fragmento assim e' o que dispara o filtro de audio (`what happens my friend`, recusado
+    14 vezes no PAPA JOELHO, gerado de primeira quando colado na frase inteira). Quando ha'
+    ponto final no miolo, e' ali que se corta, mesmo que a pausa seja menor."""
+    dur = t1 - t0
+    fim_frase = None
+    for a, b in zip(ws, ws[1:]):
+        pos = (b["t0"] - t0) / dur
+        if 0.3 <= pos <= 0.7 and a["w"].rstrip().endswith((".", "!", "?")):
+            gap = b["t0"] - a["t1"]
+            if fim_frase is None or gap > fim_frase[0]: fim_frase = (gap, a["t1"], b["t0"])
+    if fim_frase: return (fim_frase[1] + fim_frase[2]) / 2
+    melhor = None
+    for a, b in zip(ws, ws[1:]):
+        pos = (b["t0"] - t0) / dur
+        if 0.3 <= pos <= 0.7:
+            gap = b["t0"] - a["t1"]
+            if melhor is None or gap > melhor[0]: melhor = (gap, a["t1"], b["t0"])
+    return (melhor[1] + melhor[2]) / 2 if melhor else t0 + dur / 2
+
+
+def _partir(t0, t1, pals):
+    """Fatias do trecho, TODAS abaixo do teto do Veo. ⛔⛔ RECURSIVO, e o motivo e' caro:
+    ate' 2026-09-05 a divisao era em DOIS pedacos e so'. Um take de 17,8s virava 9,18s +
+    8,66s — as duas metades AINDA acima dos 8s que o Veo gera. O clipe nascia com 8s, a
+    frase saia cortada no meio (`...keeps your blood pressure` e nada de `in check`) e o
+    `dur_alvo` de 9,18s era inalcancavel por construcao. Quem viu foi o operador, olhando
+    o video; a lente de fala acusou "faltando" e eu li como erro do gerador."""
+    ws = palavras_no_clipe(pals, t0, t1)
+    if t1 - t0 <= TETO_VEO or len(ws) < 4:
+        return [(t0, t1)]
+    corte = _corte_no_miolo(t0, t1, ws)
+    return _partir(t0, corte, pals) + _partir(corte, t1, pals)
+
+
 def dividir(takes, pals):
     out = []
     for tk in takes:
-        ws = palavras_no_clipe(pals, tk["t0"], tk["t1"])
-        dur = tk["t1"] - tk["t0"]
-        if dur <= TETO_VEO or len(ws) < 4:
-            out.append({"take": tk["i"], "parte": 1, "t0": tk["t0"], "t1": tk["t1"], "dur": round(dur, 2),
-                        "fala": " ".join(w["w"] for w in ws)})
-            continue
-        # cortar na MAIOR pausa entre palavras dentro do miolo do take (30%-70%)
-        melhor = None
-        for a, b in zip(ws, ws[1:]):
-            pos = (b["t0"] - tk["t0"]) / dur
-            if 0.3 <= pos <= 0.7:
-                gap = b["t0"] - a["t1"]
-                if melhor is None or gap > melhor[0]: melhor = (gap, a["t1"], b["t0"])
-        corte = (melhor[1] + melhor[2]) / 2 if melhor else tk["t0"] + dur / 2
-        for k, (t0, t1) in enumerate(((tk["t0"], corte), (corte, tk["t1"])), 1):
-            sub = palavras_no_clipe(ws, t0, t1)
-            out.append({"take": tk["i"], "parte": k, "t0": round(t0, 2), "t1": round(t1, 2), "dur": round(t1 - t0, 2),
-                        "fala": " ".join(w["w"] for w in sub), "dividido_em": round(corte, 2)})
+        fatias = _partir(tk["t0"], tk["t1"], pals)
+        for k, (t0, t1) in enumerate(fatias, 1):
+            sub = palavras_no_clipe(pals, t0, t1)
+            item = {"take": tk["i"], "parte": k, "t0": round(t0, 2), "t1": round(t1, 2),
+                    "dur": round(t1 - t0, 2), "fala": " ".join(w["w"] for w in sub)}
+            if len(fatias) > 1: item["de_partes"] = len(fatias)
+            if t1 - t0 > TETO_VEO:
+                # ⚠️ trecho que nao da' para partir (menos de 4 palavras) e passa do teto:
+                # o clipe VAI sair cortado. Dizer alto em vez de deixar a fala sumir calada.
+                print(f"  AVISO take {tk['i']}.{k}: {t1 - t0:.2f}s acima do teto de {TETO_VEO}s "
+                      f"e sem pausa para partir — a fala vai sair CORTADA")
+            out.append(item)
     # invariante: nenhuma palavra sai pendurada — ultima palavra de um clipe que veio depois de
     # uma pausa e esta' grudada na primeira do clipe seguinte e' exatamente o `Take` do PAPA
     idx = {id(w): i for i, w in enumerate(pals)}
     for a, b in zip(out, out[1:]):
-        ua, pb = a["fala"].split()[-1:] , b["fala"].split()[:1]
+        ua, pb = a["fala"].split()[-1:], b["fala"].split()[:1]
         if not ua or not pb: continue
         wa = next((w for w in pals if w["w"] == ua[0] and a["t0"] <= (w["t0"] + w["t1"]) / 2 <= b["t1"]), None)
         if wa is None: continue
@@ -334,6 +365,22 @@ def autoteste_dividir():
              {"w": "refrigerator", "t0": 24.3, "t1": 24.9}]
     out2 = dividir(takes, pals2)
     assert out2[0]["fala"] == "leave it" and out2[1]["fala"] == "in refrigerator", out2
+    # ⛔ o caso do ABACAXI: take de 17,8s tem de virar TRES ou mais fatias, todas <= 8s.
+    # Partir em duas deixava 9,18s e 8,66s, as duas acima do teto, e a fala saia cortada.
+    import random as _r
+    longos = [{"w": f"w{i}", "t0": 15.73 + i * 0.28, "t1": 15.73 + i * 0.28 + 0.22} for i in range(64)]
+    for i in (20, 40): longos[i]["t0"] += 0.45; longos[i]["t1"] += 0.45     # duas pausas de frase
+    out3 = dividir([{"i": 6, "t0": 15.73, "t1": 33.57}], longos)
+    assert len(out3) >= 3, out3
+    assert all(o["dur"] <= TETO_VEO + 0.01 for o in out3), [o["dur"] for o in out3]
+    print(f"  OK  take de 17,8s -> {len(out3)} fatias, todas <= {TETO_VEO}s: {[o['dur'] for o in out3]}")
+    # ⭐ com ponto final no miolo, corta ALI, mesmo com pausa menor que outra
+    frase = [{"w": "aa", "t0": 0.0, "t1": 1.0}, {"w": "bb.", "t0": 1.0, "t1": 4.0},
+             {"w": "cc", "t0": 4.2, "t1": 6.0}, {"w": "dd", "t0": 7.0, "t1": 9.0},
+             {"w": "ee", "t0": 9.0, "t1": 11.0}]
+    c = _corte_no_miolo(0.0, 11.0, frase)
+    assert 4.0 <= c <= 4.2, c    # entre `bb.` e `cc`, e nao no vao maior entre `cc` e `dd`
+    print(f"  OK  corta no FIM DE FRASE ({c:.2f}s) e nao na maior pausa (6,5s)")
     print("autoteste_dividir OK")
 
 
