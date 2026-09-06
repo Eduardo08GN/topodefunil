@@ -664,3 +664,150 @@ COPY AJUSTADA (EN) + TRADUCAO (PT):
 
 PENDENTE: DE e FR (1a remessa com ingredientes ORIGINAIS traduzidos),
   so depois dos 2 videos em ingles fechados.
+
+
+--------------------------------------------------------------------
+WL-003 · ALEMAO (DE) · 1a remessa · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Base ........... WL-003 (mesma cena, mesma REF, mesmo enquadramento).
+Ingredientes ... ORIGINAIS traduzidos: Gelatine + Natron + Zitrone.
+                 Marcas DE em quadro: Dr. Oetker Gelatine, Kaiser
+                 Natron. SEM corante (a gelatina da' o vermelho).
+Duracao ........ 22s · 3 takes (8 + 6 + 8) — mesma estrutura do ingles;
+                 medido 35 / 22 / 31 silabas, tudo coube sem inflar
+                 nem cortar copy.
+Keyword CTA .... "Buch" (cadastrar na automacao de DM da pagina DE).
+Ebook .......... take 3 (o do CTA, que e' o ultimo): em pe, de frente,
+                 legivel, na cunha visivel da mesa; capa DE.
+Direcao ........ IMAGE/TAKE em ingles; fala alema; voz NATIVA alema.
+                 No Veo Editor: Idioma = Alemao.
+Movimento ...... um por take: (1) despejar o Natron · (2) so a espuma
+                 subindo, ela parada segurando o carton · (3) erguer o
+                 copo. Fala continua nos tres.
+
+COPY (DE) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK + BALANCA — 8s — 35 silabas
+  DE: "Ich habe es auch nicht geglaubt, bis zum fuenften Tag. Dann hat
+       sich alles veraendert. Mach das fuenf Naechte lang und stell
+       dich auf die Waage."
+  PT: "Eu tambem nao acreditava, ate o quinto dia. Ai tudo mudou. Faca
+       isso por cinco noites e suba na balanca."
+
+  TAKE 2 — RECEITA — 6s — 22 silabas
+  DE: "Gelatine, Natron, eine halbe Zitrone und warmes Wasser. Mehr
+       brauchst du nicht."
+  PT: "Gelatina, bicarbonato, meio limao e agua morna. E' so isso que
+       voce precisa."
+
+  TAKE 3 — CTA + EBOOK — 8s — 31 silabas
+  DE: "Kommentiere, Buch, und ich schicke dir das komplette Rezept plus
+       einen extra Tipp, der dir auf deinem Weg wirklich hilft."
+  PT: "Comente 'Buch' que eu te envio a receita completa mais uma dica
+       extra que vai te ajudar de verdade na sua jornada."
+
+PENDENTE: 2a remessa alema (Variacao 2) e o FRANCES (1a e 2a remessas).
+
+
+--------------------------------------------------------------------
+WL-003 · ALEMAO (DE) · 2a remessa · VARIACAO 2
+--------------------------------------------------------------------
+Base ........... WL-003 ALEMAO 1a remessa (mesma copy, cena, REF e
+                 enquadramento). SO a linha 3 muda: ingredientes.
+Ingredientes ... v2 em termos alemaes do dia a dia:
+                 Haferflocken (aveia — marca ancora Koelln) +
+                 Vitamin C efervescente (tubo) + Grapefruit.
+Cor ............ vem da vitamina C (laranja-rosa) — SEM corante.
+Duracao ........ 22s · 3 takes (8 + 6 + 8). Linha 3 = 23 silabas.
+Keyword CTA .... "Buch". Ebook no take 3, capa DE.
+Movimento ...... um por take: (1) despejar a vitamina C · (2) so a
+                 espuma subindo, ela parada segurando o tubo · (3)
+                 erguer o copo. Fala continua nos tres.
+
+COPY (DE) — so o TAKE 2 difere da 1a remessa:
+
+  TAKE 2 — RECEITA — 6s — 23 silabas
+  DE: "Haferflocken, Vitamin C, eine halbe Grapefruit und warmes
+       Wasser. Mehr brauchst du nicht."
+  PT: "Aveia, vitamina C, meia toranja e agua morna. E' so isso que
+       voce precisa."
+
+  TAKES 1 e 3 ... identicos aos da entrada WL-003 · ALEMAO 1a remessa.
+
+PENDENTE: FRANCES (1a e 2a remessas).
+
+
+--------------------------------------------------------------------
+WL-003 · FRANCES (FR) · 1a remessa · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Base ........... WL-003 (mesma cena, mesma REF, mesmo enquadramento).
+Ingredientes ... ORIGINAIS traduzidos: gelatine + bicarbonate + citron.
+                 Marcas FR em quadro: Vahine (gelatine), La Baleine
+                 (bicarbonate). SEM corante (a gelatina da' o vermelho).
+Tom ............ "tu". Keyword "livre" (cadastrar na automacao DM FR).
+Duracao ........ 22s · 3 takes (8 + 6 + 8) — medido 33 / 26 / 29
+                 silabas; mesma estrutura do ingles e do alemao.
+Ebook .......... take 3 (o do CTA, que e' o ultimo): em pe, de frente,
+                 legivel, na cunha visivel da mesa; capa FR
+                 "150 RECETTES MINCEUR / Une vie plus legere".
+Direcao ........ IMAGE/TAKE em ingles; fala francesa; voz NATIVA
+                 francesa. No Veo Editor: Idioma = Frances.
+Movimento ...... um por take: (1) despejar o bicarbonate · (2) so a
+                 espuma subindo, ela parada segurando o carton · (3)
+                 erguer o copo. Fala continua nos tres.
+
+COPY (FR) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK + BALANCA — 8s — 33 silabas
+  FR: "Moi non plus je n'y croyais pas, jusqu'au cinquieme jour. Et la,
+       tout a change. Fais ca pendant cinq nuits et monte sur la
+       balance."
+  PT: "Eu tambem nao acreditava, ate o quinto dia. Ai tudo mudou. Faca
+       isso por cinco noites e suba na balanca."
+
+  TAKE 2 — RECEITA — 6s — 26 silabas
+  FR: "De la gelatine, du bicarbonate, un demi-citron et de l'eau
+       tiede. C'est tout ce qu'il te faut."
+  PT: "Gelatina, bicarbonato, meio limao e agua morna. E' so isso que
+       voce precisa."
+
+  TAKE 3 — CTA + EBOOK — 8s — 29 silabas
+  FR: "Commente, livre, et je t'envoie la recette complete plus une
+       astuce en plus qui va vraiment t'aider dans ton parcours."
+  PT: "Comente 'livre' que eu te envio a receita completa mais uma dica
+       extra que vai te ajudar de verdade na sua jornada."
+
+PENDENTE: 2a remessa francesa (Variacao 2).
+
+
+--------------------------------------------------------------------
+WL-003 · FRANCES (FR) · 2a remessa · VARIACAO 2
+--------------------------------------------------------------------
+Base ........... WL-003 FRANCES 1a remessa (mesma copy, cena, REF e
+                 enquadramento). SO a linha 3 muda: ingredientes.
+Ingredientes ... v2 em termos franceses: flocons d'avoine (aveia) +
+                 vitamine C effervescente (tubo) + pamplemousse.
+Cor ............ vem da vitamine C (laranja-rosa) — SEM corante.
+Marca .......... aveia na Franca NAO tem marca-ancora (nao ha Koelln
+                 francesa): embalagem com rotulo em frances, sem marca
+                 forcada.
+Duracao ........ 22s · 3 takes (8 + 6 + 8). Linha 3 = 24 silabas.
+Tom ............ "tu". Keyword "livre". Ebook no take 3, capa FR.
+Movimento ...... um por take: (1) despejar a vitamine C · (2) so a
+                 espuma subindo, ela parada segurando o tubo · (3)
+                 erguer o copo. Fala continua nos tres.
+
+COPY (FR) — so o TAKE 2 difere da 1a remessa:
+
+  TAKE 2 — RECEITA — 6s — 24 silabas
+  FR: "Flocons d'avoine, vitamine C, un demi-pamplemousse et de l'eau
+       tiede. C'est tout ce qu'il te faut."
+  PT: "Aveia, vitamina C, meia toranja e agua morna. E' so isso que
+       voce precisa."
+  NOTA: lista SEM artigos (nao "Des flocons... de la vitamine..."), que
+  e' a traducao mais fiel ao ingles (que tambem lista sem artigo) e
+  cabe folgado nos 6s (24 silabas contra 28).
+
+  TAKES 1 e 3 ... identicos aos da entrada WL-003 · FRANCES 1a remessa.
+
+WL-003 COMPLETO: EN v1 + EN v2 + DE 1a/2a + FR 1a/2a.
