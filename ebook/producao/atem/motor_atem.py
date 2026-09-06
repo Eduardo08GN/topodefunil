@@ -138,13 +138,19 @@ def esc(t):
 # e' mais longa que a inspiracao.
 # ===========================================================================
 
-def svg_onda(ein, aus, pausa=0, ciclos=3, w=980, h=190):
+SVG_DE = {"ein": "EIN", "aus": "AUS", "ein_longo": "EINATMEN",
+          "aus_longo": "AUSATMEN", "cheio": "VOLL", "vazio": "LEER",
+          "legenda": "Das Ausatmen ist l&#228;nger. Genau das ist der ganze Trick."}
+
+
+def svg_onda(ein, aus, pausa=0, ciclos=3, w=980, h=190, rot=None):
     """Curva do folego: subida curta (inspira), descida longa (expira).
 
     A LARGURA de cada trecho e' proporcional aos SEGUNDOS reais, e e' isso que
     faz o desenho ensinar: o olho ve' a descida ocupar mais espaco que a subida
     antes de ler qualquer numero.
     """
+    rot = rot or SVG_DE
     total = (ein + aus + pausa) * ciclos
     esq, dir_, topo, base_y = 54, 18, 26, h - 46
     largura = w - esq - dir_
@@ -176,28 +182,29 @@ def svg_onda(ein, aus, pausa=0, ciclos=3, w=980, h=190):
     s.append('<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="#E2DED6" stroke-width="2"/>'
              % (esq, base_y, w - dir_, base_y))
     # faixas: verde para inspirar, dourado para expirar
-    for rot, xa, xb, e in marcas:
+    for _lbl, xa, xb, e in marcas:
         s.append('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" fill="%s" opacity=".5"/>'
                  % (xa, topo, xb - xa, base_y - topo,
                     "#E8F7EB" if e else "#FBF3E2"))
     s.append('<path d="%s" fill="none" stroke="#196B45" stroke-width="4" '
              'stroke-linecap="round" stroke-linejoin="round"/>' % " ".join(d))
     # rotulos do primeiro ciclo
-    for rot, xa, xb, e in marcas[:2 if not pausa else 2]:
+    for _lbl, xa, xb, e in marcas[:2]:
         s.append('<text x="%.1f" y="%.1f" text-anchor="middle" font-family="DM Sans,sans-serif" '
                  'font-size="15" font-weight="800" fill="%s">%s %d s</text>'
                  % ((xa + xb) / 2.0, base_y + 26, "#196B45" if e else "#8a6a1a",
-                    rot, ein if e else aus))
+                    (rot["ein"] if e else rot["aus"]), ein if e else aus))
     s.append('<text x="10" y="%.1f" font-family="DM Sans,sans-serif" font-size="12" '
-             'font-weight="800" fill="#54524E">VOLL</text>' % (topo + 5))
+             'font-weight="800" fill="#54524E">%s</text>' % (topo + 5, rot["cheio"]))
     s.append('<text x="10" y="%.1f" font-family="DM Sans,sans-serif" font-size="12" '
-             'font-weight="800" fill="#54524E">LEER</text>' % base_y)
+             'font-weight="800" fill="#54524E">%s</text>' % (base_y, rot["vazio"]))
     s.append("</svg>")
     return "".join(s)
 
 
-def svg_barra(ein, aus, w=980, h=112):
+def svg_barra(ein, aus, w=980, h=112, rot=None):
     """A barra do contraste: inspira x expira, lado a lado, na mesma escala."""
+    rot = rot or SVG_DE
     esq, dir_ = 18, 18
     largura = w - esq - dir_
     tot = float(ein + aus)
@@ -209,45 +216,21 @@ def svg_barra(ein, aus, w=980, h=112):
     s.append('<rect x="%.1f" y="26" width="%.1f" height="46" rx="12" fill="#D9A441"/>'
              % (esq + we + 6, largura - we - 6))
     s.append('<text x="%.1f" y="55" text-anchor="middle" font-family="DM Sans,sans-serif" '
-             'font-size="17" font-weight="900" fill="#fff">EINATMEN %d</text>'
-             % (esq + we / 2, ein))
+             'font-size="17" font-weight="900" fill="#fff">%s %d</text>'
+             % (esq + we / 2, rot["ein_longo"], ein))
     s.append('<text x="%.1f" y="55" text-anchor="middle" font-family="DM Sans,sans-serif" '
-             'font-size="17" font-weight="900" fill="#3d2c05">AUSATMEN %d</text>'
-             % (esq + we + 6 + (largura - we - 6) / 2, aus))
+             'font-size="17" font-weight="900" fill="#3d2c05">%s %d</text>'
+             % (esq + we + 6 + (largura - we - 6) / 2, rot["aus_longo"], aus))
     s.append('<text x="%d" y="96" font-family="DM Sans,sans-serif" font-size="14.5" '
-             'fill="#54524E">Das Ausatmen ist l&#228;nger. Genau das ist der ganze Trick.</text>'
-             % esq)
+             'fill="#54524E">%s</text>' % (esq, rot["legenda"]))
     s.append("</svg>")
     return "".join(s)
 
 
-def svg_uhr(minuten, zyklen, w=300, h=300):
-    """Relogio do exercicio: quantos ciclos cabem no tempo."""
-    cx, cy, r = w / 2.0, h / 2.0, 108
-    s = ['<svg viewBox="0 0 %d %d" width="100%%" xmlns="http://www.w3.org/2000/svg" '
-         'style="display:block">' % (w, h)]
-    s.append('<circle cx="%.1f" cy="%.1f" r="%d" fill="#F7F5F0"/>' % (cx, cy, r + 16))
-    import math
-    for i in range(zyklen):
-        a0 = -math.pi / 2 + (2 * math.pi) * i / zyklen
-        a1 = -math.pi / 2 + (2 * math.pi) * (i + .82) / zyklen
-        x0, y0 = cx + r * math.cos(a0), cy + r * math.sin(a0)
-        x1, y1 = cx + r * math.cos(a1), cy + r * math.sin(a1)
-        grande = 1 if (a1 - a0) > math.pi else 0
-        s.append('<path d="M %.1f %.1f A %d %d 0 %d 1 %.1f %.1f" fill="none" '
-                 'stroke="%s" stroke-width="13" stroke-linecap="round"/>'
-                 % (x0, y0, r, r, grande, x1, y1,
-                    "#196B45" if i % 2 == 0 else "#D9A441"))
-    s.append('<text x="%.1f" y="%.1f" text-anchor="middle" font-family="DM Sans,sans-serif" '
-             'font-size="46" font-weight="900" fill="#196B45">%s</text>'
-             % (cx, cy + 4, minuten))
-    s.append('<text x="%.1f" y="%.1f" text-anchor="middle" font-family="DM Sans,sans-serif" '
-             'font-size="14" font-weight="800" fill="#54524E">MINUTEN</text>' % (cx, cy + 28))
-    s.append('<text x="%.1f" y="%.1f" text-anchor="middle" font-family="DM Sans,sans-serif" '
-             'font-size="13.5" font-weight="700" fill="#54524E">%d Atemz&#252;ge</text>'
-             % (cx, h - 8, zyklen))
-    s.append("</svg>")
-    return "".join(s)
+# ⛔ `svg_uhr` REMOVIDO. Era um relogio decorativo que nenhum builder chamava e
+# que carregava `MINUTEN` e `Atemzuege` cravados — codigo morto com defeito de
+# idioma dentro e' armadilha para quem vier depois: um dia alguem o usa e o
+# alemao reaparece num PDF frances sem que ninguem entenda de onde veio.
 
 
 # ===========================================================================
@@ -300,8 +283,14 @@ def ruhe(texto):
     return '<div class="ruhe">%s</div>' % texto
 
 
-def uebung(tag, nome, hook, foto, stats, ritmo, schritte, worauf, sicher):
-    """Card de UM exercicio. `ritmo` = (ein, aus, pausa, ciclos) ou None."""
+def uebung(tag, nome, hook, foto, stats, ritmo, schritte, worauf, sicher,
+           rot_merk="Woran du merkst, dass es wirkt", rot_stop="Sicherheit",
+           rot_svg=None):
+    """Card de UM exercicio. `ritmo` = (ein, aus, pausa, ciclos) ou None.
+
+    ⛔ Os dois rotulos das caixas CHEGAM DE FORA. Eram alemao cravado aqui
+    dentro, e a doutrina do repo e' uma ferramenta por funcao, nunca uma
+    copia por idioma — o frances usa este mesmo motor."""
     p = ['<section class="uebung">']
     p.append('<span class="tag">%s</span>' % esc(tag))
     p.append("<h2>%s</h2>" % nome)
@@ -318,15 +307,15 @@ def uebung(tag, nome, hook, foto, stats, ritmo, schritte, worauf, sicher):
     if ritmo:
         ein, aus, pausa, ciclos = ritmo
         p.append('<div style="margin-top:10px">%s</div>'
-                 % svg_onda(ein, aus, pausa, 2, h=168))
+                 % svg_onda(ein, aus, pausa, 2, h=168, rot=rot_svg))
     # ⭐ A caixa dourada mora NA COLUNA, ao lado da foto. Ela e' o que sobrava:
     # a foto tem 262px de altura e a coluna da direita so' ~140, e essa faixa
     # vazia era exatamente do tamanho da caixa que ia sozinha para a pagina
     # seguinte. Espaco morto virou conteudo, e a orfa some sem apertar fonte.
     if worauf:
-        p.append(merk("Woran du merkst, dass es wirkt", worauf))
+        p.append(merk(rot_merk, worauf))
     if sicher:
-        p.append(stop("Sicherheit", sicher))
+        p.append(stop(rot_stop, sicher))
     p.append("</div></div>")
     p.append(passos(schritte))
     p.append("</section>")

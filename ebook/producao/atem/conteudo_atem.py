@@ -444,3 +444,53 @@ S2 = {
          "über den Tag verteilt ist besser als einmal zwölf Minuten."),
     ],
 }
+
+
+# ===========================================================================
+# ⭐ ROTULOS FIXOS DA INTERFACE — o que nao e' conteudo, e' cromo.
+# ⛔ Eles moram AQUI, no modulo de dados do idioma, e nao no motor nem no
+# builder. Foi o que permitiu o frances reusar `motor_atem` e `build_atem`
+# inteiros: uma ferramenta por funcao, dados por idioma.
+# ===========================================================================
+
+ROT = {
+    "merk": "Woran du merkst, dass es wirkt",
+    "stop": "Sicherheit",
+    "faq": "Häufige Fragen",
+    "tag": "TAG",
+    "anker": "ANKER",
+    "s1_satz": "Der eine Satz",
+    "s1_arzt": "Vorher fragen",
+    "s1_krise": "Akute Krise",
+    "s1_druck": "Ausdrucken",
+    "s3_real": "Realistisch bleiben",
+    "s3_notruf": "Wann es kein Fall für eine Atemübung ist",
+    "s4_warum": "Warum 21 Tage",
+    "s6_wer": "Wer diesen Bonus auslässt",
+    "s7_skala": "Zur Skala",
+    "s7_ende": "Zum Schluss",
+    "dias": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+    "woche": "Woche",
+    # ⛔ Rotulo de GRAFICO tambem e' idioma. Ficaram cravados em alemao
+    # dentro do motor e vazaram inteiros para o PDF frances — texto que
+    # ninguem le em revisao porque esta desenhado, nao escrito.
+    "svg": {"ein": "EIN", "aus": "AUS", "ein_longo": "EINATMEN",
+            "aus_longo": "AUSATMEN", "cheio": "VOLL", "vazio": "LEER",
+            "legenda": "Das Ausatmen ist l&#228;nger. Genau das ist der ganze Trick."},
+}
+
+ARQUIVOS = [
+    "Schritt 1 - Fang hier an.pdf",
+    "Schritt 2 - Der Atemanker.pdf",
+    "Schritt 3 - Der Notfall-Anker.pdf",
+    "Schritt 4 - Dein 21-Tage-Plan.pdf",
+    "Schritt 5 - Die Abendroutine.pdf",
+    "Schritt 6 - Bonus 1 - Kaelte ohne Eis.pdf",
+    "Schritt 7 - Bonus 2 - Dein Ruhe-Tagebuch.pdf",
+]
+
+TITULOS_DOC = [
+    "Fang hier an — Der Atemanker", "Der Atemanker", "Der Notfall-Anker",
+    "Dein 21-Tage-Plan", "Die Abendroutine", "Kälte ohne Eis",
+    "Dein Ruhe-Tagebuch",
+]

@@ -1,4 +1,4 @@
-# BRIEFING — DER ATEMANKER (2026-09-05)
+# BRIEFING — DER ATEMANKER (de) / L'ANCRE DU SOUFFLE (fr)
 
 > Segundo produto do parque de ebooks. Mercado alemão, nicho de ansiedade /
 > regulação do sistema nervoso. Nasce para ser o destino do funil `gelo16`.
@@ -14,8 +14,9 @@
 | Promessa | Sair do alarme permanente em 2 minutos, sentado, em casa |
 | Idioma | Alemão, tratamento **`du`** |
 | Preço | **10 €**, pagamento único, garantia 7 dias |
-| Entrega | 7 PDFs (`Schritt 1..7`) num zip, **58 páginas**, 3,8 MB |
+| Entrega | 7 PDFs (`Schritt 1..7`) num zip, **55 páginas**, 2,9 MB |
 | Landing | `book.morningritualmen.site` |
+| Produto Hotmart | **8464658** · checkout `pay.hotmart.com/W107488023J` |
 
 ## 2. ⭐⭐ A DECISÃO DE CONTEÚDO QUE CONTRARIA A FONTE
 
@@ -87,7 +88,7 @@ Schritt 7 - Bonus 2 - Ruhe-Tagebuch   9 pag   vorlagen para imprimir
 
 | lente | resultado |
 |---|---|
-| páginas totais | **58** |
+| páginas totais | **55** |
 | páginas órfãs | **0** (a única sinalizada é seção curta real, 32%) |
 | português vazado | **0** |
 | mojibake | **0** |
@@ -138,3 +139,94 @@ baixa para `fotos/<slug>.jpg`. 20 fotos deste produto saíram assim.
 (TMG/DSGVO). Não tenho os dados da empresa do Ed; o rodapé está preparado e
 vazio. **Preencher antes de escalar tráfego** — é multa por notificação
 (`Abmahnung`), não é detalhe.
+
+
+---
+
+## 10. A VERSAO FRANCESA (2026-09-06)
+
+| | |
+|---|---|
+| Nome | **L'Ancre du Souffle — Le calme en 2 minutes** |
+| Mecanismo | **L'Ancre du Souffle** |
+| Tratamento | **`vous`** |
+| Landing | `book.nestlingpicks.shop` |
+| Produto Hotmart | **8465131** · checkout `pay.hotmart.com/C107488941D` |
+| Entregavel | 7 PDFs, **55 paginas**, zip de 3,0 MB |
+
+⭐ **`vous` e nao `tu`, e a razao foi MEDIDA:** o `landing-150/index-fr.html` tem
+47 `vous` e zero `tu`. O alemao usa `du` porque o pool inteiro do `gelo16` fala
+`du` — congruencia com o trafego. O frances nao tem funil com essa trava, entao
+manda a voz que o repo ja' usa.
+
+⚠️ **OS TELEFONES DE CRISE SAO OUTROS.** Copiar os alemaes seria dar a uma
+francesa em crise um numero que nao atende. Franca `3114`, Belgica
+`0800 32 123`, Suica `143`, urgencia `112` (ou `15`).
+
+### O que o frances obrigou a consertar no motor
+
+⛔⛔ **OS DIAGRAMAS SVG TINHAM ALEMAO CRAVADO E VAZARAM INTEIROS.** `EINATMEN`,
+`AUSATMEN`, `VOLL`, `LEER` e a legenda `Das Ausatmen ist laenger…` apareceram
+dentro dos PDFs franceses. Ninguem le' rotulo de grafico numa revisao — o texto
+esta' DESENHADO, nao escrito. Agora eles moram em `ROT["svg"]`, nos dados do
+idioma. `svg_uhr` foi REMOVIDO: nenhum builder o chamava e ele carregava
+`MINUTEN`/`Atemzuege` — codigo morto com defeito de idioma dentro e' armadilha
+para quem vier depois.
+
+⛔ **E o medidor que achou isso quase deixou passar.** Buscar `"der "` como
+SUBSTRING acusa `garder` — a mesma armadilha de fronteira de palavra que este
+repo ja' pagou duas vezes. Com `(?<!\w)der(?!\w)`: **zero alemao no frances**.
+
+⭐ **Um motor, um builder, dados por idioma.** `build_atem.py <de|fr>` importa o
+par de modulos do idioma. Os rotulos fixos de interface e os nomes de arquivo
+sairam do builder para `ROT`/`ARQUIVOS`. **Prova de que o refactor foi neutro:
+os 7 PDFs alemaes sairam com texto e paginacao IDENTICOS aos ja' publicados.**
+
+### Medicao do frances
+
+| lente | resultado |
+|---|---|
+| paginas | **55** (igual ao alemao) |
+| orfas | **0** |
+| alemao vazado (fronteira de palavra) | **0** |
+| acentos franceses | 755 |
+| mojibake | 0 |
+| compressao | 15,8 -> 3,8 MB, texto e paginacao identicos |
+
+⚠️ Chegar a zero orfa em frances exigiu mais do que aparar palavra: o card
+principal passava de 1,0 pagina por uma linha. O conserto foi **estrutural** —
+o antigo passo 1 (*"sente-se como no exercicio 1"*) nao e' uma acao do ritmo,
+e' o ponto de partida, e virou parte do chapeu. Seis passos viraram cinco sem
+perder nada.
+
+## 11. O QUE A HOTMART ENSINOU NESTA RODADA
+
+⛔⛔ **O CAMPO DE PRECO E' MASCARADO E COMEU A VIRGULA.** Digitar `10,00` por
+`type_text` produziu **`100,00`** — dez vezes o preco — e a simulacao ja'
+mostrava o comprador frances pagando 100 EUR. E `Ctrl+A` nao limpa esse campo:
+as tentativas se ACUMULARAM (`100,00` -> `100.010,00` -> `1.001.000,10`).
+O caminho certo: `End`, ~24 `Backspace`, e digitar **so' digitos** (`1000` = 10,00).
+
+⛔⛔ **`vatValueEmbedded` DECIDE QUANTO O COMPRADOR PAGA.** Desmarcado, a
+simulacao da' **11,60 EUR** na Alemanha e **12,00 EUR** na Franca com preco base
+de 10. Marcado, o comprador paga 10,00 cravados — que e' o que a landing promete
+e o que a lei de precos ao consumidor exige na UE. **Conferir nos tres produtos
+antigos do ebook 150.**
+
+⛔ **Clique sintetico nao funciona na tela de checkout.** `elementFromPoint`
+devolve o elemento certo e mesmo assim o foco fica no `BODY`. O que funciona:
+`focus()` por JS nos campos de texto e `.click()` de DOM nos `label[for=...]` e
+nos itens de menu.
+
+⛔ **`fill_input` nao e' confiavel quando a pagina rola entre a medicao e o
+clique.** Medir o rect e clicar tem de acontecer no MESMO passo, e o foco tem de
+ser conferido antes de digitar.
+
+⭐ **Onde mora o link de checkout:** `Precificacao e ofertas` -> menu `Acoes` da
+linha da oferta -> **`Links desta oferta`**. A pagina `Links de divulgacao` do
+menu lateral renderiza VAZIA e nao serve.
+
+⚠️ **A Hotmart pede o nome do autor escrito dentro do arquivo** (`Nome do(a)
+autor(a)`). Nenhum dos dois entregaveis tem. Nao bloqueou a aprovacao — os dois
+estao `Vendas ativas` — mas e' pendencia real e depende da identidade comercial
+do Ed, a mesma que falta para o Impressum.

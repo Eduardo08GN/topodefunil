@@ -21,10 +21,21 @@ import motor_atem as M
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 
-TITULO = "DER<br>ATEMANKER"
-SUB = "Die 2-Minuten-Methode<br>gegen innere Unruhe"
-RODAPE = "Ohne Eis. Ohne Ausrüstung. Zu Hause."
 FOTO = "fotos/persona.jpg"
+
+# ⛔ Um gerador, dados por idioma — a mesma regra do `build_atem`.
+CAPAS = {
+    "de": {"titulo": "DER<br>ATEMANKER",
+           "sub": "Die 2-Minuten-Methode<br>gegen innere Unruhe",
+           "rodape": "Ohne Eis. Ohne Ausrüstung. Zu Hause.",
+           "eyebrow": "7 DATEIEN &middot; SOFORT-DOWNLOAD",
+           "slug": "capa-atem"},
+    "fr": {"titulo": "L&rsquo;ANCRE<br>DU SOUFFLE",
+           "sub": "La méthode en 2 minutes<br>contre l&rsquo;agitation intérieure",
+           "rodape": "Sans glace. Sans matériel. Chez vous.",
+           "eyebrow": "7 FICHIERS &middot; T&Eacute;L&Eacute;CHARGEMENT IMM&Eacute;DIAT",
+           "slug": "capa-ancre"},
+}
 
 # ⭐ A linha do rodape e' a lente `GE5` do funil impressa na capa: a imagem do
 # criativo e' gelo, a oferta e' respiracao. Quem chega do video le' `ohne Eis`
@@ -60,7 +71,7 @@ _HTML = """<!doctype html><html lang="de"><head><meta charset="utf-8">
 <div class="scrim"></div>
 <div class="wrap">
   <div>
-    <span class="eyebrow">7 DATEIEN &middot; SOFORT-DOWNLOAD</span>
+    <span class="eyebrow">%(eyebrow)s</span>
     <h1>%(titulo)s</h1>
     <div class="rule"></div>
     <p class="sub">%(sub)s</p>
@@ -69,10 +80,11 @@ _HTML = """<!doctype html><html lang="de"><head><meta charset="utf-8">
 </div></body></html>"""
 
 
-def _render(nome, W, H, dim):
+def _render(nome, W, H, dim, cfg):
     css = _CSS % dim
-    html = _HTML % {"css": css, "foto": FOTO, "titulo": TITULO,
-                    "sub": SUB, "rodape": RODAPE}
+    html = _HTML % {"css": css, "foto": FOTO, "titulo": cfg["titulo"],
+                    "sub": cfg["sub"], "rodape": cfg["rodape"],
+                    "eyebrow": cfg["eyebrow"]}
     tmp = os.path.join(AQUI, "_tmp_capa.html")
     with open(tmp, "w", encoding="utf-8") as f:
         f.write(html)
@@ -96,14 +108,16 @@ def _render(nome, W, H, dim):
     return jpg
 
 
-def main():
-    _render("capa-atem-800x1000", 800, 1000, dict(
+def main(lang="de"):
+    cfg = CAPAS[lang]
+    _render("%s-800x1000" % cfg["slug"], 800, 1000, dict(
         W=800, H=1000, P=54, PB=48, EY=15, EYP=10, EYPX=20,
-        T=82, TM=26, RW=86, RH=7, RM=26, S=27, F=21))
-    _render("capa-atem-600x600", 600, 600, dict(
+        T=82, TM=26, RW=86, RH=7, RM=26, S=27, F=21), cfg)
+    _render("%s-600x600" % cfg["slug"], 600, 600, dict(
         W=600, H=600, P=40, PB=34, EY=12, EYP=8, EYPX=16,
-        T=62, TM=18, RW=64, RH=6, RM=18, S=20, F=16))
+        T=62, TM=18, RW=64, RH=6, RM=18, S=20, F=16), cfg)
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main(sys.argv[1].lower() if len(sys.argv) > 1 else "de")

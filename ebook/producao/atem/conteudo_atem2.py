@@ -274,6 +274,7 @@ S4 = {
         "Runde geht deutlich schneller als die erste.",
     ],
 
+    "tabela_col": "Geübt",
     "tabelle_titel": "Deine Häkchen-Tabelle",
     "tabelle_sub": ("Druck diese Seite aus. Ein Kreuz pro Tag, und mehr "
                     "nicht — Notizen kommen ins Ruhe-Tagebuch."),
