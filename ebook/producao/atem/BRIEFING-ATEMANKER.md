@@ -230,3 +230,40 @@ menu lateral renderiza VAZIA e nao serve.
 autor(a)`). Nenhum dos dois entregaveis tem. Nao bloqueou a aprovacao — os dois
 estao `Vendas ativas` — mas e' pendencia real e depende da identidade comercial
 do Ed, a mesma que falta para o Impressum.
+
+
+## 12. O NOME COMERCIAL (o que aparece na fatura do cartao)
+
+Campo: **`Nome que aparece na fatura`**, em `Ferramentas > Configurar checkout`.
+E' o unico texto que o comprador ve' no extrato do cartao — se ele nao
+reconhecer a compra, contesta. Por isso o campo existe.
+
+⛔ **O LIMITE REAL E' 16, nao 22.** A dica da propria tela diz 22; o
+`maxLength` do input diz 16, e o que passa disso e' **cortado em silencio**.
+Nome cortado e' pior que nome generico: ele produz exatamente a contestacao que
+o campo deveria evitar.
+
+**A convencao, lida dos produtos que ja' vendiam:**
+nome curto do produto, no idioma do comprador, caixa alta, ate' 16 caracteres.
+
+| produto | nome comercial | linha do extrato |
+|---|---|---|
+| 150 Receitas DE | `150 FIT REZEPTE` | `HTM*HT 150 FIT REZEPTE` |
+| 150 Receitas FR | `150 RECETTES FIT` | `HTM*HT 150 RECETTES FIT` |
+| 150 Receitas EN | `150 FIT RECIPES` | `HTM*HT 150 FIT RECIPES` |
+| **Der Atemanker** | `DER ATEMANKER` (13) | `HTM*HT DER ATEMANKER` |
+| **L'Ancre du Souffle** | `ANCRE DU SOUFFLE` (16) | `HTM*HT ANCRE DU SOUFFLE` |
+
+⚠️ O frances nasceu errado como `ANCRE SOUFFLE` — frances quebrado, sem o `du`.
+Corrigido para `ANCRE DU SOUFFLE`, que usa os 16 caracteres cravados.
+
+⛔⛔ **E A CORRECAO QUASE VIROU O DEFEITO QUE ELA IA CONSERTAR.** Neste campo:
+  · `press_key("Backspace")` NAO apaga quando o foco veio de `focus()` por JS —
+    as teclas de edicao precisam de foco vindo de clique real. Mas `type_text`
+    escreve assim mesmo, entao o texto novo foi ANEXADO ao velho e cortado no
+    16: ficou `ANCRE SOUFFLEANC`. Silencioso, e exatamente o nome truncado que
+    causa contestacao.
+  · O que funciona: `focus()` + `setSelectionRange(0, value.length)` por JS e
+    entao `type_text` — a insercao substitui a selecao.
+  · ⛔ E conferir DEPOIS DE RECARREGAR, sempre. Ler o campo na tela em que se
+    digitou nao prova nada.
