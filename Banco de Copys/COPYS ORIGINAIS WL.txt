@@ -12,9 +12,11 @@ Formato de cada entrada:
   O que aparecia em quadro (pessoa, bancada, ingredientes, keyword)
 
 ⛔ ANTES DE PRODUZIR UM VIDEO NOVO: varrer este arquivo (e o AJUSTADAS)
-   atras de copy IGUAL ou muito PARECIDA. Se houver, mostrar a nova E a
-   existente pro operador comparar e decidir. So entra copy completamente
-   diferente — nunca testar a mesma copy mais de 2x.
+   atras de copy repetida — mas comparando SO O HOOK E O CORPO.
+   ⛔⛔ Ingredientes e CTA NAO contam: eles sempre repetem no funil (a
+   receita e' a mesma e o CTA e' sempre "comment, book"). O que precisa
+   variar e' a FORMA DE APRESENTACAO (angulo do hook, cena, ritmo).
+   Se hook/corpo baterem, mostrar a nova E a existente pro operador.
 ====================================================================
 
 
@@ -85,3 +87,45 @@ EM QUADRO (leitura otica):
                  Espreme limao, bate, ergue a taca. Mecanismo+CTA+follow.
   Ingredientes . baking soda + gelatina + limao (+ canela + beterraba
                  nao nomeados na fala).
+
+
+--------------------------------------------------------------------
+WL-003 · acampamento (cena unica) · "cinco noites"
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Fonte .......... arquivo local AQNIvKQHqzJp1x310esL...tc64PCwoPQ.mp4
+Analisado em ... 06.09.2026
+Duracao ........ 16s · cena unica
+Keyword CTA .... "yes"
+
+COPY VERBATIM (EN):
+  [00:00] "I didn't believe it either until the fifth day. Then
+          everything changed."
+  [00:03] "Try this for five nights."
+  [00:04] "Gelatin, baking soda, half a lemon, and warm water. That's
+          all you need."
+  [00:09] "Comment yes, and I'll send you the full recipe plus an extra
+          tip that will really help you on your journey."
+
+EM QUADRO (leitura otica):
+  Pessoa ....... mulher loira magra ~55-60, camisa xadrez VERMELHA
+                 sobre camiseta bordo, jeans.
+  Cenario ...... acampamento em floresta de pinheiros: barraca de lona
+                 bege a direita, fogueira acesa embaixo a esquerda,
+                 cadeiras de camping, mesa de piquenique rustica
+                 atravessando o primeiro plano. Ceu azul entre os pinhos.
+  Enquadramento  plano medio, altura dos olhos, ela centralizada atras
+                 da mesa; no beat final o copo avanca grande no
+                 primeiro plano.
+  Beats ........ despeja Arm & Hammer na tigela de gelatina vermelha ->
+                 ERUPCAO de espuma rosa transbordando pela mesa ->
+                 aponta os ingredientes -> ergue copo alto de bebida
+                 vermelha -> estende o copo pra lente.
+  Ingredientes . baking soda + gelatina (JELL-O morango) + meio limao
+                 (+ especiaria marrom em colheres, nao nomeada).
+
+NOTA DE DUPLICIDADE: a linha da receita e o CTA batem com a WL-001, mas
+  isso NAO conta como repeticao — ingredientes e CTA sempre repetem no
+  funil. O HOOK e o CORPO sao novos (ceticismo + prazo de 5 noites,
+  cena unica no acampamento). Copy aprovada como NOVA pelo operador.

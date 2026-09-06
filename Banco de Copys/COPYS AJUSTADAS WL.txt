@@ -566,3 +566,101 @@ COPY AJUSTADA (EN) + TRADUCAO (PT):
   PT: "Mas garanta que esta me seguindo, ou voce nao vai receber minha
        mensagem."
   (No quadro: capa EN "150 FITNESS RECIPES / A Lighter Life".)
+
+
+--------------------------------------------------------------------
+WL-003 · VARIACAO 1 · INGLES (EN) · "cinco noites"
+--------------------------------------------------------------------
+Modela ......... WL-003 (ver COPYS ORIGINAIS WL.txt)
+Ajustado em .... 06.09.2026
+Ingredientes ... v1 substituidos (regra absoluta: no ingles NUNCA usar
+                 gelatina/baking soda/vick/vinagre de maca do original):
+                 amido de milho (cornstarch) + sal de frutas (fruit
+                 salt) + meio limao + frasco de corante VERMELHO
+                 (amido e sal de frutas sao incolores).
+Cenario ........ mantido: acampamento na floresta, CENA UNICA, mesa de
+                 piquenique. Pessoa trocada pela REF.
+Duracao ........ 22s · 3 takes (8 + 6 + 8). A fonte tem 16s mas fala
+                 muito rapido e a linha da balanca foi acrescentada;
+                 copy nao se encurta, entao o tempo estica.
+Keyword CTA .... "book".
+Ebook .......... take 3 (o do CTA, que e' o ultimo): em pe e em
+                 destaque; capa EN "150 FITNESS RECIPES / A Lighter Life".
+
+AJUSTES DE COPY (operador, 06.09):
+  - linha 2 ganhou "and step on the scale" (suba na balanca).
+  - CTA "comment yes" -> "comment, book".
+  - ingredientes -> Variacao 1.
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK + BALANCA — 8s — 22 palavras
+  EN: "I didn't believe it either until the fifth day. Then everything
+       changed. Try this for five nights and step on the scale."
+  PT: "Eu tambem nao acreditava, ate o quinto dia. Ai tudo mudou. Faca
+       isso por cinco noites e suba na balanca."
+
+  TAKE 2 — RECEITA — 6s — 13 palavras
+  EN: "Cornstarch, fruit salt, half a lemon, and warm water. That's all
+       you need."
+  PT: "Amido de milho, sal de frutas, meio limao e agua morna. E' so
+       isso que voce precisa."
+
+  TAKE 3 — CTA + EBOOK — 8s — 21 palavras
+  EN: "Comment, book, and I'll send you the full recipe plus an extra
+       tip that will really help you on your journey."
+  PT: "Comente 'book' que eu te envio a receita completa mais uma dica
+       extra que vai te ajudar de verdade na sua jornada."
+
+VERSOES SEGUINTES:
+  EN v2 ..... pendente (aveia + vitamina C + toranja).
+  DE ........ pendente (1a remessa: ingredientes ORIGINAIS traduzidos —
+              Dr. Oetker Gelatine + Kaiser Natron + Zitrone).
+  FR ........ pendente (1a remessa: Vahine + La Baleine + citron).
+  (DE/FR so comecam depois dos 2 videos em ingles.)
+
+
+--------------------------------------------------------------------
+WL-003 · VARIACAO 2 · INGLES (EN) · "cinco noites"
+--------------------------------------------------------------------
+Base ........... WL-003 Variacao 1 (mesma copy, mesma cena, mesma REF).
+                 SO a linha 3 muda: ingredientes.
+Ingredientes ... v2: aveia (oats) + vitamina C efervescente + toranja
+                 (grapefruit). Cor vem da vitamina C (laranja-rosa),
+                 SEM corante.
+Duracao ........ 22s · 3 takes (8 + 6 + 8). Keyword "book".
+Ebook .......... take 3 (o do CTA, que e' o ultimo): em pe, de frente,
+                 legivel, na parte visivel da mesa; capa EN.
+
+REGRAS NOVAS APLICADAS (aprendidas no bug do take 1 da v1):
+  - FALA CONTINUA: a personagem fala tudo de uma vez, sem pausa.
+    Proibida a estrutura "says X while ..., then continues Y while ...".
+  - UM MOVIMENTO POR TAKE: take 1 = so despejar · take 2 = so a espuma
+    subindo (ela parada segurando o tubo) · take 3 = so erguer o copo.
+    Terminada a acao, ela CONTINUA SEGURANDO o objeto; nao abaixa, nao
+    devolve pra mesa, nao pega outro item, nao gesticula.
+  - CAMERA declarada com ALTURA + INCLINACAO + o que revela (nunca
+    "eye-level" sozinho).
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK + BALANCA — 8s — 22 palavras
+  EN: "I didn't believe it either until the fifth day. Then everything
+       changed. Try this for five nights and step on the scale."
+  PT: "Eu tambem nao acreditava, ate o quinto dia. Ai tudo mudou. Faca
+       isso por cinco noites e suba na balanca."
+
+  TAKE 2 — RECEITA — 6s — 13 palavras
+  EN: "Oats, vitamin C, half a grapefruit, and warm water. That's all
+       you need."
+  PT: "Aveia, vitamina C, meia toranja e agua morna. E' so isso que
+       voce precisa."
+
+  TAKE 3 — CTA + EBOOK — 8s — 21 palavras
+  EN: "Comment, book, and I'll send you the full recipe plus an extra
+       tip that will really help you on your journey."
+  PT: "Comente 'book' que eu te envio a receita completa mais uma dica
+       extra que vai te ajudar de verdade na sua jornada."
+
+PENDENTE: DE e FR (1a remessa com ingredientes ORIGINAIS traduzidos),
+  so depois dos 2 videos em ingles fechados.
