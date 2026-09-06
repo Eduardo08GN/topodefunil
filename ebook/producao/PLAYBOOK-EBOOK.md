@@ -95,8 +95,10 @@ por perfil** · dica ("por que ajuda") · rodapé de valores aproximados.
     fotos). No mosaico as duas famílias não se distinguem.
   - ⛔ **Idempotente:** slug que já tem arquivo é pulado. Crédito é finito e
     rodar de novo não pode custar de novo.
-  - ⚠️ O `stdin` do harness não garante UTF-8 — rodar por loader ascii que faz
-    `io.open(..., encoding='utf-8')`, senão o docstring com `⛔` quebra tudo.
+  - ⚠️ O `stdin` do harness não garante UTF-8 — rodar por **`rodar_flow.py`**,
+    um loader ascii puro que abre o script com encoding explícito. Piped
+    direto, o docstring com `⛔` quebra em `UnicodeEncodeError` antes de
+    executar uma linha.
   - ⛔ **O TEXTO NUNCA SAI DO GERADOR.** Capa e rótulo se compõem em HTML e se
     rasterizam no Chrome (`build_capa.py`): o modelo erra trema, e capa alemã
     com trema errado parece produto falsificado.
