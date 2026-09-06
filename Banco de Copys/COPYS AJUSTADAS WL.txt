@@ -450,8 +450,9 @@ Ingredientes ... ORIGINAIS: bicarbonate + gelatine + citron.
                  Marcas FR: La Baleine (bicarbonate), Vahine (gelatine).
 Cenario ........ mantido: Cena A acampamento + Cena B cozinha. REF.
 Tom ............ "tu". Keyword "livre" (cadastrar na automacao DM FR).
-Duracao ........ 42s · 6 takes (8+6+6+8+8+6) — fidelidade total; o
-                 frances estica como o alemao.
+Duracao ........ 40s · 6 takes (6+6+6+8+8+6) — fidelidade total; o
+                 frances estica como o alemao. (Take 1 corrigido de 8s
+                 para 6s: 28 silabas cabem em 6s, e 8s deixava ar morto.)
 Ebook .......... do take 5 (CTA) ao 6, em pe e em destaque; capa FR
                  "150 RECETTES MINCEUR / Une vie plus legere".
 Direcao ........ IMAGE/TAKE em ingles; fala francesa; voz NATIVA
@@ -459,7 +460,7 @@ Direcao ........ IMAGE/TAKE em ingles; fala francesa; voz NATIVA
 
 COPY (FR) + TRADUCAO (PT):
 
-  TAKE 1 — CENA A — 8s
+  TAKE 1 — CENA A — 6s
   FR: "Petite astuce : mets du bicarbonate dans la gelatine, et tu me
        remercieras plus tard, ma belle."
   PT: "Dica rapida: adicione bicarbonato a gelatina e me agradeca
@@ -503,14 +504,14 @@ Ingredientes ... v1 em termos franceses: Maizena (amido de milho) +
                  "fruit salt" na Franca) + citron.
 Cor ............ vem da vitamine C (laranja-rosa) — SEM corante.
                  Liquido OPACO, sem cubos.
-Duracao ........ 42s · 6 takes (8+6+6+8+8+6) — igual a versao FR.
+Duracao ........ 40s · 6 takes (6+6+6+8+8+6) — igual a versao FR.
 Tom ............ "tu". Keyword "livre". Ebook do take 5 (CTA) ao 6,
                  em pe e destaque, capa FR "150 RECETTES MINCEUR /
                  Une vie plus legere".
 
 COPY (FR) — so o TAKE 1 difere da versao FR original:
 
-  TAKE 1 — CENA A — 8s
+  TAKE 1 — CENA A — 6s
   FR: "Petite astuce : mets de la vitamine C dans la Maizena, et tu me
        remercieras plus tard, ma belle."
   PT: "Dica rapida: adicione vitamina C a Maizena e me agradeca depois,
