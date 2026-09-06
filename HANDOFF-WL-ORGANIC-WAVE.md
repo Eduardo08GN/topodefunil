@@ -241,6 +241,16 @@ forma confiável.) O caminho durável contra suspensão é a **copy e o formato*
 - Regra de alçada (copy/cena são do operador) e doutrina anti-celebridade: `CLAUDE.md`
 ```
 Fluxo de uma sessão nova: ler este MD → ler o agente → ao receber um
-vídeo-fonte, assistir (imagem + áudio) → entregar copy EN+PT e esperar OK
-(regra 9) → gerar IMAGEs, depois TAKEs → registrar no banco.
+vídeo-fonte, assistir (imagem + áudio) → **CHECAR O BANCO: a copy já existe ou
+há uma muito parecida? Mostrar as duas pro operador comparar — só copy
+completamente diferente entra, nunca testar a mesma >2x** → entregar copy EN+PT
+e esperar OK (regra 9) → gerar IMAGEs, depois TAKEs → registrar no banco.
+
+Regras de fidelidade ao gerar prompts (aprendidas em campo, WL-002):
+- **Reproduzir o quadro EXATO da fonte** (câmera, enquadramento, posição/tamanho
+  do prop); só copy, ingrediente e pessoa mudam. Usar o frame original como
+  referência visual + o retrato da REF.
+- **Descrever cada prop em detalhe** (forma, cor, rótulo) e usar a **mesma
+  descrição literal em todas as cenas** — senão o ingrediente muda de embalagem
+  entre cenas.
 ```

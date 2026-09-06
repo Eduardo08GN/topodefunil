@@ -14,8 +14,12 @@ Regras fixas aplicadas em toda copy ajustada:
       Vinagre de maca    -> Limao espremido  (fresh lemon)
       Mel                -> MEL (nao substitui)
   - Teto de palavras por take: 4s = 7 · 6s = 24 · 8s = 32.
-  - Ultimo take leva a CAPA DO EBOOK em pe na bancada, entre os
-    ingredientes. O TEXTO da capa acompanha o IDIOMA do video:
+  - A CAPA DO EBOOK entra em quadro no MESMO take do CTA ("comment,
+    book") e FICA em todos os takes seguintes ate o ultimo. Em todos
+    eles o livro esta SEMPRE em pe, de frente pra camera, e e' o
+    DESTAQUE dos itens (front-and-center, o maior e o mais nitido; os
+    outros props ficam atras, menores e secundarios). O TEXTO da capa
+    acompanha o IDIOMA:
       EN  capa 150 Eng Hotmart -> "150 FITNESS RECIPES / A Lighter Life"
       DE  capa 150 DE Hotmart  -> "150 FITNESS-REZEPTE / Ein leichteres Leben"
       FR  capa 150 FR Hotmart  -> (texto FR — ler o arquivo ao produzir)
@@ -288,3 +292,276 @@ COPY (FR) + TRADUCAO (PT):
   FR: "J'espere que ca t'aidera autant que moi."
   PT: "Espero que ajude voce, assim como ajudou a mim."
   (No quadro: capa FR "150 RECETTES MINCEUR / Une vie plus legere".)
+
+
+--------------------------------------------------------------------
+WL-002 · VARIACAO 1 · INGLES (EN) · liquidificador
+--------------------------------------------------------------------
+Modela ......... WL-002 (ver COPYS ORIGINAIS WL.txt)
+Ajustado em .... 05.09.2026
+Ingredientes ... v1 substituidos: sal de frutas (fruit salt) + amido
+                 de milho (cornstarch) + limao + frasco de corante.
+Cenario ........ mantido: Cena A acampamento (lago/Coleman) + Cena B
+                 cozinha. Pessoa trocada pela REF. Capa EN no ult. take.
+Duracao ........ 30s · 4 takes (8 + 8 + 8 + 6). Fonte densa (~84
+                 palavras/23s); no ritmo natural do Veo da 30s.
+Keyword CTA .... "book". Follow-gate mantido.
+Ref. visual .... regra 6: Cena A (acampamento) e Cena B (cozinha) sao
+                 mundos distintos; IMAGE 1 NAO serve de referencia pra
+                 cozinha. IMAGE 2 e' a ancora da cozinha (3 e 4 a usam).
+
+DECISOES DE COPY (operador, 05.09):
+  - "Pharmacies..." -> "The rich and famous have been keeping this
+    recipe secret from you for years." (tira o vilao farmaceutico)
+  - Linha 4 (claims) -> variacao C: sai "blood vessels/eliminate fat",
+    fica "fires up your metabolism and fat burning".
+  - CTA "yes/full video" -> "comment, book / complete recipes".
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — CENA A — 8s
+  EN: "Quick tip, add fruit salt to the cornstarch and thank me later,
+       honey. The rich and famous have been keeping this recipe secret
+       from you for years."
+  PT: "Dica rapida: adicione sal de frutas ao amido de milho e me
+       agradeca depois, querida. As ricas e famosas mantiveram essa
+       receita em segredo de voce por anos."
+
+  TAKE 2 — CENA B — 8s
+  EN: "Put everything in a blender, add lemon and warm water. You've
+       just created a powerful drink that fires up your metabolism and
+       fat burning."
+  PT: "Coloque tudo no liquidificador, adicione limao e agua morna.
+       Voce acabou de criar uma bebida poderosa que acelera o seu
+       metabolismo e a queima de gordura."
+
+  TAKE 3 — CENA B (CTA) — 8s
+  EN: "But if you want it to be 10 times more effective, comment, book,
+       and I'll send you the complete recipes."
+  PT: "Mas se voce quer que seja 10x mais eficaz, comente, book, que eu
+       te envio as receitas completas."
+
+  TAKE 4 — CENA B (follow + ebook) — 6s
+  EN: "But make sure to follow me or you won't receive my message."
+  PT: "Mas garanta que esta me seguindo, ou voce nao vai receber minha
+       mensagem."
+  (No quadro: capa EN "150 FITNESS RECIPES / A Lighter Life".)
+
+VERSAO v2 (INGLES) ... feito (ver WL-002 · VARIACAO 2 abaixo).
+VERSAO ALEMA ....... feito: ingredientes ORIGINAIS (WL-002 · ALEMAO)
+                     e VARIACAO 1 (WL-002 · VARIACAO 1 · ALEMAO).
+
+
+--------------------------------------------------------------------
+WL-002 · ALEMAO (DE) · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Modela ......... WL-002 (ver COPYS ORIGINAIS WL.txt)
+Ajustado em .... 05.09.2026
+Ingredientes ... ORIGINAIS do video ingles, sem substituicao: Natron
+                 (baking soda) + Gelatine + Zitrone. Marcas DE em
+                 quadro: Kaiser Natron, Dr. Oetker Gelatine.
+Copy ........... a versao SEGURA ajustada no ingles, traduzida:
+                 "Die Reichen und Beruehmten" no lugar do vilao
+                 farmaceutico, e a linha 4 na variacao C (Stoffwechsel
+                 + Fettverbrennung, sem "vasos/eliminar gordura").
+Cenario ........ mantido: Cena A acampamento + Cena B cozinha. REF.
+Keyword CTA .... "Buch" (cadastrar na automacao DM da pagina DE).
+Duracao ........ 40s · 6 takes (6+6+6+8+8+6) — opcao A, fidelidade
+                 total: em alemao 1+2 dao 9.1s e 3+4 dao 10s, entao
+                 nao cabem juntas em takes de 8s. Nada foi cortado.
+Ebook .......... entra no take 5 (CTA) e fica no 6; em pe e em
+                 destaque; capa DE "150 FITNESS-REZEPTE / Ein
+                 leichteres Leben".
+Direcao ........ IMAGE/TAKE em ingles; fala alema; voz NATIVA alema.
+                 No Veo Editor: Idioma = Alemao.
+
+COPY (DE) + TRADUCAO (PT):
+
+  TAKE 1 — CENA A — 6s
+  DE: "Kleiner Tipp: Gib Natron in die Gelatine und dank mir spaeter,
+       Schaetzchen."
+  PT: "Dica rapida: adicione bicarbonato a gelatina e me agradeca
+       depois, querida."
+
+  TAKE 2 — CENA A — 6s
+  DE: "Die Reichen und Beruehmten halten dieses Rezept seit Jahren vor
+       dir geheim."
+  PT: "As ricas e famosas mantiveram essa receita em segredo de voce
+       por anos."
+
+  TAKE 3 — CENA B — 6s
+  DE: "Gib alles in den Mixer, dazu Zitrone und warmes Wasser."
+  PT: "Coloque tudo no liquidificador, adicione limao e agua morna."
+
+  TAKE 4 — CENA B — 8s
+  DE: "Du hast gerade ein starkes Getraenk gemacht, das deinen
+       Stoffwechsel und die Fettverbrennung ankurbelt."
+  PT: "Voce acabou de criar uma bebida poderosa que acelera o seu
+       metabolismo e a queima de gordura."
+
+  TAKE 5 — CENA B (CTA) — 8s
+  DE: "Wenn du willst, dass es zehnmal wirksamer ist, kommentiere,
+       Buch, und ich schicke dir die kompletten Rezepte."
+  PT: "Se voce quer que seja 10x mais eficaz, comente 'Buch', que eu te
+       envio as receitas completas."
+
+  TAKE 6 — CENA B (follow) — 6s
+  DE: "Aber folge mir unbedingt, sonst bekommst du meine Nachricht
+       nicht."
+  PT: "Mas garanta que esta me seguindo, ou voce nao vai receber minha
+       mensagem."
+
+
+--------------------------------------------------------------------
+WL-002 · VARIACAO 1 · ALEMAO (DE)
+--------------------------------------------------------------------
+Base ........... WL-002 · ALEMAO (mesma copy segura, mesma estrutura,
+                 mesma REF e cenario). SO a linha 1 muda: ingredientes.
+Ingredientes ... v1 substituidos, em termos alemaes do dia a dia:
+                 Brausepulver (efervescente / fruit salt) +
+                 Speisestaerke (amido de milho) + Zitrone +
+                 Lebensmittelfarbe (corante) rosa visivel na bancada.
+Marcas DE ...... Mondamin Speisestaerke; Brausepulver em sache com
+                 rotulo alemao. (Sem marca de doce — nao usar Ahoj.)
+Cor ............ vem do corante (Speisestaerke e Brausepulver sao
+                 incolores). Liquido rosa OPACO, sem cubos.
+Duracao ........ 40s · 6 takes (6+6+6+8+8+6) — igual a versao DE.
+Keyword CTA .... "Buch". Ebook do take 5 (CTA) ao 6, em pe e destaque,
+                 capa DE "150 FITNESS-REZEPTE / Ein leichteres Leben".
+
+COPY (DE) — so o TAKE 1 difere da versao DE original:
+
+  TAKE 1 — CENA A — 6s
+  DE: "Kleiner Tipp: Gib Brausepulver in die Speisestaerke und dank mir
+       spaeter, Schaetzchen."
+  PT: "Dica rapida: adicione sal de frutas ao amido de milho e me
+       agradeca depois, querida."
+
+  TAKES 2 a 6 ... identicos aos da entrada WL-002 · ALEMAO acima
+                  (linhas 2, 3, 4, 5 e 6 inalteradas).
+
+
+--------------------------------------------------------------------
+WL-002 · FRANCES (FR) · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Modela ......... WL-002 · copy SEGURA traduzida (sem vilao
+                 farmaceutico; linha 4 na variacao C).
+Ingredientes ... ORIGINAIS: bicarbonate + gelatine + citron.
+                 Marcas FR: La Baleine (bicarbonate), Vahine (gelatine).
+Cenario ........ mantido: Cena A acampamento + Cena B cozinha. REF.
+Tom ............ "tu". Keyword "livre" (cadastrar na automacao DM FR).
+Duracao ........ 42s · 6 takes (8+6+6+8+8+6) — fidelidade total; o
+                 frances estica como o alemao.
+Ebook .......... do take 5 (CTA) ao 6, em pe e em destaque; capa FR
+                 "150 RECETTES MINCEUR / Une vie plus legere".
+Direcao ........ IMAGE/TAKE em ingles; fala francesa; voz NATIVA
+                 francesa. No Veo Editor: Idioma = Frances.
+
+COPY (FR) + TRADUCAO (PT):
+
+  TAKE 1 — CENA A — 8s
+  FR: "Petite astuce : mets du bicarbonate dans la gelatine, et tu me
+       remercieras plus tard, ma belle."
+  PT: "Dica rapida: adicione bicarbonato a gelatina e me agradeca
+       depois, querida."
+
+  TAKE 2 — CENA A — 6s
+  FR: "Les riches et les celebrites te cachent cette recette depuis des
+       annees."
+  PT: "As ricas e famosas mantiveram essa receita em segredo de voce
+       por anos."
+
+  TAKE 3 — CENA B — 6s
+  FR: "Mets tout dans le blender, avec du citron et de l'eau tiede."
+  PT: "Coloque tudo no liquidificador, com limao e agua morna."
+
+  TAKE 4 — CENA B — 8s
+  FR: "Tu viens de creer une boisson puissante qui booste ton
+       metabolisme et la combustion des graisses."
+  PT: "Voce acabou de criar uma bebida poderosa que acelera o seu
+       metabolismo e a queima de gordura."
+
+  TAKE 5 — CENA B (CTA) — 8s
+  FR: "Si tu veux que ce soit dix fois plus efficace, commente, livre,
+       et je t'envoie les recettes completes."
+  PT: "Se voce quer que seja 10x mais eficaz, comente 'livre', que eu
+       te envio as receitas completas."
+
+  TAKE 6 — CENA B (follow) — 6s
+  FR: "Mais suis-moi absolument, sinon tu ne recevras pas mon message."
+  PT: "Mas me siga sem falta, senao voce nao vai receber minha
+       mensagem."
+
+
+--------------------------------------------------------------------
+WL-002 · VARIACAO 1 · FRANCES (FR)
+--------------------------------------------------------------------
+Base ........... WL-002 · FRANCES (mesma copy segura, mesma estrutura,
+                 mesma REF e cenario). SO a linha 1 muda: ingredientes.
+Ingredientes ... v1 em termos franceses: Maizena (amido de milho) +
+                 vitamine C effervescente (o efervescente — nao existe
+                 "fruit salt" na Franca) + citron.
+Cor ............ vem da vitamine C (laranja-rosa) — SEM corante.
+                 Liquido OPACO, sem cubos.
+Duracao ........ 42s · 6 takes (8+6+6+8+8+6) — igual a versao FR.
+Tom ............ "tu". Keyword "livre". Ebook do take 5 (CTA) ao 6,
+                 em pe e destaque, capa FR "150 RECETTES MINCEUR /
+                 Une vie plus legere".
+
+COPY (FR) — so o TAKE 1 difere da versao FR original:
+
+  TAKE 1 — CENA A — 8s
+  FR: "Petite astuce : mets de la vitamine C dans la Maizena, et tu me
+       remercieras plus tard, ma belle."
+  PT: "Dica rapida: adicione vitamina C a Maizena e me agradeca depois,
+       querida."
+
+  TAKES 2 a 6 ... identicos aos da entrada WL-002 · FRANCES acima
+                  (linhas 2, 3, 4, 5 e 6 inalteradas).
+
+
+--------------------------------------------------------------------
+WL-002 · VARIACAO 2 · INGLES (EN) · liquidificador
+--------------------------------------------------------------------
+Modela ......... WL-002 · so ingles (v2 nao se traduz p/ DE/FR).
+Ingredientes ... v2: aveia (oats) + vitamina C efervescente + toranja
+                 (grapefruit). Cor vem da vitamina C (laranja/rosa),
+                 SEM corante.
+Cenario ........ mantido: Cena A acampamento + Cena B cozinha. Pessoa
+                 REF. Capa EN no ultimo take.
+Duracao ........ 30s · 4 takes (8 + 8 + 8 + 6). Keyword "book".
+Fichas de prop . vitamina C = orange cardboard tube (efervescente) ·
+                 aveia = round cardboard oats canister · toranja =
+                 halved grapefruit pink flesh · taca coupe / copo
+                 tumbler / blender = opaque orange-pink. Mesma descricao
+                 literal em TODAS as cenas (regra dos props).
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — CENA A — 8s
+  EN: "Quick tip, add vitamin C to the oats and thank me later, honey.
+       The rich and famous have been keeping this recipe secret from
+       you for years."
+  PT: "Dica rapida: adicione vitamina C a aveia e me agradeca depois,
+       querida. As ricas e famosas mantiveram essa receita em segredo
+       de voce por anos."
+
+  TAKE 2 — CENA B — 8s
+  EN: "Put everything in a blender, add grapefruit and warm water.
+       You've just created a powerful drink that fires up your
+       metabolism and fat burning."
+  PT: "Coloque tudo no liquidificador, adicione toranja e agua morna.
+       Voce acabou de criar uma bebida poderosa que acelera o seu
+       metabolismo e a queima de gordura."
+
+  TAKE 3 — CENA B (CTA) — 8s
+  EN: "But if you want it to be 10 times more effective, comment, book,
+       and I'll send you the complete recipes."
+  PT: "Mas se voce quer que seja 10x mais eficaz, comente, book, que eu
+       te envio as receitas completas."
+
+  TAKE 4 — CENA B (follow + ebook) — 6s
+  EN: "But make sure to follow me or you won't receive my message."
+  PT: "Mas garanta que esta me seguindo, ou voce nao vai receber minha
+       mensagem."
+  (No quadro: capa EN "150 FITNESS RECIPES / A Lighter Life".)

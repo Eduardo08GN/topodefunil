@@ -10,6 +10,11 @@ Formato de cada entrada:
   ID · agente · fonte · duracao · nº de takes
   Copy verbatim por take, com o timestamp do original
   O que aparecia em quadro (pessoa, bancada, ingredientes, keyword)
+
+⛔ ANTES DE PRODUZIR UM VIDEO NOVO: varrer este arquivo (e o AJUSTADAS)
+   atras de copy IGUAL ou muito PARECIDA. Se houver, mostrar a nova E a
+   existente pro operador comparar e decidir. So entra copy completamente
+   diferente — nunca testar a mesma copy mais de 2x.
 ====================================================================
 
 
@@ -44,3 +49,39 @@ EM QUADRO (leitura otica):
   Cena B (13-22) corte mais fechado, caneca de vidro com liquido
                  vermelho estendida pra camera; CTA + fecho.
   Ingredientes . baking soda + gelatina (Jell-O) + limao. Sem ACV.
+
+
+--------------------------------------------------------------------
+WL-002 · liquidificador (acampamento + cozinha)
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Fonte .......... arquivo local AQN4UmB8...u1k3SGPmjuQ.mp4
+Analisado em ... 05.09.2026
+Duracao ........ 23s
+Keyword CTA .... "yes" · follow-gate
+
+COPY VERBATIM (EN):
+  [00:00] "Quick tip, add baking soda to the gelatin and thank me
+          later, honey."
+  [00:04] "Pharmacies have been keeping this recipe a secret from you
+          for years."
+  [00:07] "Put everything in a blender, add lemon and warm water."
+  [00:10] "You've just created a powerful drink that helps open up
+          your blood vessels and helps eliminate excess fat."
+  [00:15] "But if you want it to be 10 times more effective, comment
+          yes and I'll send you the full video."
+  [00:20] "But make sure to follow me or you won't receive my message."
+
+EM QUADRO (leitura otica):
+  Pessoa ....... mulher loira magra ~55-58, camisa jeans clara.
+  Cena A (0-7s)  ACAMPAMENTO a beira do lago: mesa de piquenique,
+                 fogareiro Coleman verde, canecas de metal, tapete de
+                 camping. Ergue taca com gelatina rosa e despeja
+                 BAKING SODA (Arm & Hammer) dentro.
+  Cena B (7-23) COZINHA branca (subway tile, coifa inox, janela):
+                 liquidificador com smoothie rosa, pote de po marrom
+                 (canela), meio limao, tigela de po magenta (beterraba).
+                 Espreme limao, bate, ergue a taca. Mecanismo+CTA+follow.
+  Ingredientes . baking soda + gelatina + limao (+ canela + beterraba
+                 nao nomeados na fala).
