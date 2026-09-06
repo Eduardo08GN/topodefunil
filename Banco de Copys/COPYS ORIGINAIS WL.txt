@@ -129,3 +129,48 @@ NOTA DE DUPLICIDADE: a linha da receita e o CTA batem com a WL-001, mas
   isso NAO conta como repeticao — ingredientes e CTA sempre repetem no
   funil. O HOOK e o CORPO sao novos (ceticismo + prazo de 5 noites,
   cena unica no acampamento). Copy aprovada como NOVA pelo operador.
+
+
+--------------------------------------------------------------------
+WL-004 · cabine de caminhao · "jeito errado / inchaco"
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Fonte .......... arquivo local AQMEwVZgNUqq...du1iYhnnqw.mp4
+Analisado em ... 06.09.2026
+Duracao ........ 22s · cena unica (dois estados de bandeja)
+Keyword CTA .... "gelatin"
+
+COPY VERBATIM (EN):
+  [00:00] "Stop making gelatin the old way."
+  [00:01] "Put baking soda and half a lemon in pink gelatin and watch
+          the bloat disappear from your legs and face."
+  [00:07] "Pharmacies hate this simple mixture because it naturally
+          eliminates years of water retention."
+  [00:12] "It would wipe out half their customer base."
+  [00:15] "Comment gelatin to get the full recipe plus an extra tip."
+  [00:19] "Check your messages before the video is taken down."
+
+EM QUADRO (leitura otica):
+  Pessoa ....... mulher loira ~55-60, camisa jeans clara.
+  Cenario ...... INTERIOR DE CABINE DE CAMINHAO. Volante, painel e
+                 radio CB a direita; assento do motorista atras dela;
+                 console no topo; a esquerda janela lateral e retrovisor
+                 grande mostrando patio com carretas e cerca de tela.
+                 Bandeja de ACO INOX atravessando o primeiro plano.
+  Enquadramento  altura dos olhos dentro da cabine, ela centralizada,
+                 bandeja no terco inferior; nos beats finais o quadro
+                 fecha e o copo avanca grande no primeiro plano.
+  ⭐ DOIS ESTADOS DE BANDEJA (nao ha erupcao de espuma neste video):
+     A (0-6s)  bandeja CHEIA: tigela de gelatina vermelha, caixa
+               Arm & Hammer, caixa JELL-O cereja, meio limao, duas
+               colheres com especiaria. Ela despeja o baking soda.
+     B (7-22s) bandeja VAZIA, so ela com o copo de bebida vermelha na
+               mao, falando; no fim o copo avanca pra lente.
+  Ingredientes . baking soda + gelatina (JELL-O cereja) + meio limao.
+
+NOTA DE DUPLICIDADE: hook NOVO (corretivo/imperativo) e angulo do corpo
+  NOVO (inchaco / retencao de liquido em pernas e rosto). ⚠️ Mas a
+  linha "Pharmacies hate this simple mixture" REPETE o corpo da WL-002
+  — e era justamente a linha que o operador ja tinha matado la. Por
+  isso ele mandou reescrever tirando a farmacia por completo.

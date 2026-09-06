@@ -811,3 +811,86 @@ COPY (FR) — so o TAKE 2 difere da 1a remessa:
   TAKES 1 e 3 ... identicos aos da entrada WL-003 · FRANCES 1a remessa.
 
 WL-003 COMPLETO: EN v1 + EN v2 + DE 1a/2a + FR 1a/2a.
+
+
+--------------------------------------------------------------------
+WL-004 · VARIACAO 1 · INGLES (EN) · "jeito errado / inchaco"
+--------------------------------------------------------------------
+Modela ......... WL-004 (ver COPYS ORIGINAIS WL.txt)
+Ajustado em .... 06.09.2026
+Ingredientes ... v1: amido de milho (cornstarch) + sal de frutas (fruit
+                 salt) + meio limao + frasco de corante VERMELHO.
+                 ⛔ No ingles o termo "gelatin" NAO se usa mais.
+Cenario ........ mantido: cabine de caminhao, dois estados de bandeja
+                 (cheia no take 1, VAZIA nos takes 2 e 3). Pessoa REF.
+Duracao ........ 20s · 3 takes (8 + 6 + 6). Keyword "book".
+Ebook .......... take 3 (o do CTA, que e' o ultimo): em pe na bandeja
+                 VAZIA — unico objeto nela, entao sai destacado sem
+                 disputar com nada. Capa EN.
+
+AJUSTES DE COPY (operador, 06.09) — ele recombinou 3 opcoes:
+  - hook: sai "gelatin", entra "your morning drink" + "the WRONG way".
+  - vilao FARMACIA removido por completo; no lugar entrou a LACUNA
+    SOCIAL: "every woman over fifty should know this".
+  - linha 4 virou "And it costs almost nothing."
+  - CTA: "comment gelatin / extra tip" -> "comment, book / four
+    surprise bonuses" (oferta quantificada e plural).
+  - a linha final de urgencia ("before the video is taken down") foi
+    CORTADA inteira; o video termina no CTA.
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK + RECEITA — 8s — 28 palavras
+  EN: "Stop making your morning drink the wrong way. Put fruit salt and
+       half a lemon in the cornstarch and watch the bloat disappear
+       from your legs and face."
+  PT: "Pare de fazer sua bebida da manha do jeito errado. Ponha sal de
+       frutas e meio limao no amido de milho e veja o inchaco sumir das
+       suas pernas e do seu rosto."
+
+  TAKE 2 — ARGUMENTO — 6s — 20 palavras
+  EN: "Every woman over fifty should know this, because it naturally
+       flushes years of water retention. And it costs almost nothing."
+  PT: "Toda mulher acima dos cinquenta deveria saber disso, porque
+       elimina naturalmente anos de retencao de liquido. E custa quase
+       nada."
+
+  TAKE 3 — CTA + EBOOK — 6s — 11 palavras
+  EN: "Comment, book, to get the full recipe plus four surprise
+       bonuses."
+  PT: "Comenta, book, para receber a receita completa com mais quatro
+       bonus surpresa."
+
+PENDENTE: EN v2 (aveia + vitamina C + toranja), depois DE e FR.
+
+
+--------------------------------------------------------------------
+WL-004 · VARIACAO 2 · INGLES (EN) · "jeito errado / inchaco"
+--------------------------------------------------------------------
+Base ........... WL-004 Variacao 1 (mesma copy, cena, REF e
+                 enquadramento). SO a linha 2 muda: ingredientes.
+Ingredientes ... v2: aveia (oats) + vitamina C efervescente + toranja
+                 (grapefruit). Cor vem da vitamina C (laranja-rosa),
+                 SEM corante.
+Duracao ........ 20s · 3 takes (8 + 6 + 6). Keyword "book".
+Ebook .......... take 3, em pe na bandeja VAZIA (unico objeto nela).
+Movimento ...... um por take: (1) despejar a vitamina C · (2) NENHUM,
+                 so segurar o copo parado · (3) empurrar o copo pra
+                 lente. Fala continua nos tres.
+
+COPY (EN) — so o TAKE 1 difere da v1 (segunda frase):
+
+  TAKE 1 — HOOK + RECEITA — 8s — 28 palavras
+  EN: "Stop making your morning drink the wrong way. Put vitamin C and
+       half a grapefruit in the oats and watch the bloat disappear from
+       your legs and face."
+  PT: "Pare de fazer sua bebida da manha do jeito errado. Ponha
+       vitamina C e meia toranja na aveia e veja o inchaco sumir das
+       suas pernas e do seu rosto."
+
+  TAKES 2 e 3 ... identicos aos da entrada WL-004 · VARIACAO 1.
+
+PENDENTE: DE (1a remessa originais traduzidos / 2a variacao 2) e FR.
+  ⚠️ No alemao a gelatina vermelha e' GOETTERSPEISE (Dr. Oetker), nao
+  a "Gelatine" incolor. No frances nao existe equivalente do Jell-O —
+  entra colorant alimentaire rouge em quadro.
