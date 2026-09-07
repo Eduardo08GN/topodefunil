@@ -823,7 +823,10 @@ Ingredientes ... v1: amido de milho (cornstarch) + sal de frutas (fruit
                  ⛔ No ingles o termo "gelatin" NAO se usa mais.
 Cenario ........ mantido: cabine de caminhao, dois estados de bandeja
                  (cheia no take 1, VAZIA nos takes 2 e 3). Pessoa REF.
-Duracao ........ 20s · 3 takes (8 + 6 + 6). Keyword "book".
+Duracao ........ 22s · 3 takes (8 + 8 + 6). Keyword "book".
+                 SILABAS medidas: 35 / 34 / 17. O take 2 estava em 6s
+                 e a fala era CORTADA (34 silabas = 7,2s) — corrigido
+                 para 8s. Contar SILABAS, nunca palavras, inclusive EN.
 Ebook .......... take 3 (o do CTA, que e' o ultimo): em pe na bandeja
                  VAZIA — unico objeto nela, entao sai destacado sem
                  disputar com nada. Capa EN.
@@ -848,7 +851,7 @@ COPY AJUSTADA (EN) + TRADUCAO (PT):
        frutas e meio limao no amido de milho e veja o inchaco sumir das
        suas pernas e do seu rosto."
 
-  TAKE 2 — ARGUMENTO — 6s — 20 palavras
+  TAKE 2 — ARGUMENTO — 8s — 34 silabas
   EN: "Every woman over fifty should know this, because it naturally
        flushes years of water retention. And it costs almost nothing."
   PT: "Toda mulher acima dos cinquenta deveria saber disso, porque
@@ -872,7 +875,9 @@ Base ........... WL-004 Variacao 1 (mesma copy, cena, REF e
 Ingredientes ... v2: aveia (oats) + vitamina C efervescente + toranja
                  (grapefruit). Cor vem da vitamina C (laranja-rosa),
                  SEM corante.
-Duracao ........ 20s · 3 takes (8 + 6 + 6). Keyword "book".
+Duracao ........ 22s · 3 takes (8 + 8 + 6). Keyword "book".
+                 SILABAS medidas: 36 / 34 / 17 (take 2 corrigido de 6s
+                 para 8s — a fala nao cabia).
 Ebook .......... take 3, em pe na bandeja VAZIA (unico objeto nela).
 Movimento ...... um por take: (1) despejar a vitamina C · (2) NENHUM,
                  so segurar o copo parado · (3) empurrar o copo pra
