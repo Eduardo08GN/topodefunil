@@ -899,3 +899,97 @@ PENDENTE: DE (1a remessa originais traduzidos / 2a variacao 2) e FR.
   ⚠️ No alemao a gelatina vermelha e' GOETTERSPEISE (Dr. Oetker), nao
   a "Gelatine" incolor. No frances nao existe equivalente do Jell-O —
   entra colorant alimentaire rouge em quadro.
+
+
+--------------------------------------------------------------------
+WL-004 · ALEMAO (DE) · 1a remessa · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Base ........... WL-004 (mesma cena, REF e enquadramento). Copy do
+                 operador traduzida (sem farmacia, lacuna social,
+                 CTA com quatro bonus, sem linha de urgencia final).
+Ingredientes ... ORIGINAIS traduzidos: Goetterspeise + Natron + Zitrone.
+                 Marcas DE: Dr. Oetker Goetterspeise (a sobremesa de
+                 gelatina VERMELHA — NAO a "Gelatine" incolor de
+                 folhas) e Kaiser Natron. SEM corante: a Goetterspeise
+                 ja da' o vermelho, entao a cor tem origem legitima.
+                 A fala diz "in die Goetterspeise", casando com o prop.
+Duracao ........ 26s · 4 TAKES (4 + 8 + 8 + 6).
+                 ⚠️ O ingles tinha 3 takes; em alemao o hook + a
+                 receita juntos dao 48 SILABAS (~10,2s) e estouram
+                 qualquer take. Pela regra (nunca encurtar copy,
+                 quebrar em mais takes), viraram 4 takes.
+                 SILABAS medidas: 11 / 37 / 37 / 23.
+Keyword CTA .... "Buch". Ebook no take 4, sozinho na bandeja vazia.
+Bandeja ........ CHEIA nos takes 1 e 2, VAZIA nos takes 3 e 4.
+Movimento ...... um por take: (1) nenhum, so segura o carton parado ·
+                 (2) despejar o Natron · (3) nenhum, so segura o copo ·
+                 (4) empurrar o copo pra lente. Fala continua nos 4.
+Direcao ........ IMAGE/TAKE em ingles; fala alema; voz NATIVA alema.
+                 No Veo Editor: Idioma = Alemao.
+
+COPY (DE) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 4s — 11 silabas
+  DE: "Hoer auf, dein Morgengetraenk falsch zu machen."
+  PT: "Pare de fazer sua bebida da manha do jeito errado."
+
+  TAKE 2 — RECEITA — 8s — 37 silabas
+  DE: "Gib Natron und eine halbe Zitrone in die Goetterspeise und sieh,
+       wie die Schwellungen aus deinen Beinen und deinem Gesicht
+       verschwinden."
+  PT: "Ponha bicarbonato e meio limao na gelatina e veja o inchaco
+       sumir das suas pernas e do seu rosto."
+
+  TAKE 3 — ARGUMENTO — 8s — 37 silabas
+  DE: "Jede Frau ueber fuenfzig sollte das wissen, denn es schwemmt
+       jahrelange Wassereinlagerungen ganz natuerlich aus. Und es
+       kostet fast nichts."
+  PT: "Toda mulher acima dos cinquenta deveria saber disso, porque
+       elimina naturalmente anos de retencao de liquido. E custa quase
+       nada."
+
+  TAKE 4 — CTA + EBOOK — 6s — 23 silabas
+  DE: "Kommentiere, Buch, und du bekommst das komplette Rezept plus
+       vier Ueberraschungs-Boni."
+  PT: "Comenta, book, para receber a receita completa com mais quatro
+       bonus surpresa."
+
+PENDENTE: 2a remessa alema (Variacao 2) e o FRANCES (1a e 2a).
+
+
+--------------------------------------------------------------------
+WL-004 · ALEMAO (DE) · 2a remessa · VARIACAO 2
+--------------------------------------------------------------------
+Base ........... WL-004 ALEMAO 1a remessa (mesma copy, cena, REF e
+                 enquadramento). SO a linha 2 muda: ingredientes.
+Ingredientes ... v2: Haferflocken (aveia — marca ancora Koelln) +
+                 Vitamin C efervescente (tubo) + Grapefruit.
+Cor ............ vem da vitamina C (laranja-rosa) — SEM corante.
+Duracao ........ 26s · 4 takes (4 + 8 + 8 + 6).
+                 SILABAS: 11 / 34 / 37 / 23.
+                 TAXA EXIGIDA (silabas ÷ segundos, limite 4,7):
+                 2,75 / 4,25 / 4,63 / 3,83 — todas dentro.
+Keyword CTA .... "Buch". Ebook no take 4, sozinho na bandeja vazia.
+Bandeja ........ CHEIA nos takes 1 e 2, VAZIA nos takes 3 e 4.
+
+NOTA DE TRADUCAO: a versao literal da linha 2 dava 38 silabas (taxa
+  4,75, acima do limite). Resolvido SEM cortar copy usando o ARTIGO no
+  lugar do possessivo — "aus Beinen und Gesicht" em vez de "aus deinen
+  Beinen und deinem Gesicht". Em alemao, com partes do corpo, o artigo
+  e' a forma natural; baixa para 34 silabas (taxa 4,25).
+  ⚠️ A 1a remessa ficou com o possessivo (37 silabas, taxa 4,63 — dentro
+  do limite). As duas estao corretas, so diferem na forma.
+
+COPY (DE) — so o TAKE 2 difere da 1a remessa:
+
+  TAKE 2 — RECEITA — 8s — 34 silabas
+  DE: "Gib Vitamin C und eine halbe Grapefruit in die Haferflocken und
+       sieh, wie die Schwellungen aus Beinen und Gesicht verschwinden."
+  PT: "Ponha vitamina C e meia toranja na aveia e veja o inchaco sumir
+       das pernas e do rosto."
+
+  TAKES 1, 3 e 4 ... identicos aos da entrada WL-004 · ALEMAO 1a remessa.
+
+PENDENTE: FRANCES (1a e 2a remessas).
+  ⚠️ No frances nao existe equivalente do Jell-O — a 1a remessa precisa
+  de colorant alimentaire rouge em quadro para justificar o vermelho.
