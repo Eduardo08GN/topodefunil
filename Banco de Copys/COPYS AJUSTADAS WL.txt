@@ -1206,3 +1206,73 @@ COPY (EN) — so o TAKE 1 difere da v1:
 PENDENTE: DE (1a remessa originais / 2a variacao 2) e FR.
   ⚠️ Consultar a TABELA DE INGREDIENTES POR IDIOMA em
   MECANISMOS WEIGHT LOSS.txt antes de montar DE e FR.
+
+
+--------------------------------------------------------------------
+WL-005 · 1a REMESSA · ALEMAO (DE) · "limpeza intestinal"
+--------------------------------------------------------------------
+Base ........... WL-005 (mesma cena, REF e enquadramento das versoes
+                 em ingles). 1a remessa = INGREDIENTES ORIGINAIS
+                 TRADUZIDOS, pela Regra absoluta n2 do operador.
+Ingredientes ... Goetterspeise (Dr. Oetker, gelatina vermelha) +
+                 Kaiser Natron (bicarbonato) + Zitrone (limao).
+                 SEM CORANTE — a Goetterspeise ja e' vermelha.
+                 Fonte: TABELA DE INGREDIENTES POR IDIOMA em
+                 MECANISMOS WEIGHT LOSS.txt (validada 06.09.2026).
+Duracao ........ 26s · 4 takes (8 + 4 + 8 + 6) — MESMA grade da v2 em
+                 ingles. O alemao gastou mais silaba mas coube: nao
+                 foi preciso quebrar em mais takes.
+                 SILABAS: 33 / 14 / 31 / 27.
+                 TAXA EXIGIDA: 4,13 / 3,50 / 3,88 / 4,50 (teto 4,7).
+Keyword CTA .... "Buch". Ebook no take 4, capa em ALEMAO
+                 ("150 FITNESS-REZEPTE" / "Ein leichteres Leben").
+Unidades ....... "pounds of waste" virou "kiloweise Abfall" — unidade
+                 metrica, pela regra de converter unidade na traducao.
+
+⭐ DECISAO DE CENA DECLARADA (take 4): a fonte mostra a mulher segurando
+   UM CUBO de gelatina entre os dedos. Em EN v1/v2 o operador mandou por
+   um COPO normal, porque com amido/aveia nao existe cubo. Nesta remessa
+   o ingrediente voltou (Goetterspeise E' cubo), entao o take 4 foi
+   montado com o CUBO, pela regra de reproduzir o quadro exato da fonte.
+   Se o operador preferir uniformizar com o copo, e' trocar uma frase no
+   IMAGE 04 e no TAKE 04.
+
+⚠️ RESSALVA DE EMBALAGEM: a caixa do Kaiser Natron foi descrita como
+   caixa de papelao retangular. Isso continua sendo deducao do treino do
+   assistente, nunca verificada — mesma ressalva ja registrada na tabela.
+   Se a embalagem sair errada em campo, a causa candidata n1 e' essa.
+
+COPY (DE + PT):
+
+  TAKE 1 — HOOK — 8s — 33 silabas
+  DE: "Gib Kaiser Natron in die Goetterspeise und dank mir spaeter.
+       Die Haelfte der Frauen ueber fuenfzig hat davon noch nie
+       gehoert."
+  PT: "Coloque Kaiser Natron na Goetterspeise e me agradeca depois.
+       Metade das mulheres com mais de cinquenta nunca ouviu falar
+       disso."
+
+  TAKE 2 — MECANISMO — 4s — 14 silabas
+  DE: "Das Geheimnis liegt in dieser besonderen Mischung."
+  PT: "O segredo esta' nessa mistura especial."
+
+  TAKE 3 — CORPO — 8s — 31 silabas
+  DE: "Sie reduziert Blaehungen und reinigt deine Darmwaende und
+       beseitigt kiloweise Abfall, der jahrelang festsass."
+  PT: "Ela reduz o inchaco e limpa as paredes do seu intestino e
+       elimina quilos de residuos que ficaram presos por anos."
+
+  TAKE 4 — CTA — 6s — 27 silabas
+  DE: "Wenn du mehr wissen willst, kommentiere, Buch, und ich schicke
+       dir das komplette Rezept per Direktnachricht."
+  PT: "Se voce quer saber mais, comente 'Buch', que eu te envio a
+       receita completa por mensagem direta."
+
+  ⚠️ Colar no Veo com os acentos corretos: Goetterspeise =
+  Götterspeise · spaeter = später · Haelfte = Hälfte · ueber = über ·
+  fuenfzig = fünfzig · gehoert = gehört · Blaehungen = Blähungen ·
+  Darmwaende = Darmwände · festsass = festsaß.
+
+PENDENTE: DE 2a remessa (variacao 2: Haferflocken/Koelln +
+  Vitamin-C-Pulver em lata + Grapefruit, sem corante) e as duas
+  remessas em frances.
