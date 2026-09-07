@@ -1222,8 +1222,8 @@ Ingredientes ... Goetterspeise (Dr. Oetker, gelatina vermelha) +
 Duracao ........ 26s · 4 takes (8 + 4 + 8 + 6) — MESMA grade da v2 em
                  ingles. O alemao gastou mais silaba mas coube: nao
                  foi preciso quebrar em mais takes.
-                 SILABAS: 33 / 14 / 31 / 27.
-                 TAXA EXIGIDA: 4,13 / 3,50 / 3,88 / 4,50 (teto 4,7).
+                 SILABAS: 31 / 14 / 31 / 27.
+                 TAXA EXIGIDA: 3,88 / 3,50 / 3,88 / 4,50 (teto 4,7).
 Keyword CTA .... "Buch". Ebook no take 4, capa em ALEMAO
                  ("150 FITNESS-REZEPTE" / "Ein leichteres Leben").
 Unidades ....... "pounds of waste" virou "kiloweise Abfall" — unidade
@@ -1244,13 +1244,18 @@ Unidades ....... "pounds of waste" virou "kiloweise Abfall" — unidade
 
 COPY (DE + PT):
 
-  TAKE 1 — HOOK — 8s — 33 silabas
-  DE: "Gib Kaiser Natron in die Goetterspeise und dank mir spaeter.
+  TAKE 1 — HOOK — 8s — 31 silabas
+  DE: "Gib Natron in den Wackelpudding und dank mir spaeter.
        Die Haelfte der Frauen ueber fuenfzig hat davon noch nie
        gehoert."
-  PT: "Coloque Kaiser Natron na Goetterspeise e me agradeca depois.
+  PT: "Coloque bicarbonato na gelatina e me agradeca depois.
        Metade das mulheres com mais de cinquenta nunca ouviu falar
        disso."
+  ⛔ CORRIGIDO 07.09.2026: a primeira versao dizia "Kaiser Natron" e
+     "Goetterspeise" NA FALA. Errado — MARCA e' da EMBALAGEM EM QUADRO,
+     nunca da fala. O ingles original diz "baking soda" e "gelatin",
+     palavras genericas; o alemao generico e' "Natron" e
+     "Wackelpudding". A marca continua impressa na caixa da IMAGE.
 
   TAKE 2 — MECANISMO — 4s — 14 silabas
   DE: "Das Geheimnis liegt in dieser besonderen Mischung."
