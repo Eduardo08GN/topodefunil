@@ -1075,3 +1075,37 @@ NOTA: como no alemao, usa-se o ARTIGO e nao o possessivo para partes do
   dentro do limite sem cortar copy.
 
 PENDENTE: 2a remessa francesa (Variacao 2).
+
+
+--------------------------------------------------------------------
+WL-004 · FRANCES (FR) · 2a remessa · VARIACAO 2
+--------------------------------------------------------------------
+Base ........... WL-004 FRANCES 1a remessa (mesma copy, cena, REF e
+                 enquadramento). SO a linha 2 muda: ingredientes.
+Ingredientes ... v2: flocons d'avoine (aveia, sem marca-ancora na
+                 Franca) + vitamine C EN POUDRE em lata + pamplemousse.
+                 ⛔ FORMA: "vitamine C effervescente" na Franca tambem
+                 e' COMPRIMIDO EM TUBO, e comprimido nao se despeja em
+                 fio. Para o gesto de despejar o prop tem que ser PO em
+                 lata/sache — mesma correcao feita no alemao.
+Cor ............ vem da vitamina C (laranja-rosa) — SEM corante.
+Duracao ........ 26s · 4 takes (4 + 8 + 8 + 6).
+                 SILABAS: 17 / 36 / 36 / 19.
+                 TAXA EXIGIDA (limite 4,7): 4,25 / 4,50 / 4,50 / 3,17.
+Tom ............ "tu". Keyword "livre". Ebook no take 4, capa FR.
+Bandeja ........ CHEIA nos takes 1 e 2, VAZIA nos takes 3 e 4.
+
+COPY (FR) — so o TAKE 2 difere da 1a remessa:
+
+  TAKE 2 — RECEITA — 8s — 36 silabas
+  FR: "Mets de la vitamine C et un demi-pamplemousse dans les flocons
+       d'avoine et regarde les gonflements disparaitre des jambes et du
+       visage."
+  PT: "Ponha vitamina C e meia toranja na aveia e veja o inchaco sumir
+       das pernas e do rosto."
+
+  TAKES 1, 3 e 4 ... identicos aos da entrada WL-004 · FRANCES 1a
+                     remessa (so a bebida muda de vermelho para
+                     laranja-vermelho, por causa da vitamina C).
+
+WL-004 COMPLETO: EN v1 + EN v2 + DE 1a/2a + FR 1a/2a.
