@@ -1335,3 +1335,77 @@ PENDENTE: as duas remessas em FRANCES.
   nunca tubo) + pamplemousse, sem corante.
   ⛔ Na fala, sempre o generico frances — nunca La Baleine, Vahine,
   Maizena.
+
+
+--------------------------------------------------------------------
+WL-005 · 1a REMESSA · FRANCES (FR) · "limpeza intestinal"
+--------------------------------------------------------------------
+Base ........... WL-005 (mesma cena, REF e enquadramento). 1a remessa
+                 = INGREDIENTES ORIGINAIS TRADUZIDOS, Regra absoluta n2.
+Ingredientes ... bicarbonate + gelatina EM FOLHA (incolor) + citron
+                 + CORANTE ALIMENTAR VERMELHO EM QUADRO.
+                 ⛔ A Franca NAO tem gelatina de sobremesa vermelha
+                 tipo Jell-O — la' gelatina e' folha incolor. Por isso
+                 o frasco de corante entra em quadro para justificar a
+                 cor da tigela. E' a UNICA das seis remessas do WL-005
+                 que precisa de corante na versao "originais".
+                 Fonte: TABELA DE INGREDIENTES POR IDIOMA em
+                 MECANISMOS WEIGHT LOSS.txt (validada 06.09.2026).
+Duracao ........ 26s · 4 takes (4 + 8 + 8 + 6).
+                 SILABAS: 17 / 30 / 35 / 24.
+                 TAXA EXIGIDA: 4,25 / 3,75 / 4,38 / 4,00 (teto 4,7).
+Keyword CTA .... "livre". Ebook no take 4, capa em FRANCES
+                 ("150 RECETTES FITNESS" / "Une vie plus legere").
+Cena ........... take 3 espreme MEIO LIMAO com UMA mao. Take 4 com o
+                 CUBO (a gelatina existe nesta remessa), como no
+                 alemao 1a remessa.
+Unidades ....... "pounds of waste" = "des kilos de dechets" (metrico).
+
+⭐ REDISTRIBUICAO DE FRASE ENTRE TAKES 1 e 2 (nao e' corte de copy):
+   o frances inflou o hook — a linha 1 inteira da' 37 silabas, e em 8s
+   isso pede 4,63 sil/s, passando raspando sob o teto de 4,7. Margem de
+   1,5% num idioma que o operador nao confere sozinho e' onde a fala
+   sai cortada no render. A segunda frase do take 1 foi movida para o
+   take 2, que sobrava (10 silabas em 4s), e o take 2 subiu de 4s para
+   8s. ⛔ A COPY ESTA' 100% INTACTA, nenhuma palavra saiu, o total
+   continua 26s e continuam 4 takes — mudou so em qual gesto cada
+   frase e' dita. E' a aplicacao da regra "se nao couber, redistribui
+   ou quebra em mais takes — nunca encurta a fala".
+
+⛔ MARCA NUNCA NA FALA: a copy diz "bicarbonate" e "gelee", genericos.
+   La Baleine, Vahine e Maizena ficam so no rotulo da embalagem em
+   quadro.
+
+COPY (FR + PT):
+
+  TAKE 1 — HOOK — 4s — 17 silabas
+  FR: "Mets du bicarbonate dans la gelee et remercie-moi plus tard."
+  PT: "Coloque bicarbonato na gelatina e me agradeca depois."
+
+  TAKE 2 — EXCLUSIVIDADE + MECANISMO — 8s — 30 silabas
+  FR: "La moitie des femmes de plus de cinquante ans n'en a jamais
+       entendu parler. Le secret est dans ce melange special."
+  PT: "Metade das mulheres com mais de cinquenta nunca ouviu falar
+       disso. O segredo esta' nessa mistura especial."
+
+  TAKE 3 — CORPO — 8s — 35 silabas
+  FR: "Ca reduit les ballonnements et nettoie tes parois intestinales,
+       en eliminant des kilos de dechets bloques depuis des annees."
+  PT: "Ela reduz o inchaco e limpa as paredes do seu intestino,
+       eliminando quilos de residuos que ficaram presos por anos."
+
+  TAKE 4 — CTA — 6s — 24 silabas
+  FR: "Si tu veux en savoir plus, commente, livre, et je t'envoie la
+       recette complete en message prive."
+  PT: "Se voce quer saber mais, comente 'livre', que eu te envio a
+       receita completa por mensagem direta."
+
+  ⚠️ Acentos corretos pra colar no Veo: gelee = gelée ·
+  moitie = moitié · Ca reduit = Ça réduit · nettoie tes parois ·
+  eliminant = éliminant · dechets bloques = déchets bloqués ·
+  annees = années · melange special = mélange spécial ·
+  complete = complète · prive = privé · legere = légère.
+
+PENDENTE: 2a remessa FRANCES (variacao 2): flocons d'avoine +
+  vitamine C EN POUDRE (lata ou sache, NUNCA tubo — tubo na Franca
+  tambem e' comprimido efervescente) + pamplemousse, SEM corante.
