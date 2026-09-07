@@ -136,6 +136,83 @@ MANTIDO (nao substituir):
 
 
 ====================================================================
+TABELA DE INGREDIENTES POR IDIOMA   *** FONTE DA VERDADE ***
+====================================================================
+VALIDADA PELO OPERADOR EM 06.09.2026, exatamente como esta'.
+E' AQUI que se consulta a inteligencia dos ingredientes — sempre, antes
+de montar qualquer variacao em qualquer idioma.
+
+
+--- 1) INGREDIENTES ORIGINAIS (1a remessa do alemao e do frances) ---
+
+  O que e' (PT)         ALEMANHA                   FRANCA
+  --------------------  -------------------------  ------------------------
+  Gelatina vermelha     Goetterspeise (Dr. Oetker) NAO EXISTE na Franca.
+  (tipo Jell-O)         — a sobremesa de gelatina  La' gelatina e' so folha
+                        vermelha alema, o          incolor -> precisa de
+                        "Jell-O deles"             CORANTE ALIMENTAR
+                                                   VERMELHO em quadro para
+                                                   justificar a cor
+  Bicarbonato de sodio  Kaiser Natron              bicarbonate La Baleine
+  Limao                 Zitrone                    citron
+
+
+--- 2) VARIACAO 1 ---
+
+  O que e' (PT)         EUA         ALEMANHA               FRANCA
+  --------------------  ----------  ---------------------  -----------------
+  Sal de frutas         fruit salt  Brausepulver           vitamine C
+  (o po que borbulha)               (= po efervescente;    effervescente
+                                    "sal de frutas" nao    ("sal de frutas"
+                                    existe la')            nao existe la')
+  Amido de milho        cornstarch  Speisestaerke,         Maizena
+                                    marca Mondamin         (a marca virou
+                                    (= amido, o nome que   o nome do produto)
+                                    vem na caixa)
+  Acido                 limao       Zitrone (= limao)      citron (= limao)
+  Corante vermelho      SIM         SIM                    NAO precisa
+                                    (Lebensmittelfarbe
+                                    = corante alimentar)
+
+
+--- 3) VARIACAO 2 ---
+
+  O que e' (PT)         EUA         ALEMANHA               FRANCA
+  --------------------  ----------  ---------------------  -----------------
+  Aveia                 oats        Haferflocken           flocons d'avoine
+                                    (= flocos de aveia),   (sem marca forte:
+                                    marca Koelln           embalagem generica
+                                                           com rotulo frances)
+  Vitamina C            vitamin C   Vitamin-C-Pulver       vitamine C
+  efervescente                      (= po de vitamina C)   effervescente
+                                    EM LATA OU SACHE,
+                                    NUNCA EM TUBO: tubo
+                                    la' e' comprimido, e
+                                    comprimido nao se
+                                    despeja em fio
+  Toranja               grapefruit  Grapefruit             pamplemousse
+                                    (mesma palavra)        (= toranja)
+  Corante               NAO precisa NAO precisa            NAO precisa
+                                    (a vitamina C ja tinge em todos)
+
+
+--- ORIGEM DA INFORMACAO (registrado por honestidade) ---
+As MARCAS (Kaiser Natron, Koelln, Mondamin, Dr. Oetker, Maizena, La
+Baleine, Vahine) sairam do conhecimento de treino do assistente e NUNCA
+foram verificadas na internet. O operador VALIDOU a tabela como esta' em
+06.09.2026 e ela passa a valer como regra. Se algo falhar em campo
+(embalagem que nao existe, formato errado), a causa candidata numero um
+esta' aqui.
+
+REGRA DE FORMA: nao basta o ingrediente existir no pais — tem que existir
+NA FORMA que a cena mostra. Foi assim que cairam duas escolhas erradas:
+  - "Dr. Oetker Gelatine" (incolor) quando a tigela e' VERMELHA -> o
+    certo e' Goetterspeise;
+  - "tubo de vitamina C" quando o gesto e' DESPEJAR -> tubo la' e'
+    comprimido; o certo e' lata/sache de po.
+
+
+====================================================================
 DECISOES
 ====================================================================
 - OS INGREDIENTES NAO SAO REVELADOS (operador, 04.09.2026). A receita
