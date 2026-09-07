@@ -969,6 +969,18 @@ Ingredientes ... v2: Haferflocken (aveia — marca ancora Koelln) +
                  despeja em fio. O gesto de despejar exige LATA/SACHE
                  de po. Ver a TABELA DE INGREDIENTES POR IDIOMA em
                  MECANISMOS WEIGHT LOSS.txt (fonte da verdade).
+Fichas de prop . ⛔ CORRIGIDAS 06.09 apos as variantes geradas da IMAGE
+                 01 sairem com a aveia em EMBALAGEM DE BEBIDA em 3 de 4:
+                 aveia = "a flat-sided rectangular cardboard cereal box
+                 of Koelln Haferflocken with German lettering and a
+                 printed front panel, standing upright";
+                 vitamina C = "a small round metal tin of
+                 Vitamin-C-Pulver with German lettering, its round metal
+                 lid removed and lying flat on the tray beside it, the
+                 open mouth facing up".
+                 A palavra "carton" era ambigua (caixa de papelao x
+                 embalagem de bebida). A forma certa se DESCREVE, nunca
+                 se nega a errada — negar injeta o token.
 Cor ............ vem da vitamina C (laranja-rosa) — SEM corante.
 Duracao ........ 26s · 4 takes (4 + 8 + 8 + 6).
                  SILABAS: 11 / 34 / 37 / 23.
