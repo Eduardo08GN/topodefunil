@@ -1409,3 +1409,78 @@ COPY (FR + PT):
 PENDENTE: 2a remessa FRANCES (variacao 2): flocons d'avoine +
   vitamine C EN POUDRE (lata ou sache, NUNCA tubo — tubo na Franca
   tambem e' comprimido efervescente) + pamplemousse, SEM corante.
+
+
+--------------------------------------------------------------------
+WL-005 · 2a REMESSA · FRANCES (FR) · VARIACAO 2 · "limpeza intestinal"
+--------------------------------------------------------------------
+Base ........... WL-005 (mesma cena, REF e enquadramento). 2a remessa
+                 = VARIACAO 2, Regra absoluta n2.
+Ingredientes ... flocons d'avoine (aveia) + vitamine C EN POUDRE +
+                 pamplemousse (toranja). SEM CORANTE — a vitamina C
+                 tinge de laranja-rosa.
+                 ⛔ Vitamina C em LATA DE METAL REDONDA com a tampa
+                 fora e visivel ao lado — NUNCA tubo: na Franca, como
+                 na Alemanha, tubo e' comprimido efervescente, e
+                 comprimido nao se despeja.
+                 Fonte: TABELA DE INGREDIENTES POR IDIOMA em
+                 MECANISMOS WEIGHT LOSS.txt (validada 06.09.2026).
+Duracao ........ 28s · 4 takes (6 + 8 + 8 + 6).
+                 ⚠️ O take 1 SUBIU de 4s (1a remessa FR) para 6s: os
+                 ingredientes da v2 sao mais longos em frances —
+                 "bicarbonate/gelee" valem 6 silabas, "vitamine C /
+                 flocons d'avoine" valem 8 — e a frase foi de 17 para
+                 20 silabas, o que em 4s pediria 5,0 sil/s, acima do
+                 teto de 4,7.
+                 SILABAS: 20 / 30 / 35 / 24.
+                 TAXA EXIGIDA: 3,33 / 3,75 / 4,38 / 4,00 (teto 4,7).
+Keyword CTA .... "livre". Ebook no take 4, capa em FRANCES
+                 ("150 RECETTES FITNESS" / "Une vie plus legere").
+Cena ........... take 3 espreme MEIA TORANJA com UMA mao. Take 4 com o
+                 COPO (nao ha cubo com aveia). Bebida LARANJA-
+                 AVERMELHADA, nao vermelha.
+Unidades ....... "pounds of waste" = "des kilos de dechets" (metrico).
+⛔ MARCA NUNCA NA FALA: a copy diz "vitamine C" e "flocons d'avoine",
+   genericos. Maizena, La Baleine e qualquer outra marca ficam so no
+   rotulo da embalagem em quadro.
+
+COPY (FR + PT) — so o TAKE 1 difere da 1a remessa francesa:
+
+  TAKE 1 — HOOK — 6s — 20 silabas
+  FR: "Mets de la vitamine C dans les flocons d'avoine et remercie-moi
+       plus tard."
+  PT: "Coloque vitamina C na aveia e me agradeca depois."
+
+  TAKES 2, 3 e 4 ... identicos aos da 1a remessa francesa (nao ha
+  marca nem ingrediente nomeado neles).
+
+  ⚠️ Acentos corretos pra colar no Veo: moitie = moitié ·
+  melange special = mélange spécial · Ca reduit = Ça réduit ·
+  eliminant = éliminant · dechets bloques = déchets bloqués ·
+  annees = années · complete = complète · prive = privé ·
+  legere = légère.
+
+====================================================================
+WL-005 — AS SEIS REMESSAS ESTAO FECHADAS
+====================================================================
+  idioma / remessa   ingredientes                 cor      take 4  dur.
+  -----------------  ---------------------------  -------  ------  ----
+  EN variacao 1      fruit salt + cornstarch +    vermelha  copo   24s
+                     limao + CORANTE
+  EN variacao 2      vitamina C + aveia + toranja laranja   copo   26s
+  DE 1a (originais)  Natron + Wackelpudding +     vermelha  CUBO   26s
+                     Zitrone (sem corante)
+  DE 2a (variacao 2) Vitamin C + Haferflocken +   laranja   copo   26s
+                     Grapefruit
+  FR 1a (originais)  bicarbonate + gelatina em    vermelha  CUBO   26s
+                     folha + citron + CORANTE
+  FR 2a (variacao 2) vitamine C + flocons         laranja   copo   28s
+                     d'avoine + pamplemousse
+
+  ⭐ So as duas remessas com gelatina de verdade (DE 1a e FR 1a) tem
+     CUBO no take 4 — nas outras quatro nao existe cubo, entao entra o
+     copo. Decisao registrada em cada entrada.
+  ⭐ Corante em quadro so em EN v1 (amido e sal de frutas sao
+     incolores) e FR 1a (a Franca nao tem gelatina de sobremesa
+     vermelha). Nas outras quatro a cor vem do proprio ingrediente.
+====================================================================
