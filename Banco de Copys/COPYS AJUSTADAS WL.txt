@@ -1109,3 +1109,66 @@ COPY (FR) — so o TAKE 2 difere da 1a remessa:
                      laranja-vermelho, por causa da vitamina C).
 
 WL-004 COMPLETO: EN v1 + EN v2 + DE 1a/2a + FR 1a/2a.
+
+
+--------------------------------------------------------------------
+WL-005 · VARIACAO 1 · INGLES (EN) · "limpeza intestinal"
+--------------------------------------------------------------------
+Modela ......... WL-005 (ver COPYS ORIGINAIS WL.txt)
+Ajustado em .... 07.09.2026
+Ingredientes ... v1: sal de frutas (fruit salt) + amido de milho
+                 (cornstarch) + limao + frasco de corante VERMELHO.
+Cenario ........ mantido: cozinha de apartamento moderno, cena unica.
+                 Pessoa trocada pela REF.
+Duracao ........ 24s · 4 takes (6 + 4 + 8 + 6).
+                 SILABAS: 27 / 11 / 31 / 25.
+                 TAXA EXIGIDA (limite 4,7): 4,50 / 2,75 / 3,88 / 4,17.
+Keyword CTA .... "book". Ebook no take 4 (o do CTA, que e' o ultimo).
+
+DECISOES DE COPY (operador, 07.09) — reescreveu 4 dos 6 beats:
+  - hook: ingredientes -> v1, e a frase deixa de repetir a WL-002.
+  - linha 2: FARMACIA REMOVIDA por completo; virou LACUNA SOCIAL
+    ("metade das mulheres com mais de cinquenta nunca ouviu falar").
+  - linha 6 (fecho) CORTADA inteira — era identica a da WL-001.
+  - CTA -> "comment, book ... by direct message".
+  - manteve a linha do angulo intestinal COMO ESTAVA, com "pounds of
+    waste trapped for years" (a alegacao mais pesada do lote; decisao
+    dele, sinalizada por mim).
+
+DECISOES DE CENA:
+  - ⛔ O CUBO do beat final NAO existe na v1 (amido de milho vira
+    liquido, nao cubo). Operador escolheu a opcao A: ela ergue um COPO
+    NORMAL da bebida vermelha na mesma altura.
+  - ⛔ O limao passou a ser espremido com UMA mao (a fonte usa duas),
+    aplicando a regra "anti-bug vence a fidelidade do gesto".
+  - A tigela CONTINUA sendo erguida com as duas maos: e' uma acao unica
+    e simetrica, segura contra glitch.
+  - ⭐ Este video NAO tem despejo: os gestos sao gesticular, erguer a
+    tigela, espremer o limao e erguer o copo.
+
+COPY AJUSTADA (EN) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 6s — 27 silabas
+  EN: "Add fruit salt to the cornstarch and thank me later. Half the
+       women over fifty have never heard of this."
+  PT: "Adicione sal de frutas ao amido de milho e me agradeca depois.
+       Metade das mulheres com mais de cinquenta nunca ouviu falar
+       disso."
+
+  TAKE 2 — A MISTURA — 4s — 11 silabas
+  EN: "The secret lies in this special mixture."
+  PT: "O segredo esta nessa mistura especial."
+
+  TAKE 3 — O MECANISMO — 8s — 31 silabas
+  EN: "It reduces bloating and cleanses your intestinal walls,
+       eliminating pounds of waste that have been trapped for years."
+  PT: "Ela reduz o inchaco e limpa as paredes do seu intestino,
+       eliminando quilos de residuos que ficaram presos por anos."
+
+  TAKE 4 — CTA + EBOOK — 6s — 25 silabas
+  EN: "If you want to know more, comment, book, and I'll send you the
+       full recipe by direct message."
+  PT: "Se voce quer saber mais, comente, book, que eu te envio a
+       receita completa por mensagem direta."
+
+PENDENTE: EN v2 (aveia + vitamina C + toranja), depois DE e FR.

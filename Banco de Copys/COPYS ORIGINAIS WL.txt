@@ -174,3 +174,51 @@ NOTA DE DUPLICIDADE: hook NOVO (corretivo/imperativo) e angulo do corpo
   linha "Pharmacies hate this simple mixture" REPETE o corpo da WL-002
   — e era justamente a linha que o operador ja tinha matado la. Por
   isso ele mandou reescrever tirando a farmacia por completo.
+
+
+--------------------------------------------------------------------
+WL-005 · cozinha de apartamento · "limpeza intestinal"
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Fonte .......... arquivo local AQNoVhT78Lsdf...HJ4-L6xuA.mp4
+Analisado em ... 07.09.2026
+Duracao ........ 22s · cena unica
+Keyword CTA .... "yes"
+
+COPY VERBATIM (EN):
+  [00:00] "Add baking soda to gelatin and thank me later."
+  [00:03] "Pharmacies hate this because half their customers would
+          disappear overnight."
+  [00:07] "The secret lies in this special mixture."
+  [00:09] "It reduces bloating and cleanses your intestinal walls,
+          eliminating pounds of waste that have been trapped for years."
+  [00:15] "If you want to know more, comment yes and I'll send you the
+          full recipe via direct message."
+  [00:19] "Just an extra tip and I hope it helps you just as it helped me."
+
+EM QUADRO (leitura otica):
+  Pessoa ....... mulher loira ~55-60, camiseta CINZA de gola redonda.
+  Cenario ...... cozinha de apartamento moderno: janelao a esquerda com
+                 sacada, plantas e predio de tijolo em frente; estante
+                 de madeira ESCURA a direita com tigelas, canecas e
+                 pratos brancos; micro-ondas e fogao inox a direita;
+                 porta-facas e pote de utensilios; bancada branca de
+                 quartzo atravessando o primeiro plano.
+  Enquadramento  altura dos olhos, ela centralizada, bancada no terco
+                 inferior; estavel o video todo.
+  Props ........ tigela grande de vidro com CUBOS de gelatina vermelha,
+                 caixa Arm & Hammer, caixa JELL-O cereja, duas colheres
+                 com especiaria marrom.
+  ⭐ QUATRO GESTOS (nao ha despejo neste video):
+     1. mao aberta gesticulando ao lado dos props
+     2. ERGUE A TIGELA COM AS DUAS MAOS, ja com espuma rosa por cima
+     3. ESPREME UM LIMAO sobre a tigela (com as duas maos na fonte)
+     4. segura UM UNICO CUBO de gelatina entre os dedos, altura do rosto
+  Ingredientes . baking soda + gelatina (JELL-O cereja) + limao.
+
+NOTA DE DUPLICIDADE: ⛔ 3 das 6 linhas repetem quase literalmente o
+  banco — o hook e' quase a WL-002, a linha da farmacia e' quase a
+  WL-004, e o fecho e' IDENTICO ao da WL-001. O unico ativo novo e' o
+  angulo de LIMPEZA INTESTINAL. Por isso o operador mandou reescrever:
+  farmacia removida, hook trocado, linha 6 cortada.
