@@ -1172,3 +1172,37 @@ COPY AJUSTADA (EN) + TRADUCAO (PT):
        receita completa por mensagem direta."
 
 PENDENTE: EN v2 (aveia + vitamina C + toranja), depois DE e FR.
+
+
+--------------------------------------------------------------------
+WL-005 · VARIACAO 2 · INGLES (EN) · "limpeza intestinal"
+--------------------------------------------------------------------
+Base ........... WL-005 Variacao 1 (mesma copy, cena, REF e
+                 enquadramento). SO a linha 1 muda: ingredientes.
+Ingredientes ... v2: aveia (oats) + vitamina C efervescente + toranja
+                 (grapefruit). Cor vem da vitamina C (laranja-rosa),
+                 SEM corante.
+Duracao ........ 26s · 4 takes (8 + 4 + 8 + 6).
+                 ⚠️ O take 1 SUBIU de 6s para 8s: trocar fruit salt/
+                 cornstarch por vitamin C/oats leva a linha de 27 para
+                 29 silabas, o que exigiria 4,83 sil/s num take de 6s —
+                 acima do limite 4,7, ou seja, a fala seria CORTADA.
+                 SILABAS: 29 / 11 / 31 / 25.
+                 TAXA EXIGIDA: 3,63 / 2,75 / 3,88 / 4,17.
+Keyword CTA .... "book". Ebook no take 4.
+Cena ........... no take 3 ela espreme MEIA TORANJA (nao limao), com
+                 UMA mao. Demais gestos identicos a v1.
+
+COPY (EN) — so o TAKE 1 difere da v1:
+
+  TAKE 1 — HOOK — 8s — 29 silabas
+  EN: "Add vitamin C to the oats and thank me later. Half the women
+       over fifty have never heard of this."
+  PT: "Adicione vitamina C a aveia e me agradeca depois. Metade das
+       mulheres com mais de cinquenta nunca ouviu falar disso."
+
+  TAKES 2, 3 e 4 ... identicos aos da entrada WL-005 · VARIACAO 1.
+
+PENDENTE: DE (1a remessa originais / 2a variacao 2) e FR.
+  ⚠️ Consultar a TABELA DE INGREDIENTES POR IDIOMA em
+  MECANISMOS WEIGHT LOSS.txt antes de montar DE e FR.
