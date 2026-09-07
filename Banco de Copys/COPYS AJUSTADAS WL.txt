@@ -963,7 +963,12 @@ WL-004 · ALEMAO (DE) · 2a remessa · VARIACAO 2
 Base ........... WL-004 ALEMAO 1a remessa (mesma copy, cena, REF e
                  enquadramento). SO a linha 2 muda: ingredientes.
 Ingredientes ... v2: Haferflocken (aveia — marca ancora Koelln) +
-                 Vitamin C efervescente (tubo) + Grapefruit.
+                 Vitamin-C-Pulver (po de vitamina C) em LATA + Grapefruit.
+                 ⛔ CORRIGIDO 06.09: estava "tubo", mas tubo na Alemanha
+                 e' Brausetabletten (comprimido) e comprimido nao se
+                 despeja em fio. O gesto de despejar exige LATA/SACHE
+                 de po. Ver a TABELA DE INGREDIENTES POR IDIOMA em
+                 MECANISMOS WEIGHT LOSS.txt (fonte da verdade).
 Cor ............ vem da vitamina C (laranja-rosa) — SEM corante.
 Duracao ........ 26s · 4 takes (4 + 8 + 8 + 6).
                  SILABAS: 11 / 34 / 37 / 23.
