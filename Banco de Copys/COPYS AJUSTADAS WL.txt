@@ -1010,3 +1010,68 @@ COPY (DE) — so o TAKE 2 difere da 1a remessa:
 PENDENTE: FRANCES (1a e 2a remessas).
   ⚠️ No frances nao existe equivalente do Jell-O — a 1a remessa precisa
   de colorant alimentaire rouge em quadro para justificar o vermelho.
+
+
+--------------------------------------------------------------------
+WL-004 · FRANCES (FR) · 1a remessa · ingredientes ORIGINAIS
+--------------------------------------------------------------------
+Base ........... WL-004 (mesma cena, REF e enquadramento). Copy do
+                 operador traduzida.
+Ingredientes ... ORIGINAIS traduzidos: gelatine (Vahine) + bicarbonate
+                 (La Baleine) + citron.
+                 ⛔ A Franca NAO tem equivalente do Jell-O (gelatina la'
+                 e' folha INCOLOR), entao entra em quadro um FRASCO DE
+                 COLORANT ALIMENTAIRE ROUGE para justificar o vermelho
+                 da tigela. Conforme a TABELA DE INGREDIENTES POR
+                 IDIOMA em MECANISMOS WEIGHT LOSS.txt (fonte da verdade).
+Tom ............ "tu". Keyword "livre".
+Duracao ........ 26s · 4 takes (4 + 8 + 8 + 6).
+                 SILABAS: 17 / 34 / 36 / 19.
+                 TAXA EXIGIDA (limite 4,7): 4,25 / 4,25 / 4,50 / 3,17.
+Ebook .......... take 4, em pe na bandeja VAZIA (unico objeto nela).
+                 Capa FR "150 RECETTES MINCEUR / Une vie plus legere".
+Bandeja ........ CHEIA nos takes 1 e 2, VAZIA nos takes 3 e 4.
+Movimento ...... um por take: (1) nenhum, so segura a caixa parada ·
+                 (2) despejar o bicarbonate · (3) nenhum, so segura o
+                 copo · (4) empurrar o copo pra lente. Fala continua.
+Direcao ........ IMAGE/TAKE em ingles; fala francesa; voz NATIVA
+                 francesa. No Veo Editor: Idioma = Frances.
+Fichas de prop . forma descrita positivamente (licao do "carton"):
+                 bicarbonate = "flat-sided rectangular cardboard box of
+                 La Baleine bicarbonate de soude, top flap OPEN";
+                 gelatine = "small flat rectangular cardboard packet of
+                 Vahine gelatine, standing upright";
+                 corante = "small clear glass bottle of red colorant
+                 alimentaire".
+
+COPY (FR) + TRADUCAO (PT):
+
+  TAKE 1 — HOOK — 4s — 17 silabas
+  FR: "Arrete de faire ta boisson du matin de la mauvaise facon."
+  PT: "Pare de fazer sua bebida da manha do jeito errado."
+
+  TAKE 2 — RECEITA — 8s — 34 silabas
+  FR: "Mets du bicarbonate et un demi-citron dans la gelatine et
+       regarde les gonflements disparaitre des jambes et du visage."
+  PT: "Ponha bicarbonato e meio limao na gelatina e veja o inchaco
+       sumir das pernas e do rosto."
+
+  TAKE 3 — ARGUMENTO — 8s — 36 silabas
+  FR: "Toute femme de cinquante ans et plus devrait le savoir : ca
+       elimine naturellement des annees de retention d'eau. Et ca ne
+       coute presque rien."
+  PT: "Toda mulher acima dos cinquenta deveria saber disso, porque
+       elimina naturalmente anos de retencao de liquido. E custa quase
+       nada."
+
+  TAKE 4 — CTA + EBOOK — 6s — 19 silabas
+  FR: "Commente, livre, pour recevoir la recette complete plus quatre
+       bonus surprise."
+  PT: "Comenta, book, para receber a receita completa com mais quatro
+       bonus surpresa."
+
+NOTA: como no alemao, usa-se o ARTIGO e nao o possessivo para partes do
+  corpo ("des jambes et du visage") — frances natural e mantem a taxa
+  dentro do limite sem cortar copy.
+
+PENDENTE: 2a remessa francesa (Variacao 2).
