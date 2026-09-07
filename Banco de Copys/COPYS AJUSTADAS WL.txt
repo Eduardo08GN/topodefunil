@@ -1281,3 +1281,57 @@ COPY (DE + PT):
 PENDENTE: DE 2a remessa (variacao 2: Haferflocken/Koelln +
   Vitamin-C-Pulver em lata + Grapefruit, sem corante) e as duas
   remessas em frances.
+
+
+--------------------------------------------------------------------
+WL-005 · 2a REMESSA · ALEMAO (DE) · VARIACAO 2 · "limpeza intestinal"
+--------------------------------------------------------------------
+Base ........... WL-005 (mesma cena, REF e enquadramento). 2a remessa
+                 = VARIACAO 2, pela Regra absoluta n2 do operador.
+Ingredientes ... Haferflocken (aveia) + Vitamin-C-Pulver (po de
+                 vitamina C) + Grapefruit (toranja).
+                 SEM CORANTE — a vitamina C tinge de laranja-rosa.
+                 Fonte: TABELA DE INGREDIENTES POR IDIOMA em
+                 MECANISMOS WEIGHT LOSS.txt (validada 06.09.2026).
+                 ⛔ A vitamina C entra em LATA DE METAL REDONDA com a
+                 tampa fora e visivel ao lado — NUNCA tubo: tubo na
+                 Alemanha e' comprimido efervescente, e comprimido nao
+                 se despeja nem se dissolve em fio.
+Duracao ........ 26s · 4 takes (8 + 4 + 8 + 6).
+                 SILABAS: 33 / 14 / 31 / 27.
+                 TAXA EXIGIDA: 4,13 / 3,50 / 3,88 / 4,50 (teto 4,7).
+Keyword CTA .... "Buch". Ebook no take 4, capa em ALEMAO
+                 ("150 FITNESS-REZEPTE" / "Ein leichteres Leben").
+Cena ........... take 3 espreme MEIA TORANJA com UMA mao. Take 4 volta
+                 ao COPO (nao ha cubo com aveia), como nas versoes em
+                 ingles. Bebida LARANJA-AVERMELHADA, nao vermelha.
+Unidades ....... "pounds of waste" = "kiloweise Abfall" (metrico).
+⛔ MARCA NUNCA NA FALA: a copy diz "Vitamin C" e "Haferflocken",
+   genericos. Koelln e qualquer outra marca ficam so no rotulo da
+   embalagem em quadro. Regra fixada em 07.09.2026 depois do erro da
+   1a remessa (que dizia "Kaiser Natron" e "Goetterspeise" na fala).
+
+COPY (DE + PT) — so o TAKE 1 difere da 1a remessa:
+
+  TAKE 1 — HOOK — 8s — 33 silabas
+  DE: "Gib Vitamin C in die Haferflocken und dank mir spaeter.
+       Die Haelfte der Frauen ueber fuenfzig hat davon noch nie
+       gehoert."
+  PT: "Coloque vitamina C na aveia e me agradeca depois. Metade das
+       mulheres com mais de cinquenta nunca ouviu falar disso."
+
+  TAKES 2, 3 e 4 ... identicos aos da 1a remessa alema (nao ha marca
+  nem ingrediente nomeado neles).
+
+  ⚠️ Acentos corretos pra colar no Veo: spaeter = später ·
+  Haelfte = Hälfte · ueber = über · fuenfzig = fünfzig ·
+  gehoert = gehört · Blaehungen = Blähungen · Darmwaende = Darmwände ·
+  festsass = festsaß.
+
+PENDENTE: as duas remessas em FRANCES.
+  1a remessa FR: gelatina NAO EXISTE incolor-vermelha la' -> precisa de
+  CORANTE ALIMENTAR VERMELHO em quadro + bicarbonate + citron.
+  2a remessa FR: flocons d'avoine + vitamine C EN POUDRE (lata/sache,
+  nunca tubo) + pamplemousse, sem corante.
+  ⛔ Na fala, sempre o generico frances — nunca La Baleine, Vahine,
+  Maizena.
