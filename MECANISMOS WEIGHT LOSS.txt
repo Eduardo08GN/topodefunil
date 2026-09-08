@@ -103,9 +103,38 @@ quando necessario.
 
   VIDEO 1 ....... INGREDIENTES ORIGINAIS da fonte, traduzidos e
                   localizados para o pais. Vale nos TRES idiomas.
-  VIDEO 2 ....... VARIACAO 1 (outros ingredientes).
-  VIDEO 3 ....... VARIACAO 2 (outros ainda) — SO quando o operador
-                  pedir. Nao e automatico.
+  VIDEO 2 ....... A VARIACAO (uma so), com ingredientes TODOS
+                  DISTINTOS dos do video 1.
+
+⭐ SIMPLIFICADO EM 08.09.2026: eram TRES videos (originais + v1 + v2) e
+   passaram a ser DOIS. Ordem do operador: "ao inves de ter mais 2
+   variacoes diferentes dos ingredientes do video original vamos manter
+   somente uma, de forma que todos os ingredientes sejam distintos".
+   ⛔ Nao existe mais "Variacao 1" e "Variacao 2" — existe A VARIACAO.
+   As entradas antigas do banco que falam em v1 e v2 sao HISTORICO.
+
+--- A PALETA DE INGREDIENTES (operador, 08.09.2026) ---
+Estes sao os ingredientes liberados. Podem ser usados a vontade, com
+UMA regra: nenhum se repete entre o video 1 e o video 2 da MESMA fonte.
+
+    baking soda  ·  limao  ·  vinagre de maca  ·  toranja
+    maisena  ·  LEITE EM PO  ·  mel
+
+  ⭐ LEITE EM PO entrou em 08.09.2026 e e' o acrescimo mais util: po
+     branco, despejavel, deixa o liquido opaco e cremoso. Cobre o papel
+     do HEROI (o que a gelatina/maisena faziam) sem ser nenhum dos dois.
+
+  ⛔⛔ CONSEQUENCIA DE CENA QUE PRECISA FICAR DECLARADA: dos sete, SO O
+     BAKING SODA EFERVESCE. Quando o video 1 usa baking soda — que e o
+     caso de quase toda fonte que modelamos — o video 2 fica SEM
+     efervescente, e nos videos em que a ERUPCAO DE ESPUMA e o payoff,
+     o quadro perde o climax.
+     Ordem do operador para esse caso: "Se nao achar nada parecido com
+     baking soda, utilize outra coisa."
+     ⏳ Pesquisa aberta em 08.09.2026 procurando um efervescente local
+     (DE e FR) que: borbulhe, NAO seja bicarbonato, NAO seja vitamina C,
+     seja reconhecivel por mulher 50+ e faca sentido num video de
+     emagrecimento. Resultado entra aqui quando fechar.
 
 ⛔⛔ REGRA INVALIDADA EM 08.09.2026 PELO OPERADOR:
    "Em video em INGLES, nunca usar os ingredientes originais se forem

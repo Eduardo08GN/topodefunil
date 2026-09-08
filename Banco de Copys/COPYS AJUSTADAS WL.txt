@@ -13,18 +13,29 @@ Regras fixas aplicadas em toda copy ajustada:
     INGREDIENTES. O resto e replica da fonte.
       VIDEO 1  ingredientes ORIGINAIS, traduzidos e localizados —
                nos TRES idiomas, ingles inclusive
-      VIDEO 2  VARIACAO 1
-      VIDEO 3  VARIACAO 2 — so quando o operador pedir
+      VIDEO 2  A VARIACAO (uma so), ingredientes TODOS DISTINTOS
+               dos do video 1
+    ⭐ SIMPLIFICADO em 08.09.2026: eram tres videos, viraram DOIS.
+    Nao existe mais "v1" e "v2" — existe A VARIACAO. As entradas
+    WL-001 a WL-006 abaixo, que falam em v1 e v2, sao HISTORICO.
+    PALETA LIBERADA (nenhum se repete entre o video 1 e o 2):
+      baking soda · limao · vinagre de maca · toranja · maisena ·
+      LEITE EM PO · mel
+    ⛔ Dos sete, SO o baking soda efervesce. Quando o video 1 usa
+    baking soda, o video 2 fica sem efervescente e o quadro perde a
+    erupcao de espuma. Ver MECANISMOS WEIGHT LOSS.txt.
   - ⛔ REGRA INVALIDADA em 08.09.2026: "nunca usar os ingredientes
     originais no ingles (baking soda, Vick, gelatina, vinagre de
     maca)". NAO VALE MAIS. Os tres idiomas sao simetricos.
     As entradas WL-001 a WL-006 abaixo seguem como estao — sao
     historico do que ja foi produzido, nao doutrina.
-  - Substituicao de ingrediente NAS VARIACOES (a remessa dos
-    originais nao substitui nada):
-      Baking soda        -> v1 Sal de frutas · v2 Vitamina C eferv.
-      Gelatina           -> v1 Amido de milho · v2 Aveia
-      Vinagre de maca    -> v1 Limao espremido · v2 Toranja
+  - Substituicao de ingrediente NA VARIACAO (a remessa dos originais
+    nao substitui nada). ⚠️ A tabela abaixo e HISTORICA — nasceu do
+    modelo de duas variacoes, que morreu em 08.09.2026. Hoje a regra e
+    so: escolher da PALETA o que nao repete o video 1.
+      Baking soda        -> era v1 Sal de frutas · v2 Vitamina C eferv.
+      Gelatina           -> era v1 Amido de milho · v2 Aveia
+      Vinagre de maca    -> era v1 Limao espremido · v2 Toranja
       Mel                -> MEL (nao substitui nunca)
   - Teto de palavras por take: 4s = 7 · 6s = 24 · 8s = 32.
   - A CAPA DO EBOOK entra em quadro no MESMO take do CTA ("comment,
