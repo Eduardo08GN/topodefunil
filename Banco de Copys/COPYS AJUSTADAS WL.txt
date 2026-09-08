@@ -2122,3 +2122,160 @@ FICHAS DE PROP:
   ebook ........ "150" em letras grandes + "RECETTES MINCEUR" ao lado,
                  "Une vie plus legere" embaixo; foto de um casal
                  grisalho numa cozinha com copos de smoothie coloridos
+
+
+--------------------------------------------------------------------
+WL-006 · 1a REMESSA · FRANCES (FR) · "GLP natural" · 3 CENAS
+--------------------------------------------------------------------
+Base ........... WL-006 (estacionamento + quintal + cozinha). Copy da
+                 variacao 1 em ingles, traduzida. 1a remessa =
+                 INGREDIENTES ORIGINAIS TRADUZIDOS, Regra absoluta n2.
+Ingredientes ... gelatina EM FOLHA (incolor) + bicarbonate +
+                 vinaigre de cidre + citron + CORANTE ALIMENTAR
+                 VERMELHO EM QUADRO.
+                 ⛔ A Franca NAO tem gelatina de sobremesa vermelha
+                 tipo Jell-O; la gelatina e folha incolor. Por isso o
+                 frasco de corante entra em quadro para justificar a
+                 cor da taca e do copo.
+                 ⭐ O vinagre de maca entra TRADUZIDO (vinaigre de
+                 cidre), pela linha acrescentada a tabela em
+                 07.09.2026. Nas variacoes 1 e 2 ele vira TORANJA.
+Duracao ........ 48s · 7 takes (8+4+6+8+8+8+6) — o MESMO total e o
+                 mesmo numero de takes do ingles v2.
+                 SILABAS: 36 / 15 / 24 / 32 / 28 / 30 / 25.
+                 TAXA: 4,50 / 3,75 / 4,00 / 4,00 / 3,50 / 3,75 / 4,17.
+Keyword CTA .... "livre". Ebook so no take 7, que e o ultimo.
+Distribuicao ... take 1 no estacionamento · takes 2-4 no quintal ·
+                 takes 5-7 na cozinha.
+
+⭐⭐ O FRANCES NAO PRECISOU QUEBRAR NENHUM TAKE — ao contrario do
+   alemao, que foi de 7 para 9. Duas razoes medidas:
+   a) "Lyon" tem UMA silaba contra as QUATRO de "Arizona" (e as duas
+      de "Muenchen");
+   b) "nutritionniste" tem 4 silabas contra as SETE de
+      "Ernaehrungsberaterin". Por isso a linha da receita + demissao
+      coube inteira em 8s (32 silabas, 4,00), enquanto na Alemanha
+      precisou virar dois takes.
+   ⭐ Regra que isso confirma: composto alemao e o inflador; o frances
+   fica proximo do ingles.
+
+⚠️ DECISAO DE GRAMATICA DECLARADA — A COPY USA "VOUS", NAO "TU".
+   O hook comeca com "Girls," (enderecamento no PLURAL), o que em
+   frances forca "vous": "Les filles, ne METTEZ pas...". Misturar
+   "vous" no take 1 com o "tu" dos nossos outros videos franceses
+   ficaria errado DENTRO DO MESMO VIDEO, entao a copy inteira usa
+   "vous" e o CTA vira "Commentez, livre".
+   ⛔ A KEYWORD "livre" NAO MUDA — a automacao de DM segue igual.
+   ⚠️ Isto diverge da WL-001 FR e da WL-005 FR, que usam "tu". Se o
+   operador quiser uniformizar o funil frances em "tu", o hook precisa
+   deixar de enderecar um grupo.
+
+⚠️ TAKE MAIS APERTADO: o take 1 (hook), 36 silabas em 8s = 4,50
+   contra o teto de 4,7. Nao foi quebrado porque partir o hook no meio
+   custa mais do que os 4% de margem valem.
+
+⭐ POR QUE O TAKE 5 FICOU EM 8s E NAO EM 6s: 28 silabas em 6s dariam
+   4,67 — a mesma margem raspada que ja me fez redistribuir antes, e
+   aqui nao havia para onde redistribuir. Taxa baixa neste beat nao
+   vira silencio, vira FALA CALMA, que combina com explicar o
+   mecanismo. Excecao consciente a regra de nao inflar.
+
+⛔ CONVERSOES QUE O FRANCES EXIGIU (alem dos ingredientes):
+   FACHADA ..... Walmart nunca operou na Franca. Virou CARREFOUR, com
+                 a especificacao corrigida: PAREDE PLANA de big-box,
+                 faixa branca rente ao alto ocupando o QUINTO SUPERIOR
+                 do quadro, palavra "CARREFOUR" literal em azul com o
+                 emblema de chevrons, portas automaticas na MESMA
+                 parede, carrinhos a esquerda, carros nas bordas.
+   TOPONIMO .... Arizona -> LYON.
+   MOEDA ....... $1,000 -> "mille euros".
+   PESO ........ 17 pounds -> "huit kilos" (17 lb = 7,7 kg,
+                 arredondado).
+   MANEQUIM .... US 16 -> FR 46; US 12 -> FR 42.
+   BANDEIRA .... a bandeirinha dos EUA da cozinha SAIU; virou um vaso
+                 de ervas.
+   ROTULOS ..... com a PALAVRA FRANCESA LITERAL: "Gelatine",
+                 "Bicarbonate", "Vinaigre de cidre", "Colorant
+                 alimentaire". Nunca "a French label".
+
+⛔ MARCA NUNCA NA FALA: a copy diz "gelatine" e "citron", genericos.
+   Vahine, La Baleine e Maizena ficam so no rotulo em quadro.
+
+COPY (FR + PT):
+
+  TAKE 1 — HOOK — estacionamento — 8s — 36 silabas
+  FR: "Les filles, ne mettez pas de citron dans la gelatine si vous ne
+       voulez pas qu'on vous demande si vous etes malade tellement
+       vous avez maigri."
+  PT: "Meninas, nao coloquem limao na gelatina se nao quiserem que
+       perguntem se voces estao doentes de tanto que emagreceram."
+
+  TAKE 2 — quintal — 4s — 15 silabas
+  FR: "J'ai 58 ans. J'ai fait du 46 pendant 20 ans."
+  PT: "Eu tenho 58 anos. Fui manequim 46 por 20 anos."
+
+  TAKE 3 — quintal — 6s — 24 silabas
+  FR: "Mes articulations me faisaient mal, et je n'arrivais pas a
+       finir mes courses sans m'asseoir."
+  PT: "Minhas articulacoes doiam, e eu nao conseguia terminar as
+       compras sem me sentar."
+
+  TAKE 4 — quintal — 8s — 32 silabas
+  FR: "Ma fille m'a envoye une recette d'une nutritionniste de Lyon
+       qui a ete viree pour l'avoir partagee publiquement."
+  PT: "Minha filha me mandou uma receita de uma nutricionista de Lyon
+       que foi demitida por ter divulgado."
+
+  TAKE 5 — cozinha — 8s — 28 silabas
+  FR: "Ca active les recepteurs GLP dans l'intestin comme ces
+       injections a mille euros, mais naturellement."
+  PT: "Ela ativa os receptores GLP no intestino igual aquelas
+       injecoes de mil euros, so que natural."
+
+  TAKE 6 — cozinha — 8s — 30 silabas
+  FR: "En trois semaines, j'ai perdu huit kilos. Je suis passee du 46
+       au 42 sans rien changer a mes repas."
+  PT: "Em tres semanas eu perdi oito quilos. Passei do manequim 46
+       para o 42 sem mudar nada nas refeicoes."
+
+  TAKE 7 — CTA — cozinha — 6s — 25 silabas
+  FR: "Commentez, livre, et je vous envoie la recette complete par
+       message avant que ca soit supprime."
+  PT: "Comentem 'livre', que eu envio a receita completa por mensagem
+       antes que isso seja derrubado."
+
+  ⚠️ Acentos pra colar no Veo: gelatine = gélatine · etes = êtes ·
+  envoye = envoyé · ete viree = été virée · partagee = partagée ·
+  Ca active les recepteurs = Ça active les récepteurs ·
+  passee = passée · a mes repas = à mes repas ·
+  complete = complète · ca soit supprime = ça soit supprimé ·
+  legere = légère · n'arrivais pas a = n'arrivais pas à.
+
+FICHAS DE PROP DA 1a REMESSA FR:
+  taca ......... wide shallow clear glass coupe of bright red liquid
+                 with a sprinkle of brown ground spice
+  limao (mao) .. ONE single half of a fresh lemon, cut-side down
+  gelatina ..... small upright flat-sided cardboard box, top flap
+                 open, printed front panel READING "Gelatine", with
+                 TWO THIN TRANSLUCENT COLOURLESS GELATINE SHEETS
+                 resting against its side
+  bicarbonato .. small upright flat-sided cardboard box, top flap
+                 open, printed front panel READING "Bicarbonate"
+  vinagre ...... tall clear glass bottle of amber cider vinegar with a
+                 screw cap, printed paper label READING "Vinaigre de
+                 cidre"
+  corante ...... small clear glass bottle of bright red food colouring
+                 with a white screw cap, label READING "Colorant
+                 alimentaire"
+  limao (mesa) . one whole fresh lemon
+  colheres ..... three stainless steel measuring spoons in a neat row,
+                 EACH ONE OF THE THREE FILLED, white / yellow / orange
+  liquidificador the black base of a countertop blender with its jar
+                 removed (so na cozinha)
+  copo ......... tall clear drinking glass of thick bright red drink
+  ebook ........ "150 RECETTES MINCEUR" / "Une vie plus legere"
+  cozinha ...... sem bandeira dos EUA; vaso de ervas no lugar
+
+PENDENTE: 2a remessa FRANCES (variacao 2: flocons d'avoine + vitamine
+  C EN POUDRE em lata, NUNCA tubo + pamplemousse + citron, SEM
+  corante). Com ela o WL-006 fecha as seis remessas, como o WL-005.
