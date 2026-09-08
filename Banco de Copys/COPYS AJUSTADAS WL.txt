@@ -1881,3 +1881,127 @@ PENDENTE: 2a remessa DE (variacao 2: Haferflocken + Vitamin-C-Pulver
   ⛔ Frances: fachada vira CARREFOUR, bandeira sai, manequim US 16/12
   vira FR 46/42, moeda vira euro, e a gelatina vermelha NAO EXISTE la
   — precisa de corante alimentar vermelho em quadro na 1a remessa.
+
+
+--------------------------------------------------------------------
+WL-006 · 2a REMESSA · ALEMAO (DE) · VARIACAO 2 · "GLP natural"
+--------------------------------------------------------------------
+Base ........... WL-006 (estacionamento + quintal + cozinha), mesma
+                 copy da 1a remessa alema. 2a remessa = VARIACAO 2.
+Ingredientes ... Haferflocken (aveia) + Vitamin-C-Pulver em LATA +
+                 Grapefruit (toranja) + Zitrone (limao).
+                 SEM CORANTE e SEM garrafa de vinagre — a toranja
+                 ocupa o papel do acido do vinagre, e a vitamina C
+                 tinge. Bebida LARANJA-AVERMELHADA.
+Duracao ........ 54s · 9 takes (8+6+6+6+4+8+4+6+6).
+                 SILABAS: 36 / 23 / 23 / 23 / 15 / 32 / 13 / 24 / 26.
+                 TAXA: 4,50 / 3,83 / 3,83 / 3,83 / 3,75 / 4,00 /
+                       3,25 / 4,00 / 4,33 (teto 4,7).
+Keyword CTA .... "Buch". Ebook so no take 9, que e o ultimo.
+
+⭐⭐ AS TRES CORRECOES DO OPERADOR (07.09.2026), APLICADAS AQUI.
+   Ele mandou grava-las na memoria depois de ver a 1a remessa alema
+   renderizada. Cada uma virou regra permanente.
+
+  1. TOPONIMO SE LOCALIZA IGUAL A MARCA.
+     Na 1a remessa alema eu deixei "aus Arizona". Errado: uma alema
+     contando que a filha achou a receita de alguem do Arizona soa a
+     conteudo importado. Virou "aus MUENCHEN".
+     ⭐ Efeito metrico: Arizona = 4 silabas, Muenchen = 2. O take 4
+     caiu de 25 para 23 silabas (taxa 4,17 -> 3,83). Toda troca de
+     toponimo exige RECONTAGEM.
+     Alternativas equivalentes: Hamburg, Berlin, Koeln. No frances:
+     Lyon, Marseille, Bordeaux, Toulouse.
+
+  2. ROTULO: ESCREVER O TEXTO LITERAL, nao "printed German panel".
+     ⚠️ MEDIDO nas 4 variantes da IMAGE 02 da 1a remessa alema: a
+     ficha dizia "printed GERMAN front panel" nos tres props, e
+     3 DE 4 VARIANTES SAIRAM EM INGLES E COM MARCA AMERICANA —
+     "Gelatin", "JELATO", "GELL-O", "APPLE CIDER VINEGAR",
+     "Arm & Hammer Baking Soda". So 1 de 4 trouxe Wackelpudding /
+     Apfelessig / Kaiser Natron.
+     ✅ A correcao e escrever a palavra que deve aparecer impressa:
+     'a printed label reading "Haferflocken"' — nunca 'a German
+     label'. Adjetivo de idioma e uma intencao; palavra literal e uma
+     instrucao.
+     ⭐ Nesta remessa o risco cai sozinho tambem porque DOIS DOS
+     QUATRO props sao FRUTA, e fruta nao tem rotulo.
+
+  3. FACHADA: trocar a marca NAO autoriza trocar o enquadramento.
+     Na 1a remessa o Kaufland saiu como MARQUISE SOBRE COLUNAS, com a
+     placa flutuando numa fascia — a fonte tem uma PAREDE PLANA de
+     big-box, placa rente ao alto da parede e portas automaticas logo
+     abaixo, na mesma parede. O operador: "o logo da loja que
+     substituiu o walmart nao ficou fiel ao original".
+     ✅ Agora o prompt declara TRES coisas:
+        a) tipo de construcao, em POSITIVO — "the flat front wall of a
+           big-box store whose front wall rises straight up from the
+           pavement to the sign" (nunca "no canopy": negar injeta o
+           token);
+        b) proporcao da placa — "occupying roughly the TOP FIFTH of
+           the frame";
+        c) o que fica abaixo dela NA MESMA parede — portas, carrinhos,
+           carros, e onde cada um entra.
+     ✅ E a placa por forma + cor + PALAVRA LITERAL: 'a deep-red
+     horizontal fascia band carrying the single word "KAUFLAND" in
+     plain white capital letters'.
+
+COPY (DE + PT) — identica a 1a remessa alema, menos os takes 1 e 4:
+
+  TAKE 1 — HOOK — estacionamento — 8s — 36 silabas
+  DE: "Maedels, gebt keine Zitrone in die Haferflocken, wenn ihr nicht
+       wollt, dass alle fragen, ob ihr krank seid, weil ihr so viel
+       abgenommen habt."
+  PT: "Meninas, nao coloquem limao na aveia se nao quiserem que todos
+       perguntem se voces estao doentes de tanto que emagreceram."
+  ⚠️ TAKE MAIS APERTADO DO LOTE: 4,50 contra o teto de 4,7. Nao foi
+  quebrado porque partir o hook no meio custa mais do que os 4% de
+  margem valem. E o take a conferir primeiro no render.
+
+  TAKE 4 — quintal — 6s — 23 silabas
+  DE: "Meine Tochter schickte mir ein Rezept von einer
+       Ernaehrungsberaterin aus Muenchen."
+  PT: "Minha filha me mandou uma receita de uma nutricionista de
+       Munique."
+
+  TAKES 2, 3, 5, 6, 7, 8 e 9 ... identicos aos da 1a remessa alema.
+
+  ⚠️ Acentos: Maedels = Mädels · Groesse = Größe ·
+  Ernaehrungsberaterin = Ernährungsberaterin · Muenchen = München ·
+  oeffentlich = öffentlich · fuer = für · natuerlich = natürlich ·
+  aendern = ändern · geloescht = gelöscht.
+
+FICHAS DE PROP DA 2a REMESSA DE:
+  taca ......... wide shallow clear glass coupe of bright orange-pink
+                 liquid with a sprinkle of brown ground spice
+  limao (mao) .. ONE single half of a fresh lemon, cut-side down
+  aveia ........ tall round cardboard canister standing upright, its
+                 printed paper label READING "Haferflocken" in plain
+                 dark letters, round lid removed and lying flat beside
+  vitamina C ... small round metal tin standing upright, its printed
+                 label READING "Vitamin C Pulver" in plain dark
+                 letters, round metal lid removed and lying flat beside
+  toranja ...... one whole fresh grapefruit
+  limao (mesa) . one whole fresh lemon
+  colheres ..... three stainless steel measuring spoons in a neat row,
+                 EACH ONE OF THE THREE FILLED, white / yellow / orange
+  liquidificador the black base of a countertop blender with its jar
+                 removed (so na cozinha)
+  copo ......... tall clear drinking glass of thick bright orange-red
+                 drink
+  ebook ........ "150 FITNESS-REZEPTE" / "Ein leichteres Leben"
+  cozinha ...... a bandeirinha dos EUA SAIU; no lugar, um vaso de
+                 ervas. Sem marcador nacional.
+
+PENDENTE: as duas remessas em FRANCES do WL-006, com as tres
+  correcoes ja aplicadas de nascenca.
+  ⛔ Fachada: CARREFOUR, mesma especificacao de parede plana +
+     proporcao + palavra literal.
+  ⛔ Toponimo: Arizona -> LYON (ou Marseille, Bordeaux, Toulouse).
+  ⛔ Rotulos com a palavra francesa literal: "flocons d'avoine",
+     "vitamine C en poudre", "bicarbonate", "vinaigre de cidre",
+     "gelatine".
+  ⛔ Manequim US 16/12 -> FR 46/42. Moeda -> euro. Peso -> quilos.
+  ⛔ Bandeira dos EUA sai.
+  ⛔ Na 1a remessa francesa a gelatina vermelha NAO EXISTE — precisa
+     de corante alimentar vermelho em quadro.
