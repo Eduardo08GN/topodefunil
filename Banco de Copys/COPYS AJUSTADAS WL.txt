@@ -2678,6 +2678,20 @@ Keyword CTA .... "Buch". Ebook so no take 4, capa em ALEMAO.
    LARANJA do Arm & Hammer — e a defesa contra o vazamento de marca,
    ja que a geometria e a mesma da fonte.
 
+⚠️ ENQUADRAMENTO: a linguagem COMPARATIVA ("CLOSER than the previous
+   shot") NAO segura — o gerador nao ve o quadro anterior. No primeiro
+   render as quatro variantes da MESMA image sairam com enquadramentos
+   muito diferentes entre si. Corrigido para ANCORA FISICA: onde o
+   quadro CORTA O CORPO (cintura / peito / peito alto), quanto da
+   BANCADA aparece, e "both upper arms fully inside the frame".
+   ⛔ Isso importa mais neste video que em qualquer outro: a progressao
+   de camera E o ativo dele.
+
+⚠️ DERIVA DE REF no primeiro render: uma das quatro variantes saiu com
+   CABELO GRISALHO LONGO E ONDULADO — que e a mulher da FONTE, nao a
+   nossa REF. As outras tres acertaram o bob castanho medio. Por isso a
+   palavra MID-BROWN entrou em maiuscula na ficha da REF.
+
 ⭐ NADA PRECISOU SAIR DA COZINHA POR CAUSA DO PAIS. Ao contrario do
    WL-006 (que tinha bandeirinha dos EUA), esta cena nao tem marcador
    nacional nenhum: armarios brancos, marmore, azulejo de metro,
@@ -2708,10 +2722,29 @@ COPY (DE + PT):
   fuenfzig = fünfzig.
 
 FICHAS DE PROP DA 1a REMESSA DE:
-  caixa ........ small flat-sided rectangular WHITE cardboard box,
-                 printed front panel READING "Natron" in dark red
-                 letters, top flap FULLY OPEN, a neat row of small
-                 folded WHITE PAPER SACHETS standing upright inside
+  caixa ........ ⛔ CORRIGIDA EM 08.09.2026 depois do primeiro render.
+                 A ficha antiga dizia so 'WHITE cardboard box reading
+                 "Natron" in dark red letters' e as QUATRO variantes
+                 sairam com uma caixa LISA, generica, de botica —
+                 branca com a palavra Natron e mais nada. A embalagem
+                 REAL tem muito mais. Ficha correta:
+                 small upright rectangular WHITE cardboard carton,
+                 printed front panel READING "Kaiser Natron" in large
+                 RED letters, with a small OLD-FASHIONED ILLUSTRATION
+                 OF A WOMAN STANDING BESIDE A WATERFALL below the name,
+                 three small badges reading "glutenfrei",
+                 "laktosefrei" and "vegan" in a row along the bottom
+                 edge, and "250 g" in one corner; top flap FULLY OPEN,
+                 a neat row of small folded WHITE PAPER SACHETS
+                 standing upright inside
+                 ⭐ As quatro variantes CONCORDAREM entre si foi o
+                 sinal de que o prompt estava no comando: quando as
+                 variantes concordam, o defeito e' do que se PEDIU.
+                 (Variantes que DISCORDAM = ficha ambigua.)
+                 ⚠️ A COR segue nao verificada — nenhum varejista
+                 descreve, e as paginas avisam "Farbe kann abweichen".
+                 Com a ilustracao e os selos especificados, a caixa le
+                 como produto real mesmo se o tom variar.
   sache ........ ONE single small white paper sachet, pinched between
                  thumb and forefinger (so no take 1)
   copo ......... tall clear straight-sided drinking glass of plain
