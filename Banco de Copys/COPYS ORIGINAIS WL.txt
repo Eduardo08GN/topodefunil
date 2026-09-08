@@ -222,3 +222,96 @@ NOTA DE DUPLICIDADE: ⛔ 3 das 6 linhas repetem quase literalmente o
   WL-004, e o fecho e' IDENTICO ao da WL-001. O unico ativo novo e' o
   angulo de LIMPEZA INTESTINAL. Por isso o operador mandou reescrever:
   farmacia removida, hook trocado, linha 6 cortada.
+
+
+--------------------------------------------------------------------
+WL-006 · tres cenas (Walmart + quintal + cozinha) · "GLP natural"
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Fonte .......... arquivo local AQNYcDXmkOu5K8hz...ahKYgU9IS_BGyg.mp4
+Analisado em ... 07.09.2026
+Duracao ........ 44s · 3 cenas — O MAIS LONGO DO BANCO (os outros cinco
+                 ficam entre 16s e 23s)
+Keyword CTA .... "gelatin" · follow-gate · + mencao a LINK
+
+COPY VERBATIM (EN):
+  [00:00] "Girls, don't add lemon to your gelatin if you don't want
+          people to ask if you're sick because you've lost too much
+          weight."
+  [00:06] "I'm 58 years old. I've been a size 16 for 20 years."
+  [00:10] "My joints used to hurt, and I couldn't finish grocery
+          shopping without having to sit down."
+  [00:14] "My daughter sent me a gelatin recipe from a nurse
+          specializing in bariatric surgery in Arizona who was fired
+          for sharing it publicly."
+  [00:22] "It activates the GLP receptors in the gut in the same way
+          as those $1,000 injections, but naturally."
+  [00:27] "In three weeks, I lost 17 pounds."
+  [00:29] "I went from a size 16 to a 12 without changing any of my
+          meals."
+  [00:33] "Comment gelatin and I'll send you the full recipe via
+          message before this gets taken down."
+  [00:37] "Don't forget to follow me or Facebook won't be able to send
+          it to you."
+  [00:40] "Go now. Check out the link before it gets taken down."
+
+EM QUADRO (leitura otica):
+  Pessoa ....... mulher loira ~58, cabelo na altura do ombro, CAMISA
+                 JEANS/CHAMBRAY azul-clara nas TRES cenas.
+  Cena A (0-7s)  ESTACIONAMENTO DO WALMART. Close fechado, braco
+                 esticado. Fachada azul do Walmart com o logo grande,
+                 portas automaticas, cliente com carrinho, carros.
+                 Ela segura uma TACA COUPE de vidro com gelatina ROSA
+                 e CANELA por cima na mao esquerda e ESPREME MEIO
+                 LIMAO com a direita sobre a taca.
+  Cena B (7-20)  QUINTAL, mesa de piquenique de madeira rustica, cerca
+                 de madeira e arvores, sol. Plano medio, ela
+                 centralizada atras da mesa, gesticulando com as DUAS
+                 maos abertas. Na mesa: caixa JELL-O vermelha, garrafa
+                 BRAGG APPLE CIDER VINEGAR, caixa ARM & HAMMER, um
+                 limao inteiro, TRES colheres medidoras com po branco,
+                 amarelo e alaranjado (curcuma).
+  Cena C (20-44) COZINHA: armarios verde-salvia, bancada de granito,
+                 frigideiras de ferro penduradas, porta-temperos,
+                 BANDEIRINHA DOS EUA, porta-facas, fogao a gas. Ela
+                 segura um COPO ALTO de bebida AMARELO-CLARA na mao
+                 direita, altura do peito, ate o fim. Na bancada em
+                 primeiro plano: Bragg, Jell-O, BASE DE LIQUIDIFICADOR,
+                 Arm & Hammer, limao e as colheres.
+  Ingredientes . gelatina (JELL-O) + vinagre de maca (Bragg ACV) +
+                 bicarbonato (Arm & Hammer) + limao + curcuma.
+                 ⭐ PRIMEIRO do banco com VINAGRE DE MACA em quadro.
+
+CHECAGEM DE DUPLICIDADE: ✅ PASSA — e' o mais original do banco.
+  - HOOK INVERTIDO ("nao faca isso, a nao ser que queira que perguntem
+    se voce esta' doente de magra"). Formato inedito aqui.
+  - PRIMEIRO corpo com HISTORIA PESSOAL (idade, manequim, dor
+    articular, 20 anos, a filha como intermediaria).
+  - PRIMEIRO vilao-PESSOA (a enfermeira demitida) em vez de "as
+    farmacias".
+  - PRIMEIRO com NUMEROS e PRIMEIRO com comparacao a FARMACO.
+
+⛔ SEIS PONTOS DE RISCO (levantados ao operador em 07.09.2026):
+  1. "ativa os receptores GLP igual as injecoes de mil dolares" —
+     comparacao direta a Ozempic/Wegovy. Alegacao de farmaco.
+  2. Numeros de perda de peso (8 kg em 3 semanas, manequim 44 -> 40).
+  3. A enfermeira demitida por divulgar — supressao + autoridade
+     medica.
+  4. "antes que isso seja derrubado", DUAS vezes.
+  5. "perguntem se voce esta' doente de tanto que emagreceu" — encosta
+     em corpo ideal / magreza doentia.
+  6. Follow-gate — FACTUALMENTE FALSO no nosso funil: a DM sai
+     seguindo ou nao. Beat ja morto no repo.
+  + o fecho manda ir num LINK; nosso destino e' a DM.
+
+⛔ FACHADA POR PAIS (o operador levantou na entrega do video):
+  O WALMART NAO EXISTE nem na Alemanha (saiu em 2006) nem na Franca
+  (nunca operou). Equivalentes de mesmo porte e registro popular:
+    EUA ....... Walmart   (letreiro azul)
+    ALEMANHA .. Kaufland  (letreiro vermelho)
+    FRANCA .... Carrefour (azul/branco/vermelho)
+  ⚠️ Como o gerador embaralha texto de logo, a recomendacao e'
+  descrever a fachada por FORMA E COR (letreiro grande, portas
+  automaticas, carrinhos, estacionamento) e deixar a marca sair
+  sozinha — o que o espectador le em meio segundo e' "supermercadao".
