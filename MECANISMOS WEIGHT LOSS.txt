@@ -155,6 +155,14 @@ de montar qualquer variacao em qualquer idioma.
                                                    justificar a cor
   Bicarbonato de sodio  Kaiser Natron              bicarbonate La Baleine
   Limao                 Zitrone                    citron
+  Vinagre de maca       Apfelessig                 vinaigre de cidre
+  (ACV)                 (existe e e comum         (existe e e comum
+                        na Alemanha)              na Franca)
+                        -- LINHA ACRESCENTADA em 07.09.2026, quando o
+                        WL-006 trouxe vinagre de maca em quadro pela
+                        primeira vez. Na 1a remessa ele so e TRADUZIDO;
+                        nas variacoes 1 e 2 ele vira TORANJA (decisao
+                        do operador, 07.09.2026).
 
 
 --- 2) VARIACAO 1 ---

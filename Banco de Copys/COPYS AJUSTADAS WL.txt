@@ -1735,3 +1735,149 @@ PENDENTE: as duas remessas de DE e FR do WL-006.
   ⛔ A BANDEIRINHA DOS EUA da cozinha sai nas duas.
   ⛔ Unidades: 17 pounds vira ~8 quilos; manequim 16 -> 12 vira 44 -> 40
   no sistema europeu (checar a numeracao de DE e FR antes).
+
+
+--------------------------------------------------------------------
+WL-006 · 1a REMESSA · ALEMAO (DE) · "GLP natural" · 3 CENAS
+--------------------------------------------------------------------
+Base ........... WL-006 (estacionamento + quintal + cozinha). Copy da
+                 variacao 1 em ingles, traduzida. 1a remessa =
+                 INGREDIENTES ORIGINAIS TRADUZIDOS, Regra absoluta n2.
+Ingredientes ... Goetterspeise (gelatina vermelha) + Kaiser Natron
+                 (bicarbonato) + Apfelessig (vinagre de maca) +
+                 Zitrone (limao). SEM CORANTE — a Goetterspeise ja e
+                 vermelha.
+                 ⭐ O VINAGRE DE MACA NAO ESTAVA NA TABELA porque
+                 nunca tinha aparecido num video-fonte. Ele EXISTE e e
+                 comum na Alemanha (Apfelessig), entao na 1a remessa
+                 entra TRADUZIDO, sem substituicao. Linha nova para a
+                 tabela de MECANISMOS WEIGHT LOSS.
+Duracao ........ 54s · 9 takes (8+6+6+6+4+8+4+6+6).
+                 SILABAS: 36 / 23 / 23 / 25 / 15 / 32 / 13 / 24 / 26.
+                 TAXA: 4,50 / 3,83 / 3,83 / 4,17 / 3,75 / 4,00 /
+                       3,25 / 4,00 / 4,33 (teto 4,7).
+Keyword CTA .... "Buch". Ebook so no take 9, que e o ultimo.
+Distribuicao ... take 1 no estacionamento · takes 2-5 no quintal ·
+                 takes 6-9 na cozinha.
+
+⭐⭐ O ALEMAO OBRIGOU A QUEBRAR DOIS TAKES — 7 viraram 9.
+   Duas linhas estouraram o teto e foram divididas, sem cortar uma
+   palavra:
+   a) A DA NUTRICIONISTA. "Ernaehrungsberaterin" sozinha vale SETE
+      silabas, e a linha inteira chegou a 42 — 5,25 em 8s. Virou o
+      take 4 (a origem da receita) + o take 5 (a demissao).
+   b) A DOS NUMEROS. 37 silabas, 4,63 em 8s. Virou o take 7 (os
+      quilos) + o take 8 (o manequim).
+   ⚠️ Composto alemao e o modo de falha classico deste idioma: UMA
+   palavra pode valer 4-7 silabas e estourar um take inteiro sozinha.
+   Contar silabas, nunca palavras.
+
+⚠️ TAKE MAIS APERTADO: o take 1 (hook), 36 silabas em 8s = 4,50
+   contra o teto de 4,7. NAO foi quebrado porque partir o hook no meio
+   custa mais do que os 4% de margem valem. E o take a conferir
+   primeiro no render.
+
+⛔ QUATRO CONVERSOES QUE O ALEMAO EXIGIU (alem dos ingredientes):
+   FACHADA ..... Walmart nao existe na Alemanha (saiu em 2006).
+                 Virou KAUFLAND — descrito por forma e cor ("wide
+                 horizontal deep-red sign band"), nunca pelo nome,
+                 porque o gerador embaralha texto de logo.
+   MOEDA ....... $1,000 -> "tausend Euro".
+   PESO ........ 17 pounds -> "acht Kilo". ⚠️ 17 lb = 7,7 kg;
+                 arredondado para OITO. Se o operador preferir
+                 precisao, "sieben Kilo" custa a mesma metrica.
+   MANEQUIM .... US 16 -> DE 46; US 12 -> DE 42.
+   BANDEIRA .... a bandeirinha dos EUA da cozinha SAIU; virou um vaso
+                 de ervas. Sem marcador nacional no lugar.
+
+⛔ MARCA NUNCA NA FALA: a copy diz "Wackelpudding" e "Zitrone",
+   genericos. Goetterspeise, Dr. Oetker e Kaiser Natron ficam so no
+   rotulo da embalagem em quadro.
+
+COPY (DE + PT):
+
+  TAKE 1 — HOOK — estacionamento — 8s — 36 silabas
+  DE: "Maedels, gebt keine Zitrone in den Wackelpudding, wenn ihr
+       nicht wollt, dass alle fragen, ob ihr krank seid, weil ihr so
+       viel abgenommen habt."
+  PT: "Meninas, nao coloquem limao na gelatina se nao quiserem que
+       todos perguntem se voces estao doentes de tanto que
+       emagreceram."
+
+  TAKE 2 — quintal — 6s — 23 silabas
+  DE: "Ich bin 58 Jahre alt. Ich hatte 20 Jahre lang Groesse 46."
+  PT: "Eu tenho 58 anos. Fui manequim 46 por 20 anos."
+
+  TAKE 3 — quintal — 6s — 23 silabas
+  DE: "Meine Gelenke taten weh, und ich schaffte den Einkauf nicht,
+       ohne mich hinzusetzen."
+  PT: "Minhas articulacoes doiam, e eu nao dava conta das compras sem
+       me sentar."
+
+  TAKE 4 — quintal — 6s — 25 silabas
+  DE: "Meine Tochter schickte mir ein Rezept von einer
+       Ernaehrungsberaterin aus Arizona."
+  PT: "Minha filha me mandou uma receita de uma nutricionista no
+       Arizona."
+
+  TAKE 5 — quintal — 4s — 15 silabas
+  DE: "Sie wurde gefeuert, weil sie es oeffentlich geteilt hat."
+  PT: "Ela foi demitida por ter divulgado."
+
+  TAKE 6 — cozinha — 8s — 32 silabas
+  DE: "Es aktiviert die GLP-Rezeptoren im Darm genauso wie diese
+       Spritzen fuer tausend Euro, nur ganz natuerlich."
+  PT: "Ela ativa os receptores GLP no intestino igual aquelas
+       injecoes de mil euros, so que natural."
+
+  TAKE 7 — cozinha — 4s — 13 silabas
+  DE: "In drei Wochen habe ich acht Kilo verloren."
+  PT: "Em tres semanas eu perdi oito quilos."
+
+  TAKE 8 — cozinha — 6s — 24 silabas
+  DE: "Ich ging von Groesse 46 auf 42, ohne meine Mahlzeiten zu
+       aendern."
+  PT: "Sai do manequim 46 para o 42 sem mudar minhas refeicoes."
+
+  TAKE 9 — CTA — cozinha — 6s — 26 silabas
+  DE: "Kommentiere, Buch, und ich schicke dir das komplette Rezept per
+       Nachricht, bevor das hier geloescht wird."
+  PT: "Comente 'Buch' que eu te envio a receita completa por mensagem
+       antes que isso seja derrubado."
+
+  ⚠️ Acentos corretos pra colar no Veo: Maedels = Mädels ·
+  Groesse = Größe · Ernaehrungsberaterin = Ernährungsberaterin ·
+  oeffentlich = öffentlich · fuer = für · natuerlich = natürlich ·
+  aendern = ändern · geloescht = gelöscht.
+
+FICHAS DE PROP DA 1a REMESSA DE:
+  taca ......... wide shallow clear glass coupe of bright red liquid
+                 with a sprinkle of brown ground spice on the surface
+  limao (mao) .. ONE single half of a fresh lemon, cut-side down
+  gelatina ..... flat-sided rectangular cardboard box of red gelatin
+                 dessert, printed GERMAN front panel with a photo of
+                 red gelatin, standing upright, top flap open
+  bicarbonato .. small flat-sided rectangular cardboard box of baking
+                 soda, printed GERMAN front panel, upright, flap open
+  vinagre ...... tall clear glass bottle of amber apple cider vinegar,
+                 printed GERMAN paper label, screw cap
+  limao (mesa) . one whole fresh lemon
+  colheres ..... three stainless steel measuring spoons in a neat row,
+                 EACH ONE OF THE THREE FILLED, white / yellow / orange
+  liquidificador the black base of a countertop blender with its jar
+                 removed (so na cozinha)
+  copo ......... tall clear drinking glass of thick bright red drink
+  ebook ........ "150 FITNESS-REZEPTE" / "Ein leichteres Leben"
+
+⚠️ RISCO DE VAZAMENTO DE MARCA NESTA REMESSA: a caixa de bicarbonato
+   e RETANGULAR DE PAPELAO, a mesma geometria do Arm & Hammer que ja
+   vazou na v1 em ingles. Aqui a geometria e correta (e o ingrediente
+   original), entao o painel em alemao e a unica defesa. Se sair
+   vestida de Arm & Hammer, conferir se o "printed German front panel"
+   esta na ficha. NAO negar a marca — negar injeta o token.
+
+PENDENTE: 2a remessa DE (variacao 2: Haferflocken + Vitamin-C-Pulver
+  em lata + Grapefruit, sem corante) e as duas remessas em frances.
+  ⛔ Frances: fachada vira CARREFOUR, bandeira sai, manequim US 16/12
+  vira FR 46/42, moeda vira euro, e a gelatina vermelha NAO EXISTE la
+  — precisa de corante alimentar vermelho em quadro na 1a remessa.
