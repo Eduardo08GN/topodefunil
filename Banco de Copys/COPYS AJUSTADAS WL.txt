@@ -2430,3 +2430,112 @@ WL-006 — AS SEIS REMESSAS ESTAO FECHADAS
      de fecho dele (copo estendido na lente) migrou para o take do
      CTA.
 ====================================================================
+
+
+--------------------------------------------------------------------
+WL-007 · 1a REMESSA · INGLES (EN) · "eu estava fazendo errado"
+--------------------------------------------------------------------
+Base ........... WL-007 (cozinha clara, cena unica, 4 beats).
+                 1a remessa = INGREDIENTES ORIGINAIS, por ordem do
+                 operador: "iremos manter os mesmos ingredientes na
+                 primeira remessa".
+Ingredientes ... baking soda (Arm & Hammer) + limao + agua. Nada
+                 substituido. Marca do bicarbonato nos EUA = Arm &
+                 Hammer, a mais comum do pais.
+Duracao ........ 18s · 4 takes (6+4+4+4). A fonte tem 13,2s; a
+                 diferenca e arredondamento, porque o Veo so aceita
+                 4/6/8s e o take 1 sozinho precisa de 5,7s.
+                 SILABAS: 27 / 11 / 16 / 10.
+                 TAXA: 4,50 / 2,75 / 4,00 / 2,50 (teto 4,7).
+Keyword CTA .... "book". Ebook so no take 4, que e o CTA E o ultimo.
+                 ⚠️ E o video em que o ebook fica menos tempo em quadro
+                 de todo o funil: 4 segundos.
+
+⭐⭐ O ATIVO VISUAL DESTE VIDEO E A PROGRESSAO DE CAMERA.
+   Ele nao tem erupcao de espuma, nao tem prop grande, nao tem cena
+   dupla. O que segura a atencao e a CAMERA FECHANDO de beat em beat
+   ate o copo dominar o quadro. Por isso cada IMAGE e cada TAKE declara
+   explicitamente onde esta nessa progressao:
+     take 1  "THIS IS THE WIDEST SHOT OF THE SEQUENCE" — cintura pra
+             cima, bancada no terco inferior
+     take 2  "the SAME framing as the previous take"
+     take 3  "CLOSER than the two previous takes" — peito pra cima,
+             bancada vira uma faixa fina, copo grande em primeiro plano
+     take 4  "THE CLOSEST SHOT OF THE SEQUENCE" — copo dominando a
+             METADE INFERIOR do quadro
+   ⛔ Sem essa declaracao o gerador dilui a progressao e entrega quatro
+   planos iguais, que e' exatamente o que mataria este video.
+
+⛔ DUAS DECISOES DECLARADAS:
+  1. O LIMAO E ESPREMIDO COM UMA MAO, nao com as duas como na fonte.
+     Regra anti-bug (uma mao opera, a outra descansa), mesma solucao
+     que o operador aprovou na WL-005.
+  2. O MICROFONE DE LAPELA DA FONTE FICOU DE FORA. Ele aparece nos
+     beats finais do original, mas contradiz o nosso registro de
+     "camera frontal de iPhone, video amador". Reversivel numa frase.
+
+⚠️ EBOOK x ENQUADRAMENTO: o take 4 e o plano MAIS FECHADO do video, e
+   a regra do ebook pede o livro em destaque. Aplicada a OPCAO B que o
+   operador ja definiu: mantem a geometria da fonte, e o livro entra
+   EM PE, de frente e legivel ao lado do copo — sem ser o maior objeto
+   do quadro.
+
+COPY (EN + PT):
+
+  TAKE 1 — HOOK — 6s — 27 silabas
+  EN: "I kept seeing women over 50 doing this baking soda trick, so I
+       finally tried it myself."
+  PT: "Eu vivia vendo mulheres com mais de 50 fazendo esse truque do
+       bicarbonato, entao resolvi testar."
+
+  TAKE 2 — A CONFISSAO — 4s — 11 silabas
+  EN: "But apparently I was doing it wrong."
+  PT: "Mas pelo visto eu estava fazendo errado."
+
+  TAKE 3 — O CURIOSITY GAP — 4s — 16 silabas
+  EN: "There's one detail people keep leaving out of the viral
+       version."
+  PT: "Tem um detalhe que o pessoal vive deixando de fora da versao
+       viral."
+
+  TAKE 4 — CTA — 4s — 10 silabas
+  EN: "Comment, book, and I'll send you what I found."
+  PT: "Comente 'book' que eu te mando o que eu descobri."
+  (unica alteracao da fonte: o CTA trocou "yes" por "book")
+
+FICHAS DE PROP:
+  caixa ........ tall rectangular cardboard box, printed front panel
+                 READING "Baking Soda" in dark letters over an ORANGE
+                 AND YELLOW ground, with a small RED ARM-AND-HAMMER
+                 EMBLEM above the words; top flap FULLY OPEN and the
+                 WHITE INNER PAPER LINER FOLDED BACK, fine white powder
+                 visible inside
+                 ⭐ Descrita por FORMA + COR + PALAVRA LITERAL +
+                 EMBLEMA, e nunca pelo nome da marca: o emblema do
+                 braco com martelo e reconhecivel mesmo quando o
+                 gerador embaralha as letras.
+  copo ......... tall clear straight-sided drinking glass of plain
+                 water (takes 1-3) -> cloudy pale liquid with a layer
+                 of fine white foam and TWO thin lemon wedges floating
+                 (take 4)
+  limao ........ one single half of a fresh lemon, cut-side UP on the
+                 counter (takes 1-2) / cut-side DOWN in her hand
+                 (take 3)
+  colher ....... long stainless steel spoon
+  ebook ........ "150 FITNESS RECIPES" / "A Lighter Life"
+
+CENARIO (identico nos quatro takes): cozinha clara. Bancada de MARMORE
+  claro com veios cinza suaves. Ao fundo: armarios brancos shaker;
+  prateleira aberta branca a DIREITA com uma TIGELA DE CERAMICA FLORAL
+  PINTADA e uma fileira de livros em pe; azulejo de metro claro; janela
+  com pia e torneira cromada a direita; porta aberta a ESQUERDA dando
+  para outro comodo; spots no teto e luminaria pendente no alto a
+  direita. Luz natural suave.
+
+PENDENTE: 2a remessa em ingles — MAISENA + TORANJA, definido pelo
+  operador em 08.09.2026. ✅ Checado: nenhum ingrediente se repete
+  entre as duas remessas (1a = baking soda + limao), e ainda sobram
+  vinagre de maca, leite em po e mel na paleta.
+  ⭐ A geometria casa: a maisena americana (Argo) vem em caixa
+  retangular como o Arm & Hammer, e meia toranja se espreme igual a
+  meio limao. E depois as duas remessas em DE e FR.
