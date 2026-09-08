@@ -2279,3 +2279,117 @@ FICHAS DE PROP DA 1a REMESSA FR:
 PENDENTE: 2a remessa FRANCES (variacao 2: flocons d'avoine + vitamine
   C EN POUDRE em lata, NUNCA tubo + pamplemousse + citron, SEM
   corante). Com ela o WL-006 fecha as seis remessas, como o WL-005.
+
+
+--------------------------------------------------------------------
+WL-006 · 2a REMESSA · FRANCES (FR) · VARIACAO 2 · "GLP natural"
+--------------------------------------------------------------------
+Base ........... WL-006 (estacionamento + quintal + cozinha), mesma
+                 copy da 1a remessa francesa. 2a remessa = VARIACAO 2.
+Ingredientes ... flocons d'avoine (aveia) + vitamine C EN POUDRE em
+                 LATA + pamplemousse (toranja) + citron (limao).
+                 SEM CORANTE e SEM garrafa de vinagre — a toranja
+                 ocupa o papel do acido do vinagre, e a vitamina C
+                 tinge. Bebida LARANJA-AVERMELHADA.
+                 ⛔ Vitamina C em LATA DE METAL REDONDA com a tampa
+                 fora e visivel ao lado — NUNCA tubo: na Franca, como
+                 na Alemanha, tubo e comprimido efervescente, e
+                 comprimido nao se despeja.
+Duracao ........ 48s · 7 takes (8+4+6+8+8+8+6).
+                 SILABAS: 36 / 15 / 24 / 32 / 28 / 30 / 25.
+                 TAXA: 4,50 / 3,75 / 4,00 / 4,00 / 3,50 / 3,75 / 4,17.
+Keyword CTA .... "livre". Ebook so no take 7, que e o ultimo.
+
+⭐ AJUSTE DE REGISTRO NO HOOK, DECLARADO:
+   "les flocons d'avoine" custa UMA silaba a mais que "la gelatine", o
+   que levaria a linha a 37 silabas = 4,63 em 8s — acima da margem em
+   que eu ja redistribui antes. Em vez de inflar o take ou quebrar o
+   hook, a formulacao virou "si vous VOULEZ PAS qu'on vous demande"
+   no lugar de "si vous NE voulez PAS...".
+   ⛔ NENHUMA palavra de conteudo saiu: o "ne" e omitido por padrao no
+   frances FALADO, e uma mulher gravando num estacionamento diria
+   exatamente assim. A linha volta a 36 silabas / 4,50, a mesma taxa
+   da 1a remessa.
+   ⭐ Vale como recurso: em frances, tirar o "ne" da negacao devolve 1
+   silaba sem custo de sentido e SOBE a naturalidade do registro UGC.
+
+⚠️ A COPY USA "VOUS", como a 1a remessa francesa — o hook enderece um
+   grupo ("Les filles"), o que forca o plural. Keyword "livre"
+   inalterada, automacao de DM segue igual.
+
+⚠️ Take mais apertado: o take 1, 4,50. Take 5 mantido em 8s pelo
+   mesmo motivo da 1a remessa (em 6s daria 4,67).
+
+COPY (FR + PT) — identica a 1a remessa francesa, menos o TAKE 1:
+
+  TAKE 1 — HOOK — estacionamento — 8s — 36 silabas
+  FR: "Les filles, ne mettez pas de citron dans les flocons d'avoine
+       si vous voulez pas qu'on vous demande si vous etes malade
+       tellement vous avez maigri."
+  PT: "Meninas, nao coloquem limao na aveia se nao quiserem que
+       perguntem se voces estao doentes de tanto que emagreceram."
+
+  TAKES 2 a 7 ... identicos aos da 1a remessa francesa.
+
+  ⚠️ Acentos: etes = êtes · envoye = envoyé · ete viree = été virée ·
+  partagee = partagée · Ca active les recepteurs = Ça active les
+  récepteurs · passee = passée · a mes repas = à mes repas ·
+  complete = complète · ca soit supprime = ça soit supprimé ·
+  legere = légère · n'arrivais pas a = n'arrivais pas à.
+
+FICHAS DE PROP DA 2a REMESSA FR:
+  taca ......... wide shallow clear glass coupe of bright orange-pink
+                 liquid with a sprinkle of brown ground spice
+  limao (mao) .. ONE single half of a fresh lemon, cut-side down
+  aveia ........ tall round cardboard canister standing upright, its
+                 printed paper label READING "Flocons d'avoine" in
+                 plain dark letters, round lid removed and lying flat
+                 beside it
+  vitamina C ... small round metal tin standing upright, its printed
+                 label READING "Vitamine C en poudre" in plain dark
+                 letters, round metal lid removed and lying flat beside
+  toranja ...... one whole fresh grapefruit
+  limao (mesa) . one whole fresh lemon
+  colheres ..... three stainless steel measuring spoons in a neat row,
+                 EACH ONE OF THE THREE FILLED, white / yellow / orange
+  liquidificador the black base of a countertop blender with its jar
+                 removed (so na cozinha)
+  copo ......... tall clear drinking glass of thick bright orange-red
+                 drink
+  ebook ........ "150 RECETTES MINCEUR" / "Une vie plus legere"
+  fachada ...... CARREFOUR, parede plana de big-box, faixa branca
+                 rente ao alto no QUINTO SUPERIOR do quadro, palavra
+                 literal em azul com chevrons, portas na mesma parede
+  cozinha ...... sem bandeira dos EUA; vaso de ervas no lugar
+
+====================================================================
+WL-006 — AS SEIS REMESSAS ESTAO FECHADAS
+====================================================================
+  idioma / remessa   ingredientes                    cor      takes dur.
+  -----------------  ------------------------------  -------  ----- ----
+  EN variacao 1      sal de frutas + amido +         vermelha   8   54s
+                     toranja + limao + CORANTE
+  EN variacao 2      vitamina C + aveia + toranja    laranja    7   48s
+                     + limao
+  DE 1a (originais)  Natron + Wackelpudding +        vermelha   9   54s
+                     Apfelessig + Zitrone
+  DE 2a (variacao 2) Vitamin C + Haferflocken +      laranja    9   54s
+                     Grapefruit + Zitrone
+  FR 1a (originais)  bicarbonate + gelatina em       vermelha   7   48s
+                     folha + vinaigre de cidre +
+                     citron + CORANTE
+  FR 2a (variacao 2) vitamine C + flocons d'avoine   laranja    7   48s
+                     + pamplemousse + citron
+
+  ⭐⭐ O ALEMAO E O UNICO QUE INFLOU: 9 takes contra 7 nos outros dois
+     idiomas, e a causa esta medida — "Ernaehrungsberaterin" vale 7
+     silabas contra 4 de "nutritionniste" e 5 de "nutritionist";
+     "Muenchen" vale 2 contra 1 de "Lyon" e 4 de "Arizona". Composto
+     alemao e o inflador; o frances fica proximo do ingles.
+  ⭐ Corante em quadro so em EN v1 e FR 1a — as duas remessas em que
+     nenhum ingrediente da a cor.
+  ⭐ O take 8 (follow-gate) foi removido a partir da EN v2 por ordem
+     do operador, e nao existe em nenhuma remessa posterior. O gesto
+     de fecho dele (copo estendido na lente) migrou para o take do
+     CTA.
+====================================================================
