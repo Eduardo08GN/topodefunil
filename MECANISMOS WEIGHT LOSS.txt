@@ -206,13 +206,92 @@ de montar qualquer variacao em qualquer idioma.
                                     (a vitamina C ja tinge em todos)
 
 
---- ORIGEM DA INFORMACAO (registrado por honestidade) ---
-As MARCAS (Kaiser Natron, Koelln, Mondamin, Dr. Oetker, Maizena, La
-Baleine, Vahine) sairam do conhecimento de treino do assistente e NUNCA
-foram verificadas na internet. O operador VALIDOU a tabela como esta' em
-06.09.2026 e ela passa a valer como regra. Se algo falhar em campo
-(embalagem que nao existe, formato errado), a causa candidata numero um
-esta' aqui.
+--- ORIGEM DA INFORMACAO — VERIFICADA NA WEB EM 08.09.2026 ---
+As MARCAS saíram originalmente do conhecimento de treino do assistente e
+foram registradas como NAO verificadas. Em 08.09.2026 o operador mandou
+verificar, e a varredura na web achou QUATRO ERROS e confirmou o resto.
+
+⛔⛔ OS QUATRO ERROS ENCONTRADOS
+
+1) "BRAUSEPULVER" NA ALEMANHA E BALA, NAO SAL DE FRUTAS.
+   Brausepulver e a Ahoj-Brause: doce infantil da Katjes, feito desde
+   1925, vendido em quatro sabores (Waldmeister, Himbeer, Orange,
+   Zitrone) no corredor de guloseimas. Um alemao le "po de refresco
+   efervescente de crianca", NAO um produto digestivo tipo ENO.
+   ⛔ Isso ocupa o slot do EFERVESCENTE da VARIACAO 1 ALEMA, e a
+   WL-004 alema v1 JA FOI PRODUZIDA com ele.
+   ⏳ PENDENTE DE DECISAO DO OPERADOR. Opcoes reais na Alemanha:
+      - Natron (mas e o ingrediente original que a v1 existe p/ evitar)
+      - Backpulver (fermento em po)
+      - Bullrich Salz (antiacido de bicarbonato, marca conhecida la)
+   Fonte: de.wikipedia.org/wiki/Ahoj-Brause
+
+2) A PLACA DO KAUFLAND E VERMELHA SOBRE BRANCO, NAO O INVERSO.
+   Desde a remarca de novembro de 2016: "o K vermelho com o circulo
+   branco e o letreiro Kaufland em VERMELHO sobre FUNDO BRANCO".
+   ⛔ Os prompts do WL-006 alemao pediam faixa VERMELHA com letras
+   BRANCAS — invertido. Causa candidata do "logo nao ficou fiel ao
+   original" que o operador apontou em 07.09.2026.
+   Fonte: designenlassen.de/blog/bekannte-logos/kaufland-logo/
+
+3) OS FLOCOS DA KOELLN VEM EM CAIXA RETANGULAR OU SACO DE PAPEL,
+   NUNCA EM LATA REDONDA.
+   A embalagem alema e Faltschachtel (caixa dobravel) com saco interno,
+   ou saco de papel de duas camadas. LATA REDONDA e a forma AMERICANA
+   (Quaker).
+   ⛔ Os prompts das variacoes 2 alema e francesa pediam "tall round
+   cardboard canister". Errado para os dois mercados europeus.
+   Fonte: openfoodfacts + koelln.com/pages/packaging
+
+4) "GOETTERSPEISE" NAO E MARCA — E PALAVRA GENERICA.
+   A propria Dr. Oetker escreve: "Goetterspeise, Wackelpudding oder
+   auch Wackelpeter genannt". Os tres sao sinonimos genericos; Dr.
+   Oetker e a MARCA que vende sob esse nome generico.
+   ⭐ Consequencia: a correcao de 07.09.2026, que trocou "Goetterspeise"
+   por "Wackelpudding" na fala, acertou o RESULTADO pelo motivo ERRADO.
+   As duas palavras eram aceitaveis. A unica marca de verdade naquela
+   frase era KAISER NATRON.
+   Fonte: oetker.de/inspiration/tipps-tricks/t/goetterspeise-wackelpudding
+
+✅ O QUE SE CONFIRMOU
+
+  Kaiser Natron .... real, marca da Holste (Arnold Holste Wwe. GmbH).
+                     Caixa de papelao de 250 g COM 5 SACHES DE 50 g
+                     DENTRO — a caixa retangular esta certa, mas o po
+                     vem em sache, nao solto na caixa.
+  Koelln ........... LIDER DE MERCADO em aveia na Alemanha, sediada em
+                     Elmshorn, uma das maiores moagens de aveia da
+                     Europa. A deducao estava certa.
+  Mondamin ......... real, amido de milho da Unilever, 400 g, na
+                     Alemanha desde 1896. Alternativa igualmente real:
+                     Dr. Oetker "Gustin".
+  La Baleine ....... real, bicarbonate alimentaire em "etui carton" de
+                     800 g, vendido em Carrefour, Monoprix, Intermarche
+                     e Match. Fabricante: Compagnie des Salins du Midi.
+  Vahine ........... real, marca francesa desde 1972 (Provence), vende
+                     "feuilles de gelatine" INCOLORES (9 folhas, 17 g) e
+                     tambem gelatine en poudre.
+  Franca sem Jell-O  CONFIRMADO: gelatina de sobremesa aromatizada tipo
+                     Jell-O nao e item de supermercado frances comum —
+                     so em loja de importados. ⭐ A REGRA DO CORANTE
+                     EM QUADRO NA 1a REMESSA FRANCESA SE SUSTENTA.
+  Vitamina C em po   CONFIRMADO nos dois paises, e o TUBO segue proibido
+                     (tubo e comprimido efervescente).
+                     ⚠️ AJUSTE DE FICHA: sai em POTE DE ROSCA, nao
+                     necessariamente lata de metal. Alemanha: Dose /
+                     Schraubdose de 100 g. Franca: pot de 250-500 g em
+                     polietileno com tampa inviolavel, ou sache.
+  Carrefour ........ azul/branco/vermelho desde 1966: seta VERMELHA
+                     apontando para a ESQUERDA + seta AZUL para a
+                     DIREITA, com um C BRANCO desenhado no vazio entre
+                     as duas. Letreiro "Carrefour" em azul.
+
+⛔ REGRA QUE ISSO CONFIRMA: marca deduzida do treino acerta o NOME com
+   frequencia (5 de 5 marcas existiam) e erra a CATEGORIA e a FORMA
+   (Brausepulver = doce; lata redonda = forma americana; cor do logo
+   invertida). Verificar sempre o que o prop PARECE e o que ele
+   SIGNIFICA no pais, nunca so se o nome existe.
+
 
 REGRA DE FORMA: nao basta o ingrediente existir no pais — tem que existir
 NA FORMA que a cena mostra. Foi assim que cairam duas escolhas erradas:
