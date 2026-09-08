@@ -2868,3 +2868,108 @@ PENDENTE: as duas remessas em FRANCES (La Baleine + citron / Maizena +
   pamplemousse). ⭐ A ficha da caixa de Maizena ja esta pronta e
   serve para a francesa — muda so o texto do rotulo em destaque
   ("Fecule de Mais" no lugar de "Feine Speisestaerke") e o ebook.
+
+
+--------------------------------------------------------------------
+WL-007 · 1a REMESSA · FRANCES (FR) · "je le faisais mal"
+--------------------------------------------------------------------
+Base ........... WL-007 (cozinha clara, cena unica, 4 beats, mesma
+                 progressao de camera). 1a remessa = INGREDIENTES
+                 ORIGINAIS traduzidos e localizados.
+Ingredientes ... bicarbonate (marca LA BALEINE) + citron + eau.
+Duracao ........ 20s · 4 takes (6+6+4+4).
+                 SILABAS: 26 / 21 / 18 / 12.
+                 TAXA: 4,33 / 3,50 / 4,50 / 3,00 (teto 4,7).
+Keyword CTA .... "livre". Ebook so no take 4, capa em FRANCES.
+
+⭐ AJUSTE DE COPY DO OPERADOR (08.09.2026) APLICADO: o hook diz PARA
+   QUE SERVE o truque — "pour maigrir". Mesma reestruturacao do
+   alemao: o hook carrega a finalidade no take 1, e "resolvi testar"
+   desce para o take 2, que tinha folga.
+
+⭐ VOLTA AO "TU". Diferente do WL-006 frances, que precisou de "vous"
+   porque o hook enderecava um grupo ("Les filles"), aqui a narracao e
+   em PRIMEIRA PESSOA e nao enderece ninguem. Entao o "tu" do CTA
+   ("Commente, livre, et je t'envoie") fica coerente do inicio ao fim,
+   como nas WL-001 e WL-005 francesas.
+
+COPY (FR + PT):
+
+  TAKE 1 — HOOK — 6s — 26 silabas
+  FR: "Je voyais tout le temps des femmes de plus de cinquante ans
+       faire cette astuce au bicarbonate pour maigrir."
+  PT: "Eu vivia vendo mulheres com mais de 50 fazendo esse truque do
+       bicarbonato para emagrecer."
+
+  TAKE 2 — O TESTE E A CONFISSAO — 6s — 21 silabas
+  FR: "Alors j'ai fini par l'essayer moi-meme. Mais apparemment, je le
+       faisais mal."
+  PT: "Entao resolvi testar. Mas pelo visto eu estava fazendo errado."
+
+  TAKE 3 — O CURIOSITY GAP — 4s — 18 silabas
+  FR: "Il y a un detail que tout le monde oublie dans la version
+       virale."
+  PT: "Tem um detalhe que todo mundo deixa de fora da versao viral."
+
+  TAKE 4 — CTA — 4s — 12 silabas
+  FR: "Commente, livre, et je t'envoie ce que j'ai trouve."
+  PT: "Comente 'livre', que eu te mando o que eu descobri."
+
+  ⚠️ Acentos pra colar no Veo: moi-meme = moi-même · detail = détail ·
+  trouve = trouvé · legere = légère.
+
+⭐⭐ FICHA DA CAIXA DE BICARBONATE LA BALEINE — VERIFICADA.
+   Fonte: FOTOS DO PRODUTO enviadas pelo operador em 08.09.2026. Ele
+   mandou TRES referencias (caixa retangular, pote redondo de tampa
+   branca, e uma caixa variante com arte de comida) e deixou a escolha.
+   ✅ ESCOLHIDA A CAIXA RETANGULAR: e a mesma geometria da caixa da
+   fonte e da alema, mantem o gesto identico nas tres remessas, e a
+   cena exige que ela enfie a mao dentro. O pote redondo mudaria o
+   gesto.
+   FICHA: an upright rectangular cardboard box; front panel divided by
+   a WAVY LINE into a DEEP NAVY BLUE upper half and a LIGHT GREEN lower
+   half; at the top a white line drawing of a WHALE SPOUTING WATER
+   above "La BALEINE" in white capitals, with "Depuis 1934" in small
+   white letters below and a short BLUE-WHITE-RED horizontal bar under
+   that; across the middle "BICARBONATE" in very large bold WHITE
+   capitals on a navy panel, with a bright GREEN ARROW BANNER reading
+   "TOUT USAGE" overlapping its upper right; below it "ALIMENTAIRE" in
+   white capitals inside a thin RED-OUTLINED bar; along the bottom of
+   the green half four small blue line icons in a row labelled
+   "Cuisine", "Menage", "Linge" and "Jardin"; top flap FULLY OPEN,
+   fine white powder visible inside.
+
+⚠️ O QUE ESSA CAIXA CARREGA E VALE VIGIAR: os quatro icones da faixa
+   inferior incluem uma MAQUINA DE LAVAR e um REGADOR. Num video em que
+   ela BEBE aquilo, a embalagem se anuncia tambem como produto de
+   limpeza — mesma familia do erro do "Brausepulver": o que o nativo le
+   ao bater o olho. No quadro os icones ficam minusculos, entao o risco
+   e baixo, mas esta declarado.
+   ⭐ A TERCEIRA REFERENCIA nao tem esse problema: a faixa de baixo dela
+   mostra COMIDA E BEBIDAS com "UNE PINCEE MAGIQUE". Trocar e so
+   substituir a descricao da faixa inferior; o resto e identico.
+
+OUTRAS FICHAS (identicas as das outras remessas do WL-007):
+  copo ......... tall clear straight-sided drinking glass of plain
+                 water (takes 1-3) -> cloudy pale liquid with a layer
+                 of fine white foam and TWO thin lemon wedges floating
+                 (take 4)
+  limao ........ one single half of a fresh lemon, cut-side UP on the
+                 counter (takes 1-2) / cut-side DOWN in her hand
+                 (take 3)
+  colher ....... long stainless steel spoon
+  ebook ........ "150 RECETTES MINCEUR" / "Une vie plus legere"
+
+⛔ MARCA NUNCA NA FALA: a copy diz "bicarbonate", generico. La Baleine
+   fica so no rotulo em quadro.
+
+⚠️ PENDENTE DE DECISAO: as remessas em INGLES do WL-007 (1a e 2a) ja
+   entregues tem o hook SEM "para emagrecer". Se o operador quiser a
+   copy nova nelas, e reemitir o take 1 das duas.
+
+PENDENTE: 2a remessa FRANCESA (Maizena + pamplemousse).
+  ⚠️ O operador tentou mandar as fotos da Maizena francesa em
+  08.09.2026 mas o formato PNG foi recusado pelo sistema e as imagens
+  NAO foram vistas. A ficha da Maizena que temos veio das fotos da
+  caixa ALEMA. Falta confirmar se a caixa francesa de varejo tem arte
+  diferente — se for a mesma familia, a ficha ja gravada serve.
