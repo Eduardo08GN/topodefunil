@@ -2005,3 +2005,120 @@ PENDENTE: as duas remessas em FRANCES do WL-006, com as tres
   ⛔ Bandeira dos EUA sai.
   ⛔ Na 1a remessa francesa a gelatina vermelha NAO EXISTE — precisa
      de corante alimentar vermelho em quadro.
+
+
+--------------------------------------------------------------------
+WL-001 · FRANCES (FR) · VARIACAO 1 · REPRODUCAO 1:1 DE UM VIDEO NOSSO
+--------------------------------------------------------------------
+O que e' ....... NAO e' modelagem de concorrente. O operador anexou em
+                 07.09.2026 um MP4 que E' A NOSSA WL-001 EM FRANCES ja
+                 renderizada, e pediu: "faca uma copy exatamente
+                 identica, quero tudo absolutamente igual apenas no
+                 frances, LITERALMENTE tudo igual, nao mude nada,
+                 apenas analise e me de as imagens e takes".
+                 Esta entrada existe para permitir REGERAR aquele
+                 video a partir de prompts.
+Ingredientes ... maizena + vitamina C efervescente + limao = a
+                 VARIACAO 1 FRANCESA da tabela. Nada foi substituido
+                 porque ja eram os nossos ingredientes. SEM CORANTE —
+                 a vitamina C tinge (bebida LARANJA).
+Duracao ........ 28s · 5 takes (6+4+8+6+4). A fonte tem 25s; a
+                 diferenca e' o arredondamento para 4/6/8.
+                 SILABAS: 21 / 8 / 33 / 24 / 11.
+                 TAXA: 3,50 / 2,00 / 4,13 / 4,00 / 2,75 (teto 4,7).
+Keyword CTA .... "livre". Ebook no take 5 (ultimo), capa francesa
+                 "150 RECETTES MINCEUR" / "Une vie plus legere".
+
+⛔⛔ TRES REGRAS PERMANENTES SUSPENSAS NESTE ITEM, por ordem expressa
+   do operador ("nao mude nada"). Registrado para ninguem achar que
+   foi descuido:
+   1. A PERSONAGEM NAO VIROU A REF. A mulher foi descrita como
+      aparece: ~57 anos, sul-europeia, cabelo ondulado ate' o ombro
+      castanho-escuro com fios grisalhos, camisa de linho BRANCA com
+      bolso no peito. A REF de 58 anos do norte da Europa NAO entra.
+   2. OS INGREDIENTES NAO FORAM SUBSTITUIDOS — nao havia o que
+      trocar, ja sao a Variacao 1 francesa.
+   3. O CTA e o ebook ja estavam corretos (livre / capa francesa).
+
+⚠️ ERRO DE TRANSCRICAO CORRIGIDO: o Whisper devolveu "presque un
+   citron frais", que nao e' frances valido. O correto e' "PRESSE un
+   citron frais" (espreme um limao), e bate com o original ingles da
+   WL-001, "squeeze a fresh lemon".
+
+⚠️ INCONSISTENCIA DE PROP DA FONTE (nao reproduzida como esta'):
+   o recipiente da vitamina C muda TRES vezes ao longo do video —
+   SACHE STICK na mao (t=0) -> FRASQUINHO BRANCO de tampa azul na
+   mesa (t=5) -> TUBO LARANJA (t=9 ate' o fim, inclusive no quadro do
+   ebook). Fixado: SACHE STICK na mao dela no take 1 e TUBO LARANJA
+   em pe' na mesa dos takes 2 ao 5. O frasquinho branco foi tratado
+   como ruido de geracao.
+
+COPY (FR + PT):
+
+  TAKE 1 — HOOK — 6s — 21 silabas
+  FR: "J'ai perdu deux tailles en quelques semaines grace a cette
+       astuce a la maizena."
+  PT: "Eu perdi dois manequins em poucas semanas gracas a esse truque
+       da maisena."
+
+  TAKE 2 — 4s — 8 silabas
+  FR: "Et ca ne coute presque rien."
+  PT: "E nao custa quase nada."
+
+  TAKE 3 — RECEITA — 8s — 33 silabas
+  FR: "Une demi-cuillere de vitamine C, de la maizena, presse un
+       citron frais, de l'eau tiede chaque matin avant le cafe."
+  PT: "Meia colher de vitamina C, maisena, espreme um limao fresco,
+       agua morna toda manha antes do cafe."
+
+  TAKE 4 — CTA — 6s — 24 silabas
+  FR: "Si tu veux la recette complete, commente, livre et je t'envoie
+       la recette complete plus un bonus."
+  PT: "Se voce quer a receita completa, comente 'livre', que eu te
+       envio a receita completa mais um bonus."
+
+  TAKE 5 — FECHO — 4s — 11 silabas
+  FR: "J'espere que ca t'aidera autant que moi."
+  PT: "Espero que te ajude tanto quanto me ajudou."
+
+  ⚠️ Acentos pra colar no Veo: grace = grâce · maizena = maïzena ·
+  ca ne coute = ça ne coûte · demi-cuillere = demi-cuillère ·
+  tiede = tiède · cafe = café · complete = complète ·
+  J'espere que ca t'aidera = J'espère que ça t'aidera ·
+  legere = légère.
+
+CENA (unica, cinco beats):
+  Cozinha de apartamento DE FRENTE PARA O MAR. Janelao atravessando a
+  parede do fundo com palmeiras altas, areia clara e o mar azul.
+  Armarios de madeira clara (carvalho) com puxadores finos, bancada
+  clara, cooktop preto a esquerda, maquina de cafe expresso preta no
+  canto esquerdo, pia branca sob a janela a direita, quadrinho de
+  praia na parede a esquerda. Em primeiro plano, MESA DE MADEIRA
+  COR DE MEL atravessando o terco inferior.
+  BEATS:
+   1. sache stick despejando po branco na tigela de liquido laranja
+   2. DEDO INDICADOR erguido ao lado do queixo; espuma comecando
+   3. OS DOIS INDICADORES apontando para baixo; a espuma ERUPCIONA,
+      transborda pelo vidro e forma poca na mesa
+   4. enquadramento FECHA (do peito para cima); caneca de vidro com
+      alca erguida a altura do peito
+   5. volta a abrir; caneca na mao e o EBOOK em pe' na mesa
+
+FICHAS DE PROP:
+  tigela ....... large clear glass mixing bowl of bright orange liquid
+                 (beat 2: com espuma comecando; beat 3: erupcao)
+  maizena ...... tall upright yellow cardboard box, printed front
+                 panel READING "MAIZENA" in blue capital letters with
+                 a small blue-and-white spoon graphic — LEFT EDGE
+  sache ........ small narrow paper stick sachet (so' na mao, beat 1)
+  tubo ......... slim orange plastic tube of effervescent vitamin C
+                 with a white screw cap, standing upright beside the
+                 MAIZENA box (beats 2-5)
+  limao ........ one half of a fresh lemon, cut-side up — FRONT LEFT
+  colheres ..... two stainless steel spoons lying side by side —
+                 RIGHT EDGE
+  caneca ....... clear glass mug with a glass handle, bright orange
+                 drink
+  ebook ........ "150" em letras grandes + "RECETTES MINCEUR" ao lado,
+                 "Une vie plus legere" embaixo; foto de um casal
+                 grisalho numa cozinha com copos de smoothie coloridos
