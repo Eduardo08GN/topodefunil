@@ -1638,3 +1638,100 @@ PENDENTE: EN variacao 2, e as duas remessas de DE e FR.
   nenhum dos dois): Kaufland (vermelho) e Carrefour (azul/branco/
   vermelho). Ver a tabela em COPYS ORIGINAIS WL.txt.
   ⛔ E a BANDEIRINHA DOS EUA da cozinha tambem sai nas duas.
+
+
+--------------------------------------------------------------------
+WL-006 · VARIACAO 2 · INGLES (EN) · "GLP natural" · 3 CENAS
+--------------------------------------------------------------------
+Base ........... WL-006 variacao 1 (mesma copy, cenas, REF e
+                 enquadramentos). Mudam os ingredientes, a cor e o
+                 numero de takes.
+Ingredientes ... v2: vitamina C efervescente (era baking soda) + AVEIA
+                 (era gelatina) + TORANJA (era o vinagre de maca) +
+                 LIMAO (fica limao; nao esta na tabela de
+                 substituicao). SEM CORANTE — a vitamina C tinge.
+Duracao ........ 48s · 7 takes (8+4+6+8+8+8+6).
+                 SILABAS: 28 / 16 / 23 / 30 / 33 / 29 / 23.
+                 TAXA: 3,50 / 4,00 / 3,83 / 3,75 / 4,13 / 3,63 / 3,83
+                       (teto 4,7).
+Keyword CTA .... "book". Ebook SO no take 7, que agora e o ultimo.
+Distribuicao ... take 1 no estacionamento · takes 2-4 no quintal ·
+                 takes 5-7 na cozinha.
+
+⛔ TAKE 8 REMOVIDO POR ORDEM DO OPERADOR (07.09.2026): "remova o take
+   8, pode ir ate o 7 que ja e o cta de comment, e o suficiente".
+   Caiu o follow-gate ("Don't forget to follow me or Facebook won't be
+   able to send it to you") — a frase que, alem de tudo, era
+   factualmente falsa na automacao dele: a DM sai seguindo ou nao.
+   ⭐ Consequencia de cena: o gesto de fecho que era do take 8 (o copo
+   estendido na lente) MIGROU para o take 7, que passa a acumular CTA
+   + ebook + copo estendido. Continua UM movimento so.
+
+⭐ COR: v1 e ROSA (sal de frutas + amido sao incolores, precisam de
+   corante); v2 e LARANJA-AVERMELHADA, porque a vitamina C tinge
+   sozinha. A taca do estacionamento e o copo da cozinha usam a MESMA
+   cor dentro de cada variacao — a fonte se contradiz nesse ponto e a
+   gente unifica.
+
+⭐ AS TRES CORRECOES DA IMAGE 02 DA V1, APLICADAS AQUI:
+  1. POSICAO DECLARADA DE CADA ITEM. Na v1 os props sairam amontoados
+     a esquerda em 3 das 4 variantes, com a metade direita da mesa
+     vazia. Agora o prompt nao deixa o gerador distribuir: diz
+     "SPREAD EVENLY ACROSS THE FULL WIDTH ... never clustered" e nomeia
+     LEFT EDGE / CENTRE / RIGHT EDGE / FRONT CENTRE / FRONT RIGHT,
+     item por item, na mesa e na bancada.
+  2. COLHERES TODAS PREENCHIDAS. Na v1 duas variantes saiam com uma
+     colher vazia. Agora: "each one of the three filled, the first with
+     white powder, the second with yellow powder and the third with
+     orange powder".
+  3. O VAZAMENTO DE MARCA MORREU POR GEOMETRIA. Na v1 a caixa de sal
+     de frutas saiu vestida de ARM & HAMMER (laranja/amarelo + logo do
+     braco com martelo) numa das variantes. A v2 nao tem caixa
+     retangular nenhuma: aveia e LATA REDONDA DE PAPELAO e vitamina C
+     e LATA REDONDA DE METAL. O Arm & Hammer nao tem essa silhueta,
+     entao nao ha o que vazar. ⭐ Vale como principio: quando um prop
+     substituto tem a MESMA GEOMETRIA do prop da fonte, o gerador
+     empresta a identidade visual do original; trocar a geometria
+     resolve sem precisar negar a marca (negar injeta o token).
+
+COPY (EN + PT) — identica a v1 nos takes 2-7; so o TAKE 1 muda:
+
+  TAKE 1 — HOOK — estacionamento — 8s — 28 silabas
+  EN: "Girls, don't add lemon to your oats if you don't want people to
+       ask if you're sick because you've lost too much weight."
+  PT: "Meninas, nao coloquem limao na aveia se voces nao quiserem que
+       perguntem se voces estao doentes de tanto que emagreceram."
+  (com "oats" no lugar de "cornstarch" a linha cai de 29 para 28
+  silabas; segue em 8s, taxa 3,50)
+
+  TAKES 2 a 7 ... identicos aos da entrada WL-006 · VARIACAO 1.
+  O take 8 daquela entrada NAO existe aqui.
+
+FICHAS DE PROP DA V2:
+  taca ......... wide shallow clear glass coupe of bright orange-pink
+                 liquid with a sprinkle of brown ground spice on the
+                 surface
+  limao (mao) .. ONE single half of a fresh lemon, cut-side down
+  aveia ........ tall round cardboard canister of old-fashioned oats,
+                 printed label, standing upright, round lid removed
+                 and lying flat beside it
+  vitamina C ... small round metal tin of effervescent vitamin C
+                 powder, printed label, round metal lid removed and
+                 lying flat beside it
+  toranja ...... one whole fresh grapefruit
+  limao (mesa) . one whole fresh lemon
+  colheres ..... three stainless steel measuring spoons in a neat row,
+                 EACH ONE OF THE THREE FILLED, white / yellow / orange
+  liquidificador the black base of a countertop blender with its jar
+                 removed (so na cozinha)
+  copo ......... tall clear drinking glass of thick bright orange-red
+                 drink
+  ebook ........ "150 FITNESS RECIPES" / "A Lighter Life"
+
+PENDENTE: as duas remessas de DE e FR do WL-006.
+  ⛔ FACHADA: o Walmart nao existe em nenhum dos dois (saiu da Alemanha
+  em 2006, nunca operou na Franca). Kaufland (letreiro vermelho) e
+  Carrefour (azul/branco/vermelho).
+  ⛔ A BANDEIRINHA DOS EUA da cozinha sai nas duas.
+  ⛔ Unidades: 17 pounds vira ~8 quilos; manequim 16 -> 12 vira 44 -> 40
+  no sistema europeu (checar a numeracao de DE e FR antes).
