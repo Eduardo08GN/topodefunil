@@ -8,11 +8,24 @@ fica em: COPYS ORIGINAIS WL.txt (mesmo ID).
 
 Regras fixas aplicadas em toda copy ajustada:
   - CTA sempre "comment, book" (virgula antes de book, narracao limpa).
-  - Substituicao de ingrediente (regra do operador):
-      Baking soda        -> Sal de frutas   (fruit salt)
-      Gelatina           -> Amido de milho   (cornstarch)
-      Vinagre de maca    -> Limao espremido  (fresh lemon)
-      Mel                -> MEL (nao substitui)
+  - ESTRUTURA DE PRODUCAO (reescrita em 08.09.2026): cada video-fonte
+    gera ATE TRES videos POR IDIOMA, e o que os separa sao os
+    INGREDIENTES. O resto e replica da fonte.
+      VIDEO 1  ingredientes ORIGINAIS, traduzidos e localizados —
+               nos TRES idiomas, ingles inclusive
+      VIDEO 2  VARIACAO 1
+      VIDEO 3  VARIACAO 2 — so quando o operador pedir
+  - ⛔ REGRA INVALIDADA em 08.09.2026: "nunca usar os ingredientes
+    originais no ingles (baking soda, Vick, gelatina, vinagre de
+    maca)". NAO VALE MAIS. Os tres idiomas sao simetricos.
+    As entradas WL-001 a WL-006 abaixo seguem como estao — sao
+    historico do que ja foi produzido, nao doutrina.
+  - Substituicao de ingrediente NAS VARIACOES (a remessa dos
+    originais nao substitui nada):
+      Baking soda        -> v1 Sal de frutas · v2 Vitamina C eferv.
+      Gelatina           -> v1 Amido de milho · v2 Aveia
+      Vinagre de maca    -> v1 Limao espremido · v2 Toranja
+      Mel                -> MEL (nao substitui nunca)
   - Teto de palavras por take: 4s = 7 · 6s = 24 · 8s = 32.
   - A CAPA DO EBOOK entra em quadro no MESMO take do CTA ("comment,
     book") e FICA em todos os takes seguintes ate o ultimo. Em todos
@@ -25,16 +38,29 @@ Regras fixas aplicadas em toda copy ajustada:
       FR  capa 150 FR Hotmart  -> (texto FR — ler o arquivo ao produzir)
     Ajustar o texto escrito no prompt da IMAGE/TAKE do ultimo take.
   - Pessoa trocada pela REF definida; cenario mantido identico.
-  - IDIOMAS x VARIACOES: as versoes DE e FR usam SO a copy da versao
-    ORIGINAL em ingles (com ajustes leves) + a VARIACAO 1. A VARIACAO 2
-    e' exclusiva do INGLES (nao se traduz).
+  - ⛔ LINHA MORTA (mantida como lapide): "as versoes DE e FR usam SO a
+    copy original + a VARIACAO 1; a VARIACAO 2 e exclusiva do INGLES".
+    Caiu duas vezes: em 06.09.2026 DE e FR ganharam a v2, e em
+    08.09.2026 o ingles ganhou os originais. Os TRES idiomas tem as
+    TRES remessas.
   - MARCA DO INGREDIENTE POR PAIS: em video nao-US, o ingrediente em
     quadro vira a MARCA MAIS COMUM DAQUELE PAIS, com o rotulo no idioma
     local. Nunca Jell-O / Arm & Hammer em ingles num video DE/FR.
       amido de milho: DE Mondamin (Speisestaerke) · FR Maizena
-      bicarbonato:    DE Kaiser Natron          · FR La Baleine
-      gelatina:       DE Dr. Oetker Gelatine     · FR Vahine
-    (confirmar a marca com o operador em duvida.)
+      bicarbonato:    DE Kaiser Natron           · FR La Baleine
+      gelatina:       DE Goetterspeise (vermelha, Dr. Oetker)
+                      FR Vahine — FOLHA INCOLOR, exige CORANTE em quadro
+      aveia:          DE Koelln (CAIXA RETANGULAR ou saco de papel,
+                      NUNCA lata redonda — lata redonda e forma
+                      americana) · FR flocons d'avoine
+      vitamina C po:  POTE DE ROSCA nos dois paises, nunca TUBO
+    ⭐ As marcas foram VERIFICADAS NA WEB em 08.09.2026 — ver a secao
+    ORIGEM DA INFORMACAO em MECANISMOS WEIGHT LOSS.txt, que lista os
+    quatro erros achados e as fontes.
+    ⛔ MARCA so no ROTULO em quadro, nunca na FALA (a fala usa o
+    generico: Natron, Wackelpudding, bicarbonate, gelee).
+    ⛔ E o rotulo pede a PALAVRA LITERAL no prompt ('a printed label
+    reading "Haferflocken"'), nunca "a German label".
 ====================================================================
 
 

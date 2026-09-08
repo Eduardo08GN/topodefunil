@@ -94,13 +94,48 @@ REGRA: o FORMATO tem de casar com a receita.
 
 
 ====================================================================
+A ESTRUTURA DE PRODUCAO   *** REESCRITA EM 08.09.2026 ***
+====================================================================
+Cada video-fonte gera ATE TRES VIDEOS POR IDIOMA, e o que os separa
+sao os INGREDIENTES. Tudo o mais e replica da fonte: mesma cena, mesmo
+enquadramento, mesmos gestos. So a COPY e a PERSONAGEM mudam, e so
+quando necessario.
+
+  VIDEO 1 ....... INGREDIENTES ORIGINAIS da fonte, traduzidos e
+                  localizados para o pais. Vale nos TRES idiomas.
+  VIDEO 2 ....... VARIACAO 1 (outros ingredientes).
+  VIDEO 3 ....... VARIACAO 2 (outros ainda) — SO quando o operador
+                  pedir. Nao e automatico.
+
+⛔⛔ REGRA INVALIDADA EM 08.09.2026 PELO OPERADOR:
+   "Em video em INGLES, nunca usar os ingredientes originais se forem
+   baking soda, Vick VapoRub, gelatina de qualquer tipo ou vinagre de
+   maca — sempre usar Variacao 1 e 2."
+   ⭐ ESSA REGRA NAO VALE MAIS. O ingles passa a ter as MESMAS TRES
+   remessas do alemao e do frances: originais, v1 e v2. Palavras dele:
+   "Havia uma regra para nunca fazer com os mesmos ingredientes no
+   ingles mas estou invalidando ela agora".
+   ⚠️ Registrado para ninguem "restaurar" a regra antiga achando que
+   foi esquecimento. As entradas antigas do banco que citam a regra
+   (WL-001 a WL-006) ficam como estao — sao historico do que ja foi
+   produzido, nao doutrina.
+
+⛔ CONSEQUENCIA PARA O BANCO DE COPYS: a linha antiga
+   "as versoes DE e FR usam SO a copy original + a Variacao 1; a
+   Variacao 2 e exclusiva do ingles" MORREU DUAS VEZES — primeiro em
+   06.09.2026 (DE e FR ganharam a v2) e agora em 08.09.2026 (o ingles
+   ganhou os originais). Os tres idiomas sao simetricos.
+
+
+====================================================================
 SUBSTITUICOES DE INGREDIENTE
 ====================================================================
-O que aparece EM QUADRO no lugar do ingrediente da fonte concorrente.
+O que aparece EM QUADRO no lugar do ingrediente da fonte, nas
+VARIACOES 1 e 2 (a remessa dos originais nao substitui nada, so
+traduz e localiza).
 A troca e' pelo COMPORTAMENTO VISUAL — o gesto e o payoff ficam
-iguais, muda so a substancia. Sempre item do dia a dia que toda
-americana reconhece na hora. Vale nos tres mercados (o prop e'
-visual, nao depende de idioma).
+iguais, muda so a substancia. Sempre item do dia a dia que a pessoa
+daquele mercado reconhece na hora.
 
   FONTE (concorrente)      ->  NOSSO (em quadro)
   ------------------------     ----------------------------------
@@ -143,7 +178,8 @@ E' AQUI que se consulta a inteligencia dos ingredientes — sempre, antes
 de montar qualquer variacao em qualquer idioma.
 
 
---- 1) INGREDIENTES ORIGINAIS (1a remessa do alemao e do frances) ---
+--- 1) INGREDIENTES ORIGINAIS (1a remessa dos TRES IDIOMAS) ---
+    ⭐ Desde 08.09.2026 o INGLES tambem tem esta remessa.
 
   O que e' (PT)         ALEMANHA                   FRANCA
   --------------------  -------------------------  ------------------------
@@ -169,10 +205,23 @@ de montar qualquer variacao em qualquer idioma.
 
   O que e' (PT)         EUA         ALEMANHA               FRANCA
   --------------------  ----------  ---------------------  -----------------
-  Sal de frutas         fruit salt  Brausepulver           vitamine C
-  (o po que borbulha)               (= po efervescente;    effervescente
-                                    "sal de frutas" nao    ("sal de frutas"
-                                    existe la')            nao existe la')
+  Sal de frutas         fruit salt  ⏳ BACKPULVER          vitamine C
+  (o po que borbulha)               (fermento em po)       effervescente
+                                    ⛔ NAO usar             ("sal de frutas"
+                                    "Brausepulver": e      nao existe la')
+                                    BALA (Ahoj-Brause,
+                                    doce da Katjes).
+                                    ⛔ NAO usar "Bullrich
+                                    Salz": e o MESMO
+                                    bicarbonato do Natron,
+                                    e' MEDICAMENTO contra
+                                    azia, e vem em
+                                    COMPRIMIDO — nao se
+                                    despeja.
+                                    ⏳ Backpulver e a
+                                    recomendacao do
+                                    assistente, AGUARDANDO
+                                    OK DO OPERADOR.
   Amido de milho        cornstarch  Speisestaerke,         Maizena
                                     marca Mondamin         (a marca virou
                                     (= amido, o nome que   o nome do produto)
