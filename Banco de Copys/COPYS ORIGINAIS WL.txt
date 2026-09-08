@@ -315,3 +315,86 @@ CHECAGEM DE DUPLICIDADE: ✅ PASSA — e' o mais original do banco.
   descrever a fachada por FORMA E COR (letreiro grande, portas
   automaticas, carrinhos, estacionamento) e deixar a marca sair
   sozinha — o que o espectador le em meio segundo e' "supermercadao".
+
+
+--------------------------------------------------------------------
+WL-007 · cozinha clara · "eu estava fazendo errado" · CURIOSITY GAP
+--------------------------------------------------------------------
+Nicho .......... Weight Loss
+Agente ......... AGENTE_WL_ORGANIC_WAVE
+Fonte .......... arquivo local AQO6bbnIol-...Bzle_N5y0pQ.mp4
+Analisado em ... 08.09.2026
+Duracao ........ 13,2s · cena unica · 4 beats — A MAIS CURTA DO BANCO
+                 (as outras vao de 16s a 44s)
+Keyword CTA .... "yes"
+
+COPY VERBATIM (EN):
+  [00:00] "I kept seeing women over 50 doing this baking soda trick, so
+          I finally tried it myself."
+  [00:04] "But apparently I was doing it wrong."
+  [00:06] "There's one detail people keep leaving out of the viral
+          version."
+  [00:09] "Comment yes and I'll send you what I found."
+
+EM QUADRO (leitura otica):
+  Pessoa ....... mulher ~57, CABELO GRISALHO LONGO E ONDULADO abaixo do
+                 ombro, pele bronzeada, REGATA VERDE-PETROLEO.
+                 ⚠️ Nos beats finais aparece um MICROFONE DE LAPELA
+                 preso na gola.
+  Cenario ...... COZINHA CLARA. Bancada de marmore/quartzito claro com
+                 veios cinza atravessando o primeiro plano. Armarios
+                 brancos; prateleira aberta a DIREITA com uma TIGELA
+                 DECORADA FLORAL e uma fileira de livros; azulejo de
+                 metro; janela com pia e torneira cromada a direita;
+                 porta a ESQUERDA dando para outro comodo; spots no
+                 teto e luminaria pendente no alto a direita.
+  ⭐ A CAMERA FECHA PROGRESSIVAMENTE ao longo dos 4 beats — comeca na
+     cintura e termina com o copo grande em primeiro plano. E o unico
+     video do banco com essa progressao continua de enquadramento.
+  Beats ........ 1 (0-4s)  cintura pra cima, bancada no terco inferior:
+                          mao direita entrando na CAIXA ARM & HAMMER
+                          ABERTA, que a esquerda segura inclinada pra
+                          camera
+                 2 (4-6s)  igual: segura a caixa com AS DUAS MAOS,
+                          olhando pra dentro (ve-se o po branco e o
+                          papel interno)
+                 3 (6-9s)  MAIS FECHADO, peito pra cima: ESPREME MEIO
+                          LIMAO COM AS DUAS MAOS sobre o copo
+                 4 (9-13s) MAIS FECHADO AINDA, copo grande em primeiro
+                          plano: MEXE COM A COLHER; liquido turvo e com
+                          espuma, gomos de limao dentro
+  Props ........ copo alto de vidro com agua · meio limao cortado ·
+                 colher de inox · caixa ARM & HAMMER BAKING SODA 17,7oz
+  Ingredientes . baking soda + limao + agua. SO TRES — o mais enxuto do
+                 banco. Sem gelatina, sem vinagre, sem especiaria.
+
+CHECAGEM DE DUPLICIDADE: ✅ PASSA COM FOLGA — o hook mais diferente
+  dos sete.
+  - Unico com PROVA SOCIAL + CONFISSAO DE ERRO PROPRIO: "vi todo mundo
+    fazendo, tentei, e estava fazendo errado".
+  - Corpo e PURO CURIOSITY GAP: a copy nunca diz qual e o detalhe,
+    nunca explica mecanismo, nunca promete resultado. Os seis
+    anteriores todos afirmam um beneficio; este NAO AFIRMA NADA.
+
+⭐⭐ E A COPY MAIS SEGURA DO BANCO, de longe. Zero alegacao de saude,
+  zero numero, zero vilao, zero "antes que isso seja derrubado". E o
+  oposto exato da WL-006, que trazia injecao de mil dolares e 8 quilos
+  em 3 semanas. Se o objetivo for um criativo que nao arrisca a conta,
+  este e o molde.
+
+⚠️ CONFLITO COM A DOUTRINA, LEVANTADO AO OPERADOR EM 08.09.2026: o
+  MECANISMOS WEIGHT LOSS.txt ainda diz "OS INGREDIENTES NAO SAO
+  REVELADOS — a receita e' a ISCA, nao conteudo em quadro" (decisao de
+  04.09.2026). Mas as SEIS copies produzidas desde entao NOMEIAM os
+  ingredientes na fala, e esta nomeia no proprio hook ("this baking
+  soda trick"). A regra foi atropelada seis vezes na pratica.
+  Aguardando o operador dizer se revoga ou se ela ainda vale em algum
+  caso.
+
+NOTA DE INGREDIENTES: pela estrutura de duas remessas (08.09.2026), a
+  1a remessa fica com os ORIGINAIS — baking soda + limao — por ordem
+  do operador ("iremos manter os mesmos ingredientes na primeira
+  remessa"). Para a 2a remessa sobra a paleta quase inteira:
+  vinagre de maca · toranja · maisena · leite em po · mel.
+  ⭐ E o video mais FOLGADO do banco nesse criterio: usa so dois itens
+  da paleta na remessa 1, contra os quatro do WL-006.
