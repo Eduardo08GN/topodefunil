@@ -124,17 +124,82 @@ UMA regra: nenhum se repete entre o video 1 e o video 2 da MESMA fonte.
      branco, despejavel, deixa o liquido opaco e cremoso. Cobre o papel
      do HEROI (o que a gelatina/maisena faziam) sem ser nenhum dos dois.
 
-  ⛔⛔ CONSEQUENCIA DE CENA QUE PRECISA FICAR DECLARADA: dos sete, SO O
-     BAKING SODA EFERVESCE. Quando o video 1 usa baking soda — que e o
-     caso de quase toda fonte que modelamos — o video 2 fica SEM
-     efervescente, e nos videos em que a ERUPCAO DE ESPUMA e o payoff,
-     o quadro perde o climax.
-     Ordem do operador para esse caso: "Se nao achar nada parecido com
-     baking soda, utilize outra coisa."
-     ⏳ Pesquisa aberta em 08.09.2026 procurando um efervescente local
-     (DE e FR) que: borbulhe, NAO seja bicarbonato, NAO seja vitamina C,
-     seja reconhecivel por mulher 50+ e faca sentido num video de
-     emagrecimento. Resultado entra aqui quando fechar.
+
+--- A PALETA POR PAIS E POR MARCA (verificada na web em 08.09.2026) ---
+Ordem do operador: "Todos os ingredientes que voce utilizar devem ser
+comuns e encontrados nos 3 paises" e "As marcas dos ingredientes devem
+ser as mais comuns em cada pais".
+✅ OS SETE PASSAM: existem e sao comuns nos tres mercados. Nenhum
+precisa de substituto por pais — so de traducao e da marca local.
+
+  papel            EUA             ALEMANHA            FRANCA
+  ---------------  --------------  ------------------  ------------------
+  bicarbonato      Arm & Hammer    Kaiser Natron       La Baleine
+                                   (Holste; caixa de   (etui carton 800g)
+                                   250g com 5 saches
+                                   de 50g dentro)
+  amido de milho   Argo            Mondamin            Maizena
+                                   (Speisestaerke,     (a marca virou o
+                                   Unilever, 400g)     nome do produto)
+  leite em po      Carnation       Saliter             Regilait
+                                   Magermilchpulver    (LIDER frances de
+                                   250g — em todo      leite em po,
+                                   supermercado        grande distribuicao)
+                                   grande
+  mel              ⚠️ sem lider    Langnese            Lune de Miel
+                   nacional claro  25% DO MERCADO.     61% DO MERCADO, e
+                                   ⭐ O POTE           "marque preferee
+                                   HEXAGONAL e marca   des Francais".
+                                   registrada e uma    Famille Michaud.
+                                   das embalagens
+                                   mais reconheciveis
+                                   da Alemanha
+  vinagre de maca  Bragg           Hengstenberg        ⚠️ SEM MARCA
+                   (aparece na     (lider do mercado   DOMINANTE. O
+                   fonte do        de vinagre) ou      mercado e de MARCA
+                   WL-006)         Kuehne              DE SUPERMERCADO:
+                                                       Carrefour Classic',
+                                                       Auchan, Rustica
+                                                       (Leclerc), Leader
+                                                       Price. Usar garrafa
+                                                       GENERICA com
+                                                       "Vinaigre de cidre"
+                                                       no rotulo, nunca
+                                                       uma marca nomeada
+  limao            fruta — sem marca nos tres
+  toranja          fruta — sem marca nos tres
+
+⛔ LEMBRAR SEMPRE, junto com esta tabela:
+  - MARCA so no ROTULO em quadro, NUNCA na fala. A fala usa o generico
+    do idioma (Natron, bicarbonate, Milchpulver, lait en poudre).
+  - O rotulo pede a PALAVRA LITERAL no prompt ('a printed label reading
+    "Magermilchpulver"'), nunca "a German label" — medido: com o
+    adjetivo de idioma, 3 de 4 variantes sairam em ingles.
+  - FORMA antes de marca: a embalagem tem que existir NA FORMA que a
+    cena mostra, e a geometria certa se descreve em POSITIVO (negar
+    injeta o token).
+
+--- ORIGEM DESTA TABELA ---
+Verificados na web em 08.09.2026: Kaiser Natron, Mondamin, La Baleine,
+Saliter, Regilait, Langnese, Lune de Miel, Hengstenberg/Kuehne, e a
+ausencia de marca dominante de vinagre de cidre na Franca.
+NAO verificados (deducao do treino ou vindos da propria fonte): Argo e
+Carnation nos EUA. Bragg vem da fonte do WL-006, entao esta confirmado
+por leitura otica, nao por pesquisa.
+
+  ⭐⭐ A ERUPCAO DE ESPUMA E EFEITO DE VIDEO, NAO QUIMICA.
+     Dos sete ingredientes, so o baking soda efervesce de verdade — mas
+     ISSO NAO IMPORTA. Ordem do operador, 08.09.2026:
+       "Se a baking soda faz a receita borbulhar e voce substituir por
+        leite em po, vitamina C ou maisena, deve gerar o MESMO EFEITO no
+        video, mesmo que nao faca sentido pois o ingrediente nao e
+        efervescente, nao tem problema."
+     ⛔ Ou seja: o prompt manda a mistura BORBULHAR e ela borbulha,
+     seja qual for o po que caiu nela. Nao existe mais a restricao de
+     "o substituto precisa efervescer".
+     ⚠️ Isso ENCERRA a busca por um efervescente local em DE/FR, que
+     estava aberta algumas horas antes no mesmo dia. A pergunta deixou
+     de existir.
 
 ⛔⛔ REGRA INVALIDADA EM 08.09.2026 PELO OPERADOR:
    "Em video em INGLES, nunca usar os ingredientes originais se forem
