@@ -60,6 +60,24 @@ _L = r"A-Za-zÀ-ÖØ-öø-ÿ0-9_"
 _PT_RX = [re.compile(r"(?<![" + _L + r"])" + re.escape(p) + r"(?![" + _L + r"])", re.I)
           for p in PT_SOLTO]
 
+# ⛔⛔ EXCECAO DECLARADA POR IDIOMA, no molde do `ISENTOS` do medir_traducao.py
+# (que ja' isenta "Séries" no frances e "Ingredientes" no espanhol).
+# Um termo que a lingua de destino escreve EXATAMENTE como o portugues nao e'
+# portugues vazado — e' a palavra certa. Sem isto o espanhol leva 35 ERRO nos
+# cafes por escrever "proteína" e "fibra", que e' como se escreve em espanhol.
+# ⚠️ Todo o resto da PT_SOLTO diverge de verdade no espanhol e SEGUE COBRADO:
+# colher->cuchara · xícara->taza · gordura->grasa · geladeira->refrigerador ·
+# frigideira->sartén · tigela->tazón · emagrecer->adelgazar · você->tú.
+ISENTOS = {
+    "es": {"proteína", "proteina", "fibra"},
+    "de": set(), "fr": set(), "en": set(),
+}
+
+
+def _isentos_de(tr_nome):
+    """O idioma e' o sufixo do modulo traduzido (receitas_cafe_es -> es)."""
+    return ISENTOS.get(tr_nome.rsplit("_", 1)[-1], frozenset())
+
 # medidas que TEM de ter sumido
 MEDIDA_ERRADA = re.compile(r"x[íi]cara|colher(es)? de|\bcol\.\s*(sopa|chá|cha)", re.I)
 
@@ -138,7 +156,10 @@ def checar(pt_nome, tr_nome):
             [str(b.get(c, "")) for c in ("nome", "hook", "tempo", "rende", "dica")]
             + list(b.get("ings", [])) + list(b.get("passos", []))
             + list(b.get("porcoes8", [])))
+        isentos = _isentos_de(tr_nome)
         for p, rx in zip(PT_SOLTO, _PT_RX):
+            if p in isentos:
+                continue
             m = rx.search(texto)
             if m:
                 erros.append("%s: portugues solto -> %r (em %r)"

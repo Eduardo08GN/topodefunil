@@ -44,6 +44,9 @@ TITULOS = {
     "en": {"cafe": "Fitness Breakfasts", "almoco": "Fitness Lunches",
            "jantar": "Fitness Dinners", "sobremesa": "Fitness Desserts",
            "suco": "Smoothies and Detox Juices"},
+    "es": {"cafe": "Desayunos fit", "almoco": "Almuerzos fit",
+           "jantar": "Cenas fit", "sobremesa": "Postres fit",
+           "suco": "Smoothies y jugos detox"},
 }
 
 # ⛔ nome de ARQUIVO sem acento, sem trema e sem ß: acento em nome de arquivo
@@ -64,6 +67,12 @@ PDF_NAME = {
            "jantar": "Step 4 - Dinners.pdf",
            "sobremesa": "Step 5 - Desserts.pdf",
            "suco": "Step 6 - Smoothies, Juices and Detox Teas.pdf"},
+    # ⛔ Sem acento no nome de arquivo (regra do glossario §3): "tes", nao "tés".
+    "es": {"cafe": "Paso 2 - Desayunos.pdf",
+           "almoco": "Paso 3 - Almuerzos.pdf",
+           "jantar": "Paso 4 - Cenas.pdf",
+           "sobremesa": "Paso 5 - Postres.pdf",
+           "suco": "Paso 6 - Smoothies, jugos y tes detox.pdf"},
 }
 
 # rotulo da bebida, que muda por receita dentro da categoria `suco`.
