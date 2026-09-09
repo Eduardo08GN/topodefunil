@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>150 Fitness-Rezepte | Ein leichteres Leben</title>
-<meta name="description" content="150 einfache Rezepte für ein leichteres Leben. Säfte, Tees, Suppen, Desserts und Alltagsgerichte, dazu vier kostenlose Boni. Sofort verfügbar.">
+<title>150 Rezepte mit dem Geheimnis der schlanken Japaner</title>
+<meta name="description" content="Das Schlankheitsgeheimnis der Japaner in 150 Rezepten, aufgeteilt auf die 5 Mahlzeiten des Tages: Frühstück, Mittagessen, Abendessen, Dessert und die Säfte und Tees. Dazu vier kostenlose Boni. Sofortige Lieferung.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900&display=swap" rel="stylesheet">
@@ -413,6 +413,26 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
   .card .ico{margin-left:auto;margin-right:auto}
   .bonus-tag{left:50%;transform:translateX(-50%)}
 }
+
+/* ---- mobile e tablet: a CAPA sobe para logo abaixo do titulo ----
+   O livro tem que aparecer na primeira tela, sem rolagem. O titulo e a lede
+   moram dentro de .hero-copy e a capa mora em .hero-art, que sao IRMAOS no
+   grid: por isso `order` sozinho nao alcanca. `display:contents` dissolve a
+   caixa da .hero-copy e promove os filhos dela a itens do mesmo grid, onde a
+   ordem passa a valer para todos de uma vez.
+   As margens de .lede e .badges sao zeradas porque o `gap` do grid passa a
+   fazer esse espaco; sem isso os dois se somavam e o hero esticava.
+   Acima de 1000px nada disso vale: la' o hero volta a ser duas colunas. */
+@media(max-width:999px){
+  .hero-grid{gap:22px}
+  .hero-copy{display:contents}
+  .hero-copy > h1{order:1}
+  .hero-art{order:2}
+  .hero-copy > .lede{order:3;margin-top:0}
+  .hero-copy > .badges{order:4;margin-top:0}
+  .hero-price{order:5}
+}
+
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
@@ -458,9 +478,8 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">150 Rezepte · 4 Gratis-Boni · Sofort verfügbar</span>
-      <h1>Sie kamen für ein Rezept.<br>Hier sind 150.</h1>
-      <p class="lede">Die Säfte, Tees, Suppen, Desserts und Alltagsgerichte, mit denen die Waage in nur wenigen Monaten um mehr als 20 Kilo nach unten geht, so einfach erklärt, dass Sie heute mit dem anfangen können, was Sie schon zu Hause haben.</p>
+      <h1>Japaner essen 5 Mal am Tag.<br>Und Übergewicht gibt es dort zehnmal seltener als hier.</h1>
+      <p class="lede">Das Geheimnis liegt nicht darin, was sie essen. Es liegt darin, wie der Teller zusammengestellt wird und wann man aufhört. 150 Rezepte nach genau dieser Regel, aufgeteilt auf genau diese 5 Mahlzeiten: Frühstück, Mittagessen, Abendessen, Dessert und die Säfte und Tees für zwischendurch. Alles mit dem, was Sie ohnehin zu Hause haben, und mit mehr als 20 Kilo weniger auf der Waage in nur wenigen Monaten.</p>
 
       <div class="badges">
         <span class="badge"><svg class="i"><use href="#ic-glass"/></svg><b>150</b> Rezepte</span>
@@ -471,7 +490,7 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
     </div>
 
     <div class="hero-art">
-      <img class="book" src="capa-150-DE-hotmart.jpg" alt="150 Fitness-Rezepte, Ein leichteres Leben"
+      <img class="book" src="capa-150-DE-hotmart.jpg" alt="150 Rezepte, Das japanische Geheimnis, Ein leichteres Leben"
            onerror="this.outerHTML='&lt;div class=&quot;ph-book book&quot;&gt;&lt;div&gt;capa-150-DE-hotmart.jpg&lt;br&gt;&lt;small&gt;coloque o arquivo nesta pasta&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;'">
     </div>
 

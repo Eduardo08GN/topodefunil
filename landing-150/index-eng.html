@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>150 Fitness Recipes | A Lighter Life</title>
-<meta name="description" content="150 simple recipes for a lighter life. Juices, teas, soups, desserts and everyday meals, plus four free bonuses. Instant delivery.">
+<title>150 Recipes with the Japanese Secret to a Slim Body</title>
+<meta name="description" content="The Japanese secret to a slim body in 150 recipes, split across the 5 meals of the day: breakfast, lunch, dinner, dessert and the juices and teas. Plus four free bonuses. Instant delivery.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900&display=swap" rel="stylesheet">
@@ -413,6 +413,26 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
   .card .ico{margin-left:auto;margin-right:auto}
   .bonus-tag{left:50%;transform:translateX(-50%)}
 }
+
+/* ---- mobile e tablet: a CAPA sobe para logo abaixo do titulo ----
+   O livro tem que aparecer na primeira tela, sem rolagem. O titulo e a lede
+   moram dentro de .hero-copy e a capa mora em .hero-art, que sao IRMAOS no
+   grid: por isso `order` sozinho nao alcanca. `display:contents` dissolve a
+   caixa da .hero-copy e promove os filhos dela a itens do mesmo grid, onde a
+   ordem passa a valer para todos de uma vez.
+   As margens de .lede e .badges sao zeradas porque o `gap` do grid passa a
+   fazer esse espaco; sem isso os dois se somavam e o hero esticava.
+   Acima de 1000px nada disso vale: la' o hero volta a ser duas colunas. */
+@media(max-width:999px){
+  .hero-grid{gap:22px}
+  .hero-copy{display:contents}
+  .hero-copy > h1{order:1}
+  .hero-art{order:2}
+  .hero-copy > .lede{order:3;margin-top:0}
+  .hero-copy > .badges{order:4;margin-top:0}
+  .hero-price{order:5}
+}
+
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
@@ -458,9 +478,8 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">150 Recipes · 4 Free Bonuses · Instant Access</span>
-      <h1>You Came For One Recipe.<br>Here Are 150.</h1>
-      <p class="lede">The juices, teas, soups, desserts and everyday meals that make the scale drop more than 45 pounds in just a few months, written so simply you can start today with what is already in your kitchen.</p>
+      <h1>The Japanese Eat 5 Times a Day.<br>And Obesity There Is Ten Times Lower Than Here.</h1>
+      <p class="lede">The secret isn't what they eat. It's how the plate is built, and knowing when to stop. These are 150 recipes written around that rule, split across exactly those 5 meals: breakfast, lunch, dinner, dessert, and the juices and teas in between. All with what you already have in your kitchen, and with the scale dropping more than 45 pounds in just a few months.</p>
 
       <div class="badges">
         <span class="badge"><svg class="i"><use href="#ic-glass"/></svg><b>150</b> recipes</span>
@@ -471,7 +490,7 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
     </div>
 
     <div class="hero-art">
-      <img class="book" src="capa-150-EN-hotmart.jpg" alt="150 Fitness Recipes, A Lighter Life"
+      <img class="book" src="capa-150-EN-hotmart.jpg" alt="150 Recipes Revealing the Japanese Secret, A Lighter Life"
            onerror="this.outerHTML='&lt;div class=&quot;ph-book book&quot;&gt;&lt;div&gt;capa-150-EN-hotmart.jpg&lt;br&gt;&lt;small&gt;coloque o arquivo nesta pasta&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;'">
     </div>
 
@@ -604,7 +623,7 @@ footer .fine{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;
       <div class="rcard"><img src="receitas/en/bolo-chocolate.jpg" alt="Sugar-Free Chocolate Cake">
         <p>Yes, cake on a diet! Pure cocoa and no sugar kill the sweet craving with a fraction of a normal cake's calories.</p></div>
       <div class="rcard"><img src="receitas/en/cheesecake.jpg" alt="Red Berry Cheesecake">
-        <p>No-bake, with an oat base and ricotta cream. Fiber and protein instead of sugar — a truly light dessert.</p></div>
+        <p>No-bake, with an oat base and ricotta cream. Fiber and protein instead of sugar. A truly light dessert.</p></div>
       <div class="rcard"><img src="receitas/en/suco-verde.jpg" alt="Green Detox Juice">
         <p>Greens and apple that help you de-bloat and hydrate. Barely any calories to curb hunger or start the day right.</p></div>
     </div>
