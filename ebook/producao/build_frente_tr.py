@@ -242,6 +242,80 @@ TEXTOS = {
  "dia": "Day",
  "rotulos": ("Breakfast", "Lunch", "Dinner", "Dessert", "Drink"),
 },
+"es": {
+ # ⛔ Nome de arquivo SEM acento (mesma regra do DE/FR): "aqui", nao "aquí".
+ # O titulo DENTRO do PDF leva o acento certo.
+ "arquivo": "Paso 1 - Empieza aqui.pdf",
+ "titulo": "Empieza aquí",
+ "badge": "Empieza aquí",
+ "cover_h1": "¡Te damos la bienvenida!",
+ "cover_lead": """Qué bueno tenerte aquí. Acabas de dar el primer paso
+    para bajar de peso comiendo bien — sin pasar hambre y sin dietas locas. Este
+    material es un <b>programa completo</b>: 150 recetas para adelgazar, un plan de
+    30 días y tres bonos con ejercicios y hábitos. Antes de empezar a cocinar,
+    lee estas primeras páginas con calma — te van a ahorrar tiempo y
+    frustración. ¡Vamos juntos!""",
+ "passo": "Paso",
+ "como_h2": "Cómo funciona este material",
+ "como_sub": """Para mantener todo bien ordenado, el material viene en archivos separados,
+    numerados como <b>pasos</b>. Sigue el orden — cada paso es una parte de
+    tu día.""",
+ "como_pe": """Dentro de cada archivo, las recetas tienen un <b>número</b>
+    (por ejemplo <b>Receta 003</b>). Es por ese número que el plan de 30 días, más
+    adelante, te dice qué comer cada día.""",
+ "passos": [
+  ("Empieza aquí", "Este archivo. Las instrucciones, las advertencias y el plan de 30 días."),
+  ("Desayunos", "30 recetas para empezar el día con energía y la panza llena."),
+  ("Almuerzos", "35 platos completos y ligeros para la mitad del día."),
+  ("Cenas", "35 opciones más ligeras para la noche."),
+  ("Postres", "20 antojos sin azúcar que calman las ganas sin culpa."),
+  ("Smoothies, jugos y tés detox", "30 bebidas para hidratarte, desinflamar y darte energía."),
+  ("Bono 1 — Dieta Vegetariana", "20 opciones sin carne, bien repartidas."),
+  ("Bono 2 — Pilates para Abdomen Plano", "12 ejercicios para la panza, sin ningún equipo."),
+  ("Bono 3 — 50 Hábitos y Ejercicios", "Los ejercicios y hábitos que aceleran tu resultado."),
+ ],
+ "avisos_h2": "La verdad, con honestidad",
+ "avisos_sub": """Antes de cualquier receta, cuatro verdades que normalmente nadie te dice —
+    y que hacen toda la diferencia en tu resultado.""",
+ "avisos": [
+  ("La comida no hace milagros", "No existe una fórmula mágica. Lo que existe es la constancia. Seguir el menú durante la semana y excederte con los dulces y las frituras el fin de semana anula todo el esfuerzo. El resultado les llega a quienes mantienen el hábito la mayor parte del tiempo."),
+  ("El resultado toma algunos meses", "No vas a cambiar de un día para otro — y qué bueno, porque lo que llega rápido también se va rápido. Dale a tu cuerpo algunos meses de constancia y el cambio será sólido y duradero."),
+  ("El ejercicio es parte del juego", "La comida es la parte más grande, pero tu cuerpo cambia de verdad cuando también te mueves. Los Bonos 2 y 3 traen ejercicios para todos los niveles, en casa y al aire libre. Aprovéchalos."),
+  ("Sin promesas falsas", "No te prometemos que vas a bajar 10 kilos en una semana, porque eso sería mentira. Te entregamos un programa completo y honesto que, seguido con constancia, puede traer resultados reales y duraderos."),
+ ],
+ "dicas_h2": "Consejos para aprovecharlo al máximo",
+ "dicas_sub": "Pequeños trucos que hacen tu camino más fácil.",
+ "dicas": [
+  ("¿Tienes dudas con una receta? Usa YouTube",
+   """Si no sabes cómo hacer un paso, solo busca en YouTube el
+      <b>nombre de la receta + «cómo preparar»</b> y van a aparecer videos que te
+      muestran paso a paso. Es una gran ayuda, sobre todo al principio."""),
+  ("Anota e imprime lo que uses",
+   """Marca las recetas que más te gustaron y toma <b>notas</b> de lo que
+      vas a comprar y preparar durante la semana. Si prefieres, <b>imprime</b> las
+      páginas de los platos, los hábitos y los ejercicios que te interesan y déjalas
+      a la vista, en la cocina o en el refrigerador. Lo que está al alcance de la mano
+      es lo que se hace."""),
+  ("Sobre las calorías y las porciones",
+   """Las calorías de cada receta son <b>valores aproximados</b>, calculados
+      con tablas nutricionales estándar — son una guía, no una medición
+      exacta de laboratorio. Cada receta trae una <b>tabla de ajuste
+      por sexo y peso</b>: busca tu fila y sigue esas cantidades. Las verduras,
+      la ensalada, el café y el té sin azúcar son libres, todo lo que quieras — no
+      necesitas contarlos."""),
+ ],
+ "plano_h2": "Plan de alimentación de 30 días",
+ "plano_sub": """Un mes entero armado para ti — lo único que tienes que hacer es seguirlo. Cada día
+    trae un desayuno, un almuerzo, una cena, un postre y una bebida diferentes,
+    sin repetir los platos a lo largo del mes.""",
+ "plano_note": """El número que va delante de cada receta te dice dónde encontrarla en el archivo
+    de su categoría (por ejemplo, la <b>Receta 031</b> está en el archivo
+    <b>Almuerzos</b>). Los postres, como son solo 20, vuelven a empezar a partir del día 21.
+    Siéntete libre de cambiar cualquier plato por otro de la misma categoría
+    que te guste más.""",
+ "dia": "Día",
+ "rotulos": ("Desayuno", "Almuerzo", "Cena", "Postre", "Bebida"),
+},
 }
 
 EXTRA_CSS = """

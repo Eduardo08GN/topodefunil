@@ -172,6 +172,42 @@ I18N = {
                  "a guide, not a medical prescription. The targets per profile assume light "
                  "activity; anyone who moves more burns more and can adjust upward."),
     },
+    "es": {
+        "html_lang": "es",
+        # ⛔ MÉTRICO como pt/de/fr: a América Latina pesa em kg e mede em °C.
+        # O EN e' o unico imperial do produto; traduzir a partir dele exige
+        # DESFAZER a conversao, e os valores metricos ja' validados estao no
+        # pt/de/fr — e' de la' que vem o numero, nunca de oz -> g de volta.
+        "faixas_m": FAIXAS_M, "faixas_h": FAIXAS_H,
+        # ⛔ Mesma razao do alemao, do frances e do ingles: a regra de quebra
+        # vive AQUI, nunca no ESTILO, que e' compartilhado com o PT.
+        "css": ("\n.foot{break-inside:avoid;page-break-inside:avoid;"
+                "break-before:avoid;page-break-before:avoid}"
+                "\n.tip{break-after:avoid;page-break-after:avoid}"),
+        "cat": {"cafe": "Desayuno", "almoco": "Almuerzo", "jantar": "Cena",
+                "sobremesa": "Postre", "suco": "Jugo detox"},
+        "receita": "Receta ",
+        "foto_ph": ("<b>FOTO %s</b><small>espacio cuadrado reservado<br>"
+                    "(generar con el prompt y nombrarla \"%s\")</small>"),
+        "st_tempo": "Tiempo", "st_rende": "Rinde", "st_kcal": "Kcal base",
+        "h_ings": "Ingredientes (porción base)",
+        "h_passos": "Cómo se prepara",
+        "h_dica": "Por qué ayuda a bajar de peso",
+        "adj_head": "Ajusta tu porción",
+        "adj_sub": "busca tu fila y sigue estas cantidades",
+        "th_perfil": "Perfil", "th_meta": "Meta de esta comida", "th_porcao": "Tu porción",
+        "mulheres": "Mujeres", "homens": "Hombres",
+        "adj_note": ("Busca tu fila por <b>sexo y peso</b> y sigue estas cantidades. "
+                     "<b>Las verduras, la ensalada, el café y el té sin azúcar son libres, "
+                     "todo lo que quieras — no necesitas contarlos.</b>"),
+        "livre": ("<b>Bebida libre.</b> Sin azúcar casi no tiene calorías — puedes tomarla "
+                  "durante todo el día, todo lo que quieras, sin medir la cantidad. Es "
+                  "excelente para reemplazar el refresco y el jugo de caja, y ayuda a "
+                  "hidratarte y a bajar de peso."),
+        "foot": ("Valores aproximados, calculados con una tabla nutricional estándar — sirven "
+                 "como guía, no como indicación médica. Las metas por perfil suponen actividad "
+                 "ligera; quien se mueve más gasta más y puede ajustar hacia arriba."),
+    },
 }
 
 ESTILO = """

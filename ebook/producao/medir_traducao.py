@@ -26,7 +26,7 @@ import pypdfium2 as pdfium
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PT = os.path.join(AQUI, "..", "Entregavel em PT")
 LIMIAR_ORFA = 120     # chars
-IDIOMAS = ("de", "fr", "en")
+IDIOMAS = ("de", "fr", "en", "es")
 
 PT_ARQUIVOS = [
  "Passo 1 - Comece Por Aqui.pdf",
@@ -68,6 +68,15 @@ TR_ARQUIVOS = {
         "Step 7 - Bonus 1 - Vegetarian Diet.pdf",
         "Step 8 - Bonus 2 - Flat Belly Pilates at Home.pdf",
         "Step 9 - Bonus 3 - 50 Habits and Exercises.pdf"],
+ "es": ["Paso 1 - Empieza aqui.pdf",
+        "Paso 2 - Desayunos.pdf",
+        "Paso 3 - Almuerzos.pdf",
+        "Paso 4 - Cenas.pdf",
+        "Paso 5 - Postres.pdf",
+        "Paso 6 - Smoothies, jugos y tes detox.pdf",
+        "Paso 7 - Bono 1 - Dieta Vegetariana.pdf",
+        "Paso 8 - Bono 2 - Pilates para Abdomen Plano.pdf",
+        "Paso 9 - Bono 3 - 50 Habitos y Ejercicios.pdf"],
 }
 
 PT_NO_PDF = ["Receita", "Porção", "Ingredientes", "Modo de preparo", "Mulheres",
@@ -79,7 +88,11 @@ PT_NO_PDF = ["Receita", "Porção", "Ingredientes", "Modo de preparo", "Mulheres
 # língua de destino usa DE VERDADE não pode ser acusado como português solto.
 # O francês escreve "Séries" exatamente como o português — cobrar isso seria a
 # lente reprovando copy certa, e lente que acusa o certo treina a ser ignorada.
-ISENTOS = {"fr": {"Séries"}, "de": set(), "en": set()}
+# ⚠️ O espanhol escreve "Ingredientes" EXATAMENTE como o portugues — mesma
+# situacao do "Séries" frances, e pela mesma razao: e' espanhol correto, nao
+# portugues vazado. Sem a isencao a lente reprovaria as 150 receitas.
+ISENTOS = {"fr": {"Séries"}, "de": set(), "en": set(),
+           "es": {"Ingredientes"}}
 
 _L = r"A-Za-zÀ-ÖØ-öø-ÿ0-9_"
 

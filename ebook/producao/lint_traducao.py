@@ -31,7 +31,7 @@ try:
 except Exception:
     pass
 
-IDIOMAS = ("de", "fr", "en")
+IDIOMAS = ("de", "fr", "en", "es")
 
 # modulos de RECEITA: (pt, sufixo) -> o nome do modulo traduzido e' pt + "_" + lang
 MODULOS = ["receitas_cafe", "receitas_almoco", "receitas_jantar",
