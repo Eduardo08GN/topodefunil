@@ -12,7 +12,8 @@ _MODELO = {}  # cache por tamanho, pra nao recarregar a cada video
 # ⭐⭐ IDIOMA (2026-08-30). Ordem: *"O Veo editor esta' preparado para
 # reconhecer audios e gerar legendas em alemao e frances?"*. Nao estava: os
 # tres modelos do menu eram `.en` e o `lang` nunca saia de "en".
-IDIOMAS = {"en": "Ingles", "de": "Alemao", "fr": "Frances"}
+IDIOMAS = {"en": "Ingles", "de": "Alemao", "fr": "Frances",
+           "es": "Espanhol", "it": "Italiano"}
 
 
 def modelo_para(model_size, language):
@@ -148,7 +149,8 @@ KEYWORDS_PADRAO = ("HONEY", "GELATIN", "VICK", "VICKS", "RECIPE")
 # distorcer e' pior que ficar pequeno.
 # ⭐ A palavra do circulado muda com o idioma (2026-08-30). Um "here" num
 # video alemao denuncia que o criativo foi feito em outra lingua.
-AQUI_POR_IDIOMA = {"en": "here", "de": "hier", "fr": "ici"}
+AQUI_POR_IDIOMA = {"en": "here", "de": "hier", "fr": "ici",
+                   "es": "aquí", "it": "qui"}
 AQUI_TEXTO = AQUI_POR_IDIOMA["en"]
 
 

@@ -646,7 +646,8 @@ class App(tk.Tk):
         # e' o `captions.modelo_para`, a partir DESTE combo. Escolher modelo
         # e idioma em separado permitia a combinacao quebrada.
         tk.Label(rodape, text="idioma", bg=BG, fg=DIM, font=FT).pack(side="left")
-        self._IDIOMAS = [("en", "Ingles"), ("de", "Alemao"), ("fr", "Frances")]
+        self._IDIOMAS = [("en", "Ingles"), ("de", "Alemao"), ("fr", "Frances"),
+                         ("es", "Espanhol"), ("it", "Italiano")]
         self.cb_lang = ttk.Combobox(rodape, style="Eddie.TCombobox", width=10,
                                     state="readonly", font=FT,
                                     values=[r for _c, r in self._IDIOMAS])
