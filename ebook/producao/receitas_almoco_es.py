@@ -258,8 +258,8 @@ RECEITAS = [
               "1 porción · 3 cucharadas de arroz",
               "1 porción · 3 cucharadas de arroz",
               "1 porción grande · 4 cucharadas de arroz",
-              "porción grande · 5 cucharadas de arroz",
-              "porción doble · 6 cucharadas de arroz"],
+              "1 porción grande · 5 cucharadas de arroz",
+              "porción doble · 5 cucharadas de arroz"],
  "dica": "Los frijoles negros son ricos en fibra y proteína vegetal, y hacen que el guisado rinda mucho más con pocas calorías. La carne magra aporta la proteína que sacia, y las especias dan un sabor intenso sin necesidad de grasa.",
 },
 {
@@ -537,8 +537,8 @@ RECEITAS = [
               "1 berenjena · carne extra · ensalada",
               "1 berenjena · carne extra · 2 cucharadas de arroz",
               "1 berenjena grande · 3 cucharadas de arroz",
-              "1 berenjena grande · carne extra · 3 cucharadas de arroz",
-              "2 mitades · carne extra · 4 cucharadas de arroz"],
+              "1 berenjena · carne doble · 4 cucharadas de arroz",
+              "berenjena + porción extra de carne · 4 cucharadas de arroz"],
  "dica": "La berenjena tiene mucha agua y fibra, así que llena el plato y el estómago con muy pocas calorías. Usarla como recipiente hace que la porción de carne rinda más, y el gratinado ligero da la sensación de un plato especial sin necesidad de mucho queso.",
 },
 {

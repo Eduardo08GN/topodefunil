@@ -31,7 +31,7 @@ try:
 except Exception:
     pass
 
-IDIOMAS = ("de", "fr", "en", "es")
+IDIOMAS = ("de", "fr", "en", "es", "it")
 
 # modulos de RECEITA: (pt, sufixo) -> o nome do modulo traduzido e' pt + "_" + lang
 MODULOS = ["receitas_cafe", "receitas_almoco", "receitas_jantar",
@@ -70,6 +70,10 @@ _PT_RX = [re.compile(r"(?<![" + _L + r"])" + re.escape(p) + r"(?![" + _L + r"])"
 # frigideira->sartén · tigela->tazón · emagrecer->adelgazar · você->tú.
 ISENTOS = {
     "es": {"proteína", "proteina", "fibra"},
+    # ⚠️ O italiano escreve `proteina` e `fibra` exatamente assim. ⛔ Mas
+    # `proteína` COM acento fica COBRADO: o italiano nao tem `í`, logo ali
+    # seria portugues vazado de verdade. Isencao e' bisturi, nunca atacado.
+    "it": {"proteina", "fibra"},
     "de": set(), "fr": set(), "en": set(),
 }
 
@@ -99,6 +103,34 @@ IMPERIAL_VAZADO = re.compile(
 
 def _lang_de(tr_nome):
     return tr_nome.rsplit("_", 1)[-1]
+
+
+_NUM_RX = re.compile(r"\d+(?:[.,]\d+)?")
+
+# ⛔ EXCECAO DECLARADA E MEDIDA: a linha do PT que traz XICARA (ou a fracao
+# que so' existe em xicara: ⅓ ⅔ ¾ ½ de xic.) tem de mudar de numero na
+# traducao — e' a §1 do glossario, "A XICARA VIRA PESO", 68 ocorrencias.
+# Sem esta isencao a lente acusa 48 linhas CERTAS, identicas em de/fr/es, e
+# afoga as 3 erradas do espanhol no meio delas. Medido: com a isencao,
+# de=0, fr=0, es=3, e as 3 do es sao defeito de verdade.
+_XICARA = re.compile(r"x[íi]c|[½⅓⅔¾⅛⅜⅝⅞]")
+
+
+def _numeros(s):
+    """Os numeros de uma linha de porcao, para comparar com o PT.
+
+    ⛔⛔ TODO `1` E' DESCARTADO, em qualquer posicao. Ali ele quase nunca e'
+    quantidade — e' artigo ou unidade indivisivel (`1 fio de azeite` ->
+    `etwas Olivenöl`, `1 batata-doce média` -> `1 mittlere Süßkartoffel`,
+    `1 punhado` -> `un puñado`). A primeira versao desta lente descartava so'
+    o `1` inicial e acusou CENTENAS de linhas certas em alemao: cada
+    `· 1 fio de azeite` que virou `· etwas Olivenöl` contava como numero
+    perdido. Lente que acusa o certo treina o operador a ignorar a lente.
+
+    O que sobra — 4, 5, 150, 220 — e' a escada de quantidade de verdade, e
+    essa NAO pode mudar entre idiomas metricos.
+    """
+    return [n for n in _NUM_RX.findall(s) if n != "1"]
 
 CAMPOS = ["nome", "hook", "tempo", "rende", "kcal_base", "ings", "passos",
           "porcoes8", "dica"]
@@ -170,6 +202,29 @@ def checar(pt_nome, tr_nome):
         if a.get("kcal_base") != b.get("kcal_base"):
             erros.append("%s: kcal_base mudou (%s -> %s) — numero nao se traduz"
                          % (ref, a.get("kcal_base"), b.get("kcal_base")))
+
+        # ⛔⛔ A ESCADA DE QUANTIDADE TEM DE SER A MESMA DO PT.
+        # O `kcal_base` ja' era cobrado; a `porcoes8` e a `ings` NAO eram, e
+        # sao onde o numero de verdade mora. A lente de forma acima confere
+        # QUANTAS linhas ha', nunca O QUE ha' dentro — e foi assim que duas
+        # linhas do espanhol sairam com `5` onde o pt/de/fr/en dizem `4`.
+        # Numero nao se traduz: mudar um e' inventar, e a ordem do operador e'
+        # "nao invente nada".
+        # ⛔ So' vale entre idiomas METRICOS. O EN e' imperial por decisao
+        # (§6) e ali o numero MUDA de proposito — cobrar seria acusar o certo.
+        # ⛔ So' a `porcoes8`. A `ings` fica de fora porque ali a conversao
+        # MUDA o numero por doutrina: `1 xícara de vagem` vira `110 g` (§1),
+        # e cobrar isso seria acusar exatamente o que a traducao deve fazer.
+        # Na `porcoes8` a escada ja' nasce em unidade final nos dois lados.
+        if _lang_de(tr_nome) != "en":
+            for j, (x, y) in enumerate(zip(a.get("porcoes8", []),
+                                           b.get("porcoes8", []))):
+                if _XICARA.search(x):
+                    continue          # §1: aqui o numero MUDA por doutrina
+                if _numeros(x) != _numeros(y):
+                    erros.append(
+                        "%s: porcoes8[%d] mudou de numero -> PT %r x traducao %r"
+                        % (ref, j, x, y))
 
         texto = " ".join(
             [str(b.get(c, "")) for c in ("nome", "hook", "tempo", "rende", "dica")]

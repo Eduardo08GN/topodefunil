@@ -208,6 +208,46 @@ I18N = {
                  "como guía, no como indicación médica. Las metas por perfil suponen actividad "
                  "ligera; quien se mueve más gasta más y puede ajustar hacia arriba."),
     },
+    "it": {
+        "html_lang": "it",
+        # ⛔ MÉTRICO como pt/de/fr/es. A Itália pesa em grama e mede em °C — e
+        # pesa MAIS que os outros: a cozinha italiana é de balança, não de
+        # xícara. Mesma regra do espanhol: o texto sai do EN, o NÚMERO sai do
+        # de/fr, que já são métricos. Desfazer `1/2 cup` de volta para grama
+        # arredonda duas vezes e achata a escada das 8 faixas.
+        "faixas_m": FAIXAS_M, "faixas_h": FAIXAS_H,
+        # ⛔ Mesma razao dos outros: a regra de quebra vive AQUI, nunca no
+        # ESTILO, que e' compartilhado com o PT.
+        "css": ("\n.foot{break-inside:avoid;page-break-inside:avoid;"
+                "break-before:avoid;page-break-before:avoid}"
+                "\n.tip{break-after:avoid;page-break-after:avoid}"),
+        "cat": {"cafe": "Colazione", "almoco": "Pranzo", "jantar": "Cena",
+                "sobremesa": "Dolce", "suco": "Succo detox"},
+        "receita": "Ricetta ",
+        "foto_ph": ("<b>FOTO %s</b><small>spazio quadrato riservato<br>"
+                    "(generare con il prompt e chiamarla \"%s\")</small>"),
+        "st_tempo": "Tempo", "st_rende": "Per", "st_kcal": "Kcal base",
+        "h_ings": "Ingredienti (porzione base)",
+        "h_passos": "Come si prepara",
+        "h_dica": "Perché aiuta a dimagrire",
+        "adj_head": "Regola la tua porzione",
+        "adj_sub": "trova la tua riga e segui queste quantità",
+        "th_perfil": "Profilo", "th_meta": "Obiettivo di questo pasto",
+        "th_porcao": "La tua porzione",
+        "mulheres": "Donne", "homens": "Uomini",
+        "adj_note": ("Trova la tua riga in base a <b>sesso e peso</b> e segui queste "
+                     "quantità. <b>Le verdure, l'insalata, il caffè e il tè senza "
+                     "zucchero sono liberi, quanto vuoi — non c'è bisogno di "
+                     "contarli.</b>"),
+        "livre": ("<b>Bevanda libera.</b> Senza zucchero non ha quasi calorie — puoi "
+                  "berla tutto il giorno, quanto vuoi, senza misurare la quantità. È "
+                  "ottima per sostituire le bibite gassate e i succhi confezionati, e "
+                  "aiuta a idratarti e a dimagrire."),
+        "foot": ("Valori approssimativi, calcolati con una tabella nutrizionale standard — "
+                 "servono come guida, non come indicazione medica. Gli obiettivi per profilo "
+                 "presuppongono un'attività leggera; chi si muove di più consuma di più e "
+                 "può aumentare le quantità."),
+    },
 }
 
 ESTILO = """

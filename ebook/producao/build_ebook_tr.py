@@ -47,6 +47,9 @@ TITULOS = {
     "es": {"cafe": "Desayunos fit", "almoco": "Almuerzos fit",
            "jantar": "Cenas fit", "sobremesa": "Postres fit",
            "suco": "Smoothies y jugos detox"},
+    "it": {"cafe": "Colazioni fit", "almoco": "Pranzi fit",
+           "jantar": "Cene fit", "sobremesa": "Dolci fit",
+           "suco": "Frullati e succhi detox"},
 }
 
 # ⛔ nome de ARQUIVO sem acento, sem trema e sem ß: acento em nome de arquivo
@@ -73,6 +76,15 @@ PDF_NAME = {
            "jantar": "Paso 4 - Cenas.pdf",
            "sobremesa": "Paso 5 - Postres.pdf",
            "suco": "Paso 6 - Smoothies, jugos y tes detox.pdf"},
+    # ⚠️ O italiano diz "Passo" IGUAL ao portugues — e nao e' vazamento, e' a
+    # palavra certa. Nao ha' colisao de arquivo porque as pastas sao outras
+    # ("Entregavel em IT" x "Entregavel em PT"), mas o `medir_traducao.py`
+    # precisa da isencao, senao ele reprova os 9 arquivos por "Passo".
+    "it": {"cafe": "Passo 2 - Colazioni.pdf",
+           "almoco": "Passo 3 - Pranzi.pdf",
+           "jantar": "Passo 4 - Cene.pdf",
+           "sobremesa": "Passo 5 - Dolci.pdf",
+           "suco": "Passo 6 - Frullati, succhi e tisane detox.pdf"},
 }
 
 # rotulo da bebida, que muda por receita dentro da categoria `suco`.
@@ -90,6 +102,15 @@ TAG_BEBIDA = {
     # controle negativo do autoteste.
     "es": ([("té", "Té detox"), ("infusión", "Té detox"),
             ("agua", "Agua detox"), ("smoothie", "Smoothie")], "Jugo detox"),
+    # ⚠️ O italiano repete o risco do `Wassermelonensaft` em DOIS lugares, e a
+    # fronteira a direita resolve os dois: "Acqua di anguria" e' agua e
+    # "Succo di anguria" nao contem `acqua`; e `tè` casaria dentro de `patè`,
+    # que nao existe em bebida. ⛔ `latte` NAO leva `tè` (e' `tte`), mas se um
+    # dia levasse, a fronteira a direita nao salvaria — quem salva ali e' o
+    # `latte` nao ser palavra da lista. Coberto pelo controle negativo.
+    "it": ([("tè", "Tisana detox"), ("tisana", "Tisana detox"),
+            ("infuso", "Tisana detox"), ("acqua", "Acqua detox"),
+            ("frullato", "Frullato"), ("smoothie", "Frullato")], "Succo detox"),
 }
 
 PORTA = 8132

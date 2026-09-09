@@ -15,7 +15,7 @@ except Exception:
     pass
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-IDIOMAS = ("de", "fr", "en", "es")
+IDIOMAS = ("de", "fr", "en", "es", "it")
 
 
 def passos(lang):

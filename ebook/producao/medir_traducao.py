@@ -27,7 +27,7 @@ import pypdfium2 as pdfium
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PT = os.path.join(AQUI, "..", "Entregavel em PT")
 LIMIAR_ORFA = 120     # chars
-IDIOMAS = ("de", "fr", "en", "es")
+IDIOMAS = ("de", "fr", "en", "es", "it")
 
 PT_ARQUIVOS = [
  "Passo 1 - Comece Por Aqui.pdf",
@@ -78,6 +78,15 @@ TR_ARQUIVOS = {
         "Paso 7 - Bono 1 - Dieta Vegetariana.pdf",
         "Paso 8 - Bono 2 - Pilates para Abdomen Plano.pdf",
         "Paso 9 - Bono 3 - 50 Habitos y Ejercicios.pdf"],
+ "it": ["Passo 1 - Inizia da qui.pdf",
+        "Passo 2 - Colazioni.pdf",
+        "Passo 3 - Pranzi.pdf",
+        "Passo 4 - Cene.pdf",
+        "Passo 5 - Dolci.pdf",
+        "Passo 6 - Frullati, succhi e tisane detox.pdf",
+        "Passo 7 - Bonus 1 - Dieta Vegetariana.pdf",
+        "Passo 8 - Bonus 2 - Pilates per la Pancia Piatta.pdf",
+        "Passo 9 - Bonus 3 - 50 Abitudini ed Esercizi.pdf"],
 }
 
 PT_NO_PDF = ["Receita", "Porção", "Ingredientes", "Modo de preparo", "Mulheres",
@@ -93,7 +102,12 @@ PT_NO_PDF = ["Receita", "Porção", "Ingredientes", "Modo de preparo", "Mulheres
 # situacao do "Séries" frances, e pela mesma razao: e' espanhol correto, nao
 # portugues vazado. Sem a isencao a lente reprovaria as 150 receitas.
 ISENTOS = {"fr": {"Séries"}, "de": set(), "en": set(),
-           "es": {"Ingredientes"}}
+           "es": {"Ingredientes"},
+           # ⚠️ O italiano diz "Passo" IGUAL ao portugues — e' a palavra certa
+           # dele, nao vazamento. Sem a isencao os 9 arquivos reprovam.
+           # ⛔ `Ingredientes` NAO entra: o italiano e' `Ingredienti`, e se um
+           # `Ingredientes` aparecer no PDF italiano e' portugues de verdade.
+           "it": {"Passo"}}
 
 _L = r"A-Za-zÀ-ÖØ-öø-ÿ0-9_"
 
