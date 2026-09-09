@@ -99,6 +99,24 @@ TEXTOS = {
     en casa) para acelerar tu metabolismo. Adopta los hábitos poco a poco — es la
     suma de todo lo que de verdad te adelgaza.""",
 },
+"it": {
+ "arquivo": "Passo 9 - Bonus 3 - 50 Abitudini ed Esercizi.pdf",
+ "titulo": "Bonus 3 — 50 abitudini ed esercizi",
+ "badge": "Bonus 3", "h1": "50 abitudini ed esercizi",
+ "pill_ex": "Esercizi", "pill_hab": "Abitudini",
+ "lbl_plano": "Progressione:", "lbl_dica": "Consiglio:",
+ "foto_ph": "spazio quadrato<br>riservato",
+ "lead": """L'alimentazione fa la parte più grande del lavoro, ma è l'esercizio
+    che <b>accelera il consumo</b>, dà forma al corpo e fa durare il risultato.
+    Qui trovi <b>30 esercizi</b> che aiutano davvero a dimagrire — per strada,
+    sul tapis roulant, in palestra o a casa, ognuno con un <b>piano per
+    aumentare</b> — e <b>20 abitudini</b> che, sommate, fanno la differenza.""",
+ "how": """<b>Come usare questo bonus:</b> scegli un esercizio di <b>cardio</b>
+    (camminare, bici, nuoto…) e fallo <b>3-5 volte a settimana</b>, seguendo il
+    piano di progressione. Aggiungi <b>2 giorni di allenamento di forza</b> (in
+    palestra o a casa) per accelerare il metabolismo. Adotta le abitudini poco a
+    poco — è la somma di tutto che davvero snellisce.""",
+},
 }
 
 EXTRA_CSS = """

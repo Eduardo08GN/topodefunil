@@ -201,6 +201,51 @@ TEXTOS = {
  "foto_ph": ('<b>FOTO %s</b><small>espacio cuadrado reservado<br>'
              '(generar con el prompt y nombrarla "%s")</small>'),
 },
+"it": {
+ # ⛔ Nome de arquivo SEM acento (glossario §3).
+ "arquivo": "Passo 8 - Bonus 2 - Pilates per la Pancia Piatta.pdf",
+ "titulo": "Bonus 2 — Pilates per la Pancia Piatta a Casa",
+ "badge": "Bonus 2", "h1": "Pilates per la Pancia Piatta a Casa",
+ "tag": "Pilates", "num": "Bonus · Pilates",
+ "st_nivel": "Livello", "st_series": "Serie", "st_tempo": "Tempo",
+ "h_foco": "Obiettivo", "h_passos": "Come si fa",
+ "h_resp": "Respirazione", "h_dica": "Consiglio",
+ "lead": """Il Pilates è una forma di esercizio con movimenti lenti e controllati che
+    rafforza soprattutto il <b>centro del corpo</b> — la zona della pancia e della schiena.
+    Senza attrezzi, senza impatto e senza uscire di casa, è perfetto per accompagnare
+    il tuo piano alimentare e accelerare i risultati. L'unica cosa che ti serve è un tappetino o un
+    asciugamano per terra.""",
+ "box_h2": "Perché questo aiuta a sgonfiare la pancia",
+ "box_itens": ["Rafforza il <b>muscolo profondo della pancia</b>, che funziona come una guaina naturale e tira dentro l'addome.",
+               "Migliora la tua <b>postura</b> — e stare più dritta fa già sembrare la pancia visibilmente più piatta.",
+               "Dà forma alla tua <b>vita</b> lavorando i muscoli laterali.",
+               "È <b>delicato con le articolazioni</b>: ideale a qualsiasi età."],
+ "honest_label": "Una verità importante",
+ "honest": """Nessun esercizio brucia il grasso solo della pancia — non esiste.
+      Il grasso se ne va da tutto il corpo, e ciò che spinge quella perdita è la tua
+      <b>alimentazione</b>. Il Pilates rafforza, dà forma e migliora la postura;
+      insieme alle ricette di questo libro, è la combinazione che davvero
+      sgonfia la pancia. La costanza è tutto.""",
+ "how": """<b>Come usare questo bonus:</b> fallo <b>3 o 4 volte a settimana</b>, da 15 a
+    20 minuti. Metti abiti comodi, allenati a digiuno o almeno
+    1 ora dopo aver mangiato, e <b>continua a respirare</b> (non trattenere mai il respiro).
+    Inizia con le varianti più facili indicate in ogni esercizio e aumenta con
+    il tempo. Se senti un dolore acuto, fermati.""",
+ "kicker": "Bonus 2 · Pilates per la Pancia Piatta",
+ "head_h2": "I 12 esercizi",
+ "head_p": """Falli in ordine, rispettando la respirazione e il tuo limite.
+    Ogni esercizio indica l'obiettivo, il numero di ripetizioni, il passo passo e,
+    quando c'è, una variante più facile.""",
+ "plan_h2": "Il piano settimanale",
+ "plan_p": """Scegli 3 o 4 giorni (per esempio <b>lunedì, mercoledì e venerdì</b>) e fai
+      la sequenza completa dei 12 esercizi nell'ordine in cui compaiono.""",
+ "plan_seq": """L'ordine è voluto: inizia con il <b>riscaldamento</b> (1 e 2),
+      passa per gli esercizi di <b>pancia</b> (dal 3 al 10), rafforza la <b>schiena</b> (11)
+      e chiudi con l'<b>allungamento</b> (12). Non saltare mai il riscaldamento né
+      l'allungamento.""",
+ "foto_ph": ('<b>FOTO %s</b><small>spazio quadrato riservato<br>'
+             '(generare con il prompt e chiamarla "%s")</small>'),
+},
 }
 
 EXTRA_CSS = """

@@ -295,6 +295,93 @@ família do defeito §7(a) — a regra certa existindo num lugar só.
 
 ---
 
+## 6c. ⛔⛔ O ITALIANO (2026-09-09) — o sexto idioma, MÉTRICO e de balança
+
+Mesma regra do espanhol: **texto do EN, número do DE/FR.** A Itália é métrica e
+pesa **mais** que os outros — a cozinha italiana é de balança, não de xícara.
+
+| EN (US) | IT | onde |
+|---|---|---|
+| `cup` (medida) | **g / ml** | |
+| `tbsp` / `tsp` | `cucchiaio` / `cucchiaino` | |
+| `5 oz` · `9 oz` · `14 oz` | `150 g` · `250 g` · `400 g` | carne e peixe |
+| `1 lb` de abóbora | `500 g` | |
+| `4 / 5 / 6 cups of water` | `1 / 1,2 / 1,5 litri` | sopas |
+| `1 cup of rice` | `185 g di riso` | risoto |
+| `350 °F` / `400 °F` | `180 °C` / `200 °C` | |
+| `1.2 · 2 · 2.5 · 3 miles` | `2 · 3 · 4 · 5 km` | Bônus 3 |
+| `2 quarts` de água | **`2 litri`** | Bônus 3 |
+| `20 pounds` | **`10 chili`** | frente do livro |
+| `a few inches` | `alcuni centimetri` | ⚠️ **sem número — a lente não pega** |
+| `a hand's width above the floor` | `un palmo da terra` | idem |
+
+⚠️ **`feet` continua sendo pé do corpo:** `knees in line with your feet` →
+`ginocchia in linea con i piedi`. O DE confirma (`Füße`).
+
+### ⛔ `Passo` e `Rende` são italiano CORRETO, idênticos ao português
+
+Os dois entraram em `ISENTOS["it"]` do `medir_traducao.py`, e o segundo
+apareceu **medido**, não previsto: a dica da frittata diz *"Rende parecchio, si
+conserva bene"*. Mesma família do `Séries` francês e do `Ingredientes`
+espanhol. ⛔ O preço está escrito no código: com a isenção, um vazamento do
+**rótulo** português `Rende` não seria pego por esse termo — quem o impede é o
+rótulo vir de `I18N["it"]["st_rende"]`, que é `"Per"`.
+⛔ No lint, `proteina` e `fibra` são isentos, mas **`proteína` com acento fica
+cobrado**: o italiano não tem `í`, então ali seria português de verdade.
+
+### ⛔⛔ O `TAG_BEBIDA["it"]` nasceu com duas armadilhas, as duas medidas
+
+O italiano repete o `Wassermelonensaft` em dois lugares:
+
+- **`Succo di anguria` não contém `acqua`** — a armadilha alemã não acontece.
+- **`Camomilla` sozinha cairia no rótulo padrão `Succo detox`.** Por isso a
+  receita 147 se chama **`Tisana di camomilla`**. O nome não é livre: o rótulo
+  é derivado dele.
+
+Medido: 30/30 coerentes com a flag `livre`, 0 incoerência, 5/5 no controle.
+
+---
+
+## 7b. ⛔⛔ AS DUAS LENTES QUE O ITALIANO OBRIGOU A ESCREVER
+
+### (a) A ESCADA DE `porcoes8` — e as 3 linhas que o espanhol tinha inventado
+
+O lint conferia **quantas** linhas há na escada de porção, nunca **o que** há
+dentro. Comparando ES contra PT/DE/FR/EN achei 3 linhas em que o espanhol
+derivou: `5 col. arroz` virou 6, `4 col.` virou 3, e uma linha ganhou um
+`2 mitades` que não existe em idioma nenhum. **Número não se traduz** — mudar
+um é inventar. Corrigidas e o Passo 3 do ES reconstruído.
+
+A lente levou **duas reduções de ruído, as duas medidas**:
+
+1. **Todo `1` é descartado**, em qualquer posição. Ali ele quase nunca é
+   quantidade — é artigo (`1 fio de azeite` → `etwas Olivenöl`, `1 punhado` →
+   `un puñado`). A primeira versão acusou **centenas** de linhas certas em
+   alemão.
+2. **A linha do PT com xícara é isenta** — a §1 manda o número mudar ali
+   (`⅓ xíc.` → `55 g`). Sem a isenção a lente acusava **48 linhas certas**,
+   idênticas em de/fr/es, afogando as 3 erradas no meio delas.
+
+**Medido depois das duas: de=0, fr=0, en=0, es=3 — e as 3 eram reais.**
+
+### (b) O `_norm` do `medir` — a lente reprovando um PDF PERFEITO
+
+O portão acusou **6 receitas ausentes** no Passo 6 italiano. Estavam todas na
+página. ⛔ **Quando o título quebra de linha, o pdfium não emite o espaço da
+quebra:** `Frullato di` + `fragole con yogurt` volta como
+`Frullato difragole con yogurt`, e `Succo d'` + `arancia` volta partido.
+Conserto: `_norm` **remove** todo espaço em vez de colapsar. O preço está
+declarado (dois trechos vizinhos podem colar e formar falso positivo de
+*presença*) e é o lado seguro do erro — a lente fica mais permissiva, nunca
+mais barulhenta. Controle negativo refeito: **5/5**.
+
+### ⚠️ E a lente de paridade pegou um erro meu, não do produto
+
+Escrevi `"titolo":` no `exercicios_habitos_it.py` — traduzi a **chave** do
+dicionário. Nome de campo é código, não texto. **20 ERRO** na hora.
+
+---
+
 ## 7. ⛔⛔ OS DOIS DEFEITOS QUE ESTA ENTREGA ACHOU — os dois de SUBSTRING
 
 Os dois estavam **vivos** e os dois são a mesma lição do `gleiten`/`leite` que

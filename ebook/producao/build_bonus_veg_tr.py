@@ -179,6 +179,44 @@ TEXTOS = {
     proteína viene de las leguminosas, el tofu, los huevos y el queso. Cada una
     trae la tabla de ajuste por perfil, igual que las recetas del libro.""",
 },
+"it": {
+ # ⛔ Nome de arquivo SEM acento (glossario §3). "Passo" e' italiano correto,
+ # identico ao portugues — a isencao esta declarada no medir_traducao.py.
+ "arquivo": "Passo 7 - Bonus 1 - Dieta Vegetariana.pdf",
+ "titulo": "Bonus 1 — Dieta Vegetariana",
+ "badge": "Bonus 1", "h1": "Dieta Vegetariana",
+ "rezept": "Ricetta",
+ "cats": ["Colazioni", "Dolci", "Frullati e succhi"],
+ "lead": """Rinunciare alla carne non significa rinunciare alle proteine, al
+    sapore o alla sensazione di sazietà. Una dieta vegetariana costruita bene è
+    leggera, economica e piena di fibre — e può accelerare il tuo dimagrimento,
+    a patto che tu ti assicuri una buona fonte di proteine a ogni pasto.
+    Qui trovi <b>20 opzioni</b>, distribuite in modo equilibrato tra colazione,
+    pranzo, cena, dolce e bevande.""",
+ "box_h2": "Da dove arrivano le proteine",
+ "box_itens": ["<b>Uova</b> — una proteina completa e molto saziante.",
+               "<b>Latticini</b> — yogurt naturale, formaggio bianco, ricotta, fiocchi di latte.",
+               "<b>Legumi</b> — fagioli, lenticchie, ceci e piselli.",
+               "<b>Tofu</b> — fatto di soia, pieno di proteine e povero di grassi.",
+               "<b>Frutta a guscio e semi</b> — noci, mandorle e burro di arachidi (con moderazione)."],
+ "box_compl": """Un consiglio d'oro: abbina un <b>legume</b> a un
+      <b>cereale</b> nello stesso pasto (riso e fagioli, ceci e riso)
+      e ottieni una proteina completa quanto quella della carne.""",
+ "how": """<b>Come usare questo bonus:</b> costruisci la tua giornata
+    scegliendo da questa lista 1 colazione, 1 pranzo, 1 cena, 1 dolce e
+    1 bevanda. Le opzioni di colazione, dolce e bevanda sono già nel tuo
+    libro — cerca solo il numero della ricetta. I pranzi e le cene
+    vegetariane sono le <b>4 + 4 ricette nuove</b> che trovi subito
+    qui di seguito.""",
+ "reuse_h2": "Dal libro stesso",
+ "reuse_sub": """Queste ricette che hai già sono vegetariane per natura —
+      usale quanto vuoi dentro questa dieta.""",
+ "kicker": "Bonus 1 · Dieta Vegetariana",
+ "head_h2": "Pranzi e cene vegetariane",
+ "head_p": """Le ricette che seguono sono nuove e sono fatte senza carne e senza pesce — le
+    proteine arrivano dai legumi, dal tofu, dalle uova e dal formaggio. Ognuna
+    porta la tabella di regolazione per profilo, come le ricette del libro.""",
+},
 }
 
 INTRO_CSS = """
