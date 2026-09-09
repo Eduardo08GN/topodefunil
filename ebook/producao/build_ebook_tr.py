@@ -84,6 +84,12 @@ TAG_BEBIDA = {
             ("eau", "Eau détox"), ("smoothie", "Smoothie")], "Jus détox"),
     "en": ([("tea", "Detox Tea"), ("infusion", "Detox Tea"),
             ("water", "Detox Water"), ("smoothie", "Smoothie")], "Detox Juice"),
+    # ⚠️ O espanhol tem o MESMO risco do `Wassermelonensaft`: "Smoothie de
+    # aguacate" contem "agua". A fronteira a direita ja resolve — `agua(?!\w)`
+    # nao casa em "agua|cate" (vem `c`) e casa em "Agua detox". Coberto pelo
+    # controle negativo do autoteste.
+    "es": ([("té", "Té detox"), ("infusión", "Té detox"),
+            ("agua", "Agua detox"), ("smoothie", "Smoothie")], "Jugo detox"),
 }
 
 PORTA = 8132
