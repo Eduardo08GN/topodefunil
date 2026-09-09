@@ -142,6 +142,43 @@ TEXTOS = {
     protein comes from legumes, tofu, eggs and cheese. Each one
     brings the adjustment table by profile, like the recipes in the book.""",
 },
+"es": {
+ # ⛔ Nome de arquivo SEM acento (glossario §3).
+ "arquivo": "Paso 7 - Bono 1 - Dieta Vegetariana.pdf",
+ "titulo": "Bono 1 — Dieta Vegetariana",
+ "badge": "Bono 1", "h1": "Dieta Vegetariana",
+ "rezept": "Receta",
+ "cats": ["Desayunos", "Postres", "Smoothies y jugos"],
+ "lead": """Dejar la carne no significa renunciar a la proteína, al sabor
+    ni a sentirte satisfecha. Una dieta vegetariana bien armada es ligera, barata
+    y llena de fibra — y puede acelerar tu pérdida de peso, siempre que te
+    asegures de tener una buena fuente de proteína en cada comida.
+    Aquí tienes <b>20 opciones</b>, repartidas parejo entre desayuno,
+    almuerzo, cena, postre y bebidas.""",
+ "box_h2": "De dónde viene la proteína",
+ "box_itens": ["<b>Huevos</b> — una proteína completa y muy saciante.",
+               "<b>Lácteos</b> — yogur natural, queso blanco, ricotta, queso cottage.",
+               "<b>Leguminosas</b> — frijoles, lentejas, garbanzos y chícharos.",
+               "<b>Tofu</b> — hecho de soya, lleno de proteína y bajo en grasa.",
+               "<b>Nueces y semillas</b> — nueces, almendras y crema de cacahuate (con moderación)."],
+ "box_compl": """Un consejo de oro: combina una <b>leguminosa</b> con un
+      <b>cereal</b> en la misma comida (arroz con frijoles, garbanzos con arroz)
+      y obtienes una proteína tan completa como la de la carne.""",
+ "how": """<b>Cómo usar esto:</b> arma tu día eligiendo de esta
+    lista 1 desayuno, 1 almuerzo, 1 cena, 1 postre y 1 bebida. Las
+    opciones de desayuno, postre y bebida ya están en tu libro —
+    solo busca el número de la receta. Los almuerzos y cenas vegetarianos
+    son las <b>4 + 4 recetas nuevas</b> que vienen justo
+    después.""",
+ "reuse_h2": "Del libro mismo",
+ "reuse_sub": """Estas recetas que ya tienes son vegetarianas por naturaleza —
+      úsalas todo lo que quieras dentro de esta dieta.""",
+ "kicker": "Bono 1 · Dieta Vegetariana",
+ "head_h2": "Almuerzos y cenas vegetarianos",
+ "head_p": """Las recetas que siguen son nuevas y están hechas sin carne y sin pescado — la
+    proteína viene de las leguminosas, el tofu, los huevos y el queso. Cada una
+    trae la tabla de ajuste por perfil, igual que las recetas del libro.""",
+},
 }
 
 INTRO_CSS = """

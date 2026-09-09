@@ -80,6 +80,25 @@ TEXTOS = {
     metabolism. Take on the habits little by little — it is the sum of everything
     that really slims you down.""",
 },
+"es": {
+ "arquivo": "Paso 9 - Bono 3 - 50 Habitos y Ejercicios.pdf",
+ "titulo": "Bono 3 — 50 hábitos y ejercicios",
+ "badge": "Bono 3", "h1": "50 hábitos y ejercicios",
+ "pill_ex": "Ejercicios", "pill_hab": "Hábitos",
+ "lbl_plano": "Progresión:", "lbl_dica": "Consejo:",
+ "foto_ph": "espacio cuadrado<br>reservado",
+ "lead": """La alimentación hace la mayor parte del trabajo, pero es el ejercicio
+    el que <b>acelera la quema</b>, moldea tu cuerpo y hace que el resultado dure.
+    Aquí vas a encontrar <b>30 ejercicios</b> que de verdad ayudan a bajar de peso —
+    en la calle, en la caminadora, en el gimnasio o en casa, cada uno con un
+    <b>plan para ir subiendo</b> — y <b>20 hábitos</b> que, sumados, hacen la
+    diferencia.""",
+ "how": """<b>Cómo usar esto:</b> elige un ejercicio de <b>cardio</b> (caminar,
+    ciclismo, natación…) y hazlo <b>de 3 a 5 veces por semana</b>, siguiendo el plan
+    de progresión. Agrega <b>2 días de entrenamiento de fuerza</b> (en el gimnasio o
+    en casa) para acelerar tu metabolismo. Adopta los hábitos poco a poco — es la
+    suma de todo lo que de verdad te adelgaza.""",
+},
 }
 
 EXTRA_CSS = """

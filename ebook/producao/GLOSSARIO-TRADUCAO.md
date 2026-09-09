@@ -221,6 +221,80 @@ Balls`, `Fit Milk Flan`. Transliterar seria manter a palavra e perder o prato.
 
 ---
 
+## 6b. ⛔⛔ O ESPANHOL (2026-09-09) — o quinto idioma, e MÉTRICO como o PT
+
+Ordem do Lucas no áudio: *"entre na versão inglês e traduz literalmente para o
+italiano e para o espanhol… ajustando as unidades de medida"*. Ordem do
+operador: **espanhol primeiro**, tradução **literal**, as **mesmas imagens**, e
+— a mais importante de todas — **"você não deve espremer nem diminuir o tamanho
+da fonte de nada, você simplesmente deve ocupar mais espaço da página, se
+necessário crie mais páginas"**.
+
+⛔⛔ **O texto sai do EN; os NÚMEROS saem do DE/FR.** O EN é a única versão
+imperial do produto (§6), e o espanhol da América Latina é métrico como o PT.
+Reconverter `1/2 cup` de volta para grama **arredonda duas vezes** e achata a
+escada das 8 faixas — medido: a escada alemã (30/40/45/50/50/55/60/70 g) **não
+é expressável** pelas frações do EN. Então: a *frase* vem do inglês, o *número*
+vem do alemão/francês, que já são métricos.
+
+| EN (US) | ES (LatAm) | onde |
+|---|---|---|
+| `cup` (medida) | **g / ml** | o espanhol não cozinha por taza padronizada |
+| `tbsp` / `tsp` | `cucharada` / `cucharadita` | |
+| `120–155 lb` | **55–70 kg** | volta a apontar para `FAIXAS_M`/`FAIXAS_H` |
+| `350 °F` / `400 °F` | `180 °C` / `200 °C` | |
+| `1.2 miles` · `3 miles` | `2 km` · `5 km` | Bônus 3 |
+| `2 quarts` de água | **`2 litros`** | Bônus 3 |
+| `20 pounds` | **`10 kilos`** | frente do livro |
+
+⚠️ **`feet` NÃO se converte quando são os pés do corpo.** `knees in line with
+your feet` → `rodillas alineadas con los pies`. O DE confirma (`Füße`). Foi
+falso positivo do meu próprio regex, pego antes de virar erro.
+
+⛔ **Vocabulário de mercado (México / América Latina):** `plátano` (não
+`banana`), `crema de cacahuate` (não `mantequilla de maní`), `jugo` (não
+`zumo`), `refrigerador`, `tazón`, `sartén`, `adelgazar`, `bajar de peso`.
+
+### ⛔ Termo que o espanhol escreve IGUAL ao português não é português vazado
+
+`proteína`, `fibra` e `Ingredientes` são espanhol correto. Sem isenção o lint
+marcava **35 ERRO** nos cafés e o `medir` reprovaria as 150 receitas — lente que
+acusa o certo treina o operador a ignorar a lente. Entraram nos dois `ISENTOS`,
+**por idioma**, no molde do `Séries` francês.
+
+### ⛔⛔ O Passo 6 saiu com 52 páginas contra 53 do PT — e isso foi PROVADO, não suposto
+
+O portão reprovava com *"menos páginas = espremido ou perdido"*. Isso é um
+**proxy**: ele confunde *o idioma é mais curto e a quebra caiu uma página antes*
+com *sumiu receita*. Proxy que reprova o certo treina a ignorar o portão; proxy
+que aprova o errado é pior. O `medir_traducao.py` passou a **exigir a prova**:
+
+- **537 de 537** trechos do módulo `receitas_suco_es` presentes no texto do PDF;
+- a **altura de glifo do corpo idêntica** à do PT (6,1 / 5,9 / 7,6 / 5,5).
+
+Com as duas, a linha vira **observação**; faltando uma string ou mudando a
+fonte, continua **ERRO**. Controle negativo: apagar a receita #13 do PDF acusa
+**35 trechos ausentes**, e um corpo de 11px contra 16px é acusado.
+
+### ⛔⛔ A lente de IMPERIAL VAZADO, que nunca existiu
+
+O `MEDIDA_ERRADA` só pegava sobra de **português** (`xícara`, `colher de`).
+Sobra de **imperial inglês** não tinha lente nenhuma — e o Bônus 3 é justo o
+arquivo onde o EN é imperial de verdade (`3 miles`, `2 quarts`). Eu converti na
+mão e **ninguém estava olhando**: tradução conferida a olho é relato, não
+medição. Entrou `IMPERIAL_VAZADO`, cobrada em todo idioma que não seja o EN.
+⚠️ `foot|feet` fica **fora** de propósito, pelo motivo do parágrafo acima.
+Medido: 15/15 no controle (7 imperiais acusados, 8 textos legítimos passam), e
+**0 achado em DE/FR** — nenhum falso positivo no que já estava entregue.
+
+### ⚠️ A isenção existia num ramo do lint e faltava no outro
+
+`proteína` era ERRO em `exercicios_habitos_es` e não era nas receitas: o ramo
+dos módulos de exercício (`_varrer_texto`) **não recebia o idioma**. Mesma
+família do defeito §7(a) — a regra certa existindo num lugar só.
+
+---
+
 ## 7. ⛔⛔ OS DOIS DEFEITOS QUE ESTA ENTREGA ACHOU — os dois de SUBSTRING
 
 Os dois estavam **vivos** e os dois são a mesma lição do `gleiten`/`leite` que

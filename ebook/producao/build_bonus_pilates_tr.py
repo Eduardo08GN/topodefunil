@@ -156,6 +156,51 @@ TEXTOS = {
  "foto_ph": ('<b>PHOTO %s</b><small>square space reserved<br>'
              '(generate with the prompt and name it "%s")</small>'),
 },
+"es": {
+ # ⛔ Nome de arquivo SEM acento (glossario §3).
+ "arquivo": "Paso 8 - Bono 2 - Pilates para Abdomen Plano.pdf",
+ "titulo": "Bono 2 — Pilates para Abdomen Plano en Casa",
+ "badge": "Bono 2", "h1": "Pilates para Abdomen Plano en Casa",
+ "tag": "Pilates", "num": "Bono · Pilates",
+ "st_nivel": "Nivel", "st_series": "Series", "st_tempo": "Tiempo",
+ "h_foco": "Enfoque", "h_passos": "Cómo hacerlo",
+ "h_resp": "Respiración", "h_dica": "Consejo",
+ "lead": """El Pilates es una forma de ejercicio con movimientos lentos y controlados que
+    fortalece principalmente el <b>centro del cuerpo</b> — la zona de la panza y la espalda.
+    Sin equipo, sin impacto y sin salir de casa, es perfecto para acompañar
+    tu plan de alimentación y acelerar tus resultados. Lo único que necesitas es un tapete o una
+    toalla en el piso.""",
+ "box_h2": "Por qué esto ayuda a adelgazar la panza",
+ "box_itens": ["Fortalece el <b>músculo profundo de la panza</b>, que funciona como una faja natural y mete el abdomen.",
+               "Mejora tu <b>postura</b> — y estar más erguida ya hace que la panza se vea visiblemente más plana.",
+               "Da forma a tu <b>cintura</b> trabajando los músculos laterales.",
+               "Es <b>suave con tus articulaciones</b>: ideal a cualquier edad."],
+ "honest_label": "Una verdad importante",
+ "honest": """Ningún ejercicio quema grasa solo de la panza — eso no existe.
+      La grasa se va de todo el cuerpo, y lo que impulsa esa pérdida es tu
+      <b>alimentación</b>. El Pilates fortalece, da forma y mejora tu postura;
+      junto con las recetas de este libro, es la combinación que de verdad
+      adelgaza la panza. La constancia lo es todo.""",
+ "how": """<b>Cómo usar esto:</b> hazlo <b>3 o 4 veces por semana</b>, de 15 a
+    20 minutos. Usa ropa cómoda, entrena en ayunas o por lo menos
+    1 hora después de comer, y <b>sigue respirando</b> (nunca detengas la respiración).
+    Empieza con las variaciones más fáciles que se dan en cada ejercicio y ve subiendo con
+    el tiempo. Si sientes un dolor agudo, detente.""",
+ "kicker": "Bono 2 · Pilates para Abdomen Plano",
+ "head_h2": "Los 12 ejercicios",
+ "head_p": """Hazlos en orden, respetando la respiración y tu propio límite.
+    Cada ejercicio indica el enfoque, el número de repeticiones, el paso a paso y,
+    cuando la hay, una variación más fácil.""",
+ "plan_h2": "El plan semanal",
+ "plan_p": """Elige 3 o 4 días (por ejemplo <b>lunes, miércoles y viernes</b>) y haz
+      la secuencia completa de los 12 ejercicios en el orden en que aparecen.""",
+ "plan_seq": """El orden es deliberado: empieza con el <b>calentamiento</b> (1 y 2),
+      pasa por los ejercicios de <b>panza</b> (3 al 10), fortalece la <b>espalda</b> (11)
+      y termina con el <b>estiramiento</b> (12). Nunca te saltes el calentamiento ni
+      el estiramiento.""",
+ "foto_ph": ('<b>FOTO %s</b><small>espacio cuadrado reservado<br>'
+             '(generar con el prompt y nombrarla "%s")</small>'),
+},
 }
 
 EXTRA_CSS = """

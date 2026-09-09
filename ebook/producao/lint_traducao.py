@@ -81,6 +81,25 @@ def _isentos_de(tr_nome):
 # medidas que TEM de ter sumido
 MEDIDA_ERRADA = re.compile(r"x[íi]cara|colher(es)? de|\bcol\.\s*(sopa|chá|cha)", re.I)
 
+# ⛔⛔ A LENTE QUE FALTAVA. A `MEDIDA_ERRADA` acima so' pega sobra de
+# PORTUGUES; sobra de IMPERIAL INGLES nunca teve lente nenhuma — e o §6 do
+# glossario diz que o EN e' a UNICA versao imperial do produto, logo todo
+# idioma novo nasce tendo de converter. O buraco apareceu no controle
+# negativo do `exercicios_habitos_es`, justo o modulo onde o EN e' imperial
+# de verdade (`3 miles`, `2 quarts`): eu converti na mao e NINGUEM estava
+# olhando. Traducao conferida a olho e' relato, nao medicao.
+#
+# ⚠️ `foot|feet` fica FORA de proposito: em `knees in line with your feet`
+# sao os pes do corpo, nao a unidade (o DE confirma, `Füße`). Palavra que
+# gera falso positivo em texto legitimo treina o operador a ignorar a lente.
+IMPERIAL_VAZADO = re.compile(
+    r"\b\d[\d.,/ ]*\s*(miles?|inch(es)?|pounds?|lbs?|ounces?|oz|"
+    r"quarts?|gallons?|cups?|tbsps?|tsps?|tablespoons?|teaspoons?)\b", re.I)
+
+
+def _lang_de(tr_nome):
+    return tr_nome.rsplit("_", 1)[-1]
+
 CAMPOS = ["nome", "hook", "tempo", "rende", "kcal_base", "ings", "passos",
           "porcoes8", "dica"]
 TETO_PORCAO = 78   # acusa; a decisao de encurtar e' do operador
@@ -167,6 +186,11 @@ def checar(pt_nome, tr_nome):
         m = MEDIDA_ERRADA.search(texto)
         if m:
             erros.append("%s: medida nao convertida -> %r" % (ref, m.group(0)))
+        if _lang_de(tr_nome) != "en":
+            m = IMPERIAL_VAZADO.search(texto)
+            if m:
+                erros.append("%s: imperial ingles vazado -> %r"
+                             % (ref, m.group(0)))
 
         for j, p in enumerate(b.get("porcoes8", [])):
             if len(p) > TETO_PORCAO:
@@ -208,16 +232,26 @@ def _forma(no, caminho, erros):
                      % (caminho, a, b))
 
 
-def _varrer_texto(no, caminho, erros):
+def _varrer_texto(no, caminho, erros, isentos=frozenset(),
+                  imperial_ok=False):
+    """⛔ `isentos` NAO tem default util: quem chama tem de dizer o idioma.
+    A isencao existia so' no ramo das receitas, e este ramo (pilates/bonus 3)
+    nao a recebia — `proteína` e' identica em pt e es e virava ERRO aqui e
+    nao la'. Mesma familia do defeito §7(a): a regra certa num lugar so'.
+    """
     if isinstance(no, list):
         for i, x in enumerate(no):
-            _varrer_texto(x, "%s[%d]" % (caminho, i), erros)
+            _varrer_texto(x, "%s[%d]" % (caminho, i), erros, isentos,
+                          imperial_ok)
     elif isinstance(no, dict):
         for k, v in no.items():
             if k not in IGNORA:
-                _varrer_texto(v, "%s.%s" % (caminho, k), erros)
+                _varrer_texto(v, "%s.%s" % (caminho, k), erros, isentos,
+                              imperial_ok)
     elif isinstance(no, str):
         for p, rx in zip(PT_SOLTO, _PT_RX):
+            if p in isentos:
+                continue
             m = rx.search(no)
             if m:
                 erros.append("%s: portugues solto -> %r (em %r)"
@@ -225,6 +259,11 @@ def _varrer_texto(no, caminho, erros):
         m = MEDIDA_ERRADA.search(no)
         if m:
             erros.append("%s: medida nao convertida -> %r" % (caminho, m.group(0)))
+        if not imperial_ok:
+            m = IMPERIAL_VAZADO.search(no)
+            if m:
+                erros.append("%s: imperial ingles vazado -> %r"
+                             % (caminho, m.group(0)))
 
 
 def checar_ex(pt_nome, tr_nome, attr):
@@ -236,7 +275,8 @@ def checar_ex(pt_nome, tr_nome, attr):
     erros = []
     _forma((getattr(pt, attr), getattr(tr, attr)), attr, erros)
     if not erros:                      # so' varre texto se a forma bate
-        _varrer_texto(getattr(tr, attr), attr, erros)
+        _varrer_texto(getattr(tr, attr), attr, erros,
+                      _isentos_de(tr_nome), _lang_de(tr_nome) == "en")
     return erros, []
 
 
