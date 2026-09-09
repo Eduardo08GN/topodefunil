@@ -105,9 +105,16 @@ ISENTOS = {"fr": {"Séries"}, "de": set(), "en": set(),
            "es": {"Ingredientes"},
            # ⚠️ O italiano diz "Passo" IGUAL ao portugues — e' a palavra certa
            # dele, nao vazamento. Sem a isencao os 9 arquivos reprovam.
+           # ⚠️ `Rende` idem, e este apareceu MEDIDO: a dica da frittata diz
+           # "Rende parecchio, si conserva bene", que e' italiano corrente
+           # para "rende bastante". ⛔ O preco esta declarado: com a isencao,
+           # um vazamento do ROTULO portugues `Rende` nao seria pego por este
+           # termo. O que o impede e' outra coisa — o rotulo vem de
+           # `I18N["it"]["st_rende"]`, que e' "Per", e os outros 19 termos da
+           # PT_NO_PDF seguem cobrados.
            # ⛔ `Ingredientes` NAO entra: o italiano e' `Ingredienti`, e se um
            # `Ingredientes` aparecer no PDF italiano e' portugues de verdade.
-           "it": {"Passo"}}
+           "it": {"Passo", "Rende"}}
 
 _L = r"A-Za-zÀ-ÖØ-öø-ÿ0-9_"
 
@@ -150,7 +157,21 @@ def _strings(no, saida):
 
 
 def _norm(s):
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s)).strip().lower()
+    """⛔⛔ TODO espaco e' REMOVIDO, nao colapsado.
+
+    Motivo medido: quando o TITULO da receita quebra de linha, o pdfium NAO
+    emite o espaco da quebra. `Frullato di / fragole con yogurt` volta como
+    `Frullato difragole con yogurt`, e `Succo d' / arancia` volta partido.
+    Com espaco colapsado, 6 receitas do Passo 6 italiano apareciam como
+    AUSENTES enquanto estavam todas na pagina — a lente reprovando um PDF
+    correto, que e' o defeito que ela existe para nao cometer.
+
+    ⚠️ O preco: sem espaco, dois trechos vizinhos podem colar e formar um
+    falso positivo de PRESENCA. E' o lado seguro do erro (a lente fica um
+    pouco mais permissiva, nunca mais barulhenta) e o controle negativo
+    cobre o caso que importa: apagar uma receita inteira segue acusado.
+    """
+    return re.sub(r"\s+", "", re.sub(r"<[^>]+>", " ", s)).lower()
 
 
 def _conteudo_faltando(lang, i_arq, texto_pdf):
