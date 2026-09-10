@@ -428,3 +428,34 @@ ocorrência em mais de 60 motores, e ainda na forma negada
 
 Antes de mandar qualquer lote: **takes falados = takes com a cláusula**. Se os
 dois números não baterem, o lote não sai. No ES, medido: **36 de 36**.
+
+---
+
+## 17. ⛔⛔ QUANDO A IMAGE 2 SAI "SUTIL" — as alavancas de reforço (2026-09-10)
+
+As três alavancas da seção 11 (magnitude, medida por objeto, número de tamanho)
+resolveram a Rosa e o Paco. Na Dolores não bastaram: *"a mudança na imagem 2 foi
+muito sutil, preciso que ela esteja mais magra"*.
+
+⭐ **O que se acrescenta, na ordem em que pesa:**
+
+| reforço | forma |
+|---|---|
+| **peso final declarado** | `She now weighs only sixty-four kilos, thirty kilos less than she used to` |
+| **corpo pequeno item por item** | `narrow shoulders, a slender neck, slim thin arms, thin wrists, a narrow waist and slim hips` |
+| **a folga medida como ESPAÇO VAZIO** | `on both sides of her waist there is a wide visible EMPTY GAP between the loose fabric and her narrow body` |
+| **subir o número de tamanhos** | `at least FIVE sizes too big` (era quatro) |
+| **a peça como objeto** | `hangs on her small body like a tent` |
+
+⭐⭐ **O reforço mais forte é o ESPAÇO VAZIO.** `oversized` e `baggy` descrevem a
+roupa; o vazio entre o tecido e o corpo descreve **o corpo**, e é o corpo que
+precisa encolher. É a mesma lógica de medir por objeto, um degrau acima.
+
+⛔ **E nada disso pode virar doença.** Continua proibido `gaunt`, `bony`,
+`tendons`, `sharp cheekbones`. O rosto fica `slim and healthy with good color
+and a clean defined jawline and no double chin at all`.
+
+⚠️ **Sem medição ainda.** Estes reforços entraram no mesmo dia da reclamação e
+o operador ainda não gerou com eles. Se a Dolores sair certa, eles sobem para a
+seção 11 como padrão; se não, o próximo degrau é declarar a altura junto com o
+peso, que é o que dá escala real ao gerador.
