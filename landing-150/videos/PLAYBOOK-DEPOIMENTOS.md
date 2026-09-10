@@ -394,3 +394,37 @@ derrubou na hora. Quando as duas ordens colidirem, vale esta.
 | Paco | sopa |
 | Dolores | sopa de legumes |
 | Mariana | suco de laranja |
+
+---
+
+## 16. ⛔⛔⛔ UMA VOZ SÓ, EM TODO TAKE FALADO (2026-09-10)
+
+Ordem do operador, com o render do take 3 do Paco na mão: *"está saindo uma voz
+de fundo por cima da do narrador, isso deve ser extremamente proibido de
+acontecer, nunca deve haver outra voz"*.
+
+⭐ **A trava, colada antes da frase de fala:**
+
+> `He is the only person in the room and his own voice is the only voice.`
+> `She is the only person in the room and her own voice is the only voice.`
+
+⛔ **Nunca `no other voices`, `no background chatter`, `no crowd`.** Negar injeta
+o token. A defesa é **descrever o ambiente com uma pessoa só**, e não proibir as
+outras. Mesma lei do `not a celebrity`, que custou 112 strings em 30 motores.
+
+⛔ **E a cláusula é de AMBIENTE, não de áudio.** Não escrever `audio`, `track`
+nem `sound`: o prompt do Veo não fala de áudio nunca (seção do repo sobre
+música).
+
+⚠️ **O risco sobe quando a fala cita outra pessoa.** No take do Paco a fala diz
+*"un amigo de la iglesia me enseñó este libro"*, e o gerador pôs o amigo para
+falar junto. Fala que nomeia um terceiro precisa da cláusula com mais razão.
+
+⚠️ **O repo inteiro não tinha essa trava.** A varredura de 2026-09-10 achou UMA
+ocorrência em mais de 60 motores, e ainda na forma negada
+(`corridor with no other voices`, no `ruth16`).
+
+### Gate de entrega
+
+Antes de mandar qualquer lote: **takes falados = takes com a cláusula**. Se os
+dois números não baterem, o lote não sai. No ES, medido: **36 de 36**.
