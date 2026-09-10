@@ -80,6 +80,21 @@ Elas vendem o infoproduto *150 Receitas* (Hotmart) e vivem em **subdomínio
 | **EN** | `https://book.dailyfactreport.site` | `r2cgw8c5j25cq0e89i7lrj7n` | `/bridge-pages/bp-fit-en` |
 | **DE** | `https://book.plainfactsdaily.site` | `qg2mxau3et2gp85kv6mrwdqo` | `/bridge-pages/bp-fit-de` |
 | **FR** | `https://book.thedailyfinding.site` | `v2524bw7z6ho7v22d6xadyz2` | `/bridge-pages/bp-fit-fr` |
+| **ES** | `https://libro.dailyvitalreport.store` | `mm1cvpgf6ltz3h8e1s5n6jzu` | `/bridge-pages/bp-fit-es` |
+| **IT** | `https://libro.everydaydigest.site` | `i13a6g69n1r5jp0yjukjd4mz` | `/bridge-pages/bp-fit-it` |
+
+⭐ **ES e IT usam o subdomínio `libro.`, não `book.`** — ordem do operador ao
+criá-las: *"nos novos escreva book com o idioma deles"*. `libro` serve aos dois.
+
+✅ **Vídeos publicados em 2026-09-10.** As duas nasceram sem NENHUM mp4 na pasta
+`videos/`: a seção de depoimentos apontava para arquivos inexistentes. Entraram
+os 5 de cada, já comprimidos pelo operador e copiados byte a byte.
+⛔ **E o poster passou a sair do próprio vídeo.** As duas nasceram como cópia da
+francesa e pediam `videos/review-N-fr.jpg`, que nem existia nas pastas delas
+(quadro preto no ar). Copiar o francês seria pior: poria uma francesa como
+cartaz de um depoimento espanhol.
+✅ Medido no ar: HTTPS 200 nas duas · `lang=es` / `lang=it` · **18 de 18 assets
+em 200** em cada uma, um a um com HEAD.
 
 ⭐ **Os três domínios são os de nome mais genérico do inventário** (estilo
 jornal, nada que remeta a ED), que é o critério do operador para este produto.
