@@ -467,3 +467,35 @@ and a clean defined jawline and no double chin at all`.
 o operador ainda não gerou com eles. Se a Dolores sair certa, eles sobem para a
 seção 11 como padrão; se não, o próximo degrau é declarar a altura junto com o
 peso, que é o que dá escala real ao gerador.
+
+---
+
+## 18. ⭐⭐ NA IMAGE 3 A REGRA SE INVERTE: ali `same woman` é OBRIGATÓRIO (2026-09-10)
+
+A seção 12 proíbe abrir a **IMAGE 2** com `Same woman`. ⛔ Essa proibição vale
+só para a IMAGE 2, e o motivo é a referência: a IMAGE 2 nasce da **IMAGE 1**,
+que é o corpo gordo, então `same woman` arrasta o corpo junto.
+
+⭐ **A IMAGE 3 nasce da IMAGE 2, que já é o corpo magro e aprovado.** Ali a
+âncora não traz defeito nenhum, traz continuidade, e é o que faltava: *"a imagem
+3 precisa ser gerada com base nessa como referência de rosto, não está nada
+parecida o rosto do resultado"* (operador, 2026-09-10).
+
+| gerando | a partir de | `same woman` |
+|---|---|---|
+| IMAGE 2 | IMAGE 1 (gorda) | ⛔ **proibido** |
+| IMAGE 3 | IMAGE 2 (magra, aprovada) | ⭐ **obrigatório** |
+| TAKEs falados | IMAGE 3 | ⭐ **obrigatório** |
+
+### ⛔ E a âncora de rosto tem de ser LONGA e ESPECÍFICA
+
+`same face` sozinho não segura. O que segura é a ficha inteira lida **da imagem
+aprovada**: formato do cabelo, linhas de expressão nomeadas uma a uma (pés de
+galinha, sulcos do nariz à boca), cor dos olhos, formato do nariz, formato das
+bochechas, o sorriso mostrando ou não os dentes, os brincos e **os óculos com o
+jeito exato como estão** (na cara ou pendurados na correntinha).
+
+⚠️ **Acessório que muda de lugar quebra o reconhecimento.** Os óculos da Dolores
+estão pendurados numa correntinha na IMAGE 2; a IMAGE 3 mantém pendurados. Se a
+ocasião pedir os óculos no rosto, isso é decisão do operador, não conveniência
+minha.
