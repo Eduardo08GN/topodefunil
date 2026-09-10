@@ -545,3 +545,53 @@ entregar sem engordar a barriga em relação aos ombros.
 
 ⚠️ **Sem medição ainda.** Aplicado no Sergio (IT 3) no mesmo dia da reclamação.
 Se sair certo, os outros que ainda não foram gerados adotam de uma vez.
+
+---
+
+## 20. ⭐⭐ A BARRIGA SE MATA COM GEOMETRIA, NÃO COM ADJETIVO (2026-09-10)
+
+O ângulo da seção 19 resolveu o enquadramento e **não** resolveu a barriga:
+*"a imagem 2 ainda tem muita barriga, é pra ser barriga chapada"*.
+
+⚠️ **O render denunciou a causa: a camisa saiu JUSTA.** Ela devia estar cinco
+tamanhos grande e caindo como tenda, e apareceu colada no corpo. Os dois
+defeitos juntos dizem a mesma coisa: **a IMAGE 1, usada como referência, estava
+vencendo o texto inteiro.** Adjetivo de corpo (`very slim`, `small-framed`) não
+disputa com uma silhueta que já está na entrada.
+
+### ⭐⭐ O que disputa é GEOMETRIA
+
+A primeira frase deixa de descrever uma pessoa e passa a descrever uma **linha**:
+
+> `A THIN man. Seen from the side, the front line of his torso is PERFECTLY
+> STRAIGHT AND VERTICAL from his chest all the way down to his hips, like a flat
+> board.`
+
+⭐ **Linha reta não é opinião.** `slim` admite graus e o gerador entrega o menor
+deles; uma reta vertical do peito ao quadril não admite barriga nenhuma.
+
+### ⭐ E a ROUPA também vira geometria
+
+O que prova a folga não é `oversized`, é o **vão medido**:
+
+| |
+|---|
+| `does not touch his body anywhere below the chest` |
+| `it hangs from his shoulders and falls STRAIGHT DOWN like a curtain` |
+| `its side seams hanging out well beyond the width of his waist` |
+| `daylight visible in the open gap between the fabric and his body` |
+
+⭐⭐ **`daylight visible in the gap` é a mais forte.** Ela obriga o gerador a
+desenhar fundo entre o tecido e o corpo, e fundo entre os dois só existe se
+houver espaço vazio ali. É a mesma família do `EMPTY GAP` da seção 17, um degrau
+acima: sai do vocabulário de roupa e entra no de luz.
+
+⛔ **`ZERO roundness`** entra ao lado de `ZERO folds` e `ZERO rolls`: dobra e
+rolo são pele, e o que sobrava era **volume**.
+
+### ⚠️ Se ainda assim vier barriga
+
+O degrau seguinte não é mais texto, é **tirar a IMAGE 1 da referência**: gerar a
+IMAGE 2 só a partir do texto, com a ficha de rosto completa, e aceitar a deriva
+de rosto. A IMAGE 3 continua saindo da IMAGE 2, como manda a seção 18, então a
+continuidade do vídeo falado fica preservada de qualquer jeito.
