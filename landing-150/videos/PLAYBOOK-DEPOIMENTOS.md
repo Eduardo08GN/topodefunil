@@ -366,3 +366,31 @@ motores. O que não pode existir é **dedo levantado no ar sem alvo**.
 `He raises one finger gently`. O verbatim dele fica como está, porque é o
 registro do que ele escreveu. ⛔ Mas **não se copia esse pedaço**: ao modelar um
 review novo a partir da seção 10, esse gesto é substituído pela tabela acima.
+
+---
+
+## 15. ⛔⛔ OS DOIS TAKES MUDOS SÃO SEMPRE A RECEITA SENDO COMIDA (2026-09-10)
+
+Ordem do operador: *"os 2 takes precisa ser ele comendo a sopa, sempre comendo a
+receita"*.
+
+| take | ação |
+|---|---|
+| **TAKE 1** (antes) | colher ou copo à boca, gole **triste e relutante**, olhos baixos, ombros pesados |
+| **TAKE 2** (depois) | a **mesma** colher ou copo à boca, gole **alegre**, sorriso orgulhoso para a câmera |
+
+⭐ **Muda o ESTADO, nunca a AÇÃO.** Mesma comida, mesma louça, mesma bancada,
+mesma pegada. A prova do emagrecimento não precisa de gesto próprio: a camisa
+enorme já está em quadro enquanto ele come.
+
+⛔ **Isso substitui a ordem anterior da camiseta puxada.** Eu havia trocado o
+TAKE 2 do Paco por ele puxando o tecido da cintura para mostrar a folga, e ele
+derrubou na hora. Quando as duas ordens colidirem, vale esta.
+
+| personagem | a receita em quadro |
+|---|---|
+| Carmen | suco verde |
+| Rosa | suco vermelho |
+| Paco | sopa |
+| Dolores | sopa de legumes |
+| Mariana | suco de laranja |
