@@ -512,6 +512,26 @@ mais gordo e na 2 mais magro"*.
 frente da barriga.** O prompt descrevia uma barriga enorme que o enquadramento
 escondia. **Nenhum adjetivo conserta um móvel na frente do corpo.**
 
+### ⛔⛔ MAS SÓ NO HOMEM (correção do operador, mesmo dia)
+
+> *"não precisa fazer a personagem de lado, respeite o original, isso era só
+> para o homem."*
+
+⛔ **As quatro mulheres ficam de FRENTE, no enquadramento original.** O ângulo
+de três quartos vale apenas no review 3 (o homem). Ao aplicar esta seção,
+conferir de quem é o personagem antes.
+
+⭐ **A geometria da seção 20 não se perde, só troca de eixo.** De frente a prova
+não é a linha do perfil, é a **LARGURA**:
+
+| de lado (o homem) | de frente (as mulheres) |
+|---|---|
+| `the front line of his torso is PERFECTLY STRAIGHT AND VERTICAL from his chest down to his hips` | `her torso is NARROW and STRAIGHT-SIDED: the outline of her body runs straight down from her armpits to her hips with no outward curve at the waist` |
+| `daylight visible in the open gap between the fabric and his body` | o mesmo, **dos DOIS lados**: `its side seams hanging out well beyond the width of her waist on BOTH sides` |
+
+⭐ De frente o vão de luz aparece **duas vezes**, um de cada lado da cintura, e
+por isso a frase precisa dizer `on both sides`. É a mesma prova, dobrada.
+
 ### ⭐ O conserto é de CÂMERA
 
 | | |
