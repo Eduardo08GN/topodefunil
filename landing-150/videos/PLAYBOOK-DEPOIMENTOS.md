@@ -408,6 +408,14 @@ acontecer, nunca deve haver outra voz"*.
 > `He is the only person in the room and his own voice is the only voice.`
 > `She is the only person in the room and her own voice is the only voice.`
 
+⛔⛔ **E a cláusula nomeia O LUGAR REAL da cena, nunca `the room` por reflexo.**
+`in the room` numa varanda ou num parquinho não descreve nada, e não trava nada.
+A Dolores fala numa **varanda** (`the only person on the porch`) e a Mariana
+num **parquinho** (`the only person in the playground`) — e o parquinho é
+exatamente o lugar onde vozes ao fundo são o padrão do mundo, então é lá que a
+cláusula mais precisa morder. Medido no ES: 21 `in the room`, 8 `on the porch`,
+7 `in the playground`.
+
 ⛔ **Nunca `no other voices`, `no background chatter`, `no crowd`.** Negar injeta
 o token. A defesa é **descrever o ambiente com uma pessoa só**, e não proibir as
 outras. Mesma lei do `not a celebrity`, que custou 112 strings em 30 motores.
