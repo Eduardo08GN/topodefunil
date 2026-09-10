@@ -6,7 +6,7 @@ versao menor. Assim o layout, a paginacao e o texto ficam BYTE a byte iguais —
 o unico que muda e' o pixel da foto. Regerar o PT (que ja' vende) para encolher
 foto seria arriscar o produto por um motivo que nao exige risco.
 
-Uso:  python comprimir_entregavel.py <PT|EN|DE|FR|todos> [--lado 640] [--q 80] [--dry-run]
+Uso:  python comprimir_entregavel.py <PT|EN|DE|FR|ES|IT|todos> [--lado 640] [--q 80] [--dry-run]
 """
 import io
 import os
@@ -22,7 +22,7 @@ except Exception:
     pass
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-IDIOMAS = ("PT", "EN", "DE", "FR")
+IDIOMAS = ("PT", "EN", "DE", "FR", "ES", "IT")
 
 
 def _recomprime(im_obj, lado, q):
