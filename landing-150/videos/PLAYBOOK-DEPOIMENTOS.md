@@ -499,3 +499,49 @@ jeito exato como estão** (na cara ou pendurados na correntinha).
 estão pendurados numa correntinha na IMAGE 2; a IMAGE 3 mantém pendurados. Se a
 ocasião pedir os óculos no rosto, isso é decisão do operador, não conveniência
 minha.
+
+---
+
+## 19. ⛔⛔⛔ O ÂNGULO É QUE PROVA A BARRIGA, NÃO O ADJETIVO (2026-09-10)
+
+Ordem do operador: *"não gostei do antes e depois dessas imagens 1 e 2, preciso
+de um ângulo que mostre mais a circunferência da barriga e que a imagem 1 esteja
+mais gordo e na 2 mais magro"*.
+
+⛔ **A causa raiz: a pessoa estava SENTADA À MESA, e a mesa ficava exatamente na
+frente da barriga.** O prompt descrevia uma barriga enorme que o enquadramento
+escondia. **Nenhum adjetivo conserta um móvel na frente do corpo.**
+
+### ⭐ O conserto é de CÂMERA
+
+| | |
+|---|---|
+| pose | **em pé**, nunca sentado à mesa |
+| ângulo | virado **45 graus**, três quartos, para o torso aparecer em **silhueta** |
+| fundo | parede clara atrás, para a silhueta recortar |
+| a comida | no **balcão ao lado, na altura do quadril**, nunca numa mesa na frente |
+| a lente | `Nothing stands between his body and the lens` |
+| altura | `photographed by someone else at chest height` |
+
+⚠️ **Câmera na altura do peito importa.** De cima a barriga some em escorço; de
+baixo ela cresce em qualquer corpo e o depois fica falso.
+
+### ⭐ E os dois extremos passam a falar em SILHUETA
+
+| | antes | depois |
+|---|---|---|
+| peso | **declarado nos DOIS**: `He weighs one hundred and thirteen kilos` | `only eighty-two kilos, THIRTY-ONE KILOS LESS` |
+| barriga | `the widest part of his whole body`, `pushes out far in front of him`, `clearly visible in profile` | `HIS BELLY IS COMPLETELY GONE`, `seen in profile his torso runs straight down from his chest with no curve at all` |
+| cintura | (não se diz) | `NARROWER than his chest` |
+| tecido | `stretched so tight that the checked pattern is pulled apart and distorted over it` | `a wide visible EMPTY GAP of air between the loose hanging fabric and his flat stomach` |
+
+⭐⭐ **Declarar o peso do ANTES é novo.** Até aqui só o depois tinha número, e
+número só de um lado dá escala só de um lado. Os dois lados com quilo declarado
+é o que transforma a diferença em medida.
+
+⭐ **`the widest part of his whole body`** faz o trabalho que `enormous belly`
+não fazia: é uma comparação **interna ao corpo**, e o gerador não tem como
+entregar sem engordar a barriga em relação aos ombros.
+
+⚠️ **Sem medição ainda.** Aplicado no Sergio (IT 3) no mesmo dia da reclamação.
+Se sair certo, os outros que ainda não foram gerados adotam de uma vez.
