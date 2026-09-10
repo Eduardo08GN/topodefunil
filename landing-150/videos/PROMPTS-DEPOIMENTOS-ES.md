@@ -89,7 +89,7 @@ TAKE 3: Same man, same salt-and-pepper hair, same mustache, same brown skin, sam
 
 TAKE 4: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. He gives a single slow nod, his open right hand resting flat on the arm of the chair. He speaks directly into the camera. Dialogue: "Uno antes de dormir, cada noche. Solo eso ya cambió cómo dormía y cómo me sentía en la mañana."
 
-TAKE 5: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. He leans forward slightly, gesturing with one hand. He speaks directly into the camera. Dialogue: "Después agregué los desayunos, después las cenas. Nunca cociné nada que tardara más de veinte minutos."
+TAKE 5: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. He leans forward slightly, gesturing with his open right hand, all fingers together. He speaks directly into the camera. Dialogue: "Después agregué los desayunos, después las cenas. Nunca cociné nada que tardara más de veinte minutos."
 
 TAKE 6: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. He tilts his head, a look of quiet wonder. He speaks directly into the camera. Dialogue: "El peso siguió bajando, como si mi cuerpo hubiera estado esperando que alguien lo alimentara bien. Treinta y un kilos."
 
