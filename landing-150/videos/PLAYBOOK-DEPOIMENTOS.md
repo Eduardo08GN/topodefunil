@@ -294,3 +294,41 @@ quem senta. O que tem de estar escrito, explícito:
 
 ⚠️ O `even while seated` importa: sentado, qualquer torso dobra. Se a pessoa
 está sentada na cena, a frase precisa estar lá, senão a dobra volta.
+
+---
+
+## 13. ⛔⛔⛔ A DURAÇÃO DO TAKE É DECISÃO DO OPERADOR (2026-09-10)
+
+Ordem literal: *"nunca mais aumentar ou diminuir o tempo de diálogo sem
+autorização por conta própria"*.
+
+⛔ Não subir de 6s para 8s "por segurança". Não descer de 8s para 6s porque a
+fala é curta. ⛔⛔ **Não quebrar um take em dois** porque a conta disse que não
+cabe, e não juntar dois em um.
+
+⭐ **A conta de sílabas é sugestão, não decisão.** Ela se apresenta com o número
+na mão, numa tabela que ele confere, e espera resposta. `Contei 50 sílabas neste
+take, dá 10,6s a 4,7 sílabas por segundo. Quer que eu quebre em dois?`
+
+### ⛔ E não somar margem duas vezes
+
+**4,7 sílabas por segundo é o ritmo REAL da fala**, não um teto com folga
+embutida. Somar mais 10% em cima dele foi o que transformou uma copy de **7
+takes em 12** no review 2 espanhol, com todas as durações infladas. Ele pegou na
+primeira leitura: *"não sei por que você criou tantos takes e está considerando
+um tempo tão alto"*.
+
+| take do review 2 | sílabas | ritmo em 8s |
+|---|---|---|
+| 2 | 38 | 4,8/s |
+| 4 | 35 | 4,4/s |
+| 6 | 37 | 4,6/s |
+
+Os três cabem inteiros. A conta com margem dupla dizia que não.
+
+### ⚠️ Errou assim? Recalibrar o lote, não o review
+
+Não sair corrigindo review a review. Perguntar quantas sílabas ele já viu caber
+num take de 8s na prática, e refazer os cinco de uma vez com o número dele.
+
+⛔ **O que continua valendo sem exceção: jamais encurtar a fala.** A copy é dele.
