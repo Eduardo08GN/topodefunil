@@ -527,19 +527,45 @@ def zerar_audio(inp, out):
 
 
 def _fim_takes_mudos(durs, mudos, dur_final):
-    """Em que segundo do video PRONTO termina o ultimo take MUDO.
+    """⛔ APOSENTADA em 2026-09-09 — nao ha' chamador. Ficou como lapide.
 
-    ⭐ 2026-08-21: deixou de ser "todos menos o ultimo" (palpite) e passou a
-    usar a DETECCAO de audio real (`e_mudo`) — a musica cobre exatamente os
-    takes que nasceram mudos, seja qual for a quantidade deles.
-    ⚠️ Continua proporcional porque a velocidade e o zoom reescalam o video
-    inteiro DEPOIS; mas a base agora e' a duracao ja' tratada, nao a bruta.
+    Ela devolvia None quando nao havia take mudo, e era ESSE None que fazia a
+    musica escolhida no combobox nao tocar em video nenhum. Quem decide o
+    escopo hoje e' `escopo_da_musica`, que nunca devolve "nada a fazer" so'
+    porque o lote nao tem card mudo. Mexer aqui nao muda um unico video.
     """
     if not any(mudos) or not dur_final or not sum(durs):
         return None
     # ultimo indice mudo (contiguo do inicio e' o caso normal, mas nao exigimos)
     ult = max(i for i, m in enumerate(mudos) if m)
     return (sum(durs[:ult + 1]) / sum(durs)) * dur_final
+
+
+def escopo_da_musica(durs, mudos, dur_final):
+    """⛔⛔ ATE' ONDE A MUSICA VAI, e com que ganho. Devolve `(fim, ganho)`
+    ou `(None, None)` quando nao ha' nada a cobrir.
+
+    ⛔ O DEFEITO QUE ISTO CONSERTA (2026-09-09): a musica so' existia se
+    houvesse take MUDO. O rodape do operador estava em `takes mudos = 0` —
+    declaracao legitima, o lote dele nao tem card mudo — e o resultado era a
+    musica escolhida no combobox **nao tocar em video nenhum**, com um log de
+    uma linha e mais nada. Botao que promete e entrega silencio.
+
+    ⭐ O caminho do take mudo NAO mudou: havendo mudo, a musica cobre
+    exatamente ate' o fim do ultimo mudo, no volume cheio, como desde 21/08.
+    ⭐ O que nasceu e' o FALLBACK: sem nenhum take mudo, ela cobre os dois
+    primeiros takes (*"deveria tocar no um e no dois"*, ordem do operador) e
+    entra abafada, porque ali embaixo tem fala.
+    ⚠️ Video de UM take so': cobre o video inteiro, senao o fallback nao
+    teria onde cair.
+    """
+    if not dur_final or not sum(durs):
+        return None, None
+    if any(mudos):
+        ult = max(i for i, m in enumerate(mudos) if m)
+        return (sum(durs[:ult + 1]) / sum(durs)) * dur_final, 1.0
+    ate = min(2, len(durs))
+    return (sum(durs[:ate]) / sum(durs)) * dur_final, GANHO_SOB_FALA
 
 
 def limpar_metadados(video):
@@ -558,25 +584,39 @@ def limpar_metadados(video):
     return video
 
 
-def mixar_musica(inp, musica, fim, out):
+# ⭐ GANHO DA MUSICA QUANDO ELA CORRE POR CIMA DE FALA (2026-09-09).
+# Sobre take MUDO a musica vai inteira (ganho 1.0): nao ha' o que abafar.
+# Sobre take COM FALA ela e' cama, nao trilha — a 1.0 o `amix` com
+# `normalize=0` soma os dois no mesmo nivel e a fala some por baixo.
+# 0.18 ≈ -15 dB, a faixa usual de musica sob locucao.
+GANHO_SOB_FALA = 0.10
+
+
+def mixar_musica(inp, musica, fim, out, ganho=1.0):
     """Mistura a musica por cima do audio de 0 ate `fim` segundos, com fade-out
     de 0,5s para nao estalar no corte.
 
     ⛔ Roda DEPOIS da legenda queimada e o video e' COPIADO (`-c:v copy`):
     musica nao encosta em quadro nenhum, e reencodar aqui so' somaria perda
     numa cadeia que ja' reencoda tres vezes.
-    ⭐ Se a musica for mais curta que o trecho, ela simplesmente acaba (o
-    atrim nao estica); se for mais longa, o atrim corta no `fim` exato — que
-    e' o "cortada automaticamente caso os takes fiquem mais curtos" da ordem.
+    ⭐⭐ A MUSICA AGORA REPETE ATE' COBRIR O TRECHO (`-stream_loop -1`).
+    Ate' 2026-09-09 ela "simplesmente acabava" se fosse mais curta — decisao
+    declarada, e que a medicao derrubou: a unica musica na pasta do operador
+    tem **6,5s** e o trecho dos dois primeiros takes passa de 15s, entao em
+    todo video ela morria no meio do take 1 e o resto saia mudo. O `atrim`
+    continua cortando no `fim` exato, e o fade-out continua fechando.
     ⚠️ `normalize=0` no amix: sem ele o filtro derruba o volume dos dois lados
-    pela metade e a fala do take final sai baixa.
+    pela metade e a fala do take final sai baixa. E' por isso que o abafamento
+    sob fala e' explicito, no `volume` — ver GANHO_SOB_FALA.
     """
     fade_ini = max(0.0, fim - 0.5)
     fc = (f"[1:a]atrim=0:{fim:.3f},asetpts=PTS-STARTPTS,"
+          f"volume={ganho:.3f},"
           f"afade=t=out:st={fade_ini:.3f}:d=0.5[m];"
           f"[0:a][m]amix=inputs=2:duration=first:"
           f"dropout_transition=0:normalize=0[a]")
-    _run([FFMPEG, "-y", "-i", os.path.abspath(inp), "-i", os.path.abspath(musica),
+    _run([FFMPEG, "-y", "-i", os.path.abspath(inp),
+          "-stream_loop", "-1", "-i", os.path.abspath(musica),
           "-filter_complex", fc, "-map", "0:v", "-map", "[a]",
           "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", os.path.abspath(out)])
     return out
@@ -861,19 +901,25 @@ def processar_video(takes, out_final, model="base", lang="en",
         # entra por cima do audio do inicio ate o fim do penultimo take,
         # cortada no tamanho exato do trecho ja' editado.
         if musica and os.path.isfile(musica):
-            fim = _fim_takes_mudos(durs, mudos, dur_final)
+            fim, ganho = escopo_da_musica(durs, mudos, dur_final)
             if fim and fim > 0.6:
+                dur_mus = duracao(musica) or 0
+                voltas = ("" if dur_mus >= fim - 0.05 or not dur_mus
+                          else ", repetindo (a musica tem %.1fs)" % dur_mus)
+                onde = ("cobre %d take mudo(s)" % sum(mudos) if any(mudos)
+                        else "sem take mudo: cobre os %d primeiros take(s), "
+                             "abafada a %.0f%% por causa da fala"
+                             % (min(2, len(durs)), ganho * 100))
                 log(f"  musica: {os.path.basename(musica)} ate {fim:.1f}s "
-                    f"(cobre {sum(mudos)} take mudo(s))...")
+                    f"({onde}{voltas})...")
                 com_musica = os.path.join(work, "06_musica.mp4")
-                mixar_musica(out_final, musica, fim, com_musica)
+                mixar_musica(out_final, musica, fim, com_musica, ganho)
                 shutil.move(com_musica, out_final)
             else:
-                # ⚠️ a mensagem antiga dizia *"video de 1 take so'"* e mentia:
-                # o lote real tinha 4 takes e nenhum reconhecido como mudo.
-                # Log que da' o diagnostico errado custa mais que log nenhum.
-                log("  musica: nenhum take mudo reconhecido — nada a cobrir, "
-                    "pulando (seletor `takes mudos` no rodape resolve)")
+                # ⚠️ a mensagem antiga dizia *"video de 1 take so'"* e mentia.
+                # Hoje so' se cai aqui com video sem duracao — a ausencia de
+                # take mudo deixou de ser motivo para pular.
+                log("  musica: video sem duracao utilizavel — pulando")
         log("  limpando metadados Veo3...")
         limpar_metadados(out_final)
         log(f"  OK -> {out_final}")

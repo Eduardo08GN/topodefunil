@@ -30,7 +30,7 @@ GIF_TRABALHANDO = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 # em tres: o quarto video nao tinha onde entrar.
 # ⛔ Este numero e' o UNICO teto do editor. Todo o resto da cadeia ja' e'
 # generico em quantidade de take — `preparar_takes` percorre a lista inteira,
-# `concat` junta N, `_fim_takes_mudos` acha o ultimo mudo por DETECCAO de audio
+# `concat` junta N, `escopo_da_musica` decide ate' onde a musica vai,
 # e `_inicio_take2` trabalha em proporcao. Medido em 21/08 com um lote sintetico
 # de 4 takes (2 mudos + 2 com som): os quatro chegam ao arquivo final.
 # ⚠️ Subir de novo (5, 6...) e' trocar este numero e mais nada NO PIPELINE.
@@ -663,9 +663,14 @@ class App(tk.Tk):
         self.cb_margem.pack(side="left", padx=(8, 4))
         self.cb_margem.bind("<<ComboboxSelected>>", self._cfg)
         _sep(rodape)                       # fim de CORTE
-        # ⭐ MUSICA dos takes mudos (2026-08-21, pedido para o AMISH 16S):
-        # toca do inicio ate' o fim do penultimo take, cortada no tamanho do
-        # trecho ja' editado. `travar` mantem a escolha entre sessoes.
+        # ⭐ MUSICA (2026-08-21 para o AMISH 16S; escopo corrigido em 09/09).
+        # ⛔ Ate' 09/09 ela SO' existia se houvesse take mudo: com `takes
+        # mudos = 0` no rodape a musica escolhida aqui nao tocava em video
+        # nenhum, e o unico sinal era uma linha no log. Hoje: havendo take
+        # mudo, ela cobre os mudos no volume cheio; nao havendo, cobre os
+        # DOIS primeiros takes abafada 20 dB, para nao comer a fala.
+        # ⭐ E ela REPETE ate' cobrir o trecho — a musica da pasta tem 6,5s
+        # e morria no meio do take 1. `travar` mantem a escolha entre sessoes.
         tk.Label(rodape, text="musica", bg=BG, fg=DIM, font=FT).pack(side="left")
         self.cb_musica = ttk.Combobox(rodape, style="Eddie.TCombobox", width=22,
                                       state="readonly", font=FT,
