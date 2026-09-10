@@ -332,3 +332,37 @@ Não sair corrigindo review a review. Perguntar quantas sílabas ele já viu cab
 num take de 8s na prática, e refazer os cinco de uma vez com o número dele.
 
 ⛔ **O que continua valendo sem exceção: jamais encurtar a fala.** A copy é dele.
+
+---
+
+## 14. ⛔⛔⛔ NENHUM DEDO ISOLADO, NUNCA (2026-09-10)
+
+Ordem do operador, com o render na mão: *"A mulher está mostrando o dedo do meio
+no take 2, isso não é a primeira vez que acontece, pare de gerar prompts que
+façam esse gesto."*
+
+⛔ **A causa é sempre a mesma: o prompt levanta um dedo e não diz qual.** O
+gerador escolhe, e já escolheu o do meio mais de uma vez.
+
+| ⛔ proibido | por quê |
+|---|---|
+| `counts off on her fingers` | contar deixa o gerador escolher os dedos, um a um |
+| `raises one finger` · `holds up one finger` | `one finger` não é dedo nenhum em particular |
+| `lifts a finger` · `with one finger` | mesma coisa |
+
+### ⭐ O QUE ENTRA NO LUGAR
+
+| intenção | gesto seguro |
+|---|---|
+| listar, enumerar | **mão aberta, palma para cima, todos os dedos juntos**, balançando de leve |
+| enfatizar "um" | a palavra já diz `um` na fala. O gesto vira **um aceno de cabeça** |
+| negar | **cabeça balançando**, mãos abertas ao lado do corpo |
+| apontar para um objeto | `index finger`, **nomeado**, e com o alvo dito na mesma frase |
+
+⭐ **Dedo nomeado apontando para um objeto é seguro** e o repo usa em dezenas de
+motores. O que não pode existir é **dedo levantado no ar sem alvo**.
+
+⚠️ **E a frase entrou aqui pelo prompt original do Frank**, na seção 10, que traz
+`He raises one finger gently`. O verbatim dele fica como está, porque é o
+registro do que ele escreveu. ⛔ Mas **não se copia esse pedaço**: ao modelar um
+review novo a partir da seção 10, esse gesto é substituído pela tabela acima.

@@ -51,7 +51,7 @@ IMAGE 3: A slim and athletic Mexican woman of sixty with short cropped white hai
 
 TAKE 1 (6s): Same woman, same short cropped white hair, same warm light brown skin, same dark brown eyes behind same round gold-rimmed glasses, slim and toned, wearing the same fitted black cropped tank top and same dark gray leggings. She stands in the same bright living room with the same beige sofa behind her, one hand on her hip. She looks straight at the camera, chin lifted. She speaks directly into the camera. Dialogue: "Tengo sesenta años y ya lo había intentado todo."
 
-TAKE 2 (8s): Same woman, same white cropped hair, same light brown skin, same round gold-rimmed glasses, same black cropped tank top and same gray leggings, same living room, same beige sofa. She counts off on her fingers with a wry look. She speaks directly into the camera. Dialogue: "Puntos, keto, esos batidos que saben a yeso. Bajaba cuatro kilos y subía siete, cada vez, durante veinte años."
+TAKE 2 (8s): Same woman, same white cropped hair, same light brown skin, same round gold-rimmed glasses, same black cropped tank top and same gray leggings, same living room, same beige sofa. She turns one open palm upward, all fingers together, and tips her hand side to side with a wry look. She speaks directly into the camera. Dialogue: "Puntos, keto, esos batidos que saben a yeso. Bajaba cuatro kilos y subía siete, cada vez, durante veinte años."
 
 TAKE 3 (6s): Same woman, same white cropped hair, same light brown skin, same round gold-rimmed glasses, same black cropped tank top and same gray leggings, same living room, same beige sofa. She shrugs one shoulder, almost embarrassed. She speaks directly into the camera. Dialogue: "Este libro costaba diez dólares. Casi no lo compro."
 
@@ -87,7 +87,7 @@ TAKE 2: Same man, same salt-and-pepper hair, same mustache, same brown skin, sam
 
 TAKE 3: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. His expression softens slightly, a small nod. He speaks directly into the camera. Dialogue: "Un amigo de la iglesia me enseñó este libro en su celular. Empecé por los tés, porque eran lo más fácil."
 
-TAKE 4: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. He raises one finger gently. He speaks directly into the camera. Dialogue: "Uno antes de dormir, cada noche. Solo eso ya cambió cómo dormía y cómo me sentía en la mañana."
+TAKE 4: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. He gives a single slow nod, his open right hand resting flat on the arm of the chair. He speaks directly into the camera. Dialogue: "Uno antes de dormir, cada noche. Solo eso ya cambió cómo dormía y cómo me sentía en la mañana."
 
 TAKE 5: Same man, same salt-and-pepper hair, same mustache, same brown skin, same tortoiseshell glasses, same navy polo and dark jeans, same brown leather armchair, same living room. He leans forward slightly, gesturing with one hand. He speaks directly into the camera. Dialogue: "Después agregué los desayunos, después las cenas. Nunca cociné nada que tardara más de veinte minutos."
 
@@ -153,7 +153,7 @@ TAKE 4: Same woman, same long loose dark brown hair, same warm brown skin, same 
 
 TAKE 5: Same woman, same long loose dark brown hair, same warm brown skin, same white v-neck t-shirt and olive green trousers, same park, same playground behind her. She presses a hand to her chest, sincere. She speaks directly into the camera. Dialogue: "Las comidas me salvaron. Treinta minutos, comida de verdad, y mis hijos comían lo mismo que yo."
 
-TAKE 6: Same woman, same long loose dark brown hair, same warm brown skin, same white v-neck t-shirt and olive green trousers, same park, same playground behind her. She holds up one finger, grinning. She speaks directly into the camera. Dialogue: "Ya no cocinaba dos veces. Cocinaba una sola y todos quedaban contentos. Treinta y ocho kilos en ocho meses."
+TAKE 6: Same woman, same long loose dark brown hair, same warm brown skin, same white v-neck t-shirt and olive green trousers, same park, same playground behind her. She shakes her head once, grinning, both hands open at her sides. She speaks directly into the camera. Dialogue: "Ya no cocinaba dos veces. Cocinaba una sola y todos quedaban contentos. Treinta y ocho kilos en ocho meses."
 
 TAKE 7: A slim athletic woman of about forty with long loose dark brown hair, warm brown Mexican skin, dark brown eyes, small gold hoop earrings, a small beauty mark on her left jaw and a warm open smile. She wears a fitted white v-neck t-shirt and olive green trousers. She stands on green grass in a neighborhood park with a playground blurred behind her, laughing with pride at the end of the line. She speaks directly into the camera. Dialogue: "Pasé de talla extra grande a talla chica. El sábado pasado corrí tras los tres en el parque y no fui yo la que se cansó primero."
 ```
