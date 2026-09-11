@@ -1,0 +1,152 @@
+-------------------Dados de acesso----------------------------------
+
+ORD-MSJH94U8 | Perfil CA 1 | 07 de ago. de 2026 
+
+
+
+Nome do perfil: Isis Alberto
+
+Gênero: feminino
+
+Aniversário: 2000-02-03
+Link perfil: https://www.facebook.com/profile.php?id=61570702818075
+
+Mockup Doc Perfil: https://fbflix.com.br/ferramentas
+
+ID: 61570702818075
+E-mail: frankhackett2759@hotmail.com
+Senha FB: NTPJxVJNycB3wv
+Senha E-mail: FRFUNHrrf5334
+
+Token: AE2H TQND BREX NP5O NTDD EACG IKKH UGJW
+
+E-mail alternativo: —
+
+Site para gerar os códigos com o Token :https://fbflix.com.br/2fa
+----------------------------Acesso login-------------------------------------
+
+ (Logue via cookie ou usando o id ou e-mail conforme o tutorial)
+
+
+Cookies:
+[
+  {
+    "name": "datr",
+    "value": "lQIwanNprA-X_mL3kadXT7wj",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1816091284.497074,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "sb",
+    "value": "lQIwagCFUw9N4omexHagdmwT",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1816091302.83895,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "c_user",
+    "value": "61570702818075",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1816115111.305051,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "ps_l",
+    "value": "1",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1816091304.040897,
+    "sameSite": "lax"
+  },
+  {
+    "name": "ps_n",
+    "value": "1",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1816091304.041078,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "fr",
+    "value": "1RCFW0DSxvo16BL9a.AWfnIcBn6Bk4mSpbMuSU8M9XTGA9LTj-Xlql8wOLFvouTGlp3U8.BqXoQn..AAA.0.0.BqXoQn.AWeownrHtaaM_vAHD7JdBGCqP0E",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1792355111.30546,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "xs",
+    "value": "8%3A8RuQ-5_WT501UA%3A2%3A1781531299%3A-1%3A-1%3A%3AAcwmv8gPpVcbPdE4YEbvMWJgbtnASXermOAvK2d57g",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1816115111.305695,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "wd",
+    "value": "1324x747",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1785184181,
+    "sameSite": "lax"
+  },
+  {
+    "name": "dpr",
+    "value": "1.2000000476837158",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1785184181,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "presence",
+    "value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1784579382774%2C%22v%22%3A1%7D",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": true,
+    "sameSite": "unspecified"
+  }
+]

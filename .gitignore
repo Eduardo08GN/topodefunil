@@ -40,13 +40,6 @@ ebook/producao/atem/_css_ref.css
 ebook/producao/atem/_icons.svg
 landing-atem/_desc_de.txt
 
-# ⛔⛔ CREDENCIAL DE CONTA — nunca versionada (2026-09-10)
-# A pasta tem os logins dos perfis de Facebook da operacao. Varredura no dia em
-# que ela apareceu: 16 e-mails, 2 rotulos de senha, 36 mencoes a 2FA/token/
-# secret/cookie e 119 telefones, em 10 arquivos. Este repo empurra para o
-# GitHub (Eduardo08GN/topodefunil) e historico de git nao se apaga: um commit
-# por acidente exporia as contas para sempre, inclusive as verificadas.
-Contas Perfis Facebook/
 
 # ⚠️ Pacotes prontos para enviar a terceiros. 178 MB de zip cujo conteudo JA
 # vive versionado: os videos em "Paginas Weight Loss/Reviews das paginas" e as

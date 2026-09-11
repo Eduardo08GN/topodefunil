@@ -1,0 +1,141 @@
+CONTA VERIFICADA- 1319
+--------------------------Dados de acesso----------------------------------
+ID:100085577081319
+
+SENHA FB:4Y2QvK@123
+
+EMAIL:kubuklamm11@outlook.com
+
+SENHA EMAIL:zU8w6G@358
+
+ALTERNATIVO:kubuklamm11r0938@smvmail.com
+
+2FA:QPFE2XVJQ736NDZ7PV4ZKE7Z454PFIVP
+----------------------------Acesso login-------------------------------------
+(Logue via cookie ou usando o id ou e-mail conforme o tutorial)
+
+
+Cookies:
+
+
+[
+  {
+    "name": "datr",
+    "value": "mGmhasZRhwG1AMCprT5l3q9C",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823523221.880793,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "sb",
+    "value": "mGmhatpLDB-HdLBW7ZR0gy_q",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823523330.528744,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "locale",
+    "value": "en_US",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1789568117.251166,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "c_user",
+    "value": "100085577081319",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1820585221.695057,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "ps_l",
+    "value": "1",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823523331.514693,
+    "sameSite": "lax"
+  },
+  {
+    "name": "ps_n",
+    "value": "1",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823523331.514879,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "wd",
+    "value": "1640x916",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1789654025,
+    "sameSite": "lax"
+  },
+  {
+    "name": "fr",
+    "value": "1cXjaoSwb0mTgk1Q8.AWdwetHiFm8z5FAqecNB6WpDUsTp3RZ6rCVpBSJQaPyIMrIJ61M.BqormF..AAA.0.0.BqormF.AWf1TYh_rJVrBY5V_AYHBDnAqb4",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1796825221.695401,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "xs",
+    "value": "37%3AQqDNr8XGJX4s2g%3A2%3A1788963330%3A-1%3A-1%3A%3AAcwGwdwhRlqlbVhYPqBKUz5UFg0u0uWaY337B03u0Q",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1820585221.695663,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "presence",
+    "value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1789049226111%2C%22v%22%3A1%7D",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": true,
+    "sameSite": "unspecified"
+  }
+]

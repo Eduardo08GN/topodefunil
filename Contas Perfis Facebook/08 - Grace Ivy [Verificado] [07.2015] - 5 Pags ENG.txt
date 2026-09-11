@@ -1,0 +1,145 @@
+CONTA VEIRIFICADA- 0565
+--------------------------Dados de acesso----------------------------------
+
+ID:100009997890565
+
+SENHA FB:gAeN6m@123
+
+EMAIL:hanningmeans22@outlook.com
+
+SENHA EMAIL:zghGH0@358
+
+ALTERNATIVO:hanningmeans22hb938@smvmail.com
+
+TOKEN:T6F3EVOAEXGFQ7EFLYZJWD6W76C76N7K
+
+Site para gerar os códigos com o Token :https://fbflix.com.br/2fa
+----------------------------Acesso login-------------------------------------
+(Logue via cookie ou usando o id ou e-mail conforme o tutorial)
+
+Cookies:
+
+[
+  {
+    "name": "datr",
+    "value": "MWuhai8GVAXXv9zoAW_rCPom",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823523631.104967,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "sb",
+    "value": "MWuhajZ_LQAyJ8M-slf-f2UP",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823523686.238857,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "locale",
+    "value": "en_GB",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1789568474.213826,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "c_user",
+    "value": "100009997890565",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1820585374.322996,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "ps_l",
+    "value": "1",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823525070.178675,
+    "sameSite": "lax"
+  },
+  {
+    "name": "ps_n",
+    "value": "1",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1823525070.178935,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "wd",
+    "value": "1640x916",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": false,
+    "expirationDate": 1789654218,
+    "sameSite": "lax"
+  },
+  {
+    "name": "fr",
+    "value": "1PeIebvry76yyXOO0.AWfRK23O5QA5LJnfwmBDLj7-Ej3mhlPIxdau-jZNW9wk-nMX978.Bqoroe..AAA.0.0.Bqoroe.AWeSjjBwel-vOQbR12tBQ3jwbdo",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1796825374.323196,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "xs",
+    "value": "16%3A7JRGFmmSYXcZEg%3A2%3A1788963686%3A-1%3A-1%3A%3AAczDyAVtgrazZqZfPM5fJ3mpAupbm4CaEfBy8VJdOw",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "session": false,
+    "expirationDate": 1820585374.323345,
+    "sameSite": "no_restriction"
+  },
+  {
+    "name": "presence",
+    "value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1789049421283%2C%22v%22%3A1%7D",
+    "domain": ".facebook.com",
+    "hostOnly": false,
+    "path": "/",
+    "secure": true,
+    "httpOnly": false,
+    "session": true,
+    "sameSite": "unspecified"
+  }
+]
+
+
+
