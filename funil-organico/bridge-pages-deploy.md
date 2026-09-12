@@ -7,12 +7,15 @@ Registro de todas as bridge pages do funil orgânico ED, hospedadas no VPS via C
 | dono | pasta no `projetosweb` | apps | `aff_id` |
 |---|---|---|---|
 | **Ed** (esta operação) | `/bridge-pages` | um por domínio (`*-bp`, `*-bp1`) | **45158** · **2470** |
-| **a PARCEIRA** (amiga do Ed) | `/parceira-bridges` | `parceira-bridges-4dom` — **um só, 10 domínios** | **52138** |
+| **a PARCEIRA** (amiga do Ed) | `/parceira-bridges` | `parceira-bridges-4dom` — **um só, 10 domínios** | **4422** (era 52138 até 2026-09-12) |
 | **o LUCAS** | `/bridge-pages/bp-dailyvitalreport` e irmãos | `dailyvitalreport-bp` e irmãos | **44878** |
 
-⚠️ **A parceira usa a MESMA oferta que o Ed** (`horsewood.us/VHG2-L1ML3/`). Ver
-`horsewood` numa página dela **não é erro** — o que separa o dinheiro é o
-**número** do `aff_id`. A conferência é sempre do número, nunca da oferta.
+⚠️ **A parceira usa a MESMA oferta que o Ed.** Desde **2026-09-12** as dez
+páginas dela saíram do ED e vendem **emagrecimento**:
+`bg.activebalanceformula.com/2608-V1TI/?aff_id=4422` — que é **a mesma oferta
+da bridge `ti-2608` do Ed**, cujo `aff_id` é `3206`. Ver essa oferta numa
+página dela **não é erro** — o que separa o dinheiro é o **número** do
+`aff_id`. A conferência é sempre do número, nunca da oferta.
 
 ⛔ **O documento que garante o isolamento é
 `projetosweb/parceira-bridges/PROPRIEDADE-E-ISOLAMENTO.md`** — mapa dos 10
@@ -170,7 +173,8 @@ Lucas.
 `nutrifix` · `nutrifacthub` · `rootednutrition` · `thenutrijournal` ·
 `thewellnessplate`
 
-⛔ Todos num app só (`parceira-bridges-4dom`), `aff_id` **52138**. Ver
+⛔ Todos num app só (`parceira-bridges-4dom`), `aff_id` **4422**, nicho
+**emagrecimento** desde 2026-09-12 (antes: ED, `aff_id` 52138). Ver
 [`PROPRIEDADE-E-ISOLAMENTO.md`](../../projetosweb/parceira-bridges/PROPRIEDADE-E-ISOLAMENTO.md).
 
 ### ⏳ Consequência para o produto de emagrecimento
