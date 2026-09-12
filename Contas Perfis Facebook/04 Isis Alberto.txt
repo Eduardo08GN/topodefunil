@@ -20,7 +20,7 @@ Senha E-mail: FRFUNHrrf5334
 
 Token: AE2H TQND BREX NP5O NTDD EACG IKKH UGJW
 
-E-mail alternativo: —
+E-mail de recuperação: 
 
 Site para gerar os códigos com o Token :https://fbflix.com.br/2fa
 ----------------------------Acesso login-------------------------------------

@@ -1,0 +1,130 @@
+Email FB: margagoncalves57@gmail.com
+Senha FB: L12e08A13*
+
+
+Email Recuperação: atm.eduardo@gmail.com
+
+
+
+
+
+COOKIES:
+
+[
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1823535469.694022,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "ps_l",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1823535434.050914,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "datr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "VJmhapLhwZMQw5ALcqPTAJZI"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1796913085.062784,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "fr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1b5o3ghQ8egRfePMT.AWdogk5F-tQTh3XIp_bLTm-5KFqPSGMgnpgHwI5vXVtj4WLfwFg.BqpBAy..AAA.0.0.BqpBC9.AWedlOD0mZ1HguZfZw3Tsm--zGA"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1820672945.846382,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "xs",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "26%3AGVZiLhvuL76EqA%3A2%3A1789136942%3A-1%3A-1%3A%3AAcwIp69PsKaXgnhpEcxUmzBiwz-Mr8H9Tug7fb9Ltg"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1820672945.846104,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "c_user",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "61586550474249"
+    },
+    {
+        "domain": ".facebook.com",
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "presence",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1789137087385%2C%22v%22%3A1%7D"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1823535469.694098,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "ps_n",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1823696944.344075,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "sb",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "VJmhaqZsgCNKEJAtHorv4_dc"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1789741887,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "wd",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1920x911"
+    }
+]
