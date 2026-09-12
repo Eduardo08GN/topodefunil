@@ -46,3 +46,7 @@ landing-atem/_desc_de.txt
 # paginas no repo projetosweb (bridge-pages/bp-fit-*). E' entrega, nao fonte, e
 # se regera em dois minutos. Descomente a linha se quiser versionar mesmo.
 Paginas Weight Loss/index das páginas para enviar/
+
+# ⛔⛔ COOKIES DE SESSAO do Dolphin — credencial, e pior que senha: cookie de
+# sessao valido entra na conta sem senha e sem 2FA. Mesma regra da pasta acima.
+Cookies Sites e Macetes Dophin/
