@@ -1,4 +1,4 @@
-# Notificação de Vendas própria (BuyGoods → Telegram)
+# Notificação de Vendas própria (BuyGoods + Hotmart → Telegram)
 
 Sistema próprio de notificação de vendas, **sem depender de Utmify ou qualquer
 terceiro**. O BuyGoods dispara o postback direto pro nosso serviço no VPS, que
@@ -89,6 +89,80 @@ Macros que o BuyGoods preenche: `{ORDERID}`, `{COMMISSION_AMOUNT}`, `{SUBID}`,
 - **Adicionar página nova:** editar `PAGINAS` no `app.py` → push → redeploy.
 - **Redeploy:** `GET http://159.195.12.135:8000/api/v1/deploy?uuid=q6kqz7uoi21hx09y52wteh9i`
 - **Trocar bot/chat:** alterar as env vars no Coolify e redeployar.
+
+## Segunda entrada: HOTMART (infoproduto 150 Receitas) — 2026-09-21
+
+O mesmo serviço atende **dois gateways**. O BuyGoods (funil de ED) manda `GET`
+com querystring em `/venda`; a Hotmart (ebook 150) manda **`POST` JSON** em
+**`/hotmart`**. São rotas separadas de propósito — formatos e autenticação
+diferentes, e juntar num handler só esconderia bug dos dois lados.
+
+```
+Hotmart (venda aprovada) ──POST JSON──► /hotmart ──► Telegram + vendas.jsonl
+```
+
+| Peça | Valor |
+|---|---|
+| Endpoint | `http://q6kqz7uoi21hx09y52wteh9i.159.195.12.135.sslip.io/hotmart?s=<HOTMART_URL_SECRET>` |
+| Autenticação | `?s=` na URL **ou** `X-HOTMART-HOTTOK` no header (basta uma) |
+| Env nova | `HOTMART_URL_SECRET` (separada do `WEBHOOK_SECRET` do BuyGoods) |
+| Versão do webhook | 2.0.0 |
+
+### Atribuição: de onde vem o nome da página
+
+A landing põe `sck` e `src` no link de checkout, com **o mesmo slug** do
+`data-subid` que ela já manda pro funil-tracker (domínio sem TLD — o
+`slug_de()` do `_build.py`). Uma chave só para os dois sistemas:
+
+```html
+<a href="https://pay.hotmart.com/T107474501A?sck=bookdailyfactreport&amp;src=bookdailyfactreport">
+```
+
+| Idioma | Domínio | slug (`sck`) | Produto Hotmart |
+|---|---|---|---|
+| EN | `book.dailyfactreport.site` | `bookdailyfactreport` | 8458340 · `T107474501A` |
+| DE | `book.plainfactsdaily.site` | `bookplainfactsdaily` | 8458435 · `K107474696C` |
+| FR | `book.thedailyfinding.site` | `bookthedailyfinding` | 8458452 · `A107474735Q` |
+| ES | `libro.dailyvitalreport.store` | `librodailyvitalreport` | ⏳ sem produto |
+| IT | `libro.everydaydigest.site` | `libroeverydaydigest` | ⏳ sem produto |
+
+ES e IT já estão no `PAGINAS_HOTMART` esperando: no dia que tiverem produto,
+ninguém precisa lembrar deste arquivo.
+
+### Decisões que custaram tempo
+
+- ⛔⛔ **A doc da Hotmart responde 403 fora do painel** (CloudFront bloqueia
+  `developers.hotmart.com`), e a aba *Histórico* estava vazia — conta sem venda
+  não tem payload de exemplo. Por isso a extração de campos é **tolerante**:
+  cada campo tenta vários caminhos, e o `sck` ainda tem busca profunda como
+  último recurso. O payload cru vai inteiro pro JSONL, então **a primeira venda
+  real é que permite apertar isso**. Conferir o JSONL depois da primeira venda.
+- ⛔ **A aba *Autenticação* do painel não renderiza o hottok.** Foi por isso que
+  a rota passou a aceitar `?s=` — depender só do hottok deixava o endpoint sem
+  como ser protegido.
+- ⚠️ **Responder 200 cedo vale aqui também, por motivo diferente:** a Hotmart
+  reenvia o evento enquanto não receber 2xx. Mesma regra, outro gateway.
+- ⚠️ **Venda sem `sck` grita na notificação** (`⚠️ veio sem sck — atribuição
+  perdida`). Melhor um alerta feio na hora do que descobrir semanas depois,
+  conferindo planilha, que não dá para saber qual idioma vendeu.
+- ⚠️ **`&` no href tem de ser `&amp;`.** Dois parâmetros no link de checkout, e
+  o HTML cru passa batido no navegador mas é erro de parse.
+
+### Registro no painel da Hotmart
+
+Ferramentas → **Webhook** → *Cadastrar Webhook*:
+- **URL:** o endpoint acima, com o `?s=`
+- **Versão:** 2.0.0
+- **Produtos:** os três do 150 (não "todos" — a conta tem outros produtos com
+  webhooks próprios: Appmestre, UTMify, Vturb)
+- **Eventos:** `PURCHASE_APPROVED` no mínimo; o `app.py` também formata
+  `PURCHASE_COMPLETE`, `PURCHASE_REFUNDED`, `PURCHASE_CHARGEBACK`,
+  `PURCHASE_PROTEST`, `PURCHASE_BILLET_PRINTED` e carrinho abandonado.
+
+> ⏳ **Pode esbarrar em HTTPS.** As quatro integrações já cadastradas na conta
+> são todas `https://`, e o nosso endpoint é `http://` em sslip.io. Se o
+> cadastro recusar, é o item "domínio próprio + HTTPS" das pendências abaixo
+> que vira bloqueio — não é detalhe estético.
 
 ## Pendências / evolução
 
