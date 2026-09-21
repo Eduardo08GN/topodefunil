@@ -36,7 +36,7 @@ BuyGoods (venda aprovada) ──postback GET──► nosso serviço (VPS/Coolif
 | Var | Papel |
 |---|---|
 | `TELEGRAM_BOT_TOKEN` | token do bot (@MerchAffiliate_bot) |
-| `TELEGRAM_CHAT_ID` | `5676155351` (DM do Eduardo) |
+| `TELEGRAM_CHAT_ID` | destinos separados por vírgula — `5676155351` é a DM do Eduardo |
 | `WEBHOOK_SECRET` | segredo exigido no `?s=` da URL |
 
 ## Regras de projeto (aprendidas na marra)
@@ -53,6 +53,41 @@ BuyGoods (venda aprovada) ──postback GET──► nosso serviço (VPS/Coolif
 4. **Segredo na URL (`?s=`).** O endpoint é público; sem segredo qualquer um
    forjaria "venda". Requisição sem segredo é ignorada mas responde `OK`
    (não revela nada a quem sonda).
+
+### ⭐ Mais de um destino no Telegram (sócio, grupo)
+
+`TELEGRAM_CHAT_ID` aceita **lista** separada por vírgula, ponto-e-vírgula ou
+espaço: `5676155351,-1001234567890`. Um destino só continua funcionando igual —
+a config antiga não precisa mudar. Vale para os **dois** gateways, porque o
+envio é compartilhado.
+
+⛔ **Cada destino vai separado e falha de um não cala os outros.** O `for` em
+`_telegram` não tem `break` nem `return` no meio, de propósito: o caso real é o
+sócio que ainda não deu `/start` no bot — a API devolve **403 para ele**, e sem
+isolamento o dono deixaria de receber a venda por causa disso. O log diz
+`entregue em N/M destinos` quando alguém fica de fora.
+
+Duas formas, e a escolha muda o que cada um vê:
+
+| | Grupo | Duas DMs |
+|---|---|---|
+| `TELEGRAM_CHAT_ID` | um id **negativo** (`-100…`) | `<id do dono>,<id do sócio>` |
+| Pré-requisito | bot **adicionado ao grupo** | cada pessoa deu **`/start`** no bot |
+| Efeito | os dois veem o mesmo histórico e conversam ali | cada um recebe na sua DM, sem histórico comum |
+
+⚠️ **O `/start` não é burocracia:** o Telegram proíbe um bot de iniciar conversa
+com quem nunca falou com ele. Sem isso o destino dá 403 para sempre, e o
+sintoma é silencioso — as vendas continuam chegando para quem já tinha.
+
+**Descobrir o `chat_id`:** a pessoa manda qualquer mensagem ao bot (ou o bot é
+adicionado ao grupo e alguém escreve lá), e então:
+
+```bash
+curl -s "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/getUpdates"   | python -c "import sys,json;[print(u.get('message',{}).get('chat')) for u in json.load(sys.stdin)['result']]"
+```
+
+⛔ Depois de alterar a env no Coolify, **redeployar** — env var só entra no
+container no start.
 
 ## Formato da notificação
 
