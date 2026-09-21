@@ -17,9 +17,26 @@
 | Repo source (privado) | `Eduardo08GN/projetosweb` branch `main` |
 | GitHub App UUID (autentica o repo privado) | `yhriwaecxwznwiino9848rg1` |
 
-**Token da API:** fica no `.env` do repo `projetosweb` como `COOLIFY_API_TOKEN`.
+**Token da API:** fica como `COOLIFY_API_TOKEN` em `MazyOS/.env`,
+`MazyOS/automaweb/.env` e `projetosweb/automaweb/.env` (os tres tem o mesmo
+valor). Nao existe `.env` na raiz do `projetosweb` — so `.env.example`.
 Nunca cole o token em chat/commit. Se aparecer em texto, rotacione no Coolify
-(Keys & Tokens) e atualize o `.env`.
+(Keys & Tokens) e atualize os tres arquivos.
+
+> ⛔⛔ **O token comeca com `4|` e PRECISA de aspas no `.env`.** Sem elas,
+> `set -a; . .env` faz o shell ler `4` e tratar o resto como **pipe**, chamando
+> o hash como comando. A variavel chega **vazia**, o `curl` manda
+> `Authorization: Bearer ` e a API responde `{"message":"Unauthenticated."}`.
+> ⚠️ **Isso imita perfeitamente um token expirado** e ja custou uma sessao
+> inteira: foram tres arquivos testados, todos "invalidos", todos corretos.
+> Pior: com `2>/dev/null` o `command not found` some e nao sobra pista nenhuma.
+> Forma certa no arquivo:
+> ```
+> COOLIFY_API_TOKEN="4|<hash>"
+> ```
+> Antes de concluir que um token morreu, teste se ele chega inteiro:
+> `( set -a; . .env; set +a; [ -n "$COOLIFY_API_TOKEN" ] && echo chegou )`
+> — **sem** redirecionar stderr.
 
 ## 2. Duas ferramentas — saiba qual usar
 
@@ -44,6 +61,38 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 ➡️ **Sempre use** `/applications/private-github-app` passando
 `github_app_uuid: yhriwaecxwznwiino9848rg1`. Esse é o GitHub App já instalado
 que dá acesso ao repo privado.
+
+## ⛔ `fit-fr-bp` NAO AUTO-DEPLOYA (2026-09-21)
+
+Os tres apps das landings do ebook 150 olham o mesmo repo e a mesma branch:
+
+| App | UUID | Dominio | `base_directory` |
+|---|---|---|---|
+| `fit-en-bp` | `r2cgw8c5j25cq0e89i7lrj7n` | `book.dailyfactreport.site` | `/bridge-pages/bp-fit-en` |
+| `fit-de-bp` | `qg2mxau3et2gp85kv6mrwdqo` | `book.plainfactsdaily.site` | `/bridge-pages/bp-fit-de` |
+| `fit-fr-bp` | `v2524bw7z6ho7v22d6xadyz2` | `book.thedailyfinding.site` | `/bridge-pages/bp-fit-fr` |
+
+Num push que tocou os tres, **EN e DE deployaram sozinhos e o FR nao**. Um
+commit vazio de re-disparo tambem nao acordou o FR. So saiu com deploy manual
+pela API. A API nao expoe o toggle de auto-deploy, entao a causa exata ficou
+por confirmar no painel.
+
+➡️ **Depois de mexer no `bp-fit-fr`, NAO confie no push.** Dispare o deploy e
+espere o `status` virar `finished`:
+
+```bash
+( set -a; . MazyOS/.env; set +a
+  curl -s -H "Authorization: Bearer $COOLIFY_API_TOKEN"     "http://159.195.12.135:8000/api/v1/deploy?uuid=v2524bw7z6ho7v22d6xadyz2&force=true" )
+# → {"deployments":[{"deployment_uuid":"<DEP_UUID>", ...}]}
+```
+
+⭐ **A prova final nao e o `finished`, e o `Last-Modified` do dominio.** Foi o
+header que denunciou o problema: EN e DE com build do dia, FR ainda com o de
+cinco dias antes, servindo o checkout velho com HTTP 200 e pagina intacta.
+
+```bash
+curl -sI https://book.thedailyfinding.site/ | grep -i last-modified
+```
 
 ## ⭐ LOTE INTEIRO? LEIA ISTO ANTES
 
