@@ -1,3 +1,20 @@
-Pagina em ingles: https://pay.hotmart.com/U107390341F
-Pagina em alemao: https://pay.hotmart.com/Y107390474L
-Pagina em Frances: https://pay.hotmart.com/I107390541D
+CHECKOUTS DO EBOOK 150 — conta Hotmart atm.eduardo@gmail.com
+(conferido em 2026-09-21 direto no painel, aba "Links de divulgacao" de cada produto)
+
+Pagina em ingles:  https://pay.hotmart.com/T107474501A   (ID 8458340 - 150 Fitness Recipes - A Lighter Life)
+Pagina em alemao:  https://pay.hotmart.com/K107474696C   (ID 8458435 - 150 Fitness-Rezepte — Ein leichteres Leben)
+Pagina em frances: https://pay.hotmart.com/A107474735Q   (ID 8458452 - 150 Recettes Fitness — Une vie plus legere)
+
+Pagina em espanhol: SEM PRODUTO na conta — landing no ar com botao morto (href="#")
+Pagina em italiano: SEM PRODUTO na conta — landing no ar com botao morto (href="#")
+Pagina em portugues: sem produto e sem deploy
+
+Preco base das tres: US$ 10,00 (oferta unica; codigo da oferta EN: pmsujcrz)
+
+⛔⛔ NAO USAR os codigos abaixo. Estavam nas tres landings ate 2026-09-21 e
+apontam para produtos que NAO existem nesta conta (nome "Japanese Secret" /
+"japanische Geheimnis" / "Secret Japonais"). Os checkouts seguem vivos, entao
+toda venda ia para fora. Se reaparecerem em algum arquivo, e' regressao:
+  EN  U107390341F
+  DE  Y107390474L
+  FR  I107390541D
